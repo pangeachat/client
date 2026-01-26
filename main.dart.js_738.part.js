@@ -1526,6 +1526,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moje pa\u0144stwo";
     },
+    get$targetLanguage() {
+      return "J\u0119zyk docelowy";
+    },
     get$updateLanguage() {
       return "Moje j\u0119zyki";
     },
@@ -5273,6 +5276,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ustaw liczb\u0119 aktywno\u015bci do odblokowania nast\u0119pnego tematu kursu";
     },
+    get$activitySettingsOverrideWarning() {
+      return "J\u0119zyk i poziom j\u0119zykowy okre\u015blone przez plan aktywno\u015bci";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Opuszczono czat";
     },
@@ -5352,7 +5358,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["h47H2LW7zwc02r6LBdcHg4s15Sc="] = d.current;
+  d["0mZvpEFfGXqU3AqurPQk6f3qrAM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_738.part.js.map

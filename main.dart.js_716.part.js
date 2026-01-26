@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mano \u0161alis";
     },
+    get$targetLanguage() {
+      return "Tikslo kalba";
+    },
     get$updateLanguage() {
       return "Mano kalbos";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Kalba ir kalbos lygis nustatomi pagal veiklos plan\u0105";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa J\u016bs palikote pokalb\u012f";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+nrMw8Y4pq+qrbNsXfIiw2lItC0="] = d.current;
+  d["LRRgttO8CZtYmbKi+iPi7nBD5Rs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

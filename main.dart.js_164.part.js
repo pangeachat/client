@@ -1526,6 +1526,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u0f44\u0f60\u0f72\u0f0b\u0f62\u0f92\u0fb1\u0f63\u0f0b\u0f41\u0f56\u0f0d";
     },
+    get$targetLanguage() {
+      return "\u0f63\u0f74\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f90\u0f51";
+    },
     get$updateLanguage() {
       return "\u0f44\u0f60\u0f72\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f5a\u0f72\u0f42";
     },
@@ -5274,6 +5277,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Caktoni numrin e aktiviteteve p\xebr t\xeb \xe7liruar tem\xebn tjet\xebr t\xeb kursit";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Idioma y nivel de idioma determinados por el plan de actividad";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Oi sa\xedste do chat";
     },
@@ -5365,7 +5371,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["J9IxmID6OoK+kHWU2rlFyoYnLD4="] = d.current;
+  d["f2oDz/FO8h3AfPm2vmPr/fUtDg8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

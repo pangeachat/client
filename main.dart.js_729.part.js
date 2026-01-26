@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mitt land";
     },
+    get$targetLanguage() {
+      return "M\xe5lspr\xe5k";
+    },
     get$updateLanguage() {
       return "Mine spr\xe5k";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Sett antall aktiviteter for \xe5 l\xe5se opp neste kurs emne";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Spr\xe5k og spr\xe5kniv\xe5 bestemt av aktivitetsplan";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du forlot chatten";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N5banadiK/egN4g1cixw51/mKUA="] = d.current;
+  d["dH2KzxD9lVPQj9fe/zAbF46aMvw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

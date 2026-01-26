@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moja zemlja";
     },
+    get$targetLanguage() {
+      return "Ciljni jezik";
+    },
     get$updateLanguage() {
       return "Moji jezici";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Postavite broj aktivnosti za otklju\u010davanje slede\u0107e teme kursa";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Jezik i nivo jezika odre\u0111eni planom aktivnosti";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Napustili ste chat";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6W0T/cSKeBTOnv+HA0cXcVYIPGQ="] = d.current;
+  d["G2g6ZWtU4nS4e1Bu7FcHpvchoiI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

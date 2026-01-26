@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u0397 \u03c7\u03ce\u03c1\u03b1 \u03bc\u03bf\u03c5";
     },
+    get$targetLanguage() {
+      return "\u0393\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c2";
+    },
     get$updateLanguage() {
       return "\u039f\u03b9 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2 \u03bc\u03bf\u03c5";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c1\u03b9\u03b8\u03bc\u03cc \u03c4\u03c9\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf \u03b8\u03ad\u03bc\u03b1 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
     },
+    get$activitySettingsOverrideWarning() {
+      return "\u0397 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03ba\u03b1\u03b9 \u03c4\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2 \u03ba\u03b1\u03b8\u03bf\u03c1\u03af\u03b6\u03bf\u03bd\u03c4\u03b1\u03b9 \u03b1\u03c0\u03cc \u03c4\u03bf \u03c3\u03c7\u03ad\u03b4\u03b9\u03bf \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u0391\u03c6\u03ae\u03c3\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["InpLi34AqwPiSzfACeWzj3ja8Gg="] = d.current;
+  d["lwUH+8t3hvNfpP0LaJvtx982INo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

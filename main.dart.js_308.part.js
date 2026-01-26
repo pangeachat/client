@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mit land";
     },
+    get$targetLanguage() {
+      return "M\xe5lsprog";
+    },
     get$updateLanguage() {
       return "Mine sprog";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Indstil antallet af aktiviteter for at l\xe5se op for det n\xe6ste kursusemne";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Sprog og sprogniveau bestemt af aktivitetsplan";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du forlod chatten";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9KoTb8XAVD8UPJpCqqS7/K9S2O4="] = d.current;
+  d["vTx+XHt7PyfORMzPQh38BmX7q+A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_308.part.js.map

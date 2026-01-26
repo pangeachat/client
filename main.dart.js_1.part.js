@@ -1532,6 +1532,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u6211\u7684\u56fd\u5bb6";
     },
+    get$targetLanguage() {
+      return "\u76ee\u6807\u8bed\u8a00";
+    },
     get$updateLanguage() {
       return "\u6211\u7684\u8bed\u8a00";
     },
@@ -5279,6 +5282,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u8bbe\u7f6e\u89e3\u9501\u4e0b\u4e00\u4e2a\u8bfe\u7a0b\u4e3b\u9898\u6240\u9700\u7684\u6d3b\u52a8\u6570\u91cf";
     },
+    get$activitySettingsOverrideWarning() {
+      return "\u6d3b\u52a8\u8ba1\u5212\u786e\u5b9a\u7684\u8bed\u8a00\u548c\u8bed\u8a00\u7ea7\u522b";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u4f60\u79bb\u5f00\u4e86\u804a\u5929";
     },
@@ -6858,6 +6864,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "\u6211\u7684\u570b\u5bb6";
+    },
+    get$targetLanguage() {
+      return "\u76ee\u6a19\u8a9e\u8a00";
     },
     get$updateLanguage() {
       return "\u6211\u7684\u8a9e\u8a00";
@@ -10603,6 +10612,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u8a2d\u5b9a\u89e3\u9396\u4e0b\u4e00\u8ab2\u7a0b\u4e3b\u984c\u6240\u9700\u7684\u6d3b\u52d5\u6578\u91cf";
     },
+    get$activitySettingsOverrideWarning() {
+      return "\u8a9e\u8a00\u548c\u8a9e\u8a00\u7d1a\u5225\u7531\u6d3b\u52d5\u8a08\u5283\u6c7a\u5b9a";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u4f60\u5df2\u96e2\u958b\u804a\u5929";
     },
@@ -10683,7 +10695,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["weyDwbSOmQ3B9IVi4qBx2yU4kbA="] = d.current;
+  d["OgvQF4vEcXGQSoVFNcv3X/B9JVg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

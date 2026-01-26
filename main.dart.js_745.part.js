@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u021aara mea";
     },
+    get$targetLanguage() {
+      return "Limba \u021bint\u0103";
+    },
     get$updateLanguage() {
       return "Limbi ale mele";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Stabile\u0219te num\u0103rul de activit\u0103\u021bi pentru a debloca urm\u0103torul subiect al cursului";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Limba \u0219i nivelul de limb\u0103 sunt determinate de planul de activitate";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Ai p\u0103r\u0103sit chat-ul";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oQFJBJADePWLZP9pHPwd7JKXulU="] = d.current;
+  d["45lOwb5wx2K5EbonFdCZXWM8mjQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

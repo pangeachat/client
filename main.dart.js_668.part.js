@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Orsz\xe1gom";
     },
+    get$targetLanguage() {
+      return "C\xe9lnyelv";
+    },
     get$updateLanguage() {
       return "Nyelveim";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\xc1ll\xedtsa be a tev\xe9kenys\xe9gek sz\xe1m\xe1t a k\xf6vetkez\u0151 tanfolyam t\xe9ma felold\xe1s\xe1hoz";
     },
+    get$activitySettingsOverrideWarning() {
+      return "A nyelvet \xe9s a nyelvi szintet az aktivit\xe1si terv hat\xe1rozza meg";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Elhagytad a cseveg\xe9st";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fi7VCB8AhMJT3H53NId3Y5N5UoM="] = d.current;
+  d["ZpA2UEuovg+p/1viUgACKqMOxwk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

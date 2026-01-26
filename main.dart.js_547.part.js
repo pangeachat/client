@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Minu riik";
     },
+    get$targetLanguage() {
+      return "Sihtkeel";
+    },
     get$updateLanguage() {
       return "Minu keeled";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "M\xe4\xe4rake tegevuste arv j\xe4rgmise kursuse teema avamiseks";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Keele ja keele taseme m\xe4\xe4rab tegevusplaan";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Sa lahkusid vestlusest";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cBkayGeOozLtW8BItp5XOmqI8B0="] = d.current;
+  d["fWOvPPF/sLjVpe1LuIQ9HNBfeS0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_547.part.js.map

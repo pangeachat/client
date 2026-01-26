@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Min land";
     },
+    get$targetLanguage() {
+      return "M\xe5lspr\xe5k";
+    },
     get$updateLanguage() {
       return "Mina spr\xe5k";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ange antalet aktiviteter f\xf6r att l\xe5sa upp n\xe4sta kurs\xe4mne";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Spr\xe5k och spr\xe5kniv\xe5 best\xe4ms av aktivitetsplanen";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du l\xe4mnade chatten";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["adAP1HDl4XmkrK7Rin3ILSLd2fs="] = d.current;
+  d["+Zd6QpZQQrTXTXCL4MNgrrJE+6g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

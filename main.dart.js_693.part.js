@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Negara saya";
     },
+    get$targetLanguage() {
+      return "Bahasa Target";
+    },
     get$updateLanguage() {
       return "Bahasa Saya";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Anda meninggalkan obrolan";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["17ZdB0c1+bleciEDWYsbkzAo62c="] = d.current;
+  d["F2ImIqNAFapdZLGUhaVwiY3guVc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

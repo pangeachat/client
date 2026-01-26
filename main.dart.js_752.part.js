@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moja krajina";
     },
+    get$targetLanguage() {
+      return "Cie\u013eov\xfd jazyk";
+    },
     get$updateLanguage() {
       return "Moje jazyky";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Nastavte po\u010det aktiv\xedt na odomknutie nasleduj\xfacej t\xe9my kurzu";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Jazyk a jazykov\xe1 \xfarove\u0148 ur\u010den\xe9 pl\xe1nom aktivity";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Opustili ste chat";
     },
@@ -5351,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vzMHTeF9sVp+qCUFplWsFmbK46Q="] = d.current;
+  d["/AePeNU4v4ZSgOdKqxgc3srumdw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

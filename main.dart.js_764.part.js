@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\xdclkem";
     },
+    get$targetLanguage() {
+      return "Hedef Dil";
+    },
     get$updateLanguage() {
       return "Dillerim";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Sonraki kurs konusunu a\xe7mak i\xe7in aktivite say\u0131s\u0131n\u0131 ayarlay\u0131n";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Etkinlik plan\u0131 taraf\u0131ndan belirlenen dil ve dil seviyesi";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Sohbeti terk ettin";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OoqtP3ATGpjneklKvfKkudbWdGg="] = d.current;
+  d["ZwxPqS1tnTzhj3cwdZ1kozhpueQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_764.part.js.map

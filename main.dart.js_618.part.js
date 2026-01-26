@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mo th\xedr";
     },
+    get$targetLanguage() {
+      return "Teanga Sprioc";
+    },
     get$updateLanguage() {
       return "Mo chuid teangacha";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Socraigh an l\xedon gn\xedomha\xedochta\xed le hOscail an topaic ch\xfarsa seo chugainn";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Teanga agus leibh\xe9al teanga a chinneadh de r\xe9ir plean gn\xedomha\xedochta";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa D'fh\xe1g t\xfa an comhr\xe1";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Px+y7E+D3EEpnd3bLlMC9tmYKtM="] = d.current;
+  d["00CHI8MhJ32JMosg3ZsNR8w7K8U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

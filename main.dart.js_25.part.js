@@ -1537,6 +1537,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Meu pa\xeds";
     },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
+    },
     get$updateLanguage() {
       return "Minhas l\xednguas";
     },
@@ -5284,6 +5287,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
     },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
     },
@@ -6863,6 +6869,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "Meu pa\xeds";
+    },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
     },
     get$updateLanguage() {
       return "Meus idiomas";
@@ -10608,6 +10617,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
     },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
     },
@@ -12187,6 +12199,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "O meu pa\xeds";
+    },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
     },
     get$updateLanguage() {
       return "As minhas l\xednguas";
@@ -15932,6 +15947,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
     },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
     },
@@ -16093,6 +16111,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Executu: "Executar automaticamente a assist\xeancia de escrita de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.",
     Ferram: "Ferramentas de tradu\xe7\xe3o e gram\xe1tica podem estar lentas ou indispon\xedveis enquanto os bots Pangea se atualizam.",
     Gostar: "Gostaria de solicitar acesso para visualizar as an\xe1lises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poder\xe3o ver:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o ver:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
+    Idioma: "Idioma e n\xedvel de idioma determinados pelo plano de atividade",
     Ignorae: "Ignorado na atividade de escuta de palavras",
     Ignoras: "Ignorado na atividade de significado da palavra",
     Ilhas_: "Ilhas Ge\xf3rgia do Sul e Ilhas Sandwich do Sul",
@@ -16204,7 +16223,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mShhO5OAsYhkb/D3EzbLZ8OlyCA="] = d.current;
+  d["j8+WA6tWDRVQyAHHmR+zieBJcpc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

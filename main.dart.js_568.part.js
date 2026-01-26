@@ -1525,6 +1525,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Nire herria";
     },
+    get$targetLanguage() {
+      return "Helburu Hizkuntza";
+    },
     get$updateLanguage() {
       return "Nire hizkuntzak";
     },
@@ -5272,6 +5275,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Hurrengo ikastaro gaia irekitzeko jardueren kopurua ezarri";
     },
+    get$activitySettingsOverrideWarning() {
+      return "Jarduera planak zehaztutako hizkuntza eta hizkuntza maila";
+    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Txatetik irten zara";
     },
@@ -5354,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rQXPyMCQ6nO43Qk+G3813LqV1Zs="] = d.current;
+  d["mpqzeeRztV8iALlzjWsRU+4Sbwk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_568.part.js.map
