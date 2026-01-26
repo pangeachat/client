@@ -332,7 +332,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         AnalyticsPractice.bypassExitConfirmation = false;
       }
     } catch (e) {
-      debugPrint("ERROR");
       AnalyticsPractice.bypassExitConfirmation = true;
       activityState.value = AsyncState.error(e);
     } finally {
@@ -359,7 +358,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activityState.value = AsyncState.loaded(res);
       AnalyticsPractice.bypassExitConfirmation = false;
     } catch (e) {
-      debugPrint("ERROR");
       AnalyticsPractice.bypassExitConfirmation = true;
       if (!mounted) return;
       activityState.value = AsyncState.error(e);

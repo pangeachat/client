@@ -210,8 +210,6 @@ class HtmlMessage extends StatelessWidget {
       }
     }
 
-    debugPrint("Results: $result");
-
     int position = 0;
     final tokenPositions = tokens != null
         ? TokensUtil.getAdjacentTokenPositions(event.eventId, tokens!)
