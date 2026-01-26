@@ -5336,6 +5336,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return "\u0627\u0628\u062d\u062b \u0639\u0646 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646 \u0644\u062f\u0639\u0648\u062a\u0647\u0645 \u0625\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0641\u0636\u0627\u0621.";
     },
+    get$useActivityImageAsChatBackground() {
+      return "\u0627\u0633\u062a\u062e\u062f\u0645 \u0635\u0648\u0631\u0629 \u0627\u0644\u0646\u0634\u0627\u0637 \u0643\u062e\u0644\u0641\u064a\u0629 \u0644\u0644\u062f\u0631\u062f\u0634\u0629";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5349,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iZF8um47cfpt60aNQqPWw6gP4AI="] = d.current;
+  d["t446CmJeUTnV10/h8X9RMU29lmY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

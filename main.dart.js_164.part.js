@@ -5337,6 +5337,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return "Searc for users to invite them to this space.";
     },
+    get$useActivityImageAsChatBackground() {
+      return "Bruk aktivitetsbilde som chatbakgrunn";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5362,7 +5365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KwEYbItVTdbKcQ7ReogUNSbED5g="] = d.current;
+  d["0QwsEa2sMd8XI9VYO3rD3IjdPEM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map
