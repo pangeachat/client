@@ -290,14 +290,20 @@ class ButtonControlledCarouselView extends StatelessWidget {
                     (role) => role.userId == p.participantId,
                   );
                   final userRoleInfo = availableRoles[userRole.id]!;
-                  return ActivityParticipantIndicator(
-                    name: userRoleInfo.name,
-                    userId: p.participantId,
-                    user: user,
-                    borderRadius: BorderRadius.circular(4),
-                    selected: highlightedRole?.id == userRole.id,
-                    onTap: () => _scrollToUser(userRole, index, cardWidth),
-                    room: controller.room,
+                  return SizedBox(
+                    width: 100.0,
+                    height: 125.0,
+                    child: Center(
+                      child: ActivityParticipantIndicator(
+                        name: userRoleInfo.name,
+                        userId: p.participantId,
+                        user: user,
+                        borderRadius: BorderRadius.circular(4),
+                        selected: highlightedRole?.id == userRole.id,
+                        onTap: () => _scrollToUser(userRole, index, cardWidth),
+                        room: controller.room,
+                      ),
+                    ),
                   );
                 },
               );
