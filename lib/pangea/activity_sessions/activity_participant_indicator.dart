@@ -71,11 +71,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           size: 60.0,
                           userId: userId,
                           miniIcon:
-                              room != null && userId == BotName.byEnvironment
+                              room != null && user?.id == BotName.byEnvironment
                                   ? BotSettingsLanguageIcon(user: user!)
                                   : null,
                           presenceOffset:
-                              room != null && userId == BotName.byEnvironment
+                              room != null && user?.id == BotName.byEnvironment
                                   ? const Offset(0, 0)
                                   : null,
                         )
