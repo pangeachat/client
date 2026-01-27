@@ -365,11 +365,13 @@ abstract class AppRoutes {
                 GoRoute(
                   path: 'own',
                   pageBuilder: (context, state) {
-                    debugPrint("HELLLLO");
                     return defaultPageBuilder(
                       context,
                       state,
-                      const NewCoursePage(route: 'rooms'),
+                      NewCoursePage(
+                        route: 'rooms',
+                        initialLanguageCode: state.uri.queryParameters['lang'],
+                      ),
                     );
                   },
                   routes: [
