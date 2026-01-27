@@ -881,7 +881,6 @@ class ChatController extends State<ChatPageWithRoom>
   Future<String?> sendFakeMessage(Event? edit, Event? reply) async {
     if (sendController.text.trim().isEmpty) return null;
     final message = sendController.text;
-    inputFocus.unfocus();
     sendController.setSystemText("", EditTypeEnum.other);
 
     return room.sendFakeMessage(
@@ -904,6 +903,10 @@ class ChatController extends State<ChatPageWithRoom>
     pendingText = '';
 
     final tempEventId = await sendFakeMessage(edit, reply);
+    if (!inputFocus.hasFocus) {
+      inputFocus.requestFocus();
+    }
+
     final content = await choreographer.getMessageContent(message);
     choreographer.clear();
 
