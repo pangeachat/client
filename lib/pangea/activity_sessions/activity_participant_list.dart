@@ -52,10 +52,9 @@ class ActivityParticipantList extends StatelessWidget {
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 12.0,
-              runSpacing: 12.0,
+            Row(
+              spacing: 8.0,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: availableRoles.map((availableRole) {
                 final selected =
                     isSelected != null ? isSelected!(availableRole.id) : false;
@@ -83,18 +82,21 @@ class ActivityParticipantList extends StatelessWidget {
                     ? isShimmering!(availableRole.id)
                     : false;
 
-                return ActivityParticipantIndicator(
-                  name: availableRole.name,
-                  userId: assignedRole?.userId,
-                  opacity: getOpacity != null ? getOpacity!(assignedRole) : 1.0,
-                  user: user,
-                  onTap: onTap != null && selectable
-                      ? () => onTap!(availableRole.id)
-                      : null,
-                  selected: selected,
-                  selectable: selectable,
-                  shimmer: shimmering,
-                  room: room,
+                return Expanded(
+                  child: ActivityParticipantIndicator(
+                    name: availableRole.name,
+                    userId: assignedRole?.userId,
+                    opacity:
+                        getOpacity != null ? getOpacity!(assignedRole) : 1.0,
+                    user: user,
+                    onTap: onTap != null && selectable
+                        ? () => onTap!(availableRole.id)
+                        : null,
+                    selected: selected,
+                    selectable: selectable,
+                    shimmer: shimmering,
+                    room: room,
+                  ),
                 );
               }).toList(),
             ),

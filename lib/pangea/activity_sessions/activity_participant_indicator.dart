@@ -45,6 +45,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
@@ -99,20 +100,21 @@ class ActivityParticipantIndicator extends StatelessWidget {
                 opacity: opacity,
                 child: ShimmerBackground(
                   enabled: shimmer,
+                  borderRadius: borderRadius,
                   child: Container(
+                    alignment: Alignment.center,
                     padding: padding ??
                         const EdgeInsets.symmetric(
                           vertical: 4.0,
                           horizontal: 8.0,
                         ),
                     decoration: BoxDecoration(
-                      borderRadius: borderRadius ?? BorderRadius.circular(8.0),
+                      borderRadius: borderRadius,
                       color: (hovered || selected) && selectable
                           ? theme.colorScheme.surfaceContainerHighest
                           : theme.colorScheme.surface.withAlpha(130),
                     ),
                     height: 125.0,
-                    constraints: const BoxConstraints(maxWidth: 100.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
