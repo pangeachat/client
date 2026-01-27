@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:54.609439",
+  "@@last_modified": "2026-01-27 14:03:21.507072",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -3540,7 +3540,6 @@
   "numModules": "{num} moduloj",
   "coursePlan": "Kurso Plano",
   "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
-  "newCourseAccess": "Ĝis nun, kursoj estas private kaj postulas administran aprobon por aliĝi. Vi povas ŝanĝi ĉi tiujn agordojn iam ajn.",
   "createCourse": "Krei kurson",
   "stats": "Statistikoj",
   "createGroupChat": "Krei grupan babiladon",
@@ -9921,10 +9920,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12021,6 +12016,11 @@
   },
   "chatWithSupport": "Babili kun Subteno",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Laŭ la defaŭlto, kursoj estas publike serĉeblaj kaj postulas administran aprobon por aliĝi. Vi povas redakti ĉi tiujn agordojn iam ajn.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

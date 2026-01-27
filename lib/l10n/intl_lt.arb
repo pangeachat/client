@@ -3766,7 +3766,6 @@
   "numModules": "{num} moduliai",
   "coursePlan": "Kurso planas",
   "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
-  "newCourseAccess": "Pagal numatytuosius nustatymus kursai yra privatūs ir reikalauja administratoriaus patvirtinimo prisijungiant. Šiuos nustatymus galite redaguoti bet kuriuo metu.",
   "createCourse": "Sukurti kursą",
   "stats": "Statistika",
   "createGroupChat": "Sukurti grupinį pokalbį",
@@ -3861,7 +3860,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-26 14:06:41.223077",
+  "@@last_modified": "2026-01-27 14:03:05.189233",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9637,10 +9636,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11737,6 +11732,11 @@
   },
   "chatWithSupport": "Pokalbis su palaikymu",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pagal numatytuosius nustatymus, kursai yra viešai ieškomi ir reikalauja administratoriaus patvirtinimo prisijungti. Šiuos nustatymus galite redaguoti bet kada.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

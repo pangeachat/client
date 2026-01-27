@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-26 14:06:23.915386",
+  "@@last_modified": "2026-01-27 14:02:39.850908",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -4421,7 +4421,6 @@
   "numModules": "{num} Module",
   "coursePlan": "Kursplan",
   "editCourseLater": "Sie können den Titel, die Beschreibungen und das Kursbild später bearbeiten.",
-  "newCourseAccess": "Standardmäßig sind Kurse privat und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit ändern.",
   "createCourse": "Kurs erstellen",
   "stats": "Statistiken",
   "createGroupChat": "Gruppenchats erstellen",
@@ -8839,10 +8838,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10939,6 +10934,11 @@
   },
   "chatWithSupport": "Chat mit dem Support",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Standardmäßig sind Kurse öffentlich durchsuchbar und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit bearbeiten.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

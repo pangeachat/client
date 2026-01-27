@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-26 14:06:49.722920",
+  "@@last_modified": "2026-01-27 14:03:14.463461",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -4414,7 +4414,6 @@
   "numModules": "{num} modułów",
   "coursePlan": "Plan kursu",
   "editCourseLater": "Możesz edytować tytuł szablonu, opisy i obraz kursu później.",
-  "newCourseAccess": "Domyślnie kursy są prywatne i wymagają zatwierdzenia administratora, aby do nich dołączyć. Możesz edytować te ustawienia w dowolnym momencie.",
   "createCourse": "Utwórz kurs",
   "stats": "Statystyki",
   "createGroupChat": "Utwórz czat grupowy",
@@ -8832,10 +8831,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10930,6 +10925,11 @@
   },
   "chatWithSupport": "Czat z pomocą",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Domyślnie kursy są publicznie wyszukiwalne i wymagają zatwierdzenia przez administratora, aby do nich dołączyć. Możesz edytować te ustawienia w dowolnym momencie.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

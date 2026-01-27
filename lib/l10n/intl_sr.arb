@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:59.147835",
+  "@@last_modified": "2026-01-27 14:03:24.807506",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -3450,7 +3450,6 @@
   "numModules": "{num} modula",
   "coursePlan": "Plan kursa",
   "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
-  "newCourseAccess": "Podrazumevano, kursevi su privatni i zahtevaju odobrenje administratora za pridruživanje. Možete u bilo kom trenutku izmeniti ove postavke.",
   "createCourse": "Kreiraj kurs",
   "stats": "Statistika",
   "createGroupChat": "Kreiraj grupni chat",
@@ -9934,10 +9933,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12034,6 +12029,11 @@
   },
   "chatWithSupport": "Razgovarajte sa podrškom",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Po defaultu, kursevi su javno pretraživi i zahtevaju odobrenje administratora za pridruživanje. Ove postavke možete izmeniti u bilo kojem trenutku.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }
