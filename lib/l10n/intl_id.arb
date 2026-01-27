@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:02.729155",
+  "@@last_modified": "2026-01-27 14:02:23.466673",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -4416,7 +4416,6 @@
   "numModules": "{num} modul",
   "coursePlan": "Rencana Kursus",
   "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
-  "newCourseAccess": "Secara default, kursus bersifat pribadi dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
   "createCourse": "Buat kursus",
   "stats": "Statistik",
   "createGroupChat": "Buat obrolan grup",
@@ -8823,10 +8822,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10913,6 +10908,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat dengan Dukungan",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

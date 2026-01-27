@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-22 12:01:10.402528",
+  "@@last_modified": "2026-01-27 14:02:30.204264",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -4170,7 +4170,6 @@
   "numModules": "{num} modula",
   "coursePlan": "Plan tečaja",
   "editCourseLater": "Možete kasnije urediti naslov predloška, opise i sliku tečaja.",
-  "newCourseAccess": "Prema zadanim postavkama, tečajevi su privatni i zahtijevaju odobrenje administratora za pridruživanje. Možete ove postavke urediti u bilo koje vrijeme.",
   "createCourse": "Stvori tečaj",
   "stats": "Statistike",
   "createGroupChat": "Stvori grupni razgovor",
@@ -9204,10 +9203,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11294,6 +11289,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Razgovarajte s podrškom",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Prema zadanim postavkama, tečajevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

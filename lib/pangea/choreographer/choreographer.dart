@@ -353,6 +353,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onOpenIT() {
+    inputFocus.unfocus();
     final itMatch = igcController.openMatches.firstWhere(
       (match) => match.updatedMatch.isITStart,
       orElse: () =>
@@ -378,7 +379,6 @@ class Choreographer extends ChangeNotifier {
       );
     }
 
-    debugPrint("DISMISSED: ${itController.dismissed}");
     if (itController.dismissed) {
       _timesDismissedIT.value = _timesDismissedIT.value + 1;
     }

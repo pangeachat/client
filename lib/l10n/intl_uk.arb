@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-22 12:01:28.947095",
+  "@@last_modified": "2026-01-27 14:02:45.151936",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -4416,7 +4416,6 @@
   "numModules": "{num} модулів",
   "coursePlan": "План курсу",
   "editCourseLater": "Ви можете редагувати назву шаблону, описи та зображення курсу пізніше.",
-  "newCourseAccess": "За замовчуванням курси є приватними і потребують схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
   "createCourse": "Створити курс",
   "stats": "Статистика",
   "createGroupChat": "Створити груповий чат",
@@ -8826,10 +8825,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10916,6 +10911,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат з підтримкою",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "За замовчуванням курси є загальнодоступними для пошуку і вимагають схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

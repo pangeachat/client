@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:15.782911",
+  "@@last_modified": "2026-01-27 14:02:34.316481",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -4161,7 +4161,6 @@
   "numModules": "{num} módulos",
   "coursePlan": "Plano do curso",
   "editCourseLater": "Você pode editar o título do modelo, descrições e a imagem do curso posteriormente.",
-  "newCourseAccess": "Por padrão, os cursos são privados e requerem aprovação do administrador para ingressar. Você pode editar essas configurações a qualquer momento.",
   "createCourse": "Criar curso",
   "stats": "Estatísticas",
   "createGroupChat": "Criar chat em grupo",
@@ -9207,10 +9206,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11280,6 +11275,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Converse com o Suporte",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Por padrão, os cursos são pesquisáveis publicamente e requerem aprovação do administrador para ingressar. Você pode editar essas configurações a qualquer momento.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

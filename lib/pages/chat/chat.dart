@@ -881,7 +881,6 @@ class ChatController extends State<ChatPageWithRoom>
   Future<String?> sendFakeMessage(Event? edit, Event? reply) async {
     if (sendController.text.trim().isEmpty) return null;
     final message = sendController.text;
-    inputFocus.unfocus();
     sendController.setSystemText("", EditTypeEnum.other);
 
     return room.sendFakeMessage(
@@ -904,6 +903,10 @@ class ChatController extends State<ChatPageWithRoom>
     pendingText = '';
 
     final tempEventId = await sendFakeMessage(edit, reply);
+    if (!inputFocus.hasFocus) {
+      inputFocus.requestFocus();
+    }
+
     final content = await choreographer.getMessageContent(message);
     choreographer.clear();
 
@@ -2031,14 +2034,9 @@ class ChatController extends State<ChatPageWithRoom>
     MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
-  }) {
+  }) async {
     if (event.redacted || event.status == EventStatus.sending) return;
 
-    // Close keyboard, if open
-    if (inputFocus.hasFocus && PlatformInfos.isMobile) {
-      inputFocus.unfocus();
-      return;
-    }
     // Close emoji picker, if open
     if (showEmojiPicker) {
       hideEmojiPicker();
@@ -2076,8 +2074,24 @@ class ChatController extends State<ChatPageWithRoom>
     }
     stopMediaStream.add(null);
 
-    if (buttonEventID == event.eventId) {
+    final isButton = buttonEventID == event.eventId;
+    final keyboardOpen = inputFocus.hasFocus && PlatformInfos.isMobile;
+
+    final delay = keyboardOpen
+        ? const Duration(milliseconds: 500)
+        : isButton
+            ? const Duration(milliseconds: 200)
+            : null;
+
+    if (isButton) {
       depressMessageButton.value = true;
+    }
+
+    if (keyboardOpen) {
+      inputFocus.unfocus();
+    }
+
+    if (delay != null) {
       OverlayUtil.showOverlay(
         context: context,
         child: TransparentBackdrop(
@@ -2085,28 +2099,28 @@ class ChatController extends State<ChatPageWithRoom>
           onDismiss: clearSelectedEvents,
           blurBackground: true,
           animateBackground: true,
-          backgroundAnimationDuration: const Duration(milliseconds: 200),
+          backgroundAnimationDuration: delay,
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
       );
 
-      Future.delayed(const Duration(milliseconds: 200), () {
-        if (_router.state.path != ':roomid') {
-          // The user has navigated away from the chat,
-          // so we don't want to show the overlay.
-          return;
-        }
-        OverlayUtil.showOverlay(
-          context: context,
-          child: overlayEntry,
-          position: OverlayPositionEnum.centered,
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-        );
-      });
+      await Future.delayed(delay);
+
+      if (_router.state.path != ':roomid') {
+        // The user has navigated away from the chat,
+        // so we don't want to show the overlay.
+        return;
+      }
+      OverlayUtil.showOverlay(
+        context: context,
+        child: overlayEntry,
+        position: OverlayPositionEnum.centered,
+        onDismiss: clearSelectedEvents,
+        blurBackground: true,
+        backgroundColor: Colors.black,
+        overlayKey: "message_toolbar_overlay",
+      );
     } else {
       OverlayUtil.showOverlay(
         context: context,

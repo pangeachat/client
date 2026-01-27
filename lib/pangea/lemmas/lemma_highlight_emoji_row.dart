@@ -182,52 +182,61 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   @override
   Widget build(BuildContext context) {
     return HoverBuilder(
-      builder: (context, hovered) => GestureDetector(
-        onTap: widget.enabled ? widget.onSelectEmoji : null,
-        child: Stack(
-          children: [
-            ShimmerBackground(
-              enabled: shimmer,
-              shimmerColor: (Theme.of(context).brightness == Brightness.dark)
-                  ? Colors.white
-                  : Theme.of(context).colorScheme.primary,
-              baseColor: Colors.transparent,
-              child: CompositedTransformTarget(
-                link: MatrixState.pAnyState
-                    .layerLinkAndKey(widget.transformTargetId)
-                    .link,
-                child: AnimatedContainer(
-                  key: MatrixState.pAnyState
+      builder: (context, hovered) => MouseRegion(
+        cursor: widget.enabled
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
+        child: GestureDetector(
+          onTap: widget.enabled ? widget.onSelectEmoji : null,
+          child: Stack(
+            children: [
+              ShimmerBackground(
+                enabled: shimmer,
+                shimmerColor: (Theme.of(context).brightness == Brightness.dark)
+                    ? Colors.white
+                    : Theme.of(context).colorScheme.primary,
+                baseColor: Colors.transparent,
+                child: CompositedTransformTarget(
+                  link: MatrixState.pAnyState
                       .layerLinkAndKey(widget.transformTargetId)
-                      .key,
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: widget.enabled && (hovered || widget.selected)
-                        ? Theme.of(context).colorScheme.secondary.withAlpha(30)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    border: widget.selected
-                        ? Border.all(
-                            color: Colors.transparent,
-                            width: 4,
-                          )
-                        : null,
-                  ),
-                  child: Text(
-                    widget.emoji,
-                    style: Theme.of(context).textTheme.headlineSmall,
+                      .link,
+                  child: AnimatedContainer(
+                    key: MatrixState.pAnyState
+                        .layerLinkAndKey(widget.transformTargetId)
+                        .key,
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: widget.enabled && (hovered || widget.selected)
+                          ? Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withAlpha(30)
+                          : Colors.transparent,
+                      borderRadius:
+                          BorderRadius.circular(AppConfig.borderRadius),
+                      border: widget.selected
+                          ? Border.all(
+                              color: Colors.transparent,
+                              width: 4,
+                            )
+                          : null,
+                    ),
+                    child: Text(
+                      widget.emoji,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
                   ),
                 ),
               ),
-            ),
-            if (widget.badge != null)
-              Positioned(
-                right: 6,
-                bottom: 6,
-                child: widget.badge!,
-              ),
-          ],
+              if (widget.badge != null)
+                Positioned(
+                  right: 6,
+                  bottom: 6,
+                  child: widget.badge!,
+                ),
+            ],
+          ),
         ),
       ),
     );

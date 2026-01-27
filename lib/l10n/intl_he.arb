@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:11.911490",
+  "@@last_modified": "2026-01-27 14:02:31.662677",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -3000,7 +3000,6 @@
   "numModules": "{num} מודולים",
   "coursePlan": "תכנית קורס",
   "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
-  "newCourseAccess": "ברירת מחדל, קורסים הם פרטיים ודורשים אישור מנהל להצטרפות. תוכל לערוך הגדרות אלה בכל עת.",
   "createCourse": "צור קורס",
   "stats": "סטטיסטיקות",
   "createGroupChat": "צור שיחת קבוצתית",
@@ -9881,10 +9880,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11971,6 +11966,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "צ'אט עם תמיכה",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ברירת מחדל, קורסים ניתנים לחיפוש ציבורי ודורשים אישור מנהל כדי להצטרף. אתה יכול לערוך את ההגדרות הללו בכל עת.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

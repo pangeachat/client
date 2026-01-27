@@ -13,6 +13,8 @@ import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -144,6 +146,7 @@ class Message extends StatelessWidget {
           valueListenable: controller.activityController.showInstructions,
           builder: (context, show, __) {
             return ActivitySummary(
+              inChat: true,
               activity: event.room.activityPlan!,
               room: event.room,
               assignedRoles: event.room.hasArchivedActivity
@@ -475,6 +478,18 @@ class Message extends StatelessWidget {
                                           presenceBackgroundColor: wallpaperMode
                                               ? Colors.transparent
                                               : null,
+                                          // #Pangea
+                                          miniIcon:
+                                              user.id == BotName.byEnvironment
+                                                  ? BotSettingsLanguageIcon(
+                                                      user: user,
+                                                    )
+                                                  : null,
+                                          presenceOffset:
+                                              user.id == BotName.byEnvironment
+                                                  ? const Offset(0, 0)
+                                                  : null,
+                                          // Pangea#
                                         );
                                       },
                                     ),

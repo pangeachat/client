@@ -29,7 +29,7 @@ class AnchoredOverlayWidget extends StatefulWidget {
 class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
   bool _visible = false;
 
-  static const double overlayWidth = 200.0;
+  static const double overlayWidth = 300.0;
 
   @override
   void initState() {

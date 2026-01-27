@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:27.366543",
+  "@@last_modified": "2026-01-27 14:02:43.998266",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -4393,7 +4393,6 @@
   "numModules": "{num} moduli",
   "coursePlan": "Piano del corso",
   "editCourseLater": "Puoi modificare in seguito il titolo del corso, le descrizioni e l'immagine del corso.",
-  "newCourseAccess": "Per impostazione predefinita, i corsi sono privati e richiedono l'approvazione dell'amministratore per parteciparvi. Puoi modificare queste impostazioni in qualsiasi momento.",
   "createCourse": "Crea corso",
   "stats": "Statistiche",
   "createGroupChat": "Crea chat di gruppo",
@@ -8835,10 +8834,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10925,6 +10920,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta con il supporto",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per impostazione predefinita, i corsi sono ricercabili pubblicamente e richiedono l'approvazione dell'amministratore per unirsi. Puoi modificare queste impostazioni in qualsiasi momento.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

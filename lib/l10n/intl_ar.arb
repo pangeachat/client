@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-22 12:01:48.002470",
+  "@@last_modified": "2026-01-27 14:02:59.727958",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -4300,7 +4300,6 @@
   "numModules": "{num} وحدات",
   "coursePlan": "خطة الدورة",
   "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
-  "newCourseAccess": "افتراضيًا، الدورات خاصة وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
   "createCourse": "إنشاء دورة",
   "stats": "إحصائيات",
   "createGroupChat": "إنشاء دردشة جماعية",
@@ -9049,10 +9048,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11139,6 +11134,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "الدردشة مع الدعم",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

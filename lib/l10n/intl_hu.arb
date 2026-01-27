@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-22 12:01:00.971468",
+  "@@last_modified": "2026-01-27 14:02:22.464338",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -4415,7 +4415,6 @@
   "numModules": "{num} modul",
   "coursePlan": "Tanfolyamterv",
   "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
-  "newCourseAccess": "Alapértelmezés szerint a tanfolyamok privátak, és admin jóváhagyását igénylik a csatlakozáshoz. Ezeket a beállításokat bármikor szerkesztheti.",
   "createCourse": "Tanfolyam létrehozása",
   "stats": "Statisztika",
   "createGroupChat": "Csoportos beszélgetés létrehozása",
@@ -8833,10 +8832,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10923,6 +10918,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Csevegés a Támogatással",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Alapértelmezés szerint a kurzusok nyilvánosan kereshetők, és adminisztrátori jóváhagyás szükséges a csatlakozáshoz. Ezeket a beállításokat bármikor módosíthatja.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

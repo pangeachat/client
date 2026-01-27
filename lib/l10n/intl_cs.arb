@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-22 12:01:30.360444",
+  "@@last_modified": "2026-01-27 14:02:46.567796",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -3943,7 +3943,6 @@
   "numModules": "{num} modulů",
   "coursePlan": "Plán kurzu",
   "editCourseLater": "Později můžete upravit název šablony, popisy a obrázek kurzu.",
-  "newCourseAccess": "Ve výchozím nastavení jsou kurzy soukromé a vyžadují schválení správce pro připojení. Tyto nastavení můžete upravit kdykoli.",
   "createCourse": "Vytvořit kurz",
   "stats": "Statistiky",
   "createGroupChat": "Vytvořit skupinový chat",
@@ -9439,10 +9438,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11529,6 +11524,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat s podporou",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Ve výchozím nastavení jsou kurzy veřejně vyhledatelné a vyžadují schválení administrátora pro připojení. Tyto nastavení můžete kdykoli upravit.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

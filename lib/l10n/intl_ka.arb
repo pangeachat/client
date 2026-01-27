@@ -2499,7 +2499,6 @@
   "numModules": "{num} მოდული",
   "coursePlan": "კურსის გეგმა",
   "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
-  "newCourseAccess": "ჩაშენებული წესით, კურსები პირადია და საჭიროებს ადმინისტრატორის დამტკიცებას შესასვლელად. შეგიძლიათ ნებისმიერ დროს შეცვალოთ ეს პარამეტრები.",
   "createCourse": "შექმენით კურსი",
   "stats": "სტატისტიკა",
   "createGroupChat": "შექმენით ჯგუფური ჩათი",
@@ -2594,7 +2593,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-22 12:02:18.860564",
+  "@@last_modified": "2026-01-27 14:03:23.702338",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9862,10 +9861,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11952,6 +11947,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "გამოიყენეთ აქტივობის სურათი ჩეთის ფონად",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "ჩატი მხარდაჭერასთან",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ნაგულისხმევად, კურსები საჯაროდ საძიებელია და საჭიროებს ადმინისტრატორის დამტკიცებას გაწვდვისთვის. შეგიძლიათ ამ პარამეტრების რედაქტირება ნებისმიერ დროს.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

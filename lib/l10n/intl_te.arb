@@ -1825,7 +1825,6 @@
   "numModules": "{num} మాడ్యూల్స్",
   "coursePlan": "కోర్సు ప్రణాళిక",
   "editCourseLater": "మీరు టెంప్లేట్ శీర్షిక, వివరణలు, మరియు కోర్సు చిత్రాన్ని తర్వాత సవరించవచ్చు.",
-  "newCourseAccess": "డిఫాల్ట్‌గా, కోర్సులు ప్రైవేట్‌గా ఉంటాయి మరియు చేరడానికి అడ్మిన్ ఆమోదం అవసరం. మీరు ఈ సెట్టింగులను ఎప్పుడైనా సవరించవచ్చు.",
   "createCourse": "కోర్సు సృష్టించండి",
   "stats": "గణాంకాలు",
   "createGroupChat": "గుంపు చాట్ సృష్టించండి",
@@ -1920,7 +1919,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-22 12:01:51.350363",
+  "@@last_modified": "2026-01-27 14:03:02.156703",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -9921,10 +9920,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12011,6 +12006,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "సహాయంతో చాట్ చేయండి",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "డిఫాల్ట్‌గా, కోర్సులు ప్రజా శోధనకు అందుబాటులో ఉంటాయి మరియు చేరడానికి అడ్మిన్ ఆమోదం అవసరం. మీరు ఈ సెట్టింగులను ఎప్పుడైనా సవరించవచ్చు.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

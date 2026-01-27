@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:08.064498",
+  "@@last_modified": "2026-01-27 14:03:15.575050",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -4075,7 +4075,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursplan",
   "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
-  "newCourseAccess": "Som standard är kurser privata och kräver administratörsgodkännande för att gå med. Du kan ändra dessa inställningar när som helst.",
   "createCourse": "Skapa kurs",
   "stats": "Statistik",
   "createGroupChat": "Skapa gruppchatt",
@@ -9310,10 +9309,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11400,6 +11395,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta med support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

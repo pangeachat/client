@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-22 12:00:52.883998",
+  "@@last_modified": "2026-01-27 14:02:17.041137",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -4415,7 +4415,6 @@
   "numModules": "{num} módulos",
   "coursePlan": "Plan de curso",
   "editCourseLater": "Podes editar o título da plantilla, as descricións e a imaxe do curso máis tarde.",
-  "newCourseAccess": "Por defecto, os cursos son privados e requiren a aprobación do administrador para unirse. Podes editar estas configuracións en calquera momento.",
   "createCourse": "Crear curso",
   "stats": "Estadísticas",
   "createGroupChat": "Crear chat de grupo",
@@ -8829,10 +8828,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10919,6 +10914,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatear co Soporte",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Por defecto, os cursos son buscables públicamente e requiren aprobación do administrador para unirse. Podes editar estas configuracións en calquera momento.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

@@ -204,6 +204,15 @@ class FindCoursePageState extends State<FindCoursePage> {
     }
   }
 
+  void startNewCourse() {
+    String route = "/rooms/course/own";
+    if (targetLanguageFilter != null) {
+      route +=
+          "?lang=${Uri.encodeComponent(targetLanguageFilter!.langCodeShort)}";
+    }
+    context.go(route);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FindCoursePageView(controller: this);
@@ -283,6 +292,7 @@ class FindCoursePageView extends StatelessWidget {
                       ),
                       if (constrained.maxWidth >= 500) ...[
                         TextButton(
+                          onPressed: controller.startNewCourse,
                           child: Row(
                             spacing: 8.0,
                             children: [
@@ -290,7 +300,6 @@ class FindCoursePageView extends StatelessWidget {
                               Text(L10n.of(context).newCourse),
                             ],
                           ),
-                          onPressed: () => context.go("/rooms/course/own"),
                         ),
                         TextButton(
                           child: Row(
@@ -307,7 +316,7 @@ class FindCoursePageView extends StatelessWidget {
                           icon: const Icon(Icons.more_vert),
                           itemBuilder: (context) => [
                             PopupMenuItem(
-                              onTap: () => context.go("/rooms/course/own"),
+                              onTap: controller.startNewCourse,
                               child: Row(
                                 spacing: 8.0,
                                 children: [
@@ -403,7 +412,7 @@ class _PublicCourseTile extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           onTap: () => context.go(
-            '/rooms/course/public/$courseId',
+            '/rooms/course/$courseId',
             extra: space,
           ),
           borderRadius: BorderRadius.circular(12.0),
@@ -482,7 +491,7 @@ class _PublicCourseTile extends StatelessWidget {
                 HoverBuilder(
                   builder: (context, hovered) => ElevatedButton(
                     onPressed: () => context.go(
-                      '/rooms/course/public/$courseId',
+                      '/rooms/course/$courseId',
                       extra: space,
                     ),
                     style: ElevatedButton.styleFrom(

@@ -4277,7 +4277,6 @@
   "numModules": "{num} modulo(s)",
   "coursePlan": "Plan de cors",
   "editCourseLater": "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.",
-  "newCourseAccess": "Per defaut, los cors es privat e require approbation del admin pro aderir. Tu pote modificar iste parametros a qualunque momento.",
   "createCourse": "Createar cors",
   "stats": "Statisticas",
   "createGroupChat": "Createar chat de gruppo",
@@ -4372,7 +4371,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-22 12:01:08.955250",
+  "@@last_modified": "2026-01-27 14:02:28.999815",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9806,10 +9805,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11896,6 +11891,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat le Tacaíocht",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig àm sam bith.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

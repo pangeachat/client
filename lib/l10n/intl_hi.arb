@@ -4388,7 +4388,6 @@
   "numModules": "{num} मॉड्यूल",
   "coursePlan": "कोर्स योजना",
   "editCourseLater": "आप बाद में टेम्पलेट का शीर्षक, विवरण और कोर्स छवि संपादित कर सकते हैं।",
-  "newCourseAccess": "डिफ़ॉल्ट रूप से, कोर्स निजी होते हैं और शामिल होने के लिए व्यवस्थापक अनुमोदन की आवश्यकता होती है। आप इन सेटिंग्स को कभी भी संपादित कर सकते हैं।",
   "createCourse": "कोर्स बनाएं",
   "stats": "आंकड़े",
   "createGroupChat": "समूह चैट बनाएं",
@@ -4483,7 +4482,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-22 12:02:13.864252",
+  "@@last_modified": "2026-01-27 14:03:20.292018",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9917,10 +9916,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12007,6 +12002,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "सहायता से चैट करें",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "डिफ़ॉल्ट रूप से, पाठ्यक्रम सार्वजनिक रूप से खोजे जा सकते हैं और शामिल होने के लिए प्रशासक की स्वीकृति की आवश्यकता होती है। आप किसी भी समय इन सेटिंग्स को संपादित कर सकते हैं।",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

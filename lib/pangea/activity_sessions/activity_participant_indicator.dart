@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -43,6 +45,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
@@ -67,6 +70,14 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           name: userId!.localpart,
                           size: 60.0,
                           userId: userId,
+                          miniIcon:
+                              room != null && userId == BotName.byEnvironment
+                                  ? BotSettingsLanguageIcon(user: user!)
+                                  : null,
+                          presenceOffset:
+                              room != null && userId == BotName.byEnvironment
+                                  ? const Offset(0, 0)
+                                  : null,
                         )
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(30),
@@ -89,20 +100,21 @@ class ActivityParticipantIndicator extends StatelessWidget {
                 opacity: opacity,
                 child: ShimmerBackground(
                   enabled: shimmer,
+                  borderRadius: borderRadius,
                   child: Container(
+                    alignment: Alignment.center,
                     padding: padding ??
                         const EdgeInsets.symmetric(
                           vertical: 4.0,
                           horizontal: 8.0,
                         ),
                     decoration: BoxDecoration(
-                      borderRadius: borderRadius ?? BorderRadius.circular(8.0),
+                      borderRadius: borderRadius,
                       color: (hovered || selected) && selectable
                           ? theme.colorScheme.surfaceContainerHighest
                           : theme.colorScheme.surface.withAlpha(130),
                     ),
                     height: 125.0,
-                    constraints: const BoxConstraints(maxWidth: 100.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

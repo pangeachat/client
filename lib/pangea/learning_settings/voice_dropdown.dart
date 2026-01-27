@@ -10,19 +10,25 @@ class VoiceDropdown extends StatelessWidget {
   final String? value;
   final LanguageModel? language;
   final Function(String?) onChanged;
+  final bool enabled;
 
   const VoiceDropdown({
     super.key,
     this.value,
     this.language,
     required this.onChanged,
+    this.enabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    final voices = (language?.voices ?? <String>[]);
+    final value =
+        this.value != null && voices.contains(this.value) ? this.value : null;
+
     return DropdownButtonFormField2<String>(
       customButton:
-          value != null ? CustomDropdownTextButton(text: value!) : null,
+          value != null ? CustomDropdownTextButton(text: value) : null,
       menuItemStyleData: const MenuItemStyleData(
         padding: EdgeInsets.symmetric(
           vertical: 8.0,
@@ -40,14 +46,14 @@ class VoiceDropdown extends StatelessWidget {
           borderRadius: BorderRadius.circular(14.0),
         ),
       ),
-      items: (language?.voices ?? <String>[]).map((voice) {
+      items: voices.map((voice) {
         return DropdownMenuItem(
           value: voice,
           child: Text(voice),
         );
       }).toList(),
-      onChanged: onChanged,
-      value: value,
+      onChanged: enabled ? onChanged : null,
+      value: voices.contains(value) ? value : null,
     );
   }
 }

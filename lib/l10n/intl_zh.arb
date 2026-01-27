@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-22 12:02:00.962577",
+  "@@last_modified": "2026-01-27 14:03:10.872296",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -4417,7 +4417,6 @@
   "numModules": "{num} 个模块",
   "coursePlan": "课程计划",
   "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
-  "newCourseAccess": "默认情况下，课程是私有的，需要管理员批准才能加入。您可以随时编辑这些设置。",
   "createCourse": "创建课程",
   "stats": "统计",
   "createGroupChat": "创建群聊",
@@ -8823,10 +8822,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10913,6 +10908,21 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "与支持聊天",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "默认情况下，课程是公开可搜索的，并且需要管理员批准才能加入。您可以随时编辑这些设置。",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }
