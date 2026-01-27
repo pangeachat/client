@@ -378,7 +378,9 @@ class AnalyticsDataService {
     AnalyticsUpdate update,
   ) async {
     final events = <AnalyticsUpdateEvent>[];
-    final updateIds = update.addedConstructs.map((c) => c.identifier).toList();
+    final addedConstructs =
+        update.addedConstructs.where((c) => c.category != 'other').toList();
+    final updateIds = addedConstructs.map((c) => c.identifier).toList();
 
     final prevData = await derivedData;
     final prevConstructs = await getConstructUses(updateIds);
@@ -390,9 +392,9 @@ class AnalyticsDataService {
     final newUnusedConstructs =
         updateIds.where((id) => !hasUsedConstruct(id)).toSet();
 
-    _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
+    _mergeTable.addConstructsByUses(addedConstructs, blocked);
     await _analyticsClientGetter.database.updateLocalAnalytics(
-      update.addedConstructs,
+      addedConstructs,
     );
 
     final newConstructs = await getConstructUses(updateIds);
