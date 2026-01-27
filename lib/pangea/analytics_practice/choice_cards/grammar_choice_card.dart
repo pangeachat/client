@@ -68,7 +68,6 @@ class GrammarChoiceCard extends StatelessWidget {
             child: Text(
               copy,
               overflow: TextOverflow.ellipsis,
-              maxLines: 2,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: baseTextSize,
