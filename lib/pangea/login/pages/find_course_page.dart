@@ -403,7 +403,7 @@ class _PublicCourseTile extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           onTap: () => context.go(
-            '/rooms/course/public/$courseId',
+            '/rooms/course/$courseId',
             extra: space,
           ),
           borderRadius: BorderRadius.circular(12.0),
@@ -482,7 +482,7 @@ class _PublicCourseTile extends StatelessWidget {
                 HoverBuilder(
                   builder: (context, hovered) => ElevatedButton(
                     onPressed: () => context.go(
-                      '/rooms/course/public/$courseId',
+                      '/rooms/course/$courseId',
                       extra: space,
                     ),
                     style: ElevatedButton.styleFrom(
