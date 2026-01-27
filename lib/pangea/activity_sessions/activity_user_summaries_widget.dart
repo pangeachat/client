@@ -202,14 +202,11 @@ class ButtonControlledCarouselView extends StatelessWidget {
                       ],
                     ),
                     Flexible(
-                      child: SingleChildScrollView(
-                        child: Text(
-                          p.displayFeedback(
-                            user?.calcDisplayname() ??
-                                p.participantId.localpart ??
-                                p.participantId,
-                          ),
-                          style: const TextStyle(fontSize: 14.0),
+                      child: _SummaryText(
+                        text: p.displayFeedback(
+                          user?.calcDisplayname() ??
+                              p.participantId.localpart ??
+                              p.participantId,
                         ),
                       ),
                     ),
@@ -337,6 +334,41 @@ class SuperlativeTile extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _SummaryText extends StatefulWidget {
+  final String text;
+  const _SummaryText({
+    required this.text,
+  });
+
+  @override
+  State<_SummaryText> createState() => _SummaryTextState();
+}
+
+class _SummaryTextState extends State<_SummaryText> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scrollbar(
+      controller: _scrollController,
+      thumbVisibility: true,
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: Text(
+          widget.text,
+          style: const TextStyle(fontSize: 14.0),
+        ),
+      ),
     );
   }
 }
