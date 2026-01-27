@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback de informazions de par\xf2la";
     },
-    get$noPublicCoursesFound() {
-      return "Nissun cors public trov\xe0. Voles crear un?";
-    },
     get$noCourseTemplatesFound() {
       return "No podain trovar nissun cors par la to target lingue. Tu peux discutar cun Pangea Bot intant, e tornar a verificar pi\xf2 tardi per plui cors.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partagiar corsa";
-    },
-    get$joinPublicCourse() {
-      return "Kumencar corsa publice";
     },
     get$vocabLevelsDesc() {
       return "Chest \xe8 il loc dove i par\xf4ls di vocabulari a saran miss in plance une volte che tu o i \xe0s nivell\xe2ts!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oazcAvE+G4Z52zz3qSaeSv/V6Sc="] = d.current;
+  d["gVSJHGaqy5Q2qNie5+kd0ZPQb3s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_703.part.js.map

@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback zu Wortinformationen";
     },
-    get$noPublicCoursesFound() {
-      return "Keine \xf6ffentlichen Kurse gefunden. M\xf6chten Sie einen erstellen?";
-    },
     get$noCourseTemplatesFound() {
       return "Wir konnten keine Kurse f\xfcr Ihre Zielsprache finden. Sie k\xf6nnen in der Zwischenzeit mit Pangea Bot chatten und sp\xe4ter nach weiteren Kursen suchen.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Kurs teilen";
-    },
-    get$joinPublicCourse() {
-      return "\xd6ffentlichen Kurs beitreten";
     },
     get$vocabLevelsDesc() {
       return "Hier kommen die Vokabeln hin, sobald du sie aufgestuft hast!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RvkNMJnoZcGmGpJBCEX+xIjMN+s="] = d.current;
+  d["vB8+aye4/phpCpOGCa2yhd9U7tI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_388.part.js.map

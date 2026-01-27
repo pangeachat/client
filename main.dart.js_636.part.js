@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Povratne informacije o informacijama o rije\u010di";
     },
-    get$noPublicCoursesFound() {
-      return "Nema prona\u0111enih javnih te\u010dajeva. \u017delite li ga stvoriti?";
-    },
     get$noCourseTemplatesFound() {
       return "Nismo uspjeli prona\u0107i te\u010dajeve za va\u0161 ciljni jezik. U me\u0111uvremenu mo\u017eete razgovarati s Pangea Botom, a kasnije provjeriti ima li novih te\u010dajeva.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Podijeli te\u010daj";
-    },
-    get$joinPublicCourse() {
-      return "Pridru\u017ei se javnom te\u010daju";
     },
     get$vocabLevelsDesc() {
       return "Ovdje \u0107e i\u0107i rije\u010di vokabulara nakon \u0161to ih podignete na vi\u0161u razinu!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m8jMSH5tzednB8mXKsa+bYDoxes="] = d.current;
+  d["vWQSVZ1iKEj0A3Bdx5tQ2t8MK0M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

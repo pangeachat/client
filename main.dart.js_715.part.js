@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\ub2e8\uc5b4 \uc815\ubcf4 \ud53c\ub4dc\ubc31";
     },
-    get$noPublicCoursesFound() {
-      return "\uacf5\uac1c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0c8\ub85c \ub9cc\ub4dc\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
-    },
     get$noCourseTemplatesFound() {
       return "\ubaa9\ud45c \uc5b8\uc5b4\uc5d0 \ub300\ud55c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uadf8\ub3d9\uc548 Pangea Bot\uacfc \ucc44\ud305\ud558\uac70\ub098 \ub098\uc911\uc5d0 \ub354 \ub9ce\uc740 \uac15\uc88c\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "\uac15\uc88c \uacf5\uc720";
-    },
-    get$joinPublicCourse() {
-      return "\uacf5\uac1c \uac15\uc88c \ucc38\uc5ec";
     },
     get$vocabLevelsDesc() {
       return "\ub2e8\uc5b4\ub97c \ub808\ubca8\uc5c5\ud558\uba74 \uc5ec\uae30\uc5d0 \ub2e8\uc5b4\uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OTIcp8foUiFyFH9KihQm5gRYpNM="] = d.current;
+  d["ZIJzUdEsGYrFSK5RBIg+XD/CpoA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

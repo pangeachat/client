@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback om ordinformation";
     },
-    get$noPublicCoursesFound() {
-      return "Inga offentliga kurser hittades. Vill du skapa en?";
-    },
     get$noCourseTemplatesFound() {
       return "Vi kunde inte hitta n\xe5gra kurser f\xf6r ditt m\xe5lspr\xe5k. Du kan chatta med Pangea Bot under tiden och \xe5terkomma senare f\xf6r fler kurser.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Dela kurs";
-    },
-    get$joinPublicCourse() {
-      return "G\xe5 med i offentlig kurs";
     },
     get$vocabLevelsDesc() {
       return "Det h\xe4r \xe4r platsen d\xe4r vokabul\xe4rord kommer att hamna n\xe4r du har niv\xe5er upp dem!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+Zd6QpZQQrTXTXCL4MNgrrJE+6g="] = d.current;
+  d["OPt5Qq0ysidSqnuZTn3Nj2EerJc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

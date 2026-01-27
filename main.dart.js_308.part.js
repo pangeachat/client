@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback om ordinformation";
     },
-    get$noPublicCoursesFound() {
-      return "Ingen offentlige kurser fundet. Vil du oprette et?";
-    },
     get$noCourseTemplatesFound() {
       return "Vi kunne ikke finde nogen kurser for dit m\xe5lsprog. Du kan chatte med Pangea Bot i mellemtiden og vende tilbage senere for flere kurser.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Del kursus";
-    },
-    get$joinPublicCourse() {
-      return "Deltag i offentligt kursus";
     },
     get$vocabLevelsDesc() {
       return "Her vil ordforr\xe5dsord blive placeret, n\xe5r du har opgraderet dem!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vTx+XHt7PyfORMzPQh38BmX7q+A="] = d.current;
+  d["KdzHLZb3zCRurJFmxlLJXtVt1Sk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_308.part.js.map

@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Umpan Balik Informasi Kata";
     },
-    get$noPublicCoursesFound() {
-      return "Tidak ditemukan kursus publik. Apakah Anda ingin membuat satu?";
-    },
     get$noCourseTemplatesFound() {
       return "Kami tidak dapat menemukan kursus untuk bahasa target Anda. Sementara itu, Anda dapat mengobrol dengan Pangea Bot, dan kembali nanti untuk kursus lainnya.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Bagikan kursus";
-    },
-    get$joinPublicCourse() {
-      return "Gabung kursus publik";
     },
     get$vocabLevelsDesc() {
       return "Di sinilah kata-kata kosakata akan ditempatkan setelah Anda meningkatkannya!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["F2ImIqNAFapdZLGUhaVwiY3guVc="] = d.current;
+  d["6EZZlj9qL4y4OYA1uwzyBE5xJwU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

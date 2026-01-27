@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u8a5e\u8a9e\u8cc7\u8a0a\u53cd\u994b";
     },
-    get$noPublicCoursesFound() {
-      return "\u672a\u627e\u5230\u516c\u958b\u8ab2\u7a0b\u3002\u4f60\u60f3\u5275\u5efa\u4e00\u500b\u55ce\uff1f";
-    },
     get$noCourseTemplatesFound() {
       return "\u6211\u54cb\u672a\u6435\u5230\u4f60\u76ee\u6a19\u8a9e\u8a00\u5605\u8ab2\u7a0b\u3002\u4f60\u53ef\u4ee5\u66ab\u6642\u540cPangea Bot\u50be\u5048\uff0c\u4e4b\u5f8c\u518d\u569f\u7747\u591a\u5572\u8ab2\u7a0b\u3002";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "\u5206\u4eab\u8ab2\u7a0b";
-    },
-    get$joinPublicCourse() {
-      return "\u52a0\u5165\u516c\u958b\u8ab2\u7a0b";
     },
     get$vocabLevelsDesc() {
       return "\u5462\u5ea6\u6703\u653e\u4f60\u5347\u7d1a\u5f8c\u5605\u8a5e\u5f59\uff01";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oXk5gVMvRzypsDW8R41mPmlOfRI="] = d.current;
+  d["We6lVOwPBgVXqWtAgmL45LLtOig="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_767.part.js.map

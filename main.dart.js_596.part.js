@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sa Impormasyon ng Salita";
     },
-    get$noPublicCoursesFound() {
-      return "Walang nahanap na pampublikong kurso. Nais mo bang lumikha ng isa?";
-    },
     get$noCourseTemplatesFound() {
       return "Hindi namin mahanap ang anumang kurso para sa iyong target na wika. Maaari kang makipag-chat sa Pangea Bot habang naghihintay, at bumalik mamaya para sa mas maraming kurso.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Ibahagi ang kurso";
-    },
-    get$joinPublicCourse() {
-      return "Sumali sa pampublikong kurso";
     },
     get$vocabLevelsDesc() {
       return "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8OGpFATrg7yf1u31BoHwQh3yUVo="] = d.current;
+  d["Z+Fc09Ru/agzc+YoZ3T+T/Zd6tc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_596.part.js.map

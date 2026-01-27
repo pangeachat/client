@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Aiseolas Eolas Focal";
     },
-    get$noPublicCoursesFound() {
-      return "N\xedor aims\xedodh c\xfarsa\xed poibl\xed. Ar mhaith leat ceann a chruth\xfa?";
-    },
     get$noCourseTemplatesFound() {
       return "N\xedor \xe9irigh linn aon ch\xfarsa\xed a aimsi\xfa do do theanga sprioc. Is f\xe9idir leat comhr\xe1 a dh\xe9anamh leis an Pangea Bot sa t-am ar fad, agus seice\xe1il ar ais n\xedos d\xe9ana\xed le haghaidh tuilleadh c\xfarsa\xed.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Comhroinn c\xfarsa";
-    },
-    get$joinPublicCourse() {
-      return "Cl\xe1raigh i gc\xfarsa poibl\xed";
     },
     get$vocabLevelsDesc() {
       return "Seo \xe1it a dt\xe9ann focail fhocail a bhfuil leibh\xe9al acu nuair a dh\xe9antar iad a leibh\xe9al\xfa!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["00CHI8MhJ32JMosg3ZsNR8w7K8U="] = d.current;
+  d["k3UY/hb/tnwyvIiIFUF8hZ9aMvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

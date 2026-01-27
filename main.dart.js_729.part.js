@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Tilbakemelding om ordinformasjon";
     },
-    get$noPublicCoursesFound() {
-      return "Ingen offentlige kurs funnet. Vil du opprette et?";
-    },
     get$noCourseTemplatesFound() {
       return "Vi kunne ikke finne noen kurs for ditt m\xe5lspr\xe5k. Du kan chatte med Pangea Bot i mellomtiden, og komme tilbake senere for flere kurs.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Del kurs";
-    },
-    get$joinPublicCourse() {
-      return "Bli med p\xe5 offentlig kurs";
     },
     get$vocabLevelsDesc() {
       return "Dette er hvor vokabularord vil komme n\xe5r du har niv\xe5ert dem opp!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dH2KzxD9lVPQj9fe/zAbF46aMvw="] = d.current;
+  d["rqG3ls7B/8APDA9tKQFaUOJfqTg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Sp\xe4tn\xe1 v\xe4zba k inform\xe1ci\xe1m o slove";
     },
-    get$noPublicCoursesFound() {
-      return "Nena\u0161li sa \u017eiadne verejn\xe9 kurzy. Chceli by ste vytvori\u0165 jeden?";
-    },
     get$noCourseTemplatesFound() {
       return "Nena\u0161li sme \u017eiadne kurzy pre v\xe1\u0161 cie\u013eov\xfd jazyk. Medzit\xfdm m\xf4\u017eete chatova\u0165 s Pangea Botom a nesk\xf4r sa vr\xe1ti\u0165 pre viac kurzov.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Zdie\u013ea\u0165 kurz";
-    },
-    get$joinPublicCourse() {
-      return "Pripoji\u0165 sa k verejn\xe9mu kurzu";
     },
     get$vocabLevelsDesc() {
       return "Sem p\xf4jdu slov\xed\u010dka, ke\u010f ich vylep\u0161\xedte na vy\u0161\u0161iu \xfarove\u0148!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/AePeNU4v4ZSgOdKqxgc3srumdw="] = d.current;
+  d["6vuxSR3usUSv2nrs1BYp32qxM68="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

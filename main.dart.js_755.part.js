@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Povratne informacije o informacijah o besedi";
     },
-    get$noPublicCoursesFound() {
-      return "Ni najdenih javnih te\u010dajev. Bi \u017eeleli ustvariti enega?";
-    },
     get$noCourseTemplatesFound() {
       return "Nismo mogli najti te\u010dajev za va\u0161 ciljni jezik. Medtem lahko klepetate z Pangea Botom in kasneje preverite ve\u010d te\u010dajev.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Deli te\u010daj";
-    },
-    get$joinPublicCourse() {
-      return "Pridru\u017ei se javnemu te\u010daju";
     },
     get$vocabLevelsDesc() {
       return "Tukaj bodo \u0161le besede za besednjak, ko jih boste nadgradili!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A3KiuZNqMMcqxyi6OD9txov1z40="] = d.current;
+  d["DOlTA7JriSiavizgtI4NcIkYh0U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback de Information de Parola";
     },
-    get$noPublicCoursesFound() {
-      return "Nulle cursos public trovate. Tu vole crear un?";
-    },
     get$noCourseTemplatesFound() {
       return "Nos non poteva trovar nulle cursos pro tu lingua de destino. Tu pote chatta con Pangea Bot interim, e revisita postea pro plus cursos.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partagear curso";
-    },
-    get$joinPublicCourse() {
-      return "Joiner curso publice";
     },
     get$vocabLevelsDesc() {
       return "Isto es le loco ubi le vocabularies va in post una vice que tu ha levelate los!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VJR+ix/boOsycpy6I2VL9tiBMRQ="] = d.current;
+  d["gpAJIP4xucxrulnKE1eWYcQ7SyQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_675.part.js.map

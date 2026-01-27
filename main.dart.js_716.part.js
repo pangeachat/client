@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u017dod\u017eio informacijos atsiliepimai";
     },
-    get$noPublicCoursesFound() {
-      return "Nerasta vie\u0161\u0173j\u0173 kurs\u0173. Ar nor\u0117tum\u0117te sukurti vien\u0105?";
-    },
     get$noCourseTemplatesFound() {
       return "Nepavyko rasti joki\u0173 kurs\u0173 j\u016bs\u0173 tikslinei kalbai. Tuo tarpu galite bendrauti su Pangea Bot ir v\u0117liau gr\u012f\u017eti pasitikrinti daugiau kurs\u0173.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Pasidalinti kursu";
-    },
-    get$joinPublicCourse() {
-      return "Prisijungti prie vie\u0161o kurso";
     },
     get$vocabLevelsDesc() {
       return "\u010cia pateks \u017eod\u017eiai, kai juos pakelsite \u012f auk\u0161tesn\u012f lyg\u012f!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LRRgttO8CZtYmbKi+iPi7nBD5Rs="] = d.current;
+  d["rAG7xNzOR+/+3H7X4LY8id87kPw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

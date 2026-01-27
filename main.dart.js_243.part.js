@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Zp\u011btn\xe1 vazba k informac\xedm o slov\u011b";
     },
-    get$noPublicCoursesFound() {
-      return "Nebyly nalezeny \u017e\xe1dn\xe9 ve\u0159ejn\xe9 kurzy. Chcete vytvo\u0159it nov\xfd?";
-    },
     get$noCourseTemplatesFound() {
       return "Nebyly nalezeny \u017e\xe1dn\xe9 kurzy pro v\xe1\u0161 c\xedlov\xfd jazyk. Mezit\xedm si m\u016f\u017eete pov\xeddat s Pangea Botem a pozd\u011bji se vr\xe1tit pro v\xedce kurz\u016f.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Sd\xedlet kurz";
-    },
-    get$joinPublicCourse() {
-      return "P\u0159ipojit se k ve\u0159ejn\xe9mu kurzu";
     },
     get$vocabLevelsDesc() {
       return "Zde se objev\xed slov\xed\u010dka, jakmile je vylep\u0161\xedte na vy\u0161\u0161\xed \xfarove\u0148!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mPuTUG6Lf00JwxG5eCqXTQ1aw30="] = d.current;
+  d["gzOaHwPG7cPcojurCttQNyv6lyU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

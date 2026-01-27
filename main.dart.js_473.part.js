@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Raporto pri Vortinformo";
     },
-    get$noPublicCoursesFound() {
-      return "Neniuj publikaj kursoj trovitaj. \u0108u vi \u015datus krei unu?";
-    },
     get$noCourseTemplatesFound() {
       return "Ni ne povis trovi kursojn por via celolingvo. Dumtempe vi povas babili kun Pangea Bot, kaj reveni poste por pli da kursoj.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Dividi kurson";
-    },
-    get$joinPublicCourse() {
-      return "Ali\u011di al publika kurso";
     },
     get$vocabLevelsDesc() {
       return "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+3d0QKPimZlXfiI5fxNcrwccsxY="] = d.current;
+  d["BQ8LuDLkKNFWx/p7EFpjCp8gFFE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_473.part.js.map

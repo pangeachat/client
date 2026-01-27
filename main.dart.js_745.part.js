@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback despre Informa\u021bia Cuv\xe2ntului";
     },
-    get$noPublicCoursesFound() {
-      return "Nu au fost g\u0103site cursuri publice. Vrei s\u0103 creezi unul?";
-    },
     get$noCourseTemplatesFound() {
       return "Nu am putut g\u0103si cursuri pentru limba ta \u021bint\u0103. \xcentre timp, po\u021bi conversa cu Pangea Bot \u0219i verifica mai t\xe2rziu pentru mai multe cursuri.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partajeaz\u0103 cursul";
-    },
-    get$joinPublicCourse() {
-      return "Al\u0103tur\u0103-te cursului public";
     },
     get$vocabLevelsDesc() {
       return "Aici vor fi plasate cuvintele de vocabular odat\u0103 ce le-ai nivelat!";
@@ -5360,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["45lOwb5wx2K5EbonFdCZXWM8mjQ="] = d.current;
+  d["5gnw9l+lLk+vJHLtquN6XO39i38="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

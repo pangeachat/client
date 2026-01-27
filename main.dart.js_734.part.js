@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback over Woordinformatie";
     },
-    get$noPublicCoursesFound() {
-      return "Geen openbare cursussen gevonden. Wil je er een maken?";
-    },
     get$noCourseTemplatesFound() {
       return "We konden geen cursussen vinden voor je doeltaal. Je kunt in de tussentijd met Pangea Bot chatten en later terugkomen voor meer cursussen.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Deel cursus";
-    },
-    get$joinPublicCourse() {
-      return "Deelname openbare cursus";
     },
     get$vocabLevelsDesc() {
       return "Hier komen de vocabulaire woorden zodra je ze hebt opgewaardeerd!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GGs0TFHrYLKG3zn+5HASrwgFpNA="] = d.current;
+  d["k3XZTDvwYR2R5L29CujceNhX71o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

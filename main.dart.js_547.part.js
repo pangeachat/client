@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "S\xf5nateabe tagasiside";
     },
-    get$noPublicCoursesFound() {
-      return "Avalikke kursusi ei leitud. Kas soovite luua \xfche?";
-    },
     get$noCourseTemplatesFound() {
       return "Me ei leidnud teie sihtkeele jaoks \xfchtegi kursust. Samal ajal saate vestelda Pangea botiga ja hiljem tagasi tulla rohkemate kursuste jaoks.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Jaga kursust";
-    },
-    get$joinPublicCourse() {
-      return "Liitu avaliku kursusega";
     },
     get$vocabLevelsDesc() {
       return "Siia l\xe4hevad s\xf5nad, kui oled need tasemele t\xf5stnud!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fWOvPPF/sLjVpe1LuIQ9HNBfeS0="] = d.current;
+  d["IcJOCHO+/JKJASczPj2MZMRkZmI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_547.part.js.map

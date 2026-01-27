@@ -4384,9 +4384,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Word Information Feedback";
     },
-    get$noPublicCoursesFound() {
-      return "No public courses found. Would you like to create one?";
-    },
     get$noCourseTemplatesFound() {
       return "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.";
     },
@@ -4407,9 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Share course";
-    },
-    get$joinPublicCourse() {
-      return "Join public course";
     },
     get$vocabLevelsDesc() {
       return "This is where vocab words will go once you\u2019ve leveled them up!";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SOCcrtX6E/wNgdcVk+ncW6ce30Y="] = d.current;
+  d["sC4QzXrQ+K30jtOE535fe/oYyD0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_417.part.js.map

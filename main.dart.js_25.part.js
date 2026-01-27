@@ -4079,7 +4079,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumch;
+      return string$.Nenhumc;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -4396,9 +4396,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
     },
-    get$noPublicCoursesFound() {
-      return string$.Nenhumcu;
-    },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para seu idioma de destino. Voc\xea pode conversar com o Pangea Bot enquanto isso, e voltar mais tarde para mais cursos.";
     },
@@ -4419,9 +4416,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Compartilhar curso";
-    },
-    get$joinPublicCourse() {
-      return "Entrar no curso p\xfablico";
     },
     get$vocabLevelsDesc() {
       return string$.xc9_aqui;
@@ -9412,7 +9406,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumch;
+      return string$.Nenhumc;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -9729,9 +9723,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
     },
-    get$noPublicCoursesFound() {
-      return string$.Nenhumcu;
-    },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para o seu idioma-alvo. Voc\xea pode conversar com o Pangea Bot enquanto isso e verificar novamente mais tarde por mais cursos.";
     },
@@ -9752,9 +9743,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Compartilhar curso";
-    },
-    get$joinPublicCourse() {
-      return "Entrar em curso p\xfablico";
     },
     get$vocabLevelsDesc() {
       return string$.xc9_aqui;
@@ -14742,7 +14730,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumch;
+      return string$.Nenhumc;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -15059,9 +15047,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
     },
-    get$noPublicCoursesFound() {
-      return "N\xe3o foram encontrados cursos p\xfablicos. Gostaria de criar um?";
-    },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para o seu idioma-alvo. Pode conversar com o Pangea Bot entretanto, e verificar novamente mais tarde por mais cursos.";
     },
@@ -15082,9 +15067,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partilhar curso";
-    },
-    get$joinPublicCourse() {
-      return "Entrar no curso p\xfablico";
     },
     get$vocabLevelsDesc() {
       return "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que as tiveres evolu\xeddo!";
@@ -16124,8 +16106,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Muitass: "Muitas solicita\xe7\xf5es. Por favor, tente novamente mais tarde!",
     Muitast: "Muitas tentativas feitas. Por favor, tente novamente em 5 minutos.",
     NenhumD: "Nenhum DM ou chat encontrado. Certifique-se de que sua busca est\xe1 escrita corretamente.",
-    Nenhumch: "Nenhum chat ou curso encontrado com esse c\xf3digo. Por favor, tente novamente.",
-    Nenhumcu: "Nenhum curso p\xfablico encontrado. Gostaria de criar um?",
+    Nenhumc: "Nenhum chat ou curso encontrado com esse c\xf3digo. Por favor, tente novamente.",
     Notifiqec: "Notifica o usu\xe1rio quando ele \xe9 convidado para uma sala.",
     Notifiqem: "Notifica o usu\xe1rio quando ele \xe9 mencionado diretamente em uma mensagem.",
     Notifiqh: "Notifica o usu\xe1rio quando h\xe1 uma men\xe7\xe3o na sala.",
@@ -16223,7 +16204,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j8+WA6tWDRVQyAHHmR+zieBJcpc="] = d.current;
+  d["PEdipPfsZU9ZvfXvJtmqPckJTf8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

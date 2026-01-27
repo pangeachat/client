@@ -4385,9 +4385,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Informacje zwrotne o s\u0142owie";
     },
-    get$noPublicCoursesFound() {
-      return "Nie znaleziono publicznych kurs\xf3w. Chcesz utworzy\u0107 nowy?";
-    },
     get$noCourseTemplatesFound() {
       return "Nie mogli\u015bmy znale\u017a\u0107 \u017cadnych kurs\xf3w dla Twojego j\u0119zyka docelowego. W mi\u0119dzyczasie mo\u017cesz rozmawia\u0107 z Pangea Botem i wr\xf3ci\u0107 p\xf3\u017aniej po wi\u0119cej kurs\xf3w.";
     },
@@ -4408,9 +4405,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Udost\u0119pnij kurs";
-    },
-    get$joinPublicCourse() {
-      return "Do\u0142\u0105cz do kursu publicznego";
     },
     get$vocabLevelsDesc() {
       return "To tutaj pojawi\u0105 si\u0119 s\u0142owa s\u0142ownictwa, gdy je podniesiesz na wy\u017cszy poziom!";
@@ -5358,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0mZvpEFfGXqU3AqurPQk6f3qrAM="] = d.current;
+  d["Jq32fMp13fptZwUo0Gak2IOSY7k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_738.part.js.map
