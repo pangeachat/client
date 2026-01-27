@@ -60,13 +60,13 @@ class SelectedCourseView extends StatelessWidget {
                               child: ListView.builder(
                                 itemCount: course.topicIds.length + 2,
                                 itemBuilder: (context, index) {
-                                  String displayname = course.title;
-                                  final roomChunk = controller.widget.roomChunk;
-                                  if (roomChunk != null) {
-                                    displayname = roomChunk.name ??
-                                        roomChunk.canonicalAlias ??
-                                        L10n.of(context).emptyChat;
-                                  }
+                                  final String displayname = course.title;
+                                  // final roomChunk = controller.widget.roomChunk;
+                                  // if (roomChunk != null) {
+                                  //   displayname = roomChunk.name ??
+                                  //       roomChunk.canonicalAlias ??
+                                  //       L10n.of(context).emptyChat;
+                                  // }
 
                                   if (index == 0) {
                                     return Column(
@@ -75,8 +75,9 @@ class SelectedCourseView extends StatelessWidget {
                                         ClipPath(
                                           clipper: MapClipper(),
                                           child: ImageByUrl(
-                                            imageUrl: controller.widget
-                                                    .roomChunk?.avatarUrl ??
+                                            imageUrl:
+                                                // controller.widget
+                                                //         .roomChunk?.avatarUrl ??
                                                 course.imageUrl,
                                             width: 100.0,
                                             borderRadius:
@@ -272,31 +273,59 @@ class SelectedCourseView extends StatelessWidget {
                                 ],
                                 Padding(
                                   padding: const EdgeInsets.only(top: 8.0),
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          theme.colorScheme.primaryContainer,
-                                      foregroundColor:
-                                          theme.colorScheme.onPrimaryContainer,
-                                    ),
-                                    onPressed: () => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => controller.submit(course),
-                                    ),
-                                    child: Row(
-                                      spacing: 8.0,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Icon(Icons.map_outlined),
-                                        Text(
-                                          controller.buttonText,
-                                          style: const TextStyle(
-                                            fontSize: titleFontSize,
+                                  child: Column(
+                                    spacing: 8.0,
+                                    children: [
+                                      if (controller.showCodeField) ...[
+                                        TextField(
+                                          decoration: InputDecoration(
+                                            hintText: L10n.of(context)
+                                                .enterCodeToJoin,
                                           ),
+                                          onSubmitted: controller.joinWithCode,
+                                        ),
+                                        Row(
+                                          spacing: 8.0,
+                                          children: [
+                                            const Expanded(
+                                              child: Divider(),
+                                            ),
+                                            Text(L10n.of(context).or),
+                                            const Expanded(
+                                              child: Divider(),
+                                            ),
+                                          ],
                                         ),
                                       ],
-                                    ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: theme
+                                              .colorScheme.primaryContainer,
+                                          foregroundColor: theme
+                                              .colorScheme.onPrimaryContainer,
+                                        ),
+                                        onPressed: () =>
+                                            showFutureLoadingDialog(
+                                          context: context,
+                                          future: () =>
+                                              controller.submit(course),
+                                        ),
+                                        child: Row(
+                                          spacing: 8.0,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Icon(Icons.map_outlined),
+                                            Text(
+                                              controller.buttonText,
+                                              style: const TextStyle(
+                                                fontSize: titleFontSize,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -384,7 +383,8 @@ abstract class AppRoutes {
                           SelectedCourse(
                             state.pathParameters['courseid']!,
                             SelectedCourseMode.join,
-                            roomChunk: state.extra as PublicRoomsChunk?,
+                            roomID: state.uri.queryParameters['roomid'],
+                            joinRule: state.uri.queryParameters['joinrule'],
                           ),
                         );
                       },

@@ -164,6 +164,16 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
     }
   }
 
+  void _navigateToCoursePage(PublicRoomsChunk roomChunk, String courseId) {
+    String route =
+        '/${widget.route}/course/public/$courseId?roomid=${Uri.encodeComponent(roomChunk.roomId)}';
+
+    if (roomChunk.joinRule == JoinRules.knock.name) {
+      route += '&joinrule=${Uri.encodeComponent(roomChunk.joinRule!)}';
+    }
+    context.go(route);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -271,10 +281,8 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                         return Material(
                           type: MaterialType.transparency,
                           child: InkWell(
-                            onTap: () => context.go(
-                              '/${widget.route}/course/public/$courseId',
-                              extra: roomChunk,
-                            ),
+                            onTap: () =>
+                                _navigateToCoursePage(roomChunk, courseId),
                             borderRadius: BorderRadius.circular(12.0),
                             child: Container(
                               padding: const EdgeInsets.all(12.0),
@@ -355,9 +363,9 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                                   HoverBuilder(
                                     builder: (context, hovered) =>
                                         ElevatedButton(
-                                      onPressed: () => context.go(
-                                        '/${widget.route}/course/public/$courseId',
-                                        extra: roomChunk,
+                                      onPressed: () => _navigateToCoursePage(
+                                        roomChunk,
+                                        courseId,
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: theme

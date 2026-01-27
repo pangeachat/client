@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart'
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -27,14 +28,16 @@ class SelectedCourse extends StatefulWidget {
   final String? spaceId;
 
   /// In join mode, the room info for the space that already has this course.
-  final PublicRoomsChunk? roomChunk;
+  final String? roomID;
+  final String? joinRule;
 
   const SelectedCourse(
     this.courseId,
     this.mode, {
     super.key,
     this.spaceId,
-    this.roomChunk,
+    this.roomID,
+    this.joinRule,
   });
 
   @override
@@ -75,9 +78,31 @@ class SelectedCourseController extends State<SelectedCourse>
       case SelectedCourseMode.addToSpace:
         return L10n.of(context).addCoursePlan;
       case SelectedCourseMode.join:
-        return widget.roomChunk?.joinRule == JoinRules.knock.name
+        return widget.joinRule == JoinRules.knock.name
             ? L10n.of(context).knock
             : L10n.of(context).join;
+    }
+  }
+
+  bool get showCodeField =>
+      widget.mode == SelectedCourseMode.join &&
+      widget.joinRule == JoinRules.knock.name;
+
+  Future<void> joinWithCode(String code) async {
+    if (code.isEmpty) {
+      return;
+    }
+
+    final roomId = await SpaceCodeController.joinSpaceWithCode(
+      context,
+      code,
+    );
+
+    if (roomId != null) {
+      final room = Matrix.of(context).client.getRoomById(roomId);
+      room?.isSpace ?? true
+          ? context.go('/rooms/spaces/$roomId/details')
+          : context.go('/rooms/$roomId');
     }
   }
 
@@ -150,12 +175,14 @@ class SelectedCourseController extends State<SelectedCourse>
   }
 
   Future<void> joinCourse() async {
-    if (widget.roomChunk == null) {
+    if (widget.roomID == null) {
       throw Exception("Room chunk is null");
     }
 
+    final roomID = widget.roomID!;
+
     final client = Matrix.of(context).client;
-    final r = client.getRoomById(widget.roomChunk!.roomId);
+    final r = client.getRoomById(roomID);
     if (r != null && r.membership == Membership.join) {
       if (mounted) {
         context.go("/rooms/spaces/${r.id}/details");
@@ -163,10 +190,10 @@ class SelectedCourseController extends State<SelectedCourse>
       return;
     }
 
-    final knock = widget.roomChunk!.joinRule == JoinRules.knock.name;
-    final roomId = widget.roomChunk != null && knock
-        ? await client.knockRoom(widget.roomChunk!.roomId)
-        : await client.joinRoom(widget.roomChunk!.roomId);
+    final knock = widget.joinRule == JoinRules.knock.name;
+    final roomId = widget.roomID != null && knock
+        ? await client.knockRoom(widget.roomID!)
+        : await client.joinRoom(widget.roomID!);
 
     Room? room = client.getRoomById(roomId);
     if (!knock && room?.membership != Membership.join) {
