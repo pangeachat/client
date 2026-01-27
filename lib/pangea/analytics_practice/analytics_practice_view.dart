@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -16,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart'
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
@@ -24,6 +23,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -244,15 +244,12 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     _ErrorBlankWidget(
-                      activity: activity,
-                    ),
-                    const SizedBox(height: 12),
-                    _GrammarErrorTranslationButton(
                       key: ValueKey(
                         '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
                       ),
-                      translation: activity.translation,
+                      activity: activity,
                     ),
+                    const SizedBox(height: 12),
                   ],
                 ),
               _ => const SizedBox(),
@@ -307,58 +304,126 @@ class _ExampleMessageWidget extends StatelessWidget {
   }
 }
 
-class _ErrorBlankWidget extends StatelessWidget {
+class _ErrorBlankWidget extends StatefulWidget {
   final GrammarErrorPracticeActivityModel activity;
 
   const _ErrorBlankWidget({
+    super.key,
     required this.activity,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final text = activity.text;
-    final errorOffset = activity.errorOffset;
-    final errorLength = activity.errorLength;
+  State<_ErrorBlankWidget> createState() => _ErrorBlankWidgetState();
+}
 
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 8,
-      ),
-      decoration: BoxDecoration(
-        color: Color.alphaBlend(
-          Colors.white.withAlpha(180),
-          ThemeData.dark().colorScheme.primary,
-        ),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: RichText(
-        text: TextSpan(
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimaryFixed,
-            fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
+  late final String translation = widget.activity.translation;
+  bool _showTranslation = false;
+
+  void _toggleTranslation() {
+    setState(() {
+      _showTranslation = !_showTranslation;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final text = widget.activity.text;
+    final errorOffset = widget.activity.errorOffset;
+    final errorLength = widget.activity.errorLength;
+
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 8,
           ),
-          children: [
-            if (errorOffset > 0)
-              TextSpan(text: text.characters.take(errorOffset).toString()),
-            WidgetSpan(
-              child: Container(
-                height: 4.0,
-                width: (errorLength * 8).toDouble(),
-                padding: const EdgeInsets.only(bottom: 2.0),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+          decoration: BoxDecoration(
+            color: Color.alphaBlend(
+              Colors.white.withAlpha(180),
+              ThemeData.dark().colorScheme.primary,
+            ),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            children: [
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryFixed,
+                    fontSize:
+                        AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                  ),
+                  children: [
+                    if (errorOffset > 0)
+                      TextSpan(
+                        text: text.characters.take(errorOffset).toString(),
+                      ),
+                    WidgetSpan(
+                      child: Container(
+                        height: 4.0,
+                        width: (errorLength * 8).toDouble(),
+                        padding: const EdgeInsets.only(bottom: 2.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ),
+                    if (errorOffset + errorLength < text.length)
+                      TextSpan(
+                        text: text.characters
+                            .skip(errorOffset + errorLength)
+                            .toString(),
+                      ),
+                  ],
                 ),
               ),
-            ),
-            if (errorOffset + errorLength < text.length)
-              TextSpan(
-                text:
-                    text.characters.skip(errorOffset + errorLength).toString(),
-              ),
-          ],
+              const SizedBox(height: 8),
+              _showTranslation
+                  ? Text(
+                      translation,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimaryFixed,
+                        fontSize: AppConfig.fontSizeFactor *
+                            AppConfig.messageFontSize,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.left,
+                    )
+                  : const SizedBox.shrink(),
+            ],
+          ),
         ),
-      ),
+        const SizedBox(height: 8),
+        PressableButton(
+          borderRadius: BorderRadius.circular(20),
+          color: Theme.of(context).colorScheme.primaryContainer,
+          depressed: _showTranslation,
+          onPressed: _toggleTranslation,
+          playSound: true,
+          colorFactor: 0.3,
+          builder: (context, depressed, shadowColor) => Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                height: 40.0,
+                width: 40.0,
+                decoration: BoxDecoration(
+                  color: depressed
+                      ? shadowColor
+                      : Theme.of(context).colorScheme.primaryContainer,
+                  shape: BoxShape.circle,
+                ),
+              ),
+              const Icon(
+                Icons.translate,
+                size: 20,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -551,87 +616,5 @@ class _ChoiceCard extends StatelessWidget {
           child: Text(choiceText),
         );
     }
-  }
-}
-
-class _GrammarErrorTranslationButton extends StatefulWidget {
-  final String translation;
-
-  const _GrammarErrorTranslationButton({
-    super.key,
-    required this.translation,
-  });
-
-  @override
-  State<_GrammarErrorTranslationButton> createState() =>
-      _GrammarErrorTranslationButtonState();
-}
-
-class _GrammarErrorTranslationButtonState
-    extends State<_GrammarErrorTranslationButton> {
-  bool _showTranslation = false;
-
-  void _toggleTranslation() {
-    if (_showTranslation) {
-      setState(() {
-        _showTranslation = false;
-      });
-    } else {
-      setState(() {
-        _showTranslation = true;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: _toggleTranslation,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8.0,
-          children: [
-            if (_showTranslation)
-              Flexible(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.alphaBlend(
-                      Colors.white.withAlpha(180),
-                      ThemeData.dark().colorScheme.primary,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Text(
-                    widget.translation,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimaryFixed,
-                      fontSize:
-                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            if (!_showTranslation)
-              ElevatedButton(
-                onPressed: _toggleTranslation,
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(8),
-                ),
-                child: const Icon(
-                  Icons.lightbulb_outline,
-                  size: 20,
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
   }
 }
