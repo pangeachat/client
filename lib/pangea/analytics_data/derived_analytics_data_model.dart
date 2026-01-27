@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class DerivedAnalyticsDataModel {
@@ -30,7 +29,7 @@ class DerivedAnalyticsDataModel {
     return progress >= 0 ? progress : 0;
   }
 
-  static final double D = Environment.isStagingEnvironment ? 500 : 1500;
+  static const double D = 300;
 
   static int calculateXpWithLevel(int level) {
     // If level <= 1, XP should be 0 or negative by this math.
