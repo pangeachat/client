@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -25,7 +28,6 @@ import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
@@ -320,17 +322,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
           final nextActivityCompleter = _queue.removeFirst();
-          activityTarget.value = nextActivityCompleter.request;
-          _playAudio();
+
           try {
             final activity = await nextActivityCompleter.completer.future;
+            activityTarget.value = nextActivityCompleter.request;
+            _playAudio();
             activityState.value = AsyncState.loaded(activity);
             AnalyticsPractice.bypassExitConfirmation = false;
             return;
           } catch (e) {
-            // Record skipped use with 0 XP and try next activity
-            debugPrint('Skipping activity due to error: $e');
-            await recordSkippedUse(nextActivityCompleter.request);
+            // Completer failed, skip to next
             continue;
           }
         }
@@ -355,10 +356,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       try {
         activityState.value = const AsyncState.loading();
         final req = requests[i];
-        activityTarget.value = req;
-        _playAudio();
         final res = await _fetchActivity(req);
         if (!mounted) return;
+        activityTarget.value = req;
+        _playAudio();
         activityState.value = AsyncState.loaded(res);
         AnalyticsPractice.bypassExitConfirmation = false;
         // Fill queue with remaining requests
@@ -454,6 +455,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> recordSkippedUse(MessageActivityRequest request) async {
     // Record a 0 XP use so that activity isn't chosen again soon
+    _sessionLoader.value!.incrementSkippedActivities();
     final token = request.target.tokens.first;
 
     final use = OneConstructUse(

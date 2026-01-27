@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
@@ -45,19 +43,37 @@ class AnalyticsPracticeSessionModel {
     AnalyticsPracticeSessionState? state,
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
-  int get _availableActivities => min(
-        AnalyticsPracticeConstants.practiceGroupSize,
-        practiceTargets.length,
-      );
+  // Maximum activities to attempt (including skips)
+  int get _maxAttempts => (AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize)
+      .clamp(0, practiceTargets.length)
+      .toInt();
 
-  bool get isComplete =>
-      state.finished || state.currentIndex >= _availableActivities;
+  int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize
+      .clamp(0, practiceTargets.length);
 
-  double get progress =>
-      (state.currentIndex / _availableActivities).clamp(0.0, 1.0);
+  // Total attempted so far (completed + skipped)
+  int get _totalAttempted => state.currentIndex + state.skippedActivities;
+
+  bool get isComplete {
+    final complete = state.finished ||
+        state.currentIndex >= _completionGoal ||
+        _totalAttempted >= _maxAttempts;
+    return complete;
+  }
+
+  double get progress {
+    final possibleCompletions =
+        (state.currentIndex + _maxAttempts - _totalAttempted)
+            .clamp(0, _completionGoal);
+    return possibleCompletions > 0
+        ? (state.currentIndex / possibleCompletions).clamp(0.0, 1.0)
+        : 1.0;
+  }
 
   List<MessageActivityRequest> get activityRequests {
-    return practiceTargets.map((target) {
+    // Only return up to _maxAttempts (15) targets
+    final requests = practiceTargets.take(_maxAttempts).map((target) {
       return MessageActivityRequest(
         userL1: userL1,
         userL2: userL2,
@@ -66,6 +82,7 @@ class AnalyticsPracticeSessionModel {
         grammarErrorInfo: target.grammarErrorInfo,
       );
     }).toList();
+    return requests;
   }
 
   void setElapsedSeconds(int seconds) =>
@@ -75,6 +92,10 @@ class AnalyticsPracticeSessionModel {
 
   void completeActivity() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
+
+  void incrementSkippedActivities() => state = state.copyWith(
+        skippedActivities: state.skippedActivities + 1,
+      );
 
   void submitAnswer(OneConstructUse use) => state = state.copyWith(
         completedUses: [...state.completedUses, use],
@@ -111,12 +132,14 @@ class AnalyticsPracticeSessionState {
   final int currentIndex;
   final bool finished;
   final int elapsedSeconds;
+  final int skippedActivities;
 
   const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
     this.finished = false,
     this.elapsedSeconds = 0,
+    this.skippedActivities = 0,
   });
 
   int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
@@ -169,12 +192,14 @@ class AnalyticsPracticeSessionState {
     int? currentIndex,
     bool? finished,
     int? elapsedSeconds,
+    int? skippedActivities,
   }) {
     return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
       currentIndex: currentIndex ?? this.currentIndex,
       finished: finished ?? this.finished,
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
+      skippedActivities: skippedActivities ?? this.skippedActivities,
     );
   }
 
@@ -184,6 +209,7 @@ class AnalyticsPracticeSessionState {
       'currentIndex': currentIndex,
       'finished': finished,
       'elapsedSeconds': elapsedSeconds,
+      'skippedActivities': skippedActivities,
     };
   }
 
@@ -197,6 +223,7 @@ class AnalyticsPracticeSessionState {
       currentIndex: json['currentIndex'] as int? ?? 0,
       finished: json['finished'] as bool? ?? false,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
+      skippedActivities: json['skippedActivities'] as int? ?? 0,
     );
   }
 }

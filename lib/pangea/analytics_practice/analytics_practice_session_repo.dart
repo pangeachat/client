@@ -32,7 +32,8 @@ class AnalyticsPracticeSessionRepo {
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
     final types = List.generate(
-      AnalyticsPracticeConstants.practiceGroupSize,
+      AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize,
       (_) => activityTypes[r.nextInt(activityTypes.length)],
     );
 
@@ -53,11 +54,13 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
-
-      if (targets.length < AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length <
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         final morphs = await _fetchMorphs();
-        final remainingCount =
-            AnalyticsPracticeConstants.practiceGroupSize - targets.length;
+        final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize) -
+            targets.length;
         final morphEntries = morphs.entries.take(remainingCount);
 
         for (final entry in morphEntries) {
@@ -111,7 +114,9 @@ class AnalyticsPracticeSessionRepo {
       if (seemLemmas.contains(construct.lemma)) continue;
       seemLemmas.add(construct.lemma);
       targets.add(construct.id);
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
     }
@@ -138,7 +143,9 @@ class AnalyticsPracticeSessionRepo {
     final Set<String> seenForms = {};
 
     for (final entry in constructs) {
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
 
@@ -148,7 +155,9 @@ class AnalyticsPracticeSessionRepo {
       }
 
       for (final use in entry.cappedUses) {
-        if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+        if (targets.length >=
+            (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize)) {
           break;
         }
 
