@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
@@ -238,12 +240,19 @@ class AnalyticsPracticeSessionRepo {
       for (int i = 0; i < choreo.choreoSteps.length; i++) {
         final step = choreo.choreoSteps[i];
         final igcMatch = step.acceptedOrIgnoredMatch;
+        final stepText = choreo.stepText(stepIndex: i - 1);
         if (igcMatch?.isGrammarMatch != true ||
             igcMatch?.match.bestChoice == null) {
           continue;
         }
 
-        final choices = igcMatch!.match.choices!.map((c) => c.value).toList();
+        if (igcMatch!.match.offset == 0 &&
+            igcMatch.match.length >= stepText.trim().characters.length) {
+          // Skip if the grammar error spans the entire step
+          continue;
+        }
+
+        final choices = igcMatch.match.choices!.map((c) => c.value).toList();
         final choiceTokens = tokens
             .where(
               (token) =>
