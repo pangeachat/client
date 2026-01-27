@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Is f\xe9idir leat teideal an phlean, cur s\xedos, agus \xedomh\xe1 an ch\xfarsa a chur in eagar n\xedos d\xe9ana\xed.";
     },
-    get$newCourseAccess() {
-      return "De r\xe9ir r\xe9amhshocraithe, t\xe1 c\xfarsa\xed pr\xedobh\xe1ideach agus iarrtar cead riarth\xf3ra chun p\xe1irt a ghlacadh. Is f\xe9idir leat na socruithe seo a chur in eagar ag am ar bith.";
-    },
     get$createCourse() {
       return "Cruthaigh c\xfarsa";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Comhr\xe1 le Taca\xedocht";
     },
+    get$newCourseAccess() {
+      return "De r\xe9ir r\xe9amhshocraithe, t\xe1 c\xfarsa\xed inrochtana go poibl\xed agus \xe9il\xedonn siad cead \xf3 riarach\xe1n chun p\xe1irt a ghlacadh. Is f\xe9idir leat na socruithe seo a chur in eagar ag am ar bith.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k3UY/hb/tnwyvIiIFUF8hZ9aMvM="] = d.current;
+  d["Ok/7pN6w2xj8HycXT7BX2DJGd4Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

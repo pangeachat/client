@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Du kan redigere malens tittel, beskrivelser og kursbilde senere.";
     },
-    get$newCourseAccess() {
-      return "Som standard er kurs private og krever administratorgodkjenning for \xe5 bli med. Du kan endre disse innstillingene n\xe5r som helst.";
-    },
     get$createCourse() {
       return "Opprett kurs";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat med st\xf8tte";
     },
+    get$newCourseAccess() {
+      return "Som standard er kurs offentlig s\xf8kbare og krever administratortillatelse for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rqG3ls7B/8APDA9tKQFaUOJfqTg="] = d.current;
+  d["PUzafBSb8Emj687C8uVFFTUO7D0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

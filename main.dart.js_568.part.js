@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.";
     },
-    get$newCourseAccess() {
-      return "Lehenetsiz, ikastaroak pribatutasunekoak dira eta administratzailearen onespena behar dute parte hartzeko. Edozein momentutan aldatu ditzakezu ezarpen hauek.";
-    },
     get$createCourse() {
       return "Sortu ikastaroa";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Txatatu Laguntzarekin";
     },
+    get$newCourseAccess() {
+      return "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Bje37sPOZGM+qKr83uRSBoqvk0g="] = d.current;
+  d["uRuVbbmYueXs01Ii2C3Y0w179HE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_568.part.js.map

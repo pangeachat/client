@@ -4142,9 +4142,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Mo\u017cesz edytowa\u0107 tytu\u0142 szablonu, opisy i obraz kursu p\xf3\u017aniej.";
     },
-    get$newCourseAccess() {
-      return "Domy\u015blnie kursy s\u0105 prywatne i wymagaj\u0105 zatwierdzenia administratora, aby do nich do\u0142\u0105czy\u0107. Mo\u017cesz edytowa\u0107 te ustawienia w dowolnym momencie.";
-    },
     get$createCourse() {
       return "Utw\xf3rz kurs";
     },
@@ -5339,6 +5336,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Czat z pomoc\u0105";
     },
+    get$newCourseAccess() {
+      return "Domy\u015blnie kursy s\u0105 publicznie wyszukiwalne i wymagaj\u0105 zatwierdzenia przez administratora, aby do nich do\u0142\u0105czy\u0107. Mo\u017cesz edytowa\u0107 te ustawienia w dowolnym momencie.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5352,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jq32fMp13fptZwUo0Gak2IOSY7k="] = d.current;
+  d["UmKWQGOYMTlKJUjyw/R9jN5h6ns="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_738.part.js.map

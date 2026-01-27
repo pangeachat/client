@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Lahko kasneje uredite naslov predloge, opise in sliko te\u010daja.";
     },
-    get$newCourseAccess() {
-      return "Privzeto so te\u010daji zasebni in zahtevajo odobritev administratorja za vstop. Te nastavitve lahko kadar koli uredite.";
-    },
     get$createCourse() {
       return "Ustvari te\u010daj";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Pogovorite se s podporo";
     },
+    get$newCourseAccess() {
+      return "Privzeto so te\u010daji javno iskalni in zahtevajo odobritev skrbnika za pridru\u017eitev. Te nastavitve lahko kadar koli spremenite.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DOlTA7JriSiavizgtI4NcIkYh0U="] = d.current;
+  d["s3c1laxqaDFc4o4Ch4tPFP0BnVo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

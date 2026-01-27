@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.";
     },
-    get$newCourseAccess() {
-      return "Som standard er kurser private og kr\xe6ver godkendelse fra administrator for at deltage. Du kan redigere disse indstillinger n\xe5r som helst.";
-    },
     get$createCourse() {
       return "Opret kursus";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat med support";
     },
+    get$newCourseAccess() {
+      return "Som standard er kurser offentligt s\xf8gbare og kr\xe6ver administratorgodkendelse for at deltage. Du kan redigere disse indstillinger n\xe5r som helst.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KdzHLZb3zCRurJFmxlLJXtVt1Sk="] = d.current;
+  d["pGPa+qMDQZlcvLpGGxfYOhgfVmU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_308.part.js.map

@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "J\u016bs varat v\u0113l\u0101k redi\u0123\u0113t \u0161ablona nosaukumu, aprakstus un kursa att\u0113lu.";
     },
-    get$newCourseAccess() {
-      return "P\u0113c noklus\u0113juma kursi ir priv\u0101ti un prasa administratora apstiprin\u0101jumu, lai pievienotos. J\u016bs varat \u0161\u012bs iestat\u012bjumus main\u012bt jebkur\u0101 laik\u0101.";
-    },
     get$createCourse() {
       return "Izveidot kursu";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Sarun\u0101ties ar atbalstu";
     },
+    get$newCourseAccess() {
+      return "P\u0113c noklus\u0113juma kursi ir publiski mekl\u0113jami un prasa administratora apstiprin\u0101jumu pievieno\u0161anai. J\u016bs varat redi\u0123\u0113t \u0161os iestat\u012bjumus jebkur\u0101 laik\u0101.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+VTx57PhhxNrtABUW9t5qmp553E="] = d.current;
+  d["kdOI8X5kEroy9kpJnaqXT1zHAsI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_724.part.js.map

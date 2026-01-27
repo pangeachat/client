@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "K\xe9s\u0151bb szerkesztheti a sablon c\xedmet, le\xedr\xe1sokat \xe9s a tanfolyam k\xe9p\xe9t.";
     },
-    get$newCourseAccess() {
-      return "Alap\xe9rtelmez\xe9s szerint a tanfolyamok priv\xe1tak, \xe9s admin j\xf3v\xe1hagy\xe1s\xe1t ig\xe9nylik a csatlakoz\xe1shoz. Ezeket a be\xe1ll\xedt\xe1sokat b\xe1rmikor szerkesztheti.";
-    },
     get$createCourse() {
       return "Tanfolyam l\xe9trehoz\xe1sa";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Cseveg\xe9s a T\xe1mogat\xe1ssal";
     },
+    get$newCourseAccess() {
+      return "Alap\xe9rtelmez\xe9s szerint a kurzusok nyilv\xe1nosan kereshet\u0151k, \xe9s adminisztr\xe1tori j\xf3v\xe1hagy\xe1s sz\xfcks\xe9ges a csatlakoz\xe1shoz. Ezeket a be\xe1ll\xedt\xe1sokat b\xe1rmikor m\xf3dos\xedthatja.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rhD1blHuhN5oUsQu5eP5sYBVuCU="] = d.current;
+  d["vNwte4yHLvYc/vldmIdGO+05zBA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.";
     },
-    get$newCourseAccess() {
-      return "Secara default, kursus bersifat pribadi dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.";
-    },
     get$createCourse() {
       return "Buat kursus";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat dengan Dukungan";
     },
+    get$newCourseAccess() {
+      return "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6EZZlj9qL4y4OYA1uwzyBE5xJwU="] = d.current;
+  d["PneeHI1dsTksqNuQB6XlVsgzBpQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

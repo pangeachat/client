@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Pozd\u011bji m\u016f\u017eete upravit n\xe1zev \u0161ablony, popisy a obr\xe1zek kurzu.";
     },
-    get$newCourseAccess() {
-      return "Ve v\xfdchoz\xedm nastaven\xed jsou kurzy soukrom\xe9 a vy\u017eaduj\xed schv\xe1len\xed spr\xe1vce pro p\u0159ipojen\xed. Tyto nastaven\xed m\u016f\u017eete upravit kdykoli.";
-    },
     get$createCourse() {
       return "Vytvo\u0159it kurz";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat s podporou";
     },
+    get$newCourseAccess() {
+      return "Ve v\xfdchoz\xedm nastaven\xed jsou kurzy ve\u0159ejn\u011b vyhledateln\xe9 a vy\u017eaduj\xed schv\xe1len\xed administr\xe1tora pro p\u0159ipojen\xed. Tyto nastaven\xed m\u016f\u017eete kdykoli upravit.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gzOaHwPG7cPcojurCttQNyv6lyU="] = d.current;
+  d["MBs2ANtIYVMhQtIAN8dhVZxGXxM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

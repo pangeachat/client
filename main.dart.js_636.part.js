@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Mo\u017eete kasnije urediti naslov predlo\u0161ka, opise i sliku te\u010daja.";
     },
-    get$newCourseAccess() {
-      return "Prema zadanim postavkama, te\u010dajevi su privatni i zahtijevaju odobrenje administratora za pridru\u017eivanje. Mo\u017eete ove postavke urediti u bilo koje vrijeme.";
-    },
     get$createCourse() {
       return "Stvori te\u010daj";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Razgovarajte s podr\u0161kom";
     },
+    get$newCourseAccess() {
+      return "Prema zadanim postavkama, te\u010dajevi su javno pretra\u017eivi i zahtijevaju odobrenje administratora za pridru\u017eivanje. Ove postavke mo\u017eete urediti u bilo kojem trenutku.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vWQSVZ1iKEj0A3Bdx5tQ2t8MK0M="] = d.current;
+  d["sKJS6+7/s+ZTVxLi8gJE/Mmb0Xw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

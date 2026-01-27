@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "You can edit template title, descriptions, and course image later.";
     },
-    get$newCourseAccess() {
-      return "By default, courses are private and require admin approval to join. You can edit these settings at any time.";
-    },
     get$createCourse() {
       return "Create course";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat with Support";
     },
+    get$newCourseAccess() {
+      return "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sC4QzXrQ+K30jtOE535fe/oYyD0="] = d.current;
+  d["WxvPDYecvZTvfLz5bKapb8ECxAs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_417.part.js.map

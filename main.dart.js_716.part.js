@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "V\u0117liau galite redaguoti \u0161ablono pavadinim\u0105, apra\u0161ymus ir kurso vaizd\u0105.";
     },
-    get$newCourseAccess() {
-      return "Pagal numatytuosius nustatymus kursai yra privat\u016bs ir reikalauja administratoriaus patvirtinimo prisijungiant. \u0160iuos nustatymus galite redaguoti bet kuriuo metu.";
-    },
     get$createCourse() {
       return "Sukurti kurs\u0105";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Pokalbis su palaikymu";
     },
+    get$newCourseAccess() {
+      return "Pagal numatytuosius nustatymus, kursai yra vie\u0161ai ie\u0161komi ir reikalauja administratoriaus patvirtinimo prisijungti. \u0160iuos nustatymus galite redaguoti bet kada.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rAG7xNzOR+/+3H7X4LY8id87kPw="] = d.current;
+  d["CZ3Tp1CRGuWZOVsgKEGwT0vghTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

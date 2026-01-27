@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Po\u021bi edita titlul, descrierile \u0219i imaginea cursului mai t\xe2rziu.";
     },
-    get$newCourseAccess() {
-      return "\xcen mod implicit, cursurile sunt private \u0219i necesit\u0103 aprobarea administratorului pentru a te al\u0103tura. Po\u021bi edita aceste set\u0103ri oric\xe2nd.";
-    },
     get$createCourse() {
       return "Creeaz\u0103 curs";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat cu Suportul";
     },
+    get$newCourseAccess() {
+      return "\xcen mod implicit, cursurile sunt c\u0103utabile public \u0219i necesit\u0103 aprobat\u0103 de administrator pentru a se al\u0103tura. Pute\u021bi edita aceste set\u0103ri \xeen orice moment.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5gnw9l+lLk+vJHLtquN6XO39i38="] = d.current;
+  d["Y3/9xwgoJnXBDqjxsWiVjoergqg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

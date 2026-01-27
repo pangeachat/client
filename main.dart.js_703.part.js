@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.";
     },
-    get$newCourseAccess() {
-      return "Per defaut, los cors es privat e require approbation del admin pro aderir. Tu pote modificar iste parametros a qualunque momento.";
-    },
     get$createCourse() {
       return "Createar cors";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat le Taca\xedocht";
     },
+    get$newCourseAccess() {
+      return "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig \xe0m sam bith.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gVSJHGaqy5Q2qNie5+kd0ZPQb3s="] = d.current;
+  d["QoqwFZgNr5YNGmQw6qpnOIUvLB4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_703.part.js.map

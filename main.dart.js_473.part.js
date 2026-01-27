@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.";
     },
-    get$newCourseAccess() {
-      return "\u011cis nun, kursoj estas private kaj postulas administran aprobon por ali\u011di. Vi povas \u015dan\u011di \u0109i tiujn agordojn iam ajn.";
-    },
     get$createCourse() {
       return "Krei kurson";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Babili kun Subteno";
     },
+    get$newCourseAccess() {
+      return "La\u016d la defa\u016dlto, kursoj estas publike ser\u0109eblaj kaj postulas administran aprobon por ali\u011di. Vi povas redakti \u0109i tiujn agordojn iam ajn.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BQ8LuDLkKNFWx/p7EFpjCp8gFFE="] = d.current;
+  d["CxLoagJGJcJY1lEMCI0CUxrpkcw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_473.part.js.map

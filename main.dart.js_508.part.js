@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Puedes editar el t\xedtulo, las descripciones y la imagen del curso m\xe1s tarde.";
     },
-    get$newCourseAccess() {
-      return "Por defecto, los cursos son privados y requieren aprobaci\xf3n del administrador para unirse. Puedes editar estos ajustes en cualquier momento.";
-    },
     get$createCourse() {
       return "Crear curso";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chatear con Soporte";
     },
+    get$newCourseAccess() {
+      return "Por defecto, los cursos son buscables p\xfablicamente y requieren aprobaci\xf3n del administrador para unirse. Puedes editar estas configuraciones en cualquier momento.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cIKzcGIS4RVO2GigzaaxsjSRAq8="] = d.current;
+  d["ufzbaWGhAPTQLeCwXC19TLE2u4g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_508.part.js.map

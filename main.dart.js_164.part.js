@@ -4143,9 +4143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "\u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824";
     },
-    get$newCourseAccess() {
-      return "\u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824";
-    },
     get$createCourse() {
       return "\u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824 \u182a\u1820\u1822\u182f\u1820\u182d\u1824\u182f\u1824";
     },
@@ -5340,6 +5337,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat with Support";
     },
+    get$newCourseAccess() {
+      return "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5365,7 +5365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fPMJFl4HLDH3ynQydOgJcKQeeBI="] = d.current;
+  d["9Hr4/aGrsw2R27tuefKauEXt4KQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa my\xf6hemmin.";
     },
-    get$newCourseAccess() {
-      return "Oletuksena kurssit ovat yksityisi\xe4 ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liitty\xe4ksesi. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
-    },
     get$createCourse() {
       return "Luo kurssi";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chattaa tuen kanssa";
     },
+    get$newCourseAccess() {
+      return "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liittymiseen. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3N6wmLW+4RcfUv8gkShshvynreQ="] = d.current;
+  d["aWDj0wFy8L6Y5J2DSAzC/J4208E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_584.part.js.map

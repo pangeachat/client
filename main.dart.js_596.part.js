@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.";
     },
-    get$newCourseAccess() {
-      return "Sa default, ang mga kurso ay pribado at nangangailangan ng pag-apruba ng admin upang makasali. Maaari mong i-edit ang mga setting na ito anumang oras.";
-    },
     get$createCourse() {
       return "Lumikha ng kurso";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Makipag-chat sa Suporta";
     },
+    get$newCourseAccess() {
+      return "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Z+Fc09Ru/agzc+YoZ3T+T/Zd6tc="] = d.current;
+  d["fLgLkve/hx1gvNtYDGkCbt49nFQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_596.part.js.map

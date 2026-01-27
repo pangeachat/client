@@ -4153,9 +4153,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Voc\xea pode editar o t\xedtulo do modelo, descri\xe7\xf5es e imagem do curso posteriormente.";
     },
-    get$newCourseAccess() {
-      return "Por padr\xe3o, os cursos s\xe3o privados e requerem aprova\xe7\xe3o do administrador para participar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.";
-    },
     get$createCourse() {
       return "Criar curso";
     },
@@ -5349,6 +5346,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$chatWithSupport() {
       return "Converse com o Suporte";
+    },
+    get$newCourseAccess() {
+      return "Por padr\xe3o, os cursos s\xe3o pesquis\xe1veis publicamente e requerem aprova\xe7\xe3o do administrador para participar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9480,9 +9480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Voc\xea pode editar o t\xedtulo do modelo, descri\xe7\xf5es e a imagem do curso posteriormente.";
     },
-    get$newCourseAccess() {
-      return "Por padr\xe3o, os cursos s\xe3o privados e requerem aprova\xe7\xe3o do administrador para ingressar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.";
-    },
     get$createCourse() {
       return "Criar curso";
     },
@@ -10673,6 +10670,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$chatWithSupport() {
       return "Converse com o Suporte";
+    },
+    get$newCourseAccess() {
+      return string$.Por_pa;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -14804,9 +14804,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Pode editar o t\xedtulo do modelo, descri\xe7\xf5es e imagem do curso mais tarde.";
     },
-    get$newCourseAccess() {
-      return "Por padr\xe3o, os cursos s\xe3o privados e requerem aprova\xe7\xe3o do administrador para participar. Pode editar estas configura\xe7\xf5es a qualquer momento.";
-    },
     get$createCourse() {
       return "Criar curso";
     },
@@ -15998,6 +15995,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Converse com o Suporte";
     },
+    get$newCourseAccess() {
+      return string$.Por_pa;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16153,6 +16153,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Por_faiem: "Por favor, insira um endere\xe7o de email v\xe1lido.",
     Por_faiv: "Por favor, insira um valor num\xe9rico inteiro.",
     Por_fas: "Por favor, siga as instru\xe7\xf5es no site e toque em pr\xf3ximo.",
+    Por_pa: "Por padr\xe3o, os cursos s\xe3o pesquis\xe1veis publicamente e requerem aprova\xe7\xe3o do administrador para ingressar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.",
     Posso_en: "Posso entender e usar algumas express\xf5es cotidianas familiares e frases muito b\xe1sicas.",
     Posso_ex: "Posso expressar ideias fluentemente e espontaneamente sem muita dificuldade e entender uma ampla variedade de textos exigentes.",
     Posso_l: "Posso lidar com a maioria das situa\xe7\xf5es familiares e produzir textos simples conectados sobre t\xf3picos familiares.",
@@ -16204,7 +16205,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PEdipPfsZU9ZvfXvJtmqPckJTf8="] = d.current;
+  d["IKMkmd71u4OviwJaBl/KN7P+a7M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Sie k\xf6nnen den Titel, die Beschreibungen und das Kursbild sp\xe4ter bearbeiten.";
     },
-    get$newCourseAccess() {
-      return "Standardm\xe4\xdfig sind Kurse privat und erfordern die Genehmigung eines Administrators, um beizutreten. Sie k\xf6nnen diese Einstellungen jederzeit \xe4ndern.";
-    },
     get$createCourse() {
       return "Kurs erstellen";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat mit dem Support";
     },
+    get$newCourseAccess() {
+      return "Standardm\xe4\xdfig sind Kurse \xf6ffentlich durchsuchbar und erfordern die Genehmigung eines Administrators, um beizutreten. Sie k\xf6nnen diese Einstellungen jederzeit bearbeiten.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vB8+aye4/phpCpOGCa2yhd9U7tI="] = d.current;
+  d["dALZwXKJoecjSudi343gedPvDiM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_388.part.js.map

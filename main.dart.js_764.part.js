@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "\u015eablon ba\u015fl\u0131\u011f\u0131, a\xe7\u0131klamalar ve kurs resmi daha sonra d\xfczenleyebilirsiniz.";
     },
-    get$newCourseAccess() {
-      return "Varsay\u0131lan olarak, kurslar \xf6zeldir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerekir. Bu ayarlar\u0131 istedi\u011finiz zaman de\u011fi\u015ftirebilirsiniz.";
-    },
     get$createCourse() {
       return "Kurs Olu\u015ftur";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Destek ile Sohbet Et";
     },
+    get$newCourseAccess() {
+      return "Varsay\u0131lan olarak, kurslar herkese a\xe7\u0131k olarak aranabilir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerektirir. Bu ayarlar\u0131 istedi\u011finiz zaman d\xfczenleyebilirsiniz.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lfcrHtRt6/se1RCEpNDBPHo9Q/4="] = d.current;
+  d["A4aGlsOt9Zz1qr9YKGoVdqRnhH4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_764.part.js.map

@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "M\xf4\u017eete nesk\xf4r upravi\u0165 n\xe1zov kurzu, popisy a obr\xe1zok kurzu.";
     },
-    get$newCourseAccess() {
-      return "\u0160tandardne s\xfa kurzy s\xfakromn\xe9 a vy\u017eaduj\xfa schv\xe1lenie spr\xe1vcu na pripojenie. Tieto nastavenia m\xf4\u017eete upravi\u0165 kedyko\u013evek.";
-    },
     get$createCourse() {
       return "Vytvori\u0165 kurz";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chatova\u0165 s podporou";
     },
+    get$newCourseAccess() {
+      return "Predvolene s\xfa kurzy verejne vyh\u013eadate\u013en\xe9 a vy\u017eaduj\xfa schv\xe1lenie administr\xe1tora na pripojenie. Tieto nastavenia m\xf4\u017eete kedyko\u013evek upravi\u0165.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6vuxSR3usUSv2nrs1BYp32qxM68="] = d.current;
+  d["SL5boamB3X1xdULAPPsYkJyXEek="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

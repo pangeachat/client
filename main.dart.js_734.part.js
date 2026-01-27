@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "U kunt de titel, beschrijvingen en cursusafbeelding later bewerken.";
     },
-    get$newCourseAccess() {
-      return "Standaard zijn cursussen priv\xe9 en vereist goedkeuring van een beheerder om deel te nemen. U kunt deze instellingen op elk moment aanpassen.";
-    },
     get$createCourse() {
       return "Cursus maken";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chat met Ondersteuning";
     },
+    get$newCourseAccess() {
+      return "Standaard zijn cursussen openbaar doorzoekbaar en is goedkeuring van de beheerder vereist om deel te nemen. Je kunt deze instellingen op elk moment bewerken.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k3XZTDvwYR2R5L29CujceNhX71o="] = d.current;
+  d["k7O8EEGmx2im2KgPBuF20o6QeEg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

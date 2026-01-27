@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u306e\u30bf\u30a4\u30c8\u30eb\u3001\u8aac\u660e\u3001\u30b3\u30fc\u30b9\u753b\u50cf\u306f\u5f8c\u3067\u7de8\u96c6\u3067\u304d\u307e\u3059\u3002";
     },
-    get$newCourseAccess() {
-      return "\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u3001\u30b3\u30fc\u30b9\u306f\u30d7\u30e9\u30a4\u30d9\u30fc\u30c8\u3067\u3001\u53c2\u52a0\u306b\u306f\u7ba1\u7406\u8005\u306e\u627f\u8a8d\u304c\u5fc5\u8981\u3067\u3059\u3002\u3053\u308c\u3089\u306e\u8a2d\u5b9a\u306f\u3044\u3064\u3067\u3082\u7de8\u96c6\u3067\u304d\u307e\u3059\u3002";
-    },
     get$createCourse() {
       return "\u30b3\u30fc\u30b9\u3092\u4f5c\u6210";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "\u30b5\u30dd\u30fc\u30c8\u3068\u30c1\u30e3\u30c3\u30c8";
     },
+    get$newCourseAccess() {
+      return "\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u3001\u30b3\u30fc\u30b9\u306f\u516c\u958b\u691c\u7d22\u53ef\u80fd\u3067\u3001\u53c2\u52a0\u3059\u308b\u306b\u306f\u7ba1\u7406\u8005\u306e\u627f\u8a8d\u304c\u5fc5\u8981\u3067\u3059\u3002\u3053\u308c\u3089\u306e\u8a2d\u5b9a\u306f\u3044\u3064\u3067\u3082\u7de8\u96c6\u3067\u304d\u307e\u3059\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PLAlAysCDxLdPYozz6XHD0C0eUY="] = d.current;
+  d["PHn8P+CKpBkmsgQRUbudBb+rCCQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_712.part.js.map

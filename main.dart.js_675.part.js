@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.";
     },
-    get$newCourseAccess() {
-      return "A default, le cursos es private e require approbation del administrator pro aderir. Tu pote modificar iste configurationes a omne momento.";
-    },
     get$createCourse() {
       return "Create un curso";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Fala com o Suporte";
     },
+    get$newCourseAccess() {
+      return "Per default, kursusene er offentlig s\xf8kbare og krever admin-godkjenning for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gpAJIP4xucxrulnKE1eWYcQ7SyQ="] = d.current;
+  d["0ttAAZ+G7XRZ1wJJxBZf98eZ7iY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_675.part.js.map

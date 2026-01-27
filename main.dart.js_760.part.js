@@ -4141,9 +4141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editCourseLater() {
       return "Du kan redigera mallens titel, beskrivningar och kursbild senare.";
     },
-    get$newCourseAccess() {
-      return "Som standard \xe4r kurser privata och kr\xe4ver administrat\xf6rsgodk\xe4nnande f\xf6r att g\xe5 med. Du kan \xe4ndra dessa inst\xe4llningar n\xe4r som helst.";
-    },
     get$createCourse() {
       return "Skapa kurs";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatWithSupport() {
       return "Chatta med support";
     },
+    get$newCourseAccess() {
+      return "Som standard \xe4r kurser offentligt s\xf6kbara och kr\xe4ver administrat\xf6rsgodk\xe4nnande f\xf6r att g\xe5 med. Du kan redigera dessa inst\xe4llningar n\xe4r som helst.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OPt5Qq0ysidSqnuZTn3Nj2EerJc="] = d.current;
+  d["n7D6rAT6LHgZr6zZFgijK/ztu6k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map
