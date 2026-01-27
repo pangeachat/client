@@ -363,22 +363,9 @@ abstract class AppRoutes {
                   },
                 ),
                 GoRoute(
-                  path: ':courseid',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      SelectedCourse(
-                        state.pathParameters['courseid']!,
-                        SelectedCourseMode.join,
-                        roomChunk: state.extra as PublicRoomsChunk?,
-                      ),
-                    );
-                  },
-                ),
-                GoRoute(
                   path: 'own',
                   pageBuilder: (context, state) {
+                    debugPrint("HELLLLO");
                     return defaultPageBuilder(
                       context,
                       state,
@@ -416,6 +403,20 @@ abstract class AppRoutes {
                       ],
                     ),
                   ],
+                ),
+                GoRoute(
+                  path: ':courseid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      SelectedCourse(
+                        state.pathParameters['courseid']!,
+                        SelectedCourseMode.join,
+                        roomChunk: state.extra as PublicRoomsChunk?,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

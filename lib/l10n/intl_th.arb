@@ -4361,7 +4361,6 @@
   "numModules": "{num} โมดูล",
   "coursePlan": "แผนหลักสูตร",
   "editCourseLater": "คุณสามารถแก้ไขชื่อเทมเพลต คำอธิบาย และภาพหลักสูตรในภายหลัง",
-  "newCourseAccess": "โดยค่าเริ่มต้น หลักสูตรเป็นส่วนตัวและต้องได้รับการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ทุกเมื่อ",
   "createCourse": "สร้างหลักสูตร",
   "stats": "สถิติ",
   "createGroupChat": "สร้างกลุ่มแชท",
@@ -4456,7 +4455,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-26 14:06:32.488603",
+  "@@last_modified": "2026-01-27 14:02:53.265962",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9890,10 +9889,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11990,6 +11985,11 @@
   },
   "chatWithSupport": "แชทกับฝ่ายสนับสนุน",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ตามค่าเริ่มต้น หลักสูตรจะสามารถค้นหาได้สาธารณะและต้องการการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ตลอดเวลา",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

@@ -1816,7 +1816,6 @@
   "numModules": "{num} модулі",
   "coursePlan": "План курса",
   "editCourseLater": "Вы можаце рэдагаваць назву шаблона, апісанні і выяву курса пазней.",
-  "newCourseAccess": "Па змаўчанні курсы прыватныя і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
   "createCourse": "Стварыць курс",
   "stats": "Статыстыка",
   "createGroupChat": "Стварыць групавы чат",
@@ -1911,7 +1910,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-26 14:06:30.471426",
+  "@@last_modified": "2026-01-27 14:02:50.270963",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9931,10 +9930,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12031,6 +12026,11 @@
   },
   "chatWithSupport": "Чат з падтрымкай",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Па змаўчанні курсы з'яўляюцца адкрытымі для пошуку і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:13.768752",
+  "@@last_modified": "2026-01-27 14:02:25.277330",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -3833,7 +3833,6 @@
   "numModules": "{num} module",
   "coursePlan": "Plan de curs",
   "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
-  "newCourseAccess": "În mod implicit, cursurile sunt private și necesită aprobarea administratorului pentru a te alătura. Poți edita aceste setări oricând.",
   "createCourse": "Creează curs",
   "stats": "Statistici",
   "createGroupChat": "Creează chat de grup",
@@ -9567,10 +9566,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11667,6 +11662,11 @@
   },
   "chatWithSupport": "Chat cu Suportul",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "În mod implicit, cursurile sunt căutabile public și necesită aprobată de administrator pentru a se alătura. Puteți edita aceste setări în orice moment.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

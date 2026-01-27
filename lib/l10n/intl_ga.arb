@@ -4422,7 +4422,6 @@
   "numModules": "{num} modúl",
   "coursePlan": "Plean Cúrsa",
   "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
-  "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí príobháideach agus iarrtar cead riarthóra chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
   "createCourse": "Cruthaigh cúrsa",
   "stats": "Staitisticí",
   "createGroupChat": "Cruthaigh comhrá grúpa",
@@ -4517,7 +4516,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-26 14:07:00.006835",
+  "@@last_modified": "2026-01-27 14:03:26.279031",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -8830,10 +8829,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10930,6 +10925,11 @@
   },
   "chatWithSupport": "Comhrá le Tacaíocht",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí inrochtana go poiblí agus éilíonn siad cead ó riarachán chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:47.498367",
+  "@@last_modified": "2026-01-27 14:03:11.965364",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -4407,7 +4407,6 @@
   "numModules": "{num} মডিউল",
   "coursePlan": "কোর্স পরিকল্পনা",
   "editCourseLater": "আপনি পরে টেমপ্লেট শিরোনাম, বিবরণ, এবং কোর্স ছবি সম্পাদনা করতে পারেন।",
-  "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি ব্যক্তিগত এবং যোগদানের জন্য অ্যাডমিন অনুমোদন প্রয়োজন। আপনি এই সেটিংস যেকোন সময় সম্পাদনা করতে পারেন।",
   "createCourse": "কোর্স তৈরি করুন",
   "stats": "পরিসংখ্যান",
   "createGroupChat": "গ্রুপ চ্যাট তৈরি করুন",
@@ -9936,10 +9935,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12036,6 +12031,11 @@
   },
   "chatWithSupport": "সমর্থনের সাথে চ্যাট করুন",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি জনসাধারণের জন্য অনুসন্ধানযোগ্য এবং যোগদানের জন্য প্রশাসক অনুমোদনের প্রয়োজন। আপনি যে কোনও সময় এই সেটিংসগুলি সম্পাদনা করতে পারেন।",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

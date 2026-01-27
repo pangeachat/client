@@ -1749,7 +1749,6 @@
   "numModules": "{num} 個模組",
   "coursePlan": "課程計劃",
   "editCourseLater": "你可以稍後編輯模板標題、描述同課程圖片。",
-  "newCourseAccess": "預設情況下，課程係私密嘅，需要管理員批准先可以加入。你可以隨時修改呢啲設定。",
   "createCourse": "建立課程",
   "stats": "統計數據",
   "createGroupChat": "建立群組聊天",
@@ -1856,7 +1855,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-26 14:06:26.055511",
+  "@@last_modified": "2026-01-27 14:02:42.486712",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -9521,10 +9520,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12023,6 +12018,11 @@
   },
   "chatWithSupport": "與支援聊天",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "默認情況下，課程是公開可搜索的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

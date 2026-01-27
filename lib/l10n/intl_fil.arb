@@ -2680,7 +2680,6 @@
   "numModules": "{num} mga module",
   "coursePlan": "Plano ng Kurso",
   "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
-  "newCourseAccess": "Sa default, ang mga kurso ay pribado at nangangailangan ng pag-apruba ng admin upang makasali. Maaari mong i-edit ang mga setting na ito anumang oras.",
   "createCourse": "Lumikha ng kurso",
   "stats": "Mga Estadistika",
   "createGroupChat": "Lumikha ng pangkat na usapan",
@@ -2787,7 +2786,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-26 14:06:35.659288",
+  "@@last_modified": "2026-01-27 14:02:56.958154",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -9825,10 +9824,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11908,6 +11903,11 @@
   },
   "chatWithSupport": "Makipag-chat sa Suporta",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

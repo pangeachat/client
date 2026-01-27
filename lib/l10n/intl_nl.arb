@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:44.085967",
+  "@@last_modified": "2026-01-27 14:03:08.964846",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -4413,7 +4413,6 @@
   "numModules": "{num} modules",
   "coursePlan": "Cursusplan",
   "editCourseLater": "U kunt de titel, beschrijvingen en cursusafbeelding later bewerken.",
-  "newCourseAccess": "Standaard zijn cursussen privé en vereist goedkeuring van een beheerder om deel te nemen. U kunt deze instellingen op elk moment aanpassen.",
   "createCourse": "Cursus maken",
   "stats": "Statistieken",
   "createGroupChat": "Groepschat maken",
@@ -8832,10 +8831,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10932,6 +10927,11 @@
   },
   "chatWithSupport": "Chat met Ondersteuning",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Standaard zijn cursussen openbaar doorzoekbaar en is goedkeuring van de beheerder vereist om deel te nemen. Je kunt deze instellingen op elk moment bewerken.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

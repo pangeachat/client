@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-26 14:06:06.100713",
+  "@@last_modified": "2026-01-27 14:02:15.353643",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -5689,7 +5689,6 @@
   "numModules": "{num} módulos",
   "coursePlan": "Plan de curso",
   "editCourseLater": "Puedes editar el título, las descripciones y la imagen del curso más tarde.",
-  "newCourseAccess": "Por defecto, los cursos son privados y requieren aprobación del administrador para unirse. Puedes editar estos ajustes en cualquier momento.",
   "createCourse": "Crear curso",
   "stats": "Estadísticas",
   "createGroupChat": "Crear chat grupal",
@@ -6032,10 +6031,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -8166,6 +8161,11 @@
   },
   "chatWithSupport": "Chatear con Soporte",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Por defecto, los cursos son buscables públicamente y requieren aprobación del administrador para unirse. Puedes editar estas configuraciones en cualquier momento.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }

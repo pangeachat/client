@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-26 14:06:23.116050",
+  "@@last_modified": "2026-01-27 14:02:38.644251",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -8815,7 +8815,6 @@
   "numModules": "{num} moodulit",
   "coursePlan": "Kursuse plaan",
   "editCourseLater": "Saate hiljem redigeerida mallide pealkirju, kirjelduid ja kursuse pilti.",
-  "newCourseAccess": "Vaikimisi on kursused privaatsed ning nõuavad administraatori kinnitust, et liituda. Saate neid seadeid igal ajal muuta.",
   "createCourse": "Loo kursus",
   "stats": "Statistika",
   "createGroupChat": "Loo grupivestlus",
@@ -9095,10 +9094,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -11203,6 +11198,11 @@
   },
   "chatWithSupport": "Vestle Toega",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.",
+  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   }
