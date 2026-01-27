@@ -178,6 +178,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<String?> getUserID() => _lastEventTimestampBox.get('user_id');
 
+  Future<DateTime?> getLastUpdated() async {
+    final entry = await _lastEventTimestampBox.get('last_updated');
+    if (entry == null) return null;
+    return DateTime.tryParse(entry);
+  }
+
   Future<DateTime?> getLastEventTimestamp() async {
     final timestampString =
         await _lastEventTimestampBox.get('last_event_timestamp');
@@ -482,6 +488,15 @@ class AnalyticsDatabase with DatabaseFileStorage {
     });
   }
 
+  Future<void> updateLastUpdated(DateTime timestamp) {
+    return _transaction(() async {
+      await _lastEventTimestampBox.put(
+        'last_updated',
+        timestamp.toIso8601String(),
+      );
+    });
+  }
+
   Future<void> updateXPOffset(int offset) {
     return _transaction(() async {
       final stats = await getDerivedStats();
@@ -577,6 +592,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
       );
     });
 
+    await updateLastUpdated(DateTime.now());
+
     stopwatch.stop();
     Logs().i(
       "Server analytics update took ${stopwatch.elapsedMilliseconds} ms",
@@ -630,6 +647,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
       }
     });
+
+    await updateLastUpdated(DateTime.now());
 
     stopwatch.stop();
     Logs().i("Local analytics update took ${stopwatch.elapsedMilliseconds} ms");
