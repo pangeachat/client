@@ -72,8 +72,7 @@ class AnalyticsPracticeSessionModel {
   }
 
   List<MessageActivityRequest> get activityRequests {
-    // Only return up to _maxAttempts (15) targets
-    final requests = practiceTargets.take(_maxAttempts).map((target) {
+    return practiceTargets.map((target) {
       return MessageActivityRequest(
         userL1: userL1,
         userL2: userL2,
@@ -82,7 +81,6 @@ class AnalyticsPracticeSessionModel {
         grammarErrorInfo: target.grammarErrorInfo,
       );
     }).toList();
-    return requests;
   }
 
   void setElapsedSeconds(int seconds) =>
