@@ -199,10 +199,8 @@ class _AnalyticsActivityView extends StatelessWidget {
                     return const SizedBox.shrink();
                   }
 
-                  return ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minHeight: 80,
-                    ),
+                  return SizedBox(
+                    height: 125.0,
                     child: selectedChoice == null
                         ? const SizedBox.shrink()
                         : SingleChildScrollView(
