@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-28 13:14:29.244829",
+  "@@last_modified": "2026-01-28 13:25:54.826808",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8181,6 +8181,11 @@
   },
   "supportSubtitle": "¿Preguntas? ¡Estamos aquí para ayudar!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo salió mal y estamos trabajando arduamente para solucionarlo. Revisa de nuevo más tarde.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

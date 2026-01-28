@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:53.381545",
+  "@@last_modified": "2026-01-28 13:26:23.872618",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10971,6 +10971,11 @@
   },
   "supportSubtitle": "Preguntes? Som aquí per ajudar!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Alguna cosa ha anat malament, i estem treballant dur per solucionar-ho. Comprova-ho més tard.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:27.883089",
+  "@@last_modified": "2026-01-28 13:25:53.869320",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11055,6 +11055,11 @@
   },
   "supportSubtitle": "질문이 있으신가요? 저희가 도와드리겠습니다!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "문제가 발생했으며, 우리는 이를 해결하기 위해 열심히 작업하고 있습니다. 나중에 다시 확인해 주세요.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

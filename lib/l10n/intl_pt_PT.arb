@@ -3330,7 +3330,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-28 13:14:55.919420",
+  "@@last_modified": "2026-01-28 13:26:26.329625",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11976,6 +11976,11 @@
   },
   "supportSubtitle": "Dúvidas? Estamos aqui para ajudar!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo deu errado, e estamos trabalhando arduamente para corrigir isso. Verifique novamente mais tarde.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

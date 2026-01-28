@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:15:11.202215",
+  "@@last_modified": "2026-01-28 13:26:49.168597",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11679,6 +11679,11 @@
   },
   "supportSubtitle": "سوالات؟ ما اینجا هستیم تا کمک کنیم!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "مشکلی پیش آمده و ما در حال تلاش برای رفع آن هستیم. بعداً دوباره بررسی کنید.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

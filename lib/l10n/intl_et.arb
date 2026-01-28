@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-28 13:14:45.496673",
+  "@@last_modified": "2026-01-28 13:26:13.431455",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11218,6 +11218,11 @@
   },
   "supportSubtitle": "Küsimused? Me oleme siin, et aidata!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Midagi läks valesti ja me teeme kõvasti tööd, et see parandada. Kontrolli hiljem uuesti.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

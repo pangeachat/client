@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-28 13:14:35.577945",
+  "@@last_modified": "2026-01-28 13:25:59.737331",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10948,6 +10948,11 @@
   },
   "supportSubtitle": "Kérdése van? Itt vagyunk, hogy segítsünk!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Valami hiba történt, és keményen dolgozunk a javításon. Kérlek, nézd meg később.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

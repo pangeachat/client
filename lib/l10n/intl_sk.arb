@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-28 13:14:38.125638",
+  "@@last_modified": "2026-01-28 13:26:03.157059",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12031,6 +12031,11 @@
   },
   "supportSubtitle": "Otázky? Sme tu, aby sme pomohli!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Niečo sa pokazilo a my na tom tvrdo pracujeme, aby sme to opravili. Skontrolujte to neskôr.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

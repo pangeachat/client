@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:15:13.142667",
+  "@@last_modified": "2026-01-28 13:26:51.814505",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11425,6 +11425,11 @@
   },
   "supportSubtitle": "Frågor? Vi är här för att hjälpa till!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Något gick fel, och vi arbetar hårt för att åtgärda det. Kolla igen senare.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

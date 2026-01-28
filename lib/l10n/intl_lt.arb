@@ -3860,7 +3860,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-28 13:15:04.627463",
+  "@@last_modified": "2026-01-28 13:26:39.413825",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11752,6 +11752,11 @@
   },
   "supportSubtitle": "Klausimai? Mes čia, kad padėtume!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

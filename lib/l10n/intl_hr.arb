@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-28 13:14:39.679670",
+  "@@last_modified": "2026-01-28 13:26:05.722028",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11319,6 +11319,11 @@
   },
   "supportSubtitle": "Imate pitanja? Tu smo da pomognemo!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nešto je pošlo po zlu i marljivo radimo na rješavanju problema. Provjerite ponovo kasnije.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-28 13:14:49.802739",
+  "@@last_modified": "2026-01-28 13:26:19.427065",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10941,6 +10941,11 @@
   },
   "supportSubtitle": "Питання? Ми тут, щоб допомогти!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Щось пішло не так, і ми наполегливо працюємо над виправленням. Перевірте пізніше.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }
