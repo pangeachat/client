@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Ikasi hizkuntza\nzure lagunekin mezularitza egiten bitartean.";
     },
-    get$languages(_) {
-      return "Hizkuntzak";
-    },
-    get$chooseLanguage() {
-      return "Hautatu helburu hizkuntza bat.";
-    },
     get$startOwn() {
       return "Hasi nirea";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Zer hizkuntza ikasten ari zara?";
+    },
+    get$searchLanguagesHint() {
+      return "Bilatu helburu hizkuntzak";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uRuVbbmYueXs01Ii2C3Y0w179HE="] = d.current;
+  d["k6/5no/wTbXehJ6NAdIpBdSPoj8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_568.part.js.map

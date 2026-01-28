@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Tanulj egy nyelvet\n\xfczenetk\xfcld\xe9s k\xf6zben a bar\xe1taidnak.";
     },
-    get$languages(_) {
-      return "Nyelvek";
-    },
-    get$chooseLanguage() {
-      return "V\xe1lasszon ki egy c\xe9lnyelvet.";
-    },
     get$startOwn() {
       return "Ind\xedtsa el saj\xe1tj\xe1t";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Alap\xe9rtelmez\xe9s szerint a kurzusok nyilv\xe1nosan kereshet\u0151k, \xe9s adminisztr\xe1tori j\xf3v\xe1hagy\xe1s sz\xfcks\xe9ges a csatlakoz\xe1shoz. Ezeket a be\xe1ll\xedt\xe1sokat b\xe1rmikor m\xf3dos\xedthatja.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Milyen nyelvet tanulsz?";
+    },
+    get$searchLanguagesHint() {
+      return "Keresd a c\xe9lnyelveket";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vNwte4yHLvYc/vldmIdGO+05zBA="] = d.current;
+  d["LK6ig8Sl2zwD4fw2UbyWTZgxZ88="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

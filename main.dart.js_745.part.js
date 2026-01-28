@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "\xcenva\u021b\u0103 o limb\u0103\n\xeen timp ce trimi\u021bi mesaje prietenilor.";
     },
-    get$languages(_) {
-      return "Limbi";
-    },
-    get$chooseLanguage() {
-      return "Alege\u021bi o limb\u0103 \u021bint\u0103.";
-    },
     get$startOwn() {
       return "\xcencepe propriul meu";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\xcen mod implicit, cursurile sunt c\u0103utabile public \u0219i necesit\u0103 aprobat\u0103 de administrator pentru a se al\u0103tura. Pute\u021bi edita aceste set\u0103ri \xeen orice moment.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Ce limb\u0103 \xeenve\u021bi?";
+    },
+    get$searchLanguagesHint() {
+      return "Caut\u0103 limbi \u021bint\u0103";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Y3/9xwgoJnXBDqjxsWiVjoergqg="] = d.current;
+  d["amxDOxuzycH4p2ZP9vMojDDzuI0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

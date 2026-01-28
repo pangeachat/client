@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Pelajari bahasa\nsambil mengirim pesan kepada teman.";
     },
-    get$languages(_) {
-      return "Bahasa";
-    },
-    get$chooseLanguage() {
-      return "Pilih bahasa target.";
-    },
     get$startOwn() {
       return "Mulai milik saya sendiri";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Bahasa apa yang Anda pelajari?";
+    },
+    get$searchLanguagesHint() {
+      return "Cari bahasa target";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PneeHI1dsTksqNuQB6XlVsgzBpQ="] = d.current;
+  d["KVAiJ8zQpUwZbcYFimA7RoWHvrM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

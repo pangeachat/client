@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Impara un linguage\ndurante scriver a tui amicos.";
     },
-    get$languages(_) {
-      return "Linguages";
-    },
-    get$chooseLanguage() {
-      return "Rogha teanga sprioc.";
-    },
     get$startOwn() {
       return "Kumencar mieu";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig \xe0m sam bith.";
     },
+    get$onboardingLanguagesTitle() {
+      return "C\xe9n teanga at\xe1 \xe1 foghlaim agat?";
+    },
+    get$searchLanguagesHint() {
+      return "Cuardaigh teangacha sprioc";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QoqwFZgNr5YNGmQw6qpnOIUvLB4="] = d.current;
+  d["l3+3klzTt6Y3cZQImkffXZZIhmk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_703.part.js.map

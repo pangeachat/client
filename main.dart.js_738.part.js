@@ -4292,12 +4292,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Ucz si\u0119 j\u0119zyka\npoprzez pisanie wiadomo\u015bci do znajomych.";
     },
-    get$languages(_) {
-      return "J\u0119zyki";
-    },
-    get$chooseLanguage() {
-      return "Wybierz j\u0119zyk docelowy.";
-    },
     get$startOwn() {
       return "Rozpocznij w\u0142asny";
     },
@@ -5339,6 +5333,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Domy\u015blnie kursy s\u0105 publicznie wyszukiwalne i wymagaj\u0105 zatwierdzenia przez administratora, aby do nich do\u0142\u0105czy\u0107. Mo\u017cesz edytowa\u0107 te ustawienia w dowolnym momencie.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Jakiego j\u0119zyka si\u0119 uczysz?";
+    },
+    get$searchLanguagesHint() {
+      return "Szukaj j\u0119zyk\xf3w docelowych";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5352,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UmKWQGOYMTlKJUjyw/R9jN5h6ns="] = d.current;
+  d["gNE0nJENKbNxmDvSkOZcEJTlhpk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_738.part.js.map

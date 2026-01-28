@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "L\xe4r dig ett spr\xe5k\nmedan du skickar meddelanden till dina v\xe4nner.";
     },
-    get$languages(_) {
-      return "Spr\xe5k";
-    },
-    get$chooseLanguage() {
-      return "V\xe4lj ett m\xe5lspr\xe5k.";
-    },
     get$startOwn() {
       return "Starta min egen";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Som standard \xe4r kurser offentligt s\xf6kbara och kr\xe4ver administrat\xf6rsgodk\xe4nnande f\xf6r att g\xe5 med. Du kan redigera dessa inst\xe4llningar n\xe4r som helst.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Vilket spr\xe5k l\xe4r du dig?";
+    },
+    get$searchLanguagesHint() {
+      return "S\xf6k efter m\xe5lspr\xe5k";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["n7D6rAT6LHgZr6zZFgijK/ztu6k="] = d.current;
+  d["gMZ2jmZcLCvGKXlNU5v8O97wRpc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

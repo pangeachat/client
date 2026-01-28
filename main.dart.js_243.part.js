@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "U\u010dte se jazyk\np\u0159i psan\xed zpr\xe1v p\u0159\xe1tel\u016fm.";
     },
-    get$languages(_) {
-      return "Jazyky";
-    },
-    get$chooseLanguage() {
-      return "Vyberte c\xedlov\xfd jazyk.";
-    },
     get$startOwn() {
       return "Za\u010d\xedt sv\u016fj vlastn\xed";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Ve v\xfdchoz\xedm nastaven\xed jsou kurzy ve\u0159ejn\u011b vyhledateln\xe9 a vy\u017eaduj\xed schv\xe1len\xed administr\xe1tora pro p\u0159ipojen\xed. Tyto nastaven\xed m\u016f\u017eete kdykoli upravit.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Jak\xfd jazyk se u\u010d\xedte?";
+    },
+    get$searchLanguagesHint() {
+      return "Hledejte c\xedlov\xe9 jazyky";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MBs2ANtIYVMhQtIAN8dhVZxGXxM="] = d.current;
+  d["pyATxTAwfPs5gWwCqnnJYul6J3U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

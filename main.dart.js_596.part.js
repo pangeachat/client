@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Matuto ng isang wika\nhabang nagte-text sa iyong mga kaibigan.";
     },
-    get$languages(_) {
-      return "Mga Wika";
-    },
-    get$chooseLanguage() {
-      return "Pumili ng target na wika.";
-    },
     get$startOwn() {
       return "Simulan ang sarili kong kurso";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Anong wika ang iyong pinag-aaralan?";
+    },
+    get$searchLanguagesHint() {
+      return "Maghanap ng mga target na wika";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fLgLkve/hx1gvNtYDGkCbt49nFQ="] = d.current;
+  d["iXzJrZFHDRHa/TRWvOtM4TeBChU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_596.part.js.map

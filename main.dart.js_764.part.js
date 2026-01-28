@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Bir dil \xf6\u011frenin\narkada\u015flar\u0131n\u0131za mesaj atarken.";
     },
-    get$languages(_) {
-      return "Diller";
-    },
-    get$chooseLanguage() {
-      return "Hedef bir dil se\xe7in.";
-    },
     get$startOwn() {
       return "Kendi ba\u015f\u0131ma ba\u015fla";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Varsay\u0131lan olarak, kurslar herkese a\xe7\u0131k olarak aranabilir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerektirir. Bu ayarlar\u0131 istedi\u011finiz zaman d\xfczenleyebilirsiniz.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Hangi dili \xf6\u011freniyorsunuz?";
+    },
+    get$searchLanguagesHint() {
+      return "Hedef dilleri aray\u0131n";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A4aGlsOt9Zz1qr9YKGoVdqRnhH4="] = d.current;
+  d["0Sj+wcfh71aHqXFB7caVmwwq1OY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_764.part.js.map

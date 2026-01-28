@@ -4293,12 +4293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "\u0f5a\u0f7c\u0f42\u0f66\u0f0b\u0f5a\u0f7c\u0f42\u0f66\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f61\u0f72\u0f42\u0f0b\u0f66\u0fb3\u0f7c\u0f56\u0f0b\u0f5a\u0f53\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0d\n\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f42\u0fb2\u0f7c\u0f42\u0f66\u0f0b\u0f58\u0f5a\u0f53\u0f0b\u0f63\u0f0b\u0f62\u0f9f\u0f42\u0f0b\u0f54\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f58\u0f0d";
     },
-    get$languages(_) {
-      return "\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f9f";
-    },
-    get$chooseLanguage() {
-      return "Pilih bahasa target.";
-    },
     get$startOwn() {
       return "Start my own";
     },
@@ -5340,6 +5334,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Kedua bahasa apa yang Anda pelajari?";
+    },
+    get$searchLanguagesHint() {
+      return "Cari bahasa target";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5365,7 +5365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9Hr4/aGrsw2R27tuefKauEXt4KQ="] = d.current;
+  d["t7EpHk/fCYcB0/9mYNjYcZnerzQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Foghlaim teanga\nag an am c\xe9anna le do chairde.";
     },
-    get$languages(_) {
-      return "Teangacha";
-    },
-    get$chooseLanguage() {
-      return "Roghnaigh teanga sprioc.";
-    },
     get$startOwn() {
       return "Tosaigh mo chuid f\xe9in";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "De r\xe9ir r\xe9amhshocraithe, t\xe1 c\xfarsa\xed inrochtana go poibl\xed agus \xe9il\xedonn siad cead \xf3 riarach\xe1n chun p\xe1irt a ghlacadh. Is f\xe9idir leat na socruithe seo a chur in eagar ag am ar bith.";
     },
+    get$onboardingLanguagesTitle() {
+      return "C\xe9n teanga at\xe1 \xe1 foghlaim agat?";
+    },
+    get$searchLanguagesHint() {
+      return "Cuardaigh teangacha sprioc";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ok/7pN6w2xj8HycXT7BX2DJGd4Y="] = d.current;
+  d["wNzWEFK0+6dAw5sSh5GWMTRR+Z0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

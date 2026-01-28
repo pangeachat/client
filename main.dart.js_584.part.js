@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Opiskele kielt\xe4\nl\xe4hett\xe4m\xe4ll\xe4 viestej\xe4 yst\xe4villesi.";
     },
-    get$languages(_) {
-      return "Kielet";
-    },
-    get$chooseLanguage() {
-      return "Valitse kohdekieli.";
-    },
     get$startOwn() {
       return "Aloita oma";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liittymiseen. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Mit\xe4 kielt\xe4 opit?";
+    },
+    get$searchLanguagesHint() {
+      return "Etsi kohdekieli\xe4";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aWDj0wFy8L6Y5J2DSAzC/J4208E="] = d.current;
+  d["3lA4YPkXUj0b1JK2GkiiGESLDp0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_584.part.js.map

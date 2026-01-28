@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Impara un idioma\ndum il texta a tu amicos.";
     },
-    get$languages(_) {
-      return "Linguas";
-    },
-    get$chooseLanguage() {
-      return "S\xe8la un lingue de destin.";
-    },
     get$startOwn() {
       return "Comencia mi proprie";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Per default, kursusene er offentlig s\xf8kbare og krever admin-godkjenning for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Kia lingvo vi lernas?";
+    },
+    get$searchLanguagesHint() {
+      return "Ser\u0109u celajn lingvojn";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0ttAAZ+G7XRZ1wJJxBZf98eZ7iY="] = d.current;
+  d["a1ocky2qikT7aKIiwXiSOoTMFBc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_675.part.js.map

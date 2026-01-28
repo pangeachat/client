@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Leer een taal\nterwijl je met je vrienden chat.";
     },
-    get$languages(_) {
-      return "Talen";
-    },
-    get$chooseLanguage() {
-      return "Kies een doeltaal.";
-    },
     get$startOwn() {
       return "Begin mijn eigen";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Standaard zijn cursussen openbaar doorzoekbaar en is goedkeuring van de beheerder vereist om deel te nemen. Je kunt deze instellingen op elk moment bewerken.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Welke taal ben je aan het leren?";
+    },
+    get$searchLanguagesHint() {
+      return "Zoek doeltalen";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k7O8EEGmx2im2KgPBuF20o6QeEg="] = d.current;
+  d["PrgWSoiO01c6Zbq0mUWfDh+0ypo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

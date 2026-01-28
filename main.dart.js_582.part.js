@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "\u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0632\u0628\u0627\u0646\n\u062f\u0631 \u062d\u06cc\u0646 \u067e\u06cc\u0627\u0645\u200c\u0631\u0633\u0627\u0646\u06cc \u0628\u0647 \u062f\u0648\u0633\u062a\u0627\u0646\u062a\u0627\u0646.";
     },
-    get$languages(_) {
-      return "\u0632\u0628\u0627\u0646\u200c\u0647\u0627";
-    },
-    get$chooseLanguage() {
-      return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f.";
-    },
     get$startOwn() {
       return "\u0634\u0631\u0648\u0639 \u06a9\u0631\u062f\u0646 \u062e\u0648\u062f\u0645";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\u0628\u0647 \u0637\u0648\u0631 \u067e\u06cc\u0634\u200c\u0641\u0631\u0636\u060c \u062f\u0648\u0631\u0647\u200c\u0647\u0627 \u0628\u0647 \u0635\u0648\u0631\u062a \u0639\u0645\u0648\u0645\u06cc \u0642\u0627\u0628\u0644 \u062c\u0633\u062a\u062c\u0648 \u0647\u0633\u062a\u0646\u062f \u0648 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u0622\u0646\u200c\u0647\u0627 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0623\u06cc\u06cc\u062f \u0645\u062f\u06cc\u0631 \u062f\u0627\u0631\u0646\u062f. \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u06cc\u0646 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0627 \u062f\u0631 \u0647\u0631 \u0632\u0645\u0627\u0646 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f.";
     },
+    get$onboardingLanguagesTitle() {
+      return "\u0634\u0645\u0627 \u062f\u0631 \u062d\u0627\u0644 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0686\u0647 \u0632\u0628\u0627\u0646\u06cc \u0647\u0633\u062a\u06cc\u062f\u061f";
+    },
+    get$searchLanguagesHint() {
+      return "\u0632\u0628\u0627\u0646\u200c\u0647\u0627\u06cc \u0647\u062f\u0641 \u0631\u0627 \u062c\u0633\u062a\u062c\u0648 \u06a9\u0646\u06cc\u062f";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2RsZHpJe4fy4/1UxINoVZDIlG58="] = d.current;
+  d["1su7fNbi3YUkFr38hM5DHwryr+w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_582.part.js.map

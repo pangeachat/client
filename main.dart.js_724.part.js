@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "M\u0101cieties valodu\nrakstot zi\u0146as draugiem.";
     },
-    get$languages(_) {
-      return "Valodas";
-    },
-    get$chooseLanguage() {
-      return "Izv\u0113lieties m\u0113r\u0137a valodu.";
-    },
     get$startOwn() {
       return "S\u0101kt savu";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "P\u0113c noklus\u0113juma kursi ir publiski mekl\u0113jami un prasa administratora apstiprin\u0101jumu pievieno\u0161anai. J\u016bs varat redi\u0123\u0113t \u0161os iestat\u012bjumus jebkur\u0101 laik\u0101.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Kuru valodu tu m\u0101cies?";
+    },
+    get$searchLanguagesHint() {
+      return "Mekl\u0113t m\u0113r\u0137a valodas";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kdOI8X5kEroy9kpJnaqXT1zHAsI="] = d.current;
+  d["VduConfpUBbaNt9rYN8dEnLgT+k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_724.part.js.map

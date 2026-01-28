@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Nau\u010dte sa jazyk\npo\u010das p\xedsania spr\xe1v priate\u013eom.";
     },
-    get$languages(_) {
-      return "Jazyky";
-    },
-    get$chooseLanguage() {
-      return "Vyberte cie\u013eov\xfd jazyk.";
-    },
     get$startOwn() {
       return "Za\u010da\u0165 vlastn\xe9";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Predvolene s\xfa kurzy verejne vyh\u013eadate\u013en\xe9 a vy\u017eaduj\xfa schv\xe1lenie administr\xe1tora na pripojenie. Tieto nastavenia m\xf4\u017eete kedyko\u013evek upravi\u0165.";
     },
+    get$onboardingLanguagesTitle() {
+      return "Ak\xfd jazyk sa u\u010d\xedte?";
+    },
+    get$searchLanguagesHint() {
+      return "H\u013eadajte cie\u013eov\xe9 jazyky";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SL5boamB3X1xdULAPPsYkJyXEek="] = d.current;
+  d["pF2boSHETv+QW0Kh92zTYvaLBcg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

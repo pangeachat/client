@@ -4291,12 +4291,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "\u53cb\u9054\u3068\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u9001\u308a\u306a\u304c\u3089\u8a00\u8a9e\u3092\u5b66\u3073\u307e\u3057\u3087\u3046\u3002";
     },
-    get$languages(_) {
-      return "\u8a00\u8a9e";
-    },
-    get$chooseLanguage() {
-      return "\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
-    },
     get$startOwn() {
       return "\u81ea\u5206\u306e\u3082\u306e\u3092\u59cb\u3081\u308b";
     },
@@ -5338,6 +5332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u3001\u30b3\u30fc\u30b9\u306f\u516c\u958b\u691c\u7d22\u53ef\u80fd\u3067\u3001\u53c2\u52a0\u3059\u308b\u306b\u306f\u7ba1\u7406\u8005\u306e\u627f\u8a8d\u304c\u5fc5\u8981\u3067\u3059\u3002\u3053\u308c\u3089\u306e\u8a2d\u5b9a\u306f\u3044\u3064\u3067\u3082\u7de8\u96c6\u3067\u304d\u307e\u3059\u3002";
     },
+    get$onboardingLanguagesTitle() {
+      return "\u3069\u306e\u8a00\u8a9e\u3092\u5b66\u3093\u3067\u3044\u307e\u3059\u304b\uff1f";
+    },
+    get$searchLanguagesHint() {
+      return "\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u3092\u691c\u7d22";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PHn8P+CKpBkmsgQRUbudBb+rCCQ="] = d.current;
+  d["GbXiG1qmVL87RDuGN9c4tzxzwCc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_712.part.js.map

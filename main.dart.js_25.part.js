@@ -4303,12 +4303,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda um idioma\nenquanto envia mensagens aos seus amigos.";
     },
-    get$languages(_) {
-      return "Idiomas";
-    },
-    get$chooseLanguage() {
-      return "Escolha um idioma de destino.";
-    },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
@@ -5349,6 +5343,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newCourseAccess() {
       return "Por padr\xe3o, os cursos s\xe3o pesquis\xe1veis publicamente e requerem aprova\xe7\xe3o do administrador para participar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.";
+    },
+    get$onboardingLanguagesTitle() {
+      return "Qual idioma voc\xea est\xe1 aprendendo?";
+    },
+    get$searchLanguagesHint() {
+      return "Pesquise idiomas-alvo";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9630,12 +9630,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda um idioma\nenquanto envia mensagens para seus amigos.";
     },
-    get$languages(_) {
-      return "Idiomas";
-    },
-    get$chooseLanguage() {
-      return "Escolha um idioma de destino.";
-    },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
@@ -10673,6 +10667,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newCourseAccess() {
       return string$.Por_pa;
+    },
+    get$onboardingLanguagesTitle() {
+      return "Qual idioma voc\xea est\xe1 aprendendo?";
+    },
+    get$searchLanguagesHint() {
+      return "Pesquise idiomas-alvo";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -14954,12 +14954,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda uma l\xedngua\nenquanto envia mensagens aos seus amigos.";
     },
-    get$languages(_) {
-      return "L\xednguas";
-    },
-    get$chooseLanguage() {
-      return "Escolha um idioma de destino.";
-    },
     get$startOwn() {
       return "Come\xe7ar o meu pr\xf3prio";
     },
@@ -15998,6 +15992,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return string$.Por_pa;
     },
+    get$onboardingLanguagesTitle() {
+      return "Qual idioma voc\xea est\xe1 aprendendo?";
+    },
+    get$searchLanguagesHint() {
+      return "Pesquise idiomas-alvo";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16205,7 +16205,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IKMkmd71u4OviwJaBl/KN7P+a7M="] = d.current;
+  d["K2T30xKNir8TxYvJA31+5pxVPVs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
