@@ -162,7 +162,7 @@ class NewVocabBubble extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            Symbols.toys_and_games,
+            Symbols.dictionary,
             color: theme.colorScheme.primary,
             size: 24,
           ),
