@@ -160,7 +160,8 @@ class AnalyticsPracticeSessionRepo {
           feature == MorphFeaturesEnum.Poss ||
           feature == MorphFeaturesEnum.Reflex ||
           feature == MorphFeaturesEnum.PrepCase ||
-          feature == MorphFeaturesEnum.NumType) {
+          feature == MorphFeaturesEnum.NumType ||
+          feature == MorphFeaturesEnum.NumForm) {
         continue;
       }
 
@@ -305,6 +306,29 @@ class AnalyticsPracticeSessionRepo {
         if (choiceTokens.length <= 1) {
           continue;
         }
+
+        // Check if the first token was practiced in the last 24 hours
+        final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
+        final firstToken = choiceTokens.first;
+        final tokenIdentifier = ConstructIdentifier(
+          lemma: firstToken.lemma.text,
+          type: ConstructTypeEnum.vocab,
+          category: firstToken.pos,
+        );
+
+        final recentUses = await MatrixState
+            .pangeaController.matrixState.analyticsDataService
+            .getUses(since: cutoffTime);
+
+        final hasRecentPractice = recentUses.any(
+          (use) =>
+              use.identifier == tokenIdentifier &&
+              (use.useType == ConstructUseTypeEnum.corGE ||
+                  use.useType == ConstructUseTypeEnum.incGE),
+        );
+
+        if (hasRecentPractice) continue;
+
         String? translation;
         try {
           translation = await event.requestRespresentationByL1();
@@ -321,6 +345,7 @@ class AnalyticsPracticeSessionRepo {
         }
 
         if (translation == null) continue;
+
         targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
