@@ -15,9 +15,24 @@ class PasswordLoginView extends StatelessWidget {
       key: controller.formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            L10n.of(context).loginWithEmail,
+          title: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 450,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BackButton(
+                  onPressed: Navigator.of(context).pop,
+                ),
+                Text(L10n.of(context).loginWithEmail),
+                const SizedBox(
+                  width: 40.0,
+                ),
+              ],
+            ),
           ),
+          automaticallyImplyLeading: false,
         ),
         body: SafeArea(
           child: Center(
