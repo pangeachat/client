@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:15.909371",
+  "@@last_modified": "2026-01-28 13:26:18.238331",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10945,6 +10945,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Domande? Siamo qui per aiutarti!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Qualcosa è andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo più tardi.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

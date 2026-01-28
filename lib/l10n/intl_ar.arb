@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-28 11:22:30.477643",
+  "@@last_modified": "2026-01-28 13:26:35.542116",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11159,6 +11159,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "أسئلة؟ نحن هنا للمساعدة!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "حدث خطأ ما، ونحن نعمل بجد على إصلاحه. تحقق مرة أخرى لاحقًا.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

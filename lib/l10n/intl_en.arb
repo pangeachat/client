@@ -5064,6 +5064,8 @@
   "useActivityImageAsChatBackground": "Use activity image as chat background",
   "chatWithSupport": "Chat with Support",
   "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
+  "courseLoadingError": "Something went wrong, and we're hard at work fixing it. Check again later.",
   "onboardingLanguagesTitle": "What language are you learning?",
-  "searchLanguagesHint": "Search target languages"
+  "searchLanguagesHint": "Search target languages",
+  "supportSubtitle": "Questions? We're here to help!"
 }

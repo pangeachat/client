@@ -1919,7 +1919,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-28 11:22:33.163067",
+  "@@last_modified": "2026-01-28 13:26:38.102435",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12031,6 +12031,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "ప్రశ్నలు? మేము మీకు సహాయం చేయడానికి ఇక్కడ ఉన్నాము!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "ఏదో తప్పు జరిగింది, మరియు మేము దీన్ని సరిదిద్దడానికి కష్టపడుతున్నాము. తర్వాత మళ్లీ తనిఖీ చేయండి.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

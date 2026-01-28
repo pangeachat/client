@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:35.606622",
+  "@@last_modified": "2026-01-28 13:26:40.659203",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6512,6 +6512,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Câu hỏi? Chúng tôi ở đây để giúp đỡ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Đã xảy ra sự cố, và chúng tôi đang nỗ lực khắc phục. Vui lòng kiểm tra lại sau.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

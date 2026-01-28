@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -54,6 +55,17 @@ class CourseSettings extends StatelessWidget {
     }
 
     if (controller.course == null || controller.courseError != null) {
+      if (controller.courseError is Response &&
+          (controller.courseError as Response).statusCode == 500) {
+        return Center(
+          child: Text(
+            L10n.of(context).courseLoadingError,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        );
+      }
+
       return room.canChangeStateEvent(PangeaEventTypes.coursePlan)
           ? Column(
               spacing: 50.0,

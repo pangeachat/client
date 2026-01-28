@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-28 11:22:04.786494",
+  "@@last_modified": "2026-01-28 13:26:10.864458",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10942,6 +10942,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Galderak? Hemen gaude laguntzeko!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Zerbait oker joan da, eta horren konponketan lan gogorra egiten ari gara. Begiratu berriro geroago.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

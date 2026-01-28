@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-28 11:22:40.631434",
+  "@@last_modified": "2026-01-28 13:26:45.843538",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10933,6 +10933,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "有问题吗？我们在这里帮助您！",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "出现了一些问题，我们正在努力修复。请稍后再检查。",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

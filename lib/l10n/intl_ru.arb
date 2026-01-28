@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-28 11:22:52.811123",
+  "@@last_modified": "2026-01-28 13:26:58.889837",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11050,6 +11050,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Вопросы? Мы здесь, чтобы помочь!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Что-то пошло не так, и мы усердно работаем над исправлением. Проверьте позже.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

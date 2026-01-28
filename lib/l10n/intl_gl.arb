@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-28 11:21:48.193565",
+  "@@last_modified": "2026-01-28 13:25:56.077589",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10939,6 +10939,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "¿Preguntas? Estamos aquí para axudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo saíu mal e estamos traballando duro para solucionalo. Comproba de novo máis tarde.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

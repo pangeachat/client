@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-28 11:22:31.719920",
+  "@@last_modified": "2026-01-28 13:26:36.845268",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11164,6 +11164,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Sorular mı? Yardımcı olmaya buradayız!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Bir şeyler yanlış gitti ve biz bunu düzeltmek için yoğun bir şekilde çalışıyoruz. Lütfen daha sonra tekrar kontrol edin.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

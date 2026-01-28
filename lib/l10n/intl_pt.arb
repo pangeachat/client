@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:05.803053",
+  "@@last_modified": "2026-01-28 13:26:11.994676",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12042,6 +12042,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Dúvidas? Estamos aqui para ajudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo deu errado, e estamos trabalhando arduamente para corrigir isso. Verifique novamente mais tarde.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

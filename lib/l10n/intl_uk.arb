@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-28 11:22:17.132130",
+  "@@last_modified": "2026-01-28 13:26:19.427065",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10936,6 +10936,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Питання? Ми тут, щоб допомогти!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Щось пішло не так, і ми наполегливо працюємо над виправленням. Перевірте пізніше.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:38.374548",
+  "@@last_modified": "2026-01-28 13:26:43.074504",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10942,6 +10942,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Vragen? We zijn hier om te helpen!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Er is iets misgegaan en we zijn hard aan het werk om het op te lossen. Kijk later nog eens.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

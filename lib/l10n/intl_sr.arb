@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:55.286222",
+  "@@last_modified": "2026-01-28 13:27:01.338972",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12044,6 +12044,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pitanja? Tu smo da pomognemo!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nešto je pošlo po zlu, i mi marljivo radimo na rešenju. Proverite ponovo kasnije.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

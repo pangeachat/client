@@ -125,9 +125,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   final Duration transitionAnimationDuration =
       const Duration(milliseconds: 300);
 
-  final Offset _defaultMessageOffset =
-      const Offset(Avatar.defaultSize + 16 + 8, 300);
-
   double get _horizontalPadding =>
       FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
@@ -232,14 +229,14 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         null,
       );
 
-  Offset get _originalMessageOffset {
+  Offset? get _originalMessageOffset {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return _defaultMessageOffset;
+      return null;
     }
     return _runWithLogging(
       () => _messageRenderBox?.localToGlobal(Offset.zero),
       "Error getting message offset",
-      _defaultMessageOffset,
+      null,
     );
   }
 
@@ -267,27 +264,36 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? get messageLeftOffset {
     if (ownMessage) return null;
 
+    final offset = _originalMessageOffset;
+    if (offset == null) {
+      return Avatar.defaultSize + 16;
+    }
+
     if (isRtl) {
-      return _originalMessageOffset.dx -
-          (showDetails ? FluffyThemes.columnWidth : 0);
+      return offset.dx - (showDetails ? FluffyThemes.columnWidth : 0);
     }
 
     if (ownMessage) return null;
-    return max(_originalMessageOffset.dx - columnWidth, 0);
+    return max(offset.dx - columnWidth, 0);
   }
 
   double? get messageRightOffset {
     if (mediaQuery == null || !ownMessage) return null;
 
+    final offset = _originalMessageOffset;
+    if (offset == null) {
+      return 8.0;
+    }
+
     if (isRtl) {
       return mediaQuery!.size.width -
           columnWidth -
-          _originalMessageOffset.dx -
+          offset.dx -
           originalMessageSize.width;
     }
 
     return mediaQuery!.size.width -
-        _originalMessageOffset.dx -
+        offset.dx -
         originalMessageSize.width -
         (showDetails ? FluffyThemes.columnWidth : 0);
   }
@@ -344,7 +350,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   bool get _hasFooterOverflow {
     if (_screenHeight == null) return false;
-    final bottomOffset = _originalMessageOffset.dy +
+    final offset = _originalMessageOffset;
+    if (offset == null) return false;
+
+    final bottomOffset = offset.dy +
         originalMessageSize.height +
         _reactionsHeight +
         AppConfig.toolbarMenuHeight +
@@ -357,6 +366,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double get spaceBelowContent {
     if (shouldScroll) return 0;
     if (_hasFooterOverflow) return 0;
+    final offset = _originalMessageOffset;
+    if (offset == null) return 300;
 
     final messageHeight = originalMessageSize.height;
     final originalContentHeight =
@@ -364,8 +375,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
 
-    double boxHeight =
-        screenHeight - _originalMessageOffset.dy - originalContentHeight;
+    double boxHeight = screenHeight - offset.dy - originalContentHeight;
 
     final neededSpace =
         boxHeight + _fullContentHeight + mediaQuery!.padding.top + 4.0;

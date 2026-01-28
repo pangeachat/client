@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:41.965760",
+  "@@last_modified": "2026-01-28 13:26:47.712647",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12046,6 +12046,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "প্রশ্ন আছে? আমরা সাহায্য করতে এখানে আছি!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "কিছু ভুল হয়েছে, এবং আমরা এটি ঠিক করতে কঠোর পরিশ্রম করছি। পরে আবার চেক করুন।",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

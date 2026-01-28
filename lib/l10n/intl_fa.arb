@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:43.436826",
+  "@@last_modified": "2026-01-28 13:26:49.168597",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11674,6 +11674,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "سوالات؟ ما اینجا هستیم تا کمک کنیم!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "مشکلی پیش آمده و ما در حال تلاش برای رفع آن هستیم. بعداً دوباره بررسی کنید.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

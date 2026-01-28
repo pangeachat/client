@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-28 11:22:07.195180",
+  "@@last_modified": "2026-01-28 13:26:13.431455",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11213,6 +11213,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Küsimused? Me oleme siin, et aidata!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Midagi läks valesti ja me teeme kõvasti tööd, et see parandada. Kontrolli hiljem uuesti.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

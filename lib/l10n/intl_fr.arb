@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-28 11:22:58.035061",
+  "@@last_modified": "2026-01-28 13:27:03.910294",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11266,6 +11266,16 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Des questions ? Nous sommes là pour vous aider !",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Quelque chose a mal tourné, et nous travaillons dur pour le réparer. Vérifiez à nouveau plus tard.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

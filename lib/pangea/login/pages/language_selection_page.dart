@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
@@ -105,15 +106,25 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
       appBar: AppBar(
         title: ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: 450,
+            maxWidth: 500,
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 12.0,
             children: [
               BackButton(
                 onPressed: Navigator.of(context).pop,
               ),
-              Text(L10n.of(context).onboardingLanguagesTitle),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return ShrinkableText(
+                      text: L10n.of(context).onboardingLanguagesTitle,
+                      maxWidth: constraints.maxWidth,
+                      alignment: Alignment.center,
+                    );
+                  },
+                ),
+              ),
               const SizedBox(
                 width: 40.0,
               ),
@@ -127,7 +138,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
-              maxWidth: 450,
+              maxWidth: 500,
             ),
             child: Column(
               spacing: 24.0,
