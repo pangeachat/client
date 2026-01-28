@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Per default, kursusene er offentlig s\xf8kbare og krever admin-godkjenning for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
     },
+    get$courseLoadingError() {
+      return "N'ayen a fau, e n'ayen a t'awen a t'awen a t'awen. T'awen a t'awen a t'awen.";
+    },
     get$onboardingLanguagesTitle() {
       return "Kia lingvo vi lernas?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vYmlEFZKcTpJ53fLJ6qG+H2Mc/s="] = d.current;
+  d["7xY8fV23sRSaAX20NAffWGcS6BA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_676.part.js.map

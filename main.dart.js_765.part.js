@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Varsay\u0131lan olarak, kurslar herkese a\xe7\u0131k olarak aranabilir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerektirir. Bu ayarlar\u0131 istedi\u011finiz zaman d\xfczenleyebilirsiniz.";
     },
+    get$courseLoadingError() {
+      return "Bir \u015feyler yanl\u0131\u015f gitti ve biz bunu d\xfczeltmek i\xe7in yo\u011fun bir \u015fekilde \xe7al\u0131\u015f\u0131yoruz. L\xfctfen daha sonra tekrar kontrol edin.";
+    },
     get$onboardingLanguagesTitle() {
       return "Hangi dili \xf6\u011freniyorsunuz?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WjCe4Wb2K2GEimjAISv01V2MMTs="] = d.current;
+  d["T8Rbi2BGYdM0WfvC1v5kPlS7hVM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

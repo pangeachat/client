@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.";
     },
+    get$courseLoadingError() {
+      return "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.";
+    },
     get$onboardingLanguagesTitle() {
       return "Bahasa apa yang Anda pelajari?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nCZEOSOgOpqUqOYhZE3iLTlikNs="] = d.current;
+  d["V0OgusxOwTriMCrvtlTi9yozzmc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_694.part.js.map

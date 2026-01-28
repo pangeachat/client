@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Som standard er kurs offentlig s\xf8kbare og krever administratortillatelse for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
     },
+    get$courseLoadingError() {
+      return "Noe gikk galt, og vi jobber hardt med \xe5 fikse det. Sjekk igjen senere.";
+    },
     get$onboardingLanguagesTitle() {
       return "Hvilket spr\xe5k l\xe6rer du?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qA0uJwYDyUGkxm7LmeSlDqwEdEw="] = d.current;
+  d["IhDzmnb9O1Iq1gDb2+1fR7M2H2I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_730.part.js.map

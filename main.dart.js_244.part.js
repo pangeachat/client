@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Ve v\xfdchoz\xedm nastaven\xed jsou kurzy ve\u0159ejn\u011b vyhledateln\xe9 a vy\u017eaduj\xed schv\xe1len\xed administr\xe1tora pro p\u0159ipojen\xed. Tyto nastaven\xed m\u016f\u017eete kdykoli upravit.";
     },
+    get$courseLoadingError() {
+      return "N\u011bco se pokazilo a my na tom tvrd\u011b pracujeme. Zkontrolujte to pros\xedm pozd\u011bji.";
+    },
     get$onboardingLanguagesTitle() {
       return "Jak\xfd jazyk se u\u010d\xedte?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oH9Q5GNQnhm83IFTOwebIgiuosE="] = d.current;
+  d["qwAkscJtWwu/3dDtjvUc1vVmk2Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_244.part.js.map

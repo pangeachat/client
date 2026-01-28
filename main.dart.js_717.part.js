@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Pagal numatytuosius nustatymus, kursai yra vie\u0161ai ie\u0161komi ir reikalauja administratoriaus patvirtinimo prisijungti. \u0160iuos nustatymus galite redaguoti bet kada.";
     },
+    get$courseLoadingError() {
+      return "Ka\u017ekas nepavyko, ir mes sunkiai dirbame, kad tai i\u0161spr\u0119stume. Patikrinkite v\u0117liau.";
+    },
     get$onboardingLanguagesTitle() {
       return "Koki\u0105 kalb\u0105 mokot\u0117s?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WwZeJ3pX201X6xDWRYF7BUigZ6c="] = d.current;
+  d["S2P3kRqscMvJM9H+34AY/CzRPE8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

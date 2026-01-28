@@ -5339,6 +5339,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u8bfe\u7a0b\u662f\u516c\u5f00\u53ef\u641c\u7d22\u7684\uff0c\u5e76\u4e14\u9700\u8981\u7ba1\u7406\u5458\u6279\u51c6\u624d\u80fd\u52a0\u5165\u3002\u60a8\u53ef\u4ee5\u968f\u65f6\u7f16\u8f91\u8fd9\u4e9b\u8bbe\u7f6e\u3002";
     },
+    get$courseLoadingError() {
+      return "\u51fa\u73b0\u4e86\u4e00\u4e9b\u95ee\u9898\uff0c\u6211\u4eec\u6b63\u5728\u52aa\u529b\u4fee\u590d\u3002\u8bf7\u7a0d\u540e\u518d\u68c0\u67e5\u3002";
+    },
     get$onboardingLanguagesTitle() {
       return "\u4f60\u6b63\u5728\u5b66\u4e60\u4ec0\u4e48\u8bed\u8a00\uff1f";
     },
@@ -10666,6 +10669,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\u9810\u8a2d\u60c5\u6cc1\u4e0b\uff0c\u8ab2\u7a0b\u662f\u516c\u958b\u53ef\u641c\u5c0b\u7684\uff0c\u4e26\u4e14\u9700\u8981\u7ba1\u7406\u54e1\u6279\u51c6\u624d\u80fd\u52a0\u5165\u3002\u60a8\u53ef\u4ee5\u96a8\u6642\u7de8\u8f2f\u9019\u4e9b\u8a2d\u7f6e\u3002";
     },
+    get$courseLoadingError() {
+      return "\u767c\u751f\u4e86\u4e00\u4e9b\u554f\u984c\uff0c\u6211\u5011\u6b63\u5728\u52aa\u529b\u4fee\u5fa9\u3002\u7a0d\u5f8c\u518d\u6aa2\u67e5\u3002";
+    },
     get$onboardingLanguagesTitle() {
       return "\u4f60\u6b63\u5728\u5b78\u7fd2\u4ec0\u9ebc\u8a9e\u8a00\uff1f";
     },
@@ -10689,7 +10695,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HnJJX2objChzE42NoiKOx9W5hlE="] = d.current;
+  d["tbspV+fk0thRH0ayj2EUM1B3vio="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

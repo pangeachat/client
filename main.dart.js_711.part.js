@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Per impostazione predefinita, i corsi sono ricercabili pubblicamente e richiedono l'approvazione dell'amministratore per unirsi. Puoi modificare queste impostazioni in qualsiasi momento.";
     },
+    get$courseLoadingError() {
+      return "Qualcosa \xe8 andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo pi\xf9 tardi.";
+    },
     get$onboardingLanguagesTitle() {
       return "Quale lingua stai imparando?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["X0ZTX5VWZFnDW7NOcI+dvSUyFaY="] = d.current;
+  d["e+HjZlnSxywheNNTkHXo88HUMAk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_711.part.js.map

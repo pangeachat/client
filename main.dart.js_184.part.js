@@ -5333,6 +5333,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Per defecte, els cursos s\xf3n cercables p\xfablicament i requereixen l'aprovaci\xf3 de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.";
     },
+    get$courseLoadingError() {
+      return "Alguna cosa ha anat malament, i estem treballant dur per solucionar-ho. Comprova-ho m\xe9s tard.";
+    },
     get$onboardingLanguagesTitle() {
       return "Quina llengua est\xe0s aprenent?";
     },
@@ -5358,7 +5361,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2+ZiO/CAulsz0pUI08N9mytosFw="] = d.current;
+  d["CfaLMA3OSR0V4HObFgJ9T9uUK4U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map

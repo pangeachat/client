@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Standaard zijn cursussen openbaar doorzoekbaar en is goedkeuring van de beheerder vereist om deel te nemen. Je kunt deze instellingen op elk moment bewerken.";
     },
+    get$courseLoadingError() {
+      return "Er is iets misgegaan en we zijn hard aan het werk om het op te lossen. Kijk later nog eens.";
+    },
     get$onboardingLanguagesTitle() {
       return "Welke taal ben je aan het leren?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VnIL3kW5ahVLcjo7XWdVSQ3f9Io="] = d.current;
+  d["vqPHLnww7KkhgSu/nKpaiOReeuI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

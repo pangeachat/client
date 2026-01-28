@@ -5252,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Permis;
     },
     get$genericWebRecordingError() {
-      return string$.Algo_d;
+      return string$.Algo_dx2e;
     },
     get$screenSizeWarning() {
       return string$.Para_a;
@@ -5343,6 +5343,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newCourseAccess() {
       return "Por padr\xe3o, os cursos s\xe3o pesquis\xe1veis publicamente e requerem aprova\xe7\xe3o do administrador para participar. Voc\xea pode editar essas configura\xe7\xf5es a qualquer momento.";
+    },
+    get$courseLoadingError() {
+      return string$.Algo_dx2c;
     },
     get$onboardingLanguagesTitle() {
       return "Qual idioma voc\xea est\xe1 aprendendo?";
@@ -10579,7 +10582,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Permis;
     },
     get$genericWebRecordingError() {
-      return string$.Algo_d;
+      return string$.Algo_dx2e;
     },
     get$screenSizeWarning() {
       return string$.Para_a;
@@ -10670,6 +10673,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newCourseAccess() {
       return string$.Por_pa;
+    },
+    get$courseLoadingError() {
+      return "Algo deu errado, e estamos trabalhando duro para consertar. Verifique novamente mais tarde.";
     },
     get$onboardingLanguagesTitle() {
       return "Qual idioma voc\xea est\xe1 aprendendo?";
@@ -15906,7 +15912,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Permis;
     },
     get$genericWebRecordingError() {
-      return string$.Algo_d;
+      return string$.Algo_dx2e;
     },
     get$screenSizeWarning() {
       return string$.Para_a;
@@ -15998,6 +16004,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return string$.Por_pa;
     },
+    get$courseLoadingError() {
+      return string$.Algo_dx2c;
+    },
     get$onboardingLanguagesTitle() {
       return "Qual idioma voc\xea est\xe1 aprendendo?";
     },
@@ -16036,7 +16045,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Aceita: "Aceitar esta solicita\xe7\xe3o de verifica\xe7\xe3o de ",
     Aguard: "Aguardando o parceiro aceitar os n\xfameros\u2026",
     Ainda_: "Ainda n\xe3o foi criada uma descri\xe7\xe3o do curso.",
-    Algo_d: "Algo deu errado. Recomendamos usar o navegador Chrome ao gravar mensagens.",
+    Algo_dx2c: "Algo deu errado, e estamos trabalhando arduamente para corrigir isso. Verifique novamente mais tarde.",
+    Algo_dx2e: "Algo deu errado. Recomendamos usar o navegador Chrome ao gravar mensagens.",
     Alteraa: "Alterar a visibilidade do hist\xf3rico do chat",
     Alterao: "Alterar o endere\xe7o principal do chat p\xfablico",
     Ao_ati: "Ao ativar, voc\xea permite que outros usu\xe1rios encontrem seu perfil na barra de busca global e enviem solicita\xe7\xf5es para conversar. Neste momento, voc\xea pode escolher aceitar ou negar a solicita\xe7\xe3o.",
@@ -16214,7 +16224,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["njYFZ/orKmHbt5ZTMokGTgJCo2k="] = d.current;
+  d["/bLQZ5m4L2Njo1NU+eX4vNuHWBk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

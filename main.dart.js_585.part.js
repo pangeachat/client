@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liittymiseen. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
     },
+    get$courseLoadingError() {
+      return "Jotain meni pieleen, ja teemme kovasti t\xf6it\xe4 sen korjaamiseksi. Tarkista my\xf6hemmin uudelleen.";
+    },
     get$onboardingLanguagesTitle() {
       return "Mit\xe4 kielt\xe4 opit?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JuY80jOHv1oXyaYGWP2FmX8PUPc="] = d.current;
+  d["2GnDBKoySaDJvkryv37AwGUhIHY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_585.part.js.map

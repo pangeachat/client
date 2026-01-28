@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.";
     },
+    get$courseLoadingError() {
+      return "May nangyaring mali, at abala kami sa pag-aayos nito. Suriin muli mamaya.";
+    },
     get$onboardingLanguagesTitle() {
       return "Anong wika ang iyong pinag-aaralan?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A0uGnv5sFoqj57ffavp/kaCslGc="] = d.current;
+  d["w/I+6Vq/0oYUPqIJ8dpXs2EXwVE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

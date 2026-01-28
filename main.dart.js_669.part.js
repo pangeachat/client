@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Alap\xe9rtelmez\xe9s szerint a kurzusok nyilv\xe1nosan kereshet\u0151k, \xe9s adminisztr\xe1tori j\xf3v\xe1hagy\xe1s sz\xfcks\xe9ges a csatlakoz\xe1shoz. Ezeket a be\xe1ll\xedt\xe1sokat b\xe1rmikor m\xf3dos\xedthatja.";
     },
+    get$courseLoadingError() {
+      return "Valami hiba t\xf6rt\xe9nt, \xe9s kem\xe9nyen dolgozunk a jav\xedt\xe1son. K\xe9rlek, n\xe9zd meg k\xe9s\u0151bb.";
+    },
     get$onboardingLanguagesTitle() {
       return "Milyen nyelvet tanulsz?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BxBL8aR9cO9A+PbnihJMgQ/E06U="] = d.current;
+  d["52/r/lCl1tveGghV0sVvMnTqZ28="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_669.part.js.map

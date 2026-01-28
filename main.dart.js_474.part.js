@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "La\u016d la defa\u016dlto, kursoj estas publike ser\u0109eblaj kaj postulas administran aprobon por ali\u011di. Vi povas redakti \u0109i tiujn agordojn iam ajn.";
     },
+    get$courseLoadingError() {
+      return "Io mal\u011duste okazis, kaj ni diligente laboras por ripari \u011din. Kontrolu denove poste.";
+    },
     get$onboardingLanguagesTitle() {
       return "Kian lingvon vi lernas?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jQwpY6sbRStIHVXtK6ZR1OeNbuE="] = d.current;
+  d["kzBCsK11h5lmNxCg0sAcNklynBw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_474.part.js.map

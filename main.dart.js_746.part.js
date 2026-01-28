@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "\xcen mod implicit, cursurile sunt c\u0103utabile public \u0219i necesit\u0103 aprobat\u0103 de administrator pentru a se al\u0103tura. Pute\u021bi edita aceste set\u0103ri \xeen orice moment.";
     },
+    get$courseLoadingError() {
+      return "Ceva a mers prost \u0219i lucr\u0103m din greu pentru a remedia problema. Verific\u0103 din nou mai t\xe2rziu.";
+    },
     get$onboardingLanguagesTitle() {
       return "Ce limb\u0103 \xeenve\u021bi?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wguI4VnS0HcT+cUoPaVpm4D6R+4="] = d.current;
+  d["ZuBg5wuEqbCSuREvYG7w69RE2zE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

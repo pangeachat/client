@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Por defecto, os cursos son buscables p\xfablicamente e requiren aprobaci\xf3n do administrador para unirse. Podes editar estas configuraci\xf3ns en calquera momento.";
     },
+    get$courseLoadingError() {
+      return "Algo sa\xedu mal e estamos traballando duro para solucionalo. Comproba de novo m\xe1is tarde.";
+    },
     get$onboardingLanguagesTitle() {
       return "Que idioma est\xe1s aprendendo?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kp5twCxUc15Tmp6Ku9nWLyDSJPI="] = d.current;
+  d["+w2Wa7eP7G3L7q+MYT191fgPJbM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

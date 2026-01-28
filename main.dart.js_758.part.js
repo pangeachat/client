@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Po defaultu, kursevi su javno pretra\u017eivi i zahtevaju odobrenje administratora za pridru\u017eivanje. Ove postavke mo\u017eete izmeniti u bilo kojem trenutku.";
     },
+    get$courseLoadingError() {
+      return "Ne\u0161to je po\u0161lo po zlu, i mi marljivo radimo na re\u0161enju. Proverite ponovo kasnije.";
+    },
     get$onboardingLanguagesTitle() {
       return "Koji jezik u\u010dite?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nRX9llKxqICTA0XvTgDkyhYb8bw="] = d.current;
+  d["bCubCYzdXx/DEI3s0sMv1rAnl1E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

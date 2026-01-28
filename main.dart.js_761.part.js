@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Som standard \xe4r kurser offentligt s\xf6kbara och kr\xe4ver administrat\xf6rsgodk\xe4nnande f\xf6r att g\xe5 med. Du kan redigera dessa inst\xe4llningar n\xe4r som helst.";
     },
+    get$courseLoadingError() {
+      return "N\xe5got gick fel, och vi arbetar h\xe5rt f\xf6r att \xe5tg\xe4rda det. Kolla igen senare.";
+    },
     get$onboardingLanguagesTitle() {
       return "Vilket spr\xe5k l\xe4r du dig?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LxcE1lM4Ui5Git5/JUysRdzunFQ="] = d.current;
+  d["W7A5TIlbuGrrFOzStkBpnvN9TW0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_761.part.js.map

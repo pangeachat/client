@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.";
     },
+    get$courseLoadingError() {
+      return "Midagi l\xe4ks valesti ja me teeme k\xf5vasti t\xf6\xf6d, et see parandada. Kontrolli hiljem uuesti.";
+    },
     get$onboardingLanguagesTitle() {
       return "Millist keelt sa \xf5pid?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YihJ1bBffo8DKnucKY9JW/MQc0Y="] = d.current;
+  d["gNnU0cUTdB6tktsHmerojHlGArc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_548.part.js.map

@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "De r\xe9ir r\xe9amhshocraithe, t\xe1 c\xfarsa\xed inrochtana go poibl\xed agus \xe9il\xedonn siad cead \xf3 riarach\xe1n chun p\xe1irt a ghlacadh. Is f\xe9idir leat na socruithe seo a chur in eagar ag am ar bith.";
     },
+    get$courseLoadingError() {
+      return "Tharla rud \xe9igin m\xedcheart, agus t\xe1imid ag obair go dian chun \xe9 a shocr\xfa. Seice\xe1il ar\xeds n\xedos d\xe9ana\xed.";
+    },
     get$onboardingLanguagesTitle() {
       return "C\xe9n teanga at\xe1 \xe1 foghlaim agat?";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kfiIbeeAEkyVrZVOv9qrGEMpqQw="] = d.current;
+  d["a5/WXNO6VD1JdDHaaT0uQwP5RYc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_619.part.js.map

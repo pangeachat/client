@@ -5334,6 +5334,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.";
     },
+    get$courseLoadingError() {
+      return "N\u01d0ng b\u01d0ng w\u01d2ng, y\u01d0ng w\u01d2ng b\u01d0ng w\u01d2ng. C\u01d0ng b\u01d0ng y\u01d0ng b\u01d0ng.";
+    },
     get$onboardingLanguagesTitle() {
       return "Kedua bahasa apa yang Anda pelajari?";
     },
@@ -5368,7 +5371,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KFR46GW8t3liXbOHviuiqAYd0+A="] = d.current;
+  d["Aa35/8rLgJ3IqfdGMfB8jrl6aN8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

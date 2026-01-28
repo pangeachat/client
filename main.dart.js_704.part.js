@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig \xe0m sam bith.";
     },
+    get$courseLoadingError() {
+      return "N\xedl aon rud ag dul i gceart, agus t\xe1imid ag obair go dian chun \xe9 a shocr\xfa. Seice\xe1il ar\xeds n\xedos d\xe9ana\xed.";
+    },
     get$onboardingLanguagesTitle() {
       return "C\xe9n teanga at\xe1 \xe1 foghlaim agat?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c7smhx0ogyjacNRfow+QTNmFgqw="] = d.current;
+  d["ZudcYJbiqm6mVYHgJu//e9+zJHQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_704.part.js.map

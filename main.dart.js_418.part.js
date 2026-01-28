@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.";
     },
+    get$courseLoadingError() {
+      return "Something went wrong, and we're hard at work fixing it. Check again later.";
+    },
     get$onboardingLanguagesTitle() {
       return "What language are you learning?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NIZnexanGHXxpgWWpKnLSazrKv0="] = d.current;
+  d["8xhKUjFTFO+lUzBqdM1csQV1MvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_418.part.js.map

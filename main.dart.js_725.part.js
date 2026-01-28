@@ -5332,6 +5332,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourseAccess() {
       return "P\u0113c noklus\u0113juma kursi ir publiski mekl\u0113jami un prasa administratora apstiprin\u0101jumu pievieno\u0161anai. J\u016bs varat redi\u0123\u0113t \u0161os iestat\u012bjumus jebkur\u0101 laik\u0101.";
     },
+    get$courseLoadingError() {
+      return "Kaut kas nog\u0101ja greizi, un m\u0113s smagi str\u0101d\u0101jam, lai to labotu. P\u0101rbaudiet v\u0113l\u0101k.";
+    },
     get$onboardingLanguagesTitle() {
       return "Kuru valodu tu m\u0101cies?";
     },
@@ -5354,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["57nD4a0CqUHCn1K3i+wvfkXYI7Q="] = d.current;
+  d["5SBCuBoQ+pTSBoYS/UrvSE3K4oc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_725.part.js.map
