@@ -70,6 +70,14 @@ class RoomSummaryResponse {
     this.powerLevels,
   });
 
+  List<String> get adminUserIDs {
+    if (powerLevels == null) return [];
+    return powerLevels!.entries
+        .where((entry) => entry.value >= 100)
+        .map((entry) => entry.key)
+        .toList();
+  }
+
   Membership? getMembershipForUserId(String userId) {
     final membershipString = membershipSummary[userId];
     if (membershipString == null) return null;

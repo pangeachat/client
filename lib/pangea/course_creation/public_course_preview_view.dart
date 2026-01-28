@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreviewView extends StatelessWidget {
   final PublicCoursePreviewController controller;
@@ -104,6 +106,8 @@ class PublicCoursePreviewView extends StatelessWidget {
                                       fontSize: titleFontSize,
                                     ),
                                   ),
+                                  if (summary.adminUserIDs.isNotEmpty)
+                                    _CourseAdminDisplay(summary),
                                   Text(
                                     course.description,
                                     style: const TextStyle(
@@ -298,5 +302,123 @@ class PublicCoursePreviewView extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _CourseAdminDisplay extends StatelessWidget {
+  final RoomSummaryResponse summary;
+  const _CourseAdminDisplay(this.summary);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 12.0,
+      runSpacing: 12.0,
+      children: [
+        ...summary.adminUserIDs.map((adminId) {
+          return FutureBuilder(
+            future: Matrix.of(context).client.getProfileFromUserId(
+                  adminId,
+                ),
+            builder: (context, snapshot) {
+              final profile = snapshot.data;
+              final displayName =
+                  profile?.displayName ?? adminId.localpart ?? adminId;
+              return Container(
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                padding: const EdgeInsets.all(4.0),
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Row(
+                    spacing: 4.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Avatar(
+                        size: 18.0,
+                        mxContent: profile?.avatarUrl,
+                        name: displayName,
+                        userId: adminId,
+                      ),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 80.0,
+                        ),
+                        child: Text(
+                          displayName,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: theme.colorScheme.onPrimaryContainer,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        }),
+      ],
+    );
+    // return Wrap(
+    //   children: [
+    //     ...summary.adminUserIDs.map(
+    //       (adminId) {
+    //         return FutureBuilder(
+    //           future: Matrix.of(context).client.getProfileFromUserId(
+    //                 adminId,
+    //               ),
+    //           builder: (context, snapshot) {
+    //             final displayName =
+    //                 snapshot.data?.displayName ?? adminId.localpart ?? adminId;
+    //             return Container(
+    //               alignment: Alignment.center,
+    //               padding: const EdgeInsets.symmetric(
+    //                 vertical: 4.0,
+    //                 horizontal: 8.0,
+    //               ),
+    //               decoration: BoxDecoration(
+    //                 borderRadius: BorderRadius.circular(
+    //                   8.0,
+    //                 ),
+    //                 color: theme.colorScheme.surfaceContainerHighest,
+    //               ),
+    //               height: 75.0,
+    //               width: 75.0,
+    //               child: Column(
+    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                 children: [
+    //                   Avatar(
+    //                     name: displayName,
+    //                     mxContent: snapshot.data?.avatarUrl,
+    //                   ),
+    //                   Text(
+    //                     displayName,
+    //                     style: TextStyle(
+    //                       fontSize: 12.0,
+    //                       color: theme.brightness == Brightness.light
+    //                           ? displayName.darkColor
+    //                           : displayName.lightColorText,
+    //                     ),
+    //                     maxLines: 2,
+    //                     overflow: TextOverflow.ellipsis,
+    //                     textAlign: TextAlign.center,
+    //                   ),
+    //                 ],
+    //               ),
+    //             );
+    //           },
+    //         );
+    //       },
+    //     ),
+    //   ],
+    // );
   }
 }
