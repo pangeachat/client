@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -47,7 +48,12 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
         ),
       );
       await course!.fetchMediaUrls();
-    } catch (e) {
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'courseId': courseId},
+      );
       courseError = e;
     } finally {
       if (mounted) setState(() => loadingCourse = false);
