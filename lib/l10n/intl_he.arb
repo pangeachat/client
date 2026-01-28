@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:00.895298",
+  "@@last_modified": "2026-01-28 13:14:40.798594",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11991,6 +11991,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "שאלות? אנחנו כאן כדי לעזור!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

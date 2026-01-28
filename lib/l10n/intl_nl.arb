@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:38.374548",
+  "@@last_modified": "2026-01-28 13:15:07.411214",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10942,6 +10942,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Vragen? We zijn hier om te helpen!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

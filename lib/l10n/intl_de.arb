@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-28 11:22:11.549404",
+  "@@last_modified": "2026-01-28 13:14:46.402247",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10949,6 +10949,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Fragen? Wir sind hier, um zu helfen!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

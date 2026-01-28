@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:21:53.689466",
+  "@@last_modified": "2026-01-28 13:14:36.407775",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10933,6 +10933,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pertanyaan? Kami di sini untuk membantu!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

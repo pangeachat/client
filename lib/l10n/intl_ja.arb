@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-28 11:22:49.278909",
+  "@@last_modified": "2026-01-28 13:15:15.028390",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11732,6 +11732,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "質問がありますか？私たちはお手伝いします！",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }
