@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$searchLanguagesHint() {
       return "Pesquise idiomas-alvo";
     },
+    get$supportSubtitle() {
+      return "D\xfavidas? Estamos aqui para ajudar!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10673,6 +10676,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$searchLanguagesHint() {
       return "Pesquise idiomas-alvo";
+    },
+    get$supportSubtitle() {
+      return "D\xfavidas? Estamos aqui para ajudar!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15998,6 +16004,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$searchLanguagesHint() {
       return "Pesquise idiomas-alvo";
     },
+    get$supportSubtitle() {
+      return "D\xfavidas? Estamos aqui para ajudar!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16205,7 +16214,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K2T30xKNir8TxYvJA31+5pxVPVs="] = d.current;
+  d["njYFZ/orKmHbt5ZTMokGTgJCo2k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
