@@ -4516,7 +4516,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-27 14:03:26.279031",
+  "@@last_modified": "2026-01-28 13:15:22.976612",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10930,6 +10930,21 @@
   },
   "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí inrochtana go poiblí agus éilíonn siad cead ó riarachán chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
+  "searchLanguagesHint": "Cuardaigh teangacha sprioc",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

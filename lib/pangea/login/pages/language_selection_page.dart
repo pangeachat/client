@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
@@ -102,7 +103,24 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(L10n.of(context).languages),
+        title: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 450,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              BackButton(
+                onPressed: Navigator.of(context).pop,
+              ),
+              Text(L10n.of(context).onboardingLanguagesTitle),
+              const SizedBox(
+                width: 40.0,
+              ),
+            ],
+          ),
+        ),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Center(
@@ -121,6 +139,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
+                    hintText: L10n.of(context).searchLanguagesHint,
                   ),
                 ),
                 Expanded(
@@ -153,27 +172,38 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                             ),
                                       )
                                       .map(
-                                        (l) => FilterChip(
-                                          selected: _selectedLanguage == l,
-                                          backgroundColor:
-                                              _selectedLanguage == l
-                                                  ? theme.colorScheme.primary
-                                                  : theme.colorScheme.surface,
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0,
-                                            vertical: 4.0,
+                                        (l) => ShimmerBackground(
+                                          enabled: _selectedLanguage == null,
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(16.0),
                                           ),
-                                          label: Text(
-                                            l.getDisplayName(context),
-                                            style: isColumnMode
-                                                ? theme.textTheme.bodyLarge
-                                                : theme.textTheme.bodyMedium,
+                                          child: FilterChip(
+                                            selected: _selectedLanguage == l,
+                                            shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(16.0),
+                                              ),
+                                            ),
+                                            backgroundColor:
+                                                _selectedLanguage == l
+                                                    ? theme.colorScheme.primary
+                                                    : theme.colorScheme.surface,
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0,
+                                              vertical: 4.0,
+                                            ),
+                                            label: Text(
+                                              l.getDisplayName(context),
+                                              style: isColumnMode
+                                                  ? theme.textTheme.bodyLarge
+                                                  : theme.textTheme.bodyMedium,
+                                            ),
+                                            onSelected: (selected) {
+                                              _setSelectedLanguage(
+                                                selected ? l : null,
+                                              );
+                                            },
                                           ),
-                                          onSelected: (selected) {
-                                            _setSelectedLanguage(
-                                              selected ? l : null,
-                                            );
-                                          },
                                         ),
                                       )
                                       .toList(),
@@ -220,23 +250,24 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                         )
                       : const SizedBox(),
                 ),
-                Text(
-                  L10n.of(context).chooseLanguage,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: _selectedLanguage != null ? _submit : null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primaryContainer,
-                    foregroundColor: theme.colorScheme.onPrimaryContainer,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(L10n.of(context).letsGo),
-                    ],
+                ShimmerBackground(
+                  enabled: _selectedLanguage != null,
+                  borderRadius: BorderRadius.circular(24.0),
+                  child: ElevatedButton(
+                    onPressed: _selectedLanguage != null ? _submit : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(L10n.of(context).letsGo),
+                      ],
+                    ),
                   ),
                 ),
               ],

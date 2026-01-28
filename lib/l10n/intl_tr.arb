@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-27 14:03:00.927147",
+  "@@last_modified": "2026-01-28 13:15:02.596810",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11154,6 +11154,21 @@
   },
   "newCourseAccess": "Varsayılan olarak, kurslar herkese açık olarak aranabilir ve katılmak için yönetici onayı gerektirir. Bu ayarları istediğiniz zaman düzenleyebilirsiniz.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hangi dili öğreniyorsunuz?",
+  "searchLanguagesHint": "Hedef dilleri arayın",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Sorular mı? Yardımcı olmaya buradayız!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

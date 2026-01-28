@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-27 14:02:17.041137",
+  "@@last_modified": "2026-01-28 13:14:30.543364",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10929,6 +10929,21 @@
   },
   "newCourseAccess": "Por defecto, os cursos son buscables públicamente e requiren aprobación do administrador para unirse. Podes editar estas configuracións en calquera momento.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Que idioma estás aprendendo?",
+  "searchLanguagesHint": "Busca idiomas de destino",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "¿Preguntas? Estamos aquí para axudar!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

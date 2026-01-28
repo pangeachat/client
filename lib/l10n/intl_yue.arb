@@ -1855,7 +1855,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-27 14:02:42.486712",
+  "@@last_modified": "2026-01-28 13:14:48.149157",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12023,6 +12023,21 @@
   },
   "newCourseAccess": "默認情況下，課程是公開可搜索的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "你正在學習什麼語言？",
+  "searchLanguagesHint": "搜尋目標語言",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "有問題嗎？我們在這裡幫助你！",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

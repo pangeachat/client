@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-27 14:02:30.204264",
+  "@@last_modified": "2026-01-28 13:14:39.679670",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11304,6 +11304,21 @@
   },
   "newCourseAccess": "Prema zadanim postavkama, tečajevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Koji jezik učite?",
+  "searchLanguagesHint": "Pretraži ciljne jezike",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Imate pitanja? Tu smo da pomognemo!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

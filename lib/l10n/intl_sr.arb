@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:03:24.807506",
+  "@@last_modified": "2026-01-28 13:15:21.956772",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12034,6 +12034,21 @@
   },
   "newCourseAccess": "Po defaultu, kursevi su javno pretraživi i zahtevaju odobrenje administratora za pridruživanje. Ove postavke možete izmeniti u bilo kojem trenutku.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Koji jezik učite?",
+  "searchLanguagesHint": "Pretraži ciljne jezike",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pitanja? Tu smo da pomognemo!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

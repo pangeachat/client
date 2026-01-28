@@ -4371,7 +4371,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-27 14:02:28.999815",
+  "@@last_modified": "2026-01-28 13:14:38.933486",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11906,6 +11906,21 @@
   },
   "newCourseAccess": "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig àm sam bith.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
+  "searchLanguagesHint": "Cuardaigh teangacha sprioc",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

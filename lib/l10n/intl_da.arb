@@ -1929,7 +1929,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-27 14:02:21.118853",
+  "@@last_modified": "2026-01-28 13:14:34.655684",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11993,6 +11993,21 @@
   },
   "newCourseAccess": "Som standard er kurser offentligt søgbare og kræver administratorgodkendelse for at deltage. Du kan redigere disse indstillinger når som helst.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hvilket sprog lærer du?",
+  "searchLanguagesHint": "Søg efter målsprog",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Spørgsmål? Vi er her for at hjælpe!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

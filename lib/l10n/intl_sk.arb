@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-27 14:02:27.134602",
+  "@@last_modified": "2026-01-28 13:14:38.125638",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12016,6 +12016,21 @@
   },
   "newCourseAccess": "Predvolene sú kurzy verejne vyhľadateľné a vyžadujú schválenie administrátora na pripojenie. Tieto nastavenia môžete kedykoľvek upraviť.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Aký jazyk sa učíte?",
+  "searchLanguagesHint": "Hľadajte cieľové jazyky",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Otázky? Sme tu, aby sme pomohli!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

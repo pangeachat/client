@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:03:15.575050",
+  "@@last_modified": "2026-01-28 13:15:13.142667",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11410,6 +11410,21 @@
   },
   "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Vilket språk lär du dig?",
+  "searchLanguagesHint": "Sök efter målspråk",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Frågor? Vi är här för att hjälpa till!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }
