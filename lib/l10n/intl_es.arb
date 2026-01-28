@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-28 11:21:46.446878",
+  "@@last_modified": "2026-01-28 13:14:29.244829",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8176,6 +8176,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "¿Preguntas? ¡Estamos aquí para ayudar!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:22.285622",
+  "@@last_modified": "2026-01-28 13:14:53.381545",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10966,6 +10966,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Preguntes? Som aquí per ajudar!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

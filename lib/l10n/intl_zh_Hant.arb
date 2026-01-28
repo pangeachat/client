@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:26.284769",
+  "@@last_modified": "2026-01-28 13:14:56.825997",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10940,6 +10940,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "有問題嗎？我們在這裡幫助您！",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

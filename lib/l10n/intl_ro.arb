@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:21:55.514912",
+  "@@last_modified": "2026-01-28 13:14:37.290571",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11677,6 +11677,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Întrebări? Suntem aici să ajutăm!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

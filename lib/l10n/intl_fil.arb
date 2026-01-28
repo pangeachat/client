@@ -2786,7 +2786,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-28 11:22:27.725706",
+  "@@last_modified": "2026-01-28 13:14:59.720543",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11918,6 +11918,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "May mga tanong? Nandito kami para tumulong!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }
