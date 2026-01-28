@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-27 14:03:14.463461",
+  "@@last_modified": "2026-01-28 11:22:45.302604",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10930,6 +10930,16 @@
   },
   "newCourseAccess": "Domyślnie kursy są publicznie wyszukiwalne i wymagają zatwierdzenia przez administratora, aby do nich dołączyć. Możesz edytować te ustawienia w dowolnym momencie.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Jakiego języka się uczysz?",
+  "searchLanguagesHint": "Szukaj języków docelowych",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

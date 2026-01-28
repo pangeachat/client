@@ -5063,5 +5063,7 @@
   "publicInviteDescSpace": "Search for users to invite them to this space.",
   "useActivityImageAsChatBackground": "Use activity image as chat background",
   "chatWithSupport": "Chat with Support",
-  "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time."
+  "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
+  "onboardingLanguagesTitle": "What language are you learning?",
+  "searchLanguagesHint": "Search target languages"
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:55.518251",
+  "@@last_modified": "2026-01-28 11:22:26.284769",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10930,6 +10930,16 @@
   },
   "newCourseAccess": "預設情況下，課程是公開可搜尋的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "你正在學習什麼語言？",
+  "searchLanguagesHint": "搜尋目標語言",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }
