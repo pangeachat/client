@@ -159,7 +159,8 @@ class AnalyticsPracticeSessionRepo {
       if (feature == MorphFeaturesEnum.Unknown ||
           feature == MorphFeaturesEnum.Poss ||
           feature == MorphFeaturesEnum.Reflex ||
-          feature == MorphFeaturesEnum.PrepCase) {
+          feature == MorphFeaturesEnum.PrepCase ||
+          feature == MorphFeaturesEnum.NumType) {
         continue;
       }
 
@@ -281,7 +282,11 @@ class AnalyticsPracticeSessionRepo {
 
         if (igcMatch!.match.offset == 0 &&
             igcMatch.match.length >= stepText.trim().characters.length) {
-          // Skip if the grammar error spans the entire step
+          continue;
+        }
+
+        if (igcMatch.match.isNormalizationError()) {
+          // Skip normalization errors
           continue;
         }
 
@@ -296,9 +301,10 @@ class AnalyticsPracticeSessionRepo {
             )
             .toList();
 
-        // Skip if no valid tokens found for this grammar error
-        if (choiceTokens.isEmpty) continue;
-
+        // Skip if no valid tokens found for this grammar error, or only one answer
+        if (choiceTokens.length <= 1) {
+          continue;
+        }
         String? translation;
         try {
           translation = await event.requestRespresentationByL1();
