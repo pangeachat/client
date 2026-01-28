@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:22:19.521122",
+  "@@last_modified": "2026-01-28 13:14:51.538756",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12035,6 +12035,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Spørsmål? Vi er her for å hjelpe!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

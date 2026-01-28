@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-28 11:21:56.691598",
+  "@@last_modified": "2026-01-28 13:14:38.125638",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12026,6 +12026,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Otázky? Sme tu, aby sme pomohli!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -380,6 +380,7 @@ class ChatListViewBody extends StatelessWidget {
                               .setToggledOff(true),
                         ),
                         title: Text(L10n.of(context).chatWithSupport),
+                        subtitle: Text(L10n.of(context).supportSubtitle),
                         onTap: () async {
                           await showFutureLoadingDialog(
                             context: context,

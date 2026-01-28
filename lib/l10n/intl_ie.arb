@@ -4371,7 +4371,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-28 11:21:58.032557",
+  "@@last_modified": "2026-01-28 13:14:38.933486",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11916,6 +11916,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

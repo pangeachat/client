@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 11:21:45.008877",
+  "@@last_modified": "2026-01-28 13:14:27.883089",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11050,6 +11050,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "질문이 있으신가요? 저희가 도와드리겠습니다!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }

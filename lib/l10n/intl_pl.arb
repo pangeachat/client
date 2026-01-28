@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-28 11:22:45.302604",
+  "@@last_modified": "2026-01-28 13:15:12.000878",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10940,6 +10940,11 @@
     "placeholders": {}
   },
   "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pytania? Jesteśmy tutaj, aby pomóc!",
+  "@supportSubtitle": {
     "type": "String",
     "placeholders": {}
   }
