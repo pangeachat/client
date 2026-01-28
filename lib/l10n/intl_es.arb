@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-27 14:02:15.353643",
+  "@@last_modified": "2026-01-28 11:21:46.446878",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8166,6 +8166,16 @@
   },
   "newCourseAccess": "Por defecto, los cursos son buscables públicamente y requieren aprobación del administrador para unirse. Puedes editar estas configuraciones en cualquier momento.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "¿Qué idioma estás aprendiendo?",
+  "searchLanguagesHint": "Buscar idiomas objetivo",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

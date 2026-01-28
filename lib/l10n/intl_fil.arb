@@ -2786,7 +2786,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-27 14:02:56.958154",
+  "@@last_modified": "2026-01-28 11:22:27.725706",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11908,6 +11908,16 @@
   },
   "newCourseAccess": "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Anong wika ang iyong pinag-aaralan?",
+  "searchLanguagesHint": "Maghanap ng mga target na wika",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-27 14:02:45.151936",
+  "@@last_modified": "2026-01-28 11:22:17.132130",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10926,6 +10926,16 @@
   },
   "newCourseAccess": "За замовчуванням курси є загальнодоступними для пошуку і вимагають схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Яку мову ви вивчаєте?",
+  "searchLanguagesHint": "Шукати цільові мови",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

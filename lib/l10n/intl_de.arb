@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-27 14:02:39.850908",
+  "@@last_modified": "2026-01-28 11:22:11.549404",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10939,6 +10939,16 @@
   },
   "newCourseAccess": "Standardmäßig sind Kurse öffentlich durchsuchbar und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit bearbeiten.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Welche Sprache lernst du?",
+  "searchLanguagesHint": "Zielsprachen suchen",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

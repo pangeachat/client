@@ -1910,7 +1910,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-27 14:02:50.270963",
+  "@@last_modified": "2026-01-28 11:22:20.711094",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12031,6 +12031,16 @@
   },
   "newCourseAccess": "Па змаўчанні курсы з'яўляюцца адкрытымі для пошуку і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Якую мову вы вывучаеце?",
+  "searchLanguagesHint": "Пошук мэтавых моў",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

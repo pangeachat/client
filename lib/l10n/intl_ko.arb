@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:13.792128",
+  "@@last_modified": "2026-01-28 11:21:45.008877",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11040,6 +11040,16 @@
   },
   "newCourseAccess": "기본적으로 과정은 공개적으로 검색 가능하며 참여하려면 관리자 승인이 필요합니다. 언제든지 이러한 설정을 수정할 수 있습니다.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "어떤 언어를 배우고 있나요?",
+  "searchLanguagesHint": "목표 언어 검색",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

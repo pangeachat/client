@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-27 14:02:22.464338",
+  "@@last_modified": "2026-01-28 11:21:52.684213",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10933,6 +10933,16 @@
   },
   "newCourseAccess": "Alapértelmezés szerint a kurzusok nyilvánosan kereshetők, és adminisztrátori jóváhagyás szükséges a csatlakozáshoz. Ezeket a beállításokat bármikor módosíthatja.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Milyen nyelvet tanulsz?",
+  "searchLanguagesHint": "Keresd a célnyelveket",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

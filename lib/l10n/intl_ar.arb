@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-27 14:02:59.727958",
+  "@@last_modified": "2026-01-28 11:22:30.477643",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11149,6 +11149,16 @@
   },
   "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
+  "searchLanguagesHint": "ابحث عن اللغات المستهدفة",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

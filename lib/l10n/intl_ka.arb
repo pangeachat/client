@@ -2593,7 +2593,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-27 14:03:23.702338",
+  "@@last_modified": "2026-01-28 11:22:53.904103",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11962,6 +11962,16 @@
   },
   "newCourseAccess": "ნაგულისხმევად, კურსები საჯაროდ საძიებელია და საჭიროებს ადმინისტრატორის დამტკიცებას გაწვდვისთვის. შეგიძლიათ ამ პარამეტრების რედაქტირება ნებისმიერ დროს.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "რომელი ენა სწავლობთ?",
+  "searchLanguagesHint": "ძებნა მიზნობრივი ენების",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-27 14:03:22.446889",
+  "@@last_modified": "2026-01-28 11:22:52.811123",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11040,6 +11040,16 @@
   },
   "newCourseAccess": "По умолчанию курсы доступны для публичного поиска и требуют одобрения администратора для присоединения. Вы можете изменить эти настройки в любое время.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Какой язык вы изучаете?",
+  "searchLanguagesHint": "Поиск целевых языков",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

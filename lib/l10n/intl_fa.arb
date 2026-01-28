@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:03:13.031797",
+  "@@last_modified": "2026-01-28 11:22:43.436826",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11664,6 +11664,16 @@
   },
   "newCourseAccess": "به طور پیش‌فرض، دوره‌ها به صورت عمومی قابل جستجو هستند و برای پیوستن به آن‌ها نیاز به تأیید مدیر دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "شما در حال یادگیری چه زبانی هستید؟",
+  "searchLanguagesHint": "زبان‌های هدف را جستجو کنید",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:23.466673",
+  "@@last_modified": "2026-01-28 11:21:53.689466",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10923,6 +10923,16 @@
   },
   "newCourseAccess": "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Bahasa apa yang Anda pelajari?",
+  "searchLanguagesHint": "Cari bahasa target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }
