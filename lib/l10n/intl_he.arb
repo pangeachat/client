@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:40.798594",
+  "@@last_modified": "2026-01-28 13:26:06.755080",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11996,6 +11996,11 @@
   },
   "supportSubtitle": "שאלות? אנחנו כאן כדי לעזור!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "משהו השתבש, ואנחנו עובדים קשה על תיקון זה. בדוק שוב מאוחר יותר.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

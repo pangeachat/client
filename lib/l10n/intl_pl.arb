@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-28 13:15:12.000878",
+  "@@last_modified": "2026-01-28 13:26:50.545730",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10945,6 +10945,11 @@
   },
   "supportSubtitle": "Pytania? Jesteśmy tutaj, aby pomóc!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Coś poszło nie tak, a my ciężko pracujemy nad naprawą. Sprawdź ponownie później.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

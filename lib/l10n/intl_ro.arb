@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:37.290571",
+  "@@last_modified": "2026-01-28 13:26:01.958335",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11682,6 +11682,11 @@
   },
   "supportSubtitle": "Întrebări? Suntem aici să ajutăm!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Ceva a mers prost și lucrăm din greu pentru a remedia problema. Verifică din nou mai târziu.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

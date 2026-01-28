@@ -2786,7 +2786,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-28 13:14:59.720543",
+  "@@last_modified": "2026-01-28 13:26:32.216257",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11923,6 +11923,11 @@
   },
   "supportSubtitle": "May mga tanong? Nandito kami para tumulong!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "May nangyaring mali, at abala kami sa pag-aayos nito. Suriin muli mamaya.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

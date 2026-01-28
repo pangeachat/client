@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-28 13:14:50.685204",
+  "@@last_modified": "2026-01-28 13:26:20.564591",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11554,6 +11554,11 @@
   },
   "supportSubtitle": "Otázky? Jsme tu, abychom pomohli!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Něco se pokazilo a my na tom tvrdě pracujeme. Zkontrolujte to prosím později.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

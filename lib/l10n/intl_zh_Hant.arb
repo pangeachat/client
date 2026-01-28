@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:56.825997",
+  "@@last_modified": "2026-01-28 13:26:27.558260",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10945,6 +10945,11 @@
   },
   "supportSubtitle": "有問題嗎？我們在這裡幫助您！",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "發生了一些問題，我們正在努力修復。稍後再檢查。",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

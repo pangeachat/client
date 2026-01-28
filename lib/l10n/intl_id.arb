@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:14:36.407775",
+  "@@last_modified": "2026-01-28 13:26:00.772325",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10938,6 +10938,11 @@
   },
   "supportSubtitle": "Pertanyaan? Kami di sini untuk membantu!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

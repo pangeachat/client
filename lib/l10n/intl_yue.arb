@@ -1855,7 +1855,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-28 13:14:48.149157",
+  "@@last_modified": "2026-01-28 13:26:16.825978",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12038,6 +12038,11 @@
   },
   "supportSubtitle": "有問題嗎？我們在這裡幫助你！",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "發生了一些問題，我們正在努力修復。稍後再檢查。",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

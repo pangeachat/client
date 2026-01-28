@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-28 13:15:17.544325",
+  "@@last_modified": "2026-01-28 13:26:58.889837",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11055,6 +11055,11 @@
   },
   "supportSubtitle": "Вопросы? Мы здесь, чтобы помочь!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Что-то пошло не так, и мы усердно работаем над исправлением. Проверьте позже.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

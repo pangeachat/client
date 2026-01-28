@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-28 13:14:46.402247",
+  "@@last_modified": "2026-01-28 13:26:14.577124",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10954,6 +10954,11 @@
   },
   "supportSubtitle": "Fragen? Wir sind hier, um zu helfen!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Etwas ist schiefgelaufen, und wir arbeiten hart daran, es zu beheben. Überprüfen Sie es später erneut.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

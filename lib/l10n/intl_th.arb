@@ -4455,7 +4455,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-28 13:14:54.268890",
+  "@@last_modified": "2026-01-28 13:26:25.241346",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12005,6 +12005,11 @@
   },
   "supportSubtitle": "มีคำถามไหม? เราพร้อมที่จะช่วยเหลือ!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "มีบางอย่างผิดพลาด และเรากำลังทำงานอย่างหนักเพื่อแก้ไข ตรวจสอบอีกครั้งในภายหลัง.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

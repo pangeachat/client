@@ -2463,7 +2463,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-28 13:14:47.252956",
+  "@@last_modified": "2026-01-28 13:26:15.797667",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12028,6 +12028,11 @@
   },
   "supportSubtitle": "Vprašanja? Tu smo, da pomagamo!",
   "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nekaj je šlo narobe in trdo delamo na tem, da to popravimo. Preverite znova kasneje.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }
