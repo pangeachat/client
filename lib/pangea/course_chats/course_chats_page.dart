@@ -133,9 +133,13 @@ class CourseChatsController extends State<CourseChats>
       }
 
       final activity = summary.activityPlan;
+      final roles = summary.activityRoles;
       final users = summary.joinedUsersWithRoles;
 
-      if (users.isEmpty || !validIDs.contains(activity.activityId)) {
+      if (activity == null ||
+          roles == null ||
+          users.isEmpty ||
+          !validIDs.contains(activity.activityId)) {
         continue;
       }
 
@@ -148,7 +152,7 @@ class CourseChatsController extends State<CourseChats>
       // It's possible for users to finish an activity and then for some of the
       // users to leave, but if the activity was archived by anyone, that means
       // it was full at some point.
-      if (summary.activityRoles.roles.values.any((role) => role.isArchived)) {
+      if (roles.roles.values.any((role) => role.isArchived)) {
         continue;
       }
 
