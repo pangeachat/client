@@ -353,7 +353,8 @@ extension ActivityRoomExtension on Room {
   bool get isActivitySession =>
       (roomType?.startsWith(PangeaRoomTypes.activitySession) == true ||
           activityPlan != null) &&
-      activityPlan?.isDeprecatedModel == false;
+      activityPlan?.isDeprecatedModel == false &&
+      activityPlan?.activityId != null;
 
   String? get activityId {
     if (!isActivitySession) return null;
