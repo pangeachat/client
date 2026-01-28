@@ -448,7 +448,9 @@ class HtmlMessage extends StatelessWidget {
             : false;
 
         final isNew = token != null && newTokens.contains(token.text);
-        final isFirstNewToken = isNew && newTokens.first == token.text;
+        final isFirstNewToken = isNew &&
+            controller.buttonEventID == event.eventId &&
+            newTokens.first == token.text;
         final showShimmer =
             !InstructionsEnum.shimmerNewToken.isToggledOff && isFirstNewToken;
 

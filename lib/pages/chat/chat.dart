@@ -2050,9 +2050,6 @@ class ChatController extends State<ChatPageWithRoom>
     if (!InstructionsEnum.clickMessage.isToggledOff) {
       InstructionsEnum.clickMessage.setToggledOff(true);
     }
-    if (!InstructionsEnum.shimmerNewToken.isToggledOff) {
-      InstructionsEnum.shimmerNewToken.setToggledOff(true);
-    }
 
     if (!kIsWeb) {
       HapticFeedback.mediumImpact();
