@@ -431,7 +431,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                               ShimmerBackground(
                             enabled: !InstructionsEnum
                                     .shimmerTranslation.isToggledOff &&
-                                mode == SelectMode.translate,
+                                mode == SelectMode.translate &&
+                                enabled,
                             borderRadius: BorderRadius.circular(100),
                             child: AnimatedContainer(
                               duration: FluffyThemes.animationDuration,
