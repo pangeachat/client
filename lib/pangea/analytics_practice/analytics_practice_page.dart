@@ -535,8 +535,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     String? form;
     if (widget.type == ConstructTypeEnum.morph) {
-      if (target.morphFeature == null) return null;
-      form = token.lemma.form;
+      return target.exampleMessage;
     }
 
     return ExampleMessageUtil.getExampleMessage(
