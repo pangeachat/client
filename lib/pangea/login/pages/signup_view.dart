@@ -27,7 +27,23 @@ class SignupPageView extends StatelessWidget {
     return Form(
       key: controller.formKey,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: SizedBox(
+            width: 450,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BackButton(
+                  onPressed: Navigator.of(context).pop,
+                ),
+                const SizedBox(
+                  width: 40.0,
+                ),
+              ],
+            ),
+          ),
+          automaticallyImplyLeading: false,
+        ),
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
