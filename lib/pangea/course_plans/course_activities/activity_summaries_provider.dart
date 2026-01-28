@@ -48,6 +48,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
 
     final activityPlan = roomSummary.activityPlan;
     final assignedRoles = roomSummary.joinedUsersWithRoles;
+    if (activityPlan == null) return false;
     return activityPlan.roles.length - assignedRoles.length <= 0;
   }
 
@@ -56,6 +57,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     if (roomSummary == null) return false;
 
     final activityRoles = roomSummary.activityRoles;
+    if (activityRoles == null) return false;
     final roles = activityRoles.roles.values.where(
       (r) => r.userId != BotName.byEnvironment,
     );
@@ -76,7 +78,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   Map<String, RoomSummaryResponse> activitySessions(String activityId) =>
       Map.fromEntries(
         roomSummaries?.entries
-                .where((v) => v.value.activityPlan.activityId == activityId) ??
+                .where((v) => v.value.activityPlan?.activityId == activityId) ??
             [],
       );
 
@@ -115,7 +117,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       final summary = entry.value;
       final roomId = entry.key;
 
-      if (summary.activityPlan.activityId != activityId) {
+      if (summary.activityPlan?.activityId != activityId) {
         continue;
       }
 
@@ -132,11 +134,13 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     if (roomSummaries == null || roomSummaries!.isEmpty) return {};
     return roomSummaries!.values
         .where(
-          (entry) => entry.activityRoles.roles.values.any(
-            (v) => v.userId == userID && v.isArchived,
-          ),
+          (entry) =>
+              entry.activityRoles != null &&
+              entry.activityRoles!.roles.values.any(
+                (v) => v.userId == userID && v.isArchived,
+              ),
         )
-        .map((e) => e.activityPlan.activityId)
+        .map((e) => e.activityPlan?.activityId)
         .whereType<String>()
         .toSet();
   }
