@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:04.696789",
+  "@@last_modified": "2026-01-28 11:21:45.008877",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -4350,7 +4350,6 @@
   "numModules": "{num}개 모듈",
   "coursePlan": "과정 계획",
   "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
-  "newCourseAccess": "기본적으로 과정은 비공개이며 관리자 승인 후 참여할 수 있습니다. 언제든지 이 설정을 변경할 수 있습니다.",
   "createCourse": "과정 생성",
   "stats": "통계",
   "createGroupChat": "단체 채팅 만들기",
@@ -8940,10 +8939,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11040,6 +11035,21 @@
   },
   "chatWithSupport": "지원팀과 채팅하기",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "기본적으로 과정은 공개적으로 검색 가능하며 참여하려면 관리자 승인이 필요합니다. 언제든지 이러한 설정을 수정할 수 있습니다.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "어떤 언어를 배우고 있나요?",
+  "searchLanguagesHint": "목표 언어 검색",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

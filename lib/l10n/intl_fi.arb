@@ -3914,7 +3914,6 @@
   "numModules": "{num} moduulia",
   "coursePlan": "Kurssisuunnitelma",
   "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
-  "newCourseAccess": "Oletuksena kurssit ovat yksityisiä ja vaativat ylläpitäjän hyväksynnän liittyäksesi. Voit muokata näitä asetuksia milloin tahansa.",
   "createCourse": "Luo kurssi",
   "stats": "Tilastot",
   "createGroupChat": "Luo ryhmäkeskustelu",
@@ -4009,7 +4008,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-26 14:06:09.461491",
+  "@@last_modified": "2026-01-28 11:21:50.004841",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9455,10 +9454,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11555,6 +11550,21 @@
   },
   "chatWithSupport": "Chattaa tuen kanssa",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat ylläpitäjän hyväksynnän liittymiseen. Voit muokata näitä asetuksia milloin tahansa.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Mitä kieltä opit?",
+  "searchLanguagesHint": "Etsi kohdekieliä",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -4361,7 +4361,6 @@
   "numModules": "{num} ενότητες",
   "coursePlan": "Πλάνο Μαθήματος",
   "editCourseLater": "Μπορείτε να επεξεργαστείτε τον τίτλο, τις περιγραφές και την εικόνα του μαθήματος αργότερα.",
-  "newCourseAccess": "Κατά κανόνα, τα μαθήματα είναι ιδιωτικά και απαιτούν έγκριση διαχειριστή για συμμετοχή. Μπορείτε να επεξεργαστείτε αυτές τις ρυθμίσεις οποτεδήποτε.",
   "createCourse": "Δημιουργία μαθήματος",
   "stats": "Στατιστικά",
   "createGroupChat": "Δημιουργία ομαδικής συνομιλίας",
@@ -4456,7 +4455,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-26 14:06:51.876219",
+  "@@last_modified": "2026-01-28 11:22:48.079247",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9890,10 +9889,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11990,6 +11985,21 @@
   },
   "chatWithSupport": "Συνομιλία με Υποστήριξη",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Από προεπιλογή, τα μαθήματα είναι δημόσια αναζητήσιμα και απαιτούν έγκριση διαχειριστή για να συμμετάσχετε. Μπορείτε να επεξεργαστείτε αυτές τις ρυθμίσεις οποιαδήποτε στιγμή.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Ποια γλώσσα μαθαίνετε;",
+  "searchLanguagesHint": "Αναζητήστε γλώσσες στόχου",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

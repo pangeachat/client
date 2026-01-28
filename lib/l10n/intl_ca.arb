@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:31.392602",
+  "@@last_modified": "2026-01-28 11:22:22.285622",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -4386,7 +4386,6 @@
   "numModules": "{num} mòduls",
   "coursePlan": "Pla de curs",
   "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
-  "newCourseAccess": "Per defecte, els cursos són privats i requereixen l'aprovació de l'administrador per unir-se. Pots editar aquests paràmetres en qualsevol moment.",
   "createCourse": "Crear curs",
   "stats": "Estadístiques",
   "createGroupChat": "Crear xat de grup",
@@ -8856,10 +8855,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10956,6 +10951,21 @@
   },
   "chatWithSupport": "Xateja amb el Suport",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per defecte, els cursos són cercables públicament i requereixen l'aprovació de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quina llengua estàs aprenent?",
+  "searchLanguagesHint": "Cerca llengües objectiu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:48.270284",
+  "@@last_modified": "2026-01-28 11:22:43.436826",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -3834,7 +3834,6 @@
   "numModules": "{num} ماژول",
   "coursePlan": "برنامه دوره",
   "editCourseLater": "می‌توانید بعداً عنوان، توضیحات و تصویر دوره را ویرایش کنید.",
-  "newCourseAccess": "به طور پیش‌فرض، دوره‌ها خصوصی هستند و نیاز به تایید مدیر برای پیوستن دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
   "createCourse": "ایجاد دوره",
   "stats": "آمار",
   "createGroupChat": "ایجاد چت گروهی",
@@ -9564,10 +9563,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11664,6 +11659,21 @@
   },
   "chatWithSupport": "چت با پشتیبانی",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "به طور پیش‌فرض، دوره‌ها به صورت عمومی قابل جستجو هستند و برای پیوستن به آن‌ها نیاز به تأیید مدیر دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "شما در حال یادگیری چه زبانی هستید؟",
+  "searchLanguagesHint": "زبان‌های هدف را جستجو کنید",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

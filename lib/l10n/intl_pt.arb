@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:22.379236",
+  "@@last_modified": "2026-01-28 11:22:05.803053",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -4404,7 +4404,6 @@
   "numModules": "{num} módulos",
   "coursePlan": "Plano do Curso",
   "editCourseLater": "Você pode editar o título do modelo, descrições e imagem do curso posteriormente.",
-  "newCourseAccess": "Por padrão, os cursos são privados e requerem aprovação do administrador para participar. Você pode editar essas configurações a qualquer momento.",
   "createCourse": "Criar curso",
   "stats": "Estatísticas",
   "createGroupChat": "Criar chat em grupo",
@@ -9932,10 +9931,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12032,6 +12027,21 @@
   },
   "chatWithSupport": "Converse com o Suporte",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Por padrão, os cursos são pesquisáveis publicamente e requerem aprovação do administrador para participar. Você pode editar essas configurações a qualquer momento.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Qual idioma você está aprendendo?",
+  "searchLanguagesHint": "Pesquise idiomas-alvo",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

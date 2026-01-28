@@ -4211,7 +4211,6 @@
   "numModules": "{num} ᠪᠣᠯᠣᠰ",
   "coursePlan": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "editCourseLater": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
-  "newCourseAccess": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "createCourse": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "stats": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "createGroupChat": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
@@ -4279,7 +4278,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-26 14:06:45.010043",
+  "@@last_modified": "2026-01-28 11:22:39.504934",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9183,10 +9182,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10686,6 +10681,21 @@
   },
   "chatWithSupport": "Chat with Support",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kedua bahasa apa yang Anda pelajari?",
+  "searchLanguagesHint": "Cari bahasa target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

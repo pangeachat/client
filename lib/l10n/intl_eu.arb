@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-26 14:06:21.460169",
+  "@@last_modified": "2026-01-28 11:22:04.786494",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -4414,7 +4414,6 @@
   "numModules": "{num} modulua",
   "coursePlan": "Ikastaro Plana",
   "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
-  "newCourseAccess": "Lehenetsiz, ikastaroak pribatutasunekoak dira eta administratzailearen onespena behar dute parte hartzeko. Edozein momentutan aldatu ditzakezu ezarpen hauek.",
   "createCourse": "Sortu ikastaroa",
   "stats": "Datuak",
   "createGroupChat": "Sortu talde txat bat",
@@ -8832,10 +8831,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10932,6 +10927,21 @@
   },
   "chatWithSupport": "Txatatu Laguntzarekin",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Zer hizkuntza ikasten ari zara?",
+  "searchLanguagesHint": "Bilatu helburu hizkuntzak",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

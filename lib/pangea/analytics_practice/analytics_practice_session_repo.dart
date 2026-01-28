@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
@@ -32,7 +34,8 @@ class AnalyticsPracticeSessionRepo {
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
     final types = List.generate(
-      AnalyticsPracticeConstants.practiceGroupSize,
+      AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize,
       (_) => activityTypes[r.nextInt(activityTypes.length)],
     );
 
@@ -53,11 +56,13 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
-
-      if (targets.length < AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length <
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         final morphs = await _fetchMorphs();
-        final remainingCount =
-            AnalyticsPracticeConstants.practiceGroupSize - targets.length;
+        final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize) -
+            targets.length;
         final morphEntries = morphs.entries.take(remainingCount);
 
         for (final entry in morphEntries) {
@@ -111,7 +116,9 @@ class AnalyticsPracticeSessionRepo {
       if (seemLemmas.contains(construct.lemma)) continue;
       seemLemmas.add(construct.lemma);
       targets.add(construct.id);
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
     }
@@ -138,7 +145,9 @@ class AnalyticsPracticeSessionRepo {
     final Set<String> seenForms = {};
 
     for (final entry in constructs) {
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
 
@@ -148,7 +157,9 @@ class AnalyticsPracticeSessionRepo {
       }
 
       for (final use in entry.cappedUses) {
-        if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+        if (targets.length >=
+            (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize)) {
           break;
         }
 
@@ -238,12 +249,19 @@ class AnalyticsPracticeSessionRepo {
       for (int i = 0; i < choreo.choreoSteps.length; i++) {
         final step = choreo.choreoSteps[i];
         final igcMatch = step.acceptedOrIgnoredMatch;
+        final stepText = choreo.stepText(stepIndex: i - 1);
         if (igcMatch?.isGrammarMatch != true ||
             igcMatch?.match.bestChoice == null) {
           continue;
         }
 
-        final choices = igcMatch!.match.choices!.map((c) => c.value).toList();
+        if (igcMatch!.match.offset == 0 &&
+            igcMatch.match.length >= stepText.trim().characters.length) {
+          // Skip if the grammar error spans the entire step
+          continue;
+        }
+
+        final choices = igcMatch.match.choices!.map((c) => c.value).toList();
         final choiceTokens = tokens
             .where(
               (token) =>

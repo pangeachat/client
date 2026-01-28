@@ -1,410 +1,402 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
-import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
-import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+// import 'package:fluffychat/l10n/l10n.dart';
+// import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
+// import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+// import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+// import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
+// import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
+// import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+// import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+// import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+// import 'package:fluffychat/pangea/languages/language_model.dart';
+// import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
+// import 'package:fluffychat/widgets/avatar.dart';
+// import 'package:fluffychat/widgets/hover_builder.dart';
+// import 'package:fluffychat/widgets/matrix.dart';
 
-class PublicCoursesPage extends StatefulWidget {
-  final String route;
-  final bool showFilters;
-  const PublicCoursesPage({
-    super.key,
-    required this.route,
-    this.showFilters = true,
-  });
+// class PublicCoursesPage extends StatefulWidget {
+//   final String route;
+//   final bool showFilters;
+//   const PublicCoursesPage({
+//     super.key,
+//     required this.route,
+//     this.showFilters = true,
+//   });
 
-  @override
-  State<PublicCoursesPage> createState() => PublicCoursesPageState();
-}
+//   @override
+//   State<PublicCoursesPage> createState() => PublicCoursesPageState();
+// }
 
-class PublicCoursesPageState extends State<PublicCoursesPage> {
-  bool loading = true;
-  Object? error;
+// class PublicCoursesPageState extends State<PublicCoursesPage> {
+//   bool loading = true;
+//   Object? error;
 
-  LanguageModel? targetLanguageFilter;
+//   LanguageModel? targetLanguageFilter;
 
-  List<PublicCoursesChunk> discoveredCourses = [];
-  Map<String, CoursePlanModel> coursePlans = {};
-  String? nextBatch;
+//   List<PublicCoursesChunk> discoveredCourses = [];
+//   Map<String, CoursePlanModel> coursePlans = {};
+//   String? nextBatch;
 
-  @override
-  void initState() {
-    super.initState();
+//   @override
+//   void initState() {
+//     super.initState();
 
-    final target = MatrixState.pangeaController.userController.userL2;
-    if (target != null) {
-      setTargetLanguageFilter(target);
-    }
+//     final target = MatrixState.pangeaController.userController.userL2;
+//     if (target != null) {
+//       setTargetLanguageFilter(target);
+//     }
 
-    _loadCourses();
-  }
+//     _loadCourses();
+//   }
 
-  void setTargetLanguageFilter(LanguageModel? language) {
-    if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
-    setState(() => targetLanguageFilter = language);
-    _loadCourses();
-  }
+//   void setTargetLanguageFilter(LanguageModel? language) {
+//     if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
+//     setState(() => targetLanguageFilter = language);
+//     _loadCourses();
+//   }
 
-  List<PublicCoursesChunk> get filteredCourses {
-    List<PublicCoursesChunk> filtered = discoveredCourses
-        .where(
-          (c) =>
-              !Matrix.of(context).client.rooms.any(
-                    (r) =>
-                        r.id == c.room.roomId &&
-                        r.membership == Membership.join,
-                  ) &&
-              coursePlans.containsKey(c.courseId),
-        )
-        .toList();
+//   List<PublicCoursesChunk> get filteredCourses {
+//     List<PublicCoursesChunk> filtered = discoveredCourses
+//         .where(
+//           (c) =>
+//               !Matrix.of(context).client.rooms.any(
+//                     (r) =>
+//                         r.id == c.room.roomId &&
+//                         r.membership == Membership.join,
+//                   ) &&
+//               coursePlans.containsKey(c.courseId),
+//         )
+//         .toList();
 
-    if (targetLanguageFilter != null) {
-      filtered = filtered.where(
-        (chunk) {
-          final course = coursePlans[chunk.courseId];
-          if (course == null) return false;
-          return course.targetLanguage.split('-').first ==
-              targetLanguageFilter!.langCodeShort;
-        },
-      ).toList();
-    }
+//     if (targetLanguageFilter != null) {
+//       filtered = filtered.where(
+//         (chunk) {
+//           final course = coursePlans[chunk.courseId];
+//           if (course == null) return false;
+//           return course.targetLanguage.split('-').first ==
+//               targetLanguageFilter!.langCodeShort;
+//         },
+//       ).toList();
+//     }
 
-    // sort by join rule, with knock rooms at the end
-    filtered.sort((a, b) {
-      final aKnock = a.room.joinRule == JoinRules.knock.name;
-      final bKnock = b.room.joinRule == JoinRules.knock.name;
-      if (aKnock && !bKnock) return 1;
-      if (!aKnock && bKnock) return -1;
-      return 0;
-    });
+//     // sort by join rule, with knock rooms at the end
+//     filtered.sort((a, b) {
+//       final aKnock = a.room.joinRule == JoinRules.knock.name;
+//       final bKnock = b.room.joinRule == JoinRules.knock.name;
+//       if (aKnock && !bKnock) return 1;
+//       if (!aKnock && bKnock) return -1;
+//       return 0;
+//     });
 
-    return filtered;
-  }
+//     return filtered;
+//   }
 
-  Future<void> _loadPublicSpaces() async {
-    try {
-      final resp = await Matrix.of(context).client.requestPublicCourses(
-            since: nextBatch,
-          );
+//   Future<void> _loadPublicSpaces() async {
+//     try {
+//       final resp = await Matrix.of(context).client.requestPublicCourses(
+//             since: nextBatch,
+//           );
 
-      for (final room in resp.courses) {
-        if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
-          discoveredCourses.add(room);
-        }
-      }
+//       for (final room in resp.courses) {
+//         if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
+//           discoveredCourses.add(room);
+//         }
+//       }
 
-      nextBatch = resp.nextBatch;
-    } catch (e, s) {
-      error = e;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'nextBatch': nextBatch,
-        },
-      );
-    }
-  }
+//       nextBatch = resp.nextBatch;
+//     } catch (e, s) {
+//       error = e;
+//       ErrorHandler.logError(
+//         e: e,
+//         s: s,
+//         data: {
+//           'nextBatch': nextBatch,
+//         },
+//       );
+//     }
+//   }
 
-  Future<void> _loadCourses() async {
-    setState(() {
-      loading = true;
-      error = null;
-    });
+//   Future<void> _loadCourses() async {
+//     setState(() {
+//       loading = true;
+//       error = null;
+//     });
 
-    await _loadPublicSpaces();
+//     await _loadPublicSpaces();
 
-    int timesLoaded = 0;
-    while (error == null && timesLoaded < 5 && nextBatch != null) {
-      await _loadPublicSpaces();
-      timesLoaded++;
-    }
+//     int timesLoaded = 0;
+//     while (error == null && timesLoaded < 5 && nextBatch != null) {
+//       await _loadPublicSpaces();
+//       timesLoaded++;
+//     }
 
-    try {
-      final resp = await CoursePlansRepo.search(
-        GetLocalizedCoursesRequest(
-          coursePlanIds:
-              discoveredCourses.map((c) => c.courseId).toSet().toList(),
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
-      );
-      final searchResult = resp.coursePlans;
+//     try {
+//       final resp = await CoursePlansRepo.search(
+//         GetLocalizedCoursesRequest(
+//           coursePlanIds:
+//               discoveredCourses.map((c) => c.courseId).toSet().toList(),
+//           l1: MatrixState.pangeaController.userController.userL1Code!,
+//         ),
+//       );
+//       final searchResult = resp.coursePlans;
 
-      coursePlans.clear();
-      for (final entry in searchResult.entries) {
-        coursePlans[entry.key] = entry.value;
-      }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'discoveredCourses':
-              discoveredCourses.map((c) => c.courseId).toList(),
-        },
-      );
-    } finally {
-      if (mounted) {
-        setState(() => loading = false);
-      }
-    }
-  }
+//       coursePlans.clear();
+//       for (final entry in searchResult.entries) {
+//         coursePlans[entry.key] = entry.value;
+//       }
+//     } catch (e, s) {
+//       ErrorHandler.logError(
+//         e: e,
+//         s: s,
+//         data: {
+//           'discoveredCourses':
+//               discoveredCourses.map((c) => c.courseId).toList(),
+//         },
+//       );
+//     } finally {
+//       if (mounted) {
+//         setState(() => loading = false);
+//       }
+//     }
+//   }
 
-  void _navigateToCoursePage(PublicRoomsChunk roomChunk, String courseId) {
-    String route =
-        '/${widget.route}/course/public/$courseId?roomid=${Uri.encodeComponent(roomChunk.roomId)}';
+//   @override
+//   Widget build(BuildContext context) {
+//     final theme = Theme.of(context);
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           L10n.of(context).joinPublicCourse,
+//         ),
+//       ),
+//       body: SafeArea(
+//         child: Center(
+//           child: Container(
+//             padding: const EdgeInsets.all(20.0),
+//             constraints: const BoxConstraints(
+//               maxWidth: 450,
+//             ),
+//             child: Column(
+//               children: [
+//                 if (widget.showFilters) ...[
+//                   Row(
+//                     children: [
+//                       Expanded(
+//                         child: Wrap(
+//                           spacing: 8.0,
+//                           runSpacing: 8.0,
+//                           alignment: WrapAlignment.start,
+//                           children: [
+//                             CourseLanguageFilter(
+//                               value: targetLanguageFilter,
+//                               onChanged: setTargetLanguageFilter,
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   const SizedBox(height: 20.0),
+//                 ],
+//                 if (error != null ||
+//                     (!loading && filteredCourses.isEmpty && nextBatch == null))
+//                   Center(
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(32.0),
+//                       child: Column(
+//                         spacing: 12.0,
+//                         children: [
+//                           const BotFace(
+//                             expression: BotExpression.addled,
+//                             width: Avatar.defaultSize * 1.5,
+//                           ),
+//                           Text(
+//                             L10n.of(context).noPublicCoursesFound,
+//                             textAlign: TextAlign.center,
+//                             style: theme.textTheme.bodyLarge,
+//                           ),
+//                           ElevatedButton(
+//                             onPressed: () => context.go(
+//                               '/${widget.route}/course/own',
+//                             ),
+//                             style: ElevatedButton.styleFrom(
+//                               backgroundColor:
+//                                   theme.colorScheme.primaryContainer,
+//                               foregroundColor:
+//                                   theme.colorScheme.onPrimaryContainer,
+//                             ),
+//                             child: Row(
+//                               mainAxisAlignment: MainAxisAlignment.center,
+//                               children: [
+//                                 Text(L10n.of(context).startOwn),
+//                               ],
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   )
+//                 else
+//                   Expanded(
+//                     child: ListView.separated(
+//                       itemCount: filteredCourses.length + 1,
+//                       separatorBuilder: (context, index) =>
+//                           const SizedBox(height: 10.0),
+//                       itemBuilder: (context, index) {
+//                         if (index == filteredCourses.length) {
+//                           return Center(
+//                             child: loading
+//                                 ? const CircularProgressIndicator.adaptive()
+//                                 : nextBatch != null
+//                                     ? TextButton(
+//                                         onPressed: _loadCourses,
+//                                         child: Text(L10n.of(context).loadMore),
+//                                       )
+//                                     : const SizedBox(),
+//                           );
+//                         }
 
-    if (roomChunk.joinRule == JoinRules.knock.name) {
-      route += '&joinrule=${Uri.encodeComponent(roomChunk.joinRule!)}';
-    }
-    context.go(route);
-  }
+//                         final roomChunk = filteredCourses[index].room;
+//                         final courseId = filteredCourses[index].courseId;
+//                         final course = coursePlans[courseId];
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          L10n.of(context).joinPublicCourse,
-        ),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(
-              maxWidth: 450,
-            ),
-            child: Column(
-              children: [
-                if (widget.showFilters) ...[
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Wrap(
-                          spacing: 8.0,
-                          runSpacing: 8.0,
-                          alignment: WrapAlignment.start,
-                          children: [
-                            CourseLanguageFilter(
-                              value: targetLanguageFilter,
-                              onChanged: setTargetLanguageFilter,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20.0),
-                ],
-                if (error != null ||
-                    (!loading && filteredCourses.isEmpty && nextBatch == null))
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(32.0),
-                      child: Column(
-                        spacing: 12.0,
-                        children: [
-                          const BotFace(
-                            expression: BotExpression.addled,
-                            width: Avatar.defaultSize * 1.5,
-                          ),
-                          Text(
-                            L10n.of(context).noPublicCoursesFound,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                          ElevatedButton(
-                            onPressed: () => context.go(
-                              '/${widget.route}/course/own',
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onPrimaryContainer,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(L10n.of(context).startOwn),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                else
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: filteredCourses.length + 1,
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 10.0),
-                      itemBuilder: (context, index) {
-                        if (index == filteredCourses.length) {
-                          return Center(
-                            child: loading
-                                ? const CircularProgressIndicator.adaptive()
-                                : nextBatch != null
-                                    ? TextButton(
-                                        onPressed: _loadCourses,
-                                        child: Text(L10n.of(context).loadMore),
-                                      )
-                                    : const SizedBox(),
-                          );
-                        }
+//                         final displayname = roomChunk.name ??
+//                             roomChunk.canonicalAlias ??
+//                             L10n.of(context).emptyChat;
 
-                        final roomChunk = filteredCourses[index].room;
-                        final courseId = filteredCourses[index].courseId;
-                        final course = coursePlans[courseId];
-
-                        final displayname = roomChunk.name ??
-                            roomChunk.canonicalAlias ??
-                            L10n.of(context).emptyChat;
-
-                        return Material(
-                          type: MaterialType.transparency,
-                          child: InkWell(
-                            onTap: () =>
-                                _navigateToCoursePage(roomChunk, courseId),
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Container(
-                              padding: const EdgeInsets.all(12.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                border: Border.all(
-                                  color: theme.colorScheme.primary,
-                                ),
-                              ),
-                              child: Column(
-                                spacing: 4.0,
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    spacing: 8.0,
-                                    children: [
-                                      ImageByUrl(
-                                        imageUrl: roomChunk.avatarUrl,
-                                        width: 58.0,
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        replacement: Avatar(
-                                          name: displayname,
-                                          borderRadius: BorderRadius.circular(
-                                            10.0,
-                                          ),
-                                          size: 58.0,
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Column(
-                                          spacing: 0.0,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              displayname,
-                                              style: theme.textTheme.bodyLarge,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            Row(
-                                              spacing: 4.0,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(
-                                                  Icons.group,
-                                                  size: 16.0,
-                                                ),
-                                                Text(
-                                                  L10n.of(context)
-                                                      .countParticipants(
-                                                    roomChunk.numJoinedMembers,
-                                                  ),
-                                                  style: theme
-                                                      .textTheme.bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  if (course != null) ...[
-                                    CourseInfoChips(
-                                      courseId,
-                                      iconSize: 12.0,
-                                      fontSize: 12.0,
-                                    ),
-                                    Text(
-                                      course.description,
-                                      style: theme.textTheme.bodyMedium,
-                                    ),
-                                  ],
-                                  const SizedBox(height: 12.0),
-                                  HoverBuilder(
-                                    builder: (context, hovered) =>
-                                        ElevatedButton(
-                                      onPressed: () => _navigateToCoursePage(
-                                        roomChunk,
-                                        courseId,
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: theme
-                                            .colorScheme.primaryContainer
-                                            .withAlpha(hovered ? 255 : 200),
-                                        foregroundColor: theme
-                                            .colorScheme.onPrimaryContainer,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            roomChunk.joinRule ==
-                                                    JoinRules.knock.name
-                                                ? L10n.of(context).knock
-                                                : L10n.of(context).join,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+//                         return Material(
+//                           type: MaterialType.transparency,
+//                           child: InkWell(
+//                             onTap: () => context.go(
+//                               '/${widget.route}/course/public/$courseId',
+//                               extra: roomChunk,
+//                             ),
+//                             borderRadius: BorderRadius.circular(12.0),
+//                             child: Container(
+//                               padding: const EdgeInsets.all(12.0),
+//                               decoration: BoxDecoration(
+//                                 borderRadius: BorderRadius.circular(12.0),
+//                                 border: Border.all(
+//                                   color: theme.colorScheme.primary,
+//                                 ),
+//                               ),
+//                               child: Column(
+//                                 spacing: 4.0,
+//                                 mainAxisSize: MainAxisSize.min,
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   Row(
+//                                     spacing: 8.0,
+//                                     children: [
+//                                       ImageByUrl(
+//                                         imageUrl: roomChunk.avatarUrl,
+//                                         width: 58.0,
+//                                         borderRadius:
+//                                             BorderRadius.circular(10.0),
+//                                         replacement: Avatar(
+//                                           name: displayname,
+//                                           borderRadius: BorderRadius.circular(
+//                                             10.0,
+//                                           ),
+//                                           size: 58.0,
+//                                         ),
+//                                       ),
+//                                       Flexible(
+//                                         child: Column(
+//                                           spacing: 0.0,
+//                                           crossAxisAlignment:
+//                                               CrossAxisAlignment.start,
+//                                           children: [
+//                                             Text(
+//                                               displayname,
+//                                               style: theme.textTheme.bodyLarge,
+//                                               maxLines: 2,
+//                                               overflow: TextOverflow.ellipsis,
+//                                             ),
+//                                             Row(
+//                                               spacing: 4.0,
+//                                               mainAxisSize: MainAxisSize.min,
+//                                               children: [
+//                                                 const Icon(
+//                                                   Icons.group,
+//                                                   size: 16.0,
+//                                                 ),
+//                                                 Text(
+//                                                   L10n.of(context)
+//                                                       .countParticipants(
+//                                                     roomChunk.numJoinedMembers,
+//                                                   ),
+//                                                   style: theme
+//                                                       .textTheme.bodyMedium,
+//                                                 ),
+//                                               ],
+//                                             ),
+//                                           ],
+//                                         ),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                   if (course != null) ...[
+//                                     CourseInfoChips(
+//                                       courseId,
+//                                       iconSize: 12.0,
+//                                       fontSize: 12.0,
+//                                     ),
+//                                     Text(
+//                                       course.description,
+//                                       style: theme.textTheme.bodyMedium,
+//                                     ),
+//                                   ],
+//                                   const SizedBox(height: 12.0),
+//                                   HoverBuilder(
+//                                     builder: (context, hovered) =>
+//                                         ElevatedButton(
+//                                       onPressed: () => context.go(
+//                                         '/${widget.route}/course/public/$courseId',
+//                                         extra: roomChunk,
+//                                       ),
+//                                       style: ElevatedButton.styleFrom(
+//                                         backgroundColor: theme
+//                                             .colorScheme.primaryContainer
+//                                             .withAlpha(hovered ? 255 : 200),
+//                                         foregroundColor: theme
+//                                             .colorScheme.onPrimaryContainer,
+//                                         shape: RoundedRectangleBorder(
+//                                           borderRadius:
+//                                               BorderRadius.circular(12.0),
+//                                         ),
+//                                       ),
+//                                       child: Row(
+//                                         mainAxisAlignment:
+//                                             MainAxisAlignment.center,
+//                                         children: [
+//                                           Text(
+//                                             roomChunk.joinRule ==
+//                                                     JoinRules.knock.name
+//                                                 ? L10n.of(context).knock
+//                                                 : L10n.of(context).join,
+//                                           ),
+//                                         ],
+//                                       ),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -4482,7 +4482,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-26 14:06:36.616110",
+  "@@last_modified": "2026-01-28 11:22:29.356174",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -4495,7 +4495,6 @@
   "numModules": "{num} moduļi",
   "coursePlan": "Kursa plāns",
   "editCourseLater": "Jūs varat vēlāk rediģēt šablona nosaukumu, aprakstus un kursa attēlu.",
-  "newCourseAccess": "Pēc noklusējuma kursi ir privāti un prasa administratora apstiprinājumu, lai pievienotos. Jūs varat šīs iestatījumus mainīt jebkurā laikā.",
   "createCourse": "Izveidot kursu",
   "stats": "Statistika",
   "@customReaction": {
@@ -8818,10 +8817,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10918,6 +10913,21 @@
   },
   "chatWithSupport": "Sarunāties ar atbalstu",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pēc noklusējuma kursi ir publiski meklējami un prasa administratora apstiprinājumu pievienošanai. Jūs varat rediģēt šos iestatījumus jebkurā laikā.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kuru valodu tu mācies?",
+  "searchLanguagesHint": "Meklēt mērķa valodas",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

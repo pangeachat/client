@@ -593,7 +593,6 @@ class PangeaMessageEvent {
   }
 
   Future<String> requestRespresentationByL1() async {
-    debugPrint("LATEST EDIT: ${_latestEdit.toJson()}");
     if (_l1Code == null || _l2Code == null) {
       throw Exception("Missing language codes");
     }
@@ -605,9 +604,7 @@ class PangeaMessageEvent {
     RepresentationEvent? rep;
     if (!includedIT) {
       // if the message didn't go through translation, get any l1 rep
-      debugPrint("REPRESENTATIONS: ${representations.length}");
       rep = representationByLanguage(_l1Code!);
-      debugPrint("REP: $rep");
     } else {
       // if the message went through translation, get the non-original
       // l1 rep since originalWritten could contain some l2 words
@@ -623,13 +620,6 @@ class PangeaMessageEvent {
     final String srcLang = includedIT
         ? (originalWritten?.langCode ?? _l1Code!)
         : (originalSent?.langCode ?? _l2Code!);
-
-    debugPrint("Original written content: $originalWrittenContent");
-    debugPrint("Message display text: $messageDisplayText");
-    debugPrint("Original sent: ${originalSent?.content.toJson()}");
-    debugPrint(
-      "Message display rep: ${representationByLanguage(messageDisplayLangCode)?.content.toJson()}",
-    );
 
     final resp = await _requestRepresentation(
       includedIT ? originalWrittenContent : messageDisplayText,

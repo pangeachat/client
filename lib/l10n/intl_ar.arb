@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-26 14:06:38.032512",
+  "@@last_modified": "2026-01-28 11:22:30.477643",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -4300,7 +4300,6 @@
   "numModules": "{num} وحدات",
   "coursePlan": "خطة الدورة",
   "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
-  "newCourseAccess": "افتراضيًا، الدورات خاصة وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
   "createCourse": "إنشاء دورة",
   "stats": "إحصائيات",
   "createGroupChat": "إنشاء دردشة جماعية",
@@ -9049,10 +9048,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11149,6 +11144,21 @@
   },
   "chatWithSupport": "الدردشة مع الدعم",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
+  "searchLanguagesHint": "ابحث عن اللغات المستهدفة",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

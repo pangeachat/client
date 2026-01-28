@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -27,12 +28,14 @@ class NewCoursePage extends StatefulWidget {
   final String route;
   final String? spaceId;
   final bool showFilters;
+  final String? initialLanguageCode;
 
   const NewCoursePage({
     super.key,
     required this.route,
     this.spaceId,
     this.showFilters = true,
+    this.initialLanguageCode,
   });
 
   @override
@@ -50,8 +53,15 @@ class NewCoursePageState extends State<NewCoursePage> {
   void initState() {
     super.initState();
 
-    _targetLanguageFilter.value =
-        MatrixState.pangeaController.userController.userL2;
+    if (widget.initialLanguageCode != null) {
+      _targetLanguageFilter.value =
+          PLanguageStore.byLangCode(widget.initialLanguageCode!);
+    }
+
+    if (_targetLanguageFilter.value == null) {
+      _targetLanguageFilter.value =
+          MatrixState.pangeaController.userController.userL2;
+    }
 
     _loadCourses();
   }

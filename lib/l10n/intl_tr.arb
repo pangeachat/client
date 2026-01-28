@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-26 14:06:38.864029",
+  "@@last_modified": "2026-01-28 11:22:31.719920",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -4297,7 +4297,6 @@
   "numModules": "{num} modül",
   "coursePlan": "Kurs Planı",
   "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
-  "newCourseAccess": "Varsayılan olarak, kurslar özeldir ve katılmak için yönetici onayı gerekir. Bu ayarları istediğiniz zaman değiştirebilirsiniz.",
   "createCourse": "Kurs Oluştur",
   "stats": "İstatistikler",
   "createGroupChat": "Grup sohbeti oluştur",
@@ -9054,10 +9053,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11154,6 +11149,21 @@
   },
   "chatWithSupport": "Destek ile Sohbet Et",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Varsayılan olarak, kurslar herkese açık olarak aranabilir ve katılmak için yönetici onayı gerektirir. Bu ayarları istediğiniz zaman düzenleyebilirsiniz.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hangi dili öğreniyorsunuz?",
+  "searchLanguagesHint": "Hedef dilleri arayın",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

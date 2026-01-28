@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-26 14:06:55.949909",
+  "@@last_modified": "2026-01-28 11:22:52.811123",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -4336,7 +4336,6 @@
   "numModules": "{num} модулей",
   "coursePlan": "План курса",
   "editCourseLater": "Вы можете редактировать название шаблона, описания и изображение курса позже.",
-  "newCourseAccess": "По умолчанию курсы являются приватными и требуют одобрения администратора для присоединения. Вы можете изменить эти настройки в любое время.",
   "createCourse": "Создать курс",
   "stats": "Статистика",
   "createGroupChat": "Создать групповой чат",
@@ -8921,10 +8920,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11040,6 +11035,21 @@
   },
   "chatWithSupport": "Чат с поддержкой",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "По умолчанию курсы доступны для публичного поиска и требуют одобрения администратора для присоединения. Вы можете изменить эти настройки в любое время.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Какой язык вы изучаете?",
+  "searchLanguagesHint": "Поиск целевых языков",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-26 14:06:14.798813",
+  "@@last_modified": "2026-01-28 11:21:56.691598",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -3037,7 +3037,6 @@
   "numModules": "{num} modulov",
   "coursePlan": "Plán kurzu",
   "editCourseLater": "Môžete neskôr upraviť názov kurzu, popisy a obrázok kurzu.",
-  "newCourseAccess": "Štandardne sú kurzy súkromné a vyžadujú schválenie správcu na pripojenie. Tieto nastavenia môžete upraviť kedykoľvek.",
   "createCourse": "Vytvoriť kurz",
   "stats": "Štatistiky",
   "createGroupChat": "Vytvoriť skupinový chat",
@@ -9916,10 +9915,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12016,6 +12011,21 @@
   },
   "chatWithSupport": "Chatovať s podporou",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Predvolene sú kurzy verejne vyhľadateľné a vyžadujú schválenie administrátora na pripojenie. Tieto nastavenia môžete kedykoľvek upraviť.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Aký jazyk sa učíte?",
+  "searchLanguagesHint": "Hľadajte cieľové jazyky",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

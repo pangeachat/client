@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-26 14:06:27.908944",
+  "@@last_modified": "2026-01-28 11:22:17.132130",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -4416,7 +4416,6 @@
   "numModules": "{num} модулів",
   "coursePlan": "План курсу",
   "editCourseLater": "Ви можете редагувати назву шаблону, описи та зображення курсу пізніше.",
-  "newCourseAccess": "За замовчуванням курси є приватними і потребують схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
   "createCourse": "Створити курс",
   "stats": "Статистика",
   "createGroupChat": "Створити груповий чат",
@@ -8826,10 +8825,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10926,6 +10921,21 @@
   },
   "chatWithSupport": "Чат з підтримкою",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "За замовчуванням курси є загальнодоступними для пошуку і вимагають схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Яку мову ви вивчаєте?",
+  "searchLanguagesHint": "Шукати цільові мови",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

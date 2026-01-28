@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:50.621717",
+  "@@last_modified": "2026-01-28 11:22:46.768605",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -4075,7 +4075,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursplan",
   "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
-  "newCourseAccess": "Som standard är kurser privata och kräver administratörsgodkännande för att gå med. Du kan ändra dessa inställningar när som helst.",
   "createCourse": "Skapa kurs",
   "stats": "Statistik",
   "createGroupChat": "Skapa gruppchatt",
@@ -9310,10 +9309,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11410,6 +11405,21 @@
   },
   "chatWithSupport": "Chatta med support",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Vilket språk lär du dig?",
+  "searchLanguagesHint": "Sök efter målspråk",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

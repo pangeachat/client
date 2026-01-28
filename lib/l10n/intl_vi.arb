@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:42.137290",
+  "@@last_modified": "2026-01-28 11:22:35.606622",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -3979,7 +3979,6 @@
   "numModules": "{num} mô-đun",
   "coursePlan": "Kế hoạch khóa học",
   "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
-  "newCourseAccess": "Theo mặc định, các khóa học là riêng tư và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất cứ lúc nào.",
   "createCourse": "Tạo khóa học",
   "stats": "Thống kê",
   "createGroupChat": "Tạo nhóm trò chuyện",
@@ -4366,10 +4365,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -6502,6 +6497,21 @@
   },
   "chatWithSupport": "Trò chuyện với Hỗ trợ",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Theo mặc định, các khóa học có thể tìm kiếm công khai và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất kỳ lúc nào.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Bạn đang học ngôn ngữ nào?",
+  "searchLanguagesHint": "Tìm kiếm ngôn ngữ mục tiêu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

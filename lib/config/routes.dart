@@ -56,7 +56,6 @@ import 'package:fluffychat/pangea/login/pages/find_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/new_course_page.dart';
-import 'package:fluffychat/pangea/login/pages/public_courses_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -363,41 +362,15 @@ abstract class AppRoutes {
                   },
                 ),
                 GoRoute(
-                  path: 'public',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      const PublicCoursesPage(
-                        route: 'rooms',
-                      ),
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      path: ':courseid',
-                      pageBuilder: (context, state) {
-                        return defaultPageBuilder(
-                          context,
-                          state,
-                          SelectedCourse(
-                            state.pathParameters['courseid']!,
-                            SelectedCourseMode.join,
-                            roomID: state.uri.queryParameters['roomid'],
-                            joinRule: state.uri.queryParameters['joinrule'],
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
                   path: 'own',
                   pageBuilder: (context, state) {
                     return defaultPageBuilder(
                       context,
                       state,
-                      const NewCoursePage(route: 'rooms'),
+                      NewCoursePage(
+                        route: 'rooms',
+                        initialLanguageCode: state.uri.queryParameters['lang'],
+                      ),
                     );
                   },
                   routes: [
@@ -431,6 +404,21 @@ abstract class AppRoutes {
                       ],
                     ),
                   ],
+                ),
+                GoRoute(
+                  path: ':courseid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      SelectedCourse(
+                        state.pathParameters['courseid']!,
+                        SelectedCourseMode.join,
+                        roomID: state.uri.queryParameters['roomid'],
+                        joinRule: state.uri.queryParameters['joinrule'],
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

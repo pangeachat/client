@@ -2369,7 +2369,6 @@
   "numModules": "{num} modulov",
   "coursePlan": "Načrt tečaja",
   "editCourseLater": "Lahko kasneje uredite naslov predloge, opise in sliko tečaja.",
-  "newCourseAccess": "Privzeto so tečaji zasebni in zahtevajo odobritev administratorja za vstop. Te nastavitve lahko kadar koli uredite.",
   "createCourse": "Ustvari tečaj",
   "stats": "Statistika",
   "createGroupChat": "Ustvari skupinski klepet",
@@ -2464,7 +2463,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-26 14:06:25.037902",
+  "@@last_modified": "2026-01-28 11:22:12.982879",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9913,10 +9912,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12013,6 +12008,21 @@
   },
   "chatWithSupport": "Pogovorite se s podporo",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Privzeto so tečaji javno iskalni in zahtevajo odobritev skrbnika za pridružitev. Te nastavitve lahko kadar koli spremenite.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Katero jezika se učiš?",
+  "searchLanguagesHint": "Išči ciljne jezike",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }

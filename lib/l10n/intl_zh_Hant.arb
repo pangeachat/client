@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 14:06:34.380101",
+  "@@last_modified": "2026-01-28 11:22:26.284769",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -4393,7 +4393,6 @@
   "numModules": "{num} 模組",
   "coursePlan": "課程計劃",
   "editCourseLater": "您可以稍後編輯課程標題、描述和課程圖片。",
-  "newCourseAccess": "默認情況下，課程是私有的，需要管理員批准才能加入。您可以隨時編輯這些設置。",
   "createCourse": "創建課程",
   "stats": "統計數據",
   "createGroupChat": "創建群聊",
@@ -8847,10 +8846,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10930,6 +10925,21 @@
   },
   "chatWithSupport": "與支援聊天",
   "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "預設情況下，課程是公開可搜尋的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "你正在學習什麼語言？",
+  "searchLanguagesHint": "搜尋目標語言",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
     "type": "String",
     "placeholders": {}
   }
