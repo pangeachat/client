@@ -124,7 +124,10 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      if (analyticsUserId != client.userID) {
+      final lastUpdated =
+          await _analyticsClientGetter.database.getLastUpdated();
+
+      if (analyticsUserId != client.userID || lastUpdated == null) {
         await _clearDatabase();
         await _analyticsClientGetter.database.updateUserID(client.userID!);
       }
@@ -253,6 +256,8 @@ class AnalyticsDataService {
     final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
     for (final use in uses) {
       if (blocked.contains(use.identifier)) continue;
+      if (use.category == 'other') continue;
+
       if (!cappedLastUseCache.containsKey(use.identifier)) {
         final constructs = await getConstructUse(use.identifier);
         cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
@@ -324,7 +329,8 @@ class AnalyticsDataService {
       final existing = cleaned[canonical];
       if (existing != null) {
         existing.merge(entry);
-      } else if (!blocked.contains(canonical)) {
+      } else if (!blocked.contains(canonical) &&
+          canonical.category != 'other') {
         cleaned[canonical] = entry;
       }
     }
@@ -345,7 +351,10 @@ class AnalyticsDataService {
     final blocked = blockedConstructs;
     final uses = newConstructs
         .where(
-          (c) => c.constructType == type && !blocked.contains(c.identifier),
+          (c) =>
+              c.constructType == type &&
+              !blocked.contains(c.identifier) &&
+              c.identifier.category != 'other',
         )
         .toList();
 
