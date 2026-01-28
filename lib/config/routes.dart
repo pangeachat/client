@@ -47,6 +47,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
+import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
@@ -411,9 +412,8 @@ abstract class AppRoutes {
                     return defaultPageBuilder(
                       context,
                       state,
-                      SelectedCourse(
-                        state.pathParameters['courseid']!,
-                        SelectedCourseMode.join,
+                      PublicCoursePreview(
+                        courseId: state.pathParameters['courseid']!,
                         roomID: state.uri.queryParameters['roomid'],
                       ),
                     );
