@@ -7,7 +7,10 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_view.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -29,7 +32,6 @@ class SelectedCourse extends StatefulWidget {
 
   /// In join mode, the room info for the space that already has this course.
   final String? roomID;
-  final String? joinRule;
 
   const SelectedCourse(
     this.courseId,
@@ -37,7 +39,6 @@ class SelectedCourse extends StatefulWidget {
     super.key,
     this.spaceId,
     this.roomID,
-    this.joinRule,
   });
 
   @override
@@ -45,17 +46,22 @@ class SelectedCourse extends StatefulWidget {
 }
 
 class SelectedCourseController extends State<SelectedCourse>
-    with CoursePlanProvider {
+    with CoursePlanProvider, ActivitySummariesProvider {
+  RoomSummaryResponse? _roomSummary;
+
   @override
   initState() {
     super.initState();
+    _loadSummary();
     loadCourse(widget.courseId).then((_) => loadTopics());
   }
 
   @override
   void didUpdateWidget(covariant SelectedCourse oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.courseId != widget.courseId) {
+    if (oldWidget.courseId != widget.courseId ||
+        widget.roomID != oldWidget.roomID) {
+      _loadSummary();
       loadCourse(widget.courseId).then((_) => loadTopics());
     }
   }
@@ -78,7 +84,7 @@ class SelectedCourseController extends State<SelectedCourse>
       case SelectedCourseMode.addToSpace:
         return L10n.of(context).addCoursePlan;
       case SelectedCourseMode.join:
-        return widget.joinRule == JoinRules.knock.name
+        return _roomSummary?.joinRule == JoinRules.knock
             ? L10n.of(context).knock
             : L10n.of(context).join;
     }
@@ -86,7 +92,28 @@ class SelectedCourseController extends State<SelectedCourse>
 
   bool get showCodeField =>
       widget.mode == SelectedCourseMode.join &&
-      widget.joinRule == JoinRules.knock.name;
+      _roomSummary?.joinRule == JoinRules.knock;
+
+  Future<void> _loadSummary() async {
+    if (widget.roomID == null) return;
+    try {
+      await loadRoomSummaries([widget.roomID!]);
+      if (roomSummaries == null ||
+          !roomSummaries!.containsKey(widget.roomID!)) {
+        throw Exception("Room summary not found");
+      }
+
+      if (mounted) {
+        setState(() => _roomSummary = roomSummaries![widget.roomID!]);
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomID': widget.roomID},
+      );
+    }
+  }
 
   Future<void> joinWithCode(String code) async {
     if (code.isEmpty) {
@@ -190,7 +217,7 @@ class SelectedCourseController extends State<SelectedCourse>
       return;
     }
 
-    final knock = widget.joinRule == JoinRules.knock.name;
+    final knock = _roomSummary?.joinRule == JoinRules.knock;
     final roomId = widget.roomID != null && knock
         ? await client.knockRoom(widget.roomID!)
         : await client.joinRoom(widget.roomID!);

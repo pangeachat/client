@@ -415,7 +415,6 @@ abstract class AppRoutes {
                         state.pathParameters['courseid']!,
                         SelectedCourseMode.join,
                         roomID: state.uri.queryParameters['roomid'],
-                        joinRule: state.uri.queryParameters['joinrule'],
                       ),
                     );
                   },

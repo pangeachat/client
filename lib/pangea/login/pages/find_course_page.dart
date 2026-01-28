@@ -394,13 +394,9 @@ class _PublicCourseTile extends StatelessWidget {
   void _navigateToCoursePage(
     BuildContext context,
   ) {
-    String route =
-        '/rooms/course/${Uri.encodeComponent(chunk.courseId)}?roomid=${Uri.encodeComponent(chunk.room.roomId)}';
-
-    if (chunk.room.joinRule == JoinRules.knock.name) {
-      route += '&joinrule=${Uri.encodeComponent(chunk.room.joinRule!)}';
-    }
-    context.go(route);
+    context.go(
+      '/rooms/course/${Uri.encodeComponent(chunk.courseId)}?roomid=${Uri.encodeComponent(chunk.room.roomId)}',
+    );
   }
 
   @override
