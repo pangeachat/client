@@ -2546,12 +2546,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "\u51c6\u786e\u7387";
     },
-    get$autoIGCToolName() {
-      return "\u81ea\u52a8\u8fd0\u884cPangea\u5199\u4f5c\u8f85\u52a9";
-    },
-    get$autoIGCToolDescription() {
-      return "\u5728\u53d1\u9001\u6d88\u606f\u524d\u81ea\u52a8\u8fd0\u884cPangea\u804a\u5929\u8bed\u6cd5\u548c\u7ffb\u8bd1\u5199\u4f5c\u8f85\u52a9\u3002";
-    },
     get$chatCapacity() {
       return "\u804a\u5929\u5bb9\u91cf";
     },
@@ -5357,6 +5351,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "\u6709\u95ee\u9898\u5417\uff1f\u6211\u4eec\u5728\u8fd9\u91cc\u5e2e\u52a9\u60a8\uff01";
     },
+    get$autoIGCToolName() {
+      return "\u542f\u7528\u5199\u4f5c\u8f85\u52a9";
+    },
+    get$autoIGCToolDescription() {
+      return "\u81ea\u52a8\u8fd0\u884c Pangea Chat \u5de5\u5177\u4ee5\u5c06\u53d1\u9001\u7684\u6d88\u606f\u7ea0\u6b63\u4e3a\u76ee\u6807\u8bed\u8a00\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -7884,12 +7884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$accuracy(_) {
       return "\u6e96\u78ba\u7387";
-    },
-    get$autoIGCToolName() {
-      return "\u81ea\u52d5\u904b\u884cPangea\u5beb\u4f5c\u5354\u52a9";
-    },
-    get$autoIGCToolDescription() {
-      return "\u5728\u767c\u9001\u8a0a\u606f\u524d\uff0c\u81ea\u52d5\u904b\u884cPangea\u804a\u5929\u8a9e\u6cd5\u548c\u7ffb\u8b6f\u5beb\u4f5c\u5354\u52a9\u3002";
     },
     get$chatCapacity() {
       return "\u804a\u5929\u5bb9\u91cf";
@@ -10693,6 +10687,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "\u6709\u554f\u984c\u55ce\uff1f\u6211\u5011\u5728\u9019\u88e1\u5e6b\u52a9\u60a8\uff01";
     },
+    get$autoIGCToolName() {
+      return "\u555f\u7528\u5beb\u4f5c\u8f14\u52a9";
+    },
+    get$autoIGCToolDescription() {
+      return "\u81ea\u52d5\u904b\u884c Pangea Chat \u5de5\u5177\u4ee5\u5c07\u767c\u9001\u7684\u6d88\u606f\u66f4\u6b63\u70ba\u76ee\u6a19\u8a9e\u8a00\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10707,7 +10707,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dcoIzWSKunJKF+2SrKOnTcEzuAs="] = d.current;
+  d["wdvPvwCNky1v8rd6rKnszniEPfY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

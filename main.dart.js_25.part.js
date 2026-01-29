@@ -2551,12 +2551,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Precis\xe3o";
     },
-    get$autoIGCToolName() {
-      return string$.Executs;
-    },
-    get$autoIGCToolDescription() {
-      return string$.Executu;
-    },
     get$chatCapacity() {
       return "Capacidade de chat";
     },
@@ -5362,6 +5356,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "D\xfavidas? Estamos aqui para ajudar!";
     },
+    get$autoIGCToolName() {
+      return "Ativar assist\xeancia de escrita";
+    },
+    get$autoIGCToolDescription() {
+      return string$.Execut;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -7889,12 +7889,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$accuracy(_) {
       return "Precis\xe3o";
-    },
-    get$autoIGCToolName() {
-      return string$.Executs;
-    },
-    get$autoIGCToolDescription() {
-      return "Executar automaticamente a assist\xeancia de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.";
     },
     get$chatCapacity() {
       return "Capacidade de chat";
@@ -10698,6 +10692,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "D\xfavidas? Estamos aqui para ajudar!";
     },
+    get$autoIGCToolName() {
+      return "Ativar assist\xeancia de escrita";
+    },
+    get$autoIGCToolDescription() {
+      return string$.Execut;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -13225,12 +13225,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$accuracy(_) {
       return "Precis\xe3o";
-    },
-    get$autoIGCToolName() {
-      return string$.Executs;
-    },
-    get$autoIGCToolDescription() {
-      return string$.Executu;
     },
     get$chatCapacity() {
       return "Capacidade de chat";
@@ -16034,6 +16028,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "D\xfavidas? Estamos aqui para ajudar!";
     },
+    get$autoIGCToolName() {
+      return "Ativar assist\xeancia de escrita";
+    },
+    get$autoIGCToolDescription() {
+      return string$.Execut;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16126,8 +16126,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Este__: 'Este \xe9 todo mundo neste curso. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.',
     Eu_tam: "Eu tamb\xe9m cometo erros! Algo para me ajudar a melhorar?",
     Exclui: "Excluir sua conta n\xe3o cancelar\xe1 automaticamente sua assinatura.",
-    Executs: "Executar assist\xeancia de escrita Pangea automaticamente",
-    Executu: "Executar automaticamente a assist\xeancia de escrita de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.",
+    Execut: "Executar automaticamente as ferramentas do Pangea Chat para corrigir mensagens enviadas para o idioma de destino.",
     Ferram: "Ferramentas de tradu\xe7\xe3o e gram\xe1tica podem estar lentas ou indispon\xedveis enquanto os bots Pangea se atualizam.",
     Gostar: "Gostaria de solicitar acesso para visualizar as an\xe1lises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poder\xe3o ver:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o ver:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
     Idioma: "Idioma e n\xedvel de idioma determinados pelo plano de atividade",
@@ -16242,7 +16241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BaimtWweZakWpx+s9twf5TzkIvQ="] = d.current;
+  d["S0ouOZNIOiOQq5VLqbvLhCnI8PM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

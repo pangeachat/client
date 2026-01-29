@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Accuracy";
     },
-    get$autoIGCToolName() {
-      return "Run Pangea writing assistance automatically";
-    },
-    get$autoIGCToolDescription() {
-      return "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.";
-    },
     get$chatCapacity() {
       return "Chat capacity";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Questions? We're here to help!";
     },
+    get$autoIGCToolName() {
+      return "Enable writing assistance";
+    },
+    get$autoIGCToolDescription() {
+      return "Automatically run Pangea Chat tools to correct sent messages to target language.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KE2fJwXKQJ835a14bZ0JKr+WDE0="] = d.current;
+  d["ANVMGUsWPwPedsMictnsZ8J/6RA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_418.part.js.map

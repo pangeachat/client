@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Precizeco";
     },
-    get$autoIGCToolName() {
-      return "Kurigu Pangea verkhelpilo a\u016dtomate";
-    },
-    get$autoIGCToolDescription() {
-      return "A\u016dtomate funkciigu Pangea Chat gramatikon kaj tradukadon por helpi vin verki anta\u016d ol sendi vian mesa\u011don.";
-    },
     get$chatCapacity() {
       return "Kapacito de babilejo";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Demandoj? Ni \u0109i tie por helpi!";
     },
+    get$autoIGCToolName() {
+      return "Ebligi skriban asistadon";
+    },
+    get$autoIGCToolDescription() {
+      return "A\u016dtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesa\u011dojn al la cellingvo.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7GpHyQ5AhmOJ+xcSIyK5nRZfXCE="] = d.current;
+  d["j3h/Ed5grUYOYrvTnLLfWyJpV4o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_474.part.js.map

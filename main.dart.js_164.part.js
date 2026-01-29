@@ -2541,12 +2541,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "\u0f44\u0f7c\u0f0b\u0f56\u0f7c\u0f60\u0f72\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0d";
     },
-    get$autoIGCToolName() {
-      return "\u0f55\u0f53\u0f0b\u0f5a\u0f74\u0f63\u0f0b\u0f63\u0f66\u0f0b\u0f60\u0f42\u0f53\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f63\u0f0b\u0f56\u0f62\u0f9f\u0f7a\u0f53\u0f0b";
-    },
-    get$autoIGCToolDescription() {
-      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f51\u0f74\u0f66\u0f0b\u0f66\u0f90\u0f56\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f63\u0f0b\u0f56\u0f62\u0f9f\u0f7a\u0f53\u0f0b\u0f54\u0f60\u0f72\u0f0b\u0f55\u0f53\u0f0b\u0f5a\u0f74\u0f63\u0f0b\u0f63\u0f66\u0f0b\u0f60\u0f42\u0f53\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f63\u0f0b\u0f56\u0f62\u0f9f\u0f7a\u0f53\u0f0b";
-    },
     get$chatCapacity() {
       return "Chat capacity";
     },
@@ -5352,6 +5346,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Pytania? Jeste\u015bmy tutaj, aby pom\xf3c!";
     },
+    get$autoIGCToolName() {
+      return "Buka bantuan nulis";
+    },
+    get$autoIGCToolDescription() {
+      return "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5377,7 +5377,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yYklHJ9CQPeuknqQoCBhMM/fcrU="] = d.current;
+  d["/GycKAB0MZLWL3aFJXeyzUkOpCY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

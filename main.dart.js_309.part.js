@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "N\xf8jagtighed";
     },
-    get$autoIGCToolName() {
-      return "K\xf8r Pangea skriveassistance automatisk";
-    },
-    get$autoIGCToolDescription() {
-      return "K\xf8r automatisk Pangea Chat grammatik- og overs\xe6ttelsesassistance, f\xf8r jeg sender min besked.";
-    },
     get$chatCapacity() {
       return "Chatkapacitet";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Sp\xf8rgsm\xe5l? Vi er her for at hj\xe6lpe!";
     },
+    get$autoIGCToolName() {
+      return "Aktiv\xe9r skriveassistance";
+    },
+    get$autoIGCToolDescription() {
+      return "K\xf8r automatisk Pangea Chat-v\xe6rkt\xf8jer for at rette sendte beskeder til m\xe5lsproget.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["apuHjlnFVqPN0KCCBR2QBehFgxs="] = d.current;
+  d["kXZ+o/wQ9xt9VSlYwzPtaNSCWKY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_309.part.js.map

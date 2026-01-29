@@ -2540,12 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "\u0627\u0644\u062f\u0642\u0629";
     },
-    get$autoIGCToolName() {
-      return "\u062a\u0634\u063a\u064a\u0644 \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0643\u062a\u0627\u0628\u0629 Pangea \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627";
-    },
-    get$autoIGCToolDescription() {
-      return "\u062a\u0634\u063a\u064a\u0644 \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0642\u0648\u0627\u0639\u062f \u0648\u0627\u0644\u062a\u0631\u062c\u0645\u0629 \u0641\u064a \u062f\u0631\u062f\u0634\u0629 Pangea \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627 \u0642\u0628\u0644 \u0625\u0631\u0633\u0627\u0644 \u0631\u0633\u0627\u0644\u062a\u064a.";
-    },
     get$chatCapacity() {
       return "\u0633\u0639\u0629 \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
     },
@@ -5351,6 +5345,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "\u0623\u0633\u0626\u0644\u0629\u061f \u0646\u062d\u0646 \u0647\u0646\u0627 \u0644\u0644\u0645\u0633\u0627\u0639\u062f\u0629!";
     },
+    get$autoIGCToolName() {
+      return "\u062a\u0641\u0639\u064a\u0644 \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0643\u062a\u0627\u0628\u0629";
+    },
+    get$autoIGCToolDescription() {
+      return "\u062a\u0634\u063a\u064a\u0644 \u0623\u062f\u0648\u0627\u062a \u062f\u0631\u062f\u0634\u0629 \u0628\u0627\u0646\u062c\u064a\u0627 \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627 \u0644\u062a\u0635\u062d\u064a\u062d \u0627\u0644\u0631\u0633\u0627\u0626\u0644 \u0627\u0644\u0645\u0631\u0633\u0644\u0629 \u0625\u0644\u0649 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0645\u0633\u062a\u0647\u062f\u0641\u0629.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5364,7 +5364,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["V94WVR0NjT34W7Du6mcMCC0vPtY="] = d.current;
+  d["c6xMz5forqOQMuWr0GIa87dW640="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

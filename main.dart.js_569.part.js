@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Zehatza";
     },
-    get$autoIGCToolName() {
-      return "Exekutatu Pangea idazketa laguntza automatikoki";
-    },
-    get$autoIGCToolDescription() {
-      return "Exekutatu automatikoki Pangea Txataren gramatika eta itzulpen idazketa laguntza mezu bat bidali aurretik.";
-    },
     get$chatCapacity() {
       return "Txat-ahalmena";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Galderak? Hemen gaude laguntzeko!";
     },
+    get$autoIGCToolName() {
+      return "Idazteko laguntza aktibatu";
+    },
+    get$autoIGCToolDescription() {
+      return "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zj5JTbDU8LqvZfVETqyuwXRKmbc="] = d.current;
+  d["ZTU3R7QCCMdozVDJocm6WjcHmKM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_569.part.js.map

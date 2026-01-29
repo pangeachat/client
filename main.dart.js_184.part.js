@@ -2540,12 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Precisi\xf3";
     },
-    get$autoIGCToolName() {
-      return "Executa autom\xe0ticament l'assist\xe8ncia d'escriptura Pangea";
-    },
-    get$autoIGCToolDescription() {
-      return "Executa autom\xe0ticament l'assist\xe8ncia d'escriptura de gram\xe0tica i traducci\xf3 de Pangea abans d'enviar el meu missatge.";
-    },
     get$chatCapacity() {
       return "Capacitat de xat";
     },
@@ -5351,6 +5345,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Preguntes? Som aqu\xed per ajudar!";
     },
+    get$autoIGCToolName() {
+      return "Activar l'assist\xe8ncia d'escriptura";
+    },
+    get$autoIGCToolDescription() {
+      return "Executar autom\xe0ticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinaci\xf3.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5367,7 +5367,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0ghnajFCTExNpJeEpD7BrenCZWk="] = d.current;
+  d["nFIP0kh992+1MQ295tv3GJxSHa0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map

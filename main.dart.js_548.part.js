@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "T\xe4psus";
     },
-    get$autoIGCToolName() {
-      return "K\xe4ivita Pangea kirjutamisabi automaatselt";
-    },
-    get$autoIGCToolDescription() {
-      return "K\xe4ivita automaatselt Pangea vestluse grammatika- ja t\xf5lkeabi enne s\xf5numi saatmist.";
-    },
     get$chatCapacity() {
       return "Vestluse maht";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "K\xfcsimused? Me oleme siin, et aidata!";
     },
+    get$autoIGCToolName() {
+      return "Luba kirjutamise abi";
+    },
+    get$autoIGCToolDescription() {
+      return "K\xe4ivita automaatselt Pangea Chat t\xf6\xf6riistad, et parandada saadetud s\xf5numid sihtkeelde.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pOAwBTx2zpY2iugmljoIcYbgU0c="] = d.current;
+  d["7BfUzPLdWqMboWiDlsIPQO+kRiM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_548.part.js.map

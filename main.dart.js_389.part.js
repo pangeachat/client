@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Genauigkeit";
     },
-    get$autoIGCToolName() {
-      return "Pangea Schreibhilfe automatisch ausf\xfchren";
-    },
-    get$autoIGCToolDescription() {
-      return "F\xfchren Sie die Pangea Chat-Grammatik- und \xdcbersetzungs-Schreibhilfe automatisch aus, bevor Sie meine Nachricht senden.";
-    },
     get$chatCapacity() {
       return "Chat-Kapazit\xe4t";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Fragen? Wir sind hier, um zu helfen!";
     },
+    get$autoIGCToolName() {
+      return "Schreibassistenz aktivieren";
+    },
+    get$autoIGCToolDescription() {
+      return "Automatisch Pangea Chat-Tools ausf\xfchren, um gesendete Nachrichten in die Zielsprache zu korrigieren.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5OOjKSRV69bzI2Prc4Kb5A2Ab3E="] = d.current;
+  d["RGos4T3X/5EbXqOI4B0Z0LEkN0A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_389.part.js.map

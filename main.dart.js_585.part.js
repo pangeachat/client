@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "Tarkkuus";
     },
-    get$autoIGCToolName() {
-      return "Aja Pangea kirjoitusavustusta automaattisesti";
-    },
-    get$autoIGCToolDescription() {
-      return "Aja automaattisesti Pangea Chatin kieliopin ja k\xe4\xe4nn\xf6ksen kirjoitusavustusta ennen viestini l\xe4hett\xe4mist\xe4.";
-    },
     get$chatCapacity() {
       return "Chatin kapasiteetti";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Kysymyksi\xe4? Olemme t\xe4\xe4ll\xe4 auttamassa!";
     },
+    get$autoIGCToolName() {
+      return "Ota k\xe4ytt\xf6\xf6n kirjoitusapu";
+    },
+    get$autoIGCToolDescription() {
+      return "Suorita automaattisesti Pangea Chat -ty\xf6kaluja korjataksesi l\xe4hetetyt viestit kohdekielelle.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aBumYXtwn7fdkbXv7mPQF+fv8GI="] = d.current;
+  d["XIkzDt2F6CyS7VNHql+HelkbEkY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_585.part.js.map

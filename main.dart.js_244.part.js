@@ -2539,12 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accuracy(_) {
       return "P\u0159esnost";
     },
-    get$autoIGCToolName() {
-      return "Automaticky spustit pomoc s psan\xedm Pangea";
-    },
-    get$autoIGCToolDescription() {
-      return "Automaticky spustit gramatickou kontrolu a p\u0159eklad pomoc\xed Pangea Chat p\u0159ed odesl\xe1n\xedm m\xe9 zpr\xe1vy";
-    },
     get$chatCapacity() {
       return "Kapacita chatu";
     },
@@ -5350,6 +5344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$supportSubtitle() {
       return "Ot\xe1zky? Jsme tu, abychom pomohli!";
     },
+    get$autoIGCToolName() {
+      return "Povolit asistenci p\u0159i psan\xed";
+    },
+    get$autoIGCToolDescription() {
+      return "Automaticky spou\u0161t\u011bt n\xe1stroje Pangea Chat pro opravu odeslan\xfdch zpr\xe1v do c\xedlov\xe9ho jazyka.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bWPZS1gqkkLlbwid41Yk7yfO3Os="] = d.current;
+  d["2W8oZFKzkpm/FIin2vI3/SRY5lE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_244.part.js.map
