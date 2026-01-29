@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.";
     },
+    get$emptyAudioError() {
+      return "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZTU3R7QCCMdozVDJocm6WjcHmKM="] = d.current;
+  d["08x/R/79VNdre+2l+7Sr0nhwphk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_569.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Voer automatisch Pangea Chat-tools uit om verzonden berichten naar de doeltaal te corrigeren.";
     },
+    get$emptyAudioError() {
+      return "Opname mislukt. Controleer uw audiorechten en probeer het opnieuw.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HiLWJgQCJt5qP/oERNJp1wfJ/z8="] = d.current;
+  d["Vqaewwah8zO/24OnjAbWkZTEQEk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "G\xf6nderilen mesajlar\u0131 hedef dile d\xfczeltmek i\xe7in Pangea Chat ara\xe7lar\u0131n\u0131 otomatik olarak \xe7al\u0131\u015ft\u0131r.";
     },
+    get$emptyAudioError() {
+      return "Kay\u0131t ba\u015far\u0131s\u0131z oldu. L\xfctfen ses izinlerinizi kontrol edin ve tekrar deneyin.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/HqJi9A7M74g9IPANheggsUX7dg="] = d.current;
+  d["jfdNAAM/CUJHQBtsB5uGm3yC3yw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

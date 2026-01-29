@@ -5362,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return string$.Execut;
     },
+    get$emptyAudioError() {
+      return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10697,6 +10700,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$autoIGCToolDescription() {
       return string$.Execut;
+    },
+    get$emptyAudioError() {
+      return "Grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16034,6 +16040,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return string$.Execut;
     },
+    get$emptyAudioError() {
+      return "A grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16241,7 +16250,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["S0ouOZNIOiOQq5VLqbvLhCnI8PM="] = d.current;
+  d["C+3/FstwKyQNmzRIvG7sifYgOHk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Samodejno za\u017eeni orodja Pangea Chat za popravljanje poslanih sporo\u010dil v ciljni jezik.";
     },
+    get$emptyAudioError() {
+      return "Zapisovanje ni uspelo. Preverite svoje avdio dovoljenja in poskusite znova.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0k60RgdYRvEZ37GxPUKwY9PJObQ="] = d.current;
+  d["GmOnMtuELl6Z8WX4biKda6ieAPI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

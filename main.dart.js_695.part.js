@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.";
     },
+    get$emptyAudioError() {
+      return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2Ec8XdXoymRYGEpkq3Br4LYdS4Y="] = d.current;
+  d["UIsTEOFy53IdAiX9gOWGztMJEsw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map

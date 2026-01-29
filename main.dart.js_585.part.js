@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Suorita automaattisesti Pangea Chat -ty\xf6kaluja korjataksesi l\xe4hetetyt viestit kohdekielelle.";
     },
+    get$emptyAudioError() {
+      return "\xc4\xe4nityksen tallentaminen ep\xe4onnistui. Tarkista \xe4\xe4nioikeutesi ja yrit\xe4 uudelleen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XIkzDt2F6CyS7VNHql+HelkbEkY="] = d.current;
+  d["l9NZFyNSbGS+6lq3TGAzSPTPQKk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_585.part.js.map

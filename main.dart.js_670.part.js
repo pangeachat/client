@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Automatikusan futtassa a Pangea Chat eszk\xf6z\xf6ket a k\xfcld\xf6tt \xfczenetek c\xe9lnyelvre t\xf6rt\xe9n\u0151 jav\xedt\xe1s\xe1hoz.";
     },
+    get$emptyAudioError() {
+      return "A felv\xe9tel nem siker\xfclt. K\xe9rj\xfck, ellen\u0151rizze az audio enged\xe9lyeit, \xe9s pr\xf3b\xe1lja \xfajra.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aibWrtqgGPkySgSoQC4rIV+osU8="] = d.current;
+  d["LI6onabs5flRv1iQ73Ro38admC0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_670.part.js.map

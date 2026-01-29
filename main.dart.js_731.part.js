@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Kj\xf8r Pangea Chat-verkt\xf8y automatisk for \xe5 korrigere sendte meldinger til m\xe5lspr\xe5ket.";
     },
+    get$emptyAudioError() {
+      return "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og pr\xf8v igjen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VRKeLG7FPeWK99zlCBH7+DUt3xU="] = d.current;
+  d["OJla6mv+SkRSbmbTnLgymAxG5I0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_731.part.js.map

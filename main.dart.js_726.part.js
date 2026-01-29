@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Autom\u0101tiski palaist Pangea Chat r\u012bkus, lai labotu nos\u016bt\u012bt\u0101s zi\u0146as m\u0113r\u0137a valod\u0101.";
     },
+    get$emptyAudioError() {
+      return "Ieraksts neizdev\u0101s. L\u016bdzu, p\u0101rbaudiet savas audio at\u013caujas un m\u0113\u0123iniet v\u0113lreiz.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VhHroQ1nX9EuIVRNtVl1NtIqTAM="] = d.current;
+  d["HyZkWHjWczbrK0Ab8qByn0I5cME="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map

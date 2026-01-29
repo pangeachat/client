@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y c\xe1c c\xf4ng c\u1ee5 Pangea Chat \u0111\u1ec3 s\u1eeda c\xe1c tin nh\u1eafn \u0111\xe3 g\u1eedi sang ng\xf4n ng\u1eef m\u1ee5c ti\xeau.";
     },
+    get$emptyAudioError() {
+      return "Ghi \xe2m kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng ki\u1ec3m tra quy\u1ec1n truy c\u1eadp \xe2m thanh c\u1ee7a b\u1ea1n v\xe0 th\u1eed l\u1ea1i.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kQaqPbg+f3O/fAbscrWqt5eXMp0="] = d.current;
+  d["5dlDxfHdSa0zZu5ZVhEE3uu5L/M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_768.part.js.map

@@ -5351,6 +5351,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Executar autom\xe0ticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinaci\xf3.";
     },
+    get$emptyAudioError() {
+      return "La gravaci\xf3 ha fallat. Si us plau, comproveu els vostres permisos d'\xe0udio i torneu-ho a provar.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5367,7 +5370,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nFIP0kh992+1MQ295tv3GJxSHa0="] = d.current;
+  d["lLOXseB/XPK1gP596hNKbEHmfU4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "A\u016dtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesa\u011dojn al la cellingvo.";
     },
+    get$emptyAudioError() {
+      return "Registrado malsukcesis. Bonvolu kontroli viajn a\u016ddajn permesojn kaj provi denove.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j3h/Ed5grUYOYrvTnLLfWyJpV4o="] = d.current;
+  d["BdCRs9dlsPjxhrJ2YFwssSlXUhg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_474.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Automatically run Pangea Chat tools to correct sent messages to target language.";
     },
+    get$emptyAudioError() {
+      return "Recording failed. Please check your audio permissions and try again.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ANVMGUsWPwPedsMictnsZ8J/6RA="] = d.current;
+  d["nknQ+/OBusK9JgZiE9EqHpldVRk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_418.part.js.map

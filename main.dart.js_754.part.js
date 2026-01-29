@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Automaticky spusti\u0165 n\xe1stroje Pangea Chat na opravu odoslan\xfdch spr\xe1v do cie\u013eov\xe9ho jazyka.";
     },
+    get$emptyAudioError() {
+      return "Nahr\xe1vanie zlyhalo. Skontrolujte svoje povolenia na zvuk a sk\xfaste to znova.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xTqhkCBX3jTsXpnLrke0RnkqsW8="] = d.current;
+  d["Gma4mkEXPuhffaEqFiTwPLVeD5w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "K\xf8r automatisk Pangea Chat-v\xe6rkt\xf8jer for at rette sendte beskeder til m\xe5lsproget.";
     },
+    get$emptyAudioError() {
+      return "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og pr\xf8v igen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kXZ+o/wQ9xt9VSlYwzPtaNSCWKY="] = d.current;
+  d["c1ZVig8Fuyu0RtSC/vfcpabSc+E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_309.part.js.map

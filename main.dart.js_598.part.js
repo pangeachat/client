@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Awtomatikong patakbuhin ang mga tool ng Pangea Chat upang ituwid ang mga ipinadalang mensahe sa target na wika.";
     },
+    get$emptyAudioError() {
+      return "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eWrkYpE+fCoSan+rMXs3oP3kmIw="] = d.current;
+  d["JPPWlwkyEBvqYWOpxx2kpeW0Vm8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_598.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "K\xf6r automatiskt Pangea Chat-verktyg f\xf6r att korrigera skickade meddelanden till m\xe5lspr\xe5ket.";
     },
+    get$emptyAudioError() {
+      return "Inspelningen misslyckades. Kontrollera dina ljudbeh\xf6righeter och f\xf6rs\xf6k igen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yWRk1HjaRDKkLVOE/B6oWdEjyw8="] = d.current;
+  d["AN38Zn6L8jIvslkIGLTlM05JgCo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map
