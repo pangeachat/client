@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "\u0426\u0435\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0454 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438 \u0432\u0430\u0448\u043e\u0457 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435-\u043f\u043e\u0448\u0442\u0438 \u0434\u043b\u044f \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457.";
     },
+    get$or() {
+      return "\u0410\u0431\u043e";
+    },
     get$participant() {
       return "\u0423\u0447\u0430\u0441\u043d\u0438\u043a";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PTDTyFq+kPvH8LHgWZJ3G5RwVew="] = d.current;
+  d["IeGWUfiIqBucyR2ILIq7VDjQmc8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

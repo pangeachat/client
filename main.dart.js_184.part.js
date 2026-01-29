@@ -623,6 +623,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Aquest servidor necessita validar la teva adre\xe7a per registrar-t'hi.";
     },
+    get$or() {
+      return "O";
+    },
     get$participant() {
       return "Participant";
     },
@@ -5361,7 +5364,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CfaLMA3OSR0V4HObFgJ9T9uUK4U="] = d.current;
+  d["ir8cnFuPSd47dxCWDZPi6V+BHOQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map

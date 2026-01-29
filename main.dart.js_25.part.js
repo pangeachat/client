@@ -634,6 +634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Este servidor precisa validar seu endere\xe7o de email para registro.";
     },
+    get$or() {
+      return "Ou";
+    },
     get$participant() {
       return "Participante";
     },
@@ -5967,6 +5970,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Este servidor precisa validar seu email para efetuar o registro.";
     },
+    get$or() {
+      return "Ou";
+    },
     get$participant() {
       return "Participante";
     },
@@ -11297,6 +11303,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Este servidor precisa de validar o teu endere\xe7o de correio eletr\xf3nico para o registo.";
     },
+    get$or() {
+      return "Ou";
+    },
     get$participant() {
       return "Participante";
     },
@@ -16224,7 +16233,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/bLQZ5m4L2Njo1NU+eX4vNuHWBk="] = d.current;
+  d["VWj5gg2+a54JXzJXuRHYX/Lt/Ps="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

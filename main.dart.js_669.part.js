@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
     },
+    get$or() {
+      return "Vagy";
+    },
     get$participant() {
       return "R\xe9sztvev\u0151";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["52/r/lCl1tveGghV0sVvMnTqZ28="] = d.current;
+  d["piS3TjWJLcI9L0GgGYahLQ3JdZk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_669.part.js.map

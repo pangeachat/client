@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Deze server wil je email laten bevestigen bij de registratie.";
     },
+    get$or() {
+      return "Of";
+    },
     get$participant() {
       return "Personen";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vqPHLnww7KkhgSu/nKpaiOReeuI="] = d.current;
+  d["7MVi9wVYzoGWg7vDxXqgnMFI2XE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

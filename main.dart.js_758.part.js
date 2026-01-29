@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Ovaj server mora da potvrdi va\u0161u email adresu za registraciju.";
     },
+    get$or() {
+      return "\u0438\u043b\u0438";
+    },
     get$participant() {
       return "\u0423\u0447\u0435\u0441\u043d\u0438\u043a";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bCubCYzdXx/DEI3s0sMv1rAnl1E="] = d.current;
+  d["OI6hI0ZvMbWAqgPy5YH6EyJ329A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

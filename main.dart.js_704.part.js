@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Cist servitor besona validar tu adresse de corri\xe8l pro registration.";
     },
+    get$or() {
+      return "O";
+    },
     get$participant() {
       return "Participante";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZudcYJbiqm6mVYHgJu//e9+zJHQ="] = d.current;
+  d["f0A5NZl9JIQHSnLr1vB2tP/schg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_704.part.js.map

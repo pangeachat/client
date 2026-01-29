@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Tento server potrebuje overi\u0165 va\u0161u e-mailov\xfa adresu na registr\xe1ciu.";
     },
+    get$or() {
+      return "Alebo";
+    },
     get$participant() {
       return "\xda\u010dastn\xedk";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fphHGUPA6jfVxvMYFgp5n1nShPk="] = d.current;
+  d["LiW6PmPprsTeVGeVBcsN/MaZQcs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_753.part.js.map

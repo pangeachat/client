@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Denne serveren m\xe5 validere e-postadressen din for registrering.";
     },
+    get$or() {
+      return "Eller";
+    },
     get$participant() {
       return "Deltager";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IhDzmnb9O1Iq1gDb2+1fR7M2H2I="] = d.current;
+  d["Nd4yZReOx5L/+2LRdO5ctU2Ue8U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_730.part.js.map

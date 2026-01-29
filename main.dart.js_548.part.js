@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "See koduserver eeldab registreerimisel kasutatava e-postiaadressi kinnitamist.";
     },
+    get$or() {
+      return "v\xf5i";
+    },
     get$participant() {
       return "Osaleja";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gNnU0cUTdB6tktsHmerojHlGArc="] = d.current;
+  d["FvX1GzA9qhyQz7kvMPBonG8Y6c8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_548.part.js.map

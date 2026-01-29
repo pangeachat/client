@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Bu sunucunun kay\u0131t i\xe7in e-posta adresinizi do\u011frulamas\u0131 gerekiyor.";
     },
+    get$or() {
+      return "Veya";
+    },
     get$participant() {
       return "Kat\u0131l\u0131mc\u0131";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T8Rbi2BGYdM0WfvC1v5kPlS7hVM="] = d.current;
+  d["nXsyJgMgIk/dKL5V+HXIYngRFcU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

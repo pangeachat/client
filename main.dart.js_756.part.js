@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Ta stre\u017enik mora potrditi va\u0161 e-po\u0161tni naslov za registracijo.";
     },
+    get$or() {
+      return "Ali";
+    },
     get$participant() {
       return "Udele\u017eenec";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LN1/6vn7POCVyGoWztGBme45/Y8="] = d.current;
+  d["wOg4lZ3c+qACtXlOx7go94EDxGM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

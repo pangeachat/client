@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "This server needs to validate your email address for registration.";
     },
+    get$or() {
+      return "Or";
+    },
     get$participant() {
       return "Participant";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8xhKUjFTFO+lUzBqdM1csQV1MvM="] = d.current;
+  d["ScG1dFdClhGGfBriEyGg2VHSPsY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_418.part.js.map

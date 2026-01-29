@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Iste servitor necessita de validar tu adresse de email pro registration.";
     },
+    get$or() {
+      return "O";
+    },
     get$participant() {
       return "Participante";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7xY8fV23sRSaAX20NAffWGcS6BA="] = d.current;
+  d["uv35V7sH4ILCmB2t9xfog0WpxoU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_676.part.js.map

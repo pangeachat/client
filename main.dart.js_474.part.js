@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "\u0108i tiu servilo bezonas validigi vian retadreso por registri\u011do.";
     },
+    get$or() {
+      return "A\u016d";
+    },
     get$participant() {
       return "Partoprenanto";
     },
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kzBCsK11h5lmNxCg0sAcNklynBw="] = d.current;
+  d["tUNOKlm4ck+lHeB/PpzoAfVNHwk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_474.part.js.map

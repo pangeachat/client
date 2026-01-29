@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Server ini harus memvalidasi alamat email kamu untuk registrasi.";
     },
+    get$or() {
+      return "Atau";
+    },
     get$participant() {
       return "Peserta";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["V0OgusxOwTriMCrvtlTi9yozzmc="] = d.current;
+  d["MprEI76iAPf3Te0QQfo6o/YPFbY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_694.part.js.map

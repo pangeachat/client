@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Acest server trebuie s\u0103 valideze emailul vostru pentru \xeenregistrare.";
     },
+    get$or() {
+      return "Sau";
+    },
     get$participant() {
       return "Participant";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZuBg5wuEqbCSuREvYG7w69RE2zE="] = d.current;
+  d["IdRySpY5EXOwjN4Cq+iFqpqM3W4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

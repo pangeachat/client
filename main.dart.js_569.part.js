@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "Zerbitzari honek zure posta elektronikoa egiaztatu behar du izena eman dezazun.";
     },
+    get$or() {
+      return "Edo";
+    },
     get$participant() {
       return "Partaide";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hYeu0hpP+V1mdexLYcBsYq41i+c="] = d.current;
+  d["JobllMeEkOra04uUVGiu29eSyYs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_569.part.js.map

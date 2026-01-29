@@ -622,6 +622,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$serverRequiresEmail() {
       return "O servidor precisa validar o teu enderezo de email para rexistrarte.";
     },
+    get$or() {
+      return "Ou";
+    },
     get$participant() {
       return "Participante";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+w2Wa7eP7G3L7q+MYT191fgPJbM="] = d.current;
+  d["YLBNPxFUfbqHTvxioBq+iIILabM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map
