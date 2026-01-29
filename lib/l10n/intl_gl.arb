@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-29 15:06:23.699064",
+  "@@last_modified": "2026-01-29 15:24:27.141903",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10949,6 +10949,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "A gravación fallou. Por favor, verifica os teus permisos de audio e intenta de novo.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:07:47.404457",
+  "@@last_modified": "2026-01-29 15:25:20.184834",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12041,6 +12041,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrado malsukcesis. Bonvolu kontroli viajn aŭdajn permesojn kaj provi denove.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

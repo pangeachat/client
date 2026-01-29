@@ -4453,7 +4453,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-29 15:07:42.491115",
+  "@@last_modified": "2026-01-29 15:25:16.616510",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12010,6 +12010,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Η ηχογράφηση απέτυχε. Παρακαλώ ελέγξτε τις άδειες ήχου σας και δοκιμάστε ξανά.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-29 15:06:48.103616",
+  "@@last_modified": "2026-01-29 15:24:41.896758",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10952,6 +10952,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

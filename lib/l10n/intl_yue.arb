@@ -1853,7 +1853,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-29 15:06:55.682505",
+  "@@last_modified": "2026-01-29 15:24:47.783824",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12043,6 +12043,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

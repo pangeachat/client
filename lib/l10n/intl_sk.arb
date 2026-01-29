@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-29 15:06:36.035000",
+  "@@last_modified": "2026-01-29 15:24:35.550214",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12036,6 +12036,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nahrávanie zlyhalo. Skontrolujte svoje povolenia na zvuk a skúste to znova.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

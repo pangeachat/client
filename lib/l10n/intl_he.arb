@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:42.180824",
+  "@@last_modified": "2026-01-29 15:24:38.819884",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12001,6 +12001,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "הקלטה נכשלה. אנא בדוק את הרשאות האודיו שלך ונסה שוב.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

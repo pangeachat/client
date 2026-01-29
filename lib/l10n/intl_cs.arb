@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-29 15:07:01.444754",
+  "@@last_modified": "2026-01-29 15:24:50.917574",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11559,6 +11559,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nahrávání se nezdařilo. Zkontrolujte prosím svá oprávnění k audiosouborům a zkuste to znovu.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

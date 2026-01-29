@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:57.328652",
+  "@@last_modified": "2026-01-29 15:24:48.551043",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10955,6 +10955,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -5067,5 +5067,6 @@
   "searchLanguagesHint": "Search target languages",
   "supportSubtitle": "Questions? We're here to help!",
   "autoIGCToolName": "Enable writing assistance",
-  "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language."
+  "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language.",
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
 }

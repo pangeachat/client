@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-29 15:06:51.369225",
+  "@@last_modified": "2026-01-29 15:24:43.759174",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11223,6 +11223,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Salvestamine ebaõnnestus. Palun kontrollige oma heliõigusi ja proovige uuesti.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

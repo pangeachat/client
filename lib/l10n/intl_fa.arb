@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:07:36.399530",
+  "@@last_modified": "2026-01-29 15:25:12.904348",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11684,6 +11684,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

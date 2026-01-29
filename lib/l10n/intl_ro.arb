@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:33.346052",
+  "@@last_modified": "2026-01-29 15:24:33.490827",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11687,6 +11687,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

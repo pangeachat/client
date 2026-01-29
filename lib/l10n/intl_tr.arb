@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-29 15:07:20.069325",
+  "@@last_modified": "2026-01-29 15:25:02.072081",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11174,6 +11174,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Kayıt başarısız oldu. Lütfen ses izinlerinizi kontrol edin ve tekrar deneyin.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:49.608370",
+  "@@last_modified": "2026-01-29 15:24:42.742766",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12052,6 +12052,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "A gravação falhou. Verifique suas permissões de áudio e tente novamente.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

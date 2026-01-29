@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-29 15:07:38.396549",
+  "@@last_modified": "2026-01-29 15:25:13.973596",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10950,6 +10950,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nagrywanie nie powiodło się. Sprawdź swoje uprawnienia audio i spróbuj ponownie.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

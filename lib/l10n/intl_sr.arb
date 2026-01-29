@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:07:53.138516",
+  "@@last_modified": "2026-01-29 15:25:23.670980",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12054,6 +12054,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Snimanje nije uspelo. Proverite svoja audio dopuštenja i pokušajte ponovo.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

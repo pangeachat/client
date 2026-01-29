@@ -2784,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-29 15:07:14.638498",
+  "@@last_modified": "2026-01-29 15:24:58.900213",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11928,6 +11928,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

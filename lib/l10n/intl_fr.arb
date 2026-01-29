@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-29 15:07:56.515699",
+  "@@last_modified": "2026-01-29 15:25:26.287351",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11276,6 +11276,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "L'enregistrement a échoué. Veuillez vérifier vos autorisations audio et réessayer.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }
