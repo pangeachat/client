@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-28 13:26:58.889837",
+  "@@last_modified": "2026-01-29 15:07:50.290963",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -3714,8 +3714,6 @@
   "noPaymentInfo": "Информация о платеже не требуется!",
   "updatePhoneOS": "Возможно, потребуется обновить версию ОС вашего устройства.",
   "wordsPerMinute": "Слова в минуту",
-  "autoIGCToolName": "Автоматически запускать помощь в написании Pangea",
-  "autoIGCToolDescription": "Автоматически запускать помощь в грамматике и переводе Pangea Chat перед отправкой моего сообщения.",
   "tooltipInstructionsTitle": "Не уверены, что это делает?",
   "tooltipInstructionsMobileBody": "Нажмите и удерживайте элементы, чтобы просмотреть подсказки.",
   "tooltipInstructionsBrowserBody": "Наведите курсор на элементы, чтобы просмотреть подсказки.",
@@ -6291,14 +6289,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11060,6 +11050,16 @@
   },
   "courseLoadingError": "Что-то пошло не так, и мы усердно работаем над исправлением. Проверьте позже.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Включить помощь в написании",
+  "autoIGCToolDescription": "Автоматически запускать инструменты Pangea Chat для исправления отправленных сообщений на целевой язык.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

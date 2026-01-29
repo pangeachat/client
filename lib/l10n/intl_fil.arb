@@ -2051,8 +2051,6 @@
   "noPaymentInfo": "Hindi kailangan ng impormasyon sa pagbabayad!",
   "updatePhoneOS": "Maaaring kailangan mong i-update ang bersyon ng OS ng iyong device.",
   "wordsPerMinute": "Mga salita kada minuto",
-  "autoIGCToolName": "Awtomatikong patakbuhin ang Pangea writing assistance",
-  "autoIGCToolDescription": "Awtomatikong patakbuhin ang Pangea Chat grammar at translation writing assistance bago ipadala ang aking mensahe.",
   "tooltipInstructionsTitle": "Hindi sigurado kung ano ang ginagawa niyan?",
   "tooltipInstructionsMobileBody": "Pindutin at hawakan ang mga item upang makita ang mga tooltip.",
   "tooltipInstructionsBrowserBody": "I-hover ang cursor sa mga item upang makita ang mga tooltip.",
@@ -2786,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-28 13:26:32.216257",
+  "@@last_modified": "2026-01-29 15:07:14.638498",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -7195,14 +7193,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11928,6 +11918,16 @@
   },
   "courseLoadingError": "May nangyaring mali, at abala kami sa pag-aayos nito. Suriin muli mamaya.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Paganahin ang tulong sa pagsusulat",
+  "autoIGCToolDescription": "Awtomatikong patakbuhin ang mga tool ng Pangea Chat upang ituwid ang mga ipinadalang mensahe sa target na wika.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

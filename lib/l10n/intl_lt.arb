@@ -3137,8 +3137,6 @@
   "noPaymentInfo": "Apmokėjimo informacija nereikalinga!",
   "updatePhoneOS": "Gali būti, kad reikės atnaujinti įrenginio operacinės sistemos versiją.",
   "wordsPerMinute": "Žodžių per minutę",
-  "autoIGCToolName": "Automatiškai paleisti Pangea rašymo pagalbą",
-  "autoIGCToolDescription": "Automatiškai paleisti Pangea pokalbio gramatikos ir vertimo rašymo pagalbą prieš išsiunčiant žinutę.",
   "tooltipInstructionsTitle": "Nesate tikri, ką tai daro?",
   "tooltipInstructionsMobileBody": "Paspauskite ir palaikykite elementus, kad pamatytumėte įrankių patarimus.",
   "tooltipInstructionsBrowserBody": "Užveskite pelės žymeklį ant elementų, kad pamatytumėte įrankių patarimus.",
@@ -3860,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-28 13:26:39.413825",
+  "@@last_modified": "2026-01-29 15:07:24.773734",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7007,14 +7005,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11757,6 +11747,16 @@
   },
   "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Įgalinti rašymo pagalbą",
+  "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

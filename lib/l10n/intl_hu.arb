@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-28 13:25:59.737331",
+  "@@last_modified": "2026-01-29 15:06:29.988437",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -3786,8 +3786,6 @@
   "noPaymentInfo": "Nincs szükség fizetési adatokra!",
   "updatePhoneOS": "Előfordulhat, hogy frissítenie kell az eszköz operációs rendszerét.",
   "wordsPerMinute": "Szavak száma percenként",
-  "autoIGCToolName": "A Pangea írássegéd automatikus futtatása",
-  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat nyelvtani és fordítási írássegédet az üzenetem küldése előtt.",
   "tooltipInstructionsTitle": "Nem biztos benne, mit csinál ez?",
   "tooltipInstructionsMobileBody": "Hosszan nyomja meg az elemeket a súgók megtekintéséhez.",
   "tooltipInstructionsBrowserBody": "Húzza az egérrel az elemek fölé a súgók megtekintéséhez.",
@@ -6203,14 +6201,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10953,6 +10943,16 @@
   },
   "courseLoadingError": "Valami hiba történt, és keményen dolgozunk a javításon. Kérlek, nézd meg később.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Írássegítő engedélyezése",
+  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1740,8 +1740,6 @@
   "noPaymentInfo": "Ni potrebnih plačilnih informacij!",
   "updatePhoneOS": "Morda boste morali posodobiti različico operacijskega sistema naprave",
   "wordsPerMinute": "Besed na minuto",
-  "autoIGCToolName": "Samodejno zaženi pomoč pri pisanju Pangea",
-  "autoIGCToolDescription": "Samodejno zaženi pomoč pri slovnici in prevajanju v klepetu Pangea pred pošiljanjem sporočila",
   "tooltipInstructionsTitle": "Niste prepričani, kaj to naredi?",
   "tooltipInstructionsMobileBody": "Podrsajte in držite elemente za ogled nasvetov orodja",
   "tooltipInstructionsBrowserBody": "Premaknite kazalec nad elemente za ogled nasvetov orodja",
@@ -2463,7 +2461,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-28 13:26:15.797667",
+  "@@last_modified": "2026-01-29 15:06:54.198410",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7286,14 +7284,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12033,6 +12023,16 @@
   },
   "courseLoadingError": "Nekaj je šlo narobe in trdo delamo na tem, da to popravimo. Preverite znova kasneje.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Omogoči pomoč pri pisanju",
+  "autoIGCToolDescription": "Samodejno zaženi orodja Pangea Chat za popravljanje poslanih sporočil v ciljni jezik.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

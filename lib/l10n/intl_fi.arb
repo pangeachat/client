@@ -3285,8 +3285,6 @@
   "noPaymentInfo": "Maksutietoja ei tarvita!",
   "updatePhoneOS": "Saattaa olla, että sinun täytyy päivittää laitteesi käyttöjärjestelmän versio.",
   "wordsPerMinute": "Sanoja minuutissa",
-  "autoIGCToolName": "Aja Pangea kirjoitusavustusta automaattisesti",
-  "autoIGCToolDescription": "Aja automaattisesti Pangea Chatin kieliopin ja käännöksen kirjoitusavustusta ennen viestini lähettämistä.",
   "tooltipInstructionsTitle": "Et ole varma, mitä tämä tekee?",
   "tooltipInstructionsMobileBody": "Pidä painettuna kohteita nähdäksesi työkaluvihjeet.",
   "tooltipInstructionsBrowserBody": "Vie hiiri kohteen päälle nähdäksesi työkaluvihjeet.",
@@ -4008,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-28 13:25:57.438673",
+  "@@last_modified": "2026-01-29 15:06:25.834812",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -6825,14 +6823,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11575,6 +11565,16 @@
   },
   "courseLoadingError": "Jotain meni pieleen, ja teemme kovasti töitä sen korjaamiseksi. Tarkista myöhemmin uudelleen.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ota käyttöön kirjoitusapu",
+  "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

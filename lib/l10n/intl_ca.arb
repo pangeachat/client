@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:23.872618",
+  "@@last_modified": "2026-01-29 15:07:06.641061",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -3757,8 +3757,6 @@
   "noPaymentInfo": "No cal informació de pagament!",
   "updatePhoneOS": "Pot ser que necessitis actualitzar la versió del sistema operatiu del teu dispositiu.",
   "wordsPerMinute": "Paraules per minut",
-  "autoIGCToolName": "Executa automàticament l'assistència d'escriptura Pangea",
-  "autoIGCToolDescription": "Executa automàticament l'assistència d'escriptura de gramàtica i traducció de Pangea abans d'enviar el meu missatge.",
   "tooltipInstructionsTitle": "No estàs segur de què fa això?",
   "tooltipInstructionsMobileBody": "Prem i mantén premut per veure les eines d'informació sobre les opcions.",
   "tooltipInstructionsBrowserBody": "Passa el cursor sobre els elements per veure les eines d'informació.",
@@ -6226,14 +6224,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10976,6 +10966,16 @@
   },
   "courseLoadingError": "Alguna cosa ha anat malament, i estem treballant dur per solucionar-ho. Comprova-ho més tard.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Activar l'assistència d'escriptura",
+  "autoIGCToolDescription": "Executar automàticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinació.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:18.238331",
+  "@@last_modified": "2026-01-29 15:06:57.328652",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -3764,8 +3764,6 @@
   "noPaymentInfo": "Nessuna informazione di pagamento necessaria!",
   "updatePhoneOS": "Potresti dover aggiornare la versione del sistema operativo del tuo dispositivo.",
   "wordsPerMinute": "Parole al minuto",
-  "autoIGCToolName": "Esegui automaticamente l'assistenza alla scrittura Pangea",
-  "autoIGCToolDescription": "Esegui automaticamente l'assistenza alla grammatica e alla traduzione di Pangea Chat prima di inviare il mio messaggio.",
   "tooltipInstructionsTitle": "Non sei sicuro di cosa faccia?",
   "tooltipInstructionsMobileBody": "Tieni premuti gli elementi per visualizzare i suggerimenti.",
   "tooltipInstructionsBrowserBody": "Passa il mouse sugli elementi per visualizzare i suggerimenti.",
@@ -6205,14 +6203,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10955,6 +10945,16 @@
   },
   "courseLoadingError": "Qualcosa è andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo più tardi.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Abilita assistenza alla scrittura",
+  "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -3648,8 +3648,6 @@
   "noPaymentInfo": "Nulle information de pagamento necessari!",
   "updatePhoneOS": "Tu pote haber de actualizar la version del sistema operative de tu dispositivo",
   "wordsPerMinute": "Palabras per minutu",
-  "autoIGCToolName": "Execute automaticamente le assistent de scriber Pangea",
-  "autoIGCToolDescription": "Execute automaticamente le grammatica e traduction del chat Pangea ante de inviar mi message",
   "tooltipInstructionsTitle": "Non es secur de que isto face?",
   "tooltipInstructionsMobileBody": "Pressa e tenea items pro vider le tooltip.",
   "tooltipInstructionsBrowserBody": "Survole items pro vider le tooltip.",
@@ -4371,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-28 13:26:04.525215",
+  "@@last_modified": "2026-01-29 15:06:38.287582",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7176,14 +7174,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11926,6 +11916,16 @@
   },
   "courseLoadingError": "Níl aon rud ag dul i gceart, agus táimid ag obair go dian chun é a shocrú. Seiceáil arís níos déanaí.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivoi kirjoitusavustaja",
+  "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

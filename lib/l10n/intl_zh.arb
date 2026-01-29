@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-28 13:26:45.843538",
+  "@@last_modified": "2026-01-29 15:07:33.349642",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -3788,8 +3788,6 @@
   "noPaymentInfo": "无需支付信息！",
   "updatePhoneOS": "您可能需要更新设备的操作系统版本。",
   "wordsPerMinute": "每分钟字数",
-  "autoIGCToolName": "自动运行Pangea写作辅助",
-  "autoIGCToolDescription": "在发送消息前自动运行Pangea聊天语法和翻译写作辅助。",
   "tooltipInstructionsTitle": "不确定它的作用吗？",
   "tooltipInstructionsMobileBody": "长按项目以查看工具提示。",
   "tooltipInstructionsBrowserBody": "将鼠标悬停在项目上以查看工具提示。",
@@ -6193,14 +6191,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10943,6 +10933,16 @@
   },
   "courseLoadingError": "出现了一些问题，我们正在努力修复。请稍后再检查。",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "启用写作辅助",
+  "autoIGCToolDescription": "自动运行 Pangea Chat 工具以将发送的消息纠正为目标语言。",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

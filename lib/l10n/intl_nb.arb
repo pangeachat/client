@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:21.535919",
+  "@@last_modified": "2026-01-29 15:07:03.171187",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -2700,8 +2700,6 @@
   "noPaymentInfo": "Ingen betalingsinformasjon nødvendig!",
   "updatePhoneOS": "Du kan trenge å oppdatere enhetens OS-versjon.",
   "wordsPerMinute": "Ord per minutt",
-  "autoIGCToolName": "Kjør Pangea skrivehjelp automatisk",
-  "autoIGCToolDescription": "Kjør automatisk Pangea Chat grammatikk- og oversettelsesstøtte før jeg sender meldingen min.",
   "tooltipInstructionsTitle": "Usikker på hva det gjør?",
   "tooltipInstructionsMobileBody": "Trykk og hold på elementer for å se verktøytips.",
   "tooltipInstructionsBrowserBody": "Hold musepekeren over elementer for å se verktøytips.",
@@ -7295,14 +7293,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -12045,6 +12035,16 @@
   },
   "courseLoadingError": "Noe gikk galt, og vi jobber hardt med å fikse det. Sjekk igjen senere.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktiver skriveassistent",
+  "autoIGCToolDescription": "Kjør Pangea Chat-verktøy automatisk for å korrigere sendte meldinger til målspråket.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

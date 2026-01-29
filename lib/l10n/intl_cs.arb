@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-28 13:26:20.564591",
+  "@@last_modified": "2026-01-29 15:07:01.444754",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -3314,8 +3314,6 @@
   "noPaymentInfo": "Není třeba žádné platební informace!",
   "updatePhoneOS": "Možná budete muset aktualizovat verzi operačního systému vašeho zařízení",
   "wordsPerMinute": "Slov za minutu",
-  "autoIGCToolName": "Automaticky spustit pomoc s psaním Pangea",
-  "autoIGCToolDescription": "Automaticky spustit gramatickou kontrolu a překlad pomocí Pangea Chat před odesláním mé zprávy",
   "tooltipInstructionsTitle": "Nejste si jistí, co to dělá?",
   "tooltipInstructionsMobileBody": "Podržte položky pro zobrazení nápověd.",
   "tooltipInstructionsBrowserBody": "Na položky najeďte myší pro zobrazení nápověd.",
@@ -6809,14 +6807,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11559,6 +11549,16 @@
   },
   "courseLoadingError": "Něco se pokazilo a my na tom tvrdě pracujeme. Zkontrolujte to prosím později.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Povolit asistenci při psaní",
+  "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

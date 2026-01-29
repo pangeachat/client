@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-28 13:27:03.910294",
+  "@@last_modified": "2026-01-29 15:07:56.515699",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -3615,8 +3615,6 @@
   "noPaymentInfo": "Aucune information de paiement nécessaire !",
   "updatePhoneOS": "Vous devrez peut-être mettre à jour la version du système d'exploitation de votre appareil.",
   "wordsPerMinute": "Mots par minute",
-  "autoIGCToolName": "Exécuter automatiquement l'assistance à l'écriture Pangea",
-  "autoIGCToolDescription": "Exécuter automatiquement l'assistance à la grammaire et à la traduction de Pangea Chat avant d'envoyer mon message.",
   "tooltipInstructionsTitle": "Vous ne savez pas ce que cela fait ?",
   "tooltipInstructionsMobileBody": "Appuyez longuement sur les éléments pour voir les infobulles.",
   "tooltipInstructionsBrowserBody": "Survolez les éléments pour voir les infobulles.",
@@ -6526,14 +6524,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11276,6 +11266,16 @@
   },
   "courseLoadingError": "Quelque chose a mal tourné, et nous travaillons dur pour le réparer. Vérifiez à nouveau plus tard.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Activer l'assistance à l'écriture",
+  "autoIGCToolDescription": "Exécutez automatiquement les outils de Pangea Chat pour corriger les messages envoyés dans la langue cible.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }
