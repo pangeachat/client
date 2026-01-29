@@ -237,7 +237,10 @@ class CourseChatsController extends State<CourseChats>
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toLocalizedString(context))),
+          SnackBar(
+            content: Text(e.toLocalizedString(context)),
+            showCloseIcon: true,
+          ),
         );
       }
     } finally {
