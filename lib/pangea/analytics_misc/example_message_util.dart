@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
@@ -50,42 +49,110 @@ class ExampleMessageUtil {
     String? form,
     PangeaMessageEvent messageEvent,
   ) {
-    PangeaToken? token;
     String? text;
+    List<PangeaToken>? tokens;
+    int targetTokenIndex = -1;
 
     if (messageEvent.isAudioMessage) {
       final stt = messageEvent.getSpeechToTextLocal();
       if (stt == null) return null;
-      final tokens = stt.transcript.sttTokens.map((t) => t.token).toList();
-      token = tokens.firstWhereOrNull(
-        (token) => token.text.content == form,
-      );
+
+      tokens = stt.transcript.sttTokens.map((t) => t.token).toList();
+      targetTokenIndex = tokens.indexWhere((t) => t.text.content == form);
       text = stt.transcript.text;
     } else {
-      final tokens = messageEvent.messageDisplayRepresentation?.tokens;
+      tokens = messageEvent.messageDisplayRepresentation?.tokens;
       if (tokens == null || tokens.isEmpty) return null;
-      token = tokens.firstWhereOrNull(
-        (token) => token.text.content == form,
-      );
+
+      targetTokenIndex = tokens.indexWhere((t) => t.text.content == form);
       text = messageEvent.messageDisplayText;
     }
 
-    if (token == null) return null;
+    if (targetTokenIndex == -1) {
+      return null;
+    }
 
-    final before = text.characters.take(token.text.offset).toString();
-    final after = text.characters
-        .skip(token.text.offset + token.text.content.characters.length)
+    final targetToken = tokens[targetTokenIndex];
+
+    const maxContextChars = 100;
+
+    final targetStart = targetToken.text.offset;
+    final targetEnd = targetStart + targetToken.text.content.characters.length;
+
+    final totalChars = text.characters.length;
+
+    final beforeAvailable = targetStart;
+    final afterAvailable = totalChars - targetEnd;
+
+    // ---------- Dynamic budget split ----------
+    int beforeBudget = maxContextChars ~/ 2;
+    int afterBudget = maxContextChars - beforeBudget;
+
+    if (beforeAvailable < beforeBudget) {
+      afterBudget += beforeBudget - beforeAvailable;
+      beforeBudget = beforeAvailable;
+    } else if (afterAvailable < afterBudget) {
+      beforeBudget += afterBudget - afterAvailable;
+      afterBudget = afterAvailable;
+    }
+
+    // ---------- BEFORE ----------
+    int beforeStartOffset = 0;
+    bool trimmedBefore = false;
+
+    if (beforeAvailable > beforeBudget) {
+      final desiredStart = targetStart - beforeBudget;
+
+      for (int i = 0; i < targetTokenIndex; i++) {
+        final token = tokens[i];
+        final tokenEnd =
+            token.text.offset + token.text.content.characters.length;
+
+        if (tokenEnd > desiredStart) {
+          beforeStartOffset = token.text.offset;
+          trimmedBefore = true;
+          break;
+        }
+      }
+    }
+
+    final before = text.characters
+        .skip(beforeStartOffset)
+        .take(targetStart - beforeStartOffset)
         .toString();
 
+    // ---------- AFTER ----------
+    int afterEndOffset = totalChars;
+    bool trimmedAfter = false;
+
+    if (afterAvailable > afterBudget) {
+      final desiredEnd = targetEnd + afterBudget;
+
+      for (int i = targetTokenIndex + 1; i < tokens.length; i++) {
+        final token = tokens[i];
+        if (token.text.offset >= desiredEnd) {
+          afterEndOffset = token.text.offset;
+          trimmedAfter = true;
+          break;
+        }
+      }
+    }
+
+    final after = text.characters
+        .skip(targetEnd)
+        .take(afterEndOffset - targetEnd)
+        .toString()
+        .trimRight();
+
     return [
+      if (trimmedBefore) const TextSpan(text: '… '),
       TextSpan(text: before),
       TextSpan(
-        text: token.text.content,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        text: targetToken.text.content,
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(text: after),
+      if (trimmedAfter) const TextSpan(text: '…'),
     ];
   }
 }
