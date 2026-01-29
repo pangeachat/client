@@ -22,6 +22,7 @@ class ChatFloatingActionButton extends StatelessWidget {
           controller.choreographer.errorService,
           controller.choreographer.itController.open,
           controller.scrollController,
+          controller.scrollableNotifier,
         ],
       ),
       builder: (context, _) {
