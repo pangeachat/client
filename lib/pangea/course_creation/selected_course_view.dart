@@ -61,12 +61,6 @@ class SelectedCourseView extends StatelessWidget {
                                 itemCount: course.topicIds.length + 2,
                                 itemBuilder: (context, index) {
                                   final String displayname = course.title;
-                                  // final roomChunk = controller.widget.roomChunk;
-                                  // if (roomChunk != null) {
-                                  //   displayname = roomChunk.name ??
-                                  //       roomChunk.canonicalAlias ??
-                                  //       L10n.of(context).emptyChat;
-                                  // }
 
                                   if (index == 0) {
                                     return Column(
@@ -75,10 +69,7 @@ class SelectedCourseView extends StatelessWidget {
                                         ClipPath(
                                           clipper: MapClipper(),
                                           child: ImageByUrl(
-                                            imageUrl:
-                                                // controller.widget
-                                                //         .roomChunk?.avatarUrl ??
-                                                course.imageUrl,
+                                            imageUrl: course.imageUrl,
                                             width: 100.0,
                                             borderRadius:
                                                 BorderRadius.circular(0.0),

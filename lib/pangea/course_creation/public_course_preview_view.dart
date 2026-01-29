@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreviewView extends StatelessWidget {
@@ -283,10 +282,7 @@ class PublicCoursePreviewView extends StatelessWidget {
                                 foregroundColor:
                                     theme.colorScheme.onPrimaryContainer,
                               ),
-                              onPressed: () => showFutureLoadingDialog(
-                                context: context,
-                                future: () => controller.joinCourse(),
-                              ),
+                              onPressed: controller.joinCourse,
                               child: Row(
                                 spacing: 8.0,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -388,58 +384,5 @@ class _CourseAdminDisplay extends StatelessWidget {
         }),
       ],
     );
-    // return Wrap(
-    //   children: [
-    //     ...summary.adminUserIDs.map(
-    //       (adminId) {
-    //         return FutureBuilder(
-    //           future: Matrix.of(context).client.getProfileFromUserId(
-    //                 adminId,
-    //               ),
-    //           builder: (context, snapshot) {
-    //             final displayName =
-    //                 snapshot.data?.displayName ?? adminId.localpart ?? adminId;
-    //             return Container(
-    //               alignment: Alignment.center,
-    //               padding: const EdgeInsets.symmetric(
-    //                 vertical: 4.0,
-    //                 horizontal: 8.0,
-    //               ),
-    //               decoration: BoxDecoration(
-    //                 borderRadius: BorderRadius.circular(
-    //                   8.0,
-    //                 ),
-    //                 color: theme.colorScheme.surfaceContainerHighest,
-    //               ),
-    //               height: 75.0,
-    //               width: 75.0,
-    //               child: Column(
-    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                 children: [
-    //                   Avatar(
-    //                     name: displayName,
-    //                     mxContent: snapshot.data?.avatarUrl,
-    //                   ),
-    //                   Text(
-    //                     displayName,
-    //                     style: TextStyle(
-    //                       fontSize: 12.0,
-    //                       color: theme.brightness == Brightness.light
-    //                           ? displayName.darkColor
-    //                           : displayName.lightColorText,
-    //                     ),
-    //                     maxLines: 2,
-    //                     overflow: TextOverflow.ellipsis,
-    //                     textAlign: TextAlign.center,
-    //                   ),
-    //                 ],
-    //               ),
-    //             );
-    //           },
-    //         );
-    //       },
-    //     ),
-    //   ],
-    // );
   }
 }

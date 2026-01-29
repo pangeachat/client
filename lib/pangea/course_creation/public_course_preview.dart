@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreview extends StatefulWidget {
@@ -139,33 +140,47 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     final knock = roomSummary?.joinRule == JoinRules.knock;
-    final roomId = knock
-        ? await client.knockRoom(widget.roomID!)
-        : await client.joinRoom(widget.roomID!);
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        String roomId;
+        try {
+          roomId = knock
+              ? await client.knockRoom(widget.roomID!)
+              : await client.joinRoom(widget.roomID!);
+        } catch (e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'roomID': widget.roomID},
+          );
+          rethrow;
+        }
 
-    Room? room = client.getRoomById(roomId);
-    if (!knock && room?.membership != Membership.join) {
-      await client.waitForRoomInSync(roomId, join: true);
-      room = client.getRoomById(roomId);
-    }
+        Room? room = client.getRoomById(roomId);
+        if (!knock && room?.membership != Membership.join) {
+          await client.waitForRoomInSync(roomId, join: true);
+          room = client.getRoomById(roomId);
+        }
 
-    if (knock) {
-      Navigator.of(context).pop();
-      await showOkAlertDialog(
-        context: context,
-        title: L10n.of(context).youHaveKnocked,
-        message: L10n.of(context).knockDesc,
-      );
-      return;
-    }
+        if (knock) return;
+        if (room == null) {
+          ErrorHandler.logError(
+            e: Exception("Failed to load joined room in public course preview"),
+            data: {'roomID': widget.roomID},
+          );
+          throw Exception("Failed to join room");
+        }
+        context.go("/rooms/spaces/$roomId/details");
+      },
+    );
 
-    if (room == null) {
-      throw Exception("Failed to join room");
-    }
-
-    if (mounted) {
-      context.go("/rooms/spaces/$roomId/details");
-    }
+    if (!knock || resp.isError) return;
+    await showOkAlertDialog(
+      context: context,
+      title: L10n.of(context).youHaveKnocked,
+      message: L10n.of(context).knockDesc,
+    );
   }
 
   @override
