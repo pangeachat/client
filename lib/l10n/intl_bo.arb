@@ -4276,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-29 15:07:31.637996",
+  "@@last_modified": "2026-01-29 15:25:08.749600",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10706,6 +10706,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

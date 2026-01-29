@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:07:12.085198",
+  "@@last_modified": "2026-01-29 15:24:57.889262",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10950,6 +10950,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:46.368303",
+  "@@last_modified": "2026-01-29 15:24:40.772387",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11310,6 +11310,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Gravação falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -2461,7 +2461,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-29 15:06:54.198410",
+  "@@last_modified": "2026-01-29 15:24:46.298517",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12033,6 +12033,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Zapisovanje ni uspelo. Preverite svoje avdio dovoljenja in poskusite znova.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

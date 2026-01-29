@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:20.164584",
+  "@@last_modified": "2026-01-29 15:24:24.593568",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11060,6 +11060,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "녹음에 실패했습니다. 오디오 권한을 확인하고 다시 시도해 주세요.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

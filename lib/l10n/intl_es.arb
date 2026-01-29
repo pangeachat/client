@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-29 15:06:22.201432",
+  "@@last_modified": "2026-01-29 15:24:25.947319",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8194,6 +8194,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "La grabación falló. Por favor, verifica tus permisos de audio y vuelve a intentarlo.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-29 15:06:59.589347",
+  "@@last_modified": "2026-01-29 15:24:49.757644",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10946,6 +10946,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запис не вдався. Будь ласка, перевірте свої аудіоправа та спробуйте ще раз.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

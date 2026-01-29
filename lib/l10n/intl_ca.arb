@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:07:06.641061",
+  "@@last_modified": "2026-01-29 15:24:54.287095",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10976,6 +10976,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "La gravació ha fallat. Si us plau, comproveu els vostres permisos d'àudio i torneu-ho a provar.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

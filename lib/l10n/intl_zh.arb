@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-29 15:07:33.349642",
+  "@@last_modified": "2026-01-29 15:25:09.954015",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10943,6 +10943,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "录音失败。请检查您的音频权限并重试。",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

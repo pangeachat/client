@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-29 15:07:50.290963",
+  "@@last_modified": "2026-01-29 15:25:21.118191",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11060,6 +11060,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запись не удалась. Пожалуйста, проверьте свои аудиоразрешения и попробуйте снова.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

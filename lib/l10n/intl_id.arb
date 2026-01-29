@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:06:31.522162",
+  "@@last_modified": "2026-01-29 15:24:32.345033",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10943,6 +10943,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

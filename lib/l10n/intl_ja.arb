@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-29 15:07:44.016421",
+  "@@last_modified": "2026-01-29 15:25:17.739953",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11742,6 +11742,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "録音に失敗しました。オーディオの権限を確認して、再試行してください。",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

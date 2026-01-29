@@ -19,6 +19,8 @@ import 'events/audio_player.dart';
 
 class PermissionException implements Exception {}
 
+class EmptyAudioException implements Exception {}
+
 class RecordingDialog extends StatefulWidget {
   const RecordingDialog({
     super.key,
@@ -143,6 +145,16 @@ class RecordingDialogState extends State<RecordingDialog> {
     for (var i = 0; i < amplitudeTimeline.length; i += step) {
       waveform.add((amplitudeTimeline[i] / 100 * 1024).round());
     }
+
+    // #Pangea
+    if (amplitudeTimeline.isEmpty || amplitudeTimeline.every((e) => e <= 1)) {
+      if (mounted) {
+        setState(() => error = EmptyAudioException());
+      }
+      return;
+    }
+    // Pangea#
+
     Navigator.of(context, rootNavigator: false).pop<RecordingResult>(
       RecordingResult(
         path: path,
@@ -168,7 +180,7 @@ class RecordingDialogState extends State<RecordingDialog> {
             constraints: const BoxConstraints(maxWidth: 250.0),
             child: error is PermissionException
                 ? Text(L10n.of(context).recordingPermissionDenied)
-                : kIsWeb
+                : kIsWeb && error is! EmptyAudioException
                     ? Text(L10n.of(context).genericWebRecordingError)
                     : Text(error!.toLocalizedString(context)),
           )

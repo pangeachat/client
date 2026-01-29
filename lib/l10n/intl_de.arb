@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-29 15:06:52.712598",
+  "@@last_modified": "2026-01-29 15:24:45.173559",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10959,6 +10959,11 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Die Aufnahme ist fehlgeschlagen. Bitte überprüfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }
