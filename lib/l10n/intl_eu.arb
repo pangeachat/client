@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-28 13:26:10.864458",
+  "@@last_modified": "2026-01-29 15:06:48.103616",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -3785,8 +3785,6 @@
   "noPaymentInfo": "Ez dago ordainketa informaziorik behar!",
   "updatePhoneOS": "Baliteke zure gailuaren OS bertsioa eguneratu behar izatea.",
   "wordsPerMinute": "Hitz minutuko",
-  "autoIGCToolName": "Exekutatu Pangea idazketa laguntza automatikoki",
-  "autoIGCToolDescription": "Exekutatu automatikoki Pangea Txataren gramatika eta itzulpen idazketa laguntza mezu bat bidali aurretik.",
   "tooltipInstructionsTitle": "Ez da ziur zer den hori?",
   "tooltipInstructionsMobileBody": "Elementuak sakatu eta eutsi tresna-txartelak ikusteko.",
   "tooltipInstructionsBrowserBody": "Elementuak gainean mugitu eta ikusi tresna-txartelak.",
@@ -6202,14 +6200,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10952,6 +10942,16 @@
   },
   "courseLoadingError": "Zerbait oker joan da, eta horren konponketan lan gogorra egiten ari gara. Begiratu berriro geroago.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Idazteko laguntza aktibatu",
+  "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

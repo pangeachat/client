@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-28 13:26:19.427065",
+  "@@last_modified": "2026-01-29 15:06:59.589347",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -3787,8 +3787,6 @@
   "noPaymentInfo": "Інформація про оплату не потрібна!",
   "updatePhoneOS": "Можливо, потрібно оновити версію ОС вашого пристрою.",
   "wordsPerMinute": "Слів за хвилину",
-  "autoIGCToolName": "Автоматично запускати допомогу з написання Pangea",
-  "autoIGCToolDescription": "Автоматично запускати допомогу з граматики та перекладу в чаті Pangea перед відправкою мого повідомлення.",
   "tooltipInstructionsTitle": "Не впевнений, що це робить?",
   "tooltipInstructionsMobileBody": "Натисніть і утримуйте елементи, щоб переглянути підказки.",
   "tooltipInstructionsBrowserBody": "Наведіть курсор на елементи, щоб переглянути підказки.",
@@ -6196,14 +6194,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10946,6 +10936,16 @@
   },
   "courseLoadingError": "Щось пішло не так, і ми наполегливо працюємо над виправленням. Перевірте пізніше.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Увімкнути допомогу в написанні",
+  "autoIGCToolDescription": "Автоматично запускати інструменти Pangea Chat для виправлення надісланих повідомлень на цільову мову.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

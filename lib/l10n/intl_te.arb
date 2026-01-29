@@ -1196,8 +1196,6 @@
   "noPaymentInfo": "చెల్లింపు సమాచారం అవసరం లేదు!",
   "updatePhoneOS": "మీ డివైస్ యొక్క OS వెర్షన్‌ను నవీకరించాల్సి ఉండవచ్చు.",
   "wordsPerMinute": "నిమిషానికి పదాలు",
-  "autoIGCToolName": "పాంజియా రాయడం సహాయాన్ని స్వయంచాలకంగా నడపండి",
-  "autoIGCToolDescription": "నా సందేశాన్ని పంపేముందు స్వయంచాలకంగా పాంజియా చాట్ వ్యాకరణం మరియు అనువాద రాయడం సహాయాన్ని నడపండి.",
   "tooltipInstructionsTitle": "అది ఏమిటో తెలియదా?",
   "tooltipInstructionsMobileBody": "టూల్‌టిప్‌లను చూడటానికి అంశాలను నొక్కి ఉంచండి.",
   "tooltipInstructionsBrowserBody": "టూల్‌టిప్‌లను చూడటానికి అంశాలపై హోవర్ చేయండి.",
@@ -1919,7 +1917,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-28 13:26:38.102435",
+  "@@last_modified": "2026-01-29 15:07:22.426646",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -7297,14 +7295,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12041,6 +12031,16 @@
   },
   "courseLoadingError": "ఏదో తప్పు జరిగింది, మరియు మేము దీన్ని సరిదిద్దడానికి కష్టపడుతున్నాము. తర్వాత మళ్లీ తనిఖీ చేయండి.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "రాయడం సహాయాన్ని ప్రారంభించండి",
+  "autoIGCToolDescription": "సమర్పించిన సందేశాలను లక్ష్య భాషకు సరిదిద్దడానికి పాంజియా చాట్ సాధనాలను ఆటోమేటిక్‌గా నడపండి.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

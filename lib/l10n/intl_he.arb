@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:06.755080",
+  "@@last_modified": "2026-01-29 15:06:42.180824",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -2371,8 +2371,6 @@
   "noPaymentInfo": "אין צורך במידע תשלום!",
   "updatePhoneOS": "ייתכן שתצטרך לעדכן את גרסת מערכת ההפעלה של המכשיר שלך.",
   "wordsPerMinute": "מילים בדקה",
-  "autoIGCToolName": "הרץ אוטומטית את עזר הכתיבה של פאנגיאה",
-  "autoIGCToolDescription": "הרץ אוטומטית את עזר הכתיבה של דקדוק ותרגום של פאנגיאה לפני שליחת ההודעה שלי.",
   "tooltipInstructionsTitle": "לא בטוח מה זה עושה?",
   "tooltipInstructionsMobileBody": "החזק והחלק על פריטים כדי לצפות בטיפים.",
   "tooltipInstructionsBrowserBody": "החלק מעל פריטים כדי לצפות בטיפים.",
@@ -7254,14 +7252,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12001,6 +11991,16 @@
   },
   "courseLoadingError": "משהו השתבש, ואנחנו עובדים קשה על תיקון זה. בדוק שוב מאוחר יותר.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "אפשר סיוע בכתיבה",
+  "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

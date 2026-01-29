@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:47.712647",
+  "@@last_modified": "2026-01-29 15:07:34.916865",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -3779,8 +3779,6 @@
   "noPaymentInfo": "কোনও পেমেন্ট তথ্য প্রয়োজন নয়!",
   "updatePhoneOS": "আপনার ডিভাইসের অপারেটিং সিস্টেমের সংস্করণ আপডেটের প্রয়োজন হতে পারে।",
   "wordsPerMinute": "প্রতি মিনিটে শব্দ",
-  "autoIGCToolName": "পাঙ্গিয়া লেখনী সহায়তা স্বয়ংক্রিয়ভাবে চালান",
-  "autoIGCToolDescription": "আমার বার্তা পাঠানোর আগে স্বয়ংক্রিয়ভাবে পাঙ্গিয়া চ্যাট ব্যাকরণ এবং অনুবাদ লেখনী সহায়তা চালান।",
   "tooltipInstructionsTitle": "এটি কি করে তা নিশ্চিত নন?",
   "tooltipInstructionsMobileBody": "আইটেমে চাপুন এবং ধরে রাখুন টুলটিপ দেখার জন্য।",
   "tooltipInstructionsBrowserBody": "আইটেমের উপর হোভার করে টুলটিপ দেখুন।",
@@ -7306,14 +7304,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -12056,6 +12046,16 @@
   },
   "courseLoadingError": "কিছু ভুল হয়েছে, এবং আমরা এটি ঠিক করতে কঠোর পরিশ্রম করছি। পরে আবার চেক করুন।",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "লেখার সহায়তা সক্রিয় করুন",
+  "autoIGCToolDescription": "লক্ষ্য ভাষায় পাঠানো বার্তা সংশোধন করতে স্বয়ংক্রিয়ভাবে প্যাঙ্গিয়া চ্যাট টুলগুলি চালান।",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

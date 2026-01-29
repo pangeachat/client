@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:40.659203",
+  "@@last_modified": "2026-01-29 15:07:25.995959",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -2422,8 +2422,6 @@
   "noPaymentInfo": "Không cần thông tin thanh toán!",
   "updatePhoneOS": "Bạn có thể cần nâng cấp phiên bản hệ điều hành.",
   "wordsPerMinute": "Từ mỗi phút",
-  "autoIGCToolName": "Tự động chạy hỗ trợ ngôn ngữ",
-  "autoIGCToolDescription": "Tự động chạy hỗ trợ ngôn ngữ sau khi gõ tin nhắn",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
   "roomFull": "Phòng đã đạt giới hạn.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
@@ -6522,6 +6520,16 @@
   },
   "courseLoadingError": "Đã xảy ra sự cố, và chúng tôi đang nỗ lực khắc phục. Vui lòng kiểm tra lại sau.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Bật trợ giúp viết",
+  "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }

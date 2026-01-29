@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-28 13:25:54.826808",
+  "@@last_modified": "2026-01-29 15:06:22.201432",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -4251,8 +4251,6 @@
   "wordsPerMinute": "Palabras por minuto",
   "roomFull": "Esta sala ya está al límite de su capacidad.",
   "enterNumber": "Introduzca un valor numérico entero.",
-  "autoIGCToolName": "Ejecutar automáticamente la asistencia lingüística",
-  "autoIGCToolDescription": "Ejecutar automáticamente la asistencia lingüística después de escribir mensajes",
   "buildTranslation": "Construye tu traducción a partir de las opciones anteriores",
   "languageSettings": "Ajustes de idioma",
   "selectSpaceDominantLanguage": "¿Cuál es la lengua más común de los miembros del espacio?",
@@ -8186,6 +8184,16 @@
   },
   "courseLoadingError": "Algo salió mal y estamos trabajando arduamente para solucionarlo. Revisa de nuevo más tarde.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Habilitar asistencia de escritura",
+  "autoIGCToolDescription": "Ejecutar automáticamente las herramientas de Pangea Chat para corregir los mensajes enviados al idioma de destino.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   }
