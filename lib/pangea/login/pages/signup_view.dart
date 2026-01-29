@@ -36,6 +36,7 @@ class SignupPageView extends StatelessWidget {
                 BackButton(
                   onPressed: Navigator.of(context).pop,
                 ),
+                Text(L10n.of(context).signUp),
                 const SizedBox(
                   width: 40.0,
                 ),
