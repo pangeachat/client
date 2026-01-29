@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-29 15:24:50.917574",
+  "@@last_modified": "2026-01-29 16:46:46.521090",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11564,6 +11564,11 @@
   },
   "emptyAudioError": "Nahrávání se nezdařilo. Zkontrolujte prosím svá oprávnění k audiosouborům a zkuste to znovu.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "O mně",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

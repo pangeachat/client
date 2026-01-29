@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-29 15:25:26.287351",
+  "@@last_modified": "2026-01-29 16:47:10.894104",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11281,6 +11281,11 @@
   },
   "emptyAudioError": "L'enregistrement a échoué. Veuillez vérifier vos autorisations audio et réessayer.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "À propos de moi",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

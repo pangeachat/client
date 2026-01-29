@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-29 15:24:45.173559",
+  "@@last_modified": "2026-01-29 16:46:41.707327",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10964,6 +10964,11 @@
   },
   "emptyAudioError": "Die Aufnahme ist fehlgeschlagen. Bitte überprüfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Über mich",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

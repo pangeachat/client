@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-29 15:24:43.759174",
+  "@@last_modified": "2026-01-29 16:46:41.028371",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11228,6 +11228,11 @@
   },
   "emptyAudioError": "Salvestamine ebaõnnestus. Palun kontrollige oma heliõigusi ja proovige uuesti.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Minust",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

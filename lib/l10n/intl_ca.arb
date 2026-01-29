@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:54.287095",
+  "@@last_modified": "2026-01-29 16:46:48.580512",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10981,6 +10981,11 @@
   },
   "emptyAudioError": "La gravació ha fallat. Si us plau, comproveu els vostres permisos d'àudio i torneu-ho a provar.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Sobre mi",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

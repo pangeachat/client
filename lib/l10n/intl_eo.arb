@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:20.184834",
+  "@@last_modified": "2026-01-29 16:47:07.308262",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12046,6 +12046,11 @@
   },
   "emptyAudioError": "Registrado malsukcesis. Bonvolu kontroli viajn aŭdajn permesojn kaj provi denove.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Pri mi",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

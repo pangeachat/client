@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-29 15:24:35.550214",
+  "@@last_modified": "2026-01-29 16:46:34.215775",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12041,6 +12041,11 @@
   },
   "emptyAudioError": "Nahrávanie zlyhalo. Skontrolujte svoje povolenia na zvuk a skúste to znova.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "O mne",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

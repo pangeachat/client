@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:42.742766",
+  "@@last_modified": "2026-01-29 16:46:40.332783",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12057,6 +12057,11 @@
   },
   "emptyAudioError": "A gravação falhou. Verifique suas permissões de áudio e tente novamente.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Sobre mim",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

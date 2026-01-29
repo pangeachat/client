@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:24.593568",
+  "@@last_modified": "2026-01-29 16:46:27.170535",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11065,6 +11065,11 @@
   },
   "emptyAudioError": "녹음에 실패했습니다. 오디오 권한을 확인하고 다시 시도해 주세요.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "내 소개",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

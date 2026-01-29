@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-29 15:24:27.141903",
+  "@@last_modified": "2026-01-29 16:46:28.958742",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10954,6 +10954,11 @@
   },
   "emptyAudioError": "A gravación fallou. Por favor, verifica os teus permisos de audio e intenta de novo.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Sobre min",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

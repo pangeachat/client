@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-29 15:25:13.973596",
+  "@@last_modified": "2026-01-29 16:47:03.207122",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10955,6 +10955,11 @@
   },
   "emptyAudioError": "Nagrywanie nie powiodło się. Sprawdź swoje uprawnienia audio i spróbuj ponownie.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "O mnie",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

@@ -1927,7 +1927,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-29 15:24:30.021734",
+  "@@last_modified": "2026-01-29 16:46:30.546977",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12018,6 +12018,11 @@
   },
   "emptyAudioError": "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og prøv igen.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

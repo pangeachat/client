@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:32.345033",
+  "@@last_modified": "2026-01-29 16:46:32.386327",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10948,6 +10948,11 @@
   },
   "emptyAudioError": "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Tentang saya",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

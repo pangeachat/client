@@ -120,7 +120,7 @@ class PangeaController {
     _settingsSubscription = userController.settingsUpdateStream.stream.listen(
       (update) async {
         await matrixState.client.updateBotOptions(update.userSettings);
-        await userController.updateCountry();
+        await userController.updatePublicProfile();
       },
     );
 
@@ -182,7 +182,7 @@ class PangeaController {
     await _clearCache(exclude: exclude);
     await matrixState.client
         .updateBotOptions(userController.profile.userSettings);
-    await userController.updateCountry();
+    await userController.updatePublicProfile();
   }
 
   static final List<String> _storageKeys = [

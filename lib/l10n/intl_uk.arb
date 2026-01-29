@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-29 15:24:49.757644",
+  "@@last_modified": "2026-01-29 16:46:45.189011",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10951,6 +10951,11 @@
   },
   "emptyAudioError": "Запис не вдався. Будь ласка, перевірте свої аудіоправа та спробуйте ще раз.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Про мене",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

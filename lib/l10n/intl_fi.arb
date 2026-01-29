@@ -4006,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-29 15:24:28.359131",
+  "@@last_modified": "2026-01-29 16:46:29.725551",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11580,6 +11580,11 @@
   },
   "emptyAudioError": "Äänityksen tallentaminen epäonnistui. Tarkista äänioikeutesi ja yritä uudelleen.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Tietoa minusta",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

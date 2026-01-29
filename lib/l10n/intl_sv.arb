@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:15.398282",
+  "@@last_modified": "2026-01-29 16:47:03.930373",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11435,6 +11435,11 @@
   },
   "emptyAudioError": "Inspelningen misslyckades. Kontrollera dina ljudbehörigheter och försök igen.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

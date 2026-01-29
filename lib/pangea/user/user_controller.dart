@@ -184,9 +184,7 @@ class UserController {
       );
     }
 
-    if (publicProfile!.country != profile.userSettings.country) {
-      await updateCountry();
-    }
+    await updatePublicProfile();
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
@@ -381,14 +379,16 @@ class UserController {
     );
   }
 
-  Future<void> updateCountry() async {
+  Future<void> updatePublicProfile() async {
     if (publicProfile == null ||
-        publicProfile!.country == profile.userSettings.country) {
+        (publicProfile!.country == profile.userSettings.country &&
+            publicProfile!.about == profile.userSettings.about)) {
       return;
     }
 
     publicProfile = publicProfile!.copyWith(
       country: profile.userSettings.country,
+      about: profile.userSettings.about,
     );
 
     await _savePublicProfileUpdate(
@@ -428,6 +428,28 @@ class UserController {
         },
       );
       return AnalyticsProfileModel();
+    }
+  }
+
+  Future<PublicProfileModel?> getPublicProfile(String userId) async {
+    try {
+      if (userId == BotName.byEnvironment) {
+        return PublicProfileModel(
+          analytics: AnalyticsProfileModel(),
+        );
+      }
+
+      final resp = await client.getUserProfile(userId);
+      return PublicProfileModel.fromJson(resp.additionalProperties);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          userId: userId,
+        },
+      );
+      return null;
     }
   }
 
