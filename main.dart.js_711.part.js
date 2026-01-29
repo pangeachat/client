@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Clicca qui per gestire il tuo abbonamento.";
     },
+    get$signUp() {
+      return "Registrati";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Per favore, scegli almeno " + min + " caratteri.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5iYsXPoxKeuc7xi36SY/VkX/Z2I="] = d.current;
+  d["1W+yKzFelQlZwSAwgOszIZMTcqQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_711.part.js.map

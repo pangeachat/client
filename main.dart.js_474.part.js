@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Klaku \u0109i tie por administri vian abonon.";
     },
+    get$signUp() {
+      return "Registri\u011di";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Bonvolu elekti almena\u016d " + min + " signojn.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tUNOKlm4ck+lHeB/PpzoAfVNHwk="] = d.current;
+  d["7GpHyQ5AhmOJ+xcSIyK5nRZfXCE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_474.part.js.map

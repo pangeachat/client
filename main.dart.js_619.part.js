@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Clice\xe1il anseo chun do sh\xednti\xfas a bhainisti\xfa.";
     },
+    get$signUp() {
+      return "Cl\xe1raigh";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Roghnaigh ar a laghad " + min + " carachtar.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2kpafhdFzN4q2DMCclvFJv8R46A="] = d.current;
+  d["ChIdoXhyn9FdJUbvhfy8eWy5Z88="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_619.part.js.map

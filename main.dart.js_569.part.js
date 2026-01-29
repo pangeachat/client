@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Hemen klik egin zure harpidetza kudeatzeko.";
     },
+    get$signUp() {
+      return "Erregistratu";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Mesedez, aukeratu gutxienez " + min + " karaktere.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JobllMeEkOra04uUVGiu29eSyYs="] = d.current;
+  d["zj5JTbDU8LqvZfVETqyuwXRKmbc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_569.part.js.map

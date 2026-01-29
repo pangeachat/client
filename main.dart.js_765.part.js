@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Aboneli\u011finizi y\xf6netmek i\xe7in buraya t\u0131klay\u0131n.";
     },
+    get$signUp() {
+      return "Kay\u0131t Ol";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "L\xfctfen en az " + min + " karakter se\xe7in.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nXsyJgMgIk/dKL5V+HXIYngRFcU="] = d.current;
+  d["Ivgt0lNVnj1KgXT06uE9IPl2yO4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

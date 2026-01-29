@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Kl\xf5psake siin, et hallata oma tellimust.";
     },
+    get$signUp() {
+      return "Registreeru";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Palun valige v\xe4hemalt " + min + " t\xe4hem\xe4rki.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FvX1GzA9qhyQz7kvMPBonG8Y6c8="] = d.current;
+  d["pOAwBTx2zpY2iugmljoIcYbgU0c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_548.part.js.map

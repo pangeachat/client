@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Noklik\u0161\u0137iniet \u0161eit, lai p\u0101rvald\u012btu savu abonementu.";
     },
+    get$signUp() {
+      return "Re\u0123istr\u0113ties";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "L\u016bdzu, izv\u0113lieties vismaz " + min + " rakstz\u012bmes.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zBF/tCFVTyosWZx/v0BX2NXx15Y="] = d.current;
+  d["80sDLbyZwwl5Xc63BOmNOT6VVUE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_725.part.js.map

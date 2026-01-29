@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "I-click dito upang pamahalaan ang iyong subscription.";
     },
+    get$signUp() {
+      return "Mag-sign up";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Pumili ng hindi bababa sa " + min + " na mga karakter.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["63Z9IFKEcctMEASQZHlLubcAa2A="] = d.current;
+  d["9+FOrZrteGZz9I7/GymuhW3Cav8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

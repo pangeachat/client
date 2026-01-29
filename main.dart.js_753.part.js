@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Kliknite sem na spr\xe1vu svojho predplatn\xe9ho.";
     },
+    get$signUp() {
+      return "Zaregistrova\u0165 sa";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Vyberte aspo\u0148 " + min + " znakov.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LiW6PmPprsTeVGeVBcsN/MaZQcs="] = d.current;
+  d["yOLlQg4pm2s58c5v/0eQGDR08V8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_753.part.js.map

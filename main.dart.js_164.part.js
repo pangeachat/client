@@ -2508,6 +2508,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f44\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f63\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f5a\u0f74\u0f63\u0f0b\u0f63\u0f42\u0f0b\u0f41\u0fb1\u0f7a\u0f62\u0f0b\u0f63\u0f7a\u0f42\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f53\u0f72\u0f0d";
     },
+    get$signUp() {
+      return "\u0f49\u0f7c\u0f53\u0f0b\u0f62\u0f7c\u0f42\u0f66\u0f0b\u0f60\u0f56\u0f51\u0f0d";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f44\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f53\u0f72\u0f0b\u0f5a\u0f7c\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f53\u0f0b\u0f58\u0f50\u0f62\u0f0b\u0f60\u0f41\u0fb1\u0f7c\u0f63\u0f0b\u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f47\u0f74\u0f42\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f53\u0f0d " + min + " \u0f5a\u0f7a\u0f66\u0f0b\u0f63\u0f0b\u0f60\u0f51\u0f7a\u0f58\u0f66\u0f0b\u0f53\u0f66\u0f0b\u0f42\u0f53\u0f44\u0f0b\u0f56\u0f0d";
     },
@@ -5374,7 +5377,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wIgqqJpWKRc7wQdGOC+OHhF1snw="] = d.current;
+  d["yYklHJ9CQPeuknqQoCBhMM/fcrU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

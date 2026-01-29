@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Klik her for at administrere dit abonnement.";
     },
+    get$signUp() {
+      return "Tilmeld dig";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "V\xe6lg venligst mindst " + min + " tegn.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VTx0HfP9zWWODVVWKPRx+1ywUtI="] = d.current;
+  d["apuHjlnFVqPN0KCCBR2QBehFgxs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_309.part.js.map

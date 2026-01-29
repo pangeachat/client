@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Kliknite tukaj za upravljanje naro\u010dnine.";
     },
+    get$signUp() {
+      return "Registracija";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Prosimo, izberite vsaj " + min + " znakov.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wOg4lZ3c+qACtXlOx7go94EDxGM="] = d.current;
+  d["WHVc63uJToDIFS/3bcTxTCU9jzs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

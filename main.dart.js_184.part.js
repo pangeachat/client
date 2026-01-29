@@ -2507,6 +2507,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Fes clic aqu\xed per gestionar la teva subscripci\xf3.";
     },
+    get$signUp() {
+      return "Registra't";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Si us plau, tria almenys " + min + " car\xe0cters.";
     },
@@ -5364,7 +5367,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ir8cnFuPSd47dxCWDZPi6V+BHOQ="] = d.current;
+  d["0ghnajFCTExNpJeEpD7BrenCZWk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map

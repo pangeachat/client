@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Klikk her for \xe5 administrere abonnementet ditt.";
     },
+    get$signUp() {
+      return "Registrer deg";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Vennligst velg minst " + min + " tegn.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Nd4yZReOx5L/+2LRdO5ctU2Ue8U="] = d.current;
+  d["IEoff1dn0mUBQVzxdnJcl1oEOiA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_730.part.js.map

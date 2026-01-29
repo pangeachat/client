@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Haga clic aqu\xed para gestionar su suscripci\xf3n.";
     },
+    get$signUp() {
+      return "Registrarse";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Por favor elegir al menos " + min + " car\xe1cteres";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["E/D7XNxoV6U2vnkch8NGFhPRZSs="] = d.current;
+  d["BEYXXA3nB2ejINWYX5lwjfUJor4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_509.part.js.map

@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click aici pentru a-\u021bi gestiona abonamentul.";
     },
+    get$signUp() {
+      return "\xcenscrie-te";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Te rug\u0103m s\u0103 alegi cel pu\u021bin " + min + " caractere.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IdRySpY5EXOwjN4Cq+iFqpqM3W4="] = d.current;
+  d["FTCwAUvpyPR444Agxvn+ScrgUhI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

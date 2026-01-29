@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Klik di sini untuk mengelola langganan Anda.";
     },
+    get$signUp() {
+      return "Daftar";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Silakan pilih setidaknya " + min + " karakter.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MprEI76iAPf3Te0QQfo6o/YPFbY="] = d.current;
+  d["0t6wBRjcwOUyfnNioIa/Q4mjHWs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_694.part.js.map

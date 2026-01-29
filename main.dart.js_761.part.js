@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Klicka h\xe4r f\xf6r att hantera din prenumeration.";
     },
+    get$signUp() {
+      return "Registrera dig";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "V\xe4nligen v\xe4lj minst " + min + " tecken.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BU0c2W+K+gfQjo2Oci3iGRztqQk="] = d.current;
+  d["JJ30akmG6cihyzojp23o0z0a5sc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_761.part.js.map

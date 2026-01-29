@@ -2518,6 +2518,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return string$.Cliqueag;
     },
+    get$signUp() {
+      return "Inscrever-se";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Por favor, escolha pelo menos " + min + " caracteres.";
     },
@@ -7854,6 +7857,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return string$.Cliqueag;
     },
+    get$signUp() {
+      return "Inscrever-se";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Por favor, escolha pelo menos " + min + " caracteres.";
     },
@@ -13187,6 +13193,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Clique aqui para gerir a sua assinatura.";
     },
+    get$signUp() {
+      return "Registar-se";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Por favor, escolha pelo menos " + min + " caracteres.";
     },
@@ -16233,7 +16242,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VWj5gg2+a54JXzJXuRHYX/Lt/Ps="] = d.current;
+  d["BaimtWweZakWpx+s9twf5TzkIvQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

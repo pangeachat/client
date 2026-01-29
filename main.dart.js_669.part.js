@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Kattints ide a feliratkoz\xe1s kezel\xe9se \xe9rdek\xe9ben.";
     },
+    get$signUp() {
+      return "Regisztr\xe1ci\xf3";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "K\xe9rj\xfck, v\xe1lassz legal\xe1bb " + min + " karaktert.";
     },
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["piS3TjWJLcI9L0GgGYahLQ3JdZk="] = d.current;
+  d["f+gvIfnkuXADjs8hlwEdRORI9Tw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_669.part.js.map

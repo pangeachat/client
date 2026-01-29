@@ -2506,6 +2506,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Spustel\u0117kite \u010dia, nor\u0117dami valdyti savo prenumerat\u0105.";
     },
+    get$signUp() {
+      return "Registruotis";
+    },
     pleaseChooseAtLeastChars$1(min) {
       return "Pra\u0161ome pasirinkti bent " + min + " simbolius.";
     },
@@ -5363,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["D4ke+LrjqfE+mMj9x4s+jxgfpAo="] = d.current;
+  d["8xn98P8SlJ8blkbA2kjXVLttmwg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map
