@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -23,7 +25,6 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -162,28 +163,7 @@ class _AnalyticsActivityView extends StatelessWidget {
         const SizedBox(height: 16.0),
         _ActivityChoicesWidget(controller),
         const SizedBox(height: 16.0),
-        ListenableBuilder(
-          listenable: Listenable.merge([
-            controller.activityState,
-            controller.selectedMorphChoice,
-          ]),
-          builder: (context, _) {
-            final activityState = controller.activityState.value;
-            final selectedChoice = controller.selectedMorphChoice.value;
-
-            if (activityState
-                    is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
-                selectedChoice == null) {
-              return const SizedBox.shrink();
-            }
-
-            return MorphMeaningWidget(
-              feature: selectedChoice.feature,
-              tag: selectedChoice.tag,
-              blankErrorFeedback: true,
-            );
-          },
-        ),
+        _WrongAnswerFeedback(controller: controller),
       ],
     );
   }
@@ -226,6 +206,26 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
                   _ => const SizedBox(),
                 },
               ),
+            ),
+          ),
+        ActivityTypeEnum.grammarCategory => Center(
+            child: Column(
+              children: [
+                _CorrectAnswerHint(controller: controller),
+                _ExampleMessageWidget(
+                  controller.getExampleMessage(target!.target),
+                ),
+                const SizedBox(height: 12),
+                ValueListenableBuilder(
+                  valueListenable: controller.hintPressedNotifier,
+                  builder: (context, hintPressed, __) {
+                    return HintButton(
+                      depressed: hintPressed,
+                      onPressed: controller.onHintPressed,
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         _ => SizedBox(
@@ -275,6 +275,96 @@ class _ExampleMessageWidget extends StatelessWidget {
               ),
               children: snapshot.data!,
             ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _CorrectAnswerHint extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _CorrectAnswerHint({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: controller.hintPressedNotifier,
+      builder: (context, hintPressed, __) {
+        if (!hintPressed) {
+          return const SizedBox.shrink();
+        }
+
+        return ValueListenableBuilder(
+          valueListenable: controller.activityState,
+          builder: (context, state, __) {
+            if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+              return const SizedBox.shrink();
+            }
+
+            final activity = state.value;
+            if (activity is! MorphPracticeActivityModel) {
+              return const SizedBox.shrink();
+            }
+
+            final correctAnswerTag =
+                activity.multipleChoiceContent.answers.first;
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: MorphMeaningWidget(
+                feature: activity.morphFeature,
+                tag: correctAnswerTag,
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _WrongAnswerFeedback extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _WrongAnswerFeedback({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.activityState,
+        controller.selectedMorphChoice,
+      ]),
+      builder: (context, _) {
+        final activityState = controller.activityState.value;
+        final selectedChoice = controller.selectedMorphChoice.value;
+
+        if (activityState
+                is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
+            selectedChoice == null) {
+          return const SizedBox.shrink();
+        }
+
+        final activity = activityState.value;
+        final isWrongAnswer =
+            !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
+
+        if (!isWrongAnswer) {
+          return const SizedBox.shrink();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: MorphMeaningWidget(
+            feature: selectedChoice.feature,
+            tag: selectedChoice.tag,
+            blankErrorFeedback: true,
           ),
         );
       },
@@ -413,34 +503,50 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
           ),
         ),
         const SizedBox(height: 8),
-        PressableButton(
-          borderRadius: BorderRadius.circular(20),
-          color: Theme.of(context).colorScheme.primaryContainer,
-          depressed: _showTranslation,
-          onPressed: _toggleTranslation,
-          playSound: true,
-          colorFactor: 0.3,
-          builder: (context, depressed, shadowColor) => Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                height: 40.0,
-                width: 40.0,
-                decoration: BoxDecoration(
-                  color: depressed
-                      ? shadowColor
-                      : Theme.of(context).colorScheme.primaryContainer,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              const Icon(
-                Icons.translate,
-                size: 20,
-              ),
-            ],
-          ),
-        ),
+        HintButton(depressed: _showTranslation, onPressed: _toggleTranslation),
       ],
+    );
+  }
+}
+
+class HintButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final bool depressed;
+
+  const HintButton({
+    required this.onPressed,
+    required this.depressed,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PressableButton(
+      borderRadius: BorderRadius.circular(20),
+      color: Theme.of(context).colorScheme.primaryContainer,
+      onPressed: onPressed,
+      depressed: depressed,
+      playSound: true,
+      colorFactor: 0.3,
+      builder: (context, depressed, shadowColor) => Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+              color: depressed
+                  ? shadowColor
+                  : Theme.of(context).colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const Icon(
+            Icons.lightbulb_outline,
+            size: 20,
+          ),
+        ],
+      ),
     );
   }
 }

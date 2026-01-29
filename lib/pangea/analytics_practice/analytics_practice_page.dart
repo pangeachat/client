@@ -101,6 +101,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
       ValueNotifier<SelectedMorphChoice?>(null);
 
+  final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
+
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
 
@@ -125,6 +127,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     progressNotifier.dispose();
     enableChoicesNotifier.dispose();
     selectedMorphChoice.dispose();
+    hintPressedNotifier.dispose();
     super.dispose();
   }
 
@@ -210,6 +213,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.value = const AsyncState.loading();
     activityTarget.value = null;
     selectedMorphChoice.value = null;
+    hintPressedNotifier.value = false;
     enableChoicesNotifier.value = true;
     progressNotifier.value = 0.0;
     _queue.clear();
@@ -282,6 +286,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     try {
       activityState.value = const AsyncState.loading();
       selectedMorphChoice.value = null;
+      hintPressedNotifier.value = false;
 
       final req = activityTarget.value!;
       final res = await _fetchActivity(req);
@@ -324,6 +329,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         while (_queue.isNotEmpty) {
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
+          hintPressedNotifier.value = false;
           final nextActivityCompleter = _queue.removeFirst();
 
           try {
@@ -475,6 +481,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     );
 
     await _analyticsService.updateService.addAnalytics(null, [use]);
+  }
+
+  void onHintPressed() {
+    hintPressedNotifier.value = !hintPressedNotifier.value;
   }
 
   Future<void> onSelectChoice(
