@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/public_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
 
@@ -43,7 +44,7 @@ class UserController {
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
 
-  AnalyticsProfileModel? analyticsProfile;
+  PublicProfileModel? publicProfile;
 
   /// Listens for account updates and updates the cached profile
   StreamSubscription? _profileListener;
@@ -174,18 +175,23 @@ class UserController {
     if (client.userID == null) return;
     try {
       final resp = await client.getUserProfile(client.userID!);
-      analyticsProfile =
-          AnalyticsProfileModel.fromJson(resp.additionalProperties);
+      publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
-      analyticsProfile = AnalyticsProfileModel();
+      publicProfile = PublicProfileModel(
+        analytics: AnalyticsProfileModel(),
+      );
+    }
+
+    if (publicProfile!.country != profile.userSettings.country) {
+      await updateCountry();
     }
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
     // finish initializing, so this would cause a deadlock.
-    if (analyticsProfile!.isEmpty) {
+    if (publicProfile!.analytics.isEmpty) {
       final analyticsService =
           MatrixState.pangeaController.matrixState.analyticsDataService;
 
@@ -272,12 +278,24 @@ class UserController {
   Future<void> _savePublicProfileUpdate(
     String type,
     Map<String, dynamic> content,
-  ) async =>
-      client.setUserProfile(
+  ) async {
+    try {
+      await client.setUserProfile(
         client.userID!,
         type,
         content,
       );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'type': type,
+          'content': content,
+        },
+      );
+    }
+  }
 
   Future<void> updateAnalyticsProfile({
     required int level,
@@ -286,75 +304,108 @@ class UserController {
   }) async {
     targetLanguage ??= userL2;
     baseLanguage ??= userL1;
-    if (targetLanguage == null || analyticsProfile == null) return;
+    if (targetLanguage == null || publicProfile == null) return;
 
     final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
 
-    if (analyticsProfile!.targetLanguage == targetLanguage &&
-        analyticsProfile!.baseLanguage == baseLanguage &&
-        analyticsProfile!.languageAnalytics?[targetLanguage]?.level == level &&
-        analyticsProfile!.analyticsRoomIdByLanguage(targetLanguage) ==
+    if (publicProfile!.analytics.targetLanguage == targetLanguage &&
+        publicProfile!.analytics.baseLanguage == baseLanguage &&
+        publicProfile!.analytics.languageAnalytics?[targetLanguage]?.level ==
+            level &&
+        publicProfile!.analytics.analyticsRoomIdByLanguage(targetLanguage) ==
             analyticsRoom?.id) {
       return;
     }
 
-    analyticsProfile!.baseLanguage = baseLanguage;
-    analyticsProfile!.targetLanguage = targetLanguage;
-    analyticsProfile!.setLanguageInfo(
+    publicProfile!.analytics.baseLanguage = baseLanguage;
+    publicProfile!.analytics.targetLanguage = targetLanguage;
+    publicProfile!.analytics.setLanguageInfo(
       targetLanguage,
       level,
       analyticsRoom?.id,
     );
+
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
     );
   }
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
-    if (analyticsProfile?.languageAnalytics == null) return;
+    if (publicProfile?.analytics.languageAnalytics == null) return;
     final analyticsRooms = client.allMyAnalyticsRooms;
 
     if (analyticsRooms.isEmpty) return;
     for (final analyticsRoom in analyticsRooms) {
       final lang = analyticsRoom.madeForLang?.split("-").first;
-      if (lang == null || analyticsProfile?.languageAnalytics == null) continue;
+      if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
+        continue;
+      }
       final langKey =
-          analyticsProfile!.languageAnalytics!.keys.firstWhereOrNull(
+          publicProfile!.analytics.languageAnalytics!.keys.firstWhereOrNull(
         (l) => l.langCodeShort == lang,
       );
 
       if (langKey == null) continue;
-      if (analyticsProfile!.languageAnalytics![langKey]!.analyticsRoomId ==
+      if (publicProfile!
+              .analytics.languageAnalytics![langKey]!.analyticsRoomId ==
           analyticsRoom.id) {
         continue;
       }
 
-      analyticsProfile!.setLanguageInfo(
+      publicProfile!.analytics.setLanguageInfo(
         langKey,
-        analyticsProfile!.languageAnalytics![langKey]!.level,
+        publicProfile!.analytics.languageAnalytics![langKey]!.level,
         analyticsRoom.id,
       );
     }
 
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
     );
   }
 
   Future<void> addXPOffset(int offset) async {
     final targetLanguage = userL2;
-    if (targetLanguage == null || analyticsProfile == null) return;
+    if (targetLanguage == null || publicProfile == null) return;
 
-    analyticsProfile!.addXPOffset(
+    publicProfile!.analytics.addXPOffset(
       targetLanguage,
       offset,
       client.analyticsRoomLocal(targetLanguage)?.id,
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
+    );
+  }
+
+  Future<void> updateCountry() async {
+    if (publicProfile == null ||
+        publicProfile!.country == profile.userSettings.country) {
+      return;
+    }
+
+    publicProfile = publicProfile!.copyWith(
+      country: profile.userSettings.country,
+    );
+
+    await _savePublicProfileUpdate(
+      PangeaEventTypes.profileAnalytics,
+      publicProfile!.toJson(),
+    );
+  }
+
+  Future<void> updateAbout(String about) async {
+    if (publicProfile == null || publicProfile!.about == about) {
+      return;
+    }
+
+    publicProfile = publicProfile!.copyWith(about: about);
+    await _savePublicProfileUpdate(
+      PangeaEventTypes.profileAnalytics,
+      publicProfile!.toJson(),
     );
   }
 

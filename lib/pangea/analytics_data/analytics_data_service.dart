@@ -439,7 +439,8 @@ class AnalyticsDataService {
       final offset = lowerLevelXP - newData.totalXP;
       await MatrixState.pangeaController.userController.addXPOffset(offset);
       await updateXPOffset(
-        MatrixState.pangeaController.userController.analyticsProfile!.xpOffset!,
+        MatrixState
+            .pangeaController.userController.publicProfile!.analytics.xpOffset!,
       );
     }
 
