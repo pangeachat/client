@@ -395,7 +395,7 @@ class _PublicCourseTile extends StatelessWidget {
     BuildContext context,
   ) {
     context.go(
-      '/rooms/course/${Uri.encodeComponent(chunk.courseId)}?roomid=${Uri.encodeComponent(chunk.room.roomId)}',
+      '/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}',
     );
   }
 

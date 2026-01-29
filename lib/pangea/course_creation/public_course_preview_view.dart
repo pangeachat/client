@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -58,6 +59,14 @@ class PublicCoursePreviewView extends StatelessWidget {
 
                 final course = controller.course!;
                 final summary = controller.roomSummary!;
+
+                Uri? avatarUrl = course.imageUrl;
+                if (summary.avatarUrl != null) {
+                  avatarUrl = Uri.tryParse(summary.avatarUrl!);
+                }
+
+                final displayname = summary.displayName ?? course.title;
+
                 return Column(
                   children: [
                     Expanded(
@@ -70,14 +79,6 @@ class PublicCoursePreviewView extends StatelessWidget {
                         child: ListView.builder(
                           itemCount: course.topicIds.length + 2,
                           itemBuilder: (context, index) {
-                            final String displayname = course.title;
-                            // final roomChunk = controller.widget.roomChunk;
-                            // if (roomChunk != null) {
-                            //   displayname = roomChunk.name ??
-                            //       roomChunk.canonicalAlias ??
-                            //       L10n.of(context).emptyChat;
-                            // }
-
                             if (index == 0) {
                               return Column(
                                 spacing: 8.0,
@@ -85,10 +86,7 @@ class PublicCoursePreviewView extends StatelessWidget {
                                   ClipPath(
                                     clipper: MapClipper(),
                                     child: ImageByUrl(
-                                      imageUrl:
-                                          // controller.widget
-                                          //         .roomChunk?.avatarUrl ??
-                                          course.imageUrl,
+                                      imageUrl: avatarUrl,
                                       width: 100.0,
                                       borderRadius: BorderRadius.circular(0.0),
                                       replacement: Avatar(
@@ -114,10 +112,25 @@ class PublicCoursePreviewView extends StatelessWidget {
                                       fontSize: descFontSize,
                                     ),
                                   ),
-                                  CourseInfoChips(
-                                    controller.widget.courseId,
-                                    fontSize: descFontSize,
-                                    iconSize: smallIconSize,
+                                  Row(
+                                    spacing: 8.0,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      CourseInfoChips(
+                                        course.uuid,
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                      ),
+                                      CourseInfoChip(
+                                        icon: Icons.person,
+                                        text:
+                                            L10n.of(context).countParticipants(
+                                          summary.membershipSummary.length,
+                                        ),
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                      ),
+                                    ],
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -326,39 +339,47 @@ class _CourseAdminDisplay extends StatelessWidget {
               final profile = snapshot.data;
               final displayName =
                   profile?.displayName ?? adminId.localpart ?? adminId;
-              return Container(
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primaryContainer,
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                padding: const EdgeInsets.all(4.0),
-                child: Opacity(
-                  opacity: 0.5,
-                  child: Row(
-                    spacing: 4.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Avatar(
-                        size: 18.0,
-                        mxContent: profile?.avatarUrl,
-                        name: displayName,
-                        userId: adminId,
-                      ),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxWidth: 80.0,
+              return InkWell(
+                onTap: profile != null
+                    ? () => UserDialog.show(
+                          context: context,
+                          profile: profile,
+                        )
+                    : null,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                  padding: const EdgeInsets.all(4.0),
+                  child: Opacity(
+                    opacity: 0.5,
+                    child: Row(
+                      spacing: 4.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Avatar(
+                          size: 18.0,
+                          mxContent: profile?.avatarUrl,
+                          name: displayName,
+                          userId: adminId,
                         ),
-                        child: Text(
-                          displayName,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: theme.colorScheme.onPrimaryContainer,
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxWidth: 80.0,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
+                          child: Text(
+                            displayName,
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              color: theme.colorScheme.onPrimaryContainer,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );

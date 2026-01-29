@@ -16,13 +16,11 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreview extends StatefulWidget {
-  final String courseId;
   final String? roomID;
 
   const PublicCoursePreview({
     super.key,
     required this.roomID,
-    required this.courseId,
   });
 
   @override
@@ -40,16 +38,13 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   initState() {
     super.initState();
     _loadSummary();
-    loadCourse(widget.courseId).then((_) => loadTopics());
   }
 
   @override
   void didUpdateWidget(covariant PublicCoursePreview oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.courseId != widget.courseId ||
-        widget.roomID != oldWidget.roomID) {
+    if (widget.roomID != oldWidget.roomID) {
       _loadSummary();
-      loadCourse(widget.courseId).then((_) => loadTopics());
     }
   }
 
@@ -78,15 +73,32 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       roomSummary = roomSummaries![widget.roomID];
     } catch (e, s) {
       roomSummaryError = e;
+      loadingCourse = false;
+
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {'roomID': widget.roomID},
+        data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()},
       );
     } finally {
       if (mounted) {
         setState(() {
           loadingRoomSummary = false;
+        });
+      }
+    }
+
+    if (roomSummary?.coursePlan != null) {
+      await loadCourse(roomSummary!.coursePlan!.uuid).then((_) => loadTopics());
+    } else {
+      ErrorHandler.logError(
+        e: Exception("No course plan found in room summary"),
+        data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()},
+      );
+      if (mounted) {
+        setState(() {
+          roomSummaryError = Exception("No course plan found in room summary");
+          loadingCourse = false;
         });
       }
     }

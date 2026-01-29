@@ -407,14 +407,13 @@ abstract class AppRoutes {
                   ],
                 ),
                 GoRoute(
-                  path: ':courseid',
+                  path: ':courseroomid',
                   pageBuilder: (context, state) {
                     return defaultPageBuilder(
                       context,
                       state,
                       PublicCoursePreview(
-                        courseId: state.pathParameters['courseid']!,
-                        roomID: state.uri.queryParameters['roomid'],
+                        roomID: state.pathParameters['courseroomid']!,
                       ),
                     );
                   },

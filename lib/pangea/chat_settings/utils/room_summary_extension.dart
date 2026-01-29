@@ -8,6 +8,8 @@ import 'package:matrix/matrix_api_lite/generated/api.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension RoomSummaryExtension on Api {
@@ -58,16 +60,25 @@ class RoomSummariesResponse {
 class RoomSummaryResponse {
   final ActivityPlanModel? activityPlan;
   final ActivityRolesModel? activityRoles;
+  final ActivitySummaryModel? activitySummary;
+  final CoursePlanEvent? coursePlan;
+
   final JoinRules? joinRule;
   final Map<String, int>? powerLevels;
   final Map<String, String> membershipSummary;
+  final String? displayName;
+  final String? avatarUrl;
 
   RoomSummaryResponse({
     required this.membershipSummary,
     this.activityPlan,
     this.activityRoles,
+    this.activitySummary,
+    this.coursePlan,
     this.joinRule,
     this.powerLevels,
+    this.displayName,
+    this.avatarUrl,
   });
 
   List<String> get adminUserIDs {
@@ -111,6 +122,20 @@ class RoomSummaryResponse {
       roles = ActivityRolesModel.fromJson(rolesEntry);
     }
 
+    final summaryEntry =
+        json[PangeaEventTypes.activitySummary]?["default"]?["content"];
+    ActivitySummaryModel? summary;
+    if (summaryEntry != null && summaryEntry is Map<String, dynamic>) {
+      summary = ActivitySummaryModel.fromJson(summaryEntry);
+    }
+
+    final coursePlanEntry =
+        json[PangeaEventTypes.coursePlan]?["default"]?["content"];
+    CoursePlanEvent? coursePlan;
+    if (coursePlanEntry != null && coursePlanEntry is Map<String, dynamic>) {
+      coursePlan = CoursePlanEvent.fromJson(coursePlanEntry);
+    }
+
     final powerLevelsEntry =
         json[EventTypes.RoomPowerLevels]?['default']?['content']?['users'];
     Map<String, int>? powerLevels;
@@ -126,14 +151,41 @@ class RoomSummaryResponse {
           .singleWhereOrNull((element) => element.text == joinRulesString);
     }
 
+    final displayName =
+        json[EventTypes.RoomName]?['default']?['content']?['name'] as String?;
+
+    String? avatarUrl =
+        json[EventTypes.RoomAvatar]?['default']?['content']?['url'] as String?;
+    if (avatarUrl != null && Uri.tryParse(avatarUrl) == null) {
+      avatarUrl = null;
+    }
+
     return RoomSummaryResponse(
       activityPlan: plan,
       activityRoles: roles,
+      activitySummary: summary,
+      coursePlan: coursePlan,
       powerLevels: powerLevels,
       joinRule: joinRule,
       membershipSummary: Map<String, String>.from(
         json['membership_summary'] ?? {},
       ),
+      displayName: displayName,
+      avatarUrl: avatarUrl,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'activityPlan': activityPlan?.toJson(),
+      'activityRoles': activityRoles?.toJson(),
+      'activitySummary': activitySummary?.toJson(),
+      'coursePlan': coursePlan?.toJson(),
+      'joinRule': joinRule?.text,
+      'powerLevels': powerLevels,
+      'membershipSummary': membershipSummary,
+      'displayName': displayName,
+      'avatarUrl': avatarUrl,
+    };
   }
 }
