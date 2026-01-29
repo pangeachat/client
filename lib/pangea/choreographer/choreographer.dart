@@ -131,7 +131,7 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     itController.closeIT();
     itController.clearSourceText();
-    itController.clearDissmissed();
+    itController.clearSession();
     igcController.clear();
     _resetDebounceTimer();
     _setChoreoMode(ChoreoModeEnum.igc);
