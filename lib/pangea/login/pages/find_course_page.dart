@@ -391,6 +391,14 @@ class _PublicCourseTile extends StatelessWidget {
     this.course,
   });
 
+  void _navigateToCoursePage(
+    BuildContext context,
+  ) {
+    context.go(
+      '/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -411,10 +419,7 @@ class _PublicCourseTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => context.go(
-            '/rooms/course/$courseId',
-            extra: space,
-          ),
+          onTap: () => _navigateToCoursePage(context),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
             padding: const EdgeInsets.all(12.0),
@@ -490,10 +495,7 @@ class _PublicCourseTile extends StatelessWidget {
                 const SizedBox(height: 12.0),
                 HoverBuilder(
                   builder: (context, hovered) => ElevatedButton(
-                    onPressed: () => context.go(
-                      '/rooms/course/$courseId',
-                      extra: space,
-                    ),
+                    onPressed: () => _navigateToCoursePage(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           theme.colorScheme.primaryContainer.withAlpha(
