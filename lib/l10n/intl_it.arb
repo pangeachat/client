@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:43.998266",
+  "@@last_modified": "2026-01-28 13:26:18.238331",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10935,6 +10935,26 @@
   },
   "newCourseAccess": "Per impostazione predefinita, i corsi sono ricercabili pubblicamente e richiedono l'approvazione dell'amministratore per unirsi. Puoi modificare queste impostazioni in qualsiasi momento.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quale lingua stai imparando?",
+  "searchLanguagesHint": "Cerca lingue target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Domande? Siamo qui per aiutarti!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Qualcosa è andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo più tardi.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

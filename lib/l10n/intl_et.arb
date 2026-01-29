@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-27 14:02:38.644251",
+  "@@last_modified": "2026-01-28 13:26:13.431455",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11203,6 +11203,26 @@
   },
   "newCourseAccess": "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Millist keelt sa õpid?",
+  "searchLanguagesHint": "Otsi sihtkeeli",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Küsimused? Me oleme siin, et aidata!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Midagi läks valesti ja me teeme kõvasti tööd, et see parandada. Kontrolli hiljem uuesti.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -149,8 +149,6 @@ class _CardContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: baseColor,

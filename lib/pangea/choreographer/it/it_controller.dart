@@ -65,8 +65,9 @@ class ITController {
     _sourceText.value = null;
   }
 
-  void clearDissmissed() {
+  void clearSession() {
     dismissed = false;
+    _progress.value = 0.0;
   }
 
   void dispose() {
@@ -105,6 +106,7 @@ class ITController {
     _queue.clear();
     _currentITStep.value = null;
     _goldRouteTracker = null;
+    _progress.value = 0.0;
     _sourceText.value = text;
     setEditingSourceText(false);
     _continueIT();
@@ -152,7 +154,6 @@ class ITController {
             ) +
             1) /
         _goldRouteTracker!.continuances.length;
-    debugPrint("Progress updated to $progress");
     _progress.value = progress;
     _continueIT();
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-27 14:03:18.964652",
+  "@@last_modified": "2026-01-28 13:26:54.166864",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11722,6 +11722,26 @@
   },
   "newCourseAccess": "デフォルトでは、コースは公開検索可能で、参加するには管理者の承認が必要です。これらの設定はいつでも編集できます。",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "どの言語を学んでいますか？",
+  "searchLanguagesHint": "ターゲット言語を検索",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "質問がありますか？私たちはお手伝いします！",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "何かがうまくいかなかったため、私たちは修正作業に取り組んでいます。後で再度確認してください。",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

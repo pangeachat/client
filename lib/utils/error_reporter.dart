@@ -22,6 +22,9 @@ class ErrorReporter {
           content: Text(
             l10n.oopsSomethingWentWrong, // Use the non-null L10n instance to get the error message
           ),
+          // #Pangea
+          showCloseIcon: true,
+          // Pangea#
         ),
       );
     } catch (err) {

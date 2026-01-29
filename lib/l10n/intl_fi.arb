@@ -4008,7 +4008,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-27 14:02:18.192045",
+  "@@last_modified": "2026-01-28 13:25:57.438673",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11555,6 +11555,26 @@
   },
   "newCourseAccess": "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat ylläpitäjän hyväksynnän liittymiseen. Voit muokata näitä asetuksia milloin tahansa.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Mitä kieltä opit?",
+  "searchLanguagesHint": "Etsi kohdekieliä",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Kysymyksiä? Olemme täällä auttamassa!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Jotain meni pieleen, ja teemme kovasti töitä sen korjaamiseksi. Tarkista myöhemmin uudelleen.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

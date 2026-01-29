@@ -22,30 +22,33 @@ class ShimmerBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!enabled) {
+      return child;
+    }
+
     final borderRadius =
         this.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
     return Stack(
       children: [
         child,
-        if (enabled)
-          Positioned.fill(
-            child: IgnorePointer(
-              child: ClipRRect(
-                borderRadius: borderRadius,
-                child: Shimmer.fromColors(
-                  baseColor: baseColor ?? shimmerColor.withValues(alpha: 0.1),
-                  highlightColor: shimmerColor.withValues(alpha: 0.6),
-                  direction: ShimmerDirection.ltr,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: shimmerColor.withValues(alpha: 0.3),
-                      borderRadius: borderRadius,
-                    ),
+        Positioned.fill(
+          child: IgnorePointer(
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: Shimmer.fromColors(
+                baseColor: baseColor ?? shimmerColor.withValues(alpha: 0.1),
+                highlightColor: shimmerColor.withValues(alpha: 0.6),
+                direction: ShimmerDirection.ltr,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: shimmerColor.withValues(alpha: 0.3),
+                    borderRadius: borderRadius,
                   ),
                 ),
               ),
             ),
           ),
+        ),
       ],
     );
   }

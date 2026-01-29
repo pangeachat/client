@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:03:11.965364",
+  "@@last_modified": "2026-01-28 13:26:47.712647",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12036,6 +12036,26 @@
   },
   "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি জনসাধারণের জন্য অনুসন্ধানযোগ্য এবং যোগদানের জন্য প্রশাসক অনুমোদনের প্রয়োজন। আপনি যে কোনও সময় এই সেটিংসগুলি সম্পাদনা করতে পারেন।",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "আপনি কোন ভাষা শিখছেন?",
+  "searchLanguagesHint": "লক্ষ্য ভাষা অনুসন্ধান করুন",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "প্রশ্ন আছে? আমরা সাহায্য করতে এখানে আছি!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "কিছু ভুল হয়েছে, এবং আমরা এটি ঠিক করতে কঠোর পরিশ্রম করছি। পরে আবার চেক করুন।",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

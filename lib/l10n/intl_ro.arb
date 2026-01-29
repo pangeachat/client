@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:25.277330",
+  "@@last_modified": "2026-01-28 13:26:01.958335",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11667,6 +11667,26 @@
   },
   "newCourseAccess": "În mod implicit, cursurile sunt căutabile public și necesită aprobată de administrator pentru a se alătura. Puteți edita aceste setări în orice moment.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Ce limbă înveți?",
+  "searchLanguagesHint": "Caută limbi țintă",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Întrebări? Suntem aici să ajutăm!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Ceva a mers prost și lucrăm din greu pentru a remedia problema. Verifică din nou mai târziu.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

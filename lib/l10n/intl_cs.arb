@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-27 14:02:46.567796",
+  "@@last_modified": "2026-01-28 13:26:20.564591",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11539,6 +11539,26 @@
   },
   "newCourseAccess": "Ve výchozím nastavení jsou kurzy veřejně vyhledatelné a vyžadují schválení administrátora pro připojení. Tyto nastavení můžete kdykoli upravit.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Jaký jazyk se učíte?",
+  "searchLanguagesHint": "Hledejte cílové jazyky",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Otázky? Jsme tu, abychom pomohli!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Něco se pokazilo a my na tom tvrdě pracujeme. Zkontrolujte to prosím později.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

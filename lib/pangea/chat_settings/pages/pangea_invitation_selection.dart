@@ -9,10 +9,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection_view.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -337,20 +337,11 @@ class PangeaInvitationSelectionController
       setState(() => foundProfiles = []);
     }
 
-    String pangeaSearchText = text;
-    if (!pangeaSearchText.startsWith("@")) {
-      pangeaSearchText = "@$pangeaSearchText";
-    }
-    if (!pangeaSearchText.contains(":")) {
-      pangeaSearchText = "$pangeaSearchText:${Environment.homeServer}";
-    }
-
     setState(() => loading = true);
     final matrix = Matrix.of(context);
     SearchUserDirectoryResponse response;
     try {
-      response =
-          await matrix.client.searchUserDirectory(pangeaSearchText, limit: 100);
+      response = await matrix.client.searchUser(text, limit: 100);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text((e).toLocalizedString(context))),

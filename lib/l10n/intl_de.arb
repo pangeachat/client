@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-27 14:02:39.850908",
+  "@@last_modified": "2026-01-28 13:26:14.577124",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10939,6 +10939,26 @@
   },
   "newCourseAccess": "Standardmäßig sind Kurse öffentlich durchsuchbar und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit bearbeiten.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Welche Sprache lernst du?",
+  "searchLanguagesHint": "Zielsprachen suchen",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Fragen? Wir sind hier, um zu helfen!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Etwas ist schiefgelaufen, und wir arbeiten hart daran, es zu beheben. Überprüfen Sie es später erneut.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

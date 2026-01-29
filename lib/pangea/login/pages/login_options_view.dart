@@ -21,9 +21,24 @@ class LoginOptionsView extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          L10n.of(context).loginToAccount,
+        title: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 450,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              BackButton(
+                onPressed: Navigator.of(context).pop,
+              ),
+              Text(L10n.of(context).login),
+              const SizedBox(
+                width: 40.0,
+              ),
+            ],
+          ),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Center(
@@ -36,6 +51,13 @@ class LoginOptionsView extends StatelessWidget {
               spacing: 16.0,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                Text(
+                  L10n.of(context).loginToAccount,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const PangeaSsoButton(
                   provider: SSOProvider.apple,
                   title: "Apple",

@@ -3860,7 +3860,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-27 14:03:05.189233",
+  "@@last_modified": "2026-01-28 13:26:39.413825",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11737,6 +11737,26 @@
   },
   "newCourseAccess": "Pagal numatytuosius nustatymus, kursai yra viešai ieškomi ir reikalauja administratoriaus patvirtinimo prisijungti. Šiuos nustatymus galite redaguoti bet kada.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kokią kalbą mokotės?",
+  "searchLanguagesHint": "Ieškoti tikslo kalbų",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Klausimai? Mes čia, kad padėtume!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-27 14:02:35.628448",
+  "@@last_modified": "2026-01-28 13:26:10.864458",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10932,6 +10932,26 @@
   },
   "newCourseAccess": "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Zer hizkuntza ikasten ari zara?",
+  "searchLanguagesHint": "Bilatu helburu hizkuntzak",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Galderak? Hemen gaude laguntzeko!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Zerbait oker joan da, eta horren konponketan lan gogorra egiten ari gara. Begiratu berriro geroago.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

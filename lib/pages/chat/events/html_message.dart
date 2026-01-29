@@ -11,8 +11,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/token_practice_button.dart';
@@ -446,6 +448,12 @@ class HtmlMessage extends StatelessWidget {
             : false;
 
         final isNew = token != null && newTokens.contains(token.text);
+        final isFirstNewToken = isNew &&
+            controller.buttonEventID == event.eventId &&
+            newTokens.first == token.text;
+        final showShimmer =
+            !InstructionsEnum.shimmerNewToken.isToggledOff && isFirstNewToken;
+
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,
           Theme.of(context).colorScheme.primary.withAlpha(200),
@@ -500,19 +508,25 @@ class HtmlMessage extends StatelessWidget {
                             : null,
                         child: HoverBuilder(
                           builder: (context, hovered) {
-                            return UnderlineText(
-                              text: node.text.trim(),
-                              style: existingStyle,
-                              linkStyle: linkStyle,
-                              textDirection: pangeaMessageEvent?.textDirection,
-                              underlineColor: TokenRenderingUtil.underlineColor(
-                                underlineColor,
-                                selected: selected,
-                                highlighted: highlighted,
-                                isNew: isNew,
-                                practiceMode: readingAssistanceMode ==
-                                    ReadingAssistanceMode.practiceMode,
-                                hovered: hovered,
+                            return ShimmerBackground(
+                              enabled: showShimmer,
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: UnderlineText(
+                                text: node.text.trim(),
+                                style: existingStyle,
+                                linkStyle: linkStyle,
+                                textDirection:
+                                    pangeaMessageEvent?.textDirection,
+                                underlineColor:
+                                    TokenRenderingUtil.underlineColor(
+                                  underlineColor,
+                                  selected: selected,
+                                  highlighted: highlighted,
+                                  isNew: isNew,
+                                  practiceMode: readingAssistanceMode ==
+                                      ReadingAssistanceMode.practiceMode,
+                                  hovered: hovered,
+                                ),
                               ),
                             );
                           },

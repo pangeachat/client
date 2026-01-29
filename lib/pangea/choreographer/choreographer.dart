@@ -131,7 +131,7 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     itController.closeIT();
     itController.clearSourceText();
-    itController.clearDissmissed();
+    itController.clearSession();
     igcController.clear();
     _resetDebounceTimer();
     _setChoreoMode(ChoreoModeEnum.igc);
@@ -372,7 +372,9 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onCloseIT() {
-    if (currentText.isEmpty && itController.sourceText.value != null) {
+    if (itController.dismissed &&
+        currentText.isEmpty &&
+        itController.sourceText.value != null) {
       textController.setSystemText(
         itController.sourceText.value!,
         EditTypeEnum.itDismissed,

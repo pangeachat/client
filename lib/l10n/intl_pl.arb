@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-27 14:03:14.463461",
+  "@@last_modified": "2026-01-28 13:26:50.545730",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10930,6 +10930,26 @@
   },
   "newCourseAccess": "Domyślnie kursy są publicznie wyszukiwalne i wymagają zatwierdzenia przez administratora, aby do nich dołączyć. Możesz edytować te ustawienia w dowolnym momencie.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Jakiego języka się uczysz?",
+  "searchLanguagesHint": "Szukaj języków docelowych",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pytania? Jesteśmy tutaj, aby pomóc!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Coś poszło nie tak, a my ciężko pracujemy nad naprawą. Sprawdź ponownie później.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -25,6 +23,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -113,109 +112,77 @@ class _AnalyticsActivityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    TextStyle? titleStyle = isColumnMode
+        ? Theme.of(context).textTheme.titleLarge
+        : Theme.of(context).textTheme.titleMedium;
+    titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
+
+    return ListView(
       children: [
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
           padding: EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 24.0,
+            vertical: 8.0,
           ),
         ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ValueListenableBuilder(
-                valueListenable: controller.activityTarget,
-                builder: (context, target, __) => target != null
-                    ? Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          top: 16.0,
+        SizedBox(
+          height: 75.0,
+          child: ValueListenableBuilder(
+            valueListenable: controller.activityTarget,
+            builder: (context, target, __) => target != null
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        target.promptText(context),
+                        textAlign: TextAlign.center,
+                        style: titleStyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (controller.widget.type == ConstructTypeEnum.vocab)
+                        PhoneticTranscriptionWidget(
+                          text:
+                              target.target.tokens.first.vocabConstructID.lemma,
+                          textLanguage: MatrixState
+                              .pangeaController.userController.userL2!,
+                          style: const TextStyle(fontSize: 14.0),
                         ),
-                        child: Column(
-                          spacing: 12.0,
-                          children: [
-                            Text(
-                              target.promptText(context),
-                              textAlign: TextAlign.center,
-                              style: FluffyThemes.isColumnMode(context)
-                                  ? Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      )
-                                  : Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                            ),
-                            if (controller.widget.type ==
-                                ConstructTypeEnum.vocab)
-                              PhoneticTranscriptionWidget(
-                                text: target
-                                    .target.tokens.first.vocabConstructID.lemma,
-                                textLanguage: MatrixState
-                                    .pangeaController.userController.userL2!,
-                                style: const TextStyle(fontSize: 14.0),
-                              ),
-                          ],
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-              Flexible(
-                fit: FlexFit.loose,
-                child: SingleChildScrollView(
-                  child: _AnalyticsPracticeCenterContent(
-                    controller: controller,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: _ActivityChoicesWidget(controller),
-              ),
-              //reserve space for grammar category morph meaning to avoid shifting, but only in those questions
-              AnimatedBuilder(
-                animation: Listenable.merge([
-                  controller.activityState,
-                  controller.selectedMorphChoice,
-                ]),
-                builder: (context, _) {
-                  final activityState = controller.activityState.value;
-                  final selectedChoice = controller.selectedMorphChoice.value;
-
-                  final isGrammarCategory = activityState
-                          is AsyncLoaded<MultipleChoicePracticeActivityModel> &&
-                      activityState.value.activityType ==
-                          ActivityTypeEnum.grammarCategory;
-
-                  if (!isGrammarCategory) {
-                    return const SizedBox.shrink();
-                  }
-
-                  return SizedBox(
-                    height: 125.0,
-                    child: selectedChoice == null
-                        ? const SizedBox.shrink()
-                        : SingleChildScrollView(
-                            child: MorphMeaningWidget(
-                              feature: selectedChoice.feature,
-                              tag: selectedChoice.tag,
-                              blankErrorFeedback: true,
-                            ),
-                          ),
-                  );
-                },
-              ),
-            ],
+                    ],
+                  )
+                : const SizedBox.shrink(),
           ),
+        ),
+        const SizedBox(height: 16.0),
+        Center(
+          child: _AnalyticsPracticeCenterContent(controller: controller),
+        ),
+        const SizedBox(height: 16.0),
+        _ActivityChoicesWidget(controller),
+        const SizedBox(height: 16.0),
+        ListenableBuilder(
+          listenable: Listenable.merge([
+            controller.activityState,
+            controller.selectedMorphChoice,
+          ]),
+          builder: (context, _) {
+            final activityState = controller.activityState.value;
+            final selectedChoice = controller.selectedMorphChoice.value;
+
+            if (activityState
+                    is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
+                selectedChoice == null) {
+              return const SizedBox.shrink();
+            }
+
+            return MorphMeaningWidget(
+              feature: selectedChoice.feature,
+              tag: selectedChoice.tag,
+              blankErrorFeedback: true,
+            );
+          },
         ),
       ],
     );
@@ -235,29 +202,39 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
       valueListenable: controller.activityTarget,
       builder: (context, target, __) => switch (target?.target.activityType) {
         null => const SizedBox(),
-        ActivityTypeEnum.grammarError => ValueListenableBuilder(
-            valueListenable: controller.activityState,
-            builder: (context, state, __) => switch (state) {
-              AsyncLoaded(
-                value: final GrammarErrorPracticeActivityModel activity
-              ) =>
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _ErrorBlankWidget(
-                      key: ValueKey(
-                        '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
-                      ),
-                      activity: activity,
+        ActivityTypeEnum.grammarError => SizedBox(
+            height: 160.0,
+            child: SingleChildScrollView(
+              child: ValueListenableBuilder(
+                valueListenable: controller.activityState,
+                builder: (context, state, __) => switch (state) {
+                  AsyncLoaded(
+                    value: final GrammarErrorPracticeActivityModel activity
+                  ) =>
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _ErrorBlankWidget(
+                          key: ValueKey(
+                            '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
+                          ),
+                          activity: activity,
+                        ),
+                        const SizedBox(height: 12),
+                      ],
                     ),
-                    const SizedBox(height: 12),
-                  ],
-                ),
-              _ => const SizedBox(),
-            },
+                  _ => const SizedBox(),
+                },
+              ),
+            ),
           ),
-        _ => _ExampleMessageWidget(
-            controller.getExampleMessage(target!.target),
+        _ => SizedBox(
+            height: 100.0,
+            child: Center(
+              child: _ExampleMessageWidget(
+                controller.getExampleMessage(target!.target),
+              ),
+            ),
           ),
       },
     );
@@ -333,6 +310,51 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
     final errorOffset = widget.activity.errorOffset;
     final errorLength = widget.activity.errorLength;
 
+    const maxContextChars = 50;
+
+    final chars = text.characters;
+    final totalLength = chars.length;
+
+    // ---------- BEFORE ----------
+    int beforeStart = 0;
+    bool trimmedBefore = false;
+
+    if (errorOffset > maxContextChars) {
+      int desiredStart = errorOffset - maxContextChars;
+
+      // Snap left to nearest whitespace to avoid cutting words
+      while (desiredStart > 0 && chars.elementAt(desiredStart) != ' ') {
+        desiredStart--;
+      }
+
+      beforeStart = desiredStart;
+      trimmedBefore = true;
+    }
+
+    final before =
+        chars.skip(beforeStart).take(errorOffset - beforeStart).toString();
+
+    // ---------- AFTER ----------
+    int afterEnd = totalLength;
+    bool trimmedAfter = false;
+
+    final errorEnd = errorOffset + errorLength;
+    final afterChars = totalLength - errorEnd;
+
+    if (afterChars > maxContextChars) {
+      int desiredEnd = errorEnd + maxContextChars;
+
+      // Snap right to nearest whitespace
+      while (desiredEnd < totalLength && chars.elementAt(desiredEnd) != ' ') {
+        desiredEnd++;
+      }
+
+      afterEnd = desiredEnd;
+      trimmedAfter = true;
+    }
+
+    final after = chars.skip(errorEnd).take(afterEnd - errorEnd).toString();
+
     return Column(
       children: [
         Container(
@@ -357,10 +379,8 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                         AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                   ),
                   children: [
-                    if (errorOffset > 0)
-                      TextSpan(
-                        text: text.characters.take(errorOffset).toString(),
-                      ),
+                    if (trimmedBefore) const TextSpan(text: '…'),
+                    if (before.isNotEmpty) TextSpan(text: before),
                     WidgetSpan(
                       child: Container(
                         height: 4.0,
@@ -371,12 +391,8 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                         ),
                       ),
                     ),
-                    if (errorOffset + errorLength < text.length)
-                      TextSpan(
-                        text: text.characters
-                            .skip(errorOffset + errorLength)
-                            .toString(),
-                      ),
+                    if (after.isNotEmpty) TextSpan(text: after),
+                    if (trimmedAfter) const TextSpan(text: '…'),
                   ],
                 ),
               ),
@@ -464,43 +480,29 @@ class _ActivityChoicesWidget extends StatelessWidget {
               ],
             ),
           AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
-            LayoutBuilder(
-              builder: (context, constraints) {
+            ValueListenableBuilder(
+              valueListenable: controller.enableChoicesNotifier,
+              builder: (context, enabled, __) {
                 final choices = controller.filteredChoices(value);
-                final constrainedHeight =
-                    constraints.maxHeight.clamp(0.0, 400.0);
-                final cardHeight = (constrainedHeight / (choices.length + 1))
-                    .clamp(50.0, 80.0);
-
-                return ValueListenableBuilder(
-                  valueListenable: controller.enableChoicesNotifier,
-                  builder: (context, enabled, __) => Column(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          spacing: 4.0,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: choices
-                              .map(
-                                (choice) => _ChoiceCard(
-                                  activity: value,
-                                  targetId: controller
-                                      .choiceTargetId(choice.choiceId),
-                                  choiceId: choice.choiceId,
-                                  onPressed: () => controller.onSelectChoice(
-                                    choice.choiceId,
-                                  ),
-                                  cardHeight: cardHeight,
-                                  choiceText: choice.choiceText,
-                                  choiceEmoji: choice.choiceEmoji,
-                                  enabled: enabled,
-                                ),
-                              )
-                              .toList(),
+                return Column(
+                  spacing: 8.0,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: choices
+                      .map(
+                        (choice) => _ChoiceCard(
+                          activity: value,
+                          targetId: controller.choiceTargetId(choice.choiceId),
+                          choiceId: choice.choiceId,
+                          onPressed: () => controller.onSelectChoice(
+                            choice.choiceId,
+                          ),
+                          cardHeight: 60.0,
+                          choiceText: choice.choiceText,
+                          choiceEmoji: choice.choiceEmoji,
+                          enabled: enabled,
                         ),
-                      ),
-                    ],
-                  ),
+                      )
+                      .toList(),
                 );
               },
             ),

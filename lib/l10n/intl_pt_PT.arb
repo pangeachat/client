@@ -3330,7 +3330,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-27 14:02:54.292550",
+  "@@last_modified": "2026-01-28 13:26:26.329625",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11961,6 +11961,26 @@
   },
   "newCourseAccess": "Por padrão, os cursos são pesquisáveis publicamente e requerem aprovação do administrador para ingressar. Você pode editar essas configurações a qualquer momento.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Qual idioma você está aprendendo?",
+  "searchLanguagesHint": "Pesquise idiomas-alvo",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Dúvidas? Estamos aqui para ajudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo deu errado, e estamos trabalhando arduamente para corrigir isso. Verifique novamente mais tarde.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

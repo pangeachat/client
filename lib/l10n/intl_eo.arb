@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:03:21.507072",
+  "@@last_modified": "2026-01-28 13:26:57.219657",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12021,6 +12021,26 @@
   },
   "newCourseAccess": "Laŭ la defaŭlto, kursoj estas publike serĉeblaj kaj postulas administran aprobon por aliĝi. Vi povas redakti ĉi tiujn agordojn iam ajn.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kian lingvon vi lernas?",
+  "searchLanguagesHint": "Serĉu celajn lingvojn",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Demandoj? Ni ĉi tie por helpi!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Io malĝuste okazis, kaj ni diligente laboras por ripari ĝin. Kontrolu denove poste.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

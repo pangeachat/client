@@ -4455,7 +4455,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-27 14:02:53.265962",
+  "@@last_modified": "2026-01-28 13:26:25.241346",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11990,6 +11990,26 @@
   },
   "newCourseAccess": "ตามค่าเริ่มต้น หลักสูตรจะสามารถค้นหาได้สาธารณะและต้องการการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ตลอดเวลา",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "คุณกำลังเรียนภาษาอะไรอยู่?",
+  "searchLanguagesHint": "ค้นหาภาษาที่ต้องการ",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "มีคำถามไหม? เราพร้อมที่จะช่วยเหลือ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "มีบางอย่างผิดพลาด และเรากำลังทำงานอย่างหนักเพื่อแก้ไข ตรวจสอบอีกครั้งในภายหลัง.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-27 14:02:51.719519",
+  "@@last_modified": "2026-01-28 13:26:23.872618",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10956,6 +10956,26 @@
   },
   "newCourseAccess": "Per defecte, els cursos són cercables públicament i requereixen l'aprovació de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.",
   "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quina llengua estàs aprenent?",
+  "searchLanguagesHint": "Cerca llengües objectiu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Preguntes? Som aquí per ajudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Alguna cosa ha anat malament, i estem treballant dur per solucionar-ho. Comprova-ho més tard.",
+  "@courseLoadingError": {
     "type": "String",
     "placeholders": {}
   }
