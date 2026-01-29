@@ -318,7 +318,7 @@ class AnalyticsPracticeSessionRepo {
 
         final recentUses = await MatrixState
             .pangeaController.matrixState.analyticsDataService
-            .getUses(since: cutoffTime);
+            .getUses(since: cutoffTime, filterCapped: false);
 
         final hasRecentPractice = recentUses.any(
           (use) =>
