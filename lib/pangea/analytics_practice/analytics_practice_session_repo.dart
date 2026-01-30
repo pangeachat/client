@@ -13,8 +13,11 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
@@ -135,6 +138,31 @@ class AnalyticsPracticeSessionRepo {
         .getAggregatedConstructs(ConstructTypeEnum.morph)
         .then((map) => map.values.toList());
 
+    final morphInfoRequest = MorphInfoRequest(
+      userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+          LanguageKeys.defaultLanguage,
+      userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+          LanguageKeys.defaultLanguage,
+    );
+
+    final morphInfoResult = await MorphInfoRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      morphInfoRequest,
+    );
+
+    // Build list of features with multiple tags (valid for practice)
+    final List<String> validFeatures = [];
+    if (!morphInfoResult.isError) {
+      final response = morphInfoResult.asValue?.value;
+      if (response != null) {
+        for (final feature in response.features) {
+          if (feature.tags.length > 1) {
+            validFeatures.add(feature.code);
+          }
+        }
+      }
+    }
+
     // sort by last used descending, nulls first
     constructs.sort((a, b) {
       final dateA = a.lastUsed;
@@ -156,17 +184,14 @@ class AnalyticsPracticeSessionRepo {
       }
 
       final feature = MorphFeaturesEnumExtension.fromString(entry.id.category);
-      List<InlineSpan>? exampleMessage;
-      // Skip single option features
+
+      // Only include features that are in the valid list (have multiple tags)
       if (feature == MorphFeaturesEnum.Unknown ||
-          feature == MorphFeaturesEnum.Poss ||
-          feature == MorphFeaturesEnum.Reflex ||
-          feature == MorphFeaturesEnum.PrepCase ||
-          feature == MorphFeaturesEnum.NumType ||
-          feature == MorphFeaturesEnum.NumForm) {
+          (validFeatures.isNotEmpty && !validFeatures.contains(feature.name))) {
         continue;
       }
 
+      List<InlineSpan>? exampleMessage;
       for (final use in entry.cappedUses) {
         if (targets.length >=
             (AnalyticsPracticeConstants.practiceGroupSize +
