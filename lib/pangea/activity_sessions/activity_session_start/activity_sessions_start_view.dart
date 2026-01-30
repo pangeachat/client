@@ -518,7 +518,7 @@ class _ActivityStatuses extends StatelessWidget {
                       // room (like the bot). Otherwise, show only joined users with roles
                       Map<String, ActivityRoleModel> activityRoles =
                           status == ActivitySummaryStatus.completed
-                              ? e.value.activityRoles.roles
+                              ? (e.value.activityRoles?.roles ?? {})
                               : e.value.joinedUsersWithRoles;
 
                       // If the user is in the activity room and it's not completed, use the room's
@@ -530,7 +530,7 @@ class _ActivityStatuses extends StatelessWidget {
 
                       return ListTile(
                         title: OpenRolesIndicator(
-                          roles: activityPlan.roles.values
+                          roles: (activityPlan?.roles.values ?? [])
                               .sorted((a, b) => a.id.compareTo(b.id))
                               .toList(),
                           assignedRoles: activityRoles.values.toList(),
