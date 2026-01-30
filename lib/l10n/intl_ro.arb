@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:33.490827",
+  "@@last_modified": "2026-01-29 16:46:33.060448",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11692,6 +11692,11 @@
   },
   "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Despre mine",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

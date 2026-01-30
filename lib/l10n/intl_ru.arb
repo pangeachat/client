@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-29 15:25:21.118191",
+  "@@last_modified": "2026-01-29 16:47:08.019058",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11065,6 +11065,11 @@
   },
   "emptyAudioError": "Запись не удалась. Пожалуйста, проверьте свои аудиоразрешения и попробуйте снова.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Обо мне",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

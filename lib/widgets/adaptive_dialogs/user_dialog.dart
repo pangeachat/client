@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
+import 'package:fluffychat/pangea/user/about_me_display.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -163,10 +164,10 @@ class UserDialog extends StatelessWidget {
                   //   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Column(
                       children: [
                         LevelDisplayName(userId: profile.userId),
+                        AboutMeDisplay(userId: profile.userId),
                       ],
                     ),
                   ),

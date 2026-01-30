@@ -144,6 +144,16 @@ class SettingsLearningView extends StatelessWidget {
                                     initialGender: controller.gender,
                                     onChanged: controller.setGender,
                                   ),
+                                  TextField(
+                                    controller: controller.aboutTextController,
+                                    decoration: InputDecoration(
+                                      hintText: L10n.of(context).aboutMeHint,
+                                    ),
+                                    onChanged: (val) =>
+                                        controller.setAbout(val),
+                                    minLines: 1,
+                                    maxLines: 3,
+                                  ),
                                 ],
                               ),
                             ),

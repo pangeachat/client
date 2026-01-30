@@ -74,7 +74,7 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
           ),
         ),
       ],
-      onChanged: widget.learningController.changeCountry,
+      onChanged: widget.learningController.setCountry,
       value: widget.learningController.country,
       dropdownSearchData: DropdownSearchData(
         searchController: _searchController,

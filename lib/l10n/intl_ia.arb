@@ -1955,7 +1955,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-29 15:24:39.850520",
+  "@@last_modified": "2026-01-29 16:46:37.684477",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12035,6 +12035,11 @@
   },
   "emptyAudioError": "Fala falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Despre mine",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

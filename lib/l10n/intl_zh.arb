@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-29 15:25:09.954015",
+  "@@last_modified": "2026-01-29 16:47:00.705378",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10948,6 +10948,11 @@
   },
   "emptyAudioError": "录音失败。请检查您的音频权限并重试。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "关于我",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

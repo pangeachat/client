@@ -1908,7 +1908,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-29 15:24:53.163474",
+  "@@last_modified": "2026-01-29 16:46:47.853222",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12056,6 +12056,11 @@
   },
   "emptyAudioError": "Запіс не ўдалося. Калі ласка, праверце свае аўдыё дазволы і паспрабуйце яшчэ раз.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Пра мяне",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

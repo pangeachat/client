@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:38.819884",
+  "@@last_modified": "2026-01-29 16:46:36.994432",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12006,6 +12006,11 @@
   },
   "emptyAudioError": "הקלטה נכשלה. אנא בדוק את הרשאות האודיו שלך ונסה שוב.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "עליי",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

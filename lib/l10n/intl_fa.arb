@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:12.904348",
+  "@@last_modified": "2026-01-29 16:47:02.290578",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11689,6 +11689,11 @@
   },
   "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "درباره من",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

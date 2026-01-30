@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-29 15:24:37.899487",
+  "@@last_modified": "2026-01-29 16:46:36.280745",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11329,6 +11329,11 @@
   },
   "emptyAudioError": "Snimanje nije uspjelo. Provjerite svoja audio dopuštenja i pokušajte ponovo.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "O meni",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

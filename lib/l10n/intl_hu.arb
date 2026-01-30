@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-29 15:24:31.343536",
+  "@@last_modified": "2026-01-29 16:46:31.257554",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10958,6 +10958,11 @@
   },
   "emptyAudioError": "A felvétel nem sikerült. Kérjük, ellenőrizze az audio engedélyeit, és próbálja újra.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Rólam",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

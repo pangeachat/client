@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:05.410589",
+  "@@last_modified": "2026-01-29 16:46:57.678822",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6535,6 +6535,11 @@
   },
   "emptyAudioError": "Ghi âm không thành công. Vui lòng kiểm tra quyền truy cập âm thanh của bạn và thử lại.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Về tôi",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

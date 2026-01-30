@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:11.468426",
+  "@@last_modified": "2026-01-29 16:47:01.469278",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12061,6 +12061,11 @@
   },
   "emptyAudioError": "রেকর্ডিং ব্যর্থ হয়েছে। দয়া করে আপনার অডিও অনুমতিগুলি পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "আমার সম্পর্কে",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

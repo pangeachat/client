@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:57.889262",
+  "@@last_modified": "2026-01-29 16:46:50.915054",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10955,6 +10955,11 @@
   },
   "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "關於我",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

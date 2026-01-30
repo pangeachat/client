@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-29 15:25:17.739953",
+  "@@last_modified": "2026-01-29 16:47:05.563531",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11747,6 +11747,11 @@
   },
   "emptyAudioError": "録音に失敗しました。オーディオの権限を確認して、再試行してください。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "私について",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

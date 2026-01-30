@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:40.772387",
+  "@@last_modified": "2026-01-29 16:46:38.424643",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11315,6 +11315,11 @@
   },
   "emptyAudioError": "Gravação falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Sobre mim",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

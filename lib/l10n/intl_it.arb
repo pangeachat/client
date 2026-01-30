@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:48.551043",
+  "@@last_modified": "2026-01-29 16:46:44.462608",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,11 @@
   },
   "emptyAudioError": "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Informazioni su di me",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }

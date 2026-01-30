@@ -1853,7 +1853,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-29 15:24:47.783824",
+  "@@last_modified": "2026-01-29 16:46:43.649845",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12048,6 +12048,11 @@
   },
   "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "關於我",
+  "@aboutMeHint": {
     "type": "String",
     "placeholders": {}
   }
