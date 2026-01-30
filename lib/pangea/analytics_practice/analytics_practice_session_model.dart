@@ -1,16 +1,28 @@
+import 'package:flutter/painting.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
+class MorphExampleInfo {
+  final List<InlineSpan> exampleMessage;
+
+  const MorphExampleInfo({
+    required this.exampleMessage,
+  });
+}
+
 class AnalyticsActivityTarget {
   final PracticeTarget target;
   final GrammarErrorRequestInfo? grammarErrorInfo;
+  final MorphExampleInfo? morphExampleInfo;
 
   AnalyticsActivityTarget({
     required this.target,
     this.grammarErrorInfo,
+    this.morphExampleInfo,
   });
 
   Map<String, dynamic> toJson() => {
@@ -79,6 +91,7 @@ class AnalyticsPracticeSessionModel {
         activityQualityFeedback: null,
         target: target.target,
         grammarErrorInfo: target.grammarErrorInfo,
+        morphExampleInfo: target.morphExampleInfo,
       );
     }).toList();
   }

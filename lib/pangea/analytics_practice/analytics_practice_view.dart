@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart'
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
@@ -161,28 +162,7 @@ class _AnalyticsActivityView extends StatelessWidget {
         const SizedBox(height: 16.0),
         _ActivityChoicesWidget(controller),
         const SizedBox(height: 16.0),
-        ListenableBuilder(
-          listenable: Listenable.merge([
-            controller.activityState,
-            controller.selectedMorphChoice,
-          ]),
-          builder: (context, _) {
-            final activityState = controller.activityState.value;
-            final selectedChoice = controller.selectedMorphChoice.value;
-
-            if (activityState
-                    is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
-                selectedChoice == null) {
-              return const SizedBox.shrink();
-            }
-
-            return MorphMeaningWidget(
-              feature: selectedChoice.feature,
-              tag: selectedChoice.tag,
-              blankErrorFeedback: true,
-            );
-          },
-        ),
+        _WrongAnswerFeedback(controller: controller),
       ],
     );
   }
@@ -214,15 +194,12 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         _ErrorBlankWidget(
-                          activity: activity,
-                        ),
-                        const SizedBox(height: 12),
-                        _GrammarErrorTranslationButton(
                           key: ValueKey(
                             '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
                           ),
-                          translation: activity.translation,
+                          activity: activity,
                         ),
+                        const SizedBox(height: 12),
                       ],
                     ),
                   _ => const SizedBox(),
@@ -230,11 +207,31 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               ),
             ),
           ),
+        ActivityTypeEnum.grammarCategory => Center(
+            child: Column(
+              children: [
+                _CorrectAnswerHint(controller: controller),
+                _ExampleMessageWidget(
+                  controller.getExampleMessage(target!),
+                ),
+                const SizedBox(height: 12),
+                ValueListenableBuilder(
+                  valueListenable: controller.hintPressedNotifier,
+                  builder: (context, hintPressed, __) {
+                    return HintButton(
+                      depressed: hintPressed,
+                      onPressed: controller.onHintPressed,
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
         _ => SizedBox(
             height: 100.0,
             child: Center(
               child: _ExampleMessageWidget(
-                controller.getExampleMessage(target!.target),
+                controller.getExampleMessage(target!),
               ),
             ),
           ),
@@ -284,18 +281,123 @@ class _ExampleMessageWidget extends StatelessWidget {
   }
 }
 
-class _ErrorBlankWidget extends StatelessWidget {
-  final GrammarErrorPracticeActivityModel activity;
+class _CorrectAnswerHint extends StatelessWidget {
+  final AnalyticsPracticeState controller;
 
-  const _ErrorBlankWidget({
-    required this.activity,
+  const _CorrectAnswerHint({
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    final text = activity.text;
-    final errorOffset = activity.errorOffset;
-    final errorLength = activity.errorLength;
+    return ValueListenableBuilder(
+      valueListenable: controller.hintPressedNotifier,
+      builder: (context, hintPressed, __) {
+        if (!hintPressed) {
+          return const SizedBox.shrink();
+        }
+
+        return ValueListenableBuilder(
+          valueListenable: controller.activityState,
+          builder: (context, state, __) {
+            if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+              return const SizedBox.shrink();
+            }
+
+            final activity = state.value;
+            if (activity is! MorphPracticeActivityModel) {
+              return const SizedBox.shrink();
+            }
+
+            final correctAnswerTag =
+                activity.multipleChoiceContent.answers.first;
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: MorphMeaningWidget(
+                feature: activity.morphFeature,
+                tag: correctAnswerTag,
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _WrongAnswerFeedback extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _WrongAnswerFeedback({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.activityState,
+        controller.selectedMorphChoice,
+      ]),
+      builder: (context, _) {
+        final activityState = controller.activityState.value;
+        final selectedChoice = controller.selectedMorphChoice.value;
+
+        if (activityState
+                is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
+            selectedChoice == null) {
+          return const SizedBox.shrink();
+        }
+
+        final activity = activityState.value;
+        final isWrongAnswer =
+            !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
+
+        if (!isWrongAnswer) {
+          return const SizedBox.shrink();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: MorphMeaningWidget(
+            feature: selectedChoice.feature,
+            tag: selectedChoice.tag,
+            blankErrorFeedback: true,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ErrorBlankWidget extends StatefulWidget {
+  final GrammarErrorPracticeActivityModel activity;
+
+  const _ErrorBlankWidget({
+    super.key,
+    required this.activity,
+  });
+
+  @override
+  State<_ErrorBlankWidget> createState() => _ErrorBlankWidgetState();
+}
+
+class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
+  late final String translation = widget.activity.translation;
+  bool _showTranslation = false;
+
+  void _toggleTranslation() {
+    setState(() {
+      _showTranslation = !_showTranslation;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final text = widget.activity.text;
+    final errorOffset = widget.activity.errorOffset;
+    final errorLength = widget.activity.errorLength;
 
     const maxContextChars = 50;
 
@@ -342,122 +444,107 @@ class _ErrorBlankWidget extends StatelessWidget {
 
     final after = chars.skip(errorEnd).take(afterEnd - errorEnd).toString();
 
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 8,
-      ),
-      decoration: BoxDecoration(
-        color: Color.alphaBlend(
-          Colors.white.withAlpha(180),
-          ThemeData.dark().colorScheme.primary,
-        ),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: RichText(
-        text: TextSpan(
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimaryFixed,
-            fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 8,
           ),
-          children: [
-            if (trimmedBefore) const TextSpan(text: '…'),
-            if (before.isNotEmpty) TextSpan(text: before),
-            WidgetSpan(
-              child: Container(
-                height: 4.0,
-                width: (errorLength * 8).toDouble(),
-                padding: const EdgeInsets.only(bottom: 2.0),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+          decoration: BoxDecoration(
+            color: Color.alphaBlend(
+              Colors.white.withAlpha(180),
+              ThemeData.dark().colorScheme.primary,
+            ),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            children: [
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryFixed,
+                    fontSize:
+                        AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                  ),
+                  children: [
+                    if (trimmedBefore) const TextSpan(text: '…'),
+                    if (before.isNotEmpty) TextSpan(text: before),
+                    WidgetSpan(
+                      child: Container(
+                        height: 4.0,
+                        width: (errorLength * 8).toDouble(),
+                        padding: const EdgeInsets.only(bottom: 2.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ),
+                    if (after.isNotEmpty) TextSpan(text: after),
+                    if (trimmedAfter) const TextSpan(text: '…'),
+                  ],
                 ),
               ),
-            ),
-            if (after.isNotEmpty) TextSpan(text: after),
-            if (trimmedAfter) const TextSpan(text: '…'),
-          ],
+              const SizedBox(height: 8),
+              _showTranslation
+                  ? Text(
+                      translation,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimaryFixed,
+                        fontSize: AppConfig.fontSizeFactor *
+                            AppConfig.messageFontSize,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.left,
+                    )
+                  : const SizedBox.shrink(),
+            ],
+          ),
         ),
-      ),
+        const SizedBox(height: 8),
+        HintButton(depressed: _showTranslation, onPressed: _toggleTranslation),
+      ],
     );
   }
 }
 
-class _GrammarErrorTranslationButton extends StatefulWidget {
-  final String translation;
+class HintButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final bool depressed;
 
-  const _GrammarErrorTranslationButton({
+  const HintButton({
+    required this.onPressed,
+    required this.depressed,
     super.key,
-    required this.translation,
   });
 
   @override
-  State<_GrammarErrorTranslationButton> createState() =>
-      _GrammarErrorTranslationButtonState();
-}
-
-class _GrammarErrorTranslationButtonState
-    extends State<_GrammarErrorTranslationButton> {
-  bool _showTranslation = false;
-
-  void _toggleTranslation() {
-    if (_showTranslation) {
-      setState(() {
-        _showTranslation = false;
-      });
-    } else {
-      setState(() {
-        _showTranslation = true;
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: _toggleTranslation,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8.0,
-          children: [
-            if (_showTranslation)
-              Flexible(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.alphaBlend(
-                      Colors.white.withAlpha(180),
-                      ThemeData.dark().colorScheme.primary,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Text(
-                    widget.translation,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimaryFixed,
-                      fontSize:
-                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                    ),
-                  ),
-                ),
-              )
-            else
-              ElevatedButton(
-                onPressed: _toggleTranslation,
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(8),
-                ),
-                child: const Icon(
-                  Icons.lightbulb_outline,
-                  size: 20,
-                ),
-              ),
-          ],
-        ),
+    return PressableButton(
+      borderRadius: BorderRadius.circular(20),
+      color: Theme.of(context).colorScheme.primaryContainer,
+      onPressed: onPressed,
+      depressed: depressed,
+      playSound: true,
+      colorFactor: 0.3,
+      builder: (context, depressed, shadowColor) => Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+              color: depressed
+                  ? shadowColor
+                  : Theme.of(context).colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const Icon(
+            Icons.lightbulb_outline,
+            size: 20,
+          ),
+        ],
       ),
     );
   }

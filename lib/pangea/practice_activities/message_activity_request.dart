@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -79,6 +80,7 @@ class MessageActivityRequest {
   final PracticeTarget target;
   final ActivityQualityFeedback? activityQualityFeedback;
   final GrammarErrorRequestInfo? grammarErrorInfo;
+  final MorphExampleInfo? morphExampleInfo;
 
   MessageActivityRequest({
     required this.userL1,
@@ -86,6 +88,7 @@ class MessageActivityRequest {
     required this.activityQualityFeedback,
     required this.target,
     this.grammarErrorInfo,
+    this.morphExampleInfo,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');

@@ -35,7 +35,7 @@ class GrammarChoiceCard extends StatelessWidget {
     final baseTextSize =
         (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
             (height / 72.0).clamp(1.0, 1.4);
-    final emojiSize = baseTextSize * 1.2;
+    final emojiSize = baseTextSize * 1.5;
     final copy = getGrammarCopy(
           category: feature.name,
           lemma: tag,
@@ -54,7 +54,7 @@ class GrammarChoiceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: height * .7,
+            width: height,
             height: height,
             child: Center(
               child: MorphIcon(
