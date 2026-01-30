@@ -107,7 +107,9 @@ class Environment {
   static String get stripeManagementUrl {
     return appConfigOverride?.stripeManagementUrl ??
         dotenv.env["STRIPE_MANAGEMENT_LINK"] ??
-        'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM';
+        (isStagingEnvironment
+            ? 'https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk'
+            : 'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM');
   }
 
   static String get supportUserId {
