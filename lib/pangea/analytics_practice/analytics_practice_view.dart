@@ -112,111 +112,76 @@ class _AnalyticsActivityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    TextStyle? titleStyle = isColumnMode
+        ? Theme.of(context).textTheme.titleLarge
+        : Theme.of(context).textTheme.titleMedium;
+    titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
+
+    return ListView(
       children: [
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
           padding: EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 24.0,
+            vertical: 8.0,
           ),
         ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ValueListenableBuilder(
-                valueListenable: controller.activityTarget,
-                builder: (context, target, __) => target != null
-                    ? Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          top: 16.0,
+        SizedBox(
+          height: 75.0,
+          child: ValueListenableBuilder(
+            valueListenable: controller.activityTarget,
+            builder: (context, target, __) => target != null
+                ? Column(
+                    children: [
+                      Text(
+                        target.promptText(context),
+                        textAlign: TextAlign.center,
+                        style: titleStyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (controller.widget.type == ConstructTypeEnum.vocab)
+                        PhoneticTranscriptionWidget(
+                          text:
+                              target.target.tokens.first.vocabConstructID.lemma,
+                          textLanguage: MatrixState
+                              .pangeaController.userController.userL2!,
+                          style: const TextStyle(fontSize: 14.0),
                         ),
-                        child: Column(
-                          spacing: 12.0,
-                          children: [
-                            Text(
-                              target.promptText(context),
-                              textAlign: TextAlign.center,
-                              style: FluffyThemes.isColumnMode(context)
-                                  ? Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      )
-                                  : Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                            ),
-                            if (controller.widget.type ==
-                                ConstructTypeEnum.vocab)
-                              PhoneticTranscriptionWidget(
-                                text: target
-                                    .target.tokens.first.vocabConstructID.lemma,
-                                textLanguage: MatrixState
-                                    .pangeaController.userController.userL2!,
-                                style: const TextStyle(fontSize: 14.0),
-                              ),
-                          ],
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-              Flexible(
-                fit: FlexFit.loose,
-                child: SingleChildScrollView(
-                  child: _AnalyticsPracticeCenterContent(
-                    controller: controller,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: _ActivityChoicesWidget(controller),
-              ),
-              //reserve space for grammar category morph meaning to avoid shifting, but only in those questions
-              AnimatedBuilder(
-                animation: Listenable.merge([
-                  controller.activityState,
-                  controller.selectedMorphChoice,
-                ]),
-                builder: (context, _) {
-                  final activityState = controller.activityState.value;
-                  final selectedChoice = controller.selectedMorphChoice.value;
-
-                  final isGrammarCategory = activityState
-                          is AsyncLoaded<MultipleChoicePracticeActivityModel> &&
-                      activityState.value.activityType ==
-                          ActivityTypeEnum.grammarCategory;
-
-                  if (!isGrammarCategory) {
-                    return const SizedBox.shrink();
-                  }
-
-                  return ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minHeight: 80,
-                    ),
-                    child: selectedChoice == null
-                        ? const SizedBox.shrink()
-                        : SingleChildScrollView(
-                            child: MorphMeaningWidget(
-                              feature: selectedChoice.feature,
-                              tag: selectedChoice.tag,
-                              blankErrorFeedback: true,
-                            ),
-                          ),
-                  );
-                },
-              ),
-            ],
+                    ],
+                  )
+                : const SizedBox.shrink(),
           ),
+        ),
+        const SizedBox(height: 16.0),
+        Center(
+          child: _AnalyticsPracticeCenterContent(controller: controller),
+        ),
+        const SizedBox(height: 16.0),
+        _ActivityChoicesWidget(controller),
+        const SizedBox(height: 16.0),
+        ListenableBuilder(
+          listenable: Listenable.merge([
+            controller.activityState,
+            controller.selectedMorphChoice,
+          ]),
+          builder: (context, _) {
+            final activityState = controller.activityState.value;
+            final selectedChoice = controller.selectedMorphChoice.value;
+
+            if (activityState
+                    is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
+                selectedChoice == null) {
+              return const SizedBox.shrink();
+            }
+
+            return MorphMeaningWidget(
+              feature: selectedChoice.feature,
+              tag: selectedChoice.tag,
+              blankErrorFeedback: true,
+            );
+          },
         ),
       ],
     );
@@ -236,32 +201,42 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
       valueListenable: controller.activityTarget,
       builder: (context, target, __) => switch (target?.target.activityType) {
         null => const SizedBox(),
-        ActivityTypeEnum.grammarError => ValueListenableBuilder(
-            valueListenable: controller.activityState,
-            builder: (context, state, __) => switch (state) {
-              AsyncLoaded(
-                value: final GrammarErrorPracticeActivityModel activity
-              ) =>
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _ErrorBlankWidget(
-                      activity: activity,
+        ActivityTypeEnum.grammarError => SizedBox(
+            height: 160.0,
+            child: SingleChildScrollView(
+              child: ValueListenableBuilder(
+                valueListenable: controller.activityState,
+                builder: (context, state, __) => switch (state) {
+                  AsyncLoaded(
+                    value: final GrammarErrorPracticeActivityModel activity
+                  ) =>
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _ErrorBlankWidget(
+                          activity: activity,
+                        ),
+                        const SizedBox(height: 12),
+                        _GrammarErrorTranslationButton(
+                          key: ValueKey(
+                            '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
+                          ),
+                          translation: activity.translation,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 12),
-                    _GrammarErrorTranslationButton(
-                      key: ValueKey(
-                        '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
-                      ),
-                      translation: activity.translation,
-                    ),
-                  ],
-                ),
-              _ => const SizedBox(),
-            },
+                  _ => const SizedBox(),
+                },
+              ),
+            ),
           ),
-        _ => _ExampleMessageWidget(
-            controller.getExampleMessage(target!.target),
+        _ => SizedBox(
+            height: 100.0,
+            child: Center(
+              child: _ExampleMessageWidget(
+                controller.getExampleMessage(target!.target),
+              ),
+            ),
           ),
       },
     );
@@ -322,6 +297,51 @@ class _ErrorBlankWidget extends StatelessWidget {
     final errorOffset = activity.errorOffset;
     final errorLength = activity.errorLength;
 
+    const maxContextChars = 50;
+
+    final chars = text.characters;
+    final totalLength = chars.length;
+
+    // ---------- BEFORE ----------
+    int beforeStart = 0;
+    bool trimmedBefore = false;
+
+    if (errorOffset > maxContextChars) {
+      int desiredStart = errorOffset - maxContextChars;
+
+      // Snap left to nearest whitespace to avoid cutting words
+      while (desiredStart > 0 && chars.elementAt(desiredStart) != ' ') {
+        desiredStart--;
+      }
+
+      beforeStart = desiredStart;
+      trimmedBefore = true;
+    }
+
+    final before =
+        chars.skip(beforeStart).take(errorOffset - beforeStart).toString();
+
+    // ---------- AFTER ----------
+    int afterEnd = totalLength;
+    bool trimmedAfter = false;
+
+    final errorEnd = errorOffset + errorLength;
+    final afterChars = totalLength - errorEnd;
+
+    if (afterChars > maxContextChars) {
+      int desiredEnd = errorEnd + maxContextChars;
+
+      // Snap right to nearest whitespace
+      while (desiredEnd < totalLength && chars.elementAt(desiredEnd) != ' ') {
+        desiredEnd++;
+      }
+
+      afterEnd = desiredEnd;
+      trimmedAfter = true;
+    }
+
+    final after = chars.skip(errorEnd).take(afterEnd - errorEnd).toString();
+
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 12,
@@ -341,8 +361,8 @@ class _ErrorBlankWidget extends StatelessWidget {
             fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
           ),
           children: [
-            if (errorOffset > 0)
-              TextSpan(text: text.characters.take(errorOffset).toString()),
+            if (trimmedBefore) const TextSpan(text: '…'),
+            if (before.isNotEmpty) TextSpan(text: before),
             WidgetSpan(
               child: Container(
                 height: 4.0,
@@ -353,10 +373,88 @@ class _ErrorBlankWidget extends StatelessWidget {
                 ),
               ),
             ),
-            if (errorOffset + errorLength < text.length)
-              TextSpan(
-                text:
-                    text.characters.skip(errorOffset + errorLength).toString(),
+            if (after.isNotEmpty) TextSpan(text: after),
+            if (trimmedAfter) const TextSpan(text: '…'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GrammarErrorTranslationButton extends StatefulWidget {
+  final String translation;
+
+  const _GrammarErrorTranslationButton({
+    super.key,
+    required this.translation,
+  });
+
+  @override
+  State<_GrammarErrorTranslationButton> createState() =>
+      _GrammarErrorTranslationButtonState();
+}
+
+class _GrammarErrorTranslationButtonState
+    extends State<_GrammarErrorTranslationButton> {
+  bool _showTranslation = false;
+
+  void _toggleTranslation() {
+    if (_showTranslation) {
+      setState(() {
+        _showTranslation = false;
+      });
+    } else {
+      setState(() {
+        _showTranslation = true;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: _toggleTranslation,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8.0,
+          children: [
+            if (_showTranslation)
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color.alphaBlend(
+                      Colors.white.withAlpha(180),
+                      ThemeData.dark().colorScheme.primary,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Text(
+                    widget.translation,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimaryFixed,
+                      fontSize:
+                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                    ),
+                  ),
+                ),
+              )
+            else
+              ElevatedButton(
+                onPressed: _toggleTranslation,
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(8),
+                ),
+                child: const Icon(
+                  Icons.lightbulb_outline,
+                  size: 20,
+                ),
               ),
           ],
         ),
@@ -400,43 +498,29 @@ class _ActivityChoicesWidget extends StatelessWidget {
               ],
             ),
           AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
-            LayoutBuilder(
-              builder: (context, constraints) {
+            ValueListenableBuilder(
+              valueListenable: controller.enableChoicesNotifier,
+              builder: (context, enabled, __) {
                 final choices = controller.filteredChoices(value);
-                final constrainedHeight =
-                    constraints.maxHeight.clamp(0.0, 400.0);
-                final cardHeight = (constrainedHeight / (choices.length + 1))
-                    .clamp(50.0, 80.0);
-
-                return ValueListenableBuilder(
-                  valueListenable: controller.enableChoicesNotifier,
-                  builder: (context, enabled, __) => Column(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          spacing: 4.0,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: choices
-                              .map(
-                                (choice) => _ChoiceCard(
-                                  activity: value,
-                                  targetId: controller
-                                      .choiceTargetId(choice.choiceId),
-                                  choiceId: choice.choiceId,
-                                  onPressed: () => controller.onSelectChoice(
-                                    choice.choiceId,
-                                  ),
-                                  cardHeight: cardHeight,
-                                  choiceText: choice.choiceText,
-                                  choiceEmoji: choice.choiceEmoji,
-                                  enabled: enabled,
-                                ),
-                              )
-                              .toList(),
+                return Column(
+                  spacing: 8.0,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: choices
+                      .map(
+                        (choice) => _ChoiceCard(
+                          activity: value,
+                          targetId: controller.choiceTargetId(choice.choiceId),
+                          choiceId: choice.choiceId,
+                          onPressed: () => controller.onSelectChoice(
+                            choice.choiceId,
+                          ),
+                          cardHeight: 60.0,
+                          choiceText: choice.choiceText,
+                          choiceEmoji: choice.choiceEmoji,
+                          enabled: enabled,
                         ),
-                      ),
-                    ],
-                  ),
+                      )
+                      .toList(),
                 );
               },
             ),
@@ -553,87 +637,5 @@ class _ChoiceCard extends StatelessWidget {
           child: Text(choiceText),
         );
     }
-  }
-}
-
-class _GrammarErrorTranslationButton extends StatefulWidget {
-  final String translation;
-
-  const _GrammarErrorTranslationButton({
-    super.key,
-    required this.translation,
-  });
-
-  @override
-  State<_GrammarErrorTranslationButton> createState() =>
-      _GrammarErrorTranslationButtonState();
-}
-
-class _GrammarErrorTranslationButtonState
-    extends State<_GrammarErrorTranslationButton> {
-  bool _showTranslation = false;
-
-  void _toggleTranslation() {
-    if (_showTranslation) {
-      setState(() {
-        _showTranslation = false;
-      });
-    } else {
-      setState(() {
-        _showTranslation = true;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: _toggleTranslation,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8.0,
-          children: [
-            if (_showTranslation)
-              Flexible(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.alphaBlend(
-                      Colors.white.withAlpha(180),
-                      ThemeData.dark().colorScheme.primary,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Text(
-                    widget.translation,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimaryFixed,
-                      fontSize:
-                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            if (!_showTranslation)
-              ElevatedButton(
-                onPressed: _toggleTranslation,
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(8),
-                ),
-                child: const Icon(
-                  Icons.lightbulb_outline,
-                  size: 20,
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
   }
 }

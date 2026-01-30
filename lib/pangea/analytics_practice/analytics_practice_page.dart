@@ -10,6 +10,8 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
@@ -259,7 +261,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await _sessionLoader.load();
-    if (_sessionLoader.isError) return;
+    if (_sessionLoader.isError) {
+      AnalyticsPractice.bypassExitConfirmation = true;
+      return;
+    }
 
     progressNotifier.value = _sessionLoader.value!.progress;
     await _continueSession();
@@ -314,19 +319,27 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       if (activityState.value
           is AsyncIdle<MultipleChoicePracticeActivityModel>) {
         await _initActivityData();
-      } else if (_queue.isEmpty) {
-        await _completeSession();
       } else {
-        activityState.value = const AsyncState.loading();
-        selectedMorphChoice.value = null;
-        final nextActivityCompleter = _queue.removeFirst();
+        // Keep trying to load activities from the queue until one succeeds or queue is empty
+        while (_queue.isNotEmpty) {
+          activityState.value = const AsyncState.loading();
+          selectedMorphChoice.value = null;
+          final nextActivityCompleter = _queue.removeFirst();
 
-        activityTarget.value = nextActivityCompleter.request;
-        _playAudio();
-
-        final activity = await nextActivityCompleter.completer.future;
-        activityState.value = AsyncState.loaded(activity);
-        AnalyticsPractice.bypassExitConfirmation = false;
+          try {
+            final activity = await nextActivityCompleter.completer.future;
+            activityTarget.value = nextActivityCompleter.request;
+            _playAudio();
+            activityState.value = AsyncState.loaded(activity);
+            AnalyticsPractice.bypassExitConfirmation = false;
+            return;
+          } catch (e) {
+            // Completer failed, skip to next
+            continue;
+          }
+        }
+        // Queue is empty, complete the session
+        await _completeSession();
       }
     } catch (e) {
       AnalyticsPractice.bypassExitConfirmation = true;
@@ -342,26 +355,30 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       throw L10n.of(context).noActivityRequest;
     }
 
-    try {
-      activityState.value = const AsyncState.loading();
-      final req = requests.first;
-
-      activityTarget.value = req;
-      _playAudio();
-
-      final res = await _fetchActivity(req);
-      if (!mounted) return;
-
-      activityState.value = AsyncState.loaded(res);
-      AnalyticsPractice.bypassExitConfirmation = false;
-    } catch (e) {
-      AnalyticsPractice.bypassExitConfirmation = true;
-      if (!mounted) return;
-      activityState.value = AsyncState.error(e);
-      return;
+    for (var i = 0; i < requests.length; i++) {
+      try {
+        activityState.value = const AsyncState.loading();
+        final req = requests[i];
+        final res = await _fetchActivity(req);
+        if (!mounted) return;
+        activityTarget.value = req;
+        _playAudio();
+        activityState.value = AsyncState.loaded(res);
+        AnalyticsPractice.bypassExitConfirmation = false;
+        // Fill queue with remaining requests
+        _fillActivityQueue(requests.skip(i + 1).toList());
+        return;
+      } catch (e) {
+        await recordSkippedUse(requests[i]);
+        // Try next request
+        continue;
+      }
     }
-
-    _fillActivityQueue(requests.skip(1).toList());
+    AnalyticsPractice.bypassExitConfirmation = true;
+    if (!mounted) return;
+    activityState.value =
+        AsyncState.error(L10n.of(context).oopsSomethingWentWrong);
+    return;
   }
 
   Future<void> _fillActivityQueue(
@@ -375,7 +392,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           completer: completer,
         ),
       );
-
       try {
         final res = await _fetchActivity(request);
         if (!mounted) return;
@@ -383,7 +399,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       } catch (e) {
         if (!mounted) return;
         completer.completeError(e);
-        break;
+        await recordSkippedUse(request);
       }
     }
   }
@@ -440,6 +456,27 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _choiceEmojis[requestKey]!.addAll(emojis);
   }
 
+  Future<void> recordSkippedUse(MessageActivityRequest request) async {
+    // Record a 0 XP use so that activity isn't chosen again soon
+    _sessionLoader.value!.incrementSkippedActivities();
+    final token = request.target.tokens.first;
+
+    final use = OneConstructUse(
+      useType: ConstructUseTypeEnum.ignPA,
+      constructType: widget.type,
+      metadata: ConstructUseMetaData(
+        roomId: null,
+        timeStamp: DateTime.now(),
+      ),
+      category: token.pos,
+      lemma: token.lemma.text,
+      form: token.lemma.text,
+      xp: 0,
+    );
+
+    await _analyticsService.updateService.addAnalytics(null, [use]);
+  }
+
   Future<void> onSelectChoice(
     String choiceContent,
   ) async {
@@ -481,7 +518,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _sessionLoader.value!.completeActivity();
     progressNotifier.value = _sessionLoader.value!.progress;
 
-    _isComplete ? await _completeSession() : await _continueSession();
+    if (_queue.isEmpty) {
+      await _completeSession();
+    } else if (_isComplete) {
+      await _completeSession();
+    } else {
+      await _continueSession();
+    }
   }
 
   Future<List<InlineSpan>?> getExampleMessage(

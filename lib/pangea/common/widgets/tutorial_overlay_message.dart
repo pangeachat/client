@@ -14,7 +14,7 @@ class TutorialOverlayMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           // color: Theme.of(context).colorScheme.onSurface,
           color: Color.alphaBlend(
@@ -23,29 +23,25 @@ class TutorialOverlayMessage extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
-        width: 350,
         alignment: Alignment.center,
-        child: RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-            children: [
-              WidgetSpan(
-                alignment: PlaceholderAlignment.middle,
-                child: Icon(
-                  Icons.info_outlined,
-                  size: 20.0,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+        child: Row(
+          spacing: 4.0,
+          children: [
+            Icon(
+              Icons.lightbulb,
+              size: 20.0,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            Flexible(
+              child: Text(
+                message,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                textAlign: TextAlign.center,
               ),
-              const WidgetSpan(child: SizedBox(width: 4.0)),
-              TextSpan(
-                text: message,
-              ),
-            ],
-          ),
-          textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-26 11:48:21.991753",
+  "@@last_modified": "2026-01-29 15:25:17.739953",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -3128,8 +3128,6 @@
   "noPaymentInfo": "支払い情報は不要です！",
   "updatePhoneOS": "デバイスのOSバージョンを更新する必要があるかもしれません。",
   "wordsPerMinute": "1分あたりの単語数",
-  "autoIGCToolName": "Pangeaのライティング支援を自動的に実行",
-  "autoIGCToolDescription": "メッセージ送信前にPangeaチャットの文法と翻訳のライティング支援を自動的に実行します。",
   "tooltipInstructionsTitle": "それは何のためか分からない？",
   "tooltipInstructionsMobileBody": "アイテムを長押ししてツールチップを表示します。",
   "tooltipInstructionsBrowserBody": "アイテムにカーソルを合わせてツールチップを表示します。",
@@ -3757,7 +3755,6 @@
   "numModules": "{num} モジュール",
   "coursePlan": "コースプラン",
   "editCourseLater": "テンプレートのタイトル、説明、コース画像は後で編集できます。",
-  "newCourseAccess": "デフォルトでは、コースはプライベートで、参加には管理者の承認が必要です。これらの設定はいつでも編集できます。",
   "createCourse": "コースを作成",
   "stats": "統計",
   "createGroupChat": "グループチャットを作成",
@@ -6996,14 +6993,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9622,10 +9611,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11722,6 +11707,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "サポートとチャット",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "デフォルトでは、コースは公開検索可能で、参加するには管理者の承認が必要です。これらの設定はいつでも編集できます。",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "どの言語を学んでいますか？",
+  "searchLanguagesHint": "ターゲット言語を検索",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "質問がありますか？私たちはお手伝いします！",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "何かがうまくいかなかったため、私たちは修正作業に取り組んでいます。後で再度確認してください。",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "ライティングアシスタントを有効にする",
+  "autoIGCToolDescription": "送信されたメッセージをターゲット言語に修正するために、Pangea Chatツールを自動的に実行します。",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "録音に失敗しました。オーディオの権限を確認して、再試行してください。",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

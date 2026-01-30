@@ -131,7 +131,7 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     itController.closeIT();
     itController.clearSourceText();
-    itController.clearDissmissed();
+    itController.clearSession();
     igcController.clear();
     _resetDebounceTimer();
     _setChoreoMode(ChoreoModeEnum.igc);
@@ -353,6 +353,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onOpenIT() {
+    inputFocus.unfocus();
     final itMatch = igcController.openMatches.firstWhere(
       (match) => match.updatedMatch.isITStart,
       orElse: () =>
@@ -371,14 +372,15 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onCloseIT() {
-    if (currentText.isEmpty && itController.sourceText.value != null) {
+    if (itController.dismissed &&
+        currentText.isEmpty &&
+        itController.sourceText.value != null) {
       textController.setSystemText(
         itController.sourceText.value!,
         EditTypeEnum.itDismissed,
       );
     }
 
-    debugPrint("DISMISSED: ${itController.dismissed}");
     if (itController.dismissed) {
       _timesDismissedIT.value = _timesDismissedIT.value + 1;
     }

@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -123,7 +124,10 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      if (analyticsUserId != client.userID) {
+      final lastUpdated =
+          await _analyticsClientGetter.database.getLastUpdated();
+
+      if (analyticsUserId != client.userID || lastUpdated == null) {
         await _clearDatabase();
         await _analyticsClientGetter.database.updateUserID(client.userID!);
       }
@@ -159,6 +163,7 @@ class AnalyticsDataService {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
       updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
   }
 
@@ -252,6 +257,8 @@ class AnalyticsDataService {
     final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
     for (final use in uses) {
       if (blocked.contains(use.identifier)) continue;
+      if (use.category == 'other') continue;
+
       if (!cappedLastUseCache.containsKey(use.identifier)) {
         final constructs = await getConstructUse(use.identifier);
         cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
@@ -323,7 +330,8 @@ class AnalyticsDataService {
       final existing = cleaned[canonical];
       if (existing != null) {
         existing.merge(entry);
-      } else if (!blocked.contains(canonical)) {
+      } else if (!blocked.contains(canonical) &&
+          canonical.category != 'other') {
         cleaned[canonical] = entry;
       }
     }
@@ -344,7 +352,10 @@ class AnalyticsDataService {
     final blocked = blockedConstructs;
     final uses = newConstructs
         .where(
-          (c) => c.constructType == type && !blocked.contains(c.identifier),
+          (c) =>
+              c.constructType == type &&
+              !blocked.contains(c.identifier) &&
+              c.identifier.category != 'other',
         )
         .toList();
 
@@ -377,7 +388,9 @@ class AnalyticsDataService {
     AnalyticsUpdate update,
   ) async {
     final events = <AnalyticsUpdateEvent>[];
-    final updateIds = update.addedConstructs.map((c) => c.identifier).toList();
+    final addedConstructs =
+        update.addedConstructs.where((c) => c.category != 'other').toList();
+    final updateIds = addedConstructs.map((c) => c.identifier).toList();
 
     final prevData = await derivedData;
     final prevConstructs = await getConstructUses(updateIds);
@@ -389,9 +402,9 @@ class AnalyticsDataService {
     final newUnusedConstructs =
         updateIds.where((id) => !hasUsedConstruct(id)).toSet();
 
-    _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
+    _mergeTable.addConstructsByUses(addedConstructs, blocked);
     await _analyticsClientGetter.database.updateLocalAnalytics(
-      update.addedConstructs,
+      addedConstructs,
     );
 
     final newConstructs = await getConstructUses(updateIds);
@@ -440,6 +453,23 @@ class AnalyticsDataService {
 
     if (newUnlockedMorphs.isNotEmpty) {
       events.add(MorphUnlockedEvent(newUnlockedMorphs));
+    }
+
+    for (final entry in newConstructs.entries) {
+      final prevConstruct = prevConstructs[entry.key];
+      if (prevConstruct == null) continue;
+
+      final prevLevel = prevConstruct.lemmaCategory;
+      final newLevel = entry.value.lemmaCategory;
+      if (newLevel.xpNeeded > prevLevel.xpNeeded) {
+        events.add(
+          ConstructLevelUpEvent(
+            entry.key,
+            newLevel,
+            update.targetID,
+          ),
+        );
+      }
     }
 
     if (update.blockedConstruct != null) {

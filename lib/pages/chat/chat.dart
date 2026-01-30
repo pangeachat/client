@@ -195,6 +195,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
+  final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
@@ -807,6 +808,7 @@ class ChatController extends State<ChatPageWithRoom>
     scrollController.dispose();
     inputFocus.dispose();
     depressMessageButton.dispose();
+    scrollableNotifier.dispose();
     TokensUtil.clearNewTokenCache();
     //Pangea#
     super.dispose();
@@ -881,7 +883,6 @@ class ChatController extends State<ChatPageWithRoom>
   Future<String?> sendFakeMessage(Event? edit, Event? reply) async {
     if (sendController.text.trim().isEmpty) return null;
     final message = sendController.text;
-    inputFocus.unfocus();
     sendController.setSystemText("", EditTypeEnum.other);
 
     return room.sendFakeMessage(
@@ -904,6 +905,10 @@ class ChatController extends State<ChatPageWithRoom>
     pendingText = '';
 
     final tempEventId = await sendFakeMessage(edit, reply);
+    if (!inputFocus.hasFocus) {
+      inputFocus.requestFocus();
+    }
+
     final content = await choreographer.getMessageContent(message);
     choreographer.clear();
 
@@ -2012,18 +2017,6 @@ class ChatController extends State<ChatPageWithRoom>
   bool get _isToolbarOpen =>
       MatrixState.pAnyState.isOverlayOpen(RegExp(r'^message_toolbar_overlay$'));
 
-  bool showMessageShimmer(Event event) {
-    if (event.type != EventTypes.Message) return false;
-    if (!(event.eventId == buttonEventID)) return false;
-    if (event.messageType == MessageTypes.Text) {
-      return !InstructionsEnum.clickTextMessages.isToggledOff;
-    }
-    if (event.messageType == MessageTypes.Audio) {
-      return !InstructionsEnum.clickAudioMessages.isToggledOff;
-    }
-    return false;
-  }
-
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -2031,14 +2024,9 @@ class ChatController extends State<ChatPageWithRoom>
     MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
-  }) {
+  }) async {
     if (event.redacted || event.status == EventStatus.sending) return;
 
-    // Close keyboard, if open
-    if (inputFocus.hasFocus && PlatformInfos.isMobile) {
-      inputFocus.unfocus();
-      return;
-    }
     // Close emoji picker, if open
     if (showEmojiPicker) {
       hideEmojiPicker();
@@ -2061,14 +2049,8 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     // you've clicked a message so lets turn this off
-    InstructionsEnum.clickMessage.setToggledOff(true);
-    if (event.messageType == MessageTypes.Text &&
-        !InstructionsEnum.clickTextMessages.isToggledOff) {
-      InstructionsEnum.clickTextMessages.setToggledOff(true);
-    }
-    if (event.messageType == MessageTypes.Audio &&
-        !InstructionsEnum.clickAudioMessages.isToggledOff) {
-      InstructionsEnum.clickAudioMessages.setToggledOff(true);
+    if (!InstructionsEnum.clickMessage.isToggledOff) {
+      InstructionsEnum.clickMessage.setToggledOff(true);
     }
 
     if (!kIsWeb) {
@@ -2076,8 +2058,24 @@ class ChatController extends State<ChatPageWithRoom>
     }
     stopMediaStream.add(null);
 
-    if (buttonEventID == event.eventId) {
+    final isButton = buttonEventID == event.eventId;
+    final keyboardOpen = inputFocus.hasFocus && PlatformInfos.isMobile;
+
+    final delay = keyboardOpen
+        ? const Duration(milliseconds: 500)
+        : isButton
+            ? const Duration(milliseconds: 200)
+            : null;
+
+    if (isButton) {
       depressMessageButton.value = true;
+    }
+
+    if (keyboardOpen) {
+      inputFocus.unfocus();
+    }
+
+    if (delay != null) {
       OverlayUtil.showOverlay(
         context: context,
         child: TransparentBackdrop(
@@ -2085,28 +2083,28 @@ class ChatController extends State<ChatPageWithRoom>
           onDismiss: clearSelectedEvents,
           blurBackground: true,
           animateBackground: true,
-          backgroundAnimationDuration: const Duration(milliseconds: 200),
+          backgroundAnimationDuration: delay,
         ),
         position: OverlayPositionEnum.centered,
         overlayKey: "button_message_backdrop",
       );
 
-      Future.delayed(const Duration(milliseconds: 200), () {
-        if (_router.state.path != ':roomid') {
-          // The user has navigated away from the chat,
-          // so we don't want to show the overlay.
-          return;
-        }
-        OverlayUtil.showOverlay(
-          context: context,
-          child: overlayEntry,
-          position: OverlayPositionEnum.centered,
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-        );
-      });
+      await Future.delayed(delay);
+
+      if (_router.state.path != ':roomid') {
+        // The user has navigated away from the chat,
+        // so we don't want to show the overlay.
+        return;
+      }
+      OverlayUtil.showOverlay(
+        context: context,
+        child: overlayEntry,
+        position: OverlayPositionEnum.centered,
+        onDismiss: clearSelectedEvents,
+        blurBackground: true,
+        backgroundColor: Colors.black,
+        overlayKey: "message_toolbar_overlay",
+      );
     } else {
       OverlayUtil.showOverlay(
         context: context,

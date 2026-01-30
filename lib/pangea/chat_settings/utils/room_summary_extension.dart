@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
@@ -7,6 +8,8 @@ import 'package:matrix/matrix_api_lite/generated/api.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 extension RoomSummaryExtension on Api {
@@ -52,26 +55,39 @@ class RoomSummariesResponse {
     });
     return RoomSummariesResponse(summaries: summaries);
   }
-
-  Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{};
-    summaries.forEach((key, value) {
-      json[key] = value.toJson();
-    });
-    return json;
-  }
 }
 
 class RoomSummaryResponse {
-  final ActivityPlanModel activityPlan;
-  final ActivityRolesModel activityRoles;
+  final ActivityPlanModel? activityPlan;
+  final ActivityRolesModel? activityRoles;
+  final ActivitySummaryModel? activitySummary;
+  final CoursePlanEvent? coursePlan;
+
+  final JoinRules? joinRule;
+  final Map<String, int>? powerLevels;
   final Map<String, String> membershipSummary;
+  final String? displayName;
+  final String? avatarUrl;
 
   RoomSummaryResponse({
-    required this.activityPlan,
-    required this.activityRoles,
     required this.membershipSummary,
+    this.activityPlan,
+    this.activityRoles,
+    this.activitySummary,
+    this.coursePlan,
+    this.joinRule,
+    this.powerLevels,
+    this.displayName,
+    this.avatarUrl,
   });
+
+  List<String> get adminUserIDs {
+    if (powerLevels == null) return [];
+    return powerLevels!.entries
+        .where((entry) => entry.value >= 100)
+        .map((entry) => entry.key)
+        .toList();
+  }
 
   Membership? getMembershipForUserId(String userId) {
     final membershipString = membershipSummary[userId];
@@ -83,32 +99,93 @@ class RoomSummaryResponse {
   }
 
   Map<String, ActivityRoleModel> get joinedUsersWithRoles {
+    if (activityRoles == null) return {};
     return Map.fromEntries(
-      activityRoles.roles.entries.where(
+      activityRoles!.roles.entries.where(
         (role) => getMembershipForUserId(role.value.userId) == Membership.join,
       ),
     );
   }
 
   factory RoomSummaryResponse.fromJson(Map<String, dynamic> json) {
+    final planEntry =
+        json[PangeaEventTypes.activityPlan]?["default"]?["content"];
+    ActivityPlanModel? plan;
+    if (planEntry != null && planEntry is Map<String, dynamic>) {
+      plan = ActivityPlanModel.fromJson(planEntry);
+    }
+
+    final rolesEntry =
+        json[PangeaEventTypes.activityRole]?["default"]?["content"];
+    ActivityRolesModel? roles;
+    if (rolesEntry != null && rolesEntry is Map<String, dynamic>) {
+      roles = ActivityRolesModel.fromJson(rolesEntry);
+    }
+
+    final summaryEntry =
+        json[PangeaEventTypes.activitySummary]?["default"]?["content"];
+    ActivitySummaryModel? summary;
+    if (summaryEntry != null && summaryEntry is Map<String, dynamic>) {
+      summary = ActivitySummaryModel.fromJson(summaryEntry);
+    }
+
+    final coursePlanEntry =
+        json[PangeaEventTypes.coursePlan]?["default"]?["content"];
+    CoursePlanEvent? coursePlan;
+    if (coursePlanEntry != null && coursePlanEntry is Map<String, dynamic>) {
+      coursePlan = CoursePlanEvent.fromJson(coursePlanEntry);
+    }
+
+    final powerLevelsEntry =
+        json[EventTypes.RoomPowerLevels]?['default']?['content']?['users'];
+    Map<String, int>? powerLevels;
+    if (powerLevelsEntry != null) {
+      powerLevels = Map<String, int>.from(powerLevelsEntry);
+    }
+
+    final joinRulesString =
+        json[EventTypes.RoomJoinRules]?['default']?['content']?['join_rule'];
+    JoinRules? joinRule;
+    if (joinRulesString != null && joinRulesString is String) {
+      joinRule = JoinRules.values
+          .singleWhereOrNull((element) => element.text == joinRulesString);
+    }
+
+    final displayName =
+        json[EventTypes.RoomName]?['default']?['content']?['name'] as String?;
+
+    String? avatarUrl =
+        json[EventTypes.RoomAvatar]?['default']?['content']?['url'] as String?;
+    if (avatarUrl != null && Uri.tryParse(avatarUrl) == null) {
+      avatarUrl = null;
+    }
+
     return RoomSummaryResponse(
-      activityPlan: ActivityPlanModel.fromJson(
-        json[PangeaEventTypes.activityPlan]?["default"]?["content"] ?? {},
-      ),
-      activityRoles: ActivityRolesModel.fromJson(
-        json[PangeaEventTypes.activityRole]?["default"]?["content"] ?? {},
-      ),
+      activityPlan: plan,
+      activityRoles: roles,
+      activitySummary: summary,
+      coursePlan: coursePlan,
+      powerLevels: powerLevels,
+      joinRule: joinRule,
       membershipSummary: Map<String, String>.from(
         json['membership_summary'] ?? {},
       ),
+      displayName: displayName,
+      avatarUrl: avatarUrl,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      PangeaEventTypes.activityPlan: activityPlan.toJson(),
-      PangeaEventTypes.activityRole: activityRoles.toJson(),
-      'membership_summary': membershipSummary,
+      'activityPlan': activityPlan?.toJson(),
+      'activityRoles': activityRoles?.toJson(),
+      'activitySummary': activitySummary?.toJson(),
+      'coursePlan': coursePlan?.toJson(),
+      'joinRule': joinRule?.text,
+      'powerLevels': powerLevels,
+      'membershipSummary': membershipSummary,
+      'displayName': displayName,
+      'avatarUrl': avatarUrl,
     };
   }
 }

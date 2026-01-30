@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 11:48:14.501814",
+  "@@last_modified": "2026-01-29 15:25:11.468426",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -3779,8 +3779,6 @@
   "noPaymentInfo": "কোনও পেমেন্ট তথ্য প্রয়োজন নয়!",
   "updatePhoneOS": "আপনার ডিভাইসের অপারেটিং সিস্টেমের সংস্করণ আপডেটের প্রয়োজন হতে পারে।",
   "wordsPerMinute": "প্রতি মিনিটে শব্দ",
-  "autoIGCToolName": "পাঙ্গিয়া লেখনী সহায়তা স্বয়ংক্রিয়ভাবে চালান",
-  "autoIGCToolDescription": "আমার বার্তা পাঠানোর আগে স্বয়ংক্রিয়ভাবে পাঙ্গিয়া চ্যাট ব্যাকরণ এবং অনুবাদ লেখনী সহায়তা চালান।",
   "tooltipInstructionsTitle": "এটি কি করে তা নিশ্চিত নন?",
   "tooltipInstructionsMobileBody": "আইটেমে চাপুন এবং ধরে রাখুন টুলটিপ দেখার জন্য।",
   "tooltipInstructionsBrowserBody": "আইটেমের উপর হোভার করে টুলটিপ দেখুন।",
@@ -4407,7 +4405,6 @@
   "numModules": "{num} মডিউল",
   "coursePlan": "কোর্স পরিকল্পনা",
   "editCourseLater": "আপনি পরে টেমপ্লেট শিরোনাম, বিবরণ, এবং কোর্স ছবি সম্পাদনা করতে পারেন।",
-  "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি ব্যক্তিগত এবং যোগদানের জন্য অ্যাডমিন অনুমোদন প্রয়োজন। আপনি এই সেটিংস যেকোন সময় সম্পাদনা করতে পারেন।",
   "createCourse": "কোর্স তৈরি করুন",
   "stats": "পরিসংখ্যান",
   "createGroupChat": "গ্রুপ চ্যাট তৈরি করুন",
@@ -7310,14 +7307,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9936,10 +9925,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12036,6 +12021,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে কার্যকলাপের ছবি ব্যবহার করুন",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "সমর্থনের সাথে চ্যাট করুন",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি জনসাধারণের জন্য অনুসন্ধানযোগ্য এবং যোগদানের জন্য প্রশাসক অনুমোদনের প্রয়োজন। আপনি যে কোনও সময় এই সেটিংসগুলি সম্পাদনা করতে পারেন।",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "আপনি কোন ভাষা শিখছেন?",
+  "searchLanguagesHint": "লক্ষ্য ভাষা অনুসন্ধান করুন",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "প্রশ্ন আছে? আমরা সাহায্য করতে এখানে আছি!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "কিছু ভুল হয়েছে, এবং আমরা এটি ঠিক করতে কঠোর পরিশ্রম করছি। পরে আবার চেক করুন।",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "লেখার সহায়তা সক্রিয় করুন",
+  "autoIGCToolDescription": "লক্ষ্য ভাষায় পাঠানো বার্তা সংশোধন করতে স্বয়ংক্রিয়ভাবে প্যাঙ্গিয়া চ্যাট টুলগুলি চালান।",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "রেকর্ডিং ব্যর্থ হয়েছে। দয়া করে আপনার অডিও অনুমতিগুলি পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

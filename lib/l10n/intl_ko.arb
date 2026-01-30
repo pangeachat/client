@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 11:47:07.347165",
+  "@@last_modified": "2026-01-29 15:24:24.593568",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -3721,8 +3721,6 @@
   "noPaymentInfo": "결제 정보가 필요 없습니다!",
   "updatePhoneOS": "기기의 OS 버전을 업데이트해야 할 수 있습니다.",
   "wordsPerMinute": "분당 단어 수",
-  "autoIGCToolName": "판게아 작문 지원 자동 실행",
-  "autoIGCToolDescription": "메시지를 보내기 전에 판게아 채팅 문법 및 번역 작문 지원을 자동으로 실행합니다.",
   "tooltipInstructionsTitle": "이게 무슨 기능인지 잘 모르겠나요?",
   "tooltipInstructionsMobileBody": "항목을 길게 눌러 툴팁을 볼 수 있습니다.",
   "tooltipInstructionsBrowserBody": "항목 위에 마우스를 올려 툴팁을 볼 수 있습니다.",
@@ -4350,7 +4348,6 @@
   "numModules": "{num}개 모듈",
   "coursePlan": "과정 계획",
   "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
-  "newCourseAccess": "기본적으로 과정은 비공개이며 관리자 승인 후 참여할 수 있습니다. 언제든지 이 설정을 변경할 수 있습니다.",
   "createCourse": "과정 생성",
   "stats": "통계",
   "createGroupChat": "단체 채팅 만들기",
@@ -6311,14 +6308,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8940,10 +8929,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11040,6 +11025,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "지원팀과 채팅하기",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "기본적으로 과정은 공개적으로 검색 가능하며 참여하려면 관리자 승인이 필요합니다. 언제든지 이러한 설정을 수정할 수 있습니다.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "어떤 언어를 배우고 있나요?",
+  "searchLanguagesHint": "목표 언어 검색",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "질문이 있으신가요? 저희가 도와드리겠습니다!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "문제가 발생했으며, 우리는 이를 해결하기 위해 열심히 작업하고 있습니다. 나중에 다시 확인해 주세요.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "쓰기 지원 활성화",
+  "autoIGCToolDescription": "전송된 메시지를 목표 언어로 수정하기 위해 Pangea Chat 도구를 자동으로 실행합니다.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "녹음에 실패했습니다. 오디오 권한을 확인하고 다시 시도해 주세요.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

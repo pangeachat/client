@@ -3648,8 +3648,6 @@
   "noPaymentInfo": "Nulle information de pagamento necessari!",
   "updatePhoneOS": "Tu pote haber de actualizar la version del sistema operative de tu dispositivo",
   "wordsPerMinute": "Palabras per minutu",
-  "autoIGCToolName": "Execute automaticamente le assistent de scriber Pangea",
-  "autoIGCToolDescription": "Execute automaticamente le grammatica e traduction del chat Pangea ante de inviar mi message",
   "tooltipInstructionsTitle": "Non es secur de que isto face?",
   "tooltipInstructionsMobileBody": "Pressa e tenea items pro vider le tooltip.",
   "tooltipInstructionsBrowserBody": "Survole items pro vider le tooltip.",
@@ -4277,7 +4275,6 @@
   "numModules": "{num} modulo(s)",
   "coursePlan": "Plan de cors",
   "editCourseLater": "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.",
-  "newCourseAccess": "Per defaut, los cors es privat e require approbation del admin pro aderir. Tu pote modificar iste parametros a qualunque momento.",
   "createCourse": "Createar cors",
   "stats": "Statisticas",
   "createGroupChat": "Createar chat de gruppo",
@@ -4372,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-26 11:47:23.079148",
+  "@@last_modified": "2026-01-29 15:24:36.672214",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7180,14 +7177,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9806,10 +9795,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11906,6 +11891,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat le Tacaíocht",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig àm sam bith.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
+  "searchLanguagesHint": "Cuardaigh teangacha sprioc",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Níl aon rud ag dul i gceart, agus táimid ag obair go dian chun é a shocrú. Seiceáil arís níos déanaí.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivoi kirjoitusavustaja",
+  "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Faillí an taifeadadh. Seiceáil do cheadanna gutháin agus déan iarracht arís.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

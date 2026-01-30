@@ -3285,8 +3285,6 @@
   "noPaymentInfo": "Maksutietoja ei tarvita!",
   "updatePhoneOS": "Saattaa olla, että sinun täytyy päivittää laitteesi käyttöjärjestelmän versio.",
   "wordsPerMinute": "Sanoja minuutissa",
-  "autoIGCToolName": "Aja Pangea kirjoitusavustusta automaattisesti",
-  "autoIGCToolDescription": "Aja automaattisesti Pangea Chatin kieliopin ja käännöksen kirjoitusavustusta ennen viestini lähettämistä.",
   "tooltipInstructionsTitle": "Et ole varma, mitä tämä tekee?",
   "tooltipInstructionsMobileBody": "Pidä painettuna kohteita nähdäksesi työkaluvihjeet.",
   "tooltipInstructionsBrowserBody": "Vie hiiri kohteen päälle nähdäksesi työkaluvihjeet.",
@@ -3914,7 +3912,6 @@
   "numModules": "{num} moduulia",
   "coursePlan": "Kurssisuunnitelma",
   "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
-  "newCourseAccess": "Oletuksena kurssit ovat yksityisiä ja vaativat ylläpitäjän hyväksynnän liittyäksesi. Voit muokata näitä asetuksia milloin tahansa.",
   "createCourse": "Luo kurssi",
   "stats": "Tilastot",
   "createGroupChat": "Luo ryhmäkeskustelu",
@@ -4009,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-26 11:47:13.574227",
+  "@@last_modified": "2026-01-29 15:24:28.359131",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -6829,14 +6826,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9455,10 +9444,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11555,6 +11540,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chattaa tuen kanssa",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat ylläpitäjän hyväksynnän liittymiseen. Voit muokata näitä asetuksia milloin tahansa.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Mitä kieltä opit?",
+  "searchLanguagesHint": "Etsi kohdekieliä",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Kysymyksiä? Olemme täällä auttamassa!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Jotain meni pieleen, ja teemme kovasti töitä sen korjaamiseksi. Tarkista myöhemmin uudelleen.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ota käyttöön kirjoitusapu",
+  "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Äänityksen tallentaminen epäonnistui. Tarkista äänioikeutesi ja yritä uudelleen.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -3759,8 +3759,6 @@
   "noPaymentInfo": "कोई भुगतान जानकारी आवश्यक नहीं!",
   "updatePhoneOS": "आपको अपने डिवाइस का OS संस्करण अपडेट करने की आवश्यकता हो सकती है।",
   "wordsPerMinute": "मिनट में शब्द",
-  "autoIGCToolName": "स्वचालित रूप से पैंजिया लेखन सहायता चलाएँ",
-  "autoIGCToolDescription": "मेरे संदेश भेजने से पहले स्वचालित रूप से पैंजिया चैट व्याकरण और अनुवाद लेखन सहायता चलाएँ।",
   "tooltipInstructionsTitle": "क्या यह करता है, इसके बारे में सुनिश्चित नहीं?",
   "tooltipInstructionsMobileBody": "आइटम को दबाकर रखें और टूलटिप देखने के लिए होवर करें।",
   "tooltipInstructionsBrowserBody": "आइटम पर होवर करें और टूलटिप देखने के लिए होवर करें।",
@@ -4388,7 +4386,6 @@
   "numModules": "{num} मॉड्यूल",
   "coursePlan": "कोर्स योजना",
   "editCourseLater": "आप बाद में टेम्पलेट का शीर्षक, विवरण और कोर्स छवि संपादित कर सकते हैं।",
-  "newCourseAccess": "डिफ़ॉल्ट रूप से, कोर्स निजी होते हैं और शामिल होने के लिए व्यवस्थापक अनुमोदन की आवश्यकता होती है। आप इन सेटिंग्स को कभी भी संपादित कर सकते हैं।",
   "createCourse": "कोर्स बनाएं",
   "stats": "आंकड़े",
   "createGroupChat": "समूह चैट बनाएं",
@@ -4483,7 +4480,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-26 11:48:23.419158",
+  "@@last_modified": "2026-01-29 15:25:18.981310",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7291,14 +7288,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9917,10 +9906,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12017,6 +12002,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "सहायता से चैट करें",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "डिफ़ॉल्ट रूप से, पाठ्यक्रम सार्वजनिक रूप से खोजे जा सकते हैं और शामिल होने के लिए प्रशासक की स्वीकृति की आवश्यकता होती है। आप किसी भी समय इन सेटिंग्स को संपादित कर सकते हैं।",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "आप कौन सी भाषा सीख रहे हैं?",
+  "searchLanguagesHint": "लक्षित भाषाएँ खोजें",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "प्रश्न? हम आपकी मदद के लिए यहाँ हैं!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "कुछ गलत हो गया है, और हम इसे ठीक करने में कड़ी मेहनत कर रहे हैं। बाद में फिर से जांचें।",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "लेखन सहायता सक्षम करें",
+  "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "रिकॉर्डिंग विफल हो गई। कृपया अपनी ऑडियो अनुमति की जांच करें और फिर से प्रयास करें।",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

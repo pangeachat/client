@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-26 11:48:26.189134",
+  "@@last_modified": "2026-01-29 15:25:21.118191",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -3714,8 +3714,6 @@
   "noPaymentInfo": "Информация о платеже не требуется!",
   "updatePhoneOS": "Возможно, потребуется обновить версию ОС вашего устройства.",
   "wordsPerMinute": "Слова в минуту",
-  "autoIGCToolName": "Автоматически запускать помощь в написании Pangea",
-  "autoIGCToolDescription": "Автоматически запускать помощь в грамматике и переводе Pangea Chat перед отправкой моего сообщения.",
   "tooltipInstructionsTitle": "Не уверены, что это делает?",
   "tooltipInstructionsMobileBody": "Нажмите и удерживайте элементы, чтобы просмотреть подсказки.",
   "tooltipInstructionsBrowserBody": "Наведите курсор на элементы, чтобы просмотреть подсказки.",
@@ -4336,7 +4334,6 @@
   "numModules": "{num} модулей",
   "coursePlan": "План курса",
   "editCourseLater": "Вы можете редактировать название шаблона, описания и изображение курса позже.",
-  "newCourseAccess": "По умолчанию курсы являются приватными и требуют одобрения администратора для присоединения. Вы можете изменить эти настройки в любое время.",
   "createCourse": "Создать курс",
   "stats": "Статистика",
   "createGroupChat": "Создать групповой чат",
@@ -6292,14 +6289,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8921,10 +8910,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11040,6 +11025,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат с поддержкой",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "По умолчанию курсы доступны для публичного поиска и требуют одобрения администратора для присоединения. Вы можете изменить эти настройки в любое время.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Какой язык вы изучаете?",
+  "searchLanguagesHint": "Поиск целевых языков",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Вопросы? Мы здесь, чтобы помочь!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Что-то пошло не так, и мы усердно работаем над исправлением. Проверьте позже.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Включить помощь в написании",
+  "autoIGCToolDescription": "Автоматически запускать инструменты Pangea Chat для исправления отправленных сообщений на целевой язык.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запись не удалась. Пожалуйста, проверьте свои аудиоразрешения и попробуйте снова.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

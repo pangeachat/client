@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 11:48:07.017868",
+  "@@last_modified": "2026-01-29 15:25:05.410589",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -2422,8 +2422,6 @@
   "noPaymentInfo": "Không cần thông tin thanh toán!",
   "updatePhoneOS": "Bạn có thể cần nâng cấp phiên bản hệ điều hành.",
   "wordsPerMinute": "Từ mỗi phút",
-  "autoIGCToolName": "Tự động chạy hỗ trợ ngôn ngữ",
-  "autoIGCToolDescription": "Tự động chạy hỗ trợ ngôn ngữ sau khi gõ tin nhắn",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
   "roomFull": "Phòng đã đạt giới hạn.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
@@ -3979,7 +3977,6 @@
   "numModules": "{num} mô-đun",
   "coursePlan": "Kế hoạch khóa học",
   "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
-  "newCourseAccess": "Theo mặc định, các khóa học là riêng tư và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất cứ lúc nào.",
   "createCourse": "Tạo khóa học",
   "stats": "Thống kê",
   "createGroupChat": "Tạo nhóm trò chuyện",
@@ -4366,10 +4363,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -6502,6 +6495,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Trò chuyện với Hỗ trợ",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Theo mặc định, các khóa học có thể tìm kiếm công khai và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất kỳ lúc nào.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Bạn đang học ngôn ngữ nào?",
+  "searchLanguagesHint": "Tìm kiếm ngôn ngữ mục tiêu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Câu hỏi? Chúng tôi ở đây để giúp đỡ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Đã xảy ra sự cố, và chúng tôi đang nỗ lực khắc phục. Vui lòng kiểm tra lại sau.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Bật trợ giúp viết",
+  "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Ghi âm không thành công. Vui lòng kiểm tra quyền truy cập âm thanh của bạn và thử lại.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

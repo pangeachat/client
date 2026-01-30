@@ -3773,8 +3773,6 @@
   "noPaymentInfo": "Nav nepieciešama maksājuma informācija!",
   "updatePhoneOS": "Var būt nepieciešams atjaunināt ierīces operētājsistēmas versiju.",
   "wordsPerMinute": "Vārdi minūtē",
-  "autoIGCToolName": "Automātiski palaist Pangea rakstīšanas palīgu",
-  "autoIGCToolDescription": "Automātiski palaist Pangea Čata gramatikas un tulkošanas rakstīšanas palīgu pirms mana ziņojuma nosūtīšanas.",
   "tooltipInstructionsTitle": "Neesat pārliecināts, kas tas dara?",
   "tooltipInstructionsMobileBody": "Turiet un turiet vienumus, lai skatītu rīku padomus.",
   "tooltipInstructionsBrowserBody": "Novietojiet peles kursoru virs vienumiem, lai skatītu rīku padomus.",
@@ -4482,7 +4480,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-26 11:47:58.695137",
+  "@@last_modified": "2026-01-29 15:25:00.127768",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -4495,7 +4493,6 @@
   "numModules": "{num} moduļi",
   "coursePlan": "Kursa plāns",
   "editCourseLater": "Jūs varat vēlāk rediģēt šablona nosaukumu, aprakstus un kursa attēlu.",
-  "newCourseAccess": "Pēc noklusējuma kursi ir privāti un prasa administratora apstiprinājumu, lai pievienotos. Jūs varat šīs iestatījumus mainīt jebkurā laikā.",
   "createCourse": "Izveidot kursu",
   "stats": "Statistika",
   "@customReaction": {
@@ -6189,14 +6186,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8818,10 +8807,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10918,6 +10903,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Sarunāties ar atbalstu",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pēc noklusējuma kursi ir publiski meklējami un prasa administratora apstiprinājumu pievienošanai. Jūs varat rediģēt šos iestatījumus jebkurā laikā.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kuru valodu tu mācies?",
+  "searchLanguagesHint": "Meklēt mērķa valodas",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Jautājumi? Mēs esam šeit, lai palīdzētu!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kaut kas nogāja greizi, un mēs smagi strādājam, lai to labotu. Pārbaudiet vēlāk.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
+  "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Ieraksts neizdevās. Lūdzu, pārbaudiet savas audio atļaujas un mēģiniet vēlreiz.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

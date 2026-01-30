@@ -128,12 +128,14 @@ class AnalyticsUpdateService {
     await future;
   }
 
-  Future<void> sendActivityAnalytics(String roomId) async {
-    final analyticsRoom = await _getAnalyticsRoom();
+  Future<void> sendActivityAnalytics(String roomId, LanguageModel lang) async {
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: lang);
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
-    dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+    if (lang.langCodeShort == _l2?.langCodeShort) {
+      dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+    }
   }
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {

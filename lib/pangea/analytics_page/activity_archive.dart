@@ -26,47 +26,58 @@ class ActivityArchive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Room? analyticsRoom = Matrix.of(context).client.analyticsRoomLocal();
-    final archive = analyticsRoom?.archivedActivities ?? [];
-    final selectedRoomId = GoRouterState.of(context).pathParameters['roomid'];
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsetsGeometry.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const LearningProgressIndicators(
-                selected: ProgressIndicatorEnum.activities,
-              ),
-              Expanded(
-                child: MaxWidthBody(
-                  withScrolling: false,
-                  child: ListView.builder(
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: archive.length + 1,
-                    itemBuilder: (BuildContext context, int i) {
-                      if (i == 0) {
-                        return InstructionsInlineTooltip(
-                          instructionsEnum: archive.isEmpty
-                              ? InstructionsEnum.noSavedActivitiesYet
-                              : InstructionsEnum.activityAnalyticsList,
-                          padding: const EdgeInsets.all(8.0),
-                        );
-                      }
-                      i--;
-                      return AnalyticsActivityItem(
-                        room: archive[i],
-                        selected: archive[i].id == selectedRoomId,
-                      );
-                    },
+    return StreamBuilder(
+      stream: Matrix.of(context)
+          .analyticsDataService
+          .updateDispatcher
+          .activityAnalyticsStream
+          .stream,
+      builder: (context, _) {
+        final Room? analyticsRoom =
+            Matrix.of(context).client.analyticsRoomLocal();
+        final archive = analyticsRoom?.archivedActivities ?? [];
+        final selectedRoomId =
+            GoRouterState.of(context).pathParameters['roomid'];
+        return Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsetsGeometry.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const LearningProgressIndicators(
+                    selected: ProgressIndicatorEnum.activities,
                   ),
-                ),
+                  Expanded(
+                    child: MaxWidthBody(
+                      withScrolling: false,
+                      child: ListView.builder(
+                        physics: const ClampingScrollPhysics(),
+                        itemCount: archive.length + 1,
+                        itemBuilder: (BuildContext context, int i) {
+                          if (i == 0) {
+                            return InstructionsInlineTooltip(
+                              instructionsEnum: archive.isEmpty
+                                  ? InstructionsEnum.noSavedActivitiesYet
+                                  : InstructionsEnum.activityAnalyticsList,
+                              padding: const EdgeInsets.all(8.0),
+                            );
+                          }
+                          i--;
+                          return AnalyticsActivityItem(
+                            room: archive[i],
+                            selected: archive[i].id == selectedRoomId,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

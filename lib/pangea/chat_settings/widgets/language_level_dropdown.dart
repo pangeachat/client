@@ -6,11 +6,13 @@ import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dar
 class LanguageLevelDropdown extends StatelessWidget {
   final LanguageLevelTypeEnum? initialLevel;
   final Function(LanguageLevelTypeEnum)? onChanged;
+  final bool enabled;
 
   const LanguageLevelDropdown({
     super.key,
     this.initialLevel = LanguageLevelTypeEnum.a1,
     this.onChanged,
+    this.enabled = true,
   });
 
   @override
@@ -30,9 +32,11 @@ class LanguageLevelDropdown extends StatelessWidget {
         isExpanded: true,
         dropdownColor: Theme.of(context).colorScheme.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(14.0),
-        onChanged: (value) {
-          if (value != null) onChanged?.call(value);
-        },
+        onChanged: enabled
+            ? (value) {
+                if (value != null) onChanged?.call(value);
+              }
+            : null,
         initialValue: initialLevel,
         items: LanguageLevelTypeEnum.values
             .map((LanguageLevelTypeEnum levelOption) {

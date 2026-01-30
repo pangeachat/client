@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-26 11:48:01.000838",
+  "@@last_modified": "2026-01-29 15:25:01.121856",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -3670,8 +3670,6 @@
   "noPaymentInfo": "لا حاجة لمعلومات الدفع!",
   "updatePhoneOS": "قد تحتاج إلى تحديث إصدار نظام تشغيل جهازك.",
   "wordsPerMinute": "كلمات في الدقيقة",
-  "autoIGCToolName": "تشغيل مساعدة الكتابة Pangea تلقائيًا",
-  "autoIGCToolDescription": "تشغيل مساعدة القواعد والترجمة في دردشة Pangea تلقائيًا قبل إرسال رسالتي.",
   "tooltipInstructionsTitle": "لست متأكدًا مما يفعله ذلك؟",
   "tooltipInstructionsMobileBody": "اضغط مع الاستمرار على العناصر لعرض تلميحات الأدوات.",
   "tooltipInstructionsBrowserBody": "مرر فوق العناصر لعرض تلميحات الأدوات.",
@@ -4300,7 +4298,6 @@
   "numModules": "{num} وحدات",
   "coursePlan": "خطة الدورة",
   "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
-  "newCourseAccess": "افتراضيًا، الدورات خاصة وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
   "createCourse": "إنشاء دورة",
   "stats": "إحصائيات",
   "createGroupChat": "إنشاء دردشة جماعية",
@@ -6420,14 +6417,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9049,10 +9038,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11149,6 +11134,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "الدردشة مع الدعم",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
+  "searchLanguagesHint": "ابحث عن اللغات المستهدفة",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "أسئلة؟ نحن هنا للمساعدة!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "حدث خطأ ما، ونحن نعمل بجد على إصلاحه. تحقق مرة أخرى لاحقًا.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "تفعيل مساعدة الكتابة",
+  "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "فشل التسجيل. يرجى التحقق من أذونات الصوت الخاصة بك والمحاولة مرة أخرى.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

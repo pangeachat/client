@@ -3137,8 +3137,6 @@
   "noPaymentInfo": "Apmokėjimo informacija nereikalinga!",
   "updatePhoneOS": "Gali būti, kad reikės atnaujinti įrenginio operacinės sistemos versiją.",
   "wordsPerMinute": "Žodžių per minutę",
-  "autoIGCToolName": "Automatiškai paleisti Pangea rašymo pagalbą",
-  "autoIGCToolDescription": "Automatiškai paleisti Pangea pokalbio gramatikos ir vertimo rašymo pagalbą prieš išsiunčiant žinutę.",
   "tooltipInstructionsTitle": "Nesate tikri, ką tai daro?",
   "tooltipInstructionsMobileBody": "Paspauskite ir palaikykite elementus, kad pamatytumėte įrankių patarimus.",
   "tooltipInstructionsBrowserBody": "Užveskite pelės žymeklį ant elementų, kad pamatytumėte įrankių patarimus.",
@@ -3766,7 +3764,6 @@
   "numModules": "{num} moduliai",
   "coursePlan": "Kurso planas",
   "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
-  "newCourseAccess": "Pagal numatytuosius nustatymus kursai yra privatūs ir reikalauja administratoriaus patvirtinimo prisijungiant. Šiuos nustatymus galite redaguoti bet kuriuo metu.",
   "createCourse": "Sukurti kursą",
   "stats": "Statistika",
   "createGroupChat": "Sukurti grupinį pokalbį",
@@ -3861,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-26 11:48:05.715344",
+  "@@last_modified": "2026-01-29 15:25:04.531263",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7011,14 +7008,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9637,10 +9626,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11737,6 +11722,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Pokalbis su palaikymu",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pagal numatytuosius nustatymus, kursai yra viešai ieškomi ir reikalauja administratoriaus patvirtinimo prisijungti. Šiuos nustatymus galite redaguoti bet kada.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kokią kalbą mokotės?",
+  "searchLanguagesHint": "Ieškoti tikslo kalbų",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Klausimai? Mes čia, kad padėtume!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Įgalinti rašymo pagalbą",
+  "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Įrašymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kartą.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

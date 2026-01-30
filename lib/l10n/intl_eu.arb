@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-26 11:47:32.632179",
+  "@@last_modified": "2026-01-29 15:24:41.896758",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -3785,8 +3785,6 @@
   "noPaymentInfo": "Ez dago ordainketa informaziorik behar!",
   "updatePhoneOS": "Baliteke zure gailuaren OS bertsioa eguneratu behar izatea.",
   "wordsPerMinute": "Hitz minutuko",
-  "autoIGCToolName": "Exekutatu Pangea idazketa laguntza automatikoki",
-  "autoIGCToolDescription": "Exekutatu automatikoki Pangea Txataren gramatika eta itzulpen idazketa laguntza mezu bat bidali aurretik.",
   "tooltipInstructionsTitle": "Ez da ziur zer den hori?",
   "tooltipInstructionsMobileBody": "Elementuak sakatu eta eutsi tresna-txartelak ikusteko.",
   "tooltipInstructionsBrowserBody": "Elementuak gainean mugitu eta ikusi tresna-txartelak.",
@@ -4414,7 +4412,6 @@
   "numModules": "{num} modulua",
   "coursePlan": "Ikastaro Plana",
   "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
-  "newCourseAccess": "Lehenetsiz, ikastaroak pribatutasunekoak dira eta administratzailearen onespena behar dute parte hartzeko. Edozein momentutan aldatu ditzakezu ezarpen hauek.",
   "createCourse": "Sortu ikastaroa",
   "stats": "Datuak",
   "createGroupChat": "Sortu talde txat bat",
@@ -6203,14 +6200,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8832,10 +8821,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10932,6 +10917,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Txatatu Laguntzarekin",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Zer hizkuntza ikasten ari zara?",
+  "searchLanguagesHint": "Bilatu helburu hizkuntzak",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Galderak? Hemen gaude laguntzeko!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Zerbait oker joan da, eta horren konponketan lan gogorra egiten ari gara. Begiratu berriro geroago.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Idazteko laguntza aktibatu",
+  "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

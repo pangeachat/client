@@ -115,6 +115,7 @@ class VocabAnalyticsListView extends StatelessWidget {
       }
     }
 
+    final filteredVocab = _filteredVocab;
     return Column(
       children: [
         AnimatedContainer(
@@ -178,7 +179,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                 ),
 
               // Grid of vocab tiles
-              if (vocab == null)
+              if (filteredVocab == null)
                 const SliverFillRemaining(
                   hasScrollBody: false,
                   child: Center(
@@ -186,7 +187,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                   ),
                 )
               else
-                vocab.isEmpty
+                filteredVocab.isEmpty
                     ? SliverToBoxAdapter(
                         child: controller.selectedConstructLevel != null
                             ? Padding(
@@ -209,7 +210,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                         ),
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {
-                            final vocabItem = _filteredVocab![index];
+                            final vocabItem = filteredVocab[index];
                             return VocabAnalyticsListTile(
                               onTap: () {
                                 TtsController.tryToSpeak(
@@ -232,7 +233,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                               selected: vocabItem.id == selectedConstruct,
                             );
                           },
-                          childCount: _filteredVocab!.length,
+                          childCount: filteredVocab.length,
                         ),
                       ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),

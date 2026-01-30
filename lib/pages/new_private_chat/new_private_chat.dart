@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat_view.dart';
 import 'package:fluffychat/pages/new_private_chat/qr_scanner_modal.dart';
+import 'package:fluffychat/pangea/user/user_search_extension.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -52,15 +53,20 @@ class NewPrivateChatController extends State<NewPrivateChat> {
   }
 
   Future<List<Profile>> _searchUser(String searchTerm) async {
-    final result =
-        await Matrix.of(context).client.searchUserDirectory(searchTerm);
+    // #Pangea
+    // final result =
+    //     await Matrix.of(context).client.searchUserDirectory(searchTerm);
+    final result = await Matrix.of(context).client.searchUser(searchTerm);
+    // Pangea#
     final profiles = result.results;
 
-    if (searchTerm.isValidMatrixId &&
-        searchTerm.sigil == '@' &&
-        !profiles.any((profile) => profile.userId == searchTerm)) {
-      profiles.add(Profile(userId: searchTerm));
-    }
+    // #Pangea
+    // if (searchTerm.isValidMatrixId &&
+    //     searchTerm.sigil == '@' &&
+    //     !profiles.any((profile) => profile.userId == searchTerm)) {
+    //   profiles.add(Profile(userId: searchTerm));
+    // }
+    // Pangea#
 
     return profiles;
   }

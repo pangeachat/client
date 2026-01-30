@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 11:48:24.670000",
+  "@@last_modified": "2026-01-29 15:25:20.184834",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -2911,8 +2911,6 @@
   "noPaymentInfo": "Ne necesas paginformoj!",
   "updatePhoneOS": "Eble vi bezonas ĝisdatigi la version de la operaciumo de via aparato.",
   "wordsPerMinute": "Vortoj po minuto",
-  "autoIGCToolName": "Kurigu Pangea verkhelpilo aŭtomate",
-  "autoIGCToolDescription": "Aŭtomate funkciigu Pangea Chat gramatikon kaj tradukadon por helpi vin verki antaŭ ol sendi vian mesaĝon.",
   "tooltipInstructionsTitle": "Ne certas kio tio faras?",
   "tooltipInstructionsMobileBody": "Premu kaj teni objektojn por vidi ilustraĵojn.",
   "tooltipInstructionsBrowserBody": "Hovru super objektoj por vidi ilustraĵojn.",
@@ -3540,7 +3538,6 @@
   "numModules": "{num} moduloj",
   "coursePlan": "Kurso Plano",
   "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
-  "newCourseAccess": "Ĝis nun, kursoj estas private kaj postulas administran aprobon por aliĝi. Vi povas ŝanĝi ĉi tiujn agordojn iam ajn.",
   "createCourse": "Krei kurson",
   "stats": "Statistikoj",
   "createGroupChat": "Krei grupan babiladon",
@@ -7295,14 +7292,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9921,10 +9910,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12021,6 +12006,56 @@
     "placeholders": {}
   },
   "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Babili kun Subteno",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Laŭ la defaŭlto, kursoj estas publike serĉeblaj kaj postulas administran aprobon por aliĝi. Vi povas redakti ĉi tiujn agordojn iam ajn.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kian lingvon vi lernas?",
+  "searchLanguagesHint": "Serĉu celajn lingvojn",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Demandoj? Ni ĉi tie por helpi!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Io malĝuste okazis, kaj ni diligente laboras por ripari ĝin. Kontrolu denove poste.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ebligi skriban asistadon",
+  "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrado malsukcesis. Bonvolu kontroli viajn aŭdajn permesojn kaj provi denove.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }
