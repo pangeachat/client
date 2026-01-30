@@ -21,6 +21,7 @@ import 'package:fluffychat/pages/device_settings/device_settings.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
+import 'package:fluffychat/pages/onboarding/enable_notificatons.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
@@ -206,6 +207,14 @@ abstract class AppRoutes {
             context,
             state,
             const CreatePangeaAccountPage(),
+          ),
+        ),
+        GoRoute(
+          path: 'notifications',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const EnableNotifications(),
           ),
         ),
         GoRoute(
