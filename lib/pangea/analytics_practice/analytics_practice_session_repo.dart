@@ -217,14 +217,32 @@ class AnalyticsPracticeSessionRepo {
   }
 
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
-    final uses = await MatrixState
+    // Fetch all recent uses in one call (not filtering blocked constructs)
+    final allRecentUses = await MatrixState
         .pangeaController.matrixState.analyticsDataService
-        .getUses(count: 100, type: ConstructUseTypeEnum.ga);
+        .getUses(count: 200, filterCapped: false);
+
+    // Filter for grammar error uses
+    final grammarErrorUses = allRecentUses
+        .where((use) => use.useType == ConstructUseTypeEnum.ga)
+        .toList();
+
+    // Create list of recently used constructs
+    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
+    final recentlyPracticedConstructs = allRecentUses
+        .where(
+          (use) =>
+              use.metadata.timeStamp.isAfter(cutoffTime) &&
+              (use.useType == ConstructUseTypeEnum.corGE ||
+                  use.useType == ConstructUseTypeEnum.incGE),
+        )
+        .map((use) => use.identifier)
+        .toSet();
 
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> idsToEvents = {};
 
-    for (final use in uses) {
+    for (final use in grammarErrorUses) {
       final eventID = use.metadata.eventId;
       if (eventID == null || idsToEvents.containsKey(eventID)) continue;
 
@@ -309,8 +327,6 @@ class AnalyticsPracticeSessionRepo {
           continue;
         }
 
-        // Check if the first token was practiced in the last 24 hours
-        final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
         final firstToken = choiceTokens.first;
         final tokenIdentifier = ConstructIdentifier(
           lemma: firstToken.lemma.text,
@@ -318,16 +334,8 @@ class AnalyticsPracticeSessionRepo {
           category: firstToken.pos,
         );
 
-        final recentUses = await MatrixState
-            .pangeaController.matrixState.analyticsDataService
-            .getUses(since: cutoffTime, filterCapped: false);
-
-        final hasRecentPractice = recentUses.any(
-          (use) =>
-              use.identifier == tokenIdentifier &&
-              (use.useType == ConstructUseTypeEnum.corGE ||
-                  use.useType == ConstructUseTypeEnum.incGE),
-        );
+        final hasRecentPractice =
+            recentlyPracticedConstructs.contains(tokenIdentifier);
 
         if (hasRecentPractice) continue;
 
