@@ -24,7 +24,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
@@ -680,8 +679,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   Future<void> _processIncomingUris(Uri? uri) async {
-    if (uri == null) return;
-    await SpaceCodeController.onOpenAppViaUrl(uri);
+    if (uri == null || uri.fragment.isEmpty) return;
+
+    final path =
+        uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FluffyChatApp.router.go(path);
+    });
   }
   // Pangea#
 }
