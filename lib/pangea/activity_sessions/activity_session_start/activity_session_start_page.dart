@@ -191,7 +191,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
     final availableRoles = activity!.roles;
     final assignedRoles = activityRoom?.assignedRoles ??
-        roomSummaries?[widget.roomId]?.activityRoles.roles ??
+        roomSummaries?[widget.roomId]?.activityRoles?.roles ??
         {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
