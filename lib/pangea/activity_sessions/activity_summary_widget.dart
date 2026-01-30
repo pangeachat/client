@@ -98,7 +98,6 @@ class ActivitySummary extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Column(
-                spacing: 4.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   InkWell(
@@ -139,67 +138,73 @@ class ActivitySummary extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (showInstructions) ...[
-                    Row(
-                      spacing: 8.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          activity.req.mode,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                        Row(
-                          spacing: 4.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(Icons.school, size: 12.0),
-                            Text(
-                              activity.req.cefrLevel.string,
+                  if (showInstructions)
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            spacing: 8.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                activity.req.mode,
+                                style: theme.textTheme.bodyMedium,
+                              ),
+                              Row(
+                                spacing: 4.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.school, size: 12.0),
+                                  Text(
+                                    activity.req.cefrLevel.string,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.target,
+                            iconSize: 16.0,
+                            child: Text(
+                              activity.learningObjective,
                               style: theme.textTheme.bodyMedium,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    ActivitySessionDetailsRow(
-                      icon: Symbols.target,
-                      iconSize: 16.0,
-                      child: Text(
-                        activity.learningObjective,
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                    ),
-                    ActivitySessionDetailsRow(
-                      icon: Symbols.steps,
-                      iconSize: 16.0,
-                      child: Html(
-                        data: markdown(activity.instructions),
-                        style: {
-                          "body": Style(
-                            margin: Margins.all(0),
-                            padding: HtmlPaddings.all(0),
-                            fontSize: FontSize(
-                              theme.textTheme.bodyMedium!.fontSize!,
+                          ),
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.steps,
+                            iconSize: 16.0,
+                            child: Html(
+                              data: markdown(activity.instructions),
+                              style: {
+                                "body": Style(
+                                  margin: Margins.all(0),
+                                  padding: HtmlPaddings.all(0),
+                                  fontSize: FontSize(
+                                    theme.textTheme.bodyMedium!.fontSize!,
+                                  ),
+                                ),
+                              },
                             ),
                           ),
-                        },
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.dictionary,
+                            iconSize: 16.0,
+                            child: ActivityVocabWidget(
+                              key: ValueKey(
+                                "activity-summary-${activity.activityId}",
+                              ),
+                              vocab: activity.vocab,
+                              langCode: activity.req.targetLanguage,
+                              targetId: "activity-summary-vocab",
+                              usedVocab: usedVocab,
+                              activityLangCode: activity.req.targetLanguage,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    ActivitySessionDetailsRow(
-                      icon: Symbols.dictionary,
-                      iconSize: 16.0,
-                      child: ActivityVocabWidget(
-                        key: ValueKey(
-                          "activity-summary-${activity.activityId}",
-                        ),
-                        vocab: activity.vocab,
-                        langCode: activity.req.targetLanguage,
-                        targetId: "activity-summary-vocab",
-                        usedVocab: usedVocab,
-                        activityLangCode: activity.req.targetLanguage,
-                      ),
-                    ),
-                  ],
                 ],
               ),
             ),
