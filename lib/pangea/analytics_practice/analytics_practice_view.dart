@@ -213,7 +213,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               children: [
                 _CorrectAnswerHint(controller: controller),
                 _ExampleMessageWidget(
-                  controller.getExampleMessage(target!.target),
+                  controller.getExampleMessage(target!),
                 ),
                 const SizedBox(height: 12),
                 ValueListenableBuilder(
@@ -232,7 +232,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
             height: 100.0,
             child: Center(
               child: _ExampleMessageWidget(
-                controller.getExampleMessage(target!.target),
+                controller.getExampleMessage(target!),
               ),
             ),
           ),

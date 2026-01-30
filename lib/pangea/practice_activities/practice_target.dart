@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
@@ -25,14 +24,10 @@ class PracticeTarget {
   /// this is only defined for morphId activities
   final MorphFeaturesEnum? morphFeature;
 
-  /// Generated example message for the target, if applicable
-  final List<InlineSpan>? exampleMessage;
-
   PracticeTarget({
     required this.tokens,
     required this.activityType,
     this.morphFeature,
-    this.exampleMessage,
   }) {
     if (ActivityTypeEnum.morphId == activityType && morphFeature == null) {
       throw Exception("morphFeature must be defined for morphId activities");

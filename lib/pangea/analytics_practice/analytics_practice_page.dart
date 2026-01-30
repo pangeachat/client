@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -538,20 +537,19 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
-    PracticeTarget target,
+    MessageActivityRequest activityRequest,
   ) async {
+    final target = activityRequest.target;
     final token = target.tokens.first;
     final construct = target.targetTokenConstructID(token);
 
-    String? form;
     if (widget.type == ConstructTypeEnum.morph) {
-      return target.exampleMessage;
+      return activityRequest.morphExampleInfo?.exampleMessage;
     }
 
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct),
       Matrix.of(context).client,
-      form: form,
     );
   }
 

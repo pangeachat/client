@@ -73,6 +73,8 @@ class AnalyticsPracticeSessionRepo {
                 tokens: [entry.token],
                 activityType: ActivityTypeEnum.grammarCategory,
                 morphFeature: entry.feature,
+              ),
+              morphExampleInfo: MorphExampleInfo(
                 exampleMessage: entry.exampleMessage,
               ),
             ),
@@ -371,11 +373,11 @@ class AnalyticsPracticeSessionRepo {
 class MorphPracticeTarget {
   final PangeaToken token;
   final MorphFeaturesEnum feature;
-  final List<InlineSpan>? exampleMessage;
+  final List<InlineSpan> exampleMessage;
 
   MorphPracticeTarget({
     required this.token,
     required this.feature,
-    this.exampleMessage,
+    required this.exampleMessage,
   });
 }
