@@ -163,6 +163,7 @@ class AnalyticsDataService {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
       updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
   }
 
