@@ -60,11 +60,13 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     // Pangea#
     final profiles = result.results;
 
-    if (searchTerm.isValidMatrixId &&
-        searchTerm.sigil == '@' &&
-        !profiles.any((profile) => profile.userId == searchTerm)) {
-      profiles.add(Profile(userId: searchTerm));
-    }
+    // #Pangea
+    // if (searchTerm.isValidMatrixId &&
+    //     searchTerm.sigil == '@' &&
+    //     !profiles.any((profile) => profile.userId == searchTerm)) {
+    //   profiles.add(Profile(userId: searchTerm));
+    // }
+    // Pangea#
 
     return profiles;
   }
