@@ -11959,6 +11959,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
+  "enableNotificationsDesc": "אפשר התראות",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
   "@useActivityImageAsChatBackground": {
     "type": "String",

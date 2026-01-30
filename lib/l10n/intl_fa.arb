@@ -11642,6 +11642,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "چت پانگه‌آ یک اپلیکیشن پیام‌رسان است، بنابراین اعلان‌ها مهم هستند!",
+  "enableNotificationsDesc": "اجازه دادن به اعلان‌ها",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
   "@useActivityImageAsChatBackground": {
     "type": "String",

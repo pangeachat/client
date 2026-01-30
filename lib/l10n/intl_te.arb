@@ -11999,6 +11999,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "పాంజియా చాట్ ఒక సందేశం యాప్ కాబట్టి నోటిఫికేషన్లు ముఖ్యమైనవి!",
+  "enableNotificationsDesc": "నోటిఫికేషన్లను అనుమతించండి",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
   "@useActivityImageAsChatBackground": {
     "type": "String",

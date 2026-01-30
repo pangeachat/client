@@ -11994,6 +11994,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat je aplikácia na posielanie správ, takže notifikácie sú dôležité!",
+  "enableNotificationsDesc": "Povoliť notifikácie",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
   "@useActivityImageAsChatBackground": {
     "type": "String",

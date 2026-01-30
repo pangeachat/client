@@ -10910,6 +10910,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat mezularitza aplikazio bat da, beraz jakinarazpenak garrantzitsuak dira!",
+  "enableNotificationsDesc": "Baimendu jakinarazpenak",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
   "@useActivityImageAsChatBackground": {
     "type": "String",

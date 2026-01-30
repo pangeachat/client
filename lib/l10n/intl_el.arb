@@ -11968,6 +11968,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Η Pangea Chat είναι μια εφαρμογή μηνυμάτων, οπότε οι ειδοποιήσεις είναι σημαντικές!",
+  "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Χρησιμοποιήστε την εικόνα δραστηριότητας ως φόντο συνομιλίας",
   "@useActivityImageAsChatBackground": {
     "type": "String",

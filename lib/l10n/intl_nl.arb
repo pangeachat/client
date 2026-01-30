@@ -10910,6 +10910,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat is een berichten-app, dus meldingen zijn belangrijk!",
+  "enableNotificationsDesc": "Sta meldingen toe",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gebruik activiteit afbeelding als chatachtergrond",
   "@useActivityImageAsChatBackground": {
     "type": "String",

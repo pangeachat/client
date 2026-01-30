@@ -11018,6 +11018,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat - это приложение для обмена сообщениями, поэтому уведомления важны!",
+  "enableNotificationsDesc": "Разрешить уведомления",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
   "@useActivityImageAsChatBackground": {
     "type": "String",

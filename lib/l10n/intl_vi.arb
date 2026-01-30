@@ -6488,6 +6488,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat là một ứng dụng nhắn tin nên thông báo là rất quan trọng!",
+  "enableNotificationsDesc": "Cho phép thông báo",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
   "@useActivityImageAsChatBackground": {
     "type": "String",

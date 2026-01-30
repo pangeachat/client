@@ -11533,6 +11533,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat on viestintäsovellus, joten ilmoitukset ovat tärkeitä!",
+  "enableNotificationsDesc": "Salli ilmoitukset",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
   "@useActivityImageAsChatBackground": {
     "type": "String",

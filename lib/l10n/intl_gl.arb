@@ -10907,6 +10907,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat é unha aplicación de mensaxería, así que as notificacións son importantes!",
+  "enableNotificationsDesc": "Permitir notificacións",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
   "@useActivityImageAsChatBackground": {
     "type": "String",

@@ -10908,6 +10908,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat to aplikacja do wiadomości, więc powiadomienia są ważne!",
+  "enableNotificationsDesc": "Zezwól na powiadomienia",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
   "@useActivityImageAsChatBackground": {
     "type": "String",

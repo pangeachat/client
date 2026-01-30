@@ -12001,6 +12001,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat 係一個短信應用程式，所以通知非常重要！",
+  "enableNotificationsDesc": "允許通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
   "@useActivityImageAsChatBackground": {
     "type": "String",

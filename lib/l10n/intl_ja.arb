@@ -11700,6 +11700,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chatはメッセージアプリなので、通知は重要です！",
+  "enableNotificationsDesc": "通知を許可する",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
   "@useActivityImageAsChatBackground": {
     "type": "String",

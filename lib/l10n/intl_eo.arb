@@ -11999,6 +11999,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat estas aplikaĵo por mesaĝado, do notifikoj estas gravaj!",
+  "enableNotificationsDesc": "Permesi notifikojn",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
   "@useActivityImageAsChatBackground": {
     "type": "String",

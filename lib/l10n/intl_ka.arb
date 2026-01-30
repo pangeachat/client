@@ -11940,6 +11940,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat არის ტექსტური აპლიკაცია, ამიტომ შეტყობინებები მნიშვნელოვანია!",
+  "enableNotificationsDesc": "შეტყობინებების დაშვება",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "გამოიყენეთ აქტივობის სურათი ჩეთის ფონად",
   "@useActivityImageAsChatBackground": {
     "type": "String",

@@ -11388,6 +11388,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat är en meddelandeapp så aviseringar är viktiga!",
+  "enableNotificationsDesc": "Tillåt aviseringar",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
   "@useActivityImageAsChatBackground": {
     "type": "String",

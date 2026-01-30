@@ -10917,6 +10917,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat ist eine Messaging-App, daher sind Benachrichtigungen wichtig!",
+  "enableNotificationsDesc": "Benachrichtigungen erlauben",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
   "@useActivityImageAsChatBackground": {
     "type": "String",
