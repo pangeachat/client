@@ -16,35 +16,57 @@ class ReplyDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return AnimatedContainer(
-      duration: FluffyThemes.animationDuration,
-      curve: FluffyThemes.animationCurve,
-      height: controller.editEvent != null || controller.replyEvent != null
-          ? 56
-          : 0,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.onInverseSurface,
-      ),
-      child: Row(
-        children: <Widget>[
-          IconButton(
-            tooltip: L10n.of(context).close,
-            icon: const Icon(Icons.close),
-            onPressed: controller.cancelReplyEventAction,
+    // #Pangea
+    return ListenableBuilder(
+      listenable:
+          Listenable.merge([controller.replyEvent, controller.editEvent]),
+      builder: (context, __) {
+        final editEvent = controller.editEvent.value;
+        final replyEvent = controller.replyEvent.value;
+        // Pangea#
+        return AnimatedContainer(
+          duration: FluffyThemes.animationDuration,
+          curve: FluffyThemes.animationCurve,
+          // #Pangea
+          // height: controller.editEvent != null || controller.replyEvent != null
+          height: editEvent != null || replyEvent != null
+              // Pangea#
+              ? 56
+              : 0,
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.onInverseSurface,
           ),
-          Expanded(
-            child: controller.replyEvent != null
-                ? ReplyContent(
-                    controller.replyEvent!,
-                    timeline: controller.timeline!,
-                  )
-                : _EditContent(
-                    controller.editEvent?.getDisplayEvent(controller.timeline!),
-                  ),
+          child: Row(
+            children: <Widget>[
+              IconButton(
+                tooltip: L10n.of(context).close,
+                icon: const Icon(Icons.close),
+                onPressed: controller.cancelReplyEventAction,
+              ),
+              Expanded(
+                // #Pangea
+                // child: controller.replyEvent != null
+                child: replyEvent != null
+                    // Pangea#
+                    ? ReplyContent(
+                        // #Pangea
+                        // controller.replyEvent,
+                        replyEvent,
+                        // Pangea#
+                        timeline: controller.timeline!,
+                      )
+                    : _EditContent(
+                        // #Pangea
+                        // controller.editEvent?.getDisplayEvent(controller.timeline!),
+                        editEvent?.getDisplayEvent(controller.timeline!),
+                        // Pangea#
+                      ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
