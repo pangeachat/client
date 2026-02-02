@@ -7,7 +7,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
 import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
@@ -345,11 +344,6 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor =
-        theme.brightness == Brightness.dark ? Colors.white : Colors.black;
-    final color = widget.reacted == true
-        ? theme.bubbleColor
-        : theme.colorScheme.surfaceContainerHigh;
 
     Widget content;
     if (widget.reactionKey.startsWith('mxc://')) {
@@ -367,8 +361,9 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
             const SizedBox(width: 4),
             Text(
               widget.count.toString(),
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: textColor,
+                color: theme.colorScheme.onSurface,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
               ),
             ),
@@ -383,7 +378,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       content = Text(
         renderKey.toString() + (widget.count > 1 ? ' ${widget.count}' : ''),
         style: TextStyle(
-          color: widget.reacted == true ? theme.onBubbleColor : textColor,
+          color: theme.colorScheme.onSurface,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
@@ -438,7 +433,16 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: color,
+                                  color: widget.reacted == true
+                                      ? theme.colorScheme.primaryContainer
+                                      : theme.colorScheme.surfaceContainerHigh,
+                                  border: Border.all(
+                                    color: widget.reacted == true
+                                        ? theme.colorScheme.primary
+                                        : theme
+                                            .colorScheme.surfaceContainerHigh,
+                                    width: 1,
+                                  ),
                                   borderRadius: BorderRadius.circular(
                                     AppConfig.borderRadius / 2,
                                   ),
