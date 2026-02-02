@@ -13,6 +13,7 @@ environment:
 
 dependencies:
   animations: ^2.0.11
+  animated_glitch: ^2.0.0+2
   app_links: ^6.3.3
   archive: ^3.4.10
   async: ^2.11.0
@@ -38,6 +39,7 @@ dependencies:
     sdk: flutter
   flutter_cache_manager: ^3.4.1
   flutter_foreground_task: ^6.1.3
+  flutter_gif: ^0.0.4
   flutter_highlighter: ^0.1.1
   flutter_linkify: ^6.0.0
   flutter_local_notifications: ^17.2.3

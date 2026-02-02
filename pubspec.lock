@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.4"
+  animated_glitch:
+    dependency: "direct main"
+    description:
+      name: animated_glitch
+      sha256: "0e9dac2a8863f3a77861192d9f136062d1776e50a63ab8d2325f331bd2cd3f63"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0+2"
   animations:
     dependency: "direct main"
     description:
@@ -746,6 +754,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.0"
+  flutter_gif:
+    dependency: "direct main"
+    description:
+      name: flutter_gif
+      sha256: b13d7e484e40685e9236ffbaddf012c2448a2e2c1ac48bed345184dd7bc87f88
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   flutter_highlighter:
     dependency: "direct main"
     description:

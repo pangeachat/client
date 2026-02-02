@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/glitch_loading_effect_new.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
@@ -294,7 +294,6 @@ class ActivityCardPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final int shimmerCount = activityCount;
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return SizedBox(
@@ -305,17 +304,10 @@ class ActivityCardPlaceholder extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 24.0),
-            child: Shimmer.fromColors(
-              baseColor: theme.colorScheme.primary.withAlpha(20),
-              highlightColor: theme.colorScheme.primary.withAlpha(50),
-              child: Container(
-                width: isColumnMode ? 160.0 : 120.0,
-                height: isColumnMode ? 280.0 : 200.0,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainer,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-              ),
+            child: GlitchShimmerLoader(
+              width: isColumnMode ? 160.0 : 120.0,
+              height: isColumnMode ? 280.0 : 200.0,
+              borderRadius: BorderRadius.circular(12.0),
             ),
           );
         },
