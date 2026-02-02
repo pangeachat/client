@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-28 13:26:35.542116",
+  "@@last_modified": "2026-01-29 15:25:01.121856",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -3670,8 +3670,6 @@
   "noPaymentInfo": "لا حاجة لمعلومات الدفع!",
   "updatePhoneOS": "قد تحتاج إلى تحديث إصدار نظام تشغيل جهازك.",
   "wordsPerMinute": "كلمات في الدقيقة",
-  "autoIGCToolName": "تشغيل مساعدة الكتابة Pangea تلقائيًا",
-  "autoIGCToolDescription": "تشغيل مساعدة القواعد والترجمة في دردشة Pangea تلقائيًا قبل إرسال رسالتي.",
   "tooltipInstructionsTitle": "لست متأكدًا مما يفعله ذلك؟",
   "tooltipInstructionsMobileBody": "اضغط مع الاستمرار على العناصر لعرض تلميحات الأدوات.",
   "tooltipInstructionsBrowserBody": "مرر فوق العناصر لعرض تلميحات الأدوات.",
@@ -6419,14 +6417,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11169,6 +11159,21 @@
   },
   "courseLoadingError": "حدث خطأ ما، ونحن نعمل بجد على إصلاحه. تحقق مرة أخرى لاحقًا.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "تفعيل مساعدة الكتابة",
+  "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "فشل التسجيل. يرجى التحقق من أذونات الصوت الخاصة بك والمحاولة مرة أخرى.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

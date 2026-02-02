@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-28 13:26:03.157059",
+  "@@last_modified": "2026-01-29 15:24:35.550214",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -2408,8 +2408,6 @@
   "noPaymentInfo": "Nie sú potrebné žiadne platobné údaje!",
   "updatePhoneOS": "Možno budete musieť aktualizovať verziu operačného systému zariadenia",
   "wordsPerMinute": "Slová za minútu",
-  "autoIGCToolName": "Automaticky spustiť pomoc pri písaní Pangea",
-  "autoIGCToolDescription": "Automaticky spustiť gramatickú kontrolu a preklad pomocníka Pangea Chat pred odoslaním správy.",
   "tooltipInstructionsTitle": "Neviete, čo to robí?",
   "tooltipInstructionsMobileBody": "Stlačte a podržte položky na zobrazenie návodov.",
   "tooltipInstructionsBrowserBody": "Nájdite myšou nad položkami na zobrazenie návodov.",
@@ -7289,14 +7287,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12036,6 +12026,21 @@
   },
   "courseLoadingError": "Niečo sa pokazilo a my na tom tvrdo pracujeme, aby sme to opravili. Skontrolujte to neskôr.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Povoliť pomoc pri písaní",
+  "autoIGCToolDescription": "Automaticky spustiť nástroje Pangea Chat na opravu odoslaných správ do cieľového jazyka.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nahrávanie zlyhalo. Skontrolujte svoje povolenia na zvuk a skúste to znova.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

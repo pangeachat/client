@@ -1187,8 +1187,6 @@
   "noPaymentInfo": "Інфармацыя аб плацяжах не патрабуецца!",
   "updatePhoneOS": "Магчыма, вам трэба абнавіць версію аперацыйнай сістэмы вашага прылады.",
   "wordsPerMinute": "Словы за хвіліну",
-  "autoIGCToolName": "Аўтаматычна запускаць дапамогу для пісьма Pangea",
-  "autoIGCToolDescription": "Аўтаматычна запускаць дапамогу для граматыкі і перакладу ў чат-прыкладанні Pangea перад адпраўкай майго паведамлення.",
   "tooltipInstructionsTitle": "Не ўпэўнены, што гэта робіць?",
   "tooltipInstructionsMobileBody": "Затрымайце і трымайце элементы, каб праглядзець падказкі.",
   "tooltipInstructionsBrowserBody": "Навядзіце курсор на элементы, каб праглядзець падказкі.",
@@ -1910,7 +1908,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-28 13:26:22.828870",
+  "@@last_modified": "2026-01-29 15:24:53.163474",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7304,14 +7302,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12051,6 +12041,21 @@
   },
   "courseLoadingError": "Што-то пайшло не так, і мы актыўна працуем над выпраўленнем. Праверце пазней.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Уключыць дапамогу ў напісанні",
+  "autoIGCToolDescription": "Аўтаматычна запускаць інструменты Pangea Chat для выпраўлення адпраўленых паведамленняў на мэтавую мову.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запіс не ўдалося. Калі ласка, праверце свае аўдыё дазволы і паспрабуйце яшчэ раз.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

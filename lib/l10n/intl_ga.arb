@@ -3793,8 +3793,6 @@
   "noPaymentInfo": "Níl aon eolas íocaíochta de dhíth!",
   "updatePhoneOS": "D'fhéadfadh go mbeadh ort do leagan OS a nuashonrú ar do ghléas.",
   "wordsPerMinute": "Focail in aghaidh na nóimead",
-  "autoIGCToolName": "Rith cabhair scríbhneoireachta Pangea go huathoibríoch",
-  "autoIGCToolDescription": "Rith uathoibríoch cabhair gramadaí agus aistriúcháin Pangea Chat sula seolfaidh mé mo theachtaireacht.",
   "tooltipInstructionsTitle": "Níl tú cinnte cad a dhéanann sé sin?",
   "tooltipInstructionsMobileBody": "Bain agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
   "tooltipInstructionsBrowserBody": "Cliceáil agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
@@ -4516,7 +4514,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-28 13:27:02.604512",
+  "@@last_modified": "2026-01-29 15:25:25.078471",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -6200,14 +6198,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10950,6 +10940,21 @@
   },
   "courseLoadingError": "Tharla rud éigin mícheart, agus táimid ag obair go dian chun é a shocrú. Seiceáil arís níos déanaí.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Cuir ar chumas cúnamh scríbhneoireachta",
+  "autoIGCToolDescription": "Rith uathoibríoch uirlisí Pangea Chat chun teachtaireachtaí a sheoladh a cheartú go teanga sprioc.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Theip ar an taifeadadh. Seiceáil do cheadanna gutháin le do thoil agus déan iarracht arís.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

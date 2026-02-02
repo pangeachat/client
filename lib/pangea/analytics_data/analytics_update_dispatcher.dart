@@ -47,8 +47,8 @@ class AnalyticsUpdateDispatcher {
   final StreamController<AnalyticsStreamUpdate> constructUpdateStream =
       StreamController<AnalyticsStreamUpdate>.broadcast();
 
-  final StreamController<String> activityAnalyticsStream =
-      StreamController<String>.broadcast();
+  final StreamController<String?> activityAnalyticsStream =
+      StreamController<String?>.broadcast();
 
   final StreamController<Set<ConstructIdentifier>> unlockedConstructsStream =
       StreamController<Set<ConstructIdentifier>>.broadcast();
@@ -85,7 +85,7 @@ class AnalyticsUpdateDispatcher {
           .map((update) => update.value);
 
   void sendActivityAnalyticsUpdate(
-    String activityAnalytics,
+    String? activityAnalytics,
   ) =>
       activityAnalyticsStream.add(activityAnalytics);
 

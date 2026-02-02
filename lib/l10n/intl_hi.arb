@@ -3759,8 +3759,6 @@
   "noPaymentInfo": "कोई भुगतान जानकारी आवश्यक नहीं!",
   "updatePhoneOS": "आपको अपने डिवाइस का OS संस्करण अपडेट करने की आवश्यकता हो सकती है।",
   "wordsPerMinute": "मिनट में शब्द",
-  "autoIGCToolName": "स्वचालित रूप से पैंजिया लेखन सहायता चलाएँ",
-  "autoIGCToolDescription": "मेरे संदेश भेजने से पहले स्वचालित रूप से पैंजिया चैट व्याकरण और अनुवाद लेखन सहायता चलाएँ।",
   "tooltipInstructionsTitle": "क्या यह करता है, इसके बारे में सुनिश्चित नहीं?",
   "tooltipInstructionsMobileBody": "आइटम को दबाकर रखें और टूलटिप देखने के लिए होवर करें।",
   "tooltipInstructionsBrowserBody": "आइटम पर होवर करें और टूलटिप देखने के लिए होवर करें।",
@@ -4482,7 +4480,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-28 13:26:55.548010",
+  "@@last_modified": "2026-01-29 15:25:18.981310",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7287,14 +7285,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -12037,6 +12027,21 @@
   },
   "courseLoadingError": "कुछ गलत हो गया है, और हम इसे ठीक करने में कड़ी मेहनत कर रहे हैं। बाद में फिर से जांचें।",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "लेखन सहायता सक्षम करें",
+  "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "रिकॉर्डिंग विफल हो गई। कृपया अपनी ऑडियो अनुमति की जांच करें और फिर से प्रयास करें।",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class BotOptionsModel {
@@ -23,6 +24,7 @@ class BotOptionsModel {
   final String? textAdventureGameMasterInstructions;
   final String? targetLanguage;
   final String? targetVoice;
+  final GenderEnum targetGender;
 
   const BotOptionsModel({
     ////////////////////////////////////////////////////////////////////////////
@@ -35,6 +37,7 @@ class BotOptionsModel {
     this.mode = BotMode.discussion,
     this.targetLanguage,
     this.targetVoice,
+    this.targetGender = GenderEnum.unselected,
 
     ////////////////////////////////////////////////////////////////////////////
     // Discussion Mode Options
@@ -73,6 +76,12 @@ class BotOptionsModel {
       mode: json[ModelKey.mode] ?? BotMode.discussion,
       targetLanguage: json[ModelKey.targetLanguage],
       targetVoice: json[ModelKey.targetVoice],
+      targetGender: json[ModelKey.targetGender] != null
+          ? GenderEnum.values.firstWhere(
+              (g) => g.name == json[ModelKey.targetGender],
+              orElse: () => GenderEnum.unselected,
+            )
+          : GenderEnum.unselected,
 
       //////////////////////////////////////////////////////////////////////////
       // Discussion Mode Options
@@ -121,6 +130,7 @@ class BotOptionsModel {
       data[ModelKey.customTriggerReactionKey] = customTriggerReactionKey ?? "⏩";
       data[ModelKey.textAdventureGameMasterInstructions] =
           textAdventureGameMasterInstructions;
+      data[ModelKey.targetGender] = targetGender.name;
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);
@@ -149,6 +159,7 @@ class BotOptionsModel {
     String? textAdventureGameMasterInstructions,
     String? targetLanguage,
     String? targetVoice,
+    GenderEnum? targetGender,
   }) {
     return BotOptionsModel(
       languageLevel: languageLevel ?? this.languageLevel,
@@ -172,6 +183,7 @@ class BotOptionsModel {
               this.textAdventureGameMasterInstructions,
       targetLanguage: targetLanguage ?? this.targetLanguage,
       targetVoice: targetVoice ?? this.targetVoice,
+      targetGender: targetGender ?? this.targetGender,
     );
   }
 }

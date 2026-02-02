@@ -3730,8 +3730,6 @@
   "noPaymentInfo": "No payment info necessary!",
   "updatePhoneOS": "You may need to update your device's OS version.",
   "wordsPerMinute": "Words per minute",
-  "autoIGCToolName": "Run Pangea writing assistance automatically",
-  "autoIGCToolDescription": "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.",
   "chatCapacity": "Chat capacity",
   "roomFull": "This room is already at capacity.",
   "chatCapacityHasBeenChanged": "Chat capacity changed",
@@ -5067,5 +5065,8 @@
   "courseLoadingError": "Something went wrong, and we're hard at work fixing it. Check again later.",
   "onboardingLanguagesTitle": "What language are you learning?",
   "searchLanguagesHint": "Search target languages",
-  "supportSubtitle": "Questions? We're here to help!"
+  "supportSubtitle": "Questions? We're here to help!",
+  "autoIGCToolName": "Enable writing assistance",
+  "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language.",
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
 }

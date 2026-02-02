@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-28 13:26:36.845268",
+  "@@last_modified": "2026-01-29 15:25:02.072081",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -3668,8 +3668,6 @@
   "noPaymentInfo": "Ödeme bilgisi gerekmez!",
   "updatePhoneOS": "Cihazınızın işletim sistemi sürümünü güncellemeniz gerekebilir.",
   "wordsPerMinute": "Dakikada kelime",
-  "autoIGCToolName": "Pangea yazma yardımını otomatik çalıştır",
-  "autoIGCToolDescription": "Mesajımı göndermeden önce Pangea Sohbet dilbilgisi ve çeviri yazma yardımını otomatik olarak çalıştır.",
   "tooltipInstructionsTitle": "Bu ne işe yarar bilmiyor musun?",
   "tooltipInstructionsMobileBody": "Öğe üzerine basılı tutarak ipuçlarını görüntüleyin.",
   "tooltipInstructionsBrowserBody": "İpuçlarını görüntülemek için öğeler üzerinde fare ile durun.",
@@ -6424,14 +6422,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11174,6 +11164,21 @@
   },
   "courseLoadingError": "Bir şeyler yanlış gitti ve biz bunu düzeltmek için yoğun bir şekilde çalışıyoruz. Lütfen daha sonra tekrar kontrol edin.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Yazma yardımını etkinleştir",
+  "autoIGCToolDescription": "Gönderilen mesajları hedef dile düzeltmek için Pangea Chat araçlarını otomatik olarak çalıştır.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Kayıt başarısız oldu. Lütfen ses izinlerinizi kontrol edin ve tekrar deneyin.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

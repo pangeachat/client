@@ -13,7 +13,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/join_codes/knock_space_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/join_codes/too_many_requests_dialog.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../common/controllers/base_controller.dart';
@@ -21,18 +20,6 @@ import '../common/controllers/base_controller.dart';
 class NotFoundException implements Exception {}
 
 class SpaceCodeController extends BaseController {
-  static ValueNotifier<String?> codeNotifier = ValueNotifier<String?>(null);
-
-  static Future<void> onOpenAppViaUrl(Uri url) async {
-    if (url.fragment.isEmpty) return;
-    final fragment = Uri.parse(url.fragment);
-    final code = fragment.queryParameters[SpaceConstants.classCode];
-    if (code != null && fragment.path.contains('join_with_link')) {
-      await SpaceCodeRepo.setSpaceCode(code);
-      codeNotifier.value = code;
-    }
-  }
-
   static Future<String?> joinCachedSpaceCode(BuildContext context) async {
     final String? spaceCode = SpaceCodeRepo.spaceCode;
     if (spaceCode == null) return null;

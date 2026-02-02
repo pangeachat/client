@@ -3621,8 +3621,6 @@
   "translationTooltip": "འབྲེལ་བའི་སྒྲོམ",
   "updatePhoneOS": "ཁྱེད་ཀྱི་རྒྱུན་ལས་སྤྱོད་ལམ་ལ་བསྐུར་བྱེད་དགོས་མིན་པ",
   "wordsPerMinute": "ཚིག་ལ་སྤྱོད་ལམ་ལ་བརྟེན་",
-  "autoIGCToolName": "ཕན་ཚུལ་ལས་འགན་སྤྱོད་ལས་སྤྱོད་ལམ་ལ་བརྟེན་",
-  "autoIGCToolDescription": "ཁྱེད་ཀྱི་དུས་སྐབས་སྤྱོད་ལམ་ལ་བརྟེན་པའི་ཕན་ཚུལ་ལས་འགན་སྤྱོད་ལས་སྤྱོད་ལམ་ལ་བརྟེན་",
   "tooltipInstructionsTitle": "དེ་ལ་གང་འདྲ་ཡོད་པ?",
   "tooltipInstructionsMobileBody": "རྟེན་འབྲེལ་དང་བསྟན་པའི་རྟེན་འབྲེལ་ལ་ལོག་བརྟེན་",
   "tooltipInstructionsBrowserBody": "རྟེན་འབྲེལ་ལ་ལོག་བརྟེན་",
@@ -4278,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-28 13:26:44.570789",
+  "@@last_modified": "2026-01-29 15:25:08.749600",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -6721,14 +6719,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10706,6 +10696,21 @@
   },
   "courseLoadingError": "Nǐng bǐng wǒng, yǐng wǒng bǐng wǒng. Cǐng bǐng yǐng bǐng.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Buka bantuan nulis",
+  "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

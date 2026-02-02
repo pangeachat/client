@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-28 13:26:14.577124",
+  "@@last_modified": "2026-01-29 15:24:45.173559",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -3792,8 +3792,6 @@
   "noPaymentInfo": "Keine Zahlungsinformationen erforderlich!",
   "updatePhoneOS": "Sie müssen möglicherweise die OS-Version Ihres Geräts aktualisieren.",
   "wordsPerMinute": "Wörter pro Minute",
-  "autoIGCToolName": "Pangea Schreibhilfe automatisch ausführen",
-  "autoIGCToolDescription": "Führen Sie die Pangea Chat-Grammatik- und Übersetzungs-Schreibhilfe automatisch aus, bevor Sie meine Nachricht senden.",
   "tooltipInstructionsTitle": "Nicht sicher, was das macht?",
   "tooltipInstructionsMobileBody": "Tippen und halten Sie Elemente, um Tooltips anzuzeigen.",
   "tooltipInstructionsBrowserBody": "Bewegen Sie den Mauszeiger über Elemente, um Tooltips anzuzeigen.",
@@ -6209,14 +6207,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10959,6 +10949,21 @@
   },
   "courseLoadingError": "Etwas ist schiefgelaufen, und wir arbeiten hart daran, es zu beheben. Überprüfen Sie es später erneut.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Schreibassistenz aktivieren",
+  "autoIGCToolDescription": "Automatisch Pangea Chat-Tools ausführen, um gesendete Nachrichten in die Zielsprache zu korrigieren.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Die Aufnahme ist fehlgeschlagen. Bitte überprüfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

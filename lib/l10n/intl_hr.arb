@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-28 13:26:05.722028",
+  "@@last_modified": "2026-01-29 15:24:37.899487",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -3541,8 +3541,6 @@
   "noPaymentInfo": "Nije potrebna informacija o plaćanju!",
   "updatePhoneOS": "Možda ćete morati ažurirati verziju OS-a na svom uređaju.",
   "wordsPerMinute": "Riječi po minuti",
-  "autoIGCToolName": "Automatski pokreni pomoć za pisanje Pangea",
-  "autoIGCToolDescription": "Automatski pokreni pomoć za gramatiku i prijevod Pangea Chat prije slanja moje poruke.",
   "tooltipInstructionsTitle": "Niste sigurni što to radi?",
   "tooltipInstructionsMobileBody": "Dugim pritiskom na stavke prikazuju se alati za pomoć.",
   "tooltipInstructionsBrowserBody": "Pomičite mišem preko stavki za prikazivanje saveta.",
@@ -6574,14 +6572,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11324,6 +11314,21 @@
   },
   "courseLoadingError": "Nešto je pošlo po zlu i marljivo radimo na rješavanju problema. Provjerite ponovo kasnije.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Omogući pomoć pri pisanju",
+  "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Snimanje nije uspjelo. Provjerite svoja audio dopuštenja i pokušajte ponovo.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

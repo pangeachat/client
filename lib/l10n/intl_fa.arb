@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:49.168597",
+  "@@last_modified": "2026-01-29 15:25:12.904348",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -3205,8 +3205,6 @@
   "noPaymentInfo": "نیازی به اطلاعات پرداخت نیست!",
   "updatePhoneOS": "ممکن است نیاز باشد نسخه سیستم‌عامل دستگاه خود را به‌روزرسانی کنید.",
   "wordsPerMinute": "کلمات در دقیقه",
-  "autoIGCToolName": "اجرای خودکار کمک نوشتن پنگئا",
-  "autoIGCToolDescription": "به طور خودکار قبل از ارسال پیام من، کمک نگارش گرامر و ترجمه چت پنگئا را اجرا کنید.",
   "tooltipInstructionsTitle": "مطمئن نیستید چه کاری انجام می‌دهد؟",
   "tooltipInstructionsMobileBody": "برای مشاهده راهنما، آیتم‌ها را نگه دارید.",
   "tooltipInstructionsBrowserBody": "برای مشاهده راهنما، روی آیتم‌ها هاور کنید.",
@@ -6934,14 +6932,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11684,6 +11674,21 @@
   },
   "courseLoadingError": "مشکلی پیش آمده و ما در حال تلاش برای رفع آن هستیم. بعداً دوباره بررسی کنید.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "فعال‌سازی کمک‌نویس",
+  "autoIGCToolDescription": "به‌طور خودکار ابزارهای چت پانژیا را برای اصلاح پیام‌های ارسال‌شده به زبان هدف اجرا کنید.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

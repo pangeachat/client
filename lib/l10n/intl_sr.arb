@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:27:01.338972",
+  "@@last_modified": "2026-01-29 15:25:23.670980",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -2821,8 +2821,6 @@
   "noPaymentInfo": "Није потребно информације о плаћању!",
   "updatePhoneOS": "Можда ће вам бити потребно ажурирати верзију оперативног система уређаја.",
   "wordsPerMinute": "Речи по минуту",
-  "autoIGCToolName": "Аутоматски покрените Пангее помоћ за писање",
-  "autoIGCToolDescription": "Аутоматски покреће Пангее Граматика и помоћ за превођење пре слања моје поруке.",
   "tooltipInstructionsTitle": "Нисте сигурни шта то ради?",
   "tooltipInstructionsMobileBody": "Држите дуго на ставкама да бисте видели савете.",
   "tooltipInstructionsBrowserBody": "Покажите мишем на ставке да бисте видели савете.",
@@ -7304,14 +7302,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -12054,6 +12044,21 @@
   },
   "courseLoadingError": "Nešto je pošlo po zlu, i mi marljivo radimo na rešenju. Proverite ponovo kasnije.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Omogući pomoć pri pisanju",
+  "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslatih poruka na ciljni jezik.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Snimanje nije uspelo. Proverite svoja audio dopuštenja i pokušajte ponovo.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

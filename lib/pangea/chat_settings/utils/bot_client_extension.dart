@@ -59,10 +59,12 @@ extension BotClientExtension on Client {
         final targetLanguage = userSettings.targetLanguage;
         final languageLevel = userSettings.cefrLevel;
         final voice = userSettings.voice;
+        final gender = userSettings.gender;
 
         if (botOptions.targetLanguage == targetLanguage &&
             botOptions.languageLevel == languageLevel &&
-            botOptions.targetVoice == voice) {
+            botOptions.targetVoice == voice &&
+            botOptions.targetGender == gender) {
           continue;
         }
 
@@ -70,6 +72,7 @@ extension BotClientExtension on Client {
           targetLanguage: targetLanguage,
           languageLevel: languageLevel,
           targetVoice: voice,
+          targetGender: gender,
         );
         futures.add(targetBotRoom.setBotOptions(updated));
       }

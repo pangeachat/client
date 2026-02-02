@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:09.473589",
+  "@@last_modified": "2026-01-29 15:24:40.772387",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -3532,8 +3532,6 @@
   "noPaymentInfo": "Nenhuma informação de pagamento necessária!",
   "updatePhoneOS": "Você pode precisar atualizar a versão do sistema operacional do seu dispositivo.",
   "wordsPerMinute": "Palavras por minuto",
-  "autoIGCToolName": "Executar assistência de escrita Pangea automaticamente",
-  "autoIGCToolDescription": "Executar automaticamente a assistência de gramática e tradução do Pangea Chat antes de enviar minha mensagem.",
   "tooltipInstructionsTitle": "Não tem certeza do que isso faz?",
   "tooltipInstructionsMobileBody": "Pressione e segure os itens para ver dicas de ferramenta.",
   "tooltipInstructionsBrowserBody": "Passe o mouse sobre os itens para ver dicas de ferramenta.",
@@ -6577,14 +6575,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11310,6 +11300,21 @@
   },
   "courseLoadingError": "Algo deu errado, e estamos trabalhando duro para consertar. Verifique novamente mais tarde.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ativar assistência de escrita",
+  "autoIGCToolDescription": "Executar automaticamente as ferramentas do Pangea Chat para corrigir mensagens enviadas para o idioma de destino.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Gravação falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

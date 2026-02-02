@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:57.219657",
+  "@@last_modified": "2026-01-29 15:25:20.184834",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -2911,8 +2911,6 @@
   "noPaymentInfo": "Ne necesas paginformoj!",
   "updatePhoneOS": "Eble vi bezonas ĝisdatigi la version de la operaciumo de via aparato.",
   "wordsPerMinute": "Vortoj po minuto",
-  "autoIGCToolName": "Kurigu Pangea verkhelpilo aŭtomate",
-  "autoIGCToolDescription": "Aŭtomate funkciigu Pangea Chat gramatikon kaj tradukadon por helpi vin verki antaŭ ol sendi vian mesaĝon.",
   "tooltipInstructionsTitle": "Ne certas kio tio faras?",
   "tooltipInstructionsMobileBody": "Premu kaj teni objektojn por vidi ilustraĵojn.",
   "tooltipInstructionsBrowserBody": "Hovru super objektoj por vidi ilustraĵojn.",
@@ -7291,14 +7289,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -12041,6 +12031,21 @@
   },
   "courseLoadingError": "Io malĝuste okazis, kaj ni diligente laboras por ripari ĝin. Kontrolu denove poste.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ebligi skriban asistadon",
+  "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrado malsukcesis. Bonvolu kontroli viajn aŭdajn permesojn kaj provi denove.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

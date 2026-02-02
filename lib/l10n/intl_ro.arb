@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:01.958335",
+  "@@last_modified": "2026-01-29 15:24:33.490827",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -3204,8 +3204,6 @@
   "noPaymentInfo": "Nicio informație de plată necesară!",
   "updatePhoneOS": "Poate fi necesar să actualizați versiunea sistemului de operare al dispozitivului dvs.",
   "wordsPerMinute": "Cuvinte pe minut",
-  "autoIGCToolName": "Rulează automat asistența de scriere Pangea",
-  "autoIGCToolDescription": "Porniți automat asistența pentru scrierea gramaticii și traducerii în Pangea Chat înainte de a trimite mesajul meu.",
   "tooltipInstructionsTitle": "Nu ești sigur ce face asta?",
   "tooltipInstructionsMobileBody": "Ține apăsat pe elemente pentru a vizualiza sfaturi.",
   "tooltipInstructionsBrowserBody": "Poziționează cursorul peste elemente pentru a vizualiza sfaturi.",
@@ -6937,14 +6935,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -11687,6 +11677,21 @@
   },
   "courseLoadingError": "Ceva a mers prost și lucrăm din greu pentru a remedia problema. Verifică din nou mai târziu.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Activare asistență la scriere",
+  "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

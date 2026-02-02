@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-28 13:26:00.772325",
+  "@@last_modified": "2026-01-29 15:24:32.345033",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -3787,8 +3787,6 @@
   "noPaymentInfo": "Tidak perlu info pembayaran!",
   "updatePhoneOS": "Anda mungkin perlu memperbarui versi OS perangkat Anda.",
   "wordsPerMinute": "Kata per menit",
-  "autoIGCToolName": "Jalankan otomatis bantuan penulisan Pangea",
-  "autoIGCToolDescription": "Jalankan otomatis bantuan penulisan tata bahasa dan terjemahan Chat Pangea sebelum mengirim pesan saya.",
   "tooltipInstructionsTitle": "Tidak yakin apa itu?",
   "tooltipInstructionsMobileBody": "Tekan dan tahan item untuk melihat tooltip.",
   "tooltipInstructionsBrowserBody": "Arahkan kursor ke item untuk melihat tooltip.",
@@ -6193,14 +6191,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10943,6 +10933,21 @@
   },
   "courseLoadingError": "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktifkan bantuan penulisan",
+  "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

@@ -3773,8 +3773,6 @@
   "noPaymentInfo": "Nav nepieciešama maksājuma informācija!",
   "updatePhoneOS": "Var būt nepieciešams atjaunināt ierīces operētājsistēmas versiju.",
   "wordsPerMinute": "Vārdi minūtē",
-  "autoIGCToolName": "Automātiski palaist Pangea rakstīšanas palīgu",
-  "autoIGCToolDescription": "Automātiski palaist Pangea Čata gramatikas un tulkošanas rakstīšanas palīgu pirms mana ziņojuma nosūtīšanas.",
   "tooltipInstructionsTitle": "Neesat pārliecināts, kas tas dara?",
   "tooltipInstructionsMobileBody": "Turiet un turiet vienumus, lai skatītu rīku padomus.",
   "tooltipInstructionsBrowserBody": "Novietojiet peles kursoru virs vienumiem, lai skatītu rīku padomus.",
@@ -4482,7 +4480,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-28 13:26:33.690801",
+  "@@last_modified": "2026-01-29 15:25:00.127768",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6188,14 +6186,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -10938,6 +10928,21 @@
   },
   "courseLoadingError": "Kaut kas nogāja greizi, un mēs smagi strādājam, lai to labotu. Pārbaudiet vēlāk.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
+  "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Ieraksts neizdevās. Lūdzu, pārbaudiet savas audio atļaujas un mēģiniet vēlreiz.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

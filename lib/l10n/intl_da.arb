@@ -1206,8 +1206,6 @@
   "noPaymentInfo": "Ingen betalingsoplysninger nødvendige!",
   "updatePhoneOS": "Du kan være nødt til at opdatere din enheds OS-version.",
   "wordsPerMinute": "Ord pr. minut",
-  "autoIGCToolName": "Kør Pangea skriveassistance automatisk",
-  "autoIGCToolDescription": "Kør automatisk Pangea Chat grammatik- og oversættelsesassistance, før jeg sender min besked.",
   "tooltipInstructionsTitle": "Er du ikke sikker på, hvad det gør?",
   "tooltipInstructionsMobileBody": "Tryk og hold på elementer for at se værktøjstip.",
   "tooltipInstructionsBrowserBody": "Hold musen over elementer for at se værktøjstip.",
@@ -1929,7 +1927,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-28 13:25:58.575899",
+  "@@last_modified": "2026-01-29 15:24:30.021734",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -7267,14 +7265,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -12013,6 +12003,21 @@
   },
   "courseLoadingError": "Noget gik galt, og vi arbejder hårdt på at løse det. Tjek igen senere.",
   "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivér skriveassistance",
+  "autoIGCToolDescription": "Kør automatisk Pangea Chat-værktøjer for at rette sendte beskeder til målsproget.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og prøv igen.",
+  "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
   }

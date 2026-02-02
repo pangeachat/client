@@ -696,7 +696,6 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
-    SpaceCodeController.codeNotifier.removeListener(_onCacheSpaceCode);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -1108,13 +1107,7 @@ class ChatListController extends State<ChatList>
     MatrixState.pangeaController.initControllers();
     if (mounted) {
       SpaceCodeController.joinCachedSpaceCode(context);
-      SpaceCodeController.codeNotifier.addListener(_onCacheSpaceCode);
     }
-  }
-
-  void _onCacheSpaceCode() {
-    if (!mounted) return;
-    SpaceCodeController.joinCachedSpaceCode(context);
   }
   // Pangea#
 

@@ -134,7 +134,6 @@ class _AnalyticsActivityView extends StatelessWidget {
             valueListenable: controller.activityTarget,
             builder: (context, target, __) => target != null
                 ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         target.promptText(context),
