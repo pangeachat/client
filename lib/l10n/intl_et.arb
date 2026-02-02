@@ -3378,7 +3378,8 @@
   "@commandHint_logoutall": {},
   "commandHint_logout": "Logi oma praegusest seadmest välja",
   "@commandHint_logout": {},
-  "displayNavigationRail": "Näita navigeerimisliistu mobiilis",
+  "displayNavigationRail": "Näita mobiilis külgmist tööriistariba",
+  "@displayNavigationRail": {},
   "customReaction": "Kohandatud reaktsioon",
   "writeAMessageLangCodes": "Kirjuta {l1} või {l2}...",
   "requests": "Päringud",
@@ -4427,10 +4428,6 @@
   "errorFetchingActivity": "Tegevuse toomine ebaõnnestus",
   "check": "Kontrolli",
   "unableToFindRoom": "Selle koodiga vestlust või ruumi ei leitud. Palun proovi uuesti.",
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@customReaction": {
     "type": "String",
     "placeholders": {}
