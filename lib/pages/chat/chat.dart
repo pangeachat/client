@@ -253,9 +253,14 @@ class ChatController extends State<ChatPageWithRoom>
 
   final Set<String> unfolded = {};
 
-  Event? replyEvent;
+  // #Pangea
+  // Event? replyEvent;
 
-  Event? editEvent;
+  // Event? editEvent;
+
+  ValueNotifier<Event?> replyEvent = ValueNotifier(null);
+  ValueNotifier<Event?> editEvent = ValueNotifier(null);
+  // Pangea#
 
   bool _scrolledUp = false;
 
@@ -898,10 +903,10 @@ class ChatController extends State<ChatPageWithRoom>
   // Also, adding PangeaMessageData
   Future<void> send() async {
     final message = sendController.text;
-    final edit = editEvent;
-    final reply = replyEvent;
-    editEvent = null;
-    replyEvent = null;
+    final edit = editEvent.value;
+    final reply = replyEvent.value;
+    editEvent.value = null;
+    replyEvent.value = null;
     pendingText = '';
 
     final tempEventId = await sendFakeMessage(edit, reply);
@@ -956,7 +961,7 @@ class ChatController extends State<ChatPageWithRoom>
       sendController.setSystemText("", EditTypeEnum.other);
     }
 
-    final previousEdit = editEvent;
+    final previousEdit = edit;
     if (showEmojiPicker) {
       hideEmojiPicker();
     }
@@ -1011,8 +1016,8 @@ class ChatController extends State<ChatPageWithRoom>
             data: {
               'roomId': roomId,
               'text': message,
-              'inReplyTo': replyEvent?.eventId,
-              'editEventId': editEvent?.eventId,
+              'inReplyTo': reply?.eventId,
+              'editEventId': edit?.eventId,
             },
           );
           return;
@@ -1032,8 +1037,8 @@ class ChatController extends State<ChatPageWithRoom>
         data: {
           'roomId': roomId,
           'text': message,
-          'inReplyTo': replyEvent?.eventId,
-          'editEventId': editEvent?.eventId,
+          'inReplyTo': reply?.eventId,
+          'editEventId': edit?.eventId,
         },
       );
     });
@@ -1161,8 +1166,8 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     // #Pangea
-    final reply = replyEvent;
-    replyEvent = null;
+    final reply = replyEvent.value;
+    replyEvent.value = null;
     // Pangea#
 
     await room
@@ -1530,7 +1535,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void replyAction({Event? replyTo}) {
     // #Pangea
-    replyEvent = replyTo ?? selectedEvents.first;
+    replyEvent.value = replyTo ?? selectedEvents.first;
     clearSelectedEvents();
     // setState(() {
     //   replyEvent = replyTo ?? selectedEvents.first;
@@ -1688,9 +1693,9 @@ class ChatController extends State<ChatPageWithRoom>
     //   selectedEvents.clear();
     // });
     pendingText = sendController.text;
-    editEvent = selectedEvents.first;
+    editEvent.value = selectedEvents.first;
     sendController.text =
-        editEvent!.getDisplayEvent(timeline!).calcLocalizedBodyFallback(
+        editEvent.value!.getDisplayEvent(timeline!).calcLocalizedBodyFallback(
               MatrixLocals(L10n.of(context)),
               withSenderNamePrefix: false,
               hideReply: true,
@@ -1972,15 +1977,17 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void cancelReplyEventAction() => setState(() {
-        if (editEvent != null) {
-          // #Pangea
-          // sendController.text = pendingText;
-          sendController.setSystemText(pendingText, EditTypeEnum.other);
-          // Pangea#
-          pendingText = '';
-        }
-        replyEvent = null;
-        editEvent = null;
+        // #Pangea
+        // sendController.text = pendingText;
+        sendController.setSystemText(pendingText, EditTypeEnum.other);
+        // Pangea#
+        pendingText = '';
+        // #Pangea
+        // replyEvent = null;
+        // editEvent = null;
+        replyEvent.value = null;
+        editEvent.value = null;
+        // Pangea#
       });
   // #Pangea
   ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
