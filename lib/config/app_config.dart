@@ -138,7 +138,6 @@ abstract class AppConfig {
   static bool hideRedactedEvents = true;
   // Pangea#
   static bool hideUnknownEvents = true;
-  static bool hideUnimportantStateEvents = true;
   static bool separateChatTypes = false;
   static bool autoplayImages = true;
   static bool sendTypingNotifications = true;
@@ -153,7 +152,6 @@ abstract class AppConfig {
   // Pangea#
   static bool experimentalVoip = false;
   static const bool hideTypingUsernames = false;
-  static const bool hideAllStateEvents = false;
   static const String inviteLinkPrefix = 'https://matrix.to/#/';
   static const String deepLinkPrefix = 'im.fluffychat://chat/';
   static const String schemePrefix = 'matrix:';

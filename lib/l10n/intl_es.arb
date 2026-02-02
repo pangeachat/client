@@ -3429,15 +3429,6 @@
   "makeSureTheIdentifierIsValid": "Asegúrese de que el identificador es válido",
   "messageWillBeRemovedWarning": "El mensaje será eliminado para todos los participantes",
   "monday": "Lunes",
-  "moreEvents": "{count,plural, =1{1 evento más} other{{count} más eventos}}",
-  "@moreEvents": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "String"
-      }
-    }
-  },
   "noCrossSignBootstrap": "Fluffychat actualmente no soporta la activación de Cross-Signing. Por favor, actívelo dentro de Riot.",
   "noMegolmBootstrap": "Fluffychat actualmente no soporta la activación de Online Key Backup. Por favor, actívelo dentro de Riot.",
   "noPublicRoomsFound": "Sin chats públicos…",
