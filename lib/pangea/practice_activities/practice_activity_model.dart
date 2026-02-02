@@ -3,6 +3,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -111,6 +112,9 @@ sealed class PracticeActivityModel {
           tokens: tokens,
           morphFeature: morph!,
           multipleChoiceContent: multipleChoiceContent!,
+          morphExampleInfo: json['morph_example_info'] != null
+              ? MorphExampleInfo.fromJson(json['morph_example_info'])
+              : const MorphExampleInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaAudio:
         assert(
@@ -302,11 +306,13 @@ sealed class MorphPracticeActivityModel
 }
 
 class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
+  final MorphExampleInfo morphExampleInfo;
   MorphCategoryPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.morphFeature,
     required super.multipleChoiceContent,
+    required this.morphExampleInfo,
   });
 
   @override
@@ -329,6 +335,13 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
       form: token.lemma.form,
       xp: useType.pointValue,
     );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    final json = super.toJson();
+    json['morph_example_info'] = morphExampleInfo.toJson();
+    return json;
   }
 }
 

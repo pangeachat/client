@@ -242,6 +242,7 @@ class AnalyticsDataService {
     String? roomId,
     DateTime? since,
     ConstructUseTypeEnum? type,
+    bool filterCapped = true,
   }) async {
     await _ensureInitialized();
     final uses = await _analyticsClientGetter.database.getUses(
@@ -264,7 +265,8 @@ class AnalyticsDataService {
         cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
       }
       final cappedLastUse = cappedLastUseCache[use.identifier];
-      if (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse)) {
+      if (filterCapped &&
+          (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse))) {
         continue;
       }
       filtered.add(use);
