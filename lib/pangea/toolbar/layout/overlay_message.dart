@@ -109,7 +109,7 @@ class OverlayMessage extends StatelessWidget {
           ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
     );
 
-    var color = theme.colorScheme.surfaceContainerHighest;
+    var color = theme.colorScheme.surfaceContainerHigh;
     if (ownMessage) {
       color = displayEvent.status.isError
           ? Colors.redAccent
