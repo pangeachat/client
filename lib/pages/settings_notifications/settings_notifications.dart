@@ -8,7 +8,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_notifications/push_rule_extensions.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
@@ -209,18 +208,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   }
 
   Future<void> requestNotificationPermission() async {
-    try {
-      await Matrix.of(context).requestPermission();
-    } catch (e, s) {
-      final permisson = await Matrix.of(context).notificationsEnabled;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'notification_permission': permisson,
-        },
-      );
-    }
+    await Matrix.of(context).requestNotificationPermission();
     if (mounted) setState(() {});
   }
   // Pangea#

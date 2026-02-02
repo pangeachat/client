@@ -47,18 +47,7 @@ class EnabledNotificationsController extends State<EnableNotifications> {
   }
 
   Future<void> _requestNotificationPermission() async {
-    try {
-      await Matrix.of(context).requestPermission();
-    } catch (e, s) {
-      final permisson = await Matrix.of(context).notificationsEnabled;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'notification_permission': permisson,
-        },
-      );
-    }
+    await Matrix.of(context).requestNotificationPermission();
     if (mounted) {
       context.push("/registration/course");
     }
