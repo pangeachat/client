@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
-import 'package:fluffychat/pangea/authentication/p_logout.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
 
 class SpaceCodeOnboardingView extends StatelessWidget {
@@ -27,10 +26,7 @@ class SpaceCodeOnboardingView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BackButton(
-                onPressed: () => pLogoutAction(
-                  context,
-                  bypassWarning: true,
-                ),
+                onPressed: Navigator.of(context).pop,
               ),
               const SizedBox(
                 width: 40.0,

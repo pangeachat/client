@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/authentication/p_logout.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class EnableNotifications extends StatefulWidget {
@@ -42,6 +43,24 @@ class EnabledNotificationsController extends State<EnableNotifications> {
       );
     } finally {
       if (mounted) setState(() {});
+    }
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    try {
+      await Matrix.of(context).requestPermission();
+    } catch (e, s) {
+      final permisson = await Matrix.of(context).notificationsEnabled;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'notification_permission': permisson,
+        },
+      );
+    }
+    if (mounted) {
+      context.push("/registration/course");
     }
   }
 
@@ -92,7 +111,7 @@ class EnabledNotificationsController extends State<EnableNotifications> {
               textAlign: TextAlign.center,
             ),
             ElevatedButton(
-              onPressed: null,
+              onPressed: _requestNotificationPermission,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 foregroundColor:
@@ -107,7 +126,7 @@ class EnabledNotificationsController extends State<EnableNotifications> {
             ),
             TextButton(
               child: Text(L10n.of(context).skipForNow),
-              onPressed: () => context.go("/registration/course"),
+              onPressed: () => context.push("/registration/course"),
             ),
           ],
         ),

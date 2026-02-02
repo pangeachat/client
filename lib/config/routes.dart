@@ -66,6 +66,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
@@ -216,6 +217,14 @@ abstract class AppRoutes {
             state,
             const EnableNotifications(),
           ),
+          redirect: (context, state) async {
+            final redirect =
+                await PAuthGaurd.onboardingRedirect(context, state);
+            if (redirect != null) return redirect;
+            final enabled = await Matrix.of(context).notificationsEnabled;
+            if (enabled) return "/registration/course";
+            return null;
+          },
         ),
         GoRoute(
           path: 'course',
