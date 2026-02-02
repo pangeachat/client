@@ -5,17 +5,17 @@ import 'package:fluffychat/config/app_config.dart';
 class ShimmerBackground extends StatefulWidget {
   final Widget child;
   final Color shimmerColor;
-  final Color? baseColor;
   final bool enabled;
   final BorderRadius? borderRadius;
+  final Duration delayBetweenPulses;
 
   const ShimmerBackground({
     super.key,
     required this.child,
     this.shimmerColor = AppConfig.goldLight,
-    this.baseColor,
     this.enabled = true,
     this.borderRadius,
+    this.delayBetweenPulses = Duration.zero,
   });
 
   @override
@@ -26,18 +26,19 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  Duration pulseDuration = const Duration(milliseconds: 1000);
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1000),
+      duration: pulseDuration,
       vsync: this,
     );
 
     _animation = Tween<double>(
       begin: 0.0,
-      end: 0.5,
+      end: 0.3,
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -46,7 +47,26 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
     );
 
     if (widget.enabled) {
+      _startPulsing();
+    }
+  }
+
+  void _startPulsing() {
+    if (widget.delayBetweenPulses == Duration.zero) {
       _controller.repeat(reverse: true);
+    } else {
+      _pulseOnce();
+    }
+  }
+
+  void _pulseOnce() async {
+    await _controller.forward();
+    await _controller.reverse();
+    if (mounted && widget.enabled) {
+      await Future.delayed(widget.delayBetweenPulses);
+      if (mounted && widget.enabled) {
+        _pulseOnce();
+      }
     }
   }
 
@@ -55,7 +75,7 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
     super.didUpdateWidget(oldWidget);
     if (widget.enabled != oldWidget.enabled) {
       if (widget.enabled) {
-        _controller.repeat(reverse: true);
+        _startPulsing();
       } else {
         _controller.stop();
         _controller.reset();
