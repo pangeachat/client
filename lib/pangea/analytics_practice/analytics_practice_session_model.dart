@@ -12,6 +12,42 @@ class MorphExampleInfo {
   const MorphExampleInfo({
     required this.exampleMessage,
   });
+
+  Map<String, dynamic> toJson() {
+    final segments = <Map<String, dynamic>>[];
+
+    for (final span in exampleMessage) {
+      if (span is TextSpan) {
+        segments.add({
+          'text': span.text ?? '',
+          'isBold': span.style?.fontWeight == FontWeight.bold,
+        });
+      }
+    }
+
+    return {
+      'segments': segments,
+    };
+  }
+
+  factory MorphExampleInfo.fromJson(Map<String, dynamic> json) {
+    final segments = json['segments'] as List<dynamic>? ?? [];
+
+    final spans = <InlineSpan>[];
+    for (final segment in segments) {
+      final text = segment['text'] as String? ?? '';
+      final isBold = segment['isBold'] as bool? ?? false;
+
+      spans.add(
+        TextSpan(
+          text: text,
+          style: isBold ? const TextStyle(fontWeight: FontWeight.bold) : null,
+        ),
+      );
+    }
+
+    return MorphExampleInfo(exampleMessage: spans);
+  }
 }
 
 class AnalyticsActivityTarget {
@@ -28,6 +64,7 @@ class AnalyticsActivityTarget {
   Map<String, dynamic> toJson() => {
         'target': target.toJson(),
         'grammarErrorInfo': grammarErrorInfo?.toJson(),
+        'morphExampleInfo': morphExampleInfo?.toJson(),
       };
 
   factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
@@ -35,6 +72,9 @@ class AnalyticsActivityTarget {
         target: PracticeTarget.fromJson(json['target']),
         grammarErrorInfo: json['grammarErrorInfo'] != null
             ? GrammarErrorRequestInfo.fromJson(json['grammarErrorInfo'])
+            : null,
+        morphExampleInfo: json['morphExampleInfo'] != null
+            ? MorphExampleInfo.fromJson(json['morphExampleInfo'])
             : null,
       );
 }
