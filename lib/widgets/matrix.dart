@@ -645,6 +645,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     _languageListener?.cancel();
     _uriListener?.cancel();
+    notifPermissionNotifier.dispose();
     // Pangea#
 
     super.dispose();

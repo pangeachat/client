@@ -14,11 +14,11 @@ class EnableNotifications extends StatefulWidget {
   const EnableNotifications({super.key});
 
   @override
-  EnabledNotificationsController createState() =>
-      EnabledNotificationsController();
+  EnableNotificationsController createState() =>
+      EnableNotificationsController();
 }
 
-class EnabledNotificationsController extends State<EnableNotifications> {
+class EnableNotificationsController extends State<EnableNotifications> {
   Profile? profile;
 
   @override
@@ -49,7 +49,7 @@ class EnabledNotificationsController extends State<EnableNotifications> {
   Future<void> _requestNotificationPermission() async {
     await Matrix.of(context).requestNotificationPermission();
     if (mounted) {
-      context.push("/registration/course");
+      context.go("/registration/course");
     }
   }
 
@@ -115,7 +115,7 @@ class EnabledNotificationsController extends State<EnableNotifications> {
             ),
             TextButton(
               child: Text(L10n.of(context).skipForNow),
-              onPressed: () => context.push("/registration/course"),
+              onPressed: () => context.go("/registration/course"),
             ),
           ],
         ),
