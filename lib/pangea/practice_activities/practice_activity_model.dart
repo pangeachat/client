@@ -306,6 +306,7 @@ sealed class MorphPracticeActivityModel
 }
 
 class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
+  final MorphExampleInfo morphExampleInfo;
   MorphCategoryPracticeActivityModel({
     required super.tokens,
     required super.langCode,
