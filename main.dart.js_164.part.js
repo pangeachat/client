@@ -5325,6 +5325,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return "Searc for users to invite them to this space.";
     },
+    get$enableNotificationsTitle() {
+      return "Pangea Chat je aplikacija za slanje poruka, pa su obave\u0161tenja va\u017ena!";
+    },
+    get$enableNotificationsDesc() {
+      return "Dozvoli obave\u0161tenja";
+    },
     get$useActivityImageAsChatBackground() {
       return "Bruk aktivitetsbilde som chatbakgrunn";
     },
@@ -5380,7 +5386,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MW2zQwVfvNpVNcs3P4hcK/VQpmQ="] = d.current;
+  d["QBu8W0Fxoa1w/8jwmiUUvihfMz8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

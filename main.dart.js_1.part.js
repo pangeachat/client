@@ -5330,6 +5330,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return "\u641c\u7d22\u7528\u6237\u4ee5\u9080\u8bf7\u4ed6\u4eec\u52a0\u5165\u6b64\u7a7a\u95f4\u3002";
     },
+    get$enableNotificationsTitle() {
+      return "Pangea Chat \u662f\u4e00\u6b3e\u77ed\u4fe1\u5e94\u7528\uff0c\u56e0\u6b64\u901a\u77e5\u975e\u5e38\u91cd\u8981\uff01";
+    },
+    get$enableNotificationsDesc() {
+      return "\u5141\u8bb8\u901a\u77e5";
+    },
     get$useActivityImageAsChatBackground() {
       return "\u5c06\u6d3b\u52a8\u56fe\u50cf\u7528\u4f5c\u804a\u5929\u80cc\u666f";
     },
@@ -10669,6 +10675,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return "\u641c\u5c0b\u7528\u6236\u4ee5\u9080\u8acb\u4ed6\u5011\u52a0\u5165\u6b64\u7a7a\u9593\u3002";
     },
+    get$enableNotificationsTitle() {
+      return "Pangea Chat \u662f\u4e00\u500b\u5373\u6642\u901a\u8a0a\u61c9\u7528\u7a0b\u5f0f\uff0c\u56e0\u6b64\u901a\u77e5\u975e\u5e38\u91cd\u8981\uff01";
+    },
+    get$enableNotificationsDesc() {
+      return "\u5141\u8a31\u901a\u77e5";
+    },
     get$useActivityImageAsChatBackground() {
       return "\u4f7f\u7528\u6d3b\u52d5\u5716\u7247\u4f5c\u70ba\u804a\u5929\u80cc\u666f";
     },
@@ -10713,7 +10725,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cJ0mLcknllm47exLz+/iN2XdzlI="] = d.current;
+  d["fBrJQPsMDN0vEbVYY5qZCOBM/H4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

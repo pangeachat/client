@@ -5335,6 +5335,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return string$.Procure;
     },
+    get$enableNotificationsTitle() {
+      return string$.Pangea;
+    },
+    get$enableNotificationsDesc() {
+      return "Permitir notifica\xe7\xf5es";
+    },
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
     },
@@ -10673,6 +10679,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$publicInviteDescSpace() {
       return string$.Procure;
+    },
+    get$enableNotificationsTitle() {
+      return string$.Pangea;
+    },
+    get$enableNotificationsDesc() {
+      return "Permitir notifica\xe7\xf5es";
     },
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
@@ -16013,6 +16025,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicInviteDescSpace() {
       return string$.Procure;
     },
+    get$enableNotificationsTitle() {
+      return string$.Pangea;
+    },
+    get$enableNotificationsDesc() {
+      return "Permitir notifica\xe7\xf5es";
+    },
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
     },
@@ -16181,6 +16199,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Oh__es: "Oh, este curso precisa de um plano!\n\nPlanos de curso s\xe3o uma sequ\xeancia de t\xf3picos e atividades de conversa.",
     Ops__E: "Ops! Esta atividade precisa de mais 1 pessoa.",
     Ou_a_a: "Ou\xe7a a mensagem completa. Depois, associe os \xe1udios \xe0s palavras.",
+    Pangea: "Pangea Chat \xe9 um aplicativo de mensagens, ent\xe3o as notifica\xe7\xf5es s\xe3o importantes!",
     Para_a: "Para a melhor experi\xeancia ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
     Para_m: "Para mensagens de voz, voc\xea pode ver uma transcri\xe7\xe3o, bem como a pontua\xe7\xe3o de Palavras Por Minuto do falante.",
     Para_q: "Para quem voc\xea quer reportar esta mensagem?",
@@ -16250,7 +16269,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C+3/FstwKyQNmzRIvG7sifYgOHk="] = d.current;
+  d["gx8rTHHWzafArFatH9w4saIGyGc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

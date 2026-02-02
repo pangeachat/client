@@ -5,5353 +5,5359 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nLt$() {
-      return new A.L10nLt(B.canonicalizedLocale("lt"));
+    L10nKo$() {
+      return new A.L10nKo(B.canonicalizedLocale("ko"));
     },
-    L10nLt: function L10nLt(t0) {
+    L10nKo: function L10nKo(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[36], A);
-  A.L10nLt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[35], A);
+  A.L10nKo.prototype = {
     get$alwaysUse24HourFormat() {
-      return "ne";
+      return "false";
     },
     get$repeatPassword() {
-      return "Pakartokite slapta\u017eod\u012f";
+      return "\ube44\ubc00\ubc88\ud638 \ub2e4\uc2dc \uc785\ub825";
     },
     get$notAnImage() {
-      return "N\u0117ra vaizdo \u012fra\u0161as.";
+      return "\uc774\ubbf8\uc9c0 \ud30c\uc77c\uc774 \uc544\ub2d9\ub2c8\ub2e4.";
     },
     get$setCustomPermissionLevel() {
-      return "Nustatyti pasirinktin\u012f leidimo lyg\u012f";
+      return "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \uad8c\ud55c \uc218\uc900 \uc124\uc815";
     },
     get$setPermissionsLevelDescription() {
-      return "Pra\u0161ome pasirinkti i\u0161 anksto nustatyt\u0105 vaidmen\u012f \u017eemiau arba \u012fvesti pasirinktin\u012f leidimo lyg\u012f nuo 0 iki 100.";
+      return "\uc544\ub798\uc5d0\uc11c \ubbf8\ub9ac \uc815\uc758\ub41c \uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uac70\ub098 0\uc5d0\uc11c 100 \uc0ac\uc774\uc758 \uc0ac\uc6a9\uc790 \uc9c0\uc815 \uad8c\ud55c \uc218\uc900\uc744 \uc785\ub825\ud558\uc138\uc694.";
     },
     get$ignoreUser() {
-      return "Ignoruoti vartotoj\u0105";
+      return "\uc0ac\uc6a9\uc790 \ubb34\uc2dc";
     },
     get$normalUser() {
-      return "\u012eprastas vartotojas";
+      return "\uc77c\ubc18 \uc0ac\uc6a9\uc790";
     },
     get$remove(_) {
-      return "Pa\u0161alinti";
+      return "\uc9c0\uc6b0\uae30";
     },
     get$importNow() {
-      return "Importuoti dabar";
+      return "\uc9c0\uae08 \ubd88\ub7ec\uc624\uae30";
     },
     get$importEmojis() {
-      return "Importuoti emocijas";
+      return "\uc774\ubaa8\uc9c0 \ubd88\ub7ec\uc624\uae30";
     },
     get$importFromZipFile() {
-      return "Importuoti i\u0161 .zip failo";
+      return ".zip \ud30c\uc77c\uc5d0\uc11c \ubd88\ub7ec\uc624\uae30";
     },
     get$exportEmotePack() {
-      return "Eksportuoti emocij\u0173 paket\u0105 kaip .zip";
+      return ".zip \ud30c\uc77c\ub85c \uc774\ubaa8\ud2b8 \ub0b4\ubcf4\ub0b4\uae30";
     },
     get$replace(_) {
-      return "Pakeisti";
+      return "\ub300\uccb4";
     },
     aboutHomeserver$1(homeserver) {
-      return "Apie " + homeserver;
+      return homeserver + "\uc758 \ub300\ud574\uc11c";
     },
     get$accept(_) {
-      return "Sutinku";
+      return "\uc218\ub77d";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " pri\u0117m\u0117 kvietim\u0105";
+      return "\ud83d\udc4d " + username + "\ub2d8\uc774 \ucd08\ub300\ub97c \uc218\ub77d\ud568";
     },
     get$account() {
-      return "Paskyra";
+      return "\uacc4\uc815";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " aktyvavo visapus\u012f \u0161ifravim\u0105";
+      return "\ud83d\udd10 " + username + "\ub2d8\uc774 \uc885\ub2e8\uac04 \uc554\ud638\ud654\ub97c \ud65c\uc131\ud654\ud568";
     },
     get$addEmail() {
-      return "Prid\u0117ti el. pa\u0161t\u0105";
+      return "\uc774\uba54\uc77c \ucd94\uac00";
     },
     supposedMxid$1(mxid) {
-      return "Tai tur\u0117t\u0173 b\u016bti " + mxid;
+      return mxid + " \uc774\uc5b4\uc57c \ud568";
     },
     get$admin() {
-      return "Administratorius";
+      return "\uc6b4\uc601\uc790";
     },
     get$allChats() {
-      return "Visi pokalbiai";
+      return "\ubaa8\ub4e0 \ucc44\ud305";
     },
     get$commandHint_roomupgrade() {
-      return "Atnaujinti \u0161\u012f kambar\u012f \u012f nurodyt\u0105 kambario versij\u0105";
+      return "\uc774 \ubc29\uc744 \uc9c0\uc815\ub41c \ubc29 \ubc84\uc804\uc73c\ub85c \uc5c5\uadf8\ub808\uc774\ub4dc";
     },
     get$commandHint_googly() {
-      return "Si\u0173sti keistus akinius";
+      return "\uc655\ub208\uc774 \ub208\uc54c \ubcf4\ub0b4\uae30";
     },
     get$commandHint_cuddle() {
-      return "Si\u0173sti gl\u0117b\u012f";
+      return "\ubbf8\uc18c \ubcf4\ub0b4\uae30";
     },
     get$commandHint_hug() {
-      return "Si\u0173sti apkabinim\u0105";
+      return "\ud5c8\uadf8 \ubcf4\ub0b4\uae30";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " siun\u010dia jums keistus akinius";
+      return senderName + " \ub2d8\uc774 \uc655\ub208\uc774 \ub208\uc54c\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4";
     },
     cuddleContent$1(senderName) {
-      return senderName + " gl\u0117bi jus";
+      return senderName + " \ub2d8\uc774 \ub2f9\uc2e0\uc5d0\uac8c \ubbf8\uc18c\uc9d3\uc2b5\ub2c8\ub2e4";
     },
     hugContent$1(senderName) {
-      return senderName + " apkabina jus";
+      return senderName + "\ub2d8\uc774 \ub2f9\uc2e0\uc744 \ud5c8\uadf8\ud569\ub2c8\ub2e4";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " atsiliep\u0117 \u012f skambut\u012f";
+      return senderName + "\ub2d8\uc774 \uc804\ud654\uc5d0 \uc751\ub2f5\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$anyoneCanJoin() {
-      return "Bet kas gali prisijungti";
+      return "\ub204\uad6c\ub098 \ucc38\uac00\ud560 \uc218 \uc788\uc74c";
     },
     get$archive() {
-      return "Archyvas";
+      return "\uc800\uc7a5";
     },
     get$areYouSure() {
-      return "Ar esate tikri?";
+      return "\ud655\uc2e4\ud55c\uac00\uc694?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Ar tikrai norite atsijungti?";
+      return "\ub85c\uadf8\uc544\uc6c3\ud558\uace0 \uc2f6\uc740 \uac83\uc774 \ud655\uc2e4\ud55c\uac00\uc694?";
     },
     get$askSSSSSign() {
-      return "Kad gal\u0117tum\u0117te prijungti kit\u0105 asmen\u012f, \u012fveskite savo saugyklos slaptafraz\u0119 arba atk\u016brimo rakt\u0105.";
+      return "\ub2e4\ub978 \uc0ac\ub78c\uc744 \uc11c\uba85\ud558\uae30 \uc704\ud574\uc11c, \uc800\uc7a5 \ube44\ubc00\ubc88\ud638\ub098 \ubcf5\uad6c \ud0a4\ub97c \uc785\ub825\ud574\uc8fc\uc138\uc694.";
     },
     askVerificationRequest$1(username) {
-      return "Priimti \u0161i\u0105 patvirtinimo u\u017eklaus\u0105 i\u0161 " + username + "?";
+      return username + "\ub2d8\uc758 \uc778\uc99d \uc694\uccad\uc744 \uc218\ub77d\ud560\uae4c\uc694?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Nam\u0173 serveris palaiko \u0161iuos prisijungimo tipus:\n" + serverVersions + "\nTa\u010diau \u0161i programa palaiko tik:\n" + supportedVersions;
+      return "\ud648\uc11c\ubc84\uac00 \uc9c0\uc6d0\ud558\ub294 \ub85c\uadf8\uc778 \uc720\ud615:\n" + serverVersions + "\n\ud558\uc9c0\ub9cc \uc774 \uc571\uc5d0\uc11c \uc9c0\uc6d0\ud558\ub294 \uac83\uc740:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Si\u0173sti ra\u0161ymo prane\u0161imus";
+      return "\uc785\ub825 \uc54c\ub9bc \ubcf4\ub0b4\uae30";
     },
     get$swipeRightToLeftToReply() {
-      return "Perbraukite de\u0161in\u0119 \u012f kair\u0119, kad atsakytum\u0117te";
+      return "\uc624\ub978\ucabd\uc5d0\uc11c \uc67c\ucabd\uc73c\ub85c \uc2a4\uc640\uc774\ud504\ud574\uc11c \ub2f5\uc7a5";
     },
     get$sendOnEnter() {
-      return "I\u0161si\u0173sti paspaudus Enter";
+      return "\uc5d4\ud130\ub85c \ubcf4\ub0b4\uae30";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " pokalbi\u0173 ir " + participants + " dalyvi\u0173";
+      return "" + chats + " \ucc44\ud305\uacfc " + participants + " \ucc38\uc5ec\uc790";
     },
     get$banned() {
-      return "U\u017eblokuotas";
+      return "\uc601\uad6c \ucd94\ubc29\ub428";
     },
     bannedUser$2(username, targetName) {
-      return username + " u\u017eblokavo " + targetName;
+      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \uc601\uad6c \ucd94\ubc29\ud568";
     },
     get$blockDevice() {
-      return "Blokuoti \u012frengin\u012f";
+      return "\uae30\uae30 \ucc28\ub2e8";
     },
     get$blocked() {
-      return "U\u017eblokuotas";
+      return "\ucc28\ub2e8\ub428";
     },
     get$cancel(_) {
-      return "At\u0161aukti";
+      return "\ucde8\uc18c";
     },
     cantOpenUri$1(uri) {
-      return "Nepavyksta atidaryti URI " + uri;
+      return "URI " + uri + "\ub97c \uc5f4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$changeDeviceName() {
-      return "Pakeisti \u012frenginio vard\u0105";
+      return "\uae30\uae30 \uc774\ub984 \ubc14\uafb8\uae30";
     },
     changedTheChatAvatar$1(username) {
-      return username + " pakeit\u0117 pokalbio avatar\u0105";
+      return username + "\ub2d8\uc774 \ucc44\ud305 \uc544\ubc14\ud0c0\ub97c \ubc14\uafc8";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " pakeit\u0117 pokalbio apra\u0161ym\u0105 \u012f: '" + description + "'";
+      return username + "\ub2d8\uc774 \ucc44\ud305 \uc124\uba85\uc744 '" + description + "' \uc73c\ub85c \ubcc0\uacbd\ud568";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " pakeit\u0117 pokalbio pavadinim\u0105 \u012f: '" + chatname + "'";
+      return username + "\ub2d8\uc774 \ucc44\ud305 \uc774\ub984\uc744 '" + chatname + "' \uc73c\ub85c \ubc14\uafc8";
     },
     changedTheChatPermissions$1(username) {
-      return username + " pakeit\u0117 pokalbi\u0173 leidimus";
+      return username + "\ub2d8\uc774 \ucc44\ud305 \uad8c\ud55c\uc744 \ubc14\uafc8";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " pakeit\u0117 rodom\u0105 vard\u0105 \u012f: '" + displayname + "'";
+      return username + "\ub2d8\uc774 \ub2c9\ub124\uc784\uc744 '" + displayname + "' \ub85c \ubc14\uafc8";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " pakeit\u0117 sve\u010dio prieigos taisykles";
+      return username + "\ub2d8\uc774 \uac8c\uc2a4\ud2b8 \uc811\uadfc \uaddc\uce59\uc744 \ubcc0\uacbd\ud568";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " pakeit\u0117 sve\u010dio prieigos taisykles \u012f: " + rules;
+      return username + "\ub2d8\uc774 \uac8c\uc2a4\ud2b8 \uc811\uadfc \uaddc\uce59\uc744 " + rules + " \ub85c \ubcc0\uacbd\ud568";
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " pakeit\u0117 istorijos matomum\u0105";
+      return username + "\ub2d8\uc774 \ub300\ud654 \uae30\ub85d \uc124\uc815\uc744 \ubcc0\uacbd\ud568";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " pakeit\u0117 istorijos matomum\u0105 \u012f: " + rules;
+      return username + "\ub2d8\uc774 \ub300\ud654 \uae30\ub85d \uc124\uc815\uc744 " + rules + " \ub85c \ubc14\uafc8";
     },
     changedTheJoinRules$1(username) {
-      return username + " pakeit\u0117 prisijungimo taisykles";
+      return username + "\ub2d8\uc774 \ucc38\uac00 \uaddc\uce59\uc744 \ubc14\uafc8";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " pakeit\u0117 prisijungimo taisykles \u012f: " + joinRules;
+      return username + "\ub2d8\uc774 \ucc38\uac00 \uaddc\uce59\uc744 " + joinRules + " \ub85c \ubc14\uafc8";
     },
     changedTheProfileAvatar$1(username) {
-      return username + " pakeit\u0117 savo avatar\u0105";
+      return username + "\ub2d8\uc774 \uc790\uc2e0\uc758 \uc544\ubc14\ud0c0\ub97c \ubc14\uafc8";
     },
     changedTheRoomAliases$1(username) {
-      return username + " pakeit\u0117 kambario pseudonimus";
+      return username + "\ub2d8\uc774 \ubc29 \ubcc4\uba85\uc744 \ubc14\uafc8";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " pakeit\u0117 pakvietimo nuorod\u0105";
+      return username + "\ub2d8\uc774 \ucd08\ub300 \ub9c1\ud06c\ub97c \ubc14\uafc8";
     },
     get$changePassword() {
-      return "Keisti slapta\u017eod\u012f";
+      return "\ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30";
     },
     get$changeTheme() {
-      return "Keisti savo stili\u0173";
+      return "\uc2a4\ud0c0\uc77c \ubc14\uafb8\uae30";
     },
     get$changeYourAvatar() {
-      return "Keisti savo avatar\u0105";
+      return "\uc544\ubc14\ud0c0 \ubc14\uafb8\uae30";
     },
     get$channelCorruptedDecryptError() {
-      return "\u0160ifravimas buvo sugadintas";
+      return "\uc554\ud638\ud654\uac00 \uc190\uc0c1\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$chat() {
-      return "Pokalbis";
+      return "\ucc44\ud305";
     },
     get$chatDetails() {
-      return "Pokalbio detal\u0117s";
+      return "\ucc44\ud305 \uc815\ubcf4";
     },
     get$chats() {
-      return "Pokalbiai";
+      return "\ucc44\ud305";
     },
     get$chooseAStrongPassword() {
-      return "Pasirinkite saug\u0173 slapta\u017eod\u012f";
+      return "\uc548\uc804\ud55c \ube44\ubc00\ubc88\ud638\ub97c \uc124\uc815\ud558\uc138\uc694";
     },
     get$clearArchive() {
-      return "I\u0161valyti archyv\u0105";
+      return "\uc800\uc7a5 \uc9c0\uc6b0\uae30";
     },
     get$close(_) {
-      return "U\u017edaryti";
+      return "\ub2eb\uae30";
     },
     get$commandHint_markasdm() {
-      return "Pa\u017eym\u0117ti kaip tiesioginio pokalbio kambar\u012f";
+      return "Matrix ID\ub97c \uc704\ud55c \ub2e4\uc774\ub809\ud2b8 \uba54\uc2dc\uc9c0 \ubc29\uc73c\ub85c \ud45c\uc2dc";
     },
     get$commandHint_markasgroup() {
-      return "Pa\u017eym\u0117ti kaip grup\u0119";
+      return "\uadf8\ub8f9 \ucc44\ud305\uc73c\ub85c \ub9cc\ub4e4\uae30";
     },
     get$commandHint_ban() {
-      return "U\u017eblokuoti vartotoj\u0105 \u0161iame kambaryje";
+      return "\uc774 \ubc29\uc5d0\uc11c \uc8fc\uc5b4\uc9c4 \uc720\uc800 \uc601\uad6c \ucd94\ubc29\ud558\uae30";
     },
     get$commandHint_clearcache() {
-      return "I\u0161valyti laikin\u0105 talpykl\u0105";
+      return "\uce90\uc2dc \uc9c0\uc6b0\uae30";
     },
     get$commandHint_create() {
-      return "Sukurti tu\u0161\u010di\u0105 grupin\u012f pokalb\u012f\nNaudokite --no-encryption kad i\u0161jungti \u0161ifravim\u0105";
+      return "\ube48 \uadf8\ub8f9 \ucc44\ud305\uc744 \uc0dd\uc131\n--no-encryption\uc744 \uc0ac\uc6a9\ud574 \uc554\ud638\ud654\ub97c \ube44\ud65c\uc131\ud654";
     },
     get$commandHint_discardsession() {
-      return "Atmesti sesij\u0105";
+      return "\uc138\uc158 \uc0ad\uc81c";
     },
     get$commandHint_dm() {
-      return "Prad\u0117ti tiesiogin\u012f pokalb\u012f\nNaudokite --no-encryption kad i\u0161jungti \u0161ifravim\u0105";
+      return "\ub2e4\uc774\ub809\ud2b8 \ucc44\ud305 \uc2dc\uc791\t\n--no-encryption\uc744 \uc0ac\uc6a9\ud574 \uc554\ud638\ud654 \ube44\ud65c\uc131\ud654";
     },
     get$commandHint_html() {
-      return "Si\u0173sti tekst\u0105 HTML formatu";
+      return "HTML \ud615\uc2dd\uc758 \ubb38\uc790 \ubcf4\ub0b4\uae30";
     },
     get$commandHint_invite() {
-      return "Pakviesti vartotoj\u0105 \u012f \u0161it\u0105 kambar\u012f";
+      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800 \uc774 \ub8f8\uc5d0 \ucd08\ub300\ud558\uae30";
     },
     get$commandHint_join() {
-      return "Prisijungti prie nurodyto kambario";
+      return "\uc8fc\uc5b4\uc9c4 \ubc29 \ucc38\uac00\ud558\uae30";
     },
     get$commandHint_kick() {
-      return "Pa\u0161alinti vartotoja i\u0161 \u0161ito kambario";
+      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800 \ubc29\uc5d0\uc11c \uc0ad\uc81c\ud558\uae30";
     },
     get$commandHint_leave() {
-      return "Palikti pokalbi\u0173 kambar\u012f";
+      return "\uc774 \ub8f8 \ub098\uac00\uae30";
     },
     get$commandHint_me() {
-      return "Apib\u016bdinkite save";
+      return "\uc790\uc2e0\uc744 \uc18c\uac1c\ud558\uc138\uc694";
     },
     get$commandHint_myroomavatar() {
-      return "Nustatyti savo nuotrauk\u0105 \u0161iame kambaryje (su mxc-uri)";
+      return "\uc774 \ubc29\uc758 \uc0ac\uc9c4 \uc124\uc815\ud558\uae30 (by mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Nustatyti savo rodom\u0105 vard\u0105 \u0161iame kambaryje";
+      return "\uc774 \ubc29\uc758 \ud45c\uc2dc \uc774\ub984 \uc124\uc815\ud558\uae30";
     },
     get$commandHint_op() {
-      return "Nustatyti naudotojo galios lyg\u012f (numatytasis: 50)";
+      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800\uc758 \uad8c\ud55c \ub808\ubca8 \uc124\uc815 (\uae30\ubcf8:50)";
     },
     get$commandHint_plain() {
-      return "Si\u0173sti neformatuot\u0105 tekst\u0105";
+      return "\ud615\uc2dd\uc774 \uc9c0\uc815\ub418\uc9c0 \uc54a\uc740 \ubb38\uc790 \ubcf4\ub0b4\uae30";
     },
     get$commandHint_react() {
-      return "Si\u0173sti atsakym\u0105 kaip reakcij\u0105";
+      return "\ub2f5\uc7a5 \ubc18\uc751\uc73c\ub85c \ubcf4\ub0b4\uae30";
     },
     get$commandHint_send() {
-      return "Si\u0173sti tekst\u0105";
+      return "\ubb38\uc790 \ubcf4\ub0b4\uae30";
     },
     get$commandHint_unban() {
-      return "Atblokuoti vartotoj\u0105 \u0161iame kambaryje";
+      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800\ub97c \uc774 \ubc29\uc5d0\uc11c \uc601\uad6c\ucd94\ubc29 \ud574\uc81c\ud558\uae30";
     },
     get$compareEmojiMatch() {
-      return "Palyginkite jaustukus";
+      return "\uc544\ub798\uc758 \uc774\ubaa8\uc9c0\uac00 \uc77c\uce58\ud558\ub294\uc9c0 \ube44\uad50\ud558\uc138\uc694";
     },
     get$compareNumbersMatch() {
-      return "Palyginkite skai\u010dius";
+      return "\uc544\ub798\uc758 \uc22b\uc790\uac00 \uc77c\uce58\ud558\ub294\uc9c0 \ube44\uad50\ud558\uc138\uc694";
     },
     get$configureChat() {
-      return "Konfig\u016bruoti pokalb\u012f";
+      return "\ucc44\ud305 \uc124\uc815";
     },
     get$confirm(_) {
-      return "Patvirtinti";
+      return "\ud655\uc778";
     },
     get$copiedToClipboard() {
-      return "Nukopijuota \u012f i\u0161karpin\u0119";
+      return "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428";
     },
     get$copy(_) {
-      return "Kopijuoti";
+      return "\ubcf5\uc0ac";
     },
     couldNotDecryptMessage$1(error) {
-      return "Nepavyko i\u0161\u0161ifruoti prane\u0161imo: " + error;
+      return "\uba54\uc2dc\uc9c0 \ubcf5\ud638\ud654\ud560 \uc218 \uc5c6\uc74c: " + error;
     },
     get$checkList() {
-      return "Patikros s\u0105ra\u0161as";
+      return "\uccb4\ud06c\ub9ac\uc2a4\ud2b8";
     },
     countParticipants$1(count) {
-      return "" + count + " dalyviai";
+      return "" + count + " \ucc38\uc5ec\uc790";
     },
     countInvited$1(count) {
-      return "Kviest\u0173j\u0173: " + count;
+      return "" + count + "\uba85 \ucd08\ub300\ub428";
     },
     get$create(_) {
-      return "Sukurti";
+      return "\uc0dd\uc131";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " suk\u016br\u0117 pokalb\u012f";
+      return "\ud83d\udcac " + username + "\ub2d8\uc774 \ucc44\ud305\uc744 \uc0dd\uc131\ud568";
     },
     get$createGroup() {
-      return "Sukurti grup\u0119";
+      return "\uc0c8 \uadf8\ub8f9 \ucc44\ud305";
     },
     get$currentlyActive() {
-      return "\u0160iuo metu aktyvus";
+      return "\ud604\uc7ac \ud65c\ub3d9 \uc911";
     },
     get$darkTheme() {
-      return "Tamsi";
+      return "\ub2e4\ud06c";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Tai deaktyvuos j\u016bs\u0173 vartotojo paskyr\u0105. Tai negali b\u016bti at\u0161aukta! Ar j\u016bs tuo tikri?";
+      return "\uc774\uac83\uc740 \ub2f9\uc2e0\uc758 \uacc4\uc815\uc744 \ube44\ud65c\uc131\ud654\ud560 \uac83\uc785\ub2c8\ub2e4. \uc774\uac83\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4! \ud655\uc2e4\ud55c\uac00\uc694?";
     },
     get$defaultPermissionLevel() {
-      return "Numatytasis teisi\u0173 lygis";
+      return "\uc0c8\ub85c \ucc38\uac00\ud558\ub294 \uc720\uc800\ub4e4\uc758 \uae30\ubcf8 \uad8c\ud55c \ub808\ubca8";
     },
     get$$delete(_) {
-      return "I\u0161trinti";
+      return "\uc0ad\uc81c";
     },
     get$deleteAccount() {
-      return "Panaikinti paskyra";
+      return "\uacc4\uc815 \uc0ad\uc81c";
     },
     get$deleteMessage() {
-      return "I\u0161trinti \u017einut\u0119";
+      return "\uba54\uc2dc\uc9c0 \uc0ad\uc81c";
     },
     get$devices() {
-      return "\u012erenginiai";
+      return "\uae30\uae30";
     },
     get$displaynameHasBeenChanged() {
-      return "Rodomas vardas buvo pakeistas";
+      return "\ud45c\uc2dc \uc774\ub984\uc774 \ubcc0\uacbd\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$downloadFile() {
-      return "Atsisi\u0173sti fail\u0105";
+      return "\ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$edit() {
-      return "Redaguoti";
+      return "\uc218\uc815";
     },
     get$editBlockedServers() {
-      return "Redaguoti blokuotus serverius";
+      return "\ucc28\ub2e8\ub41c \uc11c\ubc84 \uc218\uc815";
     },
     get$chatPermissions() {
-      return "Pokalbi\u0173 leidimai";
+      return "\ucc44\ud305 \uad8c\ud55c";
     },
     get$editDisplayname() {
-      return "Redaguoti rodom\u0105 vard\u0105";
+      return "\ud45c\uc2dc \uc774\ub984 \uc218\uc815";
     },
     get$editRoomAvatar() {
-      return "Redaguoti kambario avatar\u0105";
+      return "\ubc29 \uc544\ubc14\ud0c0 \uc218\uc815";
     },
     get$emoteExists() {
-      return "Jaustukas jau egzistuoja!";
+      return "\uc774\ubaa8\ud2b8\uac00 \uc774\ubbf8 \uc874\uc7ac\ud569\ub2c8\ub2e4!";
     },
     get$emoteInvalid() {
-      return "Neteisingas jaustuko trumpasis kodas!";
+      return "\uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Neseniai naudoti emocai \u010dia pasirodys...";
+      return "\ucd5c\uadfc \uc0ac\uc6a9\ud55c \uc774\ubaa8\ud2b8\uac00 \uc5ec\uae30 \ub098\ud0c0\ub0a9\ub2c8\ub2e4...";
     },
     get$emotePacks() {
-      return "Jaustuk\u0173 paketai kambariui";
+      return "\ubc29\uc744 \uc704\ud55c \uc774\ubaa8\ud2b8 \ud329";
     },
     get$customEmojisAndStickers() {
-      return "Individual\u016bs jaustukai ir lipdukai";
+      return "\ucee4\uc2a4\ud140 \uc774\ubaa8\uc9c0\uc640 \uc2a4\ud2f0\ucee4";
     },
     get$emoteShortcode() {
-      return "Jaustuko trumpasis kodas";
+      return "\uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4";
     },
     get$emoteWarnNeedToPick() {
-      return "Turite pasirinkti jaustuko trump\u0105j\u012f kod\u0105 ir paveiksliuk\u0105!";
+      return "\uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4\uc640 \uc774\ubbf8\uc9c0\ub97c \uace8\ub77c\uc57c \ud569\ub2c8\ub2e4!";
     },
     get$emptyChat() {
-      return "Tu\u0161\u010dias pokalbis";
+      return "\ube48 \ucc44\ud305";
     },
     get$enableEmotesGlobally() {
-      return "\u012egalinti jaustuk\u0173 paket\u0105 visur";
+      return "\uc774\ubaa8\ud2b8 \ud329 \ud56d\uc0c1 \uc0ac\uc6a9\ud558\uae30";
     },
     get$enableEncryption() {
-      return "Aktyvuoti \u0161ifravim\u0105";
+      return "\uc554\ud638\ud654 \uc0ac\uc6a9";
     },
     get$encrypted() {
-      return "U\u017e\u0161ifruotas";
+      return "\uc554\ud638\ud654\ub428";
     },
     get$encryptionNotEnabled() {
-      return "\u0160ifravimas aktyvuotas";
+      return "\uc554\ud638\ud654\uac00 \ube44\ud65c\uc131\ud654\ub428";
     },
     endedTheCall$1(senderName) {
-      return senderName + " baig\u0117 skambut\u012f";
+      return senderName + " \uc774 \ud1b5\ud654\ub97c \uc885\ub8cc\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$enterAnEmailAddress() {
-      return "\u012eveskite el. pa\u0161to adres\u0105";
+      return "\uc774\uba54\uc77c \uc8fc\uc18c \uc785\ub825";
     },
     errorObtainingLocation$1(error) {
-      return "Klaida nustatant viet\u0105: " + error;
+      return "\uc704\uce58 \uc5bb\ub294 \uc911 \uc624\ub958: " + error;
     },
     get$fontSize(_) {
-      return "\u0160rifto dydis";
+      return "\ud3f0\ud2b8 \ud06c\uae30";
     },
     get$forward(_) {
-      return "Toliau";
+      return "\uc804\ub2ec";
     },
     get$fromJoining() {
-      return "Nuo prisijungimo";
+      return "\ucc38\uac00\uc2dc\uc810 \uc774\ud6c4\ub85c";
     },
     get$fromTheInvitation() {
-      return "Nuo pakvietimo";
+      return "\ucd08\ub300\ubc1b\uc740 \ud6c4\ubd80\ud130";
     },
     get$guestsAreForbidden() {
-      return "Sve\u010diams draud\u017eiama";
+      return "\uac8c\uc2a4\ud2b8\uac00 \ub4e4\uc5b4\uc62c \uc218 \uc5c6\uc74c";
     },
     get$guestsCanJoin() {
-      return "Sve\u010diai gali prisijungti";
+      return "\uac8c\uc2a4\ud2b8\uac00 \ucc38\uac00\ud560 \uc218 \uc788\uc74c";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " at\u0161auk\u0117 " + targetName + " kvietim\u0105";
+      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc5d0 \ub300\ud55c \ucd08\ub300\ub97c \ucca0\ud68c\ud568";
     },
     get$hideRedactedMessages() {
-      return "Sl\u0117pti redaguotas \u017einutes";
+      return "\uc0ad\uc81c\ub41c \uba54\uc2dc\uc9c0 \uc228\uae30\uae30";
     },
     get$hideRedactedMessagesBody() {
-      return "Jei kas nors redaguoja \u017einut\u0119, \u0161i \u017einut\u0117 nebus matoma pokalbyje.";
+      return "\ub204\uad70\uac00\uac00 \uba54\uc2dc\uc9c0\ub97c \uc0ad\uc81c\ud558\uba74 \uba54\uc2dc\uc9c0\ub97c \ub354 \uc774\uc0c1 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Sl\u0117pti netinkamus arba ne\u017einomus \u017einu\u010di\u0173 formatus";
+      return "\uc798\ubabb\ub418\uac70\ub098 \uc54c \uc218 \uc5c6\ub294 \uba54\uc2dc\uc9c0 \ud615\uc2dd \uc228\uae40";
     },
     get$block() {
-      return "Blokuoti";
+      return "\ucc28\ub2e8";
     },
     get$blockedUsers() {
-      return "U\u017eblokuoti vartotojai";
+      return "\ucc28\ub2e8\ub41c \uc720\uc800";
     },
     get$blockListDescription() {
-      return "Galite blokuoti vartotojus, kurie trikdo jus. Negal\u0117site gauti joki\u0173 \u017einu\u010di\u0173 ar kvietim\u0173 \u012f kambarius i\u0161 j\u016bs\u0173 asmeninio blokuot\u0173 vartotoj\u0173 s\u0105ra\u0161o.";
+      return "\ub2f9\uc2e0\uc740 \ub2f9\uc2e0\uc744 \ubc29\ud574\ud558\ub294 \uc720\uc800\ub4e4\uc744 \ucc28\ub2e8\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ub2f9\uc2e0\uc740 \ub2f9\uc2e0\uc758 \uac1c\uc778 \ucc28\ub2e8 \ubaa9\ub85d\uc5d0 \uc788\ub294 \uc5b4\ub5a0\ud55c \uc720\uc800\uc758 \uba54\uc2dc\uc9c0\uc640 \ubc29 \ucd08\ub300\ub3c4 \ubc1b\uc9c0 \uc54a\uc744\uac83 \uc785\ub2c8\ub2e4.";
     },
     get$blockUsername() {
-      return "Ignoruoti vartotojo vard\u0105";
+      return "\uc720\uc800 \uc774\ub984 \ubb34\uc2dc";
     },
     get$iHaveClickedOnLink() {
-      return "A\u0161 paspaud\u017eiau nuorod\u0105";
+      return "\ub9c1\ud06c\ub97c \ud074\ub9ad\ud588\uc5b4\uc694";
     },
     get$incorrectPassphraseOrKey() {
-      return "Neteisinga slaptafraz\u0117 arba atk\u016brimo raktas";
+      return "\uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \ubcf5\uad6c \ud0a4\ub098 \ube44\ubc00\ubc88\ud638";
     },
     get$inviteContact() {
-      return "Pakviesti kontakt\u0105";
+      return "\uc5f0\ub77d\ucc98 \ucd08\ub300";
     },
     get$noChatDescriptionYet() {
-      return "Dar n\u0117ra sukurta pokalbio apra\u0161ymo.";
+      return "\ucc44\ud305 \uc124\uba85\uc774 \uc544\uc9c1 \ucd94\uac00\ub418\uc9c0 \uc54a\uc74c.";
     },
     get$tryAgain() {
-      return "Bandykite dar kart\u0105";
+      return "\ub2e4\uc2dc \uc2dc\ub3c4\ud558\uae30";
     },
     get$invited() {
-      return "Pakviestas";
+      return "\ucd08\ub300\ub428";
     },
     get$redactMessageDescription() {
-      return "\u017dinut\u0117 bus redaguota visiems \u0161io pokalbio dalyviams. Tai nebegal\u0117s b\u016bti at\u0161aukta.";
+      return "\uba54\uc2dc\uc9c0\ub294 \uc774 \ub300\ud654\uc758 \ubaa8\ub4e0 \ucc38\uc5ec\uc790\uc5d0\uac8c \uc0ad\uc81c\ub420 \uac83 \uc785\ub2c8\ub2e4. \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$optionalRedactReason() {
-      return "(Pasirinktinai) Redagavimo prie\u017eastis...";
+      return "(\uc120\ud0dd) \uc774 \uba54\uc2dc\uc9c0\ub97c \ud3b8\uc9d1\ud558\ub294 \uc774\uc720...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " pakviet\u0117 " + targetName;
+      return "\ud83d\udce9 " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd08\ub300\ud568";
     },
     get$invitedUsersOnly() {
-      return "Tik pakviesti vartotojai";
+      return "\ucd08\ub300\ub41c \uc720\uc800\ub9cc";
     },
     get$inviteForMe() {
-      return "Pakvietimas man";
+      return "\ucd08\ub300\ub428";
     },
     get$isTyping() {
-      return "ra\u0161o\u2026";
+      return "\uc785\ub825 \uc911\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " prisijung\u0117 prie pokalbio";
+      return "\ud83d\udc4b " + username + "\ub2d8\uc774 \ucc44\ud305\uc5d0 \ucc38\uac00\ud568";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " i\u0161met\u0117 " + targetName;
+      return "\ud83d\udc5e " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd94\ubc29\ud568";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Paskutinis aktyvumas: " + localizedTimeShort;
+      return "\ub9c8\uc9c0\ub9c9 \ud65c\ub3d9: " + localizedTimeShort;
     },
     get$leave() {
-      return "Palikti";
+      return "\ub098\uac00\uae30";
     },
     get$leftTheChat() {
-      return "Paliko pokalb\u012f";
+      return "\ucc44\ud305\uc744 \ub098\uac14\uc2b5\ub2c8\ub2e4";
     },
     get$lightTheme() {
-      return "\u0160viesi";
+      return "\ub77c\uc774\ud2b8";
     },
     get$dehydrate() {
-      return "Eksportuoti sesij\u0105 ir i\u0161valyti \u012frengin\u012f";
+      return "\uc138\uc158\uc744 \ub0b4\ubcf4\ub0b4\uace0 \uae30\uae30 \ucd08\uae30\ud654 \ud558\uae30";
     },
     get$dehydrateWarning() {
-      return "\u0160io veiksmo negalima at\u0161aukti. \u012esitikinkite, kad saugiai saugote atsargin\u0119 kopij\u0105.";
+      return "\uc774 \ub3d9\uc791\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ubc31\uc5c5 \ud30c\uc77c\uc744 \uaf2d \uc548\uc804\ud558\uac8c \ubcf4\uad00\ud558\uc138\uc694.";
     },
     get$dehydrateTor() {
-      return "TOR Naudotojai: Eksportuoti sesij\u0105";
+      return "TOR \uc0ac\uc6a9\uc790: \uc138\uc158 \ub0b4\ubcf4\ub0b4\uae30";
     },
     get$dehydrateTorLong() {
-      return "TOR naudotojams rekomenduojama eksportuoti sesij\u0105 prie\u0161 u\u017edarant lang\u0105.";
+      return "TOR \uc0ac\uc6a9\uc790\ub4e4\uc740 \ucc3d\uc744 \ub2eb\uae30 \uc804\uc5d0 \uc138\uc158\uc744 \ub0b4\ubcf4\ub0b4\ub294\uac83\uc774 \uad8c\uc7a5\ub429\ub2c8\ub2e4.";
     },
     get$loadingPleaseWait() {
-      return "Kraunama\u2026 Pra\u0161ome palaukti.";
+      return "\ub85c\ub529 \uc911... \uae30\ub2e4\ub824 \uc8fc\uc138\uc694.";
     },
     get$loadMore() {
-      return "Rodyti daugiau\u2026";
+      return "\ub354 \ubd88\ub7ec\uc624\uae30\u2026";
     },
     get$locationDisabledNotice() {
-      return "Vietos nustatymo paslaugos yra i\u0161jungtos. Kad gal\u0117tum\u0117te bendrinti savo buvimo viet\u0105, \u012fjunkite jas.";
+      return "\uc704\uce58 \uc11c\ube44\uc2a4\uac00 \ube44\ud65c\uc131\ud654\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc704\uce58\ub97c \uacf5\uc720\ud558\ub824\uba74 \ud65c\uc131\ud654\uc2dc\ucf1c\uc8fc\uc138\uc694.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Vietos leidimas atmestas. Suteikite leidim\u0105 kad gal\u0117tum\u0117te bendrinti savo viet\u0105.";
+      return "\uc704\uce58 \uad8c\ud55c\uc774 \uac70\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc704\uce58\ub97c \uacf5\uc720\ud558\uae30 \uc704\ud574\uc11c \ud5c8\uc6a9\ud574\uc8fc\uc138\uc694.";
     },
     get$login() {
-      return "Prisijungti";
+      return "\ub85c\uadf8\uc778";
     },
     get$logout() {
-      return "Atsijungti";
+      return "\ub85c\uadf8\uc544\uc6c3";
     },
     get$mention() {
-      return "Pamin\u0117ti";
+      return "\uba58\uc158";
     },
     get$messages() {
-      return "\u017dinut\u0117s";
+      return "\uba54\uc2dc\uc9c0";
     },
     get$messagesStyle() {
-      return "\u017dinut\u0117s:";
+      return "\uba54\uc138\uc9c0:";
     },
     get$moderator() {
-      return "Moderatorius";
+      return "\uad00\ub9ac\uc790";
     },
     get$newChat() {
-      return "Naujas pokalbis";
+      return "\uc0c8 \ucc44\ud305";
     },
     get$newVerificationRequest() {
-      return "Nauja patvirtinimo u\u017eklausa!";
+      return "\uc0c8\ub85c\uc6b4 \ud655\uc778 \uc694\uccad!";
     },
     get$next(_) {
-      return "Toliau";
+      return "\ub2e4\uc74c";
     },
     get$no() {
-      return "Ne";
+      return "\uc544\ub2c8\uc694";
     },
     get$noConnectionToTheServer() {
-      return "N\u0117ra ry\u0161io su serveriu";
+      return "\uc11c\ubc84\uc5d0 \uc5f0\uacb0 \uc5c6\uc74c";
     },
     get$noEmotesFound() {
-      return "Nerasta jaustuk\u0173. \ud83d\ude15";
+      return "\uc774\ubaa8\ud2b8 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc74c. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Pasidalinti kvietimo nuoroda";
+      return "\ucd08\ub300 \ub9c1\ud06c \uacf5\uc720";
     },
     get$none() {
-      return "N\u0117 vienas";
+      return "\uc5c6\uc74c";
     },
     get$noPasswordRecoveryDescription() {
-      return "Dar neprid\u0117jote slapta\u017eod\u017eio atk\u016brimo b\u016bdo.";
+      return "\ub2f9\uc2e0\uc740 \ube44\ubc00\ubc88\ud638\ub97c \ubcf5\uad6c\ud560 \ubc29\ubc95\uc744 \ucd94\uac00\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4.";
     },
     get$noPermission() {
-      return "N\u0117ra leidimo";
+      return "\uad8c\ud55c \uc5c6\uc74c";
     },
     get$noRoomsFound() {
-      return "Nerasta kambari\u0173\u2026";
+      return "\uc544\ubb34 \ubc29\ub3c4 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc558\uc5b4\uc694\u2026";
     },
     get$notifications() {
-      return "Prane\u0161imai";
+      return "\uc54c\ub9bc";
     },
     get$obtainingLocation() {
-      return "Gaunama vieta\u2026";
+      return "\uc704\uce58 \uc5bb\ub294 \uc911\u2026";
     },
     get$offensive() {
-      return "Agresyvus";
+      return "\ubaa8\uc695\uc801\uc784";
     },
     get$ok() {
-      return "OK";
+      return "\ud655\uc778";
     },
     get$oopsSomethingWentWrong() {
-      return "Oi, ka\u017ekas nutiko ne taip\u2026";
+      return "\uc557, \ubb34\uc5b8\uac00\uac00 \uc798\ubabb\ub418\uc5c8\uc2b5\ub2c8\ub2e4\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Vienas i\u0161 j\u016bs\u0173 klient\u0173 atsijung\u0117";
+      return "\ub2f9\uc2e0\uc758 \ud074\ub77c\uc774\uc5b8\ud2b8 \uc911 \ud558\ub098\uac00 \ub85c\uadf8\uc544\uc6c3 \ub428";
     },
     get$openInMaps() {
-      return "Atidaryti \u017eem\u0117lapiuose";
+      return "\uc9c0\ub3c4\uc5d0\uc11c \uc5f4\uae30";
     },
     get$link() {
-      return "Nuoroda";
+      return "\ub9c1\ud06c";
     },
     get$serverRequiresEmail() {
-      return "\u0160is serveris turi patvirtinti j\u016bs\u0173 el. pa\u0161to adres\u0105 registracijai.";
+      return "\uc774 \uc11c\ubc84\ub294 \uac00\uc785\uc744 \uc704\ud574 \ub2f9\uc2e0\uc758 \uc774\uba54\uc77c\uc744 \ud655\uc778\ud574\uc57c \ud569\ub2c8\ub2e4.";
     },
     get$or() {
-      return "Arba";
+      return "\uc774\ub098";
     },
     get$participant() {
-      return "Dalyvis";
+      return "\ucc38\uc5ec\uc790";
     },
     get$passphraseOrKey() {
-      return "Slapta fraz\u0117 arba atk\u016brimo raktas";
+      return "\ube44\ubc00\ubc88\ud638\ub098 \ubcf5\uad6c \ud0a4";
     },
     get$password(_) {
-      return "Slapta\u017eodis";
+      return "\ube44\ubc00\ubc88\ud638";
     },
     get$passwordForgotten() {
-      return "Slapta\u017eodis u\u017emir\u0161tas";
+      return "\ube44\ubc00\ubc88\ud638 \uae4c\uba39\uc74c";
     },
     get$passwordHasBeenChanged() {
-      return "Slapta\u017eodis pakeistas";
+      return "\ube44\ubc00\ubc88\ud638\uac00 \ubcc0\uacbd\ub428";
     },
     get$passwordRecoverySettings() {
-      return "Slapta\u017eod\u017eio atstatymo nustatymai";
+      return "\ube44\ubc00\ubc88\ud638 \ubcf5\uad6c \uc124\uc815";
     },
     get$passwordRecovery() {
-      return "Slapta\u017eod\u017eio atk\u016brimas";
+      return "\ube44\ubc00\ubc88\ud638 \ubcf5\uad6c";
     },
     get$pickImage() {
-      return "Pasirinkite paveiksliuk\u0105";
+      return "\uc774\ubbf8\uc9c0 \uace0\ub974\uae30";
     },
     get$pin() {
-      return "Prisegti";
+      return "\uace0\uc815";
     },
     get$pleaseChoose() {
-      return "Pra\u0161ome pasirinkti";
+      return "\uc120\ud0dd\ud574\uc8fc\uc138\uc694";
     },
     get$pleaseEnterYourPassword() {
-      return "\u012eveskite savo slapta\u017eod\u012f";
+      return "\ube44\ubc00\ubc88\ud638\ub97c \uc785\ub825\ud574\uc8fc\uc138\uc694";
     },
     get$pleaseEnterYourPin() {
-      return "\u012eveskite savo PIN kod\u0105";
+      return "PIN\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694";
     },
     get$pleaseEnterYourUsername() {
-      return "\u012eveskite savo vartotojo vard\u0105";
+      return "\uc720\uc800 \uc774\ub984\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Vadovaukit\u0117s svetain\u0117je pateiktais nurodymais ir bakstel\u0117kite Toliau.";
+      return "\uc6f9\uc0ac\uc774\ud2b8\uc758 \uac00\uc774\ub4dc\ub97c \ub530\ub974\uace0 \ub2e4\uc74c \ubc84\ud2bc\uc744 \ub20c\ub7ec\uc8fc\uc138\uc694.";
     },
     get$privacy() {
-      return "Privatumas";
+      return "\ud504\ub77c\uc774\ubc84\uc2dc";
     },
     get$reason(_) {
-      return "Prie\u017eastis";
+      return "\uc774\uc720";
     },
     redactedBy$1(username) {
-      return "Redagavo " + username;
+      return username + "\ub2d8\uc774 \uc0ad\uc81c\ud568";
     },
     get$directChat() {
-      return "Tiesioginis pokalbis";
+      return "\ub2e4\uc774\ub809\ud2b8 \ucc44\ud305";
     },
     redactedByBecause$2(username, reason) {
-      return "Redagavo " + username + ' d\u0117l: "' + reason + '"';
+      return username + '\ub2d8\uc774 \uc0ad\uc81c\ud568. \uc0ac\uc720: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " pa\u0161alino \u012fvyk\u012f";
+      return username + "\ub2d8\uc774 \uc774\ubca4\ud2b8\ub97c \uc9c0\uc6c0";
     },
     get$redactMessage() {
-      return "Pa\u0161alinti \u017einut\u0119";
+      return "\uba54\uc2dc\uc9c0 \uc9c0\uc6b0\uae30";
     },
     get$reject() {
-      return "Atmesti";
+      return "\uac70\uc808";
     },
     rejectedTheInvitation$1(username) {
-      return username + " atmet\u0117 kvietim\u0105";
+      return username + "\ub2d8\uc774 \ucd08\ub300\ub97c \uac70\uc808\ud568";
     },
     get$removeAllOtherDevices() {
-      return "Pa\u0161alinti visus kitus \u012frenginius";
+      return "\ubaa8\ub4e0 \ub2e4\ub978 \uae30\uae30\uc5d0\uc11c \uc9c0\uc6b0\uae30";
     },
     get$unbanFromChat() {
-      return "Atblokuoti pokalbyje";
+      return "\ucc44\ud305\uc5d0\uc11c \uc601\uad6c\ucd94\ubc29 \ud574\uc81c\ub428";
     },
     get$removeYourAvatar() {
-      return "Pa\u0161alinti savo avatar\u0105";
+      return "\uc544\ubc14\ud0c0 \uc9c0\uc6b0\uae30";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Pakeisti kambar\u012f naujesne versija";
+      return "\ubc29 \uc0c8\ub85c\uc6b4 \ubc84\uc804\uc73c\ub85c \ub300\uccb4\ud558\uae30";
     },
     get$reply(_) {
-      return "Atsakyti";
+      return "\ub2f5\uc7a5";
     },
     get$reportMessage() {
-      return "Prane\u0161ti apie \u017einut\u0119";
+      return "\uba54\uc2dc\uc9c0 \uc2e0\uace0";
     },
     get$roomHasBeenUpgraded() {
-      return "Kambarys buvo atnaujintas";
+      return "\ubc29\uc774 \uc5c5\uadf8\ub808\uc774\ub4dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$search(_) {
-      return "Ie\u0161koti";
+      return "\uac80\uc0c9";
     },
     get$security() {
-      return "Apsauga";
+      return "\ubcf4\uc548";
     },
     get$send(_) {
-      return "Si\u0173sti";
+      return "\ubcf4\ub0b4\uae30";
     },
     get$sendAMessage() {
-      return "Si\u0173sti \u017einut\u0119";
+      return "\uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
     },
     get$sendAudio() {
-      return "Si\u0173sti garso \u012fra\u0161\u0105";
+      return "\uc624\ub514\uc624 \ubcf4\ub0b4\uae30";
     },
     get$sendFile() {
-      return "S\u0173sti byl\u0105";
+      return "\ud30c\uc77c \ubcf4\ub0b4\uae30";
     },
     get$sendImage() {
-      return "Si\u0173sti paveiksliuk\u0105";
+      return "\uc774\ubbf8\uc9c0 \ubcf4\ub0b4\uae30";
     },
     sendImages$1(count) {
-      return "Si\u0173sti " + count + " nuotrauk\u0105";
+      return "\uc774\ubbf8\uc9c0 " + count + "\uac1c \ubcf4\ub0b4\uae30";
     },
     get$sendMessages() {
-      return "Si\u0173sti \u017einutes";
+      return "\uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
     },
     get$sendVideo() {
-      return "Si\u0173sti video";
+      return "\uc601\uc0c1 \ubcf4\ub0b4\uae30";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " atsiunt\u0117 fail\u0105";
+      return "\ud83d\udcc1 " + username + "\ub2d8\uc774 \ud30c\uc77c\uc744 \ubcf4\ub0c4";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " atsiunt\u0117 garso \u012fra\u0161\u0105";
+      return "\ud83c\udfa4 " + username + "\ub2d8\uc774 \uc624\ub514\uc624\ub97c \ubcf4\ub0c4";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " atsiunt\u0117 nuotrauk\u0105";
+      return "\ud83d\uddbc\ufe0f " + username + "\ub2d8\uc774 \uc0ac\uc9c4\uc744 \ubcf4\ub0c4";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " atsiunt\u0117 lipduk\u0105";
+      return "\ud83d\ude0a " + username + "\ub2d8\uc774 \uc2a4\ud2f0\ucee4\ub97c \ubcf4\ub0c4";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " atsiunt\u0117 vaizdo \u012fra\u0161\u0105";
+      return "\ud83c\udfa5 " + username + "\ub2d8\uc774 \uc601\uc0c1\uc744 \ubcf4\ub0c4";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " i\u0161siunt\u0117 skambu\u010dio informacij\u0105";
+      return senderName + " \uc774 \ud1b5\ud654 \uc815\ubcf4 \ubcf4\ub0c4";
     },
     get$setChatDescription() {
-      return "Nustatyti pokalbio apra\u0161ym\u0105";
+      return "\ucc44\ud305 \uc124\uba85 \uc124\uc815";
     },
     get$settings() {
-      return "Nustatytmai";
+      return "\uc124\uc815";
     },
     get$share(_) {
-      return "Bendrinti";
+      return "\uacf5\uc720";
     },
     sharedTheLocation$1(username) {
-      return username + " bendrino savo viet\u0105";
+      return username + "\ub2d8\uc774 \uc704\uce58\ub97c \uacf5\uc720\ud568";
     },
     get$shareLocation() {
-      return "Bendrinti viet\u0105";
+      return "\uc704\uce58 \ubcf4\ub0b4\uae30";
     },
     get$skip(_) {
-      return "Praleisti";
+      return "\uc2a4\ud0b5";
     },
     get$sourceCode() {
-      return "Programinis kodas";
+      return "\uc18c\uc2a4 \ucf54\ub4dc";
     },
     startedACall$1(senderName) {
-      return senderName + " prad\u0117jo skambut\u012f";
+      return senderName + " \uac00 \ud1b5\ud654 \uc2dc\uc791\ud568";
     },
     get$status(_) {
-      return "B\u016bsena";
+      return "\uc0c1\ud0dc";
     },
     get$submit(_) {
-      return "Pateikti";
+      return "\uc81c\ucd9c";
     },
     get$synchronizingPleaseWait() {
-      return "Sinchronizuojama\u2026 Pra\u0161ome palaukti.";
+      return "\ub3d9\uae30\ud654 \uc911... \uae30\ub2e4\ub824\uc8fc\uc138\uc694.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "Sinchronizuojama\u2026 (" + percentage + "%)";
+      return " \ub3d9\uae30\ud654\uc911\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistema";
+      return "\uc2dc\uc2a4\ud15c";
     },
     get$theyDontMatch() {
-      return "Jie nesutampa";
+      return "\uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
     },
     get$theyMatch() {
-      return "Jie sutampa";
+      return "\uc77c\uce58\ud569\ub2c8\ub2e4";
     },
     get$tooManyRequestsWarning() {
-      return "Per daug u\u017eklaus\u0173. Pabandykite dar kart\u0105 v\u0117liau!";
+      return "\ub108\ubb34 \ub9ce\uc740 \uc694\uccad. \uc7a0\uc2dc \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud574\uc8fc\uc138\uc694!";
     },
     get$tryToSendAgain() {
-      return "Pabandykite i\u0161si\u0173sti dar kart\u0105";
+      return "\ub2e4\uc2dc \ubcf4\ub0b4\ub3c4\ub85d \uc2dc\ub3c4";
     },
     get$unavailable() {
-      return "Nepasiekiamas";
+      return "\uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc74c";
     },
     unbannedUser$2(username, targetName) {
-      return username + " atblokavo " + targetName;
+      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc5d0\ub300\ud55c \uc601\uad6c\ucd94\ubc29\uc744 \ud574\uc81c\ud568";
     },
     get$unblockDevice() {
-      return "Atblokuoti \u012frengin\u012f";
+      return "\uae30\uae30 \ucc28\ub2e8 \ud574\uc81c";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Ne\u017einomas \u0161ifravimo algoritmas";
+      return "\uc54c \uc218 \uc5c6\ub294 \uc554\ud638\ud654 \uc54c\uace0\ub9ac\uc998";
     },
     unknownEvent$1(type) {
-      return "Ne\u017einomas \u012fvykis '" + type + "'";
+      return "\uc54c \uc218 \uc5c6\ub294 \uc774\ubca4\ud2b8 '" + type + "'";
     },
     get$unpin() {
-      return "Atsegti";
+      return "\uace0\uc815 \ud574\uc81c";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " ir dar " + count + " kiti ra\u0161o\u2026";
+      return username + "\ub2d8 + " + count + "\uba85\uc774 \uc785\ub825 \uc911\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " ir " + username2 + " ra\u0161o\u2026";
+      return username + "\ub2d8\uacfc " + username2 + "\ub2d8\uc774 \uc785\ub825 \uc911\u2026";
     },
     userIsTyping$1(username) {
-      return username + " ra\u0161o\u2026";
+      return username + "\ub2d8\uc774 \uc785\ub825 \uc911\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " paliko pokalb\u012f";
+      return "\ud83d\udeaa " + username + "\ub2d8\uc774 \ucc44\ud305\uc744 \ub098\uac10";
     },
     get$username(_) {
-      return "Vartotojo vardas";
+      return "\uc720\uc800 \uc774\ub984";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " i\u0161siunt\u0117 " + type + " \u012fvyk\u012f";
+      return username + "\ub2d8\uc774 " + type + " \uc774\ubca4\ud2b8 \ubcf4\ub0c4";
     },
     get$unverified() {
-      return "Nepatvirtinta";
+      return "\ud655\uc778\ub418\uc9c0 \uc54a\uc74c";
     },
     get$verified() {
-      return "Patvirtinta";
+      return "\ud655\uc778\ub428";
     },
     get$verifyStart() {
-      return "Prad\u0117ti patvirtinim\u0105";
+      return "\ud655\uc778 \uc2dc\uc791";
     },
     get$verifySuccess() {
-      return "J\u016bs s\u0117kmingai patvirtinote!";
+      return "\uc131\uacf5\uc801\uc73c\ub85c \ud655\uc778\ud588\uc5b4\uc694!";
     },
     get$verifyTitle() {
-      return "Patvirtinama kita paskyra";
+      return "\ub2e4\ub978 \uacc4\uc815 \ud655\uc778 \uc911";
     },
     get$visibleForAllParticipants() {
-      return "Matoma visiems dalyviams";
+      return "\ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \ubcf4\uc784";
     },
     get$visibleForEveryone() {
-      return "Matoma visiems";
+      return "\ubaa8\ub450\uc5d0\uac8c \ubcf4\uc784";
     },
     get$voiceMessage() {
-      return "Balso \u017einut\u0117";
+      return "\uc74c\uc131 \uba54\uc2dc\uc9c0";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Laukiama, kol dalyvis priims u\u017eklaus\u0105\u2026";
+      return "\uc0c1\ub300\uac00 \uc694\uccad\uc744 \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Laukiama, kol dalyvis priims jaustukus\u2026";
+      return "\uc0c1\ub300\uac00 \uc774\ubaa8\uc9c0\ub97c \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Laukiama, kol dalyvis priims skai\u010dius\u2026";
+      return "\uc0c1\ub300\uac00 \uc22b\uc790\ub97c \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
     },
     get$warning() {
-      return "\u012esp\u0117jimas!";
+      return "\uacbd\uace0!";
     },
     get$weSentYouAnEmail() {
-      return "I\u0161siunt\u0117me jums el. lai\u0161k\u0105";
+      return "\uc6b0\ub9ac\uac00 \ub2f9\uc2e0\uc5d0\uac8c \uc774\uba54\uc77c\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4";
     },
     get$whyDoYouWantToReportThis() {
-      return "Kod\u0117l norite apie tai prane\u0161ti?";
+      return "\uc65c \uc774\uac83\uc744 \uc2e0\uace0\ud558\ub824\uace0 \ud558\ub098\uc694?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Naudodami \u0161iuos adresus galite atkurti savo slapta\u017eod\u012f.";
+      return "\uc774 \uc8fc\uc18c\ub85c \ub2f9\uc2e0\uc758 \ube44\ubc00\ubc88\ud638\ub97c \ubcf5\uad6c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$writeAMessage() {
-      return "Ra\u0161yti \u017einut\u0119\u2026";
+      return "\uba54\uc2dc\uc9c0 \uc791\uc131\u2026";
     },
     get$yes() {
-      return "Taip";
+      return "\ud655\uc778";
     },
     get$you() {
-      return "J\u016bs";
+      return "\ub2f9\uc2e0";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "J\u016bs nebedalyvaujate \u0161iame pokalbyje";
+      return "\ub2f9\uc2e0\uc740 \ub354 \uc774\uc0c1 \uc774 \ucc44\ud305\uc5d0 \ucc38\uc5ec\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Jums buvo u\u017edrausta dalyvauti \u0161iame pokalbyje";
+      return "\ub2f9\uc2e0\uc740 \uc774 \ucc44\ud305\uc5d0\uc11c \uc601\uad6c \ucd94\ubc29\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$yourPublicKey() {
-      return "J\u016bs\u0173 vie\u0161asis raktas";
+      return "\ub2f9\uc2e0\uc758 \uacf5\uac1c \ud0a4";
     },
     get$messageInfo() {
-      return "\u017dinut\u0117s informacija";
+      return "\uba54\uc2dc\uc9c0 \uc815\ubcf4";
     },
     get$time(_) {
-      return "Laikas";
+      return "\uc2dc\uac04";
     },
     get$sender() {
-      return "Siunt\u0117jas";
+      return "\ubc1c\uc2e0\uc790";
     },
     get$openGallery() {
-      return "Atverti galerij\u0105";
+      return "\uac24\ub7ec\ub9ac \uc5f4\uae30";
     },
     get$start(_) {
-      return "Prad\u017eia";
+      return "\uc2dc\uc791";
     },
     get$markAsRead() {
-      return "\u017dym\u0117ti kaip skaityt\u0105";
+      return "\uc77d\uc74c\uc73c\ub85c \ud45c\uc2dc\ud558\uae30";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " sureagavo su " + reaction;
+      return sender + "\uac00 " + reaction + "\ub85c \ubc18\uc751\ud568";
     },
     get$pinMessage() {
-      return "Prisegti prie kambario";
+      return "\ubc29\uc5d0 \uace0\uc815";
     },
     get$emojis() {
-      return "Jaustukai";
+      return "\uc774\ubaa8\uc9c0";
     },
     get$youRejectedTheInvitation() {
-      return "J\u016bs atmet\u0117te kvietim\u0105";
+      return "\ucd08\ub300\ub97c \uac70\ubd80\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$youJoinedTheChat() {
-      return "J\u016bs prisijung\u0117te prie pokalbio";
+      return "\ucc44\ud305\uc5d0 \ucc38\uac00\ud558\uc600\uc2b5\ub2c8\ub2e4";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d J\u016bs pri\u0117m\u0117te kvietim\u0105";
+      return "\ud83d\udc4d \ucd08\ub300\ub97c \uc218\ub77d\ud588\uc2b5\ub2c8\ub2e4";
     },
     youBannedUser$1(user) {
-      return "J\u016bs u\u017eblokavote " + user;
+      return user + "\ub2d8\uc744 \uc601\uad6c \ucd94\ubc29\ud568";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "J\u016bs at\u0161auk\u0117te kvietim\u0105 " + user;
+      return user + "\ub2d8\uc5d0 \ub300\ud55c \ucd08\ub300\ub97c \ucca0\ud68c\ud568";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Jus pakviet\u0117 " + user;
+      return "\ud83d\udce9 " + user + "\ub2d8\uc5d0 \uc758\ud574 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Pakviet\u0117te " + user;
+      return "\ud83d\udce9 " + user + "\ub2d8\uc744 \ucd08\ub300\ud588\uc2b5\ub2c8\ub2e4";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e J\u016bs i\u0161met\u0117te " + user;
+      return "\ud83d\udc5e " + user + "\ub2d8\uc744 \ucd94\ubc29\ud588\uc2b5\ub2c8\ub2e4";
     },
     youUnbannedUser$1(user) {
-      return "J\u016bs atblokavote " + user;
+      return user + "\ub2d8\uc758 \uc601\uad6c \ucd94\ubc29\uc744 \ud574\uc81c\ud588\uc2b5\ub2c8\ub2e4";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " pasibeld\u0117";
+      return "\ud83d\udeaa " + user + "\ub2d8\uc774 \ucc38\uac00\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$knock() {
-      return "Klausyti";
+      return "\ucc38\uac00 \uc694\uccad";
     },
     countFiles$1(count) {
-      return "" + count + " failai";
+      return "" + count + "\uac1c\uc758 \ud30c\uc77c";
     },
     get$user() {
-      return "Vartotojas";
+      return "\uc720\uc800";
     },
     get$custom() {
-      return "Pasirinktinis";
+      return "\ucee4\uc2a4\ud140";
     },
     get$noKeyForThisMessage() {
-      return "Taip gali atsitikti, jei \u017einut\u0117 buvo i\u0161si\u0173sta prie\u0161 prisijungiant prie paskyros \u0161iame prietaise.\n\nTaip pat gali b\u016bti, kad siunt\u0117jas u\u017eblokavo j\u016bs\u0173 prietais\u0105 arba ka\u017ekas sutriko su interneto ry\u0161iu.\n\nAr galite perskaityti \u017einut\u0119 kitoje sesijoje? Tada galite perkelti \u017einut\u0119 i\u0161 jos! Eikite \u012f Nustatymai > Prietaisai ir \u012fsitikinkite, kad j\u016bs\u0173 prietaisai patvirtino vienas kit\u0105. Kai kit\u0105 kart\u0105 atidarysite kambar\u012f ir abi sesijos bus pirmame plane, raktai bus perduoti automati\u0161kai.\n\nNenorite prarasti rakt\u0173 atsijungdami arba keisdami \u012frenginius? \u012esitikinkite, kad nustatymuose \u012fjung\u0117te pokalbi\u0173 atsargin\u0119 kopij\u0105.";
+      return "\uc774\uac83\uc740 \uc774 \uba54\uc2dc\uc9c0\uac00 \ub2f9\uc2e0\uc774 \uc774 \uae30\uae30\ub97c \uc11c\uba85\ud558\uae30 \uc804\uc5d0 \ubc1c\uc1a1\ub418\uc5c8\uae30 \ub54c\ubb38\uc5d0 \uc77c\uc5b4\ub0ac\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\uc774\uac83\uc740 \ub610\ud55c \ubc1c\uc1a1\uc790\uac00 \ub2f9\uc2e0\uc758 \uae30\uae30\ub97c \ucc28\ub2e8\ud558\uc600\uac70\ub098 \ud639\uc740 \uc778\ud130\ub137 \uc5f0\uacb0\uc774 \uc798\ubabb\ub418\uc5c8\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\ub2e4\ub978 \uc138\uc158\uc5d0\uc11c \uc774 \uba54\uc2dc\uc9c0\ub97c \uc77d\uc744 \uc218 \uc788\ub098\uc694? \uadf8\ub807\ub2e4\uba74 \uadf8 \uba54\uc2dc\uc9c0\ub97c \uc62e\uae38 \uc218 \uc788\uc2b5\ub2c8\ub2e4! \uc124\uc815 > \uae30\uae30\ub85c \uac00\uc11c \uae30\uae30\ub97c \uc11c\ub85c \uc99d\uba85\ud558\uc138\uc694. \ub2e4\uc74c\ubc88\uc5d0 \ubc29\uc744 \uc5f4\uc5c8\uc744 \ub54c \ub450 \uc138\uc158\uc774 \ubaa8\ub450 \uc791\ub3d9\uc911\uc774\ub77c\uba74, \ud0a4\uac00 \uc790\ub3d9\uc73c\ub85c \uc62e\uaca8\uc9c8\uac83\uc785\ub2c8\ub2e4.\n\n\ub85c\uadf8\uc544\uc6c3\ud558\uac70\ub098 \uae30\uae30\ub97c \ubc14\uafc0 \ub54c \ud0a4\ub97c \uc783\uace0\uc2f6\uc9c0 \uc54a\uc73c\uc2e0\uac00\uc694? \uc124\uc815\uc5d0\uc11c \ucc44\ud305 \ubc31\uc5c5\uc744 \uc0ac\uc6a9\uc911\uc778\uc9c0 \ud655\uc778\ud558\uc138\uc694.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Tu\u0161\u010dias pokalbis (buvo " + oldDisplayName + ")";
+      return "\ube48 \ucc44\ud305 (\uc804 " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "V\u0117l atidaryti pokalb\u012f";
+      return "\ucc44\ud305 \ub2e4\uc2dc \uc5f4\uae30";
     },
     get$noOtherDevicesFound() {
-      return "Nepavyko rasti kit\u0173 \u012frengini\u0173";
+      return "\ub2e4\ub978 \uae30\uae30 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc74c";
     },
     fileIsTooBigForServer$1(max) {
-      return "Nepavyksta i\u0161si\u0173sti! Serveris palaiko priedus tik iki " + max + ".";
+      return "\uc804\uc1a1\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc11c\ubc84\ub294 " + max + "\uac00 \ub118\ub294 \ud30c\uc77c\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
     },
     get$jumpToLastReadMessage() {
-      return "Per\u0161okti \u012f paskutin\u012f perskaityt\u0105 prane\u0161im\u0105";
+      return "\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc77d\uc740 \uba54\uc2dc\uc9c0\ub85c \uc774\ub3d9";
     },
     get$readUpToHere() {
-      return "Perskaityti iki \u010dia";
+      return "\uc5ec\uae30\uae4c\uc9c0 \uc77d\uc74c";
     },
     get$jump() {
-      return "Per\u0161okti";
+      return "\uc810\ud504";
     },
     get$openLinkInBrowser() {
-      return "Atidaryti nuorod\u0105 nar\u0161ykl\u0117je";
+      return "\ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c \ub9c1\ud06c \uc5f4\uae30";
     },
     get$setColorTheme() {
-      return "Nustatyti spalv\u0173 tem\u0105:";
+      return "\uc0c9\uc0c1 \ud14c\ub9c8 \uc124\uc815:";
     },
     get$invite() {
-      return "Pakviesti";
+      return "\ucd08\ub300";
     },
     get$invalidInput() {
-      return "Neteisingas \u012fvedimas!";
+      return "\uc798\ubabb\ub41c \uc785\ub825!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u012evestas neteisingas PIN! Bandykite dar kart\u0105 po " + seconds + " sekund\u017ei\u0173...";
+      return "\uc798\ubabb\ub41c pin\uc785\ub2c8\ub2e4! " + seconds + "\ucd08 \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694...";
     },
     get$pleaseEnterANumber() {
-      return "Pra\u0161ome \u012fvesti skai\u010di\u0173, didesn\u012f u\u017e 0";
+      return "0\ubcf4\ub2e4 \ud070 \uc22b\uc790\ub97c \uc785\ub825\ud558\uc138\uc694";
     },
     get$removeDevicesDescription() {
-      return "J\u016bs b\u016bsite i\u0161jungti i\u0161 \u0161io \u012frenginio ir nebebusite gausite \u017einu\u010di\u0173.";
+      return "\uc774 \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3\ub418\uba70 \ub354 \uc774\uc0c1 \uba54\uc2dc\uc9c0\ub97c \ubc1b\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$banUserDescription() {
-      return "Vartotojas bus u\u017eblokuotas i\u0161 pokalbio ir negal\u0117s v\u0117l \u012f j\u012f \u012feiti, kol nebus atblokuotas.";
+      return "\uc720\uc800\ub294 \ucc44\ud305\uc5d0\uc11c \uc601\uad6c \ucd94\ubc29\ub418\uba70 \ucd94\ubc29 \ud574\uc81c \uc804\uae4c\uc9c0 \ucc44\ud305\uc744 \ub2e4\uc2dc \uc785\ub825\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$unbanUserDescription() {
-      return "Vartotojas gal\u0117s v\u0117l \u012feiti \u012f pokalb\u012f, jei bandys.";
+      return "\uc720\uc800\uac00 \ub2e4\uc2dc \ucc44\ud305\uc744 \uc785\ub825\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$kickUserDescription() {
-      return "Vartotojas i\u0161metamas i\u0161 pokalbio, bet n\u0117ra u\u017eblokuotas. Vie\u0161uose pokalbiuose vartotojas gali bet kada sugr\u012f\u017eti.";
+      return "\uc720\uc800\ub294 \ucc44\ud305\uc5d0\uc11c \ucd94\ubc29\ub418\uc9c0\ub9cc \uc601\uad6c \ucd94\ubc29\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uacf5\uac1c \ucc44\ud305\uc758 \uacbd\uc6b0, \uc5b8\uc81c\ub4e0 \uc720\uc800\uac00 \ub2e4\uc2dc \ucc38\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$makeAdminDescription() {
-      return "Kai \u0161\u012f vartotoj\u0105 padarysite administratoriumi, gali b\u016bti, kad negal\u0117site to at\u0161aukti, nes jis tur\u0117s tokias pa\u010dias teises kaip ir j\u016bs.";
+      return "\uc720\uc800\ub97c \ud55c \ubc88 \uad00\ub9ac\uc790\ub85c \ub9cc\ub4e4\uba74, \ub2f9\uc2e0\uacfc \uac19\uc740 \uad8c\ud55c\uc744 \uac00\uc9c0\uae30\ub54c\ubb38\uc5d0 \uad8c\ud55c \ud68c\uc218\uac00 \ubd88\uac00\ub2a5\ud569\ub2c8\ub2e4.";
     },
     get$yourGlobalUserIdIs() {
-      return "J\u016bs\u0173 pasaulinis vartotojo ID yra: ";
+      return "\uae00\ub85c\ubc8c \uc720\uc800 ID: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Deja, su u\u017eklausa "' + query + '" nerasta vartotojo. Pra\u0161ome patikrinti, ar nepadar\u0117te ra\u0161ybos klaidos.';
+      return '\uc548\ud0c0\uae5d\uac8c\ub3c4 "' + query + '"\ub85c \uc720\uc800\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc624\ud0c0\uac00 \uc5c6\ub294\uc9c0 \ud655\uc778\ud558\uc2ed\uc2dc\uc624.';
     },
     get$knocking() {
-      return "Skambinama";
+      return "\ucc38\uac00 \uc694\uccad\uc911";
     },
     get$nothingFound() {
-      return "Nieko nerasta...";
+      return "\uc544\ubb34\uac83\ub3c4 \ucc3e\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4...";
     },
     get$groupName() {
-      return "Grup\u0117s pavadinimas";
+      return "\uadf8\ub8f9 \ucc44\ud305 \uc774\ub984";
     },
     get$wrongRecoveryKey() {
-      return "Atsipra\u0161ome... atrodo, kad tai n\u0117ra teisingas atk\u016brimo raktas.";
+      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4... \uc62c\ubc14\ub978 \ubcf5\uad6c\ud0a4\uac00 \uc544\ub2cc\uac83 \uac19\uc2b5\ub2c8\ub2e4.";
     },
     get$startConversation() {
-      return "Prad\u0117ti pokalb\u012f";
+      return "\ub300\ud654 \uc2dc\uc791";
     },
     get$commandHint_sendraw() {
-      return "Si\u0173sti neapdorot\u0105 JSON";
+      return "raw json \uc804\uc1a1";
     },
     get$select(_) {
-      return "Pasirinkti";
+      return "\uc120\ud0dd";
     },
     get$searchForUsers() {
-      return "Ie\u0161koti @vartotoj\u0173...";
+      return "@users \uac80\uc0c9...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Pra\u0161ome \u012fvesti savo dabartin\u012f slapta\u017eod\u012f";
+      return "\ud604\uc7ac \ube44\ubc00\ubc88\ud638 \uc785\ub825";
     },
     get$newPassword() {
-      return "Naujas slapta\u017eodis";
+      return "\uc0c8 \ube44\ubc00\ubc88\ud638";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Pra\u0161ome pasirinkti stipri\u0105 slapta\u017eod\u012f";
+      return "\uac15\ub825\ud55c \ube44\ubc00\ubc88\ud638\ub97c \uc0ac\uc6a9\ud558\uc138\uc694";
     },
     get$passwordsDoNotMatch() {
-      return "Slapta\u017eod\u017eiai nesutampa";
+      return "\ube44\ubc00\ubc88\ud638\uac00 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
     },
     get$passwordIsWrong() {
-      return "J\u016bs\u0173 \u012fvestas slapta\u017eodis yra neteisingas";
+      return "\ube44\ubc00\ubc88\ud638\uac00 \ud2c0\ub9bd\ub2c8\ub2e4";
     },
     get$decline() {
-      return "Atmesti";
+      return "\uac70\uc808";
     },
     get$thisDevice() {
-      return "\u0160is \u012frenginys:";
+      return "\uc774 \uae30\uae30:";
     },
     get$initAppError() {
-      return "\u012evyko klaida pradedant program\u0105";
+      return "\uc571 \ucd08\uae30\ud654\uc911 \uc624\ub958 \ubc1c\uc0dd";
     },
     searchIn$1(chat) {
-      return 'Ie\u0161koti pokalbyje "' + chat + '"...';
+      return chat + "\uc5d0\uc11c \uac80\uc0c9...";
     },
     get$searchMore() {
-      return "Ie\u0161koti daugiau...";
+      return "\ub354 \uac80\uc0c9...";
     },
     get$gallery() {
-      return "Galerija";
+      return "\uac24\ub7ec\ub9ac";
     },
     get$files(_) {
-      return "Failai";
+      return "\ud30c\uc77c";
     },
     sessionLostBody$2(url, error) {
-      return "J\u016bs\u0173 sesija prarasta. Pra\u0161ome prane\u0161ti apie \u0161i\u0105 klaid\u0105 k\u016br\u0117jams adresu " + url + ". Klaidos prane\u0161imas yra: " + error;
+      return "\uc138\uc158\uc744 \uc783\uc5c8\uc2b5\ub2c8\ub2e4. " + url + " \uc5d0\uc11c \uac1c\ubc1c\uc790\uc5d0\uac8c \uc624\ub958\ub97c \uc2e0\uace0\ud558\uc138\uc694. \uc624\ub958 \uba54\uc2dc\uc9c0\ub294 \ub2e4\uc74c\uacfc \uac19\uc2b5\ub2c8\ub2e4: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Program\u0117l\u0117 dabar bando atkurti j\u016bs\u0173 sesij\u0105 i\u0161 atsargin\u0117s kopijos. Pra\u0161ome prane\u0161ti apie \u0161i\u0105 klaid\u0105 k\u016br\u0117jams adresu " + url + ". Klaidos prane\u0161imas yra: " + error;
+      return "\uc571\uc774 \ubc31\uc5c5\uc5d0\uc11c \uc138\uc158\uc744 \ubcf5\uc6d0\ud558\ub824 \uc2dc\ub3c4\uc911\uc785\ub2c8\ub2e4. " + url + " \uc5d0\uc11c \uac1c\ubc1c\uc790\uc5d0\uac8c \uc624\ub958\ub97c \uc2e0\uace0\ud558\uc138\uc694. \uc624\ub958 \uba54\uc2dc\uc9c0\ub294 \ub2e4\uc74c\uacfc \uac19\uc2b5\ub2c8\ub2e4: " + error;
     },
     get$sendReadReceipts() {
-      return "Si\u0173sti skaitymo patvirtinimus";
+      return "\uc77d\uc74c \ud655\uc778 \ubcf4\ub0b4\uae30";
     },
     get$sendTypingNotificationsDescription() {
-      return "Kiti pokalbio dalyviai gali matyti, kada ra\u0161ote nauj\u0105 \u017einut\u0119.";
+      return "\ucc44\ud305\uc758 \ub2e4\ub978 \ucc38\uac00\uc790\ub4e4\uc774 \ub2f9\uc2e0\uc774 \uc0c8 \uba54\uc2dc\uc9c0\ub97c \uc785\ub825\uc911\uc778\uac83\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$sendReadReceiptsDescription() {
-      return "Kiti pokalbio dalyviai gali matyti, kada perskait\u0117te \u017einut\u0119.";
+      return "\ucc44\ud305\uc758 \ub2e4\ub978 \ucc38\uac00\uc790\ub4e4\uc774 \ub2f9\uc2e0\uc774 \uba54\uc2dc\uc9c0\ub97c \uc77d\uc5c8\ub294\uc9c0 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Patvirtinti kit\u0105 \u012frengin\u012f";
+      return "\ud83d\udd10 \ub2e4\ub978 \uae30\uae30\ub97c \ud655\uc778";
     },
     get$verifyOtherDeviceDescription() {
-      return "Patvirtinus kit\u0105 \u012frengin\u012f, \u0161ie \u012frenginiai gali keistis raktus, taip padidindami j\u016bs\u0173 bendr\u0105 saugum\u0105. \ud83d\udcaa Prad\u0117jus patvirtinim\u0105, abiej\u0173 \u012frengini\u0173 program\u0117l\u0117se pasirodys i\u0161\u0161okantis langas. Ten pamatysite serij\u0105 emocij\u0173 ar skai\u010di\u0173, kuriuos turite palyginti tarpusavyje. Geriausia tur\u0117ti abu \u012frenginius po ranka prie\u0161 pradedant patvirtinim\u0105. \ud83e\udd33";
+      return "\ub2e4\ub978 \uc7a5\uce58\ub97c \ud655\uc778\ud558\uba74, \uc7a5\uce58\uc640 \ud0a4\ub97c \uad50\ud658\ud558\uace0, \uc804\ubc18\uc801\uc778 \ubcf4\uc548\uc744 \uc99d\uac00\uc2dc\ud0b5\ub2c8\ub2e4. \ud83d\udcaa \ud655\uc778\uc744 \uc2dc\uc791\ud558\uba74 \ud31d\uc5c5\uc740 \ub450 \uc7a5\uce58\uc5d0 \ub098\ud0c0\ub0a9\ub2c8\ub2e4. \uadf8\ub7f0 \ub2e4\uc74c \uc11c\ub85c \ube44\uad50\ud574\uc57c \uc774\ubaa8\uc9c0 \ub610\ub294 \uc22b\uc790\uc758 \ubaa9\ub85d\ub97c \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ud655\uc778\uc744 \uc2dc\uc791\ud558\uae30 \uc804\uc5d0 \ubaa8\ub4e0 \uc7a5\uce58\ub97c \uc900\ube44\ud558\uc138\uc694. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " pri\u0117m\u0117 rakt\u0173 patvirtinim\u0105";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc218\ub77d\ud568";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " at\u0161auk\u0117 rakt\u0173 patvirtinim\u0105";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \ucde8\uc18c\ud568";
     },
     completedKeyVerification$1(sender) {
-      return sender + " u\u017ebaig\u0117 rakt\u0173 patvirtinim\u0105";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc644\ub8cc\ud568";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " pasiruo\u0161\u0119s rakt\u0173 patvirtinimui";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d \uc900\ube44\ub97c \uc644\ub8cc\ud568";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " pra\u0161o rakt\u0173 patvirtinimo";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc694\uccad\ud568";
     },
     startedKeyVerification$1(sender) {
-      return sender + " prad\u0117jo rakt\u0173 patvirtinim\u0105";
+      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc2dc\uc791\ud568";
     },
     get$commandHint_ignore() {
-      return "Praleisti duoto matricos ID";
+      return "\uc8fc\uc5b4\uc9c4 matrix ID\ub97c \ubb34\uc2dc";
     },
     get$commandHint_unignore() {
-      return "Atmesti praleidim\u0105 duoto matricos ID";
+      return "\uc8fc\uc5b4\uc9c4 matrix ID \ubb34\uc2dc \ud574\uc81c";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u0160iuo metu u\u017eblokuota " + count + " vartotoj\u0173.";
+      return "" + count + "\uba85\uc758 \ucc28\ub2e8\ub41c \uc720\uc800\uac00 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$restricted() {
-      return "Apribota";
+      return "\uc2a4\ud398\uc774\uc2a4 \uba64\ubc84\ub85c \uc81c\ud55c";
     },
     get$markAsUnread() {
-      return "Pa\u017eym\u0117ti kaip neskaityt\u0105";
+      return "\uc77d\uc9c0 \uc54a\uc74c\uc73c\ub85c \ud45c\uc2dc";
     },
     userLevel$1(level) {
-      return "" + level + " - Vartotojas";
+      return "" + level + " - \uc720\uc800";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderatorius";
+      return "" + level + " - \uad00\ub9ac\uc790";
     },
     adminLevel$1(level) {
-      return "" + level + " - Administratorius";
+      return "" + level + " - \uc6b4\uc601\uc790";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Keisti pokalbio istorijos matomum\u0105";
+      return "\ucc44\ud305 \uae30\ub85d \ud45c\uc2dc \uc5ec\ubd80 \ubc14\uafb8\uae30";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Keisti pagrindin\u012f vie\u0161ojo pokalbio adres\u0105";
+      return "\uba54\uc778 \uacf5\uac1c \ucc44\ud305 \uc8fc\uc18c \ubc14\uafb8\uae30";
     },
     get$sendRoomNotifications() {
-      return "Si\u0173sti @room prane\u0161imus";
+      return "@room \uc54c\ub9bc \ubcf4\ub0b4\uae30";
     },
     get$chatPermissionsDescription() {
-      return "Nustatykite, kokio lygio leidimas reikalingas tam tikroms veikloms \u0161iame pokalbyje. Lygiai 0, 50 ir 100 da\u017eniausiai atitinka naudotojus, moderatorius ir administratori\u0173, ta\u010diau galima naudoti ir bet koki\u0105 kit\u0105 gradacij\u0105.";
+      return "\uc774 \ucc44\ud305\uc5d0\uc11c \ud2b9\uc815 \uc791\uc5c5\uc5d0 \uc694\uad6c\ud560 \uad8c\ud55c \ub808\ubca8\uc744 \uc815\uc758\ud569\ub2c8\ub2e4. \uad8c\ud55c \ub808\ubca8 0, 50, 100\uc740 \uc77c\ubc18\uc801\uc73c\ub85c \uc720\uc800, \uad00\ub9ac\uc790, \uc6b4\uc601\uc790\ub97c \ub098\ud0c0\ub0b4\uc9c0\ub9cc, \ubaa8\ub4e0 \uc22b\uc790\uac00 \uac00\ub2a5\ud569\ub2c8\ub2e4.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u012ediegta " + version + "!";
+      return "\ud83c\udf89 " + version + " \uc5c5\ub370\uc774\ud2b8\uac00 \uc124\uce58\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
     },
     get$sendCanceled() {
-      return "Siuntimas at\u0161auktas";
+      return "\uc804\uc1a1 \ucd5c\uc18c\ub428";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Atrodo, kad tai n\u0117ra suderinamas nam\u0173 serveris. Neteisingas URL?";
+      return "\ud638\ud658\ub418\ub294 \ud648\uc11c\ubc84\uac00 \uc544\ub2cc \uac83 \uac19\uc2b5\ub2c8\ub2e4. URL\uc744 \uc62c\ubc14\ub974\uac8c \uc785\ub825\ub410\ub098\uc694?";
     },
     get$calculatingFileSize() {
-      return "Skai\u010diuojama failo dydis...";
+      return "\ud30c\uc77c \ud06c\uae30 \uacc4\uc0b0 \uc911...";
     },
     get$prepareSendingAttachment() {
-      return "Ruo\u0161iama si\u0173sti pried\u0105...";
+      return "\ucca8\ubd80\ub41c \ud30c\uc77c \uc804\uc1a1 \uc900\ube44 \uc911...";
     },
     get$sendingAttachment() {
-      return "Siun\u010diama priedas...";
+      return "\ucca8\ubd80\ub41c \ud30c\uc77c \uc804\uc1a1 \uc911...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Siun\u010diama priedas " + index + " i\u0161 " + $length + "...";
+      return "\ucca8\ubd80\ud30c\uc77c " + $length + "\uac1c\uc911 " + index + "\ubc88\uc9f8 \uc804\uc1a1 \uc911...";
     },
     serverLimitReached$1(seconds) {
-      return "Serverio limitas pasiektas! Laukiama " + seconds + " sekund\u017ei\u0173...";
+      return "\uc11c\ubc84 \ud55c\ub3c4\uc5d0 \ub3c4\ub2ec\ud588\uc2b5\ub2c8\ub2e4! " + seconds + "\ucd08 \uae30\ub2e4\ub9ac\ub294 \uc911...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Pastaba: Kai prijungiate visus savo \u012frenginius prie pokalbi\u0173 atsargin\u0117s kopijos, jie automati\u0161kai patvirtinami.";
+      return "\ucc38\uace0: \ubaa8\ub4e0 \uae30\uae30\uc5d0 \ucc44\ud305 \ubc31\uc5c5\uc744 \uc124\uc815\ud558\uba74 \uc790\ub3d9\uc73c\ub85c \uc11c\ub85c \uc778\uc99d\ub429\ub2c8\ub2e4.";
     },
     get$continueText() {
-      return "T\u0119sti";
+      return "\uacc4\uc18d\ud558\uae30";
     },
     get$blur(_) {
-      return "I\u0161sklaidymas:";
+      return "\ube14\ub7ec:";
     },
     get$opacity(_) {
-      return " Skaidrumas:";
+      return "\ubd88\ud22c\uba85:";
     },
     get$setWallpaper() {
-      return "Nustatyti fon\u0105";
+      return "\ubc30\uacbd\ud654\uba74 \uc124\uc815\ud558\uae30";
     },
     get$noContactInformationProvided() {
-      return "Serveris nepateikia joki\u0173 galiojan\u010di\u0173 kontaktin\u0117s informacijos";
+      return "\uc11c\ubc84\uac00 \uc720\ud6a8\ud55c \uc5f0\ub77d\ucc98 \uc815\ubcf4\ub97c \uc81c\uacf5\ud558\uc9c0 \uc54a\uc74c";
     },
     get$contactServerAdmin() {
-      return "Susisiekti su serverio administratoriumi";
+      return "\uc11c\ubc84 \uad00\ub9ac\uc790\uc5d0\uac8c \uc5f0\ub77d\ud558\uae30";
     },
     get$contactServerSecurity() {
-      return "Susisiekti su serverio saugumu";
+      return "\uc11c\ubc84 \ubcf4\uc548 \uad00\ub9ac\uc790\uc5d0\uac8c \uc5f0\ub77d\ud558\uae30";
     },
     get$supportPage() {
-      return "Pagalbos puslapis";
+      return "\uc9c0\uc6d0 \ud398\uc774\uc9c0";
     },
     get$serverInformation() {
-      return "Serverio informacija:";
+      return "\uc11c\ubc84 \uc815\ubcf4:";
     },
     get$name(_) {
-      return "Pavadinimas";
+      return "\uc774\ub984";
     },
     get$version(_) {
-      return "Versija";
+      return "\ubc84\uc804";
     },
     get$compress() {
-      return "Suspausti";
+      return "\uc555\ucd95";
     },
     get$boldText() {
-      return "Pary\u0161kintas tekstas";
+      return "\ub450\uaebc\uc6b4 \uae00\uaf34";
     },
     get$italicText() {
-      return "Pasviras tekstas";
+      return "\uae30\uc6b8\uc5b4\uc9c4 \uae00\uaf34";
     },
     get$strikeThrough() {
-      return "Perbrauktas";
+      return "\ucde8\uc18c\uc120";
     },
     get$pleaseFillOut() {
-      return "Pra\u0161ome u\u017epildyti";
+      return "\uc791\uc131\ud574\uc8fc\uc138\uc694";
     },
     get$invalidUrl() {
-      return "Neteisingas URL";
+      return "\uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 url";
     },
     get$addLink() {
-      return "Prid\u0117ti nuorod\u0105";
+      return "\ub9c1\ud06c \ucd94\uac00";
     },
     get$unableToJoinChat() {
-      return "Negalima prisijungti prie pokalbio. Galb\u016bt kita \u0161alis jau u\u017edar\u0117 pokalb\u012f.";
+      return "\ucc44\ud305\uc5d0 \ucc38\uac00\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uad6c\uc131\uc6d0\uc774 \uc774\ubbf8 \ub300\ud654\ub97c \uc885\ub8cc\ud588\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$previous() {
-      return "Ankstesnis";
+      return "\uc774\uc804";
     },
     get$otherPartyNotLoggedIn() {
-      return "Kita \u0161alis \u0161iuo metu neprisijungusi ir tod\u0117l negali gauti \u017einu\u010di\u0173!";
+      return "\ub2e4\ub978 \uad6c\uc131\uc6d0\uc774 \ud604\uc7ac \ub85c\uadf8\uc778\ud558\uc9c0 \uc54a\uc544 \uba54\uc2dc\uc9c0\ub97c \uc218\uc2e0\ud558\uc9c0 \ubabb\ud569\ub2c8\ub2e4!";
     },
     get$open(_) {
-      return "Atidaryti";
+      return "\uc5f4\uae30";
     },
     get$waitingForServer() {
-      return "Laukiama serverio...";
+      return "\uc11c\ubc84\ub97c \uae30\ub2e4\ub9ac\ub294\uc911...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Naujas pokalbio u\u017eklausimas";
+      return "\ud83d\udce9 \uc0c8 \ucc44\ud305 \uc694\uccad";
     },
     get$contentNotificationSettings() {
-      return "Turinio prane\u0161im\u0173 nustatymai";
+      return "\ucf58\ud150\uce20 \uc54c\ub9bc \uc124\uc815";
     },
     get$generalNotificationSettings() {
-      return "Bendrieji prane\u0161im\u0173 nustatymai";
+      return "\uc77c\ubc18 \uc54c\ub9bc \uc124\uc815";
     },
     get$roomNotificationSettings() {
-      return "Patalpos prane\u0161im\u0173 nustatymai";
+      return "\ucc44\ud305\ubc29 \uc54c\ub9bc \uc124\uc815";
     },
     get$userSpecificNotificationSettings() {
-      return "Vartotojo specifiniai prane\u0161im\u0173 nustatymai";
+      return "\uc0ac\uc6a9\uc790\ubcc4 \uc54c\ub9bc \uc124\uc815";
     },
     get$otherNotificationSettings() {
-      return "Kiti prane\u0161im\u0173 nustatymai";
+      return "\uae30\ud0c0 \uc54c\ub9bc \uc124\uc815";
     },
     get$notificationRuleContainsUserName() {
-      return "Apima vartotojo vard\u0105";
+      return "\uc720\uc800 \uc774\ub984\uc744 \ud3ec\ud568\ud568";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Prane\u0161a vartotojui, kai \u017einut\u0117 apima j\u0173 vartotojo vard\u0105.";
+      return "\uba54\uc2dc\uc9c0\uac00 \uc720\uc800\uc758 \uc774\ub984\uc744 \ud3ec\ud568\ud560\ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleMaster() {
-      return "I\u0161jungti visus prane\u0161imus";
+      return "\ubaa8\ub4e0 \uc54c\ub9bc \uc74c\uc18c\uac70";
     },
     get$notificationRuleMasterDescription() {
-      return "Perra\u0161o visus kitus nustatymus ir i\u0161jungia visus prane\u0161imus.";
+      return "\ubaa8\ub4e0 \uaddc\uce59\uc744 \ubb34\uc2dc\ud558\uace0 \ubaa8\ub4e0 \uc54c\ub9bc\uc744 \ube44\ud65c\uc131\ud654\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Sl\u0117pti automatinius prane\u0161imus";
+      return "\uc790\ub3d9\ud654\ub41c \uba54\uc2dc\uc9c0 \ubb34\uc2dc";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Sl\u0117pia prane\u0161imus i\u0161 automatini\u0173 klient\u0173, pvz., robot\u0173.";
+      return "\ubd07\uc744 \ube44\ub86f\ud55c \uc790\ub3d9\ud654\ub41c \uba54\uc2dc\uc9c0\ub85c\ubd80\ud130 \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleInviteForMe() {
-      return "Pakvietimas man";
+      return "\ucd08\ub300\ub97c \ubc1b\uc74c";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Prane\u0161a vartotojui, kai jis yra pakviestas \u012f kambar\u012f.";
+      return "\ucc44\ud305\ubc29\uc5d0 \ucd08\ub300\ubc1b\uc558\uc744 \ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleMemberEvent() {
-      return "Nari\u0173 \u012fvykis";
+      return "\uba64\ubc84 \uc774\ubca4\ud2b8";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Slopina prane\u0161imus apie nari\u0173 \u012fvykius.";
+      return "\uba64\ubc84 \uc774\ubca4\ud2b8\ub85c \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleIsUserMention() {
-      return "Vartotojo pamin\u0117jimas";
+      return "\uc720\uc800\uac00 \uba58\uc158\ub428";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Prane\u0161a vartotojui, kai jis yra tiesiogiai pamin\u0117tas \u017einut\u0117je.";
+      return "\uc720\uc800\uac00 \uba54\uc2dc\uc9c0\uc5d0 \uba58\uc158\ub410\uc744 \ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Turinys su rodomuoju vardu";
+      return "\ud45c\uc2dc \uc774\ub984\uc744 \ud3ec\ud568\ud568";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Prane\u0161a vartotojui, kai \u017einut\u0117 turi j\u0173 rodom\u0105j\u012f vard\u0105.";
+      return "\uba54\uc2dc\uc9c0\uc5d0 \ud45c\uc2dc \uc774\ub984\uc774 \ud3ec\ud568\ub418\uba74 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Pamin\u0117jimas kambaryje";
+      return "\ubc29 \uba58\uc158";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Prane\u0161a vartotojui, kai yra pamin\u0117jimas kambaryje.";
+      return "\ubc29 \uba58\uc158\uc774 \uc788\uc744\uacbd\uc6b0 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleRoomnotif() {
-      return "Kambario prane\u0161imas";
+      return "\ubc29 \uc54c\ub9bc";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Prane\u0161a vartotojui, kai \u017einut\u0117je yra '@room'.";
+      return "\uba54\uc2dc\uc9c0\uac00 '@room'\uc744 \ud3ec\ud568\ud558\uba74 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleTombstone() {
-      return "Paminklas";
+      return "\ube44\ud65c\uc131\ud654";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Prane\u0161a vartotojui apie kambario deaktyvacijos \u017einutes.";
+      return "\ucc44\ud305\ubc29 \ube44\ud65c\uc131\ud654 \uba54\uc2dc\uc9c0\ub97c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleReaction() {
-      return "Reakcija";
+      return "\ubc18\uc751";
     },
     get$notificationRuleReactionDescription() {
-      return "Slopina prane\u0161imus apie reakcijas.";
+      return "\ubc18\uc751\uc73c\ub85c \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Kambario serverio ACL";
+      return "\ucc44\ud305\ubc29 \uc11c\ubc84 ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Slopina prane\u0161imus apie kambario serverio prieigos kontrol\u0117s s\u0105ra\u0161us (ACL).";
+      return "\ucc44\ud305\ubc29 \uc11c\ubc84\uc758 \uc811\uadfc \uad8c\ud55c(ACL)\uc73c\ub85c\ubd80\ud130 \uc624\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleSuppressEdits() {
-      return "Slopinti redagavimus";
+      return "\uc218\uc815 \uc74c\uc18c\uac70";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Slopina prane\u0161imus apie redaguotas \u017einutes.";
+      return "\uc218\uc815\ub41c \uba54\uc2dc\uc9c0\ub85c\ubd80\ud130 \uc624\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
     },
     get$notificationRuleCall() {
-      return "Skambutis";
+      return "\uc804\ud654";
     },
     get$notificationRuleCallDescription() {
-      return "Prane\u0161a vartotojui apie skambu\u010dius.";
+      return "\ud1b5\ud654\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u0160ifruota Pokalbi\u0173 Kambarys Vienas prie\u0161 Vien\u0105";
+      return "\uc554\ud638\ud654\ub41c 1:1 \ubc29";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Prane\u0161a vartotojui apie \u017einutes \u0161ifruotuose pokalbi\u0173 kambariuose vienas prie\u0161 vien\u0105.";
+      return "\uc554\ud638\ud654\ub41c 1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Pokalbi\u0173 Kambarys Vienas prie\u0161 Vien\u0105";
+      return "1:1 \ubc29";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Prane\u0161a vartotojui apie \u017einutes vienas prie\u0161 vien\u0105 kambariuose.";
+      return "1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleMessage() {
-      return "\u017dinut\u0117";
+      return "\uba54\uc2dc\uc9c0";
     },
     get$notificationRuleMessageDescription() {
-      return "Prane\u0161a vartotojui apie bendras \u017einutes.";
+      return "\uc77c\ubc18 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleEncrypted() {
-      return "\u0160ifruota";
+      return "\uc554\ud638\ud654\ub428";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Prane\u0161a vartotojui apie \u017einutes \u0161ifruotuose kambariuose.";
+      return "\uc554\ud638\ud654\ub41c \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Prane\u0161a vartotojui apie Jitsi widget \u012fvykius.";
+      return "Jitsi \uc704\uc82f \uc774\ubca4\ud2b8\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
     },
     get$notificationRuleServerAcl() {
-      return "Sl\u0117pti Server ACL \u012fvykius";
+      return "\uc11c\ubc84 ACL \uc774\ubca4\ud2b8 \uc5b5\uc81c";
     },
     get$notificationRuleServerAclDescription() {
-      return "Sl\u0117pia prane\u0161imus apie Server ACL \u012fvykius.";
+      return "\uc11c\ubc84 ACL \uc774\ubca4\ud2b8\uc5d0 \ub300\ud55c \uc54c\ub9bc\uc744 \ucc28\ub2e8\ud569\ub2c8\ub2e4.";
     },
     unknownPushRule$1(rule) {
-      return "Ne\u017einoma \u012fsp\u0117jimo taisykl\u0117 '" + rule + "'";
+      return "\uc54c \uc218 \uc5c6\ub294 \ud478\uc2dc \uaddc\uce59 '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Balso \u017einut\u0117 i\u0161 " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + "\uc758 \uc74c\uc131 \uba54\uc2dc\uc9c0";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Jei i\u0161trinsite \u0161\u012f prane\u0161imo nustatym\u0105, tai nebus galima at\u0161aukti.";
+      return "\uc774 \uc54c\ub9bc \uc124\uc815\uc744 \uc0ad\uc81c\ud558\uba74 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$more() {
-      return "Daugiau";
+      return "\ub354 \ubcf4\uae30";
     },
     get$shareKeysWith() {
-      return "Dalintis raktus su...";
+      return "\ud0a4 \uacf5\uc720 \ub300\uc0c1...";
     },
     get$shareKeysWithDescription() {
-      return "Kuriuos \u012frenginius reik\u0117t\u0173 pasitik\u0117ti, kad jie gal\u0117t\u0173 skaityti j\u016bs\u0173 \u017einutes \u0161ifruotuose pokalbiuose?";
+      return "\uc5b4\ub5a4 \uae30\uae30\ub97c \uc2e0\ub8b0\ud558\uc5ec \uc554\ud638\ud654\ub41c \ucc44\ud305\uc5d0\uc11c \uba54\uc2dc\uc9c0\ub97c \uc77d\uc744 \uc218 \uc788\ub3c4\ub85d \ud560 \uac83\uc778\uac00\uc694?";
     },
     get$allDevices() {
-      return "Visi \u012frenginiai";
+      return "\ubaa8\ub4e0 \uae30\uae30";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Kry\u017emi\u0161kai patvirtinti \u012frenginiai, jei \u012fjungta";
+      return "\ud65c\uc131\ud654\ub41c \uacbd\uc6b0 \uad50\ucc28 \uc778\uc99d\ub41c \uae30\uae30";
     },
     get$crossVerifiedDevices() {
-      return "Kry\u017emi\u0161kai patvirtinti \u012frenginiai";
+      return "\uad50\ucc28 \uc778\uc99d\ub41c \uae30\uae30";
     },
     get$verifiedDevicesOnly() {
-      return "Tik patvirtinti \u012frenginiai";
+      return "\uc778\uc99d\ub41c \uae30\uae30\ub9cc";
     },
     get$optionalMessage() {
-      return "(Pasirinktinai) \u017einut\u0117...";
+      return "(\uc120\ud0dd \uc0ac\ud56d) \uba54\uc2dc\uc9c0...";
     },
     get$notSupportedOnThisDevice() {
-      return "Nepalaikoma \u0161iame \u012frenginyje";
+      return "\uc774 \uae30\uae30\uc5d0\uc11c \uc9c0\uc6d0\ub418\uc9c0 \uc54a\uc74c";
     },
     get$enterNewChat() {
-      return "Prad\u0117ti nauj\u0105 pokalb\u012f";
+      return "\uc0c8 \ucc44\ud305 \uc2dc\uc791";
     },
     get$approve() {
-      return "Patvirtinti";
+      return "\uc2b9\uc778";
     },
     get$youHaveKnocked() {
-      return "J\u016bs paspaud\u0117te duris";
+      return "\ubb38\uc744 \ub450\ub4dc\ub838\uc2b5\ub2c8\ub2e4";
     },
     get$commandHint_logout() {
-      return "Atsijungti nuo \u0161io \u012frenginio";
+      return "\ud604\uc7ac \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3";
     },
     get$commandHint_logoutall() {
-      return "Atsijungti nuo vis\u0173 aktyvi\u0173 \u012frengini\u0173";
+      return "\ubaa8\ub4e0 \ud65c\uc131 \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u012eveskite " + l1 + " arba " + l2 + "...";
+      return l1 + " \ub610\ub294 " + l2 + "\ub85c \uc785\ub825...";
     },
     get$holdForInfo() {
-      return "Paspauskite ir palaikykite \u017eod\u017eio informacijai.";
+      return "\ub2e8\uc5b4 \uc815\ubcf4\ub97c \uc704\ud574 \ud074\ub9ad\ud558\uace0 \uae38\uac8c \ub204\ub974\uc138\uc694.";
     },
     get$gaTooltip() {
-      return "L2 naudojimas su gramatikos pagalba";
+      return "\ubb38\ubc95 \ub3c4\uc6c0\ub9d0\uacfc \ud568\uaed8 L2 \uc0ac\uc6a9";
     },
     get$taTooltip() {
-      return "L2 naudojimas su vertimo pagalba";
+      return "\ubc88\uc5ed \ub3c4\uc6c0\ub9d0\uacfc \ud568\uaed8 L2 \uc0ac\uc6a9";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interaktyvus vert\u0117jas";
+      return "\uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed\uae30";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interaktyvus gramatikos tikrintuvas";
+      return "\uc778\ud130\ub799\ud2f0\ube0c \ubb38\ubc95 \uac80\uc0ac\uae30";
     },
     get$waTooltip() {
-      return "L2 naudojimas be pagalbos";
+      return "\ub3c4\uc6c0\ub9d0 \uc5c6\uc774 L2 \uc0ac\uc6a9";
     },
     get$noIdenticalLanguages() {
-      return "Pra\u0161ome pasirinkti skirtingas pagrindines ir tikslines kalbas";
+      return "\uae30\ubcf8 \uc5b8\uc5b4\uc640 \ub300\uc0c1 \uc5b8\uc5b4\ub97c \ub2e4\ub974\uac8c \uc120\ud0dd\ud558\uc138\uc694";
     },
     get$joinWithClassCode() {
-      return "Prisijungti prie kurso";
+      return "\uc218\uc5c5 \ucc38\uc5ec";
     },
     get$languageLevelPreA1() {
-      return "Pradedantysis \u017demas (Pre A1)";
+      return "\ucd08\uae09 \ub0ae\uc74c (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Pradedan\u010diojo vidurinis (A1)";
+      return "\ucd08\uae09 \uc911\uae09 (A1)";
     },
     get$languageLevelA2() {
-      return "Pradedan\u010di\u0173j\u0173 auk\u0161tas (A2)";
+      return "\ucd08\uae09 \uace0\uae09 (A2)";
     },
     get$languageLevelB1() {
-      return "Vidutinio lygio vidurys (B1)";
+      return "\uc911\uae09 \uc911 (B1)";
     },
     get$languageLevelB2() {
-      return "I\u0161pl\u0117stinis \u017eemas (B2)";
+      return "\uace0\uae09 \uc800 (B2)";
     },
     get$languageLevelC1() {
-      return "I\u0161pl\u0117stinis vidurys (C1)";
+      return "\uace0\uae09 \uc911 (C1)";
     },
     get$languageLevelC2() {
-      return "Pats auk\u0161\u010diausias (C2)";
+      return "\uc6b0\uc218 (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Pakeisti pavadinim\u0105";
+      return "\uc774\ub984 \ubcc0\uacbd";
     },
     get$changeTheNameOfTheChat() {
-      return "Pakeisti pokalbio pavadinim\u0105";
+      return "\ucc44\ud305 \uc774\ub984 \ubcc0\uacbd";
     },
     get$sorryNoResults() {
-      return "Atsipra\u0161ome, rezultat\u0173 n\u0117ra.";
+      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$ignoreInThisText() {
-      return "Ignoruoti";
+      return "\ubb34\uc2dc";
     },
     get$countryInformation() {
-      return "Mano \u0161alis";
+      return "\ub0b4 \ub098\ub77c";
     },
     get$targetLanguage() {
-      return "Tikslo kalba";
+      return "\ub300\uc0c1 \uc5b8\uc5b4";
     },
     get$updateLanguage() {
-      return "Mano kalbos";
+      return "\ub0b4 \uc5b8\uc5b4";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Koki\u0105 kalb\u0105 norite i\u0161mokti?";
+      return "\uc5b4\ub5a4 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uace0 \uc2f6\ub098\uc694?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Kokia yra j\u016bs\u0173 pagrindin\u0117 kalba?";
+      return "\ub2f9\uc2e0\uc758 \uae30\ubcf8 \uc5b8\uc5b4\ub294 \ubb34\uc5c7\uc778\uac00\uc694?";
     },
     get$saveChanges() {
-      return "I\u0161saugoti pakeitimus";
+      return "\ubcc0\uacbd \uc0ac\ud56d \uc800\uc7a5";
     },
     get$publicProfileTitle() {
-      return "Leisti mano profil\u012f b\u016bti randamam paie\u0161koje";
+      return "\ub0b4 \ud504\ub85c\ud544\uc744 \uac80\uc0c9\uc5d0\uc11c \ucc3e\uc744 \uc218 \uc788\ub3c4\ub85d \ud5c8\uc6a9";
     },
     get$publicProfileDesc() {
-      return "\u012ejungus, kiti vartotojai gal\u0117s rasti j\u016bs\u0173 profil\u012f globalioje paie\u0161kos juostoje ir si\u0173sti u\u017eklausas pokalbiui. \u0160iuo metu galite pasirinkti priimti arba atmesti u\u017eklaus\u0105.";
+      return "\ucf1c\uba74, \ub2e4\ub978 \uc0ac\uc6a9\uc790\uac00 \uae00\ub85c\ubc8c \uac80\uc0c9\ucc3d\uc5d0\uc11c \ub2f9\uc2e0\uc758 \ud504\ub85c\ud544\uc744 \ucc3e\uace0 \ucc44\ud305 \uc694\uccad\uc744 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ub54c \uc694\uccad\uc744 \uc218\ub77d\ud558\uac70\ub098 \uac70\ubd80\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$errorDisableIT() {
-      return "Vertimo pagalba i\u0161jungta.";
+      return "\ubc88\uc5ed \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$errorDisableIGC() {
-      return "Gramatikos pagalba i\u0161jungta.";
+      return "\ubb38\ubc95 \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$errorDisableITUserDesc() {
-      return "Spustel\u0117kite \u010dia, nor\u0117dami atnaujinti vertimo pagalbos nustatymus";
+      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ubc88\uc5ed \uc9c0\uc6d0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694";
     },
     get$errorDisableIGCUserDesc() {
-      return "Spustel\u0117kite \u010dia, nor\u0117dami atnaujinti gramatikos pagalbos nustatymus";
+      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ubb38\ubc95 \uc9c0\uc6d0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694";
     },
     get$errorDisableITClassDesc() {
-      return "Vertimo pagalba i\u0161jungta kursui, kuriame yra \u0161is pokalbis.";
+      return "\uc774 \ucc44\ud305\uc774 \uc18d\ud55c \uac15\uc88c\uc5d0 \ub300\ud55c \ubc88\uc5ed \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Gramatikos pagalba i\u0161jungta kursui, kuriame yra \u0161is pokalbis.";
+      return "\uc774 \ucc44\ud305\uc774 \uc18d\ud55c \uac15\uc88c\uc5d0 \ub300\ud55c \ubb38\ubc95 \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$error405Title() {
-      return "Kalbos n\u0117ra nustatytos";
+      return "\uc5b8\uc5b4\uac00 \uc124\uc815\ub418\uc9c0 \uc54a\uc74c";
     },
     get$error405Desc() {
-      return "Pra\u0161ome nustatyti savo kalbas pagrindiniame meniu > Mokymosi nustatymai.";
+      return "\uba54\uc778 \uba54\ub274 > \ud559\uc2b5 \uc124\uc815\uc5d0\uc11c \uc5b8\uc5b4\ub97c \uc124\uc815\ud558\uc138\uc694.";
     },
     get$termsAndConditions() {
-      return " Paslaug\u0173 teikimo s\u0105lygomis";
+      return "\uc774\uc6a9 \uc57d\uad00";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " ir patvirtinu, kad man yra bent 16 met\u0173.";
+      return " \ubc0f \ub9cc 16\uc138 \uc774\uc0c1\uc784\uc744 \uc778\uc99d\ud569\ub2c8\ub2e4.";
     },
     get$error502504Title() {
-      return "Oho, internete yra daug mokini\u0173!";
+      return "\uc640, \uc628\ub77c\uc778\uc5d0 \ud559\uc0dd\uc774 \uc815\ub9d0 \ub9ce\ub124\uc694!";
     },
     get$error502504Desc() {
-      return "Vertimo ir gramatikos \u012frankiai gali b\u016bti l\u0117ti arba neprieinami, kol Pangea robotai pasivys.";
+      return "\ud30c\ub2c8\uc544 \ubd07\uc774 \ub530\ub77c\uc7a1\ub294 \ub3d9\uc548 \ubc88\uc5ed \ubc0f \ubb38\ubc95 \ub3c4\uad6c\uac00 \ub290\ub9ac\uac70\ub098 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$error404Title() {
-      return "Vertimo klaida!";
+      return "\ubc88\uc5ed \uc624\ub958!";
     },
     get$error404Desc() {
-      return "Pangea robotas n\u0117ra tikras, kaip tai i\u0161versti...";
+      return "\ud30c\ub2c8\uc544 \ubd07\uc774 \uc5b4\ub5bb\uac8c \ubc88\uc5ed\ud574\uc57c \ud560\uc9c0 \ud655\uc2e4\ud558\uc9c0 \uc54a\uc544\uc694...";
     },
     get$errorPleaseRefresh() {
-      return "Mes tai tikriname! Pra\u0161ome \u012fkelti dar kart\u0105 ir bandyti i\u0161 naujo.";
+      return "\ubb38\uc81c\ub97c \ud574\uacb0 \uc911\uc785\ub2c8\ub2e4! \uc0c8\ub85c\uace0\uce68 \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
     },
     get$connectedToStaging() {
-      return "Prisijungta prie Staging";
+      return "\uc2a4\ud14c\uc774\uc9d5\uc5d0 \uc5f0\uacb0\ub428";
     },
     get$learningSettings() {
-      return "Mokymosi nustatymai";
+      return "\ud559\uc2b5 \uc124\uc815";
     },
     get$participants() {
-      return "Dalyviai";
+      return "\ucc38\uac00\uc790";
     },
     get$clickMessageTitle() {
-      return "Reikia pagalbos?";
+      return "\ub3c4\uc6c0\uc774 \ud544\uc694\ud558\uc2e0\uac00\uc694?";
     },
     get$clickMessageBody() {
-      return "Spustel\u0117kite \u017einut\u0119, kad naudotum\u0117te kalbos \u012frankius, tokius kaip vertimas, atk\u016brimas ir kt!";
+      return "\uc5b8\uc5b4 \ub3c4\uad6c\uac00 \ud3ec\ud568\ub41c \uba54\uc2dc\uc9c0\ub97c \ud074\ub9ad\ud558\uc138\uc694. \ubc88\uc5ed, \uc7ac\uc0dd \ub4f1!";
     },
     get$allDone() {
-      return "Viskas paruo\u0161ta!";
+      return "\ubaa8\ub4e0 \uc791\uc5c5 \uc644\ub8cc!";
     },
     get$vocab() {
-      return "\u017dodynas";
+      return "\uc5b4\ud718";
     },
     get$subscribe(_) {
-      return "Prenumeruoti";
+      return "\uad6c\ub3c5\ud558\uae30";
     },
     get$getAccess() {
-      return "Prenumeruokite dabar!";
+      return "\uc9c0\uae08 \uad6c\ub3c5\ud558\uc138\uc694!";
     },
     get$subscriptionDesc() {
-      return "\u017dinu\u010di\u0173 siuntimas yra nemokamas! Prenumeruokite, kad atrakintum\u0117te interaktyv\u0173 vertim\u0105, gramatikos tikrinim\u0105 ir mokymosi analitik\u0105.";
+      return "\uba54\uc2dc\uc9d5\uc740 \ubb34\ub8cc\uc785\ub2c8\ub2e4! \uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed, \ubb38\ubc95 \uac80\uc0ac \ubc0f \ud559\uc2b5 \ubd84\uc11d\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\ub824\uba74 \uad6c\ub3c5\ud558\uc138\uc694.";
     },
     get$subscriptionManagement() {
-      return "Prenumeratos valdymas";
+      return "\uad6c\ub3c5 \uad00\ub9ac";
     },
     get$currentSubscription() {
-      return "Dabartin\u0117 prenumerata";
+      return "\ud604\uc7ac \uad6c\ub3c5";
     },
     get$cancelSubscription() {
-      return "At\u0161aukti prenumerat\u0105";
+      return "\uad6c\ub3c5 \ucde8\uc18c";
     },
     get$selectYourPlan() {
-      return "Pasirinkite savo plan\u0105";
+      return "\uc694\uae08\uc81c \uc120\ud0dd";
     },
     get$subsciptionPlatformTooltip() {
-      return "Pra\u0161ome prisijungti prie savo originalios \u012frenginio, kad gal\u0117tum\u0117te valdyti prenumeratos plan\u0105";
+      return "\uad6c\ub3c5 \ud50c\ub79c\uc744 \uad00\ub9ac\ud558\ub824\uba74 \uc6d0\ub798 \uae30\uae30\uc5d0 \ub85c\uadf8\uc778\ud558\uc138\uc694";
     },
     get$subscriptionManagementUnavailable() {
-      return "Prenumeratos valdymas nepasiekiamas";
+      return "\uad6c\ub3c5 \uad00\ub9ac\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$paymentMethod() {
-      return "Apmok\u0117jimo b\u016bdas";
+      return "\uc9c0\ubd88 \ubc29\ubc95";
     },
     get$paymentHistory() {
-      return "Apmok\u0117jimo istorija";
+      return "\uc9c0\ubd88 \ub0b4\uc5ed";
     },
     get$emptyChatDownloadWarning() {
-      return "Negalima atsisi\u0173sti tu\u0161\u010dios pokalbio";
+      return "\ube48 \ucc44\ud305\uc740 \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$toggleImmersionMode() {
-      return "\u012esitraukimo re\u017eimas";
+      return "\ubab0\uc785 \ubaa8\ub4dc \uc804\ud658";
     },
     get$toggleImmersionModeDesc() {
-      return "\u012ejungus, visi prane\u0161imai rodomi j\u016bs\u0173 tikslo kalba. \u0160is nustatymas yra ypa\u010d naudingas kalb\u0173 keitimuose.";
+      return "\ud65c\uc131\ud654\ud558\uba74 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\uac00 \ub300\uc0c1 \uc5b8\uc5b4\ub85c \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc774 \uc124\uc815\uc740 \uc5b8\uc5b4 \uad50\ud658\uc5d0 \uac00\uc7a5 \uc720\uc6a9\ud569\ub2c8\ub2e4.";
     },
     get$itToggleDescription() {
-      return "\u0160is kalb\u0173 mokymosi \u012frankis atpa\u017eins \u017eod\u017eius j\u016bs\u0173 pagrindin\u0117je kalboje ir pad\u0117s juos i\u0161versti \u012f j\u016bs\u0173 tikslin\u0119 kalb\u0105. Nors retai, dirbtinis intelektas gali padaryti vertimo klaid\u0173.";
+      return "\uc774 \uc5b8\uc5b4 \ud559\uc2b5 \ub3c4\uad6c\ub294 \uae30\ubcf8 \uc5b8\uc5b4\uc758 \ub2e8\uc5b4\ub97c \uc2dd\ubcc4\ud558\uace0 \ub300\uc0c1 \uc5b8\uc5b4\ub85c \ubc88\uc5ed\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4. \ub4dc\ubb3c\uac8c AI\uac00 \ubc88\uc5ed \uc624\ub958\ub97c \uc77c\uc73c\ud0ac \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$igcToggleDescription() {
-      return "\u0160is kalb\u0173 mokymosi \u012frankis atpa\u017eins da\u017enas ra\u0161ybos, gramatikos ir skyrybos klaidas j\u016bs\u0173 \u017einut\u0117je ir pasi\u016blys pataisas. Nors retai, dirbtinis intelektas gali padaryti patais\u0173 klaid\u0173.";
+      return "\uc774 \uc5b8\uc5b4 \ud559\uc2b5 \ub3c4\uad6c\ub294 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc77c\ubc18\uc801\uc778 \ub9de\ucda4\ubc95, \ubb38\ubc95 \ubc0f \uad6c\ub450\uc810 \uc624\ub958\ub97c \uc2dd\ubcc4\ud558\uace0 \uc218\uc815 \uc81c\uc548\uc744 \ud569\ub2c8\ub2e4. \ub4dc\ubb3c\uac8c AI\uac00 \uc218\uc815 \uc624\ub958\ub97c \ubc94\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$originalMessage() {
-      return "Originali \u017einut\u0117";
+      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0";
     },
     get$sentMessage() {
-      return "I\u0161si\u0173sta \u017einut\u0117";
+      return "\uc804\uc1a1\ub41c \uba54\uc2dc\uc9c0";
     },
     get$useType() {
-      return "Naudojimo tipas";
+      return "\uc0ac\uc6a9 \uc720\ud615";
     },
     get$notAvailable() {
-      return "Nepasiekiama";
+      return "\uc0ac\uc6a9 \ubd88\uac00";
     },
     get$taAndGaTooltip() {
-      return "L2 naudojimas su vertimo ir gramatikos pagalba";
+      return "\ubc88\uc5ed \uc9c0\uc6d0 \ubc0f \ubb38\ubc95 \uc9c0\uc6d0\uc774 \ud3ec\ud568\ub41c L2 \uc0ac\uc6a9";
     },
     get$definitionsToolName() {
-      return "\u017dod\u017ei\u0173 apibr\u0117\u017eimai";
+      return "\ub2e8\uc5b4 \uc815\uc758";
     },
     get$definitionsToolDescription() {
-      return "\u012ejungus, \u017eod\u017eiai pa\u017eym\u0117ti m\u0117lyna spalva gali b\u016bti spustel\u0117ti norint gauti apibr\u0117\u017eimus. Spustel\u0117kite \u017einutes, kad pasiektum\u0117te apibr\u0117\u017eimus.";
+      return "\ud65c\uc131\ud654\ud558\uba74 \ud30c\ub780\uc0c9 \ubc11\uc904\uc774 \uadf8\uc5b4\uc9c4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc5ec \uc815\uc758\ub97c \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uba54\uc2dc\uc9c0\ub97c \ud074\ub9ad\ud558\uc5ec \uc815\uc758\uc5d0 \uc811\uadfc\ud558\uc138\uc694.";
     },
     get$welcomeBack() {
-      return "Sveiki sugr\u012f\u017e\u0119! Jei buvote 2023-2024 m. bandomojo projekto dalyvis, susisiekite su mumis d\u0117l specialios bandomojo projekto prenumeratos. Jei esate mokytojas, kuris (arba j\u016bs\u0173 \u012fstaiga) \u012fsigijo licencijas savo klasei, susisiekite su mumis d\u0117l mokytojo prenumeratos.";
+      return "\ub2e4\uc2dc \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4! 2023-2024 \ud30c\uc77c\ub7ff\uc5d0 \ucc38\uc5ec\ud558\uc168\ub2e4\uba74, \ud2b9\ubcc4 \ud30c\uc77c\ub7ff \uad6c\ub3c5\uc744 \uc704\ud574 \uc800\ud76c\uc5d0\uac8c \uc5f0\ub77d\ud558\uc138\uc694. \uad50\uc0ac\uc774\uac70\ub098 \uadc0\ud558\uc758 \uae30\uad00\uc774 \uc218\uc5c5\uc6a9 \ub77c\uc774\uc120\uc2a4\ub97c \uad6c\ub9e4\ud55c \uacbd\uc6b0, \uad50\uc0ac \uad6c\ub3c5\uc744 \uc704\ud574 \uc800\ud76c\uc5d0\uac8c \uc5f0\ub77d\ud558\uc138\uc694.";
     },
     get$downloadTxtFile() {
-      return "Parsisi\u0173sti teksto fail\u0105";
+      return "\ud14d\uc2a4\ud2b8 \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$downloadCSVFile() {
-      return "Parsisi\u0173sti CSV fail\u0105";
+      return "CSV \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0160iuo metu turite visam laikui galiojan\u010di\u0105 reklamin\u0119 prenumerat\u0105. Susisiekite su support@pangea.chat d\u0117l pagalbos kei\u010diant prenumerat\u0105.";
+      return "\ud604\uc7ac \ud3c9\uc0dd \ud504\ub85c\ubaa8\uc158 \uad6c\ub3c5\uc744 \ubcf4\uc720\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uad6c\ub3c5 \ubcc0\uacbd\uc5d0 \ub300\ud55c \ub3c4\uc6c0\uc744 \uc6d0\ud558\uc2dc\uba74 support@pangea.chat\uc73c\ub85c \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc138\uc694.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Prenumerata \u012fsigyta per " + purchasePlatform;
+      return "\uad6c\ub9e4 \ud50c\ub7ab\ud3fc: " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Vienos savait\u0117s bandomoji versija";
+      return "\uc77c\uc8fc\uc77c \ubb34\ub8cc \uccb4\ud5d8";
     },
     get$downloadXLSXFile() {
-      return "Parsisi\u0173sti Excel fail\u0105";
+      return "\uc5d1\uc140 \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$unkDisplayName() {
-      return "Ne\u017einoma";
+      return "\uc54c \uc218 \uc5c6\uc74c";
     },
     get$wwCountryDisplayName() {
-      return "Pasaulinis";
+      return "\uc804 \uc138\uacc4";
     },
     get$afCountryDisplayName() {
-      return "Afganistanas";
+      return "\uc544\ud504\uac00\ub2c8\uc2a4\ud0c4";
     },
     get$axCountryDisplayName() {
-      return "Aland\u0173 Salos";
+      return "\uc62c\ub780\ub4dc \uc81c\ub3c4";
     },
     get$alCountryDisplayName() {
-      return "Albanija";
+      return "\uc54c\ubc14\ub2c8\uc544";
     },
     get$dzCountryDisplayName() {
-      return "Al\u017eyras";
+      return "\uc54c\uc81c\ub9ac";
     },
     get$asCountryDisplayName() {
-      return "Amerikos Samoa";
+      return "\uc544\uba54\ub9ac\uce78 \uc0ac\ubaa8\uc544";
     },
     get$adCountryDisplayName() {
-      return "Andora";
+      return "\uc548\ub3c4\ub77c";
     },
     get$aoCountryDisplayName() {
-      return "Angola";
+      return "\uc559\uace8\ub77c";
     },
     get$aiCountryDisplayName() {
-      return "Angilija";
+      return "\uc575\uadc8\ub77c";
     },
     get$agCountryDisplayName() {
-      return "Antigva ir Barbuda";
+      return "\uc564\ud2f0\uac00 \ubc14\ubd80\ub2e4";
     },
     get$arCountryDisplayName() {
-      return "Argentina";
+      return "\uc544\ub974\ud5e8\ud2f0\ub098";
     },
     get$amCountryDisplayName() {
-      return "Arm\u0117nija";
+      return "\uc544\ub974\uba54\ub2c8\uc544";
     },
     get$awCountryDisplayName() {
-      return "Aruba";
+      return "\uc544\ub8e8\ubc14";
     },
     get$acCountryDisplayName() {
-      return "Ascension sala";
+      return "\uc2b9\ucc9c \uc12c";
     },
     get$auCountryDisplayName() {
-      return "Australija";
+      return "\ud638\uc8fc";
     },
     get$atCountryDisplayName() {
-      return "Austrija";
+      return "\uc624\uc2a4\ud2b8\ub9ac\uc544";
     },
     get$azCountryDisplayName() {
-      return "Azerbaid\u017eanas";
+      return "\uc544\uc81c\ub974\ubc14\uc774\uc794";
     },
     get$bsCountryDisplayName() {
-      return "Bahamos";
+      return "\ubc14\ud558\ub9c8";
     },
     get$bhCountryDisplayName() {
-      return "Bahreinas";
+      return "\ubc14\ub808\uc778";
     },
     get$bdCountryDisplayName() {
-      return "Banglade\u0161as";
+      return "\ubc29\uae00\ub77c\ub370\uc2dc";
     },
     get$bbCountryDisplayName() {
-      return "Barbadosas";
+      return "\ubc14\ubca0\uc774\ub3c4\uc2a4";
     },
     get$byCountryDisplayName() {
-      return "Baltarusija";
+      return "\ubca8\ub77c\ub8e8\uc2a4";
     },
     get$beCountryDisplayName() {
-      return "Belgija";
+      return "\ubca8\uae30\uc5d0";
     },
     get$bzCountryDisplayName() {
-      return "Belizas";
+      return "\ubca8ize";
     },
     get$bjCountryDisplayName() {
-      return "Beninas";
+      return "\ubca0\ub0c9";
     },
     get$bmCountryDisplayName() {
-      return "Bermuda";
+      return "\ubc84\ubba4\ub2e4";
     },
     get$btCountryDisplayName() {
-      return "Butanas";
+      return "\ubd80\ud0c4";
     },
     get$boCountryDisplayName() {
-      return "Bolivija";
+      return "\ubcfc\ub9ac\ube44\uc544";
     },
     get$baCountryDisplayName() {
-      return "Bosnija ir Hercegovina";
+      return "\ubcf4\uc2a4\ub2c8\uc544 \ud5e4\ub974\uccb4\uace0\ube44\ub098";
     },
     get$bwCountryDisplayName() {
-      return "Botsvana";
+      return "\ubcf4\uce20\uc640\ub098";
     },
     get$brCountryDisplayName() {
-      return "Brazilija";
+      return "\ube0c\ub77c\uc9c8";
     },
     get$ioCountryDisplayName() {
-      return "Did\u017eiosios Indijos vandenyno brit\u0173 teritorija";
+      return "\uc601\uad6d\ub839 \uc778\ub3c4\uc591 \uc9c0\uc5ed";
     },
     get$vgCountryDisplayName() {
-      return "Brit\u0173 Mergeli\u0173 salos";
+      return "\uc601\uad6d\ub839 \ubc84\uc9c4 \uc544\uc77c\ub79c\ub4dc";
     },
     get$bnCountryDisplayName() {
-      return "Brun\u0117jus";
+      return "\ube0c\ub8e8\ub098\uc774";
     },
     get$bgCountryDisplayName() {
-      return "Bulgarija";
+      return "\ubd88\uac00\ub9ac\uc544";
     },
     get$bfCountryDisplayName() {
-      return "Burkina Fasas";
+      return "\ubd80\ub974\ud0a4\ub098\ud30c\uc18c";
     },
     get$biCountryDisplayName() {
-      return "Burundis";
+      return "\ubd80\ub8ec\ub514";
     },
     get$khCountryDisplayName() {
-      return "Kambod\u017ea";
+      return "\uce84\ubcf4\ub514\uc544";
     },
     get$cmCountryDisplayName() {
-      return "Kamer\u016bnas";
+      return "\uce74\uba54\ub8ec";
     },
     get$caCountryDisplayName() {
-      return "Kanada";
+      return "\uce90\ub098\ub2e4";
     },
     get$cvCountryDisplayName() {
-      return "\u017daliasis Ky\u0161ulys";
+      return "\uce74\ubcf4\ubca0\ub974\ub370";
     },
     get$bqCountryDisplayName() {
-      return "Karib\u0173 Nyderlandai";
+      return "\uce74\ub9ac\ube0c \ub124\ub35c\ub780\ub4dc";
     },
     get$kyCountryDisplayName() {
-      return "Kaiman\u0173 salos";
+      return "\ucf00\uc774\ub9e8 \uc81c\ub3c4";
     },
     get$cfCountryDisplayName() {
-      return "Centrin\u0117 Afrikos Respublika";
+      return "\uc911\uc559\uc544\ud504\ub9ac\uce74\uacf5\ud654\uad6d";
     },
     get$tdCountryDisplayName() {
-      return "\u010cadas";
+      return "\ucc28\ub4dc";
     },
     get$clCountryDisplayName() {
-      return "\u010cil\u0117";
+      return "\uce60\ub808";
     },
     get$cnCountryDisplayName() {
-      return "Kinija";
+      return "\uc911\uad6d";
     },
     get$cxCountryDisplayName() {
-      return "Kal\u0117d\u0173 sala";
+      return "\ud06c\ub9ac\uc2a4\ub9c8\uc2a4 \uc12c";
     },
     get$ccCountryDisplayName() {
-      return "Kokos (Keelingo) salos";
+      return "\ucf54\ucf54\uc2a4 \uc81c\ub3c4 [\ud0a4\ub9c1]";
     },
     get$coCountryDisplayName() {
-      return "Kolumbija";
+      return "\ucf5c\ub86c\ube44\uc544";
     },
     get$kmCountryDisplayName() {
-      return "Komorai";
+      return "\ucf54\ubaa8\ub85c";
     },
     get$cdCountryDisplayName() {
-      return "Kongo Demokratin\u0117 Respublika";
+      return "\ucf69\uace0 \ubbfc\uc8fc \uacf5\ud654\uad6d";
     },
     get$cgCountryDisplayName() {
-      return "Kongo Respublika";
+      return "\ucf69\uace0 \uacf5\ud654\uad6d";
     },
     get$ckCountryDisplayName() {
-      return "Kuko Salos";
+      return "\ucfe1 \uc81c\ub3c4";
     },
     get$crCountryDisplayName() {
-      return "Kosta Rika";
+      return "\ucf54\uc2a4\ud0c0\ub9ac\uce74";
     },
     get$ciCountryDisplayName() {
-      return "Dramblio Kaulo Krantas";
+      return "\ucf54\ud2b8\ub514\ubd80\uc544\ub974";
     },
     get$hrCountryDisplayName() {
-      return "Kroatija";
+      return "\ud06c\ub85c\uc544\ud2f0\uc544";
     },
     get$cuCountryDisplayName() {
-      return "Kuba";
+      return "\ucfe0\ubc14";
     },
     get$cwCountryDisplayName() {
-      return "Kurasao";
+      return "\ud034\ub77c\uc18c";
     },
     get$cyCountryDisplayName() {
-      return "Kipras";
+      return "\ud0a4\ud504\ub85c\uc2a4";
     },
     get$czCountryDisplayName() {
-      return "\u010cekijos Respublika";
+      return "\uccb4\ucf54 \uacf5\ud654\uad6d";
     },
     get$dkCountryDisplayName() {
-      return "Danija";
+      return "\ub374\ub9c8\ud06c";
     },
     get$djCountryDisplayName() {
-      return "D\u017eibutis";
+      return "\uc9c0\ubd80\ud2f0";
     },
     get$dmCountryDisplayName() {
-      return "Dominika";
+      return "\ub3c4\ubbf8\ub2c8\uce74";
     },
     get$doCountryDisplayName() {
-      return "Dominikos Respublika";
+      return "\ub3c4\ubbf8\ub2c8\uce74 \uacf5\ud654\uad6d";
     },
     get$tlCountryDisplayName() {
-      return "Ryt\u0173 Timoras";
+      return "\ub3d9\ud2f0\ubaa8\ub974";
     },
     get$ecCountryDisplayName() {
-      return "Ekvadoras";
+      return "\uc5d0\ucf70\ub3c4\ub974";
     },
     get$egCountryDisplayName() {
-      return "Egiptas";
+      return "\uc774\uc9d1\ud2b8";
     },
     get$svCountryDisplayName() {
-      return "El Salvadoras";
+      return "\uc5d8\uc0b4\ubc14\ub3c4\ub974";
     },
     get$gqCountryDisplayName() {
-      return "Pusiaujo Gvin\u0117ja";
+      return "\uc801\ub3c4 \uae30\ub2c8";
     },
     get$erCountryDisplayName() {
-      return "Eritr\u0117ja";
+      return "\uc5d0\ub9ac\ud2b8\ub808\uc544";
     },
     get$eeCountryDisplayName() {
-      return "Estija";
+      return "\uc5d0\uc2a4\ud1a0\ub2c8\uc544";
     },
     get$szCountryDisplayName() {
-      return "Esvatinas";
+      return "\uc5d0\uc2a4\uc640\ud2f0\ub2c8";
     },
     get$etCountryDisplayName() {
-      return "Etiopija";
+      return "\uc774\uc9d1\ud2b8";
     },
     get$fkCountryDisplayName() {
-      return "Folkland\u0173 Salos";
+      return "\ud3ec\ud074\ub79c\ub4dc \uc81c\ub3c4";
     },
     get$foCountryDisplayName() {
-      return "Farer\u0173 Salos";
+      return "\ud398\ub85c \uc81c\ub3c4";
     },
     get$fjCountryDisplayName() {
-      return "Fid\u017ei";
+      return "\ud53c\uc9c0";
     },
     get$fiCountryDisplayName() {
-      return "Suomija";
+      return "\ud540\ub780\ub4dc";
     },
     get$frCountryDisplayName() {
-      return "Pranc\u016bzija";
+      return "\ud504\ub791\uc2a4";
     },
     get$gfCountryDisplayName() {
-      return "Pranc\u016bzijos Gijana";
+      return "\ud504\ub791\uc2a4\ub839 \uae30\uc544\ub098";
     },
     get$pfCountryDisplayName() {
-      return "Pranc\u016bzijos Polinezija";
+      return "\ud504\ub791\uc2a4\ub839 \ud3f4\ub9ac\ub124\uc2dc\uc544";
     },
     get$gaCountryDisplayName() {
-      return "Gabonas";
+      return "\uac00\ubd09";
     },
     get$gmCountryDisplayName() {
-      return "Gambija";
+      return "\uac10\ube44\uc544";
     },
     get$geCountryDisplayName() {
-      return "Gruzija";
+      return "\uc870\uc9c0\uc544";
     },
     get$deCountryDisplayName() {
-      return "Vokietija";
+      return "\ub3c5\uc77c";
     },
     get$ghCountryDisplayName() {
-      return "Gana";
+      return "\uac00\ub098";
     },
     get$giCountryDisplayName() {
-      return "Gibraltaras";
+      return "\uc9c0\ube0c\ub864\ud130";
     },
     get$grCountryDisplayName() {
-      return "Graikija";
+      return "\uadf8\ub9ac\uc2a4";
     },
     get$glCountryDisplayName() {
-      return "Grenlandija";
+      return "\uadf8\ub9b0\ub780\ub4dc";
     },
     get$gdCountryDisplayName() {
-      return "Grenada";
+      return "\uadf8\ub808\ub098\ub2e4";
     },
     get$gpCountryDisplayName() {
-      return "Gvadelupa";
+      return "\uacfc\ub2ec\ub8e8\ud398";
     },
     get$guCountryDisplayName() {
-      return "Guamas";
+      return "\uad0c";
     },
     get$gtCountryDisplayName() {
-      return "Gvatemala";
+      return "\uacfc\ud14c\ub9d0\ub77c";
     },
     get$ggCountryDisplayName() {
-      return "Gernsis";
+      return "\uac74\uc9c0\uc12c";
     },
     get$gnCountryDisplayName() {
-      return "Gvin\u0117ja Konakris";
+      return "\uae30\ub2c8";
     },
     get$gwCountryDisplayName() {
-      return "Gvin\u0117ja-Bisao";
+      return "\uae30\ub2c8\ube44\uc0ac\uc6b0";
     },
     get$gyCountryDisplayName() {
-      return "Gajana";
+      return "\uac00\uc774\uc544\ub098";
     },
     get$htCountryDisplayName() {
-      return "Haitis";
+      return "\uc544\uc774\ud2f0";
     },
     get$hmCountryDisplayName() {
-      return "Hirdo sala ir Makdonaldo salos";
+      return "\ud5c8\ub4dc \uc12c\uacfc \ub9e5\ub3c4\ub110\ub4dc \uc81c\ub3c4";
     },
     get$hnCountryDisplayName() {
-      return "Hond\u016bras";
+      return "\uc628\ub450\ub77c\uc2a4";
     },
     get$hkCountryDisplayName() {
-      return "Honkonga";
+      return "\ud64d\ucf69";
     },
     get$huCountryDisplayName() {
-      return "Vengrija";
+      return "\ud5dd\uac00\ub9ac";
     },
     get$isCountryDisplayName() {
-      return "Islandija";
+      return "\uc544\uc774\uc2ac\ub780\ub4dc";
     },
     get$inCountryDisplayName() {
-      return "Indija";
+      return "\uc778\ub3c4";
     },
     get$idCountryDisplayName() {
-      return "Indonezija";
+      return "\uc778\ub3c4\ub124\uc2dc\uc544";
     },
     get$irCountryDisplayName() {
-      return "Iranas";
+      return "\uc774\ub780";
     },
     get$iqCountryDisplayName() {
-      return "Irakas";
+      return "\uc774\ub77c\ud06c";
     },
     get$ieCountryDisplayName() {
-      return "Airija";
+      return "\uc544\uc77c\ub79c\ub4dc";
     },
     get$imCountryDisplayName() {
-      return "Meno sala";
+      return "\ub9e8 \uc12c";
     },
     get$ilCountryDisplayName() {
-      return "Izraelis";
+      return "\uc774\uc2a4\ub77c\uc5d8";
     },
     get$itCountryDisplayName() {
-      return "Italija";
+      return "\uc774\ud0c8\ub9ac\uc544";
     },
     get$jmCountryDisplayName() {
-      return "Jamaika";
+      return "\uc790\uba54\uc774\uce74";
     },
     get$jpCountryDisplayName() {
-      return "Japonija";
+      return "\uc77c\ubcf8";
     },
     get$jeCountryDisplayName() {
-      return "D\u017eersis";
+      return "\uc800\uc9c0 \uc12c";
     },
     get$joCountryDisplayName() {
-      return "Jordanas";
+      return "\uc694\ub974\ub2e8";
     },
     get$kzCountryDisplayName() {
-      return "Kazachstanas";
+      return "\uce74\uc790\ud750\uc2a4\ud0c4";
     },
     get$keCountryDisplayName() {
-      return "Kenija";
+      return "\ucf00\ub0d0";
     },
     get$kiCountryDisplayName() {
-      return "Kiribatis";
+      return "\ud0a4\ub9ac\ubc14\uc2dc";
     },
     get$xkCountryDisplayName() {
-      return "Kosovas";
+      return "\ucf54\uc18c\ubcf4";
     },
     get$kwCountryDisplayName() {
-      return "Kuveitas";
+      return "\ucfe0\uc6e8\uc774\ud2b8";
     },
     get$kgCountryDisplayName() {
-      return "Kirgizija";
+      return "\ud0a4\ub974\uae30\uc2a4\uc2a4\ud0c4";
     },
     get$laCountryDisplayName() {
-      return "Laosas";
+      return "\ub77c\uc624\uc2a4";
     },
     get$lvCountryDisplayName() {
-      return "Latvija";
+      return "\ub77c\ud2b8\ube44\uc544";
     },
     get$lbCountryDisplayName() {
-      return "Libanas";
+      return "\ub808\ubc14\ub17c";
     },
     get$lsCountryDisplayName() {
-      return "Lesotas";
+      return "\ub808\uc18c\ud1a0";
     },
     get$lrCountryDisplayName() {
-      return "Liberija";
+      return "\ub77c\uc774\ubca0\ub9ac\uc544";
     },
     get$lyCountryDisplayName() {
-      return "Libija";
+      return "\ub9ac\ube44\uc544";
     },
     get$liCountryDisplayName() {
-      return "Lichten\u0161teinas";
+      return "\ub9ac\ud788\ud150\uc288\ud0c0\uc778";
     },
     get$ltCountryDisplayName() {
-      return "Lietuva";
+      return "\ub9ac\ud22c\uc544\ub2c8\uc544";
     },
     get$luCountryDisplayName() {
-      return "Liuksemburgas";
+      return "\ub8e9\uc148\ubd80\ub974\ud06c";
     },
     get$moCountryDisplayName() {
-      return "Makao";
+      return "\ub9c8\uce74\uc624";
     },
     get$mkCountryDisplayName() {
-      return "\u0160iaur\u0117s Makedonija";
+      return "\ubd81\ub9c8\ucf00\ub3c4\ub2c8\uc544";
     },
     get$mgCountryDisplayName() {
-      return "Madagaskaras";
+      return "\ub9c8\ub2e4\uac00\uc2a4\uce74\ub974";
     },
     get$mwCountryDisplayName() {
-      return "Malavis";
+      return "\ub9d0\ub77c\uc704";
     },
     get$myCountryDisplayName() {
-      return "Malaizija";
+      return "\ub9d0\ub808\uc774\uc2dc\uc544";
     },
     get$mvCountryDisplayName() {
-      return "Maldivai";
+      return "\ubab0\ub514\ube0c";
     },
     get$mlCountryDisplayName() {
-      return "Malis";
+      return "\ub9d0\ub9ac";
     },
     get$mtCountryDisplayName() {
-      return "Malta";
+      return "\ubab0\ud0c0";
     },
     get$mhCountryDisplayName() {
-      return "Mar\u0161alo Salos";
+      return "\ub9c8\uc15c \uc81c\ub3c4";
     },
     get$mqCountryDisplayName() {
-      return "Martinika";
+      return "\ub9c8\ub974\ud2f0\ub2c8\ud06c";
     },
     get$mrCountryDisplayName() {
-      return "Mauritanija";
+      return "\ubaa8\ub9ac\ud0c0\ub2c8\uc544";
     },
     get$muCountryDisplayName() {
-      return "Mauricijus";
+      return "\ubaa8\ub9ac\uc154\uc2a4";
     },
     get$ytCountryDisplayName() {
-      return "Mayotte";
+      return "\ub9c8\uc694\ud2b8";
     },
     get$mxCountryDisplayName() {
-      return "Meksika";
+      return "\uba55\uc2dc\ucf54";
     },
     get$fmCountryDisplayName() {
-      return "Mikronezija";
+      return "\ubbf8\ud06c\ub85c\ub124\uc2dc\uc544";
     },
     get$mdCountryDisplayName() {
-      return "Moldova";
+      return "\ubab0\ub3c4\ubc14";
     },
     get$mcCountryDisplayName() {
-      return "Monakas";
+      return "\ubaa8\ub098\ucf54";
     },
     get$mnCountryDisplayName() {
-      return "Mongolija";
+      return "\ubabd\uace8";
     },
     get$meCountryDisplayName() {
-      return "Juodkalnija";
+      return "\ubaac\ud14c\ub124\uadf8\ub85c";
     },
     get$msCountryDisplayName() {
-      return "Montseratas";
+      return "\ubaac\ud2b8\uc138\ub7ab";
     },
     get$maCountryDisplayName() {
-      return "Marokas";
+      return "\ubaa8\ub85c\ucf54";
     },
     get$mzCountryDisplayName() {
-      return "Mozambikas";
+      return "\ubaa8\uc7a0\ube44\ud06c";
     },
     get$mmCountryDisplayName() {
-      return "Mianmaras (Birma)";
+      return "\ubbf8\uc580\ub9c8(\ubc84\ub9c8)";
     },
     get$naCountryDisplayName() {
-      return "Namibija";
+      return "\ub098\ubbf8\ube44\uc544";
     },
     get$nrCountryDisplayName() {
-      return "Nauru";
+      return "\ub098\uc6b0\ub8e8";
     },
     get$npCountryDisplayName() {
-      return "Nepalas";
+      return "\ub124\ud314";
     },
     get$nlCountryDisplayName() {
-      return "Nyderlandai";
+      return "\ub124\ub35c\ub780\ub4dc";
     },
     get$ncCountryDisplayName() {
-      return "Naujoji Kaledonija";
+      return "\ub274 \uce7c\ub808\ub3c4\ub2c8\uc544";
     },
     get$nzCountryDisplayName() {
-      return "Naujoji Zelandija";
+      return "\ub274\uc9c8\ub79c\ub4dc";
     },
     get$niCountryDisplayName() {
-      return "Nikaragva";
+      return "\ub2c8\uce74\ub77c\uacfc";
     },
     get$neCountryDisplayName() {
-      return "Nigeris";
+      return "\ub2c8\uc81c\ub974";
     },
     get$ngCountryDisplayName() {
-      return "Nigerija";
+      return "\ub098\uc774\uc9c0\ub9ac\uc544";
     },
     get$nuCountryDisplayName() {
-      return "Niue";
+      return "\ub2c8\uc6b0\uc5d0";
     },
     get$nfCountryDisplayName() {
-      return "Norfolko sala";
+      return "\ub178\ud37d \uc12c";
     },
     get$kpCountryDisplayName() {
-      return "\u0160iaur\u0117s Kor\u0117ja";
+      return "\ubd81\ud55c";
     },
     get$mpCountryDisplayName() {
-      return "\u0160iaur\u0117s Marianos salos";
+      return "\ubd81\ub9c8\ub9ac\uc544\ub098 \uc81c\ub3c4";
     },
     get$noCountryDisplayName() {
-      return "Norvegija";
+      return "\ub178\ub974\uc6e8\uc774";
     },
     get$omCountryDisplayName() {
-      return "Omanas";
+      return "\uc624\ub9cc";
     },
     get$pkCountryDisplayName() {
-      return "Pakistanas";
+      return "\ud30c\ud0a4\uc2a4\ud0c4";
     },
     get$pwCountryDisplayName() {
-      return "Palau";
+      return "\ud314\ub77c\uc6b0";
     },
     get$psCountryDisplayName() {
-      return "Palestinos teritorijos";
+      return "\ud314\ub808\uc2a4\ud0c0\uc778 \uc601\ud1a0";
     },
     get$paCountryDisplayName() {
-      return "Panama";
+      return "\ud30c\ub098\ub9c8";
     },
     get$pgCountryDisplayName() {
-      return "Papua Naujoji Gvin\u0117ja";
+      return "\ud30c\ud478\uc544\ub274\uae30\ub2c8";
     },
     get$pyCountryDisplayName() {
-      return "Paragvajus";
+      return "\ud30c\ub77c\uacfc\uc774";
     },
     get$peCountryDisplayName() {
-      return "Peru";
+      return "\ud398\ub8e8";
     },
     get$phCountryDisplayName() {
-      return "Filipinai";
+      return "\ud544\ub9ac\ud540";
     },
     get$plCountryDisplayName() {
-      return "Lenkija";
+      return "\ud3f4\ub780\ub4dc";
     },
     get$ptCountryDisplayName() {
-      return "Portugalija";
+      return "\ud3ec\ub974\ud22c\uac08";
     },
     get$prCountryDisplayName() {
-      return "Puerto Rikas";
+      return "\ud478\uc5d0\ub974\ud1a0\ub9ac\ucf54";
     },
     get$qaCountryDisplayName() {
-      return "Kataras";
+      return "\uce74\ud0c0\ub974";
     },
     get$reCountryDisplayName() {
-      return "Reunionas";
+      return "\ub808\uc704\ub2c8\uc639";
     },
     get$roCountryDisplayName() {
-      return "Rumunija";
+      return "\ub8e8\ub9c8\ub2c8\uc544";
     },
     get$ruCountryDisplayName() {
-      return "Rusija";
+      return "\ub7ec\uc2dc\uc544";
     },
     get$rwCountryDisplayName() {
-      return "Ruanda";
+      return "\ub974\uc644\ub2e4";
     },
     get$blCountryDisplayName() {
-      return "\u0160ventoji Bartolom\u0117ja";
+      return "\uc0dd \ubc14\ub974\ud154\ub808\ubbf8";
     },
     get$shCountryDisplayName() {
-      return "\u0160ventoji Helena";
+      return "\uc138\uc778\ud2b8 \ud5ec\ub808\ub098";
     },
     get$knCountryDisplayName() {
-      return "Sent Kitsas";
+      return "\uc138\uc778\ud2b8 \ud0a4\uce20 \ub124\ube44\uc2a4";
     },
     get$lcCountryDisplayName() {
-      return "\u0160v. Liucija";
+      return "\uc138\uc778\ud2b8 \ub8e8\uc2dc\uc544";
     },
     get$mfCountryDisplayName() {
-      return "\u0160ventasis Martinas";
+      return "\uc0dd \ub9c8\ub974\ud0f1";
     },
     get$pmCountryDisplayName() {
-      return "\u0160ventasis Pierre ir Miquelon";
+      return "\uc0dd \ud53c\uc5d0\ub974 \ubbf8\ud074\ub871";
     },
     get$vcCountryDisplayName() {
-      return "Sent Vinsentas";
+      return "\uc138\uc778\ud2b8 \ube48\uc13c\ud2b8 \uadf8\ub808\ub098\ub518";
     },
     get$wsCountryDisplayName() {
-      return "Samoa";
+      return "\uc0ac\ubaa8\uc544";
     },
     get$smCountryDisplayName() {
-      return "San Marinas";
+      return "\uc0b0 \ub9c8\ub9ac\ub178";
     },
     get$stCountryDisplayName() {
-      return "San Tom\u0117 ir Principo";
+      return "\uc0c1\ud22c\uba54 \ud504\ub9b0\uc2dc\ud398";
     },
     get$saCountryDisplayName() {
-      return "Saudo Arabija";
+      return "\uc0ac\uc6b0\ub514\uc544\ub77c\ube44\uc544";
     },
     get$snCountryDisplayName() {
-      return "Senegalas";
+      return "\uc138\ub124\uac08";
     },
     get$rsCountryDisplayName() {
-      return "Serbija";
+      return "\uc138\ub974\ube44\uc544";
     },
     get$scCountryDisplayName() {
-      return "Sei\u0161eliai";
+      return "\uc138\uc774\uc178";
     },
     get$slCountryDisplayName() {
-      return "Siera Leon\u0117";
+      return "\uc2dc\uc5d0\ub77c\ub9ac\uc628";
     },
     get$sgCountryDisplayName() {
-      return "Singap\u016bras";
+      return "\uc2f1\uac00\ud3ec\ub974";
     },
     get$sxCountryDisplayName() {
-      return "Sint Martenas";
+      return "\uc2e0\ud2b8 \ub9c8\ub974\ud134";
     },
     get$skCountryDisplayName() {
-      return "Slovakija";
+      return "\uc2ac\ub85c\ubc14\ud0a4\uc544";
     },
     get$siCountryDisplayName() {
-      return "Slov\u0117nija";
+      return "\uc2ac\ub85c\ubca0\ub2c8\uc544";
     },
     get$sbCountryDisplayName() {
-      return "Saliamono Salos";
+      return "\uc194\ub85c\ubaac \uc81c\ub3c4";
     },
     get$soCountryDisplayName() {
-      return "Somalis";
+      return "\uc18c\ub9d0\ub9ac\uc544";
     },
     get$zaCountryDisplayName() {
-      return "Piet\u0173 Afrika";
+      return "\ub0a8\uc544\ud504\ub9ac\uce74 \uacf5\ud654\uad6d";
     },
     get$gsCountryDisplayName() {
-      return "Piet\u0173 D\u017eord\u017eija ir Piet\u0173 Sandvi\u010do Salos";
+      return "\uc0ac\uc6b0\uc2a4 \uc870\uc9c0\uc544 \ubc0f \uc0ac\uc6b0\uc2a4 \uc0cc\ub4dc\uc704\uce58 \uc81c\ub3c4";
     },
     get$krCountryDisplayName() {
-      return "Piet\u0173 Kor\u0117ja";
+      return "\ub300\ud55c\ubbfc\uad6d";
     },
     get$ssCountryDisplayName() {
-      return "Piet\u0173 Sudanas";
+      return "\ub0a8\uc218\ub2e8";
     },
     get$esCountryDisplayName() {
-      return "Ispanija";
+      return "\uc2a4\ud398\uc778";
     },
     get$lkCountryDisplayName() {
-      return "\u0160ri Lanka";
+      return "\uc2a4\ub9ac\ub791\uce74";
     },
     get$sdCountryDisplayName() {
-      return "Sudanas";
+      return "\uc218\ub2e8";
     },
     get$srCountryDisplayName() {
-      return "Surinamas";
+      return "\uc218\ub9ac\ub0a8";
     },
     get$sjCountryDisplayName() {
-      return "Svalbardas ir Janas Majeinas";
+      return "\uc2a4\ubc1c\ubc14\ub974\ub4dc \uc81c\ub3c4 \ubc0f \uc580 \ub9c8\uc774\uc5d4";
     },
     get$seCountryDisplayName() {
-      return "\u0160vedija";
+      return "\uc2a4\uc6e8\ub374";
     },
     get$chCountryDisplayName() {
-      return "\u0160veicarija";
+      return "\uc2a4\uc704\uc2a4";
     },
     get$syCountryDisplayName() {
-      return "Sirija";
+      return "\uc2dc\ub9ac\uc544";
     },
     get$twCountryDisplayName() {
-      return "Taivanas";
+      return "\ub300\ub9cc";
     },
     get$tjCountryDisplayName() {
-      return "Tad\u017eikistanas";
+      return "\ud0c0\uc9c0\ud0a4\uc2a4\ud0c4";
     },
     get$tzCountryDisplayName() {
-      return "Tanzanija";
+      return "\ud0c4\uc790\ub2c8\uc544";
     },
     get$thCountryDisplayName() {
-      return "Tailandas";
+      return "\ud0dc\uad6d";
     },
     get$tgCountryDisplayName() {
-      return "Togas";
+      return "\ud1a0\uace0";
     },
     get$tkCountryDisplayName() {
-      return "Tokelau";
+      return "\ud1a0\ucf08\ub77c\uc6b0";
     },
     get$toCountryDisplayName() {
-      return "Tonga";
+      return "\ud1b5\uac00";
     },
     get$ttCountryDisplayName() {
-      return "Trinidadas ir Tobagas";
+      return "\ud2b8\ub9ac\ub2c8\ub2e4\ub4dc \ud1a0\ubc14\uace0";
     },
     get$tnCountryDisplayName() {
-      return "Tunisas";
+      return "\ud280\ub2c8\uc9c0";
     },
     get$trCountryDisplayName() {
-      return "Turkija";
+      return "\ud130\ud0a4";
     },
     get$tmCountryDisplayName() {
-      return "Turkm\u0117nistanas";
+      return "\ud22c\ub974\ud06c\uba54\ub2c8\uc2a4\ud0c4";
     },
     get$tcCountryDisplayName() {
-      return "Turkso ir Kaikoso Salos";
+      return "\ud130\ud06c\uc2a4 \ucf00\uc774\ucee4\uc2a4 \uc81c\ub3c4";
     },
     get$tvCountryDisplayName() {
-      return "Tuvalu";
+      return "\ud22c\ubc1c\ub8e8";
     },
     get$viCountryDisplayName() {
-      return "JAV Mergeli\u0173 Salos";
+      return "\ubbf8\uad6d\ub839 \ubc84\uc9c4 \uc544\uc77c\ub79c\ub4dc";
     },
     get$ugCountryDisplayName() {
-      return "Uganda";
+      return "\uc6b0\uac04\ub2e4";
     },
     get$uaCountryDisplayName() {
-      return "Ukraina";
+      return "\uc6b0\ud06c\ub77c\uc774\ub098";
     },
     get$aeCountryDisplayName() {
-      return "Jungtini\u0173 Arab\u0173 Emyratai";
+      return "\uc544\ub78d\uc5d0\ubbf8\ub9ac\ud2b8";
     },
     get$gbCountryDisplayName() {
-      return "Jungtin\u0117 Karalyst\u0117";
+      return "\uc601\uad6d";
     },
     get$usCountryDisplayName() {
-      return "Jungtin\u0117s Valstijos";
+      return "\ubbf8\uad6d";
     },
     get$uyCountryDisplayName() {
-      return "Urugvajus";
+      return "\uc6b0\ub8e8\uacfc\uc774";
     },
     get$uzCountryDisplayName() {
-      return "Uzbekistanas";
+      return "\uc6b0\uc988\ubca0\ud0a4\uc2a4\ud0c4";
     },
     get$vuCountryDisplayName() {
-      return "Vanuatu";
+      return "\ubc14\ub204\uc544\ud22c";
     },
     get$vaCountryDisplayName() {
-      return "Vatikano Miestas";
+      return "\ubc14\ud2f0\uce78 \uc2dc\uad6d";
     },
     get$veCountryDisplayName() {
-      return "Venesuela";
+      return "\ubca0\ub124\uc218\uc5d8\ub77c";
     },
     get$vnCountryDisplayName() {
-      return "Vietnamas";
+      return "\ubca0\ud2b8\ub0a8";
     },
     get$wfCountryDisplayName() {
-      return "Wallis ir Futuna";
+      return "\uc6d4\ub9ac\uc2a4 \ud478\ud22c\ub098";
     },
     get$ehCountryDisplayName() {
-      return "Vakar\u0173 Sahara";
+      return "\uc11c\ubd80 \uc0ac\ud558\ub77c";
     },
     get$yeCountryDisplayName() {
-      return "Jemenas";
+      return "\uc608\uba58";
     },
     get$zmCountryDisplayName() {
-      return "Zambija";
+      return "\uc7a0\ube44\uc544";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabv\u0117";
+      return "\uc9d0\ubc14\ube0c\uc6e8";
     },
     get$pay() {
-      return "Checkout";
+      return "\uacb0\uc81c";
     },
     invitedToSpace$2(space, user) {
-      return user + " pakviet\u0117 jus prisijungti prie kurso: " + space + "! Ar norite priimti?";
+      return user + "\ub2d8\uc774 " + space + " \uac15\uc88c\uc5d0 \ucd08\ub300\ud558\uc168\uc2b5\ub2c8\ub2e4! \uc218\ub77d\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 J\u016bs pakviestas!";
+      return "\ud83d\udce9 \ucd08\ub300\ubc1b\uc558\uc2b5\ub2c8\ub2e4!";
     },
     invitedToChat$2($name, user) {
-      return user + " pakviet\u0117 jus prisijungti prie pokalbio: " + $name + "! Ar norite priimti?";
+      return user + "\ub2d8\uc774 " + $name + " \ucc44\ud305\uc5d0 \ucd08\ub300\ud558\uc168\uc2b5\ub2c8\ub2e4! \uc218\ub77d\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$monthlySubscription() {
-      return "M\u0117nesin\u0117";
+      return "\uc6d4\uac04";
     },
     get$yearlySubscription() {
-      return "Metin\u0117";
+      return "\uc5f0\uac04";
     },
     get$defaultSubscription() {
-      return "Pangea pokalbi\u0173 prenumerata";
+      return "\ud310\uac8c\uc544 \ucc44\ud305 \uad6c\ub3c5";
     },
     get$freeTrial() {
-      return "Nemokamas bandomasis laikotarpis";
+      return "\ubb34\ub8cc \uccb4\ud5d8";
     },
     get$noDataFound() {
-      return "Duomen\u0173 nerasta";
+      return "\ub370\uc774\ud130\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$correctionDefaultPrompt() {
-      return "Kokia yra geriausia pakeitimo versija?";
+      return "\uac00\uc7a5 \uc801\uc808\ud55c \ub300\uccb4 \ub2f5\ubcc0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?";
     },
     get$reportToTeacher() {
-      return "Kam norite prane\u0161ti apie \u0161\u012f prane\u0161im\u0105?";
+      return "\uc774 \uba54\uc2dc\uc9c0\ub97c \ub204\uad6c\uc5d0\uac8c \uc2e0\uace0\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " prane\u0161\u0117 apie \u017einut\u0119 i\u0161 " + reportedUserId + " pokalbyje " + roomName;
+      return reportingUserId + "\ub2d8\uc774 \ucc44\ud305 " + roomName + "\uc5d0\uc11c " + reportedUserId + "\uc758 \uba54\uc2dc\uc9c0\ub97c \uc2e0\uace0\ud588\uc2b5\ub2c8\ub2e4";
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u017dinut\u0117: " + reportedMessage + "\nPrie\u017eastis: " + reason;
+      return "\uba54\uc2dc\uc9c0: " + reportedMessage + "\n\uc774\uc720: " + reason;
     },
     get$noTeachersFound() {
-      return "Nerasta mokytoj\u0173 prane\u0161ti";
+      return "\uc2e0\uace0\ud560 \uc120\uc0dd\ub2d8\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     trialExpiration$1(expiration) {
-      return "J\u016bs\u0173 nemokamas bandomasis laikotarpis baigsis " + expiration;
+      return "\ubb34\ub8cc \uccb4\ud5d8\uc774 " + expiration + "\uc5d0 \ub9cc\ub8cc\ub429\ub2c8\ub2e4";
     },
     get$freeTrialDesc() {
-      return "Nauji vartotojai gauna vienos savait\u0117s nemokam\u0105 Pangea Chat bandom\u0105j\u012f laikotarp\u012f";
+      return "\uc2e0\uaddc \uc0ac\uc6a9\uc790\ub294 \uc77c\uc8fc\uc77c\uac04 \ubb34\ub8cc \uccb4\ud5d8\uc744 \ubc1b\uc2b5\ub2c8\ub2e4";
     },
     get$activateTrial() {
-      return "Aktyvuoti 7 dien\u0173 nemokam\u0105 bandom\u0105j\u012f laikotarp\u012f";
+      return "\ubb34\ub8cc 7\uc77c \uccb4\ud5d8 \uc2dc\uc791";
     },
     get$successfullySubscribed() {
-      return "J\u016bs s\u0117kmingai u\u017esiprenumeravote!";
+      return "\uad6c\ub3c5\uc774 \uc131\uacf5\uc801\uc73c\ub85c \uc644\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
     },
     get$clickToManageSubscription() {
-      return "Spustel\u0117kite \u010dia, nor\u0117dami valdyti savo prenumerat\u0105.";
+      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \uad6c\ub3c5\uc744 \uad00\ub9ac\ud558\uc138\uc694.";
     },
     get$signUp() {
-      return "Registruotis";
+      return "\uac00\uc785\ud558\uae30";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Pra\u0161ome pasirinkti bent " + min + " simbolius.";
+      return "\ucd5c\uc18c " + min + "\uc790 \uc774\uc0c1\uc744 \uc120\ud0dd\ud558\uc138\uc694.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.Pra_om;
+      return "\uc720\ud6a8\ud55c \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc138\uc694.";
     },
     get$pleaseChooseAUsername() {
-      return "Pra\u0161ome pasirinkti vartotojo vard\u0105";
+      return "\uc0ac\uc6a9\uc790 \uc774\ub984\uc744 \uc120\ud0dd\ud558\uc138\uc694";
     },
     get$listen() {
-      return "Klausytis";
+      return "\ub4e3\uae30";
     },
     get$trialPeriodExpired() {
-      return "J\u016bs\u0173 bandomasis laikotarpis pasibaig\u0117";
+      return "\uccb4\ud5d8 \uae30\uac04\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$subscribedToUnlockTools() {
-      return "Prenumeruokite, kad atrakintum\u0117te interaktyv\u0173 vertim\u0105 ir gramatikos tikrinim\u0105, garso atk\u016brim\u0105, personalizuotas praktikos veiklas ir mokymosi analitikus!";
+      return "\uad6c\ub3c5\ud558\uc5ec \uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed, \ubb38\ubc95 \uac80\uc0ac, \uc624\ub514\uc624 \uc7ac\uc0dd, \ub9de\ucda4 \uc5f0\uc2b5 \ud65c\ub3d9, \ud559\uc2b5 \ubd84\uc11d\uc744 \uc774\uc6a9\ud558\uc138\uc694!";
     },
     get$translationTooltip() {
-      return "Vertimas";
+      return "\ubc88\uc5ed";
     },
     get$kickBotWarning() {
-      return "I\u0161metus Pangea bot\u0105, \u0161is pokalbi\u0173 robotas bus pa\u0161alintas i\u0161 \u0161io pokalbio.";
+      return "Pangea Bot\uc744 \uc81c\uac70\ud558\uba74 \uc774 \ucc44\ud305\uc5d0\uc11c \ub300\ud654 \ubd07\uc774 \uc0ad\uc81c\ub429\ub2c8\ub2e4.";
     },
     get$refresh(_) {
-      return "Atnaujinti";
+      return "\uc0c8\ub85c \uace0\uce68";
     },
     get$accuracy(_) {
-      return "Tikslumas";
+      return "\uc815\ud655\ub3c4";
     },
     get$chatCapacity() {
-      return "Pokalbi\u0173 talpa";
+      return "\ucc44\ud305 \uc6a9\ub7c9";
     },
     get$roomFull() {
-      return "\u0160is kambarys jau yra pilnas.";
+      return "\uc774 \ubc29\uc740 \uc774\ubbf8 \uc6a9\ub7c9\uc774 \uac00\ub4dd \ucc3c\uc2b5\ub2c8\ub2e4.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Pokalbi\u0173 talpa pasikeit\u0117";
+      return "\ucc44\ud305 \uc6a9\ub7c9\uc774 \ubcc0\uacbd\ub418\uc5c8\uc2b5\ub2c8\ub2e4.";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Pokalbi\u0173 talpa turi b\u016bti ne ma\u017eesn\u0117 kaip " + count + ".";
+      return "\ucc44\ud305 \uc6a9\ub7c9\uc740 \ucd5c\uc18c " + count + " \uc774\uc0c1\uc774\uc5b4\uc57c \ud569\ub2c8\ub2e4.";
     },
     get$chatCapacityExplanation() {
-      return "Pokalbi\u0173 talpa riboja leid\u017eiam\u0173 nari\u0173 skai\u010di\u0173 pokalbyje.";
+      return "\ucc44\ud305 \uc6a9\ub7c9\uc740 \ucc44\ud305\uc5d0 \ud5c8\uc6a9\ub418\ub294 \uba64\ubc84 \uc218\ub97c \uc81c\ud55c\ud569\ub2c8\ub2e4.";
     },
     get$enterNumber() {
-      return "\u012eveskite sveiko skai\u010diaus reik\u0161m\u0119.";
+      return "\uc815\uc218 \uac12\uc744 \uc785\ub825\ud558\uc138\uc694.";
     },
     get$buildTranslation() {
-      return "Sukurkite savo vertim\u0105 i\u0161 auk\u0161\u010diau pateikt\u0173 pasirinkim\u0173";
+      return "\uc704 \uc120\ud0dd\uc9c0\uc5d0\uc11c \ubc88\uc5ed\uc744 \ub9cc\ub4dc\uc138\uc694";
     },
     get$practice() {
-      return "Praktika";
+      return "\uc5f0\uc2b5";
     },
     get$speechToTextBody() {
-      return "Gird\u0117dami balso \u017einutes, galite matyti transkript\u0105 bei kalb\u0117tojo \u017eod\u017ei\u0173 per minut\u0119 \u012fvertinim\u0105.";
+      return "\uc74c\uc131 \uba54\uc2dc\uc9c0\uc758 \uacbd\uc6b0, \uc804\uc0ac\ubcf8\uacfc \ud654\uc790\uc758 \ubd84\ub2f9 \ub2e8\uc5b4 \uc218 \uc810\uc218\ub3c4 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$versionNotFound() {
-      return "Versija nerasta";
+      return "\ubc84\uc804\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$fetchingVersion() {
-      return "Gaunama versija...";
+      return "\ubc84\uc804 \uc815\ubcf4\ub97c \uac00\uc838\uc624\ub294 \uc911...";
     },
     get$versionFetchError() {
-      return "Klaida gaunant versij\u0105";
+      return "\ubc84\uc804 \uc815\ubcf4\ub97c \uac00\uc838\uc624\ub294 \ub370 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4";
     },
     versionText$2(version, buildNumber) {
-      return "Versija: " + version + "+" + buildNumber;
+      return "\ubc84\uc804: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "J\u016bs\u0173 pagrindin\u0117s kalbos \u017einut\u0117s nebus i\u0161verstos.";
+      return "\uae30\ubcf8 \uc5b8\uc5b4\uc758 \uba54\uc2dc\uc9c0\ub294 \ubc88\uc5ed\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "J\u016bs turite aktyvi\u0105 prenumerat\u0105";
+      return "\ud65c\uc131 \uad6c\ub3c5\uc774 \uc788\uc2b5\ub2c8\ub2e4";
     },
     get$deleteSubscriptionWarningBody() {
-      return "I\u0161trynus savo paskyr\u0105, j\u016bs\u0173 prenumerata nebus automati\u0161kai at\u0161aukta.";
+      return "\uacc4\uc815\uc744 \uc0ad\uc81c\ud558\ub354\ub77c\ub3c4 \uad6c\ub3c5\uc774 \uc790\ub3d9\uc73c\ub85c \ucde8\uc18c\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
     },
     get$manageSubscription() {
-      return "Valdyti prenumerat\u0105";
+      return "\uad6c\ub3c5 \uad00\ub9ac";
     },
     get$error520Title() {
-      return "Pra\u0161ome bandyti dar kart\u0105.";
+      return "\ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc138\uc694.";
     },
     get$error520Desc() {
-      return "Atsipra\u0161ome, mes nesupratome j\u016bs\u0173 \u017einut\u0117s...";
+      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uba54\uc2dc\uc9c0\ub97c \uc774\ud574\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4...";
     },
     get$level(_) {
-      return "Lygis";
+      return "\ub808\ubca8";
     },
     get$translationChoicesBody() {
-      return "Spustel\u0117kite ir palaikykite parinkt\u012f, kad gautum\u0117te u\u017euomin\u0105.";
+      return "\uc635\uc158\uc744 \ud074\ub9ad\ud558\uace0 \uae38\uac8c \ub20c\ub7ec \ud78c\ud2b8\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$grammar() {
-      return "Gramatika";
+      return "\ubb38\ubc95";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Kontaktas pakviestas \u012f pokalb\u012f";
+      return "\uc5f0\ub77d\ucc98\uac00 \ucc44\ud305\uc5d0 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$inviteChat() {
-      return "Kviesti pokalb\u012f";
+      return "\ud83d\udce8 \ucc44\ud305 \ucd08\ub300";
     },
     get$chatName() {
-      return "Pokalbio pavadinimas";
+      return "\ucc44\ud305 \uc774\ub984";
     },
     get$l2SupportNa() {
-      return "Nepasiekiama";
+      return "\uc0ac\uc6a9 \ubd88\uac00";
     },
     get$l2SupportAlpha() {
-      return "Alpha";
+      return "\uc54c\ud30c";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "\ubca0\ud0c0";
     },
     get$l2SupportFull() {
-      return "Visas";
+      return "\uc804\uccb4";
     },
     get$playAudio() {
-      return "Grojimas";
+      return "\uc7ac\uc0dd";
     },
     get$stop(_) {
-      return "Sustabdyti";
+      return "\uc911\uc9c0";
     },
     get$grammarCopyPOSsconj() {
-      return "Subordinuojanti jungtukas";
+      return "\uc885\uc18d \uc811\uc18d\uc0ac";
     },
     get$grammarCopyPOSnum() {
-      return "Skai\u010dius";
+      return "\uc22b\uc790";
     },
     get$grammarCopyPOSverb() {
-      return "Veiksma\u017eodis";
+      return "\ub3d9\uc0ac";
     },
     get$grammarCopyPOSaffix() {
-      return "Priesaga";
+      return "\uc811\uc0ac";
     },
     get$grammarCopyPOSpart() {
-      return "Partikula";
+      return "\uc870\uc0ac";
     },
     get$grammarCopyPOSadj() {
-      return "B\u016bdvardis";
+      return "\ud615\uc6a9\uc0ac";
     },
     get$grammarCopyPOScconj() {
-      return "Koordinuojanti jungtukas";
+      return "\ub4f1\uc704\uc811\uc18d\uc0ac";
     },
     get$grammarCopyPOSpunct() {
-      return "Skyrybos \u017eenklas";
+      return "\uad6c\ub450\uc810";
     },
     get$grammarCopyPOSadv() {
-      return "Prieveiksmis";
+      return "\ubd80\uc0ac";
     },
     get$grammarCopyPOSaux() {
-      return "Pagalbinis";
+      return "\uc870\ub3d9\uc0ac";
     },
     get$grammarCopyPOSspace() {
-      return "Tarpas";
+      return "\uacf5\ubc31";
     },
     get$grammarCopyPOSsym() {
-      return "Simbolis";
+      return "\uae30\ud638";
     },
     get$grammarCopyPOSdet() {
-      return "Nustatomasis \u017eodis";
+      return "\ud55c\uc815\uc0ac";
     },
     get$grammarCopyPOSpron() {
-      return "\u012evardis";
+      return "\ub300\uba85\uc0ac";
     },
     get$grammarCopyPOSadp() {
-      return "Prie\u0161d\u0117lis";
+      return "\uc804\uce58\uc0ac";
     },
     get$grammarCopyPOSpropn() {
-      return "Vardas, vardas vietovardis";
+      return "\uace0\uc720\uba85\uc0ac";
     },
     get$grammarCopyPOSnoun() {
-      return "Daiktavardis";
+      return "\uba85\uc0ac";
     },
     get$grammarCopyPOSintj() {
-      return "Interjekcija";
+      return "\uac10\ud0c4\uc0ac";
     },
     get$grammarCopyPOSx() {
-      return "Kita";
+      return "\uae30\ud0c0";
     },
     get$grammarCopyGENDERfem() {
-      return "Moteri\u0161kas";
+      return "\uc5ec\uc131\ud615";
     },
     get$grammarCopyPERSON2() {
-      return "Antrasis asmuo";
+      return "2\uc778\uce6d";
     },
     get$grammarCopyMOODimp() {
-      return "\u012esakymas";
+      return "\uba85\ub839\ud615";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Klausimas";
+      return "\uc9c8\ubb38";
     },
     get$grammarCopyASPECTperf() {
-      return "Tobulas";
+      return "\uc644\ub8cc";
     },
     get$grammarCopyCASEaccnom() {
-      return "Klausiamasis, Vardininkas";
+      return "\ub300\uaca9, \uc8fc\uaca9";
     },
     get$grammarCopyCASEobl() {
-      return "Lankstus";
+      return "\ud0c8\uaca9";
     },
     get$grammarCopyVOICEact() {
-      return "Veiksma\u017eodis aktyvus";
+      return "\ub2a5\ub3d9";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Skirtukas";
+      return "\uad04\ud638";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Straipsnis";
+      return "\uad00\uc0ac";
     },
     get$grammarCopyNUMBERsing() {
-      return "Vienaskaita";
+      return "\ub2e8\uc218";
     },
     get$grammarCopyGENDERmasc() {
-      return "Vyr\u0173";
+      return "\ub0a8\uc131";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modalinis";
+      return "\uc870\ub3d9\uc0ac";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Prieveiksmis";
+      return "\ubd80\uc0ac\uad6c";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrasti\u0161kas";
+      return "\uad6c\uc870\uc801 \uc2dc\uc81c";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Skaitmeninis";
+      return "\uc22b\uc790";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Nepr proper";
+      return "\uace0\uc720\uba85\uc0ac \uc544\ub2d8";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Skaitinis";
+      return "\uae30\uc218";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Tvirtas";
+      return "\uace0\uc720\uba85\uc0ac";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Br\u016bk\u0161nys";
+      return "\ub300\uc2dc";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Taip";
+      return "\uc608";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Punktas";
+      return "\uc138\ubbf8\ucf5c\ub860";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Kablelis";
+      return "\uc27c\ud45c";
     },
     get$grammarCopyMOODcnd() {
-      return "S\u0105lyginis";
+      return "\uc870\uac74\ubc95";
     },
     get$grammarCopyCASEacc() {
-      return "Naikinamasis";
+      return "\ub300\uaca9";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Dalijamasis";
+      return "\ubd80\ubd84\uaca9";
     },
     get$grammarCopyTENSEpast() {
-      return "Praeitis";
+      return "\uacfc\uac70";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlatyvas";
+      return "\ucd5c\uc0c1\uae09";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Dvita\u0161kis";
+      return "\ucf5c\ub860";
     },
     get$grammarCopyPERSON3() {
-      return "Tre\u010dioji asmenin\u0117";
+      return "3\uc778\uce6d";
     },
     get$grammarCopyNUMBERplur() {
-      return "Daugiskaita";
+      return "\ubcf5\uc218";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Asmenvardis";
+      return "\uace0\uc720\uba85\uc0ac";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Klausiamasis";
+      return "\uc758\ubb38\uc0ac";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Neformalus";
+      return "\ube44\uacf5\uc2dd\uc801";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Laiko";
+      return "\uc2dc\uac04";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Neigiamas";
+      return "\ubd80\uc815";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Visas";
+      return "\uc804\uccb4";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Prieinamasis";
+      return "\uc218\uc2dd\uc5b4\uad6c";
     },
     get$grammarCopyASPECTprog() {
-      return "Progresyvus";
+      return "\uc9c4\ud589\ud615";
     },
     get$grammarCopyMOODsub() {
-      return "I\u0161reik\u0161tinis";
+      return "\uac00\uc815\ubc95";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Papildomas";
+      return "\ubcf4\uc5b4\uc801";
     },
     get$grammarCopyCASEnom() {
-      return "Vardininkas";
+      return "\uc8fc\uaca9";
     },
     get$grammarCopyTENSEfut() {
-      return "Ateitis";
+      return "\ubbf8\ub798";
     },
     get$grammarCopyCASEdat() {
-      return "Naudininkas";
+      return "\uc5ec\uaca9";
     },
     get$grammarCopyTENSEpres() {
-      return "Dabartinis";
+      return "\ud604\uc7ac";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutrumas";
+      return "\uc911\uc131";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Santykinis";
+      return "\uad00\uacc4\ub300\uba85\uc0ac";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Galutinis galas";
+      return "\uc885\uacb0\ud615";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demonstratyvus";
+      return "\uc2dc\uc5f0\ud615";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Prepozicinis";
+      return "\uc804\uce58\uc0ac\uad6c";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Baigtin\u0117";
+      return "\ud55c\uc815\ud615";
     },
     get$grammarCopyDEGREEpos() {
-      return "Teigiamas";
+      return "\uae0d\uc815";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Gavimas";
+      return "\uc778\uc6a9\uad6c";
     },
     get$grammarCopyVERBFORMger() {
-      return "Vardininkas";
+      return "\ub3d9\uba85\uc0ac";
     },
     get$grammarCopyVOICEpass() {
-      return " Pasyvus";
+      return "\uc218\ub3d9\ud0dc";
     },
     get$grammarCopyCASEgen() {
-      return "Genityvas";
+      return "\uc18c\uc720\uaca9";
     },
     get$grammarCopyTENSEprs() {
-      return "Dabartinis";
+      return "\ud604\uc7ac";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Nustatytas";
+      return "\ud655\uc815\ud615";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Eili\u0161kas";
+      return "\uc11c\uc218";
     },
     get$grammarCopyCASEins() {
-      return "\u012erankinis";
+      return "\ub3c4\uad6c\uaca9";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Nepriklausomas";
+      return "\ubd80\uc815\uc0ac";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Pagalbinis";
+      return "\uc870\ub3d9\uc0ac\ud615";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Ilgas";
+      return "\uc7a5\uc218\ud615";
     },
     get$grammarCopyCASEloc() {
-      return "Vietov\u0117s";
+      return "\uaca9";
     },
     get$grammarCopyMOODind() {
-      return "Nurodantis";
+      return "\ubc95";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Lyginamasis";
+      return "\ube44\uad50\uae09";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Santykinis";
+      return "\uad00\uacc4\uaca9";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0160aukimo";
+      return "\uac10\ud0c4\uc0ac";
     },
     get$grammarCopyPERSON1() {
-      return "Pirmas asmuo";
+      return "1\uc778\uce6d";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Pradinis";
+      return "\ucd08\uae30";
     },
     get$grammarCopyGENDERperson() {
-      return "Asmuo";
+      return "\uc131\ubcc4";
     },
     get$grammarCopyFOREIGNyes() {
-      return "U\u017esienietis";
+      return "\uc678\uad6d\uc5b4";
     },
     get$grammarCopyVOICEvoice() {
-      return "Balsas";
+      return "\ud0dc";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Veiksma\u017eodis";
+      return "\ub3d9\uc0ac";
     },
     get$grammarCopyPOSSpass() {
-      return "Nuosavyb\u0117s";
+      return "\uc18c\uc720\uaca9";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Prepozicinis";
+      return "\uc804\uce58\uc0ac\uaca9";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Skaitvardis";
+      return "\uc218\uc0ac";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Daiktavardis";
+      return "\uba85\uc0ac";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Refleksyvus";
+      return "\uc7ac\uadc0\uc801";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u012evardis";
+      return "\ub300\uba85\uc0ac";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Skyrybos \u017eenkl\u0173 pus\u0117";
+      return "\uad6c\ub450\uc810 \uc704\uce58";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Veiksma\u017eod\u017eio forma";
+      return "\ub3d9\uc0ac\ud615";
     },
     get$grammarCopyGENDERgender() {
-      return "Lytis";
+      return "\uc131\ubcc4";
     },
     get$grammarCopyMOODmood() {
-      return "Nuotaika";
+      return "\uae30\ubd84";
     },
     get$grammarCopyASPECTaspect() {
-      return "B\u016bdas";
+      return "\uc0c1";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Skyrybos \u017eenklas";
+      return "\uad6c\ub450\uc810";
     },
     get$grammarCopyTENSEtense() {
-      return "Laikas";
+      return "\uc2dc\uc81c";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Laipsnis";
+      return "\uc815\ub3c4";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Mandagumas";
+      return "\uacf5\uc190\ud568";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Prieveiksmis";
+      return "\ubd80\uc0ac";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Skai\u010dius";
+      return "\uc22b\uc790";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Jungtukas";
+      return "\uc811\uc18d\uc0ac";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Poliarumas";
+      return "\uadf9\uc131";
     },
     get$grammarCopyCASEcase() {
-      return "Kaimas";
+      return "\uaca9";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Apibr\u0117\u017etumas";
+      return "\uc815\uc758";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Skaitvardis";
+      return "\uc218\uc0ac";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Vardinamasis";
+      return "\uba85\uc0ac\ud615";
     },
     get$grammarCopyVOCvoc() {
-      return "\u0160auksminis";
+      return "\ud638\uaca9";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Papildinys";
+      return "\ubcf4\ucda9\uc0ac";
     },
     get$grammarCopyADVadv() {
-      return "Prieveiksmis";
+      return "\ubd80\uc0ac\uc801";
     },
     get$grammarCopyMOODjus() {
-      return "Reik\u0161m\u0117";
+      return "\uba85\ub839\ubc95";
     },
     get$grammarCopyGENDERcom() {
-      return "Bendras";
+      return "\uc77c\ubc18";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Refleksyvus";
+      return "\uc7ac\uadc0\uc801";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Dalijimasis";
+      return "\ubd80\ubd84\uc801";
     },
     get$grammarCopySPCspc() {
-      return "Specifinis";
+      return "\ud2b9\uc815";
     },
     get$grammarCopyTENSEpqp() {
-      return "Perfektas";
+      return "\ub300\uacfc\uac70";
     },
     get$grammarCopyREFLEXref() {
-      return "Refleksyvus";
+      return "\uc7ac\uadc0\uc801";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Trumpas";
+      return "\ub2e8\ucd95\ud615";
     },
     get$grammarCopyNUMBERdual() {
-      return "Dvivietis";
+      return "\uc774\uc911";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Ilgas";
+      return "\uc7a5\ud615";
     },
     get$grammarCopyVOICEmid() {
-      return "Vidurinis";
+      return "\uc911\uac04\ud615";
     },
     get$grammarCopyINTRELintRel() {
-      return "Klausiamasis, Santykinis";
+      return "\uc758\ubb38\ubb38, \uad00\uacc4\ubb38";
     },
     get$grammarCopyINTint() {
-      return "Klausiamasis";
+      return "\uc758\ubb38\ubb38";
     },
     get$grammarCopyVOICEcaus() {
-      return "Causative";
+      return "\uc0ac\uc5ed\ud615";
     },
     get$grammarCopyUnknown() {
-      return "Ne\u017einoma";
+      return "\uc54c \uc218 \uc5c6\uc74c";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u012erodymas";
+      return "\uc99d\uac70\uc801";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Tur\u0117tojo skai\u010dius";
+      return "\uc18c\uc720\uc790\uc758 \uc218";
     },
     get$grammarCopyASPECThab() {
-      return "\u012eprastas";
+      return "\uc2b5\uad00\uc801";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatyvas";
+      return "\ud0c8\uaca9";
     },
     get$grammarCopyCASEall() {
-      return "Allatyvas";
+      return "\ucc98\uaca9";
     },
     get$grammarCopyCASEess() {
-      return "Esinis";
+      return "\uc0c1\ud0dc\uaca9";
     },
     get$grammarCopyCASEtra() {
-      return "Translacinis";
+      return "\uc804\ud658\uaca9";
     },
     get$grammarCopyCASEequ() {
-      return "Lygiavertis";
+      return "\ub4f1\uac00\uaca9";
     },
     get$grammarCopyCASEdis() {
-      return "Pasiskirstymo";
+      return "\ubd84\ubc30\uaca9";
     },
     get$grammarCopyCASEabs() {
-      return "Absoliutinis";
+      return "\uc808\ub300\uaca9";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatyvinis";
+      return "\ub3c4\uad6c\uaca9";
     },
     get$grammarCopyCASEcau() {
-      return "Prie\u017eastinis";
+      return "\uc6d0\uc778\uaca9";
     },
     get$grammarCopyCASEben() {
-      return "Naudotojas";
+      return "\uc774\uc775\uaca9";
     },
     get$grammarCopyCASEtem() {
-      return "Laiko";
+      return "\uc2dc\uac04\uaca9";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Koordinuojantis";
+      return "\ubcd1\ub82c\uc811\uc18d\uc0ac";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Nurodytoji b\u016bsena";
+      return "\uad6c\uc131 \uc0c1\ud0dc";
     },
     get$grammarCopyDEGREEabs() {
-      return "Visuotin\u0117 laipsnio reik\u0161m\u0117";
+      return "\uc808\ub300 \uc815\ub3c4";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Faktin\u0117 \u012frodin\u0117jimo reik\u0161m\u0117";
+      return "\uc0ac\uc2e4\uc801 \uc99d\uac70\uc131";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Ne-faktin\u0117 \u012frodin\u0117jimo reik\u0161m\u0117";
+      return "\ube44\uc0ac\uc2e4\uc801 \uc99d\uac70\uc131";
     },
     get$grammarCopyMOODopt() {
-      return "Optatyvas";
+      return "\uc18c\ub9dd\ubc95";
     },
     get$grammarCopyMOODadm() {
-      return "Admiratyvas";
+      return "\uac10\ud0c4\ubc95";
     },
     get$grammarCopyMOODdes() {
-      return "Desideratyvas";
+      return "\ubc14\ub78c\ubc95";
     },
     get$grammarCopyMOODnec() {
-      return "B\u016btinybinis";
+      return "\ud544\uc694\ubc95";
     },
     get$grammarCopyMOODpot() {
-      return "Potencialus";
+      return "\uac00\ub2a5\ubc95";
     },
     get$grammarCopyMOODprp() {
-      return "Propozityvas";
+      return "\uc81c\uc548\ubc95";
     },
     get$grammarCopyMOODqot() {
-      return "Citatos forma";
+      return "\uc778\uc6a9\ubc95";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u017dod\u017eio forma";
+      return "\ub2e8\uc5b4 \ud615\ud0dc";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Rom\u0117ni\u0161kas skaitmuo";
+      return "\ub85c\ub9c8 \uc22b\uc790";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Raid\u0117s forma";
+      return "\ubb38\uc790\ud615";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Daugiklio tipas";
+      return "\uacf1\uc148\ud615";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Trupmeninis tipas";
+      return "\ubd84\uc218\ud615";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Rinkinys";
+      return "\uc9d1\ud569\ud615";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Intervalas";
+      return "\ubc94\uc704\ud615";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Pasiskirstymo tipas";
+      return "\ubd84\ubc30\ud615";
     },
     get$grammarCopyNUMBERtri() {
-      return "Bandymo";
+      return "\uc2dc\ub3c4\ud615";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Paucali\u0161kas";
+      return "\uc18c\uc218\ud615";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Didesnis Paucali\u0161kas";
+      return "\ub354 \ud070 \uc18c\uc218\ud615";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Didesnis daugiskaita";
+      return "\ub354 \ud070 \ubcf5\uc218\ud615";
     },
     get$grammarCopyNUMBERinv() {
-      return "Atvirk\u0161tinis";
+      return "\uc5ed\uc218\ud615";
     },
     get$grammarCopyPERSON0() {
-      return "Nulis";
+      return "\uc601";
     },
     get$grammarCopyPERSON4() {
-      return "Ketvirtas";
+      return "\ub124 \ubc88\uc9f8";
     },
     get$grammarCopyPOLITEform() {
-      return "Formali";
+      return "\uacf5\uc190\uccb4";
     },
     get$grammarCopyPOLITEelev() {
-      return "Pakeltas";
+      return "\ub192\uc784\uccb4";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Nusilenk\u0119s";
+      return "\uacb8\uc190\uccb4";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Emfazin\u0117";
+      return "\uac15\uc870\ud615";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0160aukimo";
+      return "\uac10\ud0c4\ud615";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Atvirk\u0161tin\u0117";
+      return "\uc0c1\ud638\ud615";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Klausiamoji-Relatyvi";
+      return "\uc758\ubb38-\uad00\uacc4\ud615";
     },
     get$grammarCopyTENSEaor() {
-      return "Aoristas";
+      return "\uacfc\uac70\ud615";
     },
     get$grammarCopyTENSEeps() {
-      return "Episteminis";
+      return "\uc778\uc2dd\ub860\uc801";
     },
     get$grammarCopyTENSEprosp() {
-      return "Perspektyvinis";
+      return "\ubbf8\ub798\ud615";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Dalijimo forma";
+      return "\ubd84\uc0ac";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Konverbas";
+      return "\ub3d9\uacbd\uc0ac";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Veiklinis daiktavardis";
+      return "\ub3d9\uc0ac \uba85\uc0ac";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipasyvus";
+      return "\ubc18\uc218\ub3d9";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Klausiamoji";
+      return "\uc0ac\uc5ed\ud615";
     },
     get$grammarCopyVOICedir() {
-      return "Tiesiogin\u0117";
+      return "\uc9c1\uc811\ud615";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Atvirk\u0161tin\u0117";
+      return "\uc5ed\uc218\ub3d9";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Atsidavusi";
+      return "\uc0c1\ud638\ud615";
     },
     get$grammarCopyPOS() {
-      return "Kalbos dalis";
+      return "\ud488\uc0ac";
     },
     get$grammarCopyGENDER() {
-      return "Lytis";
+      return "\uc131\ubcc4";
     },
     get$grammarCopyPERSON() {
-      return "Asmuo";
+      return "\uc778\uce6d";
     },
     get$grammarCopyMOOD() {
-      return "Nuotaika";
+      return "\ubc95";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Skyrybos \u017eenkl\u0173 tipas";
+      return "\uad6c\ub450\uc810 \uc720\ud615";
     },
     get$grammarCopyASPECT() {
-      return "B\u016bsena";
+      return "\uc0c1\ud0dc";
     },
     get$grammarCopyCASE() {
-      return "Linksnis";
+      return "\uaca9";
     },
     get$grammarCopyVOICE() {
-      return "Balsas";
+      return "\ud0dc";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Daiktavard\u017eio tipas";
+      return "\uba85\uc0ac \uc720\ud615";
     },
     get$grammarCopyVERBTYPE() {
-      return "Veiksma\u017eod\u017eio tipas";
+      return "\ub3d9\uc0ac \uc720\ud615";
     },
     get$grammarCopyADVTYPE() {
-      return "Prieveiksmio tipas";
+      return "\ubd80\uc0ac \uc720\ud615";
     },
     get$grammarCopyNUMFORM() {
-      return "Skaitvard\u017eio forma";
+      return "\uc218\uc0ac \ud615\ud0dc";
     },
     get$grammarCopyNUMTYPE() {
-      return "Skaitvard\u017eio tipas";
+      return "\uc218\uc0ac \uc720\ud615";
     },
     get$grammarCopyNUMBER() {
-      return "Skai\u010dius";
+      return "\uc22b\uc790";
     },
     get$grammarCopyDEFINITE() {
-      return "Nurodomumas";
+      return "\uc815\uad00\uc0ac";
     },
     get$grammarCopyDEGREE() {
-      return "Laipsnis";
+      return "\uc815\ub3c4";
     },
     get$grammarCopyEVIDENT() {
-      return "\u012erodymas";
+      return "\uc99d\uac70\uc131";
     },
     get$grammarCopyFOREIGN() {
-      return "U\u017esienio";
+      return "\uc678\uad6d\uc5b4";
     },
     get$grammarCopyPOLARITY() {
-      return "Poliarumas";
+      return "\uadf9\uc131";
     },
     get$grammarCopyPOLITE() {
-      return "Mandagumas";
+      return "\uacf5\uc190\ud568";
     },
     get$grammarCopyPREPCASE() {
-      return "Prepozicinis linksnis";
+      return "\uc804\uce58\uc0ac \uaca9";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u012evard\u017eio tipas";
+      return "\ub300\uba85\uc0ac \uc720\ud615";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Skyrybos \u017eenkl\u0173 pus\u0117";
+      return "\uad6c\ub450\uc810 \uc704\uce58";
     },
     get$grammarCopyREFLEX() {
-      return "Refleksyvus";
+      return "\uc7ac\uadc0\uc801";
     },
     get$grammarCopyTENSE() {
-      return "Laikas";
+      return "\uc2dc\uc81c";
     },
     get$grammarCopyVERBFORM() {
-      return "Veiksma\u017eod\u017eio forma";
+      return "\ub3d9\uc0ac \ud615\ud0dc";
     },
     get$grammarCopyCONJTYPE() {
-      return "Junginio tipas";
+      return "\uc811\uc18d\uc0ac \uc720\ud615";
     },
     get$grammarCopyUNKNOWN() {
-      return "Ne\u017einoma";
+      return "\uc54c \uc218 \uc5c6\uc74c";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Tur\u0117tojo skai\u010dius";
+      return "\uc18c\uc720\uaca9\uc758 \uc218";
     },
     get$grammarCopyPOSS() {
-      return "Nuosavyb\u0117s";
+      return "\uc18c\uc720\uaca9";
     },
     get$grammarCopyASPECTimp() {
-      return "Netobulas aspektas";
+      return "\ubbf8\uc644\ub8cc\uc0c1";
     },
     get$grammarCopyCASEvoc() {
-      return "\u0160aukimo linksnis";
+      return "\ud638\uaca9";
     },
     get$grammarCopyCASEcom() {
-      return "Kominatyvinis";
+      return "\ub3d9\ubc18\uaca9";
     },
     get$grammarCopyCASEpar() {
-      return "Partityvinis";
+      return "\ubd80\ubd84\uaca9";
     },
     get$grammarCopyCASEadv() {
-      return "Veiksma\u017eodinis";
+      return "\ubd80\uc0ac\uaca9";
     },
     get$grammarCopyCASEref() {
-      return "Referencinis";
+      return "\uc9c0\uc2dc\uaca9";
     },
     get$grammarCopyCASErel() {
-      return "Santykinis";
+      return "\uad00\uacc4\uaca9";
     },
     get$grammarCopyCASEsub() {
-      return "Subessyvinis";
+      return "\ud558\uc704\uaca9";
     },
     get$grammarCopyCASEsup() {
-      return "Superessyvinis";
+      return "\uc0c1\uc704\uaca9";
     },
     get$grammarCopyCASEaccdat() {
-      return "Akuzatyvinis-Dativinis";
+      return "\ubaa9\uc801\uaca9-\uc5ec\uaca9";
     },
     get$grammarCopyCASEpre() {
-      return "Prepozicinis";
+      return "\uc804\uce58\uc0ac\uad6c\uaca9";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Prie\u0161d\u0117linis";
+      return "\uc885\uc18d\uc811\uc18d\uc0ac";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Lyginamasis";
+      return "\ube44\uad50\uae09";
     },
     get$grammarCopyDEFINITEind() {
-      return "Neapibr\u0117\u017etas";
+      return "\ubd88\ud655\uc815";
     },
     get$grammarCopyMOODint() {
-      return "Klausiamasis nuotaika";
+      return "\uc758\ubb38\ubc95";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Bendrinis daiktavardis";
+      return "\uc77c\ubc18 \uba85\uc0ac";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Nuosavyb\u0117s vienaskaita";
+      return "\uc18c\uc720\uaca9 \ub2e8\uc218\ud615";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Nuosavyb\u0117s daugiskaita";
+      return "\uc18c\uc720\uaca9 \ubcf5\uc218\ud615";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Nuosavyb\u0117s dvynuk\u0117";
+      return "\uc18c\uc720\uaca9 \uc774\uc911\ud615";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Teigiama polarit\u0117";
+      return "\uae0d\uc815\uc801 \uadf9\uc131";
     },
     get$grammarCopyPOSSyes() {
-      return "Nuosavybinis";
+      return "\uc18c\uc720\uaca9";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Be prepozicijos";
+      return "\uc804\uce58\uc0ac \uc5c6\uc74c";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Asmeninis";
+      return "\uc778\uce6d \ub300\uba85\uc0ac";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Klausiamasis";
+      return "\uc758\ubb38\uc0ac";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Visas";
+      return "\uc804\uccb4";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Neigiamas";
+      return "\ubd80\uc815";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Straipsnis";
+      return "\uad00\uc0ac";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Neapibr\u0117\u017etas";
+      return "\ubd88\ud2b9\uc815";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Klausiamasis-santykinis";
+      return "\uc758\ubb38-\uad00\uacc4\ub300\uba85\uc0ac";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Galutinis skyrybos \u017eenklas";
+      return "\uc885\uacb0 \uad6c\ub450\uc810";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Ta\u0161kas";
+      return "\ub9c8\uce68\ud45c";
     },
     get$grammarCopyREFLEXyes() {
-      return "Refleksyvus";
+      return "\uc7ac\uadc0\uc801";
     },
     get$grammarCopyTENSEimp() {
-      return "Buv\u0119s netobulas";
+      return "\ubbf8\uc644\ub8cc";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supinas";
+      return "\ub300\uba85\uc0ac\ud615";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominalus";
+      return "\uc218\uc2dd\ud615";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Ilgas";
+      return "\uae38\uac8c";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Trumpas";
+      return "\uc9e7\uac8c";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Prievartinis veiksma\u017eodis";
+      return "\uc0ac\uc5ed \ub3d9\uc0ac";
     },
     get$grammarCopyVOICEcau() {
-      return "Prievartinis";
+      return "\uc0ac\uc5ed\uc801";
     },
     get$grammarCopyVOICEdir() {
-      return "Tiesioginis";
+      return "\uc9c1\uc811\uc801";
     },
     get$grammarCopyVOICEinv() {
-      return "Atvirk\u0161tinis";
+      return "\ubc18\uc804\uc801";
     },
     get$grammarCopyVOICErcp() {
-      return "Abipusis";
+      return "\uc0c1\ud638\uc801";
     },
     get$other() {
-      return "Kita";
+      return "\uae30\ud0c0";
     },
     levelShort$1(level) {
-      return "LYGIS " + level;
+      return "LVL " + level;
     },
     get$clickBestOption() {
-      return "Pasirinkite geriausias parinktis savo \u017einutei i\u0161versti!";
+      return "\uba54\uc2dc\uc9c0\ub97c \ubc88\uc5ed\ud560 \ucd5c\uc801\uc758 \uc635\uc158\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
     },
     get$completeActivitiesToUnlock() {
-      return "U\u017ebaikite bent vien\u0105 veikl\u0105, kad atrakintum\u0117te vertim\u0105!";
+      return "\ucd5c\uc18c \ud55c \uac1c\uc758 \ud65c\ub3d9\uc744 \uc644\ub8cc\ud558\uc5ec \ubc88\uc5ed\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\uc138\uc694!";
     },
     get$downloadGroupText() {
-      return "Parsisi\u0173sti grup\u0117s tekst\u0105";
+      return "\uadf8\ub8f9 \ud14d\uc2a4\ud2b8 \ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$notificationsOn() {
-      return "Prane\u0161imai \u012fjungti";
+      return "\uc54c\ub9bc \ucf1c\uae30";
     },
     get$notificationsOff() {
-      return "Prane\u0161imai i\u0161jungti";
+      return "\uc54c\ub9bc \ub044\uae30";
     },
     get$createChatAndInviteUsers() {
-      return "Sukurti pokalb\u012f ir pakviesti naudotojus";
+      return "\ucc44\ud305 \uc0dd\uc131 \ubc0f \uc0ac\uc6a9\uc790 \ucd08\ub300";
     },
     get$updatedNewSpaceDescription() {
-      return "Kursai leid\u017eia sujungti j\u016bs\u0173 pokalbius ir kurti priva\u010dias arba vie\u0161as bendruomenes.";
+      return "\ucf54\uc2a4\ub294 \ucc44\ud305\uc744 \ud1b5\ud569\ud558\uace0 \ube44\uacf5\uac1c \ub610\ub294 \uacf5\uac1c \ucee4\ubba4\ub2c8\ud2f0\ub97c \uad6c\ucd95\ud560 \uc218 \uc788\uac8c \ud569\ub2c8\ub2e4.";
     },
     get$joinWithCode() {
-      return "Prisijungti su kodu";
+      return "\ucf54\ub4dc\ub85c \ucc38\uc5ec";
     },
     get$enterCodeToJoin() {
-      return "\u012eveskite kod\u0105, nor\u0117dami prisijungti";
+      return "\ucc38\uc5ec\ud560 \ucf54\ub4dc\ub97c \uc785\ub825\ud558\uc138\uc694";
     },
     get$updateNow() {
-      return "Atnaujinti dabar";
+      return "\uc9c0\uae08 \uc5c5\ub370\uc774\ud2b8";
     },
     get$updateLater() {
-      return "V\u0117liau";
+      return "\ub098\uc911\uc5d0 \uc5c5\ub370\uc774\ud2b8";
     },
     get$constructUseWaDesc() {
-      return "Naudojama be pagalbos";
+      return "\ub3c4\uc6c0 \uc5c6\uc774 \uc0ac\uc6a9";
     },
     get$constructUseGaDesc() {
-      return "Gramatikos pagalba";
+      return "\ubb38\ubc95 \ub3c4\uc6c0";
     },
     get$constructUseTaDesc() {
-      return "Vertimo pagalba";
+      return "\ubc88\uc5ed \ub3c4\uc6c0";
     },
     get$constructUseUnkDesc() {
-      return "Ne\u017einoma";
+      return "\uc54c \uc218 \uc5c6\uc74c";
     },
     get$constructUseCorITDesc() {
-      return "Taisyklinga vertime";
+      return "\ubc88\uc5ed\uc5d0\uc11c \uc218\uc815\ub428";
     },
     get$constructUseIgnITDesc() {
-      return "Praleista vertime";
+      return "\ubc88\uc5ed\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseIncITDesc() {
-      return "Neteisinga vertime";
+      return "\ubc88\uc5ed\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseIgnIGCDesc() {
-      return "Praleista gramatikos taisyme";
+      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseCorIGCDesc() {
-      return "Taisyklinga gramatikos taisyme";
+      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIncIGCDesc() {
-      return "Neteisinga gramatikos taisyme";
+      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseCorPADesc() {
-      return "Taisyklinga \u017eod\u017eio reik\u0161m\u0117s veikla";
+      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIgnPADesc() {
-      return "Praleista \u017eod\u017eio reik\u0161m\u0117s veikloje";
+      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseIncPADesc() {
-      return "Neteisinga \u017eod\u017eio reik\u0161m\u0117s veikla";
+      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseCorWLDesc() {
-      return "Teisinga \u017eod\u017eio klausymo veikla";
+      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIncWLDesc() {
-      return "Neteisinga \u017eod\u017eio klausymo veikla";
+      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseIngWLDesc() {
-      return "Praleista \u017eod\u017eio klausymo veikla";
+      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseCorHWLDesc() {
-      return "Teisinga pasl\u0117pto \u017eod\u017eio veikla";
+      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIncHWLDesc() {
-      return "Neteisinga pasl\u0117pto \u017eod\u017eio veikla";
+      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseIgnHWLDesc() {
-      return "Praleista pasl\u0117pto \u017eod\u017eio veikla";
+      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseCorLDesc() {
-      return "Teisinga lemos veikla";
+      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIncLDesc() {
-      return "Neteisinga lemos veikla";
+      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseIgnLDesc() {
-      return "Praleista lemos veikla";
+      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseCorMDesc() {
-      return "Teisinga gramatikos veikla";
+      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
     },
     get$constructUseIncMDesc() {
-      return "Neteisinga gramatikos veikla";
+      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
     },
     get$constructUseIgnMDesc() {
-      return "Praleista gramatikos veikla";
+      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
     },
     get$constructUseEmojiDesc() {
-      return "Teisinga emocij\u0173 simboli\u0173 veikla";
+      return "\uc774\ubaa8\uc9c0 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ud558\uc138\uc694";
     },
     get$constructUseCollected() {
-      return "Surinkta pokalbyje";
+      return "\ucc44\ud305\uc5d0\uc11c \uc218\uc9d1\ub428";
     },
     get$constructUseNanDesc() {
-      return "Nepatikoma";
+      return "\uc801\uc6a9 \ubd88\uac00";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u012ejungtas teksto \u012f kalb\u0105 \u012frankis";
+      return "\ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ud65c\uc131\ud654";
     },
     get$enableTTSToolDescription() {
-      return "Leiskite programai generuoti tekst\u0105 \u012f kalb\u0105 i\u0161vest\u012f tam tikroms teksto dalims j\u016bs\u0173 tikslo kalba.";
+      return "\uc571\uc774 \ub300\uc0c1 \uc5b8\uc5b4\uc758 \uc77c\ubd80 \ud14d\uc2a4\ud2b8\uc5d0 \ub300\ud574 \ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ucd9c\ub825\uc744 \uc0dd\uc131\ud560 \uc218 \uc788\ub3c4\ub85d \ud5c8\uc6a9\ud569\ub2c8\ub2e4.";
     },
     get$yourUsername() {
-      return "J\u016bs\u0173 vartotojo vardas";
+      return "\uc0ac\uc6a9\uc790 \uc774\ub984";
     },
     get$yourEmail() {
-      return "J\u016bs\u0173 el. pa\u0161tas";
+      return "\uc774\uba54\uc77c";
     },
     get$iWantToLearn() {
-      return "Noriu mokytis";
+      return "\ubc30\uc6b0\uace0 \uc2f6\uc5b4\uc694";
     },
     get$pleaseEnterEmail() {
-      return string$.Pra_om;
+      return "\uc720\ud6a8\ud55c \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc138\uc694.";
     },
     get$myBaseLanguage() {
-      return "Mano pagrindin\u0117 kalba";
+      return "\ub0b4 \uae30\ubcf8 \uc5b8\uc5b4";
     },
     get$formSectionHeader() {
-      return "Naudojamos formos pokalbiuose:";
+      return "\ucc44\ud305\uc5d0 \uc0ac\uc6a9\ub41c \ud615\ud0dc:";
     },
     get$writingExercisesTooltip() {
-      return "Ra\u0161ymas";
+      return "\uc4f0\uae30";
     },
     get$listeningExercisesTooltip() {
-      return "Klausymas";
+      return "\ub4e3\uae30";
     },
     get$readingExercisesTooltip() {
-      return "Skaitymas";
+      return "\uc77d\uae30";
     },
     get$meaningNotFound() {
-      return "Reik\u0161m\u0117s nerasta.";
+      return "\uc758\ubbf8\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$notTheCodeError() {
-      return "Atsipra\u0161ome, tai ne kodas!";
+      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uadf8 \ucf54\ub4dc\ub294 \uc544\ub2d9\ub2c8\ub2e4!";
     },
     get$totalXP() {
-      return "Bendras XP";
+      return "\ucd1d \uacbd\ud5d8\uce58";
     },
     get$numLemmas() {
-      return "Bendras lemat\u0173 skai\u010dius";
+      return "\ub808\ub9c8\uc758 \ucd1d \uc218";
     },
     get$numLemmasUsedCorrectly() {
-      return "Lemat\u0173, naudot\u0173 teisingai bent kart\u0105, skai\u010dius";
+      return "\uc801\uc5b4\ub3c4 \ud55c \ubc88 \uc774\uc0c1 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ub808\ub9c8\uc758 \uc218";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Lemat\u0173, naudot\u0173 teisingai 0 kart\u0173";
+      return "\uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \uc801\uc774 \uc5c6\ub294 \ub808\ub9c8\uc758 \uc218";
     },
     get$numLemmasSmallXP() {
-      return "Lemat\u0173 su 0 - 30 XP skai\u010dius";
+      return "XP 0-30\uc778 \ub808\ub9c8\uc758 \uc218";
     },
     get$numLemmasMediumXP() {
-      return "Lemat\u0173 su 31 - 200 XP skai\u010dius";
+      return "XP 31-200\uc778 \ub808\ub9c8\uc758 \uc218";
     },
     get$numLemmasLargeXP() {
-      return "Lemat\u0173 su > 200 XP skai\u010dius";
+      return "XP > 200\uc778 \ub808\ub9c8\uc758 \uc218";
     },
     get$numGrammarConcepts() {
-      return "Gramatikos koncept\u0173 skai\u010dius";
+      return "\ubb38\ubc95 \uac1c\ub150\uc758 \uc218";
     },
     get$listGrammarConcepts() {
-      return "Gramatikos s\u0105vokos";
+      return "\ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Gramatikos s\u0105vokos, naudojamos teisingai originaliose \u017einut\u0117se ma\u017eiausiai 80% laiko";
+      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc801\uc5b4\ub3c4 80%\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Gramatikos s\u0105vokos, naudojamos neteisingai originaliose \u017einut\u0117se ma\u017eiau nei 80% laiko";
+      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0\uc11c 80% \ubbf8\ub9cc\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Gramatikos s\u0105vokos, teisingai pasirinktos i\u0161 sistemos sugeneruot\u0173 pasi\u016blym\u0173 ma\u017eiausiai 80% laiko";
+      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc801\uc5b4\ub3c4 80%\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc120\ud0dd\ub41c \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Gramatikos s\u0105vokos, teisingai pasirinktos i\u0161 sistemos sugeneruot\u0173 pasi\u016blym\u0173 ma\u017eiau nei 80% laiko";
+      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c 80% \ubbf8\ub9cc\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc120\ud0dd\ub41c \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Gramatikos s\u0105vokos su 0-50 XP";
+      return "XP 0-50\uc778 \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Gramatikos s\u0105vokos su 51-200 XP";
+      return "XP 51-200\uc778 \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Gramatikos s\u0105vokos su 201-500 XP";
+      return "XP 201-500\uc778 \ubb38\ubc95 \uac1c\ub150";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Gramatikos s\u0105vokos >500 XP";
+      return "XP > 500\uc778 \ubb38\ubc95 \uac1c\ub150";
     },
     get$numMessagesSent() {
-      return "I\u0161si\u0173st\u0173 \u017einu\u010di\u0173 skai\u010dius";
+      return "\ubcf4\ub0b8 \uba54\uc2dc\uc9c0 \uc218";
     },
     get$numWordsTyped() {
-      return "\u012evest\u0173 \u017eod\u017ei\u0173 skai\u010dius originaliose \u017einut\u0117se";
+      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0 \uc785\ub825\ub41c \ub2e8\uc5b4 \uc218";
     },
     get$numCorrectChoices() {
-      return "Teisingai pasirinkti \u017eod\u017eiai i\u0161 sistemos sugeneruot\u0173 pasi\u016blym\u0173";
+      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc120\ud0dd\ub41c \uc62c\ubc14\ub978 \ub2e8\uc5b4 \uc218";
     },
     get$numIncorrectChoices() {
-      return "Neteisingai pasirinkti \u017eod\u017eiai i\u0161 sistemos sugeneruot\u0173 pasi\u016blym\u0173";
+      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc120\ud0dd\ub41c \uc798\ubabb\ub41c \ub2e8\uc5b4 \uc218";
     },
     get$commaSeparatedFile() {
       return "CSV";
     },
     get$excelFile() {
-      return "Excel";
+      return "\uc5d1\uc140";
     },
     get$fileType() {
-      return "Failo tipas";
+      return "\ud30c\uc77c \uc720\ud615";
     },
     get$download(_) {
-      return "Parsisi\u0173sti";
+      return "\ub2e4\uc6b4\ub85c\ub4dc";
     },
     get$analyticsNotAvailable() {
-      return "Vartotojo analiz\u0117 neprieinama";
+      return "\uc0ac\uc6a9\uc790 \ubd84\uc11d\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$downloading() {
-      return "Vyksta parsisiuntimas...";
+      return "\ub2e4\uc6b4\ub85c\ub4dc \uc911...";
     },
     get$failedFetchUserAnalytics() {
-      return "Nepavyko parsisi\u0173sti vartotojo analiz\u0117s";
+      return "\uc0ac\uc6a9\uc790 \ubd84\uc11d \ub2e4\uc6b4\ub85c\ub4dc \uc2e4\ud328";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Kokia yra '" + wordForm + "' " + morphologicalFeature + "?";
+      return "'" + wordForm + "'\uc758 " + morphologicalFeature + "\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?";
     },
     get$dataAvailable() {
-      return "Duomen\u0173 prieinamumas";
+      return "\ub370\uc774\ud130 \uac00\uc6a9\uc131";
     },
     get$available(_) {
-      return "Prieinama";
+      return "\uc774\uc6a9 \uac00\ub2a5";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea botas taip pat daro klaid\u0173!";
+      return "\ud310\uac8c\uc544 \ubd07\ub3c4 \uc2e4\uc218\ub97c \ud569\ub2c8\ub2e4!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "K\u0105 rei\u0161kia '" + lemma + "'?";
+      return "'" + lemma + "'\uc758 \uc758\ubbf8\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Suderink reik\u0161mes su \u017eod\u017eiais \u017einut\u0117je!";
+      return "\uba54\uc2dc\uc9c0\uc758 \ub2e8\uc5b4\uc640 \uc758\ubbf8\ub97c \uc77c\uce58\uc2dc\ud0a4\uc138\uc694!";
     },
     get$doubleClickToEdit() {
-      return "Dukart spustel\u0117kite nor\u0117dami redaguoti.";
+      return "\ub354\ube14 \ud074\ub9ad\ud558\uc5ec \ud3b8\uc9d1\ud558\uc138\uc694.";
     },
     get$cefrLevelLabel() {
-      return "CEFR lygis";
+      return "CEFR \uc218\uc900";
     },
     get$image(_) {
-      return "Paveiksl\u0117lis";
+      return "\uc774\ubbf8\uc9c0";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Pasirinkite tem\u0105, re\u017eim\u0105, mokymosi tiksl\u0105 ir sukurkite veikl\u0105 pokalbiui!";
+      return "\uc8fc\uc81c, \ubaa8\ub4dc, \ud559\uc2b5 \ubaa9\ud45c\ub97c \uc120\ud0dd\ud558\uace0 \ucc44\ud305\uc744 \uc704\ud55c \ud65c\ub3d9\uc744 \uc0dd\uc131\ud558\uc138\uc694!";
     },
     get$constructUsePvmDesc() {
-      return "Sukurtas balso \u017einut\u0117je";
+      return "\uc74c\uc131 \uba54\uc2dc\uc9c0\ub85c \uc81c\uc791\ub428";
     },
     get$leaveSpaceDescription() {
-      return "Palikus kurs\u0105, paliksite visus jame esan\u010dius pokalbius. Kiti naudotojai matys, kad palikote kurs\u0105.";
+      return "\ucf54\uc2a4\ub97c \ub5a0\ub098\uba74 \uadf8 \uc548\uc758 \ubaa8\ub4e0 \ucc44\ud305\uc774 \uc885\ub8cc\ub429\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc6a9\uc790\ub294 \ub2f9\uc2e0\uc774 \ucf54\uc2a4\ub97c \ub5a0\ub0ac\ub2e4\ub294 \uac83\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$constructUseCorMmDesc() {
-      return "Teisingas \u017einut\u0117s reik\u0161m\u0117";
+      return "\uba54\uc2dc\uc9c0 \uc758\ubbf8\uac00 \uc815\ud655\ud568";
     },
     get$constructUseIncMmDesc() {
-      return "Netinkama \u017einut\u0117s prasm\u0117";
+      return "\uba54\uc2dc\uc9c0 \uc758\ubbf8\uac00 \ubd80\uc815\ud655\ud568";
     },
     get$constructUseIgnMmDesc() {
-      return "Praleista \u017einut\u0117s prasm\u0117";
+      return "\ubb34\uc2dc\ub41c \uba54\uc2dc\uc9c0 \uc758\ubbf8";
     },
     get$meaning() {
-      return "Prasm\u0117";
+      return "\uc758\ubbf8";
     },
     chatWith$1(displayname) {
-      return "Grup\u0117 su " + displayname;
+      return displayname + "\uc640 \uadf8\ub8f9 \ucc44\ud305";
     },
     get$clickOnEmailLink() {
-      return "Pra\u0161ome spustel\u0117ti nuorod\u0105 el. lai\u0161ke ir t\u0119sti.\n\nPatikrinkite savo \u0161lam\u0161to aplank\u0105, jei lai\u0161kas nebuvo gautas.";
+      return "\uc774\uba54\uc77c\uc758 \ub9c1\ud06c\ub97c \ud074\ub9ad\ud55c \ud6c4 \uacc4\uc18d \uc9c4\ud589\ud558\uc138\uc694.\n\n\uc774\uba54\uc77c\uc774 \ub3c4\ucc29\ud558\uc9c0 \uc54a\uc558\ub2e4\uba74 \uc2a4\ud338 \ud3f4\ub354\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$dontForgetPassword() {
-      return "Nepamir\u0161kite savo slapta\u017eod\u017eio!";
+      return "\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc9c0 \ub9c8\uc138\uc694!";
     },
     get$enableAutocorrectToolName() {
-      return "\u012egalinti \u012frenginio automatin\u012f taisym\u0105";
+      return "\uae30\uae30 \uc790\ub3d9 \uad50\uc815 \ud65c\uc131\ud654";
     },
     get$enableAutocorrectDescription() {
-      return "Jei j\u016bs\u0173 \u012frenginys palaiko mokom\u0105j\u0105 kalb\u0105, galite \u012fjungti automatin\u012f taisym\u0105, kad b\u016bt\u0173 i\u0161taisytos da\u017enos klaidos ra\u0161ant.";
+      return "\ud559\uc2b5\ud558\ub294 \uc5b8\uc5b4\ub97c \uc9c0\uc6d0\ud558\ub294 \uae30\uae30\ub77c\uba74, \ud0c0\uc774\ud551 \uc2dc \uc77c\ubc18\uc801\uc778 \uc624\ub958\ub97c \uc218\uc815\ud558\ub294 \uae30\uae30 \uc790\ub3d9 \uad50\uc815\uc744 \ud65c\uc131\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$ttsDisbledTitle() {
-      return "Teksto \u012f kalb\u0105 funkcija i\u0161jungta";
+      return "\ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ube44\ud65c\uc131\ud654\ub428";
     },
     get$ttsDisabledBody() {
-      return "Galite \u012fjungti teksto \u012f kalb\u0105 funkcij\u0105 savo mokymosi nustatymuose";
+      return "\ud559\uc2b5 \uc124\uc815\uc5d0\uc11c \ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658\uc744 \ud65c\uc131\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4";
     },
     get$noSpaceDescriptionYet() {
-      return "Dar n\u0117ra sukurta kurso apra\u0161ymo.";
+      return "\uc544\uc9c1 \uc0dd\uc131\ub41c \uac15\uc88c \uc124\uba85\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$tooLargeToSend() {
-      return "\u0160i \u017einut\u0117 yra per didel\u0117 si\u0173sti";
+      return "\uc774 \uba54\uc2dc\uc9c0\ub294 \ub108\ubb34 \ucee4\uc11c \ubcf4\ub0bc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$exitWithoutSaving() {
-      return "Ar tikrai norite i\u0161eiti nei\u0161saugojus?";
+      return "\uc800\uc7a5\ud558\uc9c0 \uc54a\uace0 \uc885\ub8cc\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$enableAutocorrectWarning() {
-      return "\u012esp\u0117jimas! Reikia prid\u0117ti savo tikslo kalbos klaviat\u016br\u0105";
+      return "\uacbd\uace0! \ubaa9\ud45c \uc5b8\uc5b4 \ud0a4\ubcf4\ub4dc \ucd94\uac00\uac00 \ud544\uc694\ud569\ub2c8\ub2e4";
     },
     get$leaveRoomDescription() {
-      return "J\u016bs ketinate i\u0161eiti i\u0161 \u0161io pokalbio. Kiti vartotojai matys, kad i\u0161\u0117jote i\u0161 pokalbio.";
+      return "\uc774 \ucc44\ud305\uc744 \ub5a0\ub0a0 \uc608\uc815\uc785\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc6a9\uc790\ub294 \ub2f9\uc2e0\uc774 \ucc44\ud305\uc744 \ub5a0\ub0ac\uc74c\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$confirmUserId() {
-      return "Patvirtinkite savo Pangea pokalbio vartotojo vard\u0105, kad gal\u0117tum\u0117te i\u0161trinti savo paskyr\u0105.";
+      return "\uacc4\uc815\uc744 \uc0ad\uc81c\ud558\ub824\uba74 Pangea \ucc44\ud305 \uc0ac\uc6a9\uc790 \uc774\ub984\uc744 \ud655\uc778\ud558\uc138\uc694.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Pradedama " + startDate;
+      return startDate + "\ubd80\ud130 \uc2dc\uc791";
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 At\u0161aukite bet kuriuo metu prenumeratos nustatymuose";
+      return "\u2022 \uad6c\ub3c5 \uc124\uc815\uc5d0\uc11c \uc5b8\uc81c\ub4e0 \ucde8\uc18c \uac00\ub2a5";
     },
     get$autocorrectNotAvailable() {
-      return "Deja, j\u016bs\u0173 platforma \u0161iuo metu nepalaikoma \u0161iai funkcijai. Sekite naujienas d\u0117l tolimesnio vystymo!";
+      return "\uc548\ud0c0\uae5d\uac8c\ub3c4 \ud604\uc7ac \uc774 \ud50c\ub7ab\ud3fc\uc740 \uc774 \uae30\ub2a5\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ud5a5\ud6c4 \uac1c\ubc1c\uc744 \uae30\ub300\ud558\uc138\uc694!";
     },
     get$pleaseUpdateApp() {
-      return "Pra\u0161ome atnaujinti program\u0117l\u0119, kad gal\u0117tum\u0117te t\u0119sti.";
+      return "\uc571\uc744 \uacc4\uc18d \uc0ac\uc6a9\ud558\ub824\uba74 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Suderinkite emocijas su \u017eod\u017eiais, kuriuos jos geriausiai atitinka. Nesijaudinkite! N\u0117ra joki\u0173 ta\u0161k\u0173 ma\u017einimo u\u017e nesutikim\u0105. \ud83d\ude05";
+      return "\uc774\ubaa8\uc9c0\ub97c \uac00\uc7a5 \uc798 \ub098\ud0c0\ub0b4\ub294 \ub2e8\uc5b4\uc640 \uc77c\uce58\uc2dc\ud0a4\uc138\uc694. \uac71\uc815\ud558\uc9c0 \ub9c8\uc138\uc694! \uc758\uacac\uc774 \ub2e4\ub974\ub2e4\uace0 \ud574\uc11c \uc810\uc218\uac00 \uae4e\uc774\uc9c4 \uc54a\uc544\uc694! \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "Tai visa j\u016bs\u0173 \u017eodynas! Kiekvien\u0105 kart\u0105 u\u017edirbdami XP u\u017e \u017eod\u012f, jie pereis nuo daigelio iki pilno \u017eyd\u0117jimo. Spustel\u0117kite bet kur\u012f \u017eod\u012f, kad pamatytum\u0117te daugiau detali\u0173.";
+      return "\uc774\uac83\uc774 \ub2f9\uc2e0\uc758 \ubaa8\ub4e0 \uc5b4\ud718\uc785\ub2c8\ub2e4! \uac01 \ub2e8\uc5b4\uc5d0 \ub300\ud574 XP\ub97c \uc5bb\uc73c\uba74 \uc2f9\uc5d0\uc11c \uaf43\uc73c\ub85c \ud53c\uc5b4\ub0a9\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc744 \ubcf4\ub824\uba74 \uc5b4\ub5a4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc138\uc694.";
     },
     get$morphAnalyticsListBody() {
-      return "Tai visi gramatikos konceptai j\u016bs\u0173 mokomoje kalboje! Juos atrakinsite, kai juos susidursite pokalbio metu. Spustel\u0117kite, kad su\u017einotum\u0117te daugiau.";
+      return "\uc774\uac83\uc740 \ub2f9\uc2e0\uc774 \ubc30\uc6b0\uace0 \uc788\ub294 \uc5b8\uc5b4\uc758 \ubaa8\ub4e0 \ubb38\ubc95 \uac1c\ub150\uc785\ub2c8\ub2e4! \ucc44\ud305\ud558\uba74\uc11c \ub9cc\ub0a0 \ub54c\ub9c8\ub2e4 \uc7a0\uae08\uc774 \ud574\uc81c\ub429\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc744 \ubcf4\ub824\uba74 \ud074\ub9ad\ud558\uc138\uc694.";
     },
     get$knockSpaceSuccess() {
-      return "J\u016bs pateik\u0117te u\u017eklaus\u0105 prisijungti prie \u0161io kurso! Administratorius atsakys \u012f j\u016bs\u0173 u\u017eklaus\u0105, kai gaus j\u0105 \ud83d\ude0a";
+      return "\uc774 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4! \uad00\ub9ac\uc790\uac00 \uc694\uccad\uc744 \ubc1b\uc73c\uba74 \uc751\ub2f5\ud560 \uac83\uc785\ub2c8\ub2e4 \ud83d\ude04";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Klausykite viso prane\u0161imo. Tada suderinkite garso \u012fra\u0161us su \u017eod\u017eiais.";
+      return "\uc804\uccb4 \uba54\uc2dc\uc9c0\ub97c \ub4e3\uace0, \uadf8 \ub2e4\uc74c\uc5d0 \uc624\ub514\uc624\uc640 \ub2e8\uc5b4\ub97c \uc77c\uce58\uc2dc\ud0a4\uc138\uc694.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Spustel\u0117kite d\u0117lion\u0117s dalis gramatikos klausimams!";
+      return "\ubb38\ubc95 \uc9c8\ubb38\uc744 \uc704\ud574 \ud37c\uc990 \uc870\uac01\uc744 \ud074\ub9ad\ud558\uc138\uc694!";
     },
     get$home() {
-      return "Prad\u017eia";
+      return "\ud648";
     },
     get$join(_) {
-      return "Prisijungti";
+      return "\ucc38\uc5ec\ud558\uae30";
     },
     get$readingAssistanceOverviewBody() {
-      return "Spustel\u0117kite \u017eemiau esan\u010dius mygtukus mini \u017eaidimams, kuriuose derinami emojiai, garso \u012fra\u0161ai, \u017eod\u017ei\u0173 reik\u0161m\u0117s ir gramatikos s\u0105vokos. Arba spustel\u0117kite bet kur\u012f \u017eod\u012f nor\u0117dami su\u017einoti daugiau.";
+      return "\uc544\ub798 \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc774\ubaa8\uc9c0, \uc624\ub514\uc624, \ub2e8\uc5b4 \uc758\ubbf8, \ubb38\ubc95 \uac1c\ub150 \ub9de\ucd94\uae30 \ubbf8\ub2c8\uac8c\uc784\uc744 \uc990\uae30\uc138\uc694. \ub610\ub294 \uc5b4\ub5a4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc5ec \uc790\uc138\ud55c \uc815\ubcf4\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Atstatyti instrukcij\u0173 patarimus";
+      return "\uc124\uba85 \ud234\ud301 \uc7ac\uc124\uc815";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Spustel\u0117kite, kad parodytum\u0117te instrukcij\u0173 patarimus kaip naujam vartotojui.";
+      return "\ud074\ub9ad\ud558\uc5ec \uc0c8 \uc0ac\uc6a9\uc790\ucc98\ub7fc \uc124\uba85 \ud234\ud301\uc744 \ud45c\uc2dc\ud558\uc138\uc694.";
     },
     get$translationProblem() {
-      return "Vertimo problema";
+      return "\ubc88\uc5ed \ubb38\uc81c";
     },
     get$askToJoin() {
-      return "Papra\u0161yti prisijungti";
+      return "\ucc38\uc5ec \uc694\uccad";
     },
     get$emptyChatWarningTitle() {
-      return "Pokalbis tu\u0161\u010dias";
+      return "\ucc44\ud305\uc774 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4";
     },
     get$emptyChatWarningDesc() {
-      return "Niekas nebuvo pakviestas \u012f j\u016bs\u0173 pokalb\u012f. Eikite \u012f Pokalbio nustatymus, kad pakviestum\u0117te kontaktus arba Bot\u0105. Taip pat galite tai padaryti v\u0117liau.";
+      return "\uc544\ubb34\ub3c4 \ucc44\ud305\uc5d0 \ucd08\ub300\ud558\uc9c0 \uc54a\uc73c\uc168\uc2b5\ub2c8\ub2e4. \ucc44\ud305 \uc124\uc815\uc73c\ub85c \uc774\ub3d9\ud558\uc5ec \uc5f0\ub77d\ucc98 \ub610\ub294 \ubd07\uc744 \ucd08\ub300\ud558\uc138\uc694. \ub098\uc911\uc5d0 \ud558\uc154\ub3c4 \ub429\ub2c8\ub2e4.";
     },
     get$areYouLikeMe() {
-      return "Ar tu kaip a\u0161?";
+      return "\ub098\uc640 \uac19\ub098\uc694?";
     },
     get$tryAgainLater() {
-      return "Per daug bandym\u0173. Pra\u0161ome bandyti dar kart\u0105 po 5 minu\u010di\u0173.";
+      return "\ub108\ubb34 \ub9ce\uc740 \uc2dc\ub3c4\ub97c \ud588\uc2b5\ub2c8\ub2e4. 5\ubd84 \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
     },
     get$enterSpaceCode() {
-      return "\u012eveskite kurso kod\u0105";
+      return "\ucf54\uc2a4 \ucf54\ub4dc\ub97c \uc785\ub825\ud558\uc138\uc694";
     },
     get$shareSpaceLink() {
-      return "Pasidalinti nuoroda";
+      return "\ub9c1\ud06c \uacf5\uc720";
     },
     get$byUsingPangeaChat() {
-      return "Naudodamasis Pangea Chat, sutinku su ";
+      return "Pangea Chat\uc744 \uc0ac\uc6a9\ud568\uc73c\ub85c\uc368, \uc800\ub294 ";
     },
     get$details(_) {
-      return "I\u0161samiau";
+      return "\uc138\ubd80 \uc815\ubcf4";
     },
     get$languageLevelPreA1Desc() {
-      return "Niekada nemok\u0117jau ar nenaudojau kalbos.";
+      return "\uc774 \uc5b8\uc5b4\ub97c \ubc30\uc6b4 \uc801\ub3c4 \uc0ac\uc6a9\ud55c \uc801\ub3c4 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelA1Desc() {
-      return "Suprantu ir galiu naudoti kelet\u0105 pa\u017e\u012fstam\u0173 kasdienini\u0173 i\u0161sirei\u0161kim\u0173 ir labai bazinius frazes.";
+      return "\uc77c\uc0c1\uc801\uc778 \uce5c\uc219\ud55c \ud45c\ud604\uacfc \ub9e4\uc6b0 \uae30\ubcf8\uc801\uc778 \ubb38\uad6c\ub97c \uc774\ud574\ud558\uace0 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelA2Desc() {
-      return "Galiu suprasti sakinius ir da\u017enai naudojamus i\u0161sirei\u0161kimus, susijusius su tiesiogine svarba.";
+      return "\uc989\uac01\uc801\uc778 \uad00\ub828 \ubd84\uc57c\uc758 \ubb38\uc7a5\uacfc \uc790\uc8fc \uc0ac\uc6a9\ud558\ub294 \ud45c\ud604\uc744 \uc774\ud574\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelB1Desc() {
-      return "Galiu tvarkytis su dauguma pa\u017e\u012fstam\u0173 situacij\u0173 ir galiu sukurti paprast\u0105 susiet\u0105 tekst\u0105 pa\u017e\u012fstamomis temomis.";
+      return "\uac00\uc7a5 \uce5c\uc219\ud55c \uc0c1\ud669\uc744 \ucc98\ub9ac\ud560 \uc218 \uc788\uc73c\uba70, \uce5c\uc219\ud55c \uc8fc\uc81c\uc5d0 \ub300\ud574 \uac04\ub2e8\ud55c \uc5f0\uacb0\ub41c \ud14d\uc2a4\ud2b8\ub97c \uc0dd\uc131\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelB2Desc() {
-      return "Galiu suprasti sud\u0117ting\u0173 tekst\u0173 pagrindines id\u0117jas ir bendrauti laisvai bei spontani\u0161kai.";
+      return "\ubcf5\uc7a1\ud55c \ud14d\uc2a4\ud2b8\uc758 \uc8fc\uc694 \uc544\uc774\ub514\uc5b4\ub97c \uc774\ud574\ud558\uace0 \uc720\ucc3d\uc131\uacfc \uc790\uc5f0\uc2a4\ub7ec\uc6c0\uc73c\ub85c \uc0c1\ud638\uc791\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelC1Desc() {
-      return "Galiu laisvai ir spontani\u0161kai reik\u0161ti mintis be dideli\u0173 pastang\u0173 ir suprasti plat\u0173 reikalaujan\u010di\u0173 tekst\u0173 spektr\u0105.";
+      return "\ub9ce\uc740 \ub178\ub825 \uc5c6\uc774 \uc544\uc774\ub514\uc5b4\ub97c \uc720\ucc3d\ud558\uace0 \uc790\uc5f0\uc2a4\ub7fd\uac8c \ud45c\ud604\ud560 \uc218 \uc788\uc73c\uba70, \ub2e4\uc591\ud55c \uc5b4\ub824\uc6b4 \ud14d\uc2a4\ud2b8\ub97c \uc774\ud574\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$languageLevelC2Desc() {
-      return "Galiu suprasti beveik visk\u0105, k\u0105 gird\u017eiu ar skaitau, ir rei\u0161kiuosi laisvai bei tiksliai.";
+      return "\uac70\uc758 \ubaa8\ub4e0 \uac83\uc744 \ub4e3\uac70\ub098 \uc77d\uace0, \uc720\ucc3d\ud558\uace0 \uc815\ud655\ud558\uac8c \uc790\uc2e0\uc744 \ud45c\ud604\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$newVocab() {
-      return "Nauji \u017eod\u017eiai";
+      return "\uc0c8 \uc5b4\ud718";
     },
     get$newGrammar() {
-      return "Nauji gramatikos konceptai";
+      return "\uc0c8 \ubb38\ubc95 \uac1c\ub150";
     },
     get$ban() {
-      return "U\u017edrausti";
+      return "\ucc28\ub2e8";
     },
     get$kick() {
-      return "I\u0161mesti";
+      return "\ucd94\ubc29";
     },
     get$lemma() {
-      return "Lempa";
+      return "\uc5b4\uac04";
     },
     get$grammarFeature() {
-      return "Gramatikos ypatyb\u0117";
+      return "\ubb38\ubc95 \ud2b9\uc9d5";
     },
     get$grammarTag() {
-      return "Gramatikos \u017eym\u0117";
+      return "\ubb38\ubc95 \ud0dc\uadf8";
     },
     get$forms() {
-      return "Formos";
+      return "\ud615\ud0dc";
     },
     get$exampleMessages() {
-      return "Pavyzdiniai prane\u0161imai";
+      return "\uc608\uc2dc \uba54\uc2dc\uc9c0";
     },
     get$timesUsedIndependently() {
-      return "Naudota nepriklausomai kart\u0173";
+      return "\ub3c5\ub9bd\uc801\uc73c\ub85c \uc0ac\uc6a9\ub41c \ud69f\uc218";
     },
     get$timesUsedWithAssistance() {
-      return "Naudota su pagalba kart\u0173";
+      return "\ub3c4\uc6c0\uacfc \ud568\uaed8 \uc0ac\uc6a9\ub41c \ud69f\uc218";
     },
     shareInviteCode$1(code) {
-      return "Pasidalink kvietimo kodu: " + code;
+      return "\ucd08\ub300 \ucf54\ub4dc \uacf5\uc720: " + code;
     },
     get$skipForNow() {
-      return "Nuo\u0161alyje dabar";
+      return "\uc9c0\uae08\uc740 \uac74\ub108\ub6f0\uae30";
     },
     get$permissions(_) {
-      return "Leidimai";
+      return "\uad8c\ud55c";
     },
     get$spaceChildPermission() {
-      return "Kas gali prid\u0117ti naujus pokalbius \u0161iam kursui";
+      return "\uc774 \uac15\uc88c\uc5d0 \uc0c8 \ucc44\ud305\uc744 \ucd94\uac00\ud560 \uc218 \uc788\ub294 \uc0ac\ub78c";
     },
     get$addEnvironmentOverride() {
-      return "Prid\u0117ti aplinkos perra\u0161ym\u0105";
+      return "\ud658\uacbd \uc7ac\uc815\uc758 \ucd94\uac00";
     },
     get$defaultOption() {
-      return "Numatytasis";
+      return "\uae30\ubcf8\uac12";
     },
     get$deleteChatDesc() {
-      return "Ar tikrai norite i\u0161trinti \u0161\u012f pokalb\u012f? Jis bus i\u0161trintas visiems dalyviams, o visi prane\u0161imai pokalbyje nebeprieinami praktikai ar mokymosi analitikai.";
+      return "\uc774 \ucc44\ud305\uc744 \uc0ad\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c? \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub418\uba70, \ucc44\ud305 \ub0b4 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\ub294 \ub354 \uc774\uc0c1 \uc5f0\uc2b5\uc774\ub098 \ud559\uc2b5 \ubd84\uc11d\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$deleteSpaceDesc() {
-      return "Kursas ir bet kurie pasirinktini pokalbiai bus i\u0161trinti visiems dalyviams, o visi prane\u0161imai pokalbyje nebeprieinami praktikai ar mokymosi analitikai. \u0160is veiksmas n\u0117ra at\u0161aukiamas.";
+      return "\uc774 \uac15\uc88c\uc640 \uc120\ud0dd\ub41c \ucc44\ud305\uc740 \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub418\uba70, \ucc44\ud305 \ub0b4 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\ub294 \ub354 \uc774\uc0c1 \uc5f0\uc2b5\uc774\ub098 \ud559\uc2b5 \ubd84\uc11d\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc774 \uc791\uc5c5\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$configureSpace() {
-      return "Konfig\u016bruoti kurs\u0105";
+      return "\uac15\uc88c \uad6c\uc131";
     },
     get$pinMessages() {
-      return "Prisegti \u017einutes";
+      return "\uba54\uc2dc\uc9c0 \uace0\uc815";
     },
     get$setJoinRules() {
-      return "Nustatyti prisijungimo taisykles";
+      return "\ucc38\uc5ec \uaddc\uce59 \uc124\uc815";
     },
     get$changeGeneralSettings() {
-      return "Keisti bendruosius nustatymus";
+      return "\uc77c\ubc18 \uc124\uc815 \ubcc0\uacbd";
     },
     get$inviteOtherUsersToRoom() {
-      return "Pakviesti kitus naudotojus";
+      return "\ub2e4\ub978 \uc0ac\uc6a9\uc790 \ucd08\ub300";
     },
     get$changeTheNameOfTheSpace() {
-      return "Pakeisti kurso pavadinim\u0105";
+      return "\uac15\uc88c \uc774\ub984 \ubcc0\uacbd";
     },
     get$changeTheDescription() {
-      return "Pakeisti apra\u0161ym\u0105";
+      return "\uc124\uba85 \ubcc0\uacbd";
     },
     get$changeThePermissions() {
-      return "Pakeisti leidimus";
+      return "\uad8c\ud55c \ubcc0\uacbd";
     },
     get$introductions() {
-      return "\u012evados";
+      return "\uc18c\uac1c";
     },
     get$announcements() {
-      return "Prane\u0161imai";
+      return "\uacf5\uc9c0\uc0ac\ud56d";
     },
     get$activities() {
-      return "Veiklos";
+      return "\ud65c\ub3d9";
     },
     get$access() {
-      return "Prieiga";
+      return "\uc811\uadfc";
     },
     get$howSpaceCanBeFound() {
-      return "Kaip galima rasti \u0161\u012f kurs\u0105";
+      return "\uc774 \uac15\uc88c\ub97c \ucc3e\ub294 \ubc29\ubc95";
     },
     get$$private() {
-      return "Privatus";
+      return "\ube44\uacf5\uac1c";
     },
     get$cannotBeFoundInSearch() {
-      return "Negalima rasti paie\u0161koje";
+      return "\uac80\uc0c9\uc5d0\uc11c \ucc3e\uc744 \uc218 \uc5c6\uc74c";
     },
     get$$public(_) {
-      return "Vie\u0161as";
+      return "\uacf5\uac1c";
     },
     get$visibleToCommunity() {
-      return 'Matomas platesnei Pangea pokalbi\u0173 bendruomenei per "Rasti kurs\u0105"';
+      return '"\uac15\uc88c \ucc3e\uae30"\ub97c \ud1b5\ud574 \ub354 \ub113\uc740 \ud310\uac8c\uc544 \ucc44\ud305 \ucee4\ubba4\ub2c8\ud2f0\uc5d0 \ud45c\uc2dc\ub428';
     },
     get$howSpaceCanBeJoined() {
-      return "Kaip galima prisijungti prie \u0161io kurso";
+      return "\uc774 \uac15\uc88c\uc5d0 \ucc38\uc5ec\ud558\ub294 \ubc29\ubc95";
     },
     get$canBeFoundVia() {
-      return "Gali b\u016bti rastas per:";
+      return "\ub2e4\uc74c \ubc29\ubc95\uc73c\ub85c \ucc3e\uc744 \uc218 \uc788\uc74c:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 kvietim\u0105";
+      return "\u2022 \ucd08\ub300";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kod\u0105 arba nuorod\u0105";
+      return "\u2022 \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 pra\u0161ym\u0105 prisijungti ir administratoriaus patvirtinim\u0105";
+      return "\u2022 \uc694\uccad \ud6c4 \uad00\ub9ac\uc790 \uc2b9\uc778";
     },
     get$youHaveLeveledUp() {
-      return "J\u016bs pakilote lygmeniu!";
+      return "\ub808\ubca8\uc774 \uc62c\ub790\uc5b4\uc694!";
     },
     get$sendActivities() {
-      return "Si\u0173sti veiklas";
+      return "\ud65c\ub3d9 \ubcf4\ub0b4\uae30";
     },
     get$directMessage() {
-      return "Tiesiogin\u0117 \u017einut\u0117";
+      return "\uac1c\uc778 \uba54\uc2dc\uc9c0";
     },
     get$newDirectMessage() {
-      return "Nauja tiesiogin\u0117 \u017einut\u0117";
+      return "\uc0c8 \uac1c\uc778 \uba54\uc2dc\uc9c0";
     },
     get$speakingExercisesTooltip() {
-      return "Kalb\u0117jimas";
+      return "\ub9d0\ud558\uae30";
     },
     get$transcriptionFailed() {
-      return "Nepavyko transkribuoti garso";
+      return "\uc624\ub514\uc624 \uc804\uc0ac \uc2e4\ud328";
     },
     get$aUserIsKnocking() {
-      return "1 naudotojas pra\u0161o prisijungti prie j\u016bs\u0173 kurso";
+      return "1\uba85\uc758 \uc0ac\uc6a9\uc790\uac00 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ud558\uace0 \uc788\uc5b4\uc694";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " naudotojai pra\u0161o prisijungti prie j\u016bs\u0173 kurso";
+      return "" + users + "\uba85\uc758 \uc0ac\uc6a9\uc790\uac00 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ud558\uace0 \uc788\uc5b4\uc694";
     },
     get$failedToFetchTranscription() {
-      return "Nepavyko gauti transkripcijos";
+      return "\uc804\uc0ac \uc815\ubcf4\ub97c \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kursas bus i\u0161trintas visiems dalyviams. \u0160io veiksmo at\u0161aukti ne\u012fmanoma.";
+      return "\uc774 \uacfc\uc815\uc740 \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub429\ub2c8\ub2e4. \uc774 \uc791\uc5c5\uc740 \ucde8\uc18c\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$failedToPlayVideo() {
-      return "Nepavyko paleisti vaizdo \u012fra\u0161o";
+      return "\ube44\ub514\uc624 \uc7ac\uc0dd \uc2e4\ud328";
     },
     get$done() {
-      return "Atlikta";
+      return "\uc644\ub8cc";
     },
     get$inThisSpace() {
-      return "\u0160io kurso metu";
+      return "\uc774 \uacfc\uc815\uc5d0\uc11c";
     },
     get$myContacts() {
-      return "Mano kontaktai";
+      return "\ub0b4 \uc5f0\ub77d\ucc98";
     },
     get$inviteAllInSpace() {
-      return "Pakviesti visus \u0161iame kurse";
+      return "\uc774 \uacfc\uc815\uc758 \ubaa8\ub4e0 \uc0ac\ub78c \ucd08\ub300";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Visi kurso dalyviai pakviesti \u012f pokalb\u012f";
+      return "\ubaa8\ub4e0 \uacfc\uc815 \ucc38\uac00\uc790\uac00 \ucc44\ud305\uc5d0 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     numKnocking$1(count) {
-      return "" + count + " beld\u017eiasi";
+      return "" + count + " \uba85\uc774 \ub450\ub4dc\ub9bc";
     },
     numInvited$1(count) {
-      return "" + count + " pakviesti";
+      return "" + count + " \uba85\uc774 \ucd08\ub300\ub428";
     },
     get$errorFetchingDefinition() {
-      return "Nepavyko gauti apibr\u0117\u017eimo";
+      return "\uc815\uc758\ub97c \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$errorProcessAnalytics() {
-      return "Nepavyko apdoroti analiz\u0117s";
+      return "\ubd84\uc11d \ucc98\ub9ac \uc2e4\ud328";
     },
     get$errorDownloading() {
-      return "Atsisiuntimas nepavyko";
+      return "\ub2e4\uc6b4\ub85c\ub4dc \uc2e4\ud328";
     },
     get$errorFetchingLevelSummary() {
-      return "Nepavyko gauti lygio santraukos";
+      return "\ub808\ubca8 \uc694\uc57d\uc744 \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$errorLoadingSpaceChildren() {
-      return "Nepavyko \u012fkelti pokalbi\u0173 \u0161iame kurse";
+      return "\uc774 \uacfc\uc815 \ub0b4 \ucc44\ud305\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$unexpectedError() {
-      return "Nenumatyta klaida.";
+      return "\uc608\uae30\uce58 \uc54a\uc740 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4.";
     },
     get$pleaseReload() {
-      return "Pra\u0161ome perkrauti ir bandyti dar kart\u0105.";
+      return "\ub2e4\uc2dc \ub85c\ub4dc\ud558\uace0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
     },
     get$translationError() {
-      return "Vertimo klaida";
+      return "\ubc88\uc5ed \uc624\ub958";
     },
     get$errorFetchingActivity() {
-      return "Nepavyko gauti veiklos";
+      return "\ud65c\ub3d9\uc744 \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
     },
     get$check(_) {
-      return "Patikrinti";
+      return "\ud655\uc778";
     },
     get$unableToFindRoom() {
-      return "Su \u0161iuo kodu nerasta pokalbio ar kurso. Bandykite dar kart\u0105.";
+      return "\ud574\ub2f9 \ucf54\ub4dc\ub85c \ucc44\ud305 \ub610\ub294 \uacfc\uc815\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
     },
     viewingAnalytics$2(visible, users) {
-      return "Per\u017ei\u016brite " + visible + "/" + users + " analiz\u0119";
+      return "" + visible + "/" + users + " \ubd84\uc11d \ubcf4\uae30";
     },
     get$request(_) {
-      return "Pra\u0161ymas";
+      return "\uc694\uccad";
     },
     get$requestAll(_) {
-      return "Pra\u0161yti visk\u0105";
+      return "\ubaa8\ub4e0 \uc694\uccad";
     },
     get$confirmMessageUnpin() {
-      return "Ar tikrai norite atjungti \u0161i\u0105 \u017einut\u0119?";
+      return "\uc774 \uba54\uc2dc\uc9c0\uc758 \uace0\uc815\uc744 \ud574\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$pending(_) {
-      return "Laukiama";
+      return "\ubcf4\ub958 \uc911";
     },
     get$openRoleLabel() {
-      return "ATVIRAS";
+      return "\uc624\ud508";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " prisijung\u0117 kaip " + role;
+      return "\ud83d\udc4b " + username + "\ub2d8\uc774 " + role + "\ub85c \ucc38\uc5ec\ud558\uc168\uc2b5\ub2c8\ub2e4";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " u\u017ebaig\u0117 \u0161i\u0105 veikl\u0105";
+      return "\ud83c\udfaf " + username + "\ub2d8\uc774 \uc774 \ud65c\ub3d9\uc744 \ub9c8\ubb34\ub9ac\ud558\uc168\uc2b5\ub2c8\ub2e4";
     },
     get$activitySummaryError() {
-      return "Veiklos santrauk\u0173 n\u0117ra";
+      return "\ud65c\ub3d9 \uc694\uc57d\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$requestSummaries() {
-      return "Pra\u0161yti santrauk\u0173";
+      return "\uc694\uc57d \uc694\uccad";
     },
     get$requestAccessTitle() {
-      return "Pra\u0161yti analiz\u0117s prieigos?";
+      return "\ubd84\uc11d \uc811\uadfc \uc694\uccad?";
     },
     get$requestAccessDesc() {
-      return "Ar nor\u0117tum\u0117te pra\u0161yti prieigos per\u017ei\u016br\u0117ti dalyvi\u0173 analitik\u0105?\n\nJei dalyviai sutiks, \u0161ios kurso administratoriai gal\u0117s matyti:\n    \u2022 bendr\u0105 \u017eodyn\u0105\n    \u2022 bendrus gramatikos konceptus\n    \u2022 atlikt\u0173 veiklos sesij\u0173 skai\u010di\u0173\n    \u2022 naudotus, teisingus ir neteisingus gramatikos konceptus\n\nJie negal\u0117s matyti:\n    \u2022 \u017einu\u010di\u0173 pokalbiuose u\u017e kurso rib\u0173\n    \u2022 \u017eodyno s\u0105ra\u0161o";
+      return "\ucc38\uac00\uc790 \ubd84\uc11d \ubcf4\uae30 \uad8c\ud55c\uc744 \uc694\uccad\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?\n\n\ucc38\uac00\uc790\uac00 \ub3d9\uc758\ud558\uba74, \uc774 \uac15\uc88c\uc758 \uad00\ub9ac\uc790\ub294 \ub2e4\uc74c\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4:\n    \u2022 \ucd1d \uc5b4\ud718 \uc218\n    \u2022 \ucd1d \ubb38\ubc95 \uac1c\ub150\n    \u2022 \uc644\ub8cc\ub41c \ud65c\ub3d9 \uc138\uc158 \uc218\n    \u2022 \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150, \ub9de\uac8c \ub610\ub294 \ud2c0\ub9ac\uac8c\n\n\uadf8\ub4e4\uc740 \ub2e4\uc74c\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4:\n    \u2022 \uac15\uc88c \uc678 \ucc44\ud305 \uba54\uc2dc\uc9c0\n    \u2022 \uc5b4\ud718 \ubaa9\ub85d";
     },
     get$analyticsInactiveTitle() {
-      return "U\u017eklaus\u0173 nebuvo galima si\u0173sti neaktyviems vartotojams";
+      return "\ube44\ud65c\uc131 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc694\uccad\uc744 \ubcf4\ub0bc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$analyticsInactiveDesc() {
-      return "Neaktyv\u016bs vartotojai, kurie nesiregistravo nuo \u0161ios funkcijos \u012fdiegimo, nematys j\u016bs\u0173 u\u017eklausos.\n\nU\u017eklausos mygtukas pasirodys, kai jie sugr\u012f\u0161. Galite i\u0161 naujo si\u0173sti u\u017eklaus\u0105 v\u0117liau paspausdami U\u017eklausos mygtuk\u0105 po j\u0173 vardu, kai jis bus prieinamas.";
+      return "\uc774 \uae30\ub2a5\uc774 \ub3c4\uc785\ub41c \uc774\ud6c4\ub85c \ub85c\uadf8\uc778\ud558\uc9c0 \uc54a\uc740 \ube44\ud65c\uc131 \uc0ac\uc6a9\uc790\ub294 \uc694\uccad\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.\n\n\uc0ac\uc6a9\uc790\uac00 \ub3cc\uc544\uc624\uba74 \uc694\uccad \ubc84\ud2bc\uc774 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc694\uccad \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \ub098\uc911\uc5d0 \ub2e4\uc2dc \uc694\uccad\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$accessRequestedTitle() {
-      return "Prieigos prie analitikos u\u017eklausa";
+      return "\ubd84\uc11d \uc561\uc138\uc2a4 \uc694\uccad";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Pra\u0161omi administratoriai: " + admin + " \n\nAdministratoriai i\u0161 \u201e" + space + "\u201c pra\u0161o per\u017ei\u016br\u0117ti j\u016bs\u0173 mokymosi analiz\u0119.\n\nJei sutinkate, jie gal\u0117s per\u017ei\u016br\u0117ti j\u016bs\u0173:\n    \u2022 bendr\u0105 \u017eodyn\u0105\n    \u2022 bendras gramatikos s\u0105vokas\n    \u2022 bendr\u0105 u\u017esi\u0117mim\u0173 skai\u010di\u0173\n    \u2022 konkre\u010dias gramatikos s\u0105vokas, naudojamas teisingai ir neteisingai\n\nJie negal\u0117s per\u017ei\u016br\u0117ti j\u016bs\u0173:\n    \u2022 \u017einu\u010di\u0173 pokalbiuose u\u017e kurso rib\u0173\n    \u2022 \u017eodyno s\u0105ra\u0161o";
+      return "\uc694\uccad\ud55c \uad00\ub9ac\uc790: " + admin + " \n\n\u201c" + space + "\u201d\uc758 \uad00\ub9ac\uc790\uac00 \uadc0\ud558\uc758 \ud559\uc2b5 \ubd84\uc11d\uc744 \ubcf4\uae30\ub97c \uc694\uccad\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.\n\n\ub3d9\uc758\ud558\uc2dc\uba74, \uadf8\ub4e4\uc740 \uadc0\ud558\uc758:\n    \u2022 \ucd1d \uc5b4\ud718\n    \u2022 \ucd1d \ubb38\ubc95 \uac1c\ub150\n    \u2022 \uc644\ub8cc\ub41c \ucd1d \ud65c\ub3d9 \uc138\uc158\n    \u2022 \uc0ac\uc6a9\ub41c \ud2b9\uc815 \ubb38\ubc95 \uac1c\ub150(\uc815\ud655\ud558\uac8c \ubc0f \ubd80\uc815\ud655\ud558\uac8c)\n\n\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\uadf8\ub4e4\uc740 \uadc0\ud558\uc758:\n    \u2022 \uacfc\uc815 \uc678\uc758 \ucc44\ud305 \uba54\uc2dc\uc9c0\n    \u2022 \uc5b4\ud718 \ubaa9\ub85d\n\n\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$adminRequestedAccess() {
-      return "Administratoriai pra\u0161o per\u017ei\u016br\u0117ti j\u016bs\u0173 analitik\u0105.";
+      return "\uad00\ub9ac\uc790\uac00 \uadc0\ud558\uc758 \ubd84\uc11d \uc815\ubcf4\ub97c \ubcf4\uae30\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4.";
     },
     lastUpdated$1(time) {
-      return "Atnaujinta\n" + time;
+      return "\uc5c5\ub370\uc774\ud2b8\ub428\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Viskas baigta!";
+      return "\ubaa8\ub4e0 \uc791\uc5c5\uc774 \uc644\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
     },
     get$endForAll() {
-      return "U\u017edaryti visiems";
+      return "\ubaa8\ub450 \uc885\ub8cc";
     },
     get$newCourse() {
-      return "Naujas kursas";
+      return "\uc0c8 \uacfc\uc815";
     },
     numModules$1(num) {
-      return "" + num + " moduliai";
+      return "" + num + "\uac1c \ubaa8\ub4c8";
     },
     get$coursePlan() {
-      return "Kurso planas";
+      return "\uacfc\uc815 \uacc4\ud68d";
     },
     get$editCourseLater() {
-      return "V\u0117liau galite redaguoti \u0161ablono pavadinim\u0105, apra\u0161ymus ir kurso vaizd\u0105.";
+      return "\ud15c\ud50c\ub9bf \uc81c\ubaa9, \uc124\uba85, \uacfc\uc815 \uc774\ubbf8\uc9c0\ub294 \ub098\uc911\uc5d0 \ud3b8\uc9d1\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$createCourse() {
-      return "Sukurti kurs\u0105";
+      return "\uacfc\uc815 \uc0dd\uc131";
     },
     get$stats() {
-      return "Statistika";
+      return "\ud1b5\uacc4";
     },
     get$createGroupChat() {
-      return "Sukurti grupin\u012f pokalb\u012f";
+      return "\ub2e8\uccb4 \ucc44\ud305 \ub9cc\ub4e4\uae30";
     },
     get$editCourse() {
-      return "Redaguoti kurs\u0105";
+      return "\ucf54\uc2a4 \ud3b8\uc9d1";
     },
     get$inviteDesc() {
-      return "Per vartotojo vard\u0105, kod\u0105 ar nuorod\u0105";
+      return "\uc0ac\uc6a9\uc790 \uc774\ub984, \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c\ub85c \ucd08\ub300";
     },
     get$editCourseDesc() {
-      return "\u010cia galite redaguoti kurso pavadinim\u0105, apra\u0161ym\u0105 ir kt.";
+      return "\uc5ec\uae30\uc11c \ucf54\uc2a4 \uc81c\ubaa9, \uc124\uba85 \ub4f1\uc744 \ud3b8\uc9d1\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$permissionsDesc() {
-      return "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, si\u0173sti \u017einutes, kurti pokalbius ir kt.";
+      return "\ucd08\ub300\ud560 \uc218 \uc788\ub294 \uc0ac\uc6a9\uc790, \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30, \ucc44\ud305 \ub9cc\ub4e4\uae30 \ub4f1\uc758 \uad8c\ud55c\uc744 \uc124\uc815\ud558\uc138\uc694.";
     },
     get$accessDesc() {
-      return "Galite padaryti savo kurs\u0105 atvir\u0105 visiems! Arba, padaryti j\u012f priva\u010diu ir saugiu.";
+      return "\ucf54\uc2a4\ub97c \uacf5\uac1c\ud558\uac70\ub098 \ube44\uacf5\uac1c\ub85c \uc548\uc804\ud558\uac8c \uc124\uc815\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!";
     },
     get$createGroupChatDesc() {
-      return "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.";
+      return "\ud65c\ub3d9 \uc138\uc158\uc774 \uc2dc\uc791\ub418\uace0 \uc885\ub8cc\ub418\ub294 \ub3d9\uc548, \uadf8\ub8f9 \ucc44\ud305\uc740 \uc77c\uc0c1\uc801\uc778 \uc18c\ud1b5\uc744 \uc704\ud574 \uc5f4\ub824 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$deleteDesc() {
-      return "Tik tik administratori gali i\u0161trinti kurs\u0105. Tai yra destruktyvus veiksmas, kuris pa\u0161alina visus naudotojus ir i\u0161trina visus pasirinktus pokalbius kurse. B\u016bkite atsarg\u016bs.";
+      return "\ucf54\uc2a4\ub294 \uad00\ub9ac\uc790\ub9cc \uc0ad\uc81c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ub294 \ubaa8\ub4e0 \uc0ac\uc6a9\uc790\uc640 \uc120\ud0dd\ub41c \ucc44\ud305\uc744 \uc0ad\uc81c\ud558\ub294 \ud30c\uad34\uc801\uc778 \uc791\uc5c5\uc785\ub2c8\ub2e4. \uc2e0\uc911\ud788 \uc9c4\ud589\ud558\uc138\uc694.";
     },
     get$noCourseFound() {
-      return "O, \u0161is kursas turi b\u016bti suplanuotas!\n\nKurso planai yra tem\u0173 ir pokalbi\u0173 veikl\u0173 seka.";
+      return "\uc774 \ucf54\uc2a4\uc5d0\ub294 \uacc4\ud68d\uc774 \ud544\uc694\ud569\ub2c8\ub2e4!\n\n\ucf54\uc2a4 \uacc4\ud68d\uc740 \uc8fc\uc81c\uc640 \ub300\ud654 \ud65c\ub3d9\uc758 \uc5f0\uc18d\uc785\ub2c8\ub2e4.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " kiti";
+      return "+ " + num + "\uba85 \ub354";
     },
     get$whatNow() {
-      return "Kas dabar?";
+      return "\uc774\uc81c \ubb34\uc5c7\uc744 \ud560\uae4c\uc694?";
     },
     get$chooseNextActivity() {
-      return "Pasirinkite savo kit\u0105 veikl\u0105!";
+      return "\ub2e4\uc74c \ud65c\ub3d9\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
     },
     get$letsGo() {
-      return "Prad\u0117kime";
+      return "\uc2dc\uc791\ud569\uc2dc\ub2e4";
     },
     get$chooseRole() {
-      return "Pasirinkite vaidmen\u012f!";
+      return "\uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
     },
     get$chooseRoleToParticipate() {
-      return "Pasirinkite vaidmen\u012f dalyvauti!";
+      return "\ucc38\uc5ec\ud560 \uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
     },
     waitingToFillRole$1(num) {
-      return "Laukiama u\u017epildyti " + num + " vaidmenis...";
+      return "" + num + " \uc5ed\ud560\uc744 \ucc44\uc6b0\uae30\ub97c \uae30\ub2e4\ub9ac\ub294 \uc911...";
     },
     get$pingParticipants() {
-      return "Prane\u0161ti kurso dalyviams";
+      return "\ucf54\uc2a4 \ucc38\uac00\uc790\uc5d0\uac8c \uc54c\ub9bc \ubcf4\ub0b4\uae30";
     },
     get$playWithBot() {
-      return "\u017daisti su Pangea botu";
+      return "\ud310\uac8c\uc544 \ubd07\uacfc \ud50c\ub808\uc774\ud558\uae30";
     },
     get$waitNotDone() {
-      return "Laukite, a\u0161 dar nesu baig\u0119s!";
+      return "\uae30\ub2e4\ub9ac\uc138\uc694, \uc544\uc9c1 \ub05d\ub098\uc9c0 \uc54a\uc558\uc5b4\uc694!";
     },
     get$waitingForOthersToFinish() {
-      return "Laukiama kit\u0173 pabaigos...";
+      return "\ub098\uba38\uc9c0 \uc0ac\ub78c\ub4e4\uc774 \ub05d\ub0b4\uae30\ub97c \uae30\ub2e4\ub9ac\ub294 \uc911...";
     },
     get$generatingSummary() {
-      return "Analizuojama pokalbis ir generuojami rezultatai";
+      return "\ucc44\ud305 \ubd84\uc11d \ubc0f \uacb0\uacfc \uc0dd\uc131 \uc911";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " ie\u0161ko naudotoj\u0173 prisijungti prie veiklos sesijos " + room;
+      return user + "\ub2d8\uc774 " + room + "\uc5d0\uc11c \ud65c\ub3d9 \uc138\uc158\uc5d0 \ucc38\uc5ec\ud560 \uc0ac\uc6a9\uc790\ub97c \ucc3e\uace0 \uc788\uc2b5\ub2c8\ub2e4";
     },
     get$courseName() {
-      return "Kurso pavadinimas";
+      return "\ucf54\uc2a4 \uc774\ub984";
     },
     get$createNewCourse() {
-      return "Naujas kursas";
+      return "\uc0c8 \ucf54\uc2a4 \ub9cc\ub4e4\uae30";
     },
     goToCourse$1(course) {
-      return "Eiti \u012f kurs\u0105: " + course;
+      return "\ucf54\uc2a4\ub85c \uc774\ub3d9: " + course;
     },
     get$startNewSession() {
-      return "Prad\u0117ti nauj\u0105 sesij\u0105";
+      return "\uc0c8 \uc138\uc158 \uc2dc\uc791";
     },
     get$joinOpenSession() {
-      return "Prisijungti prie atviros sesijos";
+      return "\uc5f4\ub9b0 \uc138\uc158\uc5d0 \ucc38\uc5ec\ud558\uae30";
     },
     get$activityNotFound() {
-      return "Veikla nerasta";
+      return "\ud65c\ub3d9\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
     },
     get$levelUp() {
-      return "Pakilti lyg\u012f";
+      return "\ub808\ubca8 \uc5c5";
     },
     get$myActivities() {
-      return "Mano veiklos";
+      return "\ub0b4 \ud65c\ub3d9";
     },
     get$openToJoin() {
-      return "Atvira prisijungimui";
+      return "\ucc38\uc5ec \uac00\ub2a5";
     },
     get$activityDone() {
-      return "Veikla atlikta!";
+      return "\ud65c\ub3d9 \uc644\ub8cc!";
     },
     get$promoCodeInfo() {
-      return "Nuolaidos kodus galima \u012fvesti kitame puslapyje";
+      return "\ud504\ub85c\ubaa8\uc158 \ucf54\ub4dc\ub294 \ub2e4\uc74c \ud398\uc774\uc9c0\uc5d0\uc11c \uc785\ub825\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4";
     },
     get$editsComingSoon() {
-      return "Kuri\u0173 miest\u0173 ir veikl\u0173 redagavimo funkcijos netrukus bus prieinamos.";
+      return "\ub3c4\uc2dc\uc640 \ud65c\ub3d9\uc744 \ud3b8\uc9d1\ud558\ub294 \uae30\ub2a5\uc774 \uace7 \uc81c\uacf5\ub420 \uc608\uc815\uc785\ub2c8\ub2e4.";
     },
     get$editing() {
-      return "Redagavimas";
+      return "\ud3b8\uc9d1 \uc911";
     },
     get$activityNeedsOneMember() {
-      return "Oho! \u0160iai veiklai reikia dar 1 asmens.";
+      return "\uc774\ub7f0! \uc774 \ud65c\ub3d9\uc5d0\ub294 1\uba85\uc774 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4.";
     },
     activityNeedsMembers$1(num) {
-      return "Oho! \u0160iai veiklai reikia dar " + num + " \u017emoni\u0173.";
+      return "\uc774\ub7f0! \uc774 \ud65c\ub3d9\uc5d0\ub294 " + num + "\uba85\uc774 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4.";
     },
     get$inviteFriendsToCourse() {
-      return "Pakvieskite draugus \u012f mano kurs\u0105";
+      return "\ub0b4 \uac15\uc88c\uc5d0 \uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Prenumeruokite, kad atrakintum\u0117te veiklos santraukas";
+      return "\ud65c\ub3d9 \uc694\uc57d \uc7a0\uae08 \ud574\uc81c \uad6c\ub3c5";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Prenumeruokite, kad atrakintum\u0117te transkripcijas";
+      return "\uc804\uc0ac\ubcf8 \uc7a0\uae08 \ud574\uc81c \uad6c\ub3c5";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Kurs\u0173 \u012fsp\u0117jimas i\u0161si\u0173stas! \ud83d\udd14";
+      return "\ud83d\udd14 \uac15\uc88c \ud551\uc774 \uc804\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Kurso pavadinimas";
+      return "\uac15\uc88c \uc81c\ubaa9";
     },
     get$courseDesc() {
-      return "Kurso apra\u0161ymas";
+      return "\uac15\uc88c \uc124\uba85";
     },
     get$courseSavedSuccessfully() {
-      return "Kursas s\u0117kmingai i\u0161saugotas";
+      return "\uac15\uc88c\uac00 \uc131\uacf5\uc801\uc73c\ub85c \uc800\uc7a5\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$addCoursePlan() {
-      return "Prid\u0117ti kurso plan\u0105";
+      return "\uac15\uc88c \uacc4\ud68d \ucd94\uac00";
     },
     get$activityStatsButtonInstruction() {
-      return "Spustel\u0117kite \u010dia, nor\u0117dami per\u017ei\u016br\u0117ti savo veiklos statistik\u0105 ir u\u017edaryti veikl\u0105, kai baigsite";
+      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ud65c\ub3d9 \ud1b5\uacc4\ub97c \ubcf4\uace0 \uc644\ub8cc \uc2dc \ud65c\ub3d9\uc744 \uc885\ub8cc\ud558\uc138\uc694";
     },
     get$loginToAccount() {
-      return "Prisijungti prie mano paskyros";
+      return "\ub0b4 \uacc4\uc815\uc5d0 \ub85c\uadf8\uc778";
     },
     get$appDescription() {
-      return "I\u0161mokite kalb\u0105\nnaudodamiesi tekstais su draugais.";
+      return "\uce5c\uad6c\ub4e4\uacfc \ubb38\uc790 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uba70 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uc138\uc694.";
     },
     get$startOwn() {
-      return "Prad\u0117kite savo";
+      return "\ub098\ub9cc\uc758 \uc2dc\uc791";
     },
     get$courseCodeHint() {
-      return "Kelion\u0117s kodas arba nuoroda";
+      return "\uc5ec\ud589 \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c";
     },
     get$signupOption() {
-      return "Kaip norite u\u017esiregistruoti?";
+      return "\uc5b4\ub5bb\uac8c \uac00\uc785\ud558\uc2dc\uaca0\uc5b4\uc694?";
     },
     get$withApple() {
-      return "Su Apple";
+      return "Apple\ub85c \uac00\uc785";
     },
     get$withGoogle() {
-      return "Su Google";
+      return "Google\ub85c \uac00\uc785";
     },
     get$withEmail() {
-      return "Su el. pa\u0161tu";
+      return "\uc774\uba54\uc77c\ub85c \uac00\uc785";
     },
     get$createAccount() {
-      return "Sukurti paskyr\u0105";
+      return "\uacc4\uc815 \ub9cc\ub4e4\uae30";
     },
     get$loginWithEmail() {
-      return "Prisijungti su el. pa\u0161tu";
+      return "\uc774\uba54\uc77c\ub85c \ub85c\uadf8\uc778";
     },
     get$usernameOrEmail() {
-      return "Vartotojo vardas arba el. pa\u0161tas";
+      return "\uc0ac\uc6a9\uc790 \uc774\ub984 \ub610\ub294 \uc774\uba54\uc77c";
     },
     get$email() {
-      return "El. pa\u0161tas";
+      return "\uc774\uba54\uc77c";
     },
     get$forgotPassword() {
-      return "Pamir\u0161ote slapta\u017eod\u012f?";
+      return "\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc73c\uc168\ub098\uc694?";
     },
     get$endActivity() {
-      return "Baigti veikl\u0105";
+      return "\ud65c\ub3d9 \uc885\ub8cc";
     },
     get$allLanguages() {
-      return "Visos kalbos";
+      return "\ubaa8\ub4e0 \uc5b8\uc5b4";
     },
     get$directMessageBotTitle() {
-      return "Tiesiogin\u0117 \u017einut\u0117 Pangea Bot";
+      return "\ud30c\ub2c8\uc544 \ubd07\uc5d0\uac8c \uc9c1\uc811 \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
     },
     get$feedbackTitle() {
-      return "Veiklos atsiliepimai";
+      return "\ud65c\ub3d9 \ud53c\ub4dc\ubc31";
     },
     get$feedbackRespDesc() {
-      return "Kit\u0105 dien\u0105 patikrinkite atnaujinimus apie veikl\u0105.";
+      return "\ub0b4\uc77c \ub2e4\uc2dc \ud655\uc778\ud558\uc5ec \ud65c\ub3d9 \uc5c5\ub370\uc774\ud2b8\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$feedbackHint() {
-      return "J\u016bs\u0173 atsiliepimas";
+      return "\ub2f9\uc2e0\uc758 \ud53c\ub4dc\ubc31";
     },
     get$feedbackButton() {
-      return "Pateikti atsiliepim\u0105";
+      return "\ud53c\ub4dc\ubc31 \uc81c\ucd9c";
     },
     get$directMessageBotDesc() {
-      return "Kalb\u0117tis su \u017emon\u0117mis yra smagiau, bet... dirbtinis intelektas visada pasiruo\u0161\u0119s!";
+      return "\uc0ac\ub78c\uacfc \uc774\uc57c\uae30\ud558\ub294 \uac83\uc774 \ub354 \uc7ac\ubbf8\uc788\uc9c0\ub9cc... AI\ub294 \ud56d\uc0c1 \uc900\ube44\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4!";
     },
     get$inviteYourFriends() {
-      return "Pakvieskite savo draugus";
+      return "\uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694";
     },
     get$playWithAI() {
-      return "\u017daiskite su dirbtiniu intelektu dabar";
+      return "\uc77c\ub2e8 AI\uc640 \ub180\uc544\ubcf4\uc138\uc694";
     },
     get$courseStartDesc() {
-      return "Pangea botas pasiruo\u0161\u0119s bet kada prad\u0117ti!\n\n...bet mokymasis yra geresnis su draugais!";
+      return "\ud30c\ub2c8\uc544 \ubd07\uc740 \uc5b8\uc81c\ub4e0 \uc900\ube44\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4!\n\n...\ud558\uc9c0\ub9cc \uce5c\uad6c\uc640 \ud568\uaed8 \ubc30\uc6b0\ub294 \uac83\uc774 \ub354 \uc88b\uc544\uc694!";
     },
     get$activityDropdownDesc() {
-      return "Kai baigsite \u0161i\u0105 veikl\u0105, spustel\u0117kite \u017eemiau";
+      return "\uc774 \ud65c\ub3d9\uc774 \ub05d\ub098\uba74 \uc544\ub798\ub97c \ud074\ub9ad\ud558\uc138\uc694";
     },
     get$languageMismatchTitle() {
-      return "Kalbos neatitikimas";
+      return "\uc5b8\uc5b4 \ubd88\uc77c\uce58";
     },
     get$emptyChatSearch() {
-      return "Nerasta tiesiogini\u0173 \u017einu\u010di\u0173 ar pokalbi\u0173. \u012esitikinkite, kad j\u016bs\u0173 paie\u0161ka para\u0161yta teisingai.";
+      return "DM\uc774\ub098 \ucc44\ud305\uc774 \uc5c6\uc2b5\ub2c8\ub2e4. \uac80\uc0c9\uc5b4\uac00 \uc62c\ubc14\ub974\uac8c \uc785\ub825\ub418\uc5c8\ub294\uc9c0 \ud655\uc778\ud558\uc138\uc694.";
     },
     get$languageMismatchDesc() {
-      return "J\u016bs\u0173 tikslin\u0117 kalba nesutampa su \u0161ios veiklos kalba. Ar norite atnaujinti savo tikslin\u0119 kalb\u0105?";
+      return "\ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc774 \ud65c\ub3d9\uc758 \uc5b8\uc5b4\uc640 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ubaa9\ud45c \uc5b8\uc5b4\ub97c \uc5c5\ub370\uc774\ud2b8\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$reportWordIssueTooltip() {
-      return "Prane\u0161ti apie \u017eod\u017eio informacijos problem\u0105";
+      return "\ub2e8\uc5b4 \uc815\ubcf4 \ubb38\uc81c \uc2e0\uace0";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u017dod\u017eio informacijos atsiliepimai";
+      return "\ub2e8\uc5b4 \uc815\ubcf4 \ud53c\ub4dc\ubc31";
     },
     get$noCourseTemplatesFound() {
-      return "Nepavyko rasti joki\u0173 kurs\u0173 j\u016bs\u0173 tikslinei kalbai. Tuo tarpu galite bendrauti su Pangea Bot ir v\u0117liau gr\u012f\u017eti pasitikrinti daugiau kurs\u0173.";
+      return "\ubaa9\ud45c \uc5b8\uc5b4\uc5d0 \ub300\ud55c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uadf8\ub3d9\uc548 Pangea Bot\uacfc \ucc44\ud305\ud558\uac70\ub098 \ub098\uc911\uc5d0 \ub354 \ub9ce\uc740 \uac15\uc88c\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot \u0161iek tiek u\u017etrunka atsakydamas. Pra\u0161ome pabandyti v\u0117liau arba pakviesti draug\u0105.";
+      return "Pangea Bot\uc774 \uc751\ub2f5\ud558\ub294 \ub370 \uc2dc\uac04\uc774 \uac78\ub9ac\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc7a0\uc2dc \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uac70\ub098 \uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694.";
     },
     get$unsubscribedResponseError() {
-      return "\u0160iai funkcijai reikalinga prenumerata";
+      return "\uc774 \uae30\ub2a5\uc740 \uad6c\ub3c5\uc774 \ud544\uc694\ud569\ub2c8\ub2e4";
     },
     get$leaveDesc() {
-      return "I\u0161eikite i\u0161 \u0161ios erdv\u0117s ir vis\u0173 pokalbi\u0173 joje";
+      return "\uc774 \uacf5\uac04\uacfc \uadf8 \uc548\uc758 \ubaa8\ub4e0 \ucc44\ud305\uc744 \ub5a0\ub098\uae30";
     },
     get$selectAll() {
-      return "Pasirinkti visk\u0105";
+      return "\ubaa8\ub450 \uc120\ud0dd";
     },
     get$deselectAll(_) {
-      return "At\u0161aukti visk\u0105";
+      return "\ubaa8\ub450 \uc120\ud0dd \ud574\uc81c";
     },
     get$shareCourse() {
-      return "Pasidalinti kursu";
+      return "\uac15\uc88c \uacf5\uc720";
     },
     get$vocabLevelsDesc() {
-      return "\u010cia pateks \u017eod\u017eiai, kai juos pakelsite \u012f auk\u0161tesn\u012f lyg\u012f!";
+      return "\ub2e8\uc5b4\ub97c \ub808\ubca8\uc5c5\ud558\uba74 \uc5ec\uae30\uc5d0 \ub2e8\uc5b4\uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "Tai j\u016bs\u0173 i\u0161saugotos veiklos per\u017ei\u016brai ir praktikai.";
+      return "\uc774\uac83\uc740 \uac80\ud1a0 \ubc0f \uc5f0\uc2b5\uc744 \uc704\ud55c \uc800\uc7a5\ub41c \ud65c\ub3d9\uc785\ub2c8\ub2e4.";
     },
     get$numSavedActivities() {
-      return "I\u0161saugot\u0173 veikl\u0173 skai\u010dius";
+      return "\uc800\uc7a5\ub41c \ud65c\ub3d9 \uc218";
     },
     get$saveActivityTitle() {
-      return "I\u0161saugoti veikl\u0105";
+      return "\ud65c\ub3d9 \uc800\uc7a5";
     },
     get$saveActivityDesc() {
-      return "Puikus darbas! I\u0161saugokite \u0161i\u0105 veikl\u0105 v\u0117lesnei per\u017ei\u016brai ir praktikai";
+      return "\uc798\ud588\uc5b4\uc694! \uc774 \ud65c\ub3d9\uc744 \ub098\uc911\uc5d0 \uac80\ud1a0\ud558\uace0 \uc5f0\uc2b5\ud558\uae30 \uc704\ud574 \uc800\uc7a5\ud558\uc138\uc694.";
     },
     get$levelInfoTooltip() {
-      return "\u010cia galite pamatyti visus ta\u0161kus, kuriuos u\u017edirbote, ir kaip!";
+      return "\uc5ec\uae30\uc5d0\uc11c \ub2f9\uc2e0\uc774 \uc5bb\uc740 \ubaa8\ub4e0 \ud3ec\uc778\ud2b8\uc640 \uadf8 \ubc29\ubc95\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4!";
     },
     get$alreadyInCourseWithID() {
-      return "J\u016bs jau esate \u0161iame kurse su \u0161iuo planu. Ar norite sukurti kurs\u0105 su tuo pa\u010diu planu, ar eiti \u012f esam\u0105 kurs\u0105?";
+      return "\ub2f9\uc2e0\uc740 \uc774\ubbf8 \uc774 \uacc4\ud68d\uc758 \uacfc\uc815\uc5d0 \uc788\uc2b5\ub2c8\ub2e4. \uac19\uc740 \uacc4\ud68d\uc73c\ub85c \uacfc\uc815\uc744 \ub9cc\ub4e4\uace0 \uc2f6\uc73c\uc2e0\uac00\uc694, \uc544\ub2c8\uba74 \uae30\uc874 \uacfc\uc815\uc744 \uac00\uace0 \uc2f6\uc73c\uc2e0\uac00\uc694?";
     },
     get$goToExistingCourse() {
-      return "Eiti \u012f esam\u0105 kurs\u0105";
+      return "\uae30\uc874 \uacfc\uc815\uc73c\ub85c \uac00\uae30";
     },
     get$emojiView() {
-      return "Emod\u017ei\u0173 per\u017ei\u016bra";
+      return "\uc774\ubaa8\uc9c0 \ubcf4\uae30";
     },
     get$feedbackDialogDesc() {
-      return "A\u0161 taip pat darau klaid\u0173! Ar yra kas nors, kas gal\u0117t\u0173 man pad\u0117ti tobul\u0117ti?";
+      return "\uc800\ub3c4 \uc2e4\uc218\ub97c \ud574\uc694! \uc81c\uac00 \uac1c\uc120\ud560 \uc218 \uc788\ub3c4\ub85d \ub3c4\uc640\uc904 \uc218 \uc788\ub294 \uac83\uc774 \uc788\ub098\uc694?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Kontaktas buvo pakviestas \u012f kurs\u0105";
+      return "\uc5f0\ub77d\ucc98\uac00 \uacfc\uc815\uc5d0 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$inviteFriends() {
-      return "Pakvieskite draugus";
+      return "\uce5c\uad6c \ucd08\ub300\ud558\uae30";
     },
     get$failedToLoadFeedback() {
-      return "Nepavyko \u012fkelti atsiliepim\u0173.";
+      return "\ud53c\ub4dc\ubc31\uc744 \ubd88\ub7ec\uc624\ub294 \ub370 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4.";
     },
     get$activityStatsButtonTooltip() {
-      return "Veiklos informacija";
+      return "\ud65c\ub3d9 \uc815\ubcf4";
     },
     get$allow(_) {
-      return "Leisti";
+      return "\ud5c8\uc6a9";
     },
     get$deny() {
-      return "Atmesti";
+      return "\uac70\ubd80";
     },
     get$enabledRenewal() {
-      return "\u012ejungti prenumeratos atnaujinim\u0105";
+      return "\uad6c\ub3c5 \uac31\uc2e0 \ud65c\uc131\ud654";
     },
     get$subscriptionEndsOn() {
-      return "Prenumerata baigiasi";
+      return "\uad6c\ub3c5 \uc885\ub8cc\uc77c";
     },
     get$subscriptionRenewsOn() {
-      return "Prenumerata atnaujinama";
+      return "\uad6c\ub3c5 \uac31\uc2e0\uc77c";
     },
     get$waitForSubscriptionChanges() {
-      return "Prenumeratos pakeitimai gali u\u017etrukti, kol atsispind\u0117s program\u0117l\u0117je.";
+      return "\uad6c\ub3c5 \ubcc0\uacbd \uc0ac\ud56d\uc774 \uc571\uc5d0 \ubc18\uc601\ub418\ub294 \ub370 \uc7a0\uc2dc \uc2dc\uac04\uc774 \uac78\ub9b4 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$subscribeReadingAssistance() {
-      return "Prenumeruokite, kad atrakintum\u0117te \u017einu\u010di\u0173 \u012frankius";
+      return "\uba54\uc2dc\uc9c0 \ub3c4\uad6c \uc7a0\uae08\uc744 \ud574\uc81c\ud558\ub824\uba74 \uad6c\ub3c5\ud558\uc138\uc694";
     },
     get$aceDisplayName() {
-      return "A\u010din\u0117";
+      return "\uc544\uce58\ub124\uc2a4";
     },
     get$achDisplayName() {
-      return "Acoli";
+      return "\uc544\ucf5c\ub9ac";
     },
     get$afDisplayName() {
-      return "Afrikie\u010di\u0173";
+      return "\uc544\ud504\ub9ac\uce78\uc2a4";
     },
     get$akDisplayName() {
-      return "Akan";
+      return "\uc544\uce78";
     },
     get$alzDisplayName() {
-      return "Alur";
+      return "\uc54c\ub8e8\ub974";
     },
     get$amDisplayName() {
-      return "Amhar\u0173";
+      return "\uc554\ud558\ub77c\uc5b4";
     },
     get$arDisplayName() {
-      return "Arab\u0173";
+      return "\uc544\ub78d\uc5b4";
     },
     get$asDisplayName() {
-      return "Asamie\u010di\u0173";
+      return "\uc544\uc0bc\uc5b4";
     },
     get$awaDisplayName() {
-      return "Awadhi";
+      return "\uc544\uc640\ub514";
     },
     get$ayDisplayName() {
-      return "Aymara";
+      return "\uc544\uc774\ub9c8\ub77c";
     },
     get$azDisplayName() {
-      return "Azerbaid\u017eanie\u010di\u0173";
+      return "\uc544\uc81c\ub974\ubc14\uc774\uc794\uc5b4";
     },
     get$baDisplayName() {
-      return "Ba\u0161kir\u0173";
+      return "\ubc14\uc2dc\ud0a4\ub974\uc5b4";
     },
     get$banDisplayName() {
-      return "Bali\u0173";
+      return "\ubc1c\ub9ac\uc5b4";
     },
     get$bbcDisplayName() {
-      return "Batak Toba";
+      return "\ubc14\ud0c1 \ud1a0\ubc14\uc5b4";
     },
     get$beDisplayName() {
-      return "Baltarus\u0173";
+      return "\ubca8\ub77c\ub8e8\uc2a4\uc5b4";
     },
     get$bemDisplayName() {
-      return "Bemba";
+      return "\ubcb0\ubc14\uc5b4";
     },
     get$bewDisplayName() {
-      return "Betavi";
+      return "\ubca0\ud0c0\uc704\uc5b4";
     },
     get$bgDisplayName() {
-      return "Bulgar\u0173";
+      return "\ubd88\uac00\ub9ac\uc544\uc5b4";
     },
     get$bhoDisplayName() {
-      return "Bhojpuri";
+      return "\ubcf4\uc9c0\ud478\ub9ac\uc5b4";
     },
     get$bikDisplayName() {
-      return "Bikol";
+      return "\ube44\ucf5c\uc5b4";
     },
     get$bmDisplayName() {
-      return "Bambara";
+      return "\ubc24\ubc14\ub77c\uc5b4";
     },
     get$bnDisplayName() {
-      return "Bengal\u0173";
+      return "\ubcb5\uace8\uc5b4";
     },
     get$bnBDDisplayName() {
-      return "Bengal\u0173 (Banglade\u0161as)";
+      return "\ubcb5\uace8\uc5b4 (\ubc29\uae00\ub77c\ub370\uc2dc)";
     },
     get$bnINDisplayName() {
-      return "Bengal\u0173 (Indija)";
+      return "\ubcb5\uace8\uc5b4 (\uc778\ub3c4)";
     },
     get$brDisplayName() {
-      return "Breton\u0173";
+      return "\ube0c\ub974\ud0c0\ub274\uc5b4";
     },
     get$bsDisplayName() {
-      return "Bosni\u0173";
+      return "\ubcf4\uc2a4\ub2c8\uc544\uc5b4";
     },
     get$btsDisplayName() {
-      return "Batak Simalungun";
+      return "\ubc14\ud0c1 \uc2dc\ub9d0\ub8fd\uad70\uc5b4";
     },
     get$btxDisplayName() {
-      return "Batak Karo";
+      return "\ubc14\ud0c1 \uce74\ub85c\uc5b4";
     },
     get$buaDisplayName() {
-      return "Buriat\u0173";
+      return "\ubd80\ub9ac\uc57c\ud2b8\uc5b4";
     },
     get$caDisplayName() {
-      return "Katalon\u0173";
+      return "\uce74\ud0c8\ub8e8\ub0d0\uc5b4";
     },
     get$cebDisplayName() {
-      return "Cebuano";
+      return "\uc138\ubd80\uc544\ub178\uc5b4";
     },
     get$cggDisplayName() {
-      return "Chiga";
+      return "\uce58\uac00";
     },
     get$chmDisplayName() {
-      return "Mari";
+      return "\ub9c8\ub9ac";
     },
     get$ckbDisplayName() {
-      return "Centrin\u0117 kurd\u0173 kalba";
+      return "\uc911\uc559 \ucfe0\ub974\ub4dc\uc5b4";
     },
     get$cnhDisplayName() {
-      return "Hakha \u010cin";
+      return "\ud558\uce74 \uce5c";
     },
     get$coDisplayName() {
-      return "Korsikie\u010di\u0173";
+      return "\ucf54\ub974\uc2dc\uce74\uc5b4";
     },
     get$crhDisplayName() {
-      return "Krymo turk\u0173";
+      return "\ud06c\ub9bc \ud130\ud0a4\uc5b4";
     },
     get$crsDisplayName() {
-      return "Seselwa kreol\u0173 pranc\u016bz\u0173";
+      return "\uc138\uc140\uc640 \ud06c\ub808\uc62c \ud504\ub791\uc2a4\uc5b4";
     },
     get$csDisplayName() {
-      return "\u010cek\u0173";
+      return "\uccb4\ucf54\uc5b4";
     },
     get$cvDisplayName() {
-      return "\u010cuva\u0161\u0173";
+      return "\ucd94\ubc14\uc2dc\uc5b4";
     },
     get$cyDisplayName() {
-      return "Velsie\u010di\u0173";
+      return "\uc6e8\uc77c\uc2a4\uc5b4";
     },
     get$daDisplayName() {
-      return "Dan\u0173";
+      return "\ub374\ub9c8\ud06c\uc5b4";
     },
     get$deDisplayName() {
-      return "Vokie\u010di\u0173";
+      return "\ub3c5\uc77c\uc5b4";
     },
     get$dinDisplayName() {
-      return "Dinka";
+      return "\ub529\uce74\uc5b4";
     },
     get$doiDisplayName() {
-      return "Dogri";
+      return "\ub3c4\uadf8\ub9ac\uc5b4";
     },
     get$dovDisplayName() {
-      return "Dombe";
+      return "\ub3d4\ubca0\uc5b4";
     },
     get$dzDisplayName() {
-      return "Dzongkha";
+      return "\uc885\uce74\uc5b4";
     },
     get$eeDisplayName() {
-      return "Ewe";
+      return "\uc5d0\uc6e8\uc5b4";
     },
     get$enDisplayName() {
-      return "Angl\u0173";
+      return "\uc601\uc5b4";
     },
     get$enAUDisplayName() {
-      return "Angl\u0173 (Australija)";
+      return "\uc601\uc5b4 (\ud638\uc8fc)";
     },
     get$enGBDisplayName() {
-      return "Angl\u0173 (JK)";
+      return "\uc601\uc5b4 (\uc601\uad6d)";
     },
     get$enINDisplayName() {
-      return "Angl\u0173 (Indija)";
+      return "\uc601\uc5b4 (\uc778\ub3c4)";
     },
     get$enUSDisplayName() {
-      return "Angl\u0173 (JAV)";
+      return "\uc601\uc5b4 (\ubbf8\uad6d)";
     },
     get$eoDisplayName() {
-      return "Esperanto";
+      return "\uc5d0\uc2a4\ud398\ub780\ud1a0";
     },
     get$esDisplayName() {
-      return "Ispan\u0173";
+      return "\uc2a4\ud398\uc778\uc5b4";
     },
     get$esESDisplayName() {
-      return "Ispan\u0173 (Ispanija)";
+      return "\uc2a4\ud398\uc778\uc5b4 (\uc2a4\ud398\uc778)";
     },
     get$esMXDisplayName() {
-      return "Ispan\u0173 (Meksika)";
+      return "\uc2a4\ud398\uc778\uc5b4 (\uba55\uc2dc\ucf54)";
     },
     get$euDisplayName() {
-      return "Bask\u0173";
+      return "\ubc14\uc2a4\ud06c\uc5b4";
     },
     get$faDisplayName() {
-      return "Pers\u0173";
+      return "\ud398\ub974\uc2dc\uc544\uc5b4";
     },
     get$ffDisplayName() {
-      return "Fulah";
+      return "\ud480\ub77c\uc5b4";
     },
     get$fiDisplayName() {
-      return "Suomi";
+      return "\ud540\ub780\ub4dc\uc5b4";
     },
     get$filDisplayName() {
-      return "Filipinie\u010di\u0173";
+      return "\ud544\ub9ac\ud540\uc5b4";
     },
     get$fjDisplayName() {
-      return "Fid\u017eie\u010di\u0173";
+      return "\ud53c\uc9c0\uc5b4";
     },
     get$foDisplayName() {
-      return "Faroej\u0173";
+      return "\ud30c\ub85c\uc5d0\uc138\uc5b4";
     },
     get$frDisplayName() {
-      return "Pranc\u016bz\u0173";
+      return "\ud504\ub791\uc2a4\uc5b4";
     },
     get$frCADisplayName() {
-      return "Pranc\u016bz\u0173 (Kanada)";
+      return "\ud504\ub791\uc2a4\uc5b4 (\uce90\ub098\ub2e4)";
     },
     get$frFRDisplayName() {
-      return "Pranc\u016bz\u0173 (Pranc\u016bzija)";
+      return "\ud504\ub791\uc2a4\uc5b4 (\ud504\ub791\uc2a4)";
     },
     get$fyDisplayName() {
-      return "Vakar\u0173 Fris\u0173";
+      return "\uc11c\ubd80 \ud504\ub9ac\uc2ac\ub780\ub4dc\uc5b4";
     },
     get$gaDisplayName() {
-      return "Airi\u0173";
+      return "\uc544\uc77c\ub79c\ub4dc\uc5b4";
     },
     get$gaaDisplayName() {
-      return "Ga";
+      return "\uac00\uc5b4";
     },
     get$gdDisplayName() {
-      return "\u0160kot\u0173 g\u0117l\u0173";
+      return "\uc2a4\ucf54\ud2c0\ub79c\ub4dc \uac8c\uc77c\uc5b4";
     },
     get$glDisplayName() {
-      return "Gali\u0161\u0173";
+      return "\uac08\ub9ac\uc2dc\uc544\uc5b4";
     },
     get$gnDisplayName() {
-      return "Guaran\xed";
+      return "\uacfc\ub77c\ub2c8\uc5b4";
     },
     get$gomDisplayName() {
-      return "Goan Konkani";
+      return "\uace0\uc548 \ucf58\uce74\ub2c8";
     },
     get$guDisplayName() {
-      return "Gujarati";
+      return "\uad6c\uc790\ub77c\ud2f0\uc5b4";
     },
     get$haDisplayName() {
-      return "Hausa";
+      return "\ud558\uc6b0\uc0ac\uc5b4";
     },
     get$hawDisplayName() {
-      return "Havaj\u0173";
+      return "\ud558\uc640\uc774\uc5b4";
     },
     get$heDisplayName() {
-      return "Hebraj\u0173";
+      return "\ud788\ube0c\ub9ac\uc5b4";
     },
     get$hiDisplayName() {
-      return "Hindi";
+      return "\ud78c\ub514\uc5b4";
     },
     get$hilDisplayName() {
-      return "Hiligajnon";
+      return "\ud790\ub9ac\uac00\uc774\ub17c\uc5b4";
     },
     get$hmnDisplayName() {
-      return "Hmong";
+      return "\ubabd\uc5b4";
     },
     get$hneDisplayName() {
-      return "\u010cat\u012fsgaris";
+      return "\ucc28\ud2f0\uc2a4\uac00\ub974\uc5b4";
     },
     get$hrDisplayName() {
-      return "Kroat\u0173";
+      return "\ud06c\ub85c\uc544\ud2f0\uc544\uc5b4";
     },
     get$hrxDisplayName() {
-      return "Hunsrik";
+      return "\ud6c8\uc2a4\ub9ac\ud06c\uc5b4";
     },
     get$htDisplayName() {
-      return "Haitie\u010di\u0173 kreol\u0173";
+      return "\uc544\uc774\ud2f0 \ud06c\ub9ac\uc62c\uc5b4";
     },
     get$huDisplayName() {
-      return "Vengr\u0173";
+      return "\ud5dd\uac00\ub9ac\uc5b4";
     },
     get$hyDisplayName() {
-      return "Arm\u0117n\u0173";
+      return "\uc544\ub974\uba54\ub2c8\uc544\uc5b4";
     },
     get$idDisplayName() {
-      return "Indonezie\u010di\u0173";
+      return "\uc778\ub3c4\ub124\uc2dc\uc544\uc5b4";
     },
     get$igDisplayName() {
-      return "Igbo";
+      return "\uc774\uadf8\ubcf4\uc5b4";
     },
     get$iloDisplayName() {
-      return "Iloko";
+      return "\uc77c\ub85c\uce74\ub178\uc5b4";
     },
     get$isDisplayName() {
-      return "Island\u0173";
+      return "\uc544\uc774\uc2ac\ub780\ub4dc\uc5b4";
     },
     get$itDisplayName() {
-      return "Ital\u0173";
+      return "\uc774\ud0c8\ub9ac\uc544\uc5b4";
     },
     get$jaDisplayName() {
-      return "Japon\u0173";
+      return "\uc77c\ubcf8\uc5b4";
     },
     get$jvDisplayName() {
-      return "Javan\u0173";
+      return "\uc790\ubc14\uc5b4";
     },
     get$kaDisplayName() {
-      return "Gruzini\u0173";
+      return "\uc870\uc9c0\uc544\uc5b4";
     },
     get$kkDisplayName() {
-      return "Kazach\u0173";
+      return "\uce74\uc790\ud750\uc5b4";
     },
     get$kmDisplayName() {
-      return "Khmer\u0173";
+      return "\ud06c\uba54\ub974\uc5b4";
     },
     get$knDisplayName() {
-      return "Kannada";
+      return "\uce78\ub098\ub2e4\uc5b4";
     },
     get$koDisplayName() {
-      return "Kor\u0117jie\u010di\u0173";
+      return "\ud55c\uad6d\uc5b4";
     },
     get$kokDisplayName() {
-      return "Konkani";
+      return "\ucf58\uce74\ub2c8\uc5b4";
     },
     get$kriDisplayName() {
-      return "Krio";
+      return "\ud06c\ub9ac\uc62c\uc5b4";
     },
     get$ksDisplayName() {
-      return "Ka\u0161myro";
+      return "\uce74\uc288\ubbf8\ub974\uc5b4";
     },
     get$ktuDisplayName() {
-      return "Kituba (Demokratin\u0117 Kongo Respublika)";
+      return "\ud0a4\ud22c\ubc14\uc5b4 (\ucf69\uace0 \ubbfc\uc8fc \uacf5\ud654\uad6d)";
     },
     get$kuDisplayName() {
-      return "Kurd\u0173";
+      return "\ucfe0\ub974\ub4dc\uc5b4";
     },
     get$kyDisplayName() {
-      return "Kirgiz\u0173";
+      return "\ud0a4\ub974\uae30\uc2a4\uc5b4";
     },
     get$laDisplayName() {
-      return "Lotyn\u0173";
+      return "\ub77c\ud2f4\uc5b4";
     },
     get$lbDisplayName() {
-      return "Luksemburgie\u010di\u0173";
+      return "\ub8e9\uc148\ubd80\ub974\ud06c\uc5b4";
     },
     get$lgDisplayName() {
-      return "Ganda";
+      return "\uac04\ub2e4\uc5b4";
     },
     get$liDisplayName() {
-      return "Limburgo";
+      return "\ub9bc\ubd80\ub974\ud06c\uc5b4";
     },
     get$lijDisplayName() {
-      return "Ligur\u0173";
+      return "\ub9ac\uad6c\ub9ac\uc544\uc5b4";
     },
     get$lmoDisplayName() {
-      return "Lombard\u0173";
+      return "\ub86c\ubc14\ub974\ub4dc\uc5b4";
     },
     get$lnDisplayName() {
-      return "Lingala";
+      return "\ub9c1\uac08\ub77c";
     },
     get$loDisplayName() {
-      return "Lao";
+      return "\ub77c\uc624";
     },
     get$ltDisplayName() {
-      return "Lietuvi\u0173";
+      return "\ub9ac\ud22c\uc544\ub2c8\uc544\uc5b4";
     },
     get$ltgDisplayName() {
-      return "Latgali\u0173";
+      return "\ub77c\ud2b8\uac08\ub9ac\uc548";
     },
     get$luoDisplayName() {
-      return "Luo (Kenija ir Tanzanija)";
+      return "\ub8e8\uc624 (\ucf00\ub0d0\uc640 \ud0c4\uc790\ub2c8\uc544)";
     },
     get$lusDisplayName() {
-      return "Mizo";
+      return "\ubbf8\uc870";
     },
     get$lvDisplayName() {
-      return "Latvi\u0173";
+      return "\ub77c\ud2b8\ube44\uc544\uc5b4";
     },
     get$maiDisplayName() {
-      return "Maithili";
+      return "\ub9c8\uc774\ud2f8\ub9ac";
     },
     get$makDisplayName() {
-      return "Makasar";
+      return "\ub9c8\uce74\uc0ac\ub974";
     },
     get$mgDisplayName() {
-      return "Malagaz\u0173";
+      return "\ub9d0\ub77c\uac00\uc2dc";
     },
     get$miDisplayName() {
-      return "Maori";
+      return "\ub9c8\uc624\ub9ac";
     },
     get$minDisplayName() {
-      return "Minangkabau";
+      return "\ubbf8\ub0ad\uce74\ubc14\uc6b0";
     },
     get$mkDisplayName() {
-      return "Makedon\u0173";
+      return "\ub9c8\ucf00\ub3c4\ub2c8\uc544\uc5b4";
     },
     get$mlDisplayName() {
-      return "Malaj\u0173";
+      return "\ub9d0\ub77c\uc584\ub78c\uc5b4";
     },
     get$mnDisplayName() {
-      return "Mongol\u0173";
+      return "\ubabd\uace8\uc5b4";
     },
     get$mniDisplayName() {
       return "Manipuri";
     },
     get$mrDisplayName() {
-      return "Marathi";
+      return "\ub9c8\ub77c\ud2f0\uc5b4";
     },
     get$msDisplayName() {
-      return "Malaj\u0173";
+      return "\ub9d0\ub808\uc774\uc5b4";
     },
     get$msArabDisplayName() {
-      return "Malaj\u0173 (arab\u0173)";
+      return "\ub9d0\ub808\uc774\uc5b4 (\uc544\ub78d\uc5b4)";
     },
     get$msMYDisplayName() {
-      return "Malaj\u0173 (Malazija)";
+      return "\ub9d0\ub808\uc774\uc5b4 (\ub9d0\ub808\uc774\uc2dc\uc544)";
     },
     get$mtDisplayName() {
-      return "Maltie\u010di\u0173";
+      return "\ubab0\ud0c0\uc5b4";
     },
     get$mwrDisplayName() {
-      return "Marwari";
+      return "\ub9c8\ub974\uc640\ub9ac\uc5b4";
     },
     get$myDisplayName() {
-      return "Birmie\u010di\u0173";
+      return "\ubc84\ub9c8\uc5b4";
     },
     get$nanDisplayName() {
-      return "Min Nan";
+      return "\ubbfc\ub09c\uc5b4";
     },
     get$nbDisplayName() {
-      return "Norveg\u0173 (Bokm\xe5l)";
+      return "\ub178\ub974\uc6e8\uc774\uc5b4 (\ubcf5\ub9d0)";
     },
     get$neDisplayName() {
-      return "Nepali";
+      return "\ub124\ud314\uc5b4";
     },
     get$newDisplayName() {
-      return "Newari";
+      return "\ub274\uc5b4\ub9ac\uc5b4";
     },
     get$nlDisplayName() {
-      return "Oland\u0173";
+      return "\ub124\ub35c\ub780\ub4dc\uc5b4";
     },
     get$nlBEDisplayName() {
-      return "Flandr\u0173";
+      return "\ud50c\ub791\ub4dc\ub974\uc5b4";
     },
     get$noDisplayName() {
-      return "Norveg\u0173";
+      return "\ub178\ub974\uc6e8\uc774\uc5b4";
     },
     get$nrDisplayName() {
-      return "Piet\u0173 Ndebele";
+      return "\ub0a8\ubd80 \uc5d4\ub370\ubca8\ub808";
     },
     get$nsoDisplayName() {
-      return "\u0160iaur\u0117s Sotho";
+      return "\ubd81\ubd80 \uc18c\ud1a0";
     },
     get$nusDisplayName() {
-      return "Nuer";
+      return "\ub204\uc5d0\ub974";
     },
     get$nyDisplayName() {
-      return "Nyanja";
+      return "\ub2c8\uc548\uc790";
     },
     get$ocDisplayName() {
-      return "Okitan";
+      return "\uc625\uc2dc\ud0c4";
     },
     get$omDisplayName() {
-      return "Oromo";
+      return "\uc624\ub85c\ubaa8";
     },
     get$orDisplayName() {
-      return "Odia";
+      return "\uc624\ub514\uc544";
     },
     get$paDisplayName() {
-      return "Punjabi";
+      return "\ud380\uc790\ube44";
     },
     get$paArabDisplayName() {
-      return "Punjabi (Shahmukhi)";
+      return "\ud380\uc790\ube44 (\uc0e4\ud750\ubb34\ud0a4)";
     },
     get$paINDisplayName() {
-      return "Punjabi (Gurmukhi)";
+      return "\ud380\uc790\ube44 (\uad6c\ub974\ubb34\ud0a4)";
     },
     get$pagDisplayName() {
-      return "Pangasinan";
+      return "\ud321\uac00\uc2dc\ub09c";
     },
     get$pamDisplayName() {
-      return "Pampanga";
+      return "\ud31c\ud321\uac00";
     },
     get$papDisplayName() {
-      return "Papiamento";
+      return "\ud30c\ud53c\uc544\uba58\ud1a0";
     },
     get$plDisplayName() {
-      return "Lenk\u0173";
+      return "\ud3f4\ub780\ub4dc\uc5b4";
     },
     get$psDisplayName() {
-      return "Pashto";
+      return "\ud30c\uc288\ud1a0\uc5b4";
     },
     get$ptDisplayName() {
-      return "Portugal\u0173";
+      return "\ud3ec\ub974\ud22c\uac08\uc5b4";
     },
     get$ptBRDisplayName() {
-      return "Portugal\u0173 (Brazilija)";
+      return "\ud3ec\ub974\ud22c\uac08\uc5b4 (\ube0c\ub77c\uc9c8)";
     },
     get$ptPTDisplayName() {
-      return "Portugal\u0173 (Portugalija)";
+      return "\ud3ec\ub974\ud22c\uac08\uc5b4 (\ud3ec\ub974\ud22c\uac08)";
     },
     get$quDisplayName() {
-      return "Kve\u010dua";
+      return "\ucf00\ucd94\uc544\uc5b4";
     },
     get$rajDisplayName() {
-      return "Rad\u017eastano";
+      return "\ub77c\uc790\uc2a4\ud0c4\uc5b4";
     },
     get$rnDisplayName() {
-      return "Rundi";
+      return "\ub8ec\ub514";
     },
     get$roDisplayName() {
-      return "Rumun\u0173";
+      return "\ub8e8\ub9c8\ub2c8\uc544\uc5b4";
     },
     get$roMDDisplayName() {
-      return "Moldovos";
+      return "\ubab0\ub3c4\ubc14\uc5b4";
     },
     get$romDisplayName() {
-      return "Rom\u0173";
+      return "\ub85c\ub9c8\ub2c8\uc5b4";
     },
     get$ruDisplayName() {
-      return "Rus\u0173";
+      return "\ub7ec\uc2dc\uc544\uc5b4";
     },
     get$rwDisplayName() {
-      return "Kinyarwanda";
+      return "\ud0a4\ub0d0\ub974\uc644\ub2e4\uc5b4";
     },
     get$saDisplayName() {
-      return "Sanskritas";
+      return "\uc0b0\uc2a4\ud06c\ub9ac\ud2b8\uc5b4";
     },
     get$satDisplayName() {
-      return "Santali";
+      return "\uc0b0\ud0c8\ub9ac\uc5b4";
     },
     get$scnDisplayName() {
-      return "Sicilieti\u0161kai";
+      return "\uc2dc\uce60\ub9ac\uc544\uc5b4";
     },
     get$sdDisplayName() {
-      return "Sindhi";
+      return "\uc2e0\ub514\uc5b4";
     },
     get$sgDisplayName() {
-      return "Sango";
+      return "\uc0c1\uace0";
     },
     get$shnDisplayName() {
-      return "\u0160an";
+      return "\uc0e8";
     },
     get$siDisplayName() {
-      return "Sinhala";
+      return "\uc2e0\ud560\ub77c";
     },
     get$skDisplayName() {
-      return "Slovak\u0173";
+      return "\uc2ac\ub85c\ubc14\ud0a4\uc544\uc5b4";
     },
     get$slDisplayName() {
-      return "Slov\u0117n\u0173";
+      return "\uc2ac\ub85c\ubca0\ub2c8\uc544\uc5b4";
     },
     get$smDisplayName() {
-      return "Samoan\u0173";
+      return "\uc0ac\ubaa8\uc544\uc5b4";
     },
     get$snDisplayName() {
-      return "Shon\u0173";
+      return "\uc1fc\ub098\uc5b4";
     },
     get$soDisplayName() {
-      return "Somal\u0173";
+      return "\uc18c\ub9d0\ub9ac\uc5b4";
     },
     get$sqDisplayName() {
-      return "Alban\u0173";
+      return "\uc54c\ubc14\ub2c8\uc544\uc5b4";
     },
     get$srDisplayName() {
-      return "Serb\u0173";
+      return "\uc138\ub974\ube44\uc544\uc5b4";
     },
     get$srMEDisplayName() {
-      return "Juodkalnie\u010di\u0173";
+      return "\ubaac\ud14c\ub124\uadf8\ub9b0\uc5b4";
     },
     get$ssDisplayName() {
-      return "Swati";
+      return "\uc2a4\uc640\ud2f0\uc5b4";
     },
     get$stDisplayName() {
-      return "Piet\u0173 Sotho";
+      return "\ub0a8\ubd80 \uc18c\ud1a0\uc5b4";
     },
     get$suDisplayName() {
-      return "Sund\u0173";
+      return "\uc21c\ub2e4\uc5b4";
     },
     get$svDisplayName() {
-      return "\u0160ved\u0173";
+      return "\uc2a4\uc6e8\ub374\uc5b4";
     },
     get$swDisplayName() {
-      return "Suahili";
+      return "\uc2a4\uc640\ud790\ub9ac\uc5b4";
     },
     get$szlDisplayName() {
-      return "Silezie\u010di\u0173";
+      return "\uc2e4\ub808\uc2dc\uc548\uc5b4";
     },
     get$taDisplayName() {
-      return "Tamil\u0173";
+      return "\ud0c0\ubc00\uc5b4";
     },
     get$teDisplayName() {
-      return "Telug\u0173";
+      return "\ud154\ub8e8\uad6c\uc5b4";
     },
     get$tetDisplayName() {
-      return "Tetum";
+      return "\ud14c\ud23c\uc5b4";
     },
     get$tgDisplayName() {
-      return "Tad\u017eik\u0173";
+      return "\ud0c0\uc9c0\ud06c\uc5b4";
     },
     get$thDisplayName() {
-      return "Tailandie\u010di\u0173";
+      return "\ud0dc\uad6d\uc5b4";
     },
     get$tiDisplayName() {
-      return "Tigrin\u0173";
+      return "\ud2f0\uadf8\ub9ac\ub0d0\uc5b4";
     },
     get$tkDisplayName() {
-      return "Turkm\u0117n\u0173";
+      return "\ud22c\ub974\ud06c\uba58\uc5b4";
     },
     get$tlDisplayName() {
-      return "Tagalog\u0173";
+      return "\ud0c0\uac08\ub85c\uadf8\uc5b4";
     },
     get$tnDisplayName() {
-      return "Cvan\u0173";
+      return "\uce20\uc640\ub098\uc5b4";
     },
     get$trDisplayName() {
-      return "Turk\u0173";
+      return "\ud130\ud0a4\uc5b4";
     },
     get$tsDisplayName() {
-      return "Tsong\u0173";
+      return "\uc1a1\uac00\uc5b4";
     },
     get$ttDisplayName() {
-      return "Tatar\u0173";
+      return "\ud0c0\ud0c0\ub974\uc5b4";
     },
     get$ugDisplayName() {
-      return "Uig\u016br\u0173";
+      return "\uc704\uad6c\ub974\uc5b4";
     },
     get$ukDisplayName() {
-      return "Ukrainie\u010di\u0173";
+      return "\uc6b0\ud06c\ub77c\uc774\ub098\uc5b4";
     },
     get$urDisplayName() {
-      return "Urdu";
+      return "\uc6b0\ub974\ub450\uc5b4";
     },
     get$urINDisplayName() {
-      return "Urdu (Indija)";
+      return "\uc6b0\ub974\ub450\uc5b4 (\uc778\ub3c4)";
     },
     get$urPKDisplayName() {
-      return "Urdu (Pakistanas)";
+      return "\uc6b0\ub974\ub450\uc5b4 (\ud30c\ud0a4\uc2a4\ud0c4)";
     },
     get$uzDisplayName() {
-      return "Uzbek\u0173";
+      return "\uc6b0\uc988\ubca1\uc5b4";
     },
     get$viDisplayName() {
-      return "Vietnamie\u010di\u0173";
+      return "\ubca0\ud2b8\ub0a8\uc5b4";
     },
     get$wuuDisplayName() {
-      return "Wu";
+      return "\uc6b0\uc5b4";
     },
     get$xhDisplayName() {
-      return "Xhosa";
+      return "\ucf54\uc0ac\uc5b4";
     },
     get$yiDisplayName() {
-      return "Jidi\u0161";
+      return "\uc774\ub514\uc2dc\uc5b4";
     },
     get$yoDisplayName() {
-      return "Joruba";
+      return "\uc694\ub8e8\ubc14\uc5b4";
     },
     get$yuaDisplayName() {
-      return "Jukatekas";
+      return "\uc720\uce74\ud14d\uc5b4";
     },
     get$yueDisplayName() {
-      return "Kantonie\u010di\u0173";
+      return "\uad11\ub465\uc5b4";
     },
     get$yueCNDisplayName() {
-      return "Kantonie\u010di\u0173 (Kinija)";
+      return "\uad11\ub465\uc5b4 (\uc911\uad6d)";
     },
     get$yueHKDisplayName() {
-      return "Kantonie\u010di\u0173 (Honkongas)";
+      return "\uad11\ub465\uc5b4 (\ud64d\ucf69)";
     },
     get$zhDisplayName() {
-      return "Kin\u0173";
+      return "\uc911\uad6d\uc5b4";
     },
     get$zhCNDisplayName() {
-      return "Kin\u0173 (Supaprastinta)";
+      return "\uc911\uad6d\uc5b4 (\uac04\uccb4)";
     },
     get$zhTWDisplayName() {
-      return "Kin\u0173 (Tradici\u0161ka)";
+      return "\uc911\uad6d\uc5b4 (\ubc88\uccb4)";
     },
     get$zuDisplayName() {
-      return "Zulu";
+      return "\uc904\ub8e8\uc5b4";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "Mokytojo re\u017eimas";
+      return "\uad50\uc0ac \ubaa8\ub4dc";
     },
     get$teacherModeDesc() {
-      return "Perjungti, kad atrakintum\u0117te visus dalykus ir veiklas. Tik kurso administratoriams.";
+      return "\ubaa8\ub4e0 \uc8fc\uc81c\uc640 \ud65c\ub3d9\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\ub824\uba74 \uc804\ud658\ud558\uc2ed\uc2dc\uc624. \uacfc\uc815 \uad00\ub9ac\uc790 \uc804\uc6a9.";
     },
     get$noSavedActivitiesYet() {
-      return "Veiklos pasirodys \u010dia, kai bus u\u017ebaigtos ir i\u0161saugotos.";
+      return "\ud65c\ub3d9\uc774 \uc644\ub8cc\ub418\uace0 \uc800\uc7a5\ub418\uba74 \uc5ec\uae30\uc5d0 \ub098\ud0c0\ub0a9\ub2c8\ub2e4.";
     },
     get$changeCourse() {
-      return "Pakeisti kurs\u0105";
+      return "\uac15\uc88c \ubcc0\uacbd";
     },
     get$changeCourseDesc() {
-      return "\u010cia galite pakeisti \u0161io kurso plan\u0105.";
+      return "\uc5ec\uae30\uc5d0\uc11c \uc774 \uac15\uc88c\uc758 \uac15\uc88c \uacc4\ud68d\uc744 \ubcc0\uacbd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$introChatTitle() {
-      return "Sukurti \u012e\u017eang\u0173 Pokalb\u012f";
+      return "\uc18c\uac1c \ucc44\ud305 \ub9cc\ub4e4\uae30";
     },
     get$introChatDesc() {
-      return "Bet kas erdv\u0117je gali skelbti.";
+      return "\uacf5\uac04\uc758 \ub204\uad6c\ub098 \uac8c\uc2dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$announcementsChatTitle() {
-      return "Prane\u0161im\u0173 Pokalbis";
+      return "\uacf5\uc9c0\uc0ac\ud56d \ucc44\ud305";
     },
     get$announcementsChatDesc() {
-      return "Tik erdv\u0117s administratorius gali skelbti.";
+      return "\uc624\uc9c1 \uacf5\uac04 \uad00\ub9ac\uc790\ub9cc \uac8c\uc2dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Atidarytos sesijos (" + num + ")";
+      return "\uc5f4\ub9b0 \uc138\uc158 (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Dabar vyksta (" + num + ")";
+      return "\ud604\uc7ac \uc9c4\ud589 \uc911 (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Baigta (" + num + ")";
+      return "\uc644\ub8cc\ub428 (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "Pasirinkite kit\u0105 veikl\u0105";
+      return "\ub2e4\ub978 \ud65c\ub3d9 \uc120\ud0dd";
     },
     get$blockLemmaConfirmation() {
-      return "\u0160is \u017eodynas bus nuolat pa\u0161alintas i\u0161 j\u016bs\u0173 analiz\u0117s";
+      return "\uc774 \uc5b4\ud718 \ub2e8\uc5b4\ub294 \uadc0\ud558\uc758 \ubd84\uc11d\uc5d0\uc11c \uc601\uad6c\uc801\uc73c\ub85c \uc81c\uac70\ub429\ub2c8\ub2e4.";
     },
     get$woman() {
-      return "Moteris";
+      return "\uc5ec\uc131";
     },
     get$man() {
-      return "Vyras";
+      return "\ub0a8\uc131";
     },
     get$otherGender() {
-      return "Kitas";
+      return "\uae30\ud0c0";
     },
     get$unselectedGender() {
-      return "Pasirinkite lyties parinkt\u012f";
+      return "\uc131\ubcc4 \uc635\uc158\uc744 \uc120\ud0dd\ud558\uc138\uc694";
     },
     get$gender() {
-      return "Lytis";
+      return "\uc131\ubcc4";
     },
     get$modeDisabled() {
-      return "Mokymosi \u012frankiai yra i\u0161jungti \u017einut\u0117ms, kurios n\u0117ra j\u016bs\u0173 tikslin\u0117je kalboje.";
+      return "\ud559\uc2b5 \ub3c4\uad6c\ub294 \ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc544\ub2cc \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \ube44\ud65c\uc131\ud654\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$courseParticipantTooltip() {
-      return "Tai yra visi \u0161io kurso dalyviai. Spustel\u0117kite bet kurio vartotojo avatar\u0105 ir \u201eprad\u0117ti pokalb\u012f\u201c, kad si\u0173stum\u0117te DM.";
+      return '\uc774\uac83\uc740 \uc774 \uacfc\uc815\uc758 \ubaa8\ub4e0 \uc0ac\ub78c\uc785\ub2c8\ub2e4. \uc0ac\uc6a9\uc790\uc758 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 "\ub300\ud654 \uc2dc\uc791"\uc744 \ud074\ub9ad\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.';
     },
     get$chatParticipantTooltip() {
-      return "Tai visi \u0161ioje pokalbyje. Spustel\u0117kite bet kurio vartotojo avatar\u0105 ir \u201eprad\u0117ti pokalb\u012f\u201c, kad si\u0173stum\u0117te DM.";
+      return "\uc774 \ucc44\ud305\uc758 \ubaa8\ub4e0 \uc0ac\ub78c\uc785\ub2c8\ub2e4. \uc0ac\uc6a9\uc790 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 '\ub300\ud654 \uc2dc\uc791'\uc744 \ud074\ub9ad\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.";
     },
     get$inOngoingActivity() {
-      return "Turite vykdom\u0105 veikl\u0105!";
+      return "\uc9c4\ud589 \uc911\uc778 \ud65c\ub3d9\uc774 \uc788\uc2b5\ub2c8\ub2e4!";
     },
     get$requestRegeneration() {
-      return "Pra\u0161yti regeneracijos";
+      return "\uc7ac\uc0dd \uc694\uccad";
     },
     get$optionalRegenerateReason() {
-      return "(Pasirinktinai) Prie\u017eastis";
+      return "(\uc120\ud0dd \uc0ac\ud56d) \uc774\uc720";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "J\u016bs nustat\u0117te emocij\u0105 " + lemma + "! Mes naudosime \u0161i\u0105 emocij\u0105, kad atstovautume \u017eod\u017eiui praktin\u0117se veiklose ateityje.";
+      return lemma + "\uc5d0 \ub300\ud55c \uc774\ubaa8\uc9c0\ub97c \uc124\uc815\ud588\uc2b5\ub2c8\ub2e4! \uc55e\uc73c\ub85c \uc5f0\uc2b5 \ud65c\ub3d9\uc5d0\uc11c \uc774 \uc774\ubaa8\uc9c0\ub97c \uc0ac\uc6a9\ud558\uc5ec \ub2e8\uc5b4\ub97c \ub098\ud0c0\ub0bc \uac83\uc785\ub2c8\ub2e4.";
     },
     get$constructUseCorLMDesc() {
-      return "Teisinga \u017eodyno apibr\u0117\u017eimo praktika";
+      return "\uc815\ud655\ud55c \uc5b4\ud718 \uc815\uc758 \uc5f0\uc2b5";
     },
     get$constructUseIncLMDesc() {
-      return "Neteisinga \u017eodyno apibr\u0117\u017eimo praktika";
+      return "\ubd80\uc815\ud655\ud55c \uc5b4\ud718 \uc815\uc758 \uc5f0\uc2b5";
     },
     get$constructUseCorLADesc() {
-      return "Teisinga \u017eodyno garso praktika";
+      return "\uc815\ud655\ud55c \uc5b4\ud718 \uc624\ub514\uc624 \uc5f0\uc2b5";
     },
     get$constructUseIncLADesc() {
-      return "Neteisinga \u017eodyno garso praktika";
+      return "\ubd80\uc815\ud655\ud55c \uc5b4\ud718 \uc624\ub514\uc624 \uc5f0\uc2b5";
     },
     get$constructUseBonus() {
-      return "Premija \u017eodyno praktikos metu";
+      return "\uc5b4\ud718 \uc5f0\uc2b5 \uc911 \ubcf4\ub108\uc2a4";
     },
     get$practiceVocab() {
-      return "Praktikuoti \u017eodyn\u0105";
+      return "\uc5b4\ud718 \uc5f0\uc2b5";
     },
     get$selectMeaning() {
-      return "Pasirinkite reik\u0161m\u0119";
+      return "\uc758\ubbf8 \uc120\ud0dd";
     },
     get$anotherRound() {
-      return "Dar viena raundas";
+      return "\ub610 \ub2e4\ub978 \ub77c\uc6b4\ub4dc";
     },
     get$ssoDialogTitle() {
-      return "Laukiama, kol prisijungimas bus baigtas";
+      return "\ub85c\uadf8\uc778 \uc644\ub8cc \ub300\uae30 \uc911";
     },
     get$ssoDialogDesc() {
-      return "Atidar\u0117me nauj\u0105 skirtuk\u0105, kad gal\u0117tum\u0117te saugiai prisijungti.";
+      return "\uc548\uc804\ud558\uac8c \ub85c\uadf8\uc778\ud560 \uc218 \uc788\ub3c4\ub85d \uc0c8 \ud0ed\uc744 \uc5f4\uc5c8\uc2b5\ub2c8\ub2e4.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 Jei nemat\u0117te naujo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
+      return "\ud83e\udd14 \uc0c8 \ud0ed\uc774 \ubcf4\uc774\uc9c0 \uc54a\uc73c\uba74 \ud31d\uc5c5 \ucc28\ub2e8\uae30\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
     get$disableLanguageToolsTitle() {
-      return "I\u0161jungti kalbos \u012frankius";
+      return "\uc5b8\uc5b4 \ub3c4\uad6c \ube44\ud65c\uc131\ud654";
     },
     get$disableLanguageToolsDesc() {
-      return "Ar nor\u0117tum\u0117te i\u0161jungti automatin\u0119 kalbos pagalb\u0105?";
+      return "\uc790\ub3d9 \uc5b8\uc5b4 \uc9c0\uc6d0\uc744 \ube44\ud65c\uc131\ud654\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$recordingPermissionDenied() {
-      return "Leidimas atmestas. \u012egalinkite \u012fra\u0161ymo leidimus, kad gal\u0117tum\u0117te \u012fra\u0161yti garso prane\u0161imus.";
+      return "\uad8c\ud55c\uc774 \uac70\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc624\ub514\uc624 \uba54\uc2dc\uc9c0\ub97c \ub179\uc74c\ud558\ub824\uba74 \ub179\uc74c \uad8c\ud55c\uc744 \ud65c\uc131\ud654\ud558\uc138\uc694.";
     },
     get$genericWebRecordingError() {
-      return "Ka\u017ekas nepavyko. Rekomenduojame naudoti \u201eChrome\u201c nar\u0161ykl\u0119 \u012fra\u0161ant prane\u0161imus.";
+      return "\ubb38\uc81c\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. \uba54\uc2dc\uc9c0\ub97c \ub179\uc74c\ud560 \ub54c Chrome \ube0c\ub77c\uc6b0\uc800\ub97c \uc0ac\uc6a9\ud558\ub294 \uac83\uc774 \uc88b\uc2b5\ub2c8\ub2e4.";
     },
     get$screenSizeWarning() {
-      return "Norint geriausiai naudotis \u0161ia programa, pra\u0161ome padidinti ekrano dyd\u012f.";
+      return "\uc774 \uc560\ud50c\ub9ac\ucf00\uc774\uc158\uc744 \ucd5c\uc0c1\uc758 \uacbd\ud5d8\uc73c\ub85c \uc0ac\uc6a9\ud558\ub824\uba74 \ud654\uba74 \ud06c\uae30\ub97c \ud655\uc7a5\ud574 \uc8fc\uc2ed\uc2dc\uc624.";
     },
     get$noActivityRequest() {
-      return "N\u0117ra dabartinio veiklos pra\u0161ymo.";
+      return "\ud604\uc7ac \ud65c\ub3d9 \uc694\uccad\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.";
     },
     get$quit() {
-      return "I\u0161eiti";
+      return "\uc885\ub8cc";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "Sveikiname! J\u016bs baig\u0117te praktikos sesij\u0105.";
+      return "\ucd95\ud558\ud569\ub2c8\ub2e4! \uc5f0\uc2b5 \uc138\uc158\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "Veiklos, kad atrakintum\u0117te kit\u0105 tem\u0105";
+      return "\ub2e4\uc74c \uc8fc\uc81c\ub97c \uc7a0\uae08 \ud574\uc81c\ud560 \ud65c\ub3d9";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
+      return "\ub2e4\uc74c \uacfc\uc815 \uc8fc\uc81c\ub97c \uc7a0\uae08 \ud574\uc81c\ud560 \ud65c\ub3d9 \uc218\ub97c \uc124\uc815\ud558\uc138\uc694";
     },
     get$activitySettingsOverrideWarning() {
-      return "Kalba ir kalbos lygis nustatomi pagal veiklos plan\u0105";
+      return "\ud65c\ub3d9 \uacc4\ud68d\uc5d0 \uc758\ud574 \uacb0\uc815\ub41c \uc5b8\uc5b4 \ubc0f \uc5b8\uc5b4 \uc218\uc900";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa J\u016bs palikote pokalb\u012f";
+      return "\ud83d\udeaa \ucc44\ud305\uc744 \ub098\uac14\uc2b5\ub2c8\ub2e4";
     },
     get$downloadInitiated() {
-      return "Atsisiuntimas prad\u0117tas";
+      return "\ub2e4\uc6b4\ub85c\ub4dc\uac00 \uc2dc\uc791\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
     },
     get$webDownloadPermissionMessage() {
-      return "Jei j\u016bs\u0173 nar\u0161ykl\u0117 blokuoja atsisiuntimus, pra\u0161ome \u012fgalinti atsisiuntimus \u0161iam tinklalapiui.";
+      return "\ube0c\ub77c\uc6b0\uc800\uac00 \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ucc28\ub2e8\ud558\ub294 \uacbd\uc6b0, \uc774 \uc0ac\uc774\ud2b8\uc5d0 \ub300\ud55c \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ud65c\uc131\ud654\ud574 \uc8fc\uc138\uc694.";
     },
     get$exitPractice() {
-      return "J\u016bs\u0173 praktikos sesijos pa\u017eanga nebus i\u0161saugota.";
+      return "\uc5f0\uc2b5 \uc138\uc158 \uc9c4\ud589 \uc0c1\ud669\uc774 \uc800\uc7a5\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
     },
     get$practiceGrammar() {
-      return "Praktikuoti gramatik\u0105";
+      return "\ubb38\ubc95 \uc5f0\uc2b5";
     },
     get$notEnoughToPractice() {
-      return "Si\u0173skite daugiau \u017einu\u010di\u0173, kad atrakintum\u0117te praktik\u0105";
+      return "\uc5f0\uc2b5\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\ub824\uba74 \ub354 \ub9ce\uc740 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc138\uc694.";
     },
     get$constructUseCorGCDesc() {
-      return "Teisingos gramatikos kategorijos praktika";
+      return "\uc62c\ubc14\ub978 \ubb38\ubc95 \uce74\ud14c\uace0\ub9ac \uc5f0\uc2b5";
     },
     get$constructUseIncGCDesc() {
-      return "Neteisingos gramatikos kategorijos praktika";
+      return "\uc798\ubabb\ub41c \ubb38\ubc95 \uce74\ud14c\uace0\ub9ac \uc5f0\uc2b5";
     },
     get$constructUseCorGEDesc() {
-      return "Teisingos gramatikos klaid\u0173 praktika";
+      return "\ubb38\ubc95 \uc624\ub958 \uc218\uc815 \uc5f0\uc2b5";
     },
     get$constructUseIncGEDesc() {
-      return "Neteisingos gramatikos klaid\u0173 praktika";
+      return "\ubb38\ubc95 \uc624\ub958 \ube44\uc815\uc0c1 \uc5f0\uc2b5";
     },
     get$fillInBlank() {
-      return "U\u017epildykite tu\u0161\u010di\u0105 viet\u0105 teisingu pasirinkimu";
+      return "\uc62c\ubc14\ub978 \uc120\ud0dd\uc73c\ub85c \ube48\uce78\uc744 \ucc44\uc6b0\uc138\uc694";
     },
     get$learn() {
-      return "Mokytis";
+      return "\ubc30\uc6b0\ub2e4";
     },
     get$languageUpdated() {
-      return "Tikslo kalba atnaujinta!";
+      return "\ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc5c5\ub370\uc774\ud2b8\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
     },
     get$voiceDropdownTitle() {
-      return "Pangea Bot balsas";
+      return "\ud310\uac8c\uc544 \ubd07 \uc74c\uc131";
     },
     get$knockDesc() {
-      return "J\u016bs\u0173 pra\u0161ymas buvo i\u0161si\u0173stas kurso administratoriui! B\u016bsite \u012fleistas, jei jie patvirtins.";
+      return "\uadc0\ud558\uc758 \uc694\uccad\uc774 \uacfc\uc815 \uad00\ub9ac\uc790\uc5d0\uac8c \uc804\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4! \uadf8\ub4e4\uc774 \uc2b9\uc778\ud558\uba74 \ub4e4\uc5b4\uac08 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "Ar turite kvietimo kod\u0105 arba nuorod\u0105 \u012f vie\u0161\u0105 kurs\u0105?";
+      return "\uacf5\uac1c \uacfc\uc815\uc5d0 \ub300\ud55c \ucd08\ub300 \ucf54\ub4dc\ub098 \ub9c1\ud06c\uac00 \uc788\uc2b5\ub2c8\uae4c?";
     },
     welcomeUser$1(user) {
-      return "Sveiki atvyk\u0119, " + user;
+      return "\ud658\uc601\ud569\ub2c8\ub2e4 " + user;
     },
     get$findCourse() {
-      return "Rasti kurs\u0105";
+      return "\ucf54\uc2a4 \ucc3e\uae30";
     },
     get$publicInviteDescChat() {
-      return "Ie\u0161kokite vartotoj\u0173, kad juos pakviestum\u0117te \u012f \u0161\u012f pokalb\u012f.";
+      return "\uc774 \ucc44\ud305\uc5d0 \ucd08\ub300\ud560 \uc0ac\uc6a9\uc790\ub97c \uac80\uc0c9\ud558\uc138\uc694.";
     },
     get$publicInviteDescSpace() {
-      return "Ie\u0161kokite vartotoj\u0173, kad juos pakviestum\u0117te \u012f \u0161i\u0105 erdv\u0119.";
+      return "\uc774 \uacf5\uac04\uc5d0 \ucd08\ub300\ud560 \uc0ac\uc6a9\uc790\ub97c \uac80\uc0c9\ud558\uc138\uc694.";
+    },
+    get$enableNotificationsTitle() {
+      return "Pangea Chat\uc740 \ubb38\uc790 \uba54\uc2dc\uc9c0 \uc571\uc774\ubbc0\ub85c \uc54c\ub9bc\uc774 \uc911\uc694\ud569\ub2c8\ub2e4!";
+    },
+    get$enableNotificationsDesc() {
+      return "\uc54c\ub9bc \ud5c8\uc6a9";
     },
     get$useActivityImageAsChatBackground() {
-      return "Naudoti veiklos vaizd\u0105 kaip pokalbio fon\u0105";
+      return "\ud65c\ub3d9 \uc774\ubbf8\uc9c0\ub97c \ucc44\ud305 \ubc30\uacbd\uc73c\ub85c \uc0ac\uc6a9";
     },
     get$chatWithSupport() {
-      return "Pokalbis su palaikymu";
+      return "\uc9c0\uc6d0\ud300\uacfc \ucc44\ud305\ud558\uae30";
     },
     get$newCourseAccess() {
-      return "Pagal numatytuosius nustatymus, kursai yra vie\u0161ai ie\u0161komi ir reikalauja administratoriaus patvirtinimo prisijungti. \u0160iuos nustatymus galite redaguoti bet kada.";
+      return "\uae30\ubcf8\uc801\uc73c\ub85c \uacfc\uc815\uc740 \uacf5\uac1c\uc801\uc73c\ub85c \uac80\uc0c9 \uac00\ub2a5\ud558\uba70 \ucc38\uc5ec\ud558\ub824\uba74 \uad00\ub9ac\uc790 \uc2b9\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4. \uc5b8\uc81c\ub4e0\uc9c0 \uc774\ub7ec\ud55c \uc124\uc815\uc744 \uc218\uc815\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
     get$courseLoadingError() {
-      return "Ka\u017ekas nepavyko, ir mes sunkiai dirbame, kad tai i\u0161spr\u0119stume. Patikrinkite v\u0117liau.";
+      return "\ubb38\uc81c\uac00 \ubc1c\uc0dd\ud588\uc73c\uba70, \uc6b0\ub9ac\ub294 \uc774\ub97c \ud574\uacb0\ud558\uae30 \uc704\ud574 \uc5f4\uc2ec\ud788 \uc791\uc5c5\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \ub098\uc911\uc5d0 \ub2e4\uc2dc \ud655\uc778\ud574 \uc8fc\uc138\uc694.";
     },
     get$onboardingLanguagesTitle() {
-      return "Koki\u0105 kalb\u0105 mokot\u0117s?";
+      return "\uc5b4\ub5a4 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uace0 \uc788\ub098\uc694?";
     },
     get$searchLanguagesHint() {
-      return "Ie\u0161koti tikslo kalb\u0173";
+      return "\ubaa9\ud45c \uc5b8\uc5b4 \uac80\uc0c9";
     },
     get$supportSubtitle() {
-      return "Klausimai? Mes \u010dia, kad pad\u0117tume!";
+      return "\uc9c8\ubb38\uc774 \uc788\uc73c\uc2e0\uac00\uc694? \uc800\ud76c\uac00 \ub3c4\uc640\ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4!";
     },
     get$autoIGCToolName() {
-      return "\u012egalinti ra\u0161ymo pagalb\u0105";
+      return "\uc4f0\uae30 \uc9c0\uc6d0 \ud65c\uc131\ud654";
     },
     get$autoIGCToolDescription() {
-      return "Automati\u0161kai paleisti Pangea Chat \u012frankius, kad i\u0161taisytum\u0117te i\u0161si\u0173stas \u017einutes \u012f tikslin\u0119 kalb\u0105.";
+      return "\uc804\uc1a1\ub41c \uba54\uc2dc\uc9c0\ub97c \ubaa9\ud45c \uc5b8\uc5b4\ub85c \uc218\uc815\ud558\uae30 \uc704\ud574 Pangea Chat \ub3c4\uad6c\ub97c \uc790\ub3d9\uc73c\ub85c \uc2e4\ud589\ud569\ub2c8\ub2e4.";
     },
     get$emptyAudioError() {
-      return "\u012era\u0161ymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kart\u0105.";
+      return "\ub179\uc74c\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc624\ub514\uc624 \uad8c\ud55c\uc744 \ud655\uc778\ud558\uace0 \ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc138\uc694.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5360,16 +5366,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nLt, C.L10n);
+    _inherit(A.L10nKo, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nLt":{"L10n":[]}}'));
-  var string$ = {
-    Pra_om: "Pra\u0161ome \u012fvesti galiojant\u012f el. pa\u0161to adres\u0105."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKo":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["GH2s5wWmExgXY144qhREHjywqXY="] = d.current;
+  d["BEawuWVUafyoh/qtP2i+R/v1VBs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_718.part.js.map
