@@ -11884,6 +11884,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat é uma aplicação de mensagens, por isso as notificações são importantes!",
+  "enableNotificationsDesc": "Permitir notificações",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
   "@useActivityImageAsChatBackground": {
     "type": "String",

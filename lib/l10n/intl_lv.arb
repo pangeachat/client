@@ -10896,6 +10896,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat ir ziņojumapmaiņas lietotne, tāpēc paziņojumi ir svarīgi!",
+  "enableNotificationsDesc": "Atļaut paziņojumus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
   "@useActivityImageAsChatBackground": {
     "type": "String",

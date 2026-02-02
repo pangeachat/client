@@ -10908,6 +10908,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Is aip téacsála í Pangea Chat mar sin tá fógraí tábhachtach!",
+  "enableNotificationsDesc": "Cuir fógraí ar cead",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
   "@useActivityImageAsChatBackground": {
     "type": "String",

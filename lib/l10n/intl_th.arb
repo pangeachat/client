@@ -11968,6 +11968,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat เป็นแอปส่งข้อความ ดังนั้นการแจ้งเตือนจึงสำคัญ!",
+  "enableNotificationsDesc": "อนุญาตการแจ้งเตือน",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
   "@useActivityImageAsChatBackground": {
     "type": "String",

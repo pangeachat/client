@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:matrix/matrix.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -44,6 +46,9 @@ extension LocalNotificationsExtension on MatrixState {
     );
 
     if (kIsWeb) {
+      // #Pangea
+      if (html.Notification.permission != 'granted') return;
+      // Pangea#
       final avatarUrl = event.senderFromMemoryOrFallback.avatarUrl;
       Uri? thumbnailUri;
 
@@ -122,6 +127,43 @@ extension LocalNotificationsExtension on MatrixState {
       linuxNotificationIds[roomId] = notification.id;
     }
   }
+
+  // #Pangea
+  Future<bool> get notificationsEnabled {
+    return kIsWeb
+        ? Future.value(html.Notification.permission == 'granted')
+        : Permission.notification.isGranted;
+  }
+
+  Future<void> requestNotificationPermission() async {
+    try {
+      if (kIsWeb) {
+        await html.Notification.requestPermission();
+      } else {
+        final status = await Permission.notification.request();
+        if (status.isGranted) {
+          // Notification permissions granted
+        } else if (status.isDenied) {
+          // Notification permissions denied
+        } else if (status.isPermanentlyDenied) {
+          // Notification permissions permanently denied, open app settings
+          await openAppSettings();
+        }
+      }
+
+      notifPermissionNotifier.value = notifPermissionNotifier.value + 1;
+    } catch (e, s) {
+      final permission = await notificationsEnabled;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'permission': permission,
+        },
+      );
+    }
+  }
+  // Pangea#
 }
 
 enum DesktopNotificationActions { seen, openChat }

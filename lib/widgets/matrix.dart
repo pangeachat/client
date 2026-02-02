@@ -85,6 +85,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   bool? loginRegistrationSupported;
 
   BackgroundPush? backgroundPush;
+  // #Pangea
+  ValueNotifier<int> notifPermissionNotifier = ValueNotifier(0);
+  // Pangea#
 
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
@@ -196,7 +199,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .stream
               .where((l) => l == LoginState.loggedIn)
               .first
-              .then((_) {
+              .then((_) async {
             // #Pangea
             MatrixState.pangeaController.handleLoginStateChange(
               LoginState.loggedIn,
@@ -213,7 +216,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
             _registerSubs(_loginClientCandidate!.clientName);
             _loginClientCandidate = null;
-            FluffyChatApp.router.go('/rooms');
+            // #Pangea
+            // FluffyChatApp.router.go('/rooms');
+            final isL2Set = await pangeaController.userController.isUserL2Set;
+            FluffyChatApp.router.go(
+              isL2Set ? '/rooms' : '/registration/create',
+            );
+            // Pangea#
           });
     // #Pangea
     candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
@@ -636,6 +645,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     _languageListener?.cancel();
     _uriListener?.cancel();
+    notifPermissionNotifier.dispose();
     // Pangea#
 
     super.dispose();

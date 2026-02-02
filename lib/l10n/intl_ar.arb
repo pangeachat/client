@@ -11127,6 +11127,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "بانجيا شات هو تطبيق رسائل لذا فإن الإشعارات مهمة!",
+  "enableNotificationsDesc": "السماح بالإشعارات",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
   "@useActivityImageAsChatBackground": {
     "type": "String",

@@ -11995,6 +11995,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea चैट एक टेक्स्टिंग ऐप है इसलिए सूचनाएँ महत्वपूर्ण हैं!",
+  "enableNotificationsDesc": "सूचनाएँ अनुमति दें",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
   "@useActivityImageAsChatBackground": {
     "type": "String",

@@ -10911,6 +10911,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "A Pangea Chat egy üzenetküldő alkalmazás, így a értesítések fontosak!",
+  "enableNotificationsDesc": "Értesítések engedélyezése",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
   "@useActivityImageAsChatBackground": {
     "type": "String",

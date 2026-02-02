@@ -11886,6 +11886,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Ang Pangea Chat ay isang texting app kaya't mahalaga ang mga notification!",
+  "enableNotificationsDesc": "Pahintulutan ang mga notification",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
   "@useActivityImageAsChatBackground": {
     "type": "String",

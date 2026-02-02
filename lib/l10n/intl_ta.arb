@@ -11134,6 +11134,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "பாஙேஆ சாட் என்பது ஒரு செய்தி அனுப்பும் செயலி ஆகும், எனவே அறிவிப்புகள் முக்கியமானவை!",
+  "enableNotificationsDesc": "அறிவிப்புகளை அனுமதிக்கவும்",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "செயல்பாட்டு படத்தை உரையாடல் பின்னணி ஆக பயன்படுத்தவும்",
   "@useActivityImageAsChatBackground": {
     "type": "String",

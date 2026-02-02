@@ -10901,6 +10901,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat 是一款短信应用，因此通知非常重要！",
+  "enableNotificationsDesc": "允许通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
   "@useActivityImageAsChatBackground": {
     "type": "String",

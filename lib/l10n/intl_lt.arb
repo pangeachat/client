@@ -11715,6 +11715,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat yra žinučių programa, todėl pranešimai yra svarbūs!",
+  "enableNotificationsDesc": "Leisti pranešimus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
   "@useActivityImageAsChatBackground": {
     "type": "String",

@@ -12014,6 +12014,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "প্যাঙ্গিয়া চ্যাট একটি টেক্সটিং অ্যাপ, তাই নোটিফিকেশন গুরুত্বপূর্ণ!",
+  "enableNotificationsDesc": "নোটিফিকেশন অনুমোদন করুন",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে কার্যকলাপের ছবি ব্যবহার করুন",
   "@useActivityImageAsChatBackground": {
     "type": "String",

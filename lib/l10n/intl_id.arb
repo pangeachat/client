@@ -10901,6 +10901,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
+  "enableNotificationsDesc": "Izinkan notifikasi",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
   "@useActivityImageAsChatBackground": {
     "type": "String",

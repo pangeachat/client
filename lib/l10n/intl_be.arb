@@ -12009,6 +12009,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat - гэта прыкладанне для адпраўкі паведамленняў, таму апавяшчэнні важныя!",
+  "enableNotificationsDesc": "Дазволіць апавяшчэнні",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Выкарыстоўвайце малюнак актыўнасці як фон чата",
   "@useActivityImageAsChatBackground": {
     "type": "String",
