@@ -3732,8 +3732,6 @@
   "noPaymentInfo": "ไม่จำเป็นต้องมีข้อมูลการชำระเงิน!",
   "updatePhoneOS": "คุณอาจจำเป็นต้องอัปเดตเวอร์ชันระบบปฏิบัติการของอุปกรณ์ของคุณ",
   "wordsPerMinute": "คำต่อนาที",
-  "autoIGCToolName": "เรียกใช้เครื่องมือช่วยเขียน Pangea อัตโนมัติ",
-  "autoIGCToolDescription": "เรียกใช้การช่วยเขียนไวยากรณ์และการแปลของ Pangea Chat อัตโนมัติก่อนส่งข้อความของฉัน",
   "tooltipInstructionsTitle": "ไม่แน่ใจว่าสิ่งนั้นทำอะไร?",
   "tooltipInstructionsMobileBody": "กดค้างไว้เพื่อดูคำแนะนำเครื่องมือ",
   "tooltipInstructionsBrowserBody": "วางเมาส์เหนือรายการเพื่อดูคำแนะนำเครื่องมือ",
@@ -4361,7 +4359,6 @@
   "numModules": "{num} โมดูล",
   "coursePlan": "แผนหลักสูตร",
   "editCourseLater": "คุณสามารถแก้ไขชื่อเทมเพลต คำอธิบาย และภาพหลักสูตรในภายหลัง",
-  "newCourseAccess": "โดยค่าเริ่มต้น หลักสูตรเป็นส่วนตัวและต้องได้รับการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ทุกเมื่อ",
   "createCourse": "สร้างหลักสูตร",
   "stats": "สถิติ",
   "createGroupChat": "สร้างกลุ่มแชท",
@@ -4456,7 +4453,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-22 09:36:51.239616",
+  "@@last_modified": "2026-01-29 15:24:55.978319",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7264,14 +7261,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9890,10 +9879,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11972,5 +11957,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "ค้นหาผู้ใช้เพื่อนำไปเชิญเข้าร่วมแชทนี้。",
+  "publicInviteDescSpace": "ค้นหาผู้ใช้เพื่อนำไปเชิญเข้าร่วมพื้นที่นี้。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat เป็นแอปส่งข้อความ ดังนั้นการแจ้งเตือนจึงสำคัญ!",
+  "enableNotificationsDesc": "อนุญาตการแจ้งเตือน",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "แชทกับฝ่ายสนับสนุน",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ตามค่าเริ่มต้น หลักสูตรจะสามารถค้นหาได้สาธารณะและต้องการการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ตลอดเวลา",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "คุณกำลังเรียนภาษาอะไรอยู่?",
+  "searchLanguagesHint": "ค้นหาภาษาที่ต้องการ",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "มีคำถามไหม? เราพร้อมที่จะช่วยเหลือ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "มีบางอย่างผิดพลาด และเรากำลังทำงานอย่างหนักเพื่อแก้ไข ตรวจสอบอีกครั้งในภายหลัง.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "เปิดใช้งานความช่วยเหลือในการเขียน",
+  "autoIGCToolDescription": "เรียกใช้เครื่องมือ Pangea Chat โดยอัตโนมัติเพื่อแก้ไขข้อความที่ส่งไปยังภาษาที่ต้องการ.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "การบันทึกล้มเหลว โปรดตรวจสอบสิทธิ์เสียงของคุณและลองอีกครั้ง",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

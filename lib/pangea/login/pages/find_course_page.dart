@@ -204,6 +204,15 @@ class FindCoursePageState extends State<FindCoursePage> {
     }
   }
 
+  void startNewCourse() {
+    String route = "/rooms/course/own";
+    if (targetLanguageFilter != null) {
+      route +=
+          "?lang=${Uri.encodeComponent(targetLanguageFilter!.langCodeShort)}";
+    }
+    context.go(route);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FindCoursePageView(controller: this);
@@ -283,6 +292,7 @@ class FindCoursePageView extends StatelessWidget {
                       ),
                       if (constrained.maxWidth >= 500) ...[
                         TextButton(
+                          onPressed: controller.startNewCourse,
                           child: Row(
                             spacing: 8.0,
                             children: [
@@ -290,7 +300,6 @@ class FindCoursePageView extends StatelessWidget {
                               Text(L10n.of(context).newCourse),
                             ],
                           ),
-                          onPressed: () => context.go("/rooms/course/own"),
                         ),
                         TextButton(
                           child: Row(
@@ -307,7 +316,7 @@ class FindCoursePageView extends StatelessWidget {
                           icon: const Icon(Icons.more_vert),
                           itemBuilder: (context) => [
                             PopupMenuItem(
-                              onTap: () => context.go("/rooms/course/own"),
+                              onTap: controller.startNewCourse,
                               child: Row(
                                 spacing: 8.0,
                                 children: [
@@ -382,6 +391,14 @@ class _PublicCourseTile extends StatelessWidget {
     this.course,
   });
 
+  void _navigateToCoursePage(
+    BuildContext context,
+  ) {
+    context.go(
+      '/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -402,10 +419,7 @@ class _PublicCourseTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => context.go(
-            '/rooms/course/public/$courseId',
-            extra: space,
-          ),
+          onTap: () => _navigateToCoursePage(context),
           borderRadius: BorderRadius.circular(12.0),
           child: Container(
             padding: const EdgeInsets.all(12.0),
@@ -424,7 +438,7 @@ class _PublicCourseTile extends StatelessWidget {
                   spacing: 8.0,
                   children: [
                     ImageByUrl(
-                      imageUrl: space.avatarUrl?.toString(),
+                      imageUrl: space.avatarUrl,
                       width: 58.0,
                       borderRadius: BorderRadius.circular(10.0),
                       replacement: Avatar(
@@ -481,10 +495,7 @@ class _PublicCourseTile extends StatelessWidget {
                 const SizedBox(height: 12.0),
                 HoverBuilder(
                   builder: (context, hovered) => ElevatedButton(
-                    onPressed: () => context.go(
-                      '/rooms/course/public/$courseId',
-                      extra: space,
-                    ),
+                    onPressed: () => _navigateToCoursePage(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           theme.colorScheme.primaryContainer.withAlpha(

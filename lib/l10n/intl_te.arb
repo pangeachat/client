@@ -1196,8 +1196,6 @@
   "noPaymentInfo": "చెల్లింపు సమాచారం అవసరం లేదు!",
   "updatePhoneOS": "మీ డివైస్ యొక్క OS వెర్షన్‌ను నవీకరించాల్సి ఉండవచ్చు.",
   "wordsPerMinute": "నిమిషానికి పదాలు",
-  "autoIGCToolName": "పాంజియా రాయడం సహాయాన్ని స్వయంచాలకంగా నడపండి",
-  "autoIGCToolDescription": "నా సందేశాన్ని పంపేముందు స్వయంచాలకంగా పాంజియా చాట్ వ్యాకరణం మరియు అనువాద రాయడం సహాయాన్ని నడపండి.",
   "tooltipInstructionsTitle": "అది ఏమిటో తెలియదా?",
   "tooltipInstructionsMobileBody": "టూల్‌టిప్‌లను చూడటానికి అంశాలను నొక్కి ఉంచండి.",
   "tooltipInstructionsBrowserBody": "టూల్‌టిప్‌లను చూడటానికి అంశాలపై హోవర్ చేయండి.",
@@ -1825,7 +1823,6 @@
   "numModules": "{num} మాడ్యూల్స్",
   "coursePlan": "కోర్సు ప్రణాళిక",
   "editCourseLater": "మీరు టెంప్లేట్ శీర్షిక, వివరణలు, మరియు కోర్సు చిత్రాన్ని తర్వాత సవరించవచ్చు.",
-  "newCourseAccess": "డిఫాల్ట్‌గా, కోర్సులు ప్రైవేట్‌గా ఉంటాయి మరియు చేరడానికి అడ్మిన్ ఆమోదం అవసరం. మీరు ఈ సెట్టింగులను ఎప్పుడైనా సవరించవచ్చు.",
   "createCourse": "కోర్సు సృష్టించండి",
   "stats": "గణాంకాలు",
   "createGroupChat": "గుంపు చాట్ సృష్టించండి",
@@ -1920,7 +1917,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-22 09:37:01.069487",
+  "@@last_modified": "2026-01-29 15:25:03.384353",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -7298,14 +7295,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9921,10 +9910,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -12003,5 +11988,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "ఈ చాట్లో ఆహ్వానించడానికి వినియోగదారులను శోధించండి.",
+  "publicInviteDescSpace": "ఈ స్థలంలో ఆహ్వానించడానికి వినియోగదారులను శోధించండి.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "పాంజియా చాట్ ఒక సందేశం యాప్ కాబట్టి నోటిఫికేషన్లు ముఖ్యమైనవి!",
+  "enableNotificationsDesc": "నోటిఫికేషన్లను అనుమతించండి",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "సహాయంతో చాట్ చేయండి",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "డిఫాల్ట్‌గా, కోర్సులు ప్రజా శోధనకు అందుబాటులో ఉంటాయి మరియు చేరడానికి అడ్మిన్ ఆమోదం అవసరం. మీరు ఈ సెట్టింగులను ఎప్పుడైనా సవరించవచ్చు.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "మీరు ఏ భాష నేర్చుకుంటున్నారు?",
+  "searchLanguagesHint": "లక్ష్య భాషలను శోధించండి",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "ప్రశ్నలు? మేము మీకు సహాయం చేయడానికి ఇక్కడ ఉన్నాము!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "ఏదో తప్పు జరిగింది, మరియు మేము దీన్ని సరిదిద్దడానికి కష్టపడుతున్నాము. తర్వాత మళ్లీ తనిఖీ చేయండి.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "రాయడం సహాయాన్ని ప్రారంభించండి",
+  "autoIGCToolDescription": "సమర్పించిన సందేశాలను లక్ష్య భాషకు సరిదిద్దడానికి పాంజియా చాట్ సాధనాలను ఆటోమేటిక్‌గా నడపండి.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "రికార్డింగ్ విఫలమైంది. దయచేసి మీ ఆడియో అనుమతులను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

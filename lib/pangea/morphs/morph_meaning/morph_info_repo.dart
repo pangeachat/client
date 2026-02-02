@@ -52,7 +52,7 @@ class MorphInfoRepo {
     final future = _safeFetch(accessToken, request);
 
     // 4. Save to in-memory cache
-    _cache[request.hashCode.toString()] = _MorphInfoCacheItem(
+    _cache[request.storageKey] = _MorphInfoCacheItem(
       resultFuture: future,
       timestamp: DateTime.now(),
     );
@@ -67,7 +67,7 @@ class MorphInfoRepo {
     MorphInfoRequest request,
     MorphInfoResponse resultFuture,
   ) async {
-    final key = request.hashCode.toString();
+    final key = request.storageKey;
     try {
       await _storage.write(key, resultFuture.toJson());
       _cache.remove(key); // Invalidate in-memory cache
@@ -149,7 +149,7 @@ class MorphInfoRepo {
     MorphInfoRequest request,
   ) {
     final now = DateTime.now();
-    final key = request.hashCode.toString();
+    final key = request.storageKey;
 
     // Remove stale entries first
     _cache.removeWhere(
@@ -173,7 +173,7 @@ class MorphInfoRepo {
   static MorphInfoResponse? _getStored(
     MorphInfoRequest request,
   ) {
-    final key = request.hashCode.toString();
+    final key = request.storageKey;
     try {
       final entry = _storage.read(key);
       if (entry == null) return null;

@@ -15,9 +15,11 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
@@ -214,6 +216,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.translate) {
+      if (!InstructionsEnum.shimmerTranslation.isToggledOff) {
+        InstructionsEnum.shimmerTranslation.setToggledOff(true);
+      }
       await controller.fetchTranslation();
     }
 
@@ -412,38 +417,43 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
-                        opacity: enabled ? 1.0 : 0.5,
+                        opacity: enabled ? 1.0 : 0.75,
                         child: PressableButton(
                           borderRadius: BorderRadius.circular(20),
                           depressed: mode == selectedMode || !enabled,
-                          color: enabled
-                              ? theme.colorScheme.primaryContainer
-                              : theme.disabledColor,
+                          color: theme.colorScheme.primaryContainer,
                           onPressed:
                               enabled ? () => updateMode(mode) : modeDisabled,
                           playSound: enabled && mode != SelectMode.audio,
                           colorFactor:
                               theme.brightness == Brightness.light ? 0.55 : 0.3,
                           builder: (context, depressed, shadowColor) =>
-                              AnimatedContainer(
-                            duration: FluffyThemes.animationDuration,
-                            height: buttonSize,
-                            width: buttonSize,
-                            decoration: BoxDecoration(
-                              color: depressed
-                                  ? shadowColor
-                                  : theme.colorScheme.primaryContainer,
-                              shape: BoxShape.circle,
-                            ),
-                            child: ValueListenableBuilder(
-                              valueListenable: _isPlayingNotifier,
-                              builder: (context, playing, __) =>
-                                  _SelectModeButtonIcon(
-                                mode: mode,
-                                loading: controller.isLoading &&
-                                    mode == selectedMode,
-                                playing: mode == SelectMode.audio && playing,
-                                color: theme.colorScheme.onPrimaryContainer,
+                              ShimmerBackground(
+                            enabled: !InstructionsEnum
+                                    .shimmerTranslation.isToggledOff &&
+                                mode == SelectMode.translate &&
+                                enabled,
+                            borderRadius: BorderRadius.circular(100),
+                            child: AnimatedContainer(
+                              duration: FluffyThemes.animationDuration,
+                              height: buttonSize,
+                              width: buttonSize,
+                              decoration: BoxDecoration(
+                                color: depressed
+                                    ? shadowColor
+                                    : theme.colorScheme.primaryContainer,
+                                shape: BoxShape.circle,
+                              ),
+                              child: ValueListenableBuilder(
+                                valueListenable: _isPlayingNotifier,
+                                builder: (context, playing, __) =>
+                                    _SelectModeButtonIcon(
+                                  mode: mode,
+                                  loading: controller.isLoading &&
+                                      mode == selectedMode,
+                                  playing: mode == SelectMode.audio && playing,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                ),
                               ),
                             ),
                           ),

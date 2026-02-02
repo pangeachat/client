@@ -154,14 +154,14 @@ class SelectModeController with LemmaEmojiSetter {
     }
 
     List<SelectMode> modes = [];
-    if (messageEvent.event.messageType == MessageTypes.Text) {
-      final lang = messageEvent.messageDisplayLangCode.split("-").first;
+    final lang = messageEvent.messageDisplayLangCode.split("-").first;
 
+    final matchesL1 = lang ==
+        MatrixState.pangeaController.userController.userL1!.langCodeShort;
+
+    if (messageEvent.event.messageType == MessageTypes.Text) {
       final matchesL2 = lang ==
           MatrixState.pangeaController.userController.userL2!.langCodeShort;
-
-      final matchesL1 = lang ==
-          MatrixState.pangeaController.userController.userL1!.langCodeShort;
 
       modes = matchesL2
           ? _textModes
@@ -169,7 +169,7 @@ class SelectModeController with LemmaEmojiSetter {
               ? []
               : [SelectMode.translate];
     } else {
-      modes = _audioModes;
+      modes = matchesL1 ? [] : _audioModes;
     }
 
     if (enableRefresh) {

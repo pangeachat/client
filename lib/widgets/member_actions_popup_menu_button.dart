@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -106,15 +108,15 @@ void showMemberActionsPopupMenu({
           ],
         ),
       ),
-      // if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
-      //   PopupMenuItem(
-      //     enabled: false,
-      //     padding: const EdgeInsets.only(
-      //       left: 12.0,
-      //       right: 12.0,
-      //     ),
-      //     child: BotChatSettingsDialog(room: room),
-      //   ),
+      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
+        PopupMenuItem(
+          enabled: false,
+          padding: const EdgeInsets.only(
+            left: 12.0,
+            right: 12.0,
+          ),
+          child: BotChatSettingsDialog(room: room),
+        ),
       const PopupMenuDivider(),
       // #Pangea
       if (user.room.client.userID != user.id)

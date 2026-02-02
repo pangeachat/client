@@ -1,10 +1,13 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -31,7 +34,8 @@ class AnalyticsPracticeSessionRepo {
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
     final types = List.generate(
-      AnalyticsPracticeConstants.practiceGroupSize,
+      AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize,
       (_) => activityTypes[r.nextInt(activityTypes.length)],
     );
 
@@ -52,11 +56,13 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
-
-      if (targets.length < AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length <
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         final morphs = await _fetchMorphs();
-        final remainingCount =
-            AnalyticsPracticeConstants.practiceGroupSize - targets.length;
+        final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize) -
+            targets.length;
         final morphEntries = morphs.entries.take(remainingCount);
 
         for (final entry in morphEntries) {
@@ -64,7 +70,7 @@ class AnalyticsPracticeSessionRepo {
             AnalyticsActivityTarget(
               target: PracticeTarget(
                 tokens: [entry.key],
-                activityType: types[targets.length],
+                activityType: ActivityTypeEnum.grammarCategory,
                 morphFeature: entry.value,
               ),
             ),
@@ -110,7 +116,9 @@ class AnalyticsPracticeSessionRepo {
       if (seemLemmas.contains(construct.lemma)) continue;
       seemLemmas.add(construct.lemma);
       targets.add(construct.id);
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
     }
@@ -137,7 +145,9 @@ class AnalyticsPracticeSessionRepo {
     final Set<String> seenForms = {};
 
     for (final entry in constructs) {
-      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
         break;
       }
 
@@ -147,7 +157,9 @@ class AnalyticsPracticeSessionRepo {
       }
 
       for (final use in entry.cappedUses) {
-        if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+        if (targets.length >=
+            (AnalyticsPracticeConstants.practiceGroupSize +
+                AnalyticsPracticeConstants.errorBufferSize)) {
           break;
         }
 
@@ -237,24 +249,52 @@ class AnalyticsPracticeSessionRepo {
       for (int i = 0; i < choreo.choreoSteps.length; i++) {
         final step = choreo.choreoSteps[i];
         final igcMatch = step.acceptedOrIgnoredMatch;
+        final stepText = choreo.stepText(stepIndex: i - 1);
         if (igcMatch?.isGrammarMatch != true ||
             igcMatch?.match.bestChoice == null) {
           continue;
         }
 
-        final choices = igcMatch!.match.choices!.map((c) => c.value).toList();
-        final choiceTokens = tokens.where(
-          (token) =>
-              token.lemma.saveVocab &&
-              choices.any(
-                (choice) => choice.contains(token.text.content),
-              ),
-        );
+        if (igcMatch!.match.offset == 0 &&
+            igcMatch.match.length >= stepText.trim().characters.length) {
+          // Skip if the grammar error spans the entire step
+          continue;
+        }
 
+        final choices = igcMatch.match.choices!.map((c) => c.value).toList();
+        final choiceTokens = tokens
+            .where(
+              (token) =>
+                  token.lemma.saveVocab &&
+                  choices.any(
+                    (choice) => choice.contains(token.text.content),
+                  ),
+            )
+            .toList();
+
+        // Skip if no valid tokens found for this grammar error
+        if (choiceTokens.isEmpty) continue;
+
+        String? translation;
+        try {
+          translation = await event.requestRespresentationByL1();
+        } catch (e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {
+              'context': 'AnalyticsPracticeSessionRepo._fetchErrors',
+              'message': 'Failed to fetch translation for analytics practice',
+              'event_id': event.eventId,
+            },
+          );
+        }
+
+        if (translation == null) continue;
         targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
-              tokens: choiceTokens.toList(),
+              tokens: choiceTokens,
               activityType: ActivityTypeEnum.grammarError,
               morphFeature: null,
             ),
@@ -262,6 +302,7 @@ class AnalyticsPracticeSessionRepo {
               choreo: choreo,
               stepIndex: i,
               eventID: event.eventId,
+              translation: translation,
             ),
           ),
         );

@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/src/utils/markdown.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
@@ -35,6 +36,8 @@ class ActivitySummary extends StatelessWidget {
 
   final ValueNotifier<Set<String>>? usedVocab;
 
+  final bool inChat;
+
   const ActivitySummary({
     super.key,
     required this.activity,
@@ -49,6 +52,7 @@ class ActivitySummary extends StatelessWidget {
     this.getParticipantOpacity,
     this.room,
     this.course,
+    this.inChat = false,
   });
 
   @override
@@ -63,18 +67,20 @@ class ActivitySummary extends StatelessWidget {
         child: Column(
           spacing: 4.0,
           children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return ImageByUrl(
-                  imageUrl: activity.imageURL,
-                  width: min(
-                    constraints.maxWidth,
-                    MediaQuery.sizeOf(context).height * 0.5,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                );
-              },
-            ),
+            (!inChat || !AppConfig.useActivityImageAsChatBackground)
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      return ImageByUrl(
+                        imageUrl: activity.imageURL,
+                        width: min(
+                          constraints.maxWidth,
+                          MediaQuery.sizeOf(context).height * 0.5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      );
+                    },
+                  )
+                : const SizedBox.shrink(),
             ActivityParticipantList(
               activity: activity,
               room: room,
@@ -91,17 +97,15 @@ class ActivitySummary extends StatelessWidget {
                 color: theme.colorScheme.surface.withAlpha(128),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                ),
-                child: Column(
-                  spacing: 4.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      hoverColor: theme.colorScheme.surfaceTint.withAlpha(55),
-                      onTap: toggleInstructions,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  InkWell(
+                    borderRadius: BorderRadius.circular(12.0),
+                    hoverColor: theme.colorScheme.surfaceTint.withAlpha(55),
+                    onTap: toggleInstructions,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         spacing: 4.0,
                         children: [
@@ -133,69 +137,75 @@ class ActivitySummary extends StatelessWidget {
                         ],
                       ),
                     ),
-                    if (showInstructions) ...[
-                      Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
+                  ),
+                  if (showInstructions)
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
                         children: [
-                          Text(
-                            activity.req.mode,
-                            style: theme.textTheme.bodyMedium,
-                          ),
                           Row(
-                            spacing: 4.0,
+                            spacing: 8.0,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.school, size: 12.0),
                               Text(
-                                activity.req.cefrLevel.string,
+                                activity.req.mode,
                                 style: theme.textTheme.bodyMedium,
+                              ),
+                              Row(
+                                spacing: 4.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.school, size: 12.0),
+                                  Text(
+                                    activity.req.cefrLevel.string,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.target,
+                            iconSize: 16.0,
+                            child: Text(
+                              activity.learningObjective,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ),
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.steps,
+                            iconSize: 16.0,
+                            child: Html(
+                              data: markdown(activity.instructions),
+                              style: {
+                                "body": Style(
+                                  margin: Margins.all(0),
+                                  padding: HtmlPaddings.all(0),
+                                  fontSize: FontSize(
+                                    theme.textTheme.bodyMedium!.fontSize!,
+                                  ),
+                                ),
+                              },
+                            ),
+                          ),
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.dictionary,
+                            iconSize: 16.0,
+                            child: ActivityVocabWidget(
+                              key: ValueKey(
+                                "activity-summary-${activity.activityId}",
+                              ),
+                              vocab: activity.vocab,
+                              langCode: activity.req.targetLanguage,
+                              targetId: "activity-summary-vocab",
+                              usedVocab: usedVocab,
+                              activityLangCode: activity.req.targetLanguage,
+                            ),
+                          ),
                         ],
                       ),
-                      ActivitySessionDetailsRow(
-                        icon: Symbols.target,
-                        iconSize: 16.0,
-                        child: Text(
-                          activity.learningObjective,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ),
-                      ActivitySessionDetailsRow(
-                        icon: Symbols.steps,
-                        iconSize: 16.0,
-                        child: Html(
-                          data: markdown(activity.instructions),
-                          style: {
-                            "body": Style(
-                              margin: Margins.all(0),
-                              padding: HtmlPaddings.all(0),
-                              fontSize: FontSize(
-                                theme.textTheme.bodyMedium!.fontSize!,
-                              ),
-                            ),
-                          },
-                        ),
-                      ),
-                      ActivitySessionDetailsRow(
-                        icon: Symbols.dictionary,
-                        iconSize: 16.0,
-                        child: ActivityVocabWidget(
-                          key: ValueKey(
-                            "activity-summary-${activity.activityId}",
-                          ),
-                          vocab: activity.vocab,
-                          langCode: activity.req.targetLanguage,
-                          targetId: "activity-summary-vocab",
-                          usedVocab: usedVocab,
-                          activityLangCode: activity.req.targetLanguage,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
+                    ),
+                ],
               ),
             ),
           ],

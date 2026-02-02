@@ -29,7 +29,7 @@ class AnchoredOverlayWidget extends StatefulWidget {
 class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
   bool _visible = false;
 
-  static const double overlayWidth = 200.0;
+  static const double overlayWidth = 300.0;
 
   @override
   void initState() {
@@ -79,7 +79,7 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
                 child: CustomPaint(
                   painter: CutoutBackgroundPainter(
                     holeRect: widget.anchorRect,
-                    backgroundColor: Colors.black54,
+                    backgroundColor: Colors.black.withAlpha(180),
                     borderRadius: widget.borderRadius ?? 0.0,
                     padding: widget.padding ?? 6.0,
                   ),

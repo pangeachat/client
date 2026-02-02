@@ -510,33 +510,36 @@ class _RequestButton extends StatelessWidget {
       cursor: status.enabled ? SystemMouseCursors.click : MouseCursor.defer,
       child: GestureDetector(
         onTap: status.enabled ? onPressed : null,
-        child: Opacity(
-          opacity: status.enabled ? 0.9 : 0.3,
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: mini ? 4.0 : 8.0,
-              vertical: 4.0,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: status.backgroundColor(context),
-            ),
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Row(
-                spacing: mini ? 2.0 : 8.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (status.icon != null)
-                    Icon(
-                      status.icon,
-                      size: !mini ? 12.0 : 8.0,
+        child: Tooltip(
+          message: status.label(context),
+          child: Opacity(
+            opacity: status.enabled ? 0.9 : 0.3,
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: mini ? 4.0 : 8.0,
+                vertical: 4.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: status.backgroundColor(context),
+              ),
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Row(
+                  spacing: mini ? 2.0 : 8.0,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (status.icon != null)
+                      Icon(
+                        status.icon,
+                        size: !mini ? 12.0 : 8.0,
+                      ),
+                    Text(
+                      status.label(context),
+                      style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
                     ),
-                  Text(
-                    status.label(context),
-                    style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

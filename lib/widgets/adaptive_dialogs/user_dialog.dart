@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -12,7 +11,6 @@ import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
-import '../../utils/url_launcher.dart';
 import '../future_loading_dialog.dart';
 import '../hover_builder.dart';
 import '../matrix.dart';
@@ -60,7 +58,9 @@ class UserDialog extends StatelessWidget {
           client: Matrix.of(context).client,
           builder: (context, presence) {
             if (presence == null) return const SizedBox.shrink();
-            final statusMsg = presence.statusMsg;
+            // #Pangea
+            // final statusMsg = presence.statusMsg;
+            // Pangea#
             final lastActiveTimestamp = presence.lastActiveTimestamp;
             final presenceText = presence.currentlyActive == true
                 ? L10n.of(context).currentlyActive
@@ -145,22 +145,22 @@ class UserDialog extends StatelessWidget {
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
-                  if (statusMsg != null)
-                    SelectableLinkify(
-                      text: statusMsg,
-                      textScaleFactor:
-                          MediaQuery.textScalerOf(context).scale(1),
-                      textAlign: TextAlign.center,
-                      options: const LinkifyOptions(humanize: false),
-                      linkStyle: TextStyle(
-                        color: theme.colorScheme.primary,
-                        decoration: TextDecoration.underline,
-                        decorationColor: theme.colorScheme.primary,
-                      ),
-                      onOpen: (url) =>
-                          UrlLauncher(context, url.url).launchUrl(),
-                    ),
                   // #Pangea
+                  // if (statusMsg != null)
+                  //   SelectableLinkify(
+                  //     text: statusMsg,
+                  //     textScaleFactor:
+                  //         MediaQuery.textScalerOf(context).scale(1),
+                  //     textAlign: TextAlign.center,
+                  //     options: const LinkifyOptions(humanize: false),
+                  //     linkStyle: TextStyle(
+                  //       color: theme.colorScheme.primary,
+                  //       decoration: TextDecoration.underline,
+                  //       decorationColor: theme.colorScheme.primary,
+                  //     ),
+                  //     onOpen: (url) =>
+                  //         UrlLauncher(context, url.url).launchUrl(),
+                  //   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Row(

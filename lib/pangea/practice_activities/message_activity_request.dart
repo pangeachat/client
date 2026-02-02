@@ -45,11 +45,13 @@ class GrammarErrorRequestInfo {
   final ChoreoRecordModel choreo;
   final int stepIndex;
   final String eventID;
+  final String translation;
 
   const GrammarErrorRequestInfo({
     required this.choreo,
     required this.stepIndex,
     required this.eventID,
+    required this.translation,
   });
 
   Map<String, dynamic> toJson() {
@@ -57,6 +59,7 @@ class GrammarErrorRequestInfo {
       'choreo': choreo.toJson(),
       'step_index': stepIndex,
       'event_id': eventID,
+      'translation': translation,
     };
   }
 
@@ -65,6 +68,7 @@ class GrammarErrorRequestInfo {
       choreo: ChoreoRecordModel.fromJson(json['choreo']),
       stepIndex: json['step_index'] as int,
       eventID: json['event_id'] as String,
+      translation: json['translation'] as String,
     );
   }
 }

@@ -3732,8 +3732,6 @@
   "noPaymentInfo": "Δεν απαιτείται πληροφορία πληρωμής!",
   "updatePhoneOS": "Ίσως χρειαστεί να ενημερώσετε την έκδοση του λειτουργικού συστήματος της συσκευής σας.",
   "wordsPerMinute": "Λέξεις ανά λεπτό",
-  "autoIGCToolName": "Αυτόματη εκτέλεση της βοήθειας γραφής Pangea",
-  "autoIGCToolDescription": "Αυτόματα εκτελείτε τη γραμματική και τη βοήθεια μετάφρασης του Pangea Chat πριν στείλετε το μήνυμά μου.",
   "tooltipInstructionsTitle": "Δεν είστε σίγουροι τι κάνει αυτό;",
   "tooltipInstructionsMobileBody": "Πατήστε και κρατήστε πατημένο αντικείμενα για να δείτε τις συμβουλές εργαλείων.",
   "tooltipInstructionsBrowserBody": "Τοποθετήστε το δείκτη πάνω από αντικείμενα για να δείτε τις συμβουλές εργαλείων.",
@@ -4361,7 +4359,6 @@
   "numModules": "{num} ενότητες",
   "coursePlan": "Πλάνο Μαθήματος",
   "editCourseLater": "Μπορείτε να επεξεργαστείτε τον τίτλο, τις περιγραφές και την εικόνα του μαθήματος αργότερα.",
-  "newCourseAccess": "Κατά κανόνα, τα μαθήματα είναι ιδιωτικά και απαιτούν έγκριση διαχειριστή για συμμετοχή. Μπορείτε να επεξεργαστείτε αυτές τις ρυθμίσεις οποτεδήποτε.",
   "createCourse": "Δημιουργία μαθήματος",
   "stats": "Στατιστικά",
   "createGroupChat": "Δημιουργία ομαδικής συνομιλίας",
@@ -4456,7 +4453,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-22 09:37:17.865903",
+  "@@last_modified": "2026-01-29 15:25:16.616510",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7264,14 +7261,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9890,10 +9879,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11972,5 +11957,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Αναζητήστε χρήστες για να τους προσκαλέσετε σε αυτήν την συνομιλία.",
+  "publicInviteDescSpace": "Αναζητήστε χρήστες για να τους προσκαλέσετε σε αυτόν τον χώρο.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Η Pangea Chat είναι μια εφαρμογή μηνυμάτων, οπότε οι ειδοποιήσεις είναι σημαντικές!",
+  "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Χρησιμοποιήστε την εικόνα δραστηριότητας ως φόντο συνομιλίας",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Συνομιλία με Υποστήριξη",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Από προεπιλογή, τα μαθήματα είναι δημόσια αναζητήσιμα και απαιτούν έγκριση διαχειριστή για να συμμετάσχετε. Μπορείτε να επεξεργαστείτε αυτές τις ρυθμίσεις οποιαδήποτε στιγμή.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Ποια γλώσσα μαθαίνετε;",
+  "searchLanguagesHint": "Αναζητήστε γλώσσες στόχου",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ερωτήσεις; Είμαστε εδώ για να βοηθήσουμε!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Κάτι πήγε στραβά και εργαζόμαστε σκληρά για να το διορθώσουμε. Έλεγξε ξανά αργότερα.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Ενεργοποίηση βοήθειας γραφής",
+  "autoIGCToolDescription": "Αυτόματα εκτελέστε τα εργαλεία Pangea Chat για να διορθώσετε τα αποσταλμένα μηνύματα στη γλώσσα στόχο.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Η ηχογράφηση απέτυχε. Παρακαλώ ελέγξτε τις άδειες ήχου σας και δοκιμάστε ξανά.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

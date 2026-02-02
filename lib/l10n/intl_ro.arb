@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:19.487915",
+  "@@last_modified": "2026-01-29 15:24:33.490827",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -3204,8 +3204,6 @@
   "noPaymentInfo": "Nicio informație de plată necesară!",
   "updatePhoneOS": "Poate fi necesar să actualizați versiunea sistemului de operare al dispozitivului dvs.",
   "wordsPerMinute": "Cuvinte pe minut",
-  "autoIGCToolName": "Rulează automat asistența de scriere Pangea",
-  "autoIGCToolDescription": "Porniți automat asistența pentru scrierea gramaticii și traducerii în Pangea Chat înainte de a trimite mesajul meu.",
   "tooltipInstructionsTitle": "Nu ești sigur ce face asta?",
   "tooltipInstructionsMobileBody": "Ține apăsat pe elemente pentru a vizualiza sfaturi.",
   "tooltipInstructionsBrowserBody": "Poziționează cursorul peste elemente pentru a vizualiza sfaturi.",
@@ -3833,7 +3831,6 @@
   "numModules": "{num} module",
   "coursePlan": "Plan de curs",
   "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
-  "newCourseAccess": "În mod implicit, cursurile sunt private și necesită aprobarea administratorului pentru a te alătura. Poți edita aceste setări oricând.",
   "createCourse": "Creează curs",
   "stats": "Statistici",
   "createGroupChat": "Creează chat de grup",
@@ -6941,14 +6938,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9567,10 +9556,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11649,5 +11634,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Caută utilizatori pentru a-i invita în acest chat.",
+  "publicInviteDescSpace": "Caută utilizatori pentru a-i invita în acest spațiu.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat este o aplicație de mesagerie, așa că notificările sunt importante!",
+  "enableNotificationsDesc": "Permite notificările",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat cu Suportul",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "În mod implicit, cursurile sunt căutabile public și necesită aprobată de administrator pentru a se alătura. Puteți edita aceste setări în orice moment.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Ce limbă înveți?",
+  "searchLanguagesHint": "Caută limbi țintă",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Întrebări? Suntem aici să ajutăm!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Ceva a mers prost și lucrăm din greu pentru a remedia problema. Verifică din nou mai târziu.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Activare asistență la scriere",
+  "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

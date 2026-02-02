@@ -1234,8 +1234,6 @@
   "noPaymentInfo": "Nulle information de pagamento necessari!",
   "updatePhoneOS": "Es possibile que tu necesse actualisar le versione del sistema operative de tu dispositivo.",
   "wordsPerMinute": "Palabras per minuto",
-  "autoIGCToolName": "Execute automaticemente le assistance de scriber Pangea",
-  "autoIGCToolDescription": "Execute automaticamente le assistance de grammatica e traduction de Pangea Chat ante de inviar mi message.",
   "tooltipInstructionsTitle": "Nescite que illo face?",
   "tooltipInstructionsMobileBody": "Pressa e tene le items pro vider le tooltip.",
   "tooltipInstructionsBrowserBody": "Survole le items pro vider le tooltip.",
@@ -1863,7 +1861,6 @@
   "numModules": "{num} modulo(s)",
   "coursePlan": "Plan de curso",
   "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
-  "newCourseAccess": "A default, le cursos es private e require approbation del administrator pro aderir. Tu pote modificar iste configurationes a omne momento.",
   "createCourse": "Create un curso",
   "stats": "Statisticas",
   "createGroupChat": "Create un chat de grupo",
@@ -1958,7 +1955,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-22 09:36:27.975426",
+  "@@last_modified": "2026-01-29 15:24:39.850520",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7284,14 +7281,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9910,10 +9899,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11992,5 +11977,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Cerca per utenti per invitarli a questa chat.",
+  "publicInviteDescSpace": "Cerca per utenti per invitarli a questo spazio.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat est un application de messagerie donc les notifications sont importantes !",
+  "enableNotificationsDesc": "Autoriser les notifications",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Fala com o Suporte",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per default, kursusene er offentlig søkbare og krever admin-godkjenning for å bli med. Du kan redigere disse innstillingene når som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kia lingvo vi lernas?",
+  "searchLanguagesHint": "Serĉu celajn lingvojn",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Kwestyon? Nou la pou ede!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "N'ayen a fau, e n'ayen a t'awen a t'awen a t'awen. T'awen a t'awen a t'awen.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Abilita l'assistenza alla scrittura",
+  "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Fala falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

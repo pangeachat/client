@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/mxc_image_viewer.dart';
 import 'settings.dart';
@@ -147,9 +148,7 @@ class SettingsView extends StatelessWidget {
                                       displayname,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                      ),
+                                      style: const TextStyle(fontSize: 18),
                                     ),
                                   ),
                                   TextButton.icon(
@@ -171,25 +170,6 @@ class SettingsView extends StatelessWidget {
                                       //    style: const TextStyle(fontSize: 12),
                                     ),
                                   ),
-                                  // #Pangea
-                                  TextButton.icon(
-                                    onPressed: controller.setStatus,
-                                    icon: const Icon(
-                                      Icons.add,
-                                      size: 14,
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      foregroundColor:
-                                          theme.colorScheme.secondary,
-                                      iconColor: theme.colorScheme.secondary,
-                                    ),
-                                    label: Text(
-                                      L10n.of(context).setStatus,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  // Pangea#
                                 ],
                               ),
                             ),
@@ -252,6 +232,23 @@ class SettingsView extends StatelessWidget {
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go('/rooms/settings/notifications'),
+                      // #Pangea
+                      trailing: ValueListenableBuilder(
+                        valueListenable:
+                            Matrix.of(context).notifPermissionNotifier,
+                        builder: (context, _, __) => FutureBuilder<bool>(
+                          future: Matrix.of(context).notificationsEnabled,
+                          builder: (context, snapshot) {
+                            return snapshot.data != false
+                                ? const SizedBox()
+                                : Icon(
+                                    Icons.error_outline,
+                                    color: theme.colorScheme.error,
+                                  );
+                          },
+                        ),
+                      ),
+                      // Pangea#
                     ),
                     ListTile(
                       leading: const Icon(Icons.devices_outlined),
@@ -294,7 +291,8 @@ class SettingsView extends StatelessWidget {
                     // #Pangea
                     ListTile(
                       leading: const Icon(Icons.help_outline_outlined),
-                      title: Text(L10n.of(context).help),
+                      title: Text(L10n.of(context).chatWithSupport),
+                      trailing: const Icon(Icons.chat_bubble_outline),
                       onTap: () async {
                         await showFutureLoadingDialog(
                           context: context,

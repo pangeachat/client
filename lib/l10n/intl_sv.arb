@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:16.018226",
+  "@@last_modified": "2026-01-29 15:25:15.398282",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -3446,8 +3446,6 @@
   "noPaymentInfo": "Ingen betalningsinformation behövs!",
   "updatePhoneOS": "Du kan behöva uppdatera din enhets operativsystemversion.",
   "wordsPerMinute": "Ord per minut",
-  "autoIGCToolName": "Kör Pangea skrivhjälp automatiskt",
-  "autoIGCToolDescription": "Kör automatiskt Pangea Chat grammatik- och översättningshjälp innan jag skickar mitt meddelande.",
   "tooltipInstructionsTitle": "Inte säker på vad det gör?",
   "tooltipInstructionsMobileBody": "Håll och tryck på objekt för att visa verktygstips.",
   "tooltipInstructionsBrowserBody": "Hovra över objekt för att visa verktygstips.",
@@ -4075,7 +4073,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursplan",
   "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
-  "newCourseAccess": "Som standard är kurser privata och kräver administratörsgodkännande för att gå med. Du kan ändra dessa inställningar när som helst.",
   "createCourse": "Skapa kurs",
   "stats": "Statistik",
   "createGroupChat": "Skapa gruppchatt",
@@ -6681,14 +6678,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9310,10 +9299,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11392,5 +11377,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Sök efter användare för att bjuda in dem till den här chatten.",
+  "publicInviteDescSpace": "Sök efter användare för att bjuda in dem till det här utrymmet.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat är en meddelandeapp så aviseringar är viktiga!",
+  "enableNotificationsDesc": "Tillåt aviseringar",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta med support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Vilket språk lär du dig?",
+  "searchLanguagesHint": "Sök efter målspråk",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Frågor? Vi är här för att hjälpa till!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Något gick fel, och vi arbetar hårt för att åtgärda det. Kolla igen senare.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivera skrivhjälp",
+  "autoIGCToolDescription": "Kör automatiskt Pangea Chat-verktyg för att korrigera skickade meddelanden till målspråket.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Inspelningen misslyckades. Kontrollera dina ljudbehörigheter och försök igen.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

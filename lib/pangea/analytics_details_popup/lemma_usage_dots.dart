@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -74,9 +73,11 @@ class LemmaUsageDots extends StatelessWidget {
       ),
       title: dots.isEmpty
           ? Text(
-              L10n.of(context).noDataFound,
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+              "-",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: textColor.withAlpha(100),
               ),
             )
           : Wrap(

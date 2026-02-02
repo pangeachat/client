@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_cont
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
+import '../../widgets/matrix.dart';
 
 class SpaceNavigationColumn extends StatefulWidget {
   final GoRouterState state;
@@ -34,6 +36,27 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
   bool _hovered = false;
   bool _expanded = false;
   Timer? _timer;
+  Profile? _profile;
+
+  @override
+  void initState() {
+    super.initState();
+    Matrix.of(context).client.fetchOwnProfile().then((profile) {
+      if (mounted) {
+        setState(() {
+          _profile = profile;
+        });
+      }
+    });
+  }
+
+  void _updateProfile(Profile profile) {
+    if (mounted) {
+      setState(() {
+        _profile = profile;
+      });
+    }
+  }
 
   void _onHoverUpdate(bool hovered) {
     if (hovered == _hovered) return;
@@ -130,6 +153,8 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                         _cancelTimer();
                         setState(() => _expanded = false);
                       },
+                      profile: _profile,
+                      onProfileUpdate: _updateProfile,
                     ),
                     Container(
                       width: 1,

@@ -1206,8 +1206,6 @@
   "noPaymentInfo": "Ingen betalingsoplysninger nødvendige!",
   "updatePhoneOS": "Du kan være nødt til at opdatere din enheds OS-version.",
   "wordsPerMinute": "Ord pr. minut",
-  "autoIGCToolName": "Kør Pangea skriveassistance automatisk",
-  "autoIGCToolDescription": "Kør automatisk Pangea Chat grammatik- og oversættelsesassistance, før jeg sender min besked.",
   "tooltipInstructionsTitle": "Er du ikke sikker på, hvad det gør?",
   "tooltipInstructionsMobileBody": "Tryk og hold på elementer for at se værktøjstip.",
   "tooltipInstructionsBrowserBody": "Hold musen over elementer for at se værktøjstip.",
@@ -1835,7 +1833,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursusplan",
   "editCourseLater": "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.",
-  "newCourseAccess": "Som standard er kurser private og kræver godkendelse fra administrator for at deltage. Du kan redigere disse indstillinger når som helst.",
   "createCourse": "Opret kursus",
   "stats": "Statistikker",
   "createGroupChat": "Opret gruppechat",
@@ -1930,7 +1927,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-22 09:36:14.204217",
+  "@@last_modified": "2026-01-29 15:24:30.021734",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -7268,14 +7265,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9894,10 +9883,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11975,5 +11960,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Søg efter brugere for at invitere dem til denne chat.",
+  "publicInviteDescSpace": "Søg efter brugere for at invitere dem til dette rum.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat er en beskedapp, så notifikationer er vigtige!",
+  "enableNotificationsDesc": "Tillad notifikationer",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat med support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard er kurser offentligt søgbare og kræver administratorgodkendelse for at deltage. Du kan redigere disse indstillinger når som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hvilket sprog lærer du?",
+  "searchLanguagesHint": "Søg efter målsprog",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Spørgsmål? Vi er her for at hjælpe!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Noget gik galt, og vi arbejder hårdt på at løse det. Tjek igen senere.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivér skriveassistance",
+  "autoIGCToolDescription": "Kør automatisk Pangea Chat-værktøjer for at rette sendte beskeder til målsproget.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og prøv igen.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

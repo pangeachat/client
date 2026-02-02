@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
 /// Choice card for meaning activity with emoji, and alt text on flip
 class GrammarChoiceCard extends StatelessWidget {
@@ -31,6 +32,10 @@ class GrammarChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final baseTextSize =
+        (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
+            (height / 72.0).clamp(1.0, 1.4);
+    final emojiSize = baseTextSize * 1.2;
     final copy = getGrammarCopy(
           category: feature.name,
           lemma: tag,
@@ -45,7 +50,32 @@ class GrammarChoiceCard extends StatelessWidget {
       isCorrect: isCorrect,
       height: height,
       isEnabled: enabled,
-      child: Text(copy),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: height * .7,
+            height: height,
+            child: Center(
+              child: MorphIcon(
+                morphFeature: feature,
+                morphTag: tag,
+                size: Size(emojiSize, emojiSize),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              copy,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: baseTextSize,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

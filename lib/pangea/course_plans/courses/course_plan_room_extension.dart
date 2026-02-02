@@ -31,7 +31,8 @@ extension CoursePlanRoomExtension on Room {
       final room = client.getRoomById(child.roomId!);
       if (room?.membership == Membership.join &&
           room?.activityId == activityId &&
-          !room!.hasArchivedActivity) {
+          room!.hasPickedRole &&
+          !room.hasCompletedRole) {
         return room.id;
       }
     }
@@ -90,7 +91,7 @@ extension CoursePlanRoomExtension on Room {
         if (activity.imageURL != null)
           StateEvent(
             type: EventTypes.RoomAvatar,
-            content: {'url': activity.imageURL!},
+            content: {'url': activity.imageURL!.toString()},
           ),
         if (role != null)
           StateEvent(

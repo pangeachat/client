@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-22 09:36:23.684413",
+  "@@last_modified": "2026-01-29 15:24:37.899487",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -3541,8 +3541,6 @@
   "noPaymentInfo": "Nije potrebna informacija o plaćanju!",
   "updatePhoneOS": "Možda ćete morati ažurirati verziju OS-a na svom uređaju.",
   "wordsPerMinute": "Riječi po minuti",
-  "autoIGCToolName": "Automatski pokreni pomoć za pisanje Pangea",
-  "autoIGCToolDescription": "Automatski pokreni pomoć za gramatiku i prijevod Pangea Chat prije slanja moje poruke.",
   "tooltipInstructionsTitle": "Niste sigurni što to radi?",
   "tooltipInstructionsMobileBody": "Dugim pritiskom na stavke prikazuju se alati za pomoć.",
   "tooltipInstructionsBrowserBody": "Pomičite mišem preko stavki za prikazivanje saveta.",
@@ -4170,7 +4168,6 @@
   "numModules": "{num} modula",
   "coursePlan": "Plan tečaja",
   "editCourseLater": "Možete kasnije urediti naslov predloška, opise i sliku tečaja.",
-  "newCourseAccess": "Prema zadanim postavkama, tečajevi su privatni i zahtijevaju odobrenje administratora za pridruživanje. Možete ove postavke urediti u bilo koje vrijeme.",
   "createCourse": "Stvori tečaj",
   "stats": "Statistike",
   "createGroupChat": "Stvori grupni razgovor",
@@ -6575,14 +6572,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9204,10 +9193,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11286,5 +11271,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Pretražite korisnike kako biste ih pozvali u ovaj chat.",
+  "publicInviteDescSpace": "Pretražite korisnike kako biste ih pozvali u ovaj prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
+  "enableNotificationsDesc": "Dopusti obavijesti",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Razgovarajte s podrškom",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Prema zadanim postavkama, tečajevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Koji jezik učite?",
+  "searchLanguagesHint": "Pretraži ciljne jezike",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Imate pitanja? Tu smo da pomognemo!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nešto je pošlo po zlu i marljivo radimo na rješavanju problema. Provjerite ponovo kasnije.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Omogući pomoć pri pisanju",
+  "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Snimanje nije uspjelo. Provjerite svoja audio dopuštenja i pokušajte ponovo.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

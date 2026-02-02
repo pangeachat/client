@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-22 09:36:34.415651",
+  "@@last_modified": "2026-01-29 15:24:45.173559",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -3792,8 +3792,6 @@
   "noPaymentInfo": "Keine Zahlungsinformationen erforderlich!",
   "updatePhoneOS": "Sie müssen möglicherweise die OS-Version Ihres Geräts aktualisieren.",
   "wordsPerMinute": "Wörter pro Minute",
-  "autoIGCToolName": "Pangea Schreibhilfe automatisch ausführen",
-  "autoIGCToolDescription": "Führen Sie die Pangea Chat-Grammatik- und Übersetzungs-Schreibhilfe automatisch aus, bevor Sie meine Nachricht senden.",
   "tooltipInstructionsTitle": "Nicht sicher, was das macht?",
   "tooltipInstructionsMobileBody": "Tippen und halten Sie Elemente, um Tooltips anzuzeigen.",
   "tooltipInstructionsBrowserBody": "Bewegen Sie den Mauszeiger über Elemente, um Tooltips anzuzeigen.",
@@ -4421,7 +4419,6 @@
   "numModules": "{num} Module",
   "coursePlan": "Kursplan",
   "editCourseLater": "Sie können den Titel, die Beschreibungen und das Kursbild später bearbeiten.",
-  "newCourseAccess": "Standardmäßig sind Kurse privat und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit ändern.",
   "createCourse": "Kurs erstellen",
   "stats": "Statistiken",
   "createGroupChat": "Gruppenchats erstellen",
@@ -6210,14 +6207,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8839,10 +8828,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10921,5 +10906,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Suchen Sie nach Benutzern, um sie zu diesem Chat einzuladen.",
+  "publicInviteDescSpace": "Suchen Sie nach Benutzern, um sie zu diesem Raum einzuladen.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat ist eine Messaging-App, daher sind Benachrichtigungen wichtig!",
+  "enableNotificationsDesc": "Benachrichtigungen erlauben",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat mit dem Support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Standardmäßig sind Kurse öffentlich durchsuchbar und erfordern die Genehmigung eines Administrators, um beizutreten. Sie können diese Einstellungen jederzeit bearbeiten.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Welche Sprache lernst du?",
+  "searchLanguagesHint": "Zielsprachen suchen",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Fragen? Wir sind hier, um zu helfen!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Etwas ist schiefgelaufen, und wir arbeiten hart daran, es zu beheben. Überprüfen Sie es später erneut.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Schreibassistenz aktivieren",
+  "autoIGCToolDescription": "Automatisch Pangea Chat-Tools ausführen, um gesendete Nachrichten in die Zielsprache zu korrigieren.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Die Aufnahme ist fehlgeschlagen. Bitte überprüfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

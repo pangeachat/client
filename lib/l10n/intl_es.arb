@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-22 09:36:09.573972",
+  "@@last_modified": "2026-01-29 15:24:25.947319",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -4251,8 +4251,6 @@
   "wordsPerMinute": "Palabras por minuto",
   "roomFull": "Esta sala ya está al límite de su capacidad.",
   "enterNumber": "Introduzca un valor numérico entero.",
-  "autoIGCToolName": "Ejecutar automáticamente la asistencia lingüística",
-  "autoIGCToolDescription": "Ejecutar automáticamente la asistencia lingüística después de escribir mensajes",
   "buildTranslation": "Construye tu traducción a partir de las opciones anteriores",
   "languageSettings": "Ajustes de idioma",
   "selectSpaceDominantLanguage": "¿Cuál es la lengua más común de los miembros del espacio?",
@@ -5689,7 +5687,6 @@
   "numModules": "{num} módulos",
   "coursePlan": "Plan de curso",
   "editCourseLater": "Puedes editar el título, las descripciones y la imagen del curso más tarde.",
-  "newCourseAccess": "Por defecto, los cursos son privados y requieren aprobación del administrador para unirse. Puedes editar estos ajustes en cualquier momento.",
   "createCourse": "Crear curso",
   "stats": "Estadísticas",
   "createGroupChat": "Crear chat grupal",
@@ -6032,10 +6029,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -8148,5 +8141,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Busca usuarios para invitarlos a este chat.",
+  "publicInviteDescSpace": "Busca usuarios para invitarlos a este espacio.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "¡Pangea Chat es una aplicación de mensajería, así que las notificaciones son importantes!",
+  "enableNotificationsDesc": "Permitir notificaciones",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatear con Soporte",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Por defecto, los cursos son buscables públicamente y requieren aprobación del administrador para unirse. Puedes editar estas configuraciones en cualquier momento.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "¿Qué idioma estás aprendiendo?",
+  "searchLanguagesHint": "Buscar idiomas objetivo",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "¿Preguntas? ¡Estamos aquí para ayudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Algo salió mal y estamos trabajando arduamente para solucionarlo. Revisa de nuevo más tarde.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Habilitar asistencia de escritura",
+  "autoIGCToolDescription": "Ejecutar automáticamente las herramientas de Pangea Chat para corregir los mensajes enviados al idioma de destino.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "La grabación falló. Por favor, verifica tus permisos de audio y vuelve a intentarlo.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-22 09:36:15.788819",
+  "@@last_modified": "2026-01-29 15:24:31.343536",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -3786,8 +3786,6 @@
   "noPaymentInfo": "Nincs szükség fizetési adatokra!",
   "updatePhoneOS": "Előfordulhat, hogy frissítenie kell az eszköz operációs rendszerét.",
   "wordsPerMinute": "Szavak száma percenként",
-  "autoIGCToolName": "A Pangea írássegéd automatikus futtatása",
-  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat nyelvtani és fordítási írássegédet az üzenetem küldése előtt.",
   "tooltipInstructionsTitle": "Nem biztos benne, mit csinál ez?",
   "tooltipInstructionsMobileBody": "Hosszan nyomja meg az elemeket a súgók megtekintéséhez.",
   "tooltipInstructionsBrowserBody": "Húzza az egérrel az elemek fölé a súgók megtekintéséhez.",
@@ -4415,7 +4413,6 @@
   "numModules": "{num} modul",
   "coursePlan": "Tanfolyamterv",
   "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
-  "newCourseAccess": "Alapértelmezés szerint a tanfolyamok privátak, és admin jóváhagyását igénylik a csatlakozáshoz. Ezeket a beállításokat bármikor szerkesztheti.",
   "createCourse": "Tanfolyam létrehozása",
   "stats": "Statisztika",
   "createGroupChat": "Csoportos beszélgetés létrehozása",
@@ -6204,14 +6201,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8833,10 +8822,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10915,5 +10900,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Keresd meg a felhasználókat, hogy meghívd őket erre a csevegésre.",
+  "publicInviteDescSpace": "Keresd meg a felhasználókat, hogy meghívd őket erre a térre.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "A Pangea Chat egy üzenetküldő alkalmazás, így a értesítések fontosak!",
+  "enableNotificationsDesc": "Értesítések engedélyezése",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Csevegés a Támogatással",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Alapértelmezés szerint a kurzusok nyilvánosan kereshetők, és adminisztrátori jóváhagyás szükséges a csatlakozáshoz. Ezeket a beállításokat bármikor módosíthatja.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Milyen nyelvet tanulsz?",
+  "searchLanguagesHint": "Keresd a célnyelveket",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Kérdése van? Itt vagyunk, hogy segítsünk!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Valami hiba történt, és keményen dolgozunk a javításon. Kérlek, nézd meg később.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Írássegítő engedélyezése",
+  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "A felvétel nem sikerült. Kérjük, ellenőrizze az audio engedélyeit, és próbálja újra.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

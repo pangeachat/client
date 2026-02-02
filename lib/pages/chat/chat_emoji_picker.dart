@@ -49,8 +49,19 @@ class ChatEmojiPicker extends StatelessWidget {
                               backgroundColor:
                                   theme.colorScheme.onInverseSurface,
                             ),
-                            bottomActionBarConfig: const BottomActionBarConfig(
-                              enabled: false,
+                            bottomActionBarConfig: BottomActionBarConfig(
+                              // #Pangea
+                              // enabled: false,
+                              showBackspaceButton: false,
+                              backgroundColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainer,
+                              buttonColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainer,
+                              buttonIconColor:
+                                  Theme.of(context).colorScheme.onSurface,
+                              // Pangea#
                             ),
                             categoryViewConfig: CategoryViewConfig(
                               backspaceColor: theme.colorScheme.primary,
@@ -68,6 +79,17 @@ class ChatEmojiPicker extends StatelessWidget {
                               )!,
                               indicatorColor: theme.colorScheme.onSurface,
                             ),
+                            // #Pangea
+                            viewOrderConfig: const ViewOrderConfig(
+                              middle: EmojiPickerItem.searchBar,
+                              top: EmojiPickerItem.categoryBar,
+                              bottom: EmojiPickerItem.emojiView,
+                            ),
+                            searchViewConfig: SearchViewConfig(
+                              backgroundColor: theme.colorScheme.surface,
+                              buttonIconColor: theme.colorScheme.onSurface,
+                            ),
+                            // Pangea#
                           ),
                         ),
                         // #Pangea

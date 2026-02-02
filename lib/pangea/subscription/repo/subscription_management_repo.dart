@@ -77,14 +77,26 @@ class SubscriptionManagementRepo {
     );
   }
 
-  static bool getClickedCancelSubscription() {
+  static DateTime? getClickedCancelSubscription() {
     final entry = _cache.read(PLocalKey.clickedCancelSubscription);
-    if (entry == null) return false;
-    final val = DateTime.tryParse(entry);
-    return val != null && DateTime.now().difference(val).inSeconds < 60;
+    if (entry == null) return null;
+    return DateTime.tryParse(entry);
   }
 
   static Future<void> removeClickedCancelSubscription() async {
     await _cache.remove(PLocalKey.clickedCancelSubscription);
+  }
+
+  static Future<void> setSubscriptionEndDate(DateTime? date) async {
+    await _cache.write(
+      PLocalKey.subscriptionEndDate,
+      date?.toIso8601String(),
+    );
+  }
+
+  static DateTime? getSubscriptionEndDate() {
+    final entry = _cache.read(PLocalKey.subscriptionEndDate);
+    if (entry == null) return null;
+    return DateTime.tryParse(entry);
   }
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:40.074415",
+  "@@last_modified": "2026-01-29 15:24:48.551043",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -3764,8 +3764,6 @@
   "noPaymentInfo": "Nessuna informazione di pagamento necessaria!",
   "updatePhoneOS": "Potresti dover aggiornare la versione del sistema operativo del tuo dispositivo.",
   "wordsPerMinute": "Parole al minuto",
-  "autoIGCToolName": "Esegui automaticamente l'assistenza alla scrittura Pangea",
-  "autoIGCToolDescription": "Esegui automaticamente l'assistenza alla grammatica e alla traduzione di Pangea Chat prima di inviare il mio messaggio.",
   "tooltipInstructionsTitle": "Non sei sicuro di cosa faccia?",
   "tooltipInstructionsMobileBody": "Tieni premuti gli elementi per visualizzare i suggerimenti.",
   "tooltipInstructionsBrowserBody": "Passa il mouse sugli elementi per visualizzare i suggerimenti.",
@@ -4393,7 +4391,6 @@
   "numModules": "{num} moduli",
   "coursePlan": "Piano del corso",
   "editCourseLater": "Puoi modificare in seguito il titolo del corso, le descrizioni e l'immagine del corso.",
-  "newCourseAccess": "Per impostazione predefinita, i corsi sono privati e richiedono l'approvazione dell'amministratore per parteciparvi. Puoi modificare queste impostazioni in qualsiasi momento.",
   "createCourse": "Crea corso",
   "stats": "Statistiche",
   "createGroupChat": "Crea chat di gruppo",
@@ -6206,14 +6203,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8835,10 +8824,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10917,5 +10902,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Cerca utenti per invitarli a questa chat.",
+  "publicInviteDescSpace": "Cerca utenti per invitarli a questo spazio.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat è un'app di messaggistica, quindi le notifiche sono importanti!",
+  "enableNotificationsDesc": "Consenti notifiche",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta con il supporto",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per impostazione predefinita, i corsi sono ricercabili pubblicamente e richiedono l'approvazione dell'amministratore per unirsi. Puoi modificare queste impostazioni in qualsiasi momento.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quale lingua stai imparando?",
+  "searchLanguagesHint": "Cerca lingue target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Domande? Siamo qui per aiutarti!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Qualcosa è andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo più tardi.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Abilita assistenza alla scrittura",
+  "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

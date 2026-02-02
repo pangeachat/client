@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -22,6 +21,7 @@ import 'package:fluffychat/pages/device_settings/device_settings.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
+import 'package:fluffychat/pages/onboarding/enable_notifications.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
@@ -48,6 +48,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
+import 'package:fluffychat/pangea/course_creation/public_course_preview.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
@@ -57,7 +58,6 @@ import 'package:fluffychat/pangea/login/pages/find_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/new_course_page.dart';
-import 'package:fluffychat/pangea/login/pages/public_courses_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -66,6 +66,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
@@ -208,6 +209,22 @@ abstract class AppRoutes {
             state,
             const CreatePangeaAccountPage(),
           ),
+        ),
+        GoRoute(
+          path: 'notifications',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const EnableNotifications(),
+          ),
+          redirect: (context, state) async {
+            final redirect =
+                await PAuthGaurd.onboardingRedirect(context, state);
+            if (redirect != null) return redirect;
+            final enabled = await Matrix.of(context).notificationsEnabled;
+            if (enabled) return "/registration/course";
+            return null;
+          },
         ),
         GoRoute(
           path: 'course',
@@ -364,40 +381,15 @@ abstract class AppRoutes {
                   },
                 ),
                 GoRoute(
-                  path: 'public',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      const PublicCoursesPage(
-                        route: 'rooms',
-                      ),
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      path: ':courseid',
-                      pageBuilder: (context, state) {
-                        return defaultPageBuilder(
-                          context,
-                          state,
-                          SelectedCourse(
-                            state.pathParameters['courseid']!,
-                            SelectedCourseMode.join,
-                            roomChunk: state.extra as PublicRoomsChunk?,
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
                   path: 'own',
                   pageBuilder: (context, state) {
                     return defaultPageBuilder(
                       context,
                       state,
-                      const NewCoursePage(route: 'rooms'),
+                      NewCoursePage(
+                        route: 'rooms',
+                        initialLanguageCode: state.uri.queryParameters['lang'],
+                      ),
                     );
                   },
                   routes: [
@@ -431,6 +423,18 @@ abstract class AppRoutes {
                       ],
                     ),
                   ],
+                ),
+                GoRoute(
+                  path: ':courseroomid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      PublicCoursePreview(
+                        roomID: state.pathParameters['courseroomid']!,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

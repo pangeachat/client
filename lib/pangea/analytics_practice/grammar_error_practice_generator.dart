@@ -31,7 +31,10 @@ class GrammarErrorPracticeGenerator {
         .take(igcMatch.length)
         .toString();
 
-    choices.add(errorSpan);
+    if (!req.grammarErrorInfo!.translation.contains(errorSpan)) {
+      choices.add(errorSpan);
+    }
+
     choices.shuffle();
     return MessageActivityResponse(
       activity: GrammarErrorPracticeActivityModel(
@@ -45,6 +48,7 @@ class GrammarErrorPracticeGenerator {
         errorOffset: igcMatch.offset,
         errorLength: igcMatch.length,
         eventID: eventID,
+        translation: req.grammarErrorInfo!.translation,
       ),
     );
   }

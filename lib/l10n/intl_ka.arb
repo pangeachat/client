@@ -1870,8 +1870,6 @@
   "noPaymentInfo": "გადახდის ინფორმაცია საჭირო არაა!",
   "updatePhoneOS": "შესაძლოა დაგჭირდეთ თქვენი მოწყობილობის ოპერაციული სისტემის განახლება.",
   "wordsPerMinute": "სიტყვები წუთში",
-  "autoIGCToolName": "ავტომატურად ჩართეთ პანგეა წერის დახმარება",
-  "autoIGCToolDescription": "ავტომატურად ჩართეთ პანგეა ჩატის გრამატიკა და თარგმნის დახმარება ჩემი შეტყობინების გაგზავნამდე.",
   "tooltipInstructionsTitle": "არ იცით რა აკეთებს ეს?",
   "tooltipInstructionsMobileBody": "დაჭერით და შეინახეთ ინსტრუმენტების სანახავად.",
   "tooltipInstructionsBrowserBody": "მოძრაობით მერყეობთ ნივთებზე ინსტრუმენტების სანახავად.",
@@ -2499,7 +2497,6 @@
   "numModules": "{num} მოდული",
   "coursePlan": "კურსის გეგმა",
   "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
-  "newCourseAccess": "ჩაშენებული წესით, კურსები პირადია და საჭიროებს ადმინისტრატორის დამტკიცებას შესასვლელად. შეგიძლიათ ნებისმიერ დროს შეცვალოთ ეს პარამეტრები.",
   "createCourse": "შექმენით კურსი",
   "stats": "სტატისტიკა",
   "createGroupChat": "შექმენით ჯგუფური ჩათი",
@@ -2594,7 +2591,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-22 09:37:25.958869",
+  "@@last_modified": "2026-01-29 15:25:22.347053",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7236,14 +7233,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9862,10 +9851,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11944,5 +11929,75 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "მომხმარებლების ძიება, რათა მათ ამ ჩატში მოიწვიოთ.",
+  "publicInviteDescSpace": "მომხმარებლების ძიება, რათა მათ ამ სივრცეში მოიწვიოთ.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat არის ტექსტური აპლიკაცია, ამიტომ შეტყობინებები მნიშვნელოვანია!",
+  "enableNotificationsDesc": "შეტყობინებების დაშვება",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "გამოიყენეთ აქტივობის სურათი ჩეთის ფონად",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "ჩატი მხარდაჭერასთან",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ნაგულისხმევად, კურსები საჯაროდ საძიებელია და საჭიროებს ადმინისტრატორის დამტკიცებას გაწვდვისთვის. შეგიძლიათ ამ პარამეტრების რედაქტირება ნებისმიერ დროს.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "რომელი ენა სწავლობთ?",
+  "searchLanguagesHint": "ძებნა მიზნობრივი ენების",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "კითხვები? ჩვენ აქ ვართ, რომ დაგეხმაროთ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "რამე არასწორად მოხდა, და ჩვენ აქტიურად ვმუშაობთ ამის გამოსასწორებლად. შეამოწმეთ მოგვიანებით.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "წერის დახმარების ჩართვა",
+  "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "ჩაწერა ვერ მოხერხდა. გთხოვთ, შეამოწმოთ თქვენი აუდიო უფლებები და სცადოთ კიდევ ერთხელ.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -78,7 +78,15 @@ class SettingsChatView extends StatelessWidget {
                 storeKey: SettingKeys.swipeRightToLeftToReply,
                 defaultValue: AppConfig.swipeRightToLeftToReply,
               ),
+
               // #Pangea
+              SettingsSwitchListTile.adaptive(
+                title: L10n.of(context).useActivityImageAsChatBackground,
+                onChanged: (b) =>
+                    AppConfig.useActivityImageAsChatBackground = b,
+                storeKey: SettingKeys.useActivityImageAsChatBackground,
+                defaultValue: AppConfig.useActivityImageAsChatBackground,
+              ),
               // Divider(color: theme.dividerColor),
               // ListTile(
               //   title: Text(

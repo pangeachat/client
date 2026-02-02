@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
-import 'package:fluffychat/pangea/authentication/p_logout.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
 
 class SpaceCodeOnboardingView extends StatelessWidget {
@@ -19,12 +18,23 @@ class SpaceCodeOnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PangeaLoginScaffold(
       customAppBar: AppBar(
-        leading: BackButton(
-          onPressed: () => pLogoutAction(
-            context,
-            bypassWarning: true,
+        title: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 450,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              BackButton(
+                onPressed: Navigator.of(context).pop,
+              ),
+              const SizedBox(
+                width: 40.0,
+              ),
+            ],
           ),
         ),
+        automaticallyImplyLeading: false,
       ),
       showAppName: false,
       mainAssetUrl: controller.profile?.avatarUrl,
