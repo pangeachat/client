@@ -272,13 +272,12 @@ class BackgroundPush {
   }) async {
     // #Pangea
     // if (PlatformInfos.isIOS) {
-    //   await firebase.requestPermission();
+    //   //<GOOGLE_SERVICES>await firebase.requestPermission();
     // }
     // if (PlatformInfos.isAndroid) {
     //   _flutterLocalNotificationsPlugin
     //       .resolvePlatformSpecificImplementation<
-    //         AndroidFlutterLocalNotificationsPlugin
-    //       >()
+    //           AndroidFlutterLocalNotificationsPlugin>()
     //       ?.requestNotificationsPermission();
     // }
     // Pangea#
