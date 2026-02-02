@@ -3355,7 +3355,7 @@
   "@notificationRuleServerAcl": {},
   "notificationRuleMemberEventDescription": "Unterdrückt Benachrichtigungen zu Mitgliedschaftsereignissen.",
   "@notificationRuleMemberEventDescription": {},
-  "sentVoiceMessage": "🎙️ {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - Sprachnachricht von {sender}",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3381,10 +3381,16 @@
   "@pleaseWaitUntilInvited": {},
   "notificationRuleTombstone": "Tombstone",
   "@notificationRuleTombstone": {},
-  "commandHint_logout": "Abmelden von deinem aktuellen Gerät",
+  "commandHint_logout": "Aktuelles Gerät abmelden",
+  "@commandHint_logout": {},
   "commandHint_logoutall": "Alle aktiven Geräte abmelden",
-  "displayNavigationRail": "Navigationsleiste auf Mobilgeräten anzeigen",
+  "@commandHint_logoutall": {},
+  "displayNavigationRail": "Navigationsleiste auf dem Smartphone anzeigen",
+  "@displayNavigationRail": {},
   "customReaction": "Benutzerdefinierte Reaktion",
+  "@customReaction": {},
+  "moreEvents": "Weitere Ereignisse",
+  "@moreEvents": {},
   "writeAMessageLangCodes": "Geben Sie in {l1} oder {l2} ein...",
   "requests": "Anfragen",
   "holdForInfo": "Klicken und halten für Wortinformationen.",
@@ -4512,22 +4518,6 @@
   "inviteYourFriends": "Laden Sie Ihre Freunde ein",
   "playWithAI": "Jetzt mit KI spielen",
   "courseStartDesc": "Pangea Bot ist jederzeit einsatzbereit!\n\n...aber Lernen macht mit Freunden mehr Spaß!",
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

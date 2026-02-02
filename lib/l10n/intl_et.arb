@@ -3381,6 +3381,9 @@
   "displayNavigationRail": "Näita mobiilis külgmist tööriistariba",
   "@displayNavigationRail": {},
   "customReaction": "Kohandatud reaktsioon",
+  "@customReaction": {},
+  "moreEvents": "Veel sündmusi",
+  "@moreEvents": {},
   "writeAMessageLangCodes": "Kirjuta {l1} või {l2}...",
   "requests": "Päringud",
   "holdForInfo": "Vajuta ja hoia sõna info saamiseks.",
@@ -4428,10 +4431,6 @@
   "errorFetchingActivity": "Tegevuse toomine ebaõnnestus",
   "check": "Kontrolli",
   "unableToFindRoom": "Selle koodiga vestlust või ruumi ei leitud. Palun proovi uuesti.",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

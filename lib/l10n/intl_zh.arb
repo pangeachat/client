@@ -3380,7 +3380,10 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "在移动设备上显示导航栏",
   "@displayNavigationRail": {},
-  "customReaction": "自定义反应",
+  "customReaction": "自定义回应",
+  "@customReaction": {},
+  "moreEvents": "更多事件",
+  "@moreEvents": {},
   "writeAMessageLangCodes": "输入 {l1} 或 {l2}...",
   "requests": "请求",
   "holdForInfo": "点击并按住获取单词信息。",
@@ -4508,10 +4511,6 @@
   "inviteYourFriends": "邀请你的朋友",
   "playWithAI": "暂时与AI玩玩",
   "courseStartDesc": "Pangea 机器人随时准备开始！\n\n……但和朋友一起学习会更好！",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

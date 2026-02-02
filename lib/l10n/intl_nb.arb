@@ -1813,12 +1813,62 @@
   },
   "notAnImage": "Ikke en bildefil.",
   "@notAnImage": {},
+  "importNow": "Importer nå",
+  "@importNow": {},
+  "hugContent": "{senderName} klemmer deg",
+  "@hugContent": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
+  "space": "Område",
+  "@space": {},
+  "spaces": "Områder",
+  "@spaces": {},
+  "cuddleContent": "{senderName} koser med deg",
+  "@cuddleContent": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
+  "appLockDescription": "Lås appen med en PIN-kode når den ikke er i bruk",
+  "@appLockDescription": {},
+  "ignoreUser": "Ignorer bruker",
+  "@ignoreUser": {},
+  "setCustomPermissionLevel": "Angi egendefinert tillatelsesnivå",
+  "@setCustomPermissionLevel": {},
+  "normalUser": "Vanlig bruker",
+  "@normalUser": {},
+  "replace": "Erstatt",
+  "@replace": {},
+  "noMoreChatsFound": "Ingen flere chatter funnet ...",
+  "@noMoreChatsFound": {},
+  "confirmMatrixId": "Vennligst bekreft din Matrix-ID for å slette kontoen din.",
+  "@confirmMatrixId": {},
+  "unread": "",
+  "@unread": {},
+  "aboutHomeserver": "Om {homeserver}",
+  "@aboutHomeserver": {
+    "type": "String",
+    "placeholders": {
+      "homeserver": {
+        "type": "String"
+      }
+    }
+  },
+  "commandHint_hug": "Send en klem",
+  "@commandHint_hug": {},
   "alwaysUse24HourFormat": "falsk",
   "setCustomPermissionLevel": "Sett egendefinert tillatelsesnivå",
   "setPermissionsLevelDescription": "Vennligst velg en forhåndsdefinert rolle nedenfor eller skriv inn et egendefinert tillatelsesnivå mellom 0 og 100.",
   "ignoreUser": "Ignorer bruker",
   "normalUser": "Normal bruker",
-  "importNow": "Importer nå",
   "importEmojis": "Importer Emojis",
   "importFromZipFile": "Importer fra .zip-fil",
   "exportEmotePack": "Eksporter Emote-pakke som .zip",
@@ -3438,10 +3488,6 @@
     "placeholders": {}
   },
   "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@importNow": {
     "type": "String",
     "placeholders": {}
   },

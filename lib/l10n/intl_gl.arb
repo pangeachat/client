@@ -3376,9 +3376,12 @@
   "@commandHint_logoutall": {},
   "commandHint_logout": "Fechar a sesión no dispositivo actual",
   "@commandHint_logout": {},
+  "moreEvents": "Máis eventos",
+  "@moreEvents": {},
+  "customReaction": "Reacción personalizada",
+  "@customReaction": {},
   "checkList": "Lista de verificación",
   "displayNavigationRail": "Mostrar rail de navegación en móbil",
-  "customReaction": "Reacción personalizada",
   "writeAMessageLangCodes": "Escribe en {l1} ou {l2}...",
   "requests": "Solicitudes",
   "holdForInfo": "Fai clic e mantén para obter información sobre a palabra.",
@@ -4511,10 +4514,6 @@
     "placeholders": {}
   },
   "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
     "type": "String",
     "placeholders": {}
   },
