@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:emojis/emoji.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
@@ -34,14 +34,16 @@ class InputBar extends StatelessWidget {
   final FocusNode? focusNode;
   // #Pangea
   // final TextEditingController? controller;
-  final PangeaTextController? controller;
-  final Choreographer choreographer;
-  final VoidCallback showNextMatch;
   // Pangea#
   final InputDecoration decoration;
   final ValueChanged<String>? onChanged;
   final bool? autofocus;
   final bool readOnly;
+  // #Pangea
+  final PangeaTextController? controller;
+  final Choreographer choreographer;
+  final VoidCallback showNextMatch;
+  // Pangea#
 
   const InputBar({
     required this.room,
@@ -64,12 +66,14 @@ class InputBar extends StatelessWidget {
     super.key,
   });
 
-  List<Map<String, String?>> getSuggestions(TextEditingValue text) {
-    if (text.selection.baseOffset != text.selection.extentOffset ||
-        text.selection.baseOffset < 0) {
+  List<Map<String, String?>> getSuggestions(String text) {
+    if (controller!.selection.baseOffset !=
+            controller!.selection.extentOffset ||
+        controller!.selection.baseOffset < 0) {
       return []; // no entries if there is selected text
     }
-    final searchText = text.text.substring(0, text.selection.baseOffset);
+    final searchText =
+        controller!.text.substring(0, controller!.selection.baseOffset);
     final ret = <Map<String, String?>>[];
     const maxResults = 30;
 
@@ -236,28 +240,33 @@ class InputBar extends StatelessWidget {
   Widget buildSuggestion(
     BuildContext context,
     Map<String, String?> suggestion,
-    void Function(Map<String, String?>) onSelected,
     Client? client,
   ) {
     final theme = Theme.of(context);
     const size = 30.0;
+    const padding = EdgeInsets.all(4.0);
     if (suggestion['type'] == 'command') {
       final command = suggestion['name']!;
       final hint = commandHint(L10n.of(context), command);
       return Tooltip(
         message: hint,
         waitDuration: const Duration(days: 1), // don't show on hover
-        child: ListTile(
-          onTap: () => onSelected(suggestion),
-          title: Text(
-            commandExample(command),
-            style: const TextStyle(fontFamily: 'RobotoMono'),
-          ),
-          subtitle: Text(
-            hint,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodySmall,
+        child: Container(
+          padding: padding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                commandExample(command),
+                style: const TextStyle(fontFamily: 'RobotoMono'),
+              ),
+              Text(
+                hint,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall,
+              ),
+            ],
           ),
         ),
       );
@@ -267,28 +276,29 @@ class InputBar extends StatelessWidget {
       return Tooltip(
         message: label,
         waitDuration: const Duration(days: 1), // don't show on hover
-        child: ListTile(
-          onTap: () => onSelected(suggestion),
-          title: Text(label, style: const TextStyle(fontFamily: 'RobotoMono')),
+        child: Container(
+          padding: padding,
+          child: Text(label, style: const TextStyle(fontFamily: 'RobotoMono')),
         ),
       );
     }
     if (suggestion['type'] == 'emote') {
-      return ListTile(
-        onTap: () => onSelected(suggestion),
-        leading: MxcImage(
-          // ensure proper ordering ...
-          key: ValueKey(suggestion['name']),
-          uri: suggestion['mxc'] is String
-              ? Uri.parse(suggestion['mxc'] ?? '')
-              : null,
-          width: size,
-          height: size,
-          isThumbnail: false,
-        ),
-        title: Row(
+      return Container(
+        padding: padding,
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            MxcImage(
+              // ensure proper ordering ...
+              key: ValueKey(suggestion['name']),
+              uri: suggestion['mxc'] is String
+                  ? Uri.parse(suggestion['mxc'] ?? '')
+                  : null,
+              width: size,
+              height: size,
+              isThumbnail: false,
+            ),
+            const SizedBox(width: 6),
             Text(suggestion['name']!),
             Expanded(
               child: Align(
@@ -314,22 +324,28 @@ class InputBar extends StatelessWidget {
     }
     if (suggestion['type'] == 'user' || suggestion['type'] == 'room') {
       final url = Uri.parse(suggestion['avatar_url'] ?? '');
-      return ListTile(
-        onTap: () => onSelected(suggestion),
-        leading: Avatar(
-          mxContent: url,
-          name: suggestion.tryGet<String>('displayname') ??
-              suggestion.tryGet<String>('mxid'),
-          size: size,
-          client: client,
+      return Container(
+        padding: padding,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Avatar(
+              mxContent: url,
+              name: suggestion.tryGet<String>('displayname') ??
+                  suggestion.tryGet<String>('mxid'),
+              size: size,
+              client: client,
+            ),
+            const SizedBox(width: 6),
+            Text(suggestion['displayname'] ?? suggestion['mxid']!),
+          ],
         ),
-        title: Text(suggestion['displayname'] ?? suggestion['mxid']!),
       );
     }
     return const SizedBox.shrink();
   }
 
-  String insertSuggestion(Map<String, String?> suggestion) {
+  void insertSuggestion(_, Map<String, String?> suggestion) {
     final replaceText =
         controller!.text.substring(0, controller!.selection.baseOffset);
     var startText = '';
@@ -393,8 +409,13 @@ class InputBar extends StatelessWidget {
         (Match m) => '${m[1]}$insertText',
       );
     }
-
-    return startText + afterText;
+    if (insertText.isNotEmpty && startText.isNotEmpty) {
+      controller!.text = startText + afterText;
+      controller!.selection = TextSelection(
+        baseOffset: startText.length,
+        extentOffset: startText.length,
+      );
+    }
   }
 
   // #Pangea
@@ -463,116 +484,105 @@ class InputBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Autocomplete<Map<String, String?>>(
+    return TypeAheadField<Map<String, String?>>(
+      direction: VerticalDirection.up,
+      hideOnEmpty: true,
+      hideOnLoading: true,
+      controller: controller,
       focusNode: focusNode,
-      textEditingController: controller,
-      optionsBuilder: getSuggestions,
-      fieldViewBuilder: (context, __, focusNode, _) => ValueListenableBuilder(
-        valueListenable: choreographer.itController.open,
-        builder: (context, _, __) {
-          return TextField(
-            controller: controller,
-            focusNode: focusNode,
-            // #Pangea
-            // readOnly: readOnly,
-            // contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
-            contextMenuBuilder: (c, e) =>
-                markdownContextBuilder(c, e, controller!),
-            onTap: () => _onInputTap(context),
-            readOnly: choreographer.choreoMode == ChoreoModeEnum.it,
-            autocorrect: MatrixState.pangeaController.userController
-                .isToolEnabled(ToolSetting.enableAutocorrect),
-            // Pangea#
-            contentInsertionConfiguration: ContentInsertionConfiguration(
-              onContentInserted: (KeyboardInsertedContent content) {
-                final data = content.data;
-                if (data == null) return;
+      hideOnSelect: false,
+      debounceDuration: const Duration(milliseconds: 50),
+      // show suggestions after 50ms idle time (default is 300)
+      // #Pangea
+      // builder: (context, controller, focusNode) => TextField(
+      builder: (context, _, focusNode) => TextField(
+        // Pangea#
+        controller: controller,
+        focusNode: focusNode,
+        // #Pangea
+        // readOnly: readOnly,
+        // contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
+        contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller!),
+        onTap: () => _onInputTap(context),
+        readOnly: choreographer.choreoMode == ChoreoModeEnum.it,
+        autocorrect: MatrixState.pangeaController.userController
+            .isToolEnabled(ToolSetting.enableAutocorrect),
+        // Pangea#
+        contentInsertionConfiguration: ContentInsertionConfiguration(
+          onContentInserted: (KeyboardInsertedContent content) {
+            final data = content.data;
+            if (data == null) return;
 
-                final file = MatrixFile(
-                  mimeType: content.mimeType,
-                  bytes: data,
-                  name: content.uri.split('/').last,
-                );
-                room.sendFileEvent(
-                  file,
-                  shrinkImageMaxDimension: 1600,
-                );
-              },
-            ),
-            minLines: minLines,
-            maxLines: maxLines,
-            keyboardType: keyboardType!,
-            textInputAction: textInputAction,
-            autofocus: autofocus!,
-            inputFormatters: [
-              // #Pangea
-              //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
-              //setting max character count to 1000
-              //after max, nothing else can be typed
-              LengthLimitingTextInputFormatter(1000),
-              // Pangea#
-            ],
-            onSubmitted: (text) {
-              // fix for library for now
-              // it sets the types for the callback incorrectly
-              onSubmitted!(text);
-            },
-            // #Pangea
-            // maxLength: AppSettings.textMessageMaxLength.value,
-            // decoration: decoration!,
-            // Pangea#
-            decoration: decoration.copyWith(
-              // #Pangea
-              // hint: ShrinkableText(
-              hint: StreamBuilder(
-                stream: MatrixState
-                    .pangeaController.userController.languageStream.stream,
-                builder: (context, _) => SizedBox(
-                  height: 24,
-                  child: ShrinkableText(
-                    // Pangea#
-                    text: choreographer.itController.open.value
-                        ? L10n.of(context).buildTranslation
-                        : _defaultHintText(context),
-                    maxWidth: double.infinity,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).disabledColor,
-                        ),
-                  ),
-                ),
+            final file = MatrixFile(
+              mimeType: content.mimeType,
+              bytes: data,
+              name: content.uri.split('/').last,
+            );
+            room.sendFileEvent(
+              file,
+              shrinkImageMaxDimension: 1600,
+            );
+          },
+        ),
+        minLines: minLines,
+        maxLines: maxLines,
+        keyboardType: keyboardType!,
+        textInputAction: textInputAction,
+        autofocus: autofocus!,
+        inputFormatters: [
+          // #Pangea
+          //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
+          //setting max character count to 1000
+          //after max, nothing else can be typed
+          LengthLimitingTextInputFormatter(1000),
+          // Pangea#
+        ],
+        onSubmitted: (text) {
+          // fix for library for now
+          // it sets the types for the callback incorrectly
+          onSubmitted!(text);
+        },
+        // #Pangea
+        // maxLength:
+        //     AppSettings.textMessageMaxLength.getItem(Matrix.of(context).store),
+        // decoration: decoration,
+        decoration: decoration.copyWith(
+          hint: StreamBuilder(
+            stream: MatrixState
+                .pangeaController.userController.languageStream.stream,
+            builder: (context, _) => SizedBox(
+              height: 24,
+              child: ShrinkableText(
+                text: choreographer.itController.open.value
+                    ? L10n.of(context).buildTranslation
+                    : _defaultHintText(context),
+                maxWidth: double.infinity,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Theme.of(context).disabledColor,
+                    ),
               ),
             ),
-            onChanged: (text) {
-              // fix for the library for now
-              // it sets the types for the callback incorrectly
-              onChanged!(text);
-            },
-            textCapitalization: TextCapitalization.sentences,
-          );
-        },
-      ),
-      optionsViewBuilder: (c, onSelected, s) {
-        final suggestions = s.toList();
-        return Material(
-          elevation: theme.appBarTheme.scrolledUnderElevation ?? 4,
-          shadowColor: theme.appBarTheme.shadowColor,
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          clipBehavior: Clip.hardEdge,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: suggestions.length,
-            itemBuilder: (context, i) => buildSuggestion(
-              c,
-              suggestions[i],
-              onSelected,
-              Matrix.of(context).client,
-            ),
           ),
-        );
-      },
-      displayStringForOption: insertSuggestion,
-      optionsViewOpenDirection: OptionsViewOpenDirection.up,
+        ),
+        // Pangea#
+        onChanged: (text) {
+          // fix for the library for now
+          // it sets the types for the callback incorrectly
+          onChanged!(text);
+        },
+        textCapitalization: TextCapitalization.sentences,
+      ),
+
+      suggestionsCallback: getSuggestions,
+      itemBuilder: (c, s) => buildSuggestion(c, s, Matrix.of(context).client),
+      onSelected: (Map<String, String?> suggestion) =>
+          insertSuggestion(context, suggestion),
+      errorBuilder: (BuildContext context, Object? error) =>
+          const SizedBox.shrink(),
+      loadingBuilder: (BuildContext context) => const SizedBox.shrink(),
+      // fix loading briefly flickering a dark box
+      emptyBuilder: (BuildContext context) =>
+          const SizedBox.shrink(), // fix loading briefly showing no suggestions
     );
   }
 }
