@@ -106,6 +106,8 @@ abstract class FluffyThemes {
         surfaceTintColor: colorScheme.surface,
         backgroundColor: colorScheme.surface,
         // Pangea#
+        actionsPadding:
+            isColumnMode ? const EdgeInsets.symmetric(horizontal: 16.0) : null,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: brightness.reversed,
@@ -128,6 +130,7 @@ abstract class FluffyThemes {
       ),
       snackBarTheme: isColumnMode
           ? const SnackBarThemeData(
+              showCloseIcon: true,
               behavior: SnackBarBehavior.floating,
               width: FluffyThemes.columnWidth * 1.5,
             )

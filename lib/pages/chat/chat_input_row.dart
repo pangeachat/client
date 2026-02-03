@@ -5,7 +5,6 @@
 
 // import 'package:fluffychat/config/app_config.dart';
 // import 'package:fluffychat/l10n/l10n.dart';
-// import 'package:fluffychat/pages/chat/encryption_button.dart';
 // import 'package:fluffychat/utils/other_party_can_receive.dart';
 // import 'package:fluffychat/utils/platform_infos.dart';
 // import 'package:fluffychat/widgets/avatar.dart';
@@ -53,12 +52,12 @@
 //                   height: height,
 //                   child: TextButton(
 //                     style: TextButton.styleFrom(
-//                       foregroundColor: Colors.orange,
+//                       foregroundColor: theme.colorScheme.error,
 //                     ),
 //                     onPressed: controller.deleteErrorEventsAction,
 //                     child: Row(
 //                       children: <Widget>[
-//                         const Icon(Icons.delete),
+//                         const Icon(Icons.delete_forever_outlined),
 //                         Text(L10n.of(context).delete),
 //                       ],
 //                     ),
@@ -228,6 +227,7 @@
 //                 ),
 //               Container(
 //                 height: height,
+//                 width: height,
 //                 alignment: Alignment.center,
 //                 child: IconButton(
 //                   tooltip: L10n.of(context).emojis,
@@ -256,17 +256,12 @@
 //                   onPressed: controller.emojiPickerAction,
 //                 ),
 //               ),
-//               Container(
-//                 height: height,
-//                 alignment: Alignment.center,
-//                 child: EncryptionButton(controller.room),
-//               ),
 //               if (Matrix.of(context).isMultiAccount &&
 //                   Matrix.of(context).hasComplexBundles &&
 //                   Matrix.of(context).currentBundle!.length > 1)
 //                 Container(
-//                   width: height,
 //                   height: height,
+//                   width: height,
 //                   alignment: Alignment.center,
 //                   child: _ChatAccountPicker(controller),
 //                 ),

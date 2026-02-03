@@ -138,6 +138,7 @@ class ChatView extends StatelessWidget {
     //         icon: const Icon(Icons.call_outlined),
     //         tooltip: L10n.of(context).placeCall,
     //       ),
+    //     EncryptionButton(controller.room),
     //     ChatSettingsPopupMenu(controller.room, true),
     //   ];
     // }
