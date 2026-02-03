@@ -83,9 +83,11 @@ class _NewWordOverlayState extends State<NewWordOverlay>
   @override
   void dispose() {
     _controller?.dispose();
-    MatrixState.pAnyState.closeOverlay(widget.transformTargetId);
+    MatrixState.pAnyState.closeOverlay(_overlayKey);
     super.dispose();
   }
+
+  String get _overlayKey => "new-word-overlay-${widget.transformTargetId}";
 
   void _showFlyingWidget() {
     if (_controller == null || _opacityAnim == null || _moveAnim == null) {
@@ -96,9 +98,10 @@ class _NewWordOverlayState extends State<NewWordOverlay>
       context: context,
       closePrevOverlay: false,
       ignorePointer: true,
+      canPop: false,
       offset: const Offset(0, 45),
       targetAnchor: Alignment.center,
-      overlayKey: widget.transformTargetId,
+      overlayKey: _overlayKey,
       transformTargetId: widget.transformTargetId,
       child: AnimatedBuilder(
         animation: _controller!,
