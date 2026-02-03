@@ -24,7 +24,6 @@ import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
-import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -43,6 +42,7 @@ import '../../widgets/matrix.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
+
 
 enum PopupMenuAction {
   settings,
@@ -559,8 +559,6 @@ class ChatListController extends State<ChatList>
     });
 
     _checkTorBrowser();
-
-    ErrorReporter(context).consumeTemporaryErrorLogFile();
 
     //#Pangea
     _invitedSpaceSubscription = Matrix.of(context)

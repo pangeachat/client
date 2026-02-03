@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -22,34 +18,6 @@ class ErrorReporter {
     "TlsException",
     "HandshakeException",
   };
-
-  Future<File> _getTemporaryErrorLogFile() async {
-    final tempDir = await getTemporaryDirectory();
-    return File(path.join(tempDir.path, 'error_log.txt'));
-  }
-
-  Future<void> writeToTemporaryErrorLogFile(
-    Object error, [
-    StackTrace? stackTrace,
-  ]) async {
-    if (ingoredTypes.contains(error.runtimeType.toString())) return;
-    final file = await _getTemporaryErrorLogFile();
-    if (await file.exists()) await file.delete();
-    await file.writeAsString(
-      '[${DateTime.now().toIso8601String()}] $message -  $error\n$stackTrace',
-    );
-  }
-
-  Future<void> consumeTemporaryErrorLogFile() async {
-    final file = await _getTemporaryErrorLogFile();
-    if (!(await file.exists())) return;
-    final content = await file.readAsString();
-    // #Pangea
-    // _onErrorCallback(content);
-    onErrorCallback(content);
-    // Pangea#
-    await file.delete();
-  }
 
   void onErrorCallback(Object error, [StackTrace? stackTrace]) {
     if (ingoredTypes.contains(error.runtimeType.toString())) return;
