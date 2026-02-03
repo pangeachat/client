@@ -25,7 +25,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
-import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
@@ -1140,13 +1139,14 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void voiceMessageAction() async {
+  Future<void> onVoiceMessageSend(
+    String path,
+    int duration,
+    List<int> waveform,
+    String? fileName,
+  ) async {
     // #Pangea
     stopMediaStream.add(null);
-    // Pangea#
-    room.client.getConfig(); // Preload server file configuration.
-
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
       if (info.version.sdkInt < 19) {
@@ -1159,17 +1159,9 @@ class ChatController extends State<ChatPageWithRoom>
         return;
       }
     }
-
-    // #Pangea
-    // if (await AudioRecorder().hasPermission() == false) return;
     // Pangea#
-    final result = await showDialog<RecordingResult>(
-      context: context,
-      barrierDismissible: false,
-      builder: (c) => const RecordingDialog(),
-    );
-    if (result == null) return;
-    final audioFile = XFile(result.path);
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final audioFile = XFile(path);
 
     final bytesResult = await showFutureLoadingDialog(
       context: context,
@@ -1180,30 +1172,31 @@ class ChatController extends State<ChatPageWithRoom>
 
     final file = MatrixAudioFile(
       bytes: bytes,
-      name: result.fileName ?? audioFile.path,
+      name: fileName ?? audioFile.path,
     );
 
     // #Pangea
-    final reply = replyEvent.value;
+    // setState(() {
+    //   replyEvent = null;
+    // });
     replyEvent.value = null;
     // Pangea#
-
-    await room
+    room
         .sendFileEvent(
           file,
           // #Pangea
           // inReplyTo: replyEvent,
-          inReplyTo: reply,
+          inReplyTo: replyEvent.value,
           // Pangea#
           extraContent: {
             'info': {
               ...file.info,
-              'duration': result.duration,
+              'duration': duration,
             },
             'org.matrix.msc3245.voice': {},
             'org.matrix.msc1767.audio': {
-              'duration': result.duration,
-              'waveform': result.waveform,
+              'duration': duration,
+              'waveform': waveform,
             },
             // #Pangea
             'speaker_l1': pangeaController.userController.userL1Code,
@@ -1220,8 +1213,6 @@ class ChatController extends State<ChatPageWithRoom>
             data: {
               'roomId': roomId,
               'file': file.name,
-              'duration': result.duration,
-              'waveform': result.waveform,
             },
           );
           scaffoldMessenger.showSnackBar(
@@ -1243,9 +1234,7 @@ class ChatController extends State<ChatPageWithRoom>
     //   );
     //   return null;
     // });
-    // setState(() {
-    //   replyEvent = null;
-    // });
+    // return;
     // Pangea#
   }
 
