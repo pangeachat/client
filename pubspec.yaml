@@ -14,7 +14,7 @@ environment:
 dependencies:
   animations: ^2.0.11
   app_links: ^6.3.3
-  archive: ^3.4.10
+  archive: ^4.0.7
   async: ^2.11.0
   badges: ^3.1.2
   blurhash_dart: ^1.2.1
@@ -29,14 +29,14 @@ dependencies:
   desktop_notifications: ^0.6.3
   device_info_plus: ^11.5.0
   diacritic: ^0.1.6
-  dynamic_color: ^1.7.0
+  dynamic_color: ^1.8.1
   emoji_picker_flutter: ^4.3.0
   emojis: ^0.9.9
   file_picker: ^10.2.1
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
-  flutter_foreground_task: ^6.1.3
+  flutter_foreground_task: ^9.1.0
   flutter_highlighter: ^0.1.1
   flutter_linkify: ^6.0.0
   flutter_local_notifications: ^19.4.0
@@ -94,7 +94,7 @@ dependencies:
   sqlcipher_flutter_libs: ^0.6.7
   swipe_to_action: ^0.3.0
   tor_detector_web: ^1.1.0
-  unifiedpush: ^5.0.1
+  unifiedpush: ^6.0.2
   unifiedpush_ui: ^0.1.0
   universal_html: ^2.2.4
   url_launcher: ^6.3.2
@@ -111,7 +111,11 @@ dependencies:
   country_picker: ^2.0.25
   csv: ^6.0.0
   dropdown_button2: ^2.3.9
-  excel: ^4.0.6
+  # https://github.com/justkawal/excel/pull/409
+  excel:
+    git:
+      url: https://github.com/busslina/excel.git
+      ref: efd70f3086d12105dad0029f71663e6a4ed295f2
   firebase_analytics: ^11.0.1
   firebase_core: ^3.1.0
   firebase_messaging: ^15.1.5
