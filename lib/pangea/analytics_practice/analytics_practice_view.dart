@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
-import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
@@ -17,11 +17,13 @@ import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -132,27 +134,35 @@ class _AnalyticsActivityView extends StatelessWidget {
           height: 75.0,
           child: ValueListenableBuilder(
             valueListenable: controller.activityTarget,
-            builder: (context, target, __) => target != null
-                ? Column(
-                    children: [
-                      Text(
-                        target.promptText(context),
-                        textAlign: TextAlign.center,
-                        style: titleStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      if (controller.widget.type == ConstructTypeEnum.vocab)
-                        PhoneticTranscriptionWidget(
-                          text:
-                              target.target.tokens.first.vocabConstructID.lemma,
-                          textLanguage: MatrixState
-                              .pangeaController.userController.userL2!,
-                          style: const TextStyle(fontSize: 14.0),
-                        ),
-                    ],
-                  )
-                : const SizedBox.shrink(),
+            builder: (context, target, __) {
+              if (target == null) return const SizedBox.shrink();
+
+              final isAudioActivity =
+                  target.target.activityType == ActivityTypeEnum.lemmaAudio;
+              final isVocabType =
+                  controller.widget.type == ConstructTypeEnum.vocab;
+
+              return Column(
+                children: [
+                  Text(
+                    isAudioActivity && isVocabType
+                        ? 'Select all the words you hear in the audio' //TODO: add to L10n
+                        : target.promptText(context),
+                    textAlign: TextAlign.center,
+                    style: titleStyle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  if (isVocabType && !isAudioActivity)
+                    PhoneticTranscriptionWidget(
+                      text: target.target.tokens.first.vocabConstructID.lemma,
+                      textLanguage:
+                          MatrixState.pangeaController.userController.userL2!,
+                      style: const TextStyle(fontSize: 14.0),
+                    ),
+                ],
+              );
+            },
           ),
         ),
         const SizedBox(height: 16.0),
@@ -227,6 +237,19 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               ],
             ),
           ),
+        ActivityTypeEnum.lemmaAudio => ValueListenableBuilder(
+            valueListenable: controller.activityState,
+            builder: (context, state, __) => switch (state) {
+              AsyncLoaded(
+                value: final VocabAudioPracticeActivityModel activity
+              ) =>
+                _AudioPracticeWidget(
+                  key: ValueKey(activity.audioExampleMessage?.eventId),
+                  activity: activity,
+                ),
+              _ => const SizedBox(height: 100.0),
+            },
+          ),
         _ => SizedBox(
             height: 100.0,
             child: Center(
@@ -236,6 +259,128 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
             ),
           ),
       },
+    );
+  }
+}
+
+class _AudioPracticeWidget extends StatefulWidget {
+  final VocabAudioPracticeActivityModel activity;
+
+  const _AudioPracticeWidget({
+    super.key,
+    required this.activity,
+  });
+
+  @override
+  State<_AudioPracticeWidget> createState() => _AudioPracticeWidgetState();
+}
+
+class _AudioPracticeWidgetState extends State<_AudioPracticeWidget> {
+  PangeaAudioFile? _audioFile;
+  bool _isLoading = true;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAudio();
+  }
+
+  Future<void> _loadAudio() async {
+    final audioExample = widget.activity.audioExampleMessage;
+
+    if (audioExample == null ||
+        audioExample.eventId == null ||
+        audioExample.roomId == null) {
+      setState(() {
+        _error = 'No audio example available';
+        _isLoading = false;
+      });
+      return;
+    }
+
+    try {
+      final client = Matrix.of(context).client;
+      final room = client.getRoomById(audioExample.roomId!);
+
+      if (room == null) {
+        setState(() {
+          _error = 'Room not found';
+          _isLoading = false;
+        });
+        return;
+      }
+
+      final event = await room.getEventById(audioExample.eventId!);
+      if (event == null) {
+        setState(() {
+          _error = 'Event not found';
+          _isLoading = false;
+        });
+        return;
+      }
+
+      final pangeaEvent = PangeaMessageEvent(
+        event: event,
+        timeline: await room.getTimeline(),
+        ownMessage: event.senderId == client.userID,
+      );
+
+      // Request TTS for the example message text
+      final audioFile = await pangeaEvent.requestTextToSpeech(
+        widget.activity.langCode,
+        MatrixState.pangeaController.userController.voice,
+      );
+
+      setState(() {
+        _audioFile = audioFile;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = 'Failed to load audio: $e';
+        _isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const SizedBox(
+        height: 100.0,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    if (_error != null || _audioFile == null) {
+      return SizedBox(
+        height: 100.0,
+        child: Center(
+          child: Text(_error ?? 'Audio not available'),
+        ),
+      );
+    }
+
+    final audioExample = widget.activity.audioExampleMessage!;
+
+    return SizedBox(
+      height: 100.0,
+      child: Center(
+        child: AudioPlayerWidget(
+          null,
+          color: Theme.of(context).colorScheme.primary,
+          linkColor: Theme.of(context).colorScheme.secondary,
+          fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+          eventId: '${audioExample.eventId}_practice',
+          roomId: audioExample.roomId!,
+          senderId: Matrix.of(context).client.userID!,
+          matrixFile: _audioFile,
+          autoplay: true,
+        ),
+      ),
     );
   }
 }
@@ -589,6 +734,38 @@ class _ActivityChoicesWidget extends StatelessWidget {
               valueListenable: controller.enableChoicesNotifier,
               builder: (context, enabled, __) {
                 final choices = controller.filteredChoices(value);
+                final isAudioActivity =
+                    value.activityType == ActivityTypeEnum.lemmaAudio;
+
+                if (isAudioActivity) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      children: choices
+                          .map(
+                            (choice) => _ChoiceCard(
+                              activity: value,
+                              targetId:
+                                  controller.choiceTargetId(choice.choiceId),
+                              choiceId: choice.choiceId,
+                              onPressed: () => controller.onSelectChoice(
+                                choice.choiceId,
+                              ),
+                              cardHeight: 48.0,
+                              choiceText: choice.choiceText,
+                              choiceEmoji: choice.choiceEmoji,
+                              enabled: enabled,
+                              shrinkWrap: true,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  );
+                }
+
                 return Column(
                   spacing: 8.0,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -633,6 +810,7 @@ class _ChoiceCard extends StatelessWidget {
   final String choiceText;
   final String? choiceEmoji;
   final bool enabled;
+  final bool shrinkWrap;
 
   const _ChoiceCard({
     required this.activity,
@@ -643,6 +821,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.choiceText,
     required this.choiceEmoji,
     this.enabled = true,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -668,16 +847,21 @@ class _ChoiceCard extends StatelessWidget {
         );
 
       case ActivityTypeEnum.lemmaAudio:
-        return AudioChoiceCard(
+        return GameChoiceCard(
           key: ValueKey(
             '${constructId.string}_${activityType.name}_audio_$choiceId',
           ),
-          text: choiceId,
+          shouldFlip: false,
           targetId: targetId,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
+          shrinkWrap: shrinkWrap,
+          child: Text(
+            choiceText,
+            textAlign: TextAlign.center,
+          ),
         );
 
       case ActivityTypeEnum.grammarCategory:

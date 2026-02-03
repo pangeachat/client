@@ -34,29 +34,49 @@ class AnalyticsPracticeSessionRepo {
       throw UnsubscribedException();
     }
 
-    final r = Random();
-    final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
-
-    final types = List.generate(
-      AnalyticsPracticeConstants.practiceGroupSize +
-          AnalyticsPracticeConstants.errorBufferSize,
-      (_) => activityTypes[r.nextInt(activityTypes.length)],
-    );
-
     final List<AnalyticsActivityTarget> targets = [];
 
     if (type == ConstructTypeEnum.vocab) {
-      final constructs = await _fetchVocab();
-      final targetCount = min(constructs.length, types.length);
-      targets.addAll([
-        for (var i = 0; i < targetCount; i++)
+      const totalNeeded = AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize;
+      final halfNeeded = (totalNeeded / 2).ceil();
+
+      // Fetch audio constructs (with example messages)
+      final audioMap = await _fetchAudio();
+      final audioCount = min(audioMap.length, halfNeeded);
+
+      // Fetch vocab constructs to fill the rest
+      final vocabNeeded = totalNeeded - audioCount;
+      final vocabConstructs = await _fetchVocab();
+      final vocabCount = min(vocabConstructs.length, vocabNeeded);
+
+      // Add audio targets - these MUST have example messages
+      for (final entry in audioMap.entries.take(audioCount)) {
+        targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
-              tokens: [constructs[i].asToken],
-              activityType: types[i],
+              tokens: [entry.key.asToken],
+              activityType: ActivityTypeEnum.lemmaAudio,
+            ),
+            audioExampleMessage: entry.value,
+          ),
+        );
+      }
+
+      // Add vocab meaning targets (no example messages needed)
+      for (var i = 0; i < vocabCount; i++) {
+        targets.add(
+          AnalyticsActivityTarget(
+            target: PracticeTarget(
+              tokens: [vocabConstructs[i].asToken],
+              activityType: ActivityTypeEnum.lemmaMeaning,
             ),
           ),
-      ]);
+        );
+      }
+
+      // Shuffle to mix audio and vocab
+      targets.shuffle();
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
@@ -77,7 +97,7 @@ class AnalyticsPracticeSessionRepo {
                 activityType: ActivityTypeEnum.grammarCategory,
                 morphFeature: entry.feature,
               ),
-              morphExampleInfo: MorphExampleInfo(
+              exampleMessage: ExampleMessageInfo(
                 exampleMessage: entry.exampleMessage,
               ),
             ),
@@ -127,6 +147,52 @@ class AnalyticsPracticeSessionRepo {
           (AnalyticsPracticeConstants.practiceGroupSize +
               AnalyticsPracticeConstants.errorBufferSize)) {
         break;
+      }
+    }
+    return targets;
+  }
+
+  static Future<Map<ConstructIdentifier, AudioExampleMessage>>
+      _fetchAudio() async {
+    final constructs = await MatrixState
+        .pangeaController.matrixState.analyticsDataService
+        .getAggregatedConstructs(ConstructTypeEnum.vocab)
+        .then((map) => map.values.toList());
+
+    // sort by last used descending, nulls first
+    constructs.sort((a, b) {
+      final dateA = a.lastUsed;
+      final dateB = b.lastUsed;
+      if (dateA == null && dateB == null) return 0;
+      if (dateA == null) return -1;
+      if (dateB == null) return 1;
+      return dateA.compareTo(dateB);
+    });
+
+    final Set<String> seenLemmas = {};
+    final targets = <ConstructIdentifier, AudioExampleMessage>{};
+
+    for (final construct in constructs) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
+        break;
+      }
+
+      if (seenLemmas.contains(construct.lemma)) continue;
+
+      // Try to get an audio example message with token data for this lemma
+      final audioExampleMessage =
+          await ExampleMessageUtil.getAudioExampleMessage(
+        await MatrixState.pangeaController.matrixState.analyticsDataService
+            .getConstructUse(construct.id),
+        MatrixState.pangeaController.matrixState.client,
+      );
+
+      // Only add to targets if we found an example message
+      if (audioExampleMessage != null) {
+        seenLemmas.add(construct.lemma);
+        targets[construct.id] = audioExampleMessage;
       }
     }
     return targets;

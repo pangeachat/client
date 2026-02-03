@@ -59,8 +59,8 @@ class MorphCategoryActivityGenerator {
           choices: choices.toSet(),
           answers: {morphTag},
         ),
-        morphExampleInfo:
-            req.morphExampleInfo ?? const MorphExampleInfo(exampleMessage: []),
+        exampleMessageInfo:
+            req.exampleMessage ?? const ExampleMessageInfo(exampleMessage: []),
       ),
     );
   }

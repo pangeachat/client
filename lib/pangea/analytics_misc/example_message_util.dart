@@ -4,8 +4,35 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+
+/// Internal result class that holds all computed data from building an example message.
+class _ExampleMessageResult {
+  final List<InlineSpan> displaySpans;
+  final List<PangeaToken> includedTokens;
+  final String text;
+  final int adjustedTargetIndex;
+  final String? eventId;
+  final String? roomId;
+
+  _ExampleMessageResult({
+    required this.displaySpans,
+    required this.includedTokens,
+    required this.text,
+    required this.adjustedTargetIndex,
+    this.eventId,
+    this.roomId,
+  });
+
+  List<InlineSpan> toSpans() => displaySpans;
+  AudioExampleMessage toAudioExampleMessage() => AudioExampleMessage(
+        tokens: includedTokens,
+        eventId: eventId,
+        roomId: roomId,
+      );
+}
 
 class ExampleMessageUtil {
   static Future<List<InlineSpan>?> getExampleMessage(
@@ -13,17 +40,19 @@ class ExampleMessageUtil {
     Client client, {
     String? form,
   }) async {
-    for (final use in construct.cappedUses) {
-      if (form != null && use.form != form) continue;
+    final result =
+        await _getExampleMessageResult(construct, client, form: form);
+    return result?.toSpans();
+  }
 
-      final event = await client.getEventByConstructUse(use);
-      if (event == null) continue;
-
-      final spans = _buildExampleMessage(use.form, event);
-      if (spans != null) return spans;
-    }
-
-    return null;
+  static Future<AudioExampleMessage?> getAudioExampleMessage(
+    ConstructUses construct,
+    Client client, {
+    String? form,
+  }) async {
+    final result =
+        await _getExampleMessageResult(construct, client, form: form);
+    return result?.toAudioExampleMessage();
   }
 
   static Future<List<List<InlineSpan>>> getExampleMessages(
@@ -37,15 +66,33 @@ class ExampleMessageUtil {
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 
-      final spans = _buildExampleMessage(use.form, event);
-      if (spans != null) {
-        allSpans.add(spans);
+      final result = _buildExampleMessage(use.form, event);
+      if (result != null) {
+        allSpans.add(result.toSpans());
       }
     }
     return allSpans;
   }
 
-  static List<InlineSpan>? _buildExampleMessage(
+  /// Internal helper to get the full result for an example message
+  static Future<_ExampleMessageResult?> _getExampleMessageResult(
+    ConstructUses construct,
+    Client client, {
+    String? form,
+  }) async {
+    for (final use in construct.cappedUses) {
+      if (form != null && use.form != form) continue;
+
+      final event = await client.getEventByConstructUse(use);
+      if (event == null) continue;
+
+      final result = _buildExampleMessage(use.form, event);
+      if (result != null) return result;
+    }
+    return null;
+  }
+
+  static _ExampleMessageResult? _buildExampleMessage(
     String? form,
     PangeaMessageEvent messageEvent,
   ) {
@@ -99,6 +146,7 @@ class ExampleMessageUtil {
     // ---------- BEFORE ----------
     int beforeStartOffset = 0;
     bool trimmedBefore = false;
+    int firstIncludedTokenIndex = 0;
 
     if (beforeAvailable > beforeBudget) {
       final desiredStart = targetStart - beforeBudget;
@@ -110,6 +158,7 @@ class ExampleMessageUtil {
 
         if (tokenEnd > desiredStart) {
           beforeStartOffset = token.text.offset;
+          firstIncludedTokenIndex = i;
           trimmedBefore = true;
           break;
         }
@@ -124,6 +173,7 @@ class ExampleMessageUtil {
     // ---------- AFTER ----------
     int afterEndOffset = totalChars;
     bool trimmedAfter = false;
+    int lastIncludedTokenIndex = tokens.length - 1;
 
     if (afterAvailable > afterBudget) {
       final desiredEnd = targetEnd + afterBudget;
@@ -132,6 +182,7 @@ class ExampleMessageUtil {
         final token = tokens[i];
         if (token.text.offset >= desiredEnd) {
           afterEndOffset = token.text.offset;
+          lastIncludedTokenIndex = i - 1;
           trimmedAfter = true;
           break;
         }
@@ -144,7 +195,7 @@ class ExampleMessageUtil {
         .toString()
         .trimRight();
 
-    return [
+    final displaySpans = [
       if (trimmedBefore) const TextSpan(text: '… '),
       TextSpan(text: before),
       TextSpan(
@@ -154,5 +205,24 @@ class ExampleMessageUtil {
       TextSpan(text: after),
       if (trimmedAfter) const TextSpan(text: '…'),
     ];
+
+    // Extract only the tokens that are included in the displayed text
+    final includedTokens =
+        tokens.sublist(firstIncludedTokenIndex, lastIncludedTokenIndex + 1);
+
+    // Adjust target token index relative to the included tokens
+    final adjustedTargetIndex = targetTokenIndex - firstIncludedTokenIndex;
+
+    return _ExampleMessageResult(
+      displaySpans: displaySpans,
+      includedTokens: includedTokens,
+      text: text.characters
+          .skip(beforeStartOffset)
+          .take(afterEndOffset - beforeStartOffset)
+          .toString(),
+      adjustedTargetIndex: adjustedTargetIndex,
+      eventId: messageEvent.eventId,
+      roomId: messageEvent.room.id,
+    );
   }
 }

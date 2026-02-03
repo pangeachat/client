@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
@@ -101,6 +102,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       ValueNotifier<SelectedMorphChoice?>(null);
 
   final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
+
+  // Track selected correct answers for audio activities
+  final Set<String> _selectedCorrectAnswers = {};
 
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
@@ -231,7 +235,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   void _playAudio() {
     if (activityTarget.value == null) return;
-    if (widget.type != ConstructTypeEnum.vocab) return;
+    if (widget.type == ConstructTypeEnum.vocab &&
+        _currentActivity is VocabMeaningPracticeActivityModel) {
+    } else {
+      return;
+    }
     TtsController.tryToSpeak(
       activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
@@ -329,6 +337,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
           hintPressedNotifier.value = false;
+          _selectedCorrectAnswers.clear();
           final nextActivityCompleter = _queue.removeFirst();
 
           try {
@@ -499,8 +508,18 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         tag: choiceContent,
       );
     }
+
     final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
-    if (isCorrect) {
+
+    // For audio activities, track selected correct answers
+    final isAudioActivity =
+        activity.activityType == ActivityTypeEnum.lemmaAudio;
+    if (isAudioActivity && isCorrect) {
+      _selectedCorrectAnswers.add(choiceContent);
+    }
+
+    if (isCorrect && !isAudioActivity) {
+      // Non-audio activities disable choices after first correct answer
       enableChoicesNotifier.value = false;
     }
 
@@ -516,7 +535,21 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
-    if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
+    if (!isCorrect) return;
+
+    // For audio activities, check if all answers have been selected
+    if (isAudioActivity) {
+      final allAnswers = activity.multipleChoiceContent.answers;
+      final allSelected = allAnswers
+          .every((answer) => _selectedCorrectAnswers.contains(answer));
+
+      if (!allSelected) {
+        return;
+      }
+
+      // All answers selected, disable choices and continue
+      enableChoicesNotifier.value = false;
+    }
 
     _playAudio();
 
@@ -544,7 +577,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final construct = target.targetTokenConstructID(token);
 
     if (widget.type == ConstructTypeEnum.morph) {
-      return activityRequest.morphExampleInfo?.exampleMessage;
+      return activityRequest.exampleMessage?.exampleMessage;
     }
 
     return ExampleMessageUtil.getExampleMessage(
