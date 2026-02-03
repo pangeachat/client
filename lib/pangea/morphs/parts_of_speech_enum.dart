@@ -1,13 +1,11 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 /// list ordered by priority
 enum PartOfSpeechEnum {
@@ -16,6 +14,9 @@ enum PartOfSpeechEnum {
   verb,
   adj,
   adv,
+  idiom,
+  phrasalv,
+  compn,
 
   //Function tokens
   sconj,
@@ -86,6 +87,12 @@ enum PartOfSpeechEnum {
         return L10n.of(context).grammarCopyPOSnoun;
       case PartOfSpeechEnum.intj:
         return L10n.of(context).grammarCopyPOSintj;
+      case PartOfSpeechEnum.idiom:
+        return L10n.of(context).grammarCopyPOSidiom;
+      case PartOfSpeechEnum.phrasalv:
+        return L10n.of(context).grammarCopyPOSphrasalv;
+      case PartOfSpeechEnum.compn:
+        return L10n.of(context).grammarCopyPOScompn;
       case PartOfSpeechEnum.x:
         return L10n.of(context).grammarCopyPOSx;
     }
@@ -96,6 +103,9 @@ enum PartOfSpeechEnum {
         PartOfSpeechEnum.verb,
         PartOfSpeechEnum.adj,
         PartOfSpeechEnum.adv,
+        PartOfSpeechEnum.idiom,
+        PartOfSpeechEnum.phrasalv,
+        PartOfSpeechEnum.compn,
       ].contains(this);
 
   bool get canBeDefined => [
@@ -112,6 +122,9 @@ enum PartOfSpeechEnum {
         PartOfSpeechEnum.adp,
         PartOfSpeechEnum.aux,
         PartOfSpeechEnum.num,
+        PartOfSpeechEnum.idiom,
+        PartOfSpeechEnum.phrasalv,
+        PartOfSpeechEnum.compn,
       ].contains(this);
 
   bool get canBeHeard => [
@@ -128,6 +141,9 @@ enum PartOfSpeechEnum {
         PartOfSpeechEnum.adp,
         PartOfSpeechEnum.aux,
         PartOfSpeechEnum.num,
+        PartOfSpeechEnum.idiom,
+        PartOfSpeechEnum.phrasalv,
+        PartOfSpeechEnum.compn,
       ].contains(this);
 
   bool eligibleForPractice(ActivityTypeEnum activityType) {
