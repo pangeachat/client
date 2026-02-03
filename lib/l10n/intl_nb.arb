@@ -2561,6 +2561,24 @@
     "@sendReadReceipts": {},
     "searchMore": "Søk mer...",
     "@searchMore": {},
+    "shareKeysWithDescription": "Hvilke enheter bør man stole på, slik at de kan lese meldingene dine i krypterte chatter?",
+    "@shareKeysWithDescription": {},
+    "crossVerifiedDevicesIfEnabled": "Kryssbekreftede enheter hvis dette er aktivert",
+    "@crossVerifiedDevicesIfEnabled": {},
+    "crossVerifiedDevices": "Kryssverifiserte enheter",
+    "@crossVerifiedDevices": {},
+    "verifiedDevicesOnly": "Bare verifiserte enheter",
+    "@verifiedDevicesOnly": {},
+    "recordAVideo": "Ta opp en video",
+    "@recordAVideo": {},
+    "optionalMessage": "(Valgfritt) melding...",
+    "@optionalMessage": {},
+    "notSupportedOnThisDevice": "Ikke støttet på denne enheten",
+    "@notSupportedOnThisDevice": {},
+    "enterNewChat": "Bli med i ny chat",
+    "@enterNewChat": {},
+    "pleaseWaitUntilInvited": "Vennligst vent nå, til noen fra rommet inviterer deg.",
+    "@pleaseWaitUntilInvited": {},
     "alwaysUse24HourFormat": "falsk",
     "exportEmotePack": "Eksporter Emote-pakke som .zip",
     "commandHint_googly": "Send noen googly-øyne",
@@ -2789,16 +2807,7 @@
     "sentVoiceMessage": "🎙️ {duration} - Talebeskjed fra {sender}",
     "deletePushRuleCanNotBeUndone": "Hvis du sletter denne varslingsinnstillingen, kan den ikke angres.",
     "shareKeysWith": "Del nøkler med...",
-    "shareKeysWithDescription": "Hvilke enheter skal være tillit for å kunne lese dine meldinger i krypterte chatter?",
-    "crossVerifiedDevicesIfEnabled": "Kryssverifiserte enheter hvis aktivert",
-    "crossVerifiedDevices": "Kryssverifiserte enheter",
-    "verifiedDevicesOnly": "Bare verifiserte enheter",
-    "recordAVideo": "Spill inn en video",
-    "optionalMessage": "(Valgfritt) melding...",
-    "notSupportedOnThisDevice": "Ikke støttet på denne enheten",
-    "enterNewChat": "Start en ny chat",
     "youHaveKnocked": "Du har ringt på",
-    "pleaseWaitUntilInvited": "Vennligst vent til noen i rommet inviterer deg.",
     "commandHint_logout": "Logg ut av din nåværende enhet",
     "commandHint_logoutall": "Logg ut av alle aktive enheter",
     "displayNavigationRail": "Vis navigasjonsstang på mobil",
@@ -5000,43 +5009,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@shareKeysWithDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@crossVerifiedDevicesIfEnabled": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@crossVerifiedDevices": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@verifiedDevicesOnly": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@recordAVideo": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@optionalMessage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notSupportedOnThisDevice": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@enterNewChat": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@youHaveKnocked": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseWaitUntilInvited": {
       "type": "String",
       "placeholders": {}
     },
