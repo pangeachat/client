@@ -2395,6 +2395,12 @@
     "type": "String",
     "placeholders": {}
   },
+  "noDatabaseEncryption": "Databasekryptering støttes ikke på denne plattformen",
+  "@noDatabaseEncryption": {},
+  "changeGeneralChatSettings": "Endre generelle chatinnstillinger",
+  "@changeGeneralChatSettings": {},
+  "changeTheChatPermissions": "Endre chattillatelsene",
+  "@changeTheChatPermissions": {},
   "alwaysUse24HourFormat": "falsk",
   "exportEmotePack": "Eksporter Emote-pakke som .zip",
   "commandHint_googly": "Send noen googly-øyne",
@@ -2593,10 +2599,7 @@
   "commandHint_ignore": "Ignorer den gitte matrix-ID-en",
   "commandHint_unignore": "Fjern ignorering av den gitte matrix-ID-en",
   "unreadChatsInApp": "{appname}: {unread} uleste chatter",
-  "noDatabaseEncryption": "Kryptering av database støttes ikke på denne plattformen",
   "knockRestricted": "Knock-begrenset",
-  "changeGeneralChatSettings": "Endre generelle chatinnstillinger",
-  "changeTheChatPermissions": "Endre chat-tillatelser",
   "changeTheVisibilityOfChatHistory": "Endre synligheten av chatthistorikken",
   "changeTheCanonicalRoomAlias": "Endre den viktigste offentlige chat-adressen",
   "sendRoomNotifications": "Send @rom varsler",
@@ -4781,19 +4784,7 @@
       }
     }
   },
-  "@noDatabaseEncryption": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@knockRestricted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeGeneralChatSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeTheChatPermissions": {
     "type": "String",
     "placeholders": {}
   },
