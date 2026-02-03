@@ -3369,6 +3369,8 @@
     "@moreEvents": {},
     "declineInvitation": "Noraidīt uzaicinājumu",
     "@declineInvitation": {},
+    "noMessagesYet": "Vēl nav ziņu",
+    "@noMessagesYet": {},
     "ignore": "Bloķēt",
     "ignoredUsers": "Bloķētie lietotāji",
     "writeAMessageLangCodes": "Rakstiet {l1} vai {l2}...",
