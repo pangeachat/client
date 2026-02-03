@@ -114,9 +114,6 @@ abstract class FluffyThemes {
           systemNavigationBarColor: colorScheme.surface,
         ),
       ),
-      listTileTheme: ListTileThemeData(
-        subtitleTextStyle: TextStyle(color: colorScheme.outline, fontSize: 14),
-      ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           side: BorderSide(
