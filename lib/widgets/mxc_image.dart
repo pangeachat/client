@@ -165,53 +165,41 @@ class _MxcImageState extends State<MxcImage> {
     final data = _imageData;
     final hasData = data != null && data.isNotEmpty;
 
-    return AnimatedCrossFade(
-      crossFadeState:
-          // #Pangea
-          // hasData ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-          hasData || _error != null
-              ? CrossFadeState.showSecond
-              : CrossFadeState.showFirst,
-      // Pangea#
+    return AnimatedSwitcher(
       duration: const Duration(milliseconds: 128),
-      firstChild: placeholder(context),
-      // #Pangea
-      // secondChild: hasData
-      secondChild: _error != null
-          ? SizedBox(
+      child: hasData
+          ? Image.memory(
+              data,
               width: widget.width,
               height: widget.height,
+              fit: widget.fit,
+              filterQuality:
+                  widget.isThumbnail ? FilterQuality.low : FilterQuality.medium,
+              errorBuilder: (context, e, s) {
+                Logs().d('Unable to render mxc image', e, s);
+                return SizedBox(
+                  width: widget.width,
+                  height: widget.height,
+                  child: Material(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    child: Icon(
+                      Icons.broken_image_outlined,
+                      size: min(widget.height ?? 64, 64),
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                );
+              },
             )
-          : hasData
-              // Pangea#
-              ? Image.memory(
-                  data,
+          // #Pangea
+          // : placeholder(context),
+          : _error != null
+              ? SizedBox(
                   width: widget.width,
                   height: widget.height,
-                  fit: widget.fit,
-                  filterQuality: widget.isThumbnail
-                      ? FilterQuality.low
-                      : FilterQuality.medium,
-                  errorBuilder: (context, e, s) {
-                    Logs().d('Unable to render mxc image', e, s);
-                    return SizedBox(
-                      width: widget.width,
-                      height: widget.height,
-                      child: Material(
-                        color: Theme.of(context).colorScheme.surfaceContainer,
-                        child: Icon(
-                          Icons.broken_image_outlined,
-                          size: min(widget.height ?? 64, 64),
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                    );
-                  },
                 )
-              : SizedBox(
-                  width: widget.width,
-                  height: widget.height,
-                ),
+              : placeholder(context),
+      // Pangea#
     );
   }
 }
