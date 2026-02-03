@@ -2528,6 +2528,39 @@
     "@archiveRoomDescription": {},
     "removeDevicesDescription": "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.",
     "@removeDevicesDescription": {},
+    "profileNotFound": "Brukeren ble ikke funnet på serveren. Kanskje det er et tilkoblingsproblem, eller brukeren finnes ikke.",
+    "@profileNotFound": {},
+    "setTheme": "Angi tema:",
+    "@setTheme": {},
+    "setColorTheme": "Angi fargetema:",
+    "@setColorTheme": {},
+    "inviteGroupChat": "📨 Invitasjon til gruppechat",
+    "@inviteGroupChat": {},
+    "invitePrivateChat": "📨 Invitasjon til privat chat",
+    "@invitePrivateChat": {},
+    "pleaseChooseAStrongPassword": "Vennligst velg et sterkt passord",
+    "@pleaseChooseAStrongPassword": {},
+    "publicLink": "Offentlig lenke",
+    "@publicLink": {},
+    "publicChatAddresses": "Offentlige chatadresser",
+    "@publicChatAddresses": {},
+    "createNewAddress": "Opprett ny adresse",
+    "@createNewAddress": {},
+    "initAppError": "Det oppsto en feil under oppstart av appen",
+    "@initAppError": {},
+    "minimumPowerLevel": "{level} er det laveste strømnivået.",
+    "@minimumPowerLevel": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "String"
+            }
+        }
+    },
+    "sendReadReceipts": "Send lesebekreftelser",
+    "@sendReadReceipts": {},
+    "searchMore": "Søk mer...",
+    "@searchMore": {},
     "alwaysUse24HourFormat": "falsk",
     "exportEmotePack": "Eksporter Emote-pakke som .zip",
     "commandHint_googly": "Send noen googly-øyne",
@@ -2651,11 +2684,6 @@
     "signInWithPassword": "Logg inn med passord",
     "pleaseTryAgainLaterOrChooseDifferentServer": "Vennligst prøv igjen senere eller velg en annen server.",
     "signInWith": "Logg inn med {provider}",
-    "profileNotFound": "Brukeren ble ikke funnet på serveren. Kanskje er det et tilkoblingsproblem eller brukeren finnes ikke.",
-    "setTheme": "Velg tema:",
-    "setColorTheme": "Velg fargetema:",
-    "inviteGroupChat": "📨 Inviter gruppechat",
-    "invitePrivateChat": "📨 Inviter privat chat",
     "roomUpgradeDescription": "Deretter vil chatten bli opprettet på nytt med den nye romversjonen. Alle deltakere vil bli varslet om at de må bytte til den nye chatten. Du kan finne mer informasjon om romversjoner på https://spec.matrix.org/latest/rooms/",
     "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne komme inn igjen før de blir unbannet.",
     "unbanUserDescription": "Brukeren vil kunne komme inn i chatten igjen hvis de prøver.",
@@ -2671,22 +2699,14 @@
     "leaveEmptyToClearStatus": "La stå tomt for å tømme statusen din.",
     "searchForUsers": "Søk etter @brukere...",
     "pleaseEnterYourCurrentPassword": "Vennligst skriv inn ditt nåværende passord",
-    "pleaseChooseAStrongPassword": "Vennligst velg et sterkt passord",
-    "publicLink": "Offentlig lenke",
-    "publicChatAddresses": "Offentlige chatadresser",
-    "createNewAddress": "Opprett ny adresse",
     "joinSpace": "Bli med i rom",
     "publicSpaces": "Offentlige rom",
     "addChatOrSubSpace": "Legg til chat eller underrom",
     "subspace": "Underrom",
-    "initAppError": "En feil oppstod under initialisering av appen",
-    "minimumPowerLevel": "{level} er det minste maktnivået.",
-    "searchMore": "Søk mer...",
     "databaseBuildErrorBody": "Kan ikke bygge SQLite-databasen. Appen prøver for øyeblikket å bruke den eldre databasen. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
     "sessionLostBody": "Økten din er tapt. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
     "restoreSessionBody": "Appen prøver nå å gjenopprette økten din fra sikkerhetskopien. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
     "forwardMessageTo": "Videresend melding til {roomName}?",
-    "sendReadReceipts": "Send lesebekreftelser",
     "sendTypingNotificationsDescription": "Andre deltakere i en chat kan se når du skriver en ny melding.",
     "sendReadReceiptsDescription": "Andre deltakere i en chat kan se når du har lest en melding.",
     "formattedMessagesDescription": "Vis rik innhold i meldinger som fet tekst ved bruk av markdown.",
@@ -4474,26 +4494,6 @@
         }
       }
     },
-    "@profileNotFound": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@setTheme": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@setColorTheme": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@inviteGroupChat": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@invitePrivateChat": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@roomUpgradeDescription": {
       "type": "String",
       "placeholders": {}
@@ -4562,22 +4562,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@pleaseChooseAStrongPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@publicLink": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@publicChatAddresses": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@createNewAddress": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@joinSpace": {
       "type": "String",
       "placeholders": {}
@@ -4591,22 +4575,6 @@
       "placeholders": {}
     },
     "@subspace": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@initAppError": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@minimumPowerLevel": {
-      "type": "String",
-      "placeholders": {
-        "level": {
-          "type": "String"
-        }
-      }
-    },
-    "@searchMore": {
       "type": "String",
       "placeholders": {}
     },
@@ -4650,10 +4618,6 @@
           "type": "String"
         }
       }
-    },
-    "@sendReadReceipts": {
-      "type": "String",
-      "placeholders": {}
     },
     "@sendTypingNotificationsDescription": {
       "type": "String",
