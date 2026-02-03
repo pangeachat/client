@@ -3018,7 +3018,7 @@
   "@searchMore": {},
   "gallery": "Gailearaí",
   "@gallery": {},
-  "alwaysUse24HourFormat": "",
+  "alwaysUse24HourFormat": "bréagach",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -3385,7 +3385,10 @@
   "@commandHint_logout": {},
   "commandHint_logoutall": "Logáil amach gach gléas gníomhach",
   "@commandHint_logoutall": {},
-  "customReaction": "Freagairt shaincheaptha",
+  "customReaction": "Imoibriú saincheaptha",
+  "@customReaction": {},
+  "moreEvents": "Tuilleadh imeachtaí",
+  "@moreEvents": {},
   "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
   "requests": "Iarratais",
   "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
@@ -4515,10 +4518,6 @@
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
   "@@last_modified": "2026-01-29 15:25:25.078471",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

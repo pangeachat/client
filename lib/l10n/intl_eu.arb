@@ -3362,7 +3362,7 @@
       }
     }
   },
-  "sentVoiceMessage": "🎙️ {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - {sender}(r)en ahots-mezua",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3374,8 +3374,12 @@
       }
     }
   },
-  "commandHint_logout": "Saioa itxi zure gailu honetan",
-  "commandHint_logoutall": "Saioa itxi gailu aktibo guztietan",
+  "commandHint_logout": "Amaitu saioa gailu honetan",
+  "@commandHint_logout": {},
+  "commandHint_logoutall": "Amaitu saioa aktibo dauden gailu guztietan",
+  "@commandHint_logoutall": {},
+  "moreEvents": "Gertaera gehiago",
+  "@moreEvents": {},
   "displayNavigationRail": "Erakutsi nabigazio errail txikian",
   "customReaction": "Erreakzio pertsonalizatua",
   "writeAMessageLangCodes": "Idatzi {l1} edo {l2}...",
@@ -4505,14 +4509,6 @@
   "inviteYourFriends": "Gonbidatu zure lagunak",
   "playWithAI": "Jolastu AIrekin orain",
   "courseStartDesc": "Pangea Bot prest dago noiznahi joateko!\n\n...baina ikastea lagunekin hobe da!",
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@displayNavigationRail": {
     "type": "String",
     "placeholders": {}

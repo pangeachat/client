@@ -3379,7 +3379,10 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "Tampilkan jalur navigasi pada ponsel",
   "@displayNavigationRail": {},
-  "customReaction": "Reaksi Kustom",
+  "customReaction": "Reaksi khusus",
+  "@customReaction": {},
+  "moreEvents": "Peristiwa tambahan",
+  "@moreEvents": {},
   "writeAMessageLangCodes": "Ketik dalam {l1} atau {l2}...",
   "requests": "Permintaan",
   "holdForInfo": "Klik dan tahan untuk info kata.",
@@ -4508,10 +4511,6 @@
   "playWithAI": "Main dengan AI untuk saat ini",
   "courseStartDesc": "Pangea Bot siap digunakan kapan saja!\n\n...tapi belajar lebih baik dengan teman!",
   "@@locale": "id",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
