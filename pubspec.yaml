@@ -32,7 +32,7 @@ dependencies:
   dynamic_color: ^1.8.1
   emoji_picker_flutter: ^4.3.0
   emojis: ^0.9.9
-  file_picker: ^10.2.2
+  file_picker: ^10.2.3
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
@@ -58,7 +58,7 @@ dependencies:
   go_router: ^16.1.0
   handy_window: ^0.4.0
   html: ^0.15.4
-  http: ^1.2.0
+  http: ^1.5.0
   image: ^4.1.7
   image_picker: ^1.1.0
   intl: any
@@ -91,7 +91,7 @@ dependencies:
   shared_preferences: ^2.2.0 # Pinned because https://github.com/flutter/flutter/issues/118401
   slugify: ^2.0.0
   sqflite_common_ffi: ^2.3.6
-  sqlcipher_flutter_libs: ^0.6.7
+  sqlcipher_flutter_libs: ^0.6.8
   swipe_to_action: ^0.3.0
   tor_detector_web: ^1.1.0
   unifiedpush: ^6.0.2

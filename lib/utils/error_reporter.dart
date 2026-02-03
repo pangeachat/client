@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -16,12 +15,12 @@ class ErrorReporter {
 
   const ErrorReporter(this.context, [this.message]);
 
-  static const Set<Type> ingoredTypes = {
-    IOException,
-    http.ClientException,
-    SocketException,
-    TlsException,
-    HandshakeException,
+  static const Set<String> ingoredTypes = {
+    "IOException",
+    "ClientException",
+    "SocketException",
+    "TlsException",
+    "HandshakeException",
   };
 
   Future<File> _getTemporaryErrorLogFile() async {
@@ -33,7 +32,7 @@ class ErrorReporter {
     Object error, [
     StackTrace? stackTrace,
   ]) async {
-    if (ingoredTypes.contains(error.runtimeType)) return;
+    if (ingoredTypes.contains(error.runtimeType.toString())) return;
     final file = await _getTemporaryErrorLogFile();
     if (await file.exists()) await file.delete();
     await file.writeAsString(
@@ -53,7 +52,7 @@ class ErrorReporter {
   }
 
   void onErrorCallback(Object error, [StackTrace? stackTrace]) {
-    if (ingoredTypes.contains(error.runtimeType)) return;
+    if (ingoredTypes.contains(error.runtimeType.toString())) return;
     Logs().e(message ?? 'Error caught', error, stackTrace);
     // #Pangea
     // final text = '$error\n${stackTrace ?? ''}';
