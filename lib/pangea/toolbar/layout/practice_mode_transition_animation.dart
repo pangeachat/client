@@ -182,8 +182,8 @@ class CenteredMessage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: controller.mediaQuery!.size.width -
-                        controller.columnWidth,
+                    width:
+                        controller.screenSize!.width - controller.columnWidth,
                     height: 20.0,
                   ),
                   OverlayCenterContent(

@@ -272,9 +272,8 @@ class SubscriptionController with ChangeNotifier {
         clipBehavior: Clip.hardEdge,
         context: context,
         constraints: BoxConstraints(
-          maxHeight: PlatformInfos.isMobile
-              ? MediaQuery.of(context).size.height - 50
-              : 600,
+          maxHeight:
+              PlatformInfos.isMobile ? MediaQuery.heightOf(context) - 50 : 600,
         ),
         builder: (_) {
           return SubscriptionPaywall(

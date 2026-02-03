@@ -158,9 +158,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       FluffyThemes.isThreeColumnMode(context) &&
       widget.chatController.room.membership == Membership.join;
 
-  MediaQueryData? get mediaQuery => _runWithLogging<MediaQueryData?>(
-        () => MediaQuery.of(context),
-        "Error getting media query",
+  Size? get screenSize => _runWithLogging<Size?>(
+        () => MediaQuery.sizeOf(context),
+        "Error getting media query size",
+        null,
+      );
+
+  EdgeInsets? get screenPadding => _runWithLogging<EdgeInsets?>(
+        () => MediaQuery.paddingOf(context),
+        "Error getting media query padding",
         null,
       );
 
@@ -177,8 +183,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         messageMargin;
     double? maxWidth;
 
-    if (mediaQuery != null) {
-      final chatViewWidth = mediaQuery!.size.width - columnWidth;
+    if (screenSize != null) {
+      final chatViewWidth = screenSize!.width - columnWidth;
       maxWidth = chatViewWidth - (2 * _horizontalPadding) - messageMargin;
     }
 
@@ -278,7 +284,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double? get messageRightOffset {
-    if (mediaQuery == null || !ownMessage) return null;
+    if (screenSize == null || !ownMessage) return null;
 
     final offset = _originalMessageOffset;
     if (offset == null) {
@@ -286,13 +292,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     if (isRtl) {
-      return mediaQuery!.size.width -
+      return screenSize!.width -
           columnWidth -
           offset.dx -
           originalMessageSize.width;
     }
 
-    return mediaQuery!.size.width -
+    return screenSize!.width -
         offset.dx -
         originalMessageSize.width -
         (showDetails ? FluffyThemes.columnWidth : 0);
@@ -325,9 +331,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? get _wordCardLeftOffset {
     if (ownMessage) return null;
     if (widget.overlayController.selectedToken != null &&
-        mediaQuery != null &&
-        (mediaQuery!.size.width < _toolbarMaxWidth + messageLeftOffset!)) {
-      return mediaQuery!.size.width - _toolbarMaxWidth - 8.0;
+        screenSize != null &&
+        (screenSize!.width < _toolbarMaxWidth + messageLeftOffset!)) {
+      return screenSize!.width - _toolbarMaxWidth - 8.0;
     }
     return messageLeftOffset;
   }
@@ -337,10 +343,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double? get _screenHeight {
-    if (mediaQuery == null) return null;
-    return mediaQuery!.size.height -
-        mediaQuery!.padding.bottom -
-        mediaQuery!.padding.top;
+    if (screenSize == null || screenPadding == null) return null;
+    return screenSize!.height - screenPadding!.bottom - screenPadding!.top;
   }
 
   bool get shouldScroll {
@@ -373,16 +377,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final originalContentHeight =
         messageHeight + _reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
 
-    final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
+    final screenHeight = screenSize!.height - screenPadding!.bottom;
 
     double boxHeight = screenHeight - offset.dy - originalContentHeight;
 
     final neededSpace =
-        boxHeight + _fullContentHeight + mediaQuery!.padding.top + 4.0;
+        boxHeight + _fullContentHeight + screenPadding!.top + 4.0;
 
     if (neededSpace > screenHeight) {
-      boxHeight =
-          screenHeight - _fullContentHeight - mediaQuery!.padding.top - 4.0;
+      boxHeight = screenHeight - _fullContentHeight - screenPadding!.top - 4.0;
     }
 
     return boxHeight;
@@ -409,7 +412,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   @override
   Widget build(BuildContext context) {
-    if (_messageRenderBox == null || mediaQuery == null) {
+    if (_messageRenderBox == null || screenSize == null) {
       return const SizedBox.shrink();
     }
 
@@ -420,7 +423,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           Column(
             children: [
               SizedBox(
-                width: mediaQuery!.size.width -
+                width: screenSize!.width -
                     columnWidth -
                     (showDetails ? FluffyThemes.columnWidth : 0),
                 height: _screenHeight!,

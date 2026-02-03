@@ -261,7 +261,7 @@ class OverlayMessage extends StatelessWidget {
 
     final maxWidth = min(
       FluffyThemes.columnWidth * 1.5,
-      MediaQuery.of(context).size.width -
+      MediaQuery.widthOf(context) -
           (ownMessage ? 0 : Avatar.defaultSize) -
           32.0 -
           (FluffyThemes.isColumnMode(context)

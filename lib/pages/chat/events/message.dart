@@ -630,9 +630,10 @@ class Message extends StatelessWidget {
                                                           // #Pangea
                                                           // ignore: noBubble ||
                                                           //     !ownMessage ||
-                                                          //     MediaQuery.of(
+                                                          //     MediaQuery
+                                                          //         .highContrastOf(
                                                           //       context,
-                                                          //     ).highContrast,
+                                                          //     ),
                                                           ignore: true,
                                                           // Pangea#
                                                           scrollController:
