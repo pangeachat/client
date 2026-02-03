@@ -3383,10 +3383,16 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "Mostrar carril de navegación en móvil",
   "@displayNavigationRail": {},
-  "youHaveKnocked": "Has sido golpeado",
-  "@youHaveKnocked": {},
   "approve": "Aprobar",
   "@approve": {},
+  "youHaveKnocked": "Has sido golpeado",
+  "@youHaveKnocked": {},
+  "customReaction": "Reacción personalizada",
+  "@customReaction": {},
+  "moreEvents": "Más eventos",
+  "@moreEvents": {},
+  "declineInvitation": "Rechazar invitación",
+  "@declineInvitation": {},
   "archivedRoom": "",
   "askSSSSCache": "Ingrese su contraseña de almacenamiento segura (SSSS) o la clave de recuperación para almacenar en caché las claves.",
   "askSSSSVerify": "",
@@ -5276,7 +5282,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "customReaction": "Reacción personalizada",
   "chatCapacitySetTooLow": "La capacidad de chat debe ser al menos {count}.",
   "spaceCapacitySetTooLow": "La capacidad del espacio debe ser al menos {count}.",
   "grammarCopyVERBFORMshrt": "Corto",
@@ -5343,10 +5348,6 @@
   "errorFetchingActivity": "Error al obtener la actividad",
   "check": "Verificar",
   "unableToFindRoom": "No se encontró chat o espacio con ese código. Por favor, intenta de nuevo.",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chatCapacitySetTooLow": {
     "type": "int",
     "placeholders": {
