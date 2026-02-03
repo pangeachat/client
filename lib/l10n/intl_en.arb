@@ -3375,6 +3375,7 @@
   "@moreEvents": {},
   "declineInvitation": "Decline invitation",
   "@declineInvitation": {},
+  "noMessagesYet": "No messages yet",
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",

@@ -228,13 +228,12 @@ class ChatListItem extends StatelessWidget {
                         color: theme.colorScheme.primary,
                       ),
                     ),
-                  if (!room.isSpace &&
-                      lastEvent != null &&
-                      room.membership != Membership.invite)
+                  if (!room.isSpace && room.membership != Membership.invite)
                     Padding(
                       padding: const EdgeInsets.only(left: 4.0),
                       child: Text(
-                        lastEvent.originServerTs.localizedTimeShort(context),
+                        room.latestEventReceivedTime
+                            .localizedTimeShort(context),
                         style: TextStyle(
                           fontSize: 12,
                           color: theme.colorScheme.outline,
@@ -350,7 +349,7 @@ class ChatListItem extends StatelessWidget {
                                                   : L10n.of(context).inviteChat)
                                           // Pangea#
                                           : snapshot.data ??
-                                              L10n.of(context).emptyChat,
+                                              L10n.of(context).noMessagesYet,
                                       softWrap: false,
                                       maxLines:
                                           room.notificationCount >= 1 ? 2 : 1,

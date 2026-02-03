@@ -33,13 +33,13 @@ dependencies:
   emoji_picker_flutter: ^4.3.0
   emojis: ^0.9.9
   file_picker: ^10.3.3
-  file_selector: ^1.0.3
+  file_selector: ^1.0.4
   flutter:
     sdk: flutter
   flutter_foreground_task: ^9.1.0
   flutter_highlighter: ^0.1.1
   flutter_linkify: ^6.0.0
-  flutter_local_notifications: ^19.4.1
+  flutter_local_notifications: ^19.4.2
   flutter_localizations:
     sdk: flutter
   flutter_map: ^8.2.1
@@ -49,7 +49,7 @@ dependencies:
   flutter_shortcuts_new: ^2.0.0
   flutter_vodozemac: ^0.2.2
   flutter_web_auth_2: ^3.1.1 # Version 4 blocked by https://github.com/MixinNetwork/flutter-plugins/issues/379
-  flutter_webrtc: ^1.1.0
+  flutter_webrtc: ^1.2.0
   geolocator: ^14.0.2
   go_router: ^16.2.1
   handy_window: ^0.4.0

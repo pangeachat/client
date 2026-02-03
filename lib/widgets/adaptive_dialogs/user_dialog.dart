@@ -75,6 +75,22 @@ class UserDialog extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Center(
+                    child: Avatar(
+                      mxContent: avatar,
+                      name: displayname,
+                      size: Avatar.defaultSize * 2,
+                      onTap: avatar != null
+                          ? () => showDialog(
+                                context: context,
+                                builder: (_) => MxcImageViewer(avatar),
+                              )
+                          : null,
+                      // #Pangea
+                      userId: profile.userId,
+                      // Pangea#
+                    ),
+                  ),
                   HoverBuilder(
                     builder: (context, hovered) => StatefulBuilder(
                       builder: (context, setState) => MouseRegion(
@@ -123,22 +139,6 @@ class UserDialog extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Center(
-                    child: Avatar(
-                      mxContent: avatar,
-                      name: displayname,
-                      size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
-                                context: context,
-                                builder: (_) => MxcImageViewer(avatar),
-                              )
-                          : null,
-                      // #Pangea
-                      userId: profile.userId,
-                      // Pangea#
-                    ),
-                  ),
                   if (presenceText != null)
                     Text(
                       presenceText,
@@ -180,6 +180,7 @@ class UserDialog extends StatelessWidget {
       actions: [
         if (client.userID != profile.userId) ...[
           AdaptiveDialogAction(
+            borderRadius: AdaptiveDialogAction.topRadius,
             bigButtons: true,
             onPressed: () async {
               final router = GoRouter.of(context);
@@ -206,6 +207,7 @@ class UserDialog extends StatelessWidget {
           ),
           AdaptiveDialogAction(
             bigButtons: true,
+            borderRadius: AdaptiveDialogAction.centerRadius,
             onPressed: () {
               final router = GoRouter.of(context);
               Navigator.of(context).pop();
@@ -222,6 +224,7 @@ class UserDialog extends StatelessWidget {
         ],
         AdaptiveDialogAction(
           bigButtons: true,
+          borderRadius: AdaptiveDialogAction.bottomRadius,
           onPressed: Navigator.of(context).pop,
           child: Text(L10n.of(context).close),
         ),

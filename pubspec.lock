@@ -445,10 +445,10 @@ packages:
     dependency: transitive
     description:
       name: dart_webrtc
-      sha256: a2ae542cdadc21359022adedc26138fa3487cc3b3547c24ff4f556681869e28c
+      sha256: "51bcda4ba5d7dd9e65a309244ce3ac0b58025e6e1f6d7442cee4cd02134ef65f"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.3+hotfix.4"
+    version: "1.6.0"
   dbus:
     dependency: transitive
     description:
@@ -589,10 +589,10 @@ packages:
     dependency: "direct main"
     description:
       name: file_selector
-      sha256: "5019692b593455127794d5718304ff1ae15447dea286cdda9f0db2a796a1b828"
+      sha256: "5f1d15a7f17115038f433d1b0ea57513cc9e29a9d5338d166cb0bef3fa90a7a0"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   file_selector_android:
     dependency: transitive
     description:
@@ -799,10 +799,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: a9966c850de5e445331b854fa42df96a8020066d67f125a5964cbc6556643f68
+      sha256: "7ed76be64e8a7d01dfdf250b8434618e2a028c9dfa2a3c41dc9b531d4b3fc8a5"
       url: "https://pub.dev"
     source: hosted
-    version: "19.4.1"
+    version: "19.4.2"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -823,10 +823,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_local_notifications_windows
-      sha256: ed46d7ae4ec9d19e4c8fa2badac5fe27ba87a3fe387343ce726f927af074ec98
+      sha256: "8d658f0d367c48bd420e7cf2d26655e2d1130147bca1eea917e576ca76668aaf"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -992,10 +992,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_webrtc
-      sha256: "945d0a38b90fbca8257eadb167d8fb9fa7075d9a1939fd2953c10054454d1de2"
+      sha256: "71a38363a5b50603e405c275f30de2eb90f980b0cc94b0e1e9d8b9d6a6b03bf0"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   freezed_annotation:
     dependency: transitive
     description:

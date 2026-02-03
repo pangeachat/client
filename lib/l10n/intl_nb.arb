@@ -2651,6 +2651,23 @@
             }
         }
     },
+    "hideUnimportantStateEvents": "Skjul uviktige tilstandshendelser",
+    "@hideUnimportantStateEvents": {},
+    "hidePresences": "Skjul statuslisten?",
+    "@hidePresences": {},
+    "signInWithPassword": "Logg inn med passord",
+    "@signInWithPassword": {},
+    "pleaseTryAgainLaterOrChooseDifferentServer": "Prøv igjen senere eller velg en annen server.",
+    "@pleaseTryAgainLaterOrChooseDifferentServer": {},
+    "signInWith": "Logg inn med {provider}",
+    "@signInWith": {
+        "type": "String",
+        "placeholders": {
+            "provider": {
+                "type": "String"
+            }
+        }
+    },
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
@@ -2764,15 +2781,10 @@
     "enterRoom": "Gå inn i rommet",
     "allSpaces": "Alle rom",
     "numChats": "{number} chatter",
-    "hideUnimportantStateEvents": "Skjul uviktige tilstandsoppdateringer",
-    "hidePresences": "Skjul statusliste?",
     "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
     "newSpaceDescription": "Rom lar deg konsolidere dine chatter og bygge private eller offentlige fellesskap.",
     "noBackupWarning": "Advarsel! Uten å aktivere chat-sikkerhetskopi vil du miste tilgangen til dine krypterte meldinger. Det anbefales sterkt å aktivere chat-sikkerhetskopi før du logger ut.",
     "report": "rapporter",
-    "signInWithPassword": "Logg inn med passord",
-    "pleaseTryAgainLaterOrChooseDifferentServer": "Vennligst prøv igjen senere eller velg en annen server.",
-    "signInWith": "Logg inn med {provider}",
     "roomUpgradeDescription": "Deretter vil chatten bli opprettet på nytt med den nye romversjonen. Alle deltakere vil bli varslet om at de må bytte til den nye chatten. Du kan finne mer informasjon om romversjoner på https://spec.matrix.org/latest/rooms/",
     "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne komme inn igjen før de blir unbannet.",
     "unbanUserDescription": "Brukeren vil kunne komme inn i chatten igjen hvis de prøver.",
@@ -4511,14 +4523,6 @@
         }
       }
     },
-    "@hideUnimportantStateEvents": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@hidePresences": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@wasDirectChatDisplayName": {
       "type": "String",
       "placeholders": {
@@ -4538,22 +4542,6 @@
     "@report": {
       "type": "String",
       "placeholders": {}
-    },
-    "@signInWithPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseTryAgainLaterOrChooseDifferentServer": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@signInWith": {
-      "type": "String",
-      "placeholders": {
-        "provider": {
-          "type": "String"
-        }
-      }
     },
     "@roomUpgradeDescription": {
       "type": "String",
