@@ -3385,6 +3385,8 @@
     "@customReaction": {},
     "declineInvitation": "Uitnodiging afwijzen",
     "@declineInvitation": {},
+    "noMessagesYet": "Nog geen berichten",
+    "@noMessagesYet": {},
     "writeAMessageLangCodes": "Typ in {l1} of {l2}...",
     "requests": "Verzoeken",
     "holdForInfo": "Klik en houd vast voor woordinformatie.",
