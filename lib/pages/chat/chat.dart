@@ -1388,9 +1388,9 @@ class ChatController extends State<ChatPageWithRoom>
             message: L10n.of(context).redactMessageDescription,
             isDestructive: true,
             hintText: L10n.of(context).optionalRedactReason,
-            // #Pangea
             maxLength: 255,
-            // Pangea#
+            maxLines: 3,
+            minLines: 1,
             okLabel: L10n.of(context).remove,
             cancelLabel: L10n.of(context).cancel,
             // #Pangea
