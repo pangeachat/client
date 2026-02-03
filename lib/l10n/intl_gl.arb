@@ -3380,6 +3380,8 @@
   "@moreEvents": {},
   "customReaction": "Reacción personalizada",
   "@customReaction": {},
+  "declineInvitation": "Rexeitar o convite",
+  "@declineInvitation": {},
   "checkList": "Lista de verificación",
   "displayNavigationRail": "Mostrar rail de navegación en móbil",
   "writeAMessageLangCodes": "Escribe en {l1} ou {l2}...",

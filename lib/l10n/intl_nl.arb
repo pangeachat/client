@@ -3383,6 +3383,8 @@
   "@moreEvents": {},
   "customReaction": "Aangepaste reactie",
   "@customReaction": {},
+  "declineInvitation": "Uitnodiging afwijzen",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Typ in {l1} of {l2}...",
   "requests": "Verzoeken",
   "holdForInfo": "Klik en houd vast voor woordinformatie.",

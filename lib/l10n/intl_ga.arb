@@ -2146,7 +2146,7 @@
   "@noOtherDevicesFound": {},
   "profileNotFound": "Níorbh fhéidir an t-úsáideoir a aimsiú ar an bhfreastalaí. B'fhéidir go bhfuil fadhb nasctha ann nó nach bhfuil an t-úsáideoir ann.",
   "@profileNotFound": {},
-  "inviteGroupChat": "📨 Tabhair cuireadh comhrá grúpa",
+  "inviteGroupChat": "📨 Cuireadh chuig comhrá grúpa",
   "@inviteGroupChat": {},
   "knocking": "Cnagadh",
   "@knocking": {},
@@ -2491,7 +2491,7 @@
       }
     }
   },
-  "invitePrivateChat": "📨 Tabhair cuireadh comhrá príobháideach",
+  "invitePrivateChat": "📨 Cuireadh chuig comhrá príobháideach",
   "@invitePrivateChat": {},
   "wrongPinEntered": "Tháinig biorán mícheart isteach! Bain triail eile as i {seconds} soicind...",
   "@wrongPinEntered": {
@@ -3389,6 +3389,8 @@
   "@customReaction": {},
   "moreEvents": "Tuilleadh imeachtaí",
   "@moreEvents": {},
+  "declineInvitation": "Diúltaigh don chuireadh",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
   "requests": "Iarratais",
   "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
