@@ -10,7 +10,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "acceptedTheInvitation": "👍{username} godtok invitasjonen",
+    "acceptedTheInvitation": "👍 {username} godtok invitasjonen",
     "@acceptedTheInvitation": {
         "type": "String",
         "placeholders": {
@@ -152,7 +152,7 @@
             }
         }
     },
-    "changedTheChatDescriptionTo": "{username} endret sludrebeskrivelse til: «{description}»",
+    "changedTheChatDescriptionTo": "{username} endret chatbeskrivelse til: «{description}»",
     "@changedTheChatDescriptionTo": {
         "type": "String",
         "placeholders": {
@@ -164,7 +164,7 @@
             }
         }
     },
-    "changedTheChatNameTo": "{username} endret sludringsnavn til: «{chatname}»",
+    "changedTheChatNameTo": "{username} endret chatnavnet til: «{chatname}»",
     "@changedTheChatNameTo": {
         "type": "String",
         "placeholders": {
@@ -2579,8 +2579,79 @@
     "@enterNewChat": {},
     "pleaseWaitUntilInvited": "Vennligst vent nå, til noen fra rommet inviterer deg.",
     "@pleaseWaitUntilInvited": {},
+    "notificationRuleSuppressNoticesDescription": "Demper varsler fra automatiserte klienter som roboter.",
+    "@notificationRuleSuppressNoticesDescription": {},
+    "notificationRuleInviteForMe": "Inviter for meg",
+    "@notificationRuleInviteForMe": {},
+    "notificationRuleInviteForMeDescription": "Varsler bruker når en blir invitert til et rom.",
+    "@notificationRuleInviteForMeDescription": {},
+    "newChatRequest": "📩 Ny chatforespørsel",
+    "@newChatRequest": {},
+    "appWantsToUseForLogin": "Bruk '{server}' for å logge inn",
+    "@appWantsToUseForLogin": {
+        "type": "String",
+        "placeholders": {
+            "server": {
+                "type": "String"
+            }
+        }
+    },
+    "appWantsToUseForLoginDescription": "Du gir herved tillatelse til at appen og nettstedet deler informasjon om deg.",
+    "@appWantsToUseForLoginDescription": {},
+    "exportEmotePack": "Eksporter smilefjes som .zip-fil",
+    "@exportEmotePack": {},
+    "noUsersFoundWithQuery": "Dessverre ble ingen bruker funnet med \"{query}\". Sjekk om du har skrevet feil.",
+    "@noUsersFoundWithQuery": {
+        "type": "String",
+        "placeholders": {
+            "query": {
+                "type": "String"
+            }
+        }
+    },
+    "chatCanBeDiscoveredViaSearchOnServer": "Chatten kan oppdages via søket på {server}",
+    "@chatCanBeDiscoveredViaSearchOnServer": {
+        "type": "String",
+        "placeholders": {
+            "server": {
+                "type": "String"
+            }
+        }
+    },
+    "leaveEmptyToClearStatus": "La stå tomt for å slette statusen din.",
+    "@leaveEmptyToClearStatus": {},
+    "searchForUsers": "Søk etter @brukere...",
+    "@searchForUsers": {},
+    "pleaseEnterYourCurrentPassword": "Skriv inn ditt nåværende passord",
+    "@pleaseEnterYourCurrentPassword": {},
+    "databaseMigrationBody": "Vent litt. Dette kan ta et øyeblikk.",
+    "@databaseMigrationBody": {},
+    "wrongRecoveryKey": "Beklager ... dette ser ikke ut til å være riktig gjenopprettingsnøkkel.",
+    "@wrongRecoveryKey": {},
+    "declineInvitation": "Avslå invitasjon",
+    "@declineInvitation": {},
+    "restoreSessionBody": "Appen prøver nå å gjenopprette økten din fra sikkerhetskopien. Rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
+    "@restoreSessionBody": {
+        "type": "String",
+        "placeholders": {
+            "url": {
+                "type": "String"
+            },
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "forwardMessageTo": "Videresende melding til {roomName}?",
+    "@forwardMessageTo": {
+        "type": "String",
+        "placeholders": {
+            "roomName": {
+                "type": "String"
+            }
+        }
+    },
     "alwaysUse24HourFormat": "falsk",
-    "exportEmotePack": "Eksporter Emote-pakke som .zip",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
     "googlyEyesContent": "{senderName} sender deg googly-øyne",
@@ -2707,24 +2778,15 @@
     "unbanUserDescription": "Brukeren vil kunne komme inn i chatten igjen hvis de prøver.",
     "kickUserDescription": "Brukeren blir kastet ut av chatten, men er ikke utestengt. I offentlige chatter kan brukeren bli med igjen når som helst.",
     "makeAdminDescription": "Når du gjør denne brukeren til administrator, kan det hende du ikke kan angre dette, da de da vil ha de samme tillatelsene som deg.",
-    "noUsersFoundWithQuery": "Dessverre ble ingen bruker funnet med \"{query}\". Vennligst sjekk om du har skrevet feil.",
     "knocking": "Banker på",
-    "chatCanBeDiscoveredViaSearchOnServer": "Chat kan oppdages via søk på {server}",
     "groupCanBeFoundViaSearch": "Gruppen kan finnes via søk",
-    "wrongRecoveryKey": "Beklager... dette ser ikke ut til å være riktig gjenopprettingsnøkkel.",
     "commandHint_sendraw": "Send rå json",
-    "databaseMigrationBody": "Vennligst vent. Dette kan ta et øyeblikk.",
-    "leaveEmptyToClearStatus": "La stå tomt for å tømme statusen din.",
-    "searchForUsers": "Søk etter @brukere...",
-    "pleaseEnterYourCurrentPassword": "Vennligst skriv inn ditt nåværende passord",
     "joinSpace": "Bli med i rom",
     "publicSpaces": "Offentlige rom",
     "addChatOrSubSpace": "Legg til chat eller underrom",
     "subspace": "Underrom",
     "databaseBuildErrorBody": "Kan ikke bygge SQLite-databasen. Appen prøver for øyeblikket å bruke den eldre databasen. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
     "sessionLostBody": "Økten din er tapt. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
-    "restoreSessionBody": "Appen prøver nå å gjenopprette økten din fra sikkerhetskopien. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
-    "forwardMessageTo": "Videresend melding til {roomName}?",
     "sendTypingNotificationsDescription": "Andre deltakere i en chat kan se når du skriver en ny melding.",
     "sendReadReceiptsDescription": "Andre deltakere i en chat kan se når du har lest en melding.",
     "formattedMessagesDescription": "Vis rik innhold i meldinger som fet tekst ved bruk av markdown.",
@@ -2760,10 +2822,7 @@
     "contactServerSecurity": "Kontakt serverens sikkerhet",
     "unableToJoinChat": "Kan ikke bli med i chat. Kanskje den andre parten allerede har lukket samtalen.",
     "otherPartyNotLoggedIn": "Den andre parten er for øyeblikket ikke logget inn og kan derfor ikke motta meldinger!",
-    "appWantsToUseForLogin": "Bruk '{server}' for å logge inn",
-    "appWantsToUseForLoginDescription": "Du gir herved appen og nettstedet tillatelse til å dele informasjon om deg.",
     "appIntroduction": "FluffyChat lar deg chatte med vennene dine på tvers av ulike meldingsapper. Lær mer på https://matrix.org eller bare trykk *Fortsett*.",
-    "newChatRequest": "📩 Ny chatforespørsel",
     "contentNotificationSettings": "Innholdsvarslingsinnstillinger",
     "generalNotificationSettings": "Generelle varslingsinnstillinger",
     "roomNotificationSettings": "Romvarslingsinnstillinger",
@@ -2772,9 +2831,6 @@
     "notificationRuleContainsUserNameDescription": "Varsler brukeren når en melding inneholder deres brukernavn.",
     "notificationRuleMasterDescription": "Overstyrer alle andre regler og deaktiverer alle varsler.",
     "notificationRuleSuppressNotices": "Undertrykk automatiserte meldinger",
-    "notificationRuleSuppressNoticesDescription": "Undertrykker varsler fra automatiserte klienter som roboter.",
-    "notificationRuleInviteForMe": "Inviter for meg",
-    "notificationRuleInviteForMeDescription": "Varsler brukeren når de blir invitert til et rom.",
     "notificationRuleMemberEvent": "Medlemsarrangement",
     "notificationRuleMemberEventDescription": "Undertrykker varsler for medlemsarrangementer.",
     "notificationRuleIsUserMention": "Brukerhenvisning",
@@ -3944,10 +4000,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@exportEmotePack": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@commandHint_googly": {
       "type": "String",
       "placeholders": {}
@@ -4523,51 +4575,15 @@
       "type": "String",
       "placeholders": {}
     },
-    "@noUsersFoundWithQuery": {
-      "type": "String",
-      "placeholders": {
-        "query": {
-          "type": "String"
-        }
-      }
-    },
     "@knocking": {
       "type": "String",
       "placeholders": {}
-    },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-      "type": "String",
-      "placeholders": {
-        "server": {
-          "type": "String"
-        }
-      }
     },
     "@groupCanBeFoundViaSearch": {
       "type": "String",
       "placeholders": {}
     },
-    "@wrongRecoveryKey": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@commandHint_sendraw": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@databaseMigrationBody": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@leaveEmptyToClearStatus": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@searchForUsers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseEnterYourCurrentPassword": {
       "type": "String",
       "placeholders": {}
     },
@@ -4605,25 +4621,6 @@
           "type": "String"
         },
         "error": {
-          "type": "String"
-        }
-      }
-    },
-    "@restoreSessionBody": {
-      "type": "String",
-      "placeholders": {
-        "url": {
-          "type": "String"
-        },
-        "error": {
-          "type": "String"
-        }
-      }
-    },
-    "@forwardMessageTo": {
-      "type": "String",
-      "placeholders": {
-        "roomName": {
           "type": "String"
         }
       }
@@ -4806,23 +4803,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-      "type": "String",
-      "placeholders": {
-        "server": {
-          "type": "String"
-        }
-      }
-    },
-    "@appWantsToUseForLoginDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@appIntroduction": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@newChatRequest": {
       "type": "String",
       "placeholders": {}
     },
@@ -4855,18 +4836,6 @@
       "placeholders": {}
     },
     "@notificationRuleSuppressNotices": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleSuppressNoticesDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleInviteForMe": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleInviteForMeDescription": {
       "type": "String",
       "placeholders": {}
     },
