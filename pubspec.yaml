@@ -32,7 +32,7 @@ dependencies:
   dynamic_color: ^1.7.0
   emoji_picker_flutter: ^4.3.0
   emojis: ^0.9.9
-  file_picker: ^10.2.0
+  file_picker: ^10.2.1
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
@@ -140,7 +140,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   license_checker: ^1.6.0
-  msix: ^3.6.2
+  msix: ^3.16.10
   pedantic: ^1.11.0
   sentry_dart_plugin: ^1.0.0
   translations_cleaner: ^0.0.5
