@@ -210,68 +210,59 @@ class ChatDetailsView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Divider(color: theme.dividerColor),
-                        ListTile(
-                          title: Text(
-                            L10n.of(context).chatDescription,
-                            style: TextStyle(
-                              color: theme.colorScheme.secondary,
-                              fontWeight: FontWeight.bold,
+                        if (room.canChangeStateEvent(EventTypes.RoomTopic) ||
+                            room.topic.isNotEmpty) ...[
+                          Divider(color: theme.dividerColor),
+                          ListTile(
+                            title: Text(
+                              L10n.of(context).chatDescription,
+                              style: TextStyle(
+                                color: theme.colorScheme.secondary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            trailing:
+                                room.canChangeStateEvent(EventTypes.RoomTopic)
+                                    ? IconButton(
+                                        onPressed: controller.setTopicAction,
+                                        tooltip:
+                                            L10n.of(context).setChatDescription,
+                                        icon: const Icon(Icons.edit_outlined),
+                                      )
+                                    : null,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                            ),
+                            child: SelectableLinkify(
+                              text: room.topic.isEmpty
+                                  ? L10n.of(context).noChatDescriptionYet
+                                  : room.topic,
+                              textScaleFactor:
+                                  MediaQuery.textScalerOf(context).scale(1),
+                              options: const LinkifyOptions(humanize: false),
+                              linkStyle: const TextStyle(
+                                color: Colors.blueAccent,
+                                decorationColor: Colors.blueAccent,
+                              ),
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontStyle: room.topic.isEmpty
+                                    ? FontStyle.italic
+                                    : FontStyle.normal,
+                                color: theme.textTheme.bodyMedium!.color,
+                                decorationColor:
+                                    theme.textTheme.bodyMedium!.color,
+                              ),
+                              onOpen: (url) =>
+                                  UrlLauncher(context, url.url).launchUrl(),
                             ),
                           ),
-                          trailing: room
-                                  .canChangeStateEvent(EventTypes.RoomTopic)
-                              ? IconButton(
-                                  onPressed: controller.setTopicAction,
-                                  tooltip: L10n.of(context).setChatDescription,
-                                  icon: const Icon(Icons.edit_outlined),
-                                )
-                              : null,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                          ),
-                          child: SelectableLinkify(
-                            text: room.topic.isEmpty
-                                ? L10n.of(context).noChatDescriptionYet
-                                : room.topic,
-                            textScaleFactor:
-                                MediaQuery.textScalerOf(context).scale(1),
-                            options: const LinkifyOptions(humanize: false),
-                            linkStyle: const TextStyle(
-                              color: Colors.blueAccent,
-                              decorationColor: Colors.blueAccent,
-                            ),
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontStyle: room.topic.isEmpty
-                                  ? FontStyle.italic
-                                  : FontStyle.normal,
-                              color: theme.textTheme.bodyMedium!.color,
-                              decorationColor:
-                                  theme.textTheme.bodyMedium!.color,
-                            ),
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Divider(color: theme.dividerColor),
-                        ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: theme.scaffoldBackgroundColor,
-                            foregroundColor: iconColor,
-                            child: const Icon(
-                              Icons.insert_emoticon_outlined,
-                            ),
-                          ),
-                          title: Text(L10n.of(context).customEmojisAndStickers),
-                          subtitle: Text(L10n.of(context).setCustomEmotes),
-                          onTap: controller.goToEmoteSettings,
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                        ),
-                        if (!room.isDirectChat)
+                          const SizedBox(height: 16),
+                        ],
+                        if (!room.isDirectChat) ...[
+                          Divider(color: theme.dividerColor),
                           ListTile(
                             leading: CircleAvatar(
                               backgroundColor: theme.scaffoldBackgroundColor,
@@ -288,7 +279,6 @@ class ChatDetailsView extends StatelessWidget {
                                 .push('/rooms/${room.id}/details/access'),
                             trailing: const Icon(Icons.chevron_right_outlined),
                           ),
-                        if (!room.isDirectChat)
                           ListTile(
                             title: Text(L10n.of(context).chatPermissions),
                             subtitle: Text(
@@ -305,6 +295,7 @@ class ChatDetailsView extends StatelessWidget {
                             onTap: () => context
                                 .push('/rooms/${room.id}/details/permissions'),
                           ),
+                        ],
                         Divider(color: theme.dividerColor),
                         ListTile(
                           title: Text(

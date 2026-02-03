@@ -138,7 +138,6 @@ class ChatView extends StatelessWidget {
     //         icon: const Icon(Icons.call_outlined),
     //         tooltip: L10n.of(context).placeCall,
     //       ),
-    //     EncryptionButton(controller.room),
     //     ChatSettingsPopupMenu(controller.room, true),
     //   ];
     // }
@@ -488,67 +487,67 @@ class ChatView extends StatelessWidget {
                           // #Pangea
                           // else if (controller.room.canSendDefaultMessages &&
                           //     controller.room.membership == Membership.join)
-                          // Container(
-                          //   margin: EdgeInsets.all(bottomSheetPadding),
-                          //   constraints: const BoxConstraints(
-                          //     maxWidth: FluffyThemes.maxTimelineWidth,
-                          //   ),
-                          //   alignment: Alignment.center,
-                          //   child: Material(
-                          //     clipBehavior: Clip.hardEdge,
-                          //     color: controller.selectedEvents.isNotEmpty
-                          //         ? theme.colorScheme.tertiaryContainer
-                          //         : theme.colorScheme.surfaceContainerHigh,
-                          //     borderRadius: const BorderRadius.all(
-                          //       Radius.circular(24),
+                          //   Container(
+                          //     margin: EdgeInsets.all(bottomSheetPadding),
+                          //     constraints: const BoxConstraints(
+                          //       maxWidth: FluffyThemes.maxTimelineWidth,
                           //     ),
-                          //     child: controller.room.isAbandonedDMRoom == true
-                          //         ? Row(
-                          //             mainAxisAlignment:
-                          //                 MainAxisAlignment.spaceEvenly,
-                          //             children: [
-                          //               TextButton.icon(
-                          //                 style: TextButton.styleFrom(
-                          //                   padding: const EdgeInsets.all(
-                          //                     16,
+                          //     alignment: Alignment.center,
+                          //     child: Material(
+                          //       clipBehavior: Clip.hardEdge,
+                          //       color: controller.selectedEvents.isNotEmpty
+                          //           ? theme.colorScheme.tertiaryContainer
+                          //           : theme.colorScheme.surfaceContainerHigh,
+                          //       borderRadius: const BorderRadius.all(
+                          //         Radius.circular(24),
+                          //       ),
+                          //       child: controller.room.isAbandonedDMRoom == true
+                          //           ? Row(
+                          //               mainAxisAlignment:
+                          //                   MainAxisAlignment.spaceEvenly,
+                          //               children: [
+                          //                 TextButton.icon(
+                          //                   style: TextButton.styleFrom(
+                          //                     padding: const EdgeInsets.all(
+                          //                       16,
+                          //                     ),
+                          //                     foregroundColor:
+                          //                         theme.colorScheme.error,
                           //                   ),
-                          //                   foregroundColor:
-                          //                       theme.colorScheme.error,
-                          //                 ),
-                          //                 icon: const Icon(
-                          //                   Icons.archive_outlined,
-                          //                 ),
-                          //                 onPressed: controller.leaveChat,
-                          //                 label: Text(
-                          //                   L10n.of(context).leave,
-                          //                 ),
-                          //               ),
-                          //               TextButton.icon(
-                          //                 style: TextButton.styleFrom(
-                          //                   padding: const EdgeInsets.all(
-                          //                     16,
+                          //                   icon: const Icon(
+                          //                     Icons.archive_outlined,
+                          //                   ),
+                          //                   onPressed: controller.leaveChat,
+                          //                   label: Text(
+                          //                     L10n.of(context).leave,
                           //                   ),
                           //                 ),
-                          //                 icon: const Icon(
-                          //                   Icons.forum_outlined,
+                          //                 TextButton.icon(
+                          //                   style: TextButton.styleFrom(
+                          //                     padding: const EdgeInsets.all(
+                          //                       16,
+                          //                     ),
+                          //                   ),
+                          //                   icon: const Icon(
+                          //                     Icons.forum_outlined,
+                          //                   ),
+                          //                   onPressed: controller.recreateChat,
+                          //                   label: Text(
+                          //                     L10n.of(context).reopenChat,
+                          //                   ),
                           //                 ),
-                          //                 onPressed: controller.recreateChat,
-                          //                 label: Text(
-                          //                   L10n.of(context).reopenChat,
-                          //                 ),
-                          //               ),
-                          //             ],
-                          //           )
-                          //         : Column(
-                          //             mainAxisSize: MainAxisSize.min,
-                          //             children: [
-                          //               ReplyDisplay(controller),
-                          //               ChatInputRow(controller),
-                          //               ChatEmojiPicker(controller),
-                          //             ],
-                          //           ),
-                          //   ),
-                          // )
+                          //               ],
+                          //             )
+                          //           : Column(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               children: [
+                          //                 ReplyDisplay(controller),
+                          //                 ChatInputRow(controller),
+                          //                 ChatEmojiPicker(controller),
+                          //               ],
+                          //             ),
+                          //     ),
+                          //   )
                           else if (controller.room.canSendDefaultMessages &&
                               controller.room.membership == Membership.join &&
                               (controller.room.activityPlan == null ||
