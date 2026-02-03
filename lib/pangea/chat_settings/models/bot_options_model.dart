@@ -24,7 +24,7 @@ class BotOptionsModel {
   final String? textAdventureGameMasterInstructions;
   final String? targetLanguage;
   final String? targetVoice;
-  final GenderEnum targetGender;
+  final Map<String, GenderEnum> userGenders;
 
   const BotOptionsModel({
     ////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ class BotOptionsModel {
     this.mode = BotMode.discussion,
     this.targetLanguage,
     this.targetVoice,
-    this.targetGender = GenderEnum.unselected,
+    this.userGenders = const {},
 
     ////////////////////////////////////////////////////////////////////////////
     // Discussion Mode Options
@@ -61,6 +61,22 @@ class BotOptionsModel {
   });
 
   factory BotOptionsModel.fromJson(json) {
+    final genderEntry = json[ModelKey.targetGender];
+    Map<String, GenderEnum> targetGenders = {};
+    if (genderEntry is Map<String, dynamic>) {
+      targetGenders = Map<String, GenderEnum>.fromEntries(
+        genderEntry.entries.map(
+          (e) => MapEntry(
+            e.key,
+            GenderEnum.values.firstWhere(
+              (g) => g.name == e.value,
+              orElse: () => GenderEnum.unselected,
+            ),
+          ),
+        ),
+      );
+    }
+
     return BotOptionsModel(
       //////////////////////////////////////////////////////////////////////////
       // General Bot Options
@@ -76,12 +92,7 @@ class BotOptionsModel {
       mode: json[ModelKey.mode] ?? BotMode.discussion,
       targetLanguage: json[ModelKey.targetLanguage],
       targetVoice: json[ModelKey.targetVoice],
-      targetGender: json[ModelKey.targetGender] != null
-          ? GenderEnum.values.firstWhere(
-              (g) => g.name == json[ModelKey.targetGender],
-              orElse: () => GenderEnum.unselected,
-            )
-          : GenderEnum.unselected,
+      userGenders: targetGenders,
 
       //////////////////////////////////////////////////////////////////////////
       // Discussion Mode Options
@@ -112,6 +123,11 @@ class BotOptionsModel {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     try {
+      final Map<String, String> gendersEntry = {};
+      for (final entry in userGenders.entries) {
+        gendersEntry[entry.key] = entry.value.name;
+      }
+
       // data[ModelKey.isConversationBotChat] = isConversationBotChat;
       data[ModelKey.languageLevel] = languageLevel.storageInt;
       data[ModelKey.safetyModeration] = safetyModeration;
@@ -130,7 +146,7 @@ class BotOptionsModel {
       data[ModelKey.customTriggerReactionKey] = customTriggerReactionKey ?? "⏩";
       data[ModelKey.textAdventureGameMasterInstructions] =
           textAdventureGameMasterInstructions;
-      data[ModelKey.targetGender] = targetGender.name;
+      data[ModelKey.targetGender] = gendersEntry;
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);
@@ -159,7 +175,7 @@ class BotOptionsModel {
     String? textAdventureGameMasterInstructions,
     String? targetLanguage,
     String? targetVoice,
-    GenderEnum? targetGender,
+    Map<String, GenderEnum>? userGenders,
   }) {
     return BotOptionsModel(
       languageLevel: languageLevel ?? this.languageLevel,
@@ -183,7 +199,7 @@ class BotOptionsModel {
               this.textAdventureGameMasterInstructions,
       targetLanguage: targetLanguage ?? this.targetLanguage,
       targetVoice: targetVoice ?? this.targetVoice,
-      targetGender: targetGender ?? this.targetGender,
+      userGenders: userGenders ?? this.userGenders,
     );
   }
 }

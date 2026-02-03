@@ -312,6 +312,7 @@ class OverlayUtil {
       closePrevOverlay: false,
       backDropToDismiss: false,
       ignorePointer: true,
+      canPop: false,
     );
   }
 

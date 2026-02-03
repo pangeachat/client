@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -101,6 +100,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
       ValueNotifier<SelectedMorphChoice?>(null);
 
+  final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
+
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
 
@@ -125,6 +126,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     progressNotifier.dispose();
     enableChoicesNotifier.dispose();
     selectedMorphChoice.dispose();
+    hintPressedNotifier.dispose();
     super.dispose();
   }
 
@@ -210,6 +212,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.value = const AsyncState.loading();
     activityTarget.value = null;
     selectedMorphChoice.value = null;
+    hintPressedNotifier.value = false;
     enableChoicesNotifier.value = true;
     progressNotifier.value = 0.0;
     _queue.clear();
@@ -282,6 +285,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     try {
       activityState.value = const AsyncState.loading();
       selectedMorphChoice.value = null;
+      hintPressedNotifier.value = false;
 
       final req = activityTarget.value!;
       final res = await _fetchActivity(req);
@@ -324,6 +328,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         while (_queue.isNotEmpty) {
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
+          hintPressedNotifier.value = false;
           final nextActivityCompleter = _queue.removeFirst();
 
           try {
@@ -477,6 +482,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService.addAnalytics(null, [use]);
   }
 
+  void onHintPressed() {
+    hintPressedNotifier.value = !hintPressedNotifier.value;
+  }
+
   Future<void> onSelectChoice(
     String choiceContent,
   ) async {
@@ -528,21 +537,19 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
-    PracticeTarget target,
+    MessageActivityRequest activityRequest,
   ) async {
+    final target = activityRequest.target;
     final token = target.tokens.first;
     final construct = target.targetTokenConstructID(token);
 
-    String? form;
     if (widget.type == ConstructTypeEnum.morph) {
-      if (target.morphFeature == null) return null;
-      form = token.lemma.form;
+      return activityRequest.morphExampleInfo?.exampleMessage;
     }
 
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct),
       Matrix.of(context).client,
-      form: form,
     );
   }
 

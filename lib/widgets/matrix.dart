@@ -566,8 +566,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     //     double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
     //         AppConfig.fontSizeFactor;
     if (client.isLogged()) {
-      StyleSettingsRepo.fontSizeFactor(client.userID!).then((factor) {
-        AppConfig.fontSizeFactor = factor;
+      StyleSettingsRepo.settings(client.userID!).then((settings) {
+        AppConfig.fontSizeFactor = settings.fontSizeFactor;
+        AppConfig.useActivityImageAsChatBackground =
+            settings.useActivityImageBackground;
       });
     }
     // Pangea#
