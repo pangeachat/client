@@ -2479,6 +2479,55 @@
     },
     "jumpToLastReadMessage": "Hopp til sist leste melding",
     "@jumpToLastReadMessage": {},
+    "serverLimitReached": "Grensen for server er nådd! Venter i {seconds} sekunder...",
+    "@serverLimitReached": {
+        "type": "integer",
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
+    "blur": "Uskarphet:",
+    "@blur": {},
+    "opacity": "Ugjennomsiktighet:",
+    "@opacity": {},
+    "noContactInformationProvided": "Serveren oppgir ingen gyldig kontaktinformasjon",
+    "@noContactInformationProvided": {},
+    "supportPage": "Supportside",
+    "@supportPage": {},
+    "compress": "Komprimer",
+    "@compress": {},
+    "italicText": "Kursiv tekst",
+    "@italicText": {},
+    "strikeThrough": "Gjennomstreking",
+    "@strikeThrough": {},
+    "youUnbannedUser": "Du opphevet utestengelsen av {user}",
+    "@youUnbannedUser": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "disableEncryptionWarning": "Av sikkerhetshensyn kan du ikke deaktivere kryptering i en chat der det har vært aktivert tidligere.",
+    "@disableEncryptionWarning": {},
+    "deviceKeys": "Enhetsnøkler:",
+    "@deviceKeys": {},
+    "readUpToHere": "Lest frem til her",
+    "@readUpToHere": {},
+    "jump": "Hopp",
+    "@jump": {},
+    "reportErrorDescription": "😭 Å nei. Noe gikk galt. Hvis du ønsker det, kan du rapportere denne feilen til utviklerne.",
+    "@reportErrorDescription": {},
+    "invalidInput": "Ugyldig inndata!",
+    "@invalidInput": {},
+    "pleaseEnterANumber": "Vennligst skriv inn et tall større enn 0",
+    "@pleaseEnterANumber": {},
+    "archiveRoomDescription": "Chatten vil bli flyttet til arkivet. Andre brukere vil kunne se at du har forlatt chatten.",
+    "@archiveRoomDescription": {},
+    "removeDevicesDescription": "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.",
+    "@removeDevicesDescription": {},
     "alwaysUse24HourFormat": "falsk",
     "exportEmotePack": "Eksporter Emote-pakke som .zip",
     "commandHint_googly": "Send noen googly-øyne",
@@ -2572,7 +2621,6 @@
     "switchToAccount": "Bytt til konto {number}",
     "widgetEtherpad": "Tekstnotat",
     "errorAddingWidget": "Feil ved tillegg av widgeten.",
-    "youUnbannedUser": "Du fjernet utestengelsen for {user}",
     "hasKnocked": "🚪 {user} har banket på",
     "usersMustKnock": "Brukere må banke på",
     "noOneCanJoin": "Ingen kan bli med",
@@ -2598,12 +2646,7 @@
     "hidePresences": "Skjul statusliste?",
     "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
     "newSpaceDescription": "Rom lar deg konsolidere dine chatter og bygge private eller offentlige fellesskap.",
-    "disableEncryptionWarning": "Av sikkerhetsgrunner kan du ikke deaktivere kryptering i en chat der den har vært aktivert tidligere.",
-    "deviceKeys": "Enhetsnøkler:",
     "noBackupWarning": "Advarsel! Uten å aktivere chat-sikkerhetskopi vil du miste tilgangen til dine krypterte meldinger. Det anbefales sterkt å aktivere chat-sikkerhetskopi før du logger ut.",
-    "readUpToHere": "Les opp til her",
-    "jump": "Hopp",
-    "reportErrorDescription": "😞 Å nei. Noe gikk galt. Hvis du vil, kan du rapportere denne feilen til utviklerne.",
     "report": "rapporter",
     "signInWithPassword": "Logg inn med passord",
     "pleaseTryAgainLaterOrChooseDifferentServer": "Vennligst prøv igjen senere eller velg en annen server.",
@@ -2613,11 +2656,7 @@
     "setColorTheme": "Velg fargetema:",
     "inviteGroupChat": "📨 Inviter gruppechat",
     "invitePrivateChat": "📨 Inviter privat chat",
-    "invalidInput": "Ugyldig inndata!",
-    "pleaseEnterANumber": "Vennligst skriv inn et tall større enn 0",
-    "archiveRoomDescription": "Chaten vil bli flyttet til arkivet. Andre brukere vil kunne se at du har forlatt chatten.",
     "roomUpgradeDescription": "Deretter vil chatten bli opprettet på nytt med den nye romversjonen. Alle deltakere vil bli varslet om at de må bytte til den nye chatten. Du kan finne mer informasjon om romversjoner på https://spec.matrix.org/latest/rooms/",
-    "removeDevicesDescription": "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.",
     "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne komme inn igjen før de blir unbannet.",
     "unbanUserDescription": "Brukeren vil kunne komme inn i chatten igjen hvis de prøver.",
     "kickUserDescription": "Brukeren blir kastet ut av chatten, men er ikke utestengt. I offentlige chatter kan brukeren bli med igjen når som helst.",
@@ -2678,17 +2717,9 @@
     "generatingVideoThumbnail": "Genererer videominiatyr...",
     "compressVideo": "Komprimerer video...",
     "sendingAttachmentCountOfCount": "Sender vedlegg {index} av {length}...",
-    "serverLimitReached": "Servergrensen er nådd! Venter {seconds} sekunder...",
     "noticeChatBackupDeviceVerification": "Merk: Når du kobler alle enhetene dine til chat-sikkerhetskopien, blir de automatisk verifisert.",
     "welcomeText": "Hei Hei 👋 Dette er FluffyChat. Du kan logge inn på hvilken som helst hjemserver, som er kompatibel med https://matrix.org. Og deretter chatte med hvem som helst. Det er et stort desentralisert meldingsnettverk!",
-    "blur": "Uskarphet:",
-    "opacity": "Opacity:",
-    "noContactInformationProvided": "Serveren gir ingen gyldige kontaktopplysninger",
     "contactServerSecurity": "Kontakt serverens sikkerhet",
-    "supportPage": "Supportside",
-    "compress": "Komprimer",
-    "italicText": "Kursiv tekst",
-    "strikeThrough": "Gjennomstreking",
     "unableToJoinChat": "Kan ikke bli med i chat. Kanskje den andre parten allerede har lukket samtalen.",
     "otherPartyNotLoggedIn": "Den andre parten er for øyeblikket ikke logget inn og kan derfor ikke motta meldinger!",
     "appWantsToUseForLogin": "Bruk '{server}' for å logge inn",
@@ -4303,14 +4334,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@youUnbannedUser": {
-      "type": "String",
-      "placeholders": {
-        "user": {
-          "type": "String"
-        }
-      }
-    },
     "@hasKnocked": {
       "type": "String",
       "placeholders": {
@@ -4427,27 +4450,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@disableEncryptionWarning": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@deviceKeys": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@noBackupWarning": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@readUpToHere": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@jump": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@reportErrorDescription": {
       "type": "String",
       "placeholders": {}
     },
@@ -4491,23 +4494,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@invalidInput": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseEnterANumber": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@archiveRoomDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@roomUpgradeDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@removeDevicesDescription": {
       "type": "String",
       "placeholders": {}
     },
@@ -4826,14 +4813,6 @@
         }
       }
     },
-    "@serverLimitReached": {
-      "type": "integer",
-      "placeholders": {
-        "seconds": {
-          "type": "int"
-        }
-      }
-    },
     "@noticeChatBackupDeviceVerification": {
       "type": "String",
       "placeholders": {}
@@ -4842,35 +4821,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@blur": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@opacity": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@noContactInformationProvided": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@contactServerSecurity": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@supportPage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@compress": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@italicText": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@strikeThrough": {
       "type": "String",
       "placeholders": {}
     },
