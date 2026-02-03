@@ -2108,10 +2108,10 @@ packages:
     dependency: transitive
     description:
       name: record_web
-      sha256: "024c81eb7f51468b1833a3eca8b461c7ca25c04899dba37abe580bb57afd32e4"
+      sha256: "3feeffbc0913af3021da9810bb8702a068db6bc9da52dde1d19b6ee7cb9edb51"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.8"
+    version: "1.2.2"
   record_windows:
     dependency: transitive
     description:
