@@ -53,11 +53,8 @@ class MessageDownloadContent extends StatelessWidget {
                     backgroundColor: textColor.withAlpha(32),
                     child: Icon(Icons.file_download_outlined, color: textColor),
                   ),
-                  // #Pangea
                   Flexible(
-                    child:
-                        // Pangea#
-                        Column(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
