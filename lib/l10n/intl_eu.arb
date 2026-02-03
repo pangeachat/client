@@ -1911,7 +1911,7 @@
     "type": "String",
     "description": "Usage hint for the command /invite"
   },
-  "commandHint_join": "Batu gelara",
+  "commandHint_join": "Batu adierazitako gelara",
   "@commandHint_join": {
     "type": "String",
     "description": "Usage hint for the command /join"
@@ -2608,9 +2608,9 @@
   "@invite": {},
   "invalidInput": "Sartu duzunak ez du balio!",
   "@invalidInput": {},
-  "inviteGroupChat": "📨 Gonbidatu taldeko txatera",
+  "inviteGroupChat": "📨 Taldeko txatera gonbidapena",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Gonbidatu txat pribatura",
+  "invitePrivateChat": "📨 Txat pribatura gonbidapena",
   "@invitePrivateChat": {},
   "banUserDescription": "Erabiltzailea txatetik kanporatu eta berriro sartzeko debekua ezarriko zaio; ezingo da berriro sartu debekua kendu arte.",
   "@banUserDescription": {},
@@ -3380,8 +3380,12 @@
   "@commandHint_logoutall": {},
   "moreEvents": "Gertaera gehiago",
   "@moreEvents": {},
-  "displayNavigationRail": "Erakutsi nabigazio errail txikian",
+  "displayNavigationRail": "Erakutsi nabigazio-barra mugikorrean",
+  "@displayNavigationRail": {},
   "customReaction": "Erreakzio pertsonalizatua",
+  "@customReaction": {},
+  "declineInvitation": "Uko egin gonbidapenari",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Idatzi {l1} edo {l2}...",
   "requests": "Eskariak",
   "holdForInfo": "Klikatu eta eutsi hitzaren informazioarentzat.",
@@ -4509,14 +4513,6 @@
   "inviteYourFriends": "Gonbidatu zure lagunak",
   "playWithAI": "Jolastu AIrekin orain",
   "courseStartDesc": "Pangea Bot prest dago noiznahi joateko!\n\n...baina ikastea lagunekin hobe da!",
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
