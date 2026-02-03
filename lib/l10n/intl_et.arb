@@ -3384,6 +3384,8 @@
   "@customReaction": {},
   "moreEvents": "Veel sündmusi",
   "@moreEvents": {},
+  "declineInvitation": "Keeldu kutsest",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Kirjuta {l1} või {l2}...",
   "requests": "Päringud",
   "holdForInfo": "Vajuta ja hoia sõna info saamiseks.",

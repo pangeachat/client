@@ -3384,6 +3384,8 @@
   "@customReaction": {},
   "moreEvents": "更多事件",
   "@moreEvents": {},
+  "declineInvitation": "拒绝邀请",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "输入 {l1} 或 {l2}...",
   "requests": "请求",
   "holdForInfo": "点击并按住获取单词信息。",

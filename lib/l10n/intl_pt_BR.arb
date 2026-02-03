@@ -3383,6 +3383,8 @@
   "@customReaction": {},
   "moreEvents": "Mais eventos",
   "@moreEvents": {},
+  "declineInvitation": "Rejeitar convite",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Digite em {l1} ou {l2}...",
   "requests": "Solicitações",
   "holdForInfo": "Clique e segure para informações da palavra.",
