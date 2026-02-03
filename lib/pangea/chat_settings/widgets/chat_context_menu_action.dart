@@ -236,6 +236,15 @@ void chatContextMenuAction(
         ),
       );
       return;
+    case ChatContextAction.block:
+      final inviteEvent = room.getState(
+        EventTypes.RoomMember,
+        room.client.userID!,
+      );
+      context.go(
+        '/rooms/settings/security/ignorelist',
+        extra: inviteEvent?.senderId,
+      );
     case ChatContextAction.leave:
       final confirmed = await showOkCancelAlertDialog(
         context: context,

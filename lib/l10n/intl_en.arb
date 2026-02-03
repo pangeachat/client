@@ -3242,6 +3242,7 @@
   "displayNavigationRail": "Show navigation rail on mobile",
   "customReaction": "Custom reaction",
   "moreEvents": "More events",
+  "declineInvitation": "Decline invitation",
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",
