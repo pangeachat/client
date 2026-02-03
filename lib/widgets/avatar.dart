@@ -81,61 +81,61 @@ class Avatar extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             // #Pangea
-            // child: noPic
+            // child: MxcImage(
             child: (userId ?? presenceUserId) == BotName.byEnvironment
                 ? BotFace(
                     width: size,
                     expression: BotExpression.idle,
                     useRive: useRive,
                   )
-                : noPic
-                    // Pangea#
-                    ? Container(
-                        decoration:
-                            BoxDecoration(color: name?.lightColorAvatar),
-                        alignment: Alignment.center,
-                        child: Text(
-                          fallbackLetters,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'RobotoMono',
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: (size / 2.5).roundToDouble(),
+                : !(mxContent.toString().startsWith('mxc://'))
+                    ? ImageByUrl(
+                        imageUrl: mxContent,
+                        width: size,
+                        replacement: Center(
+                          child: Icon(
+                            icon ?? Icons.person_2,
+                            color: theme.colorScheme.tertiary,
+                            size: size / 1.5,
                           ),
                         ),
+                        borderRadius: borderRadius,
                       )
-                    // #Pangea
-                    : !(mxContent.toString().startsWith('mxc://'))
-                        ? ImageByUrl(
-                            imageUrl: mxContent,
-                            width: size,
-                            replacement: Center(
-                              child: Icon(
-                                icon ?? Icons.person_2,
-                                color: theme.colorScheme.tertiary,
-                                size: size / 1.5,
-                              ),
-                            ),
-                            borderRadius: borderRadius,
-                          )
+                    : MxcImage(
                         // Pangea#
-                        : MxcImage(
-                            client: client,
-                            key: ValueKey(mxContent.toString()),
-                            cacheKey: '${mxContent}_$size',
-                            uri: mxContent,
-                            fit: BoxFit.cover,
-                            width: size,
-                            height: size,
-                            placeholder: (_) => Center(
-                              child: Icon(
-                                Icons.person_2,
-                                color: theme.colorScheme.tertiary,
-                                size: size / 1.5,
+                        client: client,
+                        borderRadius: borderRadius,
+                        key: ValueKey(mxContent.toString()),
+                        cacheKey: '${mxContent}_$size',
+                        uri: mxContent,
+                        fit: BoxFit.cover,
+                        width: size,
+                        height: size,
+                        placeholder: (_) => noPic
+                            ? Container(
+                                decoration: BoxDecoration(
+                                  color: name?.lightColorAvatar,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  fallbackLetters,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'RobotoMono',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: (size / 2.5).roundToDouble(),
+                                  ),
+                                ),
+                              )
+                            : Center(
+                                child: Icon(
+                                  Icons.person_2,
+                                  color: theme.colorScheme.tertiary,
+                                  size: size / 1.5,
+                                ),
                               ),
-                            ),
-                          ),
+                      ),
           ),
         ),
         // #Pangea
