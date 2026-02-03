@@ -66,8 +66,10 @@ class PangeaController {
     });
     subscriptionController.reinitialize();
 
-    StyleSettingsRepo.fontSizeFactor(userID!).then((factor) {
-      AppConfig.fontSizeFactor = factor;
+    StyleSettingsRepo.settings(userID!).then((settings) {
+      AppConfig.fontSizeFactor = settings.fontSizeFactor;
+      AppConfig.useActivityImageAsChatBackground =
+          settings.useActivityImageBackground;
     });
   }
 
