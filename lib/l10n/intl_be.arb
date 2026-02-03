@@ -1,83 +1,445 @@
 {
-  "alwaysUse24HourFormat": "завсёды выкарыстоўваць фармат 24-гадзіннага часу",
+  "alwaysUse24HourFormat": "адключана",
+  "@alwaysUse24HourFormat": {
+    "description": "Set to true to always display time of day in 24 hour format."
+  },
   "repeatPassword": "Паўтарыце пароль",
-  "notAnImage": "Не з'яўляецца файлам выявы.",
-  "setCustomPermissionLevel": "Усталяваць карыстацкі ўзровень дазволу",
-  "setPermissionsLevelDescription": "Калі ласка, выберыце папярэдне вызначаную ролю ніжэй або ўвядзіце карыстацкі ўзровень дазволу паміж 0 і 100.",
+  "@repeatPassword": {},
+  "notAnImage": "Не файл выявы.",
+  "@notAnImage": {},
+  "setCustomPermissionLevel": "Задайце карыстальніцкі ўзровень дазволу",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Калі ласка, выберыце ролю ніжэй альбо ўвядзіце карыстальніцкі ўзровень дазволу паміж 0 і 100.",
+  "@setPermissionsLevelDescription": {},
   "ignoreUser": "Ігнараваць карыстальніка",
+  "@ignoreUser": {},
   "normalUser": "Звычайны карыстальнік",
-  "remove": "Выдаліць",
-  "importNow": "Імпартаваць цяпер",
+  "@normalUser": {},
+  "remove": "Прыбраць",
+  "@remove": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "importNow": "Імпартаваць зараз",
+  "@importNow": {},
   "importEmojis": "Імпартаваць эмодзі",
+  "@importEmojis": {},
   "importFromZipFile": "Імпартаваць з файла .zip",
-  "exportEmotePack": "Экспартаваць пакет эмодзі ў выглядзе .zip",
-  "replace": "Заменіць",
-  "about": "Пра",
+  "@importFromZipFile": {},
+  "exportEmotePack": "Экспартаваць пак эмодзі як .zip",
+  "@exportEmotePack": {},
+  "replace": "Замяніць",
+  "@replace": {},
+  "about": "Пра праграму",
+  "@about": {},
   "aboutHomeserver": "Пра {homeserver}",
-  "accept": "Прымаць",
+  "@aboutHomeserver": {
+    "type": "String",
+    "placeholders": {
+      "homeserver": {
+        "type": "String"
+      }
+    }
+  },
+  "accept": "Прыняць",
+  "@accept": {
+    "type": "String",
+    "placeholders": {}
+  },
   "acceptedTheInvitation": "👍 {username} прыняў запрашэнне",
+  "@acceptedTheInvitation": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
   "account": "Уліковы запіс",
-  "activatedEndToEndEncryption": "🔐 {username} актываваў канчатковае шыфраванне",
-  "addEmail": "Дадаць электронную пошту",
-  "confirmMatrixId": "Калі ласка, пацвердзіце свой Matrix ID, каб выдаліць свой уліковы запіс.",
-  "supposedMxid": "Гэта павінна быць {mxid}",
-  "addChatDescription": "Дадаць апісанне чата...",
-  "addToSpace": "Дадаць у прастору",
-  "admin": "Адміністратар",
-  "alias": "аліяс",
-  "all": "Усе",
+  "@account": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activatedEndToEndEncryption": "🔐 {username} актывіраваў end to end шыфраванне",
+  "@activatedEndToEndEncryption": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "addEmail": "Дадаць email",
+  "@addEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "confirmMatrixId": "Калі ласка, спраўдзіце свой Matrix ID перад выдаленнем свайго ўліковага запісу.",
+  "@confirmMatrixId": {},
+  "supposedMxid": "Гэта павінна быць накшталт {mxid}",
+  "@supposedMxid": {
+    "type": "String",
+    "placeholders": {
+      "mxid": {
+        "type": "String"
+      }
+    }
+  },
+  "addChatDescription": "Дадайце апісанне чату...",
+  "@addChatDescription": {},
+  "addToSpace": "Дадаць прастору",
+  "@addToSpace": {},
+  "admin": "Адмін",
+  "@admin": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "alias": "займенне",
+  "@alias": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "all": "Усё",
+  "@all": {
+    "type": "String",
+    "placeholders": {}
+  },
   "allChats": "Усе чаты",
-  "commandHint_roomupgrade": "Абнавіць гэтую пакой да дадзенай версіі пакоя",
-  "commandHint_googly": "Адправіць вочы-гуглі",
-  "commandHint_cuddle": "Адправіць абдымкі",
-  "commandHint_hug": "Адправіць абдымкі",
-  "googlyEyesContent": "{senderName} пасылае вам вочы-гуглі",
-  "cuddleContent": "{senderName} абдымае вас",
+  "@allChats": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "commandHint_roomupgrade": "Палепшыце гэты пакой да версіі дадзенага пакою",
+  "@commandHint_roomupgrade": {},
+  "commandHint_googly": "Дасылае смешныя вочы",
+  "@commandHint_googly": {},
+  "commandHint_cuddle": "Дасылае ўсмешку",
+  "@commandHint_cuddle": {},
+  "commandHint_hug": "Дасылае абдыманне",
+  "@commandHint_hug": {},
+  "googlyEyesContent": "{senderName} даслаў вам смешныя вочы",
+  "@googlyEyesContent": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
+  "cuddleContent": "{senderName} усміхаецца вам",
+  "@cuddleContent": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
   "hugContent": "{senderName} абдымае вас",
-  "answeredTheCall": "{senderName} адказаў на званок",
-  "anyoneCanJoin": "Любой можа далучыцца! Аднак адміністратар можа выгнаць і забараніць усіх, хто паводзіць сябе неадэкватна. Тых, хто забаронены, могуць не вярнуцца!",
-  "appLock": "Блакіроўка прыкладання",
-  "appLockDescription": "Заблакаваць прыкладанне, калі не карыстаецеся, з дапамогай PIN-кода",
+  "@hugContent": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
+  "answeredTheCall": "{senderName} адказаў на выклік",
+  "@answeredTheCall": {
+    "type": "String",
+    "placeholders": {
+      "senderName": {
+        "type": "String"
+      }
+    }
+  },
+  "anyoneCanJoin": "Усе могуць далучыцца",
+  "@anyoneCanJoin": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "appLock": "Код-пароль",
+  "@appLock": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "appLockDescription": "Блакіруе праграму, пакуль вы не ўвядзеце пін-код",
+  "@appLockDescription": {},
   "archive": "Архіў",
-  "areGuestsAllowedToJoin": "Ці дазволена гасцявым карыстальнікам далучацца",
+  "@archive": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "areGuestsAllowedToJoin": "Карыстальнікі-госці могуць далучыцца",
+  "@areGuestsAllowedToJoin": {
+    "type": "String",
+    "placeholders": {}
+  },
   "areYouSure": "Вы ўпэўнены?",
-  "areYouSureYouWantToLogout": "Вы ўпэўнены, што хочаце выйсці?",
-  "askSSSSSign": "Каб мець магчымасць падпісаць іншага чалавека, уводзьце ваш бяспечны пароль або ключ аднаўлення.",
-  "askVerificationRequest": "Пацвердзіць гэты запыт на праверку ад {username}?",
-  "autoplayImages": "Аўтаматычна прайграваць анімаваныя стыкеры і эмоцыі",
-  "badServerLoginTypesException": "Хатні сервер падтрымлівае тыпы ўваходу:\n{serverVersions}\nАле гэта дадатак падтрымлівае толькі:\n{supportedVersions}",
-  "sendTypingNotifications": "Адправіць апавяшчэнні пра набор тэксту",
-  "swipeRightToLeftToReply": "Праскрасьце справа налева, каб адказаць",
-  "sendOnEnter": "Адправіць пры націску Enter",
-  "badServerVersionsException": "Хатні сервер падтрымлівае версіі спецыфікацыі:\n{serverVersions}\nАле гэта дадатак падтрымлівае толькі {supportedVersions}",
-  "countChatsAndCountParticipants": "{chats} размоў і {participants} удзельнікаў",
-  "noMoreChatsFound": "Больш размоў не знойдзена...",
-  "noChatsFoundHere": "Тут яшчэ не знойдзена размоў. Стварыце новую размову з кімсьці, выкарыстоўваючы кнопку ніжэй. ⤵️",
-  "joinedChats": "Далучаныя размовы",
-  "unread": "Непрачытаныя",
+  "@areYouSure": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "areYouSureYouWantToLogout": "Вы ўпэўнены, што хаціце выйсці?",
+  "@areYouSureYouWantToLogout": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "askSSSSSign": "Каб увайсці як іншы чалавек, калі ласка, увядзіце ключавую фразу ці ключ аднаўлення.",
+  "@askSSSSSign": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "askVerificationRequest": "Прыняць запрос на верыфікацыю ад {username}?",
+  "@askVerificationRequest": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "autoplayImages": "Аўтаматычна прайграваць аніміраваныя стыкеры і эмодзі",
+  "@autoplayImages": {
+    "type": "String",
+    "placeholder": {}
+  },
+  "badServerLoginTypesException": "Хатні сервер падтрымлівае наступныя метады ўваходу:\n{serverVersions}\nАле гэта праграма падтрымлівае толькі:\n{supportedVersions}",
+  "@badServerLoginTypesException": {
+    "type": "String",
+    "placeholders": {
+      "serverVersions": {
+        "type": "String"
+      },
+      "supportedVersions": {
+        "type": "String"
+      }
+    }
+  },
+  "sendTypingNotifications": "Дасылаць паведамленне пра друк",
+  "@sendTypingNotifications": {},
+  "swipeRightToLeftToReply": "Змахніце ўлева, каб адказаць",
+  "@swipeRightToLeftToReply": {},
+  "sendOnEnter": "Дасылаць на enter",
+  "@sendOnEnter": {},
+  "badServerVersionsException": "Хатні сервер падтрымлівае наступныя версіі спецыфікацыі:\n{serverVersions}\nАле гэьа праграма падтрымлівае толькі:\n{supportedVersions}",
+  "@badServerVersionsException": {
+    "type": "String",
+    "placeholders": {
+      "serverVersions": {
+        "type": "String"
+      },
+      "supportedVersions": {
+        "type": "String"
+      }
+    }
+  },
+  "countChatsAndCountParticipants": "{chats} чатаў і {participants} удзельнікаў",
+  "@countChatsAndCountParticipants": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      },
+      "participants": {
+        "type": "int"
+      }
+    }
+  },
+  "noMoreChatsFound": "Болей чатаў не знойдзена...",
+  "@noMoreChatsFound": {},
+  "noChatsFoundHere": "Здаецца, тут пуств. Пачніце новы чат з кімсьці праз кнопку ніжэй. ⤵️",
+  "@noChatsFoundHere": {},
+  "joinedChats": "Чаты, да якіх далучыўся",
+  "@joinedChats": {},
+  "unread": "Непрачытана",
+  "@unread": {},
   "space": "Прастора",
+  "@space": {},
   "spaces": "Прасторы",
-  "banFromChat": "Забароніць у размове",
-  "banned": "Забаронены",
-  "bannedUser": "{username} заблакаваў {targetName}",
-  "blockDevice": "Заблакаваць прыладу",
-  "blocked": "Заблакавана",
+  "@spaces": {},
+  "banFromChat": "Заблакіраваць ў чаце",
+  "@banFromChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "banned": "Заблакіраваны",
+  "@banned": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "bannedUser": "{username} заюлакіраваў {targetName}",
+  "@bannedUser": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "targetName": {
+        "type": "String"
+      }
+    }
+  },
+  "blockDevice": "Заблакіраваць прыладу",
+  "@blockDevice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blocked": "Заблакіравана",
+  "@blocked": {
+    "type": "String",
+    "placeholders": {}
+  },
   "botMessages": "Паведамленні бота",
-  "cancel": "Адмяніць",
+  "@botMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cancel": "Скасаваць",
+  "@cancel": {
+    "type": "String",
+    "placeholders": {}
+  },
   "cantOpenUri": "Немагчыма адкрыць URI {uri}",
-  "changeDeviceName": "Змяніць імя прылады",
-  "changedTheChatAvatar": "{username} змяніў аватар чата",
-  "changedTheChatDescriptionTo": "{username} змяніў апісанне чата на: '{description}'",
-  "changedTheChatNameTo": "{username} змяніў імя чата на: '{chatname}'",
+  "@cantOpenUri": {
+    "type": "String",
+    "placeholders": {
+      "uri": {
+        "type": "String"
+      }
+    }
+  },
+  "changeDeviceName": "Змяніць назву прылады",
+  "@changeDeviceName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatAvatar": "{username} змяніў выяву чата",
+  "@changedTheChatAvatar": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheChatDescriptionTo": "{username} змяніў апісанне чата на :'{description}'",
+  "@changedTheChatDescriptionTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "description": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheChatNameTo": "{username} змяніў назву чата на '{chatname}'",
+  "@changedTheChatNameTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "chatname": {
+        "type": "String"
+      }
+    }
+  },
   "changedTheChatPermissions": "{username} змяніў дазволы чата",
-  "changedTheDisplaynameTo": "{username} змяніў сваё імя для паказу на: '{displayname}'",
-  "changedTheGuestAccessRules": "{username} змяніў правілы доступу для гасцей",
-  "changedTheGuestAccessRulesTo": "{username} змяніў правілы доступу для гасцей на: {rules}",
+  "@changedTheChatPermissions": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheDisplaynameTo": "{username} змяніў адлюстроўваемае імя на: '{displayname}'",
+  "@changedTheDisplaynameTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "displayname": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheGuestAccessRules": "{username} змяніў правілы гасцявога доступу",
+  "@changedTheGuestAccessRules": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheGuestAccessRulesTo": "{username} змяніў правілы гасцявога доступу на: {rules}",
+  "@changedTheGuestAccessRulesTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "rules": {
+        "type": "String"
+      }
+    }
+  },
   "changedTheHistoryVisibility": "{username} змяніў бачнасць гісторыі",
+  "@changedTheHistoryVisibility": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
   "changedTheHistoryVisibilityTo": "{username} змяніў бачнасць гісторыі на: {rules}",
-  "changedTheJoinRules": "{username} змяніў правілы далучэння",
-  "changedTheJoinRulesTo": "{username} змяніў правілы далучэння на: {joinRules}",
+  "@changedTheHistoryVisibilityTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "rules": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheJoinRules": "{username} змяніў правілы падлучэння",
+  "@changedTheJoinRules": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "changedTheJoinRulesTo": "{username} змяніў правілы падлучэння на: {joinRules}",
+  "@changedTheJoinRulesTo": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "joinRules": {
+        "type": "String"
+      }
+    }
+  },
   "changedTheProfileAvatar": "{username} змяніў свой аватар",
+  "@changedTheProfileAvatar": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
   "changedTheRoomAliases": "{username} змяніў аліасы пакоя",
   "changedTheRoomInvitationLink": "{username} змяніў спасылку на запрашэнне",
   "changePassword": "Змяніць пароль",
@@ -1909,456 +2271,6 @@
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
   "@@last_modified": "2026-01-29 15:24:53.163474",
-  "@alwaysUse24HourFormat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@repeatPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notAnImage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@remove": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@importNow": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@importEmojis": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@importFromZipFile": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exportEmotePack": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@replace": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@about": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aboutHomeserver": {
-    "type": "String",
-    "placeholders": {
-      "homeserver": {
-        "type": "String"
-      }
-    }
-  },
-  "@accept": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@acceptedTheInvitation": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@account": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activatedEndToEndEncryption": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@addEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@confirmMatrixId": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@supposedMxid": {
-    "type": "String",
-    "placeholders": {
-      "mxid": {
-        "type": "String"
-      }
-    }
-  },
-  "@addChatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addToSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@admin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@alias": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@all": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_googly": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_cuddle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_hug": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@googlyEyesContent": {
-    "type": "String",
-    "placeholders": {
-      "senderName": {
-        "type": "String"
-      }
-    }
-  },
-  "@cuddleContent": {
-    "type": "String",
-    "placeholders": {
-      "senderName": {
-        "type": "String"
-      }
-    }
-  },
-  "@hugContent": {
-    "type": "String",
-    "placeholders": {
-      "senderName": {
-        "type": "String"
-      }
-    }
-  },
-  "@answeredTheCall": {
-    "type": "String",
-    "placeholders": {
-      "senderName": {
-        "type": "String"
-      }
-    }
-  },
-  "@anyoneCanJoin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@appLock": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@appLockDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@archive": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@areGuestsAllowedToJoin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@areYouSure": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@areYouSureYouWantToLogout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@askSSSSSign": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@askVerificationRequest": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@autoplayImages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@badServerLoginTypesException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
-  "@sendTypingNotifications": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@swipeRightToLeftToReply": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sendOnEnter": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
-  "@noMoreChatsFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHere": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@joinedChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@unread": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@space": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spaces": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@banFromChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@banned": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bannedUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "targetName": {
-        "type": "String"
-      }
-    }
-  },
-  "@blockDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cancel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cantOpenUri": {
-    "type": "String",
-    "placeholders": {
-      "uri": {
-        "type": "String"
-      }
-    }
-  },
-  "@changeDeviceName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changedTheChatAvatar": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheChatDescriptionTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "description": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheChatNameTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "chatname": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheChatPermissions": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheDisplaynameTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "displayname": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheGuestAccessRules": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheGuestAccessRulesTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "rules": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheHistoryVisibility": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheHistoryVisibilityTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "rules": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheJoinRules": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheJoinRulesTo": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      },
-      "joinRules": {
-        "type": "String"
-      }
-    }
-  },
-  "@changedTheProfileAvatar": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "@changedTheRoomAliases": {
     "type": "String",
     "placeholders": {

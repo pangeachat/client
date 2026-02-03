@@ -2592,9 +2592,9 @@
   "@redactMessageDescription": {},
   "setChatDescription": "Налаштувати опис бесіди",
   "@setChatDescription": {},
-  "inviteGroupChat": "📨 Запросити до групової бесіди",
+  "inviteGroupChat": "📨 Запрошення до групової бесіди",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Запросити до приватної бесіди",
+  "invitePrivateChat": "📨 Запрошення до приватної бесіди",
   "@invitePrivateChat": {},
   "emoteKeyboardNoRecents": "Тут з'являться нещодавно використані смайлики...",
   "@emoteKeyboardNoRecents": {
@@ -3378,8 +3378,14 @@
   "@commandHint_logout": {},
   "commandHint_logoutall": "Вийти на всіх активних пристроях",
   "@commandHint_logoutall": {},
-  "displayNavigationRail": "Показати панель навігації на мобільному",
-  "customReaction": "Користувацька реакція",
+  "displayNavigationRail": "Показати навігаційну карту на мобільному",
+  "@displayNavigationRail": {},
+  "customReaction": "Власні реакції",
+  "@customReaction": {},
+  "moreEvents": "Інші події",
+  "@moreEvents": {},
+  "declineInvitation": "Відхилити запрошення",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Введіть {l1} або {l2}...",
   "requests": "Запити",
   "holdForInfo": "Натисніть і утримуйте для інформації про слово.",
@@ -4507,14 +4513,6 @@
   "inviteYourFriends": "Запросіть своїх друзів",
   "playWithAI": "Поки що грайте з ШІ",
   "courseStartDesc": "Пангей Бот готовий до роботи в будь-який час!\n\n...але навчання краще з друзями!",
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

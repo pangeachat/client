@@ -24,7 +24,7 @@ dependencies:
   confetti: ^0.8.0
   cupertino_icons: any
   # #Pangea
-  # desktop_drop: ^0.4.4
+  # desktop_drop: ^0.6.1
   # Pangea#
   desktop_notifications: ^0.6.3
   device_info_plus: ^11.5.0
