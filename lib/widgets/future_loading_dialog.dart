@@ -14,7 +14,8 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 /// null.
 Future<Result<T>> showFutureLoadingDialog<T>({
   required BuildContext context,
-  required Future<T> Function() future,
+  Future<T> Function()? future,
+  Future<T> Function(void Function(double?) setProgress)? futureWithProgress,
   String? title,
   String? backLabel,
   bool barrierDismissible = false,
@@ -28,7 +29,10 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   VoidCallback? onDismiss,
   // Pangea#
 }) async {
-  final futureExec = future();
+  assert(future != null || futureWithProgress != null);
+  final onProgressStream = StreamController<double?>();
+  final futureExec =
+      futureWithProgress?.call(onProgressStream.add) ?? future!();
   final resultFuture = ResultFuture(futureExec);
 
   if (delay) {
@@ -44,38 +48,28 @@ Future<Result<T>> showFutureLoadingDialog<T>({
     }
   }
 
-  // #Pangea
-  if (context.mounted) {
-    // Pangea#
-    final result = await showAdaptiveDialog<Result<T>>(
-      context: context,
-      barrierDismissible: barrierDismissible,
-      builder: (BuildContext context) => LoadingDialog<T>(
-        future: futureExec,
-        title: title,
-        backLabel: backLabel,
-        exceptionContext: exceptionContext,
-        // #Pangea
-        showError: showError,
-        onError: onError,
-        onDismiss: onDismiss,
-        onSuccess: onSuccess,
-        // Pangea#
-      ),
-    );
-    return result ??
-        Result.error(
-          Exception('FutureDialog canceled'),
-          StackTrace.current,
-        );
-  }
-
-  // #Pangea
-  return Result.error(
-    Exception('FutureDialog canceled'),
-    StackTrace.current,
+  final result = await showAdaptiveDialog<Result<T>>(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    builder: (BuildContext context) => LoadingDialog<T>(
+      future: futureExec,
+      title: title,
+      backLabel: backLabel,
+      exceptionContext: exceptionContext,
+      onProgressStream: onProgressStream.stream,
+      // #Pangea
+      showError: showError,
+      onError: onError,
+      onDismiss: onDismiss,
+      onSuccess: onSuccess,
+      // Pangea#
+    ),
   );
-  // Pangea#
+  return result ??
+      Result.error(
+        Exception('FutureDialog canceled'),
+        StackTrace.current,
+      );
 }
 
 class LoadingDialog<T> extends StatefulWidget {
@@ -83,6 +77,7 @@ class LoadingDialog<T> extends StatefulWidget {
   final String? backLabel;
   final Future<T> future;
   final ExceptionContext? exceptionContext;
+  final Stream<double?> onProgressStream;
   // #Pangea
   final bool Function(Object)? showError;
   final Object? Function(Object, StackTrace?)? onError;
@@ -96,6 +91,7 @@ class LoadingDialog<T> extends StatefulWidget {
     this.title,
     this.backLabel,
     this.exceptionContext,
+    required this.onProgressStream,
     // #Pangea
     this.showError,
     this.onError,
@@ -187,7 +183,13 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
             // if (exception == null) ...[
             if (exception == null && _successMessage == null) ...[
               // Pangea#
-              const CircularProgressIndicator.adaptive(),
+              StreamBuilder(
+                stream: widget.onProgressStream,
+                builder: (context, snapshot) =>
+                    CircularProgressIndicator.adaptive(
+                  value: snapshot.data,
+                ),
+              ),
               const SizedBox(width: 20),
             ],
             Expanded(

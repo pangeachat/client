@@ -2668,6 +2668,8 @@
             }
         }
     },
+    "noMessagesYet": "Ingen meldinger enda",
+    "@noMessagesYet": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",

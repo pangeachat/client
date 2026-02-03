@@ -1406,10 +1406,12 @@ class ChatController extends State<ChatPageWithRoom>
     }
     // Pangea#
     final reason = reasonInput.isEmpty ? null : reasonInput;
-    for (final event in selectedEvents) {
-      await showFutureLoadingDialog(
-        context: context,
-        future: () async {
+    await showFutureLoadingDialog(
+      context: context,
+      futureWithProgress: (onProgress) async {
+        final count = selectedEvents.length;
+        for (final (i, event) in selectedEvents.indexed) {
+          onProgress(i / count);
           if (event.status.isSent) {
             if (event.canRedact) {
               // #Pangea
@@ -1439,9 +1441,9 @@ class ChatController extends State<ChatPageWithRoom>
           } else {
             await event.cancelSend();
           }
-        },
-      );
-    }
+        }
+      },
+    );
     // #Pangea
     // setState(() {
     //   showEmojiPicker = false;
