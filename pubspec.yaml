@@ -20,7 +20,7 @@ dependencies:
   blurhash_dart: ^1.2.1
   chewie: ^1.13.0
   collection: ^1.18.0
-  cross_file: ^0.3.4+2
+  cross_file: ^0.3.5
   confetti: ^0.8.0
   cupertino_icons: any
   # #Pangea
