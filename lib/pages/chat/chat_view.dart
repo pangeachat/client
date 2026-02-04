@@ -260,10 +260,11 @@ class ChatView extends StatelessWidget {
             if (activeThreadId != null) {
               appbarBottomHeight += ChatAppBarListTile.fixedHeight;
             }
-            if (controller.room.pinnedEventIds.isNotEmpty) {
+            if (controller.room.pinnedEventIds.isNotEmpty &&
+                activeThreadId == null) {
               appbarBottomHeight += ChatAppBarListTile.fixedHeight;
             }
-            if (scrollUpBannerEventId != null) {
+            if (scrollUpBannerEventId != null && activeThreadId == null) {
               appbarBottomHeight += ChatAppBarListTile.fixedHeight;
             }
             return Scaffold(
@@ -339,6 +340,7 @@ class ChatView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      PinnedEvents(controller),
                       if (activeThreadId != null)
                         SizedBox(
                           height: ChatAppBarListTile.fixedHeight,
@@ -348,11 +350,18 @@ class ChatView extends StatelessWidget {
                                   controller.scrollToEventId(activeThreadId),
                               icon: const Icon(Icons.message),
                               label: Text(L10n.of(context).replyInThread),
+                              style: TextButton.styleFrom(
+                                foregroundColor:
+                                    theme.colorScheme.onSecondaryContainer,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      PinnedEvents(controller),
-                      if (scrollUpBannerEventId != null)
+                      if (scrollUpBannerEventId != null &&
+                          activeThreadId == null)
                         ChatAppBarListTile(
                           leading: IconButton(
                             color: theme.colorScheme.onSurfaceVariant,
