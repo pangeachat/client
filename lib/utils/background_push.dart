@@ -20,6 +20,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
+import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +37,7 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import '../config/app_config.dart';
@@ -80,6 +83,27 @@ class BackgroundPush {
       FirebaseMessaging.instance.getInitialMessage().then(_onOpenNotification);
       FirebaseMessaging.onMessageOpenedApp.listen(_onOpenNotification);
       // Pangea#
+      if (PlatformInfos.isAndroid) {
+        final port = ReceivePort();
+        IsolateNameServer.removePortNameMapping('background_tab_port');
+        IsolateNameServer.registerPortWithName(
+          port.sendPort,
+          'background_tab_port',
+        );
+        port.listen(
+          (message) async {
+            try {
+              await notificationTap(
+                NotificationResponseJson.fromJsonString(message),
+                client: client,
+                router: FluffyChatApp.router,
+              );
+            } catch (e, s) {
+              Logs().wtf('Main Notification Tap crashed', e, s);
+            }
+          },
+        );
+      }
       await _flutterLocalNotificationsPlugin.initialize(
         const InitializationSettings(
           // #Pangea
@@ -94,7 +118,12 @@ class BackgroundPush {
           ),
           // Pangea#
         ),
-        onDidReceiveNotificationResponse: goToRoom,
+        onDidReceiveNotificationResponse: (response) => notificationTap(
+          response,
+          client: client,
+          router: FluffyChatApp.router,
+        ),
+        onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
       );
 
       // #Pangea
@@ -421,7 +450,14 @@ class BackgroundPush {
         return;
       }
       _wentToRoomOnStartup = true;
-      goToRoom(details.notificationResponse);
+      final response = details.notificationResponse;
+      if (response != null) {
+        notificationTap(
+          response,
+          client: client,
+          router: FluffyChatApp.router,
+        );
+      }
     });
   }
 
@@ -464,54 +500,6 @@ class BackgroundPush {
           AppSettings.pushNotificationsGatewayUrl.getItem(matrix!.store),
       token: _fcmToken,
     );
-  }
-
-  Future<void> goToRoom(NotificationResponse? response) async {
-    try {
-      final payload = response?.payload;
-      Logs().v('[Push] Attempting to go to room with payload: $payload');
-      if (payload == null) {
-        return;
-      }
-
-      // #Pangea - Handle activity session data if present
-      String? roomId;
-      String? sessionRoomId;
-      String? activityId;
-
-      try {
-        final payloadData = jsonDecode(payload) as Map<String, dynamic>;
-        roomId = payloadData['room_id'] as String?;
-        sessionRoomId =
-            payloadData['content_pangea.activity.session_room_id'] as String?;
-        activityId = payloadData['content_pangea.activity.id'] as String?;
-      } catch (_) {
-        // If payload is not JSON, treat it as a simple room ID
-        roomId = payload;
-      }
-
-      if (roomId == null || roomId.isEmpty) {
-        return;
-      }
-
-      await _navigateToActivityOrRoom(
-        roomId: roomId,
-        sessionRoomId: sessionRoomId,
-        activityId: activityId,
-      );
-      // Pangea#
-    } catch (e, s) {
-      Logs().e('[Push] Failed to open room', e, s);
-      // #Pangea
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": response?.payload,
-        },
-      );
-      // Pangea#
-    }
   }
 
   Future<void> setupUp() async {

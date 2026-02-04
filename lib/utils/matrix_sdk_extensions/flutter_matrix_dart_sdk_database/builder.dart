@@ -135,6 +135,7 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
       version: 1,
       // most important : apply encryption when opening the DB
       onConfigure: helper?.applyPragmaKey,
+      singleInstance: false,
     ),
   );
 
