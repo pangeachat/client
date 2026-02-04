@@ -1508,7 +1508,7 @@ packages:
       path: "/Users/ggurdin/pangea/matrix-dart-sdk"
       relative: false
     source: path
-    version: "3.0.0"
+    version: "3.0.2"
   meta:
     dependency: transitive
     description:

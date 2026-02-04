@@ -64,7 +64,7 @@ dependencies:
   # matrix: #^3.0.1
   #   git:
   #     url: https://github.com/famedly/matrix-dart-sdk.git
-  #     ref: krille/refactor-update-user-device-keys
+  #     ref: main
   matrix:
     path: /Users/ggurdin/pangea/matrix-dart-sdk
   # Pangea#

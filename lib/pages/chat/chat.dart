@@ -23,6 +23,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
+import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
@@ -70,6 +71,7 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
@@ -1793,26 +1795,34 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
   }
 
-  void onAddPopupMenuButtonSelected(String choice) {
-    room.client.getConfig(); // Preload server file configuration.
+  void onAddPopupMenuButtonSelected(AddPopupMenuActions choice) {
+    room.client.getConfig();
 
-    if (choice == 'file') {
-      sendFileAction();
-    }
-    if (choice == 'image') {
-      sendFileAction(type: FileSelectorType.images);
-    }
-    if (choice == 'video') {
-      sendFileAction(type: FileSelectorType.videos);
-    }
-    if (choice == 'camera') {
-      openCameraAction();
-    }
-    if (choice == 'camera-video') {
-      openVideoCameraAction();
-    }
-    if (choice == 'location') {
-      sendLocationAction();
+    switch (choice) {
+      case AddPopupMenuActions.image:
+        sendFileAction(type: FileSelectorType.images);
+        return;
+      case AddPopupMenuActions.video:
+        sendFileAction(type: FileSelectorType.videos);
+        return;
+      case AddPopupMenuActions.file:
+        sendFileAction();
+        return;
+      case AddPopupMenuActions.poll:
+        showAdaptiveBottomSheet(
+          context: context,
+          builder: (context) => StartPollBottomSheet(room: room),
+        );
+        return;
+      case AddPopupMenuActions.photoCamera:
+        openCameraAction();
+        return;
+      case AddPopupMenuActions.videoCamera:
+        openVideoCameraAction();
+        return;
+      case AddPopupMenuActions.location:
+        sendLocationAction();
+        return;
     }
   }
 
@@ -2520,4 +2530,14 @@ class ChatController extends State<ChatPageWithRoom>
       },
     );
   }
+}
+
+enum AddPopupMenuActions {
+  image,
+  video,
+  file,
+  poll,
+  photoCamera,
+  videoCamera,
+  location,
 }

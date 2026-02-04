@@ -81,15 +81,29 @@ class PangeaChatInputRow extends StatelessWidget {
                           alignment: Alignment.center,
                           clipBehavior: Clip.hardEdge,
                           decoration: const BoxDecoration(),
-                          child: PopupMenuButton<String>(
+                          child: PopupMenuButton<AddPopupMenuActions>(
                             useRootNavigator: true,
                             icon: const Icon(Icons.add_outlined),
                             onSelected: controller.onAddPopupMenuButtonSelected,
                             itemBuilder: (BuildContext context) =>
-                                <PopupMenuEntry<String>>[
+                                <PopupMenuEntry<AddPopupMenuActions>>[
+                              PopupMenuItem(
+                                value: AddPopupMenuActions.poll,
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundColor:
+                                        theme.colorScheme.onPrimaryContainer,
+                                    foregroundColor:
+                                        theme.colorScheme.primaryContainer,
+                                    child: const Icon(Icons.poll_outlined),
+                                  ),
+                                  title: Text(L10n.of(context).startPoll),
+                                  contentPadding: const EdgeInsets.all(0),
+                                ),
+                              ),
                               if (!isBotDM)
-                                PopupMenuItem<String>(
-                                  value: 'file',
+                                PopupMenuItem<AddPopupMenuActions>(
+                                  value: AddPopupMenuActions.file,
                                   child: ListTile(
                                     leading: const CircleAvatar(
                                       backgroundColor: Colors.green,
@@ -100,8 +114,8 @@ class PangeaChatInputRow extends StatelessWidget {
                                     contentPadding: const EdgeInsets.all(0),
                                   ),
                                 ),
-                              PopupMenuItem<String>(
-                                value: 'image',
+                              PopupMenuItem<AddPopupMenuActions>(
+                                value: AddPopupMenuActions.image,
                                 child: ListTile(
                                   leading: const CircleAvatar(
                                     backgroundColor: Colors.blue,
@@ -112,9 +126,24 @@ class PangeaChatInputRow extends StatelessWidget {
                                   contentPadding: const EdgeInsets.all(0),
                                 ),
                               ),
+                              if (!isBotDM)
+                                PopupMenuItem(
+                                  value: AddPopupMenuActions.image,
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundColor:
+                                          theme.colorScheme.onPrimaryContainer,
+                                      foregroundColor:
+                                          theme.colorScheme.primaryContainer,
+                                      child: const Icon(Icons.photo_outlined),
+                                    ),
+                                    title: Text(L10n.of(context).sendImage),
+                                    contentPadding: const EdgeInsets.all(0),
+                                  ),
+                                ),
                               if (PlatformInfos.isMobile)
-                                PopupMenuItem<String>(
-                                  value: 'camera',
+                                PopupMenuItem<AddPopupMenuActions>(
+                                  value: AddPopupMenuActions.photoCamera,
                                   child: ListTile(
                                     leading: const CircleAvatar(
                                       backgroundColor: Colors.purple,
@@ -127,8 +156,8 @@ class PangeaChatInputRow extends StatelessWidget {
                                 ),
                               if (!isBotDM)
                                 if (PlatformInfos.isMobile)
-                                  PopupMenuItem<String>(
-                                    value: 'camera-video',
+                                  PopupMenuItem<AddPopupMenuActions>(
+                                    value: AddPopupMenuActions.videoCamera,
                                     child: ListTile(
                                       leading: const CircleAvatar(
                                         backgroundColor: Colors.red,
@@ -143,8 +172,8 @@ class PangeaChatInputRow extends StatelessWidget {
                                   ),
                               if (!isBotDM)
                                 if (PlatformInfos.isMobile)
-                                  PopupMenuItem<String>(
-                                    value: 'location',
+                                  PopupMenuItem<AddPopupMenuActions>(
+                                    value: AddPopupMenuActions.location,
                                     child: ListTile(
                                       leading: const CircleAvatar(
                                         backgroundColor: Colors.brown,
