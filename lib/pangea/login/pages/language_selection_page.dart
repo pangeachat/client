@@ -111,9 +111,11 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
           child: Row(
             spacing: 12.0,
             children: [
-              BackButton(
-                onPressed: Navigator.of(context).pop,
-              ),
+              Navigator.of(context).canPop()
+                  ? BackButton(
+                      onPressed: Navigator.of(context).maybePop,
+                    )
+                  : const SizedBox(width: 40.0),
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
