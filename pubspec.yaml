@@ -61,8 +61,7 @@ dependencies:
   latlong2: ^0.9.1
   linkify: ^5.0.0
   # #Pangea
-  # matrix:
-  #   git: https://github.com/famedly/matrix-dart-sdk.git
+  # matrix: ^3.0.1
   matrix:
     path: /Users/ggurdin/pangea/matrix-dart-sdk
     # git:
