@@ -672,6 +672,14 @@ class Message extends StatelessWidget {
                                                           scrollController:
                                                               scrollController,
                                                           child: Container(
+                                                            // #Pangea
+                                                            key: MatrixState
+                                                                .pAnyState
+                                                                .layerLinkAndKey(
+                                                                  event.eventId,
+                                                                )
+                                                                .key,
+                                                            // Pangea#
                                                             decoration:
                                                                 BoxDecoration(
                                                               borderRadius:
