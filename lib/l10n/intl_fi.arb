@@ -582,7 +582,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emoteInvalid": "Epäkelpo emote-lyhytkoodi",
+    "emoteInvalid": "Epäkelpo emote-lyhytkoodi!",
     "@emoteInvalid": {
         "type": "String",
         "placeholders": {}
@@ -2322,7 +2322,7 @@
     "@hydrate": {},
     "dehydrate": "Vie istunto ja tyhjennä laite",
     "@dehydrate": {},
-    "dehydrateWarning": "Tätä toimenpidettä ei voi kumota.\nVarmista varmuuskopiotiedoston turvallinen tallennus.",
+    "dehydrateWarning": "Tätä toimenpidettä ei voi kumota. Varmista varmuuskopiotiedoston turvallinen tallennus.",
     "@dehydrateWarning": {},
     "users": "Käyttäjät",
     "@users": {},
@@ -2587,11 +2587,11 @@
             }
         }
     },
-    "sendTypingNotifications": "acLähetä kirjoitusilmoituksia",
+    "sendTypingNotifications": "Lähetä kirjoitusilmoituksia",
     "@sendTypingNotifications": {},
-    "inviteGroupChat": "Kutsu ryhmäkeskusteluun",
+    "inviteGroupChat": "📨 Kutsu ryhmäkeskusteluun",
     "@inviteGroupChat": {},
-    "invitePrivateChat": "Kutsu yksityiskeskusteluun",
+    "invitePrivateChat": "📨 Kutsu yksityiskeskusteluun",
     "@invitePrivateChat": {},
     "importEmojis": "Tuo emojit",
     "@importEmojis": {},
@@ -2632,7 +2632,66 @@
     "@unread": {},
     "noMoreChatsFound": "Lisää keskusteluja ei löytynyt...",
     "@noMoreChatsFound": {},
-    "alwaysUse24HourFormat": "epätosi",
+    "alwaysUse24HourFormat": "väärä",
+    "@alwaysUse24HourFormat": {
+        "description": "Set to true to always display time of day in 24 hour format."
+    },
+    "select": "Valitse",
+    "@select": {},
+    "searchForUsers": "Etsi @users...",
+    "@searchForUsers": {},
+    "pleaseEnterYourCurrentPassword": "Anna nykyinen salasanasi",
+    "@pleaseEnterYourCurrentPassword": {},
+    "newPassword": "Uusi salasana",
+    "@newPassword": {},
+    "pleaseChooseAStrongPassword": "Valitse vahva salasana",
+    "@pleaseChooseAStrongPassword": {},
+    "passwordsDoNotMatch": "Salasanat eivät täsmää",
+    "@passwordsDoNotMatch": {},
+    "passwordIsWrong": "Salasanasi on väärä",
+    "@passwordIsWrong": {},
+    "thisDevice": "Tämä laite:",
+    "@thisDevice": {},
+    "gallery": "Galleria",
+    "@gallery": {},
+    "files": "Tiedostot",
+    "@files": {},
+    "changelog": "Muutosloki",
+    "@changelog": {},
+    "continueText": "Jatka",
+    "@continueText": {},
+    "welcomeText": "Hei 👋, Tämä on FluffyChat. Voit kirjautua sisään mihin tahansa kotipalvelimeen, joka on yhteensopiva https:/matrix.org:in kanssa. Sitten jutellaan kenen kanssa tahansa. Se on hajautettu viestiverkosto!",
+    "@welcomeText": {},
+    "serverInformation": "Palvelimen tiedot:",
+    "@serverInformation": {},
+    "name": "Nimi",
+    "@name": {},
+    "version": "Versio",
+    "@version": {},
+    "website": "Verkkosivu",
+    "@website": {},
+    "previous": "Edellinen",
+    "@previous": {},
+    "open": "Avaa",
+    "@open": {},
+    "more": "Lisää",
+    "@more": {},
+    "allDevices": "Kaikki laitteet",
+    "@allDevices": {},
+    "recordAVideo": "Nauhoita video",
+    "@recordAVideo": {},
+    "approve": "Hyväksy",
+    "@approve": {},
+    "pause": "Keskeytä",
+    "@pause": {},
+    "resume": "Jatka",
+    "@resume": {},
+    "moveUp": "Siirrä ylös",
+    "@moveUp": {},
+    "moveDown": "Siirrä alas",
+    "@moveDown": {},
+    "poll": "Kysely",
+    "@poll": {},
     "setCustomPermissionLevel": "Aseta mukautettu käyttöoikeustaso",
     "setPermissionsLevelDescription": "Valitse alla ennalta määritetty rooli tai syötä mukautettu käyttöoikeustaso väliltä 0–100.",
     "ignoreUser": "Ohita käyttäjä",
@@ -2698,13 +2757,6 @@
     "databaseMigrationTitle": "Tietokanta on optimoitu",
     "databaseMigrationBody": "Odota hetki. Tämä saattaa kestää hetken.",
     "leaveEmptyToClearStatus": "Jätä tyhjäksi poistaaksesi tilasi.",
-    "select": "Valitse",
-    "searchForUsers": "Etsi käyttäjiä @...",
-    "pleaseEnterYourCurrentPassword": "Syötä nykyinen salasanasi",
-    "newPassword": "Uusi salasana",
-    "pleaseChooseAStrongPassword": "Valitse vahva salasana",
-    "passwordsDoNotMatch": "Salasanat eivät täsmää",
-    "passwordIsWrong": "Syöttämäsi salasana on väärä",
     "publicLink": "Julkinen linkki",
     "publicChatAddresses": "Julkiset keskustelunumerot",
     "createNewAddress": "Luo uusi osoite",
@@ -2713,14 +2765,11 @@
     "addChatOrSubSpace": "Lisää keskustelu tai alitila",
     "subspace": "Alitila",
     "decline": "Hylkää",
-    "thisDevice": "Tämä laite:",
     "initAppError": "Sovelluksen alustuksessa tapahtui virhe",
     "userRole": "Käyttäjän rooli",
     "minimumPowerLevel": "{level} on minimitehotaso.",
     "searchIn": "Etsi keskustelusta \"{chat}\"...",
     "searchMore": "Etsi lisää...",
-    "gallery": "Galleria",
-    "files": "Tiedostot",
     "databaseBuildErrorBody": "Tietokannan SQlite:n rakentaminen epäonnistui. Sovellus yrittää käyttää vanhaa tietokantaa toistaiseksi. Ilmoita tästä virheestä kehittäjille osoitteessa {url}. Virheilmoitus on: {error}",
     "sessionLostBody": "Istuntosi on kadonnut. Ilmoita tästä virheestä kehittäjille osoitteessa {url}. Virheilmoitus on: {error}",
     "restoreSessionBody": "Sovellus yrittää nyt palauttaa istuntosi varmuuskopiosta. Ilmoita tästä virheestä kehittäjille osoitteessa {url}. Virheilmoitus on: {error}",
@@ -2765,7 +2814,6 @@
     "changeTheDescriptionOfTheGroup": "Vaihda keskustelun kuvaus",
     "chatPermissionsDescription": "Määritä, mikä valtuustaso tarvitaan tiettyihin toimintoihin tässä keskustelussa. Valtuustasot 0, 50 ja 100 yleensä edustavat käyttäjiä, moderaattoreita ja ylläpitäjiä, mutta kaikki asteet ovat mahdollisia.",
     "updateInstalled": "🎉 Päivitys {version} asennettu!",
-    "changelog": "Muutosloki",
     "sendCanceled": "Lähetys peruutettu",
     "loginWithMatrixId": "Kirjaudu Matrix-ID:llä",
     "discoverHomeservers": "Löydä kotipalvelimet",
@@ -2781,8 +2829,6 @@
     "serverLimitReached": "Palvelimen raja saavutettu! Odotetaan {seconds} sekuntia...",
     "oneOfYourDevicesIsNotVerified": "Yksi laitteistasi ei ole vahvistettu",
     "noticeChatBackupDeviceVerification": "Huomautus: Kun yhdistät kaikki laitteesi chat-varmistukseen, ne vahvistetaan automaattisesti.",
-    "continueText": "Jatka",
-    "welcomeText": "Hei Hei 👋 Tämä on FluffyChat. Voit kirjautua sisään mihin tahansa palvelimeen, joka on yhteensopiva https://matrix.org:n kanssa. Ja sitten keskustella kenen tahansa kanssa. Se on suuri hajautettu viestintäverkosto!",
     "blur": "Sumenna:",
     "opacity": "Läpinäkyvyys:",
     "setWallpaper": "Aseta taustakuva",
@@ -2791,10 +2837,6 @@
     "contactServerAdmin": "Ota yhteyttä palvelimen ylläpitäjään",
     "contactServerSecurity": "Ota yhteyttä palvelimen turvallisuuteen",
     "supportPage": "Tukisivu",
-    "serverInformation": "Palvelimen tiedot:",
-    "name": "Nimi",
-    "version": "Versio",
-    "website": "Verkkosivusto",
     "compress": "Pakkaa",
     "boldText": "Lihavoitu teksti",
     "italicText": "Kursivoitu teksti",
@@ -2803,11 +2845,9 @@
     "invalidUrl": "Virheellinen URL",
     "addLink": "Lisää linkki",
     "unableToJoinChat": "Ei voida liittyä keskusteluun. Ehkä toinen osapuoli on jo sulkenut keskustelun.",
-    "previous": "Edellinen",
     "otherPartyNotLoggedIn": "Toinen osapuoli ei ole tällä hetkellä kirjautuneena sisään, joten hän ei voi vastaanottaa viestejä!",
     "appWantsToUseForLogin": "Käytä '{server}' kirjautumiseen",
     "appWantsToUseForLoginDescription": "Sallitte tässä, että sovellus ja verkkosivusto jakavat tietoja teistä.",
-    "open": "Avaa",
     "waitingForServer": "Odotetaan palvelinta...",
     "appIntroduction": "FluffyChat antaa sinun keskustella ystäviesi kanssa eri viestintäsovelluksilla. Lisätietoja osoitteessa https://matrix.org tai napauta vain *Jatka*.",
     "newChatRequest": "📩 Uusi keskustelupyyntö",
@@ -2859,19 +2899,15 @@
     "unknownPushRule": "Tuntematon push-sääntö '{rule}'",
     "sentVoiceMessage": "🎙️ {duration} - Ääniviesti lähettäjältä {sender}",
     "deletePushRuleCanNotBeUndone": "Jos poistat tämän ilmoitusasetuksen, sitä ei voi peruuttaa.",
-    "more": "Lisää",
     "shareKeysWith": "Jaa avaimet...",
     "shareKeysWithDescription": "Luotetaanko laitteisiin, jotta ne voivat lukea viestisi salatuissa keskusteluissa?",
-    "allDevices": "Kaikki laitteet",
     "crossVerifiedDevicesIfEnabled": "Ristiinvarmistetut laitteet, jos käytössä",
     "crossVerifiedDevices": "Ristiinvarmistetut laitteet",
     "verifiedDevicesOnly": "Vain varmennetut laitteet",
     "takeAPhoto": "Ota valokuva",
-    "recordAVideo": "Tallenna video",
     "optionalMessage": "(Valinnainen) viesti...",
     "notSupportedOnThisDevice": "Ei tuettu tällä laitteella",
     "enterNewChat": "Aloita uusi keskustelu",
-    "approve": "Hyväksy",
     "youHaveKnocked": "Olet koputtanut",
     "pleaseWaitUntilInvited": "Odota nyt, kunnes joku huoneesta kutsuu sinut.",
     "commandHint_logout": "Kirjaudu ulos nykyisestä laitteestasi",
@@ -4007,10 +4043,6 @@
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
     "@@last_modified": "2026-01-29 15:24:28.359131",
-    "@alwaysUse24HourFormat": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@setCustomPermissionLevel": {
       "type": "String",
       "placeholders": {}
@@ -4314,34 +4346,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@select": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@searchForUsers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseEnterYourCurrentPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@newPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pleaseChooseAStrongPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@passwordsDoNotMatch": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@passwordIsWrong": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@publicLink": {
       "type": "String",
       "placeholders": {}
@@ -4374,10 +4378,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@thisDevice": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@initAppError": {
       "type": "String",
       "placeholders": {}
@@ -4403,14 +4403,6 @@
       }
     },
     "@searchMore": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@gallery": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@files": {
       "type": "String",
       "placeholders": {}
     },
@@ -4666,10 +4658,6 @@
         }
       }
     },
-    "@changelog": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@sendCanceled": {
       "type": "String",
       "placeholders": {}
@@ -4741,14 +4729,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@continueText": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@welcomeText": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@blur": {
       "type": "String",
       "placeholders": {}
@@ -4778,22 +4758,6 @@
       "placeholders": {}
     },
     "@supportPage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@serverInformation": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@name": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@version": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@website": {
       "type": "String",
       "placeholders": {}
     },
@@ -4829,10 +4793,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@previous": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@otherPartyNotLoggedIn": {
       "type": "String",
       "placeholders": {}
@@ -4846,10 +4806,6 @@
       }
     },
     "@appWantsToUseForLoginDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@open": {
       "type": "String",
       "placeholders": {}
     },
@@ -5068,19 +5024,11 @@
       "type": "String",
       "placeholders": {}
     },
-    "@more": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@shareKeysWith": {
       "type": "String",
       "placeholders": {}
     },
     "@shareKeysWithDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@allDevices": {
       "type": "String",
       "placeholders": {}
     },
@@ -5100,10 +5048,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@recordAVideo": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@optionalMessage": {
       "type": "String",
       "placeholders": {}
@@ -5113,10 +5057,6 @@
       "placeholders": {}
     },
     "@enterNewChat": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@approve": {
       "type": "String",
       "placeholders": {}
     },
