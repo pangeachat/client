@@ -12,12 +12,14 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
+import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'config/setting_keys.dart';
 import 'utils/background_push.dart';
@@ -54,10 +56,12 @@ void main() async {
 
   if (PlatformInfos.isAndroid) {
     final port = mainIsolateReceivePort = ReceivePort();
+    IsolateNameServer.removePortNameMapping(AppConfig.mainIsolatePortName);
     IsolateNameServer.registerPortWithName(
       port.sendPort,
-      'main_isolate',
+      AppConfig.mainIsolatePortName,
     );
+    await waitForPushIsolateDone();
   }
 
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess

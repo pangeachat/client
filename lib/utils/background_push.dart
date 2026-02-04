@@ -35,6 +35,7 @@ import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/main.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
@@ -85,6 +86,20 @@ class BackgroundPush {
       FirebaseMessaging.instance.getInitialMessage().then(_onOpenNotification);
       FirebaseMessaging.onMessageOpenedApp.listen(_onOpenNotification);
       // Pangea#
+      mainIsolateReceivePort?.listen(
+        (message) async {
+          try {
+            await notificationTap(
+              NotificationResponseJson.fromJsonString(message),
+              client: client,
+              router: FluffyChatApp.router,
+              l10n: l10n,
+            );
+          } catch (e, s) {
+            Logs().wtf('Main Notification Tap crashed', e, s);
+          }
+        },
+      );
       if (PlatformInfos.isAndroid) {
         final port = ReceivePort();
         IsolateNameServer.removePortNameMapping('background_tab_port');

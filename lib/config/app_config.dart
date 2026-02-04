@@ -84,6 +84,9 @@ abstract class AppConfig {
     path: '/en/privacy',
   );
 
+  static const String mainIsolatePortName = 'main_isolate';
+  static const String pushIsolatePortName = 'push_isolate';
+
   // #Pangea
   static String assetsBaseURL =
       "https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com";
