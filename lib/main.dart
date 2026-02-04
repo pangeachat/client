@@ -1,3 +1,6 @@
+import 'dart:isolate';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,6 +22,8 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'config/setting_keys.dart';
 import 'utils/background_push.dart';
 import 'widgets/fluffy_chat_app.dart';
+
+ReceivePort? mainIsolateReceivePort;
 
 void main() async {
   // #Pangea
@@ -46,6 +51,14 @@ void main() async {
   ];
   await Future.wait(initFutures);
   // Pangea#
+
+  if (PlatformInfos.isAndroid) {
+    final port = mainIsolateReceivePort = ReceivePort();
+    IsolateNameServer.registerPortWithName(
+      port.sendPort,
+      'main_isolate',
+    );
+  }
 
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
