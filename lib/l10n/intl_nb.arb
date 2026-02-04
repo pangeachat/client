@@ -3208,6 +3208,10 @@
     "@notificationRuleRoomOneToOneDescription": {},
     "notificationRuleJitsiDescription": "Varsler brukeren om hendelser i Jitsi-widgeten.",
     "@notificationRuleJitsiDescription": {},
+    "customReaction": "Egendefinert reaksjon",
+    "@customReaction": {},
+    "pause": "Pause",
+    "@pause": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
@@ -3271,7 +3275,6 @@
     "notificationRuleServerAclDescription": "Undertrykker varsler for server-ACL hendelser.",
     "youHaveKnocked": "Du har ringt på",
     "displayNavigationRail": "Vis navigasjonsstang på mobil",
-    "customReaction": "Egendefinert reaksjon",
     "writeAMessageLangCodes": "Skriv inn {l1} eller {l2}...",
     "requests": "Forespørsler",
     "holdForInfo": "Klikk og hold for ordinformasjon.",
@@ -4685,10 +4688,6 @@
       "placeholders": {}
     },
     "@displayNavigationRail": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@customReaction": {
       "type": "String",
       "placeholders": {}
     },
