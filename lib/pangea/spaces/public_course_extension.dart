@@ -63,7 +63,7 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
 }
 
 class PublicCoursesChunk {
-  final PublicRoomsChunk room;
+  final PublishedRoomsChunk room;
   final String courseId;
 
   PublicCoursesChunk({
@@ -73,7 +73,7 @@ class PublicCoursesChunk {
 
   factory PublicCoursesChunk.fromJson(Map<String, dynamic> json) {
     return PublicCoursesChunk(
-      room: PublicRoomsChunk.fromJson(json),
+      room: PublishedRoomsChunk.fromJson(json),
       courseId: json['course_id'] as String,
     );
   }

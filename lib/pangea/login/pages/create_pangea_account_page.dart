@@ -118,7 +118,11 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
       final avatarUrl =
           Uri.parse("${AppConfig.assetsBaseURL}/$selectedAvatarPath");
-      await client.setAvatarUrl(client.userID!, avatarUrl);
+      await client.setProfileField(
+        client.userID!,
+        'avatar_url',
+        {'avatar_url': avatarUrl},
+      );
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,

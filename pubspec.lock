@@ -521,14 +521,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.9"
-  enhanced_enum:
-    dependency: transitive
-    description:
-      name: enhanced_enum
-      sha256: "074c5a8b9664799ca91e1e8b68003b8694cb19998671cbafd9c7779c13fcdecf"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.4"
   equatable:
     dependency: transitive
     description:
@@ -856,14 +848,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  flutter_openssl_crypto:
-    dependency: "direct main"
-    description:
-      name: flutter_openssl_crypto
-      sha256: "293b4fcda13ab0710645a16e82f3d5b7de19bfc0ab2d06bcdb87637222eda5e1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -876,10 +860,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_rust_bridge
-      sha256: b416ff56002789e636244fb4cc449f587656eff995e5a7169457eb0593fcaddb
+      sha256: "37ef40bc6f863652e865f0b2563ea07f0d3c58d8efad803cc01933a4b2ee067e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.0"
+    version: "2.11.1"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -962,10 +946,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_vodozemac
-      sha256: "2405ca121b84d1cd83200a14021022e1691b123a23bcefc36adc7740cefbc1f9"
+      sha256: "54cd3790b6dfdc1afce928f8c46f7eeea9e4f8326f077400894935926f202057"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.2"
+    version: "0.3.0"
   flutter_web_auth_2:
     dependency: "direct main"
     description:
@@ -1358,6 +1342,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
+  js_interop:
+    dependency: transitive
+    description:
+      name: js_interop
+      sha256: "7ec859c296958ccea34dc770504bd3ff4ae52fdd9e7eeb2bacc7081ad476a1f5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   json_annotation:
     dependency: transitive
     description:
@@ -1521,12 +1513,10 @@ packages:
   matrix:
     dependency: "direct main"
     description:
-      path: "."
-      ref: merge-upstream
-      resolved-ref: "1e5975c8dae6af46444f07868bb2ddf5689c3cbe"
-      url: "https://github.com/pangeachat/matrix-dart-sdk.git"
-    source: git
-    version: "1.0.1"
+      path: "/Users/ggurdin/pangea/matrix-dart-sdk"
+      relative: false
+    source: path
+    version: "2.0.1"
   meta:
     dependency: transitive
     description:
@@ -2704,10 +2694,10 @@ packages:
     dependency: transitive
     description:
       name: vodozemac
-      sha256: dba14017e042748fb22d270e8ab1d3e46965b89788dd3857dba938ec07571968
+      sha256: "95cac62ffab94db99e134c8f9aac198f8131a4eed0bed76a6cfc9c72add229b9"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   wakelock_plus:
     dependency: "direct main"
     description:

@@ -8,7 +8,7 @@ import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/recording_dialog.dart';
+import 'package:fluffychat/pages/chat/recording_view_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';

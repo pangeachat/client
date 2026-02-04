@@ -415,7 +415,7 @@ class PublicRoomsHorizontalList extends StatelessWidget {
     required this.publicRooms,
   });
 
-  final List<PublicRoomsChunk>? publicRooms;
+  final List<PublishedRoomsChunk>? publicRooms;
 
   @override
   Widget build(BuildContext context) {

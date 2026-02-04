@@ -49,7 +49,7 @@ class CourseChatsController extends State<CourseChats>
   String get roomId => widget.roomId;
   Room? get room => widget.client.getRoomById(widget.roomId);
 
-  List<SpaceRoomsChunk>? discoveredChildren;
+  List<SpaceRoomsChunk$2>? discoveredChildren;
   StreamSubscription? _roomSubscription;
   String? _nextBatch;
   bool noMoreRooms = false;
@@ -109,7 +109,7 @@ class CourseChatsController extends State<CourseChats>
   List<Room> joinedActivities() =>
       joinedRooms.where((r) => r.isActivitySession).toList();
 
-  List<SpaceRoomsChunk> get discoveredGroupChats => (discoveredChildren ?? [])
+  List<SpaceRoomsChunk$2> get discoveredGroupChats => (discoveredChildren ?? [])
       .where(
         (chunk) =>
             chunk.roomType == null ||
@@ -174,7 +174,7 @@ class CourseChatsController extends State<CourseChats>
 
   Future<void> _joinDefaultChats() async {
     if (discoveredChildren == null) return;
-    final found = List<SpaceRoomsChunk>.from(discoveredChildren!);
+    final found = List<SpaceRoomsChunk$2>.from(discoveredChildren!);
 
     final List<Future> joinFutures = [];
     for (final chunk in found) {
@@ -269,7 +269,7 @@ class CourseChatsController extends State<CourseChats>
     // Failsafe to prevent too many calls to the server in a row
     int callsToServer = 0;
 
-    List<SpaceRoomsChunk>? currentHierarchy =
+    List<SpaceRoomsChunk$2>? currentHierarchy =
         discoveredChildren == null || reload
             ? null
             : List.from(discoveredChildren!);
@@ -443,7 +443,7 @@ class CourseChatsController extends State<CourseChats>
     NavigationUtil.goToSpaceRoute(room.id, [], context);
   }
 
-  void joinChildRoom(SpaceRoomsChunk item) async {
+  void joinChildRoom(SpaceRoomsChunk$2 item) async {
     final space = widget.client.getRoomById(widget.roomId);
     final roomId = await PublicRoomBottomSheet.show(
       context: context,
@@ -503,7 +503,7 @@ class CourseChatsController extends State<CourseChats>
 
   bool _includeSpaceChild(
     Room space,
-    SpaceRoomsChunk hierarchyMember,
+    SpaceRoomsChunk$2 hierarchyMember,
   ) {
     if (!mounted) return false;
     final bool isAnalyticsRoom =
@@ -519,11 +519,11 @@ class CourseChatsController extends State<CourseChats>
     return !isAnalyticsRoom && (isMember || isSuggested);
   }
 
-  List<SpaceRoomsChunk> _filterHierarchyResponse(
+  List<SpaceRoomsChunk$2> _filterHierarchyResponse(
     Room space,
-    List<SpaceRoomsChunk> hierarchyResponse,
+    List<SpaceRoomsChunk$2> hierarchyResponse,
   ) {
-    final List<SpaceRoomsChunk> filteredChildren = [];
+    final List<SpaceRoomsChunk$2> filteredChildren = [];
     for (final child in hierarchyResponse) {
       if (child.roomId == widget.roomId) {
         continue;
@@ -616,8 +616,8 @@ class CourseChatsController extends State<CourseChats>
   }
 
   int _sortSpaceChildren(
-    SpaceRoomsChunk a,
-    SpaceRoomsChunk b,
+    SpaceRoomsChunk$2 a,
+    SpaceRoomsChunk$2 b,
   ) {
     final bool aIsSpace = a.roomType == 'm.space';
     final bool bIsSpace = b.roomType == 'm.space';

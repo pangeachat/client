@@ -195,9 +195,10 @@ class SignupPageController extends State<SignupPage> {
     GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {
-      await client.setDisplayName(
+      await client.setProfileField(
         client.userID!,
-        displayname,
+        'displayname',
+        {'displayname': displayname},
       );
     }
   }

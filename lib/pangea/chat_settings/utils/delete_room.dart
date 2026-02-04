@@ -34,8 +34,8 @@ extension DeleteRoom on Room {
     await client.delete(id);
   }
 
-  Future<List<SpaceRoomsChunk>> getSpaceChildrenToDelete() async {
-    final List<SpaceRoomsChunk> rooms = [];
+  Future<List<SpaceRoomsChunk$2>> getSpaceChildrenToDelete() async {
+    final List<SpaceRoomsChunk$2> rooms = [];
     String? nextBatch;
     int calls = 0;
 

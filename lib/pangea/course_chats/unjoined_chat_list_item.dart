@@ -8,7 +8,7 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class UnjoinedChatListItem extends StatelessWidget {
-  final SpaceRoomsChunk chunk;
+  final SpaceRoomsChunk$2 chunk;
   final VoidCallback onTap;
   const UnjoinedChatListItem({
     super.key,

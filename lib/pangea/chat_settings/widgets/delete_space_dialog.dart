@@ -23,7 +23,7 @@ class DeleteSpaceDialog extends StatefulWidget {
     Room room,
     BuildContext context,
   ) async {
-    final resp = await showDialog<List<SpaceRoomsChunk>?>(
+    final resp = await showDialog<List<SpaceRoomsChunk$2>?>(
       context: context,
       builder: (_) => DeleteSpaceDialog(space: room),
     );
@@ -40,7 +40,7 @@ class DeleteSpaceDialog extends StatefulWidget {
 
   static Future<void> _deleteSpace(
     Room space,
-    List<SpaceRoomsChunk> rooms,
+    List<SpaceRoomsChunk$2> rooms,
   ) async {
     final List<Future<void>> futures = [];
     for (final room in rooms) {
@@ -66,8 +66,8 @@ class DeleteSpaceDialog extends StatefulWidget {
 }
 
 class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
-  List<SpaceRoomsChunk> _rooms = [];
-  final List<SpaceRoomsChunk> _roomsToDelete = [];
+  List<SpaceRoomsChunk$2> _rooms = [];
+  final List<SpaceRoomsChunk$2> _roomsToDelete = [];
 
   bool _loadingRooms = true;
   String? _roomLoadError;
@@ -109,7 +109,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
 
   void _onRoomSelected(
     bool? selected,
-    SpaceRoomsChunk room,
+    SpaceRoomsChunk$2 room,
   ) {
     if (selected == null ||
         (selected && _roomsToDelete.contains(room)) ||
@@ -134,7 +134,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     });
   }
 
-  List<SpaceRoomsChunk> get _selectableRooms {
+  List<SpaceRoomsChunk$2> get _selectableRooms {
     return _rooms.where((chunk) {
       final room = widget.space.client.getRoomById(chunk.roomId);
       return room != null &&

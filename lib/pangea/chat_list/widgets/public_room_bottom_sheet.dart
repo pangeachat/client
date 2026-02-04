@@ -16,7 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PublicRoomBottomSheet extends StatefulWidget {
   final String? roomAlias;
   final BuildContext outerContext;
-  final PublicRoomsChunk? chunk;
+  final PublishedRoomsChunk? chunk;
   final List<String>? via;
 
   PublicRoomBottomSheet({
@@ -32,7 +32,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
   static Future<String?> show({
     required BuildContext context,
     String? roomAlias,
-    PublicRoomsChunk? chunk,
+    PublishedRoomsChunk? chunk,
     List<String>? via,
   }) async {
     final room = MatrixState.pangeaController.matrixState.client
@@ -60,7 +60,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
 
 class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   BuildContext get outerContext => widget.outerContext;
-  PublicRoomsChunk? get chunk => widget.chunk;
+  PublishedRoomsChunk? get chunk => widget.chunk;
   String? get roomAlias => widget.roomAlias;
   List<String>? get via => widget.via;
 
@@ -138,9 +138,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     );
   }
 
-  bool testRoom(PublicRoomsChunk r) => r.canonicalAlias == roomAlias;
+  bool testRoom(PublishedRoomsChunk r) => r.canonicalAlias == roomAlias;
 
-  Future<PublicRoomsChunk> search() async {
+  Future<PublishedRoomsChunk> search() async {
     final chunk = this.chunk;
     if (chunk != null) return chunk;
     final query = await Matrix.of(outerContext).client.queryPublicRooms(
@@ -174,7 +174,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
             ),
           ],
         ),
-        body: FutureBuilder<PublicRoomsChunk>(
+        body: FutureBuilder<PublishedRoomsChunk>(
           future: search(),
           builder: (context, snapshot) {
             return Padding(
