@@ -561,7 +561,7 @@
             }
         }
     },
-    "countParticipants": "{count, plural, one{один участник} few{{count} участника} other{{count} участников}}",
+    "countParticipants": "{count} участника(ов)",
     "@countParticipants": {
         "type": "String",
         "placeholders": {
@@ -1087,7 +1087,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "{count, plural, one{Загрузить еще одного участника} few{Загрузить еще # участников} other{Загрузить еще # участников}}",
+    "loadCountMoreParticipants": "",
     "@loadCountMoreParticipants": {
         "type": "String",
         "placeholders": {
@@ -1879,7 +1879,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unreadChats": "{unreadCount, plural, other{{unreadCount} непрочитанных чата(ов)}}",
+    "unreadChats": "{unreadCount, plural, one{# непрочитанный чат} few{# непрочитанных чата} other{# непрочитанных чатов}}",
     "@unreadChats": {
         "type": "String",
         "placeholders": {
@@ -1888,7 +1888,7 @@
             }
         }
     },
-    "userAndOthersAreTyping": "{count, plural, one{{username} и ещё один участник печатают…} few{{username} и ещё # участника печатают…} other{{username} и ещё # участников печатают…}}",
+    "userAndOthersAreTyping": "",
     "@userAndOthersAreTyping": {
         "type": "String",
         "placeholders": {
@@ -2328,7 +2328,7 @@
     "@storeInAndroidKeystore": {},
     "storeInAppleKeyChain": "Сохранить в Apple KeyChain",
     "@storeInAppleKeyChain": {},
-    "countFiles": "{count} файлов",
+    "countFiles": "",
     "@countFiles": {
         "placeholders": {
             "count": {
@@ -2405,7 +2405,7 @@
     "@noKeyForThisMessage": {},
     "screenSharingTitle": "общий доступ к экрану",
     "@screenSharingTitle": {},
-    "numChats": "{number} чатов",
+    "numChats": "",
     "@numChats": {
         "type": "number",
         "placeholders": {
@@ -2437,7 +2437,7 @@
     "@readUpToHere": {},
     "commandHint_hug": "Отправить обнимашки",
     "@commandHint_hug": {},
-    "cuddleContent": "{senderName} улыбнулся(-ась) Вам",
+    "cuddleContent": "{senderName} улыбнулся(ась) Вам",
     "@cuddleContent": {
         "type": "String",
         "placeholders": {
@@ -2598,7 +2598,7 @@
     "@inviteGroupChat": {},
     "invalidInput": "Недопустимый ввод!",
     "@invalidInput": {},
-    "wrongPinEntered": "Введён неверный пин-код! Повторите попытку через {seconds} секунд...",
+    "wrongPinEntered": "",
     "@wrongPinEntered": {
         "type": "String",
         "placeholders": {
@@ -2934,7 +2934,7 @@
     "@commandHint_ignore": {},
     "commandHint_unignore": "Не игнорировать данный matrix ID",
     "@commandHint_unignore": {},
-    "unreadChatsInApp": "{appname}: {unread} непрочитанные чаты",
+    "unreadChatsInApp": "",
     "@unreadChatsInApp": {
         "type": "String",
         "placeholders": {
@@ -2946,7 +2946,7 @@
             }
         }
     },
-    "thereAreCountUsersBlocked": "Сейчас заблокировано {count} пользователей.",
+    "thereAreCountUsersBlocked": "",
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
@@ -3009,7 +3009,7 @@
     "@inviteOtherUsers": {},
     "changeTheVisibilityOfChatHistory": "Изменить видимость истории чата",
     "@changeTheVisibilityOfChatHistory": {},
-    "countChatsAndCountParticipants": "{chats, plural, one{{participants, plural, one{один чат с одним участником} few{один чат с {participants} участниками} other{один чат с {participants} участниками}}} few{{participants, plural, one{{chats} чата с одним участником} few{{chats} чата с {participants} участниками} other{{chats} чата с {participants} участниками}}} other{{participants, plural, one{{chats} чатов с одним участником} few{{chats} чатов с {participants} участниками} other{{chats} чатов с {participants} участниками}}}}",
+    "countChatsAndCountParticipants": "",
     "@countChatsAndCountParticipants": {
         "type": "String",
         "placeholders": {
@@ -3097,7 +3097,7 @@
     "@joinedChats": {},
     "serverInformation": "Информация о сервере:",
     "@serverInformation": {},
-    "sendingAttachmentCountOfCount": "Отправляю... {index} {length}...",
+    "sendingAttachmentCountOfCount": "Отправляется вложение {index} из {length}...",
     "@sendingAttachmentCountOfCount": {
         "type": "integer",
         "placeholders": {
@@ -3136,7 +3136,7 @@
     "@italicText": {},
     "unableToJoinChat": "Невозможно присоединиться к чату. Возможно, другая сторона уже закончила разговор.",
     "@unableToJoinChat": {},
-    "serverLimitReached": "Ограничения сервера. Ожидайте{seconds} секунд...",
+    "serverLimitReached": "",
     "@serverLimitReached": {
         "type": "integer",
         "placeholders": {
@@ -3167,7 +3167,7 @@
     "@version": {},
     "website": "Сайт",
     "@website": {},
-    "sendImages": "Отправить {count} изображений",
+    "sendImages": "",
     "@sendImages": {
         "type": "String",
         "placeholders": {
@@ -3284,8 +3284,26 @@
     "@commandHint_roomupgrade": {},
     "notificationRuleInviteForMeDescription": "Уведомляет пользователя, когда его приглашают в комнату.",
     "@notificationRuleInviteForMeDescription": {},
-    "checkList": "Список проверок",
-    "countInvited": "{count} приглашённых",
+    "countInvited": "",
+    "@countInvited": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "unknownPushRule": "Неизвестное правило оповещения '{rule}'",
+    "@unknownPushRule": {
+        "type": "String",
+        "placeholders": {
+            "rule": {
+                "type": "String"
+            }
+        }
+    },
+    "checkList": "Контрольный список",
+    "@checkList": {},
     "notificationRuleMemberEvent": "Событие участника",
     "notificationRuleIsUserMentionDescription": "Уведомляет пользователя, когда его прямо упоминают в сообщении.",
     "notificationRuleContainsDisplayNameDescription": "Уведомляет пользователя, когда сообщение содержит его отображаемое имя.",
@@ -3304,7 +3322,6 @@
     "notificationRuleJitsiDescription": "Уведомляет пользователя о событиях виджета Jitsi.",
     "notificationRuleServerAcl": "Отключить события ACL сервера",
     "notificationRuleServerAclDescription": "Отключает уведомления о событиях ACL сервера.",
-    "unknownPushRule": "Неизвестное правило push '{rule}'",
     "sentVoiceMessage": "🎙️ {duration} - Голосовое сообщение от {sender}",
     "deletePushRuleCanNotBeUndone": "Если вы удалите это уведомление, восстановить его будет невозможно.",
     "shareKeysWith": "Поделиться ключами с...",
@@ -4434,18 +4451,6 @@
     "inviteYourFriends": "Пригласите своих друзей",
     "playWithAI": "Поиграть с ИИ пока что",
     "courseStartDesc": "Pangea Bot готов к работе в любое время!\n\n...но обучение лучше всего с друзьями!",
-    "@checkList": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@countInvited": {
-      "type": "String",
-      "placeholders": {
-        "count": {
-          "type": "int"
-        }
-      }
-    },
     "@notificationRuleMemberEvent": {
       "type": "String",
       "placeholders": {}
@@ -4517,14 +4522,6 @@
     "@notificationRuleServerAclDescription": {
       "type": "String",
       "placeholders": {}
-    },
-    "@unknownPushRule": {
-      "type": "String",
-      "placeholders": {
-        "rule": {
-          "type": "String"
-        }
-      }
     },
     "@sentVoiceMessage": {
       "type": "String",
