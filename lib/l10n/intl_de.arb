@@ -3438,6 +3438,8 @@
     },
     "donate": "Spenden",
     "@donate": {},
+    "resume": "Fortsetzen",
+    "@resume": {},
     "writeAMessageLangCodes": "Geben Sie in {l1} oder {l2} ein...",
     "requests": "Anfragen",
     "holdForInfo": "Klicken und halten für Wortinformationen.",

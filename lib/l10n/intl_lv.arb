@@ -3371,6 +3371,51 @@
     "@declineInvitation": {},
     "noMessagesYet": "Vēl nav ziņu",
     "@noMessagesYet": {},
+    "longPressToRecordVoiceMessage": "Ilga piespiešana, lai ierakstītu balss ziņu.",
+    "@longPressToRecordVoiceMessage": {},
+    "pause": "Apturēt",
+    "@pause": {},
+    "resume": "Atsākt",
+    "@resume": {},
+    "newSubSpace": "Jauna apakšvieta",
+    "@newSubSpace": {},
+    "moveToDifferentSpace": "Pārvietot uz citu vietu",
+    "@moveToDifferentSpace": {},
+    "moveUp": "Pārvietot augšup",
+    "@moveUp": {},
+    "moveDown": "Pārvietot lejup",
+    "@moveDown": {},
+    "removeFromSpaceDescription": "Tērzēšana tiks noņemta no vietas, bet tā joprojām būs redzama tērzēšanu sarakstā.",
+    "@removeFromSpaceDescription": {},
+    "countChats": "{chats} tērzēšanas",
+    "@countChats": {
+        "type": "String",
+        "placeholders": {
+            "chats": {
+                "type": "int"
+            }
+        }
+    },
+    "spaceMemberOf": "{spaces} dalībnieks",
+    "@spaceMemberOf": {
+        "type": "String",
+        "placeholders": {
+            "spaces": {
+                "type": "String"
+            }
+        }
+    },
+    "spaceMemberOfCanKnock": "{spaces} dalībnieks var pieklauvēt",
+    "@spaceMemberOfCanKnock": {
+        "type": "String",
+        "placeholders": {
+            "spaces": {
+                "type": "String"
+            }
+        }
+    },
+    "donate": "Ziedot",
+    "@donate": {},
     "ignore": "Bloķēt",
     "ignoredUsers": "Bloķētie lietotāji",
     "writeAMessageLangCodes": "Rakstiet {l1} vai {l2}...",
