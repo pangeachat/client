@@ -479,7 +479,12 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     sendingClient = Matrix.of(context).client;
-    readMarkerEventId = room.hasNewMessages ? room.fullyRead : '';
+    final lastEventThreadId =
+        room.lastEvent?.relationshipType == RelationshipTypes.thread
+            ? room.lastEvent?.relationshipEventId
+            : null;
+    readMarkerEventId =
+        room.hasNewMessages ? lastEventThreadId ?? room.fullyRead : '';
     WidgetsBinding.instance.addObserver(this);
     _tryLoadTimeline();
     if (kIsWeb) {
@@ -610,7 +615,11 @@ class ChatController extends State<ChatPageWithRoom>
     loadTimelineFuture = _getTimeline();
     try {
       await loadTimelineFuture;
-      if (initialEventId != null) scrollToEventId(initialEventId);
+      // We launched the chat with a given initial event ID:
+      if (initialEventId != null) {
+        scrollToEventId(initialEventId);
+        return;
+      }
 
       var readMarkerEventIndex = readMarkerEventId.isEmpty
           ? -1

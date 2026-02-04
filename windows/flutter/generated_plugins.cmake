@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   app_links
   audioplayers_windows
+  desktop_webview_window
   dynamic_color
   emoji_picker_flutter
   file_selector_windows
