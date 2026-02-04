@@ -9,14 +9,26 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extensi
 extension VisibleInGuiExtension on List<Event> {
   List<Event> filterByVisibleInGui({
     String? exceptionEventId,
+    String? threadId,
   }) =>
       where(
-        // #Pangea
-        // (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
-        (event) =>
-            (event.isVisibleInGui || event.eventId == exceptionEventId) &&
-            event.isVisibleInPangeaGui,
-        // Pangea#
+        (event) {
+          if (threadId != null &&
+              event.relationshipType != RelationshipTypes.reaction) {
+            if ((event.relationshipType != RelationshipTypes.thread ||
+                    event.relationshipEventId != threadId) &&
+                event.eventId != threadId) {
+              return false;
+            }
+          } else if (event.relationshipType == RelationshipTypes.thread) {
+            return false;
+          }
+          // #Pangea
+          // return event.isVisibleInGui || event.eventId == exceptionEventId;
+          return (event.isVisibleInGui || event.eventId == exceptionEventId) &&
+              event.isVisibleInPangeaGui;
+          // Pangea#
+        },
       ).toList();
 }
 

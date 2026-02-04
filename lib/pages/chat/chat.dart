@@ -202,6 +202,8 @@ class ChatController extends State<ChatPageWithRoom>
 
   Timeline? timeline;
 
+  String? activeThreadId;
+
   late final String readMarkerEventId;
 
   String get roomId => widget.room.id;
@@ -231,6 +233,8 @@ class ChatController extends State<ChatPageWithRoom>
   //       files: details.files,
   //       room: room,
   //       outerContext: context,
+  //       threadRootEventId: activeThreadId,
+  //       threadLastEventId: threadLastEventId,
   //     ),
   //   );
   // }
@@ -273,6 +277,25 @@ class ChatController extends State<ChatPageWithRoom>
   String pendingText = '';
 
   bool showEmojiPicker = false;
+
+  String? get threadLastEventId {
+    final threadId = activeThreadId;
+    if (threadId == null) return null;
+    return timeline?.events
+        .filterByVisibleInGui(threadId: threadId)
+        .firstOrNull
+        ?.eventId;
+  }
+
+  void enterThread(String eventId) => setState(() {
+        activeThreadId = eventId;
+        selectedEvents.clear();
+      });
+
+  void closeThread() => setState(() {
+        activeThreadId = null;
+        selectedEvents.clear();
+      });
 
   void recreateChat() async {
     final room = this.room;
@@ -387,6 +410,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: files,
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -563,7 +588,9 @@ class ChatController extends State<ChatPageWithRoom>
   final Set<String> expandedEventIds = {};
 
   void expandEventsFrom(Event event, bool expand) {
-    final events = timeline!.events.filterByVisibleInGui();
+    final events = timeline!.events.filterByVisibleInGui(
+      threadId: activeThreadId,
+    );
     final start = events.indexOf(event);
     setState(() {
       for (var i = start; i < events.length; i++) {
@@ -590,6 +617,7 @@ class ChatController extends State<ChatPageWithRoom>
           : timeline!.events
               .filterByVisibleInGui(
                 exceptionEventId: readMarkerEventId,
+                threadId: activeThreadId,
               )
               .indexWhere((e) => e.eventId == readMarkerEventId);
 
@@ -600,6 +628,7 @@ class ChatController extends State<ChatPageWithRoom>
         readMarkerEventIndex = timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: readMarkerEventId,
+              threadId: activeThreadId,
             )
             .indexWhere((e) => e.eventId == readMarkerEventId);
       }
@@ -971,8 +1000,13 @@ class ChatController extends State<ChatPageWithRoom>
     // room.sendTextEvent(
     //   sendController.text,
     //   inReplyTo: replyEvent,
-    //   editEventId: editEvent?.eventId,
+    //   editEventId: editEvent.eventId,
     //   parseCommands: parseCommands,
+    //   threadRootEventId: activeThreadId,
+    // );
+    // sendController.value = TextEditingValue(
+    //   text: pendingText,
+    //   selection: const TextSelection.collapsed(offset: 0),
     // );
     // If the message and the sendController text don't match, it's possible
     // that there was a delay in tokenization before send, and the user started
@@ -998,6 +1032,7 @@ class ChatController extends State<ChatPageWithRoom>
       tokensWritten: content.tokensWritten,
       choreo: content.choreo,
       txid: tempEventId,
+      threadRootEventId: activeThreadId,
     )
         .then(
       (String? msgEventId) async {
@@ -1092,6 +1127,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: files,
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -1104,6 +1141,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [XFile.fromData(image)],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -1120,6 +1159,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [file],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -1139,6 +1180,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [file],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -1192,6 +1235,7 @@ class ChatController extends State<ChatPageWithRoom>
           // inReplyTo: replyEvent,
           inReplyTo: replyEvent.value,
           // Pangea#
+          threadRootEventId: activeThreadId,
           extraContent: {
             'info': {
               ...file.info,
@@ -1570,6 +1614,7 @@ class ChatController extends State<ChatPageWithRoom>
         : timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: eventId,
+              threadId: activeThreadId,
             )
             .indexOf(foundEvent);
 

@@ -37,7 +37,9 @@ class ChatEventList extends StatelessWidget {
 
     final horizontalPadding = FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
-    final events = timeline.events.filterByVisibleInGui();
+    final events = timeline.events.filterByVisibleInGui(
+      threadId: controller.activeThreadId,
+    );
     final animateInEventIndex = controller.animateInEventIndex;
 
     // create a map of eventId --> index to greatly improve performance of
@@ -111,7 +113,8 @@ class ChatEventList extends StatelessWidget {
                     child: CircularProgressIndicator.adaptive(strokeWidth: 2),
                   );
                 }
-                if (timeline.canRequestHistory) {
+                if (timeline.canRequestHistory &&
+                    controller.activeThreadId == null) {
                   return Builder(
                     builder: (context) {
                       // #Pangea
@@ -132,7 +135,6 @@ class ChatEventList extends StatelessWidget {
                 }
                 return const SizedBox.shrink();
               }
-
               // #Pangea
               if (i == 1) {
                 return ActivityUserSummaries(controller: controller);
@@ -207,6 +209,9 @@ class ChatEventList extends StatelessWidget {
                   scrollController: controller.scrollController,
                   colors: colors,
                   isCollapsed: isCollapsed,
+                  enterThread: controller.activeThreadId == null
+                      ? controller.enterThread
+                      : null,
                   onExpand: canExpand
                       ? () => controller.expandEventsFrom(
                             event,

@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
+import 'package:desktop_drop/desktop_drop.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -54,11 +55,15 @@ class ChatView extends StatelessWidget {
     //         tooltip: L10n.of(context).edit,
     //         onPressed: controller.editSelectedEventAction,
     //       ),
-    //     IconButton(
-    //       icon: const Icon(Icons.copy_outlined),
-    //       tooltip: L10n.of(context).copy,
-    //       onPressed: controller.copyEventsAction,
-    //     ),
+    //     if (controller.selectedEvents.length == 1 &&
+    //         controller.activeThreadId == null &&
+    //         controller.room.canSendDefaultMessages)
+    //       IconButton(
+    //         icon: const Icon(Icons.message_outlined),
+    //         tooltip: L10n.of(context).replyInThread,
+    //         onPressed: () => controller
+    //             .enterThread(controller.selectedEvents.single.eventId),
+    //       ),
     //     if (controller.canPinSelectedEvents)
     //       IconButton(
     //         icon: const Icon(Icons.push_pin_outlined),
@@ -86,6 +91,18 @@ class ChatView extends StatelessWidget {
     //           }
     //         },
     //         itemBuilder: (context) => [
+    //           PopupMenuItem(
+    //             onTap: controller.copyEventsAction,
+    //             value: null,
+    //             child: Row(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: [
+    //                 const Icon(Icons.copy_outlined),
+    //                 const SizedBox(width: 12),
+    //                 Text(L10n.of(context).copy),
+    //               ],
+    //             ),
+    //           ),
     //           if (controller.canSaveSelectedEvent)
     //             PopupMenuItem(
     //               onTap: () => controller.saveSelectedEvent(context),
@@ -208,13 +225,17 @@ class ChatView extends StatelessWidget {
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
 
     return PopScope(
-      canPop: controller.selectedEvents.isEmpty && !controller.showEmojiPicker,
+      canPop: controller.selectedEvents.isEmpty &&
+          !controller.showEmojiPicker &&
+          controller.activeThreadId == null,
       onPopInvokedWithResult: (pop, _) async {
         if (pop) return;
         if (controller.selectedEvents.isNotEmpty) {
           controller.clearSelectedEvents();
         } else if (controller.showEmojiPicker) {
           controller.emojiPickerAction();
+        } else if (controller.activeThreadId != null) {
+          controller.closeThread();
         }
       },
       child: StreamBuilder(
@@ -235,6 +256,10 @@ class ChatView extends StatelessWidget {
             }
             // Pangea#
             var appbarBottomHeight = 0.0;
+            final activeThreadId = controller.activeThreadId;
+            if (activeThreadId != null) {
+              appbarBottomHeight += ChatAppBarListTile.fixedHeight;
+            }
             if (controller.room.pinnedEventIds.isNotEmpty) {
               appbarBottomHeight += ChatAppBarListTile.fixedHeight;
             }
@@ -250,7 +275,9 @@ class ChatView extends StatelessWidget {
                 //       : theme.colorScheme.onTertiaryContainer,
                 // ),
                 // backgroundColor: controller.selectedEvents.isEmpty
-                //     ? null
+                //     ? controller.activeThreadId != null
+                //         ? theme.colorScheme.secondaryContainer
+                //         : null
                 //     : theme.colorScheme.tertiaryContainer,
                 // Pangea#
                 automaticallyImplyLeading: false,
@@ -261,39 +288,49 @@ class ChatView extends StatelessWidget {
                         tooltip: L10n.of(context).close,
                         color: theme.colorScheme.onTertiaryContainer,
                       )
-                    // #Pangea
-                    : controller.widget.backButton != null
-                        ? controller.widget.backButton!
-                        // : FluffyThemes.isColumnMode(context)
-                        //     ? null
-                        // Pangea#
-                        : StreamBuilder<Object>(
-                            stream:
-                                Matrix.of(context).client.onSync.stream.where(
+                    : activeThreadId != null
+                        ? IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: controller.closeThread,
+                            tooltip: L10n.of(context).backToMainChat,
+                            color: theme.colorScheme.onSecondaryContainer,
+                          )
+                        // #Pangea
+                        : controller.widget.backButton != null
+                            ? controller.widget.backButton!
+                            // : FluffyThemes.isColumnMode(context)
+                            //     ? null
+                            // Pangea#
+                            : StreamBuilder<Object>(
+                                stream: Matrix.of(context)
+                                    .client
+                                    .onSync
+                                    .stream
+                                    .where(
                                       (syncUpdate) => syncUpdate.hasRoomUpdate,
                                     ),
-                            // #Pangea
-                            // builder: (context, _) => UnreadRoomsBadge(
-                            //   filter: (r) => r.id != controller.roomId,
-                            //   badgePosition:
-                            //       BadgePosition.topEnd(end: 8, top: 4),
-                            //   child: const Center(child: BackButton()),
-                            // ),
-                            builder: (context, _) => Center(
-                              child: SizedBox(
-                                height: kToolbarHeight,
-                                child: UnreadRoomsBadge(
-                                  filter: (r) => r.id != controller.roomId,
-                                  badgePosition: BadgePosition.topEnd(
-                                    end: 8,
-                                    top: 9,
+                                // #Pangea
+                                // builder: (context, _) => UnreadRoomsBadge(
+                                //   filter: (r) => r.id != controller.roomId,
+                                //   badgePosition:
+                                //       BadgePosition.topEnd(end: 8, top: 4),
+                                //   child: const Center(child: BackButton()),
+                                // ),
+                                builder: (context, _) => Center(
+                                  child: SizedBox(
+                                    height: kToolbarHeight,
+                                    child: UnreadRoomsBadge(
+                                      filter: (r) => r.id != controller.roomId,
+                                      badgePosition: BadgePosition.topEnd(
+                                        end: 8,
+                                        top: 9,
+                                      ),
+                                      child: const Center(child: BackButton()),
+                                    ),
                                   ),
-                                  child: const Center(child: BackButton()),
                                 ),
+                                // Pangea#
                               ),
-                            ),
-                            // Pangea#
-                          ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
@@ -302,6 +339,18 @@ class ChatView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      if (activeThreadId != null)
+                        SizedBox(
+                          height: ChatAppBarListTile.fixedHeight,
+                          child: Center(
+                            child: TextButton.icon(
+                              onPressed: () =>
+                                  controller.scrollToEventId(activeThreadId),
+                              icon: const Icon(Icons.message),
+                              label: Text(L10n.of(context).replyInThread),
+                            ),
+                          ),
+                        ),
                       PinnedEvents(controller),
                       if (scrollUpBannerEventId != null)
                         ChatAppBarListTile(
@@ -548,7 +597,7 @@ class ChatView extends StatelessWidget {
                           //               ],
                           //             ),
                           //     ),
-                          //   )
+                          //   ),
                           else if (controller.room.canSendDefaultMessages &&
                               controller.room.membership == Membership.join &&
                               (controller.room.activityPlan == null ||
