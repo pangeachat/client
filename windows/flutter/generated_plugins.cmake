@@ -16,10 +16,13 @@ list(APPEND FLUTTER_PLUGIN_LIST
   permission_handler_windows
   record_windows
   rive_common
+  screen_retriever_windows
   sentry_flutter
   share_plus
   sqlcipher_flutter_libs
   url_launcher_windows
+  webcrypto
+  window_manager
   window_to_front
 )
 
