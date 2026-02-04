@@ -1,0 +1,10 @@
+{
+    "repeatPassword": "Parolni takrorlang",
+    "@repeatPassword": {},
+    "normalUser": "Odatiy foydalanuvchi",
+    "@normalUser": {},
+    "alwaysUse24HourFormat": "true",
+    "@alwaysUse24HourFormat": {
+        "description": "Set to true to always display time of day in 24 hour format."
+    }
+}

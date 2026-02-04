@@ -3216,6 +3216,14 @@
     "@moveToDifferentSpace": {},
     "moveUp": "Flytt opp",
     "@moveUp": {},
+    "storeInSecureStorageDescription": "Oppbevar gjenopprettingsnøkkelen på en sikker lagringsplass på denne enheten.",
+    "@storeInSecureStorageDescription": {},
+    "foregroundServiceRunning": "Denne varslingen vises når forgrunnstjenesten kjører.",
+    "@foregroundServiceRunning": {},
+    "callingAccount": "Ringekonto",
+    "@callingAccount": {},
+    "appearOnTopDetails": "Lar appen vises øverst (ikke nødvendig hvis du allerede har Fluffychat konfigurert som en ringekonto)",
+    "@appearOnTopDetails": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
@@ -3242,11 +3250,7 @@
     "hasKnocked": "🚪 {user} har banket på",
     "usersMustKnock": "Brukere må banke på",
     "knock": "Bank på",
-    "storeInSecureStorageDescription": "Lagre gjenopprettingsnøkkelen i den sikre lagringen på denne enheten.",
     "saveKeyManuallyDescription": "Lagre denne nøkkelen manuelt ved å utløse systemets delingsdialog eller utklippstavle.",
-    "foregroundServiceRunning": "Denne varslingen vises når forgrunnstjenesten kjører.",
-    "callingAccount": "Samtalekonto",
-    "appearOnTopDetails": "Tillater appen å vises øverst (ikke nødvendig hvis du allerede har satt opp FluffyChat som en samtalekonto)",
     "noKeyForThisMessage": "Dette kan skje hvis meldingen ble sendt før du logget inn på kontoen din på denne enheten.\n\nDet er også mulig at avsenderen har blokkert enheten din eller at noe gikk galt med internettforbindelsen.\n\nEr du i stand til å lese meldingen på en annen økt? Da kan du overføre meldingen derfra! Gå til Innstillinger > Enheter og sørg for at enhetene dine har verifisert hverandre. Når du åpner rommet neste gang og begge øktene er i forgrunnen, vil nøklene bli overført automatisk.\n\nVil du ikke miste nøklene når du logger ut eller bytter enhet? Sørg for at du har aktivert chat-sikkerhetskopiering i innstillingene.",
     "enterSpace": "Gå inn i rommet",
     "enterRoom": "Gå inn i rommet",
@@ -4526,23 +4530,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@storeInSecureStorageDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@saveKeyManuallyDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@foregroundServiceRunning": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@callingAccount": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@appearOnTopDetails": {
       "type": "String",
       "placeholders": {}
     },
