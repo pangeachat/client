@@ -128,6 +128,11 @@ abstract class FluffyThemes {
           ),
         ),
       ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        strokeCap: StrokeCap.round,
+        color: colorScheme.primary,
+        refreshBackgroundColor: colorScheme.primaryContainer,
+      ),
       snackBarTheme: isColumnMode
           ? const SnackBarThemeData(
               showCloseIcon: true,

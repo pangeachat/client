@@ -2670,6 +2670,45 @@
     },
     "noMessagesYet": "Ingen meldinger enda",
     "@noMessagesYet": {},
+    "notificationRuleMasterDescription": "Overstyrer alle andre regler og deaktiverer alle varsler.",
+    "@notificationRuleMasterDescription": {},
+    "notificationRuleSuppressNotices": "Undertrykk automatiserte meldinger",
+    "@notificationRuleSuppressNotices": {},
+    "startedKeyVerification": "{sender} startet nøkkelverifisering",
+    "@startedKeyVerification": {
+        "type": "String",
+        "placeholders": {
+            "sender": {
+                "type": "String"
+            }
+        }
+    },
+    "transparent": "Gjennomsiktig",
+    "@transparent": {},
+    "stickers": "Stickers",
+    "@stickers": {},
+    "commandHint_ignore": "Ignorer den oppgitte matrix IDen",
+    "@commandHint_ignore": {},
+    "commandHint_unignore": "Opphev ignorering av den gitte matrix IDen",
+    "@commandHint_unignore": {},
+    "unreadChatsInApp": "{appname}: {unread} uleste chatter",
+    "@unreadChatsInApp": {
+        "type": "String",
+        "placeholders": {
+            "appname": {
+                "type": "String"
+            },
+            "unread": {
+                "type": "String"
+            }
+        }
+    },
+    "changeTheVisibilityOfChatHistory": "Endre synligheten til chatloggen",
+    "@changeTheVisibilityOfChatHistory": {},
+    "changeTheCanonicalRoomAlias": "Endre hovedadressen til den offentlige chatten",
+    "@changeTheCanonicalRoomAlias": {},
+    "sendRoomNotifications": "Send en @room varsling",
+    "@sendRoomNotifications": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
@@ -2813,16 +2852,7 @@
     "completedKeyVerification": "{sender} fullførte nøkkelverifisering",
     "isReadyForKeyVerification": "{sender} er klar for nøkkelverifisering",
     "requestedKeyVerification": "{sender} ba om nøkkelverifisering",
-    "startedKeyVerification": "{sender} startet nøkkelverifisering",
-    "transparent": "Gjennomsiktig",
-    "stickers": "Stickers",
-    "commandHint_ignore": "Ignorer den gitte matrix-ID-en",
-    "commandHint_unignore": "Fjern ignorering av den gitte matrix-ID-en",
-    "unreadChatsInApp": "{appname}: {unread} uleste chatter",
     "knockRestricted": "Knock-begrenset",
-    "changeTheVisibilityOfChatHistory": "Endre synligheten av chatthistorikken",
-    "changeTheCanonicalRoomAlias": "Endre den viktigste offentlige chat-adressen",
-    "sendRoomNotifications": "Send @rom varsler",
     "chatPermissionsDescription": "Definer hvilket maktnivå som er nødvendig for visse handlinger i denne chatten. Maktnivåene 0, 50 og 100 representerer vanligvis brukere, moderatorer og administratorer, men alle grader er mulige.",
     "whatIsAHomeserver": "Hva er en hjemserver?",
     "homeserverDescription": "Alle dataene dine lagres på hjemserveren, akkurat som en e-postleverandør. Du kan velge hvilken hjemserver du vil bruke, samtidig som du kan kommunisere med alle. Lær mer på https://matrix.org.",
@@ -2843,8 +2873,6 @@
     "userSpecificNotificationSettings": "Brukerspesifikke varslingsinnstillinger",
     "otherNotificationSettings": "Andre varslingsinnstillinger",
     "notificationRuleContainsUserNameDescription": "Varsler brukeren når en melding inneholder deres brukernavn.",
-    "notificationRuleMasterDescription": "Overstyrer alle andre regler og deaktiverer alle varsler.",
-    "notificationRuleSuppressNotices": "Undertrykk automatiserte meldinger",
     "notificationRuleMemberEvent": "Medlemsarrangement",
     "notificationRuleMemberEventDescription": "Undertrykker varsler for medlemsarrangementer.",
     "notificationRuleIsUserMention": "Brukerhenvisning",
@@ -4683,54 +4711,7 @@
         }
       }
     },
-    "@startedKeyVerification": {
-      "type": "String",
-      "placeholders": {
-        "sender": {
-          "type": "String"
-        }
-      }
-    },
-    "@transparent": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@stickers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@commandHint_ignore": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@commandHint_unignore": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@unreadChatsInApp": {
-      "type": "String",
-      "placeholders": {
-        "appname": {
-          "type": "String"
-        },
-        "unread": {
-          "type": "String"
-        }
-      }
-    },
     "@knockRestricted": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@changeTheVisibilityOfChatHistory": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@changeTheCanonicalRoomAlias": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@sendRoomNotifications": {
       "type": "String",
       "placeholders": {}
     },
@@ -4818,14 +4799,6 @@
       "placeholders": {}
     },
     "@notificationRuleContainsUserNameDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleMasterDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleSuppressNotices": {
       "type": "String",
       "placeholders": {}
     },

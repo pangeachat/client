@@ -41,7 +41,9 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
     final mimetype = infoMap?.tryGet<String>('mimetype');
     return PlatformInfos.isAndroid ? mimetype != "video/quicktime" : true;
   }
+
   // Pangea#
+  double? _downloadProgress;
 
   // The video_player package only doesn't support Windows and Linux.
   // #Pangea
@@ -60,7 +62,20 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
       // #Pangea
       setState(() => _error = null);
       // Pangea#
-      final videoFile = await widget.event.downloadAndDecryptAttachment();
+      final fileSize = widget.event.content
+          .tryGetMap<String, dynamic>('info')
+          ?.tryGet<int>('size');
+      final videoFile = await widget.event.downloadAndDecryptAttachment(
+        onDownloadProgress: fileSize == null
+            ? null
+            : (progress) {
+                final progressPercentage = progress / fileSize;
+                setState(() {
+                  _downloadProgress =
+                      progressPercentage < 1 ? progressPercentage : null;
+                });
+              },
+      );
 
       // Dispose the controllers if we already have them.
       _disposeControllers();
@@ -189,7 +204,11 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
                 ),
               ),
               // #Pangea
-              // const Center(child: CircularProgressIndicator.adaptive()),
+              // Center(
+              //   child: CircularProgressIndicator.adaptive(
+              //     value: _downloadProgress,
+              //   ),
+              // ),
               _error != null
                   ? Center(
                       child: Column(
@@ -220,7 +239,11 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
                         ],
                       ),
                     )
-                  : const Center(child: CircularProgressIndicator.adaptive()),
+                  : Center(
+                      child: CircularProgressIndicator.adaptive(
+                        value: _downloadProgress,
+                      ),
+                    ),
               // Pangea#
             ],
           );
