@@ -38,15 +38,15 @@ abstract class AppConfig {
   static const double columnWidth = 360.0;
 
   // #Pangea
-  // static const String website = 'https://fluffychat.im';
+  // static const String website = 'https://fluffy.chat';
   static const String website = "https://pangea.chat/";
   // Pangea#
   static const String enablePushTutorial =
-      'https://github.com/krille-chan/fluffychat/wiki/Push-Notifications-without-Google-Services';
+      'https://fluffy.chat/faq/#push_without_google_services';
   static const String encryptionTutorial =
-      'https://github.com/krille-chan/fluffychat/wiki/How-to-use-end-to-end-encryption-in-FluffyChat';
+      'https://fluffy.chat/faq/#how_to_use_end_to_end_encryption';
   static const String startChatTutorial =
-      'https://github.com/krille-chan/fluffychat/wiki/How-to-Find-Users-in-FluffyChat';
+      'https://fluffy.chat/faq/#how_do_i_find_other_users';
   static const String appId = 'im.fluffychat.FluffyChat';
   // #Pangea
   // static const String appOpenUrlScheme = 'im.fluffychat';
@@ -55,11 +55,9 @@ abstract class AppConfig {
 
   static const String sourceCodeUrl =
       'https://github.com/krille-chan/fluffychat';
-  // #Pangea
   // static const String supportUrl =
   //     'https://github.com/krille-chan/fluffychat/issues';
-  // static const String changelogUrl =
-  //     'https://github.com/krille-chan/fluffychat/blob/main/CHANGELOG.md';
+  // static const String changelogUrl = 'https://fluffy.chat/en/changelog/';
   // static const String donationUrl = 'https://ko-fi.com/krille';
   static const String supportUrl = 'https://www.pangeachat.com/faqs';
   static const String termsOfServiceUrl =
@@ -82,8 +80,8 @@ abstract class AppConfig {
 
   static final Uri privacyUrl = Uri(
     scheme: 'https',
-    host: 'github.com',
-    path: '/krille-chan/fluffychat/blob/main/PRIVACY.md',
+    host: 'fluffy.chat',
+    path: '/en/privacy',
   );
 
   // #Pangea
