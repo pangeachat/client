@@ -21,6 +21,8 @@ class Avatar extends StatelessWidget {
   final BorderRadius? borderRadius;
   final IconData? icon;
   final BorderSide? border;
+  final Color? backgroundColor;
+  final Color? textColor;
   // #Pangea
   final bool useRive;
   final bool showPresence;
@@ -42,6 +44,8 @@ class Avatar extends StatelessWidget {
     this.borderRadius,
     this.border,
     this.icon,
+    this.backgroundColor,
+    this.textColor,
     // #Pangea
     this.useRive = false,
     this.showPresence = true,
@@ -80,7 +84,6 @@ class Avatar extends StatelessWidget {
               side: border ?? BorderSide.none,
             ),
             clipBehavior: Clip.antiAlias,
-            // #Pangea
             // child: MxcImage(
             child: (userId ?? presenceUserId) == BotName.byEnvironment
                 ? BotFace(
@@ -88,6 +91,7 @@ class Avatar extends StatelessWidget {
                     expression: BotExpression.idle,
                     useRive: useRive,
                   )
+                // #Pangea
                 : !(mxContent.toString().startsWith('mxc://'))
                     ? ImageByUrl(
                         imageUrl: mxContent,
@@ -101,6 +105,7 @@ class Avatar extends StatelessWidget {
                         ),
                         borderRadius: borderRadius,
                       )
+                    // Pangea#
                     : MxcImage(
                         // Pangea#
                         client: client,
@@ -114,7 +119,8 @@ class Avatar extends StatelessWidget {
                         placeholder: (_) => noPic
                             ? Container(
                                 decoration: BoxDecoration(
-                                  color: name?.lightColorAvatar,
+                                  color:
+                                      backgroundColor ?? name?.lightColorAvatar,
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
@@ -122,7 +128,7 @@ class Avatar extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: 'RobotoMono',
-                                    color: Colors.white,
+                                    color: textColor ?? Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: (size / 2.5).roundToDouble(),
                                   ),

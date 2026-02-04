@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:animations/animations.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -201,10 +201,11 @@ class PangeaChatInputRow extends StatelessWidget {
                           maxLines: 8,
                           autofocus: !PlatformInfos.isMobile,
                           keyboardType: TextInputType.multiline,
-                          textInputAction: AppConfig.sendOnEnter == true &&
-                                  PlatformInfos.isMobile
-                              ? TextInputAction.send
-                              : null,
+                          textInputAction:
+                              AppSettings.sendOnEnter.value == true &&
+                                      PlatformInfos.isMobile
+                                  ? TextInputAction.send
+                                  : null,
                           onSubmitted: (_) => controller.onInputBarSubmitted(),
                           onSubmitImage: controller.sendImageFromClipBoard,
                           focusNode: controller.inputFocus,

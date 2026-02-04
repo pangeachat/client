@@ -148,7 +148,9 @@ class SettingsView extends StatelessWidget {
                                       displayname,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 18),
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                      ),
                                     ),
                                   ),
                                   TextButton.icon(
@@ -380,7 +382,7 @@ class SettingsView extends StatelessWidget {
                     // ListTile(
                     //   leading: const Icon(Icons.privacy_tip_outlined),
                     //   title: Text(L10n.of(context).privacy),
-                    //   onTap: () => launchUrlString(AppConfig.privacyUrl),
+                    //   onTap: () => launchUrl(AppConfig.privacyUrl),
                     // ),
                     // ListTile(
                     //   leading: const Icon(Icons.info_outline_rounded),

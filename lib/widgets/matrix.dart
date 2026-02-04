@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:app_links/app_links.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:just_audio/just_audio.dart';
@@ -19,13 +18,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
-import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -34,7 +33,6 @@ import 'package:fluffychat/utils/voip_plugin.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import '../config/app_config.dart';
 import '../config/setting_keys.dart';
 import '../pages/key_verification/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
@@ -192,7 +190,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     final candidate =
         _loginClientCandidate ??= await ClientManager.createClient(
-      '${AppConfig.applicationName}-${DateTime.now().millisecondsSinceEpoch}',
+      '${AppSettings.applicationName.value}-${DateTime.now().millisecondsSinceEpoch}',
       store,
     )
           ..onLoginStateChanged
@@ -283,11 +281,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     initMatrix();
-    if (PlatformInfos.isWeb) {
-      initConfig().then((_) => initSettings());
-    } else {
-      initSettings();
-    }
     // #Pangea
     Sentry.configureScope(
       (scope) => scope.setUser(
@@ -368,19 +361,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
   }
   // Pangea#
-
-  Future<void> initConfig() async {
-    try {
-      final configJsonString =
-          utf8.decode((await http.get(Uri.parse('config.json'))).bodyBytes);
-      final configJson = json.decode(configJsonString);
-      AppConfig.loadFromJson(configJson);
-    } on FormatException catch (_) {
-      Logs().v('[ConfigLoader] config.json not found');
-    } catch (e) {
-      Logs().v('[ConfigLoader] config.json not found', e);
-    }
-  }
 
   void _registerSubs(String name) {
     final c = getClientByName(name);
@@ -528,7 +508,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
           }
           if (result == OkCancelResult.cancel) {
-            await store.setBool(SettingKeys.showNoGoogle, true);
+            await AppSettings.showNoGoogle.setItem(true);
           }
         },
       );
@@ -538,7 +518,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   void createVoipPlugin() async {
-    if (store.getBool(SettingKeys.experimentalVoip) == false) {
+    if (AppSettings.experimentalVoip.value) {
       voipPlugin = null;
       return;
     }
@@ -558,72 +538,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         Logs().v('Set background sync to', foreground);
       }
     }
-  }
-
-  void initSettings() {
-    // #Pangea
-    // AppConfig.fontSizeFactor =
-    //     double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
-    //         AppConfig.fontSizeFactor;
-    if (client.isLogged()) {
-      StyleSettingsRepo.settings(client.userID!).then((settings) {
-        AppConfig.fontSizeFactor = settings.fontSizeFactor;
-        AppConfig.useActivityImageAsChatBackground =
-            settings.useActivityImageBackground;
-      });
-    }
-    // Pangea#
-
-    AppConfig.renderHtml =
-        store.getBool(SettingKeys.renderHtml) ?? AppConfig.renderHtml;
-
-    AppConfig.swipeRightToLeftToReply =
-        store.getBool(SettingKeys.swipeRightToLeftToReply) ??
-            AppConfig.swipeRightToLeftToReply;
-
-    AppConfig.hideRedactedEvents =
-        store.getBool(SettingKeys.hideRedactedEvents) ??
-            AppConfig.hideRedactedEvents;
-
-    AppConfig.hideUnknownEvents =
-        store.getBool(SettingKeys.hideUnknownEvents) ??
-            AppConfig.hideUnknownEvents;
-
-    AppConfig.separateChatTypes =
-        store.getBool(SettingKeys.separateChatTypes) ??
-            AppConfig.separateChatTypes;
-
-    AppConfig.autoplayImages =
-        store.getBool(SettingKeys.autoplayImages) ?? AppConfig.autoplayImages;
-
-    AppConfig.sendTypingNotifications =
-        store.getBool(SettingKeys.sendTypingNotifications) ??
-            AppConfig.sendTypingNotifications;
-
-    AppConfig.sendPublicReadReceipts =
-        store.getBool(SettingKeys.sendPublicReadReceipts) ??
-            AppConfig.sendPublicReadReceipts;
-
-    AppConfig.sendOnEnter =
-        store.getBool(SettingKeys.sendOnEnter) ?? AppConfig.sendOnEnter;
-
-    AppConfig.experimentalVoip = store.getBool(SettingKeys.experimentalVoip) ??
-        AppConfig.experimentalVoip;
-
-    AppConfig.showPresences =
-        store.getBool(SettingKeys.showPresences) ?? AppConfig.showPresences;
-
-    AppConfig.displayNavigationRail =
-        store.getBool(SettingKeys.displayNavigationRail) ??
-            AppConfig.displayNavigationRail;
-
-    // #Pangea
-    AppConfig.volume = store.getDouble(SettingKeys.volume) ?? AppConfig.volume;
-
-    AppConfig.showedActivityMenu =
-        store.getBool(SettingKeys.showedActivityMenu) ??
-            AppConfig.showedActivityMenu;
-    // Pangea#
   }
 
   @override

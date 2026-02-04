@@ -6,6 +6,7 @@ import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
@@ -289,7 +290,8 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
             Text(
               L10n.of(context).fileType,
               style: TextStyle(
-                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                fontSize: AppSettings.fontSizeFactor.value *
+                    AppConfig.messageFontSize,
               ),
             ),
             Padding(

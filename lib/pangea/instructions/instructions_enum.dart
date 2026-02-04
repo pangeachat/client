@@ -35,6 +35,7 @@ enum InstructionsEnum {
   dismissSupportChat,
   shimmerNewToken,
   shimmerTranslation,
+  showedActivityMenu,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -69,6 +70,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.dismissSupportChat:
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
+      case InstructionsEnum.showedActivityMenu:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -133,6 +135,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.dismissSupportChat:
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
+      case InstructionsEnum.showedActivityMenu:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

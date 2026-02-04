@@ -183,7 +183,7 @@ class _MainView extends StatelessWidget {
     if (path == null) {
       return ChatList(
         activeChat: state.pathParameters['roomid'],
-        activeSpaceId: state.pathParameters['spaceid'],
+        activeSpace: state.pathParameters['spaceid'],
       );
     }
 
@@ -220,7 +220,7 @@ class _MainView extends StatelessWidget {
 
     return ChatList(
       activeChat: state.pathParameters['roomid'],
-      activeSpaceId: state.pathParameters['spaceid'],
+      activeSpace: state.pathParameters['spaceid'],
     );
   }
 }

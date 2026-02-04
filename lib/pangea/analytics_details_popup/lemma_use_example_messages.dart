@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -118,7 +119,7 @@ class LemmaUseExampleMessages extends StatelessWidget {
                     text: TextSpan(
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppConfig.fontSizeFactor *
+                        fontSize: AppSettings.fontSizeFactor.value *
                             AppConfig.messageFontSize,
                       ),
                       children: example.textSpans,

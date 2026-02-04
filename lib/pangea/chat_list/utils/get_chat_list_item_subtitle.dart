@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
@@ -25,7 +25,9 @@ class ChatListItemSubtitle extends StatelessWidget {
         !event.redacted &&
         event.type == EventTypes.Message &&
         event.messageType == MessageTypes.Text &&
-        !(AppConfig.renderHtml && !event.redacted && event.isRichMessage);
+        !(AppSettings.renderHtml.value &&
+            !event.redacted &&
+            event.isRichMessage);
   }
 
   Future<PangeaMessageEvent> _getPangeaMessageEvent(

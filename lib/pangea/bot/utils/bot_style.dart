@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class BotStyle {
@@ -16,7 +17,7 @@ class BotStyle {
       final TextStyle botStyle = TextStyle(
         fontWeight: bold ? FontWeight.w700 : null,
         fontSize: AppConfig.messageFontSize *
-            AppConfig.fontSizeFactor *
+            AppSettings.fontSizeFactor.value *
             (big == true ? 1.2 : 1),
         fontStyle: italics ? FontStyle.italic : null,
         color: setColor ? Theme.of(context).colorScheme.primary : null,

@@ -6,7 +6,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
@@ -67,7 +66,7 @@ class PangeaController {
     subscriptionController.reinitialize();
 
     StyleSettingsRepo.settings(userID!).then((settings) {
-      AppConfig.fontSizeFactor = settings.fontSizeFactor;
+      AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
       AppConfig.useActivityImageAsChatBackground =
           settings.useActivityImageBackground;
     });
@@ -134,18 +133,6 @@ class PangeaController {
     for (final key in _storageKeys) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
-    }
-
-    if (AppConfig.showedActivityMenu) {
-      futures.add(
-        SharedPreferences.getInstance().then((prefs) async {
-          AppConfig.showedActivityMenu = false;
-          prefs.setBool(
-            SettingKeys.showedActivityMenu,
-            AppConfig.showedActivityMenu,
-          );
-        }),
-      );
     }
 
     await Future.wait(futures);

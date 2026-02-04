@@ -11,6 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
@@ -122,7 +123,7 @@ extension LocalNotificationsExtension on MatrixState {
         title,
         body: body,
         replacesId: linuxNotificationIds[roomId] ?? 0,
-        appName: AppConfig.applicationName,
+        appName: AppSettings.applicationName.value,
         appIcon: 'fluffychat',
         actions: [
           NotificationAction(
@@ -147,7 +148,7 @@ extension LocalNotificationsExtension on MatrixState {
             event.room.setReadMarker(
               event.eventId,
               mRead: event.eventId,
-              public: AppConfig.sendPublicReadReceipts,
+              public: AppSettings.sendPublicReadReceipts.value,
             );
             break;
           case DesktopNotificationActions.openChat:

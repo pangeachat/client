@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 
@@ -89,8 +88,7 @@ Future<String?> getDatabaseCipher() async {
 }
 
 void _sendNoEncryptionWarning(Object exception) async {
-  final store = await SharedPreferences.getInstance();
-  final isStored = AppSettings.noEncryptionWarningShown.getItem(store);
+  final isStored = AppSettings.noEncryptionWarningShown.value;
 
   if (isStored == true) return;
 
@@ -108,5 +106,5 @@ void _sendNoEncryptionWarning(Object exception) async {
   // );
   // Pangea#
 
-  await AppSettings.noEncryptionWarningShown.setItem(store, true);
+  await AppSettings.noEncryptionWarningShown.setItem(true);
 }

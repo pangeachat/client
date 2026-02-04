@@ -8,6 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import '../config/app_config.dart';
 
@@ -46,7 +47,7 @@ abstract class PlatformInfos {
   // Pangea#
 
   static String get clientName =>
-      '${AppConfig.applicationName} ${isWeb ? 'web' : Platform.operatingSystem}${kReleaseMode ? '' : 'Debug'}';
+      '${AppSettings.applicationName.value} ${isWeb ? 'web' : Platform.operatingSystem}${kReleaseMode ? '' : 'Debug'}';
 
   static Future<String> getVersion() async {
     var version = kIsWeb ? 'Web' : 'Unknown';
@@ -101,7 +102,7 @@ abstract class PlatformInfos {
         height: 64,
         filterQuality: FilterQuality.medium,
       ),
-      applicationName: AppConfig.applicationName,
+      applicationName: AppSettings.applicationName.value,
     );
   }
 

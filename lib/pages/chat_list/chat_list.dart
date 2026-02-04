@@ -11,7 +11,6 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -83,17 +82,13 @@ extension LocalizedActiveFilter on ActiveFilter {
 class ChatList extends StatefulWidget {
   static BuildContext? contextForVoip;
   final String? activeChat;
-  // #Pangea
-  final String? activeSpaceId;
-  // Pangea#
+  final String? activeSpace;
   final bool displayNavigationRail;
 
   const ChatList({
     super.key,
     required this.activeChat,
-    // #Pangea
-    this.activeSpaceId,
-    // Pangea#
+    this.activeSpace,
     this.displayNavigationRail = false,
   });
 
@@ -111,15 +106,10 @@ class ChatListController extends State<ChatList>
   // StreamSubscription? _intentUriStreamSubscription;
   // Pangea#
 
-  // #Pangea
-  // ActiveFilter activeFilter = AppConfig.separateChatTypes
-  //     ? ActiveFilter.messages
-  //     : ActiveFilter.allChats;
-  ActiveFilter activeFilter = ActiveFilter.allChats;
-  // Pangea#
+  late ActiveFilter activeFilter;
 
   // #Pangea
-  String? get activeSpaceId => widget.activeSpaceId;
+  String? get activeSpaceId => widget.activeSpace;
   // String? _activeSpaceId;
   // String? get activeSpaceId => _activeSpaceId;
 
@@ -535,7 +525,16 @@ class ChatListController extends State<ChatList>
 
   @override
   void initState() {
+    // #Pangea
+    // activeFilter = AppSettings.separateChatTypes.value
+    //     ? ActiveFilter.messages
+    //     : ActiveFilter.allChats;
+    activeFilter = ActiveFilter.allChats;
+    // Pangea#
     _initReceiveSharingIntent();
+    // #Pangea
+    // _activeSpaceId = widget.activeSpace;
+    // Pangea#
 
     scrollController.addListener(_onScroll);
     _waitForFirstSync();
@@ -993,8 +992,7 @@ class ChatListController extends State<ChatList>
       context: context,
     );
     if (result == OkCancelResult.ok) {
-      await Matrix.of(context).store.setBool(SettingKeys.showPresences, false);
-      AppConfig.showPresences = false;
+      AppSettings.showPresences.setItem(false);
       setState(() {});
     }
   }

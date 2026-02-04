@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
@@ -84,7 +84,7 @@ class PangeaLoginScaffold extends StatelessWidget {
                         ),
                         if (showAppName)
                           Text(
-                            AppConfig.applicationName,
+                            AppSettings.applicationName.value,
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         const SizedBox(height: 12),

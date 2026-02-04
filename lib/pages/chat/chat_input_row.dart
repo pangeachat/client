@@ -1,5 +1,9 @@
+// import 'package:flutter/material.dart';
+
 // import 'package:animations/animations.dart';
-// import 'package:fluffychat/config/app_config.dart';
+// import 'package:matrix/matrix.dart';
+
+// import 'package:fluffychat/config/setting_keys.dart';
 // import 'package:fluffychat/l10n/l10n.dart';
 // import 'package:fluffychat/pages/chat/recording_input_row.dart';
 // import 'package:fluffychat/pages/chat/recording_view_model.dart';
@@ -7,9 +11,6 @@
 // import 'package:fluffychat/utils/platform_infos.dart';
 // import 'package:fluffychat/widgets/avatar.dart';
 // import 'package:fluffychat/widgets/matrix.dart';
-// import 'package:flutter/material.dart';
-// import 'package:matrix/matrix.dart';
-
 // import '../../config/themes.dart';
 // import 'chat.dart';
 // import 'input_bar.dart';
@@ -296,10 +297,11 @@
 //                         maxLines: 8,
 //                         autofocus: !PlatformInfos.isMobile,
 //                         keyboardType: TextInputType.multiline,
-//                         textInputAction: AppConfig.sendOnEnter == true &&
-//                                 PlatformInfos.isMobile
-//                             ? TextInputAction.send
-//                             : null,
+//                         textInputAction:
+//                             AppSettings.sendOnEnter.value == true &&
+//                                     PlatformInfos.isMobile
+//                                 ? TextInputAction.send
+//                                 : null,
 //                         onSubmitted: controller.onInputBarSubmitted,
 //                         onSubmitImage: controller.sendImageFromClipBoard,
 //                         focusNode: controller.inputFocus,

@@ -130,7 +130,7 @@ class ChatView extends StatelessWidget {
     //   ];
     // } else if (!controller.room.isArchived) {
     //   return [
-    //     if (AppConfig.experimentalVoip &&
+    //     if (AppSettings.experimentalVoip.value &&
     //         Matrix.of(context).voipPlugin != null &&
     //         controller.room.isDirectChat)
     //       IconButton(

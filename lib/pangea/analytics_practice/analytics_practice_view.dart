@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
@@ -270,7 +271,8 @@ class _ExampleMessageWidget extends StatelessWidget {
             text: TextSpan(
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onPrimaryFixed,
-                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                fontSize: AppSettings.fontSizeFactor.value *
+                    AppConfig.messageFontSize,
               ),
               children: snapshot.data!,
             ),
@@ -464,8 +466,8 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                 text: TextSpan(
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onPrimaryFixed,
-                    fontSize:
-                        AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                    fontSize: AppSettings.fontSizeFactor.value *
+                        AppConfig.messageFontSize,
                   ),
                   children: [
                     if (trimmedBefore) const TextSpan(text: '…'),
@@ -491,7 +493,7 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                       translation,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppConfig.fontSizeFactor *
+                        fontSize: AppSettings.fontSizeFactor.value *
                             AppConfig.messageFontSize,
                         fontStyle: FontStyle.italic,
                       ),

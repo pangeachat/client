@@ -1,13 +1,16 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
-import '../../config/app_config.dart';
 
 extension VisibleInGuiExtension on List<Event> {
-  List<Event> filterByVisibleInGui({String? exceptionEventId}) => where(
+  List<Event> filterByVisibleInGui({
+    String? exceptionEventId,
+  }) =>
+      where(
         // #Pangea
         // (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
         (event) =>
@@ -28,18 +31,16 @@ extension IsStateExtension on Event {
       // if a reaction has been redacted we also want it to be hidden in the timeline
       !{EventTypes.Reaction, EventTypes.Redaction}.contains(type) &&
       // if we enabled to hide all redacted events, don't show those
-      (!AppConfig.hideRedactedEvents || !redacted) &&
+      (!AppSettings.hideRedactedEvents.value || !redacted) &&
       // if we enabled to hide all unknown events, don't show those
       // #Pangea
-      // (!AppConfig.hideUnknownEvents || isEventTypeKnown);
-      (!AppConfig.hideUnknownEvents || pangeaIsEventTypeKnown) &&
-      (!isState || importantStateEvents.contains(type)) &&
+      // (!AppSettings.hideUnknownEvents.value || isEventTypeKnown);
+      (!AppSettings.hideUnknownEvents.value || pangeaIsEventTypeKnown) &&
       content.tryGet(ModelKey.transcription) == null &&
-      // if sending of transcription fails,
-      // don't show it as a errored audio event in timeline.
       ((unsigned?['extra_content']
               as Map<String, dynamic>?)?[ModelKey.transcription] ==
-          null);
+          null) &&
+      (!isState || importantStateEvents.contains(type));
   // Pangea#
 
   bool get isState => !{
@@ -74,6 +75,7 @@ extension IsStateExtension on Event {
         PangeaEventTypes.activityRole,
       ].contains(type);
 
+  // we're filtering out some state events that we don't want to render
   static const Set<String> importantStateEvents = {
     EventTypes.Encryption,
     EventTypes.RoomCreate,

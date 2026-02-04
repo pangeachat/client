@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 
@@ -72,7 +73,7 @@ class ActivityRolesEvent extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 12 * AppConfig.fontSizeFactor,
+                    fontSize: 12 * AppSettings.fontSizeFactor.value,
                     decoration:
                         event.redacted ? TextDecoration.lineThrough : null,
                   ),

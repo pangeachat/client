@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
@@ -146,7 +147,8 @@ class MessageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = AppConfig.messageFontSize * AppConfig.fontSizeFactor;
+    final fontSize =
+        AppConfig.messageFontSize * AppSettings.fontSizeFactor.value;
     final buttonTextColor = textColor;
     switch (event.type) {
       case EventTypes.Message:
@@ -306,7 +308,7 @@ class MessageContent extends StatelessWidget {
                 },
               );
             }
-            var html = AppConfig.renderHtml && event.isRichMessage
+            var html = AppSettings.renderHtml.value && event.isRichMessage
                 ? event.formattedText
                 : event.body;
             if (event.messageType == MessageTypes.Emote) {
@@ -325,14 +327,14 @@ class MessageContent extends StatelessWidget {
                 html: html,
                 textColor: textColor,
                 room: event.room,
-                fontSize: AppConfig.fontSizeFactor *
+                fontSize: AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize *
                     (bigEmotes ? 5 : 1),
                 limitHeight: !selected,
                 linkStyle: TextStyle(
                   color: linkColor,
-                  fontSize:
-                      AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                  fontSize: AppSettings.fontSizeFactor.value *
+                      AppConfig.messageFontSize,
                   decoration: TextDecoration.underline,
                   decorationColor: linkColor,
                 ),

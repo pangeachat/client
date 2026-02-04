@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
@@ -10,7 +9,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 extension ActivityMenuLogic on ChatController {
   bool get shouldShowActivityInstructions {
-    if (AppConfig.showedActivityMenu ||
+    if (InstructionsEnum.showedActivityMenu.isToggledOff ||
         InstructionsEnum.activityStatsMenu.isToggledOff ||
         MatrixState.pAnyState.isOverlayOpen(RegExp(r"^word-zoom-card-.*$")) ||
         timeline == null ||

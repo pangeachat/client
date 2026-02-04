@@ -15,10 +15,8 @@ import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -341,7 +339,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _loadDraft() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = Matrix.of(context).store;
     final draft = prefs.getString('draft_$roomId');
     if (draft != null && draft.isNotEmpty) {
       // #Pangea
@@ -394,7 +392,7 @@ class ChatController extends State<ChatPageWithRoom>
   KeyEventResult _customEnterKeyHandling(FocusNode node, KeyEvent evt) {
     if (!HardwareKeyboard.instance.isShiftPressed &&
         evt.logicalKey.keyLabel == 'Enter' &&
-        (AppConfig.sendOnEnter ?? !PlatformInfos.isMobile)) {
+        AppSettings.sendOnEnter.value) {
       if (evt is KeyDownEvent) {
         // #Pangea
         // send();
@@ -450,7 +448,7 @@ class ChatController extends State<ChatPageWithRoom>
     WidgetsBinding.instance.addPostFrameCallback(_shareItems);
     super.initState();
     _displayChatDetailsColumn = ValueNotifier(
-      AppSettings.displayChatDetailsColumn.getItem(Matrix.of(context).store),
+      AppSettings.displayChatDetailsColumn.value,
     );
 
     sendingClient = Matrix.of(context).client;
@@ -588,7 +586,9 @@ class ChatController extends State<ChatPageWithRoom>
       var readMarkerEventIndex = readMarkerEventId.isEmpty
           ? -1
           : timeline!.events
-              .filterByVisibleInGui(exceptionEventId: readMarkerEventId)
+              .filterByVisibleInGui(
+                exceptionEventId: readMarkerEventId,
+              )
               .indexWhere((e) => e.eventId == readMarkerEventId);
 
       // Read marker is existing but not found in first events. Try a single
@@ -596,7 +596,9 @@ class ChatController extends State<ChatPageWithRoom>
       if (readMarkerEventId.isNotEmpty && readMarkerEventIndex == -1) {
         await timeline?.requestHistory(historyCount: _loadHistoryCount);
         readMarkerEventIndex = timeline!.events
-            .filterByVisibleInGui(exceptionEventId: readMarkerEventId)
+            .filterByVisibleInGui(
+              exceptionEventId: readMarkerEventId,
+            )
             .indexWhere((e) => e.eventId == readMarkerEventId);
       }
 
@@ -772,7 +774,7 @@ class ChatController extends State<ChatPageWithRoom>
     _setReadMarkerFuture = timeline
         .setReadMarker(
       eventId: eventId,
-      public: AppConfig.sendPublicReadReceipts,
+      public: AppSettings.sendPublicReadReceipts.value,
     )
         .then((_) {
       _setReadMarkerFuture = null;
@@ -938,7 +940,7 @@ class ChatController extends State<ChatPageWithRoom>
     // if (sendController.text.trim().isEmpty) return;
     // Pangea#
     _storeInputTimeoutTimer?.cancel();
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = Matrix.of(context).store;
     prefs.remove('draft_$roomId');
     var parseCommands = true;
 
@@ -1564,7 +1566,9 @@ class ChatController extends State<ChatPageWithRoom>
     final eventIndex = foundEvent == null
         ? -1
         : timeline!.events
-            .filterByVisibleInGui(exceptionEventId: eventId)
+            .filterByVisibleInGui(
+              exceptionEventId: eventId,
+            )
             .indexOf(foundEvent);
 
     if (eventIndex == -1) {
@@ -1884,7 +1888,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     _storeInputTimeoutTimer?.cancel();
     _storeInputTimeoutTimer = Timer(_storeInputTimeout, () async {
-      final prefs = await SharedPreferences.getInstance();
+      final prefs = Matrix.of(context).store;
       await prefs.setString('draft_$roomId', text);
     });
     // #Pangea
@@ -1903,7 +1907,7 @@ class ChatController extends State<ChatPageWithRoom>
     //   }
     // }
     // Pangea#
-    if (AppConfig.sendTypingNotifications) {
+    if (AppSettings.sendTypingNotifications.value) {
       typingCoolDown?.cancel();
       typingCoolDown = Timer(const Duration(seconds: 2), () {
         typingCoolDown = null;
@@ -2392,12 +2396,8 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.unfocus();
     activityController.toggleShowDropdown();
 
-    if (!AppConfig.showedActivityMenu) {
-      AppConfig.showedActivityMenu = true;
-      Matrix.of(context).store.setBool(
-            SettingKeys.showedActivityMenu,
-            AppConfig.showedActivityMenu,
-          );
+    if (!InstructionsEnum.showedActivityMenu.isToggledOff) {
+      InstructionsEnum.showedActivityMenu.setToggledOff(true);
     }
   }
 
@@ -2462,7 +2462,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   void toggleDisplayChatDetailsColumn() async {
     await AppSettings.displayChatDetailsColumn.setItem(
-      Matrix.of(context).store,
       !_displayChatDetailsColumn.value,
     );
     _displayChatDetailsColumn.value = !_displayChatDetailsColumn.value;

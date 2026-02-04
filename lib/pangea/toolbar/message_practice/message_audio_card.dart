@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -79,8 +80,8 @@ class MessageAudioCardState extends State<MessageAudioCard> {
                   senderId: widget.messageEvent.senderId,
                   matrixFile: audioFile,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  fontSize:
-                      AppConfig.messageFontSize * AppConfig.fontSizeFactor,
+                  fontSize: AppConfig.messageFontSize *
+                      AppSettings.fontSizeFactor.value,
                   linkColor: Theme.of(context).brightness == Brightness.light
                       ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.onPrimary,

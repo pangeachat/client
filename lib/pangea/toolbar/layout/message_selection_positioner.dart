@@ -154,7 +154,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       widget.event.senderId == widget.event.room.client.userID;
 
   bool get showDetails =>
-      AppSettings.displayChatDetailsColumn.getItem(Matrix.of(context).store) &&
+      AppSettings.displayChatDetailsColumn.value &&
       FluffyThemes.isThreeColumnMode(context) &&
       widget.chatController.room.membership == Membership.join;
 

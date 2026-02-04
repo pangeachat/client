@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'app_config.dart';
 
 abstract class FluffyThemes {
@@ -49,11 +50,7 @@ abstract class FluffyThemes {
   ]) {
     final colorScheme = ColorScheme.fromSeed(
       brightness: brightness,
-      seedColor: seed ??
-          AppConfig.colorSchemeSeed ??
-          Theme.of(context).colorScheme.primary,
-      // primary: AppConfig.primaryColor,
-      // secondary: AppConfig.gold,
+      seedColor: seed ?? Color(AppSettings.colorSchemeSeedInt.value),
     );
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return ThemeData(

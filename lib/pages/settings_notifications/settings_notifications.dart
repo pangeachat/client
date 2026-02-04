@@ -201,10 +201,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   void updateVolume(double value) {
     volumeNotifier.value = value;
     AppConfig.volume = value;
-    Matrix.of(context).store.setDouble(
-          SettingKeys.volume,
-          value,
-        );
+    AppSettings.volume.setItem(value);
   }
 
   Future<void> requestNotificationPermission() async {

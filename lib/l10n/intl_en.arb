@@ -3379,6 +3379,39 @@
   "longPressToRecordVoiceMessage": "Long press to record voice message.",
   "pause": "Pause",
   "resume": "Resume",
+  "newSubSpace": "New sub space",
+  "moveToDifferentSpace": "Move to different space",
+  "moveUp": "Move up",
+  "moveDown": "Move down",
+  "removeFromSpaceDescription": "The chat will be removed from the space but still appear in your chat list.",
+  "countChats": "{chats} chats",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "Space member of {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "Space member of {spaces} can knock",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Donate",
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",
@@ -3947,6 +3980,9 @@
   "grammarCopyPOSpropn": "Proper Noun",
   "grammarCopyPOSnoun": "Noun",
   "grammarCopyPOSintj": "Interjection",
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Compound",
   "grammarCopyPOSx": "Other",
   "grammarCopyGENDERfem": "Feminine",
   "grammarCopyPERSON2": "Second Person",

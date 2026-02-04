@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/user/style_settings_repo.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -18,7 +18,9 @@ class SettingsStyle extends StatefulWidget {
 
 class SettingsStyleController extends State<SettingsStyle> {
   void setChatColor(Color? color) async {
-    AppConfig.colorSchemeSeed = color;
+    AppSettings.colorSchemeSeedInt.setItem(
+      color?.toARGB32() ?? AppSettings.colorSchemeSeedInt.defaultValue,
+    );
     ThemeController.of(context).setPrimaryColor(color);
   }
 
@@ -156,17 +158,7 @@ class SettingsStyleController extends State<SettingsStyle> {
   }
 
   void changeFontSizeFactor(double d) {
-    setState(() => AppConfig.fontSizeFactor = d);
-    // #Pangea
-    // Matrix.of(context).store.setString(
-    //       SettingKeys.fontSizeFactor,
-    //       AppConfig.fontSizeFactor.toString(),
-    //     );
-    StyleSettingsRepo.setFontSizeFactor(
-      Matrix.of(context).client.userID!,
-      AppConfig.fontSizeFactor,
-    );
-    // Pangea#
+    AppSettings.fontSizeFactor.setItem(d);
   }
 
   @override

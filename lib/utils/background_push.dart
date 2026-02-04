@@ -69,6 +69,7 @@ class BackgroundPush {
   }
 
   final pendingTests = <String, Completer<void>>{};
+  bool firebaseEnabled = false;
 
   //<GOOGLE_SERVICES>final firebase = FcmSharedIsolate();
 
@@ -77,6 +78,7 @@ class BackgroundPush {
   bool upAction = false;
 
   void _init() async {
+    //<GOOGLE_SERVICES>firebaseEnabled = true;
     try {
       // #Pangea
       // Handle notifications when app is opened from terminated/background state
@@ -346,8 +348,7 @@ class BackgroundPush {
           currentPushers.first.data.url.toString() == gatewayUrl &&
           currentPushers.first.data.format ==
               // #Pangea
-              // AppSettings.pushNotificationsPusherFormat
-              //     .getItem(matrix!.store) &&
+              // AppSettings.pushNotificationsPusherFormat.value &&
               null &&
           // Pangea#
           mapEquals(
@@ -393,8 +394,7 @@ class BackgroundPush {
             data: PusherData(
               url: Uri.parse(gatewayUrl!),
               // #Pangea
-              // format: AppSettings.pushNotificationsPusherFormat
-              //     .getItem(matrix!.store),
+              // format: AppSettings.pushNotificationsPusherFormat.value,
               // Pangea#
               additionalProperties: {"data_message": pusherDataMessageFormat},
             ),
@@ -468,7 +468,7 @@ class BackgroundPush {
     if (matrix == null) {
       return;
     }
-    if ((matrix?.store.getBool(SettingKeys.showNoGoogle) ?? false) == true) {
+    if (!AppSettings.showNoGoogle.value) {
       return;
     }
     await loadLocale();
@@ -499,15 +499,19 @@ class BackgroundPush {
       }
     }
     await setupPusher(
-      gatewayUrl:
-          AppSettings.pushNotificationsGatewayUrl.getItem(matrix!.store),
+      gatewayUrl: AppSettings.pushNotificationsGatewayUrl.value,
       token: _fcmToken,
     );
   }
 
   Future<void> setupUp() async {
-    await UnifiedPushUi(matrix!.context, ["default"], UPFunctions())
-        .registerAppWithDialog();
+    await UnifiedPushUi(
+      context: matrix!.context,
+      instances: ["default"],
+      unifiedPushFunctions: UPFunctions(),
+      showNoDistribDialog: false,
+      onNoDistribDialogDismissed: () {}, // TODO: Implement me
+    ).registerAppWithDialog();
   }
 
   Future<void> _newUpEndpoint(PushEndpoint newPushEndpoint, String i) async {
@@ -552,18 +556,18 @@ class BackgroundPush {
       oldTokens: oldTokens,
       useDeviceSpecificAppId: true,
     );
-    await matrix?.store.setString(SettingKeys.unifiedPushEndpoint, newEndpoint);
-    await matrix?.store.setBool(SettingKeys.unifiedPushRegistered, true);
+    await AppSettings.unifiedPushEndpoint.setItem(newEndpoint);
+    await AppSettings.unifiedPushRegistered.setItem(true);
   }
 
   Future<void> _upUnregistered(String i) async {
     upAction = true;
     Logs().i('[Push] Removing UnifiedPush endpoint...');
-    final oldEndpoint =
-        matrix?.store.getString(SettingKeys.unifiedPushEndpoint);
-    await matrix?.store.setBool(SettingKeys.unifiedPushRegistered, false);
-    await matrix?.store.remove(SettingKeys.unifiedPushEndpoint);
-    if (oldEndpoint?.isNotEmpty ?? false) {
+    final oldEndpoint = AppSettings.unifiedPushEndpoint.value;
+    await AppSettings.unifiedPushEndpoint
+        .setItem(AppSettings.unifiedPushEndpoint.defaultValue);
+    await AppSettings.unifiedPushRegistered.setItem(false);
+    if (oldEndpoint.isNotEmpty) {
       // remove the old pusher
       await setupPusher(
         oldTokens: {oldEndpoint},

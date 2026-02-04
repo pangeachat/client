@@ -260,6 +260,7 @@ abstract class AppRoutes {
         //     ? TwoColumnLayout(
         //         mainView: ChatList(
         //           activeChat: state.pathParameters['roomid'],
+        //           activeSpace: state.uri.queryParameters['spaceId'],
         //           displayNavigationRail:
         //               state.path?.startsWith('/rooms/settings') != true,
         //         ),
@@ -292,7 +293,10 @@ abstract class AppRoutes {
                 // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
-                    activeSpaceId: state.pathParameters['spaceid'],
+                    // #Pangea
+                    // activeSpace: state.uri.queryParameters['spaceId'],
+                    activeSpace: state.pathParameters['spaceid'],
+                    // Pangea#
                   ),
           ),
           routes: [

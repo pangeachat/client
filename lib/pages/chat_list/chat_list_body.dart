@@ -42,10 +42,7 @@ class ChatListViewBody extends StatelessWidget {
       //   spaceId: activeSpace,
       //   onBack: controller.clearActiveSpace,
       //   onChatTab: (room) => controller.onChatTap(room),
-      //   onChatContext: (room, context) =>
-      //       controller.chatContextAction(room, context),
       //   activeChat: controller.activeChat,
-      //   toParentSpace: controller.setActiveSpace,
       // );
       return CourseChats(
         activeSpace,
@@ -108,8 +105,8 @@ class ChatListViewBody extends StatelessWidget {
                       // ),
                       // PublicRoomsHorizontalList(publicRooms: publicRooms),
                       // SearchTitle(
-                      // title: L10n.of(context).publicSpaces,
-                      // icon: const Icon(Icons.workspaces_outlined),
+                      //   title: L10n.of(context).publicSpaces,
+                      //   icon: const Icon(Icons.workspaces_outlined),
                       // ),
                       // PublicRoomsHorizontalList(publicRooms: publicSpaces),
                       // SearchTitle(
@@ -127,27 +124,28 @@ class ChatListViewBody extends StatelessWidget {
                       //   curve: FluffyThemes.animationCurve,
                       //   child: userSearchResult == null
                       //       ? null
-                      // : ListView.builder(
-                      //     scrollDirection: Axis.horizontal,
-                      //     itemCount: userSearchResult.results.length,
-                      //     itemBuilder: (context, i) => _SearchItem(
-                      //       title:
-                      //           userSearchResult.results[i].displayName ??
-                      //               userSearchResult
-                      //                   .results[i].userId.localpart ??
-                      //               L10n.of(context).unknownDevice,
-                      //       avatar: userSearchResult.results[i].avatarUrl,
-                      //       onPressed: () => UserDialog.show(
-                      //         context: context,
-                      //         profile: userSearchResult.results[i],
-                      //       ),
-                      //     ),
-                      //   ),
-                      //   ),
-                      //   Pangea#
+                      //       : ListView.builder(
+                      //           scrollDirection: Axis.horizontal,
+                      //           itemCount: userSearchResult.results.length,
+                      //           itemBuilder: (context, i) => _SearchItem(
+                      //             title:
+                      //                 userSearchResult.results[i].displayName ??
+                      //                     userSearchResult
+                      //                         .results[i].userId.localpart ??
+                      //                     L10n.of(context).unknownDevice,
+                      //             avatar: userSearchResult.results[i].avatarUrl,
+                      //             onPressed: () => UserDialog.show(
+                      //               context: context,
+                      //               profile: userSearchResult.results[i],
+                      //             ),
+                      //           ),
+                      //         ),
+                      // ),
+                      // Pangea#
                     ],
                     // #Pangea
-                    // if (!controller.isSearchMode && AppConfig.showPresences)
+                    // if (!controller.isSearchMode &&
+                    //     AppSettings.showPresences.value)
                     //   GestureDetector(
                     //     onLongPress: () => controller.dismissStatusList(),
                     //     child: StatusMessageList(
@@ -184,14 +182,14 @@ class ChatListViewBody extends StatelessWidget {
                     //       shrinkWrap: true,
                     //       scrollDirection: Axis.horizontal,
                     //       children: [
-                    //         if (AppConfig.separateChatTypes)
+                    //         if (AppSettings.separateChatTypes.value)
                     //           ActiveFilter.messages
                     //         else
                     //           ActiveFilter.allChats,
                     //         ActiveFilter.groups,
                     //         ActiveFilter.unread,
                     //         if (spaceDelegateCandidates.isNotEmpty &&
-                    //             !AppConfig.displayNavigationRail &&
+                    //             !AppSettings.displayNavigationRail.value &&
                     //             !FluffyThemes.isColumnMode(context))
                     //           ActiveFilter.spaces,
                     //       ]
@@ -217,24 +215,6 @@ class ChatListViewBody extends StatelessWidget {
                     //     title: L10n.of(context).chats,
                     //     icon: const Icon(Icons.forum_outlined),
                     //   ),
-                    if (controller.isSearchMode &&
-                        rooms
-                            .where(
-                              (room) => room
-                                  .getLocalizedDisplayname(
-                                    MatrixLocals(L10n.of(context)),
-                                  )
-                                  .toLowerCase()
-                                  .contains(filter),
-                            )
-                            .isEmpty)
-                      Padding(
-                        padding: const EdgeInsetsGeometry.all(16.0),
-                        child: Text(
-                          L10n.of(context).emptyChatSearch,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
                     // if (client.prevBatch != null &&
                     //     rooms.isEmpty &&
                     //     !controller.isSearchMode) ...[
@@ -268,7 +248,7 @@ class ChatListViewBody extends StatelessWidget {
                     //         padding: const EdgeInsets.all(16.0),
                     //         child: Text(
                     //           client.rooms.isEmpty
-                    //               ? L10n.of(context).noChatsFoundHereYet
+                    //               ? L10n.of(context).noChatsFoundHere
                     //               : L10n.of(context).noMoreChatsFound,
                     //           textAlign: TextAlign.center,
                     //           style: TextStyle(
@@ -280,6 +260,24 @@ class ChatListViewBody extends StatelessWidget {
                     //     ],
                     //   ),
                     // ],
+                    if (controller.isSearchMode &&
+                        rooms
+                            .where(
+                              (room) => room
+                                  .getLocalizedDisplayname(
+                                    MatrixLocals(L10n.of(context)),
+                                  )
+                                  .toLowerCase()
+                                  .contains(filter),
+                            )
+                            .isEmpty)
+                      Padding(
+                        padding: const EdgeInsetsGeometry.all(16.0),
+                        child: Text(
+                          L10n.of(context).emptyChatSearch,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     // Pangea#
                   ],
                 ),

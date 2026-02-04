@@ -73,15 +73,8 @@ class SpacesNavigationRail extends StatelessWidget {
               .where((s) => s.hasRoomUpdate)
               .rateLimit(const Duration(seconds: 1)),
           builder: (context, _) {
-            final allSpaces = client.rooms.where((room) => room.isSpace);
-            final rootSpaces = allSpaces
-                .where(
-                  (space) => !allSpaces.any(
-                    (parentSpace) => parentSpace.spaceChildren
-                        .any((child) => child.roomId == space.id),
-                  ),
-                )
-                .toList();
+            final allSpaces =
+                client.rooms.where((room) => room.isSpace).toList();
 
             // #Pangea
             // return SizedBox(
@@ -99,8 +92,8 @@ class SpacesNavigationRail extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       // #Pangea
-                      // itemCount: rootSpaces.length + 2,
-                      itemCount: rootSpaces.length + 3,
+                      // itemCount: allSpaces.length + 2,
+                      itemCount: allSpaces.length + 3,
                       // Pangea#
                       itemBuilder: (context, i) {
                         // #Pangea
@@ -189,7 +182,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           );
                         }
                         i--;
-                        if (i == rootSpaces.length) {
+                        if (i == allSpaces.length) {
                           return NaviRailItem(
                             // #Pangea
                             // isSelected: false,
@@ -226,9 +219,9 @@ class SpacesNavigationRail extends StatelessWidget {
                             // Pangea#
                           );
                         }
-                        final space = rootSpaces[i];
+                        final space = allSpaces[i];
                         final displayname =
-                            rootSpaces[i].getLocalizedDisplayname(
+                            allSpaces[i].getLocalizedDisplayname(
                           MatrixLocals(L10n.of(context)),
                         );
                         final spaceChildrenIds =
@@ -239,10 +232,10 @@ class SpacesNavigationRail extends StatelessWidget {
                           // #Pangea
                           backgroundColor: Colors.transparent,
                           borderRadius: BorderRadius.circular(0),
-                          // onTap: () => onGoToSpaceId(rootSpaces[i].id),
+                          // onTap: () => onGoToSpaceId(allSpaces[i].id),
                           onTap: () {
                             collapse();
-                            final room = client.getRoomById(rootSpaces[i].id);
+                            final room = client.getRoomById(allSpaces[i].id);
                             if (room != null) {
                               chatListHandleSpaceTap(
                                 context,
@@ -250,7 +243,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               );
                             } else {
                               context.go(
-                                "/rooms/spaces/${rootSpaces[i].id}/details",
+                                "/rooms/spaces/${allSpaces[i].id}/details",
                               );
                             }
                           },
@@ -259,7 +252,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               spaceChildrenIds.contains(room.id),
                           // #Pangea
                           // icon: Avatar(
-                          //   mxContent: rootSpaces[i].avatar,
+                          //   mxContent: allSpaces[i].avatar,
                           //   name: displayname,
                           //   border: BorderSide(
                           //     width: 1,
@@ -271,7 +264,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           // ),
                           icon: b.Badge(
                             showBadge:
-                                rootSpaces[i].membership == Membership.invite,
+                                allSpaces[i].membership == Membership.invite,
                             badgeStyle: b.BadgeStyle(
                               badgeColor: Theme.of(context).colorScheme.error,
                               elevation: 4,
@@ -290,7 +283,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             child: ClipPath(
                               clipper: MapClipper(),
                               child: Avatar(
-                                mxContent: rootSpaces[i].avatar,
+                                mxContent: allSpaces[i].avatar,
                                 name: displayname,
                                 border: BorderSide(
                                   width: 1,

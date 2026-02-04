@@ -89,7 +89,6 @@ Future<String?> showTextInputDialog({
                     // Pangea#
                     maxLength: maxLength,
                     keyboardType: keyboardType,
-                    obscureText: obscureText,
                   );
                 },
               ),

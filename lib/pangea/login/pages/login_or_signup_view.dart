@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
@@ -78,7 +78,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       forceColor: theme.colorScheme.onSurface,
                     ),
                     Text(
-                      AppConfig.applicationName,
+                      AppSettings.applicationName.value,
                       style: theme.textTheme.headlineSmall
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
