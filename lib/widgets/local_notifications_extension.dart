@@ -10,7 +10,6 @@ import 'package:matrix/matrix.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as html;
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -78,7 +77,7 @@ extension LocalNotificationsExtension on MatrixState {
       }
 
       // #Pangea
-      _audioPlayer.volume = AppConfig.volume;
+      _audioPlayer.volume = AppSettings.volume.value;
       // Pangea#
       _audioPlayer.play();
 

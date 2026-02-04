@@ -72,7 +72,7 @@ enum AppSettings<T> {
     // Pangea#
   ),
   // #Pangea
-  volume<double>('pangea.value', 1.0),
+  volume<double>('pangea.volume', 1.0),
   // Pangea#
   enableSoftLogout<bool>('chat.fluffy.enable_soft_logout', false);
 

@@ -102,7 +102,6 @@ abstract class AppConfig {
       "https://play.google.com/store/account/orderhistory";
   static bool useActivityImageAsChatBackground = true;
   static const int overlayAnimationDuration = 250;
-  static double volume = 1.0;
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
   static const Color success = Color(0xFF33D057);

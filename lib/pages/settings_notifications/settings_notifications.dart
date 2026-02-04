@@ -196,11 +196,10 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
 
   // #Pangea
   final ValueNotifier<double> volumeNotifier =
-      ValueNotifier<double>(AppConfig.volume);
+      ValueNotifier<double>(AppSettings.volume.value);
 
   void updateVolume(double value) {
     volumeNotifier.value = value;
-    AppConfig.volume = value;
     AppSettings.volume.setItem(value);
   }
 
