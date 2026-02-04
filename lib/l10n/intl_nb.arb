@@ -3179,6 +3179,35 @@
     "@swipeRightToLeftToReply": {},
     "startFirstChat": "Start din første chat",
     "@startFirstChat": {},
+    "unlockOldMessages": "Lås opp gamle meldinger",
+    "@unlockOldMessages": {},
+    "storeInAndroidKeystore": "Lagre i Android KeyStore",
+    "@storeInAndroidKeystore": {},
+    "storeInAppleKeyChain": "Lagre i Apple nøkkelring",
+    "@storeInAppleKeyChain": {},
+    "storeSecurlyOnThisDevice": "Lagre sikkert på denne enheten",
+    "@storeSecurlyOnThisDevice": {},
+    "acceptedKeyVerification": "{sender} godtok nøkkelverifisering",
+    "@acceptedKeyVerification": {
+        "type": "String",
+        "placeholders": {
+            "sender": {
+                "type": "String"
+            }
+        }
+    },
+    "notificationRuleMessageDescription": "Varsler brukeren om generelle meldinger.",
+    "@notificationRuleMessageDescription": {},
+    "notificationRuleSuppressEditsDescription": "Demper varsler for redigerte meldinger.",
+    "@notificationRuleSuppressEditsDescription": {},
+    "notificationRuleEncryptedDescription": "Varsler brukeren om meldinger i krypterte rom.",
+    "@notificationRuleEncryptedDescription": {},
+    "notificationRuleRoomServerAcl": "Romserverens tilgangskontrolliste",
+    "@notificationRuleRoomServerAcl": {},
+    "notificationRuleRoomOneToOneDescription": "Varsler brukeren om meldinger i én-til-én-rom.",
+    "@notificationRuleRoomOneToOneDescription": {},
+    "notificationRuleJitsiDescription": "Varsler brukeren om hendelser i Jitsi-widgeten.",
+    "@notificationRuleJitsiDescription": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
@@ -3205,12 +3234,8 @@
     "hasKnocked": "🚪 {user} har banket på",
     "usersMustKnock": "Brukere må banke på",
     "knock": "Bank på",
-    "unlockOldMessages": "Lås opp gamle meldinger",
     "storeInSecureStorageDescription": "Lagre gjenopprettingsnøkkelen i den sikre lagringen på denne enheten.",
     "saveKeyManuallyDescription": "Lagre denne nøkkelen manuelt ved å utløse systemets delingsdialog eller utklippstavle.",
-    "storeInAndroidKeystore": "Lagre i Android KeyStore",
-    "storeInAppleKeyChain": "Lagre i Apple KeyChain",
-    "storeSecurlyOnThisDevice": "Lagre sikkert på denne enheten",
     "foregroundServiceRunning": "Denne varslingen vises når forgrunnstjenesten kjører.",
     "callingAccount": "Samtalekonto",
     "appearOnTopDetails": "Tillater appen å vises øverst (ikke nødvendig hvis du allerede har satt opp FluffyChat som en samtalekonto)",
@@ -3233,7 +3258,6 @@
     "sessionLostBody": "Økten din er tapt. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
     "verifyOtherUserDescription": "Hvis du verifiserer en annen bruker, kan du være sikker på at du vet hvem du faktisk skriver til. 💪\n\nNår du starter en verifisering, vil du og den andre brukeren se en popup i appen. Der vil dere se en serie av emojis eller tall som dere må sammenligne.\n\nDen beste måten å gjøre dette på er å møtes eller starte en videosamtale. 👩‍💻",
     "verifyOtherDeviceDescription": "Når du verifiserer en annen enhet, kan disse enhetene utveksle nøkler, noe som øker din totale sikkerhet. 💪 Når du starter en verifisering, vil en popup vises i appen på begge enhetene. Der vil dere se en serie av emojis eller tall som dere må sammenligne.\nDet er best å ha begge enhetene tilgjengelig før du starter verifiseringen. 🤳",
-    "acceptedKeyVerification": "{sender} aksepterte nøkkelverifisering",
     "knockRestricted": "Knock-begrenset",
     "chatPermissionsDescription": "Definer hvilket maktnivå som er nødvendig for visse handlinger i denne chatten. Maktnivåene 0, 50 og 100 representerer vanligvis brukere, moderatorer og administratorer, men alle grader er mulige.",
     "sendingAttachmentCountOfCount": "Sender vedlegg {index} av {length}...",
@@ -3242,13 +3266,7 @@
     "notificationRuleMemberEvent": "Medlemsarrangement",
     "notificationRuleMemberEventDescription": "Undertrykker varsler for medlemsarrangementer.",
     "notificationRuleTombstone": "Tombstone",
-    "notificationRuleRoomServerAcl": "Romserver ACL",
     "notificationRuleRoomServerAclDescription": "Undertrykker varsler for romserver tilgangskontrollister (ACL).",
-    "notificationRuleSuppressEditsDescription": "Undertrykker varsler for redigerte meldinger.",
-    "notificationRuleRoomOneToOneDescription": "Varsler brukeren om meldinger i én-til-én-rom.",
-    "notificationRuleMessageDescription": "Varsler brukeren om generelle meldinger.",
-    "notificationRuleEncryptedDescription": "Varsler brukeren om meldinger i krypterte rom.",
-    "notificationRuleJitsiDescription": "Varsler brukeren om Jitsi-widget hendelser.",
     "notificationRuleServerAcl": "Undertrykk server-ACL hendelser",
     "notificationRuleServerAclDescription": "Undertrykker varsler for server-ACL hendelser.",
     "youHaveKnocked": "Du har ringt på",
@@ -4501,27 +4519,11 @@
       "type": "String",
       "placeholders": {}
     },
-    "@unlockOldMessages": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@storeInSecureStorageDescription": {
       "type": "String",
       "placeholders": {}
     },
     "@saveKeyManuallyDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@storeInAndroidKeystore": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@storeSecurlyOnThisDevice": {
       "type": "String",
       "placeholders": {}
     },
@@ -4627,14 +4629,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@acceptedKeyVerification": {
-      "type": "String",
-      "placeholders": {
-        "sender": {
-          "type": "String"
-        }
-      }
-    },
     "@knockRestricted": {
       "type": "String",
       "placeholders": {}
@@ -4674,31 +4668,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@notificationRuleRoomServerAcl": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@notificationRuleRoomServerAclDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleSuppressEditsDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleRoomOneToOneDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleMessageDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleEncryptedDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notificationRuleJitsiDescription": {
       "type": "String",
       "placeholders": {}
     },
