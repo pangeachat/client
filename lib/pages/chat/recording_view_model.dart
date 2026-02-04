@@ -13,6 +13,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'events/audio_player.dart';
@@ -39,11 +40,6 @@ class RecordingViewModelState extends State<RecordingViewModel> {
   Timer? _recorderSubscription;
   Duration duration = Duration.zero;
 
-  // #Pangea
-  // bool error = false;
-  Object? error;
-  bool loading = true;
-  // Pangea#
   bool isSending = false;
 
   bool get isRecording => _audioRecorder != null;
@@ -96,11 +92,12 @@ class RecordingViewModelState extends State<RecordingViewModel> {
 
       final result = await audioRecorder.hasPermission();
       if (result != true) {
-        // #Pangea
-        throw PermissionException();
-        // setState(() => error = true);
-        // return;
-        // Pangea#
+        showOkAlertDialog(
+          context: context,
+          title: L10n.of(context).oopsSomethingWentWrong,
+          message: L10n.of(context).noPermission,
+        );
+        return;
       }
       await WakelockPlus.enable();
 
@@ -116,21 +113,16 @@ class RecordingViewModelState extends State<RecordingViewModel> {
         ),
         path: path ?? '',
       );
-      // #Pangea
-      // setState(() => duration = Duration.zero);
-      setState(() {
-        duration = Duration.zero;
-        loading = false;
-      });
-      // Pangea#
+      setState(() => duration = Duration.zero);
       _subscribe();
-      // #Pangea
-      // } catch (_) {
-      //   setState(() => error = true);
-    } catch (e) {
-      setState(() => error = e);
-      // Pangea#
-      rethrow;
+    } catch (e, s) {
+      Logs().w('Unable to start voice message recording', e, s);
+      showOkAlertDialog(
+        context: context,
+        title: L10n.of(context).oopsSomethingWentWrong,
+        message: e.toString(),
+      );
+      setState(_reset);
     }
   }
 
@@ -160,7 +152,6 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     _audioRecorder?.stop();
     _audioRecorder = null;
     isSending = false;
-    error = false;
     fileName = null;
     duration = Duration.zero;
     amplitudeTimeline.clear();
@@ -213,7 +204,11 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     // #Pangea
     if (amplitudeTimeline.isEmpty || amplitudeTimeline.every((e) => e <= 1)) {
       if (mounted) {
-        setState(() => error = EmptyAudioException());
+        showOkAlertDialog(
+          context: context,
+          title: L10n.of(context).oopsSomethingWentWrong,
+          message: EmptyAudioException().toLocalizedString(context),
+        );
       }
       return;
     }
