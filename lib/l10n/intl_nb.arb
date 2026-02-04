@@ -3130,12 +3130,59 @@
         "type": "String",
         "placeholders": {}
     },
+    "newSpace": "Nytt område",
+    "@newSpace": {},
+    "allSpaces": "Alle områder",
+    "@allSpaces": {},
+    "numChats": "{number} chats",
+    "@numChats": {
+        "type": "number",
+        "placeholders": {
+            "number": {
+                "type": "String"
+            }
+        }
+    },
+    "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
+    "@wasDirectChatDisplayName": {
+        "type": "String",
+        "placeholders": {
+            "oldDisplayName": {
+                "type": "String"
+            }
+        }
+    },
+    "moveDown": "Flytt ned",
+    "@moveDown": {},
+    "removeFromSpaceDescription": "Chatten blir fjernet fra området, men vises fortsatt i chatlisten din.",
+    "@removeFromSpaceDescription": {},
+    "countChats": "{chats} chats",
+    "@countChats": {
+        "type": "String",
+        "placeholders": {
+            "chats": {
+                "type": "int"
+            }
+        }
+    },
+    "donate": "Doner",
+    "@donate": {},
+    "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne delta i chatten igjen før utestengelsen er opphevet.",
+    "@banUserDescription": {},
+    "unbanUserDescription": "Brukeren vil kunne gå inn i chatten igjen hvis vedkommende prøver.",
+    "@unbanUserDescription": {},
+    "kickUserDescription": "Brukeren blir kastet ut av chatten, men ikke utestengt. I offentlige chatter kan brukeren bli med på nytt når som helst.",
+    "@kickUserDescription": {},
+    "sendTypingNotifications": "Send skrivevarsler",
+    "@sendTypingNotifications": {},
+    "swipeRightToLeftToReply": "Sveip fra høyre mot venstre for å svare",
+    "@swipeRightToLeftToReply": {},
+    "startFirstChat": "Start din første chat",
+    "@startFirstChat": {},
     "alwaysUse24HourFormat": "falsk",
     "commandHint_googly": "Send noen googly-øyne",
     "commandHint_cuddle": "Send en kose",
     "googlyEyesContent": "{senderName} sender deg googly-øyne",
-    "sendTypingNotifications": "Send skrivevarsler",
-    "swipeRightToLeftToReply": "Sveip fra høyre til venstre for å svare",
     "countChatsAndCountParticipants": "{chats} chatter og {participants} deltakere",
     "noChatsFoundHere": "Ingen chatter funnet her ennå. Start en ny chat med noen ved å bruke knappen nedenfor. ⤵️",
     "joinedChats": "Bli med i chatter",
@@ -3151,7 +3198,6 @@
     "setAsCanonicalAlias": "Sett som hovedalias",
     "spaceIsPublic": "Rom er offentlig",
     "spaceName": "Romnavn",
-    "startFirstChat": "Start din første chat",
     "confirmEventUnpin": "Er du sikker på at du vil fjerne festingen av arrangementet permanent?",
     "indexedDbErrorTitle": "Problemer med privat modus",
     "indexedDbErrorLong": "Meldingslagringen er dessverre ikke aktivert i privat modus som standard.\nVennligst besøk\n - about:config\n - sett dom.indexedDB.privateBrowsing.enabled til true\nEllers er det ikke mulig å kjøre FluffyChat.",
@@ -3169,19 +3215,12 @@
     "callingAccount": "Samtalekonto",
     "appearOnTopDetails": "Tillater appen å vises øverst (ikke nødvendig hvis du allerede har satt opp FluffyChat som en samtalekonto)",
     "noKeyForThisMessage": "Dette kan skje hvis meldingen ble sendt før du logget inn på kontoen din på denne enheten.\n\nDet er også mulig at avsenderen har blokkert enheten din eller at noe gikk galt med internettforbindelsen.\n\nEr du i stand til å lese meldingen på en annen økt? Da kan du overføre meldingen derfra! Gå til Innstillinger > Enheter og sørg for at enhetene dine har verifisert hverandre. Når du åpner rommet neste gang og begge øktene er i forgrunnen, vil nøklene bli overført automatisk.\n\nVil du ikke miste nøklene når du logger ut eller bytter enhet? Sørg for at du har aktivert chat-sikkerhetskopiering i innstillingene.",
-    "newSpace": "Nytt rom",
     "enterSpace": "Gå inn i rommet",
     "enterRoom": "Gå inn i rommet",
-    "allSpaces": "Alle rom",
-    "numChats": "{number} chatter",
-    "wasDirectChatDisplayName": "Tom chat (var {oldDisplayName})",
     "newSpaceDescription": "Rom lar deg konsolidere dine chatter og bygge private eller offentlige fellesskap.",
     "noBackupWarning": "Advarsel! Uten å aktivere chat-sikkerhetskopi vil du miste tilgangen til dine krypterte meldinger. Det anbefales sterkt å aktivere chat-sikkerhetskopi før du logger ut.",
     "report": "rapporter",
     "roomUpgradeDescription": "Deretter vil chatten bli opprettet på nytt med den nye romversjonen. Alle deltakere vil bli varslet om at de må bytte til den nye chatten. Du kan finne mer informasjon om romversjoner på https://spec.matrix.org/latest/rooms/",
-    "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne komme inn igjen før de blir unbannet.",
-    "unbanUserDescription": "Brukeren vil kunne komme inn i chatten igjen hvis de prøver.",
-    "kickUserDescription": "Brukeren blir kastet ut av chatten, men er ikke utestengt. I offentlige chatter kan brukeren bli med igjen når som helst.",
     "makeAdminDescription": "Når du gjør denne brukeren til administrator, kan det hende du ikke kan angre dette, da de da vil ha de samme tillatelsene som deg.",
     "knocking": "Banker på",
     "groupCanBeFoundViaSearch": "Gruppen kan finnes via søk",
@@ -4363,14 +4402,6 @@
         }
       }
     },
-    "@sendTypingNotifications": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@swipeRightToLeftToReply": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@countChatsAndCountParticipants": {
       "type": "String",
       "placeholders": {
@@ -4435,10 +4466,6 @@
       "placeholders": {}
     },
     "@spaceName": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@startFirstChat": {
       "type": "String",
       "placeholders": {}
     },
@@ -4514,10 +4541,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@newSpace": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@enterSpace": {
       "type": "String",
       "placeholders": {}
@@ -4525,26 +4548,6 @@
     "@enterRoom": {
       "type": "String",
       "placeholders": {}
-    },
-    "@allSpaces": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@numChats": {
-      "type": "number",
-      "placeholders": {
-        "number": {
-          "type": "String"
-        }
-      }
-    },
-    "@wasDirectChatDisplayName": {
-      "type": "String",
-      "placeholders": {
-        "oldDisplayName": {
-          "type": "String"
-        }
-      }
     },
     "@newSpaceDescription": {
       "type": "String",
@@ -4559,18 +4562,6 @@
       "placeholders": {}
     },
     "@roomUpgradeDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@banUserDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@unbanUserDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@kickUserDescription": {
       "type": "String",
       "placeholders": {}
     },

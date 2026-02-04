@@ -24,10 +24,10 @@ dependencies:
   confetti: ^0.8.0
   cupertino_icons: any
   # #Pangea
-  # desktop_drop: ^0.6.1
+  # desktop_drop: ^0.7.0
   # Pangea#
   desktop_notifications: ^0.6.3
-  device_info_plus: ^12.1.0
+  device_info_plus: ^12.2.0
   diacritic: ^0.1.6
   dynamic_color: ^1.8.1
   emoji_picker_flutter: ^4.3.0
@@ -39,7 +39,7 @@ dependencies:
   flutter_foreground_task: ^9.1.0
   flutter_highlighter: ^0.1.1
   flutter_linkify: ^6.0.0
-  flutter_local_notifications: ^19.4.2
+  flutter_local_notifications: ^19.5.0
   flutter_localizations:
     sdk: flutter
   flutter_map: ^8.2.2
@@ -50,7 +50,7 @@ dependencies:
   flutter_web_auth_2: ^3.1.1 # Version 4 blocked by https://github.com/MixinNetwork/flutter-plugins/issues/379
   flutter_webrtc: ^1.2.0
   geolocator: ^14.0.2
-  go_router: ^16.2.4
+  go_router: ^16.2.5
   handy_window: ^0.4.0
   html: ^0.15.4
   http: ^1.5.0
@@ -63,9 +63,6 @@ dependencies:
   # #Pangea
   # matrix: ^3.0.1
   matrix:
-    # git:
-    #   url: https://github.com/famedly/matrix-dart-sdk.git
-    #   ref: krille/refactor-update-user-device-keys
     path: /Users/ggurdin/pangea/matrix-dart-sdk
   # Pangea#
   mime: ^2.0.0
