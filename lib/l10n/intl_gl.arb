@@ -3384,8 +3384,16 @@
     "@declineInvitation": {},
     "noMessagesYet": "Aínda non hai mensaxes",
     "@noMessagesYet": {},
-    "checkList": "Lista de verificación",
-    "displayNavigationRail": "Mostrar rail de navegación en móbil",
+    "checkList": "Comprobar lista",
+    "@checkList": {},
+    "displayNavigationRail": "Mostrar carril de navegación nos móbiles",
+    "@displayNavigationRail": {},
+    "longPressToRecordVoiceMessage": "Pulsación longa para gravar mensaxe de voz.",
+    "@longPressToRecordVoiceMessage": {},
+    "pause": "Deter",
+    "@pause": {},
+    "resume": "Continuar",
+    "@resume": {},
     "writeAMessageLangCodes": "Escribe en {l1} ou {l2}...",
     "requests": "Solicitudes",
     "holdForInfo": "Fai clic e mantén para obter información sobre a palabra.",
@@ -4513,14 +4521,6 @@
     "inviteYourFriends": "Invita aos teus amigos",
     "playWithAI": "Xoga con IA por agora",
     "courseStartDesc": "O Pangea Bot está listo para comezar en calquera momento!\n\n...pero aprender é mellor con amigos!",
-    "@checkList": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@displayNavigationRail": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@writeAMessageLangCodes": {
       "type": "String",
       "placeholders": {

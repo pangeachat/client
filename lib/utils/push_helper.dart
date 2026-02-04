@@ -45,7 +45,7 @@ Future<void> pushHelper(
   } catch (e, s) {
     Logs().e('Push Helper has crashed! Writing into temporary file', e, s);
 
-    l10n ??= await lookupL10n(const Locale('en'));
+    l10n ??= await lookupL10n(PlatformDispatcher.instance.locale);
     flutterLocalNotificationsPlugin.show(
       notification.roomId?.hashCode ?? 0,
       // #Pangea
@@ -311,10 +311,12 @@ Future<void> _tryPushHelper(
         ],
         cancelNotification: false,
         allowGeneratedReplies: true,
+        semanticAction: SemanticAction.reply,
       ),
       AndroidNotificationAction(
         FluffyChatNotificationActions.markAsRead.name,
         l10n.markAsRead,
+        semanticAction: SemanticAction.markAsRead,
       ),
     ],
   );
@@ -353,11 +355,30 @@ Future<void> _tryPushHelper(
     body,
     platformChannelSpecifics,
     // #Pangea
-    // payload: event.roomId,
+    // payload:
+    //     FluffyChatPushPayload(client.clientName, event.room.id, event.eventId)
+    //         .toString(),
     payload: payload,
     // Pangea#
   );
   Logs().v('Push helper has been completed!');
+}
+
+class FluffyChatPushPayload {
+  final String? clientName, roomId, eventId;
+
+  FluffyChatPushPayload(this.clientName, this.roomId, this.eventId);
+
+  factory FluffyChatPushPayload.fromString(String payload) {
+    final parts = payload.split('|');
+    if (parts.length != 3) {
+      return FluffyChatPushPayload(null, null, null);
+    }
+    return FluffyChatPushPayload(parts[0], parts[1], parts[2]);
+  }
+
+  @override
+  String toString() => '$clientName|$roomId|$eventId';
 }
 
 /// Creates a shortcut for Android platform but does not block displaying the
