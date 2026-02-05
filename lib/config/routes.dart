@@ -29,7 +29,6 @@ import 'package:fluffychat/pages/settings_chat/settings_chat.dart';
 import 'package:fluffychat/pages/settings_emotes/settings_emotes.dart';
 import 'package:fluffychat/pages/settings_homeserver/settings_homeserver.dart';
 import 'package:fluffychat/pages/settings_ignore_list/settings_ignore_list.dart';
-import 'package:fluffychat/pages/settings_multiple_emotes/settings_multiple_emotes.dart';
 import 'package:fluffychat/pages/settings_notifications/settings_notifications.dart';
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
@@ -293,10 +292,7 @@ abstract class AppRoutes {
                 // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
-                    // #Pangea
-                    // activeSpace: state.uri.queryParameters['spaceId'],
-                    activeSpace: state.pathParameters['spaceid'],
-                    // Pangea#
+                    activeSpace: state.uri.queryParameters['spaceId'],
                   ),
           ),
           routes: [
@@ -354,18 +350,6 @@ abstract class AppRoutes {
               redirect: loggedOutRedirect,
             ),
             // #Pangea
-            // ShellRoute(
-            //   pageBuilder: (context, state, child) => defaultPageBuilder(
-            //     context,
-            //     state,
-            //     FluffyThemes.isColumnMode(context)
-            //         ? TwoColumnLayout(
-            //             mainView: PangeaSideView(path: state.fullPath),
-            //             sideView: child,
-            //           )
-            //         : child,
-            //   ),
-            //   routes: [
             GoRoute(
               path: 'course',
               pageBuilder: (context, state) => defaultPageBuilder(
@@ -671,7 +655,9 @@ abstract class AppRoutes {
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        const EmotesSettings(),
+                        EmotesSettings(
+                          roomId: state.pathParameters['roomid'],
+                        ),
                       ),
                     ),
                   ],
@@ -990,6 +976,10 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
+                    // #Pangea
+                    // InvitationSelection(
+                    //   roomId: state.pathParameters['roomid']!,
+                    // ),
                     PangeaInvitationSelection(
                       roomId: state.pathParameters['roomid']!,
                       initialFilter: state.uri.queryParameters['filter'] != null
@@ -998,6 +988,7 @@ abstract class AppRoutes {
                             )
                           : null,
                     ),
+                    // Pangea#
                   ),
                   redirect: loggedOutRedirect,
                 ),
@@ -1049,24 +1040,9 @@ abstract class AppRoutes {
                   //     pageBuilder: (context, state) => defaultPageBuilder(
                   //       context,
                   //       state,
-                  //       PangeaInvitationSelection(
+                  //       InvitationSelection(
                   //         roomId: state.pathParameters['roomid']!,
-                  //         initialFilter:
-                  //             state.uri.queryParameters['filter'] != null
-                  //                 ? InvitationFilter.fromString(
-                  //                     state.uri.queryParameters['filter']!,
-                  //                   )
-                  //                 : null,
                   //       ),
-                  //     ),
-                  //     redirect: loggedOutRedirect,
-                  //   ),
-                  //   GoRoute(
-                  //     path: 'multiple_emotes',
-                  //     pageBuilder: (context, state) => defaultPageBuilder(
-                  //       context,
-                  //       state,
-                  //       const MultipleEmotesSettings(),
                   //     ),
                   //     redirect: loggedOutRedirect,
                   //   ),
@@ -1075,16 +1051,9 @@ abstract class AppRoutes {
                   //     pageBuilder: (context, state) => defaultPageBuilder(
                   //       context,
                   //       state,
-                  //       const EmotesSettings(),
-                  //     ),
-                  //     redirect: loggedOutRedirect,
-                  //   ),
-                  //   GoRoute(
-                  //     path: 'emotes/:state_key',
-                  //     pageBuilder: (context, state) => defaultPageBuilder(
-                  //       context,
-                  //       state,
-                  //       const EmotesSettings(),
+                  //       EmotesSettings(
+                  //         roomId: state.pathParameters['roomid'],
+                  //       ),
                   //     ),
                   //     redirect: loggedOutRedirect,
                   //   ),
@@ -1219,20 +1188,13 @@ abstract class AppRoutes {
           redirect: loggedOutRedirect,
         ),
         GoRoute(
-          path: 'multiple_emotes',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            const MultipleEmotesSettings(),
-          ),
-          redirect: loggedOutRedirect,
-        ),
-        GoRoute(
           path: 'emotes',
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            const EmotesSettings(),
+            EmotesSettings(
+              roomId: state.pathParameters[roomKey]!,
+            ),
           ),
           redirect: loggedOutRedirect,
         ),
@@ -1241,7 +1203,9 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            const EmotesSettings(),
+            EmotesSettings(
+              roomId: state.pathParameters[roomKey]!,
+            ),
           ),
           redirect: loggedOutRedirect,
         ),

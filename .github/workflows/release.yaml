@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:
@@ -90,7 +90,7 @@ jobs:
     env:
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: actions/setup-java@v5
         with:
