@@ -2670,18 +2670,43 @@
             }
         }
     },
+    "ignoreUser": "Ignorovat uživatele",
+    "@ignoreUser": {},
+    "normalUser": "Normalní uživatel",
+    "@normalUser": {},
+    "countInvited": "{count} pozváno",
+    "@countInvited": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "invitedBy": "📩 Pozván {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "hasKnocked": "🚪 {user} zaklepal",
+    "@hasKnocked": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "usersMustKnock": "Uživatelé musí zaklepat",
+    "@usersMustKnock": {},
     "setCustomPermissionLevel": "Nastavit vlastní úroveň oprávnění",
     "setPermissionsLevelDescription": "Vyberte níže předdefinovanou roli nebo zadejte vlastní úroveň oprávnění mezi 0 a 100.",
-    "ignoreUser": "Ignorovat uživatele",
-    "normalUser": "Běžný uživatel",
     "commandHint_roomupgrade": "Upgradujte tento pokoj na danou verzi pokoje",
     "checkList": "Seznam kontrol",
-    "countInvited": "{count} pozvaných",
     "sendImages": "Odeslat {count} obrázek",
     "synchronizingPleaseWaitCounter": "Synchronizuji… ({percentage}%)",
-    "invitedBy": "📩 Pozván od {user}",
-    "hasKnocked": "🚪 {user} zaklepal",
-    "usersMustKnock": "Uživatelé musí zaklepat",
     "noOneCanJoin": "Nikdo se nemůže připojit",
     "userWouldLikeToChangeTheChat": "{user} by se rád připojil do chatu.",
     "noPublicLinkHasBeenCreatedYet": "Zatím nebyl vytvořen žádný veřejný odkaz",
@@ -4042,14 +4067,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@ignoreUser": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@normalUser": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@commandHint_roomupgrade": {
       "type": "String",
       "placeholders": {}
@@ -4057,14 +4074,6 @@
     "@checkList": {
       "type": "String",
       "placeholders": {}
-    },
-    "@countInvited": {
-      "type": "String",
-      "placeholders": {
-        "count": {
-          "type": "int"
-        }
-      }
     },
     "@sendImages": {
       "type": "String",
@@ -4081,26 +4090,6 @@
           "type": "String"
         }
       }
-    },
-    "@invitedBy": {
-      "type": "String",
-      "placeholders": {
-        "user": {
-          "type": "String"
-        }
-      }
-    },
-    "@hasKnocked": {
-      "type": "String",
-      "placeholders": {
-        "user": {
-          "type": "String"
-        }
-      }
-    },
-    "@usersMustKnock": {
-      "type": "String",
-      "placeholders": {}
     },
     "@noOneCanJoin": {
       "type": "String",
