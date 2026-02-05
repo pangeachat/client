@@ -10,13 +10,13 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
-import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
+import 'package:fluffychat/pangea/chat/widgets/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -138,16 +138,13 @@ class Message extends StatelessWidget {
       if (event.type.startsWith('m.call.')) {
         return const SizedBox.shrink();
       }
+      // #Pangea
       if (event.type == EventTypes.RoomCreate) {
-        // #Pangea
-        // return RoomCreationStateEvent(event: event);
         return event.room.isActivitySession
             ? const SizedBox()
             : RoomCreationStateEvent(event: event);
-        // Pangea#
       }
 
-      // #Pangea
       if (event.type == PangeaEventTypes.activityPlan &&
           event.room.activityPlan != null) {
         return ValueListenableBuilder(

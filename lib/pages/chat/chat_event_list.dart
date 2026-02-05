@@ -109,21 +109,19 @@ class ChatEventList extends StatelessWidget {
                 }
                 return Builder(
                   builder: (context) {
-                    if (timeline.canRequestHistory) {
-                      final visibleIndex = timeline.events.lastIndexWhere(
-                        (event) =>
-                            !event.isCollapsedState && event.isVisibleInGui,
+                    final visibleIndex = timeline.events.lastIndexWhere(
+                      (event) =>
+                          !event.isCollapsedState && event.isVisibleInGui,
+                    );
+                    if (visibleIndex > timeline.events.length - 50) {
+                      // #Pangea
+                      // WidgetsBinding.instance.addPostFrameCallback(
+                      //   controller.requestHistory,
+                      // );
+                      WidgetsBinding.instance.addPostFrameCallback(
+                        (_) => controller.requestHistory(),
                       );
-                      if (visibleIndex > timeline.events.length - 50) {
-                        // #Pangea
-                        // WidgetsBinding.instance.addPostFrameCallback(
-                        //   controller.requestHistory,
-                        // );
-                        WidgetsBinding.instance.addPostFrameCallback(
-                          (_) => controller.requestHistory(),
-                        );
-                        // Pangea#
-                      }
+                      // Pangea#
                     }
                     return Center(
                       child: TextButton.icon(

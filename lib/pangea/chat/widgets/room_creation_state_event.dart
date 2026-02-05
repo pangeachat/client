@@ -12,15 +12,10 @@ import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
-// #Pangea
-// class RoomCreationStateEvent extends StatelessWidget {
 class RoomCreationStateEvent extends StatefulWidget {
-  // Pangea#
   final Event event;
-
   const RoomCreationStateEvent({required this.event, super.key});
 
-  // #Pangea
   @override
   State<RoomCreationStateEvent> createState() => RoomCreationStateEventState();
 }
@@ -51,7 +46,6 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
     _memberSubscription?.cancel();
     super.dispose();
   }
-  // Pangea#
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +55,9 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
     final roomName = event.room.getLocalizedDisplayname(matrixLocals);
     return Padding(
       padding: const EdgeInsets.only(bottom: 32.0),
-      // #Pangea
-      // child: Center(
-      //  child: ConstrainedBox(
       child: Column(
         children: [
           ConstrainedBox(
-            // Pangea#
             constraints: const BoxConstraints(maxWidth: 256),
             child: Material(
               color: theme.colorScheme.surfaceContainer,
@@ -81,10 +71,8 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
                       mxContent: event.room.avatar,
                       name: roomName,
                       size: Avatar.defaultSize * 2,
-                      // #Pangea
                       userId: event.room.directChatMatrixID,
                       useRive: true,
-                      // Pangea#
                     ),
                     Text(
                       roomName,
@@ -102,7 +90,6 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
               ),
             ),
           ),
-          // #Pangea
           const SizedBox(height: 16.0),
           const InstructionsInlineTooltip(
             instructionsEnum: InstructionsEnum.clickMessage,
@@ -115,7 +102,6 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
               padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               animate: false,
             ),
-          // Pangea#
         ],
       ),
     );
