@@ -62,10 +62,12 @@ class ErrorReporter {
   //         height: 256,
   //         width: 256,
   //         child: SingleChildScrollView(
-  //           child: HighlightView(
+  //           child: Text(
   //             text,
-  //             language: 'sh',
-  //             theme: shadesOfPurpleTheme,
+  //             style: const TextStyle(
+  //               fontSize: 14,
+  //               fontFamily: 'RobotoMono',
+  //             ),
   //           ),
   //         ),
   //       ),
