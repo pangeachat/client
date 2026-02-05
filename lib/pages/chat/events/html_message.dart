@@ -1094,6 +1094,7 @@ class HtmlMessage extends StatelessWidget {
         ),
         maxLines: limitHeight ? 64 : null,
         overflow: TextOverflow.fade,
+        selectionColor: textColor.withAlpha(128),
       ),
     );
   }
