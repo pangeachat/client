@@ -1963,8 +1963,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "repeatPassword": "Ponovite lozinku",
+    "@repeatPassword": {},
+    "commandHint_cuddle": "Pošalji zagrljaj",
+    "@commandHint_cuddle": {},
     "alwaysUse24HourFormat": "лачно користи 24-часовни формат",
-    "repeatPassword": "Понови лозинку",
     "notAnImage": "Није слика.",
     "setCustomPermissionLevel": "Подеси прилагођени ниво дозвола",
     "setPermissionsLevelDescription": "Молимо изаберите једну од претходно дефинисаних улога испод или унесите прилагођени ниво дозвола између 0 и 100.",
@@ -1983,7 +1986,6 @@
     "allChats": "Сва ћаскања",
     "commandHint_roomupgrade": "Побољшај ову собу на датую верзију собе",
     "commandHint_googly": "Пошаљи неке гугли очи",
-    "commandHint_cuddle": "Pošalji zagrljaj",
     "commandHint_hug": "Pošalji zagrljaj",
     "googlyEyesContent": "{senderName} ti šalje čudne oči",
     "cuddleContent": "{senderName} te grli",
@@ -3546,10 +3548,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@repeatPassword": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@notAnImage": {
       "type": "String",
       "placeholders": {}
@@ -3627,10 +3625,6 @@
       "placeholders": {}
     },
     "@commandHint_googly": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@commandHint_cuddle": {
       "type": "String",
       "placeholders": {}
     },
