@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dart';
@@ -563,6 +564,36 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
       _analyticsService.derivedData;
+
+  /// Returns congratulations message based on performance
+  String getCompletionMessage(BuildContext context) {
+    final accuracy = _sessionLoader.value?.state.accuracy ?? 0;
+    final hasTimeBonus = (_sessionLoader.value?.state.elapsedSeconds ?? 0) <=
+        AnalyticsPracticeConstants.timeForBonus;
+    final hintsUsed = hintsUsedNotifier.value;
+
+    final bool perfectAccuracy = accuracy == 100;
+    final bool noHintsUsed = hintsUsed == 0;
+    final bool hintsAvailable = widget.type == ConstructTypeEnum.morph;
+
+    //check how many conditions for bonuses the user met and return message accordingly
+    final conditionsMet = [
+      perfectAccuracy,
+      !hintsAvailable || noHintsUsed,
+      hasTimeBonus,
+    ].where((c) => c).length;
+
+    if (conditionsMet == 3) {
+      return L10n.of(context).perfectPractice;
+    }
+    if (conditionsMet >= 2) {
+      return L10n.of(context).greatPractice;
+    }
+    if (hintsAvailable && noHintsUsed) {
+      return L10n.of(context).usedNoHints;
+    }
+    return L10n.of(context).youveCompletedPractice;
+  }
 
   @override
   Widget build(BuildContext context) => AnalyticsPracticeView(this);

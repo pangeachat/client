@@ -5027,8 +5027,6 @@
   "genericWebRecordingError": "Something went wrong. We recommend using the Chrome browser when recording messages.",
   "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
   "noActivityRequest": "No current activity request.",
-  "quit": "Quit",
-  "congratulationsYouveCompletedPractice": "Congratulations! You've completed the practice session.",
   "activitiesToUnlockTopicTitle": "Activities to Unlock Next Topic",
   "activitiesToUnlockTopicDesc": "Set the number of activities to unlock the next course topic",
   "mustHave10Words": "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!",
@@ -5073,5 +5071,9 @@
   "supportSubtitle": "Questions? We're here to help!",
   "autoIGCToolName": "Enable writing assistance",
   "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language.",
-  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "perfectPractice": "Perfect practice!",
+  "greatPractice": "Great practice!",
+  "usedNoHints": "Nice job not using any hints!",
+  "youveCompletedPractice": "You've completed practice, keep it up to get better!"
 }
