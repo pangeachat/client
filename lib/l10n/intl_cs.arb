@@ -11576,5 +11576,20 @@
     "@emptyAudioError": {
       "type": "String",
       "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "Idiom",
+    "grammarCopyPOSphrasalv": "Frázové sloveso",
+    "grammarCopyPOScompn": "Složenina",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
+      "type": "String",
+      "placeholders": {}
     }
 }

@@ -11063,5 +11063,20 @@
     "@emptyAudioError": {
       "type": "String",
       "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "Idiom",
+    "grammarCopyPOSphrasalv": "Verbo Frasal",
+    "grammarCopyPOScompn": "Composto",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
+      "type": "String",
+      "placeholders": {}
     }
 }

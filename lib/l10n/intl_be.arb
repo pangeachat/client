@@ -4605,7 +4605,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-01-29 15:24:53.163474",
+    "@@last_modified": "2026-02-05 10:09:46.469770",
     "@ignore": {
       "type": "String",
       "placeholders": {}
@@ -11060,6 +11060,21 @@
     },
     "emptyAudioError": "Запіс не ўдалося. Калі ласка, праверце свае аўдыё дазволы і паспрабуйце яшчэ раз.",
     "@emptyAudioError": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "Ідыём",
+    "grammarCopyPOSphrasalv": "Фразавы дзеяслоў",
+    "grammarCopyPOScompn": "Складаны",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
       "type": "String",
       "placeholders": {}
     }

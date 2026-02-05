@@ -11759,5 +11759,20 @@
     "@emptyAudioError": {
       "type": "String",
       "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "イディオム",
+    "grammarCopyPOSphrasalv": "句動詞",
+    "grammarCopyPOScompn": "複合語",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
+      "type": "String",
+      "placeholders": {}
     }
 }

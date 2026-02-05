@@ -10969,5 +10969,20 @@
     "@emptyAudioError": {
       "type": "String",
       "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "Idiom",
+    "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
+    "grammarCopyPOScompn": "Kombinasi",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
+      "type": "String",
+      "placeholders": {}
     }
 }

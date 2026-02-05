@@ -11183,5 +11183,20 @@
     "@emptyAudioError": {
       "type": "String",
       "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "تعبير اصطلاحي",
+    "grammarCopyPOSphrasalv": "فعل مركب",
+    "grammarCopyPOScompn": "مركب",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
+      "type": "String",
+      "placeholders": {}
     }
 }

@@ -10963,5 +10963,20 @@
   "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "விளக்கம்",
+  "grammarCopyPOSphrasalv": "பொருள் வினை",
+  "grammarCopyPOScompn": "சேர்க்கை",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
   }
 }

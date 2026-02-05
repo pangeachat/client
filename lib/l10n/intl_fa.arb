@@ -10959,5 +10959,20 @@
   "@emptyAudioError": {
     "type": "String",
     "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "اصطلاح",
+  "grammarCopyPOSphrasalv": "فعل عبارتی",
+  "grammarCopyPOScompn": "ترکیب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
   }
 }

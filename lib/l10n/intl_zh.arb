@@ -3488,8 +3488,6 @@
     },
     "backToMainChat": "返回主聊天",
     "@backToMainChat": {},
-    "answersWillBeVisibleWhenPollHasEnded": "投票结束后将显示答复",
-    "@answersWillBeVisibleWhenPollHasEnded": {},
     "writeAMessageLangCodes": "输入 {l1} 或 {l2}...",
     "requests": "请求",
     "holdForInfo": "点击并按住获取单词信息。",
@@ -11063,6 +11061,21 @@
     },
     "emptyAudioError": "录音失败。请检查您的音频权限并重试。",
     "@emptyAudioError": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "grammarCopyPOSidiom": "成语",
+    "grammarCopyPOSphrasalv": "短语动词",
+    "grammarCopyPOScompn": "复合词",
+    "@grammarCopyPOSidiom": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOSphrasalv": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@grammarCopyPOScompn": {
       "type": "String",
       "placeholders": {}
     }

@@ -4008,7 +4008,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-29 15:25:18.981310",
+  "@@last_modified": "2026-02-05 10:10:16.696075",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11580,6 +11580,21 @@
   },
   "emptyAudioError": "रिकॉर्डिंग विफल हो गई। कृपया अपनी ऑडियो अनुमति की जांच करें और फिर से प्रयास करें।",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "मुहावरा",
+  "grammarCopyPOSphrasalv": "फ्रेज़ल वर्ब",
+  "grammarCopyPOScompn": "संयुक्त",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
