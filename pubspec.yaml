@@ -136,7 +136,6 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   license_checker: ^1.6.0
-  msix: ^3.16.12
   pedantic: ^1.11.0
   sentry_dart_plugin: ^1.0.0
   translations_cleaner: ^0.0.5
