@@ -61,6 +61,12 @@ String? getGrammarCopy({
       return L10n.of(context).grammarCopyPOSintj;
     case 'grammarCopyPOSx':
       return L10n.of(context).grammarCopyPOSx;
+    case 'grammarCopyPOSidiom':
+      return L10n.of(context).grammarCopyPOSidiom;
+    case 'grammarCopyPOSphrasalv':
+      return L10n.of(context).grammarCopyPOSphrasalv;
+    case 'grammarCopyPOScompn':
+      return L10n.of(context).grammarCopyPOScompn;
     case 'grammarCopyGENDERfem':
       return L10n.of(context).grammarCopyGENDERfem;
     case 'grammarCopyPERSON2':

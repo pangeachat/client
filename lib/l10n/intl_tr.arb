@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-29 15:25:02.072081",
+  "@@last_modified": "2026-02-05 10:09:57.710087",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11189,6 +11189,21 @@
   },
   "emptyAudioError": "Kayıt başarısız oldu. Lütfen ses izinlerinizi kontrol edin ve tekrar deneyin.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Deyim",
+  "grammarCopyPOSphrasalv": "Deyim Fiili",
+  "grammarCopyPOScompn": "Bileşik",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

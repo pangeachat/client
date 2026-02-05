@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-29 15:24:37.899487",
+  "@@last_modified": "2026-02-05 10:09:27.459987",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11339,6 +11339,21 @@
   },
   "emptyAudioError": "Snimanje nije uspjelo. Provjerite svoja audio dopuštenja i pokušajte ponovo.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasalni Glagol",
+  "grammarCopyPOScompn": "Složenica",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

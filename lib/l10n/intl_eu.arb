@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-29 15:24:41.896758",
+  "@@last_modified": "2026-02-05 10:09:33.401642",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10967,6 +10967,21 @@
   },
   "emptyAudioError": "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Konposatu",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

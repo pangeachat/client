@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:15.398282",
+  "@@last_modified": "2026-02-05 10:10:13.035755",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11445,6 +11445,21 @@
   },
   "emptyAudioError": "Inspelningen misslyckades. Kontrollera dina ljudbehörigheter och försök igen.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasverb",
+  "grammarCopyPOScompn": "Sammansatt",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
