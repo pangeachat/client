@@ -3512,6 +3512,10 @@
             }
         }
     },
+    "changedTheChatDescription": "{username} змінив(-ла) опис бесіди",
+    "@changedTheChatDescription": {},
+    "changedTheChatName": "{username} змінив(-ла) назву бесіди",
+    "@changedTheChatName": {},
     "writeAMessageLangCodes": "Введіть {l1} або {l2}...",
     "requests": "Запити",
     "holdForInfo": "Натисніть і утримуйте для інформації про слово.",
