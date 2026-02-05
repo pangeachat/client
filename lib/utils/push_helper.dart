@@ -30,6 +30,7 @@ Future<void> pushHelper(
   // #Pangea
   Map<String, dynamic>? additionalData,
   // Pangea#
+  bool useNotificationActions = true,
 }) async {
   try {
     await _tryPushHelper(
@@ -41,6 +42,7 @@ Future<void> pushHelper(
       // #Pangea
       additionalData: additionalData,
       // Pangea#
+      useNotificationActions: useNotificationActions,
     );
   } catch (e, s) {
     Logs().e('Push Helper has crashed! Writing into temporary file', e, s);
@@ -82,6 +84,7 @@ Future<void> _tryPushHelper(
   // #Pangea
   Map<String, dynamic>? additionalData,
   // Pangea#
+  bool useNotificationActions = true,
 }) async {
   final isBackgroundMessage = client == null;
   Logs().v(
@@ -300,7 +303,7 @@ Future<void> _tryPushHelper(
     importance: Importance.high,
     priority: Priority.max,
     groupKey: event.room.spaceParents.firstOrNull?.roomId ?? 'rooms',
-    actions: event.type == EventTypes.RoomMember
+    actions: event.type == EventTypes.RoomMember || !useNotificationActions
         ? null
         : <AndroidNotificationAction>[
             AndroidNotificationAction(
