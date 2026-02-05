@@ -371,7 +371,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Tvoji su stari razgovori osigurani s ključem za obnavljanje. Pazi da ga ne izgubiš.",
+    "chatBackupDescription": "Tvoje poruke su osigurane s ključem za obnavljanje. Pazi da ga ne izgubiš.",
     "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
@@ -2992,12 +2992,25 @@
             }
         }
     },
-    "setCustomPermissionLevel": "Postavi prilagođenu razinu dopuštenja",
-    "setPermissionsLevelDescription": "Molimo odaberite unaprijed definiranu ulogu ispod ili unesite prilagođenu razinu dopuštenja između 0 i 100.",
-    "ignoreUser": "Ignoriraj korisnika",
-    "normalUser": "Običan korisnik",
-    "aboutHomeserver": "O {homeserver}",
+    "setCustomPermissionLevel": "Postavi razinu dozvole",
+    "@setCustomPermissionLevel": {},
+    "setPermissionsLevelDescription": "Odaberi unaprijed definiranu ulogu u nastavku ili upiši prilagođenu razinu dozvole između 0 i 100.",
+    "@setPermissionsLevelDescription": {},
+    "ignoreUser": "Zanemari korisnika",
+    "@ignoreUser": {},
+    "normalUser": "Normalni korisnik",
+    "@normalUser": {},
+    "aboutHomeserver": "Informacije o {homeserver}",
+    "@aboutHomeserver": {
+        "type": "String",
+        "placeholders": {
+            "homeserver": {
+                "type": "String"
+            }
+        }
+    },
     "commandHint_roomupgrade": "Nadogradi ovu sobu na zadanu verziju sobe",
+    "@commandHint_roomupgrade": {},
     "countChatsAndCountParticipants": "{chats} razgovora i {participants} sudionika",
     "noMoreChatsFound": "Nema više pronađenih razgovora...",
     "noChatsFoundHere": "Ovdje još nisu pronađeni razgovori. Započnite novi razgovor s nekim pomoću gumba ispod. ⤵️",
@@ -4261,34 +4274,6 @@
     "inviteYourFriends": "Pozovite svoje prijatelje",
     "playWithAI": "Igraj s AI-jem za sada",
     "courseStartDesc": "Pangea Bot je spreman za rad u bilo koje vrijeme!\n\n...ali je bolje učiti s prijateljima!",
-    "@setCustomPermissionLevel": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@setPermissionsLevelDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@ignoreUser": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@normalUser": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@aboutHomeserver": {
-      "type": "String",
-      "placeholders": {
-        "homeserver": {
-          "type": "String"
-        }
-      }
-    },
-    "@commandHint_roomupgrade": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@countChatsAndCountParticipants": {
       "type": "String",
       "placeholders": {
