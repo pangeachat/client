@@ -161,7 +161,7 @@ class Choreographer extends ChangeNotifier {
     super.dispose();
   }
 
-  void onPaste(value) => _record.pastedStrings.add(value);
+  void onPaste(String value) => _record.pastedStrings.add(value);
 
   void onClickSend() {
     if (assistanceState == AssistanceStateEnum.fetched) {

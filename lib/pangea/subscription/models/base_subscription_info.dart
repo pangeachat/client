@@ -125,7 +125,7 @@ class AvailableSubscriptionsInfo {
     );
   }
 
-  Map<String, dynamic> toJson({validate = true}) {
+  Map<String, dynamic> toJson({bool validate = true}) {
     if (validate && (appIds == null || allProducts == null)) {
       throw "appIds or allProducts is null in AvailableSubscriptionsInfo";
     }

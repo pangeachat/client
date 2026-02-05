@@ -40,67 +40,67 @@ class GoogleAnalytics {
     debugPrint("  Storage Bucket: ${app.options.storageBucket}");
   }
 
-  static analyticsUserUpdate(String? userID) {
+  static void analyticsUserUpdate(String? userID) {
     debugPrint("user update $userID");
     analytics?.setUserId(id: userID);
   }
 
-  static updateUserSubscriptionStatus(bool subscribed) {
+  static void updateUserSubscriptionStatus(bool subscribed) {
     analytics?.setUserProperty(
       name: 'subscribed',
       value: "$subscribed",
     );
   }
 
-  static logEvent(String name, {parameters}) {
+  static void logEvent(String name, {parameters}) {
     debugPrint("event: $name - parameters: $parameters");
     analytics?.logEvent(name: name, parameters: parameters);
   }
 
-  static login(String type, String? userID) {
+  static void login(String type, String? userID) {
     logEvent('login', parameters: {'method': type});
     analyticsUserUpdate(userID);
   }
 
-  static signUp(String type) {
+  static void signUp(String type) {
     logEvent('sign_up', parameters: {'method': type});
   }
 
-  static logout() {
+  static void logout() {
     logEvent('logout');
     analyticsUserUpdate(null);
   }
 
-  static createClass(String className, String classCode) {
+  static void createClass(String className, String classCode) {
     logEvent(
       'create_class',
       parameters: {'name': className, 'group_id': classCode},
     );
   }
 
-  static createChat(String newChatRoomId) {
+  static void createChat(String newChatRoomId) {
     logEvent('create_chat', parameters: {"chat_id": newChatRoomId});
   }
 
-  static addParent(String chatRoomId, String classCode) {
+  static void addParent(String chatRoomId, String classCode) {
     logEvent(
       'add_room_to_class',
       parameters: {"chat_id": chatRoomId, 'group_id': classCode},
     );
   }
 
-  static removeChatFromClass(String chatRoomId, String classCode) {
+  static void removeChatFromClass(String chatRoomId, String classCode) {
     logEvent(
       'remove_room_from_class',
       parameters: {"chat_id": chatRoomId, 'group_id': classCode},
     );
   }
 
-  static joinClass(String classCode) {
+  static void joinClass(String classCode) {
     logEvent('join_group', parameters: {'group_id': classCode});
   }
 
-  static sendMessage(String chatRoomId, String classCode) {
+  static void sendMessage(String chatRoomId, String classCode) {
     logEvent(
       'sent_message',
       parameters: {
@@ -110,15 +110,15 @@ class GoogleAnalytics {
     );
   }
 
-  static contextualRequest() {
+  static void contextualRequest() {
     logEvent('context_request');
   }
 
-  static messageTranslate() {
+  static void messageTranslate() {
     logEvent('message_translate');
   }
 
-  static beginPurchaseSubscription(
+  static void beginPurchaseSubscription(
     SubscriptionDetails details,
     BuildContext context,
   ) {

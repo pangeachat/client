@@ -34,7 +34,7 @@ class PLanguageStore {
       )
       .toList();
 
-  static Future<void> initialize({forceRefresh = false}) async {
+  static Future<void> initialize({bool forceRefresh = false}) async {
     _langList = await _getCachedLanguages();
     final isOutdated = await _shouldFetch;
     final shouldFetch = forceRefresh ||
@@ -111,7 +111,7 @@ class PLanguageStore {
 }
 
 class _MyShared {
-  static saveString(String key, String value) async {
+  static Future<void> saveString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, value);
   }
@@ -122,7 +122,7 @@ class _MyShared {
     return source;
   }
 
-  static saveJson(String key, Map value) async {
+  static Future<void> saveJson(String key, Map value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, json.encode(value));
   }

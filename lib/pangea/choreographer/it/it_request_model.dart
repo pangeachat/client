@@ -21,7 +21,7 @@ class ITRequestModel {
     required this.goldContinuances,
   });
 
-  factory ITRequestModel.fromJson(json) => ITRequestModel(
+  factory ITRequestModel.fromJson(Map<String, dynamic> json) => ITRequestModel(
         text: json[ModelKey.text],
         customInput: json['custom_input'],
         sourceLangCode: json[ModelKey.srcLang],

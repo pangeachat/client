@@ -25,7 +25,7 @@ class LanguageModel {
     TextDirection? textDirection,
   }) : _textDirection = textDirection;
 
-  factory LanguageModel.fromJson(json) {
+  factory LanguageModel.fromJson(Map<String, dynamic> json) {
     final String code = json['language_code'] ??
         codeFromNameOrCode(
           json['language_name'],

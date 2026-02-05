@@ -135,7 +135,7 @@ class SignupPageController extends State<SignupPage> {
 
   String? signupError;
 
-  void signup([_]) async {
+  void signup([dynamic _]) async {
     setState(() => signupError = null);
     final valid = formKey.currentState!.validate();
     if (!valid) return;

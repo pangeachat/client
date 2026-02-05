@@ -12,7 +12,8 @@ import 'package:fluffychat/utils/platform_infos.dart';
 
 class PangeaWarningError implements Exception {
   final String message;
-  PangeaWarningError(message) : message = "Pangea Warning Error: $message";
+  PangeaWarningError(String message)
+      : message = "Pangea Warning Error: $message";
 
   @override
   String toString() => message;
@@ -55,7 +56,7 @@ class ErrorHandler {
     };
   }
 
-  static logError({
+  static Future<void> logError({
     Object? e,
     StackTrace? s,
     String? m,

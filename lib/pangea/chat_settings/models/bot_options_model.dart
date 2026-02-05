@@ -60,7 +60,7 @@ class BotOptionsModel {
     this.textAdventureGameMasterInstructions,
   });
 
-  factory BotOptionsModel.fromJson(json) {
+  factory BotOptionsModel.fromJson(Map<String, dynamic> json) {
     final genderEntry = json[ModelKey.targetGender];
     Map<String, GenderEnum> targetGenders = {};
     if (genderEntry is Map<String, dynamic>) {

@@ -339,7 +339,7 @@ class Profile {
   /// If [waitForDataInSync] is true, the function will wait for the updated account
   /// data to come through in a sync, indicating that it has been set on the matrix server.
   Future<void> saveProfileData({
-    waitForDataInSync = false,
+    bool waitForDataInSync = false,
   }) async {
     final PangeaController pangeaController = MatrixState.pangeaController;
     final Client client = pangeaController.matrixState.client;

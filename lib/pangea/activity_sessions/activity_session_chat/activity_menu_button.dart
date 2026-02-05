@@ -60,7 +60,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
 
   /// Show a tutorial overlay that blocks the screen and points
   /// to the stats menu button with an explanation of what it does.
-  void _showStatsMenuDropdownInstructions(_) {
+  void _showStatsMenuDropdownInstructions(dynamic _) {
     if (!mounted) return;
     if (!widget.controller.shouldShowActivityInstructions) {
       return;

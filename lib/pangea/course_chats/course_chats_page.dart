@@ -210,7 +210,7 @@ class CourseChatsController extends State<CourseChats>
     }
   }
 
-  Future<void> loadHierarchy({reload = false}) async {
+  Future<void> loadHierarchy({bool reload = false}) async {
     final room = widget.client.getRoomById(widget.roomId);
     if (room == null) return;
 

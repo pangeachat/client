@@ -84,7 +84,7 @@ class Requests {
     }
   }
 
-  get _headers {
+  Map<String, String> get _headers {
     final Map<String, String> headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",

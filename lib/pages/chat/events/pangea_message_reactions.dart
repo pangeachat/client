@@ -292,7 +292,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     _growController.reset();
   }
 
-  _animateAndReact() async {
+  Future<void> _animateAndReact() async {
     final bool? wasReacted = widget.reacted;
     final bool wasSingle = (widget.count == 1);
 

@@ -161,8 +161,8 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
   int get _startGrammar => LevelUpManager.instance.prevGrammar;
   int get _startVocab => LevelUpManager.instance.prevVocab;
 
-  get _endGrammar => LevelUpManager.instance.nextGrammar;
-  get _endVocab => LevelUpManager.instance.nextVocab;
+  int get _endGrammar => LevelUpManager.instance.nextGrammar;
+  int get _endVocab => LevelUpManager.instance.nextVocab;
 
   Future<void> _loadConstructSummary() async {
     try {

@@ -15,7 +15,7 @@ enum AssistanceStateEnum {
   complete,
   error;
 
-  Color stateColor(context) {
+  Color stateColor(BuildContext context) {
     switch (this) {
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.noMessage:
@@ -30,7 +30,7 @@ enum AssistanceStateEnum {
     }
   }
 
-  Color sendButtonColor(context) {
+  Color sendButtonColor(BuildContext context) {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
