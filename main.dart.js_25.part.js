@@ -2698,6 +2698,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSintj() {
       return "Interjei\xe7\xe3o";
     },
+    get$grammarCopyPOSidiom() {
+      return "Idiom";
+    },
+    get$grammarCopyPOSphrasalv() {
+      return "Verbo Frasal";
+    },
+    get$grammarCopyPOScompn() {
+      return "Composto";
+    },
     get$grammarCopyPOSx() {
       return "Outro";
     },
@@ -8046,6 +8055,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSintj() {
       return "Interjei\xe7\xe3o";
     },
+    get$grammarCopyPOSidiom() {
+      return "Idiom";
+    },
+    get$grammarCopyPOSphrasalv() {
+      return "Verbo Frasal";
+    },
+    get$grammarCopyPOScompn() {
+      return "Composto";
+    },
     get$grammarCopyPOSx() {
       return "Outro";
     },
@@ -13391,6 +13409,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSintj() {
       return "Interjei\xe7\xe3o";
     },
+    get$grammarCopyPOSidiom() {
+      return "Idiom";
+    },
+    get$grammarCopyPOSphrasalv() {
+      return "Verbo Frasal";
+    },
+    get$grammarCopyPOScompn() {
+      return "Composto";
+    },
     get$grammarCopyPOSx() {
       return "Outro";
     },
@@ -16269,7 +16296,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gx8rTHHWzafArFatH9w4saIGyGc="] = d.current;
+  d["H6/2/mXiMBfWLx+g5s0hZlXNAH0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
