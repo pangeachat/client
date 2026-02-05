@@ -502,7 +502,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Вашы старыя паведамленні абаронены ключом аднаўлення. Калі ласка, пераканайцеся ў тым, што вы яго не згубіце.",
+    "chatBackupDescription": "Вашы паведамленні абаронены ключом аднаўлення. Калі ласка, пераканайцеся ў тым, што вы яго не згубіце.",
     "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
@@ -3475,6 +3475,30 @@
     "@thread": {},
     "backToMainChat": "Вярнуцца ў галоўны чат",
     "@backToMainChat": {},
+    "saveChanges": "Захаваць змены",
+    "@saveChanges": {},
+    "createSticker": "Стварыць стыкер ці эмадзі",
+    "@createSticker": {},
+    "useAsSticker": "Ужыць як стыкер",
+    "@useAsSticker": {},
+    "useAsEmoji": "Ужыць як эмадзі",
+    "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "Назва набору стыкераў ужо існуе",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "Новы набор стыкераў",
+    "@newStickerPack": {},
+    "stickerPackName": "Назва набору стыкераў",
+    "@stickerPackName": {},
+    "attribution": "Атрыбуцыя",
+    "@attribution": {},
+    "skipChatBackup": "Прапусціць рэзервовае капіраванне чатаў",
+    "@skipChatBackup": {},
+    "skipChatBackupWarning": "Вы ўпэўнены? Без наладжвання рэзервовага капіравання чатаў, вы можаце згубіць доступ да ўсіх вашых чатаў, калі вы зменіце прыладу.",
+    "@skipChatBackupWarning": {},
+    "loadingMessages": "Загрузка паведамленняў",
+    "@loadingMessages": {},
+    "setupChatBackup": "Наладзіць рэзервовае капіраванне чатаў",
+    "@setupChatBackup": {},
     "ignore": "Блакаваць",
     "ignoredUsers": "Блакаваные карыстальнікі",
     "writeAMessageLangCodes": "Пішыце на {l1} або {l2}...",
@@ -3518,7 +3542,6 @@
     "updateLanguage": "Мовы, якія я ведаю",
     "whatLanguageYouWantToLearn": "Якую мову вы хочаце вывучыць?",
     "whatIsYourBaseLanguage": "Якая ваша асноўная мова?",
-    "saveChanges": "Захаваць змены",
     "publicProfileTitle": "Дазволіць знаходзіць мой профіль у пошуку",
     "publicProfileDesc": "Уключыўшы гэта, вы дазваляеце іншым карыстальнікам знаходзіць ваш профіль у глабальнай пошукавай радку і адпраўляць запыты на чат. На гэтым этапе вы можаце выбраць прыняць або адхіліць запыт.",
     "errorDisableIT": "Дапамога з перакладам выключана.",
@@ -4786,10 +4809,6 @@
       "placeholders": {}
     },
     "@whatIsYourBaseLanguage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@saveChanges": {
       "type": "String",
       "placeholders": {}
     },
