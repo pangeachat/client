@@ -82,9 +82,7 @@ class MessageContent extends StatelessWidget {
   //   }
   //   final client = Matrix.of(context).client;
   //   if (client.isUnknownSession && client.encryption!.crossSigning.enabled) {
-  //     final success = await BootstrapDialog(
-  //       client: Matrix.of(context).client,
-  //     ).show(context);
+  //     final success = await context.push('/backup');
   //     if (success != true) return;
   //   }
   //   event.requestKey();
@@ -159,7 +157,8 @@ class MessageContent extends StatelessWidget {
           case MessageTypes.Image:
           case MessageTypes.Sticker:
             if (event.redacted) continue textmessage;
-            const maxSize = 256.0;
+            final maxSize =
+                event.messageType == MessageTypes.Sticker ? 128.0 : 256.0;
             final w = event.content
                 .tryGetMap<String, Object?>('info')
                 ?.tryGet<int>('w');

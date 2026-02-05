@@ -1039,17 +1039,6 @@ class ChatListController extends State<ChatList>
       setState(() {
         waitForFirstSync = true;
       });
-
-      // Display first login bootstrap if enabled
-      // #Pangea
-      // if (client.encryption?.keyManager.enabled == true) {
-      //   if (await client.encryption?.keyManager.isCached() == false ||
-      //       await client.encryption?.crossSigning.isCached() == false ||
-      //       client.isUnknownSession && !mounted) {
-      //     await BootstrapDialog(client: client).show(context);
-      //   }
-      // }
-      // Pangea#
     }
 
     // #Pangea

@@ -204,9 +204,7 @@ class SettingsController extends State<Settings> {
     //   );
     //   return;
     // }
-    // await BootstrapDialog(
-    //   client: Matrix.of(context).client,
-    // ).show(context);
+    // await context.push('/backup');
     // checkBootstrap();
     // Pangea#
   }
