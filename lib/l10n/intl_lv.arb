@@ -2348,7 +2348,7 @@
             }
         }
     },
-    "chatBackupDescription": "Iepriekšējās ziņas ir aizsargātas ar atkopes atslēgu. Lūgums nodrošināt, ka tā netiek pazaudēta.",
+    "chatBackupDescription": "Ziņas ir aizsargātas ar atkopes atslēgu. Lūgums nodrošināt, ka tā netiek pazaudēta.",
     "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
@@ -3487,6 +3487,14 @@
     "@stickerPackName": {},
     "attribution": "Piedēvējums",
     "@attribution": {},
+    "skipChatBackup": "Izlaist tērzēšanu rezerves kopēšanu",
+    "@skipChatBackup": {},
+    "skipChatBackupWarning": "Vai tiešām? Bez tērzēšanu rezerves kopēšanas var tikt zaudēta piekļuve savām ziņām, kad tiks mainīta ierīce.",
+    "@skipChatBackupWarning": {},
+    "loadingMessages": "Ielādē ziņas",
+    "@loadingMessages": {},
+    "setupChatBackup": "Iestatīt tērzēšanu rezerves kopēšanu",
+    "@setupChatBackup": {},
     "ignore": "Bloķēt",
     "ignoredUsers": "Bloķētie lietotāji",
     "writeAMessageLangCodes": "Rakstiet {l1} vai {l2}...",

@@ -769,7 +769,7 @@
     },
     "chatHasBeenAddedToThisSpace": "Cuireadh comhrá leis an spás seo",
     "@chatHasBeenAddedToThisSpace": {},
-    "chatBackupDescription": "Tá do sheanteachtaireachtaí slán le eochair athshlánaithe. Le do thoil déan cinnte nach gcaillfidh tú é.",
+    "chatBackupDescription": "Tá do theachtaireachtaí slán le heochair aisghabhála. Déan cinnte nach gcaillfidh tú í.",
     "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
@@ -3509,6 +3509,14 @@
     "@stickerPackName": {},
     "attribution": "Atribution",
     "@attribution": {},
+    "skipChatBackup": "Seachain cúltaca comhrá",
+    "@skipChatBackup": {},
+    "skipChatBackupWarning": "An bhfuil tú cinnte? Mura gcumasaíonn tú an cúltaca comhrá, d’fhéadfá rochtain ar do theachtaireachtaí a chailleadh má athraíonn tú do ghléas.",
+    "@skipChatBackupWarning": {},
+    "loadingMessages": "Ag lódáil teachtaireachtaí",
+    "@loadingMessages": {},
+    "setupChatBackup": "Socraigh cúltaca comhrá",
+    "@setupChatBackup": {},
     "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
     "requests": "Iarratais",
     "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
