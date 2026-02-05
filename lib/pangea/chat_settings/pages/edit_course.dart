@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 
@@ -150,7 +151,7 @@ class EditCourseController extends State<EditCourse> {
       final picked = await selectFiles(
         context,
         allowMultiple: false,
-        type: FileSelectorType.images,
+        type: FileType.image,
       );
       final pickedFile = picked.firstOrNull;
       if (pickedFile == null) return;
