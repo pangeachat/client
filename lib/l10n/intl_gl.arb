@@ -3488,6 +3488,22 @@
     "@thread": {},
     "backToMainChat": "Volver á conversa principal",
     "@backToMainChat": {},
+    "attribution": "Atribución",
+    "@attribution": {},
+    "saveChanges": "Gardar cambios",
+    "@saveChanges": {},
+    "createSticker": "Crear adhesivo ou emoji",
+    "@createSticker": {},
+    "useAsSticker": "Usar como adhesivo",
+    "@useAsSticker": {},
+    "useAsEmoji": "Usar como emoji",
+    "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "Xa existe ese nome de paquete de adhesivos",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "Novo paquete de adhesivos",
+    "@newStickerPack": {},
+    "stickerPackName": "Nome do paquete de adhesivos",
+    "@stickerPackName": {},
     "writeAMessageLangCodes": "Escribe en {l1} ou {l2}...",
     "requests": "Solicitudes",
     "holdForInfo": "Fai clic e mantén para obter información sobre a palabra.",
@@ -3529,7 +3545,6 @@
     "updateLanguage": "As miñas linguas",
     "whatLanguageYouWantToLearn": "Que linguaxe queres aprender?",
     "whatIsYourBaseLanguage": "Cal é a tua linguaxe base?",
-    "saveChanges": "Gardar cambios",
     "publicProfileTitle": "Permitir que meu perfil se atope na busca",
     "publicProfileDesc": "Ao activalo, permites que outros usuarios atopen o teu perfil na barra de busca global e envien solicitudes para chatear. Neste momento, podes escoller aceptar ou denegar a solicitude.",
     "errorDisableIT": "A axuda de tradución está desactivada.",
@@ -4787,10 +4802,6 @@
       "placeholders": {}
     },
     "@whatIsYourBaseLanguage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@saveChanges": {
       "type": "String",
       "placeholders": {}
     },

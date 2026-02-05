@@ -3488,6 +3488,22 @@
     },
     "backToMainChat": "返回主聊天",
     "@backToMainChat": {},
+    "saveChanges": "保存更改",
+    "@saveChanges": {},
+    "createSticker": "创建贴纸或表情图片",
+    "@createSticker": {},
+    "useAsSticker": "用作贴纸",
+    "@useAsSticker": {},
+    "useAsEmoji": "用作表情图片",
+    "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "贴纸包名已存在",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "新建贴纸包",
+    "@newStickerPack": {},
+    "stickerPackName": "贴纸包名",
+    "@stickerPackName": {},
+    "attribution": "作者",
+    "@attribution": {},
     "writeAMessageLangCodes": "输入 {l1} 或 {l2}...",
     "requests": "请求",
     "holdForInfo": "点击并按住获取单词信息。",
@@ -3529,7 +3545,6 @@
     "updateLanguage": "我的语言",
     "whatLanguageYouWantToLearn": "你想学习哪种语言？",
     "whatIsYourBaseLanguage": "你的基础语言是什么？",
-    "saveChanges": "保存更改",
     "publicProfileTitle": "允许在搜索中找到我的资料",
     "publicProfileDesc": "开启后，其他用户可以在全球搜索栏中找到你的资料并向你发起聊天请求。此时，你可以选择接受或拒绝请求。",
     "errorDisableIT": "翻译协助已关闭。",
@@ -4787,10 +4802,6 @@
       "placeholders": {}
     },
     "@whatIsYourBaseLanguage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@saveChanges": {
       "type": "String",
       "placeholders": {}
     },

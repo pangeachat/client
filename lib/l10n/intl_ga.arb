@@ -3493,6 +3493,22 @@
     "@thread": {},
     "backToMainChat": "Ar ais chuig an bpríomhchomhrá",
     "@backToMainChat": {},
+    "saveChanges": "Sábháil athruithe",
+    "@saveChanges": {},
+    "createSticker": "Cruthaigh greamán nó emoji",
+    "@createSticker": {},
+    "useAsSticker": "Úsáid mar ghreamán",
+    "@useAsSticker": {},
+    "useAsEmoji": "Úsáid mar emoji",
+    "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "Tá ainm an phacáiste greamán ann cheana féin",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "Pacáiste greamán nua",
+    "@newStickerPack": {},
+    "stickerPackName": "Ainm an phacáiste greamán",
+    "@stickerPackName": {},
+    "attribution": "Atribution",
+    "@attribution": {},
     "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
     "requests": "Iarratais",
     "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
@@ -3534,7 +3550,6 @@
     "updateLanguage": "Mo chuid teangacha",
     "whatLanguageYouWantToLearn": "Cén teanga ar mhaith leat foghlaim?",
     "whatIsYourBaseLanguage": "Cén teanga bhunúsach atá agat?",
-    "saveChanges": "Sábháil na hathruithe",
     "publicProfileTitle": "Ceadaigh go bhféadfaidh daoine mo phróifíl a aimsiú sa chuardach",
     "publicProfileDesc": "Trí chumasú, ligfidh tú do dhaoine eile do phróifíl a fháil sa bharra cuardaigh domhanda agus iarratais a sheoladh chun comhrá. Sa phointe seo, is féidir leat glacadh nó diúltú leis an iarratas.",
     "errorDisableIT": "Tá cabhair aistriúcháin dícheangailte.",
@@ -4794,10 +4809,6 @@
       "placeholders": {}
     },
     "@whatIsYourBaseLanguage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@saveChanges": {
       "type": "String",
       "placeholders": {}
     },
