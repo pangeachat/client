@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -10,6 +5,10 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
 import 'settings_security_view.dart';
 
 class SettingsSecurity extends StatefulWidget {
@@ -101,33 +100,6 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (mxid == null || mxid.isEmpty || mxid != supposedMxid) {
       return;
     }
-    // #Pangea
-    // final input = await showTextInputDialog(
-    //   useRootNavigator: false,
-    //   context: context,
-    //   title: L10n.of(context).pleaseEnterYourPassword,
-    //   okLabel: L10n.of(context).ok,
-    //   cancelLabel: L10n.of(context).cancel,
-    //   isDestructive: true,
-    //   obscureText: true,
-    //   hintText: '******',
-    //   minLines: 1,
-    //   maxLines: 1,
-    // );
-    // if (input == null) return;
-    // await showFutureLoadingDialog(
-    //   context: context,
-    //   future: () => Matrix.of(context).client.deactivateAccount(
-    //     auth: AuthenticationPassword(
-    //       password: input,
-    //       identifier: AuthenticationUserIdentifier(
-    //         user: Matrix.of(context).client.userID!,
-    //       ),
-    //     ),
-    //   ),
-    // );
-    // Pangea#
-
     final resp = await showFutureLoadingDialog(
       context: context,
       delay: false,
@@ -138,7 +110,10 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     );
 
     if (!resp.isError) {
-      await Matrix.of(context).client.logout();
+      await showFutureLoadingDialog(
+        context: context,
+        future: () => Matrix.of(context).client.logout(),
+      );
     }
   }
 
