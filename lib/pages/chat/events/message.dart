@@ -996,6 +996,8 @@ class Message extends StatelessWidget {
                                         //                                 ),
                                         //                                 config:
                                         //                                     Config(
+                                        //                                   locale:
+                                        //                                       Localizations.localeOf(context),
                                         //                                   emojiViewConfig:
                                         //                                       const EmojiViewConfig(
                                         //                                     backgroundColor:
