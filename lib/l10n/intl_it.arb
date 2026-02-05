@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:48.551043",
+  "@@last_modified": "2026-02-05 10:09:41.124551",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10970,6 +10970,21 @@
   },
   "emptyAudioError": "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frazionale",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

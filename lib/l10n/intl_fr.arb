@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-29 15:25:26.287351",
+  "@@last_modified": "2026-02-05 10:10:24.987990",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11291,6 +11291,21 @@
   },
   "emptyAudioError": "L'enregistrement a échoué. Veuillez vérifier vos autorisations audio et réessayer.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbe à particule",
+  "grammarCopyPOScompn": "Composé",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
