@@ -101,6 +101,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       ValueNotifier<SelectedMorphChoice?>(null);
 
   final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
+  final ValueNotifier<int> hintsUsedNotifier = ValueNotifier<int>(0);
+  static const int maxHints = 5;
 
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
@@ -127,6 +129,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     enableChoicesNotifier.dispose();
     selectedMorphChoice.dispose();
     hintPressedNotifier.dispose();
+    hintsUsedNotifier.dispose();
     super.dispose();
   }
 
@@ -213,6 +216,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityTarget.value = null;
     selectedMorphChoice.value = null;
     hintPressedNotifier.value = false;
+    hintsUsedNotifier.value = 0;
     enableChoicesNotifier.value = true;
     progressNotifier.value = 0.0;
     _queue.clear();
@@ -483,7 +487,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   void onHintPressed() {
-    hintPressedNotifier.value = !hintPressedNotifier.value;
+    if (hintsUsedNotifier.value >= maxHints) return;
+    if (!hintPressedNotifier.value) {
+      hintsUsedNotifier.value++;
+    }
+    hintPressedNotifier.value = true;
   }
 
   Future<void> onSelectChoice(
