@@ -26,10 +26,7 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 
 class LevelUpPopup extends StatefulWidget {
   final Completer<ConstructSummary> constructSummaryCompleter;
-  const LevelUpPopup({
-    required this.constructSummaryCompleter,
-    super.key,
-  });
+  const LevelUpPopup({required this.constructSummaryCompleter, super.key});
 
   @override
   State<LevelUpPopup> createState() => _LevelUpPopupState();
@@ -108,7 +105,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
 
   String language =
       MatrixState.pangeaController.userController.userL2Code?.toUpperCase() ??
-          LanguageKeys.unknownLanguage;
+      LanguageKeys.unknownLanguage;
 
   ConstructSummary? _constructSummary;
   Object? _error;
@@ -194,41 +191,41 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
   Widget build(BuildContext context) {
     final Animation<int> vocabAnimation =
         IntTween(begin: _startVocab, end: _endVocab).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.5, curve: Curves.easeInOutQuad),
-      ),
-    );
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.0, 0.5, curve: Curves.easeInOutQuad),
+          ),
+        );
 
     final Animation<int> grammarAnimation =
         IntTween(begin: _startGrammar, end: _endGrammar).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.5, curve: Curves.easeInOutQuad),
-      ),
-    );
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.0, 0.5, curve: Curves.easeInOutQuad),
+          ),
+        );
 
-    final Animation<double> skillsOpacity =
-        Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.7, 1.0, curve: Curves.easeIn),
-      ),
-    );
+    final Animation<double> skillsOpacity = Tween<double>(begin: 0.0, end: 1.0)
+        .animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.7, 1.0, curve: Curves.easeIn),
+          ),
+        );
 
     final Animation<double> shrinkMultiplier =
         Tween<double>(begin: 1.0, end: 0.3).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.7, 1.0, curve: Curves.easeInOut),
-      ),
-    );
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.7, 1.0, curve: Curves.easeInOut),
+          ),
+        );
 
     final colorScheme = Theme.of(context).colorScheme;
     final grammarVocabStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: colorScheme.primary,
-        );
+      fontWeight: FontWeight.bold,
+      color: colorScheme.primary,
+    );
     final username =
         Matrix.of(context).client.userID?.split(':').first.substring(1) ?? '';
 
@@ -241,7 +238,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
             children: [
               AnimatedBuilder(
                 animation: _controller,
-                builder: (_, __) => Row(
+                builder: (_, _) => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
@@ -274,7 +271,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
               // Progress bar + Level
               AnimatedBuilder(
                 animation: _controller,
-                builder: (_, __) => Row(
+                builder: (_, _) => Row(
                   children: [
                     const Expanded(
                       child: LevelPopupProgressBar(
@@ -283,17 +280,12 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Text(
-                      "⭐",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
+                    Text("⭐", style: Theme.of(context).textTheme.titleLarge),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: AnimatedFlipCounter(
                         value: displayedLevel,
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
+                        textStyle: Theme.of(context).textTheme.headlineMedium
                             ?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppConfig.goldLight,
@@ -310,7 +302,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
               // Vocab and grammar row
               AnimatedBuilder(
                 animation: _controller,
-                builder: (_, __) => Row(
+                builder: (_, _) => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
@@ -392,7 +384,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
                 // Skills section
                 AnimatedBuilder(
                   animation: skillsOpacity,
-                  builder: (_, __) => Opacity(
+                  builder: (_, _) => Opacity(
                     opacity: skillsOpacity.value,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -472,10 +464,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
     // chunk into rows of up to 4
     final rows = <List<LearningSkillsEnum>>[
       for (var i = 0; i < visibleSkills.length; i += itemsPerRow)
-        visibleSkills.sublist(
-          i,
-          min(i + itemsPerRow, visibleSkills.length),
-        ),
+        visibleSkills.sublist(i, min(i + itemsPerRow, visibleSkills.length)),
     ];
 
     return Column(

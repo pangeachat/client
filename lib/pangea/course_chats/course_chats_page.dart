@@ -57,9 +57,7 @@ class CourseChatsController extends State<CourseChats>
 
   @override
   void initState() {
-    loadHierarchy(reload: true).then(
-      (_) => _joinDefaultChats(),
-    );
+    loadHierarchy(reload: true).then((_) => _joinDefaultChats());
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
@@ -99,9 +97,7 @@ class CourseChatsController extends State<CourseChats>
       room?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ??
       {};
 
-  List<Room> get joinedRooms => Matrix.of(context)
-      .client
-      .rooms
+  List<Room> get joinedRooms => Matrix.of(context).client.rooms
       .where((room) => childrenIds.contains(room.id))
       .where((room) => !room.isHiddenRoom)
       .toList();
@@ -181,27 +177,30 @@ class CourseChatsController extends State<CourseChats>
       if (chunk.canonicalAlias == null) continue;
       final alias = chunk.canonicalAlias!;
 
-      final isDefaultChat = (alias.localpart ?? '')
-              .startsWith(SpaceConstants.announcementsChatAlias) ||
-          (alias.localpart ?? '')
-              .startsWith(SpaceConstants.introductionChatAlias);
+      final isDefaultChat =
+          (alias.localpart ?? '').startsWith(
+            SpaceConstants.announcementsChatAlias,
+          ) ||
+          (alias.localpart ?? '').startsWith(
+            SpaceConstants.introductionChatAlias,
+          );
 
       if (!isDefaultChat) continue;
 
       joinFutures.add(
-        widget.client.joinRoom(alias).then((_) {
-          discoveredChildren?.remove(chunk);
-        }).catchError((e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {
-              'alias': alias,
-              'spaceId': widget.roomId,
-            },
-          );
-          return null;
-        }),
+        widget.client
+            .joinRoom(alias)
+            .then((_) {
+              discoveredChildren?.remove(chunk);
+            })
+            .catchError((e, s) {
+              ErrorHandler.logError(
+                e: e,
+                s: s,
+                data: {'alias': alias, 'spaceId': widget.roomId},
+              );
+              return null;
+            }),
       );
     }
 
@@ -271,8 +270,8 @@ class CourseChatsController extends State<CourseChats>
 
     List<SpaceRoomsChunk$2>? currentHierarchy =
         discoveredChildren == null || reload
-            ? null
-            : List.from(discoveredChildren!);
+        ? null
+        : List.from(discoveredChildren!);
     String? currentNextBatch = reload ? null : _nextBatch;
 
     // Makes repeated calls to the server until 10 new visible rooms have
@@ -308,10 +307,7 @@ class CourseChatsController extends State<CourseChats>
 
       // if rooms have earlier been loaded for this space, add those
       // previously loaded rooms to the front of the response list
-      response.rooms.insertAll(
-        0,
-        currentHierarchy ?? [],
-      );
+      response.rooms.insertAll(0, currentHierarchy ?? []);
 
       // finally, set the response to the last response for this space
       // and set the current next batch token
@@ -351,13 +347,13 @@ class CourseChatsController extends State<CourseChats>
               inviteEvent == null
                   ? L10n.of(context).inviteForMe
                   : inviteEvent.content.tryGet<String>('reason') ??
-                      L10n.of(context).youInvitedBy(
-                        room
-                            .unsafeGetUserFromMemoryOrFallback(
-                              inviteEvent.senderId,
-                            )
-                            .calcDisplayname(i18n: matrixLocals),
-                      ),
+                        L10n.of(context).youInvitedBy(
+                          room
+                              .unsafeGetUserFromMemoryOrFallback(
+                                inviteEvent.senderId,
+                              )
+                              .calcDisplayname(i18n: matrixLocals),
+                        ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -399,10 +395,7 @@ class CourseChatsController extends State<CourseChats>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          context.go(
-            '/rooms/settings/security/ignorelist',
-            extra: userId,
-          );
+          context.go('/rooms/settings/security/ignorelist', extra: userId);
           return;
       }
       if (!mounted) return;
@@ -423,9 +416,7 @@ class CourseChatsController extends State<CourseChats>
 
     if (room.membership == Membership.ban) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).youHaveBeenBannedFromThisChat),
-        ),
+        SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
       );
       return;
     }
@@ -449,9 +440,7 @@ class CourseChatsController extends State<CourseChats>
       context: context,
       chunk: item,
       via: space?.spaceChildren
-          .firstWhereOrNull(
-            (child) => child.roomId == item.roomId,
-          )
+          .firstWhereOrNull((child) => child.roomId == item.roomId)
           ?.via,
     );
     if (mounted && roomId != null) {
@@ -483,9 +472,7 @@ class CourseChatsController extends State<CourseChats>
       via: widget.client
           .getRoomById(widget.roomId)
           ?.spaceChildren
-          .firstWhereOrNull(
-            (child) => child.roomId == roomId,
-          )
+          .firstWhereOrNull((child) => child.roomId == roomId)
           ?.via,
     );
 
@@ -501,17 +488,15 @@ class CourseChatsController extends State<CourseChats>
     context.go("/rooms/spaces/${widget.roomId}/$roomId");
   }
 
-  bool _includeSpaceChild(
-    Room space,
-    SpaceRoomsChunk$2 hierarchyMember,
-  ) {
+  bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
     if (!mounted) return false;
     final bool isAnalyticsRoom =
         hierarchyMember.roomType == PangeaRoomTypes.analytics;
 
-    final bool isMember = [Membership.join, Membership.invite].contains(
-      widget.client.getRoomById(hierarchyMember.roomId)?.membership,
-    );
+    final bool isMember = [
+      Membership.join,
+      Membership.invite,
+    ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
 
     final bool isSuggested =
         space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
@@ -558,27 +543,22 @@ class CourseChatsController extends State<CourseChats>
     }
 
     final joinedRooms = joinUpdate?.entries
-        .where(
-          (e) => childrenIds.contains(e.key),
-        )
+        .where((e) => childrenIds.contains(e.key))
         .map((e) => e.value.timeline?.events)
         .whereType<List<MatrixEvent>>();
 
     final invitedRooms = inviteUpdate?.entries
-        .where(
-          (e) => childrenIds.contains(e.key),
-        )
+        .where((e) => childrenIds.contains(e.key))
         .map((e) => e.value.inviteState)
         .whereType<List<StrippedStateEvent>>();
 
     final leftRooms = leaveUpdate?.entries
-        .where(
-          (e) => childrenIds.contains(e.key),
-        )
+        .where((e) => childrenIds.contains(e.key))
         .map((e) => e.value.timeline?.events)
         .whereType<List<MatrixEvent>>();
 
-    final bool hasJoinedRoom = joinedRooms?.any(
+    final bool hasJoinedRoom =
+        joinedRooms?.any(
           (events) => events.any(
             (e) =>
                 e.senderId == widget.client.userID &&
@@ -587,7 +567,8 @@ class CourseChatsController extends State<CourseChats>
         ) ??
         false;
 
-    final bool hasLeftRoom = leftRooms?.any(
+    final bool hasLeftRoom =
+        leftRooms?.any(
           (events) => events.any(
             (e) =>
                 e.senderId == widget.client.userID &&
@@ -604,21 +585,16 @@ class CourseChatsController extends State<CourseChats>
     final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
     if (joinTimeline == null && leaveTimeline == null) return false;
 
-    final bool hasJoinUpdate = joinTimeline?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
+    final bool hasJoinUpdate =
+        joinTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
         false;
-    final bool hasLeaveUpdate = leaveTimeline?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
+    final bool hasLeaveUpdate =
+        leaveTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
         false;
     return hasJoinUpdate || hasLeaveUpdate;
   }
 
-  int _sortSpaceChildren(
-    SpaceRoomsChunk$2 a,
-    SpaceRoomsChunk$2 b,
-  ) {
+  int _sortSpaceChildren(SpaceRoomsChunk$2 a, SpaceRoomsChunk$2 b) {
     final bool aIsSpace = a.roomType == 'm.space';
     final bool bIsSpace = b.roomType == 'm.space';
 
@@ -635,9 +611,7 @@ class CourseChatsController extends State<CourseChats>
     return !room!.dismissedDefaultChat(type) && !room!.hasDefaultChat(type);
   }
 
-  Future<void> dismissDefaultChatCreation(
-    CourseDefaultChatsEnum type,
-  ) async {
+  Future<void> dismissDefaultChatCreation(CourseDefaultChatsEnum type) async {
     if (room == null) {
       throw Exception("Room is null");
     }
@@ -651,9 +625,7 @@ class CourseChatsController extends State<CourseChats>
     await room!.setCourseChatsSettings(settings);
   }
 
-  Future<void> createDefaultChat(
-    CourseDefaultChatsEnum type,
-  ) async {
+  Future<void> createDefaultChat(CourseDefaultChatsEnum type) async {
     if (room == null) {
       throw Exception("Room is null");
     }

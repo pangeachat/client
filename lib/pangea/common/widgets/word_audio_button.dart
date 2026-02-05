@@ -43,10 +43,10 @@ class WordAudioButtonState extends State<WordAudioButton> {
   @override
   void initState() {
     super.initState();
-    _loadingChoreoSubscription =
-        TtsController.loadingChoreoStream.stream.listen((val) {
-      if (mounted) setState(() => _isLoading = val);
-    });
+    _loadingChoreoSubscription = TtsController.loadingChoreoStream.stream
+        .listen((val) {
+          if (mounted) setState(() => _isLoading = val);
+        });
   }
 
   @override
@@ -77,12 +77,14 @@ class WordAudioButtonState extends State<WordAudioButton> {
             .key,
         opacity: widget.isSelected || _isPlaying ? 1 : widget.baseOpacity,
         child: Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying
+              ? L10n.of(context).stop
+              : L10n.of(context).playAudio,
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: widget.callbackOverride ??
+              onTap:
+                  widget.callbackOverride ??
                   () async {
                     if (_isPlaying) {
                       await TtsController.stop();
@@ -111,9 +113,7 @@ class WordAudioButtonState extends State<WordAudioButton> {
                     ? const SizedBox(
                         width: 16,
                         height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                        ),
+                        child: CircularProgressIndicator(strokeWidth: 3),
                       )
                     : Icon(
                         _isPlaying ? Icons.pause_outlined : Icons.volume_up,

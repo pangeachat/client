@@ -30,8 +30,10 @@ extension ActivityMenuLogic on ChatController {
           (event) =>
               event.senderId == userID &&
               event.type == EventTypes.Message &&
-              {MessageTypes.Text, MessageTypes.Audio}
-                  .contains(event.messageType),
+              {
+                MessageTypes.Text,
+                MessageTypes.Audio,
+              }.contains(event.messageType),
         )
         .length;
 

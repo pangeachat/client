@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-enum SpanChoiceTypeEnum {
-  bestCorrection,
-  distractor,
-  bestAnswer,
-}
+enum SpanChoiceTypeEnum { bestCorrection, distractor, bestAnswer }
 
 extension SpanChoiceExt on SpanChoiceTypeEnum {
   String get name {

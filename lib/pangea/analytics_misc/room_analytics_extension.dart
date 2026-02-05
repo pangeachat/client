@@ -31,9 +31,7 @@ extension AnalyticsRoomExtension on Room {
   /// The [uses] parameter is a list of [OneConstructUse] objects representing the
   /// constructs to be sent. To prevent hitting the maximum event size, the events
   /// are chunked into smaller lists. Each chunk is sent as a separate event.
-  Future<void> sendConstructsEvent(
-    List<OneConstructUse> uses,
-  ) async {
+  Future<void> sendConstructsEvent(List<OneConstructUse> uses) async {
     // It's possible that the user has no info to send yet, but to prevent trying
     // to load the data over and over again, we'll sometimes send an empty event to
     // indicate that we have checked and there was no data.

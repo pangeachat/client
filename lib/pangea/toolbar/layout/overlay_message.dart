@@ -63,11 +63,13 @@ class OverlayMessage extends StatelessWidget {
     final theme = Theme.of(context);
     final bool ownMessage = event.senderId == Matrix.of(context).client.userID;
 
-    final displayTime = event.type == EventTypes.RoomCreate ||
+    final displayTime =
+        event.type == EventTypes.RoomCreate ||
         nextEvent == null ||
         !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
 
-    final nextEventSameSender = nextEvent != null &&
+    final nextEventSameSender =
+        nextEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -76,7 +78,8 @@ class OverlayMessage extends StatelessWidget {
         nextEvent!.senderId == event.senderId &&
         !displayTime;
 
-    final previousEventSameSender = previousEvent != null &&
+    final previousEventSameSender =
+        previousEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -88,14 +91,14 @@ class OverlayMessage extends StatelessWidget {
     final textColor = event.isActivityMessage
         ? ThemeData.light().colorScheme.onPrimary
         : ownMessage
-            ? ThemeData.dark().colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+        ? ThemeData.dark().colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
 
     final linkColor = theme.brightness == Brightness.light
         ? theme.colorScheme.primary
         : ownMessage
-            ? theme.colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
 
     final displayEvent = event.getDisplayEvent(timeline);
     const hardCorner = Radius.circular(4);
@@ -103,10 +106,12 @@ class OverlayMessage extends StatelessWidget {
     final borderRadius = BorderRadius.only(
       topLeft: !ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
       topRight: ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      bottomLeft:
-          !ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
-      bottomRight:
-          ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
+      bottomLeft: !ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
+      bottomRight: ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
     );
 
     var color = theme.colorScheme.surfaceContainerHigh;
@@ -125,7 +130,8 @@ class OverlayMessage extends StatelessWidget {
           : theme.colorScheme.primary;
     }
 
-    final noBubble = ({
+    final noBubble =
+        ({
               MessageTypes.Video,
               MessageTypes.Image,
               MessageTypes.Sticker,
@@ -145,9 +151,7 @@ class OverlayMessage extends StatelessWidget {
 
     final content = Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          AppConfig.borderRadius,
-        ),
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       ),
       width: messageWidth,
       height: messageHeight,
@@ -155,26 +159,15 @@ class OverlayMessage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          if (event.inReplyToEventId(
-                includingFallback: false,
-              ) !=
-              null)
+          if (event.inReplyToEventId(includingFallback: false) != null)
             FutureBuilder<Event?>(
-              future: event.getReplyEvent(
-                timeline,
-              ),
-              builder: (
-                BuildContext context,
-                snapshot,
-              ) {
+              future: event.getReplyEvent(timeline),
+              builder: (BuildContext context, snapshot) {
                 final replyEvent = snapshot.hasData
                     ? snapshot.data!
                     : Event(
                         eventId: event.relationshipEventId!,
-                        content: {
-                          'msgtype': 'm.text',
-                          'body': '...',
-                        },
+                        content: {'msgtype': 'm.text', 'body': '...'},
                         senderId: "",
                         type: 'm.room.message',
                         room: event.room,
@@ -182,19 +175,14 @@ class OverlayMessage extends StatelessWidget {
                         originServerTs: DateTime.now(),
                       );
                 return Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 8,
-                  ),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                   child: Material(
                     color: Colors.transparent,
                     borderRadius: ReplyContent.borderRadius,
                     child: InkWell(
                       borderRadius: ReplyContent.borderRadius,
-                      onTap: () => controller.scrollToEventId(
-                        replyEvent.eventId,
-                      ),
+                      onTap: () =>
+                          controller.scrollToEventId(replyEvent.eventId),
                       child: AbsorbPointer(
                         child: ReplyContent(
                           replyEvent,
@@ -224,10 +212,7 @@ class OverlayMessage extends StatelessWidget {
               selected: true,
             ),
           ),
-          if (event.hasAggregatedEvents(
-            timeline,
-            RelationshipTypes.edit,
-          ))
+          if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))
             Padding(
               padding: const EdgeInsets.only(
                 bottom: 8.0,
@@ -244,14 +229,10 @@ class OverlayMessage extends StatelessWidget {
                     size: 14,
                   ),
                   Text(
-                    displayEvent.originServerTs.localizedTimeShort(
-                      context,
-                    ),
+                    displayEvent.originServerTs.localizedTimeShort(context),
                     textScaler: TextScaler.noScaling,
                     style: TextStyle(
-                      color: textColor.withAlpha(
-                        164,
-                      ),
+                      color: textColor.withAlpha(164),
                       fontSize: 11,
                     ),
                   ),
@@ -272,10 +253,7 @@ class OverlayMessage extends StatelessWidget {
               : 0.0),
     );
 
-    final style = AppConfig.messageTextStyle(
-      event,
-      textColor,
-    );
+    final style = AppConfig.messageTextStyle(event, textColor);
 
     return Material(
       key: MatrixState.pAnyState.layerLinkAndKey(overlayKey).key,
@@ -296,7 +274,8 @@ class OverlayMessage extends StatelessWidget {
             children: [
               _MessageBubbleTranscription(
                 controller: selectModeController,
-                enabled: event.messageType == MessageTypes.Audio &&
+                enabled:
+                    event.messageType == MessageTypes.Audio &&
                     !event.redacted &&
                     isSubscribed != false,
                 maxWidth: maxWidth,
@@ -344,12 +323,10 @@ class _MessageSelectModeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: Listenable.merge(
-        [
-          controller.selectedMode,
-          controller.currentModeStateNotifier,
-        ],
-      ),
+      listenable: Listenable.merge([
+        controller.selectedMode,
+        controller.currentModeStateNotifier,
+      ]),
       builder: (context, _) {
         final mode = controller.selectedMode.value;
         if (mode == null) {
@@ -383,42 +360,38 @@ class _MessageSelectModeContent extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: switch (state) {
             AsyncLoading() => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircularProgressIndicator.adaptive(
-                    backgroundColor: style.color,
-                  ),
-                ],
-              ),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator.adaptive(
+                  backgroundColor: style.color,
+                ),
+              ],
+            ),
             AsyncError(error: final _) => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.error_outline,
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    L10n.of(context).translationError,
-                    textScaler: TextScaler.noScaling,
-                    style: style.copyWith(fontStyle: FontStyle.italic),
-                  ),
-                ],
-              ),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  L10n.of(context).translationError,
+                  textScaler: TextScaler.noScaling,
+                  style: style.copyWith(fontStyle: FontStyle.italic),
+                ),
+              ],
+            ),
             AsyncLoaded(value: final value) => Container(
-                constraints: BoxConstraints(
-                  maxWidth: maxWidth,
-                ),
-                child: SingleChildScrollView(
-                  child: Text(
-                    value,
-                    textScaler: TextScaler.noScaling,
-                    style: style.copyWith(
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
+              constraints: BoxConstraints(maxWidth: maxWidth),
+              child: SingleChildScrollView(
+                child: Text(
+                  value,
+                  textScaler: TextScaler.noScaling,
+                  style: style.copyWith(fontStyle: FontStyle.italic),
                 ),
               ),
+            ),
             _ => const SizedBox(),
           },
         );

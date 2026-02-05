@@ -53,56 +53,56 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
         return switch (controller.state) {
           AsyncError() => const SizedBox.shrink(),
           AsyncLoaded(value: final lemmaInfo) => SizedBox(
-              height: 70.0,
-              child: Row(
-                spacing: 4.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ...lemmaInfo.emoji.map(
-                    (emoji) {
-                      final targetId = "${widget.targetId}-$emoji";
-                      return EmojiChoiceItem(
-                        cId: widget.cId,
-                        emoji: emoji,
-                        onSelectEmoji: () =>
-                            widget.onEmojiSelected(emoji, targetId),
-                        selected: widget.emoji == emoji,
-                        transformTargetId: targetId,
-                        badge: widget.emoji == emoji
-                            ? widget.selectedEmojiBadge
-                            : null,
-                        showShimmer: widget.emoji == null,
-                        enabled: widget.enabled,
-                      );
-                    },
-                  ),
-                ],
-              ),
+            height: 70.0,
+            child: Row(
+              spacing: 4.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ...lemmaInfo.emoji.map((emoji) {
+                  final targetId = "${widget.targetId}-$emoji";
+                  return EmojiChoiceItem(
+                    cId: widget.cId,
+                    emoji: emoji,
+                    onSelectEmoji: () =>
+                        widget.onEmojiSelected(emoji, targetId),
+                    selected: widget.emoji == emoji,
+                    transformTargetId: targetId,
+                    badge: widget.emoji == emoji
+                        ? widget.selectedEmojiBadge
+                        : null,
+                    showShimmer: widget.emoji == null,
+                    enabled: widget.enabled,
+                  );
+                }),
+              ],
             ),
+          ),
           _ => SizedBox(
-              height: 70.0,
-              child: Row(
-                spacing: 4.0,
-                mainAxisSize: MainAxisSize.min,
-                children: List.generate(
-                  3,
-                  (_) => Shimmer.fromColors(
-                    baseColor: Colors.transparent,
-                    highlightColor:
-                        Theme.of(context).colorScheme.primary.withAlpha(70),
-                    child: Container(
-                      height: 55.0,
-                      width: 55.0,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius),
+            height: 70.0,
+            child: Row(
+              spacing: 4.0,
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                3,
+                (_) => Shimmer.fromColors(
+                  baseColor: Colors.transparent,
+                  highlightColor: Theme.of(
+                    context,
+                  ).colorScheme.primary.withAlpha(70),
+                  child: Container(
+                    height: 55.0,
+                    width: 55.0,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+          ),
         };
       },
     );
@@ -208,18 +208,15 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: widget.enabled && (hovered || widget.selected)
-                          ? Theme.of(context)
-                              .colorScheme
-                              .secondary
-                              .withAlpha(30)
+                          ? Theme.of(
+                              context,
+                            ).colorScheme.secondary.withAlpha(30)
                           : Colors.transparent,
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
                       border: widget.selected
-                          ? Border.all(
-                              color: Colors.transparent,
-                              width: 4,
-                            )
+                          ? Border.all(color: Colors.transparent, width: 4)
                           : null,
                     ),
                     child: Text(
@@ -230,11 +227,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                 ),
               ),
               if (widget.badge != null)
-                Positioned(
-                  right: 6,
-                  bottom: 6,
-                  child: widget.badge!,
-                ),
+                Positioned(right: 6, bottom: 6, child: widget.badge!),
             ],
           ),
         ),

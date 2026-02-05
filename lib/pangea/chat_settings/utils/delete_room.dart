@@ -11,17 +11,11 @@ extension on Api {
   // Response 200 OK format: { message: "Deleted" }.
   // Requester must be member of the room and have the highest power level of the room to perform this request.
   Future<void> delete(String roomId) async {
-    final requestUri = Uri(
-      path: '_synapse/client/pangea/v1/delete_room',
-    );
+    final requestUri = Uri(path: '_synapse/client/pangea/v1/delete_room');
     final request = Request('POST', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
     request.headers['authorization'] = 'Bearer ${bearerToken!}';
-    request.bodyBytes = utf8.encode(
-      jsonEncode({
-        'room_id': roomId,
-      }),
-    );
+    request.bodyBytes = utf8.encode(jsonEncode({'room_id': roomId}));
     final response = await httpClient.send(request);
     if (response.statusCode != 200) {
       throw Exception('http error response');
@@ -51,9 +45,7 @@ extension DeleteRoom on Room {
     }
 
     return rooms
-        .where(
-          (r) => r.roomType != PangeaRoomTypes.analytics && r.roomId != id,
-        )
+        .where((r) => r.roomType != PangeaRoomTypes.analytics && r.roomId != id)
         .toList();
   }
 }

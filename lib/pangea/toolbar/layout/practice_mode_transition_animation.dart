@@ -75,30 +75,26 @@ class PracticeModeTransitionAnimationState
         duration: widget.controller.transitionAnimationDuration,
       );
 
-      _offsetAnimation = Tween<Offset>(
-        begin: startOffset,
-        end: endOffset,
-      ).animate(
-        CurvedAnimation(
-          parent: _animationController!,
-          curve: FluffyThemes.animationCurve,
-        ),
-      );
+      _offsetAnimation = Tween<Offset>(begin: startOffset, end: endOffset)
+          .animate(
+            CurvedAnimation(
+              parent: _animationController!,
+              curve: FluffyThemes.animationCurve,
+            ),
+          );
 
       final startSize = Size(
         widget.controller.originalMessageSize.width,
         widget.controller.originalMessageSize.height,
       );
 
-      _sizeAnimation = Tween<Size>(
-        begin: startSize,
-        end: _centerMessageSize!,
-      ).animate(
-        CurvedAnimation(
-          parent: _animationController!,
-          curve: FluffyThemes.animationCurve,
-        ),
-      );
+      _sizeAnimation = Tween<Size>(begin: startSize, end: _centerMessageSize!)
+          .animate(
+            CurvedAnimation(
+              parent: _animationController!,
+              curve: FluffyThemes.animationCurve,
+            ),
+          );
 
       widget.controller.onStartedTransition();
       setState(() {});
@@ -163,16 +159,13 @@ class PracticeModeTransitionAnimationState
 class CenteredMessage extends StatelessWidget {
   final MessageSelectionPositionerState controller;
 
-  const CenteredMessage({
-    super.key,
-    required this.controller,
-  });
+  const CenteredMessage({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.finishedTransition,
-      builder: (context, finished, __) {
+      builder: (context, finished, _) {
         return Opacity(
           opacity: finished ? 1.0 : 0.0,
           child: GestureDetector(

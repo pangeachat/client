@@ -16,12 +16,12 @@ class ContextualDefinitionRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.fullText: fullText,
-        ModelKey.word: word,
-        ModelKey.lang: feedbackLang,
-        ModelKey.fullTextLang: fullTextLang,
-        ModelKey.wordLang: wordLang,
-      };
+    ModelKey.fullText: fullText,
+    ModelKey.word: word,
+    ModelKey.lang: feedbackLang,
+    ModelKey.fullTextLang: fullTextLang,
+    ModelKey.wordLang: wordLang,
+  };
 
   @override
   bool operator ==(Object other) =>

@@ -9,20 +9,14 @@ class GetLocalizedCoursesResponse {
     final plansEntry = json['course_plans'] as Map<String, dynamic>;
     return GetLocalizedCoursesResponse(
       coursePlans: plansEntry.map(
-        (key, value) => MapEntry(
-          key,
-          CoursePlanModel.fromJson(value),
-        ),
+        (key, value) => MapEntry(key, CoursePlanModel.fromJson(value)),
       ),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "course_plans": coursePlans.map(
-          (key, value) => MapEntry(
-            key,
-            value.toJson(),
-          ),
-        ),
-      };
+    "course_plans": coursePlans.map(
+      (key, value) => MapEntry(key, value.toJson()),
+    ),
+  };
 }

@@ -22,15 +22,16 @@ class IGCRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.fullText: fullText,
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.enableIT: enableIT,
-        ModelKey.enableIGC: enableIGC,
-        ModelKey.userId: userId,
-        ModelKey.prevMessages:
-            jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
-      };
+    ModelKey.fullText: fullText,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.enableIT: enableIT,
+    ModelKey.enableIGC: enableIGC,
+    ModelKey.userId: userId,
+    ModelKey.prevMessages: jsonEncode(
+      prevMessages.map((x) => x.toJson()).toList(),
+    ),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -47,14 +48,8 @@ class IGCRequestModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-        fullText.trim(),
-        userL1,
-        userL2,
-        enableIT,
-        enableIGC,
-        userId,
-      );
+  int get hashCode =>
+      Object.hash(fullText.trim(), userL1, userL2, enableIT, enableIGC, userId);
 }
 
 /// Previous text/audio message sent in chat
@@ -80,10 +75,10 @@ class PreviousMessage {
       );
 
   Map<String, dynamic> toJson() => {
-        ModelKey.prevContent: content,
-        ModelKey.prevSender: sender,
-        ModelKey.prevTimestamp: timestamp.toIso8601String(),
-      };
+    ModelKey.prevContent: content,
+    ModelKey.prevSender: sender,
+    ModelKey.prevTimestamp: timestamp.toIso8601String(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -98,10 +93,6 @@ class PreviousMessage {
 
   @override
   int get hashCode {
-    return Object.hash(
-      content,
-      sender,
-      timestamp,
-    );
+    return Object.hash(content, sender, timestamp);
   }
 }

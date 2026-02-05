@@ -14,15 +14,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class DeleteSpaceDialog extends StatefulWidget {
   final Room space;
-  const DeleteSpaceDialog({
-    super.key,
-    required this.space,
-  });
+  const DeleteSpaceDialog({super.key, required this.space});
 
-  static Future<void> show(
-    Room room,
-    BuildContext context,
-  ) async {
+  static Future<void> show(Room room, BuildContext context) async {
     final resp = await showDialog<List<SpaceRoomsChunk$2>?>(
       context: context,
       builder: (_) => DeleteSpaceDialog(space: room),
@@ -93,13 +87,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
       _rooms = await widget.space.getSpaceChildrenToDelete();
     } catch (e, s) {
       _roomLoadError = L10n.of(context).errorLoadingSpaceChildren;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": widget.space.id,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"roomID": widget.space.id});
     } finally {
       setState(() {
         _loadingRooms = false;
@@ -107,10 +95,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     }
   }
 
-  void _onRoomSelected(
-    bool? selected,
-    SpaceRoomsChunk$2 room,
-  ) {
+  void _onRoomSelected(bool? selected, SpaceRoomsChunk$2 room) {
     if (selected == null ||
         (selected && _roomsToDelete.contains(room)) ||
         (!selected && !_roomsToDelete.contains(room))) {
@@ -147,16 +132,11 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.error,
-        ),
+        side: BorderSide(color: Theme.of(context).colorScheme.error),
         borderRadius: BorderRadius.circular(32.0),
       ),
       child: Container(
-        constraints: const BoxConstraints(
-          maxWidth: 400,
-          maxHeight: 600,
-        ),
+        constraints: const BoxConstraints(maxWidth: 400, maxHeight: 600),
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -164,8 +144,8 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
             Text(
               L10n.of(context).areYouSure,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
+                color: Theme.of(context).colorScheme.error,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -210,7 +190,8 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                         children: [
                           if (_selectableRooms.length > 1)
                             CheckboxListTile(
-                              value: _roomsToDelete.length ==
+                              value:
+                                  _roomsToDelete.length ==
                                   _selectableRooms.length,
                               onChanged: (_) => _toggleSelectAll(),
                               title: Text(
@@ -226,13 +207,16 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                               itemBuilder: (context, index) {
                                 final chunk = _rooms[index];
 
-                                final room = widget.space.client
-                                    .getRoomById(chunk.roomId);
-                                final isMember = room != null &&
+                                final room = widget.space.client.getRoomById(
+                                  chunk.roomId,
+                                );
+                                final isMember =
+                                    room != null &&
                                     room.membership == Membership.join &&
                                     room.isRoomAdmin;
 
-                                final displayname = chunk.name ??
+                                final displayname =
+                                    chunk.name ??
                                     chunk.canonicalAlias ??
                                     L10n.of(context).emptyChat;
 
@@ -243,7 +227,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                                     value: _roomsToDelete.contains(chunk),
                                     onChanged: isMember
                                         ? (value) =>
-                                            _onRoomSelected(value, chunk)
+                                              _onRoomSelected(value, chunk)
                                         : null,
                                     title: Text(displayname),
                                     controlAffinity:

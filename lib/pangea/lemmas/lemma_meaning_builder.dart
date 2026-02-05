@@ -17,7 +17,8 @@ class LemmaMeaningBuilder extends StatefulWidget {
   final Widget Function(
     BuildContext context,
     LemmaMeaningBuilderState controller,
-  ) builder;
+  )
+  builder;
 
   const LemmaMeaningBuilder({
     super.key,
@@ -33,8 +34,9 @@ class LemmaMeaningBuilder extends StatefulWidget {
 }
 
 class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
-  final ValueNotifier<AsyncState<LemmaInfoResponse>> _loader =
-      ValueNotifier(const AsyncState.idle());
+  final ValueNotifier<AsyncState<LemmaInfoResponse>> _loader = ValueNotifier(
+    const AsyncState.idle(),
+  );
 
   int _loadVersion = 0;
 
@@ -68,13 +70,14 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
       isLoaded ? (_loader.value as AsyncLoaded<LemmaInfoResponse>).value : null;
 
   LemmaInfoRequest get _request => LemmaInfoRequest(
-        lemma: widget.constructId.lemma,
-        partOfSpeech: widget.constructId.category,
-        lemmaLang: widget.langCode,
-        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
-            LanguageKeys.defaultLanguage,
-        messageInfo: widget.messageInfo,
-      );
+    lemma: widget.constructId.lemma,
+    partOfSpeech: widget.constructId.category,
+    lemmaLang: widget.langCode,
+    userL1:
+        MatrixState.pangeaController.userController.userL1?.langCode ??
+        LanguageKeys.defaultLanguage,
+    messageInfo: widget.messageInfo,
+  );
 
   Future<void> _load() async {
     final int version = ++_loadVersion;
@@ -97,10 +100,7 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _loader,
-      builder: (context, _, __) => widget.builder(
-        context,
-        this,
-      ),
+      builder: (context, _, _) => widget.builder(context, this),
     );
   }
 }

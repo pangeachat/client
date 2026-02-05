@@ -86,10 +86,7 @@ class WordZoomWidget extends StatelessWidget {
                                     icon: const Icon(Icons.close),
                                     onPressed: onClose,
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
                               child: Container(
                                 constraints: const BoxConstraints(
@@ -103,7 +100,8 @@ class WordZoomWidget extends StatelessWidget {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
-                                    color: Theme.of(context).brightness ==
+                                    color:
+                                        Theme.of(context).brightness ==
                                             Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
@@ -114,19 +112,15 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
                                     messageInfo: event?.content ?? {},
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                           ],
                         ),
                       ),
@@ -138,9 +132,8 @@ class WordZoomWidget extends StatelessWidget {
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
@@ -206,9 +199,7 @@ class WordZoomWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              content,
-            ],
+            children: [content],
           ),
         ),
       ),

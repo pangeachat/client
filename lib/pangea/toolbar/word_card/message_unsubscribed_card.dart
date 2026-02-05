@@ -11,9 +11,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(
-        maxWidth: AppConfig.toolbarMinWidth,
-      ),
+      constraints: const BoxConstraints(maxWidth: AppConfig.toolbarMinWidth),
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
@@ -27,8 +25,9 @@ class MessageUnsubscribedCard extends StatelessWidget {
             width: double.infinity,
             child: TextButton(
               onPressed: () {
-                MatrixState.pangeaController.subscriptionController
-                    .showPaywall(context);
+                MatrixState.pangeaController.subscriptionController.showPaywall(
+                  context,
+                );
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all<Color>(

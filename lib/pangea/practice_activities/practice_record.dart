@@ -27,9 +27,7 @@ class PracticeRecord {
     }
   }
 
-  factory PracticeRecord.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory PracticeRecord.fromJson(Map<String, dynamic> json) {
     return PracticeRecord(
       responses: (json['responses'] as List)
           .map(
@@ -43,9 +41,7 @@ class PracticeRecord {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'responses': responses.map((e) => e.toJson()).toList(),
-    };
+    return {'responses': responses.map((e) => e.toJson()).toList()};
   }
 
   int get completeResponses =>
@@ -61,13 +57,8 @@ class PracticeRecord {
     return responses[responses.length - 1];
   }
 
-  bool alreadyHasMatchResponse(
-    ConstructIdentifier cId,
-    String text,
-  ) =>
-      responses.any(
-        (element) => element.cId == cId && element.text == text,
-      );
+  bool alreadyHasMatchResponse(ConstructIdentifier cId, String text) =>
+      responses.any((element) => element.cId == cId && element.text == text);
 
   /// [target] needed for saving the record, little funky
   /// [cId] identifies the construct in the case of match activities which have multiple

@@ -85,10 +85,7 @@ class SpaceAnalyticsSummaryModel {
   });
 
   static SpaceAnalyticsSummaryModel emptyModel(String userID) {
-    return SpaceAnalyticsSummaryModel(
-      username: userID,
-      dataAvailable: false,
-    );
+    return SpaceAnalyticsSummaryModel(username: userID, dataAvailable: false);
   }
 
   static SpaceAnalyticsSummaryModel fromEvents(
@@ -189,8 +186,8 @@ class SpaceAnalyticsSummaryModel {
       }
     }
 
-    final totalXP = cleanedVocab.values
-            .fold<int>(0, (sum, entry) => sum + entry.points) +
+    final totalXP =
+        cleanedVocab.values.fold<int>(0, (sum, entry) => sum + entry.points) +
         cleanedMorph.values.fold<int>(0, (sum, entry) => sum + entry.points);
 
     final level = DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP);
@@ -270,7 +267,8 @@ class SpaceAnalyticsSummaryModel {
 
       // if >= 80% correct original uses
       if (originalUsesCorrect.length + originalUsesIncorrect.length > 0) {
-        final percentCorrect = originalUsesCorrect.length /
+        final percentCorrect =
+            originalUsesCorrect.length /
             (originalUsesCorrect.length + originalUsesIncorrect.length);
         if (percentCorrect >= 0.8) {
           morphCorrectOriginal.add(entry.lemma);
@@ -279,7 +277,8 @@ class SpaceAnalyticsSummaryModel {
         }
 
         if (systemUsesCorrect.length + systemUsesIncorrect.length > 0) {
-          final percentCorrectSystem = systemUsesCorrect.length /
+          final percentCorrectSystem =
+              systemUsesCorrect.length /
               (systemUsesCorrect.length + systemUsesIncorrect.length);
           if (percentCorrectSystem >= 0.8) {
             morphCorrectSystem.add(entry.lemma);

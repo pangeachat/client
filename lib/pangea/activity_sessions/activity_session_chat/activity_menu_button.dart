@@ -17,10 +17,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityMenuButton extends StatefulWidget {
   final ChatController controller;
 
-  const ActivityMenuButton({
-    super.key,
-    required this.controller,
-  });
+  const ActivityMenuButton({super.key, required this.controller});
 
   @override
   State<ActivityMenuButton> createState() => _ActivityMenuButtonState();

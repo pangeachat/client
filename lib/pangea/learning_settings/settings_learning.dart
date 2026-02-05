@@ -28,10 +28,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class SettingsLearning extends StatefulWidget {
   final bool isDialog;
 
-  const SettingsLearning({
-    this.isDialog = true,
-    super.key,
-  });
+  const SettingsLearning({this.isDialog = true, super.key});
 
   @override
   SettingsLearningController createState() => SettingsLearningController();
@@ -112,10 +109,7 @@ class SettingsLearningController extends State<SettingsLearning> {
     await showFutureLoadingDialog(
       context: context,
       future: () async => pangeaController.userController
-          .updateProfile(
-            (_) => _profile,
-            waitForDataInSync: true,
-          )
+          .updateProfile((_) => _profile, waitForDataInSync: true)
           .timeout(const Duration(seconds: 15)),
     );
     Navigator.of(context).pop();
@@ -125,13 +119,11 @@ class SettingsLearningController extends State<SettingsLearning> {
     _profile.instructionSettings = InstructionSettings();
     await showFutureLoadingDialog(
       context: context,
-      future: () async => pangeaController.userController.updateProfile(
-        (profile) {
-          profile.instructionSettings = InstructionSettings();
-          return profile;
-        },
-        waitForDataInSync: true,
-      ),
+      future: () async =>
+          pangeaController.userController.updateProfile((profile) {
+            profile.instructionSettings = InstructionSettings();
+            return profile;
+          }, waitForDataInSync: true),
       onError: (e, s) {
         debugger(when: kDebugMode);
         ErrorHandler.logError(
@@ -259,11 +251,7 @@ class SettingsLearningController extends State<SettingsLearning> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(title),
-                if (steps != null)
-                  Text(
-                    steps,
-                    textAlign: TextAlign.start,
-                  ),
+                if (steps != null) Text(steps, textAlign: TextAlign.start),
                 if (description != null) Text(description),
               ],
             ),
@@ -275,10 +263,7 @@ class SettingsLearningController extends State<SettingsLearning> {
                 Navigator.of(context).pop();
               },
             ),
-            TextButton(
-              onPressed: buttonAction,
-              child: Text(buttonText),
-            ),
+            TextButton(onPressed: buttonAction, child: Text(buttonText)),
           ],
         );
       },
@@ -287,8 +272,8 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   LanguageModel? get _targetLanguage =>
       _profile.userSettings.targetLanguage != null
-          ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
-          : null;
+      ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
+      : null;
 
   GenderEnum get gender => _profile.userSettings.gender;
 
@@ -330,13 +315,13 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   LanguageModel? get _selectedBaseLanguage =>
       _profile.userSettings.sourceLanguage != null
-          ? PLanguageStore.byLangCode(_profile.userSettings.sourceLanguage!)
-          : null;
+      ? PLanguageStore.byLangCode(_profile.userSettings.sourceLanguage!)
+      : null;
 
   LanguageModel? get _selectedTargetLanguage =>
       _profile.userSettings.targetLanguage != null
-          ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
-          : null;
+      ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
+      : null;
 
   LanguageModel? get userL1 => pangeaController.userController.userL1;
   LanguageModel? get userL2 => pangeaController.userController.userL2;

@@ -31,8 +31,10 @@ class PercentMarkerBar extends StatelessWidget {
         final targetPosition = totalWidth * widthPercent.clamp(0.0, 1.0);
 
         // Calculate the start position, clamping to keep marker within bounds
-        final markerStart =
-            (targetPosition - halfMarker).clamp(0.0, totalWidth - markerWidth);
+        final markerStart = (targetPosition - halfMarker).clamp(
+          0.0,
+          totalWidth - markerWidth,
+        );
 
         return Stack(
           alignment: Alignment.centerLeft,
@@ -45,7 +47,8 @@ class PercentMarkerBar extends StatelessWidget {
                 width: constraints.maxWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(height / 2),
-                  color: backgroundColor ??
+                  color:
+                      backgroundColor ??
                       Theme.of(context).colorScheme.secondaryContainer,
                 ),
               ),

@@ -147,11 +147,7 @@ class UserController {
         await PLanguageStore.initialize(forceRefresh: true);
       }
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
     } finally {
       if (!initCompleter.isCompleted) {
         initCompleter.complete();
@@ -174,8 +170,9 @@ class UserController {
     if (client.userID == null) return;
     try {
       final resp = await client.getUserProfile(client.userID!);
-      analyticsProfile =
-          AnalyticsProfileModel.fromJson(resp.additionalProperties);
+      analyticsProfile = AnalyticsProfileModel.fromJson(
+        resp.additionalProperties,
+      );
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
@@ -226,11 +223,7 @@ class UserController {
       await initialize();
       return profile.userSettings.targetLanguage != null;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -260,8 +253,8 @@ class UserController {
   ///   - The user's email address as a [String], or `null` if no email address
   ///     is found.
   Future<String?> get userEmail async {
-    final List<matrix.ThirdPartyIdentifier>? identifiers =
-        await client.getAccount3PIDs();
+    final List<matrix.ThirdPartyIdentifier>? identifiers = await client
+        .getAccount3PIDs();
     final matrix.ThirdPartyIdentifier? email = identifiers?.firstWhereOrNull(
       (identifier) =>
           identifier.medium == matrix.ThirdPartyIdentifierMedium.email,
@@ -272,12 +265,7 @@ class UserController {
   Future<void> _savePublicProfileUpdate(
     String type,
     Map<String, dynamic> content,
-  ) async =>
-      client.setUserProfile(
-        client.userID!,
-        type,
-        content,
-      );
+  ) async => client.setUserProfile(client.userID!, type, content);
 
   Future<void> updateAnalyticsProfile({
     required int level,
@@ -300,11 +288,7 @@ class UserController {
 
     analyticsProfile!.baseLanguage = baseLanguage;
     analyticsProfile!.targetLanguage = targetLanguage;
-    analyticsProfile!.setLanguageInfo(
-      targetLanguage,
-      level,
-      analyticsRoom?.id,
-    );
+    analyticsProfile!.setLanguageInfo(targetLanguage, level, analyticsRoom?.id);
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
       analyticsProfile!.toJson(),
@@ -319,10 +303,8 @@ class UserController {
     for (final analyticsRoom in analyticsRooms) {
       final lang = analyticsRoom.madeForLang?.split("-").first;
       if (lang == null || analyticsProfile?.languageAnalytics == null) continue;
-      final langKey =
-          analyticsProfile!.languageAnalytics!.keys.firstWhereOrNull(
-        (l) => l.langCodeShort == lang,
-      );
+      final langKey = analyticsProfile!.languageAnalytics!.keys
+          .firstWhereOrNull((l) => l.langCodeShort == lang);
 
       if (langKey == null) continue;
       if (analyticsProfile!.languageAnalytics![langKey]!.analyticsRoomId ==
@@ -358,9 +340,7 @@ class UserController {
     );
   }
 
-  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
-    String userId,
-  ) async {
+  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(String userId) async {
     try {
       if (userId == BotName.byEnvironment) {
         return AnalyticsProfileModel();
@@ -369,13 +349,7 @@ class UserController {
       final resp = await client.getUserProfile(userId);
       return AnalyticsProfileModel.fromJson(resp.additionalProperties);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          userId: userId,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
       return AnalyticsProfileModel();
     }
   }

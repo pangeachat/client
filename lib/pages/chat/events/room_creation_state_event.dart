@@ -36,14 +36,14 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
   @override
   void initState() {
     super.initState();
-    _memberSubscription = event.room.client.onRoomState.stream.where(
-      (u) {
-        return u.roomId == event.room.id &&
-            u.state.type == EventTypes.RoomMember;
-      },
-    ).listen((_) {
-      if (_members > 1) setState(() {});
-    });
+    _memberSubscription = event.room.client.onRoomState.stream
+        .where((u) {
+          return u.roomId == event.room.id &&
+              u.state.type == EventTypes.RoomMember;
+        })
+        .listen((_) {
+          if (_members > 1) setState(() {});
+        });
   }
 
   @override
@@ -75,7 +75,7 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     Avatar(
                       mxContent: event.room.avatar,
@@ -106,21 +106,13 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
           const SizedBox(height: 16.0),
           const InstructionsInlineTooltip(
             instructionsEnum: InstructionsEnum.clickMessage,
-            padding: EdgeInsets.only(
-              left: 16.0,
-              right: 16.0,
-              top: 16.0,
-            ),
+            padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
             animate: false,
           ),
           if (_members <= 1 && InstructionsEnum.clickMessage.isToggledOff)
             const InstructionsInlineTooltip(
               instructionsEnum: InstructionsEnum.emptyChatWarning,
-              padding: EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                top: 16.0,
-              ),
+              padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               animate: false,
             ),
           // Pangea#

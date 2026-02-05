@@ -102,20 +102,16 @@ class PangeaController {
     }
 
     Sentry.configureScope(
-      (scope) => scope.setUser(
-        SentryUser(
-          id: userID,
-          name: userID,
-        ),
-      ),
+      (scope) => scope.setUser(SentryUser(id: userID, name: userID)),
     );
     GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
   void _registerSubscriptions() {
     _languageSubscription?.cancel();
-    _languageSubscription =
-        userController.languageStream.stream.listen(_onLanguageUpdate);
+    _languageSubscription = userController.languageStream.stream.listen(
+      _onLanguageUpdate,
+    );
 
     _settingsSubscription?.cancel();
     _settingsSubscription = userController.settingsUpdateStream.stream.listen(

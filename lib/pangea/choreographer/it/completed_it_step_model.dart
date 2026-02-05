@@ -7,10 +7,7 @@ class CompletedITStepModel {
   final List<ContinuanceModel> continuances;
   final int chosen;
 
-  const CompletedITStepModel(
-    this.continuances, {
-    required this.chosen,
-  });
+  const CompletedITStepModel(this.continuances, {required this.chosen});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -24,10 +21,7 @@ class CompletedITStepModel {
     for (final Map<String, dynamic> continuance in json['continuances']) {
       continuances.add(ContinuanceModel.fromJson(continuance));
     }
-    return CompletedITStepModel(
-      continuances,
-      chosen: json['chosen'],
-    );
+    return CompletedITStepModel(continuances, chosen: json['chosen']);
   }
 
   ContinuanceModel? get chosenContinuance {

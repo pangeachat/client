@@ -70,8 +70,9 @@ class _PhoneticTranscriptionWidgetState
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying
+              ? L10n.of(context).stop
+              : L10n.of(context).playAudio,
           child: GestureDetector(
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
@@ -95,46 +96,46 @@ class _PhoneticTranscriptionWidgetState
                       AsyncError(error: final error) =>
                         error is UnsubscribedException
                             ? ErrorIndicator(
-                                message: L10n.of(context)
-                                    .subscribeToUnlockTranscriptions,
+                                message: L10n.of(
+                                  context,
+                                ).subscribeToUnlockTranscriptions,
                                 onTap: () {
                                   MatrixState
-                                      .pangeaController.subscriptionController
+                                      .pangeaController
+                                      .subscriptionController
                                       .showPaywall(context);
                                 },
                               )
                             : ErrorIndicator(
-                                message:
-                                    L10n.of(context).failedToFetchTranscription,
+                                message: L10n.of(
+                                  context,
+                                ).failedToFetchTranscription,
                               ),
                       AsyncLoaded<String>(value: final transcription) => Row(
-                          spacing: 8.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                transcription,
-                                textScaler: TextScaler.noScaling,
-                                style: widget.style ??
-                                    Theme.of(context).textTheme.bodyMedium,
-                                maxLines: widget.maxLines,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              transcription,
+                              textScaler: TextScaler.noScaling,
+                              style:
+                                  widget.style ??
+                                  Theme.of(context).textTheme.bodyMedium,
+                              maxLines: widget.maxLines,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            Icon(
-                              _isPlaying
-                                  ? Icons.pause_outlined
-                                  : Icons.volume_up,
-                              size: widget.iconSize ?? 24,
-                              color: widget.iconColor ??
-                                  Theme.of(context).iconTheme.color,
-                            ),
-                          ],
-                        ),
-                      _ => const TextLoadingShimmer(
-                          width: 125.0,
-                          height: 20.0,
-                        ),
+                          ),
+                          Icon(
+                            _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+                            size: widget.iconSize ?? 24,
+                            color:
+                                widget.iconColor ??
+                                Theme.of(context).iconTheme.color,
+                          ),
+                        ],
+                      ),
+                      _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
                     };
                   },
                 ),

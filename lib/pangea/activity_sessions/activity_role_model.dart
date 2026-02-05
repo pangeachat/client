@@ -30,10 +30,7 @@ class ActivityRoleModel {
       return l10n.finishedTheActivity(displayName);
     }
 
-    return l10n.joinedTheActivity(
-      displayName,
-      role ?? l10n.participant,
-    );
+    return l10n.joinedTheActivity(displayName, role ?? l10n.participant);
   }
 
   factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {

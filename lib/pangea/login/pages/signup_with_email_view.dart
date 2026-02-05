@@ -17,18 +17,12 @@ class SignupWithEmailView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 450,
-            ),
+            constraints: const BoxConstraints(maxWidth: 450),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BackButton(
-                  onPressed: Navigator.of(context).pop,
-                ),
-                const SizedBox(
-                  width: 40.0,
-                ),
+                BackButton(onPressed: Navigator.of(context).pop),
+                const SizedBox(width: 40.0),
               ],
             ),
           ),
@@ -37,10 +31,7 @@ class SignupWithEmailView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 300,
-                maxHeight: 600,
-              ),
+              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
               child: Column(
                 spacing: 24.0,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -76,8 +67,9 @@ class SignupWithEmailView extends StatelessWidget {
                     obscureText: !controller.showPassword,
                     validator: controller.password1TextFieldValidator,
                     controller: controller.passwordController,
-                    onFieldSubmitted:
-                        controller.enableSignUp ? controller.signup : null,
+                    onFieldSubmitted: controller.enableSignUp
+                        ? controller.signup
+                        : null,
                     decoration: InputDecoration(
                       hintText: L10n.of(context).password,
                       suffixIcon: IconButton(
@@ -94,17 +86,16 @@ class SignupWithEmailView extends StatelessWidget {
                         FocusManager.instance.primaryFocus?.unfocus(),
                   ),
                   ElevatedButton(
-                    onPressed:
-                        controller.enableSignUp ? controller.signup : null,
+                    onPressed: controller.enableSignUp
+                        ? controller.signup
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(L10n.of(context).createAccount),
-                      ],
+                      children: [Text(L10n.of(context).createAccount)],
                     ),
                   ),
                 ],

@@ -9,9 +9,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 class MorphExampleInfo {
   final List<InlineSpan> exampleMessage;
 
-  const MorphExampleInfo({
-    required this.exampleMessage,
-  });
+  const MorphExampleInfo({required this.exampleMessage});
 
   Map<String, dynamic> toJson() {
     final segments = <Map<String, dynamic>>[];
@@ -25,9 +23,7 @@ class MorphExampleInfo {
       }
     }
 
-    return {
-      'segments': segments,
-    };
+    return {'segments': segments};
   }
 
   factory MorphExampleInfo.fromJson(Map<String, dynamic> json) {
@@ -62,10 +58,10 @@ class AnalyticsActivityTarget {
   });
 
   Map<String, dynamic> toJson() => {
-        'target': target.toJson(),
-        'grammarErrorInfo': grammarErrorInfo?.toJson(),
-        'morphExampleInfo': morphExampleInfo?.toJson(),
-      };
+    'target': target.toJson(),
+    'grammarErrorInfo': grammarErrorInfo?.toJson(),
+    'morphExampleInfo': morphExampleInfo?.toJson(),
+  };
 
   factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
       AnalyticsActivityTarget(
@@ -96,19 +92,23 @@ class AnalyticsPracticeSessionModel {
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
   // Maximum activities to attempt (including skips)
-  int get _maxAttempts => (AnalyticsPracticeConstants.practiceGroupSize +
-          AnalyticsPracticeConstants.errorBufferSize)
-      .clamp(0, practiceTargets.length)
-      .toInt();
+  int get _maxAttempts =>
+      (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)
+          .clamp(0, practiceTargets.length)
+          .toInt();
 
-  int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize
-      .clamp(0, practiceTargets.length);
+  int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize.clamp(
+    0,
+    practiceTargets.length,
+  );
 
   // Total attempted so far (completed + skipped)
   int get _totalAttempted => state.currentIndex + state.skippedActivities;
 
   bool get isComplete {
-    final complete = state.finished ||
+    final complete =
+        state.finished ||
         state.currentIndex >= _completionGoal ||
         _totalAttempted >= _maxAttempts;
     return complete;
@@ -116,8 +116,10 @@ class AnalyticsPracticeSessionModel {
 
   double get progress {
     final possibleCompletions =
-        (state.currentIndex + _maxAttempts - _totalAttempted)
-            .clamp(0, _completionGoal);
+        (state.currentIndex + _maxAttempts - _totalAttempted).clamp(
+          0,
+          _completionGoal,
+        );
     return possibleCompletions > 0
         ? (state.currentIndex / possibleCompletions).clamp(0.0, 1.0)
         : 1.0;
@@ -144,13 +146,11 @@ class AnalyticsPracticeSessionModel {
   void completeActivity() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
 
-  void incrementSkippedActivities() => state = state.copyWith(
-        skippedActivities: state.skippedActivities + 1,
-      );
+  void incrementSkippedActivities() =>
+      state = state.copyWith(skippedActivities: state.skippedActivities + 1);
 
-  void submitAnswer(OneConstructUse use) => state = state.copyWith(
-        completedUses: [...state.completedUses, use],
-      );
+  void submitAnswer(OneConstructUse use) =>
+      state = state.copyWith(completedUses: [...state.completedUses, use]);
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(
@@ -161,9 +161,7 @@ class AnalyticsPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
-      state: AnalyticsPracticeSessionState.fromJson(
-        json,
-      ),
+      state: AnalyticsPracticeSessionState.fromJson(json),
     );
   }
 
@@ -221,22 +219,22 @@ class AnalyticsPracticeSessionState {
       completedUses.where((use) => use.xp > 0).map(_bonusUse).toList();
 
   List<OneConstructUse> get allBonusUses => [
-        if (_giveAccuracyBonus) ..._bonusUses,
-        if (_giveTimeBonus) ..._bonusUses,
-      ];
+    if (_giveAccuracyBonus) ..._bonusUses,
+    if (_giveTimeBonus) ..._bonusUses,
+  ];
 
   OneConstructUse _bonusUse(OneConstructUse originalUse) => OneConstructUse(
-        useType: ConstructUseTypeEnum.bonus,
-        constructType: originalUse.constructType,
-        metadata: ConstructUseMetaData(
-          roomId: originalUse.metadata.roomId,
-          timeStamp: DateTime.now(),
-        ),
-        category: originalUse.category,
-        lemma: originalUse.lemma,
-        form: originalUse.form,
-        xp: ConstructUseTypeEnum.bonus.pointValue,
-      );
+    useType: ConstructUseTypeEnum.bonus,
+    constructType: originalUse.constructType,
+    metadata: ConstructUseMetaData(
+      roomId: originalUse.metadata.roomId,
+      timeStamp: DateTime.now(),
+    ),
+    category: originalUse.category,
+    lemma: originalUse.lemma,
+    form: originalUse.form,
+    xp: ConstructUseTypeEnum.bonus.pointValue,
+  );
 
   AnalyticsPracticeSessionState copyWith({
     List<OneConstructUse>? completedUses,
@@ -266,7 +264,8 @@ class AnalyticsPracticeSessionState {
 
   factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionState(
-      completedUses: (json['completedUses'] as List<dynamic>?)
+      completedUses:
+          (json['completedUses'] as List<dynamic>?)
               ?.map((e) => OneConstructUse.fromJson(e))
               .whereType<OneConstructUse>()
               .toList() ??

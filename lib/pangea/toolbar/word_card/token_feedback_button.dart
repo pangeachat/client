@@ -35,7 +35,8 @@ class TokenFeedbackButton extends StatelessWidget {
           textLanguage: textLanguage,
           text: text,
           builder: (context, transcriptController) {
-            final enabled = (lemmaController.lemmaInfo != null ||
+            final enabled =
+                (lemmaController.lemmaInfo != null ||
                     lemmaController.isError) &&
                 (transcriptController.transcription != null ||
                     transcriptController.isError);
@@ -50,10 +51,7 @@ class TokenFeedbackButton extends StatelessWidget {
               icon: const Icon(Icons.flag_outlined),
               onPressed: enabled
                   ? () {
-                      onFlagTokenInfo(
-                        lemmaInfo,
-                        transcript,
-                      );
+                      onFlagTokenInfo(lemmaInfo, transcript);
                     }
                   : null,
               tooltip: enabled ? L10n.of(context).reportWordIssueTooltip : null,

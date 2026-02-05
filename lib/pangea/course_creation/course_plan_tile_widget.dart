@@ -39,8 +39,9 @@ class CoursePlanTile extends StatelessWidget {
             onTap: onTap,
             child: Container(
               decoration: BoxDecoration(
-                color:
-                    hovered ? theme.colorScheme.onSurface.withAlpha(10) : null,
+                color: hovered
+                    ? theme.colorScheme.onSurface.withAlpha(10)
+                    : null,
               ),
               child: Row(
                 spacing: 4.0,
@@ -68,9 +69,7 @@ class CoursePlanTile extends StatelessWidget {
                           course.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: titleFontSize,
-                          ),
+                          style: TextStyle(fontSize: titleFontSize),
                         ),
                         CourseInfoChips(
                           courseId,

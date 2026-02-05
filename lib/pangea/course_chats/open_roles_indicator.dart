@@ -37,21 +37,25 @@ class OpenRolesIndicator extends StatelessWidget {
       spacing: spacing ?? 2.0,
       children: [
         ...roles.map((role) {
-          final assigned =
-              assignedRoles.firstWhereOrNull((r) => r.id == role.id);
+          final assigned = assignedRoles.firstWhereOrNull(
+            (r) => r.id == role.id,
+          );
 
           final user = assigned != null
-              ? roomParticipants
-                      .firstWhereOrNull((p) => p.id == assigned.userId) ??
-                  spaceParticipants
-                      .firstWhereOrNull((p) => p.id == assigned.userId)
+              ? roomParticipants.firstWhereOrNull(
+                      (p) => p.id == assigned.userId,
+                    ) ??
+                    spaceParticipants.firstWhereOrNull(
+                      (p) => p.id == assigned.userId,
+                    )
               : null;
 
           if (assigned != null) {
             return Builder(
               builder: (context) => Avatar(
                 mxContent: user?.avatarUrl,
-                name: user?.calcDisplayname() ??
+                name:
+                    user?.calcDisplayname() ??
                     assigned.userId.localpart ??
                     assigned.userId,
                 size: size ?? 16,

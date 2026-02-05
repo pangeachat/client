@@ -34,13 +34,10 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
     Logs().wtf('Unable to construct database!', e, s);
 
     try {
+      // Send error notification:
       // #Pangea
-      // // Send error notification:
       // final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
-      // ClientManager.sendInitNotification(
-      //   l10n.initAppError,
-      //   e.toString(),
-      // );
+      // ClientManager.sendInitNotification(l10n.initAppError, e.toString());
       // Pangea#
     } catch (e, s) {
       Logs().e('Unable to send error notification', e, s);
@@ -48,22 +45,22 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
 
     // Try to delete database so that it can created again on next init:
     database?.delete().catchError(
-        // #Pangea
-        (err, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-        m: "Failed to delete matrix database after failed construction.",
-      );
-    }
-        // (e, s) => Logs().wtf(
-        //   'Unable to delete database, after failed construction',
-        //   e,
-        //   s,
-        // ),
-        // Pangea#
+      // #Pangea
+      (err, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {},
+          m: "Failed to delete matrix database after failed construction.",
         );
+      },
+      // (e, s) => Logs().wtf(
+      //   'Unable to delete database, after failed construction',
+      //   e,
+      //   s,
+      // ),
+      // Pangea#
+    );
 
     // Delete database file:
     if (!kIsWeb) {
@@ -100,8 +97,9 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   // fix dlopen for old Android
   await applyWorkaroundToOpenSqlCipherOnOldAndroidVersions();
   // import the SQLite / SQLCipher shared objects / dynamic libraries
-  final factory =
-      createDatabaseFactoryFfi(ffiInit: SQfLiteEncryptionHelper.ffiInit);
+  final factory = createDatabaseFactoryFfi(
+    ffiInit: SQfLiteEncryptionHelper.ffiInit,
+  );
 
   // #Pangea
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database path: $path'));
@@ -117,11 +115,7 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   // to manage SQLite encryption
   final helper = cipher == null
       ? null
-      : SQfLiteEncryptionHelper(
-          factory: factory,
-          path: path,
-          cipher: cipher,
-        );
+      : SQfLiteEncryptionHelper(factory: factory, path: path, cipher: cipher);
   // #Pangea
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher helper: $helper'));
   // Pangea#

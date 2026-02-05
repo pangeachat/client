@@ -32,15 +32,11 @@ class ProgressIndicatorBadge extends StatelessWidget {
             ),
             const SizedBox(width: 6.0),
             !loading
-                ? AnimatedFloatingNumber(
-                    number: points,
-                  )
+                ? AnimatedFloatingNumber(number: points)
                 : const SizedBox(
                     height: 8,
                     width: 8,
-                    child: CircularProgressIndicator.adaptive(
-                      strokeWidth: 2,
-                    ),
+                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
                   ),
           ],
         ),
@@ -52,10 +48,7 @@ class ProgressIndicatorBadge extends StatelessWidget {
 class AnimatedFloatingNumber extends StatefulWidget {
   final int number;
 
-  const AnimatedFloatingNumber({
-    super.key,
-    required this.number,
-  });
+  const AnimatedFloatingNumber({super.key, required this.number});
 
   @override
   State<AnimatedFloatingNumber> createState() => AnimatedFloatingNumberState();
@@ -119,10 +112,7 @@ class AnimatedFloatingNumberState extends State<AnimatedFloatingNumber>
             position: _offsetAnim,
             child: FadeTransition(
               opacity: ReverseAnimation(_fadeAnim),
-              child: Text(
-                "$_floatingNumber",
-                style: indicatorStyle,
-              ),
+              child: Text("$_floatingNumber", style: indicatorStyle),
             ),
           ),
         Text(

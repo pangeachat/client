@@ -3,19 +3,16 @@ class ImageSizes {
   final ImageSize? medium;
   final ImageSize? large;
 
-  const ImageSizes({
-    this.thumbnail,
-    this.medium,
-    this.large,
-  });
+  const ImageSizes({this.thumbnail, this.medium, this.large});
 
   factory ImageSizes.fromJson(Map<String, dynamic> json) {
     return ImageSizes(
       thumbnail: json['thumbnail'] != null
           ? ImageSize.fromJson(json['thumbnail'])
           : null,
-      medium:
-          json['medium'] != null ? ImageSize.fromJson(json['medium']) : null,
+      medium: json['medium'] != null
+          ? ImageSize.fromJson(json['medium'])
+          : null,
       large: json['large'] != null ? ImageSize.fromJson(json['large']) : null,
     );
   }

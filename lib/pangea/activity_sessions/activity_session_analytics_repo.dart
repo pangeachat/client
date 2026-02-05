@@ -15,8 +15,9 @@ class CachedActivityAnalytics {
 }
 
 class ActivitySessionAnalyticsRepo {
-  static final GetStorage _activityAnalyticsStorage =
-      GetStorage('activity_analytics_storage');
+  static final GetStorage _activityAnalyticsStorage = GetStorage(
+    'activity_analytics_storage',
+  );
 
   static Duration cacheDuration = const Duration(minutes: 30);
 
@@ -31,8 +32,9 @@ class ActivitySessionAnalyticsRepo {
         return null;
       }
 
-      final lastUseTimestamp =
-          DateTime.parse(json['last_use_timestamp'] as String);
+      final lastUseTimestamp = DateTime.parse(
+        json['last_use_timestamp'] as String,
+      );
       final analyticsJson = json['analytics'] as Map<String, dynamic>;
       final analytics = ActivitySummaryAnalyticsModel.fromJson(analyticsJson);
       return CachedActivityAnalytics(timestamp, lastUseTimestamp, analytics);

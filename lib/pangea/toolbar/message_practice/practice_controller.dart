@@ -83,19 +83,14 @@ class PracticeController with ChangeNotifier {
     }
 
     return target == null ||
-        PracticeRecordController.isCompleteByToken(
-          target,
-          token,
-        );
+        PracticeRecordController.isCompleteByToken(target, token);
   }
 
   bool get showChoiceShimmer {
     if (_activity == null) return false;
     if (_activity is MorphMatchPracticeActivityModel) {
       return selectedMorph != null &&
-          !PracticeRecordController.hasResponse(
-            _activity!.practiceTarget,
-          );
+          !PracticeRecordController.hasResponse(_activity!.practiceTarget);
     }
 
     return selectedChoice == null &&
@@ -178,13 +173,16 @@ class PracticeController with ChangeNotifier {
         "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
 
     final updateService = MatrixState
-        .pangeaController.matrixState.analyticsDataService.updateService;
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateService;
 
     // we don't take off points for incorrect emoji matches
     if (_activity is! EmojiPracticeActivityModel || isCorrect) {
-      final constructUseType =
-          PracticeRecordController.lastResponse(_activity!.practiceTarget)!
-              .useType(_activity!.activityType);
+      final constructUseType = PracticeRecordController.lastResponse(
+        _activity!.practiceTarget,
+      )!.useType(_activity!.activityType);
 
       final constructs = [
         OneConstructUse(
@@ -203,10 +201,7 @@ class PracticeController with ChangeNotifier {
         ),
       ];
 
-      updateService.addAnalytics(
-        targetId,
-        constructs,
-      );
+      updateService.addAnalytics(targetId, constructs);
     }
 
     if (isCorrect) {

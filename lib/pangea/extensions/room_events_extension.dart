@@ -14,26 +14,14 @@ extension EventsRoomExtension on Room {
       try {
         await room.leave();
       } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            'roomID': room.id,
-          },
-        );
+        ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
       }
     }
 
     try {
       await leave();
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'roomID': id,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': id});
     }
   }
 
@@ -111,19 +99,21 @@ extension EventsRoomExtension on Room {
       replyText = replyText.split('\n').map((line) => '> $line').join('\n');
       content['format'] = 'org.matrix.custom.html';
       // be sure that we strip any previous reply fallbacks
-      final replyHtml = (inReplyTo.formattedText.isNotEmpty
-              ? inReplyTo.formattedText
-              : htmlEscape.convert(inReplyTo.body).replaceAll('\n', '<br>'))
-          .replaceAll(
-        RegExp(
-          r'<mx-reply>.*</mx-reply>',
-          caseSensitive: false,
-          multiLine: false,
-          dotAll: true,
-        ),
-        '',
-      );
-      final repliedHtml = content.tryGet<String>('formatted_body') ??
+      final replyHtml =
+          (inReplyTo.formattedText.isNotEmpty
+                  ? inReplyTo.formattedText
+                  : htmlEscape.convert(inReplyTo.body).replaceAll('\n', '<br>'))
+              .replaceAll(
+                RegExp(
+                  r'<mx-reply>.*</mx-reply>',
+                  caseSensitive: false,
+                  multiLine: false,
+                  dotAll: true,
+                ),
+                '',
+              );
+      final repliedHtml =
+          content.tryGet<String>('formatted_body') ??
           htmlEscape
               .convert(content.tryGet<String>('body') ?? '')
               .replaceAll('\n', '<br>');
@@ -134,9 +124,7 @@ extension EventsRoomExtension on Room {
       content['body'] =
           '${replyText.replaceAll('@room', '@\u200broom')}\n\n${content.tryGet<String>('body') ?? ''}';
       content['m.relates_to'] = {
-        'm.in_reply_to': {
-          'event_id': inReplyTo.eventId,
-        },
+        'm.in_reply_to': {'event_id': inReplyTo.eventId},
       };
     }
 
@@ -190,13 +178,7 @@ extension EventsRoomExtension on Room {
       nextBatch: '',
       rooms: RoomsUpdate(
         join: {
-          id: JoinedRoomUpdate(
-            timeline: TimelineUpdate(
-              events: [
-                event,
-              ],
-            ),
-          ),
+          id: JoinedRoomUpdate(timeline: TimelineUpdate(events: [event])),
         },
       ),
     );
@@ -234,10 +216,7 @@ extension EventsRoomExtension on Room {
     //   );
     // }
 
-    final event = <String, dynamic>{
-      'msgtype': msgtype,
-      'body': message,
-    };
+    final event = <String, dynamic>{'msgtype': msgtype, 'body': message};
     if (choreo != null) {
       event[ModelKey.choreoRecord] = choreo.toJson();
     }
@@ -305,9 +284,7 @@ extension EventsRoomExtension on Room {
       await timeline.requestFuture(
         historyCount: 100,
         filter: StateFilter(
-          types: [
-            PangeaEventTypes.construct,
-          ],
+          types: [PangeaEventTypes.construct],
           senders: [userID],
         ),
       );
@@ -322,9 +299,7 @@ extension EventsRoomExtension on Room {
       await timeline.requestHistory(
         historyCount: 100,
         filter: StateFilter(
-          types: [
-            PangeaEventTypes.construct,
-          ],
+          types: [PangeaEventTypes.construct],
           senders: [userID],
         ),
       );
@@ -349,8 +324,10 @@ extension EventsRoomExtension on Room {
   }
 
   Future<List<Event>> getAllEvents({String? since}) async {
-    final GetRoomEventsResponse initalResp =
-        await client.getRoomEvents(id, Direction.b);
+    final GetRoomEventsResponse initalResp = await client.getRoomEvents(
+      id,
+      Direction.b,
+    );
 
     if (initalResp.end == null) return [];
     String? nextStartToken = initalResp.end;

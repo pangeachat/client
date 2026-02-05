@@ -28,8 +28,8 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
         expirationDate = DateTime.tryParse(currentSubscription.expiresDate);
         unsubscribeDetectedAt =
             currentSubscription.unsubscribeDetectedAt != null
-                ? DateTime.parse(currentSubscription.unsubscribeDetectedAt!)
-                : null;
+            ? DateTime.parse(currentSubscription.unsubscribeDetectedAt!)
+            : null;
       }
     } catch (err) {
       currentSubscriptionId = AppConfig.errorSubscriptionId;

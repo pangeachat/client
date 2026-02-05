@@ -45,26 +45,28 @@ extension PangeaEvent on Event {
     if (type != EventTypes.Message || messageType != MessageTypes.Audio) {
       ErrorHandler.logError(
         e: "Event is not an audio message",
-        data: {
-          "event": toJson(),
-        },
+        data: {"event": toJson()},
       );
       return null;
     }
 
-    final transcription =
-        content.tryGetMap<String, dynamic>(ModelKey.transcription);
-    final audioContent =
-        content.tryGetMap<String, dynamic>('org.matrix.msc1767.audio');
+    final transcription = content.tryGetMap<String, dynamic>(
+      ModelKey.transcription,
+    );
+    final audioContent = content.tryGetMap<String, dynamic>(
+      'org.matrix.msc1767.audio',
+    );
 
     final matrixFile = await downloadAndDecryptAttachment();
 
-    final duration = audioContent?.tryGet<int>(ModelKey.duration) ??
+    final duration =
+        audioContent?.tryGet<int>(ModelKey.duration) ??
         content
             .tryGetMap<String, dynamic>('info')
             ?.tryGet<int>(ModelKey.duration);
 
-    final waveform = audioContent?.tryGetList<int>('waveform') ??
+    final waveform =
+        audioContent?.tryGetList<int>('waveform') ??
         content
             .tryGetMap<String, dynamic>('org.matrix.msc1767.audio')
             ?.tryGetList<int>('waveform');

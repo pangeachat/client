@@ -42,9 +42,7 @@ class FluffyChatApp extends StatelessWidget {
   static final GoRouter router = GoRouter(
     routes: AppRoutes.routes,
     // #Pangea
-    observers: [
-      GoogleAnalytics.getAnalyticsObserver(),
-    ],
+    observers: [GoogleAnalytics.getAnalyticsObserver()],
     // Pangea#
     debugLogDiagnostics: true,
   );
@@ -56,8 +54,11 @@ class FluffyChatApp extends StatelessWidget {
         title: AppSettings.applicationName.value,
         themeMode: themeMode,
         theme: FluffyThemes.buildTheme(context, Brightness.light, primaryColor),
-        darkTheme:
-            FluffyThemes.buildTheme(context, Brightness.dark, primaryColor),
+        darkTheme: FluffyThemes.buildTheme(
+          context,
+          Brightness.dark,
+          primaryColor,
+        ),
         scrollBehavior: CustomScrollBehavior(),
         // #Pangea
         locale: Provider.of<LocaleProvider>(context).locale,

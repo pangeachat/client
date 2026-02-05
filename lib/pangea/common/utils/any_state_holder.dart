@@ -32,8 +32,9 @@ class PangeaAnyState {
         Sentry.addBreadcrumb(Breadcrumb(data: _layerLinkAndKeys));
         throw Exception("layerLinkAndKey with null for $transformTargetId");
       } else {
-        _layerLinkAndKeys[transformTargetId] =
-            LayerLinkAndKey(transformTargetId);
+        _layerLinkAndKeys[transformTargetId] = LayerLinkAndKey(
+          transformTargetId,
+        );
       }
     }
 
@@ -66,10 +67,7 @@ class PangeaAnyState {
       ),
     );
 
-    Overlay.of(
-      context,
-      rootOverlay: rootOverlay,
-    ).insert(entry);
+    Overlay.of(context, rootOverlay: rootOverlay).insert(entry);
 
     return true;
   }
@@ -77,31 +75,20 @@ class PangeaAnyState {
   void closeOverlay([String? overlayKey]) {
     final entry = overlayKey != null
         ? entries.firstWhereOrNull((element) => element.key == overlayKey)
-        : entries.lastWhereOrNull(
-            (element) => element.canPop,
-          );
+        : entries.lastWhereOrNull((element) => element.canPop);
 
     if (entry != null) {
       try {
         entry.entry.remove();
         entry.entry.dispose();
       } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            "overlay": entry,
-          },
-        );
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": entry});
       }
       entries.remove(entry);
     }
   }
 
-  void closeAllOverlays({
-    RegExp? filter,
-    force = false,
-  }) {
+  void closeAllOverlays({RegExp? filter, force = false}) {
     List<OverlayListEntry> shouldRemove = List.from(entries);
     if (!force) {
       shouldRemove = shouldRemove.where((element) => element.canPop).toList();
@@ -120,13 +107,7 @@ class PangeaAnyState {
         shouldRemove[i].entry.remove();
         shouldRemove[i].entry.dispose();
       } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            "overlay": shouldRemove[i],
-          },
-        );
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": shouldRemove[i]});
       }
 
       entries.remove(shouldRemove[i]);
@@ -134,8 +115,9 @@ class PangeaAnyState {
   }
 
   RenderBox? getRenderBox(String key) {
-    final box = layerLinkAndKey(key).key.currentContext?.findRenderObject()
-        as RenderBox?;
+    final box =
+        layerLinkAndKey(key).key.currentContext?.findRenderObject()
+            as RenderBox?;
     return box?.hasSize == true ? box : null;
   }
 
@@ -166,10 +148,10 @@ class LayerLinkAndKey {
   }
 
   Map<String, dynamic> toJson() => {
-        "key": key.toString(),
-        "link": link.toString(),
-        "transformTargetId": transformTargetId,
-      };
+    "key": key.toString(),
+    "link": link.toString(),
+    "transformTargetId": transformTargetId,
+  };
 
   @override
   operator ==(Object other) =>

@@ -38,7 +38,7 @@ class SettingsStyleView extends StatelessWidget {
       backgroundColor: theme.colorScheme.surface,
       body: MaxWidthBody(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: .stretch,
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -65,9 +65,7 @@ class SettingsStyleView extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(
-              color: theme.dividerColor,
-            ),
+            Divider(color: theme.dividerColor),
             ListTile(
               title: Text(
                 L10n.of(context).setColorTheme,
@@ -81,10 +79,11 @@ class SettingsStyleView extends StatelessWidget {
               builder: (light, dark) {
                 final systemColor =
                     Theme.of(context).brightness == Brightness.light
-                        ? light?.primary
-                        : dark?.primary;
-                final colors =
-                    List<Color?>.from(SettingsStyleController.customColors);
+                    ? light?.primary
+                    : dark?.primary;
+                final colors = List<Color?>.from(
+                  SettingsStyleController.customColors,
+                );
                 if (systemColor == null) {
                   colors.remove(null);
                 }
@@ -108,8 +107,9 @@ class SettingsStyleView extends StatelessWidget {
                           child: Material(
                             color: color ?? systemColor,
                             elevation: 6,
-                            borderRadius:
-                                BorderRadius.circular(colorPickerSize),
+                            borderRadius: BorderRadius.circular(
+                              colorPickerSize,
+                            ),
                             child: SizedBox(
                               width: colorPickerSize,
                               height: colorPickerSize,
@@ -118,9 +118,9 @@ class SettingsStyleView extends StatelessWidget {
                                       child: Icon(
                                         Icons.check,
                                         size: 16,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary,
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onPrimary,
                                       ),
                                     )
                                   : null,
@@ -133,9 +133,7 @@ class SettingsStyleView extends StatelessWidget {
                 );
               },
             ),
-            Divider(
-              color: theme.dividerColor,
-            ),
+            Divider(color: theme.dividerColor),
             ListTile(
               title: Text(
                 L10n.of(context).messagesStyle,
@@ -159,7 +157,7 @@ class SettingsStyleView extends StatelessWidget {
                 final accountConfig = client.applicationAccountConfig;
 
                 return Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     AnimatedContainer(
                       duration: FluffyThemes.animationDuration,
@@ -188,14 +186,16 @@ class SettingsStyleView extends StatelessWidget {
                               ),
                             ),
                           Column(
-                            mainAxisSize: MainAxisSize.min,
+                            mainAxisSize: .min,
                             children: [
                               const SizedBox(height: 16),
                               StateMessage(
                                 Event(
                                   eventId: 'style_dummy',
-                                  room:
-                                      Room(id: '!style_dummy', client: client),
+                                  room: Room(
+                                    id: '!style_dummy',
+                                    client: client,
+                                  ),
                                   content: {'membership': 'join'},
                                   type: EventTypes.RoomMember,
                                   senderId: client.userID!,
@@ -228,7 +228,8 @@ class SettingsStyleView extends StatelessWidget {
                                       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
                                       style: TextStyle(
                                         color: theme.onBubbleColor,
-                                        fontSize: AppConfig.messageFontSize *
+                                        fontSize:
+                                            AppConfig.messageFontSize *
                                             AppSettings.fontSizeFactor.value,
                                       ),
                                     ),
@@ -261,7 +262,8 @@ class SettingsStyleView extends StatelessWidget {
                                         'Lorem ipsum dolor sit amet',
                                         style: TextStyle(
                                           color: theme.colorScheme.onSurface,
-                                          fontSize: AppConfig.messageFontSize *
+                                          fontSize:
+                                              AppConfig.messageFontSize *
                                               AppSettings.fontSizeFactor.value,
                                         ),
                                       ),
@@ -274,9 +276,7 @@ class SettingsStyleView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(
-                      color: theme.dividerColor,
-                    ),
+                    Divider(color: theme.dividerColor),
                     ListTile(
                       title: TextButton.icon(
                         style: TextButton.styleFrom(
@@ -324,9 +324,7 @@ class SettingsStyleView extends StatelessWidget {
             ),
             ListTile(
               title: Text(L10n.of(context).fontSize),
-              trailing: Text(
-                '× ${AppSettings.fontSizeFactor.value}',
-              ),
+              trailing: Text('× ${AppSettings.fontSizeFactor.value}'),
             ),
             Slider.adaptive(
               min: 0.5,
@@ -337,9 +335,7 @@ class SettingsStyleView extends StatelessWidget {
               onChanged: controller.changeFontSizeFactor,
             ),
             // #Pangea
-            // Divider(
-            //   color: theme.dividerColor,
-            // ),
+            // Divider(color: theme.dividerColor),
             // ListTile(
             //   title: Text(
             //     L10n.of(context).overview,

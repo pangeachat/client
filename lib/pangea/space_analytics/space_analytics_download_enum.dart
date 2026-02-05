@@ -88,5 +88,5 @@ enum DownloadStatus {
   loading,
 
   /// The data has been downloaded successfully.
-  complete;
+  complete,
 }

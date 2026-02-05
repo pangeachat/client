@@ -93,25 +93,21 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
   }
 
   void _startTickerAnimations() {
-    _vocabTickerAnimation = IntTween(
-      begin: 0,
-      end: widget.newVocabConstructs,
-    ).animate(
-      CurvedAnimation(
-        parent: _tickerController,
-        curve: Curves.easeOutCubic,
-      ),
-    );
+    _vocabTickerAnimation = IntTween(begin: 0, end: widget.newVocabConstructs)
+        .animate(
+          CurvedAnimation(
+            parent: _tickerController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
-    _grammarTickerAnimation = IntTween(
-      begin: 0,
-      end: widget.newGrammarConstructs,
-    ).animate(
-      CurvedAnimation(
-        parent: _tickerController,
-        curve: Curves.easeOutCubic,
-      ),
-    );
+    _grammarTickerAnimation =
+        IntTween(begin: 0, end: widget.newGrammarConstructs).animate(
+          CurvedAnimation(
+            parent: _tickerController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
     setState(() {});
     _tickerController.forward();
@@ -136,9 +132,7 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
             builder: (context, child) {
               return Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .surfaceContainer
+                  color: Theme.of(context).colorScheme.surfaceContainer
                       .withAlpha((_bubbleOpacityAnimation.value * 255).round()),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16.0),
@@ -240,28 +234,18 @@ class _AnimatedCounter extends StatelessWidget {
   final Animation<int>? animation;
   final TextStyle? style;
 
-  const _AnimatedCounter({
-    super.key,
-    required this.animation,
-    this.style,
-  });
+  const _AnimatedCounter({super.key, required this.animation, this.style});
 
   @override
   Widget build(BuildContext context) {
     if (animation == null) {
-      return Text(
-        "+ 0",
-        style: style,
-      );
+      return Text("+ 0", style: style);
     }
 
     return AnimatedBuilder(
       animation: animation!,
       builder: (context, child) {
-        return Text(
-          "+ ${animation!.value}",
-          style: style,
-        );
+        return Text("+ ${animation!.value}", style: style);
       },
     );
   }

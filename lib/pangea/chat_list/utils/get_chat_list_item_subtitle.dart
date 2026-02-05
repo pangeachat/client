@@ -30,9 +30,7 @@ class ChatListItemSubtitle extends StatelessWidget {
             event.isRichMessage);
   }
 
-  Future<PangeaMessageEvent> _getPangeaMessageEvent(
-    final Event event,
-  ) async {
+  Future<PangeaMessageEvent> _getPangeaMessageEvent(final Event event) async {
     final Timeline timeline = event.room.timeline != null
         ? event.room.timeline!
         : await event.room.getTimeline();
@@ -81,7 +79,8 @@ class ChatListItemSubtitle extends StatelessWidget {
           hideEdit: true,
           plaintextBody: true,
           removeMarkdown: true,
-          withSenderNamePrefix: !event.room.isDirectChat ||
+          withSenderNamePrefix:
+              !event.room.isDirectChat ||
               event.room.directChatMatrixID != event.room.lastEvent?.senderId,
         ),
         builder: (context, snapshot) {

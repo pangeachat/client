@@ -4,10 +4,7 @@ class LanguageArc {
   final LanguageModel l1;
   final LanguageModel l2;
 
-  LanguageArc({
-    required this.l1,
-    required this.l2,
-  });
+  LanguageArc({required this.l1, required this.l2});
 
   factory LanguageArc.fromJson(Map<String, dynamic> json) {
     return LanguageArc(
@@ -17,10 +14,7 @@ class LanguageArc {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'l1': l1.toJson(),
-      'l2': l2.toJson(),
-    };
+    return {'l1': l1.toJson(), 'l2': l2.toJson()};
   }
 
   @override

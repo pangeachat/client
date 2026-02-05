@@ -16,7 +16,7 @@ extension UiaRequestManager on MatrixState {
     final l10n = L10n.of(context);
     final navigatorContext =
         FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
-            context;
+        context;
     try {
       if (uiaRequest.state != UiaRequestState.waitForUser ||
           uiaRequest.nextStages.isEmpty) {
@@ -27,7 +27,8 @@ extension UiaRequestManager on MatrixState {
       Logs().d('Uia Request Stage: $stage');
       switch (stage) {
         case AuthenticationTypes.password:
-          final input = cachedPassword ??
+          final input =
+              cachedPassword ??
               (await showTextInputDialog(
                 context: navigatorContext,
                 title: l10n.pleaseEnterYourPassword,
@@ -90,9 +91,7 @@ extension UiaRequestManager on MatrixState {
               ?.tryGet<String>('url');
           final fallbackUrl = client.homeserver!.replace(
             path: '/_matrix/client/v3/auth/$stage/fallback/web',
-            queryParameters: {
-              'session': uiaRequest.session,
-            },
+            queryParameters: {'session': uiaRequest.session},
           );
           final url = stageUrl != null
               ? (Uri.tryParse(stageUrl) ?? fallbackUrl)
@@ -109,8 +108,9 @@ extension UiaRequestManager on MatrixState {
 
           launchUrl(url, mode: LaunchMode.inAppBrowserView);
           final completer = Completer();
-          final listener =
-              AppLifecycleListener(onResume: () => completer.complete());
+          final listener = AppLifecycleListener(
+            onResume: () => completer.complete(),
+          );
           await completer.future;
           listener.dispose();
 

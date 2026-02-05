@@ -13,10 +13,7 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 class ShareRoomButton extends StatelessWidget {
   final Room room;
-  const ShareRoomButton({
-    super.key,
-    required this.room,
-  });
+  const ShareRoomButton({super.key, required this.room});
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +29,16 @@ class ShareRoomButton extends StatelessWidget {
         final spaceCode = room.classCode!;
         String toCopy = spaceCode;
         if (value == 0) {
-          final String initialUrl =
-              kIsWeb ? html.window.origin! : Environment.frontendURL;
+          final String initialUrl = kIsWeb
+              ? html.window.origin!
+              : Environment.frontendURL;
           toCopy =
               "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode}";
         }
 
         await Clipboard.setData(ClipboardData(text: toCopy));
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(
-          SnackBar(
-            content: Text(
-              L10n.of(context).copiedToClipboard,
-            ),
-          ),
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
         );
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
@@ -60,9 +52,7 @@ class ShareRoomButton extends StatelessWidget {
         PopupMenuItem<int>(
           value: 1,
           child: ListTile(
-            title: Text(
-              L10n.of(context).shareInviteCode(room.classCode!),
-            ),
+            title: Text(L10n.of(context).shareInviteCode(room.classCode!)),
             contentPadding: const EdgeInsets.all(0),
           ),
         ),

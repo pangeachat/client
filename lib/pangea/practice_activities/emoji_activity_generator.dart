@@ -42,8 +42,9 @@ class EmojiActivityGenerator {
             .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
             .toList();
 
-    final List<Result<LemmaInfoResponse>> lemmaInfos =
-        await Future.wait(lemmaInfoFutures);
+    final List<Result<LemmaInfoResponse>> lemmaInfos = await Future.wait(
+      lemmaInfoFutures,
+    );
 
     for (int i = 0; i < missingEmojis.length; i++) {
       if (lemmaInfos[i].isError) {
@@ -51,11 +52,10 @@ class EmojiActivityGenerator {
       }
 
       final e = lemmaInfos[i].asValue!.value.emoji.firstWhere(
-            (e) => !usedEmojis.contains(e),
-            orElse: () => throw Exception(
-              "Not enough unique emojis for tokens in message",
-            ),
-          );
+        (e) => !usedEmojis.contains(e),
+        orElse: () =>
+            throw Exception("Not enough unique emojis for tokens in message"),
+      );
 
       final token = missingEmojis[i];
       matchInfo[token.vocabForm] ??= [];
@@ -67,9 +67,7 @@ class EmojiActivityGenerator {
       activity: EmojiPracticeActivityModel(
         tokens: req.target.tokens,
         langCode: req.userL2,
-        matchContent: PracticeMatchActivity(
-          matchInfo: matchInfo,
-        ),
+        matchContent: PracticeMatchActivity(matchInfo: matchInfo),
       ),
     );
   }

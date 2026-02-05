@@ -14,10 +14,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ConstructXPProgressBar extends StatelessWidget {
   final ConstructIdentifier construct;
 
-  const ConstructXPProgressBar({
-    required this.construct,
-    super.key,
-  });
+  const ConstructXPProgressBar({required this.construct, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +53,9 @@ class ConstructXPProgressBar extends StatelessWidget {
                   height: 20.0,
                   widthPercent: progress,
                   barColor: AppConfig.goldLight,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.secondaryContainer,
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.secondaryContainer,
                 ),
               ],
             );

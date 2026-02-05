@@ -17,10 +17,7 @@ import 'package:fluffychat/utils/platform_infos.dart';
 class ChatEventList extends StatelessWidget {
   final ChatController controller;
 
-  const ChatEventList({
-    super.key,
-    required this.controller,
-  });
+  const ChatEventList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +28,7 @@ class ChatEventList extends StatelessWidget {
     }
     final theme = Theme.of(context);
 
-    final colors = [
-      theme.secondaryBubbleColor,
-      theme.bubbleColor,
-    ];
+    final colors = [theme.secondaryBubbleColor, theme.bubbleColor];
 
     final horizontalPadding = FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
@@ -96,7 +90,7 @@ class ChatEventList extends StatelessWidget {
                   );
                 }
                 return Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     SeenByRow(controller),
                     TypingIndicators(controller),
@@ -118,8 +112,9 @@ class ChatEventList extends StatelessWidget {
                       );
                       if (visibleIndex > timeline.events.length - 50) {
                         // #Pangea
-                        // WidgetsBinding.instance
-                        //     .addPostFrameCallback(controller.requestHistory);
+                        // WidgetsBinding.instance.addPostFrameCallback(
+                        //   controller.requestHistory,
+                        // );
                         WidgetsBinding.instance.addPostFrameCallback(
                           (_) => controller.requestHistory(),
                         );
@@ -156,7 +151,8 @@ class ChatEventList extends StatelessWidget {
 
               // The message at this index:
               final event = events[i];
-              final animateIn = animateInEventIndex != null &&
+              final animateIn =
+                  animateInEventIndex != null &&
                   timeline.events.length > animateInEventIndex &&
                   event == timeline.events[animateInEventIndex];
 
@@ -164,10 +160,12 @@ class ChatEventList extends StatelessWidget {
               final previousEvent = i > 0 ? events[i - 1] : null;
 
               // Collapsed state event
-              final canExpand = event.isCollapsedState &&
+              final canExpand =
+                  event.isCollapsedState &&
                   nextEvent?.isCollapsedState == true &&
                   previousEvent?.isCollapsedState != true;
-              final isCollapsed = event.isCollapsedState &&
+              final isCollapsed =
+                  event.isCollapsedState &&
                   previousEvent?.isCollapsedState == true &&
                   !controller.expandedEventIds.contains(event.eventId);
 
@@ -202,11 +200,12 @@ class ChatEventList extends StatelessWidget {
                   isButton: event.eventId == controller.buttonEventID,
                   canRefresh: event.eventId == controller.refreshEventID,
                   // Pangea#
-                  selected: controller.selectedEvents
-                      .any((e) => e.eventId == event.eventId),
+                  selected: controller.selectedEvents.any(
+                    (e) => e.eventId == event.eventId,
+                  ),
                   singleSelected:
                       controller.selectedEvents.singleOrNull?.eventId ==
-                          event.eventId,
+                      event.eventId,
                   onEdit: () => controller.editSelectedEventAction(),
                   timeline: timeline,
                   displayReadMarker:
@@ -222,10 +221,9 @@ class ChatEventList extends StatelessWidget {
                       : null,
                   onExpand: canExpand
                       ? () => controller.expandEventsFrom(
-                            event,
-                            !controller.expandedEventIds
-                                .contains(event.eventId),
-                          )
+                          event,
+                          !controller.expandedEventIds.contains(event.eventId),
+                        )
                       : null,
                 ),
               );

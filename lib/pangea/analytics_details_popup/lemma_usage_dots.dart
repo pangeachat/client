@@ -29,13 +29,11 @@ class LemmaUsageDots extends StatelessWidget {
       // If the use type matches the given category, save to list
       // Usage with positive XP is saved as true, else false
       if (category == use.useType.skillsEnumType) {
-        useList.add(
-          switch (use.xp) {
-            > 0 => AppConfig.success,
-            < 0 => Colors.red,
-            _ => Colors.grey[400]!,
-          },
-        );
+        useList.add(switch (use.xp) {
+          > 0 => AppConfig.success,
+          < 0 => Colors.red,
+          _ => Colors.grey[400]!,
+        });
       }
     }
     return useList;
@@ -49,10 +47,7 @@ class LemmaUsageDots extends StatelessWidget {
         Container(
           width: 15.0,
           height: 15.0,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
       );
     }
@@ -65,11 +60,7 @@ class LemmaUsageDots extends StatelessWidget {
       leading: Tooltip(
         triggerMode: TooltipTriggerMode.tap,
         message: tooltip,
-        child: Icon(
-          icon,
-          size: 24,
-          color: textColor.withValues(alpha: 0.7),
-        ),
+        child: Icon(icon, size: 24, color: textColor.withValues(alpha: 0.7)),
       ),
       title: dots.isEmpty
           ? Text(
@@ -80,11 +71,7 @@ class LemmaUsageDots extends StatelessWidget {
                 color: textColor.withAlpha(100),
               ),
             )
-          : Wrap(
-              spacing: 3,
-              runSpacing: 5,
-              children: dots,
-            ),
+          : Wrap(spacing: 3, runSpacing: 5, children: dots),
     );
   }
 }

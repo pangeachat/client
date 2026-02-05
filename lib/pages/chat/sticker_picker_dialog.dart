@@ -37,15 +37,17 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
       final filteredImagePackImageEntried = pack.images.entries.toList();
       if (searchFilter?.isNotEmpty ?? false) {
         filteredImagePackImageEntried.removeWhere(
-          (e) => !(e.key.toLowerCase().contains(searchFilter!.toLowerCase()) ||
-              (e.value.body
-                      ?.toLowerCase()
-                      .contains(searchFilter!.toLowerCase()) ??
-                  false)),
+          (e) =>
+              !(e.key.toLowerCase().contains(searchFilter!.toLowerCase()) ||
+                  (e.value.body?.toLowerCase().contains(
+                        searchFilter!.toLowerCase(),
+                      ) ??
+                      false)),
         );
       }
-      final imageKeys =
-          filteredImagePackImageEntried.map((e) => e.key).toList();
+      final imageKeys = filteredImagePackImageEntried
+          .map((e) => e.key)
+          .toList();
       if (imageKeys.isEmpty) {
         return const SizedBox.shrink();
       }
@@ -81,8 +83,9 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
                   key: ValueKey(image.url.toString()),
                   onTap: () {
                     // copy the image
-                    final imageCopy =
-                        ImagePackImageContent.fromJson(image.toJson().copy());
+                    final imageCopy = ImagePackImageContent.fromJson(
+                      image.toJson().copy(),
+                    );
                     // set the body, if it doesn't exist, to the key
                     imageCopy.body ??= imageKeys[imageIndex];
                     widget.onSelected(imageCopy);
@@ -136,7 +139,7 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
               SliverFillRemaining(
                 child: Center(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       Text(L10n.of(context).noEmotesFound),
                       // #Pangea

@@ -34,12 +34,9 @@ extension SavedAnalyticsExtension on Room {
     ids.add(roomId);
 
     final syncFuture = client.waitForRoomInSync(id, join: true);
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.activityRoomIds,
-      "",
-      {ModelKey.roomIds: ids},
-    );
+    await client.setRoomStateWithKey(id, PangeaEventTypes.activityRoomIds, "", {
+      ModelKey.roomIds: ids,
+    });
     final newLength = _activityRoomIds.length;
     if (newLength == prevLength) {
       await syncFuture;

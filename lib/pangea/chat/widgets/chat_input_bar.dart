@@ -29,7 +29,7 @@ class ChatInputBar extends StatelessWidget {
       children: [
         ValueListenableBuilder(
           valueListenable: controller.choreographer.itController.open,
-          builder: (context, open, __) {
+          builder: (context, open, _) {
             return open
                 ? Container(
                     constraints: const BoxConstraints(
@@ -69,9 +69,7 @@ class ChatInputBar extends StatelessWidget {
           child: Material(
             clipBehavior: Clip.hardEdge,
             color: theme.colorScheme.surfaceContainerHigh,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(24),
-            ),
+            borderRadius: const BorderRadius.all(Radius.circular(24)),
             child: controller.room.isAbandonedDMRoom == true
                 ? _AbandonedDMContent(controller: controller)
                 : Column(
@@ -79,9 +77,7 @@ class ChatInputBar extends StatelessWidget {
                     children: [
                       ITBar(choreographer: controller.choreographer),
                       ReplyDisplay(controller),
-                      PangeaChatInputRow(
-                        controller: controller,
-                      ),
+                      PangeaChatInputRow(controller: controller),
                       ChatEmojiPicker(controller),
                     ],
                   ),
@@ -95,9 +91,7 @@ class ChatInputBar extends StatelessWidget {
 class _AbandonedDMContent extends StatelessWidget {
   final ChatController controller;
 
-  const _AbandonedDMContent({
-    required this.controller,
-  });
+  const _AbandonedDMContent({required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -106,32 +100,18 @@ class _AbandonedDMContent extends StatelessWidget {
       children: [
         TextButton.icon(
           style: TextButton.styleFrom(
-            padding: const EdgeInsets.all(
-              16,
-            ),
+            padding: const EdgeInsets.all(16),
             foregroundColor: Theme.of(context).colorScheme.error,
           ),
-          icon: const Icon(
-            Icons.archive_outlined,
-          ),
+          icon: const Icon(Icons.archive_outlined),
           onPressed: controller.leaveChat,
-          label: Text(
-            L10n.of(context).leave,
-          ),
+          label: Text(L10n.of(context).leave),
         ),
         TextButton.icon(
-          style: TextButton.styleFrom(
-            padding: const EdgeInsets.all(
-              16,
-            ),
-          ),
-          icon: const Icon(
-            Icons.forum_outlined,
-          ),
+          style: TextButton.styleFrom(padding: const EdgeInsets.all(16)),
+          icon: const Icon(Icons.forum_outlined),
           onPressed: controller.recreateChat,
-          label: Text(
-            L10n.of(context).reopenChat,
-          ),
+          label: Text(L10n.of(context).reopenChat),
         ),
       ],
     );

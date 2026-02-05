@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 class ActivityAnalyticsChip extends StatelessWidget {
   final IconData icon;
   final String text;
-  const ActivityAnalyticsChip(
-    this.icon,
-    this.text, {
-    super.key,
-  });
+  const ActivityAnalyticsChip(this.icon, this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +19,7 @@ class ActivityAnalyticsChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 12.0),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 12.0,
-            ),
-          ),
+          Text(text, style: const TextStyle(fontSize: 12.0)),
         ],
       ),
     );

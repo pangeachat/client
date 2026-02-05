@@ -21,10 +21,7 @@ class UnjoinedChatListItem extends StatelessWidget {
     final displayname =
         chunk.name ?? chunk.canonicalAlias ?? L10n.of(context).emptyChat;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 1,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
       child: Material(
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         clipBehavior: Clip.hardEdge,
@@ -35,14 +32,11 @@ class UnjoinedChatListItem extends StatelessWidget {
           leading: Avatar(
             mxContent: chunk.avatarUrl,
             name: displayname,
-            userId: Matrix.of(context)
-                .client
-                .getRoomById(chunk.roomId)
-                ?.directChatMatrixID,
+            userId: Matrix.of(
+              context,
+            ).client.getRoomById(chunk.roomId)?.directChatMatrixID,
             borderRadius: chunk.roomType == 'm.space'
-                ? BorderRadius.circular(
-                    AppConfig.borderRadius / 2,
-                  )
+                ? BorderRadius.circular(AppConfig.borderRadius / 2)
                 : null,
           ),
           title: Row(
@@ -62,17 +56,12 @@ class UnjoinedChatListItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 4),
-              const Icon(
-                Icons.people_outlined,
-                size: 14,
-              ),
+              const Icon(Icons.people_outlined, size: 14),
             ],
           ),
           subtitle: Text(
             chunk.topic ??
-                L10n.of(context).countParticipants(
-                  chunk.numJoinedMembers,
-                ),
+                L10n.of(context).countParticipants(chunk.numJoinedMembers),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

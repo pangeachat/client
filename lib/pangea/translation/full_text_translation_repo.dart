@@ -17,10 +17,7 @@ class _TranslateCacheItem {
   final Future<String> response;
   final DateTime timestamp;
 
-  const _TranslateCacheItem({
-    required this.response,
-    required this.timestamp,
-  });
+  const _TranslateCacheItem({required this.response, required this.timestamp});
 }
 
 class FullTextTranslationRepo {
@@ -75,18 +72,12 @@ class FullTextTranslationRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<String>? _getCached(
-    FullTextTranslationRequestModel request,
-  ) {
+  static Future<String>? _getCached(FullTextTranslationRequestModel request) {
     final cacheKeys = [..._cache.keys];
     for (final key in cacheKeys) {
       if (DateTime.now().difference(_cache[key]!.timestamp) >= _cacheDuration) {
@@ -100,9 +91,8 @@ class FullTextTranslationRepo {
   static void _setCached(
     FullTextTranslationRequestModel request,
     Future<String> response,
-  ) =>
-      _cache[request.hashCode.toString()] = _TranslateCacheItem(
-        response: response,
-        timestamp: DateTime.now(),
-      );
+  ) => _cache[request.hashCode.toString()] = _TranslateCacheItem(
+    response: response,
+    timestamp: DateTime.now(),
+  );
 }

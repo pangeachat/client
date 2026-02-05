@@ -152,7 +152,7 @@ class Message extends StatelessWidget {
           event.room.activityPlan != null) {
         return ValueListenableBuilder(
           valueListenable: controller.activityController.showInstructions,
-          builder: (context, show, __) {
+          builder: (context, show, _) {
             return ActivitySummary(
               inChat: true,
               activity: event.room.activityPlan!,
@@ -177,7 +177,6 @@ class Message extends StatelessWidget {
         return ActivityRolesEvent(event: event);
       }
       // Pangea#
-
       return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
     }
 
@@ -191,10 +190,12 @@ class Message extends StatelessWidget {
     final alignment = ownMessage ? Alignment.topRight : Alignment.topLeft;
 
     var color = theme.colorScheme.surfaceContainerHigh;
-    final displayTime = event.type == EventTypes.RoomCreate ||
+    final displayTime =
+        event.type == EventTypes.RoomCreate ||
         nextEvent == null ||
         !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
-    final nextEventSameSender = nextEvent != null &&
+    final nextEventSameSender =
+        nextEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -203,7 +204,8 @@ class Message extends StatelessWidget {
         nextEvent!.senderId == event.senderId &&
         !displayTime;
 
-    final previousEventSameSender = previousEvent != null &&
+    final previousEventSameSender =
+        previousEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -213,26 +215,28 @@ class Message extends StatelessWidget {
         previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
 
     // #Pangea
-    // final textColor =
-    //     ownMessage ? theme.onBubbleColor : theme.colorScheme.onSurface;
+    // final textColor = ownMessage
+    //     ? theme.onBubbleColor
+    //     : theme.colorScheme.onSurface;
     final textColor = ownMessage
         ? ThemeData.dark().colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
     // final linkColor = ownMessage
     //     ? theme.brightness == Brightness.light
-    //         ? theme.colorScheme.primaryFixed
-    //         : theme.colorScheme.onTertiaryContainer
+    //           ? theme.colorScheme.primaryFixed
+    //           : theme.colorScheme.onTertiaryContainer
     //     : theme.colorScheme.primary;
     final linkColor = theme.brightness == Brightness.light
         ? theme.colorScheme.primary
         : ownMessage
-            ? theme.colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
     // Pangea#
 
-    final rowMainAxisAlignment =
-        ownMessage ? MainAxisAlignment.end : MainAxisAlignment.start;
+    final rowMainAxisAlignment = ownMessage
+        ? MainAxisAlignment.end
+        : MainAxisAlignment.start;
 
     final displayEvent = event.getDisplayEvent(timeline);
     const hardCorner = Radius.circular(4);
@@ -240,12 +244,15 @@ class Message extends StatelessWidget {
     final borderRadius = BorderRadius.only(
       topLeft: !ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
       topRight: ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      bottomLeft:
-          !ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
-      bottomRight:
-          ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
+      bottomLeft: !ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
+      bottomRight: ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
     );
-    final noBubble = ({
+    final noBubble =
+        ({
               MessageTypes.Video,
               MessageTypes.Image,
               MessageTypes.Sticker,
@@ -260,8 +267,9 @@ class Message extends StatelessWidget {
 
     if (ownMessage) {
       // #Pangea
-      // color =
-      //     displayEvent.status.isError ? Colors.redAccent : theme.bubbleColor;
+      // color = displayEvent.status.isError
+      //     ? Colors.redAccent
+      //     : theme.bubbleColor;
       color = displayEvent.status.isError
           ? Colors.redAccent
           : Color.alphaBlend(
@@ -278,10 +286,7 @@ class Message extends StatelessWidget {
     if (singleSelected) {
       sentReactions.addAll(
         event
-            .aggregatedEvents(
-              timeline,
-              RelationshipTypes.reaction,
-            )
+            .aggregatedEvents(timeline, RelationshipTypes.reaction)
             .where(
               (event) =>
                   event.senderId == event.room.client.userID &&
@@ -296,11 +301,15 @@ class Message extends StatelessWidget {
       );
     }
 
-    final showReceiptsRow =
-        event.hasAggregatedEvents(timeline, RelationshipTypes.reaction);
+    final showReceiptsRow = event.hasAggregatedEvents(
+      timeline,
+      RelationshipTypes.reaction,
+    );
 
-    final threadChildren =
-        event.aggregatedEvents(timeline, RelationshipTypes.thread);
+    final threadChildren = event.aggregatedEvents(
+      timeline,
+      RelationshipTypes.thread,
+    );
 
     // #Pangea
     // final showReactionPicker =
@@ -314,9 +323,7 @@ class Message extends StatelessWidget {
         key: ValueKey(event.eventId),
         background: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0),
-          child: Center(
-            child: Icon(Icons.check_outlined),
-          ),
+          child: Center(child: Icon(Icons.check_outlined)),
         ),
         direction: AppSettings.swipeRightToLeftToReply.value
             ? SwipeDirection.endToStart
@@ -333,9 +340,8 @@ class Message extends StatelessWidget {
             bottom: previousEventSameSender ? 1.0 : 4.0,
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment:
-                ownMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            mainAxisSize: .min,
+            crossAxisAlignment: ownMessage ? .end : .start,
             children: <Widget>[
               // #Pangea
               // if (displayTime || selected)
@@ -349,8 +355,9 @@ class Message extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 4.0),
                       child: Material(
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius * 2),
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.borderRadius * 2,
+                        ),
                         color: theme.colorScheme.surface.withAlpha(128),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -417,13 +424,13 @@ class Message extends StatelessWidget {
                                     ),
                                     color: selected || highlightMarker
                                         ? theme.colorScheme.secondaryContainer
-                                            .withAlpha(128)
+                                              .withAlpha(128)
                                         : Colors.transparent,
                                   ),
                                 ),
                               ),
                               Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: .start,
                                 mainAxisAlignment: rowMainAxisAlignment,
                                 children: [
                                   // #Pangea
@@ -451,18 +458,17 @@ class Message extends StatelessWidget {
                                         child: SizedBox(
                                           width: 16,
                                           height: 16,
-                                          child: event.status ==
-                                                  EventStatus.error
+                                          child:
+                                              event.status == EventStatus.error
                                               ? const Icon(
                                                   Icons.error,
                                                   color: Colors.red,
                                                 )
                                               : event.fileSendingStatus != null
-                                                  ? const CircularProgressIndicator
-                                                      .adaptive(
-                                                      strokeWidth: 1,
-                                                    )
-                                                  : null,
+                                              ? const CircularProgressIndicator.adaptive(
+                                                  strokeWidth: 1,
+                                                )
+                                              : null,
                                         ),
                                       ),
                                     )
@@ -470,20 +476,21 @@ class Message extends StatelessWidget {
                                     FutureBuilder<User?>(
                                       future: event.fetchSenderUser(),
                                       builder: (context, snapshot) {
-                                        final user = snapshot.data ??
+                                        final user =
+                                            snapshot.data ??
                                             event.senderFromMemoryOrFallback;
                                         return Avatar(
                                           mxContent: user.avatarUrl,
                                           name: user.calcDisplayname(),
                                           onTap: () =>
                                               showMemberActionsPopupMenu(
-                                            context: context,
-                                            user: user,
-                                            onMention: onMention,
-                                            // #Pangea
-                                            room: controller.room,
-                                            // Pangea#
-                                          ),
+                                                context: context,
+                                                user: user,
+                                                onMention: onMention,
+                                                // #Pangea
+                                                room: controller.room,
+                                                // Pangea#
+                                              ),
                                           presenceUserId: user.stateKey,
                                           presenceBackgroundColor: wallpaperMode
                                               ? Colors.transparent
@@ -491,23 +498,22 @@ class Message extends StatelessWidget {
                                           // #Pangea
                                           miniIcon:
                                               user.id == BotName.byEnvironment
-                                                  ? BotSettingsLanguageIcon(
-                                                      user: user,
-                                                    )
-                                                  : null,
+                                              ? BotSettingsLanguageIcon(
+                                                  user: user,
+                                                )
+                                              : null,
                                           presenceOffset:
                                               user.id == BotName.byEnvironment
-                                                  ? const Offset(0, 0)
-                                                  : null,
+                                              ? const Offset(0, 0)
+                                              : null,
                                           // Pangea#
                                         );
                                       },
                                     ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment: .start,
+                                      mainAxisSize: .min,
                                       children: [
                                         if (!nextEventSameSender)
                                           Padding(
@@ -515,16 +521,16 @@ class Message extends StatelessWidget {
                                               left: 8.0,
                                               bottom: 4,
                                             ),
-                                            child: ownMessage ||
+                                            child:
+                                                ownMessage ||
                                                     event.room.isDirectChat
                                                 ? const SizedBox(height: 12)
                                                 : FutureBuilder<User?>(
-                                                    future:
-                                                        event.fetchSenderUser(),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      final displayname = snapshot
-                                                              .data
+                                                    future: event
+                                                        .fetchSenderUser(),
+                                                    builder: (context, snapshot) {
+                                                      final displayname =
+                                                          snapshot.data
                                                               ?.calcDisplayname() ??
                                                           event
                                                               .senderFromMemoryOrFallback
@@ -534,38 +540,39 @@ class Message extends StatelessWidget {
                                                         // displayname,
                                                         controller.room
                                                             .senderDisplayName(
-                                                          snapshot.data ??
-                                                              event
-                                                                  .senderFromMemoryOrFallback,
-                                                        ),
+                                                              snapshot.data ??
+                                                                  event
+                                                                      .senderFromMemoryOrFallback,
+                                                            ),
                                                         // Pangea#
                                                         style: TextStyle(
                                                           fontSize: 11,
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          color: (theme.brightness ==
+                                                          color:
+                                                              (theme.brightness ==
                                                                   Brightness
                                                                       .light
                                                               ? displayname
-                                                                  .color
+                                                                    .color
                                                               : displayname
-                                                                  .lightColorText),
+                                                                    .lightColorText),
                                                           shadows:
                                                               !wallpaperMode
-                                                                  ? null
-                                                                  : [
-                                                                      const Shadow(
-                                                                        offset:
-                                                                            Offset(
+                                                              ? null
+                                                              : [
+                                                                  const Shadow(
+                                                                    offset:
+                                                                        Offset(
                                                                           0.0,
                                                                           0.0,
                                                                         ),
-                                                                        blurRadius:
-                                                                            3,
-                                                                        color: Colors
-                                                                            .black,
-                                                                      ),
-                                                                    ],
+                                                                    blurRadius:
+                                                                        3,
+                                                                    color: Colors
+                                                                        .black,
+                                                                  ),
+                                                                ],
                                                         ),
                                                         maxLines: 1,
                                                         overflow: TextOverflow
@@ -576,8 +583,9 @@ class Message extends StatelessWidget {
                                           ),
                                         Container(
                                           alignment: alignment,
-                                          padding:
-                                              const EdgeInsets.only(left: 8),
+                                          padding: const EdgeInsets.only(
+                                            left: 8,
+                                          ),
                                           child: GestureDetector(
                                             // #Pangea
                                             onTap: () =>
@@ -595,49 +603,50 @@ class Message extends StatelessWidget {
                                               opacity: animateIn
                                                   ? 0
                                                   : event.messageType ==
-                                                              MessageTypes
-                                                                  .BadEncrypted ||
-                                                          event.status.isSending
-                                                      ? 0.5
-                                                      : 1,
+                                                            MessageTypes
+                                                                .BadEncrypted ||
+                                                        event.status.isSending
+                                                  ? 0.5
+                                                  : 1,
                                               duration: FluffyThemes
                                                   .animationDuration,
                                               curve:
                                                   FluffyThemes.animationCurve,
                                               // #Pangea
-                                              child:
-                                                  SelectionContainer.disabled(
+                                              child: SelectionContainer.disabled(
                                                 child: MouseRegion(
                                                   cursor:
                                                       SystemMouseCursors.click,
                                                   child: ValueListenableBuilder(
                                                     valueListenable: controller
                                                         .depressMessageButton,
-                                                    builder: (
-                                                      context,
-                                                      depressed,
-                                                      child,
-                                                    ) =>
-                                                        PressableButton(
-                                                      buttonHeight: 5,
-                                                      depressed: !isButton ||
+                                                    builder:
+                                                        (
+                                                          context,
                                                           depressed,
-                                                      borderRadius:
-                                                          borderRadius,
-                                                      onPressed: () {
-                                                        showToolbar(
-                                                          pangeaMessageEvent,
-                                                        );
-                                                      },
-                                                      color: color,
-                                                      visible:
-                                                          isButton && !noBubble,
-                                                      builder:
-                                                          (context, _, __) =>
-                                                              child!,
-                                                    ),
-                                                    // Pangea#
+                                                          child,
+                                                        ) => PressableButton(
+                                                          buttonHeight: 5,
+                                                          depressed:
+                                                              !isButton ||
+                                                              depressed,
+                                                          borderRadius:
+                                                              borderRadius,
+                                                          onPressed: () {
+                                                            showToolbar(
+                                                              pangeaMessageEvent,
+                                                            );
+                                                          },
+                                                          color: color,
+                                                          visible:
+                                                              isButton &&
+                                                              !noBubble,
+                                                          builder:
+                                                              (context, _, _) =>
+                                                                  child!,
+                                                        ),
 
+                                                    // Pangea#
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color: noBubble
@@ -649,8 +658,7 @@ class Message extends StatelessWidget {
                                                       clipBehavior:
                                                           Clip.antiAlias,
                                                       // #Pangea
-                                                      child:
-                                                          CompositedTransformTarget(
+                                                      child: CompositedTransformTarget(
                                                         link: MatrixState
                                                             .pAnyState
                                                             .layerLinkAndKey(
@@ -680,98 +688,87 @@ class Message extends StatelessWidget {
                                                                 )
                                                                 .key,
                                                             // Pangea#
-                                                            decoration:
-                                                                BoxDecoration(
+                                                            decoration: BoxDecoration(
                                                               borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                AppConfig
-                                                                    .borderRadius,
-                                                              ),
+                                                                  BorderRadius.circular(
+                                                                    AppConfig
+                                                                        .borderRadius,
+                                                                  ),
                                                             ),
                                                             constraints:
                                                                 const BoxConstraints(
-                                                              maxWidth: FluffyThemes
-                                                                      .columnWidth *
-                                                                  1.5,
-                                                            ),
+                                                                  maxWidth:
+                                                                      FluffyThemes
+                                                                          .columnWidth *
+                                                                      1.5,
+                                                                ),
                                                             child: Column(
                                                               mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                                  .min,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .start,
                                                               children: <Widget>[
-                                                                if (event
-                                                                        .inReplyToEventId(
+                                                                if (event.inReplyToEventId(
                                                                       includingFallback:
                                                                           false,
                                                                     ) !=
                                                                     null)
                                                                   FutureBuilder<
-                                                                      Event?>(
+                                                                    Event?
+                                                                  >(
                                                                     future: event
                                                                         .getReplyEvent(
-                                                                      timeline,
-                                                                    ),
-                                                                    builder: (
-                                                                      BuildContext
-                                                                          context,
-                                                                      snapshot,
-                                                                    ) {
-                                                                      final replyEvent = snapshot
-                                                                              .hasData
-                                                                          ? snapshot
-                                                                              .data!
-                                                                          : Event(
-                                                                              eventId: event.inReplyToEventId() ?? '\$fake_event_id',
-                                                                              content: {
-                                                                                'msgtype': 'm.text',
-                                                                                'body': '...',
-                                                                              },
-                                                                              senderId: event.senderId,
-                                                                              type: 'm.room.message',
-                                                                              room: event.room,
-                                                                              status: EventStatus.sent,
-                                                                              originServerTs: DateTime.now(),
-                                                                            );
-                                                                      return Padding(
-                                                                        padding:
-                                                                            const EdgeInsets.only(
-                                                                          left:
-                                                                              16,
-                                                                          right:
-                                                                              16,
-                                                                          top:
-                                                                              8,
+                                                                          timeline,
                                                                         ),
-                                                                        child:
-                                                                            Material(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                          borderRadius:
-                                                                              ReplyContent.borderRadius,
-                                                                          child:
-                                                                              InkWell(
-                                                                            borderRadius:
-                                                                                ReplyContent.borderRadius,
-                                                                            onTap: () =>
-                                                                                scrollToEventId(
-                                                                              replyEvent.eventId,
+                                                                    builder:
+                                                                        (
+                                                                          BuildContext
+                                                                          context,
+                                                                          snapshot,
+                                                                        ) {
+                                                                          final replyEvent =
+                                                                              snapshot.hasData
+                                                                              ? snapshot.data!
+                                                                              : Event(
+                                                                                  eventId:
+                                                                                      event.inReplyToEventId() ??
+                                                                                      '\$fake_event_id',
+                                                                                  content: {
+                                                                                    'msgtype': 'm.text',
+                                                                                    'body': '...',
+                                                                                  },
+                                                                                  senderId: event.senderId,
+                                                                                  type: 'm.room.message',
+                                                                                  room: event.room,
+                                                                                  status: EventStatus.sent,
+                                                                                  originServerTs: DateTime.now(),
+                                                                                );
+                                                                          return Padding(
+                                                                            padding: const EdgeInsets.only(
+                                                                              left: 16,
+                                                                              right: 16,
+                                                                              top: 8,
                                                                             ),
-                                                                            child:
-                                                                                AbsorbPointer(
-                                                                              child: ReplyContent(
-                                                                                replyEvent,
-                                                                                ownMessage: ownMessage,
-                                                                                timeline: timeline,
+                                                                            child: Material(
+                                                                              color: Colors.transparent,
+                                                                              borderRadius: ReplyContent.borderRadius,
+                                                                              child: InkWell(
+                                                                                borderRadius: ReplyContent.borderRadius,
+                                                                                onTap: () => scrollToEventId(
+                                                                                  replyEvent.eventId,
+                                                                                ),
+                                                                                child: AbsorbPointer(
+                                                                                  child: ReplyContent(
+                                                                                    replyEvent,
+                                                                                    ownMessage: ownMessage,
+                                                                                    timeline: timeline,
+                                                                                  ),
+                                                                                ),
                                                                               ),
                                                                             ),
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
+                                                                          );
+                                                                        },
                                                                   ),
                                                                 MessageContent(
                                                                   displayEvent,
@@ -800,14 +797,12 @@ class Message extends StatelessWidget {
                                                                 ),
                                                                 if (event
                                                                     .hasAggregatedEvents(
-                                                                  timeline,
-                                                                  RelationshipTypes
-                                                                      .edit,
-                                                                ))
+                                                                      timeline,
+                                                                      RelationshipTypes
+                                                                          .edit,
+                                                                    ))
                                                                   Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                            .only(
+                                                                    padding: const EdgeInsets.only(
                                                                       bottom:
                                                                           8.0,
                                                                       left:
@@ -825,23 +820,18 @@ class Message extends StatelessWidget {
                                                                         Icon(
                                                                           Icons
                                                                               .edit_outlined,
-                                                                          color:
-                                                                              textColor.withAlpha(
+                                                                          color: textColor.withAlpha(
                                                                             164,
                                                                           ),
                                                                           size:
                                                                               14,
                                                                         ),
                                                                         Text(
-                                                                          displayEvent
-                                                                              .originServerTs
-                                                                              .localizedTimeShort(
+                                                                          displayEvent.originServerTs.localizedTimeShort(
                                                                             context,
                                                                           ),
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                textColor.withAlpha(
+                                                                          style: TextStyle(
+                                                                            color: textColor.withAlpha(
                                                                               164,
                                                                             ),
                                                                             fontSize:
@@ -876,46 +866,43 @@ class Message extends StatelessWidget {
                                         //         ? Padding(
                                         //             padding:
                                         //                 const EdgeInsets.all(
-                                        //               4.0,
-                                        //             ),
+                                        //                   4.0,
+                                        //                 ),
                                         //             child: Material(
                                         //               elevation: 4,
                                         //               borderRadius:
                                         //                   BorderRadius.circular(
-                                        //                 AppConfig.borderRadius,
-                                        //               ),
+                                        //                     AppConfig
+                                        //                         .borderRadius,
+                                        //                   ),
                                         //               shadowColor: theme
-                                        //                   .colorScheme.surface
+                                        //                   .colorScheme
+                                        //                   .surface
                                         //                   .withAlpha(128),
-                                        //               child:
-                                        //                   SingleChildScrollView(
+                                        //               child: SingleChildScrollView(
                                         //                 scrollDirection:
                                         //                     Axis.horizontal,
                                         //                 child: Row(
-                                        //                   mainAxisSize:
-                                        //                       MainAxisSize.min,
+                                        //                   mainAxisSize: .min,
                                         //                   children: [
-                                        //                     ...AppConfig
-                                        //                         .defaultReactions
-                                        //                         .map(
-                                        //                       (emoji) =>
-                                        //                           IconButton(
+                                        //                     ...AppConfig.defaultReactions.map(
+                                        //                       (
+                                        //                         emoji,
+                                        //                       ) => IconButton(
                                         //                         padding:
                                         //                             EdgeInsets
                                         //                                 .zero,
                                         //                         icon: Center(
-                                        //                           child:
-                                        //                               Opacity(
-                                        //                             opacity: sentReactions
-                                        //                                     .contains(
-                                        //                               emoji,
-                                        //                             )
+                                        //                           child: Opacity(
+                                        //                             opacity:
+                                        //                                 sentReactions.contains(
+                                        //                                   emoji,
+                                        //                                 )
                                         //                                 ? 0.33
                                         //                                 : 1,
                                         //                             child: Text(
                                         //                               emoji,
-                                        //                               style:
-                                        //                                   const TextStyle(
+                                        //                               style: const TextStyle(
                                         //                                 fontSize:
                                         //                                     20,
                                         //                               ),
@@ -927,19 +914,20 @@ class Message extends StatelessWidget {
                                         //                         ),
                                         //                         onPressed:
                                         //                             sentReactions
-                                        //                                     .contains(
-                                        //                           emoji,
-                                        //                         )
-                                        //                                 ? null
-                                        //                                 : () {
-                                        //                                     onSelect(
-                                        //                                       event,
-                                        //                                     );
-                                        //                                     event.room.sendReaction(
-                                        //                                       event.eventId,
-                                        //                                       emoji,
-                                        //                                     );
-                                        //                                   },
+                                        //                                 .contains(
+                                        //                                   emoji,
+                                        //                                 )
+                                        //                             ? null
+                                        //                             : () {
+                                        //                                 onSelect(
+                                        //                                   event,
+                                        //                                 );
+                                        //                                 event.room.sendReaction(
+                                        //                                   event
+                                        //                                       .eventId,
+                                        //                                   emoji,
+                                        //                                 );
+                                        //                               },
                                         //                       ),
                                         //                     ),
                                         //                     IconButton(
@@ -950,72 +938,55 @@ class Message extends StatelessWidget {
                                         //                       tooltip: L10n.of(
                                         //                         context,
                                         //                       ).customReaction,
-                                        //                       onPressed:
-                                        //                           () async {
-                                        //                         final emoji =
-                                        //                             await showAdaptiveBottomSheet<
-                                        //                                 String>(
+                                        //                       onPressed: () async {
+                                        //                         final emoji = await showAdaptiveBottomSheet<String>(
                                         //                           context:
                                         //                               context,
-                                        //                           builder:
-                                        //                               (context) =>
-                                        //                                   Scaffold(
-                                        //                             appBar:
-                                        //                                 AppBar(
-                                        //                               title:
-                                        //                                   Text(
-                                        //                                 L10n.of(context)
-                                        //                                     .customReaction,
-                                        //                               ),
-                                        //                               leading:
-                                        //                                   CloseButton(
-                                        //                                 onPressed:
-                                        //                                     () =>
-                                        //                                         Navigator.of(
+                                        //                           builder: (context) => Scaffold(
+                                        //                             appBar: AppBar(
+                                        //                               title: Text(
+                                        //                                 L10n.of(
                                         //                                   context,
-                                        //                                 ).pop(
-                                        //                                   null,
-                                        //                                 ),
+                                        //                                 ).customReaction,
+                                        //                               ),
+                                        //                               leading: CloseButton(
+                                        //                                 onPressed: () => Navigator.of(
+                                        //                                   context,
+                                        //                                 ).pop(null),
                                         //                               ),
                                         //                             ),
-                                        //                             body:
-                                        //                                 SizedBox(
+                                        //                             body: SizedBox(
                                         //                               height: double
                                         //                                   .infinity,
-                                        //                               child:
-                                        //                                   EmojiPicker(
-                                        //                                 onEmojiSelected: (
-                                        //                                   _,
-                                        //                                   emoji,
-                                        //                                 ) =>
-                                        //                                     Navigator.of(
-                                        //                                   context,
-                                        //                                 ).pop(
-                                        //                                   emoji
-                                        //                                       .emoji,
-                                        //                                 ),
-                                        //                                 config:
-                                        //                                     Config(
-                                        //                                   locale:
-                                        //                                       Localizations.localeOf(context),
-                                        //                                   emojiViewConfig:
-                                        //                                       const EmojiViewConfig(
+                                        //                               child: EmojiPicker(
+                                        //                                 onEmojiSelected:
+                                        //                                     (
+                                        //                                       _,
+                                        //                                       emoji,
+                                        //                                     ) =>
+                                        //                                         Navigator.of(
+                                        //                                           context,
+                                        //                                         ).pop(
+                                        //                                           emoji.emoji,
+                                        //                                         ),
+                                        //                                 config: Config(
+                                        //                                   locale: Localizations.localeOf(
+                                        //                                     context,
+                                        //                                   ),
+                                        //                                   emojiViewConfig: const EmojiViewConfig(
                                         //                                     backgroundColor:
                                         //                                         Colors.transparent,
                                         //                                   ),
-                                        //                                   bottomActionBarConfig:
-                                        //                                       const BottomActionBarConfig(
+                                        //                                   bottomActionBarConfig: const BottomActionBarConfig(
                                         //                                     enabled:
                                         //                                         false,
                                         //                                   ),
-                                        //                                   categoryViewConfig:
-                                        //                                       CategoryViewConfig(
+                                        //                                   categoryViewConfig: CategoryViewConfig(
                                         //                                     initCategory:
                                         //                                         Category.SMILEYS,
                                         //                                     backspaceColor:
                                         //                                         theme.colorScheme.primary,
-                                        //                                     iconColor:
-                                        //                                         theme.colorScheme.primary.withAlpha(
+                                        //                                     iconColor: theme.colorScheme.primary.withAlpha(
                                         //                                       128,
                                         //                                     ),
                                         //                                     iconColorSelected:
@@ -1025,10 +996,8 @@ class Message extends StatelessWidget {
                                         //                                     backgroundColor:
                                         //                                         theme.colorScheme.surface,
                                         //                                   ),
-                                        //                                   skinToneConfig:
-                                        //                                       SkinToneConfig(
-                                        //                                     dialogBackgroundColor:
-                                        //                                         Color.lerp(
+                                        //                                   skinToneConfig: SkinToneConfig(
+                                        //                                     dialogBackgroundColor: Color.lerp(
                                         //                                       theme.colorScheme.surface,
                                         //                                       theme.colorScheme.primaryContainer,
                                         //                                       0.75,
@@ -1047,17 +1016,18 @@ class Message extends StatelessWidget {
                                         //                         }
                                         //                         if (sentReactions
                                         //                             .contains(
-                                        //                           emoji,
-                                        //                         )) {
+                                        //                               emoji,
+                                        //                             )) {
                                         //                           return;
                                         //                         }
                                         //                         onSelect(event);
 
                                         //                         await event.room
                                         //                             .sendReaction(
-                                        //                           event.eventId,
-                                        //                           emoji,
-                                        //                         );
+                                        //                               event
+                                        //                                   .eventId,
+                                        //                               emoji,
+                                        //                             );
                                         //                       },
                                         //                     ),
                                         //                   ],
@@ -1095,6 +1065,7 @@ class Message extends StatelessWidget {
               //           child: MessageReactions(event, timeline),
               //         ),
               // ),
+              // Pangea#
               if (enterThread != null)
                 AnimatedSize(
                   duration: FluffyThemes.animationDuration,
@@ -1125,10 +1096,7 @@ class Message extends StatelessWidget {
                               onPressed: () => enterThread(event.eventId),
                               icon: const Icon(Icons.message),
                               label: Text(
-                                '${L10n.of(context).countReplies(threadChildren.length)} | ${threadChildren.first.calcLocalizedBodyFallback(
-                                  MatrixLocals(L10n.of(context)),
-                                  withSenderNamePrefix: true,
-                                )}',
+                                '${L10n.of(context).countReplies(threadChildren.length)} | ${threadChildren.first.calcLocalizedBodyFallback(MatrixLocals(L10n.of(context)), withSenderNamePrefix: true)}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -1136,6 +1104,7 @@ class Message extends StatelessWidget {
                           ),
                         ),
                 ),
+              // #Pangea
               !showReceiptsRow
                   ? const SizedBox.shrink()
                   : Padding(
@@ -1174,8 +1143,9 @@ class Message extends StatelessWidget {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius / 3),
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.borderRadius / 3,
+                        ),
                         color: theme.colorScheme.surface.withAlpha(128),
                       ),
                       child: Text(
@@ -1246,8 +1216,10 @@ class BubblePainter extends CustomPainter {
     final scrollableRect = Offset.zero & scrollableBox.size;
     final bubbleBox = context.findRenderObject() as RenderBox;
 
-    final origin =
-        bubbleBox.localToGlobal(Offset.zero, ancestor: scrollableBox);
+    final origin = bubbleBox.localToGlobal(
+      Offset.zero,
+      ancestor: scrollableBox,
+    );
     final paint = Paint()
       ..shader = ui.Gradient.linear(
         scrollableRect.topCenter,

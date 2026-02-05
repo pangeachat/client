@@ -48,9 +48,9 @@ class CompletedActivitySessionView extends StatelessWidget {
             children: [
               Text(
                 L10n.of(context).congratulationsYouveCompletedPractice,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               Expanded(
@@ -87,20 +87,20 @@ class CompletedActivitySessionView extends StatelessWidget {
                               widthPercent: snapshot.hasData
                                   ? snapshot.data!.levelProgress
                                   : 0.0,
-                              backgroundColor: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainerHighest,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest,
                               duration: const Duration(milliseconds: 500),
                             ),
                           ),
                         ),
                         Text(
                           "+ ${session.state.allXPGained} XP",
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: AppConfig.goldLight,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                color: AppConfig.goldLight,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ],
                     ),
@@ -115,14 +115,14 @@ class CompletedActivitySessionView extends StatelessWidget {
                         markerWidth: 20.0,
                         markerColor: AppConfig.success,
                         backgroundColor: !accuracyAchievement
-                            ? Theme.of(context)
-                                .colorScheme
-                                .surfaceContainerHighest
+                            ? Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest
                             : Color.alphaBlend(
                                 AppConfig.goldLight.withValues(alpha: 0.3),
-                                Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
+                                Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
                               ),
                       ),
                     ),
@@ -132,9 +132,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
                       isAchievement: timeAchievement,
                       achievementText: "+ ${session.state.timeBonusXP} XP",
-                      child: TimeStarsWidget(
-                        elapsedSeconds: elapsedSeconds,
-                      ),
+                      child: TimeStarsWidget(elapsedSeconds: elapsedSeconds),
                     ),
                     Column(
                       children: [
@@ -149,11 +147,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           onPressed: () => controller.reloadSession(),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                L10n.of(context).anotherRound,
-                              ),
-                            ],
+                            children: [Text(L10n.of(context).anotherRound)],
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -169,11 +163,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                L10n.of(context).quit,
-                              ),
-                            ],
+                            children: [Text(L10n.of(context).quit)],
                           ),
                         ),
                       ],
@@ -196,10 +186,7 @@ class CompletedActivitySessionView extends StatelessWidget {
 class TimeStarsWidget extends StatelessWidget {
   final int elapsedSeconds;
 
-  const TimeStarsWidget({
-    required this.elapsedSeconds,
-    super.key,
-  });
+  const TimeStarsWidget({required this.elapsedSeconds, super.key});
 
   int get starCount {
     const timeForBonus = AnalyticsPracticeConstants.timeForBonus;

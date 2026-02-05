@@ -14,10 +14,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class AnalyticsRequestIndicator extends StatefulWidget {
   final Room room;
-  const AnalyticsRequestIndicator({
-    super.key,
-    required this.room,
-  });
+  const AnalyticsRequestIndicator({super.key, required this.room});
 
   @override
   AnalyticsRequestIndicatorState createState() =>
@@ -62,8 +59,9 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
     final analyticsRoomIds = analyticsRooms.map((r) => r.id).toSet();
     _analyticsRoomSub?.cancel();
     _analyticsRoomSub = widget.room.client.onSync.stream.listen((update) async {
-      final joined = update.rooms?.join?.entries
-          .where((e) => analyticsRoomIds.contains(e.key));
+      final joined = update.rooms?.join?.entries.where(
+        (e) => analyticsRoomIds.contains(e.key),
+      );
 
       if (joined == null || joined.isEmpty) return;
       final Set<String> updatedRoomIds = {};
@@ -155,14 +153,9 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
       child: _knockingAdmins.isEmpty
           ? const SizedBox()
           : Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 1,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
               child: Material(
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 clipBehavior: Clip.hardEdge,
                 child: ListTile(
                   minVerticalPadding: 0,

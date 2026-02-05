@@ -6,10 +6,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.da
 
 class ChoreographerSendButton extends StatelessWidget {
   final ChatController controller;
-  const ChoreographerSendButton({
-    super.key,
-    required this.controller,
-  });
+  const ChoreographerSendButton({super.key, required this.controller});
 
   Future<void> _onPressed(BuildContext context) async {
     controller.choreographer.onClickSend();
@@ -20,14 +17,15 @@ class ChoreographerSendButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.choreographer.isFetching,
-      builder: (context, fetching, __) {
+      builder: (context, fetching, _) {
         return Container(
           height: 56,
           alignment: Alignment.center,
           child: IconButton(
             icon: const Icon(Icons.send_outlined),
-            color: controller.choreographer.assistanceState
-                .sendButtonColor(context),
+            color: controller.choreographer.assistanceState.sendButtonColor(
+              context,
+            ),
             onPressed: fetching ? null : () => _onPressed(context),
             tooltip: L10n.of(context).send,
           ),

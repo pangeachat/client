@@ -9,11 +9,7 @@ class TextLoadingShimmer extends StatelessWidget {
   final double width;
   final double? height;
 
-  const TextLoadingShimmer({
-    super.key,
-    this.width = 140.0,
-    this.height,
-  });
+  const TextLoadingShimmer({super.key, this.width = 140.0, this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,8 @@ class TextLoadingShimmer extends StatelessWidget {
           borderRadius: BorderRadius.circular(4.0),
           color: Theme.of(context).colorScheme.primary,
         ),
-        height: height ??
+        height:
+            height ??
             (AppConfig.messageFontSize * AppSettings.fontSizeFactor.value),
         width: width,
       ),

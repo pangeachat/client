@@ -63,9 +63,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 300,
-            ),
+            constraints: const BoxConstraints(maxWidth: 300),
             child: Column(
               spacing: 50.0,
               mainAxisSize: MainAxisSize.min,
@@ -79,8 +77,9 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                     ),
                     Text(
                       AppSettings.applicationName.value,
-                      style: theme.textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -109,9 +108,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).start),
-                        ],
+                        children: [Text(L10n.of(context).start)],
                       ),
                     ),
                     ElevatedButton(
@@ -122,9 +119,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).loginToAccount),
-                        ],
+                        children: [Text(L10n.of(context).loginToAccount)],
                       ),
                     ),
                   ],

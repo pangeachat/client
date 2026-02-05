@@ -8,18 +8,13 @@ class TranslateActivityResponse {
   factory TranslateActivityResponse.fromJson(Map<String, dynamic> json) {
     final plansEntry = json['plans'] as Map<String, dynamic>;
     return TranslateActivityResponse(
-      plans: plansEntry.map(
-        (key, value) {
-          return MapEntry(
-            key,
-            ActivityPlanModel.fromJson(value),
-          );
-        },
-      ),
+      plans: plansEntry.map((key, value) {
+        return MapEntry(key, ActivityPlanModel.fromJson(value));
+      }),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "plans": plans.map((key, value) => MapEntry(key, value.toJson())),
-      };
+    "plans": plans.map((key, value) => MapEntry(key, value.toJson())),
+  };
 }

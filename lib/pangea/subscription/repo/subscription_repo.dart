@@ -21,13 +21,9 @@ class SubscriptionRepo {
         choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
-      final http.Response res = await req.get(
-        url: PApiUrls.rcAppsChoreo,
-      );
+      final http.Response res = await req.get(url: PApiUrls.rcAppsChoreo);
 
-      return SubscriptionAppIds.fromJson(
-        jsonDecode(res.body),
-      );
+      return SubscriptionAppIds.fromJson(jsonDecode(res.body));
     } catch (err) {
       ErrorHandler.logError(
         m: "Failed to fetch app information for revenuecat API",
@@ -44,19 +40,14 @@ class SubscriptionRepo {
         choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
-      final http.Response res = await req.get(
-        url: PApiUrls.rcProductsChoreo,
-      );
+      final http.Response res = await req.get(url: PApiUrls.rcProductsChoreo);
       final Map<String, dynamic> json = jsonDecode(res.body);
-      final RCProductsResponseModel resp =
-          RCProductsResponseModel.fromJson(json);
+      final RCProductsResponseModel resp = RCProductsResponseModel.fromJson(
+        json,
+      );
       return resp.allProducts;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return null;
     }
   }
@@ -67,25 +58,16 @@ class SubscriptionRepo {
         choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
-      final http.Response res = await req.get(
-        url: PApiUrls.rcProductsTrial,
-      );
+      final http.Response res = await req.get(url: PApiUrls.rcProductsTrial);
 
       if (res.statusCode != 201) {
-        ErrorHandler.logError(
-          e: res.body,
-          data: {},
-        );
+        ErrorHandler.logError(e: res.body, data: {});
         return false;
       } else {
         return true;
       }
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -101,10 +83,7 @@ class SubscriptionRepo {
     final http.Response res = await req.get(url: PApiUrls.rcSubscription);
     final Map<String, dynamic> json = jsonDecode(res.body);
     final RCSubscriptionResponseModel resp =
-        RCSubscriptionResponseModel.fromJson(
-      json,
-      allProducts,
-    );
+        RCSubscriptionResponseModel.fromJson(json, allProducts);
     return resp;
   }
 }
@@ -112,13 +91,9 @@ class SubscriptionRepo {
 class RCProductsResponseModel {
   List<SubscriptionDetails> allProducts;
 
-  RCProductsResponseModel({
-    required this.allProducts,
-  });
+  RCProductsResponseModel({required this.allProducts});
 
-  factory RCProductsResponseModel.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory RCProductsResponseModel.fromJson(Map<String, dynamic> json) {
     final List<dynamic> offerings = json["items"] as List<dynamic>;
     final res = offerings
         .map((offering) => SubscriptionDetails.fromJson(offering))
@@ -180,18 +155,16 @@ class RCSubscriptionResponseModel {
 
     if (activeEntitlements.isEmpty) {
       debugPrint("User has no active entitlements");
-      return RCSubscriptionResponseModel(
-        allSubscriptions: history,
-      );
+      return RCSubscriptionResponseModel(allSubscriptions: history);
     }
 
     final String currentSubscriptionId = activeEntitlements[0];
-    final SubscriptionDetails? currentSubscription =
-        allProducts?.firstWhereOrNull(
-      (SubscriptionDetails sub) =>
-          sub.id.contains(currentSubscriptionId) ||
-          currentSubscriptionId.contains(sub.id),
-    );
+    final SubscriptionDetails? currentSubscription = allProducts
+        ?.firstWhereOrNull(
+          (SubscriptionDetails sub) =>
+              sub.id.contains(currentSubscriptionId) ||
+              currentSubscriptionId.contains(sub.id),
+        );
 
     return RCSubscriptionResponseModel(
       currentSubscription: currentSubscription,
@@ -202,8 +175,7 @@ class RCSubscriptionResponseModel {
   }
 
   static List<String> getActiveEntitlements(Map<String, dynamic> json) {
-    return json['entitlements']
-        .entries
+    return json['entitlements'].entries
         .where(
           (MapEntry<String, dynamic> entitlement) => DateTime.parse(
             entitlement.value['expires_date'],
@@ -218,8 +190,7 @@ class RCSubscriptionResponseModel {
   }
 
   static List<String> getAllEntitlements(Map<String, dynamic> json) {
-    return json['entitlements']
-        .entries
+    return json['entitlements'].entries
         .map(
           (MapEntry<String, dynamic> entitlement) =>
               entitlement.value['product_identifier'],

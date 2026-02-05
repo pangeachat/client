@@ -11,10 +11,7 @@ class LevelUpdate {
   final int prevLevel;
   final int newLevel;
 
-  LevelUpdate({
-    required this.prevLevel,
-    required this.newLevel,
-  });
+  LevelUpdate({required this.prevLevel, required this.newLevel});
 }
 
 class AnalyticsUpdate {
@@ -22,11 +19,7 @@ class AnalyticsUpdate {
   final ConstructIdentifier? blockedConstruct;
   final String? targetID;
 
-  AnalyticsUpdate(
-    this.addedConstructs, {
-    this.blockedConstruct,
-    this.targetID,
-  });
+  AnalyticsUpdate(this.addedConstructs, {this.blockedConstruct, this.targetID});
 }
 
 class ConstructLevelUpdate {
@@ -63,8 +56,10 @@ class AnalyticsUpdateDispatcher {
       StreamController<ConstructLevelUpdate>.broadcast();
 
   final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
-      _lemmaInfoUpdateStream = StreamController<
-          MapEntry<ConstructIdentifier, UserSetLemmaInfo>>.broadcast();
+  _lemmaInfoUpdateStream =
+      StreamController<
+        MapEntry<ConstructIdentifier, UserSetLemmaInfo>
+      >.broadcast();
 
   AnalyticsUpdateDispatcher(this.dataService);
 
@@ -77,23 +72,18 @@ class AnalyticsUpdateDispatcher {
     _lemmaInfoUpdateStream.close();
   }
 
-  Stream<UserSetLemmaInfo> lemmaUpdateStream(
-    ConstructIdentifier constructId,
-  ) =>
+  Stream<UserSetLemmaInfo> lemmaUpdateStream(ConstructIdentifier constructId) =>
       _lemmaInfoUpdateStream.stream
           .where((update) => update.key == constructId)
           .map((update) => update.value);
 
-  void sendActivityAnalyticsUpdate(
-    String? activityAnalytics,
-  ) =>
+  void sendActivityAnalyticsUpdate(String? activityAnalytics) =>
       activityAnalyticsStream.add(activityAnalytics);
 
   void sendLemmaInfoUpdate(
     ConstructIdentifier constructId,
     UserSetLemmaInfo lemmaInfo,
-  ) =>
-      _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
+  ) => _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
   Future<void> sendConstructAnalyticsUpdate(
     AnalyticsUpdate analyticsUpdate,
@@ -129,10 +119,7 @@ class AnalyticsUpdateDispatcher {
 
   void _onLevelUp(final int lowerLevel, final int upperLevel) {
     levelUpdateStream.add(
-      LevelUpdate(
-        prevLevel: lowerLevel,
-        newLevel: upperLevel,
-      ),
+      LevelUpdate(prevLevel: lowerLevel, newLevel: upperLevel),
     );
   }
 
@@ -150,10 +137,7 @@ class AnalyticsUpdateDispatcher {
   }
 
   void _onXPGained(int points, String? targetID) {
-    final update = AnalyticsStreamUpdate(
-      points: points,
-      targetID: targetID,
-    );
+    final update = AnalyticsStreamUpdate(points: points, targetID: targetID);
     constructUpdateStream.add(update);
   }
 
@@ -172,9 +156,7 @@ class AnalyticsUpdateDispatcher {
   }
 
   void _onBlockedConstruct(ConstructIdentifier constructId) {
-    final update = AnalyticsStreamUpdate(
-      blockedConstruct: constructId,
-    );
+    final update = AnalyticsStreamUpdate(blockedConstruct: constructId);
     constructUpdateStream.add(update);
   }
 

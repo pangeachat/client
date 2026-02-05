@@ -35,8 +35,9 @@ class StateMessage extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   child: Material(
                     color: theme.colorScheme.surface.withAlpha(128),
-                    borderRadius:
-                        BorderRadius.circular(AppConfig.borderRadius / 3),
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.borderRadius / 3,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8.0,
@@ -50,7 +51,8 @@ class StateMessage extends StatelessWidget {
                               // text: event.calcLocalizedBodyFallback(
                               //   MatrixLocals(L10n.of(context)),
                               // ),
-                              text: (event.type == EventTypes.RoomMember) &&
+                              text:
+                                  (event.type == EventTypes.RoomMember) &&
                                       (event.roomMemberChangeType ==
                                           RoomMemberChangeType.leave) &&
                                       (event.stateKey ==

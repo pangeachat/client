@@ -19,8 +19,8 @@ class DownloadUtil {
     if (kIsWeb) {
       final blob = webfile.Blob([contents], fileType.mimetype, 'native');
       webfile.AnchorElement(
-        href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
-      )
+          href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
+        )
         ..setAttribute("download", filename)
         ..click();
       return;

@@ -6,10 +6,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 
 class AppConfigDialog extends StatefulWidget {
   final List<AppConfigOverride> overrides;
-  const AppConfigDialog({
-    super.key,
-    required this.overrides,
-  });
+  const AppConfigDialog({super.key, required this.overrides});
 
   @override
   State<AppConfigDialog> createState() => AppConfigDialogState();
@@ -38,9 +35,7 @@ class AppConfigDialogState extends State<AppConfigDialog> {
         type: MaterialType.transparency,
         child: Container(
           padding: const EdgeInsets.all(16.0),
-          constraints: const BoxConstraints(
-            maxWidth: 256,
-          ),
+          constraints: const BoxConstraints(maxWidth: 256),
           child: SingleChildScrollView(
             child: RadioGroup<AppConfigOverride?>(
               groupValue: selectedOverride,
@@ -59,14 +54,13 @@ class AppConfigDialogState extends State<AppConfigDialog> {
                       ),
                       value: override,
                     );
-                  }).toList()
-                    ..insert(
-                      0,
-                      RadioListTile<AppConfigOverride?>.adaptive(
-                        title: Text(L10n.of(context).defaultOption),
-                        value: null,
-                      ),
+                  }).toList()..insert(
+                    0,
+                    RadioListTile<AppConfigOverride?>.adaptive(
+                      title: Text(L10n.of(context).defaultOption),
+                      value: null,
                     ),
+                  ),
                 ],
               ),
             ),

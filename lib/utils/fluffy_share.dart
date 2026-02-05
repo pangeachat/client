@@ -24,12 +24,10 @@ abstract class FluffyShare {
       );
       return;
     }
-    await Clipboard.setData(
-      ClipboardData(text: text),
-    );
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
-    );
+    await Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(L10n.of(context).copiedToClipboard)));
     return;
   }
 

@@ -9,8 +9,8 @@ extension PangeaRoomsChunk on PublishedRoomsChunk {
   /// avatar associated with this space
   String defaultAvatar() {
     final int seed = roomId.hashCode;
-    return SpaceConstants.publicSpaceIcons[Random(seed).nextInt(
-      SpaceConstants.publicSpaceIcons.length,
-    )];
+    return SpaceConstants.publicSpaceIcons[Random(
+      seed,
+    ).nextInt(SpaceConstants.publicSpaceIcons.length)];
   }
 }

@@ -84,9 +84,7 @@ void chatContextMenuAction(
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  l10n.goToCourse(space.getLocalizedDisplayname()),
-                ),
+                child: Text(l10n.goToCourse(space.getLocalizedDisplayname())),
               ),
             ],
           ),
@@ -123,9 +121,7 @@ void chatContextMenuAction(
                       : Icons.mark_as_unread_outlined,
                 ),
                 const SizedBox(width: 12),
-                Text(
-                  room.markedUnread ? l10n.markAsRead : l10n.markAsUnread,
-                ),
+                Text(room.markedUnread ? l10n.markAsRead : l10n.markAsUnread),
               ],
             ),
           ),
@@ -139,9 +135,7 @@ void chatContextMenuAction(
                   room.isFavourite ? Icons.push_pin : Icons.push_pin_outlined,
                 ),
                 const SizedBox(width: 12),
-                Text(
-                  room.isFavourite ? l10n.unpin : l10n.pin,
-                ),
+                Text(room.isFavourite ? l10n.unpin : l10n.pin),
               ],
             ),
           ),
@@ -152,13 +146,9 @@ void chatContextMenuAction(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
-                Icons.stop_circle_outlined,
-              ),
+              const Icon(Icons.stop_circle_outlined),
               const SizedBox(width: 12),
-              Text(
-                l10n.endActivity,
-              ),
+              Text(l10n.endActivity),
             ],
           ),
         ),
@@ -175,9 +165,7 @@ void chatContextMenuAction(
               const SizedBox(width: 12),
               Text(
                 room.membership == Membership.invite ? l10n.delete : l10n.leave,
-                style: TextStyle(
-                  color: theme.colorScheme.onErrorContainer,
-                ),
+                style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
           ),
@@ -195,9 +183,7 @@ void chatContextMenuAction(
               const SizedBox(width: 12),
               Text(
                 l10n.delete,
-                style: TextStyle(
-                  color: theme.colorScheme.onErrorContainer,
-                ),
+                style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
           ),

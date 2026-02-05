@@ -49,7 +49,7 @@ class AnalyticsPracticeView extends StatelessWidget {
             Expanded(
               child: ValueListenableBuilder(
                 valueListenable: controller.progressNotifier,
-                builder: (context, progress, __) {
+                builder: (context, progress, _) {
                   return AnimatedProgressBar(
                     height: 20.0,
                     widthPercent: progress,
@@ -61,7 +61,7 @@ class AnalyticsPracticeView extends StatelessWidget {
             //keep track of state to update timer
             ValueListenableBuilder(
               valueListenable: controller.sessionState,
-              builder: (context, state, __) {
+              builder: (context, state, _) {
                 if (state is AsyncLoaded<AnalyticsPracticeSessionModel>) {
                   return PracticeTimerWidget(
                     key: ValueKey(state.value.startedAt),
@@ -77,20 +77,16 @@ class AnalyticsPracticeView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: MaxWidthBody(
           withScrolling: false,
           showBorder: false,
           child: ValueListenableBuilder(
             valueListenable: controller.sessionState,
-            builder: (context, state, __) {
+            builder: (context, state, _) {
               return switch (state) {
                 AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                  ErrorIndicator(
-                    message: error.toLocalizedString(context),
-                  ),
+                  ErrorIndicator(message: error.toLocalizedString(context)),
                 AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                   value.isComplete
                       ? CompletedActivitySessionView(state.value, controller)
@@ -108,9 +104,7 @@ class AnalyticsPracticeView extends StatelessWidget {
 class _AnalyticsActivityView extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _AnalyticsActivityView(
-    this.controller,
-  );
+  const _AnalyticsActivityView(this.controller);
 
   @override
   Widget build(BuildContext context) {
@@ -125,15 +119,13 @@ class _AnalyticsActivityView extends StatelessWidget {
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
-          padding: EdgeInsets.symmetric(
-            vertical: 8.0,
-          ),
+          padding: EdgeInsets.symmetric(vertical: 8.0),
         ),
         SizedBox(
           height: 75.0,
           child: ValueListenableBuilder(
             valueListenable: controller.activityTarget,
-            builder: (context, target, __) => target != null
+            builder: (context, target, _) => target != null
                 ? Column(
                     children: [
                       Text(
@@ -148,7 +140,9 @@ class _AnalyticsActivityView extends StatelessWidget {
                           text:
                               target.target.tokens.first.vocabConstructID.lemma,
                           textLanguage: MatrixState
-                              .pangeaController.userController.userL2!,
+                              .pangeaController
+                              .userController
+                              .userL2!,
                           style: const TextStyle(fontSize: 14.0),
                         ),
                     ],
@@ -157,9 +151,7 @@ class _AnalyticsActivityView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16.0),
-        Center(
-          child: _AnalyticsPracticeCenterContent(controller: controller),
-        ),
+        Center(child: _AnalyticsPracticeCenterContent(controller: controller)),
         const SizedBox(height: 16.0),
         _ActivityChoicesWidget(controller),
         const SizedBox(height: 16.0),
@@ -172,70 +164,64 @@ class _AnalyticsActivityView extends StatelessWidget {
 class _AnalyticsPracticeCenterContent extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _AnalyticsPracticeCenterContent({
-    required this.controller,
-  });
+  const _AnalyticsPracticeCenterContent({required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.activityTarget,
-      builder: (context, target, __) => switch (target?.target.activityType) {
+      builder: (context, target, _) => switch (target?.target.activityType) {
         null => const SizedBox(),
         ActivityTypeEnum.grammarError => SizedBox(
-            height: 160.0,
-            child: SingleChildScrollView(
-              child: ValueListenableBuilder(
-                valueListenable: controller.activityState,
-                builder: (context, state, __) => switch (state) {
-                  AsyncLoaded(
-                    value: final GrammarErrorPracticeActivityModel activity
-                  ) =>
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ErrorBlankWidget(
-                          key: ValueKey(
-                            '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
-                          ),
-                          activity: activity,
+          height: 160.0,
+          child: SingleChildScrollView(
+            child: ValueListenableBuilder(
+              valueListenable: controller.activityState,
+              builder: (context, state, _) => switch (state) {
+                AsyncLoaded(
+                  value: final GrammarErrorPracticeActivityModel activity,
+                ) =>
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _ErrorBlankWidget(
+                        key: ValueKey(
+                          '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
                         ),
-                        const SizedBox(height: 12),
-                      ],
-                    ),
-                  _ => const SizedBox(),
+                        activity: activity,
+                      ),
+                      const SizedBox(height: 12),
+                    ],
+                  ),
+                _ => const SizedBox(),
+              },
+            ),
+          ),
+        ),
+        ActivityTypeEnum.grammarCategory => Center(
+          child: Column(
+            children: [
+              _CorrectAnswerHint(controller: controller),
+              _ExampleMessageWidget(controller.getExampleMessage(target!)),
+              const SizedBox(height: 12),
+              ValueListenableBuilder(
+                valueListenable: controller.hintPressedNotifier,
+                builder: (context, hintPressed, _) {
+                  return HintButton(
+                    depressed: hintPressed,
+                    onPressed: controller.onHintPressed,
+                  );
                 },
               ),
-            ),
+            ],
           ),
-        ActivityTypeEnum.grammarCategory => Center(
-            child: Column(
-              children: [
-                _CorrectAnswerHint(controller: controller),
-                _ExampleMessageWidget(
-                  controller.getExampleMessage(target!),
-                ),
-                const SizedBox(height: 12),
-                ValueListenableBuilder(
-                  valueListenable: controller.hintPressedNotifier,
-                  builder: (context, hintPressed, __) {
-                    return HintButton(
-                      depressed: hintPressed,
-                      onPressed: controller.onHintPressed,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+        ),
         _ => SizedBox(
-            height: 100.0,
-            child: Center(
-              child: _ExampleMessageWidget(
-                controller.getExampleMessage(target!),
-              ),
-            ),
+          height: 100.0,
+          child: Center(
+            child: _ExampleMessageWidget(controller.getExampleMessage(target!)),
           ),
+        ),
       },
     );
   }
@@ -256,10 +242,7 @@ class _ExampleMessageWidget extends StatelessWidget {
         }
 
         return Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             color: Color.alphaBlend(
               Colors.white.withAlpha(180),
@@ -271,7 +254,8 @@ class _ExampleMessageWidget extends StatelessWidget {
             text: TextSpan(
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onPrimaryFixed,
-                fontSize: AppSettings.fontSizeFactor.value *
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize,
               ),
               children: snapshot.data!,
@@ -286,22 +270,20 @@ class _ExampleMessageWidget extends StatelessWidget {
 class _CorrectAnswerHint extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _CorrectAnswerHint({
-    required this.controller,
-  });
+  const _CorrectAnswerHint({required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.hintPressedNotifier,
-      builder: (context, hintPressed, __) {
+      builder: (context, hintPressed, _) {
         if (!hintPressed) {
           return const SizedBox.shrink();
         }
 
         return ValueListenableBuilder(
           valueListenable: controller.activityState,
-          builder: (context, state, __) {
+          builder: (context, state, _) {
             if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
               return const SizedBox.shrink();
             }
@@ -331,9 +313,7 @@ class _CorrectAnswerHint extends StatelessWidget {
 class _WrongAnswerFeedback extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _WrongAnswerFeedback({
-    required this.controller,
-  });
+  const _WrongAnswerFeedback({required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -353,8 +333,9 @@ class _WrongAnswerFeedback extends StatelessWidget {
         }
 
         final activity = activityState.value;
-        final isWrongAnswer =
-            !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
+        final isWrongAnswer = !activity.multipleChoiceContent.isCorrect(
+          selectedChoice.tag,
+        );
 
         if (!isWrongAnswer) {
           return const SizedBox.shrink();
@@ -376,10 +357,7 @@ class _WrongAnswerFeedback extends StatelessWidget {
 class _ErrorBlankWidget extends StatefulWidget {
   final GrammarErrorPracticeActivityModel activity;
 
-  const _ErrorBlankWidget({
-    super.key,
-    required this.activity,
-  });
+  const _ErrorBlankWidget({super.key, required this.activity});
 
   @override
   State<_ErrorBlankWidget> createState() => _ErrorBlankWidgetState();
@@ -422,8 +400,10 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
       trimmedBefore = true;
     }
 
-    final before =
-        chars.skip(beforeStart).take(errorOffset - beforeStart).toString();
+    final before = chars
+        .skip(beforeStart)
+        .take(errorOffset - beforeStart)
+        .toString();
 
     // ---------- AFTER ----------
     int afterEnd = totalLength;
@@ -449,10 +429,7 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             color: Color.alphaBlend(
               Colors.white.withAlpha(180),
@@ -466,7 +443,8 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                 text: TextSpan(
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onPrimaryFixed,
-                    fontSize: AppSettings.fontSizeFactor.value *
+                    fontSize:
+                        AppSettings.fontSizeFactor.value *
                         AppConfig.messageFontSize,
                   ),
                   children: [
@@ -493,7 +471,8 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
                       translation,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppSettings.fontSizeFactor.value *
+                        fontSize:
+                            AppSettings.fontSizeFactor.value *
                             AppConfig.messageFontSize,
                         fontStyle: FontStyle.italic,
                       ),
@@ -542,10 +521,7 @@ class HintButton extends StatelessWidget {
               shape: BoxShape.circle,
             ),
           ),
-          const Icon(
-            Icons.lightbulb_outline,
-            size: 20,
-          ),
+          const Icon(Icons.lightbulb_outline, size: 20),
         ],
       ),
     );
@@ -555,23 +531,21 @@ class HintButton extends StatelessWidget {
 class _ActivityChoicesWidget extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _ActivityChoicesWidget(
-    this.controller,
-  );
+  const _ActivityChoicesWidget(this.controller);
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.activityState,
-      builder: (context, state, __) {
+      builder: (context, state, _) {
         return switch (state) {
           AsyncLoading<MultipleChoicePracticeActivityModel>() => const Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator.adaptive(),
-              ),
+            child: SizedBox(
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator.adaptive(),
             ),
+          ),
           AsyncError<MultipleChoicePracticeActivityModel>(:final error) =>
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -589,7 +563,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
             ValueListenableBuilder(
               valueListenable: controller.enableChoicesNotifier,
-              builder: (context, enabled, __) {
+              builder: (context, enabled, _) {
                 final choices = controller.filteredChoices(value);
                 return Column(
                   spacing: 8.0,
@@ -600,9 +574,8 @@ class _ActivityChoicesWidget extends StatelessWidget {
                           activity: value,
                           targetId: controller.choiceTargetId(choice.choiceId),
                           choiceId: choice.choiceId,
-                          onPressed: () => controller.onSelectChoice(
-                            choice.choiceId,
-                          ),
+                          onPressed: () =>
+                              controller.onSelectChoice(choice.choiceId),
                           cardHeight: 60.0,
                           choiceText: choice.choiceText,
                           choiceEmoji: choice.choiceEmoji,
@@ -614,11 +587,9 @@ class _ActivityChoicesWidget extends StatelessWidget {
               },
             ),
           _ => Container(
-              constraints: const BoxConstraints(maxHeight: 400.0),
-              child: const Center(
-                child: CircularProgressIndicator.adaptive(),
-              ),
-            ),
+            constraints: const BoxConstraints(maxHeight: 400.0),
+            child: const Center(child: CircularProgressIndicator.adaptive()),
+          ),
         };
       },
     );

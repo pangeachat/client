@@ -53,10 +53,7 @@ class EmotesSettingsController extends State<EmotesSettings> {
 
     final event = key == null
         ? null
-        : room?.getState(
-            'im.ponies.room_emotes',
-            key,
-          );
+        : room?.getState('im.ponies.room_emotes', key);
     final eventPack = event?.content.tryGetMap<String, Object?>('pack');
     packDisplayNameController.text =
         eventPack?.tryGet<String>('display_name') ?? '';
@@ -69,13 +66,11 @@ class EmotesSettingsController extends State<EmotesSettings> {
 
   ImagePackContent _getPack() {
     final client = Matrix.of(context).client;
-    final event = (room != null
+    final event =
+        (room != null
             ? room!.getState('im.ponies.room_emotes', stateKey ?? '')
             : client.accountData['im.ponies.user_emotes']) ??
-        BasicEvent(
-          type: 'm.dummy',
-          content: {},
-        );
+        BasicEvent(type: 'm.dummy', content: {});
     // make sure we work on a *copy* of the event
     return BasicEvent.fromJson(event.toJson()).parsedImagePackContent;
   }
@@ -122,7 +117,8 @@ class EmotesSettingsController extends State<EmotesSettings> {
       return;
     }
     final client = Matrix.of(context).client;
-    final content = client.accountData['im.ponies.emote_rooms']?.content ??
+    final content =
+        client.accountData['im.ponies.emote_rooms']?.content ??
         <String, dynamic>{};
     if (active) {
       if (content['rooms'] is! Map) {
@@ -156,14 +152,15 @@ class EmotesSettingsController extends State<EmotesSettings> {
       TextEditingController();
 
   void removeImageAction(String oldImageCode) => setState(() {
-        pack!.images.remove(oldImageCode);
-        showSave = true;
-      });
+    pack!.images.remove(oldImageCode);
+    showSave = true;
+  });
 
   void toggleUsage(String imageCode, ImagePackUsage usage) {
     setState(() {
-      final usages =
-          pack!.images[imageCode]!.usage ??= List.from(ImagePackUsage.values);
+      final usages = pack!.images[imageCode]!.usage ??= List.from(
+        ImagePackUsage.values,
+      );
       if (!usages.remove(usage)) usages.add(usage);
       showSave = true;
     });
@@ -263,9 +260,7 @@ class EmotesSettingsController extends State<EmotesSettings> {
 
     if (packKeys?.contains(name) ?? false) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).stickerPackNameAlreadyExists),
-        ),
+        SnackBar(content: Text(L10n.of(context).stickerPackNameAlreadyExists)),
       );
       return;
     }
@@ -314,20 +309,19 @@ class EmotesSettingsController extends State<EmotesSettings> {
             bytes: await pickedFile.readAsBytes(),
             name: pickedFile.name,
           );
-          file = await file.generateThumbnail(
+          file =
+              await file.generateThumbnail(
                 nativeImplementations: ClientManager.nativeImplementations,
               ) ??
               file;
           final uri = await Matrix.of(context).client.uploadContent(
-                file.bytes,
-                filename: file.name,
-                contentType: file.mimeType,
-              );
+            file.bytes,
+            filename: file.name,
+            contentType: file.mimeType,
+          );
 
           setState(() {
-            final info = <String, dynamic>{
-              ...file.info,
-            };
+            final info = <String, dynamic>{...file.info};
             // normalize width / height to 256, required for stickers
             if (info['w'] is int && info['h'] is int) {
               final ratio = info['w'] / info['h'];
@@ -340,11 +334,9 @@ class EmotesSettingsController extends State<EmotesSettings> {
               }
             }
             final imageCode = pickedFile.name.split('.').first;
-            pack!.images[imageCode] =
-                ImagePackImageContent.fromJson(<String, dynamic>{
-              'url': uri.toString(),
-              'info': info,
-            });
+            pack!.images[imageCode] = ImagePackImageContent.fromJson(
+              <String, dynamic>{'url': uri.toString(), 'info': info},
+            );
           });
         }
       },
@@ -361,10 +353,7 @@ class EmotesSettingsController extends State<EmotesSettings> {
   }
 
   Future<void> importEmojiZip() async {
-    final result = await selectFiles(
-      context,
-      type: FileSelectorType.zip,
-    );
+    final result = await selectFiles(context, type: FileSelectorType.zip);
 
     if (result.isEmpty) return;
 
@@ -376,10 +365,8 @@ class EmotesSettingsController extends State<EmotesSettings> {
       context: context,
       // breaks [Matrix.of] calls otherwise
       useRootNavigator: false,
-      builder: (context) => ImportEmoteArchiveDialog(
-        controller: this,
-        archive: archive,
-      ),
+      builder: (context) =>
+          ImportEmoteArchiveDialog(controller: this, archive: archive),
     );
     setState(() {});
   }
@@ -402,11 +389,7 @@ class EmotesSettingsController extends State<EmotesSettings> {
           );
 
           archive.addFile(
-            ArchiveFile(
-              name,
-              response.bodyBytes.length,
-              response.bodyBytes,
-            ),
+            ArchiveFile(name, response.bodyBytes.length, response.bodyBytes),
           );
         }
         final fileName =

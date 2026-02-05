@@ -44,8 +44,9 @@ class CurrentSubscriptionInfo {
 
   String? get purchasePlatformDisplayName {
     if (currentSubscription?.appId == null) return null;
-    return availableSubscriptionInfo.appIds
-        ?.appDisplayName(currentSubscription!.appId!);
+    return availableSubscriptionInfo.appIds?.appDisplayName(
+      currentSubscription!.appId!,
+    );
   }
 
   bool get purchasedOnWeb =>
@@ -74,11 +75,7 @@ class AvailableSubscriptionsInfo {
   List<SubscriptionDetails>? allProducts;
   DateTime? lastUpdated;
 
-  AvailableSubscriptionsInfo({
-    this.appIds,
-    this.allProducts,
-    this.lastUpdated,
-  });
+  AvailableSubscriptionsInfo({this.appIds, this.allProducts, this.lastUpdated});
 
   Future<void> setAvailableSubscriptions() async {
     final cachedInfo =
@@ -132,8 +129,9 @@ class AvailableSubscriptionsInfo {
 
     final data = <String, dynamic>{};
     data['app_ids'] = appIds?.toJson();
-    data['all_products'] =
-        allProducts?.map((product) => product.toJson()).toList();
+    data['all_products'] = allProducts
+        ?.map((product) => product.toJson())
+        .toList();
     data['last_updated'] = (lastUpdated ?? DateTime.now()).toIso8601String();
     return data;
   }

@@ -16,10 +16,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivityStatsMenu extends StatelessWidget {
   final ChatController controller;
-  const ActivityStatsMenu(
-    this.controller, {
-    super.key,
-  });
+  const ActivityStatsMenu(this.controller, {super.key});
 
   int _getAssignedRolesCount() {
     final assignedRoles = controller.room.assignedRoles;
@@ -125,9 +122,7 @@ class ActivityStatsMenu extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-        ),
+        decoration: BoxDecoration(color: theme.colorScheme.surface),
         padding: const EdgeInsets.all(12.0),
         child: Column(
           spacing: 12.0,
@@ -191,9 +186,7 @@ class ActivityStatsMenu extends StatelessWidget {
                     children: [
                       Text(
                         L10n.of(context).endForAll,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 16.0 : 12.0,
-                        ),
+                        style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
                       ),
                     ],
                   ),
@@ -212,9 +205,7 @@ class ActivityStatsMenu extends StatelessWidget {
                     children: [
                       Text(
                         L10n.of(context).endActivity,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 16.0 : 12.0,
-                        ),
+                        style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
                       ),
                     ],
                   ),

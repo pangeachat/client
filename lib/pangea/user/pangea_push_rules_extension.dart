@@ -6,8 +6,9 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 extension PangeaPushRulesExtension on Client {
   Future<void> setPangeaPushRules() async {
     if (!isLogged()) return;
-    final List<Room> analyticsRooms =
-        rooms.where((room) => room.isAnalyticsRoom).toList();
+    final List<Room> analyticsRooms = rooms
+        .where((room) => room.isAnalyticsRoom)
+        .toList();
 
     for (final Room room in analyticsRooms) {
       final pushRule = room.pushRuleState;

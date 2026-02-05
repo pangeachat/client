@@ -64,7 +64,8 @@ class AnalyticsPracticeSessionRepo {
           (AnalyticsPracticeConstants.practiceGroupSize +
               AnalyticsPracticeConstants.errorBufferSize)) {
         final morphs = await _fetchMorphs();
-        final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
+        final remainingCount =
+            (AnalyticsPracticeConstants.practiceGroupSize +
                 AnalyticsPracticeConstants.errorBufferSize) -
             targets.length;
         final morphEntries = morphs.take(remainingCount);
@@ -103,7 +104,9 @@ class AnalyticsPracticeSessionRepo {
 
   static Future<List<ConstructIdentifier>> _fetchVocab() async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab)
         .then((map) => map.values.toList());
 
@@ -134,14 +137,18 @@ class AnalyticsPracticeSessionRepo {
 
   static Future<List<MorphPracticeTarget>> _fetchMorphs() async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.morph)
         .then((map) => map.values.toList());
 
     final morphInfoRequest = MorphInfoRequest(
-      userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+      userL1:
+          MatrixState.pangeaController.userController.userL1?.langCode ??
           LanguageKeys.defaultLanguage,
-      userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+      userL2:
+          MatrixState.pangeaController.userController.userL2?.langCode ??
           LanguageKeys.defaultLanguage,
     );
 
@@ -218,11 +225,7 @@ class AnalyticsPracticeSessionRepo {
 
         seenForms.add(form);
         final token = PangeaToken(
-          lemma: Lemma(
-            text: form,
-            saveVocab: true,
-            form: form,
-          ),
+          lemma: Lemma(text: form, saveVocab: true, form: form),
           text: PangeaTokenText.fromString(form),
           pos: 'other',
           morph: {feature: use.lemma},
@@ -244,7 +247,9 @@ class AnalyticsPracticeSessionRepo {
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
     // Fetch all recent uses in one call (not filtering blocked constructs)
     final allRecentUses = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getUses(count: 200, filterCapped: false);
 
     // Filter for grammar error uses
@@ -341,9 +346,7 @@ class AnalyticsPracticeSessionRepo {
             .where(
               (token) =>
                   token.lemma.saveVocab &&
-                  choices.any(
-                    (choice) => choice.contains(token.text.content),
-                  ),
+                  choices.any((choice) => choice.contains(token.text.content)),
             )
             .toList();
 
@@ -359,8 +362,9 @@ class AnalyticsPracticeSessionRepo {
           category: firstToken.pos,
         );
 
-        final hasRecentPractice =
-            recentlyPracticedConstructs.contains(tokenIdentifier);
+        final hasRecentPractice = recentlyPracticedConstructs.contains(
+          tokenIdentifier,
+        );
 
         if (hasRecentPractice) continue;
 

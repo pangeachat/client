@@ -22,8 +22,9 @@ class CourseActivityRepo {
     await _storage.initStorage;
     final activities = getCached(request).plans;
 
-    final toFetch =
-        request.activityIds.where((id) => !activities.containsKey(id)).toList();
+    final toFetch = request.activityIds
+        .where((id) => !activities.containsKey(id))
+        .toList();
 
     if (toFetch.isNotEmpty) {
       final fetchedActivities = await _fetch(request, batchId);
@@ -82,9 +83,7 @@ class CourseActivityRepo {
     }
   }
 
-  static TranslateActivityResponse getCached(
-    TranslateActivityRequest request,
-  ) {
+  static TranslateActivityResponse getCached(TranslateActivityRequest request) {
     final Map<String, ActivityPlanModel> activities = {};
     for (final id in request.activityIds) {
       final cacheKey = "${id}_${request.l1}";
@@ -142,10 +141,7 @@ class CourseActivityRepo {
     return {};
   }
 
-  static Future<void> setSentFeedback(
-    String activityId,
-    String l1,
-  ) async {
+  static Future<void> setSentFeedback(String activityId, String l1) async {
     final currentValue = sentFeedback;
     currentValue["${activityId}_$l1"] = DateTime.now();
     await _storage.write(
@@ -154,10 +150,7 @@ class CourseActivityRepo {
     );
   }
 
-  static Future<void> _clearSentFeedback(
-    String activityId,
-    String l1,
-  ) async {
+  static Future<void> _clearSentFeedback(String activityId, String l1) async {
     final currentValue = sentFeedback;
     currentValue.remove("${activityId}_$l1");
     await _storage.write(

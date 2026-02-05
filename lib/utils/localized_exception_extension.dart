@@ -23,8 +23,8 @@ extension LocalizedExceptionExtension on Object {
     final numString = round < 10
         ? num.toStringAsFixed(2)
         : round < 100
-            ? num.toStringAsFixed(1)
-            : round.toString();
+        ? num.toStringAsFixed(1)
+        : round.toString();
     return '$numString ${'kMGTPEZY'[i - 1]}B';
   }
 
@@ -47,9 +47,9 @@ extension LocalizedExceptionExtension on Object {
     // Pangea#
     if (this is FileTooBigMatrixException) {
       final exception = this as FileTooBigMatrixException;
-      return L10n.of(context).fileIsTooBigForServer(
-        _formatFileSize(exception.maxFileSize),
-      );
+      return L10n.of(
+        context,
+      ).fileIsTooBigForServer(_formatFileSize(exception.maxFileSize));
     }
     if (this is OtherPartyCanNotReceiveMessages) {
       return L10n.of(context).otherPartyNotLoggedIn;

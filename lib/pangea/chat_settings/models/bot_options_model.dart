@@ -84,10 +84,8 @@ class BotOptionsModel {
       languageLevel: json[ModelKey.languageLevel] is int
           ? LanguageLevelTypeEnum.fromInt(json[ModelKey.languageLevel])
           : json[ModelKey.languageLevel] is String
-              ? LanguageLevelTypeEnum.fromString(
-                  json[ModelKey.languageLevel],
-                )
-              : LanguageLevelTypeEnum.a1,
+          ? LanguageLevelTypeEnum.fromString(json[ModelKey.languageLevel])
+          : LanguageLevelTypeEnum.a1,
       safetyModeration: json[ModelKey.safetyModeration] ?? true,
       mode: json[ModelKey.mode] ?? BotMode.discussion,
       targetLanguage: json[ModelKey.targetLanguage],
@@ -150,11 +148,7 @@ class BotOptionsModel {
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: data,
-      );
+      ErrorHandler.logError(e: e, s: s, data: data);
       return data;
     }
   }
@@ -185,7 +179,8 @@ class BotOptionsModel {
       mode: mode ?? this.mode,
       discussionTopic: discussionTopic ?? this.discussionTopic,
       discussionKeywords: discussionKeywords ?? this.discussionKeywords,
-      discussionTriggerReactionEnabled: discussionTriggerReactionEnabled ??
+      discussionTriggerReactionEnabled:
+          discussionTriggerReactionEnabled ??
           this.discussionTriggerReactionEnabled,
       discussionTriggerReactionKey:
           discussionTriggerReactionKey ?? this.discussionTriggerReactionKey,
@@ -196,7 +191,7 @@ class BotOptionsModel {
           customTriggerReactionKey ?? this.customTriggerReactionKey,
       textAdventureGameMasterInstructions:
           textAdventureGameMasterInstructions ??
-              this.textAdventureGameMasterInstructions,
+          this.textAdventureGameMasterInstructions,
       targetLanguage: targetLanguage ?? this.targetLanguage,
       targetVoice: targetVoice ?? this.targetVoice,
       userGenders: userGenders ?? this.userGenders,

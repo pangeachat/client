@@ -36,10 +36,7 @@ mixin TokenRenderingMixin {
       ),
     ];
 
-    await analyticsService.updateService.addAnalytics(
-      targetId,
-      constructs,
-    );
+    await analyticsService.updateService.addAnalytics(targetId, constructs);
     TokensUtil.clearNewTokenCache();
   }
 }

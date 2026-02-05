@@ -77,15 +77,14 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
 
   Map<String, RoomSummaryResponse> activitySessions(String activityId) =>
       Map.fromEntries(
-        roomSummaries?.entries
-                .where((v) => v.value.activityPlan?.activityId == activityId) ??
+        roomSummaries?.entries.where(
+              (v) => v.value.activityPlan?.activityId == activityId,
+            ) ??
             [],
       );
 
   Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
-      activitySessionStatuses(
-    String activityId,
-  ) {
+  activitySessionStatuses(String activityId) {
     final statuses = <ActivitySummaryStatus, Map<String, RoomSummaryResponse>>{
       ActivitySummaryStatus.notStarted: {},
       ActivitySummaryStatus.inProgress: {},
@@ -145,10 +144,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         .toSet();
   }
 
-  bool hasCompletedActivity(
-    String userID,
-    String activityID,
-  ) {
+  bool hasCompletedActivity(String userID, String activityID) {
     final completed = _completedActivities(userID);
     return completed.contains(activityID);
   }
@@ -159,8 +155,9 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     int? activitiesToCompleteOverride,
   ) {
     final topicActivityIds = topic.activityIds.toSet();
-    final completedTopicActivities =
-        _completedActivities(userID).intersection(topicActivityIds);
+    final completedTopicActivities = _completedActivities(
+      userID,
+    ).intersection(topicActivityIds);
 
     if (completedTopicActivities.length >= topicActivityIds.length) {
       return true;
@@ -192,11 +189,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       if (topic == null) continue;
       if (!topic.activityListComplete) continue;
 
-      if (!_hasCompletedTopic(
-            userID,
-            topic,
-            activitiesToCompleteOverride,
-          ) &&
+      if (!_hasCompletedTopic(userID, topic, activitiesToCompleteOverride) &&
           topic.activityIds.isNotEmpty) {
         return topicId;
       }

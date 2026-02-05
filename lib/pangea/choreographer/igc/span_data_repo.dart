@@ -15,10 +15,7 @@ class _SpanDetailsCacheItem {
   final Future<SpanData> data;
   final DateTime timestamp;
 
-  const _SpanDetailsCacheItem({
-    required this.data,
-    required this.timestamp,
-  });
+  const _SpanDetailsCacheItem({required this.data, required this.timestamp});
 }
 
 class SpanDataRepo {
@@ -34,10 +31,7 @@ class SpanDataRepo {
       return _getResult(request, cached);
     }
 
-    final future = _fetch(
-      accessToken,
-      request: request,
-    );
+    final future = _fetch(accessToken, request: request);
     _setCached(request, future);
     return _getResult(request, future);
   }
@@ -75,18 +69,12 @@ class SpanDataRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<SpanData>? _getCached(
-    SpanDetailsRequest request,
-  ) {
+  static Future<SpanData>? _getCached(SpanDetailsRequest request) {
     final cacheKeys = [..._cache.keys];
     for (final key in cacheKeys) {
       if (DateTime.now().difference(_cache[key]!.timestamp) >= _cacheDuration) {

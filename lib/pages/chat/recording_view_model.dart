@@ -27,10 +27,7 @@ class EmptyAudioException implements Exception {}
 class RecordingViewModel extends StatefulWidget {
   final Widget Function(BuildContext, RecordingViewModelState) builder;
 
-  const RecordingViewModel({
-    required this.builder,
-    super.key,
-  });
+  const RecordingViewModel({required this.builder, super.key});
 
   @override
   RecordingViewModelState createState() => RecordingViewModelState();
@@ -78,10 +75,10 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       //     ? AudioEncoder.wav
       //     // Everywhere else we use opus if supported by the platform:
       //     : !PlatformInfos
-      //                 .isIOS && // Blocked by https://github.com/llfbandit/record/issues/560
-      //             await audioRecorder.isEncoderSupported(AudioEncoder.opus)
-      //         ? AudioEncoder.opus
-      //         : AudioEncoder.aacLc;
+      //               .isIOS && // Blocked by https://github.com/llfbandit/record/issues/560
+      //           await audioRecorder.isEncoderSupported(AudioEncoder.opus)
+      //     ? AudioEncoder.opus
+      //     : AudioEncoder.aacLc;
       const codec = AudioEncoder.wav;
       // Pangea#
       fileName =
@@ -136,8 +133,9 @@ class RecordingViewModelState extends State<RecordingViewModel> {
 
   void _subscribe() {
     _recorderSubscription?.cancel();
-    _recorderSubscription =
-        Timer.periodic(const Duration(milliseconds: 100), (_) async {
+    _recorderSubscription = Timer.periodic(const Duration(milliseconds: 100), (
+      _,
+    ) async {
       final amplitude = await _audioRecorder!.getAmplitude();
       var value = 100 + amplitude.current * 2;
       value = value < 1 ? 1 : value;
@@ -188,7 +186,8 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       int duration,
       List<int> waveform,
       String? fileName,
-    ) onSend,
+    )
+    onSend,
   ) async {
     _recorderSubscription?.cancel();
     final path = await _audioRecorder?.stop();

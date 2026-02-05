@@ -1,5 +1,9 @@
+// import 'package:flutter/material.dart';
+
 // import 'package:animations/animations.dart';
 // import 'package:emoji_picker_flutter/locales/default_emoji_set_locale.dart';
+// import 'package:matrix/matrix.dart';
+
 // import 'package:fluffychat/config/setting_keys.dart';
 // import 'package:fluffychat/l10n/l10n.dart';
 // import 'package:fluffychat/pages/chat/recording_input_row.dart';
@@ -8,9 +12,6 @@
 // import 'package:fluffychat/utils/platform_infos.dart';
 // import 'package:fluffychat/widgets/avatar.dart';
 // import 'package:fluffychat/widgets/matrix.dart';
-// import 'package:flutter/material.dart';
-// import 'package:matrix/matrix.dart';
-
 // import '../../config/themes.dart';
 // import 'chat.dart';
 // import 'input_bar.dart';
@@ -52,12 +53,13 @@
 //           );
 //         }
 //         return Row(
-//           crossAxisAlignment: CrossAxisAlignment.end,
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           crossAxisAlignment: .end,
+//           mainAxisAlignment: .spaceBetween,
 //           children: controller.selectMode
 //               ? <Widget>[
-//                   if (controller.selectedEvents
-//                       .every((event) => event.status == EventStatus.error))
+//                   if (controller.selectedEvents.every(
+//                     (event) => event.status == EventStatus.error,
+//                   ))
 //                     SizedBox(
 //                       height: height,
 //                       child: TextButton(
@@ -89,36 +91,36 @@
 //                     ),
 //                   controller.selectedEvents.length == 1
 //                       ? controller.selectedEvents.first
-//                               .getDisplayEvent(controller.timeline!)
-//                               .status
-//                               .isSent
-//                           ? SizedBox(
-//                               height: height,
-//                               child: TextButton(
-//                                 style: selectedTextButtonStyle,
-//                                 onPressed: controller.replyAction,
-//                                 child: Row(
-//                                   children: <Widget>[
-//                                     Text(L10n.of(context).reply),
-//                                     const Icon(Icons.keyboard_arrow_right),
-//                                   ],
+//                                 .getDisplayEvent(controller.timeline!)
+//                                 .status
+//                                 .isSent
+//                             ? SizedBox(
+//                                 height: height,
+//                                 child: TextButton(
+//                                   style: selectedTextButtonStyle,
+//                                   onPressed: controller.replyAction,
+//                                   child: Row(
+//                                     children: <Widget>[
+//                                       Text(L10n.of(context).reply),
+//                                       const Icon(Icons.keyboard_arrow_right),
+//                                     ],
+//                                   ),
 //                                 ),
-//                               ),
-//                             )
-//                           : SizedBox(
-//                               height: height,
-//                               child: TextButton(
-//                                 style: selectedTextButtonStyle,
-//                                 onPressed: controller.sendAgainAction,
-//                                 child: Row(
-//                                   children: <Widget>[
-//                                     Text(L10n.of(context).tryToSendAgain),
-//                                     const SizedBox(width: 4),
-//                                     const Icon(Icons.send_outlined, size: 16),
-//                                   ],
+//                               )
+//                             : SizedBox(
+//                                 height: height,
+//                                 child: TextButton(
+//                                   style: selectedTextButtonStyle,
+//                                   onPressed: controller.sendAgainAction,
+//                                   child: Row(
+//                                     children: <Widget>[
+//                                       Text(L10n.of(context).tryToSendAgain),
+//                                       const SizedBox(width: 4),
+//                                       const Icon(Icons.send_outlined, size: 16),
+//                                     ],
+//                                   ),
 //                                 ),
-//                               ),
-//                             )
+//                               )
 //                       : const SizedBox.shrink(),
 //                 ]
 //               : <Widget>[
@@ -126,8 +128,9 @@
 //                   AnimatedContainer(
 //                     duration: FluffyThemes.animationDuration,
 //                     curve: FluffyThemes.animationCurve,
-//                     width:
-//                         controller.sendController.text.isNotEmpty ? 0 : height,
+//                     width: controller.sendController.text.isNotEmpty
+//                         ? 0
+//                         : height,
 //                     height: height,
 //                     alignment: Alignment.center,
 //                     decoration: const BoxDecoration(),
@@ -189,8 +192,9 @@
 //                                   theme.colorScheme.onPrimaryContainer,
 //                               foregroundColor:
 //                                   theme.colorScheme.primaryContainer,
-//                               child:
-//                                   const Icon(Icons.video_camera_back_outlined),
+//                               child: const Icon(
+//                                 Icons.video_camera_back_outlined,
+//                               ),
 //                             ),
 //                             title: Text(L10n.of(context).sendVideo),
 //                             contentPadding: const EdgeInsets.all(0),
@@ -269,19 +273,20 @@
 //                       tooltip: L10n.of(context).emojis,
 //                       color: theme.colorScheme.onPrimaryContainer,
 //                       icon: PageTransitionSwitcher(
-//                         transitionBuilder: (
-//                           Widget child,
-//                           Animation<double> primaryAnimation,
-//                           Animation<double> secondaryAnimation,
-//                         ) {
-//                           return SharedAxisTransition(
-//                             animation: primaryAnimation,
-//                             secondaryAnimation: secondaryAnimation,
-//                             transitionType: SharedAxisTransitionType.scaled,
-//                             fillColor: Colors.transparent,
-//                             child: child,
-//                           );
-//                         },
+//                         transitionBuilder:
+//                             (
+//                               Widget child,
+//                               Animation<double> primaryAnimation,
+//                               Animation<double> secondaryAnimation,
+//                             ) {
+//                               return SharedAxisTransition(
+//                                 animation: primaryAnimation,
+//                                 secondaryAnimation: secondaryAnimation,
+//                                 transitionType: SharedAxisTransitionType.scaled,
+//                                 fillColor: Colors.transparent,
+//                                 child: child,
+//                               );
+//                             },
 //                         child: Icon(
 //                           controller.showEmojiPicker
 //                               ? Icons.keyboard
@@ -312,9 +317,9 @@
 //                         keyboardType: TextInputType.multiline,
 //                         textInputAction:
 //                             AppSettings.sendOnEnter.value == true &&
-//                                     PlatformInfos.isMobile
-//                                 ? TextInputAction.send
-//                                 : null,
+//                                 PlatformInfos.isMobile
+//                             ? TextInputAction.send
+//                             : null,
 //                         onSubmitted: controller.onInputBarSubmitted,
 //                         onSubmitImage: controller.sendImageFromClipBoard,
 //                         focusNode: controller.inputFocus,
@@ -334,14 +339,18 @@
 //                           filled: false,
 //                         ),
 //                         onChanged: controller.onInputBarChanged,
-//                         suggestionEmojis: getDefaultEmojiLocale(
-//                           AppSettings.emojiSuggestionLocale.value.isNotEmpty
-//                               ? Locale(AppSettings.emojiSuggestionLocale.value)
-//                               : Localizations.localeOf(context),
-//                         ).fold(
-//                           [],
-//                           (emojis, category) => emojis..addAll(category.emoji),
-//                         ),
+//                         suggestionEmojis:
+//                             getDefaultEmojiLocale(
+//                               AppSettings.emojiSuggestionLocale.value.isNotEmpty
+//                                   ? Locale(
+//                                       AppSettings.emojiSuggestionLocale.value,
+//                                     )
+//                                   : Localizations.localeOf(context),
+//                             ).fold(
+//                               [],
+//                               (emojis, category) =>
+//                                   emojis..addAll(category.emoji),
+//                             ),
 //                       ),
 //                     ),
 //                   ),
@@ -349,19 +358,21 @@
 //                     height: height,
 //                     width: height,
 //                     alignment: Alignment.center,
-//                     child: PlatformInfos.platformCanRecord &&
+//                     child:
+//                         PlatformInfos.platformCanRecord &&
 //                             controller.sendController.text.isEmpty
 //                         ? IconButton(
 //                             tooltip: L10n.of(context).voiceMessage,
 //                             onPressed: () =>
 //                                 ScaffoldMessenger.of(context).showSnackBar(
-//                               SnackBar(
-//                                 content: Text(
-//                                   L10n.of(context)
-//                                       .longPressToRecordVoiceMessage,
+//                                   SnackBar(
+//                                     content: Text(
+//                                       L10n.of(
+//                                         context,
+//                                       ).longPressToRecordVoiceMessage,
+//                                     ),
+//                                   ),
 //                                 ),
-//                               ),
-//                             ),
 //                             onLongPress: () => recordingViewModel
 //                                 .startRecording(controller.room),
 //                             style: IconButton.styleFrom(
@@ -393,9 +404,9 @@
 //   const _ChatAccountPicker(this.controller);
 
 //   void _popupMenuButtonSelected(String mxid, BuildContext context) {
-//     final client = Matrix.of(context)
-//         .currentBundle!
-//         .firstWhere((cl) => cl!.userID == mxid, orElse: () => null);
+//     final client = Matrix.of(
+//       context,
+//     ).currentBundle!.firstWhere((cl) => cl!.userID == mxid, orElse: () => null);
 //     if (client == null) {
 //       Logs().w('Attempted to switch to a non-existing client $mxid');
 //       return;
@@ -422,7 +433,8 @@
 //                     builder: (context, snapshot) => ListTile(
 //                       leading: Avatar(
 //                         mxContent: snapshot.data?.avatarUrl,
-//                         name: snapshot.data?.displayName ??
+//                         name:
+//                             snapshot.data?.displayName ??
 //                             client.userID!.localpart,
 //                         size: 20,
 //                       ),
@@ -435,7 +447,8 @@
 //               .toList(),
 //           child: Avatar(
 //             mxContent: snapshot.data?.avatarUrl,
-//             name: snapshot.data?.displayName ??
+//             name:
+//                 snapshot.data?.displayName ??
 //                 Matrix.of(context).client.userID!.localpart,
 //             size: 20,
 //           ),

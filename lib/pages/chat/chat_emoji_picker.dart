@@ -54,20 +54,22 @@ class ChatEmojiPicker extends StatelessWidget {
                               // #Pangea
                               // enabled: false,
                               showBackspaceButton: false,
-                              backgroundColor: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainer,
-                              buttonColor: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainer,
-                              buttonIconColor:
-                                  Theme.of(context).colorScheme.onSurface,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainer,
+                              buttonColor: Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainer,
+                              buttonIconColor: Theme.of(
+                                context,
+                              ).colorScheme.onSurface,
                               // Pangea#
                             ),
                             categoryViewConfig: CategoryViewConfig(
                               backspaceColor: theme.colorScheme.primary,
-                              iconColor:
-                                  theme.colorScheme.primary.withAlpha(128),
+                              iconColor: theme.colorScheme.primary.withAlpha(
+                                128,
+                              ),
                               iconColorSelected: theme.colorScheme.primary,
                               indicatorColor: theme.colorScheme.primary,
                               backgroundColor: theme.colorScheme.surface,

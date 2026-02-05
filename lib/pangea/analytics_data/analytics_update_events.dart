@@ -18,11 +18,7 @@ class ConstructLevelUpEvent extends AnalyticsUpdateEvent {
   final ConstructIdentifier constructId;
   final ConstructLevelEnum level;
   final String? targetID;
-  ConstructLevelUpEvent(
-    this.constructId,
-    this.level,
-    this.targetID,
-  );
+  ConstructLevelUpEvent(this.constructId, this.level, this.targetID);
 }
 
 class XPGainedEvent extends AnalyticsUpdateEvent {

@@ -25,17 +25,15 @@ class FullWidthDialog extends StatelessWidget {
       duration: FluffyThemes.animationDuration,
       child: ConstrainedBox(
         constraints: isColumnMode
-            ? BoxConstraints(
-                maxWidth: maxWidth,
-                maxHeight: maxHeight,
-              )
+            ? BoxConstraints(maxWidth: maxWidth, maxHeight: maxHeight)
             : BoxConstraints(
                 maxWidth: MediaQuery.widthOf(context),
                 maxHeight: MediaQuery.heightOf(context),
               ),
         child: ClipRRect(
-          borderRadius:
-              isColumnMode ? BorderRadius.circular(20.0) : BorderRadius.zero,
+          borderRadius: isColumnMode
+              ? BorderRadius.circular(20.0)
+              : BorderRadius.zero,
           child: dialogContent,
         ),
       ),
@@ -44,14 +42,8 @@ class FullWidthDialog extends StatelessWidget {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: isColumnMode
-          ? Dialog(
-              backgroundColor: backgroundColor,
-              child: content,
-            )
-          : Dialog.fullscreen(
-              backgroundColor: backgroundColor,
-              child: content,
-            ),
+          ? Dialog(backgroundColor: backgroundColor, child: content)
+          : Dialog.fullscreen(backgroundColor: backgroundColor, child: content),
     );
   }
 }

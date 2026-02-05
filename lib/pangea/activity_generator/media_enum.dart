@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-enum MediaEnum {
-  images,
-  videos,
-  voiceMessages,
-  nan,
-}
+enum MediaEnum { images, videos, voiceMessages, nan }
 
 extension MediaEnumExtension on MediaEnum {
   //fromString

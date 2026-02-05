@@ -21,11 +21,7 @@ import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
 
-enum OverlayPositionEnum {
-  transform,
-  centered,
-  top,
-}
+enum OverlayPositionEnum { transform, centered, top }
 
 class OverlayUtil {
   static bool showOverlay({
@@ -72,15 +68,18 @@ class OverlayUtil {
                 ),
               ),
             Positioned(
-              top: (position == OverlayPositionEnum.centered ||
+              top:
+                  (position == OverlayPositionEnum.centered ||
                       position == OverlayPositionEnum.top)
                   ? 0
                   : null,
-              right: (position == OverlayPositionEnum.centered ||
+              right:
+                  (position == OverlayPositionEnum.centered ||
                       position == OverlayPositionEnum.top)
                   ? 0
                   : null,
-              left: (position == OverlayPositionEnum.centered ||
+              left:
+                  (position == OverlayPositionEnum.centered ||
                       position == OverlayPositionEnum.top)
                   ? 0
                   : null,
@@ -111,11 +110,7 @@ class OverlayUtil {
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: stack, data: {});
       return false;
     }
   }
@@ -138,8 +133,8 @@ class OverlayUtil {
     Alignment? followerAnchor,
   }) {
     try {
-      final LayerLinkAndKey layerLinkAndKey =
-          MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+      final LayerLinkAndKey layerLinkAndKey = MatrixState.pAnyState
+          .layerLinkAndKey(transformTargetId);
       if (layerLinkAndKey.key.currentContext == null) {
         debugPrint("layerLinkAndKey.key.currentContext is null");
         return;
@@ -151,20 +146,23 @@ class OverlayUtil {
 
       bool hasTopOverflow = false;
       if (targetRenderBox != null && targetRenderBox.hasSize) {
-        final Offset transformTargetOffset =
-            (targetRenderBox).localToGlobal(Offset.zero);
+        final Offset transformTargetOffset = (targetRenderBox).localToGlobal(
+          Offset.zero,
+        );
         final Size transformTargetSize = targetRenderBox.size;
 
         final columnWidth = FluffyThemes.isColumnMode(context)
             ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
             : 0;
 
-        final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
+        final horizontalMidpoint =
+            (transformTargetOffset.dx - columnWidth) +
             (transformTargetSize.width / 2);
 
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-        final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
+        final hasRightOverflow =
+            (horizontalMidpoint + halfMaxWidth) >
             (MediaQuery.widthOf(context) - columnWidth - 10);
         hasTopOverflow = maxHeight + kToolbarHeight > transformTargetOffset.dy;
 
@@ -174,7 +172,8 @@ class OverlayUtil {
         if (hasLeftOverflow) {
           xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
         } else if (hasRightOverflow) {
-          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+          xOffset =
+              (MediaQuery.of(context).size.width - columnWidth) -
               (horizontalMidpoint + halfMaxWidth + 10);
         }
         offset = Offset(xOffset, 0);
@@ -204,20 +203,18 @@ class OverlayUtil {
         closePrevOverlay: closePrevOverlay,
         offset: offset,
         overlayKey: overlayKey,
-        targetAnchor: targetAnchor ??
+        targetAnchor:
+            targetAnchor ??
             (hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter),
-        followerAnchor: followerAnchor ??
+        followerAnchor:
+            followerAnchor ??
             (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter),
         onDismiss: onDismiss,
         ignorePointer: ignorePointer,
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: stack, data: {});
     }
   }
 
@@ -288,9 +285,7 @@ class OverlayUtil {
       closePrevOverlay: false,
       canPop: false,
       overlayKey: "star_rain_level_up",
-      child: const StarRainWidget(
-        overlayKey: "star_rain_level_up",
-      ),
+      child: const StarRainWidget(overlayKey: "star_rain_level_up"),
     );
   }
 
@@ -304,10 +299,7 @@ class OverlayUtil {
       followerAnchor: Alignment.bottomCenter,
       targetAnchor: Alignment.bottomCenter,
       context: context,
-      child: PointsGainedAnimation(
-        points: points,
-        targetID: targetId,
-      ),
+      child: PointsGainedAnimation(points: points, targetID: targetId),
       transformTargetId: targetId,
       closePrevOverlay: false,
       backDropToDismiss: false,
@@ -328,10 +320,7 @@ class OverlayUtil {
       followerAnchor: Alignment.topCenter,
       targetAnchor: Alignment.topCenter,
       context: context,
-      child: GrowthAnimation(
-        targetID: overlayKey,
-        level: level,
-      ),
+      child: GrowthAnimation(targetID: overlayKey, level: level),
       transformTargetId: targetId,
       closePrevOverlay: false,
       backDropToDismiss: false,

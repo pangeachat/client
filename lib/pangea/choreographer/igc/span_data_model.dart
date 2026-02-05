@@ -102,9 +102,7 @@ class SpanData {
       offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
-    return choices?.firstWhereOrNull(
-      (choice) => choice.isBestCorrection,
-    );
+    return choices?.firstWhereOrNull((choice) => choice.isBestCorrection);
   }
 
   int get selectedChoiceIndex {
@@ -137,9 +135,7 @@ class SpanData {
 
   bool isNormalizationError() {
     final correctChoice = choices
-        ?.firstWhereOrNull(
-          (c) => c.isBestCorrection,
-        )
+        ?.firstWhereOrNull((c) => c.isBestCorrection)
         ?.value;
 
     final l2Code =
@@ -225,22 +221,20 @@ class SpanChoice {
       value: json['value'] as String,
       type: json['type'] != null
           ? SpanChoiceTypeEnum.values.firstWhereOrNull(
-                (element) => element.name == json['type'],
-              ) ??
-              SpanChoiceTypeEnum.bestCorrection
+                  (element) => element.name == json['type'],
+                ) ??
+                SpanChoiceTypeEnum.bestCorrection
           : SpanChoiceTypeEnum.bestCorrection,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
-      timestamp:
-          json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
+      timestamp: json['timestamp'] != null
+          ? DateTime.parse(json['timestamp'])
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'value': value,
-      'type': type.name,
-    };
+    final Map<String, dynamic> data = {'value': value, 'type': type.name};
 
     if (selected) {
       data['selected'] = selected;
@@ -294,17 +288,12 @@ class SpanChoice {
 class Rule {
   final String id;
 
-  const Rule({
-    required this.id,
-  });
+  const Rule({required this.id});
 
-  factory Rule.fromJson(Map<String, dynamic> json) => Rule(
-        id: json['id'] as String,
-      );
+  factory Rule.fromJson(Map<String, dynamic> json) =>
+      Rule(id: json['id'] as String);
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'id': id};
 
   @override
   bool operator ==(Object other) {
@@ -322,25 +311,22 @@ class Rule {
 class SpanDataType {
   final SpanDataTypeEnum typeName;
 
-  const SpanDataType({
-    required this.typeName,
-  });
+  const SpanDataType({required this.typeName});
 
   factory SpanDataType.fromJson(Map<String, dynamic> json) {
     final String? type =
         json['typeName'] ?? json['type'] ?? json['type_name'] as String?;
     return SpanDataType(
       typeName: type != null
-          ? SpanDataTypeEnum.values
-                  .firstWhereOrNull((element) => element.name == type) ??
-              SpanDataTypeEnum.correction
+          ? SpanDataTypeEnum.values.firstWhereOrNull(
+                  (element) => element.name == type,
+                ) ??
+                SpanDataTypeEnum.correction
           : SpanDataTypeEnum.correction,
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'type_name': typeName.name,
-      };
+  Map<String, dynamic> toJson() => {'type_name': typeName.name};
 
   @override
   bool operator ==(Object other) {

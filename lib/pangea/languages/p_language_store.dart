@@ -37,7 +37,8 @@ class PLanguageStore {
   static Future<void> initialize({bool forceRefresh = false}) async {
     _langList = await _getCachedLanguages();
     final isOutdated = await _shouldFetch;
-    final shouldFetch = forceRefresh ||
+    final shouldFetch =
+        forceRefresh ||
         isOutdated ||
         _langList.isEmpty ||
         _langList.every((lang) => !lang.l2);
@@ -47,8 +48,8 @@ class PLanguageStore {
       _langList = result.isValue
           ? result.asValue!.value
           : LanguageConstants.languageList
-              .map((e) => LanguageModel.fromJson(e))
-              .toList();
+                .map((e) => LanguageModel.fromJson(e))
+                .toList();
 
       await _MyShared.saveJson(PrefKey.languagesKey, {
         PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
@@ -105,9 +106,7 @@ class PLanguageStore {
   }
 
   static LanguageModel? byLangCode(String langCode) =>
-      _langList.firstWhereOrNull(
-        (element) => element.langCode == langCode,
-      );
+      _langList.firstWhereOrNull((element) => element.langCode == langCode);
 }
 
 class _MyShared {

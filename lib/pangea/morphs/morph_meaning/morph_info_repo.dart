@@ -29,7 +29,7 @@ class MorphInfoRepo {
   static final Map<String, _MorphInfoCacheItem> _cache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
 
-// Persistent storage
+  // Persistent storage
   static final GetStorage _storage = GetStorage('morph_info_storage');
 
   static Future<Result<MorphInfoResponse>> get(
@@ -72,11 +72,7 @@ class MorphInfoRepo {
       await _storage.write(key, resultFuture.toJson());
       _cache.remove(key); // Invalidate in-memory cache
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'request': request.toJson()},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'request': request.toJson()});
     }
   }
 
@@ -88,7 +84,8 @@ class MorphInfoRepo {
   }) async {
     try {
       final cachedJson = await _getCached(request);
-      final resp = cachedJson?.result ??
+      final resp =
+          cachedJson?.result ??
           MorphInfoResponse(
             userL1: request.userL1,
             userL2: request.userL2,
@@ -98,11 +95,7 @@ class MorphInfoRepo {
       resp.setMorphDefinition(feature.name, tag, definition);
       await set(request, resp);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'request': request.toJson()},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'request': request.toJson()});
     }
   }
 
@@ -140,9 +133,7 @@ class MorphInfoRepo {
       );
     }
 
-    return MorphInfoResponse.fromJson(
-      jsonDecode(utf8.decode(res.bodyBytes)),
-    );
+    return MorphInfoResponse.fromJson(jsonDecode(utf8.decode(res.bodyBytes)));
   }
 
   static Future<Result<MorphInfoResponse>>? _getCached(
@@ -170,9 +161,7 @@ class MorphInfoRepo {
     await set(request, result.asValue!.value);
   }
 
-  static MorphInfoResponse? _getStored(
-    MorphInfoRequest request,
-  ) {
+  static MorphInfoResponse? _getStored(MorphInfoRequest request) {
     final key = request.storageKey;
     try {
       final entry = _storage.read(key);
@@ -180,11 +169,7 @@ class MorphInfoRepo {
 
       return MorphInfoResponse.fromJson(entry);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'request': request.toJson()},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'request': request.toJson()});
       _storage.remove(key);
       return null;
     }

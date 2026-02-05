@@ -20,10 +20,7 @@ class Login extends StatefulWidget {
   // const Login({required this.client, super.key});
   final bool withEmail;
 
-  const Login({
-    super.key,
-    this.withEmail = false,
-  });
+  const Login({super.key, this.withEmail = false});
   // Pangea#
 
   @override
@@ -58,22 +55,24 @@ class LoginController extends State<Login> {
     // TODO: implement initState
     super.initState();
     loadingSignIn = true;
-    checkHomeServerAction().then((client) {
-      if (mounted) {
-        setState(() {
-          loadingSignIn = false;
-          this.client = client;
+    checkHomeServerAction()
+        .then((client) {
+          if (mounted) {
+            setState(() {
+              loadingSignIn = false;
+              this.client = client;
+            });
+          }
+        })
+        .catchError((e) {
+          final String err = e.toString();
+          if (mounted) {
+            setState(() {
+              loadingSignIn = false;
+              passwordError = err.toLocalizedString(context);
+            });
+          }
         });
-      }
-    }).catchError((e) {
-      final String err = e.toString();
-      if (mounted) {
-        setState(() {
-          loadingSignIn = false;
-          passwordError = err.toLocalizedString(context);
-        });
-      }
-    });
 
     usernameController.addListener(() => setState(() {}));
     passwordController.addListener(() => setState(() {}));
@@ -194,8 +193,9 @@ class LoginController extends State<Login> {
   //         final dialogResult = await showOkCancelAlertDialog(
   //           context: context,
   //           useRootNavigator: false,
-  //           title: L10n.of(context)
-  //               .noMatrixServer(newDomain.toString(), oldHomeserver.toString()),
+  //           title: L10n.of(
+  //             context,
+  //           ).noMatrixServer(newDomain.toString(), oldHomeserver.toString()),
   //           okLabel: L10n.of(context).ok,
   //           cancelLabel: L10n.of(context).cancel,
   //         );
@@ -228,8 +228,10 @@ class LoginController extends State<Login> {
       return client;
     }
 
-    final String homeServer =
-        AppConfig.defaultHomeserver.trim().toLowerCase().replaceAll(' ', '-');
+    final String homeServer = AppConfig.defaultHomeserver
+        .trim()
+        .toLowerCase()
+        .replaceAll(' ', '-');
     var homeserver = Uri.parse(homeServer);
     if (homeserver.scheme.isEmpty) {
       homeserver = Uri.https(homeServer, '');
@@ -257,8 +259,9 @@ class LoginController extends State<Login> {
       message: L10n.of(context).enterAnEmailAddress,
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,
-      initialText:
-          usernameController.text.isEmail ? usernameController.text : '',
+      initialText: usernameController.text.isEmail
+          ? usernameController.text
+          : '',
       hintText: L10n.of(context).enterAnEmailAddress,
       keyboardType: TextInputType.emailAddress,
     );
@@ -366,9 +369,10 @@ class LoginController extends State<Login> {
 // #Pangea
 // extension on String {
 extension LoginExtension on String {
-// Pangea#
-  static final RegExp _phoneRegex =
-      RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$');
+  // Pangea#
+  static final RegExp _phoneRegex = RegExp(
+    r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$',
+  );
   static final RegExp _emailRegex = RegExp(r'(.+)@(.+)\.(.+)');
 
   bool get isEmail => _emailRegex.hasMatch(this);

@@ -11,9 +11,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaActivityGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     debugger(when: kDebugMode && req.target.tokens.length != 1);
 
     final token = req.target.tokens.first;
@@ -36,16 +34,17 @@ class LemmaActivityGenerator {
     PangeaToken token,
   ) async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab);
 
     final List<ConstructIdentifier> constructIds = constructs.keys.toList();
     // Offload computation to an isolate
-    final Map<ConstructIdentifier, int> distances =
-        await compute(_computeDistancesInIsolate, {
-      'lemmas': constructIds,
-      'target': token.lemma.text,
-    });
+    final Map<ConstructIdentifier, int> distances = await compute(
+      _computeDistancesInIsolate,
+      {'lemmas': constructIds, 'target': token.lemma.text},
+    );
 
     // Sort lemmas by distance
     final sortedLemmas = distances.keys.toList()
@@ -69,8 +68,9 @@ class LemmaActivityGenerator {
     }
 
     // Ensure the target lemma (token.vocabConstructID) is included while keeping unique lemma texts
-    final int existingIndex = uniqueByLemma
-        .indexWhere((c) => c.lemma == token.vocabConstructID.lemma);
+    final int existingIndex = uniqueByLemma.indexWhere(
+      (c) => c.lemma == token.vocabConstructID.lemma,
+    );
     if (existingIndex >= 0) {
       uniqueByLemma[existingIndex] = token.vocabConstructID;
     } else {
@@ -119,9 +119,13 @@ class LemmaActivityGenerator {
         } else if (s[i - 1] == t[j - 1]) {
           dp[i][j] = dp[i - 1][j - 1];
         } else {
-          dp[i][j] = 1 +
-              [dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]]
-                  .reduce((a, b) => a < b ? a : b);
+          dp[i][j] =
+              1 +
+              [
+                dp[i - 1][j],
+                dp[i][j - 1],
+                dp[i - 1][j - 1],
+              ].reduce((a, b) => a < b ? a : b);
         }
       }
     }

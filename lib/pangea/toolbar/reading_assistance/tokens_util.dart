@@ -9,20 +9,14 @@ class _TokenPositionCacheItem {
   final List<TokenPosition> positions;
   final DateTime timestamp;
 
-  _TokenPositionCacheItem(
-    this.positions,
-    this.timestamp,
-  );
+  _TokenPositionCacheItem(this.positions, this.timestamp);
 }
 
 class _NewTokenCacheItem {
   final List<PangeaTokenText> tokens;
   final DateTime timestamp;
 
-  _NewTokenCacheItem(
-    this.tokens,
-    this.timestamp,
-  );
+  _NewTokenCacheItem(this.tokens, this.timestamp);
 }
 
 class TokenPosition {
@@ -37,10 +31,10 @@ class TokenPosition {
   });
 
   Map<String, dynamic> toJson() => {
-        'token': token?.toJson(),
-        'startIndex': startIndex,
-        'endIndex': endIndex,
-      };
+    'token': token?.toJson(),
+    'startIndex': startIndex,
+    'endIndex': endIndex,
+  };
 }
 
 class TokensUtil {
@@ -66,10 +60,7 @@ class TokensUtil {
     String cacheKey,
     List<PangeaTokenText> tokens,
   ) {
-    _newTokenCache[cacheKey] = _NewTokenCacheItem(
-      tokens,
-      DateTime.now(),
-    );
+    _newTokenCache[cacheKey] = _NewTokenCacheItem(tokens, DateTime.now());
   }
 
   static List<PangeaTokenText> getNewTokens(
@@ -79,11 +70,15 @@ class TokensUtil {
     int? maxTokens,
   }) {
     if (MatrixState
-        .pangeaController.matrixState.analyticsDataService.isInitializing) {
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .isInitializing) {
       return [];
     }
 
-    final messageInUserL2 = tokensLangCode.split('-').first ==
+    final messageInUserL2 =
+        tokensLangCode.split('-').first ==
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     final cached = _getCachedNewTokens(cacheKey);
@@ -120,18 +115,20 @@ class TokensUtil {
     return newTokens;
   }
 
-  static List<PangeaTokenText> getNewTokensByEvent(
-    PangeaMessageEvent event,
-  ) {
+  static List<PangeaTokenText> getNewTokensByEvent(PangeaMessageEvent event) {
     if (!event.eventId.isValidMatrixId ||
         (MatrixState.pangeaController.subscriptionController.isSubscribed ==
             false) ||
         MatrixState
-            .pangeaController.matrixState.analyticsDataService.isInitializing) {
+            .pangeaController
+            .matrixState
+            .analyticsDataService
+            .isInitializing) {
       return [];
     }
 
-    final messageInUserL2 = event.messageDisplayLangCode.split("-")[0] ==
+    final messageInUserL2 =
+        event.messageDisplayLangCode.split("-")[0] ==
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     final cached = _getCachedNewTokens(event.eventId);
@@ -249,9 +246,7 @@ class TokensUtil {
   }
 
   /// Given a list of tokens, reconstructs an original message, including gaps for non-token elements.
-  static List<TokenPosition> getGlobalTokenPositions(
-    List<PangeaToken> tokens,
-  ) {
+  static List<TokenPosition> getGlobalTokenPositions(List<PangeaToken> tokens) {
     final List<TokenPosition> tokenPositions = [];
     int tokenPointer = 0;
     int globalPointer = 0;
@@ -264,10 +259,7 @@ class TokensUtil {
         // If the token starts after the current global pointer, we need to
         // create a new token position for the gap
         tokenPositions.add(
-          TokenPosition(
-            startIndex: globalPointer,
-            endIndex: token.text.offset,
-          ),
+          TokenPosition(startIndex: globalPointer, endIndex: token.text.offset),
         );
 
         globalPointer = token.text.offset;
@@ -279,9 +271,11 @@ class TokensUtil {
         final PangeaToken currentToken = tokens[endIndex];
         final PangeaToken nextToken = tokens[endIndex + 1];
 
-        final currentIsPunct = currentToken.pos == 'PUNCT' &&
+        final currentIsPunct =
+            currentToken.pos == 'PUNCT' &&
             currentToken.text.content.trim().isNotEmpty;
-        final nextIsPunct = nextToken.pos == 'PUNCT' &&
+        final nextIsPunct =
+            nextToken.pos == 'PUNCT' &&
             nextToken.text.content.trim().isNotEmpty;
 
         if (currentToken.text.offset + currentToken.text.length !=

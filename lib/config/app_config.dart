@@ -120,12 +120,10 @@ abstract class AppConfig {
   static const double readingAssistanceInputBarHeight = 175.0;
   static String errorSubscriptionId = "pangea_subscription_error";
 
-  static TextStyle messageTextStyle(
-    Event? event,
-    Color textColor,
-  ) {
+  static TextStyle messageTextStyle(Event? event, Color textColor) {
     final fontSize = messageFontSize * AppSettings.fontSizeFactor.value;
-    final bigEmotes = event != null &&
+    final bigEmotes =
+        event != null &&
         event.onlyEmotes &&
         event.numberEmotes > 0 &&
         event.numberEmotes <= 3;
@@ -133,10 +131,12 @@ abstract class AppConfig {
     return TextStyle(
       color: textColor,
       fontSize: bigEmotes ? fontSize * 5 : fontSize,
-      decoration:
-          (event?.redacted ?? false) ? TextDecoration.lineThrough : null,
+      decoration: (event?.redacted ?? false)
+          ? TextDecoration.lineThrough
+          : null,
       height: 1.3,
     );
   }
+
   // Pangea#
 }

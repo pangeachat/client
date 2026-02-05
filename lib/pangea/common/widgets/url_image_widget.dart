@@ -54,15 +54,13 @@ class ImageByUrl extends StatelessWidget {
                 height: width,
                 fit: BoxFit.cover,
                 imageUrl: imageUrl.toString(),
-                placeholder: (
-                  context,
-                  url,
-                ) =>
-                    Shimmer.fromColors(
-                  baseColor:
-                      Theme.of(context).colorScheme.primary.withAlpha(20),
-                  highlightColor:
-                      Theme.of(context).colorScheme.primary.withAlpha(50),
+                placeholder: (context, url) => Shimmer.fromColors(
+                  baseColor: Theme.of(
+                    context,
+                  ).colorScheme.primary.withAlpha(20),
+                  highlightColor: Theme.of(
+                    context,
+                  ).colorScheme.primary.withAlpha(50),
                   child: Container(
                     width: width,
                     height: width,
@@ -71,11 +69,7 @@ class ImageByUrl extends StatelessWidget {
                     ),
                   ),
                 ),
-                errorWidget: (
-                  context,
-                  url,
-                  error,
-                ) =>
+                errorWidget: (context, url, error) =>
                     replacement ?? const SizedBox(),
                 httpHeaders: headers,
                 imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,

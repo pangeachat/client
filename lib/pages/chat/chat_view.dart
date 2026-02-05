@@ -60,8 +60,9 @@ class ChatView extends StatelessWidget {
     //       IconButton(
     //         icon: const Icon(Icons.message_outlined),
     //         tooltip: L10n.of(context).replyInThread,
-    //         onPressed: () => controller
-    //             .enterThread(controller.selectedEvents.single.eventId),
+    //         onPressed: () => controller.enterThread(
+    //           controller.selectedEvents.single.eventId,
+    //         ),
     //       ),
     //     IconButton(
     //       icon: const Icon(Icons.copy_outlined),
@@ -94,7 +95,7 @@ class ChatView extends StatelessWidget {
     //               onTap: controller.pinEvent,
     //               value: null,
     //               child: Row(
-    //                 mainAxisSize: MainAxisSize.min,
+    //                 mainAxisSize: .min,
     //                 children: [
     //                   const Icon(Icons.push_pin_outlined),
     //                   const SizedBox(width: 12),
@@ -107,7 +108,7 @@ class ChatView extends StatelessWidget {
     //               onTap: () => controller.saveSelectedEvent(context),
     //               value: null,
     //               child: Row(
-    //                 mainAxisSize: MainAxisSize.min,
+    //                 mainAxisSize: .min,
     //                 children: [
     //                   const Icon(Icons.download_outlined),
     //                   const SizedBox(width: 12),
@@ -118,7 +119,7 @@ class ChatView extends StatelessWidget {
     //           PopupMenuItem(
     //             value: _EventContextAction.info,
     //             child: Row(
-    //               mainAxisSize: MainAxisSize.min,
+    //               mainAxisSize: .min,
     //               children: [
     //                 const Icon(Icons.info_outlined),
     //                 const SizedBox(width: 12),
@@ -130,12 +131,9 @@ class ChatView extends StatelessWidget {
     //             PopupMenuItem(
     //               value: _EventContextAction.report,
     //               child: Row(
-    //                 mainAxisSize: MainAxisSize.min,
+    //                 mainAxisSize: .min,
     //                 children: [
-    //                   const Icon(
-    //                     Icons.shield_outlined,
-    //                     color: Colors.red,
-    //                   ),
+    //                   const Icon(Icons.shield_outlined, color: Colors.red),
     //                   const SizedBox(width: 12),
     //                   Text(L10n.of(context).reportMessage),
     //                 ],
@@ -166,10 +164,7 @@ class ChatView extends StatelessWidget {
     if (controller.room.showActivityChatUI) {
       return [
         ActivityMenuButton(controller: controller),
-        ActivitySessionPopupMenu(
-          controller.room,
-          onLeave: controller.onLeave,
-        ),
+        ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
       ];
     }
 
@@ -178,11 +173,9 @@ class ChatView extends StatelessWidget {
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
         onPressed: () {
-          NavigationUtil.goToSpaceRoute(
-            controller.room.id,
-            ['search'],
-            context,
-          );
+          NavigationUtil.goToSpaceRoute(controller.room.id, [
+            'search',
+          ], context);
         },
       ),
       IconButton(
@@ -190,17 +183,11 @@ class ChatView extends StatelessWidget {
         tooltip: L10n.of(context).chatDetails,
         onPressed: () {
           if (GoRouterState.of(context).uri.path.endsWith('/details')) {
-            NavigationUtil.goToSpaceRoute(
-              controller.room.id,
-              [],
-              context,
-            );
+            NavigationUtil.goToSpaceRoute(controller.room.id, [], context);
           } else {
-            NavigationUtil.goToSpaceRoute(
-              controller.room.id,
-              ['details'],
-              context,
-            );
+            NavigationUtil.goToSpaceRoute(controller.room.id, [
+              'details',
+            ], context);
           }
         },
       ),
@@ -224,7 +211,8 @@ class ChatView extends StatelessWidget {
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
 
     return PopScope(
-      canPop: controller.selectedEvents.isEmpty &&
+      canPop:
+          controller.selectedEvents.isEmpty &&
           !controller.showEmojiPicker &&
           controller.activeThreadId == null,
       onPopInvokedWithResult: (pop, _) async {
@@ -276,8 +264,8 @@ class ChatView extends StatelessWidget {
                 // ),
                 // backgroundColor: controller.selectedEvents.isEmpty
                 //     ? controller.activeThreadId != null
-                //         ? theme.colorScheme.secondaryContainer
-                //         : null
+                //           ? theme.colorScheme.secondaryContainer
+                //           : null
                 //     : theme.colorScheme.tertiaryContainer,
                 // Pangea#
                 automaticallyImplyLeading: false,
@@ -289,55 +277,50 @@ class ChatView extends StatelessWidget {
                         color: theme.colorScheme.onTertiaryContainer,
                       )
                     : activeThreadId != null
-                        ? IconButton(
-                            icon: const Icon(Icons.close),
-                            onPressed: controller.closeThread,
-                            tooltip: L10n.of(context).backToMainChat,
-                            color: theme.colorScheme.onSecondaryContainer,
-                          )
+                    ? IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: controller.closeThread,
+                        tooltip: L10n.of(context).backToMainChat,
+                        color: theme.colorScheme.onSecondaryContainer,
+                      )
+                    // #Pangea
+                    : controller.widget.backButton != null
+                    ? controller.widget.backButton!
+                    // : FluffyThemes.isColumnMode(context)
+                    // ? null
+                    // Pangea#
+                    : StreamBuilder<Object>(
+                        stream: Matrix.of(context).client.onSync.stream.where(
+                          (syncUpdate) => syncUpdate.hasRoomUpdate,
+                        ),
                         // #Pangea
-                        : controller.widget.backButton != null
-                            ? controller.widget.backButton!
-                            // : FluffyThemes.isColumnMode(context)
-                            //     ? null
-                            // Pangea#
-                            : StreamBuilder<Object>(
-                                stream: Matrix.of(context)
-                                    .client
-                                    .onSync
-                                    .stream
-                                    .where(
-                                      (syncUpdate) => syncUpdate.hasRoomUpdate,
-                                    ),
-                                // #Pangea
-                                // builder: (context, _) => UnreadRoomsBadge(
-                                //   filter: (r) => r.id != controller.roomId,
-                                //   badgePosition:
-                                //       BadgePosition.topEnd(end: 8, top: 4),
-                                //   child: const Center(child: BackButton()),
-                                // ),
-                                builder: (context, _) => Center(
-                                  child: SizedBox(
-                                    height: kToolbarHeight,
-                                    child: UnreadRoomsBadge(
-                                      filter: (r) => r.id != controller.roomId,
-                                      badgePosition: BadgePosition.topEnd(
-                                        end: 8,
-                                        top: 9,
-                                      ),
-                                      child: const Center(child: BackButton()),
-                                    ),
-                                  ),
-                                ),
-                                // Pangea#
+                        // builder: (context, _) => UnreadRoomsBadge(
+                        //   filter: (r) => r.id != controller.roomId,
+                        //   badgePosition: BadgePosition.topEnd(end: 8, top: 4),
+                        //   child: const Center(child: BackButton()),
+                        // ),
+                        builder: (context, _) => Center(
+                          child: SizedBox(
+                            height: kToolbarHeight,
+                            child: UnreadRoomsBadge(
+                              filter: (r) => r.id != controller.roomId,
+                              badgePosition: BadgePosition.topEnd(
+                                end: 8,
+                                top: 9,
                               ),
+                              child: const Center(child: BackButton()),
+                            ),
+                          ),
+                        ),
+                        // Pangea#
+                      ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(appbarBottomHeight),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       PinnedEvents(controller),
                       if (activeThreadId != null)
@@ -374,9 +357,7 @@ class ChatView extends StatelessWidget {
                           title: L10n.of(context).jumpToLastReadMessage,
                           trailing: TextButton(
                             onPressed: () {
-                              controller.scrollToEventId(
-                                scrollUpBannerEventId,
-                              );
+                              controller.scrollToEventId(scrollUpBannerEventId);
                               controller.discardScrollUpBannerEventId();
                             },
                             child: Text(L10n.of(context).jump),
@@ -389,7 +370,8 @@ class ChatView extends StatelessWidget {
               // #Pangea
               // floatingActionButtonLocation:
               //     FloatingActionButtonLocation.miniCenterFloat,
-              // floatingActionButton: controller.showScrollDownButton &&
+              // floatingActionButton:
+              //     controller.showScrollDownButton &&
               //         controller.selectedEvents.isEmpty
               //     ? Padding(
               //         padding: const EdgeInsets.only(bottom: 56.0),
@@ -429,7 +411,8 @@ class ChatView extends StatelessWidget {
                             sigmaX: accountConfig.wallpaperBlur ?? 0.0,
                             sigmaY: accountConfig.wallpaperBlur ?? 0.0,
                           ),
-                          child: controller.room.activityPlan!.imageURL!
+                          child:
+                              controller.room.activityPlan!.imageURL!
                                   .toString()
                                   .startsWith('mxc')
                               ? MxcImage(
@@ -438,7 +421,9 @@ class ChatView extends StatelessWidget {
                                   height: MediaQuery.sizeOf(context).height,
                                   width: MediaQuery.sizeOf(context).width,
                                   cacheKey: controller
-                                      .room.activityPlan!.imageURL
+                                      .room
+                                      .activityPlan!
+                                      .imageURL
                                       .toString(),
                                   isThumbnail: false,
                                 )
@@ -448,8 +433,8 @@ class ChatView extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   height: MediaQuery.sizeOf(context).height,
                                   width: MediaQuery.sizeOf(context).width,
-                                  headers: controller
-                                          .room.activityPlan!.imageURL
+                                  headers:
+                                      controller.room.activityPlan!.imageURL
                                           .toString()
                                           .contains(Environment.cmsApi)
                                       ? {
@@ -512,10 +497,7 @@ class ChatView extends StatelessWidget {
                           ),
                           // #Pangea
                           // if (controller.showScrollDownButton)
-                          //   Divider(
-                          //     height: 1,
-                          //     color: theme.dividerColor,
-                          //   ),
+                          //   Divider(height: 1, color: theme.dividerColor),
                           ListenableBuilder(
                             listenable: controller.scrollController,
                             builder: (context, _) {
@@ -561,14 +543,11 @@ class ChatView extends StatelessWidget {
                           //       ),
                           //       child: controller.room.isAbandonedDMRoom == true
                           //           ? Row(
-                          //               mainAxisAlignment:
-                          //                   MainAxisAlignment.spaceEvenly,
+                          //               mainAxisAlignment: .spaceEvenly,
                           //               children: [
                           //                 TextButton.icon(
                           //                   style: TextButton.styleFrom(
-                          //                     padding: const EdgeInsets.all(
-                          //                       16,
-                          //                     ),
+                          //                     padding: const EdgeInsets.all(16),
                           //                     foregroundColor:
                           //                         theme.colorScheme.error,
                           //                   ),
@@ -576,15 +555,11 @@ class ChatView extends StatelessWidget {
                           //                     Icons.archive_outlined,
                           //                   ),
                           //                   onPressed: controller.leaveChat,
-                          //                   label: Text(
-                          //                     L10n.of(context).leave,
-                          //                   ),
+                          //                   label: Text(L10n.of(context).leave),
                           //                 ),
                           //                 TextButton.icon(
                           //                   style: TextButton.styleFrom(
-                          //                     padding: const EdgeInsets.all(
-                          //                       16,
-                          //                     ),
+                          //                     padding: const EdgeInsets.all(16),
                           //                   ),
                           //                   icon: const Icon(
                           //                     Icons.forum_outlined,
@@ -597,7 +572,7 @@ class ChatView extends StatelessWidget {
                           //               ],
                           //             )
                           //           : Column(
-                          //               mainAxisSize: MainAxisSize.min,
+                          //               mainAxisSize: .min,
                           //               children: [
                           //                 ReplyDisplay(controller),
                           //                 ChatInputRow(controller),
@@ -622,9 +597,7 @@ class ChatView extends StatelessWidget {
                               controller: controller,
                             ),
                           if (controller.room.isActivityFinished)
-                            LoadActivitySummaryWidget(
-                              room: controller.room,
-                            ),
+                            LoadActivitySummaryWidget(room: controller.room),
                           // Pangea#
                         ],
                       ),
@@ -635,7 +608,7 @@ class ChatView extends StatelessWidget {
                       ValueListenableBuilder(
                         valueListenable:
                             controller.activityController.hasRainedConfetti,
-                        builder: (context, hasRained, __) {
+                        builder: (context, hasRained, _) {
                           return hasRained
                               ? const SizedBox()
                               : StarRainWidget(
@@ -650,10 +623,7 @@ class ChatView extends StatelessWidget {
                     //   Container(
                     //     color: theme.scaffoldBackgroundColor.withAlpha(230),
                     //     alignment: Alignment.center,
-                    //     child: const Icon(
-                    //       Icons.upload_outlined,
-                    //       size: 100,
-                    //     ),
+                    //     child: const Icon(Icons.upload_outlined, size: 100),
                     //   ),
                     // Pangea#
                   ],

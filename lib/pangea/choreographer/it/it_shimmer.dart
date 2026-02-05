@@ -28,10 +28,7 @@ class ItShimmer extends StatelessWidget {
             onPressed: null,
             child: const Text(
               "          ", // 10 spaces
-              style: TextStyle(
-                color: Colors.transparent,
-                fontSize: 16,
-              ),
+              style: TextStyle(color: Colors.transparent, fontSize: 16),
             ),
           ),
         );

@@ -48,14 +48,13 @@ class AnalyticsUpdateService {
   }
 
   Future<void> onUpdateLanguages(LanguageUpdate update) async {
-    await sendLocalAnalyticsToAnalyticsRoom(
-      l2Override: update.prevTargetLang,
-    );
+    await sendLocalAnalyticsToAnalyticsRoom(l2Override: update.prevTargetLang);
     await dataService.reinitialize();
 
     final data = await dataService.derivedData;
-    MatrixState.pangeaController.userController
-        .updateAnalyticsProfile(level: data.level);
+    MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: data.level,
+    );
   }
 
   Future<void> addAnalytics(
@@ -64,10 +63,7 @@ class AnalyticsUpdateService {
     bool forceUpdate = false,
   }) async {
     await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
-      AnalyticsUpdate(
-        newConstructs,
-        targetID: targetID,
-      ),
+      AnalyticsUpdate(newConstructs, targetID: targetID),
     );
 
     final localConstructCount = await dataService.getLocalConstructCount();
@@ -101,9 +97,7 @@ class AnalyticsUpdateService {
         e: err,
         m: "Failed to update analytics",
         s: s,
-        data: {
-          "l2Override": l2Override,
-        },
+        data: {"l2Override": l2Override},
       );
     } finally {
       _updateCompleter?.complete();
@@ -145,10 +139,7 @@ class AnalyticsUpdateService {
     final current = analyticsRoom.analyticsSettings;
     final blockedConstructs = current.blockedConstructs;
     final updated = current.copyWith(
-      blockedConstructs: {
-        ...blockedConstructs,
-        constructId,
-      },
+      blockedConstructs: {...blockedConstructs, constructId},
     );
 
     await analyticsRoom.setAnalyticsSettings(updated);
@@ -175,11 +166,7 @@ class AnalyticsUpdateService {
       await analyticsRoom.setUserSetLemmaInfo(constructId, updated);
     } catch (err, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        data: userLemmaInfo.toJson(),
-        s: s,
-      );
+      ErrorHandler.logError(e: err, data: userLemmaInfo.toJson(), s: s);
     }
   }
 }

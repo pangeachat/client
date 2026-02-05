@@ -147,9 +147,7 @@ class MessageActivityRequest {
 class MessageActivityResponse {
   final PracticeActivityModel activity;
 
-  MessageActivityResponse({
-    required this.activity,
-  });
+  MessageActivityResponse({required this.activity});
 
   factory MessageActivityResponse.fromJson(Map<String, dynamic> json) {
     if (!json.containsKey('activity')) {

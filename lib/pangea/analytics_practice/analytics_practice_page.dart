@@ -32,10 +32,7 @@ class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
   final String tag;
 
-  const SelectedMorphChoice({
-    required this.feature,
-    required this.tag,
-  });
+  const SelectedMorphChoice({required this.feature, required this.tag});
 }
 
 class VocabPracticeChoice {
@@ -54,10 +51,7 @@ class _PracticeQueueEntry {
   final MessageActivityRequest request;
   final Completer<MultipleChoicePracticeActivityModel> completer;
 
-  _PracticeQueueEntry({
-    required this.request,
-    required this.completer,
-  });
+  _PracticeQueueEntry({required this.request, required this.completer});
 }
 
 class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
@@ -73,10 +67,7 @@ class AnalyticsPractice extends StatefulWidget {
   static bool bypassExitConfirmation = true;
 
   final ConstructTypeEnum type;
-  const AnalyticsPractice({
-    super.key,
-    required this.type,
-  });
+  const AnalyticsPractice({super.key, required this.type});
 
   @override
   AnalyticsPracticeState createState() => AnalyticsPracticeState();
@@ -87,7 +78,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   late final SessionLoader _sessionLoader;
 
   final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
-      activityState = ValueNotifier(const AsyncState.idle());
+  activityState = ValueNotifier(const AsyncState.idle());
 
   final Queue<_PracticeQueueEntry> _queue = Queue();
 
@@ -113,7 +104,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _sessionLoader = SessionLoader(type: widget.type);
     _startSession();
     _languageStreamSubscription = MatrixState
-        .pangeaController.userController.languageStream.stream
+        .pangeaController
+        .userController
+        .languageStream
+        .stream
         .listen((_) => _onLanguageUpdate());
   }
 
@@ -132,10 +126,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   MultipleChoicePracticeActivityModel? get _currentActivity =>
       activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
-          ? (activityState.value
-                  as AsyncLoaded<MultipleChoicePracticeActivityModel>)
-              .value
-          : null;
+      ? (activityState.value
+                as AsyncLoaded<MultipleChoicePracticeActivityModel>)
+            .value
+      : null;
 
   bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
 
@@ -249,7 +243,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     try {
       _clearState();
       await _analyticsService
-          .updateDispatcher.constructUpdateStream.stream.first
+          .updateDispatcher
+          .constructUpdateStream
+          .stream
+          .first
           .timeout(const Duration(seconds: 10));
       await reloadSession();
     } catch (e) {
@@ -381,22 +378,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
     AnalyticsPractice.bypassExitConfirmation = true;
     if (!mounted) return;
-    activityState.value =
-        AsyncState.error(L10n.of(context).oopsSomethingWentWrong);
+    activityState.value = AsyncState.error(
+      L10n.of(context).oopsSomethingWentWrong,
+    );
     return;
   }
 
-  Future<void> _fillActivityQueue(
-    List<MessageActivityRequest> requests,
-  ) async {
+  Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(
-        _PracticeQueueEntry(
-          request: request,
-          completer: completer,
-        ),
-      );
+      _queue.add(_PracticeQueueEntry(request: request, completer: completer));
       try {
         final res = await _fetchActivity(request);
         if (!mounted) return;
@@ -412,10 +403,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<MultipleChoicePracticeActivityModel> _fetchActivity(
     MessageActivityRequest req,
   ) async {
-    final result = await PracticeRepo.getPracticeActivity(
-      req,
-      messageInfo: {},
-    );
+    final result = await PracticeRepo.getPracticeActivity(req, messageInfo: {});
 
     if (result.isError ||
         result.result is! MultipleChoicePracticeActivityModel) {
@@ -469,10 +457,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final use = OneConstructUse(
       useType: ConstructUseTypeEnum.ignPA,
       constructType: widget.type,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
+      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
       category: token.pos,
       lemma: token.lemma.text,
       form: token.lemma.text,
@@ -486,9 +471,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     hintPressedNotifier.value = !hintPressedNotifier.value;
   }
 
-  Future<void> onSelectChoice(
-    String choiceContent,
-  ) async {
+  Future<void> onSelectChoice(String choiceContent) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
@@ -513,8 +496,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     final use = activity.constructUse(choiceContent);
     _sessionLoader.value!.submitAnswer(use);
-    await _analyticsService.updateService
-        .addAnalytics(choiceTargetId(choiceContent), [use]);
+    await _analyticsService.updateService.addAnalytics(
+      choiceTargetId(choiceContent),
+      [use],
+    );
 
     if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
 

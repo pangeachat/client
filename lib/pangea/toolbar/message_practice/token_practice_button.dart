@@ -42,8 +42,8 @@ class TokenPracticeButton extends StatelessWidget {
   });
 
   TextStyle get _emojiStyle => TextStyle(
-        fontSize: (textStyle.fontSize ?? tokenButtonDefaultFontSize) + 4,
-      );
+    fontSize: (textStyle.fontSize ?? tokenButtonDefaultFontSize) + 4,
+  );
 
   PracticeTarget? get _activity => controller.practiceTargetForToken(token);
 
@@ -85,12 +85,10 @@ class TokenPracticeButton extends StatelessWidget {
             textColor: textColor,
             width: tokenButtonHeight,
             onTap: () => controller.onSelectMorph(
-              MorphSelection(
-                token,
-                _activity!.morphFeature!,
-              ),
+              MorphSelection(token, _activity!.morphFeature!),
             ),
-            shimmer: controller.selectedMorph == null &&
+            shimmer:
+                controller.selectedMorph == null &&
                 _activity != null &&
                 !PracticeRecordController.hasAnyCorrectChoices(_activity!),
           );
@@ -141,7 +139,8 @@ class _StandardMatchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return DragTarget<PracticeChoice>(
       builder: (BuildContext context, accepted, rejected) {
-        final double colorAlpha = 0.3 +
+        final double colorAlpha =
+            0.3 +
             (selectedChoice != null ? 0.4 : 0.0) +
             (accepted.isNotEmpty ? 0.3 : 0.0);
 
@@ -151,8 +150,9 @@ class _StandardMatchButton extends StatelessWidget {
         return Material(
           type: MaterialType.transparency,
           child: InkWell(
-            onTap:
-                selectedChoice != null ? () => onMatch(selectedChoice!) : null,
+            onTap: selectedChoice != null
+                ? () => onMatch(selectedChoice!)
+                : null,
             borderRadius: borderRadius,
             child: CustomPaint(
               painter: DottedBorderPainter(
@@ -258,12 +258,9 @@ class _NoActivityContentButton extends StatelessWidget {
     if (practiceMode == MessagePracticeMode.wordEmoji && target != null) {
       final displayEmoji =
           PracticeRecordController.correctResponse(target!, token)?.text ??
-              token.vocabConstructID.userSetEmoji ??
-              '';
-      return Text(
-        displayEmoji,
-        style: emojiStyle,
-      );
+          token.vocabConstructID.userSetEmoji ??
+          '';
+      return Text(displayEmoji, style: emojiStyle);
     }
     if (practiceMode == MessagePracticeMode.wordMorph && target != null) {
       final morphFeature = target!.morphFeature!;
@@ -282,8 +279,8 @@ class _NoActivityContentButton extends StatelessWidget {
                 radius: width / 2,
                 backgroundColor:
                     Theme.of(context).brightness != Brightness.light
-                        ? Theme.of(context).colorScheme.surface.withAlpha(100)
-                        : null,
+                    ? Theme.of(context).colorScheme.surface.withAlpha(100)
+                    : null,
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: MorphIcon(

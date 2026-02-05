@@ -75,11 +75,10 @@ class ChatSearchController extends State<ChatSearchPage>
           .map(
             (result) => (
               <String, Event>{
-                for (final event in result.$1) event.eventId: event,
-                // #Pangea
-                // }.values.toList(),
-              }
-                  .values
+                    for (final event in result.$1) event.eventId: event,
+                    // #Pangea
+                    // }.values.toList(),
+                  }.values
                   .toList()
                   .where(
                     (e) => !e.hasAggregatedEvents(

@@ -19,10 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaUseExampleMessages extends StatelessWidget {
   final ConstructUses construct;
 
-  const LemmaUseExampleMessages({
-    super.key,
-    required this.construct,
-  });
+  const LemmaUseExampleMessages({super.key, required this.construct});
 
   Future<List<ExampleMessage>> _getExampleMessages() async {
     final List<ExampleMessage> examples = [];
@@ -68,7 +65,8 @@ class LemmaUseExampleMessages extends StatelessWidget {
       final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
         event: event,
         timeline: timeline!,
-        ownMessage: event.senderId ==
+        ownMessage:
+            event.senderId ==
             MatrixState.pangeaController.matrixState.client.userID,
       );
       final tokens = pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -119,7 +117,8 @@ class LemmaUseExampleMessages extends StatelessWidget {
                     text: TextSpan(
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppSettings.fontSizeFactor.value *
+                        fontSize:
+                            AppSettings.fontSizeFactor.value *
                             AppConfig.messageFontSize,
                       ),
                       children: example.textSpans,
@@ -133,9 +132,7 @@ class LemmaUseExampleMessages extends StatelessWidget {
           return const Column(
             children: [
               SizedBox(height: 10),
-              CircularProgressIndicator.adaptive(
-                strokeWidth: 2,
-              ),
+              CircularProgressIndicator.adaptive(strokeWidth: 2),
             ],
           );
         }
@@ -183,34 +180,18 @@ class ExampleMessage {
         final gapSize = tokenIndex - globalTokenIndex;
         if (gapSize <= tokenWindowSize) {
           // if the gap is less than the window size, add all the gap tokens
-          tokenWindows.add(
-            TokenWindow(
-              globalTokenIndex,
-              tokenIndex,
-              false,
-            ),
-          );
+          tokenWindows.add(TokenWindow(globalTokenIndex, tokenIndex, false));
         } else {
           // otherwise, add the window size tokens preceding the bolded token
           tokenWindows.add(
-            TokenWindow(
-              tokenIndex - tokenWindowSize,
-              tokenIndex,
-              false,
-            ),
+            TokenWindow(tokenIndex - tokenWindowSize, tokenIndex, false),
           );
         }
       }
 
       globalTokenIndex = tokenIndex;
 
-      tokenWindows.add(
-        TokenWindow(
-          tokenIndex,
-          tokenIndex + 1,
-          true,
-        ),
-      );
+      tokenWindows.add(TokenWindow(tokenIndex, tokenIndex + 1, true));
 
       globalTokenIndex = tokenIndex + 1;
 
@@ -219,13 +200,7 @@ class ExampleMessage {
         // remaining tokens (up to the max window size)
         if (globalTokenIndex >= tokens.length) break;
         final endIndex = min(tokens.length, globalTokenIndex + tokenWindowSize);
-        tokenWindows.add(
-          TokenWindow(
-            globalTokenIndex,
-            endIndex,
-            false,
-          ),
-        );
+        tokenWindows.add(TokenWindow(globalTokenIndex, endIndex, false));
         break;
       }
 
@@ -233,13 +208,7 @@ class ExampleMessage {
       final nextToken = _boldedTokens[i + 1];
       final nextTokenIndex = tokens.indexOf(nextToken);
       final endIndex = min(nextTokenIndex, globalTokenIndex + tokenWindowSize);
-      tokenWindows.add(
-        TokenWindow(
-          globalTokenIndex,
-          endIndex,
-          false,
-        ),
-      );
+      tokenWindows.add(TokenWindow(globalTokenIndex, endIndex, false));
 
       globalTokenIndex = endIndex;
     }
@@ -269,7 +238,8 @@ class ExampleMessage {
       );
 
       tokenPointer = window.endTokenIndex;
-      characterPointer = tokens[window.endTokenIndex - 1].text.offset +
+      characterPointer =
+          tokens[window.endTokenIndex - 1].text.offset +
           tokens[window.endTokenIndex - 1].text.length;
     }
 

@@ -65,9 +65,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final rooms = Matrix.of(context)
-        .client
-        .rooms
+    final rooms = Matrix.of(context).client.rooms
         .where(
           (room) =>
               room.canSendDefaultMessages &&
@@ -142,8 +140,9 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
                     ),
                     controlAffinity: ListTileControlAffinity.trailing,
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
                     ),
                     secondary: Avatar(
                       mxContent: room.avatar,

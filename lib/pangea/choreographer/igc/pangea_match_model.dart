@@ -7,10 +7,7 @@ class PangeaMatch {
   final SpanData match;
   final PangeaMatchStatusEnum status;
 
-  const PangeaMatch({
-    required this.match,
-    required this.status,
-  });
+  const PangeaMatch({required this.match, required this.status});
 
   factory PangeaMatch.fromJson(Map<String, dynamic> json) {
     return PangeaMatch(
@@ -22,17 +19,19 @@ class PangeaMatch {
   }
 
   Map<String, dynamic> toJson() => {
-        _matchKey: match.toJson(),
-        _statusKey: status.name,
-      };
+    _matchKey: match.toJson(),
+    _statusKey: status.name,
+  };
 
   static const _matchKey = "match";
   static const _statusKey = "status";
 
   bool get isITStart =>
       match.rule?.id == MatchRuleIdModel.interactiveTranslation ||
-      [SpanDataTypeEnum.itStart, SpanDataTypeEnum.itStart.name]
-          .contains(match.type.typeName);
+      [
+        SpanDataTypeEnum.itStart,
+        SpanDataTypeEnum.itStart.name,
+      ].contains(match.type.typeName);
 
   bool get _needsTranslation => match.rule?.id != null
       ? [

@@ -11,10 +11,7 @@ extension PublicCourseExtension on Api {
   }) async {
     final requestUri = Uri(
       path: '/_synapse/client/unstable/org.pangea/public_courses',
-      queryParameters: {
-        'limit': limit.toString(),
-        'since': since,
-      },
+      queryParameters: {'limit': limit.toString(), 'since': since},
     );
     final request = Request('GET', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
@@ -36,11 +33,7 @@ extension PublicCoursesRequest on Client {
   Future<PublicCoursesResponse> requestPublicCourses({
     int limit = 10,
     String? since,
-  }) =>
-      getPublicCourses(
-        limit: limit,
-        since: since,
-      );
+  }) => getPublicCourses(limit: limit, since: since);
 }
 
 class PublicCoursesResponse extends GetPublicRoomsResponse {
@@ -56,20 +49,17 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
 
   @override
   PublicCoursesResponse.fromJson(super.json)
-      : courses = (json['chunk'] as List)
-            .map((e) => PublicCoursesChunk.fromJson(e))
-            .toList(),
-        super.fromJson();
+    : courses = (json['chunk'] as List)
+          .map((e) => PublicCoursesChunk.fromJson(e))
+          .toList(),
+      super.fromJson();
 }
 
 class PublicCoursesChunk {
   final PublishedRoomsChunk room;
   final String courseId;
 
-  PublicCoursesChunk({
-    required this.room,
-    required this.courseId,
-  });
+  PublicCoursesChunk({required this.room, required this.courseId});
 
   factory PublicCoursesChunk.fromJson(Map<String, dynamic> json) {
     return PublicCoursesChunk(
@@ -79,9 +69,6 @@ class PublicCoursesChunk {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'room': room.toJson(),
-      'course_id': courseId,
-    };
+    return {'room': room.toJson(), 'course_id': courseId};
   }
 }

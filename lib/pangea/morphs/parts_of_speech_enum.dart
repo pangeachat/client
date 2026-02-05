@@ -45,12 +45,12 @@ enum PartOfSpeechEnum {
   }
 
   bool get isContentWord => [
-        PartOfSpeechEnum.noun,
-        PartOfSpeechEnum.verb,
-        PartOfSpeechEnum.adj,
-        PartOfSpeechEnum.adv,
-        PartOfSpeechEnum.idiom,
-        PartOfSpeechEnum.phrasalv,
-        PartOfSpeechEnum.compn,
-      ].contains(this);
+    PartOfSpeechEnum.noun,
+    PartOfSpeechEnum.verb,
+    PartOfSpeechEnum.adj,
+    PartOfSpeechEnum.adv,
+    PartOfSpeechEnum.idiom,
+    PartOfSpeechEnum.phrasalv,
+    PartOfSpeechEnum.compn,
+  ].contains(this);
 }

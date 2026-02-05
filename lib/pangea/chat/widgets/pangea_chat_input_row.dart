@@ -22,10 +22,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PangeaChatInputRow extends StatelessWidget {
   final ChatController controller;
 
-  const PangeaChatInputRow({
-    required this.controller,
-    super.key,
-  });
+  const PangeaChatInputRow({required this.controller, super.key});
 
   LanguageModel? get activel1 =>
       controller.pangeaController.userController.userL1;
@@ -46,9 +43,7 @@ class PangeaChatInputRow extends StatelessWidget {
               .link,
           child: Container(
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
             ),
             child: RecordingViewModel(
               builder: (context, recordingViewModel) {
@@ -68,15 +63,19 @@ class PangeaChatInputRow extends StatelessWidget {
                     const SizedBox(width: 4),
                     ValueListenableBuilder(
                       valueListenable: controller.sendController,
-                      builder: (context, text, __) {
+                      builder: (context, text, _) {
                         final isBotDM = controller.room.isBotDM;
                         return AnimatedContainer(
                           duration: FluffyThemes.animationDuration,
                           curve: FluffyThemes.animationCurve,
                           height: height,
-                          width: text.text.isEmpty &&
+                          width:
+                              text.text.isEmpty &&
                                   !controller
-                                      .choreographer.itController.open.value
+                                      .choreographer
+                                      .itController
+                                      .open
+                                      .value
                               ? height
                               : 0,
                           alignment: Alignment.center,
@@ -88,105 +87,125 @@ class PangeaChatInputRow extends StatelessWidget {
                             onSelected: controller.onAddPopupMenuButtonSelected,
                             itemBuilder: (BuildContext context) =>
                                 <PopupMenuEntry<AddPopupMenuActions>>[
-                              PopupMenuItem(
-                                value: AddPopupMenuActions.poll,
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    backgroundColor:
-                                        theme.colorScheme.onPrimaryContainer,
-                                    foregroundColor:
-                                        theme.colorScheme.primaryContainer,
-                                    child: const Icon(Icons.poll_outlined),
-                                  ),
-                                  title: Text(L10n.of(context).startPoll),
-                                  contentPadding: const EdgeInsets.all(0),
-                                ),
-                              ),
-                              if (!isBotDM)
-                                PopupMenuItem<AddPopupMenuActions>(
-                                  value: AddPopupMenuActions.file,
-                                  child: ListTile(
-                                    leading: const CircleAvatar(
-                                      backgroundColor: Colors.green,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.attachment_outlined),
-                                    ),
-                                    title: Text(L10n.of(context).sendFile),
-                                    contentPadding: const EdgeInsets.all(0),
-                                  ),
-                                ),
-                              PopupMenuItem<AddPopupMenuActions>(
-                                value: AddPopupMenuActions.image,
-                                child: ListTile(
-                                  leading: const CircleAvatar(
-                                    backgroundColor: Colors.blue,
-                                    foregroundColor: Colors.white,
-                                    child: Icon(Icons.image_outlined),
-                                  ),
-                                  title: Text(L10n.of(context).sendImage),
-                                  contentPadding: const EdgeInsets.all(0),
-                                ),
-                              ),
-                              if (!isBotDM)
-                                PopupMenuItem(
-                                  value: AddPopupMenuActions.image,
-                                  child: ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundColor:
-                                          theme.colorScheme.onPrimaryContainer,
-                                      foregroundColor:
-                                          theme.colorScheme.primaryContainer,
-                                      child: const Icon(Icons.photo_outlined),
-                                    ),
-                                    title: Text(L10n.of(context).sendImage),
-                                    contentPadding: const EdgeInsets.all(0),
-                                  ),
-                                ),
-                              if (PlatformInfos.isMobile)
-                                PopupMenuItem<AddPopupMenuActions>(
-                                  value: AddPopupMenuActions.photoCamera,
-                                  child: ListTile(
-                                    leading: const CircleAvatar(
-                                      backgroundColor: Colors.purple,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.camera_alt_outlined),
-                                    ),
-                                    title: Text(L10n.of(context).openCamera),
-                                    contentPadding: const EdgeInsets.all(0),
-                                  ),
-                                ),
-                              if (!isBotDM)
-                                if (PlatformInfos.isMobile)
-                                  PopupMenuItem<AddPopupMenuActions>(
-                                    value: AddPopupMenuActions.videoCamera,
+                                  PopupMenuItem(
+                                    value: AddPopupMenuActions.poll,
                                     child: ListTile(
-                                      leading: const CircleAvatar(
-                                        backgroundColor: Colors.red,
-                                        foregroundColor: Colors.white,
-                                        child: Icon(Icons.videocam_outlined),
+                                      leading: CircleAvatar(
+                                        backgroundColor: theme
+                                            .colorScheme
+                                            .onPrimaryContainer,
+                                        foregroundColor:
+                                            theme.colorScheme.primaryContainer,
+                                        child: const Icon(Icons.poll_outlined),
                                       ),
-                                      title: Text(
-                                        L10n.of(context).openVideoCamera,
-                                      ),
+                                      title: Text(L10n.of(context).startPoll),
                                       contentPadding: const EdgeInsets.all(0),
                                     ),
                                   ),
-                              if (!isBotDM)
-                                if (PlatformInfos.isMobile)
+                                  if (!isBotDM)
+                                    PopupMenuItem<AddPopupMenuActions>(
+                                      value: AddPopupMenuActions.file,
+                                      child: ListTile(
+                                        leading: const CircleAvatar(
+                                          backgroundColor: Colors.green,
+                                          foregroundColor: Colors.white,
+                                          child: Icon(
+                                            Icons.attachment_outlined,
+                                          ),
+                                        ),
+                                        title: Text(L10n.of(context).sendFile),
+                                        contentPadding: const EdgeInsets.all(0),
+                                      ),
+                                    ),
                                   PopupMenuItem<AddPopupMenuActions>(
-                                    value: AddPopupMenuActions.location,
+                                    value: AddPopupMenuActions.image,
                                     child: ListTile(
                                       leading: const CircleAvatar(
-                                        backgroundColor: Colors.brown,
+                                        backgroundColor: Colors.blue,
                                         foregroundColor: Colors.white,
-                                        child: Icon(Icons.gps_fixed_outlined),
+                                        child: Icon(Icons.image_outlined),
                                       ),
-                                      title:
-                                          Text(L10n.of(context).shareLocation),
+                                      title: Text(L10n.of(context).sendImage),
                                       contentPadding: const EdgeInsets.all(0),
                                     ),
                                   ),
-                            ],
+                                  if (!isBotDM)
+                                    PopupMenuItem(
+                                      value: AddPopupMenuActions.image,
+                                      child: ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                          foregroundColor: theme
+                                              .colorScheme
+                                              .primaryContainer,
+                                          child: const Icon(
+                                            Icons.photo_outlined,
+                                          ),
+                                        ),
+                                        title: Text(L10n.of(context).sendImage),
+                                        contentPadding: const EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  if (PlatformInfos.isMobile)
+                                    PopupMenuItem<AddPopupMenuActions>(
+                                      value: AddPopupMenuActions.photoCamera,
+                                      child: ListTile(
+                                        leading: const CircleAvatar(
+                                          backgroundColor: Colors.purple,
+                                          foregroundColor: Colors.white,
+                                          child: Icon(
+                                            Icons.camera_alt_outlined,
+                                          ),
+                                        ),
+                                        title: Text(
+                                          L10n.of(context).openCamera,
+                                        ),
+                                        contentPadding: const EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  if (!isBotDM)
+                                    if (PlatformInfos.isMobile)
+                                      PopupMenuItem<AddPopupMenuActions>(
+                                        value: AddPopupMenuActions.videoCamera,
+                                        child: ListTile(
+                                          leading: const CircleAvatar(
+                                            backgroundColor: Colors.red,
+                                            foregroundColor: Colors.white,
+                                            child: Icon(
+                                              Icons.videocam_outlined,
+                                            ),
+                                          ),
+                                          title: Text(
+                                            L10n.of(context).openVideoCamera,
+                                          ),
+                                          contentPadding: const EdgeInsets.all(
+                                            0,
+                                          ),
+                                        ),
+                                      ),
+                                  if (!isBotDM)
+                                    if (PlatformInfos.isMobile)
+                                      PopupMenuItem<AddPopupMenuActions>(
+                                        value: AddPopupMenuActions.location,
+                                        child: ListTile(
+                                          leading: const CircleAvatar(
+                                            backgroundColor: Colors.brown,
+                                            foregroundColor: Colors.white,
+                                            child: Icon(
+                                              Icons.gps_fixed_outlined,
+                                            ),
+                                          ),
+                                          title: Text(
+                                            L10n.of(context).shareLocation,
+                                          ),
+                                          contentPadding: const EdgeInsets.all(
+                                            0,
+                                          ),
+                                        ),
+                                      ),
+                                ],
                           ),
                         );
                       },
@@ -199,19 +218,21 @@ class PangeaChatInputRow extends StatelessWidget {
                         child: IconButton(
                           tooltip: L10n.of(context).emojis,
                           icon: PageTransitionSwitcher(
-                            transitionBuilder: (
-                              Widget child,
-                              Animation<double> primaryAnimation,
-                              Animation<double> secondaryAnimation,
-                            ) {
-                              return SharedAxisTransition(
-                                animation: primaryAnimation,
-                                secondaryAnimation: secondaryAnimation,
-                                transitionType: SharedAxisTransitionType.scaled,
-                                fillColor: Colors.transparent,
-                                child: child,
-                              );
-                            },
+                            transitionBuilder:
+                                (
+                                  Widget child,
+                                  Animation<double> primaryAnimation,
+                                  Animation<double> secondaryAnimation,
+                                ) {
+                                  return SharedAxisTransition(
+                                    animation: primaryAnimation,
+                                    secondaryAnimation: secondaryAnimation,
+                                    transitionType:
+                                        SharedAxisTransitionType.scaled,
+                                    fillColor: Colors.transparent,
+                                    child: child,
+                                  );
+                                },
                             child: Icon(
                               controller.showEmojiPicker
                                   ? Icons.keyboard
@@ -233,9 +254,9 @@ class PangeaChatInputRow extends StatelessWidget {
                           keyboardType: TextInputType.multiline,
                           textInputAction:
                               AppSettings.sendOnEnter.value == true &&
-                                      PlatformInfos.isMobile
-                                  ? TextInputAction.send
-                                  : null,
+                                  PlatformInfos.isMobile
+                              ? TextInputAction.send
+                              : null,
                           onSubmitted: (_) => controller.onInputBarSubmitted(),
                           onSubmitImage: controller.sendImageFromClipBoard,
                           focusNode: controller.inputFocus,
@@ -256,17 +277,21 @@ class PangeaChatInputRow extends StatelessWidget {
                           onChanged: controller.onInputBarChanged,
                           choreographer: controller.choreographer,
                           showNextMatch: controller.showNextMatch,
-                          suggestionEmojis: getDefaultEmojiLocale(
-                            AppSettings.emojiSuggestionLocale.value.isNotEmpty
-                                ? Locale(
-                                    AppSettings.emojiSuggestionLocale.value,
-                                  )
-                                : Localizations.localeOf(context),
-                          ).fold(
-                            [],
-                            (emojis, category) =>
-                                emojis..addAll(category.emoji),
-                          ),
+                          suggestionEmojis:
+                              getDefaultEmojiLocale(
+                                AppSettings
+                                        .emojiSuggestionLocale
+                                        .value
+                                        .isNotEmpty
+                                    ? Locale(
+                                        AppSettings.emojiSuggestionLocale.value,
+                                      )
+                                    : Localizations.localeOf(context),
+                              ).fold(
+                                [],
+                                (emojis, category) =>
+                                    emojis..addAll(category.emoji),
+                              ),
                         ),
                       ),
                     ),
@@ -281,26 +306,31 @@ class PangeaChatInputRow extends StatelessWidget {
                     ),
                     ValueListenableBuilder(
                       valueListenable: controller.sendController,
-                      builder: (context, text, __) {
+                      builder: (context, text, _) {
                         return Container(
                           height: height,
                           width: height,
                           alignment: Alignment.center,
-                          child: PlatformInfos.platformCanRecord &&
+                          child:
+                              PlatformInfos.platformCanRecord &&
                                   text.text.isEmpty &&
                                   !controller
-                                      .choreographer.itController.open.value
+                                      .choreographer
+                                      .itController
+                                      .open
+                                      .value
                               ? IconButton(
                                   tooltip: L10n.of(context).voiceMessage,
                                   onPressed: () => ScaffoldMessenger.of(context)
                                       .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        L10n.of(context)
-                                            .longPressToRecordVoiceMessage,
+                                        SnackBar(
+                                          content: Text(
+                                            L10n.of(
+                                              context,
+                                            ).longPressToRecordVoiceMessage,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
                                   onLongPress: () => recordingViewModel
                                       .startRecording(controller.room),
                                   style: IconButton.styleFrom(
@@ -309,9 +339,7 @@ class PangeaChatInputRow extends StatelessWidget {
                                   ),
                                   icon: const Icon(Icons.mic_none_outlined),
                                 )
-                              : ChoreographerSendButton(
-                                  controller: controller,
-                                ),
+                              : ChoreographerSendButton(controller: controller),
                         );
                       },
                     ),

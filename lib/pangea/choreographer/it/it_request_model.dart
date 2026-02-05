@@ -22,28 +22,28 @@ class ITRequestModel {
   });
 
   factory ITRequestModel.fromJson(Map<String, dynamic> json) => ITRequestModel(
-        text: json[ModelKey.text],
-        customInput: json['custom_input'],
-        sourceLangCode: json[ModelKey.srcLang],
-        targetLangCode: json[ModelKey.tgtLang],
-        goldTranslation: json[ModelKey.goldTranslation],
-        goldContinuances: json['gold_continuances'] != null
-            ? (json['gold_continuances'])
-                .map((e) => ContinuanceModel.fromJson(e))
-                .toList()
-            : null,
-      );
+    text: json[ModelKey.text],
+    customInput: json['custom_input'],
+    sourceLangCode: json[ModelKey.srcLang],
+    targetLangCode: json[ModelKey.tgtLang],
+    goldTranslation: json[ModelKey.goldTranslation],
+    goldContinuances: json['gold_continuances'] != null
+        ? (json['gold_continuances'])
+              .map((e) => ContinuanceModel.fromJson(e))
+              .toList()
+        : null,
+  );
 
   Map<String, dynamic> toJson() => {
-        ModelKey.text: text,
-        'custom_input': customInput,
-        ModelKey.srcLang: sourceLangCode,
-        ModelKey.tgtLang: targetLangCode,
-        ModelKey.goldTranslation: goldTranslation,
-        'gold_continuances': goldContinuances != null
-            ? List.from(goldContinuances!.map((e) => e.toJson()))
-            : null,
-      };
+    ModelKey.text: text,
+    'custom_input': customInput,
+    ModelKey.srcLang: sourceLangCode,
+    ModelKey.tgtLang: targetLangCode,
+    ModelKey.goldTranslation: goldTranslation,
+    'gold_continuances': goldContinuances != null
+        ? List.from(goldContinuances!.map((e) => e.toJson()))
+        : null,
+  };
 
   @override
   bool operator ==(Object other) {

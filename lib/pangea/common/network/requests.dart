@@ -13,19 +13,26 @@ class Requests {
   late String? accessToken;
   late String? choreoApiKey;
 
-  Requests({
-    this.accessToken,
-    this.choreoApiKey,
-  });
+  Requests({this.accessToken, this.choreoApiKey});
 
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
   }) async {
     body[ModelKey.cefrLevel] = MatrixState
-        .pangeaController.userController.profile.userSettings.cefrLevel.string;
+        .pangeaController
+        .userController
+        .profile
+        .userSettings
+        .cefrLevel
+        .string;
     body[ModelKey.userGender] = MatrixState
-        .pangeaController.userController.profile.userSettings.gender.string;
+        .pangeaController
+        .userController
+        .profile
+        .userSettings
+        .gender
+        .string;
 
     dynamic encoded;
     encoded = jsonEncode(body);
@@ -41,17 +48,16 @@ class Requests {
   }
 
   Future<http.Response> get({required String url}) async {
-    final http.Response response =
-        await http.get(Uri.parse(url), headers: _headers);
+    final http.Response response = await http.get(
+      Uri.parse(url),
+      headers: _headers,
+    );
 
     handleError(response);
     return response;
   }
 
-  void addBreadcrumb(
-    http.Response response, {
-    Map<dynamic, dynamic>? body,
-  }) {
+  void addBreadcrumb(http.Response response, {Map<dynamic, dynamic>? body}) {
     debugPrint("Error - code: ${response.statusCode}");
     debugPrint("api: ${response.request?.url}");
     debugPrint("request body: $body");
@@ -62,15 +68,10 @@ class Requests {
         statusCode: response.statusCode,
       ),
     );
-    Sentry.addBreadcrumb(
-      Breadcrumb(data: {"body": body}),
-    );
+    Sentry.addBreadcrumb(Breadcrumb(data: {"body": body}));
   }
 
-  void handleError(
-    http.Response response, {
-    Map<dynamic, dynamic>? body,
-  }) {
+  void handleError(http.Response response, {Map<dynamic, dynamic>? body}) {
     if (response.statusCode == 401) {
       final responseBody = jsonDecode(utf8.decode(response.bodyBytes));
       if (responseBody['detail'] == 'No active subscription found') {

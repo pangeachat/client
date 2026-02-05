@@ -10,9 +10,7 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
-  const CourseCodePage({
-    super.key,
-  });
+  const CourseCodePage({super.key});
 
   @override
   State<CourseCodePage> createState() => CourseCodePageState();
@@ -40,10 +38,7 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(
-      context,
-      _code,
-    );
+    final roomId = await SpaceCodeController.joinSpaceWithCode(context, _code);
 
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
@@ -57,17 +52,12 @@ class CourseCodePageState extends State<CourseCodePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).joinWithCode),
-      ),
+      appBar: AppBar(title: Text(L10n.of(context).joinWithCode)),
       body: SafeArea(
         child: Center(
           child: Container(
             padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(
-              maxWidth: 350,
-              maxHeight: 600,
-            ),
+            constraints: const BoxConstraints(maxWidth: 350, maxHeight: 600),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -104,9 +94,7 @@ class CourseCodePageState extends State<CourseCodePage> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).submit),
-                        ],
+                        children: [Text(L10n.of(context).submit)],
                       ),
                     ),
                   ],

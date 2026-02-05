@@ -14,10 +14,8 @@ class ChatSearchMessageTab extends StatelessWidget {
   final String searchQuery;
   final Room room;
   final Stream<(List<Event>, String?)>? searchStream;
-  final void Function({
-    String? prevBatch,
-    List<Event>? previousSearchResult,
-  }) startSearch;
+  final void Function({String? prevBatch, List<Event>? previousSearchResult})
+  startSearch;
 
   const ChatSearchMessageTab({
     required this.searchQuery,
@@ -36,15 +34,13 @@ class ChatSearchMessageTab extends StatelessWidget {
         final theme = Theme.of(context);
         if (searchStream == null) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: .center,
             children: [
               const Icon(Icons.search_outlined, size: 64),
               const SizedBox(height: 8),
               Text(
                 L10n.of(context).searchIn(
-                  room.getLocalizedDisplayname(
-                    MatrixLocals(L10n.of(context)),
-                  ),
+                  room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                 ),
               ),
             ],
@@ -63,19 +59,15 @@ class ChatSearchMessageTab extends StatelessWidget {
         return SelectionArea(
           child: ListView.separated(
             itemCount: events.length + 1,
-            separatorBuilder: (context, _) => Divider(
-              color: theme.dividerColor,
-              height: 1,
-            ),
+            separatorBuilder: (context, _) =>
+                Divider(color: theme.dividerColor, height: 1),
             itemBuilder: (context, i) {
               if (i == events.length) {
                 if (snapshot.connectionState != ConnectionState.done) {
                   return const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Center(
-                      child: CircularProgressIndicator.adaptive(
-                        strokeWidth: 2,
-                      ),
+                      child: CircularProgressIndicator.adaptive(strokeWidth: 2),
                     ),
                   );
                 }
@@ -95,9 +87,7 @@ class ChatSearchMessageTab extends StatelessWidget {
                         prevBatch: nextBatch,
                         previousSearchResult: events,
                       ),
-                      icon: const Icon(
-                        Icons.arrow_downward_outlined,
-                      ),
+                      icon: const Icon(Icons.arrow_downward_outlined),
                       label: Text(L10n.of(context).searchMore),
                     ),
                   ),
@@ -142,19 +132,18 @@ class _MessageSearchResultListTile extends StatelessWidget {
     return ListTile(
       title: Row(
         children: [
+          // #Pangea
+          // Avatar(mxContent: sender.avatarUrl, name: displayname, size: 16),
           Avatar(
             mxContent: sender.avatarUrl,
             name: displayname,
-            // #Pangea
             userId: sender.id,
-            // Pangea#
             size: 16,
           ),
+          // Pangea#
           const SizedBox(width: 8),
           // #Pangea
-          // Text(
-          //   displayname,
-          // ),
+          // Text(displayname),
           // Expanded(
           //   child: Text(
           //     ' | ${event.originServerTs.localizedTimeShort(context)}',
@@ -188,24 +177,17 @@ class _MessageSearchResultListTile extends StatelessWidget {
             .calcLocalizedBodyFallback(
               plaintextBody: true,
               removeMarkdown: true,
-              MatrixLocals(
-                L10n.of(context),
-              ),
+              MatrixLocals(L10n.of(context)),
             )
             .trim(),
         maxLines: 7,
         overflow: TextOverflow.ellipsis,
       ),
       trailing: IconButton(
-        icon: const Icon(
-          Icons.chevron_right_outlined,
-        ),
+        icon: const Icon(Icons.chevron_right_outlined),
         // #Pangea
         // onPressed: () => context.go(
-        //   '/${Uri(
-        //     pathSegments: ['rooms', room.id],
-        //     queryParameters: {'event': event.eventId},
-        //   )}',
+        //   '/${Uri(pathSegments: ['rooms', room.id], queryParameters: {'event': event.eventId})}',
         // ),
         onPressed: () => NavigationUtil.goToSpaceRoute(
           room.id,

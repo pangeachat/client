@@ -97,24 +97,17 @@ Future<void> pLanguageDialog(
                             future: () async {
                               try {
                                 await pangeaController.userController
-                                    .updateProfile(
-                                  (profile) {
-                                    profile.userSettings.sourceLanguage =
-                                        selectedSourceLanguage?.langCode;
-                                    profile.userSettings.targetLanguage =
-                                        selectedTargetLanguage.langCode;
-                                    return profile;
-                                  },
-                                  waitForDataInSync: true,
-                                );
+                                    .updateProfile((profile) {
+                                      profile.userSettings.sourceLanguage =
+                                          selectedSourceLanguage?.langCode;
+                                      profile.userSettings.targetLanguage =
+                                          selectedTargetLanguage.langCode;
+                                      return profile;
+                                    }, waitForDataInSync: true);
                                 Navigator.pop(context);
                               } catch (err, s) {
                                 debugger(when: kDebugMode);
-                                ErrorHandler.logError(
-                                  e: err,
-                                  s: s,
-                                  data: {},
-                                );
+                                ErrorHandler.logError(e: err, s: s, data: {});
                                 rethrow;
                               } finally {
                                 callback();
@@ -126,8 +119,9 @@ Future<void> pLanguageDialog(
                               content: Text(
                                 L10n.of(context).noIdenticalLanguages,
                               ),
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.primary,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primary,
                             ),
                           );
                   },

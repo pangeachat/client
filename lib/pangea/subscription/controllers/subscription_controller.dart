@@ -115,15 +115,13 @@ class SubscriptionController with ChangeNotifier {
       }
 
       if (!kIsWeb) {
-        Purchases.addCustomerInfoUpdateListener(
-          (CustomerInfo info) async {
-            final bool? wasSubscribed = isSubscribed;
-            await updateCustomerInfo();
-            if (wasSubscribed == false && isSubscribed == true) {
-              subscriptionNotifier.value = true;
-            }
-          },
-        );
+        Purchases.addCustomerInfoUpdateListener((CustomerInfo info) async {
+          final bool? wasSubscribed = isSubscribed;
+          await updateCustomerInfo();
+          if (wasSubscribed == false && isSubscribed == true) {
+            subscriptionNotifier.value = true;
+          }
+        });
       } else {
         if (SubscriptionManagementRepo.getBeganWebPayment()) {
           await SubscriptionManagementRepo.removeBeganWebPayment();
@@ -184,9 +182,7 @@ class SubscriptionController with ChangeNotifier {
           ErrorHandler.logError(
             m: "Tried to subscribe to web SubscriptionDetails with Null duration",
             s: StackTrace.current,
-            data: {
-              "selectedSubscription": selectedSubscription.toJson(),
-            },
+            data: {"selectedSubscription": selectedSubscription.toJson()},
           );
           return;
         }
@@ -195,10 +191,7 @@ class SubscriptionController with ChangeNotifier {
           isPromo: isPromo,
         );
         await SubscriptionManagementRepo.setBeganWebPayment();
-        launchUrlString(
-          paymentLink,
-          webOnlyWindowName: "_self",
-        );
+        launchUrlString(paymentLink, webOnlyWindowName: "_self");
         return;
       }
       if (selectedSubscription.package == null) {
@@ -214,10 +207,7 @@ class SubscriptionController with ChangeNotifier {
         return;
       }
 
-      GoogleAnalytics.beginPurchaseSubscription(
-        selectedSubscription,
-        context,
-      );
+      GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
       await Purchases.purchasePackage(selectedSubscription.package!);
       GoogleAnalytics.updateUserSubscriptionStatus(true);
     }
@@ -244,8 +234,8 @@ class SubscriptionController with ChangeNotifier {
     return isSubscribed!
         ? SubscriptionStatus.subscribed
         : shouldShowPaywall
-            ? SubscriptionStatus.shouldShowPaywall
-            : SubscriptionStatus.dimissedPaywall;
+        ? SubscriptionStatus.shouldShowPaywall
+        : SubscriptionStatus.dimissedPaywall;
   }
 
   /// whether or not the paywall should be shown
@@ -272,13 +262,12 @@ class SubscriptionController with ChangeNotifier {
         clipBehavior: Clip.hardEdge,
         context: context,
         constraints: BoxConstraints(
-          maxHeight:
-              PlatformInfos.isMobile ? MediaQuery.heightOf(context) - 50 : 600,
+          maxHeight: PlatformInfos.isMobile
+              ? MediaQuery.heightOf(context) - 50
+              : 600,
         ),
         builder: (_) {
-          return SubscriptionPaywall(
-            pangeaController: _pangeaController,
-          );
+          return SubscriptionPaywall(pangeaController: _pangeaController);
         },
       );
       await SubscriptionManagementRepo.setDismissedPaywall();
@@ -317,15 +306,12 @@ class SubscriptionController with ChangeNotifier {
     return paymentLink;
   }
 
-  String? get defaultManagementURL =>
-      currentSubscriptionInfo?.currentSubscription
-          ?.defaultManagementURL(availableSubscriptionInfo?.appIds);
+  String? get defaultManagementURL => currentSubscriptionInfo
+      ?.currentSubscription
+      ?.defaultManagementURL(availableSubscriptionInfo?.appIds);
 }
 
-enum SubscriptionDuration {
-  month,
-  year,
-}
+enum SubscriptionDuration { month, year }
 
 extension SubscriptionDurationExtension on SubscriptionDuration {
   String get value => this == SubscriptionDuration.month ? "month" : "year";
@@ -371,8 +357,8 @@ class SubscriptionDetails {
     return appId == appIds?.androidId
         ? AppConfig.googlePlayMangementUrl
         : appId == appIds?.appleId
-            ? AppConfig.appleMangementUrl
-            : Environment.stripeManagementUrl;
+        ? AppConfig.appleMangementUrl
+        : Environment.stripeManagementUrl;
   }
 
   Map<String, dynamic> toJson() {

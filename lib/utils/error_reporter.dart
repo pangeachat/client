@@ -64,10 +64,7 @@ class ErrorReporter {
   //         child: SingleChildScrollView(
   //           child: Text(
   //             text,
-  //             style: const TextStyle(
-  //               fontSize: 14,
-  //               fontFamily: 'RobotoMono',
-  //             ),
+  //             style: const TextStyle(fontSize: 14, fontFamily: 'RobotoMono'),
   //           ),
   //         ),
   //       ),
@@ -77,9 +74,7 @@ class ErrorReporter {
   //           child: Text(L10n.of(context).close),
   //         ),
   //         AdaptiveDialogAction(
-  //           onPressed: () => Clipboard.setData(
-  //             ClipboardData(text: text),
-  //           ),
+  //           onPressed: () => Clipboard.setData(ClipboardData(text: text)),
   //           child: Text(L10n.of(context).copy),
   //         ),
   //         AdaptiveDialogAction(

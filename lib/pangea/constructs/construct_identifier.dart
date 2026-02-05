@@ -39,11 +39,7 @@ class ConstructIdentifier {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         e: Exception("Morph feature not found"),
-        data: {
-          "category": category,
-          "lemma": lemma,
-          "type": type,
-        },
+        data: {"category": category, "lemma": lemma, "type": type},
       );
     }
   }
@@ -88,11 +84,7 @@ class ConstructIdentifier {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'lemma': lemma,
-      'type': type.string,
-      'cat': category,
-    };
+    return {'lemma': lemma, 'type': type.string, 'cat': category};
   }
 
   // override operator == and hashCode
@@ -132,11 +124,7 @@ class ConstructIdentifier {
 
     if (type == null) return null;
 
-    return ConstructIdentifier(
-      lemma: lemma,
-      type: type,
-      category: category,
-    );
+    return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
   bool get isContentWord =>
@@ -147,10 +135,10 @@ class ConstructIdentifier {
         partOfSpeech: category,
         lemmaLang:
             MatrixState.pangeaController.userController.userL2?.langCodeShort ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
         userL1:
             MatrixState.pangeaController.userController.userL1?.langCodeShort ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
         lemma: lemma,
         messageInfo: messageInfo,
       );
@@ -158,11 +146,10 @@ class ConstructIdentifier {
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(
     Map<String, dynamic> messageInfo,
-  ) =>
-      LemmaInfoRepo.get(
-        MatrixState.pangeaController.userController.accessToken,
-        lemmaInfoRequest(messageInfo),
-      );
+  ) => LemmaInfoRepo.get(
+    MatrixState.pangeaController.userController.accessToken,
+    lemmaInfoRequest(messageInfo),
+  );
 
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
@@ -182,26 +169,17 @@ class ConstructIdentifier {
     final typeName = parts[1];
     final category = parts[2];
 
-    final type = ConstructTypeEnum.values.firstWhereOrNull(
-          (e) => e.name == typeName,
-        ) ??
+    final type =
+        ConstructTypeEnum.values.firstWhereOrNull((e) => e.name == typeName) ??
         ConstructTypeEnum.vocab;
 
-    return ConstructIdentifier(
-      lemma: lemma,
-      type: type,
-      category: category,
-    );
+    return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
   PangeaToken get asToken => PangeaToken(
-        lemma: Lemma(
-          text: lemma,
-          saveVocab: true,
-          form: lemma,
-        ),
-        pos: category,
-        text: PangeaTokenText.fromString(lemma),
-        morph: {},
-      );
+    lemma: Lemma(text: lemma, saveVocab: true, form: lemma),
+    pos: category,
+    text: PangeaTokenText.fromString(lemma),
+    morph: {},
+  );
 }

@@ -35,8 +35,9 @@ class PublicRoomBottomSheet extends StatefulWidget {
     PublishedRoomsChunk? chunk,
     List<String>? via,
   }) async {
-    final room = MatrixState.pangeaController.matrixState.client
-        .getRoomById(chunk!.roomId);
+    final room = MatrixState.pangeaController.matrixState.client.getRoomById(
+      chunk!.roomId,
+    );
 
     if (room != null && room.membership == Membership.join) {
       context.go("/rooms/spaces/${room.id}/details");
@@ -129,10 +130,8 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
 
     await showFutureLoadingDialog<String>(
       context: context,
-      future: () async => client.knockRoom(
-        roomAlias ?? chunk!.roomId,
-        via: via,
-      ),
+      future: () async =>
+          client.knockRoom(roomAlias ?? chunk!.roomId, via: via),
       onSuccess: () => L10n.of(context).knockSpaceSuccess,
       delay: false,
     );
@@ -144,11 +143,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     final chunk = this.chunk;
     if (chunk != null) return chunk;
     final query = await Matrix.of(outerContext).client.queryPublicRooms(
-          server: roomAlias!.domain,
-          filter: PublicRoomQueryFilter(
-            genericSearchTerm: roomAlias,
-          ),
-        );
+      server: roomAlias!.domain,
+      filter: PublicRoomQueryFilter(genericSearchTerm: roomAlias),
+    );
     if (!query.chunk.any(testRoom)) {
       throw (L10n.of(outerContext).noRoomsFound);
     }
@@ -227,10 +224,12 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                   child: Text(
                                     chunk?.topic ??
                                         (chunk?.roomType != 'm.space'
-                                            ? L10n.of(context)
-                                                .noChatDescriptionYet
-                                            : L10n.of(context)
-                                                .noSpaceDescriptionYet),
+                                            ? L10n.of(
+                                                context,
+                                              ).noChatDescriptionYet
+                                            : L10n.of(
+                                                context,
+                                              ).noSpaceDescriptionYet),
                                     softWrap: true,
                                     textAlign: TextAlign.start,
                                     maxLines: null,
@@ -265,12 +264,13 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
-                                        hintText:
-                                            L10n.of(context).enterSpaceCode,
+                                        hintText: L10n.of(
+                                          context,
+                                        ).enterSpaceCode,
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                          horizontal: 16.0,
-                                        ),
+                                              horizontal: 16.0,
+                                            ),
                                         hintStyle: TextStyle(
                                           color: Theme.of(context).hintColor,
                                         ),
@@ -281,9 +281,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                     decoration: BoxDecoration(
                                       border: Border(
                                         left: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .outline,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.outline,
                                         ),
                                       ),
                                     ),
@@ -311,10 +311,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                 spacing: 8.0,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(
-                                    Symbols.door_open,
-                                    size: 20.0,
-                                  ),
+                                  const Icon(Symbols.door_open, size: 20.0),
                                   Text(L10n.of(context).askToJoin),
                                 ],
                               ),

@@ -31,8 +31,9 @@ class ActivitySummaryModel {
       requestedAt: json['requested_at'] != null
           ? DateTime.parse(json['requested_at'])
           : null,
-      errorAt:
-          json['error_at'] != null ? DateTime.parse(json['error_at']) : null,
+      errorAt: json['error_at'] != null
+          ? DateTime.parse(json['error_at'])
+          : null,
       analytics: json['analytics'] != null
           ? ActivitySummaryAnalyticsModel.fromJson(json['analytics'])
           : null,

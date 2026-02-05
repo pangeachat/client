@@ -126,19 +126,14 @@ class SpanCardState extends State<SpanCard> {
 
   void _updateMatch(PangeaMatchStatusEnum status) {
     try {
-      widget.choreographer.igcController.updateMatch(
-        widget.match,
-        status,
-      );
+      widget.choreographer.igcController.updateMatch(widget.match, status);
       widget.showNextMatch();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
         level: SentryLevel.warning,
-        data: {
-          "match": widget.match.toJson(),
-        },
+        data: {"match": widget.match.toJson()},
       );
       widget.choreographer.clearMatches(e);
       return;
@@ -180,7 +175,9 @@ class SpanCardState extends State<SpanCard> {
                             widget.match.updatedMatch.match.selectedChoiceIndex,
                         id: widget.match.hashCode.toString(),
                         langCode: MatrixState
-                            .pangeaController.userController.userL2Code!,
+                            .pangeaController
+                            .userController
+                            .userL2Code!,
                       ),
                       const SizedBox(),
                       _SpanCardFeedback(
@@ -223,28 +220,32 @@ class _SpanCardFeedback extends StatelessWidget {
       children: [
         ValueListenableBuilder(
           valueListenable: feedbackState,
-          builder: (context, state, __) {
+          builder: (context, state, _) {
             return switch (state) {
-              AsyncIdle<String>() => hasSelectedChoice
-                  ? IconButton(
-                      onPressed: fetchFeedback,
-                      icon: const Icon(Icons.lightbulb_outline, size: 24),
-                    )
-                  : Text(
-                      L10n.of(context).correctionDefaultPrompt,
-                      style: BotStyle.text(context).copyWith(
-                        fontStyle: FontStyle.italic,
+              AsyncIdle<String>() =>
+                hasSelectedChoice
+                    ? IconButton(
+                        onPressed: fetchFeedback,
+                        icon: const Icon(Icons.lightbulb_outline, size: 24),
+                      )
+                    : Text(
+                        L10n.of(context).correctionDefaultPrompt,
+                        style: BotStyle.text(
+                          context,
+                        ).copyWith(fontStyle: FontStyle.italic),
                       ),
-                    ),
               AsyncLoading<String>() => const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(),
-                ),
-              AsyncError<String>(:final error) =>
-                ErrorIndicator(message: error.toString()),
-              AsyncLoaded<String>(:final value) =>
-                Text(value, style: BotStyle.text(context)),
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(),
+              ),
+              AsyncError<String>(:final error) => ErrorIndicator(
+                message: error.toString(),
+              ),
+              AsyncLoaded<String>(:final value) => Text(
+                value,
+                style: BotStyle.text(context),
+              ),
             };
           },
         ),
@@ -267,9 +268,7 @@ class _SpanCardButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-      ),
+      decoration: BoxDecoration(color: Theme.of(context).cardColor),
       padding: const EdgeInsets.only(top: 12.0),
       child: Row(
         spacing: 10.0,
@@ -279,13 +278,12 @@ class _SpanCardButtons extends StatelessWidget {
               opacity: 0.8,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor:
-                      Theme.of(context).colorScheme.primary.withAlpha(25),
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.primary.withAlpha(25),
                 ),
                 onPressed: onIgnore,
-                child: Center(
-                  child: Text(L10n.of(context).ignoreInThisText),
-                ),
+                child: Center(child: Text(L10n.of(context).ignoreInThisText)),
               ),
             ),
           ),
@@ -295,9 +293,10 @@ class _SpanCardButtons extends StatelessWidget {
               child: TextButton(
                 onPressed: selectedChoice != null ? onAccept : null,
                 style: TextButton.styleFrom(
-                  backgroundColor: (selectedChoice?.color ??
-                          Theme.of(context).colorScheme.primary)
-                      .withAlpha(50),
+                  backgroundColor:
+                      (selectedChoice?.color ??
+                              Theme.of(context).colorScheme.primary)
+                          .withAlpha(50),
                   side: selectedChoice != null
                       ? BorderSide(
                           color: selectedChoice!.color,

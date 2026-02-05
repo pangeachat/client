@@ -5,6 +5,5 @@ class ContextualDefinitionResponseModel {
 
   factory ContextualDefinitionResponseModel.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      ContextualDefinitionResponseModel(text: json["response"]);
+  ) => ContextualDefinitionResponseModel(text: json["response"]);
 }

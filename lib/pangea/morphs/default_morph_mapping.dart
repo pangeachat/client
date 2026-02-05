@@ -228,7 +228,7 @@ final MorphFeaturesAndTags defaultMorphMapping = MorphFeaturesAndTags.fromJson({
     {
       "feature": "x",
       "tag": ["X"],
-    }
+    },
   ],
 });
 

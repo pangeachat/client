@@ -47,12 +47,9 @@ class SpacesNavigationRail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
-    final isSettings = GoRouter.of(context)
-        .routeInformationProvider
-        .value
-        .uri
-        .path
-        .startsWith('/rooms/settings');
+    final isSettings = GoRouter.of(
+      context,
+    ).routeInformationProvider.value.uri.path.startsWith('/rooms/settings');
     // #Pangea
     final isAnalytics = path?.contains('analytics') ?? false;
     final isCourse = path?.contains('course') ?? false;
@@ -66,15 +63,14 @@ class SpacesNavigationRail extends StatelessWidget {
       child: SafeArea(
         child: StreamBuilder(
           // Pangea#
-          key: ValueKey(
-            client.userID.toString(),
-          ),
+          key: ValueKey(client.userID.toString()),
           stream: client.onSync.stream
               .where((s) => s.hasRoomUpdate)
               .rateLimit(const Duration(seconds: 1)),
           builder: (context, _) {
-            final allSpaces =
-                client.rooms.where((room) => room.isSpace).toList();
+            final allSpaces = client.rooms
+                .where((room) => room.isSpace)
+                .toList();
 
             // #Pangea
             // return SizedBox(
@@ -131,9 +127,11 @@ class SpacesNavigationRail extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(99),
                                       child: Avatar(
                                         mxContent: snapshot.data?.avatarUrl,
-                                        name: snapshot.data?.displayName ??
+                                        name:
+                                            snapshot.data?.displayName ??
                                             client.userID!.localpart,
-                                        size: width -
+                                        size:
+                                            width -
                                             (isColumnMode ? 32.0 : 24.0),
                                       ),
                                     ),
@@ -153,7 +151,8 @@ class SpacesNavigationRail extends StatelessWidget {
                           return NaviRailItem(
                             // #Pangea
                             // isSelected: activeSpaceId == null && !isSettings,
-                            isSelected: activeSpaceId == null &&
+                            isSelected:
+                                activeSpaceId == null &&
                                 !isSettings &&
                                 !isAnalytics &&
                                 !isCourse,
@@ -205,12 +204,12 @@ class SpacesNavigationRail extends StatelessWidget {
                                 width: width - (isColumnMode ? 32.0 : 24.0),
                                 height: width - (isColumnMode ? 32.0 : 24.0),
                                 color: isCourse
-                                    ? Theme.of(context)
-                                        .colorScheme
-                                        .primaryContainer
-                                    : Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHigh,
+                                    ? Theme.of(
+                                        context,
+                                      ).colorScheme.primaryContainer
+                                    : Theme.of(
+                                        context,
+                                      ).colorScheme.surfaceContainerHigh,
                                 child: const Icon(Icons.add),
                               ),
                             ),
@@ -220,12 +219,13 @@ class SpacesNavigationRail extends StatelessWidget {
                           );
                         }
                         final space = allSpaces[i];
-                        final displayname =
-                            allSpaces[i].getLocalizedDisplayname(
-                          MatrixLocals(L10n.of(context)),
-                        );
-                        final spaceChildrenIds =
-                            space.spaceChildren.map((c) => c.roomId).toSet();
+                        final displayname = allSpaces[i]
+                            .getLocalizedDisplayname(
+                              MatrixLocals(L10n.of(context)),
+                            );
+                        final spaceChildrenIds = space.spaceChildren
+                            .map((c) => c.roomId)
+                            .toSet();
                         return NaviRailItem(
                           toolTip: displayname,
                           isSelected: activeSpaceId == space.id,
@@ -237,10 +237,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             collapse();
                             final room = client.getRoomById(allSpaces[i].id);
                             if (room != null) {
-                              chatListHandleSpaceTap(
-                                context,
-                                room,
-                              );
+                              chatListHandleSpaceTap(context, room);
                             } else {
                               context.go(
                                 "/rooms/spaces/${allSpaces[i].id}/details",
@@ -276,10 +273,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               color: Theme.of(context).colorScheme.onPrimary,
                               size: 16,
                             ),
-                            position: b.BadgePosition.topEnd(
-                              top: -5,
-                              end: -7,
-                            ),
+                            position: b.BadgePosition.topEnd(top: -5, end: -7),
                             child: ClipPath(
                               clipper: MapClipper(),
                               child: Avatar(

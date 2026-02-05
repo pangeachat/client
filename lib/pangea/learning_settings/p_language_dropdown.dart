@@ -54,8 +54,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
 
     // if there is no initial language, the system language should be the first in the list
     // otherwise, display in alphabetical order
-    final List<String> languagePriority =
-        widget.initialLanguage == null ? [systemLang] : [];
+    final List<String> languagePriority = widget.initialLanguage == null
+        ? [systemLang]
+        : [];
 
     int sortLanguages(LanguageModel a, LanguageModel b) {
       final String aLang = a.langCode;
@@ -85,7 +86,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField2<LanguageModel>(
-          customButton: widget.initialLanguage != null &&
+          customButton:
+              widget.initialLanguage != null &&
                   sortedLanguages.contains(widget.initialLanguage)
               ? LanguageDropDownEntry(
                   languageModel: widget.initialLanguage!,
@@ -94,9 +96,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   enabled: widget.enabled,
                 )
               : null,
-          menuItemStyleData: const MenuItemStyleData(
-            padding: EdgeInsets.zero,
-          ),
+          menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
           decoration: InputDecoration(
             labelText: widget.decorationText,
             enabledBorder: hasError
@@ -122,7 +122,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             maxHeight: kIsWeb ? 500 : null,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
-              color: widget.backgroundColor ??
+              color:
+                  widget.backgroundColor ??
                   Theme.of(context).colorScheme.surfaceContainerHigh,
             ),
           ),
@@ -161,11 +162,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                 ),
               ),
             ),
-            searchMatchFn: (item, searchValue) => LanguageModel.search(
-              item.value,
-              searchValue,
-              context,
-            ),
+            searchMatchFn: (item, searchValue) =>
+                LanguageModel.search(item.value, searchValue, context),
           ),
           onMenuStateChange: (isOpen) {
             if (!isOpen) _searchController.clear();
@@ -177,9 +175,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
           child: widget.error == null
               ? const SizedBox.shrink()
               : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(
                     widget.error!,
                     style: TextStyle(
@@ -214,10 +210,7 @@ class LanguageDropDownEntry extends StatelessWidget {
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
-          child: Avatar(
-            name: languageModel.langCode,
-            size: 30,
-          ),
+          child: Avatar(name: languageModel.langCode, size: 30),
         ),
         const SizedBox(width: 10),
         Expanded(

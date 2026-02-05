@@ -24,13 +24,11 @@ class IGCResponseModel {
     return IGCResponseModel(
       matches: json["matches"] != null
           ? (json["matches"] as Iterable)
-              .map<PangeaMatch>(
-                (e) {
+                .map<PangeaMatch>((e) {
                   return PangeaMatch.fromJson(e as Map<String, dynamic>);
-                },
-              )
-              .toList()
-              .cast<PangeaMatch>()
+                })
+                .toList()
+                .cast<PangeaMatch>()
           : [],
       originalInput: json["original_input"],
       fullTextCorrection: json["full_text_correction"],
@@ -42,12 +40,12 @@ class IGCResponseModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "original_input": originalInput,
-        "full_text_correction": fullTextCorrection,
-        "matches": matches.map((e) => e.toJson()).toList(),
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.enableIT: enableIT,
-        ModelKey.enableIGC: enableIGC,
-      };
+    "original_input": originalInput,
+    "full_text_correction": fullTextCorrection,
+    "matches": matches.map((e) => e.toJson()).toList(),
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.enableIT: enableIT,
+    ModelKey.enableIGC: enableIGC,
+  };
 }

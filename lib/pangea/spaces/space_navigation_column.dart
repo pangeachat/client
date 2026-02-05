@@ -96,8 +96,9 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
         : FluffyThemes.navRailWidth - 8.0;
 
     final double navRailExtraWidth = widget.showNavRail ? 250.0 : 0.0;
-    final double columnWidth =
-        isColumnMode ? FluffyThemes.columnWidth + 1.0 : 0;
+    final double columnWidth = isColumnMode
+        ? FluffyThemes.columnWidth + 1.0
+        : 0;
 
     final double railWidth = widget.showNavRail ? navRailWidth + 1.0 : 0;
     final double baseWidth = columnWidth + railWidth;
@@ -124,10 +125,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                       width: FluffyThemes.columnWidth,
                       child: _MainView(state: widget.state),
                     ),
-                    Container(
-                      width: 1.0,
-                      color: theme.dividerColor,
-                    ),
+                    Container(width: 1.0, color: theme.dividerColor),
                   ],
                 ),
               ),
@@ -156,10 +154,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                       profile: _profile,
                       onProfileUpdate: _updateProfile,
                     ),
-                    Container(
-                      width: 1,
-                      color: Theme.of(context).dividerColor,
-                    ),
+                    Container(width: 1, color: Theme.of(context).dividerColor),
                   ],
                 );
               },
@@ -173,9 +168,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
 class _MainView extends StatelessWidget {
   final GoRouterState state;
 
-  const _MainView({
-    required this.state,
-  });
+  const _MainView({required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -210,9 +203,8 @@ class _MainView extends StatelessWidget {
             imageUrl:
                 "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
             errorWidget: (context, url, error) => const SizedBox(),
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator.adaptive()),
           ),
         ),
       );

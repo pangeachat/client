@@ -8,14 +8,14 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../widgets/mxc_image_viewer.dart';
-import 'settings.dart';
+import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 
 class SettingsView extends StatelessWidget {
   final SettingsController controller;
@@ -28,8 +28,9 @@ class SettingsView extends StatelessWidget {
     // #Pangea
     // final showChatBackupBanner = controller.showChatBackupBanner;
     // Pangea#
-    final activeRoute =
-        GoRouter.of(context).routeInformationProvider.value.uri.path;
+    final activeRoute = GoRouter.of(
+      context,
+    ).routeInformationProvider.value.uri.path;
     // #Pangea
     // final accountManageUrl = Matrix.of(context)
     //     .client
@@ -47,10 +48,7 @@ class SettingsView extends StatelessWidget {
         //     onGoToChats: () => context.go('/rooms'),
         //     onGoToSpaceId: (spaceId) => context.go('/rooms?spaceId=$spaceId'),
         //   ),
-        //   Container(
-        //     color: Theme.of(context).dividerColor,
-        //     width: 1,
-        //   ),
+        //   Container(color: Theme.of(context).dividerColor, width: 1),
         // ],
         // Pangea#
         Expanded(
@@ -61,9 +59,7 @@ class SettingsView extends StatelessWidget {
             //     : AppBar(
             //         title: Text(L10n.of(context).settings),
             //         leading: Center(
-            //           child: BackButton(
-            //             onPressed: () => context.go('/rooms'),
-            //           ),
+            //           child: BackButton(onPressed: () => context.go('/rooms')),
             //         ),
             //       ),
             // Pangea#
@@ -80,7 +76,8 @@ class SettingsView extends StatelessWidget {
                       builder: (context, snapshot) {
                         final profile = snapshot.data;
                         final avatar = profile?.avatarUrl;
-                        final mxid = Matrix.of(context).client.userID ??
+                        final mxid =
+                            Matrix.of(context).client.userID ??
                             L10n.of(context).user;
                         final displayname =
                             profile?.displayName ?? mxid.localpart ?? mxid;
@@ -106,10 +103,10 @@ class SettingsView extends StatelessWidget {
                                     size: Avatar.defaultSize * 2.5,
                                     onTap: avatar != null
                                         ? () => showDialog(
-                                              context: context,
-                                              builder: (_) =>
-                                                  MxcImageViewer(avatar),
-                                            )
+                                            context: context,
+                                            builder: (_) =>
+                                                MxcImageViewer(avatar),
+                                          )
                                         : null,
                                   ),
                                   if (profile != null)
@@ -130,8 +127,8 @@ class SettingsView extends StatelessWidget {
                             ),
                             Expanded(
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: .center,
+                                crossAxisAlignment: .start,
                                 children: [
                                   TextButton.icon(
                                     onPressed: controller.setDisplaynameAction,
@@ -148,9 +145,7 @@ class SettingsView extends StatelessWidget {
                                       displayname,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                      ),
+                                      style: const TextStyle(fontSize: 18),
                                     ),
                                   ),
                                   TextButton.icon(
@@ -205,16 +200,14 @@ class SettingsView extends StatelessWidget {
                     //     title: Text(L10n.of(context).chatBackup),
                     //     onChanged: controller.firstRunBootstrapAction,
                     //   ),
-                    // Divider(
-                    //   color: theme.dividerColor,
-                    // ),
+                    // Divider(color: theme.dividerColor),
                     ListTile(
                       leading: const Icon(Icons.language_outlined),
                       title: Text(L10n.of(context).learningSettings),
                       tileColor:
                           activeRoute.startsWith('/rooms/settings/learning')
-                              ? theme.colorScheme.surfaceContainerHigh
-                              : null,
+                          ? theme.colorScheme.surfaceContainerHigh
+                          : null,
                       onTap: () => context.go('/rooms/settings/learning'),
                     ),
                     // Pangea#
@@ -229,16 +222,19 @@ class SettingsView extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.notifications_outlined),
                       title: Text(L10n.of(context).notifications),
-                      tileColor: activeRoute
-                              .startsWith('/rooms/settings/notifications')
+                      tileColor:
+                          activeRoute.startsWith(
+                            '/rooms/settings/notifications',
+                          )
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go('/rooms/settings/notifications'),
                       // #Pangea
                       trailing: ValueListenableBuilder(
-                        valueListenable:
-                            Matrix.of(context).notifPermissionNotifier,
-                        builder: (context, _, __) => FutureBuilder<bool>(
+                        valueListenable: Matrix.of(
+                          context,
+                        ).notifPermissionNotifier,
+                        builder: (context, _, _) => FutureBuilder<bool>(
                           future: Matrix.of(context).notificationsEnabled,
                           builder: (context, snapshot) {
                             return snapshot.data != false
@@ -258,8 +254,8 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go('/rooms/settings/devices'),
                       tileColor:
                           activeRoute.startsWith('/rooms/settings/devices')
-                              ? theme.colorScheme.surfaceContainerHigh
-                              : null,
+                          ? theme.colorScheme.surfaceContainerHigh
+                          : null,
                     ),
                     ListTile(
                       leading: const Icon(Icons.forum_outlined),
@@ -276,8 +272,8 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go('/rooms/settings/subscription'),
                       tileColor:
                           activeRoute.startsWith('/rooms/settings/subscription')
-                              ? theme.colorScheme.surfaceContainerHigh
-                              : null,
+                          ? theme.colorScheme.surfaceContainerHigh
+                          : null,
                     ),
                     // Pangea#
                     ListTile(
@@ -286,8 +282,8 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go('/rooms/settings/security'),
                       tileColor:
                           activeRoute.startsWith('/rooms/settings/security')
-                              ? theme.colorScheme.surfaceContainerHigh
-                              : null,
+                          ? theme.colorScheme.surfaceContainerHigh
+                          : null,
                     ),
                     Divider(color: theme.dividerColor),
                     // #Pangea
@@ -299,11 +295,11 @@ class SettingsView extends StatelessWidget {
                         await showFutureLoadingDialog(
                           context: context,
                           future: () async {
-                            final roomId =
-                                await Matrix.of(context).client.startDirectChat(
-                                      Environment.supportUserId,
-                                      enableEncryption: false,
-                                    );
+                            final roomId = await Matrix.of(context).client
+                                .startDirectChat(
+                                  Environment.supportUserId,
+                                  enableEncryption: false,
+                                );
                             context.go('/rooms/$roomId');
                           },
                         );
@@ -332,8 +328,9 @@ class SettingsView extends StatelessWidget {
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content:
-                                      Text(L10n.of(context).copiedToClipboard),
+                                  content: Text(
+                                    L10n.of(context).copiedToClipboard,
+                                  ),
                                 ),
                               );
                             },
@@ -376,8 +373,8 @@ class SettingsView extends StatelessWidget {
                     //   onTap: () => context.go('/rooms/settings/homeserver'),
                     //   tileColor:
                     //       activeRoute.startsWith('/rooms/settings/homeserver')
-                    //           ? theme.colorScheme.surfaceContainerHigh
-                    //           : null,
+                    //       ? theme.colorScheme.surfaceContainerHigh
+                    //       : null,
                     // ),
                     // ListTile(
                     //   leading: const Icon(Icons.privacy_tip_outlined),

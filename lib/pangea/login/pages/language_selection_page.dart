@@ -48,8 +48,9 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   void _setFromCache() {
     LangCodeRepo.get().then((langSettings) {
       if (langSettings == null) return;
-      final cachedTargetLang =
-          PLanguageStore.byLangCode(langSettings.targetLangCode);
+      final cachedTargetLang = PLanguageStore.byLangCode(
+        langSettings.targetLangCode,
+      );
       final cachedBaseLang = langSettings.baseLangCode != null
           ? PLanguageStore.byLangCode(langSettings.baseLangCode!)
           : null;
@@ -105,16 +106,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     return Scaffold(
       appBar: AppBar(
         title: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 500,
-          ),
+          constraints: const BoxConstraints(maxWidth: 500),
           child: Row(
             spacing: 12.0,
             children: [
               Navigator.of(context).canPop()
-                  ? BackButton(
-                      onPressed: Navigator.of(context).maybePop,
-                    )
+                  ? BackButton(onPressed: Navigator.of(context).maybePop)
                   : const SizedBox(width: 40.0),
               Expanded(
                 child: LayoutBuilder(
@@ -127,9 +124,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                   },
                 ),
               ),
-              const SizedBox(
-                width: 40.0,
-              ),
+              const SizedBox(width: 40.0),
             ],
           ),
         ),
@@ -139,9 +134,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
         child: Center(
           child: Container(
             padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(
-              maxWidth: 500,
-            ),
+            constraints: const BoxConstraints(maxWidth: 500),
             child: Column(
               spacing: 24.0,
               children: [
@@ -162,7 +155,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                         alignment: Alignment.topCenter,
                         child: ValueListenableBuilder(
                           valueListenable: _searchController,
-                          builder: (context, val, __) {
+                          builder: (context, val, _) {
                             return SingleChildScrollView(
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -202,8 +195,8 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                             ),
                                             backgroundColor:
                                                 _selectedLanguage == l
-                                                    ? theme.colorScheme.primary
-                                                    : theme.colorScheme.surface,
+                                                ? theme.colorScheme.primary
+                                                : theme.colorScheme.surface,
                                             padding: const EdgeInsets.symmetric(
                                               horizontal: 8.0,
                                               vertical: 4.0,
@@ -252,7 +245,8 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                 ),
                 AnimatedSize(
                   duration: FluffyThemes.animationDuration,
-                  child: _selectedLanguage != null &&
+                  child:
+                      _selectedLanguage != null &&
                           _selectedLanguage?.langCodeShort ==
                               _baseLanguage?.langCodeShort
                       ? PLanguageDropdown(
@@ -280,9 +274,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(L10n.of(context).letsGo),
-                      ],
+                      children: [Text(L10n.of(context).letsGo)],
                     ),
                   ),
                 ),

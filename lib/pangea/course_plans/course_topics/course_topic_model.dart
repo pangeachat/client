@@ -30,17 +30,11 @@ class CourseTopicModel {
       locationIds.length == loadedLocations.locations.length;
 
   CourseLocationResponse get loadedLocations => CourseLocationRepo.getCached(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: locationIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: locationIds),
+  );
   Future<CourseLocationResponse> _fetchLocations() => CourseLocationRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: locationIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: locationIds),
+  );
 
   String? get location => loadedLocations.locations.firstOrNull?.name;
 
@@ -53,10 +47,7 @@ class CourseTopicModel {
   List<String> get loadedLocationMediaIds => loadedLocations.locations
       .map(
         (location) => CourseLocationMediaRepo.getCached(
-          CourseInfoBatchRequest(
-            batchId: uuid,
-            uuids: location.mediaIds,
-          ),
+          CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
         ).mediaUrls,
       )
       .expand((e) => e)
@@ -68,10 +59,7 @@ class CourseTopicModel {
     final locationResp = await _fetchLocations();
     for (final location in locationResp.locations) {
       final mediaResp = await CourseLocationMediaRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: location.mediaIds,
-        ),
+        CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
       );
 
       allLocationMedia.addAll(mediaResp.mediaUrls.map((e) => e.url));
@@ -110,10 +98,10 @@ class CourseTopicModel {
   factory CourseTopicModel.fromJson(Map<String, dynamic> json) {
     final List<dynamic>? activityIdsEntry =
         json['activity_ids'] as List<dynamic>? ??
-            json['activityIds'] as List<dynamic>?;
+        json['activityIds'] as List<dynamic>?;
     final List<dynamic>? locationIdsEntry =
         json['location_ids'] as List<dynamic>? ??
-            json['locationIds'] as List<dynamic>?;
+        json['locationIds'] as List<dynamic>?;
 
     return CourseTopicModel(
       title: json['title'] as String,

@@ -21,18 +21,15 @@ class ConstructUses {
     required this.constructType,
     required this.lemma,
     required category,
-  })  : _category = category,
-        _uses = List<OneConstructUse>.from(uses) {
+  }) : _category = category,
+       _uses = List<OneConstructUse>.from(uses) {
     _sortUses();
   }
 
   // Total points for all uses of this lemma
   int get points {
     return min(
-      _uses.fold<int>(
-        0,
-        (total, use) => total + use.xp,
-      ),
+      _uses.fold<int>(0, (total, use) => total + use.xp),
       AnalyticsConstants.xpForFlower,
     );
   }
@@ -51,10 +48,10 @@ class ConstructUses {
   int get numTotalUses => _uses.length;
 
   ConstructIdentifier get id => ConstructIdentifier(
-        lemma: lemma,
-        type: constructType,
-        category: category,
-      );
+    lemma: lemma,
+    type: constructType,
+    category: category,
+  );
 
   /// Get the lemma category, based on points
   ConstructLevelEnum get lemmaCategory {
@@ -80,10 +77,10 @@ class ConstructUses {
   }
 
   ConstructLevelEnum get constructLevel => switch (points) {
-        < AnalyticsConstants.xpForGreens => ConstructLevelEnum.seeds,
-        < AnalyticsConstants.xpForFlower => ConstructLevelEnum.greens,
-        _ => ConstructLevelEnum.flowers,
-      };
+    < AnalyticsConstants.xpForGreens => ConstructLevelEnum.seeds,
+    < AnalyticsConstants.xpForFlower => ConstructLevelEnum.greens,
+    _ => ConstructLevelEnum.flowers,
+  };
 
   List<String> get forms =>
       _uses.map((e) => e.form).whereType<String>().toSet().toList();

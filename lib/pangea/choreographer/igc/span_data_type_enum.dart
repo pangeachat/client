@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum SpanDataTypeEnum {
-  definition,
-  practice,
-  correction,
-  itStart,
-}
+enum SpanDataTypeEnum { definition, practice, correction, itStart }
 
 extension SpanDataTypeEnumExt on SpanDataTypeEnum {
   String get name {
@@ -34,8 +29,9 @@ extension SpanDataTypeEnumExt on SpanDataTypeEnum {
         return L10n.of(context).correctionDefaultPrompt;
       case SpanDataTypeEnum.itStart:
         return L10n.of(context).needsItMessage(
-          MatrixState.pangeaController.userController.userL2
-                  ?.getDisplayName(context) ??
+          MatrixState.pangeaController.userController.userL2?.getDisplayName(
+                context,
+              ) ??
               L10n.of(context).targetLanguage,
         );
     }

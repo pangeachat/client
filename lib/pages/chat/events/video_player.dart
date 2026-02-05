@@ -47,8 +47,10 @@ class EventVideoPlayer extends StatelessWidget {
         PlatformInfos.supportsVideoPlayer && _supportedFormat;
     // Pangea#
 
-    final blurHash = (event.infoMap as Map<String, dynamic>)
-            .tryGet<String>('xyz.amorgan.blurhash') ??
+    final blurHash =
+        (event.infoMap as Map<String, dynamic>).tryGet<String>(
+          'xyz.amorgan.blurhash',
+        ) ??
         fallbackBlurHash;
     final fileDescription = event.fileDescription;
     const maxDimension = 300.0;
@@ -61,11 +63,12 @@ class EventVideoPlayer extends StatelessWidget {
     final height = videoHeight / modifier;
 
     final durationInt = infoMap?.tryGet<int>('duration');
-    final duration =
-        durationInt == null ? null : Duration(milliseconds: durationInt);
+    final duration = durationInt == null
+        ? null
+        : Duration(milliseconds: durationInt);
 
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: .min,
       spacing: 8,
       children: [
         Material(
@@ -140,22 +143,21 @@ class EventVideoPlayer extends StatelessWidget {
           SizedBox(
             width: width,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Linkify(
                 text: fileDescription,
                 textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
                 style: TextStyle(
                   color: textColor,
-                  fontSize: AppSettings.fontSizeFactor.value *
+                  fontSize:
+                      AppSettings.fontSizeFactor.value *
                       AppConfig.messageFontSize,
                 ),
                 options: const LinkifyOptions(humanize: false),
                 linkStyle: TextStyle(
                   color: linkColor,
-                  fontSize: AppSettings.fontSizeFactor.value *
+                  fontSize:
+                      AppSettings.fontSizeFactor.value *
                       AppConfig.messageFontSize,
                   decoration: TextDecoration.underline,
                   decorationColor: linkColor,

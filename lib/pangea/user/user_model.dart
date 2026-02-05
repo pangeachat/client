@@ -34,28 +34,24 @@ class UserSettings {
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
-        dateOfBirth: json[ModelKey.userDateOfBirth] != null
-            ? DateTime.parse(json[ModelKey.userDateOfBirth])
-            : null,
-        createdAt: json[ModelKey.userCreatedAt] != null
-            ? DateTime.parse(json[ModelKey.userCreatedAt])
-            : null,
-        publicProfile: json[ModelKey.publicProfile],
-        targetLanguage: json[ModelKey.targetLanguage],
-        sourceLanguage: json[ModelKey.sourceLanguage],
-        gender: json[ModelKey.userGender] is String
-            ? GenderEnumExtension.fromString(
-                json[ModelKey.userGender],
-              )
-            : GenderEnum.unselected,
-        country: json[ModelKey.userCountry],
-        cefrLevel: json[ModelKey.cefrLevel] is String
-            ? LanguageLevelTypeEnum.fromString(
-                json[ModelKey.cefrLevel],
-              )
-            : LanguageLevelTypeEnum.a1,
-        voice: json[ModelKey.voice],
-      );
+    dateOfBirth: json[ModelKey.userDateOfBirth] != null
+        ? DateTime.parse(json[ModelKey.userDateOfBirth])
+        : null,
+    createdAt: json[ModelKey.userCreatedAt] != null
+        ? DateTime.parse(json[ModelKey.userCreatedAt])
+        : null,
+    publicProfile: json[ModelKey.publicProfile],
+    targetLanguage: json[ModelKey.targetLanguage],
+    sourceLanguage: json[ModelKey.sourceLanguage],
+    gender: json[ModelKey.userGender] is String
+        ? GenderEnumExtension.fromString(json[ModelKey.userGender])
+        : GenderEnum.unselected,
+    country: json[ModelKey.userCountry],
+    cefrLevel: json[ModelKey.cefrLevel] is String
+        ? LanguageLevelTypeEnum.fromString(json[ModelKey.cefrLevel])
+        : LanguageLevelTypeEnum.a1,
+    voice: json[ModelKey.voice],
+  );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -105,15 +101,19 @@ class UserSettings {
     return UserSettings(
       dateOfBirth: dob,
       createdAt: createdAt,
-      publicProfile: (accountData[ModelKey.publicProfile]
-              ?.content[ModelKey.publicProfile] as bool?) ??
+      publicProfile:
+          (accountData[ModelKey.publicProfile]?.content[ModelKey.publicProfile]
+              as bool?) ??
           false,
-      targetLanguage: accountData[ModelKey.targetLanguage]
-          ?.content[ModelKey.targetLanguage] as String?,
-      sourceLanguage: accountData[ModelKey.sourceLanguage]
-          ?.content[ModelKey.sourceLanguage] as String?,
-      country: accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
-          as String?,
+      targetLanguage:
+          accountData[ModelKey.targetLanguage]?.content[ModelKey.targetLanguage]
+              as String?,
+      sourceLanguage:
+          accountData[ModelKey.sourceLanguage]?.content[ModelKey.sourceLanguage]
+              as String?,
+      country:
+          accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
+              as String?,
     );
   }
 
@@ -149,16 +149,16 @@ class UserSettings {
 
   @override
   int get hashCode => Object.hashAll([
-        dateOfBirth.hashCode,
-        createdAt.hashCode,
-        (publicProfile ?? false).hashCode,
-        targetLanguage.hashCode,
-        sourceLanguage.hashCode,
-        gender.hashCode,
-        country.hashCode,
-        cefrLevel.hashCode,
-        voice.hashCode,
-      ]);
+    dateOfBirth.hashCode,
+    createdAt.hashCode,
+    (publicProfile ?? false).hashCode,
+    targetLanguage.hashCode,
+    sourceLanguage.hashCode,
+    gender.hashCode,
+    country.hashCode,
+    cefrLevel.hashCode,
+    voice.hashCode,
+  ]);
 }
 
 /// The user's language tool settings.
@@ -212,20 +212,26 @@ class UserToolSettings {
     return UserToolSettings(
       interactiveTranslator:
           (accountData[ToolSetting.interactiveTranslator.toString()]
-                      ?.content[ToolSetting.interactiveTranslator.toString()]
-                  as bool?) ??
-              true,
+                  ?.content[ToolSetting.interactiveTranslator.toString()]
+              as bool?) ??
+          true,
       interactiveGrammar:
           (accountData[ToolSetting.interactiveGrammar.toString()]
-                      ?.content[ToolSetting.interactiveGrammar.toString()]
-                  as bool?) ??
-              true,
-      immersionMode: false,
-      definitions: (accountData[ToolSetting.definitions.toString()]
-              ?.content[ToolSetting.definitions.toString()] as bool?) ??
+                  ?.content[ToolSetting.interactiveGrammar.toString()]
+              as bool?) ??
           true,
-      autoIGC: (accountData[ToolSetting.autoIGC.toString()]
-              ?.content[ToolSetting.autoIGC.toString()] as bool?) ??
+      immersionMode: false,
+      definitions:
+          (accountData[ToolSetting.definitions.toString()]?.content[ToolSetting
+                  .definitions
+                  .toString()]
+              as bool?) ??
+          true,
+      autoIGC:
+          (accountData[ToolSetting.autoIGC.toString()]?.content[ToolSetting
+                  .autoIGC
+                  .toString()]
+              as bool?) ??
           true,
     );
   }
@@ -258,14 +264,14 @@ class UserToolSettings {
 
   @override
   int get hashCode => Object.hashAll([
-        interactiveTranslator.hashCode,
-        interactiveGrammar.hashCode,
-        immersionMode.hashCode,
-        definitions.hashCode,
-        autoIGC.hashCode,
-        enableTTS.hashCode,
-        enableAutocorrect.hashCode,
-      ]);
+    interactiveTranslator.hashCode,
+    interactiveGrammar.hashCode,
+    immersionMode.hashCode,
+    definitions.hashCode,
+    autoIGC.hashCode,
+    enableTTS.hashCode,
+    enableAutocorrect.hashCode,
+  ]);
 }
 
 /// A wrapper around the matrix account data for the user profile.
@@ -296,8 +302,9 @@ class Profile {
         profileData[ModelKey.instructionsSettings];
 
     return Profile(
-      userSettings:
-          UserSettings.fromJson(userSettingsContent as Map<String, dynamic>),
+      userSettings: UserSettings.fromJson(
+        userSettingsContent as Map<String, dynamic>,
+      ),
       toolSettings: toolSettingsContent != null
           ? UserToolSettings.fromJson(
               toolSettingsContent as Map<String, dynamic>,
@@ -338,9 +345,7 @@ class Profile {
   /// Saves the current configuration of the profile to the client's account data.
   /// If [waitForDataInSync] is true, the function will wait for the updated account
   /// data to come through in a sync, indicating that it has been set on the matrix server.
-  Future<void> saveProfileData({
-    bool waitForDataInSync = false,
-  }) async {
+  Future<void> saveProfileData({bool waitForDataInSync = false}) async {
     final PangeaController pangeaController = MatrixState.pangeaController;
     final Client client = pangeaController.matrixState.client;
     final List<String> profileKeys = [
@@ -359,11 +364,7 @@ class Profile {
             ),
       );
     }
-    await client.setAccountData(
-      client.userID!,
-      ModelKey.userProfile,
-      toJson(),
-    );
+    await client.setAccountData(client.userID!, ModelKey.userProfile, toJson());
 
     if (waitForDataInSync) {
       await waitForUpdate;
@@ -426,12 +427,8 @@ class PangeaProfile {
   });
 
   factory PangeaProfile.fromJson(Map<String, dynamic> json) {
-    final l2 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.targetLanguage],
-    );
-    final l1 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.sourceLanguage],
-    );
+    final l2 = LanguageModel.codeFromNameOrCode(json[ModelKey.targetLanguage]);
+    final l1 = LanguageModel.codeFromNameOrCode(json[ModelKey.sourceLanguage]);
 
     return PangeaProfile(
       createdAt: json[ModelKey.userCreatedAt],
@@ -461,10 +458,7 @@ class PangeaProfileResponse {
   final PangeaProfile profile;
   final String access;
 
-  PangeaProfileResponse({
-    required this.profile,
-    required this.access,
-  });
+  PangeaProfileResponse({required this.profile, required this.access});
 
   factory PangeaProfileResponse.fromJson(Map<String, dynamic> json) {
     return PangeaProfileResponse(

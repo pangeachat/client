@@ -29,9 +29,7 @@ import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsDownloadDialog extends StatefulWidget {
-  const AnalyticsDownloadDialog({
-    super.key,
-  });
+  const AnalyticsDownloadDialog({super.key});
 
   @override
   AnalyticsDownloadDialogState createState() => AnalyticsDownloadDialogState();
@@ -74,13 +72,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       vocabSummary = await _getVocabAnalytics();
       morphSummary = await _getMorphAnalytics();
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "downloadType": _downloadType,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"downloadType": _downloadType});
 
       if (mounted) {
         setState(() {
@@ -111,16 +103,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
             "analytics_morph_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
 
         final futures = [
-          DownloadUtil.downloadFile(
-            vocabContent,
-            vocabFileName,
-            _downloadType,
-          ),
-          DownloadUtil.downloadFile(
-            morphContent,
-            morphFileName,
-            _downloadType,
-          ),
+          DownloadUtil.downloadFile(vocabContent, vocabFileName, _downloadType),
+          DownloadUtil.downloadFile(morphContent, morphFileName, _downloadType),
         ];
 
         await Future.wait(futures);
@@ -133,21 +117,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         final fileName =
             "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx";
 
-        await DownloadUtil.downloadFile(
-          content,
-          fileName,
-          _downloadType,
-        );
+        await DownloadUtil.downloadFile(content, fileName, _downloadType);
       }
       _downloaded = true;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "downloadType": _downloadType,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"downloadType": _downloadType});
       _error = L10n.of(context).errorDownloading;
     } finally {
       if (mounted) setState(() => _downloading = false);
@@ -156,8 +130,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
   Future<List<AnalyticsSummaryModel>> _getVocabAnalytics() async {
     final analyticsService = Matrix.of(context).analyticsDataService;
-    final aggregatedVocab =
-        await analyticsService.getAggregatedConstructs(ConstructTypeEnum.vocab);
+    final aggregatedVocab = await analyticsService.getAggregatedConstructs(
+      ConstructTypeEnum.vocab,
+    );
 
     final uses = aggregatedVocab.values.toList();
     final Map<String, List<ConstructUses>> lemmasToUses = {};
@@ -173,8 +148,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
       final xp = uses.map((e) => e.points).reduce((a, total) => a + total);
       final exampleMessages = await _getExampleMessages(uses);
-      final allUses =
-          uses.map((u) => u.cappedUses).expand((element) => element);
+      final allUses = uses
+          .map((u) => u.cappedUses)
+          .expand((element) => element);
 
       int independantUseOccurrences = 0;
       int assistedUseOccurrences = 0;
@@ -250,8 +226,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         );
 
         final summary = AnalyticsSummaryModel(
-          morphFeature: MorphFeaturesEnumExtension.fromString(feature.feature)
-              .getDisplayCopy(context),
+          morphFeature: MorphFeaturesEnumExtension.fromString(
+            feature.feature,
+          ).getDisplayCopy(context),
           morphTag: tagCopy,
           xp: xp,
           forms: forms,
@@ -270,8 +247,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   Future<List<String>> _getExampleMessages(
     List<ConstructUses> constructUses,
   ) async {
-    final allUses =
-        constructUses.map((e) => e.cappedUses).expand((e) => e).toList();
+    final allUses = constructUses
+        .map((e) => e.cappedUses)
+        .expand((e) => e)
+        .toList();
     final List<PangeaMessageEvent> examples = [];
     for (final OneConstructUse use in allUses) {
       if (use.metadata.roomId == null) continue;
@@ -331,16 +310,13 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
                 columnIndex: values.indexOf(key),
               ),
             )
-            .value = TextCellValue(key.header(context));
+            .value = TextCellValue(
+          key.header(context),
+        );
       }
 
       final rows = entry.value
-          .map(
-            (summary) => _formatExcelRow(
-              summary,
-              entry.key,
-            ),
-          )
+          .map((summary) => _formatExcelRow(summary, entry.key))
           .toList();
 
       for (int i = 0; i < rows.length; i++) {
@@ -348,8 +324,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         for (int j = 0; j < row.length; j++) {
           final cell = row[j];
           sheet
-              .cell(CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j))
-              .value = cell;
+                  .cell(
+                    CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j),
+                  )
+                  .value =
+              cell;
         }
       }
     }
@@ -417,9 +396,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        constraints: const BoxConstraints(
-          maxWidth: 400,
-        ),
+        constraints: const BoxConstraints(maxWidth: 400),
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -427,7 +404,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
             Text(
               L10n.of(context).fileType,
               style: TextStyle(
-                fontSize: AppSettings.fontSizeFactor.value *
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize,
               ),
             ),
@@ -435,8 +413,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               padding: const EdgeInsets.all(8.0),
               child: SegmentedButton<DownloadType>(
                 selected: {_downloadType},
-                onSelectionChanged:
-                    _downloading ? null : (c) => _setDownloadType(c.first),
+                onSelectionChanged: _downloading
+                    ? null
+                    : (c) => _setDownloadType(c.first),
                 segments: [
                   ButtonSegment(
                     value: DownloadType.csv,
@@ -492,9 +471,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               child: _error != null
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ErrorIndicator(
-                        message: _error!,
-                      ),
+                      child: ErrorIndicator(message: _error!),
                     )
                   : const SizedBox(),
             ),

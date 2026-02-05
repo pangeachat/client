@@ -6,10 +6,7 @@ class LemmaInfoResponse implements JsonSerializable {
   final List<String> emoji;
   final String meaning;
 
-  LemmaInfoResponse({
-    required this.emoji,
-    required this.meaning,
-  });
+  LemmaInfoResponse({required this.emoji, required this.meaning});
 
   factory LemmaInfoResponse.fromJson(Map<String, dynamic> json) {
     return LemmaInfoResponse(
@@ -19,17 +16,12 @@ class LemmaInfoResponse implements JsonSerializable {
     );
   }
 
-  static LemmaInfoResponse get error => LemmaInfoResponse(
-        emoji: [],
-        meaning: 'ERROR',
-      );
+  static LemmaInfoResponse get error =>
+      LemmaInfoResponse(emoji: [], meaning: 'ERROR');
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      'emoji': emoji,
-      'meaning': meaning,
-    };
+    return {'emoji': emoji, 'meaning': meaning};
   }
 
   @override

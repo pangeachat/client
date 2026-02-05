@@ -200,11 +200,8 @@ class _MxcImageState extends State<MxcImage> {
           // #Pangea
           // : placeholder(context),
           : _error != null
-              ? SizedBox(
-                  width: widget.width,
-                  height: widget.height,
-                )
-              : placeholder(context),
+          ? SizedBox(width: widget.width, height: widget.height)
+          : placeholder(context),
       // Pangea#
     );
   }

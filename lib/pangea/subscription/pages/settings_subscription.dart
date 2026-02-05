@@ -64,7 +64,9 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   bool get subscriptionsAvailable =>
       subscriptionController
-          .availableSubscriptionInfo?.availableSubscriptions.isNotEmpty ??
+          .availableSubscriptionInfo
+          ?.availableSubscriptions
+          .isNotEmpty ??
       false;
 
   bool get currentSubscriptionAvailable =>
@@ -76,15 +78,19 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   bool get currentSubscriptionIsTrial =>
       currentSubscriptionAvailable &&
       (subscriptionController
-              .currentSubscriptionInfo?.currentSubscription?.isTrial ??
+              .currentSubscriptionInfo
+              ?.currentSubscription
+              ?.isTrial ??
           false);
 
   String? get purchasePlatformDisplayName => subscriptionController
-      .currentSubscriptionInfo?.purchasePlatformDisplayName;
+      .currentSubscriptionInfo
+      ?.purchasePlatformDisplayName;
 
   bool get currentSubscriptionIsPromotional =>
       subscriptionController
-          .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
+          .currentSubscriptionInfo
+          ?.currentSubscriptionIsPromotional ??
       false;
 
   String get currentSubscriptionTitle =>
@@ -105,7 +111,8 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
       return true;
     }
     return subscriptionController
-        .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
+        .currentSubscriptionInfo!
+        .currentPlatformMatchesPurchasePlatform;
   }
 
   DateTime? get expirationDate =>
@@ -159,10 +166,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "subscription_id": subscription.id,
-          "is_promo": isPromo,
-        },
+        data: {"subscription_id": subscription.id, "is_promo": isPromo},
       );
     } finally {
       if (mounted) setState(() => loading = false);
@@ -186,7 +190,9 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
       managementUrl += "?prefilled_email=${Uri.encodeComponent(email)}";
     }
     final String? purchaseAppId = subscriptionController
-        .currentSubscriptionInfo?.currentSubscription?.appId;
+        .currentSubscriptionInfo
+        ?.currentSubscription
+        ?.appId;
     if (purchaseAppId == null) return;
 
     final SubscriptionAppIds? appIds =
@@ -241,8 +247,4 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   Widget build(BuildContext context) => SettingsSubscriptionView(this);
 }
 
-enum ManagementOption {
-  cancel,
-  paymentMethod,
-  history,
-}
+enum ManagementOption { cancel, paymentMethod, history }

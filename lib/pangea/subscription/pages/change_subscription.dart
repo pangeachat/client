@@ -12,22 +12,22 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ChangeSubscription extends StatelessWidget {
   final SubscriptionManagementController controller;
-  ChangeSubscription({
-    required this.controller,
-    super.key,
-  });
+  ChangeSubscription({required this.controller, super.key});
 
   final PangeaController pangeaController = MatrixState.pangeaController;
 
   List<SubscriptionDetails> get subscriptions =>
-      pangeaController.subscriptionController.availableSubscriptionInfo
+      pangeaController
+          .subscriptionController
+          .availableSubscriptionInfo
           ?.availableSubscriptions ??
       [];
 
   bool get inTrialWindow => pangeaController.userController.inTrialWindow();
 
-  String get trialEnds => DateFormat.yMMMd()
-      .format(DateTime.now().add(const Duration(days: kIsWeb ? 0 : 7)));
+  String get trialEnds => DateFormat.yMMMd().format(
+    DateTime.now().add(const Duration(days: kIsWeb ? 0 : 7)),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,7 @@ class ChangeSubscription extends StatelessWidget {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: CircularProgressIndicator.adaptive(
-            strokeWidth: 2,
-          ),
+          child: CircularProgressIndicator.adaptive(strokeWidth: 2),
         ),
       );
     }
@@ -64,22 +62,21 @@ class ChangeSubscription extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(
-                        subscription.displayName(context),
-                      ),
+                      title: Text(subscription.displayName(context)),
                       trailing: Icon(
                         controller.selectedSubscription?.id != subscription.id
                             ? Icons.keyboard_arrow_right_outlined
                             : Icons.keyboard_arrow_down_outlined,
                       ),
-                      enabled: (!subscription.isTrial || inTrialWindow) &&
+                      enabled:
+                          (!subscription.isTrial || inTrialWindow) &&
                           !controller.isCurrentSubscription(subscription),
                       onTap: () => controller.selectSubscription(subscription),
                     ),
                     AnimatedSize(
                       duration: FluffyThemes.animationDuration,
-                      child: controller.selectedSubscription?.id !=
-                              subscription.id
+                      child:
+                          controller.selectedSubscription?.id != subscription.id
                           ? const SizedBox()
                           : Column(
                               children: [
@@ -101,14 +98,18 @@ class ChangeSubscription extends StatelessWidget {
                                       if (!kIsWeb)
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimary,
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.onPrimary,
                                             borderRadius:
                                                 const BorderRadius.only(
-                                              topLeft: Radius.circular(16.0),
-                                              topRight: Radius.circular(16.0),
-                                            ),
+                                                  topLeft: Radius.circular(
+                                                    16.0,
+                                                  ),
+                                                  topRight: Radius.circular(
+                                                    16.0,
+                                                  ),
+                                                ),
                                           ),
                                           padding: const EdgeInsets.all(16.0),
                                           child: Row(
@@ -119,8 +120,9 @@ class ChangeSubscription extends StatelessWidget {
                                                 L10n.of(context).startingToday,
                                               ),
                                               Text(
-                                                L10n.of(context)
-                                                    .oneWeekFreeTrial,
+                                                L10n.of(
+                                                  context,
+                                                ).oneWeekFreeTrial,
                                               ),
                                             ],
                                           ),
@@ -132,8 +134,9 @@ class ChangeSubscription extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              L10n.of(context)
-                                                  .paidSubscriptionStarts(
+                                              L10n.of(
+                                                context,
+                                              ).paidSubscriptionStarts(
                                                 trialEnds,
                                               ),
                                             ),
@@ -159,13 +162,15 @@ class ChangeSubscription extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        L10n.of(context)
-                                            .cancelInSubscriptionSettings,
+                                        L10n.of(
+                                          context,
+                                        ).cancelInSubscriptionSettings,
                                       ),
                                       if (!kIsWeb)
                                         Text(
-                                          L10n.of(context)
-                                              .cancelToAvoidCharges(trialEnds),
+                                          L10n.of(
+                                            context,
+                                          ).cancelToAvoidCharges(trialEnds),
                                         ),
                                       const SizedBox(height: 20.0),
                                       ElevatedButton(
@@ -179,8 +184,9 @@ class ChangeSubscription extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     subscription.isTrial
-                                                        ? L10n.of(context)
-                                                            .activateTrial
+                                                        ? L10n.of(
+                                                            context,
+                                                          ).activateTrial
                                                         : L10n.of(context).pay,
                                                   ),
                                                 ],
@@ -205,11 +211,7 @@ class ChangeSubscription extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.info_outlined),
-                Flexible(
-                  child: Text(
-                    L10n.of(context).promoCodeInfo,
-                  ),
-                ),
+                Flexible(child: Text(L10n.of(context).promoCodeInfo)),
               ],
             ),
           ),

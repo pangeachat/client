@@ -12,7 +12,7 @@ class PressableButton extends StatefulWidget {
   final bool depressed;
   final Color color;
   final Widget Function(BuildContext context, bool depressed, Color shadowColor)
-      builder;
+  builder;
 
   final void Function()? onPressed;
   final Stream? triggerAnimation;
@@ -59,8 +59,10 @@ class PressableButtonState extends State<PressableButton>
       duration: const Duration(milliseconds: 100),
       vsync: this,
     );
-    _tweenAnimation =
-        Tween<double>(begin: 0, end: widget.buttonHeight).animate(_controller);
+    _tweenAnimation = Tween<double>(
+      begin: 0,
+      end: widget.buttonHeight,
+    ).animate(_controller);
 
     if (!_depressed) {
       _triggerAnimationSubscription = widget.triggerAnimation?.listen((_) {
@@ -139,9 +141,7 @@ class PressableButtonState extends State<PressableButton>
   @override
   Widget build(BuildContext context) {
     final shadowColor = Color.alphaBlend(
-      Colors.black.withAlpha(
-        (255 * widget.colorFactor).round(),
-      ),
+      Colors.black.withAlpha((255 * widget.colorFactor).round()),
       widget.color,
     );
 

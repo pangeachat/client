@@ -26,10 +26,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class VocabAnalyticsListView extends StatelessWidget {
   final ConstructAnalyticsViewState controller;
 
-  const VocabAnalyticsListView({
-    super.key,
-    required this.controller,
-  });
+  const VocabAnalyticsListView({super.key, required this.controller});
 
   List<ConstructUses>? get _filteredVocab =>
       controller.vocab?.where(_vocabFilter).toList();
@@ -51,8 +48,9 @@ class VocabAnalyticsListView extends StatelessWidget {
     }
 
     final normalizedLemma = removeDiacritics(use.lemma).toLowerCase();
-    final normalizedSearch =
-        removeDiacritics(controller.searchController.text).toLowerCase();
+    final normalizedSearch = removeDiacritics(
+      controller.searchController.text,
+    ).toLowerCase();
 
     return normalizedLemma.contains(normalizedSearch);
   }
@@ -62,7 +60,8 @@ class VocabAnalyticsListView extends StatelessWidget {
     final vocab = controller.vocab;
     final List<Widget> filters = ConstructLevelEnum.values.reversed
         .map((constructLevelCategory) {
-          final int count = vocab
+          final int count =
+              vocab
                   ?.where((e) => e.lemmaCategory == constructLevelCategory)
                   .length ??
               0;
@@ -76,8 +75,8 @@ class VocabAnalyticsListView extends StatelessWidget {
                 shape: BoxShape.circle,
                 color:
                     controller.selectedConstructLevel == constructLevelCategory
-                        ? constructLevelCategory.color(context).withAlpha(50)
-                        : null,
+                    ? constructLevelCategory.color(context).withAlpha(50)
+                    : null,
               ),
               padding: const EdgeInsets.all(8.0),
               child: Badge(
@@ -101,8 +100,9 @@ class VocabAnalyticsListView extends StatelessWidget {
       filters.add(const DownloadAnalyticsButton());
     }
 
-    final constructParam =
-        GoRouterState.of(context).pathParameters['construct'];
+    final constructParam = GoRouterState.of(
+      context,
+    ).pathParameters['construct'];
 
     ConstructIdentifier? selectedConstruct;
     if (constructParam != null) {
@@ -126,10 +126,8 @@ class VocabAnalyticsListView extends StatelessWidget {
             alignment: Alignment.center,
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
-              transitionBuilder: (child, animation) => FadeTransition(
-                opacity: animation,
-                child: child,
-              ),
+              transitionBuilder: (child, animation) =>
+                  FadeTransition(opacity: animation, child: child),
               child: controller.isSearching
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -182,9 +180,7 @@ class VocabAnalyticsListView extends StatelessWidget {
               if (filteredVocab == null)
                 const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
+                  child: Center(child: CircularProgressIndicator.adaptive()),
                 )
               else
                 filteredVocab.isEmpty
@@ -203,38 +199,37 @@ class VocabAnalyticsListView extends StatelessWidget {
                     : SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 100.0,
-                          mainAxisExtent: 100.0,
-                          crossAxisSpacing: 8.0,
-                          mainAxisSpacing: 8.0,
-                        ),
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final vocabItem = filteredVocab[index];
-                            return VocabAnalyticsListTile(
-                              onTap: () {
-                                TtsController.tryToSpeak(
-                                  vocabItem.id.lemma,
-                                  langCode: MatrixState.pangeaController
-                                      .userController.userL2Code!,
-                                );
-                                AnalyticsNavigationUtil.navigateToAnalytics(
-                                  context: context,
-                                  view: ProgressIndicatorEnum.wordsUsed,
-                                  construct: vocabItem.id,
-                                );
-                              },
-                              constructId: vocabItem.id,
-                              textColor: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? vocabItem.lemmaCategory.darkColor(context)
-                                  : vocabItem.lemmaCategory.color(context),
-                              level: vocabItem.lemmaCategory,
-                              selected: vocabItem.id == selectedConstruct,
-                            );
-                          },
-                          childCount: filteredVocab.length,
-                        ),
+                              maxCrossAxisExtent: 100.0,
+                              mainAxisExtent: 100.0,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8.0,
+                            ),
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final vocabItem = filteredVocab[index];
+                          return VocabAnalyticsListTile(
+                            onTap: () {
+                              TtsController.tryToSpeak(
+                                vocabItem.id.lemma,
+                                langCode: MatrixState
+                                    .pangeaController
+                                    .userController
+                                    .userL2Code!,
+                              );
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                                view: ProgressIndicatorEnum.wordsUsed,
+                                construct: vocabItem.id,
+                              );
+                            },
+                            constructId: vocabItem.id,
+                            textColor:
+                                Theme.of(context).brightness == Brightness.light
+                                ? vocabItem.lemmaCategory.darkColor(context)
+                                : vocabItem.lemmaCategory.color(context),
+                            level: vocabItem.lemmaCategory,
+                            selected: vocabItem.id == selectedConstruct,
+                          );
+                        }, childCount: filteredVocab.length),
                       ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],

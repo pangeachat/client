@@ -29,14 +29,13 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
       body: MaxWidthBody(
         showBorder: false,
         child: StreamBuilder<Object>(
-          stream: room.client.onRoomState.stream
-              .where((update) => update.roomId == controller.room.id),
+          stream: room.client.onRoomState.stream.where(
+            (update) => update.roomId == controller.room.id,
+          ),
           builder: (context, snapshot) {
             return Container(
               width: 400.0,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: FutureBuilder(
                 future: room.client.getRoomVisibilityOnDirectory(room.id),
                 builder: (context, snapshot) {
@@ -111,11 +110,7 @@ class ChatAccessTitle extends StatelessWidget {
   final IconData icon;
   final String title;
 
-  const ChatAccessTitle({
-    super.key,
-    required this.icon,
-    required this.title,
-  });
+  const ChatAccessTitle({super.key, required this.icon, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +119,7 @@ class ChatAccessTitle extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
-          icon,
-          size: isColumnMode ? 32.0 : 24.0,
-        ),
+        Icon(icon, size: isColumnMode ? 32.0 : 24.0),
         SizedBox(width: isColumnMode ? 32.0 : 16.0),
         Text(
           title,
@@ -206,8 +198,8 @@ class ChatAccessTile extends StatelessWidget {
                     description != null
                         ? Text(description!)
                         : descriptionWidget != null
-                            ? descriptionWidget!
-                            : const SizedBox.shrink(),
+                        ? descriptionWidget!
+                        : const SizedBox.shrink(),
                   ],
                 ),
               ),

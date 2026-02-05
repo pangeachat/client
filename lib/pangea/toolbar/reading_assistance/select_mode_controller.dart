@@ -21,9 +21,9 @@ class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
 
   @override
   Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
-        MatrixState.pangeaController.userController.userL1!.langCodeShort,
-        MatrixState.pangeaController.userController.userL2!.langCodeShort,
-      );
+    MatrixState.pangeaController.userController.userL1!.langCodeShort,
+    MatrixState.pangeaController.userController.userL2!.langCodeShort,
+  );
 }
 
 class _STTTranslationLoader extends AsyncLoader<String> {
@@ -32,13 +32,10 @@ class _STTTranslationLoader extends AsyncLoader<String> {
 
   @override
   Future<String> fetch() => messageEvent.requestSttTranslation(
-        langCode:
-            MatrixState.pangeaController.userController.userL1!.langCodeShort,
-        l1Code:
-            MatrixState.pangeaController.userController.userL1!.langCodeShort,
-        l2Code:
-            MatrixState.pangeaController.userController.userL2!.langCodeShort,
-      );
+    langCode: MatrixState.pangeaController.userController.userL1!.langCodeShort,
+    l1Code: MatrixState.pangeaController.userController.userL1!.langCodeShort,
+    l2Code: MatrixState.pangeaController.userController.userL2!.langCodeShort,
+  );
 }
 
 class _TranslationLoader extends AsyncLoader<String> {
@@ -81,12 +78,11 @@ class SelectModeController with LemmaEmojiSetter {
   final _AudioLoader _audioLoader;
   final _STTTranslationLoader _sttTranslationLoader;
 
-  SelectModeController(
-    this.messageEvent,
-  )   : _transcriptLoader = _TranscriptionLoader(messageEvent),
-        _translationLoader = _TranslationLoader(messageEvent),
-        _audioLoader = _AudioLoader(messageEvent),
-        _sttTranslationLoader = _STTTranslationLoader(messageEvent);
+  SelectModeController(this.messageEvent)
+    : _transcriptLoader = _TranscriptionLoader(messageEvent),
+      _translationLoader = _TranslationLoader(messageEvent),
+      _audioLoader = _AudioLoader(messageEvent),
+      _sttTranslationLoader = _STTTranslationLoader(messageEvent);
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
 
@@ -105,15 +101,13 @@ class SelectModeController with LemmaEmojiSetter {
   }
 
   static List<SelectMode> get _textModes => [
-        SelectMode.audio,
-        SelectMode.translate,
-        SelectMode.practice,
-        SelectMode.emoji,
-      ];
+    SelectMode.audio,
+    SelectMode.translate,
+    SelectMode.practice,
+    SelectMode.emoji,
+  ];
 
-  static List<SelectMode> get _audioModes => [
-        SelectMode.speechTranslation,
-      ];
+  static List<SelectMode> get _audioModes => [SelectMode.speechTranslation];
 
   ValueNotifier<AsyncState<String>> get translationState =>
       _translationLoader.state;
@@ -156,18 +150,20 @@ class SelectModeController with LemmaEmojiSetter {
     List<SelectMode> modes = [];
     final lang = messageEvent.messageDisplayLangCode.split("-").first;
 
-    final matchesL1 = lang ==
+    final matchesL1 =
+        lang ==
         MatrixState.pangeaController.userController.userL1!.langCodeShort;
 
     if (messageEvent.event.messageType == MessageTypes.Text) {
-      final matchesL2 = lang ==
+      final matchesL2 =
+          lang ==
           MatrixState.pangeaController.userController.userL2!.langCodeShort;
 
       modes = matchesL2
           ? _textModes
           : matchesL1
-              ? []
-              : [SelectMode.translate];
+          ? []
+          : [SelectMode.translate];
     } else {
       modes = matchesL1 ? [] : _audioModes;
     }

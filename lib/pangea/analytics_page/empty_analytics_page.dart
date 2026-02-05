@@ -19,9 +19,8 @@ class EmptyAnalyticsPage extends StatelessWidget {
               imageUrl:
                   "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
               errorWidget: (context, url, error) => const SizedBox(),
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator.adaptive(),
-              ),
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator.adaptive()),
             ),
           ),
         ),

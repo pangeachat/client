@@ -44,10 +44,12 @@ class LevelUpAnalyticsService {
     final response = await ConstructRepo.generateConstructSummary(request);
     final summary = response.summary;
 
-    summary.levelVocabConstructs =
-        dataService.uniqueConstructsByType(ConstructTypeEnum.vocab);
-    summary.levelGrammarConstructs =
-        dataService.uniqueConstructsByType(ConstructTypeEnum.morph);
+    summary.levelVocabConstructs = dataService.uniqueConstructsByType(
+      ConstructTypeEnum.vocab,
+    );
+    summary.levelGrammarConstructs = dataService.uniqueConstructsByType(
+      ConstructTypeEnum.morph,
+    );
 
     return summary;
   }
@@ -101,10 +103,7 @@ class LevelUpAnalyticsService {
           ErrorHandler.logError(
             e: e,
             s: s,
-            data: {
-              'roomId': entry.key,
-              'eventId': eventId,
-            },
+            data: {'roomId': entry.key, 'eventId': eventId},
           );
         }
       }

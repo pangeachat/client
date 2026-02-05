@@ -10,10 +10,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 
 class ActivityRolesEvent extends StatelessWidget {
   final Event event;
-  const ActivityRolesEvent({
-    super.key,
-    required this.event,
-  });
+  const ActivityRolesEvent({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +24,10 @@ class ActivityRolesEvent extends StatelessWidget {
           .toSet();
 
       final previousRoles =
-          (event.prevContent?['roles'] as Map<String, dynamic>?)
-                  ?.values
-                  .map((v) => ActivityRoleModel.fromJson(v))
-                  .toSet() ??
-              {};
+          (event.prevContent?['roles'] as Map<String, dynamic>?)?.values
+              .map((v) => ActivityRoleModel.fromJson(v))
+              .toSet() ??
+          {};
 
       difference = currentRoles.difference(previousRoles);
     } catch (e) {
@@ -45,8 +41,8 @@ class ActivityRolesEvent extends StatelessWidget {
     return Column(
       children: difference.map((role) {
         final user = event.room.getParticipants().firstWhereOrNull(
-              (u) => u.id == role.userId,
-            );
+          (u) => u.id == role.userId,
+        );
 
         final displayName =
             user?.calcDisplayname() ?? role.userId.localpart ?? role.userId;
@@ -74,8 +70,9 @@ class ActivityRolesEvent extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 12 * AppSettings.fontSizeFactor.value,
-                    decoration:
-                        event.redacted ? TextDecoration.lineThrough : null,
+                    decoration: event.redacted
+                        ? TextDecoration.lineThrough
+                        : null,
                   ),
                 ),
               ),

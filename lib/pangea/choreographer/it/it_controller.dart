@@ -147,7 +147,8 @@ class ITController {
         chosen: chosenIndex,
       ),
     );
-    final progress = (_goldRouteTracker!.continuances.indexWhere(
+    final progress =
+        (_goldRouteTracker!.continuances.indexWhere(
               (c) =>
                   c.text ==
                   _currentITStep.value!.continuances[chosenIndex].text,

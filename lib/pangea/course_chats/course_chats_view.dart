@@ -22,21 +22,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class CourseChatsView extends StatelessWidget {
   final CourseChatsController controller;
-  const CourseChatsView(
-    this.controller, {
-    super.key,
-  });
+  const CourseChatsView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
     if (room == null) {
-      return const Center(
-        child: Icon(
-          Icons.search_outlined,
-          size: 80,
-        ),
-      );
+      return const Center(child: Icon(Icons.search_outlined, size: 80));
     }
 
     return StreamBuilder(
@@ -48,21 +40,20 @@ class CourseChatsView extends StatelessWidget {
         final joinedSessions = controller.joinedActivities();
 
         final discoveredGroupChats = controller.discoveredGroupChats;
-        final discoveredSessions =
-            controller.discoveredActivities().entries.toList();
+        final discoveredSessions = controller
+            .discoveredActivities()
+            .entries
+            .toList();
 
         final isColumnMode = FluffyThemes.isColumnMode(context);
         return Padding(
           padding: isColumnMode
-              ? const EdgeInsets.only(
-                  top: 12.0,
-                  left: 8.0,
-                  right: 8.0,
-                )
+              ? const EdgeInsets.only(top: 12.0, left: 8.0, right: 8.0)
               : const EdgeInsets.all(0.0),
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: joinedChats.length +
+            itemCount:
+                joinedChats.length +
                 joinedSessions.length +
                 discoveredGroupChats.length +
                 discoveredSessions.length +
@@ -81,10 +72,7 @@ class CourseChatsView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         LearningProgressIndicators(),
-                        Icon(
-                          Icons.chat_bubble_outline,
-                          size: 30.0,
-                        ),
+                        Icon(Icons.chat_bubble_outline, size: 30.0),
                         SizedBox(height: 12.0),
                       ],
                     ),
@@ -167,10 +155,7 @@ class CourseChatsView extends StatelessWidget {
                 return joinedSessions.isEmpty
                     ? const SizedBox()
                     : Padding(
-                        padding: const EdgeInsets.only(
-                          top: 20.0,
-                          bottom: 4.0,
-                        ),
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 4.0),
                         child: Text(
                           L10n.of(context).myActivities,
                           style: const TextStyle(fontSize: 12.0),
@@ -204,10 +189,7 @@ class CourseChatsView extends StatelessWidget {
                 return discoveredSessions.isEmpty
                     ? const SizedBox()
                     : Padding(
-                        padding: const EdgeInsets.only(
-                          top: 20.0,
-                          bottom: 4.0,
-                        ),
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 4.0),
                         child: Text(
                           L10n.of(context).openToJoin,
                           style: const TextStyle(fontSize: 12.0),
@@ -239,8 +221,9 @@ class CourseChatsView extends StatelessWidget {
                   vertical: 2.0,
                 ),
                 child: TextButton(
-                  onPressed:
-                      controller.isLoading ? null : controller.loadHierarchy,
+                  onPressed: controller.isLoading
+                      ? null
+                      : controller.loadHierarchy,
                   child: controller.isLoading
                       ? LinearProgressIndicator(
                           borderRadius: BorderRadius.circular(

@@ -4,21 +4,13 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
-enum ConstructLevelEnum {
-  flowers,
-  greens,
-  seeds,
-}
+enum ConstructLevelEnum { flowers, greens, seeds }
 
 extension ConstructLevelEnumExt on ConstructLevelEnum {
   Color color(BuildContext context) {
     switch (this) {
       case ConstructLevelEnum.flowers:
-        return Color.lerp(
-              AppConfig.primaryColor,
-              Colors.white,
-              0.6,
-            ) ??
+        return Color.lerp(AppConfig.primaryColor, Colors.white, 0.6) ??
             AppConfig.primaryColor;
       case ConstructLevelEnum.greens:
         return Color.lerp(AppConfig.success, Colors.white, 0.6) ??
@@ -31,11 +23,7 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
   Color darkColor(BuildContext context) {
     switch (this) {
       case ConstructLevelEnum.flowers:
-        return Color.lerp(
-              AppConfig.primaryColor,
-              Colors.white,
-              0.3,
-            ) ??
+        return Color.lerp(AppConfig.primaryColor, Colors.white, 0.3) ??
             AppConfig.primaryColor;
       case ConstructLevelEnum.greens:
         return Color.lerp(AppConfig.success, Colors.black, 0.3) ??
@@ -90,15 +78,10 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
   }
 
   Widget icon([double? size]) => CustomizedSvg(
-        svgUrl: _svgURL,
-        colorReplacements: const {},
-        errorIcon: Text(
-          emoji,
-          style: TextStyle(
-            fontSize: size ?? 24,
-          ),
-        ),
-        width: size,
-        height: size,
-      );
+    svgUrl: _svgURL,
+    colorReplacements: const {},
+    errorIcon: Text(emoji, style: TextStyle(fontSize: size ?? 24)),
+    width: size,
+    height: size,
+  );
 }

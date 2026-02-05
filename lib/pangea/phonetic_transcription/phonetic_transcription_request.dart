@@ -15,8 +15,9 @@ class PhoneticTranscriptionRequest {
   factory PhoneticTranscriptionRequest.fromJson(Map<String, dynamic> json) {
     return PhoneticTranscriptionRequest(
       arc: LanguageArc.fromJson(json['arc'] as Map<String, dynamic>),
-      content:
-          PangeaTokenText.fromJson(json['content'] as Map<String, dynamic>),
+      content: PangeaTokenText.fromJson(
+        json['content'] as Map<String, dynamic>,
+      ),
       requiresTokenization: json['requires_tokenization'] ?? true,
     );
   }

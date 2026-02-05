@@ -17,10 +17,7 @@ class LevelDisplayName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 2.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2.0),
       child: FutureBuilder(
         future: MatrixState.pangeaController.userController
             .getPublicAnalyticsProfile(userId),
@@ -47,7 +44,8 @@ class LevelDisplayName extends StatelessWidget {
                       Text(
                         snapshot.data!.baseLanguage!.langCodeShort
                             .toUpperCase(),
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
@@ -63,7 +61,8 @@ class LevelDisplayName extends StatelessWidget {
                       Text(
                         snapshot.data!.targetLanguage!.langCodeShort
                             .toUpperCase(),
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
@@ -71,14 +70,12 @@ class LevelDisplayName extends StatelessWidget {
                       ),
                     const SizedBox(width: 4.0),
                     if (snapshot.data?.level != null)
-                      Text(
-                        "⭐",
-                        style: textStyle,
-                      ),
+                      Text("⭐", style: textStyle),
                     if (snapshot.data?.level != null)
                       Text(
                         "${snapshot.data!.level!}",
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,

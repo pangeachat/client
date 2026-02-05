@@ -17,10 +17,7 @@ class _IgcCacheItem {
   final Future<IGCResponseModel> data;
   final DateTime timestamp;
 
-  const _IgcCacheItem({
-    required this.data,
-    required this.timestamp,
-  });
+  const _IgcCacheItem({required this.data, required this.timestamp});
 }
 
 class _IgnoredMatchCacheItem {
@@ -41,10 +38,7 @@ class _IgnoredMatchCacheItem {
   @override
   int get hashCode => spanText.hashCode;
 
-  _IgnoredMatchCacheItem({
-    required this.match,
-    required this.timestamp,
-  });
+  _IgnoredMatchCacheItem({required this.match, required this.timestamp});
 }
 
 class IgcRepo {
@@ -61,10 +55,7 @@ class IgcRepo {
       return _getResult(igcRequest, cached);
     }
 
-    final future = _fetch(
-      accessToken,
-      igcRequest: igcRequest,
-    );
+    final future = _fetch(accessToken, igcRequest: igcRequest);
     _setCached(igcRequest, future);
     return _getResult(igcRequest, future);
   }
@@ -88,8 +79,9 @@ class IgcRepo {
       );
     }
 
-    final Map<String, dynamic> json =
-        jsonDecode(utf8.decode(res.bodyBytes).toString());
+    final Map<String, dynamic> json = jsonDecode(
+      utf8.decode(res.bodyBytes).toString(),
+    );
 
     return IGCResponseModel.fromJson(json);
   }
@@ -103,23 +95,17 @@ class IgcRepo {
       return Result.value(res);
     } catch (e, s) {
       _igcCache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<IGCResponseModel>? _getCached(
-    IGCRequestModel request,
-  ) {
+  static Future<IGCResponseModel>? _getCached(IGCRequestModel request) {
     final cacheKeys = [..._igcCache.keys];
     for (final key in cacheKeys) {
-      if (_igcCache[key]!
-          .timestamp
-          .isBefore(DateTime.now().subtract(_cacheDuration))) {
+      if (_igcCache[key]!.timestamp.isBefore(
+        DateTime.now().subtract(_cacheDuration),
+      )) {
         _igcCache.remove(key);
       }
     }
@@ -130,11 +116,10 @@ class IgcRepo {
   static void _setCached(
     IGCRequestModel request,
     Future<IGCResponseModel> response,
-  ) =>
-      _igcCache[request.hashCode.toString()] = _IgcCacheItem(
-        data: response,
-        timestamp: DateTime.now(),
-      );
+  ) => _igcCache[request.hashCode.toString()] = _IgcCacheItem(
+    data: response,
+    timestamp: DateTime.now(),
+  );
 
   static void ignore(PangeaMatch match) {
     _setCachedIgnoredSpan(match);
@@ -145,9 +130,7 @@ class IgcRepo {
     return cached != null;
   }
 
-  static PangeaMatch? _getCachedIgnoredSpan(
-    PangeaMatch match,
-  ) {
+  static PangeaMatch? _getCachedIgnoredSpan(PangeaMatch match) {
     final cacheKeys = [..._ignoredMatchCache.keys];
     for (final key in cacheKeys) {
       final entry = _ignoredMatchCache[key]!;
@@ -163,9 +146,7 @@ class IgcRepo {
     return _ignoredMatchCache[cacheEntry.hashCode.toString()]?.match;
   }
 
-  static void _setCachedIgnoredSpan(
-    PangeaMatch match,
-  ) {
+  static void _setCachedIgnoredSpan(PangeaMatch match) {
     final cacheEntry = _IgnoredMatchCacheItem(
       match: match,
       timestamp: DateTime.now(),
