@@ -390,8 +390,8 @@ class HtmlMessage extends StatelessWidget {
     // We must not render elements nested more than 100 elements deep:
     if (depth >= 100) return const TextSpan();
 
-    // This is a text node, so we render it as text:
-    if (node is! dom.Element) {
+    // This is a text node or not permitted node, so we render it as text:
+    if (node is! dom.Element || !allowedHtmlTags.contains(node.localName)) {
       var text = node.text ?? '';
       // Single linebreak nodes between Elements are ignored:
       if (text == '\n') text = '';
@@ -403,9 +403,6 @@ class HtmlMessage extends StatelessWidget {
         onOpen: onOpen,
       );
     }
-
-    // We must not render tags which are not in the allow list:
-    if (!allowedHtmlTags.contains(node.localName)) return const TextSpan();
 
     // #Pangea
     double fontSize = this.fontSize;
