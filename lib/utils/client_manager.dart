@@ -15,7 +15,6 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/custom_http_client.dart';
-import 'package:fluffychat/utils/custom_image_resizer.dart';
 import 'package:fluffychat/utils/init_with_restore.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'matrix_sdk_extensions/flutter_matrix_dart_sdk_database/builder.dart';
@@ -103,7 +102,10 @@ abstract class ClientManager {
   }
 
   static NativeImplementations get nativeImplementations => kIsWeb
-      ? const NativeImplementationsDummy()
+      ? NativeImplementationsWebWorker(
+          Uri.parse('native_executor.js'),
+          timeout: const Duration(minutes: 1),
+        )
       : NativeImplementationsIsolate(
           compute,
           vodozemacInit: () => vod.init(wasmPath: './assets/assets/vodozemac/'),
@@ -155,9 +157,6 @@ abstract class ClientManager {
         AuthenticationTypes.sso,
       },
       nativeImplementations: nativeImplementations,
-      customImageResizer: PlatformInfos.isMobile || kIsWeb
-          ? customImageResizer
-          : null,
       defaultNetworkRequestTimeout: const Duration(minutes: 30),
       enableDehydratedDevices: true,
       shareKeysWith:
