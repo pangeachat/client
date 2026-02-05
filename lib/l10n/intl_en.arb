@@ -3467,6 +3467,16 @@
   "skipChatBackupWarning": "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.",
   "loadingMessages": "Loading messages",
   "setupChatBackup": "Set up chat backup",
+  "noMoreResultsFound": "No more results found",
+  "chatSearchedUntil": "Chat searched until {time}",
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",
@@ -3527,7 +3537,6 @@
   "updateLanguage": "My languages",
   "whatLanguageYouWantToLearn": "What language do you want to learn?",
   "whatIsYourBaseLanguage": "What is your base language?",
-  "saveChanges": "Save changes",
   "publicProfileTitle": "Allow my profile to be found in search",
   "publicProfileDesc": "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.",
   "errorDisableIT": "Translation assistance is turned off.",
