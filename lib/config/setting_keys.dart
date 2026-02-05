@@ -75,6 +75,7 @@ enum AppSettings<T> {
   // #Pangea
   volume<double>('pangea.volume', 1.0),
   // Pangea#
+  emojiSuggestionLocale<String>('emoji_suggestion_locale', ''),
   enableSoftLogout<bool>('chat.fluffy.enable_soft_logout', false);
 
   final String key;
