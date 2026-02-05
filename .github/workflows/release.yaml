@@ -131,7 +131,7 @@ jobs:
           PLAY_STORE_KEYSTORE_KEY_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_PASSWORD }}
           PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
         run: ./scripts/prepare-android-release.sh
-      - run: flutter build apk --release
+      - run: flutter build apk --release --target-platform android-arm,android-arm64
       - name: Upload to release
         uses: actions/upload-release-asset@v1
         env:

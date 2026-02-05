@@ -43,6 +43,7 @@ jobs:
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
+      - uses: ./.github/actions/free_up_space
       - uses: moonrepo/setup-rust@v1
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
