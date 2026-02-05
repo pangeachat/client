@@ -215,7 +215,7 @@ class NewGroupController extends State<NewGroup> {
     // Pangea#
   }
 
-  void submitAction([_]) async {
+  void submitAction([dynamic _]) async {
     final client = Matrix.of(context).client;
 
     try {

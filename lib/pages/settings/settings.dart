@@ -193,7 +193,7 @@ class SettingsController extends State<Settings> {
   bool? crossSigningCached;
   bool? showChatBackupBanner;
 
-  void firstRunBootstrapAction([_]) async {
+  void firstRunBootstrapAction([dynamic _]) async {
     // #Pangea
     // if (showChatBackupBanner != true) {
     //   showOkAlertDialog(

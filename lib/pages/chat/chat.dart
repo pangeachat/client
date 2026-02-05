@@ -219,9 +219,9 @@ class ChatController extends State<ChatPageWithRoom>
   // #Pangea
   // bool dragging = false;
 
-  // void onDragEntered(_) => setState(() => dragging = true);
+  // void onDragEntered(dynamic _) => setState(() => dragging = true);
 
-  // void onDragExited(_) => setState(() => dragging = false);
+  // void onDragExited(dynamic _) => setState(() => dragging = false);
 
   // void onDragDone(DropDoneDetails details) async {
   //   setState(() => dragging = false);
@@ -250,7 +250,8 @@ class ChatController extends State<ChatPageWithRoom>
         MessageTypes.File,
       }.contains(selectedEvents.single.messageType);
 
-  void saveSelectedEvent(context) => selectedEvents.single.saveFile(context);
+  void saveSelectedEvent(BuildContext context) =>
+      selectedEvents.single.saveFile(context);
 
   List<Event> selectedEvents = [];
 
@@ -324,7 +325,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   // #Pangea
-  // void requestHistory([_]) async {
+  // void requestHistory([dynamic _]) async {
   Future<void> requestHistory() async {
     if (timeline == null) return;
     if (!timeline!.canRequestHistory) return;
@@ -374,7 +375,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void _shareItems([_]) {
+  void _shareItems([dynamic _]) {
     final shareItems = widget.shareItems;
     if (shareItems == null || shareItems.isEmpty) return;
     if (!room.otherPartyCanReceiveMessages) {
@@ -1671,7 +1672,7 @@ class ChatController extends State<ChatPageWithRoom>
     scrollController.jumpTo(0);
   }
 
-  void onEmojiSelected(_, Emoji? emoji) {
+  void onEmojiSelected(dynamic _, Emoji? emoji) {
     typeEmoji(emoji);
     onInputBarChanged(sendController.text);
   }
@@ -1839,14 +1840,14 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   // void onInputBarSubmitted(String _) {
+  //   send();
+  //   FocusScope.of(context).requestFocus(inputFocus);
   Future<void> onInputBarSubmitted() async {
-    //   send();
     if (MatrixState.pangeaController.subscriptionController.shouldShowPaywall) {
       PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return;
     }
     await onRequestWritingAssistance(manual: false, autosend: true);
-    // FocusScope.of(context).requestFocus(inputFocus);
     // Pangea#
   }
 
@@ -1881,7 +1882,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  unpinEvent(String eventId) async {
+  void unpinEvent(String eventId) async {
     final response = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).unpin,
