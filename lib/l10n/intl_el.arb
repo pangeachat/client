@@ -432,6 +432,70 @@
             }
         }
     },
+    "changedTheProfileAvatar": "Ο χρήστης {username} άλλαξε την εικόνα προφίλ του",
+    "@changedTheProfileAvatar": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "changePassword": "Αλλαγή κωδικού πρόσβασης",
+    "@changePassword": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "changeTheme": "Άλλαξε το στυλ σου",
+    "@changeTheme": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "changeYourAvatar": "Αλλαγή εικόνας προφιλ",
+    "@changeYourAvatar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinedChats": "Συνδεδεμένες συνομιλίες",
+    "@joinedChats": {},
+    "chatBackup": "Αντίγραφο ασφαλείας συνομιλίας",
+    "chatDetails": "Λεπτομέρειες συνομιλίας",
+    "@chatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "chatHasBeenAddedToThisSpace": "Η συνομιλία προστέθηκε στο δωμάτιο",
+    "@chatHasBeenAddedToThisSpace": {},
+    "chats": "Συνομιλίες",
+    "@chats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "chooseAStrongPassword": "Εισάγετε ένα δυνατό κωδικό πρόσβασης",
+    "@chooseAStrongPassword": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "close": "Κλείσιμο",
+    "@close": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "commandHint_ban": "Αποκλεισμός χρήστη από το δωμάτιο",
+    "@commandHint_ban": {
+        "type": "String",
+        "description": "Usage hint for the command /ban"
+    },
+    "commandHint_clearcache": "Εκκαθάριση προσωρινής μνήμης",
+    "@commandHint_clearcache": {
+        "type": "String",
+        "description": "Usage hint for the command /clearcache"
+    },
+    "commandHint_invite": "Πρόσκληση αυτού του χρήστη στο δωμάτιο",
+    "@commandHint_invite": {
+        "type": "String",
+        "description": "Usage hint for the command /invite"
+    },
     "@showPassword": {
       "type": "String",
       "placeholders": {}
@@ -479,10 +543,6 @@
     },
     "commandHint_cuddle": "Στείλτε μια αγκαλιά",
     "@commandHint_cuddle": {},
-    "@chats": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@widgetVideo": {
       "type": "String",
       "placeholders": {}
@@ -532,15 +592,7 @@
       "type": "String",
       "placeholders": {}
     },
-    "@close": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@configureChat": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@chatHasBeenAddedToThisSpace": {
       "type": "String",
       "placeholders": {}
     },
@@ -827,10 +879,6 @@
       "placeholders": {}
     },
     "@writeAMessage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@changeTheme": {
       "type": "String",
       "placeholders": {}
     },
@@ -1327,10 +1375,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@commandHint_clearcache": {
-      "type": "String",
-      "description": "Usage hint for the command /clearcache"
-    },
     "@loadingPleaseWait": {
       "type": "String",
       "placeholders": {}
@@ -1539,10 +1583,6 @@
       "placeholders": {}
     },
     "@help": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@chatDetails": {
       "type": "String",
       "placeholders": {}
     },
@@ -1934,14 +1974,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@changedTheProfileAvatar": {
-      "type": "String",
-      "placeholders": {
-        "username": {
-          "type": "String"
-        }
-      }
-    },
     "allChats": "Όλες οι συνομιλίες",
     "@allChats": {
       "type": "String",
@@ -2074,10 +2106,6 @@
     },
     "about": "Σχετικά με το",
     "@about": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@chooseAStrongPassword": {
       "type": "String",
       "placeholders": {}
     },
@@ -2388,10 +2416,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@commandHint_ban": {
-      "type": "String",
-      "description": "Usage hint for the command /ban"
-    },
     "importEmojis": "Εισαγωγή Emojis",
     "@importEmojis": {},
     "@confirm": {
@@ -2508,10 +2532,6 @@
     "@roomUpgradeDescription": {
       "type": "String",
       "placeholders": {}
-    },
-    "@commandHint_invite": {
-      "type": "String",
-      "description": "Usage hint for the command /invite"
     },
     "@userSentUnknownEvent": {
       "type": "String",
@@ -2856,10 +2876,6 @@
       "type": "String",
       "placeholders": {}
     },
-    "@changePassword": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@devices": {
       "type": "String",
       "placeholders": {}
@@ -2904,10 +2920,6 @@
       "placeholders": {}
     },
     "@privacy": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@changeYourAvatar": {
       "type": "String",
       "placeholders": {}
     },
@@ -3039,7 +3051,6 @@
     "countChatsAndCountParticipants": "{chats} συνομιλίες και {participants} συμμετέχοντες",
     "noMoreChatsFound": "Δεν βρέθηκαν άλλες συνομιλίες...",
     "noChatsFoundHere": "Δεν βρέθηκαν συνομιλίες εδώ ακόμα. Ξεκινήστε μια νέα συνομιλία με κάποιον χρησιμοποιώντας το κουμπί παρακάτω. ⤵️",
-    "joinedChats": "Ενταγμένες συνομιλίες",
     "unread": "Ανεγνωσμένα",
     "space": "Χώρος",
     "spaces": "Χώροι",
@@ -3055,34 +3066,21 @@
     "changedTheHistoryVisibilityTo": "{username} άλλαξε την ορατότητα ιστορικού σε: {rules}",
     "changedTheJoinRules": "{username} άλλαξε τους κανόνες συμμετοχής",
     "changedTheJoinRulesTo": "{username} άλλαξε τους κανόνες συμμετοχής σε: {joinRules}",
-    "changedTheProfileAvatar": "{username} άλλαξε το προφίλ εικόνας του",
     "changedTheRoomAliases": "{username} άλλαξε τα ψευδώνυμα του δωματίου",
     "changedTheRoomInvitationLink": "{username} άλλαξε τον σύνδεσμο πρόσκλησης",
-    "changePassword": "Αλλαγή κωδικού πρόσβασης",
     "changeTheHomeserver": "Αλλαγή του διακομιστή σπιτιού",
-    "changeTheme": "Αλλαγή στυλ",
     "changeTheNameOfTheGroup": "Αλλαγή ονόματος ομάδας",
-    "changeYourAvatar": "Αλλαγή προφίλ εικόνας",
     "channelCorruptedDecryptError": "Ο κρυπτογραφημένος κώδικας έχει καταστραφεί",
     "chat": "Συνομιλία",
     "yourChatBackupHasBeenSetUp": "Η δημιουργία αντιγράφων ασφαλείας της συνομιλίας σας έχει ρυθμιστεί.",
-    "chatBackup": "Αντίγραφο ασφαλείας συνομιλίας",
     "chatBackupDescription": "Τα παλιά σας μηνύματα είναι ασφαλή με ένα κλειδί ανάκτησης. Παρακαλώ βεβαιωθείτε ότι δεν το χάνετε.",
-    "chatDetails": "Λεπτομέρειες συνομιλίας",
-    "chatHasBeenAddedToThisSpace": "Η συνομιλία έχει προστεθεί σε αυτόν τον χώρο",
-    "chats": "Συνομιλίες",
-    "chooseAStrongPassword": "Επιλέξτε έναν ισχυρό κωδικό πρόσβασης",
     "clearArchive": "Διαγραφή αρχείου",
-    "close": "Κλείσιμο",
     "commandHint_markasdm": "Σημειώστε ως άμεσο μήνυμα για το δοσμένο ID του Matrix",
     "commandHint_markasgroup": "Σημειώστε ως ομάδα",
-    "commandHint_ban": "Απαγορεύστε τον δοσμένο χρήστη από αυτό το δωμάτιο",
-    "commandHint_clearcache": "Εκκαθαρίστε την προσωρινή μνήμη",
     "commandHint_create": "Δημιουργήστε μια κενή ομαδική συνομιλία\nΧρησιμοποιήστε --no-encryption για να απενεργοποιήσετε την κρυπτογράφηση",
     "commandHint_discardsession": "Απορρίψτε τη συνεδρία",
     "commandHint_dm": "Ξεκινήστε μια άμεση συνομιλία\nΧρησιμοποιήστε --no-encryption για να απενεργοποιήσετε την κρυπτογράφηση",
     "commandHint_html": "Αποστείλετε κείμενο μορφοποιημένο σε HTML",
-    "commandHint_invite": "Προσκαλέστε τον δοσμένο χρήστη σε αυτό το δωμάτιο",
     "commandHint_join": "Ενταχθείτε στο δοσμένο δωμάτιο",
     "commandHint_kick": "Αφαιρέστε τον δοσμένο χρήστη από αυτό το δωμάτιο",
     "commandHint_leave": "Αφήστε αυτό το δωμάτιο",
@@ -4943,10 +4941,6 @@
       "placeholders": {}
     },
     "@noChatsFoundHere": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@joinedChats": {
       "type": "String",
       "placeholders": {}
     },
