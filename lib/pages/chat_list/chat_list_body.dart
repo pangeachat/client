@@ -31,7 +31,9 @@ class ChatListViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    // #Pangea
+    // final theme = Theme.of(context);
+    // Pangea#
 
     final client = Matrix.of(context).client;
     final activeSpace = controller.activeSpaceId;
@@ -152,25 +154,6 @@ class ChatListViewBody extends StatelessWidget {
                     //       onStatusEdit: controller.setStatus,
                     //     ),
                     //   ),
-                    // Pangea#
-                    AnimatedContainer(
-                      height: controller.isTorBrowser ? 64 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      curve: FluffyThemes.animationCurve,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(),
-                      child: Material(
-                        color: theme.colorScheme.surface,
-                        child: ListTile(
-                          leading: const Icon(Icons.vpn_key),
-                          title: Text(L10n.of(context).dehydrateTor),
-                          subtitle: Text(L10n.of(context).dehydrateTorLong),
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                          onTap: controller.dehydrate,
-                        ),
-                      ),
-                    ),
-                    // #Pangea
                     // if (client.rooms.isNotEmpty && !controller.isSearchMode)
                     //   SizedBox(
                     //     height: 64,
