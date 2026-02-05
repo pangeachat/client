@@ -125,13 +125,13 @@ class HtmlMessage extends StatelessWidget {
     'rt',
     'html',
     'body',
-    // Workaround for https://github.com/krille-chan/fluffychat/issues/507
-    'tg-forward',
     // #Pangea
     'token',
     'nontoken',
     // Pangea#
   };
+
+  static const Set<String> ignoredHtmlTags = {'mx-reply'};
 
   /// We add line breaks before these tags:
   static const Set<String> blockHtmlTags = {
@@ -389,6 +389,11 @@ class HtmlMessage extends StatelessWidget {
     // Pangea#
     // We must not render elements nested more than 100 elements deep:
     if (depth >= 100) return const TextSpan();
+
+    if (node is dom.Element &&
+        ignoredHtmlTags.contains(node.localName?.toLowerCase())) {
+      return const TextSpan();
+    }
 
     // This is a text node or not permitted node, so we render it as text:
     if (node is! dom.Element || !allowedHtmlTags.contains(node.localName)) {
@@ -682,19 +687,21 @@ class HtmlMessage extends StatelessWidget {
               // Pangea#
               TextSpan(
                 children: [
-                  if (node.parent?.localName == 'ul')
-                    // #Pangea
-                    // const TextSpan(text: '• '),
-                    TextSpan(text: '• ', style: existingStyle),
-                  // Pangea#
-                  if (node.parent?.localName == 'ol')
-                    TextSpan(
-                      text:
-                          '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                  if (!isCheckbox) ...[
+                    if (node.parent?.localName == 'ul')
                       // #Pangea
-                      style: existingStyle,
-                      // Pangea#
-                    ),
+                      // const TextSpan(text: '• '),
+                      TextSpan(text: '• ', style: existingStyle),
+                    // Pangea#
+                    if (node.parent?.localName == 'ol')
+                      TextSpan(
+                        text:
+                            '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                        // #Pangea
+                        style: existingStyle,
+                        // Pangea#
+                      ),
+                  ],
                   if (node.className == 'task-list-item')
                     WidgetSpan(
                       child: Padding(
