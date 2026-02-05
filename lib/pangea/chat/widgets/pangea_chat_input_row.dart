@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:animations/animations.dart';
+import 'package:emoji_picker_flutter/locales/default_emoji_set_locale.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -255,6 +256,17 @@ class PangeaChatInputRow extends StatelessWidget {
                           onChanged: controller.onInputBarChanged,
                           choreographer: controller.choreographer,
                           showNextMatch: controller.showNextMatch,
+                          suggestionEmojis: getDefaultEmojiLocale(
+                            AppSettings.emojiSuggestionLocale.value.isNotEmpty
+                                ? Locale(
+                                    AppSettings.emojiSuggestionLocale.value,
+                                  )
+                                : Localizations.localeOf(context),
+                          ).fold(
+                            [],
+                            (emojis, category) =>
+                                emojis..addAll(category.emoji),
+                          ),
                         ),
                       ),
                     ),
