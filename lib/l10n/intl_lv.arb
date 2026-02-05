@@ -3471,6 +3471,22 @@
     "@thread": {},
     "backToMainChat": "Atgriezties galvenajā tērzēšanā",
     "@backToMainChat": {},
+    "saveChanges": "Saglabāt izmaiņas",
+    "@saveChanges": {},
+    "createSticker": "Izveidot uzlīmi vai emocijzīmi",
+    "@createSticker": {},
+    "useAsSticker": "Izmantot kā uzlīmi",
+    "@useAsSticker": {},
+    "useAsEmoji": "Izmantot kā emocijzīmi",
+    "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "Uzlīmju pakas nosaukums jau pastāv",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "Jauna uzlīmju paka",
+    "@newStickerPack": {},
+    "stickerPackName": "Uzlīmju pakas nosaukums",
+    "@stickerPackName": {},
+    "attribution": "Piedēvējums",
+    "@attribution": {},
     "ignore": "Bloķēt",
     "ignoredUsers": "Bloķētie lietotāji",
     "writeAMessageLangCodes": "Rakstiet {l1} vai {l2}...",
@@ -3514,7 +3530,6 @@
     "updateLanguage": "Manas valodas",
     "whatLanguageYouWantToLearn": "Kuru valodu vēlaties iemācīties?",
     "whatIsYourBaseLanguage": "Kāda ir jūsu pamata valoda?",
-    "saveChanges": "Saglabāt izmaiņas",
     "publicProfileTitle": "Atļaut, lai manu profilu var atrast meklēšanā",
     "publicProfileDesc": "Ieslēdzot, jūs ļaujat citiem lietotājiem atrast jūsu profilu globālajā meklēšanas joslā un sūtīt pieprasījumus tērzēšanai. Šajā brīdī jūs varat izvēlēties pieņemt vai noraidīt pieprasījumu.",
     "errorDisableIT": "Tulkošanas palīdzība ir izslēgta.",
@@ -4782,10 +4797,6 @@
       "placeholders": {}
     },
     "@whatIsYourBaseLanguage": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@saveChanges": {
       "type": "String",
       "placeholders": {}
     },
