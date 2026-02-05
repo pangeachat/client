@@ -97,7 +97,7 @@ class PangeaMessageEvent {
   Set<Event> get allAudio => _latestEdit
           .aggregatedEvents(
         timeline,
-        RelationshipTypes.reply,
+        PangeaEventTypes.textToSpeech,
       )
           .where((element) {
         return element.content.tryGet<Map<String, dynamic>>(
@@ -416,7 +416,6 @@ class PangeaMessageEvent {
 
     room.sendFileEvent(
       file,
-      inReplyTo: _event,
       extraContent: {
         'info': {
           ...file.info,
@@ -430,15 +429,12 @@ class PangeaMessageEvent {
         ModelKey.transcription: response
             .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
             .toJson(),
+        "m.relates_to": {
+          "rel_type": PangeaEventTypes.textToSpeech,
+          "event_id": _event.eventId,
+        },
       },
-    ).then((eventId) async {
-      final Event? audioEvent =
-          eventId != null ? await room.getEventById(eventId) : null;
-
-      if (audioEvent != null) {
-        allAudio.add(audioEvent);
-      }
-    });
+    );
 
     return file;
   }

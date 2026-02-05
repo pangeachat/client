@@ -725,7 +725,7 @@ class Message extends StatelessWidget {
                                                                           ? snapshot
                                                                               .data!
                                                                           : Event(
-                                                                              eventId: event.relationshipEventId!,
+                                                                              eventId: event.inReplyToEventId() ?? '\$fake_event_id',
                                                                               content: {
                                                                                 'msgtype': 'm.text',
                                                                                 'body': '...',

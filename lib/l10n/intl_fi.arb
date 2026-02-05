@@ -2692,79 +2692,226 @@
     "@moveDown": {},
     "poll": "Kysely",
     "@poll": {},
-    "setCustomPermissionLevel": "Aseta mukautettu käyttöoikeustaso",
-    "setPermissionsLevelDescription": "Valitse alla ennalta määritetty rooli tai syötä mukautettu käyttöoikeustaso väliltä 0–100.",
-    "ignoreUser": "Ohita käyttäjä",
-    "normalUser": "Normaali käyttäjä",
-    "aboutHomeserver": "Tietoja {homeserver}",
-    "commandHint_roomupgrade": "Päivitä tämä huone annettuun huonetyyppiin",
-    "appLockDescription": "Lukitse sovellus, kun sitä ei käytetä, PIN-koodilla",
-    "countChatsAndCountParticipants": "{chats} keskustelua ja {participants} osallistujaa",
-    "noChatsFoundHere": "Täällä ei ole vielä keskusteluja. Aloita uusi keskustelu jonkun kanssa käyttämällä alla olevaa painiketta. ⤵️",
-    "joinedChats": "Liitetyt keskustelut",
+    "setCustomPermissionLevel": "Aseta mukautettu lupataso",
+    "@setCustomPermissionLevel": {},
+    "setPermissionsLevelDescription": "Valitse alla oleva ennalta määritetty rooli tai anna mukautettu lupataso väliltä 0–100.",
+    "@setPermissionsLevelDescription": {},
+    "ignoreUser": "Jätä huomiotta",
+    "@ignoreUser": {},
+    "normalUser": "Peruskäyttäjä",
+    "@normalUser": {},
+    "aboutHomeserver": "Tietoja {homeserver}:sta",
+    "@aboutHomeserver": {
+        "type": "String",
+        "placeholders": {
+            "homeserver": {
+                "type": "String"
+            }
+        }
+    },
+    "commandHint_roomupgrade": "Päivitä tämä huone annettuun huoneversioon",
+    "@commandHint_roomupgrade": {},
+    "appLockDescription": "Lukitse sovellus kun sitä ei käytetä PIN-koodin kanssa",
+    "@appLockDescription": {},
+    "countChatsAndCountParticipants": "{chats} pikakeskustelut ja {participants} osallistujat",
+    "@countChatsAndCountParticipants": {
+        "type": "String",
+        "placeholders": {
+            "chats": {
+                "type": "int"
+            },
+            "participants": {
+                "type": "int"
+            }
+        }
+    },
+    "noChatsFoundHere": "Täältä ei löytynyt vielä pikakeskusteluja. Aloita uusi pikakeskustelu jonkun kanssa alla olevalla painikkeella. ⤵️",
+    "@noChatsFoundHere": {},
+    "joinedChats": "Liittyneet pikakeskustelut",
+    "@joinedChats": {},
     "space": "Tila",
+    "@space": {},
     "spaces": "Tilat",
+    "@spaces": {},
     "checkList": "Tarkistuslista",
+    "@checkList": {},
     "countInvited": "{count} kutsuttu",
-    "globalChatId": "Globaali keskustelutunnus",
-    "accessAndVisibilityDescription": "Kuka saa liittyä tähän keskusteluun ja kuinka keskustelu voidaan löytää.",
+    "@countInvited": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "globalChatId": "Yleisesti pätevä keskustelutunnus",
+    "@globalChatId": {},
+    "accessAndVisibilityDescription": "Kuka voi liittyä tähän pikakeskusteluun ja miten pikakeskustelun voi löytää.",
+    "@accessAndVisibilityDescription": {},
     "calls": "Puhelut",
-    "customEmojisAndStickers": "Mukautetut emotikonit ja tarrat",
-    "customEmojisAndStickersBody": "Lisää tai jaa mukautettuja emotikoneja tai tarroja, joita voi käyttää missä tahansa keskustelussa.",
+    "@calls": {},
+    "customEmojisAndStickers": "Mukautetut emojit ja tarrat",
+    "@customEmojisAndStickers": {},
+    "customEmojisAndStickersBody": "Lisää tai jaa mukautettuja emojeja tai tarroja, joita voidaan käyttää missä tahansa pikakeskustelussa.",
+    "@customEmojisAndStickersBody": {},
+    "hideInvalidOrUnknownMessageFormats": "Piilota virheelliset tai tuntemattomat viestimuodot",
+    "@hideInvalidOrUnknownMessageFormats": {},
+    "block": "Estä",
+    "@block": {},
+    "blockedUsers": "Estetyt käyttäjät",
+    "@blockedUsers": {},
+    "blockListDescription": "Voit estää sinua häiritsevät käyttäjät. Et voi vastaanottaa viestejä tai huonekutsuja henkilökohtaisella estolistallasi olevilta käyttäjiltä.",
+    "@blockListDescription": {},
+    "hideMemberChangesInPublicChats": "Piilota jäsenten muutokset julkisissa pikakeskusteluissa",
+    "@hideMemberChangesInPublicChats": {},
+    "hideMemberChangesInPublicChatsBody": "Älä näytä pikakeskustelun aikajanalla, jos joku liittyy julkiseen pikakeskusteluun tai poistuu siitä luettavuuden parantamiseksi.",
+    "@hideMemberChangesInPublicChatsBody": {},
+    "blockUsername": "Jätä käyttäjänimi huomiotta",
+    "@blockUsername": {},
+    "overview": "Yleiskatsaus",
+    "@overview": {},
+    "notifyMeFor": "Ilmoita minulle",
+    "@notifyMeFor": {},
+    "passwordRecoverySettings": "Salasanan palautusasetukset",
+    "@passwordRecoverySettings": {},
+    "sendImages": "Lähetä {count} kuva",
+    "@sendImages": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "presenceStyle": "Läsnäolo:",
+    "@presenceStyle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "presencesToggle": "Näytä muiden käyttäjien tilaviestit",
+    "@presencesToggle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "synchronizingPleaseWaitCounter": " Synkronoidaan… ({percentage} %)",
+    "@synchronizingPleaseWaitCounter": {
+        "type": "String",
+        "placeholders": {
+            "percentage": {
+                "type": "String"
+            }
+        }
+    },
+    "youInvitedToBy": "📩 Sinut on kutsuttu linkin kautta kohteeseen:\n{alias}",
+    "@youInvitedToBy": {
+        "placeholders": {
+            "alias": {
+                "type": "String"
+            }
+        }
+    },
+    "invitedBy": "📩 Kutsujana {user}",
+    "@invitedBy": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "usersMustKnock": "Käyttäjien on koputettava",
+    "@usersMustKnock": {},
+    "noOneCanJoin": "Kukaan ei voi liittyä",
+    "@noOneCanJoin": {},
+    "userWouldLikeToChangeTheChat": "{user} haluaa liittyä pikakeskusteluun.",
+    "@userWouldLikeToChangeTheChat": {
+        "placeholders": {
+            "user": {
+                "type": "String"
+            }
+        }
+    },
+    "noPublicLinkHasBeenCreatedYet": "Julkista linkkiä ei ole vielä luotu",
+    "@noPublicLinkHasBeenCreatedYet": {},
+    "knock": "Koputa",
+    "@knock": {},
+    "hidePresences": "Piilotetaanko tilaluettelo?",
+    "@hidePresences": {},
+    "removeDevicesDescription": "Sinut kirjataan ulos tästä laitteesta, etkä voi enää vastaanottaa viestejä.",
+    "@removeDevicesDescription": {},
+    "banUserDescription": "Käyttäjä kielletään pikakeskustelusta, eikä hän voi liittyä pikakeskusteluun uudelleen ennen kuin kielto kumotetaan.",
+    "@banUserDescription": {},
+    "unbanUserDescription": "Käyttäjä voi liittyä pikakeskusteluun uudelleen, jos hän yrittää.",
+    "@unbanUserDescription": {},
+    "kickUserDescription": "Käyttäjä potkitaan ulos pikakeskustelusta, mutta häntä ei porttikieltoa saada. Julkisissa pikakeskusteluissa käyttäjä voi liittyä takaisin milloin tahansa.",
+    "@kickUserDescription": {},
+    "makeAdminDescription": "Kun olet tehnyt tästä käyttäjästä järjestelmänvalvojan, et ehkä voi perua tätä, koska hänellä on siitä hetkestä lähtien samat oikeudet kuin sinulla.",
+    "@makeAdminDescription": {},
+    "pushNotificationsNotAvailable": "Työntöilmoitukset ei saatavilla",
+    "@pushNotificationsNotAvailable": {},
+    "learnMore": "Opi lisää",
+    "@learnMore": {},
+    "yourGlobalUserIdIs": "Yleisesti pätevä käyttäjätunnuksesi on: ",
+    "@yourGlobalUserIdIs": {},
+    "noUsersFoundWithQuery": "Valitettavasti käyttäjää ei löytynyt haulla \"{query}\". Tarkistathan, onko kirjoitusvirhe.",
+    "@noUsersFoundWithQuery": {
+        "type": "String",
+        "placeholders": {
+            "query": {
+                "type": "String"
+            }
+        }
+    },
+    "knocking": "Koputetaan",
+    "@knocking": {},
+    "chatCanBeDiscoveredViaSearchOnServer": "Pikakeskustelu löytyy haulla {server}:lta",
+    "@chatCanBeDiscoveredViaSearchOnServer": {
+        "type": "String",
+        "placeholders": {
+            "server": {
+                "type": "String"
+            }
+        }
+    },
+    "searchChatsRooms": "Hae #pikakeskustelut, @käyttäjät...",
+    "@searchChatsRooms": {},
+    "nothingFound": "Mitään ei löytynyt...",
+    "@nothingFound": {},
+    "groupName": "Ryhmän nimi",
+    "@groupName": {},
+    "createGroupAndInviteUsers": "Luo ryhmä ja kutsu käyttäjiä",
+    "@createGroupAndInviteUsers": {},
+    "groupCanBeFoundViaSearch": "Ryhmä löytyy haun kautta",
+    "@groupCanBeFoundViaSearch": {},
+    "wrongRecoveryKey": "Pahoittelut... tämä ei vaikuta olevan oikea palautusavain.",
+    "@wrongRecoveryKey": {},
+    "startConversation": "Aloita keskustelu",
+    "@startConversation": {},
+    "commandHint_sendraw": "Lähetä raaka JSON",
+    "@commandHint_sendraw": {},
+    "databaseMigrationTitle": "Tietokanta on optimoitu",
+    "@databaseMigrationTitle": {},
+    "databaseMigrationBody": "Odotathan hetki. Tämä voi kestää hetken.",
+    "@databaseMigrationBody": {},
+    "leaveEmptyToClearStatus": "Jätä tyhjäksi tyhjentääksesi tilasi.",
+    "@leaveEmptyToClearStatus": {},
+    "publicLink": "Julkinen linkki",
+    "@publicLink": {},
+    "publicChatAddresses": "Julkiset keskusteluosoitteet",
+    "@publicChatAddresses": {},
+    "createNewAddress": "Luo uusi osoite",
+    "@createNewAddress": {},
+    "joinSpace": "Liity tilaan",
+    "@joinSpace": {},
+    "publicSpaces": "Julkiset tilat",
+    "@publicSpaces": {},
+    "addChatOrSubSpace": "Lisää pikakeskustelu tai alitila",
+    "@addChatOrSubSpace": {},
+    "subspace": "Alitila",
+    "@subspace": {},
+    "decline": "Hylkää",
+    "@decline": {},
     "hideRedactedMessages": "Piilota muokatut viestit",
     "hideRedactedMessagesBody": "Jos joku muokkaa viestin, tämä viesti ei ole enää näkyvissä keskustelussa.",
-    "hideInvalidOrUnknownMessageFormats": "Piilota virheelliset tai tuntemattomat viestimuodot",
-    "block": "Estä",
-    "blockedUsers": "Estetyt käyttäjät",
-    "blockListDescription": "Voit estää häiritseviä käyttäjiä. Et voi vastaanottaa viestejä tai huoneen kutsuja käyttäjiltä, jotka ovat estolistallasi.",
-    "blockUsername": "Ohita käyttäjänimi",
-    "hideMemberChangesInPublicChats": "Piilota jäsenvaihdokset julkisissa keskusteluissa",
-    "hideMemberChangesInPublicChatsBody": "Älä näytä keskustelun aikajanalla, jos joku liittyy tai poistuu julkisesta keskustelusta, parantaen luettavuutta.",
-    "overview": "Yleiskatsaus",
-    "notifyMeFor": "Ilmoita minulle",
-    "passwordRecoverySettings": "Salasanan palautusasetukset",
-    "sendImages": "Lähetä {count} kuva",
-    "presenceStyle": "Läsnäolo:",
-    "presencesToggle": "Näytä muiden käyttäjien tilaviestit",
-    "synchronizingPleaseWaitCounter": " Synkronoidaan… ({percentage}%)",
-    "youInvitedToBy": "📩 Sinut on kutsuttu linkin kautta:\n{alias}",
-    "invitedBy": "📩 Kutsunut {user}",
-    "usersMustKnock": "Käyttäjien täytyy koputtaa",
-    "noOneCanJoin": "Kukaan ei voi liittyä",
-    "userWouldLikeToChangeTheChat": "{user} haluaisi liittyä keskusteluun.",
-    "noPublicLinkHasBeenCreatedYet": "Yhtään julkista linkkiä ei ole vielä luotu",
-    "knock": " Koputa",
-    "hidePresences": "Piilota tila-lista?",
-    "removeDevicesDescription": "Sinut kirjataan ulos tästä laitteesta etkä enää voi vastaanottaa viestejä.",
-    "banUserDescription": "Käyttäjä estetään keskustelusta eikä hän voi enää liittyä keskusteluun ennen kuin hänet vapautetaan estosta.",
-    "unbanUserDescription": "Käyttäjä voi liittyä keskusteluun uudelleen, jos hän yrittää.",
-    "kickUserDescription": "Käyttäjä poistetaan keskustelusta, mutta häntä ei estetä. Julkisissa keskusteluissa käyttäjä voi liittyä uudelleen milloin tahansa.",
-    "makeAdminDescription": "Kun teet tämän käyttäjän ylläpitäjäksi, et ehkä voi peruuttaa tätä, koska hänellä on samat oikeudet kuin sinulla.",
-    "pushNotificationsNotAvailable": "Ponnahdusilmoitukset eivät ole saatavilla",
-    "learnMore": "Lisätietoja",
-    "yourGlobalUserIdIs": "Kansainvälinen käyttäjätunnuksesi on: ",
-    "noUsersFoundWithQuery": "Valitettavasti käyttäjää ei löytynyt haulla \"{query}\". Tarkista, onko kirjoitusvirhe.",
-    "knocking": " Koputtaa",
-    "chatCanBeDiscoveredViaSearchOnServer": "Keskustelu voidaan löytää haun avulla palvelimella {server}",
-    "searchChatsRooms": "Etsi #keskusteluja, @käyttäjiä...",
-    "nothingFound": "Ei mitään löytynyt...",
-    "groupName": "Ryhmän nimi",
-    "createGroupAndInviteUsers": "Luo ryhmä ja kutsu käyttäjiä",
-    "groupCanBeFoundViaSearch": "Ryhmän voi löytää haun avulla",
-    "wrongRecoveryKey": "Valitettavasti tämä ei näytä oikealta palautusavaimelta.",
-    "startConversation": "Aloita keskustelu",
-    "commandHint_sendraw": "Lähetä raakaa jsonia",
-    "databaseMigrationTitle": "Tietokanta on optimoitu",
-    "databaseMigrationBody": "Odota hetki. Tämä saattaa kestää hetken.",
-    "leaveEmptyToClearStatus": "Jätä tyhjäksi poistaaksesi tilasi.",
-    "publicLink": "Julkinen linkki",
-    "publicChatAddresses": "Julkiset keskustelunumerot",
-    "createNewAddress": "Luo uusi osoite",
-    "joinSpace": "Liity tilaan",
-    "publicSpaces": "Julkiset tilat",
-    "addChatOrSubSpace": "Lisää keskustelu tai alitila",
-    "subspace": "Alitila",
-    "decline": "Hylkää",
     "initAppError": "Sovelluksen alustuksessa tapahtui virhe",
     "userRole": "Käyttäjän rooli",
     "minimumPowerLevel": "{level} on minimitehotaso.",
@@ -4043,338 +4190,11 @@
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
     "@@last_modified": "2026-01-29 15:24:28.359131",
-    "@setCustomPermissionLevel": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@setPermissionsLevelDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@ignoreUser": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@normalUser": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@aboutHomeserver": {
-      "type": "String",
-      "placeholders": {
-        "homeserver": {
-          "type": "String"
-        }
-      }
-    },
-    "@commandHint_roomupgrade": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@appLockDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@countChatsAndCountParticipants": {
-      "type": "String",
-      "placeholders": {
-        "chats": {
-          "type": "int"
-        },
-        "participants": {
-          "type": "int"
-        }
-      }
-    },
-    "@noChatsFoundHere": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@joinedChats": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@space": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@spaces": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@checkList": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@countInvited": {
-      "type": "String",
-      "placeholders": {
-        "count": {
-          "type": "int"
-        }
-      }
-    },
-    "@globalChatId": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@calls": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@customEmojisAndStickers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@customEmojisAndStickersBody": {
-      "type": "String",
-      "placeholders": {}
-    },
     "@hideRedactedMessages": {
       "type": "String",
       "placeholders": {}
     },
     "@hideRedactedMessagesBody": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@hideInvalidOrUnknownMessageFormats": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@block": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@blockedUsers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@blockListDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@blockUsername": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@hideMemberChangesInPublicChats": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@hideMemberChangesInPublicChatsBody": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@overview": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@notifyMeFor": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@passwordRecoverySettings": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@sendImages": {
-      "type": "String",
-      "placeholders": {
-        "count": {
-          "type": "int"
-        }
-      }
-    },
-    "@presenceStyle": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@presencesToggle": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-      "type": "String",
-      "placeholders": {
-        "percentage": {
-          "type": "String"
-        }
-      }
-    },
-    "@youInvitedToBy": {
-      "type": "String",
-      "placeholders": {
-        "alias": {
-          "type": "String"
-        }
-      }
-    },
-    "@invitedBy": {
-      "type": "String",
-      "placeholders": {
-        "user": {
-          "type": "String"
-        }
-      }
-    },
-    "@usersMustKnock": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@noOneCanJoin": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@userWouldLikeToChangeTheChat": {
-      "type": "String",
-      "placeholders": {
-        "user": {
-          "type": "String"
-        }
-      }
-    },
-    "@noPublicLinkHasBeenCreatedYet": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@knock": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@hidePresences": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@removeDevicesDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@banUserDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@unbanUserDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@kickUserDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@makeAdminDescription": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@pushNotificationsNotAvailable": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@learnMore": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@yourGlobalUserIdIs": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@noUsersFoundWithQuery": {
-      "type": "String",
-      "placeholders": {
-        "query": {
-          "type": "String"
-        }
-      }
-    },
-    "@knocking": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-      "type": "String",
-      "placeholders": {
-        "server": {
-          "type": "String"
-        }
-      }
-    },
-    "@searchChatsRooms": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@nothingFound": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@groupName": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@wrongRecoveryKey": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@startConversation": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@commandHint_sendraw": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@databaseMigrationTitle": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@databaseMigrationBody": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@leaveEmptyToClearStatus": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@publicLink": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@publicChatAddresses": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@createNewAddress": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@joinSpace": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@publicSpaces": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@subspace": {
-      "type": "String",
-      "placeholders": {}
-    },
-    "@decline": {
       "type": "String",
       "placeholders": {}
     },
