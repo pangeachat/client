@@ -60,9 +60,11 @@ dependencies:
   latlong2: ^0.9.1
   linkify: ^5.0.0
   # #Pangea
-  # matrix: ^5.0.0
+  # matrix: ^4.1.0
   matrix:
-    path: /Users/ggurdin/pangea/matrix-dart-sdk
+    git:
+      url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
+      ref: merge-upstream-2
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
