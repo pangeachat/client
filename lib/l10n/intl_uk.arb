@@ -3512,9 +3512,9 @@
             }
         }
     },
-    "changedTheChatDescription": "{username} змінив(-ла) опис бесіди",
+    "changedTheChatDescription": "{username} змінює опис бесіди",
     "@changedTheChatDescription": {},
-    "changedTheChatName": "{username} змінив(-ла) назву бесіди",
+    "changedTheChatName": "{username} змінює назву бесіди",
     "@changedTheChatName": {},
     "writeAMessageLangCodes": "Введіть {l1} або {l2}...",
     "requests": "Запити",

@@ -137,7 +137,7 @@ dev_dependencies:
   license_checker: ^1.6.2
   pedantic: ^1.11.0
   sentry_dart_plugin: ^1.0.0
-  translations_cleaner: ^0.0.5
+  translations_cleaner: ^0.1.0
 
 import_sorter:
   ignored_files: # Optional, defaults to []
