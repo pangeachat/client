@@ -50,7 +50,6 @@ class AnalyticsPracticeSessionRepo {
       final vocabConstructs = await _fetchVocab();
       final vocabCount = min(vocabConstructs.length, vocabNeeded);
 
-      // Add audio targets - these MUST have example messages
       for (final entry in audioMap.entries.take(audioCount)) {
         targets.add(
           AnalyticsActivityTarget(
@@ -62,8 +61,6 @@ class AnalyticsPracticeSessionRepo {
           ),
         );
       }
-
-      // Add vocab meaning targets (no example messages needed)
       for (var i = 0; i < vocabCount; i++) {
         targets.add(
           AnalyticsActivityTarget(
@@ -74,8 +71,6 @@ class AnalyticsPracticeSessionRepo {
           ),
         );
       }
-
-      // Shuffle to mix audio and vocab
       targets.shuffle();
     } else {
       final errorTargets = await _fetchErrors();
@@ -170,6 +165,7 @@ class AnalyticsPracticeSessionRepo {
     });
 
     final Set<String> seenLemmas = {};
+    final Set<String> seenEventIds = {};
     final targets = <ConstructIdentifier, AudioExampleMessage>{};
 
     for (final construct in constructs) {
@@ -187,11 +183,20 @@ class AnalyticsPracticeSessionRepo {
         await MatrixState.pangeaController.matrixState.analyticsDataService
             .getConstructUse(construct.id),
         MatrixState.pangeaController.matrixState.client,
+        noBold: true,
       );
 
-      // Only add to targets if we found an example message
+      // Only add to targets if we found an example message AND its eventId hasn't been used
       if (audioExampleMessage != null) {
+        final eventId = audioExampleMessage.eventId;
+        if (eventId != null && seenEventIds.contains(eventId)) {
+          continue;
+        }
+
         seenLemmas.add(construct.lemma);
+        if (eventId != null) {
+          seenEventIds.add(eventId);
+        }
         targets[construct.id] = audioExampleMessage;
       }
     }

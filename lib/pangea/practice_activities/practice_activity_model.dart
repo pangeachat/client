@@ -125,9 +125,11 @@ sealed class PracticeActivityModel {
           langCode: langCode,
           tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
-          audioExampleMessage: json['audio_example_message'] != null
-              ? AudioExampleMessage.fromJson(json['audio_example_message'])
-              : null,
+          roomId: json['room_id'] as String?,
+          eventId: json['event_id'] as String?,
+          exampleMessage: json['example_message'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaMeaning:
         assert(
@@ -359,18 +361,25 @@ class MorphMatchPracticeActivityModel extends MorphPracticeActivityModel {
 
 class VocabAudioPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
-  AudioExampleMessage? audioExampleMessage;
+  final String? roomId;
+  final String? eventId;
+  final ExampleMessageInfo exampleMessage;
+
   VocabAudioPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
-    this.audioExampleMessage,
+    this.roomId,
+    this.eventId,
+    required this.exampleMessage,
   });
 
   @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
-    json['audio_example_message'] = audioExampleMessage?.toJson();
+    json['room_id'] = roomId;
+    json['event_id'] = eventId;
+    json['example_message'] = exampleMessage.toJson();
     return json;
   }
 }

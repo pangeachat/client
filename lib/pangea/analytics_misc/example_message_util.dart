@@ -31,6 +31,7 @@ class _ExampleMessageResult {
         tokens: includedTokens,
         eventId: eventId,
         roomId: roomId,
+        exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
       );
 }
 
@@ -39,9 +40,14 @@ class ExampleMessageUtil {
     ConstructUses construct,
     Client client, {
     String? form,
+    bool noBold = false,
   }) async {
-    final result =
-        await _getExampleMessageResult(construct, client, form: form);
+    final result = await _getExampleMessageResult(
+      construct,
+      client,
+      form: form,
+      noBold: noBold,
+    );
     return result?.toSpans();
   }
 
@@ -49,24 +55,30 @@ class ExampleMessageUtil {
     ConstructUses construct,
     Client client, {
     String? form,
+    bool noBold = false,
   }) async {
-    final result =
-        await _getExampleMessageResult(construct, client, form: form);
+    final result = await _getExampleMessageResult(
+      construct,
+      client,
+      form: form,
+      noBold: noBold,
+    );
     return result?.toAudioExampleMessage();
   }
 
   static Future<List<List<InlineSpan>>> getExampleMessages(
     ConstructUses construct,
     Client client,
-    int maxMessages,
-  ) async {
+    int maxMessages, {
+    bool noBold = false,
+  }) async {
     final List<List<InlineSpan>> allSpans = [];
     for (final use in construct.cappedUses) {
       if (allSpans.length >= maxMessages) break;
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 
-      final result = _buildExampleMessage(use.form, event);
+      final result = _buildExampleMessage(use.form, event, noBold: noBold);
       if (result != null) {
         allSpans.add(result.toSpans());
       }
@@ -74,11 +86,11 @@ class ExampleMessageUtil {
     return allSpans;
   }
 
-  /// Internal helper to get the full result for an example message
   static Future<_ExampleMessageResult?> _getExampleMessageResult(
     ConstructUses construct,
     Client client, {
     String? form,
+    bool noBold = false,
   }) async {
     for (final use in construct.cappedUses) {
       if (form != null && use.form != form) continue;
@@ -86,7 +98,7 @@ class ExampleMessageUtil {
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 
-      final result = _buildExampleMessage(use.form, event);
+      final result = _buildExampleMessage(use.form, event, noBold: noBold);
       if (result != null) return result;
     }
     return null;
@@ -94,8 +106,9 @@ class ExampleMessageUtil {
 
   static _ExampleMessageResult? _buildExampleMessage(
     String? form,
-    PangeaMessageEvent messageEvent,
-  ) {
+    PangeaMessageEvent messageEvent, {
+    bool noBold = false,
+  }) {
     String? text;
     List<PangeaToken>? tokens;
     int targetTokenIndex = -1;
@@ -200,7 +213,7 @@ class ExampleMessageUtil {
       TextSpan(text: before),
       TextSpan(
         text: targetToken.text.content,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: noBold ? null : const TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(text: after),
       if (trimmedAfter) const TextSpan(text: '…'),

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/practice_activities/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
@@ -12,13 +11,11 @@ class VocabAudioActivityGenerator {
     final token = req.target.tokens.first;
     final audioExample = req.audioExampleMessage;
 
-    final Set<String> answers = {token.lemma.text};
+    final Set<String> answers = {token.text.content.toLowerCase()};
     final Set<String> wordsInMessage = {};
     if (audioExample != null) {
-      // Collect all text content and lemmas from the message
       for (final t in audioExample.tokens) {
         wordsInMessage.add(t.text.content.toLowerCase());
-        wordsInMessage.add(t.lemma.text.toLowerCase());
       }
 
       // Extract up to 3 additional words as answers
@@ -38,8 +35,10 @@ class VocabAudioActivityGenerator {
     }
 
     // Generate distractors, filtering out anything in the message or answers
-    final choices =
-        await LemmaActivityGenerator.lemmaActivityDistractors(token);
+    final choices = await LemmaActivityGenerator.lemmaActivityDistractors(
+      token,
+      maxChoices: 20,
+    );
     final choicesList = choices
         .map((c) => c.lemma)
         .where(
@@ -47,28 +46,11 @@ class VocabAudioActivityGenerator {
               !answers.contains(lemma.toLowerCase()) &&
               !wordsInMessage.contains(lemma.toLowerCase()),
         )
-        .take(10)
+        .take(4)
         .toList();
 
-    choicesList.shuffle();
-
-    // Ensure we have enough choices (at least 4 distractors)
-    if (choicesList.length < 4) {
-      final allChoices = choices
-          .map((c) => c.lemma)
-          .where((lemma) => !answers.contains(lemma.toLowerCase()))
-          .toList();
-      allChoices.shuffle();
-      choicesList.addAll(
-        allChoices.take(4 - choicesList.length),
-      );
-    }
-
     final allChoices = [...choicesList, ...answers];
-
-    debugPrint(
-      'VocabAudioActivityGenerator: Generated choices: $allChoices, answers: $answers',
-    );
+    allChoices.shuffle();
 
     return MessageActivityResponse(
       activity: VocabAudioPracticeActivityModel(
@@ -78,7 +60,10 @@ class VocabAudioActivityGenerator {
           choices: allChoices.toSet(),
           answers: answers,
         ),
-        audioExampleMessage: audioExample,
+        roomId: audioExample?.roomId,
+        eventId: audioExample?.eventId,
+        exampleMessage: audioExample?.exampleMessage ??
+            const ExampleMessageInfo(exampleMessage: []),
       ),
     );
   }

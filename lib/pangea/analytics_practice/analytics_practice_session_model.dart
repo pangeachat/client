@@ -51,18 +51,19 @@ class ExampleMessageInfo {
   }
 }
 
-/// An extended example message that includes both formatted display spans
-/// and the underlying tokens for activity logic (e.g., audio practice).
-/// EventId/RoomId are needed for audio playback.
+/// An extended example message that includes both formatted display spans and tokens to generate audio practice activities.
+/// eventId/roomId are needed for audio playback.
 class AudioExampleMessage {
   final List<PangeaToken> tokens;
   final String? eventId;
   final String? roomId;
+  final ExampleMessageInfo exampleMessage;
 
   const AudioExampleMessage({
     required this.tokens,
     this.eventId,
     this.roomId,
+    required this.exampleMessage,
   });
 
   Map<String, dynamic> toJson() {
@@ -77,6 +78,7 @@ class AudioExampleMessage {
       tokens: const [],
       eventId: json['eventId'] as String?,
       roomId: json['roomId'] as String?,
+      exampleMessage: const ExampleMessageInfo(exampleMessage: []),
     );
   }
 }
