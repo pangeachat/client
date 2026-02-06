@@ -3515,6 +3515,23 @@
     "@useAsSticker": {},
     "useAsEmoji": "Als Emoji verwenden",
     "@useAsEmoji": {},
+    "stickerPackNameAlreadyExists": "Name des Sticker-Pakets existiert bereits",
+    "@stickerPackNameAlreadyExists": {},
+    "newStickerPack": "Neues Sticker-Paket",
+    "@newStickerPack": {},
+    "stickerPackName": "Name des Sticker-Pakets",
+    "@stickerPackName": {},
+    "noMoreResultsFound": "Keine weiteren Ergebnisse gefunden",
+    "@noMoreResultsFound": {},
+    "chatSearchedUntil": "Chat durchsucht bis {time}",
+    "@chatSearchedUntil": {
+        "type": "String",
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
     "writeAMessageLangCodes": "Geben Sie in {l1} oder {l2} ein...",
     "requests": "Anfragen",
     "holdForInfo": "Klicken und halten für Wortinformationen.",
