@@ -496,7 +496,6 @@
   "report": "報告",
   "signInWithPassword": "用密碼登入",
   "pleaseTryAgainLaterOrChooseDifferentServer": "請稍後再試或選擇不同的伺服器。",
-  "signInWith": "用 {provider} 登入",
   "profileNotFound": "在伺服器上找不到該用戶。可能是連線問題或用戶不存在。",
   "setTheme": "設定主題：",
   "setColorTheme": "設定色彩主題：",
@@ -4223,14 +4222,6 @@
   "@pleaseTryAgainLaterOrChooseDifferentServer": {
     "type": "String",
     "placeholders": {}
-  },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "@profileNotFound": {
     "type": "String",

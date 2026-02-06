@@ -155,7 +155,7 @@
       }
     }
   },
-  "anyoneCanJoin": "Anyone can join! However, admin can kick and ban whoever misbehaves. Those who are banned may not return!",
+  "anyoneCanJoin": "Anyone can join",
   "@anyoneCanJoin": {
     "type": "String",
     "placeholders": {}
@@ -3477,6 +3477,31 @@
       }
     }
   },
+  "federationBaseUrl": "Federation Base URL",
+  "@federationBaseUrl": {},
+  "clientWellKnownInformation": "Client-Well-Known Information:",
+  "@clientWellKnownInformation": {},
+  "baseUrl": "Base URL",
+  "@baseUrl": {},
+  "identityServer": "Identity Server:",
+  "@identityServer": {},
+  "versionWithNumber": "Version: {version}",
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "logs": "Logs",
+  "@logs": {},
+  "advancedConfigs": "Advanced Configs",
+  "@advancedConfigs": {},
+  "advancedConfigurations": "Advanced configurations",
+  "@advancedConfigurations": {},
+  "signInWith": "Sign in with:",
+  "@signInWith": {},
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",

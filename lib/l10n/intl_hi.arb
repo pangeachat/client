@@ -868,14 +868,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -2664,7 +2656,6 @@
   "report": "रिपोर्ट करें",
   "signInWithPassword": "पासवर्ड के साथ साइन इन करें",
   "pleaseTryAgainLaterOrChooseDifferentServer": "कृपया बाद में पुनः प्रयास करें या अलग सर्वर चुनें।",
-  "signInWith": "{provider} के साथ साइन इन करें",
   "profileNotFound": "सर्वर पर उपयोगकर्ता नहीं मिल सका। हो सकता है कि कनेक्शन में समस्या हो या उपयोगकर्ता मौजूद न हो।",
   "setTheme": "थीम सेट करें:",
   "setColorTheme": "रंग थीम सेट करें:",

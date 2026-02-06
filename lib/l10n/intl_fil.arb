@@ -1428,7 +1428,6 @@
   "report": "iulat",
   "signInWithPassword": "Mag-sign in gamit ang password",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Mangyaring subukan muli mamaya o pumili ng ibang server.",
-  "signInWith": "Mag-sign in gamit ang {provider}",
   "profileNotFound": "Hindi mahanap ang user sa server. Maaaring may problema sa koneksyon o hindi umiiral ang user.",
   "setTheme": "Itakda ang tema:",
   "setColorTheme": "Itakda ang kulay na tema:",
@@ -4523,14 +4522,6 @@
   "@pleaseTryAgainLaterOrChooseDifferentServer": {
     "type": "String",
     "placeholders": {}
-  },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "@profileNotFound": {
     "type": "String",

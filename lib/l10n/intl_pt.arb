@@ -1140,14 +1140,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -3147,7 +3139,6 @@
   "report": "denunciar",
   "signInWithPassword": "Entrar com senha",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Por favor, tente novamente mais tarde ou escolha um servidor diferente.",
-  "signInWith": "Entrar com {provider}",
   "profileNotFound": "O usuário não pôde ser encontrado no servidor. Talvez haja um problema de conexão ou o usuário não exista.",
   "setTheme": "Definir tema:",
   "setColorTheme": "Definir tema de cores:",

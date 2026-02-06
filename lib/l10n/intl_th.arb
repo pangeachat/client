@@ -1036,14 +1036,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -2664,7 +2656,6 @@
   "report": "รายงาน",
   "signInWithPassword": "เข้าสู่ระบบด้วยรหัสผ่าน",
   "pleaseTryAgainLaterOrChooseDifferentServer": "โปรดลองอีกครั้งในภายหลังหรือเลือกเซิร์ฟเวอร์ที่แตกต่างกัน",
-  "signInWith": "เข้าสู่ระบบด้วย {provider}",
   "profileNotFound": "ไม่พบผู้ใช้บนเซิร์ฟเวอร์ อาจมีปัญหาในการเชื่อมต่อหรือผู้ใช้นั้นไม่มีอยู่จริง",
   "setTheme": "ตั้งธีม:",
   "setColorTheme": "ตั้งธีมสี:",

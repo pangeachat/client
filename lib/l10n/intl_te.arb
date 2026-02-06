@@ -573,7 +573,6 @@
   "report": "నివేదించండి",
   "signInWithPassword": "పాస్వర్డ్‌తో సైన్ ఇన్ చేయండి",
   "pleaseTryAgainLaterOrChooseDifferentServer": "దయచేసి తర్వాత ప్రయత్నించండి లేదా వేరే సర్వర్‌ను ఎంచుకోండి.",
-  "signInWith": "{provider} తో సైన్ ఇన్ చేయండి",
   "profileNotFound": "సర్వర్‌పై వినియోగదారు కనుగొనబడలేదు. కనెక్షన్ సమస్య ఉండవచ్చు లేదా వినియోగదారు ఉండకపోవచ్చు.",
   "setTheme": "థీమ్ సెట్ చేయండి:",
   "setColorTheme": "రంగు థీమ్ సెట్ చేయండి:",
@@ -4622,14 +4621,6 @@
   "@pleaseTryAgainLaterOrChooseDifferentServer": {
     "type": "String",
     "placeholders": {}
-  },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "@profileNotFound": {
     "type": "String",

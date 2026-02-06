@@ -1647,14 +1647,6 @@
       }
     }
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@changedTheRoomAliases": {
     "type": "String",
     "placeholders": {
@@ -2667,7 +2659,6 @@
   "report": "reportar",
   "signInWithPassword": "Signar con passphrase",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Per favor, tenta ancora plus tarde o selige un altere servitor.",
-  "signInWith": "Signar con {provider}",
   "profileNotFound": "La usator ne poteva esser trovate in su servitor. Probabilmente es un problema de conexion o la usator no existe.",
   "setTheme": "Stabilir tema:",
   "setColorTheme": "Stabilir tema de color:",

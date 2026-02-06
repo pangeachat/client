@@ -1117,7 +1117,6 @@
   "report": "prijavi",
   "signInWithPassword": "Prijavi se z geslom",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Poskusite znova kasneje ali izberite drug strežnik.",
-  "signInWith": "Prijavite se z {provider}",
   "profileNotFound": "Uporabnika ni bilo mogoče najti na strežniku. Morda je težava s povezavo ali uporabnik ne obstaja.",
   "setTheme": "Nastavi temo:",
   "setColorTheme": "Nastavi barvno temo:",
@@ -4611,14 +4610,6 @@
   "@pleaseTryAgainLaterOrChooseDifferentServer": {
     "type": "String",
     "placeholders": {}
-  },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "@profileNotFound": {
     "type": "String",

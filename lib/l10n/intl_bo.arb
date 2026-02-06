@@ -866,14 +866,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -9012,7 +9004,6 @@
   "report": "རེད་འདོད།",
   "signInWithPassword": "ནང་བསྐུར་ནས་སྤྱོད་འཇུག",
   "pleaseTryAgainLaterOrChooseDifferentServer": "ཧེ་མེད་ལོག་འགྱོ་འདི་ལས་འགོད་འབད་ནི། དེ་ལས་འགོད་འབད་ནི་ལས་འགོད་འབད་ནི།",
-  "signInWith": "ནང་བསྐུར་ནས {provider} ལས་འཇུག",
   "profileNotFound": "བརྗེ་འདེམས་སུ་མེད་པའི་བརྗེ་འདེམས་ལས་མེད། ཁྱེད་ཀྱིས་འདི་ལས་འགོད་འབད་ནི་ལས་འགོད་འབད་ནི།",
   "setTheme": "དབྱེ་བའི་དབྱེ་བ།",
   "setColorTheme": "རིགས་ལུས་དབྱེ་བ།",

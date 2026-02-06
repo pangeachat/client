@@ -65,7 +65,7 @@ abstract class PlatformInfos {
       useRootNavigator: false,
       // Pangea#
       children: [
-        Text('Version: $version'),
+        Text(L10n.of(context).versionWithNumber(version)),
         TextButton.icon(
           onPressed: () => launchUrlString(AppConfig.sourceCodeUrl),
           icon: const Icon(Icons.source_outlined),
@@ -79,7 +79,7 @@ abstract class PlatformInfos {
                 Navigator.of(innerContext).pop();
               },
               icon: const Icon(Icons.list_outlined),
-              label: const Text('Logs'),
+              label: Text(L10n.of(context).logs),
             );
           },
         ),
@@ -91,7 +91,7 @@ abstract class PlatformInfos {
                 Navigator.of(innerContext).pop();
               },
               icon: const Icon(Icons.settings_applications_outlined),
-              label: const Text('Advanced Configs'),
+              label: Text(L10n.of(context).advancedConfigs),
             );
           },
         ),

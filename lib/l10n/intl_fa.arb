@@ -2747,15 +2747,6 @@
   "@knock": {},
   "hidePresences": "پنهان کردن فهرست وضعیت؟",
   "@hidePresences": {},
-  "signInWith": "ورود با {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "profileNotFound": "کاربر در سرور پیدا نشد. شاید مشکل اتصال وجود دارد یا کاربر وجود ندارد.",
   "@profileNotFound": {},
   "setTheme": "تنظیم پوسته:",
