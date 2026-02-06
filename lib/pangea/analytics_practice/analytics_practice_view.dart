@@ -252,10 +252,22 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               AsyncLoaded(
                 value: final VocabAudioPracticeActivityModel activity
               ) =>
-                _AudioPracticeWidget(
-                  key: ValueKey(activity.eventId),
-                  activity: activity,
-                  controller: controller,
+                SizedBox(
+                  height: 100.0,
+                  child: Center(
+                    child: AudioPlayerWidget(
+                      null,
+                      color: Theme.of(context).colorScheme.primary,
+                      linkColor: Theme.of(context).colorScheme.secondary,
+                      fontSize:
+                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                      eventId: '${activity.eventId}_practice',
+                      roomId: activity.roomId!,
+                      senderId: Matrix.of(context).client.userID!,
+                      matrixFile: controller.getAudioFile(activity.eventId)!,
+                      autoplay: true,
+                    ),
+                  ),
                 ),
               _ => const SizedBox(height: 100.0),
             },
@@ -269,50 +281,6 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
             ),
           ),
       },
-    );
-  }
-}
-
-class _AudioPracticeWidget extends StatelessWidget {
-  final VocabAudioPracticeActivityModel activity;
-  final AnalyticsPracticeState controller;
-
-  const _AudioPracticeWidget({
-    super.key,
-    required this.activity,
-    required this.controller,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final audioFile = controller.getAudioFile(activity.eventId);
-    final eventId = activity.eventId;
-    final roomId = activity.roomId;
-
-    if (audioFile == null || eventId == null || roomId == null) {
-      return const SizedBox(
-        height: 100.0,
-        child: Center(
-          child: Text('Audio not available'),
-        ),
-      );
-    }
-
-    return SizedBox(
-      height: 100.0,
-      child: Center(
-        child: AudioPlayerWidget(
-          null,
-          color: Theme.of(context).colorScheme.primary,
-          linkColor: Theme.of(context).colorScheme.secondary,
-          fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-          eventId: '${eventId}_practice',
-          roomId: roomId,
-          senderId: Matrix.of(context).client.userID!,
-          matrixFile: audioFile,
-          autoplay: true,
-        ),
-      ),
     );
   }
 }
