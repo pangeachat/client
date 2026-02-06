@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -76,11 +74,13 @@ class SettingsPasswordView extends StatelessWidget {
                         : Text(L10n.of(context).changePassword),
                   ),
                 ),
-                const SizedBox(height: 16),
-                TextButton(
-                  child: Text(L10n.of(context).passwordRecoverySettings),
-                  onPressed: () => context.go('/rooms/settings/security/3pid'),
-                ),
+                // #Pangea
+                // const SizedBox(height: 16),
+                // TextButton(
+                //   child: Text(L10n.of(context).passwordRecoverySettings),
+                //   onPressed: () => context.go('/rooms/settings/security/3pid'),
+                // ),
+                // Pangea#
               ],
             ),
           ),
