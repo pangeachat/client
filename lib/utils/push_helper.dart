@@ -339,20 +339,20 @@ Future<void> _tryPushHelper(
   }
 
   // #Pangea - Include activity session data in payload
-  String payload = event.roomId!;
+  final Map<String, String> additionalDataMap = {};
   if (additionalData != null) {
-    const sessionIdKey = "content_pangea.activity.session_room_id";
-    const activityIdKey = "content_pangea.activity.id";
-    final sessionRoomId = additionalData[sessionIdKey];
-    final activityId = additionalData[activityIdKey];
-    if (sessionRoomId is String && activityId is String) {
-      payload = jsonEncode({
-        'room_id': event.roomId,
-        sessionIdKey: sessionRoomId,
-        activityIdKey: activityId,
-      });
-    }
+    additionalData.forEach((key, value) {
+      if (value is String) {
+        additionalDataMap[key] = value;
+      }
+    });
   }
+  final payload = FluffyChatPushPayload(
+    client.clientName,
+    event.room.id,
+    event.eventId,
+    additionalData: additionalDataMap,
+  ).toString();
   // Pangea#
 
   await flutterLocalNotificationsPlugin.show(
@@ -374,19 +374,55 @@ Future<void> _tryPushHelper(
 
 class FluffyChatPushPayload {
   final String? clientName, roomId, eventId;
+  // #Pangea
+  final Map<String, String> additionalData;
+  // Pangea#
 
-  FluffyChatPushPayload(this.clientName, this.roomId, this.eventId);
+  // #Pangea
+  // FluffyChatPushPayload(this.clientName, this.roomId, this.eventId);
+  FluffyChatPushPayload(
+    this.clientName,
+    this.roomId,
+    this.eventId, {
+    this.additionalData = const {},
+  });
+  // Pangea#
 
   factory FluffyChatPushPayload.fromString(String payload) {
     final parts = payload.split('|');
-    if (parts.length != 3) {
+    // #Pangea
+    // if (parts.length != 3) {
+    //   return FluffyChatPushPayload(null, null, null);
+    // }
+    // return FluffyChatPushPayload(parts[0], parts[1], parts[2]);
+    if (parts.length < 3) {
       return FluffyChatPushPayload(null, null, null);
     }
-    return FluffyChatPushPayload(parts[0], parts[1], parts[2]);
+
+    Map<String, String> additionalData = {};
+    if (parts.length > 3) {
+      try {
+        additionalData = Map<String, String>.from(jsonDecode(parts[3]));
+      } catch (e, s) {
+        Logs().e('Unable to parse additional data from payload', e, s);
+      }
+    }
+    return FluffyChatPushPayload(
+      parts[0],
+      parts[1],
+      parts[2],
+      additionalData: additionalData,
+    );
+    // Pangea#
   }
 
+  // #Pangea
+  // @override
+  // String toString() => '$clientName|$roomId|$eventId';
   @override
-  String toString() => '$clientName|$roomId|$eventId';
+  String toString() =>
+      '$clientName|$roomId|$eventId|${jsonEncode(additionalData)}';
+  // Pangea#
 }
 
 /// Creates a shortcut for Android platform but does not block displaying the

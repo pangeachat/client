@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -132,6 +133,36 @@ Future<void> notificationTap(
             .waitForRoomInSync(roomId)
             .timeout(const Duration(seconds: 30));
       }
+
+      // #Pangea
+      const sessionIdKey = "content_pangea.activity.session_room_id";
+      const activityIdKey = "content_pangea.activity.id";
+      final sessionRoomId = payload.additionalData[sessionIdKey];
+      final activityId = payload.additionalData[activityIdKey];
+      if (sessionRoomId != null &&
+          sessionRoomId.isNotEmpty &&
+          activityId != null &&
+          activityId.isNotEmpty) {
+        try {
+          final course = client.getRoomById(roomId);
+          if (course == null) return;
+
+          final session = client.getRoomById(sessionRoomId);
+          if (session?.membership == Membership.join) {
+            router.go('/rooms/$sessionRoomId');
+            return;
+          }
+
+          router.go(
+            '/rooms/spaces/$roomId/activity/$activityId?roomid=$sessionRoomId',
+          );
+          return;
+        } catch (err, s) {
+          ErrorHandler.logError(e: err, s: s, data: {"roomId": sessionRoomId});
+        }
+      }
+      // Pangea#
+
       router.go(
         client.getRoomById(roomId)?.membership == Membership.invite
             ? '/rooms'
