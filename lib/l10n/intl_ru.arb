@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-29 15:25:21.118191",
+  "@@last_modified": "2026-02-05 10:10:19.334362",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11075,6 +11075,21 @@
   },
   "emptyAudioError": "Запись не удалась. Пожалуйста, проверьте свои аудиоразрешения и попробуйте снова.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Идиома",
+  "grammarCopyPOSphrasalv": "Фразовый глагол",
+  "grammarCopyPOScompn": "Составное",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

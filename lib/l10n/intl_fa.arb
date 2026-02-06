@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:12.904348",
+  "@@last_modified": "2026-02-05 10:10:10.668033",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11699,6 +11699,21 @@
   },
   "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "اصطلاح",
+  "grammarCopyPOSphrasalv": "فعل عبارتی",
+  "grammarCopyPOScompn": "ترکیب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

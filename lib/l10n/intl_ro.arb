@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:33.490827",
+  "@@last_modified": "2026-02-05 10:09:23.119007",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11702,6 +11702,21 @@
   },
   "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verb Phrastic",
+  "grammarCopyPOScompn": "Compus",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
