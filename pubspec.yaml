@@ -60,7 +60,7 @@ dependencies:
   latlong2: ^0.9.1
   linkify: ^5.0.0
   # #Pangea
-  # matrix: matrix: ^4.1.0
+  # matrix: ^5.0.0
   matrix:
     path: /Users/ggurdin/pangea/matrix-dart-sdk
   # Pangea#

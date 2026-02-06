@@ -1475,7 +1475,7 @@ packages:
       path: "/Users/ggurdin/pangea/matrix-dart-sdk"
       relative: false
     source: path
-    version: "4.0.1"
+    version: "5.0.0"
   meta:
     dependency: transitive
     description:
