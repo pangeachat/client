@@ -284,10 +284,11 @@ class Choreographer extends ChangeNotifier {
     }
 
     _stopLoading();
-    if (!igcController.openMatches
-        .any((match) => match.updatedMatch.isITStart)) {
-      igcController.fetchAllSpanDetails().catchError((e) => clearMatches(e));
-    }
+    // TODO(WA): Re-enable span_details endpoint once ReplacementTypeEnumV2 is integrated
+    // if (!igcController.openMatches
+    //     .any((match) => match.updatedMatch.isITStart)) {
+    //   igcController.fetchAllSpanDetails().catchError((e) => clearMatches(e));
+    // }
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {

@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+
+import 'replacement_type_enum.dart';
 import 'span_choice_type_enum.dart';
-import 'span_data_type_enum.dart';
 
 class SpanData {
   final String? message;
@@ -14,7 +13,7 @@ class SpanData {
   final int offset;
   final int length;
   final String fullText;
-  final SpanDataType type;
+  final ReplacementTypeEnum type;
   final Rule? rule;
 
   SpanData({
@@ -35,7 +34,7 @@ class SpanData {
     int? offset,
     int? length,
     String? fullText,
-    SpanDataType? type,
+    ReplacementTypeEnum? type,
     Rule? rule,
   }) {
     return SpanData(
@@ -50,8 +49,25 @@ class SpanData {
     );
   }
 
-  factory SpanData.fromJson(Map<String, dynamic> json) {
+  /// Parse SpanData from JSON.
+  ///
+  /// [parentFullText] is used as fallback when the span JSON doesn't contain
+  /// full_text (e.g., when the server omits it to reduce payload size and
+  /// the full text is available at the response level as original_input).
+  factory SpanData.fromJson(
+    Map<String, dynamic> json, {
+    String? parentFullText,
+  }) {
     final Iterable? choices = json['choices'] ?? json['replacements'];
+    final dynamic rawType = json['type'] ?? json['type_name'] ?? json['typeName'];
+    final String? typeString = rawType is Map<String, dynamic>
+        ? (rawType['type_name'] ?? rawType['type'] ?? rawType['typeName']) as String?
+        : rawType as String?;
+
+    // Try to get fullText from span JSON, fall back to parent's original_input
+    final String? spanFullText = json['sentence'] ?? json['full_text'] ?? json['fullText'];
+    final String fullText = spanFullText ?? parentFullText ?? '';
+
     return SpanData(
       message: json['message'],
       shortMessage: json['shortMessage'] ?? json['short_message'],
@@ -62,12 +78,9 @@ class SpanData {
           .toList(),
       offset: json['offset'] as int,
       length: json['length'] as int,
-      fullText:
-          json['sentence'] ?? json['full_text'] ?? json['fullText'] as String,
-      type: SpanDataType.fromJson(json['type'] as Map<String, dynamic>),
-      rule: json['rule'] != null
-          ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
-          : null,
+      fullText: fullText,
+      type: SpanDataTypeEnumExt.fromString(typeString) ?? ReplacementTypeEnum.other,
+      rule: json['rule'] != null ? Rule.fromJson(json['rule'] as Map<String, dynamic>) : null,
     );
   }
 
@@ -76,7 +89,7 @@ class SpanData {
       'offset': offset,
       'length': length,
       'full_text': fullText,
-      'type': type.toJson(),
+      'type': type.name,
     };
 
     if (message != null) {
@@ -98,8 +111,7 @@ class SpanData {
     return data;
   }
 
-  bool isOffsetInMatchSpan(int offset) =>
-      offset >= this.offset && offset <= this.offset + length;
+  bool isOffsetInMatchSpan(int offset) => offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull(
@@ -115,9 +127,7 @@ class SpanData {
     SpanChoice? mostRecent;
     for (int i = 0; i < choices!.length; i++) {
       final choice = choices![i];
-      if (choice.timestamp != null &&
-          (mostRecent == null ||
-              choice.timestamp!.isAfter(mostRecent.timestamp!))) {
+      if (choice.timestamp != null && (mostRecent == null || choice.timestamp!.isAfter(mostRecent.timestamp!))) {
         mostRecent = choice;
       }
     }
@@ -132,23 +142,30 @@ class SpanData {
     return choices![index];
   }
 
-  String get errorSpan =>
-      fullText.characters.skip(offset).take(length).toString();
+  String get errorSpan => fullText.characters.skip(offset).take(length).toString();
 
+  /// Whether this span is a minor correction that should be auto-applied.
+  /// Returns true if:
+  /// 1. The type is explicitly marked as auto-apply (e.g., punct, spell, cap, diacritics), OR
+  /// 2. For backwards compatibility with old data that lacks new types:
+  ///    the type is NOT auto-apply AND the normalized strings match.
   bool isNormalizationError() {
+    // New data with explicit auto-apply types
+    if (type.isAutoApply) {
+      return true;
+    }
+
     final correctChoice = choices
         ?.firstWhereOrNull(
           (c) => c.isBestCorrection,
         )
         ?.value;
 
-    final l2Code =
-        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+    final l2Code = MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return correctChoice != null &&
         l2Code != null &&
-        normalizeString(correctChoice, l2Code) ==
-            normalizeString(errorSpan, l2Code);
+        normalizeString(correctChoice, l2Code) == normalizeString(errorSpan, l2Code);
   }
 
   @override
@@ -177,9 +194,7 @@ class SpanData {
     return message.hashCode ^
         shortMessage.hashCode ^
         Object.hashAll(
-          (choices ?? [])
-              .sorted((a, b) => b.value.compareTo(a.value))
-              .map((choice) => choice.hashCode),
+          (choices ?? []).sorted((a, b) => b.value.compareTo(a.value)).map((choice) => choice.hashCode),
         ) ^
         offset.hashCode ^
         length.hashCode ^
@@ -231,8 +246,7 @@ class SpanChoice {
           : SpanChoiceTypeEnum.bestCorrection,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
-      timestamp:
-          json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
+      timestamp: json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
     );
   }
 
@@ -283,11 +297,7 @@ class SpanChoice {
 
   @override
   int get hashCode {
-    return value.hashCode ^
-        type.hashCode ^
-        selected.hashCode ^
-        feedback.hashCode ^
-        timestamp.hashCode;
+    return value.hashCode ^ type.hashCode ^ selected.hashCode ^ feedback.hashCode ^ timestamp.hashCode;
   }
 }
 
@@ -316,41 +326,5 @@ class Rule {
   @override
   int get hashCode {
     return id.hashCode;
-  }
-}
-
-class SpanDataType {
-  final SpanDataTypeEnum typeName;
-
-  const SpanDataType({
-    required this.typeName,
-  });
-
-  factory SpanDataType.fromJson(Map<String, dynamic> json) {
-    final String? type =
-        json['typeName'] ?? json['type'] ?? json['type_name'] as String?;
-    return SpanDataType(
-      typeName: type != null
-          ? SpanDataTypeEnum.values
-                  .firstWhereOrNull((element) => element.name == type) ??
-              SpanDataTypeEnum.correction
-          : SpanDataTypeEnum.correction,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'type_name': typeName.name,
-      };
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! SpanDataType) return false;
-    return other.typeName == typeName;
-  }
-
-  @override
-  int get hashCode {
-    return typeName.hashCode;
   }
 }

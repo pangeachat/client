@@ -17,6 +17,7 @@ prime
 keys.json
 !/public/.env
 *.env.local_choreo
+assets/.env.local_choreo
 *.env.prod
 envs.json
 # libolm package

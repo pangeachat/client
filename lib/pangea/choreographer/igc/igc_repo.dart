@@ -1,15 +1,14 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:async/async.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
@@ -27,10 +26,7 @@ class _IgnoredMatchCacheItem {
   final PangeaMatch match;
   final DateTime timestamp;
 
-  String get spanText => match.match.fullText.characters
-      .skip(match.match.offset)
-      .take(match.match.length)
-      .toString();
+  String get spanText => match.match.fullText.characters.skip(match.match.offset).take(match.match.length).toString();
 
   @override
   bool operator ==(Object other) {
@@ -88,8 +84,7 @@ class IgcRepo {
       );
     }
 
-    final Map<String, dynamic> json =
-        jsonDecode(utf8.decode(res.bodyBytes).toString());
+    final Map<String, dynamic> json = jsonDecode(utf8.decode(res.bodyBytes).toString());
 
     return IGCResponseModel.fromJson(json);
   }
@@ -117,9 +112,7 @@ class IgcRepo {
   ) {
     final cacheKeys = [..._igcCache.keys];
     for (final key in cacheKeys) {
-      if (_igcCache[key]!
-          .timestamp
-          .isBefore(DateTime.now().subtract(_cacheDuration))) {
+      if (_igcCache[key]!.timestamp.isBefore(DateTime.now().subtract(_cacheDuration))) {
         _igcCache.remove(key);
       }
     }
