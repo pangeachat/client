@@ -24,9 +24,9 @@ Each subdirectory is a self-contained feature module. This doc provides the full
 
 | Module | Purpose | Key Files |
 |---|---|---|
-| `choreographer/` | Writing flow orchestrator | `choreographer.dart` (ChangeNotifier), `choreo_record_model.dart`, `choreo_mode_enum.dart` |
-| `choreographer/igc/` | Interactive Grammar Correction | `igc_controller.dart`, `igc_repo.dart`, `pangea_match_model.dart`, `span_card.dart`, `span_data_model.dart` |
-| `choreographer/it/` | Interactive Translation | `it_controller.dart`, `it_repo.dart`, `it_step_model.dart`, `it_feedback_card.dart`, `word_data_card.dart` |
+| `choreographer/` | Writing flow orchestrator | `choreographer.dart` (ChangeNotifier), `choreographer_state_extension.dart`, `assistance_state_enum.dart`, `choreo_record_model.dart`, `choreo_mode_enum.dart` |
+| `choreographer/igc/` | Interactive Grammar Correction | `igc_controller.dart`, `igc_repo.dart`, `replacement_type_enum.dart`, `pangea_match_model.dart`, `span_card.dart`, `span_data_model.dart`, `autocorrect_popup.dart`, `autocorrect_span.dart`, `start_igc_button.dart`, `text_normalization_util.dart` |
+| `choreographer/it/` | ⚠️ DEPRECATED — Interactive Translation | `it_controller.dart`, `it_repo.dart`, `it_step_model.dart`, `it_feedback_card.dart`, `word_data_card.dart` |
 | `choreographer/text_editing/` | Text controller | `pangea_text_controller.dart`, `edit_type_enum.dart` |
 
 ## Message Toolbar (Reading Assistance)
