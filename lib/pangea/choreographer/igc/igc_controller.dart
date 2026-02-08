@@ -1,20 +1,19 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/choreographer/igc/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_repo.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_request.dart';
+
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class IgcController {
   final Function(Object) onError;
@@ -24,30 +23,32 @@ class IgcController {
   bool _isFetching = false;
   String? _currentText;
 
+  /// Last request made - stored for feedback rerun
+  IGCRequestModel? _lastRequest;
+
+  /// Last response received - stored for feedback rerun
+  IGCResponseModel? _lastResponse;
+
   final List<PangeaMatchState> _openMatches = [];
   final List<PangeaMatchState> _closedMatches = [];
 
-  StreamController<PangeaMatchState> matchUpdateStream =
-      StreamController.broadcast();
+  StreamController<PangeaMatchState> matchUpdateStream = StreamController.broadcast();
 
   String? get currentText => _currentText;
   List<PangeaMatchState> get openMatches => _openMatches;
 
-  List<PangeaMatchState> get recentAutomaticCorrections =>
-      _closedMatches.reversed
-          .takeWhile(
-            (m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic,
-          )
-          .toList();
-
-  List<PangeaMatchState> get openAutomaticMatches => _openMatches
-      .where((match) => match.updatedMatch.match.isNormalizationError())
+  List<PangeaMatchState> get recentAutomaticCorrections => _closedMatches.reversed
+      .takeWhile(
+        (m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic,
+      )
       .toList();
+
+  List<PangeaMatchState> get openAutomaticMatches =>
+      _openMatches.where((match) => match.updatedMatch.match.isNormalizationError()).toList();
 
   PangeaMatchState? get currentlyOpenMatch {
     final RegExp pattern = RegExp(r'span_card_overlay_.+');
-    final String? matchingKey =
-        MatrixState.pAnyState.getMatchingOverlayKeys(pattern).firstOrNull;
+    final String? matchingKey = MatrixState.pAnyState.getMatchingOverlayKeys(pattern).firstOrNull;
     if (matchingKey == null) return null;
 
     final parts = matchingKey.split('_');
@@ -57,9 +58,7 @@ class IgcController {
     if (offset == null || length == null) return null;
 
     return _openMatches.firstWhereOrNull(
-      (match) =>
-          match.updatedMatch.match.offset == offset &&
-          match.updatedMatch.match.length == length,
+      (match) => match.updatedMatch.match.offset == offset && match.updatedMatch.match.length == length,
     );
   }
 
@@ -77,13 +76,7 @@ class IgcController {
         prevMessages: prevMessages,
       );
 
-  SpanDetailsRequest _spanDetailsRequest(SpanData span) => SpanDetailsRequest(
-        userL1: MatrixState.pangeaController.userController.userL1Code!,
-        userL2: MatrixState.pangeaController.userController.userL2Code!,
-        enableIGC: true,
-        enableIT: true,
-        span: span,
-      );
+
 
   void dispose() {
     matchUpdateStream.close();
@@ -92,6 +85,8 @@ class IgcController {
   void clear() {
     _isFetching = false;
     _currentText = null;
+    _lastRequest = null;
+    _lastResponse = null;
     _openMatches.clear();
     _closedMatches.clear();
     MatrixState.pAnyState.closeAllOverlays();
@@ -110,8 +105,7 @@ class IgcController {
     }
   }
 
-  PangeaMatchState? getMatchByOffset(int offset) =>
-      _openMatches.firstWhereOrNull(
+  PangeaMatchState? getMatchByOffset(int offset) => _openMatches.firstWhereOrNull(
         (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
       );
 
@@ -209,8 +203,7 @@ class IgcController {
     final replacement = matchState.originalMatch.match.fullText.characters
         .getRange(
           matchState.originalMatch.match.offset,
-          matchState.originalMatch.match.offset +
-              matchState.originalMatch.match.length,
+          matchState.originalMatch.match.offset + matchState.originalMatch.match.length,
         )
         .toString();
 
@@ -289,9 +282,7 @@ class IgcController {
         final match = matchState.updatedMatch.match;
         final updatedMatch = match.copyWith(
           fullText: _currentText,
-          offset: match.offset > offset
-              ? match.offset + replacement.characters.length - length
-              : match.offset,
+          offset: match.offset > offset ? match.offset + replacement.characters.length - length : match.offset,
         );
         matchState.setMatch(updatedMatch);
       }
@@ -306,9 +297,12 @@ class IgcController {
     if (_isFetching) return;
     _isFetching = true;
 
+    final request = _igcRequest(text, prevMessages);
+    _lastRequest = request;
+
     final res = await IgcRepo.get(
       MatrixState.pangeaController.userController.accessToken,
-      _igcRequest(text, prevMessages),
+      request,
     ).timeout(
       (const Duration(seconds: 10)),
       onTimeout: () {
@@ -327,6 +321,8 @@ class IgcController {
     }
 
     if (!_isFetching) return;
+
+    _lastResponse = res.result!;
     _currentText = res.result!.originalInput;
     for (final match in res.result!.matches) {
       final matchState = PangeaMatchState(
@@ -344,36 +340,98 @@ class IgcController {
     _isFetching = false;
   }
 
-  Future<void> fetchSpanDetails({
-    required PangeaMatchState match,
-    bool force = false,
-  }) async {
-    final span = match.updatedMatch.match;
-    if (span.isNormalizationError() && !force) {
-      return;
+  /// Re-runs IGC with user feedback about the previous response.
+  /// Returns true if feedback was submitted, false if no previous data.
+  Future<bool> rerunWithFeedback(String feedbackText) async {
+    debugPrint('rerunWithFeedback called with: $feedbackText');
+    debugPrint('_lastRequest: $_lastRequest, _lastResponse: $_lastResponse');
+    if (_lastRequest == null || _lastResponse == null) {
+      ErrorHandler.logError(
+        e: StateError('rerunWithFeedback called without prior request/response'),
+        data: {
+          'hasLastRequest': _lastRequest != null,
+          'hasLastResponse': _lastResponse != null,
+          'currentText': _currentText,
+        },
+      );
+      return false;
+    }
+    if (_isFetching) {
+      debugPrint('rerunWithFeedback: already fetching, returning false');
+      return false;
     }
 
-    final response = await SpanDataRepo.get(
+    // Close existing overlays (span card popup)
+    MatrixState.pAnyState.closeAllOverlays();
+
+    // Create feedback containing the original response
+    final feedback = LLMFeedbackModel<IGCResponseModel>(
+      feedback: feedbackText,
+      content: _lastResponse!,
+      contentToJson: (r) => r.toJson(),
+    );
+
+    // Clear existing matches and state
+    _openMatches.clear();
+    _closedMatches.clear();
+    _isFetching = true;
+
+    // Notify UI that we're fetching (shows loading indicator)
+    onFetch();
+
+    // Create request with feedback attached
+    final requestWithFeedback = _lastRequest!.copyWithFeedback([feedback]);
+    debugPrint('requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}');
+    debugPrint('requestWithFeedback.hashCode: ${requestWithFeedback.hashCode}');
+    debugPrint('_lastRequest.hashCode: ${_lastRequest!.hashCode}');
+    debugPrint('Calling IgcRepo.get...');
+
+    final res = await IgcRepo.get(
       MatrixState.pangeaController.userController.accessToken,
-      request: _spanDetailsRequest(span),
+      requestWithFeedback,
     ).timeout(
-      (const Duration(seconds: 10)),
+      const Duration(seconds: 10),
       onTimeout: () {
+        debugPrint('IgcRepo.get timed out!');
         return Result.error(
-          TimeoutException('Span details request timed out'),
+          TimeoutException('IGC feedback request timed out'),
         );
       },
     );
+    debugPrint('IgcRepo.get returned: isError=${res.isError}');
 
-    if (response.isError) throw response.error!;
-    setSpanData(match, response.result!);
-  }
-
-  Future<void> fetchAllSpanDetails() async {
-    final fetches = <Future>[];
-    for (final match in _openMatches) {
-      fetches.add(fetchSpanDetails(match: match));
+    if (res.isError) {
+      debugPrint('IgcRepo.get error: ${res.asError}');
+      onError(res.asError!);
+      _isFetching = false;
+      return false;
     }
-    await Future.wait(fetches);
+
+    debugPrint('IgcRepo.get success, calling onFetch');
+    onFetch();
+
+    if (!_isFetching) return false;
+
+    _lastResponse = res.result!;
+    _currentText = res.result!.originalInput;
+    for (final match in res.result!.matches) {
+      final matchState = PangeaMatchState(
+        match: match.match,
+        status: PangeaMatchStatusEnum.open,
+        original: match,
+      );
+      if (match.status == PangeaMatchStatusEnum.open) {
+        _openMatches.add(matchState);
+      } else {
+        _closedMatches.add(matchState);
+      }
+    }
+    _filterPreviouslyIgnoredMatches();
+    _isFetching = false;
+
+    // Notify UI that feedback rerun is complete with new matches
+    onFetch();
+    return true;
   }
+
 }

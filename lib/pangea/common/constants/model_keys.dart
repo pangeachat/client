@@ -106,6 +106,8 @@ class ModelKey {
   static const String currentText = "current";
   static const String bestContinuance = "best_continuance";
   static const String feedbackLang = "feedback_lang";
+  static const String feedback = "feedback";
+  static const String content = "content";
 
   static const String transcription = "transcription";
   static const String botTranscription = 'bot_transcription';

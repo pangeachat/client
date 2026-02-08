@@ -242,8 +242,8 @@ class SpanChoice {
           ? SpanChoiceTypeEnum.values.firstWhereOrNull(
                 (element) => element.name == json['type'],
               ) ??
-              SpanChoiceTypeEnum.bestCorrection
-          : SpanChoiceTypeEnum.bestCorrection,
+              SpanChoiceTypeEnum.suggestion
+          : SpanChoiceTypeEnum.suggestion,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
       timestamp: json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
@@ -256,16 +256,13 @@ class SpanChoice {
       'type': type.name,
     };
 
-    if (selected) {
-      data['selected'] = selected;
+    // V2 format: use selected_at instead of separate selected + timestamp
+    if (selected && timestamp != null) {
+      data['selected_at'] = timestamp!.toIso8601String();
     }
 
     if (feedback != null) {
       data['feedback'] = feedback;
-    }
-
-    if (timestamp != null) {
-      data['timestamp'] = timestamp!.toIso8601String();
     }
 
     return data;
@@ -278,7 +275,7 @@ class SpanChoice {
     return feedback!;
   }
 
-  bool get isBestCorrection => type == SpanChoiceTypeEnum.bestCorrection;
+  bool get isBestCorrection => type.isSuggestion;
 
   Color get color => type.color;
 

@@ -1,13 +1,9 @@
 import 'dart:convert';
 
+import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
-
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class Requests {
   late String? accessToken;
@@ -22,13 +18,10 @@ class Requests {
     required String url,
     required Map<dynamic, dynamic> body,
   }) async {
-    body[ModelKey.cefrLevel] = MatrixState
-        .pangeaController.userController.profile.userSettings.cefrLevel.string;
-    body[ModelKey.userGender] = MatrixState
-        .pangeaController.userController.profile.userSettings.gender.string;
+    final enrichedBody = BaseRequestModel.injectUserContext(body);
 
     dynamic encoded;
-    encoded = jsonEncode(body);
+    encoded = jsonEncode(enrichedBody);
 
     final http.Response response = await http.post(
       Uri.parse(url),
@@ -41,8 +34,7 @@ class Requests {
   }
 
   Future<http.Response> get({required String url}) async {
-    final http.Response response =
-        await http.get(Uri.parse(url), headers: _headers);
+    final http.Response response = await http.get(Uri.parse(url), headers: _headers);
 
     handleError(response);
     return response;

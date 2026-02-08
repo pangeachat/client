@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
@@ -252,6 +253,59 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
       // All grammar types and other corrections use the same default prompt
       default:
         return L10n.of(context).correctionDefaultPrompt;
+    }
+  }
+
+  /// Returns the underline color for this replacement type.
+  /// Used to visually distinguish different error categories in the text field.
+  Color underlineColor(BuildContext context) {
+    // IT start and auto-apply types use primary color
+    if (this == ReplacementTypeEnum.itStart || isAutoApply) {
+      return AppConfig.primaryColor.withOpacity(0.7);
+    }
+    // Grammar errors use warning/orange
+    if (isGrammarType) {
+      return AppConfig.warning.withOpacity(0.7);
+    }
+    // Word choice uses blue
+    if (isWordChoiceType) {
+      return Colors.blue.withOpacity(0.7);
+    }
+    // Style and fluency use teal
+    switch (this) {
+      case ReplacementTypeEnum.style:
+      case ReplacementTypeEnum.fluency:
+        return Colors.teal.withOpacity(0.7);
+      default:
+        // Other/unknown use error color
+        return Theme.of(context).colorScheme.error.withOpacity(0.7);
+    }
+  }
+
+  /// Returns a human-readable display name for this replacement type.
+  /// Used in the SpanCard UI to show the error category.
+  String displayName(BuildContext context) {
+    if (isGrammarType) {
+      return L10n.of(context).spanTypeGrammar;
+    }
+    if (isWordChoiceType) {
+      return L10n.of(context).spanTypeWordChoice;
+    }
+    switch (this) {
+      case ReplacementTypeEnum.spell:
+        return L10n.of(context).spanTypeSpelling;
+      case ReplacementTypeEnum.punct:
+        return L10n.of(context).spanTypePunctuation;
+      case ReplacementTypeEnum.style:
+        return L10n.of(context).spanTypeStyle;
+      case ReplacementTypeEnum.fluency:
+        return L10n.of(context).spanTypeFluency;
+      case ReplacementTypeEnum.diacritics:
+        return L10n.of(context).spanTypeAccents;
+      case ReplacementTypeEnum.cap:
+        return L10n.of(context).spanTypeCapitalization;
+      default:
+        return L10n.of(context).spanTypeCorrection;
     }
   }
 }

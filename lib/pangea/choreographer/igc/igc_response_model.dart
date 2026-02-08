@@ -53,7 +53,8 @@ class IGCResponseModel {
   Map<String, dynamic> toJson() => {
         "original_input": originalInput,
         "full_text_correction": fullTextCorrection,
-        "matches": matches.map((e) => e.toJson()).toList(),
+        // Serialize as flat SpanData objects matching server's SpanDataV2 schema
+        "matches": matches.map((e) => e.match.toJson()).toList(),
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
         ModelKey.enableIT: enableIT,
