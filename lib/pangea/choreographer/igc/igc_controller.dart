@@ -102,6 +102,8 @@ class IgcController {
     _closedMatches.clear();
   }
 
+  void clearCurrentText() => _currentText = null;
+
   void _filterPreviouslyIgnoredMatches() {
     for (final match in _openMatches) {
       if (IgcRepo.isIgnored(match.updatedMatch)) {
@@ -304,49 +306,9 @@ class IgcController {
   ) async {
     if (text.isEmpty) return clear();
     if (_isFetching) return;
-    _isFetching = true;
 
     final request = _igcRequest(text, prevMessages);
-    _lastRequest = request;
-
-    final res = await IgcRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      request,
-    ).timeout(
-      (const Duration(seconds: 10)),
-      onTimeout: () {
-        return Result.error(
-          TimeoutException('IGC request timed out'),
-        );
-      },
-    );
-
-    if (res.isError) {
-      onError(res.asError!);
-      clear();
-      return;
-    } else {
-      onFetch();
-    }
-
-    if (!_isFetching) return;
-
-    _lastResponse = res.result!;
-    _currentText = res.result!.originalInput;
-    for (final match in res.result!.matches) {
-      final matchState = PangeaMatchState(
-        match: match.match,
-        status: PangeaMatchStatusEnum.open,
-        original: match,
-      );
-      if (match.status == PangeaMatchStatusEnum.open) {
-        _openMatches.add(matchState);
-      } else {
-        _closedMatches.add(matchState);
-      }
-    }
-    _filterPreviouslyIgnoredMatches();
-    _isFetching = false;
+    await _fetchIGC(request);
   }
 
   /// Re-runs IGC with user feedback about the previous response.
@@ -381,10 +343,6 @@ class IgcController {
 
     // Clear existing matches and state
     clearMatches();
-    _isFetching = true;
-
-    // Notify UI that we're fetching (shows loading indicator)
-    onFetch();
 
     // Create request with feedback attached
     final requestWithFeedback = _lastRequest!.copyWithFeedback([feedback]);
@@ -394,25 +352,33 @@ class IgcController {
     debugPrint('requestWithFeedback.hashCode: ${requestWithFeedback.hashCode}');
     debugPrint('_lastRequest.hashCode: ${_lastRequest!.hashCode}');
     debugPrint('Calling IgcRepo.get...');
+    return _fetchIGC(requestWithFeedback);
+  }
+
+  Future<bool> _fetchIGC(IGCRequestModel request) async {
+    _isFetching = true;
+    _lastRequest = request;
 
     final res = await IgcRepo.get(
       MatrixState.pangeaController.userController.accessToken,
-      requestWithFeedback,
+      request,
     ).timeout(
       const Duration(seconds: 10),
       onTimeout: () {
-        debugPrint('IgcRepo.get timed out!');
         return Result.error(
-          TimeoutException('IGC feedback request timed out'),
+          TimeoutException(
+            request.feedback.isNotEmpty
+                ? 'IGC feedback request timed out'
+                : 'IGC request timed out',
+          ),
         );
       },
     );
-    debugPrint('IgcRepo.get returned: isError=${res.isError}');
 
     if (res.isError) {
       debugPrint('IgcRepo.get error: ${res.asError}');
       onError(res.asError!);
-      _isFetching = false;
+      clear();
       return false;
     }
 
@@ -437,9 +403,6 @@ class IgcController {
     }
     _filterPreviouslyIgnoredMatches();
     _isFetching = false;
-
-    // Notify UI that feedback rerun is complete with new matches
-    onFetch();
     return true;
   }
 }

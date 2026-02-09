@@ -102,7 +102,6 @@ class Choreographer extends ChangeNotifier {
       },
       () {
         _igcErrorBackoff = ChoreoConstants.defaultErrorBackoffSeconds;
-        notifyListeners();
       },
     );
 
@@ -295,17 +294,17 @@ class Choreographer extends ChangeNotifier {
 
   /// Re-runs IGC with user feedback and updates the UI.
   Future<bool> rerunWithFeedback(String feedbackText) async {
-    // Close existing overlays (span card popup)
     MatrixState.pAnyState.closeAllOverlays();
+    igcController.clearMatches();
+    igcController.clearCurrentText();
+
+    _startLoading();
     final success = await igcController.rerunWithFeedback(feedbackText);
-    if (success) {
-      // Trigger a re-render of the text field to show new IGC matches
-      textController.setSystemText(
-        textController.text,
-        EditTypeEnum.igc,
-      );
-      notifyListeners();
+    if (success && igcController.openAutomaticMatches.isNotEmpty) {
+      await igcController.acceptNormalizationMatches();
     }
+    _stopLoading();
+
     return success;
   }
 

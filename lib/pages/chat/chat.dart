@@ -2240,18 +2240,23 @@ class ChatController extends State<ChatPageWithRoom>
             choreographer,
             context,
             showNextMatch,
+            (feedback) => onRequestWritingAssistance(feedback: feedback),
           );
   }
 
   Future<void> onRequestWritingAssistance({
     bool manual = false,
     bool autosend = false,
+    String? feedback,
   }) async {
     if (shouldShowLanguageMismatchPopupByActivity) {
       return showLanguageMismatchPopup(manual: manual);
     }
 
-    await choreographer.requestWritingAssistance(manual: manual);
+    feedback == null
+        ? await choreographer.requestWritingAssistance(manual: manual)
+        : await choreographer.rerunWithFeedback(feedback);
+
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       showNextMatch();
     } else if (autosend) {

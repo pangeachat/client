@@ -20,12 +20,14 @@ class SpanCard extends StatefulWidget {
   final PangeaMatchState match;
   final Choreographer choreographer;
   final VoidCallback showNextMatch;
+  final Future Function(String) onFeedbackSubmitted;
 
   const SpanCard({
     super.key,
     required this.match,
     required this.choreographer,
     required this.showNextMatch,
+    required this.onFeedbackSubmitted,
   });
 
   @override
@@ -98,8 +100,7 @@ class SpanCardState extends State<SpanCard> {
         onSubmit: (feedbackText) async {
           Navigator.of(context).pop();
           setState(() {});
-          final success =
-              await widget.choreographer.rerunWithFeedback(feedbackText);
+          final success = await widget.onFeedbackSubmitted(feedbackText);
           if (mounted && success) {
             setState(() {});
           }
