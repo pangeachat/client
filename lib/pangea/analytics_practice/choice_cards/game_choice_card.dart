@@ -14,6 +14,7 @@ class GameChoiceCard extends StatefulWidget {
   final bool shouldFlip;
   final String targetId;
   final bool isEnabled;
+  final bool shrinkWrap;
 
   const GameChoiceCard({
     required this.child,
@@ -24,6 +25,7 @@ class GameChoiceCard extends StatefulWidget {
     this.height = 72.0,
     this.shouldFlip = false,
     this.isEnabled = true,
+    this.shrinkWrap = false,
     super.key,
   });
 
@@ -90,7 +92,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
       link: MatrixState.pAnyState.layerLinkAndKey(widget.targetId).link,
       child: HoverBuilder(
         builder: (context, hovered) => SizedBox(
-          width: double.infinity,
+          width: widget.shrinkWrap ? null : double.infinity,
           height: widget.height,
           child: GestureDetector(
             onTap: _handleTap,
@@ -109,6 +111,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
                           overlayColor: _revealed
                               ? tintColor
                               : (hovered ? hoverColor : Colors.transparent),
+                          shrinkWrap: widget.shrinkWrap,
                           child: Opacity(
                             opacity: showContent ? 1 : 0,
                             child: _revealed ? widget.altChild! : widget.child,
@@ -123,6 +126,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
                     overlayColor: _clicked
                         ? tintColor
                         : (hovered ? hoverColor : Colors.transparent),
+                    shrinkWrap: widget.shrinkWrap,
                     child: widget.child,
                   ),
           ),
@@ -137,19 +141,24 @@ class _CardContainer extends StatelessWidget {
   final Color baseColor;
   final Color overlayColor;
   final Widget child;
+  final bool shrinkWrap;
 
   const _CardContainer({
     required this.height,
     required this.baseColor,
     required this.overlayColor,
     required this.child,
+    this.shrinkWrap = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      alignment: Alignment.center,
+      height: shrinkWrap ? null : height,
+      padding: shrinkWrap 
+          ? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0) 
+          : null,
+      alignment: shrinkWrap ? null : Alignment.center,
       decoration: BoxDecoration(
         color: baseColor,
         borderRadius: BorderRadius.circular(16),

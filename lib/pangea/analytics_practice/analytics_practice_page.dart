@@ -1,10 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -19,15 +16,19 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
@@ -102,11 +103,17 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       ValueNotifier<SelectedMorphChoice?>(null);
 
   final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
+
+  final Set<String> _selectedCorrectAnswers = {};
+
+  // Track if we're showing the completion message for audio activities
+  final ValueNotifier<bool> showingAudioCompletion = ValueNotifier<bool>(false);
   final ValueNotifier<int> hintsUsedNotifier = ValueNotifier<int>(0);
   static const int maxHints = 5;
 
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
+  final Map<String, PangeaAudioFile> _audioFiles = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
 
@@ -130,6 +137,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     enableChoicesNotifier.dispose();
     selectedMorphChoice.dispose();
     hintPressedNotifier.dispose();
+    showingAudioCompletion.dispose();
     hintsUsedNotifier.dispose();
     super.dispose();
   }
@@ -220,6 +228,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     hintsUsedNotifier.value = 0;
     enableChoicesNotifier.value = true;
     progressNotifier.value = 0.0;
+    showingAudioCompletion.value = false;
     _queue.clear();
     _choiceTexts.clear();
     _choiceEmojis.clear();
@@ -236,7 +245,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   void _playAudio() {
     if (activityTarget.value == null) return;
-    if (widget.type != ConstructTypeEnum.vocab) return;
+    if (widget.type == ConstructTypeEnum.vocab &&
+        _currentActivity is VocabMeaningPracticeActivityModel) {
+    } else {
+      return;
+    }
     TtsController.tryToSpeak(
       activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
@@ -323,6 +336,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (_continuing) return;
     _continuing = true;
     enableChoicesNotifier.value = true;
+    showingAudioCompletion.value = false;
 
     try {
       if (activityState.value
@@ -334,6 +348,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
           hintPressedNotifier.value = false;
+          _selectedCorrectAnswers.clear();
           final nextActivityCompleter = _queue.removeFirst();
 
           try {
@@ -435,7 +450,55 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await _fetchLemmaInfo(activityModel.storageKey, choices);
     }
 
+    // Prefetch audio for audio activities before marking ready
+    if (activityModel is VocabAudioPracticeActivityModel) {
+      await _loadAudioForActivity(activityModel);
+    }
+
     return activityModel;
+  }
+
+  Future<void> _loadAudioForActivity(
+    VocabAudioPracticeActivityModel activity,
+  ) async {
+    final eventId = activity.eventId;
+    final roomId = activity.roomId;
+
+    if (eventId == null || roomId == null) {
+      throw L10n.of(context).oopsSomethingWentWrong;
+    }
+
+    final client = MatrixState.pangeaController.matrixState.client;
+    final room = client.getRoomById(roomId);
+
+    if (room == null) {
+      throw L10n.of(context).oopsSomethingWentWrong;
+    }
+
+    final event = await room.getEventById(eventId);
+    if (event == null) {
+      throw L10n.of(context).oopsSomethingWentWrong;
+    }
+
+    final pangeaEvent = PangeaMessageEvent(
+      event: event,
+      timeline: await room.getTimeline(),
+      ownMessage: event.senderId == client.userID,
+    );
+
+    // Prefetch the audio file
+    final audioFile = await pangeaEvent.requestTextToSpeech(
+      activity.langCode,
+      MatrixState.pangeaController.userController.voice,
+    );
+
+    // Store the audio file with the eventId as key
+    _audioFiles[eventId] = audioFile;
+  }
+
+  PangeaAudioFile? getAudioFile(String? eventId) {
+    if (eventId == null) return null;
+    return _audioFiles[eventId];
   }
 
   Future<void> _fetchLemmaInfo(
@@ -495,6 +558,22 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     hintPressedNotifier.value = true;
   }
 
+  Future<void> onAudioContinuePressed() async {
+    showingAudioCompletion.value = false;
+
+    //Mark this activity as completed, and either load the next or complete the session
+    _sessionLoader.value!.completeActivity();
+    progressNotifier.value = _sessionLoader.value!.progress;
+
+    if (_queue.isEmpty) {
+      await _completeSession();
+    } else if (_isComplete) {
+      await _completeSession();
+    } else {
+      await _continueSession();
+    }
+  }
+
   Future<void> onSelectChoice(
     String choiceContent,
   ) async {
@@ -508,8 +587,17 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         tag: choiceContent,
       );
     }
+
     final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
-    if (isCorrect) {
+
+    final isAudioActivity =
+        activity.activityType == ActivityTypeEnum.lemmaAudio;
+    if (isAudioActivity && isCorrect) {
+      _selectedCorrectAnswers.add(choiceContent);
+    }
+
+    if (isCorrect && !isAudioActivity) {
+      // Non-audio activities disable choices after first correct answer
       enableChoicesNotifier.value = false;
     }
 
@@ -525,7 +613,24 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
-    if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
+    if (!isCorrect) return;
+
+    // For audio activities, check if all answers have been selected
+    if (isAudioActivity) {
+      final allAnswers = activity.multipleChoiceContent.answers;
+      final allSelected = allAnswers
+          .every((answer) => _selectedCorrectAnswers.contains(answer));
+
+      if (!allSelected) {
+        return;
+      }
+
+      // All answers selected, disable choices and show completion message
+      enableChoicesNotifier.value = false;
+      await Future.delayed(const Duration(milliseconds: 1000));
+      showingAudioCompletion.value = true;
+      return;
+    }
 
     _playAudio();
 
@@ -553,13 +658,21 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final construct = target.targetTokenConstructID(token);
 
     if (widget.type == ConstructTypeEnum.morph) {
-      return activityRequest.morphExampleInfo?.exampleMessage;
+      return activityRequest.exampleMessage?.exampleMessage;
     }
 
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct),
       Matrix.of(context).client,
     );
+  }
+
+  List<InlineSpan>? getAudioExampleMessage() {
+    final activity = _currentActivity;
+    if (activity is VocabAudioPracticeActivityModel) {
+      return activity.exampleMessage.exampleMessage;
+    }
+    return null;
   }
 
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>

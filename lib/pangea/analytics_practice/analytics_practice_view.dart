@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
-import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
@@ -25,6 +23,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -119,60 +118,79 @@ class _AnalyticsActivityView extends StatelessWidget {
         : Theme.of(context).textTheme.titleMedium;
     titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
 
-    return ListView(
+    return Column(
       children: [
-        //Hints counter bar for grammar activities only
-        if (controller.widget.type == ConstructTypeEnum.morph)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: _HintsCounterBar(controller: controller),
-          ),
-        //per-activity instructions, add switch statement once there are more types
-        const InstructionsInlineTooltip(
-          instructionsEnum: InstructionsEnum.selectMeaning,
-          padding: EdgeInsets.symmetric(
-            vertical: 8.0,
-          ),
-        ),
-        SizedBox(
-          height: 75.0,
-          child: ValueListenableBuilder(
-            valueListenable: controller.activityTarget,
-            builder: (context, target, __) => target != null
-                ? Column(
-                    children: [
-                      Text(
-                        target.promptText(context),
-                        textAlign: TextAlign.center,
-                        style: titleStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      if (controller.widget.type == ConstructTypeEnum.vocab)
-                        PhoneticTranscriptionWidget(
-                          text:
-                              target.target.tokens.first.vocabConstructID.lemma,
-                          textLanguage: MatrixState
-                              .pangeaController.userController.userL2!,
-                          style: const TextStyle(fontSize: 14.0),
+        Expanded(
+          child: ListView(
+            children: [
+              //Hints counter bar for grammar activities only
+              if (controller.widget.type == ConstructTypeEnum.morph)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: _HintsCounterBar(controller: controller),
+                ),
+              //per-activity instructions, add switch statement once there are more types
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.selectMeaning,
+                padding: EdgeInsets.symmetric(
+                  vertical: 8.0,
+                ),
+              ),
+              SizedBox(
+                height: 75.0,
+                child: ValueListenableBuilder(
+                  valueListenable: controller.activityTarget,
+                  builder: (context, target, __) {
+                    if (target == null) return const SizedBox.shrink();
+
+                    final isAudioActivity = target.target.activityType ==
+                        ActivityTypeEnum.lemmaAudio;
+                    final isVocabType =
+                        controller.widget.type == ConstructTypeEnum.vocab;
+
+                    return Column(
+                      children: [
+                        Text(
+                          isAudioActivity && isVocabType
+                              ? L10n.of(context).selectAllWords
+                              : target.promptText(context),
+                          textAlign: TextAlign.center,
+                          style: titleStyle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                    ],
-                  )
-                : const SizedBox.shrink(),
+                        if (isVocabType && !isAudioActivity)
+                          PhoneticTranscriptionWidget(
+                            text: target
+                                .target.tokens.first.vocabConstructID.lemma,
+                            textLanguage: MatrixState
+                                .pangeaController.userController.userL2!,
+                            style: const TextStyle(fontSize: 14.0),
+                          ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              Center(
+                child: _AnalyticsPracticeCenterContent(controller: controller),
+              ),
+              const SizedBox(height: 16.0),
+              (controller.widget.type == ConstructTypeEnum.morph)
+                  ? Center(child: _HintSection(controller: controller))
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 16.0),
+              _ActivityChoicesWidget(controller),
+              const SizedBox(height: 16.0),
+              _WrongAnswerFeedback(controller: controller),
+            ],
           ),
         ),
-        const SizedBox(height: 16.0),
-        Center(
-          child: _AnalyticsPracticeCenterContent(controller: controller),
+        Container(
+          alignment: Alignment.bottomCenter,
+          child: _AudioContinueButton(controller: controller),
         ),
-        const SizedBox(height: 16.0),
-        (controller.widget.type == ConstructTypeEnum.morph)
-            ? Center(child: _HintSection(controller: controller))
-            : const SizedBox.shrink(),
-        const SizedBox(height: 16.0),
-        _ActivityChoicesWidget(controller),
-        const SizedBox(height: 16.0),
-        _WrongAnswerFeedback(controller: controller),
       ],
     );
   }
@@ -222,6 +240,32 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               controller.getExampleMessage(target!),
             ),
           ),
+        ActivityTypeEnum.lemmaAudio => ValueListenableBuilder(
+            valueListenable: controller.activityState,
+            builder: (context, state, __) => switch (state) {
+              AsyncLoaded(
+                value: final VocabAudioPracticeActivityModel activity
+              ) =>
+                SizedBox(
+                  height: 100.0,
+                  child: Center(
+                    child: AudioPlayerWidget(
+                      null,
+                      color: Theme.of(context).colorScheme.primary,
+                      linkColor: Theme.of(context).colorScheme.secondary,
+                      fontSize:
+                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                      eventId: '${activity.eventId}_practice',
+                      roomId: activity.roomId!,
+                      senderId: Matrix.of(context).client.userID!,
+                      matrixFile: controller.getAudioFile(activity.eventId)!,
+                      autoplay: true,
+                    ),
+                  ),
+                ),
+              _ => const SizedBox(height: 100.0),
+            },
+          ),
         _ => SizedBox(
             height: 100.0,
             child: Center(
@@ -231,6 +275,50 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
             ),
           ),
       },
+    );
+  }
+}
+
+class _AudioCompletionWidget extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _AudioCompletionWidget({
+    super.key,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final exampleMessage = controller.getAudioExampleMessage();
+
+    if (exampleMessage == null || exampleMessage.isEmpty) {
+      return const SizedBox(height: 100.0);
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 8,
+        ),
+        decoration: BoxDecoration(
+          color: Color.alphaBlend(
+            Colors.white.withAlpha(180),
+            ThemeData.dark().colorScheme.primary,
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimaryFixed,
+              fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+            ),
+            children: exampleMessage,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -629,6 +717,63 @@ class _ActivityChoicesWidget extends StatelessWidget {
               valueListenable: controller.enableChoicesNotifier,
               builder: (context, enabled, __) {
                 final choices = controller.filteredChoices(value);
+                final isAudioActivity =
+                    value.activityType == ActivityTypeEnum.lemmaAudio;
+
+                if (isAudioActivity) {
+                  // For audio activities, use AnimatedSwitcher to fade between choices and example message
+                  return ValueListenableBuilder(
+                    valueListenable: controller.showingAudioCompletion,
+                    builder: (context, showingCompletion, __) {
+                      return AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 500),
+                        layoutBuilder: (currentChild, previousChildren) {
+                          return Stack(
+                            alignment: Alignment.topCenter,
+                            children: <Widget>[
+                              ...previousChildren,
+                              if (currentChild != null) currentChild,
+                            ],
+                          );
+                        },
+                        child: showingCompletion
+                            ? _AudioCompletionWidget(
+                                key: const ValueKey('completion'),
+                                controller: controller,
+                              )
+                            : Padding(
+                                key: const ValueKey('choices'),
+                                padding: const EdgeInsets.all(16.0),
+                                child: Wrap(
+                                  alignment: WrapAlignment.center,
+                                  spacing: 8.0,
+                                  runSpacing: 8.0,
+                                  children: choices
+                                      .map(
+                                        (choice) => _ChoiceCard(
+                                          activity: value,
+                                          targetId: controller
+                                              .choiceTargetId(choice.choiceId),
+                                          choiceId: choice.choiceId,
+                                          onPressed: () =>
+                                              controller.onSelectChoice(
+                                            choice.choiceId,
+                                          ),
+                                          cardHeight: 48.0,
+                                          choiceText: choice.choiceText,
+                                          choiceEmoji: choice.choiceEmoji,
+                                          enabled: enabled,
+                                          shrinkWrap: true,
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+                      );
+                    },
+                  );
+                }
+
                 return Column(
                   spacing: 8.0,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -663,6 +808,56 @@ class _ActivityChoicesWidget extends StatelessWidget {
   }
 }
 
+class _AudioContinueButton extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _AudioContinueButton({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: controller.activityState,
+      builder: (context, state, __) {
+        // Only show for audio activities
+        if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+          return const SizedBox.shrink();
+        }
+
+        final activity = state.value;
+        if (activity.activityType != ActivityTypeEnum.lemmaAudio) {
+          return const SizedBox.shrink();
+        }
+
+        return ValueListenableBuilder(
+          valueListenable: controller.showingAudioCompletion,
+          builder: (context, showingCompletion, __) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: showingCompletion
+                    ? controller.onAudioContinuePressed
+                    : null,
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 48.0,
+                    vertical: 16.0,
+                  ),
+                ),
+                child: Text(
+                  L10n.of(context).continueText,
+                  style: const TextStyle(fontSize: 18.0),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
 class _ChoiceCard extends StatelessWidget {
   final MultipleChoicePracticeActivityModel activity;
   final String choiceId;
@@ -673,6 +868,7 @@ class _ChoiceCard extends StatelessWidget {
   final String choiceText;
   final String? choiceEmoji;
   final bool enabled;
+  final bool shrinkWrap;
 
   const _ChoiceCard({
     required this.activity,
@@ -683,6 +879,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.choiceText,
     required this.choiceEmoji,
     this.enabled = true,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -708,16 +905,21 @@ class _ChoiceCard extends StatelessWidget {
         );
 
       case ActivityTypeEnum.lemmaAudio:
-        return AudioChoiceCard(
+        return GameChoiceCard(
           key: ValueKey(
             '${constructId.string}_${activityType.name}_audio_$choiceId',
           ),
-          text: choiceId,
+          shouldFlip: false,
           targetId: targetId,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
+          shrinkWrap: shrinkWrap,
+          child: Text(
+            choiceText,
+            textAlign: TextAlign.center,
+          ),
         );
 
       case ActivityTypeEnum.grammarCategory:
