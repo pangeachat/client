@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-29 16:46:28.958742",
+  "@@last_modified": "2026-02-09 10:30:23.363980",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10734,8 +10734,6 @@
   "congratulations": "Parabéns!",
   "anotherRound": "Outra ronda",
   "noActivityRequest": "Non hai solicitudes de actividade actuais.",
-  "quit": "Saír",
-  "congratulationsYouveCompletedPractice": "Parabéns! Completaches a sesión de práctica.",
   "mustHave10Words": "Debes ter polo menos 10 palabras de vocabulario para practicálas. Intenta falar cun amigo ou co Pangea Bot para descubrir máis!",
   "botSettings": "Configuración do Bot",
   "activitySettingsOverrideWarning": "Idioma e nivel de idioma determinados polo plan de actividade",
@@ -10781,14 +10779,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10907,6 +10897,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat é unha aplicación de mensaxería, así que as notificacións son importantes!",
+  "enableNotificationsDesc": "Permitir notificacións",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10959,6 +10959,41 @@
   },
   "aboutMeHint": "Sobre min",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frasal",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Práctica perfecta!",
+  "greatPractice": "Gran práctica!",
+  "usedNoHints": "Bo traballo sen usar pistas!",
+  "youveCompletedPractice": "Completaches a práctica, segue así para mellorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

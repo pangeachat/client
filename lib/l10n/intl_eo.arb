@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:47:07.308262",
+  "@@last_modified": "2026-02-09 10:31:32.343732",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11826,8 +11826,6 @@
   "congratulations": "Gratulon!",
   "anotherRound": "Alia rundo",
   "noActivityRequest": "Neniu aktuala aktivitecpeticio.",
-  "quit": "Eliri",
-  "congratulationsYouveCompletedPractice": "Gratulojn! Vi kompletigis la praktikadon.",
   "mustHave10Words": "Vi devas havi almenaŭ 10 vortojn por praktiki ilin. Provu paroli kun amiko aŭ Pangea Bot por malkovri pli!",
   "botSettings": "Botaj Agordoj",
   "activitySettingsOverrideWarning": "Lingvo kaj lingvonivelo determinita de la aktiviteca plano",
@@ -11873,14 +11871,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11999,6 +11989,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat estas aplikaĵo por mesaĝado, do notifikoj estas gravaj!",
+  "enableNotificationsDesc": "Permesi notifikojn",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12051,6 +12051,41 @@
   },
   "aboutMeHint": "Pri mi",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Kunmetita",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekta praktiko!",
+  "greatPractice": "Granda praktiko!",
+  "usedNoHints": "Bonega laboro ne uzi iujn sugestojn!",
+  "youveCompletedPractice": "Vi finis la praktikon, daŭrigu por pliboniĝi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

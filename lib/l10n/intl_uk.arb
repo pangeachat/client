@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-29 16:46:45.189011",
+  "@@last_modified": "2026-02-09 10:30:50.645170",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10731,8 +10731,6 @@
   "congratulations": "Вітаємо!",
   "anotherRound": "Ще один раунд",
   "noActivityRequest": "Немає поточного запиту на активність.",
-  "quit": "Вийти",
-  "congratulationsYouveCompletedPractice": "Вітаємо! Ви завершили практичну сесію.",
   "mustHave10Words": "Вам потрібно мати принаймні 10 слів для практики. Спробуйте поговорити з другом або Pangea Bot, щоб дізнатися більше!",
   "botSettings": "Налаштування бота",
   "activitySettingsOverrideWarning": "Мова та рівень мови визначаються планом активності",
@@ -10778,14 +10776,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10904,6 +10894,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat - це додаток для обміну повідомленнями, тому сповіщення важливі!",
+  "enableNotificationsDesc": "Дозволити сповіщення",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10956,6 +10956,41 @@
   },
   "aboutMeHint": "Про мене",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Ідіома",
+  "grammarCopyPOSphrasalv": "Фразове дієслово",
+  "grammarCopyPOScompn": "Складене",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Ідеальна практика!",
+  "greatPractice": "Чудова практика!",
+  "usedNoHints": "Чудова робота, що не використовували підказки!",
+  "youveCompletedPractice": "Ви завершили практику, продовжуйте в тому ж дусі, щоб покращитися!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

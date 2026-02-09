@@ -133,6 +133,7 @@ class ModelKey {
   static const String targetLanguage = "target_language";
   static const String sourceLanguage = "source_language";
   static const String targetVoice = "target_voice";
+  static const String targetGender = "users_genders";
 
   static const String prevEventId = "prev_event_id";
   static const String prevLastUpdated = "prev_last_updated";

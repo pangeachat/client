@@ -6,6 +6,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_notifications/push_rule_extensions.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import '../../utils/localized_exception_extension.dart';
 import '../../widgets/matrix.dart';
 import 'settings_notifications.dart';
@@ -49,6 +50,35 @@ class SettingsNotificationsView extends StatelessWidget {
               child: Column(
                 children: [
                   // #Pangea
+                  FutureBuilder<bool>(
+                    future: Matrix.of(context).notificationsEnabled,
+                    builder: (context, snapshot) => AnimatedSize(
+                      duration: FluffyThemes.animationDuration,
+                      child: snapshot.data != false
+                          ? const SizedBox()
+                          : Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 8, 28, 8),
+                              child: ListTile(
+                                tileColor: theme.colorScheme.primaryContainer,
+                                leading: Icon(
+                                  Icons.error_outline,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                ),
+                                title: Text(
+                                  L10n.of(context).enableNotificationsTitle,
+                                  style: TextStyle(
+                                    color: theme.colorScheme.onPrimaryContainer,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  L10n.of(context).enableNotificationsDesc,
+                                ),
+                                onTap: controller.requestNotificationPermission,
+                              ),
+                            ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(

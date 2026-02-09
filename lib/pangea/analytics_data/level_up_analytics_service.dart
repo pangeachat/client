@@ -84,10 +84,19 @@ class LevelUpAnalyticsService {
             ownMessage: room.client.userID == event.senderId,
           );
 
-          messages.add({
-            'sent': pangeaEvent.originalSent?.text ?? pangeaEvent.body,
-            'written': pangeaEvent.originalWrittenContent,
-          });
+          if (pangeaEvent.isAudioMessage) {
+            final stt = pangeaEvent.getSpeechToTextLocal();
+            if (stt == null) continue;
+            messages.add({
+              'sent': stt.transcript.text,
+              'written': stt.transcript.text,
+            });
+          } else {
+            messages.add({
+              'sent': pangeaEvent.originalSent?.text ?? pangeaEvent.body,
+              'written': pangeaEvent.originalWrittenContent,
+            });
+          }
         } catch (e, s) {
           ErrorHandler.logError(
             e: e,

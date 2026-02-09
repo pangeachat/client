@@ -4480,7 +4480,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-29 16:47:06.259946",
+  "@@last_modified": "2026-02-09 10:31:30.698303",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11822,8 +11822,6 @@
   "congratulations": "बधाई हो!",
   "anotherRound": "एक और राउंड",
   "noActivityRequest": "कोई वर्तमान गतिविधि अनुरोध नहीं है।",
-  "quit": "बंद करें",
-  "congratulationsYouveCompletedPractice": "बधाई हो! आपने अभ्यास सत्र पूरा कर लिया है।",
   "mustHave10Words": "आपके पास उन्हें अभ्यास करने के लिए कम से कम 10 शब्द होने चाहिए। अधिक जानने के लिए किसी मित्र या Pangea Bot से बात करने की कोशिश करें!",
   "botSettings": "बॉट सेटिंग्स",
   "activitySettingsOverrideWarning": "भाषा और भाषा स्तर गतिविधि योजना द्वारा निर्धारित किया गया है",
@@ -11869,14 +11867,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11995,6 +11985,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea चैट एक टेक्स्टिंग ऐप है इसलिए सूचनाएँ महत्वपूर्ण हैं!",
+  "enableNotificationsDesc": "सूचनाएँ अनुमति दें",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12047,6 +12047,41 @@
   },
   "aboutMeHint": "मेरे बारे में",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "मुहावरा",
+  "grammarCopyPOSphrasalv": "फ्रेज़ल वर्ब",
+  "grammarCopyPOScompn": "संयुक्त",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "संपूर्ण अभ्यास!",
+  "greatPractice": "महान अभ्यास!",
+  "usedNoHints": "कोई संकेत न उपयोग करने के लिए अच्छा काम!",
+  "youveCompletedPractice": "आपने अभ्यास पूरा कर लिया है, बेहतर होने के लिए इसे जारी रखें!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

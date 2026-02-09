@@ -4480,7 +4480,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-29 16:46:53.891399",
+  "@@last_modified": "2026-02-09 10:31:05.908661",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10723,8 +10723,6 @@
   "congratulations": "Apsveicam!",
   "anotherRound": "Vēl viena kārta",
   "noActivityRequest": "Nav pašreizējo aktivitāšu pieprasījumu.",
-  "quit": "Iziet",
-  "congratulationsYouveCompletedPractice": "Apsveicam! Jūs esat pabeidzis prakses sesiju.",
   "mustHave10Words": "Jums jābūt vismaz 10 vārdiem, lai tos praktizētu. Mēģiniet parunāt ar draugu vai Pangea Bot, lai uzzinātu vairāk!",
   "botSettings": "Bota iestatījumi",
   "activitySettingsOverrideWarning": "Valoda un valodas līmenis, ko nosaka aktivitāšu plāns",
@@ -10770,14 +10768,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10896,6 +10886,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat ir ziņojumapmaiņas lietotne, tāpēc paziņojumi ir svarīgi!",
+  "enableNotificationsDesc": "Atļaut paziņojumus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10948,6 +10948,41 @@
   },
   "aboutMeHint": "Par mani",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Frazēts darbības vārds",
+  "grammarCopyPOScompn": "Savienojums",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Lieliska prakse!",
+  "greatPractice": "Lieliska prakse!",
+  "usedNoHints": "Lieliski, ka neizmantoji nevienu padomu!",
+  "youveCompletedPractice": "Tu esi pabeidzis praksi, turpini tādā garā, lai uzlabotos!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

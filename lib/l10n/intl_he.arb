@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:36.994432",
+  "@@last_modified": "2026-02-09 10:30:36.836306",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11786,8 +11786,6 @@
   "congratulations": "מזל טוב!",
   "anotherRound": "סיבוב נוסף",
   "noActivityRequest": "אין בקשת פעילות נוכחית.",
-  "quit": "צא",
-  "congratulationsYouveCompletedPractice": "מזל טוב! סיימת את מושב האימון.",
   "mustHave10Words": "עליך שיהיו לפחות 10 מילים לאוצר מילים כדי לתרגל אותן. נסה לדבר עם חבר או עם פנגיאה בוט כדי לגלות עוד!",
   "botSettings": "הגדרות בוט",
   "activitySettingsOverrideWarning": "שפה ורמת שפה נקבעות על ידי תוכנית הפעילות",
@@ -11833,14 +11831,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11959,6 +11949,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
+  "enableNotificationsDesc": "אפשר התראות",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12011,6 +12011,41 @@
   },
   "aboutMeHint": "עליי",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "ביטוי",
+  "grammarCopyPOSphrasalv": "פועל פיזי",
+  "grammarCopyPOScompn": "מורכב",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "תרגול מושלם!",
+  "greatPractice": "תרגול נהדר!",
+  "usedNoHints": "עבודה טובה שלא השתמשת ברמזים!",
+  "youveCompletedPractice": "סיימת את התרגול, המשך כך כדי להשתפר!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

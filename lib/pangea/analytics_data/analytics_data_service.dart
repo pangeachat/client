@@ -163,6 +163,7 @@ class AnalyticsDataService {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
       updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
   }
 
@@ -240,14 +241,15 @@ class AnalyticsDataService {
     int? count,
     String? roomId,
     DateTime? since,
-    ConstructUseTypeEnum? type,
+    List<ConstructUseTypeEnum>? types,
+    bool filterCapped = true,
   }) async {
     await _ensureInitialized();
     final uses = await _analyticsClientGetter.database.getUses(
       count: count,
       roomId: roomId,
       since: since,
-      type: type,
+      types: types,
     );
 
     final blocked = blockedConstructs;
@@ -263,7 +265,8 @@ class AnalyticsDataService {
         cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
       }
       final cappedLastUse = cappedLastUseCache[use.identifier];
-      if (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse)) {
+      if (filterCapped &&
+          (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse))) {
         continue;
       }
       filtered.add(use);

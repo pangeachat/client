@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:33.060448",
+  "@@last_modified": "2026-02-09 10:30:31.024987",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11472,8 +11472,6 @@
   "congratulations": "Felicitări!",
   "anotherRound": "Încă o rundă",
   "noActivityRequest": "Nu există cereri de activitate curente.",
-  "quit": "Ieși",
-  "congratulationsYouveCompletedPractice": "Felicitări! Ai completat sesiunea de practică.",
   "mustHave10Words": "Trebuie să ai cel puțin 10 cuvinte de vocabular pentru a le exersa. Încearcă să vorbești cu un prieten sau cu Pangea Bot pentru a descoperi mai multe!",
   "botSettings": "Setări Bot",
   "activitySettingsOverrideWarning": "Limba și nivelul de limbă sunt determinate de planul de activitate",
@@ -11519,14 +11517,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11645,6 +11635,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat este o aplicație de mesagerie, așa că notificările sunt importante!",
+  "enableNotificationsDesc": "Permite notificările",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11697,6 +11697,41 @@
   },
   "aboutMeHint": "Despre mine",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verb Phrastic",
+  "grammarCopyPOScompn": "Compus",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Practica perfectă!",
+  "greatPractice": "Practica grozavă!",
+  "usedNoHints": "Bravo că nu ai folosit niciun indiciu!",
+  "youveCompletedPractice": "Ai finalizat practica, continuă așa pentru a te îmbunătăți!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

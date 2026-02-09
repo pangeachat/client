@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
@@ -58,6 +59,8 @@ class MorphCategoryActivityGenerator {
           choices: choices.toSet(),
           answers: {morphTag},
         ),
+        morphExampleInfo:
+            req.morphExampleInfo ?? const MorphExampleInfo(exampleMessage: []),
       ),
     );
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:32.386327",
+  "@@last_modified": "2026-02-09 10:30:29.458472",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10728,8 +10728,6 @@
   "congratulations": "Selamat!",
   "anotherRound": "Putaran lain",
   "noActivityRequest": "Tidak ada permintaan aktivitas saat ini.",
-  "quit": "Keluar",
-  "congratulationsYouveCompletedPractice": "Selamat! Anda telah menyelesaikan sesi latihan.",
   "mustHave10Words": "Anda harus memiliki setidaknya 10 kata kosakata untuk berlatih. Cobalah berbicara dengan teman atau Pangea Bot untuk menemukan lebih banyak!",
   "botSettings": "Pengaturan Bot",
   "activitySettingsOverrideWarning": "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas",
@@ -10775,14 +10773,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10901,6 +10891,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
+  "enableNotificationsDesc": "Izinkan notifikasi",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10953,6 +10953,41 @@
   },
   "aboutMeHint": "Tentang saya",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
+  "grammarCopyPOScompn": "Kombinasi",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Latihan yang sempurna!",
+  "greatPractice": "Latihan yang hebat!",
+  "usedNoHints": "Kerja bagus tidak menggunakan petunjuk!",
+  "youveCompletedPractice": "Anda telah menyelesaikan latihan, teruskan untuk menjadi lebih baik!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

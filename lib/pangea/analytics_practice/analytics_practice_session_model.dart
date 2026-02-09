@@ -1,21 +1,70 @@
+import 'package:flutter/painting.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
+class MorphExampleInfo {
+  final List<InlineSpan> exampleMessage;
+
+  const MorphExampleInfo({
+    required this.exampleMessage,
+  });
+
+  Map<String, dynamic> toJson() {
+    final segments = <Map<String, dynamic>>[];
+
+    for (final span in exampleMessage) {
+      if (span is TextSpan) {
+        segments.add({
+          'text': span.text ?? '',
+          'isBold': span.style?.fontWeight == FontWeight.bold,
+        });
+      }
+    }
+
+    return {
+      'segments': segments,
+    };
+  }
+
+  factory MorphExampleInfo.fromJson(Map<String, dynamic> json) {
+    final segments = json['segments'] as List<dynamic>? ?? [];
+
+    final spans = <InlineSpan>[];
+    for (final segment in segments) {
+      final text = segment['text'] as String? ?? '';
+      final isBold = segment['isBold'] as bool? ?? false;
+
+      spans.add(
+        TextSpan(
+          text: text,
+          style: isBold ? const TextStyle(fontWeight: FontWeight.bold) : null,
+        ),
+      );
+    }
+
+    return MorphExampleInfo(exampleMessage: spans);
+  }
+}
+
 class AnalyticsActivityTarget {
   final PracticeTarget target;
   final GrammarErrorRequestInfo? grammarErrorInfo;
+  final MorphExampleInfo? morphExampleInfo;
 
   AnalyticsActivityTarget({
     required this.target,
     this.grammarErrorInfo,
+    this.morphExampleInfo,
   });
 
   Map<String, dynamic> toJson() => {
         'target': target.toJson(),
         'grammarErrorInfo': grammarErrorInfo?.toJson(),
+        'morphExampleInfo': morphExampleInfo?.toJson(),
       };
 
   factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +72,9 @@ class AnalyticsActivityTarget {
         target: PracticeTarget.fromJson(json['target']),
         grammarErrorInfo: json['grammarErrorInfo'] != null
             ? GrammarErrorRequestInfo.fromJson(json['grammarErrorInfo'])
+            : null,
+        morphExampleInfo: json['morphExampleInfo'] != null
+            ? MorphExampleInfo.fromJson(json['morphExampleInfo'])
             : null,
       );
 }
@@ -79,6 +131,7 @@ class AnalyticsPracticeSessionModel {
         activityQualityFeedback: null,
         target: target.target,
         grammarErrorInfo: target.grammarErrorInfo,
+        morphExampleInfo: target.morphExampleInfo,
       );
     }).toList();
   }

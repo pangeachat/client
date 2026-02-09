@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart'
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
@@ -120,6 +121,12 @@ class _AnalyticsActivityView extends StatelessWidget {
 
     return ListView(
       children: [
+        //Hints counter bar for grammar activities only
+        if (controller.widget.type == ConstructTypeEnum.morph)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: _HintsCounterBar(controller: controller),
+          ),
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
@@ -159,30 +166,13 @@ class _AnalyticsActivityView extends StatelessWidget {
           child: _AnalyticsPracticeCenterContent(controller: controller),
         ),
         const SizedBox(height: 16.0),
+        (controller.widget.type == ConstructTypeEnum.morph)
+            ? Center(child: _HintSection(controller: controller))
+            : const SizedBox.shrink(),
+        const SizedBox(height: 16.0),
         _ActivityChoicesWidget(controller),
         const SizedBox(height: 16.0),
-        ListenableBuilder(
-          listenable: Listenable.merge([
-            controller.activityState,
-            controller.selectedMorphChoice,
-          ]),
-          builder: (context, _) {
-            final activityState = controller.activityState.value;
-            final selectedChoice = controller.selectedMorphChoice.value;
-
-            if (activityState
-                    is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
-                selectedChoice == null) {
-              return const SizedBox.shrink();
-            }
-
-            return MorphMeaningWidget(
-              feature: selectedChoice.feature,
-              tag: selectedChoice.tag,
-              blankErrorFeedback: true,
-            );
-          },
-        ),
+        _WrongAnswerFeedback(controller: controller),
       ],
     );
   }
@@ -201,40 +191,42 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
       valueListenable: controller.activityTarget,
       builder: (context, target, __) => switch (target?.target.activityType) {
         null => const SizedBox(),
-        ActivityTypeEnum.grammarError => SizedBox(
-            height: 160.0,
-            child: SingleChildScrollView(
-              child: ValueListenableBuilder(
-                valueListenable: controller.activityState,
-                builder: (context, state, __) => switch (state) {
-                  AsyncLoaded(
-                    value: final GrammarErrorPracticeActivityModel activity
-                  ) =>
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ErrorBlankWidget(
-                          activity: activity,
-                        ),
-                        const SizedBox(height: 12),
-                        _GrammarErrorTranslationButton(
-                          key: ValueKey(
-                            '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
-                          ),
-                          translation: activity.translation,
-                        ),
-                      ],
-                    ),
-                  _ => const SizedBox(),
-                },
-              ),
+        ActivityTypeEnum.grammarError => SingleChildScrollView(
+            child: ListenableBuilder(
+              listenable: Listenable.merge([
+                controller.activityState,
+                controller.hintPressedNotifier,
+              ]),
+              builder: (context, __) {
+                final state = controller.activityState.value;
+                if (state
+                    is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+                  return const SizedBox();
+                }
+                final activity = state.value;
+                if (activity is! GrammarErrorPracticeActivityModel) {
+                  return const SizedBox();
+                }
+                return _ErrorBlankWidget(
+                  key: ValueKey(
+                    '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
+                  ),
+                  activity: activity,
+                  showTranslation: controller.hintPressedNotifier.value,
+                );
+              },
+            ),
+          ),
+        ActivityTypeEnum.grammarCategory => Center(
+            child: _ExampleMessageWidget(
+              controller.getExampleMessage(target!),
             ),
           ),
         _ => SizedBox(
             height: 100.0,
             child: Center(
               child: _ExampleMessageWidget(
-                controller.getExampleMessage(target!.target),
+                controller.getExampleMessage(target!),
               ),
             ),
           ),
@@ -284,11 +276,155 @@ class _ExampleMessageWidget extends StatelessWidget {
   }
 }
 
+class _HintsCounterBar extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _HintsCounterBar({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: controller.hintsUsedNotifier,
+      builder: (context, hintsUsed, __) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              AnalyticsPracticeState.maxHints,
+              (index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Icon(
+                  index < hintsUsed ? Icons.lightbulb : Icons.lightbulb_outline,
+                  size: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _HintSection extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _HintSection({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.activityState,
+        controller.hintPressedNotifier,
+        controller.hintsUsedNotifier,
+      ]),
+      builder: (context, __) {
+        final state = controller.activityState.value;
+        if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+          return const SizedBox.shrink();
+        }
+
+        final activity = state.value;
+        final hintPressed = controller.hintPressedNotifier.value;
+        final hintsUsed = controller.hintsUsedNotifier.value;
+        final maxHintsReached = hintsUsed >= AnalyticsPracticeState.maxHints;
+
+        return ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 50.0,
+          ),
+          child: Builder(
+            builder: (context) {
+              // For grammar category: fade out button and show hint content
+              if (activity is MorphPracticeActivityModel) {
+                return AnimatedCrossFade(
+                  duration: const Duration(milliseconds: 200),
+                  crossFadeState: hintPressed
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                  firstChild: HintButton(
+                    onPressed:
+                        maxHintsReached ? () {} : controller.onHintPressed,
+                    depressed: maxHintsReached,
+                  ),
+                  secondChild: MorphMeaningWidget(
+                    feature: activity.morphFeature,
+                    tag: activity.multipleChoiceContent.answers.first,
+                  ),
+                );
+              }
+
+              // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
+              return HintButton(
+                onPressed: (hintPressed || maxHintsReached)
+                    ? () {}
+                    : controller.onHintPressed,
+                depressed: hintPressed || maxHintsReached,
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _WrongAnswerFeedback extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _WrongAnswerFeedback({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.activityState,
+        controller.selectedMorphChoice,
+      ]),
+      builder: (context, _) {
+        final activityState = controller.activityState.value;
+        final selectedChoice = controller.selectedMorphChoice.value;
+
+        if (activityState
+                is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
+            selectedChoice == null) {
+          return const SizedBox.shrink();
+        }
+
+        final activity = activityState.value;
+        final isWrongAnswer =
+            !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
+
+        if (!isWrongAnswer) {
+          return const SizedBox.shrink();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: MorphMeaningWidget(
+            feature: selectedChoice.feature,
+            tag: selectedChoice.tag,
+            blankErrorFeedback: true,
+          ),
+        );
+      },
+    );
+  }
+}
+
 class _ErrorBlankWidget extends StatelessWidget {
   final GrammarErrorPracticeActivityModel activity;
+  final bool showTranslation;
 
   const _ErrorBlankWidget({
+    super.key,
     required this.activity,
+    required this.showTranslation,
   });
 
   @override
@@ -354,110 +490,101 @@ class _ErrorBlankWidget extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: RichText(
-        text: TextSpan(
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimaryFixed,
-            fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-          ),
-          children: [
-            if (trimmedBefore) const TextSpan(text: '…'),
-            if (before.isNotEmpty) TextSpan(text: before),
-            WidgetSpan(
-              child: Container(
-                height: 4.0,
-                width: (errorLength * 8).toDouble(),
-                padding: const EdgeInsets.only(bottom: 2.0),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RichText(
+            text: TextSpan(
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryFixed,
+                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
               ),
+              children: [
+                if (trimmedBefore) const TextSpan(text: '…'),
+                if (before.isNotEmpty) TextSpan(text: before),
+                WidgetSpan(
+                  child: Container(
+                    height: 4.0,
+                    width: (errorLength * 8).toDouble(),
+                    padding: const EdgeInsets.only(bottom: 2.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+                if (after.isNotEmpty) TextSpan(text: after),
+                if (trimmedAfter) const TextSpan(text: '…'),
+              ],
             ),
-            if (after.isNotEmpty) TextSpan(text: after),
-            if (trimmedAfter) const TextSpan(text: '…'),
-          ],
-        ),
+          ),
+          AnimatedSize(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeInOut,
+            alignment: Alignment.topCenter,
+            child: showTranslation
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(height: 8),
+                      Text(
+                        activity.translation,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimaryFixed,
+                          fontSize: AppConfig.fontSizeFactor *
+                              AppConfig.messageFontSize,
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ],
       ),
     );
   }
 }
 
-class _GrammarErrorTranslationButton extends StatefulWidget {
-  final String translation;
+class HintButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final bool depressed;
 
-  const _GrammarErrorTranslationButton({
+  const HintButton({
+    required this.onPressed,
+    required this.depressed,
     super.key,
-    required this.translation,
   });
 
   @override
-  State<_GrammarErrorTranslationButton> createState() =>
-      _GrammarErrorTranslationButtonState();
-}
-
-class _GrammarErrorTranslationButtonState
-    extends State<_GrammarErrorTranslationButton> {
-  bool _showTranslation = false;
-
-  void _toggleTranslation() {
-    if (_showTranslation) {
-      setState(() {
-        _showTranslation = false;
-      });
-    } else {
-      setState(() {
-        _showTranslation = true;
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: _toggleTranslation,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8.0,
-          children: [
-            if (_showTranslation)
-              Flexible(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.alphaBlend(
-                      Colors.white.withAlpha(180),
-                      ThemeData.dark().colorScheme.primary,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Text(
-                    widget.translation,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimaryFixed,
-                      fontSize:
-                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                    ),
-                  ),
-                ),
-              )
-            else
-              ElevatedButton(
-                onPressed: _toggleTranslation,
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(8),
-                ),
-                child: const Icon(
-                  Icons.lightbulb_outline,
-                  size: 20,
-                ),
-              ),
-          ],
-        ),
+    return PressableButton(
+      borderRadius: BorderRadius.circular(20),
+      color: Theme.of(context).colorScheme.primaryContainer,
+      onPressed: onPressed,
+      depressed: depressed,
+      playSound: true,
+      colorFactor: 0.3,
+      builder: (context, depressed, shadowColor) => Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+              color: depressed
+                  ? shadowColor
+                  : Theme.of(context).colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const Icon(
+            Icons.lightbulb_outline,
+            size: 20,
+          ),
+        ],
       ),
     );
   }

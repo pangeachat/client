@@ -2784,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-29 16:46:53.073926",
+  "@@last_modified": "2026-02-09 10:31:04.579384",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11713,8 +11713,6 @@
   "congratulations": "Binabati kita!",
   "anotherRound": "Isa pang round",
   "noActivityRequest": "Walang kasalukuyang kahilingan sa aktibidad.",
-  "quit": "Lumabas",
-  "congratulationsYouveCompletedPractice": "Binabati kita! Natapos mo na ang sesyon ng pagsasanay.",
   "mustHave10Words": "Dapat mayroon kang hindi bababa sa 10 salita ng bokabularyo upang sanayin ang mga ito. Subukan mong makipag-usap sa isang kaibigan o sa Pangea Bot upang matuklasan pa!",
   "botSettings": "Mga Setting ng Bot",
   "activitySettingsOverrideWarning": "Wika at antas ng wika na tinutukoy ng plano ng aktibidad",
@@ -11760,14 +11758,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11886,6 +11876,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Ang Pangea Chat ay isang texting app kaya't mahalaga ang mga notification!",
+  "enableNotificationsDesc": "Pahintulutan ang mga notification",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11938,6 +11938,41 @@
   },
   "aboutMeHint": "Tungkol sa akin",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idyoma",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Pinagsama",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perpektong pagsasanay!",
+  "greatPractice": "Mahusay na pagsasanay!",
+  "usedNoHints": "Magandang trabaho sa hindi paggamit ng anumang mga pahiwatig!",
+  "youveCompletedPractice": "Natapos mo na ang pagsasanay, ipagpatuloy mo lang ito upang maging mas mahusay!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

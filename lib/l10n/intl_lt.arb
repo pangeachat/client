@@ -3858,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-29 16:46:56.980108",
+  "@@last_modified": "2026-02-09 10:31:13.179961",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11542,8 +11542,6 @@
   "congratulations": "Sveikiname!",
   "anotherRound": "Dar viena raundas",
   "noActivityRequest": "Nėra dabartinio veiklos prašymo.",
-  "quit": "Išeiti",
-  "congratulationsYouveCompletedPractice": "Sveikiname! Jūs baigėte praktikos sesiją.",
   "mustHave10Words": "Turite turėti bent 10 žodžių, kad galėtumėte juos praktikuoti. Pabandykite pasikalbėti su draugu arba Pangea Bot, kad sužinotumėte daugiau!",
   "botSettings": "Roboto nustatymai",
   "activitySettingsOverrideWarning": "Kalba ir kalbos lygis nustatomi pagal veiklos planą",
@@ -11589,14 +11587,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11715,6 +11705,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat yra žinučių programa, todėl pranešimai yra svarbūs!",
+  "enableNotificationsDesc": "Leisti pranešimus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11767,6 +11767,41 @@
   },
   "aboutMeHint": "Apie mane",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sudėtinis",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Tobulas praktika!",
+  "greatPractice": "Puiki praktika!",
+  "usedNoHints": "Puikus darbas, kad nenaudojote jokių užuominų!",
+  "youveCompletedPractice": "Jūs baigėte praktiką, tęskite, kad taptumėte geresni!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

@@ -139,7 +139,6 @@ class SettingsLearningController extends State<SettingsLearning> {
         waitForDataInSync: true,
       ),
       onError: (e, s) {
-        debugPrint("Error resetting instruction tooltips: $e");
         debugger(when: kDebugMode);
         ErrorHandler.logError(
           e: e,

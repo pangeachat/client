@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:47.242614",
+  "@@last_modified": "2026-02-09 10:30:55.280815",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11830,8 +11830,6 @@
   "congratulations": "Gratulerer!",
   "anotherRound": "En runde til",
   "noActivityRequest": "Ingen nåværende aktivitetsforespørsel.",
-  "quit": "Avslutt",
-  "congratulationsYouveCompletedPractice": "Gratulerer! Du har fullført økt med øvelser.",
   "mustHave10Words": "Du må ha minst 10 ordforråd for å øve på dem. Prøv å snakke med en venn eller Pangea Bot for å oppdage mer!",
   "botSettings": "Bot-innstillinger",
   "activitySettingsOverrideWarning": "Språk og språknivå bestemt av aktivitetsplan",
@@ -11877,14 +11875,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12003,6 +11993,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat er en tekstmelding-app, så varsler er viktige!",
+  "enableNotificationsDesc": "Tillat varsler",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12055,6 +12055,41 @@
   },
   "aboutMeHint": "Om meg",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sammensatt",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekt øvelse!",
+  "greatPractice": "Flott øvelse!",
+  "usedNoHints": "Bra jobba med å ikke bruke noen hint!",
+  "youveCompletedPractice": "Du har fullført øvelsen, fortsett slik for å bli bedre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

@@ -59,6 +59,9 @@ post_install do |installer|
         '$(inherited)',
         # dart: PermissionGroup.microphone
         'PERMISSION_MICROPHONE=1',
+
+        ## dart: PermissionGroup.notification
+        'PERMISSION_NOTIFICATIONS=1',
       ]
     end
   end

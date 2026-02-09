@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-29 16:46:54.594506",
+  "@@last_modified": "2026-02-09 10:31:06.969392",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10954,8 +10954,6 @@
   "congratulations": "مبروك!",
   "anotherRound": "جولة أخرى",
   "noActivityRequest": "لا يوجد طلب نشاط حالي.",
-  "quit": "خروج",
-  "congratulationsYouveCompletedPractice": "تهانينا! لقد أكملت جلسة التدريب.",
   "mustHave10Words": "يجب أن يكون لديك على الأقل 10 كلمات مفردات لممارستها. حاول التحدث إلى صديق أو بوت بانجيا لاكتشاف المزيد!",
   "botSettings": "إعدادات البوت",
   "activitySettingsOverrideWarning": "اللغة ومستوى اللغة محددان بواسطة خطة النشاط",
@@ -11001,14 +10999,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11127,6 +11117,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "بانجيا شات هو تطبيق رسائل لذا فإن الإشعارات مهمة!",
+  "enableNotificationsDesc": "السماح بالإشعارات",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11179,6 +11179,41 @@
   },
   "aboutMeHint": "عنّي",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "تعبير اصطلاحي",
+  "grammarCopyPOSphrasalv": "فعل مركب",
+  "grammarCopyPOScompn": "مركب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "ممارسة مثالية!",
+  "greatPractice": "ممارسة رائعة!",
+  "usedNoHints": "عمل رائع بعدم استخدام أي تلميحات!",
+  "youveCompletedPractice": "لقد أكملت الممارسة، استمر في ذلك لتحسين مهاراتك!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

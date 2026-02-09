@@ -111,9 +111,11 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
           child: Row(
             spacing: 12.0,
             children: [
-              BackButton(
-                onPressed: Navigator.of(context).pop,
-              ),
+              Navigator.of(context).canPop()
+                  ? BackButton(
+                      onPressed: Navigator.of(context).maybePop,
+                    )
+                  : const SizedBox(width: 40.0),
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
@@ -170,7 +172,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                 ),
                                 child: Wrap(
                                   spacing: isColumnMode ? 16.0 : 8.0,
-                                  runSpacing: isColumnMode ? 16.0 : 8.0,
+                                  runSpacing: isColumnMode ? 24.0 : 16.0,
                                   alignment: WrapAlignment.center,
                                   children: languages
                                       .where(
@@ -189,6 +191,9 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                             Radius.circular(16.0),
                                           ),
                                           child: FilterChip(
+                                            materialTapTargetSize:
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
                                             selected: _selectedLanguage == l,
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(

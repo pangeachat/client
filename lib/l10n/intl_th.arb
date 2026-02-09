@@ -4453,7 +4453,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-29 16:46:49.466772",
+  "@@last_modified": "2026-02-09 10:31:00.286726",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11795,8 +11795,6 @@
   "congratulations": "ขอแสดงความยินดี!",
   "anotherRound": "อีกหนึ่งรอบ",
   "noActivityRequest": "ไม่มีคำขอทำกิจกรรมในขณะนี้",
-  "quit": "ออก",
-  "congratulationsYouveCompletedPractice": "ขอแสดงความยินดี! คุณได้เสร็จสิ้นการฝึกฝนแล้ว",
   "mustHave10Words": "คุณต้องมีคำศัพท์อย่างน้อย 10 คำเพื่อฝึกฝน ลองพูดคุยกับเพื่อนหรือ Pangea Bot เพื่อค้นพบเพิ่มเติม!",
   "botSettings": "การตั้งค่า Bot",
   "activitySettingsOverrideWarning": "ภาษาและระดับภาษาที่กำหนดโดยแผนกิจกรรม",
@@ -11842,14 +11840,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11968,6 +11958,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat เป็นแอปส่งข้อความ ดังนั้นการแจ้งเตือนจึงสำคัญ!",
+  "enableNotificationsDesc": "อนุญาตการแจ้งเตือน",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12020,6 +12020,41 @@
   },
   "aboutMeHint": "เกี่ยวกับฉัน",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "สำนวน",
+  "grammarCopyPOSphrasalv": "กริยาวลี",
+  "grammarCopyPOScompn": "คำผสม",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "การฝึกฝนที่สมบูรณ์แบบ!",
+  "greatPractice": "การฝึกฝนที่ยอดเยี่ยม!",
+  "usedNoHints": "ทำได้ดีที่ไม่ใช้คำใบ้ใด ๆ!",
+  "youveCompletedPractice": "คุณได้ทำการฝึกฝนเสร็จสิ้นแล้ว ทำต่อไปเพื่อให้ดีขึ้น!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

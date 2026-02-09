@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:57.678822",
+  "@@last_modified": "2026-02-09 10:31:14.436728",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6315,8 +6315,6 @@
   "congratulations": "Chúc mừng!",
   "anotherRound": "Một vòng nữa",
   "noActivityRequest": "Không có yêu cầu hoạt động nào hiện tại.",
-  "quit": "Thoát",
-  "congratulationsYouveCompletedPractice": "Chúc mừng! Bạn đã hoàn thành buổi thực hành.",
   "mustHave10Words": "Bạn phải có ít nhất 10 từ vựng để thực hành. Hãy thử nói chuyện với một người bạn hoặc Pangea Bot để khám phá thêm!",
   "botSettings": "Cài đặt Bot",
   "activitySettingsOverrideWarning": "Ngôn ngữ và cấp độ ngôn ngữ được xác định bởi kế hoạch hoạt động",
@@ -6362,14 +6360,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -6488,6 +6478,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat là một ứng dụng nhắn tin nên thông báo là rất quan trọng!",
+  "enableNotificationsDesc": "Cho phép thông báo",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -6540,6 +6540,41 @@
   },
   "aboutMeHint": "Về tôi",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Thành ngữ",
+  "grammarCopyPOSphrasalv": "Động từ cụm",
+  "grammarCopyPOScompn": "Hợp chất",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Thực hành hoàn hảo!",
+  "greatPractice": "Thực hành tuyệt vời!",
+  "usedNoHints": "Làm tốt lắm khi không sử dụng bất kỳ gợi ý nào!",
+  "youveCompletedPractice": "Bạn đã hoàn thành thực hành, hãy tiếp tục để cải thiện!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

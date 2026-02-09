@@ -204,7 +204,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     int? count,
     String? roomId,
     DateTime? since,
-    ConstructUseTypeEnum? type,
+    List<ConstructUseTypeEnum>? types,
   }) async {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
@@ -216,7 +216,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       if (roomId != null && use.metadata.roomId != roomId) {
         return true; // skip but continue
       }
-      if (type != null && use.useType != type) {
+      if (types != null && !types.contains(use.useType)) {
         return true; // skip but continue
       }
 

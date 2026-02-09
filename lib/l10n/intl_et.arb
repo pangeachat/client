@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-29 16:46:41.028371",
+  "@@last_modified": "2026-02-09 10:30:44.206560",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11008,8 +11008,6 @@
   "congratulations": "Palju õnne!",
   "anotherRound": "Veel üks voor",
   "noActivityRequest": "Praegu ei ole aktiivsuse taotlust.",
-  "quit": "Välju",
-  "congratulationsYouveCompletedPractice": "Palju õnne! Olete lõpetanud harjut seansi.",
   "mustHave10Words": "Te peate omama vähemalt 10 sõnavara sõna, et neid harjutada. Proovige rääkida sõbraga või Pangea Botiga, et rohkem avastada!",
   "botSettings": "Boti seaded",
   "activitySettingsOverrideWarning": "Keele ja keele taseme määrab tegevusplaan",
@@ -11055,14 +11053,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11181,6 +11171,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat on sõnumite rakendus, seega on teavitused olulised!",
+  "enableNotificationsDesc": "Luba teavitused",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11233,6 +11233,41 @@
   },
   "aboutMeHint": "Minust",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idioom",
+  "grammarCopyPOSphrasalv": "Fraasi Verb",
+  "grammarCopyPOScompn": "Kompleks",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Täiuslik harjutamine!",
+  "greatPractice": "Suurepärane harjutamine!",
+  "usedNoHints": "Hea töö, et ei kasutanud mingeid vihjeid!",
+  "youveCompletedPractice": "Oled harjutamise lõpetanud, jätka samas vaimus, et paremaks saada!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

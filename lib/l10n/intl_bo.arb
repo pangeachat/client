@@ -4276,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-29 16:46:59.930666",
+  "@@last_modified": "2026-02-09 10:31:18.713273",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10491,8 +10491,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Ninguna solicitud de actividad actual.",
-  "quit": "Salir",
-  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
   "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
   "botSettings": "Configuraciones del Bot",
   "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
@@ -10538,14 +10536,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10664,6 +10654,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
+  "enableNotificationsDesc": "Dozvoli obaveštenja",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10716,6 +10716,41 @@
   },
   "aboutMeHint": "Bok o meni",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Compound",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekta praktik!",
+  "greatPractice": "Stora praktik!",
+  "usedNoHints": "Bra jobbat utan att använda några ledtrådar!",
+  "youveCompletedPractice": "Du har slutfört praktiken, fortsätt så för att bli bättre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

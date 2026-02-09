@@ -4006,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-29 16:46:29.725551",
+  "@@last_modified": "2026-02-09 10:30:24.862038",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11360,8 +11360,6 @@
   "congratulations": "Onnittelut!",
   "anotherRound": "Toinen kierros",
   "noActivityRequest": "Ei nykyistä aktiviteettipyyntöä.",
-  "quit": "Poistu",
-  "congratulationsYouveCompletedPractice": "Onnittelut! Olet suorittanut harjoitussession.",
   "mustHave10Words": "Sinulla on oltava vähintään 10 sanastoa harjoiteltavaksi. Yritä puhua ystävän tai Pangea Botin kanssa löytääksesi lisää!",
   "botSettings": "Bottiasetukset",
   "activitySettingsOverrideWarning": "Kieli ja kielitaso määräytyvät aktiviteettisuunnitelman mukaan",
@@ -11407,14 +11405,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11533,6 +11523,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat on viestintäsovellus, joten ilmoitukset ovat tärkeitä!",
+  "enableNotificationsDesc": "Salli ilmoitukset",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11585,6 +11585,41 @@
   },
   "aboutMeHint": "Tietoa minusta",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idioomi",
+  "grammarCopyPOSphrasalv": "Fraasiverbi",
+  "grammarCopyPOScompn": "Yhdistelmä",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Täydellinen harjoittelu!",
+  "greatPractice": "Loistava harjoittelu!",
+  "usedNoHints": "Hyvä työ, ettet käyttänyt mitään vihjeitä!",
+  "youveCompletedPractice": "Olet suorittanut harjoituksen, jatka samaan malliin parantuaksesi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-29 16:46:55.426222",
+  "@@last_modified": "2026-02-09 10:31:10.118107",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10959,8 +10959,6 @@
   "congratulations": "Tebrikler!",
   "anotherRound": "Bir tur daha",
   "noActivityRequest": "Şu anda etkinlik talebi yok.",
-  "quit": "Çık",
-  "congratulationsYouveCompletedPractice": "Tebrikler! Pratik oturumunu tamamladınız.",
   "mustHave10Words": "Pratik yapmak için en az 10 kelimeye sahip olmalısınız. Daha fazla keşfetmek için bir arkadaşınızla veya Pangea Bot ile konuşmayı deneyin!",
   "botSettings": "Bot Ayarları",
   "activitySettingsOverrideWarning": "Etkinlik planı tarafından belirlenen dil ve dil seviyesi",
@@ -11006,14 +11004,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11132,6 +11122,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat, bir mesajlaşma uygulamasıdır, bu yüzden bildirimler önemlidir!",
+  "enableNotificationsDesc": "Bildirimlere izin ver",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11184,6 +11184,41 @@
   },
   "aboutMeHint": "Hakkımda",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Deyim",
+  "grammarCopyPOSphrasalv": "Deyim Fiili",
+  "grammarCopyPOScompn": "Bileşik",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Mükemmel pratik!",
+  "greatPractice": "Harika pratik!",
+  "usedNoHints": "Hiç ipucu kullanmadığın için iyi iş çıkardın!",
+  "youveCompletedPractice": "Pratiği tamamladın, daha iyi olmak için devam et!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

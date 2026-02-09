@@ -35,8 +35,6 @@ abstract class SettingKeys {
   static const String displayNavigationRail =
       'chat.fluffy.display_navigation_rail';
   // #Pangea
-  static const String useActivityImageAsChatBackground =
-      'pangea.use_activity_image_as_chat_background';
   static const String volume = 'pangea.volume';
   static const String showedActivityMenu =
       'pangea.showed_activity_menu_tutorial';

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 16:46:50.915054",
+  "@@last_modified": "2026-02-09 10:31:02.904070",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10735,8 +10735,6 @@
   "congratulations": "恭喜！",
   "anotherRound": "再來一輪",
   "noActivityRequest": "目前沒有活動請求。",
-  "quit": "退出",
-  "congratulationsYouveCompletedPractice": "恭喜！您已完成練習課程。",
   "mustHave10Words": "您必須至少有 10 個詞彙來進行練習。嘗試與朋友或 Pangea Bot 交談以發現更多！",
   "botSettings": "機器人設定",
   "activitySettingsOverrideWarning": "語言和語言級別由活動計劃決定",
@@ -10782,14 +10780,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10908,6 +10898,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat 是一個即時通訊應用程式，因此通知非常重要！",
+  "enableNotificationsDesc": "允許通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10960,6 +10960,41 @@
   },
   "aboutMeHint": "關於我",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "成語",
+  "grammarCopyPOSphrasalv": "片語動詞",
+  "grammarCopyPOScompn": "合成詞",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "完美的練習！",
+  "greatPractice": "很棒的練習！",
+  "usedNoHints": "不使用任何提示，做得好！",
+  "youveCompletedPractice": "你已完成練習，繼續努力以變得更好！",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

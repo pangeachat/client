@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-29 16:46:36.280745",
+  "@@last_modified": "2026-02-09 10:30:35.547762",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11109,8 +11109,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Nema trenutnog zahtjeva za aktivnost.",
-  "quit": "Izlaz",
-  "congratulationsYouveCompletedPractice": "Čestitamo! Završili ste sesiju vježbanja.",
   "mustHave10Words": "Morate imati najmanje 10 riječi za vokabular kako biste ih vježbali. Pokušajte razgovarati s prijateljem ili Pangea Botom kako biste otkrili više!",
   "botSettings": "Postavke Bota",
   "activitySettingsOverrideWarning": "Jezik i razina jezika određeni planom aktivnosti",
@@ -11156,14 +11154,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11282,6 +11272,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
+  "enableNotificationsDesc": "Dopusti obavijesti",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11334,6 +11334,41 @@
   },
   "aboutMeHint": "O meni",
   "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasalni Glagol",
+  "grammarCopyPOScompn": "Složenica",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Savršena praksa!",
+  "greatPractice": "Sjajna praksa!",
+  "usedNoHints": "Odlično, niste koristili nikakve savjete!",
+  "youveCompletedPractice": "Završili ste praksu, nastavite tako da postanete bolji!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }
