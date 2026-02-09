@@ -3858,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-29 15:25:04.531263",
+  "@@last_modified": "2026-02-05 10:10:01.069181",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11715,6 +11715,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat yra žinučių programa, todėl pranešimai yra svarbūs!",
+  "enableNotificationsDesc": "Leisti pranešimus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11762,6 +11772,21 @@
   },
   "emptyAudioError": "Įrašymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kartą.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sudėtinis",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

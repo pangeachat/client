@@ -4453,7 +4453,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-29 15:24:55.978319",
+  "@@last_modified": "2026-02-05 10:09:49.236652",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11968,6 +11968,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat เป็นแอปส่งข้อความ ดังนั้นการแจ้งเตือนจึงสำคัญ!",
+  "enableNotificationsDesc": "อนุญาตการแจ้งเตือน",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12015,6 +12025,21 @@
   },
   "emptyAudioError": "การบันทึกล้มเหลว โปรดตรวจสอบสิทธิ์เสียงของคุณและลองอีกครั้ง",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "สำนวน",
+  "grammarCopyPOSphrasalv": "กริยาวลี",
+  "grammarCopyPOScompn": "คำผสม",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

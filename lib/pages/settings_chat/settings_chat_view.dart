@@ -80,12 +80,10 @@ class SettingsChatView extends StatelessWidget {
               ),
 
               // #Pangea
-              SettingsSwitchListTile.adaptive(
-                title: L10n.of(context).useActivityImageAsChatBackground,
-                onChanged: (b) =>
-                    AppConfig.useActivityImageAsChatBackground = b,
-                storeKey: SettingKeys.useActivityImageAsChatBackground,
-                defaultValue: AppConfig.useActivityImageAsChatBackground,
+              SwitchListTile.adaptive(
+                value: AppConfig.useActivityImageAsChatBackground,
+                title: Text(L10n.of(context).useActivityImageAsChatBackground),
+                onChanged: controller.setUseActivityImageBackground,
               ),
               // Divider(color: theme.dividerColor),
               // ListTile(

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:23.670980",
+  "@@last_modified": "2026-02-05 10:10:22.625655",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12012,6 +12012,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
+  "enableNotificationsDesc": "Dozvoli obaveštenja",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu za čat",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12059,6 +12069,21 @@
   },
   "emptyAudioError": "Snimanje nije uspelo. Proverite svoja audio dopuštenja i pokušajte ponovo.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Kombinacija",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

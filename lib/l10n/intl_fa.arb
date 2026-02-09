@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:12.904348",
+  "@@last_modified": "2026-02-05 10:10:10.668033",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11642,6 +11642,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "چت پانگه‌آ یک اپلیکیشن پیام‌رسان است، بنابراین اعلان‌ها مهم هستند!",
+  "enableNotificationsDesc": "اجازه دادن به اعلان‌ها",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11689,6 +11699,21 @@
   },
   "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "اصطلاح",
+  "grammarCopyPOSphrasalv": "فعل عبارتی",
+  "grammarCopyPOScompn": "ترکیب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

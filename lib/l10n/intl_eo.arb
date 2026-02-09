@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:20.184834",
+  "@@last_modified": "2026-02-05 10:10:17.896498",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11999,6 +11999,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat estas aplikaĵo por mesaĝado, do notifikoj estas gravaj!",
+  "enableNotificationsDesc": "Permesi notifikojn",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12046,6 +12056,21 @@
   },
   "emptyAudioError": "Registrado malsukcesis. Bonvolu kontroli viajn aŭdajn permesojn kaj provi denove.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Kunmetita",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

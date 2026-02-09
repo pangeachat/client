@@ -61,6 +61,9 @@ class Settings3PidController extends State<Settings3Pid> {
                   auth: auth,
                 ),
           ),
+      // #Pangea
+      showError: (e) => !e.toString().contains("Request has been canceled"),
+      // Pangea#
     );
     if (success.error != null) return;
     setState(() => request = null);

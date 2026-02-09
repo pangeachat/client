@@ -4,15 +4,54 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
+import 'package:fluffychat/pangea/authentication/p_logout.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
-class SpaceCodeOnboardingView extends StatelessWidget {
-  final SpaceCodeOnboardingState controller;
-  const SpaceCodeOnboardingView({
-    super.key,
-    required this.controller,
-  });
+class EnableNotifications extends StatefulWidget {
+  const EnableNotifications({super.key});
+
+  @override
+  EnableNotificationsController createState() =>
+      EnableNotificationsController();
+}
+
+class EnableNotificationsController extends State<EnableNotifications> {
+  Profile? profile;
+
+  @override
+  void initState() {
+    _setProfile();
+    super.initState();
+  }
+
+  Future<void> _setProfile() async {
+    final client = Matrix.of(context).client;
+    try {
+      profile = await client.getProfileFromUserId(
+        client.userID!,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'userId': client.userID,
+        },
+      );
+    } finally {
+      if (mounted) setState(() {});
+    }
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    await Matrix.of(context).requestNotificationPermission();
+    if (mounted) {
+      context.go("/registration/course");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +65,10 @@ class SpaceCodeOnboardingView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BackButton(
-                onPressed: Navigator.of(context).pop,
+                onPressed: () => pLogoutAction(
+                  context,
+                  bypassWarning: true,
+                ),
               ),
               const SizedBox(
                 width: 40.0,
@@ -37,15 +79,15 @@ class SpaceCodeOnboardingView extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       showAppName: false,
-      mainAssetUrl: controller.profile?.avatarUrl,
+      mainAssetUrl: profile?.avatarUrl,
       children: [
         Column(
           spacing: 8.0,
           children: [
             Text(
               L10n.of(context).welcomeUser(
-                controller.profile?.displayName ??
-                    controller.client.userID?.localpart ??
+                profile?.displayName ??
+                    Matrix.of(context).client.userID?.localpart ??
                     "",
               ),
               style: Theme.of(context)
@@ -54,20 +96,11 @@ class SpaceCodeOnboardingView extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
-              L10n.of(context).joinSpaceOnboardingDesc,
+              L10n.of(context).enableNotificationsTitle,
               textAlign: TextAlign.center,
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: L10n.of(context).enterCodeToJoin,
-              ),
-              controller: controller.codeController,
-              onSubmitted: (_) => controller.submitCode,
-            ),
             ElevatedButton(
-              onPressed: controller.codeController.text.isNotEmpty
-                  ? controller.submitCode
-                  : null,
+              onPressed: _requestNotificationPermission,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 foregroundColor:
@@ -76,13 +109,13 @@ class SpaceCodeOnboardingView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(L10n.of(context).join),
+                  Text(L10n.of(context).enableNotificationsDesc),
                 ],
               ),
             ),
             TextButton(
               child: Text(L10n.of(context).skipForNow),
-              onPressed: () => context.go("/rooms"),
+              onPressed: () => context.go("/registration/course"),
             ),
           ],
         ),

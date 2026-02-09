@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:05.410589",
+  "@@last_modified": "2026-02-05 10:10:02.295528",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6488,6 +6488,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat là một ứng dụng nhắn tin nên thông báo là rất quan trọng!",
+  "enableNotificationsDesc": "Cho phép thông báo",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -6535,6 +6545,21 @@
   },
   "emptyAudioError": "Ghi âm không thành công. Vui lòng kiểm tra quyền truy cập âm thanh của bạn và thử lại.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Thành ngữ",
+  "grammarCopyPOSphrasalv": "Động từ cụm",
+  "grammarCopyPOScompn": "Hợp chất",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

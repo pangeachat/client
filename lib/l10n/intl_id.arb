@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:32.345033",
+  "@@last_modified": "2026-02-05 10:09:21.065759",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10901,6 +10901,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
+  "enableNotificationsDesc": "Izinkan notifikasi",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10948,6 +10958,21 @@
   },
   "emptyAudioError": "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
+  "grammarCopyPOScompn": "Kombinasi",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

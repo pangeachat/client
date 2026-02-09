@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -12,8 +13,11 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
@@ -63,15 +67,18 @@ class AnalyticsPracticeSessionRepo {
         final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
                 AnalyticsPracticeConstants.errorBufferSize) -
             targets.length;
-        final morphEntries = morphs.entries.take(remainingCount);
+        final morphEntries = morphs.take(remainingCount);
 
         for (final entry in morphEntries) {
           targets.add(
             AnalyticsActivityTarget(
               target: PracticeTarget(
-                tokens: [entry.key],
+                tokens: [entry.token],
                 activityType: ActivityTypeEnum.grammarCategory,
-                morphFeature: entry.value,
+                morphFeature: entry.feature,
+              ),
+              morphExampleInfo: MorphExampleInfo(
+                exampleMessage: entry.exampleMessage,
               ),
             ),
           );
@@ -125,11 +132,36 @@ class AnalyticsPracticeSessionRepo {
     return targets;
   }
 
-  static Future<Map<PangeaToken, MorphFeaturesEnum>> _fetchMorphs() async {
+  static Future<List<MorphPracticeTarget>> _fetchMorphs() async {
     final constructs = await MatrixState
         .pangeaController.matrixState.analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.morph)
         .then((map) => map.values.toList());
+
+    final morphInfoRequest = MorphInfoRequest(
+      userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+          LanguageKeys.defaultLanguage,
+      userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+          LanguageKeys.defaultLanguage,
+    );
+
+    final morphInfoResult = await MorphInfoRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      morphInfoRequest,
+    );
+
+    // Build list of features with multiple tags (valid for practice)
+    final List<String> validFeatures = [];
+    if (!morphInfoResult.isError) {
+      final response = morphInfoResult.asValue?.value;
+      if (response != null) {
+        for (final feature in response.features) {
+          if (feature.tags.length > 1) {
+            validFeatures.add(feature.code);
+          }
+        }
+      }
+    }
 
     // sort by last used descending, nulls first
     constructs.sort((a, b) {
@@ -141,7 +173,7 @@ class AnalyticsPracticeSessionRepo {
       return dateA.compareTo(dateB);
     });
 
-    final targets = <PangeaToken, MorphFeaturesEnum>{};
+    final targets = <MorphPracticeTarget>[];
     final Set<String> seenForms = {};
 
     for (final entry in constructs) {
@@ -152,10 +184,14 @@ class AnalyticsPracticeSessionRepo {
       }
 
       final feature = MorphFeaturesEnumExtension.fromString(entry.id.category);
-      if (feature == MorphFeaturesEnum.Unknown) {
+
+      // Only include features that are in the valid list (have multiple tags)
+      if (feature == MorphFeaturesEnum.Unknown ||
+          (validFeatures.isNotEmpty && !validFeatures.contains(feature.name))) {
         continue;
       }
 
+      List<InlineSpan>? exampleMessage;
       for (final use in entry.cappedUses) {
         if (targets.length >=
             (AnalyticsPracticeConstants.practiceGroupSize +
@@ -166,6 +202,17 @@ class AnalyticsPracticeSessionRepo {
         if (use.lemma.isEmpty) continue;
         final form = use.form;
         if (seenForms.contains(form) || form == null) {
+          continue;
+        }
+
+        exampleMessage = await ExampleMessageUtil.getExampleMessage(
+          await MatrixState.pangeaController.matrixState.analyticsDataService
+              .getConstructUse(entry.id),
+          MatrixState.pangeaController.matrixState.client,
+          form: form,
+        );
+
+        if (exampleMessage == null) {
           continue;
         }
 
@@ -180,7 +227,13 @@ class AnalyticsPracticeSessionRepo {
           pos: 'other',
           morph: {feature: use.lemma},
         );
-        targets[token] = feature;
+        targets.add(
+          MorphPracticeTarget(
+            feature: feature,
+            token: token,
+            exampleMessage: exampleMessage,
+          ),
+        );
         break;
       }
     }
@@ -189,14 +242,32 @@ class AnalyticsPracticeSessionRepo {
   }
 
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
-    final uses = await MatrixState
+    // Fetch all recent uses in one call (not filtering blocked constructs)
+    final allRecentUses = await MatrixState
         .pangeaController.matrixState.analyticsDataService
-        .getUses(count: 100, type: ConstructUseTypeEnum.ga);
+        .getUses(count: 200, filterCapped: false);
+
+    // Filter for grammar error uses
+    final grammarErrorUses = allRecentUses
+        .where((use) => use.useType == ConstructUseTypeEnum.ga)
+        .toList();
+
+    // Create list of recently used constructs
+    final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
+    final recentlyPracticedConstructs = allRecentUses
+        .where(
+          (use) =>
+              use.metadata.timeStamp.isAfter(cutoffTime) &&
+              (use.useType == ConstructUseTypeEnum.corGE ||
+                  use.useType == ConstructUseTypeEnum.incGE),
+        )
+        .map((use) => use.identifier)
+        .toSet();
 
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> idsToEvents = {};
 
-    for (final use in uses) {
+    for (final use in grammarErrorUses) {
       final eventID = use.metadata.eventId;
       if (eventID == null || idsToEvents.containsKey(eventID)) continue;
 
@@ -257,7 +328,11 @@ class AnalyticsPracticeSessionRepo {
 
         if (igcMatch!.match.offset == 0 &&
             igcMatch.match.length >= stepText.trim().characters.length) {
-          // Skip if the grammar error spans the entire step
+          continue;
+        }
+
+        if (igcMatch.match.isNormalizationError()) {
+          // Skip normalization errors
           continue;
         }
 
@@ -272,8 +347,22 @@ class AnalyticsPracticeSessionRepo {
             )
             .toList();
 
-        // Skip if no valid tokens found for this grammar error
-        if (choiceTokens.isEmpty) continue;
+        // Skip if no valid tokens found for this grammar error, or only one answer
+        if (choiceTokens.length <= 1) {
+          continue;
+        }
+
+        final firstToken = choiceTokens.first;
+        final tokenIdentifier = ConstructIdentifier(
+          lemma: firstToken.lemma.text,
+          type: ConstructTypeEnum.vocab,
+          category: firstToken.pos,
+        );
+
+        final hasRecentPractice =
+            recentlyPracticedConstructs.contains(tokenIdentifier);
+
+        if (hasRecentPractice) continue;
 
         String? translation;
         try {
@@ -291,6 +380,7 @@ class AnalyticsPracticeSessionRepo {
         }
 
         if (translation == null) continue;
+
         targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
@@ -311,4 +401,16 @@ class AnalyticsPracticeSessionRepo {
 
     return targets;
   }
+}
+
+class MorphPracticeTarget {
+  final PangeaToken token;
+  final MorphFeaturesEnum feature;
+  final List<InlineSpan> exampleMessage;
+
+  MorphPracticeTarget({
+    required this.token,
+    required this.feature,
+    required this.exampleMessage,
+  });
 }

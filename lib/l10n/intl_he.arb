@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:38.819884",
+  "@@last_modified": "2026-02-05 10:09:28.796405",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11959,6 +11959,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
+  "enableNotificationsDesc": "אפשר התראות",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12006,6 +12016,21 @@
   },
   "emptyAudioError": "הקלטה נכשלה. אנא בדוק את הרשאות האודיו שלך ונסה שוב.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "ביטוי",
+  "grammarCopyPOSphrasalv": "פועל פיזי",
+  "grammarCopyPOScompn": "מורכב",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-29 15:24:49.757644",
+  "@@last_modified": "2026-02-05 10:09:42.549877",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10904,6 +10904,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat - це додаток для обміну повідомленнями, тому сповіщення важливі!",
+  "enableNotificationsDesc": "Дозволити сповіщення",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10951,6 +10961,21 @@
   },
   "emptyAudioError": "Запис не вдався. Будь ласка, перевірте свої аудіоправа та спробуйте ще раз.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Ідіома",
+  "grammarCopyPOSphrasalv": "Фразове дієслово",
+  "grammarCopyPOScompn": "Складене",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

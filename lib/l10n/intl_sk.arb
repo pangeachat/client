@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-29 15:24:35.550214",
+  "@@last_modified": "2026-02-05 10:09:24.752898",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11994,6 +11994,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat je aplikácia na posielanie správ, takže notifikácie sú dôležité!",
+  "enableNotificationsDesc": "Povoliť notifikácie",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12041,6 +12051,21 @@
   },
   "emptyAudioError": "Nahrávanie zlyhalo. Skontrolujte svoje povolenia na zvuk a skúste to znova.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idióm",
+  "grammarCopyPOSphrasalv": "Frázové sloveso",
+  "grammarCopyPOScompn": "Zložené",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

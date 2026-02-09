@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-29 15:24:31.343536",
+  "@@last_modified": "2026-02-05 10:09:19.675804",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10911,6 +10911,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "A Pangea Chat egy üzenetküldő alkalmazás, így a értesítések fontosak!",
+  "enableNotificationsDesc": "Értesítések engedélyezése",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10958,6 +10968,21 @@
   },
   "emptyAudioError": "A felvétel nem sikerült. Kérjük, ellenőrizze az audio engedélyeit, és próbálja újra.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idióma",
+  "grammarCopyPOSphrasalv": "Frazális ige",
+  "grammarCopyPOScompn": "Összetett",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

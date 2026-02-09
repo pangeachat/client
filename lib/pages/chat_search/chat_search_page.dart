@@ -76,10 +76,25 @@ class ChatSearchController extends State<ChatSearchPage>
             (result) => (
               <String, Event>{
                 for (final event in result.$1) event.eventId: event,
-              }.values.toList(),
+                // #Pangea
+                // }.values.toList(),
+              }
+                  .values
+                  .toList()
+                  .where(
+                    (e) => !e.hasAggregatedEvents(
+                      timeline,
+                      RelationshipTypes.edit,
+                    ),
+                  )
+                  .toList(),
+              // Pangea#
               result.$2,
             ),
           )
+          // #Pangea
+          .where((result) => result.$1.isNotEmpty)
+          // Pangea#
           .asBroadcastStream();
     });
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-29 15:24:43.759174",
+  "@@last_modified": "2026-02-05 10:09:36.127342",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11181,6 +11181,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat on sõnumite rakendus, seega on teavitused olulised!",
+  "enableNotificationsDesc": "Luba teavitused",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -11228,6 +11238,21 @@
   },
   "emptyAudioError": "Salvestamine ebaõnnestus. Palun kontrollige oma heliõigusi ja proovige uuesti.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idioom",
+  "grammarCopyPOSphrasalv": "Fraasi Verb",
+  "grammarCopyPOScompn": "Kompleks",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

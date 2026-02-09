@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:07.906820",
+  "@@last_modified": "2026-02-05 10:10:04.986596",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10910,6 +10910,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat is een berichten-app, dus meldingen zijn belangrijk!",
+  "enableNotificationsDesc": "Sta meldingen toe",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Gebruik activiteit afbeelding als chatachtergrond",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -10957,6 +10967,21 @@
   },
   "emptyAudioError": "Opname mislukt. Controleer uw audiorechten en probeer het opnieuw.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idioom",
+  "grammarCopyPOSphrasalv": "Frazal Werkwoord",
+  "grammarCopyPOScompn": "Samenstelling",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

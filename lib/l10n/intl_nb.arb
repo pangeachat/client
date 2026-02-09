@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:51.834093",
+  "@@last_modified": "2026-02-05 10:09:45.325631",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12003,6 +12003,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Pangea Chat er en tekstmelding-app, så varsler er viktige!",
+  "enableNotificationsDesc": "Tillat varsler",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12050,6 +12060,21 @@
   },
   "emptyAudioError": "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og prøv igjen.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sammensatt",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

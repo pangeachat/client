@@ -4453,7 +4453,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-29 15:25:16.616510",
+  "@@last_modified": "2026-02-05 10:10:14.390437",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11968,6 +11968,16 @@
     "type": "String",
     "placeholders": {}
   },
+  "enableNotificationsTitle": "Η Pangea Chat είναι μια εφαρμογή μηνυμάτων, οπότε οι ειδοποιήσεις είναι σημαντικές!",
+  "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
   "useActivityImageAsChatBackground": "Χρησιμοποιήστε την εικόνα δραστηριότητας ως φόντο συνομιλίας",
   "@useActivityImageAsChatBackground": {
     "type": "String",
@@ -12015,6 +12025,21 @@
   },
   "emptyAudioError": "Η ηχογράφηση απέτυχε. Παρακαλώ ελέγξτε τις άδειες ήχου σας και δοκιμάστε ξανά.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Ιδιωματισμός",
+  "grammarCopyPOSphrasalv": "Φραστικό Ρήμα",
+  "grammarCopyPOScompn": "Σύνθετο",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
