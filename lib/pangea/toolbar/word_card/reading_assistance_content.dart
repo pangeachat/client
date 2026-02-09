@@ -4,6 +4,7 @@ import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
@@ -50,7 +51,7 @@ class ReadingAssistanceContent extends StatelessWidget {
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
       onDismissNewWordOverlay: () => overlayController.setState(() {}),
-      onFlagTokenInfo: (LemmaInfoResponse lemmaInfo, String phonetics) {
+      onFlagTokenInfo: (LemmaInfoResponse lemmaInfo, PTRequest ptRequest, PTResponse ptResponse) {
         if (selectedTokenIndex < 0) return;
         final requestData = TokenInfoFeedbackRequestData(
           userId: Matrix.of(context).client.userID!,
@@ -62,7 +63,8 @@ class ReadingAssistanceContent extends StatelessWidget {
           selectedToken: selectedTokenIndex,
           wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
           lemmaInfo: lemmaInfo,
-          phonetics: phonetics,
+          ptRequest: ptRequest,
+          ptResponse: ptResponse,
         );
         overlayController.widget.chatController.showTokenFeedbackDialog(
           requestData,

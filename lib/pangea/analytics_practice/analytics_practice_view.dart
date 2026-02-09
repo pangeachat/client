@@ -152,8 +152,8 @@ class _AnalyticsActivityView extends StatelessWidget {
                         PhoneticTranscriptionWidget(
                           text:
                               target.target.tokens.first.vocabConstructID.lemma,
-                          textLanguage: MatrixState
-                              .pangeaController.userController.userL2!,
+                          langCode: MatrixState
+                              .pangeaController.userController.userL2Code!,
                           style: const TextStyle(fontSize: 14.0),
                         ),
                     ],

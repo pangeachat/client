@@ -24,7 +24,7 @@ class TokenInfoFeedbackRepo {
     );
 
     final Response res = await req.post(
-      url: PApiUrls.tokenFeedback,
+      url: PApiUrls.tokenFeedbackV2,
       body: request.toJson(),
     );
 

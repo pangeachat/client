@@ -138,6 +138,8 @@ class TtsController {
     ChatController? chatController,
     VoidCallback? onStart,
     VoidCallback? onStop,
+    /// When provided, skip device TTS and use choreo with IPA phoneme tags.
+    String? ipa,
   }) async {
     final prevOnStop = _onStop;
     _onStop = onStop;
@@ -161,6 +163,7 @@ class TtsController {
       chatController: chatController,
       onStart: onStart,
       onStop: onStop,
+      ipa: ipa,
     );
   }
 
@@ -175,6 +178,7 @@ class TtsController {
     ChatController? chatController,
     VoidCallback? onStart,
     VoidCallback? onStop,
+    String? ipa,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
@@ -192,17 +196,23 @@ class TtsController {
       );
 
       onStart?.call();
-      await (_isLangFullySupported(langCode)
-          ? _speak(
-              text,
-              langCode,
-              [token],
-            )
-          : _speakFromChoreo(
-              text,
-              langCode,
-              [token],
-            ));
+
+      // When IPA is provided, skip device TTS and use choreo with phoneme tags.
+      if (ipa != null) {
+        await _speakFromChoreo(text, langCode, [token], ipa: ipa);
+      } else {
+        await (_isLangFullySupported(langCode)
+            ? _speak(
+                text,
+                langCode,
+                [token],
+              )
+            : _speakFromChoreo(
+                text,
+                langCode,
+                [token],
+              ));
+      }
     } else if (targetID != null && context != null) {
       await _showTTSDisabledPopup(context, targetID);
     }
@@ -264,8 +274,9 @@ class TtsController {
   static Future<void> _speakFromChoreo(
     String text,
     String langCode,
-    List<PangeaTokenText> tokens,
-  ) async {
+    List<PangeaTokenText> tokens, {
+    String? ipa,
+  }) async {
     TextToSpeechResponseModel? ttsRes;
 
     loadingChoreoStream.add(true);
@@ -279,6 +290,7 @@ class TtsController {
             LanguageKeys.unknownLanguage,
         userL2: MatrixState.pangeaController.userController.userL2Code ??
             LanguageKeys.unknownLanguage,
+        ipa: ipa,
       ),
     );
     loadingChoreoStream.add(false);

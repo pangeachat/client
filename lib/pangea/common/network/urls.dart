@@ -44,6 +44,8 @@ class PApiUrls {
   static String speechToText = "${PApiUrls._choreoEndpoint}/speech_to_text";
   static String phoneticTranscription =
       "${PApiUrls._choreoEndpoint}/phonetic_transcription";
+  static String phoneticTranscriptionV2 =
+      "${PApiUrls._choreoEndpoint}/phonetic_transcription_v2";
 
   static String messageActivityGeneration =
       "${PApiUrls._choreoEndpoint}/practice";
@@ -68,6 +70,8 @@ class PApiUrls {
       "${PApiUrls._choreoEndpoint}/activity_plan/feedback";
 
   static String tokenFeedback = "${PApiUrls._choreoEndpoint}/token/feedback";
+  static String tokenFeedbackV2 =
+      "${PApiUrls._choreoEndpoint}/token/feedback_v2";
 
   static String morphFeaturesAndTags = "${PApiUrls._choreoEndpoint}/morphs";
   static String constructSummary =

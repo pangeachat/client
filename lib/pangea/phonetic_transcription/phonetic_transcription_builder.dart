@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/languages/language_arc_model.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'phonetic_transcription_repo.dart';
 
+/// Fetches and exposes the v2 [PTResponse] for a given surface text.
+///
+/// Exposes both the [PTRequest] used and the full [PTResponse] received,
+/// which callers need for token feedback and disambiguation.
 class PhoneticTranscriptionBuilder extends StatefulWidget {
-  final LanguageModel textLanguage;
+  final String langCode;
   final String text;
   final ValueNotifier<int>? reloadNotifier;
 
@@ -20,7 +21,7 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
 
   const PhoneticTranscriptionBuilder({
     super.key,
-    required this.textLanguage,
+    required this.langCode,
     required this.text,
     required this.builder,
     this.reloadNotifier,
@@ -33,7 +34,7 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
 
 class PhoneticTranscriptionBuilderState
     extends State<PhoneticTranscriptionBuilder> {
-  final ValueNotifier<AsyncState<String>> _loader =
+  final ValueNotifier<AsyncState<PTResponse>> _loader =
       ValueNotifier(const AsyncState.idle());
 
   @override
@@ -47,7 +48,7 @@ class PhoneticTranscriptionBuilderState
   void didUpdateWidget(covariant PhoneticTranscriptionBuilder oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.text != widget.text ||
-        oldWidget.textLanguage != widget.textLanguage) {
+        oldWidget.langCode != widget.langCode) {
       _load();
     }
   }
@@ -59,23 +60,30 @@ class PhoneticTranscriptionBuilderState
     super.dispose();
   }
 
-  AsyncState<String> get state => _loader.value;
+  AsyncState<PTResponse> get state => _loader.value;
   bool get isError => _loader.value is AsyncError;
   bool get isLoaded => _loader.value is AsyncLoaded;
-  String? get transcription =>
-      isLoaded ? (_loader.value as AsyncLoaded<String>).value : null;
 
-  PhoneticTranscriptionRequest get _request => PhoneticTranscriptionRequest(
-        arc: LanguageArc(
-          l1: MatrixState.pangeaController.userController.userL1!,
-          l2: widget.textLanguage,
-        ),
-        content: PangeaTokenText.fromString(widget.text),
+  /// The full v2 response (for feedback and disambiguation).
+  PTResponse? get ptResponse =>
+      isLoaded ? (_loader.value as AsyncLoaded<PTResponse>).value : null;
+
+  /// The request that was used to fetch this response.
+  PTRequest get ptRequest => _request;
+
+  /// Convenience: the first transcription string (for simple display).
+  String? get transcription => ptResponse?.pronunciations.firstOrNull?.transcription;
+
+  PTRequest get _request => PTRequest(
+        surface: widget.text,
+        langCode: widget.langCode,
+        userL1: MatrixState.pangeaController.userController.userL1Code ?? 'en',
+        userL2: MatrixState.pangeaController.userController.userL2Code ?? 'en',
       );
 
   Future<void> _load() async {
     _loader.value = const AsyncState.loading();
-    final resp = await PhoneticTranscriptionRepo.get(
+    final resp = await PTV2Repo.get(
       MatrixState.pangeaController.userController.accessToken,
       _request,
     );
@@ -83,10 +91,7 @@ class PhoneticTranscriptionBuilderState
     if (!mounted) return;
     resp.isError
         ? _loader.value = AsyncState.error(resp.asError!.error)
-        : _loader.value = AsyncState.loaded(
-            resp.asValue!.value.phoneticTranscriptionResult
-                .phoneticTranscription.first.phoneticL1Transcription.content,
-          );
+        : _loader.value = AsyncState.loaded(resp.asValue!.value);
   }
 
   @override

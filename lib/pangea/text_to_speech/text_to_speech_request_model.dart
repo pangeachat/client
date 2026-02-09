@@ -8,6 +8,7 @@ class TextToSpeechRequestModel {
   String userL2;
   List<PangeaTokenText> tokens;
   String? voice;
+  String? ipa;
 
   TextToSpeechRequestModel({
     required this.text,
@@ -16,6 +17,7 @@ class TextToSpeechRequestModel {
     required this.userL2,
     required this.tokens,
     this.voice,
+    this.ipa,
   });
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +27,7 @@ class TextToSpeechRequestModel {
         ModelKey.userL2: userL2,
         ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
         'voice': voice,
+        if (ipa != null) 'ipa': ipa,
       };
 
   @override
@@ -34,9 +37,11 @@ class TextToSpeechRequestModel {
     return other is TextToSpeechRequestModel &&
         other.text == text &&
         other.langCode == langCode &&
-        other.voice == voice;
+        other.voice == voice &&
+        other.ipa == ipa;
   }
 
   @override
-  int get hashCode => text.hashCode ^ langCode.hashCode ^ voice.hashCode;
+  int get hashCode =>
+      text.hashCode ^ langCode.hashCode ^ voice.hashCode ^ ipa.hashCode;
 }

@@ -441,8 +441,5 @@ class UserController {
       userL1Code != LanguageKeys.unknownLanguage &&
       userL2Code != LanguageKeys.unknownLanguage;
 
-  bool get showTranscription =>
-      (userL1 != null && userL2 != null && userL1?.script != userL2?.script) ||
-      (userL1?.script != LanguageKeys.unknownLanguage ||
-          userL2?.script == LanguageKeys.unknownLanguage);
+  bool get showTranscription => true;
 }

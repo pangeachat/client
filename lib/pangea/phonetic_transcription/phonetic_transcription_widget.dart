@@ -1,19 +1,25 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;
-  final LanguageModel textLanguage;
+  final String langCode;
+
+  /// POS tag for disambiguation (from PangeaToken, e.g. "VERB").
+  final String? pos;
+
+  /// Morph features for disambiguation (from PangeaToken).
+  final Map<String, String>? morph;
 
   final TextStyle? style;
   final double? iconSize;
@@ -26,7 +32,9 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
-    required this.textLanguage,
+    required this.langCode,
+    this.pos,
+    this.morph,
     this.style,
     this.iconSize,
     this.iconColor,
@@ -36,15 +44,16 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   });
 
   @override
-  State<PhoneticTranscriptionWidget> createState() =>
-      _PhoneticTranscriptionWidgetState();
+  State<PhoneticTranscriptionWidget> createState() => _PhoneticTranscriptionWidgetState();
 }
 
-class _PhoneticTranscriptionWidgetState
-    extends State<PhoneticTranscriptionWidget> {
+class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
-  Future<void> _handleAudioTap(String targetId) async {
+  Future<void> _handleAudioTap(
+    String targetId, {
+    String? ipa,
+  }) async {
     if (_isPlaying) {
       await TtsController.stop();
       setState(() => _isPlaying = false);
@@ -53,7 +62,8 @@ class _PhoneticTranscriptionWidgetState
         widget.text,
         context: context,
         targetID: targetId,
-        langCode: widget.textLanguage.langCode,
+        langCode: widget.langCode,
+        ipa: ipa,
         onStart: () {
           if (mounted) setState(() => _isPlaying = true);
         },
@@ -70,16 +80,13 @@ class _PhoneticTranscriptionWidgetState
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           child: GestureDetector(
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               decoration: BoxDecoration(
-                color: hovering
-                    ? Colors.grey.withAlpha((0.2 * 255).round())
-                    : Colors.transparent,
+                color: hovering ? Colors.grey.withAlpha((0.2 * 255).round()) : Colors.transparent,
                 borderRadius: BorderRadius.circular(6),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -87,49 +94,25 @@ class _PhoneticTranscriptionWidgetState
                 link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
                 child: PhoneticTranscriptionBuilder(
                   key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-                  textLanguage: widget.textLanguage,
+                  langCode: widget.langCode,
                   text: widget.text,
                   reloadNotifier: widget.reloadNotifier,
                   builder: (context, controller) {
                     return switch (controller.state) {
-                      AsyncError(error: final error) =>
-                        error is UnsubscribedException
-                            ? ErrorIndicator(
-                                message: L10n.of(context)
-                                    .subscribeToUnlockTranscriptions,
-                                onTap: () {
-                                  MatrixState
-                                      .pangeaController.subscriptionController
-                                      .showPaywall(context);
-                                },
-                              )
-                            : ErrorIndicator(
-                                message:
-                                    L10n.of(context).failedToFetchTranscription,
-                              ),
-                      AsyncLoaded<String>(value: final transcription) => Row(
-                          spacing: 8.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                transcription,
-                                textScaler: TextScaler.noScaling,
-                                style: widget.style ??
-                                    Theme.of(context).textTheme.bodyMedium,
-                                maxLines: widget.maxLines,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                      AsyncError(error: final error) => error is UnsubscribedException
+                          ? ErrorIndicator(
+                              message: L10n.of(context).subscribeToUnlockTranscriptions,
+                              onTap: () {
+                                MatrixState.pangeaController.subscriptionController.showPaywall(context);
+                              },
+                            )
+                          : ErrorIndicator(
+                              message: L10n.of(context).failedToFetchTranscription,
                             ),
-                            Icon(
-                              _isPlaying
-                                  ? Icons.pause_outlined
-                                  : Icons.volume_up,
-                              size: widget.iconSize ?? 24,
-                              color: widget.iconColor ??
-                                  Theme.of(context).iconTheme.color,
-                            ),
-                          ],
+                      AsyncLoaded<PTResponse>(value: final ptResponse) => _buildTranscription(
+                          context,
+                          targetId,
+                          ptResponse,
                         ),
                       _ => const TextLoadingShimmer(
                           width: 125.0,
@@ -143,6 +126,42 @@ class _PhoneticTranscriptionWidgetState
           ),
         );
       },
+    );
+  }
+
+  Widget _buildTranscription(
+    BuildContext context,
+    String targetId,
+    PTResponse ptResponse,
+  ) {
+    final result = disambiguate(
+      ptResponse.pronunciations,
+      pos: widget.pos,
+      morph: widget.morph,
+    );
+
+    return GestureDetector(
+      onTap: () => _handleAudioTap(targetId, ipa: result.ipa),
+      child: Row(
+        spacing: 8.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Text(
+              result.displayTranscription,
+              textScaler: TextScaler.noScaling,
+              style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+              maxLines: widget.maxLines,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Icon(
+            _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+            size: widget.iconSize ?? 24,
+            color: widget.iconColor ?? Theme.of(context).iconTheme.color,
+          ),
+        ],
+      ),
     );
   }
 }

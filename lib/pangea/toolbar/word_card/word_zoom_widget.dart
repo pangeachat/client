@@ -6,10 +6,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
@@ -29,7 +28,7 @@ class WordZoomWidget extends StatelessWidget {
 
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
-  final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
+  final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
 
@@ -114,10 +113,7 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
-                                        LanguageModel.unknown,
+                                    langCode: langCode,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
@@ -138,10 +134,7 @@ class WordZoomWidget extends StatelessWidget {
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
-                                        LanguageModel.unknown,
+                                    langCode: langCode,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
