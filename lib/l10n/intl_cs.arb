@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-29 15:24:50.917574",
+  "@@last_modified": "2026-02-05 10:09:43.831148",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11574,6 +11574,21 @@
   },
   "emptyAudioError": "Nahrávání se nezdařilo. Zkontrolujte prosím svá oprávnění k audiosouborům a zkuste to znovu.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Frázové sloveso",
+  "grammarCopyPOScompn": "Složenina",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

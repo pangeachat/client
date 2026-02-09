@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:24.593568",
+  "@@last_modified": "2026-02-05 10:09:10.325473",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11075,6 +11075,21 @@
   },
   "emptyAudioError": "녹음에 실패했습니다. 오디오 권한을 확인하고 다시 시도해 주세요.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "관용구",
+  "grammarCopyPOSphrasalv": "구동사",
+  "grammarCopyPOScompn": "복합어",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

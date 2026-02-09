@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-29 15:25:09.954015",
+  "@@last_modified": "2026-02-05 10:10:07.531332",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10958,6 +10958,21 @@
   },
   "emptyAudioError": "录音失败。请检查您的音频权限并重试。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "成语",
+  "grammarCopyPOSphrasalv": "短语动词",
+  "grammarCopyPOScompn": "复合词",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

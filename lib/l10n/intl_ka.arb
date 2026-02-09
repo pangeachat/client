@@ -2591,7 +2591,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-29 15:25:22.347053",
+  "@@last_modified": "2026-02-05 10:10:20.523925",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11997,6 +11997,21 @@
   },
   "emptyAudioError": "ჩაწერა ვერ მოხერხდა. გთხოვთ, შეამოწმოთ თქვენი აუდიო უფლებები და სცადოთ კიდევ ერთხელ.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "იდიომი",
+  "grammarCopyPOSphrasalv": "ფრაზული ზმნა",
+  "grammarCopyPOScompn": "კომპლექსური",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
