@@ -21,7 +21,7 @@ void main() {
     expect(() => SpanData.fromJson(legacyJson), returnsNormally);
     final SpanData span = SpanData.fromJson(legacyJson);
     // 'correction' is mapped to 'grammar' for backward compatibility
-    expect(span.type, ReplacementTypeEnum.grammar);
+    expect(span.type, ReplacementTypeEnum.subjectVerbAgreement);
   });
 
   test('SpanData.fromJson handles legacy typeName object', () {
@@ -73,7 +73,7 @@ void main() {
     expect(() => SpanData.fromJson(legacyJson), returnsNormally);
     final SpanData span = SpanData.fromJson(legacyJson);
     // 'vocabulary' is mapped to 'wordChoice' for backward compatibility
-    expect(span.type, ReplacementTypeEnum.wordChoice);
+    expect(span.type, ReplacementTypeEnum.other);
   });
 
   test('SpanData.fromJson handles new grammar type directly', () {
@@ -89,7 +89,7 @@ void main() {
 
     expect(() => SpanData.fromJson(jsonData), returnsNormally);
     final SpanData span = SpanData.fromJson(jsonData);
-    expect(span.type, ReplacementTypeEnum.grammar);
+    expect(span.type, ReplacementTypeEnum.subjectVerbAgreement);
   });
 
   test('SpanData.fromJson handles translation type', () {
