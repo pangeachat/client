@@ -121,6 +121,12 @@ class _AnalyticsActivityView extends StatelessWidget {
 
     return ListView(
       children: [
+        //Hints counter bar for grammar activities only
+        if (controller.widget.type == ConstructTypeEnum.morph)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: _HintsCounterBar(controller: controller),
+          ),
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
@@ -160,6 +166,10 @@ class _AnalyticsActivityView extends StatelessWidget {
           child: _AnalyticsPracticeCenterContent(controller: controller),
         ),
         const SizedBox(height: 16.0),
+        (controller.widget.type == ConstructTypeEnum.morph)
+            ? Center(child: _HintSection(controller: controller))
+            : const SizedBox.shrink(),
+        const SizedBox(height: 16.0),
         _ActivityChoicesWidget(controller),
         const SizedBox(height: 16.0),
         _WrongAnswerFeedback(controller: controller),
@@ -181,50 +191,35 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
       valueListenable: controller.activityTarget,
       builder: (context, target, __) => switch (target?.target.activityType) {
         null => const SizedBox(),
-        ActivityTypeEnum.grammarError => SizedBox(
-            height: 160.0,
-            child: SingleChildScrollView(
-              child: ValueListenableBuilder(
-                valueListenable: controller.activityState,
-                builder: (context, state, __) => switch (state) {
-                  AsyncLoaded(
-                    value: final GrammarErrorPracticeActivityModel activity
-                  ) =>
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ErrorBlankWidget(
-                          key: ValueKey(
-                            '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
-                          ),
-                          activity: activity,
-                        ),
-                        const SizedBox(height: 12),
-                      ],
-                    ),
-                  _ => const SizedBox(),
-                },
-              ),
+        ActivityTypeEnum.grammarError => SingleChildScrollView(
+            child: ListenableBuilder(
+              listenable: Listenable.merge([
+                controller.activityState,
+                controller.hintPressedNotifier,
+              ]),
+              builder: (context, __) {
+                final state = controller.activityState.value;
+                if (state
+                    is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+                  return const SizedBox();
+                }
+                final activity = state.value;
+                if (activity is! GrammarErrorPracticeActivityModel) {
+                  return const SizedBox();
+                }
+                return _ErrorBlankWidget(
+                  key: ValueKey(
+                    '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
+                  ),
+                  activity: activity,
+                  showTranslation: controller.hintPressedNotifier.value,
+                );
+              },
             ),
           ),
         ActivityTypeEnum.grammarCategory => Center(
-            child: Column(
-              children: [
-                _CorrectAnswerHint(controller: controller),
-                _ExampleMessageWidget(
-                  controller.getExampleMessage(target!),
-                ),
-                const SizedBox(height: 12),
-                ValueListenableBuilder(
-                  valueListenable: controller.hintPressedNotifier,
-                  builder: (context, hintPressed, __) {
-                    return HintButton(
-                      depressed: hintPressed,
-                      onPressed: controller.onHintPressed,
-                    );
-                  },
-                ),
-              ],
+            child: _ExampleMessageWidget(
+              controller.getExampleMessage(target!),
             ),
           ),
         _ => SizedBox(
@@ -281,45 +276,96 @@ class _ExampleMessageWidget extends StatelessWidget {
   }
 }
 
-class _CorrectAnswerHint extends StatelessWidget {
+class _HintsCounterBar extends StatelessWidget {
   final AnalyticsPracticeState controller;
 
-  const _CorrectAnswerHint({
-    required this.controller,
-  });
+  const _HintsCounterBar({required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: controller.hintPressedNotifier,
-      builder: (context, hintPressed, __) {
-        if (!hintPressed) {
+      valueListenable: controller.hintsUsedNotifier,
+      builder: (context, hintsUsed, __) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              AnalyticsPracticeState.maxHints,
+              (index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Icon(
+                  index < hintsUsed ? Icons.lightbulb : Icons.lightbulb_outline,
+                  size: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _HintSection extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _HintSection({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.activityState,
+        controller.hintPressedNotifier,
+        controller.hintsUsedNotifier,
+      ]),
+      builder: (context, __) {
+        final state = controller.activityState.value;
+        if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
           return const SizedBox.shrink();
         }
 
-        return ValueListenableBuilder(
-          valueListenable: controller.activityState,
-          builder: (context, state, __) {
-            if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
-              return const SizedBox.shrink();
-            }
+        final activity = state.value;
+        final hintPressed = controller.hintPressedNotifier.value;
+        final hintsUsed = controller.hintsUsedNotifier.value;
+        final maxHintsReached = hintsUsed >= AnalyticsPracticeState.maxHints;
 
-            final activity = state.value;
-            if (activity is! MorphPracticeActivityModel) {
-              return const SizedBox.shrink();
-            }
+        return ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 50.0,
+          ),
+          child: Builder(
+            builder: (context) {
+              // For grammar category: fade out button and show hint content
+              if (activity is MorphPracticeActivityModel) {
+                return AnimatedCrossFade(
+                  duration: const Duration(milliseconds: 200),
+                  crossFadeState: hintPressed
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                  firstChild: HintButton(
+                    onPressed:
+                        maxHintsReached ? () {} : controller.onHintPressed,
+                    depressed: maxHintsReached,
+                  ),
+                  secondChild: MorphMeaningWidget(
+                    feature: activity.morphFeature,
+                    tag: activity.multipleChoiceContent.answers.first,
+                  ),
+                );
+              }
 
-            final correctAnswerTag =
-                activity.multipleChoiceContent.answers.first;
-
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: MorphMeaningWidget(
-                feature: activity.morphFeature,
-                tag: correctAnswerTag,
-              ),
-            );
-          },
+              // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
+              return HintButton(
+                onPressed: (hintPressed || maxHintsReached)
+                    ? () {}
+                    : controller.onHintPressed,
+                depressed: hintPressed || maxHintsReached,
+              );
+            },
+          ),
         );
       },
     );
@@ -371,33 +417,21 @@ class _WrongAnswerFeedback extends StatelessWidget {
   }
 }
 
-class _ErrorBlankWidget extends StatefulWidget {
+class _ErrorBlankWidget extends StatelessWidget {
   final GrammarErrorPracticeActivityModel activity;
+  final bool showTranslation;
 
   const _ErrorBlankWidget({
     super.key,
     required this.activity,
+    required this.showTranslation,
   });
 
   @override
-  State<_ErrorBlankWidget> createState() => _ErrorBlankWidgetState();
-}
-
-class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
-  late final String translation = widget.activity.translation;
-  bool _showTranslation = false;
-
-  void _toggleTranslation() {
-    setState(() {
-      _showTranslation = !_showTranslation;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final text = widget.activity.text;
-    final errorOffset = widget.activity.errorOffset;
-    final errorLength = widget.activity.errorLength;
+    final text = activity.text;
+    final errorOffset = activity.errorOffset;
+    final errorLength = activity.errorLength;
 
     const maxContextChars = 50;
 
@@ -444,66 +478,72 @@ class _ErrorBlankWidgetState extends State<_ErrorBlankWidget> {
 
     final after = chars.skip(errorEnd).take(afterEnd - errorEnd).toString();
 
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 8,
-          ),
-          decoration: BoxDecoration(
-            color: Color.alphaBlend(
-              Colors.white.withAlpha(180),
-              ThemeData.dark().colorScheme.primary,
-            ),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            children: [
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryFixed,
-                    fontSize:
-                        AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                  ),
-                  children: [
-                    if (trimmedBefore) const TextSpan(text: '…'),
-                    if (before.isNotEmpty) TextSpan(text: before),
-                    WidgetSpan(
-                      child: Container(
-                        height: 4.0,
-                        width: (errorLength * 8).toDouble(),
-                        padding: const EdgeInsets.only(bottom: 2.0),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
-                    if (after.isNotEmpty) TextSpan(text: after),
-                    if (trimmedAfter) const TextSpan(text: '…'),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              _showTranslation
-                  ? Text(
-                      translation,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppConfig.fontSizeFactor *
-                            AppConfig.messageFontSize,
-                        fontStyle: FontStyle.italic,
-                      ),
-                      textAlign: TextAlign.left,
-                    )
-                  : const SizedBox.shrink(),
-            ],
-          ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 8,
+      ),
+      decoration: BoxDecoration(
+        color: Color.alphaBlend(
+          Colors.white.withAlpha(180),
+          ThemeData.dark().colorScheme.primary,
         ),
-        const SizedBox(height: 8),
-        HintButton(depressed: _showTranslation, onPressed: _toggleTranslation),
-      ],
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RichText(
+            text: TextSpan(
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryFixed,
+                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+              ),
+              children: [
+                if (trimmedBefore) const TextSpan(text: '…'),
+                if (before.isNotEmpty) TextSpan(text: before),
+                WidgetSpan(
+                  child: Container(
+                    height: 4.0,
+                    width: (errorLength * 8).toDouble(),
+                    padding: const EdgeInsets.only(bottom: 2.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+                if (after.isNotEmpty) TextSpan(text: after),
+                if (trimmedAfter) const TextSpan(text: '…'),
+              ],
+            ),
+          ),
+          AnimatedSize(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeInOut,
+            alignment: Alignment.topCenter,
+            child: showTranslation
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(height: 8),
+                      Text(
+                        activity.translation,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimaryFixed,
+                          fontSize: AppConfig.fontSizeFactor *
+                              AppConfig.messageFontSize,
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ],
+      ),
     );
   }
 }

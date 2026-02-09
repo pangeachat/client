@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:25:05.410589",
+  "@@last_modified": "2026-02-09 11:09:39.961686",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6315,8 +6315,6 @@
   "congratulations": "Chúc mừng!",
   "anotherRound": "Một vòng nữa",
   "noActivityRequest": "Không có yêu cầu hoạt động nào hiện tại.",
-  "quit": "Thoát",
-  "congratulationsYouveCompletedPractice": "Chúc mừng! Bạn đã hoàn thành buổi thực hành.",
   "mustHave10Words": "Bạn phải có ít nhất 10 từ vựng để thực hành. Hãy thử nói chuyện với một người bạn hoặc Pangea Bot để khám phá thêm!",
   "botSettings": "Cài đặt Bot",
   "activitySettingsOverrideWarning": "Ngôn ngữ và cấp độ ngôn ngữ được xác định bởi kế hoạch hoạt động",
@@ -6362,14 +6360,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -6545,6 +6535,61 @@
   },
   "emptyAudioError": "Ghi âm không thành công. Vui lòng kiểm tra quyền truy cập âm thanh của bạn và thử lại.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Về tôi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Thành ngữ",
+  "grammarCopyPOSphrasalv": "Động từ cụm",
+  "grammarCopyPOScompn": "Hợp chất",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Thực hành hoàn hảo!",
+  "greatPractice": "Thực hành tuyệt vời!",
+  "usedNoHints": "Làm tốt lắm khi không sử dụng bất kỳ gợi ý nào!",
+  "youveCompletedPractice": "Bạn đã hoàn thành thực hành, hãy tiếp tục để cải thiện!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Thay đổi email",
+  "withTheseAddressesDescription": "Với những địa chỉ email này, bạn có thể đăng nhập, khôi phục mật khẩu và quản lý đăng ký.",
+  "noAddressDescription": "Bạn chưa thêm địa chỉ email nào.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

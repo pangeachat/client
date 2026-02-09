@@ -18,6 +18,7 @@ class UserSettings {
   String? sourceLanguage;
   GenderEnum gender;
   String? country;
+  String? about;
   LanguageLevelTypeEnum cefrLevel;
   String? voice;
 
@@ -29,6 +30,7 @@ class UserSettings {
     this.sourceLanguage,
     this.gender = GenderEnum.unselected,
     this.country,
+    this.about,
     this.cefrLevel = LanguageLevelTypeEnum.a1,
     this.voice,
   });
@@ -49,6 +51,7 @@ class UserSettings {
               )
             : GenderEnum.unselected,
         country: json[ModelKey.userCountry],
+        about: json[ModelKey.userAbout],
         cefrLevel: json[ModelKey.cefrLevel] is String
             ? LanguageLevelTypeEnum.fromString(
                 json[ModelKey.cefrLevel],
@@ -66,6 +69,7 @@ class UserSettings {
     data[ModelKey.sourceLanguage] = sourceLanguage;
     data[ModelKey.userGender] = gender.string;
     data[ModelKey.userCountry] = country;
+    data[ModelKey.userAbout] = about;
     data[ModelKey.cefrLevel] = cefrLevel.string;
     data[ModelKey.voice] = voice;
     return data;
@@ -126,6 +130,7 @@ class UserSettings {
       sourceLanguage: sourceLanguage,
       gender: gender,
       country: country,
+      about: about,
       cefrLevel: cefrLevel,
       voice: voice,
     );
@@ -143,6 +148,7 @@ class UserSettings {
         other.sourceLanguage == sourceLanguage &&
         other.gender == gender &&
         other.country == country &&
+        other.about == about &&
         other.cefrLevel == cefrLevel &&
         other.voice == voice;
   }
@@ -156,6 +162,7 @@ class UserSettings {
         sourceLanguage.hashCode,
         gender.hashCode,
         country.hashCode,
+        about.hashCode,
         cefrLevel.hashCode,
         voice.hashCode,
       ]);

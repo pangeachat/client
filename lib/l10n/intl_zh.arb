@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-29 15:25:09.954015",
+  "@@last_modified": "2026-02-09 11:09:45.374826",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10728,8 +10728,6 @@
   "congratulations": "恭喜！",
   "anotherRound": "再来一轮",
   "noActivityRequest": "当前没有活动请求。",
-  "quit": "退出",
-  "congratulationsYouveCompletedPractice": "恭喜！您已完成练习课程。",
   "mustHave10Words": "您必须至少有 10 个词汇来进行练习。尝试与朋友或 Pangea Bot 交谈以发现更多！",
   "botSettings": "机器人设置",
   "activitySettingsOverrideWarning": "活动计划确定的语言和语言级别",
@@ -10775,14 +10773,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10958,6 +10948,61 @@
   },
   "emptyAudioError": "录音失败。请检查您的音频权限并重试。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "关于我",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "成语",
+  "grammarCopyPOSphrasalv": "短语动词",
+  "grammarCopyPOScompn": "复合词",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "完美的练习！",
+  "greatPractice": "很棒的练习！",
+  "usedNoHints": "很好，没使用任何提示！",
+  "youveCompletedPractice": "你已经完成了练习，继续努力以变得更好！",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "更改电子邮件",
+  "withTheseAddressesDescription": "使用这些电子邮件地址，您可以登录、恢复密码和管理订阅。",
+  "noAddressDescription": "您尚未添加任何电子邮件地址。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

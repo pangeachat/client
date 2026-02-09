@@ -20,7 +20,10 @@ class Settings3PidView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const Center(child: BackButton()),
-        title: Text(L10n.of(context).passwordRecovery),
+        // #Pangea
+        // title: Text(L10n.of(context).passwordRecovery),
+        title: Text(L10n.of(context).changeEmail),
+        // Pangea#
         actions: [
           IconButton(
             icon: const Icon(Icons.add_outlined),
@@ -66,9 +69,13 @@ class Settings3PidView extends StatelessWidget {
                   ),
                   title: Text(
                     identifier.isEmpty
-                        ? L10n.of(context).noPasswordRecoveryDescription
-                        : L10n.of(context)
-                            .withTheseAddressesRecoveryDescription,
+                        // #Pangea
+                        // ? L10n.of(context).noPasswordRecoveryDescription
+                        // : L10n.of(context)
+                        //     .withTheseAddressesRecoveryDescription,isEmpty
+                        ? L10n.of(context).noAddressDescription
+                        : L10n.of(context).withTheseAddressesDescription,
+                    // Pangea#
                   ),
                 ),
                 const Divider(),

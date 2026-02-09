@@ -4369,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-29 15:24:36.672214",
+  "@@last_modified": "2026-02-09 11:08:53.872484",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11711,8 +11711,6 @@
   "congratulations": "Gratulon!",
   "anotherRound": "Alia rundo",
   "noActivityRequest": "Ninguna solicitud de actividad actual.",
-  "quit": "Salir",
-  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
   "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
   "botSettings": "Configuración del Bot",
   "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
@@ -11758,14 +11756,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11941,6 +11931,61 @@
   },
   "emptyAudioError": "Faillí an taifeadadh. Seiceáil do cheadanna gutháin agus déan iarracht arís.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Faoi m'ainm",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Composé",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Praktika perfekt!",
+  "greatPractice": "Praktika granda!",
+  "usedNoHints": "Bonega laboro ne uzante iujn indicojn!",
+  "youveCompletedPractice": "Vi kompletigis la praktikon, daŭrigu por pliboniĝi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Mudara e-posta",
+  "withTheseAddressesDescription": "Izi e-posta adresleri ile giriş yapabilir, şifrenizi kurtarabilir ve aboneliklerinizi yönetebilirsiniz.",
+  "noAddressDescription": "Henüz herhangi bir e-posta adresi eklemediniz.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

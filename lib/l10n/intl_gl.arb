@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-29 15:24:27.141903",
+  "@@last_modified": "2026-02-09 11:08:42.508158",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10734,8 +10734,6 @@
   "congratulations": "Parabéns!",
   "anotherRound": "Outra ronda",
   "noActivityRequest": "Non hai solicitudes de actividade actuais.",
-  "quit": "Saír",
-  "congratulationsYouveCompletedPractice": "Parabéns! Completaches a sesión de práctica.",
   "mustHave10Words": "Debes ter polo menos 10 palabras de vocabulario para practicálas. Intenta falar cun amigo ou co Pangea Bot para descubrir máis!",
   "botSettings": "Configuración do Bot",
   "activitySettingsOverrideWarning": "Idioma e nivel de idioma determinados polo plan de actividade",
@@ -10781,14 +10779,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10964,6 +10954,61 @@
   },
   "emptyAudioError": "A gravación fallou. Por favor, verifica os teus permisos de audio e intenta de novo.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Sobre min",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frasal",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Práctica perfecta!",
+  "greatPractice": "Gran práctica!",
+  "usedNoHints": "Bo traballo sen usar pistas!",
+  "youveCompletedPractice": "Completaches a práctica, segue así para mellorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambiar correo electrónico",
+  "withTheseAddressesDescription": "Con estes enderezos de correo electrónico podes iniciar sesión, recuperar a túa contrasinal e xestionar subscricións.",
+  "noAddressDescription": "Non engadiches ningún enderezo de correo electrónico aínda.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

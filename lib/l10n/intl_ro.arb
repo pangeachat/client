@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:33.490827",
+  "@@last_modified": "2026-02-09 11:08:50.792922",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11472,8 +11472,6 @@
   "congratulations": "Felicitări!",
   "anotherRound": "Încă o rundă",
   "noActivityRequest": "Nu există cereri de activitate curente.",
-  "quit": "Ieși",
-  "congratulationsYouveCompletedPractice": "Felicitări! Ai completat sesiunea de practică.",
   "mustHave10Words": "Trebuie să ai cel puțin 10 cuvinte de vocabular pentru a le exersa. Încearcă să vorbești cu un prieten sau cu Pangea Bot pentru a descoperi mai multe!",
   "botSettings": "Setări Bot",
   "activitySettingsOverrideWarning": "Limba și nivelul de limbă sunt determinate de planul de activitate",
@@ -11519,14 +11517,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11702,6 +11692,61 @@
   },
   "emptyAudioError": "Înregistrarea a eșuat. Vă rugăm să verificați permisiunile audio și să încercați din nou.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Despre mine",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verb Phrastic",
+  "grammarCopyPOScompn": "Compus",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Practica perfectă!",
+  "greatPractice": "Practica grozavă!",
+  "usedNoHints": "Bravo că nu ai folosit niciun indiciu!",
+  "youveCompletedPractice": "Ai finalizat practica, continuă așa pentru a te îmbunătăți!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Schimbă emailul",
+  "withTheseAddressesDescription": "Cu aceste adrese de email poți să te conectezi, să îți recuperezi parola și să gestionezi abonamentele.",
+  "noAddressDescription": "Nu ai adăugat încă nicio adresă de email.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

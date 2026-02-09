@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-29 15:24:45.173559",
+  "@@last_modified": "2026-02-09 11:09:13.137048",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10744,8 +10744,6 @@
   "congratulations": "Herzlichen Glückwunsch!",
   "anotherRound": "Eine weitere Runde",
   "noActivityRequest": "Keine aktuellen Aktivitätsanfragen.",
-  "quit": "Beenden",
-  "congratulationsYouveCompletedPractice": "Herzlichen Glückwunsch! Sie haben die Übungssitzung abgeschlossen.",
   "mustHave10Words": "Sie müssen mindestens 10 Vokabeln haben, um sie zu üben. Versuchen Sie, mit einem Freund oder dem Pangea Bot zu sprechen, um mehr zu entdecken!",
   "botSettings": "Bot-Einstellungen",
   "activitySettingsOverrideWarning": "Sprache und Sprachniveau werden durch den Aktivitätsplan bestimmt",
@@ -10791,14 +10789,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10974,6 +10964,61 @@
   },
   "emptyAudioError": "Die Aufnahme ist fehlgeschlagen. Bitte überprüfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "Über mich",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Zusammengesetztes Wort",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekte Übung!",
+  "greatPractice": "Großartige Übung!",
+  "usedNoHints": "Gut gemacht, keine Hinweise zu verwenden!",
+  "youveCompletedPractice": "Du hast die Übung abgeschlossen, mach weiter so, um besser zu werden!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "E-Mail ändern",
+  "withTheseAddressesDescription": "Mit diesen E-Mail-Adressen können Sie sich anmelden, Ihr Passwort wiederherstellen und Abonnements verwalten.",
+  "noAddressDescription": "Sie haben noch keine E-Mail-Adressen hinzugefügt.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

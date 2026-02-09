@@ -2591,7 +2591,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-29 15:25:22.347053",
+  "@@last_modified": "2026-02-09 11:10:02.292014",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11767,8 +11767,6 @@
   "congratulations": "გილოცავთ!",
   "anotherRound": "მეორე რაუნდი",
   "noActivityRequest": "ამჟამად აქტივობის მოთხოვნა არ არის.",
-  "quit": "გამოსვლა",
-  "congratulationsYouveCompletedPractice": "გილოცავთ! თქვენ დაასრულეთ პრაქტიკის სესია.",
   "mustHave10Words": "თქვენ უნდა გქონდეთ მინიმუმ 10 სიტყვა, რომ მათ პრაქტიკაში გამოიყენოთ. სცადეთ მეგობართან ან Pangea Bot-თან საუბარი, რომ მეტი აღმოაჩინოთ!",
   "botSettings": "ბოტის პარამეტრები",
   "activitySettingsOverrideWarning": "ენასა და ენების დონეს განსაზღვრავს აქტივობის გეგმა",
@@ -11814,14 +11812,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11997,6 +11987,61 @@
   },
   "emptyAudioError": "ჩაწერა ვერ მოხერხდა. გთხოვთ, შეამოწმოთ თქვენი აუდიო უფლებები და სცადოთ კიდევ ერთხელ.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "aboutMeHint": "ჩემზე",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "იდიომი",
+  "grammarCopyPOSphrasalv": "ფრაზული ზმნა",
+  "grammarCopyPOScompn": "კომპლექსური",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "შესანიშნავი პრაქტიკა!",
+  "greatPractice": "დიდებული პრაქტიკა!",
+  "usedNoHints": "კარგი საქმე, რომ არ გამოიყენე არცერთი მინიშნება!",
+  "youveCompletedPractice": "თქვენ დაასრულეთ პრაქტიკა, გააგრძელეთ ასე, რომ უკეთესი გახდეთ!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ელ. ფოსტის შეცვლა",
+  "withTheseAddressesDescription": "ამ ელ. ფოსტის მისამართების საშუალებით შეგიძლიათ შეხვიდეთ, აღადგინოთ თქვენი პაროლი და მართოთ გამოწერები.",
+  "noAddressDescription": "თქვენ ჯერ არ გაქვთ დამატებული ელ. ფოსტის მისამართები.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }
