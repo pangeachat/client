@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Stuur kale json";
     },
-    get$select(_) {
-      return "Selecteer";
-    },
     get$searchForUsers() {
       return "Zoek naar @personen...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opname mislukt. Controleer uw audiorechten en probeer het opnieuw.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Over mij";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fDWYnH83anw0RKyzl2bzCyar7WQ="] = d.current;
+  d["yeZ1ngVOeUQ8FdlVBQaDY2MHKAo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_740.part.js.map

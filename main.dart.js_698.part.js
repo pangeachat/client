@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Kirim JSON mentah";
     },
-    get$select(_) {
-      return "Pilih";
-    },
     get$searchForUsers() {
       return "Cari @pengguna...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Tentang saya";
     },
@@ -5390,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IHO2aBI7uosOyl8+4d2L1kCMfK8="] = d.current;
+  d["G0wS1P4dmqcVmTbZjdHJyPv9JIw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_698.part.js.map

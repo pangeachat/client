@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Bidali json gordina";
     },
-    get$select(_) {
-      return "Hautatu";
-    },
     get$searchForUsers() {
       return "Bilatu @erabiltzaileak\u2026";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Niri buruz";
     },
@@ -5390,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["83O2qu/5zO8wsXjPKn6x25hTHZA="] = d.current;
+  d["ZpEbgnY2hiszE6KSJ1y/w2lpMkQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_572.part.js.map

@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Si\u0173sti neapdorot\u0105 JSON";
     },
-    get$select(_) {
-      return "Pasirinkti";
-    },
     get$searchForUsers() {
       return "Ie\u0161koti @vartotoj\u0173...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u012era\u0161ymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kart\u0105.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Apie mane";
     },
@@ -5390,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PycUvARrgWsM9cARCCDcFsvGkuQ="] = d.current;
+  d["rbRrdaL7JqX2/ZgxDvYrRzN3bmc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_722.part.js.map

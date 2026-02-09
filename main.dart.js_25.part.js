@@ -1063,9 +1063,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Enviar JSON bruto";
     },
-    get$select(_) {
-      return "Selecionar";
-    },
     get$searchForUsers() {
       return "Pesquisar por @usu\xe1rios...";
     },
@@ -5362,6 +5359,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Sobre mim";
     },
@@ -6425,9 +6425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar JSON puro";
-    },
-    get$select(_) {
-      return "Selecionar";
     },
     get$searchForUsers() {
       return "Buscar por @usu\xe1rios...";
@@ -11786,9 +11783,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Enviar JSON bruto";
     },
-    get$select(_) {
-      return "Selecionar";
-    },
     get$searchForUsers() {
       return "Pesquisar por @utilizadores...";
     },
@@ -16316,7 +16310,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1cBPF29YYAJm8rFofum+F4fVLSw="] = d.current;
+  d["yxgtPCU+ZaKDanG3s12fC9SMMA8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

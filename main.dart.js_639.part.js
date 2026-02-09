@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "\u05e9\u05dc\u05d7 json \u05d2\u05d5\u05dc\u05de\u05d9";
     },
-    get$select(_) {
-      return "\u05d1\u05d7\u05e8";
-    },
     get$searchForUsers() {
       return "\u05d7\u05e4\u05e9 \u05d1-@\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u05d4\u05e7\u05dc\u05d8\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4. \u05d0\u05e0\u05d0 \u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05d4\u05d0\u05d5\u05d3\u05d9\u05d5 \u05e9\u05dc\u05da \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "\u05e2\u05dc\u05d9\u05d9";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fuviEQLBsnzpoZ1hA8kTxEONQrg="] = d.current;
+  d["MtDZhBYqxDPkrVA5ZZHzdBnBXrY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_639.part.js.map

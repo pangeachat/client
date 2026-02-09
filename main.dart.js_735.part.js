@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Send r\xe5 json";
     },
-    get$select(_) {
-      return "Velg";
-    },
     get$searchForUsers() {
       return "S\xf8k etter @brukere...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og pr\xf8v igjen.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Om meg";
     },
@@ -5390,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HOYofWcM9ANzLZWyRwDKWtzPBGM="] = d.current;
+  d["lceeXApNiSw9gVr1/bLrRirqUEA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

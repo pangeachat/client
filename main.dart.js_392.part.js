@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Rohes JSON senden";
     },
-    get$select(_) {
-      return "Ausw\xe4hlen";
-    },
     get$searchForUsers() {
       return "Suche nach @benutzer ...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Die Aufnahme ist fehlgeschlagen. Bitte \xfcberpr\xfcfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "\xdcber mich";
     },
@@ -5390,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GL3Enl90kKuTnLCnYfLsp7r/8LM="] = d.current;
+  d["JbldU4O0cHNsxDXo3kNSN4cAllY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_392.part.js.map

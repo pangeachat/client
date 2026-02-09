@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "L\xe4het\xe4 raakaa jsonia";
     },
-    get$select(_) {
-      return "Valitse";
-    },
     get$searchForUsers() {
       return "Etsi k\xe4ytt\xe4ji\xe4 @...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xc4\xe4nityksen tallentaminen ep\xe4onnistui. Tarkista \xe4\xe4nioikeutesi ja yrit\xe4 uudelleen.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Tietoa minusta";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zrZJ5MenM4LKRmRpgDm0xSJAzng="] = d.current;
+  d["jhidDGLLJnptjALnJ2Ujljd12Ko="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

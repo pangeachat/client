@@ -1052,9 +1052,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "json \u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0b\u0f56\u0f62\u0f97\u0f7c\u0f51\u0f0b\u0f56\u0fb1\u0f7a\u0f51\u0f0d";
     },
-    get$select(_) {
-      return "\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0d";
-    },
     get$searchForUsers() {
       return "@users \u0f63\u0f0b\u0f60\u0f5a\u0f7c\u0f63";
     },
@@ -5352,6 +5349,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Bok o meni";
     },
@@ -5401,7 +5401,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ddf85H2m4SqBEI8cSrvIZ9qIPZ8="] = d.current;
+  d["/XW4D/qorUIer0jPr40uKvEl2Og="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_165.part.js.map

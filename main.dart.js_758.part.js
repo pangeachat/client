@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Odosla\u0165 surov\xfd JSON";
     },
-    get$select(_) {
-      return "Vybra\u0165";
-    },
     get$searchForUsers() {
       return "H\u013eada\u0165 @pou\u017e\xedvate\u013eov...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1vanie zlyhalo. Skontrolujte svoje povolenia na zvuk a sk\xfaste to znova.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "O mne";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pBk9ou44PPCCikyeqI6nz00SHhI="] = d.current;
+  d["wHB4rBKEglMmxBXbwxYrB3IlmvE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

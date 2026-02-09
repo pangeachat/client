@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Send raw json";
     },
-    get$select(_) {
-      return "Select";
-    },
     get$searchForUsers() {
       return "Search for @users...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Faill\xed an taifeadadh. Seice\xe1il do cheadanna guth\xe1in agus d\xe9an iarracht ar\xeds.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Faoi m'ainm";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ftVRPSnWENBuy0KCe0luh30R9/4="] = d.current;
+  d["qqD8y4s4MAC/e9SOExdt/hYOdwc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

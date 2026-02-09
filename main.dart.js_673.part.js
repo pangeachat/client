@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Tiszta json k\xfcld\xe9se";
     },
-    get$select(_) {
-      return "Kiv\xe1laszt";
-    },
     get$searchForUsers() {
       return "Keressen @felhaszn\xe1l\xf3kat...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A felv\xe9tel nem siker\xfclt. K\xe9rj\xfck, ellen\u0151rizze az audio enged\xe9lyeit, \xe9s pr\xf3b\xe1lja \xfajra.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "R\xf3lam";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xNStUHcgbkmTl98Lbe4IXe5HSP0="] = d.current;
+  d["1IPSdodY7FETXLuOlQ81HQPZFCo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_673.part.js.map

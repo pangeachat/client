@@ -1051,9 +1051,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_sendraw() {
       return "Magpadala ng raw json";
     },
-    get$select(_) {
-      return "Piliin";
-    },
     get$searchForUsers() {
       return "Maghanap para sa @users...";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.";
     },
+    get$selectAllWords() {
+      return "Select all the words you hear in the audio";
+    },
     get$aboutMeHint() {
       return "Tungkol sa akin";
     },
@@ -5387,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["S4j5gCc1gngOcX7Ex39Ap0wmNak="] = d.current;
+  d["cRsRyZItNp1Hck5cmrVAIViSzmE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map
