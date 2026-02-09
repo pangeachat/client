@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1vanie zlyhalo. Skontrolujte svoje povolenia na zvuk a sk\xfaste to znova.";
     },
+    get$aboutMeHint() {
+      return "O mne";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Zmeni\u0165 e-mail";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "S t\xfdmito e-mailov\xfdmi adresami sa m\xf4\u017eete prihl\xe1si\u0165, obnovi\u0165 svoje heslo a spravova\u0165 predplatn\xe9.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "E\u0161te ste nepridali \u017eiadne e-mailov\xe9 adresy.";
     },
     get$perfectPractice() {
       return "Dokonal\xe1 prax!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2EH6S7stlKev/IUv+3NvPnrgv8U="] = d.current;
+  d["pBk9ou44PPCCikyeqI6nz00SHhI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
-//# sourceMappingURL=main.dart.js_757.part.js.map
+//# sourceMappingURL=main.dart.js_758.part.js.map

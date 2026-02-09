@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Registrado malsukcesis. Bonvolu kontroli viajn a\u016ddajn permesojn kaj provi denove.";
     },
+    get$aboutMeHint() {
+      return "Pri mi";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "\u015can\u011di retpo\u015dton";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Kun \u0109i tiuj retpo\u015dtaj adresoj vi povas ensaluti, rekuperi vian pasvorton, kaj administri abonojn.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Vi ankora\u016d ne aldonis iujn retpo\u015dtajn adresojn.";
     },
     get$perfectPractice() {
       return "Perfekta praktiko!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eBkpjARGVoQGeAQoPWBg6P2gdzM="] = d.current;
+  d["g1aewm1dVg94ym5/X8g2kBTxhtA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_477.part.js.map

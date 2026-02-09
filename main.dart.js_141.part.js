@@ -5351,14 +5351,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u0641\u0634\u0644 \u0627\u0644\u062a\u0633\u062c\u064a\u0644. \u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0623\u0630\u0648\u0646\u0627\u062a \u0627\u0644\u0635\u0648\u062a \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643 \u0648\u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
     },
+    get$aboutMeHint() {
+      return "\u0639\u0646\u0651\u064a";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "\u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0647\u0630\u0647 \u0627\u0644\u0639\u0646\u0627\u0648\u064a\u0646 \u0627\u0644\u0628\u0631\u064a\u062f\u064a\u0629 \u064a\u0645\u0643\u0646\u0643 \u062a\u0633\u062c\u064a\u0644 \u0627\u0644\u062f\u062e\u0648\u0644\u060c \u0648\u0627\u0633\u062a\u0639\u0627\u062f\u0629 \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631\u060c \u0648\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0627\u0634\u062a\u0631\u0627\u0643\u0627\u062a.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "\u0644\u0645 \u062a\u0642\u0645 \u0628\u0625\u0636\u0627\u0641\u0629 \u0623\u064a \u0639\u0646\u0627\u0648\u064a\u0646 \u0628\u0631\u064a\u062f \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u0628\u0639\u062f.";
     },
     get$perfectPractice() {
       return "\u0645\u0645\u0627\u0631\u0633\u0629 \u0645\u062b\u0627\u0644\u064a\u0629!";
@@ -5385,7 +5388,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iIB2+I28fH5L6p2KFgKlNZ4O9MI="] = d.current;
+  d["G+x9eU7Xo2z+B6mna3Bh7pBPIIs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_141.part.js.map

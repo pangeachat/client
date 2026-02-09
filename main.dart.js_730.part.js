@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ieraksts neizdev\u0101s. L\u016bdzu, p\u0101rbaudiet savas audio at\u013caujas un m\u0113\u0123iniet v\u0113lreiz.";
     },
+    get$aboutMeHint() {
+      return "Par mani";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Main\u012bt e-pastu";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Ar \u0161iem e-pasta adres\u0113m j\u016bs varat pieteikties, atjaunot savu paroli un p\u0101rvald\u012bt abonementus.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "J\u016bs v\u0113l neesat pievienojis nevienu e-pasta adresi.";
     },
     get$perfectPractice() {
       return "Lieliska prakse!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M0hE60zcO+PcIusw3EcQ4+KJZpg="] = d.current;
+  d["B9ufRwPyWuoGVaxOnNRr9978/Hc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
-//# sourceMappingURL=main.dart.js_729.part.js.map
+//# sourceMappingURL=main.dart.js_730.part.js.map

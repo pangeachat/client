@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A felv\xe9tel nem siker\xfclt. K\xe9rj\xfck, ellen\u0151rizze az audio enged\xe9lyeit, \xe9s pr\xf3b\xe1lja \xfajra.";
     },
+    get$aboutMeHint() {
+      return "R\xf3lam";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Email c\xedm m\xf3dos\xedt\xe1sa";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Ezekkel az email c\xedmekkel be tudsz jelentkezni, vissza tudod \xe1ll\xedtani a jelszavadat, \xe9s kezelni tudod az el\u0151fizet\xe9seket.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "M\xe9g nem adt\xe1l hozz\xe1 email c\xedmeket.";
     },
     get$perfectPractice() {
       return "T\xf6k\xe9letes gyakorl\xe1s!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oIdhAChsoUCSRI8q+FHHIQMXtEI="] = d.current;
+  d["xNStUHcgbkmTl98Lbe4IXe5HSP0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_673.part.js.map

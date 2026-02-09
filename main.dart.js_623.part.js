@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Theip ar an taifeadadh. Seice\xe1il do cheadanna guth\xe1in le do thoil agus d\xe9an iarracht ar\xeds.";
     },
+    get$aboutMeHint() {
+      return "F\xfam";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Athraigh an r\xedomhphost";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Leis na seolta\xed r\xedomhphoist seo, is f\xe9idir leat log\xe1il isteach, do phasfhocal a chur ar ais, agus s\xednti\xfais a bhainisti\xfa.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "N\xedl aon seolta\xed r\xedomhphoist curtha leis f\xf3s.";
     },
     get$perfectPractice() {
       return "Cleachtadh foirfe!";
@@ -5387,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rdQzpyRzQ5Vk3v9KNXw7QJgmMcY="] = d.current;
+  d["lWEYk+5UJOCzPnN+iQS7UwBDcBI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_623.part.js.map

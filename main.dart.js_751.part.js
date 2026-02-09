@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xcenregistrarea a e\u0219uat. V\u0103 rug\u0103m s\u0103 verifica\u021bi permisiunile audio \u0219i s\u0103 \xeencerca\u021bi din nou.";
     },
+    get$aboutMeHint() {
+      return "Despre mine";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Schimb\u0103 emailul";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Cu aceste adrese de email po\u021bi s\u0103 te conectezi, s\u0103 \xee\u021bi recuperezi parola \u0219i s\u0103 gestionezi abonamentele.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Nu ai ad\u0103ugat \xeenc\u0103 nicio adres\u0103 de email.";
     },
     get$perfectPractice() {
       return "Practica perfect\u0103!";
@@ -5387,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["S4F8/pAisJDfvAfipF23izpsLjI="] = d.current;
+  d["uXViH+1NTEwoE2YKE5G0iFSHSSI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
-//# sourceMappingURL=main.dart.js_750.part.js.map
+//# sourceMappingURL=main.dart.js_751.part.js.map

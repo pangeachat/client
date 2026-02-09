@@ -5351,14 +5351,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La gravaci\xf3 ha fallat. Si us plau, comproveu els vostres permisos d'\xe0udio i torneu-ho a provar.";
     },
+    get$aboutMeHint() {
+      return "Sobre mi";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Canvia l'email";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Amb aquestes adreces de correu electr\xf2nic pots iniciar sessi\xf3, recuperar la teva contrasenya i gestionar les subscripcions.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Encara no has afegit cap adre\xe7a de correu electr\xf2nic.";
     },
     get$perfectPractice() {
       return "Pr\xe0ctica perfecta!";
@@ -5388,7 +5391,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hpThrkZZQYjecJRRA80Q+TJlTkQ="] = d.current;
+  d["oWIl9FFavMdXJ/sIWcp0epcTpjg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_187.part.js.map

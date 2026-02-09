@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Salvestamine eba\xf5nnestus. Palun kontrollige oma heli\xf5igusi ja proovige uuesti.";
     },
+    get$aboutMeHint() {
+      return "Minust";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Muuda e-posti";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Nende e-posti aadressidega saad sisse logida, oma parooli taastada ja tellimusi hallata.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Sa ei ole veel \xfchtegi e-posti aadressi lisanud.";
     },
     get$perfectPractice() {
       return "T\xe4iuslik harjutamine!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eHdPurCdn+LdTK+AWExVDYM3Pmw="] = d.current;
+  d["0XicmrG9TvTVc+KV2wBVhaKUbMY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_551.part.js.map

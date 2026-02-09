@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "L'enregistrement a \xe9chou\xe9. Veuillez v\xe9rifier vos autorisations audio et r\xe9essayer.";
     },
+    get$aboutMeHint() {
+      return "\xc0 propos de moi";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Changer l'email";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Avec ces adresses email, vous pouvez vous connecter, r\xe9cup\xe9rer votre mot de passe et g\xe9rer vos abonnements.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Vous n'avez pas encore ajout\xe9 d'adresses email.";
     },
     get$perfectPractice() {
       return "Pratique parfaite !";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OfL+9Dk1EjhpYmzY5VOMHettvqg="] = d.current;
+  d["TkBindtFoFfYC3Oq1NBAk+9ZNvA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map

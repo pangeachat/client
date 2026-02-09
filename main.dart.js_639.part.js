@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u05d4\u05e7\u05dc\u05d8\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4. \u05d0\u05e0\u05d0 \u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05d4\u05d0\u05d5\u05d3\u05d9\u05d5 \u05e9\u05dc\u05da \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
+    get$aboutMeHint() {
+      return "\u05e2\u05dc\u05d9\u05d9";
+    },
     get$changeEmail() {
-      return "Change email";
+      return '\u05e9\u05e0\u05d4 \u05d3\u05d5\u05d0"\u05dc';
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return '\u05e2\u05dd \u05db\u05ea\u05d5\u05d1\u05d5\u05ea \u05d4\u05d3\u05d5\u05d0"\u05dc \u05d4\u05dc\u05dc\u05d5 \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05ea\u05d7\u05d1\u05e8, \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da \u05d5\u05dc\u05e0\u05d4\u05dc \u05de\u05e0\u05d5\u05d9\u05d9\u05dd.';
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return '\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05d4\u05d5\u05e1\u05e4\u05ea \u05db\u05ea\u05d5\u05d1\u05d5\u05ea \u05d3\u05d5\u05d0"\u05dc.';
     },
     get$perfectPractice() {
       return "\u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d5\u05e9\u05dc\u05dd!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dKGiqvKk4ERjhVgGmQvd5552jJQ="] = d.current;
+  d["fuviEQLBsnzpoZ1hA8kTxEONQrg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_639.part.js.map

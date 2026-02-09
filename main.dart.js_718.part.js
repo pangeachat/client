@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9332\u97f3\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u30aa\u30fc\u30c7\u30a3\u30aa\u306e\u6a29\u9650\u3092\u78ba\u8a8d\u3057\u3066\u3001\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$aboutMeHint() {
+      return "\u79c1\u306b\u3064\u3044\u3066";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u3092\u5909\u66f4";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "\u3053\u308c\u3089\u306e\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u3092\u4f7f\u7528\u3057\u3066\u3001\u30ed\u30b0\u30a4\u30f3\u3001\u30d1\u30b9\u30ef\u30fc\u30c9\u306e\u56de\u5fa9\u3001\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u306e\u7ba1\u7406\u304c\u3067\u304d\u307e\u3059\u3002";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "\u307e\u3060\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u3092\u8ffd\u52a0\u3057\u3066\u3044\u307e\u305b\u3093\u3002";
     },
     get$perfectPractice() {
       return "\u5b8c\u74a7\u306a\u7df4\u7fd2\uff01";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A8GvqdMpgCXY7hYGHAJ2qpudLFc="] = d.current;
+  d["6VapAK4EkOF25cRV4rKIIbHap98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
-//# sourceMappingURL=main.dart.js_717.part.js.map
+//# sourceMappingURL=main.dart.js_718.part.js.map

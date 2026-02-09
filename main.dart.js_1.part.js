@@ -5357,14 +5357,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u5f55\u97f3\u5931\u8d25\u3002\u8bf7\u68c0\u67e5\u60a8\u7684\u97f3\u9891\u6743\u9650\u5e76\u91cd\u8bd5\u3002";
     },
+    get$aboutMeHint() {
+      return "\u5173\u4e8e\u6211";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "\u66f4\u6539\u7535\u5b50\u90ae\u4ef6";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "\u4f7f\u7528\u8fd9\u4e9b\u7535\u5b50\u90ae\u4ef6\u5730\u5740\uff0c\u60a8\u53ef\u4ee5\u767b\u5f55\u3001\u6062\u590d\u5bc6\u7801\u548c\u7ba1\u7406\u8ba2\u9605\u3002";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "\u60a8\u5c1a\u672a\u6dfb\u52a0\u4efb\u4f55\u7535\u5b50\u90ae\u4ef6\u5730\u5740\u3002";
     },
     get$perfectPractice() {
       return "\u5b8c\u7f8e\u7684\u7ec3\u4e60\uff01";
@@ -10714,6 +10717,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9304\u97f3\u5931\u6557\u3002\u8acb\u6aa2\u67e5\u60a8\u7684\u97f3\u983b\u6b0a\u9650\u4e26\u91cd\u8a66\u3002";
     },
+    get$aboutMeHint() {
+      return "\u95dc\u65bc\u6211";
+    },
+    get$changeEmail() {
+      return "\u66f4\u6539\u96fb\u5b50\u90f5\u4ef6";
+    },
+    get$withTheseAddressesDescription() {
+      return "\u4f7f\u7528\u9019\u4e9b\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\uff0c\u60a8\u53ef\u4ee5\u767b\u9304\u3001\u6062\u5fa9\u5bc6\u78bc\u548c\u7ba1\u7406\u8a02\u95b1\u3002";
+    },
+    get$noAddressDescription() {
+      return "\u60a8\u5c1a\u672a\u6dfb\u52a0\u4efb\u4f55\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3002";
+    },
     get$perfectPractice() {
       return "\u5b8c\u7f8e\u7684\u7df4\u7fd2\uff01";
     },
@@ -10740,7 +10755,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["og/eO+M3v4IrvTLVa5N6CCpnIoM="] = d.current;
+  d["JIXY1jDuzvE0NFb0iUs2S5UVRWA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

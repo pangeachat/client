@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.";
     },
+    get$aboutMeHint() {
+      return "Niri buruz";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Aldatu posta elektronikoa";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Posta elektroniko helbide hauekin saioa hasi dezakezu, zure pasahitza berreskuratu eta harpidetzak kudeatu.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Oraindik ez duzu posta elektroniko helbiderik gehitu.";
     },
     get$perfectPractice() {
       return "Praktika perfektua!";
@@ -5387,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TmnVI6FbyS0Xnvk5DBJjvHngivM="] = d.current;
+  d["83O2qu/5zO8wsXjPKn6x25hTHZA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_572.part.js.map

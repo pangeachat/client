@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
     },
+    get$aboutMeHint() {
+      return "Tentang saya";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Ubah email";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Dengan alamat email ini, Anda dapat masuk, memulihkan kata sandi Anda, dan mengelola langganan.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Anda belum menambahkan alamat email apapun.";
     },
     get$perfectPractice() {
       return "Latihan yang sempurna!";
@@ -5387,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5VcTr5PQyv8HIVjCgEH3NrWn9cc="] = d.current;
+  d["IHO2aBI7uosOyl8+4d2L1kCMfK8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_698.part.js.map

@@ -5350,6 +5350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$aboutMeHint() {
+      return "About me";
+    },
     get$changeEmail() {
       return "Change email";
     },
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mCT3AlQkmGvLPHhU0EEcnyZNNX0="] = d.current;
+  d["TP4pRoZ7fHHv7avCbcrkB2mNQpo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_421.part.js.map

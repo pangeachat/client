@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La grabaci\xf3n fall\xf3. Por favor, verifica tus permisos de audio y vuelve a intentarlo.";
     },
+    get$aboutMeHint() {
+      return "Acerca de m\xed";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Cambiar correo electr\xf3nico";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "Con estas direcciones de correo electr\xf3nico puedes iniciar sesi\xf3n, recuperar tu contrase\xf1a y gestionar suscripciones.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "A\xfan no has a\xf1adido ninguna direcci\xf3n de correo electr\xf3nico.";
     },
     get$perfectPractice() {
       return "\xa1Pr\xe1ctica perfecta!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4sDEUOqop7nlaa0S49BxO23iekw="] = d.current;
+  d["/6TNUbtO+vqN7yIJYSiK9GqYXyo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

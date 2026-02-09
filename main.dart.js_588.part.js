@@ -5350,14 +5350,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xc4\xe4nityksen tallentaminen ep\xe4onnistui. Tarkista \xe4\xe4nioikeutesi ja yrit\xe4 uudelleen.";
     },
+    get$aboutMeHint() {
+      return "Tietoa minusta";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Vaihda s\xe4hk\xf6postiosoite";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return "N\xe4iden s\xe4hk\xf6postiosoitteiden avulla voit kirjautua sis\xe4\xe4n, palauttaa salasanasi ja hallita tilauksia.";
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return "Et ole viel\xe4 lis\xe4nnyt mit\xe4\xe4n s\xe4hk\xf6postiosoitteita.";
     },
     get$perfectPractice() {
       return "T\xe4ydellinen harjoittelu!";
@@ -5384,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["joQB7AbkWg6vcitQe5jSuAlVgdU="] = d.current;
+  d["zrZJ5MenM4LKRmRpgDm0xSJAzng="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

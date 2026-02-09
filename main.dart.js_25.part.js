@@ -1694,7 +1694,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Baixar Arquivo CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return string$.Voc__a;
+      return string$.Voc__at;
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
       return "Assinatura adquirida atrav\xe9s de " + purchasePlatform;
@@ -5362,14 +5362,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$aboutMeHint() {
+      return "Sobre mim";
+    },
     get$changeEmail() {
-      return "Change email";
+      return "Alterar e-mail";
     },
     get$withTheseAddressesDescription() {
-      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+      return string$.Com_es;
     },
     get$noAddressDescription() {
-      return "You have not added any email addresses yet.";
+      return string$.Voc__ai;
     },
     get$perfectPractice() {
       return "Pr\xe1tica perfeita!";
@@ -7054,7 +7057,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Baixar Arquivo CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return string$.Voc__a;
+      return string$.Voc__at;
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
       return "Assinatura adquirida atrav\xe9s de " + purchasePlatform;
@@ -10718,6 +10721,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "Grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$aboutMeHint() {
+      return "Sobre mim";
+    },
+    get$changeEmail() {
+      return "Alterar e-mail";
+    },
+    get$withTheseAddressesDescription() {
+      return string$.Com_es;
+    },
+    get$noAddressDescription() {
+      return string$.Voc__ai;
     },
     get$perfectPractice() {
       return "Pr\xe1tica perfeita!";
@@ -16067,6 +16082,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$aboutMeHint() {
+      return "Sobre mim";
+    },
+    get$changeEmail() {
+      return "Alterar e-mail";
+    },
+    get$withTheseAddressesDescription() {
+      return string$.Com_es;
+    },
+    get$noAddressDescription() {
+      return string$.Voc__ai;
+    },
     get$perfectPractice() {
       return "Pr\xe1tica perfeita!";
     },
@@ -16139,6 +16166,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Cliqueem: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
     Cliquena: "Clique nas pe\xe7as do quebra-cabe\xe7a para perguntas de gram\xe1tica!",
     Cliqueno: "Clique nos bot\xf5es abaixo para mini-jogos de combina\xe7\xe3o de emojis, \xe1udios, significados de palavras e conceitos gramaticais. Ou clique em qualquer palavra para detalhes.",
+    Com_es: "Com esses endere\xe7os de e-mail, voc\xea pode fazer login, recuperar sua senha e gerenciar assinaturas.",
     Combine: "Combine emojis com as palavras que eles representam melhor. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05",
     Combino: "Combine os significados com as palavras na mensagem!",
     Comple: "Complete pelo menos uma atividade para desbloquear a tradu\xe7\xe3o!",
@@ -16269,7 +16297,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Uso_de: "Uso de N\xedvel 2 com assist\xeancia de tradu\xe7\xe3o e assist\xeancia gramatical",
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
-    Voc__a: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
+    Voc__ai: "Voc\xea ainda n\xe3o adicionou nenhum endere\xe7o de e-mail.",
+    Voc__at: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
     Voc__c: "Voc\xea completou a pr\xe1tica, continue assim para melhorar!",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
     Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
@@ -16287,7 +16316,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["URD03fuoeRMgHA7blqDf3RnAyl4="] = d.current;
+  d["1cBPF29YYAJm8rFofum+F4fVLSw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
