@@ -10,6 +10,7 @@ import 'package:synchronized/synchronized.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -177,6 +178,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<String?> getUserID() => _lastEventTimestampBox.get('user_id');
 
+  Future<DateTime?> getLastUpdated() async {
+    final entry = await _lastEventTimestampBox.get('last_updated');
+    if (entry == null) return null;
+    return DateTime.tryParse(entry);
+  }
+
   Future<DateTime?> getLastEventTimestamp() async {
     final timestampString =
         await _lastEventTimestampBox.get('last_event_timestamp');
@@ -197,6 +204,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     int? count,
     String? roomId,
     DateTime? since,
+    ConstructUseTypeEnum? type,
   }) async {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
@@ -206,6 +214,9 @@ class AnalyticsDatabase with DatabaseFileStorage {
         return false; // stop iteration entirely
       }
       if (roomId != null && use.metadata.roomId != roomId) {
+        return true; // skip but continue
+      }
+      if (type != null && use.useType != type) {
         return true; // skip but continue
       }
 
@@ -395,10 +406,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
       }
 
-      for (final u in usesForKey) {
-        model.addUse(u);
-      }
-
+      model.addUses(usesForKey);
       updates[key] = model;
     }
 
@@ -476,6 +484,15 @@ class AnalyticsDatabase with DatabaseFileStorage {
       await _lastEventTimestampBox.put(
         'user_id',
         userID,
+      );
+    });
+  }
+
+  Future<void> updateLastUpdated(DateTime timestamp) {
+    return _transaction(() async {
+      await _lastEventTimestampBox.put(
+        'last_updated',
+        timestamp.toIso8601String(),
       );
     });
   }
@@ -575,6 +592,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
       );
     });
 
+    await updateLastUpdated(DateTime.now());
+
     stopwatch.stop();
     Logs().i(
       "Server analytics update took ${stopwatch.elapsedMilliseconds} ms",
@@ -628,6 +647,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
       }
     });
+
+    await updateLastUpdated(DateTime.now());
 
     stopwatch.stop();
     Logs().i("Local analytics update took ${stopwatch.elapsedMilliseconds} ms");

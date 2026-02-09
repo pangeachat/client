@@ -1,17 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_record.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_record_repo.dart';
 
 /// Picks which tokens to do activities on and what types of activities to do
 /// Caches result so that we don't have to recompute it
@@ -89,79 +83,11 @@ class PracticeTarget {
         (morphFeature?.name ?? "");
   }
 
-  PracticeRecord get record => PracticeRecordRepo.get(this);
-
-  bool get isComplete {
-    if (activityType == ActivityTypeEnum.morphId) {
-      return record.completeResponses > 0;
-    }
-
-    return tokens.every(
-      (t) => record.responses
-          .any((res) => res.cId == t.vocabConstructID && res.isCorrect),
-    );
-  }
-
-  bool isCompleteByToken(PangeaToken token, [MorphFeaturesEnum? morph]) {
-    final ConstructIdentifier? cId =
-        morph == null ? token.vocabConstructID : token.morphIdByFeature(morph);
-    if (cId == null) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: "isCompleteByToken: cId is null for token ${token.text.content}",
-        data: {
-          "t": token.toJson(),
-          "morph": morph?.name,
-        },
-      );
-      return false;
-    }
-
-    if (activityType == ActivityTypeEnum.morphId) {
-      return record.responses.any(
-        (res) => res.cId == token.morphIdByFeature(morph!) && res.isCorrect,
-      );
-    }
-
-    return record.responses.any(
-      (res) => res.cId == token.vocabConstructID && res.isCorrect,
-    );
-  }
-
-  bool? wasCorrectChoice(String choice) {
-    for (final response in record.responses) {
-      if (response.text == choice) {
-        return response.isCorrect;
-      }
-    }
-    return null;
-  }
-
-  /// if any of the choices were correct, return true
-  /// if all of the choices were incorrect, return false
-  /// if null, it means the user has not yet responded with that choice
-  bool? wasCorrectMatch(PracticeChoice choice) {
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent && response.isCorrect) {
-        return true;
-      }
-    }
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent) {
-        return false;
-      }
-    }
-    return null;
-  }
-
-  bool get hasAnyResponses => record.responses.isNotEmpty;
-
-  bool get hasAnyCorrectChoices {
-    for (final response in record.responses) {
-      if (response.isCorrect) {
-        return true;
-      }
-    }
-    return false;
+  ConstructIdentifier targetTokenConstructID(PangeaToken token) {
+    final defaultID = token.vocabConstructID;
+    final ConstructIdentifier? cId = morphFeature == null
+        ? defaultID
+        : token.morphIdByFeature(morphFeature!);
+    return cId ?? defaultID;
   }
 }

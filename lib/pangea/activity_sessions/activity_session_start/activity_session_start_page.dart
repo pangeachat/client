@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activ
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
@@ -293,8 +294,17 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         );
       }
       await Future.wait(futures);
-    } catch (e) {
+    } catch (e, s) {
       error = e;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "activityId": widget.activityId,
+          "roomId": widget.roomId,
+          "parentId": widget.parentId,
+        },
+      );
     } finally {
       if (mounted) {
         setState(() => loading = false);

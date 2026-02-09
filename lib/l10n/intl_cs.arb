@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-07 14:26:03.848423",
+  "@@last_modified": "2026-02-05 10:09:43.831148",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -3314,8 +3314,6 @@
   "noPaymentInfo": "Není třeba žádné platební informace!",
   "updatePhoneOS": "Možná budete muset aktualizovat verzi operačního systému vašeho zařízení",
   "wordsPerMinute": "Slov za minutu",
-  "autoIGCToolName": "Automaticky spustit pomoc s psaním Pangea",
-  "autoIGCToolDescription": "Automaticky spustit gramatickou kontrolu a překlad pomocí Pangea Chat před odesláním mé zprávy",
   "tooltipInstructionsTitle": "Nejste si jistí, co to dělá?",
   "tooltipInstructionsMobileBody": "Podržte položky pro zobrazení nápověd.",
   "tooltipInstructionsBrowserBody": "Na položky najeďte myší pro zobrazení nápověd.",
@@ -3943,7 +3941,6 @@
   "numModules": "{num} modulů",
   "coursePlan": "Plán kurzu",
   "editCourseLater": "Později můžete upravit název šablony, popisy a obrázek kurzu.",
-  "newCourseAccess": "Ve výchozím nastavení jsou kurzy soukromé a vyžadují schválení správce pro připojení. Tyto nastavení můžete upravit kdykoli.",
   "createCourse": "Vytvořit kurz",
   "stats": "Statistiky",
   "createGroupChat": "Vytvořit skupinový chat",
@@ -6813,14 +6810,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9439,10 +9428,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11430,6 +11415,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Opustil(a) jsi chat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Stahování zahájeno",
+  "webDownloadPermissionMessage": "Pokud váš prohlížeč blokuje stahování, povolte prosím stahování pro tuto stránku.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Pokrok vaší cvičební relace nebude uložen.",
+  "practiceGrammar": "Cvičit gramatiku",
+  "notEnoughToPractice": "Odešlete více zpráv, abyste odemkli cvičení",
+  "constructUseCorGCDesc": "Cvičení správné gramatické kategorie",
+  "constructUseIncGCDesc": "Cvičení nesprávné gramatické kategorie",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cvičení správné gramatiky",
+  "constructUseIncGEDesc": "Cvičení nesprávné gramatiky",
+  "fillInBlank": "Doplňte prázdné místo správnou volbou",
+  "learn": "Učit se",
+  "languageUpdated": "Cílový jazyk byl aktualizován!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Hlas Pangea Bota",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaše žádost byla odeslána administrátorovi kurzu! Budete vpuštěni, pokud ji schválí.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Máte pozvánkový kód nebo odkaz na veřejný kurz?",
+  "welcomeUser": "Vítejte {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Hledejte uživatele, které chcete pozvat do tohoto chatu.",
+  "publicInviteDescSpace": "Hledejte uživatele, které chcete pozvat do tohoto prostoru.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikace pro zasílání zpráv, takže jsou oznámení důležitá!",
+  "enableNotificationsDesc": "Povolit oznámení",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat s podporou",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Ve výchozím nastavení jsou kurzy veřejně vyhledatelné a vyžadují schválení administrátora pro připojení. Tyto nastavení můžete kdykoli upravit.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Jaký jazyk se učíte?",
+  "searchLanguagesHint": "Hledejte cílové jazyky",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Otázky? Jsme tu, abychom pomohli!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Něco se pokazilo a my na tom tvrdě pracujeme. Zkontrolujte to prosím později.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Povolit asistenci při psaní",
+  "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nahrávání se nezdařilo. Zkontrolujte prosím svá oprávnění k audiosouborům a zkuste to znovu.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Frázové sloveso",
+  "grammarCopyPOScompn": "Složenina",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

@@ -1206,8 +1206,6 @@
   "noPaymentInfo": "Ingen betalingsoplysninger nødvendige!",
   "updatePhoneOS": "Du kan være nødt til at opdatere din enheds OS-version.",
   "wordsPerMinute": "Ord pr. minut",
-  "autoIGCToolName": "Kør Pangea skriveassistance automatisk",
-  "autoIGCToolDescription": "Kør automatisk Pangea Chat grammatik- og oversættelsesassistance, før jeg sender min besked.",
   "tooltipInstructionsTitle": "Er du ikke sikker på, hvad det gør?",
   "tooltipInstructionsMobileBody": "Tryk og hold på elementer for at se værktøjstip.",
   "tooltipInstructionsBrowserBody": "Hold musen over elementer for at se værktøjstip.",
@@ -1835,7 +1833,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursusplan",
   "editCourseLater": "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.",
-  "newCourseAccess": "Som standard er kurser private og kræver godkendelse fra administrator for at deltage. Du kan redigere disse indstillinger når som helst.",
   "createCourse": "Opret kursus",
   "stats": "Statistikker",
   "createGroupChat": "Opret gruppechat",
@@ -1930,7 +1927,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-07 14:23:47.042043",
+  "@@last_modified": "2026-02-05 10:09:17.541713",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -7268,14 +7265,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9894,10 +9883,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11884,6 +11869,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Du forlod chatten",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download påbegyndt",
+  "webDownloadPermissionMessage": "Hvis din browser blokerer downloads, bedes du aktivere downloads for dette site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Din praksis session fremskridt vil ikke blive gemt.",
+  "practiceGrammar": "Øv grammatik",
+  "notEnoughToPractice": "Send flere beskeder for at låse op for praksis",
+  "constructUseCorGCDesc": "Korrekt grammatik kategori praksis",
+  "constructUseIncGCDesc": "Ukorrrekt grammatik kategori praksis",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekt grammatikfejl praksis",
+  "constructUseIncGEDesc": "Ukorrrekt grammatikfejl praksis",
+  "fillInBlank": "Udfyld det tomme felt med det korrekte valg",
+  "learn": "Lær",
+  "languageUpdated": "Mål sprog opdateret!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot stemme",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Din anmodning er sendt til kursusadministratoren! Du vil blive lukket ind, hvis de godkender.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en invitationskode eller et link til et offentligt kursus?",
+  "welcomeUser": "Velkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Søg efter brugere for at invitere dem til denne chat.",
+  "publicInviteDescSpace": "Søg efter brugere for at invitere dem til dette rum.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat er en beskedapp, så notifikationer er vigtige!",
+  "enableNotificationsDesc": "Tillad notifikationer",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat med support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard er kurser offentligt søgbare og kræver administratorgodkendelse for at deltage. Du kan redigere disse indstillinger når som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hvilket sprog lærer du?",
+  "searchLanguagesHint": "Søg efter målsprog",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Spørgsmål? Vi er her for at hjælpe!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Noget gik galt, og vi arbejder hårdt på at løse det. Tjek igen senere.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivér skriveassistance",
+  "autoIGCToolDescription": "Kør automatisk Pangea Chat-værktøjer for at rette sendte beskeder til målsproget.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og prøv igen.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sammensat",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

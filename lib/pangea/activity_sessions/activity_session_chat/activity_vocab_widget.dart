@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/token_rendering_mixin.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -105,27 +106,17 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
     OverlayUtil.showPositionedCard(
       overlayKey: target,
       context: context,
-      cardToShow: StatefulBuilder(
-        builder: (context, setState) => WordZoomWidget(
-          token: PangeaTokenText(
-            content: v.lemma,
-            length: v.lemma.characters.length,
-            offset: 0,
-          ),
-          construct: ConstructIdentifier(
-            lemma: v.lemma,
-            type: ConstructTypeEnum.vocab,
-            category: v.pos,
-          ),
-          langCode: widget.langCode,
-          onClose: () {
-            MatrixState.pAnyState.closeOverlay(target);
-            setState(() => _selectedVocab = null);
-          },
-          onDismissNewWordOverlay: () {
-            if (mounted) setState(() {});
-          },
-        ),
+      cardToShow: _WordCardWrapper(
+        v: v,
+        langCode: widget.langCode,
+        target: target,
+        onClose: () {
+          if (mounted) {
+            WidgetsBinding.instance.addPostFrameCallback(
+              (_) => setState(() => _selectedVocab = null),
+            );
+          }
+        },
       ),
       transformTargetId: target,
       closePrevOverlay: false,
@@ -142,12 +133,6 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
       "activity_tokens",
       tokens,
       widget.activityLangCode,
-    );
-    final renderer = TokenRenderingUtil(
-      existingStyle: TextStyle(
-        color: Theme.of(context).colorScheme.onSurface,
-        fontSize: 14.0,
-      ),
     );
 
     return Wrap(
@@ -186,13 +171,14 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
                       color: color,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
-                      v.lemma,
-                      style: renderer.style(
-                        underlineColor: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withAlpha(200),
+                    child: UnderlineText(
+                      text: v.lemma,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 14.0,
+                      ),
+                      underlineColor: TokenRenderingUtil.underlineColor(
+                        Theme.of(context).colorScheme.primary.withAlpha(200),
                         isNew: isNew,
                         selected: _selectedVocab == v,
                         hovered: hovered,
@@ -205,6 +191,55 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
           },
         ),
       ],
+    );
+  }
+}
+
+class _WordCardWrapper extends StatefulWidget {
+  final Vocab v;
+  final String langCode;
+  final String target;
+  final VoidCallback onClose;
+
+  const _WordCardWrapper({
+    required this.v,
+    required this.langCode,
+    required this.target,
+    required this.onClose,
+  });
+
+  @override
+  State<_WordCardWrapper> createState() => _WordCardWrapperState();
+}
+
+class _WordCardWrapperState extends State<_WordCardWrapper> {
+  @override
+  void dispose() {
+    widget.onClose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WordZoomWidget(
+      token: PangeaTokenText(
+        content: widget.v.lemma,
+        length: widget.v.lemma.characters.length,
+        offset: 0,
+      ),
+      construct: ConstructIdentifier(
+        lemma: widget.v.lemma,
+        type: ConstructTypeEnum.vocab,
+        category: widget.v.pos,
+      ),
+      langCode: widget.langCode,
+      onClose: () {
+        MatrixState.pAnyState.closeOverlay(widget.target);
+        widget.onClose();
+      },
+      onDismissNewWordOverlay: () {
+        if (mounted) setState(() {});
+      },
     );
   }
 }

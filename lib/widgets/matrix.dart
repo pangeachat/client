@@ -24,8 +24,8 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -85,6 +85,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   bool? loginRegistrationSupported;
 
   BackgroundPush? backgroundPush;
+  // #Pangea
+  ValueNotifier<int> notifPermissionNotifier = ValueNotifier(0);
+  // Pangea#
 
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
@@ -196,7 +199,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .stream
               .where((l) => l == LoginState.loggedIn)
               .first
-              .then((_) {
+              .then((_) async {
             // #Pangea
             MatrixState.pangeaController.handleLoginStateChange(
               LoginState.loggedIn,
@@ -213,7 +216,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
             _registerSubs(_loginClientCandidate!.clientName);
             _loginClientCandidate = null;
-            FluffyChatApp.router.go('/rooms');
+            // #Pangea
+            // FluffyChatApp.router.go('/rooms');
+            final isL2Set = await pangeaController.userController.isUserL2Set;
+            FluffyChatApp.router.go(
+              isL2Set ? '/rooms' : '/registration/create',
+            );
+            // Pangea#
           });
     // #Pangea
     candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
@@ -553,9 +562,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   void initSettings() {
-    AppConfig.fontSizeFactor =
-        double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
-            AppConfig.fontSizeFactor;
+    // #Pangea
+    // AppConfig.fontSizeFactor =
+    //     double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
+    //         AppConfig.fontSizeFactor;
+    if (client.isLogged()) {
+      StyleSettingsRepo.settings(client.userID!).then((settings) {
+        AppConfig.fontSizeFactor = settings.fontSizeFactor;
+        AppConfig.useActivityImageAsChatBackground =
+            settings.useActivityImageBackground;
+      });
+    }
+    // Pangea#
 
     AppConfig.renderHtml =
         store.getBool(SettingKeys.renderHtml) ?? AppConfig.renderHtml;
@@ -629,6 +647,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     _languageListener?.cancel();
     _uriListener?.cancel();
+    notifPermissionNotifier.dispose();
     // Pangea#
 
     super.dispose();
@@ -672,8 +691,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   Future<void> _processIncomingUris(Uri? uri) async {
-    if (uri == null) return;
-    await SpaceCodeController.onOpenAppViaUrl(uri);
+    if (uri == null || uri.fragment.isEmpty) return;
+
+    final path =
+        uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FluffyChatApp.router.go(path);
+    });
   }
   // Pangea#
 }

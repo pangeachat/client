@@ -23,9 +23,19 @@ class AnalyticsUpdateService {
 
   final AnalyticsDataService dataService;
 
-  AnalyticsUpdateService(this.dataService);
+  AnalyticsUpdateService(this.dataService) {
+    _periodicTimer = Timer.periodic(
+      const Duration(minutes: 5),
+      (_) => sendLocalAnalyticsToAnalyticsRoom(),
+    );
+  }
 
   Completer<void>? _updateCompleter;
+  Timer? _periodicTimer;
+
+  void dispose() {
+    _periodicTimer?.cancel();
+  }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
@@ -50,8 +60,9 @@ class AnalyticsUpdateService {
 
   Future<void> addAnalytics(
     String? targetID,
-    List<OneConstructUse> newConstructs,
-  ) async {
+    List<OneConstructUse> newConstructs, {
+    bool forceUpdate = false,
+  }) async {
     await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
       AnalyticsUpdate(
         newConstructs,
@@ -63,7 +74,9 @@ class AnalyticsUpdateService {
     final lastUpdated = await dataService.getLastUpdatedAnalytics();
     final difference = DateTime.now().difference(lastUpdated ?? DateTime.now());
 
-    if (localConstructCount > _maxMessagesCached || difference.inMinutes > 10) {
+    if (forceUpdate ||
+        localConstructCount > _maxMessagesCached ||
+        difference.inMinutes > 10) {
       sendLocalAnalyticsToAnalyticsRoom();
     }
   }
@@ -115,12 +128,14 @@ class AnalyticsUpdateService {
     await future;
   }
 
-  Future<void> sendActivityAnalytics(String roomId) async {
-    final analyticsRoom = await _getAnalyticsRoom();
+  Future<void> sendActivityAnalytics(String roomId, LanguageModel lang) async {
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: lang);
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
-    dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+    if (lang.langCodeShort == _l2?.langCodeShort) {
+      dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+    }
   }
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {

@@ -114,7 +114,7 @@ class PangeaMessageEvent {
           .map(
             (e) => RepresentationEvent(
               event: e,
-              parentMessageEvent: _event,
+              parentMessageEvent: _latestEdit,
               timeline: timeline,
             ),
           )
@@ -181,14 +181,14 @@ class PangeaMessageEvent {
 
         final original = PangeaRepresentation(
           langCode: lang ?? LanguageKeys.unknownLanguage,
-          text: _event.body,
+          text: _latestEdit.body,
           originalSent: true,
           originalWritten: false,
         );
 
         _representations!.add(
           RepresentationEvent(
-            parentMessageEvent: _event,
+            parentMessageEvent: _latestEdit,
             content: original,
             tokens: tokens,
             choreo: _embeddedChoreo,
@@ -202,7 +202,7 @@ class PangeaMessageEvent {
         e: err,
         s: s,
         data: {
-          "event": _event.toJson(),
+          "event": _latestEdit.toJson(),
         },
       );
     }
@@ -211,7 +211,7 @@ class PangeaMessageEvent {
       try {
         _representations!.add(
           RepresentationEvent(
-            parentMessageEvent: _event,
+            parentMessageEvent: _latestEdit,
             content: PangeaRepresentation.fromJson(
               _latestEdit.content[ModelKey.originalWritten]
                   as Map<String, dynamic>,
@@ -229,7 +229,7 @@ class PangeaMessageEvent {
           e: err,
           s: s,
           data: {
-            "event": _event.toJson(),
+            "event": _latestEdit.toJson(),
           },
         );
       }
@@ -278,7 +278,8 @@ class PangeaMessageEvent {
   /// Gets the message display text for the current language code.
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
-  String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
+  String get messageDisplayText =>
+      messageDisplayRepresentation?.text ?? _latestEdit.body;
 
   TextDirection get textDirection =>
       LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
@@ -300,7 +301,11 @@ class PangeaMessageEvent {
             (filter?.call(element) ?? true),
       );
 
-  Event? getTextToSpeechLocal(String langCode, String text) {
+  Event? getTextToSpeechLocal(
+    String langCode,
+    String text,
+    String? voice,
+  ) {
     for (final audio in allAudio) {
       final dataMap = audio.content.tryGetMap(ModelKey.transcription);
       if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
@@ -310,7 +315,9 @@ class PangeaMessageEvent {
           dataMap as dynamic,
         );
 
-        if (audioData.langCode == langCode && audioData.text == text) {
+        if (audioData.langCode == langCode &&
+            audioData.text == text &&
+            audioData.voice == voice) {
           return audio;
         }
       } catch (e, s) {
@@ -365,7 +372,7 @@ class PangeaMessageEvent {
     String langCode,
     String? voice,
   ) async {
-    final local = getTextToSpeechLocal(langCode, messageDisplayText);
+    final local = getTextToSpeechLocal(langCode, messageDisplayText, voice);
     if (local != null) {
       final file = await local.getPangeaAudioFile();
       if (file != null) return file;
@@ -421,7 +428,7 @@ class PangeaMessageEvent {
           'waveform': response.waveform,
         },
         ModelKey.transcription: response
-            .toPangeaAudioEventData(rep?.text ?? body, langCode)
+            .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
             .toJson(),
       },
     ).then((eventId) async {
@@ -492,7 +499,7 @@ class PangeaMessageEvent {
     _representations = null;
     return room.sendPangeaEvent(
       content: representation.toJson(),
-      parentEventId: eventId,
+      parentEventId: _latestEdit.eventId,
       type: PangeaEventTypes.representation,
     );
   }
@@ -661,7 +668,7 @@ class PangeaMessageEvent {
   ) async {
     final repEvent = await room.sendPangeaEvent(
       content: representation.toJson(),
-      parentEventId: eventId,
+      parentEventId: _latestEdit.eventId,
       type: PangeaEventTypes.representation,
     );
     return repEvent?.eventId;

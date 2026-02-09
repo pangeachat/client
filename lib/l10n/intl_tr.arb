@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-07 14:27:16.503973",
+  "@@last_modified": "2026-02-05 10:09:57.710087",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -3668,8 +3668,6 @@
   "noPaymentInfo": "Ödeme bilgisi gerekmez!",
   "updatePhoneOS": "Cihazınızın işletim sistemi sürümünü güncellemeniz gerekebilir.",
   "wordsPerMinute": "Dakikada kelime",
-  "autoIGCToolName": "Pangea yazma yardımını otomatik çalıştır",
-  "autoIGCToolDescription": "Mesajımı göndermeden önce Pangea Sohbet dilbilgisi ve çeviri yazma yardımını otomatik olarak çalıştır.",
   "tooltipInstructionsTitle": "Bu ne işe yarar bilmiyor musun?",
   "tooltipInstructionsMobileBody": "Öğe üzerine basılı tutarak ipuçlarını görüntüleyin.",
   "tooltipInstructionsBrowserBody": "İpuçlarını görüntülemek için öğeler üzerinde fare ile durun.",
@@ -4297,7 +4295,6 @@
   "numModules": "{num} modül",
   "coursePlan": "Kurs Planı",
   "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
-  "newCourseAccess": "Varsayılan olarak, kurslar özeldir ve katılmak için yönetici onayı gerekir. Bu ayarları istediğiniz zaman değiştirebilirsiniz.",
   "createCourse": "Kurs Oluştur",
   "stats": "İstatistikler",
   "createGroupChat": "Grup sohbeti oluştur",
@@ -6425,14 +6422,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9054,10 +9043,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11045,6 +11030,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Sohbeti terk ettin",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "İndirme başlatıldı",
+  "webDownloadPermissionMessage": "Tarayıcınız indirmeleri engelliyorsa, lütfen bu site için indirmeleri etkinleştirin.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.",
+  "practiceGrammar": "Dil bilgisi pratiği yap",
+  "notEnoughToPractice": "Pratik yapmak için daha fazla mesaj gönderin",
+  "constructUseCorGCDesc": "Doğru dil bilgisi kategorisi pratiği",
+  "constructUseIncGCDesc": "Yanlış dil bilgisi kategorisi pratiği",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Doğru dil bilgisi hatası pratiği",
+  "constructUseIncGEDesc": "Yanlış dil bilgisi hatası pratiği",
+  "fillInBlank": "Boşluğu doğru seçimle doldurun",
+  "learn": "Öğren",
+  "languageUpdated": "Hedef dil güncellendi!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot sesi",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Talebiniz kurs yöneticisine gönderildi! Onaylarlarsa içeri alınacaksınız.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
+  "welcomeUser": "Hoş geldin {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bu sohbete davet etmek için kullanıcıları arayın.",
+  "publicInviteDescSpace": "Bu alana davet etmek için kullanıcıları arayın.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat, bir mesajlaşma uygulamasıdır, bu yüzden bildirimler önemlidir!",
+  "enableNotificationsDesc": "Bildirimlere izin ver",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Destek ile Sohbet Et",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Varsayılan olarak, kurslar herkese açık olarak aranabilir ve katılmak için yönetici onayı gerektirir. Bu ayarları istediğiniz zaman düzenleyebilirsiniz.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hangi dili öğreniyorsunuz?",
+  "searchLanguagesHint": "Hedef dilleri arayın",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Sorular mı? Yardımcı olmaya buradayız!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Bir şeyler yanlış gitti ve biz bunu düzeltmek için yoğun bir şekilde çalışıyoruz. Lütfen daha sonra tekrar kontrol edin.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Yazma yardımını etkinleştir",
+  "autoIGCToolDescription": "Gönderilen mesajları hedef dile düzeltmek için Pangea Chat araçlarını otomatik olarak çalıştır.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Kayıt başarısız oldu. Lütfen ses izinlerinizi kontrol edin ve tekrar deneyin.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Deyim",
+  "grammarCopyPOSphrasalv": "Deyim Fiili",
+  "grammarCopyPOScompn": "Bileşik",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

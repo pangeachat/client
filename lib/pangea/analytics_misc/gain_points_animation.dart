@@ -41,7 +41,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
   @override
   void initState() {
     super.initState();
-    if (widget.points == 0) return;
+    if (_points == 0) return;
 
     _controller = AnimationController(
       duration: const Duration(milliseconds: duration),
@@ -77,18 +77,19 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
     );
   }
 
+  int get _points => widget.points.clamp(-25, 25);
+
   void initParticleTrajectories() {
-    for (int i = 0; i < widget.points.abs(); i++) {
-      final angle =
-          (i - widget.points.abs() / 2) / widget.points.abs() * (pi / 3) +
-              (_random.nextDouble() - 0.5) * pi / 6 +
-              pi / 2;
+    for (int i = 0; i < _points.abs(); i++) {
+      final angle = (i - _points.abs() / 2) / _points.abs() * (pi / 3) +
+          (_random.nextDouble() - 0.5) * pi / 6 +
+          pi / 2;
 
       final speedMultiplier =
           0.75 + _random.nextDouble() / 4; // Random speed multiplier.
       final speed = _particleSpeed *
           speedMultiplier *
-          (widget.points > 0 ? 2 : 1); // Exponential speed.
+          (_points > 0 ? 2 : 1); // Exponential speed.
       _trajectories.add(
         Offset(
           speed * cos(angle) * (widget.invert ? -1 : 1),
@@ -106,7 +107,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
 
   @override
   Widget build(BuildContext context) {
-    if (widget.points == 0 ||
+    if (_points == 0 ||
         _controller == null ||
         _fadeAnimation == null ||
         _progressAnimation == null) {
@@ -118,10 +119,10 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       return const SizedBox();
     }
 
-    final textColor = widget.points > 0 ? gainColor : loseColor;
+    final textColor = _points > 0 ? gainColor : loseColor;
 
     final plusWidget = Text(
-      widget.points > 0 ? "+" : "-",
+      _points > 0 ? "+" : "-",
       style: BotStyle.text(
         context,
         big: true,
@@ -139,7 +140,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
         child: IgnorePointer(
           ignoring: _controller!.isAnimating,
           child: Stack(
-            children: List.generate(widget.points.abs(), (index) {
+            children: List.generate(_points.abs(), (index) {
               return AnimatedBuilder(
                 animation: _controller!,
                 builder: (context, child) {

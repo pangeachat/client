@@ -3137,8 +3137,6 @@
   "noPaymentInfo": "Apmokėjimo informacija nereikalinga!",
   "updatePhoneOS": "Gali būti, kad reikės atnaujinti įrenginio operacinės sistemos versiją.",
   "wordsPerMinute": "Žodžių per minutę",
-  "autoIGCToolName": "Automatiškai paleisti Pangea rašymo pagalbą",
-  "autoIGCToolDescription": "Automatiškai paleisti Pangea pokalbio gramatikos ir vertimo rašymo pagalbą prieš išsiunčiant žinutę.",
   "tooltipInstructionsTitle": "Nesate tikri, ką tai daro?",
   "tooltipInstructionsMobileBody": "Paspauskite ir palaikykite elementus, kad pamatytumėte įrankių patarimus.",
   "tooltipInstructionsBrowserBody": "Užveskite pelės žymeklį ant elementų, kad pamatytumėte įrankių patarimus.",
@@ -3766,7 +3764,6 @@
   "numModules": "{num} moduliai",
   "coursePlan": "Kurso planas",
   "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
-  "newCourseAccess": "Pagal numatytuosius nustatymus kursai yra privatūs ir reikalauja administratoriaus patvirtinimo prisijungiant. Šiuos nustatymus galite redaguoti bet kuriuo metu.",
   "createCourse": "Sukurti kursą",
   "stats": "Statistika",
   "createGroupChat": "Sukurti grupinį pokalbį",
@@ -3861,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-07 14:27:30.418081",
+  "@@last_modified": "2026-02-05 10:10:01.069181",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7011,14 +7008,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9637,10 +9626,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11628,6 +11613,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Jūs palikote pokalbį",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Atsisiuntimas pradėtas",
+  "webDownloadPermissionMessage": "Jei jūsų naršyklė blokuoja atsisiuntimus, prašome įgalinti atsisiuntimus šiam tinklalapiui.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Jūsų praktikos sesijos pažanga nebus išsaugota.",
+  "practiceGrammar": "Praktikuoti gramatiką",
+  "notEnoughToPractice": "Siųskite daugiau žinučių, kad atrakintumėte praktiką",
+  "constructUseCorGCDesc": "Teisingos gramatikos kategorijos praktika",
+  "constructUseIncGCDesc": "Neteisingos gramatikos kategorijos praktika",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Teisingos gramatikos klaidų praktika",
+  "constructUseIncGEDesc": "Neteisingos gramatikos klaidų praktika",
+  "fillInBlank": "Užpildykite tuščią vietą teisingu pasirinkimu",
+  "learn": "Mokytis",
+  "languageUpdated": "Tikslo kalba atnaujinta!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot balsas",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Jūsų prašymas buvo išsiųstas kurso administratoriui! Būsite įleistas, jei jie patvirtins.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ar turite kvietimo kodą arba nuorodą į viešą kursą?",
+  "welcomeUser": "Sveiki atvykę, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Ieškokite vartotojų, kad juos pakviestumėte į šį pokalbį.",
+  "publicInviteDescSpace": "Ieškokite vartotojų, kad juos pakviestumėte į šią erdvę.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat yra žinučių programa, todėl pranešimai yra svarbūs!",
+  "enableNotificationsDesc": "Leisti pranešimus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Pokalbis su palaikymu",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pagal numatytuosius nustatymus, kursai yra viešai ieškomi ir reikalauja administratoriaus patvirtinimo prisijungti. Šiuos nustatymus galite redaguoti bet kada.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kokią kalbą mokotės?",
+  "searchLanguagesHint": "Ieškoti tikslo kalbų",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Klausimai? Mes čia, kad padėtume!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Įgalinti rašymo pagalbą",
+  "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Įrašymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kartą.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sudėtinis",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -46,6 +45,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
@@ -71,11 +71,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           size: 60.0,
                           userId: userId,
                           miniIcon:
-                              room != null && userId == BotName.byEnvironment
+                              room != null && user?.id == BotName.byEnvironment
                                   ? BotSettingsLanguageIcon(user: user!)
                                   : null,
                           presenceOffset:
-                              room != null && userId == BotName.byEnvironment
+                              room != null && user?.id == BotName.byEnvironment
                                   ? const Offset(0, 0)
                                   : null,
                         )
@@ -98,52 +98,53 @@ class ActivityParticipantIndicator extends StatelessWidget {
                     );
               return Opacity(
                 opacity: opacity,
-                child: Container(
-                  padding: padding ??
-                      const EdgeInsets.symmetric(
-                        vertical: 4.0,
-                        horizontal: 8.0,
-                      ),
-                  decoration: BoxDecoration(
-                    borderRadius: borderRadius ?? BorderRadius.circular(8.0),
-                    color: (hovered || selected) && selectable
-                        ? theme.colorScheme.surfaceContainerHighest
-                        : theme.colorScheme.surface.withAlpha(130),
-                  ),
-                  height: 125.0,
-                  constraints: const BoxConstraints(maxWidth: 100.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      shimmer && !selected
-                          ? Shimmer.fromColors(
-                              baseColor: AppConfig.gold.withAlpha(20),
-                              highlightColor: AppConfig.gold.withAlpha(50),
-                              child: avatar,
-                            )
-                          : avatar,
-                      Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 12.0,
+                child: ShimmerBackground(
+                  enabled: shimmer,
+                  borderRadius: borderRadius,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: padding ??
+                        const EdgeInsets.symmetric(
+                          vertical: 4.0,
+                          horizontal: 8.0,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        userId?.localpart ?? L10n.of(context).openRoleLabel,
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: (Theme.of(context).brightness ==
-                                  Brightness.light
-                              ? (userId?.localpart?.darkColor ?? name.darkColor)
-                              : (userId?.localpart?.lightColorText ??
-                                  name.lightColorText)),
+                    decoration: BoxDecoration(
+                      borderRadius: borderRadius,
+                      color: (hovered || selected) && selectable
+                          ? theme.colorScheme.surfaceContainerHighest
+                          : theme.colorScheme.surface.withAlpha(130),
+                    ),
+                    height: 125.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        avatar,
+                        Text(
+                          name,
+                          style: const TextStyle(
+                            fontSize: 12.0,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                        Text(
+                          userId?.localpart ?? L10n.of(context).openRoleLabel,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: (Theme.of(context).brightness ==
+                                    Brightness.light
+                                ? (userId?.localpart?.darkColor ??
+                                    name.darkColor)
+                                : (userId?.localpart?.lightColorText ??
+                                    name.lightColorText)),
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 
 /// Choice card for meaning activity with emoji, and alt text on flip
 class MeaningChoiceCard extends StatelessWidget {
   final String choiceId;
+  final String targetId;
   final String displayText;
   final String? emoji;
   final VoidCallback onPressed;
@@ -15,6 +16,7 @@ class MeaningChoiceCard extends StatelessWidget {
 
   const MeaningChoiceCard({
     required this.choiceId,
+    required this.targetId,
     required this.displayText,
     this.emoji,
     required this.onPressed,
@@ -33,7 +35,7 @@ class MeaningChoiceCard extends StatelessWidget {
 
     return GameChoiceCard(
       shouldFlip: true,
-      transformId: choiceId,
+      targetId: targetId,
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,

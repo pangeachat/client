@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:csv/csv.dart';
@@ -44,12 +45,18 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
   String? get _statusText {
     if (_downloading) return L10n.of(context).downloading;
-    if (_downloaded) return L10n.of(context).downloadComplete;
+    if (_downloaded) return L10n.of(context).downloadInitiated;
     return null;
   }
 
   void _setDownloadType(DownloadType type) {
-    if (mounted) setState(() => _downloadType = type);
+    if (mounted) {
+      setState(() {
+        _downloadType = type;
+        _downloaded = false;
+        _error = null;
+      });
+    }
   }
 
   Future<void> _downloadAnalytics() async {
@@ -426,7 +433,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               padding: const EdgeInsets.all(8.0),
               child: SegmentedButton<DownloadType>(
                 selected: {_downloadType},
-                onSelectionChanged: (c) => _setDownloadType(c.first),
+                onSelectionChanged:
+                    _downloading ? null : (c) => _setDownloadType(c.first),
                 segments: [
                   ButtonSegment(
                     value: DownloadType.csv,
@@ -459,6 +467,21 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(_statusText!),
+                    )
+                  : const SizedBox(),
+            ),
+            AnimatedSize(
+              duration: FluffyThemes.animationDuration,
+              child: kIsWeb && _downloaded
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        L10n.of(context).webDownloadPermissionMessage,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Theme.of(context).disabledColor,
+                        ),
+                      ),
                     )
                   : const SizedBox(),
             ),

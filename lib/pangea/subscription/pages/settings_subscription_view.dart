@@ -16,6 +16,8 @@ class SettingsSubscriptionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final clickedCancelDate =
+        SubscriptionManagementRepo.getClickedCancelSubscription();
     final List<Widget> managementButtons = [
       if (controller.currentSubscriptionAvailable)
         ListTile(
@@ -70,7 +72,8 @@ class SettingsSubscriptionView extends StatelessWidget {
                 ),
               ),
             ),
-            if (SubscriptionManagementRepo.getClickedCancelSubscription())
+            if (clickedCancelDate != null &&
+                DateTime.now().difference(clickedCancelDate).inMinutes < 10)
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(

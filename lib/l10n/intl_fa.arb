@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:28:12.371773",
+  "@@last_modified": "2026-02-05 10:10:10.668033",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -3205,8 +3205,6 @@
   "noPaymentInfo": "نیازی به اطلاعات پرداخت نیست!",
   "updatePhoneOS": "ممکن است نیاز باشد نسخه سیستم‌عامل دستگاه خود را به‌روزرسانی کنید.",
   "wordsPerMinute": "کلمات در دقیقه",
-  "autoIGCToolName": "اجرای خودکار کمک نوشتن پنگئا",
-  "autoIGCToolDescription": "به طور خودکار قبل از ارسال پیام من، کمک نگارش گرامر و ترجمه چت پنگئا را اجرا کنید.",
   "tooltipInstructionsTitle": "مطمئن نیستید چه کاری انجام می‌دهد؟",
   "tooltipInstructionsMobileBody": "برای مشاهده راهنما، آیتم‌ها را نگه دارید.",
   "tooltipInstructionsBrowserBody": "برای مشاهده راهنما، روی آیتم‌ها هاور کنید.",
@@ -3834,7 +3832,6 @@
   "numModules": "{num} ماژول",
   "coursePlan": "برنامه دوره",
   "editCourseLater": "می‌توانید بعداً عنوان، توضیحات و تصویر دوره را ویرایش کنید.",
-  "newCourseAccess": "به طور پیش‌فرض، دوره‌ها خصوصی هستند و نیاز به تایید مدیر برای پیوستن دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
   "createCourse": "ایجاد دوره",
   "stats": "آمار",
   "createGroupChat": "ایجاد چت گروهی",
@@ -6938,14 +6935,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9564,10 +9553,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11555,6 +11540,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 شما از چت خارج شدید",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "دانلود آغاز شد",
+  "webDownloadPermissionMessage": "اگر مرورگر شما دانلودها را مسدود می‌کند، لطفاً دانلودها را برای این سایت فعال کنید.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "پیشرفت جلسه تمرین شما ذخیره نخواهد شد.",
+  "practiceGrammar": "تمرین گرامر",
+  "notEnoughToPractice": "پیام‌های بیشتری ارسال کنید تا تمرین را باز کنید",
+  "constructUseCorGCDesc": "تمرین دسته گرامر صحیح",
+  "constructUseIncGCDesc": "تمرین دسته گرامر نادرست",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "تمرین خطای گرامری صحیح",
+  "constructUseIncGEDesc": "تمرین خطای گرامری نادرست",
+  "fillInBlank": "جای خالی را با گزینه صحیح پر کنید",
+  "learn": "یاد بگیرید",
+  "languageUpdated": "زبان هدف به‌روزرسانی شد!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صدای ربات پانژیا",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "درخواست شما به مدیر دوره ارسال شده است! اگر آنها تأیید کنند، شما وارد خواهید شد.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "آیا کد دعوت یا لینکی به یک دوره عمومی دارید؟",
+  "welcomeUser": "خوش آمدید {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "برای دعوت کاربران به این چت، جستجو کنید.",
+  "publicInviteDescSpace": "برای دعوت کاربران به این فضا، جستجو کنید.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "چت پانگه‌آ یک اپلیکیشن پیام‌رسان است، بنابراین اعلان‌ها مهم هستند!",
+  "enableNotificationsDesc": "اجازه دادن به اعلان‌ها",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "چت با پشتیبانی",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "به طور پیش‌فرض، دوره‌ها به صورت عمومی قابل جستجو هستند و برای پیوستن به آن‌ها نیاز به تأیید مدیر دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "شما در حال یادگیری چه زبانی هستید؟",
+  "searchLanguagesHint": "زبان‌های هدف را جستجو کنید",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "سوالات؟ ما اینجا هستیم تا کمک کنیم!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "مشکلی پیش آمده و ما در حال تلاش برای رفع آن هستیم. بعداً دوباره بررسی کنید.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "فعال‌سازی کمک‌نویس",
+  "autoIGCToolDescription": "به‌طور خودکار ابزارهای چت پانژیا را برای اصلاح پیام‌های ارسال‌شده به زبان هدف اجرا کنید.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "ضبط صدا ناموفق بود. لطفاً مجوزهای صوتی خود را بررسی کرده و دوباره تلاش کنید.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "اصطلاح",
+  "grammarCopyPOSphrasalv": "فعل عبارتی",
+  "grammarCopyPOScompn": "ترکیب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

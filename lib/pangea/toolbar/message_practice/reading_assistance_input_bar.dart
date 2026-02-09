@@ -54,7 +54,7 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               children: [
                 ...MessagePracticeMode.practiceModes.map(
                   (m) {
-                    final complete = widget.controller.isPracticeActivityDone(
+                    final complete = widget.controller.isPracticeSessionDone(
                       m.associatedActivityType!,
                     );
                     return ToolbarButton(
@@ -125,7 +125,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
     }
     final activityType = mode.associatedActivityType;
     final activityCompleted =
-        activityType != null && controller.isPracticeActivityDone(activityType);
+        activityType != null && controller.isPracticeSessionDone(activityType);
 
     switch (mode) {
       case MessagePracticeMode.noneSelected:

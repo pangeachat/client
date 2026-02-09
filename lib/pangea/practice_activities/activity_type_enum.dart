@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 
 enum ActivityTypeEnum {
@@ -13,7 +14,9 @@ enum ActivityTypeEnum {
   morphId,
   messageMeaning,
   lemmaMeaning,
-  lemmaAudio;
+  lemmaAudio,
+  grammarCategory,
+  grammarError;
 
   bool get includeTTSOnClick {
     switch (this) {
@@ -27,6 +30,8 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.hiddenWordListening:
       case ActivityTypeEnum.lemmaAudio:
       case ActivityTypeEnum.lemmaMeaning:
+      case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return true;
     }
   }
@@ -62,6 +67,12 @@ enum ActivityTypeEnum {
       case 'lemma_audio':
       case 'lemmaAudio':
         return ActivityTypeEnum.lemmaAudio;
+      case 'grammar_category':
+      case 'grammarCategory':
+        return ActivityTypeEnum.grammarCategory;
+      case 'grammar_error':
+      case 'grammarError':
+        return ActivityTypeEnum.grammarError;
       default:
         throw Exception('Unknown activity type: $split');
     }
@@ -117,6 +128,16 @@ enum ActivityTypeEnum {
           ConstructUseTypeEnum.corLM,
           ConstructUseTypeEnum.incLM,
         ];
+      case ActivityTypeEnum.grammarCategory:
+        return [
+          ConstructUseTypeEnum.corGC,
+          ConstructUseTypeEnum.incGC,
+        ];
+      case ActivityTypeEnum.grammarError:
+        return [
+          ConstructUseTypeEnum.corGE,
+          ConstructUseTypeEnum.incGE,
+        ];
     }
   }
 
@@ -140,6 +161,10 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.corLA;
       case ActivityTypeEnum.lemmaMeaning:
         return ConstructUseTypeEnum.corLM;
+      case ActivityTypeEnum.grammarCategory:
+        return ConstructUseTypeEnum.corGC;
+      case ActivityTypeEnum.grammarError:
+        return ConstructUseTypeEnum.corGE;
     }
   }
 
@@ -163,6 +188,10 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.incLA;
       case ActivityTypeEnum.lemmaMeaning:
         return ConstructUseTypeEnum.incLM;
+      case ActivityTypeEnum.grammarCategory:
+        return ConstructUseTypeEnum.incGC;
+      case ActivityTypeEnum.grammarError:
+        return ConstructUseTypeEnum.incGE;
     }
   }
 
@@ -182,6 +211,8 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.morphId:
         return Icons.format_shapes;
       case ActivityTypeEnum.messageMeaning:
+      case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return Icons.star; // TODO: Add to L10n
     }
   }
@@ -200,6 +231,8 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.messageMeaning:
       case ActivityTypeEnum.lemmaMeaning:
       case ActivityTypeEnum.lemmaAudio:
+      case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return 1;
     }
   }
@@ -210,4 +243,25 @@ enum ActivityTypeEnum {
         ActivityTypeEnum.wordFocusListening,
         ActivityTypeEnum.morphId,
       ];
+
+  static List<ActivityTypeEnum> get _vocabPracticeTypes => [
+        ActivityTypeEnum.lemmaMeaning,
+        // ActivityTypeEnum.lemmaAudio,
+      ];
+
+  static List<ActivityTypeEnum> get _grammarPracticeTypes => [
+        ActivityTypeEnum.grammarCategory,
+        ActivityTypeEnum.grammarError,
+      ];
+
+  static List<ActivityTypeEnum> analyticsPracticeTypes(
+    ConstructTypeEnum constructType,
+  ) {
+    switch (constructType) {
+      case ConstructTypeEnum.vocab:
+        return _vocabPracticeTypes;
+      case ConstructTypeEnum.morph:
+        return _grammarPracticeTypes;
+    }
+  }
 }

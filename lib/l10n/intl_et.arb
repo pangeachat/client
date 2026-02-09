@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-07 14:25:18.173924",
+  "@@last_modified": "2026-02-05 10:09:36.127342",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -3811,8 +3811,6 @@
   "noPaymentInfo": "Makseteadet pole vaja!",
   "updatePhoneOS": "Võib olla vajalik uuendada oma seadme operatsioonisüsteemi versiooni.",
   "wordsPerMinute": "Sõnad minutis",
-  "autoIGCToolName": "Käivita Pangea kirjutamisabi automaatselt",
-  "autoIGCToolDescription": "Käivita automaatselt Pangea vestluse grammatika- ja tõlkeabi enne sõnumi saatmist.",
   "addSpaceToSpaceDescription": "Vali ruum, mida lisada vanemaks",
   "chatCapacity": "Vestluse maht",
   "spaceCapacity": "Ruumimaht",
@@ -6226,14 +6224,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8815,7 +8805,6 @@
   "numModules": "{num} moodulit",
   "coursePlan": "Kursuse plaan",
   "editCourseLater": "Saate hiljem redigeerida mallide pealkirju, kirjelduid ja kursuse pilti.",
-  "newCourseAccess": "Vaikimisi on kursused privaatsed ning nõuavad administraatori kinnitust, et liituda. Saate neid seadeid igal ajal muuta.",
   "createCourse": "Loo kursus",
   "stats": "Statistika",
   "createGroupChat": "Loo grupivestlus",
@@ -9095,10 +9084,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -11094,6 +11079,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Sa lahkusid vestlusest",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Allalaadimine algatatud",
+  "webDownloadPermissionMessage": "Kui teie brauser blokeerib allalaadimisi, lubage palun selle saidi jaoks allalaadimised.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Teie harjut seansi edusamme ei salvestata.",
+  "practiceGrammar": "Harjuta grammatikat",
+  "notEnoughToPractice": "Saada rohkem sõnumeid, et harjutust avada",
+  "constructUseCorGCDesc": "Õige grammatika kategooria harjutus",
+  "constructUseIncGCDesc": "Vale grammatika kategooria harjutus",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Õige grammatika vea harjutamine",
+  "constructUseIncGEDesc": "Vale grammatika vea harjutamine",
+  "fillInBlank": "Täida tühik õige valikuga",
+  "learn": "Õpi",
+  "languageUpdated": "Sihtkeel on uuendatud!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Boti hääl",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Kas sul on kutsekood või link avalikule kursusele?",
+  "welcomeUser": "Tere tulemast {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Otsi kasutajaid, et neid sellesse vestlusse kutsuda.",
+  "publicInviteDescSpace": "Otsi kasutajaid, et neid sellesse ruumi kutsuda.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat on sõnumite rakendus, seega on teavitused olulised!",
+  "enableNotificationsDesc": "Luba teavitused",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Vestle Toega",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Millist keelt sa õpid?",
+  "searchLanguagesHint": "Otsi sihtkeeli",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Küsimused? Me oleme siin, et aidata!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Midagi läks valesti ja me teeme kõvasti tööd, et see parandada. Kontrolli hiljem uuesti.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Luba kirjutamise abi",
+  "autoIGCToolDescription": "Käivita automaatselt Pangea Chat tööriistad, et parandada saadetud sõnumid sihtkeelde.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Salvestamine ebaõnnestus. Palun kontrollige oma heliõigusi ja proovige uuesti.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idioom",
+  "grammarCopyPOSphrasalv": "Fraasi Verb",
+  "grammarCopyPOScompn": "Kompleks",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

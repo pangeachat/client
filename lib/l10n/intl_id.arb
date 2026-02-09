@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:24:04.023956",
+  "@@last_modified": "2026-02-05 10:09:21.065759",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -3787,8 +3787,6 @@
   "noPaymentInfo": "Tidak perlu info pembayaran!",
   "updatePhoneOS": "Anda mungkin perlu memperbarui versi OS perangkat Anda.",
   "wordsPerMinute": "Kata per menit",
-  "autoIGCToolName": "Jalankan otomatis bantuan penulisan Pangea",
-  "autoIGCToolDescription": "Jalankan otomatis bantuan penulisan tata bahasa dan terjemahan Chat Pangea sebelum mengirim pesan saya.",
   "tooltipInstructionsTitle": "Tidak yakin apa itu?",
   "tooltipInstructionsMobileBody": "Tekan dan tahan item untuk melihat tooltip.",
   "tooltipInstructionsBrowserBody": "Arahkan kursor ke item untuk melihat tooltip.",
@@ -4416,7 +4414,6 @@
   "numModules": "{num} modul",
   "coursePlan": "Rencana Kursus",
   "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
-  "newCourseAccess": "Secara default, kursus bersifat pribadi dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
   "createCourse": "Buat kursus",
   "stats": "Statistik",
   "createGroupChat": "Buat obrolan grup",
@@ -6194,14 +6191,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8823,10 +8812,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10814,6 +10799,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Anda meninggalkan obrolan",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Unduhan dimulai",
+  "webDownloadPermissionMessage": "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Kemajuan sesi latihan Anda tidak akan disimpan.",
+  "practiceGrammar": "Latihan tata bahasa",
+  "notEnoughToPractice": "Kirim lebih banyak pesan untuk membuka latihan",
+  "constructUseCorGCDesc": "Latihan kategori tata bahasa yang benar",
+  "constructUseIncGCDesc": "Latihan kategori tata bahasa yang salah",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Latihan kesalahan tata bahasa yang benar",
+  "constructUseIncGEDesc": "Latihan kesalahan tata bahasa yang salah",
+  "fillInBlank": "Isi kekosongan dengan pilihan yang benar",
+  "learn": "Belajar",
+  "languageUpdated": "Bahasa target diperbarui!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Suara Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?",
+  "welcomeUser": "Selamat datang {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cari pengguna untuk mengundang mereka ke obrolan ini.",
+  "publicInviteDescSpace": "Cari pengguna untuk mengundang mereka ke ruang ini.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
+  "enableNotificationsDesc": "Izinkan notifikasi",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat dengan Dukungan",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Bahasa apa yang Anda pelajari?",
+  "searchLanguagesHint": "Cari bahasa target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pertanyaan? Kami di sini untuk membantu!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktifkan bantuan penulisan",
+  "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
+  "grammarCopyPOScompn": "Kombinasi",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

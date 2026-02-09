@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -12,7 +13,8 @@ extension ActivityMenuLogic on ChatController {
     if (AppConfig.showedActivityMenu ||
         InstructionsEnum.activityStatsMenu.isToggledOff ||
         MatrixState.pAnyState.isOverlayOpen(RegExp(r"^word-zoom-card-.*$")) ||
-        timeline == null) {
+        timeline == null ||
+        GoRouterState.of(context).fullPath?.endsWith(':roomid') != true) {
       return false;
     }
 
@@ -42,15 +44,9 @@ extension ActivityMenuLogic on ChatController {
       return false;
     }
 
-    final l1 =
-        MatrixState.pangeaController.userController.userL1?.langCodeShort;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
-
-    return activityLang != null &&
-        l2 != null &&
-        l2 != activityLang &&
-        l1 != activityLang;
+    return activityLang != null && l2 != activityLang;
   }
 }

@@ -4,20 +4,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 
 enum ConstructTypeEnum {
   /// for vocabulary words
   vocab,
 
   /// for morphs, actually called "Grammar" in the UI... :P
-  morph,
-}
+  morph;
 
-extension ConstructExtension on ConstructTypeEnum {
   String get string {
     switch (this) {
       case ConstructTypeEnum.vocab:
@@ -37,25 +32,6 @@ extension ConstructExtension on ConstructTypeEnum {
     }
   }
 
-  int get maxXPPerLemma {
-    switch (this) {
-      case ConstructTypeEnum.vocab:
-        return AnalyticsConstants.vocabUseMaxXP;
-      case ConstructTypeEnum.morph:
-        return AnalyticsConstants.morphUseMaxXP;
-    }
-  }
-
-  String? getDisplayCopy(String category, BuildContext context) {
-    switch (this) {
-      case ConstructTypeEnum.morph:
-        return MorphFeaturesEnumExtension.fromString(category)
-            .getDisplayCopy(context);
-      case ConstructTypeEnum.vocab:
-        return getVocabCategoryName(category, context);
-    }
-  }
-
   ProgressIndicatorEnum get indicator {
     switch (this) {
       case ConstructTypeEnum.morph:
@@ -64,9 +40,17 @@ extension ConstructExtension on ConstructTypeEnum {
         return ProgressIndicatorEnum.wordsUsed;
     }
   }
-}
 
-class ConstructTypeUtil {
+  String practiceButtonText(BuildContext context) {
+    final l10n = L10n.of(context);
+    switch (this) {
+      case ConstructTypeEnum.vocab:
+        return l10n.practiceVocab;
+      case ConstructTypeEnum.morph:
+        return l10n.practiceGrammar;
+    }
+  }
+
   static ConstructTypeEnum fromString(String? string) {
     switch (string) {
       case 'v':

@@ -1187,8 +1187,6 @@
   "noPaymentInfo": "Інфармацыя аб плацяжах не патрабуецца!",
   "updatePhoneOS": "Магчыма, вам трэба абнавіць версію аперацыйнай сістэмы вашага прылады.",
   "wordsPerMinute": "Словы за хвіліну",
-  "autoIGCToolName": "Аўтаматычна запускаць дапамогу для пісьма Pangea",
-  "autoIGCToolDescription": "Аўтаматычна запускаць дапамогу для граматыкі і перакладу ў чат-прыкладанні Pangea перад адпраўкай майго паведамлення.",
   "tooltipInstructionsTitle": "Не ўпэўнены, што гэта робіць?",
   "tooltipInstructionsMobileBody": "Затрымайце і трымайце элементы, каб праглядзець падказкі.",
   "tooltipInstructionsBrowserBody": "Навядзіце курсор на элементы, каб праглядзець падказкі.",
@@ -1816,7 +1814,6 @@
   "numModules": "{num} модулі",
   "coursePlan": "План курса",
   "editCourseLater": "Вы можаце рэдагаваць назву шаблона, апісанні і выяву курса пазней.",
-  "newCourseAccess": "Па змаўчанні курсы прыватныя і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
   "createCourse": "Стварыць курс",
   "stats": "Статыстыка",
   "createGroupChat": "Стварыць групавы чат",
@@ -1911,7 +1908,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-07 14:26:19.740329",
+  "@@last_modified": "2026-02-05 10:09:46.469770",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7305,14 +7302,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9931,10 +9920,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11922,6 +11907,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Вы пакінулі чат",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Спампоўка ініцыявана",
+  "webDownloadPermissionMessage": "Калі ваш браўзер блакуе спампоўкі, калі ласка, уключыце спампоўкі для гэтага сайта.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ваш практычны сеанс не будзе захаваны.",
+  "practiceGrammar": "Практыкаваць граматыку",
+  "notEnoughToPractice": "Адпраўце больш паведамленняў, каб разблакаваць практыку",
+  "constructUseCorGCDesc": "Практыка ў катэгорыі правільнай граматыкі",
+  "constructUseIncGCDesc": "Практыка ў катэгорыі няправільнай граматыкі",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практыка правільнага выкарыстання граматычных памылак",
+  "constructUseIncGEDesc": "Практыка няправільнага выкарыстання граматычных памылак",
+  "fillInBlank": "Запоўніце прабел правільным выбарам",
+  "learn": "Навучыцца",
+  "languageUpdated": "Мэтавая мова абноўлена!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голас Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запыт быў адпраўлены адміністрацыі курса! Вы будзеце дапушчаны, калі яны зацвердзяць.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ці маеце вы код запрашэння або спасылку на публічны курс?",
+  "welcomeUser": "Сардэчна запрашаем, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Шукаць карыстальнікаў, каб запрасіць іх у гэты чат.",
+  "publicInviteDescSpace": "Шукаць карыстальнікаў, каб запрасіць іх у гэтае прастору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat - гэта прыкладанне для адпраўкі паведамленняў, таму апавяшчэнні важныя!",
+  "enableNotificationsDesc": "Дазволіць апавяшчэнні",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Выкарыстоўвайце малюнак актыўнасці як фон чата",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат з падтрымкай",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Па змаўчанні курсы з'яўляюцца адкрытымі для пошуку і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Якую мову вы вывучаеце?",
+  "searchLanguagesHint": "Пошук мэтавых моў",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Пытанні? Мы тут, каб дапамагчы!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Што-то пайшло не так, і мы актыўна працуем над выпраўленнем. Праверце пазней.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Уключыць дапамогу ў напісанні",
+  "autoIGCToolDescription": "Аўтаматычна запускаць інструменты Pangea Chat для выпраўлення адпраўленых паведамленняў на мэтавую мову.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запіс не ўдалося. Калі ласка, праверце свае аўдыё дазволы і паспрабуйце яшчэ раз.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Ідыём",
+  "grammarCopyPOSphrasalv": "Фразавы дзеяслоў",
+  "grammarCopyPOScompn": "Складаны",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

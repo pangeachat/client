@@ -3793,8 +3793,6 @@
   "noPaymentInfo": "Níl aon eolas íocaíochta de dhíth!",
   "updatePhoneOS": "D'fhéadfadh go mbeadh ort do leagan OS a nuashonrú ar do ghléas.",
   "wordsPerMinute": "Focail in aghaidh na nóimead",
-  "autoIGCToolName": "Rith cabhair scríbhneoireachta Pangea go huathoibríoch",
-  "autoIGCToolDescription": "Rith uathoibríoch cabhair gramadaí agus aistriúcháin Pangea Chat sula seolfaidh mé mo theachtaireacht.",
   "tooltipInstructionsTitle": "Níl tú cinnte cad a dhéanann sé sin?",
   "tooltipInstructionsMobileBody": "Bain agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
   "tooltipInstructionsBrowserBody": "Cliceáil agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
@@ -4422,7 +4420,6 @@
   "numModules": "{num} modúl",
   "coursePlan": "Plean Cúrsa",
   "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
-  "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí príobháideach agus iarrtar cead riarthóra chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
   "createCourse": "Cruthaigh cúrsa",
   "stats": "Staitisticí",
   "createGroupChat": "Cruthaigh comhrá grúpa",
@@ -4517,7 +4514,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-07 14:29:21.686769",
+  "@@last_modified": "2026-02-05 10:10:23.901035",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -6201,14 +6198,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8830,10 +8819,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10821,6 +10806,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 D'fhág tú an comhrá",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Tosaíodh an íoslódáil",
+  "webDownloadPermissionMessage": "Más blocann do bhrabhsálaí íoslódálacha, le do thoil, gníomhachtaigh íoslódálacha don suíomh seo.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh.",
+  "practiceGrammar": "Cleachtaigh gramadach",
+  "notEnoughToPractice": "Seol níos mó teachtaireachtaí chun cleachtadh a dhíghlasáil",
+  "constructUseCorGCDesc": "Cleachtadh catagóir gramadaí ceart",
+  "constructUseIncGCDesc": "Cleachtadh catagóir gramadaí mícheart",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cleachtadh ar earráidí gramadaí ceart",
+  "constructUseIncGEDesc": "Cleachtadh ar earráidí gramadaí míchruinn",
+  "fillInBlank": "Líon isteach an folt le rogha cheart",
+  "learn": "Foghlaim",
+  "languageUpdated": "Teanga sprioc nuashonraithe!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "guth Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Tá do hiarratas curtha chuig an riarachán cúrsa! Cuirfear isteach thú má cheadaíonn siad é.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "An bhfuil cód cuireadh nó nasc agat do chúrsa poiblí?",
+  "welcomeUser": "Fáilte {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cuardaigh úsáideoirí le cuireadh a thabhairt dóibh chuig an gcomhrá seo.",
+  "publicInviteDescSpace": "Cuardaigh úsáideoirí le cuireadh a thabhairt dóibh chuig an spás seo.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Is aip téacsála í Pangea Chat mar sin tá fógraí tábhachtach!",
+  "enableNotificationsDesc": "Cuir fógraí ar cead",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Comhrá le Tacaíocht",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí inrochtana go poiblí agus éilíonn siad cead ó riarachán chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
+  "searchLanguagesHint": "Cuardaigh teangacha sprioc",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Tharla rud éigin mícheart, agus táimid ag obair go dian chun é a shocrú. Seiceáil arís níos déanaí.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Cuir ar chumas cúnamh scríbhneoireachta",
+  "autoIGCToolDescription": "Rith uathoibríoch uirlisí Pangea Chat chun teachtaireachtaí a sheoladh a cheartú go teanga sprioc.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Theip ar an taifeadadh. Seiceáil do cheadanna gutháin le do thoil agus déan iarracht arís.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Frása",
+  "grammarCopyPOSphrasalv": "Gníomhhacht Phrásúil",
+  "grammarCopyPOScompn": "Comhoibriú",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

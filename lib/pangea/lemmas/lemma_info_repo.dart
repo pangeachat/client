@@ -89,10 +89,6 @@ class LemmaInfoRepo {
     _cache.remove(key);
   }
 
-  static void clearAllCache() {
-    _cache.clear();
-  }
-
   static Future<Result<LemmaInfoResponse>> _safeFetch(
     String token,
     LemmaInfoRequest request,

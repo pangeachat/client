@@ -16,12 +16,14 @@ class MorphMeaningWidget extends StatefulWidget {
   final MorphFeaturesEnum feature;
   final String tag;
   final TextStyle? style;
+  final bool blankErrorFeedback;
 
   const MorphMeaningWidget({
     super.key,
     required this.feature,
     required this.tag,
     this.style,
+    this.blankErrorFeedback = false,
   });
 
   @override
@@ -91,12 +93,13 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     );
 
     if (result.isError) {
-      return L10n.of(context).meaningNotFound;
+      return widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
     }
 
     final morph = result.result!.getFeatureByCode(widget.feature.name);
     final data = morph?.getTagByCode(widget.tag);
-    return data?.l1Description ?? L10n.of(context).meaningNotFound;
+    return data?.l1Description ??
+        (widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound);
   }
 
   void _toggleEditMode(bool value) => setState(() => _editMode = value);

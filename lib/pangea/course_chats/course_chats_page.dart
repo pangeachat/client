@@ -237,7 +237,10 @@ class CourseChatsController extends State<CourseChats>
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toLocalizedString(context))),
+          SnackBar(
+            content: Text(e.toLocalizedString(context)),
+            showCloseIcon: true,
+          ),
         );
       }
     } finally {
@@ -442,7 +445,7 @@ class CourseChatsController extends State<CourseChats>
 
   void joinChildRoom(SpaceRoomsChunk item) async {
     final space = widget.client.getRoomById(widget.roomId);
-    final joined = await PublicRoomBottomSheet.show(
+    final roomId = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
       via: space?.spaceChildren
@@ -451,10 +454,12 @@ class CourseChatsController extends State<CourseChats>
           )
           ?.via,
     );
-    if (mounted && joined == true) {
+    if (mounted && roomId != null) {
       setState(() {
         discoveredChildren?.remove(item);
       });
+
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }
 

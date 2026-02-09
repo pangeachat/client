@@ -1119,8 +1119,6 @@
   "noPaymentInfo": "無需付款資料！",
   "updatePhoneOS": "您可能需要更新設備的操作系統版本。",
   "wordsPerMinute": "每分鐘字數",
-  "autoIGCToolName": "自動運行Pangea寫作協助",
-  "autoIGCToolDescription": "在發送消息前，自動運行Pangea聊天語法和翻譯寫作協助。",
   "tooltipInstructionsTitle": "不確定那是什麼嗎？",
   "tooltipInstructionsMobileBody": "長按項目以查看工具提示。",
   "tooltipInstructionsBrowserBody": "將滑鼠懸停在項目上以查看工具提示。",
@@ -1749,7 +1747,6 @@
   "numModules": "{num} 個模組",
   "coursePlan": "課程計劃",
   "editCourseLater": "你可以稍後編輯模板標題、描述同課程圖片。",
-  "newCourseAccess": "預設情況下，課程係私密嘅，需要管理員批准先可以加入。你可以隨時修改呢啲設定。",
   "createCourse": "建立課程",
   "stats": "統計數據",
   "createGroupChat": "建立群組聊天",
@@ -1856,7 +1853,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-07 14:25:37.722488",
+  "@@last_modified": "2026-02-05 10:09:39.916672",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -6899,14 +6896,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9521,10 +9510,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11914,6 +11899,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 你已離開聊天",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "下載已啟動",
+  "webDownloadPermissionMessage": "如果你的瀏覽器阻止下載，請為此網站啟用下載。",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "您的練習進度將不會被保存。",
+  "practiceGrammar": "練習語法",
+  "notEnoughToPractice": "發送更多消息以解鎖練習",
+  "constructUseCorGCDesc": "正確語法類別練習",
+  "constructUseIncGCDesc": "不正確語法類別練習",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "正確語法錯誤練習",
+  "constructUseIncGEDesc": "不正確語法錯誤練習",
+  "fillInBlank": "用正確的選擇填空",
+  "learn": "學習",
+  "languageUpdated": "目標語言已更新！",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot 聲音",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "你的請求已經發送給課程管理員！如果他們批准，你將被允許進入。",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "你有邀請碼或公共課程的鏈接嗎？",
+  "welcomeUser": "歡迎 {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "搜尋用戶以邀請他們加入此聊天。",
+  "publicInviteDescSpace": "搜尋用戶以邀請他們加入此空間。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat 係一個短信應用程式，所以通知非常重要！",
+  "enableNotificationsDesc": "允許通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "與支援聊天",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "默認情況下，課程是公開可搜索的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "你正在學習什麼語言？",
+  "searchLanguagesHint": "搜尋目標語言",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "有問題嗎？我們在這裡幫助你！",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "發生了一些問題，我們正在努力修復。稍後再檢查。",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "啟用寫作輔助",
+  "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "成語",
+  "grammarCopyPOSphrasalv": "短語動詞",
+  "grammarCopyPOScompn": "複合詞",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

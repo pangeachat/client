@@ -6,6 +6,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -49,35 +50,15 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
       constructId: widget.cId,
       messageInfo: widget.messageInfo,
       builder: (context, controller) {
-        if (controller.error != null) {
-          return const SizedBox.shrink();
-        }
-
-        final emojis = controller.lemmaInfo?.emoji;
-        return SizedBox(
-          height: 70.0,
-          child: Row(
-            spacing: 4.0,
-            mainAxisSize: MainAxisSize.min,
-            children: emojis == null || emojis.isEmpty
-                ? List.generate(
-                    3,
-                    (_) => Shimmer.fromColors(
-                      baseColor: Colors.transparent,
-                      highlightColor:
-                          Theme.of(context).colorScheme.primary.withAlpha(70),
-                      child: Container(
-                        height: 55.0,
-                        width: 55.0,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius:
-                              BorderRadius.circular(AppConfig.borderRadius),
-                        ),
-                      ),
-                    ),
-                  )
-                : emojis.map(
+        return switch (controller.state) {
+          AsyncError() => const SizedBox.shrink(),
+          AsyncLoaded(value: final lemmaInfo) => SizedBox(
+              height: 70.0,
+              child: Row(
+                spacing: 4.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...lemmaInfo.emoji.map(
                     (emoji) {
                       final targetId = "${widget.targetId}-$emoji";
                       return EmojiChoiceItem(
@@ -94,9 +75,35 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
                         enabled: widget.enabled,
                       );
                     },
-                  ).toList(),
-          ),
-        );
+                  ),
+                ],
+              ),
+            ),
+          _ => SizedBox(
+              height: 70.0,
+              child: Row(
+                spacing: 4.0,
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  3,
+                  (_) => Shimmer.fromColors(
+                    baseColor: Colors.transparent,
+                    highlightColor:
+                        Theme.of(context).colorScheme.primary.withAlpha(70),
+                    child: Container(
+                      height: 55.0,
+                      width: 55.0,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius:
+                            BorderRadius.circular(AppConfig.borderRadius),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        };
       },
     );
   }
@@ -175,52 +182,61 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   @override
   Widget build(BuildContext context) {
     return HoverBuilder(
-      builder: (context, hovered) => GestureDetector(
-        onTap: widget.enabled ? widget.onSelectEmoji : null,
-        child: Stack(
-          children: [
-            ShimmerBackground(
-              enabled: shimmer,
-              shimmerColor: (Theme.of(context).brightness == Brightness.dark)
-                  ? Colors.white
-                  : Theme.of(context).colorScheme.primary,
-              baseColor: Colors.transparent,
-              child: CompositedTransformTarget(
-                link: MatrixState.pAnyState
-                    .layerLinkAndKey(widget.transformTargetId)
-                    .link,
-                child: AnimatedContainer(
-                  key: MatrixState.pAnyState
+      builder: (context, hovered) => MouseRegion(
+        cursor: widget.enabled
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
+        child: GestureDetector(
+          onTap: widget.enabled ? widget.onSelectEmoji : null,
+          child: Stack(
+            children: [
+              ShimmerBackground(
+                enabled: shimmer,
+                shimmerColor: (Theme.of(context).brightness == Brightness.dark)
+                    ? Colors.white
+                    : Theme.of(context).colorScheme.primary,
+                baseColor: Colors.transparent,
+                child: CompositedTransformTarget(
+                  link: MatrixState.pAnyState
                       .layerLinkAndKey(widget.transformTargetId)
-                      .key,
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: widget.enabled && (hovered || widget.selected)
-                        ? Theme.of(context).colorScheme.secondary.withAlpha(30)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    border: widget.selected
-                        ? Border.all(
-                            color: Colors.transparent,
-                            width: 4,
-                          )
-                        : null,
-                  ),
-                  child: Text(
-                    widget.emoji,
-                    style: Theme.of(context).textTheme.headlineSmall,
+                      .link,
+                  child: AnimatedContainer(
+                    key: MatrixState.pAnyState
+                        .layerLinkAndKey(widget.transformTargetId)
+                        .key,
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: widget.enabled && (hovered || widget.selected)
+                          ? Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withAlpha(30)
+                          : Colors.transparent,
+                      borderRadius:
+                          BorderRadius.circular(AppConfig.borderRadius),
+                      border: widget.selected
+                          ? Border.all(
+                              color: Colors.transparent,
+                              width: 4,
+                            )
+                          : null,
+                    ),
+                    child: Text(
+                      widget.emoji,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
                   ),
                 ),
               ),
-            ),
-            if (widget.badge != null)
-              Positioned(
-                right: 6,
-                bottom: 6,
-                child: widget.badge!,
-              ),
-          ],
+              if (widget.badge != null)
+                Positioned(
+                  right: 6,
+                  bottom: 6,
+                  child: widget.badge!,
+                ),
+            ],
+          ),
         ),
       ),
     );

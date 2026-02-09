@@ -2051,8 +2051,6 @@
   "noPaymentInfo": "Hindi kailangan ng impormasyon sa pagbabayad!",
   "updatePhoneOS": "Maaaring kailangan mong i-update ang bersyon ng OS ng iyong device.",
   "wordsPerMinute": "Mga salita kada minuto",
-  "autoIGCToolName": "Awtomatikong patakbuhin ang Pangea writing assistance",
-  "autoIGCToolDescription": "Awtomatikong patakbuhin ang Pangea Chat grammar at translation writing assistance bago ipadala ang aking mensahe.",
   "tooltipInstructionsTitle": "Hindi sigurado kung ano ang ginagawa niyan?",
   "tooltipInstructionsMobileBody": "Pindutin at hawakan ang mga item upang makita ang mga tooltip.",
   "tooltipInstructionsBrowserBody": "I-hover ang cursor sa mga item upang makita ang mga tooltip.",
@@ -2680,7 +2678,6 @@
   "numModules": "{num} mga module",
   "coursePlan": "Plano ng Kurso",
   "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
-  "newCourseAccess": "Sa default, ang mga kurso ay pribado at nangangailangan ng pag-apruba ng admin upang makasali. Maaari mong i-edit ang mga setting na ito anumang oras.",
   "createCourse": "Lumikha ng kurso",
   "stats": "Mga Estadistika",
   "createGroupChat": "Lumikha ng pangkat na usapan",
@@ -2787,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-07 14:26:57.612933",
+  "@@last_modified": "2026-02-05 10:09:53.428313",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -7199,14 +7196,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9825,10 +9814,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11799,6 +11784,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Umalis ka sa chat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Nagsimula ang pag-download",
+  "webDownloadPermissionMessage": "Kung hinaharang ng iyong browser ang mga pag-download, mangyaring paganahin ang mga pag-download para sa site na ito.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Hindi mase-save ang iyong progreso sa sesyon ng pagsasanay.",
+  "practiceGrammar": "Magsanay ng gramatika",
+  "notEnoughToPractice": "Magpadala ng higit pang mga mensahe upang i-unlock ang pagsasanay",
+  "constructUseCorGCDesc": "Pagsasanay sa tamang kategorya ng gramatika",
+  "constructUseIncGCDesc": "Pagsasanay sa maling kategorya ng gramatika",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pagsasanay sa tamang pagkakamali sa gramatika",
+  "constructUseIncGEDesc": "Pagsasanay sa maling pagkakamali sa gramatika",
+  "fillInBlank": "Punan ang blangko ng tamang pagpipilian",
+  "learn": "Matuto",
+  "languageUpdated": "Na-update ang target na wika!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Boses ng Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Mayroon ka bang invite code o link sa isang pampublikong kurso?",
+  "welcomeUser": "Maligayang pagdating {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Maghanap ng mga gumagamit upang imbitahan sila sa chat na ito.",
+  "publicInviteDescSpace": "Maghanap ng mga gumagamit upang imbitahan sila sa espasyong ito.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Ang Pangea Chat ay isang texting app kaya't mahalaga ang mga notification!",
+  "enableNotificationsDesc": "Pahintulutan ang mga notification",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Makipag-chat sa Suporta",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Anong wika ang iyong pinag-aaralan?",
+  "searchLanguagesHint": "Maghanap ng mga target na wika",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "May mga tanong? Nandito kami para tumulong!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "May nangyaring mali, at abala kami sa pag-aayos nito. Suriin muli mamaya.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Paganahin ang tulong sa pagsusulat",
+  "autoIGCToolDescription": "Awtomatikong patakbuhin ang mga tool ng Pangea Chat upang ituwid ang mga ipinadalang mensahe sa target na wika.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idyoma",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Pinagsama",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

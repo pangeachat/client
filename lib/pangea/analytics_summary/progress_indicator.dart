@@ -19,28 +19,31 @@ class ProgressIndicatorBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: indicator.tooltip(context),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            size: 18,
-            indicator.icon,
-            color: indicator.color(context),
-            weight: 1000,
-          ),
-          const SizedBox(width: 6.0),
-          !loading
-              ? AnimatedFloatingNumber(
-                  number: points,
-                )
-              : const SizedBox(
-                  height: 8,
-                  width: 8,
-                  child: CircularProgressIndicator.adaptive(
-                    strokeWidth: 2,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              size: 18,
+              indicator.icon,
+              color: indicator.color(context),
+              weight: 1000,
+            ),
+            const SizedBox(width: 6.0),
+            !loading
+                ? AnimatedFloatingNumber(
+                    number: points,
+                  )
+                : const SizedBox(
+                    height: 8,
+                    width: 8,
+                    child: CircularProgressIndicator.adaptive(
+                      strokeWidth: 2,
+                    ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -125,6 +128,7 @@ class AnimatedFloatingNumberState extends State<AnimatedFloatingNumber>
         Text(
           widget.number.toString(),
           style: indicatorStyle,
+          textScaler: TextScaler.noScaling,
         ),
       ],
     );

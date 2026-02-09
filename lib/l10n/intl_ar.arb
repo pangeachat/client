@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-07 14:27:10.974178",
+  "@@last_modified": "2026-02-05 10:09:56.397837",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -3670,8 +3670,6 @@
   "noPaymentInfo": "لا حاجة لمعلومات الدفع!",
   "updatePhoneOS": "قد تحتاج إلى تحديث إصدار نظام تشغيل جهازك.",
   "wordsPerMinute": "كلمات في الدقيقة",
-  "autoIGCToolName": "تشغيل مساعدة الكتابة Pangea تلقائيًا",
-  "autoIGCToolDescription": "تشغيل مساعدة القواعد والترجمة في دردشة Pangea تلقائيًا قبل إرسال رسالتي.",
   "tooltipInstructionsTitle": "لست متأكدًا مما يفعله ذلك؟",
   "tooltipInstructionsMobileBody": "اضغط مع الاستمرار على العناصر لعرض تلميحات الأدوات.",
   "tooltipInstructionsBrowserBody": "مرر فوق العناصر لعرض تلميحات الأدوات.",
@@ -4300,7 +4298,6 @@
   "numModules": "{num} وحدات",
   "coursePlan": "خطة الدورة",
   "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
-  "newCourseAccess": "افتراضيًا، الدورات خاصة وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
   "createCourse": "إنشاء دورة",
   "stats": "إحصائيات",
   "createGroupChat": "إنشاء دردشة جماعية",
@@ -6420,14 +6417,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9049,10 +9038,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11040,6 +11025,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 لقد غادرت الدردشة",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "تم بدء التنزيل",
+  "webDownloadPermissionMessage": "إذا كان متصفحك يمنع التنزيلات، يرجى تمكين التنزيلات لهذا الموقع.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "لن يتم حفظ تقدم جلسة التدريب الخاصة بك.",
+  "practiceGrammar": "تدرب على القواعد",
+  "notEnoughToPractice": "أرسل المزيد من الرسائل لفتح التدريب",
+  "constructUseCorGCDesc": "تدريب على فئة القواعد الصحيحة",
+  "constructUseIncGCDesc": "تدريب على فئة القواعد غير الصحيحة",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "ممارسة تصحيح أخطاء القواعد",
+  "constructUseIncGEDesc": "ممارسة أخطاء القواعد غير الصحيحة",
+  "fillInBlank": "املأ الفراغ بالخيار الصحيح",
+  "learn": "تعلم",
+  "languageUpdated": "تم تحديث اللغة المستهدفة!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صوت بوت بانجيا",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "تم إرسال طلبك إلى إدارة الدورة! سيتم السماح لك بالدخول إذا وافقوا.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "هل لديك رمز دعوة أو رابط لدورة عامة؟",
+  "welcomeUser": "مرحبًا {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "ابحث عن المستخدمين لدعوتهم إلى هذه الدردشة.",
+  "publicInviteDescSpace": "ابحث عن المستخدمين لدعوتهم إلى هذا الفضاء.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "بانجيا شات هو تطبيق رسائل لذا فإن الإشعارات مهمة!",
+  "enableNotificationsDesc": "السماح بالإشعارات",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "الدردشة مع الدعم",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
+  "searchLanguagesHint": "ابحث عن اللغات المستهدفة",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "أسئلة؟ نحن هنا للمساعدة!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "حدث خطأ ما، ونحن نعمل بجد على إصلاحه. تحقق مرة أخرى لاحقًا.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "تفعيل مساعدة الكتابة",
+  "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "فشل التسجيل. يرجى التحقق من أذونات الصوت الخاصة بك والمحاولة مرة أخرى.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "تعبير اصطلاحي",
+  "grammarCopyPOSphrasalv": "فعل مركب",
+  "grammarCopyPOScompn": "مركب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

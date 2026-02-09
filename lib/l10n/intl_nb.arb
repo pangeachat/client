@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:26:11.727122",
+  "@@last_modified": "2026-02-05 10:09:45.325631",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -2700,8 +2700,6 @@
   "noPaymentInfo": "Ingen betalingsinformasjon nødvendig!",
   "updatePhoneOS": "Du kan trenge å oppdatere enhetens OS-versjon.",
   "wordsPerMinute": "Ord per minutt",
-  "autoIGCToolName": "Kjør Pangea skrivehjelp automatisk",
-  "autoIGCToolDescription": "Kjør automatisk Pangea Chat grammatikk- og oversettelsesstøtte før jeg sender meldingen min.",
   "tooltipInstructionsTitle": "Usikker på hva det gjør?",
   "tooltipInstructionsMobileBody": "Trykk og hold på elementer for å se verktøytips.",
   "tooltipInstructionsBrowserBody": "Hold musepekeren over elementer for å se verktøytips.",
@@ -3329,7 +3327,6 @@
   "numModules": "{num} moduler",
   "coursePlan": "Kursplan",
   "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
-  "newCourseAccess": "Som standard er kurs private og krever administratorgodkjenning for å bli med. Du kan endre disse innstillingene når som helst.",
   "createCourse": "Opprett kurs",
   "stats": "Statistikk",
   "createGroupChat": "Opprett gruppechat",
@@ -7299,14 +7296,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9925,10 +9914,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11916,6 +11901,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Du forlot chatten",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Nedlasting initiert",
+  "webDownloadPermissionMessage": "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
+  "practiceGrammar": "Øv på grammatikk",
+  "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
+  "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
+  "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekt grammatikkfeil praksis",
+  "constructUseIncGEDesc": "Feil grammatikkfeil praksis",
+  "fillInBlank": "Fyll inn blanketten med riktig valg",
+  "learn": "Lær",
+  "languageUpdated": "Mål språk oppdatert!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot-stemme",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Din forespørsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en invitasjonskode eller lenke til et offentlig kurs?",
+  "welcomeUser": "Velkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Søk etter brukere for å invitere dem til denne chatten.",
+  "publicInviteDescSpace": "Søk etter brukere for å invitere dem til dette rommet.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat er en tekstmelding-app, så varsler er viktige!",
+  "enableNotificationsDesc": "Tillat varsler",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat med støtte",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Som standard er kurs offentlig søkbare og krever administratortillatelse for å bli med. Du kan redigere disse innstillingene når som helst.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Hvilket språk lærer du?",
+  "searchLanguagesHint": "Søk etter målspråk",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Spørsmål? Vi er her for å hjelpe!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Noe gikk galt, og vi jobber hardt med å fikse det. Sjekk igjen senere.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktiver skriveassistent",
+  "autoIGCToolDescription": "Kjør Pangea Chat-verktøy automatisk for å korrigere sendte meldinger til målspråket.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og prøv igjen.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Sammensatt",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

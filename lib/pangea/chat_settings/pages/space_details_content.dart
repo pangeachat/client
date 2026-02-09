@@ -296,7 +296,7 @@ class SpaceDetailsContent extends StatelessWidget {
                   ],
                   Flexible(
                     child: Column(
-                      spacing: 12.0,
+                      spacing: isColumnMode ? 12.0 : 6.0,
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -311,7 +311,7 @@ class SpaceDetailsContent extends StatelessWidget {
                                 : FontWeight.bold,
                           ),
                         ),
-                        if (isColumnMode && room.coursePlan != null)
+                        if (room.coursePlan != null)
                           CourseInfoChips(
                             room.coursePlan!.uuid,
                             fontSize: 12.0,

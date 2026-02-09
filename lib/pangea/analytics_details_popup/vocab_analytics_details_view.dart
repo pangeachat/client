@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
@@ -12,8 +13,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
-import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -23,10 +22,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
+  final ConstructAnalyticsViewState controller;
 
   const VocabDetailsView({
     super.key,
     required this.constructId,
+    required this.controller,
   });
 
   Future<void> _blockLemma(BuildContext context) async {
@@ -82,35 +83,25 @@ class VocabDetailsView extends StatelessWidget {
           maxWidth: 600.0,
           showBorder: false,
           child: Column(
-            spacing: 16.0,
+            spacing: 20.0,
             children: [
-              WordZoomWidget(
-                token: tokenText,
-                langCode:
-                    MatrixState.pangeaController.userController.userL2Code!,
-                construct: constructId,
-                onClose: Navigator.of(context).pop,
-                onFlagTokenInfo:
-                    (LemmaInfoResponse lemmaInfo, String phonetics) {
-                  final requestData = TokenInfoFeedbackRequestData(
-                    userId: Matrix.of(context).client.userID!,
-                    detectedLanguage:
-                        MatrixState.pangeaController.userController.userL2Code!,
-                    tokens: [token],
-                    selectedToken: 0,
-                    wordCardL1:
-                        MatrixState.pangeaController.userController.userL1Code!,
-                    lemmaInfo: lemmaInfo,
-                    phonetics: phonetics,
-                  );
-
-                  TokenFeedbackUtil.showTokenFeedbackDialog(
-                    context,
-                    requestData: requestData,
-                    langCode:
-                        MatrixState.pangeaController.userController.userL2Code!,
-                  );
-                },
+              const SizedBox(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: WordZoomWidget(
+                  token: tokenText,
+                  langCode:
+                      MatrixState.pangeaController.userController.userL2Code!,
+                  construct: constructId,
+                  onClose: Navigator.of(context).pop,
+                  onFlagTokenInfo: (
+                    LemmaInfoResponse lemmaInfo,
+                    String phonetics,
+                  ) =>
+                      controller.onFlagTokenInfo(token, lemmaInfo, phonetics),
+                  reloadNotifier: controller.reloadNotifier,
+                  maxWidth: double.infinity,
+                ),
               ),
               if (construct != null)
                 Column(

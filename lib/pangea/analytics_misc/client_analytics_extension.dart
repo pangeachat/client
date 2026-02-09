@@ -6,10 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -76,6 +78,14 @@ extension AnalyticsClientExtension on Client {
       topic: "This room stores learning analytics for $userID.",
       preset: CreateRoomPreset.publicChat,
       visibility: Visibility.private,
+      initialState: [
+        StateEvent(
+          type: EventTypes.RoomJoinRules,
+          content: {
+            ModelKey.joinRule: JoinRules.knock.name,
+          },
+        ),
+      ],
     );
     if (getRoomById(roomID) == null) {
       // Wait for room actually appears in sync
@@ -168,5 +178,39 @@ extension AnalyticsClientExtension on Client {
               ),
         )
         .isNotEmpty;
+  }
+
+  Future<PangeaMessageEvent?> getEventByConstructUse(
+    OneConstructUse use,
+  ) async {
+    if (use.metadata.eventId == null || use.metadata.roomId == null) {
+      return null;
+    }
+
+    final room = getRoomById(use.metadata.roomId!);
+    if (room == null) return null;
+
+    try {
+      final event = await room.getEventById(use.metadata.eventId!);
+      if (event == null) return null;
+
+      final timeline = await room.getTimeline();
+      return PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == userID,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": use.metadata.roomId,
+          "eventID": use.metadata.eventId,
+          "userID": userID,
+        },
+      );
+      return null;
+    }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:24:41.103817",
+  "@@last_modified": "2026-02-05 10:09:28.796405",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -2371,8 +2371,6 @@
   "noPaymentInfo": "אין צורך במידע תשלום!",
   "updatePhoneOS": "ייתכן שתצטרך לעדכן את גרסת מערכת ההפעלה של המכשיר שלך.",
   "wordsPerMinute": "מילים בדקה",
-  "autoIGCToolName": "הרץ אוטומטית את עזר הכתיבה של פאנגיאה",
-  "autoIGCToolDescription": "הרץ אוטומטית את עזר הכתיבה של דקדוק ותרגום של פאנגיאה לפני שליחת ההודעה שלי.",
   "tooltipInstructionsTitle": "לא בטוח מה זה עושה?",
   "tooltipInstructionsMobileBody": "החזק והחלק על פריטים כדי לצפות בטיפים.",
   "tooltipInstructionsBrowserBody": "החלק מעל פריטים כדי לצפות בטיפים.",
@@ -3000,7 +2998,6 @@
   "numModules": "{num} מודולים",
   "coursePlan": "תכנית קורס",
   "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
-  "newCourseAccess": "ברירת מחדל, קורסים הם פרטיים ודורשים אישור מנהל להצטרפות. תוכל לערוך הגדרות אלה בכל עת.",
   "createCourse": "צור קורס",
   "stats": "סטטיסטיקות",
   "createGroupChat": "צור שיחת קבוצתית",
@@ -7255,14 +7252,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9881,10 +9870,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11872,6 +11857,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 עזבת את הצ'אט",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "ההורדה החלה",
+  "webDownloadPermissionMessage": "אם הדפדפן שלך חוסם הורדות, אנא אפשר הורדות לאתר זה.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
+  "practiceGrammar": "אימון דקדוק",
+  "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
+  "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
+  "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "תרגול תיקון שגיאות דקדוק",
+  "constructUseIncGEDesc": "תרגול שגיאות דקדוק לא נכונות",
+  "fillInBlank": "מלא את החסר עם הבחירה הנכונה",
+  "learn": "ללמוד",
+  "languageUpdated": "שפת היעד עודכנה!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "קול של פנגיאה בוט",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "האם יש לך קוד הזמנה או קישור לקורס ציבורי?",
+  "welcomeUser": "ברוך הבא {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "חפש משתמשים כדי להזמין אותם לצ'אט הזה.",
+  "publicInviteDescSpace": "חפש משתמשים כדי להזמין אותם למקום הזה.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
+  "enableNotificationsDesc": "אפשר התראות",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "צ'אט עם תמיכה",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "ברירת מחדל, קורסים ניתנים לחיפוש ציבורי ודורשים אישור מנהל כדי להצטרף. אתה יכול לערוך את ההגדרות הללו בכל עת.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "איזו שפה אתה לומד?",
+  "searchLanguagesHint": "חפש שפות יעד",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "שאלות? אנחנו כאן כדי לעזור!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "משהו השתבש, ואנחנו עובדים קשה על תיקון זה. בדוק שוב מאוחר יותר.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "אפשר סיוע בכתיבה",
+  "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "הקלטה נכשלה. אנא בדוק את הרשאות האודיו שלך ונסה שוב.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "ביטוי",
+  "grammarCopyPOSphrasalv": "פועל פיזי",
+  "grammarCopyPOScompn": "מורכב",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

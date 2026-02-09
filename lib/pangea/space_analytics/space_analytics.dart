@@ -189,6 +189,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Future<void> refresh() async {
     if (room == null || !room!.isSpace || selectedLanguage == null) return;
+    await AnalyticsRequestsRepo.clear();
 
     setState(() {
       downloads = Map.fromEntries(
@@ -296,6 +297,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
                   (child) => child.roomId == roomId,
                 )
                 ?.via,
+            reason: widget.roomId,
           );
       status = RequestStatus.requested;
     } catch (e) {

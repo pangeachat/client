@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
+
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
@@ -45,6 +47,11 @@ class Choreographer extends ChangeNotifier {
   String? _lastChecked;
   ChoreoModeEnum _choreoMode = ChoreoModeEnum.igc;
 
+  DateTime? _lastIgcError;
+  DateTime? _lastTokensError;
+  int _igcErrorBackoff = ChoreoConstants.defaultErrorBackoffSeconds;
+  int _tokenErrorBackoff = ChoreoConstants.defaultErrorBackoffSeconds;
+
   StreamSubscription? _languageSub;
   StreamSubscription? _settingsUpdateSub;
   StreamSubscription? _acceptedContinuanceSub;
@@ -68,6 +75,12 @@ class Choreographer extends ChangeNotifier {
         openMatches: [],
       );
 
+  bool _backoffRequest(DateTime? error, int backoffSeconds) {
+    if (error == null) return false;
+    final secondsSinceError = DateTime.now().difference(error).inSeconds;
+    return secondsSinceError <= backoffSeconds;
+  }
+
   void _initialize() {
     textController = PangeaTextController(choreographer: this);
     textController.addListener(_onChange);
@@ -82,7 +95,14 @@ class Choreographer extends ChangeNotifier {
     itController.editing.addListener(_onSubmitSourceTextEdits);
 
     igcController = IgcController(
-      (e) => errorService.setErrorAndLock(ChoreoError(raw: e)),
+      (e) {
+        errorService.setErrorAndLock(ChoreoError(raw: e));
+        _lastIgcError = DateTime.now();
+        _igcErrorBackoff *= 2;
+      },
+      () {
+        _igcErrorBackoff = ChoreoConstants.defaultErrorBackoffSeconds;
+      },
     );
 
     _languageSub ??= MatrixState
@@ -111,7 +131,7 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     itController.closeIT();
     itController.clearSourceText();
-    itController.clearDissmissed();
+    itController.clearSession();
     igcController.clear();
     _resetDebounceTimer();
     _setChoreoMode(ChoreoModeEnum.igc);
@@ -233,7 +253,8 @@ class Choreographer extends ChangeNotifier {
             !ToolSetting.interactiveTranslator.enabled) ||
         (!ToolSetting.autoIGC.enabled &&
             !manual &&
-            _choreoMode != ChoreoModeEnum.it)) {
+            _choreoMode != ChoreoModeEnum.it) ||
+        _backoffRequest(_lastIgcError, _igcErrorBackoff)) {
       return;
     }
 
@@ -275,7 +296,9 @@ class Choreographer extends ChangeNotifier {
         MatrixState.pangeaController.userController.userL2?.langCode;
     final l1LangCode =
         MatrixState.pangeaController.userController.userL1?.langCode;
-    if (l1LangCode != null && l2LangCode != null) {
+    if (l1LangCode != null &&
+        l2LangCode != null &&
+        !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
       final res = await TokensRepo.get(
         MatrixState.pangeaController.userController.accessToken,
         TokensRequestModel(
@@ -283,7 +306,21 @@ class Choreographer extends ChangeNotifier {
           senderL1: l1LangCode,
           senderL2: l2LangCode,
         ),
+      ).timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {
+          return Result.error("Token request timed out");
+        },
       );
+
+      if (res.isError) {
+        _lastTokensError = DateTime.now();
+        _tokenErrorBackoff *= 2;
+      } else {
+        // reset backoff on success
+        _tokenErrorBackoff = ChoreoConstants.defaultErrorBackoffSeconds;
+      }
+
       tokensResp = res.isValue ? res.result : null;
     }
 
@@ -316,6 +353,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onOpenIT() {
+    inputFocus.unfocus();
     final itMatch = igcController.openMatches.firstWhere(
       (match) => match.updatedMatch.isITStart,
       orElse: () =>
@@ -334,14 +372,15 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onCloseIT() {
-    if (currentText.isEmpty && itController.sourceText.value != null) {
+    if (itController.dismissed &&
+        currentText.isEmpty &&
+        itController.sourceText.value != null) {
       textController.setSystemText(
         itController.sourceText.value!,
         EditTypeEnum.itDismissed,
       );
     }
 
-    debugPrint("DISMISSED: ${itController.dismissed}");
     if (itController.dismissed) {
       _timesDismissedIT.value = _timesDismissedIT.value + 1;
     }

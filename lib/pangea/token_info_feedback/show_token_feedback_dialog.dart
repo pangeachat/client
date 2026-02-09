@@ -12,6 +12,7 @@ class TokenFeedbackUtil {
     required TokenInfoFeedbackRequestData requestData,
     required String langCode,
     PangeaMessageEvent? event,
+    VoidCallback? onUpdated,
   }) async {
     final resp = await showDialog(
       context: context,
@@ -23,6 +24,8 @@ class TokenFeedbackUtil {
     );
 
     if (resp == null) return;
+
+    onUpdated?.call();
     await showDialog(
       context: context,
       builder: (context) {

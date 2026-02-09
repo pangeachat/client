@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:25:44.793254",
+  "@@last_modified": "2026-02-05 10:09:41.124551",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -3764,8 +3764,6 @@
   "noPaymentInfo": "Nessuna informazione di pagamento necessaria!",
   "updatePhoneOS": "Potresti dover aggiornare la versione del sistema operativo del tuo dispositivo.",
   "wordsPerMinute": "Parole al minuto",
-  "autoIGCToolName": "Esegui automaticamente l'assistenza alla scrittura Pangea",
-  "autoIGCToolDescription": "Esegui automaticamente l'assistenza alla grammatica e alla traduzione di Pangea Chat prima di inviare il mio messaggio.",
   "tooltipInstructionsTitle": "Non sei sicuro di cosa faccia?",
   "tooltipInstructionsMobileBody": "Tieni premuti gli elementi per visualizzare i suggerimenti.",
   "tooltipInstructionsBrowserBody": "Passa il mouse sugli elementi per visualizzare i suggerimenti.",
@@ -4393,7 +4391,6 @@
   "numModules": "{num} moduli",
   "coursePlan": "Piano del corso",
   "editCourseLater": "Puoi modificare in seguito il titolo del corso, le descrizioni e l'immagine del corso.",
-  "newCourseAccess": "Per impostazione predefinita, i corsi sono privati e richiedono l'approvazione dell'amministratore per parteciparvi. Puoi modificare queste impostazioni in qualsiasi momento.",
   "createCourse": "Crea corso",
   "stats": "Statistiche",
   "createGroupChat": "Crea chat di gruppo",
@@ -6206,14 +6203,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8835,10 +8824,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10826,6 +10811,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Hai lasciato la chat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download avviato",
+  "webDownloadPermissionMessage": "Se il tuo browser blocca i download, abilita i download per questo sito.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "I progressi della tua sessione di pratica non verranno salvati.",
+  "practiceGrammar": "Pratica la grammatica",
+  "notEnoughToPractice": "Invia più messaggi per sbloccare la pratica",
+  "constructUseCorGCDesc": "Pratica della categoria grammaticale corretta",
+  "constructUseIncGCDesc": "Pratica della categoria grammaticale scorretta",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pratica degli errori grammaticali corretti",
+  "constructUseIncGEDesc": "Pratica degli errori grammaticali scorretti",
+  "fillInBlank": "Compila lo spazio vuoto con la scelta corretta",
+  "learn": "Impara",
+  "languageUpdated": "Lingua target aggiornata!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voce del bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "La tua richiesta è stata inviata all'amministratore del corso! Sarai ammesso se approvano.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Hai un codice di invito o un link per un corso pubblico?",
+  "welcomeUser": "Benvenuto {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cerca utenti per invitarli a questa chat.",
+  "publicInviteDescSpace": "Cerca utenti per invitarli a questo spazio.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat è un'app di messaggistica, quindi le notifiche sono importanti!",
+  "enableNotificationsDesc": "Consenti notifiche",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta con il supporto",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per impostazione predefinita, i corsi sono ricercabili pubblicamente e richiedono l'approvazione dell'amministratore per unirsi. Puoi modificare queste impostazioni in qualsiasi momento.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quale lingua stai imparando?",
+  "searchLanguagesHint": "Cerca lingue target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Domande? Siamo qui per aiutarti!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Qualcosa è andato storto e stiamo lavorando duramente per risolverlo. Controlla di nuovo più tardi.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Abilita assistenza alla scrittura",
+  "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frazionale",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

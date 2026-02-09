@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:27:35.989013",
+  "@@last_modified": "2026-02-05 10:10:02.295528",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -2422,8 +2422,6 @@
   "noPaymentInfo": "Không cần thông tin thanh toán!",
   "updatePhoneOS": "Bạn có thể cần nâng cấp phiên bản hệ điều hành.",
   "wordsPerMinute": "Từ mỗi phút",
-  "autoIGCToolName": "Tự động chạy hỗ trợ ngôn ngữ",
-  "autoIGCToolDescription": "Tự động chạy hỗ trợ ngôn ngữ sau khi gõ tin nhắn",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
   "roomFull": "Phòng đã đạt giới hạn.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
@@ -3979,7 +3977,6 @@
   "numModules": "{num} mô-đun",
   "coursePlan": "Kế hoạch khóa học",
   "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
-  "newCourseAccess": "Theo mặc định, các khóa học là riêng tư và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất cứ lúc nào.",
   "createCourse": "Tạo khóa học",
   "stats": "Thống kê",
   "createGroupChat": "Tạo nhóm trò chuyện",
@@ -4366,10 +4363,6 @@
     "placeholders": {}
   },
   "@editCourseLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newCourseAccess": {
     "type": "String",
     "placeholders": {}
   },
@@ -6393,6 +6386,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Bạn đã rời khỏi cuộc trò chuyện",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Tải xuống đã được khởi động",
+  "webDownloadPermissionMessage": "Nếu trình duyệt của bạn chặn tải xuống, vui lòng bật tải xuống cho trang web này.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Tiến trình phiên thực hành của bạn sẽ không được lưu.",
+  "practiceGrammar": "Thực hành ngữ pháp",
+  "notEnoughToPractice": "Gửi thêm tin nhắn để mở khóa thực hành",
+  "constructUseCorGCDesc": "Thực hành thể loại ngữ pháp đúng",
+  "constructUseIncGCDesc": "Thực hành thể loại ngữ pháp sai",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Thực hành lỗi ngữ pháp đúng",
+  "constructUseIncGEDesc": "Thực hành lỗi ngữ pháp sai",
+  "fillInBlank": "Điền vào chỗ trống với lựa chọn đúng",
+  "learn": "Học",
+  "languageUpdated": "Ngôn ngữ mục tiêu đã được cập nhật!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Giọng nói của Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Yêu cầu của bạn đã được gửi đến quản trị viên khóa học! Bạn sẽ được cho vào nếu họ chấp thuận.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
+  "welcomeUser": "Chào mừng {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Tìm kiếm người dùng để mời họ tham gia trò chuyện này.",
+  "publicInviteDescSpace": "Tìm kiếm người dùng để mời họ tham gia không gian này.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat là một ứng dụng nhắn tin nên thông báo là rất quan trọng!",
+  "enableNotificationsDesc": "Cho phép thông báo",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Trò chuyện với Hỗ trợ",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Theo mặc định, các khóa học có thể tìm kiếm công khai và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất kỳ lúc nào.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Bạn đang học ngôn ngữ nào?",
+  "searchLanguagesHint": "Tìm kiếm ngôn ngữ mục tiêu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Câu hỏi? Chúng tôi ở đây để giúp đỡ!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Đã xảy ra sự cố, và chúng tôi đang nỗ lực khắc phục. Vui lòng kiểm tra lại sau.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Bật trợ giúp viết",
+  "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Ghi âm không thành công. Vui lòng kiểm tra quyền truy cập âm thanh của bạn và thử lại.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Thành ngữ",
+  "grammarCopyPOSphrasalv": "Động từ cụm",
+  "grammarCopyPOScompn": "Hợp chất",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

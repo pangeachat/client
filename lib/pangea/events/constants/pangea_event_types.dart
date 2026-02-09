@@ -33,6 +33,8 @@ class PangeaEventTypes {
 
   static const String report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
+  static const analyticsInviteRule = "p.rule.analytics_invite";
+  static const analyticsInviteContent = "p.analytics_request";
 
   /// A request to the server to generate activities
   static const activityRequest = "pangea.activity_req";

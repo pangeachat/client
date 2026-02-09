@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-07 14:24:33.836325",
+  "@@last_modified": "2026-02-05 10:09:27.459987",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -3541,8 +3541,6 @@
   "noPaymentInfo": "Nije potrebna informacija o plaćanju!",
   "updatePhoneOS": "Možda ćete morati ažurirati verziju OS-a na svom uređaju.",
   "wordsPerMinute": "Riječi po minuti",
-  "autoIGCToolName": "Automatski pokreni pomoć za pisanje Pangea",
-  "autoIGCToolDescription": "Automatski pokreni pomoć za gramatiku i prijevod Pangea Chat prije slanja moje poruke.",
   "tooltipInstructionsTitle": "Niste sigurni što to radi?",
   "tooltipInstructionsMobileBody": "Dugim pritiskom na stavke prikazuju se alati za pomoć.",
   "tooltipInstructionsBrowserBody": "Pomičite mišem preko stavki za prikazivanje saveta.",
@@ -4170,7 +4168,6 @@
   "numModules": "{num} modula",
   "coursePlan": "Plan tečaja",
   "editCourseLater": "Možete kasnije urediti naslov predloška, opise i sliku tečaja.",
-  "newCourseAccess": "Prema zadanim postavkama, tečajevi su privatni i zahtijevaju odobrenje administratora za pridruživanje. Možete ove postavke urediti u bilo koje vrijeme.",
   "createCourse": "Stvori tečaj",
   "stats": "Statistike",
   "createGroupChat": "Stvori grupni razgovor",
@@ -6575,14 +6572,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9204,10 +9193,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11195,6 +11180,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Napustili ste chat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Preuzimanje pokrenuto",
+  "webDownloadPermissionMessage": "Ako vaš preglednik blokira preuzimanja, molimo omogućite preuzimanja za ovu stranicu.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
+  "practiceGrammar": "Vježbajte gramatiku",
+  "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
+  "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
+  "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Prakticiranje ispravne gramatičke greške",
+  "constructUseIncGEDesc": "Prakticiranje pogrešne gramatičke greške",
+  "fillInBlank": "Ispunite prazno mjesto s ispravnim izborom",
+  "learn": "Učite",
+  "languageUpdated": "Ciljani jezik ažuriran!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot glas",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni tečaj?",
+  "welcomeUser": "Dobrodošli {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Pretražite korisnike kako biste ih pozvali u ovaj chat.",
+  "publicInviteDescSpace": "Pretražite korisnike kako biste ih pozvali u ovaj prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
+  "enableNotificationsDesc": "Dopusti obavijesti",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Razgovarajte s podrškom",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Prema zadanim postavkama, tečajevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Koji jezik učite?",
+  "searchLanguagesHint": "Pretraži ciljne jezike",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Imate pitanja? Tu smo da pomognemo!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nešto je pošlo po zlu i marljivo radimo na rješavanju problema. Provjerite ponovo kasnije.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Omogući pomoć pri pisanju",
+  "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Snimanje nije uspjelo. Provjerite svoja audio dopuštenja i pokušajte ponovo.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasalni Glagol",
+  "grammarCopyPOScompn": "Složenica",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

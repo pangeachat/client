@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-07 14:25:54.221263",
+  "@@last_modified": "2026-02-05 10:09:42.549877",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -3787,8 +3787,6 @@
   "noPaymentInfo": "Інформація про оплату не потрібна!",
   "updatePhoneOS": "Можливо, потрібно оновити версію ОС вашого пристрою.",
   "wordsPerMinute": "Слів за хвилину",
-  "autoIGCToolName": "Автоматично запускати допомогу з написання Pangea",
-  "autoIGCToolDescription": "Автоматично запускати допомогу з граматики та перекладу в чаті Pangea перед відправкою мого повідомлення.",
   "tooltipInstructionsTitle": "Не впевнений, що це робить?",
   "tooltipInstructionsMobileBody": "Натисніть і утримуйте елементи, щоб переглянути підказки.",
   "tooltipInstructionsBrowserBody": "Наведіть курсор на елементи, щоб переглянути підказки.",
@@ -4416,7 +4414,6 @@
   "numModules": "{num} модулів",
   "coursePlan": "План курсу",
   "editCourseLater": "Ви можете редагувати назву шаблону, описи та зображення курсу пізніше.",
-  "newCourseAccess": "За замовчуванням курси є приватними і потребують схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
   "createCourse": "Створити курс",
   "stats": "Статистика",
   "createGroupChat": "Створити груповий чат",
@@ -6197,14 +6194,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8826,10 +8815,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10817,6 +10802,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Ви вийшли з чату",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Завантаження розпочато",
+  "webDownloadPermissionMessage": "Якщо ваш браузер блокує завантаження, будь ласка, увімкніть завантаження для цього сайту.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ваш прогрес у сесії практики не буде збережено.",
+  "practiceGrammar": "Практика граматики",
+  "notEnoughToPractice": "Надішліть більше повідомлень, щоб розблокувати практику",
+  "constructUseCorGCDesc": "Практика правильної граматичної категорії",
+  "constructUseIncGCDesc": "Практика неправильної граматичної категорії",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практика виправлення граматичних помилок",
+  "constructUseIncGEDesc": "Практика неправильних граматичних помилок",
+  "fillInBlank": "Заповніть пропуск правильним вибором",
+  "learn": "Вчити",
+  "languageUpdated": "Цільова мова оновлена!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голос Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запит надіслано адміністратору курсу! Ви будете допущені, якщо вони схвалять.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "У вас є код запрошення або посилання на публічний курс?",
+  "welcomeUser": "Ласкаво просимо {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Шукайте користувачів, щоб запросити їх до цього чату.",
+  "publicInviteDescSpace": "Шукайте користувачів, щоб запросити їх до цього простору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat - це додаток для обміну повідомленнями, тому сповіщення важливі!",
+  "enableNotificationsDesc": "Дозволити сповіщення",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат з підтримкою",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "За замовчуванням курси є загальнодоступними для пошуку і вимагають схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Яку мову ви вивчаєте?",
+  "searchLanguagesHint": "Шукати цільові мови",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Питання? Ми тут, щоб допомогти!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Щось пішло не так, і ми наполегливо працюємо над виправленням. Перевірте пізніше.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Увімкнути допомогу в написанні",
+  "autoIGCToolDescription": "Автоматично запускати інструменти Pangea Chat для виправлення надісланих повідомлень на цільову мову.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Запис не вдався. Будь ласка, перевірте свої аудіоправа та спробуйте ще раз.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Ідіома",
+  "grammarCopyPOSphrasalv": "Фразове дієслово",
+  "grammarCopyPOScompn": "Складене",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

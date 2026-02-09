@@ -25,6 +25,8 @@ class SpacesNavigationRail extends StatelessWidget {
   final double railWidth;
   final bool expanded;
   final VoidCallback collapse;
+  final Profile? profile;
+  final Function(Profile) onProfileUpdate;
   // Pangea#
 
   const SpacesNavigationRail({
@@ -35,7 +37,9 @@ class SpacesNavigationRail extends StatelessWidget {
     required this.path,
     required this.railWidth,
     required this.collapse,
+    required this.onProfileUpdate,
     this.expanded = false,
+    this.profile,
     // Pangea#
     super.key,
   });
@@ -111,23 +115,38 @@ class SpacesNavigationRail extends StatelessWidget {
                             },
                             backgroundColor: Colors.transparent,
                             icon: FutureBuilder<Profile>(
+                              // #Pangea
+                              initialData: profile,
+                              // Pangea#
                               future: client.fetchOwnProfile(),
-                              builder: (context, snapshot) => Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    borderRadius: BorderRadius.circular(99),
-                                    child: Avatar(
-                                      mxContent: snapshot.data?.avatarUrl,
-                                      name: snapshot.data?.displayName ??
-                                          client.userID!.localpart,
-                                      size:
-                                          width - (isColumnMode ? 32.0 : 24.0),
+                              // #Pangea
+                              // builder: (context, snapshot) => Stack(
+                              builder: (context, snapshot) {
+                                if (snapshot.data?.avatarUrl != null &&
+                                    snapshot.data?.avatarUrl !=
+                                        profile?.avatarUrl) {
+                                  WidgetsBinding.instance.addPostFrameCallback(
+                                    (_) => onProfileUpdate(snapshot.data!),
+                                  );
+                                }
+                                return Stack(
+                                  // Pangea#
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Material(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.circular(99),
+                                      child: Avatar(
+                                        mxContent: snapshot.data?.avatarUrl,
+                                        name: snapshot.data?.displayName ??
+                                            client.userID!.localpart,
+                                        size: width -
+                                            (isColumnMode ? 32.0 : 24.0),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                  ],
+                                );
+                              },
                             ),
                             toolTip: L10n.of(context).home,
                             // #Pangea
@@ -202,7 +221,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 child: const Icon(Icons.add),
                               ),
                             ),
-                            toolTip: L10n.of(context).addCourse,
+                            toolTip: L10n.of(context).findCourse,
                             expanded: expanded,
                             // Pangea#
                           );

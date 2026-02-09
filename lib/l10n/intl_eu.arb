@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-07 14:25:02.696896",
+  "@@last_modified": "2026-02-05 10:09:33.401642",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -3785,8 +3785,6 @@
   "noPaymentInfo": "Ez dago ordainketa informaziorik behar!",
   "updatePhoneOS": "Baliteke zure gailuaren OS bertsioa eguneratu behar izatea.",
   "wordsPerMinute": "Hitz minutuko",
-  "autoIGCToolName": "Exekutatu Pangea idazketa laguntza automatikoki",
-  "autoIGCToolDescription": "Exekutatu automatikoki Pangea Txataren gramatika eta itzulpen idazketa laguntza mezu bat bidali aurretik.",
   "tooltipInstructionsTitle": "Ez da ziur zer den hori?",
   "tooltipInstructionsMobileBody": "Elementuak sakatu eta eutsi tresna-txartelak ikusteko.",
   "tooltipInstructionsBrowserBody": "Elementuak gainean mugitu eta ikusi tresna-txartelak.",
@@ -4414,7 +4412,6 @@
   "numModules": "{num} modulua",
   "coursePlan": "Ikastaro Plana",
   "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
-  "newCourseAccess": "Lehenetsiz, ikastaroak pribatutasunekoak dira eta administratzailearen onespena behar dute parte hartzeko. Edozein momentutan aldatu ditzakezu ezarpen hauek.",
   "createCourse": "Sortu ikastaroa",
   "stats": "Datuak",
   "createGroupChat": "Sortu talde txat bat",
@@ -6203,14 +6200,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8832,10 +8821,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10823,6 +10808,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Txatetik irten zara",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Deskarga hasi da",
+  "webDownloadPermissionMessage": "Zure nabigatzaileak deskargak blokeatzen baditu, mesedez, gaitza itxaroteko deskargak webgune honentzat.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
+  "practiceGrammar": "Gramatika praktikatu",
+  "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
+  "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
+  "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Gramatika akats zuzenketa praktika",
+  "constructUseIncGEDesc": "Gramatika akats okerra praktika",
+  "fillInBlank": "Betekoa bete aukerarik egokienarekin",
+  "learn": "Ikasi",
+  "languageUpdated": "Helmuga hizkuntza eguneratua!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot ahotsa",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?",
+  "welcomeUser": "Ongi etorri {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bilatu erabiltzaileak txat honetara gonbidatzeko.",
+  "publicInviteDescSpace": "Bilatu erabiltzaileak espazio honetara gonbidatzeko.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat mezularitza aplikazio bat da, beraz jakinarazpenak garrantzitsuak dira!",
+  "enableNotificationsDesc": "Baimendu jakinarazpenak",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Txatatu Laguntzarekin",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Zer hizkuntza ikasten ari zara?",
+  "searchLanguagesHint": "Bilatu helburu hizkuntzak",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Galderak? Hemen gaude laguntzeko!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Zerbait oker joan da, eta horren konponketan lan gogorra egiten ari gara. Begiratu berriro geroago.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Idazteko laguntza aktibatu",
+  "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Konposatu",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

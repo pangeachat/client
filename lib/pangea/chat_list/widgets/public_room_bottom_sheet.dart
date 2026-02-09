@@ -8,7 +8,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -30,7 +29,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
     assert(roomAlias != null || chunk != null);
   }
 
-  static Future<bool?> show({
+  static Future<String?> show({
     required BuildContext context,
     String? roomAlias,
     PublicRoomsChunk? chunk,
@@ -91,26 +90,13 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
       notFoundError: L10n.of(context).notTheCodeError,
     );
     if (resp != null) {
-      Navigator.of(context).pop(true);
-    }
-  }
-
-  void _goToRoom(String roomID) {
-    if (chunk?.roomType != 'm.space' && !client.getRoomById(roomID)!.isSpace) {
-      NavigationUtil.goToSpaceRoute(
-        roomID,
-        [],
-        context,
-      );
-    } else {
-      context.go('/rooms/spaces/$roomID/details');
+      Navigator.of(context).pop(resp);
     }
   }
 
   Future<void> _joinRoom() async {
     if (_isRoomMember) {
-      _goToRoom(room!.id);
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(room!.id);
       return;
     }
 
@@ -131,15 +117,13 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     );
 
     if (result.result != null) {
-      _goToRoom(result.result!);
-      Navigator.of(context).pop(true);
+      Navigator.of(context).pop(result.result!);
     }
   }
 
   Future<void> _knockRoom() async {
     if (_isRoomMember) {
-      _goToRoom(room!.id);
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(room!.id);
       return;
     }
 

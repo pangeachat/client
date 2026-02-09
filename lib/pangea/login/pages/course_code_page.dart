@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
-import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
@@ -72,7 +72,7 @@ class CourseCodePageState extends State<CourseCodePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.network(
-                  "${AppConfig.assetsBaseURL}/${AddCoursePage.mapUnlockFileName}",
+                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
                   width: 100.0,
                   height: 100.0,
                   colorFilter: ColorFilter.mode(

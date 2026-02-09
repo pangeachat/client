@@ -3,42 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 
 class TokenRenderingUtil {
-  final TextStyle existingStyle;
-
-  TokenRenderingUtil({
-    required this.existingStyle,
-  });
+  TokenRenderingUtil();
 
   static final Map<String, double> _tokensWidthCache = {};
 
-  TextStyle style({
-    required Color underlineColor,
-    double? fontSize,
-    bool selected = false,
-    bool highlighted = false,
-    bool isNew = false,
-    bool practiceMode = false,
-    bool hovered = false,
-  }) =>
-      existingStyle.copyWith(
-        fontSize: fontSize,
-        decoration: TextDecoration.underline,
-        decorationThickness: 4,
-        decorationColor: _underlineColor(
-          underlineColor,
-          selected: selected,
-          highlighted: highlighted,
-          isNew: isNew,
-          practiceMode: practiceMode,
-          hovered: hovered,
-        ),
-      );
-
   double tokenTextWidthForContainer(
     String text,
-    Color underlineColor, {
-    double? fontSize,
-  }) {
+    Color underlineColor,
+    TextStyle style,
+    double fontSize,
+  ) {
     final tokenSizeKey = "$text-$fontSize";
     if (_tokensWidthCache.containsKey(tokenSizeKey)) {
       return _tokensWidthCache[tokenSizeKey]!;
@@ -47,10 +21,7 @@ class TokenRenderingUtil {
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
-        style: style(
-          underlineColor: underlineColor,
-          fontSize: fontSize,
-        ),
+        style: style,
       ),
       maxLines: 1,
       textDirection: TextDirection.ltr,
@@ -62,7 +33,7 @@ class TokenRenderingUtil {
     return width;
   }
 
-  Color _underlineColor(
+  static Color underlineColor(
     Color underlineColor, {
     bool selected = false,
     bool highlighted = false,

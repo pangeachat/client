@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -15,16 +14,15 @@ class LemmaActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    debugger(when: kDebugMode && req.targetTokens.length != 1);
+    debugger(when: kDebugMode && req.target.tokens.length != 1);
 
-    final token = req.targetTokens.first;
+    final token = req.target.tokens.first;
     final choices = await lemmaActivityDistractors(token);
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: ActivityTypeEnum.lemmaId,
-        targetTokens: [token],
+      activity: LemmaPracticeActivityModel(
+        tokens: req.target.tokens,
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: choices.map((c) => c.lemma).toSet(),

@@ -134,7 +134,7 @@
 
             <meta-data
                 android:name="flutter_deeplinking_enabled"
-                android:value="true" />
+                android:value="false" />
         </activity>
 
         <activity

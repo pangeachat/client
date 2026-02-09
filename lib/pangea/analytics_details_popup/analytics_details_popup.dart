@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
@@ -16,9 +18,13 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
@@ -47,6 +53,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   FocusNode searchFocusNode = FocusNode();
   ConstructLevelEnum? selectedConstructLevel;
   StreamSubscription<AnalyticsStreamUpdate>? _constructUpdateSub;
+  final ValueNotifier<int> reloadNotifier = ValueNotifier<int>(0);
 
   @override
   void initState() {
@@ -70,6 +77,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     searchController.dispose();
     _constructUpdateSub?.cancel();
     searchFocusNode.dispose();
+    reloadNotifier.dispose();
     super.dispose();
   }
 
@@ -106,7 +114,11 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
       vocab = data.values.toList();
       vocab!.sort(
-        (a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()),
+        (a, b) {
+          final normalizedA = removeDiacritics(a.lemma).toLowerCase();
+          final normalizedB = removeDiacritics(b.lemma).toLowerCase();
+          return normalizedA.compareTo(normalizedB);
+        },
       );
     } finally {
       if (mounted) setState(() {});
@@ -156,6 +168,29 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     });
   }
 
+  Future<void> onFlagTokenInfo(
+    PangeaToken token,
+    LemmaInfoResponse lemmaInfo,
+    String phonetics,
+  ) async {
+    final requestData = TokenInfoFeedbackRequestData(
+      userId: Matrix.of(context).client.userID!,
+      detectedLanguage: MatrixState.pangeaController.userController.userL2Code!,
+      tokens: [token],
+      selectedToken: 0,
+      wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
+      lemmaInfo: lemmaInfo,
+      phonetics: phonetics,
+    );
+
+    await TokenFeedbackUtil.showTokenFeedbackDialog(
+      context,
+      requestData: requestData,
+      langCode: MatrixState.pangeaController.userController.userL2Code!,
+      onUpdated: () => reloadNotifier.value++,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,79 +211,77 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
                         : MorphDetailsView(constructId: widget.construct!)
                     : widget.construct == null
                         ? VocabAnalyticsListView(controller: this)
-                        : VocabDetailsView(constructId: widget.construct!),
+                        : VocabDetailsView(
+                            constructId: widget.construct!,
+                            controller: this,
+                          ),
               ),
             ],
           ),
         ),
       ),
       floatingActionButton:
-          widget.view == ConstructTypeEnum.vocab && widget.construct == null
-              ? _buildVocabPracticeButton(context)
-              : null,
+          widget.construct == null ? _PracticeButton(view: widget.view) : null,
     );
   }
 }
 
-Widget _buildVocabPracticeButton(BuildContext context) {
-  // Check if analytics is loaded first
-  if (MatrixState
-      .pangeaController.matrixState.analyticsDataService.isInitializing) {
-    return FloatingActionButton.extended(
-      onPressed: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'Loading vocabulary data...',
-            ),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      },
-      label: Text(L10n.of(context).practiceVocab),
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      foregroundColor:
-          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+class _PracticeButton extends StatelessWidget {
+  final ConstructTypeEnum view;
+  const _PracticeButton({required this.view});
+
+  void _showSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        behavior: SnackBarBehavior.floating,
+      ),
     );
   }
 
-  final vocabCount = MatrixState
-      .pangeaController.matrixState.analyticsDataService
-      .numConstructs(ConstructTypeEnum.vocab);
-  final hasEnoughVocab = vocabCount >= 10;
+  @override
+  Widget build(BuildContext context) {
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    if (analyticsService.isInitializing) {
+      return FloatingActionButton.extended(
+        onPressed: () => _showSnackbar(
+          context,
+          L10n.of(context).loadingPleaseWait,
+        ),
+        label: Text(view.practiceButtonText(context)),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor:
+            Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+      );
+    }
 
-  return FloatingActionButton.extended(
-    onPressed: hasEnoughVocab
-        ? () {
-            context.go(
-              "/rooms/analytics/${ConstructTypeEnum.vocab.name}/practice",
-            );
-          }
-        : () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  L10n.of(context).mustHave10Words,
-                ),
-                behavior: SnackBarBehavior.floating,
+    final count = analyticsService.numConstructs(view);
+    final enabled = count >= 10;
+
+    return FloatingActionButton.extended(
+      onPressed: enabled
+          ? () => context.go("/rooms/analytics/${view.name}/practice")
+          : () => _showSnackbar(
+                context,
+                L10n.of(context).notEnoughToPractice,
               ),
-            );
-          },
-    backgroundColor:
-        hasEnoughVocab ? null : Theme.of(context).colorScheme.surfaceContainer,
-    foregroundColor: hasEnoughVocab
-        ? null
-        : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-    label: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (!hasEnoughVocab) ...[
-          const Icon(Icons.lock_outline, size: 18),
+      backgroundColor:
+          enabled ? null : Theme.of(context).colorScheme.surfaceContainer,
+      foregroundColor: enabled
+          ? null
+          : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            enabled ? Symbols.fitness_center : Icons.lock_outline,
+            size: 18,
+          ),
           const SizedBox(width: 4),
+          Text(view.practiceButtonText(context)),
         ],
-        Text(L10n.of(context).practiceVocab),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }

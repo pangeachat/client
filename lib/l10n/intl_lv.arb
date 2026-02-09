@@ -3773,8 +3773,6 @@
   "noPaymentInfo": "Nav nepieciešama maksājuma informācija!",
   "updatePhoneOS": "Var būt nepieciešams atjaunināt ierīces operētājsistēmas versiju.",
   "wordsPerMinute": "Vārdi minūtē",
-  "autoIGCToolName": "Automātiski palaist Pangea rakstīšanas palīgu",
-  "autoIGCToolDescription": "Automātiski palaist Pangea Čata gramatikas un tulkošanas rakstīšanas palīgu pirms mana ziņojuma nosūtīšanas.",
   "tooltipInstructionsTitle": "Neesat pārliecināts, kas tas dara?",
   "tooltipInstructionsMobileBody": "Turiet un turiet vienumus, lai skatītu rīku padomus.",
   "tooltipInstructionsBrowserBody": "Novietojiet peles kursoru virs vienumiem, lai skatītu rīku padomus.",
@@ -4482,7 +4480,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-07 14:27:04.364429",
+  "@@last_modified": "2026-02-05 10:09:54.766036",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -4495,7 +4493,6 @@
   "numModules": "{num} moduļi",
   "coursePlan": "Kursa plāns",
   "editCourseLater": "Jūs varat vēlāk rediģēt šablona nosaukumu, aprakstus un kursa attēlu.",
-  "newCourseAccess": "Pēc noklusējuma kursi ir privāti un prasa administratora apstiprinājumu, lai pievienotos. Jūs varat šīs iestatījumus mainīt jebkurā laikā.",
   "createCourse": "Izveidot kursu",
   "stats": "Statistika",
   "@customReaction": {
@@ -6189,14 +6186,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8818,10 +8807,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10809,6 +10794,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Jūs pametāt čatu",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Lejupielāde uzsākta",
+  "webDownloadPermissionMessage": "Ja jūsu pārlūkprogramma bloķē lejupielādes, lūdzu, iespējot lejupielādes šai vietnei.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Jūsu prakses sesijas progress netiks saglabāts.",
+  "practiceGrammar": "Praktizēt gramatiku",
+  "notEnoughToPractice": "Sūtiet vairāk ziņojumu, lai atbloķētu praksi",
+  "constructUseCorGCDesc": "Pareizas gramatikas kategorijas prakse",
+  "constructUseIncGCDesc": "Nepareizas gramatikas kategorijas prakse",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pareiza gramatikas kļūdu prakse",
+  "constructUseIncGEDesc": "Nepareiza gramatikas kļūdu prakse",
+  "fillInBlank": "Aizpildiet tukšo vietu ar pareizo izvēli",
+  "learn": "Mācīties",
+  "languageUpdated": "Mērķa valoda atjaunota!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot balss",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Jūsu pieprasījums ir nosūtīts kursa administratoram! Jūs tiksiet iekšā, ja viņi apstiprinās.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Vai jums ir uzaicinājuma kods vai saite uz publisku kursu?",
+  "welcomeUser": "Laipni lūdzam, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Meklējiet lietotājus, lai viņus aicinātu uz šo čatu.",
+  "publicInviteDescSpace": "Meklējiet lietotājus, lai viņus aicinātu uz šo telpu.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat ir ziņojumapmaiņas lietotne, tāpēc paziņojumi ir svarīgi!",
+  "enableNotificationsDesc": "Atļaut paziņojumus",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Sarunāties ar atbalstu",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Pēc noklusējuma kursi ir publiski meklējami un prasa administratora apstiprinājumu pievienošanai. Jūs varat rediģēt šos iestatījumus jebkurā laikā.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kuru valodu tu mācies?",
+  "searchLanguagesHint": "Meklēt mērķa valodas",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Jautājumi? Mēs esam šeit, lai palīdzētu!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Kaut kas nogāja greizi, un mēs smagi strādājam, lai to labotu. Pārbaudiet vēlāk.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
+  "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Ieraksts neizdevās. Lūdzu, pārbaudiet savas audio atļaujas un mēģiniet vēlreiz.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Frazēts darbības vārds",
+  "grammarCopyPOScompn": "Savienojums",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

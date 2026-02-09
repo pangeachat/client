@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:http/http.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -62,7 +63,18 @@ class TokensRepo {
     final Map<String, dynamic> json =
         jsonDecode(utf8.decode(res.bodyBytes).toString());
 
-    return TokensResponseModel.fromJson(json);
+    final tokens = TokensResponseModel.fromJson(json);
+    if (tokens.tokens.any((t) => t.pos == 'other')) {
+      ErrorHandler.logError(
+        e: Exception('Received token with pos "other"'),
+        data: {
+          "request": request.toJson(),
+          "response": json,
+        },
+        level: SentryLevel.warning,
+      );
+    }
+    return tokens;
   }
 
   static Future<Result<TokensResponseModel>> _getResult(

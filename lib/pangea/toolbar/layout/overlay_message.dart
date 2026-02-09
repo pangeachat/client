@@ -10,14 +10,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_content.dart';
 import 'package:fluffychat/pages/chat/events/reply_content.dart';
-import 'package:fluffychat/pangea/chat/widgets/request_regeneration_button.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -258,11 +254,6 @@ class OverlayMessage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
-          else if (canRefresh)
-            RequestRegenerationButton(
-              textColor: textColor,
-              onPressed: () => controller.requestRegeneration(event.eventId),
             ),
         ],
       ),
@@ -506,19 +497,19 @@ class _MessageBubbleTranscription extends StatelessWidget {
                         onClick: onTokenSelected,
                         isSelected: isTokenSelected,
                       ),
-                      if (MatrixState
-                          .pangeaController.userController.showTranscription)
-                        PhoneticTranscriptionWidget(
-                          text: transcription.transcript.text,
-                          textLanguage: PLanguageStore.byLangCode(
-                                transcription.langCode,
-                              ) ??
-                              LanguageModel.unknown,
-                          style: style,
-                          iconColor: style.color,
-                          onTranscriptionFetched: () =>
-                              controller.contentChangedStream.add(true),
-                        ),
+                      // if (MatrixState
+                      //     .pangeaController.userController.showTranscription)
+                      //   PhoneticTranscriptionWidget(
+                      //     text: transcription.transcript.text,
+                      //     textLanguage: PLanguageStore.byLangCode(
+                      //           transcription.langCode,
+                      //         ) ??
+                      //         LanguageModel.unknown,
+                      //     style: style,
+                      //     iconColor: style.color,
+                      //     onTranscriptionFetched: () =>
+                      //         controller.contentChangedStream.add(true),
+                      //   ),
                     ],
                   ),
                 );

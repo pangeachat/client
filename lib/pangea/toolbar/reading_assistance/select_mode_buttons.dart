@@ -15,9 +15,11 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
@@ -29,7 +31,8 @@ enum SelectMode {
   translate(Icons.translate),
   practice(Symbols.fitness_center),
   emoji(Icons.add_reaction_outlined),
-  speechTranslation(Icons.translate);
+  speechTranslation(Icons.translate),
+  requestRegenerate(Icons.replay);
 
   final IconData icon;
   const SelectMode(this.icon);
@@ -46,6 +49,8 @@ enum SelectMode {
         return l10n.practice;
       case SelectMode.emoji:
         return l10n.emojiView;
+      case SelectMode.requestRegenerate:
+        return l10n.requestRegeneration;
     }
   }
 }
@@ -180,6 +185,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   SelectModeController get controller =>
       widget.overlayController.selectModeController;
 
+  bool get _canRefresh =>
+      messageEvent.eventId == widget.controller.refreshEventID;
+
   Future<void> updateMode(SelectMode? mode) async {
     if (mode == null) {
       matrix?.audioPlayer?.stop();
@@ -208,19 +216,54 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.translate) {
+      if (!InstructionsEnum.shimmerTranslation.isToggledOff) {
+        InstructionsEnum.shimmerTranslation.setToggledOff(true);
+      }
       await controller.fetchTranslation();
     }
 
     if (updatedMode == SelectMode.speechTranslation) {
       await controller.fetchSpeechTranslation();
     }
+
+    if (updatedMode == SelectMode.requestRegenerate) {
+      await widget.controller.requestRegeneration(
+        messageEvent.eventId,
+      );
+
+      if (mounted) {
+        controller.setSelectMode(null);
+      }
+    }
   }
 
   Future<void> modeDisabled() async {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
+    final target = controller.messageEvent.originalSent?.langCode;
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
       SnackBar(
-        content: Text(L10n.of(context).modeDisabled),
+        content: Row(
+          spacing: 12.0,
+          children: [
+            Flexible(
+              child: Text(
+                L10n.of(context).modeDisabled,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            if (target != null)
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                ),
+                onPressed: () =>
+                    widget.controller.updateLanguageOnMismatch(target),
+                child: Text(L10n.of(context).learn),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -348,7 +391,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final modes = controller.readingAssistanceModes;
-    final allModes = controller.allModes;
+    final allModes = controller.allModes(enableRefresh: _canRefresh);
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
@@ -358,7 +401,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           children: List.generate(allModes.length + 1, (index) {
             if (index < allModes.length) {
               final mode = allModes[index];
-              final enabled = modes.contains(mode);
+              final enabled = modes(enableRefresh: _canRefresh).contains(mode);
               return Container(
                 width: 45.0,
                 alignment: Alignment.center,
@@ -374,37 +417,43 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
-                        opacity: enabled ? 1.0 : 0.5,
+                        opacity: enabled ? 1.0 : 0.75,
                         child: PressableButton(
                           borderRadius: BorderRadius.circular(20),
                           depressed: mode == selectedMode || !enabled,
-                          color: enabled
-                              ? theme.colorScheme.primaryContainer
-                              : theme.disabledColor,
+                          color: theme.colorScheme.primaryContainer,
                           onPressed:
                               enabled ? () => updateMode(mode) : modeDisabled,
                           playSound: enabled && mode != SelectMode.audio,
                           colorFactor:
                               theme.brightness == Brightness.light ? 0.55 : 0.3,
                           builder: (context, depressed, shadowColor) =>
-                              AnimatedContainer(
-                            duration: FluffyThemes.animationDuration,
-                            height: buttonSize,
-                            width: buttonSize,
-                            decoration: BoxDecoration(
-                              color: depressed
-                                  ? shadowColor
-                                  : theme.colorScheme.primaryContainer,
-                              shape: BoxShape.circle,
-                            ),
-                            child: ValueListenableBuilder(
-                              valueListenable: _isPlayingNotifier,
-                              builder: (context, playing, __) =>
-                                  _SelectModeButtonIcon(
-                                mode: mode,
-                                loading: controller.isLoading &&
-                                    mode == selectedMode,
-                                playing: mode == SelectMode.audio && playing,
+                              ShimmerBackground(
+                            enabled: !InstructionsEnum
+                                    .shimmerTranslation.isToggledOff &&
+                                mode == SelectMode.translate &&
+                                enabled,
+                            borderRadius: BorderRadius.circular(100),
+                            child: AnimatedContainer(
+                              duration: FluffyThemes.animationDuration,
+                              height: buttonSize,
+                              width: buttonSize,
+                              decoration: BoxDecoration(
+                                color: depressed
+                                    ? shadowColor
+                                    : theme.colorScheme.primaryContainer,
+                                shape: BoxShape.circle,
+                              ),
+                              child: ValueListenableBuilder(
+                                valueListenable: _isPlayingNotifier,
+                                builder: (context, playing, __) =>
+                                    _SelectModeButtonIcon(
+                                  mode: mode,
+                                  loading: controller.isLoading &&
+                                      mode == selectedMode,
+                                  playing: mode == SelectMode.audio && playing,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                ),
                               ),
                             ),
                           ),
@@ -435,11 +484,13 @@ class _SelectModeButtonIcon extends StatelessWidget {
   final SelectMode mode;
   final bool loading;
   final bool playing;
+  final Color color;
 
   const _SelectModeButtonIcon({
     required this.mode,
     this.loading = false,
     this.playing = false,
+    required this.color,
   });
 
   @override
@@ -458,10 +509,11 @@ class _SelectModeButtonIcon extends StatelessWidget {
       return Icon(
         playing ? Icons.pause_outlined : Icons.volume_up,
         size: 20,
+        color: color,
       );
     }
 
-    return Icon(mode.icon, size: 20);
+    return Icon(mode.icon, size: 20, color: color);
   }
 }
 

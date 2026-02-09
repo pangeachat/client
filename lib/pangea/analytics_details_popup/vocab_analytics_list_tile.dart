@@ -77,7 +77,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
                   },
                 ),
                 Container(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   padding: const EdgeInsets.only(top: 4),
                   height: (maxWidth - padding * 2) * 0.4,
                   child: ShrinkableText(

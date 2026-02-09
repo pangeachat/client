@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:26:27.395689",
+  "@@last_modified": "2026-02-05 10:09:47.712187",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -3757,8 +3757,6 @@
   "noPaymentInfo": "No cal informació de pagament!",
   "updatePhoneOS": "Pot ser que necessitis actualitzar la versió del sistema operatiu del teu dispositiu.",
   "wordsPerMinute": "Paraules per minut",
-  "autoIGCToolName": "Executa automàticament l'assistència d'escriptura Pangea",
-  "autoIGCToolDescription": "Executa automàticament l'assistència d'escriptura de gramàtica i traducció de Pangea abans d'enviar el meu missatge.",
   "tooltipInstructionsTitle": "No estàs segur de què fa això?",
   "tooltipInstructionsMobileBody": "Prem i mantén premut per veure les eines d'informació sobre les opcions.",
   "tooltipInstructionsBrowserBody": "Passa el cursor sobre els elements per veure les eines d'informació.",
@@ -4386,7 +4384,6 @@
   "numModules": "{num} mòduls",
   "coursePlan": "Pla de curs",
   "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
-  "newCourseAccess": "Per defecte, els cursos són privats i requereixen l'aprovació de l'administrador per unir-se. Pots editar aquests paràmetres en qualsevol moment.",
   "createCourse": "Crear curs",
   "stats": "Estadístiques",
   "createGroupChat": "Crear xat de grup",
@@ -6227,14 +6224,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8856,10 +8845,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10847,6 +10832,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Has deixat el xat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Descàrrega iniciada",
+  "webDownloadPermissionMessage": "Si el teu navegador bloqueja les descàrregues, si us plau, activa les descàrregues per a aquest lloc.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "El teu progrés de la sessió de pràctica no es desarà.",
+  "practiceGrammar": "Practica gramàtica",
+  "notEnoughToPractice": "Envia més missatges per desbloquejar la pràctica",
+  "constructUseCorGCDesc": "Pràctica de la categoria de gramàtica correcta",
+  "constructUseIncGCDesc": "Pràctica de la categoria de gramàtica incorrecta",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pràctica d'errors gramaticals correctes",
+  "constructUseIncGEDesc": "Pràctica d'errors gramaticals incorrectes",
+  "fillInBlank": "Omple el buit amb l'elecció correcta",
+  "learn": "Aprendre",
+  "languageUpdated": "Idioma objectiu actualitzat!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Veu del bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "La teva sol·licitud s'ha enviat a l'administrador del curs! Et deixaran entrar si ho aproven.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Tens un codi d'invitació o un enllaç a un curs públic?",
+  "welcomeUser": "Benvingut {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cerca usuaris per convidar-los a aquest xat.",
+  "publicInviteDescSpace": "Cerca usuaris per convidar-los a aquest espai.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat és una aplicació de missatgeria, així que les notificacions són importants!",
+  "enableNotificationsDesc": "Permetre notificacions",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Utilitza la imatge d'activitat com a fons de xat",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Xateja amb el Suport",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Per defecte, els cursos són cercables públicament i requereixen l'aprovació de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Quina llengua estàs aprenent?",
+  "searchLanguagesHint": "Cerca llengües objectiu",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Preguntes? Som aquí per ajudar!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Alguna cosa ha anat malament, i estem treballant dur per solucionar-ho. Comprova-ho més tard.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Activar l'assistència d'escriptura",
+  "autoIGCToolDescription": "Executar automàticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinació.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "La gravació ha fallat. Si us plau, comproveu els vostres permisos d'àudio i torneu-ho a provar.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verb Phrasal",
+  "grammarCopyPOScompn": "Compost",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

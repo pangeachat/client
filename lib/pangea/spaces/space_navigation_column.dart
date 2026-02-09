@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_cont
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
+import '../../widgets/matrix.dart';
 
 class SpaceNavigationColumn extends StatefulWidget {
   final GoRouterState state;
@@ -31,38 +33,57 @@ class SpaceNavigationColumn extends StatefulWidget {
 }
 
 class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
+  bool _hovered = false;
   bool _expanded = false;
-  Timer? _debounceTimer;
+  Timer? _timer;
+  Profile? _profile;
 
   @override
-  void dispose() {
-    _debounceTimer?.cancel();
-    _debounceTimer = null;
-    super.dispose();
+  void initState() {
+    super.initState();
+    Matrix.of(context).client.fetchOwnProfile().then((profile) {
+      if (mounted) {
+        setState(() {
+          _profile = profile;
+        });
+      }
+    });
   }
 
-  void _expand() {
-    if (_debounceTimer?.isActive == true) return;
-    if (!_expanded) {
-      setState(() => _expanded = true);
-    }
-  }
-
-  void _collapse() {
-    if (_expanded) {
+  void _updateProfile(Profile profile) {
+    if (mounted) {
       setState(() {
-        _expanded = false;
-        _debounce();
+        _profile = profile;
       });
     }
   }
 
-  void _debounce() {
-    _debounceTimer?.cancel();
-    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
-      _debounceTimer?.cancel();
-      _debounceTimer = null;
-    });
+  void _onHoverUpdate(bool hovered) {
+    if (hovered == _hovered) return;
+    _hovered = hovered;
+    _cancelTimer();
+
+    if (hovered) {
+      _timer = Timer(const Duration(milliseconds: 200), () {
+        if (_hovered && mounted) {
+          setState(() => _expanded = true);
+        }
+        _cancelTimer();
+      });
+    } else {
+      setState(() => _expanded = false);
+    }
+  }
+
+  void _cancelTimer() {
+    _timer?.cancel();
+    _timer = null;
+  }
+
+  @override
+  void dispose() {
+    _cancelTimer();
+    super.dispose();
   }
 
   @override
@@ -115,7 +136,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
             HoverBuilder(
               builder: (context, hovered) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  hovered ? _expand() : _collapse();
+                  _onHoverUpdate(hovered);
                 });
 
                 return Row(
@@ -128,7 +149,12 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                           ? navRailWidth + navRailExtraWidth
                           : navRailWidth,
                       expanded: _expanded,
-                      collapse: _collapse,
+                      collapse: () {
+                        _cancelTimer();
+                        setState(() => _expanded = false);
+                      },
+                      profile: _profile,
+                      onProfileUpdate: _updateProfile,
                     ),
                     Container(
                       width: 1,

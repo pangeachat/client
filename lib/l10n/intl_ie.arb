@@ -3648,8 +3648,6 @@
   "noPaymentInfo": "Nulle information de pagamento necessari!",
   "updatePhoneOS": "Tu pote haber de actualizar la version del sistema operative de tu dispositivo",
   "wordsPerMinute": "Palabras per minutu",
-  "autoIGCToolName": "Execute automaticamente le assistent de scriber Pangea",
-  "autoIGCToolDescription": "Execute automaticamente le grammatica e traduction del chat Pangea ante de inviar mi message",
   "tooltipInstructionsTitle": "Non es secur de que isto face?",
   "tooltipInstructionsMobileBody": "Pressa e tenea items pro vider le tooltip.",
   "tooltipInstructionsBrowserBody": "Survole items pro vider le tooltip.",
@@ -4277,7 +4275,6 @@
   "numModules": "{num} modulo(s)",
   "coursePlan": "Plan de cors",
   "editCourseLater": "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.",
-  "newCourseAccess": "Per defaut, los cors es privat e require approbation del admin pro aderir. Tu pote modificar iste parametros a qualunque momento.",
   "createCourse": "Createar cors",
   "stats": "Statisticas",
   "createGroupChat": "Createar chat de gruppo",
@@ -4372,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-07 14:24:25.335678",
+  "@@last_modified": "2026-02-05 10:09:26.195275",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -7180,14 +7177,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooltipInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -9806,10 +9795,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -11797,6 +11782,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 T'adhair tú an comhrá",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Íoslódáil tosaíodh",
+  "webDownloadPermissionMessage": "Más blocann do bhrabhsálaí íoslódálacha, le do thoil, gníomhachtaigh íoslódálacha don suíomh seo.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Tua progressio sessionis exercitationis non servabitur.",
+  "practiceGrammar": "Exercitia grammatica",
+  "notEnoughToPractice": "Mitte plura nuntia ad exercitium aperiendum",
+  "constructUseCorGCDesc": "Correcta grammaticae categoriae exercitium",
+  "constructUseIncGCDesc": "Incorrecta grammaticae categoriae exercitium",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktika korrekta gramatikfehler",
+  "constructUseIncGEDesc": "Praktika inkorrekt gramatikfehler",
+  "fillInBlank": "Fyll i tomrummet med det korrekta valget",
+  "learn": "Lær",
+  "languageUpdated": "Mål sprog opdateret!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot guth",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Tua iarrtas a chaidh a chur gu rianachd a' chùrsa! Thèid thu a leigeil a-steach ma tha iad a' freagairt gu math.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "¿Tienes un código de invitación o un enlace a un curso público?",
+  "welcomeUser": "Bienvenido {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cuir fiosrúcháin ar úsáideoirí chun iad a gcuir isteach sa chomhrá seo.",
+  "publicInviteDescSpace": "Cuir fiosrúcháin ar úsáideoirí chun iad a gcuir isteach sa spás seo.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat é uma aplicação de mensagens, por isso as notificações são importantes!",
+  "enableNotificationsDesc": "Permitir notificações",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat le Tacaíocht",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig àm sam bith.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
+  "searchLanguagesHint": "Cuardaigh teangacha sprioc",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Ceisteanna? Táimid anseo chun cabhrú!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Níl aon rud ag dul i gceart, agus táimid ag obair go dian chun é a shocrú. Seiceáil arís níos déanaí.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Aktivoi kirjoitusavustaja",
+  "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Faillí an taifeadadh. Seiceáil do cheadanna gutháin agus déan iarracht arís.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Composé",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

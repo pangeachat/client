@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-07 14:23:56.196432",
+  "@@last_modified": "2026-02-05 10:09:19.675804",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -3786,8 +3786,6 @@
   "noPaymentInfo": "Nincs szükség fizetési adatokra!",
   "updatePhoneOS": "Előfordulhat, hogy frissítenie kell az eszköz operációs rendszerét.",
   "wordsPerMinute": "Szavak száma percenként",
-  "autoIGCToolName": "A Pangea írássegéd automatikus futtatása",
-  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat nyelvtani és fordítási írássegédet az üzenetem küldése előtt.",
   "tooltipInstructionsTitle": "Nem biztos benne, mit csinál ez?",
   "tooltipInstructionsMobileBody": "Hosszan nyomja meg az elemeket a súgók megtekintéséhez.",
   "tooltipInstructionsBrowserBody": "Húzza az egérrel az elemek fölé a súgók megtekintéséhez.",
@@ -4415,7 +4413,6 @@
   "numModules": "{num} modul",
   "coursePlan": "Tanfolyamterv",
   "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
-  "newCourseAccess": "Alapértelmezés szerint a tanfolyamok privátak, és admin jóváhagyását igénylik a csatlakozáshoz. Ezeket a beállításokat bármikor szerkesztheti.",
   "createCourse": "Tanfolyam létrehozása",
   "stats": "Statisztika",
   "createGroupChat": "Csoportos beszélgetés létrehozása",
@@ -6204,14 +6201,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -8833,10 +8822,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10824,6 +10809,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Elhagytad a csevegést",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Letöltés megkezdődött",
+  "webDownloadPermissionMessage": "Ha a böngésződ blokkolja a letöltéseket, kérlek engedélyezd a letöltéseket ezen az oldalon.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "A gyakorlási session előrehaladása nem lesz mentve.",
+  "practiceGrammar": "Nyelvtan gyakorlása",
+  "notEnoughToPractice": "Több üzenetet kell küldeni a gyakorlás feloldásához",
+  "constructUseCorGCDesc": "Helyes nyelvtani kategória gyakorlása",
+  "constructUseIncGCDesc": "Helytelen nyelvtani kategória gyakorlása",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Helyes nyelvtani hiba gyakorlás",
+  "constructUseIncGEDesc": "Helytelen nyelvtani hiba gyakorlás",
+  "fillInBlank": "Töltsd ki a hiányzó részt a helyes választással",
+  "learn": "Tanulj",
+  "languageUpdated": "Cél nyelv frissítve!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot hang",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "A kérésed el lett küldve a kurzus adminisztrátorának! Be fogsz engedni, ha jóváhagyják.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Van meghívó kódod vagy linked egy nyilvános kurzushoz?",
+  "welcomeUser": "Üdvözöljük {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Keresd meg a felhasználókat, hogy meghívd őket erre a csevegésre.",
+  "publicInviteDescSpace": "Keresd meg a felhasználókat, hogy meghívd őket erre a térre.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "A Pangea Chat egy üzenetküldő alkalmazás, így a értesítések fontosak!",
+  "enableNotificationsDesc": "Értesítések engedélyezése",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Csevegés a Támogatással",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Alapértelmezés szerint a kurzusok nyilvánosan kereshetők, és adminisztrátori jóváhagyás szükséges a csatlakozáshoz. Ezeket a beállításokat bármikor módosíthatja.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Milyen nyelvet tanulsz?",
+  "searchLanguagesHint": "Keresd a célnyelveket",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Kérdése van? Itt vagyunk, hogy segítsünk!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Valami hiba történt, és keményen dolgozunk a javításon. Kérlek, nézd meg később.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Írássegítő engedélyezése",
+  "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "A felvétel nem sikerült. Kérjük, ellenőrizze az audio engedélyeit, és próbálja újra.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idióma",
+  "grammarCopyPOSphrasalv": "Frazális ige",
+  "grammarCopyPOScompn": "Összetett",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

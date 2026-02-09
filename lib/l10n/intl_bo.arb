@@ -3621,8 +3621,6 @@
   "translationTooltip": "འབྲེལ་བའི་སྒྲོམ",
   "updatePhoneOS": "ཁྱེད་ཀྱི་རྒྱུན་ལས་སྤྱོད་ལམ་ལ་བསྐུར་བྱེད་དགོས་མིན་པ",
   "wordsPerMinute": "ཚིག་ལ་སྤྱོད་ལམ་ལ་བརྟེན་",
-  "autoIGCToolName": "ཕན་ཚུལ་ལས་འགན་སྤྱོད་ལས་སྤྱོད་ལམ་ལ་བརྟེན་",
-  "autoIGCToolDescription": "ཁྱེད་ཀྱི་དུས་སྐབས་སྤྱོད་ལམ་ལ་བརྟེན་པའི་ཕན་ཚུལ་ལས་འགན་སྤྱོད་ལས་སྤྱོད་ལམ་ལ་བརྟེན་",
   "tooltipInstructionsTitle": "དེ་ལ་གང་འདྲ་ཡོད་པ?",
   "tooltipInstructionsMobileBody": "རྟེན་འབྲེལ་དང་བསྟན་པའི་རྟེན་འབྲེལ་ལ་ལོག་བརྟེན་",
   "tooltipInstructionsBrowserBody": "རྟེན་འབྲེལ་ལ་ལོག་བརྟེན་",
@@ -4211,7 +4209,6 @@
   "numModules": "{num} ᠪᠣᠯᠣᠰ",
   "coursePlan": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "editCourseLater": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
-  "newCourseAccess": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "createCourse": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "stats": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "createGroupChat": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
@@ -4279,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-07 14:27:54.438001",
+  "@@last_modified": "2026-02-05 10:10:06.262776",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -6722,14 +6719,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoIGCToolDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -9183,10 +9172,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@createCourse": {
     "type": "String",
     "placeholders": {}
@@ -10577,6 +10562,180 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Oi saíste do chat",
+  "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download initiated",
+  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ndae bɔkɔɔ a wopɛ no, wo nsɛm a wopɛ sɛ woyɛ no bɛyɛ a, ɛrenyɛ.",
+  "practiceGrammar": "Bɔ mmara",
+  "notEnoughToPractice": "Sɛ wopɛ sɛ woyɛ bɔ mmara a, fa nsɛm pii to mu",
+  "constructUseCorGCDesc": "Nokware mmara kategorie bɔ mmara",
+  "constructUseIncGCDesc": "Nnokwa mmara kategorie bɔ mmara",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktik kesalahan tata bahasa yang benar",
+  "constructUseIncGEDesc": "Praktik kesalahan tata bahasa yang salah",
+  "fillInBlank": "Isi kekosongan dengan pilihan yang benar",
+  "learn": "Belajar",
+  "languageUpdated": "Bahasa target diperbarui!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot voz",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Yor requst has been sent to course admin! Yu'll be let in if dey approve.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Do you have an invite code or link to a public course?",
+  "welcomeUser": "Welcome {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Searc for users to invite them to this chat.",
+  "publicInviteDescSpace": "Searc for users to invite them to this space.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
+  "enableNotificationsDesc": "Dozvoli obaveštenja",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
+  "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat with Support",
+  "@chatWithSupport": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "newCourseAccess": "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.",
+  "@newCourseAccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "onboardingLanguagesTitle": "Kedua bahasa apa yang Anda pelajari?",
+  "searchLanguagesHint": "Cari bahasa target",
+  "@onboardingLanguagesTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@searchLanguagesHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "supportSubtitle": "Pytania? Jesteśmy tutaj, aby pomóc!",
+  "@supportSubtitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseLoadingError": "Nǐng bǐng wǒng, yǐng wǒng bǐng wǒng. Cǐng bǐng yǐng bǐng.",
+  "@courseLoadingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoIGCToolName": "Buka bantuan nulis",
+  "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+  "@autoIGCToolName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@autoIGCToolDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Compound",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

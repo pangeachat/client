@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher_string.dart';
@@ -22,7 +23,8 @@ class SubscriptionManagement extends StatefulWidget {
       SubscriptionManagementController();
 }
 
-class SubscriptionManagementController extends State<SubscriptionManagement> {
+class SubscriptionManagementController extends State<SubscriptionManagement>
+    with WidgetsBindingObserver {
   final SubscriptionController subscriptionController =
       MatrixState.pangeaController.subscriptionController;
 
@@ -31,6 +33,9 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    _refreshSubscription();
+
     if (!subscriptionController.initCompleter.isCompleted) {
       subscriptionController.initialize().then((_) => setState(() {}));
     }
@@ -43,9 +48,18 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     subscriptionController.subscriptionNotifier.removeListener(_onSubscribe);
     subscriptionController.removeListener(_onSubscriptionUpdate);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _refreshSubscription();
+    }
+    super.didChangeAppLifecycleState(state);
   }
 
   bool get subscriptionsAvailable =>
@@ -103,6 +117,33 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   void _onSubscriptionUpdate() => setState(() {});
   void _onSubscribe() => showSubscribedSnackbar(context);
 
+  Future<void> _refreshSubscription() async {
+    if (!kIsWeb) return;
+
+    // if the user previously clicked cancel, check if the subscription end date has changed
+    final prevEndDate = SubscriptionManagementRepo.getSubscriptionEndDate();
+    final clickedCancel =
+        SubscriptionManagementRepo.getClickedCancelSubscription();
+    if (clickedCancel == null) return;
+
+    await subscriptionController.reinitialize();
+    final newEndDate =
+        subscriptionController.currentSubscriptionInfo?.subscriptionEndDate;
+
+    if (prevEndDate != newEndDate) {
+      SubscriptionManagementRepo.removeClickedCancelSubscription();
+      SubscriptionManagementRepo.setSubscriptionEndDate(newEndDate);
+      if (mounted) setState(() {});
+      return;
+    }
+
+    // if more than 10 minutes have passed since the user clicked cancel, remove the click flag
+    if (DateTime.now().difference(clickedCancel).inMinutes >= 10) {
+      SubscriptionManagementRepo.removeClickedCancelSubscription();
+      if (mounted) setState(() {});
+    }
+  }
+
   Future<void> submitChange(
     SubscriptionDetails subscription, {
     bool isPromo = false,
@@ -130,6 +171,9 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   Future<void> onClickCancelSubscription() async {
     await SubscriptionManagementRepo.setClickedCancelSubscription();
+    await SubscriptionManagementRepo.setSubscriptionEndDate(
+      subscriptionEndDate,
+    );
     await launchMangementUrl(ManagementOption.cancel);
     if (mounted) setState(() {});
   }
