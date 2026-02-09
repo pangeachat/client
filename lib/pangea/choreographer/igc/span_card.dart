@@ -8,9 +8,9 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import '../../../widgets/matrix.dart';
@@ -35,8 +35,7 @@ class SpanCard extends StatefulWidget {
 }
 
 class SpanCardState extends State<SpanCard> {
-  final ValueNotifier<AsyncState<String>> _feedbackState =
-      ValueNotifier<AsyncState<String>>(const AsyncIdle<String>());
+  final ValueNotifier<bool> _feedbackState = ValueNotifier<bool>(false);
 
   final ScrollController scrollController = ScrollController();
 
@@ -56,13 +55,7 @@ class SpanCardState extends State<SpanCard> {
       widget.match.updatedMatch.match.selectedChoice;
 
   void _showFeedbackForSelection(BuildContext context) {
-    final selected = _selectedChoice;
-    if (selected != null) {
-      _feedbackState.value =
-          AsyncLoaded<String>(selected.feedbackToDisplay(context));
-    } else {
-      _feedbackState.value = const AsyncIdle<String>();
-    }
+    _feedbackState.value = !_feedbackState.value;
   }
 
   void _onChoiceSelect(int index) {
@@ -172,7 +165,13 @@ class SpanCardState extends State<SpanCard> {
                             .pangeaController.userController.userL2Code!,
                       ),
                       const SizedBox(),
-                      _SpanCardFeedback(_feedbackState),
+                      ValueListenableBuilder(
+                        valueListenable: _feedbackState,
+                        builder: (context, visible, __) => _SpanCardFeedback(
+                          widget.match.updatedMatch.match,
+                          visible,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -191,31 +190,34 @@ class SpanCardState extends State<SpanCard> {
 }
 
 class _SpanCardFeedback extends StatelessWidget {
-  final ValueNotifier<AsyncState<String>> feedbackState;
+  final SpanData? span;
+  final bool visible;
 
-  const _SpanCardFeedback(this.feedbackState);
+  const _SpanCardFeedback(this.span, this.visible);
 
   @override
   Widget build(BuildContext context) {
+    String prompt = L10n.of(context).correctionDefaultPrompt;
+    if (span != null) {
+      prompt = span!.type.defaultPrompt(context);
+    }
+
+    final defaultContent = Text(
+      prompt,
+      style: BotStyle.text(context).copyWith(
+        fontStyle: FontStyle.italic,
+      ),
+    );
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ValueListenableBuilder(
-          valueListenable: feedbackState,
-          builder: (context, state, __) {
-            return switch (state) {
-              AsyncIdle<String>() => Text(
-                  L10n.of(context).correctionDefaultPrompt,
-                  style: BotStyle.text(context).copyWith(
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              AsyncLoaded<String>(:final value) =>
-                Text(value, style: BotStyle.text(context)),
-              _ => const SizedBox.shrink(),
-            };
-          },
-        ),
+        span == null || span!.selectedChoice == null
+            ? defaultContent
+            : Text(
+                span!.selectedChoice!.feedbackToDisplay(context),
+                style: BotStyle.text(context),
+              ),
       ],
     );
   }
