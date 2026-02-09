@@ -4276,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-02-09 11:09:44.069009",
+  "@@last_modified": "2026-02-09 15:32:12.071200",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10766,6 +10766,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Izbor reči",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcija",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Tečnost",
+  "spanTypeAccents": "Akcenti",
+  "spanTypeCapitalization": "Velika slova",
+  "spanTypeCorrection": "Ispravka",
+  "spanFeedbackTitle": "Prijavi problem sa ispravkom",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -37,6 +37,7 @@ class InputBar extends StatelessWidget {
   final PangeaTextController? controller;
   final Choreographer choreographer;
   final VoidCallback showNextMatch;
+  final Future Function(String) onFeedbackSubmitted;
   // Pangea#
   final InputDecoration decoration;
   final ValueChanged<String>? onChanged;
@@ -60,6 +61,7 @@ class InputBar extends StatelessWidget {
     // #Pangea
     required this.choreographer,
     required this.showNextMatch,
+    required this.onFeedbackSubmitted,
     // Pangea#
     super.key,
   });
@@ -426,6 +428,7 @@ class InputBar extends StatelessWidget {
         choreographer,
         context,
         showNextMatch,
+        onFeedbackSubmitted,
       );
 
       // rebuild the text field to highlight the newly selected match
@@ -468,9 +471,9 @@ class InputBar extends StatelessWidget {
       focusNode: focusNode,
       textEditingController: controller,
       optionsBuilder: getSuggestions,
-      fieldViewBuilder: (context, __, focusNode, _) => ValueListenableBuilder(
-        valueListenable: choreographer.itController.open,
-        builder: (context, _, __) {
+      fieldViewBuilder: (context, __, focusNode, _) => ListenableBuilder(
+        listenable: choreographer,
+        builder: (context, _) {
           return TextField(
             controller: controller,
             focusNode: focusNode,

@@ -2461,7 +2461,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-09 11:09:14.553223",
+  "@@last_modified": "2026-02-09 15:31:19.119268",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12093,6 +12093,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Izbira besed",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcija",
+  "spanTypeStyle": "Slog",
+  "spanTypeFluency": "Sposobnost",
+  "spanTypeAccents": "Naglaski",
+  "spanTypeCapitalization": "Velike začetnice",
+  "spanTypeCorrection": "Popravek",
+  "spanFeedbackTitle": "Poročilo o težavi s popravkom",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

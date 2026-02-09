@@ -2591,7 +2591,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-02-09 11:10:02.292014",
+  "@@last_modified": "2026-02-09 15:32:39.485983",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12042,6 +12042,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "გრამატიკა",
+  "spanTypeWordChoice": "სიტყვების არჩევანი",
+  "spanTypeSpelling": "წერა",
+  "spanTypePunctuation": "ნიშნის გამოყენება",
+  "spanTypeStyle": "სტილი",
+  "spanTypeFluency": "მიმდინარე",
+  "spanTypeAccents": "აქცენტები",
+  "spanTypeCapitalization": "დიდი ასოები",
+  "spanTypeCorrection": "კორექტირება",
+  "spanFeedbackTitle": "შეტყობინება კორექტირების პრობლემაზე",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

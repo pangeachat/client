@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:57.785827",
+  "@@last_modified": "2026-02-09 15:32:34.842172",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12101,6 +12101,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatiko",
+  "spanTypeWordChoice": "Vortelekto",
+  "spanTypeSpelling": "Ortografio",
+  "spanTypePunctuation": "Punkto",
+  "spanTypeStyle": "Stilo",
+  "spanTypeFluency": "Flueco",
+  "spanTypeAccents": "Akcentoj",
+  "spanTypeCapitalization": "Kapitaligo",
+  "spanTypeCorrection": "Korektado",
+  "spanFeedbackTitle": "Raporti korektadon",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

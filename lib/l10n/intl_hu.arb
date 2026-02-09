@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-09 11:08:47.162355",
+  "@@last_modified": "2026-02-09 15:30:44.809310",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11013,6 +11013,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Nyelvtan",
+  "spanTypeWordChoice": "Szóválasztás",
+  "spanTypeSpelling": "Helyesírás",
+  "spanTypePunctuation": "Írásjelek",
+  "spanTypeStyle": "Stílus",
+  "spanTypeFluency": "Folyékonyság",
+  "spanTypeAccents": "Akcentusok",
+  "spanTypeCapitalization": "Nagybetűs írás",
+  "spanTypeCorrection": "Javítás",
+  "spanFeedbackTitle": "Javítási probléma jelentése",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

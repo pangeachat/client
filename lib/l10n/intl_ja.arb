@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-09 11:09:54.188816",
+  "@@last_modified": "2026-02-09 15:32:29.891676",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11802,6 +11802,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "文法",
+  "spanTypeWordChoice": "単語の選択",
+  "spanTypeSpelling": "スペル",
+  "spanTypePunctuation": "句読点",
+  "spanTypeStyle": "スタイル",
+  "spanTypeFluency": "流暢さ",
+  "spanTypeAccents": "アクセント",
+  "spanTypeCapitalization": "大文字化",
+  "spanTypeCorrection": "修正",
+  "spanFeedbackTitle": "修正の問題を報告する",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

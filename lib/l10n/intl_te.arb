@@ -1917,7 +1917,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-02-09 11:09:36.591690",
+  "@@last_modified": "2026-02-09 15:31:58.761810",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12101,6 +12101,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "వ్యాకరణం",
+  "spanTypeWordChoice": "పద ఎంపిక",
+  "spanTypeSpelling": "అక్షరరూపం",
+  "spanTypePunctuation": "పంక్తి చిహ్నాలు",
+  "spanTypeStyle": "శైలి",
+  "spanTypeFluency": "ప్రవాహం",
+  "spanTypeAccents": "ఉచ్చారణలు",
+  "spanTypeCapitalization": "పెద్ద అక్షరాలు",
+  "spanTypeCorrection": "సరిదిద్దు",
+  "spanFeedbackTitle": "సరిదిద్దు సమస్యను నివేదించండి",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

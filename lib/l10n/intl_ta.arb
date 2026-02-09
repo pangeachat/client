@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:41.597668",
+  "@@last_modified": "2026-02-09 15:32:06.841503",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11236,6 +11236,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "இயல்பியல்",
+  "spanTypeWordChoice": "சொல் தேர்வு",
+  "spanTypeSpelling": "எழுத்துப்பிழை",
+  "spanTypePunctuation": "இணைச்சொல்",
+  "spanTypeStyle": "அழகு",
+  "spanTypeFluency": "தரிசனம்",
+  "spanTypeAccents": "உயர்த்தல்கள்",
+  "spanTypeCapitalization": "முதலெழுத்து",
+  "spanTypeCorrection": "திருத்தம்",
+  "spanFeedbackTitle": "திருத்தப் பிரச்சினையைப் புகாரளிக்கவும்",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

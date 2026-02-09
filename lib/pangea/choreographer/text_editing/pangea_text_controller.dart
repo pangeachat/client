@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/autocorrect_span.dart';
-import 'package:fluffychat/pangea/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -34,19 +35,13 @@ class PangeaTextController extends TextEditingController {
       );
 
   Color _underlineColor(PangeaMatch match) {
+    // Automatic corrections use primary color
     if (match.status == PangeaMatchStatusEnum.automatic) {
-      return const Color.fromARGB(187, 132, 96, 224);
+      return AppConfig.primaryColor.withAlpha(180);
     }
 
-    switch (match.match.rule?.id ?? "unknown") {
-      case MatchRuleIdModel.interactiveTranslation:
-        return const Color.fromARGB(187, 132, 96, 224);
-      case MatchRuleIdModel.tokenNeedsTranslation:
-      case MatchRuleIdModel.tokenSpanNeedsTranslation:
-        return const Color.fromARGB(186, 255, 132, 0);
-      default:
-        return const Color.fromARGB(149, 255, 17, 0);
-    }
+    // Use type-based coloring
+    return match.match.type.underlineColor();
   }
 
   TextStyle _textStyle(

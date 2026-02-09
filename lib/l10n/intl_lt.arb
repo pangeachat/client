@@ -3858,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-09 11:09:38.541694",
+  "@@last_modified": "2026-02-09 15:32:01.402371",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11817,6 +11817,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Žodžių pasirinkimas",
+  "spanTypeSpelling": "Rašyba",
+  "spanTypePunctuation": "Skyryba",
+  "spanTypeStyle": "Stilius",
+  "spanTypeFluency": "Sklandumas",
+  "spanTypeAccents": "Akcentai",
+  "spanTypeCapitalization": "Didžiųjų raidžių naudojimas",
+  "spanTypeCorrection": "Korekcija",
+  "spanFeedbackTitle": "Pranešti apie korekcijos problemą",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

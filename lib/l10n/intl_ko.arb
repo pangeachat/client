@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:08:39.290513",
+  "@@last_modified": "2026-02-09 15:30:29.458374",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11120,6 +11120,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "문법",
+  "spanTypeWordChoice": "단어 선택",
+  "spanTypeSpelling": "철자",
+  "spanTypePunctuation": "구두점",
+  "spanTypeStyle": "스타일",
+  "spanTypeFluency": "유창성",
+  "spanTypeAccents": "억양",
+  "spanTypeCapitalization": "대문자 사용",
+  "spanTypeCorrection": "수정",
+  "spanFeedbackTitle": "수정 문제 보고",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }
