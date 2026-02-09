@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-09 11:09:45.374826",
+  "@@last_modified": "2026-02-09 15:32:14.219030",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11003,6 +11003,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "语法",
+  "spanTypeWordChoice": "用词选择",
+  "spanTypeSpelling": "拼写",
+  "spanTypePunctuation": "标点",
+  "spanTypeStyle": "风格",
+  "spanTypeFluency": "流利度",
+  "spanTypeAccents": "口音",
+  "spanTypeCapitalization": "大写",
+  "spanTypeCorrection": "更正",
+  "spanFeedbackTitle": "报告更正问题",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

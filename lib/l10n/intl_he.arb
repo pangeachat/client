@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:08:56.858820",
+  "@@last_modified": "2026-02-09 15:31:01.183623",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12061,6 +12061,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "דקדוק",
+  "spanTypeWordChoice": "בחירת מילים",
+  "spanTypeSpelling": "איות",
+  "spanTypePunctuation": "פיסוק",
+  "spanTypeStyle": "סגנון",
+  "spanTypeFluency": "שפה רהוטה",
+  "spanTypeAccents": "הטעמה",
+  "spanTypeCapitalization": "הגדלת אותיות",
+  "spanTypeCorrection": "תיקון",
+  "spanFeedbackTitle": "דווח על בעיית תיקון",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

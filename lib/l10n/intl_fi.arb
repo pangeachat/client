@@ -4006,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-09 11:08:44.050102",
+  "@@last_modified": "2026-02-09 15:30:38.959801",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11635,6 +11635,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Kielioppi",
+  "spanTypeWordChoice": "Sananvalinta",
+  "spanTypeSpelling": "Oikeinkirjoitus",
+  "spanTypePunctuation": "Välihuomautukset",
+  "spanTypeStyle": "Tyyli",
+  "spanTypeFluency": "Sujuvuus",
+  "spanTypeAccents": "Aksentit",
+  "spanTypeCapitalization": "Isot kirjaimet",
+  "spanTypeCorrection": "Korjaus",
+  "spanFeedbackTitle": "Ilmoita korjausongelmasta",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

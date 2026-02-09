@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:51.437329",
+  "@@last_modified": "2026-02-09 15:32:24.746342",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11490,6 +11490,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatik",
+  "spanTypeWordChoice": "Orval",
+  "spanTypeSpelling": "Stavning",
+  "spanTypePunctuation": "Interpunktion",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Flyt",
+  "spanTypeAccents": "Accenter",
+  "spanTypeCapitalization": "Versalisering",
+  "spanTypeCorrection": "Korrigering",
+  "spanFeedbackTitle": "Rapportera korrigeringsproblem",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

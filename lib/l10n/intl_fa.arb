@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:48.180617",
+  "@@last_modified": "2026-02-09 15:32:19.749220",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11744,6 +11744,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "قواعد",
+  "spanTypeWordChoice": "انتخاب واژه",
+  "spanTypeSpelling": "هجی",
+  "spanTypePunctuation": "نقطه‌گذاری",
+  "spanTypeStyle": "سبک",
+  "spanTypeFluency": "روانی",
+  "spanTypeAccents": "لهجه‌ها",
+  "spanTypeCapitalization": "حروف بزرگ",
+  "spanTypeCorrection": "تصحیح",
+  "spanFeedbackTitle": "گزارش مشکل تصحیح",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:24.612806",
+  "@@last_modified": "2026-02-09 15:31:37.024931",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11036,6 +11036,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramàtica",
+  "spanTypeWordChoice": "Elecció de paraules",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Puntuació",
+  "spanTypeStyle": "Estil",
+  "spanTypeFluency": "Fluïdesa",
+  "spanTypeAccents": "Accents",
+  "spanTypeCapitalization": "Majúscules",
+  "spanTypeCorrection": "Correcció",
+  "spanFeedbackTitle": "Informar d'un problema de correcció",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

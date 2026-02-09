@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 11:09:17.051102",
+  "@@last_modified": "2026-02-09 15:31:23.943569",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11015,6 +11015,56 @@
     "placeholders": {}
   },
   "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatica",
+  "spanTypeWordChoice": "Scelta delle parole",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Punteggiatura",
+  "spanTypeStyle": "Stile",
+  "spanTypeFluency": "Fluidità",
+  "spanTypeAccents": "Accenti",
+  "spanTypeCapitalization": "Capitalizzazione",
+  "spanTypeCorrection": "Correzione",
+  "spanFeedbackTitle": "Segnala problema di correzione",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }
