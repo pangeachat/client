@@ -1,6 +1,5 @@
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
-
 import 'match_rule_id_model.dart';
 import 'span_data_model.dart';
 
@@ -28,7 +27,8 @@ class PangeaMatch {
     // Check if this is V1 format (has "match" wrapper) or V2 format (flat SpanData)
     final bool isV1Format = json[_matchKey] is Map<String, dynamic>;
 
-    final Map<String, dynamic> spanJson = isV1Format ? json[_matchKey] as Map<String, dynamic> : json;
+    final Map<String, dynamic> spanJson =
+        isV1Format ? json[_matchKey] as Map<String, dynamic> : json;
 
     return PangeaMatch(
       match: SpanData.fromJson(
@@ -51,7 +51,8 @@ class PangeaMatch {
   static const _statusKey = "status";
 
   bool get isITStart =>
-      match.rule?.id == MatchRuleIdModel.interactiveTranslation || match.type == ReplacementTypeEnum.itStart;
+      match.rule?.id == MatchRuleIdModel.interactiveTranslation ||
+      match.type == ReplacementTypeEnum.itStart;
 
   bool get _needsTranslation => match.rule?.id != null
       ? [

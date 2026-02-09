@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/autocorrect_span.dart';
@@ -8,9 +12,6 @@ import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../choreographer.dart';
 import 'edit_type_enum.dart';
 
@@ -36,7 +37,7 @@ class PangeaTextController extends TextEditingController {
   Color _underlineColor(PangeaMatch match, BuildContext context) {
     // Automatic corrections use primary color
     if (match.status == PangeaMatchStatusEnum.automatic) {
-      return AppConfig.primaryColor.withOpacity(0.7);
+      return AppConfig.primaryColor.withAlpha(180);
     }
 
     // Use type-based coloring
@@ -55,7 +56,8 @@ class PangeaTextController extends TextEditingController {
     }
 
     final alpha = (255 * opacityFactor).round();
-    final style = _underlineStyle(_underlineColor(match, context).withAlpha(alpha));
+    final style =
+        _underlineStyle(_underlineColor(match, context).withAlpha(alpha));
     return existingStyle?.merge(style) ?? style;
   }
 
@@ -67,7 +69,10 @@ class PangeaTextController extends TextEditingController {
   void _onTextChanged() {
     final diff = text.characters.length - _currentText.characters.length;
     if (diff > 1 && editType == EditTypeEnum.keyboard) {
-      final pastedText = text.characters.skip(_currentText.characters.length).take(diff).join();
+      final pastedText = text.characters
+          .skip(_currentText.characters.length)
+          .take(diff)
+          .join();
       choreographer.onPaste(pastedText);
     }
     _currentText = text;
@@ -99,7 +104,8 @@ class PangeaTextController extends TextEditingController {
     TextStyle? style,
     required bool withComposing,
   }) {
-    final subscription = MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+    final subscription =
+        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (subscription == SubscriptionStatus.shouldShowPaywall) {
       return _buildPaywallSpan(style);
@@ -150,7 +156,8 @@ class PangeaTextController extends TextEditingController {
           .toString();
 
       return AutocorrectSpan(
-        transformTargetId: "autocorrection_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
+        transformTargetId:
+            "autocorrection_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
         currentText: span,
         originalText: originalText,
         onUndo: () => _onUndo(match),
@@ -174,7 +181,8 @@ class PangeaTextController extends TextEditingController {
       ...choreographer.igcController.openMatches,
       ...choreographer.igcController.recentAutomaticCorrections,
     ]..sort(
-        (a, b) => a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
+        (a, b) =>
+            a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
       );
 
     final currentText = choreographer.igcController.currentText!;
@@ -183,11 +191,14 @@ class PangeaTextController extends TextEditingController {
 
     for (final match in textSpanMatches) {
       if (cursor < match.updatedMatch.match.offset) {
-        final text = currentText.characters.getRange(cursor, match.updatedMatch.match.offset).toString();
+        final text = currentText.characters
+            .getRange(cursor, match.updatedMatch.match.offset)
+            .toString();
         spans.add(TextSpan(text: text, style: defaultStyle));
       }
 
-      final openMatch = choreographer.igcController.currentlyOpenMatch?.updatedMatch.match;
+      final openMatch =
+          choreographer.igcController.currentlyOpenMatch?.updatedMatch.match;
       final style = _textStyle(
         match.updatedMatch,
         defaultStyle,
@@ -198,13 +209,16 @@ class PangeaTextController extends TextEditingController {
       );
 
       spans.add(_buildMatchSpan(match, style));
-      cursor = match.updatedMatch.match.offset + match.updatedMatch.match.length;
+      cursor =
+          match.updatedMatch.match.offset + match.updatedMatch.match.length;
     }
 
     if (cursor < currentText.characters.length) {
       spans.add(
         TextSpan(
-          text: currentText.characters.getRange(cursor, currentText.characters.length).toString(),
+          text: currentText.characters
+              .getRange(cursor, currentText.characters.length)
+              .toString(),
           style: defaultStyle,
         ),
       );

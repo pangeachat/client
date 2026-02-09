@@ -1,5 +1,6 @@
-import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 
 void main() {
   group('IGCResponseModel.fromJson', () {
@@ -32,7 +33,8 @@ void main() {
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
 
       expect(response.matches.length, 1);
-      expect(response.matches[0].match.fullText, 'I want to know the United States');
+      expect(response.matches[0].match.fullText,
+          'I want to know the United States');
     });
 
     test('match full_text takes precedence over originalInput', () {
@@ -110,7 +112,11 @@ void main() {
           {
             // V2 format: flat SpanData, no "match" wrapper
             'choices': [
-              {'value': 'Me encanta', 'type': 'bestCorrection', 'feedback': 'Use "encantar" for expressing love'},
+              {
+                'value': 'Me encanta',
+                'type': 'bestCorrection',
+                'feedback': 'Use "encantar" for expressing love'
+              },
             ],
             'offset': 0,
             'length': 8,
@@ -157,7 +163,11 @@ void main() {
         'matches': [
           {
             'choices': [
-              {'value': 'voy', 'type': 'bestCorrection', 'feedback': 'Use conjugated form'},
+              {
+                'value': 'voy',
+                'type': 'bestCorrection',
+                'feedback': 'Use conjugated form'
+              },
             ],
             'offset': 7,
             'length': 2,
@@ -225,7 +235,8 @@ void main() {
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
 
       expect(response.matches.length, 1);
-      expect(response.matches[0].match.bestChoice?.feedback, 'Add accent to past participle');
+      expect(response.matches[0].match.bestChoice?.feedback,
+          'Add accent to past participle');
     });
   });
 }

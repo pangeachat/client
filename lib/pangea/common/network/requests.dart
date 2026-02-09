@@ -1,9 +1,11 @@
 import 'dart:convert';
 
-import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
+
+import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 
 class Requests {
   late String? accessToken;
@@ -34,7 +36,8 @@ class Requests {
   }
 
   Future<http.Response> get({required String url}) async {
-    final http.Response response = await http.get(Uri.parse(url), headers: _headers);
+    final http.Response response =
+        await http.get(Uri.parse(url), headers: _headers);
 
     handleError(response);
     return response;

@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:async/async.dart';
+
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
@@ -22,8 +25,6 @@ import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/material.dart';
-
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
 import 'it/it_controller.dart';
@@ -105,17 +106,23 @@ class Choreographer extends ChangeNotifier {
       },
     );
 
-    _languageSub ??= MatrixState.pangeaController.userController.languageStream.stream.listen((update) {
+    _languageSub ??= MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((update) {
       clear();
     });
 
-    _settingsUpdateSub ??= MatrixState.pangeaController.userController.settingsUpdateStream.stream.listen((_) {
+    _settingsUpdateSub ??= MatrixState
+        .pangeaController.userController.settingsUpdateStream.stream
+        .listen((_) {
       notifyListeners();
     });
 
-    _acceptedContinuanceSub ??= itController.acceptedContinuanceStream.stream.listen(_onAcceptContinuance);
+    _acceptedContinuanceSub ??= itController.acceptedContinuanceStream.stream
+        .listen(_onAcceptContinuance);
 
-    _updatedMatchSub ??= igcController.matchUpdateStream.stream.listen(_onUpdateMatch);
+    _updatedMatchSub ??=
+        igcController.matchUpdateStream.stream.listen(_onUpdateMatch);
   }
 
   void clear() {
@@ -200,7 +207,9 @@ class Choreographer extends ChangeNotifier {
       return;
     }
     // update assistance state from no message => not fetched and vice versa
-    if (_lastChecked == null || _lastChecked!.trim().isEmpty || textController.text.trim().isEmpty) {
+    if (_lastChecked == null ||
+        _lastChecked!.trim().isEmpty ||
+        textController.text.trim().isEmpty) {
       notifyListeners();
     }
 
@@ -215,7 +224,8 @@ class Choreographer extends ChangeNotifier {
     _lastChecked = textController.text;
     if (errorService.isError) return;
     if (textController.editType == EditTypeEnum.keyboard) {
-      if (igcController.currentText != null || itController.sourceText.value != null) {
+      if (igcController.currentText != null ||
+          itController.sourceText.value != null) {
         igcController.clear();
         itController.clearSourceText();
         notifyListeners();
@@ -236,16 +246,21 @@ class Choreographer extends ChangeNotifier {
     // @ggurdin - attempting to allow re-running when the user is not satisfied with the result.
     // i'm a little unsure what the different states are here
     // Allow re-running if not fetched OR if complete (no open matches remaining)
-    if (assistanceState != AssistanceStateEnum.notFetched && assistanceState != AssistanceStateEnum.complete) {
+    if (assistanceState != AssistanceStateEnum.notFetched &&
+        assistanceState != AssistanceStateEnum.complete) {
       return;
     }
-    final SubscriptionStatus canSendStatus = MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+    final SubscriptionStatus canSendStatus =
+        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed ||
         MatrixState.pangeaController.userController.userL2 == null ||
         MatrixState.pangeaController.userController.userL1 == null ||
-        (!ToolSetting.interactiveGrammar.enabled && !ToolSetting.interactiveTranslator.enabled) ||
-        (!ToolSetting.autoIGC.enabled && !manual && _choreoMode != ChoreoModeEnum.it) ||
+        (!ToolSetting.interactiveGrammar.enabled &&
+            !ToolSetting.interactiveTranslator.enabled) ||
+        (!ToolSetting.autoIGC.enabled &&
+            !manual &&
+            _choreoMode != ChoreoModeEnum.it) ||
         _backoffRequest(_lastIgcError, _igcErrorBackoff)) {
       return;
     }
@@ -294,9 +309,13 @@ class Choreographer extends ChangeNotifier {
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
-    final l2LangCode = MatrixState.pangeaController.userController.userL2?.langCode;
-    final l1LangCode = MatrixState.pangeaController.userController.userL1?.langCode;
-    if (l1LangCode != null && l2LangCode != null && !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
+    final l2LangCode =
+        MatrixState.pangeaController.userController.userL2?.langCode;
+    final l1LangCode =
+        MatrixState.pangeaController.userController.userL1?.langCode;
+    if (l1LangCode != null &&
+        l2LangCode != null &&
+        !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
       final res = await TokensRepo.get(
         MatrixState.pangeaController.userController.accessToken,
         TokensRequestModel(
@@ -322,7 +341,8 @@ class Choreographer extends ChangeNotifier {
       tokensResp = res.isValue ? res.result : null;
     }
 
-    final hasOriginalWritten = _record.includedIT && itController.sourceText.value != null;
+    final hasOriginalWritten =
+        _record.includedIT && itController.sourceText.value != null;
 
     return PangeaMessageContentModel(
       message: message,
@@ -353,7 +373,8 @@ class Choreographer extends ChangeNotifier {
     inputFocus.unfocus();
     final itMatch = igcController.openMatches.firstWhere(
       (match) => match.updatedMatch.isITStart,
-      orElse: () => throw Exception("Attempted to open IT without an ITStart match"),
+      orElse: () =>
+          throw Exception("Attempted to open IT without an ITStart match"),
     );
 
     igcController.clear();
@@ -368,7 +389,9 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onCloseIT() {
-    if (itController.dismissed && currentText.isEmpty && itController.sourceText.value != null) {
+    if (itController.dismissed &&
+        currentText.isEmpty &&
+        itController.sourceText.value != null) {
       textController.setSystemText(
         itController.sourceText.value!,
         EditTypeEnum.itDismissed,
@@ -420,7 +443,8 @@ class Choreographer extends ChangeNotifier {
         );
       case PangeaMatchStatusEnum.undo:
         _record.choreoSteps.removeWhere(
-          (step) => step.acceptedOrIgnoredMatch?.match == match.updatedMatch.match,
+          (step) =>
+              step.acceptedOrIgnoredMatch?.match == match.updatedMatch.match,
         );
       default:
         throw Exception("Unhandled match status: ${match.updatedMatch.status}");

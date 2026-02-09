@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 enum ReplacementTypeEnum {
   // Client-specific types
@@ -247,7 +249,8 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
         return L10n.of(context).practiceDefaultPrompt;
       case ReplacementTypeEnum.itStart:
         return L10n.of(context).needsItMessage(
-          MatrixState.pangeaController.userController.userL2?.getDisplayName(context) ??
+          MatrixState.pangeaController.userController.userL2
+                  ?.getDisplayName(context) ??
               L10n.of(context).targetLanguage,
         );
       // All grammar types and other corrections use the same default prompt
@@ -261,24 +264,24 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
   Color underlineColor(BuildContext context) {
     // IT start and auto-apply types use primary color
     if (this == ReplacementTypeEnum.itStart || isAutoApply) {
-      return AppConfig.primaryColor.withOpacity(0.7);
+      return AppConfig.primaryColor.withAlpha(180);
     }
     // Grammar errors use warning/orange
     if (isGrammarType) {
-      return AppConfig.warning.withOpacity(0.7);
+      return AppConfig.warning.withAlpha(180);
     }
     // Word choice uses blue
     if (isWordChoiceType) {
-      return Colors.blue.withOpacity(0.7);
+      return Colors.blue.withAlpha(180);
     }
     // Style and fluency use teal
     switch (this) {
       case ReplacementTypeEnum.style:
       case ReplacementTypeEnum.fluency:
-        return Colors.teal.withOpacity(0.7);
+        return Colors.teal.withAlpha(180);
       default:
         // Other/unknown use error color
-        return Theme.of(context).colorScheme.error.withOpacity(0.7);
+        return Theme.of(context).colorScheme.error.withAlpha(180);
     }
   }
 

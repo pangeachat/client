@@ -1,19 +1,20 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/choreographer/igc/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class IgcController {
   final Function(Object) onError;
@@ -32,23 +33,27 @@ class IgcController {
   final List<PangeaMatchState> _openMatches = [];
   final List<PangeaMatchState> _closedMatches = [];
 
-  StreamController<PangeaMatchState> matchUpdateStream = StreamController.broadcast();
+  StreamController<PangeaMatchState> matchUpdateStream =
+      StreamController.broadcast();
 
   String? get currentText => _currentText;
   List<PangeaMatchState> get openMatches => _openMatches;
 
-  List<PangeaMatchState> get recentAutomaticCorrections => _closedMatches.reversed
-      .takeWhile(
-        (m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic,
-      )
-      .toList();
+  List<PangeaMatchState> get recentAutomaticCorrections =>
+      _closedMatches.reversed
+          .takeWhile(
+            (m) => m.updatedMatch.status == PangeaMatchStatusEnum.automatic,
+          )
+          .toList();
 
-  List<PangeaMatchState> get openAutomaticMatches =>
-      _openMatches.where((match) => match.updatedMatch.match.isNormalizationError()).toList();
+  List<PangeaMatchState> get openAutomaticMatches => _openMatches
+      .where((match) => match.updatedMatch.match.isNormalizationError())
+      .toList();
 
   PangeaMatchState? get currentlyOpenMatch {
     final RegExp pattern = RegExp(r'span_card_overlay_.+');
-    final String? matchingKey = MatrixState.pAnyState.getMatchingOverlayKeys(pattern).firstOrNull;
+    final String? matchingKey =
+        MatrixState.pAnyState.getMatchingOverlayKeys(pattern).firstOrNull;
     if (matchingKey == null) return null;
 
     final parts = matchingKey.split('_');
@@ -58,7 +63,9 @@ class IgcController {
     if (offset == null || length == null) return null;
 
     return _openMatches.firstWhereOrNull(
-      (match) => match.updatedMatch.match.offset == offset && match.updatedMatch.match.length == length,
+      (match) =>
+          match.updatedMatch.match.offset == offset &&
+          match.updatedMatch.match.length == length,
     );
   }
 
@@ -75,8 +82,6 @@ class IgcController {
         enableIT: true,
         prevMessages: prevMessages,
       );
-
-
 
   void dispose() {
     matchUpdateStream.close();
@@ -105,7 +110,8 @@ class IgcController {
     }
   }
 
-  PangeaMatchState? getMatchByOffset(int offset) => _openMatches.firstWhereOrNull(
+  PangeaMatchState? getMatchByOffset(int offset) =>
+      _openMatches.firstWhereOrNull(
         (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
       );
 
@@ -203,7 +209,8 @@ class IgcController {
     final replacement = matchState.originalMatch.match.fullText.characters
         .getRange(
           matchState.originalMatch.match.offset,
-          matchState.originalMatch.match.offset + matchState.originalMatch.match.length,
+          matchState.originalMatch.match.offset +
+              matchState.originalMatch.match.length,
         )
         .toString();
 
@@ -282,7 +289,9 @@ class IgcController {
         final match = matchState.updatedMatch.match;
         final updatedMatch = match.copyWith(
           fullText: _currentText,
-          offset: match.offset > offset ? match.offset + replacement.characters.length - length : match.offset,
+          offset: match.offset > offset
+              ? match.offset + replacement.characters.length - length
+              : match.offset,
         );
         matchState.setMatch(updatedMatch);
       }
@@ -347,7 +356,8 @@ class IgcController {
     debugPrint('_lastRequest: $_lastRequest, _lastResponse: $_lastResponse');
     if (_lastRequest == null || _lastResponse == null) {
       ErrorHandler.logError(
-        e: StateError('rerunWithFeedback called without prior request/response'),
+        e: StateError(
+            'rerunWithFeedback called without prior request/response'),
         data: {
           'hasLastRequest': _lastRequest != null,
           'hasLastResponse': _lastResponse != null,
@@ -381,7 +391,8 @@ class IgcController {
 
     // Create request with feedback attached
     final requestWithFeedback = _lastRequest!.copyWithFeedback([feedback]);
-    debugPrint('requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}');
+    debugPrint(
+        'requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}');
     debugPrint('requestWithFeedback.hashCode: ${requestWithFeedback.hashCode}');
     debugPrint('_lastRequest.hashCode: ${_lastRequest!.hashCode}');
     debugPrint('Calling IgcRepo.get...');
@@ -433,5 +444,4 @@ class IgcController {
     onFetch();
     return true;
   }
-
 }

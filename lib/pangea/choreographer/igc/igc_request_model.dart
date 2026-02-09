@@ -55,7 +55,8 @@ class IGCRequestModel with BaseRequestModel {
       ModelKey.enableIT: enableIT,
       ModelKey.enableIGC: enableIGC,
       ModelKey.userId: userId,
-      ModelKey.prevMessages: jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
+      ModelKey.prevMessages:
+          jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
     };
     if (feedback.isNotEmpty) {
       json[ModelKey.feedback] = feedback.map((f) => f.toJson()).toList();
@@ -79,7 +80,8 @@ class IGCRequestModel with BaseRequestModel {
   }
 
   /// Hash of feedback content for cache differentiation
-  int get _feedbackHash => feedback.isEmpty ? 0 : Object.hashAll(feedback.map((f) => f.feedback));
+  int get _feedbackHash =>
+      feedback.isEmpty ? 0 : Object.hashAll(feedback.map((f) => f.feedback));
 
   @override
   int get hashCode => Object.hash(
@@ -106,10 +108,13 @@ class PreviousMessage {
     required this.timestamp,
   });
 
-  factory PreviousMessage.fromJson(Map<String, dynamic> json) => PreviousMessage(
+  factory PreviousMessage.fromJson(Map<String, dynamic> json) =>
+      PreviousMessage(
         content: json[ModelKey.prevContent] ?? "",
         sender: json[ModelKey.prevSender] ?? "",
-        timestamp: json[ModelKey.prevTimestamp] == null ? DateTime.now() : DateTime.parse(json[ModelKey.prevTimestamp]),
+        timestamp: json[ModelKey.prevTimestamp] == null
+            ? DateTime.now()
+            : DateTime.parse(json[ModelKey.prevTimestamp]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -124,7 +129,9 @@ class PreviousMessage {
 
     if (other is! PreviousMessage) return false;
 
-    return content == other.content && sender == other.sender && timestamp == other.timestamp;
+    return content == other.content &&
+        sender == other.sender &&
+        timestamp == other.timestamp;
   }
 
   @override

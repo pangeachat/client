@@ -1,8 +1,9 @@
-import 'package:collection/collection.dart';
-import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
+
+import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'replacement_type_enum.dart';
 import 'span_choice_type_enum.dart';
 
@@ -59,13 +60,16 @@ class SpanData {
     String? parentFullText,
   }) {
     final Iterable? choices = json['choices'] ?? json['replacements'];
-    final dynamic rawType = json['type'] ?? json['type_name'] ?? json['typeName'];
+    final dynamic rawType =
+        json['type'] ?? json['type_name'] ?? json['typeName'];
     final String? typeString = rawType is Map<String, dynamic>
-        ? (rawType['type_name'] ?? rawType['type'] ?? rawType['typeName']) as String?
+        ? (rawType['type_name'] ?? rawType['type'] ?? rawType['typeName'])
+            as String?
         : rawType as String?;
 
     // Try to get fullText from span JSON, fall back to parent's original_input
-    final String? spanFullText = json['sentence'] ?? json['full_text'] ?? json['fullText'];
+    final String? spanFullText =
+        json['sentence'] ?? json['full_text'] ?? json['fullText'];
     final String fullText = spanFullText ?? parentFullText ?? '';
 
     return SpanData(
@@ -79,8 +83,11 @@ class SpanData {
       offset: json['offset'] as int,
       length: json['length'] as int,
       fullText: fullText,
-      type: SpanDataTypeEnumExt.fromString(typeString) ?? ReplacementTypeEnum.other,
-      rule: json['rule'] != null ? Rule.fromJson(json['rule'] as Map<String, dynamic>) : null,
+      type: SpanDataTypeEnumExt.fromString(typeString) ??
+          ReplacementTypeEnum.other,
+      rule: json['rule'] != null
+          ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
+          : null,
     );
   }
 
@@ -111,7 +118,8 @@ class SpanData {
     return data;
   }
 
-  bool isOffsetInMatchSpan(int offset) => offset >= this.offset && offset <= this.offset + length;
+  bool isOffsetInMatchSpan(int offset) =>
+      offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull(
@@ -127,7 +135,9 @@ class SpanData {
     SpanChoice? mostRecent;
     for (int i = 0; i < choices!.length; i++) {
       final choice = choices![i];
-      if (choice.timestamp != null && (mostRecent == null || choice.timestamp!.isAfter(mostRecent.timestamp!))) {
+      if (choice.timestamp != null &&
+          (mostRecent == null ||
+              choice.timestamp!.isAfter(mostRecent.timestamp!))) {
         mostRecent = choice;
       }
     }
@@ -142,7 +152,8 @@ class SpanData {
     return choices![index];
   }
 
-  String get errorSpan => fullText.characters.skip(offset).take(length).toString();
+  String get errorSpan =>
+      fullText.characters.skip(offset).take(length).toString();
 
   /// Whether this span is a minor correction that should be auto-applied.
   /// Returns true if:
@@ -161,11 +172,13 @@ class SpanData {
         )
         ?.value;
 
-    final l2Code = MatrixState.pangeaController.userController.userL2?.langCodeShort;
+    final l2Code =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return correctChoice != null &&
         l2Code != null &&
-        normalizeString(correctChoice, l2Code) == normalizeString(errorSpan, l2Code);
+        normalizeString(correctChoice, l2Code) ==
+            normalizeString(errorSpan, l2Code);
   }
 
   @override
@@ -194,7 +207,9 @@ class SpanData {
     return message.hashCode ^
         shortMessage.hashCode ^
         Object.hashAll(
-          (choices ?? []).sorted((a, b) => b.value.compareTo(a.value)).map((choice) => choice.hashCode),
+          (choices ?? [])
+              .sorted((a, b) => b.value.compareTo(a.value))
+              .map((choice) => choice.hashCode),
         ) ^
         offset.hashCode ^
         length.hashCode ^
@@ -246,7 +261,8 @@ class SpanChoice {
           : SpanChoiceTypeEnum.suggestion,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
-      timestamp: json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
+      timestamp:
+          json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
     );
   }
 
@@ -294,7 +310,11 @@ class SpanChoice {
 
   @override
   int get hashCode {
-    return value.hashCode ^ type.hashCode ^ selected.hashCode ^ feedback.hashCode ^ timestamp.hashCode;
+    return value.hashCode ^
+        type.hashCode ^
+        selected.hashCode ^
+        feedback.hashCode ^
+        timestamp.hashCode;
   }
 }
 

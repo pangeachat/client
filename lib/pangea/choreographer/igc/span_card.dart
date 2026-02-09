@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -9,9 +13,6 @@ import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
 
@@ -32,7 +33,8 @@ class SpanCard extends StatefulWidget {
 }
 
 class SpanCardState extends State<SpanCard> {
-  final ValueNotifier<AsyncState<String>> _feedbackState = ValueNotifier<AsyncState<String>>(const AsyncIdle<String>());
+  final ValueNotifier<AsyncState<String>> _feedbackState =
+      ValueNotifier<AsyncState<String>>(const AsyncIdle<String>());
 
   final ScrollController scrollController = ScrollController();
 
@@ -48,12 +50,14 @@ class SpanCardState extends State<SpanCard> {
     super.dispose();
   }
 
-  SpanChoice? get _selectedChoice => widget.match.updatedMatch.match.selectedChoice;
+  SpanChoice? get _selectedChoice =>
+      widget.match.updatedMatch.match.selectedChoice;
 
   void _showFeedbackForSelection(BuildContext context) {
     final selected = _selectedChoice;
     if (selected != null) {
-      _feedbackState.value = AsyncLoaded<String>(selected.feedbackToDisplay(context));
+      _feedbackState.value =
+          AsyncLoaded<String>(selected.feedbackToDisplay(context));
     } else {
       _feedbackState.value = const AsyncIdle<String>();
     }
@@ -94,7 +98,8 @@ class SpanCardState extends State<SpanCard> {
         onSubmit: (feedbackText) async {
           Navigator.of(context).pop();
           setState(() {});
-          final success = await widget.choreographer.rerunWithFeedback(feedbackText);
+          final success =
+              await widget.choreographer.rerunWithFeedback(feedbackText);
           if (mounted && success) {
             setState(() {});
           }
@@ -161,9 +166,11 @@ class SpanCardState extends State<SpanCard> {
                             )
                             .toList(),
                         onPressed: (value, index) => _onChoiceSelect(index),
-                        selectedChoiceIndex: widget.match.updatedMatch.match.selectedChoiceIndex,
+                        selectedChoiceIndex:
+                            widget.match.updatedMatch.match.selectedChoiceIndex,
                         id: widget.match.hashCode.toString(),
-                        langCode: MatrixState.pangeaController.userController.userL2Code!,
+                        langCode: MatrixState
+                            .pangeaController.userController.userL2Code!,
                       ),
                       const SizedBox(),
                       _SpanCardFeedback(_feedbackState),
@@ -204,7 +211,8 @@ class _SpanCardFeedback extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                   ),
                 ),
-              AsyncLoaded<String>(:final value) => Text(value, style: BotStyle.text(context)),
+              AsyncLoaded<String>(:final value) =>
+                Text(value, style: BotStyle.text(context)),
               _ => const SizedBox.shrink(),
             };
           },
@@ -240,7 +248,8 @@ class _SpanCardButtons extends StatelessWidget {
               opacity: 0.8,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary.withAlpha(25),
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primary.withAlpha(25),
                 ),
                 onPressed: onIgnore,
                 child: Center(
@@ -255,7 +264,9 @@ class _SpanCardButtons extends StatelessWidget {
               child: TextButton(
                 onPressed: selectedChoice != null ? onAccept : null,
                 style: TextButton.styleFrom(
-                  backgroundColor: (selectedChoice?.color ?? Theme.of(context).colorScheme.primary).withAlpha(50),
+                  backgroundColor: (selectedChoice?.color ??
+                          Theme.of(context).colorScheme.primary)
+                      .withAlpha(50),
                   side: selectedChoice != null
                       ? BorderSide(
                           color: selectedChoice!.color,

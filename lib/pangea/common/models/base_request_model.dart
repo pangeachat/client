@@ -19,7 +19,8 @@ mixin BaseRequestModel {
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
         ModelKey.cefrLevel: userCefr,
-        ModelKey.userGender: MatrixState.pangeaController.userController.profile.userSettings.gender.string,
+        ModelKey.userGender: MatrixState
+            .pangeaController.userController.profile.userSettings.gender.string,
       };
 
   /// Injects user context (CEFR level, gender) into a request body.
@@ -28,7 +29,8 @@ mixin BaseRequestModel {
   static Map<String, dynamic> injectUserContext(Map<dynamic, dynamic> body) {
     final result = Map<String, dynamic>.from(body);
     try {
-      final settings = MatrixState.pangeaController.userController.profile.userSettings;
+      final settings =
+          MatrixState.pangeaController.userController.profile.userSettings;
       result[ModelKey.cefrLevel] ??= settings.cefrLevel.string;
       result[ModelKey.userGender] ??= settings.gender.string;
     } catch (_) {
