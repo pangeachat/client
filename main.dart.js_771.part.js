@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Kh\xf4ng c\xf3 y\xeau c\u1ea7u ho\u1ea1t \u0111\u1ed9ng n\xe0o hi\u1ec7n t\u1ea1i.";
     },
-    get$quit() {
-      return "Tho\xe1t";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Ch\xfac m\u1eebng! B\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh bu\u1ed5i th\u1ef1c h\xe0nh.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "C\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a ch\u1ee7 \u0111\u1ec1 ti\u1ebfp theo";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ghi \xe2m kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng ki\u1ec3m tra quy\u1ec1n truy c\u1eadp \xe2m thanh c\u1ee7a b\u1ea1n v\xe0 th\u1eed l\u1ea1i.";
     },
+    get$perfectPractice() {
+      return "Th\u1ef1c h\xe0nh ho\xe0n h\u1ea3o!";
+    },
+    get$greatPractice() {
+      return "Th\u1ef1c h\xe0nh tuy\u1ec7t v\u1eddi!";
+    },
+    get$usedNoHints() {
+      return "L\xe0m t\u1ed1t l\u1eafm khi kh\xf4ng s\u1eed d\u1ee5ng b\u1ea5t k\u1ef3 g\u1ee3i \xfd n\xe0o!";
+    },
+    get$youveCompletedPractice() {
+      return "B\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh th\u1ef1c h\xe0nh, h\xe3y ti\u1ebfp t\u1ee5c \u0111\u1ec3 c\u1ea3i thi\u1ec7n!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cTu7UGAOVvVKyKrNq+X1WJFM+lI="] = d.current;
+  d["7DQuTRlJ94+EPI6gp0iUm+GpPh0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Ninguna solicitud de actividad actual.";
     },
-    get$quit() {
-      return "Salir";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\xa1Felicidades! Has completado la sesi\xf3n de pr\xe1ctica.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Gn\xedomha\xedochta\xed le hOscail an Conradh Nua";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Faill\xed an taifeadadh. Seice\xe1il do cheadanna guth\xe1in agus d\xe9an iarracht ar\xeds.";
     },
+    get$perfectPractice() {
+      return "Praktika perfekt!";
+    },
+    get$greatPractice() {
+      return "Praktika granda!";
+    },
+    get$usedNoHints() {
+      return "Bonega laboro ne uzante iujn indicojn!";
+    },
+    get$youveCompletedPractice() {
+      return "Vi kompletigis la praktikon, da\u016drigu por pliboni\u011di!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["X4wgMpwfvlBRU25kzHLKBtlkmBM="] = d.current;
+  d["K0pjg2wRknll1u8ckrZxpn6rZjY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

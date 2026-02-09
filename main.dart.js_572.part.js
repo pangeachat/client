@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Ez dago egungo jarduera eskaerarik.";
     },
-    get$quit() {
-      return "Irten";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Zorionak! Praktika saioa amaitu duzu.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Hurrengo gaia irekitzeko jarduerak";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Grabaketa huts egin da. Mesedez, egiaztatu zure audio baimenak eta saiatu berriro.";
     },
+    get$perfectPractice() {
+      return "Praktika perfektua!";
+    },
+    get$greatPractice() {
+      return "Praktika handia!";
+    },
+    get$usedNoHints() {
+      return "Lan ona, ez duzu inolako iradokizunik erabili!";
+    },
+    get$youveCompletedPractice() {
+      return "Praktika amaitu duzu, jarraitu horrela hobetzeko!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5384,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lRS7ojWGtpCx1E7w9F/+uBJPW4A="] = d.current;
+  d["ElI4bVzcuJQ4kO0obxcG1h8BJHU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_572.part.js.map

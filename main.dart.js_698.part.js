@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Tidak ada permintaan aktivitas saat ini.";
     },
-    get$quit() {
-      return "Keluar";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Selamat! Anda telah menyelesaikan sesi latihan.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Kegiatan untuk Membuka Topik Berikutnya";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
     },
+    get$perfectPractice() {
+      return "Latihan yang sempurna!";
+    },
+    get$greatPractice() {
+      return "Latihan yang hebat!";
+    },
+    get$usedNoHints() {
+      return "Kerja bagus tidak menggunakan petunjuk!";
+    },
+    get$youveCompletedPractice() {
+      return "Anda telah menyelesaikan latihan, teruskan untuk menjadi lebih baik!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5384,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v22uTf3tDc+KKTbbLsjD3WuXx3k="] = d.current;
+  d["QRqwqolcYIohyIFPR9aVCn0Jwmc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_698.part.js.map

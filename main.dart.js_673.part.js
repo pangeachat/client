@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Jelenleg nincs aktivit\xe1s k\xe9r\xe9s.";
     },
-    get$quit() {
-      return "Kil\xe9p\xe9s";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Gratul\xe1lunk! Befejezted a gyakorl\xf3 \xfcl\xe9st.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Tev\xe9kenys\xe9gek a k\xf6vetkez\u0151 t\xe9ma felold\xe1s\xe1hoz";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A felv\xe9tel nem siker\xfclt. K\xe9rj\xfck, ellen\u0151rizze az audio enged\xe9lyeit, \xe9s pr\xf3b\xe1lja \xfajra.";
     },
+    get$perfectPractice() {
+      return "T\xf6k\xe9letes gyakorl\xe1s!";
+    },
+    get$greatPractice() {
+      return "Nagyszer\u0171 gyakorl\xe1s!";
+    },
+    get$usedNoHints() {
+      return "J\xf3 munka, hogy nem haszn\xe1lt\xe1l semmilyen tippet!";
+    },
+    get$youveCompletedPractice() {
+      return "Befejezted a gyakorl\xe1st, folytasd \xedgy, hogy jobb legy\xe9l!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1qTlS+SLF584ObJo8LCh77IadZI="] = d.current;
+  d["6CYstWjteYIsuzWAQ67qG9TLvTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_673.part.js.map

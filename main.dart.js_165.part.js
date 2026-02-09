@@ -5259,12 +5259,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Ninguna solicitud de actividad actual.";
     },
-    get$quit() {
-      return "Salir";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\xa1Felicidades! Has completado la sesi\xf3n de pr\xe1ctica.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktiviteti p\xebr t\xeb \xc7liruar Tem\xebn Tjet\xebr";
     },
@@ -5370,6 +5364,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$perfectPractice() {
+      return "Perfekta praktik!";
+    },
+    get$greatPractice() {
+      return "Stora praktik!";
+    },
+    get$usedNoHints() {
+      return "Bra jobbat utan att anv\xe4nda n\xe5gra ledtr\xe5dar!";
+    },
+    get$youveCompletedPractice() {
+      return "Du har slutf\xf6rt praktiken, forts\xe4tt s\xe5 f\xf6r att bli b\xe4ttre!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5395,7 +5401,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PVTp+lKJTCwl5iRCftULMr0MTR0="] = d.current;
+  d["r7hzM+TBTpQVl/prEYQ5XZSPrWg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_165.part.js.map

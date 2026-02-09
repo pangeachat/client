@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Trenutno ni zahtevka za aktivnost.";
     },
-    get$quit() {
-      return "Izhod";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\u010cestitamo! Zaklju\u010dili ste vadbeno sejo.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Dejavnosti za odklepanje naslednje teme";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Zapisovanje ni uspelo. Preverite svoje avdio dovoljenja in poskusite znova.";
     },
+    get$perfectPractice() {
+      return "Popolna praksa!";
+    },
+    get$greatPractice() {
+      return "Super praksa!";
+    },
+    get$usedNoHints() {
+      return "Odli\u010dno, da niste uporabili nobenih namigov!";
+    },
+    get$youveCompletedPractice() {
+      return "Zaklju\u010dili ste prakso, nadaljujte tako, da boste bolj\u0161i!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ad16v7+s77ITjPKgglt16NC6x/8="] = d.current;
+  d["Ql8m9CWOTy1VA5sT/CsXaImMHAc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

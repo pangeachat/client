@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "\u73fe\u5728\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u30ea\u30af\u30a8\u30b9\u30c8\u306f\u3042\u308a\u307e\u305b\u3093\u3002";
     },
-    get$quit() {
-      return "\u7d42\u4e86";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\u304a\u3081\u3067\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01\u7df4\u7fd2\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "\u6b21\u306e\u30c8\u30d4\u30c3\u30af\u3092\u30a2\u30f3\u30ed\u30c3\u30af\u3059\u308b\u305f\u3081\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9332\u97f3\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u30aa\u30fc\u30c7\u30a3\u30aa\u306e\u6a29\u9650\u3092\u78ba\u8a8d\u3057\u3066\u3001\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$perfectPractice() {
+      return "\u5b8c\u74a7\u306a\u7df4\u7fd2\uff01";
+    },
+    get$greatPractice() {
+      return "\u7d20\u6674\u3089\u3057\u3044\u7df4\u7fd2\uff01";
+    },
+    get$usedNoHints() {
+      return "\u30d2\u30f3\u30c8\u3092\u4f7f\u308f\u305a\u306b\u3088\u304f\u3084\u3063\u305f\uff01";
+    },
+    get$youveCompletedPractice() {
+      return "\u7df4\u7fd2\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u3053\u308c\u3092\u7d9a\u3051\u3066\u4e0a\u9054\u3057\u3066\u304f\u3060\u3055\u3044\uff01";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vCyZnv0KeWt5cTJRd8ObzV/EBy4="] = d.current;
+  d["R1CBQ65rJHDbQLcPZI52pALD6lU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

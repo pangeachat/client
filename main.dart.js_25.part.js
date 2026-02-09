@@ -5269,12 +5269,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Nenhum pedido de atividade atual.";
     },
-    get$quit() {
-      return "Sair";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return string$.Parab_;
-    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
@@ -5379,6 +5373,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$perfectPractice() {
+      return "Pr\xe1tica perfeita!";
+    },
+    get$greatPractice() {
+      return "\xd3tima pr\xe1tica!";
+    },
+    get$usedNoHints() {
+      return "Bom trabalho em n\xe3o usar dicas!";
+    },
+    get$youveCompletedPractice() {
+      return string$.Voc__c;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10623,12 +10629,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Nenhum pedido de atividade atual.";
     },
-    get$quit() {
-      return "Sair";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return string$.Parab_;
-    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
@@ -10733,6 +10733,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "Grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$perfectPractice() {
+      return "Pr\xe1tica perfeita!";
+    },
+    get$greatPractice() {
+      return "\xd3tima pr\xe1tica!";
+    },
+    get$usedNoHints() {
+      return "Bom trabalho n\xe3o usando dicas!";
+    },
+    get$youveCompletedPractice() {
+      return string$.Voc__c;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15977,12 +15989,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Nenhum pedido de atividade atual.";
     },
-    get$quit() {
-      return "Sair";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return string$.Parab_;
-    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
@@ -16087,6 +16093,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$perfectPractice() {
+      return "Pr\xe1tica perfeita!";
+    },
+    get$greatPractice() {
+      return "\xd3tima pr\xe1tica!";
+    },
+    get$usedNoHints() {
+      return "Bom trabalho em n\xe3o usar dicas!";
+    },
+    get$youveCompletedPractice() {
+      return string$.Voc__c;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16230,7 +16248,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Para_a: "Para a melhor experi\xeancia ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
     Para_m: "Para mensagens de voz, voc\xea pode ver uma transcri\xe7\xe3o, bem como a pontua\xe7\xe3o de Palavras Por Minuto do falante.",
     Para_q: "Para quem voc\xea quer reportar esta mensagem?",
-    Parab_: "Parab\xe9ns! Voc\xea completou a sess\xe3o de pr\xe1tica.",
     Parece: "Parece que n\xe3o \xe9 um servidor principal compat\xedvel. URL incorreta?",
     Permis: "Permiss\xe3o negada. Ative as permiss\xf5es de grava\xe7\xe3o para gravar mensagens de \xe1udio.",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
@@ -16280,6 +16297,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__a: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
+    Voc__c: "Voc\xea completou a pr\xe1tica, continue assim para melhorar!",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
     Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
     Voc__j: "Voc\xea j\xe1 est\xe1 em um curso com este plano. Voc\xea quer criar um curso com o mesmo plano ou ir para o curso existente?",
@@ -16296,7 +16314,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H6/2/mXiMBfWLx+g5s0hZlXNAH0="] = d.current;
+  d["dXLvcCHBkLqDJSZTQhyeI5vwILk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -5258,12 +5258,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "\u0644\u0627 \u064a\u0648\u062c\u062f \u0637\u0644\u0628 \u0646\u0634\u0627\u0637 \u062d\u0627\u0644\u064a.";
     },
-    get$quit() {
-      return "\u062e\u0631\u0648\u062c";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\u062a\u0647\u0627\u0646\u064a\u0646\u0627! \u0644\u0642\u062f \u0623\u0643\u0645\u0644\u062a \u062c\u0644\u0633\u0629 \u0627\u0644\u062a\u062f\u0631\u064a\u0628.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "\u0627\u0644\u0623\u0646\u0634\u0637\u0629 \u0644\u0641\u062a\u062d \u0627\u0644\u0645\u0648\u0636\u0648\u0639 \u0627\u0644\u062a\u0627\u0644\u064a";
     },
@@ -5369,6 +5363,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u0641\u0634\u0644 \u0627\u0644\u062a\u0633\u062c\u064a\u0644. \u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0623\u0630\u0648\u0646\u0627\u062a \u0627\u0644\u0635\u0648\u062a \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643 \u0648\u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
     },
+    get$perfectPractice() {
+      return "\u0645\u0645\u0627\u0631\u0633\u0629 \u0645\u062b\u0627\u0644\u064a\u0629!";
+    },
+    get$greatPractice() {
+      return "\u0645\u0645\u0627\u0631\u0633\u0629 \u0631\u0627\u0626\u0639\u0629!";
+    },
+    get$usedNoHints() {
+      return "\u0639\u0645\u0644 \u0631\u0627\u0626\u0639 \u0628\u0639\u062f\u0645 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0623\u064a \u062a\u0644\u0645\u064a\u062d\u0627\u062a!";
+    },
+    get$youveCompletedPractice() {
+      return "\u0644\u0642\u062f \u0623\u0643\u0645\u0644\u062a \u0627\u0644\u0645\u0645\u0627\u0631\u0633\u0629\u060c \u0627\u0633\u062a\u0645\u0631 \u0641\u064a \u0630\u0644\u0643 \u0644\u062a\u062d\u0633\u064a\u0646 \u0645\u0647\u0627\u0631\u0627\u062a\u0643!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5382,7 +5388,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iaoemErywAg1YByL+w/a59sZcQQ="] = d.current;
+  d["ts8nVVKWrHZqCiUtdfRp8UeS2Zs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_141.part.js.map

@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Ingen n\xe5v\xe6rende aktivitetsforesp\xf8rsel.";
     },
-    get$quit() {
-      return "Avslutt";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Gratulerer! Du har fullf\xf8rt \xf8kt med \xf8velser.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktiviteter for \xe5 l\xe5se opp neste emne";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og pr\xf8v igjen.";
     },
+    get$perfectPractice() {
+      return "Perfekt \xf8velse!";
+    },
+    get$greatPractice() {
+      return "Flott \xf8velse!";
+    },
+    get$usedNoHints() {
+      return "Bra jobba med \xe5 ikke bruke noen hint!";
+    },
+    get$youveCompletedPractice() {
+      return "Du har fullf\xf8rt \xf8velsen, fortsett slik for \xe5 bli bedre!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5384,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iJS3rpfx+FIStiddz99SRfnsAu4="] = d.current;
+  d["stWOZ7v8ancBjVguQQLA8Waoqhg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

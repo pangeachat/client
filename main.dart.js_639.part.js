@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "\u05d0\u05d9\u05df \u05d1\u05e7\u05e9\u05ea \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e0\u05d5\u05db\u05d7\u05d9\u05ea.";
     },
-    get$quit() {
-      return "\u05e6\u05d0";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "\u05de\u05d6\u05dc \u05d8\u05d5\u05d1! \u05e1\u05d9\u05d9\u05de\u05ea \u05d0\u05ea \u05de\u05d5\u05e9\u05d1 \u05d4\u05d0\u05d9\u05de\u05d5\u05df.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05e4\u05ea\u05d9\u05d7\u05ea \u05e0\u05d5\u05e9\u05d0 \u05d4\u05d1\u05d0";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u05d4\u05e7\u05dc\u05d8\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4. \u05d0\u05e0\u05d0 \u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05d4\u05d0\u05d5\u05d3\u05d9\u05d5 \u05e9\u05dc\u05da \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
+    get$perfectPractice() {
+      return "\u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d5\u05e9\u05dc\u05dd!";
+    },
+    get$greatPractice() {
+      return "\u05ea\u05e8\u05d2\u05d5\u05dc \u05e0\u05d4\u05d3\u05e8!";
+    },
+    get$usedNoHints() {
+      return "\u05e2\u05d1\u05d5\u05d3\u05d4 \u05d8\u05d5\u05d1\u05d4 \u05e9\u05dc\u05d0 \u05d4\u05e9\u05ea\u05de\u05e9\u05ea \u05d1\u05e8\u05de\u05d6\u05d9\u05dd!";
+    },
+    get$youveCompletedPractice() {
+      return "\u05e1\u05d9\u05d9\u05de\u05ea \u05d0\u05ea \u05d4\u05ea\u05e8\u05d2\u05d5\u05dc, \u05d4\u05de\u05e9\u05da \u05db\u05da \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05ea\u05e4\u05e8!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pBUJuKKhy8JirzCxlzKAuMzY2Fc="] = d.current;
+  d["KZh8cveC+Z69wg1Q/PYRDVJwRRc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_639.part.js.map

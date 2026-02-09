@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "\u017d\xe1dn\xe1 aktu\xe1ln\xed \u017e\xe1dost o aktivitu.";
     },
-    get$quit() {
-      return "Ukon\u010dit";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Gratulujeme! Dokon\u010dili jste cvi\u010debn\xed sezen\xed.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivity k odem\u010den\xed dal\u0161\xedho t\xe9matu";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1v\xe1n\xed se nezda\u0159ilo. Zkontrolujte pros\xedm sv\xe1 opr\xe1vn\u011bn\xed k audiosoubor\u016fm a zkuste to znovu.";
     },
+    get$perfectPractice() {
+      return "Dokonal\xe1 praxe!";
+    },
+    get$greatPractice() {
+      return "Skv\u011bl\xe1 praxe!";
+    },
+    get$usedNoHints() {
+      return "Dobr\xe1 pr\xe1ce, \u017ee jsi nepou\u017eil \u017e\xe1dn\xe9 n\xe1pov\u011bdy!";
+    },
+    get$youveCompletedPractice() {
+      return "Dokon\u010dil jsi praxi, pokra\u010duj v tom, abys se zlep\u0161il!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Emw9CR7sEVpBbSRnuM4v+2/k9Ws="] = d.current;
+  d["UjUJwZuFIiN8uy1YiTSKYiLWCPM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

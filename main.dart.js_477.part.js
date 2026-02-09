@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Neniu aktuala aktivitecpeticio.";
     },
-    get$quit() {
-      return "Eliri";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Gratulojn! Vi kompletigis la praktikadon.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivecoj por Mal\u015dlosi Sekvan Temon";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Registrado malsukcesis. Bonvolu kontroli viajn a\u016ddajn permesojn kaj provi denove.";
     },
+    get$perfectPractice() {
+      return "Perfekta praktiko!";
+    },
+    get$greatPractice() {
+      return "Granda praktiko!";
+    },
+    get$usedNoHints() {
+      return "Bonega laboro ne uzi iujn sugestojn!";
+    },
+    get$youveCompletedPractice() {
+      return "Vi finis la praktikon, da\u016drigu por pliboni\u011di!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WVB29T/bPaLC+5bR+wd3z8BSf7Q="] = d.current;
+  d["Q2TUhLbL43K2tdgUlBywqiYvC38="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_477.part.js.map

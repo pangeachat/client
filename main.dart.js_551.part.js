@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Praegu ei ole aktiivsuse taotlust.";
     },
-    get$quit() {
-      return "V\xe4lju";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Palju \xf5nne! Olete l\xf5petanud harjut seansi.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Tegevused j\xe4rgmise teema avamiseks";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Salvestamine eba\xf5nnestus. Palun kontrollige oma heli\xf5igusi ja proovige uuesti.";
     },
+    get$perfectPractice() {
+      return "T\xe4iuslik harjutamine!";
+    },
+    get$greatPractice() {
+      return "Suurep\xe4rane harjutamine!";
+    },
+    get$usedNoHints() {
+      return "Hea t\xf6\xf6, et ei kasutanud mingeid vihjeid!";
+    },
+    get$youveCompletedPractice() {
+      return "Oled harjutamise l\xf5petanud, j\xe4tka samas vaimus, et paremaks saada!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Mego6cjJwjH4IeI2XyYaQS7ZfAE="] = d.current;
+  d["CStThGoOha4GE8WE2ypnqRBDR3c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_551.part.js.map

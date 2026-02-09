@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Nav pa\u0161reiz\u0113jo aktivit\u0101\u0161u piepras\u012bjumu.";
     },
-    get$quit() {
-      return "Iziet";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Apsveicam! J\u016bs esat pabeidzis prakses sesiju.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivit\u0101tes, lai atblo\u0137\u0113tu n\u0101kamo t\u0113mu";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ieraksts neizdev\u0101s. L\u016bdzu, p\u0101rbaudiet savas audio at\u013caujas un m\u0113\u0123iniet v\u0113lreiz.";
     },
+    get$perfectPractice() {
+      return "Lieliska prakse!";
+    },
+    get$greatPractice() {
+      return "Lieliska prakse!";
+    },
+    get$usedNoHints() {
+      return "Lieliski, ka neizmantoji nevienu padomu!";
+    },
+    get$youveCompletedPractice() {
+      return "Tu esi pabeidzis praksi, turpini t\u0101d\u0101 gar\u0101, lai uzlabotos!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tgg40gYm+3PlsLh+rCMb+gMHB3Y="] = d.current;
+  d["ReWKA+8Ek5AcGGVscD5S6dyZZQA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

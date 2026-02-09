@@ -5258,12 +5258,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Brak bie\u017c\u0105cego \u017c\u0105dania aktywno\u015bci.";
     },
-    get$quit() {
-      return "Zako\u0144cz";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Gratulacje! Uko\u0144czy\u0142e\u015b sesj\u0119 \u0107wicze\u0144.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktywno\u015bci do odblokowania nast\u0119pnego tematu";
     },
@@ -5369,6 +5363,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nagrywanie nie powiod\u0142o si\u0119. Sprawd\u017a swoje uprawnienia audio i spr\xf3buj ponownie.";
     },
+    get$perfectPractice() {
+      return "Idealna praktyka!";
+    },
+    get$greatPractice() {
+      return "\u015awietna praktyka!";
+    },
+    get$usedNoHints() {
+      return "Dobra robota, \u017ce nie korzysta\u0142e\u015b z \u017cadnych wskaz\xf3wek!";
+    },
+    get$youveCompletedPractice() {
+      return "Uko\u0144czy\u0142e\u015b praktyk\u0119, kontynuuj, aby si\u0119 poprawi\u0107!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5382,7 +5388,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OBBMq484SSBQ89Wq8EaN1NvxJVw="] = d.current;
+  d["PRxprQ/bfSYtHGsiBok9MVGDTFI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_743.part.js.map

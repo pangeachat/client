@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "N\xedl aon iarratas gn\xedomha\xedochta reatha.";
     },
-    get$quit() {
-      return "D\xedcheangail";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Comhghairdeas! T\xe1 an seisi\xfan cleachtaidh cr\xedochnaithe agat.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Gn\xedomha\xedochta\xed le hOscail an Topaic Seo chugainn";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Theip ar an taifeadadh. Seice\xe1il do cheadanna guth\xe1in le do thoil agus d\xe9an iarracht ar\xeds.";
     },
+    get$perfectPractice() {
+      return "Cleachtadh foirfe!";
+    },
+    get$greatPractice() {
+      return "Cleachtadh iontach!";
+    },
+    get$usedNoHints() {
+      return "Obair mhaith gan aon leideanna a \xfas\xe1id!";
+    },
+    get$youveCompletedPractice() {
+      return "T\xe1 do chleachtadh cr\xedochnaithe, coinnigh ort chun feabhs\xfa!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5384,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+MztVuTzJuOpsGVa65E+2eG19e0="] = d.current;
+  d["c1zDbK0m/onZ11l5SafHBTB9Hlw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_623.part.js.map

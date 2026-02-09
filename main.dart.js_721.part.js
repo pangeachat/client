@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "N\u0117ra dabartinio veiklos pra\u0161ymo.";
     },
-    get$quit() {
-      return "I\u0161eiti";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Sveikiname! J\u016bs baig\u0117te praktikos sesij\u0105.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Veiklos, kad atrakintum\u0117te kit\u0105 tem\u0105";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u012era\u0161ymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kart\u0105.";
     },
+    get$perfectPractice() {
+      return "Tobulas praktika!";
+    },
+    get$greatPractice() {
+      return "Puiki praktika!";
+    },
+    get$usedNoHints() {
+      return "Puikus darbas, kad nenaudojote joki\u0173 u\u017euomin\u0173!";
+    },
+    get$youveCompletedPractice() {
+      return "J\u016bs baig\u0117te praktik\u0105, t\u0119skite, kad taptum\u0117te geresni!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5384,7 +5390,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3qKVi2JUSGNZr37qdu/Gr24/VGU="] = d.current;
+  d["Llh56nITbbUN47vEhO4QAC82v3w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

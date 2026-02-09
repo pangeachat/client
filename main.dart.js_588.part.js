@@ -5257,12 +5257,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noActivityRequest() {
       return "Ei nykyist\xe4 aktiviteettipyynt\xf6\xe4.";
     },
-    get$quit() {
-      return "Poistu";
-    },
-    get$congratulationsYouveCompletedPractice() {
-      return "Onnittelut! Olet suorittanut harjoitussession.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Toiminnot seuraavan aiheen avaamiseksi";
     },
@@ -5368,6 +5362,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xc4\xe4nityksen tallentaminen ep\xe4onnistui. Tarkista \xe4\xe4nioikeutesi ja yrit\xe4 uudelleen.";
     },
+    get$perfectPractice() {
+      return "T\xe4ydellinen harjoittelu!";
+    },
+    get$greatPractice() {
+      return "Loistava harjoittelu!";
+    },
+    get$usedNoHints() {
+      return "Hyv\xe4 ty\xf6, ettet k\xe4ytt\xe4nyt mit\xe4\xe4n vihjeit\xe4!";
+    },
+    get$youveCompletedPractice() {
+      return "Olet suorittanut harjoituksen, jatka samaan malliin parantuaksesi!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5381,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RPwMXCsVMsr1r0x4MaZdd3hVtxs="] = d.current;
+  d["MtSqE07pfCRprKN8D5jro3QEuRg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map
