@@ -5090,5 +5090,6 @@
   "perfectPractice": "Perfect practice!",
   "greatPractice": "Great practice!",
   "usedNoHints": "Nice job not using any hints!",
-  "youveCompletedPractice": "You've completed practice, keep it up to get better!"
+  "youveCompletedPractice": "You've completed practice, keep it up to get better!",
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
 }
