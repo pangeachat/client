@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "D\xe9an neamhaird";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Fan, n\xedl s\xe9 " + targetLanguage + "! An bhfuil uait cabhair le haistri\xfach\xe1n?";
+    },
     get$countryInformation() {
       return "Mo th\xedr";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "N\xedor aims\xedodh aon sonra\xed";
+    },
+    get$bestCorrectionFeedback() {
+      return "T\xe1 s\xe9 sin ceart!";
+    },
+    get$distractorFeedback() {
+      return "N\xedl s\xe9 sin go hioml\xe1n ceart.";
+    },
+    get$bestAnswerFeedback() {
+      return "T\xe1 s\xe9 sin ceart!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Cad is br\xed leis an bhfocal seo?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Cad \xe9 an freagra is fearr?";
     },
     get$correctionDefaultPrompt() {
       return "Cad \xe9 an ionad ceart?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Cuireadh cairde";
     },
-    get$failedToLoadFeedback() {
-      return "Theip ar an aiseolas a lucht\xfa.";
-    },
     get$activityStatsButtonTooltip() {
       return "Eolas gn\xedomha\xedochta";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Theip ar an taifeadadh. Seice\xe1il do cheadanna guth\xe1in le do thoil agus d\xe9an iarracht ar\xeds.";
     },
+    get$spanFeedbackTitle() {
+      return "Tuairisc a dh\xe9anamh ar fhadhb le ceart\xfa";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3G1vmdfTTmdU1phrwq+jUJ1m8Gs="] = d.current;
+  d["qaAjRLKlU+QPSefZWE5sUCC9y28="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_623.part.js.map

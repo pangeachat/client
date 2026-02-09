@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Yoksay";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Bekle, bu " + targetLanguage + " de\u011fil! \xc7eviri yard\u0131m\u0131na ihtiyac\u0131n var m\u0131?";
+    },
     get$countryInformation() {
       return "\xdclkem";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Veri bulunamad\u0131";
+    },
+    get$bestCorrectionFeedback() {
+      return "Do\u011fru!";
+    },
+    get$distractorFeedback() {
+      return "Bu pek do\u011fru de\u011fil.";
+    },
+    get$bestAnswerFeedback() {
+      return "Do\u011fru!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Bu kelimenin anlam\u0131 nedir?";
+    },
+    get$practiceDefaultPrompt() {
+      return "En iyi cevap nedir?";
     },
     get$correctionDefaultPrompt() {
       return "En iyi yerine koyma nedir?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Arkada\u015flar\u0131 davet et";
     },
-    get$failedToLoadFeedback() {
-      return "Geri bildirimi y\xfcklemek ba\u015far\u0131s\u0131z oldu.";
-    },
     get$activityStatsButtonTooltip() {
       return "Etkinlik bilgisi";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Kay\u0131t ba\u015far\u0131s\u0131z oldu. L\xfctfen ses izinlerinizi kontrol edin ve tekrar deneyin.";
     },
+    get$spanFeedbackTitle() {
+      return "D\xfczeltme sorununu bildir";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["a8Zzhhm5E/K56pbmSzVylcSF64w="] = d.current;
+  d["JLxz31UpfgNiM26HlzScs8PI80k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignore";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
+    },
     get$countryInformation() {
       return "My country";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "No data found";
+    },
+    get$bestCorrectionFeedback() {
+      return "That's correct!";
+    },
+    get$distractorFeedback() {
+      return "That's not quite right.";
+    },
+    get$bestAnswerFeedback() {
+      return "That's correct!";
+    },
+    get$definitionDefaultPrompt() {
+      return "What does this word mean?";
+    },
+    get$practiceDefaultPrompt() {
+      return "What is the best answer?";
     },
     get$correctionDefaultPrompt() {
       return "What is the best replacement?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invite friends";
     },
-    get$failedToLoadFeedback() {
-      return "Failed to load feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Activity info";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$spanFeedbackTitle() {
+      return "Report correction issue";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vDPSjAr+V4EAG1QL01YL1uLgEzM="] = d.current;
+  d["l5GRHwSncZoQmS7LMEzpwnJUT5s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_421.part.js.map

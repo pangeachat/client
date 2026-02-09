@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignor\u0103";
     },
+    needsItMessage$1(targetLanguage) {
+      return "A\u0219teapt\u0103, nu este " + targetLanguage + "! Ai nevoie de ajutor pentru traducere?";
+    },
     get$countryInformation() {
       return "\u021aara mea";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nu s-au g\u0103sit date";
+    },
+    get$bestCorrectionFeedback() {
+      return "Corect!";
+    },
+    get$distractorFeedback() {
+      return "Nu este chiar corect.";
+    },
+    get$bestAnswerFeedback() {
+      return "Corect!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Ce \xeenseamn\u0103 acest cuv\xe2nt?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Care este cel mai bun r\u0103spuns?";
     },
     get$correctionDefaultPrompt() {
       return "Care este cea mai bun\u0103 \xeenlocuire?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invit\u0103 prieteni";
     },
-    get$failedToLoadFeedback() {
-      return "\xcenc\u0103rcarea feedback-ului a e\u0219uat.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informa\u021bii despre activitate";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xcenregistrarea a e\u0219uat. V\u0103 rug\u0103m s\u0103 verifica\u021bi permisiunile audio \u0219i s\u0103 \xeencerca\u021bi din nou.";
     },
+    get$spanFeedbackTitle() {
+      return "Raporteaz\u0103 problema de corectare";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZNcboeJDkiIrilEHJOCXb2y64Qk="] = d.current;
+  d["+Q5OXtNmAqsMPDWrRLOU6aCKgqY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

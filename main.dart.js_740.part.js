@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Negeer";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Wacht, dat is niet " + targetLanguage + "! Heb je hulp nodig bij vertalen?";
+    },
     get$countryInformation() {
       return "Mijn land";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Geen gegevens gevonden";
+    },
+    get$bestCorrectionFeedback() {
+      return "Dat klopt!";
+    },
+    get$distractorFeedback() {
+      return "Dat is niet helemaal correct.";
+    },
+    get$bestAnswerFeedback() {
+      return "Dat klopt!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Wat betekent dit woord?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Wat is het beste antwoord?";
     },
     get$correctionDefaultPrompt() {
       return "Wat is de beste vervanging?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Nodig vrienden uit";
     },
-    get$failedToLoadFeedback() {
-      return "Kon feedback niet laden.";
-    },
     get$activityStatsButtonTooltip() {
       return "Activiteitsinformatie";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opname mislukt. Controleer uw audiorechten en probeer het opnieuw.";
     },
+    get$spanFeedbackTitle() {
+      return "Rapporteer correctiefout";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yeZ1ngVOeUQ8FdlVBQaDY2MHKAo="] = d.current;
+  d["2OTwHk5e6s1mVYqzkxLoT06sSpw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_740.part.js.map

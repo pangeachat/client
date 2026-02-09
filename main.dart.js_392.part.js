@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorieren";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Warte, das ist nicht " + targetLanguage + "! Bist du bei der \xdcbersetzung Hilfe n\xf6tig?";
+    },
     get$countryInformation() {
       return "Mein Land";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Keine Daten gefunden";
+    },
+    get$bestCorrectionFeedback() {
+      return "Das ist richtig!";
+    },
+    get$distractorFeedback() {
+      return "Das ist nicht ganz richtig.";
+    },
+    get$bestAnswerFeedback() {
+      return "Das ist richtig!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Was bedeutet dieses Wort?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Was ist die beste Antwort?";
     },
     get$correctionDefaultPrompt() {
       return "Was ist die beste Alternative?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Freunde einladen";
     },
-    get$failedToLoadFeedback() {
-      return "Fehler beim Laden des Feedbacks.";
-    },
     get$activityStatsButtonTooltip() {
       return "Aktivit\xe4tsinformationen";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Die Aufnahme ist fehlgeschlagen. Bitte \xfcberpr\xfcfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.";
     },
+    get$spanFeedbackTitle() {
+      return "Korrekturproblem melden";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JbldU4O0cHNsxDXo3kNSN4cAllY="] = d.current;
+  d["E+pHFuf1SpxJRkVfe2Ei0nQmcqY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_392.part.js.map

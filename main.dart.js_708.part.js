@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Aspetta, eso non es " + targetLanguage + "! Es que tu besona ayuda por traducer?";
+    },
     get$countryInformation() {
       return "Mi pais";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nulle dato trovate";
+    },
+    get$bestCorrectionFeedback() {
+      return "Qui es correct!";
+    },
+    get$distractorFeedback() {
+      return "Qui non es totali correct!";
+    },
+    get$bestAnswerFeedback() {
+      return "Qui es correct!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Ce vole dir iste parola?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Qual es le melior responsa?";
     },
     get$correctionDefaultPrompt() {
       return "Qual es le melior replacement?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invitar amics";
     },
-    get$failedToLoadFeedback() {
-      return "N\xedl an t-eolas ar f\xe1il.";
-    },
     get$activityStatsButtonTooltip() {
       return "Info aktivitas";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Faill\xed an taifeadadh. Seice\xe1il do cheadanna guth\xe1in agus d\xe9an iarracht ar\xeds.";
     },
+    get$spanFeedbackTitle() {
+      return "Informar problema de correcci\xf3n";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qqD8y4s4MAC/e9SOExdt/hYOdwc="] = d.current;
+  d["vwSh+vwH+IJGxe1psi98UOaAD14="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

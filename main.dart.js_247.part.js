@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorovat";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Po\u010dkejte, to nen\xed " + targetLanguage + "! Pot\u0159ebujete pomoc s p\u0159ekladem?";
+    },
     get$countryInformation() {
       return "Moje zem\u011b";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nebyly nalezeny \u017e\xe1dn\xe9 \xfadaje";
+    },
+    get$bestCorrectionFeedback() {
+      return "To je spr\xe1vn\u011b!";
+    },
+    get$distractorFeedback() {
+      return "To nen\xed \xfapln\u011b spr\xe1vn\xe9.";
+    },
+    get$bestAnswerFeedback() {
+      return "To je spr\xe1vn\u011b!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Co znamen\xe1 toto slovo?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Jak\xe1 je nejlep\u0161\xed odpov\u011b\u010f?";
     },
     get$correctionDefaultPrompt() {
       return "Jak\xe1 je nejlep\u0161\xed n\xe1hrada?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Pozvat p\u0159\xe1tele";
     },
-    get$failedToLoadFeedback() {
-      return "Nepoda\u0159ilo se na\u010d\xedst zp\u011btnou vazbu.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informace o aktivit\u011b";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1v\xe1n\xed se nezda\u0159ilo. Zkontrolujte pros\xedm sv\xe1 opr\xe1vn\u011bn\xed k audiosoubor\u016fm a zkuste to znovu.";
     },
+    get$spanFeedbackTitle() {
+      return "Nahl\xe1sit probl\xe9m s opravou";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YewdCRzCvp9zdjc+/JawhoaI6Ps="] = d.current;
+  d["n4CLePEJD0giojjnzEWcOelAsW0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

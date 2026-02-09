@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "\u7121\u8996";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\u5f85\u3063\u3066\u3001\u305d\u308c\u306f " + targetLanguage + " \u3067\u306f\u3042\u308a\u307e\u305b\u3093\uff01\u7ffb\u8a33\u306e\u624b\u52a9\u3051\u304c\u5fc5\u8981\u3067\u3059\u304b\uff1f";
+    },
     get$countryInformation() {
       return "\u79c1\u306e\u56fd";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "\u30c7\u30fc\u30bf\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093";
+    },
+    get$bestCorrectionFeedback() {
+      return "\u6b63\u89e3\u3067\u3059\uff01";
+    },
+    get$distractorFeedback() {
+      return "\u3061\u3087\u3063\u3068\u9055\u3044\u307e\u3059\u3002";
+    },
+    get$bestAnswerFeedback() {
+      return "\u305d\u308c\u306f\u6b63\u3057\u3044\u3067\u3059\uff01";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u3053\u306e\u5358\u8a9e\u306e\u610f\u5473\u306f\u4f55\u3067\u3059\u304b\uff1f";
+    },
+    get$practiceDefaultPrompt() {
+      return "\u6700\u826f\u306e\u7b54\u3048\u306f\u4f55\u3067\u3059\u304b\uff1f";
     },
     get$correctionDefaultPrompt() {
       return "\u6700\u826f\u306e\u7f6e\u304d\u63db\u3048\u306f\u4f55\u3067\u3059\u304b\uff1f";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "\u53cb\u9054\u3092\u62db\u5f85";
     },
-    get$failedToLoadFeedback() {
-      return "\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u306e\u8aad\u307f\u8fbc\u307f\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002";
-    },
     get$activityStatsButtonTooltip() {
       return "\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u60c5\u5831";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9332\u97f3\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u30aa\u30fc\u30c7\u30a3\u30aa\u306e\u6a29\u9650\u3092\u78ba\u8a8d\u3057\u3066\u3001\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$spanFeedbackTitle() {
+      return "\u4fee\u6b63\u306e\u554f\u984c\u3092\u5831\u544a\u3059\u308b";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4iROWEaIpW0lwbxz9P0DSgabNQc="] = d.current;
+  d["pYlsjuUyQd1TDPu9GTL/WiSU2wg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_718.part.js.map

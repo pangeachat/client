@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "\ubb34\uc2dc";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\uc7a0\uae50\ub9cc\uc694, " + targetLanguage + "\uac00 \uc544\ub2c8\uc5d0\uc694! \ubc88\uc5ed \ub3c4\uc6c0 \ud544\uc694\ud558\uc2e0\uac00\uc694?";
+    },
     get$countryInformation() {
       return "\ub0b4 \ub098\ub77c";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "\ub370\uc774\ud130\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+    },
+    get$bestCorrectionFeedback() {
+      return "\ub9de\uc2b5\ub2c8\ub2e4!";
+    },
+    get$distractorFeedback() {
+      return "\uadf8\uac74 \uc870\uae08 \ud2c0\ub838\uc5b4\uc694.";
+    },
+    get$bestAnswerFeedback() {
+      return "\ub9de\uc2b5\ub2c8\ub2e4!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\uc774 \ub2e8\uc5b4\ub294 \ubb34\uc2a8 \ub73b\uc778\uac00\uc694?";
+    },
+    get$practiceDefaultPrompt() {
+      return "\uac00\uc7a5 \uc88b\uc740 \ub2f5\ubcc0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?";
     },
     get$correctionDefaultPrompt() {
       return "\uac00\uc7a5 \uc801\uc808\ud55c \ub300\uccb4 \ub2f5\ubcc0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "\uce5c\uad6c \ucd08\ub300\ud558\uae30";
     },
-    get$failedToLoadFeedback() {
-      return "\ud53c\ub4dc\ubc31\uc744 \ubd88\ub7ec\uc624\ub294 \ub370 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4.";
-    },
     get$activityStatsButtonTooltip() {
       return "\ud65c\ub3d9 \uc815\ubcf4";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\ub179\uc74c\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc624\ub514\uc624 \uad8c\ud55c\uc744 \ud655\uc778\ud558\uace0 \ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc138\uc694.";
     },
+    get$spanFeedbackTitle() {
+      return "\uc218\uc815 \ubb38\uc81c \ubcf4\uace0";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vorxuRezZZMDiztEbdDKdPQjeCU="] = d.current;
+  d["omhSAGCKM/DXcCIEXL5jO3RPz60="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

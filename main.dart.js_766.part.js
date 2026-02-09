@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorera";
     },
+    needsItMessage$1(targetLanguage) {
+      return "V\xe4nta, det \xe4r inte " + targetLanguage + "! Beh\xf6ver du hj\xe4lp med att \xf6vers\xe4tta?";
+    },
     get$countryInformation() {
       return "Min land";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Inga data hittades";
+    },
+    get$bestCorrectionFeedback() {
+      return "Det st\xe4mmer!";
+    },
+    get$distractorFeedback() {
+      return "Det \xe4r inte helt r\xe4tt.";
+    },
+    get$bestAnswerFeedback() {
+      return "Det st\xe4mmer!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Vad betyder detta ord?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Vad \xe4r det b\xe4sta svaret?";
     },
     get$correctionDefaultPrompt() {
       return "Vad \xe4r det b\xe4sta ers\xe4ttningsordet?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Bjud in v\xe4nner";
     },
-    get$failedToLoadFeedback() {
-      return "Misslyckades med att ladda feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Aktivitetsinformation";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Inspelningen misslyckades. Kontrollera dina ljudbeh\xf6righeter och f\xf6rs\xf6k igen.";
     },
+    get$spanFeedbackTitle() {
+      return "Rapportera korrigeringsproblem";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CNkzW/hjcebbfU1ZZzPFaUtD2PE="] = d.current;
+  d["HiEzImd/sYgMLBZ8EZWz0yo/Tgo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

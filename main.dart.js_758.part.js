@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorova\u0165";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Po\u010dkaj, to nie je " + targetLanguage + "! Potrebuje\u0161 pomoc s prekladom?";
+    },
     get$countryInformation() {
       return "Moja krajina";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nena\u0161li sa \u017eiadne \xfadaje";
+    },
+    get$bestCorrectionFeedback() {
+      return "To je spr\xe1vne!";
+    },
+    get$distractorFeedback() {
+      return "To nie je \xfaplne spr\xe1vne.";
+    },
+    get$bestAnswerFeedback() {
+      return "To je spr\xe1vne!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u010co znamen\xe1 toto slovo?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Ak\xe1 je najlep\u0161ia odpove\u010f?";
     },
     get$correctionDefaultPrompt() {
       return "Ak\xe1 je najlep\u0161ia n\xe1hrada?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Pozva\u0165 priate\u013eov";
     },
-    get$failedToLoadFeedback() {
-      return "Nepodarilo sa na\u010d\xedta\u0165 sp\xe4tn\xfa v\xe4zbu.";
-    },
     get$activityStatsButtonTooltip() {
       return "Inform\xe1cie o aktivite";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1vanie zlyhalo. Skontrolujte svoje povolenia na zvuk a sk\xfaste to znova.";
     },
+    get$spanFeedbackTitle() {
+      return "Nahl\xe1si\u0165 probl\xe9m s opravou";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wHB4rBKEglMmxBXbwxYrB3IlmvE="] = d.current;
+  d["lgHgTBeY+e4sUzvfPmz6Jhv14Io="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

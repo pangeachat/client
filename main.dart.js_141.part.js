@@ -1511,6 +1511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "\u062a\u062c\u0627\u0647\u0644";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\u0627\u0646\u062a\u0638\u0631\u060c \u0647\u0630\u0627 \u0644\u064a\u0633 " + targetLanguage + "! \u0647\u0644 \u062a\u062d\u062a\u0627\u062c \u0625\u0644\u0649 \u0645\u0633\u0627\u0639\u062f\u0629 \u0641\u064a \u0627\u0644\u062a\u0631\u062c\u0645\u0629\u061f";
+    },
     get$countryInformation() {
       return "\u0628\u0644\u062f\u064a";
     },
@@ -2461,6 +2464,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "\u0644\u0645 \u064a\u062a\u0645 \u0627\u0644\u0639\u062b\u0648\u0631 \u0639\u0644\u0649 \u0628\u064a\u0627\u0646\u0627\u062a";
+    },
+    get$bestCorrectionFeedback() {
+      return "\u0647\u0630\u0627 \u0635\u062d\u064a\u062d!";
+    },
+    get$distractorFeedback() {
+      return "\u0644\u064a\u0633 \u062a\u0645\u0627\u0645\u064b\u0627 \u0635\u062d\u064a\u062d\u064b\u0627.";
+    },
+    get$bestAnswerFeedback() {
+      return "\u0647\u0630\u0627 \u0635\u062d\u064a\u062d!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u0645\u0627\u0630\u0627 \u064a\u0639\u0646\u064a \u0647\u0630\u0627 \u0627\u0644\u0643\u0644\u0645\u0629\u061f";
+    },
+    get$practiceDefaultPrompt() {
+      return "\u0645\u0627 \u0647\u0648 \u0623\u0641\u0636\u0644 \u0625\u062c\u0627\u0628\u0629\u061f";
     },
     get$correctionDefaultPrompt() {
       return "\u0645\u0627 \u0647\u0648 \u0627\u0644\u0628\u062f\u064a\u0644 \u0627\u0644\u0623\u0641\u0636\u0644\u061f";
@@ -4427,9 +4445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "\u062f\u0639\u0648\u0629 \u0627\u0644\u0623\u0635\u062f\u0642\u0627\u0621";
     },
-    get$failedToLoadFeedback() {
-      return "\u0641\u0634\u0644 \u0641\u064a \u062a\u062d\u0645\u064a\u0644 \u0627\u0644\u062a\u0639\u0644\u064a\u0642\u0627\u062a.";
-    },
     get$activityStatsButtonTooltip() {
       return "\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0646\u0634\u0627\u0637";
     },
@@ -5348,6 +5363,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u0641\u0634\u0644 \u0627\u0644\u062a\u0633\u062c\u064a\u0644. \u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0623\u0630\u0648\u0646\u0627\u062a \u0627\u0644\u0635\u0648\u062a \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643 \u0648\u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
     },
+    get$spanFeedbackTitle() {
+      return "\u0627\u0644\u0625\u0628\u0644\u0627\u063a \u0639\u0646 \u0645\u0634\u0643\u0644\u0629 \u062a\u0635\u062d\u064a\u062d";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5388,7 +5406,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JgybMk/337lKqeL68CUWmpOL+4o="] = d.current;
+  d["Z56wSYQA5T7iwLQeaLGDNL5Ao3I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_141.part.js.map

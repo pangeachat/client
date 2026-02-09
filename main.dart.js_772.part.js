@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "B\u1ecf qua";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\u0110\u1ee3i \u0111\xe3, \u0111i\u1ec1u n\xe0y kh\xf4ng ph\u1ea3i b\u1eb1ng " + targetLanguage + "! B\u1ea1n c\xf3 c\u1ea7n gi\xfap d\u1ecbch kh\xf4ng?";
+    },
     get$countryInformation() {
       return "Qu\u1ed1c gia c\u1ee7a t\xf4i";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
+    },
+    get$bestCorrectionFeedback() {
+      return "\u0110\xfang r\u1ed3i!";
+    },
+    get$distractorFeedback() {
+      return "Ch\u01b0a ch\xednh x\xe1c l\u1eafm.";
+    },
+    get$bestAnswerFeedback() {
+      return "Ch\xednh x\xe1c!";
+    },
+    get$definitionDefaultPrompt() {
+      return "T\u1eeb n\xe0y c\xf3 ngh\u0129a l\xe0 g\xec?";
+    },
+    get$practiceDefaultPrompt() {
+      return "C\xe2u tr\u1ea3 l\u1eddi t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
     },
     get$correctionDefaultPrompt() {
       return "Ph\u01b0\u01a1ng \xe1n thay th\u1ebf t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "M\u1eddi b\u1ea1n b\xe8";
     },
-    get$failedToLoadFeedback() {
-      return "Kh\xf4ng th\u1ec3 t\u1ea3i ph\u1ea3n h\u1ed3i.";
-    },
     get$activityStatsButtonTooltip() {
       return "Th\xf4ng tin ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ghi \xe2m kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng ki\u1ec3m tra quy\u1ec1n truy c\u1eadp \xe2m thanh c\u1ee7a b\u1ea1n v\xe0 th\u1eed l\u1ea1i.";
     },
+    get$spanFeedbackTitle() {
+      return "B\xe1o c\xe1o v\u1ea5n \u0111\u1ec1 s\u1eeda l\u1ed7i";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Z7Pv0EbnowhqzM/xzkb4Nx6p44w="] = d.current;
+  d["mT/Chtho3WAUqxJIy4eQNxj7EiA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

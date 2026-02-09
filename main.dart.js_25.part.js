@@ -1522,6 +1522,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
+    },
     get$countryInformation() {
       return "Meu pa\xeds";
     },
@@ -2472,6 +2475,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
+    },
+    get$bestCorrectionFeedback() {
+      return "Isso mesmo!";
+    },
+    get$distractorFeedback() {
+      return "N\xe3o est\xe1 exatamente certo.";
+    },
+    get$bestAnswerFeedback() {
+      return "Isso mesmo!";
+    },
+    get$definitionDefaultPrompt() {
+      return "O que essa palavra significa?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Qual \xe9 a melhor resposta?";
     },
     get$correctionDefaultPrompt() {
       return "Qual \xe9 a melhor substitui\xe7\xe3o?";
@@ -4438,9 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Convidar amigos";
     },
-    get$failedToLoadFeedback() {
-      return "Falha ao carregar feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informa\xe7\xf5es da atividade";
     },
@@ -5358,6 +5373,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$spanFeedbackTitle() {
+      return "Relatar problema de corre\xe7\xe3o";
     },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
@@ -6885,6 +6903,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
+    },
     get$countryInformation() {
       return "Meu pa\xeds";
     },
@@ -7835,6 +7856,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
+    },
+    get$bestCorrectionFeedback() {
+      return "Isso mesmo!";
+    },
+    get$distractorFeedback() {
+      return "N\xe3o est\xe1 exatamente certo.";
+    },
+    get$bestAnswerFeedback() {
+      return "Isso mesmo!";
+    },
+    get$definitionDefaultPrompt() {
+      return "O que essa palavra significa?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Qual \xe9 a melhor resposta?";
     },
     get$correctionDefaultPrompt() {
       return "Qual \xe9 a melhor substitui\xe7\xe3o?";
@@ -9798,9 +9834,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$contactHasBeenInvitedToTheCourse() {
       return "O contato foi convidado para o curso";
     },
-    get$failedToLoadFeedback() {
-      return "Falha ao carregar feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informa\xe7\xf5es da atividade";
     },
@@ -10718,6 +10751,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emptyAudioError() {
       return "Grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
+    },
+    get$spanFeedbackTitle() {
+      return "Relatar problema de corre\xe7\xe3o";
     },
     get$aboutMeHint() {
       return "Sobre mim";
@@ -12242,6 +12278,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Espera, isso n\xe3o \xe9 " + targetLanguage + "! Precisas de ajuda para traduzir?";
+    },
     get$countryInformation() {
       return "O meu pa\xeds";
     },
@@ -13192,6 +13231,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
+    },
+    get$bestCorrectionFeedback() {
+      return "Isso mesmo!";
+    },
+    get$distractorFeedback() {
+      return "N\xe3o \xe9 bem assim.";
+    },
+    get$bestAnswerFeedback() {
+      return "Isso mesmo!";
+    },
+    get$definitionDefaultPrompt() {
+      return "O que essa palavra significa?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Qual \xe9 a melhor resposta?";
     },
     get$correctionDefaultPrompt() {
       return "Qual \xe9 a melhor substitui\xe7\xe3o?";
@@ -15155,9 +15209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$contactHasBeenInvitedToTheCourse() {
       return "O contato foi convidado para o curso";
     },
-    get$failedToLoadFeedback() {
-      return "Falha ao carregar feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informa\xe7\xf5es da atividade";
     },
@@ -16076,6 +16127,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$spanFeedbackTitle() {
+      return "Relatar problema de corre\xe7\xe3o";
+    },
     get$aboutMeHint() {
       return "Sobre mim";
     },
@@ -16310,7 +16364,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yxgtPCU+ZaKDanG3s12fC9SMMA8="] = d.current;
+  d["HXbiawnym+t8/ITIClxoPZum9VE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

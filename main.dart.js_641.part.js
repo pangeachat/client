@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoriraj";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\u010cekaj, to nije " + targetLanguage + "! Trebate li pomo\u0107 s prevo\u0111enjem?";
+    },
     get$countryInformation() {
       return "Moja zemlja";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nema prona\u0111enih podataka";
+    },
+    get$bestCorrectionFeedback() {
+      return "To je to\u010dno!";
+    },
+    get$distractorFeedback() {
+      return "Nije ba\u0161 to\u010dno.";
+    },
+    get$bestAnswerFeedback() {
+      return "To je to\u010dno!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u0160to zna\u010di ova rije\u010d?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Koji je najbolji odgovor?";
     },
     get$correctionDefaultPrompt() {
       return "Koja je najbolja zamjena?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Pozovi prijatelje";
     },
-    get$failedToLoadFeedback() {
-      return "Nije mogu\u0107e u\u010ditati povratne informacije.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informacije o aktivnosti";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Snimanje nije uspjelo. Provjerite svoja audio dopu\u0161tenja i poku\u0161ajte ponovo.";
     },
+    get$spanFeedbackTitle() {
+      return "Prijavi problem s ispravkom";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["z5p8H7b+HCZbIMuwHNUi8RhAAx0="] = d.current;
+  d["tRt+oxdRaCeyFPzyaBkcJv/qhkA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_641.part.js.map

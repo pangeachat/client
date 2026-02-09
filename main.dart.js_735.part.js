@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorer";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Vent, det er ikke " + targetLanguage + "! Trenger du hjelp med oversettelsen?";
+    },
     get$countryInformation() {
       return "Mitt land";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Ingen data funnet";
+    },
+    get$bestCorrectionFeedback() {
+      return "Det stemmer!";
+    },
+    get$distractorFeedback() {
+      return "Det er ikke helt riktig.";
+    },
+    get$bestAnswerFeedback() {
+      return "Det stemmer!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Hva betyr dette ordet?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Hva er det beste svaret?";
     },
     get$correctionDefaultPrompt() {
       return "Hva er den beste erstatningen?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Inviter venner";
     },
-    get$failedToLoadFeedback() {
-      return "Kunne ikke laste tilbakemelding.";
-    },
     get$activityStatsButtonTooltip() {
       return "Aktivitetsinfo";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og pr\xf8v igjen.";
     },
+    get$spanFeedbackTitle() {
+      return "Rapporter korrigeringsproblem";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lceeXApNiSw9gVr1/bLrRirqUEA="] = d.current;
+  d["zYvhXvfyfKkoKRp+e23bBin8MPo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

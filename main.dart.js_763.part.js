@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "\u0418\u0433\u043d\u043e\u0440\u0438\u0448\u0438";
     },
+    needsItMessage$1(targetLanguage) {
+      return "\u0427\u0435\u043a\u0430\u0458, \u0442\u043e \u043d\u0438\u0458\u0435 " + targetLanguage + "! \u0414\u0430 \u043b\u0438 \u0432\u0430\u043c \u0442\u0440\u0435\u0431\u0430 \u043f\u043e\u043c\u043e\u045b \u0443 \u043f\u0440\u0435\u0432\u043e\u0452\u0435\u045a\u0443?";
+    },
     get$countryInformation() {
       return "Moja zemlja";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nema prona\u0111enih podataka";
+    },
+    get$bestCorrectionFeedback() {
+      return "To je ta\u010dno!";
+    },
+    get$distractorFeedback() {
+      return "Nije ba\u0161 tako.";
+    },
+    get$bestAnswerFeedback() {
+      return "To je ta\u010dno!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u0160ta zna\u010di ova re\u010d?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Koji je najbolji odgovor?";
     },
     get$correctionDefaultPrompt() {
       return "Koja je najbolja zamena?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "\u041f\u043e\u0437\u043e\u0432\u0438\u0442\u0435 \u043f\u0440\u0438\u0458\u0430\u0442\u0435\u0459\u0435";
     },
-    get$failedToLoadFeedback() {
-      return "Nije uspelo u\u010ditavanje povratnih informacija.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informacije o aktivnosti";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Snimanje nije uspelo. Proverite svoja audio dopu\u0161tenja i poku\u0161ajte ponovo.";
     },
+    get$spanFeedbackTitle() {
+      return "Prijavi problem sa ispravkom";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gDHtnEzmR8Kk6YiKE/9qq4g3j5U="] = d.current;
+  d["BVIy89iWkNrF1wYF7/HX4Dhlczw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

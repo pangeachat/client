@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Abaikan";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Tunggu, itu bukan " + targetLanguage + "! Apakah Anda membutuhkan bantuan menerjemahkan?";
+    },
     get$countryInformation() {
       return "Negara saya";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Data tidak ditemukan";
+    },
+    get$bestCorrectionFeedback() {
+      return "Itu benar!";
+    },
+    get$distractorFeedback() {
+      return "Itu tidak sepenuhnya benar.";
+    },
+    get$bestAnswerFeedback() {
+      return "Itu benar!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Apa arti kata ini?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Jawaban terbaik apa?";
     },
     get$correctionDefaultPrompt() {
       return "Pengganti terbaik apa?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Undang teman";
     },
-    get$failedToLoadFeedback() {
-      return "Gagal memuat umpan balik.";
-    },
     get$activityStatsButtonTooltip() {
       return "Info aktivitas";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
     },
+    get$spanFeedbackTitle() {
+      return "Laporkan masalah koreksi";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G0wS1P4dmqcVmTbZjdHJyPv9JIw="] = d.current;
+  d["St0hSj4EIw60dPA8TqxhVTdqj2w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_698.part.js.map

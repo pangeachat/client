@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignora";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Aspetta, non \xe8 " + targetLanguage + "! Hai bisogno di aiuto con la traduzione?";
+    },
     get$countryInformation() {
       return "Il mio paese";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nessun dato trovato";
+    },
+    get$bestCorrectionFeedback() {
+      return "Corretto!";
+    },
+    get$distractorFeedback() {
+      return "Non proprio.";
+    },
+    get$bestAnswerFeedback() {
+      return "Corretto!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Cosa significa questa parola?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Qual \xe8 la migliore risposta?";
     },
     get$correctionDefaultPrompt() {
       return "Qual \xe8 la sostituzione migliore?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invita amici";
     },
-    get$failedToLoadFeedback() {
-      return "Impossibile caricare il feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informazioni sull'attivit\xe0";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Registrazione fallita. Controlla le tue autorizzazioni audio e riprova.";
     },
+    get$spanFeedbackTitle() {
+      return "Segnala problema di correzione";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9VyZbQalyl+IUv+ac/s9u0r0GFM="] = d.current;
+  d["RyejOxdvyr39zch+CRYsvxFY05E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

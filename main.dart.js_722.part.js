@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoruoti";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Palaukite, tai n\u0117ra " + targetLanguage + "! Ar jums reikia pagalbos ver\u010diant?";
+    },
     get$countryInformation() {
       return "Mano \u0161alis";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Duomen\u0173 nerasta";
+    },
+    get$bestCorrectionFeedback() {
+      return "Tai teisinga!";
+    },
+    get$distractorFeedback() {
+      return "Tai n\u0117ra visi\u0161kai teisinga.";
+    },
+    get$bestAnswerFeedback() {
+      return "Tai teisinga!";
+    },
+    get$definitionDefaultPrompt() {
+      return "K\u0105 rei\u0161kia \u0161i \u017eodis?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Kokia yra geriausia atsakymo versija?";
     },
     get$correctionDefaultPrompt() {
       return "Kokia yra geriausia pakeitimo versija?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Pakvieskite draugus";
     },
-    get$failedToLoadFeedback() {
-      return "Nepavyko \u012fkelti atsiliepim\u0173.";
-    },
     get$activityStatsButtonTooltip() {
       return "Veiklos informacija";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u012era\u0161ymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kart\u0105.";
     },
+    get$spanFeedbackTitle() {
+      return "Prane\u0161ti apie korekcijos problem\u0105";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5390,7 +5408,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rbRrdaL7JqX2/ZgxDvYrRzN3bmc="] = d.current;
+  d["R9bayx8Siev5E6nMjhyU0ps9+HQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_722.part.js.map

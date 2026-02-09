@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Figyelmen k\xedv\xfcl hagy";
     },
+    needsItMessage$1(targetLanguage) {
+      return "V\xe1rj, ez nem " + targetLanguage + "! Sz\xfcks\xe9ged van seg\xedts\xe9gre a ford\xedt\xe1sban?";
+    },
     get$countryInformation() {
       return "Orsz\xe1gom";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Nincs adat";
+    },
+    get$bestCorrectionFeedback() {
+      return "Ez helyes!";
+    },
+    get$distractorFeedback() {
+      return "Ez nem eg\xe9szen helyes.";
+    },
+    get$bestAnswerFeedback() {
+      return "Ez helyes!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Mit jelent ez a sz\xf3?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Mi a legjobb v\xe1lasz?";
     },
     get$correctionDefaultPrompt() {
       return "Mi a legjobb helyettes\xedt\xe9s?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Bar\xe1tok megh\xedv\xe1sa";
     },
-    get$failedToLoadFeedback() {
-      return "A visszajelz\xe9s bet\xf6lt\xe9se nem siker\xfclt.";
-    },
     get$activityStatsButtonTooltip() {
       return "Tev\xe9kenys\xe9gi inform\xe1ci\xf3";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A felv\xe9tel nem siker\xfclt. K\xe9rj\xfck, ellen\u0151rizze az audio enged\xe9lyeit, \xe9s pr\xf3b\xe1lja \xfajra.";
     },
+    get$spanFeedbackTitle() {
+      return "Jav\xedt\xe1si probl\xe9ma jelent\xe9se";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1IPSdodY7FETXLuOlQ81HQPZFCo="] = d.current;
+  d["wwjHpttzjWGBdUfdVCv6AKpFNag="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_673.part.js.map

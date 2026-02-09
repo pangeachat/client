@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ohita";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Odotas, se ei ole " + targetLanguage + "! Tarvitsetko apua k\xe4\xe4nt\xe4misess\xe4?";
+    },
     get$countryInformation() {
       return "Kotikuntani";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Tietoja ei l\xf6ytynyt";
+    },
+    get$bestCorrectionFeedback() {
+      return "Se on oikein!";
+    },
+    get$distractorFeedback() {
+      return "Se ei ole aivan oikein.";
+    },
+    get$bestAnswerFeedback() {
+      return "Se on oikein!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Mit\xe4 t\xe4m\xe4 sana tarkoittaa?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Mik\xe4 on paras vastaus?";
     },
     get$correctionDefaultPrompt() {
       return "Mik\xe4 on paras korvaus?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Kutsu yst\xe4vi\xe4";
     },
-    get$failedToLoadFeedback() {
-      return "Palaute ei latautunut.";
-    },
     get$activityStatsButtonTooltip() {
       return "Toimintatiedot";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xc4\xe4nityksen tallentaminen ep\xe4onnistui. Tarkista \xe4\xe4nioikeutesi ja yrit\xe4 uudelleen.";
     },
+    get$spanFeedbackTitle() {
+      return "Ilmoita korjausongelmasta";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jhidDGLLJnptjALnJ2Ujljd12Ko="] = d.current;
+  d["Khu7+HgUjBTt33IJbWcKToUHxm4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

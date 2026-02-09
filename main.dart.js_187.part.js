@@ -1511,6 +1511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignora";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Espera, aix\xf2 no \xe9s " + targetLanguage + "! Necessites ajuda per traduir?";
+    },
     get$countryInformation() {
       return "El meu pa\xeds";
     },
@@ -2461,6 +2464,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "No s'han trobat dades";
+    },
+    get$bestCorrectionFeedback() {
+      return "\xc9s correcte!";
+    },
+    get$distractorFeedback() {
+      return "No \xe9s del tot correcte.";
+    },
+    get$bestAnswerFeedback() {
+      return "\xc9s correcte!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Qu\xe8 vol dir aquesta paraula?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Quina \xe9s la millor resposta?";
     },
     get$correctionDefaultPrompt() {
       return "Quina \xe9s la millor substituci\xf3?";
@@ -4427,9 +4445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Convida amics";
     },
-    get$failedToLoadFeedback() {
-      return "No s'ha pogut carregar el feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informaci\xf3 de l'activitat";
     },
@@ -5348,6 +5363,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La gravaci\xf3 ha fallat. Si us plau, comproveu els vostres permisos d'\xe0udio i torneu-ho a provar.";
     },
+    get$spanFeedbackTitle() {
+      return "Informar d'un problema de correcci\xf3";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5391,7 +5409,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BZU4fKxdbCufz7OGmxJaFbdpouo="] = d.current;
+  d["jPH797/VKCNvKLEFAnV6sRZyRFA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_187.part.js.map

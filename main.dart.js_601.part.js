@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Balewalain";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Sandali, hindi iyon " + targetLanguage + "! Kailangan mo ba ng tulong sa pagsasalin?";
+    },
     get$countryInformation() {
       return "Impormasyon ng aking bansa";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Walang nahanap na data";
+    },
+    get$bestCorrectionFeedback() {
+      return "Tama iyan!";
+    },
+    get$distractorFeedback() {
+      return "Hindi ito ganap na tama.";
+    },
+    get$bestAnswerFeedback() {
+      return "Tama iyan!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Ano ang ibig sabihin ng salitang ito?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Ano ang pinakamahusay na sagot?";
     },
     get$correctionDefaultPrompt() {
       return "Ano ang pinakamahusay na kapalit?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invite friends";
     },
-    get$failedToLoadFeedback() {
-      return "Nabigong i-load ang feedback.";
-    },
     get$activityStatsButtonTooltip() {
       return "Impormasyon ng aktibidad";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.";
     },
+    get$spanFeedbackTitle() {
+      return "Iulat ang isyu sa pagwawasto";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cRsRyZItNp1Hck5cmrVAIViSzmE="] = d.current;
+  d["dUJ1mQ9mTG8jmzzkoYvzFpDg6WE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map

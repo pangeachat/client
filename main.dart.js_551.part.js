@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoreeri";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Oota, see ei ole " + targetLanguage + "! Kas vajad abi t\xf5lkimisel?";
+    },
     get$countryInformation() {
       return "Minu riik";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Andmeid ei leitud";
+    },
+    get$bestCorrectionFeedback() {
+      return "See on \xf5ige!";
+    },
+    get$distractorFeedback() {
+      return "See ei ole p\xe4ris \xf5ige.";
+    },
+    get$bestAnswerFeedback() {
+      return "See on \xf5ige!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Mida see s\xf5na t\xe4hendab?";
+    },
+    get$practiceDefaultPrompt() {
+      return "Mis on parim vastus?";
     },
     get$correctionDefaultPrompt() {
       return "Mis on parim asendus?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Kutsu s\xf5pru";
     },
-    get$failedToLoadFeedback() {
-      return "Tagasiside laadimine eba\xf5nnestus.";
-    },
     get$activityStatsButtonTooltip() {
       return "Tegevuse info";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Salvestamine eba\xf5nnestus. Palun kontrollige oma heli\xf5igusi ja proovige uuesti.";
     },
+    get$spanFeedbackTitle() {
+      return "Teata paranduse probleemist";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rum6HkQvq4TDMcMFdsNW5MIdeGE="] = d.current;
+  d["7l4H0nlY3vXA6p4swUw9obcQzJ0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_551.part.js.map

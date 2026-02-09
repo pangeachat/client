@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignor\u0113t";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Gaidiet, tas nav " + targetLanguage + "! Vai jums nepiecie\u0161ama pal\u012bdz\u012bba tulko\u0161an\u0101?";
+    },
     get$countryInformation() {
       return "Mana valsts";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dati nav atrasti";
+    },
+    get$bestCorrectionFeedback() {
+      return "Tas ir pareizi!";
+    },
+    get$distractorFeedback() {
+      return "Tas nav piln\u012bgi pareizi.";
+    },
+    get$bestAnswerFeedback() {
+      return "Tas ir pareizi!";
+    },
+    get$definitionDefaultPrompt() {
+      return "Ko \u0161\u012b v\u0101rda noz\u012bm\u0113?";
+    },
+    get$practiceDefaultPrompt() {
+      return "K\u0101da ir lab\u0101k\u0101 atbilde?";
     },
     get$correctionDefaultPrompt() {
       return "K\u0101da ir lab\u0101k\u0101 aizvietojuma iesp\u0113ja?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Aicin\u0101t draugus";
     },
-    get$failedToLoadFeedback() {
-      return "Neizdev\u0101s iel\u0101d\u0113t atsauksmes.";
-    },
     get$activityStatsButtonTooltip() {
       return "Aktivit\u0101tes inform\u0101cija";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ieraksts neizdev\u0101s. L\u016bdzu, p\u0101rbaudiet savas audio at\u013caujas un m\u0113\u0123iniet v\u0113lreiz.";
     },
+    get$spanFeedbackTitle() {
+      return "Zi\u0146ot par korekcijas probl\u0113mu";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8V6eF8vzee7f0hY/hQHhZPJePUg="] = d.current;
+  d["Nl4e7qamls0fxXzmoSpbdUcb9YM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_730.part.js.map

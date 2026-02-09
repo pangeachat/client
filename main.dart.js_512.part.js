@@ -1510,6 +1510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar para este mensaje.";
     },
+    needsItMessage$1(targetLanguage) {
+      return "Espera, \xa1ese no es " + targetLanguage + "! \xbfNecesitas ayuda para traducir?";
+    },
     get$countryInformation() {
       return "Informaci\xf3n de pa\xeds";
     },
@@ -2460,6 +2463,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "No se han encontrado datos";
+    },
+    get$bestCorrectionFeedback() {
+      return "\xa1Correcto!";
+    },
+    get$distractorFeedback() {
+      return "Eso no es del todo correcto.";
+    },
+    get$bestAnswerFeedback() {
+      return "\xa1Correcto!";
+    },
+    get$definitionDefaultPrompt() {
+      return "\xbfQu\xe9 significa esta palabra?";
+    },
+    get$practiceDefaultPrompt() {
+      return "\xbfCu\xe1l es la mejor respuesta?";
     },
     get$correctionDefaultPrompt() {
       return "\xbfCu\xe1l es el mejor reemplazo?";
@@ -4426,9 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Invitar amigos";
     },
-    get$failedToLoadFeedback() {
-      return "Error al cargar los comentarios.";
-    },
     get$activityStatsButtonTooltip() {
       return "Informaci\xf3n de actividad";
     },
@@ -5347,6 +5362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La grabaci\xf3n fall\xf3. Por favor, verifica tus permisos de audio y vuelve a intentarlo.";
     },
+    get$spanFeedbackTitle() {
+      return "Informar problema de correcci\xf3n";
+    },
     get$selectAllWords() {
       return "Select all the words you hear in the audio";
     },
@@ -5387,7 +5405,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v/V+7gKp/TygNqLK5s7SkFDPQuM="] = d.current;
+  d["+orrBPIaxzWwF8p4wHgJiHay8OI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map
