@@ -169,9 +169,6 @@ class PracticeController with ChangeNotifier {
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
     if (_activity == null) return;
-    debugPrint(
-      "CHOICE CONTENT: ${choice.choiceContent}, TOKEN TEXT: ${token.text.content}",
-    );
     final isCorrect = PracticeRecordController.onSelectChoice(
       choice.choiceContent,
       token,
