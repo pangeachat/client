@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-05 10:09:33.401642",
+  "@@last_modified": "2026-02-09 10:30:41.236742",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10737,8 +10737,6 @@
   "congratulations": "Zorionak!",
   "anotherRound": "Beste txanda bat",
   "noActivityRequest": "Ez dago egungo jarduera eskaerarik.",
-  "quit": "Irten",
-  "congratulationsYouveCompletedPractice": "Zorionak! Praktika saioa amaitu duzu.",
   "mustHave10Words": "Gutxienez 10 hiztegi hitz izan behar dituzu praktikan jartzeko. Saiatu lagun batekin edo Pangea Bot-ekin hitz egiten gehiago ezagutzeko!",
   "botSettings": "Botaren Ezarpenak",
   "activitySettingsOverrideWarning": "Jarduera planak zehaztutako hizkuntza eta hizkuntza maila",
@@ -10784,14 +10782,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10982,6 +10972,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Praktika perfektua!",
+  "greatPractice": "Praktika handia!",
+  "usedNoHints": "Lan ona, ez duzu inolako iradokizunik erabili!",
+  "youveCompletedPractice": "Praktika amaitu duzu, jarraitu horrela hobetzeko!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

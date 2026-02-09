@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-02-05 10:09:43.831148",
+  "@@last_modified": "2026-02-09 10:30:53.085602",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11344,8 +11344,6 @@
   "congratulations": "Gratulujeme!",
   "anotherRound": "Další kolo",
   "noActivityRequest": "Žádná aktuální žádost o aktivitu.",
-  "quit": "Ukončit",
-  "congratulationsYouveCompletedPractice": "Gratulujeme! Dokončili jste cvičební sezení.",
   "mustHave10Words": "Musíte mít alespoň 10 slovní zásoby, abyste je mohli procvičovat. Zkuste si promluvit s přítelem nebo Pangea Botem, abyste objevili více!",
   "botSettings": "Nastavení bota",
   "activitySettingsOverrideWarning": "Jazyk a jazyková úroveň určené plánem aktivity",
@@ -11391,14 +11389,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11589,6 +11579,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Dokonalá praxe!",
+  "greatPractice": "Skvělá praxe!",
+  "usedNoHints": "Dobrá práce, že jsi nepoužil žádné nápovědy!",
+  "youveCompletedPractice": "Dokončil jsi praxi, pokračuj v tom, abys se zlepšil!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

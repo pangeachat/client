@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:10.668033",
+  "@@last_modified": "2026-02-09 10:31:23.313797",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11469,8 +11469,6 @@
   "congratulations": "تبریک می‌گویم!",
   "anotherRound": "یک دور دیگر",
   "noActivityRequest": "درخواست فعالیت فعلی وجود ندارد.",
-  "quit": "خروج",
-  "congratulationsYouveCompletedPractice": "تبریک! شما جلسه تمرین را کامل کرده‌اید.",
   "mustHave10Words": "شما باید حداقل 10 کلمه واژگان برای تمرین داشته باشید. سعی کنید با یک دوست یا ربات پانژیا صحبت کنید تا بیشتر کشف کنید!",
   "botSettings": "تنظیمات ربات",
   "activitySettingsOverrideWarning": "زبان و سطح زبان تعیین شده توسط برنامه فعالیت",
@@ -11516,14 +11514,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11714,6 +11704,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "تمرین عالی!",
+  "greatPractice": "تمرین فوق‌العاده!",
+  "usedNoHints": "کار خوبی کردید که از هیچ راهنمایی استفاده نکردید!",
+  "youveCompletedPractice": "شما تمرین را کامل کردید، ادامه دهید تا بهتر شوید!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

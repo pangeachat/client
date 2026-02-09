@@ -336,45 +336,38 @@ class _HintSection extends StatelessWidget {
           constraints: const BoxConstraints(
             minHeight: 50.0,
           ),
-          child: _buildHintContent(
-            context,
-            activity,
-            hintPressed,
-            maxHintsReached,
+          child: Builder(
+            builder: (context) {
+              // For grammar category: fade out button and show hint content
+              if (activity is MorphPracticeActivityModel) {
+                return AnimatedCrossFade(
+                  duration: const Duration(milliseconds: 200),
+                  crossFadeState: hintPressed
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                  firstChild: HintButton(
+                    onPressed:
+                        maxHintsReached ? () {} : controller.onHintPressed,
+                    depressed: maxHintsReached,
+                  ),
+                  secondChild: MorphMeaningWidget(
+                    feature: activity.morphFeature,
+                    tag: activity.multipleChoiceContent.answers.first,
+                  ),
+                );
+              }
+
+              // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
+              return HintButton(
+                onPressed: (hintPressed || maxHintsReached)
+                    ? () {}
+                    : controller.onHintPressed,
+                depressed: hintPressed || maxHintsReached,
+              );
+            },
           ),
         );
       },
-    );
-  }
-
-  Widget _buildHintContent(
-    BuildContext context,
-    MultipleChoicePracticeActivityModel activity,
-    bool hintPressed,
-    bool maxHintsReached,
-  ) {
-    // For grammar category: fade out button and show hint content
-    if (activity is MorphPracticeActivityModel) {
-      return AnimatedCrossFade(
-        duration: const Duration(milliseconds: 200),
-        crossFadeState:
-            hintPressed ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-        firstChild: HintButton(
-          onPressed: maxHintsReached ? () {} : controller.onHintPressed,
-          depressed: maxHintsReached,
-        ),
-        secondChild: MorphMeaningWidget(
-          feature: activity.morphFeature,
-          tag: activity.multipleChoiceContent.answers.first,
-        ),
-      );
-    }
-
-    // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
-    return HintButton(
-      onPressed:
-          (hintPressed || maxHintsReached) ? () {} : controller.onHintPressed,
-      depressed: hintPressed || maxHintsReached,
     );
   }
 }

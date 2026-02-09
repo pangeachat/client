@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-05 10:09:19.675804",
+  "@@last_modified": "2026-02-09 10:30:28.032874",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10738,8 +10738,6 @@
   "congratulations": "Gratulálunk!",
   "anotherRound": "Még egy kör",
   "noActivityRequest": "Jelenleg nincs aktivitás kérés.",
-  "quit": "Kilépés",
-  "congratulationsYouveCompletedPractice": "Gratulálunk! Befejezted a gyakorló ülést.",
   "mustHave10Words": "Legalább 10 szókincsszót kellene gyakorolnod. Próbálj meg beszélni egy baráttal vagy a Pangea Bot-tal, hogy többet felfedezhess!",
   "botSettings": "Bot beállítások",
   "activitySettingsOverrideWarning": "A nyelvet és a nyelvi szintet az aktivitási terv határozza meg",
@@ -10785,14 +10783,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10983,6 +10973,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Tökéletes gyakorlás!",
+  "greatPractice": "Nagyszerű gyakorlás!",
+  "usedNoHints": "Jó munka, hogy nem használtál semmilyen tippet!",
+  "youveCompletedPractice": "Befejezted a gyakorlást, folytasd így, hogy jobb legyél!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

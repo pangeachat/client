@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:21.065759",
+  "@@last_modified": "2026-02-09 10:30:29.458472",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10728,8 +10728,6 @@
   "congratulations": "Selamat!",
   "anotherRound": "Putaran lain",
   "noActivityRequest": "Tidak ada permintaan aktivitas saat ini.",
-  "quit": "Keluar",
-  "congratulationsYouveCompletedPractice": "Selamat! Anda telah menyelesaikan sesi latihan.",
   "mustHave10Words": "Anda harus memiliki setidaknya 10 kata kosakata untuk berlatih. Cobalah berbicara dengan teman atau Pangea Bot untuk menemukan lebih banyak!",
   "botSettings": "Pengaturan Bot",
   "activitySettingsOverrideWarning": "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas",
@@ -10775,14 +10773,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10973,6 +10963,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Latihan yang sempurna!",
+  "greatPractice": "Latihan yang hebat!",
+  "usedNoHints": "Kerja bagus tidak menggunakan petunjuk!",
+  "youveCompletedPractice": "Anda telah menyelesaikan latihan, teruskan untuk menjadi lebih baik!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

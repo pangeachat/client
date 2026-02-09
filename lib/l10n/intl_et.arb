@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-05 10:09:36.127342",
+  "@@last_modified": "2026-02-09 10:30:44.206560",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11008,8 +11008,6 @@
   "congratulations": "Palju õnne!",
   "anotherRound": "Veel üks voor",
   "noActivityRequest": "Praegu ei ole aktiivsuse taotlust.",
-  "quit": "Välju",
-  "congratulationsYouveCompletedPractice": "Palju õnne! Olete lõpetanud harjut seansi.",
   "mustHave10Words": "Te peate omama vähemalt 10 sõnavara sõna, et neid harjutada. Proovige rääkida sõbraga või Pangea Botiga, et rohkem avastada!",
   "botSettings": "Boti seaded",
   "activitySettingsOverrideWarning": "Keele ja keele taseme määrab tegevusplaan",
@@ -11055,14 +11053,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11253,6 +11243,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Täiuslik harjutamine!",
+  "greatPractice": "Suurepärane harjutamine!",
+  "usedNoHints": "Hea töö, et ei kasutanud mingeid vihjeid!",
+  "youveCompletedPractice": "Oled harjutamise lõpetanud, jätka samas vaimus, et paremaks saada!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

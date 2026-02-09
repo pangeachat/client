@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:10.325473",
+  "@@last_modified": "2026-02-09 10:30:18.919050",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10845,8 +10845,6 @@
   "congratulations": "축하합니다!",
   "anotherRound": "또 다른 라운드",
   "noActivityRequest": "현재 활동 요청이 없습니다.",
-  "quit": "종료",
-  "congratulationsYouveCompletedPractice": "축하합니다! 연습 세션을 완료했습니다.",
   "mustHave10Words": "연습할 단어가 최소 10개 이상 있어야 합니다. 친구나 Pangea Bot과 대화하여 더 많은 것을 발견해 보세요!",
   "botSettings": "봇 설정",
   "activitySettingsOverrideWarning": "활동 계획에 의해 결정된 언어 및 언어 수준",
@@ -10892,14 +10890,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11090,6 +11080,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "완벽한 연습!",
+  "greatPractice": "훌륭한 연습!",
+  "usedNoHints": "힌트를 사용하지 않아서 잘했어요!",
+  "youveCompletedPractice": "연습을 완료했습니다. 계속해서 더 나아지세요!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

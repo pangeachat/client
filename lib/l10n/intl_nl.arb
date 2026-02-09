@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:04.986596",
+  "@@last_modified": "2026-02-09 10:31:17.188799",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10737,8 +10737,6 @@
   "congratulations": "Gefeliciteerd!",
   "anotherRound": "Nog een ronde",
   "noActivityRequest": "Geen huidige activiteit aanvraag.",
-  "quit": "Afsluiten",
-  "congratulationsYouveCompletedPractice": "Gefeliciteerd! Je hebt de oefensessie voltooid.",
   "mustHave10Words": "Je moet minstens 10 vocabulairewoorden hebben om ze te oefenen. Probeer met een vriend of Pangea Bot te praten om meer te ontdekken!",
   "botSettings": "Botinstellingen",
   "activitySettingsOverrideWarning": "Taal en taalniveau bepaald door het activiteitenplan",
@@ -10784,14 +10782,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10982,6 +10972,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfecte oefening!",
+  "greatPractice": "Geweldige oefening!",
+  "usedNoHints": "Goed gedaan, geen hints gebruikt!",
+  "youveCompletedPractice": "Je hebt de oefening voltooid, ga zo door om beter te worden!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }
