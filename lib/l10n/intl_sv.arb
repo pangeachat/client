@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:13.035755",
+  "@@last_modified": "2026-02-09 10:31:25.986941",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11215,8 +11215,6 @@
   "congratulations": "Grattis!",
   "anotherRound": "En runda till",
   "noActivityRequest": "Ingen aktuell aktivitetsförfrågan.",
-  "quit": "Avsluta",
-  "congratulationsYouveCompletedPractice": "Grattis! Du har slutfört övningssessionen.",
   "mustHave10Words": "Du måste ha minst 10 ord för att öva dem. Försök att prata med en vän eller Pangea Bot för att upptäcka mer!",
   "botSettings": "Botinställningar",
   "activitySettingsOverrideWarning": "Språk och språknivå bestäms av aktivitetsplanen",
@@ -11262,14 +11260,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11460,6 +11450,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekt träning!",
+  "greatPractice": "Bra träning!",
+  "usedNoHints": "Bra jobbat utan att använda några ledtrådar!",
+  "youveCompletedPractice": "Du har slutfört träningen, fortsätt så för att bli bättre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

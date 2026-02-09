@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:22.625655",
+  "@@last_modified": "2026-02-09 10:31:36.571438",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11839,8 +11839,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Nema trenutnog zahteva za aktivnost.",
-  "quit": "Izlaz",
-  "congratulationsYouveCompletedPractice": "Čestitamo! Završili ste sesiju vežbanja.",
   "mustHave10Words": "Morate imati najmanje 10 reči za rečnik da biste ih vežbali. Pokušajte da razgovarate sa prijateljem ili Pangea Bot-om da biste otkrili više!",
   "botSettings": "Podešavanja Bota",
   "activitySettingsOverrideWarning": "Jezik i nivo jezika određeni planom aktivnosti",
@@ -11886,14 +11884,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12084,6 +12074,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Savršena praksa!",
+  "greatPractice": "Sjajna praksa!",
+  "usedNoHints": "Odlično, niste koristili nikakve savete!",
+  "youveCompletedPractice": "Završili ste praksu, nastavite tako da postanete bolji!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

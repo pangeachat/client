@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:02.295528",
+  "@@last_modified": "2026-02-09 10:31:14.436728",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6315,8 +6315,6 @@
   "congratulations": "Chúc mừng!",
   "anotherRound": "Một vòng nữa",
   "noActivityRequest": "Không có yêu cầu hoạt động nào hiện tại.",
-  "quit": "Thoát",
-  "congratulationsYouveCompletedPractice": "Chúc mừng! Bạn đã hoàn thành buổi thực hành.",
   "mustHave10Words": "Bạn phải có ít nhất 10 từ vựng để thực hành. Hãy thử nói chuyện với một người bạn hoặc Pangea Bot để khám phá thêm!",
   "botSettings": "Cài đặt Bot",
   "activitySettingsOverrideWarning": "Ngôn ngữ và cấp độ ngôn ngữ được xác định bởi kế hoạch hoạt động",
@@ -6362,14 +6360,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -6560,6 +6550,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Thực hành hoàn hảo!",
+  "greatPractice": "Thực hành tuyệt vời!",
+  "usedNoHints": "Làm tốt lắm khi không sử dụng bất kỳ gợi ý nào!",
+  "youveCompletedPractice": "Bạn đã hoàn thành thực hành, hãy tiếp tục để cải thiện!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

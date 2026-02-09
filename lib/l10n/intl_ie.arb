@@ -4369,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-05 10:09:26.195275",
+  "@@last_modified": "2026-02-09 10:30:34.375227",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11711,8 +11711,6 @@
   "congratulations": "Gratulon!",
   "anotherRound": "Alia rundo",
   "noActivityRequest": "Ninguna solicitud de actividad actual.",
-  "quit": "Salir",
-  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
   "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
   "botSettings": "Configuración del Bot",
   "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
@@ -11758,14 +11756,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11956,6 +11946,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Praktika perfekt!",
+  "greatPractice": "Praktika granda!",
+  "usedNoHints": "Bonega laboro ne uzante iujn indicojn!",
+  "youveCompletedPractice": "Vi kompletigis la praktikon, daŭrigu por pliboniĝi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }
