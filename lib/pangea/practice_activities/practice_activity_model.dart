@@ -112,9 +112,9 @@ sealed class PracticeActivityModel {
           tokens: tokens,
           morphFeature: morph!,
           multipleChoiceContent: multipleChoiceContent!,
-          morphExampleInfo: json['morph_example_info'] != null
-              ? MorphExampleInfo.fromJson(json['morph_example_info'])
-              : const MorphExampleInfo(exampleMessage: []),
+          exampleMessageInfo: json['example_message_info'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message_info'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaAudio:
         assert(
@@ -125,6 +125,11 @@ sealed class PracticeActivityModel {
           langCode: langCode,
           tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
+          roomId: json['room_id'] as String?,
+          eventId: json['event_id'] as String?,
+          exampleMessage: json['example_message'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaMeaning:
         assert(
@@ -306,13 +311,13 @@ sealed class MorphPracticeActivityModel
 }
 
 class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
-  final MorphExampleInfo morphExampleInfo;
+  final ExampleMessageInfo exampleMessageInfo;
   MorphCategoryPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.morphFeature,
     required super.multipleChoiceContent,
-    required this.morphExampleInfo,
+    required this.exampleMessageInfo,
   });
 
   @override
@@ -340,7 +345,7 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
   @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
-    json['morph_example_info'] = morphExampleInfo.toJson();
+    json['example_message_info'] = exampleMessageInfo.toJson();
     return json;
   }
 }
@@ -356,11 +361,27 @@ class MorphMatchPracticeActivityModel extends MorphPracticeActivityModel {
 
 class VocabAudioPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
+  final String? roomId;
+  final String? eventId;
+  final ExampleMessageInfo exampleMessage;
+
   VocabAudioPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
+    this.roomId,
+    this.eventId,
+    required this.exampleMessage,
   });
+
+  @override
+  Map<String, dynamic> toJson() {
+    final json = super.toJson();
+    json['room_id'] = roomId;
+    json['event_id'] = eventId;
+    json['example_message'] = exampleMessage.toJson();
+    return json;
+  }
 }
 
 class VocabMeaningPracticeActivityModel

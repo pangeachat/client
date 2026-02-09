@@ -80,7 +80,8 @@ class MessageActivityRequest {
   final PracticeTarget target;
   final ActivityQualityFeedback? activityQualityFeedback;
   final GrammarErrorRequestInfo? grammarErrorInfo;
-  final MorphExampleInfo? morphExampleInfo;
+  final ExampleMessageInfo? exampleMessage;
+  final AudioExampleMessage? audioExampleMessage;
 
   MessageActivityRequest({
     required this.userL1,
@@ -88,7 +89,8 @@ class MessageActivityRequest {
     required this.activityQualityFeedback,
     required this.target,
     this.grammarErrorInfo,
-    this.morphExampleInfo,
+    this.exampleMessage,
+    this.audioExampleMessage,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');

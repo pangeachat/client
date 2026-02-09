@@ -5082,6 +5082,7 @@
   "spanTypeCapitalization": "Capitalization",
   "spanTypeCorrection": "Correction",
   "spanFeedbackTitle": "Report correction issue",
+  "selectAllWords": "Select all the words you hear in the audio",
   "aboutMeHint": "About me",
   "changeEmail": "Change email",
   "withTheseAddressesDescription": "With these email addresses you can log in, recover your password, and manage subscriptions.",
