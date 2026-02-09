@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2021-08-14 12:41:09.879987",
+  "@@last_modified": "2026-02-09 15:30:52.656999",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11810,8 +11810,6 @@
   "congratulations": "Gratulujeme!",
   "anotherRound": "Ďalšie kolo",
   "noActivityRequest": "Žiadna aktuálna požiadavka na aktivitu.",
-  "quit": "Ukončiť",
-  "congratulationsYouveCompletedPractice": "Gratulujeme! Dokončili ste cvičebnú reláciu.",
   "mustHave10Words": "Musíte mať aspoň 10 slovíčok na precvičovanie. Skúste sa porozprávať s priateľom alebo Pangea Botom, aby ste objavili viac!",
   "botSettings": "Nastavenia bota",
   "activitySettingsOverrideWarning": "Jazyk a jazyková úroveň určené plánom aktivity",
@@ -11857,14 +11855,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12043,6 +12033,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O mne",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióm",
   "grammarCopyPOSphrasalv": "Frázové sloveso",
   "grammarCopyPOScompn": "Zložené",
@@ -12055,6 +12050,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Dokonalá prax!",
+  "greatPractice": "Skvelá prax!",
+  "usedNoHints": "Dobrý výkon, že si nepoužil žiadne nápovedy!",
+  "youveCompletedPractice": "Dokončil si prax, pokračuj v tom, aby si sa zlepšil!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmeniť e-mail",
+  "withTheseAddressesDescription": "S týmito e-mailovými adresami sa môžete prihlásiť, obnoviť svoje heslo a spravovať predplatné.",
+  "noAddressDescription": "Ešte ste nepridali žiadne e-mailové adresy.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Výber slov",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcia",
+  "spanTypeStyle": "Štýl",
+  "spanTypeFluency": "Plynulosť",
+  "spanTypeAccents": "Prízvuky",
+  "spanTypeCapitalization": "Veľké písmená",
+  "spanTypeCorrection": "Oprava",
+  "spanFeedbackTitle": "Nahlásiť problém s opravou",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

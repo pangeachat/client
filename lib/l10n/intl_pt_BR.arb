@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:09.925971",
+  "@@last_modified": "2026-02-09 15:31:06.403516",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -10840,8 +10840,6 @@
   "congratulations": "Parabéns!",
   "anotherRound": "Outra rodada",
   "noActivityRequest": "Nenhum pedido de atividade atual.",
-  "quit": "Sair",
-  "congratulationsYouveCompletedPractice": "Parabéns! Você completou a sessão de prática.",
   "mustHave10Words": "Você deve ter pelo menos 10 palavras de vocabulário para praticá-las. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!",
   "botSettings": "Configurações do Bot",
   "activitySettingsOverrideWarning": "Idioma e nível de idioma determinados pelo plano de atividade",
@@ -10887,14 +10885,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11073,6 +11063,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Sobre mim",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verbo Frasal",
   "grammarCopyPOScompn": "Composto",
@@ -11085,6 +11080,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Prática perfeita!",
+  "greatPractice": "Ótima prática!",
+  "usedNoHints": "Bom trabalho não usando dicas!",
+  "youveCompletedPractice": "Você completou a prática, continue assim para melhorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Alterar e-mail",
+  "withTheseAddressesDescription": "Com esses endereços de e-mail, você pode fazer login, recuperar sua senha e gerenciar assinaturas.",
+  "noAddressDescription": "Você ainda não adicionou nenhum endereço de e-mail.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramática",
+  "spanTypeWordChoice": "Escolha de Palavras",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Pontuação",
+  "spanTypeStyle": "Estilo",
+  "spanTypeFluency": "Fluência",
+  "spanTypeAccents": "Acentos",
+  "spanTypeCapitalization": "Capitalização",
+  "spanTypeCorrection": "Correção",
+  "spanFeedbackTitle": "Relatar problema de correção",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -223,6 +223,7 @@ class OverlayUtil {
     Choreographer choreographer,
     BuildContext context,
     VoidCallback showNextMatch,
+    Future Function(String) onFeedbackSubmitted,
   ) {
     MatrixState.pAnyState.closeAllOverlays();
     showPositionedCard(
@@ -233,6 +234,7 @@ class OverlayUtil {
         match: match,
         choreographer: choreographer,
         showNextMatch: showNextMatch,
+        onFeedbackSubmitted: onFeedbackSubmitted,
       ),
       maxHeight: 325,
       maxWidth: 325,

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:09.708353",
+  "@@last_modified": "2026-02-09 15:31:45.022584",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10726,8 +10726,6 @@
   "congratulations": "恭喜！",
   "anotherRound": "再來一輪",
   "noActivityRequest": "目前沒有活動請求。",
-  "quit": "退出",
-  "congratulationsYouveCompletedPractice": "恭喜！您已完成練習課程。",
   "mustHave10Words": "您必須至少有 10 個詞彙來進行練習。嘗試與朋友或 Pangea Bot 交談以發現更多！",
   "botSettings": "機器人設定",
   "activitySettingsOverrideWarning": "語言和語言級別由活動計劃決定",
@@ -10773,14 +10771,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10959,6 +10949,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "關於我",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "成語",
   "grammarCopyPOSphrasalv": "片語動詞",
   "grammarCopyPOScompn": "合成詞",
@@ -10971,6 +10966,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "完美的練習！",
+  "greatPractice": "很棒的練習！",
+  "usedNoHints": "不使用任何提示，做得好！",
+  "youveCompletedPractice": "你已完成練習，繼續努力以變得更好！",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "更改電子郵件",
+  "withTheseAddressesDescription": "使用這些電子郵件地址，您可以登錄、恢復密碼和管理訂閱。",
+  "noAddressDescription": "您尚未添加任何電子郵件地址。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "文法",
+  "spanTypeWordChoice": "用詞選擇",
+  "spanTypeSpelling": "拼寫",
+  "spanTypePunctuation": "標點符號",
+  "spanTypeStyle": "風格",
+  "spanTypeFluency": "流暢度",
+  "spanTypeAccents": "重音",
+  "spanTypeCapitalization": "大寫",
+  "spanTypeCorrection": "修正",
+  "spanFeedbackTitle": "報告修正問題",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -234,7 +234,7 @@ enum ActivityTypeEnum {
 
   static List<ActivityTypeEnum> get _vocabPracticeTypes => [
     ActivityTypeEnum.lemmaMeaning,
-    // ActivityTypeEnum.lemmaAudio,
+    ActivityTypeEnum.lemmaAudio,
   ];
 
   static List<ActivityTypeEnum> get _grammarPracticeTypes => [

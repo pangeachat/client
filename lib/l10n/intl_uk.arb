@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2021-08-14 12:41:09.790615",
+  "@@last_modified": "2026-02-09 15:31:25.978266",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10845,8 +10845,6 @@
   "congratulations": "Вітаємо!",
   "anotherRound": "Ще один раунд",
   "noActivityRequest": "Немає поточного запиту на активність.",
-  "quit": "Вийти",
-  "congratulationsYouveCompletedPractice": "Вітаємо! Ви завершили практичну сесію.",
   "mustHave10Words": "Вам потрібно мати принаймні 10 слів для практики. Спробуйте поговорити з другом або Pangea Bot, щоб дізнатися більше!",
   "botSettings": "Налаштування бота",
   "activitySettingsOverrideWarning": "Мова та рівень мови визначаються планом активності",
@@ -10892,14 +10890,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11078,6 +11068,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Про мене",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Ідіома",
   "grammarCopyPOSphrasalv": "Фразове дієслово",
   "grammarCopyPOScompn": "Складене",
@@ -11090,6 +11085,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Ідеальна практика!",
+  "greatPractice": "Чудова практика!",
+  "usedNoHints": "Чудова робота, що не використовували підказки!",
+  "youveCompletedPractice": "Ви завершили практику, продовжуйте в тому ж дусі, щоб покращитися!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Змінити електронну пошту",
+  "withTheseAddressesDescription": "З цими електронними адресами ви можете увійти, відновити свій пароль і керувати підписками.",
+  "noAddressDescription": "Ви ще не додали жодних електронних адрес.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Граматика",
+  "spanTypeWordChoice": "Вибір слів",
+  "spanTypeSpelling": "Орфографія",
+  "spanTypePunctuation": "Пунктуація",
+  "spanTypeStyle": "Стиль",
+  "spanTypeFluency": "Вільність",
+  "spanTypeAccents": "Акценти",
+  "spanTypeCapitalization": "Великі літери",
+  "spanTypeCorrection": "Виправлення",
+  "spanFeedbackTitle": "Повідомити про проблему з виправленням",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

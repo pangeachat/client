@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:10.061080",
+  "@@last_modified": "2026-02-09 15:32:19.749220",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -10718,8 +10718,6 @@
   "congratulations": "تبریک می‌گویم!",
   "anotherRound": "یک دور دیگر",
   "noActivityRequest": "درخواست فعالیت فعلی وجود ندارد.",
-  "quit": "خروج",
-  "congratulationsYouveCompletedPractice": "تبریک! شما جلسه تمرین را کامل کرده‌اید.",
   "mustHave10Words": "شما باید حداقل 10 کلمه واژگان برای تمرین داشته باشید. سعی کنید با یک دوست یا ربات پانژیا صحبت کنید تا بیشتر کشف کنید!",
   "botSettings": "تنظیمات ربات",
   "activitySettingsOverrideWarning": "زبان و سطح زبان تعیین شده توسط برنامه فعالیت",
@@ -10765,14 +10763,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10951,6 +10941,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "درباره من",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "اصطلاح",
   "grammarCopyPOSphrasalv": "فعل عبارتی",
   "grammarCopyPOScompn": "ترکیب",
@@ -10963,6 +10958,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "تمرین عالی!",
+  "greatPractice": "تمرین فوق‌العاده!",
+  "usedNoHints": "کار خوبی کردید که از هیچ راهنمایی استفاده نکردید!",
+  "youveCompletedPractice": "شما تمرین را کامل کردید، ادامه دهید تا بهتر شوید!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "تغییر ایمیل",
+  "withTheseAddressesDescription": "با این آدرس‌های ایمیل می‌توانید وارد شوید، رمز عبور خود را بازیابی کنید و اشتراک‌ها را مدیریت کنید.",
+  "noAddressDescription": "شما هنوز هیچ آدرس ایمیلی اضافه نکرده‌اید.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "قواعد",
+  "spanTypeWordChoice": "انتخاب واژه",
+  "spanTypeSpelling": "هجی",
+  "spanTypePunctuation": "نقطه‌گذاری",
+  "spanTypeStyle": "سبک",
+  "spanTypeFluency": "روانی",
+  "spanTypeAccents": "لهجه‌ها",
+  "spanTypeCapitalization": "حروف بزرگ",
+  "spanTypeCorrection": "تصحیح",
+  "spanFeedbackTitle": "گزارش مشکل تصحیح",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

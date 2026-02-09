@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
@@ -41,11 +42,14 @@ class SettingsLearningController extends State<SettingsLearning> {
   String? languageMatchError;
 
   final ScrollController scrollController = ScrollController();
+  final TextEditingController aboutTextController = TextEditingController();
+  Timer? _textDebounce;
 
   @override
   void initState() {
     super.initState();
     _profile = pangeaController.userController.profile.copy();
+    aboutTextController.text = _profile.userSettings.about ?? '';
     TtsController.setAvailableLanguages().then((_) => setState(() {}));
   }
 
@@ -53,6 +57,8 @@ class SettingsLearningController extends State<SettingsLearning> {
   void dispose() {
     TtsController.stop();
     scrollController.dispose();
+    aboutTextController.dispose();
+    _textDebounce?.cancel();
     super.dispose();
   }
 
@@ -175,9 +181,17 @@ class SettingsLearningController extends State<SettingsLearning> {
     if (mounted) setState(() {});
   }
 
-  void changeCountry(Country? country) {
+  void setCountry(Country? country) {
     _profile.userSettings.country = country?.name;
     if (mounted) setState(() {});
+  }
+
+  void setAbout(String about) {
+    _profile.userSettings.about = about;
+    _textDebounce?.cancel();
+    _textDebounce = Timer(const Duration(milliseconds: 500), () {
+      if (mounted) setState(() {});
+    });
   }
 
   void updateToolSetting(ToolSetting toolSetting, bool value) {
@@ -334,6 +348,8 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   Country? get country =>
       CountryService().findByName(_profile.userSettings.country);
+
+  String? get about => _profile.userSettings.about;
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:10.036931",
+  "@@last_modified": "2026-02-09 15:31:01.183623",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11775,8 +11775,6 @@
   "congratulations": "מזל טוב!",
   "anotherRound": "סיבוב נוסף",
   "noActivityRequest": "אין בקשת פעילות נוכחית.",
-  "quit": "צא",
-  "congratulationsYouveCompletedPractice": "מזל טוב! סיימת את מושב האימון.",
   "mustHave10Words": "עליך שיהיו לפחות 10 מילים לאוצר מילים כדי לתרגל אותן. נסה לדבר עם חבר או עם פנגיאה בוט כדי לגלות עוד!",
   "botSettings": "הגדרות בוט",
   "activitySettingsOverrideWarning": "שפה ורמת שפה נקבעות על ידי תוכנית הפעילות",
@@ -11822,14 +11820,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12008,6 +11998,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "עליי",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "ביטוי",
   "grammarCopyPOSphrasalv": "פועל פיזי",
   "grammarCopyPOScompn": "מורכב",
@@ -12020,6 +12015,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "תרגול מושלם!",
+  "greatPractice": "תרגול נהדר!",
+  "usedNoHints": "עבודה טובה שלא השתמשת ברמזים!",
+  "youveCompletedPractice": "סיימת את התרגול, המשך כך כדי להשתפר!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "שנה דוא\"ל",
+  "withTheseAddressesDescription": "עם כתובות הדוא\"ל הללו אתה יכול להתחבר, לשחזר את הסיסמה שלך ולנהל מנויים.",
+  "noAddressDescription": "עדיין לא הוספת כתובות דוא\"ל.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "דקדוק",
+  "spanTypeWordChoice": "בחירת מילים",
+  "spanTypeSpelling": "איות",
+  "spanTypePunctuation": "פיסוק",
+  "spanTypeStyle": "סגנון",
+  "spanTypeFluency": "שפה רהוטה",
+  "spanTypeAccents": "הטעמה",
+  "spanTypeCapitalization": "הגדלת אותיות",
+  "spanTypeCorrection": "תיקון",
+  "spanFeedbackTitle": "דווח על בעיית תיקון",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

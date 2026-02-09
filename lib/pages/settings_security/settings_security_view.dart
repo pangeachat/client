@@ -145,6 +145,16 @@ class SettingsSecurityView extends StatelessWidget {
                       style: const TextStyle(fontFamily: 'RobotoMono'),
                     ),
                   ),
+                  // #Pangea
+                  if (capabilities?.m3pidChanges?.enabled != false ||
+                      error != null)
+                    ListTile(
+                      leading: const Icon(Icons.mail_outline_rounded),
+                      trailing: const Icon(Icons.chevron_right_outlined),
+                      title: Text(L10n.of(context).changeEmail),
+                      onTap: () => context.go('/rooms/settings/security/3pid'),
+                    ),
+                  // Pangea#
                   if (capabilities?.mChangePassword?.enabled != false ||
                       error != null)
                     ListTile(

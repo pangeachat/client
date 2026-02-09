@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-05 10:10:23.901035",
+  "@@last_modified": "2026-02-09 15:32:44.231605",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -10852,8 +10852,6 @@
   "congratulations": "Comhghairdeas!",
   "anotherRound": "Ciorcal eile",
   "noActivityRequest": "Níl aon iarratas gníomhaíochta reatha.",
-  "quit": "Dícheangail",
-  "congratulationsYouveCompletedPractice": "Comhghairdeas! Tá an seisiún cleachtaidh críochnaithe agat.",
   "mustHave10Words": "Caithfidh go mbeidh 10 focal le haghaidh cleachtaidh agat ar a laghad. Bain triail as labhairt le cara nó le Pangea Bot chun tuilleadh a fháil amach!",
   "botSettings": "Socruithe an Bhot",
   "activitySettingsOverrideWarning": "Teanga agus leibhéal teanga a chinneadh de réir plean gníomhaíochta",
@@ -10899,14 +10897,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11085,6 +11075,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Fúm",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Frása",
   "grammarCopyPOSphrasalv": "Gníomhhacht Phrásúil",
   "grammarCopyPOScompn": "Comhoibriú",
@@ -11097,6 +11092,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Cleachtadh foirfe!",
+  "greatPractice": "Cleachtadh iontach!",
+  "usedNoHints": "Obair mhaith gan aon leideanna a úsáid!",
+  "youveCompletedPractice": "Tá do chleachtadh críochnaithe, coinnigh ort chun feabhsú!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Athraigh an ríomhphost",
+  "withTheseAddressesDescription": "Leis na seoltaí ríomhphoist seo, is féidir leat logáil isteach, do phasfhocal a chur ar ais, agus síntiúis a bhainistiú.",
+  "noAddressDescription": "Níl aon seoltaí ríomhphoist curtha leis fós.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramadach",
+  "spanTypeWordChoice": "Rogha Focal",
+  "spanTypeSpelling": "Litriú",
+  "spanTypePunctuation": "Póntú",
+  "spanTypeStyle": "Stíl",
+  "spanTypeFluency": "Sreabhadh",
+  "spanTypeAccents": "Guthanna",
+  "spanTypeCapitalization": "Caipitleadh",
+  "spanTypeCorrection": "Córas",
+  "spanFeedbackTitle": "Tuairisc a dhéanamh ar fhadhb le ceartú",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

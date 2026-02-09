@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/user/about_me_display.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -58,51 +59,59 @@ void showMemberActionsPopupMenu({
     items: <PopupMenuEntry<_MemberActions>>[
       PopupMenuItem(
         value: _MemberActions.info,
-        child: Row(
-          // Pangea#
-          spacing: 12.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Avatar(
-              name: displayname,
-              mxContent: user.avatarUrl,
-              presenceUserId: user.id,
-              presenceBackgroundColor: theme.colorScheme.surfaceContainer,
-            ),
-            Column(
-              mainAxisSize: .min,
-              crossAxisAlignment: .start,
+            Row(
+              // Pangea#
+              spacing: 12.0,
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    displayname,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.labelLarge,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Avatar(
+                  name: displayname,
+                  mxContent: user.avatarUrl,
+                  presenceUserId: user.id,
+                  presenceBackgroundColor: theme.colorScheme.surfaceContainer,
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    user.id,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 10),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        displayname,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.labelLarge,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        user.id,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 10),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    // #Pangea
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [LevelDisplayName(userId: user.id)],
+                      ),
+                    ),
+                    // Pangea#
+                  ],
                 ),
-                // #Pangea
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [LevelDisplayName(userId: user.id)],
-                  ),
-                ),
-                // Pangea#
               ],
             ),
+            // #Pangea
+            AboutMeDisplay(userId: user.id),
+            // Pangea#
           ],
         ),
       ),

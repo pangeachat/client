@@ -4,14 +4,93 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+
+/// Internal result class that holds all computed data from building an example message.
+class _ExampleMessageResult {
+  final List<InlineSpan> displaySpans;
+  final List<PangeaToken> includedTokens;
+  final String text;
+  final int adjustedTargetIndex;
+  final String? eventId;
+  final String? roomId;
+
+  _ExampleMessageResult({
+    required this.displaySpans,
+    required this.includedTokens,
+    required this.text,
+    required this.adjustedTargetIndex,
+    this.eventId,
+    this.roomId,
+  });
+
+  List<InlineSpan> toSpans() => displaySpans;
+  AudioExampleMessage toAudioExampleMessage() => AudioExampleMessage(
+    tokens: includedTokens,
+    eventId: eventId,
+    roomId: roomId,
+    exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
+  );
+}
 
 class ExampleMessageUtil {
   static Future<List<InlineSpan>?> getExampleMessage(
     ConstructUses construct,
     Client client, {
     String? form,
+    bool noBold = false,
+  }) async {
+    final result = await _getExampleMessageResult(
+      construct,
+      client,
+      form: form,
+      noBold: noBold,
+    );
+    return result?.toSpans();
+  }
+
+  static Future<AudioExampleMessage?> getAudioExampleMessage(
+    ConstructUses construct,
+    Client client, {
+    String? form,
+    bool noBold = false,
+  }) async {
+    final result = await _getExampleMessageResult(
+      construct,
+      client,
+      form: form,
+      noBold: noBold,
+    );
+    return result?.toAudioExampleMessage();
+  }
+
+  static Future<List<List<InlineSpan>>> getExampleMessages(
+    ConstructUses construct,
+    Client client,
+    int maxMessages, {
+    bool noBold = false,
+  }) async {
+    final List<List<InlineSpan>> allSpans = [];
+    for (final use in construct.cappedUses) {
+      if (allSpans.length >= maxMessages) break;
+      final event = await client.getEventByConstructUse(use);
+      if (event == null) continue;
+
+      final result = _buildExampleMessage(use.form, event, noBold: noBold);
+      if (result != null) {
+        allSpans.add(result.toSpans());
+      }
+    }
+    return allSpans;
+  }
+
+  static Future<_ExampleMessageResult?> _getExampleMessageResult(
+    ConstructUses construct,
+    Client client, {
+    String? form,
+    bool noBold = false,
   }) async {
     for (final use in construct.cappedUses) {
       if (form != null && use.form != form) continue;
@@ -19,36 +98,17 @@ class ExampleMessageUtil {
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 
-      final spans = _buildExampleMessage(use.form, event);
-      if (spans != null) return spans;
+      final result = _buildExampleMessage(use.form, event, noBold: noBold);
+      if (result != null) return result;
     }
-
     return null;
   }
 
-  static Future<List<List<InlineSpan>>> getExampleMessages(
-    ConstructUses construct,
-    Client client,
-    int maxMessages,
-  ) async {
-    final List<List<InlineSpan>> allSpans = [];
-    for (final use in construct.cappedUses) {
-      if (allSpans.length >= maxMessages) break;
-      final event = await client.getEventByConstructUse(use);
-      if (event == null) continue;
-
-      final spans = _buildExampleMessage(use.form, event);
-      if (spans != null) {
-        allSpans.add(spans);
-      }
-    }
-    return allSpans;
-  }
-
-  static List<InlineSpan>? _buildExampleMessage(
+  static _ExampleMessageResult? _buildExampleMessage(
     String? form,
-    PangeaMessageEvent messageEvent,
-  ) {
+    PangeaMessageEvent messageEvent, {
+    bool noBold = false,
+  }) {
     String? text;
     List<PangeaToken>? tokens;
     int targetTokenIndex = -1;
@@ -99,6 +159,7 @@ class ExampleMessageUtil {
     // ---------- BEFORE ----------
     int beforeStartOffset = 0;
     bool trimmedBefore = false;
+    int firstIncludedTokenIndex = 0;
 
     if (beforeAvailable > beforeBudget) {
       final desiredStart = targetStart - beforeBudget;
@@ -110,6 +171,7 @@ class ExampleMessageUtil {
 
         if (tokenEnd > desiredStart) {
           beforeStartOffset = token.text.offset;
+          firstIncludedTokenIndex = i;
           trimmedBefore = true;
           break;
         }
@@ -124,6 +186,7 @@ class ExampleMessageUtil {
     // ---------- AFTER ----------
     int afterEndOffset = totalChars;
     bool trimmedAfter = false;
+    int lastIncludedTokenIndex = tokens.length - 1;
 
     if (afterAvailable > afterBudget) {
       final desiredEnd = targetEnd + afterBudget;
@@ -132,6 +195,7 @@ class ExampleMessageUtil {
         final token = tokens[i];
         if (token.text.offset >= desiredEnd) {
           afterEndOffset = token.text.offset;
+          lastIncludedTokenIndex = i - 1;
           trimmedAfter = true;
           break;
         }
@@ -144,15 +208,36 @@ class ExampleMessageUtil {
         .toString()
         .trimRight();
 
-    return [
+    final displaySpans = [
       if (trimmedBefore) const TextSpan(text: '… '),
       TextSpan(text: before),
       TextSpan(
         text: targetToken.text.content,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: noBold ? null : const TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(text: after),
       if (trimmedAfter) const TextSpan(text: '…'),
     ];
+
+    // Extract only the tokens that are included in the displayed text
+    final includedTokens = tokens.sublist(
+      firstIncludedTokenIndex,
+      lastIncludedTokenIndex + 1,
+    );
+
+    // Adjust target token index relative to the included tokens
+    final adjustedTargetIndex = targetTokenIndex - firstIncludedTokenIndex;
+
+    return _ExampleMessageResult(
+      displaySpans: displaySpans,
+      includedTokens: includedTokens,
+      text: text.characters
+          .skip(beforeStartOffset)
+          .take(afterEndOffset - beforeStartOffset)
+          .toString(),
+      adjustedTargetIndex: adjustedTargetIndex,
+      eventId: messageEvent.eventId,
+      roomId: messageEvent.room.id,
+    );
   }
 }

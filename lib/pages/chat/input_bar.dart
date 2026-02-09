@@ -37,6 +37,7 @@ class InputBar extends StatelessWidget {
   final PangeaTextController? controller;
   final Choreographer choreographer;
   final VoidCallback showNextMatch;
+  final Future Function(String) onFeedbackSubmitted;
   // Pangea#
   final InputDecoration decoration;
   final ValueChanged<String>? onChanged;
@@ -62,6 +63,7 @@ class InputBar extends StatelessWidget {
     // #Pangea
     required this.choreographer,
     required this.showNextMatch,
+    required this.onFeedbackSubmitted,
     // Pangea#
     super.key,
   });
@@ -431,7 +433,13 @@ class InputBar extends StatelessWidget {
     if (match.updatedMatch.isITStart) {
       choreographer.itController.openIT(controller!.text);
     } else {
-      OverlayUtil.showIGCMatch(match, choreographer, context, showNextMatch);
+      OverlayUtil.showIGCMatch(
+        match,
+        choreographer,
+        context,
+        showNextMatch,
+        onFeedbackSubmitted,
+      );
 
       // rebuild the text field to highlight the newly selected match
       choreographer.textController.setSystemText(
@@ -475,9 +483,9 @@ class InputBar extends StatelessWidget {
       optionsBuilder: getSuggestions,
       // #Pangea
       // fieldViewBuilder: (context, controller, focusNode, _) => TextField(
-      fieldViewBuilder: (context, _, focusNode, _) => ValueListenableBuilder(
-        valueListenable: choreographer.itController.open,
-        builder: (context, _, _) {
+      fieldViewBuilder: (context, _, focusNode, _) => ListenableBuilder(
+        listenable: choreographer,
+        builder: (context, _) {
           return TextField(
             // Pangea#
             controller: controller,

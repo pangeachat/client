@@ -1926,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-05 10:09:17.541713",
+  "@@last_modified": "2026-02-09 15:30:41.802679",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11787,8 +11787,6 @@
   "congratulations": "Tillykke!",
   "anotherRound": "En runde mere",
   "noActivityRequest": "Ingen aktuelle aktivitetsanmodning.",
-  "quit": "Afslut",
-  "congratulationsYouveCompletedPractice": "Tillykke! Du har gennemført øvelsessessionen.",
   "mustHave10Words": "Du skal have mindst 10 ordforrådsord for at øve dem. Prøv at tale med en ven eller Pangea Bot for at opdage mere!",
   "botSettings": "Botindstillinger",
   "activitySettingsOverrideWarning": "Sprog og sprogniveau bestemt af aktivitetsplan",
@@ -11834,14 +11832,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12020,6 +12010,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Sammensat",
@@ -12032,6 +12027,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekt praksis!",
+  "greatPractice": "God praksis!",
+  "usedNoHints": "Godt klaret uden at bruge nogen hints!",
+  "youveCompletedPractice": "Du har gennemført praksis, bliv ved med det for at blive bedre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ændre email",
+  "withTheseAddressesDescription": "Med disse emailadresser kan du logge ind, gendanne din adgangskode og administrere abonnementer.",
+  "noAddressDescription": "Du har endnu ikke tilføjet nogen emailadresser.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatik",
+  "spanTypeWordChoice": "Ordvalg",
+  "spanTypeSpelling": "Stavning",
+  "spanTypePunctuation": "Interpunktion",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Flydende",
+  "spanTypeAccents": "Accenter",
+  "spanTypeCapitalization": "Versalisering",
+  "spanTypeCorrection": "Korrektur",
+  "spanFeedbackTitle": "Rapporter korrektion problem",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

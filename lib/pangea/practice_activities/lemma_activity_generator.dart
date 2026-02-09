@@ -31,8 +31,9 @@ class LemmaActivityGenerator {
   }
 
   static Future<Set<ConstructIdentifier>> lemmaActivityDistractors(
-    PangeaToken token,
-  ) async {
+    PangeaToken token, {
+    int? maxChoices = 4,
+  }) async {
     final constructs = await MatrixState
         .pangeaController
         .matrixState
@@ -53,13 +54,13 @@ class LemmaActivityGenerator {
     // Skip the first 7 lemmas (to avoid very similar and conjugated forms of verbs) if we have enough lemmas
     final int startIndex = sortedLemmas.length > 11 ? 7 : 0;
 
-    // Take up to 4 lemmas ensuring uniqueness by lemma text
+    // Take up to 4 (or maxChoices) lemmas ensuring uniqueness by lemma text
     final List<ConstructIdentifier> uniqueByLemma = [];
     for (int i = startIndex; i < sortedLemmas.length; i++) {
       final cid = sortedLemmas[i];
       if (!uniqueByLemma.any((c) => c.lemma == cid.lemma)) {
         uniqueByLemma.add(cid);
-        if (uniqueByLemma.length == 4) break;
+        if (uniqueByLemma.length == maxChoices) break;
       }
     }
 

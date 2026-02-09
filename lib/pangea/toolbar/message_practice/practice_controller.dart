@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.d
 import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
@@ -218,6 +219,14 @@ class PracticeController with ChangeNotifier {
           meaning: choice.choiceContent,
         );
       }
+    }
+
+    if (_activity is LemmaMeaningPracticeActivityModel ||
+        _activity is EmojiPracticeActivityModel) {
+      TtsController.tryToSpeak(
+        token.text.content,
+        langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+      );
     }
 
     notifyListeners();

@@ -3857,7 +3857,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-05 10:10:01.069181",
+  "@@last_modified": "2026-02-09 15:32:01.402371",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11531,8 +11531,6 @@
   "congratulations": "Sveikiname!",
   "anotherRound": "Dar viena raundas",
   "noActivityRequest": "Nėra dabartinio veiklos prašymo.",
-  "quit": "Išeiti",
-  "congratulationsYouveCompletedPractice": "Sveikiname! Jūs baigėte praktikos sesiją.",
   "mustHave10Words": "Turite turėti bent 10 žodžių, kad galėtumėte juos praktikuoti. Pabandykite pasikalbėti su draugu arba Pangea Bot, kad sužinotumėte daugiau!",
   "botSettings": "Roboto nustatymai",
   "activitySettingsOverrideWarning": "Kalba ir kalbos lygis nustatomi pagal veiklos planą",
@@ -11578,14 +11576,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11764,6 +11754,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Apie mane",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Sudėtinis",
@@ -11776,6 +11771,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Tobulas praktika!",
+  "greatPractice": "Puiki praktika!",
+  "usedNoHints": "Puikus darbas, kad nenaudojote jokių užuominų!",
+  "youveCompletedPractice": "Jūs baigėte praktiką, tęskite, kad taptumėte geresni!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Keisti el. paštą",
+  "withTheseAddressesDescription": "Su šiais el. pašto adresais galite prisijungti, atkurti slaptažodį ir valdyti prenumeratas.",
+  "noAddressDescription": "Jūs dar nepridėjote jokių el. pašto adresų.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Žodžių pasirinkimas",
+  "spanTypeSpelling": "Rašyba",
+  "spanTypePunctuation": "Skyryba",
+  "spanTypeStyle": "Stilius",
+  "spanTypeFluency": "Sklandumas",
+  "spanTypeAccents": "Akcentai",
+  "spanTypeCapitalization": "Didžiųjų raidžių naudojimas",
+  "spanTypeCorrection": "Korekcija",
+  "spanFeedbackTitle": "Pranešti apie korekcijos problemą",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

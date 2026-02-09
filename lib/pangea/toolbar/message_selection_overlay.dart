@@ -220,6 +220,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         "word-zoom-card-${token.text.uniqueKey}",
         token,
         Matrix.of(context).analyticsDataService,
+        roomId: event.room.id,
+        eventId: event.eventId,
       ).then((_) {
         if (mounted) setState(() {});
       });

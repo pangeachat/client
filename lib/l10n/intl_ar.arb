@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2021-08-14 12:41:10.156221",
+  "@@last_modified": "2026-02-09 15:31:53.731729",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10942,8 +10942,6 @@
   "congratulations": "مبروك!",
   "anotherRound": "جولة أخرى",
   "noActivityRequest": "لا يوجد طلب نشاط حالي.",
-  "quit": "خروج",
-  "congratulationsYouveCompletedPractice": "تهانينا! لقد أكملت جلسة التدريب.",
   "mustHave10Words": "يجب أن يكون لديك على الأقل 10 كلمات مفردات لممارستها. حاول التحدث إلى صديق أو بوت بانجيا لاكتشاف المزيد!",
   "botSettings": "إعدادات البوت",
   "activitySettingsOverrideWarning": "اللغة ومستوى اللغة محددان بواسطة خطة النشاط",
@@ -10989,14 +10987,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11175,6 +11165,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "عنّي",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "تعبير اصطلاحي",
   "grammarCopyPOSphrasalv": "فعل مركب",
   "grammarCopyPOScompn": "مركب",
@@ -11187,6 +11182,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "ممارسة مثالية!",
+  "greatPractice": "ممارسة رائعة!",
+  "usedNoHints": "عمل رائع بعدم استخدام أي تلميحات!",
+  "youveCompletedPractice": "لقد أكملت الممارسة، استمر في ذلك لتحسين مهاراتك!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "تغيير البريد الإلكتروني",
+  "withTheseAddressesDescription": "باستخدام هذه العناوين البريدية يمكنك تسجيل الدخول، واستعادة كلمة المرور، وإدارة الاشتراكات.",
+  "noAddressDescription": "لم تقم بإضافة أي عناوين بريد إلكتروني بعد.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "قواعد اللغة",
+  "spanTypeWordChoice": "اختيار الكلمات",
+  "spanTypeSpelling": "التهجئة",
+  "spanTypePunctuation": "علامات الترقيم",
+  "spanTypeStyle": "الأسلوب",
+  "spanTypeFluency": "الطلاقة",
+  "spanTypeAccents": "اللكنات",
+  "spanTypeCapitalization": "حروف الجر",
+  "spanTypeCorrection": "تصحيح",
+  "spanFeedbackTitle": "الإبلاغ عن مشكلة تصحيح",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

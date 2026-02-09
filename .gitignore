@@ -17,6 +17,7 @@ prime
 keys.json
 !/public/.env
 *.env.local_choreo
+assets/.env.local_choreo
 *.env.prod
 envs.json
 # libolm package
@@ -50,8 +51,7 @@ venv/
 .fvm/
 .fvmrc
 
-# copilot-instructions.md
-.github/copilot-instructions.md
+
 # Web related
 docs/tailwind.css
 

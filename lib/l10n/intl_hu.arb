@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2021-08-14 12:41:10.016566",
+  "@@last_modified": "2026-02-09 15:30:44.809310",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10729,8 +10729,6 @@
   "congratulations": "Gratulálunk!",
   "anotherRound": "Még egy kör",
   "noActivityRequest": "Jelenleg nincs aktivitás kérés.",
-  "quit": "Kilépés",
-  "congratulationsYouveCompletedPractice": "Gratulálunk! Befejezted a gyakorló ülést.",
   "mustHave10Words": "Legalább 10 szókincsszót kellene gyakorolnod. Próbálj meg beszélni egy baráttal vagy a Pangea Bot-tal, hogy többet felfedezhess!",
   "botSettings": "Bot beállítások",
   "activitySettingsOverrideWarning": "A nyelvet és a nyelvi szintet az aktivitási terv határozza meg",
@@ -10776,14 +10774,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10962,6 +10952,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Rólam",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióma",
   "grammarCopyPOSphrasalv": "Frazális ige",
   "grammarCopyPOScompn": "Összetett",
@@ -10974,6 +10969,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Tökéletes gyakorlás!",
+  "greatPractice": "Nagyszerű gyakorlás!",
+  "usedNoHints": "Jó munka, hogy nem használtál semmilyen tippet!",
+  "youveCompletedPractice": "Befejezted a gyakorlást, folytasd így, hogy jobb legyél!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Email cím módosítása",
+  "withTheseAddressesDescription": "Ezekkel az email címekkel be tudsz jelentkezni, vissza tudod állítani a jelszavadat, és kezelni tudod az előfizetéseket.",
+  "noAddressDescription": "Még nem adtál hozzá email címeket.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Nyelvtan",
+  "spanTypeWordChoice": "Szóválasztás",
+  "spanTypeSpelling": "Helyesírás",
+  "spanTypePunctuation": "Írásjelek",
+  "spanTypeStyle": "Stílus",
+  "spanTypeFluency": "Folyékonyság",
+  "spanTypeAccents": "Akcentusok",
+  "spanTypeCapitalization": "Nagybetűs írás",
+  "spanTypeCorrection": "Javítás",
+  "spanFeedbackTitle": "Javítási probléma jelentése",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -117,15 +117,16 @@ class ChatAccessTitle extends StatelessWidget {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
         Icon(icon, size: isColumnMode ? 32.0 : 24.0),
         SizedBox(width: isColumnMode ? 32.0 : 16.0),
-        Text(
-          title,
-          style: isColumnMode
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium,
+        Flexible(
+          child: Text(
+            title,
+            style: isColumnMode
+                ? theme.textTheme.titleLarge
+                : theme.textTheme.titleMedium,
+          ),
         ),
       ],
     );

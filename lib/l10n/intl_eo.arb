@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:10.107750",
+  "@@last_modified": "2026-02-09 15:32:34.842172",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11815,8 +11815,6 @@
   "congratulations": "Gratulon!",
   "anotherRound": "Alia rundo",
   "noActivityRequest": "Neniu aktuala aktivitecpeticio.",
-  "quit": "Eliri",
-  "congratulationsYouveCompletedPractice": "Gratulojn! Vi kompletigis la praktikadon.",
   "mustHave10Words": "Vi devas havi almenaŭ 10 vortojn por praktiki ilin. Provu paroli kun amiko aŭ Pangea Bot por malkovri pli!",
   "botSettings": "Botaj Agordoj",
   "activitySettingsOverrideWarning": "Lingvo kaj lingvonivelo determinita de la aktiviteca plano",
@@ -11862,14 +11860,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12048,6 +12038,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Pri mi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Kunmetita",
@@ -12060,6 +12055,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekta praktiko!",
+  "greatPractice": "Granda praktiko!",
+  "usedNoHints": "Bonega laboro ne uzi iujn sugestojn!",
+  "youveCompletedPractice": "Vi finis la praktikon, daŭrigu por pliboniĝi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ŝanĝi retpoŝton",
+  "withTheseAddressesDescription": "Kun ĉi tiuj retpoŝtaj adresoj vi povas ensaluti, rekuperi vian pasvorton, kaj administri abonojn.",
+  "noAddressDescription": "Vi ankoraŭ ne aldonis iujn retpoŝtajn adresojn.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatiko",
+  "spanTypeWordChoice": "Vortelekto",
+  "spanTypeSpelling": "Ortografio",
+  "spanTypePunctuation": "Punkto",
+  "spanTypeStyle": "Stilo",
+  "spanTypeFluency": "Flueco",
+  "spanTypeAccents": "Akcentoj",
+  "spanTypeCapitalization": "Kapitaligo",
+  "spanTypeCorrection": "Korektado",
+  "spanFeedbackTitle": "Raporti korektadon",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

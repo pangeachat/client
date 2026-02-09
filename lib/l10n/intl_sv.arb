@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:13.035755",
+  "@@last_modified": "2026-02-09 15:32:24.746342",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11204,8 +11204,6 @@
   "congratulations": "Grattis!",
   "anotherRound": "En runda till",
   "noActivityRequest": "Ingen aktuell aktivitetsförfrågan.",
-  "quit": "Avsluta",
-  "congratulationsYouveCompletedPractice": "Grattis! Du har slutfört övningssessionen.",
   "mustHave10Words": "Du måste ha minst 10 ord för att öva dem. Försök att prata med en vän eller Pangea Bot för att upptäcka mer!",
   "botSettings": "Botinställningar",
   "activitySettingsOverrideWarning": "Språk och språknivå bestäms av aktivitetsplanen",
@@ -11251,14 +11249,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11437,6 +11427,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasverb",
   "grammarCopyPOScompn": "Sammansatt",
@@ -11449,6 +11444,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekt träning!",
+  "greatPractice": "Bra träning!",
+  "usedNoHints": "Bra jobbat utan att använda några ledtrådar!",
+  "youveCompletedPractice": "Du har slutfört träningen, fortsätt så för att bli bättre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ändra e-postadress",
+  "withTheseAddressesDescription": "Med dessa e-postadresser kan du logga in, återställa ditt lösenord och hantera prenumerationer.",
+  "noAddressDescription": "Du har ännu inte lagt till några e-postadresser.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatik",
+  "spanTypeWordChoice": "Orval",
+  "spanTypeSpelling": "Stavning",
+  "spanTypePunctuation": "Interpunktion",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Flyt",
+  "spanTypeAccents": "Accenter",
+  "spanTypeCapitalization": "Versalisering",
+  "spanTypeCorrection": "Korrigering",
+  "spanFeedbackTitle": "Rapportera korrigeringsproblem",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

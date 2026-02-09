@@ -19,9 +19,11 @@ class LevelDisplayName extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2.0),
       child: FutureBuilder(
-        future: MatrixState.pangeaController.userController
-            .getPublicAnalyticsProfile(userId),
+        future: MatrixState.pangeaController.userController.getPublicProfile(
+          userId,
+        ),
         builder: (context, snapshot) {
+          final analytics = snapshot.data?.analytics;
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -39,11 +41,18 @@ class LevelDisplayName extends StatelessWidget {
               else
                 Row(
                   children: [
-                    if (snapshot.data?.baseLanguage != null &&
-                        snapshot.data?.targetLanguage != null)
+                    if (snapshot.data?.countryEmoji != null)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 4.0),
+                        child: Text(
+                          snapshot.data!.countryEmoji!,
+                          style: textStyle ?? const TextStyle(fontSize: 16.0),
+                        ),
+                      ),
+                    if (analytics?.baseLanguage != null &&
+                        analytics?.targetLanguage != null)
                       Text(
-                        snapshot.data!.baseLanguage!.langCodeShort
-                            .toUpperCase(),
+                        analytics!.baseLanguage!.langCodeShort.toUpperCase(),
                         style:
                             textStyle ??
                             TextStyle(
@@ -51,16 +60,15 @@ class LevelDisplayName extends StatelessWidget {
                               color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
-                    if (snapshot.data?.baseLanguage != null &&
-                        snapshot.data?.targetLanguage != null)
+                    if (analytics?.baseLanguage != null &&
+                        analytics?.targetLanguage != null)
                       Icon(
                         Icons.chevron_right_outlined,
                         size: iconSize ?? 16.0,
                       ),
-                    if (snapshot.data?.targetLanguage != null)
+                    if (analytics?.targetLanguage != null)
                       Text(
-                        snapshot.data!.targetLanguage!.langCodeShort
-                            .toUpperCase(),
+                        analytics!.targetLanguage!.langCodeShort.toUpperCase(),
                         style:
                             textStyle ??
                             TextStyle(
@@ -69,11 +77,10 @@ class LevelDisplayName extends StatelessWidget {
                             ),
                       ),
                     const SizedBox(width: 4.0),
-                    if (snapshot.data?.level != null)
-                      Text("⭐", style: textStyle),
-                    if (snapshot.data?.level != null)
+                    if (analytics?.level != null) Text("⭐", style: textStyle),
+                    if (analytics?.level != null)
                       Text(
-                        "${snapshot.data!.level!}",
+                        "${analytics!.level!}",
                         style:
                             textStyle ??
                             TextStyle(

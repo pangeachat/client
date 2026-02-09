@@ -3781,7 +3781,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-02-05 10:10:06.262776",
+  "@@last_modified": "2026-02-09 15:32:12.071200",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9993,8 +9993,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Ninguna solicitud de actividad actual.",
-  "quit": "Salir",
-  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
   "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
   "botSettings": "Configuraciones del Bot",
   "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
@@ -10040,14 +10038,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10226,6 +10216,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Bok o meni",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Compound",
@@ -10238,6 +10233,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekta praktik!",
+  "greatPractice": "Stora praktik!",
+  "usedNoHints": "Bra jobbat utan att använda några ledtrådar!",
+  "youveCompletedPractice": "Du har slutfört praktiken, fortsätt så för att bli bättre!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Bohor email",
+  "withTheseAddressesDescription": "S dengan alamat email ini, Anda dapat masuk, memulihkan kata sandi Anda, dan mengelola langganan.",
+  "noAddressDescription": "Anda belum menambahkan alamat email apa pun.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Izbor reči",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcija",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Tečnost",
+  "spanTypeAccents": "Akcenti",
+  "spanTypeCapitalization": "Velika slova",
+  "spanTypeCorrection": "Ispravka",
+  "spanFeedbackTitle": "Prijavi problem sa ispravkom",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

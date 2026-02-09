@@ -57,9 +57,7 @@ class SettingsNotificationsView extends StatelessWidget {
                       child: snapshot.data != false
                           ? const SizedBox()
                           : Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                              ),
+                              padding: const EdgeInsets.fromLTRB(16, 8, 28, 8),
                               child: ListTile(
                                 tileColor: theme.colorScheme.primaryContainer,
                                 leading: Icon(

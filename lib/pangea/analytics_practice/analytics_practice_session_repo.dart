@@ -34,29 +34,45 @@ class AnalyticsPracticeSessionRepo {
       throw UnsubscribedException();
     }
 
-    final r = Random();
-    final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
-
-    final types = List.generate(
-      AnalyticsPracticeConstants.practiceGroupSize +
-          AnalyticsPracticeConstants.errorBufferSize,
-      (_) => activityTypes[r.nextInt(activityTypes.length)],
-    );
-
     final List<AnalyticsActivityTarget> targets = [];
 
     if (type == ConstructTypeEnum.vocab) {
-      final constructs = await _fetchVocab();
-      final targetCount = min(constructs.length, types.length);
-      targets.addAll([
-        for (var i = 0; i < targetCount; i++)
+      const totalNeeded =
+          AnalyticsPracticeConstants.practiceGroupSize +
+          AnalyticsPracticeConstants.errorBufferSize;
+      final halfNeeded = (totalNeeded / 2).ceil();
+
+      // Fetch audio constructs (with example messages)
+      final audioMap = await _fetchAudio();
+      final audioCount = min(audioMap.length, halfNeeded);
+
+      // Fetch vocab constructs to fill the rest
+      final vocabNeeded = totalNeeded - audioCount;
+      final vocabConstructs = await _fetchVocab();
+      final vocabCount = min(vocabConstructs.length, vocabNeeded);
+
+      for (final entry in audioMap.entries.take(audioCount)) {
+        targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
-              tokens: [constructs[i].asToken],
-              activityType: types[i],
+              tokens: [entry.key.asToken],
+              activityType: ActivityTypeEnum.lemmaAudio,
+            ),
+            audioExampleMessage: entry.value,
+          ),
+        );
+      }
+      for (var i = 0; i < vocabCount; i++) {
+        targets.add(
+          AnalyticsActivityTarget(
+            target: PracticeTarget(
+              tokens: [vocabConstructs[i].asToken],
+              activityType: ActivityTypeEnum.lemmaMeaning,
             ),
           ),
-      ]);
+        );
+      }
+      targets.shuffle();
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
@@ -78,7 +94,7 @@ class AnalyticsPracticeSessionRepo {
                 activityType: ActivityTypeEnum.grammarCategory,
                 morphFeature: entry.feature,
               ),
-              morphExampleInfo: MorphExampleInfo(
+              exampleMessage: ExampleMessageInfo(
                 exampleMessage: entry.exampleMessage,
               ),
             ),
@@ -130,6 +146,64 @@ class AnalyticsPracticeSessionRepo {
           (AnalyticsPracticeConstants.practiceGroupSize +
               AnalyticsPracticeConstants.errorBufferSize)) {
         break;
+      }
+    }
+    return targets;
+  }
+
+  static Future<Map<ConstructIdentifier, AudioExampleMessage>>
+  _fetchAudio() async {
+    final constructs = await MatrixState
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .getAggregatedConstructs(ConstructTypeEnum.vocab)
+        .then((map) => map.values.toList());
+
+    // sort by last used descending, nulls first
+    constructs.sort((a, b) {
+      final dateA = a.lastUsed;
+      final dateB = b.lastUsed;
+      if (dateA == null && dateB == null) return 0;
+      if (dateA == null) return -1;
+      if (dateB == null) return 1;
+      return dateA.compareTo(dateB);
+    });
+
+    final Set<String> seenLemmas = {};
+    final Set<String> seenEventIds = {};
+    final targets = <ConstructIdentifier, AudioExampleMessage>{};
+
+    for (final construct in constructs) {
+      if (targets.length >=
+          (AnalyticsPracticeConstants.practiceGroupSize +
+              AnalyticsPracticeConstants.errorBufferSize)) {
+        break;
+      }
+
+      if (seenLemmas.contains(construct.lemma)) continue;
+
+      // Try to get an audio example message with token data for this lemma
+      final audioExampleMessage =
+          await ExampleMessageUtil.getAudioExampleMessage(
+            await MatrixState.pangeaController.matrixState.analyticsDataService
+                .getConstructUse(construct.id),
+            MatrixState.pangeaController.matrixState.client,
+            noBold: true,
+          );
+
+      // Only add to targets if we found an example message AND its eventId hasn't been used
+      if (audioExampleMessage != null) {
+        final eventId = audioExampleMessage.eventId;
+        if (eventId != null && seenEventIds.contains(eventId)) {
+          continue;
+        }
+
+        seenLemmas.add(construct.lemma);
+        if (eventId != null) {
+          seenEventIds.add(eventId);
+        }
+        targets[construct.id] = audioExampleMessage;
       }
     }
     return targets;
@@ -245,19 +319,26 @@ class AnalyticsPracticeSessionRepo {
   }
 
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
-    // Fetch all recent uses in one call (not filtering blocked constructs)
     final allRecentUses = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getUses(count: 200, filterCapped: false);
+        .getUses(
+          count: 300,
+          filterCapped: false,
+          types: [
+            ConstructUseTypeEnum.ga,
+            ConstructUseTypeEnum.corGE,
+            ConstructUseTypeEnum.incGE,
+          ],
+        );
 
     // Filter for grammar error uses
     final grammarErrorUses = allRecentUses
         .where((use) => use.useType == ConstructUseTypeEnum.ga)
         .toList();
 
-    // Create list of recently used constructs
+    // Create list of recently practiced constructs (last 24 hours)
     final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
     final recentlyPracticedConstructs = allRecentUses
         .where(

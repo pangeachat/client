@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2021-08-14 12:41:09.903021",
+  "@@last_modified": "2026-02-09 15:32:37.241817",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10831,8 +10831,6 @@
   "congratulations": "Поздравляем!",
   "anotherRound": "Еще один раунд",
   "noActivityRequest": "Нет текущего запроса на активность.",
-  "quit": "Выйти",
-  "congratulationsYouveCompletedPractice": "Поздравляем! Вы завершили практическую сессию.",
   "mustHave10Words": "Вы должны иметь как минимум 10 слов для практики. Попробуйте поговорить с другом или Pangea Bot, чтобы узнать больше!",
   "botSettings": "Настройки бота",
   "activitySettingsOverrideWarning": "Язык и уровень языка определяются планом активности",
@@ -10878,14 +10876,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11078,6 +11068,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Обо мне",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Идиома",
   "grammarCopyPOSphrasalv": "Фразовый глагол",
   "grammarCopyPOScompn": "Составное",
@@ -11090,6 +11085,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Идеальная практика!",
+  "greatPractice": "Отличная практика!",
+  "usedNoHints": "Хорошая работа, что не использовали подсказки!",
+  "youveCompletedPractice": "Вы завершили практику, продолжайте в том же духе, чтобы стать лучше!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Сменить электронную почту",
+  "withTheseAddressesDescription": "С помощью этих адресов электронной почты вы можете войти в систему, восстановить пароль и управлять подписками.",
+  "noAddressDescription": "Вы еще не добавили ни одного адреса электронной почты.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Грамматика",
+  "spanTypeWordChoice": "Выбор слов",
+  "spanTypeSpelling": "Орфография",
+  "spanTypePunctuation": "Пунктуация",
+  "spanTypeStyle": "Стиль",
+  "spanTypeFluency": "Связность",
+  "spanTypeAccents": "Акценты",
+  "spanTypeCapitalization": "Капитализация",
+  "spanTypeCorrection": "Коррекция",
+  "spanFeedbackTitle": "Сообщить о проблеме с коррекцией",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

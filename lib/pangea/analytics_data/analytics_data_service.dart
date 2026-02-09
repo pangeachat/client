@@ -241,7 +241,7 @@ class AnalyticsDataService {
     int? count,
     String? roomId,
     DateTime? since,
-    ConstructUseTypeEnum? type,
+    List<ConstructUseTypeEnum>? types,
     bool filterCapped = true,
   }) async {
     await _ensureInitialized();
@@ -249,7 +249,7 @@ class AnalyticsDataService {
       count: count,
       roomId: roomId,
       since: since,
-      type: type,
+      types: types,
     );
 
     final blocked = blockedConstructs;
@@ -442,7 +442,12 @@ class AnalyticsDataService {
       final offset = lowerLevelXP - newData.totalXP;
       await MatrixState.pangeaController.userController.addXPOffset(offset);
       await updateXPOffset(
-        MatrixState.pangeaController.userController.analyticsProfile!.xpOffset!,
+        MatrixState
+            .pangeaController
+            .userController
+            .publicProfile!
+            .analytics
+            .xpOffset!,
       );
     }
 

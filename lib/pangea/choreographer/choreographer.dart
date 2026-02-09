@@ -281,11 +281,22 @@ class Choreographer extends ChangeNotifier {
     }
 
     _stopLoading();
-    if (!igcController.openMatches.any(
-      (match) => match.updatedMatch.isITStart,
-    )) {
-      igcController.fetchAllSpanDetails().catchError((e) => clearMatches(e));
+  }
+
+  /// Re-runs IGC with user feedback and updates the UI.
+  Future<bool> rerunWithFeedback(String feedbackText) async {
+    MatrixState.pAnyState.closeAllOverlays();
+    igcController.clearMatches();
+    igcController.clearCurrentText();
+
+    _startLoading();
+    final success = await igcController.rerunWithFeedback(feedbackText);
+    if (success && igcController.openAutomaticMatches.isNotEmpty) {
+      await igcController.acceptNormalizationMatches();
     }
+    _stopLoading();
+
+    return success;
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {

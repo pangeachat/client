@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:09.857024",
+  "@@last_modified": "2026-02-09 15:32:41.761528",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11822,8 +11822,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Nema trenutnog zahteva za aktivnost.",
-  "quit": "Izlaz",
-  "congratulationsYouveCompletedPractice": "Čestitamo! Završili ste sesiju vežbanja.",
   "mustHave10Words": "Morate imati najmanje 10 reči za rečnik da biste ih vežbali. Pokušajte da razgovarate sa prijateljem ili Pangea Bot-om da biste otkrili više!",
   "botSettings": "Podešavanja Bota",
   "activitySettingsOverrideWarning": "Jezik i nivo jezika određeni planom aktivnosti",
@@ -11869,14 +11867,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12055,6 +12045,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "О мени",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Kombinacija",
@@ -12067,6 +12062,91 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Savršena praksa!",
+  "greatPractice": "Sjajna praksa!",
+  "usedNoHints": "Odlično, niste koristili nikakve savete!",
+  "youveCompletedPractice": "Završili ste praksu, nastavite tako da postanete bolji!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Promeni email",
+  "withTheseAddressesDescription": "Sa ovim email adresama možete se prijaviti, povratiti svoju lozinku i upravljati pretplatama.",
+  "noAddressDescription": "Još niste dodali nijednu email adresu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Izbor reči",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcija",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Tečnost",
+  "spanTypeAccents": "Akcenti",
+  "spanTypeCapitalization": "Velika slova",
+  "spanTypeCorrection": "Ispravka",
+  "spanFeedbackTitle": "Prijavi problem sa ispravkom",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }
