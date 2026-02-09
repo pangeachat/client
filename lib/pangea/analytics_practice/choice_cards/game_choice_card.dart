@@ -155,8 +155,8 @@ class _CardContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: shrinkWrap ? null : height,
-      padding: shrinkWrap 
-          ? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0) 
+      padding: shrinkWrap
+          ? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0)
           : null,
       alignment: shrinkWrap ? null : Alignment.center,
       decoration: BoxDecoration(
