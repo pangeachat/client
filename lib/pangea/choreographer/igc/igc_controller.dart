@@ -372,9 +372,6 @@ class IgcController {
       return false;
     }
 
-    // Close existing overlays (span card popup)
-    MatrixState.pAnyState.closeAllOverlays();
-
     // Create feedback containing the original response
     final feedback = LLMFeedbackModel<IGCResponseModel>(
       feedback: feedbackText,
@@ -383,8 +380,7 @@ class IgcController {
     );
 
     // Clear existing matches and state
-    _openMatches.clear();
-    _closedMatches.clear();
+    clearMatches();
     _isFetching = true;
 
     // Notify UI that we're fetching (shows loading indicator)

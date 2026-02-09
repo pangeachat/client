@@ -295,6 +295,8 @@ class Choreographer extends ChangeNotifier {
 
   /// Re-runs IGC with user feedback and updates the UI.
   Future<bool> rerunWithFeedback(String feedbackText) async {
+    // Close existing overlays (span card popup)
+    MatrixState.pAnyState.closeAllOverlays();
     final success = await igcController.rerunWithFeedback(feedbackText);
     if (success) {
       // Trigger a re-render of the text field to show new IGC matches
