@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:17.896498",
+  "@@last_modified": "2026-02-09 11:09:57.785827",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11826,8 +11826,6 @@
   "congratulations": "Gratulon!",
   "anotherRound": "Alia rundo",
   "noActivityRequest": "Neniu aktuala aktivitecpeticio.",
-  "quit": "Eliri",
-  "congratulationsYouveCompletedPractice": "Gratulojn! Vi kompletigis la praktikadon.",
   "mustHave10Words": "Vi devas havi almenaŭ 10 vortojn por praktiki ilin. Provu paroli kun amiko aŭ Pangea Bot por malkovri pli!",
   "botSettings": "Botaj Agordoj",
   "activitySettingsOverrideWarning": "Lingvo kaj lingvonivelo determinita de la aktiviteca plano",
@@ -11873,14 +11871,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12059,6 +12049,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Pri mi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Kunmetita",
@@ -12071,6 +12066,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perfekta praktiko!",
+  "greatPractice": "Granda praktiko!",
+  "usedNoHints": "Bonega laboro ne uzi iujn sugestojn!",
+  "youveCompletedPractice": "Vi finis la praktikon, daŭrigu por pliboniĝi!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ŝanĝi retpoŝton",
+  "withTheseAddressesDescription": "Kun ĉi tiuj retpoŝtaj adresoj vi povas ensaluti, rekuperi vian pasvorton, kaj administri abonojn.",
+  "noAddressDescription": "Vi ankoraŭ ne aldonis iujn retpoŝtajn adresojn.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

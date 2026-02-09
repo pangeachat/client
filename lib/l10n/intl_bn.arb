@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:08.830801",
+  "@@last_modified": "2026-02-09 11:09:46.816075",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11841,8 +11841,6 @@
   "congratulations": "অভিনন্দন!",
   "anotherRound": "আরেকটি রাউন্ড",
   "noActivityRequest": "বর্তমান কোন কার্যকলাপের অনুরোধ নেই।",
-  "quit": "বিরতি",
-  "congratulationsYouveCompletedPractice": "অভিনন্দন! আপনি অনুশীলন সেশন সম্পন্ন করেছেন।",
   "mustHave10Words": "আপনার অনুশীলনের জন্য অন্তত 10টি শব্দ থাকতে হবে। আরও জানার জন্য একটি বন্ধুর সাথে কথা বলুন বা Pangea Bot এর সাথে কথা বলুন!",
   "botSettings": "বট সেটিংস",
   "activitySettingsOverrideWarning": "কার্যকলাপ পরিকল্পনার দ্বারা নির্ধারিত ভাষা এবং ভাষার স্তর",
@@ -11888,14 +11886,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12074,6 +12064,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "আমার সম্পর্কে",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "বাগধারা",
   "grammarCopyPOSphrasalv": "ফ্রেজাল ক্রিয়া",
   "grammarCopyPOScompn": "যুগ্ম",
@@ -12086,6 +12081,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "পারফেক্ট প্র্যাকটিস!",
+  "greatPractice": "দারুণ প্র্যাকটিস!",
+  "usedNoHints": "কোনো হিন্ট ব্যবহার না করার জন্য ভালো কাজ!",
+  "youveCompletedPractice": "আপনি প্র্যাকটিস সম্পন্ন করেছেন, উন্নতির জন্য এভাবে চালিয়ে যান!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ইমেইল পরিবর্তন করুন",
+  "withTheseAddressesDescription": "এই ইমেইল ঠিকানাগুলির মাধ্যমে আপনি লগ ইন করতে, আপনার পাসওয়ার্ড পুনরুদ্ধার করতে এবং সাবস্ক্রিপশন পরিচালনা করতে পারেন।",
+  "noAddressDescription": "আপনি এখনও কোন ইমেইল ঠিকানা যোগ করেননি।",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

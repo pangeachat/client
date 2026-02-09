@@ -313,17 +313,24 @@ class AnalyticsPracticeSessionRepo {
   }
 
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
-    // Fetch all recent uses in one call (not filtering blocked constructs)
     final allRecentUses = await MatrixState
         .pangeaController.matrixState.analyticsDataService
-        .getUses(count: 200, filterCapped: false);
+        .getUses(
+      count: 300,
+      filterCapped: false,
+      types: [
+        ConstructUseTypeEnum.ga,
+        ConstructUseTypeEnum.corGE,
+        ConstructUseTypeEnum.incGE,
+      ],
+    );
 
     // Filter for grammar error uses
     final grammarErrorUses = allRecentUses
         .where((use) => use.useType == ConstructUseTypeEnum.ga)
         .toList();
 
-    // Create list of recently used constructs
+    // Create list of recently practiced constructs (last 24 hours)
     final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
     final recentlyPracticedConstructs = allRecentUses
         .where(

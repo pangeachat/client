@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:47.712187",
+  "@@last_modified": "2026-02-09 11:09:24.612806",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10761,8 +10761,6 @@
   "congratulations": "Felicitats!",
   "anotherRound": "Una altra ronda",
   "noActivityRequest": "No hi ha cap sol·licitud d'activitat actual.",
-  "quit": "Sortir",
-  "congratulationsYouveCompletedPractice": "Felicitats! Has completat la sessió de pràctica.",
   "mustHave10Words": "Has de tenir almenys 10 paraules de vocabulari per practicar-les. Prova a parlar amb un amic o amb el Pangea Bot per descobrir-ne més!",
   "botSettings": "Configuració del Bot",
   "activitySettingsOverrideWarning": "Idioma i nivell d'idioma determinats pel pla d'activitat",
@@ -10808,14 +10806,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10994,6 +10984,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Sobre mi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verb Phrasal",
   "grammarCopyPOScompn": "Compost",
@@ -11006,6 +11001,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Pràctica perfecta!",
+  "greatPractice": "Gran pràctica!",
+  "usedNoHints": "Bon treball sense utilitzar cap pista!",
+  "youveCompletedPractice": "Has completat la pràctica, continua així per millorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Canvia l'email",
+  "withTheseAddressesDescription": "Amb aquestes adreces de correu electrònic pots iniciar sessió, recuperar la teva contrasenya i gestionar les subscripcions.",
+  "noAddressDescription": "Encara no has afegit cap adreça de correu electrònic.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

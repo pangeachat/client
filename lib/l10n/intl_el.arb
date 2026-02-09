@@ -4453,7 +4453,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-02-05 10:10:14.390437",
+  "@@last_modified": "2026-02-09 11:09:52.785391",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11795,8 +11795,6 @@
   "congratulations": "Συγχαρητήρια!",
   "anotherRound": "Μια ακόμη γύρος",
   "noActivityRequest": "Δεν υπάρχει τρέχουσα αίτηση δραστηριότητας.",
-  "quit": "Έξοδος",
-  "congratulationsYouveCompletedPractice": "Συγχαρητήρια! Έχετε ολοκληρώσει την πρακτική συνεδρία.",
   "mustHave10Words": "Πρέπει να έχετε τουλάχιστον 10 λέξεις λεξιλογίου για να τις εξασκήσετε. Δοκιμάστε να μιλήσετε με έναν φίλο ή με τον Pangea Bot για να ανακαλύψετε περισσότερα!",
   "botSettings": "Ρυθμίσεις Bot",
   "activitySettingsOverrideWarning": "Η γλώσσα και το επίπεδο γλώσσας καθορίζονται από το σχέδιο δραστηριότητας",
@@ -11842,14 +11840,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12028,6 +12018,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Σχετικά με εμένα",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Ιδιωματισμός",
   "grammarCopyPOSphrasalv": "Φραστικό Ρήμα",
   "grammarCopyPOScompn": "Σύνθετο",
@@ -12040,6 +12035,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Τέλεια πρακτική!",
+  "greatPractice": "Υπέροχη πρακτική!",
+  "usedNoHints": "Καλή δουλειά που δεν χρησιμοποίησες καθόλου υποδείξεις!",
+  "youveCompletedPractice": "Έχεις ολοκληρώσει την πρακτική, συνέχισε έτσι για να γίνεις καλύτερος!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Αλλαγή email",
+  "withTheseAddressesDescription": "Με αυτές τις διευθύνσεις email μπορείτε να συνδεθείτε, να ανακτήσετε τον κωδικό πρόσβασής σας και να διαχειριστείτε τις συνδρομές.",
+  "noAddressDescription": "Δεν έχετε προσθέσει καμία διεύθυνση email μέχρι στιγμής.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1917,7 +1917,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-02-05 10:09:59.064928",
+  "@@last_modified": "2026-02-09 11:09:36.591690",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11826,8 +11826,6 @@
   "congratulations": "అభినందనలు!",
   "anotherRound": "మరొక రౌండ్",
   "noActivityRequest": "ప్రస్తుతం ఎలాంటి కార్యకలాపం అభ్యర్థన లేదు.",
-  "quit": "విడుదల",
-  "congratulationsYouveCompletedPractice": "అభినందనలు! మీరు అభ్యాస సెషన్‌ను పూర్తి చేశారు.",
   "mustHave10Words": "మీరు వాటిని అభ్యాసం చేయడానికి కనీసం 10 పదాలను కలిగి ఉండాలి. మరింత తెలుసుకోవడానికి మీ స్నేహితుడితో లేదా పాంజియా బాట్‌తో మాట్లాడండి!",
   "botSettings": "బాట్ సెట్టింగులు",
   "activitySettingsOverrideWarning": "కార్యకలాపం ప్రణాళిక ద్వారా నిర్ణయించబడిన భాష మరియు భాష స్థాయి",
@@ -11873,14 +11871,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12059,6 +12049,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "నా గురించి",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "సామెత",
   "grammarCopyPOSphrasalv": "పదబంధ క్రియ",
   "grammarCopyPOScompn": "సంకలనం",
@@ -12071,6 +12066,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "సంపూర్ణ అభ్యాసం!",
+  "greatPractice": "మంచి అభ్యాసం!",
+  "usedNoHints": "ఏ సూచనలు ఉపయోగించకపోవడం మంచి పని!",
+  "youveCompletedPractice": "మీరు అభ్యాసం పూర్తి చేసారు, మెరుగుపడటానికి ఇలాగే కొనసాగించండి!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ఇమెయిల్ మార్చండి",
+  "withTheseAddressesDescription": "ఈ ఇమెయిల్ చిరునామాలతో మీరు లాగిన్ అవ్వవచ్చు, మీ పాస్వర్డ్‌ను పునరుద్ధరించవచ్చు మరియు సబ్‌స్క్రిప్షన్లను నిర్వహించవచ్చు.",
+  "noAddressDescription": "మీరు ఇంకా ఎలాంటి ఇమెయిల్ చిరునామాలను జోడించలేదు.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

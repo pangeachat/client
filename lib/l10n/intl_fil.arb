@@ -2784,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-05 10:09:53.428313",
+  "@@last_modified": "2026-02-09 11:09:29.936599",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11713,8 +11713,6 @@
   "congratulations": "Binabati kita!",
   "anotherRound": "Isa pang round",
   "noActivityRequest": "Walang kasalukuyang kahilingan sa aktibidad.",
-  "quit": "Lumabas",
-  "congratulationsYouveCompletedPractice": "Binabati kita! Natapos mo na ang sesyon ng pagsasanay.",
   "mustHave10Words": "Dapat mayroon kang hindi bababa sa 10 salita ng bokabularyo upang sanayin ang mga ito. Subukan mong makipag-usap sa isang kaibigan o sa Pangea Bot upang matuklasan pa!",
   "botSettings": "Mga Setting ng Bot",
   "activitySettingsOverrideWarning": "Wika at antas ng wika na tinutukoy ng plano ng aktibidad",
@@ -11760,14 +11758,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11946,6 +11936,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Tungkol sa akin",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idyoma",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Pinagsama",
@@ -11958,6 +11953,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Perpektong pagsasanay!",
+  "greatPractice": "Mahusay na pagsasanay!",
+  "usedNoHints": "Magandang trabaho sa hindi paggamit ng anumang mga pahiwatig!",
+  "youveCompletedPractice": "Natapos mo na ang pagsasanay, ipagpatuloy mo lang ito upang maging mas mahusay!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Palitan ang email",
+  "withTheseAddressesDescription": "Sa mga email address na ito, maaari kang mag-log in, i-recover ang iyong password, at pamahalaan ang mga subscription.",
+  "noAddressDescription": "Wala ka pang naidagdag na anumang email address.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

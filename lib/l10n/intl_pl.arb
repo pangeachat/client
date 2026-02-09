@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-05 10:10:11.791789",
+  "@@last_modified": "2026-02-09 11:09:49.851439",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10735,8 +10735,6 @@
   "congratulations": "Gratulacje!",
   "anotherRound": "Kolejna runda",
   "noActivityRequest": "Brak bieżącego żądania aktywności.",
-  "quit": "Zakończ",
-  "congratulationsYouveCompletedPractice": "Gratulacje! Ukończyłeś sesję ćwiczeń.",
   "mustHave10Words": "Musisz mieć co najmniej 10 słówek do ćwiczenia. Spróbuj porozmawiać z przyjacielem lub Pangea Bot, aby odkryć więcej!",
   "botSettings": "Ustawienia bota",
   "activitySettingsOverrideWarning": "Język i poziom językowy określone przez plan aktywności",
@@ -10782,14 +10780,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10968,6 +10958,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O mnie",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Czasownik frazowy",
   "grammarCopyPOScompn": "Złożony",
@@ -10980,6 +10975,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Idealna praktyka!",
+  "greatPractice": "Świetna praktyka!",
+  "usedNoHints": "Dobra robota, że nie korzystałeś z żadnych wskazówek!",
+  "youveCompletedPractice": "Ukończyłeś praktykę, kontynuuj, aby się poprawić!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmień adres e-mail",
+  "withTheseAddressesDescription": "Dzięki tym adresom e-mail możesz się zalogować, odzyskać hasło i zarządzać subskrypcjami.",
+  "noAddressDescription": "Nie dodałeś jeszcze żadnych adresów e-mail.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

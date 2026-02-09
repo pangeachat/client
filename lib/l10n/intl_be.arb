@@ -1908,7 +1908,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-05 10:09:46.469770",
+  "@@last_modified": "2026-02-09 11:09:23.199652",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11836,8 +11836,6 @@
   "congratulations": "Сардэчна віншуем!",
   "anotherRound": "Яшчэ адзін раунд",
   "noActivityRequest": "Няма бягучага запыту на актыўнасць.",
-  "quit": "Выйсці",
-  "congratulationsYouveCompletedPractice": "Сардэчна віншуем! Вы завяршылі сесію практыкі.",
   "mustHave10Words": "Вы павінны мець не менш за 10 слоў для практыкавання. Паспрабуйце пагаварыць з сябрам або Pangea Bot, каб даведацца больш!",
   "botSettings": "Налады бота",
   "activitySettingsOverrideWarning": "Мова і ўзровень мовы вызначаюцца планам актыўнасці",
@@ -11883,14 +11881,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12069,6 +12059,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Пра мяне",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Ідыём",
   "grammarCopyPOSphrasalv": "Фразавы дзеяслоў",
   "grammarCopyPOScompn": "Складаны",
@@ -12081,6 +12076,41 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Ідэальная практыка!",
+  "greatPractice": "Выдатная практыка!",
+  "usedNoHints": "Малайчына, што не карыстаўся падказкамі!",
+  "youveCompletedPractice": "Вы завяршылі практыку, працягвайце, каб стаць лепшым!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Змяніць электронную пошту",
+  "withTheseAddressesDescription": "З гэтымі электроннымі адрасамі вы можаце ўвайсці, аднавіць свой пароль і кіраваць падпіскамі.",
+  "noAddressDescription": "Вы яшчэ не дабавілі ніводнага электроннага адрасу.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }
