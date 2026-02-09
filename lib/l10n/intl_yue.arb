@@ -1853,7 +1853,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-29 15:24:47.783824",
+  "@@last_modified": "2026-02-05 10:09:39.916672",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12058,6 +12058,21 @@
   },
   "emptyAudioError": "錄音失敗。請檢查您的音頻權限並重試。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "成語",
+  "grammarCopyPOSphrasalv": "短語動詞",
+  "grammarCopyPOScompn": "複合詞",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

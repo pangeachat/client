@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-29 15:24:42.742766",
+  "@@last_modified": "2026-02-05 10:09:34.897101",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12067,6 +12067,21 @@
   },
   "emptyAudioError": "A gravação falhou. Verifique suas permissões de áudio e tente novamente.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frasal",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

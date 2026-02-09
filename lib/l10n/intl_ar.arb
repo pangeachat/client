@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-29 15:25:01.121856",
+  "@@last_modified": "2026-02-05 10:09:56.397837",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11184,6 +11184,21 @@
   },
   "emptyAudioError": "فشل التسجيل. يرجى التحقق من أذونات الصوت الخاصة بك والمحاولة مرة أخرى.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "تعبير اصطلاحي",
+  "grammarCopyPOSphrasalv": "فعل مركب",
+  "grammarCopyPOScompn": "مركب",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

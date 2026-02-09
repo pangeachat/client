@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-29 15:25:17.739953",
+  "@@last_modified": "2026-02-05 10:10:15.587333",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11757,6 +11757,21 @@
   },
   "emptyAudioError": "録音に失敗しました。オーディオの権限を確認して、再試行してください。",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "イディオム",
+  "grammarCopyPOSphrasalv": "句動詞",
+  "grammarCopyPOScompn": "複合語",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

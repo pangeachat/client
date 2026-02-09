@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-29 15:25:13.973596",
+  "@@last_modified": "2026-02-05 10:10:11.791789",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10965,6 +10965,21 @@
   },
   "emptyAudioError": "Nagrywanie nie powiodło się. Sprawdź swoje uprawnienia audio i spróbuj ponownie.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Czasownik frazowy",
+  "grammarCopyPOScompn": "Złożony",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

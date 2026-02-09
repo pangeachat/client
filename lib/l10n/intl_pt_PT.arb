@@ -3328,7 +3328,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-29 15:24:56.954106",
+  "@@last_modified": "2026-02-05 10:09:50.725651",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11996,6 +11996,21 @@
   },
   "emptyAudioError": "A gravação falhou. Por favor, verifique suas permissões de áudio e tente novamente.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Verbo Frasal",
+  "grammarCopyPOScompn": "Composto",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }

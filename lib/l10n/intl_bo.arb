@@ -4276,7 +4276,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-29 15:25:08.749600",
+  "@@last_modified": "2026-02-05 10:10:06.262776",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10721,6 +10721,21 @@
   },
   "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
   "@emptyAudioError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "grammarCopyPOSidiom": "Idiom",
+  "grammarCopyPOSphrasalv": "Phrasal Verb",
+  "grammarCopyPOScompn": "Compound",
+  "@grammarCopyPOSidiom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOSphrasalv": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@grammarCopyPOScompn": {
     "type": "String",
     "placeholders": {}
   }
