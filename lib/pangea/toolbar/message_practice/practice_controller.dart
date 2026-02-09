@@ -169,6 +169,9 @@ class PracticeController with ChangeNotifier {
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
     if (_activity == null) return;
+    debugPrint(
+      "CHOICE CONTENT: ${choice.choiceContent}, TOKEN TEXT: ${token.text.content}",
+    );
     final isCorrect = PracticeRecordController.onSelectChoice(
       choice.choiceContent,
       token,
@@ -216,21 +219,20 @@ class PracticeController with ChangeNotifier {
           choice.form.cId,
           emoji: choice.choiceContent,
         );
-        TtsController.tryToSpeak(
-          choice.form.form,
-          langCode:
-              MatrixState.pangeaController.userController.userL2!.langCode,
+      }
+
+      if (_activity is LemmaMeaningPracticeActivityModel) {
+        updateService.setLemmaInfo(
+          choice.form.cId,
+          meaning: choice.choiceContent,
         );
       }
     }
 
-    if (_activity is LemmaMeaningPracticeActivityModel) {
-      updateService.setLemmaInfo(
-        choice.form.cId,
-        meaning: choice.choiceContent,
-      );
+    if (_activity is LemmaMeaningPracticeActivityModel ||
+        _activity is EmojiPracticeActivityModel) {
       TtsController.tryToSpeak(
-        choice.form.form,
+        token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,
       );
     }
