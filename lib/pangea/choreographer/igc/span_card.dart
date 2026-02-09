@@ -92,21 +92,19 @@ class SpanCardState extends State<SpanCard> {
     }
   }
 
-  void _showFeedbackDialog() {
-    showDialog(
+  Future<void> _showFeedbackDialog() async {
+    final resp = await showDialog(
       context: context,
       builder: (context) => FeedbackDialog(
         title: L10n.of(context).spanFeedbackTitle,
-        onSubmit: (feedbackText) async {
-          Navigator.of(context).pop();
-          setState(() {});
-          final success = await widget.onFeedbackSubmitted(feedbackText);
-          if (mounted && success) {
-            setState(() {});
-          }
-        },
+        onSubmit: (feedback) => Navigator.of(context).pop(feedback),
       ),
     );
+    if (resp == null || resp.isEmpty) {
+      return;
+    }
+
+    await widget.onFeedbackSubmitted(resp);
   }
 
   @override

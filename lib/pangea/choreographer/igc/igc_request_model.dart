@@ -4,27 +4,28 @@ import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class IGCRequestModel with BaseRequestModel {
   final String fullText;
-  @override
-  final String userL1;
-  @override
-  final String userL2;
   final bool enableIT;
   final bool enableIGC;
   final String userId;
   final List<PreviousMessage> prevMessages;
   final List<LLMFeedbackModel<IGCResponseModel>> feedback;
 
-  /// CEFR level not used in IGC requests currently
   @override
-  String get userCefr => 'pre_a1';
+  String get userCefr => MatrixState
+      .pangeaController.userController.profile.userSettings.cefrLevel.string;
+
+  @override
+  String get userL1 => MatrixState.pangeaController.userController.userL1Code!;
+
+  @override
+  String get userL2 => MatrixState.pangeaController.userController.userL2Code!;
 
   const IGCRequestModel({
     required this.fullText,
-    required this.userL1,
-    required this.userL2,
     required this.enableIGC,
     required this.enableIT,
     required this.userId,
@@ -38,8 +39,6 @@ class IGCRequestModel with BaseRequestModel {
   ) =>
       IGCRequestModel(
         fullText: fullText,
-        userL1: userL1,
-        userL2: userL2,
         enableIGC: enableIGC,
         enableIT: enableIT,
         userId: userId,

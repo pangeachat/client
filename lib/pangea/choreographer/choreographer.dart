@@ -242,13 +242,7 @@ class Choreographer extends ChangeNotifier {
   Future<void> requestWritingAssistance({
     bool manual = false,
   }) async {
-    // @ggurdin - attempting to allow re-running when the user is not satisfied with the result.
-    // i'm a little unsure what the different states are here
-    // Allow re-running if not fetched OR if complete (no open matches remaining)
-    if (assistanceState != AssistanceStateEnum.notFetched &&
-        assistanceState != AssistanceStateEnum.complete) {
-      return;
-    }
+    if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
