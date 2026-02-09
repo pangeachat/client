@@ -261,7 +261,7 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
 
   /// Returns the underline color for this replacement type.
   /// Used to visually distinguish different error categories in the text field.
-  Color underlineColor(BuildContext context) {
+  Color underlineColor() {
     // IT start and auto-apply types use primary color
     if (this == ReplacementTypeEnum.itStart || isAutoApply) {
       return AppConfig.primaryColor.withAlpha(180);
@@ -281,7 +281,7 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
         return Colors.teal.withAlpha(180);
       default:
         // Other/unknown use error color
-        return Theme.of(context).colorScheme.error.withAlpha(180);
+        return AppConfig.error.withAlpha(180);
     }
   }
 

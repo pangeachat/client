@@ -34,21 +34,20 @@ class PangeaTextController extends TextEditingController {
         decorationThickness: 5,
       );
 
-  Color _underlineColor(PangeaMatch match, BuildContext context) {
+  Color _underlineColor(PangeaMatch match) {
     // Automatic corrections use primary color
     if (match.status == PangeaMatchStatusEnum.automatic) {
       return AppConfig.primaryColor.withAlpha(180);
     }
 
     // Use type-based coloring
-    return match.match.type.underlineColor(context);
+    return match.match.type.underlineColor();
   }
 
   TextStyle _textStyle(
     PangeaMatch match,
     TextStyle? existingStyle,
     bool isOpenMatch,
-    BuildContext context,
   ) {
     double opacityFactor = 1.0;
     if (!isOpenMatch) {
@@ -56,8 +55,7 @@ class PangeaTextController extends TextEditingController {
     }
 
     final alpha = (255 * opacityFactor).round();
-    final style =
-        _underlineStyle(_underlineColor(match, context).withAlpha(alpha));
+    final style = _underlineStyle(_underlineColor(match).withAlpha(alpha));
     return existingStyle?.merge(style) ?? style;
   }
 
@@ -123,7 +121,7 @@ class PangeaTextController extends TextEditingController {
     return TextSpan(
       style: style,
       children: [
-        ..._buildTokenSpan(defaultStyle: style, context: context),
+        ..._buildTokenSpan(defaultStyle: style),
         TextSpan(text: parts[1], style: style),
       ],
     );
@@ -175,7 +173,6 @@ class PangeaTextController extends TextEditingController {
   /// with the appropriate styling for each error match.
   List<InlineSpan> _buildTokenSpan({
     TextStyle? defaultStyle,
-    required BuildContext context,
   }) {
     final textSpanMatches = [
       ...choreographer.igcController.openMatches,
@@ -205,7 +202,6 @@ class PangeaTextController extends TextEditingController {
         openMatch != null &&
             openMatch.offset == match.updatedMatch.match.offset &&
             openMatch.length == match.updatedMatch.match.length,
-        context,
       );
 
       spans.add(_buildMatchSpan(match, style));
