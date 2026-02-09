@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Aucun";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Vous n'avez pas encore ajout\xe9 de moyen pour r\xe9cup\xe9rer votre mot de passe.";
-    },
     get$noPermission() {
       return "Aucune permission";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Le mot de passe a \xe9t\xe9 modifi\xe9";
-    },
-    get$passwordRecoverySettings() {
-      return "Param\xe8tres de r\xe9cup\xe9ration de mot de passe";
-    },
-    get$passwordRecovery() {
-      return "R\xe9cup\xe9ration du mot de passe";
     },
     get$pickImage() {
       return "Choisir une image";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Pourquoi voulez-vous le signaler ?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Gr\xe2ce \xe0 ces adresses, vous pouvez r\xe9cup\xe9rer votre mot de passe si vous en avez besoin.";
     },
     get$writeAMessage() {
       return "\xc9crivez un message\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "L'enregistrement a \xe9chou\xe9. Veuillez v\xe9rifier vos autorisations audio et r\xe9essayer.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Pratique parfaite !";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eTq0tyKP8OMfgfGpPg/6jT1nFgw="] = d.current;
+  d["OfL+9Dk1EjhpYmzY5VOMHettvqg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map

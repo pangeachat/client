@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u306a\u3057";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u56de\u5fa9\u3059\u308b\u65b9\u6cd5\u3092\u307e\u3060\u8ffd\u52a0\u3057\u3066\u3044\u307e\u305b\u3093\u3002";
-    },
     get$noPermission() {
       return "\u6a29\u9650\u304c\u3042\u308a\u307e\u305b\u3093";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f";
-    },
-    get$passwordRecoverySettings() {
-      return "\u30d1\u30b9\u30ef\u30fc\u30c9\u30ea\u30ab\u30d0\u30ea\u30fc\u8a2d\u5b9a";
-    },
-    get$passwordRecovery() {
-      return "\u30d1\u30b9\u30ef\u30fc\u30c9\u30ea\u30ab\u30d0\u30ea\u30fc";
     },
     get$pickImage() {
       return "\u753b\u50cf\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\u3053\u308c\u3092\u901a\u5831\u3059\u308b\u7406\u7531";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "\u3053\u308c\u3089\u306e\u30a2\u30c9\u30ec\u30b9\u3092\u4f7f\u7528\u3059\u308b\u3068\u3001\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u56de\u5fa9\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002";
     },
     get$writeAMessage() {
       return "\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9332\u97f3\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u30aa\u30fc\u30c7\u30a3\u30aa\u306e\u6a29\u9650\u3092\u78ba\u8a8d\u3057\u3066\u3001\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "\u5b8c\u74a7\u306a\u7df4\u7fd2\uff01";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R1CBQ65rJHDbQLcPZI52pALD6lU="] = d.current;
+  d["A8GvqdMpgCXY7hYGHAJ2qpudLFc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Keiner";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Du hast bisher keine M\xf6glichkeit hinzugef\xfcgt, um dein Passwort zur\xfcckzusetzen.";
-    },
     get$noPermission() {
       return "Keine Berechtigung";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Passwort wurde ge\xe4ndert";
-    },
-    get$passwordRecoverySettings() {
-      return "Passwort-Wiederherstellungs-Einstellungen";
-    },
-    get$passwordRecovery() {
-      return "Passwort wiederherstellen";
     },
     get$pickImage() {
       return "Bild w\xe4hlen";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Warum willst du dies melden?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Mit diesen Adressen kannst du dein Passwort wiederherstellen, wenn du es vergessen hast.";
     },
     get$writeAMessage() {
       return "Schreibe eine Nachricht \u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Die Aufnahme ist fehlgeschlagen. Bitte \xfcberpr\xfcfen Sie Ihre Audio-Berechtigungen und versuchen Sie es erneut.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perfekte \xdcbung!";
     },
@@ -5390,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/RVfMF/mCB1DAYtS0KdVp0MN7q4="] = d.current;
+  d["ETs4YETsWoxz8ZUORLJnFIJya9Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_392.part.js.map

@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Tidak Ada";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Kamu belum menambahkan cara untuk memulihkan kata sandimu.";
-    },
     get$noPermission() {
       return "Tidak ada izin";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Kata sandi telah diubah";
-    },
-    get$passwordRecoverySettings() {
-      return "Pengaturan pemulihan kata sandi";
-    },
-    get$passwordRecovery() {
-      return "Pemulihan kata sandi";
     },
     get$pickImage() {
       return "Pilih gambar";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Kenapa kamu ingin melaporkannya?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Dengan alamat ini kamu bisa memulihkan kata sandimu.";
     },
     get$writeAMessage() {
       return "Tulis pesan\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Perekaman gagal. Silakan periksa izin audio Anda dan coba lagi.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Latihan yang sempurna!";
     },
@@ -5390,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QRqwqolcYIohyIFPR9aVCn0Jwmc="] = d.current;
+  d["5VcTr5PQyv8HIVjCgEH3NrWn9cc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_698.part.js.map

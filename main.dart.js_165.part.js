@@ -587,9 +587,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u0f58\u0f72\u0f0d";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f44\u0f0b\u0f42\u0f72\u0f66\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f0b\u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f51\u0f7a\u0f56\u0f66\u0f0b\u0f63\u0f0b\u0f63\u0f7a\u0f42\u0f66\u0f0b\u0f66\u0f7c\u0f0d";
-    },
     get$noPermission() {
       return "\u0f42\u0f51\u0f7c\u0f44\u0f66\u0f0b\u0f58\u0f7a\u0f51\u0f0d";
     },
@@ -640,12 +637,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "\u0f42\u0f66\u0f63\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f62\u0f9f\u0f7c\u0f42\u0f66\u0f0b\u0f66\u0f7c\u0f44\u0f0b\u0f56\u0f5e\u0f42";
-    },
-    get$passwordRecoverySettings() {
-      return "\u0f42\u0f66\u0f63\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f66\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f56\u0f60\u0f72\u0f0b\u0f41\u0f74\u0f44\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51";
-    },
-    get$passwordRecovery() {
-      return "\u0f42\u0f66\u0f63\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f66";
     },
     get$pickImage() {
       return "\u0f56\u0f62\u0f97\u0f7a\u0f51\u0f0b\u0f66\u0f92\u0f7c\u0f62\u0f0b\u0f42\u0f51\u0f58\u0f66\u0f0b\u0f53\u0f66\u0f0b\u0f60\u0f51\u0f7a\u0f42\u0f66";
@@ -892,9 +883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f44\u0f0b\u0f42\u0f0b\u0f62\u0f7a\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f60\u0f5a\u0f7c\u0f63\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f63\u0f0b\u0f60\u0f51\u0f7a\u0f58\u0f66\u0f0b\u0f42\u0f53\u0f44\u0f0b\u0f42\u0f72\u0f0b\u0f61\u0f7c\u0f51\u0f0d";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "\u0f51\u0f7a\u0f0b\u0f63\u0f66\u0f0b\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f40\u0fb1\u0f72\u0f0b\u0f53\u0f44\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f60\u0f5a\u0f7c\u0f63\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f42\u0fb1\u0f72\u0f0b\u0f63\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f53\u0f72\u0f0b\u0f60\u0f51\u0f72\u0f0b\u0f63\u0f0b\u0f42\u0f53\u0f44\u0f0b\u0f56\u0f0b\u0f61\u0f7c\u0f51\u0f0d";
     },
     get$writeAMessage() {
       return "\u0f5a\u0f72\u0f42\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f5f\u0f7a\u0f62\u0f0b\u0f53\u0f66\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f5f\u0f7a\u0f62\u0f0d";
@@ -5364,6 +5352,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perfekta praktik!";
     },
@@ -5401,7 +5398,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["r7hzM+TBTpQVl/prEYQ5XZSPrWg="] = d.current;
+  d["jQPi1hJ/dIrk3KEhJn2NpIGKm4A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_165.part.js.map

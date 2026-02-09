@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Kh\xf4ng";
     },
-    get$noPasswordRecoveryDescription() {
-      return "B\u1ea1n ch\u01b0a thi\u1ebft l\u1eadp c\xe1ch kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u.";
-    },
     get$noPermission() {
       return "Kh\xf4ng c\xf3 quy\u1ec1n";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "M\u1eadt kh\u1ea9u \u0111\xe3 \u0111\u01b0\u1ee3c thay \u0111\u1ed5i";
-    },
-    get$passwordRecoverySettings() {
-      return "C\xe0i \u0111\u1eb7t kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u";
-    },
-    get$passwordRecovery() {
-      return "Kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u";
     },
     get$pickImage() {
       return "Ch\u1ecdn \u1ea3nh";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "T\u1ea1i sao b\u1ea1n mu\u1ed1n b\xe1o c\xe1o?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Nh\u1edd c\xe1c \u0111\u1ecba ch\u1ec9 n\xe0y, b\u1ea1n c\xf3 th\u1ec3 kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u c\u1ee7a m\xecnh.";
     },
     get$writeAMessage() {
       return "Vi\u1ebft tin nh\u1eafn\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Ghi \xe2m kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng ki\u1ec3m tra quy\u1ec1n truy c\u1eadp \xe2m thanh c\u1ee7a b\u1ea1n v\xe0 th\u1eed l\u1ea1i.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Th\u1ef1c h\xe0nh ho\xe0n h\u1ea3o!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7DQuTRlJ94+EPI6gp0iUm+GpPh0="] = d.current;
+  d["S9KAJrEnFEwGZ7fFQBBsW6+G1bk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

@@ -587,9 +587,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Cap";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Encara no heu afegit cap m\xe8tode per a poder recuperar la contrasenya.";
-    },
     get$noPermission() {
       return "Sense perm\xeds";
     },
@@ -640,12 +637,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "La contrasenya ha canviat";
-    },
-    get$passwordRecoverySettings() {
-      return "Recuperaci\xf3 de contrasenya";
-    },
-    get$passwordRecovery() {
-      return "Recuperaci\xf3 de contrassenya";
     },
     get$pickImage() {
       return "Selecciona una imatge";
@@ -892,9 +883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Per qu\xe8 voleu denunciar aix\xf2?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Amb aquestes adreces, si ho necessiteu, podeu recuperar la vostra contrasenya.";
     },
     get$writeAMessage() {
       return "Escriviu un missatge\u2026";
@@ -5363,6 +5351,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La gravaci\xf3 ha fallat. Si us plau, comproveu els vostres permisos d'\xe0udio i torneu-ho a provar.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Pr\xe0ctica perfecta!";
     },
@@ -5391,7 +5388,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9dS+d5Anw4ywMsIBWcnBKdkPblI="] = d.current;
+  d["hpThrkZZQYjecJRRA80Q+TJlTkQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_187.part.js.map

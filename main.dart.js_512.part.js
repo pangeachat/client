@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Ninguno";
     },
-    get$noPasswordRecoveryDescription() {
-      return "A\xfan no ha agregado una forma de recuperar su contrase\xf1a.";
-    },
     get$noPermission() {
       return "Sin autorizaci\xf3n";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "La contrase\xf1a ha sido cambiada";
-    },
-    get$passwordRecoverySettings() {
-      return "Ajustes de recuperaci\xf3n de clave";
-    },
-    get$passwordRecovery() {
-      return "Recuperaci\xf3n de contrase\xf1a";
     },
     get$pickImage() {
       return "Elegir imagen";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\xbfPor qu\xe9 quieres denunciar esto?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Con esta direcci\xf3n puede recuperar su contrase\xf1a.";
     },
     get$writeAMessage() {
       return "Escribe un mensaje\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "La grabaci\xf3n fall\xf3. Por favor, verifica tus permisos de audio y vuelve a intentarlo.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "\xa1Pr\xe1ctica perfecta!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+tImdfa334tS4ds6cetX23I8L9s="] = d.current;
+  d["4sDEUOqop7nlaa0S49BxO23iekw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

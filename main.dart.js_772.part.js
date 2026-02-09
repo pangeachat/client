@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u7121";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u60a8\u5c1a\u672a\u6dfb\u52a0\u627e\u56de\u5bc6\u78bc\u7684\u65b9\u6cd5\u3002";
-    },
     get$noPermission() {
       return "\u6c92\u6709\u8a31\u53ef\u6b0a";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "\u5bc6\u78bc\u5df2\u66f4\u6539";
-    },
-    get$passwordRecoverySettings() {
-      return "\u5bc6\u78bc\u6062\u5fa9\u8a2d\u7f6e";
-    },
-    get$passwordRecovery() {
-      return "\u5bc6\u78bc\u6062\u5fa9";
     },
     get$pickImage() {
       return "\u9078\u64c7\u5716\u7247";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\u4f60\u9ede\u89e3\u60f3\u8209\u5831\u5462\u500b\uff1f";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "\u7528\u5462\u5572\u5730\u5740\u4f60\u53ef\u4ee5\u6062\u5fa9\u4f60\u5605\u5bc6\u78bc\u3002";
     },
     get$writeAMessage() {
       return "\u5beb\u4e00\u689d\u8a0a\u606f\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9304\u97f3\u5931\u6557\u3002\u8acb\u6aa2\u67e5\u60a8\u7684\u97f3\u983b\u6b0a\u9650\u4e26\u91cd\u8a66\u3002";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "\u5b8c\u7f8e\u7684\u7df4\u7fd2\uff01";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/JMnLoGZxQG+LORJm0ycDyFBtcQ="] = d.current;
+  d["bcJSW59RWaa9vipin54DwiMPqw0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

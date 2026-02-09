@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Wala";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Wala ka pang nadagdagang paraan upang maibalik ang iyong password.";
-    },
     get$noPermission() {
       return "Walang pahintulot";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Napalitan na ang password";
-    },
-    get$passwordRecoverySettings() {
-      return "Mga setting ng pagbawi ng password";
-    },
-    get$passwordRecovery() {
-      return "Pagbawi ng password";
     },
     get$pickImage() {
       return "Pumili ng larawan";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Bakit mo nais i-report ito?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Sa mga address na ito maaari mong mabawi ang iyong password.";
     },
     get$writeAMessage() {
       return "Isulat ang isang mensahe\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nabigo ang pag-record. Pakisuri ang iyong mga pahintulot sa audio at subukan muli.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perpektong pagsasanay!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["g1eU0bxQ+wlSkEQY4f9w3u9huEg="] = d.current;
+  d["UmSfnUjNqumLSxbD3E7X8xTePO8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map

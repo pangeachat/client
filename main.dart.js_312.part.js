@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Ingen";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Du har endnu ikke tilf\xf8jet en m\xe5de at gendanne din adgangskode p\xe5.";
-    },
     get$noPermission() {
       return "Ingen tilladelse";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Kodeord er blevet \xe6ndret";
-    },
-    get$passwordRecoverySettings() {
-      return "Indstillinger for nulstilling af adgangskode";
-    },
-    get$passwordRecovery() {
-      return "Nulstilling af adgangskode";
     },
     get$pickImage() {
       return "V\xe6lg et billede";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Hvorfor vil du rapportere dette?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Med disse adresser kan du gendanne din adgangskode.";
     },
     get$writeAMessage() {
       return "Skriv en besked\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Optagelse mislykkedes. Tjek venligst dine lydtilladelser og pr\xf8v igen.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perfekt praksis!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1ZvkdI+2k4vJU+8MioYetmRWdDo="] = d.current;
+  d["uyANO2rjxxh3BVvoK9nMK4+rl68="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_312.part.js.map

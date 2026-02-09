@@ -587,9 +587,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Brak";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Nie doda\u0142e\u015b/-a\u015b jeszcze sposobu odzyskiwania swojego has\u0142a.";
-    },
     get$noPermission() {
       return "Brak uprawnie\u0144";
     },
@@ -640,12 +637,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Has\u0142o zosta\u0142o zmienione";
-    },
-    get$passwordRecoverySettings() {
-      return "Ustawienia odzyskiwania has\u0142a";
-    },
-    get$passwordRecovery() {
-      return "Odzyskiwanie has\u0142a";
     },
     get$pickImage() {
       return "Wybierz obraz";
@@ -892,9 +883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Dlaczego chcesz to zg\u0142osi\u0107?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Dzi\u0119ki tym adresom mo\u017cesz odzyska\u0107 swoje has\u0142o.";
     },
     get$writeAMessage() {
       return "Napisz wiadomo\u015b\u0107\u2026";
@@ -5363,6 +5351,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nagrywanie nie powiod\u0142o si\u0119. Sprawd\u017a swoje uprawnienia audio i spr\xf3buj ponownie.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Idealna praktyka!";
     },
@@ -5388,7 +5385,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PRxprQ/bfSYtHGsiBok9MVGDTFI="] = d.current;
+  d["kn2AdUSBzw99QsWBZLYtEyq1M/8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_743.part.js.map

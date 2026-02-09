@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "N\u0117 vienas";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Dar neprid\u0117jote slapta\u017eod\u017eio atk\u016brimo b\u016bdo.";
-    },
     get$noPermission() {
       return "N\u0117ra leidimo";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Slapta\u017eodis pakeistas";
-    },
-    get$passwordRecoverySettings() {
-      return "Slapta\u017eod\u017eio atstatymo nustatymai";
-    },
-    get$passwordRecovery() {
-      return "Slapta\u017eod\u017eio atk\u016brimas";
     },
     get$pickImage() {
       return "Pasirinkite paveiksliuk\u0105";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Kod\u0117l norite apie tai prane\u0161ti?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Naudodami \u0161iuos adresus galite atkurti savo slapta\u017eod\u012f.";
     },
     get$writeAMessage() {
       return "Ra\u0161yti \u017einut\u0119\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u012era\u0161ymas nepavyko. Patikrinkite savo garso teises ir bandykite dar kart\u0105.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Tobulas praktika!";
     },
@@ -5390,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Llh56nITbbUN47vEhO4QAC82v3w="] = d.current;
+  d["qkVQaV/jd/nfThJxs3nRW6f7Dg8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

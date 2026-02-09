@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Nobenega";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u0160e niste dodali na\u010dina za obnovitev gesla.";
-    },
     get$noPermission() {
       return "Ni dovoljenja";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Geslo je bilo spremenjeno";
-    },
-    get$passwordRecoverySettings() {
-      return "Nastavitve obnove gesla";
-    },
-    get$passwordRecovery() {
-      return "Obnova gesla";
     },
     get$pickImage() {
       return "Izberi sliko";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Zakaj \u017eelite prijaviti to?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Z temi naslovi lahko obnovite svoje geslo.";
     },
     get$writeAMessage() {
       return "Napi\u0161ite sporo\u010dilo\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Zapisovanje ni uspelo. Preverite svoje avdio dovoljenja in poskusite znova.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Popolna praksa!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ql8m9CWOTy1VA5sT/CsXaImMHAc="] = d.current;
+  d["iVRzkxt6P/nb3aiTeRS3Qkumr48="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

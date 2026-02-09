@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "None";
     },
-    get$noPasswordRecoveryDescription() {
-      return "You have not added a way to recover your password yet.";
-    },
     get$noPermission() {
       return "No permission";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Password has been changed";
-    },
-    get$passwordRecoverySettings() {
-      return "Password recovery settings";
-    },
-    get$passwordRecovery() {
-      return "Password recovery";
     },
     get$pickImage() {
       return "Pick an image";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Why do you want to report this?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "With these addresses you can recover your password.";
     },
     get$writeAMessage() {
       return "Write a message\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Recording failed. Please check your audio permissions and try again.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perfect practice!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XupQKthM6v6x9UxMNL0TwS6+m6Q="] = d.current;
+  d["mCT3AlQkmGvLPHhU0EEcnyZNNX0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_421.part.js.map

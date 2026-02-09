@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Geen";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Je hebt nog geen manier toegevoegd om je wachtwoord te herstellen.";
-    },
     get$noPermission() {
       return "Geen toestemming";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Wachtwoord gewijzigd";
-    },
-    get$passwordRecoverySettings() {
-      return "Wachtwoordherstel-instellingen";
-    },
-    get$passwordRecovery() {
-      return "Wachtwoordherstel";
     },
     get$pickImage() {
       return "Kies een afbeelding";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Waarom wil je dit rapporteren?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Met deze adressen kun je je wachtwoord herstellen.";
     },
     get$writeAMessage() {
       return "Schrijf een bericht\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Opname mislukt. Controleer uw audiorechten en probeer het opnieuw.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Perfecte oefening!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Drhfs+RJ6Ewu31ZT83OVSqSxqQU="] = d.current;
+  d["E+zxxzlRhyJolgkHQCwCdr/ikog="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_739.part.js.map

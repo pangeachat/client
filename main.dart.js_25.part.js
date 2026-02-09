@@ -598,9 +598,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Nenhum";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Voc\xea ainda n\xe3o adicionou uma forma de recuperar sua senha.";
-    },
     get$noPermission() {
       return "Sem permiss\xe3o";
     },
@@ -651,12 +648,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Senha foi alterada";
-    },
-    get$passwordRecoverySettings() {
-      return "Configura\xe7\xf5es de recupera\xe7\xe3o de senha";
-    },
-    get$passwordRecovery() {
-      return "Recupera\xe7\xe3o de senha";
     },
     get$pickImage() {
       return "Escolha uma imagem";
@@ -903,9 +894,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Por que voc\xea quer denunciar isto?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Com esses endere\xe7os voc\xea pode recuperar sua senha.";
     },
     get$writeAMessage() {
       return "Escreva uma mensagem\u2026";
@@ -5374,6 +5362,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Pr\xe1tica perfeita!";
     },
@@ -5961,9 +5958,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Nenhum";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Voc\xea ainda n\xe3o adicionou uma forma de recuparar sua senha.";
-    },
     get$noPermission() {
       return "Sem permiss\xe3o";
     },
@@ -6014,12 +6008,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Senha foi alterada";
-    },
-    get$passwordRecoverySettings() {
-      return "Configura\xe7\xf5es de recupera\xe7\xe3o de senha";
-    },
-    get$passwordRecovery() {
-      return "Recupera\xe7\xe3o de senha";
     },
     get$pickImage() {
       return "Escolha uma imagem";
@@ -6266,9 +6254,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Por que voc\xea quer denunciar isto?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Voc\xea pode recuperar a sua senha com estes endere\xe7os.";
     },
     get$writeAMessage() {
       return "Escreva uma mensagem\u2026";
@@ -11321,9 +11306,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Nenhum";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Ainda n\xe3o adicionaste uma forma de recuperar a tua palavra-passe.";
-    },
     get$noPermission() {
       return "Sem permiss\xe3o";
     },
@@ -11374,12 +11356,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "A palavra-passe foi alterada";
-    },
-    get$passwordRecoverySettings() {
-      return "Configura\xe7\xf5es de recupera\xe7\xe3o de palavra-passe";
-    },
-    get$passwordRecovery() {
-      return "Recupera\xe7\xe3o de palavra-passe";
     },
     get$pickImage() {
       return "Escolher uma imagem";
@@ -11626,9 +11602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Por que deseja denunciar isto?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Com estes endere\xe7os pode recuperar a sua palavra-passe.";
     },
     get$writeAMessage() {
       return "Escreva uma mensagem\u2026";
@@ -16314,7 +16287,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dXLvcCHBkLqDJSZTQhyeI5vwILk="] = d.current;
+  d["URD03fuoeRMgHA7blqDf3RnAyl4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

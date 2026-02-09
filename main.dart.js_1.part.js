@@ -593,9 +593,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u65e0";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u4f60\u5c1a\u672a\u6dfb\u52a0\u6062\u590d\u5bc6\u7801\u7684\u65b9\u6cd5\u3002";
-    },
     get$noPermission() {
       return "\u6ca1\u6709\u6743\u9650";
     },
@@ -646,12 +643,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "\u5bc6\u7801\u5df2\u88ab\u66f4\u6539";
-    },
-    get$passwordRecoverySettings() {
-      return "\u5bc6\u7801\u53d1\u73b0\u8bbe\u7f6e";
-    },
-    get$passwordRecovery() {
-      return "\u5bc6\u7801\u6062\u590d";
     },
     get$pickImage() {
       return "\u9009\u62e9\u56fe\u50cf";
@@ -898,9 +889,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\u4f60\u4e3e\u62a5\u7684\u7406\u7531\u662f\u4ec0\u4e48\uff1f";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "\u901a\u8fc7\u8fd9\u4e9b\u5730\u5740\uff0c\u4f60\u53ef\u4ee5\u6062\u590d\u5bc6\u7801\u3002";
     },
     get$writeAMessage() {
       return "\u5199\u4e00\u6761\u6d88\u606f\u2026";
@@ -5369,6 +5357,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u5f55\u97f3\u5931\u8d25\u3002\u8bf7\u68c0\u67e5\u60a8\u7684\u97f3\u9891\u6743\u9650\u5e76\u91cd\u8bd5\u3002";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "\u5b8c\u7f8e\u7684\u7ec3\u4e60\uff01";
     },
@@ -5956,9 +5953,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u7121";
     },
-    get$noPasswordRecoveryDescription() {
-      return "\u60a8\u5c1a\u672a\u65b0\u589e\u6062\u5fa9\u5bc6\u78bc\u7684\u65b9\u6cd5\u3002";
-    },
     get$noPermission() {
       return "\u6c92\u6709\u6b0a\u9650";
     },
@@ -6009,12 +6003,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "\u5bc6\u78bc\u5df2\u88ab\u8b8a\u66f4";
-    },
-    get$passwordRecoverySettings() {
-      return "\u6062\u5fa9\u5bc6\u78bc\u8a2d\u5b9a";
-    },
-    get$passwordRecovery() {
-      return "\u6062\u5fa9\u5bc6\u78bc";
     },
     get$pickImage() {
       return "\u9078\u64c7\u5716\u7247";
@@ -6261,9 +6249,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "\u60a8\u6aa2\u8209\u7684\u539f\u56e0\u662f\u4ec0\u9ebc\uff1f";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "\u6709\u4e86\u9019\u4e9b\u4f4d\u5740\uff0c\u60a8\u5c31\u53ef\u4ee5\u6062\u5fa9\u5bc6\u78bc\u3002";
     },
     get$writeAMessage() {
       return "\u8f38\u5165\u8a0a\u606f...\u2026";
@@ -10755,7 +10740,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sqsU1qnxOI2bRYOtNMk66R2LmOU="] = d.current;
+  d["og/eO+M3v4IrvTLVa5N6CCpnIoM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

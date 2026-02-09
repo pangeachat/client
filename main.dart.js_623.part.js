@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Aon cheann";
     },
-    get$noPasswordRecoveryDescription() {
-      return "N\xedor chuir t\xfa bealach leis do phasfhocal a aisghabh\xe1il f\xf3s.";
-    },
     get$noPermission() {
       return "Gan cead";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Athra\xedodh an pasfhocal";
-    },
-    get$passwordRecoverySettings() {
-      return "Socruithe athshl\xe1naithe pasfhocal";
-    },
-    get$passwordRecovery() {
-      return "Aisfh\xe1il pasfhocail";
     },
     get$pickImage() {
       return "Roghnaigh \xedomh\xe1";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "C\xe9n f\xe1th ar mhaith leat \xe9 seo a thuairisci\xfa?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Leis na seolta\xed seo is f\xe9idir leat do phasfhocal a athshl\xe1n\xfa.";
     },
     get$writeAMessage() {
       return "Scr\xedobh teachtaireacht\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Theip ar an taifeadadh. Seice\xe1il do cheadanna guth\xe1in le do thoil agus d\xe9an iarracht ar\xeds.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Cleachtadh foirfe!";
     },
@@ -5390,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c1zDbK0m/onZ11l5SafHBTB9Hlw="] = d.current;
+  d["rdQzpyRzQ5Vk3v9KNXw7QJgmMcY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_623.part.js.map

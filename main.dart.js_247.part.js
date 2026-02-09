@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "\u017d\xe1dn\xfd";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Dosud jste nep\u0159idali zp\u016fsob, jak obnovit sv\xe9 heslo.";
-    },
     get$noPermission() {
       return "Chyb\xed opr\xe1vn\u011bn\xed";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Heslo bylo zm\u011bn\u011bno";
-    },
-    get$passwordRecoverySettings() {
-      return "Nastaven\xed obnoven\xed hesla";
-    },
-    get$passwordRecovery() {
-      return "Obnova hesla";
     },
     get$pickImage() {
       return "Zvolit obr\xe1zek";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "Pro\u010d to chcete nahl\xe1sit?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "S t\u011bmito adresami m\u016f\u017eete obnovit sv\xe9 heslo.";
     },
     get$writeAMessage() {
       return "Napi\u0161te zpr\xe1vu\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Nahr\xe1v\xe1n\xed se nezda\u0159ilo. Zkontrolujte pros\xedm sv\xe1 opr\xe1vn\u011bn\xed k audiosoubor\u016fm a zkuste to znovu.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Dokonal\xe1 praxe!";
     },
@@ -5387,7 +5384,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UjUJwZuFIiN8uy1YiTSKYiLWCPM="] = d.current;
+  d["5uHsibxqcwnLyEdqti2t6BiOY3s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

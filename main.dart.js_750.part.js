@@ -586,9 +586,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$none() {
       return "Niciunul";
     },
-    get$noPasswordRecoveryDescription() {
-      return "Nu a\u021bi ad\u0103ugat \xeenc\u0103 nici un mod de recuperare pentru parola voastr\u0103.";
-    },
     get$noPermission() {
       return "F\u0103r\u0103 permisie";
     },
@@ -639,12 +636,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordHasBeenChanged() {
       return "Parola a fost schimbat\u0103";
-    },
-    get$passwordRecoverySettings() {
-      return "Set\u0103ri pentru recuperarea parolei";
-    },
-    get$passwordRecovery() {
-      return "Recuperare parolei";
     },
     get$pickImage() {
       return "Alege\u021bi o imagine";
@@ -891,9 +882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whyDoYouWantToReportThis() {
       return "De ce dori\u021bi s\u0103 reporta\u021bi acest con\u021binut?";
-    },
-    get$withTheseAddressesRecoveryDescription() {
-      return "Cu acestea adrese pute\u021bi s\u0103 v\u0103 recupera\u021bi parola.";
     },
     get$writeAMessage() {
       return "Scrie\u021bi un mesaj\u2026";
@@ -5362,6 +5350,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\xcenregistrarea a e\u0219uat. V\u0103 rug\u0103m s\u0103 verifica\u021bi permisiunile audio \u0219i s\u0103 \xeencerca\u021bi din nou.";
     },
+    get$changeEmail() {
+      return "Change email";
+    },
+    get$withTheseAddressesDescription() {
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
+    },
+    get$noAddressDescription() {
+      return "You have not added any email addresses yet.";
+    },
     get$perfectPractice() {
       return "Practica perfect\u0103!";
     },
@@ -5390,7 +5387,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bPHQf1nbVkCfxkXr4siby2sNoE4="] = d.current;
+  d["S4F8/pAisJDfvAfipF23izpsLjI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map
