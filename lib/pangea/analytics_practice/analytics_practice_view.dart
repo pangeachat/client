@@ -236,23 +236,8 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
             ),
           ),
         ActivityTypeEnum.grammarCategory => Center(
-            child: Column(
-              children: [
-                _CorrectAnswerHint(controller: controller),
-                _ExampleMessageWidget(
-                  controller.getExampleMessage(target!),
-                ),
-                const SizedBox(height: 12),
-                ValueListenableBuilder(
-                  valueListenable: controller.hintPressedNotifier,
-                  builder: (context, hintPressed, __) {
-                    return HintButton(
-                      depressed: hintPressed,
-                      onPressed: controller.onHintPressed,
-                    );
-                  },
-                ),
-              ],
+            child: _ExampleMessageWidget(
+              controller.getExampleMessage(target!),
             ),
           ),
         ActivityTypeEnum.lemmaAudio => ValueListenableBuilder(
