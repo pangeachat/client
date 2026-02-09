@@ -72,7 +72,6 @@ void main() {
 
     expect(() => SpanData.fromJson(legacyJson), returnsNormally);
     final SpanData span = SpanData.fromJson(legacyJson);
-    // 'vocabulary' is mapped to 'wordChoice' for backward compatibility
     expect(span.type, ReplacementTypeEnum.other);
   });
 

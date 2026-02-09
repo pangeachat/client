@@ -35,8 +35,6 @@ class SpanCard extends StatefulWidget {
 }
 
 class SpanCardState extends State<SpanCard> {
-  final ValueNotifier<bool> _feedbackState = ValueNotifier<bool>(false);
-
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -46,7 +44,6 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   void dispose() {
-    _feedbackState.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -54,13 +51,8 @@ class SpanCardState extends State<SpanCard> {
   SpanChoice? get _selectedChoice =>
       widget.match.updatedMatch.match.selectedChoice;
 
-  void _showFeedbackForSelection(BuildContext context) {
-    _feedbackState.value = !_feedbackState.value;
-  }
-
   void _onChoiceSelect(int index) {
     widget.match.selectChoice(index);
-    _showFeedbackForSelection(context);
     setState(() {});
   }
 
@@ -165,12 +157,8 @@ class SpanCardState extends State<SpanCard> {
                             .pangeaController.userController.userL2Code!,
                       ),
                       const SizedBox(),
-                      ValueListenableBuilder(
-                        valueListenable: _feedbackState,
-                        builder: (context, visible, __) => _SpanCardFeedback(
-                          widget.match.updatedMatch.match,
-                          visible,
-                        ),
+                      _SpanCardFeedback(
+                        widget.match.updatedMatch.match,
                       ),
                     ],
                   ),
@@ -191,9 +179,7 @@ class SpanCardState extends State<SpanCard> {
 
 class _SpanCardFeedback extends StatelessWidget {
   final SpanData? span;
-  final bool visible;
-
-  const _SpanCardFeedback(this.span, this.visible);
+  const _SpanCardFeedback(this.span);
 
   @override
   Widget build(BuildContext context) {
