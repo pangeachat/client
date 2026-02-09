@@ -357,7 +357,8 @@ class IgcController {
     if (_lastRequest == null || _lastResponse == null) {
       ErrorHandler.logError(
         e: StateError(
-            'rerunWithFeedback called without prior request/response'),
+          'rerunWithFeedback called without prior request/response',
+        ),
         data: {
           'hasLastRequest': _lastRequest != null,
           'hasLastResponse': _lastResponse != null,
@@ -392,7 +393,8 @@ class IgcController {
     // Create request with feedback attached
     final requestWithFeedback = _lastRequest!.copyWithFeedback([feedback]);
     debugPrint(
-        'requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}');
+      'requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}',
+    );
     debugPrint('requestWithFeedback.hashCode: ${requestWithFeedback.hashCode}');
     debugPrint('_lastRequest.hashCode: ${_lastRequest!.hashCode}');
     debugPrint('Calling IgcRepo.get...');

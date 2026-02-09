@@ -33,8 +33,10 @@ void main() {
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
 
       expect(response.matches.length, 1);
-      expect(response.matches[0].match.fullText,
-          'I want to know the United States');
+      expect(
+        response.matches[0].match.fullText,
+        'I want to know the United States',
+      );
     });
 
     test('match full_text takes precedence over originalInput', () {
@@ -115,7 +117,7 @@ void main() {
               {
                 'value': 'Me encanta',
                 'type': 'bestCorrection',
-                'feedback': 'Use "encantar" for expressing love'
+                'feedback': 'Use "encantar" for expressing love',
               },
             ],
             'offset': 0,
@@ -166,7 +168,7 @@ void main() {
               {
                 'value': 'voy',
                 'type': 'bestCorrection',
-                'feedback': 'Use conjugated form'
+                'feedback': 'Use conjugated form',
               },
             ],
             'offset': 7,
@@ -235,8 +237,10 @@ void main() {
       final IGCResponseModel response = IGCResponseModel.fromJson(jsonData);
 
       expect(response.matches.length, 1);
-      expect(response.matches[0].match.bestChoice?.feedback,
-          'Add accent to past participle');
+      expect(
+        response.matches[0].match.bestChoice?.feedback,
+        'Add accent to past participle',
+      );
     });
   });
 }

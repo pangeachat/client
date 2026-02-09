@@ -13,32 +13,21 @@ enum SpanChoiceTypeEnum {
 }
 
 extension SpanChoiceExt on SpanChoiceTypeEnum {
-  String get name {
-    switch (this) {
-      case SpanChoiceTypeEnum.suggestion:
-        return "suggestion";
-      case SpanChoiceTypeEnum.alt:
-        return "alt";
-      case SpanChoiceTypeEnum.bestCorrection:
-        return "bestCorrection";
-      case SpanChoiceTypeEnum.distractor:
-        return "distractor";
-      case SpanChoiceTypeEnum.bestAnswer:
-        return "bestAnswer";
-    }
-  }
-
   bool get isSuggestion =>
       this == SpanChoiceTypeEnum.suggestion ||
+      // ignore: deprecated_member_use_from_same_package
       this == SpanChoiceTypeEnum.bestCorrection ||
+      // ignore: deprecated_member_use_from_same_package
       this == SpanChoiceTypeEnum.bestAnswer;
 
   String defaultFeedback(BuildContext context) {
     switch (this) {
       case SpanChoiceTypeEnum.suggestion:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestCorrection:
         return L10n.of(context).bestCorrectionFeedback;
       case SpanChoiceTypeEnum.alt:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestAnswer:
         return L10n.of(context).bestAnswerFeedback;
       case SpanChoiceTypeEnum.distractor:
@@ -49,8 +38,10 @@ extension SpanChoiceExt on SpanChoiceTypeEnum {
   IconData get icon {
     switch (this) {
       case SpanChoiceTypeEnum.suggestion:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestCorrection:
       case SpanChoiceTypeEnum.alt:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestAnswer:
         return Icons.check_circle;
       case SpanChoiceTypeEnum.distractor:
@@ -61,9 +52,11 @@ extension SpanChoiceExt on SpanChoiceTypeEnum {
   Color get color {
     switch (this) {
       case SpanChoiceTypeEnum.suggestion:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestCorrection:
         return Colors.green;
       case SpanChoiceTypeEnum.alt:
+      // ignore: deprecated_member_use_from_same_package
       case SpanChoiceTypeEnum.bestAnswer:
         return Colors.green;
       case SpanChoiceTypeEnum.distractor:

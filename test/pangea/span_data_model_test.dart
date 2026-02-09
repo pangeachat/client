@@ -1,9 +1,11 @@
-import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
+
 void main() {
-  test('SpanData.fromJson handles legacy correction type (maps to grammar)', () {
+  test('SpanData.fromJson handles legacy correction type (maps to grammar)',
+      () {
     final Map<String, dynamic> legacyJson = {
       'message': null,
       'short_message': null,
@@ -56,7 +58,8 @@ void main() {
     expect(span.type, ReplacementTypeEnum.didYouMean);
   });
 
-  test('SpanData.fromJson handles legacy vocabulary type (maps to wordChoice)', () {
+  test('SpanData.fromJson handles legacy vocabulary type (maps to wordChoice)',
+      () {
     final Map<String, dynamic> legacyJson = {
       'message': null,
       'short_message': null,
@@ -142,7 +145,8 @@ void main() {
       expect(span.fullText, 'Text from parent');
     });
 
-    test('uses empty string when neither full_text nor parentFullText present', () {
+    test('uses empty string when neither full_text nor parentFullText present',
+        () {
       final Map<String, dynamic> jsonData = {
         'message': null,
         'short_message': null,

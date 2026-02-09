@@ -57,7 +57,8 @@ class IgcRepo {
     IGCRequestModel igcRequest,
   ) {
     debugPrint(
-        '[IgcRepo.get] called, request.hashCode: ${igcRequest.hashCode}');
+      '[IgcRepo.get] called, request.hashCode: ${igcRequest.hashCode}',
+    );
     final cached = _getCached(igcRequest);
     if (cached != null) {
       debugPrint('[IgcRepo.get] cache HIT');
