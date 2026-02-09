@@ -397,18 +397,6 @@ class UserController {
     );
   }
 
-  Future<void> updateAbout(String about) async {
-    if (publicProfile == null || publicProfile!.about == about) {
-      return;
-    }
-
-    publicProfile = publicProfile!.copyWith(about: about);
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
-  }
-
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
     String userId,
   ) async {

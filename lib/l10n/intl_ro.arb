@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:31.024987",
+  "@@last_modified": "2026-02-09 11:08:50.792922",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11732,6 +11732,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Schimbă emailul",
+  "withTheseAddressesDescription": "Cu aceste adrese de email poți să te conectezi, să îți recuperezi parola și să gestionezi abonamentele.",
+  "noAddressDescription": "Nu ai adăugat încă nicio adresă de email.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

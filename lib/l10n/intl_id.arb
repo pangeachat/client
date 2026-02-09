@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:29.458472",
+  "@@last_modified": "2026-02-09 11:08:48.564116",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10988,6 +10988,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ubah email",
+  "withTheseAddressesDescription": "Dengan alamat email ini, Anda dapat masuk, memulihkan kata sandi Anda, dan mengelola langganan.",
+  "noAddressDescription": "Anda belum menambahkan alamat email apapun.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

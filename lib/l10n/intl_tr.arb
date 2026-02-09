@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-09 10:31:10.118107",
+  "@@last_modified": "2026-02-09 11:09:34.545567",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11219,6 +11219,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "E-posta değiştir",
+  "withTheseAddressesDescription": "Bu e-posta adresleriyle oturum açabilir, şifrenizi kurtarabilir ve aboneliklerinizi yönetebilirsiniz.",
+  "noAddressDescription": "Henüz herhangi bir e-posta adresi eklemediniz.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

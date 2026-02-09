@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:32.343732",
+  "@@last_modified": "2026-02-09 11:09:57.785827",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12086,6 +12086,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ŝanĝi retpoŝton",
+  "withTheseAddressesDescription": "Kun ĉi tiuj retpoŝtaj adresoj vi povas ensaluti, rekuperi vian pasvorton, kaj administri abonojn.",
+  "noAddressDescription": "Vi ankoraŭ ne aldonis iujn retpoŝtajn adresojn.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -3858,7 +3858,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-09 10:31:13.179961",
+  "@@last_modified": "2026-02-09 11:09:38.541694",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11802,6 +11802,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Keisti el. paštą",
+  "withTheseAddressesDescription": "Su šiais el. pašto adresais galite prisijungti, atkurti slaptažodį ir valdyti prenumeratas.",
+  "noAddressDescription": "Jūs dar nepridėjote jokių el. pašto adresų.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

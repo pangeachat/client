@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:23.313797",
+  "@@last_modified": "2026-02-09 11:09:48.180617",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11729,6 +11729,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "تغییر ایمیل",
+  "withTheseAddressesDescription": "با این آدرس‌های ایمیل می‌توانید وارد شوید، رمز عبور خود را بازیابی کنید و اشتراک‌ها را مدیریت کنید.",
+  "noAddressDescription": "شما هنوز هیچ آدرس ایمیلی اضافه نکرده‌اید.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

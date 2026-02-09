@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:49.194487",
+  "@@last_modified": "2026-02-09 11:09:17.051102",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11000,6 +11000,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambia email",
+  "withTheseAddressesDescription": "Con queste email puoi accedere, recuperare la tua password e gestire gli abbonamenti.",
+  "noAddressDescription": "Non hai ancora aggiunto alcun indirizzo email.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

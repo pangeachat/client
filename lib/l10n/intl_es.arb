@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-09 10:30:21.560804",
+  "@@last_modified": "2026-02-09 11:08:40.981454",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8239,6 +8239,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambiar correo electrónico",
+  "withTheseAddressesDescription": "Con estas direcciones de correo electrónico puedes iniciar sesión, recuperar tu contraseña y gestionar suscripciones.",
+  "noAddressDescription": "Aún no has añadido ninguna dirección de correo electrónico.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

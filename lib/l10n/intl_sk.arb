@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-09 10:30:32.743132",
+  "@@last_modified": "2026-02-09 11:08:52.351401",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12081,6 +12081,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmeniť e-mail",
+  "withTheseAddressesDescription": "S týmito e-mailovými adresami sa môžete prihlásiť, obnoviť svoje heslo a spravovať predplatné.",
+  "noAddressDescription": "Ešte ste nepridali žiadne e-mailové adresy.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

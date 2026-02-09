@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-09 10:31:29.266500",
+  "@@last_modified": "2026-02-09 11:09:54.188816",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11787,6 +11787,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "メールアドレスを変更",
+  "withTheseAddressesDescription": "これらのメールアドレスを使用して、ログイン、パスワードの回復、サブスクリプションの管理ができます。",
+  "noAddressDescription": "まだメールアドレスを追加していません。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

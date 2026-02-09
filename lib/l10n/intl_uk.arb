@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-09 10:30:50.645170",
+  "@@last_modified": "2026-02-09 11:09:18.460030",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10991,6 +10991,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Змінити електронну пошту",
+  "withTheseAddressesDescription": "З цими електронними адресами ви можете увійти, відновити свій пароль і керувати підписками.",
+  "noAddressDescription": "Ви ще не додали жодних електронних адрес.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

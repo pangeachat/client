@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-09 10:31:19.946784",
+  "@@last_modified": "2026-02-09 11:09:45.374826",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10988,6 +10988,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "更改电子邮件",
+  "withTheseAddressesDescription": "使用这些电子邮件地址，您可以登录、恢复密码和管理订阅。",
+  "noAddressDescription": "您尚未添加任何电子邮件地址。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

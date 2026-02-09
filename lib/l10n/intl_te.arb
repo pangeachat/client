@@ -1917,7 +1917,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-02-09 10:31:11.484072",
+  "@@last_modified": "2026-02-09 11:09:36.591690",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12086,6 +12086,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ఇమెయిల్ మార్చండి",
+  "withTheseAddressesDescription": "ఈ ఇమెయిల్ చిరునామాలతో మీరు లాగిన్ అవ్వవచ్చు, మీ పాస్వర్డ్‌ను పునరుద్ధరించవచ్చు మరియు సబ్‌స్క్రిప్షన్లను నిర్వహించవచ్చు.",
+  "noAddressDescription": "మీరు ఇంకా ఎలాంటి ఇమెయిల్ చిరునామాలను జోడించలేదు.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

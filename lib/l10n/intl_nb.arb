@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:55.280815",
+  "@@last_modified": "2026-02-09 11:09:21.418237",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12090,6 +12090,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Endre e-post",
+  "withTheseAddressesDescription": "Med disse e-postadressene kan du logge inn, gjenopprette passordet ditt og administrere abonnementer.",
+  "noAddressDescription": "Du har ikke lagt til noen e-postadresser ennå.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

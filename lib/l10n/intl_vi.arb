@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:14.436728",
+  "@@last_modified": "2026-02-09 11:09:39.961686",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6575,6 +6575,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Thay đổi email",
+  "withTheseAddressesDescription": "Với những địa chỉ email này, bạn có thể đăng nhập, khôi phục mật khẩu và quản lý đăng ký.",
+  "noAddressDescription": "Bạn chưa thêm địa chỉ email nào.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

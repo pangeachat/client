@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:02.904070",
+  "@@last_modified": "2026-02-09 11:09:28.599644",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10995,6 +10995,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "更改電子郵件",
+  "withTheseAddressesDescription": "使用這些電子郵件地址，您可以登錄、恢復密碼和管理訂閱。",
+  "noAddressDescription": "您尚未添加任何電子郵件地址。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-09 10:31:06.969392",
+  "@@last_modified": "2026-02-09 11:09:32.801033",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11214,6 +11214,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "تغيير البريد الإلكتروني",
+  "withTheseAddressesDescription": "باستخدام هذه العناوين البريدية يمكنك تسجيل الدخول، واستعادة كلمة المرور، وإدارة الاشتراكات.",
+  "noAddressDescription": "لم تقم بإضافة أي عناوين بريد إلكتروني بعد.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

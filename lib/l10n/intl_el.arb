@@ -4453,7 +4453,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-02-09 10:31:27.836094",
+  "@@last_modified": "2026-02-09 11:09:52.785391",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12055,6 +12055,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Αλλαγή email",
+  "withTheseAddressesDescription": "Με αυτές τις διευθύνσεις email μπορείτε να συνδεθείτε, να ανακτήσετε τον κωδικό πρόσβασής σας και να διαχειριστείτε τις συνδρομές.",
+  "noAddressDescription": "Δεν έχετε προσθέσει καμία διεύθυνση email μέχρι στιγμής.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

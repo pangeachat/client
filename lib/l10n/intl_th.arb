@@ -4453,7 +4453,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-09 10:31:00.286726",
+  "@@last_modified": "2026-02-09 11:09:25.941768",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12055,6 +12055,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "เปลี่ยนอีเมล",
+  "withTheseAddressesDescription": "ด้วยที่อยู่อีเมลเหล่านี้ คุณสามารถเข้าสู่ระบบ กู้คืนรหัสผ่าน และจัดการการสมัครสมาชิกได้",
+  "noAddressDescription": "คุณยังไม่ได้เพิ่มที่อยู่อีเมลใด ๆ",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }
