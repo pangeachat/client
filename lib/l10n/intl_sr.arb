@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:36.571438",
+  "@@last_modified": "2026-02-09 11:10:03.632765",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12062,6 +12062,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "О мени",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Kombinacija",
@@ -12094,6 +12099,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Promeni email",
+  "withTheseAddressesDescription": "Sa ovim email adresama možete se prijaviti, povratiti svoju lozinku i upravljati pretplatama.",
+  "noAddressDescription": "Još niste dodali nijednu email adresu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

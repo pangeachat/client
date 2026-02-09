@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-09 10:30:28.032874",
+  "@@last_modified": "2026-02-09 11:08:47.162355",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10961,6 +10961,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Rólam",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióma",
   "grammarCopyPOSphrasalv": "Frazális ige",
   "grammarCopyPOScompn": "Összetett",
@@ -10993,6 +10998,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Email cím módosítása",
+  "withTheseAddressesDescription": "Ezekkel az email címekkel be tudsz jelentkezni, vissza tudod állítani a jelszavadat, és kezelni tudod az előfizetéseket.",
+  "noAddressDescription": "Még nem adtál hozzá email címeket.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

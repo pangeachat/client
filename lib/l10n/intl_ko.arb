@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:18.919050",
+  "@@last_modified": "2026-02-09 11:08:39.290513",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11068,6 +11068,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "내 소개",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "관용구",
   "grammarCopyPOSphrasalv": "구동사",
   "grammarCopyPOScompn": "복합어",
@@ -11100,6 +11105,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "이메일 변경",
+  "withTheseAddressesDescription": "이 이메일 주소로 로그인하고, 비밀번호를 복구하며, 구독을 관리할 수 있습니다.",
+  "noAddressDescription": "아직 이메일 주소를 추가하지 않았습니다.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

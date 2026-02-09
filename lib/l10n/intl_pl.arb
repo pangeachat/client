@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-09 10:31:24.557539",
+  "@@last_modified": "2026-02-09 11:09:49.851439",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10958,6 +10958,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O mnie",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Czasownik frazowy",
   "grammarCopyPOScompn": "Złożony",
@@ -10990,6 +10995,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmień adres e-mail",
+  "withTheseAddressesDescription": "Dzięki tym adresom e-mail możesz się zalogować, odzyskać hasło i zarządzać subskrypcjami.",
+  "noAddressDescription": "Nie dodałeś jeszcze żadnych adresów e-mail.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

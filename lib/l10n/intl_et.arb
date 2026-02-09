@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-09 10:30:44.206560",
+  "@@last_modified": "2026-02-09 11:09:05.357413",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11231,6 +11231,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Minust",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idioom",
   "grammarCopyPOSphrasalv": "Fraasi Verb",
   "grammarCopyPOScompn": "Kompleks",
@@ -11263,6 +11268,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Muuda e-posti",
+  "withTheseAddressesDescription": "Nende e-posti aadressidega saad sisse logida, oma parooli taastada ja tellimusi hallata.",
+  "noAddressDescription": "Sa ei ole veel ühtegi e-posti aadressi lisanud.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

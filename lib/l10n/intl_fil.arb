@@ -2784,7 +2784,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-09 10:31:04.579384",
+  "@@last_modified": "2026-02-09 11:09:29.936599",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11936,6 +11936,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Tungkol sa akin",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idyoma",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Pinagsama",
@@ -11968,6 +11973,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Palitan ang email",
+  "withTheseAddressesDescription": "Sa mga email address na ito, maaari kang mag-log in, i-recover ang iyong password, at pamahalaan ang mga subscription.",
+  "noAddressDescription": "Wala ka pang naidagdag na anumang email address.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

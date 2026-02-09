@@ -4369,7 +4369,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-09 10:30:34.375227",
+  "@@last_modified": "2026-02-09 11:08:53.872484",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11934,6 +11934,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Faoi m'ainm",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Composé",
@@ -11966,6 +11971,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Mudara e-posta",
+  "withTheseAddressesDescription": "Izi e-posta adresleri ile giriş yapabilir, şifrenizi kurtarabilir ve aboneliklerinizi yönetebilirsiniz.",
+  "noAddressDescription": "Henüz herhangi bir e-posta adresi eklemediniz.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

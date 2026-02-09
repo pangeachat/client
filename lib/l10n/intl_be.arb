@@ -1908,7 +1908,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-09 10:30:56.849128",
+  "@@last_modified": "2026-02-09 11:09:23.199652",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12059,6 +12059,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Пра мяне",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Ідыём",
   "grammarCopyPOSphrasalv": "Фразавы дзеяслоў",
   "grammarCopyPOScompn": "Складаны",
@@ -12091,6 +12096,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Змяніць электронную пошту",
+  "withTheseAddressesDescription": "З гэтымі электроннымі адрасамі вы можаце ўвайсці, аднавіць свой пароль і кіраваць падпіскамі.",
+  "noAddressDescription": "Вы яшчэ не дабавілі ніводнага электроннага адрасу.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

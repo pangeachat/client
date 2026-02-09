@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-09 10:31:33.668055",
+  "@@last_modified": "2026-02-09 11:09:59.118469",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11068,6 +11068,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Обо мне",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Идиома",
   "grammarCopyPOSphrasalv": "Фразовый глагол",
   "grammarCopyPOScompn": "Составное",
@@ -11100,6 +11105,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Сменить электронную почту",
+  "withTheseAddressesDescription": "С помощью этих адресов электронной почты вы можете войти в систему, восстановить пароль и управлять подписками.",
+  "noAddressDescription": "Вы еще не добавили ни одного адреса электронной почты.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-02-09 10:30:45.424459",
+  "@@last_modified": "2026-02-09 11:09:13.137048",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10967,6 +10967,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Über mich",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Zusammengesetztes Wort",
@@ -10999,6 +11004,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "E-Mail ändern",
+  "withTheseAddressesDescription": "Mit diesen E-Mail-Adressen können Sie sich anmelden, Ihr Passwort wiederherstellen und Abonnements verwalten.",
+  "noAddressDescription": "Sie haben noch keine E-Mail-Adressen hinzugefügt.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

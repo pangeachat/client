@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:25.986941",
+  "@@last_modified": "2026-02-09 11:09:51.437329",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11438,6 +11438,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasverb",
   "grammarCopyPOScompn": "Sammansatt",
@@ -11470,6 +11475,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ändra e-postadress",
+  "withTheseAddressesDescription": "Med dessa e-postadresser kan du logga in, återställa ditt lösenord och hantera prenumerationer.",
+  "noAddressDescription": "Du har ännu inte lagt till några e-postadresser.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

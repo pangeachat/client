@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-09 10:30:41.236742",
+  "@@last_modified": "2026-02-09 11:09:01.052613",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Niri buruz",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Konposatu",
@@ -10992,6 +10997,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Aldatu posta elektronikoa",
+  "withTheseAddressesDescription": "Posta elektroniko helbide hauekin saioa hasi dezakezu, zure pasahitza berreskuratu eta harpidetzak kudeatu.",
+  "noAddressDescription": "Oraindik ez duzu posta elektroniko helbiderik gehitu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

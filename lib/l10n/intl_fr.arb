@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-02-09 10:31:39.092623",
+  "@@last_modified": "2026-02-09 11:10:07.003221",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11284,6 +11284,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "À propos de moi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verbe à particule",
   "grammarCopyPOScompn": "Composé",
@@ -11316,6 +11321,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Changer l'email",
+  "withTheseAddressesDescription": "Avec ces adresses email, vous pouvez vous connecter, récupérer votre mot de passe et gérer vos abonnements.",
+  "noAddressDescription": "Vous n'avez pas encore ajouté d'adresses email.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

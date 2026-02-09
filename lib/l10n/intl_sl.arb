@@ -2461,7 +2461,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-09 10:30:46.615986",
+  "@@last_modified": "2026-02-09 11:09:14.553223",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12041,6 +12041,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O meni",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasalni glagol",
   "grammarCopyPOScompn": "Sestavljenka",
@@ -12073,6 +12078,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Spremeni e-pošto",
+  "withTheseAddressesDescription": "S temi e-poštnimi naslovi se lahko prijavite, obnovite geslo in upravljate z naročninami.",
+  "noAddressDescription": "Še niste dodali nobenih e-poštnih naslovov.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

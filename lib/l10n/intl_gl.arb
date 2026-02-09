@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-02-09 10:30:23.363980",
+  "@@last_modified": "2026-02-09 11:08:42.508158",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10957,6 +10957,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Sobre min",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verbo Frasal",
   "grammarCopyPOScompn": "Composto",
@@ -10989,6 +10994,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambiar correo electrónico",
+  "withTheseAddressesDescription": "Con estes enderezos de correo electrónico podes iniciar sesión, recuperar a túa contrasinal e xestionar subscricións.",
+  "noAddressDescription": "Non engadiches ningún enderezo de correo electrónico aínda.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

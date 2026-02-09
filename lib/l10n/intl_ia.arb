@@ -1955,7 +1955,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-02-09 10:30:38.575679",
+  "@@last_modified": "2026-02-09 11:08:57.966375",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12038,6 +12038,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Despre mine",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verbo Phrasal",
   "grammarCopyPOScompn": "Compuesto",
@@ -12070,6 +12075,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambia email",
+  "withTheseAddressesDescription": "Con estas direcciones de correo electrónico puedes iniciar sesión, recuperar tu contraseña y gestionar suscripciones.",
+  "noAddressDescription": "Aún no has añadido ninguna dirección de correo electrónico.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

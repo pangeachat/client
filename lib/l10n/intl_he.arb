@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:36.836306",
+  "@@last_modified": "2026-02-09 11:08:56.858820",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12009,6 +12009,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "עליי",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "ביטוי",
   "grammarCopyPOSphrasalv": "פועל פיזי",
   "grammarCopyPOScompn": "מורכב",
@@ -12041,6 +12046,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "שנה דוא\"ל",
+  "withTheseAddressesDescription": "עם כתובות הדוא\"ל הללו אתה יכול להתחבר, לשחזר את הסיסמה שלך ולנהל מנויים.",
+  "noAddressDescription": "עדיין לא הוספת כתובות דוא\"ל.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }

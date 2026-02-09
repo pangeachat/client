@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:42.465226",
+  "@@last_modified": "2026-02-09 11:09:03.927804",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12060,6 +12060,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Sobre mim",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verbo Frasal",
   "grammarCopyPOScompn": "Composto",
@@ -12092,6 +12097,21 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Alterar e-mail",
+  "withTheseAddressesDescription": "Com esses endereços de e-mail, você pode fazer login, recuperar sua senha e gerenciar assinaturas.",
+  "noAddressDescription": "Você ainda não adicionou nenhum endereço de e-mail.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
     "type": "String",
     "placeholders": {}
   }
