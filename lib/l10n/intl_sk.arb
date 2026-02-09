@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-05 10:09:24.752898",
+  "@@last_modified": "2026-02-09 10:30:32.743132",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11821,8 +11821,6 @@
   "congratulations": "Gratulujeme!",
   "anotherRound": "Ďalšie kolo",
   "noActivityRequest": "Žiadna aktuálna požiadavka na aktivitu.",
-  "quit": "Ukončiť",
-  "congratulationsYouveCompletedPractice": "Gratulujeme! Dokončili ste cvičebnú reláciu.",
   "mustHave10Words": "Musíte mať aspoň 10 slovíčok na precvičovanie. Skúste sa porozprávať s priateľom alebo Pangea Botom, aby ste objavili viac!",
   "botSettings": "Nastavenia bota",
   "activitySettingsOverrideWarning": "Jazyk a jazyková úroveň určené plánom aktivity",
@@ -11868,14 +11866,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12066,6 +12056,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Dokonalá prax!",
+  "greatPractice": "Skvelá prax!",
+  "usedNoHints": "Dobrý výkon, že si nepoužil žiadne nápovedy!",
+  "youveCompletedPractice": "Dokončil si prax, pokračuj v tom, aby si sa zlepšil!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-05 10:10:15.587333",
+  "@@last_modified": "2026-02-09 10:31:29.266500",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11527,8 +11527,6 @@
   "congratulations": "おめでとうございます！",
   "anotherRound": "もう一回",
   "noActivityRequest": "現在のアクティビティリクエストはありません。",
-  "quit": "終了",
-  "congratulationsYouveCompletedPractice": "おめでとうございます！練習セッションを完了しました。",
   "mustHave10Words": "練習するには、少なくとも10語の語彙が必要です。友達やPangea Botに話しかけて、もっと発見してみてください！",
   "botSettings": "ボット設定",
   "activitySettingsOverrideWarning": "アクティビティプランによって決定された言語と言語レベル",
@@ -11574,14 +11572,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11772,6 +11762,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "完璧な練習！",
+  "greatPractice": "素晴らしい練習！",
+  "usedNoHints": "ヒントを使わずによくやった！",
+  "youveCompletedPractice": "練習を完了しました。これを続けて上達してください！",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

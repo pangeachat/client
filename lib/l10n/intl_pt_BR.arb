@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:31.755690",
+  "@@last_modified": "2026-02-09 10:30:39.705540",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11095,8 +11095,6 @@
   "congratulations": "Parabéns!",
   "anotherRound": "Outra rodada",
   "noActivityRequest": "Nenhum pedido de atividade atual.",
-  "quit": "Sair",
-  "congratulationsYouveCompletedPractice": "Parabéns! Você completou a sessão de prática.",
   "mustHave10Words": "Você deve ter pelo menos 10 palavras de vocabulário para praticá-las. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!",
   "botSettings": "Configurações do Bot",
   "activitySettingsOverrideWarning": "Idioma e nível de idioma determinados pelo plano de atividade",
@@ -11142,14 +11140,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11340,6 +11330,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Prática perfeita!",
+  "greatPractice": "Ótima prática!",
+  "usedNoHints": "Bom trabalho não usando dicas!",
+  "youveCompletedPractice": "Você completou a prática, continue assim para melhorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

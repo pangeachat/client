@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:10:08.830801",
+  "@@last_modified": "2026-02-09 10:31:21.327976",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11841,8 +11841,6 @@
   "congratulations": "অভিনন্দন!",
   "anotherRound": "আরেকটি রাউন্ড",
   "noActivityRequest": "বর্তমান কোন কার্যকলাপের অনুরোধ নেই।",
-  "quit": "বিরতি",
-  "congratulationsYouveCompletedPractice": "অভিনন্দন! আপনি অনুশীলন সেশন সম্পন্ন করেছেন।",
   "mustHave10Words": "আপনার অনুশীলনের জন্য অন্তত 10টি শব্দ থাকতে হবে। আরও জানার জন্য একটি বন্ধুর সাথে কথা বলুন বা Pangea Bot এর সাথে কথা বলুন!",
   "botSettings": "বট সেটিংস",
   "activitySettingsOverrideWarning": "কার্যকলাপ পরিকল্পনার দ্বারা নির্ধারিত ভাষা এবং ভাষার স্তর",
@@ -11888,14 +11886,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12086,6 +12076,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "পারফেক্ট প্র্যাকটিস!",
+  "greatPractice": "দারুণ প্র্যাকটিস!",
+  "usedNoHints": "কোনো হিন্ট ব্যবহার না করার জন্য ভালো কাজ!",
+  "youveCompletedPractice": "আপনি প্র্যাকটিস সম্পন্ন করেছেন, উন্নতির জন্য এভাবে চালিয়ে যান!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

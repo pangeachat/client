@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:28.796405",
+  "@@last_modified": "2026-02-09 10:30:36.836306",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11786,8 +11786,6 @@
   "congratulations": "מזל טוב!",
   "anotherRound": "סיבוב נוסף",
   "noActivityRequest": "אין בקשת פעילות נוכחית.",
-  "quit": "צא",
-  "congratulationsYouveCompletedPractice": "מזל טוב! סיימת את מושב האימון.",
   "mustHave10Words": "עליך שיהיו לפחות 10 מילים לאוצר מילים כדי לתרגל אותן. נסה לדבר עם חבר או עם פנגיאה בוט כדי לגלות עוד!",
   "botSettings": "הגדרות בוט",
   "activitySettingsOverrideWarning": "שפה ורמת שפה נקבעות על ידי תוכנית הפעילות",
@@ -11833,14 +11831,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12031,6 +12021,26 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "תרגול מושלם!",
+  "greatPractice": "תרגול נהדר!",
+  "usedNoHints": "עבודה טובה שלא השתמשת ברמזים!",
+  "youveCompletedPractice": "סיימת את התרגול, המשך כך כדי להשתפר!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   }

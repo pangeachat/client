@@ -47,7 +47,7 @@ class CompletedActivitySessionView extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                L10n.of(context).congratulationsYouveCompletedPractice,
+                controller.getCompletionMessage(context),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -171,7 +171,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                L10n.of(context).quit,
+                                L10n.of(context).done,
                               ),
                             ],
                           ),
