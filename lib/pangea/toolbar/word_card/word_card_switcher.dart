@@ -24,13 +24,13 @@ class WordCardSwitcher extends StatelessWidget {
                   overlayController: controller.widget.overlayController,
                 )
               : mode != SelectMode.emoji
-                  ? ValueListenableBuilder(
-                      valueListenable: controller.reactionNotifier,
-                      builder: (context, _, _) => MessageReactionPicker(
-                        chatController: controller.widget.chatController,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
+              ? ValueListenableBuilder(
+                  valueListenable: controller.reactionNotifier,
+                  builder: (context, _, _) => MessageReactionPicker(
+                    chatController: controller.widget.chatController,
+                  ),
+                )
+              : const SizedBox.shrink(),
         );
       },
     );

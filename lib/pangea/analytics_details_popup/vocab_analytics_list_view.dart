@@ -1,6 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:diacritic/diacritic.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
@@ -15,9 +20,6 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 /// Displays vocab analytics, sorted into categories
 /// (flowers, greens, and seeds) by points
@@ -58,7 +60,8 @@ class VocabAnalyticsListView extends StatelessWidget {
     final vocab = controller.vocab;
     final List<Widget> filters = ConstructLevelEnum.values.reversed
         .map((constructLevelCategory) {
-          final int count = vocab
+          final int count =
+              vocab
                   ?.where((e) => e.lemmaCategory == constructLevelCategory)
                   .length ??
               0;
@@ -72,8 +75,8 @@ class VocabAnalyticsListView extends StatelessWidget {
                 shape: BoxShape.circle,
                 color:
                     controller.selectedConstructLevel == constructLevelCategory
-                        ? constructLevelCategory.color(context).withAlpha(50)
-                        : null,
+                    ? constructLevelCategory.color(context).withAlpha(50)
+                    : null,
               ),
               padding: const EdgeInsets.all(8.0),
               child: Badge(
@@ -196,39 +199,38 @@ class VocabAnalyticsListView extends StatelessWidget {
                     : SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 100.0,
-                          mainAxisExtent: 100.0,
-                          crossAxisSpacing: 8.0,
-                          mainAxisSpacing: 8.0,
-                        ),
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final vocabItem = filteredVocab[index];
-                            return VocabAnalyticsListTile(
-                              onTap: () {
-                                TtsController.tryToSpeak(
-                                  vocabItem.id.lemma,
-                                  langCode: MatrixState.pangeaController
-                                      .userController.userL2Code!,
-                                  pos: vocabItem.id.category,
-                                );
-                                AnalyticsNavigationUtil.navigateToAnalytics(
-                                  context: context,
-                                  view: ProgressIndicatorEnum.wordsUsed,
-                                  construct: vocabItem.id,
-                                );
-                              },
-                              constructId: vocabItem.id,
-                              textColor: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? vocabItem.lemmaCategory.darkColor(context)
-                                  : vocabItem.lemmaCategory.color(context),
-                              level: vocabItem.lemmaCategory,
-                              selected: vocabItem.id == selectedConstruct,
-                            );
-                          },
-                          childCount: filteredVocab.length,
-                        ),
+                              maxCrossAxisExtent: 100.0,
+                              mainAxisExtent: 100.0,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8.0,
+                            ),
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final vocabItem = filteredVocab[index];
+                          return VocabAnalyticsListTile(
+                            onTap: () {
+                              TtsController.tryToSpeak(
+                                vocabItem.id.lemma,
+                                langCode: MatrixState
+                                    .pangeaController
+                                    .userController
+                                    .userL2Code!,
+                                pos: vocabItem.id.category,
+                              );
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                                view: ProgressIndicatorEnum.wordsUsed,
+                                construct: vocabItem.id,
+                              );
+                            },
+                            constructId: vocabItem.id,
+                            textColor:
+                                Theme.of(context).brightness == Brightness.light
+                                ? vocabItem.lemmaCategory.darkColor(context)
+                                : vocabItem.lemmaCategory.color(context),
+                            level: vocabItem.lemmaCategory,
+                            selected: vocabItem.id == selectedConstruct,
+                          );
+                        }, childCount: filteredVocab.length),
                       ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],

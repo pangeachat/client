@@ -1,7 +1,17 @@
 import 'dart:isolate';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:collection/collection.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -11,15 +21,6 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'config/setting_keys.dart';
 import 'utils/background_push.dart';
 import 'widgets/fluffy_chat_app.dart';
@@ -34,7 +35,11 @@ void main() async {
     Logs().e('Failed to load .env file', e);
   }
 
-  await Future.wait([ErrorHandler.initialize(), PLanguageStore.initialize(), GoogleAnalytics.initialize()]);
+  await Future.wait([
+    ErrorHandler.initialize(),
+    PLanguageStore.initialize(),
+    GoogleAnalytics.initialize(),
+  ]);
 
   ///
   /// PangeaLanguage must be initialized before the runApp
@@ -52,7 +57,10 @@ void main() async {
   if (PlatformInfos.isAndroid) {
     final port = mainIsolateReceivePort = ReceivePort();
     IsolateNameServer.removePortNameMapping(AppConfig.mainIsolatePortName);
-    IsolateNameServer.registerPortWithName(port.sendPort, AppConfig.mainIsolatePortName);
+    IsolateNameServer.registerPortWithName(
+      port.sendPort,
+      AppConfig.mainIsolatePortName,
+    );
     await waitForPushIsolateDone();
   }
 
@@ -74,7 +82,8 @@ void main() async {
   // If the app starts in detached mode, we assume that it is in
   // background fetch mode for processing push notifications. This is
   // currently only supported on Android.
-  if (PlatformInfos.isAndroid && AppLifecycleState.detached == WidgetsBinding.instance.lifecycleState) {
+  if (PlatformInfos.isAndroid &&
+      AppLifecycleState.detached == WidgetsBinding.instance.lifecycleState) {
     // Do not send online presences when app is in background fetch mode.
     for (final client in clients) {
       client.backgroundSync = false;
@@ -93,7 +102,9 @@ void main() async {
   }
 
   // Started in foreground mode.
-  Logs().i('${AppSettings.applicationName.value} started in foreground mode. Rendering GUI...');
+  Logs().i(
+    '${AppSettings.applicationName.value} started in foreground mode. Rendering GUI...',
+  );
   await startGui(clients, store);
 }
 
@@ -103,7 +114,9 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
   String? pin;
   if (PlatformInfos.isMobile) {
     try {
-      pin = await const FlutterSecureStorage().read(key: 'chat.fluffy.app_lock');
+      pin = await const FlutterSecureStorage().read(
+        key: 'chat.fluffy.app_lock',
+      );
     } catch (e, s) {
       Logs().d('Unable to read PIN from Secure storage', e, s);
     }

@@ -60,7 +60,8 @@ class LemmaUseExampleMessages extends StatelessWidget {
       final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
         event: event,
         timeline: timeline!,
-        ownMessage: event.senderId ==
+        ownMessage:
+            event.senderId ==
             MatrixState.pangeaController.matrixState.client.userID,
       );
       final tokens = pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -111,7 +112,8 @@ class LemmaUseExampleMessages extends StatelessWidget {
                     text: TextSpan(
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryFixed,
-                        fontSize: AppSettings.fontSizeFactor.value *
+                        fontSize:
+                            AppSettings.fontSizeFactor.value *
                             AppConfig.messageFontSize,
                       ),
                       children: example.textSpans,
@@ -231,7 +233,8 @@ class ExampleMessage {
       );
 
       tokenPointer = window.endTokenIndex;
-      characterPointer = tokens[window.endTokenIndex - 1].text.offset +
+      characterPointer =
+          tokens[window.endTokenIndex - 1].text.offset +
           tokens[window.endTokenIndex - 1].text.length;
     }
 

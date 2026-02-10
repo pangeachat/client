@@ -200,21 +200,22 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               Expanded(
                 child: widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
-                        ? MorphAnalyticsListView(controller: this)
-                        : MorphDetailsView(constructId: widget.construct!)
+                          ? MorphAnalyticsListView(controller: this)
+                          : MorphDetailsView(constructId: widget.construct!)
                     : widget.construct == null
-                        ? VocabAnalyticsListView(controller: this)
-                        : VocabDetailsView(
-                            constructId: widget.construct!,
-                            controller: this,
-                          ),
+                    ? VocabAnalyticsListView(controller: this)
+                    : VocabDetailsView(
+                        constructId: widget.construct!,
+                        controller: this,
+                      ),
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton:
-          widget.construct == null ? _PracticeButton(view: widget.view) : null,
+      floatingActionButton: widget.construct == null
+          ? _PracticeButton(view: widget.view)
+          : null,
     );
   }
 }
@@ -252,8 +253,9 @@ class _PracticeButton extends StatelessWidget {
       onPressed: enabled
           ? () => context.go("/rooms/analytics/${view.name}/practice")
           : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
-      backgroundColor:
-          enabled ? null : Theme.of(context).colorScheme.surfaceContainer,
+      backgroundColor: enabled
+          ? null
+          : Theme.of(context).colorScheme.surfaceContainer,
       foregroundColor: enabled
           ? null
           : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),

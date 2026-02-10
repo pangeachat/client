@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -14,8 +18,6 @@ import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/token_feedback_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
@@ -107,7 +109,8 @@ class WordZoomWidget extends StatelessWidget {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
-                                    color: Theme.of(context).brightness ==
+                                    color:
+                                        Theme.of(context).brightness ==
                                             Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
@@ -120,7 +123,7 @@ class WordZoomWidget extends StatelessWidget {
                                 ? TokenFeedbackButton(
                                     textLanguage:
                                         PLanguageStore.byLangCode(langCode) ??
-                                            LanguageModel.unknown,
+                                        LanguageModel.unknown,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
@@ -140,7 +143,7 @@ class WordZoomWidget extends StatelessWidget {
                                     text: token.content,
                                     textLanguage:
                                         PLanguageStore.byLangCode(langCode) ??
-                                            LanguageModel.unknown,
+                                        LanguageModel.unknown,
                                     pos: pos,
                                     morph: morph,
                                     style: const TextStyle(fontSize: 14.0),

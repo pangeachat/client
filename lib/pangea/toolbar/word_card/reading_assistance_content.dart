@@ -46,34 +46,40 @@ class ReadingAssistanceContent extends StatelessWidget {
       token: overlayController.selectedToken!.text,
       construct: overlayController.selectedToken!.vocabConstructID,
       pos: overlayController.selectedToken!.pos,
-      morph: overlayController.selectedToken!.morph
-          .map((k, v) => MapEntry(k.name, v)),
+      morph: overlayController.selectedToken!.morph.map(
+        (k, v) => MapEntry(k.name, v),
+      ),
       event: overlayController.event,
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
       onDismissNewWordOverlay: () => overlayController.setState(() {}),
-      onFlagTokenInfo: (LemmaInfoResponse lemmaInfo, PTRequest ptRequest,
-          PTResponse ptResponse) {
-        if (selectedTokenIndex < 0) return;
-        final requestData = TokenInfoFeedbackRequestData(
-          userId: Matrix.of(context).client.userID!,
-          roomId: overlayController.event.room.id,
-          fullText: overlayController.pangeaMessageEvent.messageDisplayText,
-          detectedLanguage:
+      onFlagTokenInfo:
+          (
+            LemmaInfoResponse lemmaInfo,
+            PTRequest ptRequest,
+            PTResponse ptResponse,
+          ) {
+            if (selectedTokenIndex < 0) return;
+            final requestData = TokenInfoFeedbackRequestData(
+              userId: Matrix.of(context).client.userID!,
+              roomId: overlayController.event.room.id,
+              fullText: overlayController.pangeaMessageEvent.messageDisplayText,
+              detectedLanguage:
+                  overlayController.pangeaMessageEvent.messageDisplayLangCode,
+              tokens: tokens ?? [],
+              selectedToken: selectedTokenIndex,
+              wordCardL1:
+                  MatrixState.pangeaController.userController.userL1Code!,
+              lemmaInfo: lemmaInfo,
+              ptRequest: ptRequest,
+              ptResponse: ptResponse,
+            );
+            overlayController.widget.chatController.showTokenFeedbackDialog(
+              requestData,
               overlayController.pangeaMessageEvent.messageDisplayLangCode,
-          tokens: tokens ?? [],
-          selectedToken: selectedTokenIndex,
-          wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
-          lemmaInfo: lemmaInfo,
-          ptRequest: ptRequest,
-          ptResponse: ptResponse,
-        );
-        overlayController.widget.chatController.showTokenFeedbackDialog(
-          requestData,
-          overlayController.pangeaMessageEvent.messageDisplayLangCode,
-          overlayController.pangeaMessageEvent,
-        );
-      },
+              overlayController.pangeaMessageEvent,
+            );
+          },
     );
   }
 }

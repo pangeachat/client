@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
@@ -16,7 +19,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -61,8 +63,8 @@ class VocabDetailsView extends StatelessWidget {
 
         final Color textColor =
             (Theme.of(context).brightness != Brightness.light
-                ? level.color(context)
-                : level.darkColor(context));
+            ? level.color(context)
+            : level.darkColor(context));
 
         final forms = construct?.forms ?? [];
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
@@ -93,17 +95,17 @@ class VocabDetailsView extends StatelessWidget {
                   construct: constructId,
                   pos: constructId.category,
                   onClose: Navigator.of(context).pop,
-                  onFlagTokenInfo: (
-                    LemmaInfoResponse lemmaInfo,
-                    PTRequest ptRequest,
-                    PTResponse ptResponse,
-                  ) =>
-                      controller.onFlagTokenInfo(
-                    token,
-                    lemmaInfo,
-                    ptRequest,
-                    ptResponse,
-                  ),
+                  onFlagTokenInfo:
+                      (
+                        LemmaInfoResponse lemmaInfo,
+                        PTRequest ptRequest,
+                        PTResponse ptResponse,
+                      ) => controller.onFlagTokenInfo(
+                        token,
+                        lemmaInfo,
+                        ptRequest,
+                        ptResponse,
+                      ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
                 ),

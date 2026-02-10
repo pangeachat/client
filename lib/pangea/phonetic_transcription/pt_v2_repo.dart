@@ -2,22 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:async/async.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class _MemoryCacheItem {
   final Future<Result<PTResponse>> resultFuture;
   final DateTime timestamp;
 
-  const _MemoryCacheItem({
-    required this.resultFuture,
-    required this.timestamp,
-  });
+  const _MemoryCacheItem({required this.resultFuture, required this.timestamp});
 }
 
 class _DiskCacheItem {
@@ -27,9 +25,9 @@ class _DiskCacheItem {
   const _DiskCacheItem({required this.response, required this.timestamp});
 
   Map<String, dynamic> toJson() => {
-        'response': response.toJson(),
-        'timestamp': timestamp.toIso8601String(),
-      };
+    'response': response.toJson(),
+    'timestamp': timestamp.toIso8601String(),
+  };
 
   static _DiskCacheItem fromJson(Map<String, dynamic> json) {
     return _DiskCacheItem(
@@ -82,8 +80,10 @@ class PTV2Repo {
     await GetStorage.init(ptV2StorageKey);
     final key = request.cacheKey;
     try {
-      final item =
-          _DiskCacheItem(response: response, timestamp: DateTime.now());
+      final item = _DiskCacheItem(
+        response: response,
+        timestamp: DateTime.now(),
+      );
       await _storage.write(key, item.toJson());
       _cache.remove(key);
     } catch (e, s) {
@@ -94,7 +94,10 @@ class PTV2Repo {
   /// Look up a cached PT response without triggering a network fetch.
   /// Returns null if not in memory or disk cache.
   static PTResponse? getCachedResponse(
-      String surface, String langCode, String userL1) {
+    String surface,
+    String langCode,
+    String userL1,
+  ) {
     final key = '$surface|$langCode|$userL1';
 
     // Check memory cache first.

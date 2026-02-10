@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -10,7 +12,6 @@ import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;
@@ -45,10 +46,12 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   });
 
   @override
-  State<PhoneticTranscriptionWidget> createState() => _PhoneticTranscriptionWidgetState();
+  State<PhoneticTranscriptionWidget> createState() =>
+      _PhoneticTranscriptionWidgetState();
 }
 
-class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidget> {
+class _PhoneticTranscriptionWidgetState
+    extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
   Future<void> _handleAudioTap(String targetId) async {
@@ -79,14 +82,18 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message: _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying
+              ? L10n.of(context).stop
+              : L10n.of(context).playAudio,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               decoration: BoxDecoration(
-                color: hovering ? Colors.grey.withAlpha((0.2 * 255).round()) : Colors.transparent,
+                color: hovering
+                    ? Colors.grey.withAlpha((0.2 * 255).round())
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(6),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -102,13 +109,23 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
                       AsyncError(error: final error) =>
                         error is UnsubscribedException
                             ? ErrorIndicator(
-                                message: L10n.of(context).subscribeToUnlockTranscriptions,
+                                message: L10n.of(
+                                  context,
+                                ).subscribeToUnlockTranscriptions,
                                 onTap: () {
-                                  MatrixState.pangeaController.subscriptionController.showPaywall(context);
+                                  MatrixState
+                                      .pangeaController
+                                      .subscriptionController
+                                      .showPaywall(context);
                                 },
                               )
-                            : ErrorIndicator(message: L10n.of(context).failedToFetchTranscription),
-                      AsyncLoaded<PTResponse>(value: final ptResponse) => _buildTranscription(context, ptResponse),
+                            : ErrorIndicator(
+                                message: L10n.of(
+                                  context,
+                                ).failedToFetchTranscription,
+                              ),
+                      AsyncLoaded<PTResponse>(value: final ptResponse) =>
+                        _buildTranscription(context, ptResponse),
                       _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
                     };
                   },
@@ -122,7 +139,11 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
   }
 
   Widget _buildTranscription(BuildContext context, PTResponse ptResponse) {
-    final result = disambiguate(ptResponse.pronunciations, pos: widget.pos, morph: widget.morph);
+    final result = disambiguate(
+      ptResponse.pronunciations,
+      pos: widget.pos,
+      morph: widget.morph,
+    );
 
     return Row(
       spacing: 8.0,

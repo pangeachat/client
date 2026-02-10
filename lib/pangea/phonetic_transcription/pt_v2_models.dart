@@ -25,10 +25,10 @@ class Pronunciation {
   }
 
   Map<String, dynamic> toJson() => {
-        'transcription': transcription,
-        'tts_phoneme': ttsPhoneme,
-        'ud_conditions': udConditions,
-      };
+    'transcription': transcription,
+    'tts_phoneme': ttsPhoneme,
+    'ud_conditions': udConditions,
+  };
 
   @override
   bool operator ==(Object other) =>
@@ -66,11 +66,11 @@ class PTRequest {
   }
 
   Map<String, dynamic> toJson() => {
-        'surface': surface,
-        'lang_code': langCode,
-        'user_l1': userL1,
-        'user_l2': userL2,
-      };
+    'surface': surface,
+    'lang_code': langCode,
+    'user_l1': userL1,
+    'user_l2': userL2,
+  };
 
   /// Cache key excludes userL2 (doesn't affect pronunciation).
   String get cacheKey => '$surface|$langCode|$userL1';
@@ -103,20 +103,23 @@ class PTResponse {
   }
 
   Map<String, dynamic> toJson() => {
-        'pronunciations': pronunciations.map((p) => p.toJson()).toList(),
-      };
+    'pronunciations': pronunciations.map((p) => p.toJson()).toList(),
+  };
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is PTResponse &&
-          const _PronunciationListEquality()
-              .equals(pronunciations, other.pronunciations);
+          const _PronunciationListEquality().equals(
+            pronunciations,
+            other.pronunciations,
+          );
 
   @override
   int get hashCode => const _PronunciationListEquality().hash(pronunciations);
 }
 
+// ignore: unintended_html_in_doc_comment
 /// Deep equality for List<Pronunciation>.
 class _PronunciationListEquality {
   const _PronunciationListEquality();

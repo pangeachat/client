@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -5,7 +7,6 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
-import 'package:flutter/material.dart';
 
 class TokenFeedbackButton extends StatelessWidget {
   final LanguageModel textLanguage;
@@ -35,7 +36,8 @@ class TokenFeedbackButton extends StatelessWidget {
           textLanguage: textLanguage,
           text: text,
           builder: (context, transcriptController) {
-            final enabled = (lemmaController.lemmaInfo != null ||
+            final enabled =
+                (lemmaController.lemmaInfo != null ||
                     lemmaController.isError) &&
                 (transcriptController.ptResponse != null ||
                     transcriptController.isError);

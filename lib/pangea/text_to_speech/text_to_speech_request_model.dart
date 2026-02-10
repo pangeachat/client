@@ -45,5 +45,6 @@ class TextToSpeechRequestModel {
   }
 
   @override
-  int get hashCode => text.hashCode ^ langCode.hashCode ^ voice.hashCode ^ ttsPhoneme.hashCode;
+  int get hashCode =>
+      text.hashCode ^ langCode.hashCode ^ voice.hashCode ^ ttsPhoneme.hashCode;
 }

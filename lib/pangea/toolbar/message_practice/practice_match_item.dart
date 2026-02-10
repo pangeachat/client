@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -8,8 +11,6 @@ import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class PracticeMatchItem extends StatefulWidget {
   final Widget content;
@@ -101,7 +102,8 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
   @override
   didUpdateWidget(PracticeMatchItem oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.isSelected != widget.isSelected || oldWidget.isCorrect != widget.isCorrect) {
+    if (oldWidget.isSelected != widget.isSelected ||
+        oldWidget.isCorrect != widget.isCorrect) {
       setState(() {});
     }
   }

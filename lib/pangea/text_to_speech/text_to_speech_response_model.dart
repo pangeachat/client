@@ -31,13 +31,13 @@ class TextToSpeechResponseModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "audio_content": audioContent,
-        "mime_type": mimeType,
-        "duration_millis": durationMillis,
-        "wave_form": List<dynamic>.from(waveform.map((x) => x)),
-        "file_extension": fileExtension,
-        "tts_tokens": List<dynamic>.from(ttsTokens.map((x) => x.toJson())),
-      };
+    "audio_content": audioContent,
+    "mime_type": mimeType,
+    "duration_millis": durationMillis,
+    "wave_form": List<dynamic>.from(waveform.map((x) => x)),
+    "file_extension": fileExtension,
+    "tts_tokens": List<dynamic>.from(ttsTokens.map((x) => x.toJson())),
+  };
 
   PangeaAudioEventData toPangeaAudioEventData(
     String text,
@@ -61,16 +61,16 @@ class TTSToken {
   TTSToken({required this.startMS, required this.endMS, required this.text});
 
   factory TTSToken.fromJson(Map<String, dynamic> json) => TTSToken(
-        startMS: json["start_ms"],
-        endMS: json["end_ms"],
-        text: PangeaTokenText.fromJson(json["text"]),
-      );
+    startMS: json["start_ms"],
+    endMS: json["end_ms"],
+    text: PangeaTokenText.fromJson(json["text"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "start_ms": startMS,
-        "end_ms": endMS,
-        "text": text.toJson(),
-      };
+    "start_ms": startMS,
+    "end_ms": endMS,
+    "text": text.toJson(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -100,22 +100,22 @@ class PangeaAudioEventData {
   });
 
   factory PangeaAudioEventData.fromJson(dynamic json) => PangeaAudioEventData(
-        text: json[ModelKey.text] as String,
-        langCode: json[ModelKey.langCode] as String,
-        tokens: List<TTSToken>.from(
-          (json[ModelKey.tokens] as Iterable)
-              .map((x) => TTSToken.fromJson(x))
-              .toList(),
-        ),
-        voice: json[ModelKey.voice] as String?,
-      );
+    text: json[ModelKey.text] as String,
+    langCode: json[ModelKey.langCode] as String,
+    tokens: List<TTSToken>.from(
+      (json[ModelKey.tokens] as Iterable)
+          .map((x) => TTSToken.fromJson(x))
+          .toList(),
+    ),
+    voice: json[ModelKey.voice] as String?,
+  );
 
   Map<String, dynamic> toJson() => {
-        ModelKey.text: text,
-        ModelKey.langCode: langCode,
-        ModelKey.tokens: List<Map<String, dynamic>>.from(
-          tokens.map((x) => x.toJson()),
-        ),
-        if (voice != null) ModelKey.voice: voice,
-      };
+    ModelKey.text: text,
+    ModelKey.langCode: langCode,
+    ModelKey.tokens: List<Map<String, dynamic>>.from(
+      tokens.map((x) => x.toJson()),
+    ),
+    if (voice != null) ModelKey.voice: voice,
+  };
 }
