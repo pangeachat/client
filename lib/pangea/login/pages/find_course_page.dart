@@ -360,7 +360,7 @@ class FindCoursePageView extends StatelessWidget {
                             style: theme.textTheme.bodyLarge,
                           ),
                           ElevatedButton(
-                            onPressed: () => context.go('/rooms/course/own'),
+                            onPressed: controller.startNewCourse,
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   theme.colorScheme.primaryContainer,
