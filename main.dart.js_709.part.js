@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Let\xf6lt\xe9s sikertelen";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nem siker\xfclt lek\xe9rni a szint \xf6sszegz\xe9st";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nem siker\xfclt bet\xf6lteni a csoport besz\xe9lget\xe9seit ebben a kurzusban";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2ejwgaZ28CKRZIWMuCVjZS6iWyk="] = d.current;
+  d["qzeyw5aSAEWhy/iVuKdqlvxypOg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

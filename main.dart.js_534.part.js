@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Error en la descarga";
     },
-    get$errorFetchingLevelSummary() {
-      return "Error al obtener el resumen del nivel";
-    },
     get$errorLoadingSpaceChildren() {
       return "Error al cargar chats dentro de este espacio";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sWhQg6Z+P88oCQb1nyq2Oda9ECw="] = d.current;
+  d["GwQRPaMIBFem/gldd72V1JNMJWE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_534.part.js.map

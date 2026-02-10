@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Nabigo ang pag-download";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nabigong makuha ang buod ng antas";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nabigong i-load ang mga chat sa loob ng kursong ito";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["U3dIvzIC0it6Ra9W1M5bN09GqrQ="] = d.current;
+  d["BMgO/JV6nw/HzF01ZZ2yIdZgnyQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Malsukcesis el\u015duti";
     },
-    get$errorFetchingLevelSummary() {
-      return "Malsukcesis akiri nivelan resumon";
-    },
     get$errorLoadingSpaceChildren() {
       return "Malsukcesis \u015dar\u011di babiladojn ene de \u0109i tiu kurso";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9UKSWdc7ueUW8uriiHeXh8rBolE="] = d.current;
+  d["SYY/6gR7FCPLz+XcF46IQAj0diQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

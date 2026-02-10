@@ -4240,9 +4240,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "\u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1 \u09ac\u09cd\u09af\u09b0\u09cd\u09a5 \u09b9\u09af\u09bc\u09c7\u099b\u09c7";
     },
-    get$errorFetchingLevelSummary() {
-      return "\u09b8\u09cd\u09a4\u09b0 \u09b8\u0982\u0995\u09cd\u09b7\u09bf\u09aa\u09cd\u09a4\u09a4\u09be \u0986\u09a8\u09a4\u09c7 \u09ac\u09cd\u09af\u09b0\u09cd\u09a5 \u09b9\u09af\u09bc\u09c7\u099b\u09c7";
-    },
     get$errorLoadingSpaceChildren() {
       return "\u098f\u0987 \u0995\u09cb\u09b0\u09cd\u09b8\u09c7\u09b0 \u099a\u09cd\u09af\u09be\u099f \u09b2\u09cb\u09a1 \u0995\u09b0\u09a4\u09c7 \u09ac\u09cd\u09af\u09b0\u09cd\u09a5 \u09b9\u09af\u09bc\u09c7\u099b\u09c7";
     },
@@ -5579,7 +5576,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RegmeXHDTx5lzSNfrblS8hGxvMU="] = d.current;
+  d["fRTE0qZBSpcXWI0ufoc0gZGnMCU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

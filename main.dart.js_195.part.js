@@ -4240,9 +4240,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "La baixada ha fallat";
     },
-    get$errorFetchingLevelSummary() {
-      return "No s'ha pogut obtenir el resum del nivell";
-    },
     get$errorLoadingSpaceChildren() {
       return "No s'han pogut carregar els xats d'aquest curs";
     },
@@ -5582,7 +5579,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M7WV2C7XOeEMX7bUcXSQBkPx4TQ="] = d.current;
+  d["P0mI+4SLN/HuG10GVP4deG1gXQM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

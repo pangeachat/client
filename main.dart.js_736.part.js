@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Gagal mengunduh";
     },
-    get$errorFetchingLevelSummary() {
-      return "Gagal mengambil ringkasan level";
-    },
     get$errorLoadingSpaceChildren() {
       return "Gagal memuat obrolan dalam kursus ini";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/KVHjvI2v00QA7exin3FO+bkAxo="] = d.current;
+  d["gqCBJy1g0yDb3RGjKqfi8YJIVBY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

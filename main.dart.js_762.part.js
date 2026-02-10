@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Atsisiuntimas nepavyko";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nepavyko gauti lygio santraukos";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nepavyko \u012fkelti pokalbi\u0173 \u0161iame kurse";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kdLOq/B3MyB0fyK4Kkx2ub/l//U="] = d.current;
+  d["DCyVdqgLqZMoGuZoJrBZRBDpkRo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Prenos ni uspel";
     },
-    get$errorFetchingLevelSummary() {
-      return "Ne uspe pridobiti povzetka ravni";
-    },
     get$errorLoadingSpaceChildren() {
       return "Ne uspe nalo\u017eiti klepetov znotraj tega te\u010daja";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q+5MUIkdRUWwyXX9JEvWK0uj5/M="] = d.current;
+  d["Wtffe5NO9GhT6HuHbvhLAJzeTfw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

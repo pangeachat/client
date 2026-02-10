@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "\u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0 \u10d5\u10d4\u10e0 \u10db\u10dd\u10ee\u10d4\u10e0\u10ee\u10d3\u10d0";
     },
-    get$errorFetchingLevelSummary() {
-      return "\u10e1\u10d0\u10e4\u10d4\u10ee\u10e3\u10e0\u10d8\u10e1 \u10db\u10d8\u10db\u10dd\u10ee\u10d8\u10da\u10d5\u10d8\u10e1 \u10db\u10d8\u10e6\u10d4\u10d1\u10d0 \u10d5\u10d4\u10e0 \u10db\u10dd\u10ee\u10d4\u10e0\u10ee\u10d3\u10d0";
-    },
     get$errorLoadingSpaceChildren() {
       return "\u10e9\u10d0\u10d7\u10d8\u10e1 \u10e9\u10d0\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0 \u10d5\u10d4\u10e0 \u10db\u10dd\u10ee\u10d4\u10e0\u10ee\u10d3\u10d0 \u10d0\u10db \u10d9\u10e3\u10e0\u10e1\u10e8\u10d8";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kCEnTaI2aXCwXf+W6yOhTU6dlRw="] = d.current;
+  d["QRScBGhgoNu60vY9Y/kYGdVGC58="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

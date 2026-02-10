@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Yuklab olish muvaffaqiyatsiz";
     },
-    get$errorFetchingLevelSummary() {
-      return "Daraja xulosasini olishda xato";
-    },
     get$errorLoadingSpaceChildren() {
       return "Ushbu kurs ichidagi chatlarni yuklashda xato";
     },
@@ -5582,7 +5579,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zUN3aCN4fGQzgu2FiEtO9KGR8f4="] = d.current;
+  d["Pd3M0sUXdigNoLwHQimRM/ymTzY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

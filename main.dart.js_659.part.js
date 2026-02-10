@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Fallou a descarga";
     },
-    get$errorFetchingLevelSummary() {
-      return "Fallo ao obter o resumo do nivel";
-    },
     get$errorLoadingSpaceChildren() {
       return "Fallou ao cargar os chats dentro deste curso";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H8VQEfYrpUUorw5jG2S41uzoe5M="] = d.current;
+  d["apFasi1CZkRosfJTpeDX1hMT0/Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map

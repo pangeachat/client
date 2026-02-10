@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Download failed";
     },
-    get$errorFetchingLevelSummary() {
-      return "Failed to fetch level summary";
-    },
     get$errorLoadingSpaceChildren() {
       return "Failed to load chats within this course";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EyrpeUl0LFK71RIvIicN3pE2ypE="] = d.current;
+  d["2/hYuD1Q7FJj/Wr4h/gkAPeK6P4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_441.part.js.map

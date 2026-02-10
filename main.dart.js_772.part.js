@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Lejupiel\u0101de neizdev\u0101s";
     },
-    get$errorFetchingLevelSummary() {
-      return "Neizdev\u0101s ieg\u016bt l\u012bme\u0146a kopsavilkumu";
-    },
     get$errorLoadingSpaceChildren() {
       return "Neizdev\u0101s iel\u0101d\u0113t sarakstes \u0161aj\u0101 kurs\u0101";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9mpLXxUfSBJxZcXNZ99jNXbaBQM="] = d.current;
+  d["eLlZlJ1mnWbRiBjFqlnOrua3DAE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Deskarga huts egin du";
     },
-    get$errorFetchingLevelSummary() {
-      return "Ezin izan da mailaren laburpena lortu";
-    },
     get$errorLoadingSpaceChildren() {
       return "Ezin izan da ikastaro honetan barruko txat batzuk kargatu";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["So6DhOSYAW0shjpkTgyMO2B7hAc="] = d.current;
+  d["Y/u62hJmb2kB5beRfeDLqLqVaCY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

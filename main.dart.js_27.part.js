@@ -4251,9 +4251,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Falha ao baixar";
     },
-    get$errorFetchingLevelSummary() {
-      return "Falha ao buscar resumo do n\xedvel";
-    },
     get$errorLoadingSpaceChildren() {
       return "Falha ao carregar chats dentro deste curso";
     },
@@ -9804,9 +9801,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$errorDownloading() {
       return "Falha ao baixar";
-    },
-    get$errorFetchingLevelSummary() {
-      return "Falha ao buscar o resumo do n\xedvel";
     },
     get$errorLoadingSpaceChildren() {
       return "Falha ao carregar conversas dentro deste curso";
@@ -15359,9 +15353,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Falha ao descarregar";
     },
-    get$errorFetchingLevelSummary() {
-      return "Falha ao obter o resumo do n\xedvel";
-    },
     get$errorLoadingSpaceChildren() {
       return "Falha ao carregar os chats dentro deste curso";
     },
@@ -16883,7 +16874,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZG5cdX0ef50ho1X6VdhgqxP+KPQ="] = d.current;
+  d["o3ReE7se/jY50q1DiwgPlFUPMCg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

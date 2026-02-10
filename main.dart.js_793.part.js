@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "E\u0219ec la desc\u0103rcare";
     },
-    get$errorFetchingLevelSummary() {
-      return "E\u0219ec la preluarea rezumatului nivelului";
-    },
     get$errorLoadingSpaceChildren() {
       return "E\u0219ec la \xeenc\u0103rcarea conversa\u021biilor din acest curs";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6VF5eprGHVXl2Rl1MtJg2NEir/s="] = d.current;
+  d["/Azp9z8hp3AkR03uw8C1OroLjsk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_793.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "\u0130ndirme ba\u015far\u0131s\u0131z oldu";
     },
-    get$errorFetchingLevelSummary() {
-      return "Seviye \xf6zetleri al\u0131namad\u0131";
-    },
     get$errorLoadingSpaceChildren() {
       return "Bu kurs i\xe7indeki sohbetler y\xfcklenemedi";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Yr17+b+hOldnHVR3QbvR6s6muPQ="] = d.current;
+  d["eQGr4fKnT2iFnXoErWy+hylbVek="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

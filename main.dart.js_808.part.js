@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Nedladdning misslyckades";
     },
-    get$errorFetchingLevelSummary() {
-      return "Misslyckades med att h\xe4mta niv\xe5sammanfattning";
-    },
     get$errorLoadingSpaceChildren() {
       return "Misslyckades med att ladda chattar inom denna kurs";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3b/d2caMeJuw3NPMzC/LVaCX1zc="] = d.current;
+  d["u8WIcgT0+AFY0qmoEEWtfn90nuE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

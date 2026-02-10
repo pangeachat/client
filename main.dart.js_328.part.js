@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Download mislykkedes";
     },
-    get$errorFetchingLevelSummary() {
-      return "Kunne ikke hente niveauoversigt";
-    },
     get$errorLoadingSpaceChildren() {
       return "Kunne ikke indl\xe6se chats inden for dette kursus";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RuBsFeqiPcDQtBzABME6xUzRq2s="] = d.current;
+  d["L88ZuDf/uY2Wrg/Y9h9mFtqwUEs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_328.part.js.map

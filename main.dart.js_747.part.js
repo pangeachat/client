@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Il scaricament a fallit";
     },
-    get$errorFetchingLevelSummary() {
-      return "N'a podet pas cjap\xe2r la sintesi dal niv\xe8l";
-    },
     get$errorLoadingSpaceChildren() {
       return "Il fallit a cargar lis discu in ta stu spazi";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v8Kz40YtABbLLAuhGF/xR15V1Tc="] = d.current;
+  d["Nwe/jwWk4kJp4A0akb7Ld3LIoxg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Lataus ep\xe4onnistui";
     },
-    get$errorFetchingLevelSummary() {
-      return "Virhe haettaessa tasoraporttia";
-    },
     get$errorLoadingSpaceChildren() {
       return "Virhe ladataessa keskusteluja t\xe4m\xe4n kurssin sis\xe4ll\xe4";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/0UvqnMbkpaKPXWsdw14JEW4IyU="] = d.current;
+  d["UbZFobiD0Sjej5HFSJ5DODhIlMU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

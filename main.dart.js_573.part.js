@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Laadimine eba\xf5nnestus";
     },
-    get$errorFetchingLevelSummary() {
-      return "Taseme kokkuv\xf5tte toomine eba\xf5nnestus";
-    },
     get$errorLoadingSpaceChildren() {
       return "Vestluste laadimine selles ruumis eba\xf5nnestus";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PwnotAbCagvTITNJcFdkGd2ZbA0="] = d.current;
+  d["Fp/Wxu3DT+0IffpYdWt69pjRl98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

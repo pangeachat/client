@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Stahov\xe1n\xed selhalo";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nepoda\u0159ilo se na\u010d\xedst souhrn \xfarovn\u011b";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nepoda\u0159ilo se na\u010d\xedst chaty v tomto kurzu";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZiOV/bOFdRivZM6x86kI7lnVJAo="] = d.current;
+  d["VX/CRcyDICkR00arq/li0QaW0Eg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map

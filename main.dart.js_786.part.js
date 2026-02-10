@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Pobieranie nie powiod\u0142o si\u0119";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 podsumowania poziomu";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nie uda\u0142o si\u0119 za\u0142adowa\u0107 czat\xf3w w ramach tego kursu";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7Lj3HQoF2H3IaPY+1TLgk5vssmU="] = d.current;
+  d["pyWET+vtHWF3oo7UYRRuSJ5miIE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "\xc9chec du t\xe9l\xe9chargement";
     },
-    get$errorFetchingLevelSummary() {
-      return "\xc9chec de la r\xe9cup\xe9ration du r\xe9sum\xe9 du niveau";
-    },
     get$errorLoadingSpaceChildren() {
       return "\xc9chec du chargement des discussions dans ce cours";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1oAp7GAg0stJZ8RoqSSgpe5Y/oM="] = d.current;
+  d["HLuK/My2AovIKdZnMINeDhgUNGo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_637.part.js.map

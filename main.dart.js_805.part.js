@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Preuzimanje nije uspelo";
     },
-    get$errorFetchingLevelSummary() {
-      return "Neuspe\u0161no preuzimanje sa\u017eetka nivoa";
-    },
     get$errorLoadingSpaceChildren() {
       return "Neuspe\u0161no u\u010ditavanje razgovora unutar ovog kursa";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["b9BjlPaQjIarhgpUwaXNns1j0lo="] = d.current;
+  d["G1C7S4niEOLOsu0JsO3IpqP60Vk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_805.part.js.map

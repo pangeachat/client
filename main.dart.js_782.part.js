@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Downloaden mislukt";
     },
-    get$errorFetchingLevelSummary() {
-      return "Fout bij het ophalen van niveauoverzicht";
-    },
     get$errorLoadingSpaceChildren() {
       return "Fout bij het laden van chats binnen deze cursus";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OpM4SC3kij/ZcjuDoe0YP20AZ+o="] = d.current;
+  d["pQahlaHZBnvVdjGerujVkHLU6hM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

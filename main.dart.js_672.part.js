@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Preuzimanje nije uspjelo";
     },
-    get$errorFetchingLevelSummary() {
-      return "Neuspje\u0161no dohva\u0107anje sa\u017eetka razine";
-    },
     get$errorLoadingSpaceChildren() {
       return "Neuspje\u0161no u\u010ditavanje razgovora unutar ovog te\u010daja";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nbaze/LSYL03c/8SUVx4NzeKs7s="] = d.current;
+  d["yX1/FoqIbe8WapzTvs0KtA5qFhk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

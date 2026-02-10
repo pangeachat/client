@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Download fallito";
     },
-    get$errorFetchingLevelSummary() {
-      return "Impossibile recuperare il riepilogo del livello";
-    },
     get$errorLoadingSpaceChildren() {
       return "Impossibile caricare le chat all'interno di questo corso";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PXQVsPjsEKMuYRTZl7/vZ2wtmIA="] = d.current;
+  d["OKZTA+sPOQ4OaxSXmckyUU97PCY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

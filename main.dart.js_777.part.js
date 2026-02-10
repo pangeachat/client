@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "Nedlasting mislyktes";
     },
-    get$errorFetchingLevelSummary() {
-      return "Mislyktes i \xe5 hente niv\xe5oppsummering";
-    },
     get$errorLoadingSpaceChildren() {
       return "Mislyktes i \xe5 laste inn chatter innenfor dette kurset";
     },
@@ -5581,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+IXAZ3gNKt8fS7G3KvtlIdIH/Es="] = d.current;
+  d["w0vppU+1rmllbzej0EqOU555YAc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

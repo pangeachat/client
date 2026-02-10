@@ -4239,9 +4239,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDownloading() {
       return "S\u0165ahovanie zlyhalo";
     },
-    get$errorFetchingLevelSummary() {
-      return "Nepodarilo sa na\u010d\xedta\u0165 s\xfahrn \xfarovne";
-    },
     get$errorLoadingSpaceChildren() {
       return "Nepodarilo sa na\u010d\xedta\u0165 chaty v r\xe1mci tohto kurzu";
     },
@@ -5578,7 +5575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yCdYO1vNEklpKfKttlWuM0JHL6I="] = d.current;
+  d["xUk4yYlD0wDpadkgaz48qPPnIxM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map
