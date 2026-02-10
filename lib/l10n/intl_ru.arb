@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-10 11:59:48.227073",
+  "@@last_modified": "2026-02-10 13:53:47.782560",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11248,6 +11248,11 @@
   },
   "courseDescription": "Курсы состоят из 3-8 модулей, каждый из которых включает в себя задания, чтобы поощрять практику слов в различных контекстах",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Ошибка проверки электронной почты. Пожалуйста, попробуйте снова.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

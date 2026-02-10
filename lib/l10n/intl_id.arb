@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:58:44.415920",
+  "@@last_modified": "2026-02-10 13:53:03.640938",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11354,6 +11354,11 @@
   },
   "courseDescription": "Kursus terdiri dari 3-8 modul masing-masing dengan aktivitas untuk mendorong praktik kata dalam konteks yang berbeda",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Verifikasi email gagal. Silakan coba lagi.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

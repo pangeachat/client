@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:37.759626",
+  "@@last_modified": "2026-02-10 13:53:41.240542",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11369,6 +11369,11 @@
   },
   "courseDescription": "دوره‌ها شامل ۳-۸ ماژول هستند که هر کدام فعالیت‌هایی برای تشویق به تمرین کلمات در زمینه‌های مختلف دارند",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "تأیید ایمیل ناموفق بود. لطفاً دوباره تلاش کنید.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

@@ -63,6 +63,10 @@ extension LocalizedExceptionExtension on Object {
           return L10n.of(context).noPermission;
         case MatrixError.M_LIMIT_EXCEEDED:
           return L10n.of(context).tooManyRequestsWarning;
+        // #Pangea
+        case MatrixError.M_THREEPID_AUTH_FAILED:
+          return L10n.of(context).emailVerificationFailed;
+        // Pangea#
         default:
           if (exceptionContext == ExceptionContext.joinRoom) {
             return L10n.of(context).unableToJoinChat;

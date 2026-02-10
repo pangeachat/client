@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-10 11:59:24.436424",
+  "@@last_modified": "2026-02-10 13:53:31.845984",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11588,6 +11588,11 @@
   },
   "courseDescription": "Kurslar, her biri farklı bağlamlarda kelimeleri pratik yapmayı teşvik eden etkinliklerle 3-8 modülden oluşur",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-posta doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

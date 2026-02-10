@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:40.429559",
+  "@@last_modified": "2026-02-10 13:53:43.184731",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11860,6 +11860,11 @@
   },
   "courseDescription": "Kurser består av 3-8 moduler, var och en med aktiviteter för att uppmuntra till att öva ord i olika sammanhang",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-postverifiering misslyckades. Vänligen försök igen.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

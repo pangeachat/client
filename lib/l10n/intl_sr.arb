@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:52.006346",
+  "@@last_modified": "2026-02-10 13:53:50.256388",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12478,6 +12478,11 @@
   },
   "courseDescription": "Kursevi se sastoje od 3-8 modula, svaki sa aktivnostima koje podstiču vežbanje reči u različitim kontekstima",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Provera email adrese nije uspela. Molimo pokušajte ponovo.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

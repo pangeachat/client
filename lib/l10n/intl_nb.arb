@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:09.604659",
+  "@@last_modified": "2026-02-10 13:53:20.558141",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11317,6 +11317,11 @@
   "joinCourseForActivities": "Bli med i et kurs for å prøve aktiviteter.",
   "courseDescription": "Kurs består av 3-8 moduler, hver med aktiviteter for å oppmuntre til å øve på ord i forskjellige sammenhenger",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-postverifisering mislyktes. Vennligst prøv igjen.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

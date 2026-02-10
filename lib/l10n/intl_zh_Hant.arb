@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:17.222044",
+  "@@last_modified": "2026-02-10 13:53:26.822722",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11387,6 +11387,11 @@
   },
   "courseDescription": "課程由 3-8 個模組組成，每個模組都有活動以鼓勵在不同情境中練習單詞",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "電子郵件驗證失敗。請再試一次。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

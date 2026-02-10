@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-10 11:59:53.435495",
+  "@@last_modified": "2026-02-10 13:53:51.242401",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11255,6 +11255,11 @@
   },
   "courseDescription": "Comhoibrithe atá comhdhéanta de 3-8 modúil, gach ceann acu le gníomhaíochtaí chun cur le cleachtadh focail i gcomhthéacsanna éagsúla",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Theip ar dheimhniú ríomhphoist. Bain triail as arís.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

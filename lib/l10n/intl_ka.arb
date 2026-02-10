@@ -2590,7 +2590,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-02-10 11:59:50.430595",
+  "@@last_modified": "2026-02-10 13:53:49.330549",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12412,6 +12412,11 @@
   },
   "courseDescription": "კურსები შედგება 3-8 მოდულიდან, თითოეული მათგანი შეიცავს აქტივობებს, რომლებიც ხელს უწყობს სიტყვების პრაქტიკას სხვადასხვა კონტექსტში",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "ელფოსტა ვერ დადასტურდა. გთხოვთ, სცადოთ კიდევ ერთხელ.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

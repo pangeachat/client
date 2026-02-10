@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-02-10 11:59:04.073255",
+  "@@last_modified": "2026-02-10 13:53:16.454404",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12478,6 +12478,11 @@
   },
   "courseDescription": "課程由3至8個模塊組成，每個模塊都有活動以鼓勵在不同情境中練習單詞",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "電子郵件驗證失敗。請再試一次。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

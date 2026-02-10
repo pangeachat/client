@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-10 11:58:33.632845",
+  "@@last_modified": "2026-02-10 13:52:56.442140",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8558,6 +8558,11 @@
   },
   "courseDescription": "Los cursos constan de 3 a 8 módulos, cada uno con actividades para fomentar la práctica de palabras en diferentes contextos",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificación del correo electrónico falló. Por favor, inténtalo de nuevo.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

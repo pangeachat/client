@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-10 11:59:44.001280",
+  "@@last_modified": "2026-02-10 13:53:45.015756",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12172,6 +12172,11 @@
   },
   "courseDescription": "コースは3〜8のモジュールで構成されており、それぞれのモジュールには異なる文脈で単語を練習するためのアクティビティがあります",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "メールの確認に失敗しました。もう一度お試しください。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

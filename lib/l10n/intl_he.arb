@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:58:51.076373",
+  "@@last_modified": "2026-02-10 13:53:08.464680",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12431,6 +12431,11 @@
   },
   "courseDescription": "קורסים consist of 3-8 מודולים כל אחד עם פעילויות לעידוד תרגול מילים בהקשרים שונים",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "אימות הדוא\"ל נכשל. אנא נסה שוב.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

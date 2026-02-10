@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:36.670164",
+  "@@last_modified": "2026-02-10 13:53:40.219705",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11992,6 +11992,11 @@
   },
   "courseDescription": "কোর্সগুলো ৩-৮টি মডিউল নিয়ে গঠিত, প্রতিটি মডিউলে বিভিন্ন প্রসঙ্গে শব্দ অনুশীলন করতে উৎসাহিত করার জন্য কার্যক্রম রয়েছে",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "ইমেইল যাচাইকরণ ব্যর্থ হয়েছে। দয়া করে আবার চেষ্টা করুন।",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

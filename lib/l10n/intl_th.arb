@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-10 11:59:14.522856",
+  "@@last_modified": "2026-02-10 13:53:23.735994",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11995,6 +11995,11 @@
   },
   "courseDescription": "หลักสูตรประกอบด้วย 3-8 โมดูลแต่ละโมดูลมีการทำกิจกรรมเพื่อกระตุ้นการฝึกฝนคำในบริบทที่แตกต่างกัน",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "การตรวจสอบอีเมลล้มเหลว กรุณาลองอีกครั้ง.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

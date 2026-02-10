@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-10 11:59:07.071909",
+  "@@last_modified": "2026-02-10 13:53:18.517741",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11248,6 +11248,11 @@
   },
   "courseDescription": "Курси складаються з 3-8 модулів, кожен з яких містить завдання для заохочення практики слів у різних контекстах",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Перевірка електронної пошти не вдалася. Будь ласка, спробуйте ще раз.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

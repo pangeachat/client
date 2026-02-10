@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-02-10 11:59:08.172278",
+  "@@last_modified": "2026-02-10 13:53:19.483948",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11820,6 +11820,11 @@
   },
   "courseDescription": "Kurzy se skládají z 3-8 modulů, z nichž každý obsahuje aktivity, které podporují procvičování slov v různých kontextech",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Ověření e-mailu se nezdařilo. Zkuste to prosím znovu.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

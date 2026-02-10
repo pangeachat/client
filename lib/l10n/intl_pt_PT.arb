@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-02-10 11:59:15.752325",
+  "@@last_modified": "2026-02-10 13:53:24.861894",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12416,6 +12416,11 @@
   },
   "courseDescription": "Os cursos consistem em 3-8 módulos, cada um com atividades para incentivar a prática de palavras em diferentes contextos",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "A verificação do email falhou. Por favor, tente novamente.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

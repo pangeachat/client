@@ -1916,7 +1916,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-02-10 11:59:25.980461",
+  "@@last_modified": "2026-02-10 13:53:33.256560",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12471,6 +12471,11 @@
   },
   "courseDescription": "కోర్సులు 3-8 మాడ్యూల్‌లతో కూడి ఉంటాయి, ప్రతి మాడ్యూల్‌లో వివిధ సందర్భాలలో పదాలను సాధన చేయడానికి ప్రోత్సహించే కార్యకలాపాలు ఉంటాయి",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "ఇమెయిల్ ధృవీకరణ విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }
