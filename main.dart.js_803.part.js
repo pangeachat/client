@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Klop";
     },
-    get$nothingFound() {
-      return "Ni\u010desar ni bilo najdeno...";
-    },
     get$groupName() {
       return "Ime skupine";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Povratne informacije o informacijah o besedi";
     },
+    get$noPublicCoursesFound() {
+      return "Ni najdenih javnih te\u010dajev. Bi \u017eeleli ustvariti enega?";
+    },
     get$noCourseTemplatesFound() {
       return "Nismo mogli najti te\u010dajev za va\u0161 ciljni jezik. Medtem lahko klepetate z Pangea Botom in kasneje preverite ve\u010d te\u010dajev.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["i6vLlLluuqnHlPbUbrJuDoqJRJ8="] = d.current;
+  d["HfbSoxFoIi53J0VCL66DPzPM+2M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

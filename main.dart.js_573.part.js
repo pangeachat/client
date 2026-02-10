@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Koputus uksele";
     },
-    get$nothingFound() {
-      return "Ei leidnud mitte midagi...";
-    },
     get$groupName() {
       return "Vestlusr\xfchma nimi";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "S\xf5nateabe tagasiside";
     },
+    get$noPublicCoursesFound() {
+      return "Avalikke kursusi ei leitud. Kas soovite luua \xfche?";
+    },
     get$noCourseTemplatesFound() {
       return "Me ei leidnud teie sihtkeele jaoks \xfchtegi kursust. Samal ajal saate vestelda Pangea botiga ja hiljem tagasi tulla rohkemate kursuste jaoks.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["25bXEQP8U8u0IH6E5vBnLmU5fKQ="] = d.current;
+  d["gAsdofy0A0MgEryOvqDjGz9Qjig="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

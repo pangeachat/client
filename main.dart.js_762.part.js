@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Skambinama";
     },
-    get$nothingFound() {
-      return "Nieko nerasta...";
-    },
     get$groupName() {
       return "Grup\u0117s pavadinimas";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u017dod\u017eio informacijos atsiliepimai";
     },
+    get$noPublicCoursesFound() {
+      return "Nerasta vie\u0161\u0173j\u0173 kurs\u0173. Ar nor\u0117tum\u0117te sukurti vien\u0105?";
+    },
     get$noCourseTemplatesFound() {
       return "Nepavyko rasti joki\u0173 kurs\u0173 j\u016bs\u0173 tikslinei kalbai. Tuo tarpu galite bendrauti su Pangea Bot ir v\u0117liau gr\u012f\u017eti pasitikrinti daugiau kurs\u0173.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SvULx4Gt4JS+KLdifZxgc/ndBk0="] = d.current;
+  d["9M8aC0pkTYauy1mVJqOcD9QZrXM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

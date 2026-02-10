@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Knokado";
     },
-    get$nothingFound() {
-      return "Neniam trovita...";
-    },
     get$groupName() {
       return "Grupo nomo";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Raporto pri Vortinformo";
     },
+    get$noPublicCoursesFound() {
+      return "Neniuj publikaj kursoj trovitaj. \u0108u vi \u015datus krei unu?";
+    },
     get$noCourseTemplatesFound() {
       return "Ni ne povis trovi kursojn por via celolingvo. Dumtempe vi povas babili kun Pangea Bot, kaj reveni poste por pli da kursoj.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jb/pn/SdDRF3PcRfsG2a5W8v7GA="] = d.current;
+  d["+xOpoWuq+BnRbxA/AegY4C+s1wM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

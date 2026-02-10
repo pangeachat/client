@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "\u041a\u0443\u0446\u0430\u045a\u0435";
     },
-    get$nothingFound() {
-      return "Ni\u0161ta nije prona\u0111eno...";
-    },
     get$groupName() {
       return "Ime grupe";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u041f\u043e\u0432\u0440\u0430\u0442\u043d\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0458\u0435 \u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0458\u0430\u043c\u0430 \u043e \u0440\u0435\u0447\u0438";
     },
+    get$noPublicCoursesFound() {
+      return "\u041d\u0438\u0441\u0443 \u043f\u0440\u043e\u043d\u0430\u0452\u0435\u043d\u0438 \u0458\u0430\u0432\u043d\u0438 \u043a\u0443\u0440\u0441\u0435\u0432\u0438. \u0416\u0435\u043b\u0438\u0442\u0435 \u043b\u0438 \u0434\u0430 \u043a\u0440\u0435\u0438\u0440\u0430\u0442\u0435 \u0458\u0435\u0434\u0430\u043d?";
+    },
     get$noCourseTemplatesFound() {
       return "\u041d\u0438\u0441\u043c\u043e \u043c\u043e\u0433\u043b\u0438 \u0434\u0430 \u043f\u0440\u043e\u043d\u0430\u0452\u0435\u043c\u043e \u043a\u0443\u0440\u0441\u0435\u0432\u0435 \u0437\u0430 \u0432\u0430\u0448 \u0446\u0438\u0459\u0430\u043d\u0438 \u0458\u0435\u0437\u0438\u043a. \u0423 \u043c\u0435\u0452\u0443\u0432\u0440\u0435\u043c\u0435\u043d\u0443, \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0430\u0437\u0433\u043e\u0432\u0430\u0440\u0430\u0442\u0438 \u0441\u0430 \u041f\u0430\u043d\u0433\u0435\u0438\u0430 \u0411\u043e\u0442\u043e\u043c \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u0438 \u043a\u0430\u0441\u043d\u0438\u0458\u0435 \u0437\u0430 \u0432\u0438\u0448\u0435 \u043a\u0443\u0440\u0441\u0435\u0432\u0430.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4BYw+2wzQjJBcmgQFA7WyY3LV6U="] = d.current;
+  d["rCcbFHDW3WVIhF4/lon06qlvZyk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_805.part.js.map

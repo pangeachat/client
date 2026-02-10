@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Knocking";
     },
-    get$nothingFound() {
-      return "Nothing found...";
-    },
     get$groupName() {
       return "Group name";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback de informazions de par\xf2la";
     },
+    get$noPublicCoursesFound() {
+      return "Nissun cors public trov\xe0. Voles crear un?";
+    },
     get$noCourseTemplatesFound() {
       return "No podain trovar nissun cors par la to target lingue. Tu peux discutar cun Pangea Bot intant, e tornar a verificar pi\xf2 tardi per plui cors.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RMJvZefyH5XttJ0k5KP1phDXwpc="] = d.current;
+  d["p1ZmqUVBYNghMlTEYWkw74hoAtw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

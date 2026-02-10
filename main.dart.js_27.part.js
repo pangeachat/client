@@ -1102,9 +1102,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Batendo";
     },
-    get$nothingFound() {
-      return "Nada encontrado...";
-    },
     get$groupName() {
       return "Nome do grupo";
     },
@@ -4270,7 +4267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumc;
+      return string$.Nenhumch;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -4571,6 +4568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
+    },
+    get$noPublicCoursesFound() {
+      return string$.Nenhumcu;
     },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para seu idioma de destino. Voc\xea pode conversar com o Pangea Bot enquanto isso, e voltar mais tarde para mais cursos.";
@@ -6655,9 +6655,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knocking() {
       return "Batendo na porta";
-    },
-    get$nothingFound() {
-      return "Nada foi encontrado...";
     },
     get$groupName() {
       return "Nome do grupo";
@@ -9824,7 +9821,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumc;
+      return string$.Nenhumch;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -10125,6 +10122,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
+    },
+    get$noPublicCoursesFound() {
+      return string$.Nenhumcu;
     },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para o seu idioma-alvo. Voc\xea pode conversar com o Pangea Bot enquanto isso e verificar novamente mais tarde por mais cursos.";
@@ -12209,9 +12209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knocking() {
       return "A tocar";
-    },
-    get$nothingFound() {
-      return "Nada encontrado...";
     },
     get$groupName() {
       return "Nome do grupo";
@@ -15378,7 +15375,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Verificar";
     },
     get$unableToFindRoom() {
-      return string$.Nenhumc;
+      return string$.Nenhumch;
     },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
@@ -15679,6 +15676,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
+    },
+    get$noPublicCoursesFound() {
+      return "N\xe3o foram encontrados cursos p\xfablicos. Gostaria de criar um?";
     },
     get$noCourseTemplatesFound() {
       return "N\xe3o conseguimos encontrar cursos para o seu idioma-alvo. Pode conversar com o Pangea Bot entretanto, e verificar novamente mais tarde por mais cursos.";
@@ -16792,7 +16792,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Muitass: "Muitas solicita\xe7\xf5es. Por favor, tente novamente mais tarde!",
     Muitast: "Muitas tentativas feitas. Por favor, tente novamente em 5 minutos.",
     NenhumD: "Nenhum DM ou chat encontrado. Certifique-se de que sua busca est\xe1 escrita corretamente.",
-    Nenhumc: "Nenhum chat ou curso encontrado com esse c\xf3digo. Por favor, tente novamente.",
+    Nenhumch: "Nenhum chat ou curso encontrado com esse c\xf3digo. Por favor, tente novamente.",
+    Nenhumcu: "Nenhum curso p\xfablico encontrado. Gostaria de criar um?",
     Notifi_: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m '@room'.",
     Notifis: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m seu nome de exibi\xe7\xe3o.",
     Novos_: "Novos usu\xe1rios recebem uma semana de teste gratuito do Pangea Chat",
@@ -16884,7 +16885,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RcK1n6agilclBc8Czio2fTfEqZU="] = d.current;
+  d["4cYbwnzmKMumkgeyssebxPuhBsA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

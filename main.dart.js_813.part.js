@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "T\u0131klat";
     },
-    get$nothingFound() {
-      return "Hi\xe7bir \u015fey bulunamad\u0131...";
-    },
     get$groupName() {
       return "Grup ismi";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Kelime Bilgisi Geri Bildirimi";
     },
+    get$noPublicCoursesFound() {
+      return "Hi\xe7 kamu kursu bulunamad\u0131. Bir tane olu\u015fturmak ister misiniz?";
+    },
     get$noCourseTemplatesFound() {
       return "Hedef diliniz i\xe7in herhangi bir kurs bulamad\u0131k. Bu arada Pangea Bot ile sohbet edebilir ve daha fazla kurs i\xe7in sonra tekrar kontrol edebilirsiniz.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8HQZCo3nQ4/CnHTrY55wkrgzdt4="] = d.current;
+  d["tTdBQhA8yc3q7epde5l1F7BQaxg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

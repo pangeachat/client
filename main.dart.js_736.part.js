@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Mengetuk";
     },
-    get$nothingFound() {
-      return "Tidak ada yang ditemukan...";
-    },
     get$groupName() {
       return "Nama grup";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Umpan Balik Informasi Kata";
     },
+    get$noPublicCoursesFound() {
+      return "Tidak ditemukan kursus publik. Apakah Anda ingin membuat satu?";
+    },
     get$noCourseTemplatesFound() {
       return "Kami tidak dapat menemukan kursus untuk bahasa target Anda. Sementara itu, Anda dapat mengobrol dengan Pangea Bot, dan kembali nanti untuk kursus lainnya.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oQCvJCuOgrIK4g2He6+dPbcFUKQ="] = d.current;
+  d["L6XhAjX1eHwEqF6B1N7++BoRoyI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Bekopog\xe1s";
     },
-    get$nothingFound() {
-      return "Nincs tal\xe1lat...";
-    },
     get$groupName() {
       return "Csoport n\xe9v";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Sz\xf3inform\xe1ci\xf3 visszacsatol\xe1s";
     },
+    get$noPublicCoursesFound() {
+      return "Nem tal\xe1lhat\xf3k nyilv\xe1nos kurzusok. Szeretn\xe9l l\xe9trehozni egyet?";
+    },
     get$noCourseTemplatesFound() {
       return "Nem tal\xe1ltunk kurzusokat a c\xe9lnyelvedhez. K\xf6zben besz\xe9lgethetsz a Pangea Bot-tal, \xe9s k\xe9s\u0151bb visszat\xe9rhetsz tov\xe1bbi kurzusok\xe9rt.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7VdVu+MUYSIAlnaqpFIWI55o8S8="] = d.current;
+  d["RKWvQNFT5jtBc/DugGXwcBVJwGA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

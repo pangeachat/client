@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Koputetaan";
     },
-    get$nothingFound() {
-      return "Mit\xe4\xe4n ei l\xf6ytynyt...";
-    },
     get$groupName() {
       return "Ryhm\xe4n nimi";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Sanatiedon palaute";
     },
+    get$noPublicCoursesFound() {
+      return "Yksityisi\xe4 kursseja ei l\xf6ytynyt. Haluatko luoda sellaisen?";
+    },
     get$noCourseTemplatesFound() {
       return "Emme l\xf6yt\xe4neet kursseja kohdekielellesi. Voit keskustella Pangea Botin kanssa sill\xe4 v\xe4lin ja palata my\xf6hemmin hakemaan lis\xe4\xe4 kursseja.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["t4ib60QysBeL5UiuOjdNqhAjzAI="] = d.current;
+  d["ize/N4bquKwjnWXFBUSBMgns2zc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

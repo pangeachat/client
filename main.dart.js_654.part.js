@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Cnagadh";
     },
-    get$nothingFound() {
-      return "N\xedor aims\xedodh aon rud...";
-    },
     get$groupName() {
       return "Ainm an ghr\xfapa";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Aiseolas Eolas Focal";
     },
+    get$noPublicCoursesFound() {
+      return "N\xedor aims\xedodh c\xfarsa\xed poibl\xed. Ar mhaith leat ceann a chruth\xfa?";
+    },
     get$noCourseTemplatesFound() {
       return "N\xedor \xe9irigh linn aon ch\xfarsa\xed a aimsi\xfa do do theanga sprioc. Is f\xe9idir leat comhr\xe1 a dh\xe9anamh leis an Pangea Bot sa t-am ar fad, agus seice\xe1il ar ais n\xedos d\xe9ana\xed le haghaidh tuilleadh c\xfarsa\xed.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5hVVrJlC6dKal60DtpX/ego/hTg="] = d.current;
+  d["LsIzD0adohIt38F8F1IXbcbc0kQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Klauv\u0113";
     },
-    get$nothingFound() {
-      return "Nekas netika atrasts...";
-    },
     get$groupName() {
       return "Kopas nosaukums";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "V\u0101rda inform\u0101cijas atsauksmes";
     },
+    get$noPublicCoursesFound() {
+      return "Publiskie kursi nav atrasti. Vai v\u0113laties izveidot jaunu?";
+    },
     get$noCourseTemplatesFound() {
       return "M\u0113s nevar\u0113j\u0101m atrast kursus j\u016bsu m\u0113r\u0137a valodai. Tikm\u0113r j\u016bs varat sarun\u0101ties ar Pangea botu un v\u0113l\u0101k p\u0101rbaud\u012bt vair\u0101k kursu.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/gsBY4PtPMrGvexDNXupuWK9C6k="] = d.current;
+  d["LxArAYuwZb+Lq80Y3xwmraUvoRw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Kloppen";
     },
-    get$nothingFound() {
-      return "Niets gevonden...";
-    },
     get$groupName() {
       return "Groepsnaam";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback over Woordinformatie";
     },
+    get$noPublicCoursesFound() {
+      return "Geen openbare cursussen gevonden. Wil je er een maken?";
+    },
     get$noCourseTemplatesFound() {
       return "We konden geen cursussen vinden voor je doeltaal. Je kunt in de tussentijd met Pangea Bot chatten en later terugkomen voor meer cursussen.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["734LT4YutIdcpGLUFRmddQdMQX0="] = d.current;
+  d["aSXW374P+nsrGOdSbdGUXLYXTYA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

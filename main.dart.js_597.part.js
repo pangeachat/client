@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Baimena eskatzen";
     },
-    get$nothingFound() {
-      return "Ez da ezer aurkitu\u2026";
-    },
     get$groupName() {
       return "Taldearen izena";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Hitzaren Informazioaren Feedbacka";
     },
+    get$noPublicCoursesFound() {
+      return "Ez da ikastaro publikorik aurkitu. Nahi al duzu bat sortu?";
+    },
     get$noCourseTemplatesFound() {
       return "Ez dugu zure helburu hizkuntzarako ikastaroak aurkitu. Bitartean, Pangea Bot-ekin chat egin dezakezu, eta geroago ikastaro gehiago ikusteko itxaron.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cXhYtGy1lgvSXYYGT4Xn9tEzY3A="] = d.current;
+  d["1oWtBunW2bg27dbggNznAMlG+mM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

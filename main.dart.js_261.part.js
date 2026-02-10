@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Klep\xe1n\xed";
     },
-    get$nothingFound() {
-      return "Nic nenalezeno...";
-    },
     get$groupName() {
       return "N\xe1zev skupiny";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Zp\u011btn\xe1 vazba k informac\xedm o slov\u011b";
     },
+    get$noPublicCoursesFound() {
+      return "Nebyly nalezeny \u017e\xe1dn\xe9 ve\u0159ejn\xe9 kurzy. Chcete vytvo\u0159it nov\xfd?";
+    },
     get$noCourseTemplatesFound() {
       return "Nebyly nalezeny \u017e\xe1dn\xe9 kurzy pro v\xe1\u0161 c\xedlov\xfd jazyk. Mezit\xedm si m\u016f\u017eete pov\xeddat s Pangea Botem a pozd\u011bji se vr\xe1tit pro v\xedce kurz\u016f.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mHIV3acL/al2MDcTa9qd6y0VQ+E="] = d.current;
+  d["1IpDXz/QvNEVgR2Q50Dvsh0jYzo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map

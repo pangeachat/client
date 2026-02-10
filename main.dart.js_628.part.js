@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Nagtatanong";
     },
-    get$nothingFound() {
-      return "Walang nahanap...";
-    },
     get$groupName() {
       return "Pangalan ng grupo";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sa Impormasyon ng Salita";
     },
+    get$noPublicCoursesFound() {
+      return "Walang nahanap na pampublikong kurso. Nais mo bang lumikha ng isa?";
+    },
     get$noCourseTemplatesFound() {
       return "Hindi namin mahanap ang anumang kurso para sa iyong target na wika. Maaari kang makipag-chat sa Pangea Bot habang naghihintay, at bumalik mamaya para sa mas maraming kurso.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5odggNstrjTruls50aMWKWA2olM="] = d.current;
+  d["gAo2nhOoAMu0DIsidWZqhOwpQmA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

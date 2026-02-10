@@ -1091,9 +1091,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "\u0637\u0631\u0642";
     },
-    get$nothingFound() {
-      return "\u0644\u0645 \u0646\u062c\u062f \u0634\u064a\u0626\u0627\u064b.";
-    },
     get$groupName() {
       return "\u0623\u0633\u0645 \u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0629";
     },
@@ -4561,6 +4558,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u0645\u0644\u0627\u062d\u0638\u0627\u062a \u062d\u0648\u0644 \u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0643\u0644\u0645\u0629";
     },
+    get$noPublicCoursesFound() {
+      return "\u0644\u0645 \u064a\u062a\u0645 \u0627\u0644\u0639\u062b\u0648\u0631 \u0639\u0644\u0649 \u062f\u0648\u0631\u0627\u062a \u0639\u0627\u0645\u0629. \u0647\u0644 \u062a\u0631\u063a\u0628 \u0641\u064a \u0625\u0646\u0634\u0627\u0621 \u0648\u0627\u062d\u062f\u0629\u061f";
+    },
     get$noCourseTemplatesFound() {
       return "\u0644\u0645 \u0646\u062a\u0645\u0643\u0646 \u0645\u0646 \u0627\u0644\u0639\u062b\u0648\u0631 \u0639\u0644\u0649 \u062f\u0648\u0631\u0627\u062a \u0644\u0644\u063a\u0629 \u0627\u0644\u0645\u0633\u062a\u0647\u062f\u0641\u0629 \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643. \u064a\u0645\u0643\u0646\u0643 \u0627\u0644\u062f\u0631\u062f\u0634\u0629 \u0645\u0639 \u0628\u0648\u062a \u0628\u0627\u0646\u062c\u064a\u0627 \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u0627\u0644\u062d\u0627\u0644\u064a\u060c \u0648\u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649 \u0644\u0627\u062d\u0642\u064b\u0627 \u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u062f\u0648\u0631\u0627\u062a.";
     },
@@ -5579,7 +5579,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7kefPMd4zMjYhnGwH6Nz8MMgAzM="] = d.current;
+  d["J18mFfgfUE3AKo9rRqTNdjV1gtM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_145.part.js.map

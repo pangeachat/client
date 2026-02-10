@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Klopft";
     },
-    get$nothingFound() {
-      return "Nichts gefunden ...";
-    },
     get$groupName() {
       return "Gruppenname";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback zu Wortinformationen";
     },
+    get$noPublicCoursesFound() {
+      return "Keine \xf6ffentlichen Kurse gefunden. M\xf6chten Sie einen erstellen?";
+    },
     get$noCourseTemplatesFound() {
       return "Wir konnten keine Kurse f\xfcr Ihre Zielsprache finden. Sie k\xf6nnen in der Zwischenzeit mit Pangea Bot chatten und sp\xe4ter nach weiteren Kursen suchen.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XW9KOMZm6kAkoZ2GaZOUShUMH6M="] = d.current;
+  d["tv0rVH0d9ec89qNl/v8XytANd9Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_411.part.js.map

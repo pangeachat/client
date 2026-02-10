@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Klopanie";
     },
-    get$nothingFound() {
-      return "Ni\u010d sa nena\u0161lo...";
-    },
     get$groupName() {
       return "N\xe1zov skupiny";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Sp\xe4tn\xe1 v\xe4zba k inform\xe1ci\xe1m o slove";
     },
+    get$noPublicCoursesFound() {
+      return "Nena\u0161li sa \u017eiadne verejn\xe9 kurzy. Chceli by ste vytvori\u0165 jeden?";
+    },
     get$noCourseTemplatesFound() {
       return "Nena\u0161li sme \u017eiadne kurzy pre v\xe1\u0161 cie\u013eov\xfd jazyk. Medzit\xfdm m\xf4\u017eete chatova\u0165 s Pangea Botom a nesk\xf4r sa vr\xe1ti\u0165 pre viac kurzov.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PKN6Ubl9Mvtx0zVycMa+gKWNTFw="] = d.current;
+  d["DdVoHsgV6G4o6vdgiV0cJ8eh+/M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

@@ -1091,9 +1091,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "S'est\xe0 picant";
     },
-    get$nothingFound() {
-      return "No s'ha trobat res...";
-    },
     get$groupName() {
       return "Nom del grup";
     },
@@ -4561,6 +4558,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Comentari sobre la informaci\xf3 de la paraula";
     },
+    get$noPublicCoursesFound() {
+      return "No s'han trobat cursos p\xfablics. Voldries crear-ne un?";
+    },
     get$noCourseTemplatesFound() {
       return "No hem pogut trobar cap curs per a la teva llengua objectiu. Mentrestant, pots xatejar amb Pangea Bot i tornar m\xe9s tard per m\xe9s cursos.";
     },
@@ -5582,7 +5582,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["r9GOqCfv0vK0WSWkA2Lqpd6Fkn0="] = d.current;
+  d["a0uiRq85eKO2PbOHFqb6/ByHWeg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

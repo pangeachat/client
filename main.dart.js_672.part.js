@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Kucanje";
     },
-    get$nothingFound() {
-      return "Ni\u0161ta nije prona\u0111eno...";
-    },
     get$groupName() {
       return "Ime grupe";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Povratne informacije o informacijama o rije\u010di";
     },
+    get$noPublicCoursesFound() {
+      return "Nema prona\u0111enih javnih te\u010dajeva. \u017delite li ga stvoriti?";
+    },
     get$noCourseTemplatesFound() {
       return "Nismo uspjeli prona\u0107i te\u010dajeve za va\u0161 ciljni jezik. U me\u0111uvremenu mo\u017eete razgovarati s Pangea Botom, a kasnije provjeriti ima li novih te\u010dajeva.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+zLz4qoX39yzH3I2pTblGOJF6y4="] = d.current;
+  d["eE75DWDaBz9j2dALiKutHSJiqAw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

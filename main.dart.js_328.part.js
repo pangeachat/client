@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Banker p\xe5";
     },
-    get$nothingFound() {
-      return "Intet fundet...";
-    },
     get$groupName() {
       return "Gruppenavn";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback om ordinformation";
     },
+    get$noPublicCoursesFound() {
+      return "Ingen offentlige kurser fundet. Vil du oprette et?";
+    },
     get$noCourseTemplatesFound() {
       return "Vi kunne ikke finde nogen kurser for dit m\xe5lsprog. Du kan chatte med Pangea Bot i mellemtiden og vende tilbage senere for flere kurser.";
     },
@@ -5578,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UQoc9cjIsr72MeAYclQydNPbcS0="] = d.current;
+  d["/67jnmt/lP5cp+sNgF1Q9NivYTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_328.part.js.map

@@ -1097,9 +1097,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "\u6b63\u5728\u8bf7\u6c42";
     },
-    get$nothingFound() {
-      return "\u672a\u627e\u5230\u4efb\u4f55\u5185\u5bb9\u2026";
-    },
     get$groupName() {
       return "\u7fa4\u7ec4\u540d\u79f0";
     },
@@ -4567,6 +4564,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u5355\u8bcd\u4fe1\u606f\u53cd\u9988";
     },
+    get$noPublicCoursesFound() {
+      return "\u672a\u627e\u5230\u516c\u5171\u8bfe\u7a0b\u3002\u4f60\u60f3\u521b\u5efa\u4e00\u4e2a\u5417\uff1f";
+    },
     get$noCourseTemplatesFound() {
       return "\u6211\u4eec\u672a\u80fd\u627e\u5230\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u7684\u8bfe\u7a0b\u3002\u4f60\u53ef\u4ee5\u6682\u65f6\u4e0ePangea\u673a\u5668\u4eba\u804a\u5929\uff0c\u7a0d\u540e\u518d\u56de\u6765\u67e5\u770b\u66f4\u591a\u8bfe\u7a0b\u3002";
     },
@@ -6650,9 +6650,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knocking() {
       return "\u6572\u9580";
-    },
-    get$nothingFound() {
-      return "\u4ec0\u9ebc\u90fd\u6c92\u627e\u5230......";
     },
     get$groupName() {
       return "\u7fa4\u7d44\u540d\u7a31";
@@ -10121,6 +10118,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "\u55ae\u8a5e\u8cc7\u8a0a\u53cd\u994b";
     },
+    get$noPublicCoursesFound() {
+      return "\u672a\u627e\u5230\u516c\u958b\u8ab2\u7a0b\u3002\u60a8\u60f3\u5275\u5efa\u4e00\u500b\u55ce\uff1f";
+    },
     get$noCourseTemplatesFound() {
       return "\u6211\u5011\u672a\u627e\u5230\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u7684\u8ab2\u7a0b\u3002\u60a8\u53ef\u4ee5\u66ab\u6642\u8207 Pangea \u6a5f\u5668\u4eba\u804a\u5929\uff0c\u7a0d\u5f8c\u518d\u56de\u4f86\u67e5\u770b\u66f4\u591a\u8ab2\u7a0b\u3002";
     },
@@ -11140,7 +11140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qOgz+GBtxFYSaZSen9LCVTXJD5k="] = d.current;
+  d["AIR/wH7qADlopu+JVqEApgQy+Y8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

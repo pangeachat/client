@@ -1090,9 +1090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Banker p\xe5";
     },
-    get$nothingFound() {
-      return "Ingenting funnet...";
-    },
     get$groupName() {
       return "Gruppenavn";
     },
@@ -4560,6 +4557,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tokenInfoFeedbackDialogTitle() {
       return "Tilbakemelding om ordinformasjon";
     },
+    get$noPublicCoursesFound() {
+      return "Ingen offentlige kurs funnet. Vil du opprette et?";
+    },
     get$noCourseTemplatesFound() {
       return "Vi kunne ikke finne noen kurs for ditt m\xe5lspr\xe5k. Du kan chatte med Pangea Bot i mellomtiden, og komme tilbake senere for flere kurs.";
     },
@@ -5581,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3Q1kYisSr9AP3Df/zy+Z/xrr5V4="] = d.current;
+  d["TVtYrAPcDytd2OyfPHSirZEwaFM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map
