@@ -11,10 +11,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LoadParticipantsBuilder extends StatefulWidget {
   final Room? room;
   final bool loadProfiles;
-  final Widget Function(
-    BuildContext context,
-    LoadParticipantsBuilderState,
-  ) builder;
+  final Widget Function(BuildContext context, LoadParticipantsBuilderState)
+  builder;
 
   const LoadParticipantsBuilder({
     required this.room,
@@ -70,13 +68,7 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
       if (widget.loadProfiles) await _cacheLevels();
     } catch (err, s) {
       error = err.toString();
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {
-          'roomId': widget.room?.id,
-        },
-      );
+      ErrorHandler.logError(e: err, s: s, data: {'roomId': widget.room?.id});
     } finally {
       if (mounted) {
         setState(() => loading = false);
@@ -114,7 +106,8 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     for (final user in participants) {
       if (_levelsCache[user.id] == null && user.membership == Membership.join) {
         _levelsCache[user.id] = await MatrixState
-            .pangeaController.userController
+            .pangeaController
+            .userController
             .getPublicAnalyticsProfile(user.id);
       }
     }
@@ -135,19 +128,15 @@ extension LeaderboardGradient on int {
     final Color? color = this == 0
         ? AppConfig.gold
         : this == 1
-            ? Colors.grey[400]!
-            : this == 2
-                ? Colors.brown[400]!
-                : null;
+        ? Colors.grey[400]!
+        : this == 2
+        ? Colors.brown[400]!
+        : null;
 
     if (color == null) return null;
 
     return LinearGradient(
-      colors: [
-        color,
-        Colors.white,
-        color,
-      ],
+      colors: [color, Colors.white, color],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     );

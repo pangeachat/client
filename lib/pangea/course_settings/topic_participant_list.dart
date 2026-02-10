@@ -61,8 +61,9 @@ class TopicParticipantList extends StatelessWidget {
               return Stack(
                 children: users.take(maxVisible).mapIndexed((index, user) {
                   final level = publicProfiles[user.id];
-                  final LinearGradient? gradient =
-                      level != null ? index.leaderboardGradient : null;
+                  final LinearGradient? gradient = level != null
+                      ? index.leaderboardGradient
+                      : null;
                   return Positioned(
                     left: index * (avatarSize - overlap),
                     child: MouseRegion(
@@ -86,10 +87,7 @@ class TopicParticipantList extends StatelessWidget {
                                 ),
                               )
                             else
-                              SizedBox(
-                                height: avatarSize,
-                                width: avatarSize,
-                              ),
+                              SizedBox(height: avatarSize, width: avatarSize),
                             Center(
                               child: Avatar(
                                 mxContent: user.avatarUrl,
@@ -111,9 +109,7 @@ class TopicParticipantList extends StatelessWidget {
         if (users.length > maxVisible)
           Text(
             L10n.of(context).additionalParticipants(users.length - maxVisible),
-            style: const TextStyle(
-              fontSize: 12.0,
-            ),
+            style: const TextStyle(fontSize: 12.0),
           ),
       ],
     );

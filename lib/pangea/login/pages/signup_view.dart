@@ -33,13 +33,9 @@ class SignupPageView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BackButton(
-                  onPressed: Navigator.of(context).pop,
-                ),
+                BackButton(onPressed: Navigator.of(context).pop),
                 Text(L10n.of(context).signUp),
-                const SizedBox(
-                  width: 40.0,
-                ),
+                const SizedBox(width: 40.0),
               ],
             ),
           ),
@@ -48,10 +44,7 @@ class SignupPageView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 300,
-                maxHeight: 600,
-              ),
+              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
               child: Column(
                 spacing: 16.0,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -66,9 +59,7 @@ class SignupPageView extends StatelessWidget {
                   const PangeaSsoButton(provider: SSOProvider.apple),
                   const PangeaSsoButton(provider: SSOProvider.google),
                   ElevatedButton(
-                    onPressed: () => context.go(
-                      '/home/language/signup/email',
-                    ),
+                    onPressed: () => context.go('/home/language/signup/email'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
@@ -79,8 +70,9 @@ class SignupPageView extends StatelessWidget {
                       children: [
                         PangeaLogoSvg(
                           width: 20,
-                          forceColor:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
+                          forceColor: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
                         ),
                         Text(L10n.of(context).withEmail),
                       ],
@@ -105,8 +97,9 @@ class SignupPageView extends StatelessWidget {
                               },
                           ),
                           TextSpan(
-                            text: L10n.of(context)
-                                .andCertifyIAmAtLeast13YearsOfAge,
+                            text: L10n.of(
+                              context,
+                            ).andCertifyIAmAtLeast13YearsOfAge,
                           ),
                         ],
                         style: TextStyle(

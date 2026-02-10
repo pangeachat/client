@@ -28,10 +28,7 @@ class _AnalyticsClient {
   final Client client;
   final AnalyticsDatabase database;
 
-  _AnalyticsClient({
-    required this.client,
-    required this.database,
-  });
+  _AnalyticsClient({required this.client, required this.database});
 }
 
 class AnalyticsStreamUpdate {
@@ -124,8 +121,8 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final lastUpdated =
-          await _analyticsClientGetter.database.getLastUpdated();
+      final lastUpdated = await _analyticsClientGetter.database
+          .getLastUpdated();
 
       if (analyticsUserId != client.userID || lastUpdated == null) {
         await _clearDatabase();
@@ -133,8 +130,9 @@ class AnalyticsDataService {
       }
 
       final resp = await client.getUserProfile(client.userID!);
-      final analyticsProfile =
-          AnalyticsProfileModel.fromJson(resp.additionalProperties);
+      final analyticsProfile = AnalyticsProfileModel.fromJson(
+        resp.additionalProperties,
+      );
 
       _syncController?.dispose();
       _syncController = AnalyticsSyncController(
@@ -168,10 +166,12 @@ class AnalyticsDataService {
   }
 
   Future<void> _initMergeTable() async {
-    final vocab = await _analyticsClientGetter.database
-        .getAggregatedConstructs(ConstructTypeEnum.vocab);
-    final morph = await _analyticsClientGetter.database
-        .getAggregatedConstructs(ConstructTypeEnum.morph);
+    final vocab = await _analyticsClientGetter.database.getAggregatedConstructs(
+      ConstructTypeEnum.vocab,
+    );
+    final morph = await _analyticsClientGetter.database.getAggregatedConstructs(
+      ConstructTypeEnum.morph,
+    );
 
     final blocked = blockedConstructs;
     _mergeTable.addConstructs(vocab, blocked);
@@ -225,8 +225,8 @@ class AnalyticsDataService {
     await _ensureInitialized();
 
     if (_cachedDerivedStats == null || _derivedCacheVersion != _cacheVersion) {
-      _cachedDerivedStats =
-          await _analyticsClientGetter.database.getDerivedStats();
+      _cachedDerivedStats = await _analyticsClientGetter.database
+          .getDerivedStats();
       _derivedCacheVersion = _cacheVersion;
     }
 
@@ -318,8 +318,8 @@ class AnalyticsDataService {
   Future<Map<ConstructIdentifier, ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
   ) async {
-    final combined =
-        await _analyticsClientGetter.database.getAggregatedConstructs(type);
+    final combined = await _analyticsClientGetter.database
+        .getAggregatedConstructs(type);
 
     final stopwatch = Stopwatch()..start();
 
@@ -390,8 +390,9 @@ class AnalyticsDataService {
     AnalyticsUpdate update,
   ) async {
     final events = <AnalyticsUpdateEvent>[];
-    final addedConstructs =
-        update.addedConstructs.where((c) => c.category != 'other').toList();
+    final addedConstructs = update.addedConstructs
+        .where((c) => c.category != 'other')
+        .toList();
     final updateIds = addedConstructs.map((c) => c.identifier).toList();
 
     final prevData = await derivedData;
@@ -401,13 +402,12 @@ class AnalyticsDataService {
     await _ensureInitialized();
 
     final blocked = blockedConstructs;
-    final newUnusedConstructs =
-        updateIds.where((id) => !hasUsedConstruct(id)).toSet();
+    final newUnusedConstructs = updateIds
+        .where((id) => !hasUsedConstruct(id))
+        .toSet();
 
     _mergeTable.addConstructsByUses(addedConstructs, blocked);
-    await _analyticsClientGetter.database.updateLocalAnalytics(
-      addedConstructs,
-    );
+    await _analyticsClientGetter.database.updateLocalAnalytics(addedConstructs);
 
     final newConstructs = await getConstructUses(updateIds);
 
@@ -443,7 +443,11 @@ class AnalyticsDataService {
       await MatrixState.pangeaController.userController.addXPOffset(offset);
       await updateXPOffset(
         MatrixState
-            .pangeaController.userController.publicProfile!.analytics.xpOffset!,
+            .pangeaController
+            .userController
+            .publicProfile!
+            .analytics
+            .xpOffset!,
       );
     }
 
@@ -465,13 +469,7 @@ class AnalyticsDataService {
       final prevLevel = prevConstruct.lemmaCategory;
       final newLevel = entry.value.lemmaCategory;
       if (newLevel.xpNeeded > prevLevel.xpNeeded) {
-        events.add(
-          ConstructLevelUpEvent(
-            entry.key,
-            newLevel,
-            update.targetID,
-          ),
-        );
+        events.add(ConstructLevelUpEvent(entry.key, newLevel, update.targetID));
       }
     }
 
@@ -492,22 +490,18 @@ class AnalyticsDataService {
     _invalidateCaches();
     final blocked = blockedConstructs;
     for (final event in events) {
-      _mergeTable.addConstructsByUses(
-        event.content.uses,
-        blocked,
-      );
+      _mergeTable.addConstructsByUses(event.content.uses, blocked);
     }
     await _analyticsClientGetter.database.updateServerAnalytics(events);
   }
 
-  Future<void> updateBlockedConstructs(
-    ConstructIdentifier constructId,
-  ) async {
+  Future<void> updateBlockedConstructs(ConstructIdentifier constructId) async {
     await _ensureInitialized();
     _mergeTable.removeConstruct(constructId);
 
-    final construct =
-        await _analyticsClientGetter.database.getConstructUse([constructId]);
+    final construct = await _analyticsClientGetter.database.getConstructUse([
+      constructId,
+    ]);
 
     final derived = await derivedData;
     final newXP = derived.totalXP - construct.points;
@@ -523,10 +517,7 @@ class AnalyticsDataService {
 
     _invalidateCaches();
     updateDispatcher.sendConstructAnalyticsUpdate(
-      AnalyticsUpdate(
-        [],
-        blockedConstruct: constructId,
-      ),
+      AnalyticsUpdate([], blockedConstruct: constructId),
     );
   }
 

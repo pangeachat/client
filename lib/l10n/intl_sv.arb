@@ -2536,15 +2536,6 @@
       }
     }
   },
-  "signInWith": "Logga in med {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "optionalRedactReason": "(Frivilligt) Anledning till att ta bort det här meddelandet…",
   "@optionalRedactReason": {},
   "archiveRoomDescription": "Den här chatten kommer flyttas till arkivet. Andra användare kommer kunna se att du har lämnat chatten.",
@@ -4435,9 +4426,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

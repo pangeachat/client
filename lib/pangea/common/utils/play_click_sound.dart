@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 
 class ClickPlayer {
   late AudioPlayer _player;
@@ -10,7 +10,7 @@ class ClickPlayer {
   ClickPlayer() {
     _player = AudioPlayer();
     _player.setPlayerMode(PlayerMode.lowLatency);
-    _player.setVolume(min(0.5, AppConfig.volume));
+    _player.setVolume(min(0.5, AppSettings.volume.value));
   }
 
   Future<void> play() async {

@@ -583,7 +583,6 @@
   "report": "rapporter",
   "signInWithPassword": "Log ind med adgangskode",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Prøv igen senere eller vælg en anden server.",
-  "signInWith": "Log ind med {provider}",
   "profileNotFound": "Brugeren kunne ikke findes på serveren. Måske er der et forbindelsesproblem, eller brugeren findes ikke.",
   "setTheme": "Vælg tema:",
   "setColorTheme": "Vælg farvetema:",
@@ -4593,14 +4592,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5011,9 +5002,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

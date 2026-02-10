@@ -18,7 +18,7 @@ import 'adaptive_dialog_action.dart';
 
 class PublicRoomDialog extends StatelessWidget {
   final String? roomAlias;
-  final PublicRoomsChunk? chunk;
+  final PublishedRoomsChunk? chunk;
   final List<String>? via;
 
   const PublicRoomDialog({super.key, this.roomAlias, this.chunk, this.via});
@@ -30,15 +30,14 @@ class PublicRoomDialog extends StatelessWidget {
     final result = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
-        if (chunk != null && client.getRoomById(chunk.roomId) != null) {
+        if (chunk != null &&
+            client.getRoomById(chunk.roomId) != null &&
+            client.getRoomById(chunk.roomId)?.membership != Membership.leave) {
           return chunk.roomId;
         }
         final roomId = chunk != null && knock
             ? await client.knockRoom(chunk.roomId, via: via)
-            : await client.joinRoom(
-                roomAlias ?? chunk!.roomId,
-                via: via,
-              );
+            : await client.joinRoom(roomAlias ?? chunk!.roomId, via: via);
 
         if (!knock && client.getRoomById(roomId) == null) {
           await client.waitForRoomInSync(roomId);
@@ -64,21 +63,21 @@ class PublicRoomDialog extends StatelessWidget {
     if (chunk?.roomType != 'm.space' &&
         !client.getRoomById(result.result!)!.isSpace) {
       context.go('/rooms/$roomId');
+    } else {
+      context.go('/rooms?spaceId=$roomId');
     }
     return;
   }
 
-  bool _testRoom(PublicRoomsChunk r) => r.canonicalAlias == roomAlias;
+  bool _testRoom(PublishedRoomsChunk r) => r.canonicalAlias == roomAlias;
 
-  Future<PublicRoomsChunk> _search(BuildContext context) async {
+  Future<PublishedRoomsChunk> _search(BuildContext context) async {
     final chunk = this.chunk;
     if (chunk != null) return chunk;
     final query = await Matrix.of(context).client.queryPublicRooms(
-          server: roomAlias!.domain,
-          filter: PublicRoomQueryFilter(
-            genericSearchTerm: roomAlias,
-          ),
-        );
+      server: roomAlias!.domain,
+      filter: PublicRoomQueryFilter(genericSearchTerm: roomAlias),
+    );
     if (!query.chunk.any(_testRoom)) {
       throw (L10n.of(context).noRoomsFound);
     }
@@ -100,7 +99,7 @@ class PublicRoomDialog extends StatelessWidget {
       ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-        child: FutureBuilder<PublicRoomsChunk>(
+        child: FutureBuilder<PublishedRoomsChunk>(
           future: _search(context),
           builder: (context, snapshot) {
             final theme = Theme.of(context);
@@ -111,8 +110,8 @@ class PublicRoomDialog extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 spacing: 8,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: .min,
+                crossAxisAlignment: .stretch,
                 children: [
                   if (roomLink != null)
                     HoverBuilder(
@@ -121,9 +120,7 @@ class PublicRoomDialog extends StatelessWidget {
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: () {
-                              Clipboard.setData(
-                                ClipboardData(text: roomLink),
-                              );
+                              Clipboard.setData(ClipboardData(text: roomLink));
                               setState(() {
                                 copied = true;
                               });
@@ -133,8 +130,9 @@ class PublicRoomDialog extends StatelessWidget {
                                 children: [
                                   WidgetSpan(
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 4.0),
+                                      padding: const EdgeInsets.only(
+                                        right: 4.0,
+                                      ),
                                       child: AnimatedScale(
                                         duration:
                                             FluffyThemes.animationDuration,
@@ -142,8 +140,8 @@ class PublicRoomDialog extends StatelessWidget {
                                         scale: hovered
                                             ? 1.33
                                             : copied
-                                                ? 1.25
-                                                : 1.0,
+                                            ? 1.25
+                                            : 1.0,
                                         child: Icon(
                                           copied
                                               ? Icons.check_circle
@@ -156,8 +154,9 @@ class PublicRoomDialog extends StatelessWidget {
                                   ),
                                   TextSpan(text: roomLink),
                                 ],
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(fontSize: 10),
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  fontSize: 10,
+                                ),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -172,25 +171,26 @@ class PublicRoomDialog extends StatelessWidget {
                       size: Avatar.defaultSize * 2,
                       onTap: avatar != null
                           ? () => showDialog(
-                                context: context,
-                                builder: (_) => MxcImageViewer(avatar),
-                              )
+                              context: context,
+                              builder: (_) => MxcImageViewer(avatar),
+                            )
                           : null,
                     ),
                   ),
                   if (profile?.numJoinedMembers != null)
                     Text(
-                      L10n.of(context).countParticipants(
-                        profile?.numJoinedMembers ?? 0,
-                      ),
+                      L10n.of(
+                        context,
+                      ).countParticipants(profile?.numJoinedMembers ?? 0),
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
                   if (topic != null && topic.isNotEmpty)
                     SelectableLinkify(
                       text: topic,
-                      textScaleFactor:
-                          MediaQuery.textScalerOf(context).scale(1),
+                      textScaleFactor: MediaQuery.textScalerOf(
+                        context,
+                      ).scale(1),
                       textAlign: TextAlign.center,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: TextStyle(
@@ -210,18 +210,20 @@ class PublicRoomDialog extends StatelessWidget {
       actions: [
         AdaptiveDialogAction(
           bigButtons: true,
+          borderRadius: AdaptiveDialogAction.topRadius,
           onPressed: () => _joinRoom(context),
           child: Text(
             chunk?.joinRule == 'knock' &&
                     Matrix.of(context).client.getRoomById(chunk!.roomId) == null
                 ? L10n.of(context).knock
                 : chunk?.roomType == 'm.space'
-                    ? L10n.of(context).joinSpace
-                    : L10n.of(context).joinRoom,
+                ? L10n.of(context).joinSpace
+                : L10n.of(context).joinRoom,
           ),
         ),
         AdaptiveDialogAction(
           bigButtons: true,
+          borderRadius: AdaptiveDialogAction.bottomRadius,
           onPressed: Navigator.of(context).pop,
           child: Text(L10n.of(context).close),
         ),

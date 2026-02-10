@@ -131,6 +131,18 @@
       }
     }
   },
+  "alwaysUse24HourFormat": "true",
+  "@alwaysUse24HourFormat": {
+    "description": "Set to true to always display time of day in 24 hour format."
+  },
+  "repeatPassword": "Repita a senha",
+  "@repeatPassword": {},
+  "notAnImage": "Não é um arquivo de imagem.",
+  "@notAnImage": {},
+  "setCustomPermissionLevel": "Definir nível de permissão personalizado",
+  "@setCustomPermissionLevel": {},
+  "addChatDescription": "Adicionar uma descrição de chat...",
+  "@addChatDescription": {},
   "@showPassword": {
     "type": "String",
     "placeholders": {}
@@ -1128,14 +1140,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -1184,10 +1188,6 @@
     "placeholders": {}
   },
   "@verified": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@repeatPassword": {
     "type": "String",
     "placeholders": {}
   },
@@ -1801,10 +1801,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addChatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sentAnAudio": {
     "type": "String",
     "placeholders": {
@@ -2010,10 +2006,6 @@
     "placeholders": {}
   },
   "@you": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notAnImage": {
     "type": "String",
     "placeholders": {}
   },
@@ -2609,10 +2601,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "alwaysUse24HourFormat": "falso",
-  "repeatPassword": "Repetir senha",
-  "notAnImage": "Não é um arquivo de imagem.",
-  "setCustomPermissionLevel": "Definir nível de permissão personalizado",
   "setPermissionsLevelDescription": "Por favor, escolha um papel predefinido abaixo ou insira um nível de permissão personalizado entre 0 e 100.",
   "ignoreUser": "Ignorar usuário",
   "normalUser": "Usuário normal",
@@ -2629,7 +2617,6 @@
   "addEmail": "Adicionar email",
   "confirmMatrixId": "Por favor, confirme seu ID Matrix para excluir sua conta.",
   "supposedMxid": "Isto deve ser {mxid}",
-  "addChatDescription": "Adicionar uma descrição ao chat...",
   "addToSpace": "Adicionar ao espaço",
   "alias": "apelido",
   "all": "Todos",
@@ -3152,7 +3139,6 @@
   "report": "denunciar",
   "signInWithPassword": "Entrar com senha",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Por favor, tente novamente mais tarde ou escolha um servidor diferente.",
-  "signInWith": "Entrar com {provider}",
   "profileNotFound": "O usuário não pôde ser encontrado no servidor. Talvez haja um problema de conexão ou o usuário não exista.",
   "setTheme": "Definir tema:",
   "setColorTheme": "Definir tema de cores:",
@@ -4496,14 +4482,6 @@
   "playWithAI": "Brinque com IA por enquanto",
   "courseStartDesc": "Pangea Bot está pronto para começar a qualquer momento!\n\n...mas aprender é melhor com amigos!",
   "@@locale": "pt",
-  "@alwaysUse24HourFormat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setPermissionsLevelDescription": {
     "type": "String",
     "placeholders": {}
@@ -5057,9 +5035,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

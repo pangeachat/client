@@ -13,23 +13,20 @@ extension JoinRuleExtension on Client {
     try {
       joinCode = await requestSpaceCode();
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'joinRule': joinRule,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'joinRule': joinRule});
     }
 
-    return StateEvent(
-      type: EventTypes.RoomJoinRules,
-      content: {
-        ModelKey.joinRule: joinRule,
-        if (joinCode != null) ModelKey.accessCode: joinCode,
-        if (allow != null) 'allow': allow,
-      },
-    );
+    final Map<String, dynamic> content = {ModelKey.joinRule: joinRule};
+
+    if (joinCode != null) {
+      content[ModelKey.accessCode] = joinCode;
+    }
+
+    if (allow != null) {
+      content['allow'] = allow;
+    }
+
+    return StateEvent(type: EventTypes.RoomJoinRules, content: content);
   }
 }
 
@@ -59,10 +56,7 @@ extension JoinRuleExtensionOnRoom on Room {
     String joinRule, {
     List<Map<String, dynamic>>? allow,
   }) async {
-    final currentJoinRule = getState(
-          EventTypes.RoomJoinRules,
-        )?.content ??
-        {};
+    final currentJoinRule = getState(EventTypes.RoomJoinRules)?.content ?? {};
 
     if (currentJoinRule[ModelKey.joinRule] == joinRule &&
         (currentJoinRule['allow'] == allow)) {

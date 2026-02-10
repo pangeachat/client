@@ -68,10 +68,7 @@ class ActivitySummaryRepo {
     return ActivitySummaryResponseModel.fromJson(decodedBody);
   }
 
-  static void delete(
-    String roomId,
-    ActivityPlanModel activity,
-  ) async {
+  static void delete(String roomId, ActivityPlanModel activity) async {
     final storageKey = _storageKey(roomId, activity);
     _cache.remove(storageKey);
   }

@@ -6,6 +6,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
@@ -30,7 +31,7 @@ class LevelUpUtil {
   ) async {
     // Remove delay since GetAnalyticsController._onLevelUp is already async
     final player = AudioPlayer();
-    player.setVolume(AppConfig.volume);
+    player.setVolume(AppSettings.volume.value);
 
     // Wait for any existing snackbars to dismiss
     await _waitForSnackbars(context);
@@ -122,12 +123,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, -1),
       end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _slideController,
-        curve: Curves.easeOut,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
 
     _slideController.forward();
 
@@ -158,17 +154,16 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
     await showDialog(
       context: context,
-      builder: (context) => LevelUpPopup(
-        constructSummaryCompleter: _constructSummaryCompleter,
-      ),
+      builder: (context) =>
+          LevelUpPopup(constructSummaryCompleter: _constructSummaryCompleter),
     );
   }
 
   Future<void> _loadConstructSummary() async {
     try {
       final analyticsRoom = await Matrix.of(context).client.getMyAnalyticsRoom(
-            MatrixState.pangeaController.userController.userL2!,
-          );
+        MatrixState.pangeaController.userController.userL2!,
+      );
 
       final timestamp = analyticsRoom!.lastLevelUpTimestamp;
       final analyticsService = Matrix.of(context).analyticsDataService;
@@ -191,15 +186,15 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
     final style = isColumnMode
         ? Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: AppConfig.gold,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
-            )
+            color: AppConfig.gold,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          )
         : Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: AppConfig.gold,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
-            );
+            color: AppConfig.gold,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          );
 
     return SafeArea(
       child: Material(
@@ -279,12 +274,14 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                     padding: const EdgeInsets.all(4.0),
                                   ),
                                   onPressed: () {
-                                    MatrixState.pAnyState
-                                        .closeOverlay("level_up_notification");
+                                    MatrixState.pAnyState.closeOverlay(
+                                      "level_up_notification",
+                                    );
                                   },
                                   constraints: const BoxConstraints(),
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                             ),

@@ -28,11 +28,11 @@ class _ExampleMessageResult {
 
   List<InlineSpan> toSpans() => displaySpans;
   AudioExampleMessage toAudioExampleMessage() => AudioExampleMessage(
-        tokens: includedTokens,
-        eventId: eventId,
-        roomId: roomId,
-        exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
-      );
+    tokens: includedTokens,
+    eventId: eventId,
+    roomId: roomId,
+    exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
+  );
 }
 
 class ExampleMessageUtil {
@@ -220,8 +220,10 @@ class ExampleMessageUtil {
     ];
 
     // Extract only the tokens that are included in the displayed text
-    final includedTokens =
-        tokens.sublist(firstIncludedTokenIndex, lastIncludedTokenIndex + 1);
+    final includedTokens = tokens.sublist(
+      firstIncludedTokenIndex,
+      lastIncludedTokenIndex + 1,
+    );
 
     // Adjust target token index relative to the included tokens
     final adjustedTargetIndex = targetTokenIndex - firstIncludedTokenIndex;

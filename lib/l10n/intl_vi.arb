@@ -445,7 +445,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "badServerVersionsException": "Máy chủ nhà hỗ trợ Spec phiên bản:\n{serverVerions}\nNhưng ứng dụng này chỉ hỗ trợ {supportedVersions}",
+  "badServerVersionsException": "Máy chủ hỗ trợ Spec phiên bản:\n{serverVerions}\nNhưng ứng dụng này chỉ hỗ trợ {supportedVersions}",
   "@badServerVersionsException": {
     "type": "String",
     "placeholders": {
@@ -601,15 +601,6 @@
   "@noOtherDevicesFound": {},
   "fileIsTooBigForServer": "Máy chủ báo cáo rằng tệp tin quá lớn để gửi.",
   "@fileIsTooBigForServer": {},
-  "signInWith": "Đăng nhập với {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Không phải tệp ảnh.",
   "@notAnImage": {},
   "importNow": "Nhập vào",
@@ -719,7 +710,7 @@
       }
     }
   },
-  "alwaysUse24HourFormat": "Không",
+  "alwaysUse24HourFormat": "không",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -732,9 +723,19 @@
       }
     }
   },
-  "commandHint_googly": "Gửi cặp mắt theo dõi",
-  "commandHint_cuddle": "Gửi một cái âu yếm",
-  "googlyEyesContent": "{senderName} gửi bạn cặp mắt theo dõi",
+  "setCustomPermissionLevel": "Cài mức phân quyền",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Vui lòng chọn vai trò được xác định trước bên dưới hoặc nhập mức quyền tùy chỉnh từ 0 đến 100.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Chặn người dùng",
+  "@ignoreUser": {},
+  "normalUser": "Người dùng thường",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "Nâng cấp phòng lên phiên bản mặc định",
+  "@commandHint_roomupgrade": {},
+  "commandHint_cuddle": "Gửi cái ôm",
+  "@commandHint_cuddle": {},
+  "googlyEyesContent": "{senderName} gửi nháy mắt",
   "@googlyEyesContent": {
     "type": "String",
     "placeholders": {
@@ -743,7 +744,7 @@
       }
     }
   },
-  "cuddleContent": "{senderName} âu yếm bạn",
+  "cuddleContent": "{senderName} ôm nào",
   "@cuddleContent": {
     "type": "String",
     "placeholders": {
@@ -752,11 +753,56 @@
       }
     }
   },
-  "askSSSSSign": "Để có thể ký cho người khác, vui lòng nhập mật khẩu kho lưu trữ an toàn hoặc khóa phục hồi của bạn.",
-  "autoplayImages": "Tự động phát những biểu tượng cảm xúc và nhãn dán động",
-  "sendTypingNotifications": "Gửi thông báo đang gõ",
-  "swipeRightToLeftToReply": "Quét từ phải sang trái để trả lời",
-  "sendOnEnter": "Gửi khi nhấn Enter",
+  "askSSSSSign": "Để có thể ký tên cho người khác, vui lòng nhập mật khẩu lưu trữ an toàn hoặc khóa khôi phục của bạn.",
+  "@askSSSSSign": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoplayImages": "Tự động chạy nhãn dán hình động và biểu tượng cảm xúc",
+  "@autoplayImages": {
+    "type": "String",
+    "placeholder": {}
+  },
+  "sendTypingNotifications": "Gửi thông báo đang nhập",
+  "@sendTypingNotifications": {},
+  "swipeRightToLeftToReply": "Gạt từ phải sang trái để trả lời",
+  "@swipeRightToLeftToReply": {},
+  "sendOnEnter": "Gửi bằng Enter",
+  "@sendOnEnter": {},
+  "continueText": "Tiếp",
+  "@continueText": {},
+  "videoWithSize": "Video ({size})",
+  "@videoWithSize": {
+    "type": "String",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "markAsRead": "Đánh dấu đã đọc",
+  "@markAsRead": {},
+  "reportUser": "Báo cáo người dùng",
+  "@reportUser": {},
+  "dismiss": "Bỏ",
+  "@dismiss": {},
+  "reactedWith": "{sender} bày tỏ {reaction}",
+  "@reactedWith": {
+    "type": "String",
+    "placeholders": {
+      "sender": {
+        "type": "String"
+      },
+      "reaction": {
+        "type": "String"
+      }
+    }
+  },
+  "pinMessage": "Ghim phòng",
+  "@pinMessage": {},
+  "confirmEventUnpin": "Bạn có muốn bỏ ghim sự kiện?",
+  "@confirmEventUnpin": {},
+  "commandHint_googly": "Gửi cặp mắt theo dõi",
   "countChatsAndCountParticipants": "{chats} cuộc trò chuyện và {participants} thành viên",
   "@countChatsAndCountParticipants": {
     "type": "String",
@@ -1549,33 +1595,7 @@
   "start": "Bắt đầu",
   "pleaseEnterRecoveryKeyDescription": "Để mở khóa tin nhắn cũ, hãy nhập khóa khôi phục đã tạo ở phiên trước. Khóa khôi phục KHÔNG phải là mật khẩu.",
   "publish": "Công khai",
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "openChat": "Mở trò chuyện",
-  "markAsRead": "Đánh dấu đã đọc",
-  "reportUser": "Báo cáo người dùng",
-  "dismiss": "Bỏ qua",
-  "reactedWith": "{sender} đã phản ứng với {reaction}",
-  "@reactedWith": {
-    "type": "String",
-    "placeholders": {
-      "sender": {
-        "type": "String"
-      },
-      "reaction": {
-        "type": "String"
-      }
-    }
-  },
-  "pinMessage": "Ghim vào phòng",
-  "confirmEventUnpin": "Bạn có chắc muốn bỏ ghim sự kiện này không?",
   "emojis": "Biểu tượng cảm xúc",
   "placeCall": "Gọi",
   "voiceCall": "Gọi thoại",
@@ -2456,7 +2476,6 @@
     }
   },
   "l1TranslationBody": "Tin nhắn trong ngôn ngữ gốc sẽ không được dịch.",
-  "continueText": "Tiếp tục",
   "deleteSubscriptionWarningTitle": "Bạn đang có gói đăng ký hoạt động",
   "deleteSubscriptionWarningBody": "Việc xóa tài khoản sẽ không hủy gói đăng ký của bạn.",
   "manageSubscription": "Quản lý gói đăng ký",
@@ -3202,11 +3221,6 @@
       }
     }
   },
-  "setCustomPermissionLevel": "Đặt cấp độ quyền tùy chỉnh",
-  "setPermissionsLevelDescription": "Vui lòng chọn một vai trò đã định nghĩa sẵn bên dưới hoặc nhập một cấp độ quyền tùy chỉnh từ 0 đến 100.",
-  "ignoreUser": "Bỏ qua người dùng",
-  "normalUser": "Người dùng bình thường",
-  "commandHint_roomupgrade": "Nâng cấp phòng này lên phiên bản phòng đã cho",
   "enterNewChat": "Tham gia trò chuyện mới",
   "completeActivitiesToUnlock": "Hoàn thành ít nhất một hoạt động để mở khóa bản dịch!",
   "constructUseGaDesc": "Hỗ trợ ngữ pháp",
@@ -3263,26 +3277,6 @@
   "shareInviteCode": "Chia sẻ mã mời: {code}",
   "leaderboard": "Bảng xếp hạng",
   "skipForNow": "Bỏ qua tạm thời",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNewChat": {
     "type": "String",
     "placeholders": {}

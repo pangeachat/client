@@ -5,7 +5,7 @@ class GoldRouteTrackerModel {
   final List<ContinuanceModel> continuances;
 
   const GoldRouteTrackerModel(this.continuances, String originalText)
-      : _originalText = originalText;
+    : _originalText = originalText;
 
   ContinuanceModel? currentContinuance({
     required String currentText,

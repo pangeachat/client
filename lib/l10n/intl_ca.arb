@@ -2249,15 +2249,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "signInWith": "Inicia sessió amb {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "fileIsTooBigForServer": "No s'ha pogut enviar! El servidor només accepta adjunts de fins a {max}.",
   "@fileIsTooBigForServer": {},
   "homeserver": "Servidor",

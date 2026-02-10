@@ -71,11 +71,7 @@ class LanguageDetectionRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
@@ -96,9 +92,8 @@ class LanguageDetectionRepo {
   static void _setCached(
     LanguageDetectionRequest request,
     Future<LanguageDetectionResponse> response,
-  ) =>
-      _cache[request.hashCode.toString()] = _LanguageDetectionCacheItem(
-        data: response,
-        timestamp: DateTime.now(),
-      );
+  ) => _cache[request.hashCode.toString()] = _LanguageDetectionCacheItem(
+    data: response,
+    timestamp: DateTime.now(),
+  );
 }

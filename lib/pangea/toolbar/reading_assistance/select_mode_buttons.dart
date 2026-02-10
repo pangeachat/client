@@ -198,8 +198,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     final updatedMode =
         controller.selectedMode.value == mode && mode != SelectMode.audio
-            ? null
-            : mode;
+        ? null
+        : mode;
     controller.setSelectMode(updatedMode);
 
     if (updatedMode == SelectMode.audio) {
@@ -227,9 +227,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.requestRegenerate) {
-      await widget.controller.requestRegeneration(
-        messageEvent.eventId,
-      );
+      await widget.controller.requestRegeneration(messageEvent.eventId);
 
       if (mounted) {
         controller.setSelectMode(null);
@@ -255,8 +253,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             if (target != null)
               TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor:
-                      Theme.of(context).colorScheme.primaryContainer,
+                  foregroundColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer,
                 ),
                 onPressed: () =>
                     widget.controller.updateLanguageOnMismatch(target),
@@ -270,7 +269,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> playAudio() async {
     final playerID = "${messageEvent.eventId}_button";
-    final isPlaying = matrix?.audioPlayer != null &&
+    final isPlaying =
+        matrix?.audioPlayer != null &&
         matrix?.voiceMessageEventId.value == playerID &&
         matrix!.audioPlayer!.playerState.processingState !=
             ProcessingState.completed;
@@ -291,8 +291,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.voiceMessageEventId.value = "${messageEvent.eventId}_button";
 
     _playerStateSub?.cancel();
-    _playerStateSub =
-        matrix?.audioPlayer?.playerStateStream.listen(_onUpdatePlayerState);
+    _playerStateSub = matrix?.audioPlayer?.playerStateStream.listen(
+      _onUpdatePlayerState,
+    );
 
     _audioSub?.cancel();
     _audioSub = matrix?.audioPlayer?.positionStream.listen(_onPlayAudio);
@@ -311,10 +312,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         await matrix?.audioPlayer?.setFilePath(audioFile.path);
       } else {
         await matrix?.audioPlayer?.setAudioSource(
-          BytesAudioSource(
-            pangeaAudioFile.bytes,
-            pangeaAudioFile.mimeType,
-          ),
+          BytesAudioSource(pangeaAudioFile.bytes, pangeaAudioFile.mimeType),
         );
       }
 
@@ -330,9 +328,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         e: e,
         s: s,
         m: 'something wrong playing message audio',
-        data: {
-          'event': messageEvent.event.toJson(),
-        },
+        data: {'event': messageEvent.event.toJson()},
       );
     }
   }
@@ -374,7 +370,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     if (ttsToken == null) return;
 
-    final isPlaying = matrix?.audioPlayer != null &&
+    final isPlaying =
+        matrix?.audioPlayer != null &&
         matrix!.audioPlayer!.playerState.processingState !=
             ProcessingState.completed;
 
@@ -408,12 +405,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 child: Tooltip(
                   message: mode.tooltip(context),
                   child: ListenableBuilder(
-                    listenable: Listenable.merge(
-                      [
-                        controller.selectedMode,
-                        controller.modeStateNotifier(mode),
-                      ],
-                    ),
+                    listenable: Listenable.merge([
+                      controller.selectedMode,
+                      controller.modeStateNotifier(mode),
+                    ]),
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
@@ -422,41 +417,50 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                           borderRadius: BorderRadius.circular(20),
                           depressed: mode == selectedMode || !enabled,
                           color: theme.colorScheme.primaryContainer,
-                          onPressed:
-                              enabled ? () => updateMode(mode) : modeDisabled,
+                          onPressed: enabled
+                              ? () => updateMode(mode)
+                              : modeDisabled,
                           playSound: enabled && mode != SelectMode.audio,
-                          colorFactor:
-                              theme.brightness == Brightness.light ? 0.55 : 0.3,
+                          colorFactor: theme.brightness == Brightness.light
+                              ? 0.55
+                              : 0.3,
                           builder: (context, depressed, shadowColor) =>
                               ShimmerBackground(
-                            enabled: !InstructionsEnum
-                                    .shimmerTranslation.isToggledOff &&
-                                mode == SelectMode.translate &&
-                                enabled,
-                            borderRadius: BorderRadius.circular(100),
-                            child: AnimatedContainer(
-                              duration: FluffyThemes.animationDuration,
-                              height: buttonSize,
-                              width: buttonSize,
-                              decoration: BoxDecoration(
-                                color: depressed
-                                    ? shadowColor
-                                    : theme.colorScheme.primaryContainer,
-                                shape: BoxShape.circle,
-                              ),
-                              child: ValueListenableBuilder(
-                                valueListenable: _isPlayingNotifier,
-                                builder: (context, playing, __) =>
-                                    _SelectModeButtonIcon(
-                                  mode: mode,
-                                  loading: controller.isLoading &&
-                                      mode == selectedMode,
-                                  playing: mode == SelectMode.audio && playing,
-                                  color: theme.colorScheme.onPrimaryContainer,
+                                enabled:
+                                    !InstructionsEnum
+                                        .shimmerTranslation
+                                        .isToggledOff &&
+                                    mode == SelectMode.translate &&
+                                    enabled,
+                                borderRadius: BorderRadius.circular(100),
+                                child: AnimatedContainer(
+                                  duration: FluffyThemes.animationDuration,
+                                  height: buttonSize,
+                                  width: buttonSize,
+                                  decoration: BoxDecoration(
+                                    color: depressed
+                                        ? shadowColor
+                                        : theme.colorScheme.primaryContainer,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ValueListenableBuilder(
+                                    valueListenable: _isPlayingNotifier,
+                                    builder: (context, playing, _) =>
+                                        _SelectModeButtonIcon(
+                                          mode: mode,
+                                          loading:
+                                              controller.isLoading &&
+                                              mode == selectedMode,
+                                          playing:
+                                              mode == SelectMode.audio &&
+                                              playing,
+                                          color: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
                         ),
                       );
                     },
@@ -521,10 +525,7 @@ class _MoreButton extends StatelessWidget {
   final ChatController controller;
   final PangeaMessageEvent? messageEvent;
 
-  const _MoreButton({
-    required this.controller,
-    this.messageEvent,
-  });
+  const _MoreButton({required this.controller, this.messageEvent});
 
   bool _messageActionEnabled(MessageActions action) {
     if (messageEvent == null) return false;
@@ -544,7 +545,8 @@ class _MoreButton extends StatelessWidget {
       return false;
     }
 
-    final isPinned = events.length == 1 &&
+    final isPinned =
+        events.length == 1 &&
         controller.room.pinnedEventIds.contains(events.first.eventId);
 
     switch (action) {
@@ -577,17 +579,14 @@ class _MoreButton extends StatelessWidget {
 
   Future<void> _showMenu(BuildContext context) async {
     final RenderBox button = context.findRenderObject() as RenderBox;
-    final RenderBox overlay = Overlay.of(context, rootOverlay: true)
-        .context
-        .findRenderObject() as RenderBox;
+    final RenderBox overlay =
+        Overlay.of(context, rootOverlay: true).context.findRenderObject()
+            as RenderBox;
 
     final Offset offset = button.localToGlobal(Offset.zero, ancestor: overlay);
 
     final RelativeRect position = RelativeRect.fromRect(
-      Rect.fromPoints(
-        offset,
-        offset + button.size.bottomRight(Offset.zero),
-      ),
+      Rect.fromPoints(offset, offset + button.size.bottomRight(Offset.zero)),
       Offset.zero & overlay.size,
     );
 
@@ -616,10 +615,7 @@ class _MoreButton extends StatelessWidget {
     _onActionPressed(action, context);
   }
 
-  void _onActionPressed(
-    MessageActions action,
-    BuildContext context,
-  ) {
+  void _onActionPressed(MessageActions action, BuildContext context) {
     switch (action) {
       case MessageActions.reply:
         controller.replyAction();
@@ -646,11 +642,7 @@ class _MoreButton extends StatelessWidget {
       case MessageActions.report:
         final event = controller.selectedEvents.first;
         controller.clearSelectedEvents();
-        reportEvent(
-          event,
-          controller,
-          controller.context,
-        );
+        reportEvent(event, controller, controller.context);
         break;
       case MessageActions.info:
         controller.showEventInfo();
@@ -683,10 +675,7 @@ class _MoreButton extends StatelessWidget {
             color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
           ),
-          child: const Icon(
-            Icons.more_horiz,
-            size: 20,
-          ),
+          child: const Icon(Icons.more_horiz, size: 20),
         ),
       ),
     );

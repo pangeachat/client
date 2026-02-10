@@ -23,13 +23,9 @@ class LanguageRepo {
   }
 
   static Future<List<LanguageModel>> _fetch() async {
-    final Requests req = Requests(
-      choreoApiKey: Environment.choreoApiKey,
-    );
+    final Requests req = Requests(choreoApiKey: Environment.choreoApiKey);
 
-    final Response res = await req.get(
-      url: PApiUrls.getLanguages,
-    );
+    final Response res = await req.get(url: PApiUrls.getLanguages);
 
     if (res.statusCode != 200) {
       throw Exception(

@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:
@@ -64,7 +64,7 @@ jobs:
       - name: Create archive
         run: tar -czf pangeachat-web.tar.gz build/web/
       - name: Upload Web Build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Web Build
           path: pangeachat-web.tar.gz
@@ -90,9 +90,9 @@ jobs:
     env:
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: 'zulu'
@@ -131,7 +131,7 @@ jobs:
           PLAY_STORE_KEYSTORE_KEY_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_PASSWORD }}
           PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
         run: ./scripts/prepare-android-release.sh
-      - run: flutter build apk --release
+      - run: flutter build apk --release --target-platform android-arm,android-arm64
       - name: Upload to release
         uses: actions/upload-release-asset@v1
         env:

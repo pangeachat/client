@@ -59,8 +59,9 @@ class PracticeTarget {
     }
 
     return PracticeTarget(
-      tokens:
-          (json['tokens'] as List).map((e) => PangeaToken.fromJson(e)).toList(),
+      tokens: (json['tokens'] as List)
+          .map((e) => PangeaToken.fromJson(e))
+          .toList(),
       activityType: type,
       morphFeature: json['morphFeature'] == null
           ? null

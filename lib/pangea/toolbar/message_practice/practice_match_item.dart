@@ -72,11 +72,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         }
       } catch (e, s) {
         debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {"text": widget.audioContent},
-        );
+        ErrorHandler.logError(e: e, s: s, data: {"text": widget.audioContent});
       } finally {
         if (mounted) {
           setState(() => _isPlaying = false);
@@ -128,14 +124,8 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
               color: color(context).withAlpha((0.4 * 255).toInt()),
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               border: isSelected
-                  ? Border.all(
-                      color: color(context).withAlpha(255),
-                      width: 2,
-                    )
-                  : Border.all(
-                      color: Colors.transparent,
-                      width: 2,
-                    ),
+                  ? Border.all(color: color(context).withAlpha(255), width: 2)
+                  : Border.all(color: Colors.transparent, width: 2),
             ),
             child: widget.content,
           ),
@@ -145,19 +135,13 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
     return Draggable<PracticeChoice>(
       data: widget.constructForm,
-      feedback: Material(
-        type: MaterialType.transparency,
-        child: content,
-      ),
+      feedback: Material(type: MaterialType.transparency, child: content),
       onDragStarted: onTap,
       child: InkWell(
         onHover: (isHovered) => setState(() => _isHovered = isHovered),
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         onTap: onTap,
-        child: ShimmerBackground(
-          enabled: widget.shimmer,
-          child: content,
-        ),
+        child: ShimmerBackground(enabled: widget.shimmer, child: content),
       ),
     );
   }

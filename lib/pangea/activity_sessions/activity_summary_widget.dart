@@ -114,9 +114,7 @@ class ActivitySummary extends StatelessWidget {
                             style: theme.textTheme.bodyMedium,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 4.0,
-                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Row(
                               spacing: 4.0,
                               mainAxisSize: MainAxisSize.min,

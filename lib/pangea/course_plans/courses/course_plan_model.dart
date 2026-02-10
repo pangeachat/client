@@ -61,11 +61,13 @@ class CoursePlanModel {
       title: json['title'] as String,
       description: json['description'] as String,
       uuid: json['uuid'] as String,
-      topicIds: (json['topic_ids'] as List<dynamic>?)
+      topicIds:
+          (json['topic_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
-      mediaIds: (json['media_ids'] as List<dynamic>?)
+      mediaIds:
+          (json['media_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
@@ -93,11 +95,11 @@ class CoursePlanModel {
   bool get topicListComplete => topicIds.length == loadedTopics.length;
 
   Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
-        TranslateTopicRequest(
-          topicIds: topicIds,
-          l1: MatrixState.pangeaController.userController.userL1Code!,
-        ),
-      ).topics;
+    TranslateTopicRequest(
+      topicIds: topicIds,
+      l1: MatrixState.pangeaController.userController.userL1Code!,
+    ),
+  ).topics;
 
   Set<String> get activityIDs =>
       loadedTopics.values.expand((topic) => topic.activityIds).toSet();
@@ -116,21 +118,15 @@ class CoursePlanModel {
   bool get mediaListComplete =>
       mediaIds.length == loadedMediaUrls.mediaUrls.length;
   CourseMediaResponse get loadedMediaUrls => CourseMediaRepo.getCached(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: mediaIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
+  );
   Future<CourseMediaResponse> fetchMediaUrls() => CourseMediaRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: mediaIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: mediaIds),
+  );
   Uri? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
       ? loadedTopics.values
-          .lastWhereOrNull((topic) => topic.imageUrl != null)
-          ?.imageUrl
+            .lastWhereOrNull((topic) => topic.imageUrl != null)
+            ?.imageUrl
       : Uri.tryParse(
           "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}",
         );

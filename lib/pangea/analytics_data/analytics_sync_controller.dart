@@ -16,10 +16,7 @@ class AnalyticsSyncController {
 
   StreamSubscription? _subscription;
 
-  AnalyticsSyncController({
-    required this.client,
-    required this.dataService,
-  });
+  AnalyticsSyncController({required this.client, required this.dataService});
 
   void start() {
     _subscription ??= client.onSync.stream.listen(_onSync);
@@ -34,11 +31,12 @@ class AnalyticsSyncController {
     final analyticsRoom = _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
-    final events =
-        update.rooms?.join?[analyticsRoom.id]?.timeline?.events?.where(
-      (e) =>
-          e.type == PangeaEventTypes.construct && e.senderId == client.userID,
-    );
+    final events = update.rooms?.join?[analyticsRoom.id]?.timeline?.events
+        ?.where(
+          (e) =>
+              e.type == PangeaEventTypes.construct &&
+              e.senderId == client.userID,
+        );
 
     if (events == null || events.isEmpty) return;
 
@@ -67,7 +65,8 @@ class AnalyticsSyncController {
       final roomUpdate = update.rooms?.join?[analyticsRoomId];
       if (roomUpdate == null) return false;
 
-      final hasAnalyticsEvent = roomUpdate.timeline?.events?.any(
+      final hasAnalyticsEvent =
+          roomUpdate.timeline?.events?.any(
             (e) =>
                 e.type == PangeaEventTypes.construct &&
                 e.senderId == client.userID,

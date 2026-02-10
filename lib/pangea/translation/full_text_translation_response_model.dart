@@ -14,9 +14,7 @@ class FullTextTranslationResponseModel {
   factory FullTextTranslationResponseModel.fromJson(Map<String, dynamic> json) {
     return FullTextTranslationResponseModel(
       translations: (json["translations"] as Iterable)
-          .map<String>(
-            (e) => e,
-          )
+          .map<String>((e) => e)
           .toList()
           .cast<String>(),
       source: json[ModelKey.srcLang],

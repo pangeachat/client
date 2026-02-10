@@ -76,11 +76,7 @@ class ChoicesArray extends StatelessWidget {
 }
 
 class Choice {
-  Choice({
-    this.color,
-    required this.text,
-    this.isGold = false,
-  });
+  Choice({this.color, required this.text, this.isGold = false});
 
   final Color? color;
   final String text;
@@ -142,11 +138,9 @@ class ChoiceItem extends StatelessWidget {
             ),
             child: TextButton(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
-                backgroundColor: entry.value.color?.withAlpha(50) ??
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                backgroundColor:
+                    entry.value.color?.withAlpha(50) ??
                     theme.colorScheme.primary.withAlpha(10),
                 textStyle: BotStyle.text(context),
                 shape: RoundedRectangleBorder(
@@ -161,9 +155,7 @@ class ChoiceItem extends StatelessWidget {
                 getDisplayCopy != null
                     ? getDisplayCopy!(entry.value.text)
                     : entry.value.text,
-                style: BotStyle.text(context).copyWith(
-                  fontSize: fontSize,
-                ),
+                style: BotStyle.text(context).copyWith(fontSize: fontSize),
                 textAlign: TextAlign.center,
               ),
             ),

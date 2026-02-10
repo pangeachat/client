@@ -1787,7 +1787,6 @@
   "report": "Nahlásiť",
   "signInWithPassword": "Prihlásiť sa s heslom",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Skúste to prosím neskôr alebo vyberte iný server.",
-  "signInWith": "Prihlásiť sa s {provider}",
   "profileNotFound": "Používateľa sa nepodarilo nájsť na serveri. Možno je problém s pripojením alebo používateľ neexistuje.",
   "setTheme": "Nastaviť tému:",
   "setColorTheme": "Nastaviť farebnú tému:",
@@ -4623,14 +4622,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5041,9 +5032,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

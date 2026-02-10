@@ -15,19 +15,14 @@ class _ITCacheItem {
   final Future<ITResponseModel> response;
   final DateTime timestamp;
 
-  const _ITCacheItem({
-    required this.response,
-    required this.timestamp,
-  });
+  const _ITCacheItem({required this.response, required this.timestamp});
 }
 
 class ITRepo {
   static final Map<String, _ITCacheItem> _cache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
 
-  static Future<Result<ITResponseModel>> get(
-    ITRequestModel request,
-  ) {
+  static Future<Result<ITResponseModel>> get(ITRequestModel request) {
     final cached = _getCached(request);
     if (cached != null) {
       return _getResult(request, cached);
@@ -38,15 +33,15 @@ class ITRepo {
     return _getResult(request, future);
   }
 
-  static Future<ITResponseModel> _fetch(
-    ITRequestModel request,
-  ) async {
+  static Future<ITResponseModel> _fetch(ITRequestModel request) async {
     final Requests req = Requests(
       choreoApiKey: Environment.choreoApiKey,
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
-    final Response res =
-        await req.post(url: PApiUrls.firstStep, body: request.toJson());
+    final Response res = await req.post(
+      url: PApiUrls.firstStep,
+      body: request.toJson(),
+    );
 
     if (res.statusCode != 200) {
       throw Exception('Failed to load interactive translation');
@@ -65,18 +60,12 @@ class ITRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<ITResponseModel>? _getCached(
-    ITRequestModel request,
-  ) {
+  static Future<ITResponseModel>? _getCached(ITRequestModel request) {
     final cacheKeys = [..._cache.keys];
     for (final key in cacheKeys) {
       if (DateTime.now().difference(_cache[key]!.timestamp) >= _cacheDuration) {

@@ -41,10 +41,9 @@ class VocabDetailsView extends StatelessWidget {
     if (resp != OkCancelResult.ok) return;
     final res = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context)
-          .analyticsDataService
-          .updateService
-          .blockConstruct(constructId),
+      future: () => Matrix.of(
+        context,
+      ).analyticsDataService.updateService.blockConstruct(constructId),
     );
 
     if (!res.isError) {
@@ -63,8 +62,8 @@ class VocabDetailsView extends StatelessWidget {
 
         final Color textColor =
             (Theme.of(context).brightness != Brightness.light
-                ? level.color(context)
-                : level.darkColor(context));
+            ? level.color(context)
+            : level.darkColor(context));
 
         final forms = construct?.forms ?? [];
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
@@ -94,11 +93,13 @@ class VocabDetailsView extends StatelessWidget {
                       MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
                   onClose: Navigator.of(context).pop,
-                  onFlagTokenInfo: (
-                    LemmaInfoResponse lemmaInfo,
-                    String phonetics,
-                  ) =>
-                      controller.onFlagTokenInfo(token, lemmaInfo, phonetics),
+                  onFlagTokenInfo:
+                      (LemmaInfoResponse lemmaInfo, String phonetics) =>
+                          controller.onFlagTokenInfo(
+                            token,
+                            lemmaInfo,
+                            phonetics,
+                          ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
                 ),
@@ -109,9 +110,7 @@ class VocabDetailsView extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: ConstructXPProgressBar(
-                        construct: constructId,
-                      ),
+                      child: ConstructXPProgressBar(construct: constructId),
                     ),
                     Column(
                       children: [
@@ -126,9 +125,7 @@ class VocabDetailsView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        AnalyticsDetailsUsageContent(
-                          construct: construct,
-                        ),
+                        AnalyticsDetailsUsageContent(construct: construct),
                         ListTile(
                           leading: Icon(
                             Icons.delete_outline,
@@ -176,9 +173,9 @@ class _VocabForms extends StatelessWidget {
         children: [
           Text(
             L10n.of(context).formSectionHeader,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 6.0),
           ...forms.mapIndexed(
@@ -187,9 +184,9 @@ class _VocabForms extends StatelessWidget {
               children: [
                 WordTextWithAudioButton(
                   text: form,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: textColor,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: textColor),
                   uniqueID: "$form-$lemma-$i",
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,

@@ -16,19 +16,13 @@ class PasswordLoginView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 450,
-            ),
+            constraints: const BoxConstraints(maxWidth: 450),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BackButton(
-                  onPressed: Navigator.of(context).pop,
-                ),
+                BackButton(onPressed: Navigator.of(context).pop),
                 Text(L10n.of(context).loginWithEmail),
-                const SizedBox(
-                  width: 40.0,
-                ),
+                const SizedBox(width: 40.0),
               ],
             ),
           ),
@@ -37,10 +31,7 @@ class PasswordLoginView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 300,
-                maxHeight: 600,
-              ),
+              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
               child: Column(
                 spacing: 16.0,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -80,8 +71,9 @@ class PasswordLoginView extends StatelessWidget {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return L10n.of(context)
-                                      .pleaseEnterYourPassword;
+                                  return L10n.of(
+                                    context,
+                                  ).pleaseEnterYourPassword;
                                 }
                                 return null;
                               },
@@ -101,7 +93,8 @@ class PasswordLoginView extends StatelessWidget {
                                   FocusManager.instance.primaryFocus?.unfocus(),
                             ),
                             TextButton(
-                              onPressed: controller.loadingSignIn ||
+                              onPressed:
+                                  controller.loadingSignIn ||
                                       controller.client == null
                                   ? () {}
                                   : controller.passwordForgotten,
@@ -120,17 +113,16 @@ class PasswordLoginView extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed:
-                        controller.enabledSignIn ? controller.login : null,
+                    onPressed: controller.enabledSignIn
+                        ? controller.login
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(L10n.of(context).login),
-                      ],
+                      children: [Text(L10n.of(context).login)],
                     ),
                   ),
                 ],

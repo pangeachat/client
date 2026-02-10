@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "رجاء حاول مجددا أو اختر خادما مختلفا.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "تسجيل الدخول باستخدام {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "importNow": "استيراد الآن",
   "@importNow": {},
   "importEmojis": "استيراد الرموز التعبيرية",
@@ -2972,7 +2963,7 @@
   "@gallery": {},
   "swipeRightToLeftToReply": "اسحب من اليمين إلى اليسار للرد",
   "@swipeRightToLeftToReply": {},
-  "alwaysUse24HourFormat": "خطأ",
+  "alwaysUse24HourFormat": "علّم لعرض الوقت بنسق 24 ساعة دائما.‏",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -3182,7 +3173,8 @@
   "@previous": {},
   "otherPartyNotLoggedIn": "لم يقم الطرف الآخر بتسجيل الدخول حالياً وبالتالي لا يمكنه تلقي الرسائل!",
   "@otherPartyNotLoggedIn": {},
-  "setCustomPermissionLevel": "تعيين مستوى إذن مخصص",
+  "setCustomPermissionLevel": "حدد مستوى صلاحية مخصص",
+  "@setCustomPermissionLevel": {},
   "setPermissionsLevelDescription": "يرجى اختيار دور معرف مسبقًا أدناه أو إدخال مستوى إذن مخصص بين 0 و 100.",
   "ignoreUser": "تجاهل المستخدم",
   "normalUser": "مستخدم عادي",
@@ -4391,10 +4383,6 @@
   "inviteYourFriends": "ادعُ أصدقائك",
   "playWithAI": "اللعب مع الذكاء الاصطناعي الآن",
   "courseStartDesc": "روبوت بانجيا جاهز للعمل في أي وقت!\n\n...لكن التعلم أفضل مع الأصدقاء!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setPermissionsLevelDescription": {
     "type": "String",
     "placeholders": {}

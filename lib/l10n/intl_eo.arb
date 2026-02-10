@@ -2290,7 +2290,6 @@
   "report": "raporti",
   "signInWithPassword": "Ensaluti per pasvorto",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Bonvolu provi denove poste aŭ elekti alian servilon.",
-  "signInWith": "Ensaluti kun {provider}",
   "profileNotFound": "La uzanto ne povis esti trovita en la servilo. Eble estas problemo kun la konekto aŭ la uzanto ne ekzistas.",
   "setTheme": "Agordi temon:",
   "setColorTheme": "Agordi kolortemon:",
@@ -4628,14 +4627,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5046,9 +5037,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

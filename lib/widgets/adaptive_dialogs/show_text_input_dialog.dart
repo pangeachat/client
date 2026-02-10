@@ -45,7 +45,7 @@ Future<String?> showTextInputDialog({
         content: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 256),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               if (message != null)
                 SelectableLinkify(

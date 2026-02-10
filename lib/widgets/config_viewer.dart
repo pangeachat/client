@@ -4,21 +4,26 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class ConfigViewer extends StatelessWidget {
+class ConfigViewer extends StatefulWidget {
   const ConfigViewer({super.key});
 
+  @override
+  State<ConfigViewer> createState() => _ConfigViewerState();
+}
+
+class _ConfigViewerState extends State<ConfigViewer> {
   void _changeSetting(
-    BuildContext context,
     AppSettings appSetting,
     SharedPreferences store,
-    Function setState,
     String initialValue,
   ) async {
     if (appSetting is AppSettings<bool>) {
-      appSetting.setItem(store, !(initialValue == 'true'));
+      await appSetting.setItem(!(initialValue == 'true'));
+      setState(() {});
       return;
     }
 
@@ -31,13 +36,13 @@ class ConfigViewer extends StatelessWidget {
     if (value == null) return;
 
     if (appSetting is AppSettings<String>) {
-      appSetting.setItem(store, value);
+      await appSetting.setItem(value);
     }
     if (appSetting is AppSettings<int>) {
-      appSetting.setItem(store, int.parse(value));
+      await appSetting.setItem(int.parse(value));
     }
     if (appSetting is AppSettings<double>) {
-      appSetting.setItem(store, double.parse(value));
+      await appSetting.setItem(double.parse(value));
     }
 
     setState(() {});
@@ -48,10 +53,8 @@ class ConfigViewer extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Advanced configurations'),
-        leading: BackButton(
-          onPressed: () => context.go('/'),
-        ),
+        title: Text(L10n.of(context).advancedConfigurations),
+        leading: BackButton(onPressed: () => context.go('/')),
       ),
       body: Column(
         children: [
@@ -61,44 +64,32 @@ class ConfigViewer extends StatelessWidget {
             color: theme.colorScheme.errorContainer,
             child: Text(
               'Changing configs by hand is untested! Use without any warranty!',
-              style: TextStyle(
-                color: theme.colorScheme.onErrorContainer,
-              ),
+              style: TextStyle(color: theme.colorScheme.onErrorContainer),
             ),
           ),
           Expanded(
-            child: StatefulBuilder(
-              builder: (context, setState) {
-                return ListView.builder(
-                  itemCount: AppSettings.values.length,
-                  itemBuilder: (context, i) {
-                    final store = Matrix.of(context).store;
-                    final appSetting = AppSettings.values[i];
-                    var value = '';
-                    if (appSetting is AppSettings<String>) {
-                      value = appSetting.getItem(store);
-                    }
-                    if (appSetting is AppSettings<int>) {
-                      value = appSetting.getItem(store).toString();
-                    }
-                    if (appSetting is AppSettings<bool>) {
-                      value = appSetting.getItem(store).toString();
-                    }
-                    if (appSetting is AppSettings<double>) {
-                      value = appSetting.getItem(store).toString();
-                    }
-                    return ListTile(
-                      title: Text(appSetting.name),
-                      subtitle: Text(value),
-                      onTap: () => _changeSetting(
-                        context,
-                        appSetting,
-                        store,
-                        setState,
-                        value,
-                      ),
-                    );
-                  },
+            child: ListView.builder(
+              itemCount: AppSettings.values.length,
+              itemBuilder: (context, i) {
+                final store = Matrix.of(context).store;
+                final appSetting = AppSettings.values[i];
+                var value = '';
+                if (appSetting is AppSettings<String>) {
+                  value = appSetting.value;
+                }
+                if (appSetting is AppSettings<int>) {
+                  value = appSetting.value.toString();
+                }
+                if (appSetting is AppSettings<bool>) {
+                  value = appSetting.value.toString();
+                }
+                if (appSetting is AppSettings<double>) {
+                  value = appSetting.value.toString();
+                }
+                return ListTile(
+                  title: Text(appSetting.name),
+                  subtitle: Text(value),
+                  onTap: () => _changeSetting(appSetting, store, value),
                 );
               },
             ),

@@ -26,20 +26,13 @@ class ErrorIndicator extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         Flexible(
-          child: Text(
-            message,
-            style: style,
-            textAlign: TextAlign.center,
-          ),
+          child: Text(message, style: style, textAlign: TextAlign.center),
         ),
       ],
     );
 
     if (onTap != null) {
-      return TextButton(
-        onPressed: onTap,
-        child: content,
-      );
+      return TextButton(onPressed: onTap, child: content);
     }
 
     return content;

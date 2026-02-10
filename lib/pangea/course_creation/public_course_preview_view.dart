@@ -16,10 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreviewView extends StatelessWidget {
   final PublicCoursePreviewController controller;
-  const PublicCoursePreviewView(
-    this.controller, {
-    super.key,
-  });
+  const PublicCoursePreviewView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +29,7 @@ class PublicCoursePreviewView extends StatelessWidget {
     const double smallIconSize = 12.0;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).joinWithClassCode),
-      ),
+      appBar: AppBar(title: Text(L10n.of(context).joinWithClassCode)),
       body: SafeArea(
         child: Container(
           alignment: Alignment.topCenter,
@@ -122,10 +117,10 @@ class PublicCoursePreviewView extends StatelessWidget {
                                       ),
                                       CourseInfoChip(
                                         icon: Icons.person,
-                                        text:
-                                            L10n.of(context).countParticipants(
-                                          summary.membershipSummary.length,
-                                        ),
+                                        text: L10n.of(context)
+                                            .countParticipants(
+                                              summary.membershipSummary.length,
+                                            ),
                                         fontSize: descFontSize,
                                         iconSize: smallIconSize,
                                       ),
@@ -211,10 +206,10 @@ class PublicCoursePreviewView extends StatelessWidget {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsetsGeometry
-                                              .symmetric(
-                                            vertical: 2.0,
-                                          ),
+                                          padding:
+                                              const EdgeInsetsGeometry.symmetric(
+                                                vertical: 2.0,
+                                              ),
                                           child: Row(
                                             spacing: 8.0,
                                             mainAxisSize: MainAxisSize.min,
@@ -265,13 +260,9 @@ class PublicCoursePreviewView extends StatelessWidget {
                               Row(
                                 spacing: 8.0,
                                 children: [
-                                  const Expanded(
-                                    child: Divider(),
-                                  ),
+                                  const Expanded(child: Divider()),
                                   Text(L10n.of(context).or),
-                                  const Expanded(
-                                    child: Divider(),
-                                  ),
+                                  const Expanded(child: Divider()),
                                 ],
                               ),
                             ],
@@ -328,19 +319,14 @@ class _CourseAdminDisplay extends StatelessWidget {
       children: [
         ...summary.adminUserIDs.map((adminId) {
           return FutureBuilder(
-            future: Matrix.of(context).client.getProfileFromUserId(
-                  adminId,
-                ),
+            future: Matrix.of(context).client.getProfileFromUserId(adminId),
             builder: (context, snapshot) {
               final profile = snapshot.data;
               final displayName =
                   profile?.displayName ?? adminId.localpart ?? adminId;
               return InkWell(
                 onTap: profile != null
-                    ? () => UserDialog.show(
-                          context: context,
-                          profile: profile,
-                        )
+                    ? () => UserDialog.show(context: context, profile: profile)
                     : null,
                 child: Container(
                   decoration: BoxDecoration(
@@ -361,9 +347,7 @@ class _CourseAdminDisplay extends StatelessWidget {
                           userId: adminId,
                         ),
                         ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxWidth: 80.0,
-                          ),
+                          constraints: const BoxConstraints(maxWidth: 80.0),
                           child: Text(
                             displayName,
                             style: TextStyle(

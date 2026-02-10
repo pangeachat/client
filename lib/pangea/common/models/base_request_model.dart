@@ -16,12 +16,17 @@ mixin BaseRequestModel {
 
   /// Convert to JSON map with common fields
   Map<String, dynamic> toBaseJson() => {
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.cefrLevel: userCefr,
-        ModelKey.userGender: MatrixState
-            .pangeaController.userController.profile.userSettings.gender.string,
-      };
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.cefrLevel: userCefr,
+    ModelKey.userGender: MatrixState
+        .pangeaController
+        .userController
+        .profile
+        .userSettings
+        .gender
+        .string,
+  };
 
   /// Injects user context (CEFR level, gender) into a request body.
   /// Safely handles cases where MatrixState is not yet initialized.

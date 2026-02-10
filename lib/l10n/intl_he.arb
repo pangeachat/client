@@ -1428,7 +1428,7 @@
   },
   "notAnImage": "הקובץ אינו תמונה.",
   "@notAnImage": {},
-  "alwaysUse24HourFormat": "שגוי",
+  "alwaysUse24HourFormat": "",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -1750,7 +1750,6 @@
   "report": "דווח",
   "signInWithPassword": "התחבר עם סיסמה",
   "pleaseTryAgainLaterOrChooseDifferentServer": "אנא נסה שוב מאוחר יותר או בחר שרת אחר.",
-  "signInWith": "התחבר עם {provider}",
   "profileNotFound": "לא נמצא משתמש בשרת. ייתכן שיש בעיית חיבור או שהמשתמש לא קיים.",
   "setTheme": "הגדר נושא:",
   "setColorTheme": "הגדר נושא צבע:",
@@ -4588,14 +4587,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5006,9 +4997,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

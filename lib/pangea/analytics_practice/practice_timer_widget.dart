@@ -84,9 +84,9 @@ class PracticeTimerWidgetState extends State<PracticeTimerWidget> {
         const SizedBox(width: 4.0),
         Text(
           _formatTime(_getCurrentSeconds()),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ],
     );

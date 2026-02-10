@@ -24,14 +24,14 @@ mixin LemmaEmojiSetter {
     }
 
     if (constructId.userSetEmoji == null) {
-      _getEmojiAnalytics(
-        constructId,
-        targetId: targetId,
-      );
+      _getEmojiAnalytics(constructId, targetId: targetId);
     }
 
     await MatrixState
-        .pangeaController.matrixState.analyticsDataService.updateService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateService
         .setLemmaInfo(constructId, emoji: emoji);
   }
 
@@ -67,8 +67,8 @@ mixin LemmaEmojiSetter {
                 L10n.of(context).emojiSelectedSnackbar(constructId.lemma),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
+                  color: Theme.of(context).colorScheme.surface,
+                ),
               ),
             ),
             IconButton(
@@ -107,9 +107,6 @@ mixin LemmaEmojiSetter {
     ];
 
     MatrixState.pangeaController.matrixState.analyticsDataService.updateService
-        .addAnalytics(
-      targetId,
-      constructs,
-    );
+        .addAnalytics(targetId, constructs);
   }
 }

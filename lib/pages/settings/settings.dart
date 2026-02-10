@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 
@@ -26,9 +27,9 @@ class SettingsController extends State<Settings> {
   bool profileUpdated = false;
 
   void updateProfile() => setState(() {
-        profileUpdated = true;
-        profileFuture = null;
-      });
+    profileUpdated = true;
+    profileFuture = null;
+  });
 
   void setDisplaynameAction() async {
     final profile = await profileFuture;
@@ -45,7 +46,11 @@ class SettingsController extends State<Settings> {
     final matrix = Matrix.of(context);
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.setDisplayName(matrix.client.userID!, input),
+      future: () => matrix.client.setProfileField(
+        matrix.client.userID!,
+        'displayname',
+        {'displayname': input},
+      ),
     );
     if (success.error == null) {
       updateProfile();
@@ -128,15 +133,9 @@ class SettingsController extends State<Settings> {
         imageQuality: 50,
       );
       if (result == null) return;
-      file = MatrixFile(
-        bytes: await result.readAsBytes(),
-        name: result.path,
-      );
+      file = MatrixFile(bytes: await result.readAsBytes(), name: result.path);
     } else {
-      final result = await selectFiles(
-        context,
-        type: FileSelectorType.images,
-      );
+      final result = await selectFiles(context, type: FileType.image);
       final pickedFile = result.firstOrNull;
       if (pickedFile == null) return;
       file = MatrixFile(
@@ -178,8 +177,8 @@ class SettingsController extends State<Settings> {
         await client.encryption?.crossSigning.isCached() ?? false;
     final needsBootstrap =
         await client.encryption?.keyManager.isCached() == false ||
-            client.encryption?.crossSigning.enabled == false ||
-            crossSigning == false;
+        client.encryption?.crossSigning.enabled == false ||
+        crossSigning == false;
     final isUnknownSession = client.isUnknownSession;
     setState(() {
       showChatBackupBanner = needsBootstrap || isUnknownSession;
@@ -189,7 +188,7 @@ class SettingsController extends State<Settings> {
   bool? crossSigningCached;
   bool? showChatBackupBanner;
 
-  void firstRunBootstrapAction([_]) async {
+  void firstRunBootstrapAction([dynamic _]) async {
     // #Pangea
     // if (showChatBackupBanner != true) {
     //   showOkAlertDialog(
@@ -200,9 +199,7 @@ class SettingsController extends State<Settings> {
     //   );
     //   return;
     // }
-    // await BootstrapDialog(
-    //   client: Matrix.of(context).client,
-    // ).show(context);
+    // await context.push('/backup');
     // checkBootstrap();
     // Pangea#
   }
@@ -240,9 +237,7 @@ class SettingsController extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
-    profileFuture ??= client.getProfileFromUserId(
-      client.userID!,
-    );
+    profileFuture ??= client.getProfileFromUserId(client.userID!);
     return SettingsView(this);
   }
 }

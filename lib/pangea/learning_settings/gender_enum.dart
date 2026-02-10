@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-enum GenderEnum {
-  unselected,
-  woman,
-  man,
-  other,
-}
+enum GenderEnum { unselected, woman, man, other }
 
 extension GenderEnumExtension on GenderEnum {
   String get string {

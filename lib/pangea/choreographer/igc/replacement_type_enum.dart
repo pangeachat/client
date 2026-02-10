@@ -34,7 +34,6 @@ enum ReplacementTypeEnum {
   conditional, // If clauses, would/could
   infinitiveGerund, // Infinitive vs gerund usage
   modal, // Modal verb usage (can/could/should/must)
-
   // === SURFACE-LEVEL CORRECTIONS (auto-applied) ===
   punct,
   diacritics,
@@ -46,7 +45,6 @@ enum ReplacementTypeEnum {
   l1Interference, // L1 patterns bleeding through incorrectly
   collocation, // Wrong word pairing (e.g., "do a mistake" → "make a mistake")
   semanticConfusion, // Similar meanings, wrong choice (e.g., "see/watch/look")
-
   // === HIGHER-LEVEL SUGGESTIONS ===
   transcription,
   style,
@@ -210,7 +208,6 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
       'correction' => 'subjectVerbAgreement', // Legacy fallback
       'grammar' => 'subjectVerbAgreement', // Legacy fallback
       'word_choice' => 'semanticConfusion', // Legacy fallback
-
       // Snake_case to camelCase conversions - grammar types
       'did_you_mean' => 'didYouMean',
       'verb_conjugation' => 'verbConjugation',
@@ -249,8 +246,9 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
         return L10n.of(context).practiceDefaultPrompt;
       case ReplacementTypeEnum.itStart:
         return L10n.of(context).needsItMessage(
-          MatrixState.pangeaController.userController.userL2
-                  ?.getDisplayName(context) ??
+          MatrixState.pangeaController.userController.userL2?.getDisplayName(
+                context,
+              ) ??
               L10n.of(context).targetLanguage,
         );
       // All grammar types and other corrections use the same default prompt

@@ -769,7 +769,7 @@
   },
   "chatHasBeenAddedToThisSpace": "Cuireadh comhrá leis an spás seo",
   "@chatHasBeenAddedToThisSpace": {},
-  "chatBackupDescription": "Tá do sheanteachtaireachtaí slán le eochair athshlánaithe. Le do thoil déan cinnte nach gcaillfidh tú é.",
+  "chatBackupDescription": "Tá do theachtaireachtaí slán le heochair aisghabhála. Déan cinnte nach gcaillfidh tú í.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -2146,7 +2146,7 @@
   "@noOtherDevicesFound": {},
   "profileNotFound": "Níorbh fhéidir an t-úsáideoir a aimsiú ar an bhfreastalaí. B'fhéidir go bhfuil fadhb nasctha ann nó nach bhfuil an t-úsáideoir ann.",
   "@profileNotFound": {},
-  "inviteGroupChat": "📨 Tabhair cuireadh comhrá grúpa",
+  "inviteGroupChat": "📨 Cuireadh chuig comhrá grúpa",
   "@inviteGroupChat": {},
   "knocking": "Cnagadh",
   "@knocking": {},
@@ -2482,16 +2482,7 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Bain triail eile as níos déanaí nó roghnaigh freastalaí eile.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Sínigh isteach le {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
-  "invitePrivateChat": "📨 Tabhair cuireadh comhrá príobháideach",
+  "invitePrivateChat": "📨 Cuireadh chuig comhrá príobháideach",
   "@invitePrivateChat": {},
   "wrongPinEntered": "Tháinig biorán mícheart isteach! Bain triail eile as i {seconds} soicind...",
   "@wrongPinEntered": {
@@ -3385,7 +3376,142 @@
   "@commandHint_logout": {},
   "commandHint_logoutall": "Logáil amach gach gléas gníomhach",
   "@commandHint_logoutall": {},
-  "customReaction": "Freagairt shaincheaptha",
+  "customReaction": "Imoibriú saincheaptha",
+  "@customReaction": {},
+  "moreEvents": "Tuilleadh imeachtaí",
+  "@moreEvents": {},
+  "declineInvitation": "Diúltaigh don chuireadh",
+  "@declineInvitation": {},
+  "noMessagesYet": "Gan aon teachtaireachtaí fós",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Brúigh go fada chun teachtaireacht gutha a thaifeadadh.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Sos",
+  "@pause": {},
+  "resume": "Atosú",
+  "@resume": {},
+  "newSubSpace": "Fo-spás nua",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Bog go spás difriúil",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Bog suas",
+  "@moveUp": {},
+  "moveDown": "Bog síos",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Bainfear an comhrá as an spás ach beidh sé fós le feiceáil i do liosta comhrá.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "comhráite {chats}",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "Ball spáis de {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "Is féidir le ball spáis de {spaces} cnagadh",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Tabhair Síntiús",
+  "@donate": {},
+  "startedAPoll": "Chuir {username} tús le pobalbhreith.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Polaitíocht",
+  "@poll": {},
+  "startPoll": "Tosaigh pobalbhreith",
+  "@startPoll": {},
+  "endPoll": "Deireadh leis an pobalbhreith",
+  "@endPoll": {},
+  "answersVisible": "Freagraí le feiceáil",
+  "@answersVisible": {},
+  "answersHidden": "Freagraí i bhfolach",
+  "@answersHidden": {},
+  "pollQuestion": "Ceist pobalbhreithe",
+  "@pollQuestion": {},
+  "answerOption": "Rogha freagartha",
+  "@answerOption": {},
+  "addAnswerOption": "Cuir rogha freagra leis",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Ceadaigh freagraí iolracha",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Tá deireadh leis an pobalbhreith",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =1{Vóta amháin} other{{count} vótaí}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Beidh freagraí le feiceáil nuair a bheidh an pobalbhreith thart",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Freagra sa snáithe",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =1{Freagra amháin} other{{count} freagraí}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Snáithe",
+  "@thread": {},
+  "backToMainChat": "Ar ais chuig an bpríomhchomhrá",
+  "@backToMainChat": {},
+  "saveChanges": "Sábháil athruithe",
+  "@saveChanges": {},
+  "createSticker": "Cruthaigh greamán nó emoji",
+  "@createSticker": {},
+  "useAsSticker": "Úsáid mar ghreamán",
+  "@useAsSticker": {},
+  "useAsEmoji": "Úsáid mar emoji",
+  "@useAsEmoji": {},
+  "stickerPackNameAlreadyExists": "Tá ainm an phacáiste greamán ann cheana féin",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Pacáiste greamán nua",
+  "@newStickerPack": {},
+  "stickerPackName": "Ainm an phacáiste greamán",
+  "@stickerPackName": {},
+  "attribution": "Atribution",
+  "@attribution": {},
+  "skipChatBackup": "Seachain cúltaca comhrá",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "An bhfuil tú cinnte? Mura gcumasaíonn tú an cúltaca comhrá, d’fhéadfá rochtain ar do theachtaireachtaí a chailleadh má athraíonn tú do ghléas.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Ag lódáil teachtaireachtaí",
+  "@loadingMessages": {},
+  "setupChatBackup": "Socraigh cúltaca comhrá",
+  "@setupChatBackup": {},
+  "changedTheChatDescription": "D'athraigh {username} cur síos an chomhrá",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "D'athraigh {username} ainm an chomhrá",
+  "@changedTheChatName": {},
   "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
   "requests": "Iarratais",
   "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
@@ -3427,7 +3553,6 @@
   "updateLanguage": "Mo chuid teangacha",
   "whatLanguageYouWantToLearn": "Cén teanga ar mhaith leat foghlaim?",
   "whatIsYourBaseLanguage": "Cén teanga bhunúsach atá agat?",
-  "saveChanges": "Sábháil na hathruithe",
   "publicProfileTitle": "Ceadaigh go bhféadfaidh daoine mo phróifíl a aimsiú sa chuardach",
   "publicProfileDesc": "Trí chumasú, ligfidh tú do dhaoine eile do phróifíl a fháil sa bharra cuardaigh domhanda agus iarratais a sheoladh chun comhrá. Sa phointe seo, is féidir leat glacadh nó diúltú leis an iarratas.",
   "errorDisableIT": "Tá cabhair aistriúcháin dícheangailte.",
@@ -4515,10 +4640,6 @@
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
   "@@last_modified": "2026-02-09 15:32:44.231605",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4691,10 +4812,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },

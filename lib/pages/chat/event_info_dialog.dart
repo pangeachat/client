@@ -13,21 +13,16 @@ import 'package:fluffychat/widgets/avatar.dart';
 
 extension EventInfoDialogExtension on Event {
   void showInfoDialog(BuildContext context) => showAdaptiveBottomSheet(
-        context: context,
-        builder: (context) =>
-            EventInfoDialog(l10n: L10n.of(context), event: this),
-      );
+    context: context,
+    builder: (context) => EventInfoDialog(l10n: L10n.of(context), event: this),
+  );
 }
 
 class EventInfoDialog extends StatelessWidget {
   final Event event;
   final L10n l10n;
 
-  const EventInfoDialog({
-    required this.event,
-    required this.l10n,
-    super.key,
-  });
+  const EventInfoDialog({required this.event, required this.l10n, super.key});
 
   String prettyJson(MatrixEvent event) {
     const decoder = JsonDecoder();
@@ -75,15 +70,9 @@ class EventInfoDialog extends StatelessWidget {
             trailing: IconButton(
               icon: const Icon(Icons.copy),
               onPressed: () {
-                Clipboard.setData(
-                  ClipboardData(
-                    text: prettyJson(event),
-                  ),
-                );
+                Clipboard.setData(ClipboardData(text: prettyJson(event)));
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(L10n.of(context).copiedToClipboard),
-                  ),
+                  SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
                 );
               },
             ),
@@ -99,9 +88,7 @@ class EventInfoDialog extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: SelectableText(
                   prettyJson(MatrixEvent.fromJson(event.toJson())),
-                  style: TextStyle(
-                    color: theme.colorScheme.onSurface,
-                  ),
+                  style: TextStyle(color: theme.colorScheme.onSurface),
                 ),
               ),
             ),
@@ -118,9 +105,7 @@ class EventInfoDialog extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: SelectableText(
                     prettyJson(originalSource),
-                    style: TextStyle(
-                      color: theme.colorScheme.onSurface,
-                    ),
+                    style: TextStyle(color: theme.colorScheme.onSurface),
                   ),
                 ),
               ),

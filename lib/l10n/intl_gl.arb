@@ -381,7 +381,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "As mensaxes antigas están protexidas cunha chave de recuperación. Pon coidado e non a perdas.",
+  "chatBackupDescription": "As mensaxes están protexidas cunha clave de recuperación. Pon coidado e non a perdas.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -2042,7 +2042,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "wipeChatBackup": "Queres eliminar a copia de apoio da conversa e crear unha nova chave de recuperación?",
+  "wipeChatBackup": "Queres eliminar a copia de apoio e crear unha nova chave de recuperación?",
   "@wipeChatBackup": {
     "type": "String",
     "placeholders": {}
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Inténtao máis tarde ou elixe un servidor diferente.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Accede con {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Non é un ficheiro de imaxe.",
   "@notAnImage": {},
   "importNow": "Importar agora",
@@ -3069,7 +3060,7 @@
   },
   "sendCanceled": "Cancelouse o envío",
   "@sendCanceled": {},
-  "noChatsFoundHere": "Sen charlas por aquí. Comeza unha nova conversa con alguén premendo no botón de abaixo. ⤵️",
+  "noChatsFoundHere": "Aínda non hai conversas. Comeza a conversar con alguén premendo no botón de abaixo. ⤵️",
   "@noChatsFoundHere": {},
   "discoverHomeservers": "Atopar servidores",
   "@discoverHomeservers": {},
@@ -3351,7 +3342,7 @@
   "@pleaseWaitUntilInvited": {},
   "youHaveKnocked": "Petaches á porta",
   "@youHaveKnocked": {},
-  "sentVoiceMessage": "🎙️ {duration} - Mensaxe de voz de  {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - Mensaxe de voz de {sender}",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3376,9 +3367,146 @@
   "@commandHint_logoutall": {},
   "commandHint_logout": "Fechar a sesión no dispositivo actual",
   "@commandHint_logout": {},
-  "checkList": "Lista de verificación",
-  "displayNavigationRail": "Mostrar rail de navegación en móbil",
+  "moreEvents": "Máis eventos",
+  "@moreEvents": {},
   "customReaction": "Reacción personalizada",
+  "@customReaction": {},
+  "declineInvitation": "Rexeitar o convite",
+  "@declineInvitation": {},
+  "noMessagesYet": "Aínda non hai mensaxes",
+  "@noMessagesYet": {},
+  "checkList": "Comprobar lista",
+  "@checkList": {},
+  "displayNavigationRail": "Mostrar carril de navegación nos móbiles",
+  "@displayNavigationRail": {},
+  "longPressToRecordVoiceMessage": "Pulsación longa para gravar mensaxe de voz.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Deter",
+  "@pause": {},
+  "resume": "Continuar",
+  "@resume": {},
+  "newSubSpace": "Novo sub espazo",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Mover a outro espazo",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Mover arriba",
+  "@moveUp": {},
+  "moveDown": "Mover abaixo",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Vaise quitar a conversa do espazo pero seguirá aparecendo na túa lista de conversas.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} conversas",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "donate": "Doar",
+  "@donate": {},
+  "spaceMemberOf": "Participa no espazo {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "Os membros de {spaces} poden petar á porta",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "startedAPoll": "{username} publicou unha enquisa.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Enquisa",
+  "@poll": {},
+  "startPoll": "Publicar enquisa",
+  "@startPoll": {},
+  "endPoll": "Finalizar enquisa",
+  "@endPoll": {},
+  "answersVisible": "Resultados visibles",
+  "@answersVisible": {},
+  "answersHidden": "Non se ven os resultados",
+  "@answersHidden": {},
+  "pollQuestion": "Pregunta da enquisa",
+  "@pollQuestion": {},
+  "answerOption": "Opción de resposta",
+  "@answerOption": {},
+  "addAnswerOption": "Engadir opción",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Permitir varias respostas",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Rematou a enquisa",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =1{Un voto} other{{count} votos}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "As respostas son visibles ao finalizar a enquisa",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Responder ao fío",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =1{Unha resposta} other{{count} respostas}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Fío",
+  "@thread": {},
+  "backToMainChat": "Volver á conversa principal",
+  "@backToMainChat": {},
+  "attribution": "Atribución",
+  "@attribution": {},
+  "saveChanges": "Gardar cambios",
+  "@saveChanges": {},
+  "createSticker": "Crear adhesivo ou emoji",
+  "@createSticker": {},
+  "useAsSticker": "Usar como adhesivo",
+  "@useAsSticker": {},
+  "useAsEmoji": "Usar como emoji",
+  "@useAsEmoji": {},
+  "stickerPackNameAlreadyExists": "Xa existe ese nome de paquete de adhesivos",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Novo paquete de adhesivos",
+  "@newStickerPack": {},
+  "stickerPackName": "Nome do paquete de adhesivos",
+  "@stickerPackName": {},
+  "skipChatBackup": "Omitir copia da conversa",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Tes certeza? A non activar a copia de apoio da conversa poderías perder o acceso ás mensaxes se cambias de dispositivo.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Cargando mensaxes",
+  "@loadingMessages": {},
+  "setupChatBackup": "Configurar copia de apoio",
+  "@setupChatBackup": {},
+  "changedTheChatDescription": "{username} cambiou a descrición da sala",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username} cambiou o nome da sala",
+  "@changedTheChatName": {},
   "writeAMessageLangCodes": "Escribe en {l1} ou {l2}...",
   "requests": "Solicitudes",
   "holdForInfo": "Fai clic e mantén para obter información sobre a palabra.",
@@ -3420,7 +3548,6 @@
   "updateLanguage": "As miñas linguas",
   "whatLanguageYouWantToLearn": "Que linguaxe queres aprender?",
   "whatIsYourBaseLanguage": "Cal é a tua linguaxe base?",
-  "saveChanges": "Gardar cambios",
   "publicProfileTitle": "Permitir que meu perfil se atope na busca",
   "publicProfileDesc": "Ao activalo, permites que outros usuarios atopen o teu perfil na barra de busca global e envien solicitudes para chatear. Neste momento, podes escoller aceptar ou denegar a solicitude.",
   "errorDisableIT": "A axuda de tradución está desactivada.",
@@ -4506,18 +4633,6 @@
   "inviteYourFriends": "Invita aos teus amigos",
   "playWithAI": "Xoga con IA por agora",
   "courseStartDesc": "O Pangea Bot está listo para comezar en calquera momento!\n\n...pero aprender é mellor con amigos!",
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4690,10 +4805,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },

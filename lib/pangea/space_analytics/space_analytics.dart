@@ -160,8 +160,8 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
     selectedLanguage =
         availableLanguages.contains(_userL2) || availableLanguages.isEmpty
-            ? _userL2
-            : availableLanguages.firstOrNull;
+        ? _userL2
+        : availableLanguages.firstOrNull;
 
     await refresh();
     if (mounted) {
@@ -193,38 +193,34 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
     setState(() {
       downloads = Map.fromEntries(
-        _availableUsers.map(
-          (user) {
-            final room = _analyticsRoomOfUser(user);
-            final hasLangData = _availableUsersForLang.contains(user);
+        _availableUsers.map((user) {
+          final room = _analyticsRoomOfUser(user);
+          final hasLangData = _availableUsersForLang.contains(user);
 
-            RequestStatus? requestStatus;
-            if (room != null) {
-              requestStatus = RequestStatus.available;
-            } else if (!hasLangData) {
-              requestStatus = RequestStatus.unavailable;
-            } else {
-              requestStatus = AnalyticsRequestsRepo.get(
-                    user.id,
-                    selectedLanguage!,
-                  ) ??
-                  RequestStatus.unrequested;
-            }
+          RequestStatus? requestStatus;
+          if (room != null) {
+            requestStatus = RequestStatus.available;
+          } else if (!hasLangData) {
+            requestStatus = RequestStatus.unavailable;
+          } else {
+            requestStatus =
+                AnalyticsRequestsRepo.get(user.id, selectedLanguage!) ??
+                RequestStatus.unrequested;
+          }
 
-            final DownloadStatus downloadStatus =
-                requestStatus == RequestStatus.available
-                    ? DownloadStatus.loading
-                    : DownloadStatus.unavailable;
+          final DownloadStatus downloadStatus =
+              requestStatus == RequestStatus.available
+              ? DownloadStatus.loading
+              : DownloadStatus.unavailable;
 
-            return MapEntry(
-              user,
-              AnalyticsDownload(
-                requestStatus: requestStatus,
-                downloadStatus: downloadStatus,
-              ),
-            );
-          },
-        ),
+          return MapEntry(
+            user,
+            AnalyticsDownload(
+              requestStatus: requestStatus,
+              downloadStatus: downloadStatus,
+            ),
+          );
+        }),
       );
     });
 
@@ -243,12 +239,11 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     }
   }
 
-  Future<void> _setAnalyticsModel(
-    Room analyticsRoom,
-  ) async {
+  Future<void> _setAnalyticsModel(Room analyticsRoom) async {
     final String? userID = analyticsRoom.creatorId;
-    final user =
-        room?.getParticipants().firstWhereOrNull((p) => p.id == userID);
+    final user = room?.getParticipants().firstWhereOrNull(
+      (p) => p.id == userID,
+    );
     if (user == null) return;
 
     SpaceAnalyticsSummaryModel? summary;
@@ -291,14 +286,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       final roomId = _analyticsRoomIdOfUser(user);
       if (roomId == null) return;
       await Matrix.of(context).client.knockRoom(
-            roomId,
-            via: room?.spaceChildren
-                .firstWhereOrNull(
-                  (child) => child.roomId == roomId,
-                )
-                ?.via,
-            reason: widget.roomId,
-          );
+        roomId,
+        via: room?.spaceChildren
+            .firstWhereOrNull((child) => child.roomId == roomId)
+            ?.via,
+        reason: widget.roomId,
+      );
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.unavailable;
@@ -314,11 +307,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       }
     } finally {
       if (status != null) {
-        await AnalyticsRequestsRepo.set(
-          user.id,
-          selectedLanguage!,
-          status,
-        );
+        await AnalyticsRequestsRepo.set(user.id, selectedLanguage!, status);
 
         downloads[user]?.requestStatus = status;
       }
@@ -369,10 +358,10 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Room? _analyticsRoomOfUser(User user) {
     return Matrix.of(context).client.rooms.firstWhereOrNull(
-          (r) =>
-              r.isAnalyticsRoomOfUser(user.id) &&
-              r.madeForLang == selectedLanguage?.langCodeShort,
-        );
+      (r) =>
+          r.isAnalyticsRoomOfUser(user.id) &&
+          r.madeForLang == selectedLanguage?.langCodeShort,
+    );
   }
 
   void setSelectedLanguage(LanguageModel? lang) {

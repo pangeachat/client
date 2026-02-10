@@ -19,7 +19,7 @@ class LLMFeedbackModel<T> {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.feedback: feedback,
-        ModelKey.content: contentToJson(content),
-      };
+    ModelKey.feedback: feedback,
+    ModelKey.content: contentToJson(content),
+  };
 }

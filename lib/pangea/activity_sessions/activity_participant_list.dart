@@ -42,8 +42,9 @@ class ActivityParticipantList extends StatelessWidget {
       room: room,
       builder: (context, participants) {
         final theme = Theme.of(context);
-        final availableRoles =
-            activity.roles.values.sorted((a, b) => a.id.compareTo(b.id));
+        final availableRoles = activity.roles.values.sorted(
+          (a, b) => a.id.compareTo(b.id),
+        );
 
         final remainingMembers = participants.participants.where(
           (p) => !assignedRoles.values.any((r) => r.userId == p.id),
@@ -56,9 +57,10 @@ class ActivityParticipantList extends StatelessWidget {
               builder: (context, constraints) {
                 const minItemWidth = 125.0;
 
-                final rows = (availableRoles.length /
-                        (constraints.maxWidth / minItemWidth))
-                    .ceil();
+                final rows =
+                    (availableRoles.length /
+                            (constraints.maxWidth / minItemWidth))
+                        .ceil();
 
                 final entriesPerRow = (availableRoles.length / rows).ceil();
 
@@ -78,7 +80,8 @@ class ActivityParticipantList extends StatelessWidget {
                             ? isSelected!(availableRole.id)
                             : false;
 
-                        final assignedRole = assignedRoles[availableRole.id] ??
+                        final assignedRole =
+                            assignedRoles[availableRole.id] ??
                             (selected
                                 ? ActivityRoleModel(
                                     id: availableRole.id,
@@ -89,11 +92,11 @@ class ActivityParticipantList extends StatelessWidget {
 
                         final User? user =
                             participants.participants.firstWhereOrNull(
-                                  (u) => u.id == assignedRole?.userId,
-                                ) ??
-                                course?.getParticipants().firstWhereOrNull(
-                                      (u) => u.id == assignedRole?.userId,
-                                    );
+                              (u) => u.id == assignedRole?.userId,
+                            ) ??
+                            course?.getParticipants().firstWhereOrNull(
+                              (u) => u.id == assignedRole?.userId,
+                            );
 
                         final selectable = canSelect != null
                             ? canSelect!(availableRole.id)
@@ -156,9 +159,7 @@ class ActivityParticipantList extends StatelessWidget {
                             userId: member.id,
                           ),
                           ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxWidth: 80.0,
-                            ),
+                            constraints: const BoxConstraints(maxWidth: 80.0),
                             child: Text(
                               member.calcDisplayname(),
                               style: TextStyle(

@@ -45,15 +45,12 @@ extension AnalyticsClientExtension on Client {
         analyticsRoom.membership == Membership.invite) {
       debugger(when: kDebugMode);
       analyticsRoom.join().onError(
-            (error, stackTrace) => ErrorHandler.logError(
-              e: error,
-              s: stackTrace,
-              data: {
-                "langCode": lang!.langCodeShort,
-                "userIdParam": userIdParam,
-              },
-            ),
-          );
+        (error, stackTrace) => ErrorHandler.logError(
+          e: error,
+          s: stackTrace,
+          data: {"langCode": lang!.langCodeShort, "userIdParam": userIdParam},
+        ),
+      );
       return analyticsRoom;
     }
     return analyticsRoom;
@@ -81,9 +78,7 @@ extension AnalyticsClientExtension on Client {
       initialState: [
         StateEvent(
           type: EventTypes.RoomJoinRules,
-          content: {
-            ModelKey.joinRule: JoinRules.knock.name,
-          },
+          content: {ModelKey.joinRule: JoinRules.knock.name},
         ),
       ],
     );
@@ -97,11 +92,8 @@ extension AnalyticsClientExtension on Client {
   }
 
   /// Get all my analytics rooms
-  List<Room> get allMyAnalyticsRooms => rooms
-      .where(
-        (e) => e.isAnalyticsRoomOfUser(userID!),
-      )
-      .toList();
+  List<Room> get allMyAnalyticsRooms =>
+      rooms.where((e) => e.isAnalyticsRoomOfUser(userID!)).toList();
 
   /// Update the join rules of all analytics rooms to 'knock'.
   Future<void> updateAnalyticsRoomJoinRules() async {
@@ -123,9 +115,7 @@ extension AnalyticsClientExtension on Client {
   Future<void> addAnalyticsRoomsToSpaces() async {
     if (userID == null || userID == BotName.byEnvironment) return;
     final spaces = rooms
-        .where(
-          (room) => room.isSpace && room.membership == Membership.join,
-        )
+        .where((room) => room.isSpace && room.membership == Membership.join)
         .toList();
 
     final Random random = Random();

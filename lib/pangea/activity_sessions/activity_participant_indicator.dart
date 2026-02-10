@@ -49,13 +49,14 @@ class ActivityParticipantIndicator extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
-        onTap: onTap ??
+        onTap:
+            onTap ??
             (user != null
                 ? () => showMemberActionsPopupMenu(
-                      context: context,
-                      user: user!,
-                      room: room,
-                    )
+                    context: context,
+                    user: user!,
+                    room: room,
+                  )
                 : null),
         child: AbsorbPointer(
           absorbing: !selectable,
@@ -63,38 +64,38 @@ class ActivityParticipantIndicator extends StatelessWidget {
             builder: (context, hovered) {
               final avatar = userId != null
                   ? user?.avatarUrl == null ||
-                          user!.avatarUrl!.toString().startsWith("mxc")
-                      ? Avatar(
-                          mxContent:
-                              user?.avatarUrl != null ? user!.avatarUrl! : null,
-                          name: userId!.localpart,
-                          size: 60.0,
-                          userId: userId,
-                          miniIcon:
-                              room != null && user?.id == BotName.byEnvironment
-                                  ? BotSettingsLanguageIcon(user: user!)
-                                  : null,
-                          presenceOffset:
-                              room != null && user?.id == BotName.byEnvironment
-                                  ? const Offset(0, 0)
-                                  : null,
-                        )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: CachedNetworkImage(
-                            imageUrl: user!.avatarUrl!.toString(),
-                            width: 60.0,
-                            height: 60.0,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                            user!.avatarUrl!.toString().startsWith("mxc")
+                        ? Avatar(
+                            mxContent: user?.avatarUrl != null
+                                ? user!.avatarUrl!
+                                : null,
+                            name: userId!.localpart,
+                            size: 60.0,
+                            userId: userId,
+                            miniIcon:
+                                room != null &&
+                                    user?.id == BotName.byEnvironment
+                                ? BotSettingsLanguageIcon(user: user!)
+                                : null,
+                            presenceOffset:
+                                room != null &&
+                                    user?.id == BotName.byEnvironment
+                                ? const Offset(0, 0)
+                                : null,
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: CachedNetworkImage(
+                              imageUrl: user!.avatarUrl!.toString(),
+                              width: 60.0,
+                              height: 60.0,
+                              fit: BoxFit.cover,
+                            ),
+                          )
                   : CircleAvatar(
                       radius: 30.0,
                       backgroundColor: theme.colorScheme.primaryContainer,
-                      child: const Icon(
-                        Icons.question_mark,
-                        size: 30.0,
-                      ),
+                      child: const Icon(Icons.question_mark, size: 30.0),
                     );
               return Opacity(
                 opacity: opacity,
@@ -103,7 +104,8 @@ class ActivityParticipantIndicator extends StatelessWidget {
                   borderRadius: borderRadius,
                   child: Container(
                     alignment: Alignment.center,
-                    padding: padding ??
+                    padding:
+                        padding ??
                         const EdgeInsets.symmetric(
                           vertical: 4.0,
                           horizontal: 8.0,
@@ -121,9 +123,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                         avatar,
                         Text(
                           name,
-                          style: const TextStyle(
-                            fontSize: 12.0,
-                          ),
+                          style: const TextStyle(fontSize: 12.0),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
@@ -132,12 +132,13 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           userId?.localpart ?? L10n.of(context).openRoleLabel,
                           style: TextStyle(
                             fontSize: 12.0,
-                            color: (Theme.of(context).brightness ==
+                            color:
+                                (Theme.of(context).brightness ==
                                     Brightness.light
                                 ? (userId?.localpart?.darkColor ??
-                                    name.darkColor)
+                                      name.darkColor)
                                 : (userId?.localpart?.lightColorText ??
-                                    name.lightColorText)),
+                                      name.lightColorText)),
                           ),
                           textAlign: TextAlign.center,
                           maxLines: 1,

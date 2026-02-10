@@ -148,11 +148,7 @@ class UserController {
         await PLanguageStore.initialize(forceRefresh: true);
       }
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
     } finally {
       if (!initCompleter.isCompleted) {
         initCompleter.complete();
@@ -179,9 +175,7 @@ class UserController {
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
-      publicProfile = PublicProfileModel(
-        analytics: AnalyticsProfileModel(),
-      );
+      publicProfile = PublicProfileModel(analytics: AnalyticsProfileModel());
     }
 
     await updatePublicProfile();
@@ -230,11 +224,7 @@ class UserController {
       await initialize();
       return profile.userSettings.targetLanguage != null;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -264,8 +254,8 @@ class UserController {
   ///   - The user's email address as a [String], or `null` if no email address
   ///     is found.
   Future<String?> get userEmail async {
-    final List<matrix.ThirdPartyIdentifier>? identifiers =
-        await client.getAccount3PIDs();
+    final List<matrix.ThirdPartyIdentifier>? identifiers = await client
+        .getAccount3PIDs();
     final matrix.ThirdPartyIdentifier? email = identifiers?.firstWhereOrNull(
       (identifier) =>
           identifier.medium == matrix.ThirdPartyIdentifierMedium.email,
@@ -278,19 +268,12 @@ class UserController {
     Map<String, dynamic> content,
   ) async {
     try {
-      await client.setUserProfile(
-        client.userID!,
-        type,
-        content,
-      );
+      await client.setUserProfile(client.userID!, type, content);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'type': type,
-          'content': content,
-        },
+        data: {'type': type, 'content': content},
       );
     }
   }
@@ -339,14 +322,14 @@ class UserController {
       if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
         continue;
       }
-      final langKey =
-          publicProfile!.analytics.languageAnalytics!.keys.firstWhereOrNull(
-        (l) => l.langCodeShort == lang,
-      );
+      final langKey = publicProfile!.analytics.languageAnalytics!.keys
+          .firstWhereOrNull((l) => l.langCodeShort == lang);
 
       if (langKey == null) continue;
       if (publicProfile!
-              .analytics.languageAnalytics![langKey]!.analyticsRoomId ==
+              .analytics
+              .languageAnalytics![langKey]!
+              .analyticsRoomId ==
           analyticsRoom.id) {
         continue;
       }
@@ -397,9 +380,7 @@ class UserController {
     );
   }
 
-  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
-    String userId,
-  ) async {
+  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(String userId) async {
     try {
       if (userId == BotName.byEnvironment) {
         return AnalyticsProfileModel();
@@ -408,13 +389,7 @@ class UserController {
       final resp = await client.getUserProfile(userId);
       return AnalyticsProfileModel.fromJson(resp.additionalProperties);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          userId: userId,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
       return AnalyticsProfileModel();
     }
   }
@@ -422,21 +397,13 @@ class UserController {
   Future<PublicProfileModel?> getPublicProfile(String userId) async {
     try {
       if (userId == BotName.byEnvironment) {
-        return PublicProfileModel(
-          analytics: AnalyticsProfileModel(),
-        );
+        return PublicProfileModel(analytics: AnalyticsProfileModel());
       }
 
       final resp = await client.getUserProfile(userId);
       return PublicProfileModel.fromJson(resp.additionalProperties);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          userId: userId,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
       return null;
     }
   }

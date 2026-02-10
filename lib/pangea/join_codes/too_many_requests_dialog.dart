@@ -9,18 +9,13 @@ class TooManyRequestsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const BotFace(
-              width: 100,
-              expression: BotExpression.idle,
-            ),
+            const BotFace(width: 100, expression: BotExpression.idle),
             const SizedBox(height: 16),
             Text(
               L10n.of(context).areYouLikeMe,

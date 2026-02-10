@@ -11,31 +11,18 @@ extension ChildrenAndParentsRoomExtension on Room {
   }
 
   List<Room> get pangeaSpaceParents => client.rooms
-      .where(
-        (r) => r.isSpace,
-      )
-      .where(
-        (space) => space.spaceChildren.any(
-          (room) => room.roomId == id,
-        ),
-      )
+      .where((r) => r.isSpace)
+      .where((space) => space.spaceChildren.any((room) => room.roomId == id))
       .toList();
 
   List<Room> get pangeaSpaceChildren => client.rooms
-      .where(
-        (r) => spaceChildren.any(
-          (child) => r.id == child.roomId,
-        ),
-      )
+      .where((r) => spaceChildren.any((child) => r.id == child.roomId))
       .toList();
 
   /// Wrapper around call to setSpaceChild with added functionality
   /// to prevent adding one room to multiple spaces, and resets the
   /// subspace's JoinRules and Visibility to defaults.
-  Future<void> addToSpace(
-    String roomId, {
-    bool? suggested,
-  }) async {
+  Future<void> addToSpace(String roomId, {bool? suggested}) async {
     final Room? child = client.getRoomById(roomId);
     if (child == null) return;
 
@@ -46,18 +33,12 @@ extension ChildrenAndParentsRoomExtension on Room {
         ErrorHandler.logError(
           e: e,
           m: 'Failed to remove child from parent',
-          data: {
-            "roomID": roomId,
-            "parentID": parent.id,
-          },
+          data: {"roomID": roomId, "parentID": parent.id},
         );
       }
     }
 
-    await _trySetSpaceChild(
-      roomId,
-      suggested: suggested,
-    );
+    await _trySetSpaceChild(roomId, suggested: suggested);
   }
 
   Future<void> _trySetSpaceChild(
@@ -136,10 +117,7 @@ extension ChildrenAndParentsRoomExtension on Room {
             await client.pangeaJoinRules(
               'knock_restricted',
               allow: [
-                {
-                  "type": "m.room_membership",
-                  "room_id": id,
-                }
+                {"type": "m.room_membership", "room_id": id},
               ],
             ),
           ],

@@ -19,10 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PublicCoursePreview extends StatefulWidget {
   final String? roomID;
 
-  const PublicCoursePreview({
-    super.key,
-    required this.roomID,
-  });
+  const PublicCoursePreview({super.key, required this.roomID});
 
   @override
   PublicCoursePreviewController createState() =>
@@ -110,10 +107,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       return;
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(
-      context,
-      code,
-    );
+    final roomId = await SpaceCodeController.joinSpaceWithCode(context, code);
 
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
@@ -149,11 +143,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
               ? await client.knockRoom(widget.roomID!)
               : await client.joinRoom(widget.roomID!);
         } catch (e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'roomID': widget.roomID},
-          );
+          ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
           rethrow;
         }
 

@@ -44,10 +44,7 @@ enum MessagePracticeMode {
     }
   }
 
-  Color iconButtonColor(
-    BuildContext context,
-    bool done,
-  ) =>
+  Color iconButtonColor(BuildContext context, bool done) =>
       done ? AppConfig.gold : Theme.of(context).colorScheme.primaryContainer;
 
   ActivityTypeEnum? get associatedActivityType {
@@ -66,11 +63,11 @@ enum MessagePracticeMode {
   }
 
   static List<MessagePracticeMode> get practiceModes => [
-        MessagePracticeMode.listening,
-        MessagePracticeMode.wordMorph,
-        MessagePracticeMode.wordMeaning,
-        MessagePracticeMode.wordEmoji,
-      ];
+    MessagePracticeMode.listening,
+    MessagePracticeMode.wordMorph,
+    MessagePracticeMode.wordMeaning,
+    MessagePracticeMode.wordEmoji,
+  ];
 
   InstructionsEnum? get instruction {
     switch (this) {

@@ -17,13 +17,11 @@ class LevelDisplayName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 2.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2.0),
       child: FutureBuilder(
-        future: MatrixState.pangeaController.userController
-            .getPublicProfile(userId),
+        future: MatrixState.pangeaController.userController.getPublicProfile(
+          userId,
+        ),
         builder: (context, snapshot) {
           final analytics = snapshot.data?.analytics;
           return Row(
@@ -48,17 +46,15 @@ class LevelDisplayName extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 4.0),
                         child: Text(
                           snapshot.data!.countryEmoji!,
-                          style: textStyle ??
-                              const TextStyle(
-                                fontSize: 16.0,
-                              ),
+                          style: textStyle ?? const TextStyle(fontSize: 16.0),
                         ),
                       ),
                     if (analytics?.baseLanguage != null &&
                         analytics?.targetLanguage != null)
                       Text(
                         analytics!.baseLanguage!.langCodeShort.toUpperCase(),
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
@@ -73,22 +69,20 @@ class LevelDisplayName extends StatelessWidget {
                     if (analytics?.targetLanguage != null)
                       Text(
                         analytics!.targetLanguage!.langCodeShort.toUpperCase(),
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                     const SizedBox(width: 4.0),
-                    if (analytics?.level != null)
-                      Text(
-                        "⭐",
-                        style: textStyle,
-                      ),
+                    if (analytics?.level != null) Text("⭐", style: textStyle),
                     if (analytics?.level != null)
                       Text(
                         "${analytics!.level!}",
-                        style: textStyle ??
+                        style:
+                            textStyle ??
                             TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,

@@ -2516,7 +2516,6 @@
   "report": "Pranešti",
   "signInWithPassword": "Prisijungti naudojant slaptažodį",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Prašome pabandyti vėliau arba pasirinkti kitą serverį.",
-  "signInWith": "Prisijungti su {provider}",
   "profileNotFound": "Vartotojo nerasta serveryje. Galbūt yra ryšio problema arba vartotojas neegzistuoja.",
   "setTheme": "Nustatyti temą:",
   "setColorTheme": "Nustatyti spalvų temą:",
@@ -4344,14 +4343,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -4762,9 +4753,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

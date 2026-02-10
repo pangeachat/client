@@ -9,6 +9,7 @@ import app_links
 import app_settings
 import audio_session
 import audioplayers_darwin
+import desktop_webview_window
 import device_info_plus
 import dynamic_color
 import emoji_picker_flutter
@@ -28,11 +29,11 @@ import in_app_purchase_storekit
 import just_audio
 import open_file_mac
 import package_info_plus
-import pasteboard
 import path_provider_foundation
 import purchases_flutter
 import record_macos
 import rive_common
+import screen_retriever_macos
 import sentry_flutter
 import share_plus
 import shared_preferences_foundation
@@ -42,6 +43,8 @@ import url_launcher_macos
 import video_compress
 import video_player_avfoundation
 import wakelock_plus
+import webcrypto
+import window_manager
 import window_to_front
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
@@ -49,6 +52,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   AppSettingsPlugin.register(with: registry.registrar(forPlugin: "AppSettingsPlugin"))
   AudioSessionPlugin.register(with: registry.registrar(forPlugin: "AudioSessionPlugin"))
   AudioplayersDarwinPlugin.register(with: registry.registrar(forPlugin: "AudioplayersDarwinPlugin"))
+  DesktopWebviewWindowPlugin.register(with: registry.registrar(forPlugin: "DesktopWebviewWindowPlugin"))
   DeviceInfoPlusMacosPlugin.register(with: registry.registrar(forPlugin: "DeviceInfoPlusMacosPlugin"))
   DynamicColorPlugin.register(with: registry.registrar(forPlugin: "DynamicColorPlugin"))
   EmojiPickerFlutterPlugin.register(with: registry.registrar(forPlugin: "EmojiPickerFlutterPlugin"))
@@ -68,11 +72,11 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   JustAudioPlugin.register(with: registry.registrar(forPlugin: "JustAudioPlugin"))
   OpenFilePlugin.register(with: registry.registrar(forPlugin: "OpenFilePlugin"))
   FPPPackageInfoPlusPlugin.register(with: registry.registrar(forPlugin: "FPPPackageInfoPlusPlugin"))
-  PasteboardPlugin.register(with: registry.registrar(forPlugin: "PasteboardPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   PurchasesFlutterPlugin.register(with: registry.registrar(forPlugin: "PurchasesFlutterPlugin"))
   RecordMacOsPlugin.register(with: registry.registrar(forPlugin: "RecordMacOsPlugin"))
   RivePlugin.register(with: registry.registrar(forPlugin: "RivePlugin"))
+  ScreenRetrieverMacosPlugin.register(with: registry.registrar(forPlugin: "ScreenRetrieverMacosPlugin"))
   SentryFlutterPlugin.register(with: registry.registrar(forPlugin: "SentryFlutterPlugin"))
   SharePlusMacosPlugin.register(with: registry.registrar(forPlugin: "SharePlusMacosPlugin"))
   SharedPreferencesPlugin.register(with: registry.registrar(forPlugin: "SharedPreferencesPlugin"))
@@ -82,5 +86,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   VideoCompressPlugin.register(with: registry.registrar(forPlugin: "VideoCompressPlugin"))
   FVPVideoPlayerPlugin.register(with: registry.registrar(forPlugin: "FVPVideoPlayerPlugin"))
   WakelockPlusMacosPlugin.register(with: registry.registrar(forPlugin: "WakelockPlusMacosPlugin"))
+  WebcryptoPlugin.register(with: registry.registrar(forPlugin: "WebcryptoPlugin"))
+  WindowManagerPlugin.register(with: registry.registrar(forPlugin: "WindowManagerPlugin"))
   WindowToFrontPlugin.register(with: registry.registrar(forPlugin: "WindowToFrontPlugin"))
 }

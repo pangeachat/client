@@ -2509,15 +2509,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Silakan coba lagi nanti atau pilih server yang lain.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Masuk dengan {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Bukan berkas gambar.",
   "@notAnImage": {},
   "importNow": "Impor sekarang",
@@ -2591,9 +2582,9 @@
   "@setColorTheme": {},
   "invite": "Undang",
   "@invite": {},
-  "inviteGroupChat": "📨 Undang percakapan grup",
+  "inviteGroupChat": "📨 Undangan percakapan grup",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Undang percakapan privat",
+  "invitePrivateChat": "📨 Undangan percakapan privat",
   "@invitePrivateChat": {},
   "emoteKeyboardNoRecents": "Emote yang telah digunakan akan muncul di sini...",
   "@emoteKeyboardNoRecents": {
@@ -3379,7 +3370,20 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "Tampilkan jalur navigasi pada ponsel",
   "@displayNavigationRail": {},
-  "customReaction": "Reaksi Kustom",
+  "customReaction": "Reaksi khusus",
+  "@customReaction": {},
+  "moreEvents": "Peristiwa tambahan",
+  "@moreEvents": {},
+  "declineInvitation": "Tolak undangan",
+  "@declineInvitation": {},
+  "noMessagesYet": "Belum ada pesan",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Tekan lama untuk merekam pesan suara.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Jeda",
+  "@pause": {},
+  "resume": "Lanjut",
+  "@resume": {},
   "writeAMessageLangCodes": "Ketik dalam {l1} atau {l2}...",
   "requests": "Permintaan",
   "holdForInfo": "Klik dan tahan untuk info kata.",
@@ -4508,10 +4512,6 @@
   "playWithAI": "Main dengan AI untuk saat ini",
   "courseStartDesc": "Pangea Bot siap digunakan kapan saja!\n\n...tapi belajar lebih baik dengan teman!",
   "@@locale": "id",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

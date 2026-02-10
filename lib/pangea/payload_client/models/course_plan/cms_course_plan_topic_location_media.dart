@@ -48,8 +48,9 @@ class CmsCoursePlanTopicLocationMedia {
     return CmsCoursePlanTopicLocationMedia(
       id: json['id'],
       alt: json['alt'],
-      coursePlanTopicLocations:
-          List<String>.from(json['coursePlanTopicLocations'] as List),
+      coursePlanTopicLocations: List<String>.from(
+        json['coursePlanTopicLocations'] as List,
+      ),
       createdBy: json['createdBy'] != null
           ? PolymorphicRelationship.fromJson(json['createdBy'])
           : null,

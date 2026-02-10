@@ -54,10 +54,7 @@ class TokenInfoFeedbackRequest {
   final TokenInfoFeedbackRequestData data;
   final String userFeedback;
 
-  TokenInfoFeedbackRequest({
-    required this.data,
-    required this.userFeedback,
-  });
+  TokenInfoFeedbackRequest({required this.data, required this.userFeedback});
 
   Map<String, dynamic> toJson() {
     return {

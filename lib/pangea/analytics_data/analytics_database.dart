@@ -122,12 +122,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _lastEventTimestampBox = _collection.openBox<String>(
       _lastEventTimestampBoxName,
     );
-    _serverConstructsBox = _collection.openBox<List>(
-      _serverConstructsBoxName,
-    );
-    _localConstructsBox = _collection.openBox<List>(
-      _localConstructsBoxName,
-    );
+    _serverConstructsBox = _collection.openBox<List>(_serverConstructsBoxName);
+    _localConstructsBox = _collection.openBox<List>(_localConstructsBoxName);
     _aggregatedServerVocabConstructsBox = _collection.openBox<Map>(
       _aggregatedServerVocabConstructsBoxName,
     );
@@ -140,9 +136,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _aggregatedLocalMorphConstructsBox = _collection.openBox<Map>(
       _aggregatedLocalMorphConstructsBoxName,
     );
-    _derivedStatsBox = _collection.openBox<Map>(
-      _derivedStatsBoxName,
-    );
+    _derivedStatsBox = _collection.openBox<Map>(_derivedStatsBoxName);
   }
 
   Future<void> delete() async {
@@ -185,8 +179,9 @@ class AnalyticsDatabase with DatabaseFileStorage {
   }
 
   Future<DateTime?> getLastEventTimestamp() async {
-    final timestampString =
-        await _lastEventTimestampBox.get('last_event_timestamp');
+    final timestampString = await _lastEventTimestampBox.get(
+      'last_event_timestamp',
+    );
     if (timestampString == null) return null;
     return DateTime.parse(timestampString);
   }
@@ -195,9 +190,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     final raw = await _derivedStatsBox.get('derived_stats');
     return raw == null
         ? DerivedAnalyticsDataModel()
-        : DerivedAnalyticsDataModel.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
+        : DerivedAnalyticsDataModel.fromJson(Map<String, dynamic>.from(raw));
   }
 
   Future<List<OneConstructUse>> getUses({
@@ -268,9 +261,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     for (final rawList in localValues) {
       if (rawList == null) continue;
       for (final raw in rawList) {
-        final use = OneConstructUse.fromJson(
-          Map<String, dynamic>.from(raw),
-        );
+        final use = OneConstructUse.fromJson(Map<String, dynamic>.from(raw));
         uses.add(use);
       }
     }
@@ -283,11 +274,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     if (serverValues == null) return [];
 
     for (final entry in serverValues) {
-      uses.add(
-        OneConstructUse.fromJson(
-          Map<String, dynamic>.from(entry),
-        ),
-      );
+      uses.add(OneConstructUse.fromJson(Map<String, dynamic>.from(entry)));
     }
     return uses;
   }
@@ -309,9 +296,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return [...serverKeys, ...localKeys];
   }
 
-  Future<ConstructUses> getConstructUse(
-    List<ConstructIdentifier> ids,
-  ) async {
+  Future<ConstructUses> getConstructUse(List<ConstructIdentifier> ids) async {
     assert(ids.isNotEmpty);
 
     final ConstructUses construct = ConstructUses(
@@ -332,16 +317,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       final serverRaw = await serverBox.get(key);
       if (serverRaw != null) {
-        server = ConstructUses.fromJson(
-          Map<String, dynamic>.from(serverRaw),
-        );
+        server = ConstructUses.fromJson(Map<String, dynamic>.from(serverRaw));
       }
 
       final localRaw = await localBox.get(key);
       if (localRaw != null) {
-        local = ConstructUses.fromJson(
-          Map<String, dynamic>.from(localRaw),
-        );
+        local = ConstructUses.fromJson(Map<String, dynamic>.from(localRaw));
       }
 
       if (server != null) construct.merge(server);
@@ -370,9 +351,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   }
 
   /// Group uses by aggregate key
-  Map<String, List<OneConstructUse>> _groupUses(
-    List<OneConstructUse> uses,
-  ) {
+  Map<String, List<OneConstructUse>> _groupUses(List<OneConstructUse> uses) {
     final Map<String, List<OneConstructUse>> grouped = {};
     for (final u in uses) {
       final key = u.identifier.storageKey;
@@ -438,10 +417,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
         .toList();
 
-    final serverAgg = Map.fromIterables(
-      serverKeys,
-      serverConstructs,
-    );
+    final serverAgg = Map.fromIterables(serverKeys, serverConstructs);
 
     if (localKeys.isEmpty) {
       combined = serverAgg;
@@ -451,10 +427,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
           .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
           .toList();
 
-      final localAgg = Map.fromIterables(
-        localKeys,
-        localConstructs,
-      );
+      final localAgg = Map.fromIterables(localKeys, localConstructs);
 
       combined = Map<String, ConstructUses>.from(serverAgg);
       for (final entry in localAgg.entries) {
@@ -472,19 +445,14 @@ class AnalyticsDatabase with DatabaseFileStorage {
     }
 
     stopwatch.stop();
-    Logs().i(
-      "Combining aggregates took ${stopwatch.elapsedMilliseconds} ms",
-    );
+    Logs().i("Combining aggregates took ${stopwatch.elapsedMilliseconds} ms");
 
     return combined.values.toList();
   }
 
   Future<void> updateUserID(String userID) {
     return _transaction(() async {
-      await _lastEventTimestampBox.put(
-        'user_id',
-        userID,
-      );
+      await _lastEventTimestampBox.put('user_id', userID);
     });
   }
 
@@ -501,18 +469,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return _transaction(() async {
       final stats = await getDerivedStats();
       final updatedStats = stats.copyWith(offset: offset);
-      await _derivedStatsBox.put(
-        'derived_stats',
-        updatedStats.toJson(),
-      );
+      await _derivedStatsBox.put('derived_stats', updatedStats.toJson());
     });
   }
 
   Future<void> updateDerivedStats(DerivedAnalyticsDataModel newStats) =>
-      _derivedStatsBox.put(
-        'derived_stats',
-        newStats.toJson(),
-      );
+      _derivedStatsBox.put('derived_stats', newStats.toJson());
 
   Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
@@ -600,9 +562,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     );
   }
 
-  Future<void> updateLocalAnalytics(
-    List<OneConstructUse> uses,
-  ) async {
+  Future<void> updateLocalAnalytics(List<OneConstructUse> uses) async {
     if (uses.isEmpty) return;
 
     final stopwatch = Stopwatch()..start();

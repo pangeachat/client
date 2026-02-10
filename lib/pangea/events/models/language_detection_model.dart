@@ -28,7 +28,7 @@ class LanguageDetectionModel {
   }
 
   Map<String, dynamic> toJson() => {
-        ModelKey.langCode: langCode,
-        ModelKey.confidence: confidence,
-      };
+    ModelKey.langCode: langCode,
+    ModelKey.confidence: confidence,
+  };
 }

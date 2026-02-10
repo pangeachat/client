@@ -3,9 +3,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 class AnalyticsSettingsModel {
   final Set<ConstructIdentifier> blockedConstructs;
 
-  const AnalyticsSettingsModel({
-    required this.blockedConstructs,
-  });
+  const AnalyticsSettingsModel({required this.blockedConstructs});
 
   AnalyticsSettingsModel copyWith({
     Set<ConstructIdentifier>? blockedConstructs,
@@ -23,9 +21,7 @@ class AnalyticsSettingsModel {
         blockedConstructs.add(ConstructIdentifier.fromJson(lemma));
       }
     }
-    return AnalyticsSettingsModel(
-      blockedConstructs: blockedConstructs,
-    );
+    return AnalyticsSettingsModel(blockedConstructs: blockedConstructs);
   }
 
   Map<String, dynamic> toJson() {

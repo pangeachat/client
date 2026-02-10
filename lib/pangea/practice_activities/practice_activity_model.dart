@@ -15,21 +15,18 @@ sealed class PracticeActivityModel {
   final List<PangeaToken> tokens;
   final String langCode;
 
-  const PracticeActivityModel({
-    required this.tokens,
-    required this.langCode,
-  });
+  const PracticeActivityModel({required this.tokens, required this.langCode});
 
   String get storageKey =>
       '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}';
 
   PracticeTarget get practiceTarget => PracticeTarget(
-        activityType: activityType,
-        tokens: tokens,
-        morphFeature: this is MorphPracticeActivityModel
-            ? (this as MorphPracticeActivityModel).morphFeature
-            : null,
-      );
+    activityType: activityType,
+    tokens: tokens,
+    morphFeature: this is MorphPracticeActivityModel
+        ? (this as MorphPracticeActivityModel).morphFeature
+        : null,
+  );
 
   ActivityTypeEnum get activityType {
     switch (this) {
@@ -56,27 +53,21 @@ sealed class PracticeActivityModel {
 
   factory PracticeActivityModel.fromJson(Map<String, dynamic> json) {
     if (json['lang_code'] is! String) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(data: {"json": json}),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
       throw ("lang_code is not a string in PracticeActivityModel.fromJson");
     }
 
     final targetConstructsEntry =
         json['tgt_constructs'] ?? json['target_constructs'];
     if (targetConstructsEntry is! List) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(data: {"json": json}),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
       throw ("tgt_constructs is not a list in PracticeActivityModel.fromJson");
     }
 
     final type = ActivityTypeEnum.fromString(json['activity_type']);
 
     final morph = json['morph_feature'] != null
-        ? MorphFeaturesEnumExtension.fromString(
-            json['morph_feature'] as String,
-          )
+        ? MorphFeaturesEnumExtension.fromString(json['morph_feature'] as String)
         : null;
 
     final tokens = (json['target_tokens'] as List)
@@ -238,17 +229,15 @@ sealed class MultipleChoicePracticeActivityModel extends PracticeActivityModel {
 
   OneConstructUse constructUse(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
-    final useType =
-        correct ? activityType.correctUse : activityType.incorrectUse;
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
     final token = tokens.first;
 
     return OneConstructUse(
       useType: useType,
       constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
+      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
       category: token.pos,
       lemma: token.lemma.text,
       form: token.lemma.text,
@@ -273,10 +262,7 @@ sealed class MatchPracticeActivityModel extends PracticeActivityModel {
     required this.matchContent,
   });
 
-  bool isCorrect(
-    PangeaToken token,
-    String choice,
-  ) =>
+  bool isCorrect(PangeaToken token, String choice) =>
       matchContent.matchInfo[token.vocabForm]!.contains(choice);
 
   @override
@@ -324,17 +310,15 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
   OneConstructUse constructUse(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
     final token = tokens.first;
-    final useType =
-        correct ? activityType.correctUse : activityType.incorrectUse;
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
     final tag = token.getMorphTag(morphFeature)!;
 
     return OneConstructUse(
       useType: useType,
       constructType: ConstructTypeEnum.morph,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
+      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
       category: morphFeature.name,
       lemma: tag,
       form: token.lemma.form,

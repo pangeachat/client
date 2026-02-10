@@ -48,24 +48,20 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
 
     // first, update lemma info if changed
     if (response.updatedLemmaInfo != null) {
-      await _updateLemmaInfo(
-        token,
-        response.updatedLemmaInfo!,
-      );
+      await _updateLemmaInfo(token, response.updatedLemmaInfo!);
     }
 
     // second, update the phonetic info if changed
     if (response.updatedPhonetics != null) {
-      await _updatePhoneticTranscription(
-        response.updatedPhonetics!,
-      );
+      await _updatePhoneticTranscription(response.updatedPhonetics!);
     }
 
     final originalSent = event?.originalSent;
 
     // if no other changes, just return the message
     final hasTokenUpdate = response.updatedToken != null;
-    final hasLangUpdate = originalSent != null &&
+    final hasLangUpdate =
+        originalSent != null &&
         response.updatedLanguage != null &&
         response.updatedLanguage != originalSent.langCode;
 
@@ -86,10 +82,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens: tokens,
       detections: [
         if (updatedLanguage != null)
-          LanguageDetectionModel(
-            langCode: updatedLanguage,
-            confidence: 1,
-          ),
+          LanguageDetectionModel(langCode: updatedLanguage, confidence: 1),
       ],
     );
 
@@ -127,22 +120,21 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
   Future<void> _updateLemmaInfo(
     PangeaToken token,
     LemmaInfoResponse response,
-  ) =>
-      LemmaInfoRepo.set(
-        token.vocabConstructID.lemmaInfoRequest(
-          event?.event.content ?? {},
-        ),
-        response,
-      );
+  ) => LemmaInfoRepo.set(
+    token.vocabConstructID.lemmaInfoRequest(event?.event.content ?? {}),
+    response,
+  );
 
   Future<void> _updatePhoneticTranscription(
     PhoneticTranscriptionResponse response,
   ) async {
     final req = PhoneticTranscriptionRequest(
       arc: LanguageArc(
-        l1: PLanguageStore.byLangCode(requestData.wordCardL1) ??
+        l1:
+            PLanguageStore.byLangCode(requestData.wordCardL1) ??
             MatrixState.pangeaController.userController.userL1!,
-        l2: PLanguageStore.byLangCode(langCode) ??
+        l2:
+            PLanguageStore.byLangCode(langCode) ??
             MatrixState.pangeaController.userController.userL2!,
       ),
       content: response.content,

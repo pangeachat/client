@@ -30,7 +30,7 @@ class MeaningChoiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final baseTextSize =
         (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
-            (height / 72.0).clamp(1.0, 1.4);
+        (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.2;
 
     return GameChoiceCard(
@@ -48,10 +48,7 @@ class MeaningChoiceCard extends StatelessWidget {
               width: height * .7,
               height: height,
               child: Center(
-                child: Text(
-                  emoji!,
-                  style: TextStyle(fontSize: emojiSize),
-                ),
+                child: Text(emoji!, style: TextStyle(fontSize: emojiSize)),
               ),
             ),
           Expanded(
@@ -60,9 +57,7 @@ class MeaningChoiceCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: baseTextSize,
-              ),
+              style: TextStyle(fontSize: baseTextSize),
             ),
           ),
         ],
@@ -75,10 +70,7 @@ class MeaningChoiceCard extends StatelessWidget {
               width: height * .7,
               height: height,
               child: Center(
-                child: Text(
-                  emoji!,
-                  style: TextStyle(fontSize: emojiSize),
-                ),
+                child: Text(emoji!, style: TextStyle(fontSize: emojiSize)),
               ),
             ),
           Expanded(
@@ -87,9 +79,7 @@ class MeaningChoiceCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: baseTextSize,
-              ),
+              style: TextStyle(fontSize: baseTextSize),
             ),
           ),
         ],

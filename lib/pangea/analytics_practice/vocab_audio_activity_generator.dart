@@ -5,9 +5,7 @@ import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_m
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 
 class VocabAudioActivityGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     final token = req.target.tokens.first;
     final audioExample = req.audioExampleMessage;
 
@@ -62,7 +60,8 @@ class VocabAudioActivityGenerator {
         ),
         roomId: audioExample?.roomId,
         eventId: audioExample?.eventId,
-        exampleMessage: audioExample?.exampleMessage ??
+        exampleMessage:
+            audioExample?.exampleMessage ??
             const ExampleMessageInfo(exampleMessage: []),
       ),
     );

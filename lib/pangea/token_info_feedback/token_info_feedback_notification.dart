@@ -8,10 +8,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class TokenFeedbackNotification extends StatefulWidget {
   final String message;
 
-  const TokenFeedbackNotification({
-    super.key,
-    required this.message,
-  });
+  const TokenFeedbackNotification({super.key, required this.message});
 
   @override
   State<TokenFeedbackNotification> createState() =>
@@ -35,12 +32,7 @@ class _TokenFeedbackNotificationState extends State<TokenFeedbackNotification>
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, -1),
       end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _slideController,
-        curve: Curves.easeOut,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
 
     _slideController.forward();
   }
@@ -84,10 +76,7 @@ class _TokenFeedbackNotificationState extends State<TokenFeedbackNotification>
             ),
             child: Row(
               children: [
-                const BotFace(
-                  width: 30,
-                  expression: BotExpression.idle,
-                ),
+                const BotFace(width: 30, expression: BotExpression.idle),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(

@@ -1911,7 +1911,7 @@
     "type": "String",
     "description": "Usage hint for the command /invite"
   },
-  "commandHint_join": "Batu gelara",
+  "commandHint_join": "Batu adierazitako gelara",
   "@commandHint_join": {
     "type": "String",
     "description": "Usage hint for the command /join"
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Saiatu geroago edo aukeratu beste zerbitzari bat.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Hasi saioa {provider}(r)ekin",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Ez da irudi-fitxategia.",
   "@notAnImage": {},
   "importNow": "Inportatu orain",
@@ -2608,9 +2599,9 @@
   "@invite": {},
   "invalidInput": "Sartu duzunak ez du balio!",
   "@invalidInput": {},
-  "inviteGroupChat": "📨 Gonbidatu taldeko txatera",
+  "inviteGroupChat": "📨 Taldeko txatera gonbidapena",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Gonbidatu txat pribatura",
+  "invitePrivateChat": "📨 Txat pribatura gonbidapena",
   "@invitePrivateChat": {},
   "banUserDescription": "Erabiltzailea txatetik kanporatu eta berriro sartzeko debekua ezarriko zaio; ezingo da berriro sartu debekua kendu arte.",
   "@banUserDescription": {},
@@ -3362,7 +3353,7 @@
       }
     }
   },
-  "sentVoiceMessage": "🎙️ {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - {sender}(r)en ahots-mezua",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3374,10 +3365,148 @@
       }
     }
   },
-  "commandHint_logout": "Saioa itxi zure gailu honetan",
-  "commandHint_logoutall": "Saioa itxi gailu aktibo guztietan",
-  "displayNavigationRail": "Erakutsi nabigazio errail txikian",
+  "commandHint_logout": "Amaitu saioa gailu honetan",
+  "@commandHint_logout": {},
+  "commandHint_logoutall": "Amaitu saioa aktibo dauden gailu guztietan",
+  "@commandHint_logoutall": {},
+  "moreEvents": "Gertaera gehiago",
+  "@moreEvents": {},
+  "displayNavigationRail": "Erakutsi nabigazio-barra mugikorrean",
+  "@displayNavigationRail": {},
   "customReaction": "Erreakzio pertsonalizatua",
+  "@customReaction": {},
+  "declineInvitation": "Uko egin gonbidapenari",
+  "@declineInvitation": {},
+  "noMessagesYet": "Mezurik ez oraingoz",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Sakatuta mantendu ahots-mezua grabatzeko.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Gelditu",
+  "@pause": {},
+  "resume": "Jarraitu",
+  "@resume": {},
+  "moveToDifferentSpace": "Beste gune batera mugitu",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Eraman gora",
+  "@moveUp": {},
+  "moveDown": "Eraman behera",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Txata gunetik kenduko da, baina txaten zerrendan mantenduko da.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} txat",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "donate": "Egin dohaintza",
+  "@donate": {},
+  "newSubSpace": "Azpi-gune berria",
+  "@newSubSpace": {},
+  "spaceMemberOf": "{spaces} guneko kidea",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "{spaces} guneko kideak sartzeko baimena eska dezake",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "startedAPoll": "{username}(e)k bozketa hasi du.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Bozketa",
+  "@poll": {},
+  "startPoll": "Hasi bozketa",
+  "@startPoll": {},
+  "endPoll": "Amaitu bozketa",
+  "@endPoll": {},
+  "answersVisible": "Erakutsi emaitzak",
+  "@answersVisible": {},
+  "answersHidden": "Ezkutatu emaitzak",
+  "@answersHidden": {},
+  "pollQuestion": "Bozketako galdera",
+  "@pollQuestion": {},
+  "answerOption": "Erantzun-aukera",
+  "@answerOption": {},
+  "addAnswerOption": "Gehitu erantzun-aukera",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Baimendu erantzun bat baino gehiago",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Bozketa amaitu da",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =1{Bozka bat} other{{count} bozka}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Emaitzak bozketak amaitu duenean egongo dira ikusgai",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Erantzun harian",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =1{Erantzun bat} other{{count} erantzun}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Haria",
+  "@thread": {},
+  "backToMainChat": "Joan txat nagusira",
+  "@backToMainChat": {},
+  "changedTheChatDescription": "{username}(e)k txataren deskribapena aldatu du",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username}(e)k txataren izena aldatu du",
+  "@changedTheChatName": {},
+  "saveChanges": "Gorde aldaketak",
+  "@saveChanges": {},
+  "createSticker": "Sortu pegatina edo emojia",
+  "@createSticker": {},
+  "attribution": "Sortzailea",
+  "@attribution": {},
+  "skipChatBackup": "Ez egin txataren babeskopia",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Ziur? Txataren babeskopia gaitzen ez baduzu, gailuz aldatuz gero mezuen sarbidea gal zenezake.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Mezuak kargatzen",
+  "@loadingMessages": {},
+  "setupChatBackup": "Ezarri txataren babeskopia",
+  "@setupChatBackup": {},
+  "useAsSticker": "Erabili pegatina gisa",
+  "@useAsSticker": {},
+  "stickerPackNameAlreadyExists": "Pegatina-sortaren izena badago lehendik ere",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Pegatina-sorta berria",
+  "@newStickerPack": {},
+  "stickerPackName": "Pegatina-sortaren izena",
+  "@stickerPackName": {},
+  "useAsEmoji": "Erabili emoji gisa",
+  "@useAsEmoji": {},
   "writeAMessageLangCodes": "Idatzi {l1} edo {l2}...",
   "requests": "Eskariak",
   "holdForInfo": "Klikatu eta eutsi hitzaren informazioarentzat.",
@@ -3419,7 +3548,6 @@
   "updateLanguage": "Nire hizkuntzak",
   "whatLanguageYouWantToLearn": "Zein hizkuntza ikasi nahi duzu?",
   "whatIsYourBaseLanguage": "Zein da zure oinarrizko hizkuntza?",
-  "saveChanges": "Gorde aldaketak",
   "publicProfileTitle": "Onartu nire profila bilaketetan agertzeko",
   "publicProfileDesc": "Gaituta, beste erabiltzaileek zure profila bilaketa globalean aurkitu eta chat eskaerak bidali ahal izango dituzte. Orain, eskaera onartu edo ukatu dezakezu.",
   "errorDisableIT": "Itzulpen laguntza desgaituta dago.",
@@ -4505,22 +4633,6 @@
   "inviteYourFriends": "Gonbidatu zure lagunak",
   "playWithAI": "Jolastu AIrekin orain",
   "courseStartDesc": "Pangea Bot prest dago noiznahi joateko!\n\n...baina ikastea lagunekin hobe da!",
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4693,10 +4805,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },

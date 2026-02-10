@@ -146,7 +146,8 @@ class InlineTooltipState extends State<InlineTooltip>
                 child: Center(
                   child: Text(
                     widget.message,
-                    style: widget.textStyle ??
+                    style:
+                        widget.textStyle ??
                         (FluffyThemes.isColumnMode(context)
                             ? Theme.of(context).textTheme.titleSmall
                             : Theme.of(context).textTheme.bodyMedium),

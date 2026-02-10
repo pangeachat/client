@@ -31,10 +31,7 @@ class CourseSettings extends StatelessWidget {
   // final String? courseId;
   final ChatDetailsController controller;
 
-  const CourseSettings({
-    super.key,
-    required this.controller,
-  });
+  const CourseSettings({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +39,9 @@ class CourseSettings extends StatelessWidget {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
 
-    final room =
-        Matrix.of(context).client.getRoomById(controller.widget.roomId);
+    final room = Matrix.of(
+      context,
+    ).client.getRoomById(controller.widget.roomId);
     if (room == null || !room.isSpace) {
       return Center(
         child: Text(
@@ -78,13 +76,16 @@ class CourseSettings extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primaryContainer,
-                    foregroundColor:
-                        Theme.of(context).colorScheme.onPrimaryContainer,
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(
+                      context,
+                    ).colorScheme.onPrimaryContainer,
                   ),
-                  onPressed: () => context
-                      .go("/rooms/spaces/${controller.roomId}/addcourse"),
+                  onPressed: () => context.go(
+                    "/rooms/spaces/${controller.roomId}/addcourse",
+                  ),
                   child: Row(
                     spacing: 8.0,
                     mainAxisSize: MainAxisSize.min,
@@ -221,15 +222,16 @@ class CourseSettings extends StatelessWidget {
                                         ),
                                       if (constraints.maxWidth < 700.0)
                                         Padding(
-                                          padding: const EdgeInsetsGeometry
-                                              .symmetric(
-                                            vertical: 4.0,
-                                          ),
+                                          padding:
+                                              const EdgeInsetsGeometry.symmetric(
+                                                vertical: 4.0,
+                                              ),
                                           child: TopicParticipantList(
                                             room: room,
                                             users: usersInTopic,
-                                            avatarSize:
-                                                isColumnMode ? 50.0 : 25.0,
+                                            avatarSize: isColumnMode
+                                                ? 50.0
+                                                : 25.0,
                                             overlap: isColumnMode ? 20.0 : 8.0,
                                           ),
                                         ),
@@ -256,22 +258,21 @@ class CourseSettings extends StatelessWidget {
                             activityCount: topic.activityIds.length,
                           )
                         : activityError != null
-                            ? ErrorIndicator(
-                                message:
-                                    L10n.of(context).oopsSomethingWentWrong,
-                              )
-                            : topic.loadedActivities.isNotEmpty
-                                ? SizedBox(
-                                    height: isColumnMode ? 290.0 : 210.0,
-                                    child: TopicActivitiesList(
-                                      room: room,
-                                      activities: topic.loadedActivities,
-                                      loading: controller.loadingCourseSummary,
-                                      hasCompletedActivity:
-                                          controller.hasCompletedActivity,
-                                    ),
-                                  )
-                                : const SizedBox(),
+                        ? ErrorIndicator(
+                            message: L10n.of(context).oopsSomethingWentWrong,
+                          )
+                        : topic.loadedActivities.isNotEmpty
+                        ? SizedBox(
+                            height: isColumnMode ? 290.0 : 210.0,
+                            child: TopicActivitiesList(
+                              room: room,
+                              activities: topic.loadedActivities,
+                              loading: controller.loadingCourseSummary,
+                              hasCompletedActivity:
+                                  controller.hasCompletedActivity,
+                            ),
+                          )
+                        : const SizedBox(),
                 ],
               ),
             ),
@@ -286,10 +287,7 @@ class CourseSettings extends StatelessWidget {
 class ActivityCardPlaceholder extends StatelessWidget {
   final int activityCount;
 
-  const ActivityCardPlaceholder({
-    super.key,
-    required this.activityCount,
-  });
+  const ActivityCardPlaceholder({super.key, required this.activityCount});
 
   @override
   Widget build(BuildContext context) {

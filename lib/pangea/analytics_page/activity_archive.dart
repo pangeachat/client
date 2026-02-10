@@ -20,24 +20,22 @@ import '../../config/themes.dart';
 import '../../widgets/avatar.dart';
 
 class ActivityArchive extends StatelessWidget {
-  const ActivityArchive({
-    super.key,
-  });
+  const ActivityArchive({super.key});
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Matrix.of(context)
-          .analyticsDataService
-          .updateDispatcher
-          .activityAnalyticsStream
-          .stream,
+      stream: Matrix.of(
+        context,
+      ).analyticsDataService.updateDispatcher.activityAnalyticsStream.stream,
       builder: (context, _) {
-        final Room? analyticsRoom =
-            Matrix.of(context).client.analyticsRoomLocal();
+        final Room? analyticsRoom = Matrix.of(
+          context,
+        ).client.analyticsRoomLocal();
         final archive = analyticsRoom?.archivedActivities ?? [];
-        final selectedRoomId =
-            GoRouterState.of(context).pathParameters['roomid'];
+        final selectedRoomId = GoRouterState.of(
+          context,
+        ).pathParameters['roomid'];
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -95,17 +93,12 @@ class AnalyticsActivityItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final objective = room.activityPlan?.learningObjective ?? '';
     final cefrLevel = room.activitySummary?.summary?.participants
-        .firstWhereOrNull(
-          (p) => p.participantId == room.client.userID,
-        )
+        .firstWhereOrNull((p) => p.participantId == room.client.userID)
         ?.cefrLevel;
 
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 1,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
       child: Material(
         color: selected ? theme.colorScheme.secondaryContainer : null,
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),

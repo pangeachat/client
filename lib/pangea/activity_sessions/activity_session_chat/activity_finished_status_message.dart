@@ -15,10 +15,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityFinishedStatusMessage extends StatelessWidget {
   final ChatController controller;
 
-  const ActivityFinishedStatusMessage({
-    super.key,
-    required this.controller,
-  });
+  const ActivityFinishedStatusMessage({super.key, required this.controller});
 
   void _onArchive(BuildContext context) {
     _archiveToAnalytics();
@@ -38,16 +35,13 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
       final langModel = PLanguageStore.byLangCode(lang)!;
       await controller.room.archiveActivity();
       await MatrixState
-          .pangeaController.matrixState.analyticsDataService.updateService
+          .pangeaController
+          .matrixState
+          .analyticsDataService
+          .updateService
           .sendActivityAnalytics(controller.room.id, langModel);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'roomId': controller.room.id,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': controller.room.id});
     }
   }
 
@@ -66,15 +60,13 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final theme = Theme.of(context);
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed !=
-            false;
+        false;
 
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        border: Border(
-          top: BorderSide(color: theme.dividerColor),
-        ),
+        border: Border(top: BorderSide(color: theme.dividerColor)),
       ),
       child: Center(
         child: ConstrainedBox(
@@ -99,9 +91,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                   onArchive: () => _onArchive(context),
                 ),
               if (!controller.room.isActivityFinished)
-                _WaitSection(
-                  onContinue: controller.room.continueActivity,
-                ),
+                _WaitSection(onContinue: controller.room.continueActivity),
             ],
           ),
         ),
@@ -114,10 +104,7 @@ class _SummarySection extends StatelessWidget {
   final ChatController controller;
   final bool isSubscribed;
 
-  const _SummarySection({
-    required this.controller,
-    required this.isSubscribed,
-  });
+  const _SummarySection({required this.controller, required this.isSubscribed});
 
   ActivitySummaryModel? get summary => controller.room.activitySummary;
 
@@ -153,8 +140,9 @@ class _SummarySection extends StatelessWidget {
       return ErrorIndicator(
         message: L10n.of(context).subscribeToUnlockActivitySummaries,
         onTap: () {
-          MatrixState.pangeaController.subscriptionController
-              .showPaywall(context);
+          MatrixState.pangeaController.subscriptionController.showPaywall(
+            context,
+          );
         },
       );
     }
@@ -192,10 +180,7 @@ class _ArchiveSection extends StatelessWidget {
   final bool enabled;
   final VoidCallback onArchive;
 
-  const _ArchiveSection({
-    required this.enabled,
-    required this.onArchive,
-  });
+  const _ArchiveSection({required this.enabled, required this.onArchive});
 
   @override
   Widget build(BuildContext context) {
@@ -212,10 +197,7 @@ class _ArchiveSection extends StatelessWidget {
         ElevatedButton(
           onPressed: enabled ? onArchive : null,
           style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             foregroundColor: theme.colorScheme.onPrimaryContainer,
             backgroundColor: theme.colorScheme.primaryContainer,
           ),
@@ -250,24 +232,16 @@ class _WaitSection extends StatelessWidget {
       children: [
         Text(
           L10n.of(context).waitingForOthersToFinish,
-          style: const TextStyle(
-            fontSize: 12,
-            fontStyle: FontStyle.italic,
-          ),
+          style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
           textAlign: TextAlign.center,
         ),
         ElevatedButton(
           onPressed: onContinue,
           style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             foregroundColor: theme.colorScheme.onSurface,
             backgroundColor: theme.colorScheme.surface,
-            side: BorderSide(
-              color: theme.colorScheme.primaryContainer,
-            ),
+            side: BorderSide(color: theme.colorScheme.primaryContainer),
           ),
           child: Text(
             L10n.of(context).waitNotDone,

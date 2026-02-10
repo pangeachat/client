@@ -42,9 +42,7 @@ class TtsController {
     if (message != 'canceled' && message != 'interrupted') {
       error_handler.ErrorHandler.logError(
         e: 'TTS error',
-        data: {
-          'message': message,
-        },
+        data: {'message': message},
       );
     }
   }
@@ -55,11 +53,7 @@ class TtsController {
       await _setAvailableBaseLanguages();
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {});
     }
   }
 
@@ -96,9 +90,7 @@ class TtsController {
         'availableLangCodes': _availableLangCodes,
       };
       debugPrint("TTS: Language not supported: $jsonData");
-      Sentry.addBreadcrumb(
-        Breadcrumb.fromJson(jsonData),
-      );
+      Sentry.addBreadcrumb(Breadcrumb.fromJson(jsonData));
     }
   }
 
@@ -112,18 +104,12 @@ class TtsController {
       if (result != 1) {
         error_handler.ErrorHandler.logError(
           m: 'Unexpected result from tts.stop',
-          data: {
-            'result': result,
-          },
+          data: {'result': result},
         );
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {});
     }
   }
 
@@ -182,7 +168,11 @@ class TtsController {
     await _setSpeakingLanguage(langCode);
 
     final enableTTS = MatrixState
-        .pangeaController.userController.profile.toolSettings.enableTTS;
+        .pangeaController
+        .userController
+        .profile
+        .toolSettings
+        .enableTTS;
 
     if (enableTTS) {
       final token = PangeaTokenText(
@@ -193,16 +183,8 @@ class TtsController {
 
       onStart?.call();
       await (_isLangFullySupported(langCode)
-          ? _speak(
-              text,
-              langCode,
-              [token],
-            )
-          : _speakFromChoreo(
-              text,
-              langCode,
-              [token],
-            ));
+          ? _speak(text, langCode, [token])
+          : _speakFromChoreo(text, langCode, [token]));
     } else if (targetID != null && context != null) {
       await _showTTSDisabledPopup(context, targetID);
     }
@@ -248,13 +230,7 @@ class TtsController {
       // }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'text': text,
-        },
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
       await _speakFromChoreo(text, langCode, tokens);
     } finally {
       stop();
@@ -275,9 +251,11 @@ class TtsController {
         text: text,
         langCode: langCode,
         tokens: tokens,
-        userL1: MatrixState.pangeaController.userController.userL1Code ??
+        userL1:
+            MatrixState.pangeaController.userController.userL1Code ??
             LanguageKeys.unknownLanguage,
-        userL2: MatrixState.pangeaController.userController.userL2Code ??
+        userL2:
+            MatrixState.pangeaController.userController.userL2Code ??
             LanguageKeys.unknownLanguage,
       ),
     );
@@ -291,20 +269,14 @@ class TtsController {
       audioPlayer?.dispose();
       audioPlayer = AudioPlayer();
       await audioPlayer!.setAudioSource(
-        BytesAudioSource(
-          audioContent,
-          ttsRes.mimeType,
-        ),
+        BytesAudioSource(audioContent, ttsRes.mimeType),
       );
       await audioPlayer!.play();
     } catch (e, s) {
       error_handler.ErrorHandler.logError(
         e: 'Error playing audio',
         s: s,
-        data: {
-          'error': e.toString(),
-          'text': text,
-        },
+        data: {'error': e.toString(), 'text': text},
       );
     } finally {
       audioPlayer?.dispose();
@@ -328,28 +300,27 @@ class TtsController {
   static Future<void> _showTTSDisabledPopup(
     BuildContext context,
     String targetID,
-  ) async =>
-      OverlayUtil.showPositionedCard(
-        context: context,
-        backDropToDismiss: false,
-        cardToShow: Column(
-          spacing: 12.0,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CardHeader(InstructionsEnum.ttsDisabled.title(L10n.of(context))),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Text(
-                InstructionsEnum.ttsDisabled.body(L10n.of(context)),
-                style: BotStyle.text(context),
-              ),
-            ),
-          ],
+  ) async => OverlayUtil.showPositionedCard(
+    context: context,
+    backDropToDismiss: false,
+    cardToShow: Column(
+      spacing: 12.0,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CardHeader(InstructionsEnum.ttsDisabled.title(L10n.of(context))),
+        Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Text(
+            InstructionsEnum.ttsDisabled.body(L10n.of(context)),
+            style: BotStyle.text(context),
+          ),
         ),
-        maxHeight: 300,
-        maxWidth: 300,
-        transformTargetId: targetID,
-        closePrevOverlay: false,
-        overlayKey: InstructionsEnum.ttsDisabled.toString(),
-      );
+      ],
+    ),
+    maxHeight: 300,
+    maxWidth: 300,
+    transformTargetId: targetID,
+    closePrevOverlay: false,
+    overlayKey: InstructionsEnum.ttsDisabled.toString(),
+  );
 }

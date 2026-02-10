@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Lütfen daha sonra tekrar deneyin veya farklı bir sunucu seçin.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "{provider} ile oturum aç",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Bir resim dosyası değil.",
   "@notAnImage": {},
   "importNow": "Şimdi içe aktar",
@@ -3178,14 +3169,36 @@
   },
   "welcomeText": "Hey Hey 👋 Karşınızda FluffyChat. https://matrix.org ile uyumlu herhangi bir homeserver'a giriş yapabilirsiniz. Ve herkesle konuşabilirsiniz. Bu koca bir merkeziyetsiz mesajlaşma ağı!",
   "@welcomeText": {},
-  "setCustomPermissionLevel": "Özel izin seviyesi ayarla",
-  "setPermissionsLevelDescription": "Lütfen aşağıdaki önceden tanımlanmış rolden birini seçin veya 0 ile 100 arasında özel bir izin seviyesi girin.",
-  "ignoreUser": "Kullanıcıyı görmezden gel",
+  "setCustomPermissionLevel": "Özel izin düzeyi ayarla",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Lütfen aşağıdan önceden tanımlanmış bir rol seçin veya 0 ile 100 arasında bir özel izin seviyesi girin.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Kullanıcıyı yok say",
+  "@ignoreUser": {},
   "normalUser": "Normal kullanıcı",
-  "commandHint_roomupgrade": "Bu odanın sürümünü verilen oda sürümüne yükselt",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "Bu odayı belirtilen oda sürümüne yükseltin",
+  "@commandHint_roomupgrade": {},
   "checkList": "Kontrol listesi",
+  "@checkList": {},
   "countInvited": "{count} davet edildi",
-  "synchronizingPleaseWaitCounter": "Senkronize ediliyor… ({percentage}%)",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "synchronizingPleaseWaitCounter": " Senkronize ediliyor… ({percentage}%)",
+  "@synchronizingPleaseWaitCounter": {
+    "type": "String",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
   "previous": "Önceki",
   "otherPartyNotLoggedIn": "Diğer taraf şu anda giriş yapmadı ve bu nedenle mesaj alamaz!",
   "appWantsToUseForLogin": "'{server}' kullanarak giriş yap",
@@ -4388,46 +4401,6 @@
   "inviteYourFriends": "Arkadaşlarınızı davet edin",
   "playWithAI": "Şimdilik yapay zeka ile oynayın",
   "courseStartDesc": "Pangea Bot her zaman hazır!\n\n...ama arkadaşlarınızla öğrenmek daha iyidir!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@synchronizingPleaseWaitCounter": {
-    "type": "String",
-    "placeholders": {
-      "percentage": {
-        "type": "String"
-      }
-    }
-  },
   "@previous": {
     "type": "String",
     "placeholders": {}

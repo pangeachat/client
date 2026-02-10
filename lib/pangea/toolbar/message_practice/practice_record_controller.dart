@@ -30,10 +30,7 @@ class PracticeRecordController {
     );
   }
 
-  static bool? wasCorrectMatch(
-    PracticeTarget target,
-    PracticeChoice choice,
-  ) {
+  static bool? wasCorrectMatch(PracticeTarget target, PracticeChoice choice) {
     final record = _recordByTarget(target);
     for (final response in record.responses) {
       if (response.text == choice.choiceContent && response.isCorrect) {
@@ -48,10 +45,7 @@ class PracticeRecordController {
     return null;
   }
 
-  static bool? wasCorrectChoice(
-    PracticeTarget target,
-    String choice,
-  ) {
+  static bool? wasCorrectChoice(PracticeTarget target, String choice) {
     final record = _recordByTarget(target);
     for (final response in record.responses) {
       if (response.text == choice) {
@@ -74,14 +68,11 @@ class PracticeRecordController {
     );
   }
 
-  static bool isCompleteByToken(
-    PracticeTarget target,
-    PangeaToken token,
-  ) {
+  static bool isCompleteByToken(PracticeTarget target, PangeaToken token) {
     final cId = target.targetTokenConstructID(token);
-    return _recordByTarget(target).responses.any(
-          (res) => res.cId == cId && res.isCorrect,
-        );
+    return _recordByTarget(
+      target,
+    ).responses.any((res) => res.cId == cId && res.isCorrect);
   }
 
   static bool hasAnyCorrectChoices(PracticeTarget target) {

@@ -1727,7 +1727,7 @@
   },
   "link": "Link",
   "@link": {},
-  "roomHasBeenUpgraded": "Pokój zostać zaktualizowany",
+  "roomHasBeenUpgraded": "Pokój został zaktualizowany",
   "@roomHasBeenUpgraded": {
     "type": "String",
     "placeholders": {}
@@ -2531,15 +2531,6 @@
       }
     }
   },
-  "signInWith": "Zaloguj się z {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "optionalRedactReason": "(Opcjonalnie) Powód usunięcia tej wiadomości...",
   "@optionalRedactReason": {},
   "exportEmotePack": "Eksportuj pakiet emotikonów jako .zip",
@@ -2920,7 +2911,7 @@
       }
     }
   },
-  "oneOfYourDevicesIsNotVerified": "Tylko kiedy Twoje urządzenie nie jest zweryfikowane",
+  "oneOfYourDevicesIsNotVerified": "Jedno z Twoich urządzeń nie jest zweryfikowane",
   "@oneOfYourDevicesIsNotVerified": {},
   "supportPage": "Strona obsługi użytkownika",
   "@supportPage": {},
@@ -3346,7 +3337,7 @@
       }
     }
   },
-  "sentVoiceMessage": "🎙️ {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - Wiadomość głosowa od: {sender}",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3374,10 +3365,18 @@
   "@youHaveKnocked": {},
   "pleaseWaitUntilInvited": "Proszę zaczekać na zaproszenie przez kogoś z pokoju.",
   "@pleaseWaitUntilInvited": {},
-  "commandHint_logout": "Wyloguj się z aktualnego urządzenia",
-  "commandHint_logoutall": "Wyloguj się ze wszystkich aktywnych urządzeń",
-  "displayNavigationRail": "Pokaż pasek nawigacji na telefonie",
-  "customReaction": "Niestandardowa reakcja",
+  "commandHint_logout": "Wyloguj bieżące urządzenie",
+  "@commandHint_logout": {},
+  "commandHint_logoutall": "Wyloguj wszystkie aktywne urządzenia",
+  "@commandHint_logoutall": {},
+  "displayNavigationRail": "Pokazuj pasek nawigacyjny na urządzeniach mobilnych",
+  "@displayNavigationRail": {},
+  "customReaction": "Własna reakcja",
+  "@customReaction": {},
+  "moreEvents": "Więcej zdarzeń",
+  "@moreEvents": {},
+  "declineInvitation": "Odrzuć zaproszenie",
+  "@declineInvitation": {},
   "writeAMessageLangCodes": "Piszesz w {l1} lub {l2}...",
   "requests": "Prośby",
   "holdForInfo": "Kliknij i przytrzymaj, aby uzyskać informacje o słowie.",
@@ -4505,22 +4504,6 @@
   "inviteYourFriends": "Zaproś swoich znajomych",
   "playWithAI": "Na razie pobaw się AI",
   "courseStartDesc": "Pangea Bot jest gotowy do działania w każdej chwili!\n\n...ale nauka jest lepsza z przyjaciółmi!",
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {

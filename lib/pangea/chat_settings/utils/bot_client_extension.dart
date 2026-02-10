@@ -19,35 +19,37 @@ extension BotClientExtension on Client {
 
   // All 2-member rooms with the bot
   List<Room> get _targetBotChats => rooms.where((r) {
-        return
-            // bot settings exist
-            r.botOptions != null &&
-                // there is no activity plan
-                r.activityPlan == null &&
-                // it's just the bot and one other user in the room
-                r.summary.mJoinedMemberCount == 2 &&
-                r.getParticipants().any((u) => u.id == BotName.byEnvironment);
-      }).toList();
+    return
+    // bot settings exist
+    r.botOptions != null &&
+        // there is no activity plan
+        r.activityPlan == null &&
+        // it's just the bot and one other user in the room
+        r.summary.mJoinedMemberCount == 2 &&
+        r.getParticipants().any((u) => u.id == BotName.byEnvironment);
+  }).toList();
 
   Future<String> startChatWithBot() => startDirectChat(
-        BotName.byEnvironment,
-        preset: CreateRoomPreset.trustedPrivateChat,
-        initialState: [
-          StateEvent(
-            content: BotOptionsModel(
-              mode: BotMode.directChat,
-              targetLanguage:
-                  MatrixState.pangeaController.userController.userL2?.langCode,
-              languageLevel: MatrixState.pangeaController.userController.profile
-                  .userSettings.cefrLevel,
-            ).toJson(),
-            type: PangeaEventTypes.botOptions,
-          ),
-          RoomDefaults.defaultPowerLevels(
-            userID!,
-          ),
-        ],
-      );
+    BotName.byEnvironment,
+    preset: CreateRoomPreset.trustedPrivateChat,
+    initialState: [
+      StateEvent(
+        content: BotOptionsModel(
+          mode: BotMode.directChat,
+          targetLanguage:
+              MatrixState.pangeaController.userController.userL2?.langCode,
+          languageLevel: MatrixState
+              .pangeaController
+              .userController
+              .profile
+              .userSettings
+              .cefrLevel,
+        ).toJson(),
+        type: PangeaEventTypes.botOptions,
+      ),
+      RoomDefaults.defaultPowerLevels(userID!),
+    ],
+  );
 
   Future<void> updateBotOptions(UserSettings userSettings) async {
     final targetBotRooms = [..._targetBotChats];
@@ -69,8 +71,9 @@ extension BotClientExtension on Client {
           continue;
         }
 
-        final updatedGenders =
-            Map<String, GenderEnum>.from(botOptions.userGenders);
+        final updatedGenders = Map<String, GenderEnum>.from(
+          botOptions.userGenders,
+        );
 
         if (updatedGenders[userID] != gender) {
           updatedGenders[userID!] = gender;

@@ -32,9 +32,9 @@ void showMemberActionsPopupMenu({
 
   // #Pangea
   // final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
-  final overlay = Overlay.of(context, rootOverlay: true)
-      .context
-      .findRenderObject() as RenderBox;
+  final overlay =
+      Overlay.of(context, rootOverlay: true).context.findRenderObject()
+          as RenderBox;
   // Pangea#
 
   final button = context.findRenderObject() as RenderBox;
@@ -101,9 +101,7 @@ void showMemberActionsPopupMenu({
                       padding: const EdgeInsets.all(4.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LevelDisplayName(userId: user.id),
-                        ],
+                        children: [LevelDisplayName(userId: user.id)],
                       ),
                     ),
                     // Pangea#
@@ -120,10 +118,7 @@ void showMemberActionsPopupMenu({
       if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
         PopupMenuItem(
           enabled: false,
-          padding: const EdgeInsets.only(
-            left: 12.0,
-            right: 12.0,
-          ),
+          padding: const EdgeInsets.only(left: 12.0, right: 12.0),
           child: BotChatSettingsDialog(room: room),
         ),
       const PopupMenuDivider(),
@@ -174,16 +169,16 @@ void showMemberActionsPopupMenu({
             const Icon(Icons.admin_panel_settings_outlined),
             const SizedBox(width: 18),
             Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: .min,
+              crossAxisAlignment: .start,
               children: [
                 Text(L10n.of(context).chatPermissions),
                 Text(
                   user.powerLevel < 50
                       ? L10n.of(context).userLevel(user.powerLevel)
                       : user.powerLevel < 100
-                          ? L10n.of(context).moderatorLevel(user.powerLevel)
-                          : L10n.of(context).adminLevel(user.powerLevel),
+                      ? L10n.of(context).moderatorLevel(user.powerLevel)
+                      : L10n.of(context).adminLevel(user.powerLevel),
                   style: const TextStyle(fontSize: 10),
                 ),
               ],
@@ -300,7 +295,8 @@ void showMemberActionsPopupMenu({
             cancelLabel: L10n.of(context).no,
             // #Pangea
             // message: L10n.of(context).kickUserDescription,
-            message: user.id == BotName.byEnvironment &&
+            message:
+                user.id == BotName.byEnvironment &&
                     !user.room.isSpace &&
                     !user.room.isDirectChat
                 ? L10n.of(context).kickBotWarning
@@ -342,10 +338,7 @@ void showMemberActionsPopupMenu({
 
     //   final result = await showFutureLoadingDialog(
     //     context: context,
-    //     future: () => user.room.client.reportUser(
-    //       user.id,
-    //       reason,
-    //     ),
+    //     future: () => user.room.client.reportUser(user.id, reason),
     //   );
     //   if (result.error != null) return;
     //   ScaffoldMessenger.of(context).showSnackBar(
@@ -356,10 +349,8 @@ void showMemberActionsPopupMenu({
       final router = GoRouter.of(context);
       final roomIdResult = await showFutureLoadingDialog(
         context: context,
-        future: () => user.room.client.startDirectChat(
-          user.id,
-          enableEncryption: false,
-        ),
+        future: () =>
+            user.room.client.startDirectChat(user.id, enableEncryption: false),
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;

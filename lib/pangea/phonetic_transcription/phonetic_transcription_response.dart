@@ -39,8 +39,9 @@ class PhoneticTranscriptionToken {
   factory PhoneticTranscriptionToken.fromJson(Map<String, dynamic> json) {
     return PhoneticTranscriptionToken(
       arc: LanguageArc.fromJson(json['arc'] as Map<String, dynamic>),
-      tokenL2:
-          PangeaTokenText.fromJson(json['token_l2'] as Map<String, dynamic>),
+      tokenL2: PangeaTokenText.fromJson(
+        json['token_l2'] as Map<String, dynamic>,
+      ),
       phoneticL1Transcription: PangeaTokenText.fromJson(
         json['phonetic_l1_transcription'] as Map<String, dynamic>,
       ),
@@ -48,10 +49,10 @@ class PhoneticTranscriptionToken {
   }
 
   Map<String, dynamic> toJson() => {
-        'arc': arc.toJson(),
-        'token_l2': tokenL2.toJson(),
-        'phonetic_l1_transcription': phoneticL1Transcription.toJson(),
-      };
+    'arc': arc.toJson(),
+    'token_l2': tokenL2.toJson(),
+    'phonetic_l1_transcription': phoneticL1Transcription.toJson(),
+  };
 }
 
 class PhoneticTranscription {
@@ -88,19 +89,20 @@ class PhoneticTranscription {
   }
 
   Map<String, dynamic> toJson() => {
-        'arc': arc.toJson(),
-        'transcription_l2': transcriptionL2.toJson(),
-        'phonetic_transcription':
-            phoneticTranscription.map((e) => e.toJson()).toList(),
-        'delim': delim.value,
-      };
+    'arc': arc.toJson(),
+    'transcription_l2': transcriptionL2.toJson(),
+    'phonetic_transcription': phoneticTranscription
+        .map((e) => e.toJson())
+        .toList(),
+    'delim': delim.value,
+  };
 }
 
 class PhoneticTranscriptionResponse {
   final LanguageArc arc;
   final PangeaTokenText content;
   final Map<String, dynamic>
-      tokenization; // You can define a typesafe model if needed
+  tokenization; // You can define a typesafe model if needed
   final PhoneticTranscription phoneticTranscriptionResult;
 
   PhoneticTranscriptionResponse({
@@ -113,8 +115,9 @@ class PhoneticTranscriptionResponse {
   factory PhoneticTranscriptionResponse.fromJson(Map<String, dynamic> json) {
     return PhoneticTranscriptionResponse(
       arc: LanguageArc.fromJson(json['arc'] as Map<String, dynamic>),
-      content:
-          PangeaTokenText.fromJson(json['content'] as Map<String, dynamic>),
+      content: PangeaTokenText.fromJson(
+        json['content'] as Map<String, dynamic>,
+      ),
       tokenization: Map<String, dynamic>.from(json['tokenization'] as Map),
       phoneticTranscriptionResult: PhoneticTranscription.fromJson(
         json['phonetic_transcription_result'] as Map<String, dynamic>,

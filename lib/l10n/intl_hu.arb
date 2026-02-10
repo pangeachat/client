@@ -2285,15 +2285,6 @@
   },
   "videoCallsBetaWarning": "Kérem vegye figyelembe, hogy a videó hívások jelenleg béta fázisban vannak. Nem biztos, hogy megfelelően fognak működni, vagy egyáltalán elindulnak egyes platformokon.",
   "@videoCallsBetaWarning": {},
-  "signInWith": "Bejelentkezés a {provider} kiszolgálóval",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "fileIsTooBigForServer": "Nem küldhető el! A szerver csak {max} határig enged csatolmányokat.",
   "@fileIsTooBigForServer": {},
   "verified": "Hitelesített",
@@ -3055,7 +3046,7 @@
   "@changeTheDescriptionOfTheGroup": {},
   "swipeRightToLeftToReply": "Húzza balra a válaszoláshoz",
   "@swipeRightToLeftToReply": {},
-  "alwaysUse24HourFormat": "hamis",
+  "alwaysUse24HourFormat": "",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },

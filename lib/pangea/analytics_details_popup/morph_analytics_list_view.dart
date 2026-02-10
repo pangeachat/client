@@ -21,10 +21,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MorphAnalyticsListView extends StatelessWidget {
   final ConstructAnalyticsViewState controller;
 
-  const MorphAnalyticsListView({
-    required this.controller,
-    super.key,
-  });
+  const MorphAnalyticsListView({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +34,7 @@ class MorphAnalyticsListView extends StatelessWidget {
             padding: padding,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                DownloadAnalyticsButton(),
-              ],
+              children: [DownloadAnalyticsButton()],
             ),
           ),
         Expanded(
@@ -57,23 +52,20 @@ class MorphAnalyticsListView extends StatelessWidget {
 
               // Morph feature boxes
               SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final feature = controller.features[index];
-                    return feature.displayTags.isNotEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: MorphFeatureBox(
-                              morphFeature: feature.feature,
-                              allTags: controller.morphs
-                                  .getDisplayTags(feature.feature)
-                                  .toSet(),
-                            ),
-                          )
-                        : const SizedBox.shrink();
-                  },
-                  childCount: controller.features.length,
-                ),
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  final feature = controller.features[index];
+                  return feature.displayTags.isNotEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: MorphFeatureBox(
+                            morphFeature: feature.feature,
+                            allTags: controller.morphs
+                                .getDisplayTags(feature.feature)
+                                .toSet(),
+                          ),
+                        )
+                      : const SizedBox.shrink();
+                }, childCount: controller.features.length),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],
@@ -140,31 +132,29 @@ class MorphFeatureBox extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   spacing: 16.0,
                   runSpacing: 16.0,
-                  children: allTags.map(
-                    (morphTag) {
-                      final id = ConstructIdentifier(
-                        lemma: morphTag,
-                        type: ConstructTypeEnum.morph,
-                        category: morphFeature,
-                      );
+                  children: allTags.map((morphTag) {
+                    final id = ConstructIdentifier(
+                      lemma: morphTag,
+                      type: ConstructTypeEnum.morph,
+                      category: morphFeature,
+                    );
 
-                      return FutureBuilder(
-                        future: analyticsService.getConstructUse(id),
-                        builder: (context, snapshot) => MorphTagChip(
-                          morphFeature: morphFeature,
-                          morphTag: morphTag,
-                          constructAnalytics: snapshot.data,
-                          onTap: () {
-                            AnalyticsNavigationUtil.navigateToAnalytics(
-                              context: context,
-                              view: ProgressIndicatorEnum.morphsUsed,
-                              construct: id,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ).toList(),
+                    return FutureBuilder(
+                      future: analyticsService.getConstructUse(id),
+                      builder: (context, snapshot) => MorphTagChip(
+                        morphFeature: morphFeature,
+                        morphTag: morphTag,
+                        constructAnalytics: snapshot.data,
+                        onTap: () {
+                          AnalyticsNavigationUtil.navigateToAnalytics(
+                            context: context,
+                            view: ProgressIndicatorEnum.morphsUsed,
+                            construct: id,
+                          );
+                        },
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
             ],
@@ -197,7 +187,7 @@ class MorphTagChip extends StatelessWidget {
     final theme = Theme.of(context);
     final unlocked =
         constructAnalytics != null && constructAnalytics!.numTotalUses > 0 ||
-            Matrix.of(context).client.userID == Environment.supportUserId;
+        Matrix.of(context).client.userID == Environment.supportUserId;
 
     return Material(
       type: MaterialType.transparency,
@@ -222,10 +212,7 @@ class MorphTagChip extends StatelessWidget {
                   : null,
               color: unlocked ? null : theme.disabledColor,
             ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 4.0,
-              horizontal: 8.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               spacing: 8.0,
@@ -245,10 +232,7 @@ class MorphTagChip extends StatelessWidget {
                             morphTag: morphTag,
                           ),
                         )
-                      : const Icon(
-                          Icons.lock,
-                          color: Colors.white,
-                        ),
+                      : const Icon(Icons.lock, color: Colors.white),
                 ),
                 Flexible(
                   child: Text(

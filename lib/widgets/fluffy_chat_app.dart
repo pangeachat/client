@@ -8,13 +8,13 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/routes.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/theme_builder.dart';
-import '../config/app_config.dart';
 import '../utils/custom_scroll_behaviour.dart';
 import 'matrix.dart';
 
@@ -42,9 +42,7 @@ class FluffyChatApp extends StatelessWidget {
   static final GoRouter router = GoRouter(
     routes: AppRoutes.routes,
     // #Pangea
-    observers: [
-      GoogleAnalytics.getAnalyticsObserver(),
-    ],
+    observers: [GoogleAnalytics.getAnalyticsObserver()],
     // Pangea#
     debugLogDiagnostics: true,
   );
@@ -53,11 +51,14 @@ class FluffyChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ThemeBuilder(
       builder: (context, themeMode, primaryColor) => MaterialApp.router(
-        title: AppConfig.applicationName,
+        title: AppSettings.applicationName.value,
         themeMode: themeMode,
         theme: FluffyThemes.buildTheme(context, Brightness.light, primaryColor),
-        darkTheme:
-            FluffyThemes.buildTheme(context, Brightness.dark, primaryColor),
+        darkTheme: FluffyThemes.buildTheme(
+          context,
+          Brightness.dark,
+          primaryColor,
+        ),
         scrollBehavior: CustomScrollBehavior(),
         // #Pangea
         locale: Provider.of<LocaleProvider>(context).locale,

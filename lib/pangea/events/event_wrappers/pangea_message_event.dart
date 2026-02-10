@@ -50,9 +50,7 @@ class PangeaMessageEvent {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "${event.type} should not be used to make a PangeaMessageEvent",
-        data: {
-          "event": event.toJson(),
-        },
+        data: {"event": event.toJson()},
       );
     }
     _event = event;
@@ -81,50 +79,40 @@ class PangeaMessageEvent {
       MatrixState.pangeaController.userController.userL1?.langCode;
 
   Event? _latestEditCache;
-  Event get _latestEdit => _latestEditCache ??= _event
-          .aggregatedEvents(
-            timeline,
-            RelationshipTypes.edit,
-          )
+  Event get _latestEdit => _latestEditCache ??=
+      _event
+          .aggregatedEvents(timeline, RelationshipTypes.edit)
           //sort by event.originServerTs to get the most recent first
-          .sorted(
-            (a, b) => b.originServerTs.compareTo(a.originServerTs),
-          )
+          .sorted((a, b) => b.originServerTs.compareTo(a.originServerTs))
           .firstOrNull ??
       _event;
 
   // get audio events that are related to this event
   Set<Event> get allAudio => _latestEdit
-          .aggregatedEvents(
-        timeline,
-        RelationshipTypes.reply,
-      )
-          .where((element) {
+      .aggregatedEvents(timeline, PangeaEventTypes.textToSpeech)
+      .where((element) {
         return element.content.tryGet<Map<String, dynamic>>(
               ModelKey.transcription,
             ) !=
             null;
-      }).toSet();
+      })
+      .toSet();
 
   List<RepresentationEvent> get _repEvents => _latestEdit
-          .aggregatedEvents(
-            timeline,
-            PangeaEventTypes.representation,
-          )
-          .map(
-            (e) => RepresentationEvent(
-              event: e,
-              parentMessageEvent: _latestEdit,
-              timeline: timeline,
-            ),
-          )
-          .sorted(
-        (a, b) {
-          if (a.event == null) return -1;
-          if (b.event == null) return 1;
-          return b.event!.originServerTs.compareTo(a.event!.originServerTs);
-        },
-      ).toList();
+      .aggregatedEvents(timeline, PangeaEventTypes.representation)
+      .map(
+        (e) => RepresentationEvent(
+          event: e,
+          parentMessageEvent: _latestEdit,
+          timeline: timeline,
+        ),
+      )
+      .sorted((a, b) {
+        if (a.event == null) return -1;
+        if (b.event == null) return 1;
+        return b.event!.originServerTs.compareTo(a.event!.originServerTs);
+      })
+      .toList();
 
   ChoreoRecordModel? get _embeddedChoreo {
     try {
@@ -201,9 +189,7 @@ class PangeaMessageEvent {
         m: "error parsing originalSent",
         e: err,
         s: s,
-        data: {
-          "event": _latestEdit.toJson(),
-        },
+        data: {"event": _latestEdit.toJson()},
       );
     }
 
@@ -228,9 +214,7 @@ class PangeaMessageEvent {
           m: "error parsing originalWritten",
           e: err,
           s: s,
-          data: {
-            "event": _latestEdit.toJson(),
-          },
+          data: {"event": _latestEdit.toJson()},
         );
       }
     }
@@ -239,11 +223,13 @@ class PangeaMessageEvent {
     return _representations!;
   }
 
-  RepresentationEvent? get originalSent => representations
-      .firstWhereOrNull((element) => element.content.originalSent);
+  RepresentationEvent? get originalSent => representations.firstWhereOrNull(
+    (element) => element.content.originalSent,
+  );
 
-  RepresentationEvent? get originalWritten => representations
-      .firstWhereOrNull((element) => element.content.originalWritten);
+  RepresentationEvent? get originalWritten => representations.firstWhereOrNull(
+    (element) => element.content.originalWritten,
+  );
 
   String get originalWrittenContent {
     String? written = originalSent?.content.text;
@@ -283,8 +269,8 @@ class PangeaMessageEvent {
 
   TextDirection get textDirection =>
       LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
-          ? TextDirection.rtl
-          : TextDirection.ltr;
+      ? TextDirection.rtl
+      : TextDirection.ltr;
 
   void updateLatestEdit() {
     _latestEditCache = null;
@@ -294,18 +280,13 @@ class PangeaMessageEvent {
   RepresentationEvent? representationByLanguage(
     String langCode, {
     bool Function(RepresentationEvent)? filter,
-  }) =>
-      representations.firstWhereOrNull(
-        (element) =>
-            element.langCode.split("-")[0] == langCode.split("-")[0] &&
-            (filter?.call(element) ?? true),
-      );
+  }) => representations.firstWhereOrNull(
+    (element) =>
+        element.langCode.split("-")[0] == langCode.split("-")[0] &&
+        (filter?.call(element) ?? true),
+  );
 
-  Event? getTextToSpeechLocal(
-    String langCode,
-    String text,
-    String? voice,
-  ) {
+  Event? getTextToSpeechLocal(String langCode, String text, String? voice) {
     for (final audio in allAudio) {
       final dataMap = audio.content.tryGetMap(ModelKey.transcription);
       if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
@@ -325,9 +306,7 @@ class PangeaMessageEvent {
         ErrorHandler.logError(
           e: e,
           s: s,
-          data: {
-            "event": audio.toJson(),
-          },
+          data: {"event": audio.toJson()},
           m: "error parsing data in getTextToSpeechLocal",
         );
       }
@@ -335,17 +314,16 @@ class PangeaMessageEvent {
     return null;
   }
 
-  RepresentationEvent? _getSpeechToTextRepresentation() =>
-      representations.firstWhereOrNull(
-        (element) => element.content.speechToText != null,
-      );
+  RepresentationEvent? _getSpeechToTextRepresentation() => representations
+      .firstWhereOrNull((element) => element.content.speechToText != null);
 
   SpeechToTextResponseModel? getSpeechToTextLocal() {
     final rep = _getSpeechToTextRepresentation()?.content.speechToText;
     if (rep != null) return rep;
 
-    final rawBotTranscription =
-        event.content.tryGetMap(ModelKey.botTranscription);
+    final rawBotTranscription = event.content.tryGetMap(
+      ModelKey.botTranscription,
+    );
 
     if (rawBotTranscription != null) {
       try {
@@ -356,9 +334,7 @@ class PangeaMessageEvent {
         ErrorHandler.logError(
           e: err,
           s: s,
-          data: {
-            "event": _event.toJson(),
-          },
+          data: {"event": _event.toJson()},
           m: "error parsing botTranscription",
         );
         return null;
@@ -395,9 +371,7 @@ class PangeaMessageEvent {
     );
 
     if (result.error != null) {
-      throw Exception(
-        "Error getting text to speech: ${result.error}",
-      );
+      throw Exception("Error getting text to speech: ${result.error}");
     }
 
     final response = result.result!;
@@ -416,12 +390,8 @@ class PangeaMessageEvent {
 
     room.sendFileEvent(
       file,
-      inReplyTo: _event,
       extraContent: {
-        'info': {
-          ...file.info,
-          ModelKey.duration: response.durationMillis,
-        },
+        'info': {...file.info, ModelKey.duration: response.durationMillis},
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
           ModelKey.duration: response.durationMillis,
@@ -430,15 +400,12 @@ class PangeaMessageEvent {
         ModelKey.transcription: response
             .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
             .toJson(),
+        "m.relates_to": {
+          "rel_type": PangeaEventTypes.textToSpeech,
+          "event_id": _event.eventId,
+        },
       },
-    ).then((eventId) async {
-      final Event? audioEvent =
-          eventId != null ? await room.getEventById(eventId) : null;
-
-      if (audioEvent != null) {
-        allAudio.add(audioEvent);
-      }
-    });
+    );
 
     return file;
   }
@@ -473,9 +440,7 @@ class PangeaMessageEvent {
     );
 
     if (result.error != null) {
-      throw Exception(
-        "Error getting speech to text: ${result.error}",
-      );
+      throw Exception("Error getting speech to text: ${result.error}");
     }
 
     if (sendEvent) {
@@ -599,7 +564,7 @@ class PangeaMessageEvent {
 
     final includedIT =
         (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
-            !(originalSent?.choreo?.includedIGC ?? true);
+        !(originalSent?.choreo?.includedIGC ?? true);
 
     RepresentationEvent? rep;
     if (!includedIT) {

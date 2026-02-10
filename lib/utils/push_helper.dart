@@ -8,14 +8,15 @@ import 'package:collection/collection.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 const notificationAvatarDimension = 128;
@@ -29,6 +30,7 @@ Future<void> pushHelper(
   // #Pangea
   Map<String, dynamic>? additionalData,
   // Pangea#
+  bool useNotificationActions = true,
 }) async {
   try {
     await _tryPushHelper(
@@ -40,11 +42,12 @@ Future<void> pushHelper(
       // #Pangea
       additionalData: additionalData,
       // Pangea#
+      useNotificationActions: useNotificationActions,
     );
   } catch (e, s) {
-    Logs().v('Push Helper has crashed!', e, s);
+    Logs().e('Push Helper has crashed! Writing into temporary file', e, s);
 
-    l10n ??= await lookupL10n(const Locale('en'));
+    l10n ??= await lookupL10n(PlatformDispatcher.instance.locale);
     flutterLocalNotificationsPlugin.show(
       notification.roomId?.hashCode ?? 0,
       // #Pangea
@@ -59,7 +62,7 @@ Future<void> pushHelper(
           l10n.incomingMessages,
           number: notification.counts?.unread,
           ticker: l10n.unreadChatsInApp(
-            AppConfig.applicationName,
+            AppSettings.applicationName.value,
             (notification.counts?.unread ?? 0).toString(),
           ),
           importance: Importance.high,
@@ -81,6 +84,7 @@ Future<void> _tryPushHelper(
   // #Pangea
   Map<String, dynamic>? additionalData,
   // Pangea#
+  bool useNotificationActions = true,
 }) async {
   final isBackgroundMessage = client == null;
   Logs().v(
@@ -97,9 +101,8 @@ Future<void> _tryPushHelper(
 
   client ??= (await ClientManager.getClients(
     initialize: false,
-    store: await SharedPreferences.getInstance(),
-  ))
-      .first;
+    store: await AppSettings.init(),
+  )).first;
   final event = await client.getEventByPushNotification(
     notification,
     storeInDatabase: false,
@@ -114,8 +117,8 @@ Future<void> _tryPushHelper(
       // Make sure client is fully loaded and synced before dismiss notifications:
       await client.roomsLoading;
       await client.oneShotSync();
-      final activeNotifications =
-          await flutterLocalNotificationsPlugin.getActiveNotifications();
+      final activeNotifications = await flutterLocalNotificationsPlugin
+          .getActiveNotifications();
       for (final activeNotification in activeNotifications) {
         final room = client.rooms.singleWhereOrNull(
           (room) => room.id.hashCode == activeNotification.id,
@@ -180,16 +183,16 @@ Future<void> _tryPushHelper(
     roomAvatarFile = avatar == null
         ? null
         : await client
-            .downloadMxcCached(
-              avatar,
-              thumbnailMethod: ThumbnailMethod.crop,
-              width: notificationAvatarDimension,
-              height: notificationAvatarDimension,
-              animated: false,
-              isThumbnail: true,
-              rounded: true,
-            )
-            .timeout(const Duration(seconds: 3));
+              .downloadMxcCached(
+                avatar,
+                thumbnailMethod: ThumbnailMethod.crop,
+                width: notificationAvatarDimension,
+                height: notificationAvatarDimension,
+                animated: false,
+                isThumbnail: true,
+                rounded: true,
+              )
+              .timeout(const Duration(seconds: 3));
   } catch (e, s) {
     Logs().e('Unable to get avatar picture', e, s);
     // #Pangea
@@ -200,18 +203,18 @@ Future<void> _tryPushHelper(
     senderAvatarFile = event.room.isDirectChat
         ? roomAvatarFile
         : senderAvatar == null
-            ? null
-            : await client
-                .downloadMxcCached(
-                  senderAvatar,
-                  thumbnailMethod: ThumbnailMethod.crop,
-                  width: notificationAvatarDimension,
-                  height: notificationAvatarDimension,
-                  animated: false,
-                  isThumbnail: true,
-                  rounded: true,
-                )
-                .timeout(const Duration(seconds: 3));
+        ? null
+        : await client
+              .downloadMxcCached(
+                senderAvatar,
+                thumbnailMethod: ThumbnailMethod.crop,
+                width: notificationAvatarDimension,
+                height: notificationAvatarDimension,
+                animated: false,
+                isThumbnail: true,
+                rounded: true,
+              )
+              .timeout(const Duration(seconds: 3));
   } catch (e, s) {
     Logs().e('Unable to get avatar picture', e, s);
   }
@@ -236,14 +239,15 @@ Future<void> _tryPushHelper(
 
   final messagingStyleInformation = PlatformInfos.isAndroid
       ? await AndroidFlutterLocalNotificationsPlugin()
-          .getActiveNotificationMessagingStyle(id)
+            .getActiveNotificationMessagingStyle(id)
       : null;
   messagingStyleInformation?.messages?.add(newMessage);
 
   final roomName = event.room.getLocalizedDisplayname(MatrixLocals(l10n));
 
-  final notificationGroupId =
-      event.room.isDirectChat ? 'directChats' : 'groupChats';
+  final notificationGroupId = event.room.isDirectChat
+      ? 'directChats'
+      : 'groupChats';
   // #Pangea
   // final groupName = event.room.isDirectChat ? l10n.directChats : l10n.groups;
   final groupName = event.room.isDirectChat ? l10n.directChats : l10n.chats;
@@ -261,11 +265,13 @@ Future<void> _tryPushHelper(
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+        AndroidFlutterLocalNotificationsPlugin
+      >()
       ?.createNotificationChannelGroup(messageRooms);
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+        AndroidFlutterLocalNotificationsPlugin
+      >()
       ?.createNotificationChannel(roomsChannel);
 
   final androidPlatformChannelSpecifics = AndroidNotificationDetails(
@@ -274,7 +280,8 @@ Future<void> _tryPushHelper(
     number: notification.counts?.unread,
     category: AndroidNotificationCategory.message,
     shortcutId: event.room.id,
-    styleInformation: messagingStyleInformation ??
+    styleInformation:
+        messagingStyleInformation ??
         MessagingStyleInformation(
           Person(
             name: senderName,
@@ -299,6 +306,25 @@ Future<void> _tryPushHelper(
     importance: Importance.high,
     priority: Priority.max,
     groupKey: event.room.spaceParents.firstOrNull?.roomId ?? 'rooms',
+    actions: event.type == EventTypes.RoomMember || !useNotificationActions
+        ? null
+        : <AndroidNotificationAction>[
+            AndroidNotificationAction(
+              FluffyChatNotificationActions.reply.name,
+              l10n.reply,
+              inputs: [
+                AndroidNotificationActionInput(label: l10n.writeAMessage),
+              ],
+              cancelNotification: false,
+              allowGeneratedReplies: true,
+              semanticAction: SemanticAction.reply,
+            ),
+            AndroidNotificationAction(
+              FluffyChatNotificationActions.markAsRead.name,
+              l10n.markAsRead,
+              semanticAction: SemanticAction.markAsRead,
+            ),
+          ],
   );
   const iOSPlatformChannelSpecifics = DarwinNotificationDetails();
   final platformChannelSpecifics = NotificationDetails(
@@ -313,20 +339,20 @@ Future<void> _tryPushHelper(
   }
 
   // #Pangea - Include activity session data in payload
-  String payload = event.roomId!;
+  final Map<String, String> additionalDataMap = {};
   if (additionalData != null) {
-    const sessionIdKey = "content_pangea.activity.session_room_id";
-    const activityIdKey = "content_pangea.activity.id";
-    final sessionRoomId = additionalData[sessionIdKey];
-    final activityId = additionalData[activityIdKey];
-    if (sessionRoomId is String && activityId is String) {
-      payload = jsonEncode({
-        'room_id': event.roomId,
-        sessionIdKey: sessionRoomId,
-        activityIdKey: activityId,
-      });
-    }
+    additionalData.forEach((key, value) {
+      if (value is String) {
+        additionalDataMap[key] = value;
+      }
+    });
   }
+  final payload = FluffyChatPushPayload(
+    client.clientName,
+    event.room.id,
+    event.eventId,
+    additionalData: additionalDataMap,
+  ).toString();
   // Pangea#
 
   await flutterLocalNotificationsPlugin.show(
@@ -335,11 +361,68 @@ Future<void> _tryPushHelper(
     body,
     platformChannelSpecifics,
     // #Pangea
-    // payload: event.roomId,
+    // payload: FluffyChatPushPayload(
+    //   client.clientName,
+    //   event.room.id,
+    //   event.eventId,
+    // ).toString(),
     payload: payload,
     // Pangea#
   );
   Logs().v('Push helper has been completed!');
+}
+
+class FluffyChatPushPayload {
+  final String? clientName, roomId, eventId;
+  // #Pangea
+  final Map<String, String> additionalData;
+  // Pangea#
+
+  // #Pangea
+  // FluffyChatPushPayload(this.clientName, this.roomId, this.eventId);
+  FluffyChatPushPayload(
+    this.clientName,
+    this.roomId,
+    this.eventId, {
+    this.additionalData = const {},
+  });
+  // Pangea#
+
+  factory FluffyChatPushPayload.fromString(String payload) {
+    final parts = payload.split('|');
+    // #Pangea
+    // if (parts.length != 3) {
+    //   return FluffyChatPushPayload(null, null, null);
+    // }
+    // return FluffyChatPushPayload(parts[0], parts[1], parts[2]);
+    if (parts.length < 3) {
+      return FluffyChatPushPayload(null, null, null);
+    }
+
+    Map<String, String> additionalData = {};
+    if (parts.length > 3) {
+      try {
+        additionalData = Map<String, String>.from(jsonDecode(parts[3]));
+      } catch (e, s) {
+        Logs().e('Unable to parse additional data from payload', e, s);
+      }
+    }
+    return FluffyChatPushPayload(
+      parts[0],
+      parts[1],
+      parts[2],
+      additionalData: additionalData,
+    );
+    // Pangea#
+  }
+
+  // #Pangea
+  // @override
+  // String toString() => '$clientName|$roomId|$eventId';
+  @override
+  String toString() =>
+      '$clientName|$roomId|$eventId|${jsonEncode(additionalData)}';
+  // Pangea#
 }
 
 /// Creates a shortcut for Android platform but does not block displaying the

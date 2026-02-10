@@ -2583,7 +2583,6 @@
   "noPublicLinkHasBeenCreatedYet": "Încă nu a fost creat un link public",
   "knock": "Bate la ușă",
   "hidePresences": "Ascunde lista de stare?",
-  "signInWith": "Autentifică-te cu {provider}",
   "profileNotFound": "Utilizatorul nu a fost găsit pe server. Poate există o problemă de conexiune sau utilizatorul nu există.",
   "setTheme": "Setează tema:",
   "setColorTheme": "Setează tema de culoare:",
@@ -4274,14 +4273,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -4692,9 +4683,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

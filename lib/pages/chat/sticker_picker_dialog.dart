@@ -37,15 +37,17 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
       final filteredImagePackImageEntried = pack.images.entries.toList();
       if (searchFilter?.isNotEmpty ?? false) {
         filteredImagePackImageEntried.removeWhere(
-          (e) => !(e.key.toLowerCase().contains(searchFilter!.toLowerCase()) ||
-              (e.value.body
-                      ?.toLowerCase()
-                      .contains(searchFilter!.toLowerCase()) ??
-                  false)),
+          (e) =>
+              !(e.key.toLowerCase().contains(searchFilter!.toLowerCase()) ||
+                  (e.value.body?.toLowerCase().contains(
+                        searchFilter!.toLowerCase(),
+                      ) ??
+                      false)),
         );
       }
-      final imageKeys =
-          filteredImagePackImageEntried.map((e) => e.key).toList();
+      final imageKeys = filteredImagePackImageEntried
+          .map((e) => e.key)
+          .toList();
       if (imageKeys.isEmpty) {
         return const SizedBox.shrink();
       }
@@ -66,32 +68,38 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
           GridView.builder(
             itemCount: imageKeys.length,
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 128,
+              maxCrossAxisExtent: 84,
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
             ),
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int imageIndex) {
               final image = pack.images[imageKeys[imageIndex]]!;
-              return InkWell(
-                radius: AppConfig.borderRadius,
-                key: ValueKey(image.url.toString()),
-                onTap: () {
-                  // copy the image
-                  final imageCopy =
-                      ImagePackImageContent.fromJson(image.toJson().copy());
-                  // set the body, if it doesn't exist, to the key
-                  imageCopy.body ??= imageKeys[imageIndex];
-                  widget.onSelected(imageCopy);
-                },
-                child: AbsorbPointer(
-                  absorbing: true,
-                  child: MxcImage(
-                    uri: image.url,
-                    fit: BoxFit.contain,
-                    width: 128,
-                    height: 128,
-                    animated: true,
-                    isThumbnail: false,
+              return Tooltip(
+                message: image.body ?? imageKeys[imageIndex],
+                child: InkWell(
+                  radius: AppConfig.borderRadius,
+                  key: ValueKey(image.url.toString()),
+                  onTap: () {
+                    // copy the image
+                    final imageCopy = ImagePackImageContent.fromJson(
+                      image.toJson().copy(),
+                    );
+                    // set the body, if it doesn't exist, to the key
+                    imageCopy.body ??= imageKeys[imageIndex];
+                    widget.onSelected(imageCopy);
+                  },
+                  child: AbsorbPointer(
+                    absorbing: true,
+                    child: MxcImage(
+                      uri: image.url,
+                      fit: BoxFit.contain,
+                      width: 128,
+                      height: 128,
+                      animated: true,
+                      isThumbnail: false,
+                    ),
                   ),
                 ),
               );
@@ -110,6 +118,7 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
             SliverAppBar(
               floating: true,
               pinned: true,
+              scrolledUnderElevation: 0,
               automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
               title: SizedBox(
@@ -117,6 +126,7 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
                 child: TextField(
                   autofocus: false,
                   decoration: InputDecoration(
+                    filled: true,
                     hintText: L10n.of(context).search,
                     prefixIcon: const Icon(Icons.search_outlined),
                     contentPadding: EdgeInsets.zero,
@@ -129,7 +139,7 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
               SliverFillRemaining(
                 child: Center(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       Text(L10n.of(context).noEmotesFound),
                       // #Pangea
@@ -137,7 +147,7 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
                       // OutlinedButton.icon(
                       //   onPressed: () => UrlLauncher(
                       //     context,
-                      //     'https://matrix.to/#/#fluffychat-stickers:janian.de',
+                      //     AppConfig.howDoIGetStickersTutorial,
                       //   ).launchUrl(),
                       //   icon: const Icon(Icons.explore_outlined),
                       //   label: Text(L10n.of(context).discover),

@@ -1974,7 +1974,6 @@
   "report": "relatar",
   "signInWithPassword": "Iniciar sessão com palavra-passe",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Por favor, tente novamente mais tarde ou escolha um servidor diferente.",
-  "signInWith": "Iniciar sessão com {provider}",
   "profileNotFound": "O utilizador não foi encontrado no servidor. Talvez haja um problema de ligação ou o utilizador não exista.",
   "setTheme": "Definir tema:",
   "setColorTheme": "Definir tema de cor:",
@@ -4585,14 +4584,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5003,9 +4994,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

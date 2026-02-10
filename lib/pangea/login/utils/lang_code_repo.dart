@@ -4,15 +4,12 @@ class LanguageSettings {
   final String targetLangCode;
   final String? baseLangCode;
 
-  LanguageSettings({
-    required this.targetLangCode,
-    this.baseLangCode,
-  });
+  LanguageSettings({required this.targetLangCode, this.baseLangCode});
 
   Map<String, dynamic> toJson() => {
-        'targetLangCode': targetLangCode,
-        'baseLangCode': baseLangCode,
-      };
+    'targetLangCode': targetLangCode,
+    'baseLangCode': baseLangCode,
+  };
 
   factory LanguageSettings.fromJson(Map<String, dynamic> json) =>
       LanguageSettings(

@@ -40,8 +40,9 @@ class LoadActivitySummaryWidgetState extends State<LoadActivitySummaryWidget> {
     // The summary state event is waiting (<= 10 seconds since request)
     // Wait for 10 seconds (or time remaining until not waiting). If summary still not there, run request.
     if (_summaryEvent!.isLoading) {
-      final remainingTime =
-          DateTime.now().difference(_summaryEvent!.requestedAt!).inSeconds;
+      final remainingTime = DateTime.now()
+          .difference(_summaryEvent!.requestedAt!)
+          .inSeconds;
 
       await Future.delayed(
         Duration(seconds: remainingTime < 10 ? 10 - remainingTime : 0),

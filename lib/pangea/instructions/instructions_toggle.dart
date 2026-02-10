@@ -9,10 +9,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// User can toggle on to prevent Instruction Card
 /// from appearing in future sessions
 class InstructionsToggle extends StatefulWidget {
-  const InstructionsToggle({
-    super.key,
-    required this.instructionsKey,
-  });
+  const InstructionsToggle({super.key, required this.instructionsKey});
 
   final InstructionsEnum instructionsKey;
 

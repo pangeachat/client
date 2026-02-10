@@ -16,7 +16,8 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
   final Widget Function(
     BuildContext context,
     PhoneticTranscriptionBuilderState controller,
-  ) builder;
+  )
+  builder;
 
   const PhoneticTranscriptionBuilder({
     super.key,
@@ -33,8 +34,9 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
 
 class PhoneticTranscriptionBuilderState
     extends State<PhoneticTranscriptionBuilder> {
-  final ValueNotifier<AsyncState<String>> _loader =
-      ValueNotifier(const AsyncState.idle());
+  final ValueNotifier<AsyncState<String>> _loader = ValueNotifier(
+    const AsyncState.idle(),
+  );
 
   @override
   void initState() {
@@ -66,12 +68,12 @@ class PhoneticTranscriptionBuilderState
       isLoaded ? (_loader.value as AsyncLoaded<String>).value : null;
 
   PhoneticTranscriptionRequest get _request => PhoneticTranscriptionRequest(
-        arc: LanguageArc(
-          l1: MatrixState.pangeaController.userController.userL1!,
-          l2: widget.textLanguage,
-        ),
-        content: PangeaTokenText.fromString(widget.text),
-      );
+    arc: LanguageArc(
+      l1: MatrixState.pangeaController.userController.userL1!,
+      l2: widget.textLanguage,
+    ),
+    content: PangeaTokenText.fromString(widget.text),
+  );
 
   Future<void> _load() async {
     _loader.value = const AsyncState.loading();
@@ -84,8 +86,14 @@ class PhoneticTranscriptionBuilderState
     resp.isError
         ? _loader.value = AsyncState.error(resp.asError!.error)
         : _loader.value = AsyncState.loaded(
-            resp.asValue!.value.phoneticTranscriptionResult
-                .phoneticTranscription.first.phoneticL1Transcription.content,
+            resp
+                .asValue!
+                .value
+                .phoneticTranscriptionResult
+                .phoneticTranscription
+                .first
+                .phoneticL1Transcription
+                .content,
           );
   }
 
@@ -93,10 +101,7 @@ class PhoneticTranscriptionBuilderState
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _loader,
-      builder: (context, _, __) => widget.builder(
-        context,
-        this,
-      ),
+      builder: (context, _, _) => widget.builder(context, this),
     );
   }
 }

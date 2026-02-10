@@ -1779,12 +1779,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "waitingPartnerAcceptRequest": "パートナーのリクエスト承諾待ちです...",
+  "waitingPartnerAcceptRequest": "パートナーのリクエスト承諾待ちです…",
   "@waitingPartnerAcceptRequest": {
     "type": "String",
     "placeholders": {}
   },
-  "waitingPartnerEmoji": "パートナーの絵文字承諾待ちです...",
+  "waitingPartnerEmoji": "パートナーの絵文字承諾待ちです…",
   "@waitingPartnerEmoji": {
     "type": "String",
     "placeholders": {}
@@ -2394,15 +2394,6 @@
   "@newSpace": {},
   "reopenChat": "チャットを再開する",
   "@reopenChat": {},
-  "signInWith": "{provider}でログイン",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "signInWithPassword": "パスワードでログイン",
   "@signInWithPassword": {},
   "alwaysUse24HourFormat": "常に24時間表示を使用",
@@ -4747,9 +4738,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",

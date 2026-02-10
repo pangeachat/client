@@ -7,7 +7,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
 import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
@@ -75,8 +74,10 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
   }
 
   void _updateReactionMap() {
-    final allReactionEvents = widget.event
-        .aggregatedEvents(widget.timeline, RelationshipTypes.reaction);
+    final allReactionEvents = widget.event.aggregatedEvents(
+      widget.timeline,
+      RelationshipTypes.reaction,
+    );
     final newReactionMap = <String, _ReactionEntry>{};
 
     for (final e in allReactionEvents) {
@@ -221,14 +222,8 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 400),
       vsync: this,
     );
-    _bounceOutAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0,
-    ).animate(
-      CurvedAnimation(
-        parent: _bounceOutController,
-        curve: Curves.easeInBack,
-      ),
+    _bounceOutAnimation = Tween<double>(begin: 1.0, end: 0).animate(
+      CurvedAnimation(parent: _bounceOutController, curve: Curves.easeInBack),
     );
 
     _burstController = AnimationController(
@@ -238,12 +233,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     _burstAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(
-      CurvedAnimation(
-        parent: _burstController,
-        curve: Curves.easeOut,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _burstController, curve: Curves.easeOut));
 
     _growController = AnimationController(
       duration: const Duration(milliseconds: 500),
@@ -251,25 +241,33 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     );
     _growScale = TweenSequence([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.6, end: 1.18)
-            .chain(CurveTween(curve: Curves.easeOutBack)),
+        tween: Tween<double>(
+          begin: 0.6,
+          end: 1.18,
+        ).chain(CurveTween(curve: Curves.easeOutBack)),
         weight: 60,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.18, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: 1.18,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 40,
       ),
     ]).animate(_growController);
     _growOffset = TweenSequence([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.0, end: -10.0)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0.0,
+          end: -10.0,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 60,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: -10.0, end: 0.0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: -10.0,
+          end: 0.0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 40,
       ),
     ]).animate(_growController);
@@ -293,7 +291,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     _growController.reset();
   }
 
-  _animateAndReact() async {
+  Future<void> _animateAndReact() async {
     final bool? wasReacted = widget.reacted;
     final bool wasSingle = (widget.count == 1);
 
@@ -345,11 +343,6 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor =
-        theme.brightness == Brightness.dark ? Colors.white : Colors.black;
-    final color = widget.reacted == true
-        ? theme.bubbleColor
-        : theme.colorScheme.surfaceContainerHigh;
 
     Widget content;
     if (widget.reactionKey.startsWith('mxc://')) {
@@ -367,8 +360,9 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
             const SizedBox(width: 4),
             Text(
               widget.count.toString(),
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: textColor,
+                color: theme.colorScheme.onSurface,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
               ),
             ),
@@ -383,7 +377,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       content = Text(
         renderKey.toString() + (widget.count > 1 ? ' ${widget.count}' : ''),
         style: TextStyle(
-          color: widget.reacted == true ? theme.onBubbleColor : textColor,
+          color: theme.colorScheme.onSurface,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
@@ -396,11 +390,13 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
         AnimatedBuilder(
           animation: Listenable.merge([_bounceOutAnimation, _growController]),
           builder: (context, child) {
-            final isGrowing = _growController.isAnimating ||
+            final isGrowing =
+                _growController.isAnimating ||
                 (_growController.value > 0 && _growController.value < 1.0);
             final isBouncing = _bounceOutController.isAnimating;
-            final scale =
-                isGrowing ? _growScale.value : _bounceOutAnimation.value;
+            final scale = isGrowing
+                ? _growScale.value
+                : _bounceOutAnimation.value;
             final offsetY = isGrowing ? _growOffset.value : 0.0;
 
             return AnimatedSize(
@@ -438,7 +434,17 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: color,
+                                  color: widget.reacted == true
+                                      ? theme.colorScheme.primaryContainer
+                                      : theme.colorScheme.surfaceContainerHigh,
+                                  border: Border.all(
+                                    color: widget.reacted == true
+                                        ? theme.colorScheme.primary
+                                        : theme
+                                              .colorScheme
+                                              .surfaceContainerHigh,
+                                    width: 1,
+                                  ),
                                   borderRadius: BorderRadius.circular(
                                     AppConfig.borderRadius / 2,
                                   ),
@@ -499,17 +505,14 @@ class _AdaptableReactorsDialog extends StatelessWidget {
   final Client? client;
   final _ReactionEntry? reactionEntry;
 
-  const _AdaptableReactorsDialog({
-    this.client,
-    this.reactionEntry,
-  });
+  const _AdaptableReactorsDialog({this.client, this.reactionEntry});
 
   Future<bool?> show(BuildContext context) => showAdaptiveDialog(
-        context: context,
-        builder: (context) => this,
-        barrierDismissible: true,
-        useRootNavigator: true,
-      );
+    context: context,
+    builder: (context) => this,
+    barrierDismissible: true,
+    useRootNavigator: true,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -538,9 +541,6 @@ class _AdaptableReactorsDialog extends StatelessWidget {
 
     final title = Center(child: Text(reactionEntry!.key));
 
-    return AlertDialog.adaptive(
-      title: title,
-      content: body,
-    );
+    return AlertDialog.adaptive(title: title, content: body);
   }
 }

@@ -49,11 +49,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
       );
       await course!.fetchMediaUrls();
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'courseId': courseId},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'courseId': courseId});
       courseError = e;
     } finally {
       if (mounted) setState(() => loadingCourse = false);

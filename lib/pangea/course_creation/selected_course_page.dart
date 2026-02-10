@@ -25,12 +25,7 @@ class SelectedCourse extends StatefulWidget {
   /// In join mode, the ID of the space to join that already has this course.
   final String? spaceId;
 
-  const SelectedCourse(
-    this.courseId,
-    this.mode, {
-    super.key,
-    this.spaceId,
-  });
+  const SelectedCourse(this.courseId, this.mode, {super.key, this.spaceId});
 
   @override
   SelectedCourseController createState() => SelectedCourseController();
@@ -75,10 +70,7 @@ class SelectedCourseController extends State<SelectedCourse>
       return;
     }
 
-    final roomId = await SpaceCodeController.joinSpaceWithCode(
-      context,
-      code,
-    );
+    final roomId = await SpaceCodeController.joinSpaceWithCode(context, code);
 
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
@@ -97,10 +89,7 @@ class SelectedCourseController extends State<SelectedCourse>
     }
   }
 
-  Future<void> launchCourse(
-    String courseId,
-    CoursePlanModel course,
-  ) async {
+  Future<void> launchCourse(String courseId, CoursePlanModel course) async {
     final client = Matrix.of(context).client;
     final Completer<String> completer = Completer<String>();
     client
@@ -112,9 +101,7 @@ class SelectedCourseController extends State<SelectedCourse>
           initialState: [
             sdk.StateEvent(
               type: PangeaEventTypes.coursePlan,
-              content: {
-                "uuid": courseId,
-              },
+              content: {"uuid": courseId},
             ),
           ],
           avatarUrl: course.imageUrl.toString(),
@@ -123,10 +110,7 @@ class SelectedCourseController extends State<SelectedCourse>
         .then((spaceId) => completer.complete(spaceId))
         .catchError((error) => completer.completeError(error));
 
-    context.go(
-      "/rooms/course/own/${widget.courseId}/invite",
-      extra: completer,
-    );
+    context.go("/rooms/course/own/${widget.courseId}/invite", extra: completer);
   }
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {

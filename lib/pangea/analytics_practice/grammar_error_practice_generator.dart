@@ -5,9 +5,7 @@ import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_m
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 
 class GrammarErrorPracticeGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     assert(
       req.grammarErrorInfo != null,
       'Grammar error info must be provided for grammar error practice',

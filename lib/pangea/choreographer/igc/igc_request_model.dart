@@ -16,7 +16,12 @@ class IGCRequestModel with BaseRequestModel {
 
   @override
   String get userCefr => MatrixState
-      .pangeaController.userController.profile.userSettings.cefrLevel.string;
+      .pangeaController
+      .userController
+      .profile
+      .userSettings
+      .cefrLevel
+      .string;
 
   @override
   String get userL1 => MatrixState.pangeaController.userController.userL1Code!;
@@ -36,15 +41,14 @@ class IGCRequestModel with BaseRequestModel {
   /// Creates a copy of this request with optional feedback.
   IGCRequestModel copyWithFeedback(
     List<LLMFeedbackModel<IGCResponseModel>> newFeedback,
-  ) =>
-      IGCRequestModel(
-        fullText: fullText,
-        enableIGC: enableIGC,
-        enableIT: enableIT,
-        userId: userId,
-        prevMessages: prevMessages,
-        feedback: newFeedback,
-      );
+  ) => IGCRequestModel(
+    fullText: fullText,
+    enableIGC: enableIGC,
+    enableIT: enableIT,
+    userId: userId,
+    prevMessages: prevMessages,
+    feedback: newFeedback,
+  );
 
   Map<String, dynamic> toJson() {
     final json = {
@@ -54,8 +58,9 @@ class IGCRequestModel with BaseRequestModel {
       ModelKey.enableIT: enableIT,
       ModelKey.enableIGC: enableIGC,
       ModelKey.userId: userId,
-      ModelKey.prevMessages:
-          jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
+      ModelKey.prevMessages: jsonEncode(
+        prevMessages.map((x) => x.toJson()).toList(),
+      ),
     };
     if (feedback.isNotEmpty) {
       json[ModelKey.feedback] = feedback.map((f) => f.toJson()).toList();
@@ -84,14 +89,14 @@ class IGCRequestModel with BaseRequestModel {
 
   @override
   int get hashCode => Object.hash(
-        fullText.trim(),
-        userL1,
-        userL2,
-        enableIT,
-        enableIGC,
-        userId,
-        _feedbackHash,
-      );
+    fullText.trim(),
+    userL1,
+    userL2,
+    enableIT,
+    enableIGC,
+    userId,
+    _feedbackHash,
+  );
 }
 
 /// Previous text/audio message sent in chat
@@ -117,10 +122,10 @@ class PreviousMessage {
       );
 
   Map<String, dynamic> toJson() => {
-        ModelKey.prevContent: content,
-        ModelKey.prevSender: sender,
-        ModelKey.prevTimestamp: timestamp.toIso8601String(),
-      };
+    ModelKey.prevContent: content,
+    ModelKey.prevSender: sender,
+    ModelKey.prevTimestamp: timestamp.toIso8601String(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -135,10 +140,6 @@ class PreviousMessage {
 
   @override
   int get hashCode {
-    return Object.hash(
-      content,
-      sender,
-      timestamp,
-    );
+    return Object.hash(content, sender, timestamp);
   }
 }

@@ -40,17 +40,15 @@ class MatchActivityCard extends StatelessWidget {
       case WordListeningPracticeActivityModel():
         return Padding(
           padding: const EdgeInsets.all(8),
-          child: Icon(
-            Icons.volume_up,
-            size: fontSize,
-          ),
+          child: Icon(Icons.volume_up, size: fontSize),
         );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = (FluffyThemes.isColumnMode(context)
+    double fontSize =
+        (FluffyThemes.isColumnMode(context)
             ? Theme.of(context).textTheme.titleLarge?.fontSize
             : Theme.of(context).textTheme.titleMedium?.fontSize) ??
         26;
@@ -72,31 +70,34 @@ class MatchActivityCard extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 4.0,
           runSpacing: 4.0,
-          children: currentActivity.matchContent.choices.map(
-            (PracticeChoice cf) {
-              final bool? wasCorrect = controller.wasCorrectMatch(cf);
-              return ChoiceAnimationWidget(
+          children: currentActivity.matchContent.choices.map((
+            PracticeChoice cf,
+          ) {
+            final bool? wasCorrect = controller.wasCorrectMatch(cf);
+            return ChoiceAnimationWidget(
+              isSelected: controller.selectedChoice == cf,
+              isCorrect: wasCorrect,
+              child: PracticeMatchItem(
+                token: currentActivity.tokens.firstWhereOrNull(
+                  (t) => t.vocabConstructID == cf.form.cId,
+                ),
                 isSelected: controller.selectedChoice == cf,
                 isCorrect: wasCorrect,
-                child: PracticeMatchItem(
-                  token: currentActivity.tokens.firstWhereOrNull(
-                    (t) => t.vocabConstructID == cf.form.cId,
-                  ),
-                  isSelected: controller.selectedChoice == cf,
-                  isCorrect: wasCorrect,
-                  constructForm: cf,
-                  content:
-                      choiceDisplayContent(context, cf.choiceContent, fontSize),
-                  audioContent:
-                      currentActivity is WordListeningPracticeActivityModel
-                          ? cf.choiceContent
-                          : null,
-                  controller: controller,
-                  shimmer: controller.showChoiceShimmer,
+                constructForm: cf,
+                content: choiceDisplayContent(
+                  context,
+                  cf.choiceContent,
+                  fontSize,
                 ),
-              );
-            },
-          ).toList(),
+                audioContent:
+                    currentActivity is WordListeningPracticeActivityModel
+                    ? cf.choiceContent
+                    : null,
+                controller: controller,
+                shimmer: controller.showChoiceShimmer,
+              ),
+            );
+          }).toList(),
         ),
       ],
     );

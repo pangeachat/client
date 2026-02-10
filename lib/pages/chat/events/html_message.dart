@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:flutter_highlighter/flutter_highlighter.dart';
-import 'package:flutter_highlighter/themes/shades-of-purple.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:highlight/highlight.dart' show highlight;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:matrix/matrix.dart';
@@ -23,6 +22,7 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/token_emoji_button.
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
+import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -125,13 +125,13 @@ class HtmlMessage extends StatelessWidget {
     'rt',
     'html',
     'body',
-    // Workaround for https://github.com/krille-chan/fluffychat/issues/507
-    'tg-forward',
     // #Pangea
     'token',
     'nontoken',
     // Pangea#
   };
+
+  static const Set<String> ignoredHtmlTags = {'mx-reply'};
 
   /// We add line breaks before these tags:
   static const Set<String> blockHtmlTags = {
@@ -157,20 +157,17 @@ class HtmlMessage extends StatelessWidget {
   };
 
   // #Pangea
-  List<PangeaToken>? get tokens =>
-      pangeaMessageEvent?.messageDisplayRepresentation?.tokens
-          ?.where(
-            (t) =>
-                !["SYM"].contains(t.pos) &&
-                !t.lemma.text.contains(RegExp(r'[0-9]')),
-          )
-          .toList();
+  List<PangeaToken>? get tokens => pangeaMessageEvent
+      ?.messageDisplayRepresentation
+      ?.tokens
+      ?.where(
+        (t) =>
+            !["SYM"].contains(t.pos) &&
+            !t.lemma.text.contains(RegExp(r'[0-9]')),
+      )
+      .toList();
 
-  PangeaToken? getToken(
-    String text,
-    int offset,
-    int length,
-  ) =>
+  PangeaToken? getToken(String text, int offset, int length) =>
       tokens?.firstWhereOrNull(
         (token) => token.text.offset == offset && token.text.length == length,
       );
@@ -204,11 +201,9 @@ class HtmlMessage extends StatelessWidget {
         replyTagIndex,
       );
       if (closingReplyTagIndex != -1) {
-        result.replaceRange(
-          replyTagIndex,
-          closingReplyTagIndex + 1,
-          [result.sublist(replyTagIndex, closingReplyTagIndex + 1).join()],
-        );
+        result.replaceRange(replyTagIndex, closingReplyTagIndex + 1, [
+          result.sublist(replyTagIndex, closingReplyTagIndex + 1).join(),
+        ]);
       }
     }
 
@@ -240,10 +235,10 @@ class HtmlMessage extends StatelessWidget {
       }
 
       final int tokenLength = tokenSpanText.characters.length;
-      final before =
-          result[substringIndex].characters.take(tokenIndex).toString();
-      final after = result[substringIndex]
-          .characters
+      final before = result[substringIndex].characters
+          .take(tokenIndex)
+          .toString();
+      final after = result[substringIndex].characters
           .skip(tokenIndex + tokenLength)
           .toString();
 
@@ -368,21 +363,40 @@ class HtmlMessage extends StatelessWidget {
     ];
   }
 
+  InlineSpan _renderCodeBlockNode(dom.Node node) {
+    if (node is! dom.Element) {
+      return TextSpan(text: node.text);
+    }
+    final style =
+        atomOneDarkTheme[node.className.split('-').last] ??
+        atomOneDarkTheme['root'];
+
+    return TextSpan(
+      children: node.nodes.map(_renderCodeBlockNode).toList(),
+      style: style,
+    );
+  }
+
   /// Transforms a Node to an InlineSpan.
+  // #Pangea
+  // InlineSpan _renderHtml(dom.Node node, BuildContext context, {int depth = 1}) {
   InlineSpan _renderHtml(
     dom.Node node,
-    // #Pangea
-    // BuildContext context, {
     BuildContext context,
     TextStyle textStyle, {
-    // Pangea#
     int depth = 1,
   }) {
+    // Pangea#
     // We must not render elements nested more than 100 elements deep:
     if (depth >= 100) return const TextSpan();
 
-    // This is a text node, so we render it as text:
-    if (node is! dom.Element) {
+    if (node is dom.Element &&
+        ignoredHtmlTags.contains(node.localName?.toLowerCase())) {
+      return const TextSpan();
+    }
+
+    // This is a text node or not permitted node, so we render it as text:
+    if (node is! dom.Element || !allowedHtmlTags.contains(node.localName)) {
       var text = node.text ?? '';
       // Single linebreak nodes between Elements are ignored:
       if (text == '\n') text = '';
@@ -395,13 +409,11 @@ class HtmlMessage extends StatelessWidget {
       );
     }
 
-    // We must not render tags which are not in the allow list:
-    if (!allowedHtmlTags.contains(node.localName)) return const TextSpan();
-
     // #Pangea
     double fontSize = this.fontSize;
     if (readingAssistanceMode == ReadingAssistanceMode.practiceMode) {
-      fontSize = (overlayController != null && overlayController!.maxWidth > 600
+      fontSize =
+          (overlayController != null && overlayController!.maxWidth > 600
               ? Theme.of(context).textTheme.titleLarge?.fontSize
               : Theme.of(context).textTheme.bodyLarge?.fontSize) ??
           this.fontSize;
@@ -409,13 +421,13 @@ class HtmlMessage extends StatelessWidget {
 
     final existingStyle = pangeaMessageEvent != null
         ? textStyle
-            .merge(
-              AppConfig.messageTextStyle(
-                pangeaMessageEvent!.event,
-                textColor,
-              ),
-            )
-            .copyWith(fontSize: fontSize)
+              .merge(
+                AppConfig.messageTextStyle(
+                  pangeaMessageEvent!.event,
+                  textColor,
+                ),
+              )
+              .copyWith(fontSize: fontSize)
         : textStyle.copyWith(fontSize: fontSize);
 
     final renderer = TokenRenderingUtil();
@@ -426,8 +438,8 @@ class HtmlMessage extends StatelessWidget {
 
     final newTokens =
         pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
-            ? TokensUtil.getNewTokensByEvent(pangeaMessageEvent!)
-            : [];
+        ? TokensUtil.getNewTokensByEvent(pangeaMessageEvent!)
+        : [];
     // Pangea#
 
     switch (node.localName) {
@@ -448,7 +460,8 @@ class HtmlMessage extends StatelessWidget {
             : false;
 
         final isNew = token != null && newTokens.contains(token.text);
-        final isFirstNewToken = isNew &&
+        final isFirstNewToken =
+            isNew &&
             controller.buttonEventID == event.eventId &&
             newTokens.first == token.text;
         final showShimmer =
@@ -466,8 +479,8 @@ class HtmlMessage extends StatelessWidget {
             WidgetSpan(
               alignment:
                   readingAssistanceMode == ReadingAssistanceMode.practiceMode
-                      ? PlaceholderAlignment.bottom
-                      : PlaceholderAlignment.middle,
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.middle,
               child: Column(
                 children: [
                   if (token != null && overlayController != null)
@@ -494,10 +507,10 @@ class HtmlMessage extends StatelessWidget {
                   CompositedTransformTarget(
                     link: token != null
                         ? MatrixState.pAnyState
-                            .layerLinkAndKey(
-                              "message-token-${token.text.uniqueKey}-${event.eventId}",
-                            )
-                            .link
+                              .layerLinkAndKey(
+                                "message-token-${token.text.uniqueKey}-${event.eventId}",
+                              )
+                              .link
                         : LayerLink(),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
@@ -519,14 +532,15 @@ class HtmlMessage extends StatelessWidget {
                                     pangeaMessageEvent?.textDirection,
                                 underlineColor:
                                     TokenRenderingUtil.underlineColor(
-                                  underlineColor,
-                                  selected: selected,
-                                  highlighted: highlighted,
-                                  isNew: isNew,
-                                  practiceMode: readingAssistanceMode ==
-                                      ReadingAssistanceMode.practiceMode,
-                                  hovered: hovered,
-                                ),
+                                      underlineColor,
+                                      selected: selected,
+                                      highlighted: highlighted,
+                                      isNew: isNew,
+                                      practiceMode:
+                                          readingAssistanceMode ==
+                                          ReadingAssistanceMode.practiceMode,
+                                      hovered: hovered,
+                                    ),
                               ),
                             );
                           },
@@ -546,8 +560,10 @@ class HtmlMessage extends StatelessWidget {
                         ),
                         curve: Curves.easeOut,
                         child: SizedBox(
-                          height: overlayController!
-                                      .practiceController.practiceMode !=
+                          height:
+                              overlayController!
+                                      .practiceController
+                                      .practiceMode !=
                                   MessagePracticeMode.noneSelected
                               ? 4.0
                               : 0.0,
@@ -576,7 +592,7 @@ class HtmlMessage extends StatelessWidget {
             final user = room.unsafeGetUserFromMemoryOrFallback(matrixId);
             return WidgetSpan(
               // #Pangea
-              alignment: PlaceholderAlignment.middle,
+              alignment: .middle,
               // Pangea#
               child: MatrixPill(
                 key: Key('user_pill_$matrixId'),
@@ -598,7 +614,7 @@ class HtmlMessage extends StatelessWidget {
                 : this.room.client.getRoomByAlias(matrixId);
             return WidgetSpan(
               // #Pangea
-              alignment: PlaceholderAlignment.middle,
+              alignment: .middle,
               // Pangea#
               child: MatrixPill(
                 name: room?.getLocalizedDisplayname() ?? matrixId,
@@ -629,9 +645,7 @@ class HtmlMessage extends StatelessWidget {
                     node.nodes,
                     context,
                     // #Pangea
-                    textStyle.merge(
-                      linkStyle.copyWith(height: 1.25),
-                    ),
+                    textStyle.merge(linkStyle.copyWith(height: 1.25)),
                     // Pangea#
                     depth: depth,
                   ),
@@ -651,9 +665,9 @@ class HtmlMessage extends StatelessWidget {
         final isCheckbox = node.className == 'task-list-item';
         final checkboxIndex = isCheckbox
             ? node.rootElement
-                    .getElementsByClassName('task-list-item')
-                    .indexOf(node) +
-                1
+                      .getElementsByClassName('task-list-item')
+                      .indexOf(node) +
+                  1
             : null;
         final checkedByReaction = !isCheckbox
             ? null
@@ -673,23 +687,21 @@ class HtmlMessage extends StatelessWidget {
               // Pangea#
               TextSpan(
                 children: [
-                  if (node.parent?.localName == 'ul')
-                    // #Pangea
-                    // const TextSpan(text: '• '),
-                    TextSpan(
-                      text: '• ',
-                      style: existingStyle,
-                    ),
-                  // Pangea#
-                  if (node.parent?.localName == 'ol')
-                    TextSpan(
-                      text:
-                          '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                  if (!isCheckbox) ...[
+                    if (node.parent?.localName == 'ul')
                       // #Pangea
-                      // style: textStyle,
-                      style: existingStyle,
-                      // Pangea#
-                    ),
+                      // const TextSpan(text: '• '),
+                      TextSpan(text: '• ', style: existingStyle),
+                    // Pangea#
+                    if (node.parent?.localName == 'ol')
+                      TextSpan(
+                        text:
+                            '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                        // #Pangea
+                        style: existingStyle,
+                        // Pangea#
+                      ),
+                  ],
                   if (node.className == 'task-list-item')
                     WidgetSpan(
                       child: Padding(
@@ -702,7 +714,8 @@ class HtmlMessage extends StatelessWidget {
                             activeColor: textColor.withAlpha(64),
                             value:
                                 staticallyChecked || checkedByReaction != null,
-                            onChanged: eventId == null ||
+                            onChanged:
+                                eventId == null ||
                                     checkboxIndex == null ||
                                     staticallyChecked ||
                                     !room.canSendDefaultMessages ||
@@ -711,28 +724,29 @@ class HtmlMessage extends StatelessWidget {
                                             room.client.userID)
                                 ? null
                                 : (_) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => checkedByReaction != null
-                                          ? room.redactEvent(
-                                              checkedByReaction.eventId,
-                                            )
-                                          : room.checkCheckbox(
-                                              eventId,
-                                              checkboxIndex,
-                                            ),
-                                    ),
+                                    context: context,
+                                    future: () => checkedByReaction != null
+                                        ? room.redactEvent(
+                                            checkedByReaction.eventId,
+                                          )
+                                        : room.checkCheckbox(
+                                            eventId,
+                                            checkboxIndex,
+                                          ),
+                                  ),
                           ),
                         ),
                       ),
                     ),
+                  // #Pangea
+                  // ..._renderWithLineBreaks(node.nodes, context, depth: depth),
                   ..._renderWithLineBreaks(
                     node.nodes,
                     context,
-                    // #Pangea
                     textStyle,
-                    // Pangea#
                     depth: depth,
                   ),
+                  // Pangea#
                 ],
                 style: TextStyle(fontSize: fontSize, color: textColor),
               ),
@@ -744,12 +758,7 @@ class HtmlMessage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.only(left: 8.0),
             decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  color: textColor,
-                  width: 5,
-                ),
-              ),
+              border: Border(left: BorderSide(color: textColor, width: 5)),
             ),
             child: Text.rich(
               // #Pangea
@@ -775,31 +784,37 @@ class HtmlMessage extends StatelessWidget {
         );
       case 'code':
         final isInline = node.parent?.localName != 'pre';
+        final lang =
+            node.className
+                .split(' ')
+                .singleWhereOrNull(
+                  (className) => className.startsWith('language-'),
+                )
+                ?.split('language-')
+                .last ??
+            'md';
+        final highlightedHtml = highlight
+            .parse(node.text, language: lang)
+            .toHtml();
+        final element = parser.parse(highlightedHtml).body;
+        if (element == null) {
+          return const TextSpan(text: 'Unable to render code block!');
+        }
+
         return WidgetSpan(
           child: Material(
-            clipBehavior: Clip.hardEdge,
-            borderRadius: BorderRadius.circular(4),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: HighlightView(
-                node.text,
-                language: node.className
-                        .split(' ')
-                        .singleWhereOrNull(
-                          (className) => className.startsWith('language-'),
-                        )
-                        ?.split('language-')
-                        .last ??
-                    'md',
-                theme: shadesOfPurpleTheme,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: isInline ? 0 : 8,
-                ),
-                textStyle: TextStyle(
-                  fontSize: fontSize,
-                  fontFamily: 'RobotoMono',
-                ),
+            color: atomOneBackgroundColor,
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(color: hightlightTextColor),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Padding(
+              padding: isInline
+                  ? const EdgeInsets.symmetric(horizontal: 4.0)
+                  : const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+              child: Text.rich(
+                TextSpan(children: [_renderCodeBlockNode(element)]),
+                selectionColor: hightlightTextColor.withAlpha(128),
               ),
             ),
           ),
@@ -866,10 +881,7 @@ class HtmlMessage extends StatelessWidget {
                               node,
                               context,
                               textStyle.merge(
-                                TextStyle(
-                                  fontSize: fontSize,
-                                  color: textColor,
-                                ),
+                                TextStyle(fontSize: fontSize, color: textColor),
                               ),
                               depth: depth,
                             ),
@@ -886,10 +898,7 @@ class HtmlMessage extends StatelessWidget {
                       ),
                   ],
                 ),
-                style: TextStyle(
-                  fontSize: fontSize,
-                  color: textColor,
-                ),
+                style: TextStyle(fontSize: fontSize, color: textColor),
               ),
             ),
           ),
@@ -935,16 +944,13 @@ class HtmlMessage extends StatelessWidget {
       default:
         // #Pangea
         final style = switch (node.localName) {
-          'body' => TextStyle(
-              fontSize: fontSize,
-              color: textColor,
-            ),
+          'body' => TextStyle(fontSize: fontSize, color: textColor),
           'a' => linkStyle,
           'strong' => const TextStyle(fontWeight: FontWeight.bold),
           'em' || 'i' => const TextStyle(fontStyle: FontStyle.italic),
-          'del' ||
-          'strikethrough' =>
-            const TextStyle(decoration: TextDecoration.lineThrough),
+          'del' || 'strikethrough' => const TextStyle(
+            decoration: TextDecoration.lineThrough,
+          ),
           'u' => const TextStyle(decoration: TextDecoration.underline),
           'h1' => TextStyle(fontSize: fontSize * 1.6, height: 2),
           'h2' => TextStyle(fontSize: fontSize * 1.5, height: 2),
@@ -953,11 +959,12 @@ class HtmlMessage extends StatelessWidget {
           'h5' => TextStyle(fontSize: fontSize * 1.2, height: 1.75),
           'h6' => TextStyle(fontSize: fontSize * 1.1, height: 1.5),
           'span' => TextStyle(
-              color: node.attributes['color']?.hexToColor ??
-                  node.attributes['data-mx-color']?.hexToColor ??
-                  textColor,
-              backgroundColor: node.attributes['data-mx-bg-color']?.hexToColor,
-            ),
+            color:
+                node.attributes['color']?.hexToColor ??
+                node.attributes['data-mx-color']?.hexToColor ??
+                textColor,
+            backgroundColor: node.attributes['data-mx-bg-color']?.hexToColor,
+          ),
           'sup' => const TextStyle(fontFeatures: [FontFeature.superscripts()]),
           'sub' => const TextStyle(fontFeatures: [FontFeature.subscripts()]),
           _ => null,
@@ -998,9 +1005,9 @@ class HtmlMessage extends StatelessWidget {
                     child: SizedBox(
                       height:
                           overlayController!.practiceController.practiceMode !=
-                                  MessagePracticeMode.noneSelected
-                              ? 4.0
-                              : 0.0,
+                              MessagePracticeMode.noneSelected
+                          ? 4.0
+                          : 0.0,
                       width: 0,
                     ),
                   ),
@@ -1010,17 +1017,13 @@ class HtmlMessage extends StatelessWidget {
         );
       // return TextSpan(
       //   style: switch (node.localName) {
-      //     'body' => TextStyle(
-      //         fontSize: fontSize,
-      //         color: textColor,
-      //       ),
+      //     'body' => TextStyle(fontSize: fontSize, color: textColor),
       //     'a' => linkStyle,
       //     'strong' => const TextStyle(fontWeight: FontWeight.bold),
       //     'em' || 'i' => const TextStyle(fontStyle: FontStyle.italic),
-      //     'del' ||
-      //     's' ||
-      //     'strikethrough' =>
-      //       const TextStyle(decoration: TextDecoration.lineThrough),
+      //     'del' || 's' || 'strikethrough' => const TextStyle(
+      //       decoration: TextDecoration.lineThrough,
+      //     ),
       //     'u' => const TextStyle(decoration: TextDecoration.underline),
       //     'h1' => TextStyle(fontSize: fontSize * 1.6, height: 2),
       //     'h2' => TextStyle(fontSize: fontSize * 1.5, height: 2),
@@ -1029,25 +1032,19 @@ class HtmlMessage extends StatelessWidget {
       //     'h5' => TextStyle(fontSize: fontSize * 1.2, height: 1.75),
       //     'h6' => TextStyle(fontSize: fontSize * 1.1, height: 1.5),
       //     'span' => TextStyle(
-      //         color: node.attributes['color']?.hexToColor ??
-      //             node.attributes['data-mx-color']?.hexToColor ??
-      //             textColor,
-      //         backgroundColor:
-      //             node.attributes['data-mx-bg-color']?.hexToColor,
-      //       ),
+      //       color:
+      //           node.attributes['color']?.hexToColor ??
+      //           node.attributes['data-mx-color']?.hexToColor ??
+      //           textColor,
+      //       backgroundColor: node.attributes['data-mx-bg-color']?.hexToColor,
+      //     ),
       //     'sup' => const TextStyle(
-      //         fontFeatures: [FontFeature.superscripts()],
-      //       ),
-      //     'sub' => const TextStyle(
-      //         fontFeatures: [FontFeature.subscripts()],
-      //       ),
+      //       fontFeatures: [FontFeature.superscripts()],
+      //     ),
+      //     'sub' => const TextStyle(fontFeatures: [FontFeature.subscripts()]),
       //     _ => null,
       //   },
-      //   children: _renderWithLineBreaks(
-      //     node.nodes,
-      //     context,
-      //     depth: depth,
-      //   ),
+      //   children: _renderWithLineBreaks(node.nodes, context, depth: depth),
       // );
       // Pangea#
     }
@@ -1059,12 +1056,10 @@ class HtmlMessage extends StatelessWidget {
     // final element = parser.parse(html).body ?? dom.Element.html('');
     // return Text.rich(
     //   _renderHtml(element, context),
-    //   style: TextStyle(
-    //     fontSize: fontSize,
-    //     color: textColor,
-    //   ),
-    //   maxLines: limitHeight ? 64 : null,Add commentMore actions
+    //   style: TextStyle(fontSize: fontSize, color: textColor),
+    //   maxLines: limitHeight ? 64 : null,
     //   overflow: TextOverflow.fade,
+    //   selectionColor: textColor.withAlpha(128)
     // );
     final parsed = parser.parse(_addTokenTags()).body ?? dom.Element.html('');
     return GestureDetector(
@@ -1083,17 +1078,12 @@ class HtmlMessage extends StatelessWidget {
         _renderHtml(
           parsed,
           context,
-          TextStyle(
-            fontSize: fontSize,
-            color: textColor,
-          ),
+          TextStyle(fontSize: fontSize, color: textColor),
         ),
-        style: TextStyle(
-          fontSize: fontSize,
-          color: textColor,
-        ),
+        style: TextStyle(fontSize: fontSize, color: textColor),
         maxLines: limitHeight ? 64 : null,
         overflow: TextOverflow.fade,
+        selectionColor: textColor.withAlpha(128),
       ),
     );
   }
@@ -1156,26 +1146,27 @@ class MatrixPill extends StatelessWidget {
           ],
         ),
       ),
-      // child: Row(
-      //   mainAxisSize: MainAxisSize.min,
-      //   children: [
-      //     Avatar(
-      //       mxContent: avatar,
-      //       name: name,
-      //       size: 16,
-      //     ),
-      //     const SizedBox(width: 6),
-      //     Text(
-      //       name,
-      //       style: TextStyle(
-      //         color: color,
-      //         decorationColor: color,
-      //         decoration: TextDecoration.underline,
-      //         fontSize: fontSize,
-      //         height: 1.25,
+      // child: Text.rich(
+      //   TextSpan(
+      //     children: [
+      //       WidgetSpan(
+      //         child: Padding(
+      //           padding: const EdgeInsets.only(right: 4.0),
+      //           child: Avatar(mxContent: avatar, name: name, size: 16),
+      //         ),
       //       ),
-      //     ),
-      //   ],
+      //       TextSpan(
+      //         text: name,
+      //         style: TextStyle(
+      //           color: color,
+      //           decorationColor: color,
+      //           decoration: TextDecoration.underline,
+      //           fontSize: fontSize,
+      //           height: 1.25,
+      //         ),
+      //       ),
+      //     ],
+      //   ),
       // ),
       // Pangea#
     );

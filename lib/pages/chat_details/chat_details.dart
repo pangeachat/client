@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
@@ -67,12 +67,15 @@ class ChatDetailsController extends State<ChatDetails>
     _loadSummaries();
 
     _languageSubscription = MatrixState
-        .pangeaController.userController.languageStream.stream
+        .pangeaController
+        .userController
+        .languageStream
+        .stream
         .listen((update) {
-      if (update.prevBaseLang != update.baseLang) {
-        _loadCourseInfo();
-      }
-    });
+          if (update.prevBaseLang != update.baseLang) {
+            _loadCourseInfo();
+          }
+        });
   }
 
   @override
@@ -116,11 +119,7 @@ class ChatDetailsController extends State<ChatDetails>
       // Pangea#
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,
-      initialText: room.getLocalizedDisplayname(
-        MatrixLocals(
-          L10n.of(context),
-        ),
-      ),
+      initialText: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
     );
     if (input == null) return;
     final success = await showFutureLoadingDialog(
@@ -154,30 +153,14 @@ class ChatDetailsController extends State<ChatDetails>
     );
     // final success = await showFutureLoadingDialog(
     //   context: context,
-    //   future: () => room.setDescription(input.single),
+    //   future: () => room.setDescription(input),
     // );
     // if (success.error == null) {
     //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       content: Text(L10n.of(context).chatDescriptionHasBeenChanged),
-    //     ),
+    //     SnackBar(content: Text(L10n.of(context).chatDescriptionHasBeenChanged)),
     //   );
     // }
     // Pangea#
-  }
-
-  void goToEmoteSettings() async {
-    final room = Matrix.of(context).client.getRoomById(roomId!)!;
-    // okay, we need to test if there are any emote state events other than the default one
-    // if so, we need to be directed to a selection screen for which pack we want to look at
-    // otherwise, we just open the normal one.
-    if ((room.states['im.ponies.room_emotes'] ?? <String, Event>{})
-        .keys
-        .any((String s) => s.isNotEmpty)) {
-      context.push('/rooms/${room.id}/details/multiple_emotes');
-    } else {
-      context.push('/rooms/${room.id}/details/emotes');
-    }
   }
 
   void setAvatarAction() async {
@@ -228,15 +211,12 @@ class ChatDetailsController extends State<ChatDetails>
         imageQuality: 50,
       );
       if (result == null) return;
-      file = MatrixFile(
-        bytes: await result.readAsBytes(),
-        name: result.path,
-      );
+      file = MatrixFile(bytes: await result.readAsBytes(), name: result.path);
     } else {
       final picked = await selectFiles(
         context,
         allowMultiple: false,
-        type: FileSelectorType.images,
+        type: FileType.image,
       );
       final pickedFile = picked.firstOrNull;
       if (pickedFile == null) return;
@@ -273,8 +253,9 @@ class ChatDetailsController extends State<ChatDetails>
           return L10n.of(context).enterNumber;
         }
         if (int.parse(value) < (room.summary.mJoinedMemberCount ?? 1)) {
-          return L10n.of(context)
-              .chatCapacitySetTooLow(room.summary.mJoinedMemberCount ?? 1);
+          return L10n.of(
+            context,
+          ).chatCapacitySetTooLow(room.summary.mJoinedMemberCount ?? 1);
         }
         return null;
       },
@@ -290,9 +271,7 @@ class ChatDetailsController extends State<ChatDetails>
     );
     if (success.error == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).chatCapacityHasBeenChanged),
-        ),
+        SnackBar(content: Text(L10n.of(context).chatCapacityHasBeenChanged)),
       );
       setState(() {});
     }
@@ -324,26 +303,21 @@ class ChatDetailsController extends State<ChatDetails>
       context: context,
       future: () async {
         final newRoomId = await Matrix.of(context).client.createGroupChat(
-              visibility: sdk.Visibility.private,
-              groupName: names,
-              initialState: [
-                RoomDefaults.defaultPowerLevels(
-                  Matrix.of(context).client.userID!,
-                ),
-                await Matrix.of(context).client.pangeaJoinRules(
-                      'knock_restricted',
-                      allow: roomId != null
-                          ? [
-                              {
-                                "type": "m.room_membership",
-                                "room_id": roomId,
-                              }
-                            ]
-                          : null,
-                    ),
-              ],
-              enableEncryption: false,
-            );
+          visibility: sdk.Visibility.private,
+          groupName: names,
+          initialState: [
+            RoomDefaults.defaultPowerLevels(Matrix.of(context).client.userID!),
+            await Matrix.of(context).client.pangeaJoinRules(
+              'knock_restricted',
+              allow: roomId != null
+                  ? [
+                      {"type": "m.room_membership", "room_id": roomId},
+                    ]
+                  : null,
+            ),
+          ],
+          enableEncryption: false,
+        );
         final client = Matrix.of(context).client;
         Room? room = client.getRoomById(newRoomId);
         if (room == null) {

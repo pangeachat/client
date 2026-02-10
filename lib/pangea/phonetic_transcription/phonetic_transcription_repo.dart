@@ -54,9 +54,10 @@ class PhoneticTranscriptionRepo {
   static const Duration _cacheDuration = Duration(minutes: 10);
   static const Duration _storageDuration = Duration(days: 7);
 
-// Persistent storage
-  static final GetStorage _storage =
-      GetStorage('phonetic_transcription_storage');
+  // Persistent storage
+  static final GetStorage _storage = GetStorage(
+    'phonetic_transcription_storage',
+  );
 
   static Future<Result<PhoneticTranscriptionResponse>> get(
     String accessToken,
@@ -105,11 +106,7 @@ class PhoneticTranscriptionRepo {
       await _storage.write(key, item.toJson());
       _cache.remove(key); // Invalidate in-memory cache
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'request': request.toJson()},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'request': request.toJson()});
     }
   }
 
@@ -192,11 +189,7 @@ class PhoneticTranscriptionRepo {
       }
       return item.response;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'request': request.toJson()},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'request': request.toJson()});
       _storage.remove(key);
       return null;
     }

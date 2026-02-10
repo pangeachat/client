@@ -9,15 +9,12 @@ class TranslateTopicResponse {
     final topicsEntry = json['topics'] as Map<String, dynamic>;
     return TranslateTopicResponse(
       topics: topicsEntry.map(
-        (key, value) => MapEntry(
-          key,
-          CourseTopicModel.fromJson(value),
-        ),
+        (key, value) => MapEntry(key, CourseTopicModel.fromJson(value)),
       ),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "topics": topics.map((key, value) => MapEntry(key, value.toJson())),
-      };
+    "topics": topics.map((key, value) => MapEntry(key, value.toJson())),
+  };
 }

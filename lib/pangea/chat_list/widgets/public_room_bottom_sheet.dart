@@ -16,7 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PublicRoomBottomSheet extends StatefulWidget {
   final String? roomAlias;
   final BuildContext outerContext;
-  final PublicRoomsChunk? chunk;
+  final PublishedRoomsChunk? chunk;
   final List<String>? via;
 
   PublicRoomBottomSheet({
@@ -32,11 +32,12 @@ class PublicRoomBottomSheet extends StatefulWidget {
   static Future<String?> show({
     required BuildContext context,
     String? roomAlias,
-    PublicRoomsChunk? chunk,
+    PublishedRoomsChunk? chunk,
     List<String>? via,
   }) async {
-    final room = MatrixState.pangeaController.matrixState.client
-        .getRoomById(chunk!.roomId);
+    final room = MatrixState.pangeaController.matrixState.client.getRoomById(
+      chunk!.roomId,
+    );
 
     if (room != null && room.membership == Membership.join) {
       context.go("/rooms/spaces/${room.id}/details");
@@ -60,7 +61,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
 
 class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   BuildContext get outerContext => widget.outerContext;
-  PublicRoomsChunk? get chunk => widget.chunk;
+  PublishedRoomsChunk? get chunk => widget.chunk;
   String? get roomAlias => widget.roomAlias;
   List<String>? get via => widget.via;
 
@@ -129,26 +130,22 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
 
     await showFutureLoadingDialog<String>(
       context: context,
-      future: () async => client.knockRoom(
-        roomAlias ?? chunk!.roomId,
-        via: via,
-      ),
+      future: () async =>
+          client.knockRoom(roomAlias ?? chunk!.roomId, via: via),
       onSuccess: () => L10n.of(context).knockSpaceSuccess,
       delay: false,
     );
   }
 
-  bool testRoom(PublicRoomsChunk r) => r.canonicalAlias == roomAlias;
+  bool testRoom(PublishedRoomsChunk r) => r.canonicalAlias == roomAlias;
 
-  Future<PublicRoomsChunk> search() async {
+  Future<PublishedRoomsChunk> search() async {
     final chunk = this.chunk;
     if (chunk != null) return chunk;
     final query = await Matrix.of(outerContext).client.queryPublicRooms(
-          server: roomAlias!.domain,
-          filter: PublicRoomQueryFilter(
-            genericSearchTerm: roomAlias,
-          ),
-        );
+      server: roomAlias!.domain,
+      filter: PublicRoomQueryFilter(genericSearchTerm: roomAlias),
+    );
     if (!query.chunk.any(testRoom)) {
       throw (L10n.of(outerContext).noRoomsFound);
     }
@@ -174,7 +171,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
             ),
           ],
         ),
-        body: FutureBuilder<PublicRoomsChunk>(
+        body: FutureBuilder<PublishedRoomsChunk>(
           future: search(),
           builder: (context, snapshot) {
             return Padding(
@@ -227,10 +224,12 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                   child: Text(
                                     chunk?.topic ??
                                         (chunk?.roomType != 'm.space'
-                                            ? L10n.of(context)
-                                                .noChatDescriptionYet
-                                            : L10n.of(context)
-                                                .noSpaceDescriptionYet),
+                                            ? L10n.of(
+                                                context,
+                                              ).noChatDescriptionYet
+                                            : L10n.of(
+                                                context,
+                                              ).noSpaceDescriptionYet),
                                     softWrap: true,
                                     textAlign: TextAlign.start,
                                     maxLines: null,
@@ -265,12 +264,13 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
-                                        hintText:
-                                            L10n.of(context).enterSpaceCode,
+                                        hintText: L10n.of(
+                                          context,
+                                        ).enterSpaceCode,
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                          horizontal: 16.0,
-                                        ),
+                                              horizontal: 16.0,
+                                            ),
                                         hintStyle: TextStyle(
                                           color: Theme.of(context).hintColor,
                                         ),
@@ -281,9 +281,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                     decoration: BoxDecoration(
                                       border: Border(
                                         left: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .outline,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.outline,
                                         ),
                                       ),
                                     ),
@@ -311,10 +311,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                 spacing: 8.0,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(
-                                    Symbols.door_open,
-                                    size: 20.0,
-                                  ),
+                                  const Icon(Symbols.door_open, size: 20.0),
                                   Text(L10n.of(context).askToJoin),
                                 ],
                               ),

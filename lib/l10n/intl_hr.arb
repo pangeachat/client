@@ -196,7 +196,7 @@
       }
     }
   },
-  "changedTheChatDescriptionTo": "{username} je promijenio/la opis razgovora u: „{description}”",
+  "changedTheChatDescriptionTo": "{username} je promijenio/la opis razgovora u: '{description}'",
   "@changedTheChatDescriptionTo": {
     "type": "String",
     "placeholders": {
@@ -208,7 +208,7 @@
       }
     }
   },
-  "changedTheChatNameTo": "{username} je promijenio/la ime razgovora u: „{chatname}”",
+  "changedTheChatNameTo": "{username} je promijenio/la ime razgovora u: '{chatname}'",
   "@changedTheChatNameTo": {
     "type": "String",
     "placeholders": {
@@ -229,7 +229,7 @@
       }
     }
   },
-  "changedTheDisplaynameTo": "{username} je promijenio/la ime u: „{displayname}”",
+  "changedTheDisplaynameTo": "{username} je promijenio/la svoje prikazno ime u: '{displayname}'",
   "@changedTheDisplaynameTo": {
     "type": "String",
     "placeholders": {
@@ -371,7 +371,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "Tvoji su stari razgovori osigurani s ključem za obnavljanje. Pazi da ga ne izgubiš.",
+  "chatBackupDescription": "Tvoje poruke su osigurane s ključem za obnavljanje. Pazi da ga ne izgubiš.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -633,7 +633,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "defaultPermissionLevel": "Standardna razina dozvole",
+  "defaultPermissionLevel": "Standardna razina dozvole za nove korisnike",
   "@defaultPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -1799,7 +1799,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "unknownEvent": "Nepoznat događaj „{type}”",
+  "unknownEvent": "Nepoznat događaj '{type}'",
   "@unknownEvent": {
     "type": "String",
     "placeholders": {
@@ -2505,15 +2505,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Pokušaj ponovo kasnije ili odaberi jedan drugi poslužitelj.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Prijavi se pomoću {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Nije slikovna datoteka.",
   "@notAnImage": {},
   "importNow": "Uvezi sada",
@@ -2573,9 +2564,9 @@
   "@addChatDescription": {},
   "directChat": "Izravni razgovor",
   "@directChat": {},
-  "inviteGroupChat": "📨 Pozovi u grupni razgovor",
+  "inviteGroupChat": "📨 Pozivnica u grupni razgovor",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Pozovi u privatni razgovor",
+  "invitePrivateChat": "📨 Pozivnica u privatni razgovor",
   "@invitePrivateChat": {},
   "noChatDescriptionYet": "Opis razgovora još nije stvoren.",
   "@noChatDescriptionYet": {},
@@ -2885,7 +2876,7 @@
   "@restricted": {},
   "roomUpgradeDescription": "Razgovor će se tada ponovo stvoriti s novom verzijom sobe. Svi sudionici će biti obaviješteni da se moraju prebaciti na novi razgovor. Više o verzijama soba možeš saznati na https://spec.matrix.org/latest/rooms/",
   "@roomUpgradeDescription": {},
-  "noGoogleServicesWarning": "Čini se da Firebase Cloud Messaging nije dostupan na tvom uređaju. Za daljnje primanje push obavijesti, preporučujemo da instaliraš ntfy. S ntfy ili drugim pružateljem usluge Unified Push možeš primati push obavijesti na podatkovno siguran način. Ntfy možeš preuzeti s PlayStorea ili s F-Droida.",
+  "noGoogleServicesWarning": "Čini se da Firebase Cloud Messaging nije dostupan na tvom uređaju. Za daljnje primanje push obavijesti, preporučujemo da instaliraš ntfy. S ntfy ili drugim pružateljem Unified Push usluge možeš primati push obavijesti na podatkovno siguran način. Ntfy možeš preuzeti s PlayStorea ili s F-Droida.",
   "@noGoogleServicesWarning": {
     "type": "String",
     "placeholders": {}
@@ -2992,12 +2983,25 @@
       }
     }
   },
-  "setCustomPermissionLevel": "Postavi prilagođenu razinu dopuštenja",
-  "setPermissionsLevelDescription": "Molimo odaberite unaprijed definiranu ulogu ispod ili unesite prilagođenu razinu dopuštenja između 0 i 100.",
-  "ignoreUser": "Ignoriraj korisnika",
-  "normalUser": "Običan korisnik",
-  "aboutHomeserver": "O {homeserver}",
+  "setCustomPermissionLevel": "Postavi razinu dozvole",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Odaberi unaprijed definiranu ulogu u nastavku ili upiši prilagođenu razinu dozvole između 0 i 100.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Zanemari korisnika",
+  "@ignoreUser": {},
+  "normalUser": "Normalni korisnik",
+  "@normalUser": {},
+  "aboutHomeserver": "Informacije o {homeserver}",
+  "@aboutHomeserver": {
+    "type": "String",
+    "placeholders": {
+      "homeserver": {
+        "type": "String"
+      }
+    }
+  },
   "commandHint_roomupgrade": "Nadogradi ovu sobu na zadanu verziju sobe",
+  "@commandHint_roomupgrade": {},
   "countChatsAndCountParticipants": "{chats} razgovora i {participants} sudionika",
   "noMoreChatsFound": "Nema više pronađenih razgovora...",
   "noChatsFoundHere": "Ovdje još nisu pronađeni razgovori. Započnite novi razgovor s nekim pomoću gumba ispod. ⤵️",
@@ -4261,34 +4265,6 @@
   "inviteYourFriends": "Pozovite svoje prijatelje",
   "playWithAI": "Igraj s AI-jem za sada",
   "courseStartDesc": "Pangea Bot je spreman za rad u bilo koje vrijeme!\n\n...ali je bolje učiti s prijateljima!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aboutHomeserver": {
-    "type": "String",
-    "placeholders": {
-      "homeserver": {
-        "type": "String"
-      }
-    }
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@countChatsAndCountParticipants": {
     "type": "String",
     "placeholders": {

@@ -19,13 +19,13 @@ class TextToSpeechRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.text: text,
-        ModelKey.langCode: langCode,
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
-        'voice': voice,
-      };
+    ModelKey.text: text,
+    ModelKey.langCode: langCode,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
+    'voice': voice,
+  };
 
   @override
   bool operator ==(Object other) {

@@ -14,9 +14,7 @@ class CourseMediaRepo {
   static final Map<String, Completer<CourseMediaResponse>> _cache = {};
   static final GetStorage _storage = GetStorage('course_media_storage');
 
-  static Future<CourseMediaResponse> get(
-    CourseInfoBatchRequest request,
-  ) async {
+  static Future<CourseMediaResponse> get(CourseInfoBatchRequest request) async {
     final urls = <CourseMediaInfo>[];
 
     await _storage.initStorage;
@@ -28,10 +26,7 @@ class CourseMediaRepo {
 
     if (toFetch.isNotEmpty) {
       final fetchedUrls = await _fetch(
-        CourseInfoBatchRequest(
-          batchId: request.batchId,
-          uuids: toFetch,
-        ),
+        CourseInfoBatchRequest(batchId: request.batchId, uuids: toFetch),
       );
       urls.addAll(fetchedUrls.mediaUrls);
       await _setCached(fetchedUrls);
@@ -93,12 +88,7 @@ class CourseMediaRepo {
     for (final uuid in request.uuids) {
       final cached = _storage.read(uuid);
       if (cached != null && cached is String) {
-        urls.add(
-          CourseMediaInfo(
-            uuid: uuid,
-            url: cached,
-          ),
-        );
+        urls.add(CourseMediaInfo(uuid: uuid, url: cached));
       }
     }
 

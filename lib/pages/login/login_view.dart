@@ -21,13 +21,13 @@
 //     final titleParts = title.split(homeserver);
 
 //     return LoginScaffold(
-//       enforceMobileMode:
-//           Matrix.of(context).widget.clients.any((client) => client.isLogged()),
+//       enforceMobileMode: Matrix.of(
+//         context,
+//       ).widget.clients.any((client) => client.isLogged()),
 //       appBar: AppBar(
-//         leading:
-//             controller.loadingSignIn ? null : const Center(child: BackButton()),
-//         automaticallyImplyLeading: !controller.loadingSignIn,
-//         titleSpacing: !controller.loadingSignIn ? 0 : null,
+//         leading: controller.loading ? null : const Center(child: BackButton()),
+//         automaticallyImplyLeading: !controller.loading,
+//         titleSpacing: !controller.loading ? 0 : null,
 //         title: Text.rich(
 //           TextSpan(
 //             children: [
@@ -56,14 +56,14 @@
 //                 Padding(
 //                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
 //                   child: TextField(
-//                     readOnly: controller.loadingSignIn,
+//                     readOnly: controller.loading,
 //                     autocorrect: false,
 //                     autofocus: true,
 //                     onChanged: controller.checkWellKnownWithCoolDown,
 //                     controller: controller.usernameController,
 //                     textInputAction: TextInputAction.next,
 //                     keyboardType: TextInputType.emailAddress,
-//                     autofillHints: controller.loadingSignIn
+//                     autofillHints: controller.loading
 //                         ? null
 //                         : [AutofillHints.username],
 //                     decoration: InputDecoration(
@@ -79,9 +79,9 @@
 //                 Padding(
 //                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
 //                   child: TextField(
-//                     readOnly: controller.loadingSignIn,
+//                     readOnly: controller.loading,
 //                     autocorrect: false,
-//                     autofillHints: controller.loadingSignIn
+//                     autofillHints: controller.loading
 //                         ? null
 //                         : [AutofillHints.password],
 //                     controller: controller.passwordController,
@@ -114,9 +114,8 @@
 //                       backgroundColor: theme.colorScheme.primary,
 //                       foregroundColor: theme.colorScheme.onPrimary,
 //                     ),
-//                     onPressed:
-//                         controller.loadingSignIn ? null : controller.login,
-//                     child: controller.loadingSignIn
+//                     onPressed: controller.loading ? null : controller.login,
+//                     child: controller.loading
 //                         ? const LinearProgressIndicator()
 //                         : Text(L10n.of(context).login),
 //                   ),
@@ -125,7 +124,7 @@
 //                 Padding(
 //                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
 //                   child: TextButton(
-//                     onPressed: controller.loadingSignIn
+//                     onPressed: controller.loading
 //                         ? () {}
 //                         : controller.passwordForgotten,
 //                     style: TextButton.styleFrom(

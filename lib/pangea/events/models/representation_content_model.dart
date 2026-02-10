@@ -123,15 +123,16 @@ class PangeaRepresentation {
     );
 
     // for each token, record whether selected in ga, ta, or wa
-    List<PangeaToken> tokensToSave =
-        tokens.where((token) => token.lemma.saveVocab).toList();
+    List<PangeaToken> tokensToSave = tokens
+        .where((token) => token.lemma.saveVocab)
+        .toList();
     if (choreo != null && choreo.pastedStrings.isNotEmpty) {
       tokensToSave = tokensToSave
           .where(
             (token) => !choreo.pastedStrings.any(
-              (pasted) => pasted
-                  .toLowerCase()
-                  .contains(token.text.content.toLowerCase()),
+              (pasted) => pasted.toLowerCase().contains(
+                token.text.content.toLowerCase(),
+              ),
             ),
           )
           .toList();
@@ -196,13 +197,7 @@ class PangeaRepresentation {
       if (tokenStep.acceptedOrIgnoredMatch != null &&
           tokenStep.acceptedOrIgnoredMatch?.status !=
               PangeaMatchStatusEnum.accepted) {
-        uses.addAll(
-          token.allUses(
-            ConstructUseTypeEnum.ga,
-            metadata,
-            0,
-          ),
-        );
+        uses.addAll(token.allUses(ConstructUseTypeEnum.ga, metadata, 0));
         continue;
       }
 
@@ -213,28 +208,16 @@ class PangeaRepresentation {
         if (selectedChoices == 0) {
           ErrorHandler.logError(
             e: "No selected choices for IT step",
-            data: {
-              "token": token.text.content,
-              "step": tokenStep.toJson(),
-            },
+            data: {"token": token.text.content, "step": tokenStep.toJson()},
           );
           continue;
         }
 
         final corITPoints = ConstructUseTypeEnum.corIt.pointValue;
         final incITPoints = ConstructUseTypeEnum.incIt.pointValue;
-        final xp = max(
-          0,
-          corITPoints + (incITPoints * (selectedChoices - 1)),
-        );
+        final xp = max(0, corITPoints + (incITPoints * (selectedChoices - 1)));
 
-        uses.addAll(
-          token.allUses(
-            ConstructUseTypeEnum.ta,
-            metadata,
-            xp,
-          ),
-        );
+        uses.addAll(token.allUses(ConstructUseTypeEnum.ta, metadata, xp));
       } else if (tokenStep.acceptedOrIgnoredMatch!.match.choices != null) {
         final selectedChoices = tokenStep.acceptedOrIgnoredMatch!.match.choices!
             .where((choice) => choice.selected)
@@ -242,10 +225,7 @@ class PangeaRepresentation {
         if (selectedChoices == 0) {
           ErrorHandler.logError(
             e: "No selected choices for IGC step",
-            data: {
-              "token": token.text.content,
-              "step": tokenStep.toJson(),
-            },
+            data: {"token": token.text.content, "step": tokenStep.toJson()},
           );
           continue;
         }
@@ -257,13 +237,7 @@ class PangeaRepresentation {
           corIGCPoints + (incIGCPoints * (selectedChoices - 1)),
         );
 
-        uses.addAll(
-          token.allUses(
-            ConstructUseTypeEnum.ga,
-            metadata,
-            xp,
-          ),
-        );
+        uses.addAll(token.allUses(ConstructUseTypeEnum.ga, metadata, xp));
       }
     }
 

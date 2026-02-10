@@ -32,26 +32,24 @@ class _RequestCacheItem {
   final PracticeActivityModel practiceActivity;
   final DateTime timestamp;
 
-  _RequestCacheItem({
-    required this.practiceActivity,
-    required this.timestamp,
-  });
+  _RequestCacheItem({required this.practiceActivity, required this.timestamp});
 
   bool get isExpired =>
       DateTime.now().difference(timestamp) > PracticeRepo._cacheDuration;
 
   factory _RequestCacheItem.fromJson(Map<String, dynamic> json) {
     return _RequestCacheItem(
-      practiceActivity:
-          PracticeActivityModel.fromJson(json['practiceActivity']),
+      practiceActivity: PracticeActivityModel.fromJson(
+        json['practiceActivity'],
+      ),
       timestamp: DateTime.parse(json['timestamp']),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'practiceActivity': practiceActivity.toJson(),
-        'timestamp': timestamp.toIso8601String(),
-      };
+    'practiceActivity': practiceActivity.toJson(),
+    'timestamp': timestamp.toIso8601String(),
+  };
 }
 
 /// Controller for handling activity completions.
@@ -144,16 +142,11 @@ class PracticeRepo {
       case ActivityTypeEnum.wordFocusListening:
         return WordFocusListeningGenerator.get(req);
       case ActivityTypeEnum.hiddenWordListening:
-        return _fetch(
-          accessToken: accessToken,
-          requestModel: req,
-        );
+        return _fetch(accessToken: accessToken, requestModel: req);
     }
   }
 
-  static PracticeActivityModel? _getCached(
-    MessageActivityRequest req,
-  ) {
+  static PracticeActivityModel? _getCached(MessageActivityRequest req) {
     final keys = List.from(_storage.getKeys());
     for (final k in keys) {
       try {
@@ -180,12 +173,11 @@ class PracticeRepo {
   static Future<void> _setCached(
     MessageActivityRequest req,
     MessageActivityResponse res,
-  ) =>
-      _storage.write(
-        req.hashCode.toString(),
-        _RequestCacheItem(
-          practiceActivity: res.activity,
-          timestamp: DateTime.now(),
-        ).toJson(),
-      );
+  ) => _storage.write(
+    req.hashCode.toString(),
+    _RequestCacheItem(
+      practiceActivity: res.activity,
+      timestamp: DateTime.now(),
+    ).toJson(),
+  );
 }

@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pages/chat/events/poll.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -71,18 +73,14 @@ class MessageContent extends StatelessWidget {
   //   if (event.content['can_request_session'] != true) {
   //     ScaffoldMessenger.of(context).showSnackBar(
   //       SnackBar(
-  //         content: Text(
-  //           event.calcLocalizedBodyFallback(MatrixLocals(l10n)),
-  //         ),
+  //         content: Text(event.calcLocalizedBodyFallback(MatrixLocals(l10n))),
   //       ),
   //     );
   //     return;
   //   }
   //   final client = Matrix.of(context).client;
   //   if (client.isUnknownSession && client.encryption!.crossSigning.enabled) {
-  //     final success = await BootstrapDialog(
-  //       client: Matrix.of(context).client,
-  //     ).show(context);
+  //     final success = await context.push('/backup');
   //     if (success != true) return;
   //   }
   //   event.requestKey();
@@ -114,20 +112,16 @@ class MessageContent extends StatelessWidget {
   //               trailing: const Icon(Icons.lock_outlined),
   //             ),
   //             const Divider(),
-  //             Text(
-  //               event.calcLocalizedBodyFallback(
-  //                 MatrixLocals(l10n),
-  //               ),
-  //             ),
+  //             Text(event.calcLocalizedBodyFallback(MatrixLocals(l10n))),
   //           ],
   //         ),
   //       ),
   //     ),
   //   );
   // }
-
   void onClick(PangeaToken token) {
-    token = pangeaMessageEvent?.messageDisplayRepresentation
+    token =
+        pangeaMessageEvent?.messageDisplayRepresentation
             ?.getClosestNonPunctToken(token) ??
         token;
 
@@ -146,7 +140,8 @@ class MessageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = AppConfig.messageFontSize * AppConfig.fontSizeFactor;
+    final fontSize =
+        AppConfig.messageFontSize * AppSettings.fontSizeFactor.value;
     final buttonTextColor = textColor;
     switch (event.type) {
       case EventTypes.Message:
@@ -156,7 +151,9 @@ class MessageContent extends StatelessWidget {
           case MessageTypes.Image:
           case MessageTypes.Sticker:
             if (event.redacted) continue textmessage;
-            const maxSize = 256.0;
+            final maxSize = event.messageType == MessageTypes.Sticker
+                ? 128.0
+                : 256.0;
             final w = event.content
                 .tryGetMap<String, Object?>('info')
                 ?.tryGet<int>('w');
@@ -191,12 +188,12 @@ class MessageContent extends StatelessWidget {
             return CuteContent(event);
           case MessageTypes.Audio:
             if (PlatformInfos.isMobile ||
-                    PlatformInfos.isMacOS ||
-                    PlatformInfos.isWeb
-                // Disabled until https://github.com/bleonard252/just_audio_mpv/issues/3
-                // is fixed
-                //   || PlatformInfos.isLinux
-                ) {
+                PlatformInfos.isMacOS ||
+                PlatformInfos.isWeb
+            // Disabled until https://github.com/bleonard252/just_audio_mpv/issues/3
+            // is fixed
+            //   || PlatformInfos.isLinux
+            ) {
               return AudioPlayerWidget(
                 event,
                 color: textColor,
@@ -242,8 +239,9 @@ class MessageContent extends StatelessWidget {
           //   );
           // Pangea#
           case MessageTypes.Location:
-            final geoUri =
-                Uri.tryParse(event.content.tryGet<String>('geo_uri')!);
+            final geoUri = Uri.tryParse(
+              event.content.tryGet<String>('geo_uri')!,
+            );
             if (geoUri != null && geoUri.scheme == 'geo') {
               final latlong = geoUri.path
                   .split(';')
@@ -255,7 +253,7 @@ class MessageContent extends StatelessWidget {
                   latlong.first != null &&
                   latlong.last != null) {
                 return Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     MapBubble(
                       latitude: latlong.first!,
@@ -264,8 +262,10 @@ class MessageContent extends StatelessWidget {
                     const SizedBox(height: 6),
                     OutlinedButton.icon(
                       icon: Icon(Icons.location_on_outlined, color: textColor),
-                      onPressed:
-                          UrlLauncher(context, geoUri.toString()).launchUrl,
+                      onPressed: UrlLauncher(
+                        context,
+                        geoUri.toString(),
+                      ).launchUrl,
                       label: Text(
                         L10n.of(context).openInMaps,
                         style: TextStyle(color: textColor),
@@ -283,56 +283,40 @@ class MessageContent extends StatelessWidget {
           textmessage:
           default:
             if (event.redacted) {
-              return FutureBuilder<User?>(
-                future: event.redactedBecause?.fetchSenderUser(),
-                builder: (context, snapshot) {
-                  final reason =
-                      event.redactedBecause?.content.tryGet<String>('reason');
-                  final redactedBy = snapshot.data?.calcDisplayname() ??
-                      event.redactedBecause?.senderId.localpart ??
-                      L10n.of(context).user;
-                  return _ButtonContent(
-                    label: reason == null
-                        ? L10n.of(context).redactedBy(redactedBy)
-                        : L10n.of(context).redactedByBecause(
-                            redactedBy,
-                            reason,
-                          ),
-                    icon: '🗑️',
-                    textColor: buttonTextColor.withAlpha(128),
-                    onPressed: () => onInfoTab!(event),
-                    fontSize: fontSize,
-                  );
-                },
+              return RedactionWidget(
+                event: event,
+                buttonTextColor: buttonTextColor,
+                onInfoTab: onInfoTab,
+                fontSize: fontSize,
               );
             }
-            var html = AppConfig.renderHtml && event.isRichMessage
+            var html = AppSettings.renderHtml.value && event.isRichMessage
                 ? event.formattedText
-                : event.body;
+                : event.body.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
             if (event.messageType == MessageTypes.Emote) {
               html = '* $html';
             }
 
-            final bigEmotes = event.onlyEmotes &&
+            final bigEmotes =
+                event.onlyEmotes &&
                 event.numberEmotes > 0 &&
                 event.numberEmotes <= 3;
             return Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: HtmlMessage(
                 html: html,
                 textColor: textColor,
                 room: event.room,
-                fontSize: AppConfig.fontSizeFactor *
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
                     AppConfig.messageFontSize *
                     (bigEmotes ? 5 : 1),
                 limitHeight: !selected,
                 linkStyle: TextStyle(
                   color: linkColor,
                   fontSize:
-                      AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                      AppSettings.fontSizeFactor.value *
+                      AppConfig.messageFontSize,
                   decoration: TextDecoration.underline,
                   decorationColor: linkColor,
                 ),
@@ -349,7 +333,8 @@ class MessageContent extends StatelessWidget {
                 pangeaMessageEvent: pangeaMessageEvent,
                 nextEvent: nextEvent,
                 prevEvent: prevEvent,
-                onClick: event.isActivityMessage ||
+                onClick:
+                    event.isActivityMessage ||
                         readingAssistanceMode ==
                             ReadingAssistanceMode.practiceMode
                     ? null
@@ -360,6 +345,21 @@ class MessageContent extends StatelessWidget {
               ),
             );
         }
+      case PollEventContent.startType:
+        if (event.redacted) {
+          return RedactionWidget(
+            event: event,
+            buttonTextColor: buttonTextColor,
+            onInfoTab: onInfoTab,
+            fontSize: fontSize,
+          );
+        }
+        return PollWidget(
+          event: event,
+          timeline: timeline,
+          textColor: textColor,
+          linkColor: linkColor,
+        );
       case EventTypes.CallInvite:
         return FutureBuilder<User?>(
           future: event.fetchSenderUser(),
@@ -397,6 +397,44 @@ class MessageContent extends StatelessWidget {
   }
 }
 
+class RedactionWidget extends StatelessWidget {
+  const RedactionWidget({
+    super.key,
+    required this.event,
+    required this.buttonTextColor,
+    required this.onInfoTab,
+    required this.fontSize,
+  });
+
+  final Event event;
+  final Color buttonTextColor;
+  final void Function(Event p1)? onInfoTab;
+  final double fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<User?>(
+      future: event.redactedBecause?.fetchSenderUser(),
+      builder: (context, snapshot) {
+        final reason = event.redactedBecause?.content.tryGet<String>('reason');
+        final redactedBy =
+            snapshot.data?.calcDisplayname() ??
+            event.redactedBecause?.senderId.localpart ??
+            L10n.of(context).user;
+        return _ButtonContent(
+          label: reason == null
+              ? L10n.of(context).redactedBy(redactedBy)
+              : L10n.of(context).redactedByBecause(redactedBy, reason),
+          icon: '🗑️',
+          textColor: buttonTextColor.withAlpha(128),
+          onPressed: () => onInfoTab!(event),
+          fontSize: fontSize,
+        );
+      },
+    );
+  }
+}
+
 class _ButtonContent extends StatelessWidget {
   final void Function() onPressed;
   final String label;
@@ -415,18 +453,12 @@ class _ButtonContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
         onTap: onPressed,
         child: Text(
           '$icon  $label',
-          style: TextStyle(
-            color: textColor,
-            fontSize: fontSize,
-          ),
+          style: TextStyle(color: textColor, fontSize: fontSize),
         ),
       ),
     );

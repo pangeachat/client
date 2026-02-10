@@ -97,14 +97,10 @@ class ConstructSummaryRequest {
 class ConstructSummaryResponse {
   final ConstructSummary summary;
 
-  ConstructSummaryResponse({
-    required this.summary,
-  });
+  ConstructSummaryResponse({required this.summary});
 
   Map<String, dynamic> toJson() {
-    return {
-      'summary': summary.toJson(),
-    };
+    return {'summary': summary.toJson()};
   }
 
   factory ConstructSummaryResponse.fromJson(Map<String, dynamic> json) {
@@ -122,8 +118,10 @@ class ConstructRepo {
       choreoApiKey: Environment.choreoApiKey,
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
-    final Response res =
-        await req.post(url: PApiUrls.constructSummary, body: request.toJson());
+    final Response res = await req.post(
+      url: PApiUrls.constructSummary,
+      body: request.toJson(),
+    );
     final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
     final response = ConstructSummaryResponse.fromJson(decodedBody);
     return response;

@@ -65,9 +65,7 @@ class PangeaToken {
       // previously sent tokens have lists of lemmas
       if (json is Iterable) {
         return json
-                .map<Lemma>(
-                  (e) => Lemma.fromJson(e as Map<String, dynamic>),
-                )
+                .map<Lemma>((e) => Lemma.fromJson(e as Map<String, dynamic>))
                 .toList()
                 .cast<Lemma>()
                 .firstOrNull ??
@@ -82,8 +80,9 @@ class PangeaToken {
   }
 
   factory PangeaToken.fromJson(Map<String, dynamic> json) {
-    final PangeaTokenText text =
-        PangeaTokenText.fromJson(json[_textKey] as Map<String, dynamic>);
+    final PangeaTokenText text = PangeaTokenText.fromJson(
+      json[_textKey] as Map<String, dynamic>,
+    );
     final morph = json['morph'] != null
         ? (json['morph'] as Map<String, dynamic>).map(
             (key, value) => MapEntry(
@@ -104,12 +103,10 @@ class PangeaToken {
   static const String _lemmaKey = ModelKey.lemma;
 
   Map<String, dynamic> toJson() => {
-        _textKey: text.toJson(),
-        _lemmaKey: [lemma.toJson()],
-        'morph': morph.map(
-          (key, value) => MapEntry(key.name, value),
-        ),
-      };
+    _textKey: text.toJson(),
+    _lemmaKey: [lemma.toJson()],
+    'morph': morph.map((key, value) => MapEntry(key.name, value)),
+  };
 
   /// alias for the offset
   int get start => text.offset;
@@ -179,10 +176,10 @@ class PangeaToken {
   }
 
   ConstructIdentifier get vocabConstructID => ConstructIdentifier(
-        lemma: lemma.text,
-        type: ConstructTypeEnum.vocab,
-        category: pos,
-      );
+    lemma: lemma.text,
+    type: ConstructTypeEnum.vocab,
+    category: pos,
+  );
 
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
@@ -191,8 +188,9 @@ class PangeaToken {
     MorphFeaturesEnum morphFeature,
     String morphTag,
   ) {
-    final List<String> allTags =
-        MorphsRepo.cached.getDisplayTags(morphFeature.name);
+    final List<String> allTags = MorphsRepo.cached.getDisplayTags(
+      morphFeature.name,
+    );
 
     final List<String> possibleDistractors = allTags
         .where(
@@ -205,15 +203,18 @@ class PangeaToken {
   }
 
   List<ConstructIdentifier> get morphsBasicallyEligibleForPracticeByPriority =>
-      MorphFeaturesEnumExtension.eligibleForPractice.where((f) {
-        return morph.containsKey(f);
-      }).map((f) {
-        return ConstructIdentifier(
-          lemma: getMorphTag(f)!,
-          type: ConstructTypeEnum.morph,
-          category: f.name,
-        );
-      }).toList();
+      MorphFeaturesEnumExtension.eligibleForPractice
+          .where((f) {
+            return morph.containsKey(f);
+          })
+          .map((f) {
+            return ConstructIdentifier(
+              lemma: getMorphTag(f)!,
+              type: ConstructTypeEnum.morph,
+              category: f.name,
+            );
+          })
+          .toList();
 
   bool eligibleForPractice(ActivityTypeEnum activityType) {
     switch (activityType) {

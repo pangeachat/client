@@ -2518,9 +2518,9 @@
   "@tryAgain": {},
   "blockedUsers": "Utilisateurs/trices bloqués",
   "@blockedUsers": {},
-  "redactMessageDescription": "Le message sera modifié pour tous les participants de cette conversation. Il n'est pas possible de revenir en arrière.",
+  "redactMessageDescription": "Le message sera supprimé pour tous les participants de cette conversation. Il n'est pas possible de revenir en arrière.",
   "@redactMessageDescription": {},
-  "redactedBy": "Modifié par {username}",
+  "redactedBy": "Supprimé par {username}",
   "@redactedBy": {
     "type": "String",
     "placeholders": {
@@ -2531,7 +2531,7 @@
   },
   "directChat": "Discussion directe",
   "@directChat": {},
-  "optionalRedactReason": "(Facultatif) Raison de la modification de ce message...",
+  "optionalRedactReason": "(Facultatif) Raison de la suppression de ce message...",
   "@optionalRedactReason": {},
   "subspace": "Sous-espace",
   "@subspace": {},
@@ -2700,7 +2700,7 @@
   "@calls": {},
   "customEmojisAndStickers": "Émoticônes et autocollants personnalisés",
   "@customEmojisAndStickers": {},
-  "hideRedactedMessages": "Cacher les messages édités",
+  "hideRedactedMessages": "Cacher les messages supprimés",
   "@hideRedactedMessages": {},
   "pleaseEnterYourCurrentPassword": "Veuillez saisir votre mot de passe actuel",
   "@pleaseEnterYourCurrentPassword": {},
@@ -2710,7 +2710,7 @@
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
-  "hideRedactedMessagesBody": "Si quelqu'un modifie un message, celui-ci ne sera plus visible dans la discussion.",
+  "hideRedactedMessagesBody": "Si quelqu'un supprime un message, celui-ci ne sera plus visible dans la discussion.",
   "@hideRedactedMessagesBody": {},
   "customEmojisAndStickersBody": "Ajoutez ou partagez des émoticônes ou autocollants personnalisés qui peuvent être utilisés dans n'importe quelle discussion.",
   "@customEmojisAndStickersBody": {},
@@ -2722,7 +2722,7 @@
   "@hideInvalidOrUnknownMessageFormats": {},
   "messagesStyle": "Messages :",
   "@messagesStyle": {},
-  "redactedByBecause": "Modifié par {username} car : \"{reason}\"",
+  "redactedByBecause": "Supprimé par {username} car : \"{reason}\"",
   "@redactedByBecause": {
     "type": "String",
     "placeholders": {
@@ -2847,15 +2847,6 @@
   "@restricted": {},
   "knockRestricted": "Frapper à la porte limité",
   "@knockRestricted": {},
-  "signInWith": "Se connecter avec {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "groupCanBeFoundViaSearch": "Le groupe peut être trouvé via la recherche",
   "@groupCanBeFoundViaSearch": {},
   "groupName": "Nom du groupe",
@@ -3089,27 +3080,86 @@
   },
   "loginWithMatrixId": "Connexion avec l'identifiant Matrix",
   "@loginWithMatrixId": {},
-  "setCustomPermissionLevel": "Définir le niveau de permission personnalisé",
-  "setPermissionsLevelDescription": "Veuillez choisir un rôle prédéfini ci-dessous ou entrer un niveau de permission personnalisé entre 0 et 100.",
+  "setCustomPermissionLevel": "Définir un niveau d’autorisation",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Veuillez choisir un rôle prédéfini ci-dessous ou saisir un niveau d’autorisation entre 0 et 100.",
+  "@setPermissionsLevelDescription": {},
   "ignoreUser": "Ignorer l'utilisateur",
-  "normalUser": "Utilisateur normal",
-  "commandHint_roomupgrade": "Mettre à niveau cette salle vers la version de salle donnée",
-  "checkList": "Liste de vérification",
-  "countInvited": "{count} invité(s)",
+  "@ignoreUser": {},
+  "normalUser": "Utilisateur standard",
+  "@normalUser": {},
+  "checkList": "Check-list",
+  "@checkList": {},
+  "countInvited": "{count} invité(e/s)",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sendImages": "Envoyer {count} image(s)",
+  "@sendImages": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeserverDescription": "Toutes vos données sont stockées sur le serveur de votre fournisseur matrix, comme chez un fournisseur d'e-mails. Vous pouvez choisir le serveur que vous souhaitez utiliser, tout en pouvant communiquer avec tout le monde. Pour en savoir plus, rendez-vous sur https://matrix.org.",
+  "@homeserverDescription": {},
+  "calculatingFileSize": "Calcul en cours...",
+  "@calculatingFileSize": {},
+  "prepareSendingAttachment": "Préparation à l'envoi...",
+  "@prepareSendingAttachment": {},
+  "sendingAttachment": "Envoi en cours...",
+  "@sendingAttachment": {},
+  "generatingVideoThumbnail": "Génération de la vignette...",
+  "@generatingVideoThumbnail": {},
+  "compressVideo": "Compression de la vidéo...",
+  "@compressVideo": {},
+  "sendingAttachmentCountOfCount": "Envoi {index} sur {length}...",
+  "@sendingAttachmentCountOfCount": {
+    "type": "integer",
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "length": {
+        "type": "int"
+      }
+    }
+  },
+  "serverLimitReached": "Nombre de tentatives dépassé! Patientez {seconds} secondes...",
+  "@serverLimitReached": {
+    "type": "integer",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "oneOfYourDevicesIsNotVerified": "Un de vos appareils n'est pas vérifié",
+  "@oneOfYourDevicesIsNotVerified": {},
+  "customReaction": "Réaction",
+  "@customReaction": {},
+  "declineInvitation": "Refuser l'invitation",
+  "@declineInvitation": {},
+  "invalidUrl": "Adresse incorrecte",
+  "@invalidUrl": {},
+  "addAnswerOption": "Ajouter une réponse",
+  "@addAnswerOption": {},
+  "addLink": "Ajouter un lien",
+  "@addLink": {},
+  "allowMultipleAnswers": "Autoriser plusieurs réponses",
+  "@allowMultipleAnswers": {},
+  "commandHint_roomupgrade": "Mettre à niveau cette salle vers la version de salle donnée",
   "sendRoomNotifications": "Envoyer une notification @room",
   "discoverHomeservers": "Découvrir les serveurs principaux",
   "whatIsAHomeserver": "Qu'est-ce qu'un serveur principal ?",
-  "homeserverDescription": "Toutes vos données sont stockées sur le serveur principal, tout comme un fournisseur de messagerie. Vous pouvez choisir le serveur principal que vous souhaitez utiliser, tout en pouvant communiquer avec tout le monde. En savoir plus sur https://matrix.org.",
   "doesNotSeemToBeAValidHomeserver": "Il ne semble pas s'agir d'un serveur principal compatible. Mauvaise URL ?",
-  "calculatingFileSize": "Calcul de la taille du fichier...",
-  "prepareSendingAttachment": "Préparer l'envoi de la pièce jointe...",
-  "sendingAttachment": "Envoi de la pièce jointe...",
-  "generatingVideoThumbnail": "Génération de la miniature vidéo...",
-  "compressVideo": "Compression de la vidéo...",
-  "sendingAttachmentCountOfCount": "Envoi de la pièce jointe {index} sur {length}...",
-  "serverLimitReached": "Limite du serveur atteinte ! Attente de {seconds} secondes...",
-  "oneOfYourDevicesIsNotVerified": "L'un de vos appareils n'est pas vérifié",
   "noticeChatBackupDeviceVerification": "Remarque : lorsque vous connectez tous vos appareils à la sauvegarde de chat, ils sont automatiquement vérifiés.",
   "continueText": "Continuer",
   "welcomeText": "Hé Hé 👋 C'est FluffyChat. Vous pouvez vous connecter à n'importe quel serveur domestique, compatible avec https://matrix.org. Et ensuite discuter avec n'importe qui. C'est un réseau de messagerie décentralisé énorme !",
@@ -3130,8 +3180,6 @@
   "italicText": "Texte en italique",
   "strikeThrough": "Barré",
   "pleaseFillOut": "Veuillez remplir",
-  "invalidUrl": "URL invalide",
-  "addLink": "Ajouter un lien",
   "unableToJoinChat": "Impossible de rejoindre la conversation. Peut-être que l'autre partie a déjà fermé la discussion.",
   "previous": "Précédent",
   "otherPartyNotLoggedIn": "L'autre partie n'est pas actuellement connectée et ne peut donc pas recevoir de messages !",
@@ -3207,7 +3255,6 @@
   "commandHint_logout": "Déconnectez votre appareil actuel",
   "commandHint_logoutall": "Déconnectez tous les appareils actifs",
   "displayNavigationRail": "Afficher le rail de navigation sur mobile",
-  "customReaction": "Réaction personnalisée",
   "writeAMessageLangCodes": "Tapez en {l1} ou {l2}...",
   "requests": "Demandes",
   "holdForInfo": "Cliquez et maintenez pour obtenir des infos sur le mot.",
@@ -4335,45 +4382,9 @@
   "inviteYourFriends": "Invitez vos amis",
   "playWithAI": "Jouez avec l'IA pour l'instant",
   "courseStartDesc": "Pangea Bot est prêt à partir à tout moment !\n\n...mais apprendre est meilleur avec des amis !",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@commandHint_roomupgrade": {
     "type": "String",
     "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@sendImages": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@sendRoomNotifications": {
     "type": "String",
@@ -4387,54 +4398,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@homeserverDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@doesNotSeemToBeAValidHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@calculatingFileSize": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@prepareSendingAttachment": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sendingAttachment": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@generatingVideoThumbnail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@compressVideo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sendingAttachmentCountOfCount": {
-    "type": "integer",
-    "placeholders": {
-      "index": {
-        "type": "int"
-      },
-      "length": {
-        "type": "int"
-      }
-    }
-  },
-  "@serverLimitReached": {
-    "type": "integer",
-    "placeholders": {
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "@oneOfYourDevicesIsNotVerified": {
     "type": "String",
     "placeholders": {}
   },
@@ -4515,14 +4479,6 @@
     "placeholders": {}
   },
   "@pleaseFillOut": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@invalidUrl": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addLink": {
     "type": "String",
     "placeholders": {}
   },
@@ -4838,10 +4794,6 @@
     "placeholders": {}
   },
   "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
     "type": "String",
     "placeholders": {}
   },

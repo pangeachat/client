@@ -103,27 +103,22 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     super.dispose();
   }
 
-  T _runWithLogging<T>(
-    Function runner,
-    String errorMessage,
-    T defaultValue,
-  ) {
+  T _runWithLogging<T>(Function runner, String errorMessage, T defaultValue) {
     try {
       return runner();
     } catch (e, s) {
       ErrorHandler.logError(
         e: "$errorMessage: $e",
         s: s,
-        data: {
-          "eventID": widget.event.eventId,
-        },
+        data: {"eventID": widget.event.eventId},
       );
       return defaultValue;
     }
   }
 
-  final Duration transitionAnimationDuration =
-      const Duration(milliseconds: 300);
+  final Duration transitionAnimationDuration = const Duration(
+    milliseconds: 300,
+  );
 
   double get _horizontalPadding =>
       FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
@@ -154,15 +149,21 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       widget.event.senderId == widget.event.room.client.userID;
 
   bool get showDetails =>
-      AppSettings.displayChatDetailsColumn.getItem(Matrix.of(context).store) &&
+      AppSettings.displayChatDetailsColumn.value &&
       FluffyThemes.isThreeColumnMode(context) &&
       widget.chatController.room.membership == Membership.join;
 
-  MediaQueryData? get mediaQuery => _runWithLogging<MediaQueryData?>(
-        () => MediaQuery.of(context),
-        "Error getting media query",
-        null,
-      );
+  Size? get screenSize => _runWithLogging<Size?>(
+    () => MediaQuery.sizeOf(context),
+    "Error getting media query size",
+    null,
+  );
+
+  EdgeInsets? get screenPadding => _runWithLogging<EdgeInsets?>(
+    () => MediaQuery.paddingOf(context),
+    "Error getting media query padding",
+    null,
+  );
 
   double get columnWidth => FluffyThemes.isColumnMode(context)
       ? (FluffyThemes.columnWidth + FluffyThemes.navRailWidth + 2.0)
@@ -172,13 +173,14 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     const double messageMargin = 16.0;
     // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
     final bool showingDetails = widget.chatController.displayChatDetailsColumn;
-    final double totalMaxWidth = FluffyThemes.maxTimelineWidth -
+    final double totalMaxWidth =
+        FluffyThemes.maxTimelineWidth -
         (showingDetails ? FluffyThemes.columnWidth : 0) -
         messageMargin;
     double? maxWidth;
 
-    if (mediaQuery != null) {
-      final chatViewWidth = mediaQuery!.size.width - columnWidth;
+    if (screenSize != null) {
+      final chatViewWidth = screenSize!.width - columnWidth;
       maxWidth = chatViewWidth - (2 * _horizontalPadding) - messageMargin;
     }
 
@@ -192,20 +194,20 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth / 2, 100);
 
   RenderBox? get _overlayMessageRenderBox => _runWithLogging<RenderBox?>(
-        () => MatrixState.pAnyState.getRenderBox(
-          'overlay_message_${widget.event.eventId}',
-        ),
-        "Error getting overlay message render box",
-        null,
-      );
+    () => MatrixState.pAnyState.getRenderBox(
+      'overlay_message_${widget.event.eventId}',
+    ),
+    "Error getting overlay message render box",
+    null,
+  );
 
   RenderBox? get _reactionsRenderBox => _runWithLogging<RenderBox?>(
-        () => MatrixState.pAnyState.getRenderBox(
-          'message_reactions_${widget.event.eventId}',
-        ),
-        "Error getting reactions render box",
-        null,
-      );
+    () => MatrixState.pAnyState.getRenderBox(
+      'message_reactions_${widget.event.eventId}',
+    ),
+    "Error getting reactions render box",
+    null,
+  );
 
   Size? get _overlayMessageSize => _overlayMessageRenderBox?.size;
 
@@ -222,12 +224,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
-        () => MatrixState.pAnyState.getRenderBox(
-          widget.event.eventId,
-        ),
-        "Error getting message render box",
-        null,
-      );
+    () => MatrixState.pAnyState.getRenderBox(widget.event.eventId),
+    "Error getting message render box",
+    null,
+  );
 
   Offset? get _originalMessageOffset {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
@@ -254,9 +254,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   bool get isRtl {
-    final locale = Provider.of<LocaleProvider>(context, listen: false)
-        .locale
-        ?.languageCode;
+    final locale = Provider.of<LocaleProvider>(
+      context,
+      listen: false,
+    ).locale?.languageCode;
     return locale != null &&
         LanguageConstants.rtlLanguageCodes.contains(locale);
   }
@@ -278,7 +279,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double? get messageRightOffset {
-    if (mediaQuery == null || !ownMessage) return null;
+    if (screenSize == null || !ownMessage) return null;
 
     final offset = _originalMessageOffset;
     if (offset == null) {
@@ -286,13 +287,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     if (isRtl) {
-      return mediaQuery!.size.width -
+      return screenSize!.width -
           columnWidth -
           offset.dx -
           originalMessageSize.width;
     }
 
-    return mediaQuery!.size.width -
+    return screenSize!.width -
         offset.dx -
         originalMessageSize.width -
         (showDetails ? FluffyThemes.columnWidth : 0);
@@ -325,9 +326,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? get _wordCardLeftOffset {
     if (ownMessage) return null;
     if (widget.overlayController.selectedToken != null &&
-        mediaQuery != null &&
-        (mediaQuery!.size.width < _toolbarMaxWidth + messageLeftOffset!)) {
-      return mediaQuery!.size.width - _toolbarMaxWidth - 8.0;
+        screenSize != null &&
+        (screenSize!.width < _toolbarMaxWidth + messageLeftOffset!)) {
+      return screenSize!.width - _toolbarMaxWidth - 8.0;
     }
     return messageLeftOffset;
   }
@@ -337,10 +338,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double? get _screenHeight {
-    if (mediaQuery == null) return null;
-    return mediaQuery!.size.height -
-        mediaQuery!.padding.bottom -
-        mediaQuery!.padding.top;
+    if (screenSize == null || screenPadding == null) return null;
+    return screenSize!.height - screenPadding!.bottom - screenPadding!.top;
   }
 
   bool get shouldScroll {
@@ -353,7 +352,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final offset = _originalMessageOffset;
     if (offset == null) return false;
 
-    final bottomOffset = offset.dy +
+    final bottomOffset =
+        offset.dy +
         originalMessageSize.height +
         _reactionsHeight +
         AppConfig.toolbarMenuHeight +
@@ -373,16 +373,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final originalContentHeight =
         messageHeight + _reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
 
-    final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
+    final screenHeight = screenSize!.height - screenPadding!.bottom;
 
     double boxHeight = screenHeight - offset.dy - originalContentHeight;
 
     final neededSpace =
-        boxHeight + _fullContentHeight + mediaQuery!.padding.top + 4.0;
+        boxHeight + _fullContentHeight + screenPadding!.top + 4.0;
 
     if (neededSpace > screenHeight) {
-      boxHeight =
-          screenHeight - _fullContentHeight - mediaQuery!.padding.top - 4.0;
+      boxHeight = screenHeight - _fullContentHeight - screenPadding!.top - 4.0;
     }
 
     return boxHeight;
@@ -409,7 +408,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   @override
   Widget build(BuildContext context) {
-    if (_messageRenderBox == null || mediaQuery == null) {
+    if (_messageRenderBox == null || screenSize == null) {
       return const SizedBox.shrink();
     }
 
@@ -420,17 +419,19 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           Column(
             children: [
               SizedBox(
-                width: mediaQuery!.size.width -
+                width:
+                    screenSize!.width -
                     columnWidth -
                     (showDetails ? FluffyThemes.columnWidth : 0),
                 height: _screenHeight!,
                 child: Stack(
-                  alignment:
-                      ownMessage ? Alignment.centerRight : Alignment.centerLeft,
+                  alignment: ownMessage
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
                   children: [
                     ValueListenableBuilder(
                       valueListenable: _startedTransition,
-                      builder: (context, started, __) {
+                      builder: (context, started, _) {
                         return !started
                             ? OverMessageOverlay(controller: this)
                             : const SizedBox();
@@ -438,7 +439,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     ),
                     ValueListenableBuilder(
                       valueListenable: _startedTransition,
-                      builder: (context, started, __) {
+                      builder: (context, started, _) {
                         return !started && shouldScroll
                             ? Positioned(
                                 top: 0,
@@ -451,9 +452,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     ),
                     if (readingAssistanceMode ==
                         ReadingAssistanceMode.practiceMode) ...[
-                      CenteredMessage(
-                        controller: this,
-                      ),
+                      CenteredMessage(controller: this),
                       PracticeModeTransitionAnimation(
                         targetId:
                             "overlay_center_message_${widget.event.eventId}",
@@ -491,7 +490,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
                             final type =
                                 practice.practiceMode.associatedActivityType;
-                            final complete = type != null &&
+                            final complete =
+                                type != null &&
                                 practice.isPracticeSessionDone(type);
 
                             if (instruction != null && !complete) {
@@ -516,10 +516,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               ),
             ],
           ),
-          if (showDetails)
-            const SizedBox(
-              width: FluffyThemes.columnWidth,
-            ),
+          if (showDetails) const SizedBox(width: FluffyThemes.columnWidth),
         ],
       ),
     );
@@ -528,10 +525,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
 class MessageReactionPicker extends StatelessWidget {
   final ChatController chatController;
-  const MessageReactionPicker({
-    super.key,
-    required this.chatController,
-  });
+  const MessageReactionPicker({super.key, required this.chatController});
 
   @override
   Widget build(BuildContext context) {
@@ -561,9 +555,7 @@ class MessageReactionPicker extends StatelessWidget {
 
     return Material(
       elevation: 4,
-      borderRadius: BorderRadius.circular(
-        AppConfig.borderRadius,
-      ),
+      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       shadowColor: theme.colorScheme.surface.withAlpha(128),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -577,26 +569,17 @@ class MessageReactionPicker extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   icon: Center(
                     child: Opacity(
-                      opacity: sentReactions.contains(
-                        emoji,
-                      )
-                          ? 0.33
-                          : 1,
+                      opacity: sentReactions.contains(emoji) ? 0.33 : 1,
                       child: Text(
                         emoji,
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
+                        style: const TextStyle(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                   onPressed: sentReactions.contains(emoji)
                       ? null
-                      : () => event?.room.sendReaction(
-                            event.eventId,
-                            emoji,
-                          ),
+                      : () => event?.room.sendReaction(event.eventId, emoji),
                 ),
               ),
               // IconButton(

@@ -9,7 +9,7 @@ class EmptyPage extends StatelessWidget {
   const EmptyPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final width = min(MediaQuery.of(context).size.width, EmptyPage._width) / 2;
+    final width = min(MediaQuery.sizeOf(context).width, EmptyPage._width) / 2;
     // #Pangea
     // final theme = Theme.of(context);
     // Pangea#

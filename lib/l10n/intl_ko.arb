@@ -2381,15 +2381,6 @@
       }
     }
   },
-  "signInWith": "{provider}로 로그인",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "fileIsTooBigForServer": "전송에 실패했습니다. 서버는 {max}가 넘는 파일을 지원하지 않습니다.",
   "@fileIsTooBigForServer": {},
   "callingPermissions": "통화 권한",
@@ -3272,12 +3263,26 @@
   "notificationRuleCall": "전화",
   "@notificationRuleCall": {},
   "setCustomPermissionLevel": "사용자 지정 권한 수준 설정",
-  "setPermissionsLevelDescription": "아래에서 미리 정의된 역할을 선택하거나 0에서 100 사이의 사용자 지정 권한 수준을 입력하세요.",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "아래에서 미리 정의된 역할을 선택하거나 0부터 100 사이의 사용자 지정 권한 수준을 입력해 주세요.",
+  "@setPermissionsLevelDescription": {},
   "ignoreUser": "사용자 무시",
+  "@ignoreUser": {},
   "normalUser": "일반 사용자",
-  "commandHint_roomupgrade": "이 방을 지정된 방 버전으로 업그레이드",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "이 방을 주어진 방 버전으로 업그레이드합니다",
+  "@commandHint_roomupgrade": {},
   "checkList": "체크리스트",
-  "countInvited": "{count}명 초대됨",
+  "@checkList": {},
+  "countInvited": "{count}초대받은",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "userSpecificNotificationSettings": "사용자별 알림 설정",
   "notificationRuleCallDescription": "통화에 대해 사용자에게 알림을 보냅니다.",
   "notificationRuleEncryptedRoomOneToOne": "암호화된 1:1 방",
@@ -4442,38 +4447,6 @@
   "playWithAI": "일단 AI와 놀아보세요",
   "courseStartDesc": "파니아 봇은 언제든 준비되어 있습니다!\n\n...하지만 친구와 함께 배우는 것이 더 좋아요!",
   "@@locale": "ko",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "@userSpecificNotificationSettings": {
     "type": "String",
     "placeholders": {}

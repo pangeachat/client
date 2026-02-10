@@ -4,25 +4,25 @@ import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 
 void main() {
-  test('SpanData.fromJson handles legacy correction type (maps to grammar)',
-      () {
-    final Map<String, dynamic> legacyJson = {
-      'message': null,
-      'short_message': null,
-      'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
-      'type': {
-        'type_name': 'correction',
-      },
-    };
+  test(
+    'SpanData.fromJson handles legacy correction type (maps to grammar)',
+    () {
+      final Map<String, dynamic> legacyJson = {
+        'message': null,
+        'short_message': null,
+        'choices': <dynamic>[],
+        'offset': 0,
+        'length': 4,
+        'full_text': 'Test',
+        'type': {'type_name': 'correction'},
+      };
 
-    expect(() => SpanData.fromJson(legacyJson), returnsNormally);
-    final SpanData span = SpanData.fromJson(legacyJson);
-    // 'correction' is mapped to 'grammar' for backward compatibility
-    expect(span.type, ReplacementTypeEnum.subjectVerbAgreement);
-  });
+      expect(() => SpanData.fromJson(legacyJson), returnsNormally);
+      final SpanData span = SpanData.fromJson(legacyJson);
+      // 'correction' is mapped to 'grammar' for backward compatibility
+      expect(span.type, ReplacementTypeEnum.subjectVerbAgreement);
+    },
+  );
 
   test('SpanData.fromJson handles legacy typeName object', () {
     final Map<String, dynamic> legacyJson = {
@@ -32,9 +32,7 @@ void main() {
       'offset': 0,
       'length': 4,
       'full_text': 'Test',
-      'type': {
-        'typeName': 'itStart',
-      },
+      'type': {'typeName': 'itStart'},
     };
 
     expect(() => SpanData.fromJson(legacyJson), returnsNormally);
@@ -58,22 +56,24 @@ void main() {
     expect(span.type, ReplacementTypeEnum.didYouMean);
   });
 
-  test('SpanData.fromJson handles legacy vocabulary type (maps to wordChoice)',
-      () {
-    final Map<String, dynamic> legacyJson = {
-      'message': null,
-      'short_message': null,
-      'choices': <dynamic>[],
-      'offset': 0,
-      'length': 4,
-      'full_text': 'Test',
-      'type': 'vocabulary',
-    };
+  test(
+    'SpanData.fromJson handles legacy vocabulary type (maps to wordChoice)',
+    () {
+      final Map<String, dynamic> legacyJson = {
+        'message': null,
+        'short_message': null,
+        'choices': <dynamic>[],
+        'offset': 0,
+        'length': 4,
+        'full_text': 'Test',
+        'type': 'vocabulary',
+      };
 
-    expect(() => SpanData.fromJson(legacyJson), returnsNormally);
-    final SpanData span = SpanData.fromJson(legacyJson);
-    expect(span.type, ReplacementTypeEnum.other);
-  });
+      expect(() => SpanData.fromJson(legacyJson), returnsNormally);
+      final SpanData span = SpanData.fromJson(legacyJson);
+      expect(span.type, ReplacementTypeEnum.other);
+    },
+  );
 
   test('SpanData.fromJson handles new grammar type directly', () {
     final Map<String, dynamic> jsonData = {
@@ -144,20 +144,22 @@ void main() {
       expect(span.fullText, 'Text from parent');
     });
 
-    test('uses empty string when neither full_text nor parentFullText present',
-        () {
-      final Map<String, dynamic> jsonData = {
-        'message': null,
-        'short_message': null,
-        'choices': <dynamic>[],
-        'offset': 0,
-        'length': 4,
-        'type': 'grammar',
-      };
+    test(
+      'uses empty string when neither full_text nor parentFullText present',
+      () {
+        final Map<String, dynamic> jsonData = {
+          'message': null,
+          'short_message': null,
+          'choices': <dynamic>[],
+          'offset': 0,
+          'length': 4,
+          'type': 'grammar',
+        };
 
-      final SpanData span = SpanData.fromJson(jsonData);
-      expect(span.fullText, '');
-    });
+        final SpanData span = SpanData.fromJson(jsonData);
+        expect(span.fullText, '');
+      },
+    );
 
     test('prefers sentence over full_text (legacy field name)', () {
       final Map<String, dynamic> jsonData = {

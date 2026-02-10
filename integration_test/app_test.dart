@@ -1,4 +1,3 @@
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_body.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
@@ -6,7 +5,6 @@ import 'package:fluffychat/pages/invitation_selection/invitation_selection_view.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'package:fluffychat/main.dart' as app;
@@ -26,12 +24,8 @@ void main() {
         () async {
           // this random dialog popping up is super hard to cover in tests
           SharedPreferences.setMockInitialValues({
-            SettingKeys.showNoGoogle: false,
+            'chat.fluffy.show_no_google': false,
           });
-          try {
-            Hive.deleteFromDisk();
-            Hive.initFlutter();
-          } catch (_) {}
         },
       );
 
