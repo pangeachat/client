@@ -45,12 +45,10 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   });
 
   @override
-  State<PhoneticTranscriptionWidget> createState() =>
-      _PhoneticTranscriptionWidgetState();
+  State<PhoneticTranscriptionWidget> createState() => _PhoneticTranscriptionWidgetState();
 }
 
-class _PhoneticTranscriptionWidgetState
-    extends State<PhoneticTranscriptionWidget> {
+class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
   Future<void> _handleAudioTap(String targetId) async {
@@ -62,7 +60,7 @@ class _PhoneticTranscriptionWidgetState
         widget.text,
         context: context,
         targetID: targetId,
-        langCode: widget.langCode,
+        langCode: widget.textLanguage.langCode,
         pos: widget.pos,
         morph: widget.morph,
         onStart: () {
@@ -81,17 +79,14 @@ class _PhoneticTranscriptionWidgetState
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               decoration: BoxDecoration(
-                color: hovering
-                    ? Colors.grey.withAlpha((0.2 * 255).round())
-                    : Colors.transparent,
+                color: hovering ? Colors.grey.withAlpha((0.2 * 255).round()) : Colors.transparent,
                 borderRadius: BorderRadius.circular(6),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -107,27 +102,14 @@ class _PhoneticTranscriptionWidgetState
                       AsyncError(error: final error) =>
                         error is UnsubscribedException
                             ? ErrorIndicator(
-                                message: L10n.of(context)
-                                    .subscribeToUnlockTranscriptions,
+                                message: L10n.of(context).subscribeToUnlockTranscriptions,
                                 onTap: () {
-                                  MatrixState
-                                      .pangeaController.subscriptionController
-                                      .showPaywall(context);
+                                  MatrixState.pangeaController.subscriptionController.showPaywall(context);
                                 },
                               )
-                            : ErrorIndicator(
-                                message:
-                                    L10n.of(context).failedToFetchTranscription,
-                              ),
-                      AsyncLoaded<PTResponse>(value: final ptResponse) =>
-                        _buildTranscription(
-                          context,
-                          ptResponse,
-                        ),
-                      _ => const TextLoadingShimmer(
-                          width: 125.0,
-                          height: 20.0,
-                        ),
+                            : ErrorIndicator(message: L10n.of(context).failedToFetchTranscription),
+                      AsyncLoaded<PTResponse>(value: final ptResponse) => _buildTranscription(context, ptResponse),
+                      _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
                     };
                   },
                 ),
@@ -139,15 +121,8 @@ class _PhoneticTranscriptionWidgetState
     );
   }
 
-  Widget _buildTranscription(
-    BuildContext context,
-    PTResponse ptResponse,
-  ) {
-    final result = disambiguate(
-      ptResponse.pronunciations,
-      pos: widget.pos,
-      morph: widget.morph,
-    );
+  Widget _buildTranscription(BuildContext context, PTResponse ptResponse) {
+    final result = disambiguate(ptResponse.pronunciations, pos: widget.pos, morph: widget.morph);
 
     return Row(
       spacing: 8.0,
