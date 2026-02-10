@@ -502,7 +502,10 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   void _onLevelUp(LevelUpdate update) {
-    LevelUpUtil.showLevelUpDialog(update.newLevel, update.prevLevel, context);
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed !=
+        false) {
+      LevelUpUtil.showLevelUpDialog(update.newLevel, update.prevLevel, context);
+    }
   }
 
   void _onUnlockConstructs(Set<ConstructIdentifier> constructs) {
