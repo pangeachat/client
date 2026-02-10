@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-10 08:54:17.718369",
+  "@@last_modified": "2026-02-10 11:59:44.001280",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12167,6 +12167,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "コースは3〜8のモジュールで構成されており、それぞれのモジュールには異なる文脈で単語を練習するためのアクティビティがあります",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

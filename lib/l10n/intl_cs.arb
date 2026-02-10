@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-02-10 08:47:10.060503",
+  "@@last_modified": "2026-02-10 11:59:08.172278",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11815,6 +11815,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurzy se skládají z 3-8 modulů, z nichž každý obsahuje aktivity, které podporují procvičování slov v různých kontextech",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-02-10 08:56:17.213788",
+  "@@last_modified": "2026-02-10 11:59:54.766533",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11649,6 +11649,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Les cours se composent de 3 à 8 modules, chacun avec des activités pour encourager la pratique des mots dans différents contextes",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

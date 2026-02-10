@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-02-10 10:30:24.330413",
+  "@@last_modified": "2026-02-10 11:58:37.933375",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11243,6 +11243,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Os cursos consisten en 3-8 módulos, cada un con actividades para fomentar a práctica de palabras en diferentes contextos",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

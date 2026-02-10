@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-10 10:32:04.164932",
+  "@@last_modified": "2026-02-10 11:59:07.071909",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11243,6 +11243,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Курси складаються з 3-8 модулів, кожен з яких містить завдання для заохочення практики слів у різних контекстах",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 10:30:52.719050",
+  "@@last_modified": "2026-02-10 11:59:09.604659",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11314,5 +11314,10 @@
   "advancedConfigurations": "Avanserte konfigurasjoner",
   "signInWithLabel": "Logg inn med:",
   "selectAllWords": "Velg alle ordene du hører i lyden",
-  "joinCourseForActivities": "Bli med i et kurs for å prøve aktiviteter."
+  "joinCourseForActivities": "Bli med i et kurs for å prøve aktiviteter.",
+  "courseDescription": "Kurs består av 3-8 moduler, hver med aktiviteter for å oppmuntre til å øve på ord i forskjellige sammenhenger",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  }
 }

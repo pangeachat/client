@@ -36,6 +36,7 @@ enum InstructionsEnum {
   shimmerNewToken,
   shimmerTranslation,
   showedActivityMenu,
+  courseDescription,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -71,6 +72,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
       case InstructionsEnum.showedActivityMenu:
+      case InstructionsEnum.courseDescription:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -139,6 +141,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.disableLanguageToolsDesc;
       case InstructionsEnum.selectMeaning:
         return l10n.selectMeaning;
+      case InstructionsEnum.courseDescription:
+        return l10n.courseDescription;
     }
   }
 

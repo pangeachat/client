@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-02-10 08:44:35.367728",
+  "@@last_modified": "2026-02-10 11:58:49.645390",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11736,6 +11736,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Tečajevi se sastoje od 3-8 modula, svaki s aktivnostima koje potiču vježbanje riječi u različitim kontekstima",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

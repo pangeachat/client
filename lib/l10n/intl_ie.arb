@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-10 08:44:16.628986",
+  "@@last_modified": "2026-02-10 11:58:48.326302",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11991,6 +11991,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Cursi consista de 3-8 moduluri fiecare cu activități pentru a încuraja practicarea cuvintelor în contexte diferite",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-10 10:38:41.478663",
+  "@@last_modified": "2026-02-10 11:59:34.905729",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11243,6 +11243,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "课程由3-8个模块组成，每个模块都有活动以鼓励在不同上下文中练习单词",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

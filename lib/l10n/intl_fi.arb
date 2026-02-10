@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-10 10:29:17.237288",
+  "@@last_modified": "2026-02-10 11:58:39.646251",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11302,6 +11302,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurssit koostuvat 3-8 moduulista, joista jokaisessa on aktiviteetteja, jotka kannustavat sanojen harjoitteluun eri konteksteissa",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

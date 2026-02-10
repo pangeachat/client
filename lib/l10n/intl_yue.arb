@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-02-10 10:38:35.086203",
+  "@@last_modified": "2026-02-10 11:59:04.073255",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12473,6 +12473,11 @@
   },
   "inviteFriends": "邀請朋友",
   "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "課程由3至8個模塊組成，每個模塊都有活動以鼓勵在不同情境中練習單詞",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

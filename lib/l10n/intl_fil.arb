@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-10 10:29:33.625403",
+  "@@last_modified": "2026-02-10 11:59:20.246781",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12358,6 +12358,11 @@
   },
   "inviteFriends": "Imbitahan ang mga kaibigan",
   "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Ang mga kurso ay binubuo ng 3-8 mga module na may mga aktibidad upang hikayatin ang pagsasanay ng mga salita sa iba't ibang konteksto",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

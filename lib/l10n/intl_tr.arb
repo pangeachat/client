@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-10 08:49:55.485194",
+  "@@last_modified": "2026-02-10 11:59:24.436424",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11583,6 +11583,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurslar, her biri farklı bağlamlarda kelimeleri pratik yapmayı teşvik eden etkinliklerle 3-8 modülden oluşur",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

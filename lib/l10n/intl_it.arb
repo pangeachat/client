@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 10:30:34.765732",
+  "@@last_modified": "2026-02-10 11:59:05.750181",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11337,6 +11337,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "I corsi consistono di 3-8 moduli, ognuno con attività per incoraggiare la pratica delle parole in diversi contesti",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

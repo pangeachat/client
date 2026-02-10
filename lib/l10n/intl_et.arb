@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-10 10:26:26.751015",
+  "@@last_modified": "2026-02-10 11:59:00.390026",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11517,6 +11517,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursused koosnevad 3-8 moodulist, milles on tegevusi, et julgustada sõnade harjutamist erinevates kontekstides",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

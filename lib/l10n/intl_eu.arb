@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-10 10:26:54.920800",
+  "@@last_modified": "2026-02-10 11:58:55.175762",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11243,6 +11243,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Ikastaroek 3-8 moduluz osatuta daude, eta moduluek hitzak testuinguru desberdinetan praktikatzen laguntzeko jarduerak dituzte.",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

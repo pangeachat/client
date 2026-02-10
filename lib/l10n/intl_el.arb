@@ -4476,7 +4476,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-02-10 10:25:28.485911",
+  "@@last_modified": "2026-02-10 11:59:42.421972",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -12402,6 +12402,11 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Τα μαθήματα αποτελούνται από 3-8 ενότητες, κάθε μία με δραστηριότητες για να ενθαρρύνουν την εξάσκηση λέξεων σε διαφορετικά συμφραζόμενα",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:52:51.818143",
+  "@@last_modified": "2026-02-10 11:59:37.759626",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11364,6 +11364,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "دوره‌ها شامل ۳-۸ ماژول هستند که هر کدام فعالیت‌هایی برای تشویق به تمرین کلمات در زمینه‌های مختلف دارند",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

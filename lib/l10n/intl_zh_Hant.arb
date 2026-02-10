@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 10:38:46.196937",
+  "@@last_modified": "2026-02-10 11:59:17.222044",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11382,6 +11382,11 @@
   },
   "inviteFriends": "邀請朋友",
   "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "課程由 3-8 個模組組成，每個模組都有活動以鼓勵在不同情境中練習單詞",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

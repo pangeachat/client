@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:55:00.843653",
+  "@@last_modified": "2026-02-10 11:59:46.941469",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12466,6 +12466,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursoj konsistas el 3-8 moduloj, ĉiu kun aktivadoj por instigi praktikadon de vortoj en diversaj kuntekstoj",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }
