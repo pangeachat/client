@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-02-10 11:59:54.766533",
+  "@@last_modified": "2026-02-10 13:53:52.297946",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11654,6 +11654,11 @@
   },
   "courseDescription": "Les cours se composent de 3 à 8 modules, chacun avec des activités pour encourager la pratique des mots dans différents contextes",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La vérification de l'email a échoué. Veuillez réessayer.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

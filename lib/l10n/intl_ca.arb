@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:12.575665",
+  "@@last_modified": "2026-02-10 13:53:22.589118",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11408,6 +11408,11 @@
   },
   "courseDescription": "Els cursos consten de 3-8 mòduls, cadascun amb activitats per fomentar la pràctica de paraules en diferents contextos",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificació de l'email ha fallat. Si us plau, torna-ho a intentar.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

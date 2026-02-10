@@ -1954,7 +1954,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-02-10 11:58:52.267201",
+  "@@last_modified": "2026-02-10 13:53:09.931930",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12460,6 +12460,11 @@
   },
   "courseDescription": "Les cours se composent de 3 à 8 modules, chacun avec des activités pour encourager la pratique des mots dans différents contextes",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Verifikasyon emaili başarısız oldu. Lütfen tekrar deneyin.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

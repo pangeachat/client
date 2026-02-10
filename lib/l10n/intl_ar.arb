@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-10 11:59:22.805489",
+  "@@last_modified": "2026-02-10 13:53:31.002179",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11598,6 +11598,11 @@
   },
   "courseDescription": "تتكون الدورات من 3-8 وحدات، كل منها يحتوي على أنشطة لتشجيع ممارسة الكلمات في سياقات مختلفة",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "فشل التحقق من البريد الإلكتروني. يرجى المحاولة مرة أخرى.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-10 11:58:55.175762",
+  "@@last_modified": "2026-02-10 13:53:12.038447",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11248,6 +11248,11 @@
   },
   "courseDescription": "Ikastaroek 3-8 moduluz osatuta daude, eta moduluek hitzak testuinguru desberdinetan praktikatzen laguntzeko jarduerak dituzte.",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Posta elektronikoaren berrespena huts egin du. Mesedez, saiatu berriro.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

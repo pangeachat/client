@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:59:05.750181",
+  "@@last_modified": "2026-02-10 13:53:17.480808",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11342,6 +11342,11 @@
   },
   "courseDescription": "I corsi consistono di 3-8 moduli, ognuno con attività per incoraggiare la pratica delle parole in diversi contesti",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verifica dell'email è fallita. Per favore riprova.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 11:58:45.605860",
+  "@@last_modified": "2026-02-10 13:53:04.585768",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12117,6 +12117,11 @@
   },
   "courseDescription": "Cursurile constau în 3-8 module, fiecare cu activități pentru a încuraja practicarea cuvintelor în contexte diferite",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Verificarea emailului a eșuat. Vă rugăm să încercați din nou.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

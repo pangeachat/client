@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-02-10 11:59:01.464902",
+  "@@last_modified": "2026-02-10 13:53:14.885652",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11237,6 +11237,11 @@
   },
   "courseDescription": "Kurse bestehen aus 3-8 Modulen, die Aktivitäten enthalten, um das Üben von Wörtern in verschiedenen Kontexten zu fördern",
   "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-Mail-Bestätigung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }
