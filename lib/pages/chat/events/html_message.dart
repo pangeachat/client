@@ -352,10 +352,8 @@ class HtmlMessage extends StatelessWidget {
         if (nodes[i] is dom.Element &&
             onlyElements.indexOf(nodes[i] as dom.Element) <
                 onlyElements.length - 1) ...[
-          // #Pangea
           if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
             const TextSpan(text: '\n\n'),
-          // Pangea#
           if (fullLineHtmlTag.contains((nodes[i] as dom.Element).localName))
             const TextSpan(text: '\n'),
         ],
