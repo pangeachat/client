@@ -28,11 +28,14 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
   });
 
   @override
-  PhoneticTranscriptionBuilderState createState() => PhoneticTranscriptionBuilderState();
+  PhoneticTranscriptionBuilderState createState() =>
+      PhoneticTranscriptionBuilderState();
 }
 
-class PhoneticTranscriptionBuilderState extends State<PhoneticTranscriptionBuilder> {
-  final ValueNotifier<AsyncState<PTResponse>> _loader = ValueNotifier(const AsyncState.idle());
+class PhoneticTranscriptionBuilderState
+    extends State<PhoneticTranscriptionBuilder> {
+  final ValueNotifier<AsyncState<PTResponse>> _loader =
+      ValueNotifier(const AsyncState.idle());
 
   @override
   void initState() {
@@ -44,7 +47,8 @@ class PhoneticTranscriptionBuilderState extends State<PhoneticTranscriptionBuild
   @override
   void didUpdateWidget(covariant PhoneticTranscriptionBuilder oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.text != widget.text || oldWidget.textLanguage != widget.textLanguage) {
+    if (oldWidget.text != widget.text ||
+        oldWidget.textLanguage != widget.textLanguage) {
       _load();
     }
   }
@@ -61,13 +65,15 @@ class PhoneticTranscriptionBuilderState extends State<PhoneticTranscriptionBuild
   bool get isLoaded => _loader.value is AsyncLoaded;
 
   /// The full v2 response (for feedback and disambiguation).
-  PTResponse? get ptResponse => isLoaded ? (_loader.value as AsyncLoaded<PTResponse>).value : null;
+  PTResponse? get ptResponse =>
+      isLoaded ? (_loader.value as AsyncLoaded<PTResponse>).value : null;
 
   /// The request that was used to fetch this response.
   PTRequest get ptRequest => _request;
 
   /// Convenience: the first transcription string (for simple display).
-  String? get transcription => ptResponse?.pronunciations.firstOrNull?.transcription;
+  String? get transcription =>
+      ptResponse?.pronunciations.firstOrNull?.transcription;
 
   PTRequest get _request => PTRequest(
         surface: widget.text,

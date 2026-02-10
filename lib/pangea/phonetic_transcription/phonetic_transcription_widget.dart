@@ -45,10 +45,12 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   });
 
   @override
-  State<PhoneticTranscriptionWidget> createState() => _PhoneticTranscriptionWidgetState();
+  State<PhoneticTranscriptionWidget> createState() =>
+      _PhoneticTranscriptionWidgetState();
 }
 
-class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidget> {
+class _PhoneticTranscriptionWidgetState
+    extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
   Future<void> _handleAudioTap(String targetId) async {
@@ -79,14 +81,17 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message: _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message:
+              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               decoration: BoxDecoration(
-                color: hovering ? Colors.grey.withAlpha((0.2 * 255).round()) : Colors.transparent,
+                color: hovering
+                    ? Colors.grey.withAlpha((0.2 * 255).round())
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(6),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -99,17 +104,23 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
                   reloadNotifier: widget.reloadNotifier,
                   builder: (context, controller) {
                     return switch (controller.state) {
-                      AsyncError(error: final error) => error is UnsubscribedException
-                          ? ErrorIndicator(
-                              message: L10n.of(context).subscribeToUnlockTranscriptions,
-                              onTap: () {
-                                MatrixState.pangeaController.subscriptionController.showPaywall(context);
-                              },
-                            )
-                          : ErrorIndicator(
-                              message: L10n.of(context).failedToFetchTranscription,
-                            ),
-                      AsyncLoaded<PTResponse>(value: final ptResponse) => _buildTranscription(
+                      AsyncError(error: final error) =>
+                        error is UnsubscribedException
+                            ? ErrorIndicator(
+                                message: L10n.of(context)
+                                    .subscribeToUnlockTranscriptions,
+                                onTap: () {
+                                  MatrixState
+                                      .pangeaController.subscriptionController
+                                      .showPaywall(context);
+                                },
+                              )
+                            : ErrorIndicator(
+                                message:
+                                    L10n.of(context).failedToFetchTranscription,
+                              ),
+                      AsyncLoaded<PTResponse>(value: final ptResponse) =>
+                        _buildTranscription(
                           context,
                           ptResponse,
                         ),

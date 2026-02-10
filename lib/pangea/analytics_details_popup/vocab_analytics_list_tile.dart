@@ -53,8 +53,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
                     constructId,
                   ),
                   builder: (context, snapshot) {
-                    final emoji =
-                        snapshot.data?.emojis?.firstOrNull ??
+                    final emoji = snapshot.data?.emojis?.firstOrNull ??
                         constructId.userSetEmoji;
 
                     return Container(

@@ -39,7 +39,8 @@ class Pronunciation {
           udConditions == other.udConditions;
 
   @override
-  int get hashCode => transcription.hashCode ^ ttsPhoneme.hashCode ^ udConditions.hashCode;
+  int get hashCode =>
+      transcription.hashCode ^ ttsPhoneme.hashCode ^ udConditions.hashCode;
 }
 
 class PTRequest {
@@ -84,7 +85,8 @@ class PTRequest {
           userL2 == other.userL2;
 
   @override
-  int get hashCode => surface.hashCode ^ langCode.hashCode ^ userL1.hashCode ^ userL2.hashCode;
+  int get hashCode =>
+      surface.hashCode ^ langCode.hashCode ^ userL1.hashCode ^ userL2.hashCode;
 }
 
 class PTResponse {
@@ -94,8 +96,9 @@ class PTResponse {
 
   factory PTResponse.fromJson(Map<String, dynamic> json) {
     return PTResponse(
-      pronunciations:
-          (json['pronunciations'] as List).map((e) => Pronunciation.fromJson(e as Map<String, dynamic>)).toList(),
+      pronunciations: (json['pronunciations'] as List)
+          .map((e) => Pronunciation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -106,7 +109,9 @@ class PTResponse {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PTResponse && const _PronunciationListEquality().equals(pronunciations, other.pronunciations);
+      other is PTResponse &&
+          const _PronunciationListEquality()
+              .equals(pronunciations, other.pronunciations);
 
   @override
   int get hashCode => const _PronunciationListEquality().hash(pronunciations);

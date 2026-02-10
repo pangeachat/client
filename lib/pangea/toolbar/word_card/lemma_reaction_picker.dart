@@ -65,7 +65,9 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
 
   void _setEmojiSub() {
     _emojiSub?.cancel();
-    _emojiSub = Matrix.of(context).analyticsDataService.updateDispatcher
+    _emojiSub = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
         .lemmaUpdateStream(widget.constructId)
         .listen((update) => _setSelectedEmoji(update.emojis?.firstOrNull));
   }
@@ -134,8 +136,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
           : _sendOrRedactReaction(emoji),
       emoji: _selectedEmoji,
       messageInfo: widget.event?.content ?? {},
-      selectedEmojiBadge:
-          widget.event != null &&
+      selectedEmojiBadge: widget.event != null &&
               _selectedEmoji != null &&
               _sentReaction(_selectedEmoji!) == null
           ? const Icon(Icons.add_reaction, size: 12.0)

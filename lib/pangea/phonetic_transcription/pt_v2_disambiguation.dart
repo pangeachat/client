@@ -89,8 +89,10 @@ bool _matchesConditions(
       if (morph == null) return false;
       // UD features use PascalCase keys. Match case-insensitively
       // in case the morph map uses different casing.
-      final morphValue =
-          morph.entries.where((e) => e.key.toLowerCase() == feature.toLowerCase()).map((e) => e.value).firstOrNull;
+      final morphValue = morph.entries
+          .where((e) => e.key.toLowerCase() == feature.toLowerCase())
+          .map((e) => e.value)
+          .firstOrNull;
       if (morphValue == null) return false;
       if (morphValue.toLowerCase() != value.toLowerCase()) return false;
     }

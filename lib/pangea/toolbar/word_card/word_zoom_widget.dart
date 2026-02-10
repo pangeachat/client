@@ -56,13 +56,16 @@ class WordZoomWidget extends StatelessWidget {
 
   String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
 
-  LayerLink get layerLink => MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+  LayerLink get layerLink =>
+      MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
 
   @override
   Widget build(BuildContext context) {
-    final bool? subscribed = MatrixState.pangeaController.subscriptionController.isSubscribed;
+    final bool? subscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed;
     final overlayColor = Theme.of(context).scaffoldBackgroundColor;
-    final showTranscript = MatrixState.pangeaController.userController.showTranscription;
+    final showTranscript =
+        MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
         ? const MessageUnsubscribedCard()
@@ -104,7 +107,8 @@ class WordZoomWidget extends StatelessWidget {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
-                                    color: Theme.of(context).brightness == Brightness.light
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
                                     overflow: TextOverflow.ellipsis,
@@ -114,7 +118,9 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(langCode) ?? LanguageModel.unknown,
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
+                                            LanguageModel.unknown,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
@@ -132,7 +138,9 @@ class WordZoomWidget extends StatelessWidget {
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
-                                    textLanguage: PLanguageStore.byLangCode(langCode) ?? LanguageModel.unknown,
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
+                                            LanguageModel.unknown,
                                     pos: pos,
                                     morph: morph,
                                     style: const TextStyle(fontSize: 14.0),

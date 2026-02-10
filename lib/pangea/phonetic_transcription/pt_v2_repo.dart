@@ -82,7 +82,8 @@ class PTV2Repo {
     await GetStorage.init(ptV2StorageKey);
     final key = request.cacheKey;
     try {
-      final item = _DiskCacheItem(response: response, timestamp: DateTime.now());
+      final item =
+          _DiskCacheItem(response: response, timestamp: DateTime.now());
       await _storage.write(key, item.toJson());
       _cache.remove(key);
     } catch (e, s) {
@@ -92,13 +93,15 @@ class PTV2Repo {
 
   /// Look up a cached PT response without triggering a network fetch.
   /// Returns null if not in memory or disk cache.
-  static PTResponse? getCachedResponse(String surface, String langCode, String userL1) {
+  static PTResponse? getCachedResponse(
+      String surface, String langCode, String userL1) {
     final key = '$surface|$langCode|$userL1';
 
     // Check memory cache first.
     final now = DateTime.now();
     final memItem = _cache[key];
-    if (memItem != null && now.difference(memItem.timestamp) < _memoryCacheDuration) {
+    if (memItem != null &&
+        now.difference(memItem.timestamp) < _memoryCacheDuration) {
       // Memory cache stores a Future — can't resolve synchronously.
       // Fall through to disk cache.
     }

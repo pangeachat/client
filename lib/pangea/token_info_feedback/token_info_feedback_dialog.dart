@@ -35,7 +35,8 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       data: requestData,
     );
 
-    final TokenInfoFeedbackResponse response = await TokenInfoFeedbackRepo.submitFeedback(request);
+    final TokenInfoFeedbackResponse response =
+        await TokenInfoFeedbackRepo.submitFeedback(request);
 
     final originalToken = requestData.tokens[requestData.selectedToken];
     final token = response.updatedToken ?? originalToken;
@@ -54,8 +55,9 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
 
     // if no other changes, just return the message
     final hasTokenUpdate = response.updatedToken != null;
-    final hasLangUpdate =
-        originalSent != null && response.updatedLanguage != null && response.updatedLanguage != originalSent.langCode;
+    final hasLangUpdate = originalSent != null &&
+        response.updatedLanguage != null &&
+        response.updatedLanguage != originalSent.langCode;
 
     if (!hasTokenUpdate && !hasLangUpdate) {
       return response.userFriendlyMessage;
@@ -67,12 +69,14 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    final updatedLanguage = response.updatedLanguage ?? event?.originalSent?.langCode;
+    final updatedLanguage =
+        response.updatedLanguage ?? event?.originalSent?.langCode;
 
     final tokensSent = PangeaMessageTokens(
       tokens: tokens,
       detections: [
-        if (updatedLanguage != null) LanguageDetectionModel(langCode: updatedLanguage, confidence: 1),
+        if (updatedLanguage != null)
+          LanguageDetectionModel(langCode: updatedLanguage, confidence: 1),
       ],
     );
 

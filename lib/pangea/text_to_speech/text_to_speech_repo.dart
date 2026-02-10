@@ -90,8 +90,9 @@ class TextToSpeechRepo {
   static void _setCached(
     TextToSpeechRequestModel request,
     Future<TextToSpeechResponseModel> response,
-  ) => _cache[request.hashCode.toString()] = _TextToSpeechCacheItem(
-    data: response,
-    timestamp: DateTime.now(),
-  );
+  ) =>
+      _cache[request.hashCode.toString()] = _TextToSpeechCacheItem(
+        data: response,
+        timestamp: DateTime.now(),
+      );
 }

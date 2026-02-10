@@ -60,7 +60,9 @@ class VocabDetailsView extends StatelessWidget {
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
         final Color textColor =
-            (Theme.of(context).brightness != Brightness.light ? level.color(context) : level.darkColor(context));
+            (Theme.of(context).brightness != Brightness.light
+                ? level.color(context)
+                : level.darkColor(context));
 
         final forms = construct?.forms ?? [];
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
@@ -86,7 +88,8 @@ class VocabDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: WordZoomWidget(
                   token: tokenText,
-                  langCode: MatrixState.pangeaController.userController.userL2Code!,
+                  langCode:
+                      MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
                   pos: constructId.category,
                   onClose: Navigator.of(context).pop,
@@ -189,7 +192,8 @@ class _VocabForms extends StatelessWidget {
                     context,
                   ).textTheme.bodyLarge?.copyWith(color: textColor),
                   uniqueID: "$form-$lemma-$i",
-                  langCode: MatrixState.pangeaController.userController.userL2Code!,
+                  langCode:
+                      MatrixState.pangeaController.userController.userL2Code!,
                 ),
                 if (i != forms.length - 1) const Text(",  "),
               ],
