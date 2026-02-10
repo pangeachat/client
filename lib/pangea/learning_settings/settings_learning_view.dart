@@ -159,6 +159,7 @@ class SettingsLearningView extends StatelessWidget {
                                         controller.setAbout(val),
                                     minLines: 1,
                                     maxLines: 3,
+                                    maxLength: 100,
                                   ),
                                 ],
                               ),
