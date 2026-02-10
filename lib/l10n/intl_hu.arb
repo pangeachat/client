@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-09 10:30:28.032874",
+  "@@last_modified": "2026-02-09 15:30:44.809310",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10961,6 +10961,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Rólam",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióma",
   "grammarCopyPOSphrasalv": "Frazális ige",
   "grammarCopyPOScompn": "Összetett",
@@ -10993,6 +10998,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Email cím módosítása",
+  "withTheseAddressesDescription": "Ezekkel az email címekkel be tudsz jelentkezni, vissza tudod állítani a jelszavadat, és kezelni tudod az előfizetéseket.",
+  "noAddressDescription": "Még nem adtál hozzá email címeket.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Nyelvtan",
+  "spanTypeWordChoice": "Szóválasztás",
+  "spanTypeSpelling": "Helyesírás",
+  "spanTypePunctuation": "Írásjelek",
+  "spanTypeStyle": "Stílus",
+  "spanTypeFluency": "Folyékonyság",
+  "spanTypeAccents": "Akcentusok",
+  "spanTypeCapitalization": "Nagybetűs írás",
+  "spanTypeCorrection": "Javítás",
+  "spanFeedbackTitle": "Javítási probléma jelentése",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

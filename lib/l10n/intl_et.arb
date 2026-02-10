@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-09 10:30:44.206560",
+  "@@last_modified": "2026-02-09 15:31:13.687328",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11231,6 +11231,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Minust",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idioom",
   "grammarCopyPOSphrasalv": "Fraasi Verb",
   "grammarCopyPOScompn": "Kompleks",
@@ -11263,6 +11268,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Muuda e-posti",
+  "withTheseAddressesDescription": "Nende e-posti aadressidega saad sisse logida, oma parooli taastada ja tellimusi hallata.",
+  "noAddressDescription": "Sa ei ole veel ühtegi e-posti aadressi lisanud.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatika",
+  "spanTypeWordChoice": "Sõnavalik",
+  "spanTypeSpelling": "Õigekiri",
+  "spanTypePunctuation": "Interpunktsioon",
+  "spanTypeStyle": "Stiil",
+  "spanTypeFluency": "Sujuvus",
+  "spanTypeAccents": "Aksendid",
+  "spanTypeCapitalization": "Suurtähed",
+  "spanTypeCorrection": "Parandus",
+  "spanFeedbackTitle": "Teata paranduse probleemist",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

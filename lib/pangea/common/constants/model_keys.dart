@@ -9,6 +9,7 @@ class ModelKey {
   static const String userDateOfBirth = 'date_of_birth';
   static const String userSpeaks = 'speaks';
   static const String userCountry = 'country';
+  static const String userAbout = 'about';
   static const String hasJoinedHelpSpace = 'has_joined_help_space';
   static const String userInterests = 'interests';
   static const String publicProfile = 'public_profile';
@@ -106,6 +107,8 @@ class ModelKey {
   static const String currentText = "current";
   static const String bestContinuance = "best_continuance";
   static const String feedbackLang = "feedback_lang";
+  static const String feedback = "feedback";
+  static const String content = "content";
 
   static const String transcription = "transcription";
   static const String botTranscription = 'bot_transcription';

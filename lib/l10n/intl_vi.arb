@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:14.436728",
+  "@@last_modified": "2026-02-09 15:32:04.137171",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6538,6 +6538,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Về tôi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Thành ngữ",
   "grammarCopyPOSphrasalv": "Động từ cụm",
   "grammarCopyPOScompn": "Hợp chất",
@@ -6570,6 +6575,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Thay đổi email",
+  "withTheseAddressesDescription": "Với những địa chỉ email này, bạn có thể đăng nhập, khôi phục mật khẩu và quản lý đăng ký.",
+  "noAddressDescription": "Bạn chưa thêm địa chỉ email nào.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Ngữ pháp",
+  "spanTypeWordChoice": "Lựa chọn từ",
+  "spanTypeSpelling": "Chính tả",
+  "spanTypePunctuation": "Dấu câu",
+  "spanTypeStyle": "Phong cách",
+  "spanTypeFluency": "Lưu loát",
+  "spanTypeAccents": "Giọng điệu",
+  "spanTypeCapitalization": "Chữ hoa",
+  "spanTypeCorrection": "Sửa lỗi",
+  "spanFeedbackTitle": "Báo cáo vấn đề sửa lỗi",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:55.280815",
+  "@@last_modified": "2026-02-09 15:31:32.332245",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12053,6 +12053,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Om meg",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Sammensatt",
@@ -12085,6 +12090,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Endre e-post",
+  "withTheseAddressesDescription": "Med disse e-postadressene kan du logge inn, gjenopprette passordet ditt og administrere abonnementer.",
+  "noAddressDescription": "Du har ikke lagt til noen e-postadresser ennå.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatikk",
+  "spanTypeWordChoice": "Ordvalg",
+  "spanTypeSpelling": "Staving",
+  "spanTypePunctuation": "Tegnsetting",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Flyt",
+  "spanTypeAccents": "Aksenter",
+  "spanTypeCapitalization": "Store bokstaver",
+  "spanTypeCorrection": "Korrigering",
+  "spanFeedbackTitle": "Rapporter korrigeringsproblem",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

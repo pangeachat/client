@@ -4006,7 +4006,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-09 10:30:24.862038",
+  "@@last_modified": "2026-02-09 15:30:38.959801",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11583,6 +11583,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Tietoa minusta",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idioomi",
   "grammarCopyPOSphrasalv": "Fraasiverbi",
   "grammarCopyPOScompn": "Yhdistelmä",
@@ -11615,6 +11620,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Vaihda sähköpostiosoite",
+  "withTheseAddressesDescription": "Näiden sähköpostiosoitteiden avulla voit kirjautua sisään, palauttaa salasanasi ja hallita tilauksia.",
+  "noAddressDescription": "Et ole vielä lisännyt mitään sähköpostiosoitteita.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Kielioppi",
+  "spanTypeWordChoice": "Sananvalinta",
+  "spanTypeSpelling": "Oikeinkirjoitus",
+  "spanTypePunctuation": "Välihuomautukset",
+  "spanTypeStyle": "Tyyli",
+  "spanTypeFluency": "Sujuvuus",
+  "spanTypeAccents": "Aksentit",
+  "spanTypeCapitalization": "Isot kirjaimet",
+  "spanTypeCorrection": "Korjaus",
+  "spanFeedbackTitle": "Ilmoita korjausongelmasta",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

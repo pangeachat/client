@@ -4,14 +4,15 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
 
@@ -19,12 +20,14 @@ class SpanCard extends StatefulWidget {
   final PangeaMatchState match;
   final Choreographer choreographer;
   final VoidCallback showNextMatch;
+  final Future Function(String) onFeedbackSubmitted;
 
   const SpanCard({
     super.key,
     required this.match,
     required this.choreographer,
     required this.showNextMatch,
+    required this.onFeedbackSubmitted,
   });
 
   @override
@@ -32,95 +35,24 @@ class SpanCard extends StatefulWidget {
 }
 
 class SpanCardState extends State<SpanCard> {
-  bool _loadingChoices = true;
-  final ValueNotifier<AsyncState<String>> _feedbackState =
-      ValueNotifier<AsyncState<String>>(const AsyncIdle<String>());
-
   final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    _fetchChoices();
   }
 
   @override
   void dispose() {
-    _feedbackState.dispose();
     scrollController.dispose();
     super.dispose();
   }
 
-  List<SpanChoice>? get _choices => widget.match.updatedMatch.match.choices;
-
   SpanChoice? get _selectedChoice =>
       widget.match.updatedMatch.match.selectedChoice;
 
-  String? get _selectedFeedback => _selectedChoice?.feedback;
-
-  Future<void> _fetchChoices() async {
-    if (_choices != null && _choices!.length > 1) {
-      setState(() => _loadingChoices = false);
-      return;
-    }
-
-    setState(() => _loadingChoices = true);
-
-    try {
-      await widget.choreographer.igcController.fetchSpanDetails(
-        match: widget.match,
-      );
-
-      if (_choices == null || _choices!.isEmpty) {
-        widget.choreographer.clearMatches(
-          'No choices available for span ${widget.match.updatedMatch.match.message}',
-        );
-      }
-    } catch (e) {
-      widget.choreographer.clearMatches(e);
-    } finally {
-      if (mounted) {
-        setState(() => _loadingChoices = false);
-      }
-    }
-  }
-
-  Future<void> _fetchFeedback() async {
-    if (_selectedFeedback != null) {
-      _feedbackState.value = AsyncLoaded<String>(_selectedFeedback!);
-      return;
-    }
-
-    try {
-      _feedbackState.value = const AsyncLoading<String>();
-      await widget.choreographer.igcController.fetchSpanDetails(
-        match: widget.match,
-        force: true,
-      );
-
-      if (!mounted) return;
-      if (_selectedFeedback != null) {
-        _feedbackState.value = AsyncLoaded<String>(_selectedFeedback!);
-      } else {
-        _feedbackState.value = AsyncError<String>(
-          L10n.of(context).failedToLoadFeedback,
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        _feedbackState.value = AsyncError<String>(e);
-      }
-    }
-  }
-
   void _onChoiceSelect(int index) {
-    final selected = _choices![index];
     widget.match.selectChoice(index);
-
-    _feedbackState.value = selected.feedback != null
-        ? AsyncLoaded<String>(selected.feedback!)
-        : const AsyncIdle<String>();
-
     setState(() {});
   }
 
@@ -145,12 +77,54 @@ class SpanCardState extends State<SpanCard> {
     }
   }
 
+  Future<void> _showFeedbackDialog() async {
+    final resp = await showDialog(
+      context: context,
+      builder: (context) => FeedbackDialog(
+        title: L10n.of(context).spanFeedbackTitle,
+        onSubmit: (feedback) => Navigator.of(context).pop(feedback),
+      ),
+    );
+    if (resp == null || resp.isEmpty) {
+      return;
+    }
+
+    await widget.onFeedbackSubmitted(resp);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300.0,
       child: Column(
         children: [
+          // Header row: Close, Type Label + BotFace, Flag
+          SizedBox(
+            height: 40.0,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  color: Theme.of(context).iconTheme.color,
+                  onPressed: () => _updateMatch(PangeaMatchStatusEnum.ignored),
+                ),
+                const Flexible(
+                  child: Center(
+                    child: BotFace(
+                      width: 32.0,
+                      expression: BotExpression.idle,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.flag_outlined),
+                  color: Theme.of(context).iconTheme.color,
+                  onPressed: _showFeedbackDialog,
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: Scrollbar(
               controller: scrollController,
@@ -165,13 +139,13 @@ class SpanCardState extends State<SpanCard> {
                     spacing: 12.0,
                     children: [
                       ChoicesArray(
-                        isLoading: _loadingChoices,
+                        isLoading: false,
                         choices: widget.match.updatedMatch.match.choices
                             ?.map(
                               (e) => Choice(
                                 text: e.value,
                                 color: e.selected ? e.type.color : null,
-                                isGold: e.type.name == 'bestCorrection',
+                                isGold: e.type.isSuggestion,
                               ),
                             )
                             .toList(),
@@ -184,9 +158,7 @@ class SpanCardState extends State<SpanCard> {
                       ),
                       const SizedBox(),
                       _SpanCardFeedback(
-                        _selectedChoice != null,
-                        _fetchFeedback,
-                        _feedbackState,
+                        widget.match.updatedMatch.match,
                       ),
                     ],
                   ),
@@ -206,48 +178,32 @@ class SpanCardState extends State<SpanCard> {
 }
 
 class _SpanCardFeedback extends StatelessWidget {
-  final bool hasSelectedChoice;
-  final VoidCallback fetchFeedback;
-  final ValueNotifier<AsyncState<String>> feedbackState;
-
-  const _SpanCardFeedback(
-    this.hasSelectedChoice,
-    this.fetchFeedback,
-    this.feedbackState,
-  );
+  final SpanData? span;
+  const _SpanCardFeedback(this.span);
 
   @override
   Widget build(BuildContext context) {
+    String prompt = L10n.of(context).correctionDefaultPrompt;
+    if (span != null) {
+      prompt = span!.type.defaultPrompt(context);
+    }
+
+    final defaultContent = Text(
+      prompt,
+      style: BotStyle.text(context).copyWith(
+        fontStyle: FontStyle.italic,
+      ),
+    );
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ValueListenableBuilder(
-          valueListenable: feedbackState,
-          builder: (context, state, __) {
-            return switch (state) {
-              AsyncIdle<String>() => hasSelectedChoice
-                  ? IconButton(
-                      onPressed: fetchFeedback,
-                      icon: const Icon(Icons.lightbulb_outline, size: 24),
-                    )
-                  : Text(
-                      L10n.of(context).correctionDefaultPrompt,
-                      style: BotStyle.text(context).copyWith(
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-              AsyncLoading<String>() => const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(),
-                ),
-              AsyncError<String>(:final error) =>
-                ErrorIndicator(message: error.toString()),
-              AsyncLoaded<String>(:final value) =>
-                Text(value, style: BotStyle.text(context)),
-            };
-          },
-        ),
+        span == null || span!.selectedChoice == null
+            ? defaultContent
+            : Text(
+                span!.selectedChoice!.feedbackToDisplay(context),
+                style: BotStyle.text(context),
+              ),
       ],
     );
   }

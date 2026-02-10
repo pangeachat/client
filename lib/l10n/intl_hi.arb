@@ -4480,7 +4480,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-02-09 10:31:30.698303",
+  "@@last_modified": "2026-02-09 15:32:32.199640",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12045,6 +12045,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "मेरे बारे में",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "मुहावरा",
   "grammarCopyPOSphrasalv": "फ्रेज़ल वर्ब",
   "grammarCopyPOScompn": "संयुक्त",
@@ -12077,6 +12082,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ईमेल बदलें",
+  "withTheseAddressesDescription": "इन ईमेल पतों के साथ आप लॉग इन कर सकते हैं, अपना पासवर्ड पुनर्प्राप्त कर सकते हैं, और सब्सक्रिप्शन प्रबंधित कर सकते हैं।",
+  "noAddressDescription": "आपने अभी तक कोई ईमेल पता नहीं जोड़ा है।",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "व्याकरण",
+  "spanTypeWordChoice": "शब्द चयन",
+  "spanTypeSpelling": "वर्तनी",
+  "spanTypePunctuation": "विराम चिह्न",
+  "spanTypeStyle": "शैली",
+  "spanTypeFluency": "धाराप्रवाहता",
+  "spanTypeAccents": "उच्चारण",
+  "spanTypeCapitalization": "बड़े अक्षर",
+  "spanTypeCorrection": "सुधार",
+  "spanFeedbackTitle": "सुधार समस्या की रिपोर्ट करें",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

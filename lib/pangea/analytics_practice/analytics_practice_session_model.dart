@@ -3,13 +3,14 @@ import 'package:flutter/painting.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
-class MorphExampleInfo {
+class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;
 
-  const MorphExampleInfo({
+  const ExampleMessageInfo({
     required this.exampleMessage,
   });
 
@@ -30,7 +31,7 @@ class MorphExampleInfo {
     };
   }
 
-  factory MorphExampleInfo.fromJson(Map<String, dynamic> json) {
+  factory ExampleMessageInfo.fromJson(Map<String, dynamic> json) {
     final segments = json['segments'] as List<dynamic>? ?? [];
 
     final spans = <InlineSpan>[];
@@ -46,25 +47,60 @@ class MorphExampleInfo {
       );
     }
 
-    return MorphExampleInfo(exampleMessage: spans);
+    return ExampleMessageInfo(exampleMessage: spans);
+  }
+}
+
+/// An extended example message that includes both formatted display spans and tokens to generate audio practice activities.
+/// eventId/roomId are needed for audio playback.
+class AudioExampleMessage {
+  final List<PangeaToken> tokens;
+  final String? eventId;
+  final String? roomId;
+  final ExampleMessageInfo exampleMessage;
+
+  const AudioExampleMessage({
+    required this.tokens,
+    this.eventId,
+    this.roomId,
+    required this.exampleMessage,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'eventId': eventId,
+      'roomId': roomId,
+    };
+  }
+
+  factory AudioExampleMessage.fromJson(Map<String, dynamic> json) {
+    return AudioExampleMessage(
+      tokens: const [],
+      eventId: json['eventId'] as String?,
+      roomId: json['roomId'] as String?,
+      exampleMessage: const ExampleMessageInfo(exampleMessage: []),
+    );
   }
 }
 
 class AnalyticsActivityTarget {
   final PracticeTarget target;
   final GrammarErrorRequestInfo? grammarErrorInfo;
-  final MorphExampleInfo? morphExampleInfo;
+  final ExampleMessageInfo? exampleMessage;
+  final AudioExampleMessage? audioExampleMessage;
 
   AnalyticsActivityTarget({
     required this.target,
     this.grammarErrorInfo,
-    this.morphExampleInfo,
+    this.exampleMessage,
+    this.audioExampleMessage,
   });
 
   Map<String, dynamic> toJson() => {
         'target': target.toJson(),
         'grammarErrorInfo': grammarErrorInfo?.toJson(),
-        'morphExampleInfo': morphExampleInfo?.toJson(),
+        'exampleMessage': exampleMessage?.toJson(),
+        'audioExampleMessage': audioExampleMessage?.toJson(),
       };
 
   factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
@@ -73,8 +109,11 @@ class AnalyticsActivityTarget {
         grammarErrorInfo: json['grammarErrorInfo'] != null
             ? GrammarErrorRequestInfo.fromJson(json['grammarErrorInfo'])
             : null,
-        morphExampleInfo: json['morphExampleInfo'] != null
-            ? MorphExampleInfo.fromJson(json['morphExampleInfo'])
+        exampleMessage: json['exampleMessage'] != null
+            ? ExampleMessageInfo.fromJson(json['exampleMessage'])
+            : null,
+        audioExampleMessage: json['audioExampleMessage'] != null
+            ? AudioExampleMessage.fromJson(json['audioExampleMessage'])
             : null,
       );
 }
@@ -131,7 +170,8 @@ class AnalyticsPracticeSessionModel {
         activityQualityFeedback: null,
         target: target.target,
         grammarErrorInfo: target.grammarErrorInfo,
-        morphExampleInfo: target.morphExampleInfo,
+        exampleMessage: target.exampleMessage,
+        audioExampleMessage: target.audioExampleMessage,
       );
     }).toList();
   }

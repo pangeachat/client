@@ -56,10 +56,15 @@ class IgcRepo {
     String? accessToken,
     IGCRequestModel igcRequest,
   ) {
+    debugPrint(
+      '[IgcRepo.get] called, request.hashCode: ${igcRequest.hashCode}',
+    );
     final cached = _getCached(igcRequest);
     if (cached != null) {
+      debugPrint('[IgcRepo.get] cache HIT');
       return _getResult(igcRequest, cached);
     }
+    debugPrint('[IgcRepo.get] cache MISS, fetching from server...');
 
     final future = _fetch(
       accessToken,

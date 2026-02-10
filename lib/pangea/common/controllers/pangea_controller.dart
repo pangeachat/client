@@ -120,7 +120,10 @@ class PangeaController {
 
     _settingsSubscription?.cancel();
     _settingsSubscription = userController.settingsUpdateStream.stream.listen(
-      (update) => matrixState.client.updateBotOptions(update.userSettings),
+      (update) async {
+        await matrixState.client.updateBotOptions(update.userSettings);
+        await userController.updatePublicProfile();
+      },
     );
 
     _joinSpaceSubscription?.cancel();
@@ -178,8 +181,10 @@ class PangeaController {
       ]);
     }
 
-    _clearCache(exclude: exclude);
-    matrixState.client.updateBotOptions(userController.profile.userSettings);
+    await _clearCache(exclude: exclude);
+    await matrixState.client
+        .updateBotOptions(userController.profile.userSettings);
+    await userController.updatePublicProfile();
   }
 
   static final List<String> _storageKeys = [

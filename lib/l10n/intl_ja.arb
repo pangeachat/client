@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-09 10:31:29.266500",
+  "@@last_modified": "2026-02-09 15:32:29.891676",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11750,6 +11750,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "私について",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "イディオム",
   "grammarCopyPOSphrasalv": "句動詞",
   "grammarCopyPOScompn": "複合語",
@@ -11782,6 +11787,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "メールアドレスを変更",
+  "withTheseAddressesDescription": "これらのメールアドレスを使用して、ログイン、パスワードの回復、サブスクリプションの管理ができます。",
+  "noAddressDescription": "まだメールアドレスを追加していません。",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "文法",
+  "spanTypeWordChoice": "単語の選択",
+  "spanTypeSpelling": "スペル",
+  "spanTypePunctuation": "句読点",
+  "spanTypeStyle": "スタイル",
+  "spanTypeFluency": "流暢さ",
+  "spanTypeAccents": "アクセント",
+  "spanTypeCapitalization": "大文字化",
+  "spanTypeCorrection": "修正",
+  "spanFeedbackTitle": "修正の問題を報告する",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

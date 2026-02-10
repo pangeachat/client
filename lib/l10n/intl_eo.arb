@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:32.343732",
+  "@@last_modified": "2026-02-09 15:32:34.842172",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12049,6 +12049,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Pri mi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Kunmetita",
@@ -12081,6 +12086,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ŝanĝi retpoŝton",
+  "withTheseAddressesDescription": "Kun ĉi tiuj retpoŝtaj adresoj vi povas ensaluti, rekuperi vian pasvorton, kaj administri abonojn.",
+  "noAddressDescription": "Vi ankoraŭ ne aldonis iujn retpoŝtajn adresojn.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatiko",
+  "spanTypeWordChoice": "Vortelekto",
+  "spanTypeSpelling": "Ortografio",
+  "spanTypePunctuation": "Punkto",
+  "spanTypeStyle": "Stilo",
+  "spanTypeFluency": "Flueco",
+  "spanTypeAccents": "Akcentoj",
+  "spanTypeCapitalization": "Kapitaligo",
+  "spanTypeCorrection": "Korektado",
+  "spanFeedbackTitle": "Raporti korektadon",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

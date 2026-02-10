@@ -1927,7 +1927,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-09 10:30:26.547080",
+  "@@last_modified": "2026-02-09 15:30:41.802679",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12021,6 +12021,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Om mig",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Sammensat",
@@ -12053,6 +12058,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ændre email",
+  "withTheseAddressesDescription": "Med disse emailadresser kan du logge ind, gendanne din adgangskode og administrere abonnementer.",
+  "noAddressDescription": "Du har endnu ikke tilføjet nogen emailadresser.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatik",
+  "spanTypeWordChoice": "Ordvalg",
+  "spanTypeSpelling": "Stavning",
+  "spanTypePunctuation": "Interpunktion",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Flydende",
+  "spanTypeAccents": "Accenter",
+  "spanTypeCapitalization": "Versalisering",
+  "spanTypeCorrection": "Korrektur",
+  "spanFeedbackTitle": "Rapporter korrektion problem",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

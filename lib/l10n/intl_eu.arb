@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-09 10:30:41.236742",
+  "@@last_modified": "2026-02-09 15:31:08.773071",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Niri buruz",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Konposatu",
@@ -10992,6 +10997,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Aldatu posta elektronikoa",
+  "withTheseAddressesDescription": "Posta elektroniko helbide hauekin saioa hasi dezakezu, zure pasahitza berreskuratu eta harpidetzak kudeatu.",
+  "noAddressDescription": "Oraindik ez duzu posta elektroniko helbiderik gehitu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Hitz Aukera",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Puntuazioa",
+  "spanTypeStyle": "Estiloa",
+  "spanTypeFluency": "Fluentzia",
+  "spanTypeAccents": "Azentuak",
+  "spanTypeCapitalization": "Kapitalizazioa",
+  "spanTypeCorrection": "Zuzenketa",
+  "spanFeedbackTitle": "Zuzenketa arazoa txostenatu",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

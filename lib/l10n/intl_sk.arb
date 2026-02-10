@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-09 10:30:32.743132",
+  "@@last_modified": "2026-02-09 15:30:52.656999",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12044,6 +12044,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O mne",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióm",
   "grammarCopyPOSphrasalv": "Frázové sloveso",
   "grammarCopyPOScompn": "Zložené",
@@ -12076,6 +12081,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmeniť e-mail",
+  "withTheseAddressesDescription": "S týmito e-mailovými adresami sa môžete prihlásiť, obnoviť svoje heslo a spravovať predplatné.",
+  "noAddressDescription": "Ešte ste nepridali žiadne e-mailové adresy.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Výber slov",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcia",
+  "spanTypeStyle": "Štýl",
+  "spanTypeFluency": "Plynulosť",
+  "spanTypeAccents": "Prízvuky",
+  "spanTypeCapitalization": "Veľké písmená",
+  "spanTypeCorrection": "Oprava",
+  "spanFeedbackTitle": "Nahlásiť problém s opravou",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

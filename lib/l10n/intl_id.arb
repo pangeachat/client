@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:29.458472",
+  "@@last_modified": "2026-02-09 15:30:47.056945",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10951,6 +10951,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Tentang saya",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
   "grammarCopyPOScompn": "Kombinasi",
@@ -10983,6 +10988,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Ubah email",
+  "withTheseAddressesDescription": "Dengan alamat email ini, Anda dapat masuk, memulihkan kata sandi Anda, dan mengelola langganan.",
+  "noAddressDescription": "Anda belum menambahkan alamat email apapun.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Tata Bahasa",
+  "spanTypeWordChoice": "Pilihan Kata",
+  "spanTypeSpelling": "Ejaan",
+  "spanTypePunctuation": "Tanda Baca",
+  "spanTypeStyle": "Gaya",
+  "spanTypeFluency": "Kefasihan",
+  "spanTypeAccents": "Aksen",
+  "spanTypeCapitalization": "Kapitalisasi",
+  "spanTypeCorrection": "Koreksi",
+  "spanFeedbackTitle": "Laporkan masalah koreksi",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

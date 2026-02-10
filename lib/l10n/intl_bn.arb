@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:21.327976",
+  "@@last_modified": "2026-02-09 15:32:17.400141",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12064,6 +12064,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "আমার সম্পর্কে",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "বাগধারা",
   "grammarCopyPOSphrasalv": "ফ্রেজাল ক্রিয়া",
   "grammarCopyPOScompn": "যুগ্ম",
@@ -12096,6 +12101,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "ইমেইল পরিবর্তন করুন",
+  "withTheseAddressesDescription": "এই ইমেইল ঠিকানাগুলির মাধ্যমে আপনি লগ ইন করতে, আপনার পাসওয়ার্ড পুনরুদ্ধার করতে এবং সাবস্ক্রিপশন পরিচালনা করতে পারেন।",
+  "noAddressDescription": "আপনি এখনও কোন ইমেইল ঠিকানা যোগ করেননি।",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "ব্যাকরণ",
+  "spanTypeWordChoice": "শব্দ নির্বাচন",
+  "spanTypeSpelling": "বানান",
+  "spanTypePunctuation": "বিরাম চিহ্ন",
+  "spanTypeStyle": "শৈলী",
+  "spanTypeFluency": "প্রবাহ",
+  "spanTypeAccents": "উচ্চারণ",
+  "spanTypeCapitalization": "বড় হাতের অক্ষর",
+  "spanTypeCorrection": "সংশোধন",
+  "spanFeedbackTitle": "সংশোধন সমস্যা রিপোর্ট করুন",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

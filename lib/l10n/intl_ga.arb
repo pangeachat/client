@@ -4514,7 +4514,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-09 10:31:37.968813",
+  "@@last_modified": "2026-02-09 15:32:44.231605",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10958,6 +10958,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Fúm",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Frása",
   "grammarCopyPOSphrasalv": "Gníomhhacht Phrásúil",
   "grammarCopyPOScompn": "Comhoibriú",
@@ -10990,6 +10995,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Athraigh an ríomhphost",
+  "withTheseAddressesDescription": "Leis na seoltaí ríomhphoist seo, is féidir leat logáil isteach, do phasfhocal a chur ar ais, agus síntiúis a bhainistiú.",
+  "noAddressDescription": "Níl aon seoltaí ríomhphoist curtha leis fós.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramadach",
+  "spanTypeWordChoice": "Rogha Focal",
+  "spanTypeSpelling": "Litriú",
+  "spanTypePunctuation": "Póntú",
+  "spanTypeStyle": "Stíl",
+  "spanTypeFluency": "Sreabhadh",
+  "spanTypeAccents": "Guthanna",
+  "spanTypeCapitalization": "Caipitleadh",
+  "spanTypeCorrection": "Córas",
+  "spanFeedbackTitle": "Tuairisc a dhéanamh ar fhadhb le ceartú",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

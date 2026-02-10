@@ -4453,7 +4453,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-09 10:31:00.286726",
+  "@@last_modified": "2026-02-09 15:31:39.902769",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12018,6 +12018,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "เกี่ยวกับฉัน",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "สำนวน",
   "grammarCopyPOSphrasalv": "กริยาวลี",
   "grammarCopyPOScompn": "คำผสม",
@@ -12050,6 +12055,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "เปลี่ยนอีเมล",
+  "withTheseAddressesDescription": "ด้วยที่อยู่อีเมลเหล่านี้ คุณสามารถเข้าสู่ระบบ กู้คืนรหัสผ่าน และจัดการการสมัครสมาชิกได้",
+  "noAddressDescription": "คุณยังไม่ได้เพิ่มที่อยู่อีเมลใด ๆ",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "ไวยากรณ์",
+  "spanTypeWordChoice": "การเลือกคำ",
+  "spanTypeSpelling": "การสะกด",
+  "spanTypePunctuation": "เครื่องหมายวรรคตอน",
+  "spanTypeStyle": "สไตล์",
+  "spanTypeFluency": "ความคล่องแคล่ว",
+  "spanTypeAccents": "สำเนียง",
+  "spanTypeCapitalization": "การใช้ตัวพิมพ์ใหญ่",
+  "spanTypeCorrection": "การแก้ไข",
+  "spanFeedbackTitle": "รายงานปัญหาการแก้ไข",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

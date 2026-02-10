@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:31:17.188799",
+  "@@last_modified": "2026-02-09 15:32:09.504392",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Over mij",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idioom",
   "grammarCopyPOSphrasalv": "Frazal Werkwoord",
   "grammarCopyPOScompn": "Samenstelling",
@@ -10992,6 +10997,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Wijzig e-mailadres",
+  "withTheseAddressesDescription": "Met deze e-mailadressen kun je inloggen, je wachtwoord herstellen en abonnementen beheren.",
+  "noAddressDescription": "Je hebt nog geen e-mailadressen toegevoegd.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatica",
+  "spanTypeWordChoice": "Woordkeuze",
+  "spanTypeSpelling": "Spelling",
+  "spanTypePunctuation": "Interpunctie",
+  "spanTypeStyle": "Stijl",
+  "spanTypeFluency": "Vloeiendheid",
+  "spanTypeAccents": "Accenten",
+  "spanTypeCapitalization": "Hoofdletters",
+  "spanTypeCorrection": "Correctie",
+  "spanFeedbackTitle": "Rapporteer correctiefout",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }

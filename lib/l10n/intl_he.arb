@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 10:30:36.836306",
+  "@@last_modified": "2026-02-09 15:31:01.183623",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12009,6 +12009,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "עליי",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "ביטוי",
   "grammarCopyPOSphrasalv": "פועל פיזי",
   "grammarCopyPOScompn": "מורכב",
@@ -12041,6 +12046,71 @@
     "placeholders": {}
   },
   "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "שנה דוא\"ל",
+  "withTheseAddressesDescription": "עם כתובות הדוא\"ל הללו אתה יכול להתחבר, לשחזר את הסיסמה שלך ולנהל מנויים.",
+  "noAddressDescription": "עדיין לא הוספת כתובות דוא\"ל.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "דקדוק",
+  "spanTypeWordChoice": "בחירת מילים",
+  "spanTypeSpelling": "איות",
+  "spanTypePunctuation": "פיסוק",
+  "spanTypeStyle": "סגנון",
+  "spanTypeFluency": "שפה רהוטה",
+  "spanTypeAccents": "הטעמה",
+  "spanTypeCapitalization": "הגדלת אותיות",
+  "spanTypeCorrection": "תיקון",
+  "spanFeedbackTitle": "דווח על בעיית תיקון",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
     "type": "String",
     "placeholders": {}
   }
