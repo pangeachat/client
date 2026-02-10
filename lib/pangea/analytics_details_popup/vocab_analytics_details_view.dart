@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -92,14 +93,19 @@ class VocabDetailsView extends StatelessWidget {
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
+                  pos: constructId.category,
                   onClose: Navigator.of(context).pop,
                   onFlagTokenInfo:
-                      (LemmaInfoResponse lemmaInfo, String phonetics) =>
-                          controller.onFlagTokenInfo(
-                            token,
-                            lemmaInfo,
-                            phonetics,
-                          ),
+                      (
+                        LemmaInfoResponse lemmaInfo,
+                        PTRequest ptRequest,
+                        PTResponse ptResponse,
+                      ) => controller.onFlagTokenInfo(
+                        token,
+                        lemmaInfo,
+                        ptRequest,
+                        ptResponse,
+                      ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
                 ),

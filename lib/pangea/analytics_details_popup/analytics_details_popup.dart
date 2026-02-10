@@ -23,6 +23,7 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -163,7 +164,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Future<void> onFlagTokenInfo(
     PangeaToken token,
     LemmaInfoResponse lemmaInfo,
-    String phonetics,
+    PTRequest ptRequest,
+    PTResponse ptResponse,
   ) async {
     final requestData = TokenInfoFeedbackRequestData(
       userId: Matrix.of(context).client.userID!,
@@ -172,7 +174,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       selectedToken: 0,
       wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
       lemmaInfo: lemmaInfo,
-      phonetics: phonetics,
+      ptRequest: ptRequest,
+      ptResponse: ptResponse,
     );
 
     await TokenFeedbackUtil.showTokenFeedbackDialog(

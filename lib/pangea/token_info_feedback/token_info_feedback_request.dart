@@ -1,5 +1,6 @@
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 
 class TokenInfoFeedbackRequestData {
   final String userId;
@@ -9,7 +10,8 @@ class TokenInfoFeedbackRequestData {
   final List<PangeaToken> tokens;
   final int selectedToken;
   final LemmaInfoResponse lemmaInfo;
-  final String phonetics;
+  final PTRequest? ptRequest;
+  final PTResponse? ptResponse;
   final String wordCardL1;
 
   TokenInfoFeedbackRequestData({
@@ -18,8 +20,9 @@ class TokenInfoFeedbackRequestData {
     required this.tokens,
     required this.selectedToken,
     required this.lemmaInfo,
-    required this.phonetics,
     required this.wordCardL1,
+    this.ptRequest,
+    this.ptResponse,
     this.roomId,
     this.fullText,
   });
@@ -35,7 +38,8 @@ class TokenInfoFeedbackRequestData {
           detectedLanguage == other.detectedLanguage &&
           selectedToken == other.selectedToken &&
           lemmaInfo == other.lemmaInfo &&
-          phonetics == other.phonetics &&
+          ptRequest == other.ptRequest &&
+          ptResponse == other.ptResponse &&
           wordCardL1 == other.wordCardL1;
 
   @override
@@ -46,7 +50,8 @@ class TokenInfoFeedbackRequestData {
       detectedLanguage.hashCode ^
       selectedToken.hashCode ^
       lemmaInfo.hashCode ^
-      phonetics.hashCode ^
+      ptRequest.hashCode ^
+      ptResponse.hashCode ^
       wordCardL1.hashCode;
 }
 
@@ -65,7 +70,8 @@ class TokenInfoFeedbackRequest {
       'tokens': data.tokens.map((token) => token.toJson()).toList(),
       'selected_token': data.selectedToken,
       'lemma_info': data.lemmaInfo.toJson(),
-      'phonetics': data.phonetics,
+      'pt_request': data.ptRequest?.toJson(),
+      'pt_response': data.ptResponse?.toJson(),
       'user_feedback': userFeedback,
       'word_card_l1': data.wordCardL1,
     };

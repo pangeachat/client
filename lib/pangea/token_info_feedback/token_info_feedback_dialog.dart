@@ -8,19 +8,15 @@ import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/languages/language_arc_model.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class TokenInfoFeedbackDialog extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
@@ -125,21 +121,11 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     response,
   );
 
-  Future<void> _updatePhoneticTranscription(
-    PhoneticTranscriptionResponse response,
-  ) async {
-    final req = PhoneticTranscriptionRequest(
-      arc: LanguageArc(
-        l1:
-            PLanguageStore.byLangCode(requestData.wordCardL1) ??
-            MatrixState.pangeaController.userController.userL1!,
-        l2:
-            PLanguageStore.byLangCode(langCode) ??
-            MatrixState.pangeaController.userController.userL2!,
-      ),
-      content: response.content,
-    );
-    await PhoneticTranscriptionRepo.set(req, response);
+  Future<void> _updatePhoneticTranscription(PTResponse response) async {
+    // Use the original request from the feedback data to write to v2 cache
+    final ptRequest = requestData.ptRequest;
+    if (ptRequest == null) return;
+    await PTV2Repo.set(ptRequest, response);
   }
 
   @override
@@ -151,6 +137,8 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       extraContent: WordZoomWidget(
         token: selectedToken.text,
         construct: selectedToken.vocabConstructID,
+        pos: selectedToken.pos,
+        morph: selectedToken.morph.map((k, v) => MapEntry(k.name, v)),
         langCode: langCode,
         enableEmojiSelection: false,
       ),

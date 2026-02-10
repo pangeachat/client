@@ -197,5 +197,7 @@ class PangeaController {
     'course_activity_storage',
     'course_location_media_storage',
     'language_mismatch',
+    'phonetic_transcription_storage',
+    'phonetic_transcription_v2_storage',
   ];
 }

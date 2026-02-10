@@ -7,6 +7,8 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -14,6 +16,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;
   final LanguageModel textLanguage;
+
+  /// POS tag for disambiguation (from PangeaToken, e.g. "VERB").
+  final String? pos;
+
+  /// Morph features for disambiguation (from PangeaToken).
+  final Map<String, String>? morph;
 
   final TextStyle? style;
   final double? iconSize;
@@ -27,6 +35,8 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     super.key,
     required this.text,
     required this.textLanguage,
+    this.pos,
+    this.morph,
     this.style,
     this.iconSize,
     this.iconColor,
@@ -54,6 +64,8 @@ class _PhoneticTranscriptionWidgetState
         context: context,
         targetID: targetId,
         langCode: widget.textLanguage.langCode,
+        pos: widget.pos,
+        morph: widget.morph,
         onStart: () {
           if (mounted) setState(() => _isPlaying = true);
         },
@@ -74,6 +86,7 @@ class _PhoneticTranscriptionWidgetState
               ? L10n.of(context).stop
               : L10n.of(context).playAudio,
           child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
@@ -111,13 +124,17 @@ class _PhoneticTranscriptionWidgetState
                                   context,
                                 ).failedToFetchTranscription,
                               ),
-                      AsyncLoaded<String>(value: final transcription) => Row(
+                      AsyncLoaded<PTResponse>(value: final ptResponse) => Row(
                         spacing: 8.0,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Flexible(
                             child: Text(
-                              transcription,
+                              disambiguate(
+                                ptResponse.pronunciations,
+                                pos: widget.pos,
+                                morph: widget.morph,
+                              ).displayTranscription,
                               textScaler: TextScaler.noScaling,
                               style:
                                   widget.style ??

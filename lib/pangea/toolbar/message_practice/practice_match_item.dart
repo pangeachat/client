@@ -68,6 +68,8 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             context: context,
             targetID: 'word-audio-button',
             langCode: l2,
+            pos: widget.token?.pos,
+            morph: widget.token?.morph.map((k, v) => MapEntry(k.name, v)),
           );
         }
       } catch (e, s) {
