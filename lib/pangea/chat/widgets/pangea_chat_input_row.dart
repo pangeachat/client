@@ -87,21 +87,25 @@ class PangeaChatInputRow extends StatelessWidget {
                             onSelected: controller.onAddPopupMenuButtonSelected,
                             itemBuilder: (BuildContext context) =>
                                 <PopupMenuEntry<AddPopupMenuActions>>[
-                                  PopupMenuItem(
-                                    value: AddPopupMenuActions.poll,
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: theme
-                                            .colorScheme
-                                            .onPrimaryContainer,
-                                        foregroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        child: const Icon(Icons.poll_outlined),
+                                  if (!isBotDM)
+                                    PopupMenuItem(
+                                      value: AddPopupMenuActions.poll,
+                                      child: ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor: theme
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                          foregroundColor: theme
+                                              .colorScheme
+                                              .primaryContainer,
+                                          child: const Icon(
+                                            Icons.poll_outlined,
+                                          ),
+                                        ),
+                                        title: Text(L10n.of(context).startPoll),
+                                        contentPadding: const EdgeInsets.all(0),
                                       ),
-                                      title: Text(L10n.of(context).startPoll),
-                                      contentPadding: const EdgeInsets.all(0),
                                     ),
-                                  ),
                                   if (!isBotDM)
                                     PopupMenuItem<AddPopupMenuActions>(
                                       value: AddPopupMenuActions.file,
