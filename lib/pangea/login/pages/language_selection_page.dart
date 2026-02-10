@@ -169,13 +169,11 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                   alignment: WrapAlignment.center,
                                   children: languages
                                       .where(
-                                        (l) => l
-                                            .getDisplayName(context)
-                                            .toLowerCase()
-                                            .contains(
-                                              _searchController.text
-                                                  .toLowerCase(),
-                                            ),
+                                        (l) => LanguageModel.search(
+                                          l,
+                                          val.text,
+                                          context,
+                                        ),
                                       )
                                       .map(
                                         (l) => ShimmerBackground(
