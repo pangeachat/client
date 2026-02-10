@@ -10,6 +10,7 @@ class InstructionsInlineTooltip extends StatelessWidget {
   final bool animate;
   final EdgeInsets? padding;
   final TextStyle? textStyle;
+  final List<InlineSpan>? richText;
 
   const InstructionsInlineTooltip({
     super.key,
@@ -17,6 +18,7 @@ class InstructionsInlineTooltip extends StatelessWidget {
     this.animate = true,
     this.padding,
     this.textStyle,
+    this.richText,
   });
 
   @override
@@ -28,12 +30,14 @@ class InstructionsInlineTooltip extends StatelessWidget {
       animate: animate,
       padding: padding,
       textStyle: textStyle,
+      richText: richText,
     );
   }
 }
 
 class InlineTooltip extends StatefulWidget {
   final String message;
+  final List<InlineSpan>? richText;
   final bool isClosed;
 
   final EdgeInsets? padding;
@@ -46,6 +50,7 @@ class InlineTooltip extends StatefulWidget {
     super.key,
     required this.message,
     required this.isClosed,
+    this.richText,
     this.onClose,
     this.animate = true,
     this.padding,
@@ -144,15 +149,27 @@ class InlineTooltipState extends State<InlineTooltip>
               ),
               Flexible(
                 child: Center(
-                  child: Text(
-                    widget.message,
-                    style:
-                        widget.textStyle ??
-                        (FluffyThemes.isColumnMode(context)
-                            ? Theme.of(context).textTheme.titleSmall
-                            : Theme.of(context).textTheme.bodyMedium),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: widget.richText != null
+                      ? RichText(
+                          text: TextSpan(
+                            children: widget.richText,
+                            style:
+                                widget.textStyle ??
+                                (FluffyThemes.isColumnMode(context)
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.bodyMedium),
+                          ),
+                          textAlign: TextAlign.center,
+                        )
+                      : Text(
+                          widget.message,
+                          style:
+                              widget.textStyle ??
+                              (FluffyThemes.isColumnMode(context)
+                                  ? Theme.of(context).textTheme.titleSmall
+                                  : Theme.of(context).textTheme.bodyMedium),
+                          textAlign: TextAlign.center,
+                        ),
                 ),
               ),
               IconButton(

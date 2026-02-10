@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-09 15:30:55.872849",
+  "@@last_modified": "2026-02-10 08:44:16.628986",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11665,6 +11665,332 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} chanjis la priskribo de la konversacio",
+  "changedTheChatName": "{username} chanjis la nomon de la konversacio",
+  "moreEvents": "Pli da eventoj",
+  "declineInvitation": "Malakcepti inviton",
+  "noMessagesYet": "Neniuj mesaĝoj ankoraŭ",
+  "longPressToRecordVoiceMessage": "Longa premado por registri voĉan mesaĝon.",
+  "pause": "Pauzi",
+  "resume": "Daŭrigi",
+  "newSubSpace": "Nova subspaco",
+  "moveToDifferentSpace": "Movi al alia spaco",
+  "moveUp": "Mova para cima",
+  "moveDown": "Mova para baixo",
+  "removeFromSpaceDescription": "O chat será removido do espaço, mas ainda aparecerá na sua lista de chats.",
+  "countChats": "{chats} chats",
+  "spaceMemberOf": "Membro do espaço de {spaces}",
+  "spaceMemberOfCanKnock": "Membro do espaço de {spaces} pode bater",
+  "donate": "Doe",
+  "startedAPoll": "{username} iniciou uma enquete.",
+  "poll": "Enquete",
+  "startPoll": "Iniciar enquete",
+  "endPoll": "Críochnaigh an pobal",
+  "answersVisible": "Freagraí infheicthe",
+  "answersHidden": "Freagraí i bhfolach",
+  "pollQuestion": "Ceist an phobail",
+  "answerOption": "Rogha freagra",
+  "addAnswerOption": "Cuir rogha freagra leis",
+  "allowMultipleAnswers": "Cuir cead do freagraí il",
+  "pollHasBeenEnded": "Tá an pobal críochnaithe",
+  "countVotes": "{count, plural, =1{Vóta amháin} other{{count} vótaí}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Beidh freagraí infheicthe nuair a bheidh an pobal críochnaithe",
+  "replyInThread": "Freag i snáithe",
+  "countReplies": "{count, plural, =1{Freagra amháin} other{{count} freagraí}}",
+  "thread": "Snáithe",
+  "backToMainChat": "Ar ais chuig an bpríomhchomhrá",
+  "createSticker": "Cruthaigh greamán nó emoji",
+  "useAsSticker": "Úsáid mar greamán",
+  "useAsEmoji": "Úsáid mar emoji",
+  "stickerPackNameAlreadyExists": "Tá ainm an phacáiste greamán ann cheana",
+  "newStickerPack": "Pacáiste greamán nua",
+  "stickerPackName": "Ainm an phacáiste greamán",
+  "attribution": "Attribution",
+  "skipChatBackup": "Sskip chat backup",
+  "skipChatBackupWarning": "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.",
+  "loadingMessages": "Loading messages",
+  "setupChatBackup": "Set up chat backup",
+  "noMoreResultsFound": "No more results found",
+  "chatSearchedUntil": "Chat searched until {time}",
+  "federationBaseUrl": "Federation Base URL",
+  "clientWellKnownInformation": "Client-Well-Known Information:",
+  "baseUrl": "Base URL",
+  "identityServer": "Seirbhís Aitheantais:",
+  "versionWithNumber": "Leagan: {version}",
+  "logs": "Lóganna",
+  "advancedConfigs": "Configuraíochtaí Casta",
+  "advancedConfigurations": "Configuraíochtaí casta",
+  "signInWithLabel": "Sínigh isteach le:",
+  "selectAllWords": "Roghnaigh na focail go léir a chloiseann tú sa chaint",
+  "joinCourseForActivities": "Bí páirteach i gcúrsa chun gníomhaíochtaí a thriail.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

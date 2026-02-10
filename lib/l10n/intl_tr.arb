@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-09 15:31:56.191986",
+  "@@last_modified": "2026-02-10 08:49:55.485194",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11257,6 +11257,332 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} sohbet tanımını değiştirdi",
+  "changedTheChatName": "{username} sohbet adını değiştirdi",
+  "moreEvents": "Daha fazla etkinlik",
+  "declineInvitation": "Davetiyeyi reddet",
+  "noMessagesYet": "Henüz mesaj yok",
+  "longPressToRecordVoiceMessage": "Sesli mesaj kaydetmek için uzun basın.",
+  "pause": "Duraklat",
+  "resume": "Devam et",
+  "newSubSpace": "Yeni alt alan",
+  "moveToDifferentSpace": "Farklı alana taşı",
+  "moveUp": "Yukarı taşı",
+  "moveDown": "Aşağı taşı",
+  "removeFromSpaceDescription": "Sohbet alanından kaldırılacak ancak sohbet listenizde görünmeye devam edecek.",
+  "countChats": "{chats} sohbet",
+  "spaceMemberOf": "{spaces} alan üyesi",
+  "spaceMemberOfCanKnock": "{spaces} alan üyesi kapıyı çalabilir",
+  "donate": "Bağış yap",
+  "startedAPoll": "{username} bir anket başlattı.",
+  "poll": "Anket",
+  "startPoll": "Anket başlat",
+  "endPoll": "Anketi bitir",
+  "answersVisible": "Cevaplar görünür",
+  "answersHidden": "Cevaplar gizli",
+  "pollQuestion": "Anket sorusu",
+  "answerOption": "Cevap seçeneği",
+  "addAnswerOption": "Cevap seçeneği ekle",
+  "allowMultipleAnswers": "Birden fazla cevaba izin ver",
+  "pollHasBeenEnded": "Anket sona erdi",
+  "countVotes": "{count, plural, =1{Bir oy} other{{count} oy}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Cevaplar anket sona erdiğinde görünür olacak",
+  "replyInThread": "İpucuya yanıt ver",
+  "countReplies": "{count, plural, =1{Bir yanıt} other{{count} yanıt}}",
+  "thread": "İpucu",
+  "backToMainChat": "Ana sohbete geri dön",
+  "createSticker": "Çıkartma veya emoji oluştur",
+  "useAsSticker": "Çıkartma olarak kullan",
+  "useAsEmoji": "Emoji olarak kullan",
+  "stickerPackNameAlreadyExists": "Çıkartma paketi adı zaten mevcut",
+  "newStickerPack": "Yeni çıkartma paketi",
+  "stickerPackName": "Çıkartma paketi adı",
+  "attribution": "Atıf",
+  "skipChatBackup": "Sohbet yedeğini atla",
+  "skipChatBackupWarning": "Emin misiniz? Sohbet yedeğini etkinleştirmeden cihazınızı değiştirirseniz mesajlarınıza erişimi kaybedebilirsiniz.",
+  "loadingMessages": "Mesajlar yükleniyor",
+  "setupChatBackup": "Sohbet yedeğini ayarla",
+  "noMoreResultsFound": "Daha fazla sonuç bulunamadı",
+  "chatSearchedUntil": "Sohbet {time} tarihine kadar arandı",
+  "federationBaseUrl": "Federasyon Temel URL'si",
+  "clientWellKnownInformation": "İstemci-Bilinen Bilgiler:",
+  "baseUrl": "Temel URL",
+  "identityServer": "Kimlik Sunucusu:",
+  "versionWithNumber": "Sürüm: {version}",
+  "logs": "Günlükler",
+  "advancedConfigs": "Gelişmiş Yapılandırmalar",
+  "advancedConfigurations": "Gelişmiş yapılandırmalar",
+  "signInWithLabel": "Giriş yapın:",
+  "selectAllWords": "Sesli olarak duyduğunuz tüm kelimeleri seçin",
+  "joinCourseForActivities": "Etkinlikleri denemek için bir kursa katılın.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

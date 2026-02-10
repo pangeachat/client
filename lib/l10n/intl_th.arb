@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-09 15:31:39.902769",
+  "@@last_modified": "2026-02-10 08:48:10.151092",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11664,6 +11664,332 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} เปลี่ยนคำอธิบายแชท",
+  "changedTheChatName": "{username} เปลี่ยนชื่อแชท",
+  "moreEvents": "กิจกรรมเพิ่มเติม",
+  "declineInvitation": "ปฏิเสธคำเชิญ",
+  "noMessagesYet": "ยังไม่มีข้อความ",
+  "longPressToRecordVoiceMessage": "กดค้างเพื่อบันทึกข้อความเสียง.",
+  "pause": "หยุดชั่วคราว",
+  "resume": "ดำเนินการต่อ",
+  "newSubSpace": "พื้นที่ย่อยใหม่",
+  "moveToDifferentSpace": "ย้ายไปยังพื้นที่อื่น",
+  "moveUp": "เลื่อนขึ้น",
+  "moveDown": "เลื่อนลง",
+  "removeFromSpaceDescription": "การสนทนาจะถูกลบออกจากพื้นที่ แต่ยังคงปรากฏในรายการสนทนาของคุณ",
+  "countChats": "{chats} การสนทนา",
+  "spaceMemberOf": "สมาชิกพื้นที่ของ {spaces}",
+  "spaceMemberOfCanKnock": "สมาชิกพื้นที่ของ {spaces} สามารถเคาะได้",
+  "donate": "บริจาค",
+  "startedAPoll": "{username} ได้เริ่มการสำรวจความคิดเห็น",
+  "poll": "การสำรวจความคิดเห็น",
+  "startPoll": "เริ่มการสำรวจความคิดเห็น",
+  "endPoll": "สิ้นสุดการลงคะแนน",
+  "answersVisible": "คำตอบที่มองเห็นได้",
+  "answersHidden": "คำตอบที่ซ่อนอยู่",
+  "pollQuestion": "คำถามการลงคะแนน",
+  "answerOption": "ตัวเลือกคำตอบ",
+  "addAnswerOption": "เพิ่มตัวเลือกคำตอบ",
+  "allowMultipleAnswers": "อนุญาตให้ตอบหลายคำตอบ",
+  "pollHasBeenEnded": "การลงคะแนนได้สิ้นสุดลงแล้ว",
+  "countVotes": "{count, plural, =1{หนึ่งเสียง} other{{count} เสียง}}",
+  "answersWillBeVisibleWhenPollHasEnded": "คำตอบจะมองเห็นได้เมื่อการลงคะแนนสิ้นสุดลง",
+  "replyInThread": "ตอบในกระทู้",
+  "countReplies": "{count, plural, =1{หนึ่งการตอบ} other{{count} การตอบ}}",
+  "thread": "กระทู้",
+  "backToMainChat": "กลับไปที่แชทหลัก",
+  "createSticker": "สร้างสติกเกอร์หรืออีโมจิ",
+  "useAsSticker": "ใช้เป็นสติกเกอร์",
+  "useAsEmoji": "ใช้เป็นอีโมจิ",
+  "stickerPackNameAlreadyExists": "ชื่อแพ็คสติกเกอร์มีอยู่แล้ว",
+  "newStickerPack": "แพ็คสติกเกอร์ใหม่",
+  "stickerPackName": "ชื่อแพ็คสติกเกอร์",
+  "attribution": "การให้เครดิต",
+  "skipChatBackup": "ข้ามการสำรองข้อมูลแชท",
+  "skipChatBackupWarning": "คุณแน่ใจหรือไม่? หากไม่เปิดใช้งานการสำรองข้อมูลแชท คุณอาจสูญเสียการเข้าถึงข้อความของคุณหากคุณเปลี่ยนอุปกรณ์.",
+  "loadingMessages": "กำลังโหลดข้อความ",
+  "setupChatBackup": "ตั้งค่าการสำรองข้อมูลแชท",
+  "noMoreResultsFound": "ไม่พบผลลัพธ์เพิ่มเติม",
+  "chatSearchedUntil": "ค้นหาแชทจนถึง {time}",
+  "federationBaseUrl": "URL ฐานของการรวมกลุ่ม",
+  "clientWellKnownInformation": "ข้อมูลที่รู้จักของลูกค้า:",
+  "baseUrl": "URL ฐาน",
+  "identityServer": "เซิร์ฟเวอร์ประจำตัว:",
+  "versionWithNumber": "เวอร์ชัน: {version}",
+  "logs": "บันทึก",
+  "advancedConfigs": "การตั้งค่าขั้นสูง",
+  "advancedConfigurations": "การกำหนดค่าขั้นสูง",
+  "signInWithLabel": "ลงชื่อเข้าใช้ด้วย:",
+  "selectAllWords": "เลือกทุกคำที่คุณได้ยินในเสียง",
+  "joinCourseForActivities": "เข้าร่วมหลักสูตรเพื่อทดลองกิจกรรม.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

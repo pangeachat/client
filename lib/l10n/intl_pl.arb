@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-09 15:32:22.411163",
+  "@@last_modified": "2026-02-10 10:31:26.689942",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11043,6 +11043,328 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} zmienił opis czatu",
+  "changedTheChatName": "{username} zmienił nazwę czatu",
+  "noMessagesYet": "Brak wiadomości",
+  "longPressToRecordVoiceMessage": "Długie naciśnięcie, aby nagrać wiadomość głosową.",
+  "pause": "Pauza",
+  "resume": "Wznów",
+  "newSubSpace": "Nowa podprzestrzeń",
+  "moveToDifferentSpace": "Przenieś do innej przestrzeni",
+  "moveUp": "Przenieś w górę",
+  "moveDown": "Przenieś w dół",
+  "removeFromSpaceDescription": "Czat zostanie usunięty z przestrzeni, ale nadal będzie widoczny na liście czatów.",
+  "countChats": "{chats} czatów",
+  "spaceMemberOf": "Członek przestrzeni {spaces}",
+  "spaceMemberOfCanKnock": "Członek przestrzeni {spaces} może zapukać",
+  "donate": "Darowizna",
+  "startedAPoll": "{username} rozpoczął ankietę.",
+  "poll": "Ankieta",
+  "startPoll": "Rozpocznij ankietę",
+  "endPoll": "Zakończ ankietę",
+  "answersVisible": "Odpowiedzi widoczne",
+  "answersHidden": "Odpowiedzi ukryte",
+  "pollQuestion": "Pytanie ankiety",
+  "answerOption": "Opcja odpowiedzi",
+  "addAnswerOption": "Dodaj opcję odpowiedzi",
+  "allowMultipleAnswers": "Zezwól na wiele odpowiedzi",
+  "pollHasBeenEnded": "Ankieta została zakończona",
+  "countVotes": "{count, plural, =1{Jeden głos} other{{count} głosów}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Odpowiedzi będą widoczne, gdy ankieta zostanie zakończona",
+  "replyInThread": "Odpowiedz w wątku",
+  "countReplies": "{count, plural, =1{Jedna odpowiedź} other{{count} odpowiedzi}}",
+  "thread": "Wątek",
+  "backToMainChat": "Powrót do głównego czatu",
+  "createSticker": "Utwórz naklejkę lub emoji",
+  "useAsSticker": "Użyj jako naklejkę",
+  "useAsEmoji": "Użyj jako emoji",
+  "stickerPackNameAlreadyExists": "Nazwa pakietu naklejek już istnieje",
+  "newStickerPack": "Nowy pakiet naklejek",
+  "stickerPackName": "Nazwa pakietu naklejek",
+  "attribution": "Atrybut",
+  "skipChatBackup": "Pomiń kopię zapasową czatu",
+  "skipChatBackupWarning": "Czy jesteś pewny? Bez włączenia kopii zapasowej czatu możesz stracić dostęp do swoich wiadomości, jeśli zmienisz urządzenie.",
+  "loadingMessages": "Ładowanie wiadomości",
+  "setupChatBackup": "Skonfiguruj kopię zapasową czatu",
+  "noMoreResultsFound": "Nie znaleziono więcej wyników",
+  "chatSearchedUntil": "Czat przeszukany do {time}",
+  "federationBaseUrl": "Podstawowy URL federacji",
+  "clientWellKnownInformation": "Informacje o kliencie - znane:",
+  "baseUrl": "Podstawowy URL",
+  "identityServer": "Serwer tożsamości:",
+  "versionWithNumber": "Wersja: {version}",
+  "logs": "Dzienniki",
+  "advancedConfigs": "Zaawansowane konfiguracje",
+  "advancedConfigurations": "Zaawansowane konfiguracje",
+  "signInWithLabel": "Zaloguj się za pomocą:",
+  "selectAllWords": "Wybierz wszystkie słowa, które słyszysz w audio",
+  "joinCourseForActivities": "Dołącz do kursu, aby spróbować aktywności.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "highlightVocabTooltip": "Podświetl słowa słownictwa docelowego poniżej, wysyłając je lub ćwicząc z nimi na czacie",
+  "pickDifferentActivity": "Wybierz inną aktywność",
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-09 15:32:37.241817",
+  "@@last_modified": "2026-02-10 10:31:57.920904",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11170,6 +11170,79 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Больше результатов не найдено",
+  "chatSearchedUntil": "Чат искался до {time}",
+  "federationBaseUrl": "Базовый URL федерации",
+  "clientWellKnownInformation": "Известная информация клиента:",
+  "baseUrl": "Базовый URL",
+  "identityServer": "Сервер идентификации:",
+  "versionWithNumber": "Версия: {version}",
+  "logs": "Журналы",
+  "advancedConfigs": "Расширенные настройки",
+  "advancedConfigurations": "Расширенные конфигурации",
+  "signInWithLabel": "Войти с помощью:",
+  "selectAllWords": "Выберите все слова, которые вы слышите в аудио",
+  "joinCourseForActivities": "Присоединяйтесь к курсу, чтобы попробовать активности.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }
