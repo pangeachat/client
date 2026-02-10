@@ -124,8 +124,34 @@ class _PhoneticTranscriptionWidgetState
                                   context,
                                 ).failedToFetchTranscription,
                               ),
-                      AsyncLoaded<PTResponse>(value: final ptResponse) =>
-                        _buildTranscription(context, ptResponse),
+                      AsyncLoaded<PTResponse>(value: final ptResponse) => Row(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              disambiguate(
+                                ptResponse.pronunciations,
+                                pos: widget.pos,
+                                morph: widget.morph,
+                              ).displayTranscription,
+                              textScaler: TextScaler.noScaling,
+                              style:
+                                  widget.style ??
+                                  Theme.of(context).textTheme.bodyMedium,
+                              maxLines: widget.maxLines,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Icon(
+                            _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+                            size: widget.iconSize ?? 24,
+                            color:
+                                widget.iconColor ??
+                                Theme.of(context).iconTheme.color,
+                          ),
+                        ],
+                      ),
                       _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
                     };
                   },
@@ -135,35 +161,6 @@ class _PhoneticTranscriptionWidgetState
           ),
         );
       },
-    );
-  }
-
-  Widget _buildTranscription(BuildContext context, PTResponse ptResponse) {
-    final result = disambiguate(
-      ptResponse.pronunciations,
-      pos: widget.pos,
-      morph: widget.morph,
-    );
-
-    return Row(
-      spacing: 8.0,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: Text(
-            result.displayTranscription,
-            textScaler: TextScaler.noScaling,
-            style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
-            maxLines: widget.maxLines,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        Icon(
-          _isPlaying ? Icons.pause_outlined : Icons.volume_up,
-          size: widget.iconSize ?? 24,
-          color: widget.iconColor ?? Theme.of(context).iconTheme.color,
-        ),
-      ],
     );
   }
 }
