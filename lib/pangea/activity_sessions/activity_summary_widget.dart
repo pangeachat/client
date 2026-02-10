@@ -58,6 +58,7 @@ class ActivitySummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    debugPrint("Instructions: ${activity.instructions}");
     return Center(
       child: Container(
         padding: const EdgeInsets.all(12.0),
@@ -174,7 +175,11 @@ class ActivitySummary extends StatelessWidget {
                             icon: Symbols.steps,
                             iconSize: 16.0,
                             child: Html(
-                              data: markdown(activity.instructions),
+                              data: markdown(
+                                activity.instructions
+                                    .replaceAll(RegExp('\n+'), '\n')
+                                    .replaceAll('---', ''),
+                              ),
                               style: {
                                 "body": Style(
                                   margin: Margins.all(0),
