@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -377,7 +378,7 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ErrorIndicator(
-                    message: L10n.of(context).errorFetchingLevelSummary,
+                    message: _error!.toLocalizedString(context),
                   ),
                 )
               else if (_constructSummary != null)
