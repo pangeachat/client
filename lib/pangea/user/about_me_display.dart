@@ -29,8 +29,6 @@ class AboutMeDisplay extends StatelessWidget {
                 child: Text(
                   snapshot.data!.about!,
                   style: TextStyle(fontSize: textSize),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
       ),
