@@ -3857,7 +3857,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-10 08:50:41.863748",
+  "@@last_modified": "2026-02-10 11:59:27.738687",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12182,6 +12182,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursai susideda iš 3-8 modulių, kuriuose yra veiklų, skatinančių praktikuoti žodžius skirtinguose kontekstuose",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -3781,7 +3781,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-02-10 08:51:59.361314",
+  "@@last_modified": "2026-02-10 11:59:33.979399",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10644,6 +10644,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursus terdiri dari 3-8 modul masing-masing dengan aktivitas untuk mendorong praktik kata dalam konteks yang berbeda",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

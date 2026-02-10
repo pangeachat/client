@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-10 10:31:26.689942",
+  "@@last_modified": "2026-02-10 11:59:39.303493",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11365,6 +11365,11 @@
   "highlightVocabTooltip": "Podświetl słowa słownictwa docelowego poniżej, wysyłając je lub ćwicząc z nimi na czacie",
   "pickDifferentActivity": "Wybierz inną aktywność",
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursy składają się z 3-8 modułów, z których każdy zawiera ćwiczenia zachęcające do praktykowania słów w różnych kontekstach",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

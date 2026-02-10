@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:44:54.197237",
+  "@@last_modified": "2026-02-10 11:58:51.076373",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12426,6 +12426,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "קורסים consist of 3-8 מודולים כל אחד עם פעילויות לעידוד תרגול מילים בהקשרים שונים",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -15,6 +15,8 @@ import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -231,6 +233,9 @@ class FindCoursePageView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
+              InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.courseDescription,
+              ),
               TextField(
                 controller: controller.searchController,
                 textInputAction: TextInputAction.search,

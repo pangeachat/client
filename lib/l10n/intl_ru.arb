@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-10 10:31:57.920904",
+  "@@last_modified": "2026-02-10 11:59:48.227073",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11243,6 +11243,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Курсы состоят из 3-8 модулей, каждый из которых включает в себя задания, чтобы поощрять практику слов в различных контекстах",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

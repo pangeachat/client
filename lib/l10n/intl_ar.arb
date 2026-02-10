@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-10 08:49:38.478724",
+  "@@last_modified": "2026-02-10 11:59:22.805489",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11593,6 +11593,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "تتكون الدورات من 3-8 وحدات، كل منها يحتوي على أنشطة لتشجيع ممارسة الكلمات في سياقات مختلفة",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

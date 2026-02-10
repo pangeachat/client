@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:51:02.318699",
+  "@@last_modified": "2026-02-10 11:59:30.081777",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6960,6 +6960,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Các khóa học bao gồm 3-8 mô-đun, mỗi mô-đun có các hoạt động để khuyến khích việc thực hành từ vựng trong các ngữ cảnh khác nhau",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

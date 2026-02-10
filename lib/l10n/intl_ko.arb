@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:41:42.309198",
+  "@@last_modified": "2026-02-10 11:58:32.198741",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11469,6 +11469,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "과정은 각기 다른 맥락에서 단어를 연습하도록 장려하는 활동이 포함된 3-8개의 모듈로 구성됩니다.",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

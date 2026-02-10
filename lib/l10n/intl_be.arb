@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-10 10:23:02.733044",
+  "@@last_modified": "2026-02-10 11:59:11.242849",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11262,6 +11262,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Курсы складаюцца з 3-8 модуляў, кожны з якіх утрымлівае заданні для стымулявання практыкавання слоў у розных кантэкстах",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

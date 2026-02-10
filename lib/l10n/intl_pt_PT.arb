@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-02-10 10:31:42.141320",
+  "@@last_modified": "2026-02-10 11:59:15.752325",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12411,6 +12411,11 @@
   },
   "inviteFriends": "Convidar amigos",
   "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Os cursos consistem em 3-8 módulos, cada um com atividades para incentivar a prática de palavras em diferentes contextos",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1926,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-10 10:23:56.415346",
+  "@@last_modified": "2026-02-10 11:58:40.771146",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12443,6 +12443,11 @@
   },
   "highlightVocabTooltip": "Fremhæv målvokabularord nedenfor ved at sende dem eller øve med dem i chatten",
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurser består af 3-8 moduler, hver med aktiviteter for at opmuntre til at øve ord i forskellige kontekster",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

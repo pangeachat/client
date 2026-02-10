@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:53:34.704343",
+  "@@last_modified": "2026-02-10 11:59:40.429559",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11855,6 +11855,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurser består av 3-8 moduler, var och en med aktiviteter för att uppmuntra till att öva ord i olika sammanhang",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

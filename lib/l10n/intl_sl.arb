@@ -2460,7 +2460,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-10 08:46:12.152873",
+  "@@last_modified": "2026-02-10 11:59:02.753228",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12458,6 +12458,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Tečaji so sestavljeni iz 3-8 modulov, vsak z aktivnostmi, ki spodbujajo prakso besed v različnih kontekstih",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

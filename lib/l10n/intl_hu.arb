@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-10 08:42:54.402743",
+  "@@last_modified": "2026-02-10 11:58:42.881015",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11380,6 +11380,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "A kurzusok 3-8 modulból állnak, mindegyikben tevékenységekkel, amelyek ösztönzik a szavak különböző kontextusokban való gyakorlását",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:43:35.763112",
+  "@@last_modified": "2026-02-10 11:58:45.605860",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12112,6 +12112,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Cursurile constau în 3-8 module, fiecare cu activități pentru a încuraja practicarea cuvintelor în contexte diferite",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }

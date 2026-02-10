@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 08:55:49.256567",
+  "@@last_modified": "2026-02-10 11:59:52.006346",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12473,6 +12473,11 @@
     "placeholders": {}
   },
   "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursevi se sastoje od 3-8 modula, svaki sa aktivnostima koje podstiču vežbanje reči u različitim kontekstima",
+  "@courseDescription": {
     "type": "String",
     "placeholders": {}
   }
