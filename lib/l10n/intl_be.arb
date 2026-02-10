@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-05 10:09:46.469770",
+  "@@last_modified": "2026-02-10 10:23:02.733044",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11085,6 +11085,183 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} змяніў апісанне чата",
+  "changedTheChatName": "{username} змяніў назву чата",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "noMoreResultsFound": "Больш няма вынікаў",
+  "chatSearchedUntil": "Пошук чата да {time}",
+  "federationBaseUrl": "Базавы URL федэрацыі",
+  "clientWellKnownInformation": "Інфармацыя, вядомая кліенту:",
+  "baseUrl": "Базавы URL",
+  "identityServer": "Сервер ідэнтычнасці:",
+  "versionWithNumber": "Версія: {version}",
+  "logs": "Журналы",
+  "advancedConfigs": "Пашыраныя налады",
+  "advancedConfigurations": "Пашыраныя канфігурацыі",
+  "signInWithLabel": "Увайсці з:",
+  "spanTypeGrammar": "Граматыка",
+  "spanTypeWordChoice": "Выбар слова",
+  "spanTypeSpelling": "Правільнасць напісання",
+  "spanTypePunctuation": "Пунктацыя",
+  "spanTypeStyle": "Стыль",
+  "spanTypeFluency": "Бегласць",
+  "spanTypeAccents": "Наклонкі",
+  "spanTypeCapitalization": "Вялікія літары",
+  "spanTypeCorrection": "Карэкцыя",
+  "spanFeedbackTitle": "Звярнуць увагу на выпраўленне памылкі",
+  "selectAllWords": "Выберыце ўсе словы, якія вы чулі ў аўдыё",
+  "aboutMeHint": "Пра мяне",
+  "changeEmail": "Змяніць электронную пошту",
+  "withTheseAddressesDescription": "З гэтымі электроннымі адрасамі вы можаце ўвайсці ў сістэму, аднавіць пароль і кіраваць падпіскамі.",
+  "noAddressDescription": "Вы яшчэ не дадавалі ніякіх электронных адрасоў.",
+  "perfectPractice": "Ідэальная практыка!",
+  "greatPractice": "Выдатная практыка!",
+  "usedNoHints": "Малайцы, што не выкарыстоўвалі падказкі!",
+  "youveCompletedPractice": "Вы скончылі практыку, працягвайце, каб палепшыць свае навыкі!",
+  "joinCourseForActivities": "Далучайцеся да курса, каб паспрабаваць дзейнасці.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:31:06.403516",
+  "@@last_modified": "2026-02-10 10:31:37.138948",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11165,6 +11165,84 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Nenhum resultado encontrado",
+  "chatSearchedUntil": "Chat pesquisado até {time}",
+  "federationBaseUrl": "URL Base da Federação",
+  "clientWellKnownInformation": "Informações Conhecidas do Cliente:",
+  "baseUrl": "URL Base",
+  "identityServer": "Servidor de Identidade:",
+  "versionWithNumber": "Versão: {version}",
+  "logs": "Registros",
+  "advancedConfigs": "Configurações Avançadas",
+  "advancedConfigurations": "Configurações avançadas",
+  "signInWithLabel": "Entrar com:",
+  "inviteFriends": "Convidar amigos",
+  "selectAllWords": "Selecione todas as palavras que você ouve no áudio",
+  "joinCourseForActivities": "Participe de um curso para experimentar atividades.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

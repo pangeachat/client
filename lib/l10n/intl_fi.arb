@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-05 10:09:16.239112",
+  "@@last_modified": "2026-02-10 10:29:17.237288",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11070,6 +11070,238 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} muutti keskustelun kuvauksen",
+  "changedTheChatName": "{username} muutti keskustelun nimeä",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "createSticker": "Luo tarra tai emoji",
+  "useAsSticker": "Käytä tarra- tai emoji-muodossa",
+  "useAsEmoji": "Käytä emoji-muodossa",
+  "stickerPackNameAlreadyExists": "Tarrapakkauksen nimi on jo olemassa",
+  "newStickerPack": "Uusi tarrapaketti",
+  "stickerPackName": "Tarrapakkauksen nimi",
+  "attribution": "Kuvaus",
+  "skipChatBackup": "Ohita keskustelun varmuuskopiointi",
+  "skipChatBackupWarning": "Oletko varma? Ilman keskustelun varmuuskopiointia voit menettää pääsyn viesteihisi, jos vaihdat laitetta.",
+  "loadingMessages": "Ladataan viestejä",
+  "setupChatBackup": "Aseta keskustelun varmuuskopiointi",
+  "noMoreResultsFound": "Ei enää tuloksia",
+  "chatSearchedUntil": "Chat etsitty asti {time}",
+  "federationBaseUrl": "Federation-perus-URL",
+  "clientWellKnownInformation": "Asiakkaan tunnetut tiedot:",
+  "baseUrl": "Perus-URL",
+  "identityServer": "Tunnistautumispalvelin:",
+  "versionWithNumber": "Versio: {version}",
+  "logs": "Lokit",
+  "advancedConfigs": "Edistyneet asetukset",
+  "advancedConfigurations": "Edistyneet asetukset",
+  "signInWithLabel": "Kirjaudu sisään käyttäen:",
+  "spanTypeGrammar": "Kielioppi",
+  "spanTypeWordChoice": "Sananvalinta",
+  "spanTypeSpelling": "Oikeinkirjoitus",
+  "spanTypePunctuation": "Piste- ja välimerkkeet",
+  "spanTypeStyle": "Tyyli",
+  "spanTypeFluency": "Sujuvuus",
+  "spanTypeAccents": "Äänteet",
+  "spanTypeCapitalization": "Iso alkukirjaimet",
+  "spanTypeCorrection": "Korjaus",
+  "spanFeedbackTitle": "Ilmoita korjausongelmasta",
+  "selectAllWords": "Valitse kaikki äänestä kuulemasi sanat",
+  "aboutMeHint": "Minusta",
+  "changeEmail": "Vaihda sähköpostiosoite",
+  "withTheseAddressesDescription": "Näillä sähköpostiosoitteilla voit kirjautua sisään, palauttaa salasanasi ja hallita tilauksia.",
+  "noAddressDescription": "Et ole vielä lisännyt sähköpostiosoitteita.",
+  "perfectPractice": "Täydellinen harjoitus!",
+  "greatPractice": "Loistava harjoitus!",
+  "usedNoHints": "Hyvin tehty, et käyttänyt vihjeitä!",
+  "youveCompletedPractice": "Olet suorittanut harjoituksen, jatka samaan malliin kehittyäksesi!",
+  "joinCourseForActivities": "Liity kurssille kokeillaksesi aktiviteetteja.",
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:30:47.056945",
+  "@@last_modified": "2026-02-10 08:43:12.455147",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11053,6 +11053,302 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} mengubah deskripsi obrolan",
+  "changedTheChatName": "{username} mengubah nama obrolan",
+  "newSubSpace": "Ruang sub baru",
+  "moveToDifferentSpace": "Pindah ke ruang yang berbeda",
+  "moveUp": "Pindah ke atas",
+  "moveDown": "Pindah ke bawah",
+  "removeFromSpaceDescription": "Obrolan akan dihapus dari ruang tetapi masih muncul di daftar obrolan Anda.",
+  "countChats": "{chats} obrolan",
+  "spaceMemberOf": "Anggota ruang {spaces}",
+  "spaceMemberOfCanKnock": "Anggota ruang {spaces} dapat mengetuk",
+  "donate": "Donasi",
+  "startedAPoll": "{username} memulai sebuah jajak pendapat.",
+  "poll": "Jajak pendapat",
+  "startPoll": "Mulai jajak pendapat",
+  "endPoll": "Akhiri jajak pendapat",
+  "answersVisible": "Jawaban terlihat",
+  "answersHidden": "Jawaban tersembunyi",
+  "pollQuestion": "Pertanyaan jajak pendapat",
+  "answerOption": "Opsi jawaban",
+  "addAnswerOption": "Tambahkan opsi jawaban",
+  "allowMultipleAnswers": "Izinkan beberapa jawaban",
+  "pollHasBeenEnded": "Jajak pendapat telah diakhiri",
+  "countVotes": "{count, plural, =1{Satu suara} other{{count} suara}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Jawaban akan terlihat ketika jajak pendapat telah diakhiri",
+  "replyInThread": "Balas di thread",
+  "countReplies": "{count, plural, =1{Satu balasan} other{{count} balasan}}",
+  "thread": "Thread",
+  "backToMainChat": "Kembali ke obrolan utama",
+  "createSticker": "Buat stiker atau emoji",
+  "useAsSticker": "Gunakan sebagai stiker",
+  "useAsEmoji": "Gunakan sebagai emoji",
+  "stickerPackNameAlreadyExists": "Nama paket stiker sudah ada",
+  "newStickerPack": "Paket stiker baru",
+  "stickerPackName": "Nama paket stiker",
+  "attribution": "Atribusi",
+  "skipChatBackup": "Lewati cadangan obrolan",
+  "skipChatBackupWarning": "Apakah Anda yakin? Tanpa mengaktifkan cadangan obrolan, Anda mungkin kehilangan akses ke pesan Anda jika Anda mengganti perangkat.",
+  "loadingMessages": "Memuat pesan",
+  "setupChatBackup": "Siapkan cadangan obrolan",
+  "noMoreResultsFound": "Tidak ada hasil lagi yang ditemukan",
+  "chatSearchedUntil": "Obrolan dicari hingga {time}",
+  "federationBaseUrl": "URL Dasar Federasi",
+  "clientWellKnownInformation": "Informasi Klien-Terkenal:",
+  "baseUrl": "URL Dasar",
+  "identityServer": "Server Identitas:",
+  "versionWithNumber": "Versi: {version}",
+  "logs": "Log",
+  "advancedConfigs": "Konfigurasi Lanjutan",
+  "advancedConfigurations": "Konfigurasi lanjutan",
+  "signInWithLabel": "Masuk dengan:",
+  "selectAllWords": "Pilih semua kata yang Anda dengar dalam audio",
+  "joinCourseForActivities": "Bergabunglah dengan kursus untuk mencoba aktivitas.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }

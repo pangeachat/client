@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-09 15:31:13.687328",
+  "@@last_modified": "2026-02-10 10:26:26.751015",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11458,6 +11458,65 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "federationBaseUrl": "Federatsiooni baas URL",
+  "clientWellKnownInformation": "Kliendi hästi teada olev teave:",
+  "baseUrl": "Põhi-URL",
+  "identityServer": "Identiteediserver:",
+  "versionWithNumber": "Versioon: {version}",
+  "logs": "Logid",
+  "advancedConfigs": "Täiustatud seaded",
+  "advancedConfigurations": "Täiustatud konfiguratsioonid",
+  "signInWithLabel": "Logi sisse koos:",
+  "selectAllWords": "Vali kõik sõnad, mida kuulad helifailist",
+  "joinCourseForActivities": "Liitu kursusega, et proovida tegevusi.",
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
     "type": "String",
     "placeholders": {}
   }
