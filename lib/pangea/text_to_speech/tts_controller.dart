@@ -7,8 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart'
-    as error_handler;
+import 'package:fluffychat/pangea/common/utils/error_handler.dart' as error_handler;
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -32,19 +31,13 @@ class TtsController {
   static List<String> _availableLangCodes = [];
 
   static final _tts = flutter_tts.FlutterTts();
-  static final StreamController<bool> loadingChoreoStream =
-      StreamController<bool>.broadcast();
+  static final StreamController<bool> loadingChoreoStream = StreamController<bool>.broadcast();
 
   static AudioPlayer? audioPlayer;
 
   static Future<void> _onError(dynamic message) async {
     if (message != 'canceled' && message != 'interrupted') {
-      error_handler.ErrorHandler.logError(
-        e: 'TTS error',
-        data: {
-          'message': message,
-        },
-      );
+      error_handler.ErrorHandler.logError(e: 'TTS error', data: {'message': message});
     }
   }
 
@@ -54,11 +47,7 @@ class TtsController {
       await _setAvailableBaseLanguages();
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {});
     }
   }
 
@@ -82,22 +71,15 @@ class TtsController {
     if (_availableLangCodes.contains(langCode)) {
       selectedLangCode = langCode;
     } else {
-      selectedLangCode = _availableLangCodes.firstWhereOrNull(
-        (code) => code.startsWith(langCodeShort),
-      );
+      selectedLangCode = _availableLangCodes.firstWhereOrNull((code) => code.startsWith(langCodeShort));
     }
 
     if (selectedLangCode != null) {
       await (_tts.setLanguage(selectedLangCode));
     } else {
-      final jsonData = {
-        'langCode': langCode,
-        'availableLangCodes': _availableLangCodes,
-      };
+      final jsonData = {'langCode': langCode, 'availableLangCodes': _availableLangCodes};
       debugPrint("TTS: Language not supported: $jsonData");
-      Sentry.addBreadcrumb(
-        Breadcrumb.fromJson(jsonData),
-      );
+      Sentry.addBreadcrumb(Breadcrumb.fromJson(jsonData));
     }
   }
 
@@ -109,20 +91,11 @@ class TtsController {
       audioPlayer?.stop();
 
       if (result != 1) {
-        error_handler.ErrorHandler.logError(
-          m: 'Unexpected result from tts.stop',
-          data: {
-            'result': result,
-          },
-        );
+        error_handler.ErrorHandler.logError(m: 'Unexpected result from tts.stop', data: {'result': result});
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {});
     }
   }
 
@@ -131,27 +104,19 @@ class TtsController {
   /// Look up the PT v2 cache for [text] and return tts_phoneme if the word is a
   /// heteronym that can be disambiguated. Returns null for single-pronunciation
   /// words or when no PT data is cached.
-  static String? _resolveTtsPhonemeFromCache(
-    String text,
-    String langCode, {
-    String? pos,
-    Map<String, String>? morph,
-  }) {
+  static String? _resolveTtsPhonemeFromCache(String text, String langCode, {String? pos, Map<String, String>? morph}) {
     final userL1 = MatrixState.pangeaController.userController.userL1Code;
     if (userL1 == null) return null;
 
     final ptResponse = PTV2Repo.getCachedResponse(text, langCode, userL1);
     debugPrint(
-        '[TTS-DEBUG] _resolveTtsPhonemeFromCache: text="$text" lang=$langCode cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=$pos morph=$morph');
+      '[TTS-DEBUG] _resolveTtsPhonemeFromCache: text="$text" lang=$langCode cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=$pos morph=$morph',
+    );
     if (ptResponse == null || ptResponse.pronunciations.length <= 1) {
       return null;
     }
 
-    final result = disambiguate(
-      ptResponse.pronunciations,
-      pos: pos,
-      morph: morph,
-    );
+    final result = disambiguate(ptResponse.pronunciations, pos: pos, morph: morph);
     return result.ttsPhoneme;
   }
 
@@ -177,10 +142,10 @@ class TtsController {
   }) async {
     // Auto-resolve tts_phoneme from PT cache if not explicitly provided.
     final explicitPhoneme = ttsPhoneme;
-    ttsPhoneme ??=
-        _resolveTtsPhonemeFromCache(text, langCode, pos: pos, morph: morph);
+    ttsPhoneme ??= _resolveTtsPhonemeFromCache(text, langCode, pos: pos, morph: morph);
     debugPrint(
-        '[TTS-DEBUG] tryToSpeak: text="$text" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=$pos morph=$morph');
+      '[TTS-DEBUG] tryToSpeak: text="$text" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=$pos morph=$morph',
+    );
 
     final prevOnStop = _onStop;
     _onStop = onStop;
@@ -226,15 +191,10 @@ class TtsController {
 
     await _setSpeakingLanguage(langCode);
 
-    final enableTTS = MatrixState
-        .pangeaController.userController.profile.toolSettings.enableTTS;
+    final enableTTS = MatrixState.pangeaController.userController.profile.toolSettings.enableTTS;
 
     if (enableTTS) {
-      final token = PangeaTokenText(
-        offset: 0,
-        content: text,
-        length: text.length,
-      );
+      final token = PangeaTokenText(offset: 0, content: text, length: text.length);
 
       onStart?.call();
 
@@ -243,16 +203,8 @@ class TtsController {
         await _speakFromChoreo(text, langCode, [token], ttsPhoneme: ttsPhoneme);
       } else {
         await (_isLangFullySupported(langCode)
-            ? _speak(
-                text,
-                langCode,
-                [token],
-              )
-            : _speakFromChoreo(
-                text,
-                langCode,
-                [token],
-              ));
+            ? _speak(text, langCode, [token])
+            : _speakFromChoreo(text, langCode, [token]));
       }
     } else if (targetID != null && context != null) {
       await _showTTSDisabledPopup(context, targetID);
@@ -261,11 +213,7 @@ class TtsController {
     onStop?.call();
   }
 
-  static Future<void> _speak(
-    String text,
-    String langCode,
-    List<PangeaTokenText> tokens,
-  ) async {
+  static Future<void> _speak(String text, String langCode, List<PangeaTokenText> tokens) async {
     try {
       await stop();
       text = text.toLowerCase();
@@ -299,13 +247,7 @@ class TtsController {
       // }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'text': text,
-        },
-      );
+      error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
       await _speakFromChoreo(text, langCode, tokens);
     } finally {
       stop();
@@ -318,8 +260,7 @@ class TtsController {
     List<PangeaTokenText> tokens, {
     String? ttsPhoneme,
   }) async {
-    debugPrint(
-        '[TTS-DEBUG] _speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme');
+    debugPrint('[TTS-DEBUG] _speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme');
     TextToSpeechResponseModel? ttsRes;
 
     loadingChoreoStream.add(true);
@@ -329,10 +270,8 @@ class TtsController {
         text: text,
         langCode: langCode,
         tokens: tokens,
-        userL1: MatrixState.pangeaController.userController.userL1Code ??
-            LanguageKeys.unknownLanguage,
-        userL2: MatrixState.pangeaController.userController.userL2Code ??
-            LanguageKeys.unknownLanguage,
+        userL1: MatrixState.pangeaController.userController.userL1Code ?? LanguageKeys.unknownLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2Code ?? LanguageKeys.unknownLanguage,
         ttsPhoneme: ttsPhoneme,
         speakingRate: 1.0,
       ),
@@ -346,22 +285,10 @@ class TtsController {
       final audioContent = base64Decode(ttsRes.audioContent);
       audioPlayer?.dispose();
       audioPlayer = AudioPlayer();
-      await audioPlayer!.setAudioSource(
-        BytesAudioSource(
-          audioContent,
-          ttsRes.mimeType,
-        ),
-      );
+      await audioPlayer!.setAudioSource(BytesAudioSource(audioContent, ttsRes.mimeType));
       await audioPlayer!.play();
     } catch (e, s) {
-      error_handler.ErrorHandler.logError(
-        e: 'Error playing audio',
-        s: s,
-        data: {
-          'error': e.toString(),
-          'text': text,
-        },
-      );
+      error_handler.ErrorHandler.logError(e: 'Error playing audio', s: s, data: {'error': e.toString(), 'text': text});
     } finally {
       audioPlayer?.dispose();
       audioPlayer = null;
@@ -381,10 +308,7 @@ class TtsController {
     return _availableLangCodes.any((lang) => lang.startsWith(langCodeShort));
   }
 
-  static Future<void> _showTTSDisabledPopup(
-    BuildContext context,
-    String targetID,
-  ) async =>
+  static Future<void> _showTTSDisabledPopup(BuildContext context, String targetID) async =>
       OverlayUtil.showPositionedCard(
         context: context,
         backDropToDismiss: false,
@@ -395,10 +319,7 @@ class TtsController {
             CardHeader(InstructionsEnum.ttsDisabled.title(L10n.of(context))),
             Padding(
               padding: const EdgeInsets.all(6.0),
-              child: Text(
-                InstructionsEnum.ttsDisabled.body(L10n.of(context)),
-                style: BotStyle.text(context),
-              ),
+              child: Text(InstructionsEnum.ttsDisabled.body(L10n.of(context)), style: BotStyle.text(context)),
             ),
           ],
         ),
