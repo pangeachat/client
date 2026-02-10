@@ -7,26 +7,26 @@ library;
 
 class Pronunciation {
   final String transcription;
-  final String ipa;
+  final String ttsPhoneme;
   final String? udConditions;
 
   const Pronunciation({
     required this.transcription,
-    required this.ipa,
+    required this.ttsPhoneme,
     this.udConditions,
   });
 
   factory Pronunciation.fromJson(Map<String, dynamic> json) {
     return Pronunciation(
       transcription: json['transcription'] as String,
-      ipa: json['ipa'] as String,
+      ttsPhoneme: json['tts_phoneme'] as String,
       udConditions: json['ud_conditions'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
         'transcription': transcription,
-        'ipa': ipa,
+        'tts_phoneme': ttsPhoneme,
         'ud_conditions': udConditions,
       };
 
@@ -35,11 +35,11 @@ class Pronunciation {
       identical(this, other) ||
       other is Pronunciation &&
           transcription == other.transcription &&
-          ipa == other.ipa &&
+          ttsPhoneme == other.ttsPhoneme &&
           udConditions == other.udConditions;
 
   @override
-  int get hashCode => transcription.hashCode ^ ipa.hashCode ^ udConditions.hashCode;
+  int get hashCode => transcription.hashCode ^ ttsPhoneme.hashCode ^ udConditions.hashCode;
 }
 
 class PTRequest {

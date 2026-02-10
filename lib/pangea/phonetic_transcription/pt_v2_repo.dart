@@ -90,6 +90,34 @@ class PTV2Repo {
     }
   }
 
+  /// Look up a cached PT response without triggering a network fetch.
+  /// Returns null if not in memory or disk cache.
+  static PTResponse? getCachedResponse(String surface, String langCode, String userL1) {
+    final key = '$surface|$langCode|$userL1';
+
+    // Check memory cache first.
+    final now = DateTime.now();
+    final memItem = _cache[key];
+    if (memItem != null && now.difference(memItem.timestamp) < _memoryCacheDuration) {
+      // Memory cache stores a Future — can't resolve synchronously.
+      // Fall through to disk cache.
+    }
+
+    // Check disk cache.
+    try {
+      final entry = _storage.read(key);
+      if (entry == null) return null;
+      final item = _DiskCacheItem.fromJson(entry);
+      if (now.difference(item.timestamp) >= _diskCacheDuration) {
+        _storage.remove(key);
+        return null;
+      }
+      return item.response;
+    } catch (_) {
+      return null;
+    }
+  }
+
   static Future<Result<PTResponse>>? _getCached(PTRequest request) {
     final now = DateTime.now();
     _cache.removeWhere(

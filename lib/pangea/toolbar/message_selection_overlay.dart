@@ -211,6 +211,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       TtsController.tryToSpeak(
         selectedToken!.text.content,
         langCode: pangeaMessageEvent.messageDisplayLangCode,
+        pos: selectedToken!.pos,
+        morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
 

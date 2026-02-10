@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/phonetic_transcription/**,lib/pangea/text_to_speech/**"
+applyTo: "lib/pangea/phonetic_transcription/**,lib/pangea/text_to_speech/**, lib/**"
 ---
 
 # Phonetic Transcription — v2 Migration Design
@@ -8,9 +8,7 @@ applyTo: "lib/pangea/phonetic_transcription/**,lib/pangea/text_to_speech/**"
 
 Phonetic transcription provides pronunciations for L2 tokens, tailored to the user's L1. Applies to **all L1/L2 combinations** — not just non-Latin scripts (e.g., Spanish "lluvia" → "YOO-vee-ah" for an English L1 speaker).
 
-For v2, make `showTranscription` return `true` unconditionally (remove the script-difference gate). Keep the property in place.
-
-> **TODO**: Verify UI/UX at each `showTranscription` use site — some may need layout adjustments.
+For v2, `showTranscription` returns `true` unconditionally (script-difference gate removed). The property is kept in place.
 
 ## 2. v1 → v2 Changes
 
@@ -25,24 +23,42 @@ PhoneticTranscriptionWidget → PhoneticTranscriptionBuilder → PhoneticTranscr
 |--------|----|----|
 | Endpoint | `POST /choreo/phonetic_transcription` | `POST /choreo/phonetic_transcription_v2` |
 | Request | `arc` (LanguageArc) + `content` (PangeaTokenText) | `surface` (string) + `lang_code` + `user_l1` + `user_l2` |
-| Response | Deeply nested, single pronunciation, no IPA | Flat `pronunciations` array, each with `transcription`, `ipa`, `ud_conditions` |
+| Response | Deeply nested, single pronunciation, no IPA | Flat `pronunciations` array, each with `transcription`, `tts_phoneme`, `ud_conditions` |
 | Disambiguation | None | `ud_conditions` (e.g. `Pos=ADV`, `Pos=VERB`) |
 | Server caching | None | CMS-backed (subsequent calls are instant) |
 
 - `lang_code`: language of the token (may differ from `user_l2` for loanwords/code-switching).
 - `user_l2`: included in base schema but does not affect pronunciation — only `lang_code` and `user_l1` matter.
 
-**Response example**:
+**Response example** (Chinese — `tts_phoneme` uses pinyin):
 ```json
 {
   "pronunciations": [
-    { "transcription": "hái", "ipa": "xaɪ̌", "ud_conditions": "Pos=ADV" },
-    { "transcription": "huán", "ipa": "xwaň", "ud_conditions": "Pos=VERB" }
+    { "transcription": "hái", "tts_phoneme": "hai2", "ud_conditions": "Pos=ADV" },
+    { "transcription": "huán", "tts_phoneme": "huan2", "ud_conditions": "Pos=VERB" }
   ]
 }
 ```
 
-> **⚠ Choreo fix**: `pt-migration` branch prompt uses `POS=ADV` (all-caps key). Must be corrected to **PascalCase**: `Pos=ADV`, `Tense=Past`, etc.
+**Response example** (Spanish — `tts_phoneme` uses IPA):
+```json
+{
+  "pronunciations": [
+    { "transcription": "YOO-vee-ah", "tts_phoneme": "ˈʎubja", "ud_conditions": null }
+  ]
+}
+```
+
+### `tts_phoneme` Format by Language
+
+The PT v2 handler selects the correct phoneme format based on `lang_code`. The client treats `tts_phoneme` as an opaque string — it never needs to know the alphabet.
+
+| `lang_code` | Phoneme format | `alphabet` (resolved by TTS server) | Example |
+|---|---|---|---|
+| `cmn-CN`, `cmn-TW`, `zh` | Pinyin + tone numbers | `pinyin` | `hai2` |
+| `yue` (Cantonese) | Jyutping + tone numbers | `jyutping` | `sik6 faan6` |
+| `ja` | Yomigana (hiragana) | `yomigana` | `なか` |
+| All others | IPA | `ipa` | `ˈʎubja` |
 
 ### Deployment Order
 
@@ -76,7 +92,7 @@ Available context: `constructId.lemma`, `constructId.category` (lowercased POS).
 
 ### 3.3 Fallback
 
-If disambiguation doesn't produce a single match, **display all pronunciations** (e.g. `"hái / huán"`), each with its own play button for TTS (see §5).
+If disambiguation doesn't produce a single match, **display all pronunciations** (e.g. `"hái / huán"`), each with its own play button for TTS using its `tts_phoneme` (see §5).
 
 ### 3.4 Parsing `ud_conditions`
 
@@ -101,7 +117,7 @@ Keys use **PascalCase** (`Pos`, `Tense`, `VerbForm`). Parse:
 
 ---
 
-## 5. TTS with IPA Fallback
+## 5. TTS with Phoneme Pronunciation
 
 PT covers **isolated words** only. Whole-message audio uses the existing TTS flow (unaffected).
 
@@ -109,46 +125,77 @@ PT covers **isolated words** only. Whole-message audio uses the existing TTS flo
 Ambiguous surface forms (e.g., 还 → hái vs huán) get arbitrary pronunciation from device TTS because it has no context.
 
 ### Decision Flow
+
+The branch point is **how many entries are in the PT v2 `pronunciations` array** for this word.
+
 ```
-1 pronunciation in response?
+PT response has 1 pronunciation? (unambiguous word)
   → YES: Use surface text for TTS as today (device or server fallback).
-  → NO (ambiguous):
-     Can disambiguate to one? (§3)
-       → YES: Force _speakFromChoreo with that pronunciation's IPA.
-       → NO:  Force _speakFromChoreo with first IPA as default,
-              or let user tap a specific pronunciation to play it.
+         Device TTS will pronounce it correctly — no phoneme override needed.
+  → NO (2+ pronunciations — heteronym):
+     Can disambiguate to exactly one using UD context? (§3)
+       → YES: Send that pronunciation's tts_phoneme to _speakFromChoreo.
+       → NO:  Send first pronunciation's tts_phoneme to _speakFromChoreo as default,
+              or let user tap a specific pronunciation to play its tts_phoneme.
 ```
+
+**The TTS request always contains at most one `tts_phoneme` string.** Disambiguation happens *before* calling TTS.
 
 ### Implementation
 
-**Choreo**:
-1. Add `ipa: Optional[str] = None` to `TextToSpeechRequestModel`.
-2. When set, wrap text in `<phoneme alphabet="ipa" ph="{ipa}">{text}</phoneme>` inside existing SSML `<speak>` tags.
-3. Include `ipa` in CMS cache key.
-4. Graceful fallback — `<phoneme>` only works with certain Google Cloud TTS voices (Neural2, Studio).
+**PT v2 handler** (choreo):
+1. Rename `ipa` → `tts_phoneme` in the `Pronunciation` schema.
+2. LLM prompt instructions produce the correct phoneme format based on `lang_code`:
+   - Chinese (`zh`, `cmn-CN`, `cmn-TW`): pinyin with tone numbers (e.g. `hai2`)
+   - Cantonese (`yue`): jyutping with tone numbers (e.g. `sik6`)
+   - Japanese (`ja`): yomigana in hiragana (e.g. `なか`)
+   - All others: IPA (e.g. `ˈʎubja`)
+3. Eval function validates format matches expected type for the language.
+
+**TTS server** (choreo):
+1. Add `tts_phoneme: Optional[str] = None` to `TextToSpeechRequest`.
+2. Resolve the SSML `alphabet` from `lang_code` (see table in §2). Client never sends the alphabet.
+3. When `tts_phoneme` is set, wrap text in `<phoneme alphabet="{resolved}" ph="{tts_phoneme}">{text}</phoneme>` inside existing SSML `<speak>` tags.
+4. Include `tts_phoneme` in cache key.
 
 **Client**:
-1. Add `String? ipa` to `TextToSpeechRequestModel`, serialize in `toJson()`.
-2. Add optional `ipa` param to `TtsController.tryToSpeak` and `_speakFromChoreo`.
-3. When `ipa` is provided, skip device TTS and call `_speakFromChoreo`.
-4. When `ipa` is not provided, behavior unchanged.
+1. Rename `ipa` → `ttsPhoneme` in `TextToSpeechRequestModel` and `DisambiguationResult`.
+2. Rename `ipa` → `ttsPhoneme` param in `TtsController.tryToSpeak` and `_speakFromChoreo`.
+3. When `ttsPhoneme` is provided, skip device TTS and call `_speakFromChoreo`.
+4. When `ttsPhoneme` is not provided, behavior unchanged.
+5. Client treats `ttsPhoneme` as an opaque string — no language-specific logic needed.
+
+### Cache-Only Phoneme Resolution
+
+`TtsController.tryToSpeak` resolves `ttsPhoneme` from the **local PT v2 cache** (`_resolveTtsPhonemeFromCache`) rather than making a server call. This is a deliberate tradeoff:
+
+- **Why cache-only**: TTS is latency-sensitive — adding a blocking PT v2 network call before every word playback would degrade the experience. By the time a user taps to play a word, the PT v2 response has almost certainly already been fetched and cached (it was needed to render the transcription overlay).
+- **What if the cache misses**: The word plays without phoneme override, using device TTS or plain server TTS. This is the same behavior as before PT v2 existed — acceptable because heteronyms are ~5% of words. The user still gets audio, just without guaranteed disambiguation.
+- **No silent failures**: A cache miss doesn't block or error — it falls through gracefully.
 
 ---
 
-## 6. Resolved & Open Items
+## 6. Status
 
-### Resolved
-- **Morph feature format**: PascalCase keys (`Pos`, `Tense`, `VerbForm`). `ConstructIdentifier.category` is lowercased — compare case-insensitively.
-- **Choreo prompt fix**: `POS=ADV` → `Pos=ADV` on `pt-migration` branch.
-- **TTS IPA**: Server already uses SSML. Add `ipa` field; server wraps in `<phoneme>` tags (§5).
-- **Cache migration**: v1 entries orphaned (different key format), expire at 7-day TTL. No migration.
-- **Cache clearing on logout**: PT storage missing from `_storageKeys` — add it.
-- **Analytics form audio**: Remove form-level audio buttons. Use lemma as surface for PT.
-- **`lang_code` source**: Chat = `messageDisplayLangCode` (detected, not always `user_l2`). Analytics = `userL2Code`. Both correct.
-- **Token info feedback**: v2 copy of endpoint, not in-place edit. Full plan in dedicated docs:
-  - **Server**: `2-step-choreographer/.github/instructions/token-info-feedback-pt-v2.instructions.md`
-  - **Client**: `client/.github/instructions/token-info-feedback-v2.instructions.md`
+### Choreo — Complete (PR #1700, CMS PR #131)
 
-### Open
-1. **Google Cloud TTS `<phoneme>` voice support**: Verify current voices support it, or add fallback.
-2. **`_storageKeys` gap**: Broader cleanup (7+ missing containers) tracked by ggurdin. This PR: just add `phonetic_transcription_storage`.
+- ✅ PT v2 handler, schemas, document, router, constants
+- ✅ `tts_phoneme` rename (`ipa` → `tts_phoneme`) in PT v2 + TTS schemas
+- ✅ SSML `<phoneme>` wrapping with per-language alphabet resolution
+- ✅ Duration fallback for Google TTS (suppresses timepoints inside `<phoneme>` tags)
+- ✅ CMS migration applied (`ipa` → `tts_phoneme` column rename)
+- ✅ All unit + integration tests pass
+
+### Client — Models & Plumbing Complete, UI Integration In Progress
+
+- ✅ `Pronunciation` model with `ttsPhoneme` field (`pt_v2_models.dart`)
+- ✅ Disambiguation logic (`pt_v2_disambiguation.dart`)
+- ✅ `PTV2Repo` calling v2 endpoint with sync cache lookup
+- ✅ `TextToSpeechRequestModel` with `ttsPhoneme`
+- ✅ `TtsController` — `_resolveTtsPhonemeFromCache`, auto-resolve in `tryToSpeak`
+- ✅ `showTranscription` returns `true` unconditionally
+- ⬜ **Legacy v1 cleanup**: `PhoneticTranscriptionRepo` (v1) still exists — verify no callers remain, then delete
+- ⬜ **UI testing**: Verify PT v2 renders correctly in chat (WordZoomWidget) and analytics (VocabDetailsView)
+- ⬜ **Heteronym TTS testing**: Verify phoneme-driven TTS plays correct pronunciation for disambiguated heteronyms (e.g., 还 as hái vs huán)
+- ⬜ **Local caching**: Verify 24-hour TTL, disk cache, logout cleanup (`phonetic_transcription_storage` in `_storageKeys`)
+

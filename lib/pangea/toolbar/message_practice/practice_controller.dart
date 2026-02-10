@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -22,6 +19,7 @@ import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart'
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
 
 class PracticeController with ChangeNotifier {
   final PangeaMessageEvent pangeaMessageEvent;
@@ -62,10 +60,7 @@ class PracticeController with ChangeNotifier {
       isPracticeSessionDone(ActivityTypeEnum.morphId);
 
   bool isPracticeSessionDone(ActivityTypeEnum activityType) =>
-      practiceSelection
-          ?.activities(activityType)
-          .every((a) => PracticeRecordController.isCompleteByTarget(a)) ==
-      true;
+      practiceSelection?.activities(activityType).every((a) => PracticeRecordController.isCompleteByTarget(a)) == true;
 
   bool isPracticeButtonEmpty(PangeaToken token) {
     final target = practiceTargetForToken(token);
@@ -175,17 +170,14 @@ class PracticeController with ChangeNotifier {
       _activity!,
     );
 
-    final targetId =
-        "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
+    final targetId = "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
 
-    final updateService = MatrixState
-        .pangeaController.matrixState.analyticsDataService.updateService;
+    final updateService = MatrixState.pangeaController.matrixState.analyticsDataService.updateService;
 
     // we don't take off points for incorrect emoji matches
     if (_activity is! EmojiPracticeActivityModel || isCorrect) {
       final constructUseType =
-          PracticeRecordController.lastResponse(_activity!.practiceTarget)!
-              .useType(_activity!.activityType);
+          PracticeRecordController.lastResponse(_activity!.practiceTarget)!.useType(_activity!.activityType);
 
       final constructs = [
         OneConstructUse(
@@ -226,11 +218,12 @@ class PracticeController with ChangeNotifier {
       }
     }
 
-    if (_activity is LemmaMeaningPracticeActivityModel ||
-        _activity is EmojiPracticeActivityModel) {
+    if (_activity is LemmaMeaningPracticeActivityModel || _activity is EmojiPracticeActivityModel) {
       TtsController.tryToSpeak(
         token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+        pos: token.pos,
+        morph: token.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
 

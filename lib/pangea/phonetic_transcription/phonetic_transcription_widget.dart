@@ -50,10 +50,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
 class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
-  Future<void> _handleAudioTap(
-    String targetId, {
-    String? ipa,
-  }) async {
+  Future<void> _handleAudioTap(String targetId) async {
     if (_isPlaying) {
       await TtsController.stop();
       setState(() => _isPlaying = false);
@@ -63,7 +60,8 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
         context: context,
         targetID: targetId,
         langCode: widget.langCode,
-        ipa: ipa,
+        pos: widget.pos,
+        morph: widget.morph,
         onStart: () {
           if (mounted) setState(() => _isPlaying = true);
         },
@@ -82,6 +80,7 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
         return Tooltip(
           message: _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
@@ -111,7 +110,6 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
                             ),
                       AsyncLoaded<PTResponse>(value: final ptResponse) => _buildTranscription(
                           context,
-                          targetId,
                           ptResponse,
                         ),
                       _ => const TextLoadingShimmer(
@@ -131,7 +129,6 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
 
   Widget _buildTranscription(
     BuildContext context,
-    String targetId,
     PTResponse ptResponse,
   ) {
     final result = disambiguate(
@@ -140,28 +137,25 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
       morph: widget.morph,
     );
 
-    return GestureDetector(
-      onTap: () => _handleAudioTap(targetId, ipa: result.ipa),
-      child: Row(
-        spacing: 8.0,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Flexible(
-            child: Text(
-              result.displayTranscription,
-              textScaler: TextScaler.noScaling,
-              style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
-              maxLines: widget.maxLines,
-              overflow: TextOverflow.ellipsis,
-            ),
+    return Row(
+      spacing: 8.0,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: Text(
+            result.displayTranscription,
+            textScaler: TextScaler.noScaling,
+            style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+            maxLines: widget.maxLines,
+            overflow: TextOverflow.ellipsis,
           ),
-          Icon(
-            _isPlaying ? Icons.pause_outlined : Icons.volume_up,
-            size: widget.iconSize ?? 24,
-            color: widget.iconColor ?? Theme.of(context).iconTheme.color,
-          ),
-        ],
-      ),
+        ),
+        Icon(
+          _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+          size: widget.iconSize ?? 24,
+          color: widget.iconColor ?? Theme.of(context).iconTheme.color,
+        ),
+      ],
     );
   }
 }

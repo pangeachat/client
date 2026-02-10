@@ -2,39 +2,36 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart' as error_handler;
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-import 'package:fluffychat/pangea/common/utils/error_handler.dart'
-    as error_handler;
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class TtsController {
   static List<String> _availableLangCodes = [];
 
   static final _tts = flutter_tts.FlutterTts();
-  static final StreamController<bool> loadingChoreoStream =
-      StreamController<bool>.broadcast();
+  static final StreamController<bool> loadingChoreoStream = StreamController<bool>.broadcast();
 
   static AudioPlayer? audioPlayer;
 
@@ -129,6 +126,33 @@ class TtsController {
 
   static VoidCallback? _onStop;
 
+  /// Look up the PT v2 cache for [text] and return tts_phoneme if the word is a
+  /// heteronym that can be disambiguated. Returns null for single-pronunciation
+  /// words or when no PT data is cached.
+  static String? _resolveTtsPhonemeFromCache(
+    String text,
+    String langCode, {
+    String? pos,
+    Map<String, String>? morph,
+  }) {
+    final userL1 = MatrixState.pangeaController.userController.userL1Code;
+    if (userL1 == null) return null;
+
+    final ptResponse = PTV2Repo.getCachedResponse(text, langCode, userL1);
+    debugPrint(
+        '[TTS-DEBUG] _resolveTtsPhonemeFromCache: text="$text" lang=$langCode cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=$pos morph=$morph');
+    if (ptResponse == null || ptResponse.pronunciations.length <= 1) {
+      return null;
+    }
+
+    final result = disambiguate(
+      ptResponse.pronunciations,
+      pos: pos,
+      morph: morph,
+    );
+    return result.ttsPhoneme;
+  }
+
   static Future<void> tryToSpeak(
     String text, {
     required String langCode,
@@ -138,9 +162,22 @@ class TtsController {
     ChatController? chatController,
     VoidCallback? onStart,
     VoidCallback? onStop,
-    /// When provided, skip device TTS and use choreo with IPA phoneme tags.
-    String? ipa,
+
+    /// When provided, skip device TTS and use choreo with phoneme tags.
+    /// If omitted, the PT v2 cache is checked automatically.
+    String? ttsPhoneme,
+
+    /// POS tag for disambiguation when resolving tts_phoneme from cache.
+    String? pos,
+
+    /// Morph features for disambiguation when resolving tts_phoneme from cache.
+    Map<String, String>? morph,
   }) async {
+    // Auto-resolve tts_phoneme from PT cache if not explicitly provided.
+    final explicitPhoneme = ttsPhoneme;
+    ttsPhoneme ??= _resolveTtsPhonemeFromCache(text, langCode, pos: pos, morph: morph);
+    debugPrint('[TTS-DEBUG] tryToSpeak: text="$text" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=$pos morph=$morph');
+
     final prevOnStop = _onStop;
     _onStop = onStop;
 
@@ -163,7 +200,7 @@ class TtsController {
       chatController: chatController,
       onStart: onStart,
       onStop: onStop,
-      ipa: ipa,
+      ttsPhoneme: ttsPhoneme,
     );
   }
 
@@ -178,15 +215,14 @@ class TtsController {
     ChatController? chatController,
     VoidCallback? onStart,
     VoidCallback? onStop,
-    String? ipa,
+    String? ttsPhoneme,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
 
     await _setSpeakingLanguage(langCode);
 
-    final enableTTS = MatrixState
-        .pangeaController.userController.profile.toolSettings.enableTTS;
+    final enableTTS = MatrixState.pangeaController.userController.profile.toolSettings.enableTTS;
 
     if (enableTTS) {
       final token = PangeaTokenText(
@@ -197,9 +233,9 @@ class TtsController {
 
       onStart?.call();
 
-      // When IPA is provided, skip device TTS and use choreo with phoneme tags.
-      if (ipa != null) {
-        await _speakFromChoreo(text, langCode, [token], ipa: ipa);
+      // When tts_phoneme is provided, skip device TTS and use choreo with phoneme tags.
+      if (ttsPhoneme != null) {
+        await _speakFromChoreo(text, langCode, [token], ttsPhoneme: ttsPhoneme);
       } else {
         await (_isLangFullySupported(langCode)
             ? _speak(
@@ -275,8 +311,9 @@ class TtsController {
     String text,
     String langCode,
     List<PangeaTokenText> tokens, {
-    String? ipa,
+    String? ttsPhoneme,
   }) async {
+    debugPrint('[TTS-DEBUG] _speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme');
     TextToSpeechResponseModel? ttsRes;
 
     loadingChoreoStream.add(true);
@@ -286,11 +323,9 @@ class TtsController {
         text: text,
         langCode: langCode,
         tokens: tokens,
-        userL1: MatrixState.pangeaController.userController.userL1Code ??
-            LanguageKeys.unknownLanguage,
-        userL2: MatrixState.pangeaController.userController.userL2Code ??
-            LanguageKeys.unknownLanguage,
-        ipa: ipa,
+        userL1: MatrixState.pangeaController.userController.userL1Code ?? LanguageKeys.unknownLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2Code ?? LanguageKeys.unknownLanguage,
+        ttsPhoneme: ttsPhoneme,
       ),
     );
     loadingChoreoStream.add(false);

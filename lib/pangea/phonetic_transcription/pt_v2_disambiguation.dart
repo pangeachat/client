@@ -20,11 +20,11 @@ class DisambiguationResult {
     return all.map((p) => p.transcription).join(' / ');
   }
 
-  /// The IPA for TTS. Returns the matched IPA, or null if ambiguous
+  /// The tts_phoneme for TTS. Returns the matched value, or null if ambiguous
   /// (caller should let user choose or use the first).
-  String? get ipa {
-    if (matched != null) return matched!.ipa;
-    if (all.length == 1) return all.first.ipa;
+  String? get ttsPhoneme {
+    if (matched != null) return matched!.ttsPhoneme;
+    if (all.length == 1) return all.first.ttsPhoneme;
     return null;
   }
 }

@@ -47,6 +47,9 @@ class ReadingAssistanceContent extends StatelessWidget {
           .key,
       token: overlayController.selectedToken!.text,
       construct: overlayController.selectedToken!.vocabConstructID,
+      pos: overlayController.selectedToken!.pos,
+      morph: overlayController.selectedToken!.morph
+          .map((k, v) => MapEntry(k.name, v)),
       event: overlayController.event,
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,

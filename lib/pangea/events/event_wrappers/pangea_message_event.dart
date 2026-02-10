@@ -2,12 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart' hide Result;
-
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
@@ -31,6 +27,9 @@ import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.da
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart' hide Result;
+
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../languages/language_constants.dart';
@@ -77,8 +76,7 @@ class PangeaMessageEvent {
 
   String? get _l2Code => MatrixState.pangeaController.userController.userL2Code;
 
-  String? get _l1Code =>
-      MatrixState.pangeaController.userController.userL1?.langCode;
+  String? get _l1Code => MatrixState.pangeaController.userController.userL1?.langCode;
 
   Event? _latestEditCache;
   Event get _latestEdit => _latestEditCache ??= _event
@@ -137,7 +135,7 @@ class PangeaMessageEvent {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: _latestEdit.content,
+        data: {},
         m: "error parsing choreoRecord",
       );
       return null;
@@ -175,9 +173,7 @@ class PangeaMessageEvent {
       // with an eventID and send the related tokens event to that representation.
       // This is a rare situation, and has only been seen with some bot messages.
       if (tokens != null) {
-        final lang = tokens.detections?.isNotEmpty == true
-            ? tokens.detections!.first.langCode
-            : null;
+        final lang = tokens.detections?.isNotEmpty == true ? tokens.detections!.first.langCode : null;
 
         final original = PangeaRepresentation(
           langCode: lang ?? LanguageKeys.unknownLanguage,
@@ -213,12 +209,10 @@ class PangeaMessageEvent {
           RepresentationEvent(
             parentMessageEvent: _latestEdit,
             content: PangeaRepresentation.fromJson(
-              _latestEdit.content[ModelKey.originalWritten]
-                  as Map<String, dynamic>,
+              _latestEdit.content[ModelKey.originalWritten] as Map<String, dynamic>,
             ),
             tokens: _tokensSafe(
-              _latestEdit.content[ModelKey.tokensWritten]
-                  as Map<String, dynamic>?,
+              _latestEdit.content[ModelKey.tokensWritten] as Map<String, dynamic>?,
             ),
             timeline: timeline,
           ),
@@ -239,11 +233,10 @@ class PangeaMessageEvent {
     return _representations!;
   }
 
-  RepresentationEvent? get originalSent => representations
-      .firstWhereOrNull((element) => element.content.originalSent);
+  RepresentationEvent? get originalSent => representations.firstWhereOrNull((element) => element.content.originalSent);
 
-  RepresentationEvent? get originalWritten => representations
-      .firstWhereOrNull((element) => element.content.originalWritten);
+  RepresentationEvent? get originalWritten =>
+      representations.firstWhereOrNull((element) => element.content.originalWritten);
 
   String get originalWrittenContent {
     String? written = originalSent?.content.text;
@@ -263,8 +256,7 @@ class PangeaMessageEvent {
       return stt.langCode;
     }
 
-    final bool immersionMode = MatrixState.pangeaController.userController
-        .isToolEnabled(ToolSetting.immersionMode);
+    final bool immersionMode = MatrixState.pangeaController.userController.isToolEnabled(ToolSetting.immersionMode);
 
     final String? originalLangCode = originalSent?.langCode;
 
@@ -272,19 +264,15 @@ class PangeaMessageEvent {
     return langCode ?? LanguageKeys.unknownLanguage;
   }
 
-  RepresentationEvent? get messageDisplayRepresentation =>
-      representationByLanguage(messageDisplayLangCode);
+  RepresentationEvent? get messageDisplayRepresentation => representationByLanguage(messageDisplayLangCode);
 
   /// Gets the message display text for the current language code.
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
-  String get messageDisplayText =>
-      messageDisplayRepresentation?.text ?? _latestEdit.body;
+  String get messageDisplayText => messageDisplayRepresentation?.text ?? _latestEdit.body;
 
   TextDirection get textDirection =>
-      LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
-          ? TextDirection.rtl
-          : TextDirection.ltr;
+      LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode) ? TextDirection.rtl : TextDirection.ltr;
 
   void updateLatestEdit() {
     _latestEditCache = null;
@@ -296,9 +284,7 @@ class PangeaMessageEvent {
     bool Function(RepresentationEvent)? filter,
   }) =>
       representations.firstWhereOrNull(
-        (element) =>
-            element.langCode.split("-")[0] == langCode.split("-")[0] &&
-            (filter?.call(element) ?? true),
+        (element) => element.langCode.split("-")[0] == langCode.split("-")[0] && (filter?.call(element) ?? true),
       );
 
   Event? getTextToSpeechLocal(
@@ -315,9 +301,7 @@ class PangeaMessageEvent {
           dataMap as dynamic,
         );
 
-        if (audioData.langCode == langCode &&
-            audioData.text == text &&
-            audioData.voice == voice) {
+        if (audioData.langCode == langCode && audioData.text == text && audioData.voice == voice) {
           return audio;
         }
       } catch (e, s) {
@@ -335,8 +319,7 @@ class PangeaMessageEvent {
     return null;
   }
 
-  RepresentationEvent? _getSpeechToTextRepresentation() =>
-      representations.firstWhereOrNull(
+  RepresentationEvent? _getSpeechToTextRepresentation() => representations.firstWhereOrNull(
         (element) => element.content.speechToText != null,
       );
 
@@ -344,8 +327,7 @@ class PangeaMessageEvent {
     final rep = _getSpeechToTextRepresentation()?.content.speechToText;
     if (rep != null) return rep;
 
-    final rawBotTranscription =
-        event.content.tryGetMap(ModelKey.botTranscription);
+    final rawBotTranscription = event.content.tryGetMap(ModelKey.botTranscription);
 
     if (rawBotTranscription != null) {
       try {
@@ -402,8 +384,7 @@ class PangeaMessageEvent {
 
     final response = result.result!;
     final audioBytes = base64.decode(response.audioContent);
-    final fileName =
-        "audio_for_${_event.eventId}_$langCode.${response.fileExtension}";
+    final fileName = "audio_for_${_event.eventId}_$langCode.${response.fileExtension}";
 
     final file = PangeaAudioFile(
       bytes: audioBytes,
@@ -427,13 +408,10 @@ class PangeaMessageEvent {
           ModelKey.duration: response.durationMillis,
           'waveform': response.waveform,
         },
-        ModelKey.transcription: response
-            .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
-            .toJson(),
+        ModelKey.transcription: response.toPangeaAudioEventData(rep?.text ?? body, langCode, voice).toJson(),
       },
     ).then((eventId) async {
-      final Event? audioEvent =
-          eventId != null ? await room.getEventById(eventId) : null;
+      final Event? audioEvent = eventId != null ? await room.getEventById(eventId) : null;
 
       if (audioEvent != null) {
         allAudio.add(audioEvent);
@@ -597,9 +575,8 @@ class PangeaMessageEvent {
       throw Exception("Missing language codes");
     }
 
-    final includedIT =
-        (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
-            !(originalSent?.choreo?.includedIGC ?? true);
+    final includedIT = (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
+        !(originalSent?.choreo?.includedIGC ?? true);
 
     RepresentationEvent? rep;
     if (!includedIT) {
@@ -617,9 +594,7 @@ class PangeaMessageEvent {
 
     if (rep != null) return rep.content.text;
 
-    final String srcLang = includedIT
-        ? (originalWritten?.langCode ?? _l1Code!)
-        : (originalSent?.langCode ?? _l2Code!);
+    final String srcLang = includedIT ? (originalWritten?.langCode ?? _l1Code!) : (originalSent?.langCode ?? _l2Code!);
 
     final resp = await _requestRepresentation(
       includedIT ? originalWrittenContent : messageDisplayText,

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -25,6 +23,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -86,14 +85,12 @@ class AnalyticsPracticeView extends StatelessWidget {
             valueListenable: controller.sessionState,
             builder: (context, state, __) {
               return switch (state) {
-                AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                  ErrorIndicator(
+                AsyncError<AnalyticsPracticeSessionModel>(:final error) => ErrorIndicator(
                     message: error.toLocalizedString(context),
                   ),
-                AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
-                  value.isComplete
-                      ? CompletedActivitySessionView(state.value, controller)
-                      : _AnalyticsActivityView(controller),
+                AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) => value.isComplete
+                    ? CompletedActivitySessionView(state.value, controller)
+                    : _AnalyticsActivityView(controller),
                 _ => loading,
               };
             },
@@ -114,9 +111,8 @@ class _AnalyticsActivityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    TextStyle? titleStyle = isColumnMode
-        ? Theme.of(context).textTheme.titleLarge
-        : Theme.of(context).textTheme.titleMedium;
+    TextStyle? titleStyle =
+        isColumnMode ? Theme.of(context).textTheme.titleLarge : Theme.of(context).textTheme.titleMedium;
     titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
 
     return Column(
@@ -144,17 +140,13 @@ class _AnalyticsActivityView extends StatelessWidget {
                   builder: (context, target, __) {
                     if (target == null) return const SizedBox.shrink();
 
-                    final isAudioActivity = target.target.activityType ==
-                        ActivityTypeEnum.lemmaAudio;
-                    final isVocabType =
-                        controller.widget.type == ConstructTypeEnum.vocab;
+                    final isAudioActivity = target.target.activityType == ActivityTypeEnum.lemmaAudio;
+                    final isVocabType = controller.widget.type == ConstructTypeEnum.vocab;
 
                     return Column(
                       children: [
                         Text(
-                          isAudioActivity && isVocabType
-                              ? L10n.of(context).selectAllWords
-                              : target.promptText(context),
+                          isAudioActivity && isVocabType ? L10n.of(context).selectAllWords : target.promptText(context),
                           textAlign: TextAlign.center,
                           style: titleStyle,
                           maxLines: 2,
@@ -162,10 +154,8 @@ class _AnalyticsActivityView extends StatelessWidget {
                         ),
                         if (isVocabType && !isAudioActivity)
                           PhoneticTranscriptionWidget(
-                            text: target
-                                .target.tokens.first.vocabConstructID.lemma,
-                            textLanguage: MatrixState
-                                .pangeaController.userController.userL2!,
+                            text: target.target.tokens.first.vocabConstructID.lemma,
+                            langCode: MatrixState.pangeaController.userController.userL2!.langCode,
                             style: const TextStyle(fontSize: 14.0),
                           ),
                       ],
@@ -218,8 +208,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               ]),
               builder: (context, __) {
                 final state = controller.activityState.value;
-                if (state
-                    is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+                if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
                   return const SizedBox();
                 }
                 final activity = state.value;
@@ -244,18 +233,14 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
         ActivityTypeEnum.lemmaAudio => ValueListenableBuilder(
             valueListenable: controller.activityState,
             builder: (context, state, __) => switch (state) {
-              AsyncLoaded(
-                value: final VocabAudioPracticeActivityModel activity
-              ) =>
-                SizedBox(
+              AsyncLoaded(value: final VocabAudioPracticeActivityModel activity) => SizedBox(
                   height: 100.0,
                   child: Center(
                     child: AudioPlayerWidget(
                       null,
                       color: Theme.of(context).colorScheme.primary,
                       linkColor: Theme.of(context).colorScheme.secondary,
-                      fontSize:
-                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                      fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                       eventId: '${activity.eventId}_practice',
                       roomId: activity.roomId!,
                       senderId: Matrix.of(context).client.userID!,
@@ -431,12 +416,9 @@ class _HintSection extends StatelessWidget {
               if (activity is MorphPracticeActivityModel) {
                 return AnimatedCrossFade(
                   duration: const Duration(milliseconds: 200),
-                  crossFadeState: hintPressed
-                      ? CrossFadeState.showSecond
-                      : CrossFadeState.showFirst,
+                  crossFadeState: hintPressed ? CrossFadeState.showSecond : CrossFadeState.showFirst,
                   firstChild: HintButton(
-                    onPressed:
-                        maxHintsReached ? () {} : controller.onHintPressed,
+                    onPressed: maxHintsReached ? () {} : controller.onHintPressed,
                     depressed: maxHintsReached,
                   ),
                   secondChild: MorphMeaningWidget(
@@ -448,9 +430,7 @@ class _HintSection extends StatelessWidget {
 
               // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
               return HintButton(
-                onPressed: (hintPressed || maxHintsReached)
-                    ? () {}
-                    : controller.onHintPressed,
+                onPressed: (hintPressed || maxHintsReached) ? () {} : controller.onHintPressed,
                 depressed: hintPressed || maxHintsReached,
               );
             },
@@ -479,15 +459,12 @@ class _WrongAnswerFeedback extends StatelessWidget {
         final activityState = controller.activityState.value;
         final selectedChoice = controller.selectedMorphChoice.value;
 
-        if (activityState
-                is! AsyncLoaded<MultipleChoicePracticeActivityModel> ||
-            selectedChoice == null) {
+        if (activityState is! AsyncLoaded<MultipleChoicePracticeActivityModel> || selectedChoice == null) {
           return const SizedBox.shrink();
         }
 
         final activity = activityState.value;
-        final isWrongAnswer =
-            !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
+        final isWrongAnswer = !activity.multipleChoiceContent.isCorrect(selectedChoice.tag);
 
         if (!isWrongAnswer) {
           return const SizedBox.shrink();
@@ -543,8 +520,7 @@ class _ErrorBlankWidget extends StatelessWidget {
       trimmedBefore = true;
     }
 
-    final before =
-        chars.skip(beforeStart).take(errorOffset - beforeStart).toString();
+    final before = chars.skip(beforeStart).take(errorOffset - beforeStart).toString();
 
     // ---------- AFTER ----------
     int afterEnd = totalLength;
@@ -619,8 +595,7 @@ class _ErrorBlankWidget extends StatelessWidget {
                         activity.translation,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onPrimaryFixed,
-                          fontSize: AppConfig.fontSizeFactor *
-                              AppConfig.messageFontSize,
+                          fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                           fontStyle: FontStyle.italic,
                         ),
                         textAlign: TextAlign.center,
@@ -663,9 +638,7 @@ class HintButton extends StatelessWidget {
             height: 40.0,
             width: 40.0,
             decoration: BoxDecoration(
-              color: depressed
-                  ? shadowColor
-                  : Theme.of(context).colorScheme.primaryContainer,
+              color: depressed ? shadowColor : Theme.of(context).colorScheme.primaryContainer,
               shape: BoxShape.circle,
             ),
           ),
@@ -699,8 +672,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 child: CircularProgressIndicator.adaptive(),
               ),
             ),
-          AsyncError<MultipleChoicePracticeActivityModel>(:final error) =>
-            Column(
+          AsyncError<MultipleChoicePracticeActivityModel>(:final error) => Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //allow try to reload activity in case of error
@@ -713,13 +685,11 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 ),
               ],
             ),
-          AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
-            ValueListenableBuilder(
+          AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) => ValueListenableBuilder(
               valueListenable: controller.enableChoicesNotifier,
               builder: (context, enabled, __) {
                 final choices = controller.filteredChoices(value);
-                final isAudioActivity =
-                    value.activityType == ActivityTypeEnum.lemmaAudio;
+                final isAudioActivity = value.activityType == ActivityTypeEnum.lemmaAudio;
 
                 if (isAudioActivity) {
                   // For audio activities, use AnimatedSwitcher to fade between choices and example message
@@ -753,11 +723,9 @@ class _ActivityChoicesWidget extends StatelessWidget {
                                       .map(
                                         (choice) => _ChoiceCard(
                                           activity: value,
-                                          targetId: controller
-                                              .choiceTargetId(choice.choiceId),
+                                          targetId: controller.choiceTargetId(choice.choiceId),
                                           choiceId: choice.choiceId,
-                                          onPressed: () =>
-                                              controller.onSelectChoice(
+                                          onPressed: () => controller.onSelectChoice(
                                             choice.choiceId,
                                           ),
                                           cardHeight: 48.0,
@@ -837,9 +805,7 @@ class _AudioContinueButton extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                onPressed: showingCompletion
-                    ? controller.onAudioContinuePressed
-                    : null,
+                onPressed: showingCompletion ? controller.onAudioContinuePressed : null,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 48.0,

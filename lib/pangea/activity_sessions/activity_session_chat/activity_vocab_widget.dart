@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -13,6 +11,7 @@ import 'package:fluffychat/pangea/toolbar/token_rendering_mixin.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class ActivityVocabWidget extends StatelessWidget {
   final List<Vocab> vocab;
@@ -150,8 +149,7 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
                 : Theme.of(context).colorScheme.primary.withAlpha(20);
 
             final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
-            final isNew = newTokens
-                .any((t) => t.content.toLowerCase() == v.lemma.toLowerCase());
+            final isNew = newTokens.any((t) => t.content.toLowerCase() == v.lemma.toLowerCase());
 
             return CompositedTransformTarget(
               link: linkAndKey.link,
@@ -232,6 +230,7 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         type: ConstructTypeEnum.vocab,
         category: widget.v.pos,
       ),
+      pos: widget.v.pos,
       langCode: widget.langCode,
       onClose: () {
         MatrixState.pAnyState.closeOverlay(widget.target);

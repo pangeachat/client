@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -17,7 +15,7 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class TokenInfoFeedbackDialog extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
@@ -37,8 +35,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       data: requestData,
     );
 
-    final TokenInfoFeedbackResponse response =
-        await TokenInfoFeedbackRepo.submitFeedback(request);
+    final TokenInfoFeedbackResponse response = await TokenInfoFeedbackRepo.submitFeedback(request);
 
     final originalToken = requestData.tokens[requestData.selectedToken];
     final token = response.updatedToken ?? originalToken;
@@ -62,9 +59,8 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
 
     // if no other changes, just return the message
     final hasTokenUpdate = response.updatedToken != null;
-    final hasLangUpdate = originalSent != null &&
-        response.updatedLanguage != null &&
-        response.updatedLanguage != originalSent.langCode;
+    final hasLangUpdate =
+        originalSent != null && response.updatedLanguage != null && response.updatedLanguage != originalSent.langCode;
 
     if (!hasTokenUpdate && !hasLangUpdate) {
       return response.userFriendlyMessage;
@@ -76,8 +72,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    final updatedLanguage =
-        response.updatedLanguage ?? event?.originalSent?.langCode;
+    final updatedLanguage = response.updatedLanguage ?? event?.originalSent?.langCode;
 
     final tokensSent = PangeaMessageTokens(
       tokens: tokens,
@@ -150,6 +145,8 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       extraContent: WordZoomWidget(
         token: selectedToken.text,
         construct: selectedToken.vocabConstructID,
+        pos: selectedToken.pos,
+        morph: selectedToken.morph.map((k, v) => MapEntry(k.name, v)),
         langCode: langCode,
         enableEmojiSelection: false,
       ),

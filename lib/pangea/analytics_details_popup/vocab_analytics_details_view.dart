@@ -94,6 +94,7 @@ class VocabDetailsView extends StatelessWidget {
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
+                  pos: constructId.category,
                   onClose: Navigator.of(context).pop,
                   onFlagTokenInfo: (
                     LemmaInfoResponse lemmaInfo,

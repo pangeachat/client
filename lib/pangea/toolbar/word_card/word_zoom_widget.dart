@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -16,6 +12,8 @@ import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/token_feedback_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
@@ -25,6 +23,12 @@ class WordZoomWidget extends StatelessWidget {
   final VoidCallback? onClose;
 
   final Event? event;
+
+  /// POS tag for PT v2 disambiguation (e.g. "VERB").
+  final String? pos;
+
+  /// Morph features for PT v2 disambiguation (e.g. {"Tense": "Past"}).
+  final Map<String, String>? morph;
 
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
@@ -39,6 +43,8 @@ class WordZoomWidget extends StatelessWidget {
     required this.langCode,
     this.onClose,
     this.event,
+    this.pos,
+    this.morph,
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
@@ -48,16 +54,13 @@ class WordZoomWidget extends StatelessWidget {
 
   String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
 
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+  LayerLink get layerLink => MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
 
   @override
   Widget build(BuildContext context) {
-    final bool? subscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
+    final bool? subscribed = MatrixState.pangeaController.subscriptionController.isSubscribed;
     final overlayColor = Theme.of(context).scaffoldBackgroundColor;
-    final showTranscript =
-        MatrixState.pangeaController.userController.showTranscription;
+    final showTranscript = MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
         ? const MessageUnsubscribedCard()
@@ -102,8 +105,7 @@ class WordZoomWidget extends StatelessWidget {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
-                                    color: Theme.of(context).brightness ==
-                                            Brightness.light
+                                    color: Theme.of(context).brightness == Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
                                     overflow: TextOverflow.ellipsis,
@@ -135,6 +137,8 @@ class WordZoomWidget extends StatelessWidget {
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
                                     langCode: langCode,
+                                    pos: pos,
+                                    morph: morph,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
