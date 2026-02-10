@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kurzy sa skladaj\xfa z 3-8 modulov, z ktor\xfdch ka\u017ed\xfd obsahuje aktivity na povzbudenie k praktizovaniu slov v r\xf4znych kontextoch";
     },
+    get$emailVerificationFailed() {
+      return "Overenie e-mailu zlyhalo. Sk\xfaste to pros\xedm znova.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DdVoHsgV6G4o6vdgiV0cJ8eh+/M="] = d.current;
+  d["KZdOmyQg9SaWUp9ubn73jDRL+AE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

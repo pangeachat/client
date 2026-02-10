@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kursy sk\u0142adaj\u0105 si\u0119 z 3-8 modu\u0142\xf3w, z kt\xf3rych ka\u017cdy zawiera \u0107wiczenia zach\u0119caj\u0105ce do praktykowania s\u0142\xf3w w r\xf3\u017cnych kontekstach";
     },
+    get$emailVerificationFailed() {
+      return "Weryfikacja adresu e-mail nie powiod\u0142a si\u0119. Prosz\u0119 spr\xf3bowa\u0107 ponownie.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jttb2nKWKCrqwb8z08FU6jaA96o="] = d.current;
+  d["QpfV4F7fLJ7+/zAXNUFevpFqqAI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

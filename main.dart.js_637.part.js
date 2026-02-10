@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Les cours se composent de 3 \xe0 8 modules, chacun avec des activit\xe9s pour encourager la pratique des mots dans diff\xe9rents contextes";
     },
+    get$emailVerificationFailed() {
+      return "La v\xe9rification de l'email a \xe9chou\xe9. Veuillez r\xe9essayer.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xS/KWQf0S7sJeBH+fdj/mz44vDs="] = d.current;
+  d["adBcbZXlvzI/uhVk6kUcekA7cZ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_637.part.js.map

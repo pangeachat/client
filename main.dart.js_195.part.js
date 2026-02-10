@@ -5566,6 +5566,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Els cursos consten de 3-8 m\xf2duls, cadascun amb activitats per fomentar la pr\xe0ctica de paraules en diferents contextos";
     },
+    get$emailVerificationFailed() {
+      return "La verificaci\xf3 de l'email ha fallat. Si us plau, torna-ho a intentar.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5582,7 +5585,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["a0uiRq85eKO2PbOHFqb6/ByHWeg="] = d.current;
+  d["T3HfsyzQsU2wrRIR8S5kaNnhXFA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

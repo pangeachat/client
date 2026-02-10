@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kursoj konsistas el 3-8 moduloj, \u0109iu kun aktivadoj por instigi praktikadon de vortoj en diversaj kuntekstoj";
     },
+    get$emailVerificationFailed() {
+      return "Emailo konfirmi malsukcesis. Bonvolu reprovi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+xOpoWuq+BnRbxA/AegY4C+s1wM="] = d.current;
+  d["hed/TZqkQ7OYlHfPjwFABcFffbw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

@@ -5566,6 +5566,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "\u0995\u09cb\u09b0\u09cd\u09b8\u0997\u09c1\u09b2\u09cb \u09e9-\u09ee\u099f\u09bf \u09ae\u09a1\u09bf\u0989\u09b2 \u09a8\u09bf\u09af\u09bc\u09c7 \u0997\u09a0\u09bf\u09a4, \u09aa\u09cd\u09b0\u09a4\u09bf\u099f\u09bf \u09ae\u09a1\u09bf\u0989\u09b2\u09c7 \u09ac\u09bf\u09ad\u09bf\u09a8\u09cd\u09a8 \u09aa\u09cd\u09b0\u09b8\u0999\u09cd\u0997\u09c7 \u09b6\u09ac\u09cd\u09a6 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8 \u0995\u09b0\u09a4\u09c7 \u0989\u09ce\u09b8\u09be\u09b9\u09bf\u09a4 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae \u09b0\u09af\u09bc\u09c7\u099b\u09c7";
     },
+    get$emailVerificationFailed() {
+      return "\u0987\u09ae\u09c7\u0987\u09b2 \u09af\u09be\u099a\u09be\u0987\u0995\u09b0\u09a3 \u09ac\u09cd\u09af\u09b0\u09cd\u09a5 \u09b9\u09af\u09bc\u09c7\u099b\u09c7\u0964 \u09a6\u09af\u09bc\u09be \u0995\u09b0\u09c7 \u0986\u09ac\u09be\u09b0 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09c1\u09a8\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5579,7 +5582,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WKWOGCSJrFwW/1c2h/UxUDT6V30="] = d.current;
+  d["1yUA0Qp92vkYiPW4tmLGciG6/Ic="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

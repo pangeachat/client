@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Cursussen bestaan uit 3-8 modules, elk met activiteiten om het oefenen van woorden in verschillende contexten aan te moedigen";
     },
+    get$emailVerificationFailed() {
+      return "E-mailverificatie is mislukt. Probeer het alstublieft opnieuw.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aSXW374P+nsrGOdSbdGUXLYXTYA="] = d.current;
+  d["adx4k875TVQ89/A/uHMljzLmWf4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

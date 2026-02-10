@@ -5577,6 +5577,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return string$.Os_cur;
     },
+    get$emailVerificationFailed() {
+      return string$.A_veri;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11130,6 +11133,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$courseDescription() {
       return string$.Os_cur;
+    },
+    get$emailVerificationFailed() {
+      return string$.A_veri;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16685,6 +16691,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return string$.Os_cur;
     },
+    get$emailVerificationFailed() {
+      return string$.A_veri;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16710,6 +16719,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     A_capaod: "A capacidade do chat deve ser pelo menos ",
     A_capaol: "A capacidade do chat limita o n\xfamero de membros permitidos em um chat.",
     A_outr: "A outra parte atualmente n\xe3o est\xe1 conectada e, portanto, n\xe3o pode receber mensagens!",
+    A_veri: "A verifica\xe7\xe3o do email falhou. Por favor, tente novamente.",
     Abrimo: "Abrimos uma nova aba para que voc\xea possa fazer login com seguran\xe7a.",
     Aceita: "Aceitar esta solicita\xe7\xe3o de verifica\xe7\xe3o de ",
     Aguard: "Aguardando o parceiro aceitar os n\xfameros\u2026",
@@ -16885,7 +16895,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4cYbwnzmKMumkgeyssebxPuhBsA="] = d.current;
+  d["taeOom9z0iee+RlcyIfe/fiZ+j4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

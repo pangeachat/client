@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kurslar, her biri farkl\u0131 ba\u011flamlarda kelimeleri pratik yapmay\u0131 te\u015fvik eden etkinliklerle 3-8 mod\xfclden olu\u015fur";
     },
+    get$emailVerificationFailed() {
+      return "E-posta do\u011frulamas\u0131 ba\u015far\u0131s\u0131z oldu. L\xfctfen tekrar deneyin.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tTdBQhA8yc3q7epde5l1F7BQaxg="] = d.current;
+  d["xmC/DLbnefdKIwH9+pipgmlcUoU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

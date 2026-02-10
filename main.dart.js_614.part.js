@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kurssit koostuvat 3-8 moduulista, joista jokaisessa on aktiviteetteja, jotka kannustavat sanojen harjoitteluun eri konteksteissa";
     },
+    get$emailVerificationFailed() {
+      return "S\xe4hk\xf6postin vahvistaminen ep\xe4onnistui. Yrit\xe4 uudelleen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ize/N4bquKwjnWXFBUSBMgns2zc="] = d.current;
+  d["kZZJr8b+PLQA+vWiEStbSjDTouU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

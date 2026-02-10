@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kurse bestehen aus 3-8 Modulen, die Aktivit\xe4ten enthalten, um das \xdcben von W\xf6rtern in verschiedenen Kontexten zu f\xf6rdern";
     },
+    get$emailVerificationFailed() {
+      return "E-Mail-Best\xe4tigung fehlgeschlagen. Bitte versuchen Sie es erneut.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tv0rVH0d9ec89qNl/v8XytANd9Y="] = d.current;
+  d["aEsYLYWNtk0NEUiaQX0d9zJEr3M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_411.part.js.map

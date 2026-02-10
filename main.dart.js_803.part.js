@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Te\u010daji so sestavljeni iz 3-8 modulov, vsak z aktivnostmi, ki spodbujajo prakso besed v razli\u010dnih kontekstih";
     },
+    get$emailVerificationFailed() {
+      return "Preverjanje e-po\u0161te ni uspelo. Prosimo, poskusite znova.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HfbSoxFoIi53J0VCL66DPzPM+2M="] = d.current;
+  d["NeBHxjmipyMQTg7u/bGbornoJUE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

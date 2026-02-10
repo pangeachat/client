@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Ikastaroek 3-8 moduluz osatuta daude, eta moduluek hitzak testuinguru desberdinetan praktikatzen laguntzeko jarduerak dituzte.";
     },
+    get$emailVerificationFailed() {
+      return "Posta elektronikoaren berrespena huts egin du. Mesedez, saiatu berriro.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1oWtBunW2bg27dbggNznAMlG+mM="] = d.current;
+  d["PGQj82d726KYHVzOAEWUsDrw7m0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

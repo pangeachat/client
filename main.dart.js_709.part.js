@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "A kurzusok 3-8 modulb\xf3l \xe1llnak, mindegyikben tev\xe9kenys\xe9gekkel, amelyek \xf6szt\xf6nzik a szavak k\xfcl\xf6nb\xf6z\u0151 kontextusokban val\xf3 gyakorl\xe1s\xe1t";
     },
+    get$emailVerificationFailed() {
+      return "Az email ellen\u0151rz\xe9se nem siker\xfclt. K\xe9rj\xfck, pr\xf3b\xe1lja \xfajra.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RKWvQNFT5jtBc/DugGXwcBVJwGA="] = d.current;
+  d["I2f7MF4C1YVCOVTYmfghHn2M/HY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

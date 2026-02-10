@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kursus terdiri dari 3-8 modul masing-masing dengan aktivitas untuk mendorong praktik kata dalam konteks yang berbeda";
     },
+    get$emailVerificationFailed() {
+      return "Verifikasi email gagal. Silakan coba lagi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["L6XhAjX1eHwEqF6B1N7++BoRoyI="] = d.current;
+  d["EGeCXeRz4Uhpob7U4T3pJ/ahp3s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

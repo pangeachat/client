@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Kursused koosnevad 3-8 moodulist, milles on tegevusi, et julgustada s\xf5nade harjutamist erinevates kontekstides";
     },
+    get$emailVerificationFailed() {
+      return "E-posti kinnitamine eba\xf5nnestus. Palun proovige uuesti.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gAsdofy0A0MgEryOvqDjGz9Qjig="] = d.current;
+  d["+e8PpmcMq9MuOnEv0e6sq2Ku79M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

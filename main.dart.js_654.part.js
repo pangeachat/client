@@ -5565,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseDescription() {
       return "Comhoibrithe at\xe1 comhdh\xe9anta de 3-8 mod\xfail, gach ceann acu le gn\xedomha\xedochta\xed chun cur le cleachtadh focail i gcomhth\xe9acsanna \xe9ags\xfala";
     },
+    get$emailVerificationFailed() {
+      return "Theip ar dheimhni\xfa r\xedomhphoist. Bain triail as ar\xeds.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LsIzD0adohIt38F8F1IXbcbc0kQ="] = d.current;
+  d["n1mQE+bMHX8/7Ngp/Rj0vrnBui0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map
