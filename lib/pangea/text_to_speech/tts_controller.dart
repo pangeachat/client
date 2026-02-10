@@ -334,6 +334,7 @@ class TtsController {
         userL2: MatrixState.pangeaController.userController.userL2Code ??
             LanguageKeys.unknownLanguage,
         ttsPhoneme: ttsPhoneme,
+        speakingRate: 1.0,
       ),
     );
     loadingChoreoStream.add(false);
