@@ -4605,7 +4605,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-02-09 15:31:50.771177",
+  "@@last_modified": "2026-02-10 13:53:30.085081",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -11165,6 +11165,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Vairs rezultātu nav atrasts",
+  "chatSearchedUntil": "Čats meklēts līdz {time}",
+  "federationBaseUrl": "Federācijas bāzes URL",
+  "clientWellKnownInformation": "Klienta zināmā informācija:",
+  "baseUrl": "Bāzes URL",
+  "identityServer": "Identitātes serveris:",
+  "versionWithNumber": "Versija: {version}",
+  "logs": "Žurnāli",
+  "advancedConfigs": "Papildu konfigurācijas",
+  "advancedConfigurations": "Papildu konfigurācijas",
+  "signInWithLabel": "Pierakstīties ar:",
+  "selectAllWords": "Atlasiet visas dzirdētās vārdus audio ierakstā",
+  "joinCourseForActivities": "Pievienojieties kursam, lai izmēģinātu aktivitātes.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursi sastāv no 3-8 moduļiem, katrs ar aktivitātēm, lai veicinātu vārdu praktizēšanu dažādos kontekstos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-pasta verifikācija neizdevās. Lūdzu, mēģiniet vēlreiz.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

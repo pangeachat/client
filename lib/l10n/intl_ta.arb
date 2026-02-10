@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:06.841503",
+  "@@last_modified": "2026-02-10 13:53:36.527545",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11047,6 +11047,332 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} உரையாடல் விளக்கத்தை மாற்றியது",
+  "changedTheChatName": "{username} உரையாடல் பெயரை மாற்றியது",
+  "noMessagesYet": "இன்னும் எந்த செய்திகளும் இல்லை",
+  "longPressToRecordVoiceMessage": "ஒலிப் செய்தியை பதிவு செய்ய நீண்ட அழுத்தவும்.",
+  "pause": "நிறுத்தவும்",
+  "resume": "மீண்டும் தொடங்கவும்",
+  "newSubSpace": "புதிய துணை இடம்",
+  "moveToDifferentSpace": "மற்ற இடத்திற்கு நகரவும்",
+  "moveUp": "மேலே நகருங்கள்",
+  "moveDown": "கீழே நகருங்கள்",
+  "removeFromSpaceDescription": "சாட் இடத்திலிருந்து நீக்கப்படும் ஆனால் உங்கள் சாட் பட்டியலில் இன்னும் தோன்றும்.",
+  "countChats": "{chats} சாட்கள்",
+  "spaceMemberOf": "{spaces} இடத்தின் உறுப்பினராக",
+  "spaceMemberOfCanKnock": "{spaces} இடத்தின் உறுப்பினர்கள் தட்டலாம்",
+  "donate": "தானம் செய்யுங்கள்",
+  "startedAPoll": "{username} ஒரு கருத்துக்கணிப்பை தொடங்கினார்.",
+  "poll": "கருத்துக்கணிப்பு",
+  "startPoll": "கருத்துக்கணிப்பை தொடங்குங்கள்",
+  "endPoll": "கேள்வி முடிக்கவும்",
+  "answersVisible": "பதில் காட்சியளிக்கவும்",
+  "answersHidden": "பதில் மறைக்கவும்",
+  "pollQuestion": "கேள்வி",
+  "answerOption": "பதில் விருப்பம்",
+  "addAnswerOption": "பதில் விருப்பத்தைச் சேர்க்கவும்",
+  "allowMultipleAnswers": "பல பதில்களை அனுமதிக்கவும்",
+  "pollHasBeenEnded": "கேள்வி முடிக்கப்பட்டது",
+  "countVotes": "{count, plural, =1{ஒரு வாக்கு} other{{count} வாக்குகள்}}",
+  "answersWillBeVisibleWhenPollHasEnded": "கேள்வி முடிந்த பிறகு பதில்கள் காட்சியளிக்கப்படும்",
+  "replyInThread": "தரவியில் பதிலளிக்கவும்",
+  "countReplies": "{count, plural, =1{ஒரு பதில்} other{{count} பதில்கள்}}",
+  "thread": "தரவு",
+  "backToMainChat": "முதன்மை உரையாடிக்கு திரும்பவும்",
+  "createSticker": "ஸ்டிக்கர் அல்லது எமோஜி உருவாக்கவும்",
+  "useAsSticker": "ஸ்டிக்கராக பயன்படுத்தவும்",
+  "useAsEmoji": "எமோஜியாக பயன்படுத்தவும்",
+  "stickerPackNameAlreadyExists": "ஸ்டிக்கர் தொகுப்பின் பெயர் ஏற்கனவே உள்ளது",
+  "newStickerPack": "புதிய ஸ்டிக்கர் தொகுப்பு",
+  "stickerPackName": "ஸ்டிக்கர் தொகுப்பின் பெயர்",
+  "attribution": "அங்கீகாரம்",
+  "skipChatBackup": "சாட் காப்புப்பதிவை தவிர்க்கவும்",
+  "skipChatBackupWarning": "நீங்கள் உறுதியாக இருக்கிறீர்களா? சாட் காப்புப்பதிவை இயக்காமல் நீங்கள் உங்கள் சாதனத்தை மாற்றினால் உங்கள் செய்திகளுக்கு அணுகலை இழக்கலாம்.",
+  "loadingMessages": "செய்திகளை ஏற்றுகிறது",
+  "setupChatBackup": "சாட் காப்புப்பதிவை அமைக்கவும்",
+  "noMoreResultsFound": "மேலும் முடிவுகள் கிடைக்கவில்லை",
+  "chatSearchedUntil": "சாட் {time} வரை தேடப்பட்டது",
+  "federationBaseUrl": "ஃபெடரேஷன் அடிப்படை URL",
+  "clientWellKnownInformation": "கிளையன்ட்-நன்கு-அறியப்பட்ட தகவல்:",
+  "baseUrl": "அடிப்படை URL",
+  "identityServer": "அடையாள சேவையகம்:",
+  "versionWithNumber": "பதிப்பு: {version}",
+  "logs": "பதிவுகள்",
+  "advancedConfigs": "மேம்பட்ட அமைப்புகள்",
+  "advancedConfigurations": "மேம்பட்ட கட்டமைப்புகள்",
+  "signInWithLabel": "உள்நுழைய:",
+  "selectAllWords": "நீங்கள் ஒலியில் கேட்கும் அனைத்து சொற்களையும் தேர்ந்தெடுக்கவும்",
+  "joinCourseForActivities": "செயல்பாடுகளை முயற்சிக்க ஒரு பாடத்தில் சேரவும்.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "பாடங்கள் 3-8 மாடுல்களை உள்ளடக்கியவை, ஒவ்வொன்றிலும் வெவ்வேறு சூழ்நிலைகளில் சொற்களை பயிற்சி செய்ய ஊக்குவிக்கும் செயல்பாடுகள் உள்ளன",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "மின்னஞ்சல் சரிபார்ப்பு தோல்வியடைந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

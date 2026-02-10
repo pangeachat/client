@@ -94,6 +94,23 @@ class Avatar extends StatelessWidget {
                     useRive: useRive,
                   )
                 // #Pangea
+                : noPic
+                ? Container(
+                    decoration: BoxDecoration(
+                      color: backgroundColor ?? name?.lightColorAvatar,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      fallbackLetters,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'RobotoMono',
+                        color: textColor ?? Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: (size / 2.5).roundToDouble(),
+                      ),
+                    ),
+                  )
                 : !(mxContent.toString().startsWith('mxc://'))
                 ? ImageByUrl(
                     imageUrl: mxContent,

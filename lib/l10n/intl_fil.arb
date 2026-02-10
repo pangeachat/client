@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-09 15:31:47.672143",
+  "@@last_modified": "2026-02-10 13:53:29.059419",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12027,6 +12027,347 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ay nagbago ng paglalarawan ng chat",
+  "changedTheChatName": "{username} ay nagbago ng pangalan ng chat",
+  "moreEvents": "Higit pang mga kaganapan",
+  "declineInvitation": "Tanggihan ang imbitasyon",
+  "noMessagesYet": "Wala pang mga mensahe",
+  "longPressToRecordVoiceMessage": "Mahabang pindutin upang mag-record ng voice message.",
+  "pause": "Pansamantala",
+  "resume": "Ipatuloy",
+  "newSubSpace": "Bagong sub space",
+  "moveToDifferentSpace": "Lumipat sa ibang space",
+  "moveUp": "Itaas",
+  "moveDown": "Ibaba",
+  "removeFromSpaceDescription": "Ang chat ay aalisin mula sa espasyo ngunit mananatili sa iyong listahan ng chat.",
+  "countChats": "{chats} na chat",
+  "spaceMemberOf": "Kabilang sa espasyo ng {spaces}",
+  "spaceMemberOfCanKnock": "Kabilang sa espasyo ng {spaces} ay maaaring kumatok",
+  "donate": "Mag-donate",
+  "startedAPoll": "Nagsimula ng isang poll si {username}.",
+  "poll": "Poll",
+  "startPoll": "Magsimula ng poll",
+  "endPoll": "Tapusin ang botohan",
+  "answersVisible": "Nakikita ang mga sagot",
+  "answersHidden": "Nakatagong mga sagot",
+  "pollQuestion": "Tanong sa botohan",
+  "answerOption": "Opsyon sa sagot",
+  "addAnswerOption": "Magdagdag ng opsyon sa sagot",
+  "allowMultipleAnswers": "Pahintulutan ang maraming sagot",
+  "pollHasBeenEnded": "Natapos na ang botohan",
+  "countVotes": "{count, plural, =1{Isang boto} other{{count} mga boto}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Makikita ang mga sagot kapag natapos na ang botohan",
+  "replyInThread": "Tumugon sa thread",
+  "countReplies": "{count, plural, =1{Isang tugon} other{{count} mga tugon}}",
+  "thread": "Thread",
+  "backToMainChat": "Bumalik sa pangunahing chat",
+  "createSticker": "Gumawa ng sticker o emoji",
+  "useAsSticker": "Gamitin bilang sticker",
+  "useAsEmoji": "Gamitin bilang emoji",
+  "stickerPackNameAlreadyExists": "Umiiral na ang pangalan ng sticker pack",
+  "newStickerPack": "Bagong sticker pack",
+  "stickerPackName": "Pangalan ng sticker pack",
+  "attribution": "Pagkilala",
+  "skipChatBackup": "Laktawan ang backup ng chat",
+  "skipChatBackupWarning": "Sigurado ka? Kung hindi mo i-enable ang backup ng chat, maaaring mawalan ka ng access sa iyong mga mensahe kung magpapalit ka ng device.",
+  "loadingMessages": "Naglo-load ng mga mensahe",
+  "setupChatBackup": "I-set up ang backup ng chat",
+  "noMoreResultsFound": "Walang natagpuang iba pang resulta",
+  "chatSearchedUntil": "Chat na hinanap hanggang {time}",
+  "federationBaseUrl": "Federation Base URL",
+  "clientWellKnownInformation": "Impormasyon ng Client-Well-Known:",
+  "baseUrl": "Base URL",
+  "identityServer": "Identity Server:",
+  "versionWithNumber": "Bersyon: {version}",
+  "logs": "Mga Log",
+  "advancedConfigs": "Mga Advanced na Configs",
+  "advancedConfigurations": "Mga Advanced na Konfigurasyon",
+  "signInWithLabel": "Mag-sign in gamit ang:",
+  "selectAllWords": "Pumili ng lahat ng mga salitang naririnig mo sa audio",
+  "joinCourseForActivities": "Sumali sa isang kurso upang subukan ang mga aktibidad.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriends": "Imbitahan ang mga kaibigan",
+  "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Ang mga kurso ay binubuo ng 3-8 mga module na may mga aktibidad upang hikayatin ang pagsasanay ng mga salita sa iba't ibang konteksto",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Nabigo ang beripikasyon ng email. Pakisubukang muli.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

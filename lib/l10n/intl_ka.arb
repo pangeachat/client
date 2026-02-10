@@ -2590,7 +2590,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-02-09 15:32:39.485983",
+  "@@last_modified": "2026-02-10 13:53:49.330549",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12081,6 +12081,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} შეცვალა ჩატის აღწერა",
+  "changedTheChatName": "{username} შეცვალა ჩატის სახელი",
+  "moreEvents": "მეტი ღონისძიებები",
+  "declineInvitation": "წარმოების უარყოფა",
+  "noMessagesYet": "მიუთითებელი შეტყობინებები არ არის",
+  "longPressToRecordVoiceMessage": "ხანგრძლივი დაჭერა ხმის შეტყობინების ჩასაწერად.",
+  "pause": "შეჩერება",
+  "resume": "გაგრძელება",
+  "newSubSpace": "ახალი ქვესივრცე",
+  "moveToDifferentSpace": "გადაიყვანეთ სხვა სივრცეში",
+  "moveUp": "მოძრაობა ზემოთ",
+  "moveDown": "მოძრაობა ქვემოთ",
+  "removeFromSpaceDescription": "ჩატი მოიხსნება სივრციდან, მაგრამ მაინც გამოჩნდება თქვენს ჩატების სიაში.",
+  "countChats": "{chats} ჩატი",
+  "spaceMemberOf": "სივრცის წევრი {spaces}-ის",
+  "spaceMemberOfCanKnock": "სივრცის წევრი {spaces} შეუძლია დააკაკუნოს",
+  "donate": "გადარიცხვა",
+  "startedAPoll": "{username} დაიწყო გამოკითხვა.",
+  "poll": "გამოკითხვა",
+  "startPoll": "დაიწყეთ გამოკითხვა",
+  "endPoll": "გამოკითხვის დასრულება",
+  "answersVisible": "პასუხები ხილულია",
+  "answersHidden": "პასუხები დაფარულია",
+  "pollQuestion": "გამოკითხვის კითხვა",
+  "answerOption": "პასუხის ვარიანტი",
+  "addAnswerOption": "დაამატეთ პასუხის ვარიანტი",
+  "allowMultipleAnswers": "მრავალჯერადი პასუხების დაშვება",
+  "pollHasBeenEnded": "გამოკითხვა დასრულებულია",
+  "countVotes": "{count, plural, =1{ერთი ხმა} other{{count} ხმა}}",
+  "answersWillBeVisibleWhenPollHasEnded": "პასუხები ხილული იქნება, როდესაც გამოკითხვა დასრულდება",
+  "replyInThread": "პასუხი თემაში",
+  "countReplies": "{count, plural, =1{ერთი პასუხი} other{{count} პასუხი}}",
+  "thread": "თემა",
+  "backToMainChat": "მთავარ ჩატში დაბრუნება",
+  "createSticker": "სტიკერის ან ემოჯის შექმნა",
+  "useAsSticker": "სტიკერის სახით გამოყენება",
+  "useAsEmoji": "ემოჯის სახით გამოყენება",
+  "stickerPackNameAlreadyExists": "სტიკერის პაკეტის სახელი უკვე არსებობს",
+  "newStickerPack": "ახალი სტიკერის პაკეტი",
+  "stickerPackName": "სტიკერის პაკეტის სახელი",
+  "attribution": "ატრიბუცია",
+  "skipChatBackup": "ჩეთის სარეზერვო ასლის გამოტოვება",
+  "skipChatBackupWarning": "დარწმუნებული ხართ? თუ ჩეთის სარეზერვო ასლი არ გააქტიურებთ, შესაძლოა დაკარგოთ წვდომა თქვენს შეტყობინებებზე, თუ მოწყობილობას შეცვლით.",
+  "loadingMessages": "შეტყობინებების დატვირთვა",
+  "setupChatBackup": "ჩეთის სარეზერვო ასლის დაყენება",
+  "noMoreResultsFound": "მეტი შედეგი ვერ მოიძებნა",
+  "chatSearchedUntil": "ჩეთი მოძიებულია {time}-მდე",
+  "federationBaseUrl": "ფედერაციის ძირითადი URL",
+  "clientWellKnownInformation": "კლაიენტის კარგად ცნობილი ინფორმაცია:",
+  "baseUrl": "ძირითადი URL",
+  "identityServer": "იდენტობის სერვერი:",
+  "versionWithNumber": "ვერსია: {version}",
+  "logs": "ლოგები",
+  "advancedConfigs": "განვითარებული კონფიგურაციები",
+  "advancedConfigurations": "განვითარებული კონფიგურაციები",
+  "signInWithLabel": "შეიყვანეთ:",
+  "selectAllWords": "აირჩიეთ ყველა სიტყვა, რომელიც მოისმენთ აუდიოში",
+  "joinCourseForActivities": "შეერთდით კურსს, რათა სცადოთ აქტივობები.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "კურსები შედგება 3-8 მოდულიდან, თითოეული მათგანი შეიცავს აქტივობებს, რომლებიც ხელს უწყობს სიტყვების პრაქტიკას სხვადასხვა კონტექსტში",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "ელფოსტა ვერ დადასტურდა. გთხოვთ, სცადოთ კიდევ ერთხელ.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

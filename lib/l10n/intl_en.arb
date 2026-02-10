@@ -5341,5 +5341,8 @@
   "greatPractice": "Great practice!",
   "usedNoHints": "Nice job not using any hints!",
   "youveCompletedPractice": "You've completed practice, keep it up to get better!",
-  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "joinCourseForActivities": "Join a course to try activities.",
+  "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
+  "emailVerificationFailed": "Email verification failed. Please try again."
 }

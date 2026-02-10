@@ -6,13 +6,14 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 
 class TokenFeedbackButton extends StatelessWidget {
   final LanguageModel textLanguage;
   final ConstructIdentifier constructId;
   final String text;
 
-  final Function(LemmaInfoResponse, String) onFlagTokenInfo;
+  final Function(LemmaInfoResponse, PTRequest, PTResponse) onFlagTokenInfo;
   final Map<String, dynamic> messageInfo;
 
   const TokenFeedbackButton({
@@ -38,20 +39,22 @@ class TokenFeedbackButton extends StatelessWidget {
             final enabled =
                 (lemmaController.lemmaInfo != null ||
                     lemmaController.isError) &&
-                (transcriptController.transcription != null ||
+                (transcriptController.ptResponse != null ||
                     transcriptController.isError);
 
             final lemmaInfo =
                 lemmaController.lemmaInfo ?? LemmaInfoResponse.error;
 
-            final transcript = transcriptController.transcription ?? 'ERROR';
-
             return IconButton(
               color: Theme.of(context).iconTheme.color,
               icon: const Icon(Icons.flag_outlined),
-              onPressed: enabled
+              onPressed: enabled && transcriptController.ptResponse != null
                   ? () {
-                      onFlagTokenInfo(lemmaInfo, transcript);
+                      onFlagTokenInfo(
+                        lemmaInfo,
+                        transcriptController.ptRequest,
+                        transcriptController.ptResponse!,
+                      );
                     }
                   : null,
               tooltip: enabled ? L10n.of(context).reportWordIssueTooltip : null,

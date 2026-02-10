@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-02-09 15:30:36.091824",
+  "@@last_modified": "2026-02-10 13:52:58.030884",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11170,6 +11170,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Non se atoparon máis resultados",
+  "chatSearchedUntil": "Chat buscado ata {time}",
+  "federationBaseUrl": "URL base da Federación",
+  "clientWellKnownInformation": "Información coñecida ben do cliente:",
+  "baseUrl": "URL base",
+  "identityServer": "Servidor de identidade:",
+  "versionWithNumber": "Versión: {version}",
+  "logs": " rexistros",
+  "advancedConfigs": "Configuracións avanzadas",
+  "advancedConfigurations": "Configuracións avanzadas",
+  "signInWithLabel": "Iniciar sesión con:",
+  "selectAllWords": "Selecciona todas as palabras que escoitas no audio",
+  "joinCourseForActivities": "Únete a un curso para probar actividades.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Os cursos consisten en 3-8 módulos, cada un con actividades para fomentar a práctica de palabras en diferentes contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "A verificación do correo electrónico fallou. Por favor, inténtao de novo.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

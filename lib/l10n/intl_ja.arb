@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-09 15:32:29.891676",
+  "@@last_modified": "2026-02-10 13:53:45.015756",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11841,6 +11841,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} がチャットの説明を変更しました",
+  "changedTheChatName": "{username} がチャットの名前を変更しました",
+  "moreEvents": "さらにイベント",
+  "declineInvitation": "招待を拒否",
+  "noMessagesYet": "まだメッセージはありません",
+  "longPressToRecordVoiceMessage": "長押しして音声メッセージを録音します。",
+  "pause": "一時停止",
+  "resume": "再開",
+  "newSubSpace": "新しいサブスペース",
+  "moveToDifferentSpace": "別のスペースに移動",
+  "moveUp": "上に移動",
+  "moveDown": "下に移動",
+  "removeFromSpaceDescription": "チャットはスペースから削除されますが、チャットリストには引き続き表示されます。",
+  "countChats": "{chats} チャット",
+  "spaceMemberOf": "{spaces} のスペースメンバー",
+  "spaceMemberOfCanKnock": "{spaces} のスペースメンバーはノックできます",
+  "donate": "寄付する",
+  "startedAPoll": "{username} が投票を開始しました。",
+  "poll": "投票",
+  "startPoll": "投票を開始",
+  "endPoll": "投票を終了する",
+  "answersVisible": "回答が表示される",
+  "answersHidden": "回答が非表示",
+  "pollQuestion": "投票の質問",
+  "answerOption": "回答オプション",
+  "addAnswerOption": "回答オプションを追加",
+  "allowMultipleAnswers": "複数の回答を許可",
+  "pollHasBeenEnded": "投票は終了しました",
+  "countVotes": "{count, plural, =1{1票} other{{count}票}}",
+  "answersWillBeVisibleWhenPollHasEnded": "投票が終了したときに回答が表示されます",
+  "replyInThread": "スレッドで返信",
+  "countReplies": "{count, plural, =1{1件の返信} other{{count} 件の返信}}",
+  "thread": "スレッド",
+  "backToMainChat": "メインチャットに戻る",
+  "createSticker": "ステッカーまたは絵文字を作成",
+  "useAsSticker": "ステッカーとして使用",
+  "useAsEmoji": "絵文字として使用",
+  "stickerPackNameAlreadyExists": "ステッカーパック名はすでに存在します",
+  "newStickerPack": "新しいステッカーパック",
+  "stickerPackName": "ステッカーパック名",
+  "attribution": "帰属",
+  "skipChatBackup": "チャットバックアップをスキップ",
+  "skipChatBackupWarning": "本当によろしいですか？チャットバックアップを有効にしないと、デバイスを切り替えた際にメッセージにアクセスできなくなる可能性があります。",
+  "loadingMessages": "メッセージを読み込み中",
+  "setupChatBackup": "チャットバックアップを設定",
+  "noMoreResultsFound": "これ以上の結果は見つかりません",
+  "chatSearchedUntil": "{time}までチャットを検索",
+  "federationBaseUrl": "連合ベースURL",
+  "clientWellKnownInformation": "クライアントの一般情報:",
+  "baseUrl": "ベースURL",
+  "identityServer": "アイデンティティサーバー:",
+  "versionWithNumber": "バージョン: {version}",
+  "logs": "ログ",
+  "advancedConfigs": "高度な設定",
+  "advancedConfigurations": "高度な構成",
+  "signInWithLabel": "サインインするには:",
+  "selectAllWords": "音声で聞こえるすべての単語を選択してください",
+  "joinCourseForActivities": "アクティビティを試すためにコースに参加してください。",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "コースは3〜8のモジュールで構成されており、それぞれのモジュールには異なる文脈で単語を練習するためのアクティビティがあります",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "メールの確認に失敗しました。もう一度お試しください。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

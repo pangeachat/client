@@ -3857,7 +3857,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-09 15:32:01.402371",
+  "@@last_modified": "2026-02-10 13:53:34.494196",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11856,6 +11856,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} pakeitė pokalbio aprašymą",
+  "changedTheChatName": "{username} pakeitė pokalbio pavadinimą",
+  "moreEvents": "Daugiau renginių",
+  "declineInvitation": "Atmesti kvietimą",
+  "noMessagesYet": "Dar nėra žinučių",
+  "longPressToRecordVoiceMessage": "Ilgai paspauskite, kad įrašytumėte balso žinutę.",
+  "pause": "Sustabdyti",
+  "resume": "Tęsti",
+  "newSubSpace": "Naujas sub erdvė",
+  "moveToDifferentSpace": "Perkelti į kitą erdvę",
+  "moveUp": "Perkelti aukštyn",
+  "moveDown": "Perkelti žemyn",
+  "removeFromSpaceDescription": "Pokalbiai bus pašalinti iš erdvės, bet vis tiek pasirodys jūsų pokalbių sąraše.",
+  "countChats": "{chats} pokalbiai",
+  "spaceMemberOf": "Erdvės narys {spaces}",
+  "spaceMemberOfCanKnock": "Erdvės narys {spaces} gali pasibeldti",
+  "donate": "Aukoti",
+  "startedAPoll": "{username} pradėjo apklausą.",
+  "poll": "Apklausa",
+  "startPoll": "Pradėti apklausą",
+  "endPoll": "Baigti apklausą",
+  "answersVisible": "Atsakymai matomi",
+  "answersHidden": "Atsakymai paslėpti",
+  "pollQuestion": "Apklausos klausimas",
+  "answerOption": "Atsakymo pasirinkimas",
+  "addAnswerOption": "Pridėti atsakymo pasirinkimą",
+  "allowMultipleAnswers": "Leisti kelis atsakymus",
+  "pollHasBeenEnded": "Apklausa buvo baigta",
+  "countVotes": "{count, plural, =1{Vienas balsas} other{{count} balsai}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Atsakymai bus matomi, kai apklausa bus baigta",
+  "replyInThread": "Atsakyti temoje",
+  "countReplies": "{count, plural, =1{Vienas atsakymas} other{{count} atsakymai}}",
+  "thread": "Tema",
+  "backToMainChat": "Grįžti į pagrindinį pokalbį",
+  "createSticker": "Sukurti lipduką arba emociją",
+  "useAsSticker": "Naudoti kaip lipduką",
+  "useAsEmoji": "Naudoti kaip emociją",
+  "stickerPackNameAlreadyExists": "Lipdukų paketo pavadinimas jau egzistuoja",
+  "newStickerPack": "Naujas lipdukų paketas",
+  "stickerPackName": "Lipdukų paketo pavadinimas",
+  "attribution": "Priskyrimas",
+  "skipChatBackup": "Praleisti pokalbio atsarginę kopiją",
+  "skipChatBackupWarning": "Ar tikrai norite? Neįjungus pokalbio atsarginės kopijos, galite prarasti prieigą prie savo žinučių, jei pakeisite įrenginį.",
+  "loadingMessages": "Kraunamos žinutės",
+  "setupChatBackup": "Nustatyti pokalbio atsarginę kopiją",
+  "noMoreResultsFound": "Daugiau rezultatų nerasta",
+  "chatSearchedUntil": "Pokalbis ieškotas iki {time}",
+  "federationBaseUrl": "Federacijos pagrindinis URL",
+  "clientWellKnownInformation": "Kliento gerai žinoma informacija:",
+  "baseUrl": "Pagrindinis URL",
+  "identityServer": "Identiteto serveris:",
+  "versionWithNumber": "Versija: {version}",
+  "logs": "Žurnalai",
+  "advancedConfigs": "Išplėstinės konfigūracijos",
+  "advancedConfigurations": "Išplėstinės konfigūracijos",
+  "signInWithLabel": "Prisijungti su:",
+  "selectAllWords": "Pasirinkite visus žodžius, kuriuos girdite garse",
+  "joinCourseForActivities": "Prisijunkite prie kurso, kad išbandytumėte veiklas.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursai susideda iš 3-8 modulių, kuriuose yra veiklų, skatinančių praktikuoti žodžius skirtinguose kontekstuose",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "El. pašto patvirtinimas nepavyko. Prašome bandyti dar kartą.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

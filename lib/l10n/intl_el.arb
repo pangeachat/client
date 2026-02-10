@@ -11988,5 +11988,431 @@
     "@grammarCopyPOScompn": {
       "type": "String",
       "placeholders": {}
+    },
+    "changedTheChatDescription": "{username} άλλαξε την περιγραφή της συνομιλίας",
+    "changedTheChatName": "{username} άλλαξε το όνομα της συνομιλίας",
+    "moreEvents": "Περισσότερες εκδηλώσεις",
+    "declineInvitation": "Απόρριψη πρόσκλησης",
+    "noMessagesYet": "Δεν υπάρχουν μηνύματα ακόμα",
+    "longPressToRecordVoiceMessage": "Πατήστε παρατεταμένα για να ηχογραφήσετε φωνητικό μήνυμα.",
+    "pause": "Παύση",
+    "resume": "Συνέχεια",
+    "newSubSpace": "Νέος υποχώρος",
+    "moveToDifferentSpace": "Μετακίνηση σε διαφορετικό χώρο",
+    "moveUp": "Μετακίνηση προς τα πάνω",
+    "moveDown": "Μετακίνηση προς τα κάτω",
+    "removeFromSpaceDescription": "Η συνομιλία θα αφαιρεθεί από το χώρο αλλά θα εμφανίζεται ακόμα στη λίστα συνομιλιών σας.",
+    "countChats": "{chats} συνομιλίες",
+    "spaceMemberOf": "Μέλος χώρου {spaces}",
+    "spaceMemberOfCanKnock": "Μέλος χώρου {spaces} μπορεί να χτυπήσει",
+    "donate": "Δωρεά",
+    "startedAPoll": "{username} ξεκίνησε μια δημοσκόπηση.",
+    "poll": "Δημοσκόπηση",
+    "startPoll": "Ξεκινήστε τη δημοσκόπηση",
+    "endPoll": "Τέλος ψηφοφορίας",
+    "answersVisible": "Ορατές απαντήσεις",
+    "answersHidden": "Κρυφές απαντήσεις",
+    "pollQuestion": "Ερώτηση ψηφοφορίας",
+    "answerOption": "Επιλογή απάντησης",
+    "addAnswerOption": "Προσθήκη επιλογής απάντησης",
+    "allowMultipleAnswers": "Επιτρέψτε πολλές απαντήσεις",
+    "pollHasBeenEnded": "Η ψηφοφορία έχει λήξει",
+    "countVotes": "{count, plural, =1{Μία ψήφος} other{{count} ψήφοι}}",
+    "answersWillBeVisibleWhenPollHasEnded": "Οι απαντήσεις θα είναι ορατές όταν η ψηφοφορία έχει λήξει",
+    "replyInThread": "Απάντηση στη συζήτηση",
+    "countReplies": "{count, plural, =1{Μία απάντηση} other{{count} απαντήσεις}}",
+    "thread": "Συζήτηση",
+    "backToMainChat": "Επιστροφή στην κύρια συνομιλία",
+    "createSticker": "Δημιουργία αυτοκόλλητου ή emoji",
+    "useAsSticker": "Χρήση ως αυτοκόλλητο",
+    "useAsEmoji": "Χρήση ως emoji",
+    "stickerPackNameAlreadyExists": "Το όνομα του πακέτου αυτοκόλλητων υπάρχει ήδη",
+    "newStickerPack": "Νέο πακέτο αυτοκόλλητων",
+    "stickerPackName": "Όνομα πακέτου αυτοκόλλητων",
+    "attribution": "Αναγνώριση",
+    "skipChatBackup": "Παράλειψη αντιγράφου ασφαλείας συνομιλίας",
+    "skipChatBackupWarning": "Είστε σίγουροι; Χωρίς την ενεργοποίηση του αντιγράφου ασφαλείας συνομιλίας, μπορεί να χάσετε την πρόσβαση στα μηνύματά σας αν αλλάξετε συσκευή.",
+    "loadingMessages": "Φόρτωση μηνυμάτων",
+    "setupChatBackup": "Ρύθμιση αντιγράφου ασφαλείας συνομιλίας",
+    "noMoreResultsFound": "Δεν βρέθηκαν περισσότερα αποτελέσματα",
+    "chatSearchedUntil": "Η συνομιλία αναζητήθηκε μέχρι {time}",
+    "federationBaseUrl": "Βασικό URL Ομοσπονδίας",
+    "clientWellKnownInformation": "Πληροφορίες Πελάτη-Γνωστές:",
+    "baseUrl": "Βασικό URL",
+    "identityServer": "Διακομιστής Ταυτότητας:",
+    "versionWithNumber": "Έκδοση: {version}",
+    "logs": "Καταγραφές",
+    "advancedConfigs": "Προχωρημένες Ρυθμίσεις",
+    "advancedConfigurations": "Προχωρημένες ρυθμίσεις",
+    "signInWithLabel": "Συνδεθείτε με:",
+    "selectAllWords": "Επιλέξτε όλες τις λέξεις που ακούτε στον ήχο",
+    "joinCourseForActivities": "Εγγραφείτε σε ένα μάθημα για να δοκιμάσετε δραστηριότητες.",
+    "@changedTheChatDescription": {
+      "type": "String",
+      "placeholders": {
+        "username": {}
+      }
+    },
+    "@changedTheChatName": {
+      "type": "String",
+      "placeholders": {
+        "username": {}
+      }
+    },
+    "@moreEvents": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@declineInvitation": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@noMessagesYet": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@longPressToRecordVoiceMessage": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@pause": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@resume": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@newSubSpace": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@moveToDifferentSpace": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@moveUp": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@moveDown": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@removeFromSpaceDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@countChats": {
+      "type": "String",
+      "placeholders": {
+        "chats": {
+          "type": "int"
+        }
+      }
+    },
+    "@spaceMemberOf": {
+      "type": "String",
+      "placeholders": {
+        "spaces": {
+          "type": "String"
+        }
+      }
+    },
+    "@spaceMemberOfCanKnock": {
+      "type": "String",
+      "placeholders": {
+        "spaces": {
+          "type": "String"
+        }
+      }
+    },
+    "@donate": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@startedAPoll": {
+      "type": "String",
+      "placeholders": {
+        "username": {
+          "type": "String"
+        }
+      }
+    },
+    "@poll": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@startPoll": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@endPoll": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@answersVisible": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@answersHidden": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@pollQuestion": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@answerOption": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@addAnswerOption": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@allowMultipleAnswers": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@pollHasBeenEnded": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@countVotes": {
+      "type": "String",
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "@answersWillBeVisibleWhenPollHasEnded": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@replyInThread": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@countReplies": {
+      "type": "String",
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "@thread": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@backToMainChat": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@createSticker": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@useAsSticker": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@useAsEmoji": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@stickerPackNameAlreadyExists": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@newStickerPack": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@stickerPackName": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@attribution": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@skipChatBackup": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@skipChatBackupWarning": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@loadingMessages": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@setupChatBackup": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@noMoreResultsFound": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@chatSearchedUntil": {
+      "type": "String",
+      "placeholders": {
+        "time": {
+          "type": "String"
+        }
+      }
+    },
+    "@federationBaseUrl": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@clientWellKnownInformation": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@baseUrl": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@identityServer": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@versionWithNumber": {
+      "type": "String",
+      "placeholders": {
+        "version": {
+          "type": "String"
+        }
+      }
+    },
+    "@logs": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@advancedConfigs": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@advancedConfigurations": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@signInWithLabel": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@selectAllWords": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@joinCourseForActivities": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "spanTypeGrammar": "Γραμματική",
+    "spanTypeWordChoice": "Επιλογή Λέξης",
+    "spanTypeSpelling": "Ορθογραφία",
+    "spanTypePunctuation": "Στίξη",
+    "spanTypeStyle": "Στυλ",
+    "spanTypeFluency": "Άνεση",
+    "spanTypeAccents": "Τονισμοί",
+    "spanTypeCapitalization": "Κεφαλαιοποίηση",
+    "spanTypeCorrection": "Διόρθωση",
+    "spanFeedbackTitle": "Αναφορά προβλήματος διόρθωσης",
+    "aboutMeHint": "Σχετικά με εμένα",
+    "changeEmail": "Αλλαγή email",
+    "withTheseAddressesDescription": "Με αυτές τις διευθύνσεις email μπορείτε να συνδεθείτε, να ανακτήσετε τον κωδικό σας και να διαχειριστείτε τις συνδρομές.",
+    "noAddressDescription": "Δεν έχετε προσθέσει ακόμα διευθύνσεις email.",
+    "perfectPractice": "Τέλεια πρακτική!",
+    "greatPractice": "Υπέροχη πρακτική!",
+    "usedNoHints": "Καλή δουλειά που δεν χρησιμοποίησες καμία υπόδειξη!",
+    "youveCompletedPractice": "Ολοκλήρωσες την πρακτική, συνέχισε έτσι για να βελτιωθείς!",
+    "@spanTypeGrammar": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeWordChoice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeSpelling": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypePunctuation": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeStyle": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeFluency": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeAccents": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeCapitalization": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeCorrection": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanFeedbackTitle": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@aboutMeHint": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@changeEmail": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@withTheseAddressesDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@noAddressDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@perfectPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@greatPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@usedNoHints": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@youveCompletedPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "courseDescription": "Τα μαθήματα αποτελούνται από 3-8 ενότητες, κάθε μία με δραστηριότητες για να ενθαρρύνουν την εξάσκηση λέξεων σε διαφορετικά συμφραζόμενα",
+    "@courseDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "emailVerificationFailed": "Η επαλήθευση του email απέτυχε. Παρακαλώ δοκιμάστε ξανά.",
+    "@emailVerificationFailed": {
+      "type": "String",
+      "placeholders": {}
     }
 }

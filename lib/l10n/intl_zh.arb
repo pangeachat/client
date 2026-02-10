@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-09 15:32:14.219030",
+  "@@last_modified": "2026-02-10 13:53:39.188566",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11170,6 +11170,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "没有更多结果",
+  "chatSearchedUntil": "聊天搜索到 {time}",
+  "federationBaseUrl": "联盟基础网址",
+  "clientWellKnownInformation": "客户端已知信息：",
+  "baseUrl": "基础网址",
+  "identityServer": "身份服务器：",
+  "versionWithNumber": "版本：{version}",
+  "logs": "日志",
+  "advancedConfigs": "高级配置",
+  "advancedConfigurations": "高级配置",
+  "signInWithLabel": "使用以下方式登录：",
+  "selectAllWords": "选择你在音频中听到的所有单词",
+  "joinCourseForActivities": "加入课程以尝试活动。",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "课程由3-8个模块组成，每个模块都有活动以鼓励在不同上下文中练习单词",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "电子邮件验证失败。请再试一次。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

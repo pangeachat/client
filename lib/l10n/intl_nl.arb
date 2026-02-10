@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:09.504392",
+  "@@last_modified": "2026-02-10 13:53:37.543656",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11170,6 +11170,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinCourseForActivities": "Doe mee aan een cursus om activiteiten uit te proberen.",
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "selectAllWords": "Selecteer alle woorden die je hoort in de audio",
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "signInWithLabel": "Inloggen met:",
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "advancedConfigurations": "Geavanceerde configuraties",
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "advancedConfigs": "Geavanceerde configuraties",
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "logs": "Logboeken",
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "versionWithNumber": "Versie: {version}",
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "identityServer": "Identiteitsserver:",
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "baseUrl": "Basis-URL",
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clientWellKnownInformation": "Bekende informatie van de client:",
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "federationBaseUrl": "Federatie Basis-URL",
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatSearchedUntil": "Chat doorzocht tot {time}",
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "noMoreResultsFound": "Geen resultaten meer gevonden",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Cursussen bestaan uit 3-8 modules, elk met activiteiten om het oefenen van woorden in verschillende contexten aan te moedigen",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-mailverificatie is mislukt. Probeer het alstublieft opnieuw.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

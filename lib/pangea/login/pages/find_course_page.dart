@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
@@ -15,6 +16,8 @@ import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -231,6 +234,9 @@ class FindCoursePageView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
+              InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.courseDescription,
+              ),
               TextField(
                 controller: controller.searchController,
                 textInputAction: TextInputAction.search,
@@ -339,7 +345,36 @@ class FindCoursePageView extends StatelessWidget {
                   }
 
                   if (controller.filteredCourses.isEmpty) {
-                    return Text(L10n.of(context).nothingFound);
+                    return Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Column(
+                        spacing: 12.0,
+                        children: [
+                          const BotFace(
+                            expression: BotExpression.addled,
+                            width: Avatar.defaultSize * 1.5,
+                          ),
+                          Text(
+                            L10n.of(context).noPublicCoursesFound,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                          ElevatedButton(
+                            onPressed: controller.startNewCourse,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text(L10n.of(context).startOwn)],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }
 
                   return Expanded(

@@ -352,10 +352,8 @@ class HtmlMessage extends StatelessWidget {
         if (nodes[i] is dom.Element &&
             onlyElements.indexOf(nodes[i] as dom.Element) <
                 onlyElements.length - 1) ...[
-          // #Pangea
-          // if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
-          //   const TextSpan(text: '\n\n'),
-          // Pangea#
+          if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
+            const TextSpan(text: '\n\n'),
           if (fullLineHtmlTag.contains((nodes[i] as dom.Element).localName))
             const TextSpan(text: '\n'),
         ],
@@ -695,9 +693,11 @@ class HtmlMessage extends StatelessWidget {
                     // Pangea#
                     if (node.parent?.localName == 'ol')
                       TextSpan(
-                        text:
-                            '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
                         // #Pangea
+                        // text:
+                        //     '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                        text:
+                            '${(node.parent?.nodes.whereType<dom.Element>().where((e) => e.localName != 'nontoken').toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
                         style: existingStyle,
                         // Pangea#
                       ),

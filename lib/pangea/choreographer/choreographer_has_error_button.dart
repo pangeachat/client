@@ -20,6 +20,7 @@ class ChoreographerHasErrorButton extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             duration: const Duration(seconds: 5),
+            showCloseIcon: true,
             content: Text(
               "${error.title(context)} ${error.description(context)}",
             ),

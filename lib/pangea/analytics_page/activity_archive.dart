@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -5,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
@@ -19,11 +21,35 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../config/themes.dart';
 import '../../widgets/avatar.dart';
 
-class ActivityArchive extends StatelessWidget {
+class ActivityArchive extends StatefulWidget {
   const ActivityArchive({super.key});
 
   @override
+  State<ActivityArchive> createState() => ActivityArchiveState();
+}
+
+class ActivityArchiveState extends State<ActivityArchive> {
+  late final TapGestureRecognizer recognizer;
+
+  @override
+  void initState() {
+    super.initState();
+    recognizer = TapGestureRecognizer()
+      ..onTap = () => context.go("/rooms/course");
+  }
+
+  @override
+  void dispose() {
+    recognizer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final linkColor = theme.brightness == Brightness.dark
+        ? theme.colorScheme.primaryContainer
+        : theme.colorScheme.primary;
     return StreamBuilder(
       stream: Matrix.of(
         context,
@@ -58,6 +84,23 @@ class ActivityArchive extends StatelessWidget {
                               instructionsEnum: archive.isEmpty
                                   ? InstructionsEnum.noSavedActivitiesYet
                                   : InstructionsEnum.activityAnalyticsList,
+                              richText: archive.isEmpty
+                                  ? [
+                                      TextSpan(
+                                        text: L10n.of(
+                                          context,
+                                        ).noSavedActivitiesYet,
+                                      ),
+                                      TextSpan(text: " "),
+                                      TextSpan(
+                                        text: L10n.of(
+                                          context,
+                                        ).joinCourseForActivities,
+                                        style: TextStyle(color: linkColor),
+                                        recognizer: recognizer,
+                                      ),
+                                    ]
+                                  : null,
                               padding: const EdgeInsets.all(8.0),
                             );
                           }

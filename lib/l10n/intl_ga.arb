@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-09 15:32:44.231605",
+  "@@last_modified": "2026-02-10 13:53:51.242401",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11177,6 +11177,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Níl tuilleadh torthaí le fáil",
+  "chatSearchedUntil": "Cuardaíodh comhrá go dtí {time}",
+  "federationBaseUrl": "URL Bunúsach na Comhthionscnaimh",
+  "clientWellKnownInformation": "Eolas Éagsúil Chustaiméara:",
+  "baseUrl": "URL Bunúsach",
+  "identityServer": "Freastalaí Aitheantais:",
+  "versionWithNumber": "Leagan: {version}",
+  "logs": "Cláracha",
+  "advancedConfigs": "Cumraíochtaí Casta",
+  "advancedConfigurations": "Cumraíochtaí Casta",
+  "signInWithLabel": "Cláraigh le:",
+  "selectAllWords": "Roghnaigh na focail go léir a chloiseann tú sa gháire",
+  "joinCourseForActivities": "Cláraigh i gcúrsa chun iarrachtaí a dhéanamh.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Comhoibrithe atá comhdhéanta de 3-8 modúil, gach ceann acu le gníomhaíochtaí chun cur le cleachtadh focail i gcomhthéacsanna éagsúla",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Theip ar dheimhniú ríomhphoist. Bain triail as arís.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

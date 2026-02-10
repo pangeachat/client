@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:31:32.332245",
+  "@@last_modified": "2026-02-10 13:53:20.558141",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11234,6 +11234,94 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} endret chatbeskrivelsen",
+  "changedTheChatName": "{username} endret chatnavnet",
+  "moreEvents": "Flere hendelser",
+  "newSubSpace": "Nytt underområde",
+  "spaceMemberOf": "Rommedlem av {spaces}",
+  "spaceMemberOfCanKnock": "Rommedlem av {spaces} kan banke",
+  "pollQuestion": "Avstemningsspørsmål",
+  "countVotes": "{count, plural, =1{Én stemme} other{{count} stemmer}}",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "countReplies": "{count, plural, =1{En svar} other{{count} svar}}",
+  "createSticker": "Lag klistremerke eller emoji",
+  "useAsSticker": "Bruk som klistremerke",
+  "useAsEmoji": "Bruk som emoji",
+  "stickerPackNameAlreadyExists": "Klistremerke-pakkens navn finnes allerede",
+  "newStickerPack": "Ny klistremerke-pakke",
+  "stickerPackName": "Klistremerke-pakkens navn",
+  "attribution": "Attribusjon",
+  "skipChatBackupWarning": "Er du sikker? Uten å aktivere chat-sikkerhetskopi kan du miste tilgangen til meldingene dine hvis du bytter enhet.",
+  "noMoreResultsFound": "Ingen flere resultater funnet",
+  "chatSearchedUntil": "Chat søkt til {time}",
+  "federationBaseUrl": "Føderasjonsbasis-URL",
+  "clientWellKnownInformation": "Klient-Vel-Kjent Informasjon:",
+  "baseUrl": "Basis-URL",
+  "identityServer": "Identitetsserver:",
+  "versionWithNumber": "Versjon: {version}",
+  "logs": "Logger",
+  "advancedConfigs": "Avanserte konfigurasjoner",
+  "advancedConfigurations": "Avanserte konfigurasjoner",
+  "signInWithLabel": "Logg inn med:",
+  "selectAllWords": "Velg alle ordene du hører i lyden",
+  "joinCourseForActivities": "Bli med i et kurs for å prøve aktiviteter.",
+  "courseDescription": "Kurs består av 3-8 moduler, hver med aktiviteter for å oppmuntre til å øve på ord i forskjellige sammenhenger",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-postverifisering mislyktes. Vennligst prøv igjen.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

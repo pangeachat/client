@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-02-09 15:31:28.643814",
+  "@@last_modified": "2026-02-10 13:53:19.483948",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11503,6 +11503,328 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "moreEvents": "Více událostí",
+  "declineInvitation": "Odmítnout pozvání",
+  "noMessagesYet": "Zatím žádné zprávy",
+  "longPressToRecordVoiceMessage": "Dlouze stiskněte pro nahrání hlasové zprávy.",
+  "pause": "Pauza",
+  "resume": "Pokračovat",
+  "newSubSpace": "Nový podprostor",
+  "moveToDifferentSpace": "Přesunout do jiného prostoru",
+  "moveUp": "Přesunout nahoru",
+  "moveDown": "Přesunout dolů",
+  "removeFromSpaceDescription": "Chat bude odstraněn z prostoru, ale stále se zobrazí ve vašem seznamu chatů.",
+  "countChats": "{chats} chaty",
+  "spaceMemberOf": "Člen prostoru {spaces}",
+  "spaceMemberOfCanKnock": "Člen prostoru {spaces} může zaklepat",
+  "donate": "Darovat",
+  "startedAPoll": "{username} zahájil anketu.",
+  "poll": "Anketa",
+  "startPoll": "Zahájit anketu",
+  "endPoll": "Ukončit anketu",
+  "answersVisible": "Odpovědi viditelné",
+  "answersHidden": "Odpovědi skryté",
+  "pollQuestion": "Otázka ankety",
+  "answerOption": "Možnost odpovědi",
+  "addAnswerOption": "Přidat možnost odpovědi",
+  "allowMultipleAnswers": "Povolit více odpovědí",
+  "pollHasBeenEnded": "Anketa byla ukončena",
+  "countVotes": "{count, plural, =1{Jedna hlas} other{{count} hlasy}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Odpovědi budou viditelné, když bude anketa ukončena",
+  "replyInThread": "Odpovědět v tématu",
+  "countReplies": "{count, plural, =1{Jedna odpověď} other{{count} odpovědi}}",
+  "thread": "Téma",
+  "backToMainChat": "Zpět do hlavního chatu",
+  "createSticker": "Vytvořit nálepku nebo emoji",
+  "useAsSticker": "Použít jako nálepku",
+  "useAsEmoji": "Použít jako emoji",
+  "stickerPackNameAlreadyExists": "Název balíčku nálepek již existuje",
+  "newStickerPack": "Nový balíček nálepek",
+  "stickerPackName": "Název balíčku nálepek",
+  "attribution": "Připsání",
+  "skipChatBackup": "Přeskočit zálohu chatu",
+  "skipChatBackupWarning": "Jste si jisti? Bez povolení zálohy chatu můžete ztratit přístup k vašim zprávám, pokud přepnete zařízení.",
+  "loadingMessages": "Načítání zpráv",
+  "setupChatBackup": "Nastavit zálohu chatu",
+  "noMoreResultsFound": "Nebyly nalezeny žádné další výsledky",
+  "chatSearchedUntil": "Chat prohledán do {time}",
+  "federationBaseUrl": "Základní URL federace",
+  "clientWellKnownInformation": "Informace o klientovi:",
+  "baseUrl": "Základní URL",
+  "identityServer": "Identitní server:",
+  "versionWithNumber": "Verze: {version}",
+  "logs": "Protokoly",
+  "advancedConfigs": "Pokročilé konfigurace",
+  "advancedConfigurations": "Pokročilé konfigurace",
+  "signInWithLabel": "Přihlásit se pomocí:",
+  "selectAllWords": "Vyberte všechna slova, která slyšíte v audionahrávce",
+  "joinCourseForActivities": "Připojte se k kurzu, abyste vyzkoušeli aktivity.",
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurzy se skládají z 3-8 modulů, z nichž každý obsahuje aktivity, které podporují procvičování slov v různých kontextech",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Ověření e-mailu se nezdařilo. Zkuste to prosím znovu.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

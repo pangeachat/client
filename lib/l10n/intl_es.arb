@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-09 15:30:33.438936",
+  "@@last_modified": "2026-02-10 13:52:56.442140",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8335,6 +8335,234 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spaceMemberOf": "Miembro del espacio de {spaces}",
+  "spaceMemberOfCanKnock": "Miembro del espacio de {spaces} puede tocar",
+  "answersHidden": "Respuestas ocultas",
+  "pollQuestion": "Pregunta de la encuesta",
+  "answerOption": "Opción de respuesta",
+  "addAnswerOption": "Agregar opción de respuesta",
+  "allowMultipleAnswers": "Permitir múltiples respuestas",
+  "pollHasBeenEnded": "La encuesta ha sido finalizada",
+  "countVotes": "{count, plural, =1{Un voto} other{{count} votos}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Las respuestas serán visibles cuando la encuesta haya finalizado",
+  "replyInThread": "Responder en el hilo",
+  "countReplies": "{count, plural, =1{Una respuesta} other{{count} respuestas}}",
+  "thread": "Hilo",
+  "backToMainChat": "Volver al chat principal",
+  "createSticker": "Crear sticker o emoji",
+  "useAsSticker": "Usar como sticker",
+  "useAsEmoji": "Usar como emoji",
+  "stickerPackNameAlreadyExists": "El nombre del paquete de stickers ya existe",
+  "newStickerPack": "Nuevo paquete de stickers",
+  "stickerPackName": "Nombre del paquete de stickers",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "attribution": "Atribución",
+  "skipChatBackup": "Omitir copia de seguridad del chat",
+  "skipChatBackupWarning": "¿Estás seguro? Sin habilitar la copia de seguridad del chat, puedes perder el acceso a tus mensajes si cambias de dispositivo.",
+  "loadingMessages": "Cargando mensajes",
+  "noMoreResultsFound": "No se encontraron más resultados",
+  "chatSearchedUntil": "Chat buscado hasta {time}",
+  "federationBaseUrl": "URL base de la federación",
+  "clientWellKnownInformation": "Información conocida del cliente:",
+  "baseUrl": "URL base",
+  "identityServer": "Servidor de identidad:",
+  "versionWithNumber": "Versión: {version}",
+  "logs": "Registros",
+  "advancedConfigs": "Configuraciones avanzadas",
+  "advancedConfigurations": "Configuraciones avanzadas",
+  "signInWithLabel": "Iniciar sesión con:",
+  "highlightVocabTooltip": "Resalta las palabras de vocabulario objetivo a continuación enviándolas o practicando con ellas en el chat",
+  "selectAllWords": "Selecciona todas las palabras que escuches en el audio",
+  "joinCourseForActivities": "Únete a un curso para probar actividades.",
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Los cursos constan de 3 a 8 módulos, cada uno con actividades para fomentar la práctica de palabras en diferentes contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificación del correo electrónico falló. Por favor, inténtalo de nuevo.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

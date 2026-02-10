@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:24.746342",
+  "@@last_modified": "2026-02-10 13:53:43.184731",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11529,6 +11529,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ändrade chatbeskrivningen",
+  "changedTheChatName": "{username} ändrade chattnamnet",
+  "moreEvents": "Fler evenemang",
+  "declineInvitation": "Avböj inbjudan",
+  "noMessagesYet": "Inga meddelanden än",
+  "longPressToRecordVoiceMessage": "Tryck länge för att spela in röstmeddelande.",
+  "pause": "Pausa",
+  "resume": "Fortsätt",
+  "newSubSpace": "Nytt underområde",
+  "moveToDifferentSpace": "Flytta till ett annat område",
+  "moveUp": "Flytta upp",
+  "moveDown": "Flytta ner",
+  "removeFromSpaceDescription": "Chatten kommer att tas bort från rummet men kommer fortfarande att visas i din chattlista.",
+  "countChats": "{chats} chattar",
+  "spaceMemberOf": "Rumsmedlem i {spaces}",
+  "spaceMemberOfCanKnock": "Rumsmedlem i {spaces} kan knacka",
+  "donate": "Donera",
+  "startedAPoll": "{username} startade en omröstning.",
+  "poll": "Omröstning",
+  "startPoll": "Starta omröstning",
+  "endPoll": "Avsluta omröstning",
+  "answersVisible": "Svar synliga",
+  "answersHidden": "Svar dolda",
+  "pollQuestion": "Omröstningsfråga",
+  "answerOption": "Svarsalternativ",
+  "addAnswerOption": "Lägg till svarsalternativ",
+  "allowMultipleAnswers": "Tillåt flera svar",
+  "pollHasBeenEnded": "Omröstningen har avslutats",
+  "countVotes": "{count, plural, =1{En röst} other{{count} röster}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Svar kommer att vara synliga när omröstningen har avslutats",
+  "replyInThread": "Svara i tråden",
+  "countReplies": "{count, plural, =1{Ett svar} other{{count} svar}}",
+  "thread": "Tråd",
+  "backToMainChat": "Tillbaka till huvudchatten",
+  "createSticker": "Skapa klistermärke eller emoji",
+  "useAsSticker": "Använd som klistermärke",
+  "useAsEmoji": "Använd som emoji",
+  "stickerPackNameAlreadyExists": "Namnet på klistermärkespaketet finns redan",
+  "newStickerPack": "Nytt klistermärkespaket",
+  "stickerPackName": "Namn på klistermärkespaket",
+  "attribution": "Attribution",
+  "skipChatBackup": "Hoppa över chattbackup",
+  "skipChatBackupWarning": "Är du säker? Utan att aktivera chattbackup kan du förlora tillgången till dina meddelanden om du byter enhet.",
+  "loadingMessages": "Laddar meddelanden",
+  "setupChatBackup": "Ställ in chattbackup",
+  "noMoreResultsFound": "Inga fler resultat hittades",
+  "chatSearchedUntil": "Chatt sökt till {time}",
+  "federationBaseUrl": "Federation Bas-URL",
+  "clientWellKnownInformation": "Klient-Välkända Information:",
+  "baseUrl": "Bas-URL",
+  "identityServer": "Identitetsserver:",
+  "versionWithNumber": "Version: {version}",
+  "logs": "Loggar",
+  "advancedConfigs": "Avancerade inställningar",
+  "advancedConfigurations": "Avancerade konfigurationer",
+  "signInWithLabel": "Logga in med:",
+  "selectAllWords": "Välj alla ord du hör i ljudet",
+  "joinCourseForActivities": "Gå med i en kurs för att prova aktiviteter.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurser består av 3-8 moduler, var och en med aktiviteter för att uppmuntra till att öva ord i olika sammanhang",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-postverifiering misslyckades. Vänligen försök igen.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

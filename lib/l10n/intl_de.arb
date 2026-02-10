@@ -11124,5 +11124,125 @@
     "@grammarCopyPOScompn": {
       "type": "String",
       "placeholders": {}
+    },
+    "federationBaseUrl": "Föderation Basis-URL",
+    "clientWellKnownInformation": "Client-Well-Known-Information:",
+    "spanTypeGrammar": "Grammatik",
+    "spanTypeWordChoice": "Wortwahl",
+    "spanTypeSpelling": "Rechtschreibung",
+    "spanTypePunctuation": "Zeichensetzung",
+    "spanTypeStyle": "Stil",
+    "spanTypeFluency": "Flüssigkeit",
+    "spanTypeAccents": "Akzente",
+    "spanTypeCapitalization": "Großschreibung",
+    "spanTypeCorrection": "Korrektur",
+    "spanFeedbackTitle": "Korrekturproblem melden",
+    "selectAllWords": "Wählen Sie alle Wörter aus, die Sie im Audio hören",
+    "aboutMeHint": "Über mich",
+    "changeEmail": "E-Mail ändern",
+    "withTheseAddressesDescription": "Mit diesen E-Mail-Adressen können Sie sich anmelden, Ihr Passwort wiederherstellen und Abonnements verwalten.",
+    "noAddressDescription": "Sie haben noch keine E-Mail-Adressen hinzugefügt.",
+    "perfectPractice": "Perfekte Übung!",
+    "greatPractice": "Großartige Übung!",
+    "usedNoHints": "Gute Arbeit, keine Hinweise verwendet zu haben!",
+    "youveCompletedPractice": "Sie haben die Übung abgeschlossen, machen Sie weiter, um besser zu werden!",
+    "joinCourseForActivities": "Treten Sie einem Kurs bei, um Aktivitäten auszuprobieren.",
+    "@federationBaseUrl": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@clientWellKnownInformation": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeGrammar": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeWordChoice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeSpelling": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypePunctuation": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeStyle": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeFluency": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeAccents": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeCapitalization": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanTypeCorrection": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@spanFeedbackTitle": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@selectAllWords": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@aboutMeHint": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@changeEmail": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@withTheseAddressesDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@noAddressDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@perfectPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@greatPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@usedNoHints": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@youveCompletedPractice": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "@joinCourseForActivities": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "courseDescription": "Kurse bestehen aus 3-8 Modulen, die Aktivitäten enthalten, um das Üben von Wörtern in verschiedenen Kontexten zu fördern",
+    "@courseDescription": {
+      "type": "String",
+      "placeholders": {}
+    },
+    "emailVerificationFailed": "E-Mail-Bestätigung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "@emailVerificationFailed": {
+      "type": "String",
+      "placeholders": {}
     }
 }

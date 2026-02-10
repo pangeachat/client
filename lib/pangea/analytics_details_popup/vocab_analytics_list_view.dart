@@ -214,6 +214,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                     .pangeaController
                                     .userController
                                     .userL2Code!,
+                                pos: vocabItem.id.category,
                               );
                               AnalyticsNavigationUtil.navigateToAnalytics(
                                 context: context,

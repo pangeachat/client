@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
@@ -27,9 +28,15 @@ class WordZoomWidget extends StatelessWidget {
 
   final Event? event;
 
+  /// POS tag for PT v2 disambiguation (e.g. "VERB").
+  final String? pos;
+
+  /// Morph features for PT v2 disambiguation (e.g. {"Tense": "Past"}).
+  final Map<String, String>? morph;
+
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
-  final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
+  final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
 
@@ -40,6 +47,8 @@ class WordZoomWidget extends StatelessWidget {
     required this.langCode,
     this.onClose,
     this.event,
+    this.pos,
+    this.morph,
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
@@ -135,6 +144,8 @@ class WordZoomWidget extends StatelessWidget {
                                     textLanguage:
                                         PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
+                                    pos: pos,
+                                    morph: morph,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
