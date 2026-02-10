@@ -5,5562 +5,5565 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nTa$() {
-      return new A.L10nTa(B.canonicalizedLocale("ta"));
+    L10nSk$() {
+      return new A.L10nSk(B.canonicalizedLocale("sk"));
     },
-    L10nTa: function L10nTa(t0) {
+    L10nSk: function L10nSk(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[47], A);
-  A.L10nTa.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[43], A);
+  A.L10nSk.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u0ba4\u0bb5\u0bb1\u0bc1";
+      return "v\u017edy pou\u017ei\u0165 24-hodinov\xfd form\xe1t";
     },
     get$repeatPassword() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zopakujte heslo";
     },
     get$notAnImage() {
-      return "\u0baa\u0b9f\u0b95\u0bcd \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2.";
+      return "Nie je to s\xfabor obr\xe1zka.";
     },
     get$setCustomPermissionLevel() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0baf\u0ba9\u0bcd \u0b87\u0b9a\u0bc8\u0bb5\u0bc1 \u0b85\u0bb3\u0bb5\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavi\u0165 vlastn\xfa \xfarove\u0148 opr\xe1vnen\xed";
     },
     get$setPermissionsLevelDescription() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b95\u0bc0\u0bb4\u0bc7 \u0b92\u0bb0\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0b95 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 0 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd 100 \u0b95\u0bcd\u0b95\u0bc1 \u0b87\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0baf\u0ba9\u0bcd \u0b87\u0b9a\u0bc8\u0bb5\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Vyberte ni\u017e\u0161ie preddefinovan\xfa rolu alebo zadajte vlastn\xfa \xfarove\u0148 opr\xe1vnen\xed medzi 0 a 100.";
     },
     get$ignoreUser() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bc8 \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ignorova\u0165 pou\u017e\xedvate\u013ea";
     },
     get$normalUser() {
-      return "\u0b9a\u0bbe\u0ba4\u0bbe\u0bb0\u0ba3 \u0baa\u0baf\u0ba9\u0bb0\u0bcd";
+      return "Be\u017en\xfd pou\u017e\xedvate\u013e";
     },
     get$remove(_) {
-      return "\u0b85\u0b95\u0bb1\u0bcd\u0bb1\u0bc1";
+      return "Odstr\xe1ni\u0165";
     },
     get$importNow() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b87\u0bb1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Importova\u0165 teraz";
     },
     get$importEmojis() {
-      return "\u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0b95\u0bb3\u0bc8 \u0b87\u0bb1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Importova\u0165 emotikony";
     },
     get$importFromZipFile() {
-      return ".Zip \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b87\u0bb1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Importova\u0165 zo s\xfaboru .zip";
     },
     get$exportEmotePack() {
-      return "\u0b8e\u0bae\u0bcb\u0b9f\u0bcd \u0baa\u0bc7\u0b95\u0bcd .zip \u0b8e\u0ba9 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Exportova\u0165 bal\xedk emotikonov ako .zip";
     },
     get$replace(_) {
-      return "\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nahradi\u0165";
     },
     get$about() {
-      return "\u0baa\u0bb1\u0bcd\u0bb1\u0bbf";
+      return "O aplik\xe1cii";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + " \u0baa\u0bb1\u0bcd\u0bb1\u0bbf";
+      return "O " + homeserver;
     },
     get$accept(_) {
-      return "\u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd";
+      return "Prija\u0165";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0ba4\u0bc1";
+      return username + " prijali pozv\xe1nku";
     },
     get$account() {
-      return "\u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc1";
+      return "\xda\u010det";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " \u0b87\u0bb1\u0bc1\u0ba4\u0bbf \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bc1";
+      return username + " aktivovali koncov\xe9 \u0161ifrovanie";
     },
     get$addEmail() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prida\u0165 email";
     },
     supposedMxid$1(mxid) {
-      return "\u0b87\u0ba4\u0bc1 " + mxid + " be \u0b86\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Toto by malo by\u0165 " + mxid;
     },
     get$admin() {
-      return "\u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf";
+      return "Administr\xe1tor";
     },
     get$allChats() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0b95\u0bb3\u0bc1\u0bae\u0bcd";
+      return "V\u0161etky chaty";
     },
     get$commandHint_roomupgrade() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bc8 \u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0baf\u0bc8 \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Aktualizova\u0165 t\xfato miestnos\u0165 na dan\xfa verziu miestnosti";
     },
     get$commandHint_googly() {
-      return "\u0b9a\u0bbf\u0bb2 \u0b95\u0bc2\u0b95\u0bbf\u0bb3\u0bcd \u0b95\u0ba3\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 nejak\xe9 googly o\u010di";
     },
     get$commandHint_cuddle() {
-      return "\u0b92\u0bb0\u0bc1 \u0b95\u0b9a\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 objatie";
     },
     get$commandHint_hug() {
-      return "\u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 objatie";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bc2\u0b95\u0bbf\u0bb3\u0bcd \u0b95\u0ba3\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return senderName + " v\xe1m posiela googly o\u010di";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u0baa\u0bc6\u0baf\u0bb0\u0bcd you \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0b9a\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return senderName + " v\xe1s obj\xedma";
     },
     hugContent$1(senderName) {
-      return senderName + " \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba3\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return senderName + " v\xe1s obj\xedma";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0ba4\u0bbf\u0bb2\u0bb3\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return senderName + " prevzal hovor";
     },
     get$anyoneCanJoin() {
-      return "\u0baf\u0bbe\u0bb0\u0bcd \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bbe\u0ba9\u0bbe\u0bb2\u0bc1\u0bae\u0bcd \u0b9a\u0bc7\u0bb0\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Ktoko\u013evek sa m\xf4\u017ee pripoji\u0165";
     },
     get$archive() {
-      return "\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0b95\u0bae\u0bcd";
+      return "Archivova\u0165";
     },
     get$areYouSure() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baf\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Ste si ist\xed?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0b95 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Ste si ist\xed, \u017ee sa chcete odhl\xe1si\u0165?";
     },
     get$askSSSSSign() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1 \u0ba8\u0baa\u0bb0\u0bbf\u0bb2\u0bcd \u0b95\u0bc8\u0baf\u0bc6\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f, \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0b95\u0b9f\u0bc8 \u0baa\u0bbe\u0b9a\u0bcd\u0b83\u0baa\u0bbf\u0bb0\u0bc7\u0b9a\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd.";
+      return 'Na overenie tejto osoby, pros\xedm zadajte pr\xedstupovu fr\xe1zu k "bezpe\u010d\xe9mu \xfalo\u017eisku" alebo "kl\xfa\u010d na obnovu".';
     },
     askVerificationRequest$1(username) {
-      return username + "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b87\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bb5\u0bbe?";
+      return "Akcepova\u0165 \u017eiados\u0165 o verifik\xe1ciu od " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u0b89\u0bb3\u0bcd\u0ba8\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0bb5\u0b95\u0bc8\u0b95\u0bb3\u0bc8 \u0b93\u0bae\u0bcd\u0b9a\u0bb0\u0bcd\u0bb5\u0bb0\u0bcd \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1:\n " + serverVersions + "\n \u0b86\u0ba9\u0bbe\u0bb2\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7 \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1:\n " + supportedVersions;
+      return "Server podporuje tieto typy prihl\xe1senia:\n" + serverVersions + "\nAle t\xe1to aplik\xe1cia podporuje iba:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posiela\u0165 ozn\xe1menia o p\xedsan\xed";
     },
     get$swipeRightToLeftToReply() {
-      return "\u0baa\u0ba4\u0bbf\u0bb2\u0bb3\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bb2\u0bae\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b87\u0b9f\u0bae\u0bbe\u0b95 \u0b9a\u0bcd\u0bb5\u0bc8\u0baa\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prejdite prstom sprava do\u013eava na odpove\u010f";
     },
     get$sendOnEnter() {
-      return "Enter \u0b90 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 pri vstupe";
     },
     get$space() {
-      return "\u0b87\u0b9f\u0bc8\u0bb5\u0bc6\u0bb3\u0bbf";
+      return "Priestor";
     },
     get$banned() {
-      return "\u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Zabanovan\xfd";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f " + targetName;
+      return username + " zabanoval " + targetName;
     },
     get$blockDevice() {
-      return "\u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf \u0b9a\u0bbe\u0ba4\u0ba9\u0bae\u0bcd";
+      return "Zak\xe1za\u0165 zariadenie";
     },
     get$blocked() {
-      return "\u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Blokovan\xe9";
     },
     get$cancel(_) {
-      return "\u0bb0\u0ba4\u0bcd\u0ba4\u0bc1\u0b9a\u0bc6\u0baf\u0bcd";
+      return "Zru\u0161i\u0165";
     },
     cantOpenUri$1(uri) {
-      return "\u0baf\u0bc2\u0bb0\u0bbf " + uri + " \u0bb5\u0bc7\u0bb2\u0bc8 \u0b90 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1";
+      return "Nemo\u017eno otvori\u0165 identifik\xe1tor prostriedku " + uri;
     },
     get$changeDeviceName() {
-      return "\u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 n\xe1zov zariadenia";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " si zmenili sv\xf4j avatar";
     },
     changedTheChatDescription$1(username) {
-      return username + " changed the chat description";
+      return username + " zmenil popis chatu";
     },
     changedTheChatName$1(username) {
-      return username + " changed the chat name";
+      return username + " zmenil n\xe1zov chatu";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " zmenili nastavenie opr\xe1vnen\xed chatu";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bbf\u0ba9\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd: '" + displayname + "'";
+      return username + " si zmenili prez\xfdvku na: " + displayname;
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd \u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " zmenili pr\xedstupov\xe9 pr\xe1va pre hos\u0165ov";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd \u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1: " + rules;
+      return username + " zmenili pr\xedstupov\xe9 pr\xe1va pro hos\u0165ov na: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bc1\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " zmenili nastavenie viditelnosti hist\xf3rie chatu";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bc1\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1: " + rules;
+      return username + " zmenili nastavenie viditelnosti hist\xf3rie chatu na: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u0b9a\u0bc7\u0bb0 \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " zmenili nastavenie pravidiel pripojenia";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u0b9a\u0bc7\u0bb0 \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1: " + joinRules;
+      return username + " zmenili nastavenie pravidiel pripojenia na: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " si zmenili profilov\xfd obr\xe1zok";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u0b85\u0bb1\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " zmenili nastavenie aliasov chatu";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0ba4\u0bb4\u0bcd \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " zmenili odkaz k pozv\xe1nke do miestnosti";
     },
     get$changePassword() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 heslo";
     },
     get$changeTheme() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0ba3\u0bbf\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmena \u0161t\xfdlu";
     },
     get$changeYourAvatar() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 svoj avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bbf\u0ba4\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "\u0160ifrovanie bolo po\u0161koden\xe9";
     },
     get$chat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8";
+      return "Chat";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "Z\xe1loha va\u0161ich chatov bola nastaven\xe1.";
     },
     get$chatBackupDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bb4\u0bc8\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba4\u0bc8 \u0b87\u0bb4\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8 \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0b95\u0bcd \u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Va\u0161e star\xe9 spr\xe1vy s\xfa zabezpe\u010den\xe9 k\u013e\xfa\u010dom na obnovenie. Uistite sa, \u017ee ho neztrat\xedte.";
     },
     get$chatDetails() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Podrobnosti o chate";
     },
     get$chats() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0b95\u0bb3\u0bcd";
+      return "\u010cety";
     },
     get$chooseAStrongPassword() {
-      return "\u0bb5\u0bb2\u0bc1\u0bb5\u0bbe\u0ba9 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Vyberte si siln\xe9 heslo";
     },
     get$clearArchive() {
-      return "\u0ba4\u0bc6\u0bb3\u0bbf\u0bb5\u0bbe\u0ba9 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0b95\u0bae\u0bcd";
+      return "Vymaza\u0165 arch\xedv";
     },
     get$close(_) {
-      return "\u0bae\u0bc2\u0b9f\u0bc1";
+      return "Zavrie\u0165";
     },
     get$commandHint_markasdm() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bc7\u0b9f\u0bcd\u0bb0\u0bbf\u0b95\u0bcd\u0b9a\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0bb1\u0bc8\u0baf\u0bbe\u0b95 \u0b95\u0bc1\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ozna\u010di\u0165 ako priame spr\xe1vy pre dan\xe9 ID Matrix";
     },
     get$commandHint_markasgroup() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1\u0bb5\u0bbe\u0b95 \u0b95\u0bc1\u0bb1\u0bbf";
+      return "Ozna\u010di\u0165 ako skupinu";
     },
     get$commandHint_ban() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bc8 \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0b9f\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Zablokova\u0165 dan\xe9ho pou\u017e\xedvate\u013ea v tejto miestnosti";
     },
     get$commandHint_clearcache() {
-      return "\u0ba4\u0bc6\u0bb3\u0bbf\u0bb5\u0bbe\u0ba9 \u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0bb2\u0bbf\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Vy\u010disti\u0165 vyrovn\xe1vaciu pam\xe4\u0165";
     },
     get$commandHint_create() {
-      return "\u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1 \u0b95\u0bc1\u0bb4\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd\n \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95-\u0b87\u0bb2\u0bcd\u0bb2\u0bc8-\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 pr\xe1zdnu skupinov\xfa konverz\xe1ciu\nPou\u017eite --no-encryption na zak\xe1zanie \u0161ifrovania";
     },
     get$commandHint_discardsession() {
-      return "\u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc8 \u0ba8\u0bbf\u0bb0\u0bbe\u0b95\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zahodi\u0165 rel\xe1ciu";
     },
     get$commandHint_dm() {
-      return "\u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd\n \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95-\u0b87\u0bb2\u0bcd\u0bb2\u0bc8-\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Za\u010da\u0165 s\xfakromn\xfa konverz\xe1ciu\nPou\u017eite --no-encryption na zak\xe1zanie \u0161ifrovania";
     },
     get$commandHint_html() {
-      return "\u0b89\u0b89\u0b95\u0bc1\u0bae\u0bca \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b89\u0bb0\u0bc8\u0baf\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 text vo form\xe1te HTML";
     },
     get$commandHint_invite() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bc8 \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 dan\xe9ho pou\u017e\xedvate\u013ea do tejto miestnosti";
     },
     get$commandHint_join() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pripoji\u0165 sa k danej miestnosti";
     },
     get$commandHint_kick() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bc8 \u0b85\u0b95\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odstr\xe1ni\u0165 dan\xe9ho pou\u017e\xedvate\u013ea z tejto miestnosti";
     },
     get$commandHint_leave() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0baf\u0bc8 \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0bb5\u0bbf\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Opusti\u0165 t\xfato miestnos\u0165";
     },
     get$commandHint_me() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0bb5\u0bbf\u0bb5\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Op\xedsa\u0165 seba";
     },
     get$commandHint_myroomavatar() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd (MXC-URI \u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0baf\u0ba4\u0bc1)";
+      return "Nastavi\u0165 svoju fotografiu pre t\xfato miestnos\u0165 (pod\u013ea mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavi\u0165 svoje zobrazovacie meno pre t\xfato miestnos\u0165";
     },
     get$commandHint_op() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bbf\u0ba9\u0bcd \u0b86\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0bae\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd (\u0b87\u0baf\u0bb2\u0bcd\u0baa\u0bc1\u0ba8\u0bbf\u0bb2\u0bc8: 50)";
+      return "Nastavi\u0165 \xfarove\u0148 pr\xe1v dan\xe9ho pou\u017e\xedvate\u013ea (predvolene: 50)";
     },
     get$commandHint_plain() {
-      return "\u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 neform\xe1tovan\xfd text";
     },
     get$commandHint_react() {
-      return "\u0b92\u0bb0\u0bc1 \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bb5\u0bbf\u0ba9\u0bc8\u0baf\u0bbe\u0b95 \u0baa\u0ba4\u0bbf\u0bb2\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 odpove\u010f ako reakciu";
     },
     get$commandHint_send() {
-      return "\u0b89\u0bb0\u0bc8\u0baf\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 text";
     },
     get$commandHint_unban() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Zru\u0161i\u0165 blokovanie dan\xe9ho pou\u017e\xedvate\u013ea v tejto miestnosti";
     },
     get$compareEmojiMatch() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0b95\u0bb3\u0bc8 \u0b92\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bc1\u0b95";
+      return "Porovnajte a uistite sa, \u017ee nasleduj\xface emotikony sa zhoduj\xfa na oboch zariadeniach:";
     },
     get$compareNumbersMatch() {
-      return "\u0b8e\u0ba3\u0bcd\u0b95\u0bb3\u0bc8 \u0b92\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bc1\u0b95";
+      return "Porovnajte a uistite sa, \u017ee nasleduj\xface \u010d\xedsla sa zhoduj\xfa na oboch zariadeniach:";
     },
     get$configureChat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Konfigur\xe1cia chatu";
     },
     get$confirm(_) {
-      return "\u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Potvrdi\u0165";
     },
     get$copiedToClipboard() {
-      return "\u0b87\u0b9f\u0bc8\u0ba8\u0bbf\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bb2\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0ba8\u0b95\u0bb2\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Skop\xedrovan\xe9 do schr\xe1nky";
     },
     get$copy() {
-      return "\u0ba8\u0b95\u0bb2\u0bc6\u0b9f\u0bc1";
+      return "Kop\xedrova\u0165";
     },
     get$copyToClipboard() {
-      return "\u0b87\u0b9f\u0bc8\u0ba8\u0bbf\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bb2\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0ba8\u0b95\u0bb2\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Skop\xedrova\u0165 do schr\xe1nky";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0bae\u0bb1\u0bc8\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8: " + error;
+      return "Nebolo mo\u017en\xe9 de\u0161ifrova\u0165 spr\xe1vu: " + error;
     },
     get$checkList() {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bb2\u0bcd";
+      return "Zoznam kontrol";
     },
     countParticipants$1(count) {
-      return "" + count + " \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "" + count + " \xfa\u010dastn\xedkov";
     },
     countInvited$1(count) {
-      return "" + count + " \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Pozvan\xfdch " + count;
     },
     get$create(_) {
-      return "\u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bc1";
+      return "Vytvori\u0165";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd";
+      return username + " zalo\u017eili chat";
     },
     get$createGroup() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1\u0bb5\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 skupinu";
     },
     get$createNewSpace() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b87\u0b9f\u0bae\u0bcd";
+      return "Nov\xfd priestor";
     },
     get$currentlyActive() {
-      return "\u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Moment\xe1lne pr\xedtomn\xed";
     },
     get$darkTheme() {
-      return "\u0b87\u0bb0\u0bc1\u0ba3\u0bcd\u0b9f";
+      return "Tmav\xe1";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u0b87\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb4\u0b95\u0bcd\u0b95\u0b9a\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0bae\u0bcd. \u0b87\u0ba4\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baf\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Toto deaktivuje v\xe1\u0161 pou\u017e\xedvate\u013esk\xfd \xfa\u010det. Toto nem\xf4\u017ee by\u0165 vr\xe1ten\xe9! Ste si ist\xed?";
     },
     get$defaultPermissionLevel() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b87\u0baf\u0bb2\u0bcd\u0baa\u0bc1\u0ba8\u0bbf\u0bb2\u0bc8 \u0b87\u0b9a\u0bc8\u0bb5\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8";
+      return "Predvolen\xe1 \xfarove\u0148 opr\xe1vnen\xed pre nov\xfdch pou\u017e\xedvate\u013eov";
     },
     get$$delete(_) {
-      return "\u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1";
+      return "Odstr\xe1ni\u0165";
     },
     get$deleteAccount() {
-      return "\u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1";
+      return "Vymaza\u0165 \xfa\u010det";
     },
     get$deleteMessage() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1";
+      return "Odstr\xe1ni\u0165 spr\xe1vu";
     },
     get$devices() {
-      return "\u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Zariadenia";
     },
     get$displaynameHasBeenChanged() {
-      return "\u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Prez\xfdvka bola zmenen\xe1";
     },
     get$downloadFile() {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8\u0baa\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Stiahnu\u0165 s\xfabor";
     },
     get$edit() {
-      return "\u0ba4\u0bc6\u0bbe\u0b95\u0bc1";
+      return "Upravi\u0165";
     },
     get$editBlockedServers() {
-      return "\u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Upravi\u0165 blokovan\xe9 servery";
     },
     get$chatPermissions() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Opr\xe1vnenia na chat";
     },
     get$editDisplayname() {
-      return "\u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Zmeni\u0165 prez\xfdvku";
     },
     get$editRoomAvatar() {
-      return "\u0b85\u0bb1\u0bc8 \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Upravi\u0165 avatar miestnosti";
     },
     get$emoteExists() {
-      return "\u0b8e\u0bae\u0bcb\u0b9f\u0bcd \u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1!";
+      return "Emotikon u\u017e existuje!";
     },
     get$emoteInvalid() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b8e\u0bae\u0bcb\u0b9f\u0bcd \u0b9a\u0bbe\u0bb0\u0bcd\u0b9f\u0bcd\u0b95\u0bcb\u0b9f\u0bcd!";
+      return "Nespr\xe1vn\xe9 ozna\u010denie emotikonu!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u0b85\u0ba3\u0bcd\u0bae\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b89\u0ba3\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0ba4\u0bcb\u0ba9\u0bcd\u0bb1\u0bc1\u0bae\u0bcd ...";
+      return "Ned\xe1vno pou\u017eit\xe9 emotikony sa tu zobrazia...";
     },
     get$customEmojisAndStickers() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0baf\u0ba9\u0bcd \u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bcd\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Vlastn\xe9 emotikony a n\xe1lepky";
     },
     get$emoteShortcode() {
-      return "\u0b9a\u0bbe\u0bb0\u0bcd\u0b9f\u0bcd\u0b95\u0bcb\u0b9f\u0bcd \u0b8e\u0bae\u0bcb\u0b9f\u0bcd";
+      return "K\xf3d emotikonu";
     },
     get$emptyChat() {
-      return "\u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8";
+      return "Pr\xe1zdny chat";
     },
     get$enableEmotesGlobally() {
-      return "\u0b89\u0bb2\u0b95\u0bb3\u0bb5\u0bbf\u0bb2\u0bcd \u0b8e\u0bae\u0bcb\u0b9f\u0bcd \u0baa\u0bc7\u0b95\u0bcd\u0b95\u0bc8 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165 bal\xedk emotikonov glob\xe1lne";
     },
     get$enableEncryption() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165 \u0161ifrovanie";
     },
     get$encrypted() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Za\u0161ifrovan\xe9";
     },
     get$encryptionNotEnabled() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b87\u0baf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "\u0160ifrovanie nie je akt\xedvne";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return senderName + " ukon\u010dil hovor";
     },
     get$enterAnEmailAddress() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte e-mailov\xfa adresu";
     },
     errorObtainingLocation$1(error) {
-      return "\u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0bc6\u0bb1\u0bc1\u0bb5\u0ba4\u0bbf\u0bb2\u0bcd \u0baa\u0bbf\u0bb4\u0bc8: " + error;
+      return "Chyba pri z\xedskavan\xed polohy: " + error;
     },
     get$everythingReady() {
-      return "\u0b8e\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bcd \u0ba4\u0baf\u0bbe\u0bb0\u0bbe\u0b95!";
+      return "V\u0161etko pripraven\xe9!";
     },
     get$fontSize(_) {
-      return "\u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb0\u0bc1 \u0b85\u0bb3\u0bb5\u0bc1";
+      return "Ve\u013ekos\u0165 p\xedsma";
     },
     get$forward(_) {
-      return "\u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bcb\u0b95\u0bcd\u0b95\u0bbf";
+      return "Preposla\u0165";
     },
     get$fromJoining() {
-      return "\u0b9a\u0bc7\u0bb0\u0bc1\u0bb5\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Od pripojenia";
     },
     get$fromTheInvitation() {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Od pozvania";
     },
     get$group() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1";
+      return "Skupina";
     },
     get$groupIsPublic() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1 \u0baa\u0bca\u0ba4\u0bc1";
+      return "Skupina je verejn\xe1";
     },
     get$guestsAreForbidden() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9\u0bb0\u0bcd";
+      return "Hostia s\xfa zak\xe1zan\xed";
     },
     get$guestsCanJoin() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc7\u0bb0\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Hostia sa m\xf4\u017eu pripoji\u0165";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return targetName + " \u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 " + username + " \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0baa\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " vzal sp\xe4\u0165 pozv\xe1nku pre " + targetName;
     },
     get$help() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf";
+      return "Pomoc";
     },
     get$hideRedactedMessages() {
-      return "\u0b9a\u0bb0\u0bbf\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Skry\u0165 redigovan\xe9 spr\xe1vy";
     },
     get$hideRedactedMessagesBody() {
-      return "\u0baf\u0bbe\u0bb0\u0bbe\u0bb5\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0bae\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd, \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b87\u0ba9\u0bbf \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4\u0bc1.";
+      return "Ak niekto redigoval spr\xe1vu, t\xe1to spr\xe1va u\u017e nebude vidite\u013en\xe1 v chate.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0bb5\u0b9f\u0bbf\u0bb5\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0bae\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Skry\u0165 neplatn\xe9 alebo nezn\xe1me form\xe1ty spr\xe1v";
     },
     get$block() {
-      return "\u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Blokova\u0165";
     },
     get$blockedUsers() {
-      return "\u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Blokovan\xed pou\u017e\xedvatelia";
     },
     get$blockListDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bca\u0ba8\u0bcd\u0ba4\u0bb0\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bb2\u0bbf\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0b9f\u0bae\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b8e\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b85\u0bb1\u0bc8 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "M\xf4\u017eete zablokova\u0165 pou\u017e\xedvate\u013eov, ktor\xed v\xe1s ru\u0161ia. Nebudete m\xf4c\u0165 prij\xedma\u0165 \u017eiadne spr\xe1vy alebo pozv\xe1nky do miestnost\xed od pou\u017e\xedvate\u013eov na va\u0161om osobnom zozname blokovan\xfdch.";
     },
     get$blockUsername() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ignorova\u0165 pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$iHaveClickedOnLink() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8\u0b95\u0bcd \u0b9a\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bc7\u0ba9\u0bcd";
+      return "Klikol som na odkaz";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8";
+      return "Nespr\xe1vna pr\xedstupov\xe1 fr\xe1za alebo k\u013e\xfa\u010d na obnovenie";
     },
     get$inviteContact() {
-      return "\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 kontakt";
     },
     get$noChatDescriptionYet() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b87\u0ba4\u0bc1\u0bb5\u0bb0\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "E\u0161te nebol vytvoren\xfd \u017eiadny popis chatu.";
     },
     get$tryAgain() {
-      return "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Sk\xfasi\u0165 znova";
     },
     get$invited() {
-      return "\u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb0\u0bcd";
+      return "Pozvanie";
     },
     get$redactMessageDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bbf\u0bb2\u0bcd \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0ba4\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Spr\xe1va bude redigovan\xe1 pre v\u0161etk\xfdch \xfa\u010dastn\xedkov tejto konverz\xe1cie. Toto nem\xf4\u017ee by\u0165 vr\xe1ten\xe9.";
     },
     get$optionalRedactReason() {
-      return "(\u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bbf\u0ba9\u0bbe\u0bb2\u0bcd) \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0baf\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd ...";
+      return "(Volite\u013en\xe9) D\xf4vod redigovania tejto spr\xe1vy...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " " + targetName + " \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb0\u0bcd";
+      return username + " pozvali " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7 \u0b85\u0bb4\u0bc8\u0ba4\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "Len pozvan\xed pou\u017e\xedvatelia";
     },
     get$inviteForMe() {
-      return "\u0b8e\u0ba9\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 m\u0148a";
     },
     get$isTyping() {
-      return "\u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1\u2026";
+      return "p\xed\u0161e\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return username + " sa pripojili do chatu";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " " + targetName + " \u0b90 \u0b89\u0ba4\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return username + " vyhodili " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u0b95\u0b9f\u0bc8\u0b9a\u0bbf\u0baf\u0bbe\u0b95 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb2\u0bcd: " + localizedTimeShort;
+      return "Naposledy pr\xedtomn\xed: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u0bb5\u0bbf\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bc1";
+      return "Opusti\u0165";
     },
     get$leftTheChat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd";
+      return "Opustili chat";
     },
     get$lightTheme() {
-      return "\u0b92\u0bb3\u0bbf";
+      return "Svetl\xe1";
     },
     get$dehydrate() {
-      return "\u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0ba4\u0bbf \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc1\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Exportova\u0165 rel\xe1ciu a vymaza\u0165 zariadenie";
     },
     get$dehydrateWarning() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1. \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "T\xe1to akcia sa ned\xe1 vr\xe1ti\u0165. Uistite sa, \u017ee bezpe\u010dne ulo\u017e\xedte z\xe1lo\u017en\xfd s\xfabor.";
     },
     get$loadingPleaseWait() {
-      return "\u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1\u2026 \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Na\u010d\xedtava sa\u2026 \u010cakajte pros\xedm.";
     },
     get$loadMore() {
-      return "\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b8f\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd\u2026";
+      return "Na\u010d\xedta\u0165 viac\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f \u0b9a\u0bc7\u0bb5\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9. \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0ba4\u0bb5\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Slu\u017eby polohy s\xfa zak\xe1zan\xe9. Povolen\xedm ich m\xf4\u017eete zdie\u013ea\u0165 svoju polohu.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f \u0b87\u0b9a\u0bc8\u0bb5\u0bc1 \u0bae\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0bb5\u0bb4\u0b99\u0bcd\u0b95\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Opr\xe1vnenie na polohu bolo zamietnut\xe9. Po\u017eiadajte o povolenie, aby ste mohli zdie\u013ea\u0165 svoju polohu.";
     },
     get$login() {
-      return "\u0baa\u0bc1\u0b95\u0bc1\u0baa\u0ba4\u0bbf\u0bb5\u0bc1";
+      return "Prihl\xe1si\u0165 sa";
     },
     get$logout() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bcd\u0bb1\u0bae\u0bcd";
+      return "Odhl\xe1si\u0165 sa";
     },
     get$mention() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Zmieni\u0165";
     },
     get$messages() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Spr\xe1vy";
     },
     get$messagesStyle() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd:";
+      return "Spr\xe1vy:";
     },
     get$moderator() {
-      return "\u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bbe\u0bb3\u0bb0\u0bcd";
+      return "Moder\xe1tor";
     },
     get$newVerificationRequest() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8!";
+      return "Nov\xe1 \u017eiados\u0165 o verifik\xe1ciu!";
     },
     get$next(_) {
-      return "\u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "\u010ealej";
     },
     get$no() {
-      return "\u0b87\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nie";
     },
     get$noConnectionToTheServer() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0ba4\u0bcd\u0ba4\u0bc1\u0b9f\u0ba9\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "\u017diadne spojenie so serverom";
     },
     get$noEmotesFound() {
-      return "\u0b89\u0ba3\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \ud83d\ude15";
+      return "Nena\u0161li sa \u017eiadne emotikony. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zdie\u013ea\u0165 odkaz na pozvanie";
     },
     get$none() {
-      return "\u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "\u017diadne";
     },
     get$noPermission() {
-      return "\u0b87\u0b9a\u0bc8\u0bb5\u0bc1 \u0b87\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Ch\xfdba povolenie";
     },
     get$noRoomsFound() {
-      return "\u0b85\u0bb1\u0bc8\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8\u2026";
+      return "Nena\u0161li sa \u017eiadne miestnosti\u2026";
     },
     get$notifications() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ozn\xe1menia";
     },
     get$obtainingLocation() {
-      return "\u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0bc6\u0bb1\u0bc1\u0ba4\u0bb2\u0bcd\u2026";
+      return "Z\xedskavanie polohy\u2026";
     },
     get$offensive() {
-      return "\u0ba4\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Ur\xe1\u017eliv\xe9";
     },
     get$ok() {
-      return "\u0b9a\u0bb0\u0bbf";
+      return "ok";
     },
     get$oopsSomethingWentWrong() {
-      return "\u0b85\u0b9a\u0bcd\u0b9a\u0b9a\u0bcd\u0b9a\u0bcb, \u0b8f\u0ba4\u0bcb \u0ba4\u0bb5\u0bb1\u0bc1 \u0ba8\u0b9f\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1\u2026";
+      return "Och! Nie\u010do sa pokazilo\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbe\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b92\u0bb0\u0bc1\u0bb5\u0bb0\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return "Jeden z va\u0161ich klientov bol odhl\xe1sen\xfd";
     },
     get$openInMaps() {
-      return "\u0bb5\u0bb0\u0bc8\u0baa\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd";
+      return "Otvori\u0165 v map\xe1ch";
     },
     get$link() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "Odkaz";
     },
     get$serverRequiresEmail() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd.";
+      return "Tento server potrebuje overi\u0165 va\u0161u e-mailov\xfa adresu na registr\xe1ciu.";
     },
     get$or() {
-      return "\u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1";
+      return "Alebo";
     },
     get$participant() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd";
+      return "\xda\u010dastn\xedk";
     },
     get$passphraseOrKey() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8";
+      return "pr\xedstupov\xe1 fr\xe1za alebo k\u013e\xfa\u010d na obnovenie";
     },
     get$password(_) {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Heslo";
     },
     get$passwordForgotten() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0bae\u0bb1\u0ba8\u0bcd\u0ba4\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Zabudnut\xe9 heslo";
     },
     get$passwordHasBeenChanged() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Heslo bolo zmenen\xe9";
     },
     get$pin() {
-      return "\u0bae\u0bc1\u0bb3\u0bcd";
+      return "Pin";
     },
     get$pleaseChoose() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pros\xedm, vyberte";
     },
     get$pleaseEnterYourPassword() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pros\xedm zadajte svoje heslo";
     },
     get$pleaseEnterYourPin() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte svoj pin";
     },
     get$pleaseEnterYourUsername() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte svoje pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u0bb5\u0bb2\u0bc8\u0ba4\u0bcd\u0ba4\u0bb3\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0bb5\u0bb4\u0bbf\u0bae\u0bc1\u0bb1\u0bc8\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0ba4\u0b9f\u0bcd\u0b9f\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Postupujte pod\u013ea pokynov na webovej str\xe1nke a klepnite na \u010fal\u0161ie.";
     },
     get$privacy() {
-      return "\u0ba4\u0ba9\u0bbf\u0baf\u0bc1\u0bb0\u0bbf\u0bae\u0bc8";
+      return "S\xfakromie";
     },
     get$reason(_) {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd";
+      return "D\xf4vod";
     },
     redactedBy$1(username) {
-      return username + " \u0b86\u0bb2\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Redigovan\xe9 " + username;
     },
     get$directChat() {
-      return "\u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8";
+      return "Priama konverz\xe1cia";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' \u0b86\u0bb2\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1 \u0b8f\u0ba9\u0bc6\u0ba9\u0bbf\u0bb2\u0bcd: "' + reason + '"';
+      return "Redigovan\xe9 " + username + ' preto\u017ee: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " \u0b92\u0bb0\u0bc1 \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc8 \u0bae\u0bb1\u0bc1\u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bc8\u0ba4\u0bcd\u0ba4\u0ba4\u0bc1";
+      return username + " odstr\xe1nili udalos\u0165";
     },
     get$redactMessage() {
-      return "\u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Redigova\u0165 spr\xe1vu";
     },
     get$reject() {
-      return "\u0ba8\u0bbf\u0bb0\u0bbe\u0b95\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odmietnu\u0165";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba8\u0bbf\u0bb0\u0bbe\u0b95\u0bb0\u0bbf\u0ba4\u0bcd\u0ba4\u0ba4\u0bc1";
+      return username + " odmietli pozv\xe1nku";
     },
     get$removeAllOtherDevices() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1 \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0b95\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odstr\xe1\u0148i\u0165 v\u0161etky ostatn\xe9 zariadenia";
     },
     get$unbanFromChat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0b9f\u0bc8\u0baf\u0bbf\u0ba9\u0bcd\u0bb1\u0bbf";
+      return "Odblokova\u0165";
     },
     get$removeYourAvatar() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0b95\u0bb1\u0bcd\u0bb1\u0bc1";
+      return "Odstr\xe1ni\u0165 svoj avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bcb\u0b9f\u0bc1 \u0b85\u0bb1\u0bc8\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nahradi\u0165 miestnos\u0165 nov\u0161ou verziou";
     },
     get$reply(_) {
-      return "\u0baa\u0ba4\u0bbf\u0bb2\u0bcd";
+      return "Odpoveda\u0165";
     },
     get$reportMessage() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Nahl\xe1si\u0165 spr\xe1vu";
     },
     get$roomHasBeenUpgraded() {
-      return "\u0b85\u0bb1\u0bc8 \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Miestnos\u0165 bola upgradeovan\xe1";
     },
     get$saveFile() {
-      return "\u0b95\u0bc7\u0bbe\u0baa\u0bcd\u0baa\u0bc8 \u0b9a\u0bc7\u0bae\u0bbf";
+      return "Ulo\u017ei\u0165 s\xfabor";
     },
     get$search(_) {
-      return "\u0ba4\u0bc7\u0b9f\u0bb2\u0bcd";
+      return "H\u013eada\u0165";
     },
     get$security() {
-      return "\u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1";
+      return "Bezpe\u010dnos\u0165";
     },
     get$recoveryKey() {
-      return "\u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8";
+      return "K\u013e\xfa\u010d na obnovenie";
     },
     get$recoveryKeyLost() {
-      return "\u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8 \u0b87\u0bb4\u0ba8\u0bcd\u0ba4\u0ba4\u0bbe?";
+      return "Stratil sa k\u013e\xfa\u010d na obnovenie?";
     },
     get$send(_) {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1";
+      return "Odosla\u0165";
     },
     get$sendAMessage() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 spr\xe1vu";
     },
     get$sendAudio() {
-      return "\u0b86\u0b9f\u0bbf\u0baf\u0bcb \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 zvuk";
     },
     get$sendFile() {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 s\xfabor";
     },
     get$sendImage() {
-      return "\u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1";
+      return "Odosla\u0165 obr\xe1zok";
     },
     sendImages$1(count) {
-      return "" + count + " \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1";
+      return "Odosla\u0165 " + count + " obr\xe1zok";
     },
     get$sendMessages() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 spr\xe1vy";
     },
     get$sendVideo() {
-      return "\u0bb5\u0bc0\u0b9f\u0bbf\u0baf\u0bcb \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " poslali s\xfabor";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u0b86\u0b9f\u0bbf\u0baf\u0bcb\u0bb5\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " poslali zvukov\xfa nahr\xe1vku";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " poslali obr\xe1zok";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u0b92\u0bb0\u0bc1 \u0b9a\u0bcd\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " poslali n\xe1lepku";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u0b92\u0bb0\u0bc1 \u0bb5\u0bc0\u0b9f\u0bbf\u0baf\u0bcb\u0bb5\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return username + " poslali video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return senderName + " odoslal inform\xe1cie o hovore";
     },
     get$setChatDescription() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavi\u0165 popis konverz\xe1cie";
     },
     get$settings() {
-      return "\u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Nastavenia";
     },
     get$share(_) {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc1";
+      return "Zdie\u013ea\u0165";
     },
     sharedTheLocation$1(username) {
-      return username + " \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bbf\u0ba9\u0bcd \u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0ba4\u0bc1";
+      return username + " zdie\u013ea lok\xe1ciu";
     },
     get$shareLocation() {
-      return "\u0b87\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zdie\u013ea\u0165 polohu";
     },
     get$skip(_) {
-      return "\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd";
+      return "Presko\u010di\u0165";
     },
     get$sourceCode() {
-      return "\u0bae\u0bc2\u0bb2\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1";
+      return "Zdrojov\xfd k\xf3d";
     },
     get$spaceIsPublic() {
-      return "\u0b87\u0b9f\u0bae\u0bcd \u0baa\u0bca\u0ba4\u0bc1";
+      return "Priestor je verejn\xfd";
     },
     get$spaceName() {
-      return "\u0bb5\u0bbf\u0ba3\u0bcd\u0bb5\u0bc6\u0bb3\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "N\xe1zov priestoru";
     },
     startedACall$1(senderName) {
-      return senderName + " \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd";
+      return senderName + " za\u010dal hovor";
     },
     get$status(_) {
-      return "\u0ba8\u0bbf\u0bb2\u0bc8";
+      return "Stav";
     },
     get$submit(_) {
-      return "\u0b9a\u0bae\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165";
     },
     get$synchronizingPleaseWait() {
-      return "\u0b92\u0ba4\u0bcd\u0ba4\u0bbf\u0b9a\u0bc8\u0ba4\u0bcd\u0ba4\u0bb2\u0bcd\u2026 \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Synchroniz\xe1cia... Pros\xedm \u010dakajte.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " \u0b92\u0ba4\u0bcd\u0ba4\u0bbf\u0b9a\u0bc8\u0ba4\u0bcd\u0ba4\u0bb2\u0bcd\u2026 (" + percentage + "%)";
+      return " Synchroniz\xe1cia... (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u0bae\u0ba3\u0bcd\u0b9f\u0bb2\u0bae\u0bcd";
+      return "Syst\xe9mov\xe1 farba";
     },
     get$theyDontMatch() {
-      return "\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Sa nezhoduj\xfa";
     },
     get$theyMatch() {
-      return "\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Zhoduj\xfa sa";
     },
     get$tooManyRequestsWarning() {
-      return "\u0baa\u0bb2 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd. \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Pr\xedli\u0161 ve\u013ea po\u017eiadaviek. Sk\xfaste to pros\xedm nesk\xf4r!";
     },
     get$transferFromAnotherDevice() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bca\u0bb0\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prenies\u0165 z in\xe9ho zariadenia";
     },
     get$tryToSendAgain() {
-      return "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Sk\xfasi\u0165 znova odosla\u0165";
     },
     get$unavailable() {
-      return "\u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nedostupn\xe9";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 " + targetName;
+      return username + " odbanovali " + targetName;
     },
     get$unblockDevice() {
-      return "\u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Odblokova\u0165 zariadenie";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95 \u0bb5\u0bb4\u0bbf\u0bae\u0bc1\u0bb1\u0bc8";
+      return "Nezn\xe1my \u0161ifrovac\xed algoritmus";
     },
     unknownEvent$1(type) {
-      return "\u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1 '" + type + "'";
+      return "Nezn\xe1ma udalos\u0165 \u201e" + type + "\u201c";
     },
     get$unpin() {
-      return "\u0bae\u0bc2\u0bb3\u0bcd\u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1";
+      return "Odin\u0161talova\u0165";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd " + count + " \u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd\u2026";
+      return username + " a " + count + " dal\u0161\xedch p\xed\u0161u\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd " + username2 + " \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9\u2026";
+      return username + " a " + username2 + " p\xed\u0161u\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1\u2026";
+      return username + " p\xed\u0161e\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd";
+      return username + " opustili chat";
     },
     get$username(_) {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "U\u017e\xedvate\u013esk\xe9 meno";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u0b92\u0bb0\u0bc1 " + type + " \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0ba4\u0bc1";
+      return username + " poslali udalos\u0165 " + type;
     },
     get$unverified() {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4\u0ba4\u0bc1";
+      return "Neoveren\xe9";
     },
     get$verified() {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Overen\xe9";
     },
     get$verifyStart() {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Spusti\u0165 verifik\xe1ciu";
     },
     get$verifySuccess() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bbf\u0b95\u0bb0\u0bae\u0bbe\u0b95 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd!";
+      return "Verifik\xe1cia bola \xfaspe\u0161n\xe1!";
     },
     get$verifyTitle() {
-      return "\u0baa\u0bbf\u0bb1 \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Verifikujem proti\u013eahl\xfd \xfa\u010det";
     },
     get$visibleForAllParticipants() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bc1\u0bae\u0bcd";
+      return "Vidite\u013en\xe9 pre v\u0161etk\xfdch \xfa\u010dastn\xedkov";
     },
     get$visibleForEveryone() {
-      return "\u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bc1\u0bae\u0bcd";
+      return "Vidite\u013en\xe9 pre ka\u017ed\xe9ho";
     },
     get$voiceMessage() {
-      return "\u0b95\u0bc1\u0bb0\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Hlasov\xe1 spr\xe1va";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u0b95\u0bc2\u0b9f\u0bcd\u0b9f\u0bbe\u0bb3\u0bb0\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u2026";
+      return "\u010cak\xe1 sa, k\xfdm partner prijme po\u017eiadavku\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc1\u0ba4\u0bbe\u0bb0\u0bb0\u0bcd \u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0baf\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u2026";
+      return "\u010cak\xe1 sa, k\xfdm partner prijme emotikon\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc1\u0ba4\u0bbe\u0bb0\u0bb0\u0bcd \u0b8e\u0ba3\u0bcd\u0b95\u0bb3\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u2026";
+      return "\u010cak\xe1 sa na to, k\xfdm partner prijme \u010d\xedsla\u2026";
     },
     get$warning() {
-      return "\u0b8e\u0b9a\u0bcd\u0b9a\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8!";
+      return "Varovanie!";
     },
     get$weSentYouAnEmail() {
-      return "\u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bcb\u0bae\u0bcd";
+      return "Poslali sme v\xe1m e-mail";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u0b87\u0ba4\u0bc8 \u0b8f\u0ba9\u0bcd \u0baa\u0bc1\u0b95\u0bbe\u0bb0\u0bb3\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?";
+      return "Pre\u010do to chcete nahl\xe1si\u0165?";
     },
     get$wipeChatBackup() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bc1\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbe?";
+      return "Vymaza\u0165 z\xe1lohu chatu na vytvorenie nov\xe9ho k\u013e\xfa\u010da na obnovenie?";
     },
     get$writeAMessage() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0b8e\u0bb4\u0bc1\u0ba4\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd\u2026";
+      return "Nap\xedsa\u0165 spr\xe1vu\u2026";
     },
     get$yes() {
-      return "\u0b86\u0bae\u0bcd";
+      return "\xc1no";
     },
     get$you() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Vy";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0ba9\u0bbf \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "U\u017e sa nez\xfa\u010dast\u0148ujete tohto chatu";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0b9f\u0bc8 \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "M\xe1te zablokovan\xfd pr\xedstup k tomuto chatu";
     },
     get$yourPublicKey() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0ba4\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8";
+      return "V\xe1\u0161 verejn\xfd k\u013e\xfa\u010d";
     },
     get$messageInfo() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0ba4\u0b95\u0bb5\u0bb2\u0bcd";
+      return "Inform\xe1cie o spr\xe1ve";
     },
     get$time(_) {
-      return "\u0ba8\u0bc7\u0bb0\u0bae\u0bcd";
+      return "\u010cas";
     },
     get$sender() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0ba8\u0bb0\u0bcd";
+      return "Odosielate\u013e";
     },
     get$openGallery() {
-      return "\u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0b95\u0bc7\u0bb2\u0bb0\u0bbf";
+      return "Otvori\u0165 gal\xe9riu";
     },
     get$start(_) {
-      return "\u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1";
+      return "Za\u010da\u0165";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bb4\u0bc8\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95, \u0bae\u0bc1\u0ba8\u0bcd\u0ba4\u0bc8\u0baf \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bbf\u0bb2\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b85\u0bb2\u0bcd\u0bb2.";
+      return "Ak chcete odomkn\xfa\u0165 svoje star\xe9 spr\xe1vy, zadajte svoj k\u013e\xfa\u010d na obnovenie, ktor\xfd bol vygenerovan\xfd v predch\xe1dzaj\xfacej rel\xe1cii. V\xe1\u0161 k\u013e\xfa\u010d na obnovenie NIE je va\u0161e heslo.";
     },
     get$markAsRead() {
-      return "\u0baa\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0baa\u0b9f\u0bbf \u0b95\u0bc1\u0bb1\u0bbf";
+      return "Ozna\u010di\u0165 ako pre\u010d\xedtan\xe9";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " " + reaction + " \u0b89\u0b9f\u0ba9\u0bcd \u0baa\u0ba4\u0bbf\u0bb2\u0bb3\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return sender + " reagoval s " + reaction;
     },
     get$pinMessage() {
-      return "\u0b85\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0bb3\u0bcd";
+      return "Pripn\xfa\u0165 do miestnosti";
     },
     get$emojis() {
-      return "\u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Emotikony";
     },
     get$youRejectedTheInvitation() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba8\u0bbf\u0bb0\u0bbe\u0b95\u0bb0\u0bbf\u0ba4\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Odmietli ste pozvanie";
     },
     get$youJoinedTheChat() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Pripojili ste sa k chatu";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\ud83d\udc4d Prijali ste pozvanie";
     },
     youBannedUser$1(user) {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd " + user + " \u0ba4\u0b9f\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Zabanoval(a) ste " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return user + "\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0baa\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Stiahli ste pozvanie pre " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd " + user + " \u0b86\u0bb2\u0bcd \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\ud83d\udce9 Boli ste pozvan\xed " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 " + user + " \u0b90 \u0b85\u0bb4\u0bc8\u0ba4\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\ud83d\udce9 Pozvali ste " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e " + user + "\u0b90 \u0b89\u0ba4\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\ud83d\udc5e Vyhodili ste " + user;
     },
     youUnbannedUser$1(user) {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd " + user + " \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Odomkli ste " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u0ba4\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0ba4\u0bc1";
+      return "\ud83d\udeaa " + user + " zaklopal";
     },
     get$knock() {
-      return "\u0ba4\u0b9f\u0bcd\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Klop";
     },
     get$unlockOldMessages() {
-      return "\u0baa\u0bb4\u0bc8\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odomkn\xfa\u0165 star\xe9 spr\xe1vy";
     },
     get$storeInSecureStorageDescription() {
-      return "\u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc8 \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0b9a\u0bc7\u0bae\u0bbf\u0baa\u0bcd\u0baa\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Ulo\u017ete k\u013e\xfa\u010d na obnovenie do zabezpe\u010den\xe9ho \xfalo\u017eiska tohto zariadenia.";
     },
     get$saveKeyManuallyDescription() {
-      return "\u0b95\u0ba3\u0bbf\u0ba9\u0bbf \u0baa\u0b95\u0bbf\u0bb0\u0bcd\u0bb5\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b95\u0bbf\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0bcb\u0bb0\u0bcd\u0b9f\u0bc8\u0ba4\u0bcd \u0ba4\u0bc2\u0ba3\u0bcd\u0b9f\u0bc1\u0bb5\u0ba4\u0ba9\u0bcd \u0bae\u0bc2\u0bb2\u0bae\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bc8 \u0b95\u0bc8\u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bbe\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Ulo\u017ete tento k\u013e\xfa\u010d manu\xe1lne spusten\xedm dial\xf3gu zdie\u013eania syst\xe9mu alebo schr\xe1nky.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ulo\u017ei\u0165 bezpe\u010dne na tomto zariaden\xed";
     },
     countFiles$1(count) {
-      return "" + count + " \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "" + count + " s\xfaborov";
     },
     get$user() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd";
+      return "Pou\u017e\xedvate\u013e";
     },
     get$custom() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0baf\u0ba9\u0bcd";
+      return "Vlastn\xe9";
     },
     get$noKeyForThisMessage() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bbf\u0bb2\u0bcd \u0b95\u0bc8\u0baf\u0bca\u0baa\u0bcd\u0baa\u0bae\u0bbf\u0b9f\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd\u0baa\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd \u0b87\u0ba4\u0bc1 \u0ba8\u0bbf\u0b95\u0bb4\u0bb2\u0bbe\u0bae\u0bcd.\n\n \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0ba8\u0bb0\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b87\u0ba3\u0bc8\u0baf \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b8f\u0ba4\u0bc7\u0ba9\u0bc1\u0bae\u0bcd \u0ba4\u0bb5\u0bb1\u0bc1 \u0b8f\u0bb1\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.\n\n \u0bae\u0bb1\u0bcd\u0bb1\u0bca\u0bb0\u0bc1 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bbf\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8\u0baa\u0bcd \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bbe? \u0b85\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb2\u0bbe\u0bae\u0bcd! \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd> \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0b9a\u0bcd \u0b9a\u0bc6\u0ba9\u0bcd\u0bb1\u0bc1, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb0\u0bc1\u0bb5\u0bb0\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9 \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd. \u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0bae\u0bc1\u0bb1\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb1\u0bc8\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bc1 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0ba3\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0bb5\u0bbf\u0b9a\u0bc8\u0b95\u0bb3\u0bcd \u0ba4\u0bbe\u0ba9\u0bbe\u0b95\u0bb5\u0bc7 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd.\n\n \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0b95\u0bb3\u0bc8 \u0b87\u0bb4\u0b95\u0bcd\u0b95 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8\u0baf\u0bbe? \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baf\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0b95\u0bcd \u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Toto sa m\xf4\u017ee sta\u0165, ak bola spr\xe1va odoslan\xe1 sk\xf4r, ako ste sa prihl\xe1sili do svojho \xfa\u010dtu na tomto zariaden\xed.\n\nJe tie\u017e mo\u017en\xe9, \u017ee odosielate\u013e zablokoval va\u0161e zariadenie alebo do\u0161lo k probl\xe9mom s internetov\xfdm pripojen\xedm.\n\nDok\xe1\u017eete pre\u010d\xedta\u0165 spr\xe1vu na inom rel\xe1cii? Potom m\xf4\u017eete spr\xe1vu prenies\u0165 z nej! Prejdite do Nastavenia > Zariadenia a uistite sa, \u017ee va\u0161e zariadenia si navz\xe1jom overili. Ke\u010f op\xe4\u0165 otvor\xedte miestnos\u0165 a obe rel\xe1cie bud\xfa v popred\xed, k\u013e\xfa\u010de sa automaticky prenes\xfa.\n\nNechcete strati\u0165 k\u013e\xfa\u010de pri odhl\xe1sen\xed alebo prep\xednan\xed zariaden\xed? Uistite sa, \u017ee ste povolili z\xe1lohu chatu v nastaveniach.";
     },
     get$newSpace() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b87\u0b9f\u0bae\u0bcd";
+      return "Nov\xfd priestor";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 (" + oldDisplayName + ")";
+      return "Pr\xe1zdny chat (bol " + oldDisplayName + ")";
     },
     get$newSpaceDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0b95\u0bb3\u0bc8 \u0b92\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bbf\u0ba3\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0ba4\u0ba9\u0bbf\u0baf\u0bbe\u0bb0\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0bca\u0ba4\u0bc1 \u0b9a\u0bae\u0bc2\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95 \u0b87\u0b9f\u0bc8\u0bb5\u0bc6\u0bb3\u0bbf\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Priestory v\xe1m umo\u017e\u0148uj\xfa zjednoti\u0165 va\u0161e chaty a vytvori\u0165 s\xfakromn\xe9 alebo verejn\xe9 komunity.";
     },
     get$reopenChat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Znova otvori\u0165 rozhovor";
     },
     get$noOtherDevicesFound() {
-      return "\u0bb5\u0bc7\u0bb1\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nena\u0161li sa \u017eiadne in\xe9 zariadenia";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8! \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd " + max + " \u0bb5\u0bb0\u0bc8 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7 \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Ned\xe1 sa odosla\u0165! Server podporuje pr\xedlohy iba do " + max + ".";
     },
     fileHasBeenSavedAt$1(path) {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1 " + path;
+      return "S\xfabor bol ulo\u017een\xfd na " + path;
     },
     get$jumpToLastReadMessage() {
-      return "\u0b95\u0b9f\u0bc8\u0b9a\u0bbf \u0bb5\u0bbe\u0b9a\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prejs\u0165 na posledn\xfa pre\u010d\xedtan\xfa spr\xe1vu";
     },
     get$readUpToHere() {
-      return "\u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pre\u010d\xedtan\xe9 do tohto miesta";
     },
     get$jump() {
-      return "\u0ba4\u0bbe\u0bb5\u0bc1";
+      return "Prejs\u0165";
     },
     get$openLinkInBrowser() {
-      return "\u0b89\u0bb2\u0bbe\u0bb5\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Otvori\u0165 odkaz v prehliada\u010di";
     },
     get$setColorTheme() {
-      return "\u0bb5\u0ba3\u0bcd\u0ba3 \u0b95\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd:";
+      return "Nastavi\u0165 farebn\xfa t\xe9mu:";
     },
     get$invite() {
-      return "\u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165";
     },
     get$invalidInput() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b89\u0bb3\u0bcd\u0bb3\u0bc0\u0b9f\u0bc1!";
+      return "Neplatn\xfd vstup!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0bae\u0bc1\u0bb3\u0bcd \u0ba8\u0bc1\u0bb4\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1! " + seconds + " \u0bb5\u0bbf\u0ba8\u0bbe\u0b9f\u0bbf\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd ...";
+      return "Zadali ste nespr\xe1vne k\xf3dov\xe9 slovo! Sk\xfaste to znova za " + seconds + " sek\xfand...";
     },
     get$pleaseEnterANumber() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 0 \u0b90 \u0bb5\u0bbf\u0b9f \u0b85\u0ba4\u0bbf\u0b95\u0bae\u0bbe\u0ba9 \u0b8e\u0ba3\u0bcd\u0ba3\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte \u010d\xedslo v\xe4\u010d\u0161ie ako 0";
     },
     get$removeDevicesDescription() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bc1\u0bb5\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd, \u0b87\u0ba9\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Odhl\xe1site sa z tohto zariadenia a u\u017e nebudete m\xf4c\u0165 prij\xedma\u0165 spr\xe1vy.";
     },
     get$banUserDescription() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bb5\u0bbe\u0bb0\u0bcd, \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b85\u0bb5\u0bc8 \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0bb5\u0bb0\u0bc8 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bc1\u0bb4\u0bc8\u0baf \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Pou\u017e\xedvate\u013e bude zablokovan\xfd v chate a nebude m\xf4c\u0165 znova vst\xfapi\u0165, k\xfdm nebude odblokovan\xfd.";
     },
     get$unbanUserDescription() {
-      return "\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Pou\u017e\xedvate\u013e bude m\xf4c\u0165 znova vst\xfapi\u0165 do chatu, ak sa pok\xfasi.";
     },
     get$kickUserDescription() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bcd\u0bb1\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd, \u0b86\u0ba9\u0bbe\u0bb2\u0bcd \u0ba4\u0b9f\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0baa\u0bca\u0ba4\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd, \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0ba8\u0bc7\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bc1\u0bae\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bc7\u0bb0\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Pou\u017e\xedvate\u013e je vykopnut\xfd z chatu, ale nie je zablokovan\xfd. Vo verejn\xfdch chatov m\xf4\u017ee sa k nemu pripoji\u0165 kedyko\u013evek znova.";
     },
     get$makeAdminDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0baf\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bb5\u0bc1\u0b9f\u0ba9\u0bcd, \u0b87\u0ba4\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0bae\u0bb2\u0bcd \u0baa\u0bcb\u0b95\u0bb2\u0bbe\u0bae\u0bcd, \u0b8f\u0ba9\u0bc6\u0ba9\u0bbf\u0bb2\u0bcd \u0b85\u0bb5\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bcb\u0ba9\u0bcd\u0bb1 \u0b85\u0ba4\u0bc7 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd.";
+      return "Ak tomuto pou\u017e\xedvate\u013eovi udelite status spr\xe1vcu, nemus\xedte to m\xf4c\u0165 zvr\xe1ti\u0165, preto\u017ee bude ma\u0165 rovnak\xe9 opr\xe1vnenia ako vy.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb2\u0b95\u0bb3\u0bbe\u0bb5\u0bbf\u0baf \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b90\u0b9f\u0bbf: ";
+      return "V\xe1\u0161 glob\xe1lny pou\u017e\xedvate\u013esk\xfd identifik\xe1tor je: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u0ba4\u0bc1\u0bb0\u0ba4\u0bbf\u0bb0\u0bcd\u0b9a\u0bcd\u0b9f\u0bb5\u0b9a\u0bae\u0bbe\u0b95 "' + query + '" \u0b89\u0b9f\u0ba9\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bbe\u0ba3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1 \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb4\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.';
+      return 'Bohu\u017eia\u013e, s "' + query + '" sa nena\u0161iel \u017eiadny pou\u017e\xedvate\u013e. Skontrolujte, \u010di ste neurobili preklep.';
     },
     get$knocking() {
-      return "\u0ba4\u0b9f\u0bcd\u0b9f\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Klopanie";
     },
     get$nothingFound() {
-      return "\u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8 ...";
+      return "Ni\u010d sa nena\u0161lo...";
     },
     get$groupName() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1 \u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "N\xe1zov skupiny";
     },
     get$createGroupAndInviteUsers() {
-      return "\u0b92\u0bb0\u0bc1 \u0b95\u0bc1\u0bb4\u0bc1\u0bb5\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 skupinu a pozva\u0165 pou\u017e\xedvate\u013eov";
     },
     get$groupCanBeFoundViaSearch() {
-      return "\u0ba4\u0bc7\u0b9f\u0bb2\u0bcd \u0bb5\u0bb4\u0bbf\u0baf\u0bbe\u0b95 \u0b95\u0bc1\u0bb4\u0bc1\u0bb5\u0bc8 \u0b95\u0bbe\u0ba3\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Skupina je mo\u017en\xe9 n\xe1js\u0165 prostredn\xedctvom vyh\u013ead\xe1vania";
     },
     get$wrongRecoveryKey() {
-      return "\u0bae\u0ba9\u0bcd\u0ba9\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd ... \u0b87\u0ba4\u0bc1 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0bae\u0bc0\u0b9f\u0bcd\u0baa\u0bc1 \u0bb5\u0bbf\u0b9a\u0bc8\u0baf\u0bbe\u0b95\u0ba4\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "Prep\xe1\u010dte... zd\xe1 sa, \u017ee toto nie je spr\xe1vny k\u013e\xfa\u010d na obnovenie.";
     },
     get$startConversation() {
-      return "\u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Za\u010da\u0165 konverz\xe1ciu";
     },
     get$commandHint_sendraw() {
-      return "\u0bae\u0bc2\u0bb2 \u0b9a\u0bbe\u0ba4\u0bca\u0baa\u0bca\u0b95\u0bc1 \u0b90 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Odosla\u0165 surov\xfd JSON";
     },
     get$searchForUsers() {
-      return "@Users \u0b90\u0ba4\u0bcd \u0ba4\u0bc7\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd ...";
+      return "H\u013eada\u0165 @pou\u017e\xedvate\u013eov...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc8\u0baf \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte svoje aktu\xe1lne heslo";
     },
     get$newPassword() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Nov\xe9 heslo";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u0bb5\u0bb2\u0bc1\u0bb5\u0bbe\u0ba9 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Vyberte si siln\xe9 heslo";
     },
     get$passwordsDoNotMatch() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Hesl\xe1 sa nezhoduj\xfa";
     },
     get$passwordIsWrong() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bcd\u0b9f \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bc1";
+      return "Zadan\xe9 heslo je nespr\xe1vne";
     },
     get$decline() {
-      return "\u0bb5\u0bc0\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf";
+      return "Odmietnu\u0165";
     },
     get$thisDevice() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0bae\u0bcd:";
+      return "Toto zariadenie:";
     },
     get$initAppError() {
-      return "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0bbf\u0bb4\u0bc8 \u0b8f\u0bb1\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Pri inicializ\xe1cii aplik\xe1cie do\u0161lo k chybe";
     },
     searchIn$1(chat) {
-      return '\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bc7\u0b9f\u0bc1 "' + chat + '" ...';
+      return 'H\u013eada\u0165 v chate "' + chat + '"...';
     },
     get$searchMore() {
-      return "\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0ba4\u0bc7\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd ...";
+      return "H\u013eada\u0165 viac...";
     },
     get$gallery() {
-      return "\u0b95\u0bc7\u0bb2\u0bb0\u0bbf";
+      return "Gal\xe9ria";
     },
     get$files(_) {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "S\xfabory";
     },
     sessionLostBody$2(url, error) {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1 \u0ba4\u0bca\u0bb2\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1. " + url + string$.x20_____ + error;
+      return "Va\u0161a rel\xe1cia bola straten\xe1. Pros\xedm, nahl\xe1ste t\xfato chybu v\xfdvoj\xe1rom na " + url + ". Chybov\xe1 spr\xe1va je: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u0b86\u0baa\u0bcd\u0bb8\u0bcd \u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc8 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bae\u0bc0\u0b9f\u0bcd\u0b9f\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1. " + url + string$.x20_____ + error;
+      return "Aplik\xe1cia sa teraz sna\u017e\xed obnovi\u0165 va\u0161u rel\xe1ciu zo z\xe1lohy. Pros\xedm, nahl\xe1ste t\xfato chybu v\xfdvoj\xe1rom na " + url + ". Chybov\xe1 spr\xe1va je: " + error;
     },
     get$sendReadReceipts() {
-      return "\u0bb5\u0bbe\u0b9a\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0bb0\u0b9a\u0bc0\u0ba4\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 potvrdenia o pre\u010d\xedtan\xed";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1 \u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1 \u0b95\u0bbe\u0ba3\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Ostatn\xed \xfa\u010dastn\xedci chatu vidia, ke\u010f p\xed\u0161ete nov\xfa spr\xe1vu.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8\u0baa\u0bcd \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Ostatn\xed \xfa\u010dastn\xedci chatu vidia, ke\u010f ste spr\xe1vu pre\u010d\xedtali.";
     },
     get$verifyOtherDevice() {
-      return "Sevice \u0baa\u0bbf\u0bb1 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "\ud83d\udd10 Overi\u0165 in\xe9 zariadenie";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bca\u0bb0\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8\u0b9a\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0b85\u0ba8\u0bcd\u0ba4\u0b9a\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbf\u0b9a\u0bc8\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb0\u0bbf\u0bae\u0bbe\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bb2\u0bbe\u0bae\u0bcd, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc8 \u0b85\u0ba4\u0bbf\u0b95\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd. \ud83d\udcaa \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb2\u0bcd \u0b92\u0bb0\u0bc1 \u0baa\u0bbe\u0baa\u0bcd\u0b85\u0baa\u0bcd \u0ba4\u0bcb\u0ba9\u0bcd\u0bb1\u0bc1\u0bae\u0bcd. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb0\u0bc1\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb0\u0bc1\u0bb5\u0bb0\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bbf\u0b9f \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0baf\u0bbe\u0ba9 \u0b88\u0bae\u0bcb\u0b9a\u0bbf\u0b95\u0bb3\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b8e\u0ba3\u0bcd\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd\u0baa\u0bc1 \u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b8e\u0bb3\u0bbf\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bc8\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bc1 \u0ba8\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1. \ud83e\udd33";
+      return "Ke\u010f over\xedte in\xe9 zariadenie, tieto zariadenia m\xf4\u017eu vymie\u0148a\u0165 k\u013e\xfa\u010de, \u010d\xedm sa zv\xfd\u0161i va\u0161a celkov\xe1 bezpe\u010dnos\u0165. \ud83d\udcaa Ke\u010f za\u010dnete overovanie, v oboch zariadeniach sa objav\xed vyskakovacie okno. Tam uvid\xedte s\xe9riu emoji alebo \u010d\xedsel, ktor\xe9 si mus\xedte navz\xe1jom porovna\u0165. Je najlep\u0161ie ma\u0165 obe zariadenia po ruke pred za\u010dat\xedm overovania. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u0b8f\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1";
+      return sender + " prijal overenie k\u013e\xfa\u010da";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u0bb0\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1";
+      return sender + " zru\u0161il overenie k\u013e\xfa\u010da";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u0ba8\u0bbf\u0bb1\u0bc8\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1";
+      return sender + " dokon\u010dil overenie k\u013e\xfa\u010da";
     },
     isReadyForKeyVerification$1(sender) {
-      return "\u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 " + sender + " \u0ba4\u0baf\u0bbe\u0bb0\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return sender + " je pripraven\xfd na overenie k\u013e\xfa\u010da";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u0b95\u0bcb\u0bb0\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1";
+      return sender + " po\u017eiadal o overenie k\u013e\xfa\u010da";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u0bb5\u0bbf\u0b9a\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd";
+      return sender + " za\u010dal overovanie k\u013e\xfa\u010da";
     },
     get$commandHint_ignore() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bc7\u0b9f\u0bcd\u0bb0\u0bbf\u0b95\u0bcd\u0b9a\u0bcd \u0b90\u0b9f\u0bbf\u0baf\u0bc8 \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ignorova\u0165 dan\xe9 matrix ID";
     },
     get$commandHint_unignore() {
-      return "\u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bc7\u0b9f\u0bcd\u0bb0\u0bbf\u0b95\u0bcd\u0b9a\u0bcd \u0b90\u0b9f\u0bbf\u0baf\u0bc8 \u0b87\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zru\u0161i\u0165 ignorovanie dan\xe9ho matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 " + count + " \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9\u0bb0\u0bcd.";
+      return "Pr\xe1ve je zablokovan\xfdch " + count + " pou\u017e\xedvate\u013eov.";
     },
     get$restricted() {
-      return "\u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Obmedzen\xe9";
     },
     get$markAsUnread() {
-      return "\u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0ba4 \u0b8e\u0ba9\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ozna\u010di\u0165 ako nepre\u010d\xedtan\xe9";
     },
     userLevel$1(level) {
-      return "" + level + " - \u0baa\u0baf\u0ba9\u0bb0\u0bcd";
+      return "" + level + " - Pou\u017e\xedvate\u013e";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bbe\u0bb3\u0bb0\u0bcd";
+      return "" + level + " - Moder\xe1tor";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf";
+      return "" + level + " - Administr\xe1tor";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bcd\u0bb1\u0bbf\u0ba9\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bc1\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 vidite\u013enos\u0165 hist\xf3rie chatu";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0bca\u0ba4\u0bc1 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 hlavn\xfa verejn\xfa adresu chatu";
     },
     get$sendRoomNotifications() {
-      return "\u0b92\u0bb0\u0bc1 @ROOM \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Posla\u0165 @room ozn\xe1menia";
     },
     get$chatPermissionsDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bbf\u0bb2 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b8e\u0ba8\u0bcd\u0ba4 \u0b86\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0ba8\u0bbf\u0bb2\u0bc8 \u0ba4\u0bc7\u0bb5\u0bc8 \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd. 0, 50 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd 100 \u0b86\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0ba8\u0bbf\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd, \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9, \u0b86\u0ba9\u0bbe\u0bb2\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0ba4\u0bb0\u0bae\u0bc1\u0bae\u0bcd \u0b9a\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bae\u0bbe\u0b95\u0bc1\u0bae\u0bcd.";
+      return "Definujte, ak\xe1 \xfarove\u0148 opr\xe1vnen\xed je potrebn\xe1 na ur\u010dit\xe9 akcie v tomto chate. \xdarovne opr\xe1vnen\xed 0, 50 a 100 zvy\u010dajne predstavuj\xfa pou\u017e\xedvate\u013eov, moder\xe1torov a administr\xe1torov, ale je mo\u017en\xe9 aj ak\xe9ko\u013evek in\xe9 rozl\xed\u0161enie.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baa\u0bcd\u0baa\u0bc1 " + version + " \u0ba8\u0bbf\u0bb1\u0bc1\u0bb5\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1!";
+      return "\ud83c\udf89 Aktualiz\xe1cia " + version + " nain\u0161talovan\xe1!";
     },
     get$sendCanceled() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1 \u0bb0\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Odoslanie zru\u0161en\xe9";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u0b87\u0ba3\u0b95\u0bcd\u0b95\u0bae\u0bbe\u0ba9 \u0b93\u0bae\u0bcd\u0b9a\u0bb0\u0bcd\u0bb5\u0bb0\u0bcd \u0b8e\u0ba9\u0bcd\u0bb1\u0bc1 \u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 URL?";
+      return "Nezd\xe1 sa, \u017ee ide o kompatibiln\xfd dom\xe1ci server. Zl\xe1 URL?";
     },
     get$calculatingFileSize() {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bb3\u0bb5\u0bc8\u0b95\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bbf\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1 ...";
+      return "Vypo\u010d\xedtavanie ve\u013ekosti s\xfaboru...";
     },
     get$prepareSendingAttachment() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0bae\u0bcd \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0baf\u0bbe\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd ...";
+      return "Pr\xedprava na odoslanie pr\xedlohy...";
     },
     get$sendingAttachment() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1 ...";
+      return "Odosielanie pr\xedlohy...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "" + $length + " \u0b87\u0ba9\u0bcd \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 " + index + "\u0b90 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1...";
+      return "Odosielanie pr\xedlohy " + index + " z " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 \u0bb5\u0bb0\u0bae\u0bcd\u0baa\u0bc1 \u0b85\u0b9f\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1! " + seconds + " \u0bb5\u0bbf\u0ba8\u0bbe\u0b9f\u0bbf\u0b95\u0bb3\u0bcd \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1 ...";
+      return "Limit servera dosiahnut\xfd! \u010cak\xe1m " + seconds + " sek\xfand...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1: \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0b87\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0b85\u0bb5\u0bc8 \u0ba4\u0bbe\u0ba9\u0bbe\u0b95\u0bb5\u0bc7 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd.";
+      return "Pozn\xe1mka: Ke\u010f pripoj\xedte v\u0161etky svoje zariadenia k z\xe1lohe chatu, automaticky sa overia.";
     },
     get$continueText() {
-      return "\u0ba4\u0bca\u0b9f\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pokra\u010dova\u0165";
     },
     get$blur(_) {
-      return "\u0bae\u0b99\u0bcd\u0b95\u0bb2\u0bbe\u0ba9\u0ba4\u0bc1:";
+      return "Rozmazanie:";
     },
     get$opacity(_) {
-      return "\u0b92\u0bb3\u0bbf\u0baa\u0bc1\u0b95\u0bbe\u0ba8\u0bbf\u0bb2\u0bc8:";
+      return "Prieh\u013eadnos\u0165:";
     },
     get$setWallpaper() {
-      return "\u0bb5\u0bbe\u0bb2\u0bcd\u0baa\u0bc7\u0baa\u0bcd\u0baa\u0bb0\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavi\u0165 tapetu";
     },
     get$noContactInformationProvided() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0ba4\u0b95\u0bb5\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bb5\u0bb4\u0b99\u0bcd\u0b95\u0bbe\u0ba4\u0bc1";
+      return "Server neposkytuje \u017eiadne platn\xe9 kontaktn\xe9 inform\xe1cie";
     },
     get$contactServerAdmin() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1";
+      return "Kontaktova\u0165 spr\xe1vcu servera";
     },
     get$contactServerSecurity() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Kontaktova\u0165 bezpe\u010dnos\u0165 servera";
     },
     get$supportPage() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf \u0baa\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Str\xe1nka podpory";
     },
     get$serverInformation() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd:";
+      return "Inform\xe1cie o serveri:";
     },
     get$name(_) {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "N\xe1zov";
     },
     get$version(_) {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Verzia";
     },
     get$website() {
-      return "\u0bb5\u0bb2\u0bc8\u0ba4\u0bcd\u0ba4\u0bb3\u0bae\u0bcd";
+      return "Webov\xe1 str\xe1nka";
     },
     get$compress() {
-      return "\u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95";
+      return "Komprimova\u0165";
     },
     get$boldText() {
-      return "\u0ba4\u0bc8\u0bb0\u0bbf\u0baf\u0bae\u0bbe\u0ba9 \u0b89\u0bb0\u0bc8";
+      return "Tu\u010dn\xfd text";
     },
     get$italicText() {
-      return "\u0b9a\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b89\u0bb0\u0bc8";
+      return "Kurz\xedva";
     },
     get$strikeThrough() {
-      return "\u0b9a\u0bcd\u0b9f\u0bcd\u0bb0\u0bc8\u0b95\u0bc6\u0ba4\u0bcd\u0bb0\u0bcb";
+      return "Pre\u0161krtnut\xe9";
     },
     get$pleaseFillOut() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb0\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pros\xedm, vypl\u0148te";
     },
     get$invalidUrl() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf";
+      return "Neplatn\xe1 URL";
     },
     get$addLink() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prida\u0165 odkaz";
     },
     get$unableToJoinChat() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0b92\u0bb0\u0bc1\u0bb5\u0bc7\u0bb3\u0bc8 \u0bae\u0bb1\u0bcd\u0bb1 \u0b95\u0b9f\u0bcd\u0b9a\u0bbf \u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0bae\u0bc2\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Ned\xe1 sa pripoji\u0165 ku chatu. Mo\u017eno druh\xe1 strana u\u017e ukon\u010dila konverz\xe1ciu.";
     },
     get$previous() {
-      return "\u0bae\u0bc1\u0ba8\u0bcd\u0ba4\u0bc8\u0baf";
+      return "Predch\xe1dzaj\xface";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1 \u0b95\u0b9f\u0bcd\u0b9a\u0bbf \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8, \u0b8e\u0ba9\u0bb5\u0bc7 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1!";
+      return "Druh\xe1 strana moment\xe1lne nie je prihl\xe1sen\xe1 a nem\xf4\u017ee prij\xedma\u0165 spr\xe1vy!";
     },
     get$open(_) {
-      return "\u0ba4\u0bbf\u0bb1";
+      return "Otvori\u0165";
     },
     get$waitingForServer() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1 ...";
+      return "\u010cak\xe1 sa na server...";
     },
     get$newChatRequest() {
-      return "\u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "\ud83d\udce9 Nov\xe1 po\u017eiadavka na chat";
     },
     get$contentNotificationSettings() {
-      return "\u0b89\u0bb3\u0bcd\u0bb3\u0b9f\u0b95\u0bcd\u0b95 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Nastavenia ozn\xe1men\xed obsahu";
     },
     get$generalNotificationSettings() {
-      return "\u0baa\u0bca\u0ba4\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "V\u0161eobecn\xe9 nastavenia ozn\xe1men\xed";
     },
     get$roomNotificationSettings() {
-      return "\u0b85\u0bb1\u0bc8 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Nastavenia ozn\xe1men\xed miestnosti";
     },
     get$userSpecificNotificationSettings() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "\u0160pecifick\xe9 nastavenia ozn\xe1men\xed pou\u017e\xedvate\u013ea";
     },
     get$otherNotificationSettings() {
-      return "\u0baa\u0bbf\u0bb1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "In\xe9 nastavenia ozn\xe1men\xed";
     },
     get$notificationRuleContainsUserName() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bc8\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Obsahuje pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bbf\u0ba9\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f spr\xe1va obsahuje ich pou\u017e\xedvate\u013esk\xe9 meno.";
     },
     get$notificationRuleMaster() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Ztlmi\u0165 v\u0161etky ozn\xe1menia";
     },
     get$notificationRuleMasterDescription() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1 \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bc0\u0bb1\u0bbf \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Prekra\u010duje v\u0161etky ostatn\xe9 pravidl\xe1 a vyp\xedna v\u0161etky ozn\xe1menia.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Potla\u010di\u0165 automatick\xe9 spr\xe1vy";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u0baa\u0bcb\u0b9f\u0bcd\u0b9a\u0bcd \u0baa\u0bcb\u0ba9\u0bcd\u0bb1 \u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bbf \u0bb5\u0bbe\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0b9f\u0bae\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potla\u010duje ozn\xe1menia od automatizovan\xfdch klientov, ako s\xfa boty.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u0b8e\u0ba9\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozv\xe1nka pre m\u0148a";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b85\u0bb1\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f je pozvan\xfd do miestnosti.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u0b89\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bb0\u0bcd \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1";
+      return "Udalos\u0165 \u010dlena";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u0b89\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bb0\u0bcd \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potla\u010duje ozn\xe1menia o udalostiach \u010dlenstva.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Upozornenie na pou\u017e\xedvate\u013ea";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf\u0baf\u0bbe\u0b95 \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f je priamo spomenut\xfd v spr\xe1ve.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bc8\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Obsahuje zobrazovan\xe9 meno";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bbf\u0ba9\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f spr\xe1va obsahuje ich zobrazovan\xe9 meno.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u0b85\u0bb1\u0bc8 \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Upozornenie na miestnos\u0165";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b85\u0bb1\u0bc8 \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f je v miestnosti zmienka.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u0b85\u0bb1\u0bc8 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Upozornenie na miestnos\u0165";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd '@ROOM' \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea, ke\u010f spr\xe1va obsahuje '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\u0b95\u0bb2\u0bcd\u0bb2\u0bb1\u0bc8";
+      return "Hrob";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u0b85\u0bb1\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb4\u0b95\u0bcd\u0b95\u0b9a\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na spr\xe1vy o deaktiv\xe1cii miestnosti.";
     },
     get$notificationRuleReaction() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bb5\u0bbf\u0ba9\u0bc8";
+      return "Reakcia";
     },
     get$notificationRuleReactionDescription() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bb5\u0bbf\u0ba9\u0bc8\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potl\xe1\u010da upozornenia na reakcie.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\u0b85\u0bb1\u0bc8 \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd ACL";
+      return "Pr\xedstupov\xe9 pr\xe1va servera miestnosti";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u0b85\u0bb1\u0bc8 \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 \u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bb2\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 (ACL) \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potl\xe1\u010da upozornenia na zoznamy pr\xedstupov\xfdch pr\xe1v servera miestnosti (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Potla\u010di\u0165 \xfapravy";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potl\xe1\u010da upozornenia na upraven\xe9 spr\xe1vy.";
     },
     get$notificationRuleCall() {
-      return "\u0b85\u0bb4\u0bc8";
+      return "Hovor";
     },
     get$notificationRuleCallDescription() {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na hovory.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u0bae\u0bb1\u0bc8\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bc8 \u0b92\u0ba9\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "\u0160ifrovan\xe1 miestnos\u0165 jeden na jedn\xe9ho";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u0bae\u0bb1\u0bc8\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b92\u0ba9\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0ba9\u0bcd\u0bb1\u0bc1 \u0b85\u0bb1\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na spr\xe1vy v \u0161ifrovan\xfdch miestnostiach jeden na jedn\xe9ho.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u0b85\u0bb1\u0bc8 \u0b92\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "Miestnos\u0165 jeden na jedn\xe9ho";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u0b92\u0bb0\u0bc1\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0ba9\u0bcd\u0bb1\u0bc1 \u0b85\u0bb1\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na spr\xe1vy v miestnostiach jeden na jedn\xe9ho.";
     },
     get$notificationRuleMessage() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Spr\xe1va";
     },
     get$notificationRuleMessageDescription() {
-      return "\u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0ba9 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na v\u0161eobecn\xe9 spr\xe1vy.";
     },
     get$notificationRuleEncrypted() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "\u0160ifrovan\xe9";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u0bae\u0bb1\u0bc8\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na spr\xe1vy v \u0161ifrovan\xfdch miestnostiach.";
     },
     get$notificationRuleJitsi() {
-      return "\u0b9a\u0bbf\u0baf\u0bcb\u0b9f\u0bcd\u0b9a\u0bcd";
+      return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u0b9a\u0bbf\u0b9f\u0bcd\u0b9a\u0bbf \u0bb5\u0bbf\u0b9f\u0bcd\u0b9a\u0bc6\u0b9f\u0bcd \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Upozor\u0148uje pou\u017e\xedvate\u013ea na udalosti widgetu Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 ACL \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Potla\u010di\u0165 udalosti Server ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95 ACL \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Potla\u010duje upozornenia na udalosti Server ACL.";
     },
     unknownPushRule$1(rule) {
-      return "\u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0baa\u0bc1\u0b9a\u0bcd \u0bb5\u0bbf\u0ba4\u0bbf '" + rule + "'";
+      return "Nezn\xe1me pravidlo push '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f" + duration + " - " + sender + " \u0b87\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bc1\u0bb0\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "\ud83c\udf99\ufe0f " + duration + " - Hlasov\xe1 spr\xe1va od " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bbe\u0bb2\u0bcd, \u0b87\u0ba4\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Ak odstr\xe1nite toto nastavenie upozornenia, nem\xf4\u017ee by\u0165 vr\xe1ten\xe9.";
     },
     get$more() {
-      return "\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd";
+      return "Viac";
     },
     get$shareKeysWith() {
-      return "\u0bb5\u0bbf\u0b9a\u0bc8\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd ...";
+      return "Zdie\u013ea\u0165 k\u013e\xfa\u010de s...";
     },
     get$shareKeysWithDescription() {
-      return "\u0bae\u0bb1\u0bc8\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0b8e\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba8\u0bae\u0bcd\u0baa \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd?";
+      return "Ktor\xe9 zariadenia by mali by\u0165 d\xf4veryhodn\xe9, aby mohli \u010d\xedta\u0165 va\u0161e spr\xe1vy v \u0161ifrovan\xfdch chatov?";
     },
     get$allDevices() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd";
+      return "V\u0161etky zariadenia";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u0b87\u0baf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0bc1\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bc1";
+      return "Prekro\u017een\xe9 overen\xe9 zariadenia, ak je povolen\xe9";
     },
     get$crossVerifiedDevices() {
-      return "\u0b95\u0bc1\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Prekro\u017een\xe9 overen\xe9 zariadenia";
     },
     get$verifiedDevicesOnly() {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7";
+      return "Iba overen\xe9 zariadenia";
     },
     get$optionalMessage() {
-      return "(\u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bbf\u0ba9\u0bbe\u0bb2\u0bcd) \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf ...";
+      return "(Volite\u013en\xe9) spr\xe1va...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodporovan\xe9 na tomto zariaden\xed";
     },
     get$enterNewChat() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vst\xfapi\u0165 do nov\xe9ho chatu";
     },
     get$approve() {
-      return "\u0b92\u0baa\u0bcd\u0baa\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Schv\xe1li\u0165";
     },
     get$youHaveKnocked() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0b9f\u0bcd\u0b9f\u0bbf\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Zaklopali ste";
     },
     get$commandHint_logout() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc8\u0baf \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Odhl\xe1si\u0165 sa zo s\xfa\u010dasn\xe9ho zariadenia";
     },
     get$commandHint_logoutall() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0bbe\u0ba4\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Odhl\xe1si\u0165 zo v\u0161etk\xfdch akt\xedvnych zariaden\xed";
     },
     get$moreEvents() {
-      return "\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Viac udalost\xed";
     },
     get$declineInvitation() {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba8\u0bbf\u0bb0\u0bbe\u0b95\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odmietnu\u0165 pozvanie";
     },
     get$noMessagesYet() {
-      return "No messages yet";
+      return "Zatia\u013e \u017eiadne spr\xe1vy";
     },
     get$longPressToRecordVoiceMessage() {
-      return "Long press to record voice message.";
+      return "Dlh\xe9 stla\u010denie na nahr\xe1vanie hlasovej spr\xe1vy.";
     },
     get$pause(_) {
-      return "Pause";
+      return "Pozastavi\u0165";
     },
     get$resume(_) {
-      return "Resume";
+      return "Pokra\u010dova\u0165";
     },
     countChats$1(chats) {
-      return "" + chats + " chats";
+      return "" + chats + " chaty";
     },
     get$startPoll() {
-      return "Start poll";
+      return "Za\u010da\u0165 anketu";
     },
     get$endPoll() {
-      return "End poll";
+      return "Ukon\u010di\u0165 anketu";
     },
     get$answersVisible() {
-      return "Answers visible";
+      return "Odpovede vidite\u013en\xe9";
     },
     get$pollQuestion() {
-      return "Poll question";
+      return "Ot\xe1zka ankety";
     },
     get$answerOption() {
-      return "Answer option";
+      return "Mo\u017enos\u0165 odpovede";
     },
     get$addAnswerOption() {
-      return "Add answer option";
+      return "Prida\u0165 mo\u017enos\u0165 odpovede";
     },
     get$allowMultipleAnswers() {
-      return "Allow multiple answers";
+      return "Povoli\u0165 viacero odpoved\xed";
     },
     get$pollHasBeenEnded() {
-      return "Poll has been ended";
+      return "Anketa bola ukon\u010den\xe1";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One vote", "" + count + " votes", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Jedna hlas", "" + count + " hlasy", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "Answers will be visible when poll has ended";
+      return "Odpovede bud\xfa vidite\u013en\xe9, ke\u010f bude anketa ukon\u010den\xe1";
     },
     get$replyInThread() {
-      return "Reply in thread";
+      return "Odpoveda\u0165 v t\xe9me";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One reply", "" + count + " replies", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Jedna odpove\u010f", "" + count + " odpoved\xed", _null, _null);
     },
     get$thread() {
-      return "Thread";
+      return "T\xe9ma";
     },
     get$backToMainChat() {
-      return "Back to main chat";
+      return "Sp\xe4\u0165 do hlavn\xe9ho chatu";
     },
     get$saveChanges() {
-      return "\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ulo\u017ei\u0165 zmeny";
     },
     get$createSticker() {
-      return "Create sticker or emoji";
+      return "Vytvori\u0165 n\xe1lepku alebo emoji";
     },
     get$useAsSticker() {
-      return "Use as sticker";
+      return "Pou\u017ei\u0165 ako n\xe1lepku";
     },
     get$useAsEmoji() {
-      return "Use as emoji";
+      return "Pou\u017ei\u0165 ako emoji";
     },
     get$stickerPackNameAlreadyExists() {
-      return "Sticker pack name already exists";
+      return "N\xe1zov bal\xedka n\xe1lepiek u\u017e existuje";
     },
     get$newStickerPack() {
-      return "New sticker pack";
+      return "Nov\xfd bal\xedk n\xe1lepiek";
     },
     get$stickerPackName() {
-      return "Sticker pack name";
+      return "N\xe1zov bal\xedka n\xe1lepiek";
     },
     get$attribution(_) {
-      return "Attribution";
+      return "Prip\xedsanie";
     },
     get$skipChatBackup() {
-      return "Skip chat backup";
+      return "Presko\u010di\u0165 z\xe1lohu chatu";
     },
     get$skipChatBackupWarning() {
-      return "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.";
+      return "Ste si ist\xfd? Bez povolenia z\xe1lohy chatu m\xf4\u017eete strati\u0165 pr\xedstup k svojim spr\xe1vam, ak prepnite svoje zariadenie.";
     },
     get$loadingMessages() {
-      return "Loading messages";
+      return "Na\u010d\xedtavanie spr\xe1v";
     },
     get$setupChatBackup() {
-      return "Set up chat backup";
+      return "Nastavi\u0165 z\xe1lohu chatu";
     },
     get$noMoreResultsFound() {
-      return "No more results found";
+      return "Nena\u0161li sa \u017eiadne \u010fal\u0161ie v\xfdsledky";
     },
     chatSearchedUntil$1(time) {
-      return "Chat searched until " + time;
+      return "Chat bol preh\u013ead\xe1van\xfd do " + time;
     },
     get$federationBaseUrl() {
-      return "Federation Base URL";
+      return "Z\xe1kladn\xe1 URL feder\xe1cie";
     },
     get$clientWellKnownInformation() {
-      return "Client-Well-Known Information:";
+      return "Inform\xe1cie o klientovi:";
     },
     get$baseUrl() {
-      return "Base URL";
+      return "Z\xe1kladn\xe1 URL";
     },
     get$identityServer() {
-      return "Identity Server:";
+      return "Identitn\xfd server:";
     },
     versionWithNumber$1(version) {
-      return "Version: " + version;
+      return "Verzia: " + version;
     },
     get$logs() {
-      return "Logs";
+      return "Z\xe1znamy";
     },
     get$advancedConfigs() {
-      return "Advanced Configs";
+      return "Pokro\u010dil\xe9 nastavenia";
     },
     get$advancedConfigurations() {
-      return "Advanced configurations";
+      return "Pokro\u010dil\xe9 konfigur\xe1cie";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return l1 + " \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 " + l2 + " \u0b87\u0bb2\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bb5\u0bc1\u0bae\u0bcd...";
+      return "Nap\xed\u0161te v " + l1 + " alebo " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0b95\u0bb5\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Kliknite a podr\u017ete pre inform\xe1cie o slove.";
     },
     get$gaTooltip() {
-      return "\u0bb5\u0bbf\u0baf\u0b95\u0bcd\u0b95\u0bb0\u0bc1\u0b9f\u0ba9\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "L2 pou\u017eitie s gramatickou asistenciou";
     },
     get$taTooltip() {
-      return "\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "L2 pou\u017eitie s prekladate\u013eskou asistenciou";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u0b87\u0ba3\u0bc8\u0baf \u0b9a\u0bc6\u0baf\u0bb2\u0bbe\u0b95\u0bcd\u0b95 \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd";
+      return "Interakt\xedvny preklada\u010d";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u0b87\u0ba3\u0bc8\u0baf \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bcd";
+      return "Interakt\xedvny kontrol\xf3r gramatiky";
     },
     get$waTooltip() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "L2 pou\u017eitie bez asistencie";
     },
     get$noIdenticalLanguages() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc7\u0bb1\u0bc1\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte, pros\xedm, odli\u0161n\xe9 z\xe1kladn\xe9 a cie\u013eov\xe9 jazyky";
     },
     get$joinWithClassCode() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b9f\u0ba9\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pripoji\u0165 sa ku kurzu";
     },
     get$languageLevelPreA1() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf\u0bb5\u0bb0\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4 (\u0bae\u0bc1\u0ba9\u0bcd A1)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0ba8\u0b9f\u0bc1\u0bb5\u0ba3\u0bcd (A1)";
+      return "Nov\xe1\u010dik Stred (A1)";
     },
     get$languageLevelA2() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b89\u0baf\u0bb0\u0bcd\u0bb5\u0bc1 (A2)";
+      return "Za\u010diato\u010dn\xedk Vysok\xfd (A2)";
     },
     get$languageLevelB1() {
-      return "\u0bae\u0ba4\u0bcd\u0ba4\u0bbf\u0baf \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0 (B1)";
+      return "Stredne Pokro\u010dil\xfd Stredn\xfd (B1)";
     },
     get$languageLevelB2() {
-      return "\u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4 (B2)";
+      return "Pokro\u010dil\xfd N\xedzky (B2)";
     },
     get$languageLevelC1() {
-      return "\u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0 (C1)";
+      return "Pokro\u010dil\xfd Stredn\xfd (C1)";
     },
     get$languageLevelC2() {
-      return "\u0bae\u0bc7\u0ba9\u0bcd\u0bae\u0bc8 (C2)";
+      return "Nadpriemern\xfd (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 n\xe1zov";
     },
     get$changeTheNameOfTheChat() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b95\u0bc1\u0bb4\u0bc1\u0bb5\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 n\xe1zov chatu";
     },
     get$sorryNoResults() {
-      return "\u0bae\u0ba9\u0bcd\u0ba9\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bc1\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "Prep\xe1\u010dte, \u017eiadne v\xfdsledky.";
     },
     get$ignoreInThisText() {
-      return "\u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ignorova\u0165";
     },
     needsItMessage$1(targetLanguage) {
-      return "\u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0b85\u0ba4\u0bc1 " + targetLanguage + " \u0b85\u0bb2\u0bcd\u0bb2! \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b89\u0ba4\u0bb5\u0bbf \u0ba4\u0bc7\u0bb5\u0bc8\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bbe?";
+      return "Po\u010dkaj, to nie je " + targetLanguage + "! Potrebuje\u0161 pomoc s prekladom?";
     },
     get$countryInformation() {
-      return "\u0b8e\u0ba9\u0bcd \u0ba8\u0bbe\u0b9f\u0bc1";
+      return "Moja krajina";
     },
     get$targetLanguage() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf";
+      return "Cie\u013eov\xfd jazyk";
     },
     get$updateLanguage() {
-      return "\u0b8e\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Moje jazyky";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?";
+      return "Ak\xfd jazyk sa chcete nau\u010di\u0165?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8 \u0bae\u0bca\u0bb4\u0bbf \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "Ak\xfd je v\xe1\u0161 z\xe1kladn\xfd jazyk?";
     },
     get$publicProfileTitle() {
-      return "\u0b8e\u0ba9\u0bcd \u0b9a\u0bc1\u0baf\u0bb5\u0bbf\u0bb5\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0b9f\u0bb2\u0bbf\u0bb2\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf \u0b85\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165, aby ma na\u0161li vo vyh\u013ead\xe1van\xed";
     },
     get$publicProfileDesc() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bc1, \u0bae\u0bb1\u0bcd\u0bb1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc1\u0baf\u0bb5\u0bbf\u0bb5\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0b89\u0bb2\u0b95\u0bb3\u0bbe\u0bb5\u0bbf\u0baf \u0ba4\u0bc7\u0b9f\u0bb2\u0bcd \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd. \u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0b8f\u0bb1\u0bcd\u0b95 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bb1\u0bc1\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Zapnut\xedm umo\u017en\xedte ostatn\xfdm pou\u017e\xedvate\u013eom n\xe1js\u0165 v\xe1\u0161 profil vo glob\xe1lnom vyh\u013ead\xe1va\u010di a posiela\u0165 \u017eiadosti o chat. V tomto momente m\xf4\u017eete prija\u0165 alebo odmietnu\u0165 \u017eiados\u0165.";
     },
     get$errorDisableIT() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "Pomoc s prekladom je vypnut\xe1.";
     },
     get$errorDisableIGC() {
-      return "\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "Pomoc s gramatikou je vypnut\xe1.";
     },
     get$errorDisableITUserDesc() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Kliknite sem na aktualiz\xe1ciu nastaven\xed pomoci s prekladom";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Kliknite sem na aktualiz\xe1ciu nastaven\xed pomoci s gramatikou";
     },
     get$errorDisableITClassDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "Prekladov\xe1 pomoc je vypnut\xe1 pre kurz, v ktorom sa nach\xe1dza tento chat.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0b85\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "Pomoc s gramatikou je vypnut\xe1 pre kurz, v ktorom sa nach\xe1dza tento chat.";
     },
     get$error405Title() {
-      return "\u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Jazyky nie s\xfa nastaven\xe9";
     },
     get$error405Desc() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bc1\u0ba4\u0ba9\u0bcd\u0bae\u0bc8 \u0bae\u0bc6\u0ba9\u0bc1 > \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pros\xedm, nastavte si svoje jazyky v Hlavnom menu > Nastavenia u\u010denia.";
     },
     get$termsAndConditions() {
-      return "\u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba8\u0bbf\u0baa\u0ba8\u0bcd\u0ba4\u0ba9\u0bc8\u0b95\u0bb3\u0bcd";
+      return "Podmienkami a podmienkami";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba8\u0bbe\u0ba9\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0baa\u0b9f\u0bcd\u0b9a\u0bae\u0bcd 16 \u0bb5\u0baf\u0ba4\u0bc1\u0b9f\u0bc8\u0baf\u0bb5\u0ba9\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b9a\u0bbe\u0ba9\u0bcd\u0bb1\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0bc7\u0ba9\u0bcd.";
+      return " a potvrdzujem, \u017ee m\xe1m najmenej 16 rokov.";
     },
     get$error502504Title() {
-      return "\u0bb5\u0bbe\u0bb5\u0bcd, \u0b86\u0ba9\u0bcd\u0bb2\u0bc8\u0ba9\u0bbf\u0bb2\u0bcd \u0baa\u0bb2 \u0bae\u0bbe\u0ba3\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0ba9\u0bb0\u0bcd!";
+      return "Wow, je online ve\u013ea \u0161tudentov!";
     },
     get$error502504Desc() {
-      return "\u0baa\u0bc6\u0baf\u0bcd\u0b9c\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bb3\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bc6\u0ba4\u0bc1\u0bb5\u0bbe\u0b95 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bbe\u0bae\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "N\xe1stroje na preklad a gramatiku m\xf4\u017eu by\u0165 pomal\xe9 alebo nedostupn\xe9, k\xfdm Pangea boty dobehn\xfa.";
     },
     get$error404Title() {
-      return "\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bbf\u0bb4\u0bc8!";
+      return "Chyba prekladu!";
     },
     get$error404Desc() {
-      return "\u0baa\u0bc6\u0baf\u0bcd\u0b9c\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0ba4\u0bc1 \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b8e\u0ba9\u0bcd\u0bb1\u0bc1 \u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8...";
+      return "Pangea Bot si nie je ist\xfd, ako to prelo\u017ei\u0165...";
     },
     get$errorPleaseRefresh() {
-      return "\u0ba8\u0bbe\u0bae\u0bcd \u0b87\u0ba4\u0bc8 \u0b86\u0bb0\u0bbe\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd! \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b8f\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pozer\xe1me sa na to! Pros\xedm, na\u010d\xedtajte str\xe1nku znova a sk\xfaste to znova.";
     },
     get$connectedToStaging() {
-      return "\u0bb8\u0bcd\u0b9f\u0bc7\u0b9c\u0bbf\u0b99\u0bcd\u0b95\u0bc1\u0b9f\u0ba9\u0bcd \u0b87\u0ba3\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Pripojen\xe9 k Stagingu";
     },
     get$learningSettings() {
-      return "\u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Nastavenia u\u010denia";
     },
     get$participants() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\xda\u010dastn\xedci";
     },
     get$clickMessageTitle() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf \u0ba4\u0bc7\u0bb5\u0bc8\u0baf\u0bbe?";
+      return "Potrebujete pomoc?";
     },
     get$clickMessageBody() {
-      return "\u0bae\u0bca\u0bb4\u0bbf \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd, \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1, \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b92\u0bb2\u0bbf \u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd!";
+      return "Kliknite na spr\xe1vu pre jazykov\xe9 n\xe1stroje ako preklad, prehr\xe1vanie a \u010fal\u0161ie!";
     },
     get$allDone() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0ba3\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1!";
+      return "V\u0161etko hotovo!";
     },
     get$vocab() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bbe\u0ba4\u0bbe\u0bb0\u0bae\u0bcd";
+      return "Slovn\xe1 z\xe1soba";
     },
     get$subscribe(_) {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odbera\u0165";
     },
     get$getAccess() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0baa\u0bc6\u0bb1\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Odobera\u0165 teraz!";
     },
     get$subscriptionDesc() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0ba4\u0bb2\u0bcd \u0b87\u0bb2\u0bb5\u0b9a\u0bae\u0bcd! \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b9f\u0bc8\u0baf \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1, \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Spr\xe1va je zadarmo! Odberom odomknete interakt\xedvny preklad, kontrolu gramatiky a analytiku u\u010denia.";
     },
     get$subscriptionManagement() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0bae\u0bc7\u0bb2\u0bbe\u0ba3\u0bcd\u0bae\u0bc8";
+      return "Spr\xe1va odberu";
     },
     get$currentSubscription() {
-      return "\u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc8\u0baf \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe";
+      return "Aktu\xe1lny odber";
     },
     get$cancelSubscription() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0bb0\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zru\u0161i\u0165 odber";
     },
     get$selectYourPlan() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte si svoj pl\xe1n";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0b9a\u0bb2\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prihl\xe1ste sa do svojho p\xf4vodn\xe9ho zariadenia, aby ste mohli spravova\u0165 svoj pl\xe1n odberu";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0bae\u0bc7\u0bb2\u0bbe\u0ba3\u0bcd\u0bae\u0bc8 \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Spr\xe1va odberu nie je k dispoz\xedcii";
     },
     get$paymentMethod() {
-      return "\u0baa\u0ba3\u0bae\u0bcd \u0b9a\u0bc6\u0bb2\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0bb1\u0bc8";
+      return "Sp\xf4sob platby";
     },
     get$paymentHistory() {
-      return "\u0baa\u0ba3\u0bae\u0bcd \u0b9a\u0bc6\u0bb2\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bc1";
+      return "Hist\xf3ria platieb";
     },
     get$emptyChatDownloadWarning() {
-      return "\u0b95\u0bbe\u0bb2\u0bbf\u0baf\u0bbe\u0ba9 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1";
+      return "Nie je mo\u017en\xe9 stiahnu\u0165 pr\xe1zdny chat";
     },
     get$toggleImmersionMode() {
-      return "\u0bae\u0bc1\u0bb4\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0ba9 \u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Re\u017eim ponorenia";
     },
     get$toggleImmersionModeDesc() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd, \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0baa\u0bb0\u0bbf\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bbe\u0b95\u0bc1\u0bae\u0bcd.";
+      return "Ke\u010f je aktivovan\xfd, v\u0161etky spr\xe1vy sa zobrazuj\xfa v cie\u013eovom jazyku. T\xe1to mo\u017enos\u0165 je najviac u\u017eito\u010dn\xe1 pri jazykov\xfdch v\xfdmen\xe1ch.";
     },
     get$itToggleDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0bae\u0bca\u0bb4\u0bbf \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0bb5\u0bbf \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0bc8\u0baf\u0bbe\u0bb3\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0ba4\u0bb1\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b89\u0ba4\u0bb5\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd. \u0b85\u0bb0\u0bbf\u0ba4\u0bbe\u0ba9\u0baa\u0bcb\u0ba4\u0bc1, AI \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Tento n\xe1stroj na u\u010denie sa jazykov identifikuje slov\xe1 vo va\u0161om z\xe1kladnom jazyku a pom\xe1ha v\xe1m ich prelo\u017ei\u0165 do cie\u013eov\xe9ho jazyka. Hoci je to zriedkav\xe9, AI m\xf4\u017ee urobi\u0165 prekladov\xe9 chyby.";
     },
     get$igcToggleDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0bae\u0bca\u0bb4\u0bbf \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0bb5\u0bbf \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0ba9 \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bcd, \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bc1\u0ba3\u0bcd\u0ba3\u0bbf\u0baf \u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0bc8\u0baf\u0bbe\u0bb3\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0ba4\u0bb1\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd. \u0b85\u0bb0\u0bbf\u0ba4\u0bbe\u0ba9\u0baa\u0bcb\u0ba4\u0bc1, AI \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4 \u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Tento n\xe1stroj na u\u010denie sa jazykov identifikuje be\u017en\xe9 pravopisn\xe9, gramatick\xe9 a interpunk\u010dn\xe9 chyby vo va\u0161ej spr\xe1ve a navrhne opravy. Hoci je to zriedkav\xe9, AI m\xf4\u017ee urobi\u0165 chyby v korekci\xe1ch.";
     },
     get$originalMessage() {
-      return "\u0bae\u0bc1\u0ba4\u0bb2\u0bc0\u0b9f\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "P\xf4vodn\xe1 spr\xe1va";
     },
     get$sentMessage() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Odoslan\xe1 spr\xe1va";
     },
     get$useType() {
-      return "\u0bb5\u0b95\u0bc8 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pou\u017ei\u0165 typ";
     },
     get$notAvailable() {
-      return "\u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nedostupn\xe9";
     },
     get$taAndGaTooltip() {
-      return "\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd L2 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pou\u017eitie L2 s pomocou prekladu a gramatickej pomoci";
     },
     get$definitionsToolName() {
-      return "\u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8 \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8\u0b95\u0bb3\u0bcd";
+      return "Defin\xedcie slov";
     },
     get$definitionsToolDescription() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd, \u0ba8\u0bc0\u0bb2 \u0ba8\u0bbf\u0bb1\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b95\u0bc0\u0bb4\u0bc7 \u0b89\u0bb3\u0bcd\u0bb3 \u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bb3\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bc6\u0bb1\u0bb2\u0bbe\u0bae\u0bcd. \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0ba3\u0bc1\u0b95\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bc0\u0ba4\u0bc1 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Ke\u010f je aktivovan\xe9, slov\xe1 pod\u010diarknut\xe9 modrou farbou je mo\u017en\xe9 klikn\xfa\u0165 pre defin\xedcie. Kliknite na spr\xe1vy pre pr\xedstup k defin\xedci\xe1m.";
     },
     get$welcomeBack() {
-      return "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd 2023-2024 \u0baa\u0bc8\u0bb2\u0b9f\u0bcd \u0baa\u0b95\u0bc1\u0ba4\u0bbf\u0baf\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bbf\u0bb1\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bc8\u0bb2\u0b9f\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0b95 \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bb5\u0bc1\u0bae\u0bcd. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b86\u0b9a\u0bbf\u0bb0\u0bbf\u0baf\u0bb0\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd (\u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0bb5\u0ba9\u0bae\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b89\u0bb0\u0bbf\u0bae\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0bb5\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd), \u0b86\u0b9a\u0bbf\u0bb0\u0bbf\u0baf\u0bb0\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0b95 \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Vitajte sp\xe4\u0165! Ak ste boli s\xfa\u010das\u0165ou pilotn\xe9ho projektu 2023-2024, kontaktujte n\xe1s pre va\u0161u \u0161peci\xe1lnu pilotn\xfa predplatn\xfa slu\u017ebu. Ak ste u\u010dite\u013e, ktor\xfd zak\xfapil (alebo va\u0161a in\u0161tit\xfacia zak\xfapila) licencie pre va\u0161u triedu, kontaktujte n\xe1s pre va\u0161u u\u010dite\u013esk\xfa predplatn\xfa slu\u017ebu.";
     },
     get$downloadTxtFile() {
-      return "\u0b89\u0bb0\u0bc8 \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Stiahnu\u0165 textov\xfd s\xfabor";
     },
     get$downloadCSVFile() {
-      return "CSV \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Stiahnu\u0165 CSV s\xfabor";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bb5\u0bbe\u0bb4\u0bcd\u0ba8\u0bbe\u0bb3\u0bcd \u0bb5\u0bbf\u0bb3\u0bae\u0bcd\u0baa\u0bb0 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1 \u0b89\u0ba4\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bc1 support@pangea.chat \u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Moment\xe1lne m\xe1te do\u017eivotn\xfa propaga\u010dn\xfa predplatn\xfa slu\u017ebu. Kontaktujte support@pangea.chat pre pomoc s zmenou predplatn\xe9ho.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u0b95\u0bca\u0bb3\u0bcd\u0bae\u0bc1\u0ba4\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe " + purchasePlatform + " \u0bae\u0bc2\u0bb2\u0bae\u0bcd";
+      return "Predplatn\xe9 zak\xfapen\xe9 cez " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\u0b92\u0bb0\u0bc1 \u0bb5\u0bbe\u0bb0 \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8";
+      return "Jedno t\xfd\u017ed\u0148ov\xe1 sk\xfa\u0161obn\xe1 verzia";
     },
     get$downloadXLSXFile() {
-      return "\u0b8e\u0b95\u0bcd\u0b9a\u0bc6\u0bb2\u0bcd \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Stiahnu\u0165 Excel s\xfabor";
     },
     get$unkDisplayName() {
-      return "\u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4\u0ba4\u0bc1";
+      return "Nezn\xe1my";
     },
     get$wwCountryDisplayName() {
-      return "\u0b89\u0bb2\u0b95\u0bb3\u0bbe\u0bb5\u0bbf\u0baf";
+      return "Celosvetovo";
     },
     get$afCountryDisplayName() {
-      return "\u0b85\u0baa\u0bcd\u0b95\u0bbe\u0ba9\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "\u0b86\u0bb2\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Alandsk\xe9 ostrovy";
     },
     get$alCountryDisplayName() {
-      return "\u0b85\u0bb2\u0bcd\u0baa\u0bc7\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Alb\xe1nsko";
     },
     get$dzCountryDisplayName() {
-      return "\u0b85\u0bb2\u0bcd\u0b9c\u0bc0\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Al\u017e\xedrsko";
     },
     get$asCountryDisplayName() {
-      return "\u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95 \u0b9a\u0bbe\u0bae\u0bcb\u0bb5\u0bbe";
+      return "Americk\xe1 Samoa";
     },
     get$adCountryDisplayName() {
-      return "\u0b86\u0ba3\u0bcd\u0b9f\u0bcb\u0bb0\u0bbe";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u0b85\u0b99\u0bcd\u0b95\u0bcb\u0bb2\u0bbe";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u0b85\u0b99\u0bcd\u0b95\u0bc1\u0baf\u0bbf\u0bb2\u0bcd\u0bb2\u0bbe";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u0b85\u0ba3\u0bcd\u0b9f\u0bbf\u0b95\u0bc1\u0bb5\u0bbe \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bc1\u0b9f\u0bbe";
+      return "Antigua a Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u0b85\u0bb0\u0bcd\u0b9c\u0bc6\u0ba9\u0bcd\u0b9f\u0bbf\u0ba9\u0bbe";
+      return "Argent\xedna";
     },
     get$amCountryDisplayName() {
-      return "\u0b85\u0bb0\u0bcd\u0bae\u0bc7\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Arm\xe9nsko";
     },
     get$awCountryDisplayName() {
-      return "\u0b85\u0bb0\u0bc1\u0baa\u0bbe";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u0b85\u0bb8\u0bcd\u0b9a\u0bc6\u0ba9\u0bcd\u0bb7\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1";
+      return "Ostrov Ascension";
     },
     get$auCountryDisplayName() {
-      return "\u0b86\u0bb8\u0bcd\u0ba4\u0bbf\u0bb0\u0bc7\u0bb2\u0bbf\u0baf\u0bbe";
+      return "Austr\xe1lia";
     },
     get$atCountryDisplayName() {
-      return "\u0b86\u0bb8\u0bcd\u0ba4\u0bbf\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Rak\xfasko";
     },
     get$azCountryDisplayName() {
-      return "\u0b85\u0b9a\u0bb0\u0bcd\u0baa\u0bc8\u0b9c\u0bbe\u0ba9\u0bcd";
+      return "Azerbajd\u017ean";
     },
     get$bsCountryDisplayName() {
-      return "\u0baa\u0bb9\u0bbe\u0bae\u0bbe\u0bb8\u0bcd";
+      return "Bahamy";
     },
     get$bhCountryDisplayName() {
-      return "\u0baa\u0bb9\u0bcd\u0bb0\u0bc8\u0ba9\u0bcd";
+      return "Bahrajn";
     },
     get$bdCountryDisplayName() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bb3\u0bbe\u0ba4\u0bc7\u0bb7\u0bcd";
+      return "Banglad\xe9\u0161";
     },
     get$bbCountryDisplayName() {
-      return "\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0b9f\u0bcb\u0bb8\u0bcd";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u0baa\u0bc6\u0bb2\u0bbe\u0bb0\u0bc2\u0bb8\u0bcd";
+      return "Bielorusko";
     },
     get$beCountryDisplayName() {
-      return "\u0baa\u0bc6\u0bb2\u0bcd\u0b9c\u0bbf\u0baf\u0bae\u0bcd";
+      return "Belgicko";
     },
     get$bzCountryDisplayName() {
-      return "\u0baa\u0bc6\u0baf\u0bcd\u0bb2\u0bbf\u0bb8\u0bcd";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u0baa\u0bc6\u0ba9\u0bbf\u0ba9\u0bcd";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u0baa\u0bc6\u0bb0\u0bcd\u0bae\u0bc1\u0b9f\u0bbe";
+      return "Bermudy";
     },
     get$btCountryDisplayName() {
-      return "\u0baa\u0bc2\u0b9f\u0bcd\u0b9f\u0bbe\u0ba9\u0bcd";
+      return "Bhut\xe1n";
     },
     get$boCountryDisplayName() {
-      return "\u0baa\u0bca\u0bb2\u0bbf\u0bb5\u0bbf\u0baf\u0bbe";
+      return "Bol\xedvia";
     },
     get$baCountryDisplayName() {
-      return "\u0baa\u0bcb\u0bb8\u0bcd\u0ba9\u0bbf\u0baf\u0bbe \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bb9\u0bc6\u0bb0\u0bcd\u0b9a\u0bbf\u0b95\u0bcb\u0bb5\u0bbf\u0ba9\u0bbe";
+      return "Bosna a Hercegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u0baa\u0bcb\u0b9f\u0bcd\u0bb8\u0bcd\u0bb5\u0bbe\u0ba9\u0bbe";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc7\u0b9a\u0bbf\u0bb2\u0bcd";
+      return "Braz\xedlia";
     },
     get$ioCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf\u0bb7\u0bcd \u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf \u0b93\u0bb7\u0ba9\u0bcd \u0baa\u0bbf\u0bb0\u0ba4\u0bc7\u0b9a\u0bae\u0bcd";
+      return "Britsk\xe9 indickooce\xe1nske \xfazemie";
     },
     get$vgCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf\u0bb7\u0bcd \u0bb5\u0bbf\u0bb0\u0bcd\u0b9c\u0bbf\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Britsk\xe9 Panensk\xe9 ostrovy";
     },
     get$bnCountryDisplayName() {
-      return "\u0baa\u0bc1\u0bb0\u0bc1\u0ba9\u0bc7";
+      return "Brunej";
     },
     get$bgCountryDisplayName() {
-      return "\u0baa\u0bc1\u0bb2\u0bcd\u0b95\u0bc7\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Bulharsko";
     },
     get$bfCountryDisplayName() {
-      return "\u0baa\u0bc1\u0bb0\u0bcd\u0b95\u0bbf\u0ba9\u0bbe \u0b83\u0baa\u0bbe\u0b9a\u0bcb";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u0baa\u0bc1\u0bb0\u0bc1\u0ba3\u0bcd\u0b9f\u0bbf";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u0b95\u0bae\u0bcd\u0baa\u0bcb\u0b9f\u0bbf\u0baf\u0bbe";
+      return "Kambod\u017ea";
     },
     get$cmCountryDisplayName() {
-      return "\u0b95\u0bbe\u0bae\u0bc6\u0bb0\u0bc2\u0ba9\u0bcd";
+      return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "\u0b95\u0ba9\u0b9f\u0bbe";
+      return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "\u0b95\u0bc7\u0baa\u0bcd \u0bb5\u0bc6\u0bb0\u0bcd\u0b9f\u0bc7";
+      return "Kap Verde";
     },
     get$bqCountryDisplayName() {
-      return "\u0b95\u0bb0\u0bc0\u0baa\u0bbf\u0baf\u0ba9\u0bcd \u0ba8\u0bc6\u0ba4\u0bb0\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Karibsk\xe9 Holandsko";
     },
     get$kyCountryDisplayName() {
-      return "\u0b95\u0bc6\u0baf\u0bcd\u0bae\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Kajmansk\xe9 ostrovy";
     },
     get$cfCountryDisplayName() {
-      return "\u0bae\u0ba4\u0bcd\u0ba4\u0bbf\u0baf \u0b86\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0bbf\u0b95\u0bcd\u0b95 \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1";
+      return "Stredoafrick\xe1 republika";
     },
     get$tdCountryDisplayName() {
-      return "\u0b9a\u0bbe\u0b9f\u0bcd";
+      return "\u010cad";
     },
     get$clCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0bb2\u0bbf";
+      return "\u010cile";
     },
     get$cnCountryDisplayName() {
-      return "\u0b9a\u0bc0\u0ba9\u0bbe";
+      return "\u010c\xedna";
     },
     get$cxCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb1\u0bbf\u0bb8\u0bcd\u0ba4\u0bc1\u0bae\u0bb8\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1";
+      return "Viano\u010dn\xfd ostrov";
     },
     get$ccCountryDisplayName() {
-      return "\u0b95\u0bcb\u0b95\u0bcb\u0bb8\u0bcd [\u0b95\u0bc0\u0bb2\u0bbf\u0b99\u0bcd] \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ostrovy Kokos (Keelingove)";
     },
     get$coCountryDisplayName() {
-      return "\u0b95\u0bca\u0bb2\u0bae\u0bcd\u0baa\u0bbf\u0baf\u0bbe";
+      return "Kolumbia";
     },
     get$kmCountryDisplayName() {
-      return "\u0b95\u0bcb\u0bae\u0bcb\u0bb0\u0bb8\u0bcd";
+      return "Komory";
     },
     get$cdCountryDisplayName() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1 \u0b95\u0bbe\u0b99\u0bcd\u0b95\u0bcb";
+      return "Demokratick\xe1 republika Kongo";
     },
     get$cgCountryDisplayName() {
-      return "\u0b95\u0bbe\u0b99\u0bcd\u0b95\u0bcb \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1";
+      return "Kongo";
     },
     get$ckCountryDisplayName() {
-      return "\u0b95\u0bc1\u0b95\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ostrovy Cook";
     },
     get$crCountryDisplayName() {
-      return "\u0b95\u0bcb\u0bb8\u0bcd\u0b9f\u0bbe \u0bb0\u0bbf\u0b95\u0bbe";
+      return "Kostarika";
     },
     get$ciCountryDisplayName() {
-      return "\u0b95\u0bcb\u0b9f\u0bcd \u0b9f\u0bbf'\u0bb5\u0bbe\u0baf\u0bb0\u0bcd";
+      return "Pobre\u017eie Slonoviny";
     },
     get$hrCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb0\u0bcb\u0bb7\u0bbf\u0baf\u0bbe";
+      return "Chorv\xe1tsko";
     },
     get$cuCountryDisplayName() {
-      return "\u0b95\u0bbf\u0baf\u0bc2\u0baa\u0bbe";
+      return "Kuba";
     },
     get$cwCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb0\u0bbe\u0b9a\u0bbe\u0bb5\u0bcb";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u0b9a\u0bc8\u0baa\u0bcd\u0bb0\u0bb8\u0bcd";
+      return "Cyprus";
     },
     get$czCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0b95\u0bcd \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1";
+      return "\u010cesk\xe1 republika";
     },
     get$dkCountryDisplayName() {
-      return "\u0b9f\u0bc6\u0ba9\u0bcd\u0bae\u0bbe\u0bb0\u0bcd\u0b95\u0bcd";
+      return "D\xe1nsko";
     },
     get$djCountryDisplayName() {
-      return "\u0b9c\u0bbf\u0baa\u0bc1\u0b9f\u0bcd\u0b9f\u0bbf";
+      return "D\u017eibutsko";
     },
     get$dmCountryDisplayName() {
-      return "\u0b9f\u0bca\u0bae\u0bbf\u0ba9\u0bbf\u0b95\u0bbe";
+      return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "\u0b9f\u0bca\u0bae\u0bbf\u0ba9\u0bbf\u0b95\u0ba9\u0bcd \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1";
+      return "Dominik\xe1nska republika";
     },
     get$tlCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb4\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bae\u0bcb\u0bb0\u0bcd";
+      return "V\xfdchodn\xfd Timor";
     },
     get$ecCountryDisplayName() {
-      return "\u0b8e\u0b95\u0bcd\u0bb5\u0b9f\u0bcb\u0bb0\u0bcd";
+      return "Ekv\xe1dor";
     },
     get$egCountryDisplayName() {
-      return "\u0b8e\u0b95\u0bbf\u0baa\u0bcd\u0ba4\u0bc1";
+      return "Egypt";
     },
     get$svCountryDisplayName() {
-      return "\u0b8e\u0bb2\u0bcd \u0b9a\u0bbe\u0bb2\u0bcd\u0bb5\u0b9f\u0bbe\u0bb0\u0bcd";
+      return "Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u0b87\u0b95\u0bc1\u0bb5\u0bc7\u0b9f\u0bcd\u0b9f\u0bb0\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bbf\u0ba9\u0bbf";
+      return "Rovn\xedkov\xe1 Guinea";
     },
     get$erCountryDisplayName() {
-      return "\u0b8e\u0bb0\u0bbf\u0b9f\u0bcd\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "\u0b8e\u0bb8\u0bcd\u0ba4\u0bcb\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Est\xf3nsko";
     },
     get$szCountryDisplayName() {
-      return "\u0b8e\u0bb8\u0bcd\u0bb5\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bbf";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "\u0b8e\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bcb\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bbe";
+      return "Eti\xf3pia";
     },
     get$fkCountryDisplayName() {
-      return "\u0baa\u0bbe\u0bb2\u0bcd\u0b95\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Falklandy";
     },
     get$foCountryDisplayName() {
-      return "\u0baa\u0bbe\u0bb0\u0bcb \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Faersk\xe9 ostrovy";
     },
     get$fjCountryDisplayName() {
-      return "\u0baa\u0bbf\u0b9c\u0bbf";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "F\xednsko";
     },
     get$frCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bbe\u0ba9\u0bcd\u0bb8\u0bcd";
+      return "Franc\xfazsko";
     },
     get$gfCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1 \u0b95\u0baf\u0bbe\u0ba9\u0bbe";
+      return "Franc\xfazska Guyana";
     },
     get$pfCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1 \u0baa\u0bcb\u0bb2\u0bbf\u0ba9\u0bc7\u0bb7\u0bbf\u0baf\u0bbe";
+      return "Franc\xfazska Polyn\xe9zia";
     },
     get$gaCountryDisplayName() {
-      return "\u0b95\u0bc7\u0baa\u0ba9\u0bcd";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u0b95\u0bbe\u0bae\u0bcd\u0baa\u0bbf\u0baf\u0bbe";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "\u0b9c\u0bbe\u0bb0\u0bcd\u0b9c\u0bbf\u0baf\u0bbe";
+      return "Gruz\xednsko";
     },
     get$deCountryDisplayName() {
-      return "\u0b9c\u0bc6\u0bb0\u0bcd\u0bae\u0ba9\u0bbf";
+      return "Nemecko";
     },
     get$ghCountryDisplayName() {
-      return "\u0b95\u0bbe\u0ba9\u0bbe";
+      return "Ghana";
     },
     get$giCountryDisplayName() {
-      return "\u0b9c\u0bbf\u0baa\u0bb0\u0bbe\u0bb2\u0bcd\u0b9f\u0bb0\u0bcd";
+      return "Gibralt\xe1r";
     },
     get$grCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bc0\u0bb8\u0bcd";
+      return "Gr\xe9cko";
     },
     get$glCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bc0\u0ba9\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Gr\xf3nsko";
     },
     get$gdCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bc6\u0ba9\u0b9f\u0bbe";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb5\u0b9f\u0bb2\u0bc2\u0baa\u0bcd";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb5\u0bbe\u0bae\u0bcd";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb5\u0bbe\u0ba4\u0bc7\u0bb2\u0bbe";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u0b95\u0bc6\u0bb0\u0bcd\u0ba9\u0bcd\u0b9a\u0bbf";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u0b95\u0bbf\u0ba9\u0bbf \u0b95\u0bbe\u0ba9\u0b95\u0bcd\u0bb0\u0bbf";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "\u0b95\u0bbf\u0ba9\u0bbf \u0baa\u0bbf\u0bb8\u0bcd\u0b9a\u0bbe\u0bb5\u0bc1";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u0b95\u0baf\u0bbe\u0ba9\u0bbe";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "\u0bb9\u0bc8\u0b9f\u0bcd\u0b9f\u0bbf";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u0bb9\u0bbf\u0baf\u0bb0\u0bcd\u0b9f\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc6\u0b95\u0bcd\u0b9f\u0bca\u0ba9\u0bb2\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ostrov Heard a ostrovy McDonald";
     },
     get$hnCountryDisplayName() {
-      return "\u0bb9\u0bca\u0ba3\u0bcd\u0b9f\u0bc1\u0bb0\u0bbe\u0bb8\u0bcd";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u0bb9\u0bbe\u0b99\u0bcd\u0b95\u0bbe\u0b99\u0bcd";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u0bb9\u0b99\u0bcd\u0b95\u0bb0\u0bbf";
+      return "Ma\u010farsko";
     },
     get$isCountryDisplayName() {
-      return "\u0b90\u0bb8\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Island";
     },
     get$inCountryDisplayName() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bc7\u0bb7\u0bbf\u0baf\u0bbe";
+      return "Indon\xe9zia";
     },
     get$irCountryDisplayName() {
-      return "\u0b87\u0bb0\u0bbe\u0ba9\u0bcd";
+      return "Ir\xe1n";
     },
     get$iqCountryDisplayName() {
-      return "\u0b87\u0bb0\u0bbe\u0b95\u0bcd\u0b95\u0bcd";
+      return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "\u0b85\u0baf\u0bb0\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "\xcdrsko";
     },
     get$imCountryDisplayName() {
-      return "\u0bae\u0bc7\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1";
+      return "Ostrov Man";
     },
     get$ilCountryDisplayName() {
-      return "\u0b87\u0bb8\u0bcd\u0bb0\u0bc7\u0bb2\u0bcd";
+      return "Izrael";
     },
     get$itCountryDisplayName() {
-      return "\u0b87\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bbf";
+      return "Taliansko";
     },
     get$jmCountryDisplayName() {
-      return "\u0b9c\u0bae\u0bc8\u0b95\u0bbe";
+      return "Jamajka";
     },
     get$jpCountryDisplayName() {
-      return "\u0b9c\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bcd";
+      return "Japonsko";
     },
     get$jeCountryDisplayName() {
-      return "\u0b9c\u0bc6\u0bb0\u0bcd\u0b9a\u0bbf";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u0b9c\u0bcb\u0bb0\u0bcd\u0b9f\u0bbe\u0ba9\u0bcd";
+      return "Jord\xe1nsko";
     },
     get$kzCountryDisplayName() {
-      return "\u0b95\u0b9a\u0b95\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "Kazachstan";
     },
     get$keCountryDisplayName() {
-      return "\u0b95\u0bc6\u0ba9\u0bcd\u0baf\u0bbe";
+      return "Ke\u0148a";
     },
     get$kiCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bbf\u0baa\u0bbe\u0b9a\u0bbf";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u0b95\u0bcb\u0b9a\u0bcb\u0bb5\u0bcb";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u0b95\u0bc1\u0bb5\u0bc8\u0ba4\u0bcd";
+      return "Kuvajt";
     },
     get$kgCountryDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bcd\u0b95\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "Kirgizsko";
     },
     get$laCountryDisplayName() {
-      return "\u0bb2\u0bbe\u0bb5\u0bcb\u0bb8\u0bcd";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u0bb2\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0bb5\u0bbf\u0baf\u0bbe";
+      return "Loty\u0161sko";
     },
     get$lbCountryDisplayName() {
-      return "\u0bb2\u0bc6\u0baa\u0ba9\u0bbe\u0ba9\u0bcd";
+      return "Libanon";
     },
     get$lsCountryDisplayName() {
-      return "\u0bb2\u0bc6\u0b9a\u0bcb\u0ba4\u0bcd\u0ba4\u0bcb";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "\u0bb2\u0bbf\u0baa\u0bc0\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Lib\xe9ria";
     },
     get$lyCountryDisplayName() {
-      return "\u0bb2\u0bbf\u0baa\u0bbf\u0baf\u0bbe";
+      return "Libya";
     },
     get$liCountryDisplayName() {
-      return "\u0bb2\u0bbf\u0b95\u0bcd\u0b9a\u0bc6\u0bae\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bcd";
+      return "Lichten\u0161tajnsko";
     },
     get$ltCountryDisplayName() {
-      return "\u0bb2\u0bbf\u0ba4\u0bc1\u0bb5\u0bc7\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Litva";
     },
     get$luCountryDisplayName() {
-      return "\u0bb2\u0b95\u0bcd\u0b9a\u0bae\u0bcd\u0baa\u0bc1\u0bb0\u0bcd\u0b95\u0bcd";
+      return "Luxembursko";
     },
     get$moCountryDisplayName() {
-      return "\u0bae\u0b95\u0bbe\u0bb5\u0bcd";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "\u0bae\u0bbe\u0b9a\u0bbf\u0b9f\u0bcb\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Severn\xe1 Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "\u0bae\u0b9f\u0b95\u0bbe\u0bb8\u0bcd\u0b95\u0bb0\u0bcd";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
-      return "\u0bae\u0bb2\u0bbe\u0bb5\u0bbf";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "\u0bae\u0bb2\u0bc7\u0bb7\u0bbf\u0baf\u0bbe";
+      return "Malajzia";
     },
     get$mvCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb2\u0bcd\u0b9f\u0bbf\u0bb5\u0bcd\u0bb8\u0bcd";
+      return "Maldivy";
     },
     get$mlCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb2\u0bbf";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb2\u0bcd\u0b9f\u0bbe";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb0\u0bcd\u0bb7\u0bb2\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Marshallove ostrovy";
     },
     get$mqCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb0\u0bcd\u0b9f\u0bbf\u0ba9\u0bbf\u0b95\u0bcd";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "\u0bae\u0bca\u0bb0\u0bbf\u0b9f\u0bbe\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Maurit\xe1nia";
     },
     get$muCountryDisplayName() {
-      return "\u0bae\u0bca\u0bb0\u0bbf\u0b9a\u0bbf\u0baf\u0bb8\u0bcd";
+      return "Maur\xedcius";
     },
     get$ytCountryDisplayName() {
-      return "\u0bae\u0bc7\u0baf\u0bcb\u0b9f\u0bcd";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u0bae\u0bc7\u0b95\u0bcd\u0b9a\u0bbf\u0b95\u0bcb";
+      return "Mexiko";
     },
     get$fmCountryDisplayName() {
-      return "\u0bae\u0bc8\u0b95\u0bcd\u0bb0\u0bcb\u0ba9\u0bc7\u0bb7\u0bbf\u0baf\u0bbe";
+      return "Mikron\xe9zia";
     },
     get$mdCountryDisplayName() {
-      return "\u0bae\u0bbe\u0bb2\u0bcd\u0b9f\u0bcb\u0bb5\u0bbe";
+      return "Moldavsko";
     },
     get$mcCountryDisplayName() {
-      return "\u0bae\u0bcb\u0ba9\u0bbe\u0b95\u0bcd\u0b95\u0bcb";
+      return "Monako";
     },
     get$mnCountryDisplayName() {
-      return "\u0bae\u0b99\u0bcd\u0b95\u0bcb\u0bb2\u0bbf\u0baf\u0bbe";
+      return "Mongolsko";
     },
     get$meCountryDisplayName() {
-      return "\u0bae\u0bcb\u0ba9\u0bcd\u0b9f\u0bbf\u0ba9\u0bbf\u0b95\u0bcd\u0bb0\u0bcb";
+      return "\u010cierna Hora";
     },
     get$msCountryDisplayName() {
-      return "\u0bae\u0bbe\u0ba3\u0bcd\u0b9f\u0bcd\u0b9a\u0bc6\u0bb0\u0b9f\u0bcd";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u0bae\u0bca\u0bb0\u0bbe\u0b95\u0bcd\u0b95\u0bcb";
+      return "Maroko";
     },
     get$mzCountryDisplayName() {
-      return "\u0bae\u0bca\u0b9a\u0bbe\u0bae\u0bcd\u0baa\u0bbf\u0b95\u0bcd";
+      return "Mozambik";
     },
     get$mmCountryDisplayName() {
-      return "\u0bae\u0bbf\u0baf\u0bbe\u0ba9\u0bcd\u0bae\u0bbe\u0bb0\u0bcd (\u0baa\u0bb0\u0bcd\u0bae\u0bbe)";
+      return "Myanmar (Barma)";
     },
     get$naCountryDisplayName() {
-      return "\u0ba8\u0bbe\u0bae\u0bc0\u0baa\u0bbf\u0baf\u0bbe";
+      return "Nam\xedbia";
     },
     get$nrCountryDisplayName() {
-      return "\u0ba8\u0bb5\u0bc1\u0bb0\u0bc1";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u0ba8\u0bc7\u0baa\u0bbe\u0bb2\u0bcd";
+      return "Nep\xe1l";
     },
     get$nlCountryDisplayName() {
-      return "\u0ba8\u0bc6\u0ba4\u0bb0\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Holandsko";
     },
     get$ncCountryDisplayName() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b95\u0bb2\u0bc7\u0b9f\u0bcb\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Nov\xe1 Kaled\xf3nia";
     },
     get$nzCountryDisplayName() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf\u0632\u064a\u0644\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Nov\xfd Z\xe9land";
     },
     get$niCountryDisplayName() {
-      return "\u0ba8\u0bbf\u0b95\u0bb0\u0bbe\u0b95\u0bc1\u0bb5\u0bbe";
+      return "Nikaragua";
     },
     get$neCountryDisplayName() {
-      return "\u0ba8\u0bc8\u0b9c\u0bb0\u0bcd";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u0ba8\u0bbf\u0b95\u0bc7\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Nig\xe9ria";
     },
     get$nuCountryDisplayName() {
-      return "\u0ba8\u0bbf\u0baf\u0bc2";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u0ba8\u0bbe\u0bb0\u0bcd\u0b83\u0baa\u0bcb\u0b95\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1";
+      return "Ostrov Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "\u0bb5\u0b9f \u0b95\u0bca\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Severn\xe1 K\xf3rea";
     },
     get$mpCountryDisplayName() {
-      return "\u0bb5\u0b9f\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0bbe \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Severn\xe9 Mari\xe1nske ostrovy";
     },
     get$noCountryDisplayName() {
-      return "\u0ba8\u0bbe\u0bb0\u0bcd\u0bb5\u0bc7";
+      return "N\xf3rsko";
     },
     get$omCountryDisplayName() {
-      return "\u0b93\u0bae\u0bbe\u0ba9\u0bcd";
+      return "Om\xe1n";
     },
     get$pkCountryDisplayName() {
-      return "\u0baa\u0bbe\u0b95\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "P\xe1kist\xe1n";
     },
     get$pwCountryDisplayName() {
-      return "\u0baa\u0bbe\u0bb2\u0bb5\u0bcd";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u0baa\u0bbe\u0bb2\u0bb8\u0bcd\u0ba4\u0bc0\u0ba9\u0bbf\u0baf \u0baa\u0bbf\u0bb0\u0ba4\u0bc7\u0b9a\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Palest\xednske \xfazemia";
     },
     get$paCountryDisplayName() {
-      return "\u0baa\u0ba9\u0bbe\u0bae\u0bbe";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u0baa\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0bb5\u0bbe \u0ba8\u0bbf\u0baf\u0bc2 \u0b95\u0bbf\u0ba9\u0bbf";
+      return "Papua Nov\xe1 Guinea";
     },
     get$pyCountryDisplayName() {
-      return "\u0baa\u0bb0\u0bbe\u0b95\u0bc1\u0bb5\u0bc7";
+      return "Paraguaj";
     },
     get$peCountryDisplayName() {
-      return "\u0baa\u0bc6\u0bb0\u0bc1";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u0baa\u0bbf\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0bc8\u0ba9\u0bcd\u0bb8\u0bcd";
+      return "Filip\xedny";
     },
     get$plCountryDisplayName() {
-      return "\u0baa\u0bcb\u0bb2\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Po\u013esko";
     },
     get$ptCountryDisplayName() {
-      return "\u0baa\u0bcb\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bc1\u0b95\u0bb2\u0bcd";
+      return "Portugalsko";
     },
     get$prCountryDisplayName() {
-      return "\u0baa\u0bbf\u0baf\u0bc2\u0bb0\u0bcd\u0b9f\u0bcb \u0bb0\u0bbf\u0b95\u0bcb";
+      return "Portoriko";
     },
     get$qaCountryDisplayName() {
-      return "\u0b95\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return "Katar";
     },
     get$reCountryDisplayName() {
-      return "\u0bb0\u0bc0\u0baf\u0bc2\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "\u0bb0\u0bc1\u0bae\u0bc7\u0bbe\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Rumunsko";
     },
     get$ruCountryDisplayName() {
-      return "\u0bb0\u0bb7\u0bcd\u0baf\u0bbe";
+      return "Rusko";
     },
     get$rwCountryDisplayName() {
-      return "\u0bb0\u0bc1\u0bb5\u0bbe\u0ba3\u0bcd\u0b9f\u0bbe";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0ba4\u0bc6\u0bb2\u0bc6\u0bae\u0bbf";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0bb9\u0bc6\u0bb2\u0bc6\u0ba9\u0bbe";
+      return "Sv\xe4t\xe1 Helena";
     },
     get$knCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0b95\u0bbf\u0b9f\u0bcd\u0b9f\u0bcd\u0bb8\u0bcd";
+      return "Sv\xe4t\xfd Kri\u0161tof a Nevis";
     },
     get$lcCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0bb2\u0bc2\u0b9a\u0bbf\u0baf\u0bbe";
+      return "Sv\xe4t\xe1 Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0bae\u0bbe\u0bb0\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd";
+      return "Sv\xe4t\xfd Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0baa\u0bbf\u0baf\u0bb0\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0ba9\u0bcd";
+      return "Sv\xe4t\xfd Pierre a Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0bb5\u0bbf\u0ba9\u0bcd\u0b9a\u0bc6\u0ba9\u0bcd\u0b9f\u0bcd";
+      return "Sv\xe4t\xfd Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u0b9a\u0bae\u0bcb\u0bb5\u0bbe";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u0b9a\u0bbe\u0ba9\u0bcd \u0bae\u0bb0\u0bbf\u0ba9\u0bcb";
+      return "San Mar\xedno";
     },
     get$stCountryDisplayName() {
-      return "\u0b9a\u0bbe\u0bb5\u0bcd \u0b9f\u0bcb\u0bae\u0bbf \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0bb0\u0bbf\u0ba9\u0bcd\u0b9a\u0bbf\u0baa\u0bbf";
+      return "Sao Tom\xe9 a Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u0b9a\u0bb5\u0bc1\u0ba4\u0bbf \u0b85\u0bb0\u0bc7\u0baa\u0bbf\u0baf\u0bbe";
+      return "Saudsk\xe1 Ar\xe1bia";
     },
     get$snCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0ba9\u0bc6\u0b95\u0bb2\u0bcd";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0bb0\u0bcd\u0baa\u0bbf\u0baf\u0bbe";
+      return "Srbsko";
     },
     get$scCountryDisplayName() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0bb7\u0bc6\u0bb2\u0bcd\u0bb8\u0bcd";
+      return "Seychely";
     },
     get$slCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0baf\u0bb0\u0bcd\u0bb0\u0bbe \u0bb2\u0bbf\u0baf\u0bcb\u0ba9\u0bcd";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0b99\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0bc2\u0bb0\u0bcd";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0ba9\u0bcd\u0b9f\u0bcd \u0bae\u0bbe\u0bb0\u0bcd\u0b9f\u0ba9\u0bcd";
+      return "Sv\xe4t\xfd Martin";
     },
     get$skCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb2\u0bcb\u0bb5\u0bbe\u0b95\u0bbf\u0baf\u0bbe";
+      return "Slovensko";
     },
     get$siCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb2\u0bcb\u0bb5\u0bc7\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Slovinsko";
     },
     get$sbCountryDisplayName() {
-      return "\u0b9a\u0bcb\u0bb2\u0bae\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "\u0160alam\xfanove ostrovy";
     },
     get$soCountryDisplayName() {
-      return "\u0b9a\u0bcb\u0bae\u0bbe\u0bb2\u0bbf\u0baf\u0bbe";
+      return "Som\xe1lsko";
     },
     get$zaCountryDisplayName() {
-      return "\u0ba4\u0bc6\u0ba9\u0bcd \u0b86\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbe";
+      return "Ju\u017en\xe1 Afrika";
     },
     get$gsCountryDisplayName() {
-      return "\u0ba4\u0bc6\u0ba9\u0bcd \u0b9c\u0bbe\u0bb0\u0bcd\u0b9c\u0bbf\u0baf\u0bbe \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0bc6\u0ba9\u0bcd \u0b9a\u0bbe\u0ba3\u0bcd\u0b9f\u0bcd\u0bb5\u0bbf\u0b9a\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ju\u017en\xe1 Georgia a Ju\u017en\xe9 Sandwichove ostrovy";
     },
     get$krCountryDisplayName() {
-      return "\u0ba4\u0bc6\u0ba9\u0bcd \u0b95\u0bca\u0bb0\u0bbf\u0baf\u0bbe";
+      return "Ju\u017en\xe1 K\xf3rea";
     },
     get$ssCountryDisplayName() {
-      return "\u0ba4\u0bc6\u0ba9\u0bcd \u0b9a\u0bc1\u0b9f\u0bbe\u0ba9\u0bcd";
+      return "Ju\u017en\xfd Sud\xe1n";
     },
     get$esCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0baa\u0bc6\u0baf\u0bbf\u0ba9\u0bcd";
+      return "\u0160panielsko";
     },
     get$lkCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb0\u0bc0\u0bb2\u0b99\u0bcd\u0b95\u0bbe";
+      return "Sr\xed Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u0b9a\u0bc2\u0b9f\u0bbe\u0ba9\u0bcd";
+      return "Sud\xe1n";
     },
     get$srCountryDisplayName() {
-      return "\u0b9a\u0bc1\u0bb0\u0bbf\u0ba9\u0bbe\u0bae\u0bcd";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bbe\u0bb2\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b9f\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9c\u0bbe\u0ba9\u0bcd \u0bae\u0bc7\u0baf\u0ba9\u0bcd";
+      return "\u0160picbergy a Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bc0\u0b9f\u0ba9\u0bcd";
+      return "\u0160v\xe9dsko";
     },
     get$chCountryDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bbf\u0b9f\u0bcd\u0b9a\u0bb0\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "\u0160vaj\u010diarsko";
     },
     get$syCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0bb0\u0bbf\u0baf\u0bbe";
+      return "S\xfdria";
     },
     get$twCountryDisplayName() {
-      return "\u0ba4\u0bc8\u0bb5\u0bbe\u0ba9\u0bcd";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "\u0ba4\u0bbe\u0b9c\u0bbf\u0b95\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "T\xe1d\u017eikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u0ba4\u0bbe\u0ba9\u0bcd\u0b9a\u0bbe\u0ba9\u0bbf\u0baf\u0bbe";
+      return "Tanz\xe1nia";
     },
     get$thCountryDisplayName() {
-      return "\u0ba4\u0bbe\u0baf\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Thajsko";
     },
     get$tgCountryDisplayName() {
-      return "\u0b9f\u0bcb\u0b95\u0bcb";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u0b9f\u0bcb\u0b95\u0bbf\u0bb2\u0bc7\u0bb5\u0bcd";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u0b9f\u0bcb\u0b99\u0bcd\u0b95\u0bbe";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u0b9f\u0bbf\u0bb0\u0bbf\u0ba9\u0bbf\u0b9f\u0bbe\u0b9f\u0bcd/\u0b9f\u0bcb\u0baa\u0bbe\u0b95\u0bcb";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u0ba4\u0bc1\u0ba9\u0bbf\u0b9a\u0bbf\u0baf\u0bbe";
+      return "Tunisko";
     },
     get$trCountryDisplayName() {
-      return "\u0ba4\u0bc1\u0bb0\u0bcd\u0b95\u0bbf";
+      return "Turecko";
     },
     get$tmCountryDisplayName() {
-      return "\u0ba4\u0bc1\u0bb0\u0bcd\u0b95\u0bcd\u0bae\u0bc6\u0ba9\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "Turkm\xe9nsko";
     },
     get$tcCountryDisplayName() {
-      return "\u0b9f\u0bb0\u0bcd\u0b95\u0bcd\u0bb8\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b95\u0bc7\u0b95\u0bcd\u0b95\u0bcb\u0baf\u0bbf\u0bb8\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ostrovy Turks a Caicos";
     },
     get$tvCountryDisplayName() {
-      return "\u0b9f\u0bc1\u0bb5\u0bbe\u0bb2\u0bc1";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0bb0\u0bcd\u0b9c\u0bbf\u0ba9\u0bcd \u0ba4\u0bc0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Americk\xe9 Panensk\xe9 ostrovy";
     },
     get$ugCountryDisplayName() {
-      return "\u0b89\u0b95\u0bbe\u0ba3\u0bcd\u0b9f\u0bbe";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u0b89\u0b95\u0bcd\u0bb0\u0bc8\u0ba9\u0bcd";
+      return "Ukrajina";
     },
     get$aeCountryDisplayName() {
-      return "\u0b90\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b85\u0bb0\u0baa\u0bc1 \u0b85\u0bae\u0bc0\u0bb0\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Spojen\xe9 arabsk\xe9 emir\xe1ty";
     },
     get$gbCountryDisplayName() {
-      return "\u0baf\u0bc1\u0ba9\u0bc8\u0b9f\u0bc6\u0b9f\u0bcd \u0b95\u0bbf\u0b99\u0bcd\u0b9f\u0bae\u0bcd";
+      return "Spojen\xe9 kr\xe1\u013eovstvo";
     },
     get$usCountryDisplayName() {
-      return "\u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbe";
+      return "Spojen\xe9 \u0161t\xe1ty";
     },
     get$uyCountryDisplayName() {
-      return "\u0b89\u0bb0\u0bc1\u0b95\u0bc1\u0bb5\u0bc7";
+      return "Uruguaj";
     },
     get$uzCountryDisplayName() {
-      return "\u0b89\u0bb8\u0bcd\u0baa\u0bc6\u0b95\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u0bb5\u0ba9\u0bc1\u0bb5\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u0bb5\u0bbe\u0b9f\u0bbf\u0b95\u0ba9\u0bcd \u0ba8\u0b95\u0bb0\u0bae\u0bcd";
+      return "Vatik\xe1n";
     },
     get$veCountryDisplayName() {
-      return "\u0bb5\u0bc6\u0ba9\u0bbf\u0b9a\u0bc1\u0bb2\u0bbe";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u0bb5\u0bbf\u0baf\u0b9f\u0bcd\u0ba8\u0bbe\u0bae\u0bcd";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "\u0bb5\u0bbe\u0bb2\u0bbf\u0bb8\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b83\u0baa\u0bc1\u0b9f\u0bc1\u0ba9\u0bbe";
+      return "Wallis a Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1 \u0b9a\u0bb9\u0bbe\u0bb0\u0bbe";
+      return "Z\xe1padn\xe1 Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u0baf\u0bc7\u0bae\u0ba9\u0bcd";
+      return "Jemen";
     },
     get$zmCountryDisplayName() {
-      return "\u0b9a\u0bae\u0bcd\u0baa\u0bbf\u0baf\u0bbe";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "\u0b9a\u0bbf\u0bae\u0bcd\u0baa\u0bbe\u0baa\u0bcd\u0bb5\u0bc7";
+      return "Zimbabwe";
     },
     get$pay() {
       return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b92\u0bb0\u0bc1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1\u0b95\u0bcd \u0b95\u0bc2\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd: " + space + "! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8f\u0bb1\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return user + " v\xe1s pozval na kurz: " + space + "! Chcete prija\u0165?";
     },
     get$youreInvited() {
-      return "\ud83d\udea9 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd!";
+      return "\ud83d\udce9 Ste pozvan\xed!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b92\u0bb0\u0bc1 \u0b89\u0bb0\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd: " + $name + "! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8f\u0bb1\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return user + " v\xe1s pozval do rozhovoru: " + $name + "! Chcete prija\u0165?";
     },
     get$monthlySubscription() {
-      return "\u0bae\u0bbe\u0ba4\u0bbe\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0";
+      return "Mesa\u010dne";
     },
     get$yearlySubscription() {
-      return "\u0bb5\u0bb0\u0bc1\u0b9f\u0bbe\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0";
+      return "Ro\u010dne";
     },
     get$defaultSubscription() {
-      return "\u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe";
+      return "Pangea Chat Predplatn\xe9";
     },
     get$freeTrial() {
-      return "\u0b87\u0bb2\u0bb5\u0b9a \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8";
+      return "Bezplatn\xe1 sk\xfa\u0161ka";
     },
     get$noDataFound() {
-      return "\u0ba4\u0b95\u0bb5\u0bb2\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nena\u0161li sa \u017eiadne \xfadaje";
     },
     get$bestCorrectionFeedback() {
-      return "\u0b85\u0ba4\u0bc1 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1!";
+      return "To je spr\xe1vne!";
     },
     get$distractorFeedback() {
-      return "\u0b85\u0ba4\u0bc1 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2.";
+      return "To nie je \xfaplne spr\xe1vne.";
     },
     get$bestAnswerFeedback() {
-      return "\u0b85\u0ba4\u0bc1 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1!";
+      return "To je spr\xe1vne!";
     },
     get$definitionDefaultPrompt() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bbf\u0ba9\u0bcd \u0b85\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "\u010co znamen\xe1 toto slovo?";
     },
     get$practiceDefaultPrompt() {
-      return "\u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0baa\u0ba4\u0bbf\u0bb2\u0bcd \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "Ak\xe1 je najlep\u0161ia odpove\u010f?";
     },
     get$correctionDefaultPrompt() {
-      return "\u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "Ak\xe1 je najlep\u0161ia n\xe1hrada?";
     },
     get$reportToTeacher() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0baf\u0bbe\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?";
+      return "Komu chcete nahl\xe1si\u0165 t\xfato spr\xe1vu?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u0b8e\u0ba9\u0bcd\u0baa\u0bb5\u0bb0\u0bcd " + reportedUserId + " \u0b87\u0ba9\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 " + roomName + " \u0b87\u0bb2\u0bcd \u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd";
+      return reportingUserId + " nahl\xe1sil spr\xe1vu od " + reportedUserId + " v chate " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf: " + reportedMessage + "\n\u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd: " + reason;
+      return "Spr\xe1va: " + reportedMessage + "\nD\xf4vod: " + reason;
     },
     get$noTeachersFound() {
-      return "\u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0b86\u0b9a\u0bbf\u0bb0\u0bbf\u0baf\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nena\u0161li sa \u017eiadni u\u010ditelia na nahl\xe1senie";
     },
     trialExpiration$1(expiration) {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0bb5\u0b9a \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8 " + expiration + " \u0b85\u0ba9\u0bcd\u0bb1\u0bc1 \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0b9f\u0bc8\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "V\xe1\u0161 bezplatn\xfd sk\xfa\u0161obn\xfd \u010das vypr\u0161\xed d\u0148a " + expiration;
     },
     get$freeTrialDesc() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe \u0b9a\u0ba8\u0bcd\u0ba4\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b92\u0bb0\u0bc1 \u0bb5\u0bbe\u0bb0 \u0b87\u0bb2\u0bb5\u0b9a \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8 \u0baa\u0bc6\u0bb1\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Nov\xed pou\u017e\xedvatelia dostan\xfa t\xfd\u017edenn\xfa bezplatn\xfa sk\xfa\u0161obn\xfa verziu Pangea Chat";
     },
     get$activateTrial() {
-      return "\u0b87\u0bb2\u0bb5\u0b9a 7-\u0ba8\u0bbe\u0bb3\u0bcd \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8";
+      return "Bezplatn\xe1 7-d\u0148ov\xe1 sk\xfa\u0161obn\xe1 verzia";
     },
     get$successfullySubscribed() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bbf\u0b95\u0bb0\u0bae\u0bbe\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd!";
+      return "\xdaspe\u0161ne ste sa prihl\xe1sili!";
     },
     get$clickToManageSubscription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf\u0b95\u0bcd\u0b95 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Kliknite sem na spr\xe1vu svojho predplatn\xe9ho.";
     },
     get$signUp() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zaregistrova\u0165 sa";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1 " + min + " \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Vyberte aspo\u0148 " + min + " znakov.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.u0ba4_____;
+      return "Zadajte platn\xfa e-mailov\xfa adresu.";
     },
     get$pleaseChooseAUsername() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte si pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$listen() {
-      return "\u0b95\u0bc7\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Po\u010d\xfava\u0165";
     },
     get$trialPeriodExpired() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bcb\u0ba4\u0ba9\u0bc8 \u0b95\u0bbe\u0bb2\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0b9f\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "V\xe1\u0161 sk\xfa\u0161obn\xfd \u010das vypr\u0161al";
     },
     get$subscribedToUnlockTools() {
-      return "\u0b87\u0ba3\u0bc8\u0baf\u0bae\u0bbf\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1, \u0b92\u0bb2\u0bbf \u0bb5\u0bbe\u0b9a\u0bbf\u0baa\u0bcd\u0baa\u0bc1, \u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Odobera\u0165 na odomknutie interakt\xedvneho prekladu a kontroly gramatiky, prehr\xe1vania zvuku, personalizovan\xfdch cvi\u010den\xed a analytiky u\u010denia!";
     },
     get$translationTooltip() {
-      return "\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1";
+      return "Prelo\u017ei\u0165";
     },
     get$kickBotWarning() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe \u0baa\u0bbe\u0ba3\u0bcd\u0b9f\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0b87\u0b9a\u0bcd\u0b9a\u0ba8\u0bcd\u0ba4\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b85\u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd.";
+      return "Vyhodenie Pangea Bota odstr\xe1ni konverza\u010dn\xe9ho bota z tohto chatu.";
     },
     get$refresh(_) {
-      return "\u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf";
+      return "Obnovi\u0165";
     },
     get$accuracy(_) {
-      return "\u0ba4\u0bc1\u0bb2\u0bcd\u0bb2\u0bbf\u0baf\u0bae\u0bcd";
+      return "Presnos\u0165";
     },
     get$chatCapacity() {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba9\u0bcd";
+      return "Kapacita chatu";
     },
     get$roomFull() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bb1\u0bc8 \u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7 \u0ba4\u0bbf\u0bb1\u0ba9\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc7\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "T\xe1to miestnos\u0165 je u\u017e pln\xe1.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba9\u0bcd \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Kapacita chatu bola zmenen\xe1";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba9\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1 " + count + " \u0b86\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd.";
+      return "Kapacita chatu mus\xed by\u0165 najmenej " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba9\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bbf\u0bb2\u0bcd \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b89\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.";
+      return "Kapacita chatu obmedzuje po\u010det \u010dlenov, ktor\xed m\xf4\u017eu by\u0165 v chate.";
     },
     get$enterNumber() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bc1\u0bb4\u0bc1 \u0b8e\u0ba3\u0bcd \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Zadajte cel\xe9 \u010d\xedslo.";
     },
     get$buildTranslation() {
-      return "\u0bae\u0bc7\u0bb2\u0bc7 \u0b89\u0bb3\u0bcd\u0bb3 \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvorte svoj preklad z mo\u017enost\xed vy\u0161\u0161ie";
     },
     get$practice() {
-      return "\u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Cvi\u010di\u0165";
     },
     get$speechToTextBody() {
-      return "\u0b95\u0bc1\u0bb0\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0b95, \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bbf\u0ba9\u0bcd \u0b89\u0bb0\u0bc8\u0baa\u0b9f\u0bbf\u0bb5\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bbe\u0bb3\u0bb0\u0bbf\u0ba9\u0bcd \u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bb3\u0bcd \u0bb5\u0bc0\u0ba4 \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Pre hlasov\xe9 spr\xe1vy m\xf4\u017eete vidie\u0165 prepis, ako aj sk\xf3re R\xfdchlosti slov za min\xfatu od hovoriaceho.";
     },
     get$versionNotFound() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Verzia nen\xe1jden\xe1";
     },
     get$fetchingVersion() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0bc6\u0bb1\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1...";
+      return "Na\u010d\xedtavanie verzie...";
     },
     get$versionFetchError() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc8 \u0baa\u0bc6\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0bbf\u0bb4\u0bc8";
+      return "Chyba pri na\u010d\xedtavan\xed verzie";
     },
     versionText$2(version, buildNumber) {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc1: " + version + "+" + buildNumber;
+      return "Verzia: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bae\u0bbe\u0b9f\u0bcd\u0b9f\u0bbe\u0ba4\u0bc1.";
+      return "Spr\xe1vy v va\u0161om z\xe1kladnom jazyku nebud\xfa prekladan\xe9.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "M\xe1te akt\xedvne predplatn\xe9";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0ba4\u0bc1 \u0ba4\u0bbe\u0ba9\u0bbe\u0b95\u0bb5\u0bc7 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0bb0\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Vymazanie v\xe1\u0161ho \xfa\u010dtu automaticky nezru\u0161\xed va\u0161e predplatn\xe9.";
     },
     get$manageSubscription() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf";
+      return "Spravova\u0165 predplatn\xe9";
     },
     get$error520Title() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pros\xedm, sk\xfaste to znova.";
     },
     get$error520Desc() {
-      return "\u0bae\u0ba9\u0bcd\u0ba9\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8...";
+      return "Prep\xe1\u010dte, nerozumeli sme va\u0161ej spr\xe1ve...";
     },
     get$level(_) {
-      return "\u0ba8\u0bbf\u0bb2\u0bc8";
+      return "\xdarove\u0148";
     },
     get$translationChoicesBody() {
-      return "\u0b92\u0bb0\u0bc1 \u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bc6\u0bb1\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Kliknite a podr\u017ete mo\u017enos\u0165 pre n\xe1povedu.";
     },
     get$grammar() {
-      return "\u0bb5\u0bbf\u0baf\u0b95\u0bcd\u0b95\u0bb0\u0bae\u0bcd";
+      return "Gramatika";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Kontakt bol pozvan\xfd do chatu";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "\ud83d\udce8 Pozva\u0165 do chatu";
     },
     get$l2SupportNa() {
-      return "\u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nedostupn\xe9";
     },
     get$l2SupportAlpha() {
-      return "\u0b85\u0bb2\u0bcd\u0baa\u0bbe";
+      return "Alpha";
     },
     get$l2SupportBeta() {
-      return "\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bbe";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\u0bae\u0bc1\u0bb4\u0bc1";
+      return "Pln\xe9";
     },
     get$playAudio() {
-      return "\u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bc1";
+      return "Prehra\u0165";
     },
     get$stop(_) {
-      return "\u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Zastavi\u0165";
     },
     get$grammarCopyPOSsconj() {
-      return "\u0ba4\u0bc1\u0ba3\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Podra\u010fovacia spojka";
     },
     get$grammarCopyPOSnum() {
-      return "\u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslo";
     },
     get$grammarCopyPOSverb() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Sloveso";
     },
     get$grammarCopyPOSaffix() {
-      return "\u0b9a\u0bc2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bae\u0bcd";
+      return "Pr\xedpona";
     },
     get$grammarCopyPOSpart() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "\u010castica";
     },
     get$grammarCopyPOSadj() {
-      return "\u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Pr\xeddavn\xe9 meno";
     },
     get$grammarCopyPOScconj() {
-      return "\u0b9a\u0bae\u0ba8\u0bbf\u0bb2\u0bc8\u0b9a\u0bcd \u0b9a\u0bca\u0bb2\u0bcd";
+      return "S\xfaradnicov\xe1 spojka";
     },
     get$grammarCopyPOSpunct() {
-      return "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf";
+      return "Interpunkcia";
     },
     get$grammarCopyPOSadv() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0baf\u0bbf\u0ba9\u0bcd\u0bae\u0bc8";
+      return "Pr\xedslovka";
     },
     get$grammarCopyPOSaux() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Pomocn\xe9 sloveso";
     },
     get$grammarCopyPOSspace() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf";
+      return "Medzera";
     },
     get$grammarCopyPOSsym() {
-      return "\u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd";
+      return "Symbol";
     },
     get$grammarCopyPOSdet() {
-      return "\u0ba4\u0bc0\u0bb0\u0bcd\u0bae\u0bbe\u0ba9\u0bbf";
+      return "Ur\u010dovacie slovo";
     },
     get$grammarCopyPOSpron() {
-      return "\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0bb5\u0bc7\u0ba4\u0bbf";
+      return "Z\xe1meno";
     },
     get$grammarCopyPOSadp() {
-      return "\u0baa\u0bbf\u0bb0\u0bbf\u0bb5\u0bc1\u0bb0\u0bc8";
+      return "Predlo\u017eka";
     },
     get$grammarCopyPOSpropn() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Vlastn\xe9 meno";
     },
     get$grammarCopyPOSnoun() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Podstatn\xe9 meno";
     },
     get$grammarCopyPOSintj() {
-      return "\u0b87\u0ba3\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Medzn\xedkov\xe1 sloveso";
     },
     get$grammarCopyPOSidiom() {
-      return "\u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Idi\xf3m";
     },
     get$grammarCopyPOSphrasalv() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0bb5\u0bbf\u0ba9\u0bc8";
+      return "Fr\xe1zov\xe9 sloveso";
     },
     get$grammarCopyPOScompn() {
-      return "\u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bc8";
+      return "Zlo\u017een\xe9";
     },
     get$grammarCopyPOSx() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bc8";
+      return "In\xe9";
     },
     get$grammarCopyGENDERfem() {
-      return "\u0baa\u0bc6\u0ba3\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\u017densk\xfd";
     },
     get$grammarCopyPERSON2() {
-      return "\u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bbe\u0bb5\u0ba4\u0bc1 \u0ba8\u0baa\u0bb0\u0bcd";
+      return "Druh\xe1 osoba";
     },
     get$grammarCopyMOODimp() {
-      return "\u0b86\u0ba3\u0bc8";
+      return "Rozkazovac\xed sp\xf4sob";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u0b95\u0bc7\u0bb3\u0bcd\u0bb5\u0bbf";
+      return "Ot\xe1zka";
     },
     get$grammarCopyASPECTperf() {
-      return "\u0baa\u0bc2\u0bb0\u0ba3\u0bae\u0bbe\u0ba9";
+      return "Dokon\u010den\xfd";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0ba4\u0bca\u0b95\u0bc8, \u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Akuzat\xedv, Nominat\xedv";
     },
     get$grammarCopyCASEobl() {
-      return "\u0bb5\u0bb3\u0bc8\u0ba8\u0bcd\u0ba4";
+      return "Oslaben\xfd p\xe1d";
     },
     get$grammarCopyVOICEact() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Akt\xedvny hlas";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u0baa\u0bbf\u0bb0\u0bc7\u0b95\u0bcd";
+      return "Z\xe1tvorka";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0bb0\u0bc8";
+      return "\u010cl\xe1nok";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u0b92\u0bb1\u0bcd\u0bb1\u0bc8";
+      return "Jednotn\xe9 \u010d\xedslo";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u0b86\u0ba3\u0bcd\u0bae\u0bc8";
+      return "Mu\u017esk\xfd";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u0bae\u0bbe\u0ba4\u0bbf\u0bb0\u0bbf";
+      return "Mod\xe1lny";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0baf\u0b9f\u0bc8\u0bb5\u0ba4\u0bc1";
+      return "Pr\xedslovkov\xfd";
     },
     get$grammarCopyTENSEperi() {
-      return "\u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0bb1 \u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "Perifrastick\xfd";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslica";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2";
+      return "Neosobn\xfd";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf";
+      return "\u010c\xedseln\xfd";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Vlastn\xfd";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u0b9f\u0bbe\u0bb7\u0bcd";
+      return "Poml\u010dka";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u0b86\u0bae\u0bcd";
+      return "\xc1no";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf";
+      return "Stredn\xedk";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u0b95\u0bcb\u0bb2\u0bbe\u0ba9 \u0b95\u0bc1\u0bb1\u0bbf";
+      return "\u010diarka";
     },
     get$grammarCopyMOODcnd() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bae\u0bcd";
+      return "Podmie\u0148ovac\xed sp\xf4sob";
     },
     get$grammarCopyCASEacc() {
-      return "\u0b87\u0b9f\u0bc8\u0baf\u0bc0\u0b9f\u0bc1";
+      return "Akuzat\xedv";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Partit\xedv";
     },
     get$grammarCopyTENSEpast() {
-      return "\u0baa\u0bb4\u0bc8\u0baf";
+      return "Minul\xfd \u010das";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u0b85\u0ba4\u0bbf\u0b95\u0baa\u0b9f\u0bcd\u0b9a\u0bae\u0bcd";
+      return "Superlat\xedv";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0b95\u0bcb\u0bb2\u0bae\u0bcd";
+      return "Dvojbodka";
     },
     get$grammarCopyPERSON3() {
-      return "\u0bae\u0bc2\u0ba9\u0bcd\u0bb1\u0bbe\u0bb5\u0ba4\u0bc1 \u0ba8\u0baa\u0bb0\u0bcd";
+      return "Tretia osoba";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u0baa\u0ba9\u0bcd\u0bae\u0bc8";
+      return "Mno\u017en\xe9 \u010d\xedslo";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Vlastn\xe9 meno";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u0bb5\u0bbf\u0ba9\u0bbe\u0ba4\u0bcd\u0ba4\u0bca\u0b9f\u0bb0\u0bcd";
+      return "Ot\xe1zka";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u0b85\u0b9f\u0bc8\u0baf\u0bbe\u0bb3\u0bae\u0bb1\u0bcd\u0bb1";
+      return "Neform\xe1lne";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u0ba8\u0bc7\u0bb0\u0bae\u0bcd";
+      return "\u010cas";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bae\u0bb1\u0bc8";
+      return "Negat\xedvne";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u0bae\u0bca\u0ba4\u0bcd\u0ba4\u0bae\u0bcd";
+      return "Celkov\xfd";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf";
+      return "Adnomin\xe1lne";
     },
     get$grammarCopyASPECTprog() {
-      return "\u0ba4\u0bc6\u0bbe\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Progres\xedvny";
     },
     get$grammarCopyMOODsub() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bbe\u0ba4\u0bbe\u0bb0\u0bae\u0bcd";
+      return "Subjunkt\xedv";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u0baa\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bbf";
+      return "Komplement\xedv";
     },
     get$grammarCopyCASEnom() {
-      return "\u0ba8\u0bbe\u0bae\u0bb5\u0bbf\u0baf\u0bb2\u0bcd";
+      return "Nominat\xedv";
     },
     get$grammarCopyTENSEfut() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "Bud\xfaci \u010das";
     },
     get$grammarCopyCASEdat() {
-      return "\u0ba4\u0bb0\u0bb5\u0bc1";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "\u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1";
+      return "Pr\xedtomn\xfd \u010das";
     },
     get$grammarCopyGENDERneut() {
-      return "\u0baa\u0bbe\u0bb2\u0bbf\u0ba9\u0bae\u0bb1\u0bcd\u0bb1";
+      return "Rodovo neutr\xe1lny";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u0b9a\u0bae\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0bae\u0bbe\u0ba9";
+      return "Vz\u0165a\u017en\xe9 z\xe1meno";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u0b87\u0bb1\u0bc1\u0ba4\u0bbf \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bc1";
+      return "Koncov\xe1 forma";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bc1";
+      return "Ukazovacie z\xe1meno";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u0bae\u0bc1\u0ba9\u0bcd \u0b87\u0b9f\u0bc8\u0b9a\u0bcd\u0b9a\u0bc6\u0bb0\u0bc1\u0b95\u0bb2\u0bcd";
+      return "Predlo\u017ekov\xe1 p\xe1dov\xe1 v\xe4zba";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bbe\u0ba9";
+      return "Kone\u010dn\xe1 forma";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u0ba8\u0bb2\u0bcd\u0bb2";
+      return "Pozit\xedvny stupe\u0148";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u0bae\u0bc7\u0bb2\u0bcb\u0b9f\u0bcd\u0b9f\u0bae\u0bcd";
+      return "Uvozovky";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Gerundium";
     },
     get$grammarCopyVOICEpass() {
-      return "\u0baa\u0bbe\u0b9a\u0bbf\u0bb5\u0bae\u0bcd";
+      return "Pas\xedv";
     },
     get$grammarCopyCASEgen() {
-      return "\u0b89\u0bb0\u0bbf\u0bae\u0bc8";
+      return "Genit\xedv";
     },
     get$grammarCopyTENSEprs() {
-      return "\u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1";
+      return "Pr\xedtomn\xfd \u010das";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bbe\u0ba9";
+      return "Ur\u010dit\xfd";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u0bb5\u0bb0\u0bbf\u0b9a\u0bc8";
+      return "Poradie";
     },
     get$grammarCopyCASEins() {
-      return "\u0b95\u0bb0\u0bc1\u0bb5\u0bbf";
+      return "In\u0161trument\xe1l";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0b85\u0ba9\u0bc1\u0ba4\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Infinit\xedv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf\u0b95\u0bcd";
+      return "Pomocn\xfd";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u0ba8\u0bc0\u0bb3\u0bae\u0bbe\u0ba9";
+      return "Dlh\xfd";
     },
     get$grammarCopyCASEloc() {
-      return "\u0b87\u0b9f\u0bae\u0bcd";
+      return "Lok\xe1l";
     },
     get$grammarCopyMOODind() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Indicative";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u0bb5\u0bbf\u0b95\u0bbf\u0ba4\u0bae\u0bbe\u0ba9";
+      return "Porovn\xe1vac\xed";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u0b9a\u0bae\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0bae\u0bbe\u0ba9";
+      return "Vztahov\xfd";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8\u0baf\u0bbe\u0ba9";
+      return "V\xfdkri\u010dn\xedk";
     },
     get$grammarCopyPERSON1() {
-      return "\u0bae\u0bc1\u0ba4\u0bb2\u0bcd \u0ba8\u0baa\u0bb0\u0bcd";
+      return "Prv\xe1 osoba";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u0ba4\u0bca\u0b9f\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Po\u010diato\u010dn\xfd";
     },
     get$grammarCopyGENDERperson() {
-      return "\u0baa\u0bbe\u0bb2\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Rod";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0ba8\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1";
+      return "Zahrani\u010dn\xfd";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Hlas";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8";
+      return "Sloveso";
     },
     get$grammarCopyPOSSpass() {
-      return "\u0b89\u0b9f\u0bc8\u0baf\u0bb5\u0bb0\u0bcd";
+      return "Vlastn\xedctvo";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u0bae\u0bc1\u0ba9\u0bcd";
+      return "Predlo\u017ekov\xfd";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslovka";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Podstatn\xe9 meno";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bbe\u0ba9";
+      return "Reflex\xedvny";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0bb5\u0bc7\u0bb7\u0bae\u0bcd";
+      return "Z\xe1meno";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf \u0baa\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Strana interpunkcie";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf";
+      return "Sloveso";
     },
     get$grammarCopyGENDERgender() {
-      return "\u0baa\u0bbe\u0bb2\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Rod";
     },
     get$grammarCopyMOODmood() {
-      return "\u0bae\u0ba9\u0bcb\u0baa\u0bbe\u0bb5\u0bae\u0bcd";
+      return "M\xf3d";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Aspect";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u0baa\u0bc1\u0ba3\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf";
+      return "Interpunkcia";
     },
     get$grammarCopyTENSEtense() {
-      return "\u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "\u010cas";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u0ba4\u0bb0\u0bae\u0bcd";
+      return "Stupe\u0148";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u0baa\u0ba3\u0bcd\u0baa\u0bc1";
+      return "Zdvorilos\u0165";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bae\u0bcd";
+      return "Pr\xedslovka";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslo";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "Spojka";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baa\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Pol\xe1rnos\u0165";
     },
     get$grammarCopyCASEcase() {
-      return "\u0bb5\u0b95\u0bc8";
+      return "Pr\xedpad";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u0ba4\u0bc0\u0bb0\u0bcd\u0bae\u0bbe\u0ba9\u0bae\u0bcd";
+      return "Ur\u010ditos\u0165";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0baf\u0bb2\u0bcd";
+      return "\u010c\xedslovka";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf";
+      return "Pr\xedslovkov\xe9 z\xe1meno";
     },
     get$grammarCopyVOCvoc() {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "Volac\xed tvar";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u0baa\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baa\u0bb5\u0bb0\u0bcd";
+      return "Doplnok";
     },
     get$grammarCopyADVadv() {
-      return "\u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Pr\xedslovkov\xfd";
     },
     get$grammarCopyMOODjus() {
-      return "\u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1";
+      return "\u017diados\u0165ov\xfd";
     },
     get$grammarCopyGENDERcom() {
-      return "\u0baa\u0bca\u0ba4\u0bc1";
+      return "Spolo\u010dn\xfd";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bbe\u0ba9";
+      return "Reflex\xedvny";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf \u0bb5\u0b95\u0bc8";
+      return "Partit\xedvny";
     },
     get$grammarCopySPCspc() {
-      return "\u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf";
+      return "\u0160pecifick\xfd";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bcb\u0b9f\u0bcd\u0b9f \u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "Pluskvamperfekt";
     },
     get$grammarCopyREFLEXref() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bbe\u0ba9";
+      return "Reflex\xedvny";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bae\u0bbe\u0ba9";
+      return "Kr\xe1tky";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0b87\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8";
+      return "Dvojit\xfd";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u0ba8\u0bc0\u0bb3\u0bae\u0bbe\u0ba9";
+      return "Dlh\xfd";
     },
     get$grammarCopyVOICEmid() {
-      return "\u0b87\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bbe\u0ba9";
+      return "Stredn\xfd";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0baf\u0b9f\u0bc8\u0bb5\u0ba4\u0bc1, \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b9f\u0bc8\u0baf\u0ba4\u0bc1";
+      return "Ot\xe1zka, Vz\u0165ahov\xe1 veta";
     },
     get$grammarCopyINTint() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0baf\u0b9f\u0bc8\u0bb5\u0ba4\u0bc1";
+      return "Ot\xe1zka";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd";
+      return "Pr\xed\u010dinn\xfd";
     },
     get$grammarCopyUnknown() {
-      return "\u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bbe\u0ba4\u0ba4\u0bc1";
+      return "Nezn\xe1my";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0b9a\u0bbe\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "D\xf4kaznos\u0165";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslo vlastn\xedka";
     },
     get$grammarCopyASPECThab() {
-      return "\u0baa\u0bb4\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Zvykov\xfd";
     },
     get$grammarCopyCASEabl() {
-      return "\u0b85\u0baa\u0bcd\u0bb2\u0bc7\u0b9f\u0bcd\u0b9f\u0bbf\u0bb5\u0bcd";
+      return "Ablat\xedv";
     },
     get$grammarCopyCASEall() {
-      return "\u0b85\u0bb2\u0bcd\u0bb2\u0b9f\u0bcd\u0b9f\u0bbf\u0bb5\u0bcd";
+      return "Allat\xedvny";
     },
     get$grammarCopyCASEess() {
-      return "\u0b8e\u0b9a\u0bbf\u0bb5\u0bcd";
+      return "Es\xedvny";
     },
     get$grammarCopyCASEtra() {
-      return "\u0baa\u0bb0\u0bbf\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd";
+      return "Translat\xedvny";
     },
     get$grammarCopyCASEequ() {
-      return "\u0b9a\u0bae\u0bae\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Ekvat\xedvny";
     },
     get$grammarCopyCASEdis() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc0\u0b9f\u0bc1";
+      return "Distribu\u010dn\xfd";
     },
     get$grammarCopyCASEabs() {
-      return "\u0bae\u0bc1\u0bb4\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Absolut\xedvny";
     },
     get$grammarCopyCASEerg() {
-      return "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bc1";
+      return "Ergativn\xfd";
     },
     get$grammarCopyCASEcau() {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd";
+      return "Pr\xed\u010dinn\xfd";
     },
     get$grammarCopyCASEben() {
-      return "\u0ba8\u0ba9\u0bcd\u0bae\u0bc8";
+      return "Benefakt\xedvny";
     },
     get$grammarCopyCASEtem() {
-      return "\u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "\u010casov\xfd";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u0b92\u0ba4\u0bcd\u0ba4\u0bc1\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "Koordina\u010dn\xfd";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bbe\u0ba9 \u0ba8\u0bbf\u0bb2\u0bc8";
+      return "Kon\u0161truk\u010dn\xfd stav";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u0bae\u0bc1\u0bb4\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0ba9 \u0b85\u0bb3\u0bb5\u0bc1";
+      return "Absol\xfatna miera";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u0bb5\u0c3e\u0c38\u0c4d\u0c24\u0bb5\u0bae\u0bbe\u0ba9 \u0b9a\u0bbe\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "Faktick\xe1 d\xf4kaznos\u0165";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u0bb5\u0c3e\u0c38\u0c4d\u0c24\u0bb5\u0bae\u0bb1\u0bcd\u0bb1 \u0b9a\u0bbe\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "Ne-faktick\xe1 d\xf4kaznos\u0165";
     },
     get$grammarCopyMOODopt() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bae\u0bcd";
+      return "Optat\xedvny";
     },
     get$grammarCopyMOODadm() {
-      return "\u0baa\u0bc1\u0b95\u0bb4\u0bcd";
+      return "Obdivn\xfd";
     },
     get$grammarCopyMOODdes() {
-      return "\u0b86\u0bb5\u0bb2\u0bcd";
+      return "\u017diaduci";
     },
     get$grammarCopyMOODnec() {
-      return "\u0b85\u0bb5\u0b9a\u0bbf\u0baf\u0bae\u0bcd";
+      return "Nevyhnutn\xfd";
     },
     get$grammarCopyMOODpot() {
-      return "\u0b9a\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bae\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Potenci\xe1lny";
     },
     get$grammarCopyMOODprp() {
-      return "\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baa\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Propozit\xedvny";
     },
     get$grammarCopyMOODqot() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Kvantitat\xedvny";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8 \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bcd";
+      return "Slovn\xe1 forma";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u0bb0\u0bcb\u0bae\u0bbe\u0ba9\u0bbf\u0baf \u0b8e\u0ba3\u0bcd";
+      return "R\xedmske \u010d\xedslo";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u0b85\u0b95\u0bb0\u0bbe\u0ba4\u0bbf \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bcd";
+      return "P\xedsmenov\xe1 forma";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u0baa\u0bc6\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bae\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "N\xe1sobn\xfd";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u0baa\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Zlomkov\xfd";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u0ba4\u0bca\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Mno\u017eina";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc0\u0b9f\u0bc1";
+      return "Rozsah";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc0\u0b9f\u0bc1";
+      return "Distribu\u010dn\xfd";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Sk\xfa\u0161obn\xfd";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u0b9a\u0bbf\u0bb1\u0bbf\u0baf";
+      return "Pauz\xe1lny";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u0baa\u0bc6\u0bb0\u0bbf\u0baf \u0b9a\u0bbf\u0bb1\u0bbf\u0baf";
+      return "V\xe4\u010d\u0161\xed pauz\xe1lny";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u0baa\u0bc6\u0bb0\u0bbf\u0baf \u0baa\u0ba9\u0bcd\u0bae\u0bc8";
+      return "V\xe4\u010d\u0161\xed mno\u017en\xfd";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u0bae\u0bbe\u0bb1\u0bc1\u0bae\u0bcd";
+      return "Inverzn\xfd";
     },
     get$grammarCopyPERSON0() {
-      return "\u0baa\u0bc2\u0b9c\u0bcd\u0baf\u0bae\u0bcd";
+      return "Nula";
     },
     get$grammarCopyPERSON4() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd\u0b95\u0bbe\u0bb5\u0ba4\u0bc1";
+      return "\u0160tvrt\xfd";
     },
     get$grammarCopyPOLITEform() {
-      return "\u0baa\u0ba3\u0bcd\u0baa\u0bc1\u0b9f\u0bc8\u0baf";
+      return "Form\xe1lny";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u0b89\u0baf\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4";
+      return "Zv\xfd\u0161en\xfd";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u0bb5\u0ba3\u0bae\u0bcd\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1";
+      return "Pokorn\xfd";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u0bb5\u0bb2\u0bbf\u0baf\u0bc1\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd";
+      return "D\xf4razn\xfd";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8\u0baf\u0bbe\u0ba9";
+      return "V\xfdkri\u010dn\xed";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u0baa\u0bb0\u0bb8\u0bcd\u0baa\u0bb0";
+      return "Vz\xe1jomn\xfd";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u0bb5\u0bbf\u0ba9\u0bbe\u0bb5\u0bc1\u0bae\u0bcd-\u0b89\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ot\xe1zkovo-vz\u0165ahov\xfd";
     },
     get$grammarCopyTENSEaor() {
-      return "\u0b86\u0bb0\u0bbf\u0bb8\u0bcd\u0b9f\u0bcd";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd";
+      return "Epistemick\xfd";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0b95\u0bbe\u0bb2";
+      return "Perspekt\xedvny";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Pr\xed\u010dastie";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bc8";
+      return "Konverb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8 \u0ba8\u0bbe\u0bae\u0bae\u0bcd";
+      return "Slovn\xfd podstatok";
     },
     get$grammarCopyVOICEantip() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd-\u0baa\u0bbe\u0b9a\u0bbf\u0bb5\u0bae\u0bcd";
+      return "Antipas\xedvny";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd";
+      return "Pr\xed\u010dinn\xfd";
     },
     get$grammarCopyVOICedir() {
-      return "\u0ba8\u0bc7\u0bb0\u0b9f\u0bbf";
+      return "Priamy";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u0bae\u0bbe\u0bb1\u0bc1\u0bae\u0bcd";
+      return "Obr\xe1ten\xfd";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u0baa\u0bb0\u0bb8\u0bcd\u0baa\u0bb0";
+      return "Vz\xe1jomn\xfd";
     },
     get$grammarCopyPOS() {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "\u010cas\u0165 re\u010di";
     },
     get$grammarCopyGENDER() {
-      return "\u0baa\u0bbe\u0bb2\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Rod";
     },
     get$grammarCopyPERSON() {
-      return "\u0baa\u0bc7\u0bb0\u0bcd";
+      return "Osoba";
     },
     get$grammarCopyMOOD() {
-      return "\u0bae\u0ba9\u0bcb\u0baa\u0bbe\u0bb5\u0bae\u0bcd";
+      return "M\xf3da";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u0baa\u0bc1\u0ba3\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0bb5\u0b95\u0bc8";
+      return "Typ interpunkcie";
     },
     get$grammarCopyASPECT() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "\u0bb5\u0b95\u0bc8";
+      return "Pr\xedpad";
     },
     get$grammarCopyVOICE() {
-      return "\u0b95\u0bc1\u0bb0\u0bb2\u0bcd";
+      return "Hlas";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0bb5\u0b95\u0bc8";
+      return "Typ podstatn\xe9ho mena";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8 \u0bb5\u0b95\u0bc8";
+      return "Typ slovesa";
     },
     get$grammarCopyADVTYPE() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0bb5\u0b95\u0bc8";
+      return "Typ pr\xedslovky";
     },
     get$grammarCopyNUMFORM() {
-      return "\u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0baf\u0bb2\u0bcd \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bcd";
+      return "Tvar \u010d\xedslovky";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0baf\u0bb2\u0bcd \u0bb5\u0b95\u0bc8";
+      return "Typ \u010d\xedslovky";
     },
     get$grammarCopyNUMBER() {
-      return "\u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslo";
     },
     get$grammarCopyDEFINITE() {
-      return "\u0ba4\u0bc0\u0bb0\u0bcd\u0bae\u0bbe\u0ba9\u0bae\u0bcd";
+      return "Ur\u010ditos\u0165";
     },
     get$grammarCopyDEGREE() {
-      return "\u0ba4\u0bb0\u0bae\u0bcd";
+      return "Stupe\u0148";
     },
     get$grammarCopyEVIDENT() {
-      return "\u0b9a\u0bbe\u0ba9\u0bcd\u0bb1\u0bc1";
+      return "D\xf4kaznos\u0165";
     },
     get$grammarCopyFOREIGN() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0ba8\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1";
+      return "Cudz\xed";
     },
     get$grammarCopyPOLARITY() {
-      return "\u0baa\u0bbe\u0bb2\u0bb0\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf";
+      return "Polarita";
     },
     get$grammarCopyPOLITE() {
-      return "\u0bb5\u0ba3\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Zdvorilos\u0165";
     },
     get$grammarCopyPREPCASE() {
-      return "\u0bae\u0bc1\u0ba9\u0bcd \u0b87\u0b9f\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1";
+      return "Predlo\u017ekov\xfd p\xe1d";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0bb5\u0bbf\u0ba9\u0bc8 \u0bb5\u0b95\u0bc8";
+      return "Typ z\xe1men\xe1";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u0baa\u0bc1\u0ba3\u0bcd\u0b9f\u0bc1 \u0baa\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Strana interpunkcie";
     },
     get$grammarCopyREFLEX() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bbe\u0ba9";
+      return "Reflex\xedvny";
     },
     get$grammarCopyTENSE() {
-      return "\u0b95\u0bbe\u0bb2\u0bae\u0bcd";
+      return "\u010cas";
     },
     get$grammarCopyVERBFORM() {
-      return "\u0bb5\u0bbf\u0ba9\u0bc8 \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bcd";
+      return "Tvar slovesa";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0bb5\u0b95\u0bc8";
+      return "Typ spojky";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bbe\u0ba4\u0ba4\u0bc1";
+      return "Nezn\xe1me";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u0baa\u0bca\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bbe\u0bb0\u0bb0\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd";
+      return "\u010c\xedslo vlastn\xedka";
     },
     get$grammarCopyPOSS() {
-      return "\u0b89\u0bb0\u0bbf\u0bae\u0bc8";
+      return "Pr\xedslu\u0161nos\u0165";
     },
     get$grammarCopyASPECTimp() {
-      return "\u0baa\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bbf \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4 \u0baa\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Neur\u010dit\xfd aspekt";
     },
     get$grammarCopyCASEvoc() {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "Vokat\xedv";
     },
     get$grammarCopyCASEcom() {
-      return "\u0b9a\u0b99\u0bcd\u0b95\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0bc1";
+      return "Kolekt\xedv";
     },
     get$grammarCopyCASEpar() {
-      return "\u0baa\u0b95\u0bc1\u0ba4\u0bbf";
+      return "Partit\xedv";
     },
     get$grammarCopyCASEadv() {
-      return "\u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Pr\xedslovkov\xfd p\xe1d";
     },
     get$grammarCopyCASEref() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Referen\u010dn\xfd p\xe1d";
     },
     get$grammarCopyCASErel() {
-      return "\u0b89\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Vztahov\xfd p\xe1d";
     },
     get$grammarCopyCASEsub() {
-      return "\u0ba4\u0bc1\u0ba3\u0bc8";
+      return "Subess\xedv";
     },
     get$grammarCopyCASEsup() {
-      return "\u0bae\u0bc7\u0bb2\u0bcb\u0b9f\u0bcd\u0b9f\u0bae\u0bcd";
+      return "Superess\xedv";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u0ba4\u0bcb\u0bb1\u0bcd\u0bb1\u0bae\u0bcd-\u0bb5\u0bb4\u0b99\u0bcd\u0b95\u0bb2\u0bcd";
+      return "Akuzat\xedv-Dativ";
     },
     get$grammarCopyCASEpre() {
-      return "\u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd";
+      return "Predlo\u017ekov\xfd p\xe1d";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u0ba4\u0bc1\u0ba3\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd";
+      return "Podriadiaci";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u0bb5\u0bbf\u0b95\u0bbf\u0ba4\u0bae\u0bcd";
+      return "Porovn\xe1vac\xed";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bb1\u0bcd\u0bb1";
+      return "Neur\u010dit\xfd";
     },
     get$grammarCopyMOODint() {
-      return "\u0bb5\u0bbf\u0ba9\u0bbe\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0ba8\u0bbf\u0bb2\u0bc8";
+      return "In\u0161trument\xe1l";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u0baa\u0bca\u0ba4\u0bc1 \u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Be\u017en\xfd podstatn\xe9 meno";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u0baa\u0bca\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bbe\u0bb0\u0bb0\u0bbf\u0ba9\u0bcd \u0b92\u0bb0\u0bc7\u0bb5\u0bbf\u0ba4\u0bae\u0bcd";
+      return "Jednotn\xe9 vlastn\xedctvo";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u0baa\u0bca\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bbe\u0bb0\u0bb0\u0bbf\u0ba9\u0bcd \u0baa\u0bb2\u0bb5\u0bbf\u0ba4\u0bae\u0bcd";
+      return "Mno\u017en\xe9 vlastn\xedctvo";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u0baa\u0bca\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bbe\u0bb0\u0bb0\u0bbf\u0ba9\u0bcd \u0b87\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8";
+      return "Dvojit\xe9 vlastn\xedctvo";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u0ba8\u0bc7\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0ba9\u0bcd\u0bae\u0bc8";
+      return "Kladn\xe1 polarita";
     },
     get$grammarCopyPOSSyes() {
-      return "\u0b89\u0bb0\u0bbf\u0bae\u0bc8";
+      return "Vlastn\xedcke";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u0baa\u0bbf\u0bb0\u0bbf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4";
+      return "Nepredlo\u017ekov\xfd";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f";
+      return "Osobn\xfd";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u0bb5\u0bbf\u0ba9\u0bbe\u0bb5\u0bbf\u0baf\u0bb2\u0bcd";
+      return "Ot\xe1zkov\xfd";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u0bae\u0bca\u0ba4\u0bcd\u0ba4\u0bae\u0bcd";
+      return "Celkov\xfd";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bae\u0bb1\u0bc8";
+      return "Z\xe1porn\xfd";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0bb0\u0bc8";
+      return "\u010cl\xe1nok";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bb1\u0bcd\u0bb1";
+      return "Neur\u010dit\xfd";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u0bb5\u0bbf\u0ba9\u0bbe\u0bb5\u0bbf\u0baf\u0bb2\u0bcd-\u0b9a\u0bae\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f";
+      return "Ot\xe1zkov\xfd-vz\u0165ahov\xfd";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u0b87\u0bb1\u0bc1\u0ba4\u0bbf \u0baa\u0bc1\u0ba3\u0bcd\u0b9f\u0bcd\u0b9a\u0bc7\u0bb7\u0ba9\u0bcd";
+      return "Kone\u010dn\xe1 interpunkcia";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u0baa\u0bc6\u0bb0\u0bbf\u0baf\u0bbf\u0b9f\u0bc8";
+      return "Peri\xf3da";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bbe\u0ba9";
+      return "Reflex\xedvny";
     },
     get$grammarCopyTENSEimp() {
-      return "\u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f";
+      return "Nedokonal\xfd";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0bb5\u0bbf\u0bb3\u0bc8\u0bb5\u0bc1";
+      return "Sup\xedn";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0b9f\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Adnominalny";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u0ba8\u0bc0\u0ba3\u0bcd\u0b9f";
+      return "Dlh\xfd";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bae\u0bbe\u0ba9";
+      return "Kr\xe1tky";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bae\u0bcd";
+      return "Pr\xed\u010dinn\xfd sloveso";
     },
     get$grammarCopyVOICEcau() {
-      return "\u0b95\u0bbe\u0bb0\u0ba3\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bae\u0bcd";
+      return "Pr\xed\u010dinn\xfd hlas";
     },
     get$grammarCopyVOICEdir() {
-      return "\u0ba4\u0b9f\u0bc8\u0baf\u0bb1\u0bcd\u0bb1";
+      return "Priamy";
     },
     get$grammarCopyVOICEinv() {
-      return "\u0bae\u0bbe\u0bb1\u0bc1\u0bae\u0bcd";
+      return "Inverzn\xfd";
     },
     get$grammarCopyVOICErcp() {
-      return "\u0baa\u0bb0\u0bb8\u0bcd\u0baa\u0bb0";
+      return "Recipro\u010dn\xfd";
     },
     get$other() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bc8";
+      return "In\xe9";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "\xdaROVE\u0147 " + level;
     },
     get$clickBestOption() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Vyberte najlep\u0161ie mo\u017enosti na preklad va\u0161ej spr\xe1vy!";
     },
     get$completeActivitiesToUnlock() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0baa\u0b9f\u0bcd\u0b9a \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Dokon\u010dite aspo\u0148 jednu aktivitu na odomknutie prekladu!";
     },
     get$downloadGroupText() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Stiahnu\u0165 text skupiny";
     },
     get$notificationsOn() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0b87\u0baf\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd";
+      return "Ozn\xe1menia zapnut\xe9";
     },
     get$notificationsOff() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ozn\xe1menia vypnut\xe9";
     },
     get$joinWithCode() {
-      return "\u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pripoji\u0165 sa s k\xf3dom";
     },
     get$enterCodeToJoin() {
-      return "\u0b9a\u0bc7\u0bb0\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte k\xf3d na pripojenie";
     },
     get$updateNow() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Aktualizova\u0165 teraz";
     },
     get$updateLater() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nesk\xf4r";
     },
     get$constructUseWaDesc() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bbf\u0ba9\u0bcd\u0bb1\u0bbf \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Pou\u017e\xedvan\xe9 bez pomoci";
     },
     get$constructUseGaDesc() {
-      return "\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b89\u0ba4\u0bb5\u0bbf";
+      return "Pomoc s gramatikou";
     },
     get$constructUseTaDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b89\u0ba4\u0bb5\u0bbf";
+      return "Pomoc s prekladom";
     },
     get$constructUseUnkDesc() {
-      return "\u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bbe\u0ba4\u0ba4\u0bc1";
+      return "Nezn\xe1me";
     },
     get$constructUseCorITDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v preklade";
     },
     get$constructUseIgnITDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v preklade";
     },
     get$constructUseIncITDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v preklade";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v gramatickej korekcii";
     },
     get$constructUseCorIGCDesc() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v gramatickej korekcii";
     },
     get$constructUseIncIGCDesc() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v gramatickej korekcii";
     },
     get$constructUseCorPADesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite v\xfdznamu slova";
     },
     get$constructUseIgnPADesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v aktivite v\xfdznamu slova";
     },
     get$constructUseIncPADesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v aktivite v\xfdznamu slova";
     },
     get$constructUseCorWLDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite po\u010d\xfavania slov";
     },
     get$constructUseIncWLDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v aktivite po\u010d\xfavania slov";
     },
     get$constructUseIngWLDesc() {
-      return "\u0baa\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b9a\u0bca\u0bb2\u0bcd \u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v aktivite po\u010d\xfavania slov";
     },
     get$constructUseCorHWLDesc() {
-      return "\u0bae\u0bb1\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite skryt\xe9ho slova";
     },
     get$constructUseIncHWLDesc() {
-      return "\u0bae\u0bb1\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v aktivite skryt\xe9ho slova";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u0bae\u0bb1\u0bc8\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v aktivite skryt\xe9ho slova";
     },
     get$constructUseCorLDesc() {
-      return "\u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite lemma";
     },
     get$constructUseIncLDesc() {
-      return "\u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Nespr\xe1vne v aktivite lemma";
     },
     get$constructUseIgnLDesc() {
-      return "\u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v aktivite lemma";
     },
     get$constructUseCorMDesc() {
-      return "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite gramatiky";
     },
     get$constructUseIncMDesc() {
-      return "\u0bb5\u0bbf\u0ba4\u0bbf\u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0bb5\u0bb1\u0bc1";
+      return "Nespr\xe1vne v aktivite gramatiky";
     },
     get$constructUseIgnMDesc() {
-      return "\u0bb5\u0bbf\u0ba4\u0bbf\u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Ignorovan\xe9 v aktivite gramatiky";
     },
     get$constructUseEmojiDesc() {
-      return "\u0b8e\u0bae\u0bcb\u0b9c\u0bbf \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9\u0ba4\u0bc1";
+      return "Spr\xe1vne v aktivite emoji";
     },
     get$constructUseCollected() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0b95\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Zbierka v chate";
     },
     get$constructUseNanDesc() {
-      return "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bbe\u0ba4\u0bc1";
+      return "Nepou\u017eite\u013en\xe9";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u0b89\u0baf\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b89\u0bb0\u0bc8-\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bc1";
+      return "Povolen\xe9 text-to-speech";
     },
     get$enableTTSToolDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b89\u0bb0\u0bc8-\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf \u0b85\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Povo\u013ete aplik\xe1cii generova\u0165 v\xfdstup text-to-speech pre \u010dasti textu vo va\u0161om cie\u013eovom jazyku.";
     },
     get$yourUsername() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd";
+      return "Va\u0161e pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$yourEmail() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd";
+      return "V\xe1\u0161 e-mail";
     },
     get$iWantToLearn() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd";
+      return "Chcem sa nau\u010di\u0165";
     },
     get$pleaseEnterEmail() {
-      return string$.u0ba4_____;
+      return "Zadajte platn\xfa e-mailov\xfa adresu.";
     },
     get$myBaseLanguage() {
-      return "\u0b8e\u0ba9\u0ba4\u0bc1 \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8\u0b95\u0bcd \u0bae\u0bca\u0bb4\u0bbf";
+      return "M\xf4j z\xe1kladn\xfd jazyk";
     },
     get$formSectionHeader() {
-      return "\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0b9f\u0bbf\u0bb5\u0b99\u0bcd\u0b95\u0bb3\u0bcd:";
+      return "Formy pou\u017e\xedvan\xe9 v chatoch:";
     },
     get$writingExercisesTooltip() {
-      return "\u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd";
+      return "P\xedsanie";
     },
     get$listeningExercisesTooltip() {
-      return "\u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Po\u010d\xfavanie";
     },
     get$readingExercisesTooltip() {
-      return "\u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd";
+      return "\u010c\xedtanie";
     },
     get$meaningNotFound() {
-      return "\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "V\xfdznam sa nepodarilo n\xe1js\u0165.";
     },
     get$notTheCodeError() {
-      return "\u0bae\u0ba9\u0bcd\u0ba9\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0b85\u0ba4\u0bc1 \u0b85\u0ba8\u0bcd\u0ba4\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2!";
+      return "Prep\xe1\u010dte, to nie je k\xf3d!";
     },
     get$totalXP() {
-      return "\u0bae\u0bca\u0ba4\u0bcd\u0ba4 XP";
+      return "Celkov\xe9 XP";
     },
     get$numLemmas() {
-      return "\u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Celkov\xfd po\u010det lem\xe1m";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0baa\u0b9f\u0bcd\u0b9a\u0bae\u0bcd \u0b92\u0bb0\u0bc1\u0bae\u0bc1\u0bb1\u0bc8 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det lem\xe1m pou\u017eit\xfdch spr\xe1vne aspo\u0148 raz";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8 0 \u0bae\u0bc1\u0bb1\u0bc8";
+      return "Po\u010det lem\xe1m pou\u017eit\xfdch nespr\xe1vne 0-kr\xe1t";
     },
     get$numLemmasSmallXP() {
-      return "0 - 30 XP \u0b89\u0b9f\u0bc8\u0baf \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det lem\xe1m s 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "31 - 200 XP \u0b89\u0b9f\u0bc8\u0baf \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det lem\xe1m s 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "200 XP \u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc7\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det lem\xe1m s > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det gramatick\xfdch konceptov";
     },
     get$listGrammarConcepts() {
-      return "\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u0b85\u0b9a\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1 80% \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty spr\xe1vne pou\u017eit\xe9 v p\xf4vodn\xfdch spr\xe1vach aspo\u0148 80% \u010dasu";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u0b85\u0b9a\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bbf\u0bb2\u0bcd 80% \u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bc1\u0bb1\u0bc8\u0bb5\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty nespr\xe1vne pou\u017eit\xe9 v p\xf4vodn\xfdch spr\xe1vach menej ako 80% \u010dasu";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u0b95\u0ba3\u0bbf\u0ba9\u0bbf \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1 80% \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty spr\xe1vne vybran\xe9 zo syst\xe9mom generovan\xfdch n\xe1vrhov aspo\u0148 80% \u010dasu";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u0b95\u0ba3\u0bbf\u0ba9\u0bbf \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd 80% \u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bc1\u0bb1\u0bc8\u0bb5\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty nespr\xe1vne vybran\xe9 zo syst\xe9mom generovan\xfdch n\xe1vrhov menej ako 80% \u010dasu";
     },
     get$listGrammarConceptsSmallXP() {
-      return "0-50 XP \u0b89\u0b9f\u0bc8\u0baf \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty s 0-50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "51-200 XP \u0b89\u0b9f\u0bc8\u0baf \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty s 51-200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "201-500 XP \u0b89\u0b9f\u0bc8\u0baf \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty s 201-500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "500 XP \u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc7\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Gramatick\xe9 koncepty s >500 XP";
     },
     get$numMessagesSent() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det odoslan\xfdch spr\xe1v";
     },
     get$numWordsTyped() {
-      return "\u0b85\u0b9a\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det nap\xedsan\xfdch slov v p\xf4vodn\xfdch spr\xe1vach";
     },
     get$numCorrectChoices() {
-      return "\u0b9a\u0bbf\u0bb8\u0bcd\u0b9f\u0bae\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det spr\xe1vnych slov vybran\xfdch z n\xe1vrhov syst\xe9mu";
     },
     get$numIncorrectChoices() {
-      return "\u0b9a\u0bbf\u0bb8\u0bcd\u0b9f\u0bae\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det nespr\xe1vnych slov vybran\xfdch z n\xe1vrhov syst\xe9mu";
     },
     get$commaSeparatedFile() {
       return "CSV";
     },
     get$excelFile() {
-      return "\u0b8e\u0b95\u0bcd\u0b9a\u0bc6\u0bb2\u0bcd";
+      return "Excel";
     },
     get$fileType() {
-      return "\u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1 \u0bb5\u0b95\u0bc8";
+      return "Typ s\xfaboru";
     },
     get$download(_) {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Stiahnu\u0165";
     },
     get$analyticsNotAvailable() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Analytika pou\u017e\xedvate\u013ea nie je k dispoz\xedcii";
     },
     get$downloading() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1...";
+      return "Stiahnutie...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa stiahnu\u0165 analytiku pou\u017e\xedvate\u013ea";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "'" + wordForm + "' \u0b87\u0ba9\u0bcd " + morphologicalFeature + " \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "\u010co je " + morphologicalFeature + " z '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "\u0ba4\u0b95\u0bb5\u0bb2\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Dostupnos\u0165 \xfadajov";
     },
     get$available(_) {
-      return "\u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Dostupn\xe9";
     },
     get$pangeaBotIsFallible() {
-      return "\u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0ba4\u0bb5\u0bb1\u0bc1\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0bae\u0bcd!";
+      return "Pangea Bot tie\u017e rob\xed chyby!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "'" + lemma + "' \u0b8e\u0ba9\u0bcd\u0bb1\u0bbe\u0bb2\u0bcd \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "\u010co znamen\xe1 '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bca\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Zhodujte v\xfdznamy so slovami v spr\xe1ve!";
     },
     get$doubleClickToEdit() {
-      return "\u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0bae\u0bc2\u0bb2\u0bae\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Dvojit\xfdm kliknut\xedm uprav\xedte.";
     },
     get$cefrLevelLabel() {
-      return "CEFR \u0ba8\u0bbf\u0bb2\u0bc8";
+      return "\xdarove\u0148 CEFR";
     },
     get$image(_) {
-      return "\u0baa\u0b9f\u0bae\u0bcd";
+      return "Obr\xe1zok";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u0b92\u0bb0\u0bc1 \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1, \u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bc8, \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0ba8\u0bcb\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1, \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Vyberte t\xe9mu, re\u017eim, cie\u013e u\u010denia a vytvorte aktivitu pre chat!";
     },
     get$constructUsePvmDesc() {
-      return "\u0b95\u0bc1\u0bb0\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Vytvoren\xe9 vo zvukovej spr\xe1ve";
     },
     get$leaveSpaceDescription() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bc1\u0bb5\u0ba4\u0ba9\u0bcd \u0bae\u0bc2\u0bb2\u0bae\u0bcd, \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bc1\u0bb5\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd. \u0bae\u0bb1\u0bcd\u0bb1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bbf\u0baf\u0ba4\u0bc8 \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Opusten\xedm kurzu opust\xedte v\u0161etky chaty v \u0148om. Ostatn\xed pou\u017e\xedvatelia uvidia, \u017ee ste opustili kurz.";
     },
     get$constructUseCorMmDesc() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd";
+      return "Spr\xe1vny v\xfdznam spr\xe1vy";
     },
     get$constructUseIncMmDesc() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd";
+      return "Nespr\xe1vny v\xfdznam spr\xe1vy";
     },
     get$constructUseIgnMmDesc() {
-      return "\u0baa\u0bc1\u0bb1\u0b95\u0bcd\u0b95\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd";
+      return "Ignorovan\xfd v\xfdznam spr\xe1vy";
     },
     get$meaning() {
-      return "\u0b85\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd";
+      return "V\xfdznam";
     },
     chatWith$1(displayname) {
-      return displayname + " \u0b89\u0b9f\u0ba9\u0bcd \u0b95\u0bc1\u0bb4\u0bc1";
+      return "Skupina s " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0ba4\u0bca\u0b9f\u0bb0\u0bb5\u0bc1\u0bae\u0bcd.\n\n\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bb5\u0bb0\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8 \u0b8e\u0ba9\u0bcd\u0bb1\u0bbe\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb8\u0bcd\u0baa\u0bbe\u0bae\u0bcd \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1\u0bb1\u0bc8\u0baf\u0bc8\u0b9a\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Kliknite na odkaz v e-maile a pokra\u010dujte.\n\nSkontrolujte prie\u010dinok so spamom, ak e-mail nepri\u0161iel.";
     },
     get$dontForgetPassword() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0bae\u0bb1\u0b95\u0bcd\u0b95\u0bbe\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd!";
+      return "Nezabudnite si zapam\xe4ta\u0165 heslo!";
     },
     get$enableAutocorrectToolName() {
-      return "\u0b9a\u0bbe\u0ba4\u0ba9 \u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b95\u0bcd\u0b95 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bc8 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bc1";
+      return "Povoli\u0165 automatick\xfa korekciu zariadenia";
     },
     get$enableAutocorrectDescription() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bbe\u0ba4\u0ba9\u0bae\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bbe\u0ba9\u0bbe\u0bb2\u0bcd, \u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0ba9 \u0baa\u0bbf\u0bb4\u0bc8\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95 \u0b9a\u0bbe\u0ba4\u0ba9 \u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b95\u0bcd\u0b95 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bc8 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bc1.";
+      return "Ak va\u0161e zariadenie podporuje jazyk, ktor\xfd sa u\u010d\xedte, m\xf4\u017eete povoli\u0165 automatick\xfa korekciu zariadenia na opravu be\u017en\xfdch ch\xfdb pri p\xedsan\xed.";
     },
     get$ttsDisbledTitle() {
-      return "\u0b89\u0bb0\u0bc8-\u0ba4\u0bc6\u0bbe\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Prehr\xe1vanie textu do re\u010di je zak\xe1zan\xe9";
     },
     get$ttsDisabledBody() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b89\u0bb0\u0bc8-\u0ba4\u0bc6\u0bbe\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc8 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd";
+      return "M\xf4\u017eete povoli\u0165 prehr\xe1vanie textu do re\u010di vo va\u0161ich nastaveniach u\u010denia";
     },
     get$noSpaceDescriptionYet() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bb5\u0bb0\u0bc8 \u0baa\u0bbe\u0b9f\u0ba8\u0bc6\u0bb1\u0bbf \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "E\u0161te nebolo vytvoren\xe9 \u017eiadne popis kurzu.";
     },
     get$tooLargeToSend() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0baa\u0bc6\u0bb0\u0bbf\u0baf\u0ba4\u0bc1";
+      return "T\xe1to spr\xe1va je pr\xedli\u0161 ve\u013ek\xe1 na odoslanie";
     },
     get$exitWithoutSaving() {
-      return "\u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0bae\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Ste si ist\xed, \u017ee chcete od\xeds\u0165 bez ulo\u017eenia?";
     },
     get$enableAutocorrectWarning() {
-      return "\u0b8e\u0b9a\u0bcd\u0b9a\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8! \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0bb5\u0bbf\u0b9a\u0bc8\u0baa\u0bcd\u0baa\u0bb2\u0b95\u0bc8\u0baf\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Varovanie! Vy\u017eaduje pridanie kl\xe1vesnice cie\u013eov\xe9ho jazyka";
     },
     get$leaveRoomDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0baa\u0bcd \u0baa\u0bcb\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd. \u0bae\u0bb1\u0bcd\u0bb1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc6\u0ba9\u0bcd\u0bb1\u0ba4\u0bc8 \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Chyst\xe1te sa opusti\u0165 tento chat. Ostatn\xed pou\u017e\xedvatelia uvidia, \u017ee ste opustili chat.";
     },
     get$confirmUserId() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pros\xedm, potvr\u010fte svoje pou\u017e\xedvate\u013esk\xe9 meno v Pangea Chate, aby ste mohli vymaza\u0165 svoj \xfa\u010det.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return startDate + " \u0bae\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Za\u010d\xedna " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bbe\u0ba9\u0bbe\u0bb2\u0bc1\u0bae\u0bcd \u0bb0\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "\u2022 Zru\u0161i\u0165 kedyko\u013evek v nastaveniach predplatn\xe9ho";
     },
     get$autocorrectNotAvailable() {
-      return "\u0ba4\u0bc1\u0bb0\u0ba4\u0bbf\u0bb0\u0bc1\u0bb7\u0bcd\u0b9f\u0bb5\u0b9a\u0bae\u0bbe\u0b95, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bb3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bcd\u0b9a\u0bae\u0bcd \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b86\u0ba4\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Bohu\u017eia\u013e, va\u0161a platforma moment\xe1lne nepodporuje t\xfato funkciu. Sledujte \u010fal\u0161\xed v\xfdvoj!";
     },
     get$pleaseUpdateApp() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bc8 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pros\xedm, aktualizujte aplik\xe1ciu, aby ste mohli pokra\u010dova\u0165.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bc8 \u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0ba8\u0bbf\u0ba4\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0b8e\u0bae\u0bcb\u0b9c\u0bbf\u0b95\u0bb3\u0bc8 \u0baa\u0bca\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd. \u0b95\u0bb5\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0b9f \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbe\u0bae\u0bcd! \u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0bae\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bb2\u0bcd \u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bb3\u0bcd \u0b95\u0bc1\u0bb1\u0bc8\u0baf\u0bbe\u0ba4\u0bc1. \ud83d\ude05";
+      return "Zodpovedajte emod\u017ei slovami, ktor\xe9 najlep\u0161ie reprezentuj\xfa. Nebojte sa! Za nes\xfahlas nebud\xfa odpo\u010d\xedtan\xe9 body. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u0b87\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bca\u0bb1\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd! \u0b92\u0bb5\u0bcd\u0bb5\u0bca\u0bb0\u0bc1 \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bc6\u0bb1\u0bc1\u0bae\u0bcd XP \u0bae\u0bc2\u0bb2\u0bae\u0bcd, \u0b85\u0bb5\u0bc8 \u0bb5\u0bbf\u0ba4\u0bc8\u0bae\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bae\u0bc1\u0bb4\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0ba9 \u0bae\u0bb2\u0bb0\u0bcd\u0bb5\u0bb0\u0bc8 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bc1\u0bae\u0bcd. \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0ba3 \u0b8e\u0ba8\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Toto je v\u0161etka va\u0161a slovn\xe1 z\xe1soba! Ako z\xedskavate XP za ka\u017ed\xe9 slovo, prejd\xfa od semienka po pln\xfd kvitn\xfaci strom. Kliknite na ak\xe9ko\u013evek slovo pre viac detailov.";
     },
     get$morphAnalyticsListBody() {
-      return "\u0b87\u0bb5\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0ba9\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bc8 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1 \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0bcb\u0b95\u0bc1\u0bae\u0bcd! \u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Toto s\xfa v\u0161etky gramatick\xe9 koncepty v jazyku, ktor\xfd sa u\u010d\xedte! Odblokuj\xfa sa, ke\u010f ich po\u010das rozhovoru stretnete. Kliknite pre detaily.";
     },
     get$knockSpaceSuccess() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd! \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba4\u0bc8 \u0baa\u0bc6\u0bb1\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0ba4\u0bbf\u0bb2\u0bcd \u0b85\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0bbe\u0bb0\u0bcd \ud83d\ude00";
+      return "Po\u017eiadali ste o pripojenie k tomuto kurzu! Administr\xe1tor v\xe1m odpovie, ke\u010f to obdr\u017e\xed \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u0bae\u0bc1\u0bb4\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0ba9 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0b95\u0bc7\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd. \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0b86\u0b9f\u0bbf\u0baf\u0bcb\u0bb5\u0bc8 \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Po\u010d\xfavajte \xfapln\xfa spr\xe1vu. Potom zodpovedajte audia slovami.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bc7\u0bb3\u0bcd\u0bb5\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0bc1\u0ba4\u0bbf\u0bb0\u0bcd \u0ba4\u0bc1\u0ba3\u0bcd\u0b9f\u0bc1\u0b95\u0bb3\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Kliknite na puzzle k\xfasky pre gramatick\xe9 ot\xe1zky!";
     },
     get$home() {
-      return "\u0bae\u0bc1\u0b95\u0baa\u0bcd\u0baa\u0bc1";
+      return "Domov";
     },
     get$join(_) {
-      return "\u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pripoji\u0165 sa";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u0b8e\u0bae\u0bcb\u0b9c\u0bbf\u0b95\u0bb3\u0bcd, \u0b86\u0b9f\u0bbf\u0baf\u0bcb, \u0b9a\u0bca\u0bb2\u0bcd \u0b85\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bca\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4 \u0b9a\u0bbf\u0bb1\u0bbf\u0baf \u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0bca\u0ba4\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0bc0\u0bb4\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd. \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b8e\u0ba8\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bbe\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Kliknite na tla\u010didl\xe1 ni\u017e\u0161ie pre mini-hry na zodpovedanie emod\u017ei, audia, v\xfdznamov slov a gramatick\xfdch konceptov. Alebo kliknite na ak\xe9ko\u013evek slovo pre viac detailov.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u0bb5\u0bb4\u0bbf\u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bb2\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0bae\u0bc0\u0b9f\u0bcd\u0b9f\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Obnovi\u0165 n\xe1vody na in\u0161trukcie";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0baf\u0ba9\u0bb0\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0bb3\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bcb\u0bb2 \u0bb5\u0bb4\u0bbf\u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bb2\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0b9f\u0bcd\u0b9f \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Kliknite pre zobrazenie n\xe1vodov na in\u0161trukcie ako pre \xfapln\xe9ho nov\xe1\u010dika.";
     },
     get$translationProblem() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0ba9\u0bc8";
+      return "Probl\xe9m s prekladom";
     },
     get$askToJoin() {
-      return "\u0b9a\u0bc7\u0bb0 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0b95\u0bcb\u0bb3\u0bcd \u0bb5\u0bbf\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Po\u017eiada\u0165 o pripojenie";
     },
     get$emptyChatWarningTitle() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b95\u0bbe\u0bb2\u0bbf";
+      return "Chat je pr\xe1zdny";
     },
     get$emptyChatWarningDesc() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baf\u0bbe\u0bb0\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd. \u0b87\u0ba4\u0bc8 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Nepozvali ste nikoho do svojho chatu. Prejdite do nastaven\xed chatu a pozvite svojich kontaktov alebo bota. M\xf4\u017eete to urobi\u0165 aj nesk\xf4r.";
     },
     get$areYouLikeMe() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba9\u0bcd\u0ba9\u0bc8\u0baa\u0bcd \u0baa\u0bcb\u0ba9\u0bcd\u0bb1\u0bb5\u0bb0\u0bbe?";
+      return "Si ako ja?";
     },
     get$tryAgainLater() {
-      return "\u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9. \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 5 \u0ba8\u0bbf\u0bae\u0bbf\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pr\xedli\u0161 ve\u013ea pokusov. Sk\xfaste to znova za 5 min\xfat.";
     },
     get$enterSpaceCode() {
-      return "\u0baa\u0bbe\u0b9f\u0ba8\u0bc6\u0bb1\u0bbf \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bcd\u0b9f\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zadajte k\xf3d kurzu";
     },
     get$shareSpaceLink() {
-      return "\u0b87\u0ba3\u0bc8\u0baf\u0ba4\u0bcd\u0ba4\u0bc8 \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zdie\u013ea\u0165 odkaz";
     },
     get$byUsingPangeaChat() {
-      return "Pangea Chat-\u0b90 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf, \u0ba8\u0bbe\u0ba9\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd ";
+      return "Pou\u017e\xedvan\xedm Pangea Chat s\xfahlas\xedm s ";
     },
     get$details(_) {
-      return "\u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Podrobnosti";
     },
     get$languageLevelPreA1Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0b92\u0bb0\u0bc1\u0baa\u0bcb\u0ba4\u0bc1\u0bae\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0ba4\u0bcb \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0ba4\u0bcb \u0b87\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "Nikdy som sa neu\u010dil ani nepou\u017e\xedval tento jazyk.";
     },
     get$languageLevelA1Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0bb2 \u0baa\u0bb0\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0ba9 \u0ba4\u0bbf\u0ba9\u0b9a\u0bb0\u0bbf \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8\u0baf\u0bbe\u0ba9 \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem pochopi\u0165 a pou\u017ei\u0165 niektor\xe9 zn\xe1me ka\u017edodenn\xe9 v\xfdrazy a ve\u013emi z\xe1kladn\xe9 fr\xe1zy.";
     },
     get$languageLevelA2Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b89\u0b9f\u0ba9\u0b9f\u0bbf \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b9f\u0bc8\u0baf \u0baa\u0b95\u0bc1\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bae\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b85\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0b9f\u0bbf \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem pochopi\u0165 vety a \u010dasto pou\u017e\xedvan\xe9 v\xfdrazy s\xfavisiace s oblas\u0165ami bezprostrednej relevance.";
     },
     get$languageLevelB1Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0baa\u0bb0\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0ba9 \u0b9a\u0bc2\u0bb4\u0bcd\u0ba8\u0bbf\u0bb2\u0bc8\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0b95\u0bc8\u0baf\u0bbe\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bb0\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0ba9 \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b8e\u0bb3\u0bbf\u0ba4\u0bbe\u0b95 \u0b87\u0ba3\u0bc8\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem sa vyrovna\u0165 s v\xe4\u010d\u0161inou zn\xe1mych situ\xe1ci\xed a m\xf4\u017eem vytv\xe1ra\u0165 jednoduch\xfd s\xfavisl\xfd text na zn\xe1me t\xe9my.";
     },
     get$languageLevelB2Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0ba9 \u0b89\u0bb0\u0bc8\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0ba9\u0bcd\u0ba9\u0bbf\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd espontaneously \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem pochopi\u0165 hlavn\xe9 my\u0161lienky zlo\u017eit\xfdch textov a komunikova\u0165 s ur\u010dit\xfdm stup\u0148om plynulosti a spont\xe1nnosti.";
     },
     get$languageLevelC1Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b9a\u0bc1\u0ba4\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0bae\u0bbe\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0ba4\u0bbf\u0b9f\u0bc0\u0bb0\u0bc6\u0ba9\u0bb5\u0bc1\u0bae\u0bcd \u0baf\u0bcb\u0b9a\u0ba9\u0bc8\u0b95\u0bb3\u0bc8 \u0bb5\u0bc6\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0ba9 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbe\u0ba9 \u0b89\u0bb0\u0bc8\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem plynulo a spont\xe1nne vyjadrova\u0165 my\u0161lienky bez v\xe4\u010d\u0161\xedch probl\xe9mov a rozumiem \u0161irok\xe9mu spektru n\xe1ro\u010dn\xfdch textov.";
     },
     get$languageLevelC2Desc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0b95\u0bc7\u0b9f\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bc1\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0ba9\u0bcd\u0ba9\u0bbf\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0ba4\u0bc1\u0bb2\u0bcd\u0bb2\u0bbf\u0baf\u0bae\u0bbe\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bb5\u0bc6\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "Dok\xe1\u017eem takmer v\u0161etko, \u010do po\u010dujem alebo \u010d\xedtam, a vyjadrujem sa plynulo a presne.";
     },
     get$newVocab() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b9a\u0bca\u0bb1\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd";
+      return "Nov\xe1 slovn\xe1 z\xe1soba";
     },
     get$newGrammar() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Nov\xe9 gramatick\xe9 koncepty";
     },
     get$ban() {
-      return "\u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd";
+      return "Z\xe1kaz";
     },
     get$kick() {
-      return "\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bcd\u0bb1\u0bc1";
+      return "Vykopn\xfa\u0165";
     },
     get$lemma() {
-      return "\u0bb2\u0bc6\u0bae\u0bcd\u0bae\u0bbe";
+      return "Lemmat";
     },
     get$grammarFeature() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b85\u0bae\u0bcd\u0b9a\u0bae\u0bcd";
+      return "Gramatick\xe1 vlastnos\u0165";
     },
     get$grammarTag() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bc1\u0bb1\u0bbf\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd";
+      return "Gramatick\xfd tag";
     },
     get$forms() {
-      return "\u0baa\u0b9f\u0bbf\u0bb5\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Formy";
     },
     get$exampleMessages() {
-      return "\u0b89\u0ba4\u0bbe\u0bb0\u0ba3 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Pr\xedkladov\xe9 spr\xe1vy";
     },
     get$timesUsedIndependently() {
-      return "\u0ba4\u0ba9\u0bbf\u0ba4\u0bcd\u0ba4\u0ba9\u0bae\u0bbe\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Po\u010det pou\u017eit\xed samostatne";
     },
     get$timesUsedWithAssistance() {
-      return "\u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Po\u010det pou\u017eit\xed s pomocou";
     },
     shareInviteCode$1(code) {
-      return "\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd: " + code;
+      return "Zdie\u013ea\u0165 poz\xfdvac\xed k\xf3d: " + code;
     },
     get$skipForNow() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0ba4\u0bb5\u0bbf\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Presko\u010di\u0165 zatia\u013e";
     },
     get$permissions(_) {
-      return "\u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "Opr\xe1vnenia";
     },
     get$spaceChildPermission() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bc8 \u0baf\u0bbe\u0bb0\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Kto m\xf4\u017ee prid\xe1va\u0165 nov\xe9 chaty do tohto kurzu";
     },
     get$addEnvironmentOverride() {
-      return "\u0b9a\u0bc2\u0bb4\u0bb2\u0bcd \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0ba4\u0bcd\u0ba4\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prida\u0165 prep\xedsanie prostredia";
     },
     get$defaultOption() {
-      return "\u0b87\u0baf\u0bb2\u0bcd\u0baa\u0bc1";
+      return "Predvolen\xe9";
     },
     get$deleteChatDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe? \u0b87\u0ba4\u0bc1 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b87\u0ba9\u0bbf \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bbe\u0ba4\u0bc1.";
+      return "Ste si ist\xed, \u017ee chcete vymaza\u0165 tento chat? Bude vymazan\xfd pre v\u0161etk\xfdch \xfa\u010dastn\xedkov a v\u0161etky spr\xe1vy v chate u\u017e nebud\xfa dostupn\xe9 na prax alebo analytiku u\u010denia.";
     },
     get$deleteSpaceDesc() {
-      return "\u0baa\u0bbe\u0b9f\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b87\u0ba9\u0bbf \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bbe\u0ba4\u0bc1. \u0b87\u0ba8\u0bcd\u0ba4 \u0ba8\u0b9f\u0bb5\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Kurz a ak\xe9ko\u013evek vybran\xe9 chaty bud\xfa vymazan\xe9 pre v\u0161etk\xfdch \xfa\u010dastn\xedkov a v\u0161etky spr\xe1vy v chate u\u017e nebud\xfa dostupn\xe9 na prax alebo analytiku u\u010denia. T\xe1to akcia sa ned\xe1 vr\xe1ti\u0165.";
     },
     get$configureSpace() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Konfigurova\u0165 kurz";
     },
     get$pinMessages() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0baa\u0bbf\u0ba9\u0bcd \u0b87\u0b9f\u0bc1\u0b95";
+      return "Pripn\xfa\u0165 spr\xe1vy";
     },
     get$setJoinRules() {
-      return "\u0b9a\u0bc7\u0bb0\u0bc1\u0bae\u0bcd \u0bb5\u0bbf\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavi\u0165 pravidl\xe1 pripojenia";
     },
     get$changeGeneralSettings() {
-      return "\u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0ba9 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 v\u0161eobecn\xe9 nastavenia";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u0baa\u0bbf\u0bb1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 \u010fal\u0161\xedch pou\u017e\xedvate\u013eov";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u0baa\u0bb3\u0bcd\u0bb3\u0bbf\u0baf\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 n\xe1zov kurzu";
     },
     get$changeTheDescription() {
-      return "\u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 popis";
     },
     get$changeThePermissions() {
-      return "\u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 opr\xe1vnenia";
     },
     get$introductions() {
-      return "\u0b85\u0bb1\u0bbf\u0bae\u0bc1\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\xdavodn\xe9 predstavenia";
     },
     get$announcements() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Ozn\xe1menia";
     },
     get$activities() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Aktivity";
     },
     get$access() {
-      return "\u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd";
+      return "Pr\xedstup";
     },
     get$howSpaceCanBeFound() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0bae\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Ako mo\u017eno tento kurz n\xe1js\u0165";
     },
     get$$private() {
-      return "\u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f";
+      return "S\xfakromn\xfd";
     },
     get$cannotBeFoundInSearch() {
-      return "\u0ba4\u0bc7\u0b9f\u0bb2\u0bbf\u0bb2\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1";
+      return "Nemo\u017eno n\xe1js\u0165 vo vyh\u013ead\xe1van\xed";
     },
     get$$public(_) {
-      return "\u0baa\u0bca\u0ba4\u0bc1";
+      return "Verejn\xfd";
     },
     get$visibleToCommunity() {
-      return '"\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe" \u0b8e\u0ba9\u0bcd\u0bb1 \u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0ba9 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe \u0b9a\u0bae\u0bc2\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b95\u0bbe\u0ba3\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba4\u0bc1';
+      return 'Vidite\u013en\xfd pre \u0161ir\u0161iu komunitu Pangea Chat prostredn\xedctvom "N\xe1js\u0165 kurz"';
     },
     get$howSpaceCanBeJoined() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0bae\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Ako sa mo\u017eno pripoji\u0165 k tomuto kurzu";
     },
     get$canBeFoundVia() {
-      return "\u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb2\u0bbe\u0bae\u0bcd:";
+      return "M\xf4\u017ee by\u0165 n\xe1jden\xfd cez:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "\u2022 pozv\xe1nka";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "\u2022 k\xf3d alebo odkaz";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf";
+      return "\u2022 \u017eiados\u0165 o pripojenie a schv\xe1lenie spr\xe1vcu";
     },
     get$youHaveLeveledUp() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0bb2\u0bc8 \u0b89\u0baf\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bbf\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd!";
+      return "Postupovali ste na vy\u0161\u0161iu \xfarove\u0148!";
     },
     get$sendActivities() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 aktivity";
     },
     get$directMessage() {
-      return "\u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Priama spr\xe1va";
     },
     get$newDirectMessage() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf";
+      return "Nov\xe1 priama spr\xe1va";
     },
     get$speakingExercisesTooltip() {
-      return "\u0baa\u0bc7\u0b9a\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Hovorenie";
     },
     get$transcriptionFailed() {
-      return "\u0b92\u0bb2\u0bbf \u0b89\u0bb0\u0bc8\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0ba4\u0bcb\u0bb2\u0bcd\u0bb5\u0bbf\u0baf\u0bc1\u0bb1\u0bcd\u0bb1\u0ba4\u0bc1";
+      return "Nepodarilo sa prepisova\u0165 zvuk";
     },
     get$aUserIsKnocking() {
-      return "1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd";
+      return "1 pou\u017e\xedvate\u013e \u017eiada o pripojenie k v\xe1\u0161mu kurzu";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc7\u0bb0 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bc6\u0ba9 \u0b95\u0bc7\u0b9f\u0bcd\u0b9f\u0bc1 \u0bb5\u0bb0\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9\u0bb0\u0bcd";
+      return "" + users + " pou\u017e\xedvate\u013eov \u017eiada o pripojenie k v\xe1\u0161mu kurzu";
     },
     get$failedToFetchTranscription() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bc8 \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa na\u010d\xedta\u0165 prepis";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bc1\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b87\u0ba4\u0bc1 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0ba8\u0bcd\u0ba4 \u0ba8\u0b9f\u0bb5\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.";
+      return "Kurz bude vymazan\xfd pre v\u0161etk\xfdch \xfa\u010dastn\xedkov. T\xe1to akcia sa ned\xe1 vr\xe1ti\u0165 sp\xe4\u0165.";
     },
     get$failedToPlayVideo() {
-      return "\u0bb5\u0bc0\u0b9f\u0bbf\u0baf\u0bcb\u64ad\u653e \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa spusti\u0165 video";
     },
     get$done() {
-      return "\u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "Hotovo";
     },
     get$inThisSpace() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd";
+      return "V tomto kurze";
     },
     get$myContacts() {
-      return "\u0b8e\u0ba9\u0ba4\u0bc1 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Moje kontakty";
     },
     get$inviteAllInSpace() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 v\u0161etk\xfdch v tomto kurze";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9\u0bb0\u0bcd";
+      return "V\u0161etci \xfa\u010dastn\xedci kurzu boli pozvan\xed do chatu";
     },
     numKnocking$1(count) {
-      return "" + count + " \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1";
+      return "" + count + " klopanie";
     },
     numInvited$1(count) {
-      return "" + count + " \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "" + count + " pozvan\xfdch";
     },
     get$errorFetchingDefinition() {
-      return "\u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8\u0baf\u0bc8 \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa na\u010d\xedta\u0165 defin\xedciu";
     },
     get$errorProcessAnalytics() {
-      return "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bbe\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa spracova\u0165 analytiku";
     },
     get$errorDownloading() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0ba4\u0bcb\u0bb2\u0bcd\u0bb5\u0bbf\u0baf\u0bc1\u0bb1\u0bcd\u0bb1\u0ba4\u0bc1";
+      return "S\u0165ahovanie zlyhalo";
     },
     get$errorFetchingLevelSummary() {
-      return "\u0ba8\u0bbf\u0bb2\u0bc8 \u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa na\u010d\xedta\u0165 s\xfahrn \xfarovne";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bc8 \u0b8f\u0bb1\u0bcd\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa na\u010d\xedta\u0165 chaty v r\xe1mci tohto kurzu";
     },
     get$unexpectedError() {
-      return "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0baa\u0bbe\u0bb0\u0bbe\u0ba4 \u0baa\u0bbf\u0bb4\u0bc8.";
+      return "Neo\u010dak\xe1van\xe1 chyba.";
     },
     get$pleaseReload() {
-      return "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b8f\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pros\xedm, na\u010d\xedtajte znova a sk\xfaste to znova.";
     },
     get$translationError() {
-      return "\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bbf\u0bb4\u0bc8";
+      return "Chyba prekladu";
     },
     get$errorFetchingActivity() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0baa\u0bc6\u0bb1 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Nepodarilo sa na\u010d\xedta\u0165 aktivitu";
     },
     get$check(_) {
-      return "\u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Skontrolova\u0165";
     },
     get$unableToFindRoom() {
-      return "\u0b85\u0ba8\u0bcd\u0ba4 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bcd\u0b9f\u0bc1\u0b9f\u0ba9\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0bae\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0bae\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Nena\u0161iel sa \u017eiadny chat alebo kurz s t\xfdmto k\xf3dom. Sk\xfaste to znova.";
     },
     viewingAnalytics$2(visible, users) {
-      return "" + visible + "/" + users + " \u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0ba3\u0bcd\u0b95";
+      return "Zobrazenie analytiky " + visible + "/" + users;
     },
     get$request(_) {
-      return "\u0bb5\u0bbf\u0ba3\u0bcd\u0ba3\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "\u017diados\u0165";
     },
     get$requestAll(_) {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bcb\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Po\u017eiada\u0165 o v\u0161etko";
     },
     get$confirmMessageUnpin() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0baf\u0bc8 \u0ba8\u0bc0\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Ste si ist\xed, \u017ee chcete odopn\xfa\u0165 t\xfato spr\xe1vu?";
     },
     get$pending(_) {
-      return "\u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "\u010cak\xe1 sa";
     },
     get$openRoleLabel() {
-      return "\u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "OTVOREN\xc1";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " " + role + " \u0b86\u0b95 \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return "\ud83d\udc4b " + username + " sa pripojil ako " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
+      return "\ud83c\udfaf " + username + " ukon\u010dil t\xfato aktivitu";
     },
     get$activitySummaryError() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Preh\u013eady aktiv\xedt nie s\xfa dostupn\xe9";
     },
     get$requestSummaries() {
-      return "\u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b95\u0bcb\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Po\u017eiada\u0165 o preh\u013eady";
     },
     get$requestAccessTitle() {
-      return "\u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbe?";
+      return "Po\u017eiada\u0165 o pr\xedstup k analytike?";
     },
     get$requestAccessDesc() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc8 \u0b95\u0bbe\u0ba3 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?\n\n\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd, \u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bb3\u0bcd \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd:\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b9a\u0bca\u0bb1\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bb5\u0bc8\n    \u2022 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f, \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bb3\u0bcd\n\n\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1:\n    \u2022 \u0baa\u0bbe\u0b9f\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bc8\u0ba4\u0bcd \u0ba4\u0bb5\u0bbf\u0bb0 \u0bae\u0bb1\u0bcd\u0bb1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd\n    \u2022 \u0b9a\u0bca\u0bb1\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bb2\u0bcd";
+      return "Chceli by ste po\u017eiada\u0165 o pr\xedstup na zobrazenie analytiky \xfa\u010dastn\xedkov?\n\nAk \xfa\u010dastn\xedci s\xfahlasia, administr\xe1tori tohto kurzu bud\xfa m\xf4c\u0165 vidie\u0165 ich:\n    \u2022 celkov\xfa slovn\xfa z\xe1sobu\n    \u2022 celkov\xe9 gramatick\xe9 koncepty\n    \u2022 po\u010det dokon\u010den\xfdch aktiv\xedt\n    \u2022 \u0161pecifick\xe9 gramatick\xe9 koncepty pou\u017eit\xe9, spr\xe1vne a nespr\xe1vne\n\nNebud\xfa m\xf4c\u0165 vidie\u0165 ich:\n    \u2022 spr\xe1vy v chatoch mimo kurzu\n    \u2022 zoznam slovnej z\xe1soby";
     },
     get$analyticsInactiveTitle() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb2\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1";
+      return "\u017diadosti o pr\xedstup od neakt\xedvnych pou\u017e\xedvate\u013eov nemohli by\u0165 odoslan\xe9";
     },
     get$analyticsInactiveDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bcd\u0b9a\u0bae\u0bcd \u0b85\u0bb1\u0bbf\u0bae\u0bc1\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf\u0bbe\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb2\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0b95\u0bbe\u0ba3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1.\n\n\u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1, \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0baa\u0bca\u0ba4\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd \u0ba4\u0bcb\u0ba9\u0bcd\u0bb1\u0bc1\u0bae\u0bcd. \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bbf\u0ba9\u0bcd \u0b95\u0bc0\u0bb4\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0baa\u0bca\u0ba4\u0bcd\u0ba4\u0bbe\u0ba9\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Neakt\xedvni pou\u017e\xedvatelia, ktor\xed sa neprihl\xe1sili od zavedenia tejto funkcie, neuvidia va\u0161u \u017eiados\u0165.\n\nTla\u010didlo Po\u017eiadavka sa zobraz\xed, ke\u010f sa vr\xe1tia. M\xf4\u017eete \u017eiados\u0165 znova odosla\u0165 nesk\xf4r kliknut\xedm na tla\u010didlo Po\u017eiadavka pod ich menom, ke\u010f bude dostupn\xe9.";
     },
     get$accessRequestedTitle() {
-      return "\u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "\u017diados\u0165 o pr\xedstup k analytike";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u0b85\u0ba3\u0bc1\u0b95\u0bb2\u0bcd \u0b95\u0bcb\u0bb0\u0bc1\u0b95\u0bbf\u0bb1 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf(\u0b95\u0bb3\u0bcd): " + admin + " \n\n\u201c" + space + "\u201d \u0b87\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0ba3 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbf\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd.\n\n\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bbe\u0bb2\u0bcd, \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd:\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd\u0bb5\u0bb4\u0bbf\u0b95\u0bb3\u0bcd\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bb3\u0bcd\n    \u2022 \u0bae\u0bca\u0ba4\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1\n    \u2022 \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0ba4\u0bb5\u0bb1\u0bbe\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0baf \u0b95\u0bc1\u0bb1\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bcd\u0b9f \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bb3\u0bcd\n\n\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd:\n    \u2022 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1\u0baa\u0bcd \u0baa\u0bc1\u0bb1\u0bae\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0bb3 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0ba3 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bbe\u0ba4\u0bc1\n    \u2022 \u0b9a\u0bca\u0bb2\u0bcd\u0bb5\u0bb4\u0bbf \u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bb2\u0bcd";
+      return "\u017diados\u0165 o pr\xedstup od admina(ov): " + admin + " \n\nAdmini z \u201e" + space + "\u201c \u017eiadaj\xfa o zobrazenie va\u0161ich analytick\xfdch \xfadajov o u\u010den\xed.\n\nAk s\xfahlas\xedte, bud\xfa m\xf4c\u0165 zobrazi\u0165 va\u0161e:\n    \u2022 celkov\xfa slovn\xfa z\xe1sobu\n    \u2022 celkov\xe9 gramatick\xe9 koncepty\n    \u2022 celkov\xfd po\u010det dokon\u010den\xfdch aktiv\xedt\n    \u2022 konkr\xe9tne gramatick\xe9 koncepty pou\u017eit\xe9, spr\xe1vne a nespr\xe1vne\n\nNebud\xfa m\xf4c\u0165 zobrazi\u0165 va\u0161e:\n    \u2022 spr\xe1vy v chatoch mimo kurzu\n    \u2022 zoznam slovnej z\xe1soby";
     },
     get$adminRequestedAccess() {
-      return "\u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bb3\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc8 \u0b95\u0bbe\u0ba3 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0bb5\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9\u0bb0\u0bcd.";
+      return "Administr\xe1tori po\u017eiadali o zobrazenie va\u0161ej analytiky.";
     },
     lastUpdated$1(time) {
-      return "\u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1\n" + time;
+      return "Aktualizovan\xe9\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1!";
+      return "V\u0161etko hotov\xe9!";
     },
     get$endForAll() {
-      return "\u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bc1";
+      return "Ukon\u010di\u0165 pre v\u0161etk\xfdch";
     },
     get$newCourse() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0bbe\u0b9f\u0bae\u0bcd";
+      return "Nov\xfd kurz";
     },
     numModules$1(num) {
-      return "" + num + " \u0baa\u0b95\u0bc1\u0ba4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "" + num + " modulov";
     },
     get$coursePlan() {
-      return "\u0baa\u0bbe\u0b9f \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0bae\u0bcd";
+      return "Pl\xe1n kurzu";
     },
     get$editCourseLater() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bbe\u0ba4\u0bbf\u0bb0\u0bbf \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1, \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0b9f\u0bae\u0bcd \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "M\xf4\u017eete nesk\xf4r upravi\u0165 n\xe1zov kurzu, popisy a obr\xe1zok kurzu.";
     },
     get$createCourse() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0b95\u0bb1\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 kurz";
     },
     get$stats() {
-      return "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\u0160tatistiky";
     },
     get$createGroupChat() {
-      return "\u0b95\u0bc1\u0bb4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 skupinov\xfd chat";
     },
     get$editCourse() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Upravi\u0165 kurz";
     },
     get$inviteDesc() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd, \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bc2\u0bb2\u0bae\u0bcd";
+      return "Pod\u013ea pou\u017e\xedvate\u013esk\xe9ho mena, k\xf3du alebo odkazu";
     },
     get$editCourseDesc() {
-      return "\u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1, \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b86\u0b95\u0bbf\u0baf\u0bb5\u0bb1\u0bcd\u0bb1\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Tu m\xf4\u017eete upravi\u0165 n\xe1zov kurzu, popis at\u010f.";
     },
     get$permissionsDesc() {
-      return "\u0baf\u0bbe\u0bb0\u0bcd \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd, \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb2\u0bbe\u0bae\u0bcd, \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd \u0baa\u0bcb\u0ba9\u0bcd\u0bb1 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Nastavte opr\xe1vnenia, ako kto m\xf4\u017ee pozva\u0165 pou\u017e\xedvate\u013eov, posiela\u0165 spr\xe1vy, vytv\xe1ra\u0165 chaty at\u010f.";
     },
     get$accessDesc() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0b89\u0bb2\u0b95\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd! \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1, \u0ba4\u0ba9\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0ba4\u0bbe\u0b95 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "M\xf4\u017eete spravi\u0165 svoj kurz otvoren\xfd svetu! Alebo, urobi\u0165 svoj kurz s\xfakromn\xfdm a zabezpe\u010den\xfdm.";
     },
     get$createGroupChatDesc() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bcd \u0b95\u0bc2\u0b9f\u0bcd\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0b9f\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b87\u0b9f\u0bae\u0bcd, \u0b95\u0bc1\u0bb4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bae\u0bbe\u0ba9 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0bb5\u0bc8\u0baf\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd.";
+      return "Kde za\u010d\xednaj\xfa a kon\u010dia aktivity, skupinov\xe9 chaty zostan\xfa otvoren\xe9 na be\u017en\xfa komunik\xe1ciu.";
     },
     get$deleteDesc() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bb3\u0bcd \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9\u0bb0\u0bcd. \u0b87\u0ba4\u0bc1 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bbf, \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0bb4\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b85\u0bb4\u0bbf\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0ba8\u0b9f\u0bb5\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8. \u0b95\u0bb5\u0ba9\u0bae\u0bbe\u0b95 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Iba spr\xe1vcovia m\xf4\u017eu vymaza\u0165 kurz. Ide o de\u0161trukt\xedvnu akciu, ktor\xe1 odstr\xe1ni v\u0161etk\xfdch pou\u017e\xedvate\u013eov a vyma\u017ee v\u0161etky vybran\xe9 chaty v kurze. Postupujte opatrne.";
     },
     get$noCourseFound() {
-      return "\u0b93, \u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0bae\u0bcd \u0ba4\u0bc7\u0bb5\u0bc8!\n\n\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc1 \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0ba4\u0bca\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0b95\u0bc1\u0bae\u0bcd.";
+      return "\xd3, tento kurz potrebuje pl\xe1n!\n\nPl\xe1ny kurzov s\xfa sledom t\xe9m a aktiv\xedt konverz\xe1cie.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "+ " + num + " \u010fal\u0161\xedch";
     },
     get$whatNow() {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b8e\u0ba9\u0bcd\u0ba9?";
+      return "\u010co teraz?";
     },
     get$chooseNextActivity() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Vyberte svoju \u010fal\u0161iu aktivitu!";
     },
     get$letsGo() {
-      return "\u0baa\u0bcb\u0baf\u0bcd\u0b9a\u0bcd \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Po\u010fme na to";
     },
     get$chooseRole() {
-      return "\u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1!";
+      return "Vyberte si rolu!";
     },
     get$chooseRoleToParticipate() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0b95\u0baa\u0bcd \u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1!";
+      return "Vyberte rolu na \xfa\u010das\u0165!";
     },
     waitingToFillRole$1(num) {
-      return "" + num + " \u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb0\u0baa\u0bcd\u0baa \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1...";
+      return "\u010cak\xe1 sa na obsadenie " + num + " rol\xed...";
     },
     get$pingParticipants() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0bbf\u0b99\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95";
+      return "Ozn\xe1mi\u0165 \xfa\u010dastn\xedkom kurzu";
     },
     get$playWithBot() {
-      return "\u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b9f\u0ba9\u0bcd \u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bc1";
+      return "Hra\u0165 s Pangea Botom";
     },
     get$waitNotDone() {
-      return "\u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0ba8\u0bbe\u0ba9\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8!";
+      return "Po\u010dkajte, e\u0161te som nedokon\u010dil!";
     },
     get$waitingForOthersToFinish() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1...";
+      return "\u010cak\xe1me na ostatn\xfdch, aby dokon\u010dili...";
     },
     get$generatingSummary() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Analyzujeme chat a generujeme v\xfdsledky";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " " + room + " \u0b87\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0 \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd";
+      return user + " h\u013ead\xe1 pou\u017e\xedvate\u013eov na pripojenie k rel\xe1cii aktivity v " + room;
     },
     goToCourse$1(course) {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd: " + course;
+      return "Prejs\u0165 na kurz: " + course;
     },
     get$startNewSession() {
-      return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc8 \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Za\u010da\u0165 nov\xfa rel\xe1ciu";
     },
     get$joinOpenSession() {
-      return "\u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pripoji\u0165 sa k otvorenej rel\xe1cii";
     },
     get$activityNotFound() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
+      return "Aktivita nen\xe1jden\xe1";
     },
     get$levelUp() {
-      return "\u0baa\u0b9f\u0bbf\u0ba8\u0bbf\u0bb2\u0bc8 \u0b89\u0baf\u0bb0\u0bcd\u0bb5\u0bc1";
+      return "Zv\xfd\u0161i\u0165 \xfarove\u0148";
     },
     get$myActivities() {
-      return "\u0b8e\u0ba9\u0ba4\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Moje aktivity";
     },
     get$openToJoin() {
-      return "\u0b9a\u0bc7\u0bb0\u0bcd\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1";
+      return "Otvoren\xe9 na pripojenie";
     },
     get$activityDone() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 \u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1!";
+      return "Aktivita hotov\xe1!";
     },
     get$promoCodeInfo() {
-      return "\u0baa\u0bbf\u0bb0\u0bae\u0bcb \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0baa\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb2\u0bbe\u0bae\u0bcd";
+      return "Promo k\xf3dy je mo\u017en\xe9 zada\u0165 na nasleduj\xfacej str\xe1nke";
     },
     get$editsComingSoon() {
-      return "\u0ba8\u0b95\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bcd \u0ba4\u0bbf\u0bb1\u0ba9\u0bcd \u0bb5\u0bbf\u0bb0\u0bc8\u0bb5\u0bbf\u0bb2\u0bcd \u0bb5\u0bb0\u0bc1\u0bae\u0bcd.";
+      return "Funkcia \xfapravy miest a aktiv\xedt \u010doskoro pr\xedde.";
     },
     get$editing() {
-      return "\u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0ba4\u0bb2\u0bcd";
+      return "Upravi\u0165";
     },
     get$activityNeedsOneMember() {
-      return "\u0b85\u0bb9\u0bcb! \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd 1 \u0ba8\u0baa\u0bb0\u0bcd \u0ba4\u0bc7\u0bb5\u0bc8.";
+      return "Huh! T\xe1to aktivita potrebuje e\u0161te 1 osobu.";
     },
     activityNeedsMembers$1(num) {
-      return "\u0b85\u0bb9\u0bcb! \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 " + num + " \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0ba8\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bc7\u0bb5\u0bc8.";
+      return "Huh! T\xe1to aktivita potrebuje e\u0161te " + num + " \u013eud\xed.";
     },
     get$inviteFriendsToCourse() {
-      return "\u0b8e\u0ba9\u0bcd \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozva\u0165 priate\u013eov na m\xf4j kurz";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prihl\xe1si\u0165 sa na odomknutie s\xfahrnov aktiv\xedt";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bc1\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prihl\xe1si\u0165 sa na odomknutie prepisov";
     },
     get$pingSent() {
-      return "\ud83d\udd14 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0bbf\u0b99\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1! \ud83d\udd14";
+      return "Odoslan\xe9 ozn\xe1menie kurzu! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "N\xe1zov kurzu";
     },
     get$courseDesc() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd";
+      return "Popis kurzu";
     },
     get$courseSavedSuccessfully() {
-      return "\u0baa\u0bbe\u0b9f\u0bae\u0bcd \u0bb5\u0bc6\u0bb1\u0bcd\u0bb1\u0bbf\u0b95\u0bb0\u0bae\u0bbe\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Kurz bol \xfaspe\u0161ne ulo\u017een\xfd";
     },
     get$addCoursePlan() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prida\u0165 pl\xe1n kurzu";
     },
     get$activityStatsButtonInstruction() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0baa\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc2\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Kliknite sem pre zobrazenie \u0161tatist\xedk va\u0161ej aktivity a na zatvorenie aktivity po dokon\u010den\xed";
     },
     get$loginToAccount() {
-      return "\u0b8e\u0ba9\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prihl\xe1si\u0165 sa do m\xf4jho \xfa\u010dtu";
     },
     get$appDescription() {
-      return "\u0b92\u0bb0\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd\n\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1.";
+      return "Nau\u010dte sa jazyk\npo\u010das p\xedsania spr\xe1v priate\u013eom.";
     },
     get$startOwn() {
-      return "\u0b8e\u0ba9\u0bcd \u0b9a\u0bca\u0ba8\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1";
+      return "Za\u010da\u0165 vlastn\xe9";
     },
     get$courseCodeHint() {
-      return "\u0baa\u0baf\u0ba3\u0b95\u0bcd \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1";
+      return "K\xf3d cesty alebo odkaz";
     },
     get$signupOption() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?";
+      return "Ako sa chcete zaregistrova\u0165?";
     },
     get$withApple() {
-      return "\u0b86\u0baa\u0bcd\u0baa\u0bbf\u0bb3\u0bcd \u0b89\u0b9f\u0ba9\u0bcd";
+      return "S Apple";
     },
     get$withGoogle() {
-      return "\u0b95\u0bc2\u0b95\u0bbf\u0bb3\u0bcd \u0b89\u0b9f\u0ba9\u0bcd";
+      return "S Google";
     },
     get$withEmail() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0b89\u0b9f\u0ba9\u0bcd";
+      return "S e-mailom";
     },
     get$createAccount() {
-      return "\u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 \xfa\u010det";
     },
     get$loginWithEmail() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bc1\u0b9f\u0ba9\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0b95";
+      return "Prihl\xe1si\u0165 sa pomocou e-mailu";
     },
     get$usernameOrEmail() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd";
+      return "Pou\u017e\xedvate\u013esk\xe9 meno alebo e-mail";
     },
     get$email() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd";
+      return "E-mail";
     },
     get$forgotPassword() {
-      return "\u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0bae\u0bb1\u0ba8\u0bcd\u0ba4\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Zabudli ste heslo?";
     },
     get$endActivity() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ukon\u010di\u0165 aktivitu";
     },
     get$allLanguages() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd";
+      return "V\u0161etky jazyky";
     },
     get$directMessageBotTitle() {
-      return "\u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf";
+      return "Priama spr\xe1va Pangea Bot";
     },
     get$feedbackTitle() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Sp\xe4tn\xe1 v\xe4zba k aktivite";
     },
     get$feedbackRespDesc() {
-      return "\u0ba8\u0bbe\u0bb3\u0bc8 \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0b95 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Skontrolujte zajtra aktualiz\xe1cie aktivity.";
     },
     get$feedbackHint() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Va\u0161a sp\xe4tn\xe1 v\xe4zba";
     },
     get$feedbackButton() {
-      return "\u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc8 \u0b9a\u0bae\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odosla\u0165 sp\xe4tn\xfa v\xe4zbu";
     },
     get$directMessageBotDesc() {
-      return "\u0bae\u0ba9\u0bbf\u0ba4\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bc7\u0b9a\u0bc1\u0bb5\u0ba4\u0bc1 \u0b85\u0ba4\u0bbf\u0b95 \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf \u0b86\u0ba9\u0bbe\u0bb2\u0bcd... AI \u0b8e\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1\u0bae\u0bcd \u0ba4\u0baf\u0bbe\u0bb0\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1!";
+      return "Rozpr\xe1va\u0165 sa s \u013eu\u010fmi je z\xe1bavnej\u0161ie, ale... AI je v\u017edy pripraven\xe9!";
     },
     get$inviteYourFriends() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pozvite svojich priate\u013eov";
     },
     get$playWithAI() {
-      return "\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0bb2\u0bbf\u0b95\u0bae\u0bbe\u0b95 AI \u0b89\u0b9f\u0ba9\u0bcd \u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Hrajte zatia\u013e s AI";
     },
     get$courseStartDesc() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bc7\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf \u0b8e\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1\u0bae\u0bcd \u0ba4\u0baf\u0bbe\u0bb0\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1!\n\n...\u0b86\u0ba9\u0bbe\u0bb2\u0bcd \u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1!";
+      return "Pangea Bot je pripraven\xfd kedyko\u013evek za\u010da\u0165!\n\n...ale u\u010denie je lep\u0161ie s priate\u013emi!";
     },
     get$activityDropdownDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0b9f\u0ba9\u0bcd, \u0b95\u0bc0\u0bb4\u0bc7 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ke\u010f dokon\u010d\xedte t\xfato aktivitu, kliknite ni\u017e\u0161ie";
     },
     get$languageMismatchTitle() {
-      return "\u0bae\u0bca\u0bb4\u0bbf \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bae\u0bc8";
+      return "Nes\xfalad jazyka";
     },
     get$emptyChatSearch() {
-      return "DMs \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bc7\u0b9f\u0bb2\u0bcd \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0b95 \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb4\u0bc8\u0baf\u0bbf\u0ba9\u0bcd\u0bb1\u0bbf \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1 \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8 \u0b89\u0bb1\u0bc1\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "\u017diadne priame spr\xe1vy ani chaty nen\xe1jden\xe9. Uistite sa, \u017ee je v\xe1\u0161 vyh\u013ead\xe1vanie spr\xe1vne nap\xedsan\xe9.";
     },
     get$languageMismatchDesc() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "V\xe1\u0161 cie\u013eov\xfd jazyk nezodpoved\xe1 jazyku tejto aktivity. Chcete aktualizova\u0165 svoj cie\u013eov\xfd jazyk?";
     },
     get$reportWordIssueTooltip() {
-      return "\u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0ba9\u0bc8\u0baf\u0bc8 \u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nahl\xe1si\u0165 probl\xe9m s inform\xe1ciami o slove";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1";
+      return "Sp\xe4tn\xe1 v\xe4zba k inform\xe1ci\xe1m o slove";
     },
     get$noCourseTemplatesFound() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b8e\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0b85\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0b95, \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b9f\u0ba9\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bbe\u0bae\u0bcd, \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0bb1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Nena\u0161li sme \u017eiadne kurzy pre v\xe1\u0161 cie\u013eov\xfd jazyk. Medzit\xfdm m\xf4\u017eete chatova\u0165 s Pangea Botom a nesk\xf4r sa vr\xe1ti\u0165 pre viac kurzov.";
     },
     get$botActivityJoinFailMessage() {
-      return "\u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bbe \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd \u0baa\u0ba4\u0bbf\u0bb2\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95 \u0b9a\u0bbf\u0bb2 \u0ba8\u0bc7\u0bb0\u0bae\u0bcd \u0b86\u0b95\u0bc1\u0bae\u0bcd. \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bc8 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pangea Bot sa chv\xed\u013eu na\u010d\xedtava. Sk\xfaste to pros\xedm nesk\xf4r alebo pozvite priate\u013ea.";
     },
     get$unsubscribedResponseError() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bcd\u0b9a\u0bae\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bc8 \u0ba4\u0bc7\u0bb5\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "T\xe1to funkcia vy\u017eaduje predplatn\xe9";
     },
     get$leaveDesc() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b87\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b85\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Opusti\u0165 tento priestor a v\u0161etky chaty v \u0148om";
     },
     get$selectAll() {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vybra\u0165 v\u0161etko";
     },
     get$deselectAll(_) {
-      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zru\u0161i\u0165 v\xfdber v\u0161etk\xe9ho";
     },
     get$shareCourse() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zdie\u013ea\u0165 kurz";
     },
     get$vocabLevelsDesc() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bb5\u0bb1\u0bcd\u0bb1\u0bc8 \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0baa\u0bbf\u0ba9\u0bcd \u0b9a\u0bca\u0bb1\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0bb5\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bb3\u0bcd \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bc1\u0bae\u0bcd!";
+      return "Sem p\xf4jdu slov\xed\u010dka, ke\u010f ich vylep\u0161\xedte na vy\u0161\u0161iu \xfarove\u0148!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u0b87\u0bb5\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd.";
+      return "Toto s\xfa va\u0161e ulo\u017een\xe9 aktivity na presk\xfamanie a cvi\u010denie.";
     },
     get$numSavedActivities() {
-      return "\u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8";
+      return "Po\u010det ulo\u017een\xfdch aktiv\xedt";
     },
     get$saveActivityTitle() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Ulo\u017ei\u0165 aktivitu";
     },
     get$saveActivityDesc() {
-      return "\u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0bb5\u0bc7\u0bb2\u0bc8! \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0b95 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Dobr\xe1 pr\xe1ca! Ulo\u017ete t\xfato aktivitu na neskor\u0161ie presk\xfamanie a cvi\u010denie";
     },
     get$levelInfoTooltip() {
-      return "\u0b87\u0b99\u0bcd\u0b95\u0bc1 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1 \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0bb2\u0bbe\u0bae\u0bcd!";
+      return "Tu m\xf4\u017eete vidie\u0165 v\u0161etky body, ktor\xe9 ste z\xedskali a ako!";
     },
     get$alreadyInCourseWithID() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b9f\u0ba9\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7 \u0b92\u0bb0\u0bc1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd. \u0b85\u0ba4\u0bc7 \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b9f\u0ba9\u0bcd \u0b92\u0bb0\u0bc1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe, \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b89\u0bb3\u0bcd\u0bb3 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "U\u017e ste v kurze s t\xfdmto pl\xe1nom. Chcete vytvori\u0165 kurz s rovnak\xfdm pl\xe1nom, alebo prejs\u0165 do existuj\xfaceho kurzu?";
     },
     get$goToExistingCourse() {
-      return "\u0b89\u0bb3\u0bcd\u0bb3 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prejs\u0165 do existuj\xfaceho kurzu";
     },
     get$emojiView() {
-      return "\u0b8e\u0bae\u0bcb\u0b9c\u0bbf \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf";
+      return "Zobrazenie emoji";
     },
     get$feedbackDialogDesc() {
-      return "\u0ba8\u0bbe\u0ba9\u0bcd \u0ba4\u0bb5\u0bb1\u0bc1\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd! \u0b8e\u0ba9\u0bcd\u0ba9\u0bbe\u0bb2\u0bcd \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f \u0b89\u0ba4\u0bb5\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd?";
+      return "Rob\xedm chyby tie\u017e! Nie\u010do, \u010do by mi pomohlo zlep\u0161i\u0165 sa?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b95\u0bb1\u0bcd\u0b95\u0bc8\u0ba8\u0bc6\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1";
+      return "Kontakt bol pozvan\xfd na kurz";
     },
     get$inviteFriends() {
-      return "\u0ba8\u0ba3\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8";
+      return "Pozva\u0165 priate\u013eov";
     },
     get$activityStatsButtonTooltip() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd";
+      return "Inform\xe1cie o aktivite";
     },
     get$allow(_) {
-      return "\u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165";
     },
     get$deny() {
-      return "\u0bae\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odmietnu\u0165";
     },
     get$enabledRenewal() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baa\u0bcd\u0baa\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165 obnovenie predplatn\xe9ho";
     },
     get$subscriptionEndsOn() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0bae\u0bc1\u0b9f\u0bbf\u0bb5\u0b9f\u0bc8\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Predplatn\xe9 kon\u010d\xed d\u0148a";
     },
     get$subscriptionRenewsOn() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1";
+      return "Predplatn\xe9 sa obnov\xed d\u0148a";
     },
     get$waitForSubscriptionChanges() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb5\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0baa\u0bb2\u0bbf\u0b95\u0bcd\u0b95 \u0b9a\u0bbf\u0bb2 \u0ba8\u0bc7\u0bb0\u0bae\u0bcd \u0b86\u0b95\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Zmeny vo va\u0161om predplatnom sa m\xf4\u017eu chv\xed\u013eu odr\xe1\u017ea\u0165 v aplik\xe1cii.";
     },
     get$subscribeReadingAssistance() {
-      return "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Prihl\xe1ste sa na odomknutie n\xe1strojov na spr\xe1vu spr\xe1v";
     },
     get$aceDisplayName() {
-      return "\u0b85\u0b9a\u0bbf\u0ba9\u0bc0\u0bb8\u0bcd";
+      return "Achinese";
     },
     get$achDisplayName() {
-      return "\u0b85\u0b95\u0bcb\u0bb2\u0bbf";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u0b86\u0baa\u0bbf\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbe\u0ba9\u0bcd\u0bb8\u0bcd";
+      return "Afrik\xe1n\u010dina";
     },
     get$akDisplayName() {
-      return "\u0b85\u0b95\u0bbe\u0ba9\u0bcd";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u0b85\u0bb2\u0bc2\u0bb0\u0bcd";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u0b85\u0bae\u0bcd\u0bb9\u0bbe\u0bb0\u0bbf\u0b95\u0bcd";
+      return "Amhar\u010dina";
     },
     get$arDisplayName() {
-      return "\u0b85\u0bb0\u0baa\u0bc1";
+      return "Arab\u010dina";
     },
     get$asDisplayName() {
-      return "\u0b85\u0b9a\u0bbe\u0bae\u0bbf";
+      return "As\xe1m\u010dina";
     },
     get$awaDisplayName() {
-      return "\u0b85\u0bb5\u0bbe\u0ba4\u0bbf";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u0b85\u0baf\u0bcd\u0bae\u0bb0\u0bbe";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u0b85\u0b9a\u0bb0\u0bcd\u0baa\u0bc8\u0b9c\u0bbe\u0ba9\u0bbf";
+      return "Azerbajd\u017eansk\xfd";
     },
     get$baDisplayName() {
-      return "\u0baa\u0bbe\u0bb7\u0bcd\u0b95\u0bbf\u0bb0\u0bcd";
+      return "Ba\u0161kir\u010dina";
     },
     get$banDisplayName() {
-      return "\u0baa\u0bb2\u0bbf\u0ba9\u0bc7\u0b9a\u0bbf\u0baf";
+      return "Balin\u010dina";
     },
     get$bbcDisplayName() {
-      return "\u0baa\u0b9f\u0b95\u0bcd \u0ba4\u0bca\u0baa\u0bbe";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u0baa\u0bc6\u0bb2\u0bbe\u0bb0\u0bc1\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Bieloru\u0161tina";
     },
     get$bemDisplayName() {
-      return "\u0baa\u0bc6\u0bae\u0bcd\u0baa\u0bbe";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u0baa\u0bc6\u0b9f\u0bcd\u0b9f\u0bbe\u0bb5\u0bbf";
+      return "Betawi";
     },
     get$bgDisplayName() {
-      return "\u0baa\u0bc1\u0bb2\u0bcd\u0b95\u0bc7\u0bb0\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Bulhar\u010dina";
     },
     get$bhoDisplayName() {
-      return "\u0baa\u0bcb\u0b9c\u0bcd\u0baa\u0bc2\u0bb0\u0bbf";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u0baa\u0bbf\u0b95\u0bcb\u0bb2\u0bcd";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u0baa\u0bae\u0bcd\u0baa\u0bb0\u0bbe";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bbe\u0bb3\u0bbe";
+      return "Beng\xe1l\u010dina";
     },
     get$bnBDDisplayName() {
-      return "\u0baa\u0bc6\u0b99\u0bcd\u0b95\u0bbe\u0bb2\u0bbf (\u0baa\u0b99\u0bcd\u0b95\u0bbe\u0bb3\u0bbe)";
+      return "Beng\xe1l\u010dina (Banglad\xe9\u0161)";
     },
     get$bnINDisplayName() {
-      return "\u0baa\u0bc6\u0b99\u0bcd\u0b95\u0bbe\u0bb2\u0bbf (\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe)";
+      return "Beng\xe1l\u010dina (India)";
     },
     get$brDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9f\u0bcd\u0b9f\u0bbe\u0ba9\u0bcd";
+      return "Breton\u010dina";
     },
     get$bsDisplayName() {
-      return "\u0baa\u0bcb\u0bb8\u0bcd\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Bosnian\u010dina";
     },
     get$btsDisplayName() {
-      return "\u0baa\u0b9f\u0b95\u0bcd \u0b9a\u0bbf\u0bae\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bc1\u0ba9\u0bcd";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u0baa\u0b9f\u0b95\u0bcd \u0b95\u0bbe\u0bb0\u0bcb";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u0baa\u0bc2\u0bb0\u0bbf\u0baf\u0b9f\u0bcd";
+      return "Buriat\u010dina";
     },
     get$caDisplayName() {
-      return "\u0b95\u0b9f\u0bb2\u0bbe\u0ba9\u0bcd";
+      return "Katal\xe1n\u010dina";
     },
     get$cebDisplayName() {
-      return "\u0b9a\u0bc6\u0baa\u0bc1\u0bb5\u0bbe\u0ba9\u0bcb";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u0b9a\u0bbf\u0b95\u0bbe";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u0bae\u0bb0\u0bbf";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u0bae\u0bc8\u0baf \u0b95\u0bc1\u0bb0\u0bcd\u0ba4\u0bbf\u0bb7\u0bcd";
+      return "Centr\xe1lny kurdsk\xfd";
     },
     get$cnhDisplayName() {
-      return "\u0bb9\u0b95\u0bbe \u0b9a\u0bbf\u0ba9\u0bcd";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u0b95\u0bcb\u0bb0\u0bcd\u0b9a\u0bbf\u0b95\u0ba9\u0bcd";
+      return "Korsi\u010dan";
     },
     get$crhDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bc0\u0bae\u0bbf\u0baf\u0ba9\u0bcd \u0ba4\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf";
+      return "Krymsko-tureck\xfd";
     },
     get$crsDisplayName() {
-      return "\u0b9a\u0bc6\u0b9a\u0bc6\u0bb2\u0bcd\u0bb5\u0bbe \u0b95\u0bbf\u0bb0\u0bbf\u0baf\u0bcb\u0bb2\u0bcd \u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1";
+      return "Seselwa kreolsk\xfd franc\xfazsky";
     },
     get$csDisplayName() {
-      return "\u0b9a\u0bc6\u0b95\u0bcd";
+      return "\u010ce\u0161tina";
     },
     get$cvDisplayName() {
-      return "\u0b9a\u0bc1\u0bb5\u0bbe\u0bb7\u0bcd";
+      return "\u010cuva\u0161";
     },
     get$cyDisplayName() {
-      return "\u0bb5\u0bc6\u0bb2\u0bcd\u0bb7\u0bcd";
+      return "Walesk\xfd";
     },
     get$daDisplayName() {
-      return "\u0b9f\u0bc7\u0ba9\u0bbf\u0bb7\u0bcd";
+      return "D\xe1nsky";
     },
     get$deDisplayName() {
-      return "\u0b9c\u0bc6\u0bb0\u0bcd\u0bae\u0ba9\u0bcd";
+      return "Nemeck\xfd";
     },
     get$dinDisplayName() {
-      return "\u0b9f\u0bbf\u0b99\u0bcd\u0b95\u0bbe";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u0b9f\u0bcb\u0b95\u0bbf\u0bb0\u0bbf";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u0b9f\u0bca\u0bae\u0bcd\u0baa\u0bc7";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u0ba4\u0bcd\u0b9a\u0bca\u0b99\u0bcd\u0b95\u0bcd\u0b95\u0bbe";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u0b8e\u0bb5\u0bcd";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd";
+      return "Anglick\xfd";
     },
     get$enAUDisplayName() {
-      return "\u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd (\u0b86\u0bb8\u0bcd\u0ba4\u0bbf\u0bb0\u0bc7\u0bb2\u0bbf\u0baf\u0bbe)";
+      return "Anglick\xfd (Austr\xe1lia)";
     },
     get$enGBDisplayName() {
-      return "\u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd (\u0baf\u0bc2\u0b95\u0bc7)";
+      return "Anglick\xfd (UK)";
     },
     get$enINDisplayName() {
-      return "\u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd (\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe)";
+      return "Angli\u010dtina (India)";
     },
     get$enUSDisplayName() {
-      return "\u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd (\u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbe)";
+      return "Angli\u010dtina (USA)";
     },
     get$eoDisplayName() {
-      return "\u0b8e\u0bb8\u0bcd\u0baa\u0bb0\u0bbe\u0ba3\u0bcd\u0b9f\u0bcb";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u0bb8\u0bcd\u0baa\u0bbe\u0ba9\u0bbf\u0bb7\u0bcd";
+      return "\u0160paniel\u010dina";
     },
     get$esESDisplayName() {
-      return "\u0bb8\u0bcd\u0baa\u0bbe\u0ba9\u0bbf\u0bb7\u0bcd (\u0bb8\u0bcd\u0baa\u0bc6\u0baf\u0bbf\u0ba9\u0bcd)";
+      return "\u0160paniel\u010dina (\u0160panielsko)";
     },
     get$esMXDisplayName() {
-      return "\u0bb8\u0bcd\u0baa\u0bbe\u0ba9\u0bbf\u0bb7\u0bcd (\u0bae\u0bc6\u0b95\u0bcd\u0b9a\u0bbf\u0b95\u0bcb)";
+      return "\u0160paniel\u010dina (Mexiko)";
     },
     get$euDisplayName() {
-      return "\u0baa\u0bbe\u0bb8\u0bcd\u0b95\u0bcd";
+      return "Baski\u010dtina";
     },
     get$faDisplayName() {
-      return "\u0baa\u0bb0\u0bcd\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Perz\u0161tina";
     },
     get$ffDisplayName() {
-      return "\u0b83\u0baa\u0bc1\u0bb2\u0bbe";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bbf\u0bb7\u0bcd";
+      return "F\xedn\u010dina";
     },
     get$filDisplayName() {
-      return "\u0baa\u0bbf\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0ba9\u0bcb";
+      return "Filip\xednsky";
     },
     get$fjDisplayName() {
-      return "\u0b83\u0baa\u0bbf\u0b9c\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Fid\u017eijsk\xfd";
     },
     get$foDisplayName() {
-      return "\u0b83\u0baa\u0bb0\u0bcb\u0baf\u0bcd\u0bb8\u0bcd";
+      return "Faro\u017esk\xfd";
     },
     get$frDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1";
+      return "Franc\xfazsky";
     },
     get$frCADisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1 (\u0b95\u0ba9\u0b9f\u0bbe)";
+      return "Franc\xfazsky (Kanada)";
     },
     get$frFRDisplayName() {
-      return "\u0baa\u0bbf\u0bb0\u0bc6\u0b9e\u0bcd\u0b9a\u0bc1 (\u0baa\u0bbf\u0bb0\u0bbe\u0ba9\u0bcd\u0bb8\u0bcd)";
+      return "Franc\xfazsky (Franc\xfazsko)";
     },
     get$fyDisplayName() {
-      return "\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1 \u0b83\u0baa\u0bbf\u0bb0\u0bbf\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Z\xe1padn\xe1 fris\u010dina";
     },
     get$gaDisplayName() {
-      return "\u0b90\u0bb0\u0bbf\u0bb7\u0bcd";
+      return "\xcdrsky";
     },
     get$gaaDisplayName() {
-      return "\u0b95\u0bbe";
+      return "Ga";
     },
     get$gdDisplayName() {
-      return "\u0bb8\u0bcd\u0b95\u0bbe\u0b9f\u0bbf\u0bb7\u0bcd \u0b95\u0bc7\u0bb2\u0bbf\u0b95\u0bcd";
+      return "\u0160k\xf3tska gael\u010dina";
     },
     get$glDisplayName() {
-      return "\u0b95\u0bb2\u0bbf\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Gal\xedcij\u010dina";
     },
     get$gnDisplayName() {
-      return "\u0b95\u0bc1\u0bb5\u0bbe\u0bb0\u0ba9\u0bbf";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "\u0b95\u0bcb\u0baf\u0ba9\u0bcd \u0b95\u0bbe\u0b99\u0bcd\u0b95\u0ba9\u0bbf";
+      return "Goansk\xe1 konkani";
     },
     get$guDisplayName() {
-      return "\u0b95\u0bc1\u0b9c\u0bb0\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf";
+      return "Gujarati";
     },
     get$haDisplayName() {
-      return "\u0bb9\u0bb5\u0bcd\u0b9a\u0bbe";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "\u0bb9\u0bb5\u0bbe\u0baf\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Havaj\u010dina";
     },
     get$heDisplayName() {
-      return "\u0bb9\u0bc0\u0baa\u0bcd\u0bb0\u0bc1";
+      return "Hebrej\u010dina";
     },
     get$hiDisplayName() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4\u0bbf";
+      return "Hind\u010dina";
     },
     get$hilDisplayName() {
-      return "\u0bb9\u0bbf\u0bb2\u0bbf\u0b95\u0bbe\u0baf\u0bcd\u0ba9\u0bbe\u0ba9\u0bcd";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
-      return "\u0bb9\u0bcd\u0bae\u0bcb\u0b99\u0bcd";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u0b9a\u0b9f\u0bcd\u0b9f\u0bc0\u0bb8\u0bcd\u0b95\u0bb0\u0bcd";
+      return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "\u0b95\u0bc1\u0bb0\u0bcb\u0bb7\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Chorv\xe1tsky";
     },
     get$hrxDisplayName() {
-      return "\u0bb9\u0ba9\u0bcd\u0bb8\u0bcd\u0bb0\u0bbf\u0b95\u0bcd";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u0bb9\u0bc8\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0ba9\u0bcd \u0b95\u0bbf\u0bb0\u0bbf\u0baf\u0bcb\u0bb2\u0bcd";
+      return "Haitsk\xe1 kreol\u010dina";
     },
     get$huDisplayName() {
-      return "\u0bb9\u0b99\u0bcd\u0b95\u0bc7\u0bb0\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Ma\u010farsk\xfd";
     },
     get$hyDisplayName() {
-      return "\u0b86\u0bb0\u0bcd\u0bae\u0bc7\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Arm\xe9nsky";
     },
     get$idDisplayName() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bc7\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Indon\xe9zsky";
     },
     get$igDisplayName() {
-      return "\u0b87\u0b95\u0bcd\u0baa\u0bcb";
+      return "Igbo";
     },
     get$iloDisplayName() {
-      return "\u0b87\u0bb2\u0bcb\u0b95\u0bcd\u0b95\u0bcb";
+      return "Iloko";
     },
     get$isDisplayName() {
-      return "\u0b90\u0bb8\u0bcd\u0bb2\u0bbe\u0ba8\u0bcd\u0ba4\u0bc1";
+      return "Islansk\xfd";
     },
     get$itDisplayName() {
-      return "\u0b87\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bbf\u0baf";
+      return "Taliansky";
     },
     get$jaDisplayName() {
-      return "\u0b9c\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bbf\u0baf";
+      return "Japonsk\xfd";
     },
     get$jvDisplayName() {
-      return "\u0b9c\u0bbe\u0bb5\u0bbe\u0ba9\u0bc0\u0bb8\u0bcd";
+      return "Jav\xe1nsky";
     },
     get$kaDisplayName() {
-      return "\u0b9c\u0bbe\u0bb0\u0bcd\u0b9c\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Gruz\xednsky";
     },
     get$kkDisplayName() {
-      return "\u0b95\u0b9a\u0bbe\u0b95\u0bcd";
+      return "Kazach";
     },
     get$kmDisplayName() {
-      return "\u0b95\u0bc6\u0bae\u0bb0\u0bcd";
+      return "Khmer";
     },
     get$knDisplayName() {
-      return "\u0b95\u0ba9\u0bcd\u0ba9\u0b9f";
+      return "Kannada";
     },
     get$koDisplayName() {
-      return "\u0b95\u0bca\u0bb0\u0bbf\u0baf\u0ba9\u0bcd";
+      return "K\xf3rejsk\xfd";
     },
     get$kokDisplayName() {
-      return "\u0b95\u0bca\u0b99\u0bcd\u0b95\u0ba9\u0bbf";
+      return "Konkani";
     },
     get$kriDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bbf\u0baf\u0bcb";
+      return "Krio";
     },
     get$ksDisplayName() {
-      return "\u0b95\u0bbe\u0bb7\u0bcd\u0bae\u0bc0\u0bb0\u0bbf";
+      return "Ka\u0161m\xedr\u010dina";
     },
     get$ktuDisplayName() {
-      return "\u0b95\u0bbf\u0b9f\u0bc1\u0baa\u0bbe (\u0b9f\u0bc6\u0bae\u0bcb\u0b95\u0bbf\u0bb0\u0bbe\u0b9f\u0bbf\u0b95\u0bcd \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bb0\u0b9a\u0bc1 \u0b95\u0bbe\u0b99\u0bcd\u0b95\u0bcb)";
+      return "Kituba (Demokratick\xe1 republika Kongo)";
     },
     get$kuDisplayName() {
-      return "\u0b95\u0bc1\u0bb0\u0bcd\u0ba4\u0bbf\u0bb7\u0bcd";
+      return "Kurd\u010dina";
     },
     get$kyDisplayName() {
-      return "\u0b95\u0bbf\u0bb0\u0bcd\u0b95\u0bbf\u0bb8\u0bcd";
+      return "Kyrgyz\u010dina";
     },
     get$laDisplayName() {
-      return "\u0bb2\u0ba4\u0bcd\u0ba4\u0bc0\u0ba9\u0bcd";
+      return "Latin\u010dina";
     },
     get$lbDisplayName() {
-      return "\u0bb2\u0b95\u0bcd\u0b9a\u0bae\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bbf\u0bb7\u0bcd";
+      return "Luxembur\u010dina";
     },
     get$lgDisplayName() {
-      return "\u0b95\u0bbe\u0ba3\u0bcd\u0b9f\u0bbe";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u0bb2\u0bbf\u0bae\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bbf\u0bb7\u0bcd";
+      return "Limbur\u010dina";
     },
     get$lijDisplayName() {
-      return "\u0bb2\u0bbf\u0b95\u0bc2\u0bb0\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Ligur\u010dina";
     },
     get$lmoDisplayName() {
-      return "\u0bb2\u0bca\u0bae\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b9f\u0bcd";
+      return "Lombard\u010dina";
     },
     get$lnDisplayName() {
-      return "\u0bb2\u0bbf\u0b99\u0bcd\u0b95\u0bbe\u0bb2\u0bbe";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u0bb2\u0bbe\u0bb5\u0bcb";
+      return "Lao";
     },
     get$ltDisplayName() {
-      return "\u0bb2\u0bbf\u0ba4\u0bc1\u0bb5\u0bc7\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Litov\u010dina";
     },
     get$ltgDisplayName() {
-      return "\u0bb2\u0bbe\u0b9f\u0bcd\u0b95\u0bc7\u0bb2\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Latgalsky";
     },
     get$luoDisplayName() {
-      return "\u0bb2\u0bc2\u0b92 (\u0b95\u0bc6\u0ba9\u0bcd\u0baf\u0bbe \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0bbe\u0ba9\u0bcd\u0b9a\u0bbe\u0ba9\u0bbf\u0baf\u0bbe)";
+      return "Luo (Ke\u0148a a Tanz\xe1nia)";
     },
     get$lusDisplayName() {
-      return "\u0bae\u0bbf\u0b9a\u0bcb";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u0bb2\u0bbe\u0b9f\u0bcd\u0bb5\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Loty\u0161tina";
     },
     get$maiDisplayName() {
-      return "\u0bae\u0bc8\u0ba4\u0bbf\u0bb2\u0bbf";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u0bae\u0b95\u0bbe\u0b9a\u0bb0\u0bcd";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u0bae\u0bb2\u0bbe\u0b95\u0b9a\u0bbf";
+      return "Malga\u0161";
     },
     get$miDisplayName() {
-      return "\u0bae\u0bbe\u0bb5\u0bcb\u0bb0\u0bbf";
+      return "Maor\xed";
     },
     get$minDisplayName() {
-      return "\u0bae\u0bbf\u0ba9\u0b99\u0bcd\u0b95\u0bcd\u0b95\u0baa\u0bb5\u0bcd";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u0bae\u0b95\u0bc7\u0ba4\u0bcb\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Maced\xf3nsky";
     },
     get$mlDisplayName() {
-      return "\u0bae\u0bb2\u0bc8\u0baf\u0bbe\u0bb3\u0bae\u0bcd";
+      return "Malaj\xe1lam";
     },
     get$mnDisplayName() {
-      return "\u0bae\u0b99\u0bcd\u0b95\u0bcb\u0bb2\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Mongolsk\xfd";
     },
     get$mniDisplayName() {
-      return "\u0bae\u0ba3\u0bbf\u0baa\u0bcd\u0baa\u0bc2\u0bb0\u0bbf";
+      return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u0bae\u0bb0\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf";
+      return "Mar\xe1th\xed";
     },
     get$msDisplayName() {
-      return "\u0bae\u0bb2\u0bbe\u0baf\u0bcd";
+      return "Malaj\u010dina";
     },
     get$msArabDisplayName() {
-      return "\u0bae\u0bb2\u0bbe\u0baf\u0bcd (\u0b85\u0bb0\u0baa\u0bc1)";
+      return "Malaj\u010dina (arabsky)";
     },
     get$msMYDisplayName() {
-      return "\u0bae\u0bb2\u0bbe\u0baf\u0bcd (\u0bae\u0bb2\u0bc7\u0b9a\u0bbf\u0baf\u0bbe)";
+      return "Malaj\u010dina (Malajzia)";
     },
     get$mtDisplayName() {
-      return "\u0bae\u0bbe\u0bb2\u0bcd\u0b9f\u0bc0\u0b9a\u0bc1";
+      return "Malt\xe9zsky";
     },
     get$mwrDisplayName() {
-      return "\u0bae\u0bb0\u0bcd\u0bb5\u0bbe\u0bb0\u0bbf";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u0baa\u0bc1\u0bb0\u0bcd\u0bae\u0bc0\u0b9a\u0bc1";
+      return "Barm\u010dina";
     },
     get$nanDisplayName() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd \u0ba8\u0bbe\u0ba9\u0bcd";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u0ba8\u0bcb\u0bb0\u0bcd\u0bb5\u0bc7\u0baf\u0bbf\u0baf (\u0baa\u0bca\u0b95\u0bcd\u0bae\u0bbe\u0bb2\u0bcd)";
+      return "N\xf3rsky (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u0ba8\u0bc7\u0baa\u0bbe\u0bb3\u0bbf";
+      return "Nep\xe1lsky";
     },
     get$newDisplayName() {
-      return "\u0ba8\u0bbf\u0baf\u0bc2\u0bb5\u0bbe\u0bb0\u0bbf";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1";
+      return "Holandsk\xfd";
     },
     get$nlBEDisplayName() {
-      return "\u0b83\u0baa\u0bbf\u0bb3\u0bc6\u0bae\u0bbf\u0bb7\u0bcd";
+      return "Fl\xe1msky";
     },
     get$noDisplayName() {
-      return "\u0ba8\u0bcb\u0bb0\u0bcd\u0bb5\u0bc7\u0baf\u0bbf\u0baf";
+      return "N\xf3rsky";
     },
     get$nrDisplayName() {
-      return "\u0ba4\u0bc6\u0bb1\u0bcd\u0b95\u0bc1 \u0ba8\u0bcd\u0b9f\u0bc6\u0baa\u0bc6\u0bb2\u0bc7";
+      return "Ju\u017en\xfd Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u0bb5\u0b9f\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bca\u0ba4\u0bcb";
+      return "Severn\xfd Sotho";
     },
     get$nusDisplayName() {
-      return "\u0ba8\u0bc2\u0baf\u0bb0\u0bcd";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u0ba8\u0bcd\u0baf\u0bbe\u0b9e\u0bcd\u0b9a\u0bbe";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u0b92\u0b9a\u0bbf\u0b9f\u0bc7\u0ba9\u0bcd\u0b9f\u0bc1";
+      return "Okcit\xe1n\u010dina";
     },
     get$omDisplayName() {
-      return "\u0b93\u0bb0\u0bcb\u0bae\u0bcb";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u0b92\u0b9f\u0bbf\u0baf\u0bbe";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u0baa\u0b9e\u0bcd\u0b9a\u0bbe\u0baa\u0bbf";
+      return "Pand\u017e\xe1b\u010dina";
     },
     get$paArabDisplayName() {
-      return "\u0baa\u0b9e\u0bcd\u0b9a\u0bbe\u0baa\u0bbf (\u0bb7\u0bbe\u0bb9\u0bcd\u0bae\u0bc1\u0b95\u0bbf)";
+      return "Pand\u017e\xe1b\u010dina (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u0baa\u0b9e\u0bcd\u0b9a\u0bbe\u0baa\u0bbf (\u0b95\u0bc1\u0bb0\u0bcd\u0bae\u0bc1\u0b95\u0bbf)";
+      return "Pand\u017e\xe1b\u010dina (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u0baa\u0b99\u0bcd\u0b95\u0bbe\u0b9a\u0bbf\u0ba9\u0bbe\u0ba9\u0bcd";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u0baa\u0bae\u0bcd\u0baa\u0bbe\u0b99\u0bcd\u0b95\u0bbe";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u0baa\u0bbe\u0baa\u0bbf\u0baf\u0bae\u0bc6\u0ba3\u0bcd\u0b9f\u0bcb";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u0baa\u0bcb\u0bb2\u0bbf\u0bb7\u0bcd";
+      return "Po\u013e\u0161tina";
     },
     get$psDisplayName() {
-      return "\u0baa\u0bb7\u0bcd\u0ba4\u0bcb";
+      return "Pa\u0161t\u010dina";
     },
     get$ptDisplayName() {
-      return "\u0baa\u0bcb\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bc1\u0b95\u0bc0\u0b9a\u0bc1";
+      return "Portugal\u010dina";
     },
     get$ptBRDisplayName() {
-      return "\u0baa\u0bcb\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bc1\u0b95\u0bc0\u0b9a\u0bc1 (\u0baa\u0bbf\u0bb0\u0bc7\u0b9a\u0bbf\u0bb2\u0bcd)";
+      return "Portugal\u010dina (Braz\xedlia)";
     },
     get$ptPTDisplayName() {
-      return "\u0baa\u0bcb\u0bb0\u0bcd\u0b9a\u0bcd\u0b9a\u0bc1\u0b95\u0bc0\u0b9a\u0bc1 (\u0baa\u0bcb\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bb2\u0bcd)";
+      return "Portugal\u010dina (Portugalsko)";
     },
     get$quDisplayName() {
-      return "\u0b95\u0bc6\u0b9a\u0bcd\u0b9a\u0bc1\u0bb5\u0bbe";
+      return "Ke\u010du\xe1n\u010dina";
     },
     get$rajDisplayName() {
-      return "\u0bb0\u0bbe\u0b9c\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bbf";
+      return "R\xe1d\u017easth\xe1ni";
     },
     get$rnDisplayName() {
-      return "\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u0bb0\u0bcb\u0bae\u0bbe\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Rumun\u010dina";
     },
     get$roMDDisplayName() {
-      return "\u0bae\u0bcb\u0bb2\u0bcd\u0b9f\u0bcb\u0bb5\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Moldav\u010dina";
     },
     get$romDisplayName() {
-      return "\u0bb0\u0bcb\u0bae\u0ba9\u0bbf";
+      return "R\xf3msky";
     },
     get$ruDisplayName() {
-      return "\u0bb0\u0bb7\u0bcd\u0baf\u0ba9\u0bcd";
+      return "Ru\u0161tina";
     },
     get$rwDisplayName() {
-      return "\u0b95\u0bbf\u0ba9\u0bcd\u0baf\u0bbe\u0bb0\u0bcd\u0bb5\u0bbe\u0ba3\u0bcd\u0b9f\u0bbe";
+      return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u0b9a\u0bae\u0bcd\u0bb8\u0bcd\u0b95\u0bbf\u0bb0\u0bc1\u0ba4\u0bae\u0bcd";
+      return "Sanskrit";
     },
     get$satDisplayName() {
-      return "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0bb2\u0bbf";
+      return "Santali";
     },
     get$scnDisplayName() {
-      return "\u0b9a\u0bbf\u0b9a\u0bbf\u0bb2\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Sic\xedl\u010dan";
     },
     get$sdDisplayName() {
-      return "\u0b9a\u0bbf\u0ba8\u0bcd\u0ba4\u0bbf";
+      return "Sindhi";
     },
     get$sgDisplayName() {
-      return "\u0b9a\u0bbe\u0b99\u0bcd\u0b95\u0bcb";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u0bb7\u0bbe\u0ba9\u0bcd";
+      return "\u0160an";
     },
     get$siDisplayName() {
-      return "\u0b9a\u0bbf\u0b99\u0bcd\u0b95\u0bb3\u0bae\u0bcd";
+      return "Sinhala";
     },
     get$skDisplayName() {
-      return "\u0bb8\u0bcd\u0bb2\u0bcb\u0bb5\u0bbe\u0b95\u0bcd";
+      return "Sloven\u010dina";
     },
     get$slDisplayName() {
-      return "\u0bb8\u0bcd\u0bb2\u0bcb\u0bb5\u0bc7\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Slovin\u010dina";
     },
     get$smDisplayName() {
-      return "\u0b9a\u0bbe\u0bae\u0bcb\u0bb5\u0bbe\u0ba9\u0bcd";
+      return "Samoan";
     },
     get$snDisplayName() {
-      return "\u0bb7\u0bcb\u0ba9\u0bbe";
+      return "Shona";
     },
     get$soDisplayName() {
-      return "\u0b9a\u0bcb\u0bae\u0bbe\u0bb2\u0bbf";
+      return "Som\xe1l\u010dina";
     },
     get$sqDisplayName() {
-      return "\u0b85\u0bb2\u0bcd\u0baa\u0bc7\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Alb\xe1n\u010dina";
     },
     get$srDisplayName() {
-      return "\u0b9a\u0bc6\u0bb0\u0bcd\u0baa\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Srb\u010dina";
     },
     get$srMEDisplayName() {
-      return "\u0bae\u0bca\u0ba9\u0bcd\u0b9f\u0bc6\u0ba9\u0bc6\u0b95\u0bcd\u0bb0\u0bbf\u0ba9\u0bcd";
+      return "\u010ciernohor\u010dina";
     },
     get$ssDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "\u0ba4\u0bc6\u0bb1\u0bcd\u0b95\u0bc1 \u0b9a\u0bca\u0ba4\u0bcd\u0ba4\u0bcb";
+      return "Juhoafrick\xfd Sotho";
     },
     get$suDisplayName() {
-      return "\u0b9a\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0ba9\u0bc0\u0bb8\u0bcd";
+      return "Sund\xe1n\u010dina";
     },
     get$svDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bc0\u0b9f\u0bbf\u0bb7\u0bcd";
+      return "\u0160v\xe9d\u010dina";
     },
     get$swDisplayName() {
-      return "\u0bb8\u0bcd\u0bb5\u0bbe\u0bb9\u0bbf\u0bb2\u0bbf";
+      return "Svahil\u010dina";
     },
     get$szlDisplayName() {
-      return "\u0b9a\u0bbf\u0bb2\u0bc7\u0b9a\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Slez\u010dina";
     },
     get$taDisplayName() {
-      return "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd";
+      return "Tamil\u010dina";
     },
     get$teDisplayName() {
-      return "\u0ba4\u0bc6\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bc1";
+      return "Telug\u010dina";
     },
     get$tetDisplayName() {
-      return "\u0b9f\u0bc6\u0b9f\u0bcd\u0b9f\u0bae\u0bcd";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u0ba4\u0bbe\u0b9c\u0bbf\u0b95\u0bcd";
+      return "T\xe1d\u017eik";
     },
     get$thDisplayName() {
-      return "\u0ba4\u0bbe\u0baf\u0bcd";
+      return "Thajsk\xfd";
     },
     get$tiDisplayName() {
-      return "\u0b9f\u0bbf\u0b95\u0bbf\u0bb0\u0bbf\u0ba9\u0bcd\u0baf\u0bbe";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "\u0ba4\u0bc1\u0bb0\u0bcd\u0b95\u0bcd\u0bae\u0bc6\u0ba9\u0bcd";
+      return "Turkm\xe9nsky";
     },
     get$tlDisplayName() {
-      return "\u0ba4\u0b95\u0bbe\u0bb2\u0bcb\u0b95\u0bcd";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u0b9f\u0bcd\u0bb5\u0bbe\u0ba9\u0bbe";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u0ba4\u0bc1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf";
+      return "Tureck\xfd";
     },
     get$tsDisplayName() {
-      return "\u0b9f\u0bcd\u0b9a\u0bcb\u0b99\u0bcd\u0b95\u0bbe";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u0ba4\u0ba4\u0bbe\u0bb0\u0bcd";
+      return "Tat\xe1r";
     },
     get$ugDisplayName() {
-      return "\u0b89\u0baf\u0bcd\u0b95\u0bc2\u0bb0\u0bcd";
+      return "Ujgursk\xfd";
     },
     get$ukDisplayName() {
-      return "\u0b89\u0b95\u0bcd\u0bb0\u0bc8\u0ba9\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Ukrajinsk\xfd";
     },
     get$urDisplayName() {
-      return "\u0b89\u0bb0\u0bc1\u0ba4\u0bc1";
+      return "Urdu";
     },
     get$urINDisplayName() {
-      return "\u0b89\u0bb0\u0bc1\u0ba4\u0bc1 (\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe)";
+      return "Urdu (India)";
     },
     get$urPKDisplayName() {
-      return "\u0b89\u0bb0\u0bc1\u0ba4\u0bc1 (\u0baa\u0bbe\u0b95\u0bbf\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bcd)";
+      return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "\u0b89\u0bb8\u0bcd\u0baa\u0bc6\u0b95\u0bcd";
+      return "Uzbeck\xfd";
     },
     get$viDisplayName() {
-      return "\u0bb5\u0bbf\u0baf\u0b9f\u0bcd\u0ba8\u0bbe\u0bae\u0bbf\u0baf\u0ba9\u0bcd";
+      return "Vietnam\u010dina";
     },
     get$wuuDisplayName() {
-      return "\u0bb5\u0bc2";
+      return "Wu";
     },
     get$xhDisplayName() {
-      return "\u0b95\u0bcd\u0b9a\u0bcb\u0b9a\u0bbe";
+      return "Xhosa";
     },
     get$yiDisplayName() {
-      return "\u0baf\u0bbf\u0b9f\u0bbf\u0bb7\u0bcd";
+      return "Jidi\u0161";
     },
     get$yoDisplayName() {
-      return "\u0baf\u0bca\u0bb0\u0bc1\u0baa\u0bbe";
+      return "Joruba";
     },
     get$yuaDisplayName() {
-      return "\u0baf\u0bc1\u0b95\u0b9f\u0bc6\u0b95\u0bcd\u0b95\u0bcb";
+      return "Jukatek";
     },
     get$yueDisplayName() {
-      return "\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bc0\u0bb8\u0bcd";
+      return "Kanton\u010dina";
     },
     get$yueCNDisplayName() {
-      return "\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bc0\u0bb8\u0bcd (\u0b9a\u0bc0\u0ba9\u0bbe)";
+      return "Kanton\u010dina (\u010c\xedna)";
     },
     get$yueHKDisplayName() {
-      return "\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bc0\u0bb8\u0bcd (\u0bb9\u0bbe\u0b99\u0bcd\u0b95\u0bbe\u0b99\u0bcd)";
+      return "Kanton\u010dina (Hongkong)";
     },
     get$zhDisplayName() {
-      return "\u0b9a\u0bc0\u0ba9\u0bae\u0bcd";
+      return "\u010c\xedn\u0161tina";
     },
     get$zhCNDisplayName() {
-      return "\u0b9a\u0bc0\u0ba9\u0bae\u0bcd (\u0b8e\u0bb3\u0bbf\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1)";
+      return "\u010c\xedn\u0161tina (zjednodu\u0161en\xe1)";
     },
     get$zhTWDisplayName() {
-      return "\u0b9a\u0bc0\u0ba9\u0bae\u0bcd (\u0baa\u0bbe\u0bb0\u0bae\u0bcd\u0baa\u0bb0\u0bbf\u0baf)";
+      return "\u010c\xedn\u0161tina (tradi\u010dn\xe1)";
     },
     get$zuDisplayName() {
-      return "\u0b9c\u0bc1\u0bb2\u0bc1";
+      return "Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u0b86\u0b9a\u0bbf\u0bb0\u0bbf\u0baf\u0bb0\u0bcd \u0bae\u0bc1\u0bb1\u0bc8";
+      return "Re\u017eim u\u010dite\u013ea";
     },
     get$teacherModeDesc() {
-      return "\u0b8e\u0bb2\u0bcd\u0bb2\u0bbe \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd. \u0baa\u0bbe\u0b9f\u0bae\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bc7.";
+      return "Prepn\xfa\u0165 na odomknutie v\u0161etk\xfdch t\xe9m a aktiv\xedt. Iba administr\xe1tor kurzu.";
     },
     get$noSavedActivitiesYet() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1 \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0baa\u0bbf\u0bb1\u0b95\u0bc1 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0ba4\u0bcb\u0ba9\u0bcd\u0bb1\u0bc1\u0bae\u0bcd.";
+      return "Aktivity sa tu objavia, ke\u010f bud\xfa dokon\u010den\xe9 a ulo\u017een\xe9.";
     },
     get$changeCourse() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 kurz";
     },
     get$changeCourseDesc() {
-      return "\u0b87\u0b99\u0bcd\u0b95\u0bc1 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0baa\u0bbe\u0b9f \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Tu m\xf4\u017eete zmeni\u0165 pl\xe1n kurzu tohto kurzu.";
     },
     get$introChatTitle() {
-      return "\u0b85\u0bb1\u0bbf\u0bae\u0bc1\u0b95 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vytvori\u0165 chat o predstaveniach";
     },
     get$introChatDesc() {
-      return "\u0b87\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0baf\u0bbe\u0bb0\u0bc1\u0bae\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bc7\u0bb1\u0bcd\u0bb1\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Ktoko\u013evek v priestore m\xf4\u017ee prispie\u0165.";
     },
     get$announcementsChatTitle() {
-      return "\u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd";
+      return "Chat o ozn\xe1meniach";
     },
     get$announcementsChatDesc() {
-      return "\u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bb2\u0bcd \u0b87\u0b9f \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf \u0baa\u0ba4\u0bbf\u0bb5\u0bc7\u0bb1\u0bcd\u0bb1\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Iba administr\xe1tor priestoru m\xf4\u017ee prispie\u0165.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "\u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd (" + num + ")";
+      return "Otvoren\xe9 rel\xe1cie (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0ba8\u0b9f\u0bc8\u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1 \u0bb5\u0bb0\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1 (" + num + ")";
+      return "Prebieha teraz (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "\u0bae\u0bc1\u0b9f\u0bbf\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1 (" + num + ")";
+      return "Hotovo (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bca\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte in\xfa aktivitu";
     },
     get$blockLemmaConfirmation() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bbf\u0bb2\u0bcd \u0ba8\u0bbf\u0bb0\u0ba8\u0bcd\u0ba4\u0bb0\u0bae\u0bbe\u0b95 \u0ba8\u0bc0\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd";
+      return "Toto slovo v slovnej z\xe1sobe bude trvalo odstr\xe1nen\xe9 z va\u0161ich analytick\xfdch \xfadajov";
     },
     get$woman() {
-      return "\u0baa\u0bc6\u0ba3\u0bcd";
+      return "\u017dena";
     },
     get$man() {
-      return "\u0b86\u0ba3\u0bcd";
+      return "Mu\u017e";
     },
     get$otherGender() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bc8";
+      return "In\xe9";
     },
     get$unselectedGender() {
-      return "\u0b92\u0bb0\u0bc1 \u0baa\u0bbe\u0bb2\u0bbf\u0ba9 \u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte mo\u017enos\u0165 pohlavia";
     },
     get$gender() {
-      return "\u0baa\u0bbe\u0bb2\u0bbf\u0ba9\u0bae\u0bcd";
+      return "Pohlavie";
     },
     get$modeDisabled() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b95\u0bb1\u0bcd\u0bb1\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.";
+      return "N\xe1stroje na u\u010denie s\xfa zak\xe1zan\xe9 pre spr\xe1vy, ktor\xe9 nie s\xfa vo va\u0161om cie\u013eovom jazyku.";
     },
     get$courseParticipantTooltip() {
-      return '\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0bae\u0bcd \u0b87\u0ba4\u0bc1\u0bb5\u0bc7. \u0b8e\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bbf\u0ba9\u0bcd \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0bbf\u0bb2\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 "\u0b9a\u0bb0\u0b9a\u0bb0\u0bbf \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bc1" \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0ba9\u0bcd \u0bae\u0bc2\u0bb2\u0bae\u0bcd \u0b92\u0bb0\u0bc1 \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd.';
+      return "Toto s\xfa v\u0161etci \xfa\u010dastn\xedci tohto kurzu. Kliknite na avatar ak\xe9hoko\u013evek pou\u017e\xedvate\u013ea a \u201eza\u010da\u0165 konverz\xe1ciu\u201c, aby ste poslali s\xfakromn\xfa spr\xe1vu.";
     },
     get$chatParticipantTooltip() {
-      return '\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3 \u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0bae\u0bcd \u0b87\u0ba4\u0bc1\u0bb5\u0bc7. \u0b8e\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bbf\u0ba9\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0ba4\u0bcd\u0ba4\u0bc8 \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 "\u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd" \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0ba9\u0bcd \u0bae\u0bc2\u0bb2\u0bae\u0bcd \u0b92\u0bb0\u0bc1 \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd.';
+      return "Toto s\xfa v\u0161etci v tomto chate. Kliknite na avatar ak\xe9hoko\u013evek pou\u017e\xedvate\u013ea a \u201eza\u010da\u0165 konverz\xe1ciu\u201c na odoslanie priamej spr\xe1vy.";
     },
     get$inOngoingActivity() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1!";
+      return "M\xe1te prebiehaj\xfacu aktivitu!";
     },
     get$requestRegeneration() {
-      return "\u0bae\u0bb1\u0bc1\u0b9a\u0bc0\u0bb0\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0b95\u0bcb\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Po\u017eiada\u0165 o regener\xe1ciu";
     },
     get$optionalRegenerateReason() {
-      return "(\u0bb5\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bae\u0bcd) \u0b95\u0bbe\u0bb0\u0ba3\u0bae\u0bcd";
+      return "(Volite\u013en\xe9) D\xf4vod";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return lemma + " \u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b8e\u0bae\u0bcb\u0b9c\u0bbf\u0baf\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bae\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd! \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b85\u0ba8\u0bcd\u0ba4 \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0baa\u0bbf\u0bb0\u0ba4\u0bbf\u0ba8\u0bbf\u0ba4\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0b8e\u0bae\u0bcb\u0b9c\u0bbf\u0baf\u0bc8 \u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bcb\u0bae\u0bcd.";
+      return "Nastavili ste emoji pre " + lemma + "! Tento emoji budeme pou\u017e\xedva\u0165 na reprezent\xe1ciu slova v praktick\xfdch aktivit\xe1ch v bud\xfacnosti.";
     },
     get$constructUseCorLMDesc() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0b9a\u0bca\u0bb2\u0bcd \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Spr\xe1vna prax defin\xedcie slovnej z\xe1soby";
     },
     get$constructUseIncLMDesc() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b9a\u0bca\u0bb2\u0bcd \u0bb5\u0bb0\u0bc8\u0baf\u0bb1\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Nespr\xe1vna prax defin\xedcie slovnej z\xe1soby";
     },
     get$constructUseCorLADesc() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0b9a\u0bca\u0bb2\u0bcd \u0b92\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Spr\xe1vna prax audio slovnej z\xe1soby";
     },
     get$constructUseIncLADesc() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b9a\u0bca\u0bb2\u0bcd \u0b92\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Nespr\xe1vna prax audio slovnej z\xe1soby";
     },
     get$constructUseBonus() {
-      return "\u0b9a\u0bca\u0bb2\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0baf\u0bbf\u0ba9\u0bcd \u0baa\u0bcb\u0ba4\u0bc1 \u0baa\u0bcb\u0ba9\u0bb8\u0bcd";
+      return "Bonus po\u010das praxe slovnej z\xe1soby";
     },
     get$practiceVocab() {
-      return "\u0b9a\u0bca\u0bb1\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "Cvi\u010denie slovnej z\xe1soby";
     },
     get$selectMeaning() {
-      return "\u0b85\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba4\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Vyberte v\xfdznam";
     },
     get$anotherRound() {
-      return "\u0bae\u0bb1\u0bcd\u0bb1\u0bca\u0bb0\u0bc1 \u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1";
+      return "\u010eal\u0161ie kolo";
     },
     get$ssoDialogTitle() {
-      return "\u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd";
+      return "\u010cak\xe1me na dokon\u010denie prihl\xe1senia";
     },
     get$ssoDialogDesc() {
-      return "\u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0b95 \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf \u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0ba4\u0bbe\u0bb5\u0bb2\u0bc8 \u0ba4\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0bcb\u0bae\u0bcd.";
+      return "Otv\xe1rame nov\xfa kartu, aby ste sa mohli prihl\xe1si\u0165 bezpe\u010dne.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 \u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0ba4\u0bbe\u0bb5\u0bb2\u0bc8 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bbe\u0ba3\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8 \u0b8e\u0ba9\u0bcd\u0bb1\u0bbe\u0bb2\u0bcd, \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbe\u0baa\u0bcd-\u0b85\u0baa\u0bcd \u0ba4\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "\ud83e\udd14 Ak ste nevideli nov\xfa kartu, skontrolujte pros\xedm svoj blokova\u010d vyskakovac\xedch okien.";
     },
     get$disableLanguageToolsTitle() {
-      return "\u0bae\u0bca\u0bb4\u0bbf \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95\u0bc1";
+      return "Deaktivova\u0165 jazykov\xe9 n\xe1stroje";
     },
     get$disableLanguageToolsDesc() {
-      return "\u0ba4\u0bbe\u0ba9\u0bbe\u0b95 \u0bae\u0bca\u0bb4\u0bbf \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc8 \u0bae\u0bc1\u0b9f\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
+      return "Chceli by ste deaktivova\u0165 automatick\xfa jazykov\xfa pomoc?";
     },
     get$screenSizeWarning() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8\u0baa\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0ba9 \u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0b85\u0ba9\u0bc1\u0baa\u0bb5\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bbe\u0b95, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bbf\u0bb0\u0bc8 \u0b85\u0bb3\u0bb5\u0bc8 \u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Pre najlep\u0161\xed z\xe1\u017eitok z pou\u017e\xedvania tejto aplik\xe1cie, pros\xedm, zv\xe4\u010d\u0161ite ve\u013ekos\u0165 obrazovky.";
     },
     get$noActivityRequest() {
-      return "\u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc8\u0baf \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0b87\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "\u017diadna aktu\xe1lna po\u017eiadavka na aktivitu.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "\u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bcd";
+      return "Aktivity na odomknutie nasleduj\xfacej t\xe9my";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "\u0b85\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bca\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0baf\u0bc8 \u0b85\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nastavte po\u010det aktiv\xedt na odomknutie nasleduj\xfacej t\xe9my kurzu";
     },
     get$activitySettingsOverrideWarning() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0ba4\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0ba3\u0baf\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bae\u0bca\u0bb4\u0bbf \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bca\u0bb4\u0bbf \u0ba8\u0bbf\u0bb2\u0bc8";
+      return "Jazyk a jazykov\xe1 \xfarove\u0148 ur\u010den\xe9 pl\xe1nom aktivity";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
+      return "\ud83d\udeaa Opustili ste chat";
     },
     get$downloadInitiated() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1";
+      return "Stiahnutie bolo zah\xe1jen\xe9";
     },
     get$webDownloadPermissionMessage() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb2\u0bbe\u0bb5\u0bbf \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b8e\u0ba9\u0bcd\u0bb1\u0bbe\u0bb2\u0bcd, \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4 \u0ba4\u0bb3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0bb1\u0b95\u0bcd\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Ak v\xe1\u0161 prehliada\u010d blokuje s\u0165ahovanie, pros\xedm, povolte s\u0165ahovanie pre t\xfato str\xe1nku.";
     },
     get$exitPractice() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bbf\u0ba9\u0bcd \u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bc7\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4\u0bc1.";
+      return "Pokrok vo va\u0161ej cvi\u010debnej rel\xe1cii nebude ulo\u017een\xfd.";
     },
     get$practiceGrammar() {
-      return "\u0bb5\u0bbf\u0baf\u0bbe\u0b9a\u0ba4\u0bcd\u0ba4\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Cvi\u010di\u0165 gramatiku";
     },
     get$notEnoughToPractice() {
-      return "\u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0baf\u0bc8 \u0ba4\u0bbf\u0bb1\u0b95\u0bcd\u0b95 \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Odo\u0161lite viac spr\xe1v na odomknutie cvi\u010denia";
     },
     get$constructUseCorGCDesc() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0bb5\u0bbf\u0baf\u0bbe\u0b9a \u0bb5\u0b95\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Cvi\u010denie spr\xe1vnej gramatickej kateg\xf3rie";
     },
     get$constructUseIncGCDesc() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0bb5\u0bbf\u0baf\u0bbe\u0b9a \u0bb5\u0b95\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Cvi\u010denie nespr\xe1vnej gramatickej kateg\xf3rie";
     },
     get$constructUseCorGEDesc() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0baa\u0bbf\u0bb4\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Cvi\u010denie na opravu gramatick\xfdch ch\xfdb";
     },
     get$constructUseIncGEDesc() {
-      return "\u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3 \u0baa\u0bbf\u0bb4\u0bc8 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf";
+      return "Cvi\u010denie na nespr\xe1vne gramatick\xe9 chyby";
     },
     get$fillInBlank() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0ba4\u0bc7\u0bb0\u0bcd\u0bb5\u0bc1\u0b9f\u0ba9\u0bcd \u0b95\u0bbe\u0bb2\u0bbf\u0baf\u0bc8 \u0ba8\u0bbf\u0bb0\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Dopl\u0148te pr\xe1zdne miesto spr\xe1vnou vo\u013ebou";
     },
     get$learn() {
-      return "\u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "U\u010dte sa";
     },
     get$languageUpdated() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1!";
+      return "Cie\u013eov\xfd jazyk bol aktualizovan\xfd!";
     },
     get$voiceDropdownTitle() {
-      return "\u0baa\u0bbe\u0b99\u0bc7\u0b86 \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd \u0b95\u0bc1\u0bb0\u0bb2\u0bcd";
+      return "Hlas Pangea Bota";
     },
     get$knockDesc() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0baa\u0bbe\u0b9f\u0bae\u0bcd \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0bbf\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1! \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc1\u0ba4\u0bb2\u0bb3\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb2\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bc7 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bb5\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "Va\u0161a \u017eiados\u0165 bola odoslan\xe1 administr\xe1torovi kurzu! Budete vpusten\xfd, ak ju schv\xe1lia.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bc0\u0b9f\u0bc1 \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0baa\u0bca\u0ba4\u0bc1 \u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bbe?";
+      return "M\xe1te poz\xfdvac\xed k\xf3d alebo odkaz na verejn\xfd kurz?";
     },
     welcomeUser$1(user) {
-      return "\u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd " + user;
+      return "Vitaj " + user;
     },
     get$findCourse() {
-      return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8\u0b95\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf";
+      return "N\xe1js\u0165 kurz";
     },
     get$publicInviteDescChat() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "H\u013eadajte pou\u017e\xedvate\u013eov, aby ste ich pozvali do tohto chatu.";
     },
     get$publicInviteDescSpace() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0b87\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95 \u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd.";
+      return "H\u013eadajte pou\u017e\xedvate\u013eov, aby ste ich pozvali do tohto priestoru.";
     },
     get$enableNotificationsTitle() {
-      return "\u0baa\u0bbe\u0b99\u0bc7\u0b86 \u0b9a\u0bbe\u0b9f\u0bcd \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bbf \u0b86\u0b95\u0bc1\u0bae\u0bcd, \u0b8e\u0ba9\u0bb5\u0bc7 \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bae\u0bbe\u0ba9\u0bb5\u0bc8!";
+      return "Pangea Chat je aplik\xe1cia na posielanie spr\xe1v, tak\u017ee notifik\xe1cie s\xfa d\xf4le\u017eit\xe9!";
     },
     get$enableNotificationsDesc() {
-      return "\u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165 notifik\xe1cie";
     },
     get$useActivityImageAsChatBackground() {
-      return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0ba3\u0bbf \u0b86\u0b95 \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Pou\u017ei\u0165 obr\xe1zok aktivity ako pozadie chatu";
     },
     get$chatWithSupport() {
-      return "\u0b86\u0ba4\u0bb0\u0bb5\u0bc1\u0b9f\u0ba9\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Chatova\u0165 s podporou";
     },
     get$newCourseAccess() {
-      return "\u0b87\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b95, \u0baa\u0bbe\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bca\u0ba4\u0bc1\u0bb5\u0bbe\u0b95 \u0ba4\u0bc7\u0b9f\u0b95\u0bcd\u0b95\u0bc2\u0b9f\u0bbf\u0baf\u0bb5\u0bc8 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0bb5\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0bbe\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0b85\u0b99\u0bcd\u0b95\u0bc0\u0b95\u0bbe\u0bb0\u0bae\u0bcd \u0ba4\u0bc7\u0bb5\u0bc8. \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bbe\u0ba9\u0bbe\u0bb2\u0bc1\u0bae\u0bcd \u0b87\u0ba8\u0bcd\u0ba4 \u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb2\u0bbe\u0bae\u0bcd.";
+      return "Predvolene s\xfa kurzy verejne vyh\u013eadate\u013en\xe9 a vy\u017eaduj\xfa schv\xe1lenie administr\xe1tora na pripojenie. Tieto nastavenia m\xf4\u017eete kedyko\u013evek upravi\u0165.";
     },
     get$courseLoadingError() {
-      return "\u0b8e\u0ba4\u0bcb \u0ba4\u0bb5\u0bb1\u0bc1 \u0b8f\u0bb1\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1, \u0b85\u0ba4\u0bc8 \u0b9a\u0bb0\u0bbf\u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0b9f\u0bc1\u0bae\u0bc8\u0baf\u0bbe\u0b95 \u0bb5\u0bc7\u0bb2\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd. \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Nie\u010do sa pokazilo a my na tom tvrdo pracujeme, aby sme to opravili. Skontrolujte to nesk\xf4r.";
     },
     get$onboardingLanguagesTitle() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0b95\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?";
+      return "Ak\xfd jazyk sa u\u010d\xedte?";
     },
     get$searchLanguagesHint() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bc8 \u0ba4\u0bc7\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
+      return "H\u013eadajte cie\u013eov\xe9 jazyky";
     },
     get$supportSubtitle() {
-      return "\u0b95\u0bc7\u0bb3\u0bcd\u0bb5\u0bbf\u0b95\u0bb3\u0bcd? \u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0ba4\u0bb5 \u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd!";
+      return "Ot\xe1zky? Sme tu, aby sme pomohli!";
     },
     get$autoIGCToolName() {
-      return "\u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc8 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Povoli\u0165 pomoc pri p\xedsan\xed";
     },
     get$autoIGCToolDescription() {
-      return "\u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bb0\u0bbf\u0b9a\u0bc6\u0baf\u0bcd\u0baf \u0baa\u0bbe\u0b99\u0bc7\u0bbe \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b95\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bc8 \u0ba4\u0bbe\u0ba9\u0bbe\u0b95\u0bb5\u0bc7 \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Automaticky spusti\u0165 n\xe1stroje Pangea Chat na opravu odoslan\xfdch spr\xe1v do cie\u013eov\xe9ho jazyka.";
     },
     get$emptyAudioError() {
-      return "\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0ba4\u0bcb\u0bb2\u0bcd\u0bb5\u0bbf\u0baf\u0bc1\u0bb1\u0bcd\u0bb1\u0ba4\u0bc1. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0bb2\u0bbf\u0baa\u0bcd \u0b85\u0ba9\u0bc1\u0bae\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.";
+      return "Nahr\xe1vanie zlyhalo. Skontrolujte svoje povolenia na zvuk a sk\xfaste to znova.";
     },
     get$spanFeedbackTitle() {
-      return "\u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0bbf\u0ba9\u0bc8\u0baf\u0bc8\u0baa\u0bcd \u0baa\u0bc1\u0b95\u0bbe\u0bb0\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Nahl\xe1si\u0165 probl\xe9m s opravou";
     },
     get$selectAllWords() {
-      return "Select all the words you hear in the audio";
+      return "Vyberte v\u0161etky slov\xe1, ktor\xe9 po\u010dujete v audiu";
     },
     get$aboutMeHint() {
-      return "\u0b8e\u0ba9\u0bcd\u0ba9\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf";
+      return "O mne";
     },
     get$changeEmail() {
-      return "\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bc8 \u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bb5\u0bc1\u0bae\u0bcd";
+      return "Zmeni\u0165 e-mail";
     },
     get$withTheseAddressesDescription() {
-      return "\u0b87\u0ba8\u0bcd\u0ba4 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1, \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc8 \u0bae\u0bc0\u0b9f\u0bcd\u0b9f\u0bc6\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd, \u0b9a\u0ba8\u0bcd\u0ba4\u0bbe\u0b95\u0bcd\u0b95\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd.";
+      return "S t\xfdmito e-mailov\xfdmi adresami sa m\xf4\u017eete prihl\xe1si\u0165, obnovi\u0165 svoje heslo a spravova\u0165 predplatn\xe9.";
     },
     get$noAddressDescription() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0ba9\u0bcd\u0ba9\u0bc1\u0bae\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0b95\u0bb3\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.";
+      return "E\u0161te ste nepridali \u017eiadne e-mailov\xe9 adresy.";
     },
     get$perfectPractice() {
-      return "\u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf!";
+      return "Dokonal\xe1 prax!";
     },
     get$greatPractice() {
-      return "\u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0ba8\u0bb2\u0bcd\u0bb2 \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf!";
+      return "Skvel\xe1 prax!";
     },
     get$usedNoHints() {
-      return "\u0b8e\u0ba8\u0bcd\u0ba4 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bbe\u0ba4\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0ba8\u0bb2\u0bcd\u0bb2 \u0bb5\u0bc7\u0bb2\u0bc8!";
+      return "Dobr\xfd v\xfdkon, \u017ee si nepou\u017eil \u017eiadne n\xe1povedy!";
     },
     get$youveCompletedPractice() {
-      return "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0bbf\u0bb1\u0bcd\u0b9a\u0bbf\u0baf\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd, \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc1 \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
+      return "Dokon\u010dil si prax, pokra\u010duj v tom, aby si sa zlep\u0161il!";
+    },
+    get$joinCourseForActivities() {
+      return "Pridajte sa k kurzu, aby ste vysk\xfa\u0161ali aktivity.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5569,17 +5572,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nTa, C.L10n);
+    _inherit(A.L10nSk, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTa":{"L10n":[]}}'));
-  var string$ = {
-    x20_____: " \u0b87\u0bb2\u0bcd \u0b9f\u0bc6\u0bb5\u0bb2\u0baa\u0bcd\u0baa\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0b9f\u0bae\u0bcd \u0b87\u0ba8\u0bcd\u0ba4\u0baa\u0bcd \u0baa\u0bbf\u0bb4\u0bc8\u0baf\u0bc8\u0baa\u0bcd \u0baa\u0bc1\u0b95\u0bbe\u0bb0\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd. \u0baa\u0bbf\u0bb4\u0bc8 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf: ",
-    u0ba4_____: "\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bc1\u0baa\u0b9f\u0bbf\u0baf\u0bbe\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0b89\u0bb3\u0bcd\u0bb3\u0bbf\u0b9f\u0bb5\u0bc1\u0bae\u0bcd."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSk":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["RduVQH8aMgoh+h3J09mCzKuZhCQ="] = d.current;
+  d["yCdYO1vNEklpKfKttlWuM0JHL6I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

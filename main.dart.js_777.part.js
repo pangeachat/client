@@ -5,1908 +5,1908 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nPl$() {
-      return new A.L10nPl(B.canonicalizedLocale("pl"));
+    L10nNb$() {
+      return new A.L10nNb(B.canonicalizedLocale("nb"));
     },
-    L10nPl: function L10nPl(t0) {
+    L10nNb: function L10nNb(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[40], A);
-  A.L10nPl.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[38], A);
+  A.L10nNb.prototype = {
     get$alwaysUse24HourFormat() {
-      return "false";
+      return "falsk";
     },
     get$repeatPassword() {
-      return "Powt\xf3rz has\u0142o";
+      return "Gjenta passord";
     },
     get$notAnImage() {
-      return "To nie jest plik obrazu.";
+      return "Ikke en bildefil.";
     },
     get$setCustomPermissionLevel() {
-      return "Ustaw w\u0142asny poziom uprawnie\u0144";
+      return "Angi egendefinert tillatelsesniv\xe5";
     },
     get$setPermissionsLevelDescription() {
-      return "Prosz\u0119 wybra\u0107 predefiniowan\u0105 rol\u0119 poni\u017cej, lub wprowadzi\u0107 w\u0142asny poziom uprawnie\u0144 pomi\u0119dzy 0 a 100.";
+      return "Vennligst velg en forh\xe5ndsdefinert rolle nedenfor eller skriv inn et tilpasset tillatelsesniv\xe5 mellom 0 og 100.";
     },
     get$ignoreUser() {
-      return "Ignoruj u\u017cytkownika";
+      return "Ignorer bruker";
     },
     get$normalUser() {
-      return "Zwyk\u0142y u\u017cytkownik";
+      return "Vanlig bruker";
     },
     get$remove(_) {
-      return "Usu\u0144";
+      return "Fjern";
     },
     get$importNow() {
-      return "Zaimportuj";
+      return "Importer n\xe5";
     },
     get$importEmojis() {
-      return "Zaimportuj emotikony";
+      return "Importer emojier";
     },
     get$importFromZipFile() {
-      return "Zaimportuj z pliku .zip";
+      return "Importer fra .zip-fil";
     },
     get$exportEmotePack() {
-      return "Eksportuj pakiet emotikon\xf3w jako .zip";
+      return "Eksporter smilefjes som .zip-fil";
     },
     get$replace(_) {
-      return "Zast\u0105p";
+      return "Erstatt";
     },
     get$about() {
-      return "O aplikacji";
+      return "Om";
     },
     aboutHomeserver$1(homeserver) {
-      return "O " + homeserver;
+      return "Om " + homeserver;
     },
     get$accept(_) {
-      return "Akceptuj";
+      return "Godta";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " zaakceptowa\u0142/-a zaproszenie";
+      return "\ud83d\udc4d " + username + " godtok invitasjonen";
     },
     get$account() {
       return "Konto";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " aktywowa\u0142/-a szyfrowanie od ko\u0144ca do ko\u0144ca";
+      return username + " skrudde p\xe5 ende-til-ende -kryptering";
     },
     get$addEmail() {
-      return "Dodaj adres email";
+      return "Legg til e-post";
     },
     supposedMxid$1(mxid) {
-      return "To powinno by\u0107 " + mxid;
+      return "Denne b\xf8r v\xe6re " + mxid;
     },
     get$admin() {
       return "Administrator";
     },
     get$allChats() {
-      return "Wszystkie";
+      return "Alle samtaler";
     },
     get$commandHint_roomupgrade() {
-      return "Zaktualizuj ten pok\xf3j do podanej wersji";
+      return "Oppgrader dette rommet til den gitte romversjonen";
     },
     get$commandHint_googly() {
-      return "Wy\u015blij kr\u0119c\u0105ce si\u0119 oczka";
+      return "Send noen stirre\xf8yne";
     },
     get$commandHint_cuddle() {
-      return "Wy\u015blij przytulenie";
+      return "Send en kos";
     },
     get$commandHint_hug() {
-      return "Wy\u015blij u\u015bcisk";
+      return "Send en klem";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " wysy\u0142a ci kr\u0119c\u0105ce si\u0119 oczka";
+      return senderName + " sender deg noen stirre\xf8yner";
     },
     cuddleContent$1(senderName) {
-      return senderName + " przytula ci\u0119";
+      return senderName + " koser med deg";
     },
     hugContent$1(senderName) {
-      return senderName + " u\u015bciska ci\u0119";
+      return senderName + " klemmer deg";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " odebra\u0142/-a po\u0142\u0105czenie";
+      return senderName + " besvarte anropet";
     },
     get$anyoneCanJoin() {
-      return "Ka\u017cdy mo\u017ce do\u0142\u0105czy\u0107";
+      return "Hvem som helst kan delta";
     },
     get$archive() {
-      return "Archiwum";
+      return "Arkiv";
     },
     get$areYouSure() {
-      return "Czy na pewno?";
+      return "Er du sikker?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Czy na pewno chcesz si\u0119 wylogowa\u0107?";
+      return "Er du sikker p\xe5 at du vil logge ut?";
     },
     get$askSSSSSign() {
-      return "Aby zalogowa\u0107 inn\u0105 osob\u0119, prosz\u0119 wpisa\u0107 has\u0142o przechowywania lub klucz odzyskiwania.";
+      return "For \xe5 kunne signere den andre personen, skriv inn ditt sikre lagerpassord eller gjenopprettingsn\xf8kkel.";
     },
     askVerificationRequest$1(username) {
-      return "Zaakceptowa\u0107 t\u0105 pro\u015bb\u0119 weryfikacji od " + username + "?";
+      return "Godta denne bekreftelsesforesp\xf8rselen fra " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Serwer obs\u0142uguje typy logowania:\n" + serverVersions + "\nAle ta aplikacja obs\u0142uguje tylko:\n" + supportedVersions;
+      return "Denne hjemme serveren st\xf8tter f\xf8lgende innloggings-typer:\n" + serverVersions + "\nMen denne applikasjonen st\xf8tter kun:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Wysy\u0142aj powiadomienie o pisaniu";
+      return "Send skrivevarsler";
     },
     get$swipeRightToLeftToReply() {
-      return "Przeci\u0105gnij w lewo, by odpowiedzie\u0107";
+      return "Sveip fra h\xf8yre mot venstre for \xe5 svare";
     },
     get$sendOnEnter() {
-      return "Wy\u015blij enterem";
+      return "Trykk p\xe5 enter for \xe5 sende";
     },
     get$space() {
-      return "Przestrze\u0144";
+      return "Omr\xe5de";
     },
     get$banned() {
-      return "Zbanowany/-a";
+      return "Bannlyst";
     },
     bannedUser$2(username, targetName) {
-      return username + " zbanowa\u0142/-a " + targetName;
+      return username + " bannlyste " + targetName;
     },
     get$blockDevice() {
-      return "Zablokuj urz\u0105dzenie";
+      return "Blokker enhet";
     },
     get$blocked() {
-      return "Zablokowane";
+      return "Blokkert";
     },
     get$cancel(_) {
-      return "Anuluj";
+      return "Avbryt";
     },
     cantOpenUri$1(uri) {
-      return "Nie mo\u017cna otworzy\u0107 linku " + uri;
+      return "Kan ikke \xe5pne URI " + uri;
     },
     get$changeDeviceName() {
-      return "Zmie\u0144 nazw\u0119 urz\u0105dzenia";
+      return "Endre enhetsnavn";
     },
     changedTheChatAvatar$1(username) {
-      return username + " zmieni\u0142/-a zdj\u0119cie profilowe";
+      return username + " endret sludreavatar";
     },
     changedTheChatDescription$1(username) {
-      return username + " changed the chat description";
+      return username + " endret chatbeskrivelsen";
     },
     changedTheChatName$1(username) {
-      return username + " changed the chat name";
+      return username + " endret chatnavnet";
     },
     changedTheChatPermissions$1(username) {
-      return username + " zmieni\u0142/-a uprawnienia w czacie";
+      return username + " endret sludretilgangene";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " zmieni\u0142/-a swoj\u0105 nazw\u0119 wy\u015bwietlan\u0105 na '" + displayname + "'";
+      return username + " endret visningsnavn til: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " zmieni\u0142/-a zasady dost\u0119pu dla go\u015bci";
+      return username + " endret gjestetilgangsreglene";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " zmieni\u0142/-a zasady dost\u0119pu dla go\u015bci na " + rules;
+      return username + " endret gjestetilgangsregler til: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " zmieni\u0142/-a widoczno\u015b\u0107 historii";
+      return username + " endret historikksynlighet";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " zmieni\u0142/-a widoczno\u015b\u0107 historii na " + rules;
+      return username + " endret historikksynlighet til: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " zmieni\u0142/-a zasady wej\u015bcia";
+      return username + " endret tilgangsreglene";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " zmieni\u0142/-a zasady wej\u015bcia na " + joinRules;
+      return username + " endret tilgangsreglene til: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " zmieni\u0142/-a zdj\u0119cie profilowe";
+      return username + " endret avataren sin";
     },
     changedTheRoomAliases$1(username) {
-      return username + " zmieni\u0142/-a alias pokoju";
+      return username + " endret rom-aliasene";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " zmieni\u0142/-a link z zaproszeniem do pokoju";
+      return username + " endret invitasjonslenken";
     },
     get$changePassword() {
-      return "Zmie\u0144 has\u0142o";
+      return "Endre passord";
     },
     get$changeTheme() {
-      return "Zmie\u0144 sw\xf3j styl";
+      return "Endre din stil";
     },
     get$changeYourAvatar() {
-      return "Zmie\u0144 swoje zdj\u0119cie";
+      return "Bytt profilbilde";
     },
     get$channelCorruptedDecryptError() {
-      return "Szyfrowanie zosta\u0142o uszkodzone";
+      return "Krypteringen er skadet";
     },
     get$chat() {
-      return "Czat";
+      return "Sludring";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "Kopia zapasowa Twojego czatu zosta\u0142a ustawiona.";
+      return "Sikkerhetskopien av chatten din er konfigurert.";
     },
     get$chatBackupDescription() {
-      return "Twoje stare wiadomo\u015bci s\u0105 zabezpieczone kluczem odzyskiwania. Uwa\u017caj \u017ceby go nie zgubi\u0107.";
+      return "Din sludringssikkerhetskopi er sikret med en sikkerhetsn\xf8kkel. Ikke mist den.";
     },
     get$chatDetails() {
-      return "Szczeg\xf3\u0142y czatu";
+      return "Sludringsdetaljer";
     },
     get$chats() {
-      return "Czaty";
+      return "Chatter";
     },
     get$chooseAStrongPassword() {
-      return "Wybierz silne has\u0142o";
+      return "Velg et sterkt passord";
     },
     get$clearArchive() {
-      return "Wyczy\u015b\u0107 archiwum";
+      return "T\xf8m arkivet";
     },
     get$close(_) {
-      return "Zamknij";
+      return "Lukk";
     },
     get$commandHint_markasdm() {
-      return "Oznacz jako pok\xf3j wiadomo\u015bci bezpo\u015brednich dla podanego Matrix ID";
+      return "Merk som direktemeldingsrom for den gitte Matrix-ID-en";
     },
     get$commandHint_markasgroup() {
-      return "Oznacz jako grup\u0119";
+      return "Merk som gruppe";
     },
     get$commandHint_ban() {
-      return "Zbanuj u\u017cytkownika w tym pokoju";
+      return "Utesteng den gitte brukeren fra dette rommet";
     },
     get$commandHint_clearcache() {
-      return "Wyczy\u015b\u0107 pami\u0119\u0107 podr\u0119czn\u0105";
+      return "T\xf8m cache";
     },
     get$commandHint_create() {
-      return "Stw\xf3rz pusty czat\nU\u017cyj --no-encryption by wy\u0142\u0105czy\u0107 szyfrowanie";
+      return "Opprett en tom gruppechat\nBruk --no-encryption for \xe5 deaktivere kryptering";
     },
     get$commandHint_discardsession() {
-      return "Odrzu\u0107 sesj\u0119";
+      return "Forkast \xf8kten";
     },
     get$commandHint_dm() {
-      return "Rozpocznij czat bezpo\u015bredni\nU\u017cyj --no-encryption by wy\u0142\u0105czy\u0107 szyfrowanie";
+      return "Start en direkte chat\nBruk --no-encryption for \xe5 deaktivere kryptering";
     },
     get$commandHint_html() {
-      return "Wy\u015blij tekst sformatowany w HTML";
+      return "Send HTML-formatert tekst";
     },
     get$commandHint_invite() {
-      return "Zapro\u015b u\u017cytkownika do pokoju";
+      return "Inviter den gitte brukeren til dette rommet";
     },
     get$commandHint_join() {
-      return "Do\u0142\u0105cz do podanego pokoju";
+      return "Bli med i det gitte rommet";
     },
     get$commandHint_kick() {
-      return "Usu\u0144 tego u\u017cytkownika z tego pokoju";
+      return "Fjern den gitte brukeren fra dette rommet";
     },
     get$commandHint_leave() {
-      return "Opu\u015b\u0107 ten pok\xf3j";
+      return "Forlat dette rommet";
     },
     get$commandHint_me() {
-      return "Opisz siebie";
+      return "Beskriv deg selv";
     },
     get$commandHint_myroomavatar() {
-      return "Ustaw swoje zdj\u0119cie w tym pokoju (przez mxc-uri)";
+      return "Angi bilde for dette rommet (med mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Ustaw swoj\u0105 nazw\u0119 wy\u015bwietlan\u0105 w tym pokoju";
+      return "Angi visningsnavnet ditt for dette rommet";
     },
     get$commandHint_op() {
-      return "Ustaw poziom uprawnie\u0144 tego u\u017cytkownika (domy\u015blnie: 50)";
+      return "Sett brukerens maktniv\xe5 (standard: 50)";
     },
     get$commandHint_plain() {
-      return "Wy\u015blij niesformatowany tekst";
+      return "Send uformatert tekst";
     },
     get$commandHint_react() {
-      return "Wy\u015blij odpowied\u017a jako reakcj\u0119";
+      return "Send svar som en reaksjon";
     },
     get$commandHint_send() {
-      return "Wy\u015blij wiadomo\u015b\u0107";
+      return "Send tekst";
     },
     get$commandHint_unban() {
-      return "Odbanuj u\u017cytkownika w tym pokoju";
+      return "Opphev utestengelsen til den gitte brukeren fra dette rommet";
     },
     get$compareEmojiMatch() {
-      return "Por\xf3wnaj emoji";
+      return "Sammenlign og forsikre at f\xf8lgende smilefjes samsvarer med de p\xe5 den andre enheten:";
     },
     get$compareNumbersMatch() {
-      return "Por\xf3wnaj cyfry";
+      return "Sammenlign og forsikre at f\xf8lgende tall samsvarer med de p\xe5 den andre enheten:";
     },
     get$configureChat() {
-      return "Konfiguruj czat";
+      return "Sett opp sludring";
     },
     get$confirm(_) {
-      return "Potwierd\u017a";
+      return "Bekreft";
     },
     get$copiedToClipboard() {
-      return "Skopiowano do schowka";
+      return "Kopiert til utklippstavle";
     },
     get$copy() {
-      return "Kopiuj";
+      return "Kopier";
     },
     get$copyToClipboard() {
-      return "Skopiuj do schowka";
+      return "Kopier til utklippstavle";
     },
     couldNotDecryptMessage$1(error) {
-      return "Nie mo\u017cna odszyfrowa\u0107 wiadomo\u015bci: " + error;
+      return "Kunne ikke dekryptere melding: " + error;
     },
     get$checkList() {
-      return "Lista kontrolna";
+      return "Sjekkliste";
     },
     countParticipants$1(count) {
-      return "" + count + " uczestnik\xf3w";
+      return "" + count + " deltagere";
     },
     countInvited$1(count) {
-      return "" + count + " zaproszonych";
+      return "" + count + " inviterte";
     },
     get$create(_) {
-      return "Stw\xf3rz";
+      return "Opprett";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " utworzy\u0142/-a czat";
+      return username + " opprettet sludringen";
     },
     get$createGroup() {
-      return "Utw\xf3rz grup\u0119";
+      return "Opprett gruppe";
     },
     get$createNewSpace() {
-      return "Nowa przestrze\u0144";
+      return "Nytt omr\xe5de";
     },
     get$currentlyActive() {
-      return "Obecnie aktywny/-a";
+      return "Aktiv n\xe5";
     },
     get$darkTheme() {
-      return "Ciemny";
+      return "M\xf8rk";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + " " + timeOfDay;
+      return timeOfDay + ", " + date;
     },
     get$deactivateAccountWarning() {
-      return "To zdezaktywuje twoje konto. To jest nieodwracalne! Na pewno chcesz to zrobi\u0107?";
+      return "Dette vil skru av din brukerkonto for godt, og kan ikke angres! Er du sikker?";
     },
     get$defaultPermissionLevel() {
-      return "Domy\u015blny poziom uprawnie\u0144 dla nowych u\u017cytkownik\xf3w";
+      return "Forvalgt tilgangsniv\xe5";
     },
     get$$delete(_) {
-      return "Usu\u0144";
+      return "Slett";
     },
     get$deleteAccount() {
-      return "Usu\u0144 konto";
+      return "Slett konto";
     },
     get$deleteMessage() {
-      return "Usu\u0144 wiadomo\u015b\u0107";
+      return "Slett melding";
     },
     get$devices() {
-      return "Urz\u0105dzenia";
+      return "Enheter";
     },
     get$displaynameHasBeenChanged() {
-      return "Nazwa wy\u015bwietlana zosta\u0142a zmieniona";
+      return "Visningsnavn endret";
     },
     get$downloadFile() {
-      return "Pobierz plik";
+      return "Last ned fil";
     },
     get$edit() {
-      return "Edytuj";
+      return "Rediger";
     },
     get$editBlockedServers() {
-      return "Edytuj zablokowane serwery";
+      return "Rediger blokkerte tjenere";
     },
     get$chatPermissions() {
-      return "Uprawnienia w czacie";
+      return "Chat tillatelser";
     },
     get$editDisplayname() {
-      return "Edytuj nazw\u0119 wy\u015bwietlan\u0105";
+      return "Rediger visningsnavn";
     },
     get$editRoomAvatar() {
-      return "Edytuj zdj\u0119cie pokoju";
+      return "Rediger romavatar";
     },
     get$emoteExists() {
-      return "Emotikon ju\u017c istnieje!";
+      return "Smilefjeset finnes allerede!";
     },
     get$emoteInvalid() {
-      return "Nieprawid\u0142owy kod emotikonu!";
+      return "Ugyldig smilefjes-kode!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Tutaj pojawiaj\u0105 si\u0119 ostatnio u\u017cywane emotikony...";
+      return "Nylig brukte emotes vil vises her ...";
     },
     get$customEmojisAndStickers() {
-      return "W\u0142asne emotikony i naklejki";
+      return "Egendefinerte emojier og klistremerker";
     },
     get$emoteShortcode() {
-      return "Skr\xf3cony kod emotikonu";
+      return "Smilefjes-kode";
     },
     get$emptyChat() {
-      return "Pusty czat";
+      return "Tom sludring";
     },
     get$enableEmotesGlobally() {
-      return "W\u0142\u0105cz paczk\u0119 emotikon\xf3w globalnie";
+      return "Skru p\xe5 smilefjespakke for hele programmet";
     },
     get$enableEncryption() {
-      return "W\u0142\u0105cz szyfowanie";
+      return "Skru p\xe5 kryptering";
     },
     get$encrypted() {
-      return "Szyfrowane";
+      return "Kryptert";
     },
     get$encryptionNotEnabled() {
-      return "Szyfrowanie nie jest w\u0142\u0105czone";
+      return "Kryptering er ikke p\xe5skrudd";
     },
     endedTheCall$1(senderName) {
-      return senderName + " zako\u0144czy\u0142/-a po\u0142\u0105czenie";
+      return senderName + " avsluttet samtalen";
     },
     get$enterAnEmailAddress() {
-      return "Wpisz adres e-mail";
+      return "Skriv inn en e-postadresse";
     },
     errorObtainingLocation$1(error) {
-      return "B\u0142\u0105d w ustalaniu lokalizacji: " + error;
+      return "Feil ved henting av posisjon: " + error;
     },
     get$everythingReady() {
-      return "Wszystko gotowe!";
+      return "Alt er klart!";
     },
     get$fontSize(_) {
-      return "Rozmiar fontu";
+      return "Skriftst\xf8rrelse";
     },
     get$forward(_) {
-      return "Przeka\u017c";
+      return "Videre";
     },
     get$fromJoining() {
-      return "Od do\u0142\u0105czenia";
+      return "Fra \xe5 ta del";
     },
     get$fromTheInvitation() {
-      return "Od zaproszenia";
+      return "Fra invitasjonen";
     },
     get$group() {
-      return "Grupa";
+      return "Gruppe";
     },
     get$groupIsPublic() {
-      return "Grupa jest publiczna";
+      return "Gruppen er offentlig";
     },
     get$guestsAreForbidden() {
-      return "Go\u015bcie s\u0105 zakazani";
+      return "Gjester forbudt";
     },
     get$guestsCanJoin() {
-      return "Go\u015bcie mog\u0105 do\u0142\u0105czy\u0107";
+      return "Gjester kan ta del";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " wycofa\u0142/-a zaproszenie dla " + targetName;
+      return username + " har trukket tilbake invitasjonen til " + targetName;
     },
     get$help() {
-      return "Pomoc";
+      return "Hjelp";
     },
     get$hideRedactedMessages() {
-      return "Nie pokazuj usuni\u0119tych wiadomo\u015bci";
+      return "Skjul redigerte meldinger";
     },
     get$hideRedactedMessagesBody() {
-      return "Usuni\u0119te wiadomo\u015bci nie b\u0119d\u0105 widoczne w czacie.";
+      return "Hvis noen redigerer en melding, vil ikke denne meldingen lenger v\xe6re synlig i chatten.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Ukryj niepoprawne lub nieznane typy wiadomo\u015bci";
+      return "Skjul ugyldige eller ukjente meldingsformater";
     },
     get$block() {
-      return "Zablokuj";
+      return "Blokk\xe9r";
     },
     get$blockedUsers() {
-      return "Zablokowani u\u017cytkownicy";
+      return "Blokkerte brukere";
     },
     get$blockListDescription() {
-      return "Mo\u017cesz zablokowa\u0107 uci\u0105\u017cliwych u\u017cytkownik\xf3w. Nie b\u0119dziesz widzie\u0107 ani otrzymywa\u0107 wiadomo\u015bci oraz zaprosze\u0144 od nich.";
+      return "Du kan blokkere brukere som forstyrrer deg. Du vil ikke kunne motta meldinger eller rominvitasjoner fra brukerne p\xe5 din personlige blokkeringsliste.";
     },
     get$blockUsername() {
-      return "Ignoruj u\u017cytkownika";
+      return "Ignorer brukernavn";
     },
     get$iHaveClickedOnLink() {
-      return "Nacisn\u0105\u0142em na link";
+      return "Jeg har klikket p\xe5 lenken";
     },
     get$incorrectPassphraseOrKey() {
-      return "Z\u0142e has\u0142o bezpiecze\u0144stwa lub klucz odzyskiwania";
+      return "Feilaktig passord eller gjenopprettingsn\xf8kkel";
     },
     get$inviteContact() {
-      return "Zapro\u015b kontakt";
+      return "Inviter kontakt";
     },
     get$noChatDescriptionYet() {
-      return "Nie utworzono jeszcze opisu czatu.";
+      return "Ingen chatbeskrivelse er opprettet enn\xe5.";
     },
     get$tryAgain() {
-      return "Spr\xf3buj ponownie";
+      return "Pr\xf8v igjen";
     },
     get$invited() {
-      return "Zaproszono";
+      return "Invitert";
     },
     get$redactMessageDescription() {
-      return "Wiadomo\u015b\u0107 zostanie usuni\u0119ta u wszystkich uczestnik\xf3w tej rozmowy. Tego nie mo\u017cna cofn\u0105\u0107.";
+      return "Meldingen vil bli redigert for alle deltakerne i denne samtalen. Dette kan ikke angres.";
     },
     get$optionalRedactReason() {
-      return "(Opcjonalnie) Pow\xf3d usuni\u0119cia tej wiadomo\u015bci...";
+      return "(Valgfritt) \xc5rsak til redigering av denne meldingen...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " zaprosi\u0142/-a " + targetName;
+      return username + " inviterte " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Tylko zaproszeni u\u017cytkownicy";
+      return "Kun inviterte brukere";
     },
     get$inviteForMe() {
-      return "Zaproszenie dla mnie";
+      return "Invitasjon for meg";
     },
     get$isTyping() {
-      return "pisze\u2026";
+      return "skriver\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " do\u0142\u0105czy\u0142/-a do czatu";
+      return username + "ble med i samtalen";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " wyrzuci\u0142/-a " + targetName;
+      return username + " kastet ut " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ostatnio widziano " + localizedTimeShort;
+      return "Sist aktiv: " + localizedTimeShort;
     },
     get$leave() {
-      return "Opu\u015b\u0107";
+      return "Forlat";
     },
     get$leftTheChat() {
-      return "Opu\u015bci\u0142/-a czat";
+      return "Forlat sludringen";
     },
     get$lightTheme() {
-      return "Jasny";
+      return "Lys";
     },
     get$dehydrate() {
-      return "Eksportuj sesj\u0119 i wyma\u017c urz\u0105dzenie";
+      return "Eksporter \xf8kten og slett enheten";
     },
     get$dehydrateWarning() {
-      return "Tego nie mo\u017cna cofn\u0105\u0107. Upewnij si\u0119, \u017ce plik kopii zapasowej jest bezpiecznie przechowywany.";
+      return "Denne handlingen kan ikke angres. S\xf8rg for at du lagrer sikkerhetskopifilen p\xe5 en trygg m\xe5te.";
     },
     get$loadingPleaseWait() {
-      return "\u0141adowanie\u2026 Prosz\u0119 czeka\u0107.";
+      return "Laster inn\u2026 Vent.";
     },
     get$loadMore() {
-      return "Za\u0142aduj wi\u0119cej\u2026";
+      return "Last inn mer\u2026";
     },
     get$locationDisabledNotice() {
-      return "Us\u0142ugi lokalizacji s\u0105 wy\u0142\u0105czone. Prosz\u0119 w\u0142\u0105cz je aby m\xf3c udost\u0119pni\u0107 swoj\u0105 lokalizacj\u0119.";
+      return "Lokasjonstjenester er deaktivert. Vennligst aktiver dem for at du skal kunne dele posisjonen din.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Brak uprawnie\u0144. Prosz\u0119 zezw\xf3l aplikacji na dost\u0119p do lokalizacji aby m\xf3c j\u0105 udost\u0119pni\u0107.";
+      return "Lokasjonstillatelse nektet. Gi dem tillatelse til \xe5 dele din lokasjon.";
     },
     get$login() {
-      return "Zaloguj si\u0119";
+      return "Logg inn";
     },
     get$logout() {
-      return "Wyloguj si\u0119";
+      return "Logg ut";
     },
     get$mention() {
-      return "Wzmianka";
+      return "Nevn";
     },
     get$messages() {
-      return "Wiadomo\u015bci";
+      return "Meldinger";
     },
     get$messagesStyle() {
-      return "Wiadomo\u015bci:";
+      return "Meldinger:";
     },
     get$moderator() {
       return "Moderator";
     },
     get$newVerificationRequest() {
-      return "Nowa pro\u015bba o weryfikacj\u0119!";
+      return "Ny bekreftelsesforesp\xf8rsel!";
     },
     get$next(_) {
-      return "Dalej";
+      return "Neste";
     },
     get$no() {
-      return "Nie";
+      return "Nei";
     },
     get$noConnectionToTheServer() {
-      return "Brak po\u0142\u0105czenia z serwerem";
+      return "Ingen tilkobling til tjeneren";
     },
     get$noEmotesFound() {
-      return "Nie znaleziono \u017cadnych emotikon\xf3w. \ud83d\ude15";
+      return "Fant ingen smilefjes. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Udost\u0119pnij link z zaproszeniem";
+      return "Del invitasjonslenke";
     },
     get$none() {
-      return "Brak";
+      return "Ingen";
     },
     get$noPermission() {
-      return "Brak uprawnie\u0144";
+      return "Ingen tilgang";
     },
     get$noRoomsFound() {
-      return "Nie znaleziono pokoj\xf3w\u2026";
+      return "Fant ingen rom \u2026";
     },
     get$notifications() {
-      return "Powiadomienia";
+      return "Merknader";
     },
     get$obtainingLocation() {
-      return "Uzyskiwanie lokalizacji\u2026";
+      return "Henter sted \u2026";
     },
     get$offensive() {
-      return "Obra\u017aliwe";
+      return "St\xf8tende";
     },
     get$ok() {
-      return "Ok";
+      return "OK";
     },
     get$oopsSomethingWentWrong() {
-      return "Ojej! Co\u015b posz\u0142o nie tak\u2026";
+      return "Oida, noe gikk galt \u2026";
     },
     get$oneClientLoggedOut() {
-      return "Jedno z twoich urz\u0105dze\u0144 zosta\u0142o wylogowane";
+      return "En av klientene dine har blitt logget ut";
     },
     get$openInMaps() {
-      return "Otw\xf3rz w mapach";
+      return "\xc5pne i kart";
     },
     get$link() {
-      return "Link";
+      return "Lenke";
     },
     get$serverRequiresEmail() {
-      return "Ten serwer wymaga potwierdzenia Twojego adresu email w celu rejestracji.";
+      return "Denne serveren m\xe5 validere e-postadressen din for registrering.";
     },
     get$or() {
-      return "Lub";
+      return "Eller";
     },
     get$participant() {
-      return "Uczestnik";
+      return "Deltager";
     },
     get$passphraseOrKey() {
-      return "fraza dost\u0119pu lub klucz odzyskiwania";
+      return "Passord eller gjenopprettingsn\xf8kkel";
     },
     get$password(_) {
-      return "Has\u0142o";
+      return "Passord";
     },
     get$passwordForgotten() {
-      return "Nie pami\u0119tam has\u0142a";
+      return "Passord glemt";
     },
     get$passwordHasBeenChanged() {
-      return "Has\u0142o zosta\u0142o zmienione";
+      return "Passord endret";
     },
     get$pin() {
-      return "Przypnij";
+      return "Fest";
     },
     get$pleaseChoose() {
-      return "Prosz\u0119 wybra\u0107";
+      return "Vennligst velg";
     },
     get$pleaseEnterYourPassword() {
-      return "Wprowad\u017a swoje has\u0142o";
+      return "Skriv inn passordet ditt";
     },
     get$pleaseEnterYourPin() {
-      return "Podaj sw\xf3j PIN";
+      return "Vennligst skriv inn PIN-koden din";
     },
     get$pleaseEnterYourUsername() {
-      return "Wpisz swoj\u0105 nazw\u0119 u\u017cytkownika";
+      return "Skriv inn brukernavnet ditt";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Wykonaj instrukcje na stronie internetowej i naci\u015bnij \u201edalej\u201d.";
+      return "F\xf8lg instruksen p\xe5 nettsiden og trykk p\xe5 \xabNeste\xbb.";
     },
     get$privacy() {
-      return "Prywatno\u015b\u0107";
+      return "Personvern";
     },
     get$reason(_) {
-      return "Pow\xf3d";
+      return "Grunn";
     },
     redactedBy$1(username) {
-      return "Usuni\u0119te przez " + username;
+      return "Redigert av " + username;
     },
     get$directChat() {
-      return "Czat bezpo\u015bredni";
+      return "Direkte chat";
     },
     redactedByBecause$2(username, reason) {
-      return "Usuni\u0119te przez " + username + " z powodu \u201e" + reason + "\u201d";
+      return "Redigert av " + username + " fordi: \xab" + reason + "\xbb";
     },
     redactedAnEvent$1(username) {
-      return username + " usun\u0105\u0142/-\u0119\u0142a zdarzenie";
+      return username + " har trukket tilbake en hendelse";
     },
     get$redactMessage() {
-      return "Usu\u0144 wiadomo\u015b\u0107";
+      return "Rediger melding";
     },
     get$reject() {
-      return "Odrzu\u0107";
+      return "Avsl\xe5";
     },
     rejectedTheInvitation$1(username) {
-      return username + " odrzuci\u0142/-a zaproszenie";
+      return username + " avslo invitasjonen";
     },
     get$removeAllOtherDevices() {
-      return "Usu\u0144 wszystkie inne urz\u0105dzenia";
+      return "Fjern alle andre enheter";
     },
     get$unbanFromChat() {
-      return "Odbanuj w czacie";
+      return "Opphev bannlysning";
     },
     get$removeYourAvatar() {
-      return "Usu\u0144 swoje zdj\u0119cie";
+      return "Fjern din avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Zamie\u0144 pok\xf3j na nowsz\u0105 wersj\u0119";
+      return "Erstatt rom med nyere versjon";
     },
     get$reply(_) {
-      return "Odpowiedz";
+      return "Svar";
     },
     get$reportMessage() {
-      return "Zg\u0142o\u015b wiadomo\u015b\u0107";
+      return "Rapporter melding";
     },
     get$roomHasBeenUpgraded() {
-      return "Pok\xf3j zosta\u0142 zaktualizowany";
+      return "Rommet har blitt oppgradert";
     },
     get$saveFile() {
-      return "Zapisz plik";
+      return "Lagre fil";
     },
     get$search(_) {
-      return "Szukaj";
+      return "S\xf8k";
     },
     get$security() {
-      return "Bezpiecze\u0144stwo";
+      return "Sikkerhet";
     },
     get$recoveryKey() {
-      return "Klucz odzyskiwania";
+      return "Gjenopprettingsn\xf8kkel";
     },
     get$recoveryKeyLost() {
-      return "Utracono klucz odzyskiwania?";
+      return "Gjenopprettingsn\xf8kkel tapt?";
     },
     get$send(_) {
-      return "Wy\u015blij";
+      return "Send";
     },
     get$sendAMessage() {
-      return "Wy\u015blij wiadomo\u015b\u0107";
+      return "Send en melding";
     },
     get$sendAudio() {
-      return "Wy\u015blij d\u017awi\u0119k";
+      return "Send lyd";
     },
     get$sendFile() {
-      return "Wy\u015blij plik";
+      return "Send fil";
     },
     get$sendImage() {
-      return "Wy\u015blij obraz";
+      return "Send bilde";
     },
     sendImages$1(count) {
-      return "Wy\u015blij " + count + " obraz\xf3w";
+      return "Send " + count + " bilde";
     },
     get$sendMessages() {
-      return "Wy\u015blij wiadomo\u015bci";
+      return "Send meldinger";
     },
     get$sendVideo() {
-      return "Wy\u015blij film";
+      return "Send video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " wys\u0142a\u0142/-a plik";
+      return username + " sendte en fil";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " wys\u0142a\u0142/-a plik d\u017cwi\u0119kowy";
+      return username + " sendte lyd";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " wys\u0142a\u0142/-a zdj\u0119cie";
+      return username + " sendte et bilde";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " wys\u0142a\u0142/-a naklejk\u0119";
+      return username + " sendte et klistremerke";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " wys\u0142a\u0142/-a film";
+      return username + " sendte en video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " wys\u0142a\u0142/-a informacje o po\u0142\u0105czeniu";
+      return senderName + " sendte anropsinfo";
     },
     get$setChatDescription() {
-      return "Ustaw opis czatu";
+      return "Sett chat beskrivelse";
     },
     get$settings() {
-      return "Ustawienia";
+      return "Innstilinger";
     },
     get$share(_) {
-      return "Udost\u0119pnij";
+      return "Del";
     },
     sharedTheLocation$1(username) {
-      return username + " udost\u0119pni\u0142/-a swoj\u0105 lokalizacj\u0119";
+      return username + " delte posisjonen";
     },
     get$shareLocation() {
-      return "Udost\u0119pnij lokalizacj\u0119";
+      return "Del lokasjon";
     },
     get$skip(_) {
-      return "Pomi\u0144";
+      return "Hopp over";
     },
     get$sourceCode() {
-      return "Kod \u017cr\xf3d\u0142owy";
+      return "Kildekode";
     },
     get$spaceIsPublic() {
-      return "Ustaw jako publiczn\u0105";
+      return "Rom er offentlig";
     },
     get$spaceName() {
-      return "Nazwa przestrzeni";
+      return "Romnavn";
     },
     startedACall$1(senderName) {
-      return senderName + " rozpocz\u0105\u0142/-\u0119\u0142a rozmow\u0119";
+      return senderName + " startet en samtale";
     },
     get$status(_) {
       return "Status";
     },
     get$submit(_) {
-      return "Ode\u015blij";
+      return "Send inn";
     },
     get$synchronizingPleaseWait() {
-      return "Synchronizowanie\u2026 Prosz\u0119 czeka\u0107.";
+      return "Synkroniserer \u2026 Vent litt.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchronizowanie\u2026 (" + percentage + "%)";
+      return " Synkroniserer\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
       return "System";
     },
     get$theyDontMatch() {
-      return "Nie zgadzaj\u0105 si\u0119";
+      return "Samsvarer ikke";
     },
     get$theyMatch() {
-      return "Zgadzaj\u0105 si\u0119";
+      return "Samsvarer";
     },
     get$tooManyRequestsWarning() {
-      return "Zbyt wiele \u017c\u0105da\u0144. Prosz\u0119 spr\xf3bowa\u0107 p\xf3\u017aniej.";
+      return "For mange foresp\xf8rsler. Pr\xf8v igjen senere!";
     },
     get$transferFromAnotherDevice() {
-      return "Przenie\u015b z innego urz\u0105dzenia";
+      return "Overf\xf8r fra en annen enhet";
     },
     get$tryToSendAgain() {
-      return "Spr\xf3buj wys\u0142a\u0107 ponownie";
+      return "Pr\xf8v \xe5 sende igjen";
     },
     get$unavailable() {
-      return "Niedost\u0119pne";
+      return "Utilgjengelig";
     },
     unbannedUser$2(username, targetName) {
-      return username + " odbanowa\u0142/-a " + targetName;
+      return username + " opphevet bannlysning av " + targetName;
     },
     get$unblockDevice() {
-      return "Odblokuj urz\u0105dzenie";
+      return "Opphev blokkering av enhet";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Nieznany algorytm szyfrowania";
+      return "Ukjent krypteringsalgoritme";
     },
     unknownEvent$1(type) {
-      return "Nieznane zdarzenie '" + type + "'";
+      return "Ukjent hendelse \xab" + type + "\xbb";
     },
     get$unpin() {
-      return "Odepnij";
+      return "L\xf8sne";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " oraz " + count + " pozosta\u0142ych pisze\u2026";
+      return username + " og " + count + " andre skriver\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " i " + username2 + " pisz\u0105\u2026";
+      return username + " og " + username2 + " skriver\u2026";
     },
     userIsTyping$1(username) {
-      return username + " pisze\u2026";
+      return username + " skriver\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " opu\u015bci\u0142/-a czat";
+      return username + " har forlatt sludringen";
     },
     get$username(_) {
-      return "Nazwa u\u017cytkownika";
+      return "Brukernavn";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " wys\u0142a\u0142/-a zdarzenie " + type;
+      return username + " sendte en " + type + "-hendelse";
     },
     get$unverified() {
-      return "Niezweryfikowane";
+      return "Ikke verifisert";
     },
     get$verified() {
-      return "Zweryfikowane";
+      return "Verifisert";
     },
     get$verifyStart() {
-      return "Rozpocznij weryfikacj\u0119";
+      return "Start bekreftelse";
     },
     get$verifySuccess() {
-      return "Pomy\u015blnie zweryfikowano!";
+      return "Du har bekreftet!";
     },
     get$verifyTitle() {
-      return "Weryfikowanie innego konta";
+      return "Bekrefter annen konto";
     },
     get$visibleForAllParticipants() {
-      return "Widoczny dla wszystkich u\u017cytkownik\xf3w";
+      return "Synlig for alle deltagere";
     },
     get$visibleForEveryone() {
-      return "Widoczne dla ka\u017cdego";
+      return "Synlig for alle";
     },
     get$voiceMessage() {
-      return "Wiadomo\u015b\u0107 g\u0142osowa";
+      return "Lydmelding";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Oczekiwanie na zaakceptowanie pro\u015bby przez drug\u0105 osob\u0119\u2026";
+      return "Venter p\xe5 at partneren skal godta foresp\xf8rselen\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Oczekiwanie na zaakceptowanie emoji przez drug\u0105 osob\u0119\u2026";
+      return "Venter p\xe5 at partneren skal godta emojien\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Oczekiwanie na zaakceptowanie numer\xf3w przez drug\u0105 osob\u0119\u2026";
+      return "Venter p\xe5 at samtalepartner skal godta tallene \u2026";
     },
     get$warning() {
-      return "Uwaga!";
+      return "Advarsel!";
     },
     get$weSentYouAnEmail() {
-      return "Wys\u0142ali\u015bmy Ci wiadomo\u015b\u0107 e-mail";
+      return "Du har f\xe5tt en e-post";
     },
     get$whyDoYouWantToReportThis() {
-      return "Dlaczego chcesz to zg\u0142osi\u0107?";
+      return "Hvorfor \xf8nsker du \xe5 rapportere dette?";
     },
     get$wipeChatBackup() {
-      return "Wymaza\u0107 kopi\u0119 zapasow\u0105 czatu, aby utworzy\u0107 nowy klucz odzyskiwania?";
+      return "Vil du slette sikkerhetskopien av chatten din for \xe5 opprette en ny gjenopprettingsn\xf8kkel?";
     },
     get$writeAMessage() {
-      return "Napisz wiadomo\u015b\u0107\u2026";
+      return "Skriv en melding \u2026";
     },
     get$yes() {
-      return "Tak";
+      return "Ja";
     },
     get$you() {
-      return "Ty";
+      return "Deg";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Nie uczestniczysz ju\u017c w tym czacie";
+      return "Du deltar ikke lenger i denne sludringen";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Zosta\u0142e\u015b/-a\u015b zbanowany/-a w tym czacie";
+      return "Du har blitt bannlyst fra denne sludringen";
     },
     get$yourPublicKey() {
-      return "Tw\xf3j klucz publiczny";
+      return "Din offentlige n\xf8kkel";
     },
     get$messageInfo() {
-      return "Informacje o wiadomo\u015bci";
+      return "Meldingsinformasjon";
     },
     get$time(_) {
-      return "Czas";
+      return "Tid";
     },
     get$sender() {
-      return "Nadawca";
+      return "Avsender";
     },
     get$openGallery() {
-      return "Otw\xf3rz galeri\u0119";
+      return "\xc5pne galleri";
     },
     get$start(_) {
       return "Start";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "Aby odblokowa\u0107 wcze\u015bniejsze wiadomo\u015bci, wprowad\u017a sw\xf3j klucz odzyskiwania, kt\xf3ry zosta\u0142 wygenerowany w poprzedniej sesji. Tw\xf3j klucz odzyskiwania NIE jest Twoim has\u0142em.";
+      return "For \xe5 l\xe5se opp gamle meldinger, vennligst skriv inn gjenopprettingsn\xf8kkelen som ble generert i en tidligere \xf8kt. Gjenopprettingsn\xf8kkelen er IKKE passordet ditt.";
     },
     get$markAsRead() {
-      return "Oznacz jako przeczytane";
+      return "Marker som lest";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " zareagowa\u0142/-a z " + reaction;
+      return sender + " reagerte med " + reaction;
     },
     get$pinMessage() {
-      return "Przypnij do pokoju";
+      return "Fest til rommet";
     },
     get$emojis() {
-      return "Emoji";
+      return "Emojier";
     },
     get$youRejectedTheInvitation() {
-      return "Odrzucono zaproszenie";
+      return "Du har avvist invitasjonen";
     },
     get$youJoinedTheChat() {
-      return "Do\u0142\u0105czono do czatu";
+      return "Du har blitt med i chatten";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Zaakceptowa\u0142e\u015b/-a\u015b zaproszenie";
+      return "\ud83d\udc4d Du har akseptert invitasjonen";
     },
     youBannedUser$1(user) {
-      return "Zbanowa\u0142e\u015b/-a\u015b " + user;
+      return "Du stengte ute " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Wycofano zaproszenie dla " + user;
+      return "Du har trukket tilbake invitasjonen for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Zosta\u0142e\u015b/-a\u015b zaproszony/-a przez " + user;
+      return "\ud83d\udce9 Du har blitt invitert av " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Zaprosi\u0142e\u015b/-a\u015b " + user;
+      return "\ud83d\udce9 Du inviterte " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Wyrzuci\u0142e\u015b/-a\u015b " + user;
+      return "\ud83d\udc5e You sparket ut " + user;
     },
     youUnbannedUser$1(user) {
-      return "Odbanowa\u0142e\u015b/-a\u015b " + user;
+      return "Du opphevet utestengelsen av " + user;
     },
     hasKnocked$1(user) {
-      return user + " zapuka\u0142-/a";
+      return "\ud83d\udeaa " + user + " har banket p\xe5";
     },
     get$knock() {
-      return "Zapukaj";
+      return "Bank p\xe5";
     },
     get$unlockOldMessages() {
-      return "Odblokuj stare wiadomo\u015bci";
+      return "L\xe5s opp gamle meldinger";
     },
     get$storeInSecureStorageDescription() {
-      return "Przechowaj klucz odzyskiwania w bezpiecznym magazynie tego urz\u0105dzenia.";
+      return "Oppbevar gjenopprettingsn\xf8kkelen p\xe5 en sikker lagringsplass p\xe5 denne enheten.";
     },
     get$saveKeyManuallyDescription() {
-      return "Zapisz ten klucz r\u0119cznie, uruchamiaj\u0105c systemowe okno dialogowe udost\u0119pniania lub schowek.";
+      return "Lagre denne n\xf8kkelen manuelt ved \xe5 utl\xf8se systemets delingsdialog eller utklippstavle.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "Przechowaj bezpiecznie na tym urz\u0105dzeniu";
+      return "Lagre sikkert p\xe5 denne enheten";
     },
     countFiles$1(count) {
-      return "" + count + " plik\xf3w";
+      return "" + count + " filer";
     },
     get$user() {
-      return "U\u017cytkownik";
+      return "Bruker";
     },
     get$custom() {
-      return "W\u0142asne";
+      return "Egendefinert";
     },
     get$noKeyForThisMessage() {
-      return "Mo\u017ce si\u0119 to zdarzy\u0107, je\u015bli wiadomo\u015b\u0107 zosta\u0142a wys\u0142ana przed zalogowaniem si\u0119 na to konto na tym urz\u0105dzeniu.\n\nMo\u017cliwe jest r\xf3wnie\u017c, \u017ce nadawca zablokowa\u0142 Twoje urz\u0105dzenie lub co\u015b posz\u0142o nie tak z po\u0142\u0105czeniem internetowym.\n\nJeste\u015b w stanie odczyta\u0107 wiadomo\u015b\u0107 na innej sesji? W takim razie mo\u017cesz przenie\u015b\u0107 z niej wiadomo\u015b\u0107! Wejd\u017a w Ustawienia > Urz\u0105dzenia i upewnij si\u0119, \u017ce Twoje urz\u0105dzenia zweryfikowa\u0142y si\u0119 wzajemnie. Gdy nast\u0119pnym razem otworzysz pok\xf3j i obie sesje b\u0119d\u0105 w\u0142\u0105czone, klucze zostan\u0105 przekazane automatycznie.\n\nNie chcesz straci\u0107 kluczy podczas wylogowania lub prze\u0142\u0105czania urz\u0105dze\u0144? Upewnij si\u0119, \u017ce w ustawieniach masz w\u0142\u0105czon\u0105 kopi\u0119 zapasow\u0105 czatu.";
+      return "Dette kan skje hvis meldingen ble sendt f\xf8r du logget inn p\xe5 kontoen din p\xe5 denne enheten.\n\nDet er ogs\xe5 mulig at avsenderen har blokkert enheten din eller at noe gikk galt med internettforbindelsen.\n\nEr du i stand til \xe5 lese meldingen p\xe5 en annen \xf8kt? Da kan du overf\xf8re meldingen derfra! G\xe5 til Innstillinger > Enheter og s\xf8rg for at enhetene dine har verifisert hverandre. N\xe5r du \xe5pner rommet neste gang og begge \xf8ktene er i forgrunnen, vil n\xf8klene bli overf\xf8rt automatisk.\n\nVil du ikke miste n\xf8klene n\xe5r du logger ut eller bytter enhet? S\xf8rg for at du har aktivert chat-sikkerhetskopiering i innstillingene.";
     },
     get$newSpace() {
-      return "Nowa przestrze\u0144";
+      return "Nytt omr\xe5de";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Pusty czat (wcze\u015bniej " + oldDisplayName + ")";
+      return "Tom chat (var " + oldDisplayName + ")";
     },
     get$newSpaceDescription() {
-      return "Przestrzenie pozwalaj\u0105 na konsolidacj\u0119 czat\xf3w i budowanie prywatnych lub publicznych spo\u0142eczno\u015bci.";
+      return "Rom lar deg konsolidere dine chatter og bygge private eller offentlige fellesskap.";
     },
     get$reopenChat() {
-      return "Otw\xf3rz ponownie czat";
+      return "Gjen\xe5pne chat";
     },
     get$noOtherDevicesFound() {
-      return "Nie znaleziono innych urz\u0105dze\u0144";
+      return "Ingen andre enheter funnet";
     },
     fileIsTooBigForServer$1(max) {
-      return "Nie uda\u0142o si\u0119 wys\u0142a\u0107! Ten serwer obs\u0142uguje za\u0142\u0105czniki o maksymalnej wielko\u015bci " + max + ".";
+      return "Kan ikke sende! Serveren st\xf8tter bare vedlegg opptil " + max + ".";
     },
     fileHasBeenSavedAt$1(path) {
-      return "Plik zosta\u0142 zapisany w \u015bcie\u017cce " + path;
+      return "Filen er lagret p\xe5 " + path;
     },
     get$jumpToLastReadMessage() {
-      return "Przejd\u017a do ostatnio przeczytanej wiadomo\u015bci";
+      return "Hopp til sist leste melding";
     },
     get$readUpToHere() {
-      return "Czytaj do tego miejsca";
+      return "Lest frem til her";
     },
     get$jump() {
-      return "Przejd\u017a";
+      return "Hopp";
     },
     get$openLinkInBrowser() {
-      return "Otw\xf3rz link w przegl\u0105darce";
+      return "\xc5pne lenke i nettleser";
     },
     get$setColorTheme() {
-      return "Ustal styl kolor\xf3w:";
+      return "Angi fargetema:";
     },
     get$invite() {
-      return "Zaproszenie";
+      return "Inviter";
     },
     get$invalidInput() {
-      return "Nieprawid\u0142owe dane!";
+      return "Ugyldig inndata!";
     },
     wrongPinEntered$1(seconds) {
-      return "Wprowadzono nieprawid\u0142owy kod PIN! Spr\xf3buj ponownie za " + seconds + " sekund...";
+      return "Feil PIN-kode tastet inn! Pr\xf8v igjen om " + seconds + " sekunder...";
     },
     get$pleaseEnterANumber() {
-      return "Prosz\u0119 poda\u0107 liczb\u0119 wi\u0119ksz\u0105 od 0";
+      return "Vennligst skriv inn et tall st\xf8rre enn 0";
     },
     get$removeDevicesDescription() {
-      return "Nast\u0105pi wylogowanie z tego urz\u0105dzenia. Nie b\u0119dziesz w stanie odbiera\u0107 na nim wiadomo\u015bci.";
+      return "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.";
     },
     get$banUserDescription() {
-      return "U\u017cytkownik zostanie zbanowany w czacie i nie b\u0119dzie w stanie do\u0142\u0105czy\u0107 do czatu do momentu odbanowania.";
+      return "Brukeren vil bli utestengt fra chatten og vil ikke kunne delta i chatten igjen f\xf8r utestengelsen er opphevet.";
     },
     get$unbanUserDescription() {
-      return "U\u017cytkownik b\u0119dzie w stanie do\u0142\u0105czy\u0107 do czatu ponownie.";
+      return "Brukeren vil kunne g\xe5 inn i chatten igjen hvis vedkommende pr\xf8ver.";
     },
     get$kickUserDescription() {
-      return "U\u017cytkownik jest wyrzucony z czatu, ale nie zbanowany. Do czatu publicznego mo\u017ce do\u0142\u0105czy\u0107 ponownie.";
+      return "Brukeren blir kastet ut av chatten, men ikke utestengt. I offentlige chatter kan brukeren bli med p\xe5 nytt n\xe5r som helst.";
     },
     get$makeAdminDescription() {
-      return "Kiedy u\u017cytkownik zostanie adminem, nie b\u0119dziesz m\xf3c tego cofn\u0105\u0107, bo nabierze takich samych uprawnie\u0144, jak Ty.";
+      return "N\xe5r du gj\xf8r denne brukeren til administrator, kan det hende du ikke kan angre dette, da de da vil ha de samme tillatelsene som deg.";
     },
     get$yourGlobalUserIdIs() {
-      return "Tw\xf3j globalny identyfikator to: ";
+      return "Din globale bruker-ID er: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Niestety nie uda\u0142o si\u0119 nikogo znale\u017a\u0107 poprzez "' + query + '". Prosz\u0119 sprawdzi\u0107, czy w zapytaniu nie ma liter\xf3wek.';
+      return 'Dessverre ble ingen bruker funnet med "' + query + '". Sjekk om du har skrevet feil.';
     },
     get$knocking() {
-      return "Pukanie";
+      return "Banker p\xe5";
     },
     get$nothingFound() {
-      return "Nic nie odnaleziono...";
+      return "Ingenting funnet...";
     },
     get$groupName() {
-      return "Nazwa grupy";
+      return "Gruppenavn";
     },
     get$createGroupAndInviteUsers() {
-      return "Utw\xf3rz grup\u0119 i zapro\u015b u\u017cytkownik\xf3w";
+      return "Opprett en gruppe og inviter brukere";
     },
     get$groupCanBeFoundViaSearch() {
-      return "Grupa mo\u017ce by\u0107 znaleziona poprzez wyszukiwanie";
+      return "Gruppen kan finnes via s\xf8k";
     },
     get$wrongRecoveryKey() {
-      return "Niestety to nie wygl\u0105da na poprawny klucz odzyskiwania.";
+      return "Beklager ... dette ser ikke ut til \xe5 v\xe6re riktig gjenopprettingsn\xf8kkel.";
     },
     get$startConversation() {
-      return "Rozpocznij rozmow\u0119";
+      return "Start samtale";
     },
     get$commandHint_sendraw() {
-      return "Wy\u015blij zwyk\u0142y JSON";
+      return "Send raw json";
     },
     get$searchForUsers() {
-      return "Szukaj @u\u017cytkownik\xf3w...";
+      return "S\xf8k etter @brukere...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Prosz\u0119 poda\u0107 swoje obecne has\u0142o";
+      return "Skriv inn ditt n\xe5v\xe6rende passord";
     },
     get$newPassword() {
-      return "Nowe has\u0142o";
+      return "Nytt passord";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Prosz\u0119 wybra\u0107 silne has\u0142o";
+      return "Vennligst velg et sterkt passord";
     },
     get$passwordsDoNotMatch() {
-      return "Has\u0142a si\u0119 nie zgadzaj\u0105";
+      return "Passordene stemmer ikke overens";
     },
     get$passwordIsWrong() {
-      return "Podano niepoprawne has\u0142o";
+      return "Det inntastede passordet ditt er feil";
     },
     get$decline() {
-      return "Odm\xf3w";
+      return "Avsl\xe5";
     },
     get$thisDevice() {
-      return "To urz\u0105dzenie:";
+      return "Denne enheten:";
     },
     get$initAppError() {
-      return "Wyst\u0105pi\u0142 b\u0142\u0105d podczas inicjalizacji aplikacji";
+      return "Det oppsto en feil under oppstart av appen";
     },
     searchIn$1(chat) {
-      return 'Szukaj w czacie "' + chat + '"...';
+      return "S\xf8k i chatten \xab" + chat + "\xbb...";
     },
     get$searchMore() {
-      return "Szukaj dalej...";
+      return "S\xf8k mer...";
     },
     get$gallery() {
-      return "Galeria";
+      return "Galleri";
     },
     get$files(_) {
-      return "Pliki";
+      return "Filer";
     },
     sessionLostBody$2(url, error) {
-      return "Twoja sesja zosta\u0142a utracona. Prosimy zg\u0142osi\u0107 ten b\u0142\u0105d autorom aplikacji na " + url + ". Tre\u015b\u0107 b\u0142\u0119du to: " + error;
+      return "Sesjonen din er tapt. Vennligst rapporter denne feilen til utviklerne p\xe5 " + url + ". Feilmeldingen er: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Aplikacja spr\xf3buje teraz odzyska\u0107 Twoj\u0105 sesj\u0119 z kopii zapasowej. Prosimy zg\u0142osi\u0107 ten b\u0142\u0105d autorom aplikacji na " + url + ". Tre\u015b\u0107 b\u0142\u0119du to: " + error;
+      return "Appen pr\xf8ver n\xe5 \xe5 gjenopprette \xf8kten din fra sikkerhetskopien. Rapporter denne feilen til utviklerne p\xe5 " + url + ". Feilmeldingen er: " + error;
     },
     get$sendReadReceipts() {
-      return "Wysy\u0142aj powiadomienia o przeczytaniu wiadomo\u015bci";
+      return "Send lesebekreftelser";
     },
     get$sendTypingNotificationsDescription() {
-      return "Pozostali uczestnicy czatu mog\u0105 widzie\u0107 kiedy piszesz now\u0105 wiadomo\u015b\u0107.";
+      return "Andre deltakere i en chat kan se n\xe5r du skriver en ny melding.";
     },
     get$sendReadReceiptsDescription() {
-      return "Pozostali uczestnicy czatu mog\u0105 widzie\u0107 zobaczy\u0107 kiedy przeczytasz wiadomo\u015b\u0107.";
+      return "Andre deltakere i en chat kan se n\xe5r du har lest en melding.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Zweryfikuj inne urz\u0105dzenie";
+      return "\ud83d\udd10 Verifiser annen enhet";
     },
     get$verifyOtherDeviceDescription() {
-      return "Je\u015bli zweryfikujesz inne urz\u0105dzenie, b\u0119dzie mog\u0142o ono wymieni\u0107 klucze z dotychczasowym, zwi\u0119kszaj\u0105c og\xf3lne bezpiecze\u0144stwo. \ud83d\udcaa Kiedy rozpoczniesz weryfikacj\u0119, na obu urz\u0105dzeniach wy\u015bwietli si\u0119 okno dialogowe. Zobaczysz w nim seri\u0119 emotikon\xf3w lub numery do por\xf3wnania. Najlepiej mie\u0107 oba urz\u0105dzenia pod r\u0119k\u0105 przed rozpocz\u0119ciem weryfikacji. \ud83e\udd33";
+      return "N\xe5r du verifiserer en annen enhet, kan disse enhetene utveksle n\xf8kler, noe som \xf8ker din totale sikkerhet. \ud83d\udcaa N\xe5r du starter en verifisering, vil en popup vises i appen p\xe5 begge enhetene. Der vil dere se en serie av emojis eller tall som dere m\xe5 sammenligne.\nDet er best \xe5 ha begge enhetene tilgjengelig f\xf8r du starter verifiseringen. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " zaakceptowa\u0142/-a weryfikacj\u0119 kluczy";
+      return sender + " godtok n\xf8kkelverifisering";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " anulowa\u0142/-a weryfikacj\u0119 kluczy";
+      return sender + " avbr\xf8t n\xf8kkelverifisering";
     },
     completedKeyVerification$1(sender) {
-      return sender + " zako\u0144czy\u0142/-a weryfikacj\u0119 kluczy";
+      return sender + " fullf\xf8rte n\xf8kkelverifisering";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " jest gotowy/-a do weryfikacji kluczy";
+      return sender + " er klar for n\xf8kkelverifisering";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " poprosi\u0142/-a o weryfikacj\u0119 kluczy";
+      return sender + " har bedt om n\xf8kkelverifisering";
     },
     startedKeyVerification$1(sender) {
-      return sender + " rozpocz\u0105\u0142/-\u0119\u0142a weryfikacj\u0119 kluczy";
+      return sender + " startet n\xf8kkelverifisering";
     },
     get$commandHint_ignore() {
-      return "Ignoruj podany identyfikator Matrix";
+      return "Ignorer den oppgitte matrix IDen";
     },
     get$commandHint_unignore() {
-      return "Przesta\u0144 ignorowa\u0107 podany identyfikator Matrix";
+      return "Opphev ignorering av den gitte matrix IDen";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Obecnie jest " + count + " zablokowanych u\u017cytkownik\xf3w.";
+      return "Akkurat n\xe5 er det " + count + " blokkerte brukere.";
     },
     get$restricted() {
-      return "Ograniczone";
+      return "Begrenset";
     },
     get$markAsUnread() {
-      return "Oznacz jako nieprzeczytane";
+      return "Marker som ulest";
     },
     userLevel$1(level) {
-      return "" + level + " - U\u017cytkownik";
+      return "" + level + " - Bruker";
     },
     moderatorLevel$1(level) {
       return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Administrator";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Zmie\u0144 widoczno\u015b\u0107 historii czatu";
+      return "Endre synligheten til chatloggen";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Zmie\u0144 g\u0142\xf3wny publiczny czatu";
+      return "Endre hovedadressen til den offentlige chatten";
     },
     get$sendRoomNotifications() {
-      return "Wysy\u0142aj powiadomienia @room";
+      return "Send en @room varsling";
     },
     get$chatPermissionsDescription() {
-      return "Ustal jaki poziom uprawnie\u0144 jest wymagany dla okre\u015blonych czynno\u015bci w czacie. Poziomy uprawnie\u0144 0, 50 i 100 zwykle dotycz\u0105 odpowiednio u\u017cytkownik\xf3w, moderator\xf3w i administrator\xf3w, ale mo\u017cliwa jest dowolna gradacja.";
+      return "Definer hvilket maktniv\xe5 som er n\xf8dvendig for visse handlinger i denne chatten. Maktniv\xe5ene 0, 50 og 100 representerer vanligvis brukere, moderatorer og administratorer, men alle grader er mulige.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Zainstalowano aktualizacj\u0119 do wersji " + version + "!";
+      return "\ud83c\udf89 Oppdatering " + version + " installert!";
     },
     get$sendCanceled() {
-      return "Anulowano wysy\u0142anie";
+      return "Sending avbrutt";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Wydaje si\u0119 nie by\u0107 kompatybilnym serwerem domowym. Niepoprawny adres URL?";
+      return "Ser ikke ut til \xe5 v\xe6re en kompatibel hjemmeserver. Feil URL?";
     },
     get$calculatingFileSize() {
-      return "Obliczanie rozmiaru pliku...";
+      return "Beregner filst\xf8rrelse...";
     },
     get$prepareSendingAttachment() {
-      return "Przygotuj wysy\u0142anie za\u0142\u0105cznika...";
+      return "Forbered sending av vedlegg...";
     },
     get$sendingAttachment() {
-      return "Wysy\u0142anie za\u0142\u0105cznika...";
+      return "Sender vedlegg...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Wysy\u0142anie " + index + " z " + $length + " cz\u0119\u015bci za\u0142\u0105cznika...";
+      return "Sender vedlegg " + index + " av " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Osi\u0105gni\u0119to limit serwera. Czekanie " + seconds + " sekund...";
+      return "Grensen for server er n\xe5dd! Venter i " + seconds + " sekunder...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Uwaga: Urz\u0105dzenia dodane do kopii zapasowej czatu automatycznie zostaj\u0105 zweryfikowane.";
+      return "Merk: N\xe5r du kobler alle enhetene dine til chat-sikkerhetskopien, blir de automatisk bekreftet.";
     },
     get$continueText() {
-      return "Kontynuuj";
+      return "Fortsett";
     },
     get$blur(_) {
-      return "Rozmazanie:";
+      return "Uskarphet:";
     },
     get$opacity(_) {
-      return "Przezroczysto\u015b\u0107:";
+      return "Ugjennomsiktighet:";
     },
     get$setWallpaper() {
-      return "Ustaw tapet\u0119";
+      return "Sett bakgrunnsbilde";
     },
     get$noContactInformationProvided() {
-      return "Serwer nie dostarcza \u017cadnych poprawnych danych kontaktowych";
+      return "Serveren oppgir ingen gyldig kontaktinformasjon";
     },
     get$contactServerAdmin() {
-      return "Skontaktuj si\u0119 z administratorem serwera";
+      return "Kontakt serveradministrator";
     },
     get$contactServerSecurity() {
-      return "Skontaktuj si\u0119 z dzia\u0142em bezpiecze\u0144stwa serwera";
+      return "Kontakt serverens sikkerhet";
     },
     get$supportPage() {
-      return "Strona obs\u0142ugi u\u017cytkownika";
+      return "Supportside";
     },
     get$serverInformation() {
-      return "Informacje o serwerze:";
+      return "Serverinformasjon:";
     },
     get$name(_) {
-      return "Nazwa";
+      return "Navn";
     },
     get$version(_) {
-      return "Wersja";
+      return "Versjon";
     },
     get$website() {
-      return "Strona internetowa";
+      return "Nettside";
     },
     get$compress() {
-      return "Skompresuj";
+      return "Komprimer";
     },
     get$boldText() {
-      return "Pogrubienie";
+      return "Fet skrift";
     },
     get$italicText() {
-      return "Kursywa";
+      return "Kursiv tekst";
     },
     get$strikeThrough() {
-      return "Przekre\u015blenie";
+      return "Gjennomstreking";
     },
     get$pleaseFillOut() {
-      return "Prosz\u0119 wype\u0142ni\u0107";
+      return "Vennligst fyll ut";
     },
     get$invalidUrl() {
-      return "Niepoprawny adres URL";
+      return "Ugyldig url";
     },
     get$addLink() {
-      return "Dodaj link";
+      return "Legg til lenke";
     },
     get$unableToJoinChat() {
-      return "Nie uda\u0142o si\u0119 do\u0142\u0105czy\u0107 do czatu. Mo\u017ce druga strona zako\u0144czy\u0142a ju\u017c rozmow\u0119?";
+      return "Kan ikke bli med i chatten. Kanskje den andre parten allerede har lukket samtalen.";
     },
     get$previous() {
-      return "Poprzedni";
+      return "Forrige";
     },
     get$otherPartyNotLoggedIn() {
-      return "Druga strona nie jest obecnie zalogowana i dlatego nie mo\u017ce odbiera\u0107 wiadomo\u015bci!";
+      return "Den andre parten er ikke logget inn og kan derfor ikke motta meldinger!";
     },
     get$open(_) {
-      return "Otw\xf3rz";
+      return "\xc5pne";
     },
     get$waitingForServer() {
-      return "Oczekiwanie na serwer...";
+      return "Venter p\xe5 server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Nowa pro\u015bba o czat";
+      return "\ud83d\udce9 Ny chatforesp\xf8rsel";
     },
     get$contentNotificationSettings() {
-      return "Ustawienia powiadomie\u0144 o tre\u015bci";
+      return "Innstillinger for innholdsvarslinger";
     },
     get$generalNotificationSettings() {
-      return "Og\xf3lne ustawienia powiadomie\u0144";
+      return "Generelle varslingsinnstillinger";
     },
     get$roomNotificationSettings() {
-      return "Ustawienia powiadomie\u0144 w pokoju";
+      return "Innstillinger for romvarsler";
     },
     get$userSpecificNotificationSettings() {
-      return "Ustawienia powiadomie\u0144 dla u\u017cytkownika";
+      return "Brukerspesifikke varslingsinnstillinger";
     },
     get$otherNotificationSettings() {
-      return "Inne ustawienia powiadomie\u0144";
+      return "Andre varslingsinnstillinger";
     },
     get$notificationRuleContainsUserName() {
-      return "W\u0142\u0105cz dla wiadomo\u015bci z nazw\u0105 u\u017cytkownika";
+      return "Inneholder brukernavn";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "W\u0142\u0105cza powiadomienia kiedy wiadomo\u015b\u0107 zawiera Twoj\u0105 nazw\u0119 u\u017cytkownika.";
+      return "Varsler bruker n\xe5r en melding inneholder ens brukernavn.";
     },
     get$notificationRuleMaster() {
-      return "Wy\u0142\u0105cz wszystkie powiadomienia";
+      return "Demp alle varslinger";
     },
     get$notificationRuleMasterDescription() {
-      return "Zast\u0119puje inne regu\u0142y i wy\u0142\u0105cza wszystkie powiadomienia.";
+      return "Overstyrer alle andre regler og deaktiverer alle varsler.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Wy\u0142\u0105cz dla automatycznych wiadomo\u015bci";
+      return "Undertrykk automatiserte meldinger";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Wy\u0142\u0105cza powiadomienia z automatycznych klient\xf3w, takich jak boty.";
+      return "Demper varsler fra automatiserte klienter som roboter.";
     },
     get$notificationRuleInviteForMe() {
-      return "W\u0142\u0105cz dla zaprosze\u0144";
+      return "Inviter for meg";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "W\u0142\u0105cza powiadomienia o zaproszeniach do pokoju.";
+      return "Varsler bruker n\xe5r en blir invitert til et rom.";
     },
     get$notificationRuleMemberEvent() {
-      return "Wy\u0142\u0105cz dla zmian cz\u0142onkostwa";
+      return "Medlemsarrangement";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Wy\u0142\u0105cza powiadomienia o zmianach cz\u0142onkostwa w pokoju.";
+      return "Undertrykker varsler for medlemsarrangementer.";
     },
     get$notificationRuleIsUserMention() {
-      return "W\u0142\u0105cz dla wzmianek";
+      return "Brukeromtale";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "W\u0142\u0105cza powiadomienia o byciu wzmiankowanym w wiadomo\u015bci.";
+      return "Varsler brukeren n\xe5r de er direkte nevnt i en melding.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "W\u0142\u0105cz dla wiadomo\u015bci z nazw\u0105 wy\u015bwietlan\u0105";
+      return "Inneholder visningsnavn";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "W\u0142\u0105cza powiadomienia o wiadomo\u015bciach zawieraj\u0105cych Twoj\u0105 nazw\u0119 wy\u015bwietlan\u0105.";
+      return "Varsler brukeren n\xe5r en melding inneholder ens visningsnavnet.";
     },
     get$notificationRuleIsRoomMention() {
-      return "W\u0142\u0105cz dla wzmianek pokoju";
+      return "Romomtale";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "W\u0142\u0105cza powiadomienia o wzmiankowaniu ca\u0142ego pokoju.";
+      return "Varsler brukeren n\xe5r det er en romomtale.";
     },
     get$notificationRuleRoomnotif() {
-      return "W\u0142\u0105cz dla powiadomie\u0144 w pokoju";
+      return "Romvarsel";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "W\u0142\u0105cza powiadomienia o wiadomo\u015bciach zawieraj\u0105cych \u201e@room\u201d.";
+      return "Varsler brukeren n\xe5r en melding inneholder \u2018@room\u2019.";
     },
     get$notificationRuleTombstone() {
-      return "W\u0142\u0105cz dla \u201enagrobk\xf3w\u201d";
+      return "Gravstein";
     },
     get$notificationRuleTombstoneDescription() {
-      return "W\u0142\u0105cza powiadomienia o komunikatach dezaktywacji pokoj\xf3w.";
+      return "Varsler brukeren om meldinger om deaktivering av rom.";
     },
     get$notificationRuleReaction() {
-      return "Wy\u0142\u0105cz dla reakcji";
+      return "Reaksjon";
     },
     get$notificationRuleReactionDescription() {
-      return "Wy\u0142\u0105cza powiadomienia o reakcjach.";
+      return "Demper varsler for reaksjoner.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Wy\u0142\u0105cz dla list kontroli dost\u0119pu serwera";
+      return "Romserverens tilgangskontrolliste";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Wy\u0142\u0105cza powiadomienia dla list kontroli dost\u0119pu (ACL) serwera.";
+      return "Undertrykker varsler for romserver tilgangskontrollister (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Wy\u0142\u0105cz dla edycji";
+      return "Demp redigeringer";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Wy\u0142\u0105cza powiadomienia o edycjach wiadomo\u015bci.";
+      return "Demper varsler for redigerte meldinger.";
     },
     get$notificationRuleCall() {
-      return "W\u0142\u0105cz dla po\u0142\u0105cze\u0144";
+      return "Anrop";
     },
     get$notificationRuleCallDescription() {
-      return "W\u0142\u0105cza powiadomienia o przychodz\u0105cych po\u0142\u0105czeniach.";
+      return "Varsler brukeren om anrop.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "W\u0142\u0105cz dla szyfrowanych pokoj\xf3w \u201ejeden na jeden\u201d";
+      return "Kryptert rom \xe9n-til-\xe9n";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "W\u0142\u0105cza powiadomienia o wiadomo\u015bciach w szyfrowanych pokojach \u201ejeden na jeden\u201d (one-to-one).";
+      return "Varsler brukeren om meldinger i krypterte en-til-en-rom.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "W\u0142\u0105cz dla pokoj\xf3w \u201ejeden na jeden\u201d";
+      return "Rom \xe9n-til-\xe9n";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "W\u0142\u0105cza powiadomienia o wiadomo\u015bciach w pokojach \u201ejeden na jeden\u201d (one-to-one).";
+      return "Varsler brukeren om meldinger i \xe9n-til-\xe9n-rom.";
     },
     get$notificationRuleMessage() {
-      return "W\u0142\u0105cz dla wiadomo\u015bci";
+      return "Melding";
     },
     get$notificationRuleMessageDescription() {
-      return "W\u0142\u0105cza powiadomienia o og\xf3lnych wiadomo\u015bciach.";
+      return "Varsler brukeren om generelle meldinger.";
     },
     get$notificationRuleEncrypted() {
-      return "W\u0142\u0105cz dla zaszyfrowanych pokoj\xf3w";
+      return "Kkryptert";
     },
     get$notificationRuleEncryptedDescription() {
-      return "W\u0142\u0105cza powiadomienia o wiadomo\u015bciach w zaszyfrowanych pokojach.";
+      return "Varsler brukeren om meldinger i krypterte rom.";
     },
     get$notificationRuleJitsi() {
-      return "W\u0142\u0105cz dla Jitsi";
+      return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "W\u0142\u0105cza powiadomienia o komunikatach wid\u017cet\xf3w Jitsi.";
+      return "Varsler brukeren om hendelser i Jitsi-widgeten.";
     },
     get$notificationRuleServerAcl() {
-      return "Wy\u0142\u0105cz dla komunikat\xf3w o listach kontroli dost\u0119pu serwera";
+      return "Undertrykk server-ACL hendelser";
     },
     get$notificationRuleServerAclDescription() {
-      return "Wy\u0142\u0105cza powiadomienia o komunikatach o listach kontroli dost\u0119pu (ACL) serwera.";
+      return "Undertrykker varsler for server-ACL hendelser.";
     },
     unknownPushRule$1(rule) {
-      return "Nieznana regu\u0142a: '" + rule + "'";
+      return "Ukjent push-regel '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Wiadomo\u015b\u0107 g\u0142osowa od: " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " \u2013 Talemelding fra " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Je\u015bli skasujesz to ustawienie powiadomie\u0144, nie b\u0119dzie si\u0119 da\u0142o tego cofn\u0105\u0107.";
+      return "Hvis du sletter denne varslingsinnstillingen, kan du ikke angre dette.";
     },
     get$more() {
-      return "Wi\u0119cej";
+      return "Mer";
     },
     get$shareKeysWith() {
-      return "Udost\u0119pnij klucze...";
+      return "Del n\xf8kler med...";
     },
     get$shareKeysWithDescription() {
-      return "Kt\xf3re urz\u0105dzenia powinny by\u0107 zaufane, aby mog\u0142y odczytywa\u0107 Twoje wiadomo\u015bci w zaszyfrowanych czatach?";
+      return "Hvilke enheter b\xf8r man stole p\xe5, slik at de kan lese meldingene dine i krypterte chatter?";
     },
     get$allDevices() {
-      return "Wszystkie urz\u0105dzenia";
+      return "Alle enheter";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Urz\u0105dzenia zweryfikowane krzy\u017cowo, je\u015bli w\u0142\u0105czone";
+      return "Kryssbekreftede enheter hvis dette er aktivert";
     },
     get$crossVerifiedDevices() {
-      return "Urz\u0105dzenia zweryfikowane krzy\u017cowo";
+      return "Kryssverifiserte enheter";
     },
     get$verifiedDevicesOnly() {
-      return "Tylko zweryfikowane urz\u0105dzenia";
+      return "Bare verifiserte enheter";
     },
     get$optionalMessage() {
-      return "(Opcjonalna) wiadomo\u015b\u0107...";
+      return "(Valgfritt) melding...";
     },
     get$notSupportedOnThisDevice() {
-      return "Niewspierane na tym urz\u0105dzeniu";
+      return "Ikke st\xf8ttet p\xe5 denne enheten";
     },
     get$enterNewChat() {
-      return "Do\u0142\u0105cz do nowego czatu";
+      return "Bli med i ny chat";
     },
     get$approve() {
-      return "Zaakceptuj";
+      return "Godkjenn";
     },
     get$youHaveKnocked() {
-      return "Zapuka\u0142e\u015b/-a\u015b";
+      return "Du har ringt p\xe5";
     },
     get$commandHint_logout() {
-      return "Wyloguj bie\u017c\u0105ce urz\u0105dzenie";
+      return "Logg av din n\xe5v\xe6rende enhet";
     },
     get$commandHint_logoutall() {
-      return "Wyloguj wszystkie aktywne urz\u0105dzenia";
+      return "Logg ut alle aktive enheter";
     },
     get$moreEvents() {
-      return "Wi\u0119cej zdarze\u0144";
+      return "Flere hendelser";
     },
     get$declineInvitation() {
-      return "Odrzu\u0107 zaproszenie";
+      return "Avsl\xe5 invitasjon";
     },
     get$noMessagesYet() {
-      return "No messages yet";
+      return "Ingen meldinger enda";
     },
     get$longPressToRecordVoiceMessage() {
-      return "Long press to record voice message.";
+      return "Langt trykk for \xe5 spille inn talemelding.";
     },
     get$pause(_) {
       return "Pause";
     },
     get$resume(_) {
-      return "Resume";
+      return "Gjenoppta";
     },
     countChats$1(chats) {
       return "" + chats + " chats";
     },
     get$startPoll() {
-      return "Start poll";
+      return "Start avstemning";
     },
     get$endPoll() {
-      return "End poll";
+      return "Avslutt avstemning";
     },
     get$answersVisible() {
-      return "Answers visible";
+      return "Svar synlige";
     },
     get$pollQuestion() {
-      return "Poll question";
+      return "Avstemningssp\xf8rsm\xe5l";
     },
     get$answerOption() {
-      return "Answer option";
+      return "Svaralternativ";
     },
     get$addAnswerOption() {
-      return "Add answer option";
+      return "Legg til svaralternativ";
     },
     get$allowMultipleAnswers() {
-      return "Allow multiple answers";
+      return "Tillat flere svar";
     },
     get$pollHasBeenEnded() {
-      return "Poll has been ended";
+      return "Avstemningen er avsluttet";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One vote", "" + count + " votes", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\xc9n stemme", "" + count + " stemmer", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "Answers will be visible when poll has ended";
+      return "Svarene vil v\xe6re synlige n\xe5r avstemningen er avsluttet";
     },
     get$replyInThread() {
-      return "Reply in thread";
+      return "Svar i tr\xe5den";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One reply", "" + count + " replies", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "En svar", "" + count + " svar", _null, _null);
     },
     get$thread() {
-      return "Thread";
+      return "Tr\xe5d";
     },
     get$backToMainChat() {
-      return "Back to main chat";
+      return "Tilbake til hovedchatten";
     },
     get$saveChanges() {
-      return "Zapisz zmiany";
+      return "Lagre endringer";
     },
     get$createSticker() {
-      return "Create sticker or emoji";
+      return "Lag klistremerke eller emoji";
     },
     get$useAsSticker() {
-      return "Use as sticker";
+      return "Bruk som klistremerke";
     },
     get$useAsEmoji() {
-      return "Use as emoji";
+      return "Bruk som emoji";
     },
     get$stickerPackNameAlreadyExists() {
-      return "Sticker pack name already exists";
+      return "Klistremerke-pakkens navn finnes allerede";
     },
     get$newStickerPack() {
-      return "New sticker pack";
+      return "Ny klistremerke-pakke";
     },
     get$stickerPackName() {
-      return "Sticker pack name";
+      return "Klistremerke-pakkens navn";
     },
     get$attribution(_) {
-      return "Attribution";
+      return "Attribusjon";
     },
     get$skipChatBackup() {
-      return "Skip chat backup";
+      return "Hopp over sikkerhetskopiering av chat";
     },
     get$skipChatBackupWarning() {
-      return "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.";
+      return "Er du sikker? Uten \xe5 aktivere chat-sikkerhetskopi kan du miste tilgangen til meldingene dine hvis du bytter enhet.";
     },
     get$loadingMessages() {
-      return "Loading messages";
+      return "Laster inn meldinger";
     },
     get$setupChatBackup() {
-      return "Set up chat backup";
+      return "Konfigurer sikkerhetskopi av chat";
     },
     get$noMoreResultsFound() {
-      return "No more results found";
+      return "Ingen flere resultater funnet";
     },
     chatSearchedUntil$1(time) {
-      return "Chat searched until " + time;
+      return "Chat s\xf8kt til " + time;
     },
     get$federationBaseUrl() {
-      return "Federation Base URL";
+      return "F\xf8derasjonsbasis-URL";
     },
     get$clientWellKnownInformation() {
-      return "Client-Well-Known Information:";
+      return "Klient-Vel-Kjent Informasjon:";
     },
     get$baseUrl() {
-      return "Base URL";
+      return "Basis-URL";
     },
     get$identityServer() {
-      return "Identity Server:";
+      return "Identitetsserver:";
     },
     versionWithNumber$1(version) {
-      return "Version: " + version;
+      return "Versjon: " + version;
     },
     get$logs() {
-      return "Logs";
+      return "Logger";
     },
     get$advancedConfigs() {
-      return "Advanced Configs";
+      return "Avanserte konfigurasjoner";
     },
     get$advancedConfigurations() {
-      return "Advanced configurations";
+      return "Avanserte konfigurasjoner";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Piszesz w " + l1 + " lub " + l2 + "...";
+      return "Skriv inn " + l1 + " eller " + l2 + "...";
     },
     get$holdForInfo() {
-      return "Kliknij i przytrzymaj, aby uzyska\u0107 informacje o s\u0142owie.";
+      return "Klikk og hold for ordinformasjon.";
     },
     get$gaTooltip() {
-      return "L2 u\u017cycie z pomoc\u0105 gramatyczn\u0105";
+      return "L2 bruk med grammatikkhjelp";
     },
     get$taTooltip() {
-      return "L2 u\u017cycie z pomoc\u0105 t\u0142umaczeniow\u0105";
+      return "L2 bruk med oversettelseshjelp";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interaktywny T\u0142umacz";
+      return "Interaktiv oversetter";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interaktywny Sprawdzacz Gramatyczny";
+      return "Interaktiv grammatikkontroll";
     },
     get$waTooltip() {
-      return "L2 u\u017cycie bez pomocy";
+      return "L2 bruk uten hjelp";
     },
     get$noIdenticalLanguages() {
-      return "Prosz\u0119 wybra\u0107 r\xf3\u017cne j\u0119zyki bazowe i docelowe";
+      return "Vennligst velg ulike grunn- og m\xe5lspr\xe5k";
     },
     get$joinWithClassCode() {
-      return "Do\u0142\u0105cz do kursu";
+      return "Bli med i kurs";
     },
     get$languageLevelPreA1() {
-      return "Nowicjusz Niski (Pre A1)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Nowicjusz \u015arodkowy (A1)";
+      return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Nowicjusz Wysoki (A2)";
+      return "Nybegynner H\xf8y (A2)";
     },
     get$languageLevelB1() {
-      return "\u015aredniozaawansowany \u015aredni (B1)";
+      return "Moderat Mid (B1)";
     },
     get$languageLevelB2() {
-      return "Zaawansowany Niski (B2)";
+      return "Avansert Lav (B2)";
     },
     get$languageLevelC1() {
-      return "Zaawansowany \u015aredni (C1)";
+      return "Avansert Mid (C1)";
     },
     get$languageLevelC2() {
-      return "Wy\u017cszy (C2)";
+      return "Overlegen (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Zmie\u0144 nazw\u0119";
+      return "Endre navnet";
     },
     get$changeTheNameOfTheChat() {
-      return "Zmie\u0144 nazw\u0119 czatu";
+      return "Endre navnet p\xe5 chatten";
     },
     get$sorryNoResults() {
-      return "Przepraszamy, brak wynik\xf3w.";
+      return "Beklager, ingen resultater.";
     },
     get$ignoreInThisText() {
-      return "Zignoruj";
+      return "Ignorer";
     },
     needsItMessage$1(targetLanguage) {
-      return "Czekaj, to nie jest " + targetLanguage + "! Czy potrzebujesz pomocy w t\u0142umaczeniu?";
+      return "Vent, det er ikke " + targetLanguage + "! Trenger du hjelp med oversettelsen?";
     },
     get$countryInformation() {
-      return "Moje pa\u0144stwo";
+      return "Mitt land";
     },
     get$targetLanguage() {
-      return "J\u0119zyk docelowy";
+      return "M\xe5lspr\xe5k";
     },
     get$updateLanguage() {
-      return "Moje j\u0119zyki";
+      return "Mine spr\xe5k";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Jakiego j\u0119zyka chcesz si\u0119 nauczy\u0107?";
+      return "Hvilket spr\xe5k vil du l\xe6re?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Jaki jest Tw\xf3j j\u0119zyk bazowy?";
+      return "Hva er ditt hovedspr\xe5k?";
     },
     get$publicProfileTitle() {
-      return "Pozw\xf3l, aby m\xf3j profil by\u0142 znajdowany w wyszukiwarce";
+      return "La profilen min bli funnet i s\xf8k";
     },
     get$publicProfileDesc() {
-      return "W\u0142\u0105czaj\u0105c t\u0119 opcj\u0119, umo\u017cliwiasz innym u\u017cytkownikom znalezienie Twojego profilu w globalnej wyszukiwarce i wysy\u0142anie zapyta\u0144 do czatu. W tym momencie mo\u017cesz zaakceptowa\u0107 lub odrzuci\u0107 zapytanie.";
+      return "Ved \xe5 sl\xe5 p\xe5 dette, gj\xf8r du det mulig for andre brukere \xe5 finne profilen din i den globale s\xf8kefeltet og sende foresp\xf8rsler om chat. P\xe5 dette tidspunktet kan du velge \xe5 godta eller avvise foresp\xf8rselen.";
     },
     get$errorDisableIT() {
-      return "Pomoc w t\u0142umaczeniu jest wy\u0142\u0105czona.";
+      return "Oversettelsesassistanse er sl\xe5tt av.";
     },
     get$errorDisableIGC() {
-      return "Pomoc gramatyczna jest wy\u0142\u0105czona.";
+      return "Grammatikkhjelp er sl\xe5tt av.";
     },
     get$errorDisableITUserDesc() {
-      return "Kliknij tutaj, aby zaktualizowa\u0107 ustawienia pomocy w t\u0142umaczeniu";
+      return "Klikk her for \xe5 oppdatere innstillingene for oversettelseshjelp";
     },
     get$errorDisableIGCUserDesc() {
-      return "Kliknij tutaj, aby zaktualizowa\u0107 ustawienia pomocy gramatycznej";
+      return "Klikk her for \xe5 oppdatere innstillingene for grammatikkhjelp";
     },
     get$errorDisableITClassDesc() {
-      return "Pomoc w t\u0142umaczeniu jest wy\u0142\u0105czona dla kursu, w kt\xf3rym znajduje si\u0119 ten czat.";
+      return "Oversettelseshjelp er sl\xe5tt av for kurset som denne chatten er i.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Pomoc gramatyczna jest wy\u0142\u0105czona dla kursu, w kt\xf3rym znajduje si\u0119 ten czat.";
+      return "Grammatikkhjelp er sl\xe5tt av for kurset som denne chatten er i.";
     },
     get$error405Title() {
-      return "J\u0119zyki nie ustawione";
+      return "Spr\xe5k ikke satt";
     },
     get$error405Desc() {
-      return "Ustaw swoje j\u0119zyki w menu g\u0142\xf3wnym > Ustawienia nauki.";
+      return "Vennligst sett spr\xe5kene dine i Hovedmeny > L\xe6ringsinnstillinger.";
     },
     get$termsAndConditions() {
-      return "Warunki i zasady";
+      return "Vilk\xe5r og betingelser";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " oraz potwierdzam, \u017ce mam co najmniej 16 lat.";
+      return " og bekrefter at jeg er minst 16 \xe5r gammel.";
     },
     get$error502504Title() {
-      return "Wow, jest wielu uczni\xf3w online!";
+      return "Wow, det er mange elever p\xe5logget!";
     },
     get$error502504Desc() {
-      return "Narz\u0119dzia do t\u0142umacze\u0144 i sprawdzania gramatyki mog\u0105 dzia\u0142a\u0107 wolno lub by\u0107 niedost\u0119pne, podczas gdy boty Pangea nad\u0105\u017caj\u0105 za ruchem.";
+      return "Oversettelses- og grammatikkverkt\xf8y kan v\xe6re trege eller utilgjengelige mens Pangea-botene tar igjen.";
     },
     get$error404Title() {
-      return "B\u0142\u0105d t\u0142umaczenia!";
+      return "Oversettelsesfeil!";
     },
     get$error404Desc() {
-      return "Bot Pangea nie jest pewien, jak to przet\u0142umaczy\u0107...";
+      return "Pangea Bot er ikke sikker p\xe5 hvordan den skal oversette det...";
     },
     get$errorPleaseRefresh() {
-      return "Pracujemy nad tym! Od\u015bwie\u017c stron\u0119 i spr\xf3buj ponownie.";
+      return "Vi unders\xf8ker det! Vennligst last inn siden p\xe5 nytt og pr\xf8v igjen.";
     },
     get$connectedToStaging() {
-      return "Po\u0142\u0105czono z wersj\u0105 testow\u0105";
+      return "Tilkoblet til staging";
     },
     get$learningSettings() {
-      return "Ustawienia nauki";
+      return "L\xe6ringsinnstillinger";
     },
     get$participants() {
-      return "Uczestnicy";
+      return "Deltakere";
     },
     get$clickMessageTitle() {
-      return "Potrzebujesz pomocy?";
+      return "Trenger du hjelp?";
     },
     get$clickMessageBody() {
-      return "Kliknij wiadomo\u015b\u0107, aby uzyska\u0107 narz\u0119dzia j\u0119zykowe, takie jak t\u0142umaczenie, odtwarzanie i wi\u0119cej!";
+      return "Klikk p\xe5 en melding for spr\xe5kv\xe5kt\xf8y som oversettelse, avspilling og mer!";
     },
     get$allDone() {
-      return "Wszystko gotowe!";
+      return "Ferdig!";
     },
     get$vocab() {
-      return "S\u0142ownictwo";
+      return "Ordforr\xe5d";
     },
     get$subscribe(_) {
-      return "Subskrybuj";
+      return "Abonner";
     },
     get$getAccess() {
-      return "Subskrybuj teraz!";
+      return "Abonner n\xe5!";
     },
     get$subscriptionDesc() {
-      return "Wiadomo\u015bci s\u0105 bezp\u0142atne! Subskrybuj, aby odblokowa\u0107 interaktywny t\u0142umaczenie, sprawdzanie gramatyki i analityk\u0119 nauki.";
+      return "Meldingsutveksling er gratis! Abonner for \xe5 l\xe5se opp interaktiv oversettelse, grammatikkontroll og l\xe6ringsanalyse.";
     },
     get$subscriptionManagement() {
-      return "Zarz\u0105dzanie subskrypcj\u0105";
+      return "Abonnementsadministrasjon";
     },
     get$currentSubscription() {
-      return "Obecna subskrypcja";
+      return "N\xe5v\xe6rende abonnement";
     },
     get$cancelSubscription() {
-      return "Anuluj subskrypcj\u0119";
+      return "Avbryt abonnementet ditt";
     },
     get$selectYourPlan() {
-      return "Wybierz sw\xf3j plan";
+      return "Velg planen din";
     },
     get$subsciptionPlatformTooltip() {
-      return "Zaloguj si\u0119 na swoim oryginalnym urz\u0105dzeniu, aby zarz\u0105dza\u0107 planem subskrypcji";
+      return "Vennligst logg inn p\xe5 din opprinnelige enhet for \xe5 administrere abonnementet ditt";
     },
     get$subscriptionManagementUnavailable() {
-      return "Zarz\u0105dzanie subskrypcj\u0105 niedost\u0119pne";
+      return "Administrasjon av abonnement er ikke tilgjengelig";
     },
     get$paymentMethod() {
-      return "Metoda p\u0142atno\u015bci";
+      return "Betalingsmetode";
     },
     get$paymentHistory() {
-      return "Historia p\u0142atno\u015bci";
+      return "Betalingshistorikk";
     },
     get$emptyChatDownloadWarning() {
-      return "Nie mo\u017cna pobra\u0107 pustego czatu";
+      return "Kan ikke laste ned tom chat";
     },
     get$toggleImmersionMode() {
-      return "Tryb zanurzenia";
+      return "Nedsenkingsmodus";
     },
     get$toggleImmersionModeDesc() {
-      return "Po w\u0142\u0105czeniu wszystkie wiadomo\u015bci b\u0119d\u0105 wy\u015bwietlane w Twoim j\u0119zyku docelowym. To ustawienie jest najbardziej przydatne podczas wymiany j\u0119zykowej.";
+      return "N\xe5r den er aktivert, vises alle meldinger p\xe5 m\xe5lspr\xe5ket ditt. Denne innstillingen er mest nyttig i spr\xe5kutvekslinger.";
     },
     get$itToggleDescription() {
-      return "To narz\u0119dzie do nauki j\u0119zyk\xf3w zidentyfikuje s\u0142owa w Twoim j\u0119zyku podstawowym i pomo\u017ce Ci je przet\u0142umaczy\u0107 na j\u0119zyk docelowy. Chocia\u017c rzadko, AI mo\u017ce pope\u0142ni\u0107 b\u0142\u0119dy w t\u0142umaczeniu.";
+      return "Dette spr\xe5kl\xe6ringsverkt\xf8yet vil identifisere ord i ditt grunnleggende spr\xe5k og hjelpe deg med \xe5 oversette dem til m\xe5lspr\xe5ket. Selv om det er sjeldent, kan AI gj\xf8re oversettelsesfeil.";
     },
     get$igcToggleDescription() {
-      return "To narz\u0119dzie do nauki j\u0119zyk\xf3w zidentyfikuje powszechne b\u0142\u0119dy ortograficzne, gramatyczne i interpunkcyjne w Twojej wiadomo\u015bci i zasugeruje poprawki. Chocia\u017c rzadko, AI mo\u017ce pope\u0142ni\u0107 b\u0142\u0119dy korekcyjne.";
+      return "Dette spr\xe5kl\xe6ringsverkt\xf8yet vil identifisere vanlige stave-, grammatikk- og tegnsettingsfeil i meldingen din og foresl\xe5 korrigeringer. Selv om det er sjeldent, kan AI gj\xf8re korrigeringsfeil.";
     },
     get$originalMessage() {
-      return "Oryginalna wiadomo\u015b\u0107";
+      return "Originalmelding";
     },
     get$sentMessage() {
-      return "Wys\u0142ana wiadomo\u015b\u0107";
+      return "Sendt melding";
     },
     get$useType() {
-      return "Typ u\u017cycia";
+      return "Brukstype";
     },
     get$notAvailable() {
-      return "Niedost\u0119pne";
+      return "Ikke tilgjengelig";
     },
     get$taAndGaTooltip() {
-      return "U\u017cycie L2 z pomoc\u0105 t\u0142umaczenia i gramatyki";
+      return "L2 bruk med oversettelseshjelp og grammatikkhjelp";
     },
     get$definitionsToolName() {
-      return "Definicje s\u0142\xf3w";
+      return "Orddefinisjoner";
     },
     get$definitionsToolDescription() {
-      return "Po w\u0142\u0105czeniu s\u0142owa podkre\u015blone na niebiesko mo\u017cna klikn\u0105\u0107, aby zobaczy\u0107 definicje. Kliknij wiadomo\u015bci, aby uzyska\u0107 dost\u0119p do definicji.";
+      return "N\xe5r det er aktivert, kan ord understreket i bl\xe5tt klikkes for definisjoner. Klikk p\xe5 meldinger for \xe5 f\xe5 tilgang til definisjoner.";
     },
     get$welcomeBack() {
-      return "Witamy ponownie! Je\u015bli bra\u0142e\u015b udzia\u0142 w pilota\u017cu 2023-2024, skontaktuj si\u0119 z nami, aby uzyska\u0107 specjaln\u0105 subskrypcj\u0119 pilota\u017cow\u0105. Je\u015bli jeste\u015b nauczycielem, kt\xf3ry (lub Twoja instytucja) zakupi\u0142 licencje dla Twojej klasy, skontaktuj si\u0119 z nami w sprawie subskrypcji nauczyciela.";
+      return "Velkommen tilbake! Hvis du var en del av pilotprosjektet 2023-2024, kontakt oss for din spesielle pilotabonnement. Hvis du er l\xe6rer som har (eller institusjonen din har) kj\xf8pt lisenser for klassen din, kontakt oss for ditt l\xe6rerabonnement.";
     },
     get$downloadTxtFile() {
-      return "Pobierz plik tekstowy";
+      return "Last ned tekstfil";
     },
     get$downloadCSVFile() {
-      return "Pobierz plik CSV";
+      return "Last ned CSV-fil";
     },
     get$promotionalSubscriptionDesc() {
-      return "Obecnie masz do\u017cywotni\u0105 subskrypcj\u0119 promocyjn\u0105. Skontaktuj si\u0119 z support@pangea.chat, aby uzyska\u0107 pomoc w zmianie subskrypcji.";
+      return "Du har for \xf8yeblikket et livstids kampanjeabonnement. Send en melding til support@pangea.chat for hjelp med \xe5 endre abonnementet ditt.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Subskrypcja zakupiona przez " + purchasePlatform;
+      return "Abonnement kj\xf8pt via " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Tydzie\u0144 pr\xf3bny";
+      return "\xc9n ukes pr\xf8veperiode";
     },
     get$downloadXLSXFile() {
-      return "Pobierz plik Excel";
+      return "Last ned Excel-fil";
     },
     get$unkDisplayName() {
-      return "Nieznany";
+      return "Ukjent";
     },
     get$wwCountryDisplayName() {
-      return "Na ca\u0142ym \u015bwiecie";
+      return "Verden";
     },
     get$afCountryDisplayName() {
-      return "Afganistan";
+      return "Afghanistan";
     },
     get$axCountryDisplayName() {
-      return "Wyspy Alandzkie";
+      return "\xc5land\xf8yene";
     },
     get$alCountryDisplayName() {
       return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "Algieria";
+      return "Algerie";
     },
     get$asCountryDisplayName() {
-      return "Samoa Ameryka\u0144skie";
+      return "Amerikansk Samoa";
     },
     get$adCountryDisplayName() {
-      return "Andora";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
       return "Angola";
@@ -1915,10 +1915,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua i Barbuda";
+      return "Antigua og Barbuda";
     },
     get$arCountryDisplayName() {
-      return "Argentyna";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
       return "Armenia";
@@ -1927,31 +1927,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Wyspa Wniebowst\u0105pienia";
+      return "Ascension-\xf8yen";
     },
     get$auCountryDisplayName() {
       return "Australia";
     },
     get$atCountryDisplayName() {
-      return "Austria";
+      return "\xd8sterrike";
     },
     get$azCountryDisplayName() {
-      return "Azerbejd\u017can";
+      return "Aserbajdsjan";
     },
     get$bsCountryDisplayName() {
-      return "Bahamy";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "Bahrajn";
+      return "Bahrain";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesz";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Bia\u0142oru\u015b";
+      return "Hviterussland";
     },
     get$beCountryDisplayName() {
       return "Belgia";
@@ -1963,34 +1963,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "Bermudy";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
       return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "Boliwia";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "Bo\u015bnia i Hercegowina";
+      return "Bosnia og Herzegovina";
     },
     get$bwCountryDisplayName() {
       return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "Brazylia";
+      return "Brasil";
     },
     get$ioCountryDisplayName() {
-      return "Brytyjskie Terytorium Oceanu Indyjskiego";
+      return "Det britiske territoriet i Det indiske hav";
     },
     get$vgCountryDisplayName() {
-      return "Brytyjskie Wyspy Dziewicze";
+      return "De britiske jomfru\xf8yene";
     },
     get$bnCountryDisplayName() {
       return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "Bu\u0142garia";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
       return "Burkina Faso";
@@ -1999,64 +1999,64 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Kambod\u017ca";
+      return "Kambodsja";
     },
     get$cmCountryDisplayName() {
       return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "Kanada";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "Wyspy Zielonego Przyl\u0105dka";
+      return "Kapp Verde";
     },
     get$bqCountryDisplayName() {
-      return "Holenderskie Antyle Karaibskie";
+      return "Karibiske Nederland";
     },
     get$kyCountryDisplayName() {
-      return "Kajmany";
+      return "Cayman\xf8yene";
     },
     get$cfCountryDisplayName() {
-      return "Republika \u015arodkowoafryka\u0144ska";
+      return "Den sentralafrikanske republikken";
     },
     get$tdCountryDisplayName() {
-      return "Czad";
+      return "Tsjad";
     },
     get$clCountryDisplayName() {
       return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "Chiny";
+      return "Kina";
     },
     get$cxCountryDisplayName() {
-      return "Wyspa Bo\u017cego Narodzenia";
+      return "Julekystallen";
     },
     get$ccCountryDisplayName() {
-      return "Wyspy Kokosowe [Keelinga]";
+      return "Kokos [Keeling]-\xf8yene";
     },
     get$coCountryDisplayName() {
-      return "Kolumbia";
+      return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "Komory";
+      return "Komorene";
     },
     get$cdCountryDisplayName() {
-      return "Demokratyczna Republika Konga";
+      return "Den demokratiske republikken Kongo";
     },
     get$cgCountryDisplayName() {
-      return "Republika Konga";
+      return "Republikken Kongo";
     },
     get$ckCountryDisplayName() {
-      return "Wyspy Cooka";
+      return "Cook\xf8yene";
     },
     get$crCountryDisplayName() {
-      return "Kostaryka";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "Wybrze\u017ce Ko\u015bci S\u0142oniowej";
+      return "Elfenbenskysten";
     },
     get$hrCountryDisplayName() {
-      return "Chorwacja";
+      return "Kroatia";
     },
     get$cuCountryDisplayName() {
       return "Kuba";
@@ -2065,43 +2065,43 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Cypr";
+      return "Kypros";
     },
     get$czCountryDisplayName() {
-      return "Republika Czeska";
+      return "Tsjekkia";
     },
     get$dkCountryDisplayName() {
-      return "Dania";
+      return "Danmark";
     },
     get$djCountryDisplayName() {
-      return "D\u017cibuti";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "Dominika";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "Republika Dominika\u0144ska";
+      return "Den dominikanske republikk";
     },
     get$tlCountryDisplayName() {
-      return "Timor Wschodni";
+      return "\xd8st-Timor";
     },
     get$ecCountryDisplayName() {
-      return "Ekwador";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "Egipt";
+      return "Egypt";
     },
     get$svCountryDisplayName() {
-      return "Salwador";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Gwinea R\xf3wnikowa";
+      return "Ekvatorial-Guinea";
     },
     get$erCountryDisplayName() {
-      return "Erytrea";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "Estonia";
+      return "Estland";
     },
     get$szCountryDisplayName() {
       return "Eswatini";
@@ -2110,25 +2110,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Etiopia";
     },
     get$fkCountryDisplayName() {
-      return "Falklandy";
+      return "Falklands\xf8yene";
     },
     get$foCountryDisplayName() {
-      return "Wyspy Owcze";
+      return "F\xe6r\xf8yene";
     },
     get$fjCountryDisplayName() {
-      return "Fid\u017ci";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "Finlandia";
+      return "Finland";
     },
     get$frCountryDisplayName() {
-      return "Francja";
+      return "Frankrike";
     },
     get$gfCountryDisplayName() {
-      return "Gujana Francuska";
+      return "Fransk Guyana";
     },
     get$pfCountryDisplayName() {
-      return "Polinezja Francuska";
+      return "Fransk Polynesia";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
@@ -2137,10 +2137,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "Gruzja";
+      return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "Niemcy";
+      return "Tyskland";
     },
     get$ghCountryDisplayName() {
       return "Ghana";
@@ -2149,58 +2149,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "Grecja";
+      return "Hellas";
     },
     get$glCountryDisplayName() {
-      return "Grenlandia";
+      return "Gr\xf8nland";
     },
     get$gdCountryDisplayName() {
       return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Gwadelupa";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
       return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "Gwatemala";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
       return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "Gwinea Conakry";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "Gwinea Bissau";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "Gujana";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
       return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Wyspy Heard i McDonalda";
+      return "Heard-\xf8yene og McDonald-\xf8yene";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "Hongkong";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "W\u0119gry";
+      return "Ungarn";
     },
     get$isCountryDisplayName() {
-      return "Islandia";
+      return "Island";
     },
     get$inCountryDisplayName() {
-      return "Indie";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "Indonezja";
+      return "Indonesia";
     },
     get$irCountryDisplayName() {
       return "Iran";
@@ -2209,55 +2209,55 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "Irlandia";
+      return "Irland";
     },
     get$imCountryDisplayName() {
-      return "Wyspa Man";
+      return "Man-\xf8yen";
     },
     get$ilCountryDisplayName() {
-      return "Izrael";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "W\u0142ochy";
+      return "Italia";
     },
     get$jmCountryDisplayName() {
-      return "Jamajka";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "Japonia";
+      return "Japan";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "Jordania";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "Kazachstan";
+      return "Kasakhstan";
     },
     get$keCountryDisplayName() {
-      return "Kenia";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
       return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "Kosowo";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "Kuwejt";
+      return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "Kirgistan";
+      return "Kirgisistan";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u0141otwa";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "Liban";
+      return "Libanon";
     },
     get$lsCountryDisplayName() {
       return "Lesotho";
@@ -2266,22 +2266,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "Libia";
+      return "Libya";
     },
     get$liCountryDisplayName() {
       return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "Litwa";
+      return "Litauen";
     },
     get$luCountryDisplayName() {
-      return "Luksemburg";
+      return "Luxembourg";
     },
     get$moCountryDisplayName() {
-      return "Makau";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "Macedonia";
+      return "Nord-Makedonia";
     },
     get$mgCountryDisplayName() {
       return "Madagaskar";
@@ -2290,10 +2290,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "Malezja";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "Malediwy";
+      return "Maldivene";
     },
     get$mlCountryDisplayName() {
       return "Mali";
@@ -2302,13 +2302,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "Wyspy Marshalla";
+      return "Marshall\xf8yene";
     },
     get$mqCountryDisplayName() {
-      return "Martynika";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "Mauretania";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
       return "Mauritius";
@@ -2317,34 +2317,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Meksyk";
+      return "Mexico";
     },
     get$fmCountryDisplayName() {
-      return "Mikronezja";
+      return "Mikronesia";
     },
     get$mdCountryDisplayName() {
-      return "Mo\u0142dawia";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "Monako";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
       return "Mongolia";
     },
     get$meCountryDisplayName() {
-      return "Czarnog\xf3ra";
+      return "Montenegro";
     },
     get$msCountryDisplayName() {
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Maroko";
+      return "Marokko";
     },
     get$mzCountryDisplayName() {
-      return "Mozambik";
+      return "Mosambik";
     },
     get$mmCountryDisplayName() {
-      return "Mjanma (Birma)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
       return "Namibia";
@@ -2356,16 +2356,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "Holandia";
+      return "Nederland";
     },
     get$ncCountryDisplayName() {
-      return "Nowa Kaledonia";
+      return "Ny-Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "Nowa Zelandia";
+      return "New Zealand";
     },
     get$niCountryDisplayName() {
-      return "Nikaragua";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
       return "Niger";
@@ -2377,16 +2377,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Wyspa Norfolk";
+      return "Norfolk\xf8yene";
     },
     get$kpCountryDisplayName() {
-      return "Korea P\xf3\u0142nocna";
+      return "Nord-Korea";
     },
     get$mpCountryDisplayName() {
-      return "Mariany P\xf3\u0142nocne";
+      return "Nord-Marianene";
     },
     get$noCountryDisplayName() {
-      return "Norwegia";
+      return "Norge";
     },
     get$omCountryDisplayName() {
       return "Oman";
@@ -2398,52 +2398,52 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Terytoria Palesty\u0144skie";
+      return "De palestinske omr\xe5dene";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papua-Nowa Gwinea";
+      return "Papua Ny-Guinea";
     },
     get$pyCountryDisplayName() {
-      return "Paragwaj";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
       return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filipiny";
+      return "Filippinene";
     },
     get$plCountryDisplayName() {
-      return "Polska";
+      return "Polen";
     },
     get$ptCountryDisplayName() {
-      return "Portugalia";
+      return "Portugal";
     },
     get$prCountryDisplayName() {
-      return "Portoryko";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "Katar";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "Reunion";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Rumunia";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "Rosja";
+      return "Russland";
     },
     get$rwCountryDisplayName() {
       return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "Saint-Barth\xe9lemy";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "Saint Helena";
+      return "Sankta Helena";
     },
     get$knCountryDisplayName() {
       return "St. Kitts";
@@ -2455,7 +2455,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre i Miquelon";
+      return "Saint Pierre og Miquelon";
     },
     get$vcCountryDisplayName() {
       return "St. Vincent";
@@ -2467,10 +2467,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "Sao Tome i Principe";
+      return "S\xe3o Tom\xe9 og Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Arabia Saudyjska";
+      return "Saudi-Arabia";
     },
     get$snCountryDisplayName() {
       return "Senegal";
@@ -2479,43 +2479,43 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Serbia";
     },
     get$scCountryDisplayName() {
-      return "Seszele";
+      return "Seychellene";
     },
     get$slCountryDisplayName() {
       return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapur";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
       return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "S\u0142owacja";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "S\u0142owenia";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "Wyspy Salomona";
+      return "Salomon\xf8yene";
     },
     get$soCountryDisplayName() {
       return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "Po\u0142udniowa Afryka";
+      return "S\xf8r-Afrika";
     },
     get$gsCountryDisplayName() {
-      return "Georgia Po\u0142udniowa i Sandwich Po\u0142udniowy";
+      return "S\xf8r-Georgia og S\xf8r-Sandwich\xf8yene";
     },
     get$krCountryDisplayName() {
-      return "Korea Po\u0142udniowa";
+      return "S\xf8r-Korea";
     },
     get$ssCountryDisplayName() {
-      return "Sudan Po\u0142udniowy";
+      return "S\xf8r-Sudan";
     },
     get$esCountryDisplayName() {
-      return "Hiszpania";
+      return "Spania";
     },
     get$lkCountryDisplayName() {
       return "Sri Lanka";
@@ -2527,28 +2527,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard i Jan Mayen";
+      return "Svalbard og Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Szwecja";
+      return "Sverige";
     },
     get$chCountryDisplayName() {
-      return "Szwajcaria";
+      return "Sveits";
     },
     get$syCountryDisplayName() {
       return "Syria";
     },
     get$twCountryDisplayName() {
-      return "Tajwan";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "Tad\u017cykistan";
+      return "Tadsjikistan";
     },
     get$tzCountryDisplayName() {
       return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "Tajlandia";
+      return "Thailand";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2560,25 +2560,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "Trynidad/Tobago";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "Tunezja";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "Turcja";
+      return "Tyrkia";
     },
     get$tmCountryDisplayName() {
       return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "Wyspy Turks i Caicos";
+      return "Turks- og Caicos\xf8yene";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "Wyspy Dziewicze Stan\xf3w Zjednoczonych";
+      return "Amerikanske Jomfru\xf8yene";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
@@ -2587,37 +2587,37 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ukraina";
     },
     get$aeCountryDisplayName() {
-      return "Zjednoczone Emiraty Arabskie";
+      return "De forente arabiske emirater";
     },
     get$gbCountryDisplayName() {
-      return "Wielka Brytania";
+      return "Storbritannia";
     },
     get$usCountryDisplayName() {
-      return "Stany Zjednoczone";
+      return "USA";
     },
     get$uyCountryDisplayName() {
-      return "Urugwaj";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "Uzbekistan";
+      return "Usbekistan";
     },
     get$vuCountryDisplayName() {
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Watykan";
+      return "Vatikanstaten";
     },
     get$veCountryDisplayName() {
-      return "Wenezuela";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "Wietnam";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis i Futuna";
+      return "Wallis og Futuna";
     },
     get$ehCountryDisplayName() {
-      return "Sahara Zachodnia";
+      return "Vest-Sahara";
     },
     get$yeCountryDisplayName() {
       return "Jemen";
@@ -2629,184 +2629,184 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zimbabwe";
     },
     get$pay() {
-      return "Do kasy";
+      return "Til betaling";
     },
     invitedToSpace$2(space, user) {
-      return user + " zaprosi\u0142 Ci\u0119 do do\u0142\u0105czenia do kursu: " + space + "! Czy chcesz przyj\u0105\u0107 zaproszenie?";
+      return user + " har invitert deg til \xe5 bli med p\xe5 et kurs: " + space + "! Vil du akseptere?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Jeste\u015b zaproszony!";
+      return "\ud83d\udce9 Du er invitert!";
     },
     invitedToChat$2($name, user) {
-      return user + " zaprosi\u0142 Ci\u0119 do do\u0142\u0105czenia do czatu: " + $name + "! Czy chcesz przyj\u0105\u0107 zaproszenie?";
+      return user + " har invitert deg til \xe5 bli med i en samtale: " + $name + "! Vil du akseptere?";
     },
     get$monthlySubscription() {
-      return "Miesi\u0119czna";
+      return "M\xe5nedlig";
     },
     get$yearlySubscription() {
-      return "Roczna";
+      return "\xc5rlig";
     },
     get$defaultSubscription() {
-      return "Subskrypcja Pangea Chat";
+      return "Pangea Chat-abonnement";
     },
     get$freeTrial() {
-      return "Darmowa wersja pr\xf3bna";
+      return "Gratis pr\xf8veperiode";
     },
     get$noDataFound() {
-      return "Nie znaleziono danych";
+      return "Ingen data funnet";
     },
     get$bestCorrectionFeedback() {
-      return "To jest poprawne!";
+      return "Det stemmer!";
     },
     get$distractorFeedback() {
-      return "To nie jest do ko\u0144ca poprawne.";
+      return "Det er ikke helt riktig.";
     },
     get$bestAnswerFeedback() {
-      return "To jest poprawne!";
+      return "Det stemmer!";
     },
     get$definitionDefaultPrompt() {
-      return "Co oznacza to s\u0142owo?";
+      return "Hva betyr dette ordet?";
     },
     get$practiceDefaultPrompt() {
-      return "Jaka jest najlepsza odpowied\u017a?";
+      return "Hva er det beste svaret?";
     },
     get$correctionDefaultPrompt() {
-      return "Jaka jest najlepsza zamiana?";
+      return "Hva er den beste erstatningen?";
     },
     get$reportToTeacher() {
-      return "Do kogo chcesz zg\u0142osi\u0107 t\u0119 wiadomo\u015b\u0107?";
+      return "Hvem vil du rapportere denne meldingen til?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " zg\u0142osi\u0142 wiadomo\u015b\u0107 od " + reportedUserId + " w czacie " + roomName;
+      return reportingUserId + " har rapportert en melding fra " + reportedUserId + " i chatten " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Wiadomo\u015b\u0107: " + reportedMessage + "\nPow\xf3d: " + reason;
+      return "Melding: " + reportedMessage + "\n\xc5rsak: " + reason;
     },
     get$noTeachersFound() {
-      return "Nie znaleziono nauczycieli do zg\u0142oszenia";
+      return "Ingen l\xe6rere funnet \xe5 rapportere til";
     },
     trialExpiration$1(expiration) {
-      return "Tw\xf3j darmowy okres pr\xf3bny wygasa " + expiration;
+      return "Din gratis pr\xf8veperiode utl\xf8per den " + expiration;
     },
     get$freeTrialDesc() {
-      return "Nowi u\u017cytkownicy otrzymuj\u0105 tygodniowy darmowy okres pr\xf3bny Pangea Chat";
+      return "Nye brukere f\xe5r en ukes gratis pr\xf8veperiode av Pangea Chat";
     },
     get$activateTrial() {
-      return "Darmowy 7-dniowy okres pr\xf3bny";
+      return "Gratis 7-dagers pr\xf8veperiode";
     },
     get$successfullySubscribed() {
-      return "Zosta\u0142e\u015b pomy\u015blnie subskrybowany!";
+      return "Du har abonnert vellykket!";
     },
     get$clickToManageSubscription() {
-      return "Kliknij tutaj, aby zarz\u0105dza\u0107 subskrypcj\u0105.";
+      return "Klikk her for \xe5 administrere abonnementet ditt.";
     },
     get$signUp() {
-      return "Zarejestruj si\u0119";
+      return "Registrer deg";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Prosz\u0119 wybierz co najmniej " + min + " znak\xf3w.";
+      return "Vennligst velg minst " + min + " tegn.";
     },
     get$pleaseEnterValidEmail() {
-      return "Prosz\u0119 wprowadzi\u0107 poprawny adres e-mail.";
+      return string$.Vennli;
     },
     get$pleaseChooseAUsername() {
-      return "Prosz\u0119 wybierz nazw\u0119 u\u017cytkownika";
+      return "Vennligst velg et brukernavn";
     },
     get$listen() {
-      return "S\u0142uchaj";
+      return "Lytt";
     },
     get$trialPeriodExpired() {
-      return "Tw\xf3j okres pr\xf3bny wygas\u0142";
+      return "Pr\xf8veperioden din har utl\xf8pt";
     },
     get$subscribedToUnlockTools() {
-      return "Subskrybuj, aby odblokowa\u0107 interaktywny t\u0142umacz i sprawdzanie gramatyki, odtwarzanie d\u017awi\u0119ku, spersonalizowane \u0107wiczenia oraz analityk\u0119 nauki!";
+      return "Abonner for \xe5 l\xe5se opp interaktiv oversettelse og grammatikkontroll, lydavspilling, tilpassede \xf8velsesaktiviteter og l\xe6ringsanalyse!";
     },
     get$translationTooltip() {
-      return "T\u0142umaczenie";
+      return "Oversett";
     },
     get$kickBotWarning() {
-      return "Usuni\u0119cie Pangea Bota z tej rozmowy usunie bota konwersacyjnego z tego czatu.";
+      return "\xc5 sparke Pangea Bot vil fjerne samtale-boten fra denne chatten.";
     },
     get$refresh(_) {
-      return "Od\u015bwie\u017c";
+      return "Oppdater";
     },
     get$accuracy(_) {
-      return "Dok\u0142adno\u015b\u0107";
+      return "N\xf8yaktighet";
     },
     get$chatCapacity() {
-      return "Pojemno\u015b\u0107 czatu";
+      return "Chatkapasitet";
     },
     get$roomFull() {
-      return "Ten pok\xf3j jest ju\u017c pe\u0142ny.";
+      return "Dette rommet er allerede fullt.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Pojemno\u015b\u0107 czatu zosta\u0142a zmieniona";
+      return "Chattkapasiteten er endret";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Pojemno\u015b\u0107 czatu musi wynosi\u0107 co najmniej " + count + ".";
+      return "Chattkapasiteten m\xe5 v\xe6re minst " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "Pojemno\u015b\u0107 czatu ogranicza liczb\u0119 cz\u0142onk\xf3w dozwolonych w czacie.";
+      return "Chattkapasitet begrenser antall medlemmer som kan delta i en chat.";
     },
     get$enterNumber() {
-      return "Wprowad\u017a warto\u015b\u0107 liczby ca\u0142kowitej.";
+      return "Vennligst skriv inn en heltallsverdi.";
     },
     get$buildTranslation() {
-      return "Zbuduj t\u0142umaczenie z powy\u017cszych opcji";
+      return "Bygg oversettelsen din ut fra valgene ovenfor";
     },
     get$practice() {
-      return "\u0106wiczenia";
+      return "\xd8v";
     },
     get$speechToTextBody() {
-      return "Dla wiadomo\u015bci g\u0142osowych mo\u017cesz zobaczy\u0107 transkrypt oraz wynik s\u0142\xf3w na minut\u0119 m\xf3wcy.";
+      return "For talebeskjeder kan du se en transkripsjon samt speakerens Words Per Minute-poengsum.";
     },
     get$versionNotFound() {
-      return "Nie znaleziono wersji";
+      return "Versjon ikke funnet";
     },
     get$fetchingVersion() {
-      return "Pobieranie wersji...";
+      return "Henter versjon...";
     },
     get$versionFetchError() {
-      return "B\u0142\u0105d podczas pobierania wersji";
+      return "Feil ved henting av versjon";
     },
     versionText$2(version, buildNumber) {
-      return "Wersja: " + version + "+" + buildNumber;
+      return "Versjon: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Wiadomo\u015bci w Twoim podstawowym j\u0119zyku nie b\u0119d\u0105 t\u0142umaczone.";
+      return "Meldinger p\xe5 ditt grunnspr\xe5k vil ikke bli oversatt.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Masz aktywn\u0105 subskrypcj\u0119";
+      return "Du har et aktivt abonnement";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Usuni\u0119cie konta nie spowoduje automatycznego anulowania subskrypcji.";
+      return "Sletting av kontoen din vil ikke automatisk kansellere abonnementet ditt.";
     },
     get$manageSubscription() {
-      return "Zarz\u0105dzaj subskrypcj\u0105";
+      return "Administrer abonnement";
     },
     get$error520Title() {
-      return "Spr\xf3buj ponownie.";
+      return "Vennligst pr\xf8v igjen.";
     },
     get$error520Desc() {
-      return "Przepraszamy, nie mogli\u015bmy zrozumie\u0107 Twojej wiadomo\u015bci...";
+      return "Beklager, vi kunne ikke forst\xe5 meldingen din...";
     },
     get$level(_) {
-      return "Poziom";
+      return "Niv\xe5";
     },
     get$translationChoicesBody() {
-      return "Kliknij i przytrzymaj opcj\u0119, aby uzyska\u0107 podpowied\u017a.";
+      return "Klikk og hold et alternativ for en ledetr\xe5d.";
     },
     get$grammar() {
-      return "Gramatyka";
+      return "Grammatikk";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Kontakt zosta\u0142 zaproszony do czatu";
+      return "Kontakt har blitt invitert til chatten";
     },
     get$inviteChat() {
-      return "\ud83e\uddea Zapro\u015b do czatu";
+      return "\ud83d\udce8 Inviter til chat";
     },
     get$l2SupportNa() {
-      return "Niedost\u0119pne";
+      return "Ikke tilgjengelig";
     },
     get$l2SupportAlpha() {
       return "Alpha";
@@ -2815,1039 +2815,1039 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Beta";
     },
     get$l2SupportFull() {
-      return "Pe\u0142ne";
+      return "Full";
     },
     get$playAudio() {
-      return "Odtw\xf3rz";
+      return "Spill av";
     },
     get$stop(_) {
-      return "Zatrzymaj";
+      return "Stopp";
     },
     get$grammarCopyPOSsconj() {
-      return "Podrz\u0119dne sp\xf3jniki";
+      return "Underordnende konjunksjon";
     },
     get$grammarCopyPOSnum() {
-      return "Liczba";
+      return "Tall";
     },
     get$grammarCopyPOSverb() {
-      return "Czasownik";
+      return "Verb";
     },
     get$grammarCopyPOSaffix() {
-      return "Przedrostek";
+      return "Affiks";
     },
     get$grammarCopyPOSpart() {
-      return "Partyku\u0142a";
+      return "Partikkel";
     },
     get$grammarCopyPOSadj() {
-      return "Przymiotnik";
+      return "Adjektiv";
     },
     get$grammarCopyPOScconj() {
-      return "Sp\xf3jnik wsp\xf3\u0142rz\u0119dny";
+      return "Koordinerende konjunksjon";
     },
     get$grammarCopyPOSpunct() {
-      return "Interpunkcja";
+      return "Tegnsymbol";
     },
     get$grammarCopyPOSadv() {
-      return "Przys\u0142\xf3wek";
+      return "Adverb";
     },
     get$grammarCopyPOSaux() {
-      return "Czasownik pomocniczy";
+      return "Hjelpeverb";
     },
     get$grammarCopyPOSspace() {
-      return "Spacja";
+      return "Mellomrom";
     },
     get$grammarCopyPOSsym() {
       return "Symbol";
     },
     get$grammarCopyPOSdet() {
-      return "Rodzajnik";
+      return "Bestemmende";
     },
     get$grammarCopyPOSpron() {
-      return "Zaimek";
+      return "Pronomen";
     },
     get$grammarCopyPOSadp() {
-      return "Przyimek";
+      return "Adposisjon";
     },
     get$grammarCopyPOSpropn() {
-      return "Rzeczownik w\u0142asny";
+      return "Egennavn";
     },
     get$grammarCopyPOSnoun() {
-      return "Rzeczownik";
+      return "Substantiv";
     },
     get$grammarCopyPOSintj() {
-      return "Wykrzyknik";
+      return "Interjeksjon";
     },
     get$grammarCopyPOSidiom() {
       return "Idiom";
     },
     get$grammarCopyPOSphrasalv() {
-      return "Czasownik frazowy";
+      return "Phrasal Verb";
     },
     get$grammarCopyPOScompn() {
-      return "Z\u0142o\u017cony";
+      return "Sammensatt";
     },
     get$grammarCopyPOSx() {
-      return "Inne";
+      return "Annet";
     },
     get$grammarCopyGENDERfem() {
-      return "\u017be\u0144ski";
+      return "Feminint";
     },
     get$grammarCopyPERSON2() {
-      return "Druga osoba";
+      return "Andre person";
     },
     get$grammarCopyMOODimp() {
-      return "Tryb rozkazuj\u0105cy";
+      return "Imperativ";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Pytanie";
+      return "Sp\xf8rsm\xe5l";
     },
     get$grammarCopyASPECTperf() {
       return "Perfekt";
     },
     get$grammarCopyCASEaccnom() {
-      return "Dope\u0142niacz, Mianownik";
+      return "Akkusativ, Nominativ";
     },
     get$grammarCopyCASEobl() {
-      return "Ombicjalny";
+      return "Oblik";
     },
     get$grammarCopyVOICEact() {
-      return "Strona czynna";
+      return "Aktiv";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Nawias";
+      return "Parentes";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Rodzajnik";
+      return "Artikkel";
     },
     get$grammarCopyNUMBERsing() {
-      return "Liczba pojedyncza";
+      return "Entall";
     },
     get$grammarCopyGENDERmasc() {
-      return "M\u0119ski";
+      return "Hankj\xf8nn";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modalny";
+      return "Modale";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Przys\u0142\xf3wkowy";
+      return "Adverbial";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrazowy";
+      return "Perifrasisk";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Cyfra";
+      return "Siffer";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Nieprawid\u0142owy";
+      return "Ikke egennavn";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Rzeczownikowy";
+      return " Kardinal";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "W\u0142asny";
+      return "Egen";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "My\u015blnik";
+      return "Bindestrek";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Tak";
+      return "Ja";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u015arednik";
+      return "Semikolon";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Przecinek";
+      return "Komma";
     },
     get$grammarCopyMOODcnd() {
-      return "Tryb warunkowy";
+      return "Kondisjonell";
     },
     get$grammarCopyCASEacc() {
-      return "Dope\u0142niacz";
+      return "Akkusativ";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partytywny";
+      return "Partitiv";
     },
     get$grammarCopyTENSEpast() {
-      return "Przesz\u0142y";
+      return "Fortid";
     },
     get$grammarCopyDEGREEsup() {
-      return "Stopie\u0144 najwy\u017cszy";
+      return "Superlativ";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Dwukropek";
+      return "Kolon";
     },
     get$grammarCopyPERSON3() {
-      return "Trzecia osoba";
+      return "Tredje person";
     },
     get$grammarCopyNUMBERplur() {
-      return "Liczba mnoga";
+      return "Flertall";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Rzeczownik w\u0142asny";
+      return "Egennavn";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Tryb pytaj\u0105cy";
+      return "Sp\xf8rreord";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Nieformalny";
+      return "Uformell";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Czas";
+      return "Tid";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Przeciwie\u0144stwo";
+      return "Negativ";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Razem";
+      return "Total";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Przyimkowy";
+      return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "Ci\u0105g\u0142y";
+      return "Progressiv";
     },
     get$grammarCopyMOODsub() {
-      return "Tryb przypuszczaj\u0105cy";
+      return "Konjunktiv";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Dope\u0142niaczowy";
+      return "Komplementiv";
     },
     get$grammarCopyCASEnom() {
-      return "Mianownik";
+      return "Nominativ";
     },
     get$grammarCopyTENSEfut() {
-      return "Przysz\u0142y";
+      return "Fremtid";
     },
     get$grammarCopyCASEdat() {
-      return "Celownik";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "Tera\u017aniejszy";
+      return "Presens";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutrum";
+      return "Intetkj\xf8nn";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relative";
+      return "Relativ";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Ko\u0144c\xf3wka ko\u0144cowa";
+      return "Endelig ending";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demonstratywny";
+      return "Demonstrativ";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Przyimkowy";
+      return "Preposisjonell";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Ograniczony";
+      return "Finite";
     },
     get$grammarCopyDEGREEpos() {
-      return "Pozytywny";
+      return "Positiv";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Cytat";
+      return "Sitat";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerund";
+      return "Gerundium";
     },
     get$grammarCopyVOICEpass() {
-      return "Strona bierna";
+      return "Passiv";
     },
     get$grammarCopyCASEgen() {
-      return "Dope\u0142niacz";
+      return "Genitiv";
     },
     get$grammarCopyTENSEprs() {
-      return "Tera\u017aniejszy";
+      return "Presens";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Okre\u015blony";
+      return "Bestemt";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Porz\u0105dkowy";
+      return "Ordinal";
     },
     get$grammarCopyCASEins() {
-      return "Narzednik";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Bezokolicznik";
+      return "Infinitiv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Pomocniczy";
+      return "Hjelpeverb";
     },
     get$grammarCopyNUMFORMlong() {
-      return "D\u0142ugi";
+      return "Lang";
     },
     get$grammarCopyCASEloc() {
-      return "Miejscownik";
+      return "Lokativ";
     },
     get$grammarCopyMOODind() {
-      return "Tryb oznajmuj\u0105cy";
+      return "Indikativ";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Stopie\u0144 por\xf3wnawczy";
+      return "Komparativ";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Zwi\u0105zany";
+      return "Relativ";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Wykrzyknikowy";
+      return "Utrop";
     },
     get$grammarCopyPERSON1() {
-      return "Pierwsza osoba";
+      return "F\xf8rste person";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Pocz\u0105tkowy";
+      return "Innledende";
     },
     get$grammarCopyGENDERperson() {
-      return "Osoba";
+      return "Person";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Obcy";
+      return "Utenlandsk";
     },
     get$grammarCopyVOICEvoice() {
-      return "Strona g\u0142osowa";
+      return "Stemme";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Czasownik";
+      return "Verb";
     },
     get$grammarCopyPOSSpass() {
-      return "Dziedzicz\u0105cy";
+      return "Eieform";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Przyimkowy";
+      return "Preposisjonell";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Liczebnik";
+      return "Tallord";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Rzeczownik";
+      return "Substantiv";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Refleksywny";
+      return "Refleksiv";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Zaimek";
+      return "Pronomen";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Strona interpunkcyjna";
+      return "Tegnpunktside";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Czasownik";
+      return "Verb";
     },
     get$grammarCopyGENDERgender() {
-      return "P\u0142e\u0107";
+      return "Kj\xf8nn";
     },
     get$grammarCopyMOODmood() {
-      return "Nastr\xf3j";
+      return "Modus";
     },
     get$grammarCopyASPECTaspect() {
       return "Aspekt";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Interpunkcja";
+      return "Tegnsetting";
     },
     get$grammarCopyTENSEtense() {
-      return "Czas";
+      return "Tidsform";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Stopie\u0144";
+      return "Grad";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Uprzejmo\u015b\u0107";
+      return "H\xf8flighet";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Przys\u0142\xf3wek";
+      return "Adverb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Liczba";
+      return "Tall";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Sp\xf3jnik";
+      return "Konjunksjon";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaryzacja";
+      return "Polaritetsgrad";
     },
     get$grammarCopyCASEcase() {
-      return "Przypadek";
+      return "Kasus";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Okre\u015blono\u015b\u0107";
+      return "Bestemthet";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Liczebnik";
+      return "Numeral";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Przymiotnikowy";
+      return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "Wo\u0142acz";
+      return "Vokativ";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Dope\u0142niacz";
+      return "Komplementor";
     },
     get$grammarCopyADVadv() {
-      return "Przys\u0142\xf3wek";
+      return "Adverbial";
     },
     get$grammarCopyMOODjus() {
-      return "Tryb rozkazuj\u0105cy";
+      return "Imperativ";
     },
     get$grammarCopyGENDERcom() {
-      return "Rodzaj";
+      return "Felleskj\xf8nn";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Refleksywny";
+      return "Refleksiv";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Cz\u0119\u015bciowy";
+      return "Partitiv";
     },
     get$grammarCopySPCspc() {
-      return "Specyficzny";
+      return "Spesifikk";
     },
     get$grammarCopyTENSEpqp() {
-      return "Plusquamperfect";
+      return "Pluskvamperfekt";
     },
     get$grammarCopyREFLEXref() {
-      return "Refleksywny";
+      return "Refleksiv";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Kr\xf3tki";
+      return "Kort";
     },
     get$grammarCopyNUMBERdual() {
-      return "Podw\xf3jny";
+      return "Dobbel";
     },
     get$grammarCopyNUMFORMlng() {
-      return "D\u0142ugi";
+      return "Lang";
     },
     get$grammarCopyVOICEmid() {
-      return "\u015arodkowy";
+      return "Midten";
     },
     get$grammarCopyINTRELintRel() {
-      return "Pytaj\u0105cy, Relative";
+      return "Sp\xf8rreord, Relativ";
     },
     get$grammarCopyINTint() {
-      return "Pytaj\u0105cy";
+      return "Sp\xf8rreord";
     },
     get$grammarCopyVOICEcaus() {
-      return "Przyczynowy";
+      return "\xc5rsakende";
     },
     get$grammarCopyUnknown() {
-      return "Nieznany";
+      return "Ukjent";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Ewidentno\u015b\u0107";
+      return "Evidens";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Liczba posiadacza";
+      return "Eiers tall";
     },
     get$grammarCopyASPECThab() {
-      return "Nawykowy";
+      return "Vanemessig";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatyw";
+      return "Ablativ";
     },
     get$grammarCopyCASEall() {
-      return "Allatyw";
+      return "Allativ";
     },
     get$grammarCopyCASEess() {
-      return "Essive";
+      return "Essiv";
     },
     get$grammarCopyCASEtra() {
-      return "Translative";
+      return "Translativ";
     },
     get$grammarCopyCASEequ() {
-      return "R\xf3wno\u015bciowy";
+      return "Likestilt";
     },
     get$grammarCopyCASEdis() {
-      return "Rozdzielczy";
+      return "Distribusjon";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutywny";
+      return "Absolutt";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatywny";
+      return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "Przyczynowy";
+      return "\xc5rsak";
     },
     get$grammarCopyCASEben() {
-      return "Benefaktywny";
+      return "Fordel";
     },
     get$grammarCopyCASEtem() {
-      return "Czasowy";
+      return "Tidsmessig";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Wsp\xf3\u0142rz\u0119dny";
+      return "Koordinerende";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Stan konstrukcyjny";
+      return "Bestemt form";
     },
     get$grammarCopyDEGREEabs() {
-      return "Stopie\u0144 bezwzgl\u0119dny";
+      return "Absolutt grad";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Faktyczna evidencja";
+      return "Faktisk evidens";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Nie-faktyczna evidencja";
+      return "Ikke-faktisk evidens";
     },
     get$grammarCopyMOODopt() {
-      return "Optatyw";
+      return "Optativ";
     },
     get$grammarCopyMOODadm() {
-      return "Afirmatywny";
+      return "Beundrende";
     },
     get$grammarCopyMOODdes() {
-      return "\u017b\u0105daniowy";
+      return "\xd8nskende";
     },
     get$grammarCopyMOODnec() {
-      return "Konieczny";
+      return "N\xf8dvendighetsmodus";
     },
     get$grammarCopyMOODpot() {
-      return "Potencjalny";
+      return "Potensiell";
     },
     get$grammarCopyMOODprp() {
-      return "Propozycyjny";
+      return "Proposisjon";
     },
     get$grammarCopyMOODqot() {
-      return "Cytatywny";
+      return "Kvantifiserende";
     },
     get$grammarCopyNUMFORMword() {
-      return "Forma s\u0142owa";
+      return "Ordform";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Numeral rzymski";
+      return "Romersk tall";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Forma litery";
+      return "Bokstavform";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Mno\u017cnikowa";
+      return "Multiplikativ";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "U\u0142amkowa";
+      return "Br\xf8kdel";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Zestaw";
+      return "Sett";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Zakres";
+      return "Rekke";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Rozdzielcza";
+      return "Distributiv";
     },
     get$grammarCopyNUMBERtri() {
-      return "Pr\xf3ba";
+      return "Pr\xf8ve";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Paucalna";
+      return "Paukal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Wi\u0119ksza paucalna";
+      return "St\xf8rre Paukal";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Wi\u0119ksza liczba mnoga";
+      return "St\xf8rre Flertall";
     },
     get$grammarCopyNUMBERinv() {
-      return "Odwr\xf3cona";
+      return "Invers";
     },
     get$grammarCopyPERSON0() {
-      return "Zero";
+      return "Null";
     },
     get$grammarCopyPERSON4() {
-      return "Czwarta";
+      return "Fjerde";
     },
     get$grammarCopyPOLITEform() {
-      return "Formalny";
+      return "Formell";
     },
     get$grammarCopyPOLITEelev() {
-      return "Podnios\u0142y";
+      return "H\xf8yverdig";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Pokorny";
+      return "Ydmyk";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Emfatyczny";
+      return "Betont";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Wykrzyknikowy";
+      return "Utrop";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Wzajemny";
+      return "Gjensidig";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interogatywno-wzgl\u0119dny";
+      return "Interrogativ-Relativ";
     },
     get$grammarCopyTENSEaor() {
-      return "Aoryst";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemiczny";
+      return "Epistemisk";
     },
     get$grammarCopyTENSEprosp() {
-      return "Perspektywiczny";
+      return "Fremtidig";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Imies\u0142\xf3w";
+      return "Partisipp";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Imies\u0142\xf3w przys\u0142\xf3wkowy";
+      return "Konverb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Rzeczownik czasownikowy";
+      return "Verbalt substantiv";
     },
     get$grammarCopyVOICEantip() {
-      return "Antypasyw";
+      return "Antipasiv";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Przyczynowy";
+      return "\xc5rsakende";
     },
     get$grammarCopyVOICedir() {
-      return "Bezpo\u015bredni";
+      return "Direkte";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Odwr\xf3cony";
+      return "Invers";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Wzajemny";
+      return "Reciprocal";
     },
     get$grammarCopyPOS() {
-      return "Cz\u0119\u015b\u0107 mowy";
+      return "Ordklasse";
     },
     get$grammarCopyGENDER() {
-      return "Rodzaj";
+      return "Kj\xf8nn";
     },
     get$grammarCopyPERSON() {
-      return "Osoba";
+      return "Person";
     },
     get$grammarCopyMOOD() {
-      return "Tryb";
+      return "Modus";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Typ interpunkcji";
+      return "Tegntype";
     },
     get$grammarCopyASPECT() {
       return "Aspekt";
     },
     get$grammarCopyCASE() {
-      return "Przypadek";
+      return "Kasus";
     },
     get$grammarCopyVOICE() {
-      return "Strona";
+      return "Aktiv/Passiv";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Typ Rzeczownika";
+      return "Substantivtype";
     },
     get$grammarCopyVERBTYPE() {
-      return "Typ Czasownika";
+      return "Verbtype";
     },
     get$grammarCopyADVTYPE() {
-      return "Typ Przys\u0142\xf3wka";
+      return "Adverbtype";
     },
     get$grammarCopyNUMFORM() {
-      return "Forma Liczebnika";
+      return "Tallform";
     },
     get$grammarCopyNUMTYPE() {
-      return "Typ Liczebnika";
+      return "Numeral Type";
     },
     get$grammarCopyNUMBER() {
-      return "Liczba";
+      return "Tall";
     },
     get$grammarCopyDEFINITE() {
-      return "Okre\u015blono\u015b\u0107";
+      return "Bestemmelse";
     },
     get$grammarCopyDEGREE() {
-      return "Stopie\u0144";
+      return "Grad";
     },
     get$grammarCopyEVIDENT() {
-      return "Ewidentno\u015b\u0107";
+      return "Evidensialitet";
     },
     get$grammarCopyFOREIGN() {
-      return "Obcy";
+      return "Utenlandsk";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaryzacja";
+      return "Polaritets";
     },
     get$grammarCopyPOLITE() {
-      return "Uprzejmo\u015b\u0107";
+      return "H\xf8flighet";
     },
     get$grammarCopyPREPCASE() {
-      return "Przypadek Przyimkowy";
+      return "Preposisjonskasus";
     },
     get$grammarCopyPRONTYPE() {
-      return "Typ Zaimek";
+      return "Pronomen Type";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Strona Interpunkcyjna";
+      return "Tegnpunktside";
     },
     get$grammarCopyREFLEX() {
-      return "Refleksywny";
+      return "Refleksiv";
     },
     get$grammarCopyTENSE() {
-      return "Czas";
+      return "Tid";
     },
     get$grammarCopyVERBFORM() {
-      return "Forma Czasownika";
+      return "Verbform";
     },
     get$grammarCopyCONJTYPE() {
-      return "Typ Sp\xf3jnika";
+      return "Konjunksjonstype";
     },
     get$grammarCopyUNKNOWN() {
-      return "Nieznany";
+      return "Ukjent";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Liczba posiadacza";
+      return "Eiers tall";
     },
     get$grammarCopyPOSS() {
-      return "Dzier\u017cawczo\u015b\u0107";
+      return "Besittende";
     },
     get$grammarCopyASPECTimp() {
-      return "Aspekt niedokonany";
+      return "Ufullstendig aspekt";
     },
     get$grammarCopyCASEvoc() {
-      return "Wo\u0142acz";
+      return "Kallativ";
     },
     get$grammarCopyCASEcom() {
-      return "Kombinacyjny";
+      return "Komitat";
     },
     get$grammarCopyCASEpar() {
-      return "Partytywny";
+      return "Partitiv";
     },
     get$grammarCopyCASEadv() {
-      return "Przys\u0142\xf3wkowy";
+      return "Adverbial";
     },
     get$grammarCopyCASEref() {
-      return "Referencyjny";
+      return "Referensiell";
     },
     get$grammarCopyCASErel() {
-      return "Rzeczownikowy";
+      return "Relativ";
     },
     get$grammarCopyCASEsub() {
-      return "Podmiotowy";
+      return "Subessiv";
     },
     get$grammarCopyCASEsup() {
-      return "Superessive";
+      return "Superessiv";
     },
     get$grammarCopyCASEaccdat() {
-      return "biernik-dative";
+      return "Akusativ-Dativ";
     },
     get$grammarCopyCASEpre() {
-      return "Przyimkowy";
+      return "Preposisjonell";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Podporz\u0105dkowuj\u0105cy";
+      return "Underordnende";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Por\xf3wnawczy";
+      return "Komparativ";
     },
     get$grammarCopyDEFINITEind() {
-      return "Nieokre\u015blony";
+      return "Ubestemt";
     },
     get$grammarCopyMOODint() {
-      return "Tryb pytaj\u0105cy";
+      return "Sp\xf8rremodus";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Rzeczownik pospolity";
+      return "Fellesnavn";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Liczba pojedyncza posiadacza";
+      return "Eiers tall entall";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Liczba mnoga posiadacza";
+      return "Eiers tall flertall";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Liczba podw\xf3jna posiadacza";
+      return "Eiers dual";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Polaryzacja dodatnia";
+      return "Positiv polaritet";
     },
     get$grammarCopyPOSSyes() {
-      return "Dzier\u017cawczy";
+      return "Besittende";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Bez przyimka";
+      return "Ikke-preposisjonell";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Osobowy";
+      return "Personlig";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Pytaj\u0105cy";
+      return "Interrogativ";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Ca\u0142kowity";
+      return "Total";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Przecz\u0105cy";
+      return "Negativ";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Artyku\u0142";
+      return "Artikkel";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Nieokre\u015blony";
+      return "Ubestemt";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Pytaj\u0105co- wzgl\u0119dny";
+      return "Interrogativ-relativ";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Interpunkcja ko\u0144cowa";
+      return "Endelig tegnsetting";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Kropka";
+      return "Punktum";
     },
     get$grammarCopyREFLEXyes() {
-      return "Refleksywny";
+      return "Refleksiv";
     },
     get$grammarCopyTENSEimp() {
-      return "Niedokonany";
+      return "Imperfekt";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Bezokolicznik";
+      return "Supinum";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Przymiotnikowy";
+      return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "D\u0142ugi";
+      return "Lang";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Kr\xf3tki";
+      return "Kort";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Causative Verb";
+      return "\xc5rsaksverb";
     },
     get$grammarCopyVOICEcau() {
-      return "Przyczynowy";
+      return "\xc5rsakssammenheng";
     },
     get$grammarCopyVOICEdir() {
-      return "Bezpo\u015bredni";
+      return "Direkte";
     },
     get$grammarCopyVOICEinv() {
-      return "Odwr\xf3cony";
+      return "Invers";
     },
     get$grammarCopyVOICErcp() {
-      return "Wzajemny";
+      return "Gjensidig";
     },
     get$other() {
-      return "Inne";
+      return "Annet";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "NIV\xc5 " + level;
     },
     get$clickBestOption() {
-      return "Wybierz najlepsze opcje, aby przet\u0142umaczy\u0107 swoj\u0105 wiadomo\u015b\u0107!";
+      return "Velg de beste alternativene for \xe5 oversette meldingen din!";
     },
     get$completeActivitiesToUnlock() {
-      return "Uko\u0144cz co najmniej jedn\u0105 aktywno\u015b\u0107, aby odblokowa\u0107 t\u0142umaczenie!";
+      return "Fullf\xf8r minst \xe9n aktivitet for \xe5 l\xe5se opp oversettelsen!";
     },
     get$downloadGroupText() {
-      return "Pobierz tekst grupy";
+      return "Last ned gruppe tekst";
     },
     get$notificationsOn() {
-      return "Powiadomienia w\u0142\u0105czone";
+      return "Varslinger p\xe5";
     },
     get$notificationsOff() {
-      return "Powiadomienia wy\u0142\u0105czone";
+      return "Varslinger av";
     },
     get$joinWithCode() {
-      return "Do\u0142\u0105cz z kodem";
+      return "Bli med med kode";
     },
     get$enterCodeToJoin() {
-      return "Wprowad\u017a kod, aby do\u0142\u0105czy\u0107";
+      return "Skriv inn kode for \xe5 bli med";
     },
     get$updateNow() {
-      return "Aktualizuj teraz";
+      return "Oppdater n\xe5";
     },
     get$updateLater() {
-      return "P\xf3\u017aniej";
+      return "Oppdater senere";
     },
     get$constructUseWaDesc() {
-      return "U\u017cywany bez pomocy";
+      return "Brukt uten hjelp";
     },
     get$constructUseGaDesc() {
-      return "Pomoc gramatyczna";
+      return "Grammatikkhjelp";
     },
     get$constructUseTaDesc() {
-      return "Pomoc w t\u0142umaczeniu";
+      return "Oversettelseshjelp";
     },
     get$constructUseUnkDesc() {
-      return "Nieznany";
+      return "Ukjent";
     },
     get$constructUseCorITDesc() {
-      return "Poprawne w t\u0142umaczeniu";
+      return "Korrekt i oversettelse";
     },
     get$constructUseIgnITDesc() {
-      return "Zignorowane w t\u0142umaczeniu";
+      return "Ignorert i oversettelse";
     },
     get$constructUseIncITDesc() {
-      return "Niepoprawne w t\u0142umaczeniu";
+      return "Feil i oversettelse";
     },
     get$constructUseIgnIGCDesc() {
-      return "Zignorowane w korekcie gramatycznej";
+      return "Ignorert i grammatikkorreksjon";
     },
     get$constructUseCorIGCDesc() {
-      return "Poprawne w korekcie gramatycznej";
+      return "Korrekt i grammatikkorreksjon";
     },
     get$constructUseIncIGCDesc() {
-      return "Niepoprawne w korekcie gramatycznej";
+      return "Feil i grammatikkorreksjon";
     },
     get$constructUseCorPADesc() {
-      return "Poprawne w aktywno\u015bci znaczenia s\u0142owa";
+      return "Korrekt i ords betydningsaktivitet";
     },
     get$constructUseIgnPADesc() {
-      return "Zignorowane w aktywno\u015bci znaczenia s\u0142owa";
+      return "Ignorert i ords betydningsaktivitet";
     },
     get$constructUseIncPADesc() {
-      return "Niepoprawne w aktywno\u015bci znaczenia s\u0142owa";
+      return "Feil i ords betydningsaktivitet";
     },
     get$constructUseCorWLDesc() {
-      return "Poprawne w aktywno\u015bci s\u0142uchania s\u0142owa";
+      return "Korrekt i ordlyttingsaktivitet";
     },
     get$constructUseIncWLDesc() {
-      return "Niepoprawne w aktywno\u015bci s\u0142uchania s\u0142owa";
+      return "Feil i ordlyttingsaktivitet";
     },
     get$constructUseIngWLDesc() {
-      return "Zignorowane w aktywno\u015bci s\u0142uchania s\u0142owa";
+      return "Ignorert i ordlyttingsaktivitet";
     },
     get$constructUseCorHWLDesc() {
-      return "Poprawne w ukrytej aktywno\u015bci s\u0142owa";
+      return "Korrekt i skjult ord-aktivitet";
     },
     get$constructUseIncHWLDesc() {
-      return "Niepoprawne w ukrytej aktywno\u015bci s\u0142owa";
+      return "Feil i skjult ord-aktivitet";
     },
     get$constructUseIgnHWLDesc() {
-      return "Zignorowane w ukrytej aktywno\u015bci s\u0142owa";
+      return "Ignorert i skjult ord-aktivitet";
     },
     get$constructUseCorLDesc() {
-      return "Poprawne w aktywno\u015bci lematycznej";
+      return "Korrekt i lemmaktivitet";
     },
     get$constructUseIncLDesc() {
-      return "Niepoprawne w aktywno\u015bci lematycznej";
+      return "Feil i lemmaktivitet";
     },
     get$constructUseIgnLDesc() {
-      return "Zignorowane w aktywno\u015bci lematycznej";
+      return "Ignorert i lemmaktivitet";
     },
     get$constructUseCorMDesc() {
-      return "Poprawne w aktywno\u015bci gramatycznej";
+      return "Korrekt i grammatikkaktivitet";
     },
     get$constructUseIncMDesc() {
-      return "Niepoprawne w aktywno\u015bci gramatycznej";
+      return "Feil i grammatikkaktivitet";
     },
     get$constructUseIgnMDesc() {
-      return "Ignorowane w aktywno\u015bci gramatycznej";
+      return "Ignorert i grammatikkaktivitet";
     },
     get$constructUseEmojiDesc() {
-      return "Poprawne w aktywno\u015bci emoji";
+      return "Korrekt i emoji-aktivitet";
     },
     get$constructUseCollected() {
-      return "Zebrane w czacie";
+      return "Innsamlet i chat";
     },
     get$constructUseNanDesc() {
-      return "Nie dotyczy";
+      return "Ikke aktuelt";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " punkty do\u015bwiadczenia";
+      return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "W\u0142\u0105czono syntez\u0119 mowy";
+      return "Aktivert tekst-til-tale";
     },
     get$enableTTSToolDescription() {
-      return "Pozw\xf3l aplikacji generowa\u0107 mow\u0119 z tekstu dla fragment\xf3w tekstu w Twoim j\u0119zyku docelowym.";
+      return "Tillat appen \xe5 generere tekst-til-tale-uttak for deler av teksten p\xe5 m\xe5lspr\xe5ket ditt.";
     },
     get$yourUsername() {
-      return "Twoja nazwa u\u017cytkownika";
+      return "Ditt brukernavn";
     },
     get$yourEmail() {
-      return "Tw\xf3j email";
+      return "Din e-post";
     },
     get$iWantToLearn() {
-      return "Chc\u0119 si\u0119 uczy\u0107";
+      return "Jeg vil l\xe6re";
     },
     get$pleaseEnterEmail() {
-      return "Prosz\u0119 wprowadzi\u0107 poprawny adres e-mail.";
+      return string$.Vennli;
     },
     get$myBaseLanguage() {
-      return "M\xf3j j\u0119zyk podstawowy";
+      return "Mitt hovedspr\xe5k";
     },
     get$formSectionHeader() {
-      return "Formy u\u017cywane w czatach:";
+      return "Former brukt i chatter:";
     },
     get$writingExercisesTooltip() {
-      return "Pisanie";
+      return "Skriving";
     },
     get$listeningExercisesTooltip() {
-      return "S\u0142uchanie";
+      return "Lytting";
     },
     get$readingExercisesTooltip() {
-      return "Czytanie";
+      return "Lesing";
     },
     get$meaningNotFound() {
-      return "Nie mo\u017cna znale\u017a\u0107 znaczenia.";
+      return "Betydning kunne ikke finnes.";
     },
     get$notTheCodeError() {
-      return "Przepraszam, to nie jest kod!";
+      return "Beklager, det er ikke koden!";
     },
     get$totalXP() {
-      return "\u0141\u0105czna liczba punkt\xf3w XP";
+      return "Total XP";
     },
     get$numLemmas() {
-      return "\u0141\u0105czna liczba lemat\xf3w";
+      return "Totalt antall lemmata";
     },
     get$numLemmasUsedCorrectly() {
-      return "Liczba lemat\xf3w u\u017cytych poprawnie przynajmniej raz";
+      return "Antall lemmata brukt riktig minst \xe9n gang";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Liczba lemat\xf3w u\u017cytych poprawnie 0 razy";
+      return "Antall lemmata brukt riktig 0 ganger";
     },
     get$numLemmasSmallXP() {
-      return "Liczba lemat\xf3w z 0 - 30 punktami XP";
+      return "Antall lemmata med 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "Liczba lemat\xf3w z 31 - 200 punktami XP";
+      return "Antall lemmata med 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "Liczba lemat\xf3w z ponad 200 punktami XP";
+      return "Antall lemmata med > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "Liczba poj\u0119\u0107 gramatycznych";
+      return "Antall grammatikkbegreper";
     },
     get$listGrammarConcepts() {
-      return "Poj\u0119cia gramatyczne";
+      return "Grammatikkbegreper";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Poj\u0119cia gramatyczne u\u017cywane poprawnie w oryginalnych wiadomo\u015bciach co najmniej 80% czasu";
+      return "Grammatikkbegreper brukt riktig i originale meldinger minst 80% av tiden";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Poj\u0119cia gramatyczne u\u017cywane poprawnie w oryginalnych wiadomo\u015bciach mniej ni\u017c 80% czasu";
+      return "Grammatikkbegreper brukt riktig i originale meldinger mindre enn 80% av tiden";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Poj\u0119cia gramatyczne wybrane poprawnie z sugestii systemowych co najmniej 80% czasu";
+      return "Grammatikkbegreper valgt riktig fra systemgenererte forslag minst 80% av tiden";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Poj\u0119cia gramatyczne wybrane poprawnie z sugestii systemowych mniej ni\u017c 80% czasu";
+      return "Grammatikkbegreper valgt riktig fra systemgenererte forslag mindre enn 80% av tiden";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Poj\u0119cia gramatyczne z 0-50 punktami XP";
+      return "Grammatikkbegreper med 0-50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Poj\u0119cia gramatyczne z 51-200 punktami XP";
+      return "Grammatikkbegreper med 51-200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Poj\u0119cia gramatyczne 201-500 punkt\xf3w XP";
+      return "Grammatikkbegreper 201-500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Poj\u0119cia gramatyczne powy\u017cej 500 punkt\xf3w XP";
+      return "Grammatikkbegreper >500 XP";
     },
     get$numMessagesSent() {
-      return "Liczba wys\u0142anych wiadomo\u015bci";
+      return "Antall sendte meldinger";
     },
     get$numWordsTyped() {
-      return "Liczba wpisanych s\u0142\xf3w w oryginalnych wiadomo\u015bciach";
+      return "Antall tastede ord i originale meldinger";
     },
     get$numCorrectChoices() {
-      return "Liczba poprawnie wybranych s\u0142\xf3w z sugestii systemowych";
+      return "Antall riktige ord valgt fra systemgenererte forslag";
     },
     get$numIncorrectChoices() {
-      return "Liczba niepoprawnych s\u0142\xf3w wybranych z systemowych sugestii";
+      return "Antall feilaktige ord valgt fra systemgenererte forslag";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3856,793 +3856,793 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Typ pliku";
+      return "Filtype";
     },
     get$download(_) {
-      return "Pobierz";
+      return "Last ned";
     },
     get$analyticsNotAvailable() {
-      return "Analiza u\u017cytkownika niedost\u0119pna";
+      return "Brukeranalyse tilgjengelig ikke";
     },
     get$downloading() {
-      return "Pobieranie...";
+      return "Laster ned...";
     },
     get$failedFetchUserAnalytics() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 analizy u\u017cytkownika";
+      return "Mislyktes i \xe5 laste ned brukeranalyse";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Czym jest " + morphologicalFeature + " w '" + wordForm + "'?";
+      return "Hva er " + morphologicalFeature + " av '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "Dost\u0119pno\u015b\u0107 danych";
+      return "Data tilgjengelighet";
     },
     get$available(_) {
-      return "Dost\u0119pne";
+      return "Tilgjengelig";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot pope\u0142nia b\u0142\u0119dy te\u017c!";
+      return "Pangea Bot gj\xf8r ogs\xe5 feil!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Co oznacza '" + lemma + "'?";
+      return "Hva betyr '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Dopasuj znaczenia do s\u0142\xf3w w wiadomo\u015bci!";
+      return "Match betydninger med ordene i meldingen!";
     },
     get$doubleClickToEdit() {
-      return "Kliknij dwukrotnie, aby edytowa\u0107.";
+      return "Dobbeltklikk for \xe5 redigere.";
     },
     get$cefrLevelLabel() {
-      return "Poziom CEFR";
+      return "CEFR-niv\xe5";
     },
     get$image(_) {
-      return "Obraz";
+      return "Bilde";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Wybierz temat, tryb, cel nauki i wygeneruj aktywno\u015b\u0107 dla czatu!";
+      return "Velg et emne, modus, l\xe6ringsm\xe5l og generer en aktivitet for chatten!";
     },
     get$constructUsePvmDesc() {
-      return "Wygenerowane w wiadomo\u015bci g\u0142osowej";
+      return "Produsert i talemeldingsmodus";
     },
     get$leaveSpaceDescription() {
-      return "Opuszczaj\u0105c kurs, opu\u015bcisz wszystkie czaty w nim zawarte. Inni u\u017cytkownicy zobacz\u0105, \u017ce opu\u015bci\u0142e\u015b kurs.";
+      return "Ved \xe5 forlate kurset vil du forlate alle chattene innenfor det. Andre brukere vil se at du har forlatt kurset.";
     },
     get$constructUseCorMmDesc() {
-      return "Poprawne znaczenie wiadomo\u015bci";
+      return "Korrekt meldingsbetydning";
     },
     get$constructUseIncMmDesc() {
-      return "Niepoprawne znaczenie wiadomo\u015bci";
+      return "Feil meldingsbetydning";
     },
     get$constructUseIgnMmDesc() {
-      return "Zignorowane znaczenie wiadomo\u015bci";
+      return "Ignorert meldingsbetydning";
     },
     get$meaning() {
-      return "Znaczenie";
+      return "Betydning";
     },
     chatWith$1(displayname) {
-      return "Grupa z " + displayname;
+      return "Gruppe med " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Kliknij w link w e-mailu, a nast\u0119pnie kontynuuj.\n\nSprawd\u017a folder spam, je\u015bli e-mail nie dotar\u0142.";
+      return "Vennligst klikk p\xe5 lenken i e-posten og fortsett.\n\nSjekk spam-mappen hvis e-posten ikke har kommet frem.";
     },
     get$dontForgetPassword() {
-      return "Nie zapomnij has\u0142a!";
+      return "Ikke glem passordet ditt!";
     },
     get$enableAutocorrectToolName() {
-      return "W\u0142\u0105cz automatyczn\u0105 korekt\u0119 urz\u0105dzenia";
+      return "Aktiver automatkorrigering p\xe5 enheten";
     },
     get$enableAutocorrectDescription() {
-      return "Je\u015bli Twoje urz\u0105dzenie obs\u0142uguje j\u0119zyk, kt\xf3rego si\u0119 uczysz, mo\u017cesz w\u0142\u0105czy\u0107 automatyczn\u0105 korekt\u0119, aby naprawia\u0107 typowe b\u0142\u0119dy podczas pisania.";
+      return "Hvis enheten din st\xf8tter spr\xe5ket du l\xe6rer, kan du aktivere automatkorrigering for \xe5 rette vanlige feil mens du skriver.";
     },
     get$ttsDisbledTitle() {
-      return "Funkcja syntezy mowy wy\u0142\u0105czona";
+      return "Tekst-til-tale deaktivert";
     },
     get$ttsDisabledBody() {
-      return "Mo\u017cesz w\u0142\u0105czy\u0107 syntez\u0119 tekstu na mowie w ustawieniach nauki";
+      return "Du kan aktivere tekst-til-tale i l\xe6ringsinnstillingene dine";
     },
     get$noSpaceDescriptionYet() {
-      return "Nie utworzono jeszcze opisu kursu.";
+      return "Ingen kursbeskrivelse opprettet enn\xe5.";
     },
     get$tooLargeToSend() {
-      return "Ta wiadomo\u015b\u0107 jest za du\u017ca, aby j\u0105 wys\u0142a\u0107";
+      return "Denne meldingen er for stor til \xe5 sende";
     },
     get$exitWithoutSaving() {
-      return "Czy na pewno chcesz opu\u015bci\u0107 bez zapisywania?";
+      return "Er du sikker p\xe5 at du vil forlate uten \xe5 lagre?";
     },
     get$enableAutocorrectWarning() {
-      return "Uwaga! Wymaga dodania klawiatury j\u0119zyka docelowego";
+      return "Advarsel! Krever at du legger til tastaturet for m\xe5lspr\xe5ket ditt";
     },
     get$leaveRoomDescription() {
-      return "Zamierzasz opu\u015bci\u0107 ten czat. Inni u\u017cytkownicy zobacz\u0105, \u017ce opu\u015bci\u0142e\u015b czat.";
+      return "Du er i ferd med \xe5 forlate denne chatten. Andre brukere vil se at du har forlatt chatten.";
     },
     get$confirmUserId() {
-      return "Prosz\u0119 potwierd\u017a swoj\u0105 nazw\u0119 u\u017cytkownika Pangea Chat, aby usun\u0105\u0107 swoje konto.";
+      return "Vennligst bekreft brukernavnet ditt i Pangea Chat for \xe5 slette kontoen din.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Rozpoczyna si\u0119 " + startDate;
+      return "Starter " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Anuluj w dowolnym momencie w ustawieniach subskrypcji";
+      return "\u2022 Avbryt n\xe5r som helst i abonnementinnstillingene";
     },
     get$autocorrectNotAvailable() {
-      return "Niestety, Twoja platforma nie jest obecnie obs\u0142ugiwana dla tej funkcji. B\u0105d\u017a na bie\u017c\u0105co z dalszym rozwojem!";
+      return "Dessverre er ikke plattformen din for tiden st\xf8ttet for denne funksjonen. F\xf8lg med for videre utvikling!";
     },
     get$pleaseUpdateApp() {
-      return "Zaktualizuj aplikacj\u0119, aby kontynuowa\u0107.";
+      return "Vennligst oppdater appen for \xe5 fortsette.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Dopasuj emotikony do s\u0142\xf3w, kt\xf3re najlepiej je reprezentuj\u0105. Nie martw si\u0119! Brak punkt\xf3w za niezgod\u0119. \ud83d\ude05";
+      return "Match emojis med ordene de best representerer. Ikke bekymre deg! Ingen poeng fratrekk for uenighet. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "To jest ca\u0142a Twoja s\u0142ownictwo! Gdy zdobywasz punkty XP za ka\u017cde s\u0142owo, b\u0119d\u0105 one przechodzi\u0107 od nasionka do pe\u0142nego rozkwitu. Kliknij dowolne s\u0142owo, aby zobaczy\u0107 wi\u0119cej szczeg\xf3\u0142\xf3w.";
+      return "Dette er all vokabularet ditt! N\xe5r du tjener XP for hvert ord, g\xe5r de fra spire til full blomst. Klikk p\xe5 hvilket som helst ord for \xe5 se mer detaljer.";
     },
     get$morphAnalyticsListBody() {
-      return "To s\u0105 wszystkie koncepcje gramatyczne w j\u0119zyku, kt\xf3rego si\u0119 uczysz! Odblokujesz je, gdy napotkasz je podczas rozmowy. Kliknij, aby zobaczy\u0107 szczeg\xf3\u0142y.";
+      return "Dette er alle grammatikkonseptene i spr\xe5ket du l\xe6rer! Du l\xe5ser opp dem etter hvert som du m\xf8ter dem mens du chatter. Klikk for detaljer.";
     },
     get$knockSpaceSuccess() {
-      return "Poprosi\u0142e\u015b o do\u0142\u0105czenie do tego kursu! Administrator odpowie na Twoj\u0105 pro\u015bb\u0119, gdy j\u0105 otrzyma \ud83d\ude0a";
+      return "Du har bedt om \xe5 bli med i dette kurset! En administrator vil svare p\xe5 foresp\xf8rselen din n\xe5r de mottar den \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Pos\u0142uchaj pe\u0142nej wiadomo\u015bci. Nast\u0119pnie dopasuj d\u017awi\u0119ki do s\u0142\xf3w.";
+      return "Lytt til hele meldingen. Deretter matcher du lydene med ordene.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Kliknij kawa\u0142ki uk\u0142adanki, aby odpowiedzie\u0107 na pytania gramatyczne!";
+      return "Klikk p\xe5 puslespillbitene for grammatikksp\xf8rsm\xe5l!";
     },
     get$home() {
-      return "Strona g\u0142\xf3wna";
+      return "Hjem";
     },
     get$join(_) {
-      return "Do\u0142\u0105cz";
+      return "Bli med";
     },
     get$readingAssistanceOverviewBody() {
-      return "Kliknij przyciski poni\u017cej, aby wzi\u0105\u0107 udzia\u0142 w mini-grach dopasowuj\u0105cych emotikony, d\u017awi\u0119ki, znaczenia s\u0142\xf3w i koncepcje gramatyczne. Lub kliknij dowolne s\u0142owo, aby zobaczy\u0107 szczeg\xf3\u0142y.";
+      return "Klikk p\xe5 knappene nedenfor for minispill om \xe5 matche emojis, lyder, ords betydninger og grammatikkonsepter. Eller klikk p\xe5 hvilket som helst ord for detaljer.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Zresetuj podpowiedzi instrukcji";
+      return "Tilbakestill instruksjonstips";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Kliknij, aby wy\u015bwietli\u0107 podpowiedzi instrukcji, jak dla nowego u\u017cytkownika.";
+      return "Klikk for \xe5 vise instruksjonstips som for en helt ny bruker.";
     },
     get$translationProblem() {
-      return "Problem z t\u0142umaczeniem";
+      return "Oversettelsesproblem";
     },
     get$askToJoin() {
-      return "Popro\u015b o do\u0142\u0105czenie";
+      return "Sp\xf8r om \xe5 bli med";
     },
     get$emptyChatWarningTitle() {
-      return "Czat jest pusty";
+      return "Chatten er tom";
     },
     get$emptyChatWarningDesc() {
-      return "Nie zaprosi\u0142e\u015b nikogo do swojego czatu. Przejd\u017a do ustawie\u0144 czatu, aby zaprosi\u0107 kontakty lub bota. Mo\u017cesz to zrobi\u0107 r\xf3wnie\u017c p\xf3\u017aniej.";
+      return "Du har ikke invitert noen til chatten din. G\xe5 til Chat-innstillinger for \xe5 invitere kontaktene dine eller Bot. Du kan ogs\xe5 gj\xf8re dette senere.";
     },
     get$areYouLikeMe() {
-      return "Czy jeste\u015b jak ja?";
+      return "Er du som meg?";
     },
     get$tryAgainLater() {
-      return "Wykonano zbyt wiele pr\xf3b. Spr\xf3buj ponownie za 5 minut.";
+      return "For mange fors\xf8k gjort. Vennligst pr\xf8v igjen om 5 minutter.";
     },
     get$enterSpaceCode() {
-      return "Wprowad\u017a kod kursu";
+      return "Skriv inn kurskode";
     },
     get$shareSpaceLink() {
-      return "Udost\u0119pnij link";
+      return "Del lenke";
     },
     get$byUsingPangeaChat() {
-      return "Korzystaj\u0105c z Pangea Chat, zgadzam si\u0119 na ";
+      return "Ved \xe5 bruke Pangea Chat, godtar jeg ";
     },
     get$details(_) {
-      return "Szczeg\xf3\u0142y";
+      return "Detaljer";
     },
     get$languageLevelPreA1Desc() {
-      return "Nigdy nie uczy\u0142em si\u0119 ani nie u\u017cywa\u0142em tego j\u0119zyka.";
+      return "Jeg har aldri l\xe6rt eller brukt spr\xe5ket.";
     },
     get$languageLevelA1Desc() {
-      return "Potrafi\u0119 zrozumie\u0107 i u\u017cywa\u0107 niekt\xf3rych znanych codziennych wyra\u017ce\u0144 oraz bardzo podstawowych zwrot\xf3w.";
+      return "Jeg kan forst\xe5 og bruke noen kjente dagligdagse uttrykk og veldig grunnleggende setninger.";
     },
     get$languageLevelA2Desc() {
-      return "Potrafi\u0119 zrozumie\u0107 zdania i cz\u0119sto u\u017cywane wyra\u017cenia zwi\u0105zane z obszarami bezpo\u015bredniego znaczenia.";
+      return "Jeg kan forst\xe5 setninger og ofte brukte uttrykk relatert til omr\xe5der av umiddelbar relevans.";
     },
     get$languageLevelB1Desc() {
-      return "Potrafi\u0119 radzi\u0107 sobie w wi\u0119kszo\u015bci znanych sytuacji i tworz\u0119 proste sp\xf3jne teksty na znane tematy.";
+      return "Jeg kan h\xe5ndtere de fleste kjente situasjoner og kan produsere enkelt sammenhengende tekst om kjente emner.";
     },
     get$languageLevelB2Desc() {
-      return "Potrafi\u0119 zrozumie\u0107 g\u0142\xf3wne idee z\u0142o\u017conych tekst\xf3w i komunikowa\u0107 si\u0119 z p\u0142ynno\u015bci\u0105 i spontaniczno\u015bci\u0105.";
+      return "Jeg kan forst\xe5 hovedideene i komplekse tekster og samhandle med en grad av flyt og spontanitet.";
     },
     get$languageLevelC1Desc() {
-      return "Potrafi\u0119 wyra\u017ca\u0107 my\u015bli p\u0142ynnie i spontanicznie bez wi\u0119kszego wysi\u0142ku oraz rozumiem szeroki zakres wymagaj\u0105cych tekst\xf3w.";
+      return "Jeg kan uttrykke ideer flytende og spontant uten mye strev og forst\xe5 et bredt spekter av krevende tekster.";
     },
     get$languageLevelC2Desc() {
-      return "Potrafi\u0119 zrozumie\u0107 praktycznie wszystko, co s\u0142ysz\u0119 lub czytam, i wyra\u017ca\u0107 si\u0119 p\u0142ynnie i precyzyjnie.";
+      return "Jeg kan forst\xe5 nesten alt jeg h\xf8rer eller leser og uttrykke meg flytende og presist.";
     },
     get$newVocab() {
-      return "Nowe s\u0142ownictwo";
+      return "Nytt vokabular";
     },
     get$newGrammar() {
-      return "Nowe zagadnienia gramatyczne";
+      return "Nye grammatikkonsepter";
     },
     get$ban() {
-      return "Zbanuj";
+      return "Blokker";
     },
     get$kick() {
-      return "Wyrzu\u0107";
+      return "Kast ut";
     },
     get$lemma() {
-      return "Lemat";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "Cecha gramatyczna";
+      return "Grammatikkfunksjon";
     },
     get$grammarTag() {
-      return "Tag gramatyczny";
+      return "Grammatikkmerke";
     },
     get$forms() {
-      return "Formy";
+      return "Former";
     },
     get$exampleMessages() {
-      return "Przyk\u0142adowe wiadomo\u015bci";
+      return "Eksempelmeldinger";
     },
     get$timesUsedIndependently() {
-      return "Liczba u\u017cy\u0107 samodzielnie";
+      return "Antall ganger brukt uavhengig";
     },
     get$timesUsedWithAssistance() {
-      return "Liczba u\u017cy\u0107 z pomoc\u0105";
+      return "Antall ganger brukt med hjelp";
     },
     shareInviteCode$1(code) {
-      return "Udost\u0119pnij kod zaproszenia: " + code;
+      return "Del invitasjonskode: " + code;
     },
     get$skipForNow() {
-      return "Pomi\u0144 na razie";
+      return "Hopp over for n\xe5";
     },
     get$permissions(_) {
-      return "Uprawnienia";
+      return "Tillatelser";
     },
     get$spaceChildPermission() {
-      return "Kto mo\u017ce dodawa\u0107 nowe czaty do tego kursu";
+      return "Hvem kan legge til nye chatter i dette kurset";
     },
     get$addEnvironmentOverride() {
-      return "Dodaj nadpisanie \u015brodowiska";
+      return "Legg til milj\xf8overstyring";
     },
     get$defaultOption() {
-      return "Domy\u015blnie";
+      return "Standard";
     },
     get$deleteChatDesc() {
-      return "Czy na pewno chcesz usun\u0105\u0107 ten czat? Zostanie on usuni\u0119ty dla wszystkich uczestnik\xf3w, a wszystkie wiadomo\u015bci w czacie nie b\u0119d\u0105 ju\u017c dost\u0119pne do \u0107wicze\u0144 lub analityki nauki.";
+      return "Er du sikker p\xe5 at du vil slette denne samtalen? Den vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger v\xe6re tilgjengelige for praksis eller l\xe6ringsanalyse.";
     },
     get$deleteSpaceDesc() {
-      return "Kurs i wybrane czaty zostan\u0105 usuni\u0119te dla wszystkich uczestnik\xf3w, a wszystkie wiadomo\u015bci w czacie nie b\u0119d\u0105 ju\u017c dost\u0119pne do \u0107wicze\u0144 lub analityki nauki. Ta operacja jest nieodwracalna.";
+      return "Kurset og eventuelle valgte samtaler vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger v\xe6re tilgjengelige for praksis eller l\xe6ringsanalyse. Denne handlingen kan ikke angres.";
     },
     get$configureSpace() {
-      return "Konfiguruj kurs";
+      return "Konfigurer kurs";
     },
     get$pinMessages() {
-      return "Przypnij wiadomo\u015bci";
+      return "Fest meldinger";
     },
     get$setJoinRules() {
-      return "Ustaw zasady do\u0142\u0105czenia";
+      return "Sett innmeldingsregler";
     },
     get$changeGeneralSettings() {
-      return "Zmie\u0144 ustawienia og\xf3lne";
+      return "Endre generelle innstillinger";
     },
     get$inviteOtherUsersToRoom() {
-      return "Zapro\u015b innych u\u017cytkownik\xf3w";
+      return "Inviter andre brukere";
     },
     get$changeTheNameOfTheSpace() {
-      return "Zmie\u0144 nazw\u0119 kursu";
+      return "Endre navnet p\xe5 kurset";
     },
     get$changeTheDescription() {
-      return "Zmie\u0144 opis";
+      return "Endre beskrivelsen";
     },
     get$changeThePermissions() {
-      return "Zmie\u0144 uprawnienia";
+      return "Endre tillatelser";
     },
     get$introductions() {
-      return "Wprowadzenia";
+      return "Introduksjoner";
     },
     get$announcements() {
-      return "Og\u0142oszenia";
+      return "Kunngj\xf8ringer";
     },
     get$activities() {
-      return "Aktywno\u015bci";
+      return "Aktiviteter";
     },
     get$access() {
-      return "Dost\u0119p";
+      return "Tilgang";
     },
     get$howSpaceCanBeFound() {
-      return "Jak mo\u017cna znale\u017a\u0107 ten kurs";
+      return "Hvordan dette kurset kan finnes";
     },
     get$$private() {
-      return "Prywatny";
+      return "Privat";
     },
     get$cannotBeFoundInSearch() {
-      return "Nie mo\u017cna znale\u017a\u0107 w wyszukiwarce";
+      return "Kan ikke finnes i s\xf8k";
     },
     get$$public(_) {
-      return "Publiczny";
+      return "Offentlig";
     },
     get$visibleToCommunity() {
-      return 'Widoczny dla szerszej spo\u0142eczno\u015bci Pangea Chat poprzez "Znajd\u017a kurs"';
+      return 'Synlig for det bredere Pangea Chat-samfunnet via "Finn et kurs"';
     },
     get$howSpaceCanBeJoined() {
-      return "Jak mo\u017cna do\u0142\u0105czy\u0107 do tego kursu";
+      return "Hvordan dette kurset kan bli med i";
     },
     get$canBeFoundVia() {
-      return "Mo\u017cna znale\u017a\u0107 przez:";
+      return "Kan finnes via:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 zaproszenie";
+      return "\u2022 invitasjon";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kod lub link";
+      return "\u2022 kode eller lenke";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 pro\u015bba o do\u0142\u0105czenie i zatwierdzenie przez administratora";
+      return "\u2022 foresp\xf8rsel om \xe5 bli med og administratorgodkjenning";
     },
     get$youHaveLeveledUp() {
-      return "Awansowa\u0142e\u015b!";
+      return "Du har niv\xe5 opp!";
     },
     get$sendActivities() {
-      return "Wy\u015blij aktywno\u015bci";
+      return "Send aktiviteter";
     },
     get$directMessage() {
-      return "Wiadomo\u015b\u0107 prywatna";
+      return "Direktemelding";
     },
     get$newDirectMessage() {
-      return "Nowa wiadomo\u015b\u0107 prywatna";
+      return "Ny direktemelding";
     },
     get$speakingExercisesTooltip() {
-      return "M\xf3wienie";
+      return "Tale";
     },
     get$transcriptionFailed() {
-      return "Nie uda\u0142o si\u0119 przetranskrybowa\u0107 d\u017awi\u0119ku";
+      return "Kunne ikke transkribere lyd";
     },
     get$aUserIsKnocking() {
-      return "1 u\u017cytkownik prosi o do\u0142\u0105czenie do twojego kursu";
+      return "1 bruker \xf8nsker \xe5 bli med i kurset ditt";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " u\u017cytkownik\xf3w prosi o do\u0142\u0105czenie do twojego kursu";
+      return "" + users + " brukere \xf8nsker \xe5 bli med i kurset ditt";
     },
     get$failedToFetchTranscription() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 transkrypcji";
+      return "Kunne ikke hente transkripsjon";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kurs zostanie usuni\u0119ty dla wszystkich uczestnik\xf3w. Ta akcja jest nieodwracalna.";
+      return "Kurset vil bli slettet for alle deltakere. Denne handlingen kan ikke angres.";
     },
     get$failedToPlayVideo() {
-      return "Nie uda\u0142o si\u0119 odtworzy\u0107 filmu";
+      return "Mislyktes i \xe5 spille av video";
     },
     get$done() {
-      return "Gotowe";
+      return "Ferdig";
     },
     get$inThisSpace() {
-      return "W tym kursie";
+      return "I dette kurset";
     },
     get$myContacts() {
-      return "Moje kontakty";
+      return "Mine kontakter";
     },
     get$inviteAllInSpace() {
-      return "Zapro\u015b wszystkich w tym kursie";
+      return "Inviter alle i dette kurset";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Wszyscy uczestnicy kursu zostali zaproszeni do czatu";
+      return "Alle deltakere i kurset har blitt invitert til chatten";
     },
     numKnocking$1(count) {
-      return "" + count + " puka";
+      return "" + count + " banker p\xe5";
     },
     numInvited$1(count) {
-      return "" + count + " zaproszonych";
+      return "" + count + " invitert";
     },
     get$errorFetchingDefinition() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 definicji";
+      return "Mislyktes i \xe5 hente definisjon";
     },
     get$errorProcessAnalytics() {
-      return "Nie uda\u0142o si\u0119 przetworzy\u0107 analityki";
+      return "Mislyktes i \xe5 behandle analyse";
     },
     get$errorDownloading() {
-      return "Pobieranie nie powiod\u0142o si\u0119";
+      return "Nedlasting mislyktes";
     },
     get$errorFetchingLevelSummary() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 podsumowania poziomu";
+      return "Mislyktes i \xe5 hente niv\xe5oppsummering";
     },
     get$errorLoadingSpaceChildren() {
-      return "Nie uda\u0142o si\u0119 za\u0142adowa\u0107 czat\xf3w w ramach tego kursu";
+      return "Mislyktes i \xe5 laste inn chatter innenfor dette kurset";
     },
     get$unexpectedError() {
-      return "Nieoczekiwany b\u0142\u0105d.";
+      return "Uventet feil.";
     },
     get$pleaseReload() {
-      return "Prosz\u0119 od\u015bwie\u017cy\u0107 i spr\xf3bowa\u0107 ponownie.";
+      return "Vennligst last inn p\xe5 nytt og pr\xf8v igjen.";
     },
     get$translationError() {
-      return "B\u0142\u0105d t\u0142umaczenia";
+      return "Oversettelsesfeil";
     },
     get$errorFetchingActivity() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 aktywno\u015bci";
+      return "Mislyktes i \xe5 hente aktivitet";
     },
     get$check(_) {
-      return "Sprawd\u017a";
+      return "Sjekk";
     },
     get$unableToFindRoom() {
-      return "Nie znaleziono czatu ani kursu z tym kodem. Spr\xf3buj ponownie.";
+      return "Ingen chat eller kurs funnet med den koden. Vennligst pr\xf8v igjen.";
     },
     viewingAnalytics$2(visible, users) {
-      return "Wy\u015bwietlanie " + visible + "/" + users + " Analiz";
+      return "Viser " + visible + "/" + users + " analyser";
     },
     get$request(_) {
-      return "\u017b\u0105danie";
+      return "Foresp\xf8rsel";
     },
     get$requestAll(_) {
-      return "Za\u017c\u0105daj wszystkiego";
+      return "Foresp\xf8r alle";
     },
     get$confirmMessageUnpin() {
-      return "Czy na pewno chcesz odpi\u0105\u0107 t\u0119 wiadomo\u015b\u0107?";
+      return "Er du sikker p\xe5 at du vil fjerne festingen av denne meldingen?";
     },
     get$pending(_) {
-      return "Oczekuj\u0105ce";
+      return "Venter";
     },
     get$openRoleLabel() {
-      return "OTWARTA";
+      return "\xc5PEN";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " do\u0142\u0105czy\u0142 jako " + role;
+      return "\ud83d\udc4b " + username + " ble med som " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " zako\u0144czy\u0142 t\u0119 aktywno\u015b\u0107";
+      return "\ud83c\udfaf " + username + " avsluttet denne aktiviteten";
     },
     get$activitySummaryError() {
-      return "Podsumowania aktywno\u015bci niedost\u0119pne";
+      return "Aktivitetsoppsummeringer er utilgjengelige";
     },
     get$requestSummaries() {
-      return "\u017b\u0105daj podsumowa\u0144";
+      return "Be om oppsummeringer";
     },
     get$requestAccessTitle() {
-      return "Czy chcesz poprosi\u0107 o dost\u0119p do analityki?";
+      return "Be om tilgang til analyser?";
     },
     get$requestAccessDesc() {
-      return "Czy chcesz poprosi\u0107 o dost\u0119p do analityki uczestnik\xf3w?\n\nJe\u015bli uczestnicy si\u0119 zgodz\u0105, administratorzy tego kursu b\u0119d\u0105 mogli zobaczy\u0107 ich:\n    \u2022 \u0142\u0105czny s\u0142ownik\n    \u2022 \u0142\u0105czn\u0105 gramatyk\u0119\n    \u2022 \u0142\u0105czn\u0105 liczb\u0119 uko\u0144czonych sesji aktywno\u015bci\n    \u2022 konkretne u\u017cyte, poprawne i niepoprawne koncepty gramatyczne\n\nNie b\u0119d\u0105 mogli zobaczy\u0107 ich:\n    \u2022 wiadomo\u015bci w czatach spoza kursu\n    \u2022 listy s\u0142\xf3wek";
+      return "Vil du be om tilgang til \xe5 se deltakeranalyser?\n\nHvis deltakerne godtar, vil administratorer av kurset kunne se deres:\n    \u2022 total vokabular\n    \u2022 totale grammatikkonsepter\n    \u2022 fullf\xf8rte aktivitets\xf8kter\n    \u2022 de spesifikke grammatikkonseptene som er brukt, riktig og feil\n\nDe vil ikke kunne se deres:\n    \u2022 meldinger i chatter utenfor kurset\n    \u2022 vokabularlisten";
     },
     get$analyticsInactiveTitle() {
-      return "Wnioski do nieaktywnych u\u017cytkownik\xf3w nie mog\u0142y zosta\u0107 wys\u0142ane";
+      return "Foresp\xf8rsler til inaktive brukere kunne ikke sendes";
     },
     get$analyticsInactiveDesc() {
-      return "Nieaktywni u\u017cytkownicy, kt\xf3rzy nie zalogowali si\u0119 od momentu wprowadzenia tej funkcji, nie zobacz\u0105 Twojego wniosku.\n\nPrzycisk \u201ePopro\u015b\u201d pojawi si\u0119, gdy wr\xf3c\u0105. Mo\u017cesz ponownie wys\u0142a\u0107 wniosek, klikaj\u0105c przycisk \u201ePopro\u015b\u201d pod ich nazwiskiem, gdy b\u0119dzie dost\u0119pny.";
+      return "Inaktive brukere som ikke har logget inn siden denne funksjonen ble introdusert, vil ikke se foresp\xf8rselen din.\n\nForesp\xf8rselsknappen vil vises n\xe5r de kommer tilbake. Du kan sende foresp\xf8rselen p\xe5 nytt senere ved \xe5 klikke p\xe5 Foresp\xf8rselsknappen under navnet deres n\xe5r den er tilgjengelig.";
     },
     get$accessRequestedTitle() {
-      return "Wniosek o dost\u0119p do analityki";
+      return "Foresp\xf8rsel om tilgang til analyse";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Prosz\u0105cy admin(i): " + admin + " \n\nAdministratorzy z \u201e" + space + "\u201d prosz\u0105 o dost\u0119p do Twojej analityki uczenia si\u0119.\n\nJe\u015bli si\u0119 zgodzisz, b\u0119d\u0105 mogli zobaczy\u0107 Twoje:\n    \u2022 ca\u0142kowite s\u0142ownictwo\n    \u2022 ca\u0142kowite poj\u0119cia gramatyczne\n    \u2022 ca\u0142kowit\u0105 liczb\u0119 zako\u0144czonych sesji aktywno\u015bci\n    \u2022 konkretne poj\u0119cia gramatyczne u\u017cywane, poprawnie i niepoprawnie\n\nNie b\u0119d\u0105 mogli zobaczy\u0107 Twoich:\n    \u2022 wiadomo\u015bci w czatach poza kursem\n    \u2022 listy s\u0142ownictwa";
+      return "Be om admin(er): " + admin + " \n\nAdministratorer fra \u201c" + space + "\u201d ber om \xe5 f\xe5 se dine l\xe6ringsanalyser.\n\nHvis du godtar, vil de kunne se din:\n    \u2022 totale ordforr\xe5d\n    \u2022 totale grammatikkonsepter\n    \u2022 totale aktivitetssesjoner fullf\xf8rt\n    \u2022 de spesifikke grammatikkonseptene brukt, korrekt og feil\n\nDe vil ikke kunne se din:\n    \u2022 meldinger i chatter utenfor kurset\n    \u2022 ordliste";
     },
     get$adminRequestedAccess() {
-      return "Administratorzy poprosili o dost\u0119p do Twojej analityki.";
+      return "Administratorer har bedt om \xe5 se dine analyser.";
     },
     lastUpdated$1(time) {
-      return "Ostatnia aktualizacja\n" + time;
+      return "Oppdatert\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Wszystko zako\u0144czone!";
+      return "Alt ferdig!";
     },
     get$endForAll() {
-      return "Zako\u0144cz dla wszystkich";
+      return "Avslutt for alle";
     },
     get$newCourse() {
-      return "Nowy kurs";
+      return "Nytt kurs";
     },
     numModules$1(num) {
-      return "" + num + " modu\u0142\xf3w";
+      return "" + num + " moduler";
     },
     get$coursePlan() {
-      return "Plan kursu";
+      return "Kursplan";
     },
     get$editCourseLater() {
-      return "Mo\u017cesz edytowa\u0107 tytu\u0142 szablonu, opisy i obraz kursu p\xf3\u017aniej.";
+      return "Du kan redigere malens tittel, beskrivelser og kursbilde senere.";
     },
     get$createCourse() {
-      return "Utw\xf3rz kurs";
+      return "Opprett kurs";
     },
     get$stats() {
-      return "Statystyki";
+      return "Statistikk";
     },
     get$createGroupChat() {
-      return "Utw\xf3rz czat grupowy";
+      return "Opprett gruppechat";
     },
     get$editCourse() {
-      return "Edytuj kurs";
+      return "Rediger kurs";
     },
     get$inviteDesc() {
-      return "Przez nazw\u0119 u\u017cytkownika, kod lub link";
+      return "Med brukernavn, kode eller lenke";
     },
     get$editCourseDesc() {
-      return "Tutaj mo\u017cesz edytowa\u0107 tytu\u0142 kursu, opis itp.";
+      return "Her kan du redigere kursnavn, beskrivelse, osv.";
     },
     get$permissionsDesc() {
-      return "Ustaw uprawnienia, takie jak kto mo\u017ce zaprasza\u0107 u\u017cytkownik\xf3w, wysy\u0142a\u0107 wiadomo\u015bci, tworzy\u0107 czaty itp.";
+      return "Sett tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter, osv.";
     },
     get$accessDesc() {
-      return "Mo\u017cesz uczyni\u0107 sw\xf3j kurs otwartym dla \u015bwiata! Lub, uczyni\u0107 go prywatnym i bezpiecznym.";
+      return "Du kan gj\xf8re kurset ditt \xe5pent for alle! Eller, gj\xf8r kurset ditt privat og sikkert.";
     },
     get$createGroupChatDesc() {
-      return "Podczas gdy sesje aktywno\u015bci zaczynaj\u0105 si\u0119 i ko\u0144cz\u0105, czaty grupowe pozostan\u0105 otwarte do rutynowej komunikacji.";
+      return "Mens aktivitets\xf8kter starter og slutter, vil gruppechatter forbli \xe5pne for rutinemessig kommunikasjon.";
     },
     get$deleteDesc() {
-      return "Tylko administratorzy mog\u0105 usun\u0105\u0107 kurs. To dzia\u0142anie destrukcyjne, kt\xf3re usuwa wszystkich u\u017cytkownik\xf3w i kasuje wszystkie wybrane czaty w kursie. Post\u0119puj ostro\u017cnie.";
+      return "Bare administratorer kan slette et kurs. Dette er en \xf8deleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. V\xe6r forsiktig.";
     },
     get$noCourseFound() {
-      return "O, ten kurs potrzebuje planu!\n\nPlany kurs\xf3w to sekwencje temat\xf3w i aktywno\u015bci konwersacyjnych.";
+      return "\xc5h, dette kurset trenger en plan!\n\nKursplaner er en sekvens av emner og samtaleaktiviteter.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " innych";
+      return "+ " + num + " andre";
     },
     get$whatNow() {
-      return "Co teraz?";
+      return "Hva n\xe5?";
     },
     get$chooseNextActivity() {
-      return "Wybierz swoj\u0105 nast\u0119pn\u0105 aktywno\u015b\u0107!";
+      return "Velg din neste aktivitet!";
     },
     get$letsGo() {
-      return "Chod\u017amy";
+      return "La oss dra";
     },
     get$chooseRole() {
-      return "Wybierz rol\u0119!";
+      return "Velg en rolle!";
     },
     get$chooseRoleToParticipate() {
-      return "Wybierz rol\u0119, aby uczestniczy\u0107!";
+      return "Velg en rolle for \xe5 delta!";
     },
     waitingToFillRole$1(num) {
-      return "Czekanie na obsadzenie " + num + " r\xf3l...";
+      return "Venter p\xe5 \xe5 fylle " + num + " roller...";
     },
     get$pingParticipants() {
-      return "Powiadom uczestnik\xf3w kursu";
+      return "Pings deltakere i kurset";
     },
     get$playWithBot() {
-      return "Graj z Pangea Botem";
+      return "Lek med Pangea Bot";
     },
     get$waitNotDone() {
-      return "Czekaj, nie sko\u0144czy\u0142em!";
+      return "Vent, jeg er ikke ferdig!";
     },
     get$waitingForOthersToFinish() {
-      return "Czekanie na reszt\u0119 do uko\u0144czenia...";
+      return "Venter p\xe5 at de andre skal bli ferdige...";
     },
     get$generatingSummary() {
-      return "Analiza czatu i generowanie wynik\xf3w";
+      return "Analyserer chat og genererer resultater";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " szuka u\u017cytkownik\xf3w do do\u0142\u0105czenia do sesji aktywno\u015bci w " + room;
+      return user + " ser etter brukere for \xe5 delta i aktivitets\xf8kten i " + room;
     },
     goToCourse$1(course) {
-      return "Przejd\u017a do kursu: " + course;
+      return "G\xe5 til kurset: " + course;
     },
     get$startNewSession() {
-      return "Rozpocznij now\u0105 sesj\u0119";
+      return "Start ny \xf8kt";
     },
     get$joinOpenSession() {
-      return "Do\u0142\u0105cz do otwartej sesji";
+      return "Bli med i \xe5pen \xf8kt";
     },
     get$activityNotFound() {
-      return "Nie znaleziono aktywno\u015bci";
+      return "Aktivitet ikke funnet";
     },
     get$levelUp() {
-      return "Awansuj poziom";
+      return "Niv\xe5 opp";
     },
     get$myActivities() {
-      return "Moje aktywno\u015bci";
+      return "Mine aktiviteter";
     },
     get$openToJoin() {
-      return "Otwarte do do\u0142\u0105czenia";
+      return "\xc5pen for \xe5 bli med";
     },
     get$activityDone() {
-      return "Aktywno\u015b\u0107 zako\u0144czona!";
+      return "Aktivitet fullf\xf8rt!";
     },
     get$promoCodeInfo() {
-      return "Kody promocyjne mo\u017cna wprowadzi\u0107 na nast\u0119pnej stronie";
+      return "Rabattkoder kan tastes inn p\xe5 neste side";
     },
     get$editsComingSoon() {
-      return "Wkr\xf3tce b\u0119dzie dost\u0119pna mo\u017cliwo\u015b\u0107 edytowania miast i aktywno\u015bci.";
+      return "Muligheten til \xe5 redigere byer og aktiviteter kommer snart.";
     },
     get$editing() {
-      return "Edycja";
+      return "Redigerer";
     },
     get$activityNeedsOneMember() {
-      return "Ojej! Ta aktywno\u015b\u0107 wymaga jeszcze jednej osoby.";
+      return "Oi! Denne aktiviteten trenger 1 til person.";
     },
     activityNeedsMembers$1(num) {
-      return "Ojej! Ta aktywno\u015b\u0107 wymaga " + num + " wi\u0119cej os\xf3b.";
+      return "Oi! Denne aktiviteten trenger " + num + " til personer.";
     },
     get$inviteFriendsToCourse() {
-      return "Zapro\u015b znajomych do mojego kursu";
+      return "Inviter venner til kurset mitt";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Subskrybuj, aby odblokowa\u0107 podsumowania aktywno\u015bci";
+      return "Abonner for \xe5 l\xe5se opp aktivitetsoppsummeringer";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Subskrybuj, aby odblokowa\u0107 transkrypcje";
+      return "Abonner p\xe5 \xe5 l\xe5se opp transkripsjoner";
     },
     get$pingSent() {
-      return "Wys\u0142ano powiadomienie o kursie! \ud83d\udd14";
+      return "\ud83d\udeb4 Kurs-ping sendt! \ud83d\udeb4";
     },
     get$courseTitle() {
-      return "Tytu\u0142 kursu";
+      return "Kurs Tittel";
     },
     get$courseDesc() {
-      return "Opis kursu";
+      return "Kursbeskrivelse";
     },
     get$courseSavedSuccessfully() {
-      return "Kurs zapisano pomy\u015blnie";
+      return "Kurset er lagret vellykket";
     },
     get$addCoursePlan() {
-      return "Dodaj plan kursu";
+      return "Legg til en kursplan";
     },
     get$activityStatsButtonInstruction() {
-      return "Kliknij tutaj, aby zobaczy\u0107 statystyki aktywno\u015bci i zamkn\u0105\u0107 aktywno\u015b\u0107 po zako\u0144czeniu";
+      return "Klikk her for \xe5 se aktivitetsstatistikken din og for \xe5 lukke aktiviteten n\xe5r du er ferdig";
     },
     get$loginToAccount() {
-      return "Zaloguj si\u0119 do mojego konta";
+      return "Logg inn p\xe5 kontoen min";
     },
     get$appDescription() {
-      return "Ucz si\u0119 j\u0119zyka\npoprzez pisanie wiadomo\u015bci do znajomych.";
+      return "L\xe6r et spr\xe5k\nmens du sender tekst til vennene dine.";
     },
     get$startOwn() {
-      return "Rozpocznij w\u0142asny";
+      return "Start min egen";
     },
     get$courseCodeHint() {
-      return "Kod podr\xf3\u017cy lub link";
+      return "Reisekode eller lenke";
     },
     get$signupOption() {
-      return "Jak chcesz si\u0119 zarejestrowa\u0107?";
+      return "Hvordan vil du registrere deg?";
     },
     get$withApple() {
-      return "Z Apple";
+      return "Med Apple";
     },
     get$withGoogle() {
-      return "Z Google";
+      return "Med Google";
     },
     get$withEmail() {
-      return "Z e-mailem";
+      return "Med e-post";
     },
     get$createAccount() {
-      return "Za\u0142\xf3\u017c konto";
+      return "Opprett konto";
     },
     get$loginWithEmail() {
-      return "Zaloguj si\u0119 e-mailem";
+      return "Logg inn med e-post";
     },
     get$usernameOrEmail() {
-      return "Nazwa u\u017cytkownika lub e-mail";
+      return "Brukernavn eller e-post";
     },
     get$email() {
-      return "E-mail";
+      return "E-post";
     },
     get$forgotPassword() {
-      return "Zapomnia\u0142e\u015b has\u0142a?";
+      return "Glemt passord?";
     },
     get$endActivity() {
-      return "Zako\u0144cz aktywno\u015b\u0107";
+      return "Avslutt aktivitet";
     },
     get$allLanguages() {
-      return "Wszystkie j\u0119zyki";
+      return "Alle spr\xe5k";
     },
     get$directMessageBotTitle() {
-      return "Wiadomo\u015b\u0107 bezpo\u015brednia Pangea Bot";
+      return "Direktemelding Pangea Bot";
     },
     get$feedbackTitle() {
-      return "Opinia o aktywno\u015bci";
+      return "Tilbakemelding om aktivitet";
     },
     get$feedbackRespDesc() {
-      return "Sprawd\u017a jutro aktualizacje aktywno\u015bci.";
+      return "Sjekk igjen i morgen for oppdateringer om aktiviteten.";
     },
     get$feedbackHint() {
-      return "Twoja opinia";
+      return "Din tilbakemelding";
     },
     get$feedbackButton() {
-      return "Prze\u015blij opini\u0119";
+      return "Send tilbakemelding";
     },
     get$directMessageBotDesc() {
-      return "Rozmowa z lud\u017ami jest bardziej zabawna, ale... AI jest zawsze gotowe!";
+      return "\xc5 snakke med mennesker er morsommere, men... AI er alltid klar!";
     },
     get$inviteYourFriends() {
-      return "Zapro\u015b swoich znajomych";
+      return "Inviter vennene dine";
     },
     get$playWithAI() {
-      return "Na razie pobaw si\u0119 AI";
+      return "Lek med AI for n\xe5";
     },
     get$courseStartDesc() {
-      return "Pangea Bot jest gotowy do dzia\u0142ania w ka\u017cdej chwili!\n\n...ale nauka jest lepsza z przyjaci\xf3\u0142mi!";
+      return "Pangea Bot er klar n\xe5r som helst!\n\n...men l\xe6ring er bedre med venner!";
     },
     get$activityDropdownDesc() {
-      return "Gdy sko\u0144czysz z t\u0105 aktywno\u015bci\u0105, kliknij poni\u017cej";
+      return "N\xe5r du er ferdig med denne aktiviteten, klikk nedenfor";
     },
     get$languageMismatchTitle() {
-      return "Niezgodno\u015b\u0107 j\u0119zyk\xf3w";
+      return "Spr\xe5kavvik";
     },
     get$emptyChatSearch() {
-      return "Nie znaleziono wiadomo\u015bci prywatnych ani czat\xf3w. Upewnij si\u0119, \u017ce Twoje wyszukiwanie jest poprawnie napisane.";
+      return "Ingen direktemeldinger eller chatter funnet. S\xf8rg for at s\xf8ket ditt er stavet riktig.";
     },
     get$languageMismatchDesc() {
-      return "Tw\xf3j j\u0119zyk docelowy nie zgadza si\u0119 z j\u0119zykiem tej aktywno\u015bci. Chcesz zaktualizowa\u0107 sw\xf3j j\u0119zyk docelowy?";
+      return "M\xe5l spr\xe5ket ditt stemmer ikke overens med spr\xe5ket for denne aktiviteten. Vil du oppdatere m\xe5lspr\xe5ket?";
     },
     get$reportWordIssueTooltip() {
-      return "Zg\u0142o\u015b problem z informacj\u0105 o s\u0142owie";
+      return "Rapporter problem med ordinformasjon";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Informacje zwrotne o s\u0142owie";
+      return "Tilbakemelding om ordinformasjon";
     },
     get$noCourseTemplatesFound() {
-      return "Nie mogli\u015bmy znale\u017a\u0107 \u017cadnych kurs\xf3w dla Twojego j\u0119zyka docelowego. W mi\u0119dzyczasie mo\u017cesz rozmawia\u0107 z Pangea Botem i wr\xf3ci\u0107 p\xf3\u017aniej po wi\u0119cej kurs\xf3w.";
+      return "Vi kunne ikke finne noen kurs for ditt m\xe5lspr\xe5k. Du kan chatte med Pangea Bot i mellomtiden, og komme tilbake senere for flere kurs.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot odpowiada z op\xf3\u017anieniem. Spr\xf3buj ponownie p\xf3\u017aniej lub zapro\u015b znajomego.";
+      return "Pangea Bot tar litt tid \xe5 svare. Vennligst pr\xf8v igjen senere, eller inviter en venn.";
     },
     get$unsubscribedResponseError() {
-      return "Ta funkcja wymaga subskrypcji";
+      return "Denne funksjonen krever abonnement";
     },
     get$leaveDesc() {
-      return "Opu\u015b\u0107 t\u0119 przestrze\u0144 i wszystkie czaty w niej";
+      return "Forlat dette rommet og alle chatter i det";
     },
     get$selectAll() {
-      return "Zaznacz wszystko";
+      return "Velg alle";
     },
     get$deselectAll(_) {
-      return "Odznacz wszystko";
+      return "Fjern valg av alle";
     },
     get$shareCourse() {
-      return "Udost\u0119pnij kurs";
+      return "Del kurs";
     },
     get$vocabLevelsDesc() {
-      return "To tutaj pojawi\u0105 si\u0119 s\u0142owa s\u0142ownictwa, gdy je podniesiesz na wy\u017cszy poziom!";
+      return "Dette er hvor vokabularord vil komme n\xe5r du har niv\xe5ert dem opp!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "To s\u0105 Twoje zapisane aktywno\u015bci do przegl\u0105du i \u0107wicze\u0144.";
+      return "Dette er dine lagrede aktiviteter for gjennomgang og \xf8velse.";
     },
     get$numSavedActivities() {
-      return "Liczba zapisanych aktywno\u015bci";
+      return "Antall lagrede aktiviteter";
     },
     get$saveActivityTitle() {
-      return "Zapisz aktywno\u015b\u0107";
+      return "Lagre aktivitet";
     },
     get$saveActivityDesc() {
-      return "Dobra robota! Zapisz t\u0119 aktywno\u015b\u0107 do p\xf3\u017aniejszego przegl\u0105du i \u0107wicze\u0144";
+      return "Bra jobba! Lagre denne aktiviteten for senere gjennomgang og \xf8velse";
     },
     get$levelInfoTooltip() {
-      return "Tutaj mo\u017cesz zobaczy\u0107 wszystkie punkty, kt\xf3re zdoby\u0142e\u015b i jak!";
+      return "Her kan du se alle poengene du har tjent og hvordan!";
     },
     get$alreadyInCourseWithID() {
-      return "Ju\u017c jeste\u015b w kursie z tym planem. Czy chcesz stworzy\u0107 kurs z tym samym planem, czy przej\u015b\u0107 do istniej\u0105cego kursu?";
+      return "Du er allerede i et kurs med denne planen. Vil du opprette et kurs med samme plan, eller g\xe5 til det eksisterende kurset?";
     },
     get$goToExistingCourse() {
-      return "Przejd\u017a do istniej\u0105cego kursu";
+      return "G\xe5 til eksisterende kurs";
     },
     get$emojiView() {
-      return "Widok emoji";
+      return "Emoji-visning";
     },
     get$feedbackDialogDesc() {
-      return "Te\u017c pope\u0142niam b\u0142\u0119dy! Czy jest co\u015b, co mog\u0142oby mi pom\xf3c si\u0119 poprawi\u0107?";
+      return "Jeg gj\xf8r ogs\xe5 feil! Noe for \xe5 hjelpe meg \xe5 bli bedre?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Kontakt zosta\u0142 zaproszony do kursu";
+      return "Kontakt har blitt invitert til kurset";
     },
     get$inviteFriends() {
-      return "Zapro\u015b znajomych";
+      return "Inviter venner";
     },
     get$activityStatsButtonTooltip() {
-      return "Informacje o aktywno\u015bci";
+      return "Aktivitetsinfo";
     },
     get$allow(_) {
-      return "Zezw\xf3l";
+      return "Tillat";
     },
     get$deny() {
-      return "Odm\xf3w";
+      return "Avvis";
     },
     get$enabledRenewal() {
-      return "W\u0142\u0105cz odnowienie subskrypcji";
+      return "Aktiver abonnementfornyelse";
     },
     get$subscriptionEndsOn() {
-      return "Subskrypcja ko\u0144czy si\u0119";
+      return "Abonnementet slutter den";
     },
     get$subscriptionRenewsOn() {
-      return "Subskrypcja odnawia si\u0119";
+      return "Abonnementet fornyes den";
     },
     get$waitForSubscriptionChanges() {
-      return "Zmiany w subskrypcji mog\u0105 chwil\u0119 potrwa\u0107, zanim zostan\u0105 odzwierciedlone w aplikacji.";
+      return "Endringer i abonnementet ditt kan ta et \xf8yeblikk \xe5 gjenspeile i appen.";
     },
     get$subscribeReadingAssistance() {
-      return "Subskrybuj, aby odblokowa\u0107 narz\u0119dzia do wiadomo\u015bci";
+      return "Abonner for \xe5 l\xe5se opp meldingsverkt\xf8y";
     },
     get$aceDisplayName() {
       return "Achinese";
@@ -4651,7 +4651,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Acoli";
     },
     get$afDisplayName() {
-      return "Afryka\u0144ski";
+      return "Afrikaans";
     },
     get$akDisplayName() {
       return "Akan";
@@ -4660,34 +4660,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Alur";
     },
     get$amDisplayName() {
-      return "Amharski";
+      return "Amharisk";
     },
     get$arDisplayName() {
-      return "Arabski";
+      return "Arabisk";
     },
     get$asDisplayName() {
-      return "Asamski";
+      return "Assamesisk";
     },
     get$awaDisplayName() {
       return "Awadhi";
     },
     get$ayDisplayName() {
-      return "Ajmara";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "Azerbejd\u017ca\u0144ski";
+      return "Aserbajdsjansk";
     },
     get$baDisplayName() {
-      return "Baszkirski";
+      return "Bashkir";
     },
     get$banDisplayName() {
-      return "Bali\u0144ski";
+      return "Bali";
     },
     get$bbcDisplayName() {
       return "Batak Toba";
     },
     get$beDisplayName() {
-      return "Bia\u0142oruski";
+      return "Hviterussisk";
     },
     get$bemDisplayName() {
       return "Bemba";
@@ -4696,7 +4696,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Betawi";
     },
     get$bgDisplayName() {
-      return "Bu\u0142garski";
+      return "Bulgarsk";
     },
     get$bhoDisplayName() {
       return "Bhojpuri";
@@ -4708,19 +4708,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bambara";
     },
     get$bnDisplayName() {
-      return "Bengalski";
+      return "Bengali";
     },
     get$bnBDDisplayName() {
-      return "Bengalski (Bangladesz)";
+      return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "Bengalski (Indie)";
+      return "Bengali (India)";
     },
     get$brDisplayName() {
-      return "Breto\u0144ski";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "Bo\u015bniacki";
+      return "Bosnisk";
     },
     get$btsDisplayName() {
       return "Batak Simalungun";
@@ -4729,10 +4729,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "Buriacki";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "Katalo\u0144ski";
+      return "Katalansk";
     },
     get$cebDisplayName() {
       return "Cebuano";
@@ -4744,34 +4744,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mari";
     },
     get$ckbDisplayName() {
-      return "Kurdowski Centralny";
+      return "Sentral-kurdisk";
     },
     get$cnhDisplayName() {
       return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "Korsyka\u0144ski";
+      return "Korsikansk";
     },
     get$crhDisplayName() {
-      return "Turecki Krymski";
+      return "Krimtyrkisk";
     },
     get$crsDisplayName() {
-      return "Seselwa Kreolski Francuski";
+      return "Seselwa kreolsk fransk";
     },
     get$csDisplayName() {
-      return "Czeski";
+      return "Tsjekkisk";
     },
     get$cvDisplayName() {
-      return "Czuwaski";
+      return "Tsjuvasj";
     },
     get$cyDisplayName() {
-      return "Walijski";
+      return "Walisisk";
     },
     get$daDisplayName() {
-      return "Du\u0144ski";
+      return "Dansk";
     },
     get$deDisplayName() {
-      return "Niemiecki";
+      return "Tysk";
     },
     get$dinDisplayName() {
       return "Dinka";
@@ -4789,100 +4789,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ewe";
     },
     get$enDisplayName() {
-      return "Angielski";
+      return "Engelsk";
     },
     get$enAUDisplayName() {
-      return "Angielski (Australia)";
+      return "Engelsk (Australia)";
     },
     get$enGBDisplayName() {
-      return "Angielski (Wielka Brytania)";
+      return "Engelsk (Storbritannia)";
     },
     get$enINDisplayName() {
-      return "Angielski (Indie)";
+      return "Engelsk (India)";
     },
     get$enUSDisplayName() {
-      return "Angielski (USA)";
+      return "Engelsk (USA)";
     },
     get$eoDisplayName() {
       return "Esperanto";
     },
     get$esDisplayName() {
-      return "Hiszpa\u0144ski";
+      return "Spansk";
     },
     get$esESDisplayName() {
-      return "Hiszpa\u0144ski (Hiszpania)";
+      return "Spansk (Spania)";
     },
     get$esMXDisplayName() {
-      return "Hiszpa\u0144ski (Meksyk)";
+      return "Spansk (Mexico)";
     },
     get$euDisplayName() {
-      return "Baskijski";
+      return "Baskisk";
     },
     get$faDisplayName() {
-      return "Perski";
+      return "Persisk";
     },
     get$ffDisplayName() {
       return "Fulah";
     },
     get$fiDisplayName() {
-      return "Fi\u0144ski";
+      return "Finsk";
     },
     get$filDisplayName() {
-      return "Filipi\u0144ski";
+      return "Filippinsk";
     },
     get$fjDisplayName() {
-      return "Fid\u017ca\u0144ski";
+      return "Fijiansk";
     },
     get$foDisplayName() {
-      return "Faroeski";
+      return "F\xe6r\xf8ysk";
     },
     get$frDisplayName() {
-      return "Francuski";
+      return "Fransk";
     },
     get$frCADisplayName() {
-      return "Francuski (Kanada)";
+      return "Fransk (Canada)";
     },
     get$frFRDisplayName() {
-      return "Francuski (Francja)";
+      return "Fransk (Frankrike)";
     },
     get$fyDisplayName() {
-      return "Zachodni Fryzyjski";
+      return "Vestfrisisk";
     },
     get$gaDisplayName() {
-      return "Irlandzki";
+      return "Irsk";
     },
     get$gaaDisplayName() {
       return "Ga";
     },
     get$gdDisplayName() {
-      return "Szkocki Gaelic";
+      return "Skotsk g\xe6lisk";
     },
     get$glDisplayName() {
-      return "Galicyjski";
+      return "Galisisk";
     },
     get$gnDisplayName() {
-      return "Gwara\u0144i";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "Goa\u0144ska Konkani";
+      return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "Gujarat";
+      return "Gujarati";
     },
     get$haDisplayName() {
       return "Hausa";
     },
     get$hawDisplayName() {
-      return "Hawajski";
+      return "Hawaiiansk";
     },
     get$heDisplayName() {
-      return "Hebrajski";
+      return "Hebraisk";
     },
     get$hiDisplayName() {
       return "Hindi";
     },
     get$hilDisplayName() {
-      return "Hiligajnon";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
       return "Hmong";
@@ -4891,22 +4891,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "Chorwacki";
+      return "Kroatisk";
     },
     get$hrxDisplayName() {
       return "Hunsrik";
     },
     get$htDisplayName() {
-      return "Haita\u0144ski Kreolski";
+      return "Haitiansk kreol";
     },
     get$huDisplayName() {
-      return "W\u0119gierski";
+      return "Ungarsk";
     },
     get$hyDisplayName() {
-      return "Ormia\u0144ski";
+      return "Armensk";
     },
     get$idDisplayName() {
-      return "Indonezyjski";
+      return "Indonesisk";
     },
     get$igDisplayName() {
       return "Igbo";
@@ -4915,22 +4915,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Iloko";
     },
     get$isDisplayName() {
-      return "Islandzki";
+      return "Islandsk";
     },
     get$itDisplayName() {
-      return "W\u0142oski";
+      return "Italiensk";
     },
     get$jaDisplayName() {
-      return "Japo\u0144ski";
+      return "Japansk";
     },
     get$jvDisplayName() {
-      return "Jawajski";
+      return "Javanesisk";
     },
     get$kaDisplayName() {
-      return "Gruzi\u0144ski";
+      return "Georgisk";
     },
     get$kkDisplayName() {
-      return "Kazachski";
+      return "Kasakhisk";
     },
     get$kmDisplayName() {
       return "Khmer";
@@ -4939,7 +4939,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kannada";
     },
     get$koDisplayName() {
-      return "Korea\u0144ski";
+      return "Koreansk";
     },
     get$kokDisplayName() {
       return "Konkani";
@@ -4948,34 +4948,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Krio";
     },
     get$ksDisplayName() {
-      return "Kaszmir";
+      return "Kashmiri";
     },
     get$ktuDisplayName() {
-      return "Kituba (Demokratyczna Republika Konga)";
+      return "Kituba (Den demokratiske republikken Kongo)";
     },
     get$kuDisplayName() {
-      return "Kurdyjski";
+      return "Kurdisk";
     },
     get$kyDisplayName() {
-      return "Kirgizki";
+      return "Kyrgyz";
     },
     get$laDisplayName() {
-      return "\u0141aci\u0144ski";
+      return "Latin";
     },
     get$lbDisplayName() {
-      return "Luksemburski";
+      return "Luxembourgsk";
     },
     get$lgDisplayName() {
       return "Ganda";
     },
     get$liDisplayName() {
-      return "Limburski";
+      return "Limburgsk";
     },
     get$lijDisplayName() {
-      return "Ligurijski";
+      return "Ligurisk";
     },
     get$lmoDisplayName() {
-      return "Lombardzki";
+      return "Lombard";
     },
     get$lnDisplayName() {
       return "Lingala";
@@ -4984,19 +4984,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lao";
     },
     get$ltDisplayName() {
-      return "Litewski";
+      return "Litauisk";
     },
     get$ltgDisplayName() {
-      return "\u0141atgalski";
+      return "Latgalisk";
     },
     get$luoDisplayName() {
-      return "Luo (Kenia i Tanzania)";
+      return "Luo (Kenya og Tanzania)";
     },
     get$lusDisplayName() {
       return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u0141otewski";
+      return "Latvisk";
     },
     get$maiDisplayName() {
       return "Maithili";
@@ -5008,19 +5008,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malagasy";
     },
     get$miDisplayName() {
-      return "Maory";
+      return "M\u0101ori";
     },
     get$minDisplayName() {
       return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "Macedo\u0144ski";
+      return "Makedonsk";
     },
     get$mlDisplayName() {
-      return "Malajalam";
+      return "Malayalam";
     },
     get$mnDisplayName() {
-      return "Mongolski";
+      return "Mongolsk";
     },
     get$mniDisplayName() {
       return "Manipuri";
@@ -5029,49 +5029,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Marathi";
     },
     get$msDisplayName() {
-      return "Malajski";
+      return "Malay";
     },
     get$msArabDisplayName() {
-      return "Malajski (arabski)";
+      return "Malay (arabisk)";
     },
     get$msMYDisplayName() {
-      return "Malajski (Malezja)";
+      return "Malay (Malaysia)";
     },
     get$mtDisplayName() {
-      return "Malta\u0144ski";
+      return "Maltisk";
     },
     get$mwrDisplayName() {
       return "Marwari";
     },
     get$myDisplayName() {
-      return "Birma\u0144ski";
+      return "Burmesisk";
     },
     get$nanDisplayName() {
       return "Min Nan";
     },
     get$nbDisplayName() {
-      return "Norweski (Bokm\xe5l)";
+      return "Norsk (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "Nepalski";
+      return "Nepali";
     },
     get$newDisplayName() {
-      return "Newarski";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "Holenderski";
+      return "Nederlandsk";
     },
     get$nlBEDisplayName() {
-      return "Flemisza";
+      return "Flamsk";
     },
     get$noDisplayName() {
-      return "Norweski";
+      return "Norsk";
     },
     get$nrDisplayName() {
-      return "Po\u0142udniowy Ndebele";
+      return "S\xf8rafrikansk Ndebele";
     },
     get$nsoDisplayName() {
-      return "P\xf3\u0142nocny Sotho";
+      return "Nord-Sotho";
     },
     get$nusDisplayName() {
       return "Nuer";
@@ -5080,7 +5080,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nyanja";
     },
     get$ocDisplayName() {
-      return "Okcita\u0144ski";
+      return "Occitan";
     },
     get$omDisplayName() {
       return "Oromo";
@@ -5089,13 +5089,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Odia";
     },
     get$paDisplayName() {
-      return "Pend\u017cabski";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "Pend\u017cabski (Shahmukhi)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "Pend\u017cabski (Gurmukhi)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
       return "Pangasinan";
@@ -5107,52 +5107,52 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Papiamento";
     },
     get$plDisplayName() {
-      return "Polski";
+      return "Polsk";
     },
     get$psDisplayName() {
-      return "Paszto";
+      return "Pashto";
     },
     get$ptDisplayName() {
-      return "Portugalski";
+      return "Portugisisk";
     },
     get$ptBRDisplayName() {
-      return "Portugalski (Brazylia)";
+      return "Portugisisk (Brasil)";
     },
     get$ptPTDisplayName() {
-      return "Portugalski (Portugalia)";
+      return "Portugisisk (Portugal)";
     },
     get$quDisplayName() {
-      return "Keczua";
+      return "Quechua";
     },
     get$rajDisplayName() {
-      return "Rad\u017casthani";
+      return "Rajasthani";
     },
     get$rnDisplayName() {
       return "Rundi";
     },
     get$roDisplayName() {
-      return "Rumu\u0144ski";
+      return "Rumensk";
     },
     get$roMDDisplayName() {
-      return "Mo\u0142dawski";
+      return "Moldovisk";
     },
     get$romDisplayName() {
       return "Romani";
     },
     get$ruDisplayName() {
-      return "Rosyjski";
+      return "Russisk";
     },
     get$rwDisplayName() {
       return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "Sanskryt";
+      return "Sanskrit";
     },
     get$satDisplayName() {
       return "Santali";
     },
     get$scnDisplayName() {
-      return "Sycylijski";
+      return "Siciliansk";
     },
     get$sdDisplayName() {
       return "Sindhi";
@@ -5167,49 +5167,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sinhala";
     },
     get$skDisplayName() {
-      return "S\u0142owacki";
+      return "Slovakisk";
     },
     get$slDisplayName() {
-      return "S\u0142owe\u0144ski";
+      return "Slovensk";
     },
     get$smDisplayName() {
-      return "Samoa\u0144ski";
+      return "Samoansk";
     },
     get$snDisplayName() {
       return "Shona";
     },
     get$soDisplayName() {
-      return "Somalijski";
+      return "Somali";
     },
     get$sqDisplayName() {
-      return "Alba\u0144ski";
+      return "Albansk";
     },
     get$srDisplayName() {
-      return "Serbski";
+      return "Serbisk";
     },
     get$srMEDisplayName() {
-      return "Czarnog\xf3rski";
+      return "Montenegrinsk";
     },
     get$ssDisplayName() {
       return "Swati";
     },
     get$stDisplayName() {
-      return "Po\u0142udniowy Sotho";
+      return "S\xf8rafrikansk Sotho";
     },
     get$suDisplayName() {
-      return "Sundajski";
+      return "Sundanesisk";
     },
     get$svDisplayName() {
-      return "Szwedzki";
+      return "Svensk";
     },
     get$swDisplayName() {
-      return "Suahili";
+      return "Swahili";
     },
     get$szlDisplayName() {
-      return "\u015al\u0105ski";
+      return "Silesisk";
     },
     get$taDisplayName() {
-      return "Tamilski";
+      return "Tamil";
     },
     get$teDisplayName() {
       return "Telugu";
@@ -5218,25 +5218,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tetum";
     },
     get$tgDisplayName() {
-      return "Tad\u017cycki";
+      return "Tadsjikisk";
     },
     get$thDisplayName() {
-      return "Tajski";
+      return "Thai";
     },
     get$tiDisplayName() {
-      return "Tigrinia";
+      return "Tigrinja";
     },
     get$tkDisplayName() {
-      return "Turecki";
+      return "Turkmensk";
     },
     get$tlDisplayName() {
-      return "Tagalski";
+      return "Tagalog";
     },
     get$tnDisplayName() {
       return "Tswana";
     },
     get$trDisplayName() {
-      return "Turecki";
+      return "Tyrkisk";
     },
     get$tsDisplayName() {
       return "Tsonga";
@@ -5245,25 +5245,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tatar";
     },
     get$ugDisplayName() {
-      return "Ujgur";
+      return "Uigursk";
     },
     get$ukDisplayName() {
-      return "Ukrai\u0144ski";
+      return "Ukrainsk";
     },
     get$urDisplayName() {
       return "Urdu";
     },
     get$urINDisplayName() {
-      return "Urdu (Indie)";
+      return "Urdu (India)";
     },
     get$urPKDisplayName() {
       return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "Uzbecki";
+      return "Usbekisk";
     },
     get$viDisplayName() {
-      return "Wietnamski";
+      return "Vietnamesisk";
     },
     get$wuuDisplayName() {
       return "Wu";
@@ -5272,31 +5272,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Xhosa";
     },
     get$yiDisplayName() {
-      return "Jidysz";
+      return "Jiddisch";
     },
     get$yoDisplayName() {
-      return "Joruba";
+      return "Yoruba";
     },
     get$yuaDisplayName() {
-      return "Jukateko";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "Kanto\u0144ski";
+      return "Kantonesisk";
     },
     get$yueCNDisplayName() {
-      return "Kanto\u0144ski (Chiny)";
+      return "Kantonesisk (Kina)";
     },
     get$yueHKDisplayName() {
-      return "Kanto\u0144ski (Hongkong)";
+      return "Kantonesisk (Hong Kong)";
     },
     get$zhDisplayName() {
-      return "Chi\u0144ski";
+      return "Kinesisk";
     },
     get$zhCNDisplayName() {
-      return "Chi\u0144ski (Uproszczony)";
+      return "Kinesisk (Forenklet)";
     },
     get$zhTWDisplayName() {
-      return "Chi\u0144ski (Tradycyjny)";
+      return "Kinesisk (Tradisjonell)";
     },
     get$zuDisplayName() {
       return "Zulu";
@@ -5305,262 +5305,265 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "99+";
     },
     get$teacherModeTitle() {
-      return "Tryb Nauczyciela";
+      return "L\xe6rermodus";
     },
     get$teacherModeDesc() {
-      return "Prze\u0142\u0105cz, aby odblokowa\u0107 wszystkie tematy i aktywno\u015bci. Tylko dla administratora kursu.";
+      return "Bytt for \xe5 l\xe5se opp alle emner og aktiviteter. Kun kursadministrator.";
     },
     get$noSavedActivitiesYet() {
-      return "Aktywno\u015bci pojawi\u0105 si\u0119 tutaj, gdy zostan\u0105 uko\u0144czone i zapisane.";
+      return "Aktiviteter vil vises her n\xe5r de er fullf\xf8rt og lagret.";
     },
     get$changeCourse() {
-      return "Zmie\u0144 kurs";
+      return "Endre kurs";
     },
     get$changeCourseDesc() {
-      return "Tutaj mo\u017cesz zmieni\u0107 plan kursu tego kursu.";
+      return "Her kan du endre kursplanen for dette kurset.";
     },
     get$introChatTitle() {
-      return "Utw\xf3rz czat wprowadzaj\u0105cy";
+      return "Opprett Introduksjoner Chat";
     },
     get$introChatDesc() {
-      return "Ka\u017cdy w przestrzeni mo\u017ce publikowa\u0107.";
+      return "Alle i rommet kan legge ut.";
     },
     get$announcementsChatTitle() {
-      return "Czat og\u0142osze\u0144";
+      return "Kunngj\xf8ringer Chat";
     },
     get$announcementsChatDesc() {
-      return "Tylko administrator przestrzeni mo\u017ce publikowa\u0107.";
+      return "Bare romadministratoren kan legge ut.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Otwarte sesje (" + num + ")";
+      return "\xc5pne \xf8kter (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Trwa teraz (" + num + ")";
+      return "P\xe5g\xe5r n\xe5 (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Zrobione (" + num + ")";
+      return "Ferdig (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "Pick a different activity";
+      return "Velg en annen aktivitet";
     },
     get$blockLemmaConfirmation() {
-      return "To s\u0142owo w s\u0142ownictwie zostanie trwale usuni\u0119te z twojej analizy";
+      return "Dette ordet vil bli permanent fjernet fra analysene dine";
     },
     get$woman() {
-      return "Kobieta";
+      return "Kvinne";
     },
     get$man() {
-      return "M\u0119\u017cczyzna";
+      return "Mann";
     },
     get$otherGender() {
-      return "Inna";
+      return "Annet";
     },
     get$unselectedGender() {
-      return "Wybierz opcj\u0119 p\u0142ci";
+      return "Velg et kj\xf8nnsalternativ";
     },
     get$gender() {
-      return "P\u0142e\u0107";
+      return "Kj\xf8nn";
     },
     get$modeDisabled() {
-      return "Narz\u0119dzia do nauki s\u0105 wy\u0142\u0105czone dla wiadomo\u015bci, kt\xf3re nie s\u0105 w twoim docelowym j\u0119zyku.";
+      return "L\xe6ringsverkt\xf8y er deaktivert for meldinger som ikke er p\xe5 m\xe5lspr\xe5ket ditt.";
     },
     get$courseParticipantTooltip() {
-      return "To s\u0105 wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego u\u017cytkownika i wybierz \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
+      return 'Dette er alle i dette kurset. Klikk p\xe5 hvilken som helst brukers avatar og "start samtale" for \xe5 sende en DM.';
     },
     get$chatParticipantTooltip() {
-      return "To wszyscy w tym czacie. Kliknij na avatar dowolnego u\u017cytkownika i wybierz \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
+      return 'Dette er alle i denne chatten. Klikk p\xe5 hvilken som helst brukers avatar og "start samtale" for \xe5 sende en DM.';
     },
     get$inOngoingActivity() {
-      return "Masz trwaj\u0105c\u0105 aktywno\u015b\u0107!";
+      return "Du har en p\xe5g\xe5ende aktivitet!";
     },
     get$requestRegeneration() {
-      return "Popro\u015b o regeneracj\u0119";
+      return "Be om regenerering";
     },
     get$optionalRegenerateReason() {
-      return "(Opcjonalne) Pow\xf3d";
+      return "(Valgfritt) \xc5rsak";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "Ustawi\u0142e\u015b emoji dla " + lemma + "! B\u0119dziemy u\u017cywa\u0107 tego emoji do reprezentowania s\u0142owa w nadchodz\u0105cych aktywno\u015bciach praktycznych.";
+      return "Du har satt emoji for " + lemma + "! Vi vil bruke denne emojien for \xe5 representere ordet i praksisaktiviteter fremover.";
     },
     get$constructUseCorLMDesc() {
-      return "Poprawna praktyka definicji s\u0142ownictwa";
+      return "Korrekt orddefinisjonspraksis";
     },
     get$constructUseIncLMDesc() {
-      return "Niepoprawna praktyka definicji s\u0142ownictwa";
+      return "Feil orddefinisjonspraksis";
     },
     get$constructUseCorLADesc() {
-      return "Poprawna praktyka audio s\u0142ownictwa";
+      return "Korrekt ordlyttpraksis";
     },
     get$constructUseIncLADesc() {
-      return "Niepoprawna praktyka audio s\u0142ownictwa";
+      return "Feil ordlyttpraksis";
     },
     get$constructUseBonus() {
-      return "Bonus podczas praktyki s\u0142ownictwa";
+      return "Bonus under ordpraksis";
     },
     get$practiceVocab() {
-      return "\u0106wicz s\u0142ownictwo";
+      return "\xd8v p\xe5 ordforr\xe5d";
     },
     get$selectMeaning() {
-      return "Wybierz znaczenie";
+      return "Velg betydningen";
     },
     get$anotherRound() {
-      return "Kolejna runda";
+      return "En runde til";
     },
     get$ssoDialogTitle() {
-      return "Czekam na zako\u0144czenie logowania";
+      return "Venter p\xe5 at p\xe5loggingen skal fullf\xf8res";
     },
     get$ssoDialogDesc() {
-      return "Otworzyli\u015bmy now\u0105 kart\u0119, aby\u015b m\xf3g\u0142 si\u0119 zalogowa\u0107 bezpiecznie.";
+      return "Vi \xe5pnet en ny fane slik at du kan logge inn sikkert.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 Je\u015bli nie widzisz nowej karty, sprawd\u017a sw\xf3j blokad\u0119 wyskakuj\u0105cych okienek.";
+      return "\ud83e\udd14 Hvis du ikke s\xe5 den nye fanen, vennligst sjekk popup-blokkeringen din.";
     },
     get$disableLanguageToolsTitle() {
-      return "Wy\u0142\u0105cz narz\u0119dzia j\u0119zykowe";
+      return "Deaktiver spr\xe5kv\xe6rkt\xf8y";
     },
     get$disableLanguageToolsDesc() {
-      return "Czy chcesz wy\u0142\u0105czy\u0107 automatyczn\u0105 pomoc j\u0119zykow\u0105?";
+      return "\xd8nsker du \xe5 deaktivere automatisk spr\xe5kassistanse?";
     },
     get$screenSizeWarning() {
-      return "Aby uzyska\u0107 najlepsze wra\u017cenia podczas korzystania z tej aplikacji, prosz\u0119 powi\u0119kszy\u0107 rozmiar ekranu.";
+      return "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermst\xf8rrelsen din.";
     },
     get$noActivityRequest() {
-      return "Brak bie\u017c\u0105cego \u017c\u0105dania aktywno\u015bci.";
+      return "Ingen n\xe5v\xe6rende aktivitetsforesp\xf8rsel.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "Aktywno\u015bci do odblokowania nast\u0119pnego tematu";
+      return "Aktiviteter for \xe5 l\xe5se opp neste emne";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "Ustaw liczb\u0119 aktywno\u015bci do odblokowania nast\u0119pnego tematu kursu";
+      return "Sett antall aktiviteter for \xe5 l\xe5se opp neste kurs emne";
     },
     get$activitySettingsOverrideWarning() {
-      return "J\u0119zyk i poziom j\u0119zykowy okre\u015blone przez plan aktywno\u015bci";
+      return "Spr\xe5k og spr\xe5kniv\xe5 bestemt av aktivitetsplan";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa Opuszczono czat";
+      return "\ud83d\udeaa Du forlot chatten";
     },
     get$downloadInitiated() {
-      return "Pobieranie zainicjowane";
+      return "Nedlasting initiert";
     },
     get$webDownloadPermissionMessage() {
-      return "Je\u015bli Twoja przegl\u0105darka blokuje pobieranie, w\u0142\u0105cz pobieranie dla tej strony.";
+      return "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.";
     },
     get$exitPractice() {
-      return "Post\u0119p Twojej sesji \u0107wicze\u0144 nie zostanie zapisany.";
+      return "Fremdriften i \xf8kten din vil ikke bli lagret.";
     },
     get$practiceGrammar() {
-      return "\u0106wicz gramatyk\u0119";
+      return "\xd8v p\xe5 grammatikk";
     },
     get$notEnoughToPractice() {
-      return "Wy\u015blij wi\u0119cej wiadomo\u015bci, aby odblokowa\u0107 \u0107wiczenia";
+      return "Send flere meldinger for \xe5 l\xe5se opp \xf8ving";
     },
     get$constructUseCorGCDesc() {
-      return "\u0106wiczenie poprawnej kategorii gramatycznej";
+      return "\xd8velse i korrekt grammatikkategori";
     },
     get$constructUseIncGCDesc() {
-      return "\u0106wiczenie niepoprawnej kategorii gramatycznej";
+      return "\xd8velse i ukorrekt grammatikkategori";
     },
     get$constructUseCorGEDesc() {
-      return "\u0106wiczenie poprawnych b\u0142\u0119d\xf3w gramatycznych";
+      return "Korrekt grammatikkfeil praksis";
     },
     get$constructUseIncGEDesc() {
-      return "\u0106wiczenie niepoprawnych b\u0142\u0119d\xf3w gramatycznych";
+      return "Feil grammatikkfeil praksis";
     },
     get$fillInBlank() {
-      return "Uzupe\u0142nij luk\u0119 poprawnym wyborem";
+      return "Fyll inn blanketten med riktig valg";
     },
     get$learn() {
-      return "Ucz si\u0119";
+      return "L\xe6r";
     },
     get$languageUpdated() {
-      return "J\u0119zyk docelowy zaktualizowany!";
+      return "M\xe5l spr\xe5k oppdatert!";
     },
     get$voiceDropdownTitle() {
-      return "G\u0142os bota Pangea";
+      return "Pangea Bot-stemme";
     },
     get$knockDesc() {
-      return "Twoja pro\u015bba zosta\u0142a wys\u0142ana do administratora kursu! Zostaniesz wpuszczony, je\u015bli j\u0105 zatwierdz\u0105.";
+      return "Din foresp\xf8rsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "Czy masz kod zaproszenia lub link do publicznego kursu?";
+      return "Har du en invitasjonskode eller lenke til et offentlig kurs?";
     },
     welcomeUser$1(user) {
-      return "Witaj " + user;
+      return "Velkommen " + user;
     },
     get$findCourse() {
-      return "Znajd\u017a kurs";
+      return "Finn et kurs";
     },
     get$publicInviteDescChat() {
-      return "Szukaj u\u017cytkownik\xf3w, aby zaprosi\u0107 ich do tej rozmowy.";
+      return "S\xf8k etter brukere for \xe5 invitere dem til denne chatten.";
     },
     get$publicInviteDescSpace() {
-      return "Szukaj u\u017cytkownik\xf3w, aby zaprosi\u0107 ich do tej przestrzeni.";
+      return "S\xf8k etter brukere for \xe5 invitere dem til dette rommet.";
     },
     get$enableNotificationsTitle() {
-      return "Pangea Chat to aplikacja do wiadomo\u015bci, wi\u0119c powiadomienia s\u0105 wa\u017cne!";
+      return "Pangea Chat er en tekstmelding-app, s\xe5 varsler er viktige!";
     },
     get$enableNotificationsDesc() {
-      return "Zezw\xf3l na powiadomienia";
+      return "Tillat varsler";
     },
     get$useActivityImageAsChatBackground() {
-      return "U\u017cyj obrazu aktywno\u015bci jako t\u0142a czatu";
+      return "Bruk aktivitetsbilde som chatbakgrunn";
     },
     get$chatWithSupport() {
-      return "Czat z pomoc\u0105";
+      return "Chat med st\xf8tte";
     },
     get$newCourseAccess() {
-      return "Domy\u015blnie kursy s\u0105 publicznie wyszukiwalne i wymagaj\u0105 zatwierdzenia przez administratora, aby do nich do\u0142\u0105czy\u0107. Mo\u017cesz edytowa\u0107 te ustawienia w dowolnym momencie.";
+      return "Som standard er kurs offentlig s\xf8kbare og krever administratortillatelse for \xe5 bli med. Du kan redigere disse innstillingene n\xe5r som helst.";
     },
     get$courseLoadingError() {
-      return "Co\u015b posz\u0142o nie tak, a my ci\u0119\u017cko pracujemy nad napraw\u0105. Sprawd\u017a ponownie p\xf3\u017aniej.";
+      return "Noe gikk galt, og vi jobber hardt med \xe5 fikse det. Sjekk igjen senere.";
     },
     get$onboardingLanguagesTitle() {
-      return "Jakiego j\u0119zyka si\u0119 uczysz?";
+      return "Hvilket spr\xe5k l\xe6rer du?";
     },
     get$searchLanguagesHint() {
-      return "Szukaj j\u0119zyk\xf3w docelowych";
+      return "S\xf8k etter m\xe5lspr\xe5k";
     },
     get$supportSubtitle() {
-      return "Pytania? Jeste\u015bmy tutaj, aby pom\xf3c!";
+      return "Sp\xf8rsm\xe5l? Vi er her for \xe5 hjelpe!";
     },
     get$autoIGCToolName() {
-      return "W\u0142\u0105cz pomoc w pisaniu";
+      return "Aktiver skriveassistent";
     },
     get$autoIGCToolDescription() {
-      return "Automatycznie uruchom narz\u0119dzia Pangea Chat, aby poprawi\u0107 wys\u0142ane wiadomo\u015bci na docelowy j\u0119zyk.";
+      return "Kj\xf8r Pangea Chat-verkt\xf8y automatisk for \xe5 korrigere sendte meldinger til m\xe5lspr\xe5ket.";
     },
     get$emptyAudioError() {
-      return "Nagrywanie nie powiod\u0142o si\u0119. Sprawd\u017a swoje uprawnienia audio i spr\xf3buj ponownie.";
+      return "Opptak mislyktes. Vennligst sjekk lydinnstillingene dine og pr\xf8v igjen.";
     },
     get$spanFeedbackTitle() {
-      return "Zg\u0142o\u015b problem z korekt\u0105";
+      return "Rapporter korrigeringsproblem";
     },
     get$selectAllWords() {
-      return "Select all the words you hear in the audio";
+      return "Velg alle ordene du h\xf8rer i lyden";
     },
     get$aboutMeHint() {
-      return "O mnie";
+      return "Om meg";
     },
     get$changeEmail() {
-      return "Zmie\u0144 adres e-mail";
+      return "Endre e-post";
     },
     get$withTheseAddressesDescription() {
-      return "Dzi\u0119ki tym adresom e-mail mo\u017cesz si\u0119 zalogowa\u0107, odzyska\u0107 has\u0142o i zarz\u0105dza\u0107 subskrypcjami.";
+      return "Med disse e-postadressene kan du logge inn, gjenopprette passordet ditt og administrere abonnementer.";
     },
     get$noAddressDescription() {
-      return "Nie doda\u0142e\u015b jeszcze \u017cadnych adres\xf3w e-mail.";
+      return "Du har ikke lagt til noen e-postadresser enn\xe5.";
     },
     get$perfectPractice() {
-      return "Idealna praktyka!";
+      return "Perfekt \xf8velse!";
     },
     get$greatPractice() {
-      return "\u015awietna praktyka!";
+      return "Flott \xf8velse!";
     },
     get$usedNoHints() {
-      return "Dobra robota, \u017ce nie korzysta\u0142e\u015b z \u017cadnych wskaz\xf3wek!";
+      return "Bra jobba med \xe5 ikke bruke noen hint!";
     },
     get$youveCompletedPractice() {
-      return "Uko\u0144czy\u0142e\u015b praktyk\u0119, kontynuuj, aby si\u0119 poprawi\u0107!";
+      return "Du har fullf\xf8rt \xf8velsen, fortsett slik for \xe5 bli bedre!";
+    },
+    get$joinCourseForActivities() {
+      return "Bli med i et kurs for \xe5 pr\xf8ve aktiviteter.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5569,13 +5572,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nPl, C.L10n);
+    _inherit(A.L10nNb, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nPl":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nNb":{"L10n":[]}}'));
+  var string$ = {
+    Vennli: "Vennligst skriv inn en gyldig e-postadresse."
+  };
 };
 ;
 (d => {
-  d["m0chMIhVhAmzgJI+k4728mFphWs="] = d.current;
+  d["+IXAZ3gNKt8fS7G3KvtlIdIH/Es="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map
