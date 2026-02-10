@@ -116,7 +116,7 @@ Keys use **PascalCase** (`Pos`, `Tense`, `VerbForm`). Parse:
 - **Memory cache**: In-flight deduplication + fast reads, short TTL (keep ~10 min).
 - **Disk cache**: `GetStorage`, **24-hour TTL** (down from 7 days — server CMS cache means re-fetching is cheap, daily refresh ensures corrections propagate).
 - **Invalidation**: Lazy eviction on read.
-- **Logout**: Add PT storage key to `_storageKeys` in `pangea_controller.dart` (`phonetic_transcription_storage` is currently missing).
+- **Logout**: PT storage keys registered in `_storageKeys` in `pangea_controller.dart` (both v1 `phonetic_transcription_storage` and v2 `phonetic_transcription_v2_storage`).
 
 ---
 
