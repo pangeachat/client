@@ -31,13 +31,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final room =
-        Matrix.of(context).client.getRoomById(controller.widget.roomId);
+    final room = Matrix.of(
+      context,
+    ).client.getRoomById(controller.widget.roomId);
     if (room == null) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(L10n.of(context).oopsSomethingWentWrong),
-        ),
+        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
         body: Center(
           child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
         ),
@@ -50,19 +49,13 @@ class PangeaInvitationSelectionView extends StatelessWidget {
     final doneButton = ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.primaryContainer,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 16,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       ),
       child: Row(
         spacing: 12.0,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.check,
-            color: theme.colorScheme.onPrimaryContainer,
-          ),
+          Icon(Icons.check, color: theme.colorScheme.onPrimaryContainer),
           Text(
             L10n.of(context).done,
             style: TextStyle(
@@ -154,32 +147,34 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                       .where((update) => update.roomId == room.id)
                       .rateLimit(const Duration(seconds: 1)),
                   builder: (context, snapshot) {
-                    final participants =
-                        room.getParticipants().map((user) => user.id).toSet();
+                    final participants = room
+                        .getParticipants()
+                        .map((user) => user.id)
+                        .toSet();
                     return controller.filter == InvitationFilter.public
                         ? controller.foundProfiles.isEmpty
-                            ? Padding(
-                                padding: const EdgeInsets.all(24.0),
-                                child: Text(
-                                  room.isSpace
-                                      ? L10n.of(context).publicInviteDescSpace
-                                      : L10n.of(context).publicInviteDescChat,
-                                ),
-                              )
-                            : ListView.builder(
-                                itemCount: controller.foundProfiles.length,
-                                itemBuilder: (BuildContext context, int i) =>
-                                    _InviteContactListTile(
-                                  profile: controller.foundProfiles[i],
-                                  isMember: participants.contains(
-                                    controller.foundProfiles[i].userId,
+                              ? Padding(
+                                  padding: const EdgeInsets.all(24.0),
+                                  child: Text(
+                                    room.isSpace
+                                        ? L10n.of(context).publicInviteDescSpace
+                                        : L10n.of(context).publicInviteDescChat,
                                   ),
-                                  onTap: () => controller.inviteAction(
-                                    controller.foundProfiles[i].userId,
-                                  ),
-                                  controller: controller,
-                                ),
-                              )
+                                )
+                              : ListView.builder(
+                                  itemCount: controller.foundProfiles.length,
+                                  itemBuilder: (BuildContext context, int i) =>
+                                      _InviteContactListTile(
+                                        profile: controller.foundProfiles[i],
+                                        isMember: participants.contains(
+                                          controller.foundProfiles[i].userId,
+                                        ),
+                                        onTap: () => controller.inviteAction(
+                                          controller.foundProfiles[i].userId,
+                                        ),
+                                        controller: controller,
+                                      ),
+                                )
                         : ListView.builder(
                             itemCount: contacts.length + 2,
                             itemBuilder: (BuildContext context, int i) {
@@ -206,7 +201,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                         ),
                                         subtitle: Text(
                                           L10n.of(context).countParticipants(
-                                            controller.spaceParent!.summary
+                                            controller
+                                                    .spaceParent!
+                                                    .summary
                                                     .mJoinedMemberCount ??
                                                 1,
                                           ),
@@ -237,10 +234,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                           "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
                                       errorWidget: (context, url, error) =>
                                           const SizedBox(),
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                        child: CircularProgressIndicator
-                                            .adaptive(),
+                                      placeholder: (context, url) => const Center(
+                                        child:
+                                            CircularProgressIndicator.adaptive(),
                                       ),
                                     ),
                                   ),
@@ -250,15 +246,15 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 user: contacts[i],
                                 profile: Profile(
                                   avatarUrl: contacts[i].avatarUrl,
-                                  displayName: contacts[i].displayName ??
+                                  displayName:
+                                      contacts[i].displayName ??
                                       contacts[i].id.localpart ??
                                       L10n.of(context).user,
                                   userId: contacts[i].id,
                                 ),
                                 isMember: participants.contains(contacts[i].id),
-                                onTap: () => controller.inviteAction(
-                                  contacts[i].id,
-                                ),
+                                onTap: () =>
+                                    controller.inviteAction(contacts[i].id),
                                 controller: controller,
                               );
                             },
@@ -314,41 +310,36 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode}";
                           }
 
-                          await Clipboard.setData(
-                            ClipboardData(text: toCopy),
-                          );
-                          ScaffoldMessenger.of(
-                            context,
-                          ).showSnackBar(
+                          await Clipboard.setData(ClipboardData(text: toCopy));
+                          ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(
-                                L10n.of(context).copiedToClipboard,
-                              ),
+                              content: Text(L10n.of(context).copiedToClipboard),
                             ),
                           );
                         },
                         itemBuilder: (BuildContext context) =>
                             <PopupMenuEntry<int>>[
-                          PopupMenuItem<int>(
-                            value: 0,
-                            child: ListTile(
-                              leading: const Icon(Icons.share_outlined),
-                              title: Text(L10n.of(context).shareSpaceLink),
-                              contentPadding: const EdgeInsets.all(0),
-                            ),
-                          ),
-                          PopupMenuItem<int>(
-                            value: 1,
-                            child: ListTile(
-                              leading: const Icon(Icons.share_outlined),
-                              title: Text(
-                                L10n.of(context)
-                                    .shareInviteCode(room.classCode!),
+                              PopupMenuItem<int>(
+                                value: 0,
+                                child: ListTile(
+                                  leading: const Icon(Icons.share_outlined),
+                                  title: Text(L10n.of(context).shareSpaceLink),
+                                  contentPadding: const EdgeInsets.all(0),
+                                ),
                               ),
-                              contentPadding: const EdgeInsets.all(0),
-                            ),
-                          ),
-                        ],
+                              PopupMenuItem<int>(
+                                value: 1,
+                                child: ListTile(
+                                  leading: const Icon(Icons.share_outlined),
+                                  title: Text(
+                                    L10n.of(
+                                      context,
+                                    ).shareInviteCode(room.classCode!),
+                                  ),
+                                  contentPadding: const EdgeInsets.all(0),
+                                ),
+                              ),
+                            ],
                       ),
                     ),
                   room.classCode != null
@@ -392,26 +383,21 @@ class _InviteContactListTile extends StatelessWidget {
     final String? permissionBatch = participant == null
         ? null
         : participant.powerLevel >= 100
-            ? L10n.of(context).admin
-            : participant.powerLevel >= 50
-                ? L10n.of(context).moderator
-                : null;
+        ? L10n.of(context).admin
+        : participant.powerLevel >= 50
+        ? L10n.of(context).moderator
+        : null;
 
     return ListTile(
       onTap: participant != null
-          ? () => showMemberActionsPopupMenu(
-                context: context,
-                user: participant,
-              )
+          ? () =>
+                showMemberActionsPopupMenu(context: context, user: participant)
           : null,
       leading: Avatar(
         mxContent: profile.avatarUrl,
         name: profile.displayName,
         presenceUserId: profile.userId,
-        onTap: () => UserDialog.show(
-          context: context,
-          profile: profile,
-        ),
+        onTap: () => UserDialog.show(context: context, profile: profile),
       ),
       title: Text(
         profile.displayName ?? profile.userId.localpart ?? l10n.user,
@@ -425,9 +411,7 @@ class _InviteContactListTile extends StatelessWidget {
           const SizedBox(height: 2.0),
           Text(
             profile.userId,
-            style: const TextStyle(
-              fontSize: 12.0,
-            ),
+            style: const TextStyle(fontSize: 12.0),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -450,34 +434,29 @@ class _InviteContactListTile extends StatelessWidget {
               ),
             )
           : permissionBatch != null
-              ? Container(
-                  margin: const EdgeInsets.only(right: 12.0),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: participant!.powerLevel >= 100
-                        ? theme.colorScheme.tertiary
-                        : theme.colorScheme.tertiaryContainer,
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.borderRadius,
-                    ),
-                  ),
-                  child: Text(
-                    permissionBatch,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: participant.powerLevel >= 100
-                          ? theme.colorScheme.onTertiary
-                          : theme.colorScheme.onTertiaryContainer,
-                    ),
-                  ),
-                )
-              : TextButton.icon(
-                  onPressed: isMember ? null : onTap,
-                  label: Text(isMember ? l10n.participant : l10n.invite),
-                  icon: Icon(isMember ? Icons.check : Icons.add),
+          ? Container(
+              margin: const EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: participant!.powerLevel >= 100
+                    ? theme.colorScheme.tertiary
+                    : theme.colorScheme.tertiaryContainer,
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              ),
+              child: Text(
+                permissionBatch,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: participant.powerLevel >= 100
+                      ? theme.colorScheme.onTertiary
+                      : theme.colorScheme.onTertiaryContainer,
                 ),
+              ),
+            )
+          : TextButton.icon(
+              onPressed: isMember ? null : onTap,
+              label: Text(isMember ? l10n.participant : l10n.invite),
+              icon: Icon(isMember ? Icons.check : Icons.add),
+            ),
     );
   }
 }

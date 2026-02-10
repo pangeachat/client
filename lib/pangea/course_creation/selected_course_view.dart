@@ -12,10 +12,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class SelectedCourseView extends StatelessWidget {
   final SelectedCourseController controller;
-  const SelectedCourseView(
-    this.controller, {
-    super.key,
-  });
+  const SelectedCourseView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +27,7 @@ class SelectedCourseView extends StatelessWidget {
 
     final course = controller.course;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          controller.title,
-        ),
-      ),
+      appBar: AppBar(title: Text(controller.title)),
       body: SafeArea(
         child: Container(
           alignment: Alignment.topCenter,
@@ -43,263 +36,253 @@ class SelectedCourseView extends StatelessWidget {
             child: controller.loadingCourse
                 ? const Center(child: CircularProgressIndicator.adaptive())
                 : controller.courseError != null || course == null
-                    ? Center(
-                        child: ErrorIndicator(
-                          message: L10n.of(context).oopsSomethingWentWrong,
-                        ),
-                      )
-                    : Column(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 12.0,
-                                left: 12.0,
-                                right: 12.0,
-                              ),
-                              child: ListView.builder(
-                                itemCount: course.topicIds.length + 2,
-                                itemBuilder: (context, index) {
-                                  final String displayname = course.title;
+                ? Center(
+                    child: ErrorIndicator(
+                      message: L10n.of(context).oopsSomethingWentWrong,
+                    ),
+                  )
+                : Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 12.0,
+                            left: 12.0,
+                            right: 12.0,
+                          ),
+                          child: ListView.builder(
+                            itemCount: course.topicIds.length + 2,
+                            itemBuilder: (context, index) {
+                              final String displayname = course.title;
 
-                                  if (index == 0) {
-                                    return Column(
-                                      spacing: 8.0,
-                                      children: [
-                                        ClipPath(
-                                          clipper: MapClipper(),
-                                          child: ImageByUrl(
-                                            imageUrl: course.imageUrl,
-                                            width: 100.0,
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            replacement: Avatar(
-                                              name: displayname,
-                                              size: 100.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
+                              if (index == 0) {
+                                return Column(
+                                  spacing: 8.0,
+                                  children: [
+                                    ClipPath(
+                                      clipper: MapClipper(),
+                                      child: ImageByUrl(
+                                        imageUrl: course.imageUrl,
+                                        width: 100.0,
+                                        borderRadius: BorderRadius.circular(
+                                          0.0,
+                                        ),
+                                        replacement: Avatar(
+                                          name: displayname,
+                                          size: 100.0,
+                                          borderRadius: BorderRadius.circular(
+                                            0.0,
                                           ),
                                         ),
-                                        Text(
-                                          displayname,
-                                          style: const TextStyle(
-                                            fontSize: titleFontSize,
-                                          ),
-                                        ),
-                                        Text(
-                                          course.description,
-                                          style: const TextStyle(
-                                            fontSize: descFontSize,
-                                          ),
-                                        ),
-                                        CourseInfoChips(
-                                          controller.widget.courseId,
-                                          fontSize: descFontSize,
-                                          iconSize: smallIconSize,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            top: 4.0,
-                                            bottom: 8.0,
-                                          ),
-                                          child: Row(
-                                            spacing: 4.0,
-                                            children: [
-                                              const Icon(
-                                                Icons.map,
-                                                size: largeIconSize,
-                                              ),
-                                              Text(
-                                                L10n.of(context).coursePlan,
-                                                style: const TextStyle(
-                                                  fontSize: titleFontSize,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  }
-
-                                  index--;
-
-                                  if (index >= course.topicIds.length) {
-                                    return const SizedBox(height: 12.0);
-                                  }
-
-                                  final topicId = course.topicIds[index];
-                                  final topic = course.loadedTopics[topicId];
-
-                                  if (topic == null) {
-                                    return const SizedBox();
-                                  }
-
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4.0,
+                                      ),
                                     ),
-                                    child: Row(
-                                      spacing: 8.0,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        ClipPath(
-                                          clipper: PinClipper(),
-                                          child: ImageByUrl(
-                                            imageUrl: topic.imageUrl,
-                                            width: 45.0,
-                                            replacement: Container(
-                                              width: 45.0,
-                                              height: 45.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    theme.colorScheme.secondary,
-                                              ),
+                                    Text(
+                                      displayname,
+                                      style: const TextStyle(
+                                        fontSize: titleFontSize,
+                                      ),
+                                    ),
+                                    Text(
+                                      course.description,
+                                      style: const TextStyle(
+                                        fontSize: descFontSize,
+                                      ),
+                                    ),
+                                    CourseInfoChips(
+                                      controller.widget.courseId,
+                                      fontSize: descFontSize,
+                                      iconSize: smallIconSize,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 4.0,
+                                        bottom: 8.0,
+                                      ),
+                                      child: Row(
+                                        spacing: 4.0,
+                                        children: [
+                                          const Icon(
+                                            Icons.map,
+                                            size: largeIconSize,
+                                          ),
+                                          Text(
+                                            L10n.of(context).coursePlan,
+                                            style: const TextStyle(
+                                              fontSize: titleFontSize,
                                             ),
                                           ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
+
+                              index--;
+
+                              if (index >= course.topicIds.length) {
+                                return const SizedBox(height: 12.0);
+                              }
+
+                              final topicId = course.topicIds[index];
+                              final topic = course.loadedTopics[topicId];
+
+                              if (topic == null) {
+                                return const SizedBox();
+                              }
+
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4.0,
+                                ),
+                                child: Row(
+                                  spacing: 8.0,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipPath(
+                                      clipper: PinClipper(),
+                                      child: ImageByUrl(
+                                        imageUrl: topic.imageUrl,
+                                        width: 45.0,
+                                        replacement: Container(
+                                          width: 45.0,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: theme.colorScheme.secondary,
+                                          ),
                                         ),
-                                        Flexible(
-                                          child: Column(
-                                            spacing: 4.0,
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                topic.title,
-                                                style: const TextStyle(
-                                                  fontSize: titleFontSize,
-                                                ),
-                                              ),
-                                              Text(
-                                                topic.description,
-                                                style: const TextStyle(
-                                                  fontSize: descFontSize,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsetsGeometry
-                                                        .symmetric(
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Column(
+                                        spacing: 4.0,
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            topic.title,
+                                            style: const TextStyle(
+                                              fontSize: titleFontSize,
+                                            ),
+                                          ),
+                                          Text(
+                                            topic.description,
+                                            style: const TextStyle(
+                                              fontSize: descFontSize,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsGeometry.symmetric(
                                                   vertical: 2.0,
                                                 ),
-                                                child: Row(
-                                                  spacing: 8.0,
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    if (topic.location != null)
-                                                      CourseInfoChip(
-                                                        icon: Icons.location_on,
-                                                        text: topic.location!,
-                                                        fontSize: descFontSize,
-                                                        iconSize: smallIconSize,
-                                                      ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                            child: Row(
+                                              spacing: 8.0,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                if (topic.location != null)
+                                                  CourseInfoChip(
+                                                    icon: Icons.location_on,
+                                                    text: topic.location!,
+                                                    fontSize: descFontSize,
+                                                    iconSize: smallIconSize,
+                                                  ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  );
-                                },
-                              ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surface,
+                          border: Border(
+                            top: BorderSide(
+                              color: theme.dividerColor,
+                              width: 1.0,
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.surface,
-                              border: Border(
-                                top: BorderSide(
-                                  color: theme.dividerColor,
-                                  width: 1.0,
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(12.0),
-                            child: Column(
-                              spacing: 8.0,
-                              mainAxisSize: MainAxisSize.min,
+                        ),
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              spacing: 12.0,
                               children: [
-                                Row(
-                                  spacing: 12.0,
-                                  children: [
-                                    const Icon(
-                                      Icons.edit,
-                                      size: mediumIconSize,
+                                const Icon(Icons.edit, size: mediumIconSize),
+                                Flexible(
+                                  child: Text(
+                                    L10n.of(context).editCourseLater,
+                                    style: const TextStyle(
+                                      fontSize: descFontSize,
                                     ),
-                                    Flexible(
-                                      child: Text(
-                                        L10n.of(context).editCourseLater,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  spacing: 12.0,
-                                  children: [
-                                    const Icon(
-                                      Icons.shield,
-                                      size: mediumIconSize,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        L10n.of(context).newCourseAccess,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
-                                  child: Column(
-                                    spacing: 8.0,
-                                    children: [
-                                      ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: theme
-                                              .colorScheme.primaryContainer,
-                                          foregroundColor: theme
-                                              .colorScheme.onPrimaryContainer,
-                                        ),
-                                        onPressed: () =>
-                                            showFutureLoadingDialog(
-                                          context: context,
-                                          future: () =>
-                                              controller.submit(course),
-                                        ),
-                                        child: Row(
-                                          spacing: 8.0,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(Icons.map_outlined),
-                                            Text(
-                                              controller.buttonText,
-                                              style: const TextStyle(
-                                                fontSize: titleFontSize,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
+                            Row(
+                              spacing: 12.0,
+                              children: [
+                                const Icon(Icons.shield, size: mediumIconSize),
+                                Flexible(
+                                  child: Text(
+                                    L10n.of(context).newCourseAccess,
+                                    style: const TextStyle(
+                                      fontSize: descFontSize,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Column(
+                                spacing: 8.0,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          theme.colorScheme.primaryContainer,
+                                      foregroundColor:
+                                          theme.colorScheme.onPrimaryContainer,
+                                    ),
+                                    onPressed: () => showFutureLoadingDialog(
+                                      context: context,
+                                      future: () => controller.submit(course),
+                                    ),
+                                    child: Row(
+                                      spacing: 8.0,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Icon(Icons.map_outlined),
+                                        Text(
+                                          controller.buttonText,
+                                          style: const TextStyle(
+                                            fontSize: titleFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                    ],
+                  ),
           ),
         ),
       ),

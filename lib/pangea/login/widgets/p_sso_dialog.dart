@@ -9,10 +9,7 @@ import 'package:fluffychat/utils/url_launcher.dart';
 
 class SSODialog extends StatefulWidget {
   final Future<String?> Function() future;
-  const SSODialog({
-    super.key,
-    required this.future,
-  });
+  const SSODialog({super.key, required this.future});
 
   @override
   SSODialogState createState() => SSODialogState();
@@ -51,9 +48,7 @@ class SSODialogState extends State<SSODialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       backgroundColor: Theme.of(context).colorScheme.surface,
       child: Container(
         padding: const EdgeInsets.all(12.0),

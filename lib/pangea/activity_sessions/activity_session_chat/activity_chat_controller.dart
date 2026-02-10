@@ -17,10 +17,7 @@ class ActivityChatController {
   final String userID;
   final Room room;
 
-  ActivityChatController({
-    required this.userID,
-    required this.room,
-  }) {
+  ActivityChatController({required this.userID, required this.room}) {
     init();
   }
 
@@ -36,8 +33,13 @@ class ActivityChatController {
 
   void init() {
     _updateUsedVocab();
-    _analyticsSubscription = MatrixState.pangeaController.matrixState
-        .analyticsDataService.updateDispatcher.constructUpdateStream.stream
+    _analyticsSubscription = MatrixState
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
         .listen((_) => _updateUsedVocab());
   }
 
@@ -80,7 +82,8 @@ class ActivityChatController {
     try {
       final analytics = await getActivityAnalytics();
       if (!_disposed) {
-        usedVocab.value = analytics.constructs[userID]
+        usedVocab.value =
+            analytics.constructs[userID]
                 ?.constructsOfType(ConstructTypeEnum.vocab)
                 .map((id) => id.lemma.toLowerCase())
                 .toSet() ??

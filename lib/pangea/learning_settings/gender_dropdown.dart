@@ -28,14 +28,11 @@ class GenderDropdown extends StatelessWidget {
     final l10n = L10n.of(context);
 
     return DropdownButtonFormField2<GenderEnum>(
-      customButton:
-          CustomDropdownTextButton(text: initialGender.title(context)),
-      menuItemStyleData: const MenuItemStyleData(
-        padding: EdgeInsets.zero,
+      customButton: CustomDropdownTextButton(
+        text: initialGender.title(context),
       ),
-      decoration: InputDecoration(
-        labelText: l10n.gender,
-      ),
+      menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
+      decoration: InputDecoration(labelText: l10n.gender),
       isExpanded: true,
       dropdownStyleData: DropdownStyleData(
         maxHeight: kIsWeb ? 500 : null,
@@ -50,10 +47,7 @@ class GenderDropdown extends StatelessWidget {
           value: genderOption,
           child: Container(
             color: Colors.transparent,
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 12,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: Text(
               genderOption.title(context),
               style: const TextStyle().copyWith(

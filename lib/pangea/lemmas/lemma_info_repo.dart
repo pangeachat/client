@@ -75,11 +75,7 @@ class LemmaInfoRepo {
       await _storage.write(key, resultFuture.toJson());
       _cache.remove(key); // Invalidate in-memory cache
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'lemma': request.lemma},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'lemma': request.lemma});
     }
   }
 
@@ -123,9 +119,7 @@ class LemmaInfoRepo {
       );
     }
 
-    return LemmaInfoResponse.fromJson(
-      jsonDecode(utf8.decode(res.bodyBytes)),
-    );
+    return LemmaInfoResponse.fromJson(jsonDecode(utf8.decode(res.bodyBytes)));
   }
 
   static Future<Result<LemmaInfoResponse>>? _getCached(
@@ -153,9 +147,7 @@ class LemmaInfoRepo {
     await set(request, result.asValue!.value);
   }
 
-  static LemmaInfoResponse? _getStored(
-    LemmaInfoRequest request,
-  ) {
+  static LemmaInfoResponse? _getStored(LemmaInfoRequest request) {
     final key = request.hashCode.toString();
     try {
       final entry = _storage.read(key);
@@ -163,11 +155,7 @@ class LemmaInfoRepo {
 
       return LemmaInfoResponse.fromJson(entry);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'lemma': request.lemma},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'lemma': request.lemma});
       _storage.remove(key);
       return null;
     }

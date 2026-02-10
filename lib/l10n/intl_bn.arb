@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:17.400141",
+  "@@last_modified": "2026-02-10 13:53:40.219705",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -21,6 +21,173 @@
   },
   "account": "অ্যাকাউন্ট",
   "@account": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "alwaysUse24HourFormat": "না",
+  "@alwaysUse24HourFormat": {
+    "description": "Set to true to always display time of day in 24 hour format."
+  },
+  "repeatPassword": "পাসওয়ার্ড আবার লিখো",
+  "@repeatPassword": {},
+  "notAnImage": "ইমেজ ফাইল না।",
+  "@notAnImage": {},
+  "setCustomPermissionLevel": "কাস্টম অনুমতি লেভেল ঠিক করো",
+  "@setCustomPermissionLevel": {},
+  "admin": "অ্যাডমিস",
+  "@admin": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "alias": "অ্যালিয়াস",
+  "@alias": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "archive": "আর্কাইভ",
+  "@archive": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "banned": "ব্যানড",
+  "@banned": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cancel": "বাতিল",
+  "@cancel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chat": "চ্যাট",
+  "@chat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "close": "বন্ধ",
+  "@close": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "confirm": "নিশ্চিত করো",
+  "@confirm": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "connect": "কানেক্ট",
+  "@connect": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "copy": "অনুলিপি",
+  "@copy": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "create": "তৈরি",
+  "@create": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "dateWithoutYear": "{month}-{day}",
+  "@dateWithoutYear": {
+    "type": "String",
+    "placeholders": {
+      "month": {
+        "type": "String"
+      },
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "delete": "অপসারণ",
+  "@delete": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "device": "ডিভাইস",
+  "@device": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "devices": "ডিভাইস",
+  "@devices": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notifications": "বিজ্ঞপ্তি",
+  "@notifications": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "edit": "সম্পাদন",
+  "@edit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "encryption": "এনক্রিপশন",
+  "@encryption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "encrypted": "এনক্রিপ্টকৃত",
+  "@encrypted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "fluffychat": "ফ্লাফিচ্যাট",
+  "@fluffychat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "forward": "ফরওয়ার্ড",
+  "@forward": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "group": "গ্রুপ",
+  "@group": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "help": "সাহায্য",
+  "@help": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "id": "আইডি",
+  "@id": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "identity": "পরিচয়",
+  "@identity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "invited": "আমন্ত্রিত",
+  "@invited": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "leave": "ছেড়ে যাও",
+  "@leave": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "logout": "প্রস্থান",
+  "@logout": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "license": "অনুমতিপত্র (লাইসেন্স)",
+  "@license": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "login": "প্রবেশ",
+  "@login": {
     "type": "String",
     "placeholders": {}
   },
@@ -52,14 +219,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@connect": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jumpToLastReadMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@jumpToLastReadMessage": {},
   "@allRooms": {
     "type": "String",
     "placeholders": {}
@@ -68,22 +228,13 @@
     "type": "String",
     "placeholders": {}
   },
-  "@commandHint_cuddle": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@commandHint_cuddle": {},
   "@chats": {
     "type": "String",
     "placeholders": {}
   },
-  "@widgetVideo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dismiss": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@widgetVideo": {},
+  "@dismiss": {},
   "@unknownDevice": {
     "type": "String",
     "placeholders": {}
@@ -96,14 +247,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@admin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportErrorDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@reportErrorDescription": {},
   "@directChats": {
     "type": "String",
     "placeholders": {}
@@ -120,22 +264,12 @@
       }
     }
   },
-  "@addAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@close": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addAccount": {},
   "@configureChat": {
     "type": "String",
     "placeholders": {}
   },
-  "@chatHasBeenAddedToThisSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@chatHasBeenAddedToThisSpace": {},
   "@reply": {
     "type": "String",
     "placeholders": {}
@@ -148,14 +282,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unsupportedAndroidVersion": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@device": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@unsupportedAndroidVersion": {},
   "@blockDevice": {
     "type": "String",
     "placeholders": {}
@@ -164,30 +291,14 @@
     "type": "String",
     "description": "Usage hint for the command /html"
   },
-  "@widgetJitsi": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@widgetJitsi": {},
   "@youAreNoLongerParticipatingInThisChat": {
     "type": "String",
     "placeholders": {}
   },
-  "@encryption": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageType": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@indexedDbErrorLong": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@oneClientLoggedOut": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@messageType": {},
+  "@indexedDbErrorLong": {},
+  "@oneClientLoggedOut": {},
   "@toggleMuted": {
     "type": "String",
     "placeholders": {}
@@ -232,14 +343,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@startFirstChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@callingAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@startFirstChat": {},
+  "@callingAccount": {},
   "@requestPermission": {
     "type": "String",
     "placeholders": {}
@@ -252,18 +357,8 @@
       }
     }
   },
-  "@invited": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setColorTheme": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nextAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@setColorTheme": {},
+  "@nextAccount": {},
   "@commandHint_create": {
     "type": "String",
     "description": "Usage hint for the command /create"
@@ -280,10 +375,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@allSpaces": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@allSpaces": {},
   "@supposedMxid": {
     "type": "String",
     "placeholders": {
@@ -296,10 +388,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@user": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@user": {},
   "@roomVersion": {
     "type": "String",
     "placeholders": {}
@@ -316,10 +405,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youAcceptedTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@youAcceptedTheInvitation": {},
   "@banFromChat": {
     "type": "String",
     "placeholders": {}
@@ -351,8 +437,7 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
   "@userIsTyping": {
     "type": "String",
@@ -374,10 +459,7 @@
       }
     }
   },
-  "@banUserDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@banUserDescription": {},
   "@inviteContact": {
     "type": "String",
     "placeholders": {}
@@ -386,10 +468,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@widgetEtherpad": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@widgetEtherpad": {},
   "@waitingPartnerAcceptRequest": {
     "type": "String",
     "placeholders": {}
@@ -406,14 +485,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@removeDevicesDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@removeDevicesDescription": {},
   "@changedTheChatDescriptionTo": {
     "type": "String",
     "placeholders": {
@@ -437,10 +509,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tryAgain": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@tryAgain": {},
   "@areGuestsAllowedToJoin": {
     "type": "String",
     "placeholders": {}
@@ -454,28 +523,13 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
-  },
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
     }
   },
   "@removeDevice": {
     "type": "String",
     "placeholders": {}
   },
-  "@unbanUserDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@unbanUserDescription": {},
   "@userAndUserAreTyping": {
     "type": "String",
     "placeholders": {
@@ -495,10 +549,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@sendOnEnter": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@sendOnEnter": {},
   "@answeredTheCall": {
     "type": "String",
     "placeholders": {
@@ -507,18 +558,9 @@
       }
     }
   },
-  "@youRejectedTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@otherCallingPermissions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messagesStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@youRejectedTheInvitation": {},
+  "@otherCallingPermissions": {},
+  "@messagesStyle": {},
   "@couldNotDecryptMessage": {
     "type": "String",
     "placeholders": {
@@ -531,30 +573,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "@link": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@widgetUrlError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@emailOrUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@callingAccountDetails": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@link": {},
+  "@widgetUrlError": {},
+  "@emailOrUsername": {},
+  "@newSpaceDescription": {},
+  "@chatDescription": {},
+  "@callingAccountDetails": {},
   "@next": {
     "type": "String",
     "placeholders": {}
@@ -589,14 +613,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@enterSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@encryptThisChat": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@enterSpace": {},
+  "@encryptThisChat": {},
   "@fileName": {
     "type": "String",
     "placeholders": {}
@@ -605,10 +623,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@previousAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@previousAccount": {},
   "@publicRooms": {
     "type": "String",
     "placeholders": {}
@@ -629,18 +644,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@reopenChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseEnterRecoveryKey": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@create": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@reopenChat": {},
+  "@pleaseEnterRecoveryKey": {},
   "@toggleFavorite": {
     "type": "String",
     "placeholders": {}
@@ -649,14 +654,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@alias": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@widgetNameError": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@widgetNameError": {},
   "@inoffensive": {
     "type": "String",
     "placeholders": {}
@@ -665,10 +663,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addToBundle": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addToBundle": {},
   "@reportMessage": {
     "type": "String",
     "placeholders": {}
@@ -677,10 +672,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addWidget": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addWidget": {},
   "@all": {
     "type": "String",
     "placeholders": {}
@@ -698,13 +690,9 @@
       "count": {
         "type": "int"
       }
-    },
-    "type": "String"
+    }
   },
-  "@noKeyForThisMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@noKeyForThisMessage": {},
   "@enableEncryptionWarning": {
     "type": "String",
     "placeholders": {}
@@ -728,10 +716,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@commandHint_markasgroup": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@commandHint_markasgroup": {},
   "@errorObtainingLocation": {
     "type": "String",
     "placeholders": {
@@ -740,38 +725,20 @@
       }
     }
   },
-  "@hydrateTor": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pushNotificationsNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@hydrateTor": {},
+  "@pushNotificationsNotAvailable": {},
   "@passwordRecovery": {
     "type": "String",
     "placeholders": {}
   },
-  "@storeInAppleKeyChain": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@storeInAppleKeyChain": {},
   "@replaceRoomWithNewerVersion": {
     "type": "String",
     "placeholders": {}
   },
-  "@hydrate": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@invalidServerName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatPermissions": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@hydrate": {},
+  "@invalidServerName": {},
+  "@chatPermissions": {},
   "@voiceMessage": {
     "type": "String",
     "placeholders": {}
@@ -799,14 +766,8 @@
       }
     }
   },
-  "@sender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@storeInAndroidKeystore": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@sender": {},
+  "@storeInAndroidKeystore": {},
   "@hideRedactedEvents": {
     "type": "String",
     "placeholders": {}
@@ -815,10 +776,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWithPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@signInWithPassword": {},
   "@ignoredUsers": {
     "type": "String",
     "placeholders": {}
@@ -854,14 +812,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@makeAdminDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@edit": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@makeAdminDescription": {},
   "@loadMore": {
     "type": "String",
     "placeholders": {}
@@ -898,30 +849,17 @@
     "type": "String",
     "placeholders": {}
   },
-  "@copy": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveKeyManuallyDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@saveKeyManuallyDescription": {},
   "@none": {
     "type": "String",
     "placeholders": {}
   },
-  "@editBundlesForAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@editBundlesForAccount": {},
   "@enableEncryption": {
     "type": "String",
     "placeholders": {}
   },
-  "@whyIsThisMessageEncrypted": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@whyIsThisMessageEncrypted": {},
   "@rejectedTheInvitation": {
     "type": "String",
     "placeholders": {
@@ -930,10 +868,7 @@
       }
     }
   },
-  "@setChatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@setChatDescription": {},
   "@userLeftTheChat": {
     "type": "String",
     "placeholders": {
@@ -946,10 +881,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@importFromZipFile": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@importFromZipFile": {},
   "@toggleUnread": {
     "type": "String",
     "placeholders": {}
@@ -958,18 +890,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "@dehydrateWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@dehydrateWarning": {},
   "@sendOriginal": {
     "type": "String",
     "placeholders": {}
   },
-  "@noOtherDevicesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@noOtherDevicesFound": {},
   "@whoIsAllowedToJoinThisGroup": {
     "type": "String",
     "placeholders": {}
@@ -986,10 +912,7 @@
       }
     }
   },
-  "@yourChatBackupHasBeenSetUp": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@yourChatBackupHasBeenSetUp": {},
   "@chatBackup": {
     "type": "String",
     "placeholders": {}
@@ -1006,10 +929,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@videoCallsBetaWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@videoCallsBetaWarning": {},
   "@unmuteChat": {
     "type": "String",
     "placeholders": {}
@@ -1058,14 +978,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -1078,22 +990,8 @@
       }
     }
   },
-  "@fileIsTooBigForServer": {
-    "type": "String",
-    "placeholders": {
-      "max": {
-        "type": "String"
-      }
-    }
-  },
-  "@homeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@help": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@fileIsTooBigForServer": {},
+  "@homeserver": {},
   "@chatDetails": {
     "type": "String",
     "placeholders": {}
@@ -1121,10 +1019,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@repeatPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setStatus": {
     "type": "String",
     "placeholders": {}
@@ -1137,26 +1031,13 @@
       }
     }
   },
-  "@callingPermissions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@delete": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@callingPermissions": {},
   "@newMessageInFluffyChat": {
     "type": "String",
     "placeholders": {}
   },
-  "@readUpToHere": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@start": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@readUpToHere": {},
+  "@start": {},
   "@downloadFile": {
     "type": "String",
     "placeholders": {}
@@ -1169,14 +1050,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unlockOldMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@identity": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@unlockOldMessages": {},
   "@numChats": {
     "type": "number",
     "placeholders": {
@@ -1216,10 +1090,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@optionalRedactReason": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@optionalRedactReason": {},
   "@waitingPartnerEmoji": {
     "type": "String",
     "placeholders": {}
@@ -1240,10 +1111,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@dehydrate": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@dehydrate": {},
   "@locationPermissionDeniedNotice": {
     "type": "String",
     "placeholders": {}
@@ -1271,10 +1139,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@banned": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendAsText": {
     "type": "String"
   },
@@ -1282,14 +1146,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@archiveRoomDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exportEmotePack": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@archiveRoomDescription": {},
+  "@exportEmotePack": {},
   "@changedTheChatNameTo": {
     "type": "String",
     "placeholders": {
@@ -1348,10 +1206,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@notifications": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@commandHint_plain": {
     "type": "String",
     "description": "Usage hint for the command /plain"
@@ -1360,18 +1214,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "@experimentalVideoCalls": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@experimentalVideoCalls": {},
   "@openCamera": {
     "type": "String",
     "placeholders": {}
   },
-  "@pleaseEnterRecoveryKeyDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@pleaseEnterRecoveryKeyDescription": {},
   "@guestsAreForbidden": {
     "type": "String",
     "placeholders": {}
@@ -1388,13 +1236,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@inviteContactToGroupQuestion": {
-    "type": "String",
-    "placeholders": {
-      "contact": {},
-      "groupName": {}
-    }
-  },
+  "@inviteContactToGroupQuestion": {},
   "@emoteExists": {
     "type": "String",
     "placeholders": {}
@@ -1419,37 +1261,18 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
-  },
-  "@chat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@group": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@leave": {
-    "type": "String",
-    "placeholders": {}
+    }
   },
   "@skip": {
     "type": "String",
     "placeholders": {}
   },
-  "@appearOnTopDetails": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@appearOnTopDetails": {},
   "@roomHasBeenUpgraded": {
     "type": "String",
     "placeholders": {}
   },
-  "@enterRoom": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@enterRoom": {},
   "@enableEmotesGlobally": {
     "type": "String",
     "placeholders": {}
@@ -1478,10 +1301,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@reportUser": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@reportUser": {},
   "@commandHint_send": {
     "type": "String",
     "description": "Usage hint for the command /send"
@@ -1501,10 +1321,7 @@
       }
     }
   },
-  "@confirmEventUnpin": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@confirmEventUnpin": {},
   "@badServerVersionsException": {
     "type": "String",
     "placeholders": {
@@ -1521,8 +1338,7 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
   "@kickedAndBanned": {
     "type": "String",
@@ -1547,14 +1363,7 @@
       }
     }
   },
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addToSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addToSpace": {},
   "@commandMissing": {
     "type": "String",
     "placeholders": {
@@ -1564,23 +1373,13 @@
     },
     "description": "State that {command} is not a valid /command."
   },
-  "@redactMessageDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@redactMessageDescription": {},
   "@rejoin": {
     "type": "String",
     "placeholders": {}
   },
-  "@recoveryKey": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@recoveryKey": {},
   "@redactMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@forward": {
     "type": "String",
     "placeholders": {}
   },
@@ -1588,10 +1387,7 @@
     "type": "String",
     "description": "Usage hint for the command /discardsession"
   },
-  "@invalidInput": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@invalidInput": {},
   "@chooseAStrongPassword": {
     "type": "String",
     "placeholders": {}
@@ -1600,10 +1396,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@dehydrateTorLong": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@dehydrateTorLong": {},
   "@yourPublicKey": {
     "type": "String",
     "placeholders": {}
@@ -1639,10 +1432,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@doNotShowAgain": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@doNotShowAgain": {},
   "@activatedEndToEndEncryption": {
     "type": "String",
     "placeholders": {
@@ -1651,10 +1441,7 @@
       }
     }
   },
-  "@report": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@report": {},
   "@status": {
     "type": "String",
     "placeholders": {}
@@ -1679,34 +1466,15 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unverified": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fluffychat": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@unverified": {},
   "@howOffensiveIsThisContent": {
     "type": "String",
     "placeholders": {}
   },
-  "@serverRequiresEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hideUnimportantStateEvents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@screenSharingTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@widgetCustom": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@serverRequiresEmail": {},
+  "@hideUnimportantStateEvents": {},
+  "@screenSharingTitle": {},
+  "@widgetCustom": {},
   "@sentCallInformations": {
     "type": "String",
     "placeholders": {
@@ -1715,10 +1483,7 @@
       }
     }
   },
-  "@addToSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addToSpaceDescription": {},
   "@googlyEyesContent": {
     "type": "String",
     "placeholders": {
@@ -1732,8 +1497,7 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
   "@theyDontMatch": {
     "type": "String",
@@ -1747,10 +1511,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addChatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@addChatDescription": {},
   "@sentAnAudio": {
     "type": "String",
     "placeholders": {
@@ -1763,10 +1524,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@encrypted": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@commandHint_leave": {
     "type": "String",
     "description": "Usage hint for the command /leave"
@@ -1775,30 +1532,16 @@
     "type": "String",
     "description": "Usage hint for the command /myroomavatar"
   },
-  "@cancel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@hasKnocked": {
     "placeholders": {
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
-  "@publish": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openLinkInBrowser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clearArchive": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@publish": {},
+  "@openLinkInBrowser": {},
+  "@clearArchive": {},
   "@appLock": {
     "type": "String",
     "placeholders": {}
@@ -1823,18 +1566,9 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@disableEncryptionWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@directChat": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@messageInfo": {},
+  "@disableEncryptionWarning": {},
+  "@directChat": {},
   "@encryptionNotEnabled": {
     "type": "String",
     "placeholders": {}
@@ -1847,42 +1581,24 @@
       }
     }
   },
-  "@sendTypingNotifications": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@sendTypingNotifications": {},
   "@lightTheme": {
     "type": "String",
     "placeholders": {}
   },
-  "@inviteGroupChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@appearOnTop": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@invitePrivateChat": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@inviteGroupChat": {},
+  "@appearOnTop": {},
+  "@invitePrivateChat": {},
   "@verifyTitle": {
     "type": "String",
     "placeholders": {}
   },
-  "@foregroundServiceRunning": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@foregroundServiceRunning": {},
   "@enterAnEmailAddress": {
     "type": "String",
     "placeholders": {}
   },
-  "@voiceCall": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@voiceCall": {},
   "@commandHint_kick": {
     "type": "String",
     "description": "Usage hint for the command /kick"
@@ -1907,14 +1623,7 @@
     "type": "String",
     "description": "Usage hint for the command /ban"
   },
-  "@importEmojis": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@confirm": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@importEmojis": {},
   "@wasDirectChatDisplayName": {
     "type": "String",
     "placeholders": {
@@ -1923,18 +1632,12 @@
       }
     }
   },
-  "@noChatDescriptionYet": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@noChatDescriptionYet": {},
   "@defaultPermissionLevel": {
     "type": "String",
     "placeholders": {}
   },
-  "@removeFromBundle": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@removeFromBundle": {},
   "@numUsersTyping": {
     "type": "String",
     "placeholders": {
@@ -1951,14 +1654,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmMatrixId": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnMore": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@confirmMatrixId": {},
+  "@learnMore": {},
   "@iHaveClickedOnLink": {
     "type": "String",
     "placeholders": {}
@@ -1967,42 +1664,17 @@
     "type": "String",
     "placeholders": {}
   },
-  "@notAnImage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@users": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openGallery": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatDescriptionHasBeenChanged": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@users": {},
+  "@openGallery": {},
+  "@chatDescriptionHasBeenChanged": {},
   "@search": {
     "type": "String",
     "placeholders": {}
   },
-  "@newGroup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bundleName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dehydrateTor": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@removeFromSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@newGroup": {},
+  "@bundleName": {},
+  "@dehydrateTor": {},
+  "@removeFromSpace": {},
   "@dateAndTimeOfDay": {
     "type": "String",
     "placeholders": {
@@ -2026,10 +1698,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@roomUpgradeDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@roomUpgradeDescription": {},
   "@commandHint_invite": {
     "type": "String",
     "description": "Usage hint for the command /invite"
@@ -2045,18 +1714,8 @@
       }
     }
   },
-  "@scanQrCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseEnterANumber": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@scanQrCode": {},
+  "@pleaseEnterANumber": {},
   "@contactHasBeenInvitedToTheGroup": {
     "type": "String",
     "placeholders": {}
@@ -2066,8 +1725,7 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
   "@areYouSureYouWantToLogout": {
     "type": "String",
@@ -2081,14 +1739,8 @@
       }
     }
   },
-  "@profileNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jump": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@profileNotFound": {},
+  "@jump": {},
   "@groups": {
     "type": "String",
     "placeholders": {}
@@ -2115,10 +1767,7 @@
       }
     }
   },
-  "@sorryThatsNotPossible": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@sorryThatsNotPossible": {},
   "@videoWithSize": {
     "type": "String",
     "placeholders": {
@@ -2139,18 +1788,9 @@
       }
     }
   },
-  "@shareInviteLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_markasdm": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@recoveryKeyLost": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@shareInviteLink": {},
+  "@commandHint_markasdm": {},
+  "@recoveryKeyLost": {},
   "@cuddleContent": {
     "type": "String",
     "placeholders": {
@@ -2175,14 +1815,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@login": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@deviceKeys": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@deviceKeys": {},
   "@waitingPartnerNumbers": {
     "type": "String",
     "placeholders": {}
@@ -2239,18 +1872,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "@setTheme": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@setTheme": {},
   "@changeTheHomeserver": {
     "type": "String",
     "placeholders": {}
   },
-  "@youJoinedTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@youJoinedTheChat": {},
   "@wallpaper": {
     "type": "String",
     "placeholders": {}
@@ -2287,18 +1914,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "@markAsRead": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@markAsRead": {},
   "@sendAudio": {
     "type": "String",
     "placeholders": {}
   },
-  "@widgetName": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@widgetName": {},
   "@sentASticker": {
     "type": "String",
     "placeholders": {
@@ -2307,22 +1928,13 @@
       }
     }
   },
-  "@errorAddingWidget": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@errorAddingWidget": {},
   "@commandHint_dm": {
     "type": "String",
     "description": "Usage hint for the command /dm"
   },
-  "@commandHint_hug": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@replace": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@commandHint_hug": {},
+  "@replace": {},
   "@reject": {
     "type": "String",
     "placeholders": {}
@@ -2340,14 +1952,9 @@
       "user": {
         "type": "String"
       }
-    },
-    "type": "String"
+    }
   },
   "@deactivateAccountWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@archive": {
     "type": "String",
     "placeholders": {}
   },
@@ -2367,15 +1974,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@newSpace": {},
   "@changePassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@devices": {
     "type": "String",
     "placeholders": {}
   },
@@ -2387,10 +1987,7 @@
       }
     }
   },
-  "@emojis": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@emojis": {},
   "@pleaseEnterYourPin": {
     "type": "String",
     "placeholders": {}
@@ -2403,18 +2000,9 @@
     "type": "String",
     "placeholders": {}
   },
-  "@commandHint_googly": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createGroup": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@commandHint_googly": {},
+  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
+  "@createGroup": {},
   "@privacy": {
     "type": "String",
     "placeholders": {}
@@ -2427,14 +2015,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@hydrateTorLong": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@time": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@hydrateTorLong": {},
+  "@time": {},
   "@enterYourHomeserver": {
     "type": "String",
     "placeholders": {}
@@ -2447,14 +2029,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "@custom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noBackupWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@custom": {},
+  "@noBackupWarning": {},
   "@fromJoining": {
     "type": "String",
     "placeholders": {}
@@ -2467,18 +2043,9 @@
     "type": "String",
     "placeholders": {}
   },
-  "@storeInSecureStorageDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kickUserDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@storeInSecureStorageDescription": {},
+  "@openChat": {},
+  "@kickUserDescription": {},
   "@sendAMessage": {
     "type": "String",
     "placeholders": {}
@@ -2487,10 +2054,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@importNow": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@importNow": {},
   "@deleteAccount": {
     "type": "String",
     "placeholders": {}
@@ -2499,22 +2063,13 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pinMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@pinMessage": {},
   "@muteChat": {
     "type": "String",
     "placeholders": {}
   },
-  "@invite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enableMultiAccounts": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@invite": {},
+  "@enableMultiAccounts": {},
   "@anyoneCanJoin": {
     "type": "String",
     "placeholders": {}
@@ -2523,10 +2078,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@indexedDbErrorTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@indexedDbErrorTitle": {},
   "@endedTheCall": {
     "type": "String",
     "placeholders": {
@@ -2535,14 +2087,8 @@
       }
     }
   },
-  "@unsupportedAndroidVersionLong": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@storeSecurlyOnThisDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@unsupportedAndroidVersionLong": {},
+  "@storeSecurlyOnThisDevice": {},
   "@ok": {
     "type": "String",
     "placeholders": {}
@@ -2559,10 +2105,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@screenSharingDetail": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@screenSharingDetail": {},
   "@changedTheDisplaynameTo": {
     "type": "String",
     "placeholders": {
@@ -2586,18 +2129,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@placeCall": {
-    "type": "String",
-    "placeholders": {}
-  },
+  "@placeCall": {},
   "@extremeOffensive": {
     "type": "String",
     "placeholders": {}
   },
-  "alwaysUse24HourFormat": "মিথ্যা",
-  "repeatPassword": "পাসওয়ার্ড পুনরাবৃত্তি করুন",
-  "notAnImage": "ছবি ফাইল নয়।",
-  "setCustomPermissionLevel": "কাস্টম অনুমতি স্তর সেট করুন",
   "setPermissionsLevelDescription": "নীচে একটি নির্ধারিত ভূমিকা নির্বাচন করুন বা 0 থেকে 100 এর মধ্যে একটি কাস্টম অনুমতি স্তর প্রবেশ করুন।",
   "ignoreUser": "ব্যবহারকারী উপেক্ষা করুন",
   "normalUser": "সাধারণ ব্যবহারকারী",
@@ -2614,8 +2150,6 @@
   "supposedMxid": "এটি হওয়া উচিত {mxid}",
   "addChatDescription": "একটি চ্যাট বিবরণ যোগ করুন...",
   "addToSpace": "স্পেসে যোগ করুন",
-  "admin": "অ্যাডমিন",
-  "alias": "উপনাম",
   "all": "সকল",
   "allChats": "সকল চ্যাট",
   "commandHint_roomupgrade": "এই রুমটি নির্দিষ্ট রুম সংস্করণে আপগ্রেড করুন",
@@ -2629,7 +2163,6 @@
   "anyoneCanJoin": "কেউ যোগ দিতে পারে! তবে, অ্যাডমিন যে কেউকে বহিষ্কার ও নিষিদ্ধ করতে পারেন। যারা নিষিদ্ধ, তারা ফিরে আসতে পারবেন না!",
   "appLock": "অ্যাপ লক",
   "appLockDescription": "পিন কোড দিয়ে ব্যবহার না করলে অ্যাপটি লক করুন",
-  "archive": "আর্কাইভ",
   "areGuestsAllowedToJoin": "অতিথি ব্যবহারকারীরা যোগ দিতে পারবে?",
   "areYouSure": "আপনি কি নিশ্চিত?",
   "areYouSureYouWantToLogout": "আপনি কি নিশ্চিত যে আপনি লগ আউট করতে চান?",
@@ -2649,12 +2182,10 @@
   "space": "স্থান",
   "spaces": "স্থানসমূহ",
   "banFromChat": "চ্যাট থেকে নিষিদ্ধ করুন",
-  "banned": "নিষিদ্ধ",
   "bannedUser": "{username} {targetName} কে নিষিদ্ধ করেছেন",
   "blockDevice": "ডিভাইস ব্লক করুন",
   "blocked": "ব্লক করা হয়েছে",
   "botMessages": "বট বার্তা",
-  "cancel": "বাতিল করুন",
   "cantOpenUri": "URI {uri} খোলা যাচ্ছে না",
   "changeDeviceName": "ডিভাইসের নাম পরিবর্তন করুন",
   "changedTheChatAvatar": "{username} চ্যাটের অ্যাভাটার পরিবর্তন করেছেন",
@@ -2677,7 +2208,6 @@
   "changeTheNameOfTheGroup": "গ্রুপের নাম পরিবর্তন করুন",
   "changeYourAvatar": "আপনার অবতার পরিবর্তন করুন",
   "channelCorruptedDecryptError": "এনক্রিপশন ক্ষতিগ্রস্ত হয়েছে",
-  "chat": "চ্যাট",
   "yourChatBackupHasBeenSetUp": "আপনার চ্যাট ব্যাকআপ সেটআপ করা হয়েছে।",
   "chatBackup": "চ্যাট ব্যাকআপ",
   "chatBackupDescription": "আপনার পুরানো বার্তা গুলি একটি পুনরুদ্ধার কী দিয়ে সুরক্ষিত। দয়া করে নিশ্চিত করুন যে আপনি এটি হারাবেন না।",
@@ -2686,7 +2216,6 @@
   "chats": "চ্যাট",
   "chooseAStrongPassword": "একটি শক্তিশালী পাসওয়ার্ড নির্বাচন করুন",
   "clearArchive": "আর্কাইভ মুছে ফেলুন",
-  "close": "বন্ধ করুন",
   "commandHint_markasdm": "নির্দেশিত ম্যাট্রিক্স আইডির জন্য সরাসরি বার্তা রুম হিসেবে চিহ্নিত করুন",
   "commandHint_markasgroup": "গ্রুপ হিসেবে চিহ্নিত করুন",
   "commandHint_ban": "এই রুম থেকে নির্দিষ্ট ব্যবহারকারীকে নিষিদ্ধ করুন",
@@ -2712,41 +2241,32 @@
   "compareEmojiMatch": "অনুগ্রহ করে ইমোজিগুলি তুলনা করুন",
   "compareNumbersMatch": "অনুগ্রহ করে সংখ্যাগুলি তুলনা করুন",
   "configureChat": "চ্যাট কনফিগার করুন",
-  "confirm": "নিশ্চিত করুন",
-  "connect": "সংযোগ করুন",
   "contactHasBeenInvitedToTheGroup": "যোগাযোগকে গ্রুপে আমন্ত্রণ জানানো হয়েছে",
   "containsDisplayName": "প্রদর্শন নাম রয়েছে",
   "containsUserName": "ব্যবহারকারীর নাম রয়েছে",
   "contentHasBeenReported": "বিষয়বস্তু সার্ভার অ্যাডমিনদের কাছে রিপোর্ট করা হয়েছে",
   "copiedToClipboard": "ক্লিপবোর্ডে কপি করা হয়েছে",
-  "copy": "কপি",
   "copyToClipboard": "ক্লিপবোর্ডে কপি করুন",
   "couldNotDecryptMessage": "বার্তা ডিক্রিপ্ট করতে পারিনি: {error}",
   "checkList": "তালিকা পরীক্ষা করুন",
   "countParticipants": "{count} অংশগ্রহণকারী",
   "countInvited": "{count} আমন্ত্রিত",
-  "create": "তৈরি করুন",
   "createdTheChat": "💬 {username} চ্যাটটি তৈরি করেছেন",
   "createGroup": "গ্রুপ তৈরি করুন",
   "createNewSpace": "নতুন স্থান",
   "currentlyActive": "বর্তমানে সক্রিয়",
   "darkTheme": "অন্ধকার",
   "dateAndTimeOfDay": "{date}, {timeOfDay}",
-  "dateWithoutYear": "{month}-{day}",
   "dateWithYear": "{year}-{month}-{day}",
   "deactivateAccountWarning": "এটি আপনার ব্যবহারকারী অ্যাকাউন্ট নিষ্ক্রিয় করবে। এটি পূর্বাবস্থায় ফিরিয়ে আনা যাবে না! আপনি কি নিশ্চিত?",
   "defaultPermissionLevel": "নতুন ব্যবহারকারীদের জন্য ডিফল্ট অনুমতি স্তর",
-  "delete": "মুছে ফেলুন",
   "deleteAccount": "অ্যাকাউন্ট মুছে ফেলুন",
   "deleteMessage": "বার্তা মুছে ফেলুন",
-  "device": "ডিভাইস",
   "deviceId": "ডিভাইস আইডি",
-  "devices": "ডিভাইসসমূহ",
   "directChats": "সরাসরি চ্যাট",
   "allRooms": "সমস্ত গ্রুপ চ্যাট",
   "displaynameHasBeenChanged": "প্রদর্শন নাম পরিবর্তিত হয়েছে",
   "downloadFile": "ফাইল ডাউনলোড করুন",
-  "edit": "সম্পাদনা করুন",
   "editBlockedServers": "ব্লক করা সার্ভার সম্পাদনা করুন",
   "chatPermissions": "চ্যাট অনুমতিসমূহ",
   "editDisplayname": "প্রদর্শন নাম সম্পাদনা করুন",
@@ -2769,8 +2289,6 @@
   "enableEmotesGlobally": "গ্লোবালি ইমোট প্যাক সক্রিয় করুন",
   "enableEncryption": "এনক্রিপশন সক্রিয় করুন",
   "enableEncryptionWarning": "আপনি আর এনক্রিপশন বন্ধ করতে পারবেন না। আপনি কি নিশ্চিত?",
-  "encrypted": "এনক্রিপ্টেড",
-  "encryption": "এনক্রিপশন",
   "encryptionNotEnabled": "এনক্রিপশন সক্রিয় নয়",
   "endedTheCall": "{senderName} কল শেষ করেছেন",
   "enterAnEmailAddress": "একটি ইমেল ঠিকানা লিখুন",
@@ -2780,13 +2298,10 @@
   "everythingReady": "সব কিছু প্রস্তুত!",
   "extremeOffensive": "অত্যন্ত আপত্তিজনক",
   "fileName": "ফাইলের নাম",
-  "fluffychat": "ফ্লাফি চ্যাট",
   "fontSize": "ফন্টের আকার",
-  "forward": "ফরোয়ার্ড",
   "fromJoining": "যোগদান থেকে",
   "fromTheInvitation": "নিমন্ত্রণ থেকে",
   "goToTheNewRoom": "নতুন রুমে যান",
-  "group": "গ্রুপ",
   "chatDescription": "চ্যাট বিবরণ",
   "chatDescriptionHasBeenChanged": "চ্যাট বিবরণ পরিবর্তিত হয়েছে",
   "groupIsPublic": "গ্রুপটি পাবলিক",
@@ -2795,14 +2310,11 @@
   "guestsAreForbidden": "অতিথিদের নিষিদ্ধ করা হয়েছে",
   "guestsCanJoin": "অতিথিরা যোগ দিতে পারেন",
   "hasWithdrawnTheInvitationFor": "{username} আমন্ত্রণ প্রত্যাহার করেছেন {targetName} এর জন্য",
-  "help": "সাহায্য",
   "hideRedactedEvents": "সংকলিত ইভেন্টগুলো লুকান",
   "hideRedactedMessages": "সংকলিত বার্তা লুকান",
   "hideRedactedMessagesBody": "যদি কেউ একটি বার্তা সংকলন করে, তাহলে এই বার্তা আর চ্যাটে দেখা যাবে না।",
   "hideInvalidOrUnknownMessageFormats": "অবৈধ বা অজানা বার্তার ফর্ম্যাট লুকান",
   "howOffensiveIsThisContent": "এই বিষয়বস্তু কতটা আপত্তিজনক?",
-  "id": "আইডি",
-  "identity": "পরিচয়",
   "block": "ব্লক করুন",
   "blockedUsers": "ব্লক করা ব্যবহারকারীরা",
   "blockListDescription": "আপনি যারা আপনাকে বিরক্ত করছে তাদের ব্লক করতে পারেন। আপনি আপনার ব্যক্তিগত ব্লক তালিকায় থাকা ব্যবহারকারীদের থেকে কোনও বার্তা বা রুম আমন্ত্রণ পেতে পারবেন না।",
@@ -2816,7 +2328,6 @@
   "noChatDescriptionYet": "এখনো কোনও চ্যাট বিবরণ তৈরি হয়নি।",
   "tryAgain": "আবার চেষ্টা করুন",
   "invalidServerName": "অবৈধ সার্ভার নাম",
-  "invited": "আমন্ত্রণ জানানো হয়েছে",
   "redactMessageDescription": "এই বার্তা সমস্ত অংশগ্রহণকারীর জন্য সম্পাদিত হবে। এটি পূর্বাবস্থায় ফিরিয়ে আনা যাবে না।",
   "optionalRedactReason": "(ঐচ্ছিক) এই বার্তা সম্পাদনের কারণ...",
   "invitedUser": "📩 {username} {targetName} কে আমন্ত্রণ জানিয়েছেন",
@@ -2830,9 +2341,7 @@
   "kickedAndBanned": "🙅 {username} {targetName} কে বহিষ্কার ও নিষিদ্ধ করেছেন",
   "kickFromChat": "চ্যাট থেকে বহিষ্কার করুন",
   "lastActiveAgo": "শেষ সক্রিয়তা: {localizedTimeShort}",
-  "leave": "প্রস্থান করুন",
   "leftTheChat": "চ্যাট থেকে প্রস্থান করেছেন",
-  "license": "লাইসেন্স",
   "lightTheme": "আলো",
   "res": {},
   "loadCountMoreParticipants": "আরও {count} অংশগ্রহণকারী লোড করুন",
@@ -2847,9 +2356,7 @@
   "loadMore": "আরও লোড করুন…",
   "locationDisabledNotice": "অবস্থান পরিষেবা নিষ্ক্রিয়। দয়া করে এগুলি সক্ষম করুন যাতে আপনি আপনার অবস্থান শেয়ার করতে পারেন।",
   "locationPermissionDeniedNotice": "অবস্থান অনুমতি অস্বীকৃত। দয়া করে অনুমতি দিন যাতে আপনি আপনার অবস্থান শেয়ার করতে পারেন।",
-  "login": "লগইন",
   "logInTo": "{homeserver} এ লগইন করুন",
-  "logout": "লগআউট",
   "memberChanges": "সদস্য পরিবর্তন",
   "mention": "উল্লেখ করুন",
   "messages": "বার্তা",
@@ -2873,7 +2380,6 @@
   "noPasswordRecoveryDescription": "আপনি এখনও আপনার পাসওয়ার্ড পুনরুদ্ধারের জন্য কোনও উপায় যোগ করেননি।",
   "noPermission": "অনুমতি নেই",
   "noRoomsFound": "কোন রুম পাওয়া যায়নি…",
-  "notifications": "নোটিফিকেশন",
   "notificationsEnabledForThisAccount": "এই অ্যাকাউন্টের জন্য নোটিফিকেশন সক্রিয়",
   "numUsersTyping": "{count} ব্যবহারকারী টাইপ করছে…",
   "obtainingLocation": "অবস্থান সংগ্রহ করা হচ্ছে…",
@@ -3156,7 +2662,6 @@
   "report": "রিপোর্ট করুন",
   "signInWithPassword": "পাসওয়ার্ড দিয়ে সাইন ইন করুন",
   "pleaseTryAgainLaterOrChooseDifferentServer": "অনুগ্রহ করে পরে আবার চেষ্টা করুন বা আলাদা সার্ভার নির্বাচন করুন।",
-  "signInWith": "{provider} এর সাথে সাইন ইন করুন",
   "profileNotFound": "সার্ভারে ব্যবহারকারী পাওয়া যায়নি। হয়তো সংযোগের সমস্যা বা ব্যবহারকারী অস্তিত্ব নেই।",
   "setTheme": "থিম সেট করুন:",
   "setColorTheme": "রঙের থিম সেট করুন:",
@@ -4500,14 +4005,6 @@
   "courseStartDesc": "প্যাঙ্গিয়া বট যে কোনও সময় প্রস্তুত!\n\n...কিন্তু বন্ধুদের সাথে শেখা আরও ভালো!",
   "@@locale": "bn",
   "inviteOtherUsersToRoom": "অন্য ব্যবহারকারীদের আমন্ত্রণ জানান",
-  "@alwaysUse24HourFormat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setPermissionsLevelDescription": {
     "type": "String",
     "placeholders": {}
@@ -5061,9 +4558,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -12166,6 +11661,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} চ্যাটের বর্ণনা পরিবর্তন করেছে",
+  "changedTheChatName": "{username} চ্যাটের নাম পরিবর্তন করেছে",
+  "moreEvents": "আরও ইভেন্ট",
+  "declineInvitation": "আমন্ত্রণ প্রত্যাখ্যান করুন",
+  "noMessagesYet": "এখনো কোনো বার্তা নেই",
+  "longPressToRecordVoiceMessage": "ভয়েস মেসেজ রেকর্ড করতে দীর্ঘ প্রেস করুন।",
+  "pause": "বিরতি",
+  "resume": "পুনরায় শুরু করুন",
+  "newSubSpace": "নতুন সাব স্পেস",
+  "moveToDifferentSpace": "ভিন্ন স্পেসে সরান",
+  "moveUp": "উপর যান",
+  "moveDown": "নিচে যান",
+  "removeFromSpaceDescription": "চ্যাটটি স্থান থেকে মুছে ফেলা হবে কিন্তু আপনার চ্যাট তালিকায় এখনও প্রদর্শিত হবে।",
+  "countChats": "{chats} চ্যাট",
+  "spaceMemberOf": "{spaces} এর সদস্য",
+  "spaceMemberOfCanKnock": "{spaces} এর সদস্যরা নক করতে পারে",
+  "donate": "দান করুন",
+  "startedAPoll": "{username} একটি ভোট শুরু করেছে।",
+  "poll": "ভোট",
+  "startPoll": "ভোট শুরু করুন",
+  "endPoll": "পোল শেষ করুন",
+  "answersVisible": "উত্তর দৃশ্যমান",
+  "answersHidden": "উত্তর গোপন",
+  "pollQuestion": "পোলের প্রশ্ন",
+  "answerOption": "উত্তরের বিকল্প",
+  "addAnswerOption": "উত্তরের বিকল্প যোগ করুন",
+  "allowMultipleAnswers": "একাধিক উত্তর অনুমোদন করুন",
+  "pollHasBeenEnded": "পোল শেষ হয়েছে",
+  "countVotes": "{count, plural, =1{একটি ভোট} other{{count} ভোট}}",
+  "answersWillBeVisibleWhenPollHasEnded": "পোল শেষ হলে উত্তরগুলি দৃশ্যমান হবে",
+  "replyInThread": "থ্রেডে উত্তর দিন",
+  "countReplies": "{count, plural, =1{একটি উত্তর} other{{count} উত্তর}}",
+  "thread": "থ্রেড",
+  "backToMainChat": "মেইন চ্যাটে ফিরে যান",
+  "createSticker": "স্টিকার বা ইমোজি তৈরি করুন",
+  "useAsSticker": "স্টিকার হিসেবে ব্যবহার করুন",
+  "useAsEmoji": "ইমোজি হিসেবে ব্যবহার করুন",
+  "stickerPackNameAlreadyExists": "স্টিকার প্যাকের নাম ইতিমধ্যে বিদ্যমান",
+  "newStickerPack": "নতুন স্টিকার প্যাক",
+  "stickerPackName": "স্টিকার প্যাকের নাম",
+  "attribution": "অ্যাট্রিবিউশন",
+  "skipChatBackup": "চ্যাট ব্যাকআপ বাদ দিন",
+  "skipChatBackupWarning": "আপনি কি নিশ্চিত? চ্যাট ব্যাকআপ সক্ষম না করলে আপনি আপনার বার্তাগুলিতে প্রবেশাধিকার হারাতে পারেন যদি আপনি আপনার ডিভাইস পরিবর্তন করেন।",
+  "loadingMessages": "বার্তা লোড হচ্ছে",
+  "setupChatBackup": "চ্যাট ব্যাকআপ সেট আপ করুন",
+  "noMoreResultsFound": "আরও কোন ফলাফল পাওয়া যায়নি",
+  "chatSearchedUntil": "চ্যাট অনুসন্ধান করা হয়েছে {time} পর্যন্ত",
+  "federationBaseUrl": "ফেডারেশন বেস URL",
+  "clientWellKnownInformation": "ক্লায়েন্ট-ওয়েল-নোwn তথ্য:",
+  "baseUrl": "বেস URL",
+  "identityServer": "আইডেন্টিটি সার্ভার:",
+  "versionWithNumber": "সংস্করণ: {version}",
+  "logs": "লগস",
+  "advancedConfigs": "উন্নত কনফিগারেশন",
+  "advancedConfigurations": "উন্নত কনফিগারেশনসমূহ",
+  "signInWithLabel": "সাইন ইন করুন:",
+  "selectAllWords": "শ্রবণে শোনা সমস্ত শব্দ নির্বাচন করুন",
+  "joinCourseForActivities": "কার্যকলাপের জন্য একটি কোর্সে যোগ দিন।",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "কোর্সগুলো ৩-৮টি মডিউল নিয়ে গঠিত, প্রতিটি মডিউলে বিভিন্ন প্রসঙ্গে শব্দ অনুশীলন করতে উৎসাহিত করার জন্য কার্যক্রম রয়েছে",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "ইমেইল যাচাইকরণ ব্যর্থ হয়েছে। দয়া করে আবার চেষ্টা করুন।",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

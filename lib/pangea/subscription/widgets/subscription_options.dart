@@ -9,10 +9,7 @@ import 'package:fluffychat/pangea/subscription/controllers/subscription_controll
 
 class SubscriptionOptions extends StatelessWidget {
   final PangeaController pangeaController;
-  const SubscriptionOptions({
-    super.key,
-    required this.pangeaController,
-  });
+  const SubscriptionOptions({super.key, required this.pangeaController});
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +27,25 @@ class SubscriptionOptions extends StatelessWidget {
                 buttonText: L10n.of(context).activateTrial,
               ),
             ]
-          : pangeaController.subscriptionController.availableSubscriptionInfo!
-              .availableSubscriptions
-              .map(
-                (subscription) => SubscriptionCard(
-                  subscription: subscription,
-                  onTap: () {
-                    pangeaController.subscriptionController
-                        .submitSubscriptionChange(
-                      subscription,
-                      context,
-                    );
-                  },
-                  title: subscription.displayName(context),
-                  enabled: !subscription.isTrial,
-                  description: subscription.isTrial
-                      ? L10n.of(context).trialPeriodExpired
-                      : null,
-                ),
-              )
-              .toList(),
+          : pangeaController
+                .subscriptionController
+                .availableSubscriptionInfo!
+                .availableSubscriptions
+                .map(
+                  (subscription) => SubscriptionCard(
+                    subscription: subscription,
+                    onTap: () {
+                      pangeaController.subscriptionController
+                          .submitSubscriptionChange(subscription, context);
+                    },
+                    title: subscription.displayName(context),
+                    enabled: !subscription.isTrial,
+                    description: subscription.isTrial
+                        ? L10n.of(context).trialPeriodExpired
+                        : null,
+                  ),
+                )
+                .toList(),
     );
   }
 }
@@ -102,16 +98,18 @@ class SubscriptionCard extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
-                  color:
-                      enabled ? null : const Color.fromARGB(255, 174, 174, 174),
+                  color: enabled
+                      ? null
+                      : const Color.fromARGB(255, 174, 174, 174),
                 ),
               ),
               Text(
                 description ?? subscription?.displayPrice(context) ?? '',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color:
-                      enabled ? null : const Color.fromARGB(255, 174, 174, 174),
+                  color: enabled
+                      ? null
+                      : const Color.fromARGB(255, 174, 174, 174),
                 ),
               ),
               OutlinedButton(
@@ -122,9 +120,7 @@ class SubscriptionCard extends StatelessWidget {
                       }
                     : null,
                 style: buttonStyle,
-                child: Text(
-                  buttonText ?? L10n.of(context).subscribe,
-                ),
+                child: Text(buttonText ?? L10n.of(context).subscribe),
               ),
             ],
           ),

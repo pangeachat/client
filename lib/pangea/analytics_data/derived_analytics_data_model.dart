@@ -7,10 +7,8 @@ class DerivedAnalyticsDataModel {
   final int _totalXP;
   final int offset;
 
-  DerivedAnalyticsDataModel({
-    int totalXP = 0,
-    this.offset = 0,
-  }) : _totalXP = totalXP;
+  DerivedAnalyticsDataModel({int totalXP = 0, this.offset = 0})
+    : _totalXP = totalXP;
 
   int get totalXP => _totalXP + offset;
 
@@ -56,10 +54,7 @@ class DerivedAnalyticsDataModel {
     } else {
       ErrorHandler.logError(
         e: "Calculated level in Nan or Infinity",
-        data: {
-          "totalXP": totalXP,
-          "level": doubleScore,
-        },
+        data: {"totalXP": totalXP, "level": doubleScore},
       );
       return 1;
     }
@@ -72,9 +67,7 @@ class DerivedAnalyticsDataModel {
       xp += u.xp;
     }
 
-    return copyWith(
-      totalXP: xp,
-    );
+    return copyWith(totalXP: xp);
   }
 
   DerivedAnalyticsDataModel merge(DerivedAnalyticsDataModel other) {
@@ -84,10 +77,7 @@ class DerivedAnalyticsDataModel {
     );
   }
 
-  DerivedAnalyticsDataModel copyWith({
-    int? totalXP,
-    int? offset,
-  }) {
+  DerivedAnalyticsDataModel copyWith({int? totalXP, int? offset}) {
     return DerivedAnalyticsDataModel(
       totalXP: totalXP ?? this.totalXP,
       offset: offset ?? this.offset,
@@ -95,14 +85,10 @@ class DerivedAnalyticsDataModel {
   }
 
   factory DerivedAnalyticsDataModel.fromJson(Map<String, dynamic> map) {
-    return DerivedAnalyticsDataModel(
-      totalXP: map['total_xp'] ?? 0,
-    );
+    return DerivedAnalyticsDataModel(totalXP: map['total_xp'] ?? 0);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'total_xp': _totalXP,
-    };
+    return {'total_xp': _totalXP};
   }
 }

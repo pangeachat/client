@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:31:45.022584",
+  "@@last_modified": "2026-02-10 13:53:26.822722",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -1055,7 +1055,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "noGoogleServicesWarning": "您手機上沒有安裝 Google 服務框架。這或許對於保護您的隱私而言是個好事！但為了收到 FluffyChat 的推播通知，我們建議您使用 https://microg.org 或 https://unifiedpush.org。",
+  "noGoogleServicesWarning": "未能在你的裝置找到 Firebase Cloud Messaging(FCM). 如果想要收到通知消息的推送，我們建議安裝 ntfy。在有 ntfy 或其他 Unified Push 應用，便能在資料安全的情況下收到通知的推送。你可以在 Play store 或 F-Droid 下載並安裝 ntfy。",
   "@noGoogleServicesWarning": {
     "type": "String",
     "placeholders": {}
@@ -2942,15 +2942,6 @@
   "@newSpaceDescription": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "請稍後再試，或選擇不同的伺服器。",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "使用 {provider} 登入",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "invalidInput": "無效的輸入！",
   "@invalidInput": {},
   "verifyOtherUser": "🔐 驗證其他使用者",
@@ -3210,7 +3201,7 @@
   "@version": {},
   "unableToJoinChat": "無法加入聊天室。對話可能以被其他方結束。",
   "@unableToJoinChat": {},
-  "appWantsToUseForLogin": "使用伺服器「{server} 」登入",
+  "appWantsToUseForLogin": "使用「{server} 」伺服器登入",
   "@appWantsToUseForLogin": {
     "type": "String",
     "placeholders": {
@@ -3350,8 +3341,16 @@
   "@pleaseWaitUntilInvited": {},
   "notificationRuleIsUserMentionDescription": "被@時通知他們。",
   "@notificationRuleIsUserMentionDescription": {},
+  "countInvited": "已邀請{count}位",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "checkList": "清單",
-  "countInvited": "{count} 被邀請",
   "sentVoiceMessage": "🎙️ {duration} - 來自 {sender} 的語音訊息",
   "commandHint_logout": "登出您的當前設備",
   "commandHint_logoutall": "登出所有活動設備",
@@ -4500,14 +4499,6 @@
   "@checkList": {
     "type": "String",
     "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@sentVoiceMessage": {
     "type": "String",
@@ -11060,6 +11051,347 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} 更改了聊天描述",
+  "changedTheChatName": "{username} 更改了聊天名稱",
+  "moreEvents": "更多事件",
+  "declineInvitation": "拒絕邀請",
+  "noMessagesYet": "尚無消息",
+  "longPressToRecordVoiceMessage": "長按以錄製語音消息。",
+  "pause": "暫停",
+  "resume": "繼續",
+  "newSubSpace": "新的子空間",
+  "moveToDifferentSpace": "移動到不同的空間",
+  "moveUp": "向上移動",
+  "moveDown": "向下移動",
+  "removeFromSpaceDescription": "聊天將從空間中移除，但仍會出現在您的聊天列表中。",
+  "countChats": "{chats} 條聊天",
+  "spaceMemberOf": "{spaces} 的空間成員",
+  "spaceMemberOfCanKnock": "{spaces} 的空間成員可以敲門",
+  "donate": "捐贈",
+  "startedAPoll": "{username} 發起了一個投票。",
+  "poll": "投票",
+  "startPoll": "開始投票",
+  "endPoll": "結束投票",
+  "answersVisible": "答案可見",
+  "answersHidden": "答案隱藏",
+  "pollQuestion": "投票問題",
+  "answerOption": "答案選項",
+  "addAnswerOption": "添加答案選項",
+  "allowMultipleAnswers": "允許多個答案",
+  "pollHasBeenEnded": "投票已結束",
+  "countVotes": "{count, plural, =1{一票} other{{count} 票}}",
+  "answersWillBeVisibleWhenPollHasEnded": "投票結束後答案將可見",
+  "replyInThread": "在線回覆",
+  "countReplies": "{count, plural, =1{一則回覆} other{{count} 則回覆}}",
+  "thread": "主題",
+  "backToMainChat": "返回主聊天",
+  "createSticker": "創建貼圖或表情符號",
+  "useAsSticker": "用作貼圖",
+  "useAsEmoji": "用作表情符號",
+  "stickerPackNameAlreadyExists": "貼圖包名稱已存在",
+  "newStickerPack": "新貼圖包",
+  "stickerPackName": "貼圖包名稱",
+  "attribution": "歸屬",
+  "skipChatBackup": "跳過聊天備份",
+  "skipChatBackupWarning": "您確定嗎？如果不啟用聊天備份，您可能會在更換設備時失去訪問消息的權限。",
+  "loadingMessages": "正在加載消息",
+  "setupChatBackup": "設置聊天備份",
+  "noMoreResultsFound": "未找到更多結果",
+  "chatSearchedUntil": "聊天搜索至 {time}",
+  "federationBaseUrl": "聯邦基本 URL",
+  "clientWellKnownInformation": "客戶端已知信息：",
+  "baseUrl": "基本 URL",
+  "identityServer": "身份伺服器：",
+  "versionWithNumber": "版本：{version}",
+  "logs": "日誌",
+  "advancedConfigs": "進階設定",
+  "advancedConfigurations": "進階配置",
+  "signInWithLabel": "使用以下方式登入：",
+  "selectAllWords": "選擇您在音頻中聽到的所有單詞",
+  "joinCourseForActivities": "加入課程以嘗試活動。",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriends": "邀請朋友",
+  "@inviteFriends": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "課程由 3-8 個模組組成，每個模組都有活動以鼓勵在不同情境中練習單詞",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "電子郵件驗證失敗。請再試一次。",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

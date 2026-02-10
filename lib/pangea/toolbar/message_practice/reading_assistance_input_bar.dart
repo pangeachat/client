@@ -52,22 +52,21 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               spacing: 4.0,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ...MessagePracticeMode.practiceModes.map(
-                  (m) {
-                    final complete = widget.controller.isPracticeSessionDone(
-                      m.associatedActivityType!,
-                    );
-                    return ToolbarButton(
-                      mode: m,
-                      setMode: () => widget.controller.updateToolbarMode(m),
-                      isComplete: complete,
-                      isSelected: widget.controller.practiceMode == m,
-                      shimmer: widget.controller.practiceMode ==
-                              MessagePracticeMode.noneSelected &&
-                          !complete,
-                    );
-                  },
-                ),
+                ...MessagePracticeMode.practiceModes.map((m) {
+                  final complete = widget.controller.isPracticeSessionDone(
+                    m.associatedActivityType!,
+                  );
+                  return ToolbarButton(
+                    mode: m,
+                    setMode: () => widget.controller.updateToolbarMode(m),
+                    isComplete: complete,
+                    isSelected: widget.controller.practiceMode == m,
+                    shimmer:
+                        widget.controller.practiceMode ==
+                            MessagePracticeMode.noneSelected &&
+                        !complete,
+                  );
+                }),
               ],
             ),
             Padding(
@@ -131,10 +130,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
       case MessagePracticeMode.noneSelected:
         return controller.isTotallyDone
             ? const _AllDoneWidget()
-            : const Icon(
-                Symbols.fitness_center,
-                size: 60.0,
-              );
+            : const Icon(Symbols.fitness_center, size: 60.0);
 
       case MessagePracticeMode.wordEmoji:
       case MessagePracticeMode.wordMeaning:
@@ -180,12 +176,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
         }
 
         if (target == null) {
-          return const Center(
-            child: Icon(
-              Symbols.fitness_center,
-              size: 60.0,
-            ),
-          );
+          return const Center(child: Icon(Symbols.fitness_center, size: 60.0));
         }
 
         return PracticeActivityCard(
@@ -209,9 +200,9 @@ class _AllDoneWidget extends StatelessWidget {
         Text(
           L10n.of(context).allDone,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                letterSpacing: 0.5,
-              ),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
           textAlign: TextAlign.center,
         ),
         ElevatedButton(

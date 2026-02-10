@@ -20,19 +20,17 @@ class PangeaTextController extends TextEditingController {
   EditTypeEnum editType = EditTypeEnum.keyboard;
   String _currentText = '';
 
-  PangeaTextController({
-    required this.choreographer,
-  }) {
+  PangeaTextController({required this.choreographer}) {
     addListener(_onTextChanged);
   }
 
   bool get exceededMaxLength => text.length >= ChoreoConstants.maxLength;
 
   TextStyle _underlineStyle(Color color) => TextStyle(
-        decoration: TextDecoration.underline,
-        decorationColor: color,
-        decorationThickness: 5,
-      );
+    decoration: TextDecoration.underline,
+    decorationColor: color,
+    decorationThickness: 5,
+  );
 
   Color _underlineColor(PangeaMatch match) {
     // Automatic corrections use primary color
@@ -87,9 +85,7 @@ class PangeaTextController extends TextEditingController {
         e: e,
         s: s,
         level: SentryLevel.warning,
-        data: {
-          "match": match.toJson(),
-        },
+        data: {"match": match.toJson()},
       );
       MatrixState.pAnyState.closeOverlay();
       choreographer.clearMatches(e);
@@ -128,16 +124,13 @@ class PangeaTextController extends TextEditingController {
   }
 
   TextSpan _buildPaywallSpan(TextStyle? style) => TextSpan(
-        text: text,
-        style: style?.merge(
-          _underlineStyle(const Color.fromARGB(187, 132, 96, 224)),
-        ),
-      );
+    text: text,
+    style: style?.merge(
+      _underlineStyle(const Color.fromARGB(187, 132, 96, 224)),
+    ),
+  );
 
-  InlineSpan _buildMatchSpan(
-    PangeaMatchState match,
-    TextStyle style,
-  ) {
+  InlineSpan _buildMatchSpan(PangeaMatchState match, TextStyle style) {
     final span = choreographer.igcController.currentText!.characters
         .getRange(
           match.updatedMatch.match.offset,
@@ -162,25 +155,22 @@ class PangeaTextController extends TextEditingController {
         style: style,
       );
     } else {
-      return TextSpan(
-        text: span,
-        style: style,
-      );
+      return TextSpan(text: span, style: style);
     }
   }
 
   /// Returns a list of [TextSpan]s used to display the text in the input field
   /// with the appropriate styling for each error match.
-  List<InlineSpan> _buildTokenSpan({
-    TextStyle? defaultStyle,
-  }) {
-    final textSpanMatches = [
-      ...choreographer.igcController.openMatches,
-      ...choreographer.igcController.recentAutomaticCorrections,
-    ]..sort(
-        (a, b) =>
-            a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
-      );
+  List<InlineSpan> _buildTokenSpan({TextStyle? defaultStyle}) {
+    final textSpanMatches =
+        [
+          ...choreographer.igcController.openMatches,
+          ...choreographer.igcController.recentAutomaticCorrections,
+        ]..sort(
+          (a, b) => a.updatedMatch.match.offset.compareTo(
+            b.updatedMatch.match.offset,
+          ),
+        );
 
     final currentText = choreographer.igcController.currentText!;
     final spans = <InlineSpan>[];

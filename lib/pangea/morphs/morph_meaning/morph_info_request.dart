@@ -2,16 +2,10 @@ class MorphInfoRequest {
   final String userL1;
   final String userL2;
 
-  MorphInfoRequest({
-    required this.userL1,
-    required this.userL2,
-  });
+  MorphInfoRequest({required this.userL1, required this.userL2});
 
   Map<String, dynamic> toJson() {
-    return {
-      'user_l1': userL1,
-      'user_l2': userL2,
-    };
+    return {'user_l1': userL1, 'user_l2': userL2};
   }
 
   @override

@@ -1001,7 +1001,7 @@
   },
   "storeSecurlyOnThisDevice": "Droši uzglabāt šajā ierīcē",
   "@storeSecurlyOnThisDevice": {},
-  "yourChatBackupHasBeenSetUp": "Tērzēšanu rezerves kopēšana tika iestatīta.",
+  "yourChatBackupHasBeenSetUp": "Tērzēšanu rezerves kopēšana iestatīta.",
   "@yourChatBackupHasBeenSetUp": {},
   "chatBackup": "Tērzēšanu rezerves kopēšana",
   "@chatBackup": {
@@ -1080,15 +1080,6 @@
   "@containsDisplayName": {
     "type": "String",
     "placeholders": {}
-  },
-  "signInWith": "Pieteikties ar {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "username": "Lietotājvārds",
   "@username": {
@@ -1250,7 +1241,7 @@
       }
     }
   },
-  "waitingPartnerEmoji": "Gaida, līdz biedrs apstiprinās emocijzīmi…",
+  "waitingPartnerEmoji": "Gaida, līdz biedrs apstiprinās emocijzīmes…",
   "@waitingPartnerEmoji": {
     "type": "String",
     "placeholders": {}
@@ -1692,7 +1683,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "tooManyRequestsWarning": "Pārāk daudz pieprasījumu. Lūgums vēlāk mēģināt vēlreiz.",
+  "tooManyRequestsWarning": "Pārāk daudz pieprasījumu. Lūdzu, vēlāk mēģini vēlreiz!",
   "@tooManyRequestsWarning": {
     "type": "String",
     "placeholders": {}
@@ -1941,11 +1932,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "inviteGroupChat": "📨 Uzaicināt kopas tērzēšanu",
+  "inviteGroupChat": "📨 Uzaicinājums uz kopas tērzēšanu",
   "@inviteGroupChat": {},
   "appearOnTop": "Parādīt virspusē",
   "@appearOnTop": {},
-  "invitePrivateChat": "📨 Uzaicināt privātu tērzēšanu",
+  "invitePrivateChat": "📨 Uzaicinājums uz privātu tērzēšanu",
   "@invitePrivateChat": {},
   "verifyTitle": "Apliecina citu kontu",
   "@verifyTitle": {
@@ -2256,7 +2247,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "noGoogleServicesWarning": "Izskatās, ka Firebase mākoņziņojumapmaiņa nav pieejama šajā ierīcē. Lai joprojām saņemtu pašpiegādes paziņojumus, mēs iesakām uzstādīt ntfy. Ar ntfy vai citu Vienotās pašpiegādes nodrošinātāju ir iespējams saņemt pašpiegādes paziņojumus drošā veidā. ntfy var lejupielādēt no PlayStore vai F-Droid.",
+  "noGoogleServicesWarning": "Izskatās, ka Firebase mākoņziņojumapmaiņa nav pieejama šajā ierīcē. Lai joprojām saņemtu pašpiegādes paziņojumus, mēs iesakām uzstādīt ntfy. Ar ntfy vai citu UnifiedPush nodrošinātāju ir iespējams saņemt pašpiegādes paziņojumus drošā veidā. ntfy var lejupielādēt no Play Store vai F-Droid.",
   "@noGoogleServicesWarning": {
     "type": "String",
     "placeholders": {}
@@ -2348,7 +2339,7 @@
       }
     }
   },
-  "chatBackupDescription": "Iepriekšējās ziņas ir aizsargātas ar atkopes atslēgu. Lūgums nodrošināt, ka tā netiek pazaudēta.",
+  "chatBackupDescription": "Ziņas ir aizsargātas ar atkopes atslēgu. Lūgums nodrošināt, ka tā netiek pazaudēta.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -3364,6 +3355,141 @@
   "displayNavigationRail": "Rādīt pārvietošanās sliedi viedierīcēs",
   "@displayNavigationRail": {},
   "customReaction": "Pielāgota reakcija",
+  "@customReaction": {},
+  "moreEvents": "Vairāk notikumu",
+  "@moreEvents": {},
+  "declineInvitation": "Noraidīt uzaicinājumu",
+  "@declineInvitation": {},
+  "noMessagesYet": "Vēl nav ziņu",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Ilga piespiešana, lai ierakstītu balss ziņu.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Apturēt",
+  "@pause": {},
+  "resume": "Atsākt",
+  "@resume": {},
+  "newSubSpace": "Jauna apakšvieta",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Pārvietot uz citu vietu",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Pārvietot augšup",
+  "@moveUp": {},
+  "moveDown": "Pārvietot lejup",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Tērzēšana tiks noņemta no vietas, bet tā joprojām būs redzama tērzēšanu sarakstā.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} tērzēšanas",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "{spaces} dalībnieks",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "{spaces} dalībnieks var pieklauvēt",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Ziedot",
+  "@donate": {},
+  "startedAPoll": "{username} uzsāka aptauju.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Aptauja",
+  "@poll": {},
+  "startPoll": "Sākt aptauju",
+  "@startPoll": {},
+  "endPoll": "Noslēgt aptauju",
+  "@endPoll": {},
+  "answersVisible": "Atbildes ir redzamas",
+  "@answersVisible": {},
+  "answersHidden": "Atbildes ir paslēptas",
+  "@answersHidden": {},
+  "pollQuestion": "Aptaujas jautājums",
+  "@pollQuestion": {},
+  "answerOption": "Atbildes iespēja",
+  "@answerOption": {},
+  "addAnswerOption": "Pievienot atbildes iespēju",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Atļaut vairākas atbildes",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Aptauja ir noslēgusies",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =0{{count} balsu} =1{{count} balss} other{{count} balsis}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Atbildes būs redzams, kad aptauja noslēgsies",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Atbildēt pavedienā",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =0{{count} atbilžu} =1{{count} atbilde} other{{count} atbildes}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Pavediens",
+  "@thread": {},
+  "backToMainChat": "Atgriezties galvenajā tērzēšanā",
+  "@backToMainChat": {},
+  "saveChanges": "Saglabāt izmaiņas",
+  "@saveChanges": {},
+  "createSticker": "Izveidot uzlīmi vai emocijzīmi",
+  "@createSticker": {},
+  "useAsSticker": "Izmantot kā uzlīmi",
+  "@useAsSticker": {},
+  "useAsEmoji": "Izmantot kā emocijzīmi",
+  "@useAsEmoji": {},
+  "stickerPackNameAlreadyExists": "Uzlīmju pakas nosaukums jau pastāv",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Jauna uzlīmju paka",
+  "@newStickerPack": {},
+  "stickerPackName": "Uzlīmju pakas nosaukums",
+  "@stickerPackName": {},
+  "attribution": "Piedēvējums",
+  "@attribution": {},
+  "skipChatBackup": "Izlaist tērzēšanu rezerves kopēšanu",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Vai tiešām? Bez tērzēšanu rezerves kopēšanas var tikt zaudēta piekļuve savām ziņām, kad tiks mainīta ierīce.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Ielādē ziņas",
+  "@loadingMessages": {},
+  "setupChatBackup": "Iestatīt tērzēšanu rezerves kopēšanu",
+  "@setupChatBackup": {},
+  "changedTheChatDescription": "{username} nomainīja tērzēšanas aprakstu",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username} nomainīja tērzēšanas nosaukumu",
+  "@changedTheChatName": {},
   "ignore": "Bloķēt",
   "ignoredUsers": "Bloķētie lietotāji",
   "writeAMessageLangCodes": "Rakstiet {l1} vai {l2}...",
@@ -3407,7 +3533,6 @@
   "updateLanguage": "Manas valodas",
   "whatLanguageYouWantToLearn": "Kuru valodu vēlaties iemācīties?",
   "whatIsYourBaseLanguage": "Kāda ir jūsu pamata valoda?",
-  "saveChanges": "Saglabāt izmaiņas",
   "publicProfileTitle": "Atļaut, lai manu profilu var atrast meklēšanā",
   "publicProfileDesc": "Ieslēdzot, jūs ļaujat citiem lietotājiem atrast jūsu profilu globālajā meklēšanas joslā un sūtīt pieprasījumus tērzēšanai. Šajā brīdī jūs varat izvēlēties pieņemt vai noraidīt pieprasījumu.",
   "errorDisableIT": "Tulkošanas palīdzība ir izslēgta.",
@@ -4480,7 +4605,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-02-09 15:31:50.771177",
+  "@@last_modified": "2026-02-10 13:53:30.085081",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -4495,10 +4620,6 @@
   "editCourseLater": "Jūs varat vēlāk rediģēt šablona nosaukumu, aprakstus un kursa attēlu.",
   "createCourse": "Izveidot kursu",
   "stats": "Statistika",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -4679,10 +4800,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -11048,6 +11165,89 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Vairs rezultātu nav atrasts",
+  "chatSearchedUntil": "Čats meklēts līdz {time}",
+  "federationBaseUrl": "Federācijas bāzes URL",
+  "clientWellKnownInformation": "Klienta zināmā informācija:",
+  "baseUrl": "Bāzes URL",
+  "identityServer": "Identitātes serveris:",
+  "versionWithNumber": "Versija: {version}",
+  "logs": "Žurnāli",
+  "advancedConfigs": "Papildu konfigurācijas",
+  "advancedConfigurations": "Papildu konfigurācijas",
+  "signInWithLabel": "Pierakstīties ar:",
+  "selectAllWords": "Atlasiet visas dzirdētās vārdus audio ierakstā",
+  "joinCourseForActivities": "Pievienojieties kursam, lai izmēģinātu aktivitātes.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursi sastāv no 3-8 moduļiem, katrs ar aktivitātēm, lai veicinātu vārdu praktizēšanu dažādos kontekstos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-pasta verifikācija neizdevās. Lūdzu, mēģiniet vēlreiz.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

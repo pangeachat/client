@@ -16,10 +16,7 @@ import '../../common/widgets/card_error_widget.dart';
 class ITFeedbackCard extends StatelessWidget {
   final FullTextTranslationRequestModel req;
 
-  const ITFeedbackCard(
-    this.req, {
-    super.key,
-  });
+  const ITFeedbackCard(this.req, {super.key});
 
   Future<Result<String>> _getFeedback() {
     return FullTextTranslationRepo.get(
@@ -47,25 +44,11 @@ class ITFeedbackCard extends StatelessWidget {
             spacing: 10,
             alignment: WrapAlignment.center,
             children: [
-              Text(
-                req.text,
-                style: BotStyle.text(context),
-              ),
-              Text(
-                "≈",
-                style: BotStyle.text(context),
-              ),
+              Text(req.text, style: BotStyle.text(context)),
+              Text("≈", style: BotStyle.text(context)),
               snapshot.hasData
-                  ? Text(
-                      snapshot.data!.result!,
-                      style: BotStyle.text(context),
-                    )
-                  : TextLoadingShimmer(
-                      width: min(
-                        140,
-                        10.0 * req.text.length,
-                      ),
-                    ),
+                  ? Text(snapshot.data!.result!, style: BotStyle.text(context))
+                  : TextLoadingShimmer(width: min(140, 10.0 * req.text.length)),
             ],
           ),
         );

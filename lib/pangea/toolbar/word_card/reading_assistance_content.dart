@@ -24,19 +24,17 @@ class ReadingAssistanceContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (![MessageTypes.Text, MessageTypes.Audio].contains(
-      overlayController.pangeaMessageEvent.event.messageType,
-    )) {
+    if (![
+      MessageTypes.Text,
+      MessageTypes.Audio,
+    ].contains(overlayController.pangeaMessageEvent.event.messageType)) {
       return const SizedBox();
     }
 
     final tokens = overlayController.pangeaMessageEvent.originalSent?.tokens;
     final selectedToken = overlayController.selectedToken;
     final selectedTokenIndex = selectedToken != null
-        ? tokens?.indexWhere(
-              (t) => t.text == selectedToken.text,
-            ) ??
-            -1
+        ? tokens?.indexWhere((t) => t.text == selectedToken.text) ?? -1
         : -1;
 
     return WordZoomWidget(

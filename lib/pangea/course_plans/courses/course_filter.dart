@@ -33,9 +33,7 @@ class CourseFilter {
       }
       if (languageOfInstructions != null) {
         where["and"].add({
-          "l1": {
-            "equals": languageOfInstructions!.langCodeShort,
-          },
+          "l1": {"equals": languageOfInstructions!.langCodeShort},
         });
       }
       if (targetLanguage != null) {
@@ -48,9 +46,7 @@ class CourseFilter {
         where["cefrLevel"] = {"equals": cefrLevel!.string};
       }
       if (languageOfInstructions != null) {
-        where["l1"] = {
-          "equals": languageOfInstructions!.langCodeShort,
-        };
+        where["l1"] = {"equals": languageOfInstructions!.langCodeShort};
       }
       if (targetLanguage != null) {
         where["l2"] = {"equals": targetLanguage!.langCodeShort};

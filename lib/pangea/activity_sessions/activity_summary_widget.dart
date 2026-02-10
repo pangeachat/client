@@ -114,9 +114,7 @@ class ActivitySummary extends StatelessWidget {
                             style: theme.textTheme.bodyMedium,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 4.0,
-                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Row(
                               spacing: 4.0,
                               mainAxisSize: MainAxisSize.min,
@@ -176,7 +174,11 @@ class ActivitySummary extends StatelessWidget {
                             icon: Symbols.steps,
                             iconSize: 16.0,
                             child: Html(
-                              data: markdown(activity.instructions),
+                              data: markdown(
+                                activity.instructions
+                                    .replaceAll(RegExp('\n+'), '\n')
+                                    .replaceAll('---', ''),
+                              ),
                               style: {
                                 "body": Style(
                                   margin: Margins.all(0),

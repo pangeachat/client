@@ -63,25 +63,13 @@ class RepresentationEvent {
   List<LanguageDetectionModel>? get detections => _tokens?.detections;
 
   Set<Event> get tokenEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.tokens,
-      ) ??
-      {};
+      _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
 
   Set<Event> get sttEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.sttTranslation,
-      ) ??
-      {};
+      _event?.aggregatedEvents(timeline, PangeaEventTypes.sttTranslation) ?? {};
 
   Set<Event> get choreoEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.choreoRecord,
-      ) ??
-      {};
+      _event?.aggregatedEvents(timeline, PangeaEventTypes.choreoRecord) ?? {};
 
   // Note: in the case where the event is the originalSent or originalWritten event,
   // the content will be set on initialization by the PangeaMessageEvent
@@ -105,11 +93,7 @@ class RepresentationEvent {
     if (_choreo != null) return _choreo;
 
     if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _choreo both null",
-        ),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(message: "_event and _choreo both null"));
       return null;
     }
 
@@ -130,9 +114,7 @@ class RepresentationEvent {
     if (content.speechToText == null) return [];
     if (_event == null) {
       Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _sttTranslations both null",
-        ),
+        Breadcrumb(message: "_event and _sttTranslations both null"),
       );
       return [];
     }
@@ -141,9 +123,7 @@ class RepresentationEvent {
     final List<SttTranslationModel> sttTranslations = [];
     for (final event in sttEvents) {
       try {
-        sttTranslations.add(
-          SttTranslationModel.fromJson(event.content),
-        );
+        sttTranslations.add(SttTranslationModel.fromJson(event.content));
       } catch (e) {
         Sentry.addBreadcrumb(
           Breadcrumb(
@@ -227,10 +207,10 @@ class RepresentationEvent {
         langCode: langCode,
         senderL1:
             MatrixState.pangeaController.userController.userL1?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
         senderL2:
             MatrixState.pangeaController.userController.userL2?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
       ),
     );
 

@@ -13,10 +13,7 @@ import 'package:fluffychat/utils/stream_extension.dart';
 
 class KnockingUsersIndicator extends StatefulWidget {
   final Room room;
-  const KnockingUsersIndicator({
-    super.key,
-    required this.room,
-  });
+  const KnockingUsersIndicator({super.key, required this.room});
 
   @override
   KnockingUsersIndicatorState createState() => KnockingUsersIndicatorState();
@@ -36,11 +33,13 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
         .rateLimit(const Duration(seconds: 1))
         .listen((_) => _setKnockingUsers());
 
-    widget.room.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    ).then((_) => _setKnockingUsers());
+    widget.room
+        .requestParticipants(
+          [Membership.join, Membership.invite, Membership.knock],
+          false,
+          true,
+        )
+        .then((_) => _setKnockingUsers());
   }
 
   bool _isMemberUpdate(({String roomId, StrippedStateEvent state}) event) =>
@@ -68,14 +67,9 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
       child: _knockingUsers.isEmpty || !widget.room.isRoomAdmin
           ? const SizedBox()
           : Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 1,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
               child: Material(
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 clipBehavior: Clip.hardEdge,
                 child: ListTile(
                   minVerticalPadding: 0,
@@ -94,8 +88,9 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                         child: Text(
                           _knockingUsers.length == 1
                               ? L10n.of(context).aUserIsKnocking
-                              : L10n.of(context)
-                                  .usersAreKnocking(_knockingUsers.length),
+                              : L10n.of(
+                                  context,
+                                ).usersAreKnocking(_knockingUsers.length),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),

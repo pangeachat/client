@@ -82,13 +82,13 @@ class LearningProgressIndicators extends StatelessWidget {
                                 builder: (context, _) {
                                   final archivedActivitiesCount =
                                       analyticsRoom?.archivedActivitiesCount ??
-                                          0;
+                                      0;
                                   return HoverButton(
-                                    selected: selected ==
+                                    selected:
+                                        selected ==
                                         ProgressIndicatorEnum.activities,
                                     onPressed: () {
-                                      AnalyticsNavigationUtil
-                                          .navigateToAnalytics(
+                                      AnalyticsNavigationUtil.navigateToAnalytics(
                                         context: context,
                                         view: ProgressIndicatorEnum.activities,
                                       );
@@ -107,9 +107,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                             Icon(
                                               size: 18,
                                               Icons.radar,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
+                                              color: Theme.of(
+                                                context,
+                                              ).colorScheme.primary,
                                               weight: 1000,
                                             ),
                                             const SizedBox(width: 6.0),
@@ -141,9 +141,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                         .titleLarge
                                         ?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
                                         ),
                                     textScaler: TextScaler.noScaling,
                                   ),
@@ -157,9 +157,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                         .titleLarge
                                         ?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
                                         ),
                                     textScaler: TextScaler.noScaling,
                                   ),
@@ -173,12 +173,11 @@ class LearningProgressIndicators extends StatelessWidget {
                         builder: (context, hovered) {
                           return Container(
                             decoration: BoxDecoration(
-                              color: (hovered && canSelect) ||
+                              color:
+                                  (hovered && canSelect) ||
                                       (selected == ProgressIndicatorEnum.level)
-                                  ? Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withAlpha((0.2 * 255).round())
+                                  ? Theme.of(context).colorScheme.primary
+                                        .withAlpha((0.2 * 255).round())
                                   : Colors.transparent,
                               borderRadius: BorderRadius.circular(36.0),
                             ),
@@ -193,8 +192,7 @@ class LearningProgressIndicators extends StatelessWidget {
                               child: GestureDetector(
                                 onTap: canSelect
                                     ? () {
-                                        AnalyticsNavigationUtil
-                                            .navigateToAnalytics(
+                                        AnalyticsNavigationUtil.navigateToAnalytics(
                                           context: context,
                                           view: ProgressIndicatorEnum.level,
                                         );
@@ -225,9 +223,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                                 .titleLarge
                                                 ?.copyWith(
                                                   fontWeight: FontWeight.bold,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
+                                                  color: Theme.of(
+                                                    context,
+                                                  ).colorScheme.primary,
                                                 ),
                                           ),
                                       ],

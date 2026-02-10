@@ -17,12 +17,12 @@ class SpanDetailsRequest {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.enableIT: enableIT,
-        ModelKey.enableIGC: enableIGC,
-        'span': span.toJson(),
-      };
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.enableIT: enableIT,
+    ModelKey.enableIGC: enableIGC,
+    'span': span.toJson(),
+  };
 
   @override
   bool operator ==(Object other) {

@@ -49,10 +49,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             borderRadius: BorderRadius.circular(40.0),
             color: theme.colorScheme.surfaceContainerHighest,
           ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 12.0,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,9 +58,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                     ? widget.displayname(widget.value as T)
                     : widget.defaultName,
               ),
-              const Icon(
-                Icons.arrow_drop_down,
-              ),
+              const Icon(Icons.arrow_drop_down),
             ],
           ),
         ),
@@ -83,9 +78,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             .toList(),
         onChanged: widget.onChanged,
         buttonStyleData: ButtonStyleData(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(40)),
         ),
         dropdownStyleData: DropdownStyleData(
           elevation: 8,
@@ -94,9 +87,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             color: theme.colorScheme.surfaceContainerHigh,
           ),
         ),
-        menuItemStyleData: const MenuItemStyleData(
-          padding: EdgeInsets.zero,
-        ),
+        menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
         dropdownSearchData: widget.enableSearch
             ? DropdownSearchData(
                 searchController: _searchController,

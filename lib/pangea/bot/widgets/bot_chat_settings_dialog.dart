@@ -19,10 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class BotChatSettingsDialog extends StatefulWidget {
   final Room room;
 
-  const BotChatSettingsDialog({
-    required this.room,
-    super.key,
-  });
+  const BotChatSettingsDialog({required this.room, super.key});
 
   @override
   BotChatSettingsDialogState createState() => BotChatSettingsDialogState();
@@ -58,17 +55,14 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
       await MatrixState.pangeaController.userController
           .updateProfile(update, waitForDataInSync: true)
           .timeout(const Duration(seconds: 15));
-      await Matrix.of(context).client.updateBotOptions(
-            _userProfile.userSettings,
-          );
+      await Matrix.of(
+        context,
+      ).client.updateBotOptions(_userProfile.userSettings);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'roomId': widget.room.id,
-          'model': _userProfile.toJson(),
-        },
+        data: {'roomId': widget.room.id, 'model': _userProfile.toJson()},
       );
     }
   }
@@ -159,7 +153,8 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             onChanged: _setVoice,
             value: _selectedVoice,
             language: _selectedLang,
-            enabled: !widget.room.isActivitySession ||
+            enabled:
+                !widget.room.isActivitySession ||
                 (_selectedLang != null &&
                     _selectedLang ==
                         MatrixState.pangeaController.userController.userL2),

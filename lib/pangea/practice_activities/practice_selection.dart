@@ -17,22 +17,17 @@ class PracticeSelection {
   PracticeTarget? getTarget(ActivityTypeEnum type) =>
       activities(type).firstOrNull;
 
-  PracticeTarget? getMorphTarget(
-    PangeaToken t,
-    MorphFeaturesEnum morph,
-  ) =>
+  PracticeTarget? getMorphTarget(PangeaToken t, MorphFeaturesEnum morph) =>
       activities(ActivityTypeEnum.morphId).firstWhereOrNull(
         (entry) => entry.tokens.contains(t) && entry.morphFeature == morph,
       );
 
   Map<String, dynamic> toJson() => {
-        'activityQueue': _activityQueue.map(
-          (key, value) => MapEntry(
-            key.toString(),
-            value.map((e) => e.toJson()).toList(),
-          ),
-        ),
-      };
+    'activityQueue': _activityQueue.map(
+      (key, value) =>
+          MapEntry(key.toString(), value.map((e) => e.toJson()).toList()),
+    ),
+  };
 
   static PracticeSelection fromJson(Map<String, dynamic> json) {
     return PracticeSelection(

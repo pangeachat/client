@@ -49,34 +49,21 @@ class FeedbackResponseDialog extends StatelessWidget {
                     const SizedBox(
                       width: 40.0,
                       height: 40.0,
-                      child: Center(
-                        child: Icon(Icons.flag_outlined),
-                      ),
+                      child: Center(child: Icon(Icons.flag_outlined)),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   spacing: 20.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const BotFace(
-                      width: 60.0,
-                      expression: BotExpression.idle,
-                    ),
-                    Text(
-                      feedback,
-                      textAlign: TextAlign.center,
-                    ),
+                    const BotFace(width: 60.0, expression: BotExpression.idle),
+                    Text(feedback, textAlign: TextAlign.center),
                     if (description != null)
-                      Text(
-                        description!,
-                        textAlign: TextAlign.center,
-                      ),
+                      Text(description!, textAlign: TextAlign.center),
                     const SizedBox.shrink(),
                   ],
                 ),

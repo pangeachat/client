@@ -23,11 +23,7 @@ class ContextualDefinitionRepo {
         return Result.value(await cached);
       } catch (e, s) {
         _cache.remove(request.hashCode.toString());
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: request.toJson(),
-        );
+        ErrorHandler.logError(e: e, s: s, data: request.toJson());
         return Result.error(e);
       }
     }
@@ -59,20 +55,13 @@ class ContextualDefinitionRepo {
 
     final ContextualDefinitionResponseModel response =
         ContextualDefinitionResponseModel.fromJson(
-      jsonDecode(
-        utf8.decode(res.bodyBytes).toString(),
-      ),
-    );
+          jsonDecode(utf8.decode(res.bodyBytes).toString()),
+        );
 
     if (response.text.isEmpty) {
       ErrorHandler.logError(
-        e: Exception(
-          "empty text in contextual definition response",
-        ),
-        data: {
-          "request": request.toJson(),
-          "accessToken": accessToken,
-        },
+        e: Exception("empty text in contextual definition response"),
+        data: {"request": request.toJson(), "accessToken": accessToken},
       );
     }
 
@@ -88,23 +77,16 @@ class ContextualDefinitionRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<String>? _getCached(
-    ContextualDefinitionRequestModel request,
-  ) =>
+  static Future<String>? _getCached(ContextualDefinitionRequestModel request) =>
       _cache[request.hashCode.toString()];
 
   static void _setCached(
     ContextualDefinitionRequestModel request,
     Future<String> response,
-  ) =>
-      _cache[request.hashCode.toString()] = response;
+  ) => _cache[request.hashCode.toString()] = response;
 }

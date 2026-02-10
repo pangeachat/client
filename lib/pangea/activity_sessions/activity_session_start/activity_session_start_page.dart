@@ -101,21 +101,17 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Room? get activityRoom => widget.roomId != null
-      ? Matrix.of(context).client.getRoomById(
-            widget.roomId!,
-          )
+      ? Matrix.of(context).client.getRoomById(widget.roomId!)
       : null;
 
   Room? get courseParent => widget.parentId != null
-      ? Matrix.of(context).client.getRoomById(
-            widget.parentId!,
-          )
+      ? Matrix.of(context).client.getRoomById(widget.parentId!)
       : null;
 
   bool get isBotRoomMember =>
       activityRoom?.getParticipants().any(
-            (p) => p.id == BotName.byEnvironment,
-          ) ??
+        (p) => p.id == BotName.byEnvironment,
+      ) ??
       false;
 
   SessionState get state {
@@ -140,8 +136,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? get descriptionText {
     switch (state) {
       case SessionState.confirmedRole:
-        return L10n.of(context)
-            .waitingToFillRole(activityRoom!.numRemainingRoles);
+        return L10n.of(
+          context,
+        ).waitingToFillRole(activityRoom!.numRemainingRoles);
       case SessionState.selectedRole:
         return activity!.roles[_selectedRoleId!]!.goal;
       case SessionState.notStarted:
@@ -157,10 +154,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
   }
 
-  bool get enableButtons => [
-        SessionState.notStarted,
-        SessionState.selectedRole,
-      ].contains(state);
+  bool get enableButtons =>
+      [SessionState.notStarted, SessionState.selectedRole].contains(state);
 
   Map<String, ActivityRoleModel> get assignedRoles {
     if (activityRoom != null && activityRoom!.membership == Membership.join) {
@@ -176,7 +171,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     final availableRoles = activity!.roles;
-    final assignedRoles = activityRoom?.assignedRoles ??
+    final assignedRoles =
+        activityRoom?.assignedRoles ??
         roomSummaries?[widget.roomId]?.joinedUsersWithRoles ??
         {};
     final unassignedIds = availableRoles.keys
@@ -191,7 +187,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     final availableRoles = activity!.roles;
-    final assignedRoles = activityRoom?.assignedRoles ??
+    final assignedRoles =
+        activityRoom?.assignedRoles ??
         roomSummaries?[widget.roomId]?.activityRoles?.roles ??
         {};
     final unassignedIds = availableRoles.keys
@@ -237,7 +234,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
-      get activityStatuses => activitySessionStatuses(widget.activityId);
+  get activityStatuses => activitySessionStatuses(widget.activityId);
 
   void toggleInstructions() {
     setState(() {
@@ -252,7 +249,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<int> neededCourseParticipants() async {
-    final courseParticipants = await courseParent?.requestParticipants(
+    final courseParticipants =
+        await courseParent?.requestParticipants(
           [Membership.join, Membership.invite, Membership.knock],
           false,
           true,
@@ -352,9 +350,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       await client.joinRoom(
         widget.roomId!,
         serverName: courseParent?.spaceChildren
-            .firstWhereOrNull(
-              (child) => child.roomId == widget.roomId,
-            )
+            .firstWhereOrNull((child) => child.roomId == widget.roomId)
             ?.via,
       );
 
@@ -363,9 +359,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       }
 
       if (activityRoom == null || activityRoom!.membership != Membership.join) {
-        throw Exception("Failed to join activity room. "
-            "Room ID: ${widget.roomId}, "
-            "Membership status: ${activityRoom?.membership}");
+        throw Exception(
+          "Failed to join activity room. "
+          "Room ID: ${widget.roomId}, "
+          "Membership status: ${activityRoom?.membership}",
+        );
       }
     }
 
@@ -379,20 +377,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         true,
       );
 
-      await activityRoom!.joinActivity(
-        activity!.roles[_selectedRoleId!]!,
-      );
+      await activityRoom!.joinActivity(activity!.roles[_selectedRoleId!]!);
     } catch (e) {
       if (e is! RoleException) {
         rethrow;
       }
     }
 
-    NavigationUtil.goToSpaceRoute(
-      widget.roomId,
-      [],
-      context,
-    );
+    NavigationUtil.goToSpaceRoute(widget.roomId, [], context);
   }
 
   Future<void> confirmRoleSelection() async {
@@ -400,15 +392,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     if (activityRoom?.membership == Membership.join) {
       await showFutureLoadingDialog(
         context: context,
-        future: () => activityRoom!.joinActivity(
-          activity!.roles[_selectedRoleId!]!,
-        ),
+        future: () =>
+            activityRoom!.joinActivity(activity!.roles[_selectedRoleId!]!),
       );
     } else if (widget.roomId != null) {
-      await showFutureLoadingDialog(
-        context: context,
-        future: joinActivity,
-      );
+      await showFutureLoadingDialog(context: context, future: joinActivity);
     } else {
       final resp = await showFutureLoadingDialog(
         context: context,
@@ -419,11 +407,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       );
 
       if (!resp.isError) {
-        NavigationUtil.goToSpaceRoute(
-          resp.result,
-          [],
-          context,
-        );
+        NavigationUtil.goToSpaceRoute(resp.result, [], context);
       }
     }
   }
@@ -440,9 +424,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         await courseParent!.client.joinRoom(
           sessionId,
           via: courseParent?.spaceChildren
-              .firstWhereOrNull(
-                (child) => child.roomId == sessionId,
-              )
+              .firstWhereOrNull((child) => child.roomId == sessionId)
               ?.via,
         );
         joinedSessionId = sessionId;
@@ -478,9 +460,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         await courseParent!.client.joinRoom(
           roomId,
           via: courseParent?.spaceChildren
-              .firstWhereOrNull(
-                (child) => child.roomId == roomId,
-              )
+              .firstWhereOrNull((child) => child.roomId == roomId)
               ?.via,
         );
 
@@ -511,27 +491,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       if (mounted) setState(() {});
     });
 
-    await activityRoom!.courseParent!.sendEvent(
-      {
-        "body": L10n.of(context).pingParticipantsNotification(
-          activityRoom!.client.userID!.localpart ??
-              activityRoom!.client.userID!,
-          activityRoom!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-        ),
-        "msgtype": "m.text",
-        "pangea.activity.session_room_id": activityRoom!.id,
-        "pangea.activity.id": widget.activityId,
-      },
-    );
+    await activityRoom!.courseParent!.sendEvent({
+      "body": L10n.of(context).pingParticipantsNotification(
+        activityRoom!.client.userID!.localpart ?? activityRoom!.client.userID!,
+        activityRoom!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+      ),
+      "msgtype": "m.text",
+      "pangea.activity.session_room_id": activityRoom!.id,
+      "pangea.activity.id": widget.activityId,
+    });
 
     if (mounted) {
       setState(() {});
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            L10n.of(context).pingSent,
-            textAlign: TextAlign.center,
-          ),
+          content: Text(L10n.of(context).pingSent, textAlign: TextAlign.center),
           duration: const Duration(milliseconds: 2000),
         ),
       );
@@ -546,10 +520,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     );
 
     if (resp.isError && resp.error is TimeoutException) {
-      showDialog(
-        context: context,
-        builder: (_) => const BotJoinErrorDialog(),
-      );
+      showDialog(context: context, builder: (_) => const BotJoinErrorDialog());
     }
   }
 
@@ -572,9 +543,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
             )
             .first;
     activityRoom!.invite(BotName.byEnvironment);
-    await future.timeout(
-      const Duration(seconds: 5),
-    );
+    await future.timeout(const Duration(seconds: 5));
   }
 
   @override

@@ -8,11 +8,7 @@ class PublicProfileModel {
   final String? country;
   final String? about;
 
-  const PublicProfileModel({
-    required this.analytics,
-    this.country,
-    this.about,
-  });
+  const PublicProfileModel({required this.analytics, this.country, this.about});
 
   String? get countryEmoji =>
       country != null ? CountryService().findByName(country!)?.flagEmoji : null;

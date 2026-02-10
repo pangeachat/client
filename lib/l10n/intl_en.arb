@@ -10,9 +10,13 @@
   "notAnImage": "Not an image file.",
   "@notAnImage": {},
   "setCustomPermissionLevel": "Set custom permission level",
+  "@setCustomPermissionLevel": {},
   "setPermissionsLevelDescription": "Please choose a predefined role below or enter a custom permission level between 0 and 100.",
+  "@setPermissionsLevelDescription": {},
   "ignoreUser": "Ignore user",
+  "@ignoreUser": {},
   "normalUser": "Normal user",
+  "@normalUser": {},
   "remove": "Remove",
   "@remove": {
     "type": "String",
@@ -29,6 +33,7 @@
   "replace": "Replace",
   "@replace": {},
   "about": "About",
+  "@about": {},
   "aboutHomeserver": "About {homeserver}",
   "@aboutHomeserver": {
     "type": "String",
@@ -107,6 +112,7 @@
     "placeholders": {}
   },
   "commandHint_roomupgrade": "Upgrade this room to the given room version",
+  "@commandHint_roomupgrade": {},
   "commandHint_googly": "Send some googly eyes",
   "@commandHint_googly": {},
   "commandHint_cuddle": "Send a cuddle",
@@ -149,7 +155,7 @@
       }
     }
   },
-  "anyoneCanJoin": "Anyone can join! However, admin can kick and ban whoever misbehaves. Those who are banned may not return!",
+  "anyoneCanJoin": "Anyone can join",
   "@anyoneCanJoin": {
     "type": "String",
     "placeholders": {}
@@ -243,11 +249,17 @@
     }
   },
   "noMoreChatsFound": "No more chats found...",
+  "@noMoreChatsFound": {},
   "noChatsFoundHere": "No chats found here yet. Start a new chat with someone by using the button below. ⤵️",
+  "@noChatsFoundHere": {},
   "joinedChats": "Joined chats",
+  "@joinedChats": {},
   "unread": "Unread",
+  "@unread": {},
   "space": "Space",
+  "@space": {},
   "spaces": "Spaces",
+  "@spaces": {},
   "banFromChat": "Ban from chat",
   "@banFromChat": {
     "type": "String",
@@ -313,6 +325,7 @@
       }
     }
   },
+  "changedTheChatDescription": "{username} changed the chat description",
   "changedTheChatDescriptionTo": "{username} changed the chat description to: '{description}'",
   "@changedTheChatDescriptionTo": {
     "type": "String",
@@ -325,6 +338,7 @@
       }
     }
   },
+  "changedTheChatName": "{username} changed the chat name",
   "changedTheChatNameTo": "{username} changed the chat name to: '{chatname}'",
   "@changedTheChatNameTo": {
     "type": "String",
@@ -490,7 +504,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "Your old messages are secured with a recovery key. Please make sure you don't lose it.",
+  "chatBackupDescription": "Your messages are secured with a recovery key. Please make sure you don't lose it.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -697,6 +711,7 @@
     }
   },
   "checkList": "Check list",
+  "@checkList": {},
   "countParticipants": "{count} participants",
   "@countParticipants": {
     "type": "String",
@@ -2724,15 +2739,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Please try again later or choose a different server.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Sign in with {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "profileNotFound": "The user could not be found on the server. Maybe there is a connection problem or the user doesn't exist.",
   "@profileNotFound": {},
   "setTheme": "Set theme:",
@@ -2741,9 +2747,9 @@
   "@setColorTheme": {},
   "invite": "Invite",
   "@invite": {},
-  "inviteGroupChat": "📨 Invite group chat",
+  "inviteGroupChat": "📨 Group chat invite",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Invite private chat",
+  "invitePrivateChat": "📨 Private chat invite",
   "@invitePrivateChat": {},
   "invalidInput": "Invalid input!",
   "@invalidInput": {},
@@ -3038,6 +3044,7 @@
     "space": {}
   },
   "markAsUnread": "Mark as unread",
+  "@markAsUnread": {},
   "userLevel": "{level} - User",
   "@userLevel": {
     "type": "String",
@@ -3066,13 +3073,21 @@
     }
   },
   "changeGeneralChatSettings": "Change general chat settings",
+  "@changeGeneralChatSettings": {},
   "inviteOtherUsers": "Invite other users to this chat",
+  "@inviteOtherUsers": {},
   "changeTheChatPermissions": "Change the chat permissions",
+  "@changeTheChatPermissions": {},
   "changeTheVisibilityOfChatHistory": "Change the visibility of the chat history",
+  "@changeTheVisibilityOfChatHistory": {},
   "changeTheCanonicalRoomAlias": "Change the main public chat address",
+  "@changeTheCanonicalRoomAlias": {},
   "sendRoomNotifications": "Send a @room notifications",
+  "@sendRoomNotifications": {},
   "changeTheDescriptionOfTheGroup": "Change the description of the chat",
+  "@changeTheDescriptionOfTheGroup": {},
   "chatPermissionsDescription": "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.",
+  "@chatPermissionsDescription": {},
   "updateInstalled": "🎉 Update {version} installed!",
   "@updateInstalled": {
     "type": "String",
@@ -3083,17 +3098,29 @@
     }
   },
   "changelog": "Changelog",
+  "@changelog": {},
   "sendCanceled": "Sending canceled",
+  "@sendCanceled": {},
   "loginWithMatrixId": "Login with Matrix-ID",
+  "@loginWithMatrixId": {},
   "discoverHomeservers": "Discover homeservers",
+  "@discoverHomeservers": {},
   "whatIsAHomeserver": "What is a homeserver?",
+  "@whatIsAHomeserver": {},
   "homeserverDescription": "All your data is stored on the homeserver, just like an email provider. You can choose which homeserver you want to use, while you can still communicate with everyone. Learn more at at https://matrix.org.",
+  "@homeserverDescription": {},
   "doesNotSeemToBeAValidHomeserver": "Doesn't seem to be a compatible homeserver. Wrong URL?",
+  "@doesNotSeemToBeAValidHomeserver": {},
   "calculatingFileSize": "Calculating file size...",
+  "@calculatingFileSize": {},
   "prepareSendingAttachment": "Prepare sending attachment...",
+  "@prepareSendingAttachment": {},
   "sendingAttachment": "Sending attachment...",
+  "@sendingAttachment": {},
   "generatingVideoThumbnail": "Generating video thumbnail...",
+  "@generatingVideoThumbnail": {},
   "compressVideo": "Compressing video...",
+  "@compressVideo": {},
   "sendingAttachmentCountOfCount": "Sending attachment {index} of {length}...",
   "@sendingAttachmentCountOfCount": {
     "type": "integer",
@@ -3116,31 +3143,57 @@
     }
   },
   "oneOfYourDevicesIsNotVerified": "One of your devices is not verified",
+  "@oneOfYourDevicesIsNotVerified": {},
   "noticeChatBackupDeviceVerification": "Note: When you connect all your devices to the chat backup, they are automatically verified.",
+  "@noticeChatBackupDeviceVerification": {},
   "continueText": "Continue",
+  "@continueText": {},
   "welcomeText": "Hey Hey 👋 This is FluffyChat. You can sign in to any homeserver, which is compatible with https://matrix.org. And then chat with anyone. It's a huge decentralized messaging network!",
+  "@welcomeText": {},
   "blur": "Blur:",
+  "@blur": {},
   "opacity": "Opacity:",
+  "@opacity": {},
   "setWallpaper": "Set wallpaper",
+  "@setWallpaper": {},
   "manageAccount": "Manage account",
+  "@manageAccount": {},
   "noContactInformationProvided": "Server does not provide any valid contact information",
+  "@noContactInformationProvided": {},
   "contactServerAdmin": "Contact server admin",
+  "@contactServerAdmin": {},
   "contactServerSecurity": "Contact server security",
+  "@contactServerSecurity": {},
   "supportPage": "Support page",
+  "@supportPage": {},
   "serverInformation": "Server information:",
+  "@serverInformation": {},
   "name": "Name",
+  "@name": {},
   "version": "Version",
+  "@version": {},
   "website": "Website",
+  "@website": {},
   "compress": "Compress",
+  "@compress": {},
   "boldText": "Bold text",
+  "@boldText": {},
   "italicText": "Italic text",
+  "@italicText": {},
   "strikeThrough": "Strikethrough",
+  "@strikeThrough": {},
   "pleaseFillOut": "Please fill out",
+  "@pleaseFillOut": {},
   "invalidUrl": "Invalid url",
+  "@invalidUrl": {},
   "addLink": "Add link",
+  "@addLink": {},
   "unableToJoinChat": "Unable to join chat. Maybe the other party has already closed the conversation.",
+  "@unableToJoinChat": {},
   "previous": "Previous",
+  "@previous": {},
   "otherPartyNotLoggedIn": "The other party is currently not logged in and therefore cannot receive messages!",
+  "@otherPartyNotLoggedIn": {},
   "appWantsToUseForLogin": "Use '{server}' to log in",
   "@appWantsToUseForLogin": {
     "type": "String",
@@ -3151,55 +3204,105 @@
     }
   },
   "appWantsToUseForLoginDescription": "You hereby allow the app and website to share information about you.",
+  "@appWantsToUseForLoginDescription": {},
   "open": "Open",
+  "@open": {},
   "waitingForServer": "Waiting for server...",
+  "@waitingForServer": {},
   "appIntroduction": "FluffyChat lets you chat with your friends across different messengers. Learn more at https://matrix.org or just tap *Continue*.",
+  "@appIntroduction": {},
   "newChatRequest": "📩 New chat request",
+  "@newChatRequest": {},
   "contentNotificationSettings": "Content notification settings",
+  "@contentNotificationSettings": {},
   "generalNotificationSettings": "General notification settings",
+  "@generalNotificationSettings": {},
   "roomNotificationSettings": "Room notification settings",
+  "@roomNotificationSettings": {},
   "userSpecificNotificationSettings": "User specific notification settings",
+  "@userSpecificNotificationSettings": {},
   "otherNotificationSettings": "Other notification settings",
+  "@otherNotificationSettings": {},
   "notificationRuleContainsUserName": "Contains User Name",
+  "@notificationRuleContainsUserName": {},
   "notificationRuleContainsUserNameDescription": "Notifies the user when a message contains their username.",
+  "@notificationRuleContainsUserNameDescription": {},
   "notificationRuleMaster": "Mute all notifications",
+  "@notificationRuleMaster": {},
   "notificationRuleMasterDescription": "Overrides all other rules and disables all notifications.",
+  "@notificationRuleMasterDescription": {},
   "notificationRuleSuppressNotices": "Suppress Automated Messages",
+  "@notificationRuleSuppressNotices": {},
   "notificationRuleSuppressNoticesDescription": "Suppresses notifications from automated clients like bots.",
+  "@notificationRuleSuppressNoticesDescription": {},
   "notificationRuleInviteForMe": "Invite for Me",
+  "@notificationRuleInviteForMe": {},
   "notificationRuleInviteForMeDescription": "Notifies the user when they are invited to a room.",
+  "@notificationRuleInviteForMeDescription": {},
   "notificationRuleMemberEvent": "Member Event",
+  "@notificationRuleMemberEvent": {},
   "notificationRuleMemberEventDescription": "Suppresses notifications for membership events.",
+  "@notificationRuleMemberEventDescription": {},
   "notificationRuleIsUserMention": "User Mention",
+  "@notificationRuleIsUserMention": {},
   "notificationRuleIsUserMentionDescription": "Notifies the user when they are directly mentioned in a message.",
+  "@notificationRuleIsUserMentionDescription": {},
   "notificationRuleContainsDisplayName": "Contains Display Name",
+  "@notificationRuleContainsDisplayName": {},
   "notificationRuleContainsDisplayNameDescription": "Notifies the user when a message contains their display name.",
+  "@notificationRuleContainsDisplayNameDescription": {},
   "notificationRuleIsRoomMention": "Room Mention",
+  "@notificationRuleIsRoomMention": {},
   "notificationRuleIsRoomMentionDescription": "Notifies the user when there is a room mention.",
+  "@notificationRuleIsRoomMentionDescription": {},
   "notificationRuleRoomnotif": "Room Notification",
+  "@notificationRuleRoomnotif": {},
   "notificationRuleRoomnotifDescription": "Notifies the user when a message contains '@room'.",
+  "@notificationRuleRoomnotifDescription": {},
   "notificationRuleTombstone": "Tombstone",
+  "@notificationRuleTombstone": {},
   "notificationRuleTombstoneDescription": "Notifies the user about room deactivation messages.",
+  "@notificationRuleTombstoneDescription": {},
   "notificationRuleReaction": "Reaction",
+  "@notificationRuleReaction": {},
   "notificationRuleReactionDescription": "Suppresses notifications for reactions.",
+  "@notificationRuleReactionDescription": {},
   "notificationRuleRoomServerAcl": "Room Server ACL",
+  "@notificationRuleRoomServerAcl": {},
   "notificationRuleRoomServerAclDescription": "Suppresses notifications for room server access control lists (ACL).",
+  "@notificationRuleRoomServerAclDescription": {},
   "notificationRuleSuppressEdits": "Suppress Edits",
+  "@notificationRuleSuppressEdits": {},
   "notificationRuleSuppressEditsDescription": "Suppresses notifications for edited messages.",
+  "@notificationRuleSuppressEditsDescription": {},
   "notificationRuleCall": "Call",
+  "@notificationRuleCall": {},
   "notificationRuleCallDescription": "Notifies the user about calls.",
+  "@notificationRuleCallDescription": {},
   "notificationRuleEncryptedRoomOneToOne": "Encrypted Room One-to-One",
+  "@notificationRuleEncryptedRoomOneToOne": {},
   "notificationRuleEncryptedRoomOneToOneDescription": "Notifies the user about messages in encrypted one-to-one rooms.",
+  "@notificationRuleEncryptedRoomOneToOneDescription": {},
   "notificationRuleRoomOneToOne": "Room One-to-One",
+  "@notificationRuleRoomOneToOne": {},
   "notificationRuleRoomOneToOneDescription": "Notifies the user about messages in one-to-one rooms.",
+  "@notificationRuleRoomOneToOneDescription": {},
   "notificationRuleMessage": "Message",
+  "@notificationRuleMessage": {},
   "notificationRuleMessageDescription": "Notifies the user about general messages.",
+  "@notificationRuleMessageDescription": {},
   "notificationRuleEncrypted": "Encrypted",
+  "@notificationRuleEncrypted": {},
   "notificationRuleEncryptedDescription": "Notifies the user about messages in encrypted rooms.",
+  "@notificationRuleEncryptedDescription": {},
   "notificationRuleJitsi": "Jitsi",
+  "@notificationRuleJitsi": {},
   "notificationRuleJitsiDescription": "Notifies the user about Jitsi widget events.",
+  "@notificationRuleJitsiDescription": {},
   "notificationRuleServerAcl": "Suppress Server ACL Events",
+  "@notificationRuleServerAcl": {},
   "notificationRuleServerAclDescription": "Suppresses notifications for Server ACL events.",
+  "@notificationRuleServerAclDescription": {},
   "unknownPushRule": "Unknown push rule '{rule}'",
   "@unknownPushRule": {
     "type": "String",
@@ -3222,25 +3325,173 @@
     }
   },
   "deletePushRuleCanNotBeUndone": "If you delete this notification setting, this can not be undone.",
+  "@deletePushRuleCanNotBeUndone": {},
   "more": "More",
+  "@more": {},
   "shareKeysWith": "Share keys with...",
+  "@shareKeysWith": {},
   "shareKeysWithDescription": "Which devices should be trusted so that they can read along your messages in encrypted chats?",
+  "@shareKeysWithDescription": {},
   "allDevices": "All devices",
+  "@allDevices": {},
   "crossVerifiedDevicesIfEnabled": "Cross verified devices if enabled",
+  "@crossVerifiedDevicesIfEnabled": {},
   "crossVerifiedDevices": "Cross verified devices",
+  "@crossVerifiedDevices": {},
   "verifiedDevicesOnly": "Verified devices only",
+  "@verifiedDevicesOnly": {},
   "takeAPhoto": "Take a photo",
+  "@takeAPhoto": {},
   "recordAVideo": "Record a video",
+  "@recordAVideo": {},
   "optionalMessage": "(Optional) message...",
+  "@optionalMessage": {},
   "notSupportedOnThisDevice": "Not supported on this device",
+  "@notSupportedOnThisDevice": {},
   "enterNewChat": "Enter new chat",
+  "@enterNewChat": {},
   "approve": "Approve",
+  "@approve": {},
   "youHaveKnocked": "You have knocked",
+  "@youHaveKnocked": {},
   "pleaseWaitUntilInvited": "Please wait now, until someone from the room invites you.",
+  "@pleaseWaitUntilInvited": {},
   "commandHint_logout": "Logout your current device",
+  "@commandHint_logout": {},
   "commandHint_logoutall": "Logout all active devices",
+  "@commandHint_logoutall": {},
   "displayNavigationRail": "Show navigation rail on mobile",
+  "@displayNavigationRail": {},
   "customReaction": "Custom reaction",
+  "@customReaction": {},
+  "moreEvents": "More events",
+  "@moreEvents": {},
+  "declineInvitation": "Decline invitation",
+  "@declineInvitation": {},
+  "noMessagesYet": "No messages yet",
+  "longPressToRecordVoiceMessage": "Long press to record voice message.",
+  "pause": "Pause",
+  "resume": "Resume",
+  "newSubSpace": "New sub space",
+  "moveToDifferentSpace": "Move to different space",
+  "moveUp": "Move up",
+  "moveDown": "Move down",
+  "removeFromSpaceDescription": "The chat will be removed from the space but still appear in your chat list.",
+  "countChats": "{chats} chats",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "Space member of {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "Space member of {spaces} can knock",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Donate",
+  "startedAPoll": "{username} started a poll.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Poll",
+  "startPoll": "Start poll",
+  "endPoll": "End poll",
+  "answersVisible": "Answers visible",
+  "answersHidden": "Answers hidden",
+  "pollQuestion": "Poll question",
+  "answerOption": "Answer option",
+  "addAnswerOption": "Add answer option",
+  "allowMultipleAnswers": "Allow multiple answers",
+  "pollHasBeenEnded": "Poll has been ended",
+  "countVotes": "{count, plural, =1{One vote} other{{count} votes}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Answers will be visible when poll has ended",
+  "replyInThread": "Reply in thread",
+  "countReplies": "{count, plural, =1{One reply} other{{count} replies}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Thread",
+  "backToMainChat": "Back to main chat",
+  "saveChanges": "Save changes",
+  "createSticker": "Create sticker or emoji",
+  "useAsSticker": "Use as sticker",
+  "useAsEmoji": "Use as emoji",
+  "stickerPackNameAlreadyExists": "Sticker pack name already exists",
+  "newStickerPack": "New sticker pack",
+  "stickerPackName": "Sticker pack name",
+  "attribution": "Attribution",
+  "skipChatBackup": "Skip chat backup",
+  "skipChatBackupWarning": "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.",
+  "loadingMessages": "Loading messages",
+  "setupChatBackup": "Set up chat backup",
+  "noMoreResultsFound": "No more results found",
+  "chatSearchedUntil": "Chat searched until {time}",
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "federationBaseUrl": "Federation Base URL",
+  "@federationBaseUrl": {},
+  "clientWellKnownInformation": "Client-Well-Known Information:",
+  "@clientWellKnownInformation": {},
+  "baseUrl": "Base URL",
+  "@baseUrl": {},
+  "identityServer": "Identity Server:",
+  "@identityServer": {},
+  "versionWithNumber": "Version: {version}",
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "logs": "Logs",
+  "@logs": {},
+  "advancedConfigs": "Advanced Configs",
+  "@advancedConfigs": {},
+  "advancedConfigurations": "Advanced configurations",
+  "@advancedConfigurations": {},
+  "signInWithLabel": "Sign in with:",
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",
@@ -3301,7 +3552,6 @@
   "updateLanguage": "My languages",
   "whatLanguageYouWantToLearn": "What language do you want to learn?",
   "whatIsYourBaseLanguage": "What is your base language?",
-  "saveChanges": "Save changes",
   "publicProfileTitle": "Allow my profile to be found in search",
   "publicProfileDesc": "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.",
   "errorDisableIT": "Translation assistance is turned off.",
@@ -5091,5 +5341,8 @@
   "greatPractice": "Great practice!",
   "usedNoHints": "Nice job not using any hints!",
   "youveCompletedPractice": "You've completed practice, keep it up to get better!",
-  "emptyAudioError": "Recording failed. Please check your audio permissions and try again."
+  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
+  "joinCourseForActivities": "Join a course to try activities.",
+  "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
+  "emailVerificationFailed": "Email verification failed. Please try again."
 }

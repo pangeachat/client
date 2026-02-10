@@ -31,20 +31,12 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: pulseDuration,
-      vsync: this,
-    );
+    _controller = AnimationController(duration: pulseDuration, vsync: this);
 
     _animation = Tween<double>(
       begin: 0.0,
       end: 0.3,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     if (widget.enabled) {
       _startPulsing();
@@ -110,8 +102,9 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
                   borderRadius: borderRadius,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: widget.shimmerColor
-                          .withValues(alpha: _animation.value),
+                      color: widget.shimmerColor.withValues(
+                        alpha: _animation.value,
+                      ),
                       borderRadius: borderRadius,
                     ),
                   ),

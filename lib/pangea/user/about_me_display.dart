@@ -19,8 +19,9 @@ class AboutMeDisplay extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: maxWidth),
       child: FutureBuilder(
-        future: MatrixState.pangeaController.userController
-            .getPublicProfile(userId),
+        future: MatrixState.pangeaController.userController.getPublicProfile(
+          userId,
+        ),
         builder: (context, snapshot) => snapshot.data?.about == null
             ? const SizedBox.shrink()
             : Padding(

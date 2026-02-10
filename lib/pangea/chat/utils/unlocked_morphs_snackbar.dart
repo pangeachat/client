@@ -59,10 +59,7 @@ class ConstructNotificationUtil {
         final bool result = OverlayUtil.showOverlay(
           overlayKey: "${construct.string}_snackbar",
           context: context,
-          child: ConstructNotificationOverlay(
-            construct: construct,
-            copy: copy,
-          ),
+          child: ConstructNotificationOverlay(construct: construct, copy: copy),
           transformTargetId: "",
           position: OverlayPositionEnum.top,
           backDropToDismiss: false,
@@ -103,7 +100,8 @@ class ConstructNotificationOverlay extends StatefulWidget {
 }
 
 class ConstructNotificationOverlayState
-    extends State<ConstructNotificationOverlay> with TickerProviderStateMixin {
+    extends State<ConstructNotificationOverlay>
+    with TickerProviderStateMixin {
   AnimationController? _controller;
   Animation<double>? _animation;
 
@@ -115,10 +113,7 @@ class ConstructNotificationOverlayState
       vsync: this,
     );
 
-    _animation = CurvedAnimation(
-      parent: _controller!,
-      curve: Curves.easeInOut,
-    );
+    _animation = CurvedAnimation(parent: _controller!, curve: Curves.easeInOut);
 
     _controller!.forward().then((_) {
       OverlayUtil.showOverlay(
@@ -247,8 +242,8 @@ class ConstructNotificationOverlayState
                                       : const Size(22.0, 22.0),
                                   morphFeature:
                                       MorphFeaturesEnumExtension.fromString(
-                                    widget.construct.category,
-                                  ),
+                                        widget.construct.category,
+                                      ),
                                   morphTag: widget.construct.lemma,
                                 ),
                               ],
@@ -271,9 +266,7 @@ class ConstructNotificationOverlayState
                                           ),
                                         ),
                                         onPressed: _showDetails,
-                                        child: Text(
-                                          L10n.of(context).details,
-                                        ),
+                                        child: Text(L10n.of(context).details),
                                       )
                                     : SizedBox(
                                         width: 32.0,
@@ -284,8 +277,9 @@ class ConstructNotificationOverlayState
                                               Icons.info_outline,
                                             ),
                                             style: IconButton.styleFrom(
-                                              padding:
-                                                  const EdgeInsets.all(4.0),
+                                              padding: const EdgeInsets.all(
+                                                4.0,
+                                              ),
                                             ),
                                             onPressed: _showDetails,
                                             constraints: const BoxConstraints(),
@@ -300,9 +294,7 @@ class ConstructNotificationOverlayState
                                   child: Tooltip(
                                     message: L10n.of(context).close,
                                     child: IconButton(
-                                      icon: const Icon(
-                                        Icons.close,
-                                      ),
+                                      icon: const Icon(Icons.close),
                                       style: IconButton.styleFrom(
                                         padding: const EdgeInsets.all(4.0),
                                       ),

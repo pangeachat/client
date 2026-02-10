@@ -22,15 +22,12 @@ class UserDialog extends StatelessWidget {
     required BuildContext context,
     required Profile profile,
     bool noProfileWarning = false,
-  }) =>
-      showAdaptiveDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (context) => UserDialog(
-          profile,
-          noProfileWarning: noProfileWarning,
-        ),
-      );
+  }) => showAdaptiveDialog(
+    context: context,
+    barrierDismissible: true,
+    builder: (context) =>
+        UserDialog(profile, noProfileWarning: noProfileWarning),
+  );
 
   final Profile profile;
   final bool noProfileWarning;
@@ -41,7 +38,8 @@ class UserDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
-    final displayname = profile.displayName ??
+    final displayname =
+        profile.displayName ??
         profile.userId.localpart ??
         L10n.of(context).user;
     var copied = false;
@@ -66,16 +64,32 @@ class UserDialog extends StatelessWidget {
             final presenceText = presence.currentlyActive == true
                 ? L10n.of(context).currentlyActive
                 : lastActiveTimestamp != null
-                    ? L10n.of(context).lastActiveAgo(
-                        lastActiveTimestamp.localizedTimeShort(context),
-                      )
-                    : null;
+                ? L10n.of(context).lastActiveAgo(
+                    lastActiveTimestamp.localizedTimeShort(context),
+                  )
+                : null;
             return SingleChildScrollView(
               child: Column(
                 spacing: 8,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: .min,
+                crossAxisAlignment: .stretch,
                 children: [
+                  Center(
+                    child: Avatar(
+                      mxContent: avatar,
+                      name: displayname,
+                      size: Avatar.defaultSize * 2,
+                      onTap: avatar != null
+                          ? () => showDialog(
+                              context: context,
+                              builder: (_) => MxcImageViewer(avatar),
+                            )
+                          : null,
+                      // #Pangea
+                      userId: profile.userId,
+                      // Pangea#
+                    ),
+                  ),
                   HoverBuilder(
                     builder: (context, hovered) => StatefulBuilder(
                       builder: (context, setState) => MouseRegion(
@@ -101,8 +115,8 @@ class UserDialog extends StatelessWidget {
                                       scale: hovered
                                           ? 1.33
                                           : copied
-                                              ? 1.25
-                                              : 1.0,
+                                          ? 1.25
+                                          : 1.0,
                                       child: Icon(
                                         copied
                                             ? Icons.check_circle
@@ -115,29 +129,14 @@ class UserDialog extends StatelessWidget {
                                 ),
                                 TextSpan(text: profile.userId),
                               ],
-                              style: theme.textTheme.bodyMedium
-                                  ?.copyWith(fontSize: 10),
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                fontSize: 10,
+                              ),
                             ),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Center(
-                    child: Avatar(
-                      mxContent: avatar,
-                      name: displayname,
-                      size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
-                                context: context,
-                                builder: (_) => MxcImageViewer(avatar),
-                              )
-                          : null,
-                      // #Pangea
-                      userId: profile.userId,
-                      // Pangea#
                     ),
                   ),
                   if (presenceText != null)
@@ -150,8 +149,9 @@ class UserDialog extends StatelessWidget {
                   // if (statusMsg != null)
                   //   SelectableLinkify(
                   //     text: statusMsg,
-                  //     textScaleFactor:
-                  //         MediaQuery.textScalerOf(context).scale(1),
+                  //     textScaleFactor: MediaQuery.textScalerOf(
+                  //       context,
+                  //     ).scale(1),
                   //     textAlign: TextAlign.center,
                   //     options: const LinkifyOptions(humanize: false),
                   //     linkStyle: TextStyle(
@@ -181,12 +181,10 @@ class UserDialog extends StatelessWidget {
       actions: [
         if (client.userID != profile.userId) ...[
           AdaptiveDialogAction(
+            borderRadius: AdaptiveDialogAction.topRadius,
             bigButtons: true,
             onPressed: () async {
               final router = GoRouter.of(context);
-              // #Pangea
-              // Navigator.of(context).pop();
-              // Pangea#
               final roomIdResult = await showFutureLoadingDialog(
                 context: context,
                 // #Pangea
@@ -197,11 +195,9 @@ class UserDialog extends StatelessWidget {
                 ),
                 // Pangea#
               );
-              // #Pangea
-              Navigator.of(context).pop();
-              // Pangea#
               final roomId = roomIdResult.result;
               if (roomId == null) return;
+              if (context.mounted) Navigator.of(context).pop();
               router.go('/rooms/$roomId');
             },
             child: Text(
@@ -212,6 +208,7 @@ class UserDialog extends StatelessWidget {
           ),
           AdaptiveDialogAction(
             bigButtons: true,
+            borderRadius: AdaptiveDialogAction.centerRadius,
             onPressed: () {
               final router = GoRouter.of(context);
               Navigator.of(context).pop();
@@ -228,6 +225,7 @@ class UserDialog extends StatelessWidget {
         ],
         AdaptiveDialogAction(
           bigButtons: true,
+          borderRadius: AdaptiveDialogAction.bottomRadius,
           onPressed: Navigator.of(context).pop,
           child: Text(L10n.of(context).close),
         ),

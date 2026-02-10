@@ -14,9 +14,7 @@ typedef POSActivitySequence = List<String>;
 
 class MorphActivityGenerator {
   /// Generate a morphological activity for a given token and morphological feature
-  static MessageActivityResponse get(
-    MessageActivityRequest req,
-  ) {
+  static MessageActivityResponse get(MessageActivityRequest req) {
     debugger(when: kDebugMode && req.target.tokens.length != 1);
 
     debugger(when: kDebugMode && req.target.morphFeature == null);

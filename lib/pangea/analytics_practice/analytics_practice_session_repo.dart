@@ -37,7 +37,8 @@ class AnalyticsPracticeSessionRepo {
     final List<AnalyticsActivityTarget> targets = [];
 
     if (type == ConstructTypeEnum.vocab) {
-      const totalNeeded = AnalyticsPracticeConstants.practiceGroupSize +
+      const totalNeeded =
+          AnalyticsPracticeConstants.practiceGroupSize +
           AnalyticsPracticeConstants.errorBufferSize;
       final halfNeeded = (totalNeeded / 2).ceil();
 
@@ -79,7 +80,8 @@ class AnalyticsPracticeSessionRepo {
           (AnalyticsPracticeConstants.practiceGroupSize +
               AnalyticsPracticeConstants.errorBufferSize)) {
         final morphs = await _fetchMorphs();
-        final remainingCount = (AnalyticsPracticeConstants.practiceGroupSize +
+        final remainingCount =
+            (AnalyticsPracticeConstants.practiceGroupSize +
                 AnalyticsPracticeConstants.errorBufferSize) -
             targets.length;
         final morphEntries = morphs.take(remainingCount);
@@ -118,7 +120,9 @@ class AnalyticsPracticeSessionRepo {
 
   static Future<List<ConstructIdentifier>> _fetchVocab() async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab)
         .then((map) => map.values.toList());
 
@@ -148,9 +152,11 @@ class AnalyticsPracticeSessionRepo {
   }
 
   static Future<Map<ConstructIdentifier, AudioExampleMessage>>
-      _fetchAudio() async {
+  _fetchAudio() async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab)
         .then((map) => map.values.toList());
 
@@ -180,11 +186,11 @@ class AnalyticsPracticeSessionRepo {
       // Try to get an audio example message with token data for this lemma
       final audioExampleMessage =
           await ExampleMessageUtil.getAudioExampleMessage(
-        await MatrixState.pangeaController.matrixState.analyticsDataService
-            .getConstructUse(construct.id),
-        MatrixState.pangeaController.matrixState.client,
-        noBold: true,
-      );
+            await MatrixState.pangeaController.matrixState.analyticsDataService
+                .getConstructUse(construct.id),
+            MatrixState.pangeaController.matrixState.client,
+            noBold: true,
+          );
 
       // Only add to targets if we found an example message AND its eventId hasn't been used
       if (audioExampleMessage != null) {
@@ -205,14 +211,18 @@ class AnalyticsPracticeSessionRepo {
 
   static Future<List<MorphPracticeTarget>> _fetchMorphs() async {
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.morph)
         .then((map) => map.values.toList());
 
     final morphInfoRequest = MorphInfoRequest(
-      userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+      userL1:
+          MatrixState.pangeaController.userController.userL1?.langCode ??
           LanguageKeys.defaultLanguage,
-      userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+      userL2:
+          MatrixState.pangeaController.userController.userL2?.langCode ??
           LanguageKeys.defaultLanguage,
     );
 
@@ -289,11 +299,7 @@ class AnalyticsPracticeSessionRepo {
 
         seenForms.add(form);
         final token = PangeaToken(
-          lemma: Lemma(
-            text: form,
-            saveVocab: true,
-            form: form,
-          ),
+          lemma: Lemma(text: form, saveVocab: true, form: form),
           text: PangeaTokenText.fromString(form),
           pos: 'other',
           morph: {feature: use.lemma},
@@ -314,16 +320,18 @@ class AnalyticsPracticeSessionRepo {
 
   static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
     final allRecentUses = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getUses(
-      count: 300,
-      filterCapped: false,
-      types: [
-        ConstructUseTypeEnum.ga,
-        ConstructUseTypeEnum.corGE,
-        ConstructUseTypeEnum.incGE,
-      ],
-    );
+          count: 300,
+          filterCapped: false,
+          types: [
+            ConstructUseTypeEnum.ga,
+            ConstructUseTypeEnum.corGE,
+            ConstructUseTypeEnum.incGE,
+          ],
+        );
 
     // Filter for grammar error uses
     final grammarErrorUses = allRecentUses
@@ -419,9 +427,7 @@ class AnalyticsPracticeSessionRepo {
             .where(
               (token) =>
                   token.lemma.saveVocab &&
-                  choices.any(
-                    (choice) => choice.contains(token.text.content),
-                  ),
+                  choices.any((choice) => choice.contains(token.text.content)),
             )
             .toList();
 
@@ -437,8 +443,9 @@ class AnalyticsPracticeSessionRepo {
           category: firstToken.pos,
         );
 
-        final hasRecentPractice =
-            recentlyPracticedConstructs.contains(tokenIdentifier);
+        final hasRecentPractice = recentlyPracticedConstructs.contains(
+          tokenIdentifier,
+        );
 
         if (hasRecentPractice) continue;
 

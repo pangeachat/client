@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message.dart';
 import 'package:fluffychat/pages/chat/seen_by_row.dart';
@@ -16,10 +18,7 @@ import 'package:fluffychat/utils/platform_infos.dart';
 class ChatEventList extends StatelessWidget {
   final ChatController controller;
 
-  const ChatEventList({
-    super.key,
-    required this.controller,
-  });
+  const ChatEventList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +29,13 @@ class ChatEventList extends StatelessWidget {
     }
     final theme = Theme.of(context);
 
-    final colors = [
-      theme.secondaryBubbleColor,
-      theme.bubbleColor,
-    ];
+    final colors = [theme.secondaryBubbleColor, theme.bubbleColor];
 
     final horizontalPadding = FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
-    final events = timeline.events.filterByVisibleInGui();
+    final events = timeline.events.filterByVisibleInGui(
+      threadId: controller.activeThreadId,
+    );
     final animateInEventIndex = controller.animateInEventIndex;
 
     // create a map of eventId --> index to greatly improve performance of
@@ -79,21 +77,21 @@ class ChatEventList extends StatelessWidget {
             (BuildContext context, int i) {
               // Footer to display typing indicator and read receipts:
               if (i == 0) {
-                if (timeline.isRequestingFuture) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                  );
-                }
                 if (timeline.canRequestFuture) {
                   return Center(
-                    child: IconButton(
-                      onPressed: controller.requestFuture,
-                      icon: const Icon(Icons.refresh_outlined),
+                    child: TextButton.icon(
+                      onPressed: timeline.isRequestingFuture
+                          ? null
+                          : controller.requestFuture,
+                      icon: timeline.isRequestingFuture
+                          ? CircularProgressIndicator.adaptive(strokeWidth: 2)
+                          : const Icon(Icons.arrow_downward_outlined),
+                      label: Text(L10n.of(context).loadMore),
                     ),
                   );
                 }
                 return Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     SeenByRow(controller),
                     TypingIndicators(controller),
@@ -106,33 +104,39 @@ class ChatEventList extends StatelessWidget {
               // if (i == events.length + 1) {
               if (i == events.length + 2) {
                 // Pangea#
-                if (timeline.isRequestingHistory) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                  );
+                if (controller.activeThreadId != null) {
+                  return const SizedBox.shrink();
                 }
-                if (timeline.canRequestHistory) {
-                  return Builder(
-                    builder: (context) {
+                return Builder(
+                  builder: (context) {
+                    final visibleIndex = timeline.events.lastIndexWhere(
+                      (event) =>
+                          !event.isCollapsedState && event.isVisibleInGui,
+                    );
+                    if (visibleIndex > timeline.events.length - 50) {
                       // #Pangea
-                      // WidgetsBinding.instance
-                      //     .addPostFrameCallback(controller.requestHistory);
+                      // WidgetsBinding.instance.addPostFrameCallback(
+                      //   controller.requestHistory,
+                      // );
                       WidgetsBinding.instance.addPostFrameCallback(
                         (_) => controller.requestHistory(),
                       );
                       // Pangea#
-                      return Center(
-                        child: IconButton(
-                          onPressed: controller.requestHistory,
-                          icon: const Icon(Icons.refresh_outlined),
-                        ),
-                      );
-                    },
-                  );
-                }
-                return const SizedBox.shrink();
+                    }
+                    return Center(
+                      child: TextButton.icon(
+                        onPressed: timeline.isRequestingHistory
+                            ? null
+                            : controller.requestHistory,
+                        icon: timeline.isRequestingHistory
+                            ? CircularProgressIndicator.adaptive(strokeWidth: 2)
+                            : const Icon(Icons.arrow_upward_outlined),
+                        label: Text(L10n.of(context).loadMore),
+                      ),
+                    );
+                  },
+                );
               }
-
               // #Pangea
               if (i == 1) {
                 return ActivityUserSummaries(controller: controller);
@@ -146,9 +150,23 @@ class ChatEventList extends StatelessWidget {
 
               // The message at this index:
               final event = events[i];
-              final animateIn = animateInEventIndex != null &&
+              final animateIn =
+                  animateInEventIndex != null &&
                   timeline.events.length > animateInEventIndex &&
                   event == timeline.events[animateInEventIndex];
+
+              final nextEvent = i + 1 < events.length ? events[i + 1] : null;
+              final previousEvent = i > 0 ? events[i - 1] : null;
+
+              // Collapsed state event
+              final canExpand =
+                  event.isCollapsedState &&
+                  nextEvent?.isCollapsedState == true &&
+                  previousEvent?.isCollapsedState != true;
+              final isCollapsed =
+                  event.isCollapsedState &&
+                  previousEvent?.isCollapsedState == true &&
+                  !controller.expandedEventIds.contains(event.eventId);
 
               return AutoScrollTag(
                 key: ValueKey(event.eventId),
@@ -181,20 +199,31 @@ class ChatEventList extends StatelessWidget {
                   isButton: event.eventId == controller.buttonEventID,
                   canRefresh: event.eventId == controller.refreshEventID,
                   // Pangea#
-                  selected: controller.selectedEvents
-                      .any((e) => e.eventId == event.eventId),
+                  selected: controller.selectedEvents.any(
+                    (e) => e.eventId == event.eventId,
+                  ),
                   singleSelected:
                       controller.selectedEvents.singleOrNull?.eventId ==
-                          event.eventId,
+                      event.eventId,
                   onEdit: () => controller.editSelectedEventAction(),
                   timeline: timeline,
                   displayReadMarker:
                       i > 0 && controller.readMarkerEventId == event.eventId,
-                  nextEvent: i + 1 < events.length ? events[i + 1] : null,
-                  previousEvent: i > 0 ? events[i - 1] : null,
+                  nextEvent: nextEvent,
+                  previousEvent: previousEvent,
                   wallpaperMode: hasWallpaper,
                   scrollController: controller.scrollController,
                   colors: colors,
+                  isCollapsed: isCollapsed,
+                  enterThread: controller.activeThreadId == null
+                      ? controller.enterThread
+                      : null,
+                  onExpand: canExpand
+                      ? () => controller.expandEventsFrom(
+                          event,
+                          !controller.expandedEventIds.contains(event.eventId),
+                        )
+                      : null,
                 ),
               );
             },

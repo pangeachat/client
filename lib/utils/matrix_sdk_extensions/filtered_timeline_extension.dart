@@ -1,64 +1,76 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import '../../config/app_config.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 
 extension VisibleInGuiExtension on List<Event> {
-  List<Event> filterByVisibleInGui({String? exceptionEventId}) => where(
-        // #Pangea
-        // (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
-        (event) =>
-            (event.isVisibleInGui || event.eventId == exceptionEventId) &&
-            event.isVisibleInPangeaGui,
-        // Pangea#
-      ).toList();
+  List<Event> filterByVisibleInGui({
+    String? exceptionEventId,
+    String? threadId,
+  }) => where((event) {
+    if (threadId != null &&
+        event.relationshipType != RelationshipTypes.reaction) {
+      if ((event.relationshipType != RelationshipTypes.thread ||
+              event.relationshipEventId != threadId) &&
+          event.eventId != threadId) {
+        return false;
+      }
+    } else if (event.relationshipType == RelationshipTypes.thread) {
+      return false;
+    }
+    // #Pangea
+    // return event.isVisibleInGui || event.eventId == exceptionEventId;
+    return (event.isVisibleInGui || event.eventId == exceptionEventId) &&
+        event.isVisibleInPangeaGui;
+    // Pangea#
+  }).toList();
 }
 
 extension IsStateExtension on Event {
   bool get isVisibleInGui =>
       // always filter out edit and reaction relationships
-      !{RelationshipTypes.edit, RelationshipTypes.reaction}
-          .contains(relationshipType) &&
-      // always filter out m.key.* events
-      !type.startsWith('m.key.verification.') &&
+      !{
+        RelationshipTypes.edit,
+        RelationshipTypes.reaction,
+      }.contains(relationshipType) &&
+      // always filter out m.key.* and other known but unimportant events
+      !isKnownHiddenStates &&
       // event types to hide: redaction and reaction events
       // if a reaction has been redacted we also want it to be hidden in the timeline
       !{EventTypes.Reaction, EventTypes.Redaction}.contains(type) &&
       // if we enabled to hide all redacted events, don't show those
-      (!AppConfig.hideRedactedEvents || !redacted) &&
+      (!AppSettings.hideRedactedEvents.value || !redacted) &&
       // if we enabled to hide all unknown events, don't show those
       // #Pangea
-      // (!AppConfig.hideUnknownEvents || isEventTypeKnown) &&
-      (!AppConfig.hideUnknownEvents || pangeaIsEventTypeKnown) &&
-      // Pangea#
-      // remove state events that we don't want to render
-      (isState || !AppConfig.hideAllStateEvents) &&
-      // #Pangea
+      // (!AppSettings.hideUnknownEvents.value || isEventTypeKnown);
+      (!AppSettings.hideUnknownEvents.value || pangeaIsEventTypeKnown) &&
       content.tryGet(ModelKey.transcription) == null &&
-      // if sending of transcription fails,
-      // don't show it as a errored audio event in timeline.
       ((unsigned?['extra_content']
               as Map<String, dynamic>?)?[ModelKey.transcription] ==
           null) &&
-      // hide unimportant state events
-      (!AppConfig.hideUnimportantStateEvents ||
-          !isState ||
-          importantStateEvents.contains(type)) &&
-      // Pangea#
-      // hide simple join/leave member events in public rooms
-      (!AppConfig.hideUnimportantStateEvents ||
-          type != EventTypes.RoomMember ||
-          room.joinRules != JoinRules.public ||
-          content.tryGet<String>('membership') == 'ban' ||
-          stateKey != senderId);
+      (!isState || importantStateEvents.contains(type));
+  // Pangea#
 
   bool get isState => !{
-        EventTypes.Message,
-        EventTypes.Sticker,
-        EventTypes.Encrypted,
-      }.contains(type);
+    EventTypes.Message,
+    EventTypes.Sticker,
+    EventTypes.Encrypted,
+  }.contains(type);
+
+  bool get isCollapsedState => !{
+    EventTypes.Message,
+    EventTypes.Sticker,
+    EventTypes.Encrypted,
+    EventTypes.RoomCreate,
+    EventTypes.RoomTombstone,
+  }.contains(type);
+
+  bool get isKnownHiddenStates =>
+      {PollEventContent.responseType}.contains(type) ||
+      type.startsWith('m.key.verification.');
 
   // #Pangea
   bool get isVisibleInPangeaGui {
@@ -85,6 +97,7 @@ extension IsStateExtension on Event {
     EventTypes.RoomMember,
     EventTypes.RoomTombstone,
     EventTypes.CallInvite,
+    PollEventContent.startType,
     PangeaEventTypes.activityPlan,
     PangeaEventTypes.activityRole,
   };

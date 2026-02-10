@@ -1,7 +1,1 @@
-enum EditTypeEnum {
-  igc,
-  it,
-  itDismissed,
-  keyboard,
-  other,
-}
+enum EditTypeEnum { igc, it, itDismissed, keyboard, other }

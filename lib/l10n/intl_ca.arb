@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:31:37.024931",
+  "@@last_modified": "2026-02-10 13:53:22.589118",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -2248,15 +2248,6 @@
   "@participant": {
     "type": "String",
     "placeholders": {}
-  },
-  "signInWith": "Inicia sessió amb {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "fileIsTooBigForServer": "No s'ha pogut enviar! El servidor només accepta adjunts de fins a {max}.",
   "@fileIsTooBigForServer": {},
@@ -11086,6 +11077,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ha canviat la descripció del xat",
+  "changedTheChatName": "{username} ha canviat el nom del xat",
+  "moreEvents": "Més esdeveniments",
+  "declineInvitation": "Rebutjar invitació",
+  "noMessagesYet": "Encara no hi ha missatges",
+  "longPressToRecordVoiceMessage": "Mantingueu premut per gravar un missatge de veu.",
+  "pause": "Pausa",
+  "resume": "Reprendre",
+  "newSubSpace": "Nou subespai",
+  "moveToDifferentSpace": "Moure's a un espai diferent",
+  "moveUp": "Mou amunt",
+  "moveDown": "Mou avall",
+  "removeFromSpaceDescription": "El xat serà eliminat de l'espai però continuarà apareixent a la teva llista de xats.",
+  "countChats": "{chats} xats",
+  "spaceMemberOf": "Membre de l'espai de {spaces}",
+  "spaceMemberOfCanKnock": "Membre de l'espai de {spaces} pot trucar",
+  "donate": "Dona",
+  "startedAPoll": "{username} ha iniciat una enquesta.",
+  "poll": "Enquesta",
+  "startPoll": "Inicia l'enquesta",
+  "endPoll": "Finalitza l'enquesta",
+  "answersVisible": "Respostes visibles",
+  "answersHidden": "Respostes ocultes",
+  "pollQuestion": "Pregunta de l'enquesta",
+  "answerOption": "Opció de resposta",
+  "addAnswerOption": "Afegir opció de resposta",
+  "allowMultipleAnswers": "Permetre múltiples respostes",
+  "pollHasBeenEnded": "L'enquesta ha estat finalitzada",
+  "countVotes": "{count, plural, =1{Un vot} other{{count} vots}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Les respostes seran visibles quan l'enquesta hagi acabat",
+  "replyInThread": "Respondre en el fil",
+  "countReplies": "{count, plural, =1{Una resposta} other{{count} respostes}}",
+  "thread": "Fil",
+  "backToMainChat": "Tornar al xat principal",
+  "createSticker": "Crear adhesiu o emoji",
+  "useAsSticker": "Utilitzar com a adhesiu",
+  "useAsEmoji": "Utilitzar com a emoji",
+  "stickerPackNameAlreadyExists": "El nom del paquet d'adhesius ja existeix",
+  "newStickerPack": "Nou paquet d'adhesius",
+  "stickerPackName": "Nom del paquet d'adhesius",
+  "attribution": "Atribució",
+  "skipChatBackup": "Saltar la còpia de seguretat del xat",
+  "skipChatBackupWarning": "Estàs segur? Sense habilitar la còpia de seguretat del xat, podries perdre l'accés als teus missatges si canvies de dispositiu.",
+  "loadingMessages": "Carregant missatges",
+  "setupChatBackup": "Configura la còpia de seguretat del xat",
+  "noMoreResultsFound": "No s'han trobat més resultats",
+  "chatSearchedUntil": "Xat cercat fins a {time}",
+  "federationBaseUrl": "URL base de la federació",
+  "clientWellKnownInformation": "Informació coneguda del client:",
+  "baseUrl": "URL base",
+  "identityServer": "Servidor d'identitat:",
+  "versionWithNumber": "Versió: {version}",
+  "logs": "Registres",
+  "advancedConfigs": "Configuracions avançades",
+  "advancedConfigurations": "Configuracions avançades",
+  "signInWithLabel": "Inicia sessió amb:",
+  "selectAllWords": "Selecciona totes les paraules que escoltes a l'àudio",
+  "joinCourseForActivities": "Uneix-te a un curs per provar activitats.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Els cursos consten de 3-8 mòduls, cadascun amb activitats per fomentar la pràctica de paraules en diferents contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificació de l'email ha fallat. Si us plau, torna-ho a intentar.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

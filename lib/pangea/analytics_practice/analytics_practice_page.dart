@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -28,16 +31,12 @@ import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.da
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
   final String tag;
 
-  const SelectedMorphChoice({
-    required this.feature,
-    required this.tag,
-  });
+  const SelectedMorphChoice({required this.feature, required this.tag});
 }
 
 class VocabPracticeChoice {
@@ -56,10 +55,7 @@ class _PracticeQueueEntry {
   final MessageActivityRequest request;
   final Completer<MultipleChoicePracticeActivityModel> completer;
 
-  _PracticeQueueEntry({
-    required this.request,
-    required this.completer,
-  });
+  _PracticeQueueEntry({required this.request, required this.completer});
 }
 
 class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
@@ -67,36 +63,37 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
   SessionLoader({required this.type});
 
   @override
-  Future<AnalyticsPracticeSessionModel> fetch() => AnalyticsPracticeSessionRepo.get(type);
+  Future<AnalyticsPracticeSessionModel> fetch() =>
+      AnalyticsPracticeSessionRepo.get(type);
 }
 
 class AnalyticsPractice extends StatefulWidget {
   static bool bypassExitConfirmation = true;
 
   final ConstructTypeEnum type;
-  const AnalyticsPractice({
-    super.key,
-    required this.type,
-  });
+  const AnalyticsPractice({super.key, required this.type});
 
   @override
   AnalyticsPracticeState createState() => AnalyticsPracticeState();
 }
 
-class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpdater {
+class AnalyticsPracticeState extends State<AnalyticsPractice>
+    with AnalyticsUpdater {
   late final SessionLoader _sessionLoader;
 
-  final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>> activityState =
-      ValueNotifier(const AsyncState.idle());
+  final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
+  activityState = ValueNotifier(const AsyncState.idle());
 
   final Queue<_PracticeQueueEntry> _queue = Queue();
 
-  final ValueNotifier<MessageActivityRequest?> activityTarget = ValueNotifier<MessageActivityRequest?>(null);
+  final ValueNotifier<MessageActivityRequest?> activityTarget =
+      ValueNotifier<MessageActivityRequest?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
   final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
 
-  final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice = ValueNotifier<SelectedMorphChoice?>(null);
+  final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
+      ValueNotifier<SelectedMorphChoice?>(null);
 
   final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
 
@@ -118,8 +115,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     super.initState();
     _sessionLoader = SessionLoader(type: widget.type);
     _startSession();
-    _languageStreamSubscription =
-        MatrixState.pangeaController.userController.languageStream.stream.listen((_) => _onLanguageUpdate());
+    _languageStreamSubscription = MatrixState
+        .pangeaController
+        .userController
+        .languageStream
+        .stream
+        .listen((_) => _onLanguageUpdate());
   }
 
   @override
@@ -139,14 +140,18 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
 
   MultipleChoicePracticeActivityModel? get _currentActivity =>
       activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
-          ? (activityState.value as AsyncLoaded<MultipleChoicePracticeActivityModel>).value
-          : null;
+      ? (activityState.value
+                as AsyncLoaded<MultipleChoicePracticeActivityModel>)
+            .value
+      : null;
 
   bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
 
-  ValueNotifier<AsyncState<AnalyticsPracticeSessionModel>> get sessionState => _sessionLoader.state;
+  ValueNotifier<AsyncState<AnalyticsPracticeSessionModel>> get sessionState =>
+      _sessionLoader.state;
 
-  AnalyticsDataService get _analyticsService => Matrix.of(context).analyticsDataService;
+  AnalyticsDataService get _analyticsService =>
+      Matrix.of(context).analyticsDataService;
 
   List<VocabPracticeChoice> filteredChoices(
     MultipleChoicePracticeActivityModel activity,
@@ -195,7 +200,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     if (widget.type == ConstructTypeEnum.morph) {
       return choiceId;
     }
-    if (_choiceTexts.containsKey(key) && _choiceTexts[key]!.containsKey(choiceId)) {
+    if (_choiceTexts.containsKey(key) &&
+        _choiceTexts[key]!.containsKey(choiceId)) {
       return _choiceTexts[key]![choiceId]!;
     }
     final cId = ConstructIdentifier.fromString(choiceId);
@@ -207,7 +213,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     return _choiceEmojis[key]?[choiceId];
   }
 
-  String choiceTargetId(String choiceId) => '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
+  String choiceTargetId(String choiceId) =>
+      '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
 
   void _clearState() {
     activityState.value = const AsyncState.loading();
@@ -234,16 +241,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
 
   void _playAudio() {
     if (activityTarget.value == null) return;
-    if (widget.type == ConstructTypeEnum.vocab && _currentActivity is VocabMeaningPracticeActivityModel) {
+    if (widget.type == ConstructTypeEnum.vocab &&
+        _currentActivity is VocabMeaningPracticeActivityModel) {
     } else {
       return;
     }
-    final token = activityTarget.value!.target.tokens.first;
     TtsController.tryToSpeak(
-      token.vocabConstructID.lemma,
+      activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
-      pos: token.pos,
-      morph: token.morph.map((k, v) => MapEntry(k.name, v)),
     );
   }
 
@@ -257,7 +262,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
   Future<void> _onLanguageUpdate() async {
     try {
       _clearState();
-      await _analyticsService.updateDispatcher.constructUpdateStream.stream.first.timeout(const Duration(seconds: 10));
+      await _analyticsService
+          .updateDispatcher
+          .constructUpdateStream
+          .stream
+          .first
+          .timeout(const Duration(seconds: 10));
       await reloadSession();
     } catch (e) {
       if (mounted) {
@@ -328,7 +338,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     showingAudioCompletion.value = false;
 
     try {
-      if (activityState.value is AsyncIdle<MultipleChoicePracticeActivityModel>) {
+      if (activityState.value
+          is AsyncIdle<MultipleChoicePracticeActivityModel>) {
         await _initActivityData();
       } else {
         // Keep trying to load activities from the queue until one succeeds or queue is empty
@@ -389,21 +400,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     }
     AnalyticsPractice.bypassExitConfirmation = true;
     if (!mounted) return;
-    activityState.value = AsyncState.error(L10n.of(context).oopsSomethingWentWrong);
+    activityState.value = AsyncState.error(
+      L10n.of(context).oopsSomethingWentWrong,
+    );
     return;
   }
 
-  Future<void> _fillActivityQueue(
-    List<MessageActivityRequest> requests,
-  ) async {
+  Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(
-        _PracticeQueueEntry(
-          request: request,
-          completer: completer,
-        ),
-      );
+      _queue.add(_PracticeQueueEntry(request: request, completer: completer));
       try {
         final res = await _fetchActivity(request);
         if (!mounted) return;
@@ -419,12 +425,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
   Future<MultipleChoicePracticeActivityModel> _fetchActivity(
     MessageActivityRequest req,
   ) async {
-    final result = await PracticeRepo.getPracticeActivity(
-      req,
-      messageInfo: {},
-    );
+    final result = await PracticeRepo.getPracticeActivity(req, messageInfo: {});
 
-    if (result.isError || result.result is! MultipleChoicePracticeActivityModel) {
+    if (result.isError ||
+        result.result is! MultipleChoicePracticeActivityModel) {
       throw L10n.of(context).oopsSomethingWentWrong;
     }
 
@@ -523,10 +527,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     final use = OneConstructUse(
       useType: ConstructUseTypeEnum.ignPA,
       constructType: widget.type,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
+      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
       category: token.pos,
       lemma: token.lemma.text,
       form: token.lemma.text,
@@ -560,9 +561,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     }
   }
 
-  Future<void> onSelectChoice(
-    String choiceContent,
-  ) async {
+  Future<void> onSelectChoice(String choiceContent) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
@@ -576,7 +575,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
 
     final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
 
-    final isAudioActivity = activity.activityType == ActivityTypeEnum.lemmaAudio;
+    final isAudioActivity =
+        activity.activityType == ActivityTypeEnum.lemmaAudio;
     if (isAudioActivity && isCorrect) {
       _selectedCorrectAnswers.add(choiceContent);
     }
@@ -595,14 +595,19 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
 
     final use = activity.constructUse(choiceContent);
     _sessionLoader.value!.submitAnswer(use);
-    await _analyticsService.updateService.addAnalytics(choiceTargetId(choiceContent), [use]);
+    await _analyticsService.updateService.addAnalytics(
+      choiceTargetId(choiceContent),
+      [use],
+    );
 
     if (!isCorrect) return;
 
     // For audio activities, check if all answers have been selected
     if (isAudioActivity) {
       final allAnswers = activity.multipleChoiceContent.answers;
-      final allSelected = allAnswers.every((answer) => _selectedCorrectAnswers.contains(answer));
+      final allSelected = allAnswers.every(
+        (answer) => _selectedCorrectAnswers.contains(answer),
+      );
 
       if (!allSelected) {
         return;
@@ -658,12 +663,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice> with AnalyticsUpda
     return null;
   }
 
-  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData => _analyticsService.derivedData;
+  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
+      _analyticsService.derivedData;
 
   /// Returns congratulations message based on performance
   String getCompletionMessage(BuildContext context) {
     final accuracy = _sessionLoader.value?.state.accuracy ?? 0;
-    final hasTimeBonus = (_sessionLoader.value?.state.elapsedSeconds ?? 0) <= AnalyticsPracticeConstants.timeForBonus;
+    final hasTimeBonus =
+        (_sessionLoader.value?.state.elapsedSeconds ?? 0) <=
+        AnalyticsPracticeConstants.timeForBonus;
     final hintsUsed = hintsUsedNotifier.value;
 
     final bool perfectAccuracy = accuracy == 100;

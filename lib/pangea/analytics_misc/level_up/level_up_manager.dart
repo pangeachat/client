@@ -40,8 +40,8 @@ class LevelUpManager {
 
     final LanguageModel? l2 =
         MatrixState.pangeaController.userController.userL2;
-    final Room? analyticsRoom =
-        MatrixState.pangeaController.matrixState.client.analyticsRoomLocal(l2!);
+    final Room? analyticsRoom = MatrixState.pangeaController.matrixState.client
+        .analyticsRoomLocal(l2!);
 
     if (analyticsRoom != null) {
       final lastSummary = analyticsRoom.levelUpSummary;

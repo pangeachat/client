@@ -19,9 +19,9 @@ class _PracticeSelectionCacheEntry {
   bool get isExpired => DateTime.now().difference(timestamp).inDays > 1;
 
   Map<String, dynamic> toJson() => {
-        'selection': selection.toJson(),
-        'timestamp': timestamp.toIso8601String(),
-      };
+    'selection': selection.toJson(),
+    'timestamp': timestamp.toIso8601String(),
+  };
 
   factory _PracticeSelectionCacheEntry.fromJson(Map<String, dynamic> json) {
     return _PracticeSelectionCacheEntry(
@@ -47,10 +47,7 @@ class PracticeSelectionRepo {
     final cached = _getCached(eventId);
     if (cached != null) return cached;
 
-    final newEntry = await _fetch(
-      tokens: tokens,
-      langCode: messageLanguage,
-    );
+    final newEntry = await _fetch(tokens: tokens, langCode: messageLanguage);
 
     _setCached(eventId, newEntry);
     return newEntry;
@@ -74,9 +71,7 @@ class PracticeSelectionRepo {
     return selection;
   }
 
-  static PracticeSelection? _getCached(
-    String eventId,
-  ) {
+  static PracticeSelection? _getCached(String eventId) {
     try {
       final keys = List.from(_storage.getKeys());
       for (final String key in keys) {
@@ -105,10 +100,7 @@ class PracticeSelectionRepo {
     }
   }
 
-  static void _setCached(
-    String eventId,
-    PracticeSelection entry,
-  ) {
+  static void _setCached(String eventId, PracticeSelection entry) {
     final cachedEntry = _PracticeSelectionCacheEntry(
       selection: entry,
       timestamp: DateTime.now(),
@@ -131,16 +123,14 @@ class PracticeSelectionRepo {
     PangeaToken b,
     int aScore,
     int bScore,
-  ) =>
-      bScore.compareTo(aScore);
+  ) => bScore.compareTo(aScore);
 
   static int _sortMorphTargets(
     PracticeTarget a,
     PracticeTarget b,
     int aScore,
     int bScore,
-  ) =>
-      bScore.compareTo(aScore);
+  ) => bScore.compareTo(aScore);
 
   static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
     return t.morphsBasicallyEligibleForPracticeByPriority
@@ -176,10 +166,7 @@ class PracticeSelectionRepo {
       return [];
     }
 
-    final scores = await _fetchPriorityScores(
-      practiceTokens,
-      activityType,
-    );
+    final scores = await _fetchPriorityScores(practiceTokens, activityType);
 
     practiceTokens.sort((a, b) => _sortTokens(a, b, scores[a]!, scores[b]!));
     practiceTokens = practiceTokens.take(8).toList();
@@ -231,21 +218,23 @@ class PracticeSelectionRepo {
     }
 
     final ids = tokens.map((t) => t.vocabConstructID).toList();
-    final idMap = {
-      for (final token in tokens) token: token.vocabConstructID,
-    };
+    final idMap = {for (final token in tokens) token: token.vocabConstructID};
 
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
         .getConstructUses(ids);
 
     for (final token in tokens) {
       final construct = constructs[idMap[token]];
-      final lastUsed =
-          construct?.lastUseByTypes(activityType.associatedUseTypes);
+      final lastUsed = construct?.lastUseByTypes(
+        activityType.associatedUseTypes,
+      );
 
-      final daysSinceLastUsed =
-          lastUsed == null ? 20 : DateTime.now().difference(lastUsed).inDays;
+      final daysSinceLastUsed = lastUsed == null
+          ? 20
+          : DateTime.now().difference(lastUsed).inDays;
 
       scores[token] =
           daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 9);

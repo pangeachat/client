@@ -42,17 +42,12 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
 
     // first, update lemma info if changed
     if (response.updatedLemmaInfo != null) {
-      await _updateLemmaInfo(
-        token,
-        response.updatedLemmaInfo!,
-      );
+      await _updateLemmaInfo(token, response.updatedLemmaInfo!);
     }
 
     // second, update the phonetic info if changed
     if (response.updatedPhonetics != null) {
-      await _updatePhoneticTranscription(
-        response.updatedPhonetics!,
-      );
+      await _updatePhoneticTranscription(response.updatedPhonetics!);
     }
 
     final originalSent = event?.originalSent;
@@ -77,11 +72,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     final tokensSent = PangeaMessageTokens(
       tokens: tokens,
       detections: [
-        if (updatedLanguage != null)
-          LanguageDetectionModel(
-            langCode: updatedLanguage,
-            confidence: 1,
-          ),
+        if (updatedLanguage != null) LanguageDetectionModel(langCode: updatedLanguage, confidence: 1),
       ],
     );
 
@@ -121,9 +112,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     LemmaInfoResponse response,
   ) =>
       LemmaInfoRepo.set(
-        token.vocabConstructID.lemmaInfoRequest(
-          event?.event.content ?? {},
-        ),
+        token.vocabConstructID.lemmaInfoRequest(event?.event.content ?? {}),
         response,
       );
 

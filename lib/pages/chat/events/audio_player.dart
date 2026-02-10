@@ -65,6 +65,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   static const double buttonSize = 36;
 
   AudioPlayerStatus status = AudioPlayerStatus.notDownloaded;
+  double? _downloadProgress;
 
   late final MatrixState matrix;
   List<int>? _waveform;
@@ -79,8 +80,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   @override
   void dispose() {
     super.dispose();
+    // #Pangea
     // final audioPlayer = matrix.voiceMessageEventId.value != widget.event.eventId
     final audioPlayer = matrix.voiceMessageEventId.value != widget.eventId
+        // Pangea#
         ? null
         : matrix.audioPlayer;
     if (audioPlayer != null) {
@@ -111,16 +114,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       //           stream: audioPlayer.positionStream.asBroadcastStream(),
       //           builder: (context, _) => GestureDetector(
       //             onTap: () => FluffyChatApp.router.go(
-      //               // #Pangea
-      //               // '/rooms/${widget.event.room.id}?event=${widget.event.eventId}',
-      //               '/rooms/${widget.roomId}?event=${widget.eventId}',
-      //               // Pangea#
+      //               '/rooms/${widget.event.room.id}?event=${widget.event.eventId}',
       //             ),
       //             child: Text(
-      //               // #Pangea
-      //               // '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event.senderFromMemoryOrFallback.calcDisplayname()}',
-      //               '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event?.senderFromMemoryOrFallback.calcDisplayname() ?? widget.senderId}',
-      //               // Pangea#
+      //               '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event.senderFromMemoryOrFallback.calcDisplayname()}',
       //               maxLines: 1,
       //               overflow: TextOverflow.ellipsis,
       //             ),
@@ -131,12 +128,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       //             onPressed: () {
       //               audioPlayer.pause();
       //               audioPlayer.dispose();
-      //               matrix.voiceMessageEventId.value =
-      //                   matrix.audioPlayer = null;
+      //               matrix.voiceMessageEventId.value = matrix.audioPlayer =
+      //                   null;
 
       //               WidgetsBinding.instance.addPostFrameCallback((_) {
-      //                 ScaffoldMessenger.of(matrix.context)
-      //                     .clearMaterialBanners();
+      //                 ScaffoldMessenger.of(
+      //                   matrix.context,
+      //                 ).clearMaterialBanners();
       //               });
       //             },
       //             icon: const Icon(Icons.close_outlined),
@@ -151,8 +149,8 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       audioPlayer.pause();
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
-      matrix.voiceMessageEventId.removeListener(_onPlayerChange);
       // #Pangea
+      matrix.voiceMessageEventId.removeListener(_onPlayerChange);
       _onAudioStateChanged?.cancel();
       // Pangea#
     }
@@ -162,21 +160,20 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ScaffoldMessenger.of(matrix.context).clearMaterialBanners();
     });
-
     final currentPlayer =
         // #Pangea
         // matrix.voiceMessageEventId.value != widget.event.eventId
         matrix.voiceMessageEventId.value != widget.eventId
-            // Pangea#
-            ? null
-            : matrix.audioPlayer;
-
+        // Pangea#
+        ? null
+        : matrix.audioPlayer;
     if (currentPlayer != null) {
       // #Pangea
       currentPlayer.setSpeed(playbackSpeed);
       _onAudioStateChanged?.cancel();
-      _onAudioStateChanged =
-          matrix.audioPlayer!.playerStateStream.listen((state) {
+      _onAudioStateChanged = matrix.audioPlayer!.playerStateStream.listen((
+        state,
+      ) {
         if (state.processingState == ProcessingState.completed) {
           matrix.audioPlayer!.stop();
           matrix.audioPlayer!.seek(Duration.zero);
@@ -206,9 +203,26 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     setState(() => status = AudioPlayerStatus.downloading);
     try {
       // #Pangea
-      // matrixFile = await widget.event.downloadAndDecryptAttachment();
-      matrixFile = await widget.event?.downloadAndDecryptAttachment();
-      // Pangea#
+      // final fileSize = widget.event.content
+      final fileSize = widget.event?.content
+          // Pangea#
+          .tryGetMap<String, dynamic>('info')
+          ?.tryGet<int>('size');
+      // #Pangea
+      // matrixFile = await widget.event.downloadAndDecryptAttachment(
+      matrixFile = await widget.event?.downloadAndDecryptAttachment(
+        // Pangea#
+        onDownloadProgress: fileSize != null && fileSize > 0
+            ? (progress) {
+                final progressPercentage = progress / fileSize;
+                setState(() {
+                  _downloadProgress = progressPercentage < 1
+                      ? progressPercentage
+                      : null;
+                });
+              }
+            : null,
+      );
 
       // #Pangea
       // if (!kIsWeb) {
@@ -250,11 +264,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       });
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toLocalizedString(context)),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       rethrow;
     }
     if (!context.mounted) return;
@@ -269,8 +281,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // #Pangea
     audioPlayer.setSpeed(playbackSpeed);
     _onAudioStateChanged?.cancel();
-    _onAudioStateChanged =
-        matrix.audioPlayer!.playerStateStream.listen((state) {
+    _onAudioStateChanged = matrix.audioPlayer!.playerStateStream.listen((
+      state,
+    ) {
       if (state.processingState == ProcessingState.completed) {
         matrix.audioPlayer!.stop();
         matrix.audioPlayer!.seek(Duration.zero);
@@ -305,9 +318,8 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // Pangea#
 
     audioPlayer.play().onError(
-          ErrorReporter(context, 'Unable to play audio message')
-              .onErrorCallback,
-        );
+      ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
+    );
   }
 
   void _toggleSpeed() async {
@@ -366,11 +378,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
 
   List<int>? _getWaveform() {
     // #Pangea
-    final eventWaveForm = widget.matrixFile?.waveform ??
+    final eventWaveForm =
+        widget.matrixFile?.waveform ??
         widget.event?.content
             .tryGetMap<String, dynamic>('org.matrix.msc1767.audio')
             ?.tryGetList<int>('waveform');
-    // final eventWaveForm = widget.event?.content
+    // final eventWaveForm = widget.event.content
     //     .tryGetMap<String, dynamic>('org.matrix.msc1767.audio')
     //     ?.tryGetList<int>('waveform');
     // Pangea#
@@ -395,8 +408,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   void _onPlayerChange() {
     if (matrix.audioPlayer == null) return;
     _onAudioStateChanged?.cancel();
-    _onAudioStateChanged =
-        matrix.audioPlayer?.playerStateStream.listen((state) {
+    _onAudioStateChanged = matrix.audioPlayer?.playerStateStream.listen((
+      state,
+    ) {
       if (state.processingState == ProcessingState.completed) {
         matrix.audioPlayer?.stop();
         matrix.audioPlayer?.seek(Duration.zero);
@@ -409,8 +423,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   void initState() {
     super.initState();
     matrix = Matrix.of(context);
+    // #Pangea
     WidgetsBinding.instance.addPostFrameCallback((_) => _onPlayerChange());
     matrix.voiceMessageEventId.addListener(_onPlayerChange);
+    // Pangea#
     _waveform = _getWaveform();
 
     // #Pangea
@@ -451,10 +467,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       valueListenable: matrix.voiceMessageEventId,
       builder: (context, eventId, _) {
         // #Pangea
-        // final audioPlayer =
-        //     eventId != widget.event.eventId ? null : matrix.audioPlayer;
-        final audioPlayer =
-            eventId != widget.eventId ? null : matrix.audioPlayer;
+        // final audioPlayer = eventId != widget.event.eventId
+        //     ? null
+        //     : matrix.audioPlayer;
+        final audioPlayer = eventId != widget.eventId
+            ? null
+            : matrix.audioPlayer;
         // Pangea#
 
         // #Pangea
@@ -481,7 +499,8 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                   audioPlayer?.position.inMilliseconds.toDouble() ?? 0.0;
               if (currentPosition > maxPosition) currentPosition = maxPosition;
 
-              final wavePosition = (currentPosition / maxPosition) *
+              final wavePosition =
+                  (currentPosition / maxPosition) *
                   AudioPlayerWidget.wavesCount;
 
               final statusText = audioPlayer == null
@@ -490,15 +509,15 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
               return Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: .min,
+                  crossAxisAlignment: .start,
                   children: [
                     ConstrainedBox(
                       constraints: const BoxConstraints(
                         maxWidth: FluffyThemes.columnWidth,
                       ),
                       child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisSize: .min,
                         children: <Widget>[
                           SizedBox(
                             width: buttonSize,
@@ -507,6 +526,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                 ? CircularProgressIndicator(
                                     strokeWidth: 2,
                                     color: widget.color,
+                                    value: _downloadProgress,
                                   )
                                 : InkWell(
                                     borderRadius: BorderRadius.circular(64),
@@ -542,9 +562,11 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                     ),
                                     child: Row(
                                       children: [
-                                        for (var i = 0;
-                                            i < AudioPlayerWidget.wavesCount;
-                                            i++)
+                                        for (
+                                          var i = 0;
+                                          i < AudioPlayerWidget.wavesCount;
+                                          i++
+                                        )
                                           Expanded(
                                             child: Container(
                                               height: 32,
@@ -552,13 +574,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                               child: Container(
                                                 margin:
                                                     const EdgeInsets.symmetric(
-                                                  horizontal: 1,
-                                                ),
+                                                      horizontal: 1,
+                                                    ),
                                                 decoration: BoxDecoration(
                                                   color: i < wavePosition
                                                       ? widget.color
-                                                      : widget.color
-                                                          .withAlpha(128),
+                                                      : widget.color.withAlpha(
+                                                          128,
+                                                        ),
                                                   borderRadius:
                                                       BorderRadius.circular(64),
                                                 ),
@@ -574,11 +597,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                   height: 32,
                                   child: Slider(
                                     // #Pangea
-                                    // thumbColor: widget.event.senderId ==
+                                    // thumbColor:
+                                    //     widget.event.senderId ==
                                     //         widget.event.room.client.userID
-                                    //       ? theme.colorScheme.onPrimary
-                                    //       : theme.colorScheme.primary,
-                                    thumbColor: widget.senderId ==
+                                    //     ? theme.colorScheme.onPrimary
+                                    //     : theme.colorScheme.primary,
+                                    thumbColor:
+                                        widget.senderId ==
                                             Matrix.of(context).client.userID
                                         ? widget.color
                                         : theme.colorScheme.onSurface,
@@ -595,13 +620,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                     onChanged: !widget.enableClicks
                                         ? null
                                         : (position) => audioPlayer == null
-                                            ? _onButtonTap()
-                                            : audioPlayer.seek(
-                                                Duration(
-                                                  milliseconds:
-                                                      position.round(),
+                                              ? _onButtonTap()
+                                              : audioPlayer.seek(
+                                                  Duration(
+                                                    milliseconds: position
+                                                        .round(),
+                                                  ),
                                                 ),
-                                              ),
                                     // onChanged: (position) => audioPlayer == null
                                     //     ? _onButtonTap()
                                     //     : audioPlayer.seek(
@@ -629,21 +654,20 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                           // ),
                           Text(
                             statusText,
-                            style: TextStyle(
-                              color: widget.color,
-                              fontSize: 12,
-                            ),
+                            style: TextStyle(color: widget.color, fontSize: 12),
                           ),
                           // Pangea#
                           const SizedBox(width: 8),
                           // #Pangea
                           Material(
                             color: widget.color.withAlpha(64),
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius,
+                            ),
                             child: InkWell(
-                              borderRadius:
-                                  BorderRadius.circular(AppConfig.borderRadius),
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius,
+                              ),
                               onTap: !widget.enableClicks ? null : _toggleSpeed,
                               child: SizedBox(
                                 width: 32,
@@ -670,11 +694,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                           //   ),
                           //   secondChild: Material(
                           //     color: widget.color.withAlpha(64),
-                          //     borderRadius:
-                          //         BorderRadius.circular(AppConfig.borderRadius),
+                          //     borderRadius: BorderRadius.circular(
+                          //       AppConfig.borderRadius,
+                          //     ),
                           //     child: InkWell(
-                          //       borderRadius:
-                          //           BorderRadius.circular(AppConfig.borderRadius),
+                          //       borderRadius: BorderRadius.circular(
+                          //         AppConfig.borderRadius,
+                          //       ),
                           //       onTap: _toggleSpeed,
                           //       child: SizedBox(
                           //         width: 32,
@@ -710,8 +736,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                         ),
                         child: Linkify(
                           text: fileDescription,
-                          textScaleFactor:
-                              MediaQuery.textScalerOf(context).scale(1),
+                          textScaleFactor: MediaQuery.textScalerOf(
+                            context,
+                          ).scale(1),
                           style: TextStyle(
                             color: widget.color,
                             fontSize: widget.fontSize,
@@ -791,4 +818,5 @@ class BytesAudioSource extends StreamAudioSource {
     );
   }
 }
+
 // Pangea#

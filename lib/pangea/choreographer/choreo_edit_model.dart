@@ -9,11 +9,7 @@ class ChoreoEditModel {
   final String insert;
 
   /// Normal constructor created from preexisting ChoreoEdit values
-  const ChoreoEditModel({
-    this.offset = 0,
-    this.length = 0,
-    this.insert = "",
-  });
+  const ChoreoEditModel({this.offset = 0, this.length = 0, this.insert = ""});
 
   /// Constructor that determines and saves
   /// edits differentiating originalText and editedText
@@ -30,11 +26,7 @@ class ChoreoEditModel {
     final length =
         _lastDifference(originalText, editedText, offset) + 1 - offset;
     final insert = _insertion(originalText, editedText, offset, length);
-    return ChoreoEditModel(
-      offset: offset,
-      length: length,
-      insert: insert,
-    );
+    return ChoreoEditModel(offset: offset, length: length, insert: insert);
   }
 
   factory ChoreoEditModel.fromJson(Map<String, dynamic> json) {

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:34.842172",
+  "@@last_modified": "2026-02-10 13:53:46.975646",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -2290,7 +2290,6 @@
   "report": "raporti",
   "signInWithPassword": "Ensaluti per pasvorto",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Bonvolu provi denove poste aŭ elekti alian servilon.",
-  "signInWith": "Ensaluti kun {provider}",
   "profileNotFound": "La uzanto ne povis esti trovita en la servilo. Eble estas problemo kun la konekto aŭ la uzanto ne ekzistas.",
   "setTheme": "Agordi temon:",
   "setColorTheme": "Agordi kolortemon:",
@@ -4628,14 +4627,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5046,9 +5037,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -12151,6 +12140,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ŝanĝis la priskribon de la konversacio",
+  "changedTheChatName": "{username} ŝanĝis la nomon de la konversacio",
+  "moreEvents": "Pli da eventoj",
+  "declineInvitation": "Malakcepti inviton",
+  "noMessagesYet": "Neniuj mesaĝoj ankoraŭ",
+  "longPressToRecordVoiceMessage": "Longa premado por registri voĉan mesaĝon.",
+  "pause": "Pauzi",
+  "resume": "Daŭrigi",
+  "newSubSpace": "Nova subspaco",
+  "moveToDifferentSpace": "Movi al alia spaco",
+  "moveUp": "Movi supren",
+  "moveDown": "Movi malsupren",
+  "removeFromSpaceDescription": "La konversacio estos forigita el la spaco sed ankoraŭ aperos en via konversacia listo.",
+  "countChats": "{chats} konversacioj",
+  "spaceMemberOf": "Spaca membro de {spaces}",
+  "spaceMemberOfCanKnock": "Spaca membro de {spaces} povas frapi",
+  "donate": "Donaci",
+  "startedAPoll": "{username} komencis enketon.",
+  "poll": "Enketo",
+  "startPoll": "Komenci enketon",
+  "endPoll": "Fini la enketon",
+  "answersVisible": "Respondoj videblaj",
+  "answersHidden": "Respondoj kaŝitaj",
+  "pollQuestion": "Enketo demando",
+  "answerOption": "Respondoopcio",
+  "addAnswerOption": "Aldoni respondoopcion",
+  "allowMultipleAnswers": "Permesi plurajn respondojn",
+  "pollHasBeenEnded": "La enketon estis finita",
+  "countVotes": "{count, plural, =1{Unu voĉo} other{{count} voĉoj}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Respondoj estos videblaj kiam la enketon estos finita",
+  "replyInThread": "Respondi en fadenon",
+  "countReplies": "{count, plural, =1{Unu respondo} other{{count} respondoj}}",
+  "thread": "Fadeno",
+  "backToMainChat": "Reiri al ĉefa konversacio",
+  "createSticker": "Krei etikedon aŭ emoji",
+  "useAsSticker": "Uzi kiel etikedon",
+  "useAsEmoji": "Uzi kiel emoji",
+  "stickerPackNameAlreadyExists": "La nomo de la etikedpako jam ekzistas",
+  "newStickerPack": "Nova etikedpako",
+  "stickerPackName": "Nomo de etikedpako",
+  "attribution": "Atribuo",
+  "skipChatBackup": "Salti ĉat-backupon",
+  "skipChatBackupWarning": "Ĉu vi certas? Sen aktivigi la ĉat-backupon vi eble perdos aliron al viaj mesaĝoj se vi ŝanĝas vian aparaton.",
+  "loadingMessages": "Ŝarĝante mesaĝojn",
+  "setupChatBackup": "Agordi ĉat-backupon",
+  "noMoreResultsFound": "Neniuj pliaj rezultoj trovita",
+  "chatSearchedUntil": "Ĉato serĉita ĝis {time}",
+  "federationBaseUrl": "Federacia Baz URL",
+  "clientWellKnownInformation": "Klienta-Bone-Konata Informo:",
+  "baseUrl": "Baz URL",
+  "identityServer": "Identeca Servilo:",
+  "versionWithNumber": "Versio: {version}",
+  "logs": "Registroj",
+  "advancedConfigs": "Avancitaj Agordoj",
+  "advancedConfigurations": "Avancitaj agordoj",
+  "signInWithLabel": "Ensalutu per:",
+  "selectAllWords": "Elektu ĉiujn vortojn, kiujn vi aŭdas en la sono",
+  "joinCourseForActivities": "Aliĝu al kurso por provi aktivadojn.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursoj konsistas el 3-8 moduloj, ĉiu kun aktivadoj por instigi praktikadon de vortoj en diversaj kuntekstoj",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Emailo konfirmi malsukcesis. Bonvolu reprovi.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

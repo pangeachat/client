@@ -17,10 +17,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityMenuButton extends StatefulWidget {
   final ChatController controller;
 
-  const ActivityMenuButton({
-    super.key,
-    required this.controller,
-  });
+  const ActivityMenuButton({super.key, required this.controller});
 
   @override
   State<ActivityMenuButton> createState() => _ActivityMenuButtonState();
@@ -60,7 +57,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
 
   /// Show a tutorial overlay that blocks the screen and points
   /// to the stats menu button with an explanation of what it does.
-  void _showStatsMenuDropdownInstructions(_) {
+  void _showStatsMenuDropdownInstructions(dynamic _) {
     if (!mounted) return;
     if (!widget.controller.shouldShowActivityInstructions) {
       return;

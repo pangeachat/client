@@ -8,9 +8,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 class SpeechToTextResponseModel {
   final List<SpeechToTextResult> results;
 
-  SpeechToTextResponseModel({
-    required this.results,
-  });
+  SpeechToTextResponseModel({required this.results});
 
   Transcript get transcript => results.first.transcripts.first;
 
@@ -29,13 +27,10 @@ class SpeechToTextResponseModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "results": results.map((e) => e.toJson()).toList(),
-      };
+    "results": results.map((e) => e.toJson()).toList(),
+  };
 
-  List<OneConstructUse> constructs(
-    String roomId,
-    String eventId,
-  ) {
+  List<OneConstructUse> constructs(String roomId, String eventId) {
     final List<OneConstructUse> constructs = [];
     final metadata = ConstructUseMetaData(
       roomId: roomId,
@@ -70,8 +65,8 @@ class SpeechToTextResult {
       );
 
   Map<String, dynamic> toJson() => {
-        "transcripts": transcripts.map((e) => e.toJson()).toList(),
-      };
+    "transcripts": transcripts.map((e) => e.toJson()).toList(),
+  };
 }
 
 class Transcript {
@@ -93,24 +88,24 @@ class Transcript {
   double? get wordsPerMinute => wordsPerHr != null ? wordsPerHr! / 60 : null;
 
   factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
-        text: json['transcript'],
-        confidence: json['confidence'] <= 100
-            ? json['confidence']
-            : json['confidence'] / 100,
-        sttTokens: (json['stt_tokens'] as List)
-            .map((e) => STTToken.fromJson(e))
-            .toList(),
-        langCode: json['lang_code'],
-        wordsPerHr: json['words_per_hr'],
-      );
+    text: json['transcript'],
+    confidence: json['confidence'] <= 100
+        ? json['confidence']
+        : json['confidence'] / 100,
+    sttTokens: (json['stt_tokens'] as List)
+        .map((e) => STTToken.fromJson(e))
+        .toList(),
+    langCode: json['lang_code'],
+    wordsPerHr: json['words_per_hr'],
+  );
 
   Map<String, dynamic> toJson() => {
-        "transcript": text,
-        "confidence": confidence,
-        "stt_tokens": sttTokens.map((e) => e.toJson()).toList(),
-        "lang_code": langCode,
-        "words_per_hr": wordsPerHr,
-      };
+    "transcript": text,
+    "confidence": confidence,
+    "stt_tokens": sttTokens.map((e) => e.toJson()).toList(),
+    "lang_code": langCode,
+    "words_per_hr": wordsPerHr,
+  };
 
   Color get color => confidence > 80 ? AppConfig.success : AppConfig.warning;
 }
@@ -151,11 +146,11 @@ class STTToken {
   }
 
   Map<String, dynamic> toJson() => {
-        "token": token.toJson(),
-        "start_time": startTime?.inMilliseconds,
-        "end_time": endTime?.inMilliseconds,
-        "confidence": confidence,
-      };
+    "token": token.toJson(),
+    "start_time": startTime?.inMilliseconds,
+    "end_time": endTime?.inMilliseconds,
+    "confidence": confidence,
+  };
 
   @override
   bool operator ==(Object other) {

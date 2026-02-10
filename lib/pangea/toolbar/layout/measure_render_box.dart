@@ -43,9 +43,7 @@ class MeasureRenderBoxState extends State<MeasureRenderBox> {
         WidgetsBinding.instance.addPostFrameCallback((_) => _updateOffset());
         return true;
       },
-      child: SizeChangedLayoutNotifier(
-        child: widget.child,
-      ),
+      child: SizeChangedLayoutNotifier(child: widget.child),
     );
   }
 }

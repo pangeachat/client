@@ -37,10 +37,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
   @override
   void initState() {
     super.initState();
-    notificationChangeSub ??= Matrix.of(context)
-        .client
-        .onSync
-        .stream
+    notificationChangeSub ??= Matrix.of(context).client.onSync.stream
         .where(
           (syncUpdate) =>
               syncUpdate.accountData?.any(
@@ -48,9 +45,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
               ) ??
               false,
         )
-        .listen(
-          (u) => setState(() {}),
-        );
+        .listen((u) => setState(() {}));
   }
 
   @override
@@ -71,11 +66,10 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.permissions,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () {
-          NavigationUtil.goToSpaceRoute(
-            room.id,
-            ['details', 'permissions'],
-            context,
-          );
+          NavigationUtil.goToSpaceRoute(room.id, [
+            'details',
+            'permissions',
+          ], context);
         },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,
@@ -112,9 +106,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             room.id,
             ['details', 'invite'],
             context,
-            queryParams: {
-              'filter': filter,
-            },
+            queryParams: {'filter': filter},
           );
         },
         enabled: room.canInvite,
@@ -190,11 +182,9 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
 
   @override
   Widget build(BuildContext context) {
-    final buttons = _buttons(context)
-        .where(
-          (button) => button.visible,
-        )
-        .toList();
+    final buttons = _buttons(
+      context,
+    ).where((button) => button.visible).toList();
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -205,10 +195,12 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
 
           final mini = fullButtonCapacity < 4;
 
-          final List<ButtonDetails> mainViewButtons =
-              buttons.where((button) => button.showInMainView).toList();
-          final List<ButtonDetails> otherButtons =
-              buttons.where((button) => !button.showInMainView).toList();
+          final List<ButtonDetails> mainViewButtons = buttons
+              .where((button) => button.showInMainView)
+              .toList();
+          final List<ButtonDetails> otherButtons = buttons
+              .where((button) => !button.showInMainView)
+              .toList();
 
           return Row(
             spacing: FluffyThemes.isColumnMode(context) ? 12.0 : 0.0,

@@ -64,25 +64,25 @@ class MessageMorphInputBarContentState
   }
 
   TextStyle? textStyle(BuildContext context) => widget.maxWidth > 600
-      ? Theme.of(context).textTheme.bodyLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          )
-      : Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-          );
+      ? Theme.of(
+          context,
+        ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)
+      : Theme.of(
+          context,
+        ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
     final iconSize = widget.maxWidth > 600
         ? 28.0
         : widget.maxWidth > 600
-            ? 24.0
-            : 16.0;
+        ? 24.0
+        : 16.0;
     final spacing = widget.maxWidth > 600
         ? 16.0
         : widget.maxWidth > 600
-            ? 8.0
-            : 4.0;
+        ? 8.0
+        : 4.0;
 
     return Column(
       spacing: spacing,
@@ -114,41 +114,42 @@ class MessageMorphInputBarContentState
           runAlignment: WrapAlignment.center,
           spacing: spacing,
           runSpacing: spacing,
-          children: widget.activity.multipleChoiceContent.choices.mapIndexed(
-            (index, choice) {
-              final wasCorrect = widget.controller.wasCorrectChoice(choice);
+          children: widget.activity.multipleChoiceContent.choices.mapIndexed((
+            index,
+            choice,
+          ) {
+            final wasCorrect = widget.controller.wasCorrectChoice(choice);
 
-              return ChoiceAnimationWidget(
-                isSelected: selectedTag == choice,
-                isCorrect: wasCorrect,
-                child: MessageMorphChoiceItem(
-                  cId: ConstructIdentifier(
-                    lemma: choice,
-                    type: ConstructTypeEnum.morph,
-                    category: morph.name,
-                  ),
-                  onTap: () {
-                    setState(() => selectedTag = choice);
-                    widget.controller.onMatch(
-                      token,
-                      PracticeChoice(
-                        choiceContent: choice,
-                        form: ConstructForm(
-                          cId: widget.activity.tokens.first.morphIdByFeature(
-                            widget.activity.morphFeature,
-                          )!,
-                          form: token.text.content,
-                        ),
-                      ),
-                    );
-                  },
-                  isSelected: selectedTag == choice,
-                  isGold: wasCorrect,
-                  shimmer: widget.controller.showChoiceShimmer,
+            return ChoiceAnimationWidget(
+              isSelected: selectedTag == choice,
+              isCorrect: wasCorrect,
+              child: MessageMorphChoiceItem(
+                cId: ConstructIdentifier(
+                  lemma: choice,
+                  type: ConstructTypeEnum.morph,
+                  category: morph.name,
                 ),
-              );
-            },
-          ).toList(),
+                onTap: () {
+                  setState(() => selectedTag = choice);
+                  widget.controller.onMatch(
+                    token,
+                    PracticeChoice(
+                      choiceContent: choice,
+                      form: ConstructForm(
+                        cId: widget.activity.tokens.first.morphIdByFeature(
+                          widget.activity.morphFeature,
+                        )!,
+                        form: token.text.content,
+                      ),
+                    ),
+                  );
+                },
+                isSelected: selectedTag == choice,
+                isGold: wasCorrect,
+                shimmer: widget.controller.showChoiceShimmer,
+              ),
+            );
+          }).toList(),
         ),
         if (selectedTag != null)
           Container(

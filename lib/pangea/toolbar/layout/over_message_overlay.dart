@@ -48,14 +48,18 @@ class OverMessageOverlay extends StatelessWidget {
                   child: ValueListenableBuilder(
                     valueListenable:
                         controller.widget.overlayController.selectedMode,
-                    builder: (context, mode, __) {
+                    builder: (context, mode, _) {
                       return OverlayCenterContent(
                         event: controller.widget.event,
                         messageHeight: mode != SelectMode.emoji
                             ? controller.originalMessageSize.height
                             : null,
-                        messageWidth: controller.widget.overlayController
-                                .selectModeController.isShowingExtraContent
+                        messageWidth:
+                            controller
+                                .widget
+                                .overlayController
+                                .selectModeController
+                                .isShowingExtraContent
                             ? max(controller.originalMessageSize.width, 150)
                             : controller.originalMessageSize.width,
                         overlayController: controller.widget.overlayController,
@@ -83,7 +87,8 @@ class OverMessageOverlay extends StatelessWidget {
                 AnimatedContainer(
                   duration: FluffyThemes.animationDuration,
                   height: max(0, controller.spaceBelowContent),
-                  width: controller.mediaQuery!.size.width -
+                  width:
+                      controller.screenSize!.width -
                       controller.columnWidth -
                       (controller.showDetails ? FluffyThemes.columnWidth : 0),
                 ),

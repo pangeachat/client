@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:32:04.137171",
+  "@@last_modified": "2026-02-10 13:53:35.400314",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -445,7 +445,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "badServerVersionsException": "Máy chủ nhà hỗ trợ Spec phiên bản:\n{serverVerions}\nNhưng ứng dụng này chỉ hỗ trợ {supportedVersions}",
+  "badServerVersionsException": "Máy chủ hỗ trợ Spec phiên bản:\n{serverVerions}\nNhưng ứng dụng này chỉ hỗ trợ {supportedVersions}",
   "@badServerVersionsException": {
     "type": "String",
     "placeholders": {
@@ -601,15 +601,6 @@
   "@noOtherDevicesFound": {},
   "fileIsTooBigForServer": "Máy chủ báo cáo rằng tệp tin quá lớn để gửi.",
   "@fileIsTooBigForServer": {},
-  "signInWith": "Đăng nhập với {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Không phải tệp ảnh.",
   "@notAnImage": {},
   "importNow": "Nhập vào",
@@ -719,7 +710,7 @@
       }
     }
   },
-  "alwaysUse24HourFormat": "Không",
+  "alwaysUse24HourFormat": "không",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -732,9 +723,19 @@
       }
     }
   },
-  "commandHint_googly": "Gửi cặp mắt theo dõi",
-  "commandHint_cuddle": "Gửi một cái âu yếm",
-  "googlyEyesContent": "{senderName} gửi bạn cặp mắt theo dõi",
+  "setCustomPermissionLevel": "Cài mức phân quyền",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Vui lòng chọn vai trò được xác định trước bên dưới hoặc nhập mức quyền tùy chỉnh từ 0 đến 100.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Chặn người dùng",
+  "@ignoreUser": {},
+  "normalUser": "Người dùng thường",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "Nâng cấp phòng lên phiên bản mặc định",
+  "@commandHint_roomupgrade": {},
+  "commandHint_cuddle": "Gửi cái ôm",
+  "@commandHint_cuddle": {},
+  "googlyEyesContent": "{senderName} gửi nháy mắt",
   "@googlyEyesContent": {
     "type": "String",
     "placeholders": {
@@ -743,7 +744,7 @@
       }
     }
   },
-  "cuddleContent": "{senderName} âu yếm bạn",
+  "cuddleContent": "{senderName} ôm nào",
   "@cuddleContent": {
     "type": "String",
     "placeholders": {
@@ -752,11 +753,56 @@
       }
     }
   },
-  "askSSSSSign": "Để có thể ký cho người khác, vui lòng nhập mật khẩu kho lưu trữ an toàn hoặc khóa phục hồi của bạn.",
-  "autoplayImages": "Tự động phát những biểu tượng cảm xúc và nhãn dán động",
-  "sendTypingNotifications": "Gửi thông báo đang gõ",
-  "swipeRightToLeftToReply": "Quét từ phải sang trái để trả lời",
-  "sendOnEnter": "Gửi khi nhấn Enter",
+  "askSSSSSign": "Để có thể ký tên cho người khác, vui lòng nhập mật khẩu lưu trữ an toàn hoặc khóa khôi phục của bạn.",
+  "@askSSSSSign": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "autoplayImages": "Tự động chạy nhãn dán hình động và biểu tượng cảm xúc",
+  "@autoplayImages": {
+    "type": "String",
+    "placeholder": {}
+  },
+  "sendTypingNotifications": "Gửi thông báo đang nhập",
+  "@sendTypingNotifications": {},
+  "swipeRightToLeftToReply": "Gạt từ phải sang trái để trả lời",
+  "@swipeRightToLeftToReply": {},
+  "sendOnEnter": "Gửi bằng Enter",
+  "@sendOnEnter": {},
+  "continueText": "Tiếp",
+  "@continueText": {},
+  "videoWithSize": "Video ({size})",
+  "@videoWithSize": {
+    "type": "String",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "markAsRead": "Đánh dấu đã đọc",
+  "@markAsRead": {},
+  "reportUser": "Báo cáo người dùng",
+  "@reportUser": {},
+  "dismiss": "Bỏ",
+  "@dismiss": {},
+  "reactedWith": "{sender} bày tỏ {reaction}",
+  "@reactedWith": {
+    "type": "String",
+    "placeholders": {
+      "sender": {
+        "type": "String"
+      },
+      "reaction": {
+        "type": "String"
+      }
+    }
+  },
+  "pinMessage": "Ghim phòng",
+  "@pinMessage": {},
+  "confirmEventUnpin": "Bạn có muốn bỏ ghim sự kiện?",
+  "@confirmEventUnpin": {},
+  "commandHint_googly": "Gửi cặp mắt theo dõi",
   "countChatsAndCountParticipants": "{chats} cuộc trò chuyện và {participants} thành viên",
   "@countChatsAndCountParticipants": {
     "type": "String",
@@ -1549,33 +1595,7 @@
   "start": "Bắt đầu",
   "pleaseEnterRecoveryKeyDescription": "Để mở khóa tin nhắn cũ, hãy nhập khóa khôi phục đã tạo ở phiên trước. Khóa khôi phục KHÔNG phải là mật khẩu.",
   "publish": "Công khai",
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "openChat": "Mở trò chuyện",
-  "markAsRead": "Đánh dấu đã đọc",
-  "reportUser": "Báo cáo người dùng",
-  "dismiss": "Bỏ qua",
-  "reactedWith": "{sender} đã phản ứng với {reaction}",
-  "@reactedWith": {
-    "type": "String",
-    "placeholders": {
-      "sender": {
-        "type": "String"
-      },
-      "reaction": {
-        "type": "String"
-      }
-    }
-  },
-  "pinMessage": "Ghim vào phòng",
-  "confirmEventUnpin": "Bạn có chắc muốn bỏ ghim sự kiện này không?",
   "emojis": "Biểu tượng cảm xúc",
   "placeCall": "Gọi",
   "voiceCall": "Gọi thoại",
@@ -2456,7 +2476,6 @@
     }
   },
   "l1TranslationBody": "Tin nhắn trong ngôn ngữ gốc sẽ không được dịch.",
-  "continueText": "Tiếp tục",
   "deleteSubscriptionWarningTitle": "Bạn đang có gói đăng ký hoạt động",
   "deleteSubscriptionWarningBody": "Việc xóa tài khoản sẽ không hủy gói đăng ký của bạn.",
   "manageSubscription": "Quản lý gói đăng ký",
@@ -3202,11 +3221,6 @@
       }
     }
   },
-  "setCustomPermissionLevel": "Đặt cấp độ quyền tùy chỉnh",
-  "setPermissionsLevelDescription": "Vui lòng chọn một vai trò đã định nghĩa sẵn bên dưới hoặc nhập một cấp độ quyền tùy chỉnh từ 0 đến 100.",
-  "ignoreUser": "Bỏ qua người dùng",
-  "normalUser": "Người dùng bình thường",
-  "commandHint_roomupgrade": "Nâng cấp phòng này lên phiên bản phòng đã cho",
   "enterNewChat": "Tham gia trò chuyện mới",
   "completeActivitiesToUnlock": "Hoàn thành ít nhất một hoạt động để mở khóa bản dịch!",
   "constructUseGaDesc": "Hỗ trợ ngữ pháp",
@@ -3263,26 +3277,6 @@
   "shareInviteCode": "Chia sẻ mã mời: {code}",
   "leaderboard": "Bảng xếp hạng",
   "skipForNow": "Bỏ qua tạm thời",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNewChat": {
     "type": "String",
     "placeholders": {}
@@ -6640,6 +6634,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} đã thay đổi mô tả cuộc trò chuyện",
+  "changedTheChatName": "{username} đã thay đổi tên cuộc trò chuyện",
+  "moreEvents": "Thêm sự kiện",
+  "declineInvitation": "Từ chối lời mời",
+  "noMessagesYet": "Chưa có tin nhắn nào",
+  "longPressToRecordVoiceMessage": "Nhấn và giữ để ghi âm tin nhắn thoại.",
+  "pause": "Tạm dừng",
+  "resume": "Tiếp tục",
+  "newSubSpace": "Không gian phụ mới",
+  "moveToDifferentSpace": "Chuyển đến không gian khác",
+  "moveUp": "Di chuyển lên",
+  "moveDown": "Di chuyển xuống",
+  "removeFromSpaceDescription": "Cuộc trò chuyện sẽ bị xóa khỏi không gian nhưng vẫn xuất hiện trong danh sách trò chuyện của bạn.",
+  "countChats": "{chats} cuộc trò chuyện",
+  "spaceMemberOf": "Thành viên không gian của {spaces}",
+  "spaceMemberOfCanKnock": "Thành viên không gian của {spaces} có thể gõ cửa",
+  "donate": "Đóng góp",
+  "startedAPoll": "{username} đã bắt đầu một cuộc thăm dò.",
+  "poll": "Cuộc thăm dò",
+  "startPoll": "Bắt đầu cuộc thăm dò",
+  "endPoll": "Kết thúc cuộc thăm dò",
+  "answersVisible": "Câu trả lời hiển thị",
+  "answersHidden": "Câu trả lời ẩn",
+  "pollQuestion": "Câu hỏi thăm dò",
+  "answerOption": "Lựa chọn câu trả lời",
+  "addAnswerOption": "Thêm lựa chọn câu trả lời",
+  "allowMultipleAnswers": "Cho phép nhiều câu trả lời",
+  "pollHasBeenEnded": "Cuộc thăm dò đã được kết thúc",
+  "countVotes": "{count, plural, =1{Một phiếu} other{{count} phiếu}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Câu trả lời sẽ hiển thị khi cuộc thăm dò đã kết thúc",
+  "replyInThread": "Trả lời trong chủ đề",
+  "countReplies": "{count, plural, =1{Một phản hồi} other{{count} phản hồi}}",
+  "thread": "Chủ đề",
+  "backToMainChat": "Quay lại trò chuyện chính",
+  "createSticker": "Tạo nhãn dán hoặc biểu tượng cảm xúc",
+  "useAsSticker": "Sử dụng như nhãn dán",
+  "useAsEmoji": "Sử dụng như biểu tượng cảm xúc",
+  "stickerPackNameAlreadyExists": "Tên gói nhãn dán đã tồn tại",
+  "newStickerPack": "Gói nhãn dán mới",
+  "stickerPackName": "Tên gói nhãn dán",
+  "attribution": "Ghi nhận",
+  "skipChatBackup": "Bỏ qua sao lưu trò chuyện",
+  "skipChatBackupWarning": "Bạn có chắc không? Nếu không bật sao lưu trò chuyện, bạn có thể mất quyền truy cập vào tin nhắn của mình nếu bạn chuyển đổi thiết bị.",
+  "loadingMessages": "Đang tải tin nhắn",
+  "setupChatBackup": "Thiết lập sao lưu trò chuyện",
+  "noMoreResultsFound": "Không tìm thấy kết quả nào nữa",
+  "chatSearchedUntil": "Trò chuyện đã được tìm kiếm đến {time}",
+  "federationBaseUrl": "URL cơ sở Liên bang",
+  "clientWellKnownInformation": "Thông tin Khách hàng-Đã biết:",
+  "baseUrl": "URL cơ sở",
+  "identityServer": "Máy chủ danh tính:",
+  "versionWithNumber": "Phiên bản: {version}",
+  "logs": "Nhật ký",
+  "advancedConfigs": "Cấu hình nâng cao",
+  "advancedConfigurations": "Cấu hình nâng cao",
+  "signInWithLabel": "Đăng nhập bằng:",
+  "selectAllWords": "Chọn tất cả các từ bạn nghe trong âm thanh",
+  "joinCourseForActivities": "Tham gia một khóa học để thử các hoạt động.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Các khóa học bao gồm 3-8 mô-đun, mỗi mô-đun có các hoạt động để khuyến khích việc thực hành từ vựng trong các ngữ cảnh khác nhau",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Xác minh email không thành công. Vui lòng thử lại.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

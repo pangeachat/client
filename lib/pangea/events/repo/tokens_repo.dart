@@ -14,10 +14,7 @@ class _TokensCacheItem {
   final Future<TokensResponseModel> data;
   final DateTime timestamp;
 
-  const _TokensCacheItem({
-    required this.data,
-    required this.timestamp,
-  });
+  const _TokensCacheItem({required this.data, required this.timestamp});
 }
 
 class TokensRepo {
@@ -33,10 +30,7 @@ class TokensRepo {
       return _getResult(request, cached);
     }
 
-    final future = _fetch(
-      accessToken,
-      request: request,
-    );
+    final future = _fetch(accessToken, request: request);
     _setCached(request, future);
     return _getResult(request, future);
   }
@@ -60,17 +54,15 @@ class TokensRepo {
       );
     }
 
-    final Map<String, dynamic> json =
-        jsonDecode(utf8.decode(res.bodyBytes).toString());
+    final Map<String, dynamic> json = jsonDecode(
+      utf8.decode(res.bodyBytes).toString(),
+    );
 
     final tokens = TokensResponseModel.fromJson(json);
     if (tokens.tokens.any((t) => t.pos == 'other')) {
       ErrorHandler.logError(
         e: Exception('Received token with pos "other"'),
-        data: {
-          "request": request.toJson(),
-          "response": json,
-        },
+        data: {"request": request.toJson(), "response": json},
         level: SentryLevel.warning,
       );
     }
@@ -86,23 +78,17 @@ class TokensRepo {
       return Result.value(res);
     } catch (e, s) {
       _tokensCache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
 
-  static Future<TokensResponseModel>? _getCached(
-    TokensRequestModel request,
-  ) {
+  static Future<TokensResponseModel>? _getCached(TokensRequestModel request) {
     final cacheKeys = [..._tokensCache.keys];
     for (final key in cacheKeys) {
-      if (_tokensCache[key]!
-          .timestamp
-          .isBefore(DateTime.now().subtract(_cacheDuration))) {
+      if (_tokensCache[key]!.timestamp.isBefore(
+        DateTime.now().subtract(_cacheDuration),
+      )) {
         _tokensCache.remove(key);
       }
     }
@@ -113,9 +99,8 @@ class TokensRepo {
   static void _setCached(
     TokensRequestModel request,
     Future<TokensResponseModel> response,
-  ) =>
-      _tokensCache[request.hashCode.toString()] = _TokensCacheItem(
-        data: response,
-        timestamp: DateTime.now(),
-      );
+  ) => _tokensCache[request.hashCode.toString()] = _TokensCacheItem(
+    data: response,
+    timestamp: DateTime.now(),
+  );
 }

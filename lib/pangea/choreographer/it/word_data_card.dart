@@ -29,7 +29,8 @@ class WordDataCard extends StatelessWidget {
         word: word,
         fullTextLang: langCode,
         wordLang: langCode,
-        feedbackLang: MatrixState.pangeaController.userController.userL1Code ??
+        feedbackLang:
+            MatrixState.pangeaController.userController.userL1Code ??
             LanguageKeys.defaultLanguage,
       );
 

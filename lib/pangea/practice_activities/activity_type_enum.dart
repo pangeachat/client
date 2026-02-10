@@ -119,25 +119,13 @@ enum ActivityTypeEnum {
           ConstructUseTypeEnum.ignMM,
         ];
       case ActivityTypeEnum.lemmaAudio:
-        return [
-          ConstructUseTypeEnum.corLA,
-          ConstructUseTypeEnum.incLA,
-        ];
+        return [ConstructUseTypeEnum.corLA, ConstructUseTypeEnum.incLA];
       case ActivityTypeEnum.lemmaMeaning:
-        return [
-          ConstructUseTypeEnum.corLM,
-          ConstructUseTypeEnum.incLM,
-        ];
+        return [ConstructUseTypeEnum.corLM, ConstructUseTypeEnum.incLM];
       case ActivityTypeEnum.grammarCategory:
-        return [
-          ConstructUseTypeEnum.corGC,
-          ConstructUseTypeEnum.incGC,
-        ];
+        return [ConstructUseTypeEnum.corGC, ConstructUseTypeEnum.incGC];
       case ActivityTypeEnum.grammarError:
-        return [
-          ConstructUseTypeEnum.corGE,
-          ConstructUseTypeEnum.incGE,
-        ];
+        return [ConstructUseTypeEnum.corGE, ConstructUseTypeEnum.incGE];
     }
   }
 
@@ -238,21 +226,21 @@ enum ActivityTypeEnum {
   }
 
   static List<ActivityTypeEnum> get practiceTypes => [
-        ActivityTypeEnum.emoji,
-        ActivityTypeEnum.wordMeaning,
-        ActivityTypeEnum.wordFocusListening,
-        ActivityTypeEnum.morphId,
-      ];
+    ActivityTypeEnum.emoji,
+    ActivityTypeEnum.wordMeaning,
+    ActivityTypeEnum.wordFocusListening,
+    ActivityTypeEnum.morphId,
+  ];
 
   static List<ActivityTypeEnum> get _vocabPracticeTypes => [
-        ActivityTypeEnum.lemmaMeaning,
-        ActivityTypeEnum.lemmaAudio,
-      ];
+    ActivityTypeEnum.lemmaMeaning,
+    ActivityTypeEnum.lemmaAudio,
+  ];
 
   static List<ActivityTypeEnum> get _grammarPracticeTypes => [
-        ActivityTypeEnum.grammarCategory,
-        ActivityTypeEnum.grammarError,
-      ];
+    ActivityTypeEnum.grammarCategory,
+    ActivityTypeEnum.grammarError,
+  ];
 
   static List<ActivityTypeEnum> analyticsPracticeTypes(
     ConstructTypeEnum constructType,

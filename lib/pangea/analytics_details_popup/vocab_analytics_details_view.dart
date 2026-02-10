@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
@@ -19,6 +16,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -42,10 +40,9 @@ class VocabDetailsView extends StatelessWidget {
     if (resp != OkCancelResult.ok) return;
     final res = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context)
-          .analyticsDataService
-          .updateService
-          .blockConstruct(constructId),
+      future: () => Matrix.of(
+        context,
+      ).analyticsDataService.updateService.blockConstruct(constructId),
     );
 
     if (!res.isError) {
@@ -63,9 +60,7 @@ class VocabDetailsView extends StatelessWidget {
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
         final Color textColor =
-            (Theme.of(context).brightness != Brightness.light
-                ? level.color(context)
-                : level.darkColor(context));
+            (Theme.of(context).brightness != Brightness.light ? level.color(context) : level.darkColor(context));
 
         final forms = construct?.forms ?? [];
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
@@ -91,8 +86,7 @@ class VocabDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: WordZoomWidget(
                   token: tokenText,
-                  langCode:
-                      MatrixState.pangeaController.userController.userL2Code!,
+                  langCode: MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
                   pos: constructId.category,
                   onClose: Navigator.of(context).pop,
@@ -101,7 +95,12 @@ class VocabDetailsView extends StatelessWidget {
                     PTRequest ptRequest,
                     PTResponse ptResponse,
                   ) =>
-                      controller.onFlagTokenInfo(token, lemmaInfo, ptRequest, ptResponse),
+                      controller.onFlagTokenInfo(
+                    token,
+                    lemmaInfo,
+                    ptRequest,
+                    ptResponse,
+                  ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
                 ),
@@ -112,9 +111,7 @@ class VocabDetailsView extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: ConstructXPProgressBar(
-                        construct: constructId,
-                      ),
+                      child: ConstructXPProgressBar(construct: constructId),
                     ),
                     Column(
                       children: [
@@ -129,9 +126,7 @@ class VocabDetailsView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        AnalyticsDetailsUsageContent(
-                          construct: construct,
-                        ),
+                        AnalyticsDetailsUsageContent(construct: construct),
                         ListTile(
                           leading: Icon(
                             Icons.delete_outline,
@@ -179,9 +174,9 @@ class _VocabForms extends StatelessWidget {
         children: [
           Text(
             L10n.of(context).formSectionHeader,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 6.0),
           ...forms.mapIndexed(
@@ -190,12 +185,11 @@ class _VocabForms extends StatelessWidget {
               children: [
                 WordTextWithAudioButton(
                   text: form,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: textColor,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: textColor),
                   uniqueID: "$form-$lemma-$i",
-                  langCode:
-                      MatrixState.pangeaController.userController.userL2Code!,
+                  langCode: MatrixState.pangeaController.userController.userL2Code!,
                 ),
                 if (i != forms.length - 1) const Text(",  "),
               ],

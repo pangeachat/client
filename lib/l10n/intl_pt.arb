@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:31:11.061688",
+  "@@last_modified": "2026-02-10 13:53:13.189352",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -131,6 +131,18 @@
       }
     }
   },
+  "alwaysUse24HourFormat": "true",
+  "@alwaysUse24HourFormat": {
+    "description": "Set to true to always display time of day in 24 hour format."
+  },
+  "repeatPassword": "Repita a senha",
+  "@repeatPassword": {},
+  "notAnImage": "Não é um arquivo de imagem.",
+  "@notAnImage": {},
+  "setCustomPermissionLevel": "Definir nível de permissão personalizado",
+  "@setCustomPermissionLevel": {},
+  "addChatDescription": "Adicionar uma descrição de chat...",
+  "@addChatDescription": {},
   "@showPassword": {
     "type": "String",
     "placeholders": {}
@@ -1128,14 +1140,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@username": {
     "type": "String",
     "placeholders": {}
@@ -1184,10 +1188,6 @@
     "placeholders": {}
   },
   "@verified": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@repeatPassword": {
     "type": "String",
     "placeholders": {}
   },
@@ -1801,10 +1801,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addChatDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sentAnAudio": {
     "type": "String",
     "placeholders": {
@@ -2010,10 +2006,6 @@
     "placeholders": {}
   },
   "@you": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notAnImage": {
     "type": "String",
     "placeholders": {}
   },
@@ -2609,10 +2601,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "alwaysUse24HourFormat": "falso",
-  "repeatPassword": "Repetir senha",
-  "notAnImage": "Não é um arquivo de imagem.",
-  "setCustomPermissionLevel": "Definir nível de permissão personalizado",
   "setPermissionsLevelDescription": "Por favor, escolha um papel predefinido abaixo ou insira um nível de permissão personalizado entre 0 e 100.",
   "ignoreUser": "Ignorar usuário",
   "normalUser": "Usuário normal",
@@ -2629,7 +2617,6 @@
   "addEmail": "Adicionar email",
   "confirmMatrixId": "Por favor, confirme seu ID Matrix para excluir sua conta.",
   "supposedMxid": "Isto deve ser {mxid}",
-  "addChatDescription": "Adicionar uma descrição ao chat...",
   "addToSpace": "Adicionar ao espaço",
   "alias": "apelido",
   "all": "Todos",
@@ -3152,7 +3139,6 @@
   "report": "denunciar",
   "signInWithPassword": "Entrar com senha",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Por favor, tente novamente mais tarde ou escolha um servidor diferente.",
-  "signInWith": "Entrar com {provider}",
   "profileNotFound": "O usuário não pôde ser encontrado no servidor. Talvez haja um problema de conexão ou o usuário não exista.",
   "setTheme": "Definir tema:",
   "setColorTheme": "Definir tema de cores:",
@@ -4496,14 +4482,6 @@
   "playWithAI": "Brinque com IA por enquanto",
   "courseStartDesc": "Pangea Bot está pronto para começar a qualquer momento!\n\n...mas aprender é melhor com amigos!",
   "@@locale": "pt",
-  "@alwaysUse24HourFormat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setPermissionsLevelDescription": {
     "type": "String",
     "placeholders": {}
@@ -5057,9 +5035,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -12162,6 +12138,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} mudou a descrição do chat",
+  "changedTheChatName": "{username} mudou o nome do chat",
+  "moreEvents": "Mais eventos",
+  "declineInvitation": "Recusar convite",
+  "noMessagesYet": "Nenhuma mensagem ainda",
+  "longPressToRecordVoiceMessage": "Pressione longamente para gravar mensagem de voz.",
+  "pause": "Pausar",
+  "resume": "Retomar",
+  "newSubSpace": "Novo subespaço",
+  "moveToDifferentSpace": "Mover para um espaço diferente",
+  "moveUp": "Mover para cima",
+  "moveDown": "Mover para baixo",
+  "removeFromSpaceDescription": "O chat será removido do espaço, mas ainda aparecerá na sua lista de chats.",
+  "countChats": "{chats} chats",
+  "spaceMemberOf": "Membro do espaço {spaces}",
+  "spaceMemberOfCanKnock": "Membro do espaço {spaces} pode bater",
+  "donate": "Doar",
+  "startedAPoll": "{username} iniciou uma enquete.",
+  "poll": "Enquete",
+  "startPoll": "Iniciar enquete",
+  "endPoll": "Encerrar pesquisa",
+  "answersVisible": "Respostas visíveis",
+  "answersHidden": "Respostas ocultas",
+  "pollQuestion": "Pergunta da pesquisa",
+  "answerOption": "Opção de resposta",
+  "addAnswerOption": "Adicionar opção de resposta",
+  "allowMultipleAnswers": "Permitir múltiplas respostas",
+  "pollHasBeenEnded": "A pesquisa foi encerrada",
+  "countVotes": "{count, plural, =1{Um voto} other{{count} votos}}",
+  "answersWillBeVisibleWhenPollHasEnded": "As respostas estarão visíveis quando a pesquisa for encerrada",
+  "replyInThread": "Responder no thread",
+  "countReplies": "{count, plural, =1{Uma resposta} other{{count} respostas}}",
+  "thread": "Thread",
+  "backToMainChat": "Voltar ao chat principal",
+  "createSticker": "Criar adesivo ou emoji",
+  "useAsSticker": "Usar como adesivo",
+  "useAsEmoji": "Usar como emoji",
+  "stickerPackNameAlreadyExists": "O nome do pacote de adesivos já existe",
+  "newStickerPack": "Novo pacote de adesivos",
+  "stickerPackName": "Nome do pacote de adesivos",
+  "attribution": "Atribuição",
+  "skipChatBackup": "Pular backup de chat",
+  "skipChatBackupWarning": "Você tem certeza? Sem ativar o backup de chat, você pode perder o acesso às suas mensagens se trocar de dispositivo.",
+  "loadingMessages": "Carregando mensagens",
+  "setupChatBackup": "Configurar backup de chat",
+  "noMoreResultsFound": "Nenhum resultado encontrado",
+  "chatSearchedUntil": "Chat pesquisado até {time}",
+  "federationBaseUrl": "URL Base da Federação",
+  "clientWellKnownInformation": "Informações do Cliente-Bem-Conhecidas:",
+  "baseUrl": "URL Base",
+  "identityServer": "Servidor de Identidade:",
+  "versionWithNumber": "Versão: {version}",
+  "logs": "Registros",
+  "advancedConfigs": "Configurações Avançadas",
+  "advancedConfigurations": "Configurações avançadas",
+  "signInWithLabel": "Entrar com:",
+  "selectAllWords": "Selecione todas as palavras que você ouve no áudio",
+  "joinCourseForActivities": "Junte-se a um curso para experimentar atividades.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Os cursos consistem em 3-8 módulos, cada um com atividades para incentivar a prática de palavras em diferentes contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "A verificação do email falhou. Por favor, tente novamente.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

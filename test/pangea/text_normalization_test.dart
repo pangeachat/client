@@ -339,8 +339,10 @@ void main() {
       final expected = testCase['expected']!;
 
       test('Test ${i + 1}: "$input" should normalize to "$expected"', () {
-        final actual =
-            normalizeString(input, 'en'); // Default to English for tests
+        final actual = normalizeString(
+          input,
+          'en',
+        ); // Default to English for tests
         expect(
           actual,
           equals(expected),

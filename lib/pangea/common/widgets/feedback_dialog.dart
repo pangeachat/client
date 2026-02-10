@@ -40,21 +40,13 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Center(
-          child: BotFace(
-            width: 50.0,
-            expression: BotExpression.addled,
-          ),
+          child: BotFace(width: 50.0, expression: BotExpression.addled),
         ),
-        Text(
-          L10n.of(context).feedbackDialogDesc,
-          textAlign: TextAlign.center,
-        ),
+        Text(L10n.of(context).feedbackDialogDesc, textAlign: TextAlign.center),
         if (widget.extraContent != null) widget.extraContent!,
         TextFormField(
           controller: _feedbackController,
-          decoration: InputDecoration(
-            hintText: L10n.of(context).feedbackHint,
-          ),
+          decoration: InputDecoration(hintText: L10n.of(context).feedbackHint),
           keyboardType: TextInputType.multiline,
           onFieldSubmitted: _feedbackController.text.isNotEmpty
               ? (value) => widget.onSubmit(value)
@@ -74,9 +66,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
         ),
         child: Container(
           width: 325.0,
-          constraints: const BoxConstraints(
-            maxHeight: 600.0,
-          ),
+          constraints: const BoxConstraints(maxHeight: 600.0),
           padding: const EdgeInsets.all(12.0),
           child: Column(
             spacing: 20.0,
@@ -91,9 +81,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                   ),
                   Expanded(
                     child: Container(
-                      constraints: const BoxConstraints(
-                        minHeight: 40.0,
-                      ),
+                      constraints: const BoxConstraints(minHeight: 40.0),
                       alignment: Alignment.center,
                       child: Text(
                         widget.title,
@@ -108,9 +96,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                   const SizedBox(
                     width: 40.0,
                     height: 40.0,
-                    child: Center(
-                      child: Icon(Icons.flag_outlined),
-                    ),
+                    child: Center(child: Icon(Icons.flag_outlined)),
                   ),
                 ],
               ),
@@ -122,13 +108,12 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                 builder: (context, value, _) {
                   final isNotEmpty = value.text.isNotEmpty;
                   return ElevatedButton(
-                    onPressed:
-                        isNotEmpty ? () => widget.onSubmit(value.text) : null,
+                    onPressed: isNotEmpty
+                        ? () => widget.onSubmit(value.text)
+                        : null,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(L10n.of(context).feedbackButton),
-                      ],
+                      children: [Text(L10n.of(context).feedbackButton)],
                     ),
                   );
                 },

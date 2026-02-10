@@ -71,10 +71,9 @@ class RoomDetailsButton extends StatelessWidget {
                       height: height,
                       decoration: BoxDecoration(
                         color: hovered || selected
-                            ? Theme.of(context)
-                                .colorScheme
-                                .primaryContainer
-                                .withAlpha(200)
+                            ? Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer.withAlpha(200)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),

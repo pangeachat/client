@@ -34,42 +34,30 @@ class LemmaMeaningDisplay extends StatelessWidget {
       builder: (context, controller) {
         return switch (controller.state) {
           AsyncError() => ErrorIndicator(
-              message: L10n.of(context).errorFetchingDefinition,
-              style: const TextStyle(fontSize: 14.0),
-            ),
+            message: L10n.of(context).errorFetchingDefinition,
+            style: const TextStyle(fontSize: 14.0),
+          ),
           AsyncLoaded(value: final lemmaInfo) => RichText(
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                style: DefaultTextStyle.of(context).style.copyWith(
-                      fontSize: 14.0,
-                    ),
-                children: [
-                  TextSpan(
-                    text: "${constructId.lemma} (${getGrammarCopy(
-                          category: "POS",
-                          lemma: constructId.category,
-                          context: context,
-                        ) ?? L10n.of(context).other})",
-                  ),
-                  const WidgetSpan(
-                    child: SizedBox(width: 8.0),
-                  ),
-                  const TextSpan(text: ":"),
-                  const WidgetSpan(
-                    child: SizedBox(width: 8.0),
-                  ),
-                  TextSpan(
-                    text: lemmaInfo.meaning,
-                  ),
-                ],
-              ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              style: DefaultTextStyle.of(
+                context,
+              ).style.copyWith(fontSize: 14.0),
+              children: [
+                TextSpan(
+                  text:
+                      "${constructId.lemma} (${getGrammarCopy(category: "POS", lemma: constructId.category, context: context) ?? L10n.of(context).other})",
+                ),
+                const WidgetSpan(child: SizedBox(width: 8.0)),
+                const TextSpan(text: ":"),
+                const WidgetSpan(child: SizedBox(width: 8.0)),
+                TextSpan(text: lemmaInfo.meaning),
+              ],
             ),
-          _ => const TextLoadingShimmer(
-              width: 125.0,
-              height: 20.0,
-            ),
+          ),
+          _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
         };
       },
     );

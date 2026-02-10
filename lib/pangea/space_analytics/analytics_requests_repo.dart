@@ -7,22 +7,16 @@ class _AnalyticsRequestEntry {
   final RequestStatus status;
   final DateTime timestamp;
 
-  _AnalyticsRequestEntry({
-    required this.status,
-    required this.timestamp,
-  });
+  _AnalyticsRequestEntry({required this.status, required this.timestamp});
 
   Map<String, dynamic> toJson() {
-    return {
-      'status': status.name,
-      'timestamp': timestamp.toIso8601String(),
-    };
+    return {'status': status.name, 'timestamp': timestamp.toIso8601String()};
   }
 
   _AnalyticsRequestEntry.fromJson(Map<String, dynamic> json)
-      : status = RequestStatus.fromString(json['status']) ??
-            RequestStatus.unrequested,
-        timestamp = DateTime.parse(json['timestamp']);
+    : status =
+          RequestStatus.fromString(json['status']) ?? RequestStatus.unrequested,
+      timestamp = DateTime.parse(json['timestamp']);
 
   bool get isExpired {
     final now = DateTime.now();
@@ -32,8 +26,9 @@ class _AnalyticsRequestEntry {
 }
 
 class AnalyticsRequestsRepo {
-  static final GetStorage _requestStorage =
-      GetStorage('analytics_request_storage');
+  static final GetStorage _requestStorage = GetStorage(
+    'analytics_request_storage',
+  );
 
   static String _storageKey(String userId, LanguageModel language) {
     return 'analytics_request_${userId}_${language.langCodeShort}';
@@ -87,10 +82,7 @@ class AnalyticsRequestsRepo {
     await _requestStorage.write(key, entry.toJson());
   }
 
-  static Future<void> remove(
-    String userId,
-    LanguageModel language,
-  ) async {
+  static Future<void> remove(String userId, LanguageModel language) async {
     final key = _storageKey(userId, language);
     await _requestStorage.remove(key);
   }

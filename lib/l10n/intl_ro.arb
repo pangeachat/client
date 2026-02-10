@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-09 15:30:49.927369",
+  "@@last_modified": "2026-02-10 13:53:04.585768",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -2583,7 +2583,6 @@
   "noPublicLinkHasBeenCreatedYet": "Încă nu a fost creat un link public",
   "knock": "Bate la ușă",
   "hidePresences": "Ascunde lista de stare?",
-  "signInWith": "Autentifică-te cu {provider}",
   "profileNotFound": "Utilizatorul nu a fost găsit pe server. Poate există o problemă de conexiune sau utilizatorul nu există.",
   "setTheme": "Setează tema:",
   "setColorTheme": "Setează tema de culoare:",
@@ -4274,14 +4273,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -4692,9 +4683,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -11797,6 +11786,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} a schimbat descrierea chat-ului",
+  "changedTheChatName": "{username} a schimbat numele chat-ului",
+  "moreEvents": "Mai multe evenimente",
+  "declineInvitation": "Refuză invitația",
+  "noMessagesYet": "Încă nu sunt mesaje",
+  "longPressToRecordVoiceMessage": "Apasă lung pentru a înregistra un mesaj vocal.",
+  "pause": "Pauză",
+  "resume": "Continuă",
+  "newSubSpace": "Nou sub spațiu",
+  "moveToDifferentSpace": "Mută în alt spațiu",
+  "moveUp": "Mută în sus",
+  "moveDown": "Mută în jos",
+  "removeFromSpaceDescription": "Chatul va fi eliminat din spațiu, dar va apărea în continuare în lista ta de chat-uri.",
+  "countChats": "{chats} chat-uri",
+  "spaceMemberOf": "Membru al spațiului {spaces}",
+  "spaceMemberOfCanKnock": "Membru al spațiului {spaces} poate bate",
+  "donate": "Donează",
+  "startedAPoll": "{username} a început un sondaj.",
+  "poll": "Sondaj",
+  "startPoll": "Începe sondaj",
+  "endPoll": "Încheie sondajul",
+  "answersVisible": "Răspunsurile sunt vizibile",
+  "answersHidden": "Răspunsurile sunt ascunse",
+  "pollQuestion": "Întrebarea sondajului",
+  "answerOption": "Opțiune de răspuns",
+  "addAnswerOption": "Adaugă opțiune de răspuns",
+  "allowMultipleAnswers": "Permite răspunsuri multiple",
+  "pollHasBeenEnded": "Sondajul a fost încheiat",
+  "countVotes": "{count, plural, =1{O vot} other{{count} voturi}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Răspunsurile vor fi vizibile când sondajul a fost încheiat",
+  "replyInThread": "Răspunde în fir",
+  "countReplies": "{count, plural, =1{O răspuns} other{{count} răspunsuri}}",
+  "thread": "Fir",
+  "backToMainChat": "Înapoi la chatul principal",
+  "createSticker": "Creează autocolant sau emoji",
+  "useAsSticker": "Folosește ca autocolant",
+  "useAsEmoji": "Folosește ca emoji",
+  "stickerPackNameAlreadyExists": "Numele pachetului de autocolante există deja",
+  "newStickerPack": "Pachet nou de autocolante",
+  "stickerPackName": "Numele pachetului de autocolante",
+  "attribution": "Atribuire",
+  "skipChatBackup": "Sari peste backup-ul chat-ului",
+  "skipChatBackupWarning": "Ești sigur? Fără activarea backup-ului chat-ului, s-ar putea să pierzi accesul la mesajele tale dacă îți schimbi dispozitivul.",
+  "loadingMessages": "Se încarcă mesajele",
+  "setupChatBackup": "Configurează backup-ul chat-ului",
+  "noMoreResultsFound": "Nu s-au găsit alte rezultate",
+  "chatSearchedUntil": "Chat-ul a fost căutat până la {time}",
+  "federationBaseUrl": "URL de bază al federației",
+  "clientWellKnownInformation": "Informații Client-Bine-Cunoscute:",
+  "baseUrl": "URL de bază",
+  "identityServer": "Server de identitate:",
+  "versionWithNumber": "Versiune: {version}",
+  "logs": "Jurnale",
+  "advancedConfigs": "Configurații avansate",
+  "advancedConfigurations": "Configurații avansate",
+  "signInWithLabel": "Conectează-te cu:",
+  "selectAllWords": "Selectează toate cuvintele pe care le auzi în audio",
+  "joinCourseForActivities": "Alătură-te unui curs pentru a încerca activități.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Cursurile constau în 3-8 module, fiecare cu activități pentru a încuraja practicarea cuvintelor în contexte diferite",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Verificarea emailului a eșuat. Vă rugăm să încercați din nou.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

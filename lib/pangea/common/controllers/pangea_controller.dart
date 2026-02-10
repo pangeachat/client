@@ -6,7 +6,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
@@ -67,7 +66,7 @@ class PangeaController {
     subscriptionController.reinitialize();
 
     StyleSettingsRepo.settings(userID!).then((settings) {
-      AppConfig.fontSizeFactor = settings.fontSizeFactor;
+      AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
       AppConfig.useActivityImageAsChatBackground =
           settings.useActivityImageBackground;
     });
@@ -103,28 +102,24 @@ class PangeaController {
     }
 
     Sentry.configureScope(
-      (scope) => scope.setUser(
-        SentryUser(
-          id: userID,
-          name: userID,
-        ),
-      ),
+      (scope) => scope.setUser(SentryUser(id: userID, name: userID)),
     );
     GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
   void _registerSubscriptions() {
     _languageSubscription?.cancel();
-    _languageSubscription =
-        userController.languageStream.stream.listen(_onLanguageUpdate);
+    _languageSubscription = userController.languageStream.stream.listen(
+      _onLanguageUpdate,
+    );
 
     _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream.listen(
-      (update) async {
-        await matrixState.client.updateBotOptions(update.userSettings);
-        await userController.updatePublicProfile();
-      },
-    );
+    _settingsSubscription = userController.settingsUpdateStream.stream.listen((
+      update,
+    ) async {
+      await matrixState.client.updateBotOptions(update.userSettings);
+      await userController.updatePublicProfile();
+    });
 
     _joinSpaceSubscription?.cancel();
     _joinSpaceSubscription ??= matrixState.client.onSync.stream
@@ -137,18 +132,6 @@ class PangeaController {
     for (final key in _storageKeys) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
-    }
-
-    if (AppConfig.showedActivityMenu) {
-      futures.add(
-        SharedPreferences.getInstance().then((prefs) async {
-          AppConfig.showedActivityMenu = false;
-          prefs.setBool(
-            SettingKeys.showedActivityMenu,
-            AppConfig.showedActivityMenu,
-          );
-        }),
-      );
     }
 
     await Future.wait(futures);
@@ -182,8 +165,9 @@ class PangeaController {
     }
 
     await _clearCache(exclude: exclude);
-    await matrixState.client
-        .updateBotOptions(userController.profile.userSettings);
+    await matrixState.client.updateBotOptions(
+      userController.profile.userSettings,
+    );
     await userController.updatePublicProfile();
   }
 

@@ -11,16 +11,13 @@ class PangeaMatchState {
     required PangeaMatch original,
     required SpanData match,
     required PangeaMatchStatusEnum status,
-  })  : _original = original,
-        _match = match,
-        _status = status;
+  }) : _original = original,
+       _match = match,
+       _status = status;
 
   PangeaMatch get originalMatch => _original;
 
-  PangeaMatch get updatedMatch => PangeaMatch(
-        match: _match,
-        status: _status,
-      );
+  PangeaMatch get updatedMatch => PangeaMatch(match: _match, status: _status);
 
   void setStatus(PangeaMatchStatusEnum status) {
     _status = status;
@@ -44,9 +41,7 @@ class PangeaMatchState {
       throw Exception('No choices available to select best choice from.');
     }
     selectChoice(
-      updatedMatch.match.choices!.indexWhere(
-        (c) => c.isBestCorrection,
-      ),
+      updatedMatch.match.choices!.indexWhere((c) => c.isBestCorrection),
     );
   }
 

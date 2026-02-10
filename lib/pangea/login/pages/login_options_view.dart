@@ -22,19 +22,13 @@ class LoginOptionsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 450,
-          ),
+          constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BackButton(
-                onPressed: Navigator.of(context).pop,
-              ),
+              BackButton(onPressed: Navigator.of(context).pop),
               Text(L10n.of(context).login),
-              const SizedBox(
-                width: 40.0,
-              ),
+              const SizedBox(width: 40.0),
             ],
           ),
         ),
@@ -43,10 +37,7 @@ class LoginOptionsView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 300,
-              maxHeight: 600,
-            ),
+            constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
             child: Column(
               spacing: 16.0,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -78,8 +69,9 @@ class LoginOptionsView extends StatelessWidget {
                     children: [
                       PangeaLogoSvg(
                         width: 20,
-                        forceColor:
-                            Theme.of(context).colorScheme.onPrimaryContainer,
+                        forceColor: Theme.of(
+                          context,
+                        ).colorScheme.onPrimaryContainer,
                       ),
                       Text(L10n.of(context).email),
                     ],
@@ -104,8 +96,9 @@ class LoginOptionsView extends StatelessWidget {
                             },
                         ),
                         TextSpan(
-                          text:
-                              L10n.of(context).andCertifyIAmAtLeast13YearsOfAge,
+                          text: L10n.of(
+                            context,
+                          ).andCertifyIAmAtLeast13YearsOfAge,
                         ),
                       ],
                       style: TextStyle(

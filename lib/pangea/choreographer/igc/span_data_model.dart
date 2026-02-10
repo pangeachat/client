@@ -64,7 +64,7 @@ class SpanData {
         json['type'] ?? json['type_name'] ?? json['typeName'];
     final String? typeString = rawType is Map<String, dynamic>
         ? (rawType['type_name'] ?? rawType['type'] ?? rawType['typeName'])
-            as String?
+              as String?
         : rawType as String?;
 
     // Try to get fullText from span JSON, fall back to parent's original_input
@@ -83,7 +83,8 @@ class SpanData {
       offset: json['offset'] as int,
       length: json['length'] as int,
       fullText: fullText,
-      type: SpanDataTypeEnumExt.fromString(typeString) ??
+      type:
+          SpanDataTypeEnumExt.fromString(typeString) ??
           ReplacementTypeEnum.other,
       rule: json['rule'] != null
           ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
@@ -122,9 +123,7 @@ class SpanData {
       offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
-    return choices?.firstWhereOrNull(
-      (choice) => choice.isBestCorrection,
-    );
+    return choices?.firstWhereOrNull((choice) => choice.isBestCorrection);
   }
 
   int get selectedChoiceIndex {
@@ -167,9 +166,7 @@ class SpanData {
     }
 
     final correctChoice = choices
-        ?.firstWhereOrNull(
-          (c) => c.isBestCorrection,
-        )
+        ?.firstWhereOrNull((c) => c.isBestCorrection)
         ?.value;
 
     final l2Code =
@@ -255,22 +252,20 @@ class SpanChoice {
       value: json['value'] as String,
       type: json['type'] != null
           ? SpanChoiceTypeEnum.values.firstWhereOrNull(
-                (element) => element.name == json['type'],
-              ) ??
-              SpanChoiceTypeEnum.suggestion
+                  (element) => element.name == json['type'],
+                ) ??
+                SpanChoiceTypeEnum.suggestion
           : SpanChoiceTypeEnum.suggestion,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
-      timestamp:
-          json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
+      timestamp: json['timestamp'] != null
+          ? DateTime.parse(json['timestamp'])
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'value': value,
-      'type': type.name,
-    };
+    final Map<String, dynamic> data = {'value': value, 'type': type.name};
 
     // V2 format: use selected_at instead of separate selected + timestamp
     if (selected && timestamp != null) {
@@ -321,17 +316,12 @@ class SpanChoice {
 class Rule {
   final String id;
 
-  const Rule({
-    required this.id,
-  });
+  const Rule({required this.id});
 
-  factory Rule.fromJson(Map<String, dynamic> json) => Rule(
-        id: json['id'] as String,
-      );
+  factory Rule.fromJson(Map<String, dynamic> json) =>
+      Rule(id: json['id'] as String);
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'id': id};
 
   @override
   bool operator ==(Object other) {

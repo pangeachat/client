@@ -79,14 +79,18 @@ class ActivitySummaryAnalyticsModel {
 
     for (final userId in userIds) {
       //vocab
-      final vocabCount =
-          uniqueConstructCountForUser(userId, ConstructTypeEnum.vocab);
+      final vocabCount = uniqueConstructCountForUser(
+        userId,
+        ConstructTypeEnum.vocab,
+      );
       allVocabs[userId] = vocabCount;
       if (vocabCount > maxVocab) maxVocab = vocabCount;
 
       //grammar
-      final grammarCount =
-          uniqueConstructCountForUser(userId, ConstructTypeEnum.morph);
+      final grammarCount = uniqueConstructCountForUser(
+        userId,
+        ConstructTypeEnum.morph,
+      );
       allGrammars[userId] = grammarCount;
       if (grammarCount > maxGrammar) maxGrammar = grammarCount;
 
@@ -135,9 +139,8 @@ class ActivitySummaryAnalyticsModel {
   }
 
   Map<String, dynamic> toJson() => {
-        for (final entry in constructs.entries)
-          entry.key: entry.value.toJsonList(),
-      };
+    for (final entry in constructs.entries) entry.key: entry.value.toJsonList(),
+  };
 }
 
 class ConstructUsage {
@@ -149,9 +152,9 @@ class ConstructUsage {
   void increment() => timesUsed++;
 
   Map<String, dynamic> toJson() => {
-        ...identifier.toJson(),
-        'times_used': timesUsed,
-      };
+    ...identifier.toJson(),
+    'times_used': timesUsed,
+  };
 }
 
 class UserConstructAnalytics {
@@ -161,11 +164,11 @@ class UserConstructAnalytics {
   UserConstructAnalytics(this.userId) : usages = {};
 
   /// Unique constructs of a given type
-  Set<ConstructIdentifier> constructsOfType(ConstructTypeEnum type) =>
-      usages.values
-          .map((u) => u.identifier)
-          .where((id) => id.type == type)
-          .toSet();
+  Set<ConstructIdentifier> constructsOfType(ConstructTypeEnum type) => usages
+      .values
+      .map((u) => u.identifier)
+      .where((id) => id.type == type)
+      .toSet();
 
   void addUsage(ConstructIdentifier id) {
     usages[id.string] ??= ConstructUsage(id);

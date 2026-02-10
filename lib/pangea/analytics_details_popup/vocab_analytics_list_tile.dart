@@ -49,22 +49,19 @@ class VocabAnalyticsListTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StreamBuilder(
-                  stream: analyticsService.updateDispatcher
-                      .lemmaUpdateStream(constructId),
+                  stream: analyticsService.updateDispatcher.lemmaUpdateStream(
+                    constructId,
+                  ),
                   builder: (context, snapshot) {
-                    final emoji = snapshot.data?.emojis?.firstOrNull ??
+                    final emoji =
+                        snapshot.data?.emojis?.firstOrNull ??
                         constructId.userSetEmoji;
 
                     return Container(
                       alignment: Alignment.center,
                       height: (maxWidth - padding * 2) * 0.6,
                       child: emoji != null
-                          ? Text(
-                              emoji,
-                              style: const TextStyle(
-                                fontSize: 22,
-                              ),
-                            )
+                          ? Text(emoji, style: const TextStyle(fontSize: 22))
                           : Text(
                               "-",
                               style: TextStyle(
@@ -83,10 +80,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
                   child: ShrinkableText(
                     text: constructId.lemma,
                     maxWidth: maxWidth - padding * 2,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: textColor,
-                    ),
+                    style: TextStyle(fontSize: 16, color: textColor),
                   ),
                 ),
               ],

@@ -16,10 +16,7 @@ import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 class RoomParticipantsSection extends StatelessWidget {
   final Room room;
 
-  const RoomParticipantsSection({
-    required this.room,
-    super.key,
-  });
+  const RoomParticipantsSection({required this.room, super.key});
 
   final double _width = 100.0;
 
@@ -69,20 +66,18 @@ class RoomParticipantsSection extends StatelessWidget {
                   ? MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
-                        onTap: () => NavigationUtil.goToSpaceRoute(
-                          room.id,
-                          ['details', 'invite'],
-                          context,
-                        ),
+                        onTap: () => NavigationUtil.goToSpaceRoute(room.id, [
+                          'details',
+                          'invite',
+                        ], context),
                         child: HoverBuilder(
                           builder: (context, hovered) {
                             return Container(
                               decoration: BoxDecoration(
                                 color: hovered
-                                    ? Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withAlpha(50)
+                                    ? Theme.of(
+                                        context,
+                                      ).colorScheme.primary.withAlpha(50)
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -116,8 +111,8 @@ class RoomParticipantsSection extends StatelessWidget {
             final permissionBatch = user.powerLevel >= 100
                 ? L10n.of(context).admin
                 : user.powerLevel >= 50
-                    ? L10n.of(context).moderator
-                    : '';
+                ? L10n.of(context).moderator
+                : '';
 
             final membershipBatch = switch (user.membership) {
               Membership.ban => null,
@@ -165,10 +160,7 @@ class RoomParticipantsSection extends StatelessWidget {
                               ),
                             )
                           else
-                            SizedBox(
-                              height: _width,
-                              width: _width,
-                            ),
+                            SizedBox(height: _width, width: _width),
                           Builder(
                             builder: (context) {
                               return MouseRegion(
@@ -235,31 +227,29 @@ class RoomParticipantsSection extends StatelessWidget {
                                 ),
                               )
                             : permissionBatch.isNotEmpty
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: user.powerLevel >= 100
-                                          ? theme.colorScheme.tertiary
-                                          : theme.colorScheme.tertiaryContainer,
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      permissionBatch,
-                                      style:
-                                          theme.textTheme.labelSmall?.copyWith(
-                                        color: user.powerLevel >= 100
-                                            ? theme.colorScheme.onTertiary
-                                            : theme.colorScheme
-                                                .onTertiaryContainer,
-                                      ),
-                                    ),
-                                  )
-                                : null,
+                            ? Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: user.powerLevel >= 100
+                                      ? theme.colorScheme.tertiary
+                                      : theme.colorScheme.tertiaryContainer,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius,
+                                  ),
+                                ),
+                                child: Text(
+                                  permissionBatch,
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    color: user.powerLevel >= 100
+                                        ? theme.colorScheme.onTertiary
+                                        : theme.colorScheme.onTertiaryContainer,
+                                  ),
+                                ),
+                              )
+                            : null,
                       ),
                     ],
                   ),

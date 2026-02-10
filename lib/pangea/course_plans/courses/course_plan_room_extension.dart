@@ -59,14 +59,9 @@ extension CoursePlanRoomExtension on Room {
 
     if (coursePlan?.uuid == courseId) return;
     final future = waitForRoomInSync();
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.coursePlan,
-      "",
-      {
-        "uuid": courseId,
-      },
-    );
+    await client.setRoomStateWithKey(id, PangeaEventTypes.coursePlan, "", {
+      "uuid": courseId,
+    });
     if (coursePlan?.uuid != courseId) {
       await future;
     }
@@ -104,16 +99,11 @@ extension CoursePlanRoomExtension on Room {
               ),
             }).toJson(),
           ),
-        RoomDefaults.defaultPowerLevels(
-          client.userID!,
-        ),
+        RoomDefaults.defaultPowerLevels(client.userID!),
         await client.pangeaJoinRules(
           'knock_restricted',
           allow: [
-            {
-              "type": "m.room_membership",
-              "room_id": id,
-            }
+            {"type": "m.room_membership", "room_id": id},
           ],
         ),
       ],
@@ -153,9 +143,7 @@ extension CoursePlanRoomExtension on Room {
     return CourseChatsSettingsModel.fromJson(event.content);
   }
 
-  Future<void> setCourseChatsSettings(
-    CourseChatsSettingsModel settings,
-  ) async {
+  Future<void> setCourseChatsSettings(CourseChatsSettingsModel settings) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.courseChatList,
@@ -165,8 +153,8 @@ extension CoursePlanRoomExtension on Room {
   }
 
   bool hasDefaultChat(CourseDefaultChatsEnum type) => pangeaSpaceChildren.any(
-        (r) => r.canonicalAlias.localpart?.startsWith(type.alias) == true,
-      );
+    (r) => r.canonicalAlias.localpart?.startsWith(type.alias) == true,
+  );
 
   bool dismissedDefaultChat(CourseDefaultChatsEnum type) {
     switch (type) {
@@ -183,11 +171,14 @@ extension CoursePlanRoomExtension on Room {
   }) async {
     final random = Random();
     final String uploadURL = switch (type) {
-      CourseDefaultChatsEnum.introductions => SpaceConstants
-          .introChatIcons[random.nextInt(SpaceConstants.introChatIcons.length)],
+      CourseDefaultChatsEnum.introductions =>
+        SpaceConstants.introChatIcons[random.nextInt(
+          SpaceConstants.introChatIcons.length,
+        )],
       CourseDefaultChatsEnum.announcements =>
-        SpaceConstants.announcementChatIcons[
-            random.nextInt(SpaceConstants.announcementChatIcons.length)],
+        SpaceConstants.announcementChatIcons[random.nextInt(
+          SpaceConstants.announcementChatIcons.length,
+        )],
     };
 
     final resp = await client.createRoom(
@@ -197,18 +188,12 @@ extension CoursePlanRoomExtension on Room {
       roomAliasName:
           "${type.alias}_${id.localpart}_${DateTime.now().millisecondsSinceEpoch}",
       initialState: [
-        StateEvent(
-          type: EventTypes.RoomAvatar,
-          content: {'url': uploadURL},
-        ),
+        StateEvent(type: EventTypes.RoomAvatar, content: {'url': uploadURL}),
         type.powerLevels(client.userID!),
         await client.pangeaJoinRules(
           'knock_restricted',
           allow: [
-            {
-              "type": "m.room_membership",
-              "room_id": id,
-            }
+            {"type": "m.room_membership", "room_id": id},
           ],
         ),
       ],

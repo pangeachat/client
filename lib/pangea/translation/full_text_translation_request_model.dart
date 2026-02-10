@@ -22,15 +22,15 @@ class FullTextTranslationRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.text: text,
-        ModelKey.srcLang: srcLang,
-        ModelKey.tgtLang: tgtLang,
-        ModelKey.userL2: userL2,
-        ModelKey.userL1: userL1,
-        ModelKey.deepL: deepL,
-        ModelKey.offset: offset,
-        ModelKey.length: length,
-      };
+    ModelKey.text: text,
+    ModelKey.srcLang: srcLang,
+    ModelKey.tgtLang: tgtLang,
+    ModelKey.userL2: userL2,
+    ModelKey.userL1: userL1,
+    ModelKey.deepL: deepL,
+    ModelKey.offset: offset,
+    ModelKey.length: length,
+  };
 
   // override equals and hashcode
   @override

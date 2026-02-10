@@ -7,9 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_dowload_dialog.dart';
 
 class DownloadAnalyticsButton extends StatelessWidget {
-  const DownloadAnalyticsButton({
-    super.key,
-  });
+  const DownloadAnalyticsButton({super.key});
 
   @override
   Widget build(BuildContext context) {

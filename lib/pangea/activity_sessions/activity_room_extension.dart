@@ -41,10 +41,7 @@ extension ActivityRoomExtension on Room {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "roomID": id,
-          "stateEvent": stateEvent.content,
-        },
+        data: {"roomID": id, "stateEvent": stateEvent.content},
       );
       return null;
     }
@@ -60,10 +57,7 @@ extension ActivityRoomExtension on Room {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "roomID": id,
-          "stateEvent": stateEvent.content,
-        },
+        data: {"roomID": id, "stateEvent": stateEvent.content},
       );
       return null;
     }
@@ -80,10 +74,7 @@ extension ActivityRoomExtension on Room {
         ErrorHandler.logError(
           e: e,
           s: s,
-          data: {
-            "roomID": id,
-            "stateEvent": content,
-          },
+          data: {"roomID": id, "stateEvent": content},
         );
       }
       return null;
@@ -187,9 +178,7 @@ extension ActivityRoomExtension on Room {
     );
   }
 
-  Future<void> setActivitySummary(
-    ActivitySummaryModel summary,
-  ) async {
+  Future<void> setActivitySummary(ActivitySummaryModel summary) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activitySummary,
@@ -250,10 +239,16 @@ extension ActivityRoomExtension on Room {
             )
           : ActivitySummaryResultsMessage(
               userId: event.senderId,
-              sent:
-                  pangeaMessage.getSpeechToTextLocal()!.transcript.text.trim(),
-              written:
-                  pangeaMessage.getSpeechToTextLocal()!.transcript.text.trim(),
+              sent: pangeaMessage
+                  .getSpeechToTextLocal()!
+                  .transcript
+                  .text
+                  .trim(),
+              written: pangeaMessage
+                  .getSpeechToTextLocal()!
+                  .transcript
+                  .text
+                  .trim(),
               time: event.originServerTs,
               tool: [],
             );
@@ -277,10 +272,7 @@ extension ActivityRoomExtension on Room {
       );
 
       await setActivitySummary(
-        ActivitySummaryModel(
-          summary: resp,
-          analytics: analytics,
-        ),
+        ActivitySummaryModel(summary: resp, analytics: analytics),
       );
 
       ActivitySummaryRepo.delete(id, activityPlan!);
@@ -299,10 +291,7 @@ extension ActivityRoomExtension on Room {
 
       if (activitySummary?.summary == null) {
         await setActivitySummary(
-          ActivitySummaryModel(
-            errorAt: DateTime.now(),
-            analytics: analytics,
-          ),
+          ActivitySummaryModel(errorAt: DateTime.now(), analytics: analytics),
         );
       }
     }
@@ -381,9 +370,7 @@ extension ActivityRoomExtension on Room {
 
       // if the user is in the chat (not null && membership is join),
       // then the activity is not finished for them
-      final user = getParticipants().firstWhereOrNull(
-        (u) => u.id == r.userId,
-      );
+      final user = getParticipants().firstWhereOrNull((u) => u.id == r.userId);
       return user == null || user.membership != Membership.join;
     });
   }
@@ -404,6 +391,6 @@ extension ActivityRoomExtension on Room {
   // helper functions for activity course context
 
   Room? get courseParent => pangeaSpaceParents.firstWhereOrNull(
-        (parent) => parent.coursePlan != null,
-      );
+    (parent) => parent.coursePlan != null,
+  );
 }

@@ -35,6 +35,8 @@ enum InstructionsEnum {
   dismissSupportChat,
   shimmerNewToken,
   shimmerTranslation,
+  showedActivityMenu,
+  courseDescription,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -69,12 +71,12 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.dismissSupportChat:
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
+      case InstructionsEnum.showedActivityMenu:
+      case InstructionsEnum.courseDescription:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
-          data: {
-            'this': this,
-          },
+          data: {'this': this},
         );
         debugger(when: kDebugMode);
         return "";
@@ -133,17 +135,23 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.dismissSupportChat:
       case InstructionsEnum.shimmerNewToken:
       case InstructionsEnum.shimmerTranslation:
+      case InstructionsEnum.showedActivityMenu:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;
       case InstructionsEnum.selectMeaning:
         return l10n.selectMeaning;
+      case InstructionsEnum.courseDescription:
+        return l10n.courseDescription;
     }
   }
 
-  bool get isToggledOff =>
-      MatrixState.pangeaController.userController.profile.instructionSettings
-          .getStatus(this);
+  bool get isToggledOff => MatrixState
+      .pangeaController
+      .userController
+      .profile
+      .instructionSettings
+      .getStatus(this);
 
   void setToggledOff(bool value) {
     final userController = MatrixState.pangeaController.userController;

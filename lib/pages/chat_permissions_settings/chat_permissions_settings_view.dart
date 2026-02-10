@@ -65,11 +65,12 @@ class ChatPermissionsSettingsView extends StatelessWidget {
               (key, value) => MapEntry(key, controller.getDefaultValue(key)),
             );
 
-            Map<String, int?> missingEventsPowerLevels = Map<String, int?>.from(
-              defaults.tryGetMap<String, int?>('events') ?? {},
-            )..removeWhere(
-                (k, v) => v is! int || eventsPowerLevels.containsKey(k),
-              );
+            Map<String, int?> missingEventsPowerLevels =
+                Map<String, int?>.from(
+                  defaults.tryGetMap<String, int?>('events') ?? {},
+                )..removeWhere(
+                  (k, v) => v is! int || eventsPowerLevels.containsKey(k),
+                );
 
             missingEventsPowerLevels = missingEventsPowerLevels.map(
               (key, value) => MapEntry(
@@ -95,9 +96,7 @@ class ChatPermissionsSettingsView extends StatelessWidget {
               children: [
                 ListTile(
                   leading: const Icon(Icons.info_outlined),
-                  subtitle: Text(
-                    L10n.of(context).chatPermissionsDescription,
-                  ),
+                  subtitle: Text(L10n.of(context).chatPermissionsDescription),
                 ),
                 Divider(color: theme.dividerColor),
                 ListTile(
@@ -113,7 +112,7 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     for (final entry in powerLevels.entries)
                       PermissionsListTile(
@@ -148,13 +147,13 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                           const key = 'rooms';
                           final value =
                               powerLevelsContent.containsKey('notifications')
-                                  ? powerLevelsContent
-                                          .tryGetMap<String, Object?>(
-                                            'notifications',
-                                          )
-                                          ?.tryGet<int>('rooms') ??
-                                      0
-                                  : 0;
+                              ? powerLevelsContent
+                                        .tryGetMap<String, Object?>(
+                                          'notifications',
+                                        )
+                                        ?.tryGet<int>('rooms') ??
+                                    0
+                              : 0;
                           return PermissionsListTile(
                             permissionKey: key,
                             permission: value,

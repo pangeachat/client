@@ -57,9 +57,7 @@ class Choreographer extends ChangeNotifier {
   StreamSubscription? _acceptedContinuanceSub;
   StreamSubscription? _updatedMatchSub;
 
-  Choreographer(
-    this.inputFocus,
-  ) {
+  Choreographer(this.inputFocus) {
     _initialize();
   }
 
@@ -70,10 +68,10 @@ class Choreographer extends ChangeNotifier {
   String get currentText => textController.text;
 
   ChoreoRecordModel get _record => _choreoRecord ??= ChoreoRecordModel(
-        originalText: textController.text,
-        choreoSteps: [],
-        openMatches: [],
-      );
+    originalText: textController.text,
+    choreoSteps: [],
+    openMatches: [],
+  );
 
   bool _backoffRequest(DateTime? error, int backoffSeconds) {
     if (error == null) return false;
@@ -106,22 +104,29 @@ class Choreographer extends ChangeNotifier {
     );
 
     _languageSub ??= MatrixState
-        .pangeaController.userController.languageStream.stream
+        .pangeaController
+        .userController
+        .languageStream
+        .stream
         .listen((update) {
-      clear();
-    });
+          clear();
+        });
 
     _settingsUpdateSub ??= MatrixState
-        .pangeaController.userController.settingsUpdateStream.stream
+        .pangeaController
+        .userController
+        .settingsUpdateStream
+        .stream
         .listen((_) {
-      notifyListeners();
-    });
+          notifyListeners();
+        });
 
     _acceptedContinuanceSub ??= itController.acceptedContinuanceStream.stream
         .listen(_onAcceptContinuance);
 
-    _updatedMatchSub ??=
-        igcController.matchUpdateStream.stream.listen(_onUpdateMatch);
+    _updatedMatchSub ??= igcController.matchUpdateStream.stream.listen(
+      _onUpdateMatch,
+    );
   }
 
   void clear() {
@@ -161,7 +166,7 @@ class Choreographer extends ChangeNotifier {
     super.dispose();
   }
 
-  void onPaste(value) => _record.pastedStrings.add(value);
+  void onPaste(String value) => _record.pastedStrings.add(value);
 
   void onClickSend() {
     if (assistanceState == AssistanceStateEnum.fetched) {
@@ -239,9 +244,7 @@ class Choreographer extends ChangeNotifier {
     textController.editType = EditTypeEnum.keyboard;
   }
 
-  Future<void> requestWritingAssistance({
-    bool manual = false,
-  }) async {
+  Future<void> requestWritingAssistance({bool manual = false}) async {
     if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
@@ -261,10 +264,7 @@ class Choreographer extends ChangeNotifier {
     _resetDebounceTimer();
     _startLoading();
 
-    await igcController.getIGCTextData(
-      textController.text,
-      [],
-    );
+    await igcController.getIGCTextData(textController.text, []);
 
     // init choreo record to record the original text before any matches are applied
     _choreoRecord ??= ChoreoRecordModel(
@@ -277,10 +277,7 @@ class Choreographer extends ChangeNotifier {
       await igcController.acceptNormalizationMatches();
     } else {
       // trigger a re-render of the text field to show IGC matches
-      textController.setSystemText(
-        textController.text,
-        EditTypeEnum.igc,
-      );
+      textController.setSystemText(textController.text, EditTypeEnum.igc);
     }
 
     _stopLoading();
@@ -311,19 +308,20 @@ class Choreographer extends ChangeNotifier {
     if (l1LangCode != null &&
         l2LangCode != null &&
         !_backoffRequest(_lastTokensError, _tokenErrorBackoff)) {
-      final res = await TokensRepo.get(
-        MatrixState.pangeaController.userController.accessToken,
-        TokensRequestModel(
-          fullText: message,
-          senderL1: l1LangCode,
-          senderL2: l2LangCode,
-        ),
-      ).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {
-          return Result.error("Token request timed out");
-        },
-      );
+      final res =
+          await TokensRepo.get(
+            MatrixState.pangeaController.userController.accessToken,
+            TokensRequestModel(
+              fullText: message,
+              senderL1: l1LangCode,
+              senderL2: l2LangCode,
+            ),
+          ).timeout(
+            const Duration(seconds: 10),
+            onTimeout: () {
+              return Result.error("Token request timed out");
+            },
+          );
 
       if (res.isError) {
         _lastTokensError = DateTime.now();
@@ -374,10 +372,7 @@ class Choreographer extends ChangeNotifier {
 
     igcController.clear();
     itMatch.setStatus(PangeaMatchStatusEnum.accepted);
-    _record.addRecord(
-      "",
-      match: itMatch.updatedMatch,
-    );
+    _record.addRecord("", match: itMatch.updatedMatch);
 
     _setChoreoMode(ChoreoModeEnum.it);
     textController.setSystemText("", EditTypeEnum.it);
@@ -423,19 +418,13 @@ class Choreographer extends ChangeNotifier {
   }
 
   void _onUpdateMatch(PangeaMatchState match) {
-    textController.setSystemText(
-      igcController.currentText!,
-      EditTypeEnum.igc,
-    );
+    textController.setSystemText(igcController.currentText!, EditTypeEnum.igc);
 
     switch (match.updatedMatch.status) {
       case PangeaMatchStatusEnum.accepted:
       case PangeaMatchStatusEnum.automatic:
       case PangeaMatchStatusEnum.ignored:
-        _record.addRecord(
-          textController.text,
-          match: match.updatedMatch,
-        );
+        _record.addRecord(textController.text, match: match.updatedMatch);
       case PangeaMatchStatusEnum.undo:
         _record.choreoSteps.removeWhere(
           (step) =>

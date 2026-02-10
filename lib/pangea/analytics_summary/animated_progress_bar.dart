@@ -38,7 +38,8 @@ class AnimatedProgressBar extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(AppConfig.borderRadius),
                   ),
-                  color: backgroundColor ??
+                  color:
+                      backgroundColor ??
                       Theme.of(context).colorScheme.secondaryContainer,
                 ),
               ),

@@ -583,7 +583,6 @@
   "report": "rapporter",
   "signInWithPassword": "Log ind med adgangskode",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Prøv igen senere eller vælg en anden server.",
-  "signInWith": "Log ind med {provider}",
   "profileNotFound": "Brugeren kunne ikke findes på serveren. Måske er der et forbindelsesproblem, eller brugeren findes ikke.",
   "setTheme": "Vælg tema:",
   "setColorTheme": "Vælg farvetema:",
@@ -1927,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-09 15:30:41.802679",
+  "@@last_modified": "2026-02-10 13:53:00.899227",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -4593,14 +4592,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5011,9 +5002,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -12123,6 +12112,347 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ændrede chatbeskrivelsen",
+  "changedTheChatName": "{username} ændrede chatnavnet",
+  "moreEvents": "Flere begivenheder",
+  "declineInvitation": "Afvis invitation",
+  "noMessagesYet": "Ingen beskeder endnu",
+  "longPressToRecordVoiceMessage": "Tryk længe for at optage en stemmemeddelelse.",
+  "pause": "Pause",
+  "resume": "Fortsæt",
+  "newSubSpace": "Nyt underområde",
+  "moveToDifferentSpace": "Flyt til et andet område",
+  "moveUp": "Flyt op",
+  "moveDown": "Flyt ned",
+  "removeFromSpaceDescription": "Chatten vil blive fjernet fra rummet, men vil stadig vises i din chatliste.",
+  "countChats": "{chats} chats",
+  "spaceMemberOf": "Rumsmedlem af {spaces}",
+  "spaceMemberOfCanKnock": "Rumsmedlem af {spaces} kan banke",
+  "donate": "Doner",
+  "startedAPoll": "{username} startede en afstemning.",
+  "poll": "Afstemning",
+  "startPoll": "Start afstemning",
+  "endPoll": "Afslut afstemning",
+  "answersVisible": "Svar synlige",
+  "answersHidden": "Svar skjulte",
+  "pollQuestion": "Afstemningsspørgsmål",
+  "answerOption": "Svarmulighed",
+  "addAnswerOption": "Tilføj svarmulighed",
+  "allowMultipleAnswers": "Tillad flere svar",
+  "pollHasBeenEnded": "Afstemningen er blevet afsluttet",
+  "countVotes": "{count, plural, =1{Én stemme} other{{count} stemmer}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Svar vil være synlige, når afstemningen er afsluttet",
+  "replyInThread": "Svar i tråd",
+  "countReplies": "{count, plural, =1{Én svar} other{{count} svar}}",
+  "thread": "Tråd",
+  "backToMainChat": "Tilbage til hovedchat",
+  "createSticker": "Opret klistermærke eller emoji",
+  "useAsSticker": "Brug som klistermærke",
+  "useAsEmoji": "Brug som emoji",
+  "stickerPackNameAlreadyExists": "Klistermærkepakkens navn findes allerede",
+  "newStickerPack": "Ny klistermærkepakke",
+  "stickerPackName": "Klistermærkepakkens navn",
+  "attribution": "Attribution",
+  "skipChatBackup": "Spring chatbackup over",
+  "skipChatBackupWarning": "Er du sikker? Uden at aktivere chatbackup kan du miste adgangen til dine beskeder, hvis du skifter enhed.",
+  "loadingMessages": "Indlæser beskeder",
+  "setupChatBackup": "Opsæt chatbackup",
+  "noMoreResultsFound": "Ingen flere resultater fundet",
+  "chatSearchedUntil": "Chat søgt indtil {time}",
+  "federationBaseUrl": "Føderationens basis-URL",
+  "clientWellKnownInformation": "Klient-velkendte oplysninger:",
+  "baseUrl": "Basis-URL",
+  "identityServer": "Identitetsserver:",
+  "versionWithNumber": "Version: {version}",
+  "logs": "Logfiler",
+  "advancedConfigs": "Avancerede konfigurationer",
+  "advancedConfigurations": "Avancerede konfigurationer",
+  "signInWithLabel": "Log ind med:",
+  "selectAllWords": "Vælg alle de ord, du hører i lyden",
+  "joinCourseForActivities": "Deltag i et kursus for at prøve aktiviteter.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "highlightVocabTooltip": "Fremhæv målvokabularord nedenfor ved at sende dem eller øve med dem i chatten",
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurser består af 3-8 moduler, hver med aktiviteter for at opmuntre til at øve ord i forskellige kontekster",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-mailverificering mislykkedes. Prøv venligst igen.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

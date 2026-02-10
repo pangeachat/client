@@ -26,10 +26,7 @@ class ActivityTemplateChatListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final activity = sessions.first.activity;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 1,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
       child: Column(
         spacing: 10.0,
         mainAxisSize: MainAxisSize.min,
@@ -43,9 +40,7 @@ class ActivityTemplateChatListItem extends StatelessWidget {
               leading: ImageByUrl(
                 imageUrl: activity.imageURL,
                 width: Avatar.defaultSize,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius / 2,
-                ),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
                 replacement: Avatar(
                   name: activity.title,
                   borderRadius: BorderRadius.circular(
@@ -66,53 +61,44 @@ class ActivityTemplateChatListItem extends StatelessWidget {
               ),
             ),
           ),
-          ...sessions.map(
-            (e) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                  top: 4.0,
-                  bottom: 4.0,
-                  right: 4.0,
-                  left: 14.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: OpenRolesIndicator(
-                        roles: e.activity.roles.values.toList(),
-                        assignedRoles: e.assignedRoles,
-                        space: space,
+          ...sessions.map((e) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                top: 4.0,
+                bottom: 4.0,
+                right: 4.0,
+                left: 14.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: OpenRolesIndicator(
+                      roles: e.activity.roles.values.toList(),
+                      assignedRoles: e.assignedRoles,
+                      space: space,
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 24.0),
+                    child: ElevatedButton(
+                      onPressed: () => showFutureLoadingDialog(
+                        context: context,
+                        future: () => joinActivity(e),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      ),
+                      child: Text(
+                        L10n.of(context).join,
+                        style: const TextStyle(fontSize: 12),
                       ),
                     ),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 24.0,
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () => showFutureLoadingDialog(
-                          context: context,
-                          future: () => joinActivity(e),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.only(
-                            left: 8.0,
-                            right: 8.0,
-                          ),
-                        ),
-                        child: Text(
-                          L10n.of(context).join,
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          }),
         ],
       ),
     );

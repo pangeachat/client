@@ -9,19 +9,14 @@ class BotJoinErrorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Container(
         width: 300.0,
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const BotFace(
-              width: 100,
-              expression: BotExpression.addled,
-            ),
+            const BotFace(width: 100, expression: BotExpression.addled),
             const SizedBox(height: 8),
             Text(
               L10n.of(context).botActivityJoinFailMessage,

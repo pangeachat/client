@@ -1117,7 +1117,6 @@
   "report": "prijavi",
   "signInWithPassword": "Prijavi se z geslom",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Poskusite znova kasneje ali izberite drug strežnik.",
-  "signInWith": "Prijavite se z {provider}",
   "profileNotFound": "Uporabnika ni bilo mogoče najti na strežniku. Morda je težava s povezavo ali uporabnik ne obstaja.",
   "setTheme": "Nastavi temo:",
   "setColorTheme": "Nastavi barvno temo:",
@@ -2461,7 +2460,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-09 15:31:19.119268",
+  "@@last_modified": "2026-02-10 13:53:15.622726",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -4612,14 +4611,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5030,9 +5021,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -12143,6 +12132,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} je spremenil opis klepeta",
+  "changedTheChatName": "{username} je spremenil ime klepeta",
+  "moreEvents": "Več dogodkov",
+  "declineInvitation": "Zavrni povabilo",
+  "noMessagesYet": "Še ni sporočil",
+  "longPressToRecordVoiceMessage": "Dolgo pritisnite za snemanje glasovnega sporočila.",
+  "pause": "Pavza",
+  "resume": "Nadaljuj",
+  "newSubSpace": "Nov podprostor",
+  "moveToDifferentSpace": "Premakni se v drug prostor",
+  "moveUp": "Premakni navzgor",
+  "moveDown": "Premakni navzdol",
+  "removeFromSpaceDescription": "Klepet bo odstranjen iz prostora, vendar se bo še vedno prikazoval na vašem seznamu klepetov.",
+  "countChats": "{chats} klepetov",
+  "spaceMemberOf": "Član prostora {spaces}",
+  "spaceMemberOfCanKnock": "Član prostora {spaces} lahko potrka",
+  "donate": "Doniraj",
+  "startedAPoll": "{username} je začel anketo.",
+  "poll": "Anketa",
+  "startPoll": "Začni anketo",
+  "endPoll": "Končaj anketo",
+  "answersVisible": "Odgovori vidni",
+  "answersHidden": "Odgovori skriti",
+  "pollQuestion": "Vprašanje ankete",
+  "answerOption": "Možnost odgovora",
+  "addAnswerOption": "Dodaj možnost odgovora",
+  "allowMultipleAnswers": "Dovoli več odgovorov",
+  "pollHasBeenEnded": "Anketa je bila končana",
+  "countVotes": "{count, plural, =1{En glas} other{{count} glasov}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Odgovori bodo vidni, ko bo anketa končana",
+  "replyInThread": "Odgovori v temi",
+  "countReplies": "{count, plural, =1{Eden odgovor} other{{count} odgovori}}",
+  "thread": "Tema",
+  "backToMainChat": "Nazaj na glavno klepetalnico",
+  "createSticker": "Ustvari nalepko ali emojija",
+  "useAsSticker": "Uporabi kot nalepko",
+  "useAsEmoji": "Uporabi kot emojija",
+  "stickerPackNameAlreadyExists": "Ime paketa nalepk že obstaja",
+  "newStickerPack": "Nov paket nalepk",
+  "stickerPackName": "Ime paketa nalepk",
+  "attribution": "Pripis",
+  "skipChatBackup": "Preskoči varnostno kopiranje klepeta",
+  "skipChatBackupWarning": "Ali ste prepričani? Brez omogočanja varnostnega kopiranja klepeta lahko izgubite dostop do svojih sporočil, če spremenite napravo.",
+  "loadingMessages": "Nalagam sporočila",
+  "setupChatBackup": "Nastavi varnostno kopiranje klepeta",
+  "noMoreResultsFound": "Ni več najdenih rezultatov",
+  "chatSearchedUntil": "Klepeta iskanega do {time}",
+  "federationBaseUrl": "Osnovni URL federacije",
+  "clientWellKnownInformation": "Informacije o stranki - dobro znane:",
+  "baseUrl": "Osnovni URL",
+  "identityServer": "Identitetni strežnik:",
+  "versionWithNumber": "Različica: {version}",
+  "logs": "Dnevniki",
+  "advancedConfigs": "Napredne nastavitve",
+  "advancedConfigurations": "Napredne konfiguracije",
+  "signInWithLabel": "Prijavite se z:",
+  "selectAllWords": "Izberite vse besede, ki jih slišite v avdio posnetku",
+  "joinCourseForActivities": "Pridružite se tečaju, da preizkusite aktivnosti.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Tečaji so sestavljeni iz 3-8 modulov, vsak z aktivnostmi, ki spodbujajo prakso besed v različnih kontekstih",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Preverjanje e-pošte ni uspelo. Prosimo, poskusite znova.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

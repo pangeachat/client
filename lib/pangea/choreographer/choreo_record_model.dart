@@ -96,11 +96,7 @@ class ChoreoRecordModel {
           length = textBefore.length - offset;
         }
 
-        textAfter = textBefore.replaceRange(
-          offset,
-          offset + length,
-          insert,
-        );
+        textAfter = textBefore.replaceRange(offset, offset + length, insert);
 
         final edits = ChoreoEditModel.fromText(
           originalText: currentEdit,
@@ -143,23 +139,24 @@ class ChoreoRecordModel {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_stepsKey] = jsonEncode(choreoSteps.map((e) => e.toJson()).toList());
-    data[_openMatchesKey] =
-        jsonEncode(openMatches.map((e) => e.toJson()).toList());
+    data[_openMatchesKey] = jsonEncode(
+      openMatches.map((e) => e.toJson()).toList(),
+    );
     data[_originalTextKey] = originalText;
     return data;
   }
 
   bool get includedIT => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatusEnum.accepted &&
-            (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
-      });
+    return step.acceptedOrIgnoredMatch?.status ==
+            PangeaMatchStatusEnum.accepted &&
+        (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
+  });
 
   bool get includedIGC => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatusEnum.accepted &&
-            (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
-      });
+    return step.acceptedOrIgnoredMatch?.status ==
+            PangeaMatchStatusEnum.accepted &&
+        (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
+  });
 
   bool endedWithIT(String sent) {
     return includedIT && stepText() == sent;

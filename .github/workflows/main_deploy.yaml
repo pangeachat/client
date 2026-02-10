@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:
@@ -80,7 +80,7 @@ jobs:
       SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
       SENTRY_ORG: ${{ vars.SENTRY_ORG }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:

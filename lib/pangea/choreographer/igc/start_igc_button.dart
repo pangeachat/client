@@ -41,26 +41,25 @@ class _StartIGCButtonState extends State<StartIGCButton>
   @override
   void initState() {
     super.initState();
-    _spinController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300),
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          if (_shouldStop) {
-            _spinController?.stop();
-            _spinController?.value = 0;
-          } else {
-            _spinController?.forward(from: 0);
+    _spinController =
+        AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 300),
+        )..addStatusListener((status) {
+          if (status == AnimationStatus.completed) {
+            if (_shouldStop) {
+              _spinController?.stop();
+              _spinController?.value = 0;
+            } else {
+              _spinController?.forward(from: 0);
+            }
           }
-        }
-      });
+        });
 
-    _rotation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _spinController!,
-        curve: Curves.linear,
-      ),
-    );
+    _rotation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _spinController!, curve: Curves.linear));
 
     _colorController = AnimationController(
       vsync: this,
@@ -137,10 +136,10 @@ class _StartIGCButtonState extends State<StartIGCButton>
               onTap: enableFeedback ? widget.onPressed : null,
               onLongPress: enableFeedback
                   ? () => showDialog(
-                        context: context,
-                        builder: (c) => const SettingsLearning(),
-                        barrierDismissible: false,
-                      )
+                      context: context,
+                      builder: (c) => const SettingsLearning(),
+                      barrierDismissible: false,
+                    )
                   : null,
               child: Stack(
                 alignment: Alignment.center,
@@ -175,11 +174,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
                       color: _backgroundColor.value,
                     ),
                   ),
-                  Icon(
-                    size: 16,
-                    Icons.check,
-                    color: _iconColor.value,
-                  ),
+                  Icon(size: 16, Icons.check, color: _iconColor.value),
                 ],
               ),
             ),

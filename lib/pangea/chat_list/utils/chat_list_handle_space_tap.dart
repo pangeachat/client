@@ -33,10 +33,12 @@ Future<void> showInviteDialog(Room room, BuildContext context) async {
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
         child: Text(
           room.isSpace
-              ? L10n.of(context)
-                  .invitedToSpace(room.name, room.creatorId ?? "???")
-              : L10n.of(context)
-                  .invitedToChat(room.name, room.creatorId ?? "???"),
+              ? L10n.of(
+                  context,
+                ).invitedToSpace(room.name, room.creatorId ?? "???")
+              : L10n.of(
+                  context,
+                ).invitedToChat(room.name, room.creatorId ?? "???"),
           textAlign: TextAlign.center,
         ),
       ),
@@ -87,10 +89,7 @@ Future<void> showInviteDialog(Room room, BuildContext context) async {
 }
 
 // ignore: curly_braces_in_flow_control_structures
-void chatListHandleSpaceTap(
-  BuildContext context,
-  Room space,
-) {
+void chatListHandleSpaceTap(BuildContext context, Room space) {
   void setActiveSpaceAndCloseChat() {
     context.go("/rooms/spaces/${space.id}/details");
   }
@@ -114,9 +113,8 @@ void chatListHandleSpaceTap(
       //else confirm you want to join
       //can we tell whether space or chat?
       final rooms = Matrix.of(context).client.rooms.where(
-            (element) =>
-                element.isSpace && element.membership == Membership.join,
-          );
+        (element) => element.isSpace && element.membership == Membership.join,
+      );
       final justInputtedCode = SpaceCodeRepo.recentCode;
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);

@@ -6,10 +6,7 @@ class SttTranslationModel {
   final String translation;
   final String langCode;
 
-  SttTranslationModel({
-    required this.translation,
-    required this.langCode,
-  });
+  SttTranslationModel({required this.translation, required this.langCode});
 
   factory SttTranslationModel.fromJson(Map<String, dynamic> json) {
     final content = json.tryGetMap(PangeaEventTypes.sttTranslation);
@@ -24,9 +21,6 @@ class SttTranslationModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'translation': translation,
-      'lang_code': langCode,
-    };
+    return {'translation': translation, 'lang_code': langCode};
   }
 }

@@ -32,8 +32,10 @@ class AnalyticsNavigationUtil {
     }
 
     if (construct == null ||
-        !{ProgressIndicatorEnum.wordsUsed, ProgressIndicatorEnum.morphsUsed}
-            .contains(view)) {
+        !{
+          ProgressIndicatorEnum.wordsUsed,
+          ProgressIndicatorEnum.morphsUsed,
+        }.contains(view)) {
       context.go("/rooms/analytics/${view.route}");
       return;
     }

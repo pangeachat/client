@@ -31,14 +31,14 @@ class IGCResponseModel {
     return IGCResponseModel(
       matches: json["matches"] != null
           ? (json["matches"] as Iterable)
-              .map<PangeaMatch>(
-                (e) => PangeaMatch.fromJson(
-                  e as Map<String, dynamic>,
-                  fullText: originalInput,
-                ),
-              )
-              .toList()
-              .cast<PangeaMatch>()
+                .map<PangeaMatch>(
+                  (e) => PangeaMatch.fromJson(
+                    e as Map<String, dynamic>,
+                    fullText: originalInput,
+                  ),
+                )
+                .toList()
+                .cast<PangeaMatch>()
           : [],
       originalInput: originalInput,
       fullTextCorrection: json["full_text_correction"],
@@ -51,13 +51,13 @@ class IGCResponseModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "original_input": originalInput,
-        "full_text_correction": fullTextCorrection,
-        // Serialize as flat SpanData objects matching server's SpanDataV2 schema
-        "matches": matches.map((e) => e.match.toJson()).toList(),
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        ModelKey.enableIT: enableIT,
-        ModelKey.enableIGC: enableIGC,
-      };
+    "original_input": originalInput,
+    "full_text_correction": fullTextCorrection,
+    // Serialize as flat SpanData objects matching server's SpanDataV2 schema
+    "matches": matches.map((e) => e.match.toJson()).toList(),
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    ModelKey.enableIT: enableIT,
+    ModelKey.enableIGC: enableIGC,
+  };
 }

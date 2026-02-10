@@ -3,6 +3,7 @@ import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart';
 
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;
-  final String langCode;
+  final LanguageModel textLanguage;
 
   /// POS tag for disambiguation (from PangeaToken, e.g. "VERB").
   final String? pos;
@@ -32,7 +33,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
-    required this.langCode,
+    required this.textLanguage,
     this.pos,
     this.morph,
     this.style,
@@ -93,7 +94,7 @@ class _PhoneticTranscriptionWidgetState extends State<PhoneticTranscriptionWidge
                 link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
                 child: PhoneticTranscriptionBuilder(
                   key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-                  langCode: widget.langCode,
+                  textLanguage: widget.textLanguage,
                   text: widget.text,
                   reloadNotifier: widget.reloadNotifier,
                   builder: (context, controller) {

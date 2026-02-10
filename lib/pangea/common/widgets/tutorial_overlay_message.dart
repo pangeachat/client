@@ -5,10 +5,7 @@ import 'package:fluffychat/config/app_config.dart';
 class TutorialOverlayMessage extends StatelessWidget {
   final String message;
 
-  const TutorialOverlayMessage(
-    this.message, {
-    super.key,
-  });
+  const TutorialOverlayMessage(this.message, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +33,8 @@ class TutorialOverlayMessage extends StatelessWidget {
               child: Text(
                 message,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

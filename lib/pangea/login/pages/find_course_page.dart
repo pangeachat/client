@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
@@ -15,6 +16,8 @@ import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -83,36 +86,30 @@ class FindCoursePageState extends State<FindCoursePage> {
         .where(
           (c) =>
               !Matrix.of(context).client.rooms.any(
-                    (r) =>
-                        r.id == c.room.roomId &&
-                        r.membership == Membership.join,
-                  ) &&
+                (r) => r.id == c.room.roomId && r.membership == Membership.join,
+              ) &&
               coursePlans.containsKey(c.courseId),
         )
         .toList();
 
     if (targetLanguageFilter != null) {
-      filtered = filtered.where(
-        (chunk) {
-          final course = coursePlans[chunk.courseId];
-          if (course == null) return false;
-          return course.targetLanguage.split('-').first ==
-              targetLanguageFilter!.langCodeShort;
-        },
-      ).toList();
+      filtered = filtered.where((chunk) {
+        final course = coursePlans[chunk.courseId];
+        if (course == null) return false;
+        return course.targetLanguage.split('-').first ==
+            targetLanguageFilter!.langCodeShort;
+      }).toList();
     }
 
     final searchText = searchController.text.trim().toLowerCase();
     if (searchText.isNotEmpty) {
-      filtered = filtered.where(
-        (chunk) {
-          final course = coursePlans[chunk.courseId];
-          if (course == null) return false;
-          final name = chunk.room.name?.toLowerCase() ?? '';
-          final description = course.description.toLowerCase();
-          return name.contains(searchText) || description.contains(searchText);
-        },
-      ).toList();
+      filtered = filtered.where((chunk) {
+        final course = coursePlans[chunk.courseId];
+        if (course == null) return false;
+        final name = chunk.room.name?.toLowerCase() ?? '';
+        final description = course.description.toLowerCase();
+        return name.contains(searchText) || description.contains(searchText);
+      }).toList();
     }
 
     // sort by join rule, with knock rooms at the end
@@ -129,9 +126,9 @@ class FindCoursePageState extends State<FindCoursePage> {
 
   Future<void> _loadPublicSpaces() async {
     try {
-      final resp = await Matrix.of(context).client.requestPublicCourses(
-            since: nextBatch,
-          );
+      final resp = await Matrix.of(
+        context,
+      ).client.requestPublicCourses(since: nextBatch);
 
       for (final room in resp.courses) {
         if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
@@ -142,13 +139,7 @@ class FindCoursePageState extends State<FindCoursePage> {
       nextBatch = resp.nextBatch;
     } catch (e, s) {
       error = e;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'nextBatch': nextBatch,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'nextBatch': nextBatch});
     }
   }
 
@@ -177,8 +168,10 @@ class FindCoursePageState extends State<FindCoursePage> {
     try {
       final resp = await CoursePlansRepo.search(
         GetLocalizedCoursesRequest(
-          coursePlanIds:
-              discoveredCourses.map((c) => c.courseId).toSet().toList(),
+          coursePlanIds: discoveredCourses
+              .map((c) => c.courseId)
+              .toSet()
+              .toList(),
           l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
@@ -193,8 +186,9 @@ class FindCoursePageState extends State<FindCoursePage> {
         e: e,
         s: s,
         data: {
-          'discoveredCourses':
-              discoveredCourses.map((c) => c.courseId).toList(),
+          'discoveredCourses': discoveredCourses
+              .map((c) => c.courseId)
+              .toList(),
         },
       );
     } finally {
@@ -222,10 +216,7 @@ class FindCoursePageState extends State<FindCoursePage> {
 class FindCoursePageView extends StatelessWidget {
   final FindCoursePageState controller;
 
-  const FindCoursePageView({
-    super.key,
-    required this.controller,
-  });
+  const FindCoursePageView({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -243,6 +234,9 @@ class FindCoursePageView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
+              InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.courseDescription,
+              ),
               TextField(
                 controller: controller.searchController,
                 textInputAction: TextInputAction.search,
@@ -253,16 +247,12 @@ class FindCoursePageView extends StatelessWidget {
                       ? null
                       : theme.colorScheme.secondaryContainer,
                   border: OutlineInputBorder(
-                    borderSide:
-                        isColumnMode ? const BorderSide() : BorderSide.none,
+                    borderSide: isColumnMode
+                        ? const BorderSide()
+                        : BorderSide.none,
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  contentPadding: const EdgeInsets.fromLTRB(
-                    0,
-                    0,
-                    20.0,
-                    0,
-                  ),
+                  contentPadding: const EdgeInsets.fromLTRB(0, 0, 20.0, 0),
                   hintText: L10n.of(context).findCourse,
                   hintStyle: TextStyle(
                     color: theme.colorScheme.onPrimaryContainer,
@@ -343,7 +333,7 @@ class FindCoursePageView extends StatelessWidget {
               ),
               ValueListenableBuilder(
                 valueListenable: controller.searchController,
-                builder: (context, _, __) {
+                builder: (context, _, _) {
                   if (controller.error != null) {
                     return ErrorIndicator(
                       message: L10n.of(context).oopsSomethingWentWrong,
@@ -355,8 +345,35 @@ class FindCoursePageView extends StatelessWidget {
                   }
 
                   if (controller.filteredCourses.isEmpty) {
-                    return Text(
-                      L10n.of(context).nothingFound,
+                    return Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Column(
+                        spacing: 12.0,
+                        children: [
+                          const BotFace(
+                            expression: BotExpression.addled,
+                            width: Avatar.defaultSize * 1.5,
+                          ),
+                          Text(
+                            L10n.of(context).noPublicCoursesFound,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                          ElevatedButton(
+                            onPressed: controller.startNewCourse,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text(L10n.of(context).startOwn)],
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }
 
@@ -386,17 +403,10 @@ class _PublicCourseTile extends StatelessWidget {
   final PublicCoursesChunk chunk;
   final CoursePlanModel? course;
 
-  const _PublicCourseTile({
-    required this.chunk,
-    this.course,
-  });
+  const _PublicCourseTile({required this.chunk, this.course});
 
-  void _navigateToCoursePage(
-    BuildContext context,
-  ) {
-    context.go(
-      '/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}',
-    );
+  void _navigateToCoursePage(BuildContext context) {
+    context.go('/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}');
   }
 
   @override
@@ -410,12 +420,8 @@ class _PublicCourseTile extends StatelessWidget {
 
     return Padding(
       padding: isColumnMode
-          ? const EdgeInsets.only(
-              bottom: 32.0,
-            )
-          : const EdgeInsets.only(
-              bottom: 16.0,
-            ),
+          ? const EdgeInsets.only(bottom: 32.0)
+          : const EdgeInsets.only(bottom: 16.0),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
@@ -425,9 +431,7 @@ class _PublicCourseTile extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(
-                color: theme.colorScheme.primary,
-              ),
+              border: Border.all(color: theme.colorScheme.primary),
             ),
             child: Column(
               spacing: 4.0,
@@ -443,9 +447,7 @@ class _PublicCourseTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                       replacement: Avatar(
                         name: displayname,
-                        borderRadius: BorderRadius.circular(
-                          10.0,
-                        ),
+                        borderRadius: BorderRadius.circular(10.0),
                         size: 58.0,
                       ),
                     ),
@@ -464,14 +466,11 @@ class _PublicCourseTile extends StatelessWidget {
                             spacing: 4.0,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(
-                                Icons.group,
-                                size: 16.0,
-                              ),
+                              const Icon(Icons.group, size: 16.0),
                               Text(
-                                L10n.of(context).countParticipants(
-                                  space.numJoinedMembers,
-                                ),
+                                L10n.of(
+                                  context,
+                                ).countParticipants(space.numJoinedMembers),
                                 style: theme.textTheme.bodyMedium,
                               ),
                             ],
@@ -482,30 +481,19 @@ class _PublicCourseTile extends StatelessWidget {
                   ],
                 ),
                 if (course != null) ...[
-                  CourseInfoChips(
-                    courseId,
-                    iconSize: 12.0,
-                    fontSize: 12.0,
-                  ),
-                  Text(
-                    course!.description,
-                    style: theme.textTheme.bodyMedium,
-                  ),
+                  CourseInfoChips(courseId, iconSize: 12.0, fontSize: 12.0),
+                  Text(course!.description, style: theme.textTheme.bodyMedium),
                 ],
                 const SizedBox(height: 12.0),
                 HoverBuilder(
                   builder: (context, hovered) => ElevatedButton(
                     onPressed: () => _navigateToCoursePage(context),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          theme.colorScheme.primaryContainer.withAlpha(
-                        hovered ? 255 : 200,
-                      ),
+                      backgroundColor: theme.colorScheme.primaryContainer
+                          .withAlpha(hovered ? 255 : 200),
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          12.0,
-                        ),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
                     child: Row(
@@ -513,12 +501,8 @@ class _PublicCourseTile extends StatelessWidget {
                       children: [
                         Text(
                           space.joinRule == JoinRules.knock.name
-                              ? L10n.of(
-                                  context,
-                                ).knock
-                              : L10n.of(
-                                  context,
-                                ).join,
+                              ? L10n.of(context).knock
+                              : L10n.of(context).join,
                         ),
                       ],
                     ),

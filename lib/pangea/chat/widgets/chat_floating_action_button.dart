@@ -5,10 +5,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer_has_error_button.d
 
 class ChatFloatingActionButton extends StatelessWidget {
   final ChatController controller;
-  const ChatFloatingActionButton({
-    super.key,
-    required this.controller,
-  });
+  const ChatFloatingActionButton({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +14,12 @@ class ChatFloatingActionButton extends StatelessWidget {
     }
 
     return ListenableBuilder(
-      listenable: Listenable.merge(
-        [
-          controller.choreographer.errorService,
-          controller.choreographer.itController.open,
-          controller.scrollController,
-          controller.scrollableNotifier,
-        ],
-      ),
+      listenable: Listenable.merge([
+        controller.choreographer.errorService,
+        controller.choreographer.itController.open,
+        controller.scrollController,
+        controller.scrollableNotifier,
+      ]),
       builder: (context, _) {
         if (controller.scrollController.hasClients &&
             controller.scrollController.position.pixels > 0) {

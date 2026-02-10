@@ -42,5 +42,5 @@ part "room_space_settings_extension.dart";
 part "room_user_permissions_extension.dart";
 
 extension PangeaRoom on Room {
-// analytics
+  // analytics
 }

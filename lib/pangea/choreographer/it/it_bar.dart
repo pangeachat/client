@@ -21,10 +21,7 @@ import '../../common/widgets/choice_array.dart';
 
 class ITBar extends StatefulWidget {
   final Choreographer choreographer;
-  const ITBar({
-    super.key,
-    required this.choreographer,
-  });
+  const ITBar({super.key, required this.choreographer});
 
   @override
   ITBarState createState() => ITBarState();
@@ -128,9 +125,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         e: e,
         s: s,
         level: SentryLevel.warning,
-        data: {
-          "index": index,
-        },
+        data: {"index": index},
       );
       widget.choreographer.itController.closeIT();
       return;
@@ -158,9 +153,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
           e: e,
           s: s,
           level: SentryLevel.warning,
-          data: {
-            "index": index,
-          },
+          data: {"index": index},
         );
         widget.choreographer.itController.closeIT();
       }
@@ -229,22 +222,20 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                             IconButton(
                               onPressed:
                                   widget.choreographer.itController.closeIT,
-                              icon: const Icon(
-                                Icons.close,
-                                size: 20,
-                              ),
+                              icon: const Icon(Icons.close, size: 20),
                             ),
                           ],
                         )
                       : ValueListenableBuilder(
                           valueListenable:
                               widget.choreographer.itController.currentITStep,
-                          builder: (context, step, __) {
+                          builder: (context, step, _) {
                             return step == null
                                 ? CircularProgressIndicator(
                                     strokeWidth: 2.0,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
                                   )
                                 : _ITChoices(
                                     continuances: step.continuances,
@@ -287,7 +278,7 @@ class _ITBarHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: editing,
-      builder: (context, isEditing, __) {
+      builder: (context, isEditing, _) {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -326,16 +317,15 @@ class _ITBarHeader extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                       child: ValueListenableBuilder(
                         valueListenable: progress,
-                        builder: (context, value, __) => AnimatedProgressBar(
+                        builder: (context, value, _) => AnimatedProgressBar(
                           height: 20.0,
                           widthPercent: value,
-                          backgroundColor: Theme.of(context)
-                              .colorScheme
-                              .surfaceContainerHighest,
-                          barColor: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withAlpha(180),
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.surfaceContainerHighest,
+                          barColor: Theme.of(
+                            context,
+                          ).colorScheme.primary.withAlpha(180),
                         ),
                       ),
                     ),
@@ -366,7 +356,7 @@ class _ITBarHeader extends StatelessWidget {
                 ? const SizedBox(height: 24.0)
                 : ValueListenableBuilder(
                     valueListenable: sourceText,
-                    builder: (context, text, __) {
+                    builder: (context, text, _) {
                       return Container(
                         padding: const EdgeInsets.only(top: 8.0),
                         constraints: const BoxConstraints(minHeight: 24.0),

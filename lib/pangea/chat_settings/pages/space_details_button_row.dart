@@ -38,10 +38,7 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
   @override
   void initState() {
     super.initState();
-    notificationChangeSub ??= Matrix.of(context)
-        .client
-        .onSync
-        .stream
+    notificationChangeSub ??= Matrix.of(context).client.onSync.stream
         .where(
           (syncUpdate) =>
               syncUpdate.accountData?.any(
@@ -49,9 +46,7 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
               ) ??
               false,
         )
-        .listen(
-          (u) => setState(() {}),
-        );
+        .listen((u) => setState(() {}));
   }
 
   @override
@@ -67,11 +62,7 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
 
   @override
   Widget build(BuildContext context) {
-    final buttons = widget.buttons
-        .where(
-          (button) => button.visible,
-        )
-        .toList();
+    final buttons = widget.buttons.where((button) => button.visible).toList();
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -80,10 +71,12 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
 
         final mini = fullButtonCapacity < 4;
 
-        final List<ButtonDetails> mainViewButtons =
-            buttons.where((button) => button.showInMainView).toList();
-        final List<ButtonDetails> otherButtons =
-            buttons.where((button) => !button.showInMainView).toList();
+        final List<ButtonDetails> mainViewButtons = buttons
+            .where((button) => button.showInMainView)
+            .toList();
+        final List<ButtonDetails> otherButtons = buttons
+            .where((button) => !button.showInMainView)
+            .toList();
 
         return Row(
           spacing: FluffyThemes.isColumnMode(context) ? 12.0 : 0.0,

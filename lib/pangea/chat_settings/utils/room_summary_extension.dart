@@ -16,9 +16,7 @@ extension RoomSummaryExtension on Api {
   Future<RoomSummariesResponse> getRoomSummaries(List<String> roomIds) async {
     final requestUri = Uri(
       path: '/_synapse/client/unstable/org.pangea/room_preview',
-      queryParameters: {
-        'rooms': roomIds.join(","),
-      },
+      queryParameters: {'rooms': roomIds.join(",")},
     );
     final request = Request('GET', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
@@ -147,8 +145,9 @@ class RoomSummaryResponse {
         json[EventTypes.RoomJoinRules]?['default']?['content']?['join_rule'];
     JoinRules? joinRule;
     if (joinRulesString != null && joinRulesString is String) {
-      joinRule = JoinRules.values
-          .singleWhereOrNull((element) => element.text == joinRulesString);
+      joinRule = JoinRules.values.singleWhereOrNull(
+        (element) => element.text == joinRulesString,
+      );
     }
 
     final displayName =

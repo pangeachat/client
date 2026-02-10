@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-09 15:31:53.731729",
+  "@@last_modified": "2026-02-10 13:53:31.002179",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "رجاء حاول مجددا أو اختر خادما مختلفا.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "تسجيل الدخول باستخدام {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "importNow": "استيراد الآن",
   "@importNow": {},
   "importEmojis": "استيراد الرموز التعبيرية",
@@ -2972,7 +2963,7 @@
   "@gallery": {},
   "swipeRightToLeftToReply": "اسحب من اليمين إلى اليسار للرد",
   "@swipeRightToLeftToReply": {},
-  "alwaysUse24HourFormat": "خطأ",
+  "alwaysUse24HourFormat": "علّم لعرض الوقت بنسق 24 ساعة دائما.‏",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -3182,7 +3173,8 @@
   "@previous": {},
   "otherPartyNotLoggedIn": "لم يقم الطرف الآخر بتسجيل الدخول حالياً وبالتالي لا يمكنه تلقي الرسائل!",
   "@otherPartyNotLoggedIn": {},
-  "setCustomPermissionLevel": "تعيين مستوى إذن مخصص",
+  "setCustomPermissionLevel": "حدد مستوى صلاحية مخصص",
+  "@setCustomPermissionLevel": {},
   "setPermissionsLevelDescription": "يرجى اختيار دور معرف مسبقًا أدناه أو إدخال مستوى إذن مخصص بين 0 و 100.",
   "ignoreUser": "تجاهل المستخدم",
   "normalUser": "مستخدم عادي",
@@ -4391,10 +4383,6 @@
   "inviteYourFriends": "ادعُ أصدقائك",
   "playWithAI": "اللعب مع الذكاء الاصطناعي الآن",
   "courseStartDesc": "روبوت بانجيا جاهز للعمل في أي وقت!\n\n...لكن التعلم أفضل مع الأصدقاء!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@setPermissionsLevelDescription": {
     "type": "String",
     "placeholders": {}
@@ -11279,6 +11267,342 @@
     "placeholders": {}
   },
   "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} غيّر وصف الدردشة",
+  "changedTheChatName": "{username} غيّر اسم الدردشة",
+  "moreEvents": "مزيد من الأحداث",
+  "declineInvitation": "رفض الدعوة",
+  "noMessagesYet": "لا توجد رسائل بعد",
+  "longPressToRecordVoiceMessage": "اضغط مطولاً لتسجيل رسالة صوتية.",
+  "pause": "إيقاف مؤقت",
+  "resume": "استئناف",
+  "newSubSpace": "مساحة فرعية جديدة",
+  "moveToDifferentSpace": "الانتقال إلى مساحة مختلفة",
+  "moveUp": "تحريك لأعلى",
+  "moveDown": "تحريك لأسفل",
+  "removeFromSpaceDescription": "سيتم إزالة الدردشة من المساحة ولكن ستظل تظهر في قائمة الدردشات الخاصة بك.",
+  "countChats": "{chats} دردشات",
+  "spaceMemberOf": "عضو في المساحة {spaces}",
+  "spaceMemberOfCanKnock": "عضو في المساحة {spaces} يمكنه الطرق",
+  "donate": "تبرع",
+  "startedAPoll": "{username} بدأ استطلاع رأي.",
+  "poll": "استطلاع رأي",
+  "startPoll": "ابدأ استطلاع رأي",
+  "endPoll": "إنهاء الاستطلاع",
+  "answersVisible": "الإجابات مرئية",
+  "answersHidden": "الإجابات مخفية",
+  "pollQuestion": "سؤال الاستطلاع",
+  "answerOption": "خيار الإجابة",
+  "addAnswerOption": "إضافة خيار إجابة",
+  "allowMultipleAnswers": "السماح بإجابات متعددة",
+  "pollHasBeenEnded": "تم إنهاء الاستطلاع",
+  "countVotes": "{count, plural, =1{صوت واحد} other{{count} أصوات}}",
+  "answersWillBeVisibleWhenPollHasEnded": "ستكون الإجابات مرئية عندما ينتهي الاستطلاع",
+  "replyInThread": "رد في الموضوع",
+  "countReplies": "{count, plural, =1{رد واحد} other{{count} ردود}}",
+  "thread": "موضوع",
+  "backToMainChat": "العودة إلى الدردشة الرئيسية",
+  "createSticker": "إنشاء ملصق أو رمز تعبيري",
+  "useAsSticker": "استخدام كملصق",
+  "useAsEmoji": "استخدام كرمز تعبيري",
+  "stickerPackNameAlreadyExists": "اسم حزمة الملصقات موجود بالفعل",
+  "newStickerPack": "حزمة ملصقات جديدة",
+  "stickerPackName": "اسم حزمة الملصقات",
+  "attribution": "نسبة",
+  "skipChatBackup": "تخطي نسخ الدردشة الاحتياطي",
+  "skipChatBackupWarning": "هل أنت متأكد؟ بدون تفعيل نسخ الدردشة الاحتياطي قد تفقد الوصول إلى رسائلك إذا قمت بتغيير جهازك.",
+  "loadingMessages": "جارٍ تحميل الرسائل",
+  "setupChatBackup": "إعداد نسخ الدردشة الاحتياطي",
+  "noMoreResultsFound": "لم يتم العثور على المزيد من النتائج",
+  "chatSearchedUntil": "تم البحث في الدردشة حتى {time}",
+  "federationBaseUrl": "عنوان URL الأساسي للاتحاد",
+  "clientWellKnownInformation": "معلومات العميل المعروفة:",
+  "baseUrl": "عنوان URL الأساسي",
+  "identityServer": "خادم الهوية:",
+  "versionWithNumber": "الإصدار: {version}",
+  "logs": "السجلات",
+  "advancedConfigs": "الإعدادات المتقدمة",
+  "advancedConfigurations": "التكوينات المتقدمة",
+  "signInWithLabel": "تسجيل الدخول باستخدام:",
+  "selectAllWords": "اختر جميع الكلمات التي تسمعها في الصوت",
+  "joinCourseForActivities": "انضم إلى دورة لتجربة الأنشطة.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "تتكون الدورات من 3-8 وحدات، كل منها يحتوي على أنشطة لتشجيع ممارسة الكلمات في سياقات مختلفة",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "فشل التحقق من البريد الإلكتروني. يرجى المحاولة مرة أخرى.",
+  "@emailVerificationFailed": {
     "type": "String",
     "placeholders": {}
   }

@@ -29,11 +29,7 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
-  const ConstructAnalyticsView({
-    super.key,
-    required this.view,
-    this.construct,
-  });
+  const ConstructAnalyticsView({super.key, required this.view, this.construct});
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
@@ -83,10 +79,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   Future<void> _setAnalyticsData() async {
-    final future = <Future>[
-      _setMorphs(),
-      _setVocab(),
-    ];
+    final future = <Future>[_setMorphs(), _setVocab()];
     await Future.wait(future);
   }
 
@@ -110,17 +103,16 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   Future<void> _setVocab() async {
     try {
       final analyticsService = Matrix.of(context).analyticsDataService;
-      final data = await analyticsService
-          .getAggregatedConstructs(ConstructTypeEnum.vocab);
+      final data = await analyticsService.getAggregatedConstructs(
+        ConstructTypeEnum.vocab,
+      );
 
       vocab = data.values.toList();
-      vocab!.sort(
-        (a, b) {
-          final normalizedA = removeDiacritics(a.lemma).toLowerCase();
-          final normalizedB = removeDiacritics(b.lemma).toLowerCase();
-          return normalizedA.compareTo(normalizedB);
-        },
-      );
+      vocab!.sort((a, b) {
+        final normalizedA = removeDiacritics(a.lemma).toLowerCase();
+        final normalizedB = removeDiacritics(b.lemma).toLowerCase();
+        return normalizedA.compareTo(normalizedB);
+      });
     } finally {
       if (mounted) setState(() {});
     }
@@ -204,27 +196,26 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (widget.construct == null)
-                LearningProgressIndicators(
-                  selected: widget.view.indicator,
-                ),
+                LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
                 child: widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
-                        ? MorphAnalyticsListView(controller: this)
-                        : MorphDetailsView(constructId: widget.construct!)
+                          ? MorphAnalyticsListView(controller: this)
+                          : MorphDetailsView(constructId: widget.construct!)
                     : widget.construct == null
-                        ? VocabAnalyticsListView(controller: this)
-                        : VocabDetailsView(
-                            constructId: widget.construct!,
-                            controller: this,
-                          ),
+                    ? VocabAnalyticsListView(controller: this)
+                    : VocabDetailsView(
+                        constructId: widget.construct!,
+                        controller: this,
+                      ),
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton:
-          widget.construct == null ? _PracticeButton(view: widget.view) : null,
+      floatingActionButton: widget.construct == null
+          ? _PracticeButton(view: widget.view)
+          : null,
     );
   }
 }
@@ -236,10 +227,7 @@ class _PracticeButton extends StatelessWidget {
   void _showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        behavior: SnackBarBehavior.floating,
-      ),
+      SnackBar(content: Text(message), behavior: SnackBarBehavior.floating),
     );
   }
 
@@ -248,14 +236,13 @@ class _PracticeButton extends StatelessWidget {
     final analyticsService = Matrix.of(context).analyticsDataService;
     if (analyticsService.isInitializing) {
       return FloatingActionButton.extended(
-        onPressed: () => _showSnackbar(
-          context,
-          L10n.of(context).loadingPleaseWait,
-        ),
+        onPressed: () =>
+            _showSnackbar(context, L10n.of(context).loadingPleaseWait),
         label: Text(view.practiceButtonText(context)),
         backgroundColor: Theme.of(context).colorScheme.surface,
-        foregroundColor:
-            Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+        foregroundColor: Theme.of(
+          context,
+        ).colorScheme.onSurface.withValues(alpha: 0.5),
       );
     }
 
@@ -265,22 +252,17 @@ class _PracticeButton extends StatelessWidget {
     return FloatingActionButton.extended(
       onPressed: enabled
           ? () => context.go("/rooms/analytics/${view.name}/practice")
-          : () => _showSnackbar(
-                context,
-                L10n.of(context).notEnoughToPractice,
-              ),
-      backgroundColor:
-          enabled ? null : Theme.of(context).colorScheme.surfaceContainer,
+          : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
+      backgroundColor: enabled
+          ? null
+          : Theme.of(context).colorScheme.surfaceContainer,
       foregroundColor: enabled
           ? null
           : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
       label: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            enabled ? Symbols.fitness_center : Icons.lock_outline,
-            size: 18,
-          ),
+          Icon(enabled ? Symbols.fitness_center : Icons.lock_outline, size: 18),
           const SizedBox(width: 4),
           Text(view.practiceButtonText(context)),
         ],

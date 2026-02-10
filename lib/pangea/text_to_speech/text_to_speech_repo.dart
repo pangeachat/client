@@ -14,10 +14,7 @@ class _TextToSpeechCacheItem {
   final Future<TextToSpeechResponseModel> data;
   final DateTime timestamp;
 
-  const _TextToSpeechCacheItem({
-    required this.data,
-    required this.timestamp,
-  });
+  const _TextToSpeechCacheItem({required this.data, required this.timestamp});
 }
 
 class TextToSpeechRepo {
@@ -72,11 +69,7 @@ class TextToSpeechRepo {
       return Result.value(res);
     } catch (e, s) {
       _cache.remove(request.hashCode.toString());
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: request.toJson(),
-      );
+      ErrorHandler.logError(e: e, s: s, data: request.toJson());
       return Result.error(e);
     }
   }
@@ -97,9 +90,8 @@ class TextToSpeechRepo {
   static void _setCached(
     TextToSpeechRequestModel request,
     Future<TextToSpeechResponseModel> response,
-  ) =>
-      _cache[request.hashCode.toString()] = _TextToSpeechCacheItem(
-        data: response,
-        timestamp: DateTime.now(),
-      );
+  ) => _cache[request.hashCode.toString()] = _TextToSpeechCacheItem(
+    data: response,
+    timestamp: DateTime.now(),
+  );
 }

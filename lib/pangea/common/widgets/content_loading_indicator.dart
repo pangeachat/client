@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 
 class ContentLoadingIndicator extends StatelessWidget {
-  const ContentLoadingIndicator({
-    super.key,
-    this.height,
-  });
+  const ContentLoadingIndicator({super.key, this.height});
 
   final double? height;
 

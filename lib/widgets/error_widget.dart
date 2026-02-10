@@ -25,10 +25,10 @@ class _FluffyChatErrorWidgetState extends State<FluffyChatErrorWidget> {
       // related sentry issue: https://pangea-chat.sentry.io/issues/5970490357
       if (!context.mounted) return;
       // Pangea#
-      ErrorReporter(context, 'Error Widget').onErrorCallback(
-        widget.details.exception,
-        widget.details.stack,
-      );
+      ErrorReporter(
+        context,
+        'Error Widget',
+      ).onErrorCallback(widget.details.exception, widget.details.stack);
     });
   }
 

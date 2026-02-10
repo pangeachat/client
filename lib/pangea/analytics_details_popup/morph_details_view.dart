@@ -14,10 +14,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MorphDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
 
-  const MorphDetailsView({
-    required this.constructId,
-    super.key,
-  });
+  const MorphDetailsView({required this.constructId, super.key});
 
   MorphFeaturesEnum get _morphFeature =>
       MorphFeaturesEnumExtension.fromString(constructId.category);
@@ -26,8 +23,9 @@ class MorphDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future:
-          Matrix.of(context).analyticsDataService.getConstructUse(constructId),
+      future: Matrix.of(
+        context,
+      ).analyticsDataService.getConstructUse(constructId),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
@@ -57,9 +55,7 @@ class MorphDetailsView extends StatelessWidget {
                 ConstructXPProgressBar(construct: construct.id),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: AnalyticsDetailsUsageContent(
-                    construct: construct,
-                  ),
+                  child: AnalyticsDetailsUsageContent(construct: construct),
                 ),
               ],
             ],

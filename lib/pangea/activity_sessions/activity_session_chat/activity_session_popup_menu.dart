@@ -31,11 +31,7 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
             widget.onLeave();
             break;
           case ActivityPopupMenuActions.invite:
-            NavigationUtil.goToSpaceRoute(
-              widget.room.id,
-              ['invite'],
-              context,
-            );
+            NavigationUtil.goToSpaceRoute(widget.room.id, ['invite'], context);
             break;
           case ActivityPopupMenuActions.download:
             downloadChatAction(widget.room.id, context);

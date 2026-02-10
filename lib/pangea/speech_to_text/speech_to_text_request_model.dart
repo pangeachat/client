@@ -18,9 +18,9 @@ class SpeechToTextRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        "audio_content": base64Encode(audioContent),
-        "config": config.toJson(),
-      };
+    "audio_content": base64Encode(audioContent),
+    "config": config.toJson(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -33,12 +33,10 @@ class SpeechToTextRequestModel {
 
   @override
   int get hashCode {
-    final bytesSample =
-        audioContent.length > 10 ? audioContent.sublist(0, 10) : audioContent;
-    return Object.hashAll([
-      Object.hashAll(bytesSample),
-      config.hashCode,
-    ]);
+    final bytesSample = audioContent.length > 10
+        ? audioContent.sublist(0, 10)
+        : audioContent;
+    return Object.hashAll([Object.hashAll(bytesSample), config.hashCode]);
   }
 }
 
@@ -60,11 +58,11 @@ class SpeechToTextAudioConfigModel {
   });
 
   Map<String, dynamic> toJson() => {
-        "encoding": encoding.value,
-        "sample_rate_hertz": sampleRateHertz,
-        "user_l1": userL1,
-        "user_l2": userL2,
-        "enable_word_confidence": enableWordConfidence,
-        "enable_automatic_punctuation": enableAutomaticPunctuation,
-      };
+    "encoding": encoding.value,
+    "sample_rate_hertz": sampleRateHertz,
+    "user_l1": userL1,
+    "user_l2": userL2,
+    "enable_word_confidence": enableWordConfidence,
+    "enable_automatic_punctuation": enableAutomaticPunctuation,
+  };
 }

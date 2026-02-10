@@ -33,14 +33,14 @@ class ITStepModel {
           ...responseModel.continuances
               .where((c) => c.text.toLowerCase() != goldCont.text.toLowerCase())
               .map((e) {
-            //we only want one green choice and for that to be our gold
-            if (e.level == ChoreoConstants.levelThresholdForGreen) {
-              return e.copyWith(
-                level: ChoreoConstants.levelThresholdForYellow,
-              );
-            }
-            return e;
-          }),
+                //we only want one green choice and for that to be our gold
+                if (e.level == ChoreoConstants.levelThresholdForGreen) {
+                  return e.copyWith(
+                    level: ChoreoConstants.levelThresholdForYellow,
+                  );
+                }
+                return e;
+              }),
           goldCont,
         ];
         continuances.shuffle();
@@ -49,16 +49,10 @@ class ITStepModel {
       }
     }
 
-    return ITStepModel(
-      continuances: continuances,
-      isFinal: isFinal,
-    );
+    return ITStepModel(continuances: continuances, isFinal: isFinal);
   }
 
-  ITStepModel copyWith({
-    List<ContinuanceModel>? continuances,
-    bool? isFinal,
-  }) {
+  ITStepModel copyWith({List<ContinuanceModel>? continuances, bool? isFinal}) {
     return ITStepModel(
       continuances: continuances ?? this.continuances,
       isFinal: isFinal ?? this.isFinal,

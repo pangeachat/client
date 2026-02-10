@@ -10,10 +10,7 @@ class PayloadClient {
   final String accessToken;
   final String basePath = "/cms/api";
 
-  PayloadClient({
-    required this.baseUrl,
-    required this.accessToken,
-  });
+  PayloadClient({required this.baseUrl, required this.accessToken});
 
   Map<String, String> get _headers {
     final headers = {
@@ -188,8 +185,9 @@ class PayloadClient {
           build('$prefix[$i]', value[i]);
         }
       } else {
-        final String encodedKey =
-            encode ? Uri.encodeQueryComponent(prefix) : prefix;
+        final String encodedKey = encode
+            ? Uri.encodeQueryComponent(prefix)
+            : prefix;
         final String encodedVal = encode
             ? Uri.encodeQueryComponent(value.toString())
             : value.toString();

@@ -8,10 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 class AnalyticsDetailsUsageContent extends StatelessWidget {
   final ConstructUses construct;
 
-  const AnalyticsDetailsUsageContent({
-    required this.construct,
-    super.key,
-  });
+  const AnalyticsDetailsUsageContent({required this.construct, super.key});
 
   @override
   Widget build(BuildContext context) {

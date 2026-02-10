@@ -54,12 +54,12 @@ class CourseInvitePageController extends State<CourseInvitePage>
     final spaceId = await widget.courseCreationCompleter!.future;
     final room = Matrix.of(context).client.getRoomById(spaceId);
     if (room == null || room.coursePlan == null) {
-      await Matrix.of(context).client.onRoomState.stream.firstWhere((event) {
-        return event.roomId == spaceId &&
-            event.state.type == PangeaEventTypes.coursePlan;
-      }).timeout(
-        const Duration(seconds: 10),
-      );
+      await Matrix.of(context).client.onRoomState.stream
+          .firstWhere((event) {
+            return event.roomId == spaceId &&
+                event.state.type == PangeaEventTypes.coursePlan;
+          })
+          .timeout(const Duration(seconds: 10));
     }
     return spaceId;
   }
@@ -76,9 +76,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
         child: Center(
           child: Container(
             padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(
-              maxWidth: 750,
-            ),
+            constraints: const BoxConstraints(maxWidth: 750),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -97,10 +95,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
                               spacing: 10.0,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Icon(
-                                  Icons.map_outlined,
-                                  size: 40.0,
-                                ),
+                                const Icon(Icons.map_outlined, size: 40.0),
                                 Flexible(
                                   child: Text(
                                     course!.title,
@@ -121,8 +116,8 @@ class CourseInvitePageController extends State<CourseInvitePage>
                         ),
                       )
                     : loadingCourse
-                        ? const CircularProgressIndicator.adaptive()
-                        : const SizedBox(),
+                    ? const CircularProgressIndicator.adaptive()
+                    : const SizedBox(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -144,13 +139,15 @@ class CourseInvitePageController extends State<CourseInvitePage>
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               FutureBuilder(
-                                future:
-                                    client.getProfileFromUserId(client.userID!),
+                                future: client.getProfileFromUserId(
+                                  client.userID!,
+                                ),
                                 builder: (context, snapshot) {
                                   return Avatar(
                                     size: avatarSize,
                                     mxContent: snapshot.data?.avatarUrl,
-                                    name: snapshot.data?.displayName ??
+                                    name:
+                                        snapshot.data?.displayName ??
                                         client.userID!.localpart,
                                     userId: client.userID!,
                                   );
@@ -170,10 +167,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
                                   ),
                                 );
                               }),
-                              const Icon(
-                                Icons.more_horiz,
-                                size: 24.0,
-                              ),
+                              const Icon(Icons.more_horiz, size: 24.0),
                             ],
                           );
                         },
@@ -229,9 +223,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
                       child: Row(
                         spacing: 8.0,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).playWithAI),
-                        ],
+                        children: [Text(L10n.of(context).playWithAI)],
                       ),
                     ),
                   ],

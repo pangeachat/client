@@ -2,6 +2,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
@@ -88,10 +90,7 @@ class WordZoomWidget extends StatelessWidget {
                                     icon: const Icon(Icons.close),
                                     onPressed: onClose,
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
                               child: Container(
                                 constraints: const BoxConstraints(
@@ -115,16 +114,13 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
-                                    langCode: langCode,
+                                    textLanguage: PLanguageStore.byLangCode(langCode) ?? LanguageModel.unknown,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
                                     messageInfo: event?.content ?? {},
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                           ],
                         ),
                       ),
@@ -136,7 +132,7 @@ class WordZoomWidget extends StatelessWidget {
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
-                                    langCode: langCode,
+                                    textLanguage: PLanguageStore.byLangCode(langCode) ?? LanguageModel.unknown,
                                     pos: pos,
                                     morph: morph,
                                     style: const TextStyle(fontSize: 14.0),
@@ -203,9 +199,7 @@ class WordZoomWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              content,
-            ],
+            children: [content],
           ),
         ),
       ),

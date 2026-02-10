@@ -35,9 +35,7 @@ class SettingsLearningView extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: !controller.widget.isDialog,
             centerTitle: true,
-            title: Text(
-              L10n.of(context).learningSettings,
-            ),
+            title: Text(L10n.of(context).learningSettings),
             leading: controller.widget.isDialog
                 ? IconButton(
                     icon: const Icon(Icons.close),
@@ -60,46 +58,53 @@ class SettingsLearningView extends StatelessWidget {
                           spacing: 16.0,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                              ),
                               child: Column(
                                 spacing: 16.0,
                                 children: [
                                   PLanguageDropdown(
                                     onChange: (lang) =>
                                         controller.setSelectedLanguage(
-                                      sourceLanguage: lang,
-                                    ),
+                                          sourceLanguage: lang,
+                                        ),
                                     initialLanguage:
                                         controller.selectedSourceLanguage ??
-                                            LanguageModel.unknown,
-                                    languages: MatrixState.pangeaController
-                                        .pLanguageStore.baseOptions,
+                                        LanguageModel.unknown,
+                                    languages: MatrixState
+                                        .pangeaController
+                                        .pLanguageStore
+                                        .baseOptions,
                                     isL2List: false,
-                                    decorationText:
-                                        L10n.of(context).myBaseLanguage,
+                                    decorationText: L10n.of(
+                                      context,
+                                    ).myBaseLanguage,
                                     hasError:
                                         controller.languageMatchError != null,
-                                    backgroundColor: Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHigh,
+                                    backgroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHigh,
                                   ),
                                   PLanguageDropdown(
                                     onChange: (lang) =>
                                         controller.setSelectedLanguage(
-                                      targetLanguage: lang,
-                                    ),
+                                          targetLanguage: lang,
+                                        ),
                                     initialLanguage:
                                         controller.selectedTargetLanguage,
-                                    languages: MatrixState.pangeaController
-                                        .pLanguageStore.targetOptions,
+                                    languages: MatrixState
+                                        .pangeaController
+                                        .pLanguageStore
+                                        .targetOptions,
                                     isL2List: true,
-                                    decorationText:
-                                        L10n.of(context).iWantToLearn,
+                                    decorationText: L10n.of(
+                                      context,
+                                    ).iWantToLearn,
                                     error: controller.languageMatchError,
-                                    backgroundColor: Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHigh,
+                                    backgroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHigh,
                                   ),
                                   if (controller.userL1?.langCodeShort ==
                                       controller.userL2?.langCodeShort)
@@ -112,18 +117,19 @@ class SettingsLearningView extends StatelessWidget {
                                         children: [
                                           Icon(
                                             Icons.info_outlined,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .error,
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.error,
                                           ),
                                           Flexible(
                                             child: Text(
-                                              L10n.of(context)
-                                                  .noIdenticalLanguages,
+                                              L10n.of(
+                                                context,
+                                              ).noIdenticalLanguages,
                                               style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .error,
+                                                color: Theme.of(
+                                                  context,
+                                                ).colorScheme.error,
                                               ),
                                             ),
                                           ),
@@ -153,18 +159,18 @@ class SettingsLearningView extends StatelessWidget {
                                         controller.setAbout(val),
                                     minLines: 1,
                                     maxLines: 3,
+                                    maxLength: 100,
                                   ),
                                 ],
                               ),
                             ),
                             ...ToolSetting.values
-                                .where(
-                                  (tool) => tool.isAvailableSetting,
-                                )
+                                .where((tool) => tool.isAvailableSetting)
                                 .map(
                                   (toolSetting) => _ProfileSwitchTile(
-                                    value:
-                                        controller.getToolSetting(toolSetting),
+                                    value: controller.getToolSetting(
+                                      toolSetting,
+                                    ),
                                     setting: toolSetting,
                                     onChanged: (v) {
                                       controller.updateToolSetting(
@@ -182,17 +188,13 @@ class SettingsLearningView extends StatelessWidget {
                             SwitchListTile.adaptive(
                               value: controller.publicProfile,
                               onChanged: controller.setPublicProfile,
-                              title: Text(
-                                L10n.of(context).publicProfileTitle,
-                              ),
+                              title: Text(L10n.of(context).publicProfileTitle),
                               subtitle: Text(
                                 L10n.of(context).publicProfileDesc,
                               ),
                               activeThumbColor: AppConfig.activeToggleColor,
                             ),
-                            ResetInstructionsListTile(
-                              controller: controller,
-                            ),
+                            ResetInstructionsListTile(controller: controller),
                           ],
                         ),
                       ),

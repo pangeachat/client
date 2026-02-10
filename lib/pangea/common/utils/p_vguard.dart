@@ -20,8 +20,9 @@ class PAuthGaurd {
       return Matrix.of(context).client.isLogged() ? '/rooms' : null;
     }
 
-    final isLogged =
-        Matrix.of(context).widget.clients.any((client) => client.isLogged());
+    final isLogged = Matrix.of(
+      context,
+    ).widget.clients.any((client) => client.isLogged());
     if (!isLogged) return null;
 
     // If user hasn't set their L2,
@@ -39,8 +40,9 @@ class PAuthGaurd {
       return Matrix.of(context).client.isLogged() ? null : '/home';
     }
 
-    final isLogged =
-        Matrix.of(context).widget.clients.any((client) => client.isLogged());
+    final isLogged = Matrix.of(
+      context,
+    ).widget.clients.any((client) => client.isLogged());
     if (!isLogged) {
       return '/home';
     }
@@ -60,9 +62,9 @@ class PAuthGaurd {
       return Matrix.of(context).client.isLogged() ? null : '/home';
     }
 
-    final isLogged = Matrix.of(context).widget.clients.any(
-          (client) => client.isLogged(),
-        );
+    final isLogged = Matrix.of(
+      context,
+    ).widget.clients.any((client) => client.isLogged());
     if (!isLogged) {
       return '/home';
     }

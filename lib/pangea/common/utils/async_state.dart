@@ -101,11 +101,7 @@ abstract class AsyncLoader<T> {
       }
 
       if (e is! HttpException) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {},
-        );
+        ErrorHandler.logError(e: e, s: s, data: {});
       }
     }
   }

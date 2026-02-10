@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 /// Fetches and exposes the v2 [PTResponse] for a given surface text.
 ///
 /// Exposes both the [PTRequest] used and the full [PTResponse] received,
 /// which callers need for token feedback and disambiguation.
 class PhoneticTranscriptionBuilder extends StatefulWidget {
-  final String langCode;
+  final LanguageModel textLanguage;
   final String text;
   final ValueNotifier<int>? reloadNotifier;
 
@@ -21,21 +21,18 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
 
   const PhoneticTranscriptionBuilder({
     super.key,
-    required this.langCode,
+    required this.textLanguage,
     required this.text,
     required this.builder,
     this.reloadNotifier,
   });
 
   @override
-  PhoneticTranscriptionBuilderState createState() =>
-      PhoneticTranscriptionBuilderState();
+  PhoneticTranscriptionBuilderState createState() => PhoneticTranscriptionBuilderState();
 }
 
-class PhoneticTranscriptionBuilderState
-    extends State<PhoneticTranscriptionBuilder> {
-  final ValueNotifier<AsyncState<PTResponse>> _loader =
-      ValueNotifier(const AsyncState.idle());
+class PhoneticTranscriptionBuilderState extends State<PhoneticTranscriptionBuilder> {
+  final ValueNotifier<AsyncState<PTResponse>> _loader = ValueNotifier(const AsyncState.idle());
 
   @override
   void initState() {
@@ -47,8 +44,7 @@ class PhoneticTranscriptionBuilderState
   @override
   void didUpdateWidget(covariant PhoneticTranscriptionBuilder oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.text != widget.text ||
-        oldWidget.langCode != widget.langCode) {
+    if (oldWidget.text != widget.text || oldWidget.textLanguage != widget.textLanguage) {
       _load();
     }
   }
@@ -65,8 +61,7 @@ class PhoneticTranscriptionBuilderState
   bool get isLoaded => _loader.value is AsyncLoaded;
 
   /// The full v2 response (for feedback and disambiguation).
-  PTResponse? get ptResponse =>
-      isLoaded ? (_loader.value as AsyncLoaded<PTResponse>).value : null;
+  PTResponse? get ptResponse => isLoaded ? (_loader.value as AsyncLoaded<PTResponse>).value : null;
 
   /// The request that was used to fetch this response.
   PTRequest get ptRequest => _request;
@@ -76,7 +71,7 @@ class PhoneticTranscriptionBuilderState
 
   PTRequest get _request => PTRequest(
         surface: widget.text,
-        langCode: widget.langCode,
+        langCode: widget.textLanguage.langCode,
         userL1: MatrixState.pangeaController.userController.userL1Code ?? 'en',
         userL2: MatrixState.pangeaController.userController.userL2Code ?? 'en',
       );

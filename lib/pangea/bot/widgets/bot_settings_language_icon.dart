@@ -10,10 +10,7 @@ import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 class BotSettingsLanguageIcon extends StatelessWidget {
   final User user;
 
-  const BotSettingsLanguageIcon({
-    super.key,
-    required this.user,
-  });
+  const BotSettingsLanguageIcon({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +28,10 @@ class BotSettingsLanguageIcon extends StatelessWidget {
       borderRadius: BorderRadius.circular(32.0),
       onTap: room.isRoomAdmin
           ? () => showMemberActionsPopupMenu(
-                context: context,
-                user: user,
-                room: room,
-              )
+              context: context,
+              user: user,
+              room: room,
+            )
           : null,
       child: Container(
         decoration: BoxDecoration(
