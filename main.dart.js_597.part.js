@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Batu ikastaro batera jarduerak probatzeko.";
     },
+    get$courseDescription() {
+      return "Ikastaroek 3-8 moduluz osatuta daude, eta moduluek hitzak testuinguru desberdinetan praktikatzen laguntzeko jarduerak dituzte.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Y/u62hJmb2kB5beRfeDLqLqVaCY="] = d.current;
+  d["cXhYtGy1lgvSXYYGT4Xn9tEzY3A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

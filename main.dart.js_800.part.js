@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Pridajte sa k kurzu, aby ste vysk\xfa\u0161ali aktivity.";
     },
+    get$courseDescription() {
+      return "Kurzy sa skladaj\xfa z 3-8 modulov, z ktor\xfdch ka\u017ed\xfd obsahuje aktivity na povzbudenie k praktizovaniu slov v r\xf4znych kontextoch";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xUk4yYlD0wDpadkgaz48qPPnIxM="] = d.current;
+  d["PKN6Ubl9Mvtx0zVycMa+gKWNTFw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

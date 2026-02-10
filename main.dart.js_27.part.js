@@ -5574,6 +5574,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Junte-se a um curso para experimentar atividades.";
     },
+    get$courseDescription() {
+      return string$.Os_cur;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11124,6 +11127,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$joinCourseForActivities() {
       return "Participe de um curso para experimentar atividades.";
+    },
+    get$courseDescription() {
+      return string$.Os_cur;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16676,6 +16682,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Junte-se a um curso para tentar atividades.";
     },
+    get$courseDescription() {
+      return string$.Os_cur;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16801,6 +16810,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Oculta: "Ocultar formatos de mensagem inv\xe1lidos ou desconhecidos",
     Oh__es: "Oh, este curso precisa de um plano!\n\nPlanos de curso s\xe3o uma sequ\xeancia de t\xf3picos e atividades de conversa.",
     Ops__E: "Ops! Esta atividade precisa de mais 1 pessoa.",
+    Os_cur: "Os cursos consistem em 3-8 m\xf3dulos, cada um com atividades para incentivar a pr\xe1tica de palavras em diferentes contextos",
     Ou_a_a: "Ou\xe7a a mensagem completa. Depois, associe os \xe1udios \xe0s palavras.",
     Pangea: "Pangea Chat \xe9 um aplicativo de mensagens, ent\xe3o as notifica\xe7\xf5es s\xe3o importantes!",
     Para_a: "Para a melhor experi\xeancia ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
@@ -16874,7 +16884,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o3ReE7se/jY50q1DiwgPlFUPMCg="] = d.current;
+  d["RcK1n6agilclBc8Czio2fTfEqZU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Ali\u011du al kurso por provi aktivadojn.";
     },
+    get$courseDescription() {
+      return "Kursoj konsistas el 3-8 moduloj, \u0109iu kun aktivadoj por instigi praktikadon de vortoj en diversaj kuntekstoj";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SYY/6gR7FCPLz+XcF46IQAj0diQ="] = d.current;
+  d["Jb/pn/SdDRF3PcRfsG2a5W8v7GA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

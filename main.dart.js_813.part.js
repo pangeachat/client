@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Etkinlikleri denemek i\xe7in bir kursa kat\u0131l\u0131n.";
     },
+    get$courseDescription() {
+      return "Kurslar, her biri farkl\u0131 ba\u011flamlarda kelimeleri pratik yapmay\u0131 te\u015fvik eden etkinliklerle 3-8 mod\xfclden olu\u015fur";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eQGr4fKnT2iFnXoErWy+hylbVek="] = d.current;
+  d["8HQZCo3nQ4/CnHTrY55wkrgzdt4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

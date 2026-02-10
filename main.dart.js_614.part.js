@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Liity kurssille kokeillaksesi aktiviteetteja.";
     },
+    get$courseDescription() {
+      return "Kurssit koostuvat 3-8 moduulista, joista jokaisessa on aktiviteetteja, jotka kannustavat sanojen harjoitteluun eri konteksteissa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UbZFobiD0Sjej5HFSJ5DODhIlMU="] = d.current;
+  d["t4ib60QysBeL5UiuOjdNqhAjzAI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

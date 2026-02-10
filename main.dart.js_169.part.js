@@ -5564,6 +5564,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Bashkohuni n\xeb nj\xeb kurs p\xebr t\xeb provuar aktivitete.";
     },
+    get$courseDescription() {
+      return "Kursus terdiri dari 3-8 modul masing-masing dengan aktivitas untuk mendorong praktik kata dalam konteks yang berbeda";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5589,7 +5592,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ge95+MuKZNmMwXnAinqRpTUMg88="] = d.current;
+  d["dFMFcfd4YbTYwpKjChyJc8Xo91g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Bli med i et kurs for \xe5 pr\xf8ve aktiviteter.";
     },
+    get$courseDescription() {
+      return "Kurs best\xe5r av 3-8 moduler, hver med aktiviteter for \xe5 oppmuntre til \xe5 \xf8ve p\xe5 ord i forskjellige sammenhenger";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["w0vppU+1rmllbzej0EqOU555YAc="] = d.current;
+  d["3Q1kYisSr9AP3Df/zy+Z/xrr5V4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

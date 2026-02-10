@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Prisijunkite prie kurso, kad i\u0161bandytum\u0117te veiklas.";
     },
+    get$courseDescription() {
+      return "Kursai susideda i\u0161 3-8 moduli\u0173, kuriuose yra veikl\u0173, skatinan\u010di\u0173 praktikuoti \u017eod\u017eius skirtinguose kontekstuose";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DCyVdqgLqZMoGuZoJrBZRBDpkRo="] = d.current;
+  d["SvULx4Gt4JS+KLdifZxgc/ndBk0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

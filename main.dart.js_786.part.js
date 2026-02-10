@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Do\u0142\u0105cz do kursu, aby spr\xf3bowa\u0107 aktywno\u015bci.";
     },
+    get$courseDescription() {
+      return "Kursy sk\u0142adaj\u0105 si\u0119 z 3-8 modu\u0142\xf3w, z kt\xf3rych ka\u017cdy zawiera \u0107wiczenia zach\u0119caj\u0105ce do praktykowania s\u0142\xf3w w r\xf3\u017cnych kontekstach";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pyWET+vtHWF3oo7UYRRuSJ5miIE="] = d.current;
+  d["0z2k1orE1glWEfLROsb+Izby4aU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

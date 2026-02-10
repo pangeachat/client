@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Treten Sie einem Kurs bei, um Aktivit\xe4ten auszuprobieren.";
     },
+    get$courseDescription() {
+      return "Kurse bestehen aus 3-8 Modulen, die Aktivit\xe4ten enthalten, um das \xdcben von W\xf6rtern in verschiedenen Kontexten zu f\xf6rdern";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ueSqSVpS+coqGIVFyiXurkqhUS8="] = d.current;
+  d["XW9KOMZm6kAkoZ2GaZOUShUMH6M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_411.part.js.map

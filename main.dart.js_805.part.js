@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Pridru\u017eite se kursu da biste isprobali aktivnosti.";
     },
+    get$courseDescription() {
+      return "Kursevi se sastoje od 3-8 modula, svaki sa aktivnostima koje podsti\u010du ve\u017ebanje re\u010di u razli\u010ditim kontekstima";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G1C7S4niEOLOsu0JsO3IpqP60Vk="] = d.current;
+  d["4BYw+2wzQjJBcmgQFA7WyY3LV6U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_805.part.js.map

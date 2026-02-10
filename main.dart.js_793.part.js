@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Al\u0103tur\u0103-te unui curs pentru a \xeencerca activit\u0103\u021bi.";
     },
+    get$courseDescription() {
+      return "Cursurile constau \xeen 3-8 module, fiecare cu activit\u0103\u021bi pentru a \xeencuraja practicarea cuvintelor \xeen contexte diferite";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5578,7 +5581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/Azp9z8hp3AkR03uw8C1OroLjsk="] = d.current;
+  d["n+3+ZBTVJMyuCvyz/nvI3fx9/SE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_793.part.js.map

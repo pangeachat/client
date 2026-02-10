@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "G\xe5 med i en kurs f\xf6r att prova aktiviteter.";
     },
+    get$courseDescription() {
+      return "Kurser best\xe5r av 3-8 moduler, var och en med aktiviteter f\xf6r att uppmuntra till att \xf6va ord i olika sammanhang";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u8WIcgT0+AFY0qmoEEWtfn90nuE="] = d.current;
+  d["xeIPus0ec7ZwjZuq8PH7dTPq9Ew="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

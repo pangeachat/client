@@ -5562,6 +5562,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinCourseForActivities() {
       return "Csatlakozz egy kurzushoz, hogy kipr\xf3b\xe1lhasd a tev\xe9kenys\xe9geket.";
     },
+    get$courseDescription() {
+      return "A kurzusok 3-8 modulb\xf3l \xe1llnak, mindegyikben tev\xe9kenys\xe9gekkel, amelyek \xf6szt\xf6nzik a szavak k\xfcl\xf6nb\xf6z\u0151 kontextusokban val\xf3 gyakorl\xe1s\xe1t";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5575,7 +5578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qzeyw5aSAEWhy/iVuKdqlvxypOg="] = d.current;
+  d["7VdVu+MUYSIAlnaqpFIWI55o8S8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map
