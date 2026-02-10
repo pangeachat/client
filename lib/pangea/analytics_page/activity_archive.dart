@@ -46,6 +46,10 @@ class ActivityArchiveState extends State<ActivityArchive> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final linkColor = theme.brightness == Brightness.dark
+        ? theme.colorScheme.primaryContainer
+        : theme.colorScheme.primary;
     return StreamBuilder(
       stream: Matrix.of(
         context,
@@ -92,11 +96,7 @@ class ActivityArchiveState extends State<ActivityArchive> {
                                         text: L10n.of(
                                           context,
                                         ).joinCourseForActivities,
-                                        style: TextStyle(
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
-                                        ),
+                                        style: TextStyle(color: linkColor),
                                         recognizer: recognizer,
                                       ),
                                     ]
