@@ -255,12 +255,14 @@ class _NoActivityContentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (practiceMode == MessagePracticeMode.wordEmoji && target != null) {
-      final displayEmoji =
-          PracticeRecordController.correctResponse(target!, token)?.text ??
-          token.vocabConstructID.userSetEmoji ??
-          '';
-      return Text(displayEmoji, style: emojiStyle);
+    if (practiceMode == MessagePracticeMode.wordEmoji) {
+      String? displayEmoji = token.vocabConstructID.userSetEmoji;
+      if (target != null) {
+        displayEmoji =
+            PracticeRecordController.correctResponse(target!, token)?.text ??
+            displayEmoji;
+      }
+      return Text(displayEmoji ?? '', style: emojiStyle);
     }
     if (practiceMode == MessagePracticeMode.wordMorph && target != null) {
       final morphFeature = target!.morphFeature!;
