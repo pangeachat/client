@@ -37,8 +37,8 @@ class LanguageUpdate {
 class UserController {
   final StreamController<LanguageUpdate> languageStream =
       StreamController.broadcast();
-  final StreamController settingsUpdateStream =
-      StreamController<Profile>.broadcast();
+  final StreamController<Profile> settingsUpdateStream =
+      StreamController.broadcast();
 
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
@@ -52,10 +52,26 @@ class UserController {
   matrix.Client get client => MatrixState.pangeaController.matrixState.client;
 
   void _onProfileUpdate(matrix.SyncUpdate sync) {
+    final prevTargetLang = userL2;
+    final prevBaseLang = userL1;
+
     final profileData = client.accountData[ModelKey.userProfile]?.content;
     final Profile? fromAccountData = Profile.fromAccountData(profileData);
     if (fromAccountData != null) {
       _cachedProfile = fromAccountData;
+
+      if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
+        languageStream.add(
+          LanguageUpdate(
+            baseLang: userL1!,
+            targetLang: userL2!,
+            prevBaseLang: prevBaseLang,
+            prevTargetLang: prevTargetLang,
+          ),
+        );
+      } else {
+        settingsUpdateStream.add(fromAccountData);
+      }
     }
   }
 
@@ -92,8 +108,6 @@ class UserController {
     waitForDataInSync = false,
   }) async {
     await initialize();
-    final prevTargetLang = userL2;
-    final prevBaseLang = userL1;
     final prevHash = profile.hashCode;
 
     final Profile updatedProfile = update(profile);
@@ -103,19 +117,6 @@ class UserController {
     }
 
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
-
-    if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
-      languageStream.add(
-        LanguageUpdate(
-          baseLang: userL1!,
-          targetLang: userL2!,
-          prevBaseLang: prevBaseLang,
-          prevTargetLang: prevTargetLang,
-        ),
-      );
-    } else {
-      settingsUpdateStream.add(updatedProfile);
-    }
   }
 
   /// A completer for the profile model of a user.
