@@ -468,7 +468,15 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<void> updateXPOffset(int offset) {
     return _transaction(() async {
       final stats = await getDerivedStats();
-      final updatedStats = stats.copyWith(offset: offset);
+      final updatedStats = stats.copyWithOffset(offset);
+      await _derivedStatsBox.put('derived_stats', updatedStats.toJson());
+    });
+  }
+
+  Future<void> updateTotalXP(int totalXP) {
+    return _transaction(() async {
+      final stats = await getDerivedStats();
+      final updatedStats = stats.copyWithTotalXP(totalXP);
       await _derivedStatsBox.put('derived_stats', updatedStats.toJson());
     });
   }

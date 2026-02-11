@@ -136,6 +136,9 @@ class AnalyticsProfileModel {
   int? get level => languageAnalytics?[targetLanguage]?.level;
 
   int? get xpOffset => languageAnalytics?[targetLanguage]?.xpOffset;
+
+  int? xpOffsetByLanguage(LanguageModel language) =>
+      languageAnalytics?[language]?.xpOffset;
 }
 
 class LanguageAnalyticsProfileEntry {

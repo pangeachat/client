@@ -62,7 +62,7 @@ class AnalyticsUpdateService {
     List<OneConstructUse> newConstructs, {
     bool forceUpdate = false,
   }) async {
-    await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
+    await dataService.updateDispatcher.sendLocalAnalyticsUpdate(
       AnalyticsUpdate(newConstructs, targetID: targetID),
     );
 
@@ -127,9 +127,6 @@ class AnalyticsUpdateService {
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
-    if (lang.langCodeShort == _l2?.langCodeShort) {
-      dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
-    }
   }
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {
@@ -143,7 +140,6 @@ class AnalyticsUpdateService {
     );
 
     await analyticsRoom.setAnalyticsSettings(updated);
-    await dataService.updateBlockedConstructs(constructId);
   }
 
   Future<void> setLemmaInfo(
@@ -160,7 +156,6 @@ class AnalyticsUpdateService {
       meaning: meaning,
     );
     if (userLemmaInfo == updated) return;
-    dataService.updateDispatcher.sendLemmaInfoUpdate(constructId, updated);
 
     try {
       await analyticsRoom.setUserSetLemmaInfo(constructId, updated);
