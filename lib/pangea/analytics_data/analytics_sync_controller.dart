@@ -5,9 +5,33 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+enum _AnalyticsUpdateEvent {
+  constructAnalytics,
+  activityAnalytics,
+  lemmaInfo,
+  blockedConstruct;
+
+  String get eventType {
+    switch (this) {
+      case _AnalyticsUpdateEvent.constructAnalytics:
+        return PangeaEventTypes.construct;
+      case _AnalyticsUpdateEvent.activityAnalytics:
+        return PangeaEventTypes.activityRoomIds;
+      case _AnalyticsUpdateEvent.lemmaInfo:
+        return PangeaEventTypes.userSetLemmaInfo;
+      case _AnalyticsUpdateEvent.blockedConstruct:
+        return PangeaEventTypes.analyticsSettings;
+    }
+  }
+}
 
 class AnalyticsSyncController {
   final Client client;
@@ -30,15 +54,43 @@ class AnalyticsSyncController {
     final analyticsRoom = _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
-    final events = update.rooms?.join?[analyticsRoom.id]?.timeline?.events
-        ?.where(
-          (e) =>
-              e.type == PangeaEventTypes.construct &&
-              e.senderId == client.userID,
-        );
+    final roomUpdates = update.rooms?.join?[analyticsRoom.id]?.timeline?.events;
+    if (roomUpdates == null) return;
 
-    if (events == null || events.isEmpty) return;
+    for (final type in _AnalyticsUpdateEvent.values) {
+      await _dispatchSyncEvents(type, roomUpdates, analyticsRoom);
+    }
+  }
 
+  Future<void> _dispatchSyncEvents(
+    _AnalyticsUpdateEvent type,
+    List<MatrixEvent> events,
+    Room analyticsRoom,
+  ) async {
+    final updates = events
+        .where((e) => e.type == type.eventType && e.senderId == client.userID)
+        .toList();
+
+    switch (type) {
+      case _AnalyticsUpdateEvent.constructAnalytics:
+        await _onConstructEvents(updates, analyticsRoom);
+        break;
+      case _AnalyticsUpdateEvent.activityAnalytics:
+        _onActivityEvents(updates);
+        break;
+      case _AnalyticsUpdateEvent.lemmaInfo:
+        _onLemmaInfoEvents(updates);
+        break;
+      case _AnalyticsUpdateEvent.blockedConstruct:
+        await _onBlockedConstructEvents(updates);
+        break;
+    }
+  }
+
+  Future<void> _onConstructEvents(
+    List<MatrixEvent> events,
+    Room analyticsRoom,
+  ) async {
     final constructEvents = events
         .map(
           (e) => ConstructAnalyticsEvent(
@@ -52,6 +104,60 @@ class AnalyticsSyncController {
     await dataService.updateDispatcher.sendServerAnalyticsUpdate(
       constructEvents,
     );
+  }
+
+  void _onActivityEvents(List<MatrixEvent> events) {
+    for (final event in events) {
+      if (event.content[ModelKey.roomIds] is! List) continue;
+      final roomIds = List<String>.from(
+        event.content[ModelKey.roomIds]! as List,
+      );
+      final prevContent =
+          event.unsigned?['prev_content'] as Map<String, Object?>?;
+      final prevRoomIds =
+          prevContent != null && prevContent[ModelKey.roomIds] is List
+          ? List<String>.from(prevContent[ModelKey.roomIds] as List)
+          : [];
+      final newRoomIds = roomIds
+          .where((id) => !prevRoomIds.contains(id))
+          .toList();
+
+      for (final roomId in newRoomIds) {
+        dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+      }
+    }
+  }
+
+  void _onLemmaInfoEvents(List<MatrixEvent> events) {
+    for (final event in events) {
+      if (event.stateKey == null) continue;
+      final cID = ConstructIdentifier.fromString(event.stateKey!);
+      if (cID == null) continue;
+
+      final update = UserSetLemmaInfo.fromJson(event.content);
+      dataService.updateDispatcher.sendLemmaInfoUpdate(cID, update);
+    }
+  }
+
+  Future<void> _onBlockedConstructEvents(List<MatrixEvent> events) async {
+    for (final event in events) {
+      final current = AnalyticsSettingsModel.fromJson(event.content);
+      final prevContent =
+          event.unsigned?['prev_content'] as Map<String, Object?>?;
+      final prev = prevContent != null
+          ? AnalyticsSettingsModel.fromJson(prevContent)
+          : null;
+
+      final newBlocked = current.blockedConstructs;
+      final prevBlocked = prev?.blockedConstructs ?? {};
+
+      final newlyBlocked = newBlocked.where((c) => !prevBlocked.contains(c));
+      for (final constructId in newlyBlocked) {
+        await dataService.updateDispatcher.sendBlockedConstructUpdate(
+          constructId,
+        );
+      }
+    }
   }
 
   Future<void> waitForSync(String analyticsRoomId) async {

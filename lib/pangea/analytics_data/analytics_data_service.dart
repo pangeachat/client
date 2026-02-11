@@ -156,7 +156,7 @@ class AnalyticsDataService {
     } finally {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
-      updateDispatcher.sendLocalAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendEmptyAnalyticsUpdate();
       updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
   }
@@ -408,7 +408,7 @@ class AnalyticsDataService {
     final newConstructs = await getConstructUses(updateIds);
 
     int points = 0;
-    if (update.blockedConstruct == null || updateIds.isNotEmpty) {
+    if (updateIds.isNotEmpty) {
       for (final id in updateIds) {
         final prevPoints = prevConstructs[id]?.points ?? 0;
         final newPoints = newConstructs[id]?.points ?? 0;
@@ -469,10 +469,6 @@ class AnalyticsDataService {
       }
     }
 
-    if (update.blockedConstruct != null) {
-      events.add(ConstructBlockedEvent(update.blockedConstruct!));
-    }
-
     if (newUnusedConstructs.isNotEmpty) {
       events.add(NewConstructsEvent(newUnusedConstructs));
     }
@@ -518,11 +514,7 @@ class AnalyticsDataService {
     );
 
     await _analyticsClientGetter.database.updateTotalXP(newXP);
-
     _invalidateCaches();
-    updateDispatcher.sendLocalAnalyticsUpdate(
-      AnalyticsUpdate([], blockedConstruct: constructId),
-    );
   }
 
   Future<void> clearLocalAnalytics() async {

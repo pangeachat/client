@@ -17,10 +17,9 @@ class LevelUpdate {
 
 class AnalyticsUpdate {
   final List<OneConstructUse> addedConstructs;
-  final ConstructIdentifier? blockedConstruct;
   final String? targetID;
 
-  AnalyticsUpdate(this.addedConstructs, {this.blockedConstruct, this.targetID});
+  AnalyticsUpdate(this.addedConstructs, {this.targetID});
 }
 
 class ConstructLevelUpdate {
@@ -86,6 +85,18 @@ class AnalyticsUpdateDispatcher {
     UserSetLemmaInfo lemmaInfo,
   ) => _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
+  Future<void> sendBlockedConstructUpdate(
+    ConstructIdentifier blockedConstruct,
+  ) async {
+    await dataService.updateBlockedConstructs(blockedConstruct);
+    final update = AnalyticsStreamUpdate(blockedConstruct: blockedConstruct);
+    constructUpdateStream.add(update);
+  }
+
+  void sendEmptyAnalyticsUpdate() {
+    constructUpdateStream.add(AnalyticsStreamUpdate());
+  }
+
   Future<void> sendServerAnalyticsUpdate(
     List<ConstructAnalyticsEvent> events,
   ) async {
@@ -112,9 +123,6 @@ class AnalyticsUpdateDispatcher {
         break;
       case final XPGainedEvent e:
         _onXPGained(e.points, e.targetID);
-        break;
-      case final ConstructBlockedEvent e:
-        _onBlockedConstruct(e.blockedConstruct);
         break;
       case final ConstructLevelUpEvent e:
         _onConstructLevelUp(e.constructId, e.level, e.targetID);
@@ -161,11 +169,6 @@ class AnalyticsUpdateDispatcher {
         targetID: targetID,
       ),
     );
-  }
-
-  void _onBlockedConstruct(ConstructIdentifier constructId) {
-    final update = AnalyticsStreamUpdate(blockedConstruct: constructId);
-    constructUpdateStream.add(update);
   }
 
   void _onNewConstruct(Set<ConstructIdentifier> constructIds) {
