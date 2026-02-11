@@ -1,5 +1,7 @@
 You own the docs. Three sources of truth must agree: **docs**, **code**, and **prior user guidance**. When they don't, resolve it. Update `.github/instructions/` docs when your changes shift conventions. Fix obvious factual errors (paths, class names) without asking. Flag ambiguity when sources contradict.
 
+**Repo**: `pangeachat/client` (NOT `krille-chan/fluffychat` — that is the upstream fork source)
+
 # client - Flutter/Dart Language Learning Chat App
 
 ## Tech Stack
