@@ -371,14 +371,18 @@ import { test as base, expect } from "@playwright/test";
 
 export const test = base.extend({
   page: async ({ page }, use) => {
-    await page.goto(process.env.STAGING_APP_URL!);
-    // Enable Flutter accessibility tree
-    await page.evaluate(() => {
-      const el = document.querySelector("flt-semantics-placeholder");
-      if (el) (el as HTMLElement).click();
-    });
-    // Wait for semantics tree to populate
-    await page.waitForTimeout(2000);
+    await page.goto("/");
+
+    // Enable Flutter semantics tree.
+    // Flutter positions flt-semantics-placeholder OFF-SCREEN, so Playwright's
+    // click() cannot reach it even with force:true. Use dispatchEvent instead.
+    await page
+      .getByRole("button", { name: "Enable accessibility" })
+      .dispatchEvent("click", { timeout: 15000 });
+
+    // Wait for semantics tree to populate after enabling
+    await page.waitForTimeout(3000);
+
     await use(page);
   },
 });
@@ -388,21 +392,32 @@ export { expect };
 
 ```typescript
 // e2e/auth.setup.ts — login once, save state for all tests
-import { test, expect } from "./fixtures";
+import path from "path";
+import { expect, test } from "./fixtures";
 
-const authFile = "e2e/.auth/user.json";
+const authFile = path.join(__dirname, ".auth", "user.json");
 
 test("authenticate", async ({ page }) => {
   await page.getByRole("button", { name: "Login to my account" }).click();
   await page.getByRole("button", { name: "Email" }).click();
-  await page
-    .getByRole("textbox", { name: "Username or email" })
-    .fill(process.env.TEST_USER!);
-  await page
-    .getByRole("textbox", { name: "Password" })
-    .fill(process.env.TEST_PASSWORD!);
+
+  // Flutter canvas inputs need explicit click() focus before fill(),
+  // with waitForTimeout(500) between fields — otherwise the first field's
+  // value gets lost when focus moves to the next field.
+  const usernameField = page.getByRole("textbox", { name: "Username or email" });
+  await usernameField.click();
+  await usernameField.fill(process.env.TEST_USER!);
+  await page.waitForTimeout(500);
+
+  const passwordField = page.getByRole("textbox", { name: "Password" });
+  await passwordField.click();
+  await passwordField.fill(process.env.TEST_PASSWORD!);
+  await page.waitForTimeout(500);
+
   await page.getByRole("button", { name: "Login" }).click();
-  await expect(page).toHaveURL(/\/rooms/);
+
+  // Matrix server round-trip requires 30s timeout
+  await expect(page).toHaveURL(/\/rooms/, { timeout: 30000 });
   await page.context().storageState({ path: authFile });
 });
 ```
@@ -557,7 +572,7 @@ cd client && npx playwright test e2e/scripts/send-message.spec.ts
 Environment variables (set in shell or `.env`):
 
 ```sh
-export STAGING_APP_URL=https://app.staging.pangea.chat
+export BASE_URL=https://app.staging.pangea.chat  # or http://localhost:<port> for local
 export TEST_USER=<your-test-email>
 export TEST_PASSWORD=<your-test-password>
 ```
@@ -612,7 +627,7 @@ name: E2E Tests (Staging)
 on:
   # After staging deploy completes
   workflow_run:
-    workflows: ["Deploy to Staging"]
+    workflows: ["Main Deploy Workflow"]
     types: [completed]
     branches: [main]
 
