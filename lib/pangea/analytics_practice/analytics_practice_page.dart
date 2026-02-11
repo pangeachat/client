@@ -97,7 +97,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
 
-  final Set<String> _selectedCorrectAnswers = {};
+  final Set<String> _clickedChoices = {};
 
   // Track if we're showing the completion message for audio activities
   final ValueNotifier<bool> showingAudioCompletion = ValueNotifier<bool>(false);
@@ -347,7 +347,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           activityState.value = const AsyncState.loading();
           selectedMorphChoice.value = null;
           hintPressedNotifier.value = false;
-          _selectedCorrectAnswers.clear();
+          _clickedChoices.clear();
           final nextActivityCompleter = _queue.removeFirst();
 
           try {
@@ -565,6 +565,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
+    // Mark this choice as clicked so it can't be clicked again
+    if (_clickedChoices.contains(choiceContent)) {
+      return;
+    } else {
+      setState(() {
+        _clickedChoices.add(choiceContent);
+      });
+    }
     // Track the selection for display
     if (activity is MorphPracticeActivityModel) {
       selectedMorphChoice.value = SelectedMorphChoice(
@@ -577,9 +585,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     final isAudioActivity =
         activity.activityType == ActivityTypeEnum.lemmaAudio;
-    if (isAudioActivity && isCorrect) {
-      _selectedCorrectAnswers.add(choiceContent);
-    }
 
     if (isCorrect && !isAudioActivity) {
       // Non-audio activities disable choices after first correct answer
@@ -602,11 +607,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     if (!isCorrect) return;
 
-    // For audio activities, check if all answers have been selected
+    // For audio activities, check if all correct answers have been clicked
     if (isAudioActivity) {
       final allAnswers = activity.multipleChoiceContent.answers;
       final allSelected = allAnswers.every(
-        (answer) => _selectedCorrectAnswers.contains(answer),
+        (answer) => _clickedChoices.contains(answer),
       );
 
       if (!allSelected) {
