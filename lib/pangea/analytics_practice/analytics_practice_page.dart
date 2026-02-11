@@ -592,9 +592,17 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
 
     // Update activity record
+    // For audio activities, find the token that matches the clicked word
+    final tokenForChoice = isAudioActivity
+        ? activity.tokens.firstWhere(
+            (t) => t.text.content.toLowerCase() == choiceContent.toLowerCase(),
+            orElse: () => activity.tokens.first,
+          )
+        : activity.tokens.first;
+
     PracticeRecordController.onSelectChoice(
       choiceContent,
-      activity.tokens.first,
+      tokenForChoice,
       activity,
     );
 
