@@ -63,3 +63,17 @@ Playwright (web) requires Flutter semantics tree. Before writing web specs, add 
 - All new tappable `GestureDetector`/`InkWell` should be wrapped in `Semantics(label:..., button: true)`
 - Decorative images: `excludeFromSemantics: true`
 - Meaningful images: `semanticLabel: '...'`
+
+## Flutter-Playwright Patterns (critical)
+
+These patterns are required because Flutter renders to `<canvas>` and its semantics tree behaves differently from standard HTML.
+
+1. **Semantics enablement**: Flutter positions `flt-semantics-placeholder` **off-screen**. Use `dispatchEvent("click")` — regular `.click()` and `force: true` both fail. The shared fixture in `e2e/fixtures.ts` handles this automatically.
+
+2. **Text input filling**: Canvas-based inputs need explicit `.click()` to focus before `.fill()`, with `waitForTimeout(500)` between fields. Without this, the first field's value gets lost when focus moves.
+
+3. **Login timeout**: Matrix server round-trip takes up to 30s. Always use `{ timeout: 30000 }` on `toHaveURL(/\/rooms/)` after login.
+
+4. **Responsive layout**: At headless Chromium's default viewport, the app renders a nav rail (Home, All chats, Settings) — NOT a header with a Search button. Assert against what the viewport actually shows.
+
+5. **Test file imports**: All spec files import `{ test, expect }` from `../fixtures`, NOT from `@playwright/test`. The fixture handles navigation to `/` and semantics enablement — tests must NOT repeat this.
