@@ -1,0 +1,23 @@
+{
+  "name": "pangea-chat-e2e-tests",
+  "version": "1.0.0",
+  "description": "End-to-end tests for Pangea Chat web application",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:codegen": "playwright codegen http://localhost:8080",
+    "install:browsers": "playwright install"
+  },
+  "keywords": [
+    "e2e",
+    "testing",
+    "playwright",
+    "flutter-web"
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
