@@ -476,11 +476,9 @@ class AnalyticsDataService {
     return events;
   }
 
-  Future<List<AnalyticsUpdateEvent>> updateServerAnalytics(
+  Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
   ) async {
-    final List<AnalyticsUpdateEvent> updates = [];
-
     _invalidateCaches();
     final blocked = blockedConstructs;
     for (final event in events) {
@@ -493,8 +491,6 @@ class AnalyticsDataService {
     final totalXP = constructs.fold(0, (total, c) => total + c.points);
 
     await _analyticsClientGetter.database.updateTotalXP(totalXP);
-    updates.add(XPGainedEvent(0, null));
-    return updates;
   }
 
   Future<void> updateBlockedConstructs(ConstructIdentifier constructId) async {

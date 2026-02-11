@@ -100,10 +100,8 @@ class AnalyticsUpdateDispatcher {
   Future<void> sendServerAnalyticsUpdate(
     List<ConstructAnalyticsEvent> events,
   ) async {
-    final updates = await dataService.updateServerAnalytics(events);
-    for (final event in updates) {
-      _dispatch(event);
-    }
+    await dataService.updateServerAnalytics(events);
+    sendEmptyAnalyticsUpdate();
   }
 
   Future<void> sendLocalAnalyticsUpdate(AnalyticsUpdate analyticsUpdate) async {

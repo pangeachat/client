@@ -57,10 +57,24 @@ class UserController {
 
     final profileData = client.accountData[ModelKey.userProfile]?.content;
     final Profile? fromAccountData = Profile.fromAccountData(profileData);
-    if (fromAccountData != null) {
+    if (fromAccountData != null && fromAccountData != _cachedProfile) {
       _cachedProfile = fromAccountData;
 
       if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
+        if (userL1 == null || userL2 == null) {
+          // if either language is null, then we want to send a settings update instead of a language update
+          ErrorHandler.logError(
+            e: "One of the user languages is null. Sending settings update instead of language update.",
+            data: {
+              'prevBaseLang': prevBaseLang?.langCode,
+              'prevTargetLang': prevTargetLang?.langCode,
+              'userL1': userL1?.langCode,
+              'userL2': userL2?.langCode,
+            },
+          );
+          settingsUpdateStream.add(fromAccountData);
+          return;
+        }
         languageStream.add(
           LanguageUpdate(
             baseLang: userL1!,

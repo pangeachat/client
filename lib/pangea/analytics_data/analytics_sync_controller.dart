@@ -122,8 +122,8 @@ class AnalyticsSyncController {
           .where((id) => !prevRoomIds.contains(id))
           .toList();
 
-      for (final roomId in newRoomIds) {
-        dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
+      if (newRoomIds.isNotEmpty) {
+        dataService.updateDispatcher.sendActivityAnalyticsUpdate(null);
       }
     }
   }
