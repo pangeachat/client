@@ -7,10 +7,16 @@ extension PushRuleExtension on PushRule {
     switch (ruleId) {
       case '.m.rule.contains_user_name':
         return l10n.notificationRuleContainsUserName;
-      case '.m.rule.master':
-        return l10n.notificationRuleMaster;
-      case '.m.rule.suppress_notices':
-        return l10n.notificationRuleSuppressNotices;
+      // #Pangea
+      // case '.m.rule.master':
+      //   return l10n.notificationRuleMaster;
+      // case '.m.rule.suppress_notices':
+      //   return l10n.notificationRuleSuppressNotices;
+      case '.m.rule.enable_master':
+        return l10n.notificationRuleEnableAllNotifications;
+      case '.m.rule.enable_notices':
+        return l10n.notificationRuleEnableAutomatedMessage;
+      // Pangea#
       case '.m.rule.invite_for_me':
         return l10n.notificationRuleInviteForMe;
       case '.m.rule.member_event':
@@ -29,8 +35,12 @@ extension PushRuleExtension on PushRule {
         return l10n.notificationRuleReaction;
       case '.m.rule.room_server_acl':
         return l10n.notificationRuleRoomServerAcl;
-      case '.m.rule.suppress_edits':
-        return l10n.notificationRuleSuppressEdits;
+      // Pangea#
+      // case '.m.rule.suppress_edits':
+      //   return l10n.notificationRuleSuppressEdits;
+      case '.m.rule.enable_edits':
+        return l10n.notificationRuleEnableEdits;
+      // Pangea#
       case '.m.rule.call':
         return l10n.notificationRuleCall;
       case '.m.rule.encrypted_room_one_to_one':
@@ -54,14 +64,24 @@ extension PushRuleExtension on PushRule {
     switch (ruleId) {
       case '.m.rule.contains_user_name':
         return l10n.notificationRuleContainsUserNameDescription;
-      case '.m.rule.master':
-        return l10n.notificationRuleMasterDescription;
-      case '.m.rule.suppress_notices':
-        return l10n.notificationRuleSuppressNoticesDescription;
+      // #Pangea
+      // case '.m.rule.master':
+      //   return l10n.notificationRuleMasterDescription;
+      // case '.m.rule.suppress_notices':
+      //   return l10n.notificationRuleSuppressNoticesDescription;
+      case '.m.rule.enable_master':
+        return l10n.notificationRuleEnableAllNotificationsDescription;
+      case '.m.rule.enable_notices':
+        return l10n.notificationRuleEnableAutomatedMessageDescription;
+      // Pangea#
       case '.m.rule.invite_for_me':
         return l10n.notificationRuleInviteForMeDescription;
-      case '.m.rule.member_event':
-        return l10n.notificationRuleMemberEventDescription;
+      // #Pangea
+      // case '.m.rule.member_event':
+      // return l10n.notificationRuleMemberEventDescription;
+      case '.m.rule.enable_member_event':
+        return l10n.notificationRuleEnableMemberEventDescription;
+      // Pangea#
       case '.m.rule.is_user_mention':
         return l10n.notificationRuleIsUserMentionDescription;
       case '.m.rule.contains_display_name':
@@ -72,12 +92,20 @@ extension PushRuleExtension on PushRule {
         return l10n.notificationRuleRoomnotifDescription;
       case '.m.rule.tombstone':
         return l10n.notificationRuleTombstoneDescription;
-      case '.m.rule.reaction':
-        return l10n.notificationRuleReactionDescription;
+      // #Pangea
+      // case '.m.rule.reaction':
+      // return l10n.notificationRuleReactionDescription;
+      case '.m.rule.enable_reaction':
+        return l10n.notificationRuleEnableReactionDescription;
+      // Pangea#
       case '.m.rule.room_server_acl':
         return l10n.notificationRuleRoomServerAclDescription;
-      case '.m.rule.suppress_edits':
-        return l10n.notificationRuleSuppressEditsDescription;
+      // #Pangea
+      // case '.m.rule.suppress_edits':
+      //   return l10n.notificationRuleSuppressEditsDescription;
+      case '.m.rule.enable_edits':
+        return l10n.notificationRuleEnableEditsDescription;
+      // Pangea#
       case '.m.rule.call':
         return l10n.notificationRuleCallDescription;
       case '.m.rule.encrypted_room_one_to_one':
@@ -101,8 +129,8 @@ extension PushRuleExtension on PushRule {
   static List<String> get defaultPushRuleIds {
     return [
       '.m.rule.contains_user_name',
-      '.m.rule.master',
-      '.m.rule.suppress_notices',
+      // '.m.rule.master',
+      // '.m.rule.suppress_notices',
       '.m.rule.invite_for_me',
       '.m.rule.member_event',
       '.m.rule.is_user_mention',
@@ -112,7 +140,7 @@ extension PushRuleExtension on PushRule {
       // '.m.rule.tombstone',
       '.m.rule.reaction',
       // '.m.rule.room_server_acl',
-      '.m.rule.suppress_edits',
+      // '.m.rule.suppress_edits',
       // '.m.rule.call',
       // '.m.rule.encrypted_room_one_to_one',
       '.m.rule.room_one_to_one',

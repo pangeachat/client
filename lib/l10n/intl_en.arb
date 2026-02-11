@@ -5344,5 +5344,13 @@
   "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
   "joinCourseForActivities": "Join a course to try activities.",
   "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
-  "emailVerificationFailed": "Email verification failed. Please try again."
+  "emailVerificationFailed": "Email verification failed. Please try again.",
+  "notificationRuleEnableAllNotifications": "Enable all notifications",
+  "notificationRuleEnableAllNotificationsDescription": "Enables notifications from all categories.",
+  "notificationRuleEnableAutomatedMessage": "Automated Messages",
+  "notificationRuleEnableAutomatedMessageDescription": "Notifies the user about messages from automated clients like bots.",
+  "notificationRuleEnableMemberEventDescription": "Notifies the user about membership events.",
+  "notificationRuleEnableReactionDescription": "Notifies the user about reactions to messages.",
+  "notificationRuleEnableEdits": "Edited messages",
+  "notificationRuleEnableEditsDescription": "Notifies the user when a message is edited."
 }
