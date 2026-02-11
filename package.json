@@ -1,0 +1,12 @@
+{
+  "name": "pangea-client",
+  "version": "1.0.0",
+  "description": "Pangea Chat Client E2E Tests",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  },
+  "scripts": {
+    "test:e2e": "playwright test --config e2e/playwright.config.ts"
+  }
+}

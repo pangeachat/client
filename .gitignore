@@ -92,3 +92,10 @@ web/pkg/package.json
 web/pkg/vodozemac_bindings_dart_bg.wasm
 web/pkg/vodozemac_bindings_dart.js
 web/native_executor.js*
+
+# E2E test artifacts
+e2e/.auth/user.json
+node_modules/
+package-lock.json
+playwright-report/
+test-results/
