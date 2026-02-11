@@ -16,7 +16,8 @@ class VocabAudioActivityGenerator {
         wordsInMessage.add(t.text.content.toLowerCase());
       }
 
-      // Extract up to 3 additional words as answers
+      // Extract up to 3 additional words as answers, from shuffled message
+      audioExample.tokens.shuffle();
       final otherWords = audioExample.tokens
           .where(
             (t) =>
