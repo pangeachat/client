@@ -54,6 +54,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
         actions: Environment.isStagingEnvironment && _overrides.isNotEmpty
             ? [
                 IconButton(
+                  tooltip: L10n.of(context).settings,
                   icon: const Icon(Icons.settings_outlined),
                   onPressed: _setEnvironment,
                 ),

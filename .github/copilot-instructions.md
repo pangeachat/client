@@ -36,6 +36,17 @@ You own the docs. Three sources of truth must agree: **docs**, **code**, and **p
 - API repo files pair with request/response models (e.g., `igc_repo.dart` + `igc_request_model.dart` + `igc_response_model.dart`)
 - Controllers extend `ChangeNotifier` or use `BaseController<T>` (stream-based)
 
+### Upstream Merge Rule (CRITICAL)
+Any edit to a file **outside** `lib/pangea/` MUST be wrapped in `// #Pangea` (opener) and `// Pangea#` (closer) comment markers. This applies to all FluffyChat base files (`lib/pages/`, `lib/widgets/`, `lib/utils/`, `lib/config/`, `lib/l10n/`, etc.). These markers guide upstream merges from FluffyChat — without them, Pangea changes get lost or conflict silently.
+
+```dart
+// #Pangea
+tooltip: L10n.of(context).settings,
+// Pangea#
+```
+
+Files inside `lib/pangea/` do NOT need these markers — they are entirely Pangea-owned.
+
 ## Documentation
 
 Detailed guides auto-load from `.github/instructions/` when editing matching files:

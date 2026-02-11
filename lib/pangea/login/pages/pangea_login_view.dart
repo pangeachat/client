@@ -81,6 +81,7 @@ class PasswordLoginView extends StatelessWidget {
                               decoration: InputDecoration(
                                 hintText: L10n.of(context).password,
                                 suffixIcon: IconButton(
+                                  tooltip: L10n.of(context).showPassword,
                                   icon: Icon(
                                     controller.showPassword
                                         ? Icons.visibility_off
