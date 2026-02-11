@@ -269,8 +269,8 @@ This is the most powerful option: a cloud-hosted LLM agent that can both browse 
 ```
 
 2. **Copilot environment secrets** — In the repo's `copilot` environment, add:
-   - `COPILOT_MCP_TEST_USER` → test account email
-   - `COPILOT_MCP_TEST_PASSWORD` → test account password
+   - `STAGING_TEST_EMAIL` → test account email
+   - `STAGING_TEST_PASSWORD` → test account password
 
 3. **Custom agent profile** — Create `.github/agents/e2e-tester.md`:
 
@@ -304,7 +304,7 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
 
 ## Credentials
 
-Login with email `$COPILOT_MCP_TEST_USER` and password `$COPILOT_MCP_TEST_PASSWORD`.
+Login with email `$STAGING_TEST_EMAIL` and password `$STAGING_TEST_PASSWORD`.
 ```
 
 4. **Setup steps** — Create or update `.github/workflows/copilot-setup-steps.yml`:
