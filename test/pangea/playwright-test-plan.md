@@ -1223,7 +1223,9 @@ All web flows defined in `trigger-map.json` are planned; Phase 2 shows represent
 ## NEXT STEPS (after Phase 1 merge)
 
 ### No new L10n keys were added
+
 All P0 tooltip fixes used **existing** L10n keys:
+
 - `settings` → "Settings" (line 1993 in `intl_en.arb`)
 - `showPassword` → "Show password" (line 2017)
 - `search` → "Search" (line 1826)
@@ -1231,18 +1233,21 @@ All P0 tooltip fixes used **existing** L10n keys:
 No localization script run is needed for this branch.
 
 ### Changes made (branch `e2e/phase1-semantics`)
-| File | Change | L10n Key |
-|------|--------|----------|
-| `lib/pangea/login/pages/login_or_signup_view.dart` | Added `tooltip:` to settings `IconButton` | `settings` |
-| `lib/pangea/login/pages/pangea_login_view.dart` | Added `tooltip:` to password toggle `IconButton` | `showPassword` |
-| `lib/pangea/login/pages/signup_with_email_view.dart` | Added `tooltip:` to password toggle `IconButton` | `showPassword` |
-| `lib/pangea/chat_list/widgets/pangea_chat_list_header.dart` | Added `tooltip:` to search `IconButton` | `search` |
-| `.github/copilot-instructions.md` | Added Upstream Merge Rule (CRITICAL) section | — |
+
+| File                                                        | Change                                           | L10n Key       |
+| ----------------------------------------------------------- | ------------------------------------------------ | -------------- |
+| `lib/pangea/login/pages/login_or_signup_view.dart`          | Added `tooltip:` to settings `IconButton`        | `settings`     |
+| `lib/pangea/login/pages/pangea_login_view.dart`             | Added `tooltip:` to password toggle `IconButton` | `showPassword` |
+| `lib/pangea/login/pages/signup_with_email_view.dart`        | Added `tooltip:` to password toggle `IconButton` | `showPassword` |
+| `lib/pangea/chat_list/widgets/pangea_chat_list_header.dart` | Added `tooltip:` to search `IconButton`          | `search`       |
+| `.github/copilot-instructions.md`                           | Added Upstream Merge Rule (CRITICAL) section     | —              |
 
 ### Deferred to P1
+
 - **`chat_list_item.dart` Semantics wrapper**: The `ListTile` already exposes `displayname` via its `title: Text(...)` child, making rooms findable in Playwright accessibility snapshots. A `Semantics(container: true, onTapHint: ...)` wrapper would improve screen-reader UX but requires careful nesting with `// #Pangea` markers in a deeply nested arrow-function tree. Deferred to avoid merge risk.
 
 ### Remaining Phase 1 work (P1 + P2 priorities)
+
 - P1: Add tooltips to remaining `IconButton`s across ~50 more widgets
 - P1: Add `semanticsLabel` to decorative `Icon`s in nav rail, bottom bar
 - P2: Add `Semantics` wrappers to `GestureDetector` and `InkWell` widgets
