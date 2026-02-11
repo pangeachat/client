@@ -62,7 +62,7 @@ class AnalyticsUpdateService {
     List<OneConstructUse> newConstructs, {
     bool forceUpdate = false,
   }) async {
-    await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
+    await dataService.updateDispatcher.sendLocalAnalyticsUpdate(
       AnalyticsUpdate(newConstructs, targetID: targetID),
     );
 

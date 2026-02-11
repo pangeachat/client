@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -85,9 +86,16 @@ class AnalyticsUpdateDispatcher {
     UserSetLemmaInfo lemmaInfo,
   ) => _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
-  Future<void> sendConstructAnalyticsUpdate(
-    AnalyticsUpdate analyticsUpdate,
+  Future<void> sendServerAnalyticsUpdate(
+    List<ConstructAnalyticsEvent> events,
   ) async {
+    final updates = await dataService.updateServerAnalytics(events);
+    for (final event in updates) {
+      _dispatch(event);
+    }
+  }
+
+  Future<void> sendLocalAnalyticsUpdate(AnalyticsUpdate analyticsUpdate) async {
     final events = await dataService.updateLocalAnalytics(analyticsUpdate);
     for (final event in events) {
       _dispatch(event);

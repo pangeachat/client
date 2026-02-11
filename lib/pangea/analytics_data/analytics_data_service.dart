@@ -130,28 +130,23 @@ class AnalyticsDataService {
         await _analyticsClientGetter.database.updateUserID(client.userID!);
       }
 
-      final resp = await client.getUserProfile(client.userID!);
-      final analyticsProfile = AnalyticsProfileModel.fromJson(
-        resp.additionalProperties,
-      );
-
       _syncController?.dispose();
       _syncController = AnalyticsSyncController(
         client: client,
         dataService: this,
       );
+
       await _syncController!.bulkUpdate();
 
-      final vocab = await getAggregatedConstructs(ConstructTypeEnum.vocab);
-      final morphs = await getAggregatedConstructs(ConstructTypeEnum.morph);
-      final constructs = [...vocab.values, ...morphs.values];
-      final totalXP = constructs.fold(0, (total, c) => total + c.points);
-      await _analyticsClientGetter.database.updateDerivedStats(
-        DerivedAnalyticsDataModel(
-          totalXP: totalXP,
-          offset: analyticsProfile.xpOffset ?? 0,
-        ),
+      final resp = await client.getUserProfile(client.userID!);
+      final analyticsProfile = AnalyticsProfileModel.fromJson(
+        resp.additionalProperties,
       );
+
+      final l2 = MatrixState.pangeaController.userController.userL2;
+      if (l2 != null) {
+        await updateXPOffset(analyticsProfile.xpOffsetByLanguage(l2) ?? 0);
+      }
 
       _syncController!.start();
 
@@ -161,7 +156,7 @@ class AnalyticsDataService {
     } finally {
       Logs().i("Analytics database initialized.");
       initCompleter.complete();
-      updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendLocalAnalyticsUpdate(AnalyticsUpdate([]));
       updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
   }
@@ -422,7 +417,7 @@ class AnalyticsDataService {
       events.add(XPGainedEvent(points, update.targetID));
     }
 
-    final newData = prevData.copyWith(totalXP: prevData.totalXP + points);
+    final newData = prevData.addXP(points);
     await _analyticsClientGetter.database.updateDerivedStats(newData);
 
     // Update public profile each time that new analytics are added.
@@ -485,15 +480,25 @@ class AnalyticsDataService {
     return events;
   }
 
-  Future<void> updateServerAnalytics(
+  Future<List<AnalyticsUpdateEvent>> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
   ) async {
+    final List<AnalyticsUpdateEvent> updates = [];
+
     _invalidateCaches();
     final blocked = blockedConstructs;
     for (final event in events) {
       _mergeTable.addConstructsByUses(event.content.uses, blocked);
     }
     await _analyticsClientGetter.database.updateServerAnalytics(events);
+    final vocab = await getAggregatedConstructs(ConstructTypeEnum.vocab);
+    final morphs = await getAggregatedConstructs(ConstructTypeEnum.morph);
+    final constructs = [...vocab.values, ...morphs.values];
+    final totalXP = constructs.fold(0, (total, c) => total + c.points);
+
+    await _analyticsClientGetter.database.updateTotalXP(totalXP);
+    updates.add(XPGainedEvent(0, null));
+    return updates;
   }
 
   Future<void> updateBlockedConstructs(ConstructIdentifier constructId) async {
@@ -512,12 +517,10 @@ class AnalyticsDataService {
       level: newLevel,
     );
 
-    await _analyticsClientGetter.database.updateDerivedStats(
-      DerivedAnalyticsDataModel(totalXP: newXP),
-    );
+    await _analyticsClientGetter.database.updateTotalXP(newXP);
 
     _invalidateCaches();
-    updateDispatcher.sendConstructAnalyticsUpdate(
+    updateDispatcher.sendLocalAnalyticsUpdate(
       AnalyticsUpdate([], blockedConstruct: constructId),
     );
   }
