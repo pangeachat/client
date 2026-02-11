@@ -1,0 +1,104 @@
+{
+  "login": {
+    "globs": [
+      "lib/pangea/login/**",
+      "lib/pages/login/**",
+      "lib/config/routes.dart",
+      "lib/widgets/matrix.dart"
+    ],
+    "web": "e2e/scripts/login.spec.ts",
+    "mobile": "integration_test/patrol/login_test.dart"
+  },
+  "chat-list-navigation": {
+    "globs": [
+      "lib/pages/chat_list/**",
+      "lib/pangea/chat_list/**",
+      "lib/pangea/common/controllers/pangea_controller.dart",
+      "lib/config/routes.dart"
+    ],
+    "web": "e2e/scripts/chat-list-navigation.spec.ts",
+    "mobile": null
+  },
+  "open-chat": {
+    "globs": [
+      "lib/pages/chat/**",
+      "lib/pages/chat_list/chat_list_item.dart",
+      "lib/pangea/chat_list/**"
+    ],
+    "web": "e2e/scripts/open-chat.spec.ts",
+    "mobile": null
+  },
+  "send-message": {
+    "globs": [
+      "lib/pages/chat/chat_input_row.dart",
+      "lib/pages/chat/input_bar.dart",
+      "lib/pangea/choreographer/**",
+      "lib/pangea/events/**"
+    ],
+    "web": "e2e/scripts/send-message.spec.ts",
+    "mobile": "integration_test/patrol/send_message_test.dart"
+  },
+  "message-toolbar": {
+    "globs": [
+      "lib/pangea/toolbar/**",
+      "lib/pangea/text_to_speech/**",
+      "lib/pangea/token_info_feedback/**",
+      "lib/pangea/phonetic_transcription/**"
+    ],
+    "web": "e2e/scripts/message-toolbar.spec.ts",
+    "mobile": null
+  },
+  "course-discovery": {
+    "globs": [
+      "lib/pangea/course_creation/**",
+      "lib/pangea/course_plan/**"
+    ],
+    "web": "e2e/scripts/course-discovery.spec.ts",
+    "mobile": null
+  },
+  "settings": {
+    "globs": [
+      "lib/pages/settings/**",
+      "lib/pangea/learning_settings/**",
+      "lib/pangea/subscription/**"
+    ],
+    "web": "e2e/scripts/settings.spec.ts",
+    "mobile": null
+  },
+  "analytics": {
+    "globs": [
+      "lib/pangea/analytics_page/**",
+      "lib/pangea/analytics_practice/**",
+      "lib/pangea/analytics_misc/**"
+    ],
+    "web": "e2e/scripts/analytics.spec.ts",
+    "mobile": null
+  },
+  "create-dm": {
+    "globs": [
+      "lib/pages/new_private_chat/**",
+      "lib/pangea/chat_list/**"
+    ],
+    "web": "e2e/scripts/create-dm.spec.ts",
+    "mobile": null
+  },
+  "logout": {
+    "globs": [
+      "lib/pages/settings/**",
+      "lib/pangea/login/**",
+      "lib/widgets/matrix.dart"
+    ],
+    "web": "e2e/scripts/logout.spec.ts",
+    "mobile": null
+  },
+  "permissions": {
+    "globs": [
+      "lib/pangea/common/controllers/pangea_controller.dart",
+      "lib/main.dart",
+      "android/app/**",
+      "ios/Runner/**"
+    ],
+    "web": null,
+    "mobile": "integration_test/patrol/permissions_test.dart"
+  }
+}
