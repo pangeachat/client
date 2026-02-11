@@ -4,7 +4,8 @@
   "description": "Pangea Chat Client E2E Tests",
   "private": true,
   "devDependencies": {
-    "@playwright/test": "^1.48.0"
+    "@playwright/test": "^1.48.0",
+    "minimatch": "^10.0.1"
   },
   "scripts": {
     "test:e2e": "playwright test --config e2e/playwright.config.ts"

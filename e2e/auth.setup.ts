@@ -1,38 +1,52 @@
-import { test, expect } from './fixtures';
+import path from "path";
+import { expect, test } from "./fixtures";
 
 /**
  * Authentication setup - logs in once and saves auth state for all tests.
- * 
+ *
  * Uses environment variables:
  * - TEST_USER: Matrix username or email
  * - TEST_PASSWORD: Password
- * 
+ *
  * In CI, these are populated from GitHub secrets:
- * - STAGING_TEST_USER
+ * - STAGING_TEST_EMAIL
  * - STAGING_TEST_PASSWORD
  */
 
-const authFile = '.auth/user.json';
+const authFile = path.join(__dirname, ".auth", "user.json");
 
-test('authenticate', async ({ page }) => {
+test("authenticate", async ({ page }) => {
   // Click "Login to my account" button
-  await page.getByRole('button', { name: 'Login to my account' }).click();
-  
+  await page.getByRole("button", { name: "Login to my account" }).click();
+
   // Click "Email" login method
-  await page.getByRole('button', { name: 'Email' }).click();
-  
-  // Fill username/email
-  await page.getByRole('textbox', { name: 'Username or email' }).fill(process.env.TEST_USER!);
-  
+  await page.getByRole("button", { name: "Email" }).click();
+
+  // Fill username/email — click to focus first, Flutter needs explicit focus
+  const usernameField = page.getByRole("textbox", {
+    name: "Username or email",
+  });
+  await usernameField.click();
+  await usernameField.fill(process.env.TEST_USER!);
+
+  // Small delay for Flutter to commit the input state
+  await page.waitForTimeout(500);
+
   // Fill password
-  await page.getByRole('textbox', { name: 'Password' }).fill(process.env.TEST_PASSWORD!);
-  
+  const passwordField = page.getByRole("textbox", { name: "Password" });
+  await passwordField.click();
+  await passwordField.fill(process.env.TEST_PASSWORD!);
+
+  // Wait for Login button to become enabled
+  await page.waitForTimeout(500);
+
   // Click login button
-  await page.getByRole('button', { name: 'Login' }).click();
-  
+  await page.getByRole("button", { name: "Login" }).click();
+
   // Wait for chat list to load (URL should contain /rooms)
-  await expect(page).toHaveURL(/\/rooms/);
-  
+  // Login involves a Matrix server round-trip, so give it ample time
+  await expect(page).toHaveURL(/\/rooms/, { timeout: 30000 });
+
   // Save authentication state
   await page.context().storageState({ path: authFile });
 });
