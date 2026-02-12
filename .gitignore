@@ -83,7 +83,10 @@ olm
 needed-translations.txt
 .venv
 
+node_modules/
 docs/node_modules
+playwright-report/
+e2e/.auth/
 rust
 
 libcrypto.3.dylib
