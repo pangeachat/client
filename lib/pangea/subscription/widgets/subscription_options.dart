@@ -70,59 +70,50 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle = OutlinedButton.styleFrom(
-      side: enabled ? null : BorderSide(color: Colors.grey[600]!),
-      foregroundColor: Colors.white,
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      disabledForegroundColor: const Color.fromARGB(255, 200, 200, 200),
-      disabledBackgroundColor: Colors.grey[600],
-    );
-
     return Card(
-      color: enabled ? null : const Color.fromARGB(255, 245, 244, 244),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: SizedBox(
-        width: AppConfig.columnWidth * 0.6,
-        height: 200,
-        child: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                title ?? subscription?.displayName(context) ?? '',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: enabled
-                      ? null
-                      : const Color.fromARGB(255, 174, 174, 174),
+      child: Opacity(
+        opacity: enabled ? 1.0 : 0.75,
+        child: SizedBox(
+          width: AppConfig.columnWidth * 0.6,
+          height: 200,
+          child: Padding(
+            padding: const EdgeInsets.all(25),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  title ?? subscription?.displayName(context) ?? '',
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              Text(
-                description ?? subscription?.displayPrice(context) ?? '',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: enabled
-                      ? null
-                      : const Color.fromARGB(255, 174, 174, 174),
+                Text(
+                  description ?? subscription?.displayPrice(context) ?? '',
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              OutlinedButton(
-                onPressed: enabled
-                    ? () {
-                        if (onTap != null) onTap!();
-                        Navigator.of(context).pop();
-                      }
-                    : null,
-                style: buttonStyle,
-                child: Text(buttonText ?? L10n.of(context).subscribe),
-              ),
-            ],
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: enabled
+                      ? () {
+                          if (onTap != null) onTap!();
+                          Navigator.of(context).pop();
+                        }
+                      : null,
+                  // style: buttonStyle,
+                  child: Row(
+                    mainAxisAlignment: .center,
+                    children: [Text(buttonText ?? L10n.of(context).subscribe)],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
