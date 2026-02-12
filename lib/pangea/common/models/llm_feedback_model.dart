@@ -12,14 +12,21 @@ class LLMFeedbackModel<T> {
   /// Function to serialize the content to JSON
   final Map<String, dynamic> Function(T) contentToJson;
 
+  /// Optional 0-10 score for the content being reviewed.
+  /// Not yet used by any caller — field established for future
+  /// human audit / contributor score integration.
+  final int? score;
+
   const LLMFeedbackModel({
     required this.feedback,
     required this.content,
     required this.contentToJson,
+    this.score,
   });
 
   Map<String, dynamic> toJson() => {
     ModelKey.feedback: feedback,
     ModelKey.content: contentToJson(content),
+    if (score != null) ModelKey.score: score,
   };
 }

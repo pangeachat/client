@@ -109,6 +109,7 @@ class ModelKey {
   static const String feedbackLang = "feedback_lang";
   static const String feedback = "feedback";
   static const String content = "content";
+  static const String score = "score";
 
   static const String transcription = "transcription";
   static const String botTranscription = 'bot_transcription';
