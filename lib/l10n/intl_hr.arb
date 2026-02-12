@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-02-10 13:53:07.552453",
+  "@@last_modified": "2026-02-12 14:19:16.781492",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11746,6 +11746,11 @@
   },
   "emailVerificationFailed": "Verifikacija e-pošte nije uspjela. Molimo pokušajte ponovo.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Otključaj alate za učenje",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

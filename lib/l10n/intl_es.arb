@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-10 13:52:56.442140",
+  "@@last_modified": "2026-02-12 14:19:07.287744",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8563,6 +8563,11 @@
   },
   "emailVerificationFailed": "La verificación del correo electrónico falló. Por favor, inténtalo de nuevo.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloquear herramientas de aprendizaje",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

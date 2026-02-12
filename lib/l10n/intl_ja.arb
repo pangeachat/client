@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-10 13:53:45.015756",
+  "@@last_modified": "2026-02-12 14:19:49.555051",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12177,6 +12177,11 @@
   },
   "emailVerificationFailed": "メールの確認に失敗しました。もう一度お試しください。",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "学習ツールを解除する",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

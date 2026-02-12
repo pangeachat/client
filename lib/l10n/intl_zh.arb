@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-10 13:53:39.188566",
+  "@@last_modified": "2026-02-12 14:19:43.735980",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11253,6 +11253,11 @@
   },
   "emailVerificationFailed": "电子邮件验证失败。请再试一次。",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "解锁学习工具",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

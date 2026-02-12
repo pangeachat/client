@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:17.480808",
+  "@@last_modified": "2026-02-12 14:19:26.246745",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11347,6 +11347,11 @@
   },
   "emailVerificationFailed": "La verifica dell'email è fallita. Per favore riprova.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Sblocca gli strumenti di apprendimento",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

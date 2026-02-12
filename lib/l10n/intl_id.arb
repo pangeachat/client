@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:03.640938",
+  "@@last_modified": "2026-02-12 14:19:12.173785",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11359,6 +11359,11 @@
   },
   "emailVerificationFailed": "Verifikasi email gagal. Silakan coba lagi.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Buka alat pembelajaran",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:46.975646",
+  "@@last_modified": "2026-02-12 14:19:50.972053",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12476,6 +12476,11 @@
   },
   "emailVerificationFailed": "Emailo konfirmi malsukcesis. Bonvolu reprovi.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Malfermu lernilojn",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

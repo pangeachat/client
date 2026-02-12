@@ -2460,7 +2460,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-10 13:53:15.622726",
+  "@@last_modified": "2026-02-12 14:19:24.467310",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12468,6 +12468,11 @@
   },
   "emailVerificationFailed": "Preverjanje e-pošte ni uspelo. Prosimo, poskusite znova.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Odkleni orodja za učenje",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

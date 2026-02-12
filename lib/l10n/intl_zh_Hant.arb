@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:26.822722",
+  "@@last_modified": "2026-02-12 14:19:33.575679",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11392,6 +11392,11 @@
   },
   "emailVerificationFailed": "電子郵件驗證失敗。請再試一次。",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "解鎖學習工具",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

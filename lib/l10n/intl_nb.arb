@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:20.558141",
+  "@@last_modified": "2026-02-12 14:19:29.069491",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11322,6 +11322,11 @@
   },
   "emailVerificationFailed": "E-postverifisering mislyktes. Vennligst prøv igjen.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Lås opp læringsverktøy",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

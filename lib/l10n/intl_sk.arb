@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-10 13:53:05.604546",
+  "@@last_modified": "2026-02-12 14:19:14.622122",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12471,6 +12471,11 @@
   },
   "emailVerificationFailed": "Overenie e-mailu zlyhalo. Skúste to prosím znova.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Odomknúť nástroje na učenie",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

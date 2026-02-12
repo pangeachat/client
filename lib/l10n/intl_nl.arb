@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:37.543656",
+  "@@last_modified": "2026-02-12 14:19:41.940922",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11253,6 +11253,11 @@
   },
   "emailVerificationFailed": "E-mailverificatie is mislukt. Probeer het alstublieft opnieuw.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Ontgrendel leermiddelen",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

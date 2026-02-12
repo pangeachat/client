@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-10 13:53:31.002179",
+  "@@last_modified": "2026-02-12 14:19:37.053689",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11603,6 +11603,11 @@
   },
   "emailVerificationFailed": "فشل التحقق من البريد الإلكتروني. يرجى المحاولة مرة أخرى.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "فتح أدوات التعلم",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

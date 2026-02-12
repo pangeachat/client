@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:40.219705",
+  "@@last_modified": "2026-02-12 14:19:44.709318",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11997,6 +11997,11 @@
   },
   "emailVerificationFailed": "ইমেইল যাচাইকরণ ব্যর্থ হয়েছে। দয়া করে আবার চেষ্টা করুন।",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "শিক্ষার সরঞ্জাম আনলক করুন",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

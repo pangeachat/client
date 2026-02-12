@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-10 13:53:18.517741",
+  "@@last_modified": "2026-02-12 14:19:27.246355",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11253,6 +11253,11 @@
   },
   "emailVerificationFailed": "Перевірка електронної пошти не вдалася. Будь ласка, спробуйте ще раз.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Відкрити навчальні інструменти",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

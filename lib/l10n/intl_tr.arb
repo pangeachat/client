@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-10 13:53:31.845984",
+  "@@last_modified": "2026-02-12 14:19:37.773936",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11593,6 +11593,11 @@
   },
   "emailVerificationFailed": "E-posta doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Öğrenme araçlarını aç",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

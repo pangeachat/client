@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:50.256388",
+  "@@last_modified": "2026-02-12 14:19:53.531659",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12483,6 +12483,11 @@
   },
   "emailVerificationFailed": "Provera email adrese nije uspela. Molimo pokušajte ponovo.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Otključajte alate za učenje",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

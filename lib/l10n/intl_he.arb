@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:08.464680",
+  "@@last_modified": "2026-02-12 14:19:18.118020",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12436,6 +12436,11 @@
   },
   "emailVerificationFailed": "אימות הדוא\"ל נכשל. אנא נסה שוב.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "שחרר את כלי הלמידה",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }
