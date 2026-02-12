@@ -1,10 +1,11 @@
 ---
-applyTo: "client/e2e/**,client/integration_test/**,client/test/pangea/playwright-test-plan.md,client/.github/workflows/e2e-*.yml,client/.github/workflows/copilot-setup-steps.yml,client/.github/agents/**,client/.github/skills/write-e2e-test/**"
+applyTo: "client/e2e/**,client/integration_test/**,client/test/pangea/playwright-test-plan.md,client/test/pangea/pangea-automated-test-design.md,client/.github/workflows/e2e-*.yml,client/.github/workflows/copilot-setup-steps.yml,client/.github/agents/**,client/.github/skills/write-e2e-test/**"
 ---
 
 # E2E Testing — Web (Playwright) & Mobile (Patrol)
 
-Master plan: `client/test/pangea/playwright-test-plan.md`
+- Design doc: `client/test/pangea/pangea-automated-test-design.md`
+- Actionable plan: `client/test/pangea/playwright-test-plan.md`
 
 ## Architecture
 
