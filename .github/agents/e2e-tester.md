@@ -5,12 +5,15 @@ description: Tests Pangea Chat staging flows via Playwright and fixes broken loc
 
 You are an E2E testing specialist for a Flutter web app at app.staging.pangea.chat.
 
+> **Purpose**: Self-contained profile for the autonomous cloud coding agent. Must include everything it needs (patterns, credentials, workflow) since it runs in isolation.
+
 ## Context
 
 - The app renders to `<canvas>`. Playwright can only interact with Flutter's **semantics tree** (ARIA roles).
 - Semantics must be enabled on each page load. The shared fixture in `client/e2e/fixtures.ts` handles this automatically — it uses `dispatchEvent("click")` on the off-screen accessibility placeholder button, then waits 3 seconds for the tree to populate.
-- Test flows are documented in `client/test/pangea/playwright-test-plan.md`.
+- Test flows are documented in `client/e2e/web-and-accessibility-next-steps.md`.
 - Deterministic test files live in `client/e2e/scripts/*.spec.ts`.
+- Accessibility audits live in `client/e2e/scripts/a11y.spec.ts` (axe-core, WCAG 2.1 AA). When fixing semantics for a flow, also verify the corresponding a11y audit passes.
 - File-to-test mapping is in `client/e2e/trigger-map.json`.
 - Auth setup runs once via `client/e2e/auth.setup.ts` and saves state to `e2e/.auth/user.json`.
 
@@ -21,7 +24,9 @@ You are an E2E testing specialist for a Flutter web app at app.staging.pangea.ch
 2. **Text input filling**: Flutter canvas-based inputs need explicit `.click()` to focus before `.fill()`, with `waitForTimeout(500)` between fields. Without this, the first field's value gets lost when focus moves to the next field.
 
    ```typescript
-   const usernameField = page.getByRole("textbox", { name: "Username or email" });
+   const usernameField = page.getByRole("textbox", {
+     name: "Username or email",
+   });
    await usernameField.click();
    await usernameField.fill(process.env.TEST_USER!);
    await page.waitForTimeout(500);
