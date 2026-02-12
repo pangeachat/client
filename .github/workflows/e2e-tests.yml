@@ -1,0 +1,117 @@
+name: E2E Tests (Staging)
+
+on:
+  # After staging deploy completes
+  workflow_run:
+    workflows: ["Main Deploy Workflow"]
+    types: [completed]
+    branches: [main]
+
+  # Manual trigger with mode selection
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Test mode"
+        required: true
+        default: "diff"
+        type: choice
+        options:
+          - smoke # login only
+          - diff  # diff-triggered
+          - full  # all scripts
+
+  # Nightly full suite
+  schedule:
+    - cron: "0 6 * * *" # 6am UTC daily
+
+env:
+  TEST_USER: ${{ secrets.STAGING_TEST_USER }}
+  TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
+
+jobs:
+  e2e:
+    # Only run after successful staging deploy, or on manual/schedule triggers
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: client
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # full history for diff-based test selection
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Determine test mode
+        id: mode
+        run: |
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            echo "mode=full" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+            echo "mode=diff" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Select tests
+        id: select
+        run: |
+          MODE="${{ steps.mode.outputs.mode }}"
+          if [[ "$MODE" == "smoke" ]]; then
+            echo "files=e2e/scripts/login.spec.ts" >> $GITHUB_OUTPUT
+          elif [[ "$MODE" == "full" ]]; then
+            echo "files=e2e/scripts/" >> $GITHUB_OUTPUT
+          else
+            FILES=$(node e2e/select-tests.js HEAD~1)
+            echo "files=${FILES:-e2e/scripts/login.spec.ts}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Playwright tests
+        run: npx playwright test --config e2e/playwright.config.ts ${{ steps.select.outputs.files }}
+        env:
+          BASE_URL: https://app.staging.pangea.chat
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-${{ github.run_id }}
+          path: client/playwright-report/
+          retention-days: 14
+
+      - name: Post failure comment on triggering PR
+        if: ${{ github.event_name == 'workflow_run' && failure() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: commits } = await github.rest.repos.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 1,
+            });
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: commits[0].sha,
+            });
+            if (prs.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prs.data[0].number,
+                body: `⚠️ **E2E tests failed** after staging deploy.\n\n[View run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
+              });
+            }
