@@ -8,18 +8,21 @@ import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class MessageUnsubscribedCard extends StatelessWidget {
-  final PangeaTokenText token;
-  final VoidCallback? onClose;
+class _ShimmerBox extends StatelessWidget {
+  final Color baseColor;
+  final Color highlightColor;
+  final double width;
+  final double height;
 
-  const MessageUnsubscribedCard({super.key, required this.token, this.onClose});
+  const _ShimmerBox({
+    required this.baseColor,
+    required this.highlightColor,
+    required this.width,
+    required this.height,
+  });
 
-  Widget _buildShimmerBox({
-    required Color baseColor,
-    required Color highlightColor,
-    required double width,
-    required double height,
-  }) {
+  @override
+  Widget build(BuildContext context) {
     return Shimmer.fromColors(
       loop: 1,
       baseColor: baseColor,
@@ -34,6 +37,13 @@ class MessageUnsubscribedCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class MessageUnsubscribedCard extends StatelessWidget {
+  final PangeaTokenText token;
+  final VoidCallback? onClose;
+
+  const MessageUnsubscribedCard({super.key, required this.token, this.onClose});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +66,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildShimmerBox(
+                _ShimmerBox(
                   baseColor: placeholderColor,
                   highlightColor: primaryColor,
                   width: 200,
@@ -69,7 +79,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                     4,
                     (index) => Padding(
                       padding: EdgeInsets.only(left: index == 0 ? 0 : 8),
-                      child: _buildShimmerBox(
+                      child: _ShimmerBox(
                         baseColor: placeholderColor,
                         highlightColor: primaryColor,
                         width: 65,
@@ -79,7 +89,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                _buildShimmerBox(
+                _ShimmerBox(
                   baseColor: placeholderColor,
                   highlightColor: primaryColor,
                   width: 250,
