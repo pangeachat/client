@@ -1,8 +1,8 @@
 // Flutter imports:
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'signup.dart';
 
 class SignupWithEmailView extends StatelessWidget {
@@ -37,9 +37,7 @@ class SignupWithEmailView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: L10n.of(context).yourUsername,
-                    ),
+                    decoration: InputDecoration(hintText: L10n.of(context).yourUsername),
                     textInputAction: TextInputAction.next,
                     validator: (text) {
                       if (text == null || text.isEmpty) {
@@ -48,48 +46,35 @@ class SignupWithEmailView extends StatelessWidget {
                       return null;
                     },
                     controller: controller.usernameController,
-                    onTapOutside: (_) =>
-                        FocusManager.instance.primaryFocus?.unfocus(),
+                    onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                   ),
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     validator: controller.emailTextFieldValidator,
                     controller: controller.emailController,
-                    decoration: InputDecoration(
-                      hintText: L10n.of(context).yourEmail,
-                    ),
-                    onTapOutside: (_) =>
-                        FocusManager.instance.primaryFocus?.unfocus(),
+                    decoration: InputDecoration(hintText: L10n.of(context).yourEmail),
+                    onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                   ),
                   TextFormField(
                     textInputAction: TextInputAction.done,
                     obscureText: !controller.showPassword,
                     validator: controller.password1TextFieldValidator,
                     controller: controller.passwordController,
-                    onFieldSubmitted: controller.enableSignUp
-                        ? controller.signup
-                        : null,
+                    onFieldSubmitted: controller.enableSignUp ? controller.signup : null,
                     decoration: InputDecoration(
                       hintText: L10n.of(context).password,
                       suffixIcon: IconButton(
                         tooltip: L10n.of(context).showPassword,
-                        icon: Icon(
-                          controller.showPassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
+                        icon: Icon(controller.showPassword ? Icons.visibility_off : Icons.visibility),
                         onPressed: controller.toggleShowPassword,
                       ),
                       isDense: true,
                     ),
-                    onTapOutside: (_) =>
-                        FocusManager.instance.primaryFocus?.unfocus(),
+                    onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                   ),
                   ElevatedButton(
-                    onPressed: controller.enableSignUp
-                        ? controller.signup
-                        : null,
+                    onPressed: controller.enableSignUp ? controller.signup : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,

@@ -12,6 +12,7 @@ class PangeaLogoSvg extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       'assets/pangea/pangea_logo.svg',
+      semanticsLabel: 'Pangea Chat logo',
       width: width,
       height: width,
       colorFilter: ColorFilter.mode(
