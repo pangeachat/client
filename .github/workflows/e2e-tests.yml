@@ -36,9 +36,6 @@ jobs:
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    defaults:
-      run:
-        working-directory: client
 
     steps:
       - uses: actions/checkout@v6
@@ -89,7 +86,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-${{ github.run_id }}
-          path: client/playwright-report/
+          path: playwright-report/
           retention-days: 14
 
       - name: Post failure comment on triggering PR
