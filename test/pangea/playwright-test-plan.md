@@ -1,5 +1,7 @@
 # E2E Test Plan — Web (Playwright) & Mobile (Patrol)
 
+Architecture and long-term design: [pangea-automated-test-design.md](pangea-automated-test-design.md)
+
 ## Goals
 
 Four capabilities, layered on top of each other:
@@ -104,6 +106,19 @@ Each flow maps to a web spec and/or mobile Patrol test via `e2e/trigger-map.json
 | Push notifications          | ❌  |   ⬜   | Mobile-only (native) |
 | Background / foreground     | ❌  |   ⬜   | Mobile-only (native) |
 
+### Adding a new flow
+
+Pick a flow from the table above (or add a new row), then work through these steps with Copilot. The `write-e2e-test` skill (`.github/skills/write-e2e-test/SKILL.md`) will guide Copilot through the details — you can invoke it by asking something like _"write a Playwright test for the settings flow"_.
+
+1. **Run the app locally** — `flutter run -d chrome` and note the port
+2. **Audit semantics** — Open DevTools → Accessibility tab (or ask Copilot to use `browser_snapshot` via Playwright MCP). Walk through the flow and identify any buttons/inputs that show up as unnamed `generic` nodes
+3. **Fix semantics gaps** — Add `tooltip:` to `IconButton`s, wrap `GestureDetector`/`InkWell` in `Semantics(...)`. Remember `// #Pangea` markers for files outside `lib/pangea/`
+4. **Write the spec** — Create `e2e/scripts/<flow>.spec.ts`. Import from `../fixtures`, use `getByRole` locators, follow the Flutter-Playwright patterns (click-to-focus, 500ms waits, 30s login timeout)
+5. **Wire trigger-map** — Add an entry to `e2e/trigger-map.json` with globs matching the Dart source files that should trigger this test
+6. **Run locally** — `TEST_USER=... TEST_PASSWORD=... BASE_URL=http://localhost:<port> npx playwright test --config e2e/playwright.config.ts e2e/scripts/<flow>.spec.ts`
+7. **Update this table** — Mark the flow ✅ in the Web column
+8. **Commit together** — Dart semantics fixes + spec + trigger-map + plan update in one commit
+
 ---
 
 ## CI modes
@@ -125,43 +140,14 @@ Defined in `.github/workflows/e2e-tests.yml`.
 
 ---
 
-## Execution model
+## Components
 
-```
-┌─────────────────────────────────┐
-│  Option D: Cloud Copilot Agent  │  Self-healing — agent diagnoses
-│  .github/agents/e2e-tester.md   │  and fixes broken locators
-└───────────┬─────────────────────┘
-            │ creates / updates specs
-┌───────────▼─────────────────────┐
-│  Option C: Hybrid Authoring     │  Agent or developer writes specs
-│  Playwright MCP → *.spec.ts     │  interactively, commits them
-└───────────┬─────────────────────┘
-            │ committed specs run in
-┌───────────▼─────────────────────┐
-│  Option B: Deterministic CI     │  npx playwright test
-│  e2e-tests.yml                  │  Fast, free, every deploy  ← foundation
-└─────────────────────────────────┘
-```
+| Component             | File                                               | Role                                                                                                                                                                                     |
+| --------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Deterministic CI**  | `.github/workflows/e2e-tests.yml`                  | Runs `npx playwright test` on every deploy, nightly, and manual dispatch. The foundation — fast, free, repeatable.                                                                       |
+| **Guided authoring**  | `.github/skills/write-e2e-test/SKILL.md`           | Step-by-step procedure a developer invokes to write a new spec with Copilot (semantics audit → spec → trigger-map).                                                                      |
+| **Cloud agent**       | `.github/agents/e2e-tester.md`                     | Copilot coding agent profile — assigned issues to write new specs or fix broken ones. Reads the issue, walks the flow via Playwright MCP, fixes Dart semantics + spec files, opens a PR. |
+| **Agent environment** | `.github/workflows/copilot-setup-steps.yml`        | Installs Node + Playwright in the Copilot coding agent's sandbox.                                                                                                                        |
+| **Conventions**       | `.github/instructions/e2e-testing.instructions.md` | Passively loaded when editing `e2e/` files — Flutter-Playwright patterns, file layout, semantics rules.                                                                                  |
 
----
-
-## Mobile testing (Patrol) — future
-
-Patrol extends `integration_test` with native automation (permissions, system dialogs, backgrounding). Not yet installed.
-
-**Key decisions:**
-
-- Finders: text-based (`$('Login')`) and type-based (`find.byType(ChatView)`) — no `ValueKey`s
-- App launch: call `app.main()` directly (same as existing `app_test.dart`)
-- Backend: `--dart-define=SYNAPSE_URL=...` for staging or local homeserver
-- CI: start with Android emulator in GitHub Actions, graduate to Firebase Test Lab
-
-**Migration path:**
-
-1. `flutter pub add patrol --dev`, configure `pubspec.yaml` patrol section, native side setup
-2. Write `integration_test/patrol/common.dart` (shared login helper)
-3. Write `login_test.dart` to validate wiring
-4. Incrementally migrate existing `app_test.dart` flows
-5. Add native-only tests (permissions, push notifications)
 6. Add mobile CI workflow
