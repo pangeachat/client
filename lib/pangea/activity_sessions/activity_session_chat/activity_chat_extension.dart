@@ -45,9 +45,12 @@ extension ActivityMenuLogic on ChatController {
       return false;
     }
 
+    final l1 =
+        MatrixState.pangeaController.userController.userL1?.langCodeShort;
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
+
     final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
-    return activityLang != null && l2 != activityLang;
+    return activityLang != null && activityLang != l1 && l2 != activityLang;
   }
 }

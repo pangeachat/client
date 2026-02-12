@@ -6,6 +6,8 @@ import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+class IdenticalLanguageException implements Exception {}
+
 class LanguageMismatchPopup extends StatelessWidget {
   final String message;
   final String overlayId;
