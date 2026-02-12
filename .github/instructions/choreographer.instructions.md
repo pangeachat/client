@@ -68,6 +68,12 @@ When a match is accepted/ignored, the `IgcController` fires `matchUpdateStream`.
 
 If the user is unsatisfied with results, `rerunWithFeedback(feedbackText)` re-calls IGC with user feedback and the previous request/response context (`_lastRequest`, `_lastResponse`).
 
+**What the client sends**: The feedback request sends `List<LLMFeedbackSchema>` items on the request body. Each item carries `feedback` (optional string), `content` (the previous response for context), and `score` (optional int, 0–10). The score lets native speakers approve content (9–10) or reject it (0–6), while learners typically send a low score with corrective text. We'll probably just do 0 or 10 corresponding to thumbs up/down, but the schema supports finer granularity if needed.
+
+**What the server does with it**: The router extracts `matrix_user_id` from the auth token and passes it along with the feedback list to `get()`. When feedback is present, `get()` builds an `Audit` internally (score + auditor + feedback text) and appends it to the CMS document (fire-and-forget). If the score indicates rejection (< 7), `get()` regenerates with an escalated model. The human judgment (who rejected/approved, why, when) lives on the `res.audit` array. See the server-side inference doc's Feedback Architecture section for the full flow.
+
+**Native speaker approval**: When a native speaker sends score 9–10, the server persists the audit (upgrading the doc to fine-tuning eligible) and returns the cached response without regeneration.
+
 ### 5. Sending
 
 On send, `Choreographer.getMessageContent()`:
