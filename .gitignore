@@ -102,5 +102,4 @@ web/native_executor.js*
 CLAUDE.md
 
 # E2E test artifacts
-package-lock.json
 test-results/
