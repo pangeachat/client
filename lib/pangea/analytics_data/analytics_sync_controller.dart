@@ -152,11 +152,10 @@ class AnalyticsSyncController {
       final prevBlocked = prev?.blockedConstructs ?? {};
 
       final newlyBlocked = newBlocked.where((c) => !prevBlocked.contains(c));
-      for (final constructId in newlyBlocked) {
-        await dataService.updateDispatcher.sendBlockedConstructUpdate(
-          constructId,
-        );
-      }
+      if (newlyBlocked.isEmpty) continue;
+      await dataService.updateDispatcher.sendBlockedConstructsUpdate(
+        newlyBlocked.toSet(),
+      );
     }
   }
 

@@ -15,8 +15,6 @@ import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -30,27 +28,6 @@ class VocabDetailsView extends StatelessWidget {
     required this.constructId,
     required this.controller,
   });
-
-  Future<void> _blockLemma(BuildContext context) async {
-    final resp = await showOkCancelAlertDialog(
-      context: context,
-      title: L10n.of(context).areYouSure,
-      message: L10n.of(context).blockLemmaConfirmation,
-      isDestructive: true,
-    );
-
-    if (resp != OkCancelResult.ok) return;
-    final res = await showFutureLoadingDialog(
-      context: context,
-      future: () => Matrix.of(
-        context,
-      ).analyticsDataService.updateService.blockConstruct(constructId),
-    );
-
-    if (!res.isError) {
-      Navigator.of(context).pop();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +120,13 @@ class VocabDetailsView extends StatelessWidget {
                               color: Theme.of(context).colorScheme.error,
                             ),
                           ),
-                          onTap: () => _blockLemma(context),
+                          onTap: () async {
+                            final res = await controller.blockConstructs([
+                              constructId,
+                            ]);
+                            if (res == null || res.isError) return;
+                            Navigator.of(context).pop();
+                          },
                         ),
                       ],
                     ),

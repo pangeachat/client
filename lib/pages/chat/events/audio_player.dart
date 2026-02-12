@@ -599,46 +599,63 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                   ),
                                 SizedBox(
                                   height: 32,
-                                  child: Slider(
-                                    // #Pangea
-                                    // thumbColor:
-                                    //     widget.event.senderId ==
-                                    //         widget.event.room.client.userID
-                                    //     ? theme.colorScheme.onPrimary
-                                    //     : theme.colorScheme.primary,
-                                    thumbColor:
-                                        widget.senderId ==
-                                            Matrix.of(context).client.userID
-                                        ? widget.color
-                                        : theme.colorScheme.onSurface,
+                                  // #Pangea
+                                  child: SliderTheme(
+                                    data: SliderTheme.of(context).copyWith(
+                                      thumbColor:
+                                          widget.senderId ==
+                                              Matrix.of(context).client.userID
+                                          ? widget.color
+                                          : theme.colorScheme.onSurface,
+                                      disabledThumbColor:
+                                          widget.senderId ==
+                                              Matrix.of(context).client.userID
+                                          ? widget.color
+                                          : theme.colorScheme.onSurface,
+                                      activeTrackColor: waveform == null
+                                          ? widget.color
+                                          : Colors.transparent,
+                                      inactiveTrackColor: waveform == null
+                                          ? widget.color.withAlpha(128)
+                                          : Colors.transparent,
+                                    ),
                                     // Pangea#
-                                    activeColor: waveform == null
-                                        ? widget.color
-                                        : Colors.transparent,
-                                    inactiveColor: waveform == null
-                                        ? widget.color.withAlpha(128)
-                                        : Colors.transparent,
-                                    max: maxPosition,
-                                    value: currentPosition,
-                                    // #Pangea
-                                    onChanged: !widget.enableClicks
-                                        ? null
-                                        : (position) => audioPlayer == null
-                                              ? _onButtonTap()
-                                              : audioPlayer.seek(
-                                                  Duration(
-                                                    milliseconds: position
-                                                        .round(),
+                                    child: Slider(
+                                      // #Pangea
+                                      // thumbColor:
+                                      //     widget.event.senderId ==
+                                      //         widget.event.room.client.userID
+                                      //     ? theme.colorScheme.onPrimary
+                                      //     : theme.colorScheme.primary,
+                                      // activeColor: waveform == null
+                                      //     ? widget.color
+                                      //     : Colors.transparent,
+                                      // inactiveColor: waveform == null
+                                      //     ? widget.color.withAlpha(128)
+                                      //     : Colors.transparent,
+                                      // Pangea#
+                                      max: maxPosition,
+                                      value: currentPosition,
+                                      // #Pangea
+                                      onChanged: !widget.enableClicks
+                                          ? null
+                                          : (position) => audioPlayer == null
+                                                ? _onButtonTap()
+                                                : audioPlayer.seek(
+                                                    Duration(
+                                                      milliseconds: position
+                                                          .round(),
+                                                    ),
                                                   ),
-                                                ),
-                                    // onChanged: (position) => audioPlayer == null
-                                    //     ? _onButtonTap()
-                                    //     : audioPlayer.seek(
-                                    //         Duration(
-                                    //           milliseconds: position.round(),
-                                    //         ),
-                                    //       ),
-                                    // Pangea#
+                                      // onChanged: (position) => audioPlayer == null
+                                      //     ? _onButtonTap()
+                                      //     : audioPlayer.seek(
+                                      //         Duration(
+                                      //           milliseconds: position.round(),
+                                      //         ),
+                                      //       ),
+                                      // Pangea#
+                                    ),
                                   ),
                                 ),
                               ],

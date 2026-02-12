@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,7 +30,7 @@ class VocabAnalyticsListView extends StatelessWidget {
   const VocabAnalyticsListView({super.key, required this.controller});
 
   List<ConstructUses>? get _filteredVocab =>
-      controller.vocab?.where(_vocabFilter).toList();
+      controller.vocab?.where(_vocabFilter).sorted(_sortBySearch).toList();
 
   bool _vocabFilter(ConstructUses use) =>
       use.lemma.isNotEmpty && _levelFilter(use) && _searchFilter(use);
@@ -53,6 +54,43 @@ class VocabAnalyticsListView extends StatelessWidget {
     ).toLowerCase();
 
     return normalizedLemma.contains(normalizedSearch);
+  }
+
+  int _sortBySearch(ConstructUses a, ConstructUses b) {
+    if (!controller.isSearching ||
+        controller.searchController.text.trim().isEmpty) {
+      return 0; // No sorting if not searching
+    }
+
+    final normalizedSearch = removeDiacritics(
+      controller.searchController.text,
+    ).toLowerCase();
+
+    final normalizedLemmaA = removeDiacritics(a.lemma).toLowerCase();
+    final normalizedLemmaB = removeDiacritics(b.lemma).toLowerCase();
+
+    // Sort matches that start with the search term first, then by closest match
+    final startsWithA = normalizedLemmaA.startsWith(normalizedSearch);
+    final startsWithB = normalizedLemmaB.startsWith(normalizedSearch);
+
+    if (startsWithA && !startsWithB) {
+      return -1; // A comes first
+    } else if (!startsWithA && startsWithB) {
+      return 1; // B comes first
+    } else {
+      // If both start with the search term or neither does, sort by closest match
+      final indexA = normalizedLemmaA.indexOf(normalizedSearch);
+      final indexB = normalizedLemmaB.indexOf(normalizedSearch);
+      if (indexA == -1 && indexB == -1) {
+        return 0; // Neither contains the search term
+      } else if (indexA == -1) {
+        return 1; // B comes first
+      } else if (indexB == -1) {
+        return -1; // A comes first
+      } else {
+        return indexA.compareTo(indexB); // Closer match comes first
+      }
+    }
   }
 
   @override
@@ -154,6 +192,31 @@ class VocabAnalyticsListView extends StatelessWidget {
                         ),
                       ],
                     )
+                  : controller.selectMode
+                  ? Row(
+                      mainAxisAlignment: .spaceBetween,
+                      key: const ValueKey('selection'),
+                      children: [
+                        Row(
+                          mainAxisSize: .min,
+                          children: [
+                            IconButton(
+                              onPressed: controller.clearSelectedConstructs,
+                              icon: const Icon(Icons.close),
+                            ),
+                            Text(
+                              "${controller.selectedConstructs.length}",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          onPressed: controller.blockSelectedConstructs,
+                          icon: Icon(Icons.delete_outline),
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ],
+                    )
                   : Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -207,20 +270,27 @@ class VocabAnalyticsListView extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate((context, index) {
                           final vocabItem = filteredVocab[index];
                           return VocabAnalyticsListTile(
-                            onTap: () {
-                              TtsController.tryToSpeak(
-                                vocabItem.id.lemma,
-                                langCode: MatrixState
-                                    .pangeaController
-                                    .userController
-                                    .userL2Code!,
-                                pos: vocabItem.id.category,
-                              );
-                              AnalyticsNavigationUtil.navigateToAnalytics(
-                                context: context,
-                                view: ProgressIndicatorEnum.wordsUsed,
-                                construct: vocabItem.id,
-                              );
+                            onTap: controller.selectMode
+                                ? () => controller.toggleSelectedConstruct(
+                                    vocabItem.id,
+                                  )
+                                : () {
+                                    TtsController.tryToSpeak(
+                                      vocabItem.id.lemma,
+                                      langCode: MatrixState
+                                          .pangeaController
+                                          .userController
+                                          .userL2Code!,
+                                      pos: vocabItem.id.category,
+                                    );
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: vocabItem.id,
+                                    );
+                                  },
+                            onLongPress: () {
+                              controller.toggleSelectedConstruct(vocabItem.id);
                             },
                             constructId: vocabItem.id,
                             textColor:
@@ -228,7 +298,11 @@ class VocabAnalyticsListView extends StatelessWidget {
                                 ? vocabItem.lemmaCategory.darkColor(context)
                                 : vocabItem.lemmaCategory.color(context),
                             level: vocabItem.lemmaCategory,
-                            selected: vocabItem.id == selectedConstruct,
+                            selected:
+                                vocabItem.id == selectedConstruct ||
+                                controller.selectedConstructs.contains(
+                                  vocabItem.id,
+                                ),
                           );
                         }, childCount: filteredVocab.length),
                       ),

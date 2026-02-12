@@ -432,6 +432,9 @@ extension on ScaffoldMessengerState {
       SnackBar(
         duration: const Duration(minutes: 5),
         dismissDirection: DismissDirection.none,
+        // #Pangea
+        showCloseIcon: true,
+        // Pangea#
         content: Row(
           children: [
             const SizedBox(

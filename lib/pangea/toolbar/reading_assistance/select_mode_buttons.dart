@@ -237,6 +237,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> modeDisabled() async {
     final target = controller.messageEvent.originalSent?.langCode;
+    final l1 =
+        MatrixState.pangeaController.userController.userL1?.langCodeShort;
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
@@ -250,7 +252,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 textAlign: TextAlign.center,
               ),
             ),
-            if (target != null)
+            if (target != null && target != l1)
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Theme.of(

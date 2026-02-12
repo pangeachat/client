@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -26,6 +27,8 @@ import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
@@ -40,6 +43,7 @@ class ConstructAnalyticsView extends StatefulWidget {
 
 class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
+  final List<ConstructIdentifier> selectedConstructs = [];
 
   MorphFeaturesAndTags morphs = defaultMorphMapping;
   List<MorphFeature> features = defaultMorphMapping.displayFeatures;
@@ -84,7 +88,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   void _onConstructUpdate(AnalyticsStreamUpdate update) {
-    if (update.blockedConstruct != null) {
+    if (update.blockedConstructs != null) {
       _onBlockConstruct(update);
     } else {
       _setAnalyticsData();
@@ -92,9 +96,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
-    final blocked = update.blockedConstruct;
+    final blocked = update.blockedConstructs;
     if (blocked == null) return;
-    vocab?.removeWhere((e) => e.id == blocked);
+    vocab?.removeWhere((e) => blocked.contains(e.id));
     if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
       setState(() {});
     }
@@ -139,6 +143,31 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     }
   }
 
+  Future<Result<void>?> blockConstructs(
+    List<ConstructIdentifier> constructs,
+  ) async {
+    final resp = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).blockLemmaConfirmation,
+      isDestructive: true,
+    );
+
+    if (resp != OkCancelResult.ok) return null;
+    return showFutureLoadingDialog(
+      context: context,
+      future: () => Matrix.of(
+        context,
+      ).analyticsDataService.updateService.blockConstructs(constructs),
+    );
+  }
+
+  Future<void> blockSelectedConstructs() async {
+    final res = await blockConstructs(selectedConstructs);
+    if (res == null || res.isError) return;
+    clearSelectedConstructs();
+  }
+
   void setSelectedConstructLevel(ConstructLevelEnum level) {
     setState(() {
       selectedConstructLevel = selectedConstructLevel == level ? null : level;
@@ -160,6 +189,24 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       }
     });
   }
+
+  void toggleSelectedConstruct(ConstructIdentifier construct) {
+    setState(() {
+      if (selectedConstructs.contains(construct)) {
+        selectedConstructs.remove(construct);
+      } else {
+        selectedConstructs.add(construct);
+      }
+    });
+  }
+
+  void clearSelectedConstructs() {
+    setState(() {
+      selectedConstructs.clear();
+    });
+  }
+
+  bool get selectMode => selectedConstructs.isNotEmpty;
 
   Future<void> onFlagTokenInfo(
     PangeaToken token,

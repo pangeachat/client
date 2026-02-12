@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/recording_view_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'uia_request_manager.dart';
 
@@ -43,6 +44,10 @@ extension LocalizedExceptionExtension on Object {
 
     if (this is EmptyAudioException) {
       return L10n.of(context).emptyAudioError;
+    }
+
+    if (this is IdenticalLanguageException) {
+      return L10n.of(context).noIdenticalLanguages;
     }
     // Pangea#
     if (this is FileTooBigMatrixException) {

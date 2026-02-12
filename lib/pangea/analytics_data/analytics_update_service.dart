@@ -129,14 +129,14 @@ class AnalyticsUpdateService {
     await analyticsRoom.addActivityRoomId(roomId);
   }
 
-  Future<void> blockConstruct(ConstructIdentifier constructId) async {
+  Future<void> blockConstructs(List<ConstructIdentifier> constructIds) async {
     final analyticsRoom = await _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
     final current = analyticsRoom.analyticsSettings;
     final blockedConstructs = current.blockedConstructs;
     final updated = current.copyWith(
-      blockedConstructs: {...blockedConstructs, constructId},
+      blockedConstructs: {...blockedConstructs, ...constructIds},
     );
 
     await analyticsRoom.setAnalyticsSettings(updated);

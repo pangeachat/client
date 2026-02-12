@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:provider/provider.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-class IdenticalLanguageException implements Exception {}
 
 class LanguageSelectionPage extends StatefulWidget {
   const LanguageSelectionPage({super.key});
@@ -64,15 +67,34 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
         _selectedLanguage = cachedTargetLang ?? _selectedLanguage;
         _baseLanguage = cachedBaseLang ?? _baseLanguage;
       });
+
+      _cacheLanguages();
     });
   }
 
   void _setSelectedLanguage(LanguageModel? l) {
     setState(() => _selectedLanguage = l);
+    _cacheLanguages();
   }
 
   void _setBaseLanguage(LanguageModel? l) {
     setState(() => _baseLanguage = l);
+    _cacheLanguages();
+    if (l != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _setAppLanguage(l));
+    }
+  }
+
+  void _setAppLanguage(LanguageModel language) {
+    try {
+      Provider.of<LocaleProvider>(
+        context,
+        listen: false,
+      ).setLocale(language.langCode);
+    } catch (e, s) {
+      Logs().e('Error setting app language', e);
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   Future<void> _submit() async {
@@ -84,16 +106,20 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
       return;
     }
 
+    await _cacheLanguages();
+    context.go(
+      GoRouterState.of(context).fullPath?.contains('home') == true
+          ? '/home/language/signup'
+          : '/registration/create',
+    );
+  }
+
+  Future<void> _cacheLanguages() async {
     await LangCodeRepo.set(
       LanguageSettings(
         targetLangCode: _selectedLanguage!.langCode,
         baseLangCode: _baseLanguage?.langCode,
       ),
-    );
-    context.go(
-      GoRouterState.of(context).fullPath?.contains('home') == true
-          ? '/home/language/signup'
-          : '/registration/create',
     );
   }
 
