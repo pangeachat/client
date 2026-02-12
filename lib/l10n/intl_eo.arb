@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:50.972053",
+  "@@last_modified": "2026-02-12 15:55:40.077453",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12481,6 +12481,11 @@
   },
   "unlockLearningTools": "Malfermu lernilojn",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Ni lanĉis abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

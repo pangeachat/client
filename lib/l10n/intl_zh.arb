@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-12 14:19:43.735980",
+  "@@last_modified": "2026-02-12 15:55:28.100164",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "解锁学习工具",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "我们在新标签页中启动了订阅管理。如果您没有看到新标签页，请检查您的弹出窗口拦截器。",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

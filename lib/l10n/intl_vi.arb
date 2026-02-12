@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:40.440257",
+  "@@last_modified": "2026-02-12 15:55:22.460223",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6975,6 +6975,11 @@
   },
   "unlockLearningTools": "Mở khóa công cụ học tập",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Chúng tôi đã ra mắt quản lý đăng ký trong một tab mới. Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

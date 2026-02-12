@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-02-12 14:19:23.493734",
+  "@@last_modified": "2026-02-12 15:54:54.817922",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11247,6 +11247,11 @@
   },
   "unlockLearningTools": "Lernwerkzeuge freischalten",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Wir haben das Abonnementmanagement in einem neuen Tab gestartet. Wenn Sie den neuen Tab nicht gesehen haben, überprüfen Sie bitte Ihren Popup-Blocker.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

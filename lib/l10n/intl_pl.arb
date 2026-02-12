@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-12 14:19:46.687042",
+  "@@last_modified": "2026-02-12 15:55:32.706990",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11380,6 +11380,11 @@
   },
   "unlockLearningTools": "Odblokuj narzędzia do nauki",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Uruchomiliśmy zarządzanie subskrypcjami w nowej karcie. Jeśli nie widzisz nowej karty, sprawdź swój blokator wyskakujących okienek.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

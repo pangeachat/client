@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:26.246745",
+  "@@last_modified": "2026-02-12 15:54:59.311944",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11352,6 +11352,11 @@
   },
   "unlockLearningTools": "Sblocca gli strumenti di apprendimento",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Abbiamo lanciato la gestione degli abbonamenti in una nuova scheda. Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

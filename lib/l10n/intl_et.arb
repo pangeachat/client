@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-12 14:19:22.749998",
+  "@@last_modified": "2026-02-12 15:54:53.453907",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11532,6 +11532,11 @@
   },
   "unlockLearningTools": "Avage õppimisvahendid",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Käivitame tellimuse haldamise uues vahekaardis. Kui te ei näinud uut vahekaarti, palun kontrollige oma hüpikakna blokeerijat.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

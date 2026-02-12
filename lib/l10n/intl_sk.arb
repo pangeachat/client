@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-12 14:19:14.622122",
+  "@@last_modified": "2026-02-12 15:54:41.290145",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12476,6 +12476,11 @@
   },
   "unlockLearningTools": "Odomknúť nástroje na učenie",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Spustili sme správu predplatného v novom okne. Ak ste nevideli nové okno, skontrolujte prosím svoj blokátor vyskakovacích okien.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

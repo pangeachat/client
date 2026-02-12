@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-12 14:19:51.968270",
+  "@@last_modified": "2026-02-12 15:55:41.309030",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "Разблокировать инструменты обучения",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Мы запустили управление подписками в новой вкладке. Если вы не видите новую вкладку, пожалуйста, проверьте свой блокировщик всплывающих окон.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-02-12 14:19:25.181672",
+  "@@last_modified": "2026-02-12 15:54:57.891614",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12488,6 +12488,11 @@
   },
   "unlockLearningTools": "解鎖學習工具",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "我們在新標籤中啟動了訂閱管理。如果你沒有看到新標籤，請檢查你的彈出窗口阻擋器。",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

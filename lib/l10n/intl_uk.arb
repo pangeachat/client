@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-12 14:19:27.246355",
+  "@@last_modified": "2026-02-12 15:55:00.736118",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "Відкрити навчальні інструменти",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Ми запустили управління підпискою в новій вкладці. Якщо ви не бачили нову вкладку, будь ласка, перевірте свій блокувальник спливаючих вікон.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

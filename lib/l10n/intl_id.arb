@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:12.173785",
+  "@@last_modified": "2026-02-12 15:54:37.712685",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11364,6 +11364,11 @@
   },
   "unlockLearningTools": "Buka alat pembelajaran",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Kami telah meluncurkan manajemen langganan di tab baru. Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

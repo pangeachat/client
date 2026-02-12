@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-12 14:19:54.334526",
+  "@@last_modified": "2026-02-12 15:55:45.340674",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11265,6 +11265,11 @@
   },
   "unlockLearningTools": "Díghlas na huirlisí foghlama",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Seoladh bainistíocht síntiúis i gcluaisín nua. Má chonaic tú an cluaisín nua, seiceáil le do thoil do bhacadóir pop-up.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

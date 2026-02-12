@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:33.575679",
+  "@@last_modified": "2026-02-12 15:55:11.199909",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11397,6 +11397,11 @@
   },
   "unlockLearningTools": "解鎖學習工具",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "我們在新標籤中啟用了訂閱管理。如果您沒有看到新標籤，請檢查您的彈出窗口阻擋器。",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

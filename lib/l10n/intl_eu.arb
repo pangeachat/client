@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-12 14:19:20.758329",
+  "@@last_modified": "2026-02-12 15:54:50.402230",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "Ireki ikaskuntza tresnak",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

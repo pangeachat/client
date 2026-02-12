@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:47.603162",
+  "@@last_modified": "2026-02-12 15:55:33.937274",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11870,6 +11870,11 @@
   },
   "unlockLearningTools": "Lås upp lärandeverktyg",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Vi har lanserat prenumerationshantering i en ny flik. Om du inte såg den nya fliken, vänligen kontrollera din popup-blockerare.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

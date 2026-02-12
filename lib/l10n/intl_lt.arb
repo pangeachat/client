@@ -3857,7 +3857,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-12 14:19:39.720089",
+  "@@last_modified": "2026-02-12 15:55:21.225087",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12197,6 +12197,11 @@
   },
   "unlockLearningTools": "Atblokuoti mokymosi įrankius",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Paleidome prenumeratos valdymą naujame skirtuke. Jei nematėte naujojo skirtuko, patikrinkite savo iššokančių langų blokatorių.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

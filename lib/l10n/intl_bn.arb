@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:44.709318",
+  "@@last_modified": "2026-02-12 15:55:29.425875",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12002,6 +12002,11 @@
   },
   "unlockLearningTools": "শিক্ষার সরঞ্জাম আনলক করুন",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "আমরা একটি নতুন ট্যাবে সাবস্ক্রিপশন ব্যবস্থাপনা চালু করেছি। যদি আপনি নতুন ট্যাবটি না দেখে থাকেন, দয়া করে আপনার পপআপ ব্লকারটি পরীক্ষা করুন।",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }
