@@ -14,6 +14,8 @@ import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dar
 import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/learning_settings/voice_dropdown.dart';
 import 'package:fluffychat/pangea/user/user_model.dart' as user;
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class BotChatSettingsDialog extends StatefulWidget {
@@ -50,7 +52,10 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
   user.Profile get _userProfile =>
       MatrixState.pangeaController.userController.profile;
 
-  Future<void> _update(user.Profile Function(user.Profile) update) async {
+  Future<void> _update(
+    user.Profile Function(user.Profile) update,
+    VoidCallback reset,
+  ) async {
     try {
       await MatrixState.pangeaController.userController
           .updateProfile(update, waitForDataInSync: true)
@@ -59,12 +64,50 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
         context,
       ).client.updateBotOptions(_userProfile.userSettings);
     } catch (e, s) {
+      reset();
       ErrorHandler.logError(
         e: e,
         s: s,
         data: {'roomId': widget.room.id, 'model': _userProfile.toJson()},
       );
+      await _showErrorDialog(e);
     }
+  }
+
+  Future<void> _showErrorDialog(Object error) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: Icon(
+            Icons.error_outline_outlined,
+            color: Theme.of(context).colorScheme.error,
+            size: 48,
+          ),
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 256),
+            child: Row(
+              crossAxisAlignment: .center,
+              children: [
+                Expanded(
+                  child: Text(
+                    error.toLocalizedString(context),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            AdaptiveDialogAction(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(L10n.of(context).close),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> _setLanguage(LanguageModel? lang) async {
@@ -73,36 +116,65 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
       return;
     }
 
+    final prevLang = MatrixState.pangeaController.userController.userL2;
+    final prevVoice = _userProfile.userSettings.voice;
+
     setState(() {
       _selectedLang = lang;
       _selectedVoice = null;
     });
 
-    await _update((model) {
-      model.userSettings.targetLanguage = lang.langCode;
-      model.userSettings.voice = null;
-      return model;
-    });
+    await _update(
+      (model) {
+        model.userSettings.targetLanguage = lang.langCode;
+        model.userSettings.voice = null;
+        return model;
+      },
+      () {
+        if (mounted) {
+          setState(() {
+            _selectedLang = prevLang;
+            _selectedVoice = prevVoice;
+          });
+        }
+      },
+    );
   }
 
   Future<void> _setLevel(LanguageLevelTypeEnum? level) async {
     if (level == null || level == _userProfile.userSettings.cefrLevel) return;
+    final prevLevel = _userProfile.userSettings.cefrLevel;
     setState(() => _selectedLevel = level);
 
-    await _update((model) {
-      model.userSettings.cefrLevel = level;
-      return model;
-    });
+    await _update(
+      (model) {
+        model.userSettings.cefrLevel = level;
+        return model;
+      },
+      () {
+        if (mounted) {
+          setState(() => _selectedLevel = prevLevel);
+        }
+      },
+    );
   }
 
   Future<void> _setVoice(String? voice) async {
     if (voice == _userProfile.userSettings.voice) return;
+    final prevVoice = _userProfile.userSettings.voice;
 
     setState(() => _selectedVoice = voice);
-    await _update((model) {
-      model.userSettings.voice = voice;
-      return model;
-    });
+    await _update(
+      (model) {
+        model.userSettings.voice = voice;
+        return model;
+      },
+      () {
+        if (mounted) {
+          setState(() => _selectedVoice = prevVoice);
+        }
+      },
+    );
   }
 
   @override
