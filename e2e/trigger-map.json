@@ -49,10 +49,7 @@
     "mobile": null
   },
   "course-discovery": {
-    "globs": [
-      "lib/pangea/course_creation/**",
-      "lib/pangea/course_plan/**"
-    ],
+    "globs": ["lib/pangea/course_creation/**", "lib/pangea/course_plan/**"],
     "web": "e2e/scripts/course-discovery.spec.ts",
     "mobile": null
   },
@@ -75,10 +72,7 @@
     "mobile": null
   },
   "create-dm": {
-    "globs": [
-      "lib/pages/new_private_chat/**",
-      "lib/pangea/chat_list/**"
-    ],
+    "globs": ["lib/pages/new_private_chat/**", "lib/pangea/chat_list/**"],
     "web": "e2e/scripts/create-dm.spec.ts",
     "mobile": null
   },
@@ -100,5 +94,16 @@
     ],
     "web": null,
     "mobile": "integration_test/patrol/permissions_test.dart"
+  },
+  "a11y": {
+    "globs": [
+      "lib/pangea/login/**",
+      "lib/pages/login/**",
+      "lib/pangea/chat_list/**",
+      "lib/pages/chat_list/**",
+      "e2e/scripts/a11y.spec.ts"
+    ],
+    "web": "e2e/scripts/a11y.spec.ts",
+    "mobile": null
   }
 }

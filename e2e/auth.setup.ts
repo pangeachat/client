@@ -47,6 +47,7 @@ test("authenticate", async ({ page }) => {
   // Login involves a Matrix server round-trip, so give it ample time
   await expect(page).toHaveURL(/\/rooms/, { timeout: 30000 });
 
-  // Save authentication state
-  await page.context().storageState({ path: authFile });
+  // Save authentication state (indexedDB: true captures Flutter/Matrix
+  // session tokens stored in IndexedDB, not just cookies + localStorage)
+  await page.context().storageState({ path: authFile, indexedDB: true });
 });
