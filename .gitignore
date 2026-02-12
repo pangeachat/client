@@ -96,6 +96,5 @@ web/native_executor.js*
 # E2E test artifacts
 e2e/.auth/user.json
 node_modules/
-package-lock.json
 playwright-report/
 test-results/
