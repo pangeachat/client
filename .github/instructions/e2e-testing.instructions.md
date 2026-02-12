@@ -1,5 +1,5 @@
 ---
-applyTo: "client/e2e/**,client/integration_test/**,client/test/pangea/playwright-test-plan.md,client/.github/workflows/e2e-*.yml,client/.github/workflows/copilot-setup-steps.yml,client/.github/agents/**"
+applyTo: "client/e2e/**,client/integration_test/**,client/test/pangea/playwright-test-plan.md,client/.github/workflows/e2e-*.yml,client/.github/workflows/copilot-setup-steps.yml,client/.github/agents/**,client/.github/skills/write-e2e-test/**"
 ---
 
 # E2E Testing — Web (Playwright) & Mobile (Patrol)
@@ -8,10 +8,10 @@ Master plan: `client/test/pangea/playwright-test-plan.md`
 
 ## Architecture
 
-| Platform | Tool | Target |
-|---|---|---|
-| Web | Playwright (MCP for authoring, Test for CI) | Live staging deploy — no build step |
-| Android / iOS | Patrol + `integration_test` | Emulators, real devices, or Firebase Test Lab |
+| Platform      | Tool                                        | Target                                        |
+| ------------- | ------------------------------------------- | --------------------------------------------- |
+| Web           | Playwright (MCP for authoring, Test for CI) | Live staging deploy — no build step           |
+| Android / iOS | Patrol + `integration_test`                 | Emulators, real devices, or Firebase Test Lab |
 
 ## Key decisions (locked in)
 
