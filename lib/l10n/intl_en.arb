@@ -5344,5 +5344,6 @@
   "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
   "joinCourseForActivities": "Join a course to try activities.",
   "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
-  "emailVerificationFailed": "Email verification failed. Please try again."
+  "emailVerificationFailed": "Email verification failed. Please try again.",
+  "unlockLearningTools": "Unlock learning tools"
 }

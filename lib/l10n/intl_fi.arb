@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-10 13:52:59.361015",
+  "@@last_modified": "2026-02-12 14:19:09.156864",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11312,6 +11312,11 @@
   },
   "emailVerificationFailed": "Sähköpostin vahvistaminen epäonnistui. Yritä uudelleen.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Avaa oppimistyökalut",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

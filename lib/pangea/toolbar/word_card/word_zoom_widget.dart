@@ -70,7 +70,7 @@ class WordZoomWidget extends StatelessWidget {
         MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
-        ? const MessageUnsubscribedCard()
+        ? MessageUnsubscribedCard(token: token, onClose: onClose)
         : Stack(
             children: [
               Container(

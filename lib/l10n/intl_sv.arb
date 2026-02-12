@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:43.184731",
+  "@@last_modified": "2026-02-12 14:19:47.603162",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11865,6 +11865,11 @@
   },
   "emailVerificationFailed": "E-postverifiering misslyckades. Vänligen försök igen.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Lås upp lärandeverktyg",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

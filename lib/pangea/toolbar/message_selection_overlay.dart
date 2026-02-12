@@ -190,11 +190,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Update [selectedSpan]
   void updateSelectedSpan(PangeaTokenText? selectedSpan) {
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-        false) {
-      return;
-    }
-
     if (selectedSpan == _selectedSpan) {
       selectModeController.setPlayingToken(selectedToken?.text);
       return;
@@ -213,7 +208,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
-
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
+        false) {
+      setState(() {});
+      return;
+    }
     if (!mounted) return;
     if (selectedToken != null && isNewToken(selectedToken!)) {
       final token = selectedToken!;

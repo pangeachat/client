@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-02-10 13:53:24.861894",
+  "@@last_modified": "2026-02-12 14:19:32.861651",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12421,6 +12421,11 @@
   },
   "emailVerificationFailed": "A verificação do email falhou. Por favor, tente novamente.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloquear ferramentas de aprendizado",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

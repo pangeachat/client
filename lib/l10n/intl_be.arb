@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-10 13:53:21.667046",
+  "@@last_modified": "2026-02-12 14:19:29.850964",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11272,6 +11272,11 @@
   },
   "emailVerificationFailed": "Праверка электроннай пошты не ўдалася. Калі ласка, паспрабуйце яшчэ раз.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Разблакаваць навучальныя інструменты",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

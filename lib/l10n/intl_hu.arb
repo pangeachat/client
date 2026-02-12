@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-10 13:53:02.286359",
+  "@@last_modified": "2026-02-12 14:19:11.401904",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11390,6 +11390,11 @@
   },
   "emailVerificationFailed": "Az email ellenőrzése nem sikerült. Kérjük, próbálja újra.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Tanulási eszközök feloldása",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

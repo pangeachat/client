@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-10 13:53:29.059419",
+  "@@last_modified": "2026-02-12 14:19:35.424642",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12368,6 +12368,11 @@
   },
   "emailVerificationFailed": "Nabigo ang beripikasyon ng email. Pakisubukang muli.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "I-unlock ang mga kasangkapan sa pag-aaral",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

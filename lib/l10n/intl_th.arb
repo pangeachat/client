@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-10 13:53:23.735994",
+  "@@last_modified": "2026-02-12 14:19:32.047326",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12000,6 +12000,11 @@
   },
   "emailVerificationFailed": "การตรวจสอบอีเมลล้มเหลว กรุณาลองอีกครั้ง.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "ปลดล็อกเครื่องมือการเรียนรู้",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

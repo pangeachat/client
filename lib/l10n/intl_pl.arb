@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-10 13:53:42.262959",
+  "@@last_modified": "2026-02-12 14:19:46.687042",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11375,6 +11375,11 @@
   },
   "emailVerificationFailed": "Weryfikacja adresu e-mail nie powiodła się. Proszę spróbować ponownie.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Odblokuj narzędzia do nauki",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

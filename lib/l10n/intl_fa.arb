@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:41.240542",
+  "@@last_modified": "2026-02-12 14:19:45.762483",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11374,6 +11374,11 @@
   },
   "emailVerificationFailed": "تأیید ایمیل ناموفق بود. لطفاً دوباره تلاش کنید.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "ابزارهای یادگیری را باز کنید",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

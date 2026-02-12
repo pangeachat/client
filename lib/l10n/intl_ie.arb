@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-10 13:53:06.527618",
+  "@@last_modified": "2026-02-12 14:19:15.453228",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12001,6 +12001,11 @@
   },
   "emailVerificationFailed": "Féil an fhíorú ríomhphoist. Le do thoil, déan iarracht arís.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloquear ferramentas de aprendizagem",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

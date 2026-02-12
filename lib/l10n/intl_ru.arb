@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-10 13:53:47.782560",
+  "@@last_modified": "2026-02-12 14:19:51.968270",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11253,6 +11253,11 @@
   },
   "emailVerificationFailed": "Ошибка проверки электронной почты. Пожалуйста, попробуйте снова.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Разблокировать инструменты обучения",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

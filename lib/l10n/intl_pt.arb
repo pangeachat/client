@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:13.189352",
+  "@@last_modified": "2026-02-12 14:19:21.495283",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12474,6 +12474,11 @@
   },
   "emailVerificationFailed": "A verificação do email falhou. Por favor, tente novamente.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloquear ferramentas de aprendizado",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

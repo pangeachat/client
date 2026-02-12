@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-02-10 13:53:28.032062",
+  "@@last_modified": "2026-02-12 14:19:34.497441",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -11147,6 +11147,11 @@
   },
   "emailVerificationFailed": "Email tasdiqlash muvaffaqiyatsiz bo'ldi. Iltimos, qayta urinib ko'ring.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "O'qish vositalarini ochish",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-10 13:53:13.964639",
+  "@@last_modified": "2026-02-12 14:19:22.749998",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11527,6 +11527,11 @@
   },
   "emailVerificationFailed": "E-posti kinnitamine ebaõnnestus. Palun proovige uuesti.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Avage õppimisvahendid",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

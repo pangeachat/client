@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:35.400314",
+  "@@last_modified": "2026-02-12 14:19:40.440257",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6970,6 +6970,11 @@
   },
   "emailVerificationFailed": "Xác minh email không thành công. Vui lòng thử lại.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Mở khóa công cụ học tập",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

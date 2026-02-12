@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-10 13:53:12.038447",
+  "@@last_modified": "2026-02-12 14:19:20.758329",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11253,6 +11253,11 @@
   },
   "emailVerificationFailed": "Posta elektronikoaren berrespena huts egin du. Mesedez, saiatu berriro.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Ireki ikaskuntza tresnak",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:53:04.585768",
+  "@@last_modified": "2026-02-12 14:19:13.816075",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12122,6 +12122,11 @@
   },
   "emailVerificationFailed": "Verificarea emailului a eșuat. Vă rugăm să încercați din nou.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Dezvăluie instrumentele de învățare",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }

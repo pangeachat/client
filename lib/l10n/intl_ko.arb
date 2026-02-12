@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-10 13:52:55.047565",
+  "@@last_modified": "2026-02-12 14:19:06.049539",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11479,6 +11479,11 @@
   },
   "emailVerificationFailed": "이메일 인증에 실패했습니다. 다시 시도해 주세요.",
   "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "학습 도구 잠금 해제",
+  "@unlockLearningTools": {
     "type": "String",
     "placeholders": {}
   }
