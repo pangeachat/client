@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-02-12 14:19:08.365623",
+  "@@last_modified": "2026-02-12 15:54:31.163261",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "Desbloquear ferramentas de aprendizaxe",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Lanzamos a xestión de subscrición nunha nova pestana. Se non ves a nova pestana, por favor, verifica o teu bloqueador de ventás emerxentes.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

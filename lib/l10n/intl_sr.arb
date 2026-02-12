@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:53.531659",
+  "@@last_modified": "2026-02-12 15:55:44.378014",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12488,6 +12488,11 @@
   },
   "unlockLearningTools": "Otključajte alate za učenje",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste videli novu karticu, molimo proverite svoj blokator iskačućih prozora.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

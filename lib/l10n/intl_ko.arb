@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:06.049539",
+  "@@last_modified": "2026-02-12 15:54:26.148157",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11484,6 +11484,11 @@
   },
   "unlockLearningTools": "학습 도구 잠금 해제",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "새 탭에서 구독 관리 기능을 시작했습니다. 새 탭이 보이지 않으면 팝업 차단기를 확인해 주세요.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

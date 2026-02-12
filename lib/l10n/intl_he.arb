@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:18.118020",
+  "@@last_modified": "2026-02-12 15:54:46.170245",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12441,6 +12441,11 @@
   },
   "unlockLearningTools": "שחרר את כלי הלמידה",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "השקנו ניהול מנויים בלשונית חדשה. אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

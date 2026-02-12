@@ -2460,7 +2460,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-02-12 14:19:24.467310",
+  "@@last_modified": "2026-02-12 15:54:56.456937",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12473,6 +12473,11 @@
   },
   "unlockLearningTools": "Odkleni orodja za učenje",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Zagnali smo upravljanje naročnin v novem zavihku. Če novega zavihka niste videli, prosimo, preverite svoj blokator pojavnih oken.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

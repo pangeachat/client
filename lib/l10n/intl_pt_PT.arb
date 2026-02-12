@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-02-12 14:19:32.861651",
+  "@@last_modified": "2026-02-12 15:55:09.873153",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12426,6 +12426,11 @@
   },
   "unlockLearningTools": "Desbloquear ferramentas de aprendizado",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Lançamos a gestão de assinaturas em uma nova aba. Se você não viu a nova aba, por favor, verifique seu bloqueador de pop-ups.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

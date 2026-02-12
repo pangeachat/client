@@ -1916,7 +1916,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-02-12 14:19:38.869213",
+  "@@last_modified": "2026-02-12 15:55:19.505503",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12481,6 +12481,11 @@
   },
   "unlockLearningTools": "అభ్యాస సాధనాలను అన్లాక్ చేయండి",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "మేము కొత్త టాబ్‌లో సబ్‌స్క్రిప్షన్ నిర్వహణను ప్రారంభించాము. మీరు కొత్త టాబ్‌ను చూడకపోతే, దయచేసి మీ పాప్-అప్ బ్లాకర్‌ను తనిఖీ చేయండి.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

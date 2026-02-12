@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-02-12 14:19:15.453228",
+  "@@last_modified": "2026-02-12 15:54:43.547279",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12006,6 +12006,11 @@
   },
   "unlockLearningTools": "Desbloquear ferramentas de aprendizagem",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Tugaimid tús le bainistíocht síntiúis i gcluaisín nua. Más rud é nach bhfaca tú an cluaisín nua, le do thoil seiceáil do bhacadóir pop-up.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

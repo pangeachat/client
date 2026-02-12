@@ -1954,7 +1954,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-02-12 14:19:18.922556",
+  "@@last_modified": "2026-02-12 15:54:47.755572",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12470,6 +12470,11 @@
   },
   "unlockLearningTools": "Sblokez les outils d'apprentissage",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Mi lanĉis abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

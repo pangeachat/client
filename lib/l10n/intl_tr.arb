@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-12 14:19:37.773936",
+  "@@last_modified": "2026-02-12 15:55:18.066423",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11598,6 +11598,11 @@
   },
   "unlockLearningTools": "Öğrenme araçlarını aç",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Abonelik yönetimini yeni bir sekmede başlattık. Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

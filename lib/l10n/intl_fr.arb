@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-02-12 14:19:55.122129",
+  "@@last_modified": "2026-02-12 15:55:46.639594",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11664,6 +11664,11 @@
   },
   "unlockLearningTools": "Déverrouiller les outils d'apprentissage",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Nous avons lancé la gestion des abonnements dans un nouvel onglet. Si vous n'avez pas vu le nouvel onglet, veuillez vérifier votre bloqueur de fenêtres contextuelles.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

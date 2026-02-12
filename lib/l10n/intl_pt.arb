@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:21.495283",
+  "@@last_modified": "2026-02-12 15:54:51.749090",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12479,6 +12479,11 @@
   },
   "unlockLearningTools": "Desbloquear ferramentas de aprendizado",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Lançamos a gestão de assinaturas em uma nova aba. Se você não viu a nova aba, por favor, verifique seu bloqueador de pop-ups.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

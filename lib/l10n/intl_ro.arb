@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:13.816075",
+  "@@last_modified": "2026-02-12 15:54:39.247533",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12127,6 +12127,11 @@
   },
   "unlockLearningTools": "Dezvăluie instrumentele de învățare",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Am lansat gestionarea abonamentelor într-o filă nouă. Dacă nu ai văzut fila nouă, te rugăm să verifici blocatorul de feronerie.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

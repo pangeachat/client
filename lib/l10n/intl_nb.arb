@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:29.069491",
+  "@@last_modified": "2026-02-12 15:55:03.826328",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11327,6 +11327,11 @@
   },
   "unlockLearningTools": "Lås opp læringsverktøy",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Vi har lansert abonnementshåndtering i en ny fane. Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeren din.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

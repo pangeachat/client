@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-12 14:19:29.850964",
+  "@@last_modified": "2026-02-12 15:55:05.568287",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11277,6 +11277,11 @@
   },
   "unlockLearningTools": "Разблакаваць навучальныя інструменты",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Мы запусцілі кіраванне падпіскай у новым укладцы. Калі вы не ўбачылі новую ўкладку, калі ласка, праверце свой блакіроўшчык усплывальных акнаў.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

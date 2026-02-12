@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-02-12 14:19:16.781492",
+  "@@last_modified": "2026-02-12 15:54:44.996537",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11751,6 +11751,11 @@
   },
   "unlockLearningTools": "Otključaj alate za učenje",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iskačućih prozora.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

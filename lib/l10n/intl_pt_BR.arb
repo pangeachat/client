@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:19.754331",
+  "@@last_modified": "2026-02-12 15:54:49.082065",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11258,6 +11258,11 @@
   },
   "unlockLearningTools": "Desbloquear ferramentas de aprendizado",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Lançamos o gerenciamento de assinaturas em uma nova aba. Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

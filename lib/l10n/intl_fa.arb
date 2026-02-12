@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 14:19:45.762483",
+  "@@last_modified": "2026-02-12 15:55:31.068009",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11379,6 +11379,11 @@
   },
   "unlockLearningTools": "ابزارهای یادگیری را باز کنید",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "ما مدیریت اشتراک را در یک تب جدید راه‌اندازی کردیم. اگر تب جدید را ندیدید، لطفاً مسدودکننده پاپ‌آپ خود را بررسی کنید.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }

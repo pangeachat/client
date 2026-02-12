@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-12 14:19:11.401904",
+  "@@last_modified": "2026-02-12 15:54:36.494745",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11395,6 +11395,11 @@
   },
   "unlockLearningTools": "Tanulási eszközök feloldása",
   "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Elindítottuk az előfizetéskezelést egy új lapon. Ha nem láttad az új lapot, kérlek ellenőrizd a felugróablak-blokkolódat.",
+  "@managementSnackbarMessage": {
     "type": "String",
     "placeholders": {}
   }
