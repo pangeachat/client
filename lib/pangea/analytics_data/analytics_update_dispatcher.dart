@@ -85,11 +85,13 @@ class AnalyticsUpdateDispatcher {
     UserSetLemmaInfo lemmaInfo,
   ) => _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
-  Future<void> sendBlockedConstructUpdate(
-    ConstructIdentifier blockedConstruct,
+  Future<void> sendBlockedConstructsUpdate(
+    Set<ConstructIdentifier> blockedConstructs,
   ) async {
-    await dataService.updateBlockedConstructs(blockedConstruct);
-    final update = AnalyticsStreamUpdate(blockedConstruct: blockedConstruct);
+    for (final blockedConstruct in blockedConstructs) {
+      await dataService.updateBlockedConstructs(blockedConstruct);
+    }
+    final update = AnalyticsStreamUpdate(blockedConstructs: blockedConstructs);
     constructUpdateStream.add(update);
   }
 

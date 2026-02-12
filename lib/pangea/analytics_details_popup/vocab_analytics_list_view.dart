@@ -192,6 +192,31 @@ class VocabAnalyticsListView extends StatelessWidget {
                         ),
                       ],
                     )
+                  : controller.selectMode
+                  ? Row(
+                      mainAxisAlignment: .spaceBetween,
+                      key: const ValueKey('selection'),
+                      children: [
+                        Row(
+                          mainAxisSize: .min,
+                          children: [
+                            IconButton(
+                              onPressed: controller.clearSelectedConstructs,
+                              icon: const Icon(Icons.close),
+                            ),
+                            Text(
+                              "${controller.selectedConstructs.length}",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          onPressed: controller.blockSelectedConstructs,
+                          icon: Icon(Icons.delete_outline),
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ],
+                    )
                   : Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -245,20 +270,27 @@ class VocabAnalyticsListView extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate((context, index) {
                           final vocabItem = filteredVocab[index];
                           return VocabAnalyticsListTile(
-                            onTap: () {
-                              TtsController.tryToSpeak(
-                                vocabItem.id.lemma,
-                                langCode: MatrixState
-                                    .pangeaController
-                                    .userController
-                                    .userL2Code!,
-                                pos: vocabItem.id.category,
-                              );
-                              AnalyticsNavigationUtil.navigateToAnalytics(
-                                context: context,
-                                view: ProgressIndicatorEnum.wordsUsed,
-                                construct: vocabItem.id,
-                              );
+                            onTap: controller.selectMode
+                                ? () => controller.toggleSelectedConstruct(
+                                    vocabItem.id,
+                                  )
+                                : () {
+                                    TtsController.tryToSpeak(
+                                      vocabItem.id.lemma,
+                                      langCode: MatrixState
+                                          .pangeaController
+                                          .userController
+                                          .userL2Code!,
+                                      pos: vocabItem.id.category,
+                                    );
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: vocabItem.id,
+                                    );
+                                  },
+                            onLongPress: () {
+                              controller.toggleSelectedConstruct(vocabItem.id);
                             },
                             constructId: vocabItem.id,
                             textColor:
@@ -266,7 +298,11 @@ class VocabAnalyticsListView extends StatelessWidget {
                                 ? vocabItem.lemmaCategory.darkColor(context)
                                 : vocabItem.lemmaCategory.color(context),
                             level: vocabItem.lemmaCategory,
-                            selected: vocabItem.id == selectedConstruct,
+                            selected:
+                                vocabItem.id == selectedConstruct ||
+                                controller.selectedConstructs.contains(
+                                  vocabItem.id,
+                                ),
                           );
                         }, childCount: filteredVocab.length),
                       ),

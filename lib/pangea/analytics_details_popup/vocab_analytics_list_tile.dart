@@ -9,6 +9,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class VocabAnalyticsListTile extends StatelessWidget {
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final ConstructIdentifier constructId;
   final ConstructLevelEnum level;
   final Color textColor;
@@ -20,6 +21,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
     this.level = ConstructLevelEnum.seeds,
     required this.textColor,
     this.onTap,
+    this.onLongPress,
     this.selected = false,
   });
 
@@ -35,6 +37,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           onTap: onTap,
+          onLongPress: onLongPress,
           child: Container(
             height: maxWidth,
             width: maxWidth,

@@ -34,12 +34,12 @@ class _AnalyticsClient {
 
 class AnalyticsStreamUpdate {
   final int points;
-  final ConstructIdentifier? blockedConstruct;
+  final Set<ConstructIdentifier>? blockedConstructs;
   final String? targetID;
 
   AnalyticsStreamUpdate({
     this.points = 0,
-    this.blockedConstruct,
+    this.blockedConstructs,
     this.targetID,
   });
 }
