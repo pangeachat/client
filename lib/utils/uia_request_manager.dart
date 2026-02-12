@@ -63,18 +63,97 @@ extension UiaRequestManager on MatrixState {
               clientSecret: currentClientSecret,
             ),
           );
+          // #Pangea
+          // if (OkCancelResult.ok ==
+          //     await showOkCancelAlertDialog(
+          //       useRootNavigator: false,
+          //       context: navigatorContext,
+          //       title: l10n.weSentYouAnEmail,
+          //       L10n.of(context).pleaseClickOnLink,
+          //       okLabel: l10n.iHaveClickedOnLink,
+          //       cancelLabel: l10n.cancel,
+          //     )) {
           if (OkCancelResult.ok ==
-              await showOkCancelAlertDialog(
+              await showDialog<OkCancelResult?>(
                 useRootNavigator: false,
+                barrierDismissible: false,
                 context: navigatorContext,
-                title: l10n.weSentYouAnEmail,
-                // #Pangea
-                // message: L10n.of(context).pleaseClickOnLink,
-                message: L10n.of(context).clickOnEmailLink,
-                // Pangea#
-                okLabel: l10n.iHaveClickedOnLink,
-                cancelLabel: l10n.cancel,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  contentPadding: EdgeInsets.all(12.0),
+                  title: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 256),
+                    child: Text(
+                      l10n.weSentYouAnEmail,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  content: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 256),
+                    child: Column(
+                      mainAxisSize: .min,
+                      children: [
+                        Text(
+                          L10n.of(context).clickOnEmailLink,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        SizedBox(height: 16.0),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primaryContainer,
+                            foregroundColor: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                          ),
+                          onPressed: () => Navigator.of(
+                            context,
+                          ).pop<OkCancelResult>(OkCancelResult.ok),
+                          child: Row(
+                            mainAxisAlignment: .center,
+                            children: [
+                              Text(
+                                l10n.iHaveClickedOnLink,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        TextButton(
+                          onPressed: () => Navigator.of(
+                            context,
+                          ).pop<OkCancelResult>(OkCancelResult.cancel),
+                          style: TextButton.styleFrom(
+                            foregroundColor: Theme.of(
+                              context,
+                            ).colorScheme.error,
+                            padding: const EdgeInsets.all(0),
+                          ),
+                          child: Text(
+                            l10n.cancel,
+                            style: Theme.of(context).textTheme.labelMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.error,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               )) {
+            // Pangea#
             return uiaRequest.completeStage(auth);
           }
           return uiaRequest.cancel();
