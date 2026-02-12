@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "L\xe5s l\xe6ringsv\xe6rkt\xf8jer op";
     },
+    get$managementSnackbarMessage() {
+      return "Vi har lanceret abonnementsstyring i en ny fane. Hvis du ikke s\xe5 den nye fane, bedes du tjekke din popup-blokker.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jCoIOdf45eoUEJI4jte5ZR+QLXw="] = d.current;
+  d["NuUZDiTOhkfiArVf44e8czj7f0U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_328.part.js.map

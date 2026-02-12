@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Otklju\u010daj alate za u\u010denje";
     },
+    get$managementSnackbarMessage() {
+      return "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iska\u010du\u0107ih prozora.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["naod4MJ+0qhsHQRYtksAj9fjaUE="] = d.current;
+  d["euXG504AFQ8+pZrGigH07X2pscc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

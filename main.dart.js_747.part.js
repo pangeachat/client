@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Desbloquear ferramentas de aprendizagem";
     },
+    get$managementSnackbarMessage() {
+      return "Tugaimid t\xfas le bainist\xedocht s\xednti\xfais i gcluais\xedn nua. M\xe1s rud \xe9 nach bhfaca t\xfa an cluais\xedn nua, le do thoil seice\xe1il do bhacad\xf3ir pop-up.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nNhLqjBU9PxI3SG51UW2vj3V6u8="] = d.current;
+  d["8N0dJT/4LoHaUoOo94EztXNnQmo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Avage \xf5ppimisvahendid";
     },
+    get$managementSnackbarMessage() {
+      return "K\xe4ivitame tellimuse haldamise uues vahekaardis. Kui te ei n\xe4inud uut vahekaarti, palun kontrollige oma h\xfcpikakna blokeerijat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tOBJTA5dTzB17I+8ryW26pWDja0="] = d.current;
+  d["fnToSylrPN/4YHpTkCPoP7DXKiQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

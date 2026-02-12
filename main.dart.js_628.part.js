@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "I-unlock ang mga kasangkapan sa pag-aaral";
     },
+    get$managementSnackbarMessage() {
+      return "Inilunsad namin ang pamamahala ng subscription sa isang bagong tab. Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TQ2mXmtMoff/aAcfC/vGOVME2Mg="] = d.current;
+  d["2B1lNEweiDMwMGn8wVOR+bPc/y8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

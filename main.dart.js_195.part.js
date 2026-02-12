@@ -5572,6 +5572,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Desbloqueja les eines d'aprenentatge";
     },
+    get$managementSnackbarMessage() {
+      return "Hem llan\xe7at la gesti\xf3 de subscripcions en una nova pestanya. Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5588,7 +5591,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Zd3Hk1FwvP0QtOi0/B618EZAqO8="] = d.current;
+  d["478FaqXPpywy1AtomcgZs1rb1/I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Odkleni orodja za u\u010denje";
     },
+    get$managementSnackbarMessage() {
+      return "Zagnali smo upravljanje naro\u010dnin v novem zavihku. \u010ce novega zavihka niste videli, prosimo, preverite svoj blokator pojavnih oken.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xjVii0ttOIy5Fo4u5D68ezp/GvA="] = d.current;
+  d["ItAYrorbj6hPqJ0nOkCo/vYM41g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

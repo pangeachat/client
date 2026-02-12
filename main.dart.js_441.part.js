@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Unlock learning tools";
     },
+    get$managementSnackbarMessage() {
+      return "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sDzCLvvq+1lwHU//Pwd6ZVZTPa4="] = d.current;
+  d["eI04Icoml3AlFsN6XG0eji9I3T0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_441.part.js.map

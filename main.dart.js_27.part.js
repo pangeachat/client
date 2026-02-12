@@ -5583,6 +5583,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Desbloquear ferramentas de aprendizado";
     },
+    get$managementSnackbarMessage() {
+      return string$.Lan_am;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11142,6 +11145,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$unlockLearningTools() {
       return "Desbloquear ferramentas de aprendizado";
+    },
+    get$managementSnackbarMessage() {
+      return "Lan\xe7amos o gerenciamento de assinaturas em uma nova aba. Se voc\xea n\xe3o viu a nova aba, verifique seu bloqueador de pop-ups.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16703,6 +16709,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Desbloquear ferramentas de aprendizado";
     },
+    get$managementSnackbarMessage() {
+      return string$.Lan_am;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16805,6 +16814,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Incorr: "Incorreto na atividade de escuta de palavras",
     Inscrer: "Inscreva-se para desbloquear resumos de atividades",
     Inscret: "Inscreva-se para desbloquear transcri\xe7\xf5es",
+    Lan_am: "Lan\xe7amos a gest\xe3o de assinaturas em uma nova aba. Se voc\xea n\xe3o viu a nova aba, por favor, verifique seu bloqueador de pop-ups.",
     Marcar: "Marcar como sala de mensagem direta para o ID Matrix fornecido",
     Mensagn: "Mensagens no seu idioma base n\xe3o ser\xe3o traduzidas.",
     Mensags: "Mensagens s\xe3o gratuitas! Inscreva-se para desbloquear tradu\xe7\xe3o interativa, verifica\xe7\xe3o gramatical e an\xe1lises de aprendizagem.",
@@ -16904,7 +16914,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZCeo4LKEgkCgQ+X8++g9K63ZvNI="] = d.current;
+  d["EssKQmOd3AqmWNvHpQy/4/OIgVg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

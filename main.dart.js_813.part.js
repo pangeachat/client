@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "\xd6\u011frenme ara\xe7lar\u0131n\u0131 a\xe7";
     },
+    get$managementSnackbarMessage() {
+      return "Abonelik y\xf6netimini yeni bir sekmede ba\u015flatt\u0131k. Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iFlqx97lvqFj0MlS+uM/vuRH9TM="] = d.current;
+  d["B2wC5887gzDVWvSRx/ORexhqr4w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

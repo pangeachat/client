@@ -5571,6 +5571,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "L\xe5s upp l\xe4randeverktyg";
     },
+    get$managementSnackbarMessage() {
+      return "Vi har lanserat prenumerationshantering i en ny flik. Om du inte s\xe5g den nya fliken, v\xe4nligen kontrollera din popup-blockerare.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C+OSLbJEbxDYxeg4G9oAjxWxBsc="] = d.current;
+  d["kTnLx6BZ4FGcZcHTzkxbGHtujDg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map
