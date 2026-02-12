@@ -46,6 +46,7 @@ mixin LemmaEmojiSetter {
 
     messenger.showSnackBar(
       SnackBar(
+        showCloseIcon: false,
         padding: const EdgeInsets.all(8.0),
         content: Row(
           spacing: 8.0,
