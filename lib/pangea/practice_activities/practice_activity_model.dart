@@ -359,6 +359,30 @@ class VocabAudioPracticeActivityModel
   });
 
   @override
+  OneConstructUse constructUse(String choiceContent) {
+    final correct = multipleChoiceContent.isCorrect(choiceContent);
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
+
+    // For audio activities, find the token that matches the clicked word
+    final matchingToken = tokens.firstWhere(
+      (t) => t.text.content.toLowerCase() == choiceContent.toLowerCase(),
+      orElse: () => tokens.first,
+    );
+
+    return OneConstructUse(
+      useType: useType,
+      constructType: ConstructTypeEnum.vocab,
+      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
+      category: matchingToken.pos,
+      lemma: matchingToken.lemma.text,
+      form: matchingToken.lemma.text,
+      xp: useType.pointValue,
+    );
+  }
+
+  @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
     json['room_id'] = roomId;

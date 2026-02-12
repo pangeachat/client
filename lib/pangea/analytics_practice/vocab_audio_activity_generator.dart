@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
@@ -16,7 +17,8 @@ class VocabAudioActivityGenerator {
         wordsInMessage.add(t.text.content.toLowerCase());
       }
 
-      // Extract up to 3 additional words as answers
+      // Extract up to 3 additional words as answers, from shuffled message
+      audioExample.tokens.shuffle();
       final otherWords = audioExample.tokens
           .where(
             (t) =>
@@ -50,9 +52,21 @@ class VocabAudioActivityGenerator {
     final allChoices = [...choicesList, ...answers];
     allChoices.shuffle();
 
+    final allTokens = audioExample?.tokens ?? req.target.tokens;
+    final answerTokens = <PangeaToken>[];
+
+    answerTokens.add(token);
+    if (audioExample != null) {
+      for (final t in allTokens) {
+        if (t != token && answers.contains(t.text.content.toLowerCase())) {
+          answerTokens.add(t);
+        }
+      }
+    }
+
     return MessageActivityResponse(
       activity: VocabAudioPracticeActivityModel(
-        tokens: req.target.tokens,
+        tokens: answerTokens,
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: allChoices.toSet(),

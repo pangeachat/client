@@ -456,6 +456,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       final duration = Duration(milliseconds: durationInt);
       _durationString = duration.minuteSecondString;
     }
+
+    if (widget.autoplay) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _onButtonTap());
+    }
   }
 
   @override

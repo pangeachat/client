@@ -247,6 +247,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
                 child: Center(
                   child: AudioPlayerWidget(
                     null,
+                    key: ValueKey('audio_${activity.eventId}'),
                     color: Theme.of(context).colorScheme.primary,
                     linkColor: Theme.of(context).colorScheme.secondary,
                     fontSize:
