@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "Nabigo ang beripikasyon ng email. Pakisubukang muli.";
     },
+    get$unlockLearningTools() {
+      return "I-unlock ang mga kasangkapan sa pag-aaral";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tvloiqsy7FDfgS1k9kYia3vLMfk="] = d.current;
+  d["TQ2mXmtMoff/aAcfC/vGOVME2Mg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

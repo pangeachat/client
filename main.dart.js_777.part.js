@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "E-postverifisering mislyktes. Vennligst pr\xf8v igjen.";
     },
+    get$unlockLearningTools() {
+      return "L\xe5s opp l\xe6ringsverkt\xf8y";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TvXv18wMhMkXMoqeOqW4DkKOhM0="] = d.current;
+  d["CD7E2uCSX8RAVV8CCf0/H2PqDlA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

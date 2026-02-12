@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "Preverjanje e-po\u0161te ni uspelo. Prosimo, poskusite znova.";
     },
+    get$unlockLearningTools() {
+      return "Odkleni orodja za u\u010denje";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NeBHxjmipyMQTg7u/bGbornoJUE="] = d.current;
+  d["xjVii0ttOIy5Fo4u5D68ezp/GvA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

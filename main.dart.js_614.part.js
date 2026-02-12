@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "S\xe4hk\xf6postin vahvistaminen ep\xe4onnistui. Yrit\xe4 uudelleen.";
     },
+    get$unlockLearningTools() {
+      return "Avaa oppimisty\xf6kalut";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kZZJr8b+PLQA+vWiEStbSjDTouU="] = d.current;
+  d["/G4xYJy2nAX/BHb8AiRXHhwTVyM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

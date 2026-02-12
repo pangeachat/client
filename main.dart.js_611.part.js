@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "\u062a\u0623\u06cc\u06cc\u062f \u0627\u06cc\u0645\u06cc\u0644 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f. \u0644\u0637\u0641\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
+    get$unlockLearningTools() {
+      return "\u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0631\u0627 \u0628\u0627\u0632 \u06a9\u0646\u06cc\u062f";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EYoNF1ufVu7/s+KL9lExPYFTUrg="] = d.current;
+  d["WHMxw9j/wGjvx6+q5Vww7N7ZQ2o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_611.part.js.map

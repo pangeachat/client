@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "La verificaci\xf3n del correo electr\xf3nico fall\xf3. Por favor, int\xe9ntalo de nuevo.";
     },
+    get$unlockLearningTools() {
+      return "Desbloquear herramientas de aprendizaje";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9q7sntBgDaqjC0zAFIBm2XU65Ls="] = d.current;
+  d["Vjb66kb8RCpLtBWV90GXU28WGuU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_534.part.js.map

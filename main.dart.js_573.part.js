@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "E-posti kinnitamine eba\xf5nnestus. Palun proovige uuesti.";
     },
+    get$unlockLearningTools() {
+      return "Avage \xf5ppimisvahendid";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+e8PpmcMq9MuOnEv0e6sq2Ku79M="] = d.current;
+  d["tOBJTA5dTzB17I+8ryW26pWDja0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

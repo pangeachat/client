@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "E-posta do\u011frulamas\u0131 ba\u015far\u0131s\u0131z oldu. L\xfctfen tekrar deneyin.";
     },
+    get$unlockLearningTools() {
+      return "\xd6\u011frenme ara\xe7lar\u0131n\u0131 a\xe7";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xmC/DLbnefdKIwH9+pipgmlcUoU="] = d.current;
+  d["iFlqx97lvqFj0MlS+uM/vuRH9TM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

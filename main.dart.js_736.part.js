@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "Verifikasi email gagal. Silakan coba lagi.";
     },
+    get$unlockLearningTools() {
+      return "Buka alat pembelajaran";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EGeCXeRz4Uhpob7U4T3pJ/ahp3s="] = d.current;
+  d["oZL6v0abWmIz7z5Kpv6KgRXQ0/8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

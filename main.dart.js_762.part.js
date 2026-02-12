@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "El. pa\u0161to patvirtinimas nepavyko. Pra\u0161ome bandyti dar kart\u0105.";
     },
+    get$unlockLearningTools() {
+      return "Atblokuoti mokymosi \u012frankius";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lEdocYFiMRh6ag/1F9Ch4AGGpaE="] = d.current;
+  d["hfrGWvsEh11U0QpOL6mHcWhRpjM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

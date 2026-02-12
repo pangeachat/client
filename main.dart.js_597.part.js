@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "Posta elektronikoaren berrespena huts egin du. Mesedez, saiatu berriro.";
     },
+    get$unlockLearningTools() {
+      return "Ireki ikaskuntza tresnak";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PGQj82d726KYHVzOAEWUsDrw7m0="] = d.current;
+  d["aHSDJwVzNoZagq9Iw6MnKP9aAiA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emailVerificationFailed() {
       return "E-mailverificatie is mislukt. Probeer het alstublieft opnieuw.";
     },
+    get$unlockLearningTools() {
+      return "Ontgrendel leermiddelen";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5581,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["adx4k875TVQ89/A/uHMljzLmWf4="] = d.current;
+  d["4COOLCqtK1aAuXfNvTJDNQ4wrnY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map
