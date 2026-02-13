@@ -15,7 +15,7 @@ prime
 *.secrets
 # Android keys file
 keys.json
-.env
+*.env
 !/public/.env
 *.env.local_choreo
 assets/.env.local_choreo
