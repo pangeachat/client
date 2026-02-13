@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:async/async.dart' as async;
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
@@ -65,6 +66,10 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart'
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
@@ -1207,7 +1212,11 @@ class ChatController extends State<ChatPageWithRoom>
     replyEvent.value = null;
     // Pangea#
 
-    room
+    // #Pangea
+    final transcriptFuture = _getVoiceMessageTranscript(file);
+    // room
+    final eventFuture = room
+        // Pangea#
         .sendFileEvent(
           file,
           // #Pangea
@@ -1229,7 +1238,6 @@ class ChatController extends State<ChatPageWithRoom>
           },
           // #Pangea
         )
-        .then(_sendVoiceMessageAnalytics)
         .catchError((e, s) {
           ErrorHandler.logError(
             e: e,
@@ -1247,6 +1255,39 @@ class ChatController extends State<ChatPageWithRoom>
     //   );
     //   return null;
     // });
+
+    Future.wait([eventFuture, transcriptFuture]).then((results) async {
+      final eventId = results[0] as String?;
+      final transcript = results[1] as async.Result<SpeechToTextResponseModel>;
+      if (eventId == null) {
+        ErrorHandler.logError(
+          e: Exception('eventID null in voiceMessageAction'),
+          s: StackTrace.current,
+          data: {'roomId': roomId},
+        );
+        return;
+      }
+
+      if (transcript.result == null) return;
+      final stt = transcript.result!;
+      final event = await room.getEventById(eventId);
+      if (event == null) {
+        ErrorHandler.logError(
+          e: Exception('Event not found after sending voice message'),
+          s: StackTrace.current,
+          data: {'roomId': roomId},
+        );
+      } else {
+        final messageEvent = PangeaMessageEvent(
+          event: event,
+          timeline: timeline!,
+          ownMessage: true,
+        );
+        messageEvent.sendSttRepresentationEvent(stt);
+      }
+
+      _sendVoiceMessageAnalytics(eventId, stt);
+    });
     // Pangea#
     return;
   }
@@ -2191,39 +2232,11 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  Future<void> _sendVoiceMessageAnalytics(String? eventId) async {
-    if (eventId == null) {
-      ErrorHandler.logError(
-        e: Exception('eventID null in voiceMessageAction'),
-        s: StackTrace.current,
-        data: {'roomId': roomId},
-      );
-      return;
-    }
-
-    final event = await room.getEventById(eventId);
-    if (event == null) {
-      ErrorHandler.logError(
-        e: Exception('Event not found after sending voice message'),
-        s: StackTrace.current,
-        data: {'roomId': roomId},
-      );
-      return;
-    }
-
+  Future<void> _sendVoiceMessageAnalytics(
+    String eventId,
+    SpeechToTextResponseModel stt,
+  ) async {
     try {
-      final messageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline!,
-        ownMessage: true,
-      );
-
-      final stt = await messageEvent.requestSpeechToText(
-        MatrixState.pangeaController.userController.userL1?.langCodeShort ??
-            LanguageKeys.unknownLanguage,
-        MatrixState.pangeaController.userController.userL2?.langCodeShort ??
-            LanguageKeys.unknownLanguage,
-      );
       if (stt.transcript.sttTokens.isEmpty) return;
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
@@ -2239,6 +2252,35 @@ class ChatController extends State<ChatPageWithRoom>
         data: {'roomId': roomId, 'eventId': eventId},
       );
     }
+  }
+
+  Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
+    MatrixAudioFile file,
+  ) async {
+    return SpeechToTextRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      SpeechToTextRequestModel(
+        audioContent: file.bytes,
+        config: SpeechToTextAudioConfigModel(
+          encoding: mimeTypeToAudioEncoding(file.mimeType),
+          sampleRateHertz: 22050,
+          userL1:
+              MatrixState
+                  .pangeaController
+                  .userController
+                  .userL1
+                  ?.langCodeShort ??
+              LanguageKeys.unknownLanguage,
+          userL2:
+              MatrixState
+                  .pangeaController
+                  .userController
+                  .userL2
+                  ?.langCodeShort ??
+              LanguageKeys.unknownLanguage,
+        ),
+      ),
+    );
   }
 
   void showNextMatch() {
