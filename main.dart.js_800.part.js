@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Zatia\u013e \u017eiadne spr\xe1vy";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Dlh\xe9 stla\u010denie na nahr\xe1vanie hlasovej spr\xe1vy.";
-    },
     get$pause(_) {
       return "Pozastavi\u0165";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pB/LX/3eRsQ7X2/Cf6Abk2d3410="] = d.current;
+  d["ubLO+ednUI0L4iTjQ66rNKzqARM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

@@ -1531,9 +1531,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Nenhuma mensagem ainda";
     },
-    get$longPressToRecordVoiceMessage() {
-      return string$.Pressi;
-    },
     get$pause(_) {
       return "Pausar";
     },
@@ -7093,9 +7090,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMessagesYet() {
       return "Nenhuma mensagem ainda";
-    },
-    get$longPressToRecordVoiceMessage() {
-      return "Segure para gravar uma mensagem de voz.";
     },
     get$pause(_) {
       return "Pausar";
@@ -12657,9 +12651,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Nenhuma mensagem ainda";
     },
-    get$longPressToRecordVoiceMessage() {
-      return string$.Pressi;
-    },
     get$pause(_) {
       return "Pausar";
     },
@@ -16861,7 +16852,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Posso_en: "Posso entender e usar algumas express\xf5es cotidianas familiares e frases muito b\xe1sicas.",
     Posso_ex: "Posso expressar ideias fluentemente e espontaneamente sem muita dificuldade e entender uma ampla variedade de textos exigentes.",
     Posso_l: "Posso lidar com a maioria das situa\xe7\xf5es familiares e produzir textos simples conectados sobre t\xf3picos familiares.",
-    Pressi: "Pressione longamente para gravar mensagem de voz.",
     Procurc: "Procure usu\xe1rios para convid\xe1-los para este chat.",
     Procure: "Procure usu\xe1rios para convid\xe1-los para este espa\xe7o.",
     Pr_ticc: "Pr\xe1tica correta de defini\xe7\xe3o de vocabul\xe1rio",
@@ -16914,7 +16904,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EssKQmOd3AqmWNvHpQy/4/OIgVg="] = d.current;
+  d["IGBuu4P0qNI3mrTEpzxVHDnyhUE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

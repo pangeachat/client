@@ -1520,9 +1520,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "\u041f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u044f\u045e \u043f\u0430\u043a\u0443\u043b\u044c \u0448\u0442\u043e \u043d\u044f\u043c\u0430";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "\u0414\u043e\u045e\u0433\u0430 \u0446\u0456\u0441\u043d\u0456\u0446\u0435, \u043a\u0430\u0431 \u0437\u0430\u043f\u0456\u0441\u0430\u0446\u044c \u0433\u0430\u043b\u0430\u0441\u0430\u0432\u043e\u0435 \u043f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u0435.";
-    },
     get$pause(_) {
       return "\u041f\u0430\u045e\u0437\u0430";
     },
@@ -5591,7 +5588,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1thjVdFC9ojBaU7QYuiswpnrf6M="] = d.current;
+  d["qB68vcXBJIRMTvikhyGXTFxIpF4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_149.part.js.map

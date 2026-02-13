@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "M\xe9g nincsenek \xfczenetek";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Hosszan nyomja meg a hang\xfczenet r\xf6gz\xedt\xe9s\xe9hez.";
-    },
     get$pause(_) {
       return "Sz\xfcnet";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xufjH4zcJfmIV8habp8LNclN9uk="] = d.current;
+  d["ECm0dtPFf8lK5xjvXjlMKr4xRiQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

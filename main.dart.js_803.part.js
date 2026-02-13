@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "\u0160e ni sporo\u010dil";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Dolgo pritisnite za snemanje glasovnega sporo\u010dila.";
-    },
     get$pause(_) {
       return "Pavza";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ItAYrorbj6hPqJ0nOkCo/vYM41g="] = d.current;
+  d["Wh8xAsVHgY3gxZvf1jf9WvWiosM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_803.part.js.map

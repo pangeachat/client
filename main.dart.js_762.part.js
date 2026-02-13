@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Dar n\u0117ra \u017einu\u010di\u0173";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Ilgai paspauskite, kad \u012fra\u0161ytum\u0117te balso \u017einut\u0119.";
-    },
     get$pause(_) {
       return "Sustabdyti";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7L+hjDnGw1uXDcMeI289UD9GE1w="] = d.current;
+  d["pvAXxSmQKEX9yqCa9awSPFqO1UQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "\xcenc\u0103 nu sunt mesaje";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Apas\u0103 lung pentru a \xeenregistra un mesaj vocal.";
-    },
     get$pause(_) {
       return "Pauz\u0103";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5hwXz+hqkBvRpYKERRt0VRBVI8Y="] = d.current;
+  d["OjhKOPwUL2Q2gyxGjJE6oY2T41Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_793.part.js.map

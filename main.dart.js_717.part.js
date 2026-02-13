@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "A\xfan no hay mensajes";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Mant\xe9n presionado para grabar un mensaje de voz.";
-    },
     get$pause(_) {
       return "Pausa";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rWh+E/eQQcG2Y4HZLHb49l7+DAY="] = d.current;
+  d["izZpQH4qVGWsKSCXcFvIzJ/ldCs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

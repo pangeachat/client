@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Neniuj mesa\u011doj ankora\u016d";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Longa premado por registri vo\u0109an mesa\u011don.";
-    },
     get$pause(_) {
       return "Pauzi";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8N0dJT/4LoHaUoOo94EztXNnQmo="] = d.current;
+  d["63lHA1HWDh5BZYkC7q9lZr+JnQk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "A\xednda non hai mensaxes";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Pulsaci\xf3n longa para gravar mensaxe de voz.";
-    },
     get$pause(_) {
       return "Deter";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fD0QOzZD2javsu1Y48MW/+AL5T0="] = d.current;
+  d["9CtVxFlHZ0rK2LZafJWO+fv/D4E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map

@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "V\u0113l nav zi\u0146u";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Ilga piespie\u0161ana, lai ierakst\u012btu balss zi\u0146u.";
-    },
     get$pause(_) {
       return "Aptur\u0113t";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cd3/emzwhdbrr4KCxrodFbjQsMA="] = d.current;
+  d["kfmgBIUahZwdntVRqGkneFKMjfQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

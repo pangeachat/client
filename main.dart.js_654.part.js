@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Gan aon teachtaireachta\xed f\xf3s";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Br\xfaigh go fada chun teachtaireacht gutha a thaifeadadh.";
-    },
     get$pause(_) {
       return "Sos";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ts20tK1kaOIeJKyTEQiDWkbkRYs="] = d.current;
+  d["EQmsPZLfFk5miTt9zkVjlKAtpF8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

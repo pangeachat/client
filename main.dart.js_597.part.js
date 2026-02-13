@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Mezurik ez oraingoz";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Sakatuta mantendu ahots-mezua grabatzeko.";
-    },
     get$pause(_) {
       return "Gelditu";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GaYiloIgQ/Y/cJW57oGCBIgtxBM="] = d.current;
+  d["NOj+hRWls6Epx7BoEcU9J5bkUFk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

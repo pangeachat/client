@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Inga meddelanden \xe4n";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Tryck l\xe4nge f\xf6r att spela in r\xf6stmeddelande.";
-    },
     get$pause(_) {
       return "Pausa";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kTnLx6BZ4FGcZcHTzkxbGHtujDg="] = d.current;
+  d["0WW/CfMXGpPmLiozr77XfZ2gsog="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

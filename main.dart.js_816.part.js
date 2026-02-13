@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Hozircha xabarlar yo\u2018q";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Ovozli xabarni yozib olish uchun uzoq bosing.";
-    },
     get$pause(_) {
       return "Pauza";
     },
@@ -5591,7 +5588,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hYVdsRY+9WuygwQQ5XrsvXq+l8M="] = d.current;
+  d["pt2Wyk88Mfu3YX8cZwKBy77j0hw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

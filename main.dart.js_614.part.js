@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Ei viel\xe4 viestej\xe4";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Pitk\xe4 painallus \xe4\xe4niviestin tallentamiseksi.";
-    },
     get$pause(_) {
       return "Keskeyt\xe4";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Mogj1+D9MVU8DQlf8OMgRTMVYaA="] = d.current;
+  d["x0ybKXV8mtyjjFkciwwoFYIbDaA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

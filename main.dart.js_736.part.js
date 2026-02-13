@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Belum ada pesan";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Tekan lama untuk merekam pesan suara.";
-    },
     get$pause(_) {
       return "Jeda";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["haFzzl52RFj+Rn00jPeRNnJ2Uww="] = d.current;
+  d["WUAhGHgxemxkVRt1qlM7Iznvn6I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

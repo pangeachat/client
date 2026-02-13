@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Brak wiadomo\u015bci";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "D\u0142ugie naci\u015bni\u0119cie, aby nagra\u0107 wiadomo\u015b\u0107 g\u0142osow\u0105.";
-    },
     get$pause(_) {
       return "Pauza";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Isox+aHo2yi5yXyP19yKdC/xmVw="] = d.current;
+  d["bVBxxJLeWUi9bfOfP2blXHFbWZQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

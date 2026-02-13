@@ -1520,9 +1520,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Encara no hi ha missatges";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Mantingueu premut per gravar un missatge de veu.";
-    },
     get$pause(_) {
       return "Pausa";
     },
@@ -5591,7 +5588,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["478FaqXPpywy1AtomcgZs1rb1/I="] = d.current;
+  d["SQTuSvAYQ7MK7Yfm1kovImeRHvk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

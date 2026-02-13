@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Hen\xfcz mesaj yok";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Sesli mesaj kaydetmek i\xe7in uzun bas\u0131n.";
-    },
     get$pause(_) {
       return "Duraklat";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["B2wC5887gzDVWvSRx/ORexhqr4w="] = d.current;
+  d["BCG1wo+AvoINrf3usa7gYFnp9Qg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

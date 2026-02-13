@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Ingen beskeder endnu";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Tryk l\xe6nge for at optage en stemmemeddelelse.";
-    },
     get$pause(_) {
       return "Pause";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NuUZDiTOhkfiArVf44e8czj7f0U="] = d.current;
+  d["ML1az99r7mXmuBMWAZCk+2c2/G0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_328.part.js.map

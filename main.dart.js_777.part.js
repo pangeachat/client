@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Ingen meldinger enda";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Langt trykk for \xe5 spille inn talemelding.";
-    },
     get$pause(_) {
       return "Pause";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Mtml641mWCgw7z8qNaq9sLnnHNI="] = d.current;
+  d["FTlW7z37LmolqYDoxnhbeLmf9o0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

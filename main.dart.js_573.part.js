@@ -1519,9 +1519,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMessagesYet() {
       return "Pole veel \xfchtegi s\xf5numit";
     },
-    get$longPressToRecordVoiceMessage() {
-      return "Pika vajutusega saad salvestada h\xe4\xe4ls\xf5numi.";
-    },
     get$pause(_) {
       return "Peata";
     },
@@ -5587,7 +5584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fnToSylrPN/4YHpTkCPoP7DXKiQ="] = d.current;
+  d["VhxjA59a/PFrZ8GJRkn8dEo2Aj8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map
