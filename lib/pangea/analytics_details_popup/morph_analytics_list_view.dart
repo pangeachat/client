@@ -26,6 +26,8 @@ class MorphAnalyticsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const padding = EdgeInsets.symmetric(vertical: 10.0);
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return Column(
       children: [
@@ -54,7 +56,7 @@ class MorphAnalyticsListView extends StatelessWidget {
               SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final feature = controller.features[index];
-                  return feature.displayTags.isNotEmpty
+                  return feature.displayTags.isNotEmpty && l2 != null
                       ? Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: MorphFeatureBox(
@@ -62,6 +64,7 @@ class MorphAnalyticsListView extends StatelessWidget {
                             allTags: controller.morphs
                                 .getDisplayTags(feature.feature)
                                 .toSet(),
+                            language: l2,
                           ),
                         )
                       : const SizedBox.shrink();
@@ -79,11 +82,13 @@ class MorphAnalyticsListView extends StatelessWidget {
 class MorphFeatureBox extends StatelessWidget {
   final String morphFeature;
   final Set<String> allTags;
+  final String language;
 
   const MorphFeatureBox({
     super.key,
     required this.morphFeature,
     required this.allTags,
+    required this.language,
   });
 
   MorphFeaturesEnum get feature =>
@@ -140,7 +145,7 @@ class MorphFeatureBox extends StatelessWidget {
                     );
 
                     return FutureBuilder(
-                      future: analyticsService.getConstructUse(id),
+                      future: analyticsService.getConstructUse(id, language),
                       builder: (context, snapshot) => MorphTagChip(
                         morphFeature: morphFeature,
                         morphTag: morphTag,

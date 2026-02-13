@@ -121,13 +121,31 @@ class AnalyticsDataService {
       }
 
       _invalidateCaches();
+      final l2 = MatrixState.pangeaController.userController.userL2;
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final lastUpdated = await _analyticsClientGetter.database
-          .getLastUpdated();
+      final analyticsLanguage = await _analyticsClientGetter.database
+          .getCurrentLanguage();
 
-      if (analyticsUserId != client.userID || lastUpdated == null) {
-        await _clearDatabase();
+      if (analyticsUserId != client.userID || analyticsLanguage == null) {
+        // If current language not set, analytics database needs be updated to include language flag, so clear it.
+        // If user ID doesn't match, this means that a different user has logged in since the last time the database was initialized,
+        // so clear it to avoid showing another user's analytics.
+        _clear();
+        await _analyticsClientGetter.database.clear();
         await _analyticsClientGetter.database.updateUserID(client.userID!);
+        if (l2 != null) {
+          await _analyticsClientGetter.database.updateCurrentLanguage(
+            l2.langCodeShort,
+          );
+        }
+      } else if (l2 != null && analyticsLanguage != l2.langCodeShort) {
+        // If the current language doesn't match the language in the database, this means that
+        // the user has switched their L2 since the last time the database was initialized.
+        // Clear local cache / merge table data.
+        _clear();
+        await _analyticsClientGetter.database.updateCurrentLanguage(
+          l2.langCodeShort,
+        );
       }
 
       _syncController?.dispose();
@@ -136,21 +154,27 @@ class AnalyticsDataService {
         dataService: this,
       );
 
-      await _syncController!.bulkUpdate();
+      if (l2 != null) {
+        await _syncController!.bulkUpdate(l2.langCodeShort);
+      }
 
       final resp = await client.getUserProfile(client.userID!);
       final analyticsProfile = AnalyticsProfileModel.fromJson(
         resp.additionalProperties,
       );
 
-      final l2 = MatrixState.pangeaController.userController.userL2;
       if (l2 != null) {
-        await updateXPOffset(analyticsProfile.xpOffsetByLanguage(l2) ?? 0);
+        await updateXPOffset(
+          analyticsProfile.xpOffsetByLanguage(l2) ?? 0,
+          l2.langCodeShort,
+        );
       }
 
       _syncController!.start();
 
-      await _initMergeTable();
+      if (l2 != null) {
+        await _initMergeTable(l2.langCodeShort);
+      }
     } catch (e, s) {
       Logs().e("Error initializing analytics: $e, $s");
     } finally {
@@ -161,12 +185,14 @@ class AnalyticsDataService {
     }
   }
 
-  Future<void> _initMergeTable() async {
+  Future<void> _initMergeTable(String language) async {
     final vocab = await _analyticsClientGetter.database.getAggregatedConstructs(
       ConstructTypeEnum.vocab,
+      language,
     );
     final morph = await _analyticsClientGetter.database.getAggregatedConstructs(
       ConstructTypeEnum.morph,
+      language,
     );
 
     final blocked = blockedConstructs;
@@ -177,12 +203,11 @@ class AnalyticsDataService {
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
     initCompleter = Completer<void>();
-    await _clearDatabase();
+    _clear();
     await _initDatabase(_analyticsClientGetter.client);
   }
 
-  Future<void> _clearDatabase() async {
-    await _analyticsClient?.database.clear();
+  void _clear() {
     _invalidateCaches();
     _mergeTable.clear();
   }
@@ -190,8 +215,7 @@ class AnalyticsDataService {
   Future<void> _closeDatabase() async {
     await _analyticsClient?.database.delete();
     _analyticsClient = null;
-    _invalidateCaches();
-    _mergeTable.clear();
+    _clear();
   }
 
   Future<void> _ensureInitialized() =>
@@ -217,23 +241,24 @@ class AnalyticsDataService {
 
   DerivedAnalyticsDataModel? get cachedDerivedData => _cachedDerivedStats;
 
-  Future<DerivedAnalyticsDataModel> get derivedData async {
+  Future<DerivedAnalyticsDataModel> derivedData(String language) async {
     await _ensureInitialized();
 
     if (_cachedDerivedStats == null || _derivedCacheVersion != _cacheVersion) {
       _cachedDerivedStats = await _analyticsClientGetter.database
-          .getDerivedStats();
+          .getDerivedStats(language);
       _derivedCacheVersion = _cacheVersion;
     }
 
     return _cachedDerivedStats!;
   }
 
-  Future<DateTime?> getLastUpdatedAnalytics() async {
-    return _analyticsClientGetter.database.getLastEventTimestamp();
+  Future<DateTime?> getLastUpdatedAnalytics(String language) async {
+    return _analyticsClientGetter.database.getLastEventTimestamp(language);
   }
 
-  Future<List<OneConstructUse>> getUses({
+  Future<List<OneConstructUse>> getUses(
+    String language, {
     int? count,
     String? roomId,
     DateTime? since,
@@ -242,6 +267,7 @@ class AnalyticsDataService {
   }) async {
     await _ensureInitialized();
     final uses = await _analyticsClientGetter.database.getUses(
+      language,
       count: count,
       roomId: roomId,
       since: since,
@@ -257,7 +283,7 @@ class AnalyticsDataService {
       if (use.category == 'other') continue;
 
       if (!cappedLastUseCache.containsKey(use.identifier)) {
-        final constructs = await getConstructUse(use.identifier);
+        final constructs = await getConstructUse(use.identifier, language);
         cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
       }
       final cappedLastUse = cappedLastUseCache[use.identifier];
@@ -271,17 +297,20 @@ class AnalyticsDataService {
     return filtered;
   }
 
-  Future<List<OneConstructUse>> getLocalUses() async {
+  Future<List<OneConstructUse>> getLocalUses(String language) async {
     await _ensureInitialized();
-    return _analyticsClientGetter.database.getLocalUses();
+    return _analyticsClientGetter.database.getLocalUses(language);
   }
 
-  Future<int> getLocalConstructCount() async {
+  Future<int> getLocalConstructCount(String language) async {
     await _ensureInitialized();
-    return _analyticsClientGetter.database.getLocalConstructCount();
+    return _analyticsClientGetter.database.getLocalConstructCount(language);
   }
 
-  Future<ConstructUses> getConstructUse(ConstructIdentifier id) async {
+  Future<ConstructUses> getConstructUse(
+    ConstructIdentifier id,
+    String language,
+  ) async {
     await _ensureInitialized();
     final blocked = blockedConstructs;
     final ids = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
@@ -294,11 +323,12 @@ class AnalyticsDataService {
       );
     }
 
-    return _analyticsClientGetter.database.getConstructUse(ids);
+    return _analyticsClientGetter.database.getConstructUse(ids, language);
   }
 
   Future<Map<ConstructIdentifier, ConstructUses>> getConstructUses(
     List<ConstructIdentifier> ids,
+    String language,
   ) async {
     await _ensureInitialized();
     final Map<ConstructIdentifier, List<ConstructIdentifier>> request = {};
@@ -308,14 +338,15 @@ class AnalyticsDataService {
       request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
     }
 
-    return _analyticsClientGetter.database.getConstructUses(request);
+    return _analyticsClientGetter.database.getConstructUses(request, language);
   }
 
   Future<Map<ConstructIdentifier, ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
+    String language,
   ) async {
     final combined = await _analyticsClientGetter.database
-        .getAggregatedConstructs(type);
+        .getAggregatedConstructs(type, language);
 
     final stopwatch = Stopwatch()..start();
 
@@ -345,6 +376,7 @@ class AnalyticsDataService {
   Future<int> getNewConstructCount(
     List<OneConstructUse> newConstructs,
     ConstructTypeEnum type,
+    String language,
   ) async {
     await _ensureInitialized();
     final blocked = blockedConstructs;
@@ -364,7 +396,10 @@ class AnalyticsDataService {
           constructPoints[use.identifier]! + use.xp;
     }
 
-    final constructs = await getConstructUses(constructPoints.keys.toList());
+    final constructs = await getConstructUses(
+      constructPoints.keys.toList(),
+      language,
+    );
 
     int newConstructCount = 0;
     for (final entry in constructPoints.entries) {
@@ -377,13 +412,14 @@ class AnalyticsDataService {
     return newConstructCount;
   }
 
-  Future<void> updateXPOffset(int offset) async {
+  Future<void> updateXPOffset(int offset, String language) async {
     _invalidateCaches();
-    await _analyticsClientGetter.database.updateXPOffset(offset);
+    await _analyticsClientGetter.database.updateXPOffset(offset, language);
   }
 
   Future<List<AnalyticsUpdateEvent>> updateLocalAnalytics(
     AnalyticsUpdate update,
+    String language,
   ) async {
     final events = <AnalyticsUpdateEvent>[];
     final addedConstructs = update.addedConstructs
@@ -391,8 +427,8 @@ class AnalyticsDataService {
         .toList();
     final updateIds = addedConstructs.map((c) => c.identifier).toList();
 
-    final prevData = await derivedData;
-    final prevConstructs = await getConstructUses(updateIds);
+    final prevData = await derivedData(language);
+    final prevConstructs = await getConstructUses(updateIds, language);
 
     _invalidateCaches();
     await _ensureInitialized();
@@ -403,9 +439,12 @@ class AnalyticsDataService {
         .toSet();
 
     _mergeTable.addConstructsByUses(addedConstructs, blocked);
-    await _analyticsClientGetter.database.updateLocalAnalytics(addedConstructs);
+    await _analyticsClientGetter.database.updateLocalAnalytics(
+      addedConstructs,
+      language,
+    );
 
-    final newConstructs = await getConstructUses(updateIds);
+    final newConstructs = await getConstructUses(updateIds, language);
 
     int points = 0;
     if (updateIds.isNotEmpty) {
@@ -418,7 +457,7 @@ class AnalyticsDataService {
     }
 
     final newData = prevData.addXP(points);
-    await _analyticsClientGetter.database.updateDerivedStats(newData);
+    await _analyticsClientGetter.database.updateDerivedStats(newData, language);
 
     // Update public profile each time that new analytics are added.
     // If the level hasn't changed, this will not send an update to the server.
@@ -444,6 +483,7 @@ class AnalyticsDataService {
             .publicProfile!
             .analytics
             .xpOffset!,
+        language,
       );
     }
 
@@ -478,30 +518,43 @@ class AnalyticsDataService {
 
   Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
+    String language,
   ) async {
     _invalidateCaches();
     final blocked = blockedConstructs;
     for (final event in events) {
       _mergeTable.addConstructsByUses(event.content.uses, blocked);
     }
-    await _analyticsClientGetter.database.updateServerAnalytics(events);
-    final vocab = await getAggregatedConstructs(ConstructTypeEnum.vocab);
-    final morphs = await getAggregatedConstructs(ConstructTypeEnum.morph);
+    await _analyticsClientGetter.database.updateServerAnalytics(
+      events,
+      language,
+    );
+    final vocab = await getAggregatedConstructs(
+      ConstructTypeEnum.vocab,
+      language,
+    );
+    final morphs = await getAggregatedConstructs(
+      ConstructTypeEnum.morph,
+      language,
+    );
     final constructs = [...vocab.values, ...morphs.values];
     final totalXP = constructs.fold(0, (total, c) => total + c.points);
 
-    await _analyticsClientGetter.database.updateTotalXP(totalXP);
+    await _analyticsClientGetter.database.updateTotalXP(totalXP, language);
   }
 
-  Future<void> updateBlockedConstructs(ConstructIdentifier constructId) async {
+  Future<void> updateBlockedConstructs(
+    ConstructIdentifier constructId,
+    String language,
+  ) async {
     await _ensureInitialized();
     _mergeTable.removeConstruct(constructId);
 
     final construct = await _analyticsClientGetter.database.getConstructUse([
       constructId,
-    ]);
+    ], language);
 
-    final derived = await derivedData;
+    final derived = await derivedData(language);
     final newXP = derived.totalXP - construct.points;
     final newLevel = DerivedAnalyticsDataModel.calculateLevelWithXp(newXP);
 
@@ -509,13 +562,13 @@ class AnalyticsDataService {
       level: newLevel,
     );
 
-    await _analyticsClientGetter.database.updateTotalXP(newXP);
+    await _analyticsClientGetter.database.updateTotalXP(newXP, language);
     _invalidateCaches();
   }
 
-  Future<void> clearLocalAnalytics() async {
+  Future<void> clearLocalAnalytics(String language) async {
     _invalidateCaches();
     await _ensureInitialized();
-    await _analyticsClientGetter.database.clearLocalConstructData();
+    await _analyticsClientGetter.database.clearLocalConstructData(language);
   }
 }

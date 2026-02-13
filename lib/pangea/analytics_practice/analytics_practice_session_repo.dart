@@ -28,6 +28,7 @@ class InsufficientDataException implements Exception {}
 class AnalyticsPracticeSessionRepo {
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
+    String language,
   ) async {
     if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
         false) {
@@ -43,12 +44,12 @@ class AnalyticsPracticeSessionRepo {
       final halfNeeded = (totalNeeded / 2).ceil();
 
       // Fetch audio constructs (with example messages)
-      final audioMap = await _fetchAudio();
+      final audioMap = await _fetchAudio(language);
       final audioCount = min(audioMap.length, halfNeeded);
 
       // Fetch vocab constructs to fill the rest
       final vocabNeeded = totalNeeded - audioCount;
-      final vocabConstructs = await _fetchVocab();
+      final vocabConstructs = await _fetchVocab(language);
       final vocabCount = min(vocabConstructs.length, vocabNeeded);
 
       for (final entry in audioMap.entries.take(audioCount)) {
@@ -74,12 +75,12 @@ class AnalyticsPracticeSessionRepo {
       }
       targets.shuffle();
     } else {
-      final errorTargets = await _fetchErrors();
+      final errorTargets = await _fetchErrors(language);
       targets.addAll(errorTargets);
       if (targets.length <
           (AnalyticsPracticeConstants.practiceGroupSize +
               AnalyticsPracticeConstants.errorBufferSize)) {
-        final morphs = await _fetchMorphs();
+        final morphs = await _fetchMorphs(language);
         final remainingCount =
             (AnalyticsPracticeConstants.practiceGroupSize +
                 AnalyticsPracticeConstants.errorBufferSize) -
@@ -118,12 +119,12 @@ class AnalyticsPracticeSessionRepo {
     return session;
   }
 
-  static Future<List<ConstructIdentifier>> _fetchVocab() async {
+  static Future<List<ConstructIdentifier>> _fetchVocab(String language) async {
     final constructs = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getAggregatedConstructs(ConstructTypeEnum.vocab)
+        .getAggregatedConstructs(ConstructTypeEnum.vocab, language)
         .then((map) => map.values.toList());
 
     // sort by last used descending, nulls first
@@ -151,13 +152,14 @@ class AnalyticsPracticeSessionRepo {
     return targets;
   }
 
-  static Future<Map<ConstructIdentifier, AudioExampleMessage>>
-  _fetchAudio() async {
+  static Future<Map<ConstructIdentifier, AudioExampleMessage>> _fetchAudio(
+    String language,
+  ) async {
     final constructs = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getAggregatedConstructs(ConstructTypeEnum.vocab)
+        .getAggregatedConstructs(ConstructTypeEnum.vocab, language)
         .then((map) => map.values.toList());
 
     // sort by last used descending, nulls first
@@ -187,7 +189,7 @@ class AnalyticsPracticeSessionRepo {
       final audioExampleMessage =
           await ExampleMessageUtil.getAudioExampleMessage(
             await MatrixState.pangeaController.matrixState.analyticsDataService
-                .getConstructUse(construct.id),
+                .getConstructUse(construct.id, language),
             MatrixState.pangeaController.matrixState.client,
             noBold: true,
           );
@@ -209,12 +211,12 @@ class AnalyticsPracticeSessionRepo {
     return targets;
   }
 
-  static Future<List<MorphPracticeTarget>> _fetchMorphs() async {
+  static Future<List<MorphPracticeTarget>> _fetchMorphs(String language) async {
     final constructs = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getAggregatedConstructs(ConstructTypeEnum.morph)
+        .getAggregatedConstructs(ConstructTypeEnum.morph, language)
         .then((map) => map.values.toList());
 
     final morphInfoRequest = MorphInfoRequest(
@@ -288,7 +290,7 @@ class AnalyticsPracticeSessionRepo {
 
         exampleMessage = await ExampleMessageUtil.getExampleMessage(
           await MatrixState.pangeaController.matrixState.analyticsDataService
-              .getConstructUse(entry.id),
+              .getConstructUse(entry.id, language),
           MatrixState.pangeaController.matrixState.client,
           form: form,
         );
@@ -318,12 +320,15 @@ class AnalyticsPracticeSessionRepo {
     return targets;
   }
 
-  static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
+  static Future<List<AnalyticsActivityTarget>> _fetchErrors(
+    String language,
+  ) async {
     final allRecentUses = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
         .getUses(
+          language,
           count: 300,
           filterCapped: false,
           types: [

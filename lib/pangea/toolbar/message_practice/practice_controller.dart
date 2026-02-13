@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -181,6 +182,20 @@ class PracticeController with ChangeNotifier {
 
     // we don't take off points for incorrect emoji matches
     if (_activity is! EmojiPracticeActivityModel || isCorrect) {
+      final l2 =
+          MatrixState.pangeaController.userController.userL2?.langCodeShort;
+      if (l2 == null) {
+        ErrorHandler.logError(
+          e: "User L2 is null when trying to log construct use for token ${token.text.content} in practice activity",
+          data: {
+            "eventId": pangeaMessageEvent.eventId,
+            "token": token.text.content,
+            "activityType": _activity!.activityType.toString(),
+          },
+        );
+        return;
+      }
+
       final constructUseType = PracticeRecordController.lastResponse(
         _activity!.practiceTarget,
       )!.useType(_activity!.activityType);
@@ -202,7 +217,7 @@ class PracticeController with ChangeNotifier {
         ),
       ];
 
-      updateService.addAnalytics(targetId, constructs);
+      updateService.addAnalytics(targetId, constructs, l2);
     }
 
     if (isCorrect) {

@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popu
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -31,9 +32,20 @@ class VocabDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future: analyticsService.getConstructUse(constructId),
+      future: l2 != null
+          ? analyticsService.getConstructUse(constructId, l2)
+          : Future.value(
+              ConstructUses(
+                uses: [],
+                constructType: constructId.type,
+                lemma: constructId.lemma,
+                category: constructId.category,
+              ),
+            ),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;

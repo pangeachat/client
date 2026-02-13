@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart
 import 'package:fluffychat/pangea/analytics_misc/level_summary_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -174,8 +175,13 @@ class LevelUpBannerState extends State<LevelUpBanner>
       );
       _constructSummaryCompleter.complete(summary);
       analyticsRoom.setLevelUpSummary(summary);
-    } catch (e) {
+    } catch (e, s) {
       debugPrint("Error generating level up analytics: $e");
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"level": widget.level, "prevLevel": widget.prevLevel},
+      );
       _constructSummaryCompleter.completeError(e);
     }
   }

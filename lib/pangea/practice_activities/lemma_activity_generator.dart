@@ -15,7 +15,10 @@ class LemmaActivityGenerator {
     debugger(when: kDebugMode && req.target.tokens.length != 1);
 
     final token = req.target.tokens.first;
-    final choices = await lemmaActivityDistractors(token);
+    final choices = await lemmaActivityDistractors(
+      token,
+      language: req.userL2.split('-').first,
+    );
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
@@ -32,13 +35,14 @@ class LemmaActivityGenerator {
 
   static Future<Set<ConstructIdentifier>> lemmaActivityDistractors(
     PangeaToken token, {
+    required String language,
     int? maxChoices = 4,
   }) async {
     final constructs = await MatrixState
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getAggregatedConstructs(ConstructTypeEnum.vocab);
+        .getAggregatedConstructs(ConstructTypeEnum.vocab, language);
 
     final List<ConstructIdentifier> constructIds = constructs.keys.toList();
     // Offload computation to an isolate

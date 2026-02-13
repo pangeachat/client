@@ -129,9 +129,15 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getVocabAnalytics() async {
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 == null) {
+      throw Exception("No L2 set for user");
+    }
+
     final analyticsService = Matrix.of(context).analyticsDataService;
     final aggregatedVocab = await analyticsService.getAggregatedConstructs(
       ConstructTypeEnum.vocab,
+      l2.langCodeShort,
     );
 
     final uses = aggregatedVocab.values.toList();
@@ -182,6 +188,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getMorphAnalytics() async {
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 == null) {
+      throw Exception("No L2 set for user");
+    }
     final analyticsService = Matrix.of(context).analyticsDataService;
 
     final morphs = await MorphsRepo.get();
@@ -199,7 +209,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
           category: feature.feature,
         );
 
-        final uses = await analyticsService.getConstructUse(id);
+        final uses = await analyticsService.getConstructUse(
+          id,
+          l2.langCodeShort,
+        );
 
         final xp = uses.points;
         final exampleMessages = await _getExampleMessages([uses]);

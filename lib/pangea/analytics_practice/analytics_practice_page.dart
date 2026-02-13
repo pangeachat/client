@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dar
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -63,8 +64,12 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
   SessionLoader({required this.type});
 
   @override
-  Future<AnalyticsPracticeSessionModel> fetch() =>
-      AnalyticsPracticeSessionRepo.get(type);
+  Future<AnalyticsPracticeSessionModel> fetch() {
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+    if (l2 == null) throw Exception('User L2 language not set');
+    return AnalyticsPracticeSessionRepo.get(type, l2);
+  }
 }
 
 class AnalyticsPractice extends StatefulWidget {
@@ -152,6 +157,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
+
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
   List<VocabPracticeChoice> filteredChoices(
     MultipleChoicePracticeActivityModel activity,
@@ -248,7 +255,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
     TtsController.tryToSpeak(
       activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
-      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+      langCode: _l2!.langCode,
     );
   }
 
@@ -324,6 +331,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService.addAnalytics(
       null,
       bonus,
+      _l2!.langCodeShort,
       forceUpdate: true,
     );
     AnalyticsPractice.bypassExitConfirmation = true;
@@ -534,7 +542,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       xp: 0,
     );
 
-    await _analyticsService.updateService.addAnalytics(null, [use]);
+    await _analyticsService.updateService.addAnalytics(null, [
+      use,
+    ], _l2!.langCodeShort);
   }
 
   void onHintPressed() {
@@ -611,6 +621,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService.addAnalytics(
       choiceTargetId(choiceContent),
       [use],
+      _l2!.langCodeShort,
     );
 
     if (!isCorrect) return;
@@ -663,7 +674,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
 
     return ExampleMessageUtil.getExampleMessage(
-      await _analyticsService.getConstructUse(construct),
+      await _analyticsService.getConstructUse(construct, _l2!.langCodeShort),
       Matrix.of(context).client,
     );
   }
@@ -677,7 +688,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
-      _analyticsService.derivedData;
+      _analyticsService.derivedData(_l2!.langCodeShort);
 
   /// Returns congratulations message based on performance
   String getCompletionMessage(BuildContext context) {
