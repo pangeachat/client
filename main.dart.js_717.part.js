@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Sblokez les outils d'apprentissage";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Mi lan\u0109is abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["izZpQH4qVGWsKSCXcFvIzJ/ldCs="] = d.current;
+  d["Z0/P9VWXvQJgbCY5ojtjlQjTwxg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

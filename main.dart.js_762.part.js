@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Atblokuoti mokymosi \u012frankius";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Paleidome prenumeratos valdym\u0105 naujame skirtuke. Jei nemat\u0117te naujojo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
     },
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pvAXxSmQKEX9yqCa9awSPFqO1UQ="] = d.current;
+  d["jMDNrW14oe1PKmHZW87G4i/LS2c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

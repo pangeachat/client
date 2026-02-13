@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Odemknout n\xe1stroje pro u\u010den\xed";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Spustili jsme spr\xe1vu p\u0159edplatn\xe9ho v nov\xe9m okn\u011b. Pokud jste novou kartu nevid\u011bli, zkontrolujte pros\xedm sv\u016fj blok\xe1tor vyskakovac\xedch oken.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["979VHAJUVPI0FiKzg1bhEXuX2Uc="] = d.current;
+  d["lBAJX5O9fVy1aE4u/mk0uozKXvw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map

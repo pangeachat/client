@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Dezv\u0103luie instrumentele de \xeenv\u0103\u021bare";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Am lansat gestionarea abonamentelor \xeentr-o fil\u0103 nou\u0103. Dac\u0103 nu ai v\u0103zut fila nou\u0103, te rug\u0103m s\u0103 verifici blocatorul de feronerie.";
     },
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OjhKOPwUL2Q2gyxGjJE6oY2T41Q="] = d.current;
+  d["u/XNDSy6jyzuR56FuN5KmljptTw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_793.part.js.map

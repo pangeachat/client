@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Buka alat pembelajaran";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Kami telah meluncurkan manajemen langganan di tab baru. Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.";
     },
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WUAhGHgxemxkVRt1qlM7Iznvn6I="] = d.current;
+  d["kssoFH0QPYZomG+fz3mDdozRFrM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

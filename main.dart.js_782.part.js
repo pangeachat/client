@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Ontgrendel leermiddelen";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "We hebben het abonnementbeheer in een nieuw tabblad gelanceerd. Als je het nieuwe tabblad niet hebt gezien, controleer dan je pop-up blocker.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RSuO3dcpKfvNzGJCaTBtReeQElU="] = d.current;
+  d["Tc9DVzsTm2JABkb7C0H8g3sFAXc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

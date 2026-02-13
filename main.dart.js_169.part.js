@@ -5570,6 +5570,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Unlock learning tools";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Mokhoro a thakhisa taolo ya ngwaga ka fa tabeng e ncha. Ha o ka se bone tab e ncha, ka kopo hlahloba blocker ya hao ya popup.";
     },
@@ -5598,7 +5601,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lKF86OgSzRH6LyM4Kf2ZCPLogHU="] = d.current;
+  d["ODO0yVzOl22LPqY/9+ulRK7Cx9I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

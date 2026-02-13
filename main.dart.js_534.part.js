@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Desbloquear herramientas de aprendizaje";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Hemos lanzado la gesti\xf3n de suscripciones en una nueva pesta\xf1a. Si no viste la nueva pesta\xf1a, por favor verifica tu bloqueador de ventanas emergentes.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qcn10QjcQujOGsPFJkAZQGw6jFM="] = d.current;
+  d["0JoLbDWoUqt1DPwH4EwgvIe60HY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_534.part.js.map

@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Atblo\u0137\u0113t m\u0101c\u012bbu r\u012bkus";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "M\u0113s esam palaidu\u0161i abon\u0113\u0161anas p\u0101rvald\u012bbu jaun\u0101 ciln\u0113. Ja neesat redz\u0113ju\u0161i jauno cilni, l\u016bdzu, p\u0101rbaudiet savu uznirsto\u0161o logu blo\u0137\u0113t\u0101ju.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kfmgBIUahZwdntVRqGkneFKMjfQ="] = d.current;
+  d["Xl8klKUTXvvMaWkcAkiY34X1D1c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

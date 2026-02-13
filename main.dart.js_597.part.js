@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Ireki ikaskuntza tresnak";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.";
     },
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NOj+hRWls6Epx7BoEcU9J5bkUFk="] = d.current;
+  d["Zgiiaeoip6QS1q1edt8rgJ7cl2I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

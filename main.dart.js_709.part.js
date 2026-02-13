@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "Tanul\xe1si eszk\xf6z\xf6k felold\xe1sa";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Elind\xedtottuk az el\u0151fizet\xe9skezel\xe9st egy \xfaj lapon. Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3ablak-blokkol\xf3dat.";
     },
@@ -5584,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ECm0dtPFf8lK5xjvXjlMKr4xRiQ="] = d.current;
+  d["5nEmH3LS3ISw7E8P8fa71xJzcCI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

@@ -5568,6 +5568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unlockLearningTools() {
       return "D\xedghlas na huirlis\xed foghlama";
     },
+    get$unlockPracticeActivities() {
+      return "Unlock practice activities";
+    },
     get$managementSnackbarMessage() {
       return "Seoladh bainist\xedocht s\xednti\xfais i gcluais\xedn nua. M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
     },
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EQmsPZLfFk5miTt9zkVjlKAtpF8="] = d.current;
+  d["RYYZpU/FHX42GgfmHyRXEXMwuhY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map
