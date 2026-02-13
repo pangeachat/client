@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
@@ -19,6 +21,8 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final analyticsService = Matrix.of(context).analyticsDataService;
+    final language =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return Scaffold(
       body: SafeArea(
@@ -35,7 +39,9 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                     canSelect: false,
                   ),
                   FutureBuilder(
-                    future: analyticsService.derivedData,
+                    future: language != null
+                        ? analyticsService.derivedData(language)
+                        : Future.value(DerivedAnalyticsDataModel()),
                     builder: (context, snapshot) {
                       if (snapshot.data == null) {
                         return const SizedBox();
@@ -69,8 +75,10 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                     },
                   ),
                   Expanded(
-                    child: FutureBuilder(
-                      future: analyticsService.getUses(count: 100),
+                    child: FutureBuilder<List<OneConstructUse>>(
+                      future: language != null
+                          ? analyticsService.getUses(language, count: 100)
+                          : Future.value(<OneConstructUse>[]),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
                           return const Center(

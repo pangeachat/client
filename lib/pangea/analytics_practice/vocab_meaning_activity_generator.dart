@@ -8,6 +8,7 @@ class VocabMeaningActivityGenerator {
     final token = req.target.tokens.first;
     final choices = await LemmaActivityGenerator.lemmaActivityDistractors(
       token,
+      language: req.userL2.split('-').first,
     );
 
     if (!choices.contains(token.vocabConstructID)) {

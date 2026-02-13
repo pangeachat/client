@@ -38,6 +38,7 @@ class VocabAudioActivityGenerator {
     final choices = await LemmaActivityGenerator.lemmaActivityDistractors(
       token,
       maxChoices: 20,
+      language: req.userL2.split('-').first,
     );
     final choicesList = choices
         .map((c) => c.lemma)

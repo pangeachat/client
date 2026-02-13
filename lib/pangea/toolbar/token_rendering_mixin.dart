@@ -11,6 +11,7 @@ mixin TokenRenderingMixin {
     String cacheKey,
     String targetId,
     PangeaToken token,
+    String language,
     AnalyticsDataService analyticsService, {
     String? roomId,
     String? eventId,
@@ -36,7 +37,11 @@ mixin TokenRenderingMixin {
       ),
     ];
 
-    await analyticsService.updateService.addAnalytics(targetId, constructs);
+    await analyticsService.updateService.addAnalytics(
+      targetId,
+      constructs,
+      language,
+    );
     TokensUtil.clearNewTokenCache();
   }
 }

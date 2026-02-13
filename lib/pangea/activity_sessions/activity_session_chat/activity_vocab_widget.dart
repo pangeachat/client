@@ -95,6 +95,7 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
         "activity_tokens",
         widget.targetId,
         token,
+        widget.langCode.split('-').first,
         Matrix.of(context).analyticsDataService,
       ).then((_) {
         if (mounted) setState(() {});

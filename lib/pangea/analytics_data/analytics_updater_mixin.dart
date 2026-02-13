@@ -33,9 +33,12 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
   Future<void> addAnalytics(
     List<OneConstructUse> constructs,
     String? targetId,
-  ) => Matrix.of(
-    context,
-  ).analyticsDataService.updateService.addAnalytics(targetId, constructs);
+    String language,
+  ) => Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+    targetId,
+    constructs,
+    language,
+  );
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
     if (update.targetID != null) {

@@ -2227,8 +2227,9 @@ class ChatController extends State<ChatPageWithRoom>
         ),
       ];
 
-      _showAnalyticsFeedback(constructs, eventId);
-      addAnalytics(constructs, eventId);
+      final langCode = originalSent.langCode.split('-').first;
+      _showAnalyticsFeedback(constructs, eventId, langCode);
+      addAnalytics(constructs, eventId, langCode);
     }
   }
 
@@ -2241,10 +2242,13 @@ class ChatController extends State<ChatPageWithRoom>
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 
-      _showAnalyticsFeedback(constructs, eventId);
-      Matrix.of(
-        context,
-      ).analyticsDataService.updateService.addAnalytics(eventId, constructs);
+      final langCode = stt.langCode.split('-').first;
+      _showAnalyticsFeedback(constructs, eventId, langCode);
+      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+        eventId,
+        constructs,
+        langCode,
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -2398,16 +2402,19 @@ class ChatController extends State<ChatPageWithRoom>
   Future<void> _showAnalyticsFeedback(
     List<OneConstructUse> constructs,
     String eventId,
+    String language,
   ) async {
     final analyticsService = Matrix.of(context).analyticsDataService;
     final newGrammarConstructs = await analyticsService.getNewConstructCount(
       constructs,
       ConstructTypeEnum.morph,
+      language,
     );
 
     final newVocabConstructs = await analyticsService.getNewConstructCount(
       constructs,
       ConstructTypeEnum.vocab,
+      language,
     );
 
     OverlayUtil.showOverlay(

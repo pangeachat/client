@@ -66,7 +66,10 @@ class PracticeSelectionRepo {
     if (eligibleTokens.isEmpty) {
       return PracticeSelection({});
     }
-    final queue = await _fillActivityQueue(eligibleTokens);
+    final queue = await _fillActivityQueue(
+      eligibleTokens,
+      langCode.split('-')[0],
+    );
     final selection = PracticeSelection(queue);
     return selection;
   }
@@ -110,10 +113,11 @@ class PracticeSelectionRepo {
 
   static Future<Map<ActivityTypeEnum, List<PracticeTarget>>> _fillActivityQueue(
     List<PangeaToken> tokens,
+    String language,
   ) async {
     final queue = <ActivityTypeEnum, List<PracticeTarget>>{};
     for (final type in ActivityTypeEnum.practiceTypes) {
-      queue[type] = await _buildActivity(type, tokens);
+      queue[type] = await _buildActivity(type, tokens, language);
     }
     return queue;
   }
@@ -147,9 +151,10 @@ class PracticeSelectionRepo {
   static Future<List<PracticeTarget>> _buildActivity(
     ActivityTypeEnum activityType,
     List<PangeaToken> tokens,
+    String language,
   ) async {
     if (activityType == ActivityTypeEnum.morphId) {
-      return _buildMorphActivity(tokens);
+      return _buildMorphActivity(tokens, language);
     }
 
     List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
@@ -166,7 +171,11 @@ class PracticeSelectionRepo {
       return [];
     }
 
-    final scores = await _fetchPriorityScores(practiceTokens, activityType);
+    final scores = await _fetchPriorityScores(
+      practiceTokens,
+      activityType,
+      language,
+    );
 
     practiceTokens.sort((a, b) => _sortTokens(a, b, scores[a]!, scores[b]!));
     practiceTokens = practiceTokens.take(8).toList();
@@ -182,12 +191,14 @@ class PracticeSelectionRepo {
 
   static Future<List<PracticeTarget>> _buildMorphActivity(
     List<PangeaToken> tokens,
+    String language,
   ) async {
     final List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
     final candidates = practiceTokens.expand(_tokenToMorphTargets).toList();
     final scores = await _fetchPriorityScores(
       practiceTokens,
       ActivityTypeEnum.morphId,
+      language,
     );
     candidates.sort(
       (a, b) => _sortMorphTargets(
@@ -211,6 +222,7 @@ class PracticeSelectionRepo {
   static Future<Map<PangeaToken, int>> _fetchPriorityScores(
     List<PangeaToken> tokens,
     ActivityTypeEnum activityType,
+    String language,
   ) async {
     final scores = <PangeaToken, int>{};
     for (final token in tokens) {
@@ -224,7 +236,7 @@ class PracticeSelectionRepo {
         .pangeaController
         .matrixState
         .analyticsDataService
-        .getConstructUses(ids);
+        .getConstructUses(ids, language);
 
     for (final token in tokens) {
       final construct = constructs[idMap[token]];

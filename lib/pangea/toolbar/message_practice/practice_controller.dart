@@ -202,7 +202,11 @@ class PracticeController with ChangeNotifier {
         ),
       ];
 
-      updateService.addAnalytics(targetId, constructs);
+      updateService.addAnalytics(
+        targetId,
+        constructs,
+        MatrixState.pangeaController.userController.userL2!.langCodeShort,
+      );
     }
 
     if (isCorrect) {

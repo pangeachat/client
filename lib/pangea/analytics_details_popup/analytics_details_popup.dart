@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
@@ -82,8 +83,19 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     super.dispose();
   }
 
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
   Future<void> _setAnalyticsData() async {
-    final future = <Future>[_setMorphs(), _setVocab()];
+    final l2 = _l2;
+    if (l2 == null) {
+      ErrorHandler.logError(
+        e: "No L2 language set for user",
+        m: "Cannot set analytics data",
+        data: {"view": widget.view, "construct": widget.construct},
+      );
+      return;
+    }
+    final future = <Future>[_setMorphs(), _setVocab(l2.langCodeShort)];
     await Future.wait(future);
   }
 
@@ -104,11 +116,12 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     }
   }
 
-  Future<void> _setVocab() async {
+  Future<void> _setVocab(String language) async {
     try {
       final analyticsService = Matrix.of(context).analyticsDataService;
       final data = await analyticsService.getAggregatedConstructs(
         ConstructTypeEnum.vocab,
+        language,
       );
 
       vocab = data.values.toList();
@@ -128,11 +141,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       morphs = resp;
       features = resp.displayFeatures;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"l2": MatrixState.pangeaController.userController.userL2},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"l2": _l2?.langCode});
     } finally {
       features.sort(
         (a, b) => morphFeatureSortOrder
@@ -214,9 +223,11 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     PTRequest ptRequest,
     PTResponse ptResponse,
   ) async {
+    final l2 = _l2;
+    if (l2 == null) return;
     final requestData = TokenInfoFeedbackRequestData(
       userId: Matrix.of(context).client.userID!,
-      detectedLanguage: MatrixState.pangeaController.userController.userL2Code!,
+      detectedLanguage: l2.langCode,
       tokens: [token],
       selectedToken: 0,
       wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
@@ -228,7 +239,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     await TokenFeedbackUtil.showTokenFeedbackDialog(
       context,
       requestData: requestData,
-      langCode: MatrixState.pangeaController.userController.userL2Code!,
+      langCode: l2.langCode,
       onUpdated: () => reloadNotifier.value++,
     );
   }

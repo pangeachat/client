@@ -28,10 +28,18 @@ class LevelUpAnalyticsService {
   ) async {
     await ensureInitialized();
 
-    final uses = await dataService.getUses(since: lastLevelUpTimestamp);
+    final userController = MatrixState.pangeaController.userController;
+    final l2 = userController.userL2;
+    if (l2 == null) {
+      throw Exception("No L2 language set for user");
+    }
+
+    final uses = await dataService.getUses(
+      l2.langCodeShort,
+      since: lastLevelUpTimestamp,
+    );
     final messages = await _buildMessageContext(uses);
 
-    final userController = MatrixState.pangeaController.userController;
     final request = ConstructSummaryRequest(
       constructs: uses,
       messages: messages,
