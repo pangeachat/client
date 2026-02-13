@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// A generic sealed class that represents the state of an asynchronous operation.
@@ -72,8 +73,6 @@ abstract class AsyncLoader<T> {
 
   T? get value => isLoaded ? (state.value as AsyncLoaded<T>).value : null;
 
-  Completer<T> completer = Completer<T>();
-
   void dispose() {
     _disposed = true;
     state.dispose();
@@ -93,14 +92,12 @@ abstract class AsyncLoader<T> {
       final result = await fetch();
       if (_disposed) return;
       state.value = AsyncState.loaded(result);
-      completer.complete(result);
     } catch (e, s) {
-      completer.completeError(e);
       if (!_disposed) {
         state.value = AsyncState.error(e);
       }
 
-      if (e is! HttpException) {
+      if (e is! HttpException && e is! UnsubscribedException) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }
     }
@@ -109,6 +106,5 @@ abstract class AsyncLoader<T> {
   void reset() {
     if (_disposed) return;
     state.value = AsyncState.idle();
-    completer = Completer<T>();
   }
 }

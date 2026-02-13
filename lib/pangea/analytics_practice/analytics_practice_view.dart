@@ -14,7 +14,9 @@ import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
+import 'package:fluffychat/pangea/analytics_practice/unsubscribed_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
@@ -86,7 +88,11 @@ class AnalyticsPracticeView extends StatelessWidget {
             builder: (context, state, _) {
               return switch (state) {
                 AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                  ErrorIndicator(message: error.toLocalizedString(context)),
+                  error is UnsubscribedException
+                      ? const UnsubscribedPracticePage()
+                      : ErrorIndicator(
+                          message: error.toLocalizedString(context),
+                        ),
                 AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                   value.isComplete
                       ? CompletedActivitySessionView(state.value, controller)
