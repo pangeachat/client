@@ -11,6 +11,7 @@ import 'package:fluffychat/pages/chat/events/message.dart';
 import 'package:fluffychat/pages/chat/seen_by_row.dart';
 import 'package:fluffychat/pages/chat/typing_indicators.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_user_summaries_widget.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -54,9 +55,13 @@ class ChatEventList extends StatelessWidget {
       child: NotificationListener<ScrollMetricsNotification>(
         onNotification: (_) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            final scrollable =
-                controller.scrollController.position.maxScrollExtent > 0;
-            controller.scrollableNotifier.value = scrollable;
+            try {
+              final scrollable =
+                  controller.scrollController.position.maxScrollExtent > 0;
+              controller.scrollableNotifier.value = scrollable;
+            } catch (e, s) {
+              ErrorHandler.logError(e: e, s: s, data: {});
+            }
           });
           return true;
         },
