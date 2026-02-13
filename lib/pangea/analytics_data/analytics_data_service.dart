@@ -133,14 +133,26 @@ class AnalyticsDataService {
 
       if (analyticsUserId != client.userID ||
           lastUpdated == null ||
-          (l2 != null && analyticsLanguage != l2.langCodeShort)) {
-        await _clear();
+          analyticsLanguage == null) {
+        // If current language / lastUpdated not set, analytics database needs be updated to include language flag, so clear it.
+        // If user ID doesn't match, this means that a different user has logged in since the last time the database was initialized,
+        // so clear it to avoid showing another user's analytics.
+        _clear();
+        await _analyticsClientGetter.database.clear();
         await _analyticsClientGetter.database.updateUserID(client.userID!);
         if (l2 != null) {
           await _analyticsClientGetter.database.updateCurrentLanguage(
             l2.langCodeShort,
           );
         }
+      } else if (l2 != null && analyticsLanguage != l2.langCodeShort) {
+        // If the current language doesn't match the language in the database, this means that
+        // the user has switched their L2 since the last time the database was initialized.
+        // Clear local cache / merge table data.
+        _clear();
+        await _analyticsClientGetter.database.updateCurrentLanguage(
+          l2.langCodeShort,
+        );
       }
 
       _syncController?.dispose();
@@ -198,11 +210,11 @@ class AnalyticsDataService {
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
     initCompleter = Completer<void>();
-    await _clear();
+    _clear();
     await _initDatabase(_analyticsClientGetter.client);
   }
 
-  Future<void> _clear() async {
+  void _clear() {
     _invalidateCaches();
     _mergeTable.clear();
   }

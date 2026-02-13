@@ -147,6 +147,18 @@ class AnalyticsDatabase with DatabaseFileStorage {
     );
   }
 
+  Future<void> clear() async {
+    _lastEventTimestampBox.clearQuickAccessCache();
+    _serverConstructsBox.clearQuickAccessCache();
+    _localConstructsBox.clearQuickAccessCache();
+    _aggregatedServerVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedServerMorphConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalMorphConstructsBox.clearQuickAccessCache();
+    _derivedStatsBox.clearQuickAccessCache();
+    await _collection.clear();
+  }
+
   Future<T> _transaction<T>(Future<T> Function() action) {
     return _lock.synchronized(action);
   }
@@ -235,10 +247,16 @@ class AnalyticsDatabase with DatabaseFileStorage {
     // ---- Server uses ----
     final serverKeys = (await _serverConstructsBox.getAllKeys())
         .where((key) => _isLanguageKey(key, language))
-        .sorted(
-          (a, b) =>
-              int.parse(b.split('|')[2]).compareTo(int.parse(a.split('|')[2])),
-        );
+        // Filter out malformed or legacy keys that don't have a timestamp
+        .where((key) {
+          final parts = key.split('|');
+          return parts.length >= 3 && int.tryParse(parts[2]) != null;
+        })
+        .sorted((a, b) {
+          final aTimestamp = int.parse(a.split('|')[2]);
+          final bTimestamp = int.parse(b.split('|')[2]);
+          return bTimestamp.compareTo(aTimestamp);
+        });
 
     for (final key in serverKeys) {
       final serverUses = await getServerUses(key)

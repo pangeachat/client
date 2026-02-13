@@ -64,11 +64,12 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
   SessionLoader({required this.type});
 
   @override
-  Future<AnalyticsPracticeSessionModel> fetch() =>
-      AnalyticsPracticeSessionRepo.get(
-        type,
-        MatrixState.pangeaController.userController.userL2!.langCodeShort,
-      );
+  Future<AnalyticsPracticeSessionModel> fetch() {
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+    if (l2 == null) throw Exception('User L2 language not set');
+    return AnalyticsPracticeSessionRepo.get(type, l2);
+  }
 }
 
 class AnalyticsPractice extends StatefulWidget {
