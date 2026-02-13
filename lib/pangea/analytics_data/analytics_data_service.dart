@@ -125,16 +125,9 @@ class AnalyticsDataService {
       final analyticsUserId = await _analyticsClientGetter.database.getUserID();
       final analyticsLanguage = await _analyticsClientGetter.database
           .getCurrentLanguage();
-      final lastUpdated = l2 != null
-          ? await _analyticsClientGetter.database.getLastUpdated(
-              l2.langCodeShort,
-            )
-          : null;
 
-      if (analyticsUserId != client.userID ||
-          lastUpdated == null ||
-          analyticsLanguage == null) {
-        // If current language / lastUpdated not set, analytics database needs be updated to include language flag, so clear it.
+      if (analyticsUserId != client.userID || analyticsLanguage == null) {
+        // If current language not set, analytics database needs be updated to include language flag, so clear it.
         // If user ID doesn't match, this means that a different user has logged in since the last time the database was initialized,
         // so clear it to avoid showing another user's analytics.
         _clear();
