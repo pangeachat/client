@@ -123,6 +123,17 @@ extension PushRuleExtension on PushRule {
     ];
   }
 
+  bool suppressRules() {
+    switch (ruleId) {
+      case '.m.rule.master':
+      case '.m.rule.suppress_notices':
+      case '.m.rule.suppress_edits':
+        return true;
+      default:
+        return false;
+    }
+  }
+
   // Pangea#
 }
 
