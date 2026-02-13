@@ -27,6 +27,18 @@ class ActivityPlanRequest {
     required this.numberOfParticipants,
   });
 
+  /// Fallback for corrupt/incomplete state events where the request is missing.
+  factory ActivityPlanRequest.empty() => ActivityPlanRequest(
+    topic: '',
+    mode: '',
+    objective: '',
+    media: MediaEnum.nan,
+    cefrLevel: LanguageLevelTypeEnum.a1,
+    languageOfInstructions: '',
+    targetLanguage: '',
+    numberOfParticipants: 2,
+  );
+
   Map<String, dynamic> toJson() {
     return {
       ModelKey.activityRequestTopic: topic,
@@ -42,25 +54,20 @@ class ActivityPlanRequest {
     };
   }
 
-  factory ActivityPlanRequest.fromJson(Map<String, dynamic> json) =>
-      ActivityPlanRequest(
-        topic: json[ModelKey.activityRequestTopic],
-        mode: json[ModelKey.mode],
-        objective: json[ModelKey.activityRequestObjective],
-        media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia]),
-        cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
-            ? LanguageLevelTypeEnum.fromString(
-                json[ModelKey.activityRequestCefrLevel],
-              )
-            : LanguageLevelTypeEnum.a1,
-        languageOfInstructions:
-            json[ModelKey.activityRequestLanguageOfInstructions],
-        targetLanguage: json[ModelKey.targetLanguage],
-        count: json[ModelKey.activityRequestCount],
-        numberOfParticipants:
-            json[ModelKey.activityRequestNumberOfParticipants],
-        location: json[ModelKey.activityPlanLocation] ?? "any",
-      );
+  factory ActivityPlanRequest.fromJson(Map<String, dynamic> json) => ActivityPlanRequest(
+    topic: json[ModelKey.activityRequestTopic] as String? ?? '',
+    mode: json[ModelKey.mode] as String? ?? '',
+    objective: json[ModelKey.activityRequestObjective] as String? ?? '',
+    media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia] as String? ?? ''),
+    cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
+        ? LanguageLevelTypeEnum.fromString(json[ModelKey.activityRequestCefrLevel])
+        : LanguageLevelTypeEnum.a1,
+    languageOfInstructions: json[ModelKey.activityRequestLanguageOfInstructions] as String? ?? '',
+    targetLanguage: json[ModelKey.targetLanguage] as String? ?? '',
+    count: json[ModelKey.activityRequestCount] as int? ?? 3,
+    numberOfParticipants: json[ModelKey.activityRequestNumberOfParticipants] as int? ?? 2,
+    location: json[ModelKey.activityPlanLocation] as String? ?? "any",
+  );
 
   String get storageKey =>
       '$topic-$mode-$objective-${media.string}-$cefrLevel-$languageOfInstructions-$targetLanguage-$numberOfParticipants';

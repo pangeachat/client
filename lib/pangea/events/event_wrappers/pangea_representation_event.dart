@@ -2,13 +2,8 @@
 
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart' hide Result;
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -26,6 +21,9 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart' hide Result;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class RepresentationEvent {
   Event? _event;
@@ -44,9 +42,7 @@ class RepresentationEvent {
     ChoreoRecordModel? choreo,
   }) {
     if (event != null && event.type != PangeaEventTypes.representation) {
-      throw Exception(
-        "${event.type} should not be used to make a RepresentationEvent",
-      );
+      throw Exception("${event.type} should not be used to make a RepresentationEvent");
     }
     _event = event;
     _content = content;
@@ -62,14 +58,11 @@ class RepresentationEvent {
 
   List<LanguageDetectionModel>? get detections => _tokens?.detections;
 
-  Set<Event> get tokenEvents =>
-      _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
+  Set<Event> get tokenEvents => _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
 
-  Set<Event> get sttEvents =>
-      _event?.aggregatedEvents(timeline, PangeaEventTypes.sttTranslation) ?? {};
+  Set<Event> get sttEvents => _event?.aggregatedEvents(timeline, PangeaEventTypes.sttTranslation) ?? {};
 
-  Set<Event> get choreoEvents =>
-      _event?.aggregatedEvents(timeline, PangeaEventTypes.choreoRecord) ?? {};
+  Set<Event> get choreoEvents => _event?.aggregatedEvents(timeline, PangeaEventTypes.choreoRecord) ?? {};
 
   // Note: in the case where the event is the originalSent or originalWritten event,
   // the content will be set on initialization by the PangeaMessageEvent
@@ -113,9 +106,7 @@ class RepresentationEvent {
   List<SttTranslationModel> get sttTranslations {
     if (content.speechToText == null) return [];
     if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(message: "_event and _sttTranslations both null"),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(message: "_event and _sttTranslations both null"));
       return [];
     }
 
@@ -128,11 +119,7 @@ class RepresentationEvent {
         Sentry.addBreadcrumb(
           Breadcrumb(
             message: "Failed to parse STT translation",
-            data: {
-              "eventID": event.eventId,
-              "content": event.content,
-              "error": e.toString(),
-            },
+            data: {"eventID": event.eventId, "content": event.content, "error": e.toString()},
           ),
         );
       }
@@ -151,11 +138,7 @@ class RepresentationEvent {
       eventId: parentMessageEvent.eventId,
     );
 
-    return content.vocabAndMorphUses(
-      tokens: tokens!,
-      metadata: metadata,
-      choreo: choreo,
-    );
+    return content.vocabAndMorphUses(tokens: tokens!, metadata: metadata, choreo: choreo);
   }
 
   /// Finds the closest non-punctuation token to the given token.
@@ -205,29 +188,29 @@ class RepresentationEvent {
       TokensRequestModel(
         fullText: text,
         langCode: langCode,
-        senderL1:
-            MatrixState.pangeaController.userController.userL1?.langCode ??
-            LanguageKeys.unknownLanguage,
-        senderL2:
-            MatrixState.pangeaController.userController.userL2?.langCode ??
-            LanguageKeys.unknownLanguage,
+        senderL1: MatrixState.pangeaController.userController.userL1?.langCode ?? LanguageKeys.unknownLanguage,
+        senderL2: MatrixState.pangeaController.userController.userL2?.langCode ?? LanguageKeys.unknownLanguage,
       ),
     );
 
+    if (res.isError) {
+      return Result.error(res.error!);
+    }
+
+    final result = res.result;
+    if (result == null) {
+      return Result.error(Exception('Token request returned null result'));
+    }
+
     if (_event != null) {
       _event!.room.sendPangeaEvent(
-        content: PangeaMessageTokens(
-          tokens: res.result!.tokens,
-          detections: res.result!.detections,
-        ).toJson(),
+        content: PangeaMessageTokens(tokens: result.tokens, detections: result.detections).toJson(),
         parentEventId: _event!.eventId,
         type: PangeaEventTypes.tokens,
       );
     }
 
-    return res.isError
-        ? Result.error(res.error!)
-        : Result.value(res.result!.tokens);
+    return Result.value(result.tokens);
   }
 
   SttTranslationModel? getSpeechToTextTranslationLocal(String langCode) {

@@ -1,8 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -10,6 +7,8 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -41,9 +40,7 @@ class ActivityPlanModel {
     this.endAt,
     this.duration,
     this.isDeprecatedModel = false,
-  }) : description = (description == null || description.isEmpty)
-           ? learningObjective
-           : description,
+  }) : description = (description == null || description.isEmpty) ? learningObjective : description,
        _roles = roles,
        _imageURL = imageURL;
 
@@ -53,14 +50,10 @@ class ActivityPlanModel {
     "${AppConfig.assetsBaseURL}/Space%20template%204.png",
   ];
 
-  String get randomPlaceholder =>
-      placeholderImages[Random(
-        title.hashCode,
-      ).nextInt(placeholderImages.length)];
+  String get randomPlaceholder => placeholderImages[Random(title.hashCode).nextInt(placeholderImages.length)];
 
-  Uri? get imageURL => _imageURL != null
-      ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
-      : Uri.tryParse(randomPlaceholder);
+  Uri? get imageURL =>
+      _imageURL != null ? Uri.tryParse("${Environment.cmsApi}$_imageURL") : Uri.tryParse(randomPlaceholder);
 
   Map<String, ActivityRole> get roles {
     if (_roles != null) return _roles;
@@ -77,36 +70,31 @@ class ActivityPlanModel {
   }
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
-    final req = ActivityPlanRequest.fromJson(
-      json[ModelKey.activityPlanRequest],
-    );
+    final reqJson = json[ModelKey.activityPlanRequest];
+    final req = reqJson is Map<String, dynamic> ? ActivityPlanRequest.fromJson(reqJson) : ActivityPlanRequest.empty();
 
     Map<String, ActivityRole>? roles;
     final roleContent = json['roles'];
     if (roleContent is Map<String, dynamic>) {
       roles = Map<String, ActivityRole>.from(
-        json['roles'].map(
-          (key, value) => MapEntry(key, ActivityRole.fromJson(value)),
-        ),
+        roleContent.map((key, value) => MapEntry(key, ActivityRole.fromJson(value))),
       );
     }
+
+    final vocabJson = json[ModelKey.activityPlanVocab];
+    final vocab = vocabJson is List ? List<Vocab>.from(vocabJson.map((vocab) => Vocab.fromJson(vocab))) : <Vocab>[];
 
     final activityId = json[ModelKey.activityId] ?? json["bookmark_id"];
     return ActivityPlanModel(
       imageURL: json[ModelKey.activityPlanImageURL],
-      instructions: json[ModelKey.activityPlanInstructions],
+      instructions: json[ModelKey.activityPlanInstructions] as String? ?? '',
       req: req,
-      title: json[ModelKey.activityPlanTitle],
+      title: json[ModelKey.activityPlanTitle] as String? ?? '',
       description:
-          json[ModelKey.description] ??
-          json[ModelKey.activityPlanLearningObjective],
-      learningObjective: json[ModelKey.activityPlanLearningObjective],
-      vocab: List<Vocab>.from(
-        json[ModelKey.activityPlanVocab].map((vocab) => Vocab.fromJson(vocab)),
-      ),
-      endAt: json[ModelKey.activityPlanEndAt] != null
-          ? DateTime.parse(json[ModelKey.activityPlanEndAt])
-          : null,
+          (json[ModelKey.description] as String?) ?? (json[ModelKey.activityPlanLearningObjective] as String?) ?? '',
+      learningObjective: json[ModelKey.activityPlanLearningObjective] as String? ?? '',
+      vocab: vocab,
+      endAt: json[ModelKey.activityPlanEndAt] != null ? DateTime.parse(json[ModelKey.activityPlanEndAt]) : null,
       duration: json[ModelKey.duration] != null
           ? Duration(
               days: json[ModelKey.duration]['days'] ?? 0,
@@ -148,10 +136,8 @@ class ActivityPlanModel {
       // if the lemma appears more than once in the vocab list, show the pos
       // vocab is a wrapped list of string, separated by commas
       final v = vocab[i];
-      final bool showPos =
-          vocab.where((vocab) => vocab.lemma == v.lemma).length > 1;
-      vocabString +=
-          '${v.lemma}${showPos ? ' (${v.pos})' : ''}${i + 1 < vocab.length ? ', ' : ''}';
+      final bool showPos = vocab.where((vocab) => vocab.lemma == v.lemma).length > 1;
+      vocabString += '${v.lemma}${showPos ? ' (${v.pos})' : ''}${i + 1 < vocab.length ? ', ' : ''}';
       vocabList.add("${v.lemma}${showPos ? ' (${v.pos})' : ''}");
     }
     return vocabString;
@@ -189,15 +175,11 @@ class Vocab {
   Vocab({required this.lemma, required this.pos});
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
-    return Vocab(lemma: json[ModelKey.lemma], pos: json['pos']);
+    return Vocab(lemma: json[ModelKey.lemma] as String? ?? '', pos: json['pos'] as String? ?? '');
   }
 
   PangeaToken asToken() {
-    final text = PangeaTokenText(
-      content: lemma,
-      length: lemma.characters.length,
-      offset: 0,
-    );
+    final text = PangeaTokenText(content: lemma, length: lemma.characters.length, offset: 0);
 
     return PangeaToken(
       text: text,
@@ -228,12 +210,7 @@ class ActivityRole {
   final String? goal;
   final String? avatarUrl;
 
-  ActivityRole({
-    required this.id,
-    required this.name,
-    required this.goal,
-    this.avatarUrl,
-  });
+  ActivityRole({required this.id, required this.name, required this.goal, this.avatarUrl});
 
   factory ActivityRole.fromJson(Map<String, dynamic> json) {
     final urlContent = json['avatar_url'] as String?;
