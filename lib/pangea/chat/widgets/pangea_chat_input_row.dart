@@ -327,17 +327,7 @@ class PangeaChatInputRow extends StatelessWidget {
                                       .value
                               ? IconButton(
                                   tooltip: L10n.of(context).voiceMessage,
-                                  onPressed: () => ScaffoldMessenger.of(context)
-                                      .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            L10n.of(
-                                              context,
-                                            ).longPressToRecordVoiceMessage,
-                                          ),
-                                        ),
-                                      ),
-                                  onLongPress: () => recordingViewModel
+                                  onPressed: () => recordingViewModel
                                       .startRecording(controller.room),
                                   style: IconButton.styleFrom(
                                     backgroundColor: theme.bubbleColor,

@@ -444,13 +444,13 @@ class PangeaMessageEvent {
     }
 
     if (sendEvent) {
-      _sendSttRepresentationEvent(result.result!);
+      sendSttRepresentationEvent(result.result!);
     }
 
     return result.result!;
   }
 
-  Future<Event?> _sendSttRepresentationEvent(
+  Future<Event?> sendSttRepresentationEvent(
     SpeechToTextResponseModel stt,
   ) async {
     final representation = PangeaRepresentation(
@@ -486,7 +486,7 @@ class PangeaMessageEvent {
     SpeechToTextResponseModel? stt = rep?.content.speechToText;
     if (rep == null) {
       stt ??= await requestSpeechToText(l1Code, l2Code, sendEvent: false);
-      final repEvent = await _sendSttRepresentationEvent(stt);
+      final repEvent = await sendSttRepresentationEvent(stt);
       if (repEvent == null) {
         throw Exception("Failed to send representation event for STT");
       }
