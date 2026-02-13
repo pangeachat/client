@@ -93,6 +93,8 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
       widget.langCode,
       emoji,
       targetId,
+      widget.event?.roomId,
+      widget.event?.eventId,
     );
     messenger = ScaffoldMessenger.of(context);
     widget.showLemmaEmojiSnackbar(
