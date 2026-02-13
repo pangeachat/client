@@ -5346,5 +5346,6 @@
   "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
   "emailVerificationFailed": "Email verification failed. Please try again.",
   "unlockLearningTools": "Unlock learning tools",
+  "unlockPracticeActivities": "Unlock practice activities",
   "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker."
 }
