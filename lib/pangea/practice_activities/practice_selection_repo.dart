@@ -1,27 +1,20 @@
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
 
 class _PracticeSelectionCacheEntry {
   final PracticeSelection selection;
   final DateTime timestamp;
 
-  _PracticeSelectionCacheEntry({
-    required this.selection,
-    required this.timestamp,
-  });
+  _PracticeSelectionCacheEntry({required this.selection, required this.timestamp});
 
   bool get isExpired => DateTime.now().difference(timestamp).inDays > 1;
 
-  Map<String, dynamic> toJson() => {
-    'selection': selection.toJson(),
-    'timestamp': timestamp.toIso8601String(),
-  };
+  Map<String, dynamic> toJson() => {'selection': selection.toJson(), 'timestamp': timestamp.toIso8601String()};
 
   factory _PracticeSelectionCacheEntry.fromJson(Map<String, dynamic> json) {
     return _PracticeSelectionCacheEntry(
@@ -34,11 +27,7 @@ class _PracticeSelectionCacheEntry {
 class PracticeSelectionRepo {
   static final GetStorage _storage = GetStorage('practice_selection_cache');
 
-  static Future<PracticeSelection?> get(
-    String eventId,
-    String messageLanguage,
-    List<PangeaToken> tokens,
-  ) async {
+  static Future<PracticeSelection?> get(String eventId, String messageLanguage, List<PangeaToken> tokens) async {
     final userL2 = MatrixState.pangeaController.userController.userL2;
     if (userL2?.langCodeShort != messageLanguage.split("-").first) {
       return null;
@@ -53,12 +42,8 @@ class PracticeSelectionRepo {
     return newEntry;
   }
 
-  static Future<PracticeSelection> _fetch({
-    required List<PangeaToken> tokens,
-    required String langCode,
-  }) async {
-    if (langCode.split("-")[0] !=
-        MatrixState.pangeaController.userController.userL2?.langCodeShort) {
+  static Future<PracticeSelection> _fetch({required List<PangeaToken> tokens, required String langCode}) async {
+    if (langCode.split("-")[0] != MatrixState.pangeaController.userController.userL2?.langCodeShort) {
       return PracticeSelection({});
     }
 
@@ -66,10 +51,7 @@ class PracticeSelectionRepo {
     if (eligibleTokens.isEmpty) {
       return PracticeSelection({});
     }
-    final queue = await _fillActivityQueue(
-      eligibleTokens,
-      langCode.split('-')[0],
-    );
+    final queue = await _fillActivityQueue(eligibleTokens, langCode.split('-')[0]);
     final selection = PracticeSelection(queue);
     return selection;
   }
@@ -78,9 +60,7 @@ class PracticeSelectionRepo {
     try {
       final keys = List.from(_storage.getKeys());
       for (final String key in keys) {
-        final cacheEntry = _PracticeSelectionCacheEntry.fromJson(
-          _storage.read(key),
-        );
+        final cacheEntry = _PracticeSelectionCacheEntry.fromJson(_storage.read(key));
         if (cacheEntry.isExpired) {
           _storage.remove(key);
         }
@@ -94,9 +74,7 @@ class PracticeSelectionRepo {
     if (entry == null) return null;
 
     try {
-      return _PracticeSelectionCacheEntry.fromJson(
-        _storage.read(eventId),
-      ).selection;
+      return _PracticeSelectionCacheEntry.fromJson(_storage.read(eventId)).selection;
     } catch (e) {
       _storage.remove(eventId);
       return null;
@@ -104,10 +82,7 @@ class PracticeSelectionRepo {
   }
 
   static void _setCached(String eventId, PracticeSelection entry) {
-    final cachedEntry = _PracticeSelectionCacheEntry(
-      selection: entry,
-      timestamp: DateTime.now(),
-    );
+    final cachedEntry = _PracticeSelectionCacheEntry(selection: entry, timestamp: DateTime.now());
     _storage.write(eventId, cachedEntry.toJson());
   }
 
@@ -122,19 +97,9 @@ class PracticeSelectionRepo {
     return queue;
   }
 
-  static int _sortTokens(
-    PangeaToken a,
-    PangeaToken b,
-    int aScore,
-    int bScore,
-  ) => bScore.compareTo(aScore);
+  static int _sortTokens(PangeaToken a, PangeaToken b, int aScore, int bScore) => bScore.compareTo(aScore);
 
-  static int _sortMorphTargets(
-    PracticeTarget a,
-    PracticeTarget b,
-    int aScore,
-    int bScore,
-  ) => bScore.compareTo(aScore);
+  static int _sortMorphTargets(PracticeTarget a, PracticeTarget b, int aScore, int bScore) => bScore.compareTo(aScore);
 
   static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
     return t.morphsBasicallyEligibleForPracticeByPriority
@@ -171,11 +136,7 @@ class PracticeSelectionRepo {
       return [];
     }
 
-    final scores = await _fetchPriorityScores(
-      practiceTokens,
-      activityType,
-      language,
-    );
+    final scores = await _fetchPriorityScores(practiceTokens, activityType, language);
 
     practiceTokens.sort((a, b) => _sortTokens(a, b, scores[a]!, scores[b]!));
     practiceTokens = practiceTokens.take(8).toList();
@@ -189,25 +150,11 @@ class PracticeSelectionRepo {
     ];
   }
 
-  static Future<List<PracticeTarget>> _buildMorphActivity(
-    List<PangeaToken> tokens,
-    String language,
-  ) async {
+  static Future<List<PracticeTarget>> _buildMorphActivity(List<PangeaToken> tokens, String language) async {
     final List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
     final candidates = practiceTokens.expand(_tokenToMorphTargets).toList();
-    final scores = await _fetchPriorityScores(
-      practiceTokens,
-      ActivityTypeEnum.morphId,
-      language,
-    );
-    candidates.sort(
-      (a, b) => _sortMorphTargets(
-        a,
-        b,
-        scores[a.tokens.first]!,
-        scores[b.tokens.first]!,
-      ),
-    );
+    final scores = await _fetchPriorityScores(practiceTokens, ActivityTypeEnum.morphId, language);
+    candidates.sort((a, b) => _sortMorphTargets(a, b, scores[a.tokens.first]!, scores[b.tokens.first]!));
 
     final seenTexts = <String>{};
     final seenLemmas = <String>{};
@@ -232,24 +179,18 @@ class PracticeSelectionRepo {
     final ids = tokens.map((t) => t.vocabConstructID).toList();
     final idMap = {for (final token in tokens) token: token.vocabConstructID};
 
-    final constructs = await MatrixState
-        .pangeaController
-        .matrixState
-        .analyticsDataService
-        .getConstructUses(ids, language);
+    final constructs = await MatrixState.pangeaController.matrixState.analyticsDataService.getConstructUses(
+      ids,
+      language,
+    );
 
     for (final token in tokens) {
       final construct = constructs[idMap[token]];
-      final lastUsed = construct?.lastUseByTypes(
-        activityType.associatedUseTypes,
-      );
+      final lastUsed = construct?.lastUseByTypes(activityType.associatedUseTypes);
 
-      final daysSinceLastUsed = lastUsed == null
-          ? 20
-          : DateTime.now().difference(lastUsed).inDays;
+      final daysSinceLastUsed = lastUsed == null ? 20 : DateTime.now().difference(lastUsed).inDays;
 
-      scores[token] =
-          daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 9);
+      scores[token] = daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 7);
     }
     return scores;
   }
