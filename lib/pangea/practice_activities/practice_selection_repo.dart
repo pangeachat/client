@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -185,12 +186,9 @@ class PracticeSelectionRepo {
     );
 
     for (final token in tokens) {
-      final construct = constructs[idMap[token]];
-      final lastUsed = construct?.lastUseByTypes(activityType.associatedUseTypes);
-
-      final daysSinceLastUsed = lastUsed == null ? 20 : DateTime.now().difference(lastUsed).inDays;
-
-      scores[token] = daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 7);
+      final id = idMap[token]!;
+      scores[token] =
+          constructs[id]?.practiceScore(activityType: activityType) ?? ConstructUses.unseenPracticeScore(id);
     }
     return scores;
   }
