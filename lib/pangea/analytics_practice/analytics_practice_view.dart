@@ -149,6 +149,8 @@ class _AnalyticsActivityView extends StatelessWidget {
                     final isVocabType =
                         controller.widget.type == ConstructTypeEnum.vocab;
 
+                    final token = target.target.tokens.first;
+
                     return Column(
                       children: [
                         Text(
@@ -162,12 +164,11 @@ class _AnalyticsActivityView extends StatelessWidget {
                         ),
                         if (isVocabType && !isAudioActivity)
                           PhoneticTranscriptionWidget(
-                            text: target
-                                .target
-                                .tokens
-                                .first
-                                .vocabConstructID
-                                .lemma,
+                            text: token.vocabConstructID.lemma,
+                            pos: token.pos,
+                            morph: token.morph.map(
+                              (k, v) => MapEntry(k.name, v),
+                            ),
                             textLanguage: MatrixState
                                 .pangeaController
                                 .userController
