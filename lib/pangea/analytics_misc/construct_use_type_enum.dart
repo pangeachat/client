@@ -462,6 +462,50 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return null;
     }
   }
+
+  /// Whether this use type represents direct chat production (wa, ga, ta).
+  bool get isChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this chat use involved assistance (ga = IGC, ta = IT).
+  bool get isAssistedChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this is an incorrect answer in any practice activity.
+  bool get isIncorrectPractice {
+    switch (this) {
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.incGE:
+        return true;
+      default:
+        return false;
+    }
+  }
 }
 
 class ConstructUseTypeUtil {

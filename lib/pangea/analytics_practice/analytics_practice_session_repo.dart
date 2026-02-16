@@ -127,14 +127,16 @@ class AnalyticsPracticeSessionRepo {
         .getAggregatedConstructs(ConstructTypeEnum.vocab, language)
         .then((map) => map.values.toList());
 
-    // sort by last used descending, nulls first
+    // Score and sort by priority (highest first). Uses shared scorer for
+    // consistent prioritization with message practice.
     constructs.sort((a, b) {
-      final dateA = a.lastUsed;
-      final dateB = b.lastUsed;
-      if (dateA == null && dateB == null) return 0;
-      if (dateA == null) return -1;
-      if (dateB == null) return 1;
-      return dateA.compareTo(dateB);
+      final scoreA = a.practiceScore(
+        activityType: ActivityTypeEnum.lemmaMeaning,
+      );
+      final scoreB = b.practiceScore(
+        activityType: ActivityTypeEnum.lemmaMeaning,
+      );
+      return scoreB.compareTo(scoreA);
     });
 
     final Set<String> seemLemmas = {};
@@ -162,14 +164,12 @@ class AnalyticsPracticeSessionRepo {
         .getAggregatedConstructs(ConstructTypeEnum.vocab, language)
         .then((map) => map.values.toList());
 
-    // sort by last used descending, nulls first
+    // Score and sort by priority (highest first). Uses shared scorer for
+    // consistent prioritization with message practice.
     constructs.sort((a, b) {
-      final dateA = a.lastUsed;
-      final dateB = b.lastUsed;
-      if (dateA == null && dateB == null) return 0;
-      if (dateA == null) return -1;
-      if (dateB == null) return 1;
-      return dateA.compareTo(dateB);
+      final scoreA = a.practiceScore(activityType: ActivityTypeEnum.lemmaAudio);
+      final scoreB = b.practiceScore(activityType: ActivityTypeEnum.lemmaAudio);
+      return scoreB.compareTo(scoreA);
     });
 
     final Set<String> seenLemmas = {};
@@ -246,14 +246,16 @@ class AnalyticsPracticeSessionRepo {
       }
     }
 
-    // sort by last used descending, nulls first
+    // Score and sort by priority (highest first). Uses shared scorer for
+    // consistent prioritization with message practice.
     constructs.sort((a, b) {
-      final dateA = a.lastUsed;
-      final dateB = b.lastUsed;
-      if (dateA == null && dateB == null) return 0;
-      if (dateA == null) return -1;
-      if (dateB == null) return 1;
-      return dateA.compareTo(dateB);
+      final scoreA = a.practiceScore(
+        activityType: ActivityTypeEnum.grammarCategory,
+      );
+      final scoreB = b.practiceScore(
+        activityType: ActivityTypeEnum.grammarCategory,
+      );
+      return scoreB.compareTo(scoreA);
     });
 
     final targets = <MorphPracticeTarget>[];

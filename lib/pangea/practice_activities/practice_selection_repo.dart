@@ -239,17 +239,10 @@ class PracticeSelectionRepo {
         .getConstructUses(ids, language);
 
     for (final token in tokens) {
-      final construct = constructs[idMap[token]];
-      final lastUsed = construct?.lastUseByTypes(
-        activityType.associatedUseTypes,
-      );
-
-      final daysSinceLastUsed = lastUsed == null
-          ? 20
-          : DateTime.now().difference(lastUsed).inDays;
-
+      final id = idMap[token]!;
       scores[token] =
-          daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 7);
+          constructs[id]?.practiceScore(activityType: activityType) ??
+          id.unseenPracticeScore;
     }
     return scores;
   }
