@@ -5347,5 +5347,21 @@
   "emailVerificationFailed": "Email verification failed. Please try again.",
   "unlockLearningTools": "Unlock learning tools",
   "unlockPracticeActivities": "Unlock practice activities",
-  "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker."
+  "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
+  "getStarted": "Get started",
+  "shareYourHobbies": "Share your hobbies",
+  "learnALanguage": "Learn a language",
+  "whileTextingYourFriends": "while texting your friends!",
+  "writeAndSpeakWorryFree": "Write and speak worry-free with",
+  "pangeaBotAtAnyTime": "Pangea Bot at anytime, anywhere!",
+  "pangeaBot": "Pangea Bot",
+  "startYourOwn": "Start your own",
+  "joinLearningCommunities": "Join international learning communities or...",
+  "playConversationGames": "Play conversation games with the bot, classmates, and new friends!",
+  "guessMyHometown": "Guess My Hometown",
+  "jumpIntoConversation": "Jump into conversation from Day One",
+  "withAIWritingTools": "with AI writing tools!",
+  "languageExchange": "Language exchange",
+  "playPersonalizedGames": "Play practice games personalized to your",
+  "vocabAndGrammarNeeds": "vocabulary and grammar needs!"
 }

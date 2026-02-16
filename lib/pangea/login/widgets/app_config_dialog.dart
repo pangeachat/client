@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/theme_builder.dart';
 
 class AppConfigDialog extends StatefulWidget {
   final List<AppConfigOverride> overrides;
@@ -19,6 +20,22 @@ class AppConfigDialogState extends State<AppConfigDialog> {
   void initState() {
     super.initState();
     selectedOverride = Environment.appConfigOverride;
+  }
+
+  void switchTheme(ThemeMode? newTheme) {
+    if (newTheme == null) return;
+    switch (newTheme) {
+      case ThemeMode.light:
+        ThemeController.of(context).setThemeMode(ThemeMode.light);
+        break;
+      case ThemeMode.dark:
+        ThemeController.of(context).setThemeMode(ThemeMode.dark);
+        break;
+      case ThemeMode.system:
+        ThemeController.of(context).setThemeMode(ThemeMode.system);
+        break;
+    }
+    setState(() {});
   }
 
   @override
@@ -47,6 +64,31 @@ class AppConfigDialogState extends State<AppConfigDialog> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SegmentedButton<ThemeMode>(
+                      selected: {ThemeController.of(context).themeMode},
+                      onSelectionChanged: (selected) =>
+                          switchTheme(selected.single),
+                      segments: [
+                        ButtonSegment(
+                          value: ThemeMode.light,
+                          label: Text(L10n.of(context).lightTheme),
+                          icon: const Icon(Icons.light_mode_outlined),
+                        ),
+                        ButtonSegment(
+                          value: ThemeMode.dark,
+                          label: Text(L10n.of(context).darkTheme),
+                          icon: const Icon(Icons.dark_mode_outlined),
+                        ),
+                        ButtonSegment(
+                          value: ThemeMode.system,
+                          label: Text(L10n.of(context).systemTheme),
+                          icon: const Icon(Icons.auto_mode_outlined),
+                        ),
+                      ],
+                    ),
+                  ),
                   ...widget.overrides.map((override) {
                     return RadioListTile<AppConfigOverride?>.adaptive(
                       title: Text(
