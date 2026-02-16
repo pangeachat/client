@@ -51,7 +51,8 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
           onFieldSubmitted: _feedbackController.text.isNotEmpty
               ? (value) => widget.onSubmit(value)
               : null,
-          maxLines: null,
+          minLines: 1,
+          maxLines: 5,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
         ),
       ],
