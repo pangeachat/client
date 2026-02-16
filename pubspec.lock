@@ -1480,8 +1480,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: merge-upstream-2
-      resolved-ref: e7f56e4906e691ab1a5da56075b4bce045ad672a
+      ref: HEAD
+      resolved-ref: d056aee23c2aa1f8e6d77efbc5866a809c3507bd
       url: "https://github.com/pangeachat/matrix-dart-sdk.git"
     source: git
     version: "4.1.0"
