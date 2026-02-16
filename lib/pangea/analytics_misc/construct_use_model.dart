@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -143,20 +144,6 @@ class ConstructUses {
   DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
       _uses.lastWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
 
-  // ── Practice scoring ──────────────────────────────────────────────────
-
-  /// Default days-since-last-used when a construct has never been practiced.
-  static const int defaultDaysSinceLastUsed = 20;
-
-  /// Multiplier for content words (nouns, verbs, adjectives).
-  static const int contentWordMultiplier = 10;
-
-  /// Multiplier for function words (articles, prepositions).
-  static const int functionWordMultiplier = 7;
-
-  /// Bonus multiplier applied to active-tier constructs.
-  static const int activeTierMultiplier = 2;
-
   /// Compute priority score for this construct.
   ///
   /// Higher score = higher priority (should be practiced sooner).
@@ -166,7 +153,8 @@ class ConstructUses {
   /// activity's specific use types (e.g., corPA/incPA for wordMeaning).
   /// Otherwise, aggregate recency across all use types is used.
   int practiceScore({ActivityTypeEnum? activityType}) {
-    if (practiceTier == PracticeTier.suppressed) return 0;
+    final tier = practiceTier;
+    if (tier == PracticeTier.suppressed) return 0;
 
     // Per-activity-type recency when available, otherwise aggregate.
     final DateTime? lastUsedDate = activityType != null
@@ -174,26 +162,20 @@ class ConstructUses {
         : lastUsed;
 
     final daysSince = lastUsedDate == null
-        ? defaultDaysSinceLastUsed
+        ? AnalyticsConstants.defaultDaysSinceLastUsed
         : DateTime.now().difference(lastUsedDate).inDays;
 
     final wordMultiplier = id.isContentWord
-        ? contentWordMultiplier
-        : functionWordMultiplier;
+        ? AnalyticsConstants.contentWordMultiplier
+        : AnalyticsConstants.functionWordMultiplier;
 
     var score = daysSince * wordMultiplier;
 
-    if (practiceTier == PracticeTier.active) {
-      score *= activeTierMultiplier;
+    if (tier == PracticeTier.active) {
+      score *= AnalyticsConstants.activeTierMultiplier;
     }
 
     return score;
-  }
-
-  /// Score for a construct that has never been seen (no use history).
-  static int unseenPracticeScore(ConstructIdentifier id) {
-    return defaultDaysSinceLastUsed *
-        (id.isContentWord ? contentWordMultiplier : functionWordMultiplier);
   }
 
   Map<String, dynamic> toJson() {

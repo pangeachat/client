@@ -1,6 +1,5 @@
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -243,7 +242,7 @@ class PracticeSelectionRepo {
       final id = idMap[token]!;
       scores[token] =
           constructs[id]?.practiceScore(activityType: activityType) ??
-          ConstructUses.unseenPracticeScore(id);
+          id.unseenPracticeScore;
     }
     return scores;
   }

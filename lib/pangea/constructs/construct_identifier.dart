@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
@@ -182,4 +183,11 @@ class ConstructIdentifier {
     text: PangeaTokenText.fromString(lemma),
     morph: {},
   );
+
+  /// Score for a construct that has never been seen (no use history).
+  int get unseenPracticeScore =>
+      AnalyticsConstants.defaultDaysSinceLastUsed *
+      (isContentWord
+          ? AnalyticsConstants.contentWordMultiplier
+          : AnalyticsConstants.functionWordMultiplier);
 }

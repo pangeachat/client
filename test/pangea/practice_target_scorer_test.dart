@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 
@@ -83,7 +84,7 @@ void main() {
     test('null uses treated as maintenance by scorer', () {
       // null has no .practiceTier — scorer handles it
       final id = _makeId(category: 'verb');
-      final score = ConstructUses.unseenPracticeScore(id);
+      final score = id.unseenPracticeScore;
       expect(score, greaterThan(0)); // maintenance, not suppressed
     });
 
@@ -219,7 +220,7 @@ void main() {
       'null uses (never seen) returns default days × content multiplier',
       () {
         final contentId = _makeId(category: 'verb');
-        final score = ConstructUses.unseenPracticeScore(contentId);
+        final score = contentId.unseenPracticeScore;
         // 20 days × 10 (content word) = 200
         expect(score, 200);
       },
@@ -229,7 +230,7 @@ void main() {
       'null uses with function word → default days × function multiplier',
       () {
         final funcId = _makeId(category: 'det');
-        final score = ConstructUses.unseenPracticeScore(funcId);
+        final score = funcId.unseenPracticeScore;
         // 20 days × 7 (function word) = 140
         expect(score, 140);
       },
@@ -365,7 +366,7 @@ void main() {
         _makeUse(ConstructUseTypeEnum.wa),
       ]);
 
-      final neverSeenScore = ConstructUses.unseenPracticeScore(id);
+      final neverSeenScore = id.unseenPracticeScore;
       final suppressedScore = suppressedUses.practiceScore();
 
       expect(suppressedScore, 0);
