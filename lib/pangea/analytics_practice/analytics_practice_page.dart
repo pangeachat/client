@@ -253,9 +253,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     } else {
       return;
     }
+
+    final token = activityTarget.value!.target.tokens.first;
     TtsController.tryToSpeak(
-      activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
+      token.vocabConstructID.lemma,
       langCode: _l2!.langCode,
+      pos: token.pos,
+      morph: token.morph.map((k, v) => MapEntry(k.name, v)),
     );
   }
 

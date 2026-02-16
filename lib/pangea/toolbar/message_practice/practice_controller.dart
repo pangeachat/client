@@ -241,6 +241,8 @@ class PracticeController with ChangeNotifier {
       TtsController.tryToSpeak(
         token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+        pos: token.pos,
+        morph: token.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
 

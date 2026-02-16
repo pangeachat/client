@@ -18,7 +18,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final LanguageModel textLanguage;
 
   /// POS tag for disambiguation (from PangeaToken, e.g. "VERB").
-  final String? pos;
+  final String pos;
 
   /// Morph features for disambiguation (from PangeaToken).
   final Map<String, String>? morph;
@@ -35,7 +35,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     super.key,
     required this.text,
     required this.textLanguage,
-    this.pos,
+    required this.pos,
     this.morph,
     this.style,
     this.iconSize,

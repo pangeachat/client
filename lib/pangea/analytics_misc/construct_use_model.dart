@@ -84,9 +84,6 @@ class ConstructUses {
     _ => ConstructLevelEnum.flowers,
   };
 
-  List<String> get forms =>
-      _uses.map((e) => e.form).whereType<String>().toSet().toList();
-
   List<OneConstructUse> get cappedUses {
     final result = <OneConstructUse>[];
     var totalXp = 0;
