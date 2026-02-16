@@ -14,7 +14,6 @@ import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
-import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -36,11 +35,12 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       data: requestData,
     );
 
-    final TokenInfoFeedbackResponse response =
-        await TokenInfoFeedbackRepo.submitFeedback(request);
-
+    final response = await TokenInfoFeedbackRepo.submitFeedback(request);
     final originalToken = requestData.tokens[requestData.selectedToken];
-    final token = response.updatedToken ?? originalToken;
+    final token =
+        response.updatedTokens?[requestData.selectedToken] ??
+        response.updatedToken ??
+        originalToken;
 
     // first, update lemma info if changed
     if (response.updatedLemmaInfo != null) {
@@ -55,7 +55,8 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     final originalSent = event?.originalSent;
 
     // if no other changes, just return the message
-    final hasTokenUpdate = response.updatedToken != null;
+    final hasTokenUpdate =
+        response.updatedTokens != null || response.updatedToken != null;
     final hasLangUpdate =
         originalSent != null &&
         response.updatedLanguage != null &&
@@ -66,8 +67,10 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     }
 
     // update the tokens to be sent in the message edit
-    final tokens = List<PangeaToken>.from(requestData.tokens);
-    if (hasTokenUpdate) {
+    List<PangeaToken> tokens = List<PangeaToken>.from(requestData.tokens);
+    if (response.updatedTokens != null) {
+      tokens = response.updatedTokens!;
+    } else if (response.updatedToken != null) {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
