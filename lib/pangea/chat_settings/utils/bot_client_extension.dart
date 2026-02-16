@@ -153,9 +153,7 @@ extension BotClientExtension on Client {
       onError: (e, s) => ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'userSettings': userSettings.toJson(),
-        },
+        data: {'userSettings': userSettings.toJson()},
       ),
     );
   }
