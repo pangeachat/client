@@ -1,9 +1,10 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/user/user_model.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   // ---------------------------------------------------------------------------
@@ -27,7 +28,11 @@ void main() {
         userGenders: const {userId: GenderEnum.woman},
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNull);
     });
@@ -40,7 +45,11 @@ void main() {
         userGenders: const {userId: GenderEnum.woman},
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.targetLanguage, 'es');
@@ -57,7 +66,11 @@ void main() {
         userGenders: const {userId: GenderEnum.woman},
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.languageLevel, LanguageLevelTypeEnum.b1);
@@ -71,7 +84,11 @@ void main() {
         userGenders: const {userId: GenderEnum.woman},
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.targetVoice, 'voice_1');
@@ -85,14 +102,22 @@ void main() {
         userGenders: const {userId: GenderEnum.man},
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.userGenders[userId], GenderEnum.woman);
     });
 
     test('defaults to empty BotOptionsModel when currentOptions is null', () {
-      final result = buildUpdatedBotOptions(currentOptions: null, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: null,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.targetLanguage, 'es');
@@ -106,10 +131,17 @@ void main() {
         targetLanguage: 'fr', // different → triggers update
         languageLevel: LanguageLevelTypeEnum.b1,
         targetVoice: 'voice_1',
-        userGenders: const {'@other:server': GenderEnum.man, userId: GenderEnum.woman},
+        userGenders: const {
+          '@other:server': GenderEnum.man,
+          userId: GenderEnum.woman,
+        },
       );
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: userId);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: userId,
+      );
 
       expect(result, isNotNull);
       expect(result!.userGenders['@other:server'], GenderEnum.man);
@@ -119,7 +151,11 @@ void main() {
     test('handles null userId gracefully', () {
       const currentOptions = BotOptionsModel(targetLanguage: 'fr');
 
-      final result = buildUpdatedBotOptions(currentOptions: currentOptions, userSettings: baseSettings, userId: null);
+      final result = buildUpdatedBotOptions(
+        currentOptions: currentOptions,
+        userSettings: baseSettings,
+        userId: null,
+      );
 
       expect(result, isNotNull);
       expect(result!.targetLanguage, 'es');
@@ -193,52 +229,58 @@ void main() {
       );
     });
 
-    test('remaining updates do NOT execute when priority update fails', () async {
-      final callLog = <String>[];
+    test(
+      'remaining updates do NOT execute when priority update fails',
+      () async {
+        final callLog = <String>[];
 
-      try {
+        try {
+          await applyBotOptionUpdatesInOrder(
+            priorityUpdate: () async {
+              throw Exception('DM failed');
+            },
+            remainingUpdates: [
+              () async {
+                callLog.add('room_a');
+              },
+            ],
+          );
+        } catch (_) {}
+
+        expect(callLog, isEmpty);
+      },
+    );
+
+    test(
+      'isolates errors in remaining updates and continues to next room',
+      () async {
+        final callLog = <String>[];
+        final errors = <Object>[];
+
         await applyBotOptionUpdatesInOrder(
           priorityUpdate: () async {
-            throw Exception('DM failed');
+            callLog.add('dm');
           },
           remainingUpdates: [
             () async {
               callLog.add('room_a');
             },
+            () async {
+              throw Exception('room_b failed');
+            },
+            () async {
+              callLog.add('room_c');
+            },
           ],
+          onError: (e, _) => errors.add(e),
         );
-      } catch (_) {}
 
-      expect(callLog, isEmpty);
-    });
-
-    test('isolates errors in remaining updates and continues to next room', () async {
-      final callLog = <String>[];
-      final errors = <Object>[];
-
-      await applyBotOptionUpdatesInOrder(
-        priorityUpdate: () async {
-          callLog.add('dm');
-        },
-        remainingUpdates: [
-          () async {
-            callLog.add('room_a');
-          },
-          () async {
-            throw Exception('room_b failed');
-          },
-          () async {
-            callLog.add('room_c');
-          },
-        ],
-        onError: (e, _) => errors.add(e),
-      );
-
-      // room_b's error didn't prevent room_c from running
-      expect(callLog, ['dm', 'room_a', 'room_c']);
-      expect(errors, hasLength(1));
-      expect(errors.first, isA<Exception>());
-    });
+        // room_b's error didn't prevent room_c from running
+        expect(callLog, ['dm', 'room_a', 'room_c']);
+        expect(errors, hasLength(1));
+        expect(errors.first, isA<Exception>());
+      },
+    );
 
     test('works correctly when priority update is null', () async {
       final callLog = <String>[];
@@ -273,7 +315,10 @@ void main() {
 
     test('handles all null / empty gracefully', () async {
       // Should complete without error
-      await applyBotOptionUpdatesInOrder(priorityUpdate: null, remainingUpdates: []);
+      await applyBotOptionUpdatesInOrder(
+        priorityUpdate: null,
+        remainingUpdates: [],
+      );
     });
 
     test('multiple remaining errors are all reported', () async {

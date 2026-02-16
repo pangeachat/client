@@ -1,10 +1,11 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 /// Helper to create a [OneConstructUse] with minimal required fields.
 OneConstructUse _makeUse(
@@ -18,7 +19,10 @@ OneConstructUse _makeUse(
     useType: type,
     lemma: lemma,
     constructType: ConstructTypeEnum.vocab,
-    metadata: ConstructUseMetaData(roomId: null, timeStamp: time ?? DateTime.now()),
+    metadata: ConstructUseMetaData(
+      roomId: null,
+      timeStamp: time ?? DateTime.now(),
+    ),
     category: category,
     form: lemma,
     xp: xp ?? type.pointValue,
@@ -26,12 +30,25 @@ OneConstructUse _makeUse(
 }
 
 /// Helper to create a [ConstructUses] wrapper.
-ConstructUses _makeConstructUses(List<OneConstructUse> uses, {String lemma = 'test', String category = 'verb'}) {
-  return ConstructUses(uses: uses, constructType: ConstructTypeEnum.vocab, lemma: lemma, category: category);
+ConstructUses _makeConstructUses(
+  List<OneConstructUse> uses, {
+  String lemma = 'test',
+  String category = 'verb',
+}) {
+  return ConstructUses(
+    uses: uses,
+    constructType: ConstructTypeEnum.vocab,
+    lemma: lemma,
+    category: category,
+  );
 }
 
 ConstructIdentifier _makeId({String lemma = 'test', String category = 'verb'}) {
-  return ConstructIdentifier(lemma: lemma, type: ConstructTypeEnum.vocab, category: category);
+  return ConstructIdentifier(
+    lemma: lemma,
+    type: ConstructTypeEnum.vocab,
+    category: category,
+  );
 }
 
 void main() {
@@ -83,9 +100,18 @@ void main() {
     test('wa then correct practice → suppressed (no incorrect)', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 5))),
-        _makeUse(ConstructUseTypeEnum.corLM, time: now.subtract(const Duration(days: 3))),
-        _makeUse(ConstructUseTypeEnum.corPA, time: now.subtract(const Duration(days: 1))),
+        _makeUse(
+          ConstructUseTypeEnum.wa,
+          time: now.subtract(const Duration(days: 5)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(days: 3)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corPA,
+          time: now.subtract(const Duration(days: 1)),
+        ),
       ]);
       expect(uses.practiceTier, PracticeTier.suppressed);
     });
@@ -93,8 +119,14 @@ void main() {
     test('wa then incorrect practice → active', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 5))),
-        _makeUse(ConstructUseTypeEnum.incLM, time: now.subtract(const Duration(days: 2))),
+        _makeUse(
+          ConstructUseTypeEnum.wa,
+          time: now.subtract(const Duration(days: 5)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(days: 2)),
+        ),
       ]);
       expect(uses.practiceTier, PracticeTier.active);
     });
@@ -112,8 +144,14 @@ void main() {
     test('ga then wa → suppressed (wa is most recent chat use)', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.ga, time: now.subtract(const Duration(days: 10))),
-        _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 1))),
+        _makeUse(
+          ConstructUseTypeEnum.ga,
+          time: now.subtract(const Duration(days: 10)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.wa,
+          time: now.subtract(const Duration(days: 1)),
+        ),
       ]);
       expect(uses.practiceTier, PracticeTier.suppressed);
     });
@@ -121,14 +159,23 @@ void main() {
     test('wa then ga → active (ga is most recent chat use)', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 10))),
-        _makeUse(ConstructUseTypeEnum.ga, time: now.subtract(const Duration(days: 1))),
+        _makeUse(
+          ConstructUseTypeEnum.wa,
+          time: now.subtract(const Duration(days: 10)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.ga,
+          time: now.subtract(const Duration(days: 1)),
+        ),
       ]);
       expect(uses.practiceTier, PracticeTier.active);
     });
 
     test('only correct practice (no chat uses) → maintenance', () {
-      final uses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.corPA), _makeUse(ConstructUseTypeEnum.corLM)]);
+      final uses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.corPA),
+        _makeUse(ConstructUseTypeEnum.corLM),
+      ]);
       expect(uses.practiceTier, PracticeTier.maintenance);
     });
 
@@ -145,9 +192,18 @@ void main() {
     test('wa → corPA → incLM → active (incorrect after wa)', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 10))),
-        _makeUse(ConstructUseTypeEnum.corPA, time: now.subtract(const Duration(days: 5))),
-        _makeUse(ConstructUseTypeEnum.incLM, time: now.subtract(const Duration(days: 1))),
+        _makeUse(
+          ConstructUseTypeEnum.wa,
+          time: now.subtract(const Duration(days: 10)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.corPA,
+          time: now.subtract(const Duration(days: 5)),
+        ),
+        _makeUse(
+          ConstructUseTypeEnum.incLM,
+          time: now.subtract(const Duration(days: 1)),
+        ),
       ]);
       expect(uses.practiceTier, PracticeTier.active);
     });
@@ -159,24 +215,34 @@ void main() {
       expect(uses.practiceScore(), 0);
     });
 
-    test('null uses (never seen) returns default days × content multiplier', () {
-      final contentId = _makeId(category: 'verb');
-      final score = ConstructUses.unseenPracticeScore(contentId);
-      // 20 days × 10 (content word) = 200
-      expect(score, 200);
-    });
+    test(
+      'null uses (never seen) returns default days × content multiplier',
+      () {
+        final contentId = _makeId(category: 'verb');
+        final score = ConstructUses.unseenPracticeScore(contentId);
+        // 20 days × 10 (content word) = 200
+        expect(score, 200);
+      },
+    );
 
-    test('null uses with function word → default days × function multiplier', () {
-      final funcId = _makeId(category: 'det');
-      final score = ConstructUses.unseenPracticeScore(funcId);
-      // 20 days × 7 (function word) = 140
-      expect(score, 140);
-    });
+    test(
+      'null uses with function word → default days × function multiplier',
+      () {
+        final funcId = _makeId(category: 'det');
+        final score = ConstructUses.unseenPracticeScore(funcId);
+        // 20 days × 7 (function word) = 140
+        expect(score, 140);
+      },
+    );
 
     test('active tier gets 2× multiplier', () {
       final now = DateTime.now();
-      final uses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.ga, time: now)]);
-      final score = uses.practiceScore(activityType: ActivityTypeEnum.lemmaMeaning);
+      final uses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.ga, time: now),
+      ]);
+      final score = uses.practiceScore(
+        activityType: ActivityTypeEnum.lemmaMeaning,
+      );
       // ga is most recent chat use → active tier.
       // No lemmaMeaning uses → defaults to 20 days.
       // 20 × 10 (content) × 2 (active) = 400.
@@ -185,8 +251,12 @@ void main() {
 
     test('maintenance tier, recent use → low score', () {
       final now = DateTime.now();
-      final uses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.corPA, time: now)]);
-      final score = uses.practiceScore(activityType: ActivityTypeEnum.wordMeaning);
+      final uses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.corPA, time: now),
+      ]);
+      final score = uses.practiceScore(
+        activityType: ActivityTypeEnum.wordMeaning,
+      );
       // corPA matches wordMeaning's associatedUseTypes.
       // 0 days × 10 (content) = 0. Maintenance (no chat uses).
       expect(score, 0);
@@ -195,20 +265,30 @@ void main() {
     test('per-activity-type recency filters correctly', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.corLM, time: now.subtract(const Duration(days: 1))),
+        _makeUse(
+          ConstructUseTypeEnum.corLM,
+          time: now.subtract(const Duration(days: 1)),
+        ),
         _makeUse(ConstructUseTypeEnum.corPA, time: now),
       ], category: 'noun');
       // Score for lemmaMeaning: corLM was 1 day ago → 1 × 10 = 10
-      final lmScore = uses.practiceScore(activityType: ActivityTypeEnum.lemmaMeaning);
+      final lmScore = uses.practiceScore(
+        activityType: ActivityTypeEnum.lemmaMeaning,
+      );
       // Score for wordMeaning: corPA was today → 0 × 10 = 0
-      final wmScore = uses.practiceScore(activityType: ActivityTypeEnum.wordMeaning);
+      final wmScore = uses.practiceScore(
+        activityType: ActivityTypeEnum.wordMeaning,
+      );
       expect(lmScore, greaterThan(wmScore));
     });
 
     test('no activityType uses aggregate lastUsed', () {
       final now = DateTime.now();
       final uses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.click, time: now.subtract(const Duration(days: 3))),
+        _makeUse(
+          ConstructUseTypeEnum.click,
+          time: now.subtract(const Duration(days: 3)),
+        ),
       ]);
       final score = uses.practiceScore();
       // No activityType → uses aggregate lastUsed (3 days ago).
@@ -223,10 +303,14 @@ void main() {
       final fiveDaysAgo = now.subtract(const Duration(days: 5));
 
       // Active: ga use 5 days ago
-      final activeUses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.ga, time: fiveDaysAgo)]);
+      final activeUses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.ga, time: fiveDaysAgo),
+      ]);
 
       // Maintenance: click 5 days ago (no chat use → maintenance)
-      final maintenanceUses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.click, time: fiveDaysAgo)]);
+      final maintenanceUses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.click, time: fiveDaysAgo),
+      ]);
 
       final activeScore = activeUses.practiceScore();
       final maintenanceScore = maintenanceUses.practiceScore();
@@ -241,7 +325,9 @@ void main() {
       final contentUses = _makeConstructUses([
         _makeUse(ConstructUseTypeEnum.click, time: threeDaysAgo),
       ], category: 'verb');
-      final funcUses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.click, time: threeDaysAgo)], category: 'det');
+      final funcUses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.click, time: threeDaysAgo),
+      ], category: 'det');
 
       final contentScore = contentUses.practiceScore();
       final funcScore = funcUses.practiceScore();
@@ -254,11 +340,17 @@ void main() {
       final now = DateTime.now();
 
       final oldUses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.click, time: now.subtract(const Duration(days: 10))),
+        _makeUse(
+          ConstructUseTypeEnum.click,
+          time: now.subtract(const Duration(days: 10)),
+        ),
       ], category: 'noun');
 
       final recentUses = _makeConstructUses([
-        _makeUse(ConstructUseTypeEnum.click, time: now.subtract(const Duration(days: 2))),
+        _makeUse(
+          ConstructUseTypeEnum.click,
+          time: now.subtract(const Duration(days: 2)),
+        ),
       ], category: 'noun');
 
       final oldScore = oldUses.practiceScore();
@@ -269,7 +361,9 @@ void main() {
 
     test('suppressed words always rank last (score 0)', () {
       final id = _makeId(category: 'verb');
-      final suppressedUses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.wa)]);
+      final suppressedUses = _makeConstructUses([
+        _makeUse(ConstructUseTypeEnum.wa),
+      ]);
 
       final neverSeenScore = ConstructUses.unseenPracticeScore(id);
       final suppressedScore = suppressedUses.practiceScore();
@@ -280,49 +374,80 @@ void main() {
   });
 
   group('design scenario from instructions', () {
-    test('full lifecycle: wa → suppressed, ta → active, inc → stays active, cors → maintenance', () {
-      final now = DateTime.now();
+    test(
+      'full lifecycle: wa → suppressed, ta → active, inc → stays active, cors → maintenance',
+      () {
+        final now = DateTime.now();
 
-      // Step 1: User types "gato" without assistance → wa → suppressed
-      final step1 = _makeConstructUses(
-        [_makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 20)), lemma: 'gato')],
-        lemma: 'gato',
-        category: 'noun',
-      );
-      expect(step1.practiceTier, PracticeTier.suppressed);
-      expect(step1.practiceScore(), 0);
+        // Step 1: User types "gato" without assistance → wa → suppressed
+        final step1 = _makeConstructUses(
+          [
+            _makeUse(
+              ConstructUseTypeEnum.wa,
+              time: now.subtract(const Duration(days: 20)),
+              lemma: 'gato',
+            ),
+          ],
+          lemma: 'gato',
+          category: 'noun',
+        );
+        expect(step1.practiceTier, PracticeTier.suppressed);
+        expect(step1.practiceScore(), 0);
 
-      // Step 2: User uses IT for "mariposa" → ta → active
-      final step2 = _makeConstructUses(
-        [_makeUse(ConstructUseTypeEnum.ta, time: now.subtract(const Duration(days: 15)), lemma: 'mariposa')],
-        lemma: 'mariposa',
-        category: 'noun',
-      );
-      expect(step2.practiceTier, PracticeTier.active);
-      expect(step2.practiceScore(), greaterThan(0));
+        // Step 2: User uses IT for "mariposa" → ta → active
+        final step2 = _makeConstructUses(
+          [
+            _makeUse(
+              ConstructUseTypeEnum.ta,
+              time: now.subtract(const Duration(days: 15)),
+              lemma: 'mariposa',
+            ),
+          ],
+          lemma: 'mariposa',
+          category: 'noun',
+        );
+        expect(step2.practiceTier, PracticeTier.active);
+        expect(step2.practiceScore(), greaterThan(0));
 
-      // Step 3: User gets "mariposa" wrong → incLM → stays active
-      final step3 = _makeConstructUses(
-        [
-          _makeUse(ConstructUseTypeEnum.ta, time: now.subtract(const Duration(days: 15)), lemma: 'mariposa'),
-          _makeUse(ConstructUseTypeEnum.incLM, time: now.subtract(const Duration(days: 10)), lemma: 'mariposa'),
-        ],
-        lemma: 'mariposa',
-        category: 'noun',
-      );
-      expect(step3.practiceTier, PracticeTier.active);
+        // Step 3: User gets "mariposa" wrong → incLM → stays active
+        final step3 = _makeConstructUses(
+          [
+            _makeUse(
+              ConstructUseTypeEnum.ta,
+              time: now.subtract(const Duration(days: 15)),
+              lemma: 'mariposa',
+            ),
+            _makeUse(
+              ConstructUseTypeEnum.incLM,
+              time: now.subtract(const Duration(days: 10)),
+              lemma: 'mariposa',
+            ),
+          ],
+          lemma: 'mariposa',
+          category: 'noun',
+        );
+        expect(step3.practiceTier, PracticeTier.active);
 
-      // Step 6: User misspells "gato" and IGC corrects → ga → moves from suppressed to active
-      final step6 = _makeConstructUses(
-        [
-          _makeUse(ConstructUseTypeEnum.wa, time: now.subtract(const Duration(days: 20)), lemma: 'gato'),
-          _makeUse(ConstructUseTypeEnum.ga, time: now.subtract(const Duration(days: 1)), lemma: 'gato'),
-        ],
-        lemma: 'gato',
-        category: 'noun',
-      );
-      expect(step6.practiceTier, PracticeTier.active);
-      expect(step6.practiceScore(), greaterThan(0));
-    });
+        // Step 6: User misspells "gato" and IGC corrects → ga → moves from suppressed to active
+        final step6 = _makeConstructUses(
+          [
+            _makeUse(
+              ConstructUseTypeEnum.wa,
+              time: now.subtract(const Duration(days: 20)),
+              lemma: 'gato',
+            ),
+            _makeUse(
+              ConstructUseTypeEnum.ga,
+              time: now.subtract(const Duration(days: 1)),
+              lemma: 'gato',
+            ),
+          ],
+          lemma: 'gato',
+          category: 'noun',
+        );
+        expect(step6.practiceTier, PracticeTier.active);
+        expect(step6.practiceScore(), greaterThan(0));
+      },
+    );
   });
 }

@@ -177,8 +177,9 @@ class ConstructUses {
         ? defaultDaysSinceLastUsed
         : DateTime.now().difference(lastUsedDate).inDays;
 
-    final wordMultiplier =
-        id.isContentWord ? contentWordMultiplier : functionWordMultiplier;
+    final wordMultiplier = id.isContentWord
+        ? contentWordMultiplier
+        : functionWordMultiplier;
 
     var score = daysSince * wordMultiplier;
 
