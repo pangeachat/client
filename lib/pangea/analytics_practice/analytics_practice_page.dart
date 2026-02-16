@@ -112,6 +112,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
   final Map<String, PangeaAudioFile> _audioFiles = {};
+  final Map<String, String> _audioTranslations = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
 
@@ -235,6 +236,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _queue.clear();
     _choiceTexts.clear();
     _choiceEmojis.clear();
+    _audioFiles.clear();
+    _audioTranslations.clear();
     activityState.value = const AsyncState.idle();
 
     AnalyticsPractice.bypassExitConfirmation = true;
@@ -461,7 +464,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   ) async {
     final eventId = activity.eventId;
     final roomId = activity.roomId;
-
     if (eventId == null || roomId == null) {
       throw L10n.of(context).oopsSomethingWentWrong;
     }
@@ -489,14 +491,21 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activity.langCode,
       MatrixState.pangeaController.userController.voice,
     );
-
-    // Store the audio file with the eventId as key
+    // Prefetch the translation
+    final translation = await pangeaEvent.requestRespresentationByL1();
     _audioFiles[eventId] = audioFile;
+    _audioTranslations[eventId] = translation;
   }
 
   PangeaAudioFile? getAudioFile(String? eventId) {
     if (eventId == null) return null;
     return _audioFiles[eventId];
+  }
+
+  String? getAudioTranslation(String? eventId) {
+    if (eventId == null) return null;
+    final translation = _audioTranslations[eventId];
+    return translation;
   }
 
   Future<void> _fetchLemmaInfo(
@@ -547,12 +556,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     ], _l2!.langCodeShort);
   }
 
-  void onHintPressed() {
-    if (hintsUsedNotifier.value >= maxHints) return;
-    if (!hintPressedNotifier.value) {
-      hintsUsedNotifier.value++;
+  void onHintPressed({bool increment = true}) {
+    if (increment) {
+      if (hintsUsedNotifier.value >= maxHints) return;
+      if (!hintPressedNotifier.value) {
+        hintsUsedNotifier.value++;
+      }
     }
-    hintPressedNotifier.value = true;
+    hintPressedNotifier.value = !hintPressedNotifier.value;
   }
 
   Future<void> onAudioContinuePressed() async {
