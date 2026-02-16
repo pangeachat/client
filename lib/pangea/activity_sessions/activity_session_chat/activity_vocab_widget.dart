@@ -228,6 +228,7 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         category: widget.v.pos,
       ),
       langCode: widget.langCode,
+      pos: widget.v.pos,
       onClose: () {
         MatrixState.pAnyState.closeOverlay(widget.target);
         widget.onClose();

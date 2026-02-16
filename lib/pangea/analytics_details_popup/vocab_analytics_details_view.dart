@@ -55,7 +55,14 @@ class VocabDetailsView extends StatelessWidget {
             ? level.color(context)
             : level.darkColor(context));
 
-        final forms = construct?.forms ?? [];
+        final forms =
+            construct?.uses
+                .where((u) => u.form != null)
+                .map((use) => _VocabForm(use.form!, use.category))
+                .toSet()
+                .toList() ??
+            [];
+
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
         final token = PangeaToken(
           text: tokenText,
@@ -154,7 +161,7 @@ class VocabDetailsView extends StatelessWidget {
 
 class _VocabForms extends StatelessWidget {
   final String lemma;
-  final List<String> forms;
+  final List<_VocabForm> forms;
   final Color textColor;
 
   const _VocabForms({
@@ -184,11 +191,12 @@ class _VocabForms extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 WordTextWithAudioButton(
-                  text: form,
+                  text: form.form,
+                  pos: form.pos,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyLarge?.copyWith(color: textColor),
-                  uniqueID: "$form-$lemma-$i",
+                  uniqueID: "${form.form}-$lemma-$i",
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                 ),
@@ -200,4 +208,22 @@ class _VocabForms extends StatelessWidget {
       ),
     );
   }
+}
+
+class _VocabForm {
+  final String form;
+  final String pos;
+
+  const _VocabForm(this.form, this.pos);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is _VocabForm &&
+          runtimeType == other.runtimeType &&
+          form.toLowerCase() == other.form.toLowerCase() &&
+          pos == other.pos;
+
+  @override
+  int get hashCode => form.toLowerCase().hashCode ^ pos.hashCode;
 }

@@ -8,6 +8,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordAudioButton extends StatefulWidget {
   final String text;
+  final String pos;
+  final Map<String, String>? morph;
+
   final bool isSelected;
   final double baseOpacity;
   final String uniqueID;
@@ -23,6 +26,8 @@ class WordAudioButton extends StatefulWidget {
     required this.text,
     required this.uniqueID,
     required this.langCode,
+    required this.pos,
+    this.morph,
     this.isSelected = false,
     this.baseOpacity = 1,
     this.callbackOverride,
@@ -94,6 +99,8 @@ class WordAudioButtonState extends State<WordAudioButton> {
                         context: context,
                         targetID: 'word-audio-button-${widget.uniqueID}',
                         langCode: widget.langCode,
+                        pos: widget.pos,
+                        morph: widget.morph,
                         onStart: () {
                           if (mounted) {
                             setState(() => _isPlaying = true);
