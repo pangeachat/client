@@ -1,4 +1,4 @@
-Check the relevant `.github/instructions/` doc before and after coding. If it doesn't exist, create it with the user first.
+Check the relevant `.github/instructions/` doc before and after coding. If it doesn't exist, create it with the user first. Follow [instructions-authoring.instructions.md](../../.github/instructions/instructions-authoring.instructions.md) for doc standards.
 
 # client - Flutter/Dart Language Learning Chat App
 
