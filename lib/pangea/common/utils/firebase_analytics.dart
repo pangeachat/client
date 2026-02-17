@@ -135,6 +135,10 @@ class GoogleAnalytics {
     );
   }
 
+  static void failUpdateNotificationBadge() {
+    logEvent('fail_update_notification_badge');
+  }
+
   static FirebaseAnalyticsObserver getAnalyticsObserver() {
     if (analytics == null) {
       throw Exception("Firebase Analytics not initialized");
