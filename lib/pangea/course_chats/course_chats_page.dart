@@ -260,6 +260,7 @@ class CourseChatsController extends State<CourseChats>
   }) async {
     // Load all of the space's state events. Space Child events
     // are used to filtering out unsuggested, unjoined rooms.
+    final requestSpaceId = widget.roomId;
     await activeSpace.postLoad();
 
     // The current number of rooms loaded for this space that are visible in the UI
@@ -299,6 +300,12 @@ class CourseChatsController extends State<CourseChats>
         from: currentNextBatch,
         limit: 100,
       );
+
+      if (widget.roomId != requestSpaceId) {
+        // The user has navigated to a different space since this call was made, so we should discard the response and not update the state
+        return;
+      }
+
       callsToServer++;
 
       if (response.nextBatch == null) {
@@ -313,6 +320,11 @@ class CourseChatsController extends State<CourseChats>
       // and set the current next batch token
       currentHierarchy = _filterHierarchyResponse(activeSpace, response.rooms);
       currentNextBatch = response.nextBatch;
+    }
+
+    if (widget.roomId != requestSpaceId) {
+      // The user has navigated to a different space since the first call was made, so we should discard the response and not update the state
+      return;
     }
 
     discoveredChildren = currentHierarchy;
