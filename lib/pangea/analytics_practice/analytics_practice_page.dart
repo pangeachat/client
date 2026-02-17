@@ -617,11 +617,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       enableChoicesNotifier.value = false;
     }
 
-    // For audio activities, increment the correct answers counter
-    if (isCorrect && isAudioActivity) {
-      correctAnswersSelected.value++;
-    }
-
     // Update activity record
     // For audio activities, find the token that matches the clicked word
     final tokenForChoice = isAudioActivity
@@ -649,6 +644,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     // For audio activities, check if all correct answers have been clicked
     if (isAudioActivity) {
+      correctAnswersSelected.value++;
       final allAnswers = activity.multipleChoiceContent.answers;
       final allSelected = allAnswers.every(
         (answer) => _clickedChoices.contains(answer),
