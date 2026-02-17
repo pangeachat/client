@@ -620,11 +620,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activity,
     );
 
-    final use = activity.constructUse(choiceContent);
-    _sessionLoader.value!.submitAnswer(use);
+    final uses = activity.constructUses(choiceContent);
+    _sessionLoader.value!.submitAnswer(uses);
     await _analyticsService.updateService.addAnalytics(
       choiceTargetId(choiceContent),
-      [use],
+      uses,
       _l2!.langCodeShort,
     );
 
@@ -679,7 +679,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct, _l2!.langCodeShort),
-      Matrix.of(context).client,
     );
   }
 

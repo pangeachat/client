@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// Internal result class that holds all computed data from building an example message.
 class _ExampleMessageResult {
@@ -37,14 +38,12 @@ class _ExampleMessageResult {
 
 class ExampleMessageUtil {
   static Future<List<InlineSpan>?> getExampleMessage(
-    ConstructUses construct,
-    Client client, {
+    ConstructUses construct, {
     String? form,
     bool noBold = false,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
-      client,
       form: form,
       noBold: noBold,
     );
@@ -52,14 +51,12 @@ class ExampleMessageUtil {
   }
 
   static Future<AudioExampleMessage?> getAudioExampleMessage(
-    ConstructUses construct,
-    Client client, {
+    ConstructUses construct, {
     String? form,
     bool noBold = false,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
-      client,
       form: form,
       noBold: noBold,
     );
@@ -87,14 +84,13 @@ class ExampleMessageUtil {
   }
 
   static Future<_ExampleMessageResult?> _getExampleMessageResult(
-    ConstructUses construct,
-    Client client, {
+    ConstructUses construct, {
     String? form,
     bool noBold = false,
   }) async {
     for (final use in construct.cappedUses) {
       if (form != null && use.form != form) continue;
-
+      final client = MatrixState.pangeaController.matrixState.client;
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 
