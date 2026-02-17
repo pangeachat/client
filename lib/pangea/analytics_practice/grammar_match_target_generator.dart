@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/construct_practice_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
@@ -15,20 +16,14 @@ import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GrammarMatchTargetGenerator {
+  static ActivityTypeEnum activityType = ActivityTypeEnum.grammarCategory;
+
   static Future<List<AnalyticsActivityTarget>> get(
     List<ConstructUses> constructs,
   ) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
-    constructs.sort((a, b) {
-      final scoreA = a.practiceScore(
-        activityType: ActivityTypeEnum.grammarCategory,
-      );
-      final scoreB = b.practiceScore(
-        activityType: ActivityTypeEnum.grammarCategory,
-      );
-      return scoreB.compareTo(scoreA);
-    });
+    final sortedConstructs = constructs.practiceSort(activityType);
 
     final Set<String> seenForms = {};
 
@@ -44,7 +39,7 @@ class GrammarMatchTargetGenerator {
 
     final targets = <AnalyticsActivityTarget>[];
 
-    for (final construct in constructs) {
+    for (final construct in sortedConstructs) {
       if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
         break;
       }
@@ -88,7 +83,7 @@ class GrammarMatchTargetGenerator {
           AnalyticsActivityTarget(
             target: PracticeTarget(
               tokens: [token],
-              activityType: ActivityTypeEnum.grammarCategory,
+              activityType: activityType,
               morphFeature: feature,
             ),
             exampleMessage: ExampleMessageInfo(exampleMessage: exampleMessage),

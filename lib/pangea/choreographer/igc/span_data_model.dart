@@ -159,7 +159,7 @@ class SpanData {
   /// 1. The type is explicitly marked as auto-apply (e.g., punct, spell, cap, diacritics), OR
   /// 2. For backwards compatibility with old data that lacks new types:
   ///    the type is NOT auto-apply AND the normalized strings match.
-  bool isNormalizationError() {
+  bool isNormalizationError({String? errorSpanOverride}) {
     // New data with explicit auto-apply types
     if (type.isAutoApply) {
       return true;
@@ -175,7 +175,7 @@ class SpanData {
     return correctChoice != null &&
         l2Code != null &&
         normalizeString(correctChoice, l2Code) ==
-            normalizeString(errorSpan, l2Code);
+            normalizeString(errorSpanOverride ?? errorSpan, l2Code);
   }
 
   @override
