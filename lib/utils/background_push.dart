@@ -37,10 +37,12 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/main.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
+import 'package:fluffychat/widgets/local_notifications_extension.dart';
 import '../config/app_config.dart';
 import '../config/setting_keys.dart';
 import '../widgets/matrix.dart';
@@ -289,6 +291,10 @@ class BackgroundPush {
 
     // Workaround for app icon badge not updating
     if (Platform.isIOS) {
+      // #Pangea
+      final enabled = await matrix?.notificationsEnabled;
+      if (enabled != true) return;
+      // Pangea#
       final unreadCount = client.rooms
           .where((room) => room.isUnreadOrInvited && room.id != roomId)
           .length;
@@ -301,8 +307,8 @@ class BackgroundPush {
           FlutterNewBadger.setBadge(unreadCount);
         }
         // #Pangea
-      } catch (e, s) {
-        ErrorHandler.logError(data: {}, e: e, s: s);
+      } catch (e) {
+        GoogleAnalytics.failUpdateNotificationBadge();
       }
       // Pangea#
       return;
