@@ -935,25 +935,67 @@ class _AudioContinueButton extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        return ValueListenableBuilder(
-          valueListenable: controller.showingAudioCompletion,
-          builder: (context, showingCompletion, _) {
+        final totalAnswers = activity.multipleChoiceContent.answers.length;
+
+        return ListenableBuilder(
+          listenable: Listenable.merge([
+            controller.showingAudioCompletion,
+            controller.correctAnswersSelected,
+          ]),
+          builder: (context, _) {
+            final showingCompletion = controller.showingAudioCompletion.value;
+            final correctSelected = controller.correctAnswersSelected.value;
+
             return Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: showingCompletion
-                    ? controller.onAudioContinuePressed
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48.0,
-                    vertical: 16.0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8.0,
+                children: [
+                  // Progress ovals row
+                  SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          totalAnswers,
+                          (index) => Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                              child: Container(
+                                height: 16.0,
+                                decoration: BoxDecoration(
+                                  color: index < correctSelected
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Theme.of(context)
+                                            .colorScheme
+                                            .surfaceContainerHighest
+                                            .withValues(alpha: 0.7),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                child: Text(
-                  L10n.of(context).continueText,
-                  style: const TextStyle(fontSize: 18.0),
-                ),
+                  // Continue button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: showingCompletion
+                          ? controller.onAudioContinuePressed
+                          : null,
+                      child: Text(
+                        L10n.of(context).continueText,
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             );
           },

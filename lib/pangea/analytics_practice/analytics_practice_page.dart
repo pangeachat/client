@@ -109,6 +109,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<int> hintsUsedNotifier = ValueNotifier<int>(0);
   static const int maxHints = 5;
 
+  // Track number of correct answers selected for audio activities (for progress ovals)
+  final ValueNotifier<int> correctAnswersSelected = ValueNotifier<int>(0);
+
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
   final Map<String, PangeaAudioFile> _audioFiles = {};
@@ -141,6 +144,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     hintPressedNotifier.dispose();
     showingAudioCompletion.dispose();
     hintsUsedNotifier.dispose();
+    correctAnswersSelected.dispose();
     super.dispose();
   }
 
@@ -347,6 +351,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _continuing = true;
     enableChoicesNotifier.value = true;
     showingAudioCompletion.value = false;
+    correctAnswersSelected.value = 0;
 
     try {
       if (activityState.value
@@ -610,6 +615,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (isCorrect && !isAudioActivity) {
       // Non-audio activities disable choices after first correct answer
       enableChoicesNotifier.value = false;
+    }
+
+    // For audio activities, increment the correct answers counter
+    if (isCorrect && isAudioActivity) {
+      correctAnswersSelected.value++;
     }
 
     // Update activity record
