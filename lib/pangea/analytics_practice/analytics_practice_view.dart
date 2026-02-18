@@ -340,6 +340,7 @@ class _AudioCompletionWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: PhoneticTranscriptionWidget(
                           text: exampleText,
+                          pos: 'other',
                           textLanguage: MatrixState
                               .pangeaController
                               .userController
