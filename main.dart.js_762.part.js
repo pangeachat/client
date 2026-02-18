@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Atblokuoti mokymosi \u012frankius";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Atblokuoti praktikos veiklas";
     },
     get$managementSnackbarMessage() {
       return "Paleidome prenumeratos valdym\u0105 naujame skirtuke. Jei nemat\u0117te naujojo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
+    },
+    get$hideEvents() {
+      return "Sl\u0117pti renginius";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jMDNrW14oe1PKmHZW87G4i/LS2c="] = d.current;
+  d["1QbadU8vzIb7TZIyOQpWFYgUDSE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

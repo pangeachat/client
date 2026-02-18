@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Dezv\u0103luie instrumentele de \xeenv\u0103\u021bare";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Dezv\u0103luie activit\u0103\u021bile de practic\u0103";
     },
     get$managementSnackbarMessage() {
       return "Am lansat gestionarea abonamentelor \xeentr-o fil\u0103 nou\u0103. Dac\u0103 nu ai v\u0103zut fila nou\u0103, te rug\u0103m s\u0103 verifici blocatorul de feronerie.";
+    },
+    get$hideEvents() {
+      return "Ascunde evenimentele";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u/XNDSy6jyzuR56FuN5KmljptTw="] = d.current;
+  d["eYpp5QmLs2jeMihlq/wFEy2EgKE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_793.part.js.map

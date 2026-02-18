@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "L\xe5s opp l\xe6ringsverkt\xf8y";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "L\xe5s opp \xf8vingsaktiviteter";
     },
     get$managementSnackbarMessage() {
       return "Vi har lansert abonnementsh\xe5ndtering i en ny fane. Hvis du ikke s\xe5 den nye fanen, vennligst sjekk popup-blokkeren din.";
+    },
+    get$hideEvents() {
+      return "Skjul hendelser";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T3vqWzjhJR3lh+P26z2U+FdNVlA="] = d.current;
+  d["ztT88pk+LA3KDcO8eknGX+kTHUo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

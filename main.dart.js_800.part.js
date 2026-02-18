@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Odomkn\xfa\u0165 n\xe1stroje na u\u010denie";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Odomkn\xfa\u0165 cvi\u010debn\xe9 aktivity";
     },
     get$managementSnackbarMessage() {
       return "Spustili sme spr\xe1vu predplatn\xe9ho v novom okne. Ak ste nevideli nov\xe9 okno, skontrolujte pros\xedm svoj blok\xe1tor vyskakovac\xedch okien.";
+    },
+    get$hideEvents() {
+      return "Skry\u0165 udalosti";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["g1FPI8w+SXMYoeRa0Nowa0H/CFE="] = d.current;
+  d["2jeYP5DMqddkNDAGOrUs6qBLUyg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_800.part.js.map

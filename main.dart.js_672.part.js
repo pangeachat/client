@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Otklju\u010daj alate za u\u010denje";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Otklju\u010daj aktivnosti vje\u017ebanja";
     },
     get$managementSnackbarMessage() {
       return "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iska\u010du\u0107ih prozora.";
+    },
+    get$hideEvents() {
+      return "Sakrij doga\u0111aje";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/BaxdbmPqMUCl41sUzDU0T3wM7o="] = d.current;
+  d["Sp/aF09NFHqJGhbWslp34lzXHCo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

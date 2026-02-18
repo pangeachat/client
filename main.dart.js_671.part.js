@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0936\u093f\u0915\u094d\u0937\u0923 \u0909\u092a\u0915\u0930\u0923\u094b\u0902 \u0915\u094b \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0947\u0902";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "\u092a\u094d\u0930\u0948\u0915\u094d\u091f\u093f\u0938 \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u094b\u0902 \u0915\u094b \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0947\u0902";
     },
     get$managementSnackbarMessage() {
       return "\u0939\u092e\u0928\u0947 \u090f\u0915 \u0928\u090f \u091f\u0948\u092c \u092e\u0947\u0902 \u0938\u0926\u0938\u094d\u092f\u0924\u093e \u092a\u094d\u0930\u092c\u0902\u0927\u0928 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e \u0939\u0948\u0964 \u092f\u0926\u093f \u0906\u092a\u0928\u0947 \u0928\u092f\u093e \u091f\u0948\u092c \u0928\u0939\u0940\u0902 \u0926\u0947\u0916\u093e, \u0924\u094b \u0915\u0943\u092a\u092f\u093e \u0905\u092a\u0928\u0947 \u092a\u0949\u092a\u0905\u092a \u092c\u094d\u0932\u0949\u0915\u0930 \u0915\u0940 \u091c\u093e\u0902\u091a \u0915\u0930\u0947\u0902\u0964";
+    },
+    get$hideEvents() {
+      return "\u0907\u0935\u0947\u0902\u091f\u094d\u0938 \u091b\u093f\u092a\u093e\u090f\u0901";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dyqRtQUhzORNZrP0aXfnUQdVXiU="] = d.current;
+  d["O1H84BPBRgWaJCAG3p8KuHfmraU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_671.part.js.map

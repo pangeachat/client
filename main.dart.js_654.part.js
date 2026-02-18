@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "D\xedghlas na huirlis\xed foghlama";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "D\xedghlas gn\xedomha\xedochta\xed cleachtais";
     },
     get$managementSnackbarMessage() {
       return "Seoladh bainist\xedocht s\xednti\xfais i gcluais\xedn nua. M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
+    },
+    get$hideEvents() {
+      return "Folaigh imeachta\xed";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RYYZpU/FHX42GgfmHyRXEXMwuhY="] = d.current;
+  d["3pHS3kNLNu+M+X+HQdNpxcm69po="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

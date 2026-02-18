@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "O'qish vositalarini ochish";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Amaliyot faoliyatlarini ochish";
     },
     get$managementSnackbarMessage() {
       return "Biz obuna boshqaruvini yangi oynada ishga tushirdik. Agar siz yangi oynani ko'rmagan bo'lsangiz, iltimos, pop-up bloklovchingizni tekshiring.";
+    },
+    get$hideEvents() {
+      return "Voqealarni yashirish";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5591,7 +5594,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eWaXMobLdsnpA7e6z/gddunBLPI="] = d.current;
+  d["MGDxMLc7fJOEkRtLu/Hdvjpp5oU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

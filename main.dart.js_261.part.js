@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Odemknout n\xe1stroje pro u\u010den\xed";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Odemknout cvi\u010debn\xed aktivity";
     },
     get$managementSnackbarMessage() {
       return "Spustili jsme spr\xe1vu p\u0159edplatn\xe9ho v nov\xe9m okn\u011b. Pokud jste novou kartu nevid\u011bli, zkontrolujte pros\xedm sv\u016fj blok\xe1tor vyskakovac\xedch oken.";
+    },
+    get$hideEvents() {
+      return "Skr\xfdt ud\xe1losti";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lBAJX5O9fVy1aE4u/mk0uozKXvw="] = d.current;
+  d["6ph6omO4lsz4hFr/NF99iguBcHg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map

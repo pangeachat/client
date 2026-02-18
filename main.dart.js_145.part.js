@@ -5570,10 +5570,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0641\u062a\u062d \u0623\u062f\u0648\u0627\u062a \u0627\u0644\u062a\u0639\u0644\u0645";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "\u0641\u062a\u062d \u0623\u0646\u0634\u0637\u0629 \u0627\u0644\u0645\u0645\u0627\u0631\u0633\u0629";
     },
     get$managementSnackbarMessage() {
       return "\u0644\u0642\u062f \u0623\u0637\u0644\u0642\u0646\u0627 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0627\u0634\u062a\u0631\u0627\u0643\u0627\u062a \u0641\u064a \u0639\u0644\u0627\u0645\u0629 \u062a\u0628\u0648\u064a\u0628 \u062c\u062f\u064a\u062f\u0629. \u0625\u0630\u0627 \u0644\u0645 \u062a\u0631\u064e \u0639\u0644\u0627\u0645\u0629 \u0627\u0644\u062a\u0628\u0648\u064a\u0628 \u0627\u0644\u062c\u062f\u064a\u062f\u0629\u060c \u064a\u0631\u062c\u0649 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0645\u0627\u0646\u0639 \u0627\u0644\u0646\u0648\u0627\u0641\u0630 \u0627\u0644\u0645\u0646\u0628\u062b\u0642\u0629 \u0644\u062f\u064a\u0643.";
+    },
+    get$hideEvents() {
+      return "\u0625\u062e\u0641\u0627\u0621 \u0627\u0644\u0623\u062d\u062f\u0627\u062b";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5588,7 +5591,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HVzV6su3cAdgRmr801sz6RZLtCk="] = d.current;
+  d["5VD4V6hlyt8MPdl4o93jRvT5huw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_145.part.js.map

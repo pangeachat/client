@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ireki ikaskuntza tresnak";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Desblokeatu praktika jarduerak";
     },
     get$managementSnackbarMessage() {
       return "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.";
+    },
+    get$hideEvents() {
+      return "Ezkutatu ekitaldiak";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Zgiiaeoip6QS1q1edt8rgJ7cl2I="] = d.current;
+  d["KhURU8pjHRNjGvcIkFAhsEUXvgw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

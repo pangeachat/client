@@ -5576,6 +5576,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Mokhoro a thakhisa taolo ya ngwaga ka fa tabeng e ncha. Ha o ka se bone tab e ncha, ka kopo hlahloba blocker ya hao ya popup.";
     },
+    get$hideEvents() {
+      return "Hide events";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5601,7 +5604,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ODO0yVzOl22LPqY/9+ulRK7Cx9I="] = d.current;
+  d["fgP0E6G4kNoqj3/jY2ad0ibEt2w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

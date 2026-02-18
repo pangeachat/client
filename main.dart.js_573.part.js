@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Avage \xf5ppimisvahendid";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Avage harjutuste tegevused";
     },
     get$managementSnackbarMessage() {
       return "K\xe4ivitame tellimuse haldamise uues vahekaardis. Kui te ei n\xe4inud uut vahekaarti, palun kontrollige oma h\xfcpikakna blokeerijat.";
+    },
+    get$hideEvents() {
+      return "Peida \xfcritused";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WTTyv/Fn7gm3nsulFZgl1oachR8="] = d.current;
+  d["JNonwTYQ46XONd0jmmnmlTchsMQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

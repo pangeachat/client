@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tanul\xe1si eszk\xf6z\xf6k felold\xe1sa";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Gyakorlati tev\xe9kenys\xe9gek felold\xe1sa";
     },
     get$managementSnackbarMessage() {
       return "Elind\xedtottuk az el\u0151fizet\xe9skezel\xe9st egy \xfaj lapon. Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3ablak-blokkol\xf3dat.";
+    },
+    get$hideEvents() {
+      return "Esem\xe9nyek elrejt\xe9se";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5nEmH3LS3ISw7E8P8fa71xJzcCI="] = d.current;
+  d["9gE5Qkumtkw6SYNLmXv+iJkNBTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

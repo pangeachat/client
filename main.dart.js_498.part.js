@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malfermu lernilojn";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Mal\u015dlosi praktikajn aktivadojn";
     },
     get$managementSnackbarMessage() {
       return "Ni lan\u0109is abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.";
+    },
+    get$hideEvents() {
+      return "Ka\u015di eventojn";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7AIemke5vRq2JzU+uPHNqOsM3+c="] = d.current;
+  d["gHAOcr70LvcGqmAGS6oJBUsnKq0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

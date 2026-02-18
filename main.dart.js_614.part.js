@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Avaa oppimisty\xf6kalut";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "Avaa harjoitustoiminnot";
     },
     get$managementSnackbarMessage() {
       return "Julkaisimme tilauksen hallinnan uudessa v\xe4lilehdess\xe4. Jos et n\xe4hnyt uutta v\xe4lilehte\xe4, tarkista ponnahdusikkunoiden est\xe4j\xe4si.";
+    },
+    get$hideEvents() {
+      return "Piilota tapahtumat";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mhis+eXb9sCaVc9hENtH4Dq9e10="] = d.current;
+  d["K8pCvQ5ODyoxhjfHvKi0f/pHI7Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

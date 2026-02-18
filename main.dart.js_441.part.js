@@ -5574,6 +5574,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.";
     },
+    get$hideEvents() {
+      return "Hide events";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5587,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m2g+J0O397r1FgRV44MmTLSDQ2M="] = d.current;
+  d["sDJZJbW8Gwqo9zUuzn7BqQ9btYk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_441.part.js.map

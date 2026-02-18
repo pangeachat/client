@@ -5569,10 +5569,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lernwerkzeuge freischalten";
     },
     get$unlockPracticeActivities() {
-      return "Unlock practice activities";
+      return "\xdcbungen freischalten";
     },
     get$managementSnackbarMessage() {
       return "Wir haben das Abonnementmanagement in einem neuen Tab gestartet. Wenn Sie den neuen Tab nicht gesehen haben, \xfcberpr\xfcfen Sie bitte Ihren Popup-Blocker.";
+    },
+    get$hideEvents() {
+      return "Ereignisse ausblenden";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5590,7 +5593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MaeVt6x3i4N6/qbaNHebHVkiSNU="] = d.current;
+  d["3G0UMwpmN2xPKY8foDZJ/ajGIrw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_411.part.js.map
