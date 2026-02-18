@@ -8,43 +8,24 @@ Messages in Pangea carry rich metadata stored as Matrix events related to the ma
 
 ## Event Hierarchy for a Message
 
-When a user sends a message, the client creates a tree of related Matrix events:
+Custom events are either embedded within the content of the original `m.room.message` or stored as child events linked to the message. These include:
 
-```
-m.room.message (the chat message)
-├── pangea.representation        ← PangeaRepresentation (sent text + lang)
-│   ├── pangea.tokens            ← PangeaMessageTokens (tokenized text)
-│   └── pangea.record            ← ChoreoRecordModel (editing history)
-├── pangea.representation        ← (optional: L1 original if IT was used)
-│   └── pangea.tokens
-├── pangea.translation           ← Full-text translation
-├── pangea.activity_req          ← Request to generate practice activities
-├── pangea.activity_res          ← Generated practice activity
-├── pangea.activity_completion   ← User's activity completion record
-└── pangea.stt_translation       ← Speech-to-text translation
-```
+1. **PangeaRepresentation** (`pangea.representation`): Representation (either text or speech-to-text transcription) of the message. The original sent text and orignal written text can be embedded within the original message content. Subsequent representations are sent as child events.
+    
+    1. **Tokens** (`pangea.tokens`): Tokens in the message. Should be embedded in the original message content, unless an error occured
+    2. **ChoreoRecord** (`pangea.record`): Choreographer editing history for the message. Should be embedded in the original message content, if it exists.
+2. **TextToSpeech** (`pangea.text_to_speech`): Text-to-speech audio for the message, stored as a child event.
+3. **SpeechToText** (`pangea.translation`): Speech-to-text transcription of the message, usually embedded in original message contet, but can be sent as a child event of message.
+4. **SttTranslation** (`pangea.stt_translation`): Translation of speech-to-text transcription, stored as a child event.
 
-## Custom Event Types (`PangeaEventTypes`)
+## Other Custom Event Types (`PangeaEventTypes`)
 
 Defined in `lib/pangea/events/constants/pangea_event_types.dart`:
-
-### Message-related
-
-| Type | Constant | Purpose |
-|---|---|---|
-| `pangea.representation` | `representation` | A text representation with language code |
-| `pangea.tokens` | `tokens` | Tokenized text (lemmas, POS, morphology) |
-| `pangea.record` | `choreoRecord` | Choreographer editing history |
-| `pangea.translation` | `translation` | Full-text translation |
-| `pangea.stt_translation` | `sttTranslation` | Speech-to-text translation |
 
 ### Activities
 
 | Type | Constant | Purpose |
 |---|---|---|
-| `pangea.activity_req` | `activityRequest` | Request server to generate activities |
-| `pangea.activity_res` | `pangeaActivity` | A practice activity for a message |
-| `pangea.activity_completion` | `activityRecord` | Per-user activity completion record |
 | `pangea.activity_plan` | `activityPlan` | Activity plan definition |
 | `pangea.activity_roles` | `activityRole` | Roles in a structured activity |
 | `pangea.activity_summary` | `activitySummary` | Post-activity summary |
@@ -55,45 +36,20 @@ Defined in `lib/pangea/events/constants/pangea_event_types.dart`:
 |---|---|---|
 | `pangea.construct` | `construct` | A tracked learning construct |
 | `pangea.construct_summary` | `constructSummary` | Aggregate construct data |
-| `pangea.summaryAnalytics` | `summaryAnalytics` | Summary analytics data |
-| `pangea.analytics_profile` | `profileAnalytics` | User analytics profile |
-| `pangea.activities_profile` | `profileActivities` | User activities profile |
-| `pangea.analytics_settings` | `analyticsSettings` | Analytics display settings |
 | `p.user_lemma_info` | `userSetLemmaInfo` | User-customized lemma info |
 | `p.emoji` | `userChosenEmoji` | User-chosen emoji for a word |
+| `p.analytics_settings` | `analyticsSettings` | Analytics display settings |
+| `pangea.activity_room_ids` | `activityRoomIds` | List of saved activity room IDs |
 
 ### Room/Course Settings
 
 | Type | Constant | Purpose |
 |---|---|---|
-| `pangea.class` | `languageSettings` | Room language configuration |
-| `p.rules` | `rules` | Room rules |
-| `pangea.roomtopic` | `roomInfo` | Room topic info |
 | `pangea.bot_options` | `botOptions` | Bot behavior configuration |
 | `pangea.capacity` | `capacity` | Room capacity limit |
 | `pangea.course_plan` | `coursePlan` | Course plan reference |
-| `p.course_user` | `courseUser` | User's course enrollment |
 | `pangea.teacher_mode` | `teacherMode` | Teacher mode toggle |
-| `pangea.course_chat_list` | `courseChatList` | Course chat list |
-
-### Audio & Media
-
-| Type | Constant | Purpose |
-|---|---|---|
-| `p.audio` | `audio` | Audio attachment |
-| `pangea.transcript` | `transcript` | Audio transcript |
-| `p.rule.text_to_speech` | `textToSpeechRule` | TTS settings |
-
-### User & Misc
-
-| Type | Constant | Purpose |
-|---|---|---|
-| `pangea.user_age` | `userAge` | User age bracket |
-| `m.report` | `report` | Content report |
-| `p.rule.analytics_invite` | `analyticsInviteRule` | Analytics sharing rules |
-| `p.analytics_request` | `analyticsInviteContent` | Analytics sharing request |
-| `pangea.regeneration_request` | `regenerationRequest` | Content regeneration request |
-| `pangea.activity_room_ids` | `activityRoomIds` | Activity room references |
+| `pangea.course_chat_list` | `courseChatList` | Course chat list default chat settings |
 
 ## Core Data Models
 
