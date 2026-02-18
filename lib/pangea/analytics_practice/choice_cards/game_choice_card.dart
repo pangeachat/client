@@ -93,7 +93,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
       child: HoverBuilder(
         builder: (context, hovered) => SizedBox(
           width: widget.shrinkWrap ? null : double.infinity,
-          height: widget.height,
+          height: widget.shrinkWrap ? null : widget.height,
           child: GestureDetector(
             onTap: _handleTap,
             child: widget.shouldFlip
