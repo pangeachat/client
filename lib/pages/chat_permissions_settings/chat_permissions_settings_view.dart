@@ -54,7 +54,6 @@ class ChatPermissionsSettingsView extends StatelessWidget {
               PangeaEventTypes.activityRole,
               PangeaEventTypes.activitySummary,
               PangeaEventTypes.coursePlan,
-              PangeaEventTypes.courseUser,
             ];
 
             Map<String, dynamic> missingPowerLevels = Map<String, dynamic>.from(

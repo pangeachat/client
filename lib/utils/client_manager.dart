@@ -134,7 +134,6 @@ abstract class ClientManager {
         // to postLoad to confirm that these state events are completely loaded
         EventTypes.RoomPowerLevels,
         EventTypes.RoomJoinRules,
-        PangeaEventTypes.rules,
         PangeaEventTypes.botOptions,
         PangeaEventTypes.capacity,
         PangeaEventTypes.userSetLemmaInfo,
@@ -144,7 +143,6 @@ abstract class ClientManager {
         PangeaEventTypes.constructSummary,
         PangeaEventTypes.activityRoomIds,
         PangeaEventTypes.coursePlan,
-        PangeaEventTypes.courseUser,
         PangeaEventTypes.teacherMode,
         PangeaEventTypes.courseChatList,
         PangeaEventTypes.analyticsSettings,
