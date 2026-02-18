@@ -74,8 +74,6 @@ class PApiUrls {
       "${PApiUrls._choreoEndpoint}/token/feedback_v2";
 
   static String morphFeaturesAndTags = "${PApiUrls._choreoEndpoint}/morphs";
-  static String constructSummary =
-      "${PApiUrls._choreoEndpoint}/construct_summary";
 
   ///--------------------------- course translations ---------------------------
   static String getLocalizedCourse =

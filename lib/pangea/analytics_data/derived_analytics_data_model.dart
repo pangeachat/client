@@ -41,8 +41,7 @@ class DerivedAnalyticsDataModel {
     // XP from the inverse formula:
     final double xpDouble = (D / 8.0) * (2.0 * pow(lc - 1.0, 2.0) - 1.0);
 
-    // Floor or clamp to ensure non-negative.
-    final int xp = xpDouble.floor();
+    final int xp = xpDouble.ceil();
     return (xp < 0) ? 0 : xp;
   }
 
