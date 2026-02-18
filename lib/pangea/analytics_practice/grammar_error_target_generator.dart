@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_practice_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
@@ -20,16 +18,12 @@ class GrammarErrorTargetGenerator {
   static Future<List<AnalyticsActivityTarget>> get(
     List<ConstructUses> constructs,
   ) async {
-    // Score and sort by priority (highest first). Uses shared scorer for
-    // consistent prioritization with message practice.
-    final sortedConstructs = constructs.practiceSort(activityType);
-
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> seenEventIDs = {};
     final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final targets = <AnalyticsActivityTarget>[];
-    for (final construct in sortedConstructs) {
+    for (final construct in constructs) {
       final lastPracticeUse = construct.lastUseByTypes(
         activityType.associatedUseTypes,
       );
@@ -55,37 +49,30 @@ class GrammarErrorTargetGenerator {
             seenEventIDs[eventID] ?? await client.getEventByConstructUse(use);
 
         seenEventIDs[eventID] = event;
+      }
+    }
 
-        if (event == null) continue;
-        final eventTarget = await _getTargetFromEvent(event, construct.id);
-        if (eventTarget != null &&
-            !targets.any(
-              (t) =>
-                  t.grammarErrorInfo?.eventID ==
-                      eventTarget.grammarErrorInfo?.eventID &&
-                  t.grammarErrorInfo?.stepIndex ==
-                      eventTarget.grammarErrorInfo?.stepIndex,
-            )) {
-          targets.add(eventTarget);
-          if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
-            return targets;
-          }
-        }
+    final events = seenEventIDs.values.whereType<PangeaMessageEvent>();
+    for (final event in events) {
+      final eventTargets = await _getTargetFromEvent(event);
+      targets.addAll(eventTargets);
+      if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
+        return targets;
       }
     }
 
     return targets;
   }
 
-  static Future<AnalyticsActivityTarget?> _getTargetFromEvent(
+  static Future<List<AnalyticsActivityTarget>> _getTargetFromEvent(
     PangeaMessageEvent event,
-    ConstructIdentifier constructId,
   ) async {
+    final List<AnalyticsActivityTarget> targets = [];
     final l2Code =
         MatrixState.pangeaController.userController.userL2!.langCodeShort;
     final originalSent = event.originalSent;
     if (originalSent?.langCode.split("-").first != l2Code) {
-      return null;
+      return targets;
     }
 
     final choreo = originalSent?.choreo;
@@ -95,12 +82,12 @@ class GrammarErrorTargetGenerator {
               step.acceptedOrIgnoredMatch?.isGrammarMatch == true &&
               step.acceptedOrIgnoredMatch?.match.bestChoice != null,
         )) {
-      return null;
+      return targets;
     }
 
     final tokens = originalSent?.tokens;
     if (tokens == null || tokens.isEmpty) {
-      return null;
+      return targets;
     }
 
     String? translation;
@@ -136,10 +123,6 @@ class GrammarErrorTargetGenerator {
           )
           .toList();
 
-      if (!choiceTokens.any((t) => t.lemma.text == constructId.lemma)) {
-        continue;
-      }
-
       // Skip if no valid tokens found for this grammar error, or only one answer
       if (choiceTokens.isEmpty) {
         continue;
@@ -163,20 +146,22 @@ class GrammarErrorTargetGenerator {
         continue;
       }
 
-      return AnalyticsActivityTarget(
-        target: PracticeTarget(
-          tokens: choiceTokens,
-          activityType: activityType,
-        ),
-        grammarErrorInfo: GrammarErrorRequestInfo(
-          choreo: choreo,
-          stepIndex: i,
-          eventID: event.eventId,
-          translation: translation,
+      targets.add(
+        AnalyticsActivityTarget(
+          target: PracticeTarget(
+            tokens: choiceTokens,
+            activityType: activityType,
+          ),
+          grammarErrorInfo: GrammarErrorRequestInfo(
+            choreo: choreo,
+            stepIndex: i,
+            eventID: event.eventId,
+            translation: translation,
+          ),
         ),
       );
     }
 
-    return null;
+    return targets;
   }
 }
