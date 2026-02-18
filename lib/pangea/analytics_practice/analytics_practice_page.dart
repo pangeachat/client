@@ -500,6 +500,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activity.langCode,
       MatrixState.pangeaController.userController.voice,
     );
+
+    if (audioFile.duration == null || audioFile.duration! <= 2000) {
+      throw "Audio file too short";
+    }
+
     // Prefetch the translation
     final translation = await pangeaEvent.requestRespresentationByL1();
     _audioFiles[eventId] = audioFile;
