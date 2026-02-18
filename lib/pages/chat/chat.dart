@@ -1269,18 +1269,6 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (stt != null) {
-      // TODO: remove once stt_translation events are reparented to the
-      // audio event itself (see #5730 Part 2).
-      final event = await room.getEventById(eventId);
-      if (event != null) {
-        final messageEvent = PangeaMessageEvent(
-          event: event,
-          timeline: timeline!,
-          ownMessage: true,
-        );
-        messageEvent.sendSttRepresentationEvent(stt);
-      }
-
       _sendVoiceMessageAnalytics(eventId, stt);
     }
     // Pangea#
