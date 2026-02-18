@@ -25,7 +25,7 @@ class GrammarErrorTargetGenerator {
     final sortedConstructs = constructs.practiceSort(activityType);
 
     final client = MatrixState.pangeaController.matrixState.client;
-    final Set<String> seenEventIDs = {};
+    final Map<String, PangeaMessageEvent?> seenEventIDs = {};
     final cutoffTime = DateTime.now().subtract(const Duration(hours: 24));
 
     final targets = <AnalyticsActivityTarget>[];
@@ -45,15 +45,28 @@ class GrammarErrorTargetGenerator {
 
       for (final use in errorUses) {
         final eventID = use.metadata.eventId;
-        if (eventID == null || seenEventIDs.contains(eventID)) continue;
+        if (eventID == null) continue;
+        if (seenEventIDs.containsKey(eventID) &&
+            seenEventIDs[eventID] == null) {
+          continue; // Already checked this event and it had no valid grammar error match
+        }
 
-        final event = await client.getEventByConstructUse(use);
-        seenEventIDs.add(eventID);
+        final event =
+            seenEventIDs[eventID] ?? await client.getEventByConstructUse(use);
+
+        seenEventIDs[eventID] = event;
 
         if (event == null) continue;
-        final eventTargets = await _getTargetsFromEvent(event, construct.id);
-        if (eventTargets != null) {
-          targets.add(eventTargets);
+        final eventTarget = await _getTargetFromEvent(event, construct.id);
+        if (eventTarget != null &&
+            !targets.any(
+              (t) =>
+                  t.grammarErrorInfo?.eventID ==
+                      eventTarget.grammarErrorInfo?.eventID &&
+                  t.grammarErrorInfo?.stepIndex ==
+                      eventTarget.grammarErrorInfo?.stepIndex,
+            )) {
+          targets.add(eventTarget);
           if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
             return targets;
           }
@@ -64,7 +77,7 @@ class GrammarErrorTargetGenerator {
     return targets;
   }
 
-  static Future<AnalyticsActivityTarget?> _getTargetsFromEvent(
+  static Future<AnalyticsActivityTarget?> _getTargetFromEvent(
     PangeaMessageEvent event,
     ConstructIdentifier constructId,
   ) async {
@@ -128,7 +141,9 @@ class GrammarErrorTargetGenerator {
       }
 
       // Skip if no valid tokens found for this grammar error, or only one answer
-      if (choiceTokens.length <= 1) continue;
+      if (choiceTokens.isEmpty) {
+        continue;
+      }
 
       try {
         translation ??= await event.requestRespresentationByL1();
@@ -144,7 +159,10 @@ class GrammarErrorTargetGenerator {
         );
       }
 
-      if (translation == null) continue;
+      if (translation == null) {
+        continue;
+      }
+
       return AnalyticsActivityTarget(
         target: PracticeTarget(
           tokens: choiceTokens,

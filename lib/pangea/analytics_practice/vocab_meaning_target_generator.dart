@@ -20,6 +20,14 @@ class VocabMeaningTargetGenerator {
     for (final construct in sortedConstructs) {
       if (seenLemmas.contains(construct.lemma)) continue;
       seenLemmas.add(construct.lemma);
+
+      if (!construct.cappedUses.any(
+        (u) => u.metadata.eventId != null && u.metadata.roomId != null,
+      )) {
+        // Skip if no uses have eventId + roomId, so example message can be fetched.
+        continue;
+      }
+
       targets.add(
         AnalyticsActivityTarget(
           target: PracticeTarget(
