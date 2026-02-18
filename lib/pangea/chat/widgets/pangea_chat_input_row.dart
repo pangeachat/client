@@ -133,25 +133,6 @@ class PangeaChatInputRow extends StatelessWidget {
                                       contentPadding: const EdgeInsets.all(0),
                                     ),
                                   ),
-                                  if (!isBotDM)
-                                    PopupMenuItem(
-                                      value: AddPopupMenuActions.image,
-                                      child: ListTile(
-                                        leading: CircleAvatar(
-                                          backgroundColor: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                          foregroundColor: theme
-                                              .colorScheme
-                                              .primaryContainer,
-                                          child: const Icon(
-                                            Icons.photo_outlined,
-                                          ),
-                                        ),
-                                        title: Text(L10n.of(context).sendImage),
-                                        contentPadding: const EdgeInsets.all(0),
-                                      ),
-                                    ),
                                   if (PlatformInfos.isMobile)
                                     PopupMenuItem<AddPopupMenuActions>(
                                       value: AddPopupMenuActions.photoCamera,

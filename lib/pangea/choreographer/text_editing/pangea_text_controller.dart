@@ -35,7 +35,7 @@ class PangeaTextController extends TextEditingController {
   Color _underlineColor(PangeaMatch match) {
     // Automatic corrections use primary color
     if (match.status == PangeaMatchStatusEnum.automatic) {
-      return AppConfig.primaryColor.withAlpha(180);
+      return AppConfig.primaryColor;
     }
 
     // Use type-based coloring
@@ -49,7 +49,7 @@ class PangeaTextController extends TextEditingController {
   ) {
     double opacityFactor = 1.0;
     if (!isOpenMatch) {
-      opacityFactor = 0.2;
+      opacityFactor = 0.4;
     }
 
     final alpha = (255 * opacityFactor).round();

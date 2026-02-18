@@ -42,6 +42,7 @@ class PasswordLoginView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextFormField(
+                          autofocus: true,
                           decoration: InputDecoration(
                             hintText: L10n.of(context).usernameOrEmail,
                           ),
