@@ -35,13 +35,13 @@ test.describe("Login", () => {
       name: "Username or email",
     });
     await usernameField.click();
-    await usernameField.fill(process.env.TEST_USER!);
+    await usernameField.fill(process.env.STAGING_TEST_EMAIL!);
 
     await page.waitForTimeout(500);
 
     const passwordField = page.getByRole("textbox", { name: "Password" });
     await passwordField.click();
-    await passwordField.fill(process.env.TEST_PASSWORD!);
+    await passwordField.fill(process.env.STAGING_TEST_PASSWORD!);
 
     await page.waitForTimeout(500);
 

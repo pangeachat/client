@@ -37,4 +37,3 @@ Check the relevant `.github/instructions/` doc before and after coding. If it do
 - Feature modules follow pattern: `models/`, `repo/` (API calls), `widgets/`, `utils/`, `constants/`
 - API repo files pair with request/response models (e.g., `igc_repo.dart` + `igc_request_model.dart` + `igc_response_model.dart`)
 - Controllers extend `ChangeNotifier` or use `BaseController<T>` (stream-based)
-

@@ -6,7 +6,8 @@ Related:
 
 - Web & accessibility: [web-and-accessibility-next-steps.md](web-and-accessibility-next-steps.md)
 - Mobile: [mobile-testing-plan.md](mobile-testing-plan.md)
-- Conventions & patterns: [e2e-testing.instructions.md](../.github/instructions/e2e-testing.instructions.md)
+- Conventions & patterns: [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md)
+- Running locally: [run-playwright-and-axe-local.instructions.md](../.github/instructions/run-playwright-and-axe-local.instructions.md)
 - Guided authoring procedure: [write-e2e-test/SKILL.md](../.github/skills/write-e2e-test/SKILL.md)
 - Cloud agent profile: [e2e-tester.md](../.github/agents/e2e-tester.md)
 
@@ -21,13 +22,13 @@ Related:
 
 ## Components
 
-| Component            | File                                               | Role                                                                                                    | Status                                       |
-| -------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| **Deterministic CI** | `.github/workflows/e2e-tests.yml`                  | Runs Playwright on every deploy, nightly, and manual dispatch. Includes flow tests and axe-core audits. | ✅ Login + a11y specs pass. More specs needed |
-| **Guided authoring** | `.github/skills/write-e2e-test/SKILL.md`           | 9-step procedure for writing a new spec with Copilot (semantics audit → spec → trigger-map).            | ✅ Exists. Not yet used beyond login          |
-| **Cloud agent**      | `.github/agents/e2e-tester.md`                     | Copilot coding agent — assigned issues to write or fix specs via Playwright MCP, opens a PR.            | ✅ Profile exists. Untested                   |
-| **Agent environment**| `.github/workflows/copilot-setup-steps.yml`        | Installs Node + Playwright in the Copilot coding agent's sandbox.                                       | ✅                                            |
-| **Conventions**      | `.github/instructions/e2e-testing.instructions.md` | Auto-loaded when editing `e2e/` files — Flutter-Playwright patterns, file layout, semantics rules.      | ✅                                            |
+| Component             | File                                                                      | Role                                                                                                    | Status                                        |
+| --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **Deterministic CI**  | `.github/workflows/e2e-tests.yml`                                         | Runs Playwright on every deploy, nightly, and manual dispatch. Includes flow tests and axe-core audits. | ✅ Login + a11y specs pass. More specs needed |
+| **Guided authoring**  | `.github/skills/write-e2e-test/SKILL.md`                                  | 9-step procedure for writing a new spec with Copilot (semantics audit → spec → trigger-map).            | ✅ Exists. Not yet used beyond login          |
+| **Cloud agent**       | `.github/agents/e2e-tester.md`                                            | Copilot coding agent — assigned issues to write or fix specs via Playwright MCP, opens a PR.            | ✅ Profile exists. Untested                   |
+| **Agent environment** | `.github/workflows/copilot-setup-steps.yml`                               | Installs Node + Playwright in the Copilot coding agent's sandbox.                                       | ✅                                            |
+| **Conventions**       | `.github/instructions/authoring-playwright-and-axe-tests.instructions.md` | Auto-loaded when editing `e2e/` files — Flutter-Playwright patterns, file layout, semantics rules.      | ✅                                            |
 
 ---
 
@@ -63,31 +64,13 @@ Web is the foundation. Mobile shares the same `trigger-map.json` (each entry has
 
 Flutter's `<canvas>` is opaque to Playwright. Flutter exposes an optional **semantics tree** — an accessibility layer that creates hidden DOM nodes with ARIA roles. Playwright reads these nodes to locate elements like `button "Login"` or `textbox "Password"`.
 
-Semantics must be explicitly enabled per page load (the `flt-semantics-placeholder` button is positioned off-screen and requires `dispatchEvent("click")`). The shared fixture handles this.
-
 Widgets without tooltips, text children, or `Semantics` wrappers appear as unnamed `generic` nodes and can't be targeted. Expanding coverage to a new flow always starts with auditing and fixing these gaps.
+
+For implementation details (fixture mechanics, selectors, credential delivery): see [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md).
 
 ### Diff-triggered test selection
 
-`trigger-map.json` is the single source of truth:
-
-```json
-{
-  "login": {
-    "globs": ["lib/pangea/login/**", "lib/pages/homeserver_picker.dart"],
-    "web": "scripts/login.spec.ts",
-    "mobile": null
-  }
-}
-```
-
-On deploy, `select-tests.js` diffs the commit range against globs using `minimatch`, collects matching spec paths, and always includes `login`. CI runs only the matched set.
-
-### Credential delivery
-
-- **Local**: shell env vars `TEST_USER`, `TEST_PASSWORD`, `BASE_URL`
-- **CI**: GitHub Actions secrets `STAGING_TEST_USER`, `STAGING_TEST_PASSWORD`
-- **Cloud agent**: `copilot` environment secrets `STAGING_TEST_EMAIL`, `STAGING_TEST_PASSWORD`
+`trigger-map.json` maps Dart source globs to spec files. On deploy, `select-tests.js` diffs the commit range against globs using `minimatch`, collects matching spec paths, and always includes `login`. CI runs only the matched set.
 
 ---
 
@@ -125,14 +108,6 @@ The semantics work for Playwright testing is the same work that makes the app ac
 
 **Zero-tolerance policy**: tests assert zero violations. Fix the widget, don't allowlist. This keeps the semantics tree clean for both Playwright locators and real screen readers.
 
-### What it catches
+axe can't check color contrast or visual layout inside Flutter's `<canvas>` — only the semantics overlay is auditable.
 
-- Missing accessible names on buttons/inputs (e.g., `IconButton` without `tooltip`)
-- Invalid ARIA role usage, missing form labels, focus order issues
-
-### What it can't catch (Flutter canvas limitation)
-
-- Color contrast — axe can't inspect pixels inside `<canvas>`
-- Visual layout — the rendered UI is canvas, not DOM
-
-Implementation conventions: see `e2e-testing.instructions.md` § "Accessibility testing (axe-core)".
+Implementation details, `auditPage()` helper usage, and auth-state patterns: see [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "Accessibility Testing (axe-core)".
