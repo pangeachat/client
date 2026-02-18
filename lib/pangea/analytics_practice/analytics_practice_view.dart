@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -9,6 +11,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.d
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
@@ -185,9 +188,15 @@ class _AnalyticsActivityView extends StatelessWidget {
                 child: _AnalyticsPracticeCenterContent(controller: controller),
               ),
               const SizedBox(height: 16.0),
-              (controller.widget.type == ConstructTypeEnum.morph)
-                  ? Center(child: _HintSection(controller: controller))
-                  : const SizedBox.shrink(),
+              ValueListenableBuilder(
+                valueListenable: controller.activityTarget,
+                builder: (context, target, _) =>
+                    (controller.widget.type == ConstructTypeEnum.morph ||
+                        target?.target.activityType ==
+                            ActivityTypeEnum.lemmaAudio)
+                    ? Center(child: _HintSection(controller: controller))
+                    : const SizedBox.shrink(),
+              ),
               const SizedBox(height: 16.0),
               _ActivityChoicesWidget(controller),
               const SizedBox(height: 16.0),
@@ -250,7 +259,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
               value: final VocabAudioPracticeActivityModel activity,
             ) =>
               SizedBox(
-                height: 100.0,
+                height: 60.0,
                 child: Center(
                   child: AudioPlayerWidget(
                     null,
@@ -287,6 +296,16 @@ class _AudioCompletionWidget extends StatelessWidget {
 
   const _AudioCompletionWidget({super.key, required this.controller});
 
+  String _extractTextFromSpans(List<InlineSpan> spans) {
+    final buffer = StringBuffer();
+    for (final span in spans) {
+      if (span is TextSpan && span.text != null) {
+        buffer.write(span.text);
+      }
+    }
+    return buffer.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     final exampleMessage = controller.getAudioExampleMessage();
@@ -294,6 +313,8 @@ class _AudioCompletionWidget extends StatelessWidget {
     if (exampleMessage == null || exampleMessage.isEmpty) {
       return const SizedBox(height: 100.0);
     }
+
+    final exampleText = _extractTextFromSpans(exampleMessage);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -306,16 +327,97 @@ class _AudioCompletionWidget extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: RichText(
-          text: TextSpan(
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimaryFixed,
-              fontSize:
-                  AppSettings.fontSizeFactor.value * AppConfig.messageFontSize,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ValueListenableBuilder<bool>(
+              valueListenable: controller.hintPressedNotifier,
+              builder: (context, showPhonetics, _) => AnimatedSize(
+                duration: FluffyThemes.animationDuration,
+                alignment: Alignment.topCenter,
+                child: showPhonetics
+                    ? Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: PhoneticTranscriptionWidget(
+                          text: exampleText,
+                          textLanguage: MatrixState
+                              .pangeaController
+                              .userController
+                              .userL2!,
+                          textOnly: true,
+                          style: TextStyle(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryFixed.withValues(alpha: 0.7),
+                            fontSize:
+                                (AppSettings.fontSizeFactor.value *
+                                    AppConfig.messageFontSize) *
+                                0.85,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          maxLines: 2,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+              ),
             ),
-            children: exampleMessage,
-          ),
+
+            // Main example message
+            RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimaryFixed,
+                  fontSize:
+                      AppSettings.fontSizeFactor.value *
+                      AppConfig.messageFontSize,
+                ),
+                children: exampleMessage,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: _AudioCompletionTranslation(controller: controller),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+/// Widget to show translation for audio completion message
+class _AudioCompletionTranslation extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _AudioCompletionTranslation({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    final state = controller.activityState.value;
+    if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+      return const SizedBox.shrink();
+    }
+
+    final activity = state.value;
+    if (activity is! VocabAudioPracticeActivityModel) {
+      return const SizedBox.shrink();
+    }
+
+    final translation = controller.getAudioTranslation(activity.eventId);
+    if (translation == null) {
+      return const SizedBox.shrink();
+    }
+
+    return Text(
+      translation,
+      style: TextStyle(
+        color: Theme.of(
+          context,
+        ).colorScheme.onPrimaryFixed.withValues(alpha: 0.8),
+        fontSize:
+            (AppSettings.fontSizeFactor.value * AppConfig.messageFontSize) *
+            0.9,
+        fontStyle: FontStyle.italic,
       ),
     );
   }
@@ -421,6 +523,18 @@ class _HintSection extends StatelessWidget {
           constraints: const BoxConstraints(minHeight: 50.0),
           child: Builder(
             builder: (context) {
+              final isAudioActivity =
+                  activity.activityType == ActivityTypeEnum.lemmaAudio;
+
+              // For audio activities: toggle hint on/off (no increment, no max hints)
+              if (isAudioActivity) {
+                return HintButton(
+                  onPressed: () => controller.onHintPressed(increment: false),
+                  depressed: hintPressed,
+                  icon: Symbols.text_to_speech,
+                );
+              }
+
               // For grammar category: fade out button and show hint content
               if (activity is MorphPracticeActivityModel) {
                 return AnimatedCrossFade(
@@ -429,6 +543,7 @@ class _HintSection extends StatelessWidget {
                       ? CrossFadeState.showSecond
                       : CrossFadeState.showFirst,
                   firstChild: HintButton(
+                    icon: Icons.lightbulb_outline,
                     onPressed: maxHintsReached
                         ? () {}
                         : controller.onHintPressed,
@@ -443,6 +558,7 @@ class _HintSection extends StatelessWidget {
 
               // For grammar error: button stays pressed, hint shows in ErrorBlankWidget
               return HintButton(
+                icon: Icons.lightbulb_outline,
                 onPressed: (hintPressed || maxHintsReached)
                     ? () {}
                     : controller.onHintPressed,
@@ -636,11 +752,13 @@ class _ErrorBlankWidget extends StatelessWidget {
 class HintButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool depressed;
+  final IconData icon;
 
   const HintButton({
     required this.onPressed,
     required this.depressed,
     super.key,
+    required this.icon,
   });
 
   @override
@@ -665,7 +783,7 @@ class HintButton extends StatelessWidget {
               shape: BoxShape.circle,
             ),
           ),
-          const Icon(Icons.lightbulb_outline, size: 20),
+          Icon(icon, size: 20),
         ],
       ),
     );
@@ -751,6 +869,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
                                           onPressed: () => controller
                                               .onSelectChoice(choice.choiceId),
                                           cardHeight: 48.0,
+                                          controller: controller,
                                           choiceText: choice.choiceText,
                                           choiceEmoji: choice.choiceEmoji,
                                           enabled: enabled,
@@ -777,6 +896,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
                           onPressed: () =>
                               controller.onSelectChoice(choice.choiceId),
                           cardHeight: 60.0,
+                          controller: controller,
                           choiceText: choice.choiceText,
                           choiceEmoji: choice.choiceEmoji,
                           enabled: enabled,
@@ -816,25 +936,67 @@ class _AudioContinueButton extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        return ValueListenableBuilder(
-          valueListenable: controller.showingAudioCompletion,
-          builder: (context, showingCompletion, _) {
+        final totalAnswers = activity.multipleChoiceContent.answers.length;
+
+        return ListenableBuilder(
+          listenable: Listenable.merge([
+            controller.showingAudioCompletion,
+            controller.correctAnswersSelected,
+          ]),
+          builder: (context, _) {
+            final showingCompletion = controller.showingAudioCompletion.value;
+            final correctSelected = controller.correctAnswersSelected.value;
+
             return Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: showingCompletion
-                    ? controller.onAudioContinuePressed
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48.0,
-                    vertical: 16.0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8.0,
+                children: [
+                  // Progress ovals row
+                  SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          totalAnswers,
+                          (index) => Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                              child: Container(
+                                height: 16.0,
+                                decoration: BoxDecoration(
+                                  color: index < correctSelected
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Theme.of(context)
+                                            .colorScheme
+                                            .surfaceContainerHighest
+                                            .withValues(alpha: 0.7),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                child: Text(
-                  L10n.of(context).continueText,
-                  style: const TextStyle(fontSize: 18.0),
-                ),
+                  // Continue button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: showingCompletion
+                          ? controller.onAudioContinuePressed
+                          : null,
+                      child: Text(
+                        L10n.of(context).continueText,
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             );
           },
@@ -850,6 +1012,7 @@ class _ChoiceCard extends StatelessWidget {
   final String targetId;
   final VoidCallback onPressed;
   final double cardHeight;
+  final AnalyticsPracticeState controller;
 
   final String choiceText;
   final String? choiceEmoji;
@@ -862,6 +1025,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.targetId,
     required this.onPressed,
     required this.cardHeight,
+    required this.controller,
     required this.choiceText,
     required this.choiceEmoji,
     this.enabled = true,
@@ -891,18 +1055,21 @@ class _ChoiceCard extends StatelessWidget {
         );
 
       case ActivityTypeEnum.lemmaAudio:
-        return GameChoiceCard(
-          key: ValueKey(
-            '${constructId.string}_${activityType.name}_audio_$choiceId',
+        return ValueListenableBuilder<bool>(
+          valueListenable: controller.hintPressedNotifier,
+          builder: (context, showPhonetics, _) => AudioChoiceCard(
+            key: ValueKey(
+              '${constructId.string}_${activityType.name}_audio_$choiceId',
+            ),
+            choiceId: choiceId,
+            targetId: targetId,
+            displayText: choiceText,
+            textLanguage: MatrixState.pangeaController.userController.userL2!,
+            onPressed: onPressed,
+            isCorrect: isCorrect,
+            isEnabled: enabled,
+            showPhoneticTranscription: showPhonetics,
           ),
-          shouldFlip: false,
-          targetId: targetId,
-          onPressed: onPressed,
-          isCorrect: isCorrect,
-          height: cardHeight,
-          isEnabled: enabled,
-          shrinkWrap: shrinkWrap,
-          child: Text(choiceText, textAlign: TextAlign.center),
         );
 
       case ActivityTypeEnum.grammarCategory:
