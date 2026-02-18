@@ -120,16 +120,19 @@ class ChatSearchController extends State<ChatSearchPage>
   }
 
   void _onTabChanged() {
-    switch (tabController.index) {
-      case 1:
-      case 2:
-        startSearch();
-        break;
-      case 0:
-      default:
-        restartSearch();
-        break;
-    }
+    // #Pangea
+    restartSearch();
+    // switch (tabController.index) {
+    //   case 1:
+    //   case 2:
+    //     startSearch();
+    //     break;
+    //   case 0:
+    //   default:
+    //     restartSearch();
+    //     break;
+    // }
+    // Pangea#
   }
 
   @override

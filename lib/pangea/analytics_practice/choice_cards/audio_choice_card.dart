@@ -47,6 +47,7 @@ class AudioChoiceCard extends StatelessWidget {
               children: [
                 PhoneticTranscriptionWidget(
                   text: displayText,
+                  pos: 'other',
                   textLanguage: textLanguage,
                   textOnly: true,
                   style: theme.textTheme.bodySmall?.copyWith(
