@@ -323,12 +323,9 @@ class PangeaMessageEvent {
 
     // Check for STT embedded directly in the audio event content
     // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
-    final rawEmbeddedStt = event.content.tryGetMap(
-          ModelKey.userStt,
-        ) ??
-        event.content.tryGetMap(
-          ModelKey.botTranscription,
-        );
+    final rawEmbeddedStt =
+        event.content.tryGetMap(ModelKey.userStt) ??
+        event.content.tryGetMap(ModelKey.botTranscription);
 
     if (rawEmbeddedStt != null) {
       try {
