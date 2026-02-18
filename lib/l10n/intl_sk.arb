@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-12 15:54:41.290145",
+  "@@last_modified": "2026-02-18 13:03:16.333830",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12481,6 +12481,16 @@
   },
   "managementSnackbarMessage": "Spustili sme správu predplatného v novom okne. Ak ste nevideli nové okno, skontrolujte prosím svoj blokátor vyskakovacích okien.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Odomknúť cvičebné aktivity",
+  "hideEvents": "Skryť udalosti",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

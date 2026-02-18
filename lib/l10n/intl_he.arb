@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:46.170245",
+  "@@last_modified": "2026-02-18 13:03:21.034399",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12446,6 +12446,16 @@
   },
   "managementSnackbarMessage": "השקנו ניהול מנויים בלשונית חדשה. אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "שחרר פעילויות תרגול",
+  "hideEvents": "הסתר אירועים",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

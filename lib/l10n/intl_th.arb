@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-12 15:55:08.750062",
+  "@@last_modified": "2026-02-18 13:03:41.207320",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12010,6 +12010,16 @@
   },
   "managementSnackbarMessage": "เราได้เปิดตัวการจัดการการสมัครสมาชิกในแท็บใหม่ หากคุณไม่เห็นแท็บใหม่ โปรดตรวจสอบตัวบล็อกป๊อปอัปของคุณ.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "ปลดล็อกกิจกรรมการฝึก",
+  "hideEvents": "ซ่อนกิจกรรม",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

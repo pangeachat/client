@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:59.311944",
+  "@@last_modified": "2026-02-18 13:03:31.380050",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11357,6 +11357,16 @@
   },
   "managementSnackbarMessage": "Abbiamo lanciato la gestione degli abbonamenti in una nuova scheda. Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Sblocca le attività di pratica",
+  "hideEvents": "Nascondi eventi",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

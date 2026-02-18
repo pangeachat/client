@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:11.199909",
+  "@@last_modified": "2026-02-18 13:03:43.262239",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11402,6 +11402,16 @@
   },
   "managementSnackbarMessage": "我們在新標籤中啟用了訂閱管理。如果您沒有看到新標籤，請檢查您的彈出窗口阻擋器。",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "解鎖練習活動",
+  "hideEvents": "隱藏事件",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

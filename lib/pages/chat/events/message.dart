@@ -57,6 +57,7 @@ class Message extends StatelessWidget {
   final void Function()? onExpand;
   final bool isCollapsed;
   // #Pangea
+  final bool moreEventButtonExpands;
   final ChatController controller;
   final bool isButton;
   final bool canRefresh;
@@ -88,6 +89,7 @@ class Message extends StatelessWidget {
     this.isCollapsed = false,
     // #Pangea
     required this.controller,
+    this.moreEventButtonExpands = true,
     this.isButton = false,
     this.canRefresh = false,
     // Pangea#
@@ -173,8 +175,15 @@ class Message extends StatelessWidget {
       if (event.type == PangeaEventTypes.activityRole) {
         return ActivityRolesEvent(event: event);
       }
+
+      // return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
+      return StateMessage(
+        event,
+        onExpand: onExpand,
+        isCollapsed: isCollapsed,
+        moreEventButtonExpands: moreEventButtonExpands,
+      );
       // Pangea#
-      return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
     }
 
     if (event.type == EventTypes.Message &&

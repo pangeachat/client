@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-02-12 15:54:57.891614",
+  "@@last_modified": "2026-02-18 13:03:30.170176",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12493,6 +12493,16 @@
   },
   "managementSnackbarMessage": "我們在新標籤中啟動了訂閱管理。如果你沒有看到新標籤，請檢查你的彈出窗口阻擋器。",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "解鎖練習活動",
+  "hideEvents": "隱藏事件",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

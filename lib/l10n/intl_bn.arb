@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:29.425875",
+  "@@last_modified": "2026-02-18 13:03:57.907755",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12007,6 +12007,16 @@
   },
   "managementSnackbarMessage": "আমরা একটি নতুন ট্যাবে সাবস্ক্রিপশন ব্যবস্থাপনা চালু করেছি। যদি আপনি নতুন ট্যাবটি না দেখে থাকেন, দয়া করে আপনার পপআপ ব্লকারটি পরীক্ষা করুন।",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "অভ্যাস কার্যক্রম আনলক করুন",
+  "hideEvents": "ইভেন্টগুলি লুকান",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

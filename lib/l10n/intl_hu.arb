@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-12 15:54:36.494745",
+  "@@last_modified": "2026-02-18 13:03:11.431357",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11400,6 +11400,16 @@
   },
   "managementSnackbarMessage": "Elindítottuk az előfizetéskezelést egy új lapon. Ha nem láttad az új lapot, kérlek ellenőrizd a felugróablak-blokkolódat.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Gyakorlati tevékenységek feloldása",
+  "hideEvents": "Események elrejtése",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

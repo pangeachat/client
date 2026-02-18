@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:03.826328",
+  "@@last_modified": "2026-02-18 13:03:34.341873",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11332,6 +11332,16 @@
   },
   "managementSnackbarMessage": "Vi har lansert abonnementshåndtering i en ny fane. Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeren din.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Lås opp øvingsaktiviteter",
+  "hideEvents": "Skjul hendelser",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

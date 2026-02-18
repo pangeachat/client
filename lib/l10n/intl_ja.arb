@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-12 15:55:37.098583",
+  "@@last_modified": "2026-02-18 13:04:03.638923",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12187,6 +12187,16 @@
   },
   "managementSnackbarMessage": "新しいタブでサブスクリプション管理を開始しました。新しいタブが表示されない場合は、ポップアップブロッカーを確認してください。",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "練習活動を解除する",
+  "hideEvents": "イベントを非表示にする",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:49.082065",
+  "@@last_modified": "2026-02-18 13:03:22.934669",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "Lançamos o gerenciamento de assinaturas em uma nova aba. Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloquear atividades de prática",
+  "hideEvents": "Ocultar eventos",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }
