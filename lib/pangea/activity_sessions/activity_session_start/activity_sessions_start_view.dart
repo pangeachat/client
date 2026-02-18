@@ -235,10 +235,13 @@ class ActivitySessionStartView extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  L10n.of(
-                                                    context,
-                                                  ).pingParticipants,
+                                                Flexible(
+                                                  child: Text(
+                                                    L10n.of(
+                                                      context,
+                                                    ).pingParticipants,
+                                                    textAlign: TextAlign.center,
+                                                  ),
                                                 ),
                                               ],
                                             ),
