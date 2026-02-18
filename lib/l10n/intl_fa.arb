@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:31.068009",
+  "@@last_modified": "2026-02-18 13:03:58.997543",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11384,6 +11384,16 @@
   },
   "managementSnackbarMessage": "ما مدیریت اشتراک را در یک تب جدید راه‌اندازی کردیم. اگر تب جدید را ندیدید، لطفاً مسدودکننده پاپ‌آپ خود را بررسی کنید.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "فعالیت‌های تمرینی را باز کنید",
+  "hideEvents": "رویدادها را پنهان کنید",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

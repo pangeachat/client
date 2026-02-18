@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:40.077453",
+  "@@last_modified": "2026-02-18 13:04:05.883233",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12486,6 +12486,16 @@
   },
   "managementSnackbarMessage": "Ni lanĉis abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Malŝlosi praktikajn aktivadojn",
+  "hideEvents": "Kaŝi eventojn",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

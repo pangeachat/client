@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-12 15:55:41.309030",
+  "@@last_modified": "2026-02-18 13:04:06.873611",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "Мы запустили управление подписками в новой вкладке. Если вы не видите новую вкладку, пожалуйста, проверьте свой блокировщик всплывающих окон.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Разблокировать практические занятия",
+  "hideEvents": "Скрыть события",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-12 15:54:50.402230",
+  "@@last_modified": "2026-02-18 13:03:24.113929",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desblokeatu praktika jarduerak",
+  "hideEvents": "Ezkutatu ekitaldiak",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

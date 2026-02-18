@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:44.378014",
+  "@@last_modified": "2026-02-18 13:04:09.064315",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12493,6 +12493,16 @@
   },
   "managementSnackbarMessage": "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste videli novu karticu, molimo proverite svoj blokator iskačućih prozora.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Otključaj vežbovne aktivnosti",
+  "hideEvents": "Sakrij događaje",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

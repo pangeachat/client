@@ -31,6 +31,9 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final VoidCallback? onTranscriptionFetched;
   final ValueNotifier<int>? reloadNotifier;
 
+  /// If true, only show the transcription text without audio controls or hover effects
+  final bool textOnly;
+
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
@@ -43,6 +46,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     this.maxLines,
     this.onTranscriptionFetched,
     this.reloadNotifier,
+    this.textOnly = false,
   });
 
   @override
@@ -79,6 +83,37 @@ class _PhoneticTranscriptionWidgetState
   @override
   Widget build(BuildContext context) {
     final targetId = 'phonetic-transcription-${widget.text}-$hashCode';
+    if (widget.textOnly) {
+      return PhoneticTranscriptionBuilder(
+        key: Key(targetId),
+        textLanguage: widget.textLanguage,
+        text: widget.text,
+        reloadNotifier: widget.reloadNotifier,
+        builder: (context, controller) {
+          return switch (controller.state) {
+            AsyncError() => const SizedBox.shrink(),
+            AsyncLoaded<PTResponse>(value: final ptResponse) => Text(
+              disambiguate(
+                ptResponse.pronunciations,
+                pos: widget.pos,
+                morph: widget.morph,
+              ).displayTranscription,
+              textScaler: TextScaler.noScaling,
+              style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+              maxLines: widget.maxLines,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+            _ => SizedBox(
+              width: 30.0,
+              height: 16.0,
+              child: TextLoadingShimmer(width: 30.0, height: 16.0),
+            ),
+          };
+        },
+      );
+    }
+
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(

@@ -3999,7 +3999,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-02-12 15:55:38.647413",
+  "@@last_modified": "2026-02-18 13:04:04.735794",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12010,6 +12010,16 @@
   },
   "managementSnackbarMessage": "हमने एक नए टैब में सदस्यता प्रबंधन लॉन्च किया है। यदि आपने नया टैब नहीं देखा, तो कृपया अपने पॉपअप ब्लॉकर की जांच करें।",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "प्रैक्टिस गतिविधियों को अनलॉक करें",
+  "hideEvents": "इवेंट्स छिपाएँ",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

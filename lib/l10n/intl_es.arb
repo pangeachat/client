@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-12 15:54:28.188727",
+  "@@last_modified": "2026-02-18 13:03:05.800494",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8573,6 +8573,16 @@
   },
   "managementSnackbarMessage": "Hemos lanzado la gestión de suscripciones en una nueva pestaña. Si no viste la nueva pestaña, por favor verifica tu bloqueador de ventanas emergentes.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloquear actividades de práctica",
+  "hideEvents": "Ocultar eventos",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

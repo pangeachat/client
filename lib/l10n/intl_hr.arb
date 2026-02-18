@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-02-12 15:54:44.996537",
+  "@@last_modified": "2026-02-18 13:03:19.700952",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11756,6 +11756,16 @@
   },
   "managementSnackbarMessage": "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iskačućih prozora.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Otključaj aktivnosti vježbanja",
+  "hideEvents": "Sakrij događaje",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

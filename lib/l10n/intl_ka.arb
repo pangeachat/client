@@ -2590,7 +2590,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-02-12 15:55:42.671383",
+  "@@last_modified": "2026-02-18 13:04:07.805593",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12427,6 +12427,16 @@
   },
   "managementSnackbarMessage": "ჩვენი გამოწერის მართვა ახალი ჩანართში გაწვდილი გვაქვს. თუ ახალი ჩანართი არ გინახავთ, გთხოვთ შეამოწმოთ თქვენი პოპ-აპ ბლოკერი.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "გახსენი პრაქტიკის აქტივობები",
+  "hideEvents": "დამალე მოვლენები",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }
