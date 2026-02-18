@@ -321,21 +321,26 @@ class PangeaMessageEvent {
     final rep = _getSpeechToTextRepresentation()?.content.speechToText;
     if (rep != null) return rep;
 
-    final rawBotTranscription = event.content.tryGetMap(
-      ModelKey.botTranscription,
-    );
+    // Check for STT embedded directly in the audio event content
+    // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
+    final rawEmbeddedStt = event.content.tryGetMap(
+          ModelKey.userStt,
+        ) ??
+        event.content.tryGetMap(
+          ModelKey.botTranscription,
+        );
 
-    if (rawBotTranscription != null) {
+    if (rawEmbeddedStt != null) {
       try {
         return SpeechToTextResponseModel.fromJson(
-          Map<String, dynamic>.from(rawBotTranscription),
+          Map<String, dynamic>.from(rawEmbeddedStt),
         );
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,
           s: s,
           data: {"event": _event.toJson()},
-          m: "error parsing botTranscription",
+          m: "error parsing embedded stt",
         );
         return null;
       }
