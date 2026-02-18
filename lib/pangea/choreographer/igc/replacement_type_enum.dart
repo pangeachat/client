@@ -262,24 +262,24 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
   Color underlineColor() {
     // IT start and auto-apply types use primary color
     if (this == ReplacementTypeEnum.itStart || isAutoApply) {
-      return AppConfig.primaryColor.withAlpha(180);
+      return AppConfig.primaryColor;
     }
     // Grammar errors use warning/orange
     if (isGrammarType) {
-      return AppConfig.warning.withAlpha(180);
+      return AppConfig.warning;
     }
     // Word choice uses blue
     if (isWordChoiceType) {
-      return Colors.blue.withAlpha(180);
+      return Colors.blue;
     }
     // Style and fluency use teal
     switch (this) {
       case ReplacementTypeEnum.style:
       case ReplacementTypeEnum.fluency:
-        return Colors.teal.withAlpha(180);
+        return Colors.teal;
       default:
         // Other/unknown use error color
-        return AppConfig.error.withAlpha(180);
+        return AppConfig.error;
     }
   }
 
