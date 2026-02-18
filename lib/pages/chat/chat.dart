@@ -1259,8 +1259,8 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (stt != null) {
-      // Still send the representation event so aggregation-based lookups
-      // (e.g. translations, other clients) continue to work.
+      // TODO: remove once stt_translation events are reparented to the
+      // audio event itself (see #5730 Part 2).
       final event = await room.getEventById(eventId);
       if (event != null) {
         final messageEvent = PangeaMessageEvent(
