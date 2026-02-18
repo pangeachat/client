@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 verzoek om lid te worden en goedkeuring door beheerder";
     },
-    get$youHaveLeveledUp() {
-      return "Je bent een niveau omhoog gegaan!";
-    },
     get$sendActivities() {
       return "Verzend activiteiten";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cG6IZS6DB235aV6l+WeC586jgEc="] = d.current;
+  d["5iVTyxVYL0RwxpnL38ba+oXp5Yc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_782.part.js.map

@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 pro\u015bba o do\u0142\u0105czenie i zatwierdzenie przez administratora";
     },
-    get$youHaveLeveledUp() {
-      return "Awansowa\u0142e\u015b!";
-    },
     get$sendActivities() {
       return "Wy\u015blij aktywno\u015bci";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dde3LEKwZR8Ix5DjfGp/lRRqqjw="] = d.current;
+  d["fUPP5cqAQ4XvgO981tBmK23FY4Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_786.part.js.map

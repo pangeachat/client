@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 anmodning om at deltage og godkendelse af administrator";
     },
-    get$youHaveLeveledUp() {
-      return "Du har niveauopgraderet!";
-    },
     get$sendActivities() {
       return "Send aktiviteter";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7hysCqnkDY3LXXcnGvmoIckHxFc="] = d.current;
+  d["+lz8/y8YbXmMU/+JEcTEYXxoy4g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_328.part.js.map

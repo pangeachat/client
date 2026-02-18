@@ -4171,9 +4171,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 sol\xb7licitud d'entrada i aprovaci\xf3 de l'administrador";
     },
-    get$youHaveLeveledUp() {
-      return "Has pujat de nivell!";
-    },
     get$sendActivities() {
       return "Envia activitats";
     },
@@ -5594,7 +5591,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q8dWG6PYdzgchE5pJR1KwEACq9Q="] = d.current;
+  d["V5p5mjTem+ABiNkDh4tmGaCC7+4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

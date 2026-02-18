@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 pyyt\xe4\xe4 liittymist\xe4 ja yll\xe4pidon hyv\xe4ksynt\xe4";
     },
-    get$youHaveLeveledUp() {
-      return "Olet noussut tasolle!";
-    },
     get$sendActivities() {
       return "L\xe4het\xe4 aktiviteetteja";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K8pCvQ5ODyoxhjfHvKi0f/pHI7Y="] = d.current;
+  d["6c8oTup/uxVwa6wP6baHxlSrm1U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

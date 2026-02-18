@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 zahtjeva za pridru\u017eivanje i odobrenja administratora";
     },
-    get$youHaveLeveledUp() {
-      return "Napredovali ste!";
-    },
     get$sendActivities() {
       return "Po\u0161alji aktivnosti";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sp/aF09NFHqJGhbWslp34lzXHCo="] = d.current;
+  d["ouAcBUZzroqS7h+hk8M0D2ORdJM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

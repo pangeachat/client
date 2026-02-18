@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 eskatu elkartzeko eta administratzailearen onespena";
     },
-    get$youHaveLeveledUp() {
-      return "Maila igo duzu!";
-    },
     get$sendActivities() {
       return "Bidali ekintzak";
     },
@@ -5593,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KhURU8pjHRNjGvcIkFAhsEUXvgw="] = d.current;
+  d["evfhgq0H53TdBq7cvJsNL1eMJYs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_597.part.js.map

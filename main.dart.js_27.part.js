@@ -4182,9 +4182,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return string$.u2022_soli;
     },
-    get$youHaveLeveledUp() {
-      return "Voc\xea subiu de n\xedvel!";
-    },
     get$sendActivities() {
       return "Enviar atividades";
     },
@@ -9747,9 +9744,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$canBeFoundViaKnock() {
       return string$.u2022_soli;
-    },
-    get$youHaveLeveledUp() {
-      return "Voc\xea subiu de n\xedvel!";
     },
     get$sendActivities() {
       return "Enviar atividades";
@@ -15314,9 +15308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 pedido para entrar e aprova\xe7\xe3o do administrador";
     },
-    get$youHaveLeveledUp() {
-      return "Subiu de n\xedvel!";
-    },
     get$sendActivities() {
       return "Enviar atividades";
     },
@@ -16922,7 +16913,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lC+mX3YZtUanxAnLlFaIN1IRprY="] = d.current;
+  d["Z7HN8aOc8BWnM5sJCPPLKopEOpg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

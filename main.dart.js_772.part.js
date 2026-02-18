@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 piepras\u012bjums pievienoties un administratora apstiprin\u0101jums";
     },
-    get$youHaveLeveledUp() {
-      return "J\u016bs esat pac\u0113lies l\u012bmen\u012b!";
-    },
     get$sendActivities() {
       return "S\u016bt\u012bt aktivit\u0101tes";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1yBCq1fw6L8mLOFhp2qKIdpNQe4="] = d.current;
+  d["/6ll91cUQ9OniZAFEmL7zuMecRo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_772.part.js.map

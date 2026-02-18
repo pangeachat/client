@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 taotlus liitumiseks ja administraatori n\xf5usolek";
     },
-    get$youHaveLeveledUp() {
-      return "Sa oled t\xf5usnud tasemele!";
-    },
     get$sendActivities() {
       return "Saada tegevusi";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JNonwTYQ46XONd0jmmnmlTchsMQ="] = d.current;
+  d["kc0pEqLVzZlAp61es1mUlFYXZuA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_573.part.js.map

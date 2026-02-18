@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 \u05d1\u05e7\u05e9\u05d4 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05d5\u05d0\u05d9\u05e9\u05d5\u05e8 \u05de\u05e0\u05d4\u05dc";
     },
-    get$youHaveLeveledUp() {
-      return "\u05e2\u05dc\u05d9\u05ea \u05e8\u05de\u05d4!";
-    },
     get$sendActivities() {
       return "\u05e9\u05dc\u05d7 \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KVExUQ+mEwHwYyjbV31P5UQKxo8="] = d.current;
+  d["C0TKtqgJ0avYWy3PThD/FYc690M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_670.part.js.map

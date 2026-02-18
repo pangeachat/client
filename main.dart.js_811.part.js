@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 \u0c1a\u0c47\u0c30\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c05\u0c2d\u0c4d\u0c2f\u0c30\u0c4d\u0c25\u0c28 \u0c2e\u0c30\u0c3f\u0c2f\u0c41 \u0c05\u0c21\u0c4d\u0c2e\u0c3f\u0c28\u0c4d \u0c06\u0c2e\u0c4b\u0c26\u0c02";
     },
-    get$youHaveLeveledUp() {
-      return "\u0c2e\u0c40\u0c30\u0c41 \u0c38\u0c4d\u0c25\u0c3e\u0c2f\u0c3f \u0c2a\u0c46\u0c30\u0c3f\u0c17\u0c3e\u0c30\u0c41!";
-    },
     get$sendActivities() {
       return "\u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c15\u0c32\u0c3e\u0c2a\u0c3e\u0c32\u0c28\u0c41 \u0c2a\u0c02\u0c2a\u0c02\u0c21\u0c3f";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["L4A9fpeLPvLfnzOUFTBXSpjWn3w="] = d.current;
+  d["JQAX0AbeQo6k+5mFRMEGLciyHRA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map

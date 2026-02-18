@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 iarratas chun p\xe1irt a ghlacadh agus cead\xfa riarth\xf3ra";
     },
-    get$youHaveLeveledUp() {
-      return "T\xe1 t\xfa tar \xe9is leibh\xe9al a bhaint amach!";
-    },
     get$sendActivities() {
       return "Seol gn\xedomha\xedochta\xed";
     },
@@ -5593,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3pHS3kNLNu+M+X+HQdNpxcm69po="] = d.current;
+  d["NnSZUdvh3ZDIZhBUnDwHQAIEB7g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

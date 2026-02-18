@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 permintaan bergabung dan persetujuan admin";
     },
-    get$youHaveLeveledUp() {
-      return "Anda telah naik level!";
-    },
     get$sendActivities() {
       return "Kirim kegiatan";
     },
@@ -5593,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["i2qhOfmJEK0j7x+ZXYHOJT8TWSM="] = d.current;
+  d["nfUhiG89/+VNyT4VcQgnrrEfI5o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

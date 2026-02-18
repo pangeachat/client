@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 so'rov yuborish va administrator tasdiqlashi";
     },
-    get$youHaveLeveledUp() {
-      return "Siz darajangizni oshirdingiz!";
-    },
     get$sendActivities() {
       return "Faoliyatlarni yuborish";
     },
@@ -5594,7 +5591,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MGDxMLc7fJOEkRtLu/Hdvjpp5oU="] = d.current;
+  d["U8i8dHUva5ZhfP1yQvFqsTZ0Bug="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 beg\xe4r att g\xe5 med och administrat\xf6rsgodk\xe4nnande";
     },
-    get$youHaveLeveledUp() {
-      return "Du har avancerat till n\xe4sta niv\xe5!";
-    },
     get$sendActivities() {
       return "Skicka aktiviteter";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qKcEVdS/kj0FcizRHlQmhoUOVSk="] = d.current;
+  d["kFSm/NWpipkQpZaDgF2BjaZrSJw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

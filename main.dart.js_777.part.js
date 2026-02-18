@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 foresp\xf8rsel om \xe5 bli med og administratorgodkjenning";
     },
-    get$youHaveLeveledUp() {
-      return "Du har niv\xe5 opp!";
-    },
     get$sendActivities() {
       return "Send aktiviteter";
     },
@@ -5593,7 +5590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ztT88pk+LA3KDcO8eknGX+kTHUo="] = d.current;
+  d["vVd9dxdJNzVtfum65v3wECFoaEo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_777.part.js.map

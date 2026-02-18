@@ -4170,9 +4170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 kahilingan na sumali at pag-apruba ng admin";
     },
-    get$youHaveLeveledUp() {
-      return "Naka-level up ka na!";
-    },
     get$sendActivities() {
       return "Magpadala ng mga aktibidad";
     },
@@ -5590,7 +5587,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hY2eclkFj5x430iNYUw4IY3gmQg="] = d.current;
+  d["d6Nd04T99Ufy1O23qC+FRTwmUTI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map
