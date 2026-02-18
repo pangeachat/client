@@ -1926,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-12 15:54:34.009508",
+  "@@last_modified": "2026-02-18 13:03:10.141570",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12463,6 +12463,16 @@
   },
   "managementSnackbarMessage": "Vi har lanceret abonnementsstyring i en ny fane. Hvis du ikke så den nye fane, bedes du tjekke din popup-blokker.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Lås op for øvelsesaktiviteter",
+  "hideEvents": "Skjul begivenheder",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

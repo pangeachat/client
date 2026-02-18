@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-12 15:55:32.706990",
+  "@@last_modified": "2026-02-18 13:04:00.038760",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11385,6 +11385,16 @@
   },
   "managementSnackbarMessage": "Uruchomiliśmy zarządzanie subskrypcjami w nowej karcie. Jeśli nie widzisz nowej karty, sprawdź swój blokator wyskakujących okienek.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Odblokuj zajęcia praktyczne",
+  "hideEvents": "Ukryj wydarzenia",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

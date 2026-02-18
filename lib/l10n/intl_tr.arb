@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-12 15:55:18.066423",
+  "@@last_modified": "2026-02-18 13:03:49.364309",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11603,6 +11603,16 @@
   },
   "managementSnackbarMessage": "Abonelik yönetimini yeni bir sekmede başlattık. Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Pratik etkinliklerini aç",
+  "hideEvents": "Etkinlikleri gizle",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

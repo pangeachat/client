@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-12 15:54:32.495414",
+  "@@last_modified": "2026-02-18 13:03:08.156623",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11322,6 +11322,16 @@
   },
   "managementSnackbarMessage": "Julkaisimme tilauksen hallinnan uudessa välilehdessä. Jos et nähnyt uutta välilehteä, tarkista ponnahdusikkunoiden estäjäsi.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Avaa harjoitustoiminnot",
+  "hideEvents": "Piilota tapahtumat",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

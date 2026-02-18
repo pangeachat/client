@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-02-12 15:55:09.873153",
+  "@@last_modified": "2026-02-18 13:03:42.229149",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12431,6 +12431,16 @@
   },
   "managementSnackbarMessage": "Lançamos a gestão de assinaturas em uma nova aba. Se você não viu a nova aba, por favor, verifique seu bloqueador de pop-ups.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloquear atividades de prática",
+  "hideEvents": "Ocultar eventos",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

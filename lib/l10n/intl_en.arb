@@ -5347,5 +5347,6 @@
   "emailVerificationFailed": "Email verification failed. Please try again.",
   "unlockLearningTools": "Unlock learning tools",
   "unlockPracticeActivities": "Unlock practice activities",
-  "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker."
+  "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
+  "hideEvents": "Hide events"
 }
