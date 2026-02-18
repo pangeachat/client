@@ -1206,24 +1206,26 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     // #Pangea
-    // setState(() {
-    //   replyEvent = null;
-    // });
     final reply = replyEvent.value;
     replyEvent.value = null;
-    // Pangea#
 
-    // #Pangea
     // Get transcript first so we can embed it in the audio event,
     // allowing the bot (and other clients) to read it immediately
     // without waiting for a separate representation event.
     final transcriptResult = await _getVoiceMessageTranscript(file);
     final stt = transcriptResult.result;
+    // Pangea#
 
+    // #Pangea
+    // room
     final eventId = await room
+        // Pangea#
         .sendFileEvent(
           file,
+          // #Pangea
+          // inReplyTo: replyEvent,
           inReplyTo: reply,
+          // Pangea#
           threadRootEventId: activeThreadId,
           extraContent: {
             'info': {...file.info, 'duration': duration},
@@ -1232,23 +1234,31 @@ class ChatController extends State<ChatPageWithRoom>
               'duration': duration,
               'waveform': waveform,
             },
+            // #Pangea
             'speaker_l1': pangeaController.userController.userL1Code,
             'speaker_l2': pangeaController.userController.userL2Code,
             if (stt != null) ModelKey.userStt: stt.toJson(),
+            // Pangea#
           },
         )
+        // #Pangea
+        // .catchError((e) {
         .catchError((e, s) {
           ErrorHandler.logError(
             e: e,
             s: s,
             data: {'roomId': roomId, 'file': file.name},
           );
+          // Pangea#
           scaffoldMessenger.showSnackBar(
             SnackBar(content: Text((e as Object).toLocalizedString(context))),
           );
           return null;
         });
-
+    // #Pangea
+    // setState(() {
+    //   replyEvent = null;
+    // });
     if (eventId == null) {
       ErrorHandler.logError(
         e: Exception('eventID null in voiceMessageAction'),
