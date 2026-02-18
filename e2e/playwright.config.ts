@@ -1,5 +1,15 @@
 import { defineConfig, devices } from "@playwright/test";
+import fs from "fs";
 import path from "path";
+
+// Load env vars from client/.env (no dotenv dependency needed)
+const envPath = path.resolve(__dirname, "..", ".env");
+if (fs.existsSync(envPath)) {
+  for (const line of fs.readFileSync(envPath, "utf-8").split("\n")) {
+    const match = line.match(/^\s*([\w]+)\s*=\s*['"]?(.+?)['"]?\s*$/);
+    if (match && !process.env[match[1]]) process.env[match[1]] = match[2];
+  }
+}
 
 /**
  * Playwright config for Pangea Chat E2E tests (web).

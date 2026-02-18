@@ -16,7 +16,7 @@ You are adding end-to-end and accessibility test coverage for a flow in the Pang
 
 ## Prerequisites
 
-- Read `client/.github/instructions/e2e-testing.instructions.md` for conventions and Flutter-Playwright patterns
+- Read `client/.github/instructions/authoring-playwright-and-axe-tests.instructions.md` for conventions and Flutter-Playwright patterns
 - Read `client/e2e/web-and-accessibility-next-steps.md` for the coverage matrix and status
 - Read `client/e2e/fixtures.ts` to understand what the shared fixture already does (navigation to `/`, semantics enablement, 3s wait)
 
@@ -94,9 +94,10 @@ Choose globs that match the Dart source files whose changes should trigger this 
 ### Step 7: Run and validate
 
 ```bash
-TEST_USER=$TEST_USER TEST_PASSWORD=$TEST_PASSWORD \
-  npx playwright test --config e2e/playwright.config.ts e2e/scripts/<flow>.spec.ts
+npx playwright test e2e/scripts/<flow>.spec.ts --config e2e/playwright.config.ts
 ```
+
+> Credentials come from `client/.env` automatically — see [run-playwright-and-axe-local.instructions.md](../../instructions/run-playwright-and-axe-local.instructions.md).
 
 If the test fails:
 

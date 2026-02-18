@@ -49,12 +49,3 @@ tooltip: L10n.of(context).settings,
 
 Files inside `lib/pangea/` do NOT need these markers — they are entirely Pangea-owned.
 
-## Documentation
-
-Detailed guides auto-load from `.github/instructions/` when editing matching files:
-
-| File | Applies To | Content |
-|------|-----------|---------|
-| `modules.instructions.md` | `lib/pangea/**` | Full map of ~30 feature modules |
-| `choreographer.instructions.md` | `lib/pangea/choreographer/**` | Writing assistance flow (IGC, IT, text editing) |
-| `events-and-tokens.instructions.md` | `lib/pangea/events/**,lib/pangea/extensions/**` | Custom Matrix events, token model, event wrappers |

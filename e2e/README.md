@@ -1,107 +1,65 @@
 # Pangea Chat E2E Tests
 
-Playwright-based end-to-end tests for the Pangea Chat web application.
+Playwright functional tests and axe-core accessibility audits for the Pangea Chat Flutter web app.
 
-## Prerequisites
+## Quick Start (for QA)
 
-- Node.js (LTS version)
-- A running Flutter web app at `http://localhost:8080` or access to staging deployment
+### 1. Run existing tests locally
 
-## Setup
+Follow the step-by-step setup guide:  
+→ [run-playwright-and-axe-local.instructions.md](../.github/instructions/run-playwright-and-axe-local.instructions.md)
 
-1. Install dependencies:
-   ```bash
-   npm install
-   npx playwright install chromium
-   ```
+It covers installing dependencies, configuring credentials, starting the Flutter app, and running all tests (functional + accessibility).
 
-2. Set environment variables:
-   ```bash
-   export TEST_USER="your-test-email@example.com"
-   export TEST_PASSWORD="your-test-password"
-   export BASE_URL="http://localhost:8080"  # or https://app.staging.pangea.chat
-   ```
+### 2. Write new tests for a flow
 
-## Running Tests
+Read the authoring conventions first, then use the guided skill:  
+→ [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) — patterns, selectors, credential delivery  
+→ [write-e2e-test/SKILL.md](../.github/skills/write-e2e-test/SKILL.md) — 9-step procedure for adding coverage to a new flow
 
-### Run all tests
-```bash
-npx playwright test --config e2e/playwright.config.ts
+### 3. See what still needs coverage
+
+The coverage matrix tracks which flows have tests:  
+→ [web-and-accessibility-next-steps.md](web-and-accessibility-next-steps.md)
+
+## File Layout
+
+```
+e2e/
+  fixtures.ts              # Shared fixture — enables Flutter semantics on each page load
+  auth.setup.ts            # Logs in once, saves session (incl. IndexedDB) for all specs
+  playwright.config.ts     # Config — loads .env, sets baseURL
+  trigger-map.json         # Maps file globs → spec files for diff-based CI selection
+  select-tests.js          # Diff-based test selector
+  scripts/
+    login.spec.ts          # Login flow
+    a11y.spec.ts           # Accessibility audits (axe-core, WCAG 2.1 AA)
 ```
 
-### Run a specific test
-```bash
-npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
-```
+## Key Concepts
 
-### Run tests triggered by git diff
-```bash
-# Web tests only
-node e2e/select-tests.js HEAD~1 --platform web | xargs npx playwright test --config e2e/playwright.config.ts
-
-# Mobile tests only
-node e2e/select-tests.js HEAD~1 --platform mobile
-
-# All tests (web + mobile)
-node e2e/select-tests.js HEAD~1 --platform all
-```
-
-### View test report
-```bash
-npx playwright show-report
-```
-
-## Architecture
-
-- **`fixtures.ts`** — Shared test setup that enables Flutter's semantics tree
-- **`auth.setup.ts`** — Authentication setup that runs once and saves login state
-- **`playwright.config.ts`** — Playwright configuration
-- **`scripts/*.spec.ts`** — Individual test scripts
-- **`trigger-map.json`** — Maps file globs to test scripts for diff-based test selection
-- **`select-tests.js`** — Script to select tests based on changed files
-
-## Flutter Semantics
-
-Flutter web renders to `<canvas>`, so Playwright can only interact with Flutter's **semantics tree** (accessibility tree). The `fixtures.ts` file automatically enables the semantics tree by clicking the `flt-semantics-placeholder` element on page load.
-
-All interactive widgets in the Flutter app must have:
-- `tooltip` on `IconButton`s
-- `Semantics(label: '...', button: true)` wrapper for `GestureDetector`/`InkWell`
-- Text content in `Text()` widgets
+- **Semantics tree**: Flutter renders to `<canvas>`. Playwright interacts via the accessibility tree, enabled by `fixtures.ts`. Widgets need `tooltip:`, `Semantics(label:)`, or text children to be testable.
+- **Auth state**: `auth.setup.ts` saves login state including IndexedDB (`storageState({ indexedDB: true })`). All specs reuse it.
+- **Diff-triggered CI**: `trigger-map.json` maps Dart source globs to spec files. On deploy, only affected specs run. Full suite runs nightly.
 
 ## CI Integration
 
-In GitHub Actions, set secrets:
-- `STAGING_TEST_USER`
-- `STAGING_TEST_PASSWORD`
+GitHub Actions secrets:
+- `STAGING_TEST_EMAIL` — test account email
+- `STAGING_TEST_PASSWORD` — test account password
 
-Map to environment variables:
 ```yaml
 env:
-  TEST_USER: ${{ secrets.STAGING_TEST_USER }}
-  TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
+  STAGING_TEST_EMAIL: ${{ secrets.STAGING_TEST_EMAIL }}
+  STAGING_TEST_PASSWORD: ${{ secrets.STAGING_TEST_PASSWORD }}
   BASE_URL: https://app.staging.pangea.chat
 ```
 
-## Writing Tests
+## Further Reading
 
-1. Create a new spec file in `e2e/scripts/`
-2. Import fixtures: `import { test, expect } from '../fixtures';`
-3. Write test cases using Playwright's accessibility selectors:
-   ```typescript
-   await page.getByRole('button', { name: 'Button Text' }).click();
-   await expect(page.getByText('Expected Text')).toBeVisible();
-   ```
-4. Add the test to `trigger-map.json` with file glob patterns
-
-## Debugging
-
-Run tests in headed mode with Playwright Inspector:
-```bash
-PWDEBUG=1 npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts
-```
-
-View accessibility tree:
-```bash
-npx playwright test e2e/scripts/login.spec.ts --config e2e/playwright.config.ts --debug
-```
+| Doc | Purpose |
+|---|---|
+| [run-playwright-and-axe-local.instructions.md](../.github/instructions/run-playwright-and-axe-local.instructions.md) | Local setup, running, debugging, troubleshooting |
+| [authoring-playwright-and-axe-tests.instructions.md](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) | Conventions, Flutter-Playwright patterns, axe-core rules |
+| [pangea-automated-test-design.md](pangea-automated-test-design.md) | Architecture and design rationale |
+| [web-and-accessibility-next-steps.md](web-and-accessibility-next-steps.md) | Coverage matrix and backlog |

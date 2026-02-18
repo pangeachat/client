@@ -26,31 +26,7 @@ Mobile (Patrol) plan: [mobile-testing-plan.md](mobile-testing-plan.md)
 
 For mobile (Patrol) status, see [mobile-testing-plan.md](mobile-testing-plan.md).
 
-### Implemented files
-
-```
-e2e/
-  fixtures.ts              # Enables Flutter semantics tree on each page load
-  auth.setup.ts            # Login once, save auth state
-  playwright.config.ts     # Chromium-only, auth setup project
-  trigger-map.json         # Script → glob mapping (11 entries)
-  select-tests.js          # Diff-based test selector (uses minimatch)
-  scripts/
-    login.spec.ts          # Login flow — landing page → email → credentials → chat list
-    a11y.spec.ts           # Accessibility regression tests via axe-core (WCAG 2.1 AA)
-  .auth/                   # gitignored — saved login state
-
-.github/
-  workflows/
-    e2e-tests.yml          # Post-deploy, manual, nightly triggers
-    copilot-setup-steps.yml # Node + Playwright for Copilot coding agent
-  agents/
-    e2e-tester.md          # Cloud agent profile with Flutter-Playwright patterns
-  instructions/
-    e2e-testing.instructions.md # Conventions and patterns for editing e2e files
-  skills/
-    write-e2e-test/SKILL.md # Guided procedure for writing new specs
-```
+For file layout and infrastructure details, see the [authoring doc](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "File Layout" and the [README](README.md).
 
 ---
 
@@ -84,15 +60,9 @@ Pick a flow from the table above (or add a new row), then invoke the `add-e2e-co
 
 ---
 
-## Accessibility regression testing (axe-core)
+## Outstanding axe-core violations
 
-`e2e/scripts/a11y.spec.ts` runs [axe-core](https://github.com/dequelabs/axe-core) WCAG 2.1 AA audits scoped to Flutter's `<flt-semantics-host>` overlay. It checks unauthenticated pages (landing, email login) and authenticated pages (chat list). The test fails when any page has accessibility violations — zero tolerance.
-
-### How it works
-
-- `AxeBuilder` with `.include("flt-semantics-host")` audits only the semantics tree, not the canvas
-- Tags: `wcag2a`, `wcag2aa`, `wcag21aa` (WCAG 2.1 Level AA)
-- Authenticated tests use `storageState({ indexedDB: true })` to restore the full Matrix session
+For how axe-core audits work, see the [authoring doc](../.github/instructions/authoring-playwright-and-axe-tests.instructions.md) § "Accessibility Testing (axe-core)".
 
 ### Example violations (first ones to fix)
 

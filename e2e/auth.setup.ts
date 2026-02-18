@@ -4,13 +4,9 @@ import { expect, test } from "./fixtures";
 /**
  * Authentication setup - logs in once and saves auth state for all tests.
  *
- * Uses environment variables:
- * - TEST_USER: Matrix username or email
- * - TEST_PASSWORD: Password
- *
- * In CI, these are populated from GitHub secrets:
- * - STAGING_TEST_EMAIL
- * - STAGING_TEST_PASSWORD
+ * Uses environment variables from .env:
+ * - STAGING_TEST_EMAIL: Matrix username or email
+ * - STAGING_TEST_PASSWORD: Password
  */
 
 const authFile = path.join(__dirname, ".auth", "user.json");
@@ -27,7 +23,7 @@ test("authenticate", async ({ page }) => {
     name: "Username or email",
   });
   await usernameField.click();
-  await usernameField.fill(process.env.TEST_USER!);
+  await usernameField.fill(process.env.STAGING_TEST_EMAIL!);
 
   // Small delay for Flutter to commit the input state
   await page.waitForTimeout(500);
@@ -35,7 +31,7 @@ test("authenticate", async ({ page }) => {
   // Fill password
   const passwordField = page.getByRole("textbox", { name: "Password" });
   await passwordField.click();
-  await passwordField.fill(process.env.TEST_PASSWORD!);
+  await passwordField.fill(process.env.STAGING_TEST_PASSWORD!);
 
   // Wait for Login button to become enabled
   await page.waitForTimeout(500);
