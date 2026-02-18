@@ -1,22 +1,15 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
+import 'package:flutter/material.dart';
 
-class PangeaChatListHeader extends StatelessWidget
-    implements PreferredSizeWidget {
+class PangeaChatListHeader extends StatelessWidget implements PreferredSizeWidget {
   final ChatListController controller;
   final bool globalSearch;
   final bool showSearch;
 
-  const PangeaChatListHeader({
-    super.key,
-    required this.controller,
-    required this.showSearch,
-    this.globalSearch = true,
-  });
+  const PangeaChatListHeader({super.key, required this.controller, required this.showSearch, this.globalSearch = true});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +29,7 @@ class PangeaChatListHeader extends StatelessWidget
                         controller: controller.searchController,
                         focusNode: controller.searchFocusNode,
                         textInputAction: TextInputAction.search,
-                        onChanged: (text) => controller.onSearchEnter(
-                          text,
-                          globalSearch: globalSearch,
-                        ),
+                        onChanged: (text) => controller.onSearchEnter(text, globalSearch: globalSearch),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: theme.colorScheme.secondaryContainer,
@@ -64,10 +54,7 @@ class PangeaChatListHeader extends StatelessWidget
                               : IconButton(
                                   tooltip: L10n.of(context).search,
                                   onPressed: controller.startSearch,
-                                  icon: Icon(
-                                    Icons.search_outlined,
-                                    color: theme.colorScheme.onPrimaryContainer,
-                                  ),
+                                  icon: Icon(Icons.search_outlined, color: theme.colorScheme.onPrimaryContainer),
                                 ),
                         ),
                       )

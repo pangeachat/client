@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/login/widgets/app_config_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginOrSignupView extends StatefulWidget {
   const LoginOrSignupView({super.key});
@@ -72,24 +70,17 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                 Column(
                   spacing: 12.0,
                   children: [
-                    PangeaLogoSvg(
-                      width: 50.0,
-                      forceColor: theme.colorScheme.onSurface,
-                    ),
+                    PangeaLogoSvg(width: 50.0, forceColor: theme.colorScheme.onSurface),
                     Text(
                       AppSettings.applicationName.value,
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 Text(
                   L10n.of(context).appDescription,
                   textAlign: TextAlign.center,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Column(
                   spacing: 16.0,
@@ -98,19 +89,13 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                     ElevatedButton(
                       // push instead of go so the app bar back button doesn't go to the language selection page
                       // https://github.com/pangeachat/client/issues/4421
-                      onPressed: () => context.push(
-                        _cachedSpaceCode != null
-                            ? '/home/language/signup'
-                            : '/home/language',
-                      ),
+                      onPressed: () =>
+                          context.push(_cachedSpaceCode != null ? '/home/language/signup' : '/home/language'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.primaryContainer,
                         foregroundColor: theme.colorScheme.onPrimaryContainer,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).start)],
-                      ),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(L10n.of(context).start)]),
                     ),
                     ElevatedButton(
                       onPressed: () => context.go('/home/login'),

@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
+import 'package:flutter/material.dart';
 
 class PasswordLoginView extends StatelessWidget {
   final LoginController controller;
@@ -42,9 +41,7 @@ class PasswordLoginView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextFormField(
-                          decoration: InputDecoration(
-                            hintText: L10n.of(context).usernameOrEmail,
-                          ),
+                          decoration: InputDecoration(hintText: L10n.of(context).usernameOrEmail),
                           autofillHints: const [AutofillHints.username],
                           textInputAction: TextInputAction.next,
                           validator: (value) {
@@ -54,8 +51,7 @@ class PasswordLoginView extends StatelessWidget {
                             return null;
                           },
                           controller: controller.usernameController,
-                          onTapOutside: (_) =>
-                              FocusManager.instance.primaryFocus?.unfocus(),
+                          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,15 +61,11 @@ class PasswordLoginView extends StatelessWidget {
                               obscureText: !controller.showPassword,
                               textInputAction: TextInputAction.go,
                               onFieldSubmitted: (_) {
-                                controller.enabledSignIn
-                                    ? controller.login()
-                                    : null;
+                                controller.enabledSignIn ? controller.login() : null;
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return L10n.of(
-                                    context,
-                                  ).pleaseEnterYourPassword;
+                                  return L10n.of(context).pleaseEnterYourPassword;
                                 }
                                 return null;
                               },
@@ -82,28 +74,18 @@ class PasswordLoginView extends StatelessWidget {
                                 hintText: L10n.of(context).password,
                                 suffixIcon: IconButton(
                                   tooltip: L10n.of(context).showPassword,
-                                  icon: Icon(
-                                    controller.showPassword
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                  ),
+                                  icon: Icon(controller.showPassword ? Icons.visibility_off : Icons.visibility),
                                   onPressed: controller.toggleShowPassword,
                                 ),
                               ),
-                              onTapOutside: (_) =>
-                                  FocusManager.instance.primaryFocus?.unfocus(),
+                              onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                             ),
                             TextButton(
-                              onPressed:
-                                  controller.loadingSignIn ||
-                                      controller.client == null
+                              onPressed: controller.loadingSignIn || controller.client == null
                                   ? () {}
                                   : controller.passwordForgotten,
                               style: TextButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                  vertical: 4.0,
-                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                                 minimumSize: const Size(0, 0),
                               ),
                               child: Text(L10n.of(context).forgotPassword),
@@ -114,17 +96,12 @@ class PasswordLoginView extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: controller.enabledSignIn
-                        ? controller.login
-                        : null,
+                    onPressed: controller.enabledSignIn ? controller.login : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: theme.colorScheme.primaryContainer,
                       foregroundColor: theme.colorScheme.onPrimaryContainer,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text(L10n.of(context).login)],
-                    ),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(L10n.of(context).login)]),
                   ),
                 ],
               ),
