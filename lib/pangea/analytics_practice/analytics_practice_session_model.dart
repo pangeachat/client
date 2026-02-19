@@ -1,4 +1,4 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -128,11 +128,9 @@ class AnalyticsPracticeSessionModel {
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
   // Maximum activities to attempt (including skips)
-  int get _maxAttempts =>
-      (AnalyticsPracticeConstants.practiceGroupSize +
-              AnalyticsPracticeConstants.errorBufferSize)
-          .clamp(0, practiceTargets.length)
-          .toInt();
+  int get _maxAttempts => AnalyticsPracticeConstants.targetsToGenerate
+      .clamp(0, practiceTargets.length)
+      .toInt();
 
   int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize.clamp(
     0,
@@ -186,8 +184,8 @@ class AnalyticsPracticeSessionModel {
   void incrementSkippedActivities() =>
       state = state.copyWith(skippedActivities: state.skippedActivities + 1);
 
-  void submitAnswer(OneConstructUse use) =>
-      state = state.copyWith(completedUses: [...state.completedUses, use]);
+  void submitAnswer(List<OneConstructUse> uses) =>
+      state = state.copyWith(completedUses: [...state.completedUses, ...uses]);
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(

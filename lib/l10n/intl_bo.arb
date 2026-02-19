@@ -3781,7 +3781,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-02-12 15:55:26.462139",
+  "@@last_modified": "2026-02-18 13:03:55.752683",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10664,6 +10664,16 @@
   },
   "managementSnackbarMessage": "Mokhoro a thakhisa taolo ya ngwaga ka fa tabeng e ncha. Ha o ka se bone tab e ncha, ka kopo hlahloba blocker ya hao ya popup.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Unlock practice activities",
+  "hideEvents": "Hide events",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

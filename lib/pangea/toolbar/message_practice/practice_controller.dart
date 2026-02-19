@@ -33,12 +33,54 @@ class PracticeController with ChangeNotifier {
 
   PracticeActivityModel? _activity;
 
-  MessagePracticeMode practiceMode = MessagePracticeMode.noneSelected;
+  MessagePracticeMode _practiceMode = MessagePracticeMode.noneSelected;
 
-  MorphSelection? selectedMorph;
-  PracticeChoice? selectedChoice;
+  MorphSelection? _selectedMorph;
+  PracticeChoice? _selectedChoice;
 
   PracticeSelection? practiceSelection;
+
+  MessagePracticeMode get practiceMode => _practiceMode;
+  MorphSelection? get selectedMorph => _selectedMorph;
+  PracticeChoice? get selectedChoice => _selectedChoice;
+
+  PracticeTarget? get currentTarget {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return null;
+    if (activityType == ActivityTypeEnum.morphId) {
+      if (_selectedMorph == null) return null;
+      return practiceSelection?.getMorphTarget(
+        _selectedMorph!.token,
+        _selectedMorph!.morph,
+      );
+    }
+    return practiceSelection?.getTarget(activityType);
+  }
+
+  bool get showChoiceShimmer {
+    if (_activity == null) return false;
+    if (_activity is MorphMatchPracticeActivityModel) {
+      return _selectedMorph != null &&
+          !PracticeRecordController.hasResponse(_activity!.practiceTarget);
+    }
+
+    return _selectedChoice == null &&
+        !PracticeRecordController.hasAnyCorrectChoices(
+          _activity!.practiceTarget,
+        );
+  }
+
+  bool get isTotallyDone =>
+      isPracticeSessionDone(ActivityTypeEnum.emoji) &&
+      isPracticeSessionDone(ActivityTypeEnum.wordMeaning) &&
+      isPracticeSessionDone(ActivityTypeEnum.wordFocusListening) &&
+      isPracticeSessionDone(ActivityTypeEnum.morphId);
+
+  bool get isCurrentPracticeSessionDone {
+    final activityType = _practiceMode.associatedActivityType;
+    if (activityType == null) return false;
+    return isPracticeSessionDone(activityType);
+  }
 
   bool? wasCorrectMatch(PracticeChoice choice) {
     if (_activity == null) return false;
@@ -56,12 +98,6 @@ class PracticeController with ChangeNotifier {
     );
   }
 
-  bool get isTotallyDone =>
-      isPracticeSessionDone(ActivityTypeEnum.emoji) &&
-      isPracticeSessionDone(ActivityTypeEnum.wordMeaning) &&
-      isPracticeSessionDone(ActivityTypeEnum.wordFocusListening) &&
-      isPracticeSessionDone(ActivityTypeEnum.morphId);
-
   bool isPracticeSessionDone(ActivityTypeEnum activityType) =>
       practiceSelection
           ?.activities(activityType)
@@ -70,96 +106,47 @@ class PracticeController with ChangeNotifier {
 
   bool isPracticeButtonEmpty(PangeaToken token) {
     final target = practiceTargetForToken(token);
-
-    if (MessagePracticeMode.wordEmoji == practiceMode) {
-      if (token.vocabConstructID.userSetEmoji != null) {
-        return false;
-      }
-      // Keep open even when completed to show emoji
-      return target == null;
-    }
-
-    if (MessagePracticeMode.wordMorph == practiceMode) {
-      // Keep open even when completed to show morph icon
-      return target == null;
-    }
-
-    return target == null ||
-        PracticeRecordController.isCompleteByToken(target, token);
-  }
-
-  bool get showChoiceShimmer {
-    if (_activity == null) return false;
-    if (_activity is MorphMatchPracticeActivityModel) {
-      return selectedMorph != null &&
-          !PracticeRecordController.hasResponse(_activity!.practiceTarget);
-    }
-
-    return selectedChoice == null &&
-        !PracticeRecordController.hasAnyCorrectChoices(
-          _activity!.practiceTarget,
-        );
-  }
-
-  Future<void> _fetchPracticeSelection() async {
-    if (pangeaMessageEvent.messageDisplayRepresentation?.tokens == null) return;
-    practiceSelection = await PracticeSelectionRepo.get(
-      pangeaMessageEvent.eventId,
-      pangeaMessageEvent.messageDisplayLangCode,
-      pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
-    );
-  }
-
-  Future<Result<PracticeActivityModel>> fetchActivityModel(
-    PracticeTarget target,
-  ) async {
-    final req = MessageActivityRequest(
-      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
-      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      activityQualityFeedback: null,
-      target: target,
-    );
-
-    final result = await PracticeRepo.getPracticeActivity(
-      req,
-      messageInfo: pangeaMessageEvent.event.content,
-    );
-    if (result.isValue) {
-      _activity = result.result;
-    }
-
-    return result;
+    return switch (_practiceMode) {
+      // Keep open when completed if emoji assigned
+      MessagePracticeMode.wordEmoji =>
+        target == null || token.vocabConstructID.userSetEmoji != null,
+      // Keep open when completed to show morph icon
+      MessagePracticeMode.wordMorph => target == null,
+      _ =>
+        target == null ||
+            PracticeRecordController.isCompleteByToken(target, token),
+    };
   }
 
   PracticeTarget? practiceTargetForToken(PangeaToken token) {
-    if (practiceMode.associatedActivityType == null) return null;
+    if (_practiceMode.associatedActivityType == null) return null;
     return practiceSelection
-        ?.activities(practiceMode.associatedActivityType!)
+        ?.activities(_practiceMode.associatedActivityType!)
         .firstWhereOrNull((a) => a.tokens.contains(token));
   }
 
   void updateToolbarMode(MessagePracticeMode mode) {
-    selectedChoice = null;
-    practiceMode = mode;
-    if (practiceMode != MessagePracticeMode.wordMorph) {
-      selectedMorph = null;
+    _selectedChoice = null;
+    _practiceMode = mode;
+    if (_practiceMode != MessagePracticeMode.wordMorph) {
+      _selectedMorph = null;
     }
     notifyListeners();
   }
 
-  void onChoiceSelect(PracticeChoice? choice, [bool force = false]) {
+  void updatePracticeMorph(MorphSelection newMorph) {
+    _practiceMode = MessagePracticeMode.wordMorph;
+    _selectedMorph = newMorph;
+    notifyListeners();
+  }
+
+  void onChoiceSelect(PracticeChoice? choice) {
     if (_activity == null) return;
-    if (selectedChoice == choice && !force) {
-      selectedChoice = null;
+    if (_selectedChoice == choice) {
+      _selectedChoice = null;
     } else {
-      selectedChoice = choice;
+      _selectedChoice = choice;
     }
-    notifyListeners();
-  }
-
-  void onSelectMorph(MorphSelection newMorph) {
-    practiceMode = MessagePracticeMode.wordMorph;
-    selectedMorph = newMorph;
     notifyListeners();
   }
 
@@ -247,5 +234,35 @@ class PracticeController with ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  Future<void> _fetchPracticeSelection() async {
+    if (pangeaMessageEvent.messageDisplayRepresentation?.tokens == null) return;
+    practiceSelection = await PracticeSelectionRepo.get(
+      pangeaMessageEvent.eventId,
+      pangeaMessageEvent.messageDisplayLangCode,
+      pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
+    );
+  }
+
+  Future<Result<PracticeActivityModel>> fetchActivityModel(
+    PracticeTarget target,
+  ) async {
+    final req = MessageActivityRequest(
+      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
+      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
+      activityQualityFeedback: null,
+      target: target,
+    );
+
+    final result = await PracticeRepo.getPracticeActivity(
+      req,
+      messageInfo: pangeaMessageEvent.event.content,
+    );
+    if (result.isValue) {
+      _activity = result.result;
+    }
+
+    return result;
   }
 }

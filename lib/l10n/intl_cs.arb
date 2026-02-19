@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-02-12 15:55:02.189038",
+  "@@last_modified": "2026-02-18 13:03:33.330303",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11835,6 +11835,16 @@
   },
   "managementSnackbarMessage": "Spustili jsme správu předplatného v novém okně. Pokud jste novou kartu neviděli, zkontrolujte prosím svůj blokátor vyskakovacích oken.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Odemknout cvičební aktivity",
+  "hideEvents": "Skrýt události",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

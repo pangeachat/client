@@ -5,7 +5,6 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
@@ -56,14 +55,15 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                   final complete = widget.controller.isPracticeSessionDone(
                     m.associatedActivityType!,
                   );
+
+                  final practiceMode = widget.controller.practiceMode;
                   return ToolbarButton(
                     mode: m,
                     setMode: () => widget.controller.updateToolbarMode(m),
                     isComplete: complete,
-                    isSelected: widget.controller.practiceMode == m,
+                    isSelected: practiceMode == m,
                     shimmer:
-                        widget.controller.practiceMode ==
-                            MessagePracticeMode.noneSelected &&
+                        practiceMode == MessagePracticeMode.noneSelected &&
                         !complete,
                   );
                 }),
@@ -122,9 +122,9 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
     if (controller.pangeaMessageEvent.isAudioMessage == true) {
       return const SizedBox();
     }
-    final activityType = mode.associatedActivityType;
-    final activityCompleted =
-        activityType != null && controller.isPracticeSessionDone(activityType);
+
+    final target = controller.currentTarget;
+    final activityCompleted = controller.isCurrentPracticeSessionDone;
 
     switch (mode) {
       case MessagePracticeMode.noneSelected:
@@ -139,7 +139,6 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           return const _AllDoneWidget();
         }
 
-        final target = controller.practiceSelection?.getTarget(activityType!);
         if (target == null || activityCompleted) {
           return const Icon(
             Symbols.fitness_center,
@@ -163,15 +162,6 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
             Symbols.fitness_center,
             size: 60.0,
             color: AppConfig.goldLight,
-          );
-        }
-
-        PracticeTarget? target;
-        if (controller.practiceSelection != null &&
-            controller.selectedMorph != null) {
-          target = controller.practiceSelection!.getMorphTarget(
-            controller.selectedMorph!.token,
-            controller.selectedMorph!.morph,
           );
         }
 

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-12 15:55:28.100164",
+  "@@last_modified": "2026-02-18 13:03:56.668101",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "我们在新标签页中启动了订阅管理。如果您没有看到新标签页，请检查您的弹出窗口拦截器。",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "解锁练习活动",
+  "hideEvents": "隐藏事件",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

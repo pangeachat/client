@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-12 15:55:05.568287",
+  "@@last_modified": "2026-02-18 13:03:35.678730",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11282,6 +11282,16 @@
   },
   "managementSnackbarMessage": "Мы запусцілі кіраванне падпіскай у новым укладцы. Калі вы не ўбачылі новую ўкладку, калі ласка, праверце свой блакіроўшчык усплывальных акнаў.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Разблакаваць практыкаванні",
+  "hideEvents": "Схаваць падзеі",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

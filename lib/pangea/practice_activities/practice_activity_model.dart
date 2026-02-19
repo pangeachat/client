@@ -28,6 +28,8 @@ sealed class PracticeActivityModel {
         : null,
   );
 
+  bool isCorrect(String choice, PangeaToken token) => false;
+
   ActivityTypeEnum get activityType {
     switch (this) {
       case MorphCategoryPracticeActivityModel():
@@ -225,24 +227,32 @@ sealed class MultipleChoicePracticeActivityModel extends PracticeActivityModel {
     required this.multipleChoiceContent,
   });
 
-  bool isCorrect(String choice) => multipleChoiceContent.isCorrect(choice);
+  @override
+  bool isCorrect(String choice, PangeaToken _) =>
+      multipleChoiceContent.isCorrect(choice);
 
-  OneConstructUse constructUse(String choiceContent) {
+  List<OneConstructUse> constructUses(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
     final useType = correct
         ? activityType.correctUse
         : activityType.incorrectUse;
-    final token = tokens.first;
 
-    return OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
-      category: token.pos,
-      lemma: token.lemma.text,
-      form: token.lemma.text,
-      xp: useType.pointValue,
-    );
+    return tokens
+        .map(
+          (token) => OneConstructUse(
+            useType: useType,
+            constructType: ConstructTypeEnum.vocab,
+            metadata: ConstructUseMetaData(
+              roomId: null,
+              timeStamp: DateTime.now(),
+            ),
+            category: token.pos,
+            lemma: token.lemma.text,
+            form: token.lemma.text,
+            xp: useType.pointValue,
+          ),
+        )
+        .toList();
   }
 
   @override
@@ -262,7 +272,8 @@ sealed class MatchPracticeActivityModel extends PracticeActivityModel {
     required this.matchContent,
   });
 
-  bool isCorrect(PangeaToken token, String choice) =>
+  @override
+  bool isCorrect(String choice, PangeaToken token) =>
       matchContent.matchInfo[token.vocabForm]!.contains(choice);
 
   @override
@@ -289,6 +300,31 @@ sealed class MorphPracticeActivityModel
       '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}-${morphFeature.name}';
 
   @override
+  List<OneConstructUse> constructUses(String choiceContent) {
+    final correct = multipleChoiceContent.isCorrect(choiceContent);
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
+
+    return tokens
+        .map(
+          (token) => OneConstructUse(
+            useType: useType,
+            constructType: ConstructTypeEnum.morph,
+            metadata: ConstructUseMetaData(
+              roomId: null,
+              timeStamp: DateTime.now(),
+            ),
+            category: morphFeature.name,
+            lemma: token.getMorphTag(morphFeature)!,
+            form: token.lemma.form,
+            xp: useType.pointValue,
+          ),
+        )
+        .toList();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
     json['morph_feature'] = morphFeature.name;
@@ -305,26 +341,6 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
     required super.multipleChoiceContent,
     required this.exampleMessageInfo,
   });
-
-  @override
-  OneConstructUse constructUse(String choiceContent) {
-    final correct = multipleChoiceContent.isCorrect(choiceContent);
-    final token = tokens.first;
-    final useType = correct
-        ? activityType.correctUse
-        : activityType.incorrectUse;
-    final tag = token.getMorphTag(morphFeature)!;
-
-    return OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.morph,
-      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
-      category: morphFeature.name,
-      lemma: tag,
-      form: token.lemma.form,
-      xp: useType.pointValue,
-    );
-  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -359,7 +375,7 @@ class VocabAudioPracticeActivityModel
   });
 
   @override
-  OneConstructUse constructUse(String choiceContent) {
+  List<OneConstructUse> constructUses(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
     final useType = correct
         ? activityType.correctUse
@@ -371,15 +387,17 @@ class VocabAudioPracticeActivityModel
       orElse: () => tokens.first,
     );
 
-    return OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
-      category: matchingToken.pos,
-      lemma: matchingToken.lemma.text,
-      form: matchingToken.lemma.text,
-      xp: useType.pointValue,
-    );
+    return [
+      OneConstructUse(
+        useType: useType,
+        constructType: ConstructTypeEnum.vocab,
+        metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
+        category: matchingToken.pos,
+        lemma: matchingToken.lemma.text,
+        form: matchingToken.lemma.text,
+        xp: useType.pointValue,
+      ),
+    ];
   }
 
   @override

@@ -28,7 +28,30 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
   @override
   void initState() {
     super.initState();
-    _memberSubscription ??= widget.room.client.onRoomState.stream
+    _setKnockingSubscription();
+  }
+
+  @override
+  void didUpdateWidget(covariant KnockingUsersIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.room.id != widget.room.id) {
+      _setKnockingSubscription();
+    }
+  }
+
+  @override
+  void dispose() {
+    _memberSubscription?.cancel();
+    super.dispose();
+  }
+
+  bool _isMemberUpdate(({String roomId, StrippedStateEvent state}) event) =>
+      event.roomId == widget.room.id &&
+      event.state.type == EventTypes.RoomMember;
+
+  void _setKnockingSubscription() {
+    _memberSubscription?.cancel();
+    _memberSubscription = widget.room.client.onRoomState.stream
         .where(_isMemberUpdate)
         .rateLimit(const Duration(seconds: 1))
         .listen((_) => _setKnockingUsers());
@@ -40,16 +63,6 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
           true,
         )
         .then((_) => _setKnockingUsers());
-  }
-
-  bool _isMemberUpdate(({String roomId, StrippedStateEvent state}) event) =>
-      event.roomId == widget.room.id &&
-      event.state.type == EventTypes.RoomMember;
-
-  @override
-  void dispose() {
-    _memberSubscription?.cancel();
-    super.dispose();
   }
 
   void _setKnockingUsers() {

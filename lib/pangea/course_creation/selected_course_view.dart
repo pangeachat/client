@@ -166,12 +166,6 @@ class SelectedCourseView extends StatelessWidget {
                                               fontSize: titleFontSize,
                                             ),
                                           ),
-                                          Text(
-                                            topic.description,
-                                            style: const TextStyle(
-                                              fontSize: descFontSize,
-                                            ),
-                                          ),
                                           Padding(
                                             padding:
                                                 const EdgeInsetsGeometry.symmetric(
@@ -189,6 +183,12 @@ class SelectedCourseView extends StatelessWidget {
                                                     iconSize: smallIconSize,
                                                   ),
                                               ],
+                                            ),
+                                          ),
+                                          Text(
+                                            topic.description,
+                                            style: const TextStyle(
+                                              fontSize: descFontSize,
                                             ),
                                           ),
                                         ],

@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_service.dart';
 import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
-import 'package:fluffychat/pangea/analytics_data/level_up_analytics_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -49,7 +48,6 @@ class AnalyticsDataService {
 
   late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
-  late final LevelUpAnalyticsService levelUpService;
   AnalyticsSyncController? _syncController;
   final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
@@ -58,11 +56,6 @@ class AnalyticsDataService {
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
-    levelUpService = LevelUpAnalyticsService(
-      client: client,
-      ensureInitialized: () => _ensureInitialized(),
-      dataService: this,
-    );
     _initDatabase(client);
   }
 

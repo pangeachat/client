@@ -59,6 +59,7 @@ class MatchActivityCard extends StatelessWidget {
       fontSize = fontSize * 1.5;
     }
 
+    final selectedChoice = controller.selectedChoice;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
@@ -75,13 +76,13 @@ class MatchActivityCard extends StatelessWidget {
           ) {
             final bool? wasCorrect = controller.wasCorrectMatch(cf);
             return ChoiceAnimationWidget(
-              isSelected: controller.selectedChoice == cf,
+              isSelected: selectedChoice == cf,
               isCorrect: wasCorrect,
               child: PracticeMatchItem(
                 token: currentActivity.tokens.firstWhereOrNull(
                   (t) => t.vocabConstructID == cf.form.cId,
                 ),
-                isSelected: controller.selectedChoice == cf,
+                isSelected: selectedChoice == cf,
                 isCorrect: wasCorrect,
                 constructForm: cf,
                 content: choiceDisplayContent(

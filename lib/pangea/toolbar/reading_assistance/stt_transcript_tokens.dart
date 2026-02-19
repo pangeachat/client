@@ -29,7 +29,6 @@ class SttTranscriptTokens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("Tokens: ${tokens.map((t) => t.toJson())}");
     if (model.transcript.sttTokens.isEmpty) {
       return Text(
         model.transcript.text,

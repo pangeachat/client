@@ -485,22 +485,14 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             final practice =
                                 widget.overlayController.practiceController;
 
-                            final instruction =
-                                practice.practiceMode.instruction;
-
-                            final type =
-                                practice.practiceMode.associatedActivityType;
+                            final practiceMode = practice.practiceMode;
+                            final instruction = practiceMode.instruction;
                             final complete =
-                                type != null &&
-                                practice.isPracticeSessionDone(type);
+                                practice.isCurrentPracticeSessionDone;
 
                             if (instruction != null && !complete) {
                               return InstructionsInlineTooltip(
-                                instructionsEnum: widget
-                                    .overlayController
-                                    .practiceController
-                                    .practiceMode
-                                    .instruction!,
+                                instructionsEnum: practiceMode.instruction!,
                                 padding: const EdgeInsets.all(16.0),
                                 animate: false,
                               );

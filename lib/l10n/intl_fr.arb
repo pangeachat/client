@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-02-12 15:55:46.639594",
+  "@@last_modified": "2026-02-18 13:04:11.013576",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11669,6 +11669,16 @@
   },
   "managementSnackbarMessage": "Nous avons lancé la gestion des abonnements dans un nouvel onglet. Si vous n'avez pas vu le nouvel onglet, veuillez vérifier votre bloqueur de fenêtres contextuelles.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Déverrouiller les activités pratiques",
+  "hideEvents": "Masquer les événements",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

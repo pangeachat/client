@@ -84,7 +84,7 @@ class TokenPracticeButton extends StatelessWidget {
             active: _isSelected,
             textColor: textColor,
             width: tokenButtonHeight,
-            onTap: () => controller.onSelectMorph(
+            onTap: () => controller.updatePracticeMorph(
               MorphSelection(token, _activity!.morphFeature!),
             ),
             shimmer:

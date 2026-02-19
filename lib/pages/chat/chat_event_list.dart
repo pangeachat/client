@@ -173,6 +173,12 @@ class ChatEventList extends StatelessWidget {
                   previousEvent?.isCollapsedState == true &&
                   !controller.expandedEventIds.contains(event.eventId);
 
+              // #Pangea
+              final nextIsCollapsed =
+                  nextEvent?.isCollapsedState == true &&
+                  !controller.expandedEventIds.contains(nextEvent?.eventId);
+              // Pangea#
+
               return AutoScrollTag(
                 key: ValueKey(event.eventId),
                 index: i,
@@ -229,6 +235,9 @@ class ChatEventList extends StatelessWidget {
                           !controller.expandedEventIds.contains(event.eventId),
                         )
                       : null,
+                  // #Pangea
+                  moreEventButtonExpands: nextIsCollapsed,
+                  // Pangea#
                 ),
               );
             },
