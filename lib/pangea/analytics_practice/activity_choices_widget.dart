@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -12,6 +10,7 @@ import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class ActivityChoices extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -85,9 +84,10 @@ class ActivityChoices extends StatelessWidget {
                                       .map(
                                         (choice) => ActivityChoiceCard(
                                           activity: value,
-                                          targetId: controller.choiceTargetId(
-                                            choice.choiceId,
-                                          ),
+                                          targetId: controller
+                                              .getChoiceTargetId(
+                                                choice.choiceId,
+                                              ),
                                           choiceId: choice.choiceId,
                                           onPressed: () => controller
                                               .onSelectChoice(choice.choiceId),
@@ -114,7 +114,9 @@ class ActivityChoices extends StatelessWidget {
                       .map(
                         (choice) => ActivityChoiceCard(
                           activity: value,
-                          targetId: controller.choiceTargetId(choice.choiceId),
+                          targetId: controller.getChoiceTargetId(
+                            choice.choiceId,
+                          ),
                           choiceId: choice.choiceId,
                           onPressed: () =>
                               controller.onSelectChoice(choice.choiceId),

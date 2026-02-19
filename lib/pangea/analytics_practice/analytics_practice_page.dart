@@ -1,10 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -14,6 +11,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_controller.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dart';
@@ -32,6 +30,7 @@ import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.da
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
@@ -59,19 +58,6 @@ class _PracticeQueueEntry {
   _PracticeQueueEntry({required this.request, required this.completer});
 }
 
-class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
-  final ConstructTypeEnum type;
-  SessionLoader({required this.type});
-
-  @override
-  Future<AnalyticsPracticeSessionModel> fetch() {
-    final l2 =
-        MatrixState.pangeaController.userController.userL2?.langCodeShort;
-    if (l2 == null) throw Exception('User L2 language not set');
-    return AnalyticsPracticeSessionRepo.get(type, l2);
-  }
-}
-
 class AnalyticsPractice extends StatefulWidget {
   static bool bypassExitConfirmation = true;
 
@@ -84,8 +70,7 @@ class AnalyticsPractice extends StatefulWidget {
 
 class AnalyticsPracticeState extends State<AnalyticsPractice>
     with AnalyticsUpdater {
-  late final SessionLoader _sessionLoader;
-
+  late final PracticeSessionController _sessionController;
   final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
   activityState = ValueNotifier(const AsyncState.idle());
 
@@ -107,7 +92,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   // Track if we're showing the completion message for audio activities
   final ValueNotifier<bool> showingAudioCompletion = ValueNotifier<bool>(false);
   final ValueNotifier<int> hintsUsedNotifier = ValueNotifier<int>(0);
-  static const int maxHints = 5;
 
   // Track number of correct answers selected for audio activities (for progress ovals)
   final ValueNotifier<int> correctAnswersSelected = ValueNotifier<int>(0);
@@ -122,20 +106,23 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   @override
   void initState() {
     super.initState();
-    _sessionLoader = SessionLoader(type: widget.type);
-    _startSession();
-    _languageStreamSubscription = MatrixState
-        .pangeaController
-        .userController
-        .languageStream
-        .stream
-        .listen((_) => _onLanguageUpdate());
+    _sessionController = PracticeSessionController(type: widget.type);
+    _waitForAnalytics().then((_) {
+      if (!mounted) return;
+      _startSession();
+      _languageStreamSubscription = MatrixState
+          .pangeaController
+          .userController
+          .languageStream
+          .stream
+          .listen((_) => _onLanguageUpdate());
+    });
   }
 
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    _sessionLoader.dispose();
+    _sessionController.dispose();
     activityState.dispose();
     activityTarget.dispose();
     progressNotifier.dispose();
@@ -148,20 +135,18 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     super.dispose();
   }
 
+  AnalyticsDataService get _analyticsService =>
+      Matrix.of(context).analyticsDataService;
+
+  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
+      _analyticsService.derivedData(_l2!.langCodeShort);
+
   MultipleChoicePracticeActivityModel? get _currentActivity =>
       activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
       ? (activityState.value
                 as AsyncLoaded<MultipleChoicePracticeActivityModel>)
             .value
       : null;
-
-  bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
-
-  ValueNotifier<AsyncState<AnalyticsPracticeSessionModel>> get sessionState =>
-      _sessionLoader.state;
-
-  AnalyticsDataService get _analyticsService =>
-      Matrix.of(context).analyticsDataService;
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
@@ -225,8 +210,27 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     return _choiceEmojis[key]?[choiceId];
   }
 
-  String choiceTargetId(String choiceId) =>
+  String getChoiceTargetId(String choiceId) =>
       '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
+
+  PangeaAudioFile? getAudioFile(String? eventId) {
+    if (eventId == null) return null;
+    return _audioFiles[eventId];
+  }
+
+  String? getAudioTranslation(String? eventId) {
+    if (eventId == null) return null;
+    final translation = _audioTranslations[eventId];
+    return translation;
+  }
+
+  List<InlineSpan>? getAudioExampleMessage() {
+    final activity = _currentActivity;
+    if (activity is VocabAudioPracticeActivityModel) {
+      return activity.exampleMessage.exampleMessage;
+    }
+    return null;
+  }
 
   void _clearState() {
     activityState.value = const AsyncState.loading();
@@ -245,12 +249,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.value = const AsyncState.idle();
 
     AnalyticsPractice.bypassExitConfirmation = true;
-  }
-
-  void updateElapsedTime(int seconds) {
-    if (_sessionLoader.isLoaded) {
-      _sessionLoader.value!.setElapsedSeconds(seconds);
-    }
   }
 
   void _playAudio() {
@@ -296,24 +294,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
   }
 
-  Future<void> _startSession() async {
-    await _waitForAnalytics();
-    await _sessionLoader.load();
-    if (_sessionLoader.isError) {
-      AnalyticsPractice.bypassExitConfirmation = true;
-      return;
-    }
-
-    progressNotifier.value = _sessionLoader.value!.progress;
-    await _continueSession();
-  }
-
-  Future<void> reloadSession() async {
-    _clearState();
-    _sessionLoader.reset();
-    await _startSession();
-  }
-
   Future<void> reloadCurrentActivity() async {
     if (activityTarget.value == null) return;
 
@@ -332,20 +312,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       if (!mounted) return;
       activityState.value = AsyncState.error(e);
     }
-  }
-
-  Future<void> _completeSession() async {
-    _sessionLoader.value!.finishSession();
-    setState(() {});
-
-    final bonus = _sessionLoader.value!.state.allBonusUses;
-    await _analyticsService.updateService.addAnalytics(
-      null,
-      bonus,
-      _l2!.langCodeShort,
-      forceUpdate: true,
-    );
-    AnalyticsPractice.bypassExitConfirmation = true;
   }
 
   bool _continuing = false;
@@ -511,17 +477,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _audioTranslations[eventId] = translation;
   }
 
-  PangeaAudioFile? getAudioFile(String? eventId) {
-    if (eventId == null) return null;
-    return _audioFiles[eventId];
-  }
-
-  String? getAudioTranslation(String? eventId) {
-    if (eventId == null) return null;
-    final translation = _audioTranslations[eventId];
-    return translation;
-  }
-
   Future<void> _fetchLemmaInfo(
     String requestKey,
     List<String> choiceIds,
@@ -568,16 +523,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService.addAnalytics(null, [
       use,
     ], _l2!.langCodeShort);
-  }
-
-  void onHintPressed({bool increment = true}) {
-    if (increment) {
-      if (hintsUsedNotifier.value >= maxHints) return;
-      if (!hintPressedNotifier.value) {
-        hintsUsedNotifier.value++;
-      }
-    }
-    hintPressedNotifier.value = !hintPressedNotifier.value;
   }
 
   Future<void> onAudioContinuePressed() async {
@@ -644,7 +589,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final uses = activity.constructUses(choiceContent);
     _sessionLoader.value!.submitAnswer(uses);
     await _analyticsService.updateService.addAnalytics(
-      choiceTargetId(choiceContent),
+      getChoiceTargetId(choiceContent),
       uses,
       _l2!.langCodeShort,
     );
@@ -702,48 +647,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct, _l2!.langCodeShort),
     );
-  }
-
-  List<InlineSpan>? getAudioExampleMessage() {
-    final activity = _currentActivity;
-    if (activity is VocabAudioPracticeActivityModel) {
-      return activity.exampleMessage.exampleMessage;
-    }
-    return null;
-  }
-
-  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
-      _analyticsService.derivedData(_l2!.langCodeShort);
-
-  /// Returns congratulations message based on performance
-  String getCompletionMessage(BuildContext context) {
-    final accuracy = _sessionLoader.value?.state.accuracy ?? 0;
-    final hasTimeBonus =
-        (_sessionLoader.value?.state.elapsedSeconds ?? 0) <=
-        AnalyticsPracticeConstants.timeForBonus;
-    final hintsUsed = hintsUsedNotifier.value;
-
-    final bool perfectAccuracy = accuracy == 100;
-    final bool noHintsUsed = hintsUsed == 0;
-    final bool hintsAvailable = widget.type == ConstructTypeEnum.morph;
-
-    //check how many conditions for bonuses the user met and return message accordingly
-    final conditionsMet = [
-      perfectAccuracy,
-      !hintsAvailable || noHintsUsed,
-      hasTimeBonus,
-    ].where((c) => c).length;
-
-    if (conditionsMet == 3) {
-      return L10n.of(context).perfectPractice;
-    }
-    if (conditionsMet >= 2) {
-      return L10n.of(context).greatPractice;
-    }
-    if (hintsAvailable && noHintsUsed) {
-      return L10n.of(context).usedNoHints;
-    }
-    return L10n.of(context).youveCompletedPractice;
   }
 
   @override

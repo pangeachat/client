@@ -37,11 +37,11 @@ class ConstructIdentifier {
     if (type == ConstructTypeEnum.morph &&
         MorphFeaturesEnumExtension.fromString(category) ==
             MorphFeaturesEnum.Unknown) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: Exception("Morph feature not found"),
-        data: {"category": category, "lemma": lemma, "type": type},
-      );
+      // debugger(when: kDebugMode);
+      // ErrorHandler.logError(
+      //   e: Exception("Morph feature not found"),
+      //   data: {"category": category, "lemma": lemma, "type": type},
+      // );
     }
   }
 
