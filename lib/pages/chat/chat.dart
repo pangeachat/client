@@ -2284,7 +2284,6 @@ class ChatController extends State<ChatPageWithRoom>
             match,
             choreographer,
             context,
-            showNextMatch,
             (feedback) => onRequestWritingAssistance(feedback: feedback),
           );
   }

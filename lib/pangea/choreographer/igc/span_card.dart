@@ -10,24 +10,21 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dar
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import '../../../widgets/matrix.dart';
-import '../../common/widgets/choice_array.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class SpanCard extends StatefulWidget {
-  final PangeaMatchState match;
   final Choreographer choreographer;
-  final VoidCallback showNextMatch;
   final Future Function(String) onFeedbackSubmitted;
+  final VoidCallback close;
 
   const SpanCard({
     super.key,
-    required this.match,
     required this.choreographer,
-    required this.showNextMatch,
     required this.onFeedbackSubmitted,
+    required this.close,
   });
 
   @override
@@ -48,24 +45,31 @@ class SpanCardState extends State<SpanCard> {
     super.dispose();
   }
 
-  SpanChoice? get _selectedChoice =>
-      widget.match.updatedMatch.match.selectedChoice;
+  ValueNotifier<PangeaMatchState?> get _activeMatch =>
+      widget.choreographer.igcController.activeMatch;
 
-  void _onChoiceSelect(int index) {
-    widget.match.selectChoice(index);
+  Future<void> _onChoiceSelect(PangeaMatchState match, int index) async {
+    final correct =
+        match.updatedMatch.match.choices?[index].isBestCorrection == true;
+
+    match.selectChoice(index);
     setState(() {});
+
+    if (!correct) return;
+    await Future.delayed(Duration(seconds: 1), () => _acceptMatch(match));
   }
 
-  void _updateMatch(PangeaMatchStatusEnum status) {
+  void _acceptMatch(PangeaMatchState match) {
     try {
-      widget.choreographer.igcController.updateMatch(widget.match, status);
-      widget.showNextMatch();
+      final igc = widget.choreographer.igcController;
+      igc.updateMatchStatus(match, PangeaMatchStatusEnum.accepted);
+      igc.hasOpenMatches ? igc.setActiveMatch() : widget.close();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
         level: SentryLevel.warning,
-        data: {"match": widget.match.toJson()},
+        data: {"match": match.toJson()},
       );
       widget.choreographer.clearMatches(e);
       return;
@@ -89,11 +93,11 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300.0,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: 300.0),
       child: Column(
+        mainAxisSize: .min,
         children: [
-          // Header row: Close, Type Label + BotFace, Flag
           SizedBox(
             height: 40.0,
             child: Row(
@@ -102,7 +106,7 @@ class SpanCardState extends State<SpanCard> {
                 IconButton(
                   icon: const Icon(Icons.close),
                   color: Theme.of(context).iconTheme.color,
-                  onPressed: () => _updateMatch(PangeaMatchStatusEnum.ignored),
+                  onPressed: widget.close,
                 ),
                 const Flexible(
                   child: Center(
@@ -117,142 +121,57 @@ class SpanCardState extends State<SpanCard> {
               ],
             ),
           ),
-          Expanded(
-            child: Scrollbar(
-              controller: scrollController,
-              child: SingleChildScrollView(
+          ValueListenableBuilder(
+            valueListenable: _activeMatch,
+            builder: (context, match, _) {
+              if (match == null) return SizedBox();
+
+              return Scrollbar(
                 controller: scrollController,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 24.0,
-                  ),
-                  child: Column(
-                    spacing: 12.0,
-                    children: [
-                      ChoicesArray(
-                        isLoading: false,
-                        choices: widget.match.updatedMatch.match.choices
-                            ?.map(
-                              (e) => Choice(
-                                text: e.value,
-                                color: e.selected ? e.type.color : null,
-                                isGold: e.type.isSuggestion,
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                      horizontal: 24.0,
+                    ),
+                    child: Column(
+                      spacing: 12.0,
+                      children: [
+                        Text(
+                          match.updatedMatch.match.message ??
+                              match.updatedMatch.match.type.defaultPrompt(
+                                context,
                               ),
-                            )
-                            .toList(),
-                        onPressed: (value, index) => _onChoiceSelect(index),
-                        selectedChoiceIndex:
-                            widget.match.updatedMatch.match.selectedChoiceIndex,
-                        id: widget.match.hashCode.toString(),
-                        langCode: MatrixState
-                            .pangeaController
-                            .userController
-                            .userL2Code!,
-                      ),
-                      const SizedBox(),
-                      _SpanCardFeedback(widget.match.updatedMatch.match),
-                    ],
+                          style: BotStyle.text(context),
+                        ),
+                        ChoicesArray(
+                          isLoading: false,
+                          choices: match.updatedMatch.match.choices
+                              ?.map(
+                                (e) => Choice(
+                                  text: e.value,
+                                  color: e.selected ? e.type.color : null,
+                                  isGold: e.type.isSuggestion,
+                                ),
+                              )
+                              .toList(),
+                          onPressed: (value, index) =>
+                              _onChoiceSelect(match, index),
+                          selectedChoiceIndex:
+                              match.updatedMatch.match.selectedChoiceIndex,
+                          id: match.hashCode.toString(),
+                          langCode: MatrixState
+                              .pangeaController
+                              .userController
+                              .userL2Code!,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-          _SpanCardButtons(
-            onAccept: () => _updateMatch(PangeaMatchStatusEnum.accepted),
-            onIgnore: () => _updateMatch(PangeaMatchStatusEnum.ignored),
-            selectedChoice: _selectedChoice,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SpanCardFeedback extends StatelessWidget {
-  final SpanData? span;
-  const _SpanCardFeedback(this.span);
-
-  @override
-  Widget build(BuildContext context) {
-    String prompt = L10n.of(context).correctionDefaultPrompt;
-    if (span != null) {
-      prompt = span!.type.defaultPrompt(context);
-    }
-
-    final defaultContent = Text(
-      prompt,
-      style: BotStyle.text(context).copyWith(fontStyle: FontStyle.italic),
-    );
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        span == null || span!.selectedChoice == null
-            ? defaultContent
-            : Text(
-                span!.selectedChoice!.feedbackToDisplay(context),
-                style: BotStyle.text(context),
-              ),
-      ],
-    );
-  }
-}
-
-class _SpanCardButtons extends StatelessWidget {
-  final VoidCallback onAccept;
-  final VoidCallback onIgnore;
-  final SpanChoice? selectedChoice;
-
-  const _SpanCardButtons({
-    required this.onAccept,
-    required this.onIgnore,
-    required this.selectedChoice,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Theme.of(context).cardColor),
-      padding: const EdgeInsets.only(top: 12.0),
-      child: Row(
-        spacing: 10.0,
-        children: [
-          Expanded(
-            child: Opacity(
-              opacity: 0.8,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withAlpha(25),
-                ),
-                onPressed: onIgnore,
-                child: Center(child: Text(L10n.of(context).ignoreInThisText)),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Opacity(
-              opacity: selectedChoice != null ? 1.0 : 0.5,
-              child: TextButton(
-                onPressed: selectedChoice != null ? onAccept : null,
-                style: TextButton.styleFrom(
-                  backgroundColor:
-                      (selectedChoice?.color ??
-                              Theme.of(context).colorScheme.primary)
-                          .withAlpha(50),
-                  side: selectedChoice != null
-                      ? BorderSide(
-                          color: selectedChoice!.color,
-                          style: BorderStyle.solid,
-                          width: 2.0,
-                        )
-                      : null,
-                ),
-                child: Text(L10n.of(context).replace),
-              ),
-            ),
+              );
+            },
           ),
         ],
       ),

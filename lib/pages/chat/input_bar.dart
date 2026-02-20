@@ -437,7 +437,6 @@ class InputBar extends StatelessWidget {
         match,
         choreographer,
         context,
-        showNextMatch,
         onFeedbackSubmitted,
       );
 
@@ -462,7 +461,8 @@ class InputBar extends StatelessWidget {
 
   int _adjustOffsetForNormalization(int baseOffset) {
     int adjustedOffset = baseOffset;
-    final corrections = choreographer.igcController.recentAutomaticCorrections;
+    final corrections =
+        choreographer.igcController.closedNormalizationCorrections;
 
     for (final correction in corrections) {
       final match = correction.updatedMatch.match;

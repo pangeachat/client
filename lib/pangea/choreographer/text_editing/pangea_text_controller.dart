@@ -76,7 +76,7 @@ class PangeaTextController extends TextEditingController {
 
   void _onUndo(PangeaMatchState match) {
     try {
-      choreographer.igcController.updateMatch(
+      choreographer.igcController.updateMatchStatus(
         match,
         PangeaMatchStatusEnum.undo,
       );
@@ -165,7 +165,7 @@ class PangeaTextController extends TextEditingController {
     final textSpanMatches =
         [
           ...choreographer.igcController.openMatches,
-          ...choreographer.igcController.recentAutomaticCorrections,
+          ...choreographer.igcController.closedNormalizationCorrections,
         ]..sort(
           (a, b) => a.updatedMatch.match.offset.compareTo(
             b.updatedMatch.match.offset,
@@ -185,13 +185,12 @@ class PangeaTextController extends TextEditingController {
       }
 
       final openMatch =
-          choreographer.igcController.currentlyOpenMatch?.updatedMatch.match;
+          choreographer.igcController.activeMatch.value?.updatedMatch.match;
       final style = _textStyle(
         match.updatedMatch,
         defaultStyle,
-        openMatch != null &&
-            openMatch.offset == match.updatedMatch.match.offset &&
-            openMatch.length == match.updatedMatch.match.length,
+        openMatch?.offset == match.updatedMatch.match.offset &&
+            openMatch?.length == match.updatedMatch.match.length,
       );
 
       spans.add(_buildMatchSpan(match, style));

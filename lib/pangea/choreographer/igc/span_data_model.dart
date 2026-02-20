@@ -279,7 +279,7 @@ class SpanChoice {
     return data;
   }
 
-  String feedbackToDisplay(BuildContext context) {
+  String displayFeedback(BuildContext context) {
     if (feedback == null) {
       return type.defaultFeedback(context);
     }
