@@ -54,7 +54,6 @@ class AnalyticsPracticeAnalyticsController {
   }
 
   Future<ConstructUses> getTargetTokenConstruct(
-    PangeaToken token,
     PracticeTarget target,
     String language,
   ) async {

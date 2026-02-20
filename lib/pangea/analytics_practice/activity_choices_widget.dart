@@ -38,41 +38,7 @@ class ActivityChoices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAudioActivity =
-        activity.activityType == ActivityTypeEnum.lemmaAudio;
-
-    if (isAudioActivity) {
-      Padding(
-        key: const ValueKey('choices'),
-        padding: const EdgeInsets.all(16.0),
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8.0,
-          runSpacing: 8.0,
-          children: choices
-              .map(
-                (choice) => ActivityChoiceCard(
-                  activity: activity,
-                  targetId: AnalyticsPracticeUiController.getChoiceTargetId(
-                    choice.choiceId,
-                    type,
-                  ),
-                  choiceId: choice.choiceId,
-                  onPressed: () => onSelectChoice(choice.choiceId),
-                  cardHeight: 48.0,
-                  showHint: showHint,
-                  choiceText: choice.choiceText,
-                  choiceEmoji: choice.choiceEmoji,
-                  enabled: !isComplete,
-                  shrinkWrap: true,
-                ),
-              )
-              .toList(),
-        ),
-      );
-    }
-
-    if (isAudioActivity) {
+    if (activity.activityType == ActivityTypeEnum.lemmaAudio) {
       // For audio activities, use AnimatedSwitcher to fade between choices and example message
       return AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),

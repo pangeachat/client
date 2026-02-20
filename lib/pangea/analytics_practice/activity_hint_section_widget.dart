@@ -39,7 +39,7 @@ class ActivityHintSection extends StatelessWidget {
               : CrossFadeState.showFirst,
           firstChild: HintButton(
             icon: Icons.lightbulb_outline,
-            onPressed: enabled ? () {} : onPressed,
+            onPressed: enabled ? onPressed : () {},
             depressed: !enabled,
           ),
           secondChild: MorphMeaningWidget(

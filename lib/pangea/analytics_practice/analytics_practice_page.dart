@@ -163,7 +163,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         activity.exampleMessageInfo.exampleMessage,
       _ => ExampleMessageUtil.getExampleMessage(
         await _analyticsController.getTargetTokenConstruct(
-          activity.tokens.first,
           activity.practiceTarget,
           _l2!.langCodeShort,
         ),

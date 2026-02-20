@@ -11,11 +11,7 @@ class AnalyticsPracticeUiController {
     ConstructTypeEnum type,
     String language,
   ) {
-    if (type == ConstructTypeEnum.vocab &&
-        activity is VocabMeaningPracticeActivityModel) {
-    } else {
-      return;
-    }
+    if (activity is! VocabMeaningPracticeActivityModel) return;
 
     final token = activity.tokens.first;
     TtsController.tryToSpeak(
