@@ -5,2547 +5,2547 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nTh$() {
-      return new A.L10nTh(B.canonicalizedLocale("th"));
+    L10nTr$() {
+      return new A.L10nTr(B.canonicalizedLocale("tr"));
     },
-    L10nTh: function L10nTh(t0) {
+    L10nTr: function L10nTr(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[49], A);
-  A.L10nTh.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[50], A);
+  A.L10nTr.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u0e40\u0e17\u0e47\u0e08";
+      return "false";
     },
     get$repeatPassword() {
-      return "\u0e43\u0e2a\u0e48\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e2d\u0e35\u0e01\u0e23\u0e2d\u0e1a";
+      return "Parolay\u0131 tekrarlay\u0131n";
     },
     get$notAnImage() {
-      return "\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e44\u0e1f\u0e25\u0e4c\u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e";
+      return "Bir resim dosyas\u0131 de\u011fil.";
     },
     get$setCustomPermissionLevel() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e41\u0e1a\u0e1a\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e2d\u0e07";
+      return "\xd6zel izin d\xfczeyi ayarla";
     },
     get$setPermissionsLevelDescription() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e1a\u0e17\u0e1a\u0e32\u0e17\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e44\u0e27\u0e49\u0e25\u0e48\u0e27\u0e07\u0e2b\u0e19\u0e49\u0e32\u0e14\u0e49\u0e32\u0e19\u0e25\u0e48\u0e32\u0e07\u0e2b\u0e23\u0e37\u0e2d\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e41\u0e1a\u0e1a\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e2d\u0e07\u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07 0 \u0e16\u0e36\u0e07 100";
+      return "L\xfctfen a\u015fa\u011f\u0131dan \xf6nceden tan\u0131mlanm\u0131\u015f bir rol se\xe7in veya 0 ile 100 aras\u0131nda bir \xf6zel izin seviyesi girin.";
     },
     get$ignoreUser() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131y\u0131 yok say";
     },
     get$normalUser() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e1b\u0e01\u0e15\u0e34";
+      return "Normal kullan\u0131c\u0131";
     },
     get$remove(_) {
-      return "\u0e25\u0e1a\u0e2d\u0e2d\u0e01";
+      return "Kald\u0131r";
     },
     get$importNow() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e40\u0e25\u0e22";
+      return "\u015eimdi i\xe7e aktar";
     },
     get$importEmojis() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e2d\u0e4a\u0e42\u0e21\u0e08\u0e34";
+      return "\u0130fadeleri \u0130\xe7e Aktar";
     },
     get$importFromZipFile() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e08\u0e32\u0e01\u0e44\u0e1f\u0e25\u0e4c .zip";
+      return ".zip dosyas\u0131ndan i\xe7e aktar";
     },
     get$exportEmotePack() {
-      return "\u0e2a\u0e48\u0e07\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u0e41\u0e1e\u0e47\u0e04\u0e2d\u0e2d\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e44\u0e1f\u0e25\u0e4c .zip";
+      return "\u0130fade paketini .zip olarak d\u0131\u015fa aktar";
     },
     get$replace(_) {
-      return "\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48";
+      return "De\u011fi\u015ftir";
     },
     get$about() {
-      return "\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a";
+      return "Hakk\u0131nda";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a " + homeserver;
+      return homeserver + " Hakk\u0131nda";
     },
     get$accept(_) {
-      return "\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a";
+      return "Kabul et";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e0a\u0e27\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "\ud83d\udc4d " + username + " kat\u0131lma davetini kabul etti";
     },
     get$account() {
-      return "\u0e1a\u0e31\u0e0d\u0e0a\u0e35";
+      return "Hesap";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 end to end encryption";
+      return "\ud83d\udd10 " + username + " u\xe7tan uca \u015fifrelemeyi etkinle\u015ftirdi";
     },
     get$addEmail() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "E-posta ekle";
     },
     supposedMxid$1(mxid) {
-      return "\u0e2d\u0e31\u0e19\u0e19\u0e35\u0e49\u0e04\u0e27\u0e23\u0e40\u0e1b\u0e47\u0e19 " + mxid;
+      return "Bu " + mxid + " olmal\u0131d\u0131r";
     },
     get$admin() {
-      return "\u0e41\u0e2d\u0e14\u0e21\u0e34\u0e19";
+      return "Y\xf6netici";
     },
     get$allChats() {
-      return "\u0e41\u0e0a\u0e17\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm sohbetler";
     },
     get$commandHint_roomupgrade() {
-      return "\u0e2d\u0e31\u0e1b\u0e40\u0e01\u0e23\u0e14\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14";
+      return "Bu oday\u0131 belirtilen oda s\xfcr\xfcm\xfcne y\xfckseltin";
     },
     get$commandHint_googly() {
-      return "\u0e2a\u0e48\u0e07\u0e2a\u0e32\u0e22\u0e15\u0e32\u0e01\u0e27\u0e19\u0e46 \u0e21\u0e32\u0e43\u0e2b\u0e49\u0e2b\u0e19\u0e48\u0e2d\u0e22";
+      return "\u015ea\u015fk\u0131n g\xf6zler g\xf6nder";
     },
     get$commandHint_cuddle() {
-      return "\u0e2a\u0e48\u0e07\u0e40\u0e04\u0e25\u0e49\u0e32\u0e40\u0e04\u0e25\u0e35\u0e22\u0e43\u0e2b\u0e49";
+      return "Kucaklama g\xf6nder";
     },
     get$commandHint_hug() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e2d\u0e14\u0e43\u0e2b\u0e49";
+      return "Sar\u0131lma g\xf6nder";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u0e2a\u0e48\u0e07\u0e15\u0e32\u0e01\u0e27\u0e19\u0e46\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13";
+      return senderName + " size \u015fa\u015fk\u0131n g\xf6zler g\xf6nderiyor";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u0e40\u0e04\u0e25\u0e49\u0e32\u0e40\u0e04\u0e25\u0e35\u0e22\u0e04\u0e38\u0e13";
+      return senderName + " sizi kucakl\u0131yor";
     },
     hugContent$1(senderName) {
-      return senderName + " \u0e01\u0e2d\u0e14\u0e04\u0e38\u0e13";
+      return senderName + " size sar\u0131l\u0131yor";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u0e23\u0e31\u0e1a\u0e2a\u0e32\u0e22\u0e41\u0e25\u0e49\u0e27";
+      return senderName + " aramay\u0131 yan\u0131tlad\u0131";
     },
     get$anyoneCanJoin() {
-      return "\u0e43\u0e04\u0e23\u0e46 \u0e01\u0e47\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e44\u0e14\u0e49";
+      return "Herkes kat\u0131labilir";
     },
     get$archive() {
-      return "\u0e04\u0e25\u0e31\u0e07\u0e40\u0e01\u0e47\u0e1a";
+      return "Ar\u015fiv";
     },
     get$areYouSure() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e44\u0e2b\u0e21?";
+      return "Emin misiniz?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e08\u0e30\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e23\u0e30\u0e1a\u0e1a?";
+      return "Oturumu a\xe7mak istedi\u011finizden emin misiniz?";
     },
     get$askSSSSSign() {
-      return "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e25\u0e07\u0e19\u0e32\u0e21\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e2d\u0e37\u0e48\u0e19\u0e44\u0e14\u0e49 \u0e42\u0e1b\u0e23\u0e14\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32\u0e17\u0e35\u0e48\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e2b\u0e23\u0e37\u0e2d\u0e23\u0e2b\u0e31\u0e2a\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Di\u011fer ki\u015fiyi imzalayabilmek i\xe7in l\xfctfen g\xfcvenli depolama parolan\u0131z\u0131 veya kurtarma anahtar\u0131n\u0131z\u0131 girin.";
     },
     askVerificationRequest$1(username) {
-      return "\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e19\u0e35\u0e49\u0e08\u0e32\u0e01 " + username + " \u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48";
+      return username + " ki\u015fisinden gelen bu do\u011frulama iste\u011fi kabul edilsin mi?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u0e42\u0e2e\u0e21\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a:\n" + serverVersions + "\n\u0e41\u0e15\u0e48\u0e41\u0e2d\u0e1b\u0e19\u0e35\u0e49\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e40\u0e09\u0e1e\u0e32\u0e30:\n" + supportedVersions;
+      return "Ana sunucu a\u015fa\u011f\u0131daki oturum a\xe7ma t\xfcrlerini destekliyor:\n" + serverVersions + "\nAncak bu uygulama yaln\u0131zca a\u015fa\u011f\u0131dakileri destekliyor:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e21\u0e1e\u0e4c";
+      return "Yazma bildirimleri g\xf6nder";
     },
     get$swipeRightToLeftToReply() {
-      return "\u0e1b\u0e31\u0e14\u0e08\u0e32\u0e01\u0e02\u0e27\u0e32\u0e44\u0e1b\u0e0b\u0e49\u0e32\u0e22\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19";
+      return "Yan\u0131tlamak i\xe7in sa\u011fdan sola kayd\u0131r";
     },
     get$sendOnEnter() {
-      return "\u0e2a\u0e48\u0e07\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e01\u0e14 enter";
+      return "Enter tu\u015fu ile g\xf6nder";
     },
     get$space() {
-      return "\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48";
+      return "Alan";
     },
     get$banned() {
-      return "\u0e16\u0e39\u0e01\u0e41\u0e1a\u0e19";
+      return "Engellendi";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u0e41\u0e1a\u0e19 " + targetName;
+      return username + ", " + targetName + " ki\u015fisini engelledi";
     },
     get$blockDevice() {
-      return "\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Ayg\u0131t\u0131 Engelle";
     },
     get$blocked() {
-      return "\u0e16\u0e39\u0e01\u0e1a\u0e25\u0e47\u0e2d\u0e01";
+      return "Engellendi";
     },
     get$cancel(_) {
-      return "\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01";
+      return "\u0130ptal";
     },
     cantOpenUri$1(uri) {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e1b\u0e34\u0e14 URI " + uri;
+      return uri + " URI'si a\xe7\u0131lam\u0131yor";
     },
     get$changeDeviceName() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Ayg\u0131t ad\u0131n\u0131 de\u011fi\u015ftir";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e20\u0e32\u0e1e\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c\u0e41\u0e0a\u0e17";
+      return username + " sohbet avatar\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheChatDescription$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e41\u0e0a\u0e17";
+      return username + " sohbet tan\u0131m\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheChatName$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e0a\u0e17";
+      return username + " sohbet ad\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e41\u0e0a\u0e17";
+      return username + " sohbet izinlerini de\u011fi\u015ftirdi";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e40\u0e1b\u0e47\u0e19: '" + displayname + "'";
+      return username + " g\xf6r\xfcnen ad\u0131n\u0131 '" + displayname + "' olarak de\u011fi\u015ftirdi";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e02\u0e01";
+      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e02\u0e01\u0e40\u0e1b\u0e47\u0e19: " + rules;
+      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e32\u0e23\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34";
+      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e32\u0e23\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e40\u0e1b\u0e47\u0e19: " + rules;
+      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e40\u0e1b\u0e47\u0e19: " + joinRules;
+      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e20\u0e32\u0e1e\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c";
+      return username + " avatar\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e2b\u0e49\u0e2d\u0e07";
+      return username + " oda takma adlar\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e2b\u0e49\u0e2d\u0e07";
+      return username + " davet ba\u011flant\u0131s\u0131n\u0131 de\u011fi\u015ftirdi";
     },
     get$changePassword() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19";
+      return "Parolay\u0131 de\u011fi\u015ftir";
     },
     get$changeTheme() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2a\u0e44\u0e15\u0e25\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Tarz\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
     },
     get$changeYourAvatar() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e23\u0e39\u0e1b\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Avatar\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
     },
     get$channelCorruptedDecryptError() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e16\u0e39\u0e01\u0e17\u0e33\u0e25\u0e32\u0e22";
+      return "\u015eifreleme bozuldu";
     },
     get$chat() {
-      return "\u0e41\u0e0a\u0e17";
+      return "Sohbet";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbet yedeklemeniz ayarland\u0131.";
     },
     get$chatBackupDescription() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e01\u0e48\u0e32 \u0e46 \u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e14\u0e49\u0e27\u0e22\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e2d\u0e22\u0e48\u0e32\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e2a\u0e39\u0e0d\u0e2b\u0e32\u0e22";
+      return "Eski mesajlar\u0131n\u0131z bir kurtarma anahtar\u0131 ile g\xfcvence alt\u0131na al\u0131nd\u0131. L\xfctfen kaybetmedi\u011finizden emin olun.";
     },
     get$chatDetails() {
-      return "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e41\u0e0a\u0e17";
+      return "Sohbet ayr\u0131nt\u0131lar\u0131";
     },
     get$chats() {
-      return "\u0e41\u0e0a\u0e17";
+      return "Sohbetler";
     },
     get$chooseAStrongPassword() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e17\u0e35\u0e48\u0e41\u0e02\u0e47\u0e07\u0e41\u0e23\u0e07";
+      return "G\xfc\xe7l\xfc bir parola se\xe7in";
     },
     get$clearArchive() {
-      return "\u0e25\u0e49\u0e32\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e40\u0e01\u0e48\u0e32";
+      return "Ar\u015fivi temizle";
     },
     get$close(_) {
-      return "\u0e1b\u0e34\u0e14";
+      return "Kapat";
     },
     get$commandHint_markasdm() {
-      return "\u0e17\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e1b\u0e47\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a Matrix ID \u0e17\u0e35\u0e48\u0e43\u0e2b\u0e49\u0e21\u0e32";
+      return "Verilen Matrix kimli\u011fi i\xe7in do\u011frudan mesaj odas\u0131 olarak i\u015faretle";
     },
     get$commandHint_markasgroup() {
-      return "\u0e17\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Grup olarak i\u015faretle";
     },
     get$commandHint_ban() {
-      return "\u0e41\u0e1a\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e43\u0e2b\u0e49\u0e21\u0e32\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan yasaklay\u0131n";
     },
     get$commandHint_clearcache() {
-      return "\u0e25\u0e49\u0e32\u0e07\u0e41\u0e04\u0e0a";
+      return "\xd6nbelle\u011fi temizleyin";
     },
     get$commandHint_create() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e25\u0e38\u0e48\u0e21\u0e41\u0e0a\u0e17\u0e27\u0e48\u0e32\u0e07\n\u0e43\u0e0a\u0e49 --no-encryption \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a";
+      return "Bo\u015f bir grup sohbeti olu\u015fturun\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
     },
     get$commandHint_discardsession() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19";
+      return "Oturumu silin";
     },
     get$commandHint_dm() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e41\u0e0a\u0e17\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\n\u0e43\u0e0a\u0e49 --no-encryption \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a";
+      return "Do\u011frudan sohbet ba\u015flat\u0131n\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
     },
     get$commandHint_html() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a HTML";
+      return "HTML bi\xe7imli metin g\xf6nderin";
     },
     get$commandHint_invite() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Verilen kullan\u0131c\u0131y\u0131 bu odaya davet edin";
     },
     get$commandHint_join() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14";
+      return "Verilen odaya kat\u0131l\u0131n";
     },
     get$commandHint_kick() {
-      return "\u0e19\u0e33\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan kald\u0131r\u0131n";
     },
     get$commandHint_leave() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Bu odadan ayr\u0131l\u0131n";
     },
     get$commandHint_me() {
-      return "\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07";
+      return "Kendinizi tan\u0131mlay\u0131n";
     },
     get$commandHint_myroomavatar() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49 (\u0e42\u0e14\u0e22 mxc-uri)";
+      return "Bu oda i\xe7in resminizi ayarlay\u0131n (mxc-uri ile)";
     },
     get$commandHint_myroomnick() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Bu oda i\xe7in g\xf6r\xfcnen ad\u0131n\u0131z\u0131 ayarlay\u0131n";
     },
     get$commandHint_op() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e1e\u0e25\u0e31\u0e07\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14 (\u0e04\u0e48\u0e32\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19: 50)";
+      return "Verilen kullan\u0131c\u0131n\u0131n g\xfc\xe7 seviyesini ayarlay\u0131n (\xf6ntan\u0131ml\u0131: 50)";
     },
     get$commandHint_plain() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e21\u0e35\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a";
+      return "Bi\xe7imlendirilmemi\u015f metin g\xf6nderin";
     },
     get$commandHint_react() {
-      return "\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e15\u0e2d\u0e1a\u0e40\u0e1b\u0e47\u0e19\u0e1b\u0e0f\u0e34\u0e01\u0e34\u0e23\u0e34\u0e22\u0e32";
+      return "Tepki olarak yan\u0131t g\xf6nderin";
     },
     get$commandHint_send() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Metin g\xf6nderin";
     },
     get$commandHint_unban() {
-      return "\u0e1b\u0e25\u0e14\u0e41\u0e1a\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e08\u0e32\u0e01\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49";
+      return "Verilen kullan\u0131c\u0131n\u0131n bu odadaki yasa\u011f\u0131n\u0131 kald\u0131r\u0131n";
     },
     get$compareEmojiMatch() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e1b\u0e23\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34";
+      return "L\xfctfen emojileri kar\u015f\u0131la\u015ft\u0131r\u0131n";
     },
     get$compareNumbersMatch() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e1b\u0e23\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "L\xfctfen say\u0131lar\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n";
     },
     get$configureChat() {
-      return "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17";
+      return "Sohbeti yap\u0131land\u0131r";
     },
     get$confirm(_) {
-      return "\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19";
+      return "Onayla";
     },
     get$copiedToClipboard() {
-      return "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e04\u0e25\u0e34\u0e1b\u0e1a\u0e2d\u0e23\u0e4c\u0e14\u0e41\u0e25\u0e49\u0e27";
+      return "Panoya kopyaland\u0131";
     },
     get$copy() {
-      return "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01";
+      return "Kopyala";
     },
     get$copyToClipboard() {
-      return "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e04\u0e25\u0e34\u0e1b\u0e1a\u0e2d\u0e23\u0e4c\u0e14";
+      return "Panoya kopyala";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e16\u0e2d\u0e14\u0e23\u0e2b\u0e31\u0e2a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e44\u0e14\u0e49: " + error;
+      return "Mesaj\u0131n \u015fifresi \xe7\xf6z\xfclemedi: " + error;
     },
     get$checkList() {
-      return "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a";
+      return "Kontrol listesi";
     },
     countParticipants$1(count) {
-      return "" + count + " \u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "" + count + " kat\u0131l\u0131mc\u0131";
     },
     countInvited$1(count) {
-      return "" + count + " \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d";
+      return "" + count + " davet edildi";
     },
     get$create(_) {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07";
+      return "Olu\u015ftur";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " \u0e2a\u0e23\u0e49\u0e32\u0e07\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "\ud83d\udcac " + username + " sohbeti olu\u015fturdu";
     },
     get$createGroup() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Grup olu\u015ftur";
     },
     get$createNewSpace() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni alan";
     },
     get$currentlyActive() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48";
+      return "\u015eu anda etkin";
     },
     get$darkTheme() {
-      return "\u0e21\u0e37\u0e14";
+      return "Koyu";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u0e19\u0e35\u0e48\u0e08\u0e30\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e0b\u0e36\u0e48\u0e07\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49! \u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Bu, kullan\u0131c\u0131 hesab\u0131n\u0131z\u0131 devre d\u0131\u015f\u0131 b\u0131rakacak. Bu geri al\u0131namaz! Emin misiniz?";
     },
     get$defaultPermissionLevel() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni kullan\u0131c\u0131lar i\xe7i \xf6ntan\u0131ml\u0131 izin seviyesi";
     },
     get$$delete(_) {
-      return "\u0e25\u0e1a\u0e2d\u0e2d\u0e01";
+      return "Sil";
     },
     get$deleteAccount() {
-      return "\u0e25\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35";
+      return "Hesab\u0131 sil";
     },
     get$deleteMessage() {
-      return "\u0e25\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj\u0131 sil";
     },
     get$devices() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Ayg\u0131tlar";
     },
     get$displaynameHasBeenChanged() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e1c\u0e25\u0e44\u0e14\u0e49\u0e16\u0e39\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "G\xf6r\xfcnen ad de\u011fi\u015ftirildi";
     },
     get$downloadFile() {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e44\u0e1f\u0e25\u0e4c";
+      return "Dosyay\u0131 indir";
     },
     get$edit() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "D\xfczenle";
     },
     get$editBlockedServers() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e1a\u0e25\u0e47\u0e2d\u0e01";
+      return "Engellenen sunucular\u0131 d\xfczenle";
     },
     get$chatPermissions() {
-      return "\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17";
+      return "Sohbet izinleri";
     },
     get$editDisplayname() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e1c\u0e25";
+      return "G\xf6r\xfcnen ad\u0131 d\xfczenle";
     },
     get$editRoomAvatar() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02\u0e20\u0e32\u0e1e\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e2b\u0e49\u0e2d\u0e07";
+      return "Oda avatar\u0131n\u0131 d\xfczenle";
     },
     get$emoteExists() {
-      return "\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e2d\u0e22\u0e31\u0e07\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27!";
+      return "\u0130fade zaten var!";
     },
     get$emoteInvalid() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07!";
+      return "Ge\xe7ersiz ifade k\u0131sa kodu!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e1a\u0e48\u0e2d\u0e22\u0e08\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48...";
+      return "Son kullan\u0131lan ifadeler burada g\xf6r\xfcnecek...";
     },
     get$customEmojisAndStickers() {
-      return "\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u0e41\u0e25\u0e30\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e2d\u0e07";
+      return "\xd6zel emojiler ve \xe7\u0131kartmalar";
     },
     get$emoteShortcode() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e2a\u0e31\u0e49\u0e19\u0e02\u0e2d\u0e07\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34";
+      return "\u0130fade k\u0131sa kodu";
     },
     get$emptyChat() {
-      return "\u0e41\u0e0a\u0e17\u0e27\u0e48\u0e32\u0e07\u0e40\u0e1b\u0e25\u0e48\u0e32";
+      return "Bo\u015f sohbet";
     },
     get$enableEmotesGlobally() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e41\u0e1e\u0e47\u0e04\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u0e17\u0e31\u0e48\u0e27\u0e42\u0e25\u0e01";
+      return "\u0130fade paketini k\xfcresel olarak etkinle\u015ftir";
     },
     get$enableEncryption() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a";
+      return "\u015eifrelemeyi etkinle\u015ftir";
     },
     get$encrypted() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e25\u0e49\u0e27";
+      return "\u015eifreli";
     },
     get$encryptionNotEnabled() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "\u015eifreleme etkinle\u015ftirilmedi";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u0e22\u0e38\u0e15\u0e34\u0e01\u0e32\u0e23\u0e42\u0e17\u0e23";
+      return senderName + " aramay\u0131 sonland\u0131rd\u0131";
     },
     get$enterAnEmailAddress() {
-      return "\u0e1b\u0e49\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "Bir e-posta adresi girin";
     },
     errorObtainingLocation$1(error) {
-      return "\u0e40\u0e01\u0e34\u0e14\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07: " + error;
+      return "Konum al\u0131n\u0131rken hata olu\u015ftu: " + error;
     },
     get$everythingReady() {
-      return "\u0e17\u0e38\u0e01\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e41\u0e25\u0e49\u0e27!";
+      return "Her\u015fey haz\u0131r!";
     },
     get$fontSize(_) {
-      return "\u0e02\u0e19\u0e32\u0e14\u0e15\u0e31\u0e27\u0e2d\u0e31\u0e01\u0e29\u0e23";
+      return "Yaz\u0131 tipi boyutu";
     },
     get$forward(_) {
-      return "\u0e2a\u0e48\u0e07\u0e15\u0e48\u0e2d";
+      return "\u0130let";
     },
     get$fromJoining() {
-      return "\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131lmadan";
     },
     get$fromTheInvitation() {
-      return "\u0e08\u0e32\u0e01\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d";
+      return "Davetten";
     },
     get$group() {
-      return "\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Grup";
     },
     get$groupIsPublic() {
-      return "\u0e01\u0e25\u0e38\u0e48\u0e21\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
+      return "Grup herkese a\xe7\u0131k";
     },
     get$guestsAreForbidden() {
-      return "\u0e44\u0e21\u0e48\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e41\u0e02\u0e01\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Misafirlere izin verilmiyor";
     },
     get$guestsCanJoin() {
-      return "\u0e41\u0e02\u0e01\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e44\u0e14\u0e49";
+      return "Misafirler kat\u0131labilir";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u0e44\u0e14\u0e49\u0e16\u0e2d\u0e19\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a " + targetName;
+      return username + ", " + targetName + " i\xe7in daveti geri \xe7ekti";
     },
     get$help() {
-      return "\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d";
+      return "Yard\u0131m";
     },
     get$hideRedactedMessages() {
-      return "\u0e0b\u0e48\u0e2d\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e25\u0e1a";
+      return "D\xfczenlenen mesajlar\u0131 gizle";
     },
     get$hideRedactedMessagesBody() {
-      return "\u0e16\u0e49\u0e32\u0e21\u0e35\u0e04\u0e19\u0e25\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49\u0e08\u0e30\u0e44\u0e21\u0e48\u0e1b\u0e23\u0e32\u0e01\u0e0f\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e2d\u0e35\u0e01\u0e15\u0e48\u0e2d\u0e44\u0e1b";
+      return "Birisi bir mesaj\u0131 d\xfczenlerse, bu mesaj art\u0131k sohbette g\xf6r\xfcnmeyecektir.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u0e0b\u0e48\u0e2d\u0e19\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01";
+      return "Ge\xe7ersiz veya bilinmeyen mesaj bi\xe7imlerini gizle";
     },
     get$block() {
-      return "\u0e1a\u0e25\u0e47\u0e2d\u0e01";
+      return "Engelle";
     },
     get$blockedUsers() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e1a\u0e25\u0e47\u0e2d\u0e01";
+      return "Engellenen kullan\u0131c\u0131lar";
     },
     get$blockListDescription() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e23\u0e1a\u0e01\u0e27\u0e19\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49 \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e01\u0e25\u0e38\u0e48\u0e21\u0e08\u0e32\u0e01\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e19\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Sizi rahats\u0131z eden kullan\u0131c\u0131lar\u0131 engelleyebilirsiniz. Ki\u015fisel engelleme listenizdeki kullan\u0131c\u0131lardan herhangi bir mesaj veya oda daveti alamazs\u0131n\u0131z.";
     },
     get$blockUsername() {
-      return "\u0e40\u0e1e\u0e34\u0e01\u0e40\u0e09\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131 ad\u0131n\u0131 g\xf6rmezden gel";
     },
     get$iHaveClickedOnLink() {
-      return "\u0e09\u0e31\u0e19\u0e44\u0e14\u0e49\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e41\u0e25\u0e49\u0e27";
+      return "Ba\u011flant\u0131ya t\u0131klad\u0131m";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f parola veya kurtarma anahtar\u0131";
     },
     get$inviteContact() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e1c\u0e39\u0e49\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d";
+      return "Ki\u015fi davet et";
     },
     get$noChatDescriptionYet() {
-      return "\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e41\u0e0a\u0e17";
+      return "Daha sohbet a\xe7\u0131klamas\u0131 olu\u015fturulmad\u0131.";
     },
     get$tryAgain() {
-      return "\u0e25\u0e2d\u0e07\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Tekrar deneyin";
     },
     get$invited() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e41\u0e25\u0e49\u0e27";
+      return "Davet edildi";
     },
     get$redactMessageDescription() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e08\u0e30\u0e16\u0e39\u0e01\u0e25\u0e1a\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19\u0e1a\u0e17\u0e2a\u0e19\u0e17\u0e19\u0e32\u0e19\u0e35\u0e49 \u0e0b\u0e36\u0e48\u0e07\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49";
+      return "Bu mesaj bu g\xf6r\xfc\u015fmedeki herkes i\xe7in d\xfczenlenecek. Bu i\u015flem geri al\u0131namaz.";
     },
     get$optionalRedactReason() {
-      return "(\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01) \u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e25\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49...";
+      return "(\u0130ste\u011fe ba\u011fl\u0131) Bu mesaj\u0131 d\xfczenleme nedeni\u2026";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " \u0e40\u0e0a\u0e34\u0e0d " + targetName;
+      return "\ud83d\udce9 " + username + ", " + targetName + " ki\u015fisini davet etti";
     },
     get$invitedUsersOnly() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e17\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19";
+      return "Sadece davet edilen kullan\u0131c\u0131lar";
     },
     get$inviteForMe() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e09\u0e31\u0e19";
+      return "Benim i\xe7in davet et";
     },
     get$isTyping() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u2026";
+      return "yaz\u0131yor\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17";
+      return "\ud83d\udc4b " + username + " sohbete kat\u0131ld\u0131";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " \u0e40\u0e15\u0e30 " + targetName;
+      return "\ud83d\udc5e " + username + ", " + targetName + " ki\u015fisini att\u0131";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e25\u0e48\u0e32\u0e2a\u0e38\u0e14: " + localizedTimeShort;
+      return "Son g\xf6r\xfclen: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01";
+      return "Ayr\u0131l";
     },
     get$leftTheChat() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbetten ayr\u0131ld\u0131";
     },
     get$lightTheme() {
-      return "\u0e41\u0e2a\u0e07";
+      return "A\xe7\u0131k";
     },
     get$dehydrate() {
-      return "\u0e2a\u0e48\u0e07\u0e2d\u0e2d\u0e01\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e41\u0e25\u0e30\u0e25\u0e49\u0e32\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Oturumu d\u0131\u015fa aktar ve ayg\u0131t\u0131 sil";
     },
     get$dehydrateWarning() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49 \u0e42\u0e1b\u0e23\u0e14\u0e40\u0e01\u0e47\u0e1a\u0e44\u0e1f\u0e25\u0e4c\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22";
+      return "Bu eylem geri al\u0131namaz. Yedekleme dosyas\u0131n\u0131 g\xfcvenli bir \u015fekilde saklad\u0131\u011f\u0131n\u0131zdan emin olun.";
     },
     get$loadingPleaseWait() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e42\u0e2b\u0e25\u0e14\u2026 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e2d";
+      return "Y\xfckleniyor\u2026 L\xfctfen bekleyin.";
     },
     get$loadMore() {
-      return "\u0e42\u0e2b\u0e25\u0e14\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u2026";
+      return "Daha fazla y\xfckle\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e0a\u0e23\u0e4c\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Konum hizmetleri devre d\u0131\u015f\u0131. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in etkinle\u015ftirin.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e16\u0e39\u0e01\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2b\u0e49\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e0a\u0e23\u0e4c\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Konum izni reddedildi. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in izin verin.";
     },
     get$login() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a";
+      return "Oturum a\xe7";
     },
     get$logout() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e23\u0e30\u0e1a\u0e1a";
+      return "Oturumu kapat";
     },
     get$mention() {
-      return "\u0e01\u0e25\u0e48\u0e32\u0e27\u0e16\u0e36\u0e07";
+      return "Bahset";
     },
     get$messages() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesajlar";
     },
     get$messagesStyle() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21:";
+      return "Mesajlar:";
     },
     get$moderator() {
-      return "\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25";
+      return "Moderat\xf6r";
     },
     get$newVerificationRequest() {
-      return "\u0e04\u0e33\u0e02\u0e2d\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e15\u0e31\u0e27\u0e15\u0e19\u0e43\u0e2b\u0e21\u0e48!";
+      return "Yeni do\u011frulama iste\u011fi!";
     },
     get$next(_) {
-      return "\u0e16\u0e31\u0e14\u0e44\u0e1b";
+      return "\u0130leri";
     },
     get$no() {
-      return "\u0e44\u0e21\u0e48";
+      return "Hay\u0131r";
     },
     get$noConnectionToTheServer() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e1a\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c";
+      return "Sunucuyla ba\u011flant\u0131 yok";
     },
     get$noEmotesFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34 \ud83d\ude1d";
+      return "\u0130fade bulunamad\u0131. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e40\u0e0a\u0e34\u0e0d";
+      return "Davet ba\u011flant\u0131s\u0131n\u0131 payla\u015f";
     },
     get$none() {
-      return "\u0e44\u0e21\u0e48\u0e21\u0e35";
+      return "Yok";
     },
     get$noPermission() {
-      return "\u0e44\u0e21\u0e48\u0e21\u0e35\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c";
+      return "\u0130zin yok";
     },
     get$noRoomsFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e2b\u0e49\u0e2d\u0e07\u2026";
+      return "Oda bulunamad\u0131\u2026";
     },
     get$notifications() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19";
+      return "Bildirimler";
     },
     get$obtainingLocation() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e31\u0e1a\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u2026";
+      return "Konum al\u0131n\u0131yor\u2026";
     },
     get$offensive() {
-      return "\u0e25\u0e32\u0e21\u0e01\u0e2d\u0e19\u0e32\u0e08\u0e32\u0e23";
+      return "Rahats\u0131z edici";
     },
     get$ok() {
-      return "\u0e15\u0e01\u0e25\u0e07";
+      return "Tamam";
     },
     get$oopsSomethingWentWrong() {
-      return "\u0e2d\u0e38\u0e4a\u0e1b\u0e2a\u0e4c, \u0e21\u0e35\u0e1a\u0e32\u0e07\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u2026";
+      return "T\xfch, bir \u015feyler yanl\u0131\u015f gitti\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u0e44\u0e04\u0e25\u0e40\u0e2d\u0e19\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e23\u0e30\u0e1a\u0e1a\u0e41\u0e25\u0e49\u0e27";
+      return "\u0130stemcilerinizden birinin oturumu kapat\u0131ld\u0131";
     },
     get$openInMaps() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e19\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48";
+      return "Haritalarda a\xe7";
     },
     get$link() {
-      return "\u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "Ba\u011flant\u0131";
     },
     get$serverRequiresEmail() {
-      return "\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e19\u0e35\u0e49\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e25\u0e07\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19";
+      return "Bu sunucunun kay\u0131t i\xe7in e-posta adresinizi do\u011frulamas\u0131 gerekiyor.";
     },
     get$or() {
-      return "\u0e2b\u0e23\u0e37\u0e2d";
+      return "Veya";
     },
     get$participant() {
-      return "\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131l\u0131mc\u0131";
     },
     get$passphraseOrKey() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e35\u0e22\u0e4c\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19";
+      return "parola veya kurtarma anahtar\u0131";
     },
     get$password(_) {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19";
+      return "Parola";
     },
     get$passwordForgotten() {
-      return "\u0e25\u0e37\u0e21\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19";
+      return "Parola unutuldu";
     },
     get$passwordHasBeenChanged() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e16\u0e39\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "Parola de\u011fi\u015ftirildi";
     },
     get$pin() {
-      return "\u0e1b\u0e31\u0e01\u0e2b\u0e21\u0e38\u0e14";
+      return "Sabitle";
     },
     get$pleaseChoose() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e40\u0e25\u0e37\u0e2d\u0e01";
+      return "L\xfctfen se\xe7in";
     },
     get$pleaseEnterYourPassword() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "L\xfctfen parolan\u0131z\u0131 girin";
     },
     get$pleaseEnterYourPin() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48 PIN \u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "L\xfctfen PIN kodunuzu girin";
     },
     get$pleaseEnterYourUsername() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "L\xfctfen kullan\u0131c\u0131 ad\u0131n\u0131z\u0131 girin";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e15\u0e32\u0e21\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e1a\u0e19\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e41\u0e25\u0e30\u0e41\u0e15\u0e30\u0e17\u0e35\u0e48\u0e16\u0e31\u0e14\u0e44\u0e1b";
+      return 'L\xfctfen web sitesindeki talimatlar\u0131 izleyin ve "\u0130leri" d\xfc\u011fmesine dokunun.';
     },
     get$privacy() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27";
+      return "Gizlilik";
     },
     get$reason(_) {
-      return "\u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25";
+      return "Neden";
     },
     redactedBy$1(username) {
-      return "\u0e16\u0e39\u0e01\u0e41\u0e01\u0e49\u0e44\u0e02\u0e42\u0e14\u0e22 " + username;
+      return username + " taraf\u0131ndan d\xfczenlendi";
     },
     get$directChat() {
-      return "\u0e41\u0e0a\u0e17\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07";
+      return "Do\u011frudan sohbet";
     },
     redactedByBecause$2(username, reason) {
-      return "\u0e16\u0e39\u0e01\u0e41\u0e01\u0e49\u0e44\u0e02\u0e42\u0e14\u0e22 " + username + ' \u0e40\u0e1e\u0e23\u0e32\u0e30: "' + reason + '"';
+      return username + ' taraf\u0131ndan "' + reason + '" nedeniyle d\xfczenlendi';
     },
     redactedAnEvent$1(username) {
-      return username + " \u0e44\u0e14\u0e49\u0e41\u0e01\u0e49\u0e44\u0e02\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c";
+      return username + " bir etkinli\u011fi d\xfczenledi";
     },
     get$redactMessage() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj\u0131 d\xfczenle";
     },
     get$reject() {
-      return "\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18";
+      return "Reddet";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d";
+      return username + " daveti reddetti";
     },
     get$removeAllOtherDevices() {
-      return "\u0e25\u0e1a\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e37\u0e48\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "Di\u011fer t\xfcm ayg\u0131tlar\u0131 kald\u0131r";
     },
     get$unbanFromChat() {
-      return "\u0e1b\u0e25\u0e14\u0e41\u0e1a\u0e19\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17";
+      return "Sohbet engelini kald\u0131r";
     },
     get$removeYourAvatar() {
-      return "\u0e25\u0e1a\u0e20\u0e32\u0e1e\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Avatar\u0131n\u0131z\u0131 kald\u0131r\u0131n";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48\u0e2b\u0e49\u0e2d\u0e07\u0e14\u0e49\u0e27\u0e22\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19\u0e43\u0e2b\u0e21\u0e48\u0e01\u0e27\u0e48\u0e32";
+      return "Oday\u0131 yeni s\xfcr\xfcmle de\u011fi\u015ftir";
     },
     get$reply(_) {
-      return "\u0e15\u0e2d\u0e1a\u0e01\u0e25\u0e31\u0e1a";
+      return "Yan\u0131tla";
     },
     get$reportMessage() {
-      return "\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj\u0131 bildir";
     },
     get$roomHasBeenUpgraded() {
-      return "\u0e2b\u0e49\u0e2d\u0e07\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e2d\u0e31\u0e1b\u0e40\u0e01\u0e23\u0e14\u0e41\u0e25\u0e49\u0e27";
+      return "Oda y\xfckseltildi";
     },
     get$saveFile() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e44\u0e1f\u0e25\u0e4c";
+      return "Dosyay\u0131 kaydet";
     },
     get$search(_) {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32";
+      return "Ara";
     },
     get$security() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22";
+      return "G\xfcvenlik";
     },
     get$recoveryKey() {
-      return "\u0e04\u0e35\u0e22\u0e4c\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19";
+      return "Kurtarma anahtar\u0131";
     },
     get$recoveryKeyLost() {
-      return "\u0e04\u0e35\u0e22\u0e4c\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e2a\u0e39\u0e0d\u0e2b\u0e32\u0e22?";
+      return "Kurtarma anahtar\u0131 kay\u0131p m\u0131?";
     },
     get$send(_) {
-      return "\u0e2a\u0e48\u0e07";
+      return "G\xf6nder";
     },
     get$sendAMessage() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Bir mesaj g\xf6nder";
     },
     get$sendAudio() {
-      return "\u0e2a\u0e48\u0e07\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Ses g\xf6nder";
     },
     get$sendFile() {
-      return "\u0e2a\u0e48\u0e07\u0e44\u0e1f\u0e25\u0e4c";
+      return "Dosya g\xf6nder";
     },
     get$sendImage() {
-      return "\u0e2a\u0e48\u0e07\u0e20\u0e32\u0e1e";
+      return "Resim g\xf6nder";
     },
     sendImages$1(count) {
-      return "\u0e2a\u0e48\u0e07 " + count + " \u0e20\u0e32\u0e1e";
+      return "" + count + " g\xf6rsel g\xf6nder";
     },
     get$sendMessages() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesajlar\u0131 g\xf6nder";
     },
     get$sendVideo() {
-      return "\u0e2a\u0e48\u0e07\u0e27\u0e34\u0e14\u0e35\u0e42\u0e2d";
+      return "Video g\xf6nder";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u0e2a\u0e48\u0e07\u0e44\u0e1f\u0e25\u0e4c";
+      return "\ud83d\udcc1 " + username + " bir dosya g\xf6nderdi";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u0e2a\u0e48\u0e07\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "\ud83c\udfa4 " + username + " bir ses g\xf6nderdi";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u0e2a\u0e48\u0e07\u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e";
+      return "\ud83d\uddbc\ufe0f " + username + " bir resim g\xf6nderdi";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u0e2a\u0e48\u0e07\u0e2a\u0e15\u0e34\u0e4a\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c";
+      return "\ud83d\ude0a " + username + " bir \xe7\u0131kartma g\xf6nderdi";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u0e2a\u0e48\u0e07\u0e27\u0e34\u0e14\u0e35\u0e42\u0e2d";
+      return "\ud83c\udfa5 " + username + " bir video g\xf6nderdi";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e42\u0e17\u0e23";
+      return senderName + " arama bilgilerini g\xf6nderdi";
     },
     get$setChatDescription() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e41\u0e0a\u0e17";
+      return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
     },
     get$settings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32";
+      return "Ayarlar";
     },
     get$share(_) {
-      return "\u0e41\u0e0a\u0e23\u0e4c";
+      return "Payla\u015f";
     },
     sharedTheLocation$1(username) {
-      return username + " \u0e41\u0e0a\u0e23\u0e4c\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32";
+      return username + " konumunu payla\u015ft\u0131";
     },
     get$shareLocation() {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07";
+      return "Konumu payla\u015f";
     },
     get$skip(_) {
-      return "\u0e02\u0e49\u0e32\u0e21";
+      return "Atla";
     },
     get$sourceCode() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e15\u0e49\u0e19\u0e09\u0e1a\u0e31\u0e1a";
+      return "Kaynak kodlar\u0131";
     },
     get$spaceIsPublic() {
-      return "\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
+      return "Alan herkese a\xe7\u0131k";
     },
     get$spaceName() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48";
+      return "Alan ad\u0131";
     },
     startedACall$1(senderName) {
-      return senderName + " \u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e42\u0e17\u0e23";
+      return senderName + " bir arama ba\u015flatt\u0131";
     },
     get$status(_) {
-      return "\u0e2a\u0e16\u0e32\u0e19\u0e30";
+      return "Durum";
     },
     get$submit(_) {
-      return "\u0e2a\u0e48\u0e07";
+      return "G\xf6nder";
     },
     get$synchronizingPleaseWait() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e0b\u0e34\u0e07\u0e04\u0e4c... \u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e2d";
+      return "E\u015fzamanlan\u0131yor\u2026 L\xfctfen bekleyin.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e0b\u0e34\u0e07\u0e04\u0e4c... (" + percentage + "%)";
+      return " Senkronize ediliyor\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u0e23\u0e30\u0e1a\u0e1a";
+      return "Sistem";
     },
     get$theyDontMatch() {
-      return "\u0e44\u0e21\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19";
+      return "E\u015fle\u015fmediler";
     },
     get$theyMatch() {
-      return "\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19";
+      return "E\u015fle\u015ftiler";
     },
     get$tooManyRequestsWarning() {
-      return "\u0e04\u0e33\u0e02\u0e2d\u0e21\u0e32\u0e01\u0e40\u0e01\u0e34\u0e19\u0e44\u0e1b \u0e01\u0e23\u0e38\u0e13\u0e32\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07!";
+      return "\xc7ok fazla istek. L\xfctfen daha sonra tekrar deneyin!";
     },
     get$transferFromAnotherDevice() {
-      return "\u0e42\u0e2d\u0e19\u0e22\u0e49\u0e32\u0e22\u0e08\u0e32\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e37\u0e48\u0e19";
+      return "Ba\u015fka bir ayg\u0131ttan aktar";
     },
     get$tryToSendAgain() {
-      return "\u0e25\u0e2d\u0e07\u0e2a\u0e48\u0e07\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Tekrar g\xf6ndermeyi deneyin";
     },
     get$unavailable() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Yok";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e41\u0e1a\u0e19 " + targetName;
+      return username + ", " + targetName + " ki\u015fisinin engelini kald\u0131rd\u0131";
     },
     get$unblockDevice() {
-      return "\u0e1b\u0e25\u0e14\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Ayg\u0131t\u0131n Engellemesini Kald\u0131r";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u0e2d\u0e31\u0e25\u0e01\u0e2d\u0e23\u0e34\u0e17\u0e36\u0e21\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01";
+      return "Bilinmeyen \u015fifreleme algoritmas\u0131";
     },
     unknownEvent$1(type) {
-      return "\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01 '" + type + "'";
+      return "Bilinmeyen etkinlik '" + type + "'";
     },
     get$unpin() {
-      return "\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e1b\u0e31\u0e01\u0e2b\u0e21\u0e38\u0e14";
+      return "Sabitlemeyi kald\u0131r";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u0e41\u0e25\u0e30 " + count + " \u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u2026";
+      return username + " ve " + count + " di\u011fer ki\u015fi yaz\u0131yor\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0e41\u0e25\u0e30 " + username2 + " \u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u2026";
+      return username + " ve " + username2 + " yaz\u0131yor\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u2026";
+      return username + " yaz\u0131yor\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17";
+      return "\ud83d\udeaa " + username + " sohbetten ayr\u0131ld\u0131";
     },
     get$username(_) {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131 ad\u0131";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u0e2a\u0e48\u0e07\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c " + type;
+      return username + " bir " + type + " etkinli\u011fi g\xf6nderdi";
     },
     get$unverified() {
-      return "\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19";
+      return "Do\u011frulanmad\u0131";
     },
     get$verified() {
-      return "\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "Do\u011fruland\u0131";
     },
     get$verifyStart() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e15\u0e31\u0e27\u0e15\u0e19";
+      return "Do\u011frulamay\u0131 Ba\u015flat";
     },
     get$verifySuccess() {
-      return "\u0e04\u0e38\u0e13\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e15\u0e31\u0e27\u0e15\u0e19\u0e2a\u0e33\u0e40\u0e23\u0e47\u0e08\u0e41\u0e25\u0e49\u0e27!";
+      return "Ba\u015far\u0131yla do\u011fruland\u0131!";
     },
     get$verifyTitle() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e2d\u0e37\u0e48\u0e19";
+      return "Di\u011fer hesap do\u011frulan\u0131yor";
     },
     get$visibleForAllParticipants() {
-      return "\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e44\u0e14\u0e49\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e17\u0e38\u0e01\u0e04\u0e19";
+      return "T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in g\xf6r\xfcn\xfcr";
     },
     get$visibleForEveryone() {
-      return "\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e44\u0e14\u0e49\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e17\u0e38\u0e01\u0e04\u0e19";
+      return "Herkes i\xe7in g\xf6r\xfcn\xfcr";
     },
     get$voiceMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Sesli mesaj";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e43\u0e2b\u0e49\u0e04\u0e39\u0e48\u0e04\u0e49\u0e32\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e02\u0e2d\u2026";
+      return "Orta\u011f\u0131n iste\u011fi kabul etmesi bekleniyor\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e43\u0e2b\u0e49\u0e04\u0e39\u0e48\u0e04\u0e49\u0e32\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u2026";
+      return "Orta\u011f\u0131n emojiyi kabul etmesi bekleniyor\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e43\u0e2b\u0e49\u0e04\u0e39\u0e48\u0e04\u0e49\u0e32\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u2026";
+      return "Orta\u011f\u0131n numaralar\u0131 kabul etmesi bekleniyor\u2026";
     },
     get$warning() {
-      return "\u0e04\u0e33\u0e40\u0e15\u0e37\u0e2d\u0e19!";
+      return "Uyar\u0131!";
     },
     get$weSentYouAnEmail() {
-      return "\u0e40\u0e23\u0e32\u0e44\u0e14\u0e49\u0e2a\u0e48\u0e07\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e41\u0e25\u0e49\u0e27";
+      return "Size bir e-posta g\xf6nderdik";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u0e17\u0e33\u0e44\u0e21\u0e04\u0e38\u0e13\u0e16\u0e36\u0e07\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e19\u0e35\u0e49?";
+      return "Bunu neden bildirmek istiyorsunuz?";
     },
     get$wipeChatBackup() {
-      return "\u0e25\u0e1a\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e43\u0e2b\u0e21\u0e48\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Yeni bir kurtarma anahtar\u0131 olu\u015fturmak i\xe7in sohbet yede\u011finiz silinsin mi?";
     },
     get$writeAMessage() {
-      return "\u0e40\u0e02\u0e35\u0e22\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u2026";
+      return "Bir mesaj yaz\u2026";
     },
     get$yes() {
-      return "\u0e43\u0e0a\u0e48";
+      return "Evet";
     },
     get$you() {
-      return "\u0e04\u0e38\u0e13";
+      return "Sen";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49\u0e2d\u0e35\u0e01\u0e15\u0e48\u0e2d\u0e44\u0e1b";
+      return "Art\u0131k bu sohbette kat\u0131l\u0131mc\u0131 de\u011filsiniz";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u0e04\u0e38\u0e13\u0e16\u0e39\u0e01\u0e41\u0e1a\u0e19\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49";
+      return "Bu sohbetten engellendiniz";
     },
     get$yourPublicKey() {
-      return "\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Ortak anahtar\u0131n\u0131z";
     },
     get$messageInfo() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj bilgileri";
     },
     get$time(_) {
-      return "\u0e40\u0e27\u0e25\u0e32";
+      return "Zaman";
     },
     get$sender() {
-      return "\u0e1c\u0e39\u0e49\u0e2a\u0e48\u0e07";
+      return "G\xf6nderen";
     },
     get$openGallery() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e41\u0e01\u0e25\u0e40\u0e25\u0e2d\u0e23\u0e35\u0e48";
+      return "Galeriyi a\xe7";
     },
     get$start(_) {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19";
+      return "Ba\u015fla";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e01\u0e48\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e43\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e01\u0e48\u0e2d\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49 \u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Eski mesajlar\u0131n\u0131z\u0131n kilidini a\xe7mak i\xe7in l\xfctfen \xf6nceki bir oturumda olu\u015fturulan kurtarma anahtar\u0131n\u0131z\u0131 girin. Kurtarma anahtar\u0131n\u0131z parolan\u0131z DE\u011e\u0130LD\u0130R.";
     },
     get$markAsRead() {
-      return "\u0e17\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e48\u0e32\u0e2d\u0e48\u0e32\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "Okundu olarak i\u015faretle";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a\u0e14\u0e49\u0e27\u0e22 " + reaction;
+      return sender + ", " + reaction + " ile tepki verdi";
     },
     get$pinMessage() {
-      return "\u0e1b\u0e31\u0e01\u0e2b\u0e21\u0e38\u0e14\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07";
+      return "Odaya sabitle";
     },
     get$emojis() {
-      return "\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34";
+      return "Emojiler";
     },
     get$youRejectedTheInvitation() {
-      return "\u0e04\u0e38\u0e13\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d";
+      return "Daveti reddettiniz";
     },
     get$youJoinedTheChat() {
-      return "\u0e04\u0e38\u0e13\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbete kat\u0131ld\u0131n\u0131z";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u0e04\u0e38\u0e13\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d\u0e41\u0e25\u0e49\u0e27";
+      return "\ud83d\udc4d Daveti kabul ettiniz";
     },
     youBannedUser$1(user) {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e1a\u0e19 " + user;
+      return user + " kullan\u0131c\u0131s\u0131n\u0131 yasaklad\u0131n\u0131z";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e16\u0e2d\u0e19\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a " + user;
+      return user + " i\xe7in daveti geri \xe7ektiniz";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d\u0e42\u0e14\u0e22 " + user;
+      return "\ud83d\udce9 " + user + " taraf\u0131ndan davet edildiniz";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u0e04\u0e38\u0e13\u0e40\u0e0a\u0e34\u0e0d " + user;
+      return "\ud83d\udce9 " + user + " kullan\u0131c\u0131s\u0131n\u0131 davet ettiniz";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u0e04\u0e38\u0e13\u0e40\u0e15\u0e30 " + user;
+      return "\ud83d\udc5e " + user + " kullan\u0131c\u0131s\u0131n\u0131 att\u0131n\u0131z";
     },
     youUnbannedUser$1(user) {
-      return "\u0e04\u0e38\u0e13\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e41\u0e1a\u0e19 " + user;
+      return user + " kullan\u0131c\u0131s\u0131n\u0131n yasa\u011f\u0131n\u0131 kald\u0131rd\u0131n\u0131z";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u0e44\u0e14\u0e49\u0e40\u0e04\u0e32\u0e30\u0e41\u0e25\u0e49\u0e27";
+      return "\ud83d\udeaa " + user + " t\u0131klatt\u0131";
     },
     get$knock() {
-      return "\u0e40\u0e04\u0e32\u0e30";
+      return "T\u0131klat";
     },
     get$unlockOldMessages() {
-      return "\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e01\u0e48\u0e32";
+      return "Eski mesajlar\u0131n kilidini a\xe7";
     },
     get$storeInSecureStorageDescription() {
-      return "\u0e40\u0e01\u0e47\u0e1a\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e43\u0e19\u0e17\u0e35\u0e48\u0e40\u0e01\u0e47\u0e1a\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e02\u0e2d\u0e07\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49";
+      return "Kurtarma anahtar\u0131n\u0131 bu ayg\u0131t\u0131n g\xfcvenli deposunda saklay\u0131n.";
     },
     get$saveKeyManuallyDescription() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e19\u0e35\u0e49\u0e14\u0e49\u0e27\u0e22\u0e15\u0e19\u0e40\u0e2d\u0e07\u0e42\u0e14\u0e22\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e25\u0e48\u0e2d\u0e07\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a\u0e41\u0e0a\u0e23\u0e4c\u0e02\u0e2d\u0e07\u0e23\u0e30\u0e1a\u0e1a\u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e25\u0e34\u0e1b\u0e1a\u0e2d\u0e23\u0e4c\u0e14";
+      return "Sistem payla\u015f\u0131m\u0131 ileti\u015fim kutusunu veya panoyu tetikleyerek bu anahtar\u0131 elle kaydedin.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "\u0e40\u0e01\u0e47\u0e1a\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e1a\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49";
+      return "Bu ayg\u0131tta g\xfcvenli bir \u015fekilde sakla";
     },
     countFiles$1(count) {
-      return "" + count + " \u0e44\u0e1f\u0e25\u0e4c";
+      return "" + count + " dosya";
     },
     get$user() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131";
     },
     get$custom() {
-      return "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e2d\u0e07";
+      return "\xd6zel";
     },
     get$noKeyForThisMessage() {
-      return "\u0e2d\u0e32\u0e08\u0e40\u0e01\u0e34\u0e14\u0e02\u0e36\u0e49\u0e19\u0e44\u0e14\u0e49\u0e2b\u0e32\u0e01\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e16\u0e39\u0e01\u0e2a\u0e48\u0e07\u0e01\u0e48\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e08\u0e30\u0e25\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e43\u0e0a\u0e49\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e1a\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49\n\n\u0e2d\u0e32\u0e08\u0e40\u0e1b\u0e47\u0e19\u0e44\u0e1b\u0e44\u0e14\u0e49\u0e27\u0e48\u0e32\u0e1c\u0e39\u0e49\u0e2a\u0e48\u0e07\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e23\u0e37\u0e2d\u0e21\u0e35\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d\u0e2d\u0e34\u0e19\u0e40\u0e17\u0e2d\u0e23\u0e4c\u0e40\u0e19\u0e47\u0e15\n\n\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e2d\u0e48\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1a\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e44\u0e14\u0e49\u0e44\u0e2b\u0e21? \u0e08\u0e32\u0e01\u0e19\u0e31\u0e49\u0e19\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e16\u0e48\u0e32\u0e22\u0e42\u0e2d\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e08\u0e32\u0e01\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e19\u0e31\u0e49\u0e19! \u0e44\u0e1b\u0e17\u0e35\u0e48 \u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32 > \u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c \u0e41\u0e25\u0e30\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e43\u0e2b\u0e49\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e0b\u0e36\u0e48\u0e07\u0e01\u0e31\u0e19\u0e41\u0e25\u0e30\u0e01\u0e31\u0e19 \u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e34\u0e14\u0e2b\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e04\u0e23\u0e31\u0e49\u0e07\u0e16\u0e31\u0e14\u0e44\u0e1b\u0e41\u0e25\u0e30\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e2d\u0e07\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e42\u0e1f\u0e01\u0e31\u0e2a \u0e04\u0e35\u0e22\u0e4c\u0e08\u0e30\u0e16\u0e39\u0e01\u0e2a\u0e48\u0e07\u0e42\u0e14\u0e22\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\n\u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e04\u0e35\u0e22\u0e4c\u0e2b\u0e32\u0e22\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e23\u0e30\u0e1a\u0e1a\u0e2b\u0e23\u0e37\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c? \u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e43\u0e2b\u0e49\u0e41\u0e19\u0e48\u0e43\u0e08\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17\u0e43\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32";
+      return "Bu durum, mesaj siz bu ayg\u0131tta hesab\u0131n\u0131zda oturum a\xe7madan \xf6nce g\xf6nderildiyse meydana gelebilir.\n\nG\xf6nderenin ayg\u0131t\u0131n\u0131z\u0131 engellemi\u015f olmas\u0131 veya internet ba\u011flant\u0131s\u0131nda bir sorun olmas\u0131 da m\xfcmk\xfcnd\xfcr.\n\nMesaj\u0131 ba\u015fka bir oturumda okuyabiliyor musunuz? O zaman mesaj\u0131 oradan aktarabilirsiniz! Ayarlar > Ayg\u0131tlar b\xf6l\xfcm\xfcne gidin ve ayg\u0131tlar\u0131n\u0131z\u0131n birbirini do\u011frulad\u0131\u011f\u0131ndan emin olun. Oday\u0131 bir sonraki sefer a\xe7t\u0131\u011f\u0131n\u0131zda ve her iki oturum da \xf6n planda oldu\u011funda, anahtarlar otomatik olarak iletilecektir.\n\nOturumu kapat\u0131rken veya ayg\u0131t de\u011fi\u015ftirirken anahtarlar\u0131 kaybetmek istemiyor musunuz? Ayarlarda sohbet yedeklemesini etkinle\u015ftirdi\u011finizden emin olun.";
     },
     get$newSpace() {
-      return "\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni alan";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u0e41\u0e0a\u0e17\u0e27\u0e48\u0e32\u0e07\u0e40\u0e1b\u0e25\u0e48\u0e32 (\u0e40\u0e14\u0e34\u0e21 " + oldDisplayName + ")";
+      return "Bo\u015f sohbet (" + oldDisplayName + " idi)";
     },
     get$newSpaceDescription() {
-      return "Spaces \u0e0a\u0e48\u0e27\u0e22\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e23\u0e27\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e0a\u0e38\u0e21\u0e0a\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e2b\u0e23\u0e37\u0e2d\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
+      return "Alanlar, sohbetlerinizi birle\u015ftirmenize ve \xf6zel veya genel topluluklar olu\u015fturman\u0131za olanak tan\u0131r.";
     },
     get$reopenChat() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e41\u0e0a\u0e17\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Sohbeti yeniden a\xe7";
     },
     get$noOtherDevicesFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e37\u0e48\u0e19";
+      return "Ba\u015fka ayg\u0131t bulunamad\u0131";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e2a\u0e48\u0e07\u0e44\u0e14\u0e49! \u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e44\u0e1f\u0e25\u0e4c\u0e41\u0e19\u0e1a\u0e2a\u0e39\u0e07\u0e2a\u0e38\u0e14\u0e16\u0e36\u0e07 " + max;
+      return "G\xf6nderilemiyor! Sunucu yaln\u0131zca " + max + " de\u011ferine kadar olan ekleri destekliyor.";
     },
     fileHasBeenSavedAt$1(path) {
-      return "\u0e44\u0e1f\u0e25\u0e4c\u0e16\u0e39\u0e01\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e44\u0e27\u0e49\u0e17\u0e35\u0e48 " + path;
+      return "Dosya " + path + " konumuna kaydedildi";
     },
     get$jumpToLastReadMessage() {
-      return "\u0e01\u0e23\u0e30\u0e42\u0e14\u0e14\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e2d\u0e48\u0e32\u0e19\u0e25\u0e48\u0e32\u0e2a\u0e38\u0e14";
+      return "Son okunan mesaja atla";
     },
     get$readUpToHere() {
-      return "\u0e2d\u0e48\u0e32\u0e19\u0e08\u0e19\u0e16\u0e36\u0e07\u0e15\u0e23\u0e07\u0e19\u0e35\u0e49";
+      return "Buraya kadar oku";
     },
     get$jump() {
-      return "\u0e01\u0e23\u0e30\u0e42\u0e14\u0e14";
+      return "Atla";
     },
     get$openLinkInBrowser() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e43\u0e19\u0e40\u0e1a\u0e23\u0e32\u0e27\u0e4c\u0e40\u0e0b\u0e2d\u0e23\u0e4c";
+      return "Ba\u011flant\u0131y\u0131 taray\u0131c\u0131da a\xe7";
     },
     get$setColorTheme() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e18\u0e35\u0e21\u0e2a\u0e35:";
+      return "Renk temas\u0131n\u0131 ayarla:";
     },
     get$invite() {
-      return "\u0e40\u0e0a\u0e34\u0e0d";
+      return "Davet et";
     },
     get$invalidInput() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07!";
+      return "Ge\xe7ersiz giri\u015f!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e34\u0e14! \u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19 " + seconds + " \u0e27\u0e34\u0e19\u0e32\u0e17\u0e35...";
+      return "Yanl\u0131\u015f PIN girildi! " + seconds + " saniye sonra tekrar deneyin...";
     },
     get$pleaseEnterANumber() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e21\u0e32\u0e01\u0e01\u0e27\u0e48\u0e32 0";
+      return "L\xfctfen 0'dan b\xfcy\xfck bir say\u0131 girin";
     },
     get$removeDevicesDescription() {
-      return "\u0e04\u0e38\u0e13\u0e08\u0e30\u0e16\u0e39\u0e01\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49\u0e41\u0e25\u0e30\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e44\u0e14\u0e49\u0e2d\u0e35\u0e01\u0e15\u0e48\u0e2d\u0e44\u0e1b";
+      return "Bu ayg\u0131ttan \xe7\u0131k\u0131\u015f yapacaks\u0131n\u0131z ve art\u0131k mesaj alamayacaks\u0131n\u0131z.";
     },
     get$banUserDescription() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e08\u0e30\u0e16\u0e39\u0e01\u0e41\u0e1a\u0e19\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e41\u0e0a\u0e17\u0e2d\u0e35\u0e01\u0e08\u0e19\u0e01\u0e27\u0e48\u0e32\u0e08\u0e30\u0e16\u0e39\u0e01\u0e1b\u0e25\u0e14\u0e41\u0e1a\u0e19";
+      return "Kullan\u0131c\u0131 sohbetten yasaklanacak ve yasa\u011f\u0131 kald\u0131r\u0131lana kadar sohbete tekrar giremeyecek.";
     },
     get$unbanUserDescription() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e08\u0e30\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e41\u0e0a\u0e17\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e44\u0e14\u0e49\u0e2b\u0e32\u0e01\u0e1e\u0e22\u0e32\u0e22\u0e32\u0e21";
+      return "Kullan\u0131c\u0131 denerse sohbete tekrar girebilecektir.";
     },
     get$kickUserDescription() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e16\u0e39\u0e01\u0e44\u0e25\u0e48\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e41\u0e15\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e41\u0e1a\u0e19 \u0e43\u0e19\u0e41\u0e0a\u0e17\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30 \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e43\u0e2b\u0e21\u0e48\u0e44\u0e14\u0e49\u0e17\u0e38\u0e01\u0e40\u0e21\u0e37\u0e48\u0e2d";
+      return "Kullan\u0131c\u0131 sohbetten at\u0131l\u0131r ancak yasaklanmaz. Herkese a\xe7\u0131k sohbetlerde kullan\u0131c\u0131 istedi\u011fi zaman yeniden kat\u0131labilir.";
     },
     get$makeAdminDescription() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e19\u0e35\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25 \u0e23\u0e30\u0e1a\u0e1a\u0e2d\u0e32\u0e08\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07\u0e08\u0e32\u0e01\u0e40\u0e02\u0e32\u0e08\u0e30\u0e21\u0e35\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e1a\u0e04\u0e38\u0e13";
+      return "Bu kullan\u0131c\u0131y\u0131 y\xf6netici yapt\u0131ktan sonra, sizinle ayn\u0131 izinlere sahip olaca\u011f\u0131 i\xe7in bunu geri alamayabilirsiniz.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e31\u0e48\u0e27\u0e42\u0e25\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e04\u0e37\u0e2d: ";
+      return "Genel kullan\u0131c\u0131 kimli\u011finiz: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u0e19\u0e48\u0e32\u0e40\u0e2a\u0e35\u0e22\u0e14\u0e32\u0e22 \u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a "' + query + '" \u0e01\u0e23\u0e38\u0e13\u0e32\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e1c\u0e34\u0e14\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48';
+      return 'Ne yaz\u0131k ki "' + query + '" ile kullan\u0131c\u0131 bulunamad\u0131. L\xfctfen bir yaz\u0131m hatas\u0131 yap\u0131p yapmad\u0131\u011f\u0131n\u0131z\u0131 kontrol edin.';
     },
     get$knocking() {
-      return "\u0e40\u0e04\u0e32\u0e30\u0e1b\u0e23\u0e30\u0e15\u0e39";
+      return "T\u0131klat";
     },
     get$groupName() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Grup ismi";
     },
     get$createGroupAndInviteUsers() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e25\u0e38\u0e48\u0e21\u0e41\u0e25\u0e30\u0e40\u0e0a\u0e34\u0e0d\u0e0a\u0e27\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Bir grup olu\u015fturun ve kullan\u0131c\u0131lar\u0131 davet edin";
     },
     get$groupCanBeFoundViaSearch() {
-      return "\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e01\u0e25\u0e38\u0e48\u0e21\u0e44\u0e14\u0e49\u0e1c\u0e48\u0e32\u0e19\u0e01\u0e32\u0e23\u0e04\u0e49\u0e19\u0e2b\u0e32";
+      return "Grup, arama ile bulunabilir";
     },
     get$wrongRecoveryKey() {
-      return "\u0e02\u0e2d\u0e2d\u0e20\u0e31\u0e22... \u0e14\u0e39\u0e40\u0e2b\u0e21\u0e37\u0e2d\u0e19\u0e27\u0e48\u0e32\u0e04\u0e35\u0e22\u0e4c\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e19\u0e35\u0e49\u0e08\u0e30\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "\xdczg\xfcn\xfcm... bu do\u011fru kurtarma anahtar\u0131 gibi g\xf6r\xfcnm\xfcyor.";
     },
     get$startConversation() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32";
+      return "G\xf6r\xfc\u015fme ba\u015flat";
     },
     get$commandHint_sendraw() {
-      return "\u0e2a\u0e48\u0e07 JSON \u0e14\u0e34\u0e1a";
+      return "Ham JSON g\xf6nder";
     },
     get$searchForUsers() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 @...";
+      return "@kullan\u0131c\u0131lar\u0131 ara...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "L\xfctfen ge\xe7erli parolan\u0131z\u0131 girin";
     },
     get$newPassword() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni parola";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e17\u0e35\u0e48\u0e41\u0e02\u0e47\u0e07\u0e41\u0e23\u0e07";
+      return "L\xfctfen g\xfc\xe7l\xfc bir parola se\xe7in";
     },
     get$passwordsDoNotMatch() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e44\u0e21\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19";
+      return "Parolalar e\u015fle\u015fmiyor";
     },
     get$passwordIsWrong() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e1b\u0e49\u0e2d\u0e19\u0e1c\u0e34\u0e14";
+      return "Girdi\u011finiz parola yanl\u0131\u015f";
     },
     get$decline() {
-      return "\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18";
+      return "Reddet";
     },
     get$thisDevice() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49:";
+      return "Bu ayg\u0131t:";
     },
     get$initAppError() {
-      return "\u0e40\u0e01\u0e34\u0e14\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e02\u0e13\u0e30\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e41\u0e2d\u0e1b";
+      return "Uygulama ba\u015flat\u0131l\u0131rken bir hata olu\u015ftu";
     },
     searchIn$1(chat) {
-      return '\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e43\u0e19\u0e41\u0e0a\u0e17 "' + chat + '"...';
+      return '"' + chat + '" sohbeti i\xe7inde ara...';
     },
     get$searchMore() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21...";
+      return "Daha fazla ara...";
     },
     get$gallery() {
-      return "\u0e41\u0e01\u0e25\u0e40\u0e25\u0e2d\u0e23\u0e35\u0e48";
+      return "Galeri";
     },
     get$files(_) {
-      return "\u0e44\u0e1f\u0e25\u0e4c";
+      return "Dosyalar";
     },
     sessionLostBody$2(url, error) {
-      return "\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e32\u0e22\u0e44\u0e1b \u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e19\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e01\u0e31\u0e1a\u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e17\u0e35\u0e48 " + url + " \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e04\u0e37\u0e2d: " + error;
+      return "Oturumunuz kayboldu. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u0e41\u0e2d\u0e1b\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e22\u0e32\u0e22\u0e32\u0e21\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e19\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e01\u0e31\u0e1a\u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e17\u0e35\u0e48 " + url + " \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e04\u0e37\u0e2d: " + error;
+      return "Uygulama \u015fimdi oturumunuzu yedekten geri y\xfcklemeye \xe7al\u0131\u015f\u0131yor. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
     },
     get$sendReadReceipts() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e2d\u0e48\u0e32\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return "Okundu bilgisi g\xf6nder";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e2b\u0e47\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e2b\u0e21\u0e48";
+      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar yeni bir mesaj yazd\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilir.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e2b\u0e47\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e2d\u0e48\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar bir mesaj\u0131 okudu\u011funuzu g\xf6rebilir.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e37\u0e48\u0e19";
+      return "\ud83d\udd10 Di\u011fer ayg\u0131t\u0131 do\u011frula";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e37\u0e48\u0e19 \u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e40\u0e2b\u0e25\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e25\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08 \u0e0b\u0e36\u0e48\u0e07\u0e08\u0e30\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e42\u0e14\u0e22\u0e23\u0e27\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \ud83d\udcaa \u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19 \u0e08\u0e30\u0e21\u0e35\u0e1b\u0e47\u0e2d\u0e1b\u0e2d\u0e31\u0e1b\u0e1b\u0e23\u0e32\u0e01\u0e0f\u0e43\u0e19\u0e41\u0e2d\u0e1b\u0e1a\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e2d\u0e07\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c \u0e0b\u0e36\u0e48\u0e07\u0e08\u0e30\u0e21\u0e35\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u0e2b\u0e23\u0e37\u0e2d\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e40\u0e1b\u0e23\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e19 \u0e04\u0e27\u0e23\u0e21\u0e35\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e2d\u0e07\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19 \ud83e\udd33";
+      return "Ba\u015fka bir ayg\u0131t\u0131 do\u011frulad\u0131\u011f\u0131n\u0131zda, bu ayg\u0131tlar anahtarlar\u0131 de\u011fi\u015f toku\u015f ederek genel g\xfcvenli\u011finizi art\u0131r\u0131r. \ud83d\udcaa Bir do\u011frulama ba\u015flatt\u0131\u011f\u0131n\u0131zda, her iki ayg\u0131ttaki uygulamada bir a\xe7\u0131l\u0131r pencere g\xf6r\xfcnecektir. Orada birbirleriyle kar\u015f\u0131la\u015ft\u0131rman\u0131z gereken bir dizi emoji veya say\u0131 g\xf6receksiniz. Do\u011frulamaya ba\u015flamadan \xf6nce her iki ayg\u0131t\u0131n da elinizin alt\u0131nda olmas\u0131 en iyisidir. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulamay\u0131 kabul etti";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulamay\u0131 iptal etti";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulamay\u0131 tamamlad\u0131";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulama i\xe7in haz\u0131r";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u0e02\u0e2d\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulama istedi";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e38\u0e0d\u0e41\u0e08";
+      return sender + " anahtar do\u011frulama ba\u015flatt\u0131";
     },
     get$commandHint_ignore() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e21\u0e17\u0e23\u0e34\u0e01\u0e0b\u0e4c\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14";
+      return "Verilen matrix kimli\u011fini g\xf6rmezden gel";
     },
     get$commandHint_unignore() {
-      return "\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e21\u0e17\u0e23\u0e34\u0e01\u0e0b\u0e4c\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14";
+      return "Verilen matrix kimli\u011fini g\xf6rmezden gelmeyi iptal et";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u0e02\u0e13\u0e30\u0e19\u0e35\u0e49\u0e21\u0e35\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e08\u0e33\u0e19\u0e27\u0e19 " + count;
+      return "\u015eu anda " + count + " engellenen kullan\u0131c\u0131 var.";
     },
     get$restricted() {
-      return "\u0e16\u0e39\u0e01\u0e08\u0e33\u0e01\u0e31\u0e14";
+      return "K\u0131s\u0131tl\u0131";
     },
     get$markAsUnread() {
-      return "\u0e17\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e48\u0e32\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e2d\u0e48\u0e32\u0e19";
+      return "Okunmad\u0131 olarak i\u015faretle";
     },
     userLevel$1(level) {
-      return "" + level + " - \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "" + level + " - Kullan\u0131c\u0131";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25";
+      return "" + level + " - Moderat\xf6r";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a";
+      return "" + level + " - Y\xf6netici";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e19\u0e01\u0e32\u0e23\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e17";
+      return "Sohbet ge\xe7mi\u015finin g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftir";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e0a\u0e17\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e32\u0e2b\u0e25\u0e31\u0e01";
+      return "Ana herkese a\xe7\u0131k sohbet adresini de\u011fi\u015ftir";
     },
     get$sendRoomNotifications() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19 @room";
+      return "@oda bildirimleri g\xf6nder";
     },
     get$chatPermissionsDescription() {
-      return "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e1e\u0e25\u0e31\u0e07\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e08\u0e33\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e1a\u0e32\u0e07\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49 \u0e23\u0e30\u0e14\u0e31\u0e1a\u0e1e\u0e25\u0e31\u0e07\u0e07\u0e32\u0e19 0, 50 \u0e41\u0e25\u0e30 100 \u0e21\u0e31\u0e01\u0e41\u0e17\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49, \u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25 \u0e41\u0e25\u0e30\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a \u0e41\u0e15\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e1b\u0e23\u0e31\u0e1a\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e44\u0e14\u0e49\u0e15\u0e32\u0e21\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23";
+      return "Bu sohbette belirli eylemler i\xe7in hangi g\xfc\xe7 d\xfczeyinin gerekli oldu\u011funu tan\u0131mlay\u0131n. 0, 50 ve 100 g\xfc\xe7 d\xfczeyleri genellikle kullan\u0131c\u0131lar\u0131, moderat\xf6rleri ve y\xf6neticileri temsil eder, ancak herhangi bir derecelendirme m\xfcmk\xfcnd\xfcr.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15 " + version + " \u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27!";
+      return "\ud83c\udf89 G\xfcncelleme " + version + " kuruldu!";
     },
     get$sendCanceled() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e16\u0e39\u0e01\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01";
+      return "G\xf6nderme iptal edildi";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u0e14\u0e39\u0e40\u0e2b\u0e21\u0e37\u0e2d\u0e19\u0e08\u0e30\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48 homeserver \u0e17\u0e35\u0e48\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a URL \u0e1c\u0e34\u0e14\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Uyumlu bir ana sunucu gibi g\xf6r\xfcnm\xfcyor. Yanl\u0131\u015f URL mi?";
     },
     get$calculatingFileSize() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e04\u0e33\u0e19\u0e27\u0e13\u0e02\u0e19\u0e32\u0e14\u0e44\u0e1f\u0e25\u0e4c...";
+      return "Dosya boyutu hesaplan\u0131yor...";
     },
     get$prepareSendingAttachment() {
-      return "\u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e2a\u0e48\u0e07\u0e44\u0e1f\u0e25\u0e4c\u0e41\u0e19\u0e1a...";
+      return "Ek g\xf6nderilmeye haz\u0131rlan\u0131yor...";
     },
     get$sendingAttachment() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e2a\u0e48\u0e07\u0e44\u0e1f\u0e25\u0e4c\u0e41\u0e19\u0e1a...";
+      return "Ek g\xf6nderiliyor...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e2a\u0e48\u0e07\u0e44\u0e1f\u0e25\u0e4c\u0e41\u0e19\u0e1a " + index + " \u0e08\u0e32\u0e01 " + $length + "...";
+      return "Ek " + index + " / " + $length + " g\xf6nderiliyor...";
     },
     serverLimitReached$1(seconds) {
-      return "\u0e16\u0e36\u0e07\u0e02\u0e35\u0e14\u0e08\u0e33\u0e01\u0e31\u0e14\u0e02\u0e2d\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e49\u0e27! \u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d " + seconds + " \u0e27\u0e34\u0e19\u0e32\u0e17\u0e35...";
+      return "Sunucu s\u0131n\u0131r\u0131na ula\u015f\u0131ld\u0131! " + seconds + " saniye bekleniyor...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38: \u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17 \u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e08\u0e30\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e42\u0e14\u0e22\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34";
+      return "Not: T\xfcm ayg\u0131tlar\u0131n\u0131z\u0131 sohbet yedeklemesine ba\u011flad\u0131\u011f\u0131n\u0131zda, otomatik olarak do\u011frulan\u0131rlar.";
     },
     get$continueText() {
-      return "\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d";
+      return "Devam et";
     },
     get$blur(_) {
-      return "\u0e40\u0e1a\u0e25\u0e2d:";
+      return "Blur:";
     },
     get$opacity(_) {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e17\u0e36\u0e1a:";
+      return "\u015eeffafl\u0131k:";
     },
     get$setWallpaper() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e1e\u0e37\u0e49\u0e19\u0e2b\u0e25\u0e31\u0e07";
+      return "Duvar ka\u011f\u0131d\u0131 se\xe7";
     },
     get$noContactInformationProvided() {
-      return "\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e43\u0e2b\u0e49\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e14 \u0e46";
+      return "Sunucu ge\xe7erli bir ileti\u015fim bilgisi sunmad\u0131";
     },
     get$contactServerAdmin() {
-      return "\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c";
+      return "Sunucu y\xf6neticisiyle ileti\u015fime ge\xe7in";
     },
     get$contactServerSecurity() {
-      return "\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e02\u0e2d\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c";
+      return "Sunucu g\xfcvenli\u011fiyle ileti\u015fime ge\xe7in";
     },
     get$supportPage() {
-      return "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19";
+      return "Destek sayfas\u0131";
     },
     get$serverInformation() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c:";
+      return "Sunucu bilgisi:";
     },
     get$name(_) {
-      return "\u0e0a\u0e37\u0e48\u0e2d";
+      return "\u0130sim";
     },
     get$version(_) {
-      return "\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19";
+      return "Versiyon";
     },
     get$website() {
-      return "\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c";
+      return "Web sitesi";
     },
     get$compress() {
-      return "\u0e1a\u0e35\u0e1a\u0e2d\u0e31\u0e14";
+      return "S\u0131k\u0131\u015ft\u0131rma";
     },
     get$boldText() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e31\u0e27\u0e2b\u0e19\u0e32";
+      return "Kal\u0131n metin";
     },
     get$italicText() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e35\u0e22\u0e07";
+      return "\u0130talik metin";
     },
     get$strikeThrough() {
-      return "\u0e02\u0e35\u0e14\u0e17\u0e31\u0e1a";
+      return "\xdcst\xfc \xe7izili";
     },
     get$pleaseFillOut() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e01\u0e23\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25";
+      return "L\xfctfen doldurun";
     },
     get$invalidUrl() {
-      return "URL \u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Ge\xe7ersiz url";
     },
     get$addLink() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "Link ekle";
     },
     get$unableToJoinChat() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e44\u0e14\u0e49 \u0e2d\u0e32\u0e08\u0e40\u0e1b\u0e47\u0e19\u0e44\u0e1b\u0e44\u0e14\u0e49\u0e27\u0e48\u0e32\u0e1d\u0e48\u0e32\u0e22\u0e2d\u0e37\u0e48\u0e19\u0e44\u0e14\u0e49\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbete girilemiyor. Belki ba\u015fka birileri konu\u015fmay\u0131 kapatm\u0131\u015f olabilir.";
     },
     get$previous() {
-      return "\u0e01\u0e48\u0e2d\u0e19\u0e2b\u0e19\u0e49\u0e32";
+      return "\xd6nceki";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u0e1d\u0e48\u0e32\u0e22\u0e2d\u0e37\u0e48\u0e19\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a \u0e08\u0e36\u0e07\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e44\u0e14\u0e49!";
+      return "Di\u011fer taraf \u015fu anda giri\u015f yapmad\u0131 ve bu nedenle mesaj alamaz!";
     },
     get$open(_) {
-      return "\u0e40\u0e1b\u0e34\u0e14";
+      return "A\xe7";
     },
     get$waitingForServer() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c...";
+      return "Sunucu bekleniyor...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u0e04\u0e33\u0e02\u0e2d\u0e41\u0e0a\u0e17\u0e43\u0e2b\u0e21\u0e48";
+      return "\ud83d\udce9 Yeni sohbet iste\u011fi";
     },
     get$contentNotificationSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32";
+      return "\u0130\xe7erik bildirim ayarlar\u0131";
     },
     get$generalNotificationSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b";
+      return "Genel bildirim ayarlar\u0131";
     },
     get$roomNotificationSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2b\u0e49\u0e2d\u0e07";
+      return "Oda bildirim ayarlar\u0131";
     },
     get$userSpecificNotificationSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131ya \xf6zel bildirim ayarlar\u0131";
     },
     get$otherNotificationSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2d\u0e37\u0e48\u0e19 \u0e46";
+      return "Di\u011fer bildirim ayarlar\u0131";
     },
     get$notificationRuleContainsUserName() {
-      return "\u0e21\u0e35\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131 Ad\u0131n\u0131 \u0130\xe7eriyor";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e21\u0e35\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e02\u0e2d\u0e07\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32";
+      return "Bir mesaj kullan\u0131c\u0131n\u0131n kullan\u0131c\u0131 ad\u0131n\u0131 i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleMaster() {
-      return "\u0e1b\u0e34\u0e14\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm bildirimleri sessize al";
     },
     get$notificationRuleMasterDescription() {
-      return "\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48\u0e01\u0e0e\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e41\u0e25\u0e30\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm di\u011fer kurallar\u0131 ge\xe7ersiz k\u0131lar ve t\xfcm bildirimleri devre d\u0131\u015f\u0131 b\u0131rak\u0131r.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34";
+      return "Otomatik Mesajlar\u0131 Bast\u0131r";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e08\u0e32\u0e01\u0e44\u0e04\u0e25\u0e40\u0e2d\u0e19\u0e15\u0e4c\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34 \u0e40\u0e0a\u0e48\u0e19 \u0e1a\u0e2d\u0e17";
+      return "Botlar gibi otomatik istemcilerden gelen bildirimleri bast\u0131r\u0131r.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e09\u0e31\u0e19";
+      return "Benim \u0130\xe7in Davet";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e16\u0e39\u0e01\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e2b\u0e49\u0e2d\u0e07";
+      return "Bir odaya davet edildi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "\xdcye Olay\u0131";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "\xdcyelik olaylar\u0131 i\xe7in bildirimleri bast\u0131r\u0131r.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u0e01\u0e32\u0e23\u0e01\u0e25\u0e48\u0e32\u0e27\u0e16\u0e36\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131 Bahsi";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e16\u0e39\u0e01\u0e01\u0e25\u0e48\u0e32\u0e27\u0e16\u0e36\u0e07\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Bir mesajda do\u011frudan bahsedildi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u0e21\u0e35\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07";
+      return "G\xf6r\xfcnen Ad\u0131 \u0130\xe7eriyor";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e21\u0e35\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e02\u0e2d\u0e07\u0e15\u0e19\u0e40\u0e2d\u0e07";
+      return "Bir mesaj kullan\u0131c\u0131n\u0131n g\xf6sterilen ad\u0131n\u0131 i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u0e01\u0e32\u0e23\u0e01\u0e25\u0e48\u0e32\u0e27\u0e16\u0e36\u0e07\u0e2b\u0e49\u0e2d\u0e07";
+      return "Oda Bahsi";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e21\u0e35\u0e01\u0e32\u0e23\u0e01\u0e25\u0e48\u0e32\u0e27\u0e16\u0e36\u0e07\u0e2b\u0e49\u0e2d\u0e07";
+      return "Bir oda bahsi oldu\u011funda kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2b\u0e49\u0e2d\u0e07";
+      return "Oda Bildirimi";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e21\u0e35\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e21\u0e35 '@room'";
+      return "Bir mesaj '@oda' i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
     },
     get$notificationRuleTombstone() {
-      return "\u0e2b\u0e25\u0e38\u0e21\u0e28\u0e1e";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2b\u0e49\u0e2d\u0e07";
+      return "Kullan\u0131c\u0131y\u0131 oda devre d\u0131\u015f\u0131 b\u0131rakma mesajlar\u0131 hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleReaction() {
-      return "\u0e1b\u0e0f\u0e34\u0e01\u0e34\u0e23\u0e34\u0e22\u0e32";
+      return "Tepki";
     },
     get$notificationRuleReactionDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1b\u0e0f\u0e34\u0e01\u0e34\u0e23\u0e34\u0e22\u0e32";
+      return "Tepkiler i\xe7in bildirimleri engeller.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e04\u0e27\u0e1a\u0e04\u0e38\u0e21\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e2b\u0e49\u0e2d\u0e07";
+      return "Oda Sunucu Eri\u015fim Kontrol Listesi (ACL)";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e04\u0e27\u0e1a\u0e04\u0e38\u0e21\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e2b\u0e49\u0e2d\u0e07 (ACL)";
+      return "Oda sunucu eri\u015fim kontrol listeleri (ACL) i\xe7in bildirimleri engeller.";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "D\xfczenlemeleri Bast\u0131r";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e41\u0e01\u0e49\u0e44\u0e02\u0e41\u0e25\u0e49\u0e27";
+      return "D\xfczenlenmi\u015f mesajlar i\xe7in bildirimleri engeller.";
     },
     get$notificationRuleCall() {
-      return "\u0e01\u0e32\u0e23\u0e42\u0e17\u0e23";
+      return "Arama";
     },
     get$notificationRuleCallDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e42\u0e17\u0e23";
+      return "Kullan\u0131c\u0131y\u0131 aramalar hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u0e2b\u0e49\u0e2d\u0e07\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e15\u0e48\u0e2d\u0e15\u0e31\u0e27";
+      return "\u015eifreli Oda Bir'e Bir";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e15\u0e48\u0e2d\u0e15\u0e31\u0e27";
+      return "Kullan\u0131c\u0131y\u0131 \u015fifreli bir'e bir odalardaki mesajlar hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u0e2b\u0e49\u0e2d\u0e07\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e15\u0e48\u0e2d\u0e15\u0e31\u0e27";
+      return "Oda Bir'e Bir";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e15\u0e48\u0e2d\u0e15\u0e31\u0e27";
+      return "Kullan\u0131c\u0131y\u0131 bir'e bir odalardaki mesajlar hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj";
     },
     get$notificationRuleMessageDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b";
+      return "Kullan\u0131c\u0131y\u0131 genel mesajlar hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleEncrypted() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e41\u0e25\u0e49\u0e27";
+      return "\u015eifreli";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e2b\u0e49\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a";
+      return "Kullan\u0131c\u0131y\u0131 \u015fifreli odalardaki mesajlar hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e27\u0e34\u0e14\u0e40\u0e08\u0e47\u0e15 Jitsi";
+      return "Kullan\u0131c\u0131y\u0131 Jitsi widget olaylar\u0131 hakk\u0131nda bilgilendirir.";
     },
     get$notificationRuleServerAcl() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c ACL \u0e02\u0e2d\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c";
+      return "Sunucu ACL Olaylar\u0131n\u0131 Bast\u0131r";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u0e23\u0e30\u0e07\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e2b\u0e15\u0e38\u0e01\u0e32\u0e23\u0e13\u0e4c ACL \u0e02\u0e2d\u0e07\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c";
+      return "Sunucu ACL olaylar\u0131 i\xe7in bildirimleri engeller.";
     },
     unknownPushRule$1(rule) {
-      return "\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e1c\u0e25\u0e31\u0e01\u0e14\u0e31\u0e19\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01 '" + rule + "'";
+      return "'" + rule + "' bilinmeyen itme kural\u0131";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e08\u0e32\u0e01 " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + " taraf\u0131ndan sesli mesaj";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e25\u0e1a\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e19\u0e35\u0e49 \u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e19\u0e35\u0e49\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49";
+      return "Bu bildirim ayar\u0131n\u0131 sildi\u011finizde, bu geri al\u0131namaz.";
     },
     get$more() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21";
+      return "Daha fazla";
     },
     get$shareKeysWith() {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e01\u0e38\u0e0d\u0e41\u0e08\u0e01\u0e31\u0e1a...";
+      return "Anahtarlar\u0131 payla\u015f...";
     },
     get$shareKeysWithDescription() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e43\u0e14\u0e1a\u0e49\u0e32\u0e07\u0e17\u0e35\u0e48\u0e04\u0e27\u0e23\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e16\u0e37\u0e2d\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e2d\u0e48\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e02\u0e49\u0e32\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e14\u0e49?";
+      return "Hangi cihazlar g\xfcvenilir olmal\u0131 ve \u015fifreli sohbetlerde mesajlar\u0131n\u0131z\u0131 okuyabilmeli?";
     },
     get$allDevices() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm cihazlar";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e02\u0e49\u0e32\u0e21\u0e2b\u0e32\u0e01\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Etkinse \xe7apraz do\u011frulanm\u0131\u015f cihazlar";
     },
     get$crossVerifiedDevices() {
-      return "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e02\u0e49\u0e32\u0e21";
+      return "\xc7apraz do\u011frulanm\u0131\u015f cihazlar";
     },
     get$verifiedDevicesOnly() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e41\u0e25\u0e49\u0e27";
+      return "Sadece do\u011frulanm\u0131\u015f cihazlar";
     },
     get$optionalMessage() {
-      return "(\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01) \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21...";
+      return "(\u0130ste\u011fe ba\u011fl\u0131) mesaj...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u0e44\u0e21\u0e48\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e1a\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e19\u0e35\u0e49";
+      return "Bu cihazda desteklenmiyor";
     },
     get$enterNewChat() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e41\u0e0a\u0e17\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni sohbete gir";
     },
     get$approve() {
-      return "\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34";
+      return "Onayla";
     },
     get$youHaveKnocked() {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e40\u0e04\u0e32\u0e30\u0e41\u0e25\u0e49\u0e27";
+      return "\xc7ald\u0131n\u0131z";
     },
     get$commandHint_logout() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Mevcut cihaz\u0131n\u0131zdan \xe7\u0131k\u0131\u015f yap";
     },
     get$commandHint_logoutall() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48";
+      return "T\xfcm aktif cihazlardan \xe7\u0131k\u0131\u015f yap";
     },
     get$moreEvents() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21";
+      return "Daha fazla etkinlik";
     },
     get$declineInvitation() {
-      return "\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d";
+      return "Davetiyeyi reddet";
     },
     get$noMessagesYet() {
-      return "\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Hen\xfcz mesaj yok";
     },
     get$pause(_) {
-      return "\u0e2b\u0e22\u0e38\u0e14\u0e0a\u0e31\u0e48\u0e27\u0e04\u0e23\u0e32\u0e27";
+      return "Duraklat";
     },
     get$resume(_) {
-      return "\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d";
+      return "Devam et";
     },
     countChats$1(chats) {
-      return "" + chats + " \u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32";
+      return "" + chats + " sohbet";
     },
     get$startPoll() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e27\u0e08\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19";
+      return "Anket ba\u015flat";
     },
     get$endPoll() {
-      return "\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e01\u0e32\u0e23\u0e25\u0e07\u0e04\u0e30\u0e41\u0e19\u0e19";
+      return "Anketi bitir";
     },
     get$answersVisible() {
-      return "\u0e04\u0e33\u0e15\u0e2d\u0e1a\u0e17\u0e35\u0e48\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e44\u0e14\u0e49";
+      return "Cevaplar g\xf6r\xfcn\xfcr";
     },
     get$pollQuestion() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21\u0e01\u0e32\u0e23\u0e25\u0e07\u0e04\u0e30\u0e41\u0e19\u0e19";
+      return "Anket sorusu";
     },
     get$answerOption() {
-      return "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e04\u0e33\u0e15\u0e2d\u0e1a";
+      return "Cevap se\xe7ene\u011fi";
     },
     get$addAnswerOption() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e04\u0e33\u0e15\u0e2d\u0e1a";
+      return "Cevap se\xe7ene\u011fi ekle";
     },
     get$allowMultipleAnswers() {
-      return "\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e15\u0e2d\u0e1a\u0e2b\u0e25\u0e32\u0e22\u0e04\u0e33\u0e15\u0e2d\u0e1a";
+      return "Birden fazla cevaba izin ver";
     },
     get$pollHasBeenEnded() {
-      return "\u0e01\u0e32\u0e23\u0e25\u0e07\u0e04\u0e30\u0e41\u0e19\u0e19\u0e44\u0e14\u0e49\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e25\u0e07\u0e41\u0e25\u0e49\u0e27";
+      return "Anket sona erdi";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e40\u0e2a\u0e35\u0e22\u0e07", "" + count + " \u0e40\u0e2a\u0e35\u0e22\u0e07", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bir oy", "" + count + " oy", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "\u0e04\u0e33\u0e15\u0e2d\u0e1a\u0e08\u0e30\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e44\u0e14\u0e49\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e25\u0e07\u0e04\u0e30\u0e41\u0e19\u0e19\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e25\u0e07";
+      return "Cevaplar anket sona erdi\u011finde g\xf6r\xfcn\xfcr olacak";
     },
     get$replyInThread() {
-      return "\u0e15\u0e2d\u0e1a\u0e43\u0e19\u0e01\u0e23\u0e30\u0e17\u0e39\u0e49";
+      return "\u0130pucuya yan\u0131t ver";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e01\u0e32\u0e23\u0e15\u0e2d\u0e1a", "" + count + " \u0e01\u0e32\u0e23\u0e15\u0e2d\u0e1a", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bir yan\u0131t", "" + count + " yan\u0131t", _null, _null);
     },
     get$thread() {
-      return "\u0e01\u0e23\u0e30\u0e17\u0e39\u0e49";
+      return "\u0130pucu";
     },
     get$backToMainChat() {
-      return "\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e1b\u0e17\u0e35\u0e48\u0e41\u0e0a\u0e17\u0e2b\u0e25\u0e31\u0e01";
+      return "Ana sohbete geri d\xf6n";
     },
     get$saveChanges() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07";
+      return "De\u011fi\u015fiklikleri kaydet";
     },
     get$createSticker() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e2b\u0e23\u0e37\u0e2d\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34";
+      return "\xc7\u0131kartma veya emoji olu\u015ftur";
     },
     get$useAsSticker() {
-      return "\u0e43\u0e0a\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c";
+      return "\xc7\u0131kartma olarak kullan";
     },
     get$useAsEmoji() {
-      return "\u0e43\u0e0a\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34";
+      return "Emoji olarak kullan";
     },
     get$stickerPackNameAlreadyExists() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e1e\u0e47\u0e04\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27";
+      return "\xc7\u0131kartma paketi ad\u0131 zaten mevcut";
     },
     get$newStickerPack() {
-      return "\u0e41\u0e1e\u0e47\u0e04\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni \xe7\u0131kartma paketi";
     },
     get$stickerPackName() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e1e\u0e47\u0e04\u0e2a\u0e15\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c";
+      return "\xc7\u0131kartma paketi ad\u0131";
     },
     get$attribution(_) {
-      return "\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e40\u0e04\u0e23\u0e14\u0e34\u0e15";
+      return "At\u0131f";
     },
     get$skipChatBackup() {
-      return "\u0e02\u0e49\u0e32\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17";
+      return "Sohbet yede\u011fini atla";
     },
     get$skipChatBackupWarning() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48? \u0e2b\u0e32\u0e01\u0e44\u0e21\u0e48\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17 \u0e04\u0e38\u0e13\u0e2d\u0e32\u0e08\u0e2a\u0e39\u0e0d\u0e40\u0e2a\u0e35\u0e22\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c.";
+      return "Emin misiniz? Sohbet yede\u011fini etkinle\u015ftirmeden cihaz\u0131n\u0131z\u0131 de\u011fi\u015ftirirseniz mesajlar\u0131n\u0131za eri\u015fimi kaybedebilirsiniz.";
     },
     get$loadingMessages() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e42\u0e2b\u0e25\u0e14\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesajlar y\xfckleniyor";
     },
     get$setupChatBackup() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e41\u0e0a\u0e17";
+      return "Sohbet yede\u011fini ayarla";
     },
     get$noMoreResultsFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21";
+      return "Daha fazla sonu\xe7 bulunamad\u0131";
     },
     chatSearchedUntil$1(time) {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e41\u0e0a\u0e17\u0e08\u0e19\u0e16\u0e36\u0e07 " + time;
+      return "Sohbet " + time + " tarihine kadar arand\u0131";
     },
     get$federationBaseUrl() {
-      return "URL \u0e10\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e23\u0e27\u0e21\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Federasyon Temel URL'si";
     },
     get$clientWellKnownInformation() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01\u0e02\u0e2d\u0e07\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32:";
+      return "\u0130stemci-Bilinen Bilgiler:";
     },
     get$baseUrl() {
-      return "URL \u0e10\u0e32\u0e19";
+      return "Temel URL";
     },
     get$identityServer() {
-      return "\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e15\u0e31\u0e27:";
+      return "Kimlik Sunucusu:";
     },
     versionWithNumber$1(version) {
-      return "\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19: " + version;
+      return "S\xfcr\xfcm: " + version;
     },
     get$logs() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01";
+      return "G\xfcnl\xfckler";
     },
     get$advancedConfigs() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e39\u0e07";
+      return "Geli\u015fmi\u015f Yap\u0131land\u0131rmalar";
     },
     get$advancedConfigurations() {
-      return "\u0e01\u0e32\u0e23\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e04\u0e48\u0e32\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e39\u0e07";
+      return "Geli\u015fmi\u015f yap\u0131land\u0131rmalar";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e43\u0e19 " + l1 + " \u0e2b\u0e23\u0e37\u0e2d " + l2 + "...";
+      return l1 + " veya " + l2 + " ile yaz...";
     },
     get$holdForInfo() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e41\u0e25\u0e30\u0e01\u0e14\u0e04\u0e49\u0e32\u0e07\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e04\u0e33";
+      return "Kelime bilgisi i\xe7in t\u0131klay\u0131p bas\u0131l\u0131 tut.";
     },
     get$gaTooltip() {
-      return "\u0e43\u0e0a\u0e49 L2 \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
     },
     get$taTooltip() {
-      return "\u0e43\u0e0a\u0e49 L2 \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviri yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u0e19\u0e31\u0e01\u0e41\u0e1b\u0e25\u0e41\u0e1a\u0e1a\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a";
+      return "Etkile\u015fimli \xc7evirmen";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e41\u0e1a\u0e1a\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a";
+      return "Etkile\u015fimli Dilbilgisi Denetleyici";
     },
     get$waTooltip() {
-      return "\u0e43\u0e0a\u0e49 L2 \u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d";
+      return "Yard\u0131m olmadan L2 kullan\u0131m\u0131";
     },
     get$noIdenticalLanguages() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e20\u0e32\u0e29\u0e32\u0e1e\u0e37\u0e49\u0e19\u0e10\u0e32\u0e19\u0e41\u0e25\u0e30\u0e20\u0e32\u0e29\u0e32\u0e1b\u0e25\u0e32\u0e22\u0e17\u0e32\u0e07\u0e17\u0e35\u0e48\u0e41\u0e15\u0e01\u0e15\u0e48\u0e32\u0e07\u0e01\u0e31\u0e19";
+      return "L\xfctfen farkl\u0131 temel ve hedef diller se\xe7in";
     },
     get$joinWithClassCode() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Derse kat\u0131l";
     },
     get$languageLevelPreA1() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e15\u0e48\u0e33 (Pre A1)";
+      return "Acemi D\xfc\u015f\xfck (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u0e21\u0e37\u0e2d\u0e43\u0e2b\u0e21\u0e48 \u0e23\u0e30\u0e14\u0e31\u0e1a\u0e01\u0e25\u0e32\u0e07 (A1)";
+      return "Acemi Orta (A1)";
     },
     get$languageLevelA2() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e2a\u0e39\u0e07 (A2)";
+      return "Yeni Ba\u015flayan Y\xfcksek (A2)";
     },
     get$languageLevelB1() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e01\u0e25\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07 (B1)";
+      return "Orta Seviye Orta (B1)";
     },
     get$languageLevelB2() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e39\u0e07\u0e15\u0e48\u0e33 (B2)";
+      return "\u0130leri Seviye D\xfc\u015f\xfck (B2)";
     },
     get$languageLevelC1() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e39\u0e07\u0e01\u0e25\u0e32\u0e07 (C1)";
+      return "\u0130leri Seviye Orta (C1)";
     },
     get$languageLevelC2() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e39\u0e07\u0e2a\u0e38\u0e14 (C2)";
+      return "\xdcst D\xfczey (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d";
+      return "\u0130smi de\u011fi\u015ftir";
     },
     get$changeTheNameOfTheChat() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e41\u0e0a\u0e17";
+      return "Sohbetin ad\u0131n\u0131 de\u011fi\u015ftir";
     },
     get$sorryNoResults() {
-      return "\u0e02\u0e2d\u0e2d\u0e20\u0e31\u0e22 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c";
+      return "\xdczg\xfcn\xfcz, sonu\xe7 yok.";
     },
     get$ignoreInThisText() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19";
+      return "Yoksay";
     },
     needsItMessage$1(targetLanguage) {
-      return "\u0e23\u0e2d\u0e40\u0e14\u0e35\u0e4b\u0e22\u0e27 \u0e19\u0e31\u0e48\u0e19\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48 " + targetLanguage + "! \u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e44\u0e2b\u0e21?";
+      return "Bekle, bu " + targetLanguage + " de\u011fil! \xc7eviri yard\u0131m\u0131na ihtiyac\u0131n var m\u0131?";
     },
     get$countryInformation() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "\xdclkem";
     },
     get$targetLanguage() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e1b\u0e25\u0e32\u0e22\u0e17\u0e32\u0e07";
+      return "Hedef Dil";
     },
     get$updateLanguage() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Dillerim";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e30\u0e44\u0e23";
+      return "Hangi dili \xf6\u011frenmek istiyorsunuz?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2b\u0e25\u0e31\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e04\u0e37\u0e2d\u0e2d\u0e30\u0e44\u0e23";
+      return "Ana diliniz nedir?";
     },
     get$publicProfileTitle() {
-      return "\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19\u0e43\u0e19\u0e04\u0e49\u0e19\u0e2b\u0e32";
+      return "Profilimin aramada bulunmas\u0131na izin ver";
     },
     get$publicProfileDesc() {
-      return "\u0e42\u0e14\u0e22\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e04\u0e38\u0e13\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e42\u0e1b\u0e23\u0e44\u0e1f\u0e25\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e43\u0e19\u0e41\u0e16\u0e1a\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e42\u0e25\u0e01\u0e41\u0e25\u0e30\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e02\u0e2d\u0e41\u0e0a\u0e17 \u0e43\u0e19\u0e02\u0e13\u0e30\u0e19\u0e35\u0e49 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e35\u0e48\u0e08\u0e30\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e2b\u0e23\u0e37\u0e2d\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e02\u0e2d\u0e44\u0e14\u0e49";
+      return "A\xe7\u0131l\u0131rsa, di\u011fer kullan\u0131c\u0131lar\u0131n profilinizi k\xfcresel arama \xe7ubu\u011funda bulmas\u0131na ve sohbet istekleri g\xf6ndermesine olanak tan\u0131rs\u0131n\u0131z. Bu noktada, iste\u011fi kabul etmeyi veya reddetmeyi se\xe7ebilirsiniz.";
     },
     get$errorDisableIT() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "\xc7eviri yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131.";
     },
     get$errorDisableIGC() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131.";
     },
     get$errorDisableITUserDesc() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviri yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
     },
     get$errorDisableITClassDesc() {
-      return "\u0e01\u0e32\u0e23\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49\u0e2d\u0e22\u0e39\u0e48";
+      return "Bu sohbetin bulundu\u011fu kursta \xe7eviri yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015ft\u0131r.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u0e01\u0e32\u0e23\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49\u0e2d\u0e22\u0e39\u0e48";
+      return "Bu sohbetin bulundu\u011fu kursta dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015ft\u0131r.";
     },
     get$error405Title() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32";
+      return "Diller ayarlanmam\u0131\u015f";
     },
     get$error405Desc() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e20\u0e32\u0e29\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e43\u0e19\u0e40\u0e21\u0e19\u0e2b\u0e25\u0e31\u0e01 > \u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "L\xfctfen Ana Men\xfc > \xd6\u011frenme Ayarlar\u0131'ndan dillerinizi ayarlay\u0131n.";
     },
     get$termsAndConditions() {
-      return "\u0e02\u0e49\u0e2d\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e41\u0e25\u0e30\u0e40\u0e07\u0e37\u0e48\u0e2d\u0e19\u0e44\u0e02";
+      return "\u015eartlar ve Ko\u015fullar";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u0e41\u0e25\u0e30\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e27\u0e48\u0e32\u0e09\u0e31\u0e19\u0e21\u0e35\u0e2d\u0e32\u0e22\u0e38\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22 16 \u0e1b\u0e35";
+      return " ve en az 16 ya\u015f\u0131nda oldu\u011fumu onayl\u0131yorum.";
     },
     get$error502504Title() {
-      return "\u0e27\u0e49\u0e32\u0e27 \u0e21\u0e35\u0e19\u0e31\u0e01\u0e40\u0e23\u0e35\u0e22\u0e19\u0e2d\u0e2d\u0e19\u0e44\u0e25\u0e19\u0e4c\u0e08\u0e33\u0e19\u0e27\u0e19\u0e21\u0e32\u0e01!";
+      return "Vay can\u0131na, \xe7ok say\u0131da \xf6\u011frenci \xe7evrimi\xe7i!";
     },
     get$error502504Desc() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e41\u0e1b\u0e25\u0e41\u0e25\u0e30\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e32\u0e08\u0e0a\u0e49\u0e32\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e44\u0e14\u0e49\u0e43\u0e19\u0e02\u0e13\u0e30\u0e19\u0e35\u0e49 \u0e02\u0e13\u0e30\u0e17\u0e35\u0e48\u0e1a\u0e2d\u0e17\u0e1e\u0e31\u0e07\u0e40\u0e1c\u0e32 Pangea \u0e01\u0e33\u0e25\u0e31\u0e07\u0e15\u0e32\u0e21\u0e17\u0e31\u0e19";
+      return "\xc7eviri ve dilbilgisi ara\xe7lar\u0131, Pangea botlar\u0131 g\xfcncellenirken yava\u015f veya kullan\u0131lamayabilir.";
     },
     get$error404Title() {
-      return "\u0e40\u0e01\u0e34\u0e14\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25!";
+      return "\xc7eviri hatas\u0131!";
     },
     get$error404Desc() {
-      return "Pangea Bot \u0e44\u0e21\u0e48\u0e41\u0e19\u0e48\u0e43\u0e08\u0e27\u0e48\u0e32\u0e08\u0e30\u0e08\u0e30\u0e41\u0e1b\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23...";
+      return "Pangea Bot bunun nas\u0131l \xe7evrilece\u011finden emin de\u011fil...";
     },
     get$errorPleaseRefresh() {
-      return "\u0e40\u0e23\u0e32\u0e01\u0e33\u0e25\u0e31\u0e07\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e22\u0e39\u0e48! \u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e35\u0e40\u0e1f\u0e23\u0e0a\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e25\u0e30\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Bunu inceliyoruz! L\xfctfen sayfay\u0131 yeniden y\xfckleyin ve tekrar deneyin.";
     },
     get$connectedToStaging() {
-      return "\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d\u0e01\u0e31\u0e1a\u0e2a\u0e40\u0e15\u0e08";
+      return "Test ortam\u0131na ba\u011fl\u0131";
     },
     get$learningSettings() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "\xd6\u011frenme ayarlar\u0131";
     },
     get$participants() {
-      return "\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131l\u0131mc\u0131lar";
     },
     get$clickMessageTitle() {
-      return "\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e44\u0e2b\u0e21?";
+      return "Yard\u0131ma m\u0131 ihtiyac\u0131n\u0131z var?";
     },
     get$clickMessageBody() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e20\u0e32\u0e29\u0e32\u0e15\u0e48\u0e32\u0e07 \u0e46 \u0e40\u0e0a\u0e48\u0e19 \u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25 \u0e01\u0e32\u0e23\u0e40\u0e25\u0e48\u0e19\u0e0b\u0e49\u0e33 \u0e41\u0e25\u0e30\u0e2d\u0e37\u0e48\u0e19 \u0e46!";
+      return "\xc7eviri, oynatma ve daha fazlas\u0131 gibi dil ara\xe7lar\u0131 i\xe7in bir mesaja t\u0131klay\u0131n!";
     },
     get$allDone() {
-      return "\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e41\u0e25\u0e49\u0e27!";
+      return "Hepsi tamam!";
     },
     get$vocab() {
-      return "\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kelimeler";
     },
     get$subscribe(_) {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Abone Ol";
     },
     get$getAccess() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e15\u0e2d\u0e19\u0e19\u0e35\u0e49!";
+      return "Hemen Abone Ol!";
     },
     get$subscriptionDesc() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e1f\u0e23\u0e35! \u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e41\u0e1a\u0e1a\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a \u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c \u0e41\u0e25\u0e30\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "Mesajla\u015fma \xfccretsizdir! Etkile\u015fimli \xe7eviri, dilbilgisi kontrol\xfc ve \xf6\u011frenme analizlerini a\xe7mak i\xe7in abone olun.";
     },
     get$subscriptionManagement() {
-      return "\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Abonelik Y\xf6netimi";
     },
     get$currentSubscription() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19";
+      return "Mevcut Abonelik";
     },
     get$cancelSubscription() {
-      return "\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Aboneli\u011finizi \u0130ptal Edin";
     },
     get$selectYourPlan() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e41\u0e1c\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Plan\u0131n\u0131z\u0131 Se\xe7in";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e40\u0e14\u0e34\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e41\u0e1c\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "L\xfctfen abonelik plan\u0131n\u0131z\u0131 y\xf6netmek i\xe7in orijinal cihaz\u0131n\u0131za giri\u015f yap\u0131n";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e44\u0e14\u0e49";
+      return "Abonelik y\xf6netimi kullan\u0131lam\u0131yor";
     },
     get$paymentMethod() {
-      return "\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e07\u0e34\u0e19";
+      return "\xd6deme Y\xf6ntemi";
     },
     get$paymentHistory() {
-      return "\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e01\u0e32\u0e23\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e07\u0e34\u0e19";
+      return "\xd6deme Ge\xe7mi\u015fi";
     },
     get$emptyChatDownloadWarning() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e41\u0e0a\u0e17\u0e27\u0e48\u0e32\u0e07\u0e40\u0e1b\u0e25\u0e48\u0e32";
+      return "Bo\u015f sohbet indirilemez";
     },
     get$toggleImmersionMode() {
-      return "\u0e42\u0e2b\u0e21\u0e14\u0e01\u0e32\u0e23\u0e08\u0e21\u0e2d\u0e22\u0e39\u0e48";
+      return "Dald\u0131rma Modu";
     },
     get$toggleImmersionModeDesc() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e08\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e43\u0e19\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e2b\u0e21\u0e32\u0e22\u0e44\u0e27\u0e49 \u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e19\u0e35\u0e49\u0e21\u0e35\u0e1b\u0e23\u0e30\u0e42\u0e22\u0e0a\u0e19\u0e4c\u0e21\u0e32\u0e01\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e25\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e20\u0e32\u0e29\u0e32";
+      return "Etkinle\u015ftirildi\u011finde, t\xfcm mesajlar hedef dilinizde g\xf6sterilir. Bu ayar dil de\u011fi\u015fimleri i\xe7in en kullan\u0131\u015fl\u0131d\u0131r.";
     },
     get$itToggleDescription() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e19\u0e35\u0e49\u0e08\u0e30\u0e23\u0e30\u0e1a\u0e38\u0e04\u0e33\u0e43\u0e19\u0e20\u0e32\u0e29\u0e32\u0e1e\u0e37\u0e49\u0e19\u0e10\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e0a\u0e48\u0e27\u0e22\u0e41\u0e1b\u0e25\u0e40\u0e1b\u0e47\u0e19\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e2b\u0e21\u0e32\u0e22\u0e44\u0e27\u0e49 \u0e41\u0e21\u0e49\u0e08\u0e30\u0e1e\u0e1a\u0e44\u0e14\u0e49\u0e19\u0e49\u0e2d\u0e22 \u0e41\u0e15\u0e48 AI \u0e2d\u0e32\u0e08\u0e17\u0e33\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "Bu dil \xf6\u011frenme arac\u0131, temel dilinizdeki kelimeleri tan\u0131mlar ve onlar\u0131 hedef dilinize \xe7evirmenize yard\u0131mc\u0131 olur. Nadiren de olsa, yapay zeka \xe7eviri hatalar\u0131 yapabilir.";
     },
     get$igcToggleDescription() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e19\u0e35\u0e49\u0e08\u0e30\u0e23\u0e30\u0e1a\u0e38\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e30\u0e01\u0e14 \u0e04\u0e33\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c \u0e41\u0e25\u0e30\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e41\u0e19\u0e30\u0e19\u0e33\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02 \u0e41\u0e21\u0e49\u0e08\u0e30\u0e1e\u0e1a\u0e44\u0e14\u0e49\u0e19\u0e49\u0e2d\u0e22 \u0e41\u0e15\u0e48 AI \u0e2d\u0e32\u0e08\u0e17\u0e33\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "Bu dil \xf6\u011frenme arac\u0131, mesaj\u0131n\u0131zdaki yayg\u0131n yaz\u0131m, dilbilgisi ve noktalama hatalar\u0131n\u0131 tan\u0131yacak ve d\xfczeltmeler \xf6nerecektir. Nadiren de olsa, yapay zeka d\xfczeltme hatalar\u0131 yapabilir.";
     },
     get$originalMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e49\u0e19\u0e09\u0e1a\u0e31\u0e1a";
+      return "Orijinal Mesaj";
     },
     get$sentMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e2a\u0e48\u0e07\u0e41\u0e25\u0e49\u0e27";
+      return "G\xf6nderilen Mesaj";
     },
     get$useType() {
-      return "\u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17";
+      return "Kullan\u0131m T\xfcr\xfc";
     },
     get$notAvailable() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Mevcut De\u011fil";
     },
     get$taAndGaTooltip() {
-      return "\u0e43\u0e0a\u0e49 L2 \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e41\u0e25\u0e30\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "\xc7eviri yard\u0131m\u0131 ve dilbilgisi yard\u0131m\u0131 ile L2 kullan\u0131m\u0131";
     },
     get$definitionsToolName() {
-      return "\u0e04\u0e33\u0e08\u0e33\u0e01\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e33";
+      return "Kelime Tan\u0131mlar\u0131";
     },
     get$definitionsToolDescription() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e04\u0e33\u0e17\u0e35\u0e48\u0e02\u0e35\u0e14\u0e40\u0e2a\u0e49\u0e19\u0e43\u0e15\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e35\u0e19\u0e49\u0e33\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e04\u0e33\u0e08\u0e33\u0e01\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21 \u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e04\u0e33\u0e08\u0e33\u0e01\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21";
+      return "Etkinle\u015ftirildi\u011finde, mavi ile alt\u0131 \xe7izili kelimelere t\u0131klayarak tan\u0131mlar\u0131na ula\u015fabilirsiniz. Tan\u0131mlara eri\u015fmek i\xe7in mesajlara t\u0131klay\u0131n.";
     },
     get$welcomeBack() {
-      return "\u0e22\u0e34\u0e19\u0e14\u0e35\u0e15\u0e49\u0e2d\u0e19\u0e23\u0e31\u0e1a\u0e01\u0e25\u0e31\u0e1a! \u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e19\u0e33\u0e23\u0e48\u0e2d\u0e07 2023-2024 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e40\u0e23\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e1e\u0e34\u0e40\u0e28\u0e29 \u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e47\u0e19\u0e04\u0e23\u0e39\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e0b\u0e37\u0e49\u0e2d\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e0a\u0e31\u0e49\u0e19\u0e40\u0e23\u0e35\u0e22\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e40\u0e23\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e23\u0e31\u0e1a\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e04\u0e23\u0e39";
+      return "Tekrar ho\u015f geldiniz! 2023-2024 pilotunun bir par\xe7as\u0131ysan\u0131z, l\xfctfen \xf6zel pilot aboneli\u011finiz i\xe7in bizimle ileti\u015fime ge\xe7in. Bir \xf6\u011fretmen veya kurumunuzun s\u0131n\u0131f\u0131n\u0131z i\xe7in lisans sat\u0131n ald\u0131ysa, \xf6\u011fretmen aboneli\u011finiz i\xe7in bizimle ileti\u015fime ge\xe7in.";
     },
     get$downloadTxtFile() {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e44\u0e1f\u0e25\u0e4c\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Metin Dosyas\u0131 \u0130ndir";
     },
     get$downloadCSVFile() {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e44\u0e1f\u0e25\u0e4c CSV";
+      return "CSV Dosyas\u0131 \u0130ndir";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0e04\u0e38\u0e13\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19\u0e15\u0e25\u0e2d\u0e14\u0e0a\u0e35\u0e1e\u0e43\u0e19\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19 \u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d support@pangea.chat \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e43\u0e19\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "\u015eu anda \xf6m\xfcr boyu promosyon aboneli\u011finiz var. Aboneli\u011finizi de\u011fi\u015ftirmek i\xe7in support@pangea.chat adresine mesaj g\xf6nderin.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e17\u0e35\u0e48\u0e0b\u0e37\u0e49\u0e2d\u0e1c\u0e48\u0e32\u0e19 " + purchasePlatform;
+      return "Abonelik " + purchasePlatform + " \xfczerinden sat\u0131n al\u0131nd\u0131";
     },
     get$oneWeekTrial() {
-      return "\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e2a\u0e31\u0e1b\u0e14\u0e32\u0e2b\u0e4c";
+      return "Bir Haftal\u0131k Deneme";
     },
     get$downloadXLSXFile() {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e44\u0e1f\u0e25\u0e4c Excel";
+      return "Excel Dosyas\u0131n\u0131 \u0130ndir";
     },
     get$unkDisplayName() {
-      return "\u0e44\u0e21\u0e48\u0e17\u0e23\u0e32\u0e1a";
+      return "Bilinmeyen";
     },
     get$wwCountryDisplayName() {
-      return "\u0e17\u0e31\u0e48\u0e27\u0e42\u0e25\u0e01";
+      return "D\xfcnya \xc7ap\u0131nda";
     },
     get$afCountryDisplayName() {
-      return "\u0e2d\u0e31\u0e1f\u0e01\u0e32\u0e19\u0e34\u0e2a\u0e16\u0e32\u0e19";
+      return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e2d\u0e31\u0e19\u0e25\u0e31\u0e19\u0e14\u0e4c";
+      return "Aland Adalar\u0131";
     },
     get$alCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e25\u0e40\u0e1a\u0e40\u0e19\u0e35\u0e22";
+      return "Arnavutluk";
     },
     get$dzCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e25\u0e08\u0e35\u0e40\u0e23\u0e35\u0e22";
+      return "Cezayir";
     },
     get$asCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e21\u0e31\u0e27\u0e2d\u0e40\u0e21\u0e23\u0e34\u0e01\u0e31\u0e19";
+      return "Amerikan Samoas\u0131";
     },
     get$adCountryDisplayName() {
-      return "\u0e2d\u0e31\u0e19\u0e14\u0e2d\u0e23\u0e4c\u0e23\u0e32";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e07\u0e42\u0e01\u0e25\u0e32";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e07\u0e01\u0e27\u0e34\u0e25\u0e25\u0e32";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e19\u0e17\u0e34\u0e01\u0e32\u0e41\u0e25\u0e30\u0e1a\u0e32\u0e23\u0e4c\u0e1a\u0e39\u0e14\u0e32";
+      return "Antigua ve Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u0e2d\u0e32\u0e23\u0e4c\u0e40\u0e08\u0e19\u0e15\u0e34\u0e19\u0e32";
+      return "Arjantin";
     },
     get$amCountryDisplayName() {
-      return "\u0e2d\u0e32\u0e23\u0e4c\u0e40\u0e21\u0e40\u0e19\u0e35\u0e22";
+      return "Ermenistan";
     },
     get$awCountryDisplayName() {
-      return "\u0e2d\u0e32\u0e23\u0e39\u0e1a\u0e32";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e41\u0e2d\u0e2a\u0e40\u0e0b\u0e19\u0e0a\u0e31\u0e19";
+      return "Ascension Adas\u0131";
     },
     get$auCountryDisplayName() {
-      return "\u0e2d\u0e2d\u0e2a\u0e40\u0e15\u0e23\u0e40\u0e25\u0e35\u0e22";
+      return "Avustralya";
     },
     get$atCountryDisplayName() {
-      return "\u0e2d\u0e2d\u0e2a\u0e40\u0e15\u0e23\u0e35\u0e22";
+      return "Avusturya";
     },
     get$azCountryDisplayName() {
-      return "\u0e2d\u0e32\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1a\u0e08\u0e32\u0e19";
+      return "Azerbaycan";
     },
     get$bsCountryDisplayName() {
-      return "\u0e1a\u0e32\u0e2e\u0e32\u0e21\u0e32\u0e2a";
+      return "Bahamalar";
     },
     get$bhCountryDisplayName() {
-      return "\u0e1a\u0e32\u0e2b\u0e4c\u0e40\u0e23\u0e19";
+      return "Bahreyn";
     },
     get$bdCountryDisplayName() {
-      return "\u0e1a\u0e31\u0e07\u0e01\u0e25\u0e32\u0e40\u0e17\u0e28";
+      return "Banglade\u015f";
     },
     get$bbCountryDisplayName() {
-      return "\u0e1a\u0e32\u0e23\u0e4c\u0e40\u0e1a\u0e42\u0e14\u0e2a";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u0e40\u0e1a\u0e25\u0e32\u0e23\u0e38\u0e2a";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "\u0e40\u0e1a\u0e25\u0e40\u0e22\u0e35\u0e22\u0e21";
+      return "Bel\xe7ika";
     },
     get$bzCountryDisplayName() {
-      return "\u0e40\u0e1a\u0e25\u0e35\u0e0b";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u0e40\u0e1a\u0e19\u0e34\u0e19";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e21\u0e34\u0e27\u0e14\u0e32";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u0e20\u0e39\u0e0f\u0e32\u0e19";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "\u0e42\u0e1a\u0e25\u0e34\u0e40\u0e27\u0e35\u0e22";
+      return "Bolivya";
     },
     get$baCountryDisplayName() {
-      return "\u0e1a\u0e2d\u0e2a\u0e40\u0e19\u0e35\u0e22\u0e41\u0e25\u0e30\u0e40\u0e2e\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e42\u0e01\u0e27\u0e35\u0e19\u0e32";
+      return "Bosna-Hersek";
     },
     get$bwCountryDisplayName() {
-      return "\u0e1a\u0e2d\u0e15\u0e2a\u0e27\u0e32\u0e19\u0e32";
+      return "Botsvana";
     },
     get$brCountryDisplayName() {
-      return "\u0e1a\u0e23\u0e32\u0e0b\u0e34\u0e25";
+      return "Brezilya";
     },
     get$ioCountryDisplayName() {
-      return "\u0e40\u0e02\u0e15\u0e2d\u0e32\u0e13\u0e32\u0e19\u0e34\u0e04\u0e21\u0e2d\u0e34\u0e19\u0e40\u0e14\u0e35\u0e22\u0e02\u0e2d\u0e07\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29";
+      return "Britanya Hint Okyanusu Topra\u011f\u0131";
     },
     get$vgCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e08\u0e34\u0e19\u0e02\u0e2d\u0e07\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29";
+      return "Britanya Virgin Adalar\u0131";
     },
     get$bnCountryDisplayName() {
-      return "\u0e1a\u0e23\u0e39\u0e44\u0e19";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "\u0e1a\u0e31\u0e25\u0e41\u0e01\u0e40\u0e23\u0e35\u0e22";
+      return "Bulgaristan";
     },
     get$bfCountryDisplayName() {
-      return "\u0e1a\u0e39\u0e23\u0e4c\u0e01\u0e34\u0e19\u0e32\u0e1f\u0e32\u0e42\u0e0b";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u0e1a\u0e38\u0e23\u0e38\u0e19\u0e14\u0e35";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u0e01\u0e31\u0e21\u0e1e\u0e39\u0e0a\u0e32";
+      return "Kambo\xe7ya";
     },
     get$cmCountryDisplayName() {
-      return "\u0e41\u0e04\u0e40\u0e21\u0e2d\u0e23\u0e39\u0e19";
+      return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "\u0e41\u0e04\u0e19\u0e32\u0e14\u0e32";
+      return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "\u0e40\u0e04\u0e1b\u0e40\u0e27\u0e34\u0e23\u0e4c\u0e14";
+      return "Ye\u015fil Burun";
     },
     get$bqCountryDisplayName() {
-      return "\u0e40\u0e19\u0e40\u0e18\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c\u0e41\u0e04\u0e23\u0e34\u0e1a\u0e40\u0e1a\u0e35\u0e22\u0e19";
+      return "Karayip Hollanda";
     },
     get$kyCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e40\u0e04\u0e22\u0e4c\u0e41\u0e21\u0e19";
+      return "Cayman Adalar\u0131";
     },
     get$cfCountryDisplayName() {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e41\u0e2d\u0e1f\u0e23\u0e34\u0e01\u0e32\u0e01\u0e25\u0e32\u0e07";
+      return "Orta Afrika Cumhuriyeti";
     },
     get$tdCountryDisplayName() {
-      return "\u0e0a\u0e32\u0e14";
+      return "\xc7ad";
     },
     get$clCountryDisplayName() {
-      return "\u0e0a\u0e34\u0e25\u0e35";
+      return "\u015eili";
     },
     get$cnCountryDisplayName() {
-      return "\u0e08\u0e35\u0e19";
+      return "\xc7in";
     },
     get$cxCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e04\u0e23\u0e34\u0e2a\u0e15\u0e4c\u0e21\u0e32\u0e2a";
+      return "Noel Adas\u0131";
     },
     get$ccCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e04\u0e35\u0e25\u0e34\u0e07";
+      return "Cocos [Keeling] Adalar\u0131";
     },
     get$coCountryDisplayName() {
-      return "\u0e42\u0e04\u0e25\u0e2d\u0e21\u0e40\u0e1a\u0e35\u0e22";
+      return "Kolombiya";
     },
     get$kmCountryDisplayName() {
-      return "\u0e04\u0e2d\u0e42\u0e21\u0e42\u0e23\u0e2a";
+      return "Komorlar";
     },
     get$cdCountryDisplayName() {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e18\u0e34\u0e1b\u0e44\u0e15\u0e22\u0e04\u0e2d\u0e07\u0e42\u0e01";
+      return "Kongo Demokratik Cumhuriyeti";
     },
     get$cgCountryDisplayName() {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e04\u0e2d\u0e07\u0e42\u0e01";
+      return "Kongo Cumhuriyeti";
     },
     get$ckCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e04\u0e38\u0e01";
+      return "Cook Adalar\u0131";
     },
     get$crCountryDisplayName() {
-      return "\u0e04\u0e2d\u0e2a\u0e15\u0e32\u0e23\u0e34\u0e01\u0e32";
+      return "Kosta Rika";
     },
     get$ciCountryDisplayName() {
-      return "\u0e42\u0e01\u0e15\u0e14\u0e34\u0e27\u0e35";
+      return "Fildi\u015fi Sahili";
     },
     get$hrCountryDisplayName() {
-      return "\u0e42\u0e04\u0e23\u0e40\u0e2d\u0e40\u0e0a\u0e35\u0e22";
+      return "H\u0131rvatistan";
     },
     get$cuCountryDisplayName() {
-      return "\u0e04\u0e34\u0e27\u0e1a\u0e32";
+      return "K\xfcba";
     },
     get$cwCountryDisplayName() {
-      return "\u0e04\u0e39\u0e23\u0e32\u0e40\u0e0b\u0e32";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u0e44\u0e0b\u0e1b\u0e23\u0e31\u0e2a";
+      return "K\u0131br\u0131s";
     },
     get$czCountryDisplayName() {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e40\u0e0a\u0e47\u0e01";
+      return "\xc7ekya";
     },
     get$dkCountryDisplayName() {
-      return "\u0e40\u0e14\u0e19\u0e21\u0e32\u0e23\u0e4c\u0e01";
+      return "Danimarka";
     },
     get$djCountryDisplayName() {
-      return "\u0e08\u0e34\u0e1a\u0e39\u0e15\u0e34";
+      return "Cibuti";
     },
     get$dmCountryDisplayName() {
-      return "\u0e42\u0e14\u0e21\u0e34\u0e19\u0e34\u0e01\u0e32";
+      return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e42\u0e14\u0e21\u0e34\u0e19\u0e34\u0e01\u0e31\u0e19";
+      return "Dominik Cumhuriyeti";
     },
     get$tlCountryDisplayName() {
-      return "\u0e15\u0e34\u0e21\u0e2d\u0e23\u0e4c-\u0e40\u0e25\u0e2a\u0e40\u0e15";
+      return "Do\u011fu Timor";
     },
     get$ecCountryDisplayName() {
-      return "\u0e2d\u0e35\u0e04\u0e27\u0e32\u0e14\u0e2d\u0e23\u0e4c";
+      return "Ekvador";
     },
     get$egCountryDisplayName() {
-      return "\u0e2d\u0e35\u0e22\u0e34\u0e1b\u0e15\u0e4c";
+      return "M\u0131s\u0131r";
     },
     get$svCountryDisplayName() {
-      return "\u0e40\u0e2d\u0e25\u0e0b\u0e31\u0e25\u0e27\u0e32\u0e14\u0e2d\u0e23\u0e4c";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u0e01\u0e34\u0e19\u0e35 Equatorial";
+      return "Ekvator Ginesi";
     },
     get$erCountryDisplayName() {
-      return "\u0e40\u0e2d\u0e23\u0e34\u0e40\u0e17\u0e23\u0e35\u0e22";
+      return "Eritre";
     },
     get$eeCountryDisplayName() {
-      return "\u0e40\u0e2d\u0e2a\u0e42\u0e15\u0e40\u0e19\u0e35\u0e22";
+      return "Estonya";
     },
     get$szCountryDisplayName() {
-      return "\u0e40\u0e2d\u0e2a\u0e27\u0e32\u0e15\u0e34\u0e19\u0e35";
+      return "Esvatini";
     },
     get$etCountryDisplayName() {
-      return "\u0e40\u0e2d\u0e18\u0e34\u0e42\u0e2d\u0e40\u0e1b\u0e35\u0e22";
+      return "Etiyopya";
     },
     get$fkCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e1f\u0e2d\u0e25\u0e4c\u0e04\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Falkland Adalar\u0131";
     },
     get$foCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e41\u0e1f\u0e42\u0e23";
+      return "Faroe Adalar\u0131";
     },
     get$fjCountryDisplayName() {
-      return "\u0e1f\u0e34\u0e08\u0e34";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u0e1f\u0e34\u0e19\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Finlandiya";
     },
     get$frCountryDisplayName() {
-      return "\u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a";
+      return "Fransa";
     },
     get$gfCountryDisplayName() {
-      return "\u0e40\u0e1f\u0e23\u0e19\u0e0a\u0e4c\u0e40\u0e01\u0e35\u0e22\u0e19\u0e32";
+      return "Frans\u0131z Guyanas\u0131";
     },
     get$pfCountryDisplayName() {
-      return "\u0e40\u0e1f\u0e23\u0e19\u0e0a\u0e4c\u0e42\u0e1e\u0e25\u0e34\u0e19\u0e35\u0e40\u0e0b\u0e35\u0e22";
+      return "Frans\u0131z Polinezyas\u0131";
     },
     get$gaCountryDisplayName() {
-      return "\u0e01\u0e32\u0e1a\u0e2d\u0e07";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u0e41\u0e01\u0e21\u0e40\u0e1a\u0e35\u0e22";
+      return "Gambiya";
     },
     get$geCountryDisplayName() {
-      return "\u0e08\u0e2d\u0e23\u0e4c\u0e40\u0e08\u0e35\u0e22";
+      return "G\xfcrcistan";
     },
     get$deCountryDisplayName() {
-      return "\u0e40\u0e22\u0e2d\u0e23\u0e21\u0e19\u0e35";
+      return "Almanya";
     },
     get$ghCountryDisplayName() {
-      return "\u0e01\u0e32\u0e19\u0e32";
+      return "Gana";
     },
     get$giCountryDisplayName() {
-      return "\u0e22\u0e34\u0e1a\u0e23\u0e2d\u0e25\u0e15\u0e32\u0e23\u0e4c";
+      return "Cebelitar\u0131k";
     },
     get$grCountryDisplayName() {
-      return "\u0e01\u0e23\u0e35\u0e0b";
+      return "Yunanistan";
     },
     get$glCountryDisplayName() {
-      return "\u0e01\u0e23\u0e35\u0e19\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Gr\xf6nland";
     },
     get$gdCountryDisplayName() {
-      return "\u0e40\u0e01\u0e23\u0e19\u0e32\u0e14\u0e32";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u0e01\u0e27\u0e32\u0e40\u0e14\u0e2d\u0e25\u0e39\u0e1b";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
-      return "\u0e01\u0e27\u0e21";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u0e01\u0e31\u0e27\u0e40\u0e15\u0e21\u0e32\u0e25\u0e32";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u0e40\u0e01\u0e34\u0e23\u0e4c\u0e19\u0e0b\u0e35\u0e22\u0e4c";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u0e01\u0e34\u0e19\u0e35-\u0e04\u0e2d\u0e07\u0e01\u0e35";
+      return "Gine";
     },
     get$gwCountryDisplayName() {
-      return "\u0e01\u0e34\u0e19\u0e35-\u0e1a\u0e34\u0e2a\u0e40\u0e0b\u0e32";
+      return "Gine-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u0e01\u0e32\u0e22\u0e2d\u0e32\u0e19\u0e32";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "\u0e40\u0e2e\u0e15\u0e34";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e40\u0e2e\u0e34\u0e23\u0e4c\u0e14\u0e41\u0e25\u0e30\u0e40\u0e01\u0e32\u0e30\u0e41\u0e21\u0e04\u0e42\u0e14\u0e19\u0e31\u0e25\u0e14\u0e4c";
+      return "Heard Adas\u0131 ve McDonald Adalar\u0131";
     },
     get$hnCountryDisplayName() {
-      return "\u0e2e\u0e2d\u0e19\u0e14\u0e39\u0e23\u0e31\u0e2a";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u0e2e\u0e48\u0e2d\u0e07\u0e01\u0e07";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u0e2e\u0e31\u0e07\u0e01\u0e32\u0e23\u0e35";
+      return "Macaristan";
     },
     get$isCountryDisplayName() {
-      return "\u0e44\u0e2d\u0e0b\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "\u0130zlanda";
     },
     get$inCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e19\u0e40\u0e14\u0e35\u0e22";
+      return "Hindistan";
     },
     get$idCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e19\u0e42\u0e14\u0e19\u0e35\u0e40\u0e0b\u0e35\u0e22";
+      return "Endonezya";
     },
     get$irCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e2b\u0e23\u0e48\u0e32\u0e19";
+      return "\u0130ran";
     },
     get$iqCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e23\u0e31\u0e01";
+      return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "\u0e44\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "\u0130rlanda";
     },
     get$imCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e41\u0e21\u0e19";
+      return "Man Adas\u0131";
     },
     get$ilCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e2a\u0e23\u0e32\u0e40\u0e2d\u0e25";
+      return "\u0130srail";
     },
     get$itCountryDisplayName() {
-      return "\u0e2d\u0e34\u0e15\u0e32\u0e25\u0e35";
+      return "\u0130talya";
     },
     get$jmCountryDisplayName() {
-      return "\u0e08\u0e32\u0e40\u0e21\u0e01\u0e32";
+      return "Jamaika";
     },
     get$jpCountryDisplayName() {
-      return "\u0e0d\u0e35\u0e48\u0e1b\u0e38\u0e48\u0e19";
+      return "Japonya";
     },
     get$jeCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e40\u0e08\u0e2d\u0e23\u0e4c\u0e0b\u0e35\u0e22\u0e4c";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u0e08\u0e2d\u0e23\u0e4c\u0e41\u0e14\u0e19";
+      return "\xdcrd\xfcn";
     },
     get$kzCountryDisplayName() {
-      return "\u0e04\u0e32\u0e0b\u0e31\u0e04\u0e2a\u0e16\u0e32\u0e19";
+      return "Kazakistan";
     },
     get$keCountryDisplayName() {
-      return "\u0e40\u0e04\u0e19\u0e22\u0e32";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
-      return "\u0e04\u0e34\u0e23\u0e34\u0e1a\u0e32\u0e2a";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u0e42\u0e01\u0e42\u0e27";
+      return "Kosova";
     },
     get$kwCountryDisplayName() {
-      return "\u0e04\u0e39\u0e40\u0e27\u0e15";
+      return "Kuveyt";
     },
     get$kgCountryDisplayName() {
-      return "\u0e04\u0e35\u0e23\u0e4c\u0e01\u0e35\u0e0b\u0e2a\u0e16\u0e32\u0e19";
+      return "K\u0131rg\u0131zistan";
     },
     get$laCountryDisplayName() {
-      return "\u0e25\u0e32\u0e27";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u0e25\u0e31\u0e15\u0e40\u0e27\u0e35\u0e22";
+      return "Letonya";
     },
     get$lbCountryDisplayName() {
-      return "\u0e40\u0e25\u0e1a\u0e32\u0e19\u0e2d\u0e19";
+      return "L\xfcbnan";
     },
     get$lsCountryDisplayName() {
-      return "\u0e40\u0e25\u0e42\u0e0b\u0e42\u0e17";
+      return "Lesoto";
     },
     get$lrCountryDisplayName() {
-      return "\u0e44\u0e25\u0e1a\u0e35\u0e40\u0e23\u0e35\u0e22";
+      return "Liberya";
     },
     get$lyCountryDisplayName() {
-      return "\u0e25\u0e34\u0e40\u0e1a\u0e35\u0e22";
+      return "Libya";
     },
     get$liCountryDisplayName() {
-      return "\u0e25\u0e34\u0e01\u0e40\u0e15\u0e19\u0e2a\u0e44\u0e15\u0e19\u0e4c";
+      return "Lihten\u015ftayn";
     },
     get$ltCountryDisplayName() {
-      return "\u0e25\u0e34\u0e17\u0e31\u0e27\u0e40\u0e19\u0e35\u0e22";
+      return "Litvanya";
     },
     get$luCountryDisplayName() {
-      return "\u0e25\u0e31\u0e01\u0e40\u0e0b\u0e21\u0e40\u0e1a\u0e34\u0e23\u0e4c\u0e01";
+      return "L\xfcksemburg";
     },
     get$moCountryDisplayName() {
-      return "\u0e21\u0e32\u0e40\u0e01\u0e4a\u0e32";
+      return "Makao";
     },
     get$mkCountryDisplayName() {
-      return "\u0e21\u0e32\u0e0b\u0e34\u0e42\u0e14\u0e40\u0e19\u0e35\u0e22";
+      return "Makedonya";
     },
     get$mgCountryDisplayName() {
-      return "\u0e21\u0e32\u0e14\u0e32\u0e01\u0e31\u0e2a\u0e01\u0e32\u0e23\u0e4c";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
-      return "\u0e21\u0e32\u0e25\u0e32\u0e27\u0e35";
+      return "Malavi";
     },
     get$myCountryDisplayName() {
-      return "\u0e21\u0e32\u0e40\u0e25\u0e40\u0e0b\u0e35\u0e22";
+      return "Malezya";
     },
     get$mvCountryDisplayName() {
-      return "\u0e21\u0e31\u0e25\u0e14\u0e35\u0e1f\u0e2a\u0e4c";
+      return "Maldivler";
     },
     get$mlCountryDisplayName() {
-      return "\u0e21\u0e32\u0e25\u0e35";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e25\u0e15\u0e32";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e21\u0e32\u0e23\u0e4c\u0e41\u0e0a\u0e25\u0e25\u0e4c";
+      return "Mar\u015fal Adalar\u0131";
     },
     get$mqCountryDisplayName() {
-      return "\u0e21\u0e32\u0e23\u0e4c\u0e15\u0e34\u0e19\u0e35\u0e01";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e23\u0e34\u0e40\u0e15\u0e40\u0e19\u0e35\u0e22";
+      return "Moritanya";
     },
     get$muCountryDisplayName() {
-      return "\u0e42\u0e21\u0e23\u0e2d\u0e04\u0e42\u0e01";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
-      return "\u0e21\u0e32\u0e22\u0e2dtte";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u0e40\u0e21\u0e47\u0e01\u0e0b\u0e34\u0e42\u0e01";
+      return "Meksika";
     },
     get$fmCountryDisplayName() {
-      return "\u0e44\u0e21\u0e42\u0e04\u0e23\u0e19\u0e35\u0e40\u0e0b\u0e35\u0e22";
+      return "Mikronezya";
     },
     get$mdCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e25\u0e42\u0e14\u0e27\u0e32";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u0e42\u0e21\u0e19\u0e32\u0e42\u0e01";
+      return "Monako";
     },
     get$mnCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e07\u0e42\u0e01\u0e40\u0e25\u0e35\u0e22";
+      return "Mo\u011folistan";
     },
     get$meCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e19\u0e40\u0e15\u0e40\u0e19\u0e42\u0e01\u0e23";
+      return "Karada\u011f";
     },
     get$msCountryDisplayName() {
-      return "\u0e21\u0e2d\u0e19\u0e15\u0e4c\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e23\u0e31\u0e15";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u0e42\u0e21\u0e23\u0e47\u0e2d\u0e01\u0e42\u0e01";
+      return "Fas";
     },
     get$mzCountryDisplayName() {
-      return "\u0e42\u0e21\u0e0b\u0e31\u0e21\u0e1a\u0e34\u0e01";
+      return "Mozambik";
     },
     get$mmCountryDisplayName() {
-      return "\u0e40\u0e21\u0e35\u0e22\u0e19\u0e21\u0e32 (\u0e1e\u0e21\u0e48\u0e32)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "\u0e19\u0e32\u0e21\u0e34\u0e40\u0e1a\u0e35\u0e22";
+      return "Namibya";
     },
     get$nrCountryDisplayName() {
-      return "\u0e19\u0e32\u0e2d\u0e39\u0e23\u0e39";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u0e40\u0e19\u0e1b\u0e32\u0e25";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u0e40\u0e19\u0e40\u0e18\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Hollanda";
     },
     get$ncCountryDisplayName() {
-      return "\u0e19\u0e34\u0e27\u0e41\u0e04\u0e25\u0e34\u0e42\u0e14\u0e40\u0e19\u0e35\u0e22";
+      return "Yeni Kaledonya";
     },
     get$nzCountryDisplayName() {
-      return "\u0e19\u0e34\u0e27\u0e0b\u0e35\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Yeni Zelanda";
     },
     get$niCountryDisplayName() {
-      return "\u0e19\u0e34\u0e01\u0e32\u0e23\u0e32\u0e01\u0e31\u0e27";
+      return "Nikaragua";
     },
     get$neCountryDisplayName() {
-      return "\u0e44\u0e19\u0e40\u0e08\u0e2d\u0e23\u0e4c";
+      return "Nijer";
     },
     get$ngCountryDisplayName() {
-      return "\u0e44\u0e19\u0e08\u0e35\u0e40\u0e23\u0e35\u0e22";
+      return "Nijerya";
     },
     get$nuCountryDisplayName() {
-      return "\u0e19\u0e34\u0e27\u0e22\u0e39";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e19\u0e2d\u0e23\u0e4c\u0e1f\u0e2d\u0e25\u0e4c\u0e01";
+      return "Norfolk Adas\u0131";
     },
     get$kpCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e2b\u0e25\u0e35\u0e40\u0e2b\u0e19\u0e37\u0e2d";
+      return "Kuzey Kore";
     },
     get$mpCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e21\u0e32\u0e40\u0e23\u0e35\u0e22\u0e19\u0e32\u0e40\u0e2b\u0e19\u0e37\u0e2d";
+      return "Kuzey Mariana Adalar\u0131";
     },
     get$noCountryDisplayName() {
-      return "\u0e19\u0e2d\u0e23\u0e4c\u0e40\u0e27\u0e22\u0e4c";
+      return "Norve\xe7";
     },
     get$omCountryDisplayName() {
-      return "\u0e42\u0e2d\u0e21\u0e32\u0e19";
+      return "Umman";
     },
     get$pkCountryDisplayName() {
-      return "\u0e1b\u0e32\u0e01\u0e35\u0e2a\u0e16\u0e32\u0e19";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "\u0e1b\u0e32\u0e40\u0e25\u0e32";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u0e40\u0e02\u0e15\u0e1b\u0e32\u0e40\u0e25\u0e2a\u0e44\u0e15\u0e19\u0e4c";
+      return "Filistin B\xf6lgeleri";
     },
     get$paCountryDisplayName() {
-      return "\u0e1b\u0e32\u0e19\u0e32\u0e21\u0e32";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u0e1b\u0e32\u0e1b\u0e31\u0e27\u0e19\u0e34\u0e27\u0e01\u0e34\u0e19\u0e35";
+      return "Papua Yeni Gine";
     },
     get$pyCountryDisplayName() {
-      return "\u0e1b\u0e32\u0e23\u0e32\u0e01\u0e27\u0e31\u0e22";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "\u0e40\u0e1b\u0e23\u0e39";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u0e1f\u0e34\u0e25\u0e34\u0e1b\u0e1b\u0e34\u0e19\u0e2a\u0e4c";
+      return "Filipinler";
     },
     get$plCountryDisplayName() {
-      return "\u0e42\u0e1b\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Polonya";
     },
     get$ptCountryDisplayName() {
-      return "\u0e42\u0e1b\u0e23\u0e15\u0e38\u0e40\u0e01\u0e2a";
+      return "Portekiz";
     },
     get$prCountryDisplayName() {
-      return "\u0e40\u0e1b\u0e2d\u0e23\u0e4c\u0e42\u0e15\u0e23\u0e34\u0e42\u0e01";
+      return "Porto Riko";
     },
     get$qaCountryDisplayName() {
-      return "\u0e01\u0e32\u0e15\u0e32\u0e23\u0e4c";
+      return "Katar";
     },
     get$reCountryDisplayName() {
-      return "\u0e40\u0e23\u0e2d\u0e39\u0e19\u0e35\u0e22\u0e07";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "\u0e42\u0e23\u0e21\u0e32\u0e40\u0e19\u0e35\u0e22";
+      return "Romanya";
     },
     get$ruCountryDisplayName() {
-      return "\u0e23\u0e31\u0e2a\u0e40\u0e0b\u0e35\u0e22";
+      return "Rusya";
     },
     get$rwCountryDisplayName() {
-      return "\u0e23\u0e27\u0e31\u0e19\u0e14\u0e32";
+      return "Ruanda";
     },
     get$blCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e1a\u0e32\u0e23\u0e4c\u0e40\u0e18\u0e40\u0e25\u0e21\u0e35";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e40\u0e2e\u0e40\u0e25\u0e19\u0e32";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e04\u0e34\u0e15\u0e2a\u0e4c";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e25\u0e39\u0e40\u0e0b\u0e35\u0e22";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e21\u0e32\u0e23\u0e4c\u0e15\u0e34\u0e19";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e1b\u0e35\u0e40\u0e15\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e30\u0e44\u0e21\u0e40\u0e04\u0e34\u0e25\u0e07";
+      return "Saint Pierre ve Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e19\u0e15\u0e4c\u0e27\u0e34\u0e19\u0e40\u0e0b\u0e19\u0e15\u0e4c";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e21\u0e31\u0e27";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e19\u0e21\u0e32\u0e23\u0e34\u0e42\u0e19";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e2d\u0e35\u0e42\u0e17\u0e21\u0e32\u0e41\u0e25\u0e30\u0e1b\u0e23\u0e34\u0e19\u0e0b\u0e34\u0e40\u0e1b";
+      return "Sao Tome ve Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e2d\u0e38\u0e14\u0e35\u0e2d\u0e32\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22";
+      return "Suudi Arabistan";
     },
     get$snCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e40\u0e19\u0e01\u0e31\u0e25";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e40\u0e1a\u0e35\u0e22";
+      return "S\u0131rbistan";
     },
     get$scCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e40\u0e0a\u0e25\u0e2a\u0e4c";
+      return "Sey\u015feller";
     },
     get$slCountryDisplayName() {
-      return "\u0e40\u0e0b\u0e35\u0e22\u0e23\u0e4c\u0e23\u0e32\u0e25\u0e35\u0e42\u0e2d\u0e19";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u0e2a\u0e34\u0e07\u0e04\u0e42\u0e1b\u0e23\u0e4c";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
-      return "\u0e0b\u0e34\u0e19\u0e15\u0e4c\u0e21\u0e32\u0e40\u0e17\u0e19";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u0e2a\u0e42\u0e25\u0e27\u0e32\u0e40\u0e01\u0e35\u0e22";
+      return "Slovakya";
     },
     get$siCountryDisplayName() {
-      return "\u0e2a\u0e42\u0e25\u0e27\u0e35\u0e40\u0e19\u0e35\u0e22";
+      return "Slovenya";
     },
     get$sbCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e42\u0e0b\u0e42\u0e25\u0e21\u0e2d\u0e19";
+      return "Solomon Adalar\u0131";
     },
     get$soCountryDisplayName() {
-      return "\u0e42\u0e0b\u0e21\u0e32\u0e40\u0e25\u0e35\u0e22";
+      return "Somali";
     },
     get$zaCountryDisplayName() {
-      return "\u0e41\u0e2d\u0e1f\u0e23\u0e34\u0e01\u0e32\u0e43\u0e15\u0e49";
+      return "G\xfcney Afrika";
     },
     get$gsCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e30\u0e40\u0e0b\u0e32\u0e17\u0e4c\u0e08\u0e2d\u0e23\u0e4c\u0e40\u0e08\u0e35\u0e22\u0e41\u0e25\u0e30\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e40\u0e0b\u0e32\u0e17\u0e4c\u0e41\u0e0b\u0e19\u0e14\u0e4c\u0e27\u0e34\u0e0a";
+      return "G\xfcney Georgia ve G\xfcney Sandwich Adalar\u0131";
     },
     get$krCountryDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e2b\u0e25\u0e35\u0e43\u0e15\u0e49";
+      return "G\xfcney Kore";
     },
     get$ssCountryDisplayName() {
-      return "\u0e0b\u0e39\u0e14\u0e32\u0e19\u0e43\u0e15\u0e49";
+      return "G\xfcney Sudan";
     },
     get$esCountryDisplayName() {
-      return "\u0e2a\u0e40\u0e1b\u0e19";
+      return "\u0130spanya";
     },
     get$lkCountryDisplayName() {
-      return "\u0e28\u0e23\u0e35\u0e25\u0e31\u0e07\u0e01\u0e32";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u0e0b\u0e39\u0e14\u0e32\u0e19";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u0e0b\u0e39\u0e23\u0e35\u0e19\u0e32\u0e40\u0e21";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\u0e2a\u0e27\u0e32\u0e25\u0e1a\u0e32\u0e23\u0e4c\u0e14\u0e41\u0e25\u0e30\u0e40\u0e01\u0e32\u0e30\u0e08\u0e31\u0e19\u0e19\u0e4c\u0e40\u0e21\u0e40\u0e22\u0e19";
+      return "Svalbard ve Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u0e2a\u0e27\u0e35\u0e40\u0e14\u0e19";
+      return "\u0130sve\xe7";
     },
     get$chCountryDisplayName() {
-      return "\u0e2a\u0e27\u0e34\u0e15\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "\u0130svi\xe7re";
     },
     get$syCountryDisplayName() {
-      return "\u0e0b\u0e35\u0e40\u0e23\u0e35\u0e22";
+      return "Suriye";
     },
     get$twCountryDisplayName() {
-      return "\u0e44\u0e15\u0e49\u0e2b\u0e27\u0e31\u0e19";
+      return "Tayvan";
     },
     get$tjCountryDisplayName() {
-      return "\u0e17\u0e32\u0e08\u0e34\u0e01\u0e34\u0e2a\u0e16\u0e32\u0e19";
+      return "Tacikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u0e41\u0e17\u0e19\u0e0b\u0e32\u0e40\u0e19\u0e35\u0e22";
+      return "Tanzanya";
     },
     get$thCountryDisplayName() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e44\u0e17\u0e22";
+      return "Tayland";
     },
     get$tgCountryDisplayName() {
-      return "\u0e42\u0e15\u0e42\u0e01";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
       return "Tokelau";
@@ -2554,3025 +2554,3022 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u0e15\u0e23\u0e34\u0e19\u0e34\u0e41\u0e14\u0e14/\u0e42\u0e15\u0e40\u0e1a\u0e42\u0e01";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u0e15\u0e39\u0e19\u0e34\u0e40\u0e0b\u0e35\u0e22";
+      return "Tunus";
     },
     get$trCountryDisplayName() {
-      return "\u0e15\u0e38\u0e23\u0e01\u0e35";
+      return "T\xfcrkiye";
     },
     get$tmCountryDisplayName() {
-      return "\u0e40\u0e15\u0e34\u0e23\u0e4c\u0e01\u0e40\u0e21\u0e19\u0e34\u0e2a\u0e16\u0e32\u0e19";
+      return "T\xfcrkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30 Turks and Caicos";
+      return "Turks ve Caicos Adalar\u0131";
     },
     get$tvCountryDisplayName() {
-      return "\u0e15\u0e39\u0e27\u0e32\u0e25\u0e39";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u0e2b\u0e21\u0e39\u0e48\u0e40\u0e01\u0e32\u0e30\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e08\u0e34\u0e19\u0e02\u0e2d\u0e07\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e40\u0e21\u0e23\u0e34\u0e01\u0e32";
+      return "Amerika Birle\u015fik Devletleri Virgin Adalar\u0131";
     },
     get$ugCountryDisplayName() {
-      return "\u0e2d\u0e39\u0e01\u0e31\u0e19\u0e14\u0e32";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u0e22\u0e39\u0e40\u0e04\u0e23\u0e19";
+      return "Ukrayna";
     },
     get$aeCountryDisplayName() {
-      return "\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e32\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e2d\u0e21\u0e34\u0e40\u0e23\u0e15\u0e2a\u0e4c";
+      return "Birle\u015fik Arap Emirlikleri";
     },
     get$gbCountryDisplayName() {
-      return "\u0e2a\u0e2b\u0e23\u0e32\u0e0a\u0e2d\u0e32\u0e13\u0e32\u0e08\u0e31\u0e01\u0e23";
+      return "Birle\u015fik Krall\u0131k";
     },
     get$usCountryDisplayName() {
-      return "\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e40\u0e21\u0e23\u0e34\u0e01\u0e32";
+      return "Amerika Birle\u015fik Devletleri";
     },
     get$uyCountryDisplayName() {
-      return "\u0e2d\u0e38\u0e23\u0e38\u0e01\u0e27\u0e31\u0e22";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "\u0e2d\u0e38\u0e0b\u0e40\u0e1a\u0e01\u0e34\u0e2a\u0e16\u0e32\u0e19";
+      return "\xd6zbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u0e27\u0e32\u0e19\u0e39\u0e2d\u0e32\u0e15\u0e39";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u0e19\u0e04\u0e23\u0e27\u0e32\u0e15\u0e34\u0e01\u0e31\u0e19";
+      return "Vatikan";
     },
     get$veCountryDisplayName() {
-      return "\u0e40\u0e27\u0e40\u0e19\u0e0b\u0e38\u0e40\u0e2d\u0e25\u0e32";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u0e40\u0e27\u0e35\u0e22\u0e14\u0e19\u0e32\u0e21";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "\u0e27\u0e32\u0e25\u0e25\u0e34\u0e2a\u0e41\u0e25\u0e30\u0e1f\u0e39\u0e15\u0e39\u0e19\u0e32";
+      return "Wallis ve Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u0e0b\u0e32\u0e2e\u0e32\u0e23\u0e32\u0e15\u0e30\u0e27\u0e31\u0e19\u0e15\u0e01";
+      return "Bat\u0131 Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u0e40\u0e22\u0e40\u0e21\u0e19";
+      return "Yemen";
     },
     get$zmCountryDisplayName() {
-      return "\u0e41\u0e0b\u0e21\u0e40\u0e1a\u0e35\u0e22";
+      return "Zambiya";
     },
     get$zwCountryDisplayName() {
-      return "\u0e0b\u0e34\u0e21\u0e1a\u0e31\u0e1a\u0e40\u0e27";
+      return "Zimbabve";
     },
     get$pay() {
-      return "Checkout";
+      return "\xd6deme";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u0e44\u0e14\u0e49\u0e40\u0e0a\u0e34\u0e0d\u0e04\u0e38\u0e13\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a: " + space + "! \u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e44\u0e2b\u0e21?";
+      return user + " sizi " + space + " adl\u0131 kursa kat\u0131lmaya davet etti! Kabul etmek istiyor musunuz?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d!";
+      return "\ud83d\udce9 Davet edildiniz!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u0e44\u0e14\u0e49\u0e40\u0e0a\u0e34\u0e0d\u0e04\u0e38\u0e13\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17: " + $name + "! \u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e44\u0e2b\u0e21?";
+      return user + " sizi " + $name + " adl\u0131 sohbete kat\u0131lmaya davet etti! Kabul etmek istiyor musunuz?";
     },
     get$monthlySubscription() {
-      return "\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19";
+      return "Ayl\u0131k";
     },
     get$yearlySubscription() {
-      return "\u0e23\u0e32\u0e22\u0e1b\u0e35";
+      return "Y\u0131ll\u0131k";
     },
     get$defaultSubscription() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01 Pangea Chat";
+      return "Pangea Sohbet Aboneli\u011fi";
     },
     get$freeTrial() {
-      return "\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e1f\u0e23\u0e35";
+      return "\xdccretsiz Deneme";
     },
     get$noDataFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25";
+      return "Veri bulunamad\u0131";
     },
     get$bestCorrectionFeedback() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e25\u0e49\u0e27!";
+      return "Do\u011fru!";
     },
     get$distractorFeedback() {
-      return "\u0e44\u0e21\u0e48\u0e04\u0e48\u0e2d\u0e22\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e40\u0e17\u0e48\u0e32\u0e44\u0e2b\u0e23\u0e48";
+      return "Bu pek do\u011fru de\u011fil.";
     },
     get$bestAnswerFeedback() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e25\u0e49\u0e27!";
+      return "Do\u011fru!";
     },
     get$definitionDefaultPrompt() {
-      return "\u0e04\u0e33\u0e19\u0e35\u0e49\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e27\u0e32\u0e21\u0e27\u0e48\u0e32\u0e2d\u0e30\u0e44\u0e23?";
+      return "Bu kelimenin anlam\u0131 nedir?";
     },
     get$practiceDefaultPrompt() {
-      return "\u0e04\u0e33\u0e15\u0e2d\u0e1a\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e04\u0e37\u0e2d\u0e2d\u0e30\u0e44\u0e23?";
+      return "En iyi cevap nedir?";
     },
     get$correctionDefaultPrompt() {
-      return "\u0e04\u0e33\u0e17\u0e14\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e04\u0e37\u0e2d\u0e2d\u0e30\u0e44\u0e23?";
+      return "En iyi yerine koyma nedir?";
     },
     get$reportToTeacher() {
-      return "\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e43\u0e04\u0e23?";
+      return "Bu mesaj\u0131 kime bildirmek istiyorsunuz?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u0e44\u0e14\u0e49\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e08\u0e32\u0e01 " + reportedUserId + " \u0e43\u0e19\u0e41\u0e0a\u0e17 " + roomName;
+      return reportingUserId + " kullan\u0131c\u0131s\u0131, " + roomName + " sohbetinde " + reportedUserId + " kullan\u0131c\u0131s\u0131n\u0131n mesaj\u0131n\u0131 bildirdi";
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21: " + reportedMessage + "\n\u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25: " + reason;
+      return "Mesaj: " + reportedMessage + "\nNeden: " + reason;
     },
     get$noTeachersFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e04\u0e23\u0e39\u0e17\u0e35\u0e48\u0e08\u0e30\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19";
+      return "Bildirilmek \xfczere \xf6\u011fretmen bulunamad\u0131";
     },
     trialExpiration$1(expiration) {
-      return "\u0e01\u0e32\u0e23\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e1f\u0e23\u0e35\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e30\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e43\u0e19 " + expiration;
+      return "\xdccretsiz deneme s\xfcreniz " + expiration + " tarihinde sona eriyor";
     },
     get$freeTrialDesc() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e2b\u0e21\u0e48\u0e08\u0e30\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e1f\u0e23\u0e35\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e2a\u0e31\u0e1b\u0e14\u0e32\u0e2b\u0e4c\u0e02\u0e2d\u0e07 Pangea Chat";
+      return "Yeni kullan\u0131c\u0131lar Pangea Chat'te bir hafta \xfccretsiz deneme s\xfcresi kazan\u0131r";
     },
     get$activateTrial() {
-      return "\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e1f\u0e23\u0e35 7 \u0e27\u0e31\u0e19";
+      return "\xdccretsiz 7 G\xfcnl\xfck Deneme";
     },
     get$successfullySubscribed() {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e23\u0e35\u0e22\u0e1a\u0e23\u0e49\u0e2d\u0e22\u0e41\u0e25\u0e49\u0e27!";
+      return "Ba\u015far\u0131yla abone oldunuz!";
     },
     get$clickToManageSubscription() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Aboneli\u011finizi y\xf6netmek i\xe7in buraya t\u0131klay\u0131n.";
     },
     get$signUp() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Kay\u0131t Ol";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22 " + min + " \u0e15\u0e31\u0e27\u0e2d\u0e31\u0e01\u0e29\u0e23";
+      return "L\xfctfen en az " + min + " karakter se\xe7in.";
     },
     get$pleaseEnterValidEmail() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e1b\u0e49\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "L\xfctfen ge\xe7erli bir e-posta adresi girin.";
     },
     get$pleaseChooseAUsername() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "L\xfctfen bir kullan\u0131c\u0131 ad\u0131 se\xe7in";
     },
     get$listen() {
-      return "\u0e1f\u0e31\u0e07";
+      return "Dinle";
     },
     get$trialPeriodExpired() {
-      return "\u0e23\u0e30\u0e22\u0e30\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e41\u0e25\u0e49\u0e27";
+      return "Deneme s\xfcreniz sona erdi";
     },
     get$subscribedToUnlockTools() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e41\u0e1a\u0e1a\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a\u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c \u0e01\u0e32\u0e23\u0e40\u0e25\u0e48\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07 \u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e41\u0e1a\u0e1a\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27 \u0e41\u0e25\u0e30\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49!";
+      return "Etkile\u015fimli \xe7eviri ve dilbilgisi kontrol\xfc, ses oynatma, ki\u015fiselle\u015ftirilmi\u015f pratik aktiviteleri ve \xf6\u011frenme analizlerini a\xe7mak i\xe7in abone olun!";
     },
     get$translationTooltip() {
-      return "\u0e41\u0e1b\u0e25";
+      return "\xc7eviri";
     },
     get$kickBotWarning() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e15\u0e30\u0e1a\u0e2d\u0e17 Pangea \u0e08\u0e30\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e32\u0e23\u0e25\u0e1a\u0e1a\u0e2d\u0e17\u0e2a\u0e19\u0e17\u0e19\u0e32\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49";
+      return "Pangea Bot'u uzakla\u015ft\u0131rmak bu sohbetteki sohbet botunu kald\u0131racakt\u0131r.";
     },
     get$refresh(_) {
-      return "\u0e23\u0e35\u0e40\u0e1f\u0e23\u0e0a";
+      return "Yenile";
     },
     get$accuracy(_) {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fruluk";
     },
     get$chatCapacity() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e08\u0e38\u0e41\u0e0a\u0e17";
+      return "Sohbet kapasitesi";
     },
     get$roomFull() {
-      return "\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49\u0e40\u0e15\u0e47\u0e21\u0e41\u0e25\u0e49\u0e27";
+      return "Bu oda zaten kapasiteye ula\u015fm\u0131\u015f durumda.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e08\u0e38\u0e41\u0e0a\u0e17\u0e44\u0e14\u0e49\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07\u0e41\u0e25\u0e49\u0e27";
+      return "Sohbet kapasitesi de\u011fi\u015ftirildi";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e08\u0e38\u0e41\u0e0a\u0e17\u0e15\u0e49\u0e2d\u0e07\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22 " + count;
+      return "Sohbet kapasitesi en az " + count + " olmal\u0131d\u0131r.";
     },
     get$chatCapacityExplanation() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e08\u0e38\u0e41\u0e0a\u0e17\u0e08\u0e33\u0e01\u0e31\u0e14\u0e08\u0e33\u0e19\u0e27\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e17\u0e35\u0e48\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e19\u0e41\u0e0a\u0e17";
+      return "Sohbet kapasitesi, bir sohbette izin verilen \xfcye say\u0131s\u0131n\u0131 s\u0131n\u0131rlar.";
     },
     get$enterNumber() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e04\u0e48\u0e32\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e40\u0e15\u0e47\u0e21";
+      return "L\xfctfen tam say\u0131 de\u011feri girin.";
     },
     get$buildTranslation() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e33\u0e41\u0e1b\u0e25\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e32\u0e01\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e14\u0e49\u0e32\u0e19\u0e1a\u0e19";
+      return "Yukar\u0131daki se\xe7eneklerden \xe7evirinizi olu\u015fturun";
     },
     get$practice() {
-      return "\u0e1d\u0e36\u0e01\u0e1d\u0e19";
+      return "Pratik yap";
     },
     get$speechToTextBody() {
-      return "\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2a\u0e35\u0e22\u0e07 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39\u0e16\u0e2d\u0e14\u0e04\u0e27\u0e32\u0e21\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e01\u0e31\u0e1a\u0e04\u0e30\u0e41\u0e19\u0e19\u0e04\u0e33\u0e15\u0e48\u0e2d\u0e19\u0e32\u0e17\u0e35\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e1e\u0e39\u0e14";
+      return "Sesli mesajlar i\xe7in, hem transkripti g\xf6rebilir hem de konu\u015fmac\u0131n\u0131n Dakika Ba\u015f\u0131na Kelime (WPM) puan\u0131n\u0131 g\xf6rebilirsiniz.";
     },
     get$versionNotFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19";
+      return "S\xfcr\xfcm Bulunamad\u0131";
     },
     get$fetchingVersion() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e14\u0e36\u0e07\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19...";
+      return "S\xfcr\xfcm al\u0131nmaya \xe7al\u0131\u015f\u0131l\u0131yor...";
     },
     get$versionFetchError() {
-      return "\u0e40\u0e01\u0e34\u0e14\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e14\u0e36\u0e07\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19";
+      return "S\xfcr\xfcm al\u0131n\u0131rken hata olu\u015ftu";
     },
     versionText$2(version, buildNumber) {
-      return "\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19: " + version + "+" + buildNumber;
+      return "S\xfcr\xfcm: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e20\u0e32\u0e29\u0e32\u0e2b\u0e25\u0e31\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e41\u0e1b\u0e25";
+      return "Temel dilinizdeki mesajlar \xe7evrilmeyecektir.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u0e04\u0e38\u0e13\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48";
+      return "Aktif bir aboneli\u011finiz var";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0e01\u0e32\u0e23\u0e25\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e21\u0e48\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e42\u0e14\u0e22\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34";
+      return "Hesab\u0131n\u0131z\u0131 silmek aboneli\u011finizi otomatik olarak iptal etmez.";
     },
     get$manageSubscription() {
-      return "\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Aboneli\u011fi Y\xf6net";
     },
     get$error520Title() {
-      return "\u0e42\u0e1b\u0e23\u0e14\u0e25\u0e2d\u0e07\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "L\xfctfen tekrar deneyin.";
     },
     get$error520Desc() {
-      return "\u0e02\u0e2d\u0e2d\u0e20\u0e31\u0e22 \u0e40\u0e23\u0e32\u0e44\u0e21\u0e48\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13...";
+      return "\xdczg\xfcn\xfcz, mesaj\u0131n\u0131z\u0131 anlayamad\u0131k...";
     },
     get$level(_) {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a";
+      return "Seviye";
     },
     get$translationChoicesBody() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e41\u0e25\u0e30\u0e01\u0e14\u0e04\u0e49\u0e32\u0e07\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33";
+      return "\u0130pucu almak i\xe7in bir se\xe7ene\u011fe t\u0131klay\u0131n ve bas\u0131l\u0131 tutun.";
     },
     get$grammar() {
-      return "\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u0e1c\u0e39\u0e49\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "\u0130leti\u015fim sohbete davet edildi";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u0e40\u0e0a\u0e34\u0e0d\u0e0a\u0e27\u0e19\u0e41\u0e0a\u0e17";
+      return "\ud83d\udce8 Sohbet Davet Et";
     },
     get$l2SupportNa() {
-      return "\u0e44\u0e21\u0e48\u0e21\u0e35\u0e43\u0e2b\u0e49\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23";
+      return "Mevcut De\u011fil";
     },
     get$l2SupportAlpha() {
-      return "\u0e2d\u0e31\u0e25\u0e1f\u0e48\u0e32";
+      return "Alfa";
     },
     get$l2SupportBeta() {
-      return "\u0e40\u0e1a\u0e15\u0e49\u0e32";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\u0e40\u0e15\u0e47\u0e21";
+      return "Tam";
     },
     get$playAudio() {
-      return "\u0e40\u0e25\u0e48\u0e19";
+      return "\xc7al";
     },
     get$stop(_) {
-      return "\u0e2b\u0e22\u0e38\u0e14";
+      return "Durdur";
     },
     get$grammarCopyPOSsconj() {
-      return "\u0e04\u0e33\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e23\u0e2d\u0e07";
+      return "Ba\u011fla\xe7";
     },
     get$grammarCopyPOSnum() {
-      return "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Say\u0131";
     },
     get$grammarCopyPOSverb() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil";
     },
     get$grammarCopyPOSaffix() {
-      return "\u0e04\u0e33\u0e40\u0e15\u0e34\u0e21";
+      return "Eki";
     },
     get$grammarCopyPOSpart() {
-      return "\u0e2d\u0e19\u0e38\u0e20\u0e32\u0e04";
+      return "Par\xe7ac\u0131k";
     },
     get$grammarCopyPOSadj() {
-      return "\u0e04\u0e33\u0e04\u0e38\u0e13\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "S\u0131fat";
     },
     get$grammarCopyPOScconj() {
-      return "\u0e04\u0e33\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e1b\u0e23\u0e30\u0e2a\u0e32\u0e19";
+      return "Koordinat Ba\u011flac\u0131";
     },
     get$grammarCopyPOSpunct() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19";
+      return "Noktalama \u0130\u015fareti";
     },
     get$grammarCopyPOSadv() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarf";
     },
     get$grammarCopyPOSaux() {
-      return "\u0e04\u0e33\u0e0a\u0e48\u0e27\u0e22";
+      return "Yard\u0131mc\u0131";
     },
     get$grammarCopyPOSspace() {
-      return "\u0e0a\u0e48\u0e2d\u0e07\u0e27\u0e48\u0e32\u0e07";
+      return "Bo\u015fluk";
     },
     get$grammarCopyPOSsym() {
-      return "\u0e2a\u0e31\u0e0d\u0e25\u0e31\u0e01\u0e29\u0e13\u0e4c";
+      return "Sembol";
     },
     get$grammarCopyPOSdet() {
-      return "\u0e04\u0e33\u0e01\u0e33\u0e2b\u0e19\u0e14";
+      return "Belirleyici";
     },
     get$grammarCopyPOSpron() {
-      return "\u0e04\u0e33\u0e2a\u0e23\u0e23\u0e1e\u0e19\u0e32\u0e21";
+      return "Zamir";
     },
     get$grammarCopyPOSadp() {
-      return "\u0e04\u0e33\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "Edat";
     },
     get$grammarCopyPOSpropn() {
-      return "\u0e04\u0e33\u0e19\u0e32\u0e21\u0e40\u0e09\u0e1e\u0e32\u0e30";
+      return "\xd6zel \u0130sim";
     },
     get$grammarCopyPOSnoun() {
-      return "\u0e04\u0e33\u0e19\u0e32\u0e21";
+      return "\u0130sim";
     },
     get$grammarCopyPOSintj() {
-      return "\u0e04\u0e33\u0e2d\u0e38\u0e17\u0e32\u0e19";
+      return "\xdcnlem";
     },
     get$grammarCopyPOSidiom() {
-      return "\u0e2a\u0e33\u0e19\u0e27\u0e19";
+      return "Deyim";
     },
     get$grammarCopyPOSphrasalv() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e25\u0e35";
+      return "Deyim Fiili";
     },
     get$grammarCopyPOScompn() {
-      return "\u0e04\u0e33\u0e1c\u0e2a\u0e21";
+      return "Bile\u015fik";
     },
     get$grammarCopyPOSx() {
-      return "\u0e2d\u0e37\u0e48\u0e19 \u0e46";
+      return "Di\u011fer";
     },
     get$grammarCopyGENDERfem() {
-      return "\u0e40\u0e1e\u0e28\u0e2b\u0e0d\u0e34\u0e07";
+      return "Kad\u0131n";
     },
     get$grammarCopyPERSON2() {
-      return "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e2a\u0e2d\u0e07";
+      return "\u0130kinci Ki\u015fi";
     },
     get$grammarCopyMOODimp() {
-      return "\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07";
+      return "Emir Kipi";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21";
+      return "Soru";
     },
     get$grammarCopyASPECTperf() {
-      return "\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c\u0e41\u0e1a\u0e1a";
+      return "M\xfckemmel";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e16\u0e39\u0e01\u0e01\u0e23\u0e30\u0e17\u0e33, \u0e01\u0e23\u0e13\u0e35\u0e40\u0e1b\u0e47\u0e19\u0e1b\u0e23\u0e30\u0e18\u0e32\u0e19";
+      return "\u0130lgi, Y\xfckleme";
     },
     get$grammarCopyCASEobl() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e2d\u0e49\u0e2d\u0e21";
+      return "D\xfczenli";
     },
     get$grammarCopyVOICEact() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e40\u0e0a\u0e34\u0e07\u0e01\u0e23\u0e30\u0e17\u0e33";
+      return "Etkin";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u0e27\u0e07\u0e40\u0e25\u0e47\u0e1a";
+      return "K\xf6\u015feli Parantez";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u0e1a\u0e17\u0e04\u0e27\u0e32\u0e21";
+      return "Makale";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u0e40\u0e2d\u0e01\u0e1e\u0e08\u0e19\u0e4c";
+      return "Tekil";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u0e40\u0e1e\u0e28\u0e0a\u0e32\u0e22";
+      return "Erkek";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32\u0e0a\u0e48\u0e27\u0e22";
+      return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarfl\u0131";
     },
     get$grammarCopyTENSEperi() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c\u0e41\u0e2a\u0e14\u0e07\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32";
+      return "Perifrik";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Rakam";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u0e44\u0e21\u0e48\u0e40\u0e2b\u0e21\u0e32\u0e30\u0e2a\u0e21";
+      return "\xd6zel Olmayan";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e40\u0e15\u0e47\u0e21";
+      return "Say\u0131";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e40\u0e08\u0e32\u0e30\u0e08\u0e07";
+      return "\xd6zel";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u0e02\u0e35\u0e14\u0e40\u0e2a\u0e49\u0e19";
+      return "K\u0131sa \xc7izgi";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u0e43\u0e0a\u0e48";
+      return "Evet";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u0e2d\u0e31\u0e12\u0e20\u0e32\u0e04";
+      return "Noktal\u0131 Virg\xfcl";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u0e25\u0e39\u0e01\u0e19\u0e49\u0e33";
+      return "Virg\xfcl";
     },
     get$grammarCopyMOODcnd() {
-      return "\u0e40\u0e07\u0e37\u0e48\u0e2d\u0e19\u0e44\u0e02";
+      return "Ko\u015ful";
     },
     get$grammarCopyCASEacc() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e16\u0e39\u0e01\u0e01\u0e25\u0e48\u0e32\u0e27\u0e2b\u0e32";
+      return "Y\xfckleme";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u0e2a\u0e48\u0e27\u0e19\u0e41\u0e1a\u0e48\u0e07";
+      return "\u0130kincil";
     },
     get$grammarCopyTENSEpast() {
-      return "\u0e2d\u0e14\u0e35\u0e15";
+      return "Ge\xe7mi\u015f";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e22\u0e2d\u0e14";
+      return "\xdcst\xfcn";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0e42\u0e04\u0e25\u0e2d\u0e19";
+      return "\u0130ki nokta";
     },
     get$grammarCopyPERSON3() {
-      return "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21";
+      return "\xdc\xe7\xfcnc\xfc Ki\u015fi";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u0e1e\u0e2b\u0e39\u0e1e\u0e08\u0e19\u0e4c";
+      return "\xc7o\u011ful";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u0e04\u0e33\u0e19\u0e32\u0e21\u0e40\u0e09\u0e1e\u0e32\u0e30";
+      return "\xd6zel \u0130sim";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21";
+      return "Soru";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u0e44\u0e21\u0e48\u0e40\u0e1b\u0e47\u0e19\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23";
+      return "Resmi Olmayan";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u0e40\u0e27\u0e25\u0e32";
+      return "Zaman";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u0e40\u0e0a\u0e34\u0e07\u0e25\u0e1a";
+      return "Olumsuz";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u0e23\u0e27\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "Toplam";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u0e04\u0e33\u0e04\u0e38\u0e13\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e19\u0e32\u0e21";
+      return "\u0130simle \u0130lgili";
     },
     get$grammarCopyASPECTprog() {
-      return "\u0e01\u0e4d\u0e32\u0e25\u0e31\u0e07\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23";
+      return "\u0130lerleyen";
     },
     get$grammarCopyMOODsub() {
-      return "\u0e2a\u0e21\u0e21\u0e38\u0e15\u0e34";
+      return "Dilek Kipi";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u0e04\u0e33\u0e40\u0e15\u0e34\u0e21\u0e40\u0e15\u0e47\u0e21";
+      return "Tamamlay\u0131c\u0131";
     },
     get$grammarCopyCASEnom() {
-      return "\u0e23\u0e39\u0e1b\u0e1b\u0e23\u0e30\u0e18\u0e32\u0e19";
+      return "Yal\u0131n";
     },
     get$grammarCopyTENSEfut() {
-      return "\u0e2d\u0e19\u0e32\u0e04\u0e15";
+      return "Gelecek";
     },
     get$grammarCopyCASEdat() {
-      return "\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23";
+      return "Y\xf6nelme";
     },
     get$grammarCopyTENSEpres() {
-      return "\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19";
+      return "\u015eimdiki zaman";
     },
     get$grammarCopyGENDERneut() {
-      return "\u0e01\u0e25\u0e32\u0e07\u0e40\u0e1e\u0e28";
+      return "Cinsiyetsiz";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e17\u0e18\u0e4c";
+      return "\u0130lgi Zamiri";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u0e04\u0e33\u0e25\u0e07\u0e17\u0e49\u0e32\u0e22\u0e2a\u0e38\u0e14";
+      return "Son Ek";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u0e0a\u0e35\u0e49\u0e19\u0e33";
+      return "G\xf6sterici";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u0e04\u0e33\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "Edat Durumu";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14";
+      return "Sonlu";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u0e1a\u0e27\u0e01";
+      return "Pozitif";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u0e04\u0e33\u0e1e\u0e39\u0e14";
+      return "Al\u0131nt\u0131";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32\u0e23\u0e39\u0e1b gerund";
+      return "Gerund";
     },
     get$grammarCopyVOICEpass() {
-      return "\u0e16\u0e39\u0e01\u0e01\u0e23\u0e30\u0e17\u0e33";
+      return "Edilgen";
     },
     get$grammarCopyCASEgen() {
-      return "\u0e01\u0e23\u0e23\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e38\u0e4c";
+      return "Tamlayan";
     },
     get$grammarCopyTENSEprs() {
-      return "\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19";
+      return "\u015eimdiki zaman";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u0e41\u0e19\u0e48\u0e19\u0e2d\u0e19";
+      return "Belirli";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u0e25\u0e33\u0e14\u0e31\u0e1a";
+      return "S\u0131ral\u0131";
     },
     get$grammarCopyCASEins() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d";
+      return "Ara\xe7 Durumu";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0e2d\u0e34\u0e19\u0e1f\u0e34\u0e19\u0e34\u0e17\u0e34\u0e1f";
+      return "\u0130sim Fiil";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u0e40\u0e2a\u0e23\u0e34\u0e21";
+      return "Yard\u0131mc\u0131";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u0e22\u0e32\u0e27";
+      return "Uzun";
     },
     get$grammarCopyCASEloc() {
-      return "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48";
+      return "Yerel";
     },
     get$grammarCopyMOODind() {
-      return "\u0e1a\u0e48\u0e07\u0e0a\u0e35\u0e49";
+      return "\u0130ndikat\xf6r";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u0e40\u0e1b\u0e23\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a";
+      return "Kar\u015f\u0131la\u015ft\u0131rmal\u0131";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e17\u0e18\u0e4c";
+      return "\u0130lgi Zamiri";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0e04\u0e33\u0e2d\u0e38\u0e17\u0e32\u0e19";
+      return " \xdcnlem";
     },
     get$grammarCopyPERSON1() {
-      return "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e2b\u0e19\u0e36\u0e48\u0e07";
+      return "Birinci \u015eah\u0131s";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19";
+      return "Ba\u015flang\u0131\xe7";
     },
     get$grammarCopyGENDERperson() {
-      return "\u0e40\u0e1e\u0e28";
+      return "Ki\u015fi";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u0e15\u0e48\u0e32\u0e07\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28";
+      return "Yabanc\u0131";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Ses";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil";
     },
     get$grammarCopyPOSSpass() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07";
+      return "\u0130yelik";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "Y\xfcklem Durumu";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Say\u0131";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u0e04\u0e33\u0e19\u0e32\u0e21";
+      return "\u0130sim";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07";
+      return "D\xf6n\xfc\u015fl\xfc";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u0e04\u0e33\u0e2a\u0e23\u0e23\u0e1e\u0e19\u0e32\u0e21";
+      return "Zamir";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u0e14\u0e49\u0e32\u0e19\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19";
+      return "Noktalama";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil \xc7ekimi";
     },
     get$grammarCopyGENDERgender() {
-      return "\u0e40\u0e1e\u0e28";
+      return "Cinsiyet";
     },
     get$grammarCopyMOODmood() {
-      return "\u0e2d\u0e32\u0e23\u0e21\u0e13\u0e4c";
+      return "Mod";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u0e41\u0e07\u0e48\u0e21\u0e38\u0e21";
+      return "Aspect";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19";
+      return "Noktalama \u0130\u015fareti";
     },
     get$grammarCopyTENSEtense() {
-      return "\u0e01\u0e32\u0e25\u0e40\u0e27\u0e25\u0e32";
+      return "Zaman";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a";
+      return "Derece";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u0e21\u0e32\u0e23\u0e22\u0e32\u0e17";
+      return "Nezaket";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarf";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19";
+      return "Say\u0131";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u0e04\u0e33\u0e2a\u0e31\u0e19\u0e18\u0e32\u0e19";
+      return "Ba\u011fla\xe7";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e1a\u0e27\u0e01/\u0e25\u0e1a";
+      return "Olumluluk";
     },
     get$grammarCopyCASEcase() {
-      return "\u0e01\u0e23\u0e13\u0e35";
+      return "H\xe2l";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e41\u0e19\u0e48\u0e19\u0e2d\u0e19";
+      return "Belirlilik";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Say\u0131";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0e04\u0e33\u0e04\u0e38\u0e13\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "\u0130sim-Fiil";
     },
     get$grammarCopyVOCvoc() {
-      return "\u0e04\u0e33\u0e40\u0e23\u0e35\u0e22\u0e01\u0e0a\u0e37\u0e48\u0e2d";
+      return "Hitap";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u0e04\u0e33\u0e40\u0e15\u0e34\u0e21\u0e40\u0e15\u0e47\u0e21";
+      return "Tamamlay\u0131c\u0131";
     },
     get$grammarCopyADVadv() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarf";
     },
     get$grammarCopyMOODjus() {
-      return "\u0e04\u0e33\u0e2d\u0e38\u0e17\u0e32\u0e19";
+      return "Emir Kipi";
     },
     get$grammarCopyGENDERcom() {
-      return "\u0e40\u0e1e\u0e28\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b";
+      return "Ortak";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u0e04\u0e33\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19";
+      return "D\xf6n\xfc\u015fl\xfc";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u0e04\u0e33\u0e41\u0e1a\u0e48\u0e07\u0e2a\u0e48\u0e27\u0e19";
+      return "Par\xe7al\u0131";
     },
     get$grammarCopySPCspc() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e40\u0e08\u0e32\u0e30\u0e08\u0e07";
+      return "Belirli";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c\u0e41\u0e1a\u0e1a\u0e01\u0e48\u0e2d\u0e19\u0e2b\u0e19\u0e49\u0e32";
+      return "Pluskambiyen";
     },
     get$grammarCopyREFLEXref() {
-      return "\u0e04\u0e33\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19";
+      return "Yans\u0131mal\u0131";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u0e2a\u0e31\u0e49\u0e19";
+      return "K\u0131sa";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0e04\u0e39\u0e48";
+      return "\u0130kili";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u0e22\u0e32\u0e27";
+      return "Uzun";
     },
     get$grammarCopyVOICEmid() {
-      return "\u0e01\u0e25\u0e32\u0e07";
+      return "Orta";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21, \u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22";
+      return "Soru, Ba\u011fla\xe7l\u0131";
     },
     get$grammarCopyINTint() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21";
+      return "Soru";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u0e01\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e40\u0e01\u0e34\u0e14";
+      return "Nedenli";
     },
     get$grammarCopyUnknown() {
-      return "\u0e44\u0e21\u0e48\u0e17\u0e23\u0e32\u0e1a";
+      return "Bilinmeyen";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e41\u0e19\u0e48\u0e0a\u0e31\u0e14";
+      return "\u0130spat";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07";
+      return "Sahibin Say\u0131s\u0131";
     },
     get$grammarCopyASPECThab() {
-      return "\u0e19\u0e34\u0e2a\u0e31\u0e22";
+      return "Al\u0131\u015fkanl\u0131k";
     },
     get$grammarCopyCASEabl() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e22\u0e01\u0e08\u0e32\u0e01";
+      return "Ablatif";
     },
     get$grammarCopyCASEall() {
-      return "\u0e01\u0e32\u0e23\u0e44\u0e1b\u0e22\u0e31\u0e07";
+      return "Allatif";
     },
     get$grammarCopyCASEess() {
-      return "\u0e2a\u0e16\u0e32\u0e19\u0e30";
+      return "Hali";
     },
     get$grammarCopyCASEtra() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07";
+      return "\xc7evirgen";
     },
     get$grammarCopyCASEequ() {
-      return "\u0e40\u0e17\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e48\u0e32";
+      return "E\u015fit";
     },
     get$grammarCopyCASEdis() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e08\u0e01\u0e08\u0e48\u0e32\u0e22";
+      return "Da\u011f\u0131t\u0131c\u0131";
     },
     get$grammarCopyCASEabs() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e47\u0e19\u0e2d\u0e34\u0e2a\u0e23\u0e30";
+      return "Y\xfcklemsel";
     },
     get$grammarCopyCASEerg() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e23\u0e31\u0e1a\u0e1c\u0e34\u0e14\u0e0a\u0e2d\u0e1a";
+      return "Ergatif";
     },
     get$grammarCopyCASEcau() {
-      return "\u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25";
+      return "Neden";
     },
     get$grammarCopyCASEben() {
-      return "\u0e27\u0e31\u0e15\u0e16\u0e38\u0e1b\u0e23\u0e30\u0e2a\u0e07\u0e04\u0e4c";
+      return "Yararlan\u0131c\u0131";
     },
     get$grammarCopyCASEtem() {
-      return "\u0e40\u0e27\u0e25\u0e32";
+      return "Zaman";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e42\u0e22\u0e07";
+      return "Koordine Edici";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07";
+      return "Yap\u0131 Durumu";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c";
+      return "Mutlak Derece";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e40\u0e17\u0e47\u0e08\u0e08\u0e23\u0e34\u0e07";
+      return "Ger\xe7eklik Kan\u0131t\u0131";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e02\u0e49\u0e2d\u0e40\u0e17\u0e47\u0e08\u0e08\u0e23\u0e34\u0e07";
+      return "Ger\xe7eklik D\u0131\u015f\u0131 Kan\u0131t";
     },
     get$grammarCopyMOODopt() {
-      return "\u0e2d\u0e32\u0e23\u0e21\u0e13\u0e4c\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e23\u0e32\u0e23\u0e16\u0e19\u0e32";
+      return "\u0130stek Kipi";
     },
     get$grammarCopyMOODadm() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e23\u0e39\u0e49\u0e2a\u0e36\u0e01\u0e0a\u0e37\u0e48\u0e19\u0e0a\u0e21";
+      return "Hayranl\u0131k Kipi";
     },
     get$grammarCopyMOODdes() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e23\u0e32\u0e23\u0e16\u0e19\u0e32";
+      return "Dilek Kipi";
     },
     get$grammarCopyMOODnec() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e08\u0e33\u0e40\u0e1b\u0e47\u0e19";
+      return "Zorunluluk Kipi";
     },
     get$grammarCopyMOODpot() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16";
+      return "Olas\u0131l\u0131k Kipi";
     },
     get$grammarCopyMOODprp() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e15\u0e31\u0e49\u0e07\u0e43\u0e08";
+      return "\xd6neri Kipi";
     },
     get$grammarCopyMOODqot() {
-      return "\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07\u0e04\u0e33\u0e1e\u0e39\u0e14";
+      return "Al\u0131nt\u0131 Kipi";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e04\u0e33";
+      return "Kelime Bi\xe7imi";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u0e40\u0e25\u0e02\u0e42\u0e23\u0e21\u0e31\u0e19";
+      return "Roma Rakam\u0131";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e2d\u0e31\u0e01\u0e29\u0e23";
+      return "Harf Formu";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u0e04\u0e39\u0e13";
+      return "\xc7arp\u0131m";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u0e40\u0e28\u0e29\u0e2a\u0e48\u0e27\u0e19";
+      return "Kesirli";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u0e0a\u0e38\u0e14";
+      return "K\xfcme";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u0e0a\u0e48\u0e27\u0e07";
+      return "Aral\u0131k";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u0e01\u0e32\u0e23\u0e41\u0e08\u0e01\u0e41\u0e08\u0e07";
+      return "Da\u011f\u0131t\u0131c\u0131";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u0e01\u0e32\u0e23\u0e17\u0e14\u0e25\u0e2d\u0e07";
+      return "Deneme";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u0e1e\u0e2d\u0e04\u0e27\u0e23";
+      return "Az";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u0e1e\u0e2d\u0e04\u0e27\u0e23\u0e43\u0e2b\u0e0d\u0e48";
+      return "Daha B\xfcy\xfck Az";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u0e1e\u0e2b\u0e39\u0e1e\u0e08\u0e19\u0e4c\u0e43\u0e2b\u0e0d\u0e48";
+      return "Daha B\xfcy\xfck \xc7o\u011ful";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u0e1c\u0e01\u0e1c\u0e31\u0e19";
+      return "Ters";
     },
     get$grammarCopyPERSON0() {
-      return "\u0e28\u0e39\u0e19\u0e22\u0e4c";
+      return "S\u0131f\u0131r";
     },
     get$grammarCopyPERSON4() {
-      return "\u0e04\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e35\u0e48";
+      return "D\xf6rd\xfcnc\xfc";
     },
     get$grammarCopyPOLITEform() {
-      return "\u0e40\u0e1b\u0e47\u0e19\u0e17\u0e32\u0e07\u0e01\u0e32\u0e23";
+      return "Resmi";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u0e2a\u0e39\u0e07\u0e2a\u0e48\u0e07";
+      return "Y\xfckseltilmi\u015f";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u0e16\u0e48\u0e2d\u0e21\u0e15\u0e31\u0e27";
+      return "Al\xe7akg\xf6n\xfcll\xfc";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u0e40\u0e19\u0e49\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Vurgulu";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0e04\u0e33\u0e2d\u0e38\u0e17\u0e32\u0e19";
+      return " \xdcnlem";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u0e15\u0e2d\u0e1a\u0e42\u0e15\u0e49\u0e01\u0e31\u0e19";
+      return "Kar\u015f\u0131l\u0131kl\u0131";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21-\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e20\u0e32\u0e1e";
+      return "Soru-\u0130lgi";
     },
     get$grammarCopyTENSEaor() {
-      return "\u0e2d\u0e14\u0e35\u0e15\u0e01\u0e32\u0e25";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e23\u0e39\u0e49";
+      return "Epistemik";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u0e2d\u0e19\u0e32\u0e04\u0e15";
+      return "Gelecek";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Participle";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e0a\u0e48\u0e27\u0e22";
+      return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u0e19\u0e32\u0e21\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil \u0130sim";
     },
     get$grammarCopyVOICEantip() {
-      return "\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Antipasif";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e40\u0e01\u0e34\u0e14";
+      return "Nedenli";
     },
     get$grammarCopyVOICedir() {
-      return "\u0e15\u0e23\u0e07";
+      return "Do\u011frudan";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u0e01\u0e25\u0e31\u0e1a\u0e01\u0e31\u0e19";
+      return "Ters";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u0e15\u0e2d\u0e1a\u0e42\u0e15\u0e49\u0e01\u0e31\u0e19";
+      return "Kar\u015f\u0131l\u0131kl\u0131";
     },
     get$grammarCopyPOS() {
-      return "\u0e0a\u0e19\u0e34\u0e14\u0e02\u0e2d\u0e07\u0e04\u0e33";
+      return "S\xf6zc\xfck T\xfcr\xfc";
     },
     get$grammarCopyGENDER() {
-      return "\u0e40\u0e1e\u0e28";
+      return "Cinsiyet";
     },
     get$grammarCopyPERSON() {
-      return "\u0e1a\u0e38\u0e04\u0e04\u0e25";
+      return "Ki\u015fi";
     },
     get$grammarCopyMOOD() {
-      return "\u0e2d\u0e32\u0e23\u0e21\u0e13\u0e4c";
+      return "Kip";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19";
+      return "Noktalama \u0130\u015fareti T\xfcr\xfc";
     },
     get$grammarCopyASPECT() {
-      return "\u0e41\u0e07\u0e48\u0e21\u0e38\u0e21";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "\u0e01\u0e23\u0e13\u0e35";
+      return "H\xe2l";
     },
     get$grammarCopyVOICE() {
-      return "\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Ses";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e33\u0e19\u0e32\u0e21";
+      return "\u0130sim T\xfcr\xfc";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil T\xfcr\xfc";
     },
     get$grammarCopyADVTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarf T\xfcr\xfc";
     },
     get$grammarCopyNUMFORM() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Say\u0131 Bi\xe7imi";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02";
+      return "Say\u0131 T\xfcr\xfc";
     },
     get$grammarCopyNUMBER() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19";
+      return "Say\u0131";
     },
     get$grammarCopyDEFINITE() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e41\u0e19\u0e48\u0e19\u0e2d\u0e19";
+      return "Belirlilik";
     },
     get$grammarCopyDEGREE() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a";
+      return "Derece";
     },
     get$grammarCopyEVIDENT() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e10\u0e32\u0e19";
+      return "\u0130spat Edicilik";
     },
     get$grammarCopyFOREIGN() {
-      return "\u0e15\u0e48\u0e32\u0e07\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28";
+      return "Yabanc\u0131";
     },
     get$grammarCopyPOLARITY() {
-      return "\u0e02\u0e31\u0e49\u0e27";
+      return "Olumsuzluk";
     },
     get$grammarCopyPOLITE() {
-      return "\u0e21\u0e32\u0e23\u0e22\u0e32\u0e17";
+      return "Nezaket";
     },
     get$grammarCopyPREPCASE() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e02\u0e2d\u0e07\u0e04\u0e33\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "Edat Durumu";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e33\u0e2a\u0e23\u0e23\u0e1e\u0e19\u0e32\u0e21";
+      return "Zamir T\xfcr\xfc";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u0e14\u0e49\u0e32\u0e19\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19";
+      return "Noktalama Taraf\u0131";
     },
     get$grammarCopyREFLEX() {
-      return "\u0e04\u0e33\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07";
+      return "D\xf6n\xfc\u015fl\xfc";
     },
     get$grammarCopyTENSE() {
-      return "\u0e01\u0e32\u0e25\u0e40\u0e27\u0e25\u0e32";
+      return "Zaman";
     },
     get$grammarCopyVERBFORM() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32";
+      return "Fiil Formu";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e33\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21";
+      return "Ba\u011fla\xe7 T\xfcr\xfc";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u0e44\u0e21\u0e48\u0e17\u0e23\u0e32\u0e1a";
+      return "Bilinmeyen";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07";
+      return "Sahibin Numaras\u0131";
     },
     get$grammarCopyPOSS() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07";
+      return "\u0130yelik";
     },
     get$grammarCopyASPECTimp() {
-      return "\u0e41\u0e07\u0e48\u0e21\u0e38\u0e21\u0e44\u0e21\u0e48\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c";
+      return "Eksilmezlik G\xf6r\xfcn\xfcm\xfc";
     },
     get$grammarCopyCASEvoc() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e40\u0e23\u0e35\u0e22\u0e01\u0e0a\u0e37\u0e48\u0e2d";
+      return "Sesli Durum";
     },
     get$grammarCopyCASEcom() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e23\u0e48\u0e27\u0e21";
+      return "Birlikte Durum";
     },
     get$grammarCopyCASEpar() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e41\u0e1a\u0e48\u0e07\u0e2a\u0e48\u0e27\u0e19";
+      return "Par\xe7alama Durumu";
     },
     get$grammarCopyCASEadv() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e27\u0e34\u0e40\u0e28\u0e29\u0e13\u0e4c";
+      return "Zarflama Durumu";
     },
     get$grammarCopyCASEref() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07";
+      return "\u0130li\u015fkilendirme";
     },
     get$grammarCopyCASErel() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e04\u0e33\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21";
+      return "\u0130li\u015fki Durumu";
     },
     get$grammarCopyCASEsub() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e2d\u0e34\u0e2a\u0e23\u0e30";
+      return "Alt Durum";
     },
     get$grammarCopyCASEsup() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e40\u0e2b\u0e19\u0e37\u0e2d";
+      return "\xdcst Durum";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e2d\u0e01\u0e23\u0e23\u0e21-\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23";
+      return "Y\xfckleme-Da\u011f\u0131tma Durumu";
     },
     get$grammarCopyCASEpre() {
-      return "\u0e01\u0e23\u0e13\u0e35\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "\xd6n Ek Durumu";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e1b\u0e23\u0e30\u0e42\u0e22\u0e04\u0e22\u0e48\u0e2d\u0e22";
+      return "Ba\u011fla\xe7 T\xfcr\xfc - Ba\u011flay\u0131c\u0131";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u0e40\u0e1b\u0e23\u0e35\u0e22\u0e1a\u0e40\u0e17\u0e35\u0e22\u0e1a";
+      return "Kar\u015f\u0131la\u015ft\u0131rmal\u0131";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38\u0e40\u0e08\u0e32\u0e30\u0e08\u0e07";
+      return "Belirsiz";
     },
     get$grammarCopyMOODint() {
-      return "\u0e2d\u0e32\u0e23\u0e21\u0e13\u0e4c\u0e04\u0e33\u0e16\u0e32\u0e21";
+      return "Soru Kipi";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u0e04\u0e33\u0e19\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e31\u0e0d";
+      return "Ortak \u0130sim";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e40\u0e2d\u0e01\u0e1e\u0e08\u0e19\u0e4c";
+      return "Sahibin Tekil";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e1e\u0e2b\u0e39\u0e1e\u0e08\u0e19\u0e4c";
+      return "Sahibin \xc7o\u011ful";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e04\u0e39\u0e48";
+      return "Sahibin \u0130kili";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u0e1a\u0e27\u0e01";
+      return "Pozitif Polarl\u0131k";
     },
     get$grammarCopyPOSSyes() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07";
+      return "\u0130yelik";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49\u0e1a\u0e38\u0e1e\u0e1a\u0e17";
+      return "Edatl\u0131 Olmayan";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u0e1a\u0e38\u0e04\u0e04\u0e25";
+      return "Ki\u015fisel";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21";
+      return "Soru C\xfcmlesi";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "Toplam";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u0e25\u0e1a";
+      return "Olumsuz";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u0e1a\u0e17\u0e04\u0e27\u0e32\u0e21";
+      return "Belirte\xe7";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u0e44\u0e21\u0e48\u0e40\u0e08\u0e32\u0e30\u0e08\u0e07";
+      return "Belirsiz";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u0e04\u0e33\u0e16\u0e32\u0e21-\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e20\u0e32\u0e1e";
+      return "Soru-\u0130lgi";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e2b\u0e21\u0e32\u0e22\u0e27\u0e23\u0e23\u0e04\u0e15\u0e2d\u0e19\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22";
+      return "Son Noktalama \u0130\u015fareti";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u0e08\u0e38\u0e14";
+      return "Nokta";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07";
+      return "D\xf6n\xfc\u015fl\xfc";
     },
     get$grammarCopyTENSEimp() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c";
+      return "Mi\u015f'li Ge\xe7mi\u015f";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e2a\u0e38\u0e20\u0e32\u0e1e";
+      return "\u0130sim Fiil";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e19\u0e32\u0e21";
+      return "\u0130simle\u015ftirilmi\u015f";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e22\u0e32\u0e27";
+      return "Uzun";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e2a\u0e31\u0e49\u0e19";
+      return "K\u0131sa";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u0e04\u0e33\u0e01\u0e23\u0e34\u0e22\u0e32\u0e41\u0e2a\u0e14\u0e07\u0e2a\u0e32\u0e40\u0e2b\u0e15\u0e38";
+      return "Nedenli Fiil";
     },
     get$grammarCopyVOICEcau() {
-      return "\u0e41\u0e2a\u0e14\u0e07\u0e2a\u0e32\u0e40\u0e2b\u0e15\u0e38";
+      return "Nedenli";
     },
     get$grammarCopyVOICEdir() {
-      return "\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07";
+      return "Do\u011frudan";
     },
     get$grammarCopyVOICEinv() {
-      return "\u0e01\u0e25\u0e31\u0e1a\u0e14\u0e49\u0e32\u0e19";
+      return "Tersine";
     },
     get$grammarCopyVOICErcp() {
-      return "\u0e15\u0e2d\u0e1a\u0e23\u0e31\u0e1a\u0e01\u0e31\u0e19";
+      return "Kar\u015f\u0131l\u0131kl\u0131";
     },
     get$other() {
-      return "\u0e2d\u0e37\u0e48\u0e19 \u0e46";
+      return "Di\u011fer";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "Seviy " + level;
     },
     get$clickBestOption() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e1b\u0e25\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13!";
+      return "Mesaj\u0131n\u0131z\u0131 \xe7evirmek i\xe7in en iyi se\xe7enekleri se\xe7in!";
     },
     get$completeActivitiesToUnlock() {
-      return "\u0e17\u0e33\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e04\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25!";
+      return "\xc7eviriyi a\xe7mak i\xe7in en az bir etkinli\u011fi tamamlay\u0131n!";
     },
     get$downloadGroupText() {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e01\u0e25\u0e38\u0e48\u0e21";
+      return "Grup metnini indir";
     },
     get$notificationsOn() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19";
+      return "Bildirimler a\xe7\u0131k";
     },
     get$notificationsOff() {
-      return "\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19";
+      return "Bildirimler kapal\u0131";
     },
     get$joinWithCode() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e14\u0e49\u0e27\u0e22\u0e23\u0e2b\u0e31\u0e2a";
+      return "Kodu kullanarak kat\u0131l";
     },
     get$enterCodeToJoin() {
-      return "\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131lmak i\xe7in kodu girin";
     },
     get$updateNow() {
-      return "\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e15\u0e2d\u0e19\u0e19\u0e35\u0e49";
+      return "\u015eimdi G\xfcncelle";
     },
     get$updateLater() {
-      return "\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07";
+      return "Daha sonra g\xfcncelle";
     },
     get$constructUseWaDesc() {
-      return "\u0e43\u0e0a\u0e49\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e02\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d";
+      return "Yard\u0131m olmadan kullan\u0131l\u0131r";
     },
     get$constructUseGaDesc() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi yard\u0131m\u0131";
     },
     get$constructUseTaDesc() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviri yard\u0131m\u0131";
     },
     get$constructUseUnkDesc() {
-      return "\u0e44\u0e21\u0e48\u0e17\u0e23\u0e32\u0e1a";
+      return "Bilinmeyen";
     },
     get$constructUseCorITDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviride do\u011fru";
     },
     get$constructUseIgnITDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviride g\xf6rmezden gelindi";
     },
     get$constructUseIncITDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviride yanl\u0131\u015f";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi d\xfczeltmede g\xf6rmezden gelindi";
     },
     get$constructUseCorIGCDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi d\xfczeltmede do\u011fru";
     },
     get$constructUseIncIGCDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi d\xfczeltmede yanl\u0131\u015f";
     },
     get$constructUseCorPADesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e33";
+      return "Kelime anlam\u0131 etkinli\u011finde do\u011fru";
     },
     get$constructUseIgnPADesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e33";
+      return "Kelime anlam\u0131 etkinli\u011finde g\xf6rmezden gelindi";
     },
     get$constructUseIncPADesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e33";
+      return "Kelime anlam\u0131 etkinli\u011finde yanl\u0131\u015f";
     },
     get$constructUseCorWLDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1f\u0e31\u0e07\u0e04\u0e33";
+      return "Kelime dinleme etkinli\u011finde do\u011fru";
     },
     get$constructUseIncWLDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1f\u0e31\u0e07\u0e04\u0e33";
+      return "Kelime dinleme etkinli\u011finde yanl\u0131\u015f";
     },
     get$constructUseIngWLDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1f\u0e31\u0e07\u0e04\u0e33";
+      return "Kelime dinleme etkinli\u011finde g\xf6rmezden gelindi";
     },
     get$constructUseCorHWLDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e0b\u0e48\u0e2d\u0e19";
+      return "Gizli kelime etkinli\u011finde do\u011fru";
     },
     get$constructUseIncHWLDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e0b\u0e48\u0e2d\u0e19";
+      return "Gizli kelime etkinli\u011finde yanl\u0131\u015f";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e0b\u0e48\u0e2d\u0e19";
+      return "Gizli kelime etkinli\u011finde g\xf6rmezden gelindi";
     },
     get$constructUseCorLDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "K\xf6k etkinli\u011finde do\u011fru";
     },
     get$constructUseIncLDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "K\xf6k etkinli\u011finde yanl\u0131\u015f";
     },
     get$constructUseIgnLDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "K\xf6k etkinli\u011finde g\xf6rmezden gelindi";
     },
     get$constructUseCorMDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi etkinli\u011finde do\u011fru";
     },
     get$constructUseIncMDesc() {
-      return "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi etkinli\u011finde yanl\u0131\u015f";
     },
     get$constructUseIgnMDesc() {
-      return "\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi etkinli\u011finde g\xf6rmezden gelindi";
     },
     get$constructUseEmojiDesc() {
-      return "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34";
+      return "Emoji etkinli\u011finde do\u011fru";
     },
     get$constructUseCollected() {
-      return "\u0e40\u0e01\u0e47\u0e1a\u0e23\u0e27\u0e1a\u0e23\u0e27\u0e21\u0e43\u0e19\u0e41\u0e0a\u0e17";
+      return "Sohbette topland\u0131";
     },
     get$constructUseNanDesc() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e44\u0e14\u0e49";
+      return "Uygulanamaz";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " \u0e04\u0e30\u0e41\u0e19\u0e19\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c";
+      return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Metinden sese \xf6zelli\u011fi etkinle\u015ftirildi";
     },
     get$enableTTSToolDescription() {
-      return "\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e41\u0e2d\u0e1b\u0e1e\u0e25\u0e34\u0e40\u0e04\u0e0a\u0e31\u0e19\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2a\u0e48\u0e27\u0e19\u0e02\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e44\u0e27\u0e49";
+      return "Uygulaman\u0131n hedef dilinizdeki metin par\xe7alar\u0131 i\xe7in metinden sese \xe7\u0131k\u0131\u015f \xfcretmesine izin verin.";
     },
     get$yourUsername() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Kullan\u0131c\u0131 ad\u0131n\u0131z";
     },
     get$yourEmail() {
-      return "\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "E-posta adresiniz";
     },
     get$iWantToLearn() {
-      return "\u0e09\u0e31\u0e19\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "\xd6\u011frenmek istiyorum";
     },
     get$pleaseEnterEmail() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e2a\u0e48\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "L\xfctfen ge\xe7erli bir e-posta adresi girin.";
     },
     get$myBaseLanguage() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2b\u0e25\u0e31\u0e01\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Temel dilim";
     },
     get$formSectionHeader() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e43\u0e19\u0e41\u0e0a\u0e17:";
+      return "Sohbetlerde kullan\u0131lan bi\xe7imler:";
     },
     get$writingExercisesTooltip() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e02\u0e35\u0e22\u0e19";
+      return "Yazma";
     },
     get$listeningExercisesTooltip() {
-      return "\u0e01\u0e32\u0e23\u0e1f\u0e31\u0e07";
+      return "Dinleme";
     },
     get$readingExercisesTooltip() {
-      return "\u0e01\u0e32\u0e23\u0e2d\u0e48\u0e32\u0e19";
+      return "Okuma";
     },
     get$meaningNotFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22";
+      return "Anlam bulunamad\u0131.";
     },
     get$notTheCodeError() {
-      return "\u0e02\u0e2d\u0e2d\u0e20\u0e31\u0e22 \u0e19\u0e31\u0e48\u0e19\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e23\u0e2b\u0e31\u0e2a!";
+      return "\xdczg\xfcn\xfcz, bu kod de\u011fil!";
     },
     get$totalXP() {
-      return "\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e23\u0e27\u0e21";
+      return "Toplam XP";
     },
     get$numLemmas() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "Toplam lemma say\u0131s\u0131";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "En az bir kez do\u011fru kullan\u0131lan lemma say\u0131s\u0131";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14 0 \u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Hi\xe7 do\u011fru kullan\u0131lmayan lemma say\u0131s\u0131";
     },
     get$numLemmasSmallXP() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e21\u0e35 XP 0 - 30";
+      return "0 - 30 XP aras\u0131ndaki lemma say\u0131s\u0131";
     },
     get$numLemmasMediumXP() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e21\u0e35 XP 31 - 200";
+      return "31 - 200 XP aras\u0131ndaki lemma say\u0131s\u0131";
     },
     get$numLemmasLargeXP() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e10\u0e32\u0e19\u0e17\u0e35\u0e48\u0e21\u0e35 XP > 200";
+      return "200 XP'den fazla olan lemma say\u0131s\u0131";
     },
     get$numGrammarConcepts() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi kavramlar\u0131 say\u0131s\u0131";
     },
     get$listGrammarConcepts() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e49\u0e19\u0e09\u0e1a\u0e31\u0e1a\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22 80% \u0e02\u0e2d\u0e07\u0e40\u0e27\u0e25\u0e32";
+      return "Orijinal mesajlarda en az %80 oran\u0131nda do\u011fru kullan\u0131lan dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e49\u0e19\u0e09\u0e1a\u0e31\u0e1a\u0e19\u0e49\u0e2d\u0e22\u0e01\u0e27\u0e48\u0e32 80% \u0e02\u0e2d\u0e07\u0e40\u0e27\u0e25\u0e32";
+      return "Orijinal mesajlarda %80'den az oran\u0131nda do\u011fru kullan\u0131lan dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e32\u0e01\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e42\u0e14\u0e22\u0e23\u0e30\u0e1a\u0e1a\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e19\u0e49\u0e2d\u0e22 80% \u0e02\u0e2d\u0e07\u0e40\u0e27\u0e25\u0e32";
+      return "Sistem taraf\u0131ndan \xf6nerilen do\u011fru dilbilgisi kavramlar\u0131 en az %80 oran\u0131nda se\xe7ilenler";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e32\u0e01\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e42\u0e14\u0e22\u0e23\u0e30\u0e1a\u0e1a\u0e19\u0e49\u0e2d\u0e22\u0e01\u0e27\u0e48\u0e32 80% \u0e02\u0e2d\u0e07\u0e40\u0e27\u0e25\u0e32";
+      return "Sistem taraf\u0131ndan \xf6nerilen yanl\u0131\u015f dilbilgisi kavramlar\u0131 %80'den az oran\u0131nda se\xe7ilenler";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35 0-50 \u0e04\u0e30\u0e41\u0e19\u0e19 XP";
+      return "0-50 XP aras\u0131 dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35 51-200 \u0e04\u0e30\u0e41\u0e19\u0e19 XP";
+      return "51-200 XP aras\u0131 dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35 201-500 \u0e04\u0e30\u0e41\u0e19\u0e19 XP";
+      return "201-500 XP aras\u0131 dilbilgisi kavramlar\u0131";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35\u0e21\u0e32\u0e01\u0e01\u0e27\u0e48\u0e32 500 \u0e04\u0e30\u0e41\u0e19\u0e19 XP";
+      return "500 XP'den fazla dilbilgisi kavramlar\u0131";
     },
     get$numMessagesSent() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e2a\u0e48\u0e07";
+      return "G\xf6nderilen mesaj say\u0131s\u0131";
     },
     get$numWordsTyped() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e17\u0e35\u0e48\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e15\u0e49\u0e19\u0e09\u0e1a\u0e31\u0e1a";
+      return "Orijinal mesajlarda yaz\u0131lan kelime say\u0131s\u0131";
     },
     get$numCorrectChoices() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e32\u0e01\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19";
+      return "Sistem taraf\u0131ndan \xf6nerilen do\u011fru kelime say\u0131s\u0131";
     },
     get$numIncorrectChoices() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e33\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e1c\u0e34\u0e14\u0e08\u0e32\u0e01\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e17\u0e35\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19";
+      return "Sistem taraf\u0131ndan \xf6nerilen yanl\u0131\u015f kelime say\u0131s\u0131";
     },
     get$commaSeparatedFile() {
-      return "\u0e44\u0e1f\u0e25\u0e4c CSV";
+      return "CSV";
     },
     get$excelFile() {
-      return "\u0e44\u0e1f\u0e25\u0e4c Excel";
+      return "Excel";
     },
     get$fileType() {
-      return "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e44\u0e1f\u0e25\u0e4c";
+      return "Dosya t\xfcr\xfc";
     },
     get$download(_) {
-      return "\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14";
+      return "\u0130ndir";
     },
     get$analyticsNotAvailable() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e2b\u0e49\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e44\u0e14\u0e49";
+      return "Kullan\u0131c\u0131 analiti\u011fi mevcut de\u011fil";
     },
     get$downloading() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14...";
+      return "\u0130ndiriliyor...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49";
+      return "Kullan\u0131c\u0131 analiti\u011fi indirilemedi";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "\u0e2d\u0e30\u0e44\u0e23\u0e04\u0e37\u0e2d " + morphologicalFeature + " \u0e02\u0e2d\u0e07 '" + wordForm + "'?";
+      return wordForm + "'un " + morphologicalFeature + " nedir?";
     },
     get$dataAvailable() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Veri kullan\u0131labilirli\u011fi";
     },
     get$available(_) {
-      return "\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Mevcut";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot \u0e01\u0e47\u0e17\u0e33\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e44\u0e14\u0e49\u0e40\u0e0a\u0e48\u0e19\u0e01\u0e31\u0e19!";
+      return "Pangea Bot da hata yapabilir!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07 '" + lemma + "' \u0e04\u0e37\u0e2d\u0e2d\u0e30\u0e44\u0e23?";
+      return lemma + " ne anlama geliyor?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u0e08\u0e31\u0e1a\u0e04\u0e39\u0e48\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e01\u0e31\u0e1a\u0e04\u0e33\u0e43\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21!";
+      return "Mesajdaki kelimelerle anlamlar\u0131 e\u015fle\u015ftir!";
     },
     get$doubleClickToEdit() {
-      return "\u0e14\u0e31\u0e1a\u0e40\u0e1a\u0e34\u0e25\u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e01\u0e49\u0e44\u0e02.";
+      return "D\xfczenlemek i\xe7in \xe7ift t\u0131klay\u0131n.";
     },
     get$cefrLevelLabel() {
-      return "\u0e23\u0e30\u0e14\u0e31\u0e1a CEFR";
+      return "CEFR seviyesi";
     },
     get$image(_) {
-      return "\u0e20\u0e32\u0e1e";
+      return "G\xf6r\xfcnt\xfc";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d \u0e42\u0e2b\u0e21\u0e14 \u0e27\u0e31\u0e15\u0e16\u0e38\u0e1b\u0e23\u0e30\u0e2a\u0e07\u0e04\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49 \u0e41\u0e25\u0e30\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e0a\u0e17!";
+      return "Bir konu, mod, \xf6\u011frenme hedefi se\xe7in ve sohbet i\xe7in bir etkinlik olu\u015fturun!";
     },
     get$constructUsePvmDesc() {
-      return "\u0e1c\u0e25\u0e34\u0e15\u0e43\u0e19\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Sesli mesajda \xfcretilmi\u015ftir";
     },
     get$leaveSpaceDescription() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e04\u0e2d\u0e23\u0e4c\u0e2a \u0e04\u0e38\u0e13\u0e08\u0e30\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e20\u0e32\u0e22\u0e43\u0e19\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e19\u0e31\u0e49\u0e19 \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2d\u0e37\u0e48\u0e19\u0e08\u0e30\u0e40\u0e2b\u0e47\u0e19\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e41\u0e25\u0e49\u0e27";
+      return "Kursu terk ederek, i\xe7indeki t\xfcm sohbetleri terk etmi\u015f olacaks\u0131n\u0131z. Di\u011fer kullan\u0131c\u0131lar kursu terk etti\u011finizi g\xf6recektir.";
     },
     get$constructUseCorMmDesc() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fru mesaj anlam\u0131";
     },
     get$constructUseIncMmDesc() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f mesaj anlam\u0131";
     },
     get$constructUseIgnMmDesc() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e16\u0e39\u0e01\u0e25\u0e30\u0e40\u0e27\u0e49\u0e19";
+      return "Yoksay\u0131lm\u0131\u015f mesaj anlam\u0131";
     },
     get$meaning() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22";
+      return "Anlam";
     },
     chatWith$1(displayname) {
-      return "\u0e01\u0e25\u0e38\u0e48\u0e21\u0e01\u0e31\u0e1a " + displayname;
+      return displayname + " ile Grup";
     },
     get$clickOnEmailLink() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e43\u0e19\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e41\u0e25\u0e49\u0e27\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d\n\n\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e42\u0e1f\u0e25\u0e40\u0e14\u0e2d\u0e23\u0e4c\u0e2a\u0e41\u0e1b\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e32\u0e01\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e32";
+      return "L\xfctfen e-postadaki ba\u011flant\u0131ya t\u0131klay\u0131n ve devam edin.\n\nE-posta gelmediyse spam klas\xf6r\xfcn\xfcz\xfc kontrol edin.";
     },
     get$dontForgetPassword() {
-      return "\u0e2d\u0e22\u0e48\u0e32\u0e25\u0e37\u0e21\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13!";
+      return "\u015eifrenizi unutmay\u0131n!";
     },
     get$enableAutocorrectToolName() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e02\u0e2d\u0e07\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c";
+      return "Cihaz otomatik d\xfczeltmeyi etkinle\u015ftir";
     },
     get$enableAutocorrectDescription() {
-      return "\u0e2b\u0e32\u0e01\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e01\u0e33\u0e25\u0e31\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e02\u0e2d\u0e07\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e01\u0e49\u0e44\u0e02\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b\u0e02\u0e13\u0e30\u0e1e\u0e34\u0e21\u0e1e\u0e4c";
+      return "\xd6\u011frenmekte oldu\u011funuz dili destekliyorsa, yayg\u0131n hatalar\u0131 yazarken d\xfczeltmek i\xe7in cihaz otomatik d\xfczeltmeyi etkinle\u015ftirebilirsiniz.";
     },
     get$ttsDisbledTitle() {
-      return "\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Metin-konu\u015fma devre d\u0131\u015f\u0131";
     },
     get$ttsDisabledBody() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e43\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "\xd6\u011frenme ayarlar\u0131n\u0131zda metin-konu\u015fmay\u0131 etkinle\u015ftirebilirsiniz";
     },
     get$noSpaceDescriptionYet() {
-      return "\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Hen\xfcz herhangi bir kurs a\xe7\u0131klamas\u0131 olu\u015fturulmad\u0131.";
     },
     get$tooLargeToSend() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49\u0e21\u0e35\u0e02\u0e19\u0e32\u0e14\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01\u0e17\u0e35\u0e48\u0e08\u0e30\u0e2a\u0e48\u0e07";
+      return "Bu mesaj g\xf6nderilemeyecek kadar b\xfcy\xfck";
     },
     get$exitWithoutSaving() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e2b\u0e23\u0e37\u0e2d\u0e27\u0e48\u0e32\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2d\u0e2d\u0e01\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01?";
+      return "Kaydetmeden \xe7\u0131kmak istedi\u011finizden emin misiniz?";
     },
     get$enableAutocorrectWarning() {
-      return "\u0e04\u0e33\u0e40\u0e15\u0e37\u0e2d\u0e19! \u0e15\u0e49\u0e2d\u0e07\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e04\u0e35\u0e22\u0e4c\u0e1a\u0e2d\u0e23\u0e4c\u0e14\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e44\u0e27\u0e49";
+      return "Uyar\u0131! Hedef dil klavyenizi eklemeniz gerekiyor";
     },
     get$leaveRoomDescription() {
-      return "\u0e04\u0e38\u0e13\u0e01\u0e33\u0e25\u0e31\u0e07\u0e08\u0e30\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49 \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2d\u0e37\u0e48\u0e19\u0e08\u0e30\u0e40\u0e2b\u0e47\u0e19\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "Bu sohbette ayr\u0131lmak \xfczeresiniz. Di\u011fer kullan\u0131c\u0131lar sizin ayr\u0131ld\u0131\u011f\u0131n\u0131z\u0131 g\xf6recek.";
     },
     get$confirmUserId() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 Pangea Chat \u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e17\u0e33\u0e01\u0e32\u0e23\u0e25\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "L\xfctfen hesab\u0131n\u0131z\u0131 silmek i\xe7in Pangea Sohbet kullan\u0131c\u0131 ad\u0131n\u0131z\u0131 onaylay\u0131n.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19 " + startDate;
+      return startDate + " tarihinden itibaren ba\u015flar";
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e44\u0e14\u0e49\u0e17\u0e38\u0e01\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e43\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "\u2022 Abonelik ayarlar\u0131ndan istedi\u011finiz zaman iptal edin";
     },
     get$autocorrectNotAvailable() {
-      return "\u0e19\u0e48\u0e32\u0e40\u0e2a\u0e35\u0e22\u0e14\u0e32\u0e22\u0e17\u0e35\u0e48\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e43\u0e19\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\u0e44\u0e21\u0e48\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13\u0e2a\u0e21\u0e1a\u0e31\u0e15\u0e34\u0e19\u0e35\u0e49 \u0e42\u0e1b\u0e23\u0e14\u0e15\u0e34\u0e14\u0e15\u0e32\u0e21\u0e01\u0e32\u0e23\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e15\u0e48\u0e2d\u0e44\u0e1b!";
+      return "Maalesef, bu \xf6zellik \u015fu anda platformunuzda desteklenmemektedir. Daha fazla geli\u015ftirme i\xe7in bizi izlemeye devam edin!";
     },
     get$pleaseUpdateApp() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e41\u0e2d\u0e1b\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d";
+      return "Devam etmek i\xe7in l\xfctfen uygulamay\u0131 g\xfcncelleyin.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u0e08\u0e31\u0e1a\u0e04\u0e39\u0e48\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34\u0e01\u0e31\u0e1a\u0e04\u0e33\u0e17\u0e35\u0e48\u0e1e\u0e27\u0e01\u0e21\u0e31\u0e19\u0e41\u0e17\u0e19\u0e44\u0e14\u0e49\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e07\u0e27\u0e25! \u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2b\u0e31\u0e01\u0e04\u0e30\u0e41\u0e19\u0e19\u0e2b\u0e32\u0e01\u0e44\u0e21\u0e48\u0e40\u0e2b\u0e47\u0e19\u0e14\u0e49\u0e27\u0e22 \ud83d\ude05";
+      return "Emojileri en iyi temsil ettikleri kelimelerle e\u015fle\u015ftirin. Endi\u015felenmeyin! Anla\u015fmazl\u0131klar i\xe7in puan kesilmez. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13! \u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e2a\u0e30\u0e2a\u0e21 XP \u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e15\u0e48\u0e25\u0e30\u0e04\u0e33 \u0e04\u0e33\u0e40\u0e2b\u0e25\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19\u0e08\u0e30\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e08\u0e32\u0e01\u0e15\u0e49\u0e19\u0e01\u0e25\u0e49\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e14\u0e2d\u0e01\u0e1a\u0e32\u0e19\u0e40\u0e15\u0e47\u0e21\u0e17\u0e35\u0e48 \u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e04\u0e33\u0e43\u0e14\u0e01\u0e47\u0e44\u0e14\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21";
+      return "\u0130\u015fte t\xfcm kelime hazineniz! Her kelime i\xe7in XP kazand\u0131k\xe7a, tohumdan tam \xe7i\xe7ek a\xe7maya ge\xe7ecekler. Daha fazla detay g\xf6rmek i\xe7in herhangi bir kelimeye t\u0131klay\u0131n.";
     },
     get$morphAnalyticsListBody() {
-      return "\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e01\u0e33\u0e25\u0e31\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49! \u0e04\u0e38\u0e13\u0e08\u0e30\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e21\u0e31\u0e19\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e1e\u0e1a\u0e40\u0e08\u0e2d\u0e43\u0e19\u0e02\u0e13\u0e30\u0e2a\u0e19\u0e17\u0e19\u0e32 \u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14";
+      return "\u0130\u015fte \xf6\u011frendi\u011finiz dildeki t\xfcm dilbilgisi kavramlar\u0131! Sohbet ederken kar\u015f\u0131la\u015ft\u0131k\xe7a bunlar\u0131 a\xe7acaks\u0131n\u0131z. Detaylar i\xe7in t\u0131klay\u0131n.";
     },
     get$knockSpaceSuccess() {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e19\u0e35\u0e49! \u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a\u0e08\u0e30\u0e15\u0e2d\u0e1a\u0e2a\u0e19\u0e2d\u0e07\u0e04\u0e33\u0e02\u0e2d\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a \ud83d\ude00";
+      return "Bu kursa kat\u0131lmak istedi\u011finizi belirttiniz! Bir y\xf6netici, talebinizi ald\u0131\u011f\u0131nda yan\u0131t verecek \ud83d\ude04";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u0e1f\u0e31\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e2b\u0e49\u0e04\u0e23\u0e1a\u0e16\u0e49\u0e27\u0e19 \u0e08\u0e32\u0e01\u0e19\u0e31\u0e49\u0e19\u0e08\u0e31\u0e1a\u0e04\u0e39\u0e48\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e01\u0e31\u0e1a\u0e04\u0e33";
+      return "Tam mesaj\u0131 dinleyin. Ard\u0131ndan sesleri kelimelerle e\u015fle\u015ftirin.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e0a\u0e34\u0e49\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e08\u0e34\u0e4a\u0e01\u0e0b\u0e2d\u0e27\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e16\u0e32\u0e21\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c!";
+      return "Dilbilgisi sorular\u0131 i\xe7in yapboz par\xe7alar\u0131na t\u0131klay\u0131n!";
     },
     get$home() {
-      return "\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e23\u0e01";
+      return "Ana Sayfa";
     },
     get$join(_) {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131l";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e1b\u0e38\u0e48\u0e21\u0e14\u0e49\u0e32\u0e19\u0e25\u0e48\u0e32\u0e07\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e25\u0e48\u0e19\u0e40\u0e01\u0e21\u0e40\u0e25\u0e47\u0e01 \u0e46 \u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e08\u0e31\u0e1a\u0e04\u0e39\u0e48\u0e44\u0e2d\u0e04\u0e2d\u0e19\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34 \u0e40\u0e2a\u0e35\u0e22\u0e07 \u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e04\u0e33 \u0e41\u0e25\u0e30\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c \u0e2b\u0e23\u0e37\u0e2d\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e04\u0e33\u0e43\u0e14\u0e01\u0e47\u0e44\u0e14\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14";
+      return "Emojiler, sesler, kelime anlamlar\u0131 ve dilbilgisi kavramlar\u0131n\u0131 e\u015fle\u015ftirmek i\xe7in a\u015fa\u011f\u0131daki d\xfc\u011fmelere t\u0131klay\u0131n. Veya detaylar i\xe7in herhangi bir kelimeye t\u0131klay\u0131n.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u0e23\u0e35\u0e40\u0e0b\u0e47\u0e15\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e0a\u0e48\u0e27\u0e22";
+      return "Talimat ipu\xe7lar\u0131n\u0131 s\u0131f\u0131rla";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e0a\u0e48\u0e27\u0e22 \u0e40\u0e0a\u0e48\u0e19\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni bir kullan\u0131c\u0131 gibi talimat ipu\xe7lar\u0131n\u0131 g\xf6stermek i\xe7in t\u0131klay\u0131n.";
     },
     get$translationProblem() {
-      return "\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviri sorunu";
     },
     get$askToJoin() {
-      return "\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131lmak i\xe7in sor";
     },
     get$emptyChatWarningTitle() {
-      return "\u0e41\u0e0a\u0e17\u0e27\u0e48\u0e32\u0e07\u0e40\u0e1b\u0e25\u0e48\u0e32";
+      return "Sohbet bo\u015f";
     },
     get$emptyChatWarningDesc() {
-      return "\u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e0a\u0e34\u0e0d\u0e43\u0e04\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e44\u0e1b\u0e17\u0e35\u0e48\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e41\u0e0a\u0e17\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e0a\u0e34\u0e0d\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2b\u0e23\u0e37\u0e2d\u0e1a\u0e2d\u0e17 \u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e17\u0e33\u0e44\u0e14\u0e49\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07";
+      return "Kimseyi sohbetine davet etmedin. Ki\u015filerini veya Bot'u davet etmek i\xe7in Sohbet ayarlar\u0131na git. Ayr\u0131ca bunu daha sonra da yapabilirsin.";
     },
     get$areYouLikeMe() {
-      return "\u0e04\u0e38\u0e13\u0e40\u0e2b\u0e21\u0e37\u0e2d\u0e19\u0e09\u0e31\u0e19\u0e44\u0e2b\u0e21?";
+      return "Benim gibi misin?";
     },
     get$tryAgainLater() {
-      return "\u0e17\u0e33\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e21\u0e32\u0e01\u0e40\u0e01\u0e34\u0e19\u0e44\u0e1b \u0e01\u0e23\u0e38\u0e13\u0e32\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19 5 \u0e19\u0e32\u0e17\u0e35";
+      return "\xc7ok fazla deneme yap\u0131ld\u0131. L\xfctfen 5 dakika sonra tekrar dene.";
     },
     get$enterSpaceCode() {
-      return "\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Kurs kodunu gir";
     },
     get$shareSpaceLink() {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "Ba\u011flant\u0131y\u0131 payla\u015f";
     },
     get$byUsingPangeaChat() {
-      return "\u0e42\u0e14\u0e22\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49 Pangea Chat \u0e09\u0e31\u0e19\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e15\u0e01\u0e25\u0e07";
+      return "Pangea Chat kullanarak, kabul ediyorum ";
     },
     get$details(_) {
-      return "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14";
+      return "Detaylar";
     },
     get$languageLevelPreA1Desc() {
-      return "\u0e09\u0e31\u0e19\u0e44\u0e21\u0e48\u0e40\u0e04\u0e22\u0e40\u0e23\u0e35\u0e22\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e43\u0e0a\u0e49\u0e20\u0e32\u0e29\u0e32\u0e19\u0e35\u0e49\u0e21\u0e32\u0e01\u0e48\u0e2d\u0e19";
+      return "Hi\xe7 \xf6\u011frenmedim veya kullanmad\u0131m.";
     },
     get$languageLevelA1Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e41\u0e25\u0e30\u0e43\u0e0a\u0e49\u0e27\u0e25\u0e35\u0e1e\u0e37\u0e49\u0e19\u0e10\u0e32\u0e19\u0e41\u0e25\u0e30\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e35\u0e48\u0e04\u0e38\u0e49\u0e19\u0e40\u0e04\u0e22\u0e43\u0e19\u0e0a\u0e35\u0e27\u0e34\u0e15\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e27\u0e31\u0e19\u0e44\u0e14\u0e49\u0e1a\u0e49\u0e32\u0e07";
+      return "Tan\u0131d\u0131k g\xfcnl\xfck ifadeleri ve \xe7ok temel ifadeleri anlayabilir ve kullanabilirim.";
     },
     get$languageLevelA2Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e1b\u0e23\u0e30\u0e42\u0e22\u0e04\u0e41\u0e25\u0e30\u0e27\u0e25\u0e35\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e1a\u0e48\u0e2d\u0e22\u0e43\u0e19\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e44\u0e14\u0e49";
+      return "Acil ilgisi olan alanlarla ilgili c\xfcmleleri ve s\u0131k kullan\u0131lan ifadeleri anlayabilirim.";
     },
     get$languageLevelB1Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e31\u0e1a\u0e2a\u0e16\u0e32\u0e19\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e04\u0e38\u0e49\u0e19\u0e40\u0e04\u0e22\u0e41\u0e25\u0e30\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e42\u0e22\u0e07\u0e07\u0e48\u0e32\u0e22\u0e46\u0e43\u0e19\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e17\u0e35\u0e48\u0e04\u0e38\u0e49\u0e19\u0e40\u0e04\u0e22\u0e44\u0e14\u0e49";
+      return "En bilinen durumlarla ba\u015fa \xe7\u0131kabilir ve tan\u0131d\u0131k konularda basit ba\u011fl\u0131 metinler \xfcretebilirim.";
     },
     get$languageLevelB2Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e2b\u0e25\u0e31\u0e01\u0e02\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e0b\u0e31\u0e1a\u0e0b\u0e49\u0e2d\u0e19\u0e41\u0e25\u0e30\u0e42\u0e15\u0e49\u0e15\u0e2d\u0e1a\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e04\u0e25\u0e48\u0e2d\u0e07\u0e41\u0e04\u0e25\u0e48\u0e27\u0e41\u0e25\u0e30\u0e40\u0e1b\u0e47\u0e19\u0e18\u0e23\u0e23\u0e21\u0e0a\u0e32\u0e15\u0e34";
+      return "Karma\u015f\u0131k metinlerin ana fikirlerini anlayabilir ve ak\u0131c\u0131 ve spontane bir \u015fekilde ileti\u015fim kurabilirim.";
     },
     get$languageLevelC1Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e04\u0e25\u0e48\u0e2d\u0e07\u0e41\u0e04\u0e25\u0e48\u0e27\u0e41\u0e25\u0e30\u0e40\u0e1b\u0e47\u0e19\u0e18\u0e23\u0e23\u0e21\u0e0a\u0e32\u0e15\u0e34 \u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e1e\u0e22\u0e32\u0e22\u0e32\u0e21\u0e21\u0e32\u0e01\u0e41\u0e25\u0e30\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e17\u0e49\u0e32\u0e17\u0e32\u0e22\u0e44\u0e14\u0e49\u0e01\u0e27\u0e49\u0e32\u0e07\u0e02\u0e27\u0e32\u0e07";
+      return "Fikirleri ak\u0131c\u0131 ve spontane bir \u015fekilde ifade edebilir ve \xe7e\u015fitli zorlu metinleri anlayabilirim.";
     },
     get$languageLevelC2Desc() {
-      return "\u0e09\u0e31\u0e19\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e41\u0e17\u0e1a\u0e17\u0e38\u0e01\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e22\u0e34\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e2d\u0e48\u0e32\u0e19\u0e41\u0e25\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e2d\u0e2d\u0e01\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e04\u0e25\u0e48\u0e2d\u0e07\u0e41\u0e04\u0e25\u0e48\u0e27\u0e41\u0e25\u0e30\u0e41\u0e21\u0e48\u0e19\u0e22\u0e33";
+      return "Neredeyse duydu\u011fum veya okudu\u011fum her \u015feyi anlayabilir ve kendimi ak\u0131c\u0131 ve kesin bir \u015fekilde ifade edebilirim.";
     },
     get$newVocab() {
-      return "\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni kelime hazinesi";
     },
     get$newGrammar() {
-      return "\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni dilbilgisi kavramlar\u0131";
     },
     get$ban() {
-      return "\u0e41\u0e1a\u0e19";
+      return "Yasakla";
     },
     get$kick() {
-      return "\u0e40\u0e15\u0e30";
+      return "At";
     },
     get$lemma() {
-      return "\u0e04\u0e33\u0e10\u0e32\u0e19";
+      return "Kelime k\xf6k\xfc";
     },
     get$grammarFeature() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e21\u0e1a\u0e31\u0e15\u0e34\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi \xf6zelli\u011fi";
     },
     get$grammarTag() {
-      return "\u0e41\u0e17\u0e47\u0e01\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dilbilgisi etiketi";
     },
     get$forms() {
-      return "\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a";
+      return "Formlar";
     },
     get$exampleMessages() {
-      return "\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "\xd6rnek mesajlar";
     },
     get$timesUsedIndependently() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e42\u0e14\u0e22\u0e2d\u0e34\u0e2a\u0e23\u0e30";
+      return "Ba\u011f\u0131ms\u0131z kullan\u0131mlar";
     },
     get$timesUsedWithAssistance() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e23\u0e48\u0e27\u0e21\u0e01\u0e31\u0e1a\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d";
+      return "Yard\u0131mla kullan\u0131mlar";
     },
     shareInviteCode$1(code) {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e23\u0e2b\u0e31\u0e2a\u0e40\u0e0a\u0e34\u0e0d: " + code;
+      return "Davet kodunu payla\u015f: " + code;
     },
     get$skipForNow() {
-      return "\u0e02\u0e49\u0e32\u0e21\u0e01\u0e48\u0e2d\u0e19";
+      return "\u015eimdilik atla";
     },
     get$permissions(_) {
-      return "\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c";
+      return "\u0130zinler";
     },
     get$spaceChildPermission() {
-      return "\u0e43\u0e04\u0e23\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e41\u0e0a\u0e17\u0e43\u0e2b\u0e21\u0e48\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49";
+      return "Bu derse yeni sohbetler ekleyebilecek ki\u015filer";
     },
     get$addEnvironmentOverride() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e2a\u0e20\u0e32\u0e1e\u0e41\u0e27\u0e14\u0e25\u0e49\u0e2d\u0e21\u0e17\u0e14\u0e41\u0e17\u0e19";
+      return "Ortam ge\xe7ersizli\u011fi ekle";
     },
     get$defaultOption() {
-      return "\u0e04\u0e48\u0e32\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19";
+      return "Varsay\u0131lan";
     },
     get$deleteChatDesc() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e27\u0e48\u0e32\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e25\u0e1a\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49? \u0e21\u0e31\u0e19\u0e08\u0e30\u0e16\u0e39\u0e01\u0e25\u0e1a\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e17\u0e38\u0e01\u0e04\u0e19\u0e41\u0e25\u0e30\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e44\u0e14\u0e49\u0e2d\u0e35\u0e01\u0e15\u0e48\u0e2d\u0e44\u0e1b\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "Bu sohbeti silmek istedi\u011finizden emin misiniz? T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek ve sohbet i\xe7indeki t\xfcm mesajlar art\u0131k pratik veya \xf6\u011frenme analiti\u011fi i\xe7in kullan\u0131labilir olmayacakt\u0131r.";
     },
     get$deleteSpaceDesc() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e41\u0e25\u0e30\u0e41\u0e0a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e08\u0e30\u0e16\u0e39\u0e01\u0e25\u0e1a\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e17\u0e38\u0e01\u0e04\u0e19\u0e41\u0e25\u0e30\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e44\u0e14\u0e49\u0e2d\u0e35\u0e01\u0e15\u0e48\u0e2d\u0e44\u0e1b\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49 \u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49";
+      return "Ders ve se\xe7ilen sohbetler t\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek ve sohbet i\xe7indeki t\xfcm mesajlar art\u0131k pratik veya \xf6\u011frenme analiti\u011fi i\xe7in kullan\u0131labilir olmayacakt\u0131r. Bu i\u015flem geri al\u0131namaz.";
     },
     get$configureSpace() {
-      return "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e04\u0e48\u0e32\u0e2b\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19";
+      return "Dersi yap\u0131land\u0131r";
     },
     get$pinMessages() {
-      return "\u0e1b\u0e31\u0e01\u0e2b\u0e21\u0e38\u0e14\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesajlar\u0131 sabitle";
     },
     get$setJoinRules() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e01\u0e0e\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131lma kurallar\u0131n\u0131 ayarla";
     },
     get$changeGeneralSettings() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b";
+      return "Genel ayarlar\u0131 de\u011fi\u015ftir";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2d\u0e37\u0e48\u0e19\u0e40\u0e02\u0e49\u0e32\u0e2b\u0e49\u0e2d\u0e07";
+      return "Di\u011fer kullan\u0131c\u0131lar\u0131 davet et";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e0a\u0e37\u0e48\u0e2d\u0e2b\u0e49\u0e2d\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19";
+      return "Dersin ad\u0131n\u0131 de\u011fi\u015ftir";
     },
     get$changeTheDescription() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22";
+      return "A\xe7\u0131klamay\u0131 de\u011fi\u015ftir";
     },
     get$changeThePermissions() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07";
+      return "\u0130zinleri de\u011fi\u015ftir";
     },
     get$introductions() {
-      return "\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33";
+      return "Tan\u0131t\u0131mlar";
     },
     get$announcements() {
-      return "\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28";
+      return "Duyurular";
     },
     get$activities() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Aktiviteler";
     },
     get$access() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07";
+      return "Eri\u015fim";
     },
     get$howSpaceCanBeFound() {
-      return "\u0e27\u0e34\u0e18\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e2b\u0e49\u0e2d\u0e07\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49";
+      return "Bu kurs nas\u0131l bulunabilir";
     },
     get$$private() {
-      return "\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27";
+      return "\xd6zel";
     },
     get$cannotBeFoundInSearch() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e44\u0e14\u0e49\u0e43\u0e19\u0e1c\u0e25\u0e01\u0e32\u0e23\u0e04\u0e49\u0e19\u0e2b\u0e32";
+      return "Aramada bulunamaz";
     },
     get$$public(_) {
-      return "\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
+      return "Genel";
     },
     get$visibleToCommunity() {
-      return '\u0e21\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e44\u0e14\u0e49\u0e43\u0e19\u0e0a\u0e38\u0e21\u0e0a\u0e19 Pangea Chat \u0e01\u0e27\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e1c\u0e48\u0e32\u0e19 "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e04\u0e2d\u0e23\u0e4c\u0e2a"';
+      return '"Bir kurs bul" arac\u0131l\u0131\u011f\u0131yla Pangea Chat toplulu\u011funa g\xf6r\xfcn\xfcr';
     },
     get$howSpaceCanBeJoined() {
-      return "\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e19\u0e35\u0e49";
+      return "Bu kurs nas\u0131l kat\u0131labilir";
     },
     get$canBeFoundVia() {
-      return "\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e44\u0e14\u0e49\u0e42\u0e14\u0e22:";
+      return "\u015eu yollarla bulunabilir:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u0e04\u0e33\u0e40\u0e0a\u0e34\u0e0d";
+      return "\u2022 davet";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u0e23\u0e2b\u0e31\u0e2a\u0e2b\u0e23\u0e37\u0e2d\u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "\u2022 kod veya ba\u011flant\u0131";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u0e04\u0e33\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e08\u0e32\u0e01\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a";
+      return "\u2022 kat\u0131lma iste\u011fi ve y\xf6netici onay\u0131";
     },
     get$sendActivities() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Aktiviteleri g\xf6nder";
     },
     get$directMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27";
+      return "\xd6zel Mesaj";
     },
     get$newDirectMessage() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni \xf6zel mesaj";
     },
     get$speakingExercisesTooltip() {
-      return "\u0e01\u0e32\u0e23\u0e1e\u0e39\u0e14";
+      return "Konu\u015fma";
     },
     get$transcriptionFailed() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e16\u0e2d\u0e14\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e44\u0e14\u0e49";
+      return "Sesin yaz\u0131ya d\xf6k\xfclmesi ba\u015far\u0131s\u0131z oldu";
     },
     get$aUserIsKnocking() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 1 \u0e04\u0e19\u0e01\u0e33\u0e25\u0e31\u0e07\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "1 kullan\u0131c\u0131 kursunuza kat\u0131lmak istiyor";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e01\u0e33\u0e25\u0e31\u0e07\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "" + users + " kullan\u0131c\u0131 kursunuza kat\u0131lmak istiyor";
     },
     get$failedToFetchTranscription() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e36\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e16\u0e2d\u0e14\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e44\u0e14\u0e49";
+      return "Yaz\u0131ya d\xf6kme al\u0131namad\u0131";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e08\u0e30\u0e16\u0e39\u0e01\u0e25\u0e1a\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14 \u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e49\u0e2d\u0e19\u0e01\u0e25\u0e31\u0e1a\u0e44\u0e14\u0e49";
+      return "Kurs t\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek. Bu i\u015flem geri al\u0131namaz.";
     },
     get$failedToPlayVideo() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e25\u0e48\u0e19\u0e27\u0e34\u0e14\u0e35\u0e42\u0e2d\u0e44\u0e14\u0e49";
+      return "Videoyu oynatamad\u0131";
     },
     get$done() {
-      return "\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19";
+      return "Tamamland\u0131";
     },
     get$inThisSpace() {
-      return "\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49";
+      return "Bu kursta";
     },
     get$myContacts() {
-      return "\u0e23\u0e32\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Ki\u015filerim";
     },
     get$inviteAllInSpace() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e0a\u0e27\u0e19\u0e17\u0e38\u0e01\u0e04\u0e19\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49";
+      return "T\xfcm kat\u0131l\u0131mc\u0131lar\u0131 davet et";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e49\u0e27";
+      return "T\xfcm kurs kat\u0131l\u0131mc\u0131lar\u0131 sohbete davet edildi";
     },
     numKnocking$1(count) {
-      return "" + count + " \u0e40\u0e04\u0e32\u0e30";
+      return "" + count + " \xe7al\u0131yor";
     },
     numInvited$1(count) {
-      return "" + count + " \u0e40\u0e0a\u0e34\u0e0d";
+      return "" + count + " davet edildi";
     },
     get$errorFetchingDefinition() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e36\u0e07\u0e04\u0e33\u0e08\u0e33\u0e01\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21\u0e44\u0e14\u0e49";
+      return "Tan\u0131m al\u0131namad\u0131";
     },
     get$errorProcessAnalytics() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e1b\u0e23\u0e30\u0e21\u0e27\u0e25\u0e1c\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e44\u0e14\u0e49";
+      return "Analitikler i\u015flenemedi";
     },
     get$errorDownloading() {
-      return "\u0e01\u0e32\u0e23\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e25\u0e49\u0e21\u0e40\u0e2b\u0e25\u0e27";
+      return "\u0130ndirme ba\u015far\u0131s\u0131z oldu";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e42\u0e2b\u0e25\u0e14\u0e41\u0e0a\u0e17\u0e20\u0e32\u0e22\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49";
+      return "Bu kurs i\xe7indeki sohbetler y\xfcklenemedi";
     },
     get$unexpectedError() {
-      return "\u0e40\u0e01\u0e34\u0e14\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e04\u0e32\u0e14\u0e04\u0e34\u0e14";
+      return "Beklenmedik hata.";
     },
     get$pleaseReload() {
-      return "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e23\u0e35\u0e40\u0e1f\u0e23\u0e0a\u0e41\u0e25\u0e30\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "L\xfctfen yeniden y\xfckleyin ve tekrar deneyin.";
     },
     get$translationError() {
-      return "\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e1b\u0e25";
+      return "\xc7eviri hatas\u0131";
     },
     get$errorFetchingActivity() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e36\u0e07\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e44\u0e14\u0e49";
+      return "Etkinlik al\u0131namad\u0131";
     },
     get$check(_) {
-      return "\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a";
+      return "Kontrol et";
     },
     get$unableToFindRoom() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e41\u0e0a\u0e17\u0e2b\u0e23\u0e37\u0e2d\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e21\u0e35\u0e23\u0e2b\u0e31\u0e2a\u0e19\u0e35\u0e49 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Bu kodla e\u015fle\u015fen sohbet veya kurs bulunamad\u0131. L\xfctfen tekrar deneyin.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e14\u0e39\u0e2a\u0e16\u0e34\u0e15\u0e34 " + visible + "/" + users;
+      return "" + visible + "/" + users + " Analitikleri G\xf6r\xfcnt\xfcleme";
     },
     get$request(_) {
-      return "\u0e04\u0e33\u0e02\u0e2d";
+      return "\u0130stek";
     },
     get$requestAll(_) {
-      return "\u0e02\u0e2d\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm\xfcn\xfc \u0130ste";
     },
     get$confirmMessageUnpin() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e27\u0e48\u0e32\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e01\u0e32\u0e23\u0e15\u0e23\u0e36\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49?";
+      return "Bu mesaj\u0131 sabitlemeyi kald\u0131rmak istedi\u011finizden emin misiniz?";
     },
     get$pending(_) {
-      return "\u0e23\u0e2d\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23";
+      return "Beklemede";
     },
     get$openRoleLabel() {
-      return "\u0e40\u0e1b\u0e34\u0e14";
+      return "A\xc7IK";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e40\u0e1b\u0e47\u0e19 " + role;
+      return "\ud83d\udc4b " + username + " " + role + " olarak kat\u0131ld\u0131";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u0e2a\u0e23\u0e38\u0e1b\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49";
+      return "\ud83c\udfaf " + username + " bu etkinli\u011fi tamamlad\u0131";
     },
     get$activitySummaryError() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39\u0e2a\u0e23\u0e38\u0e1b\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e44\u0e14\u0e49";
+      return "Etkinlik \xf6zetleri kullan\u0131lam\u0131yor";
     },
     get$requestSummaries() {
-      return "\u0e02\u0e2d\u0e2a\u0e23\u0e38\u0e1b\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25";
+      return "\xd6zetleri talep et";
     },
     get$requestAccessTitle() {
-      return "\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e01\u0e32\u0e23\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Analitik eri\u015fimi talep edilsin mi?";
     },
     get$requestAccessDesc() {
-      return "\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e43\u0e0a\u0e48\u0e44\u0e2b\u0e21?\n\n\u0e16\u0e49\u0e32\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a \u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49\u0e08\u0e30\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e02\u0e2d\u0e07\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e44\u0e14\u0e49:\n    \u2022 \u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\n    \u2022 \u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\n    \u2022 \u0e08\u0e33\u0e19\u0e27\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e17\u0e35\u0e48\u0e17\u0e33\u0e40\u0e2a\u0e23\u0e47\u0e08\n    \u2022 \u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49 \u0e17\u0e31\u0e49\u0e07\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e25\u0e30\u0e1c\u0e34\u0e14\n\n\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39\u0e44\u0e14\u0e49:\n    \u2022 \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e19\u0e2d\u0e01\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\n    \u2022 \u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kat\u0131l\u0131mc\u0131lar\u0131n analitiklerini g\xf6r\xfcnt\xfcleme eri\u015fimi talep etmek ister misiniz?\n\nKat\u0131l\u0131mc\u0131lar kabul ederse, bu kursun y\xf6neticileri:\n    \u2022 toplam kelime da\u011farc\u0131\u011f\u0131n\u0131\n    \u2022 toplam dilbilgisi kavramlar\u0131n\u0131\n    \u2022 tamamlanan toplam etkinlik oturumlar\u0131n\u0131\n    \u2022 do\u011fru ve yanl\u0131\u015f kullan\u0131lan belirli dilbilgisi kavramlar\u0131n\u0131 g\xf6rebilecekler.\n\nG\xf6rme imkanlar\u0131 olmayacak:\n    \u2022 kurs d\u0131\u015f\u0131ndaki sohbetlerdeki mesajlar\n    \u2022 kelime listesi";
     },
     get$analyticsInactiveTitle() {
-      return "\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e02\u0e2d\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e44\u0e14\u0e49";
+      return "Etkin olmayan kullan\u0131c\u0131lara yap\u0131lan istekler g\xf6nderilemedi";
     },
     get$analyticsInactiveDesc() {
-      return "\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e04\u0e38\u0e13\u0e2a\u0e21\u0e1a\u0e31\u0e15\u0e34\u0e19\u0e35\u0e49\u0e08\u0e30\u0e44\u0e21\u0e48\u0e40\u0e2b\u0e47\u0e19\u0e04\u0e33\u0e02\u0e2d\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\n\n\u0e1b\u0e38\u0e48\u0e21\u0e02\u0e2d\u0e08\u0e30\u0e1b\u0e23\u0e32\u0e01\u0e0f\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e01\u0e25\u0e31\u0e1a\u0e21\u0e32 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e2a\u0e48\u0e07\u0e04\u0e33\u0e02\u0e2d\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e44\u0e14\u0e49\u0e42\u0e14\u0e22\u0e04\u0e25\u0e34\u0e01\u0e1b\u0e38\u0e48\u0e21\u0e02\u0e2d\u0e20\u0e32\u0e22\u0e43\u0e15\u0e49\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19";
+      return "Bu \xf6zellik tan\u0131t\u0131ld\u0131ktan sonra giri\u015f yapmam\u0131\u015f etkin olmayan kullan\u0131c\u0131lar iste\u011finizi g\xf6rmeyecek.\n\nKullan\u0131c\u0131 geri d\xf6nd\xfc\u011f\xfcnde \u0130stek d\xfc\u011fmesi g\xf6r\xfcnecek. Kullan\u0131c\u0131 adlar\u0131n\u0131n alt\u0131ndaki \u0130stek d\xfc\u011fmesine t\u0131klayarak iste\u011fi daha sonra yeniden g\xf6nderebilirsiniz.";
     },
     get$accessRequestedTitle() {
-      return "\u0e04\u0e33\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e16\u0e36\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c";
+      return "Analitik Eri\u015fim Talebi";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e17\u0e35\u0e48\u0e02\u0e2d: " + admin + " \n\n\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e08\u0e32\u0e01 \u201c" + space + "\u201d \u0e01\u0e33\u0e25\u0e31\u0e07\u0e02\u0e2d\u0e43\u0e2b\u0e49\u0e14\u0e39\u0e01\u0e32\u0e23\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u3002\n\n\u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e40\u0e2b\u0e47\u0e19\u0e14\u0e49\u0e27\u0e22 \u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e08\u0e30\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39:\n    \u2022 \u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\n    \u2022 \u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\n    \u2022 \u0e08\u0e33\u0e19\u0e27\u0e19\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e17\u0e35\u0e48\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19\n    \u2022 \u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49 \u0e17\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e25\u0e30\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07\n\n\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e08\u0e30\u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39:\n    \u2022 \u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e19\u0e2d\u0e01\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\n    \u2022 \u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Y\xf6netici(ler) talep ediliyor: " + admin + " \n\n\u201c" + space + "\u201d alan\u0131ndan y\xf6neticiler, \xf6\u011frenme analitiklerinizi g\xf6r\xfcnt\xfclemek istiyor.\n\nKabul ederseniz, \u015funlar\u0131 g\xf6r\xfcnt\xfcleyebilecekler:\n    \u2022 toplam kelime da\u011farc\u0131\u011f\u0131\n    \u2022 toplam dilbilgisi kavramlar\u0131\n    \u2022 tamamlanan toplam etkinlik oturumlar\u0131\n    \u2022 do\u011fru ve yanl\u0131\u015f kullan\u0131lan belirli dilbilgisi kavramlar\u0131\n\n\u015eunlar\u0131 g\xf6r\xfcnt\xfcleyemeyecekler:\n    \u2022 kurs d\u0131\u015f\u0131ndaki sohbetlerdeki mesajlar\n    \u2022 kelime listesi";
     },
     get$adminRequestedAccess() {
-      return "\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e02\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e14\u0e39\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Y\xf6neticiler, analitiklerinizi g\xf6r\xfcnt\xfclemek istiyor.";
     },
     lastUpdated$1(time) {
-      return "\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\n" + time;
+      return "G\xfcncellendi\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14!";
+      return "Hepsi Tamamland\u0131!";
     },
     get$endForAll() {
-      return "\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e17\u0e38\u0e01\u0e04\u0e19";
+      return "Herkes \u0130\xe7in Sonland\u0131r";
     },
     get$newCourse() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni kurs";
     },
     numModules$1(num) {
-      return "" + num + " \u0e42\u0e21\u0e14\u0e39\u0e25";
+      return "" + num + " mod\xfcl";
     },
     get$coursePlan() {
-      return "\u0e41\u0e1c\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Kurs Plan\u0131";
     },
     get$editCourseLater() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e01\u0e49\u0e44\u0e02\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e17\u0e21\u0e40\u0e1e\u0e25\u0e15 \u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22 \u0e41\u0e25\u0e30\u0e20\u0e32\u0e1e\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07";
+      return "\u015eablon ba\u015fl\u0131\u011f\u0131, a\xe7\u0131klamalar ve kurs resmi daha sonra d\xfczenleyebilirsiniz.";
     },
     get$createCourse() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Kurs Olu\u015ftur";
     },
     get$stats() {
-      return "\u0e2a\u0e16\u0e34\u0e15\u0e34";
+      return "\u0130statistikler";
     },
     get$createGroupChat() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e01\u0e25\u0e38\u0e48\u0e21\u0e41\u0e0a\u0e17";
+      return "Grup sohbeti olu\u015ftur";
     },
     get$editCourse() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Kursu d\xfczenle";
     },
     get$inviteDesc() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e42\u0e14\u0e22\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 \u0e42\u0e14\u0e22\u0e23\u0e2b\u0e31\u0e2a \u0e2b\u0e23\u0e37\u0e2d \u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "Kullan\u0131c\u0131 ad\u0131, kod veya ba\u011flant\u0131 ile";
     },
     get$editCourseDesc() {
-      return "\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e01\u0e49\u0e44\u0e02\u0e0a\u0e37\u0e48\u0e2d\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23 \u0e2f\u0e25\u0e2f";
+      return "Burada kurs ba\u015fl\u0131\u011f\u0131n\u0131, a\xe7\u0131klamas\u0131n\u0131 vb. d\xfczenleyebilirsiniz.";
     },
     get$permissionsDesc() {
-      return "\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c \u0e40\u0e0a\u0e48\u0e19 \u0e43\u0e04\u0e23\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e0a\u0e34\u0e0d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 \u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e2a\u0e23\u0e49\u0e32\u0e07\u0e41\u0e0a\u0e17 \u0e2f\u0e25\u0e2f";
+      return "Kimin kullan\u0131c\u0131 davet edebilece\u011fi, mesaj g\xf6nderebilece\u011fi, sohbet olu\u015fturabilece\u011fi gibi izinleri ayarlay\u0131n.";
     },
     get$accessDesc() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e34\u0e14\u0e2a\u0e39\u0e48\u0e42\u0e25\u0e01 \u0e2b\u0e23\u0e37\u0e2d \u0e17\u0e33\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e41\u0e25\u0e30\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22";
+      return "Kursunuzu d\xfcnyaya a\xe7\u0131k hale getirebilirsiniz! Ya da, kursunuzu \xf6zel ve g\xfcvenli yapabilirsiniz.";
     },
     get$createGroupChatDesc() {
-      return "\u0e43\u0e19\u0e02\u0e13\u0e30\u0e17\u0e35\u0e48\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e23\u0e34\u0e48\u0e21\u0e41\u0e25\u0e30\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14 \u0e01\u0e25\u0e38\u0e48\u0e21\u0e41\u0e0a\u0e17\u0e08\u0e30\u0e40\u0e1b\u0e34\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e2a\u0e37\u0e48\u0e2d\u0e2a\u0e32\u0e23\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e27\u0e31\u0e19";
+      return "Etkinlik oturumlar\u0131 ba\u015flar ve biterken, grup sohbetleri rutin ileti\u015fim i\xe7in a\xe7\u0131k kalacakt\u0131r.";
     },
     get$deleteDesc() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a\u0e40\u0e17\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e25\u0e1a\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e44\u0e14\u0e49 \u0e19\u0e35\u0e48\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e17\u0e33\u0e25\u0e32\u0e22\u0e25\u0e49\u0e32\u0e07 \u0e0b\u0e36\u0e48\u0e07\u0e08\u0e30\u0e25\u0e1a\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e41\u0e25\u0e30\u0e25\u0e1a\u0e41\u0e0a\u0e17\u0e17\u0e35\u0e48\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e20\u0e32\u0e22\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23 \u0e42\u0e1b\u0e23\u0e14\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e14\u0e49\u0e27\u0e22\u0e04\u0e27\u0e32\u0e21\u0e23\u0e30\u0e21\u0e31\u0e14\u0e23\u0e30\u0e27\u0e31\u0e07";
+      return "Sadece y\xf6neticiler kursu silebilir. Bu, t\xfcm kullan\u0131c\u0131lar\u0131 kald\u0131ran ve kurs i\xe7indeki t\xfcm se\xe7ili sohbetleri silen y\u0131k\u0131c\u0131 bir i\u015flemdir. Dikkatli ilerleyin.";
     },
     get$noCourseFound() {
-      return "\u0e42\u0e2d\u0e49 \u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e41\u0e1c\u0e19!\n\n\u0e41\u0e1c\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e40\u0e1b\u0e47\u0e19\u0e25\u0e33\u0e14\u0e31\u0e1a\u0e02\u0e2d\u0e07\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e41\u0e25\u0e30\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e19\u0e17\u0e19\u0e32";
+      return "Ah, bu kursun bir plan\u0131 olmal\u0131!\n\nKurs planlar\u0131, konu ve sohbet etkinliklerinin s\u0131ras\u0131d\u0131r.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e46";
+      return "+ " + num + " di\u011fer";
     },
     get$whatNow() {
-      return "\u0e15\u0e2d\u0e19\u0e19\u0e35\u0e49\u0e17\u0e33\u0e2d\u0e30\u0e44\u0e23\u0e14\u0e35?";
+      return "\u015eimdi ne olacak?";
     },
     get$chooseNextActivity() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e16\u0e31\u0e14\u0e44\u0e1b\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13!";
+      return "Bir sonraki etkinli\u011finizi se\xe7in!";
     },
     get$letsGo() {
-      return "\u0e44\u0e1b\u0e01\u0e31\u0e19\u0e40\u0e25\u0e22";
+      return "Hadi ba\u015flayal\u0131m";
     },
     get$chooseRole() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e1a\u0e17\u0e1a\u0e32\u0e17!";
+      return "Bir rol se\xe7in!";
     },
     get$chooseRoleToParticipate() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e1a\u0e17\u0e1a\u0e32\u0e17\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21!";
+      return "Kat\u0131lmak i\xe7in bir rol se\xe7in!";
     },
     waitingToFillRole$1(num) {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e40\u0e15\u0e34\u0e21\u0e40\u0e15\u0e47\u0e21\u0e1a\u0e17\u0e1a\u0e32\u0e17 " + num + "...";
+      return "" + num + " rol\xfc doldurulmay\u0131 bekliyor...";
     },
     get$pingParticipants() {
-      return "\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Kurs kat\u0131l\u0131mc\u0131lar\u0131na bildirim g\xf6nder";
     },
     get$playWithBot() {
-      return "\u0e40\u0e25\u0e48\u0e19\u0e01\u0e31\u0e1a Pangea Bot";
+      return "Pangea Bot ile oyna";
     },
     get$waitNotDone() {
-      return "\u0e23\u0e2d\u0e09\u0e31\u0e19\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e40\u0e2a\u0e23\u0e47\u0e08!";
+      return "Bekle, bitirmedim!";
     },
     get$waitingForOthersToFinish() {
-      return "\u0e23\u0e2d\u0e43\u0e2b\u0e49\u0e04\u0e19\u0e2d\u0e37\u0e48\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19...";
+      return "Di\u011ferlerinin bitirmesini bekliyorum...";
     },
     get$generatingSummary() {
-      return "\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e41\u0e0a\u0e17\u0e41\u0e25\u0e30\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c";
+      return "Sohbeti analiz ediyor ve sonu\xe7lar olu\u015fturuyor";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u0e01\u0e33\u0e25\u0e31\u0e07\u0e21\u0e2d\u0e07\u0e2b\u0e32\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e43\u0e19 " + room;
+      return user + " " + room + " i\xe7indeki etkinlik oturumuna kat\u0131lacak kullan\u0131c\u0131lar ar\u0131yor";
     },
     goToCourse$1(course) {
-      return "\u0e44\u0e1b\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23: " + course;
+      return "Kursa git: " + course;
     },
     get$startNewSession() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeni oturum ba\u015flat";
     },
     get$joinOpenSession() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19\u0e40\u0e1b\u0e34\u0e14";
+      return "A\xe7\u0131k oturuma kat\u0131l";
     },
     get$activityNotFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlik bulunamad\u0131";
     },
     get$levelUp() {
-      return "\u0e40\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e23\u0e30\u0e14\u0e31\u0e1a";
+      return "Seviyeyi y\xfckselt";
     },
     get$myActivities() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Benim etkinliklerim";
     },
     get$openToJoin() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e2b\u0e49\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Kat\u0131lmak a\xe7\u0131k";
     },
     get$activityDone() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19!";
+      return "Etkinlik Tamamland\u0131!";
     },
     get$promoCodeInfo() {
-      return "\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e01\u0e23\u0e2d\u0e01\u0e23\u0e2b\u0e31\u0e2a\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e16\u0e31\u0e14\u0e44\u0e1b";
+      return "\u0130ndirim kodlar\u0131 bir sonraki sayfada girilebilir";
     },
     get$editsComingSoon() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e19\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e40\u0e21\u0e37\u0e2d\u0e07\u0e41\u0e25\u0e30\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e08\u0e30\u0e21\u0e32\u0e43\u0e19\u0e40\u0e23\u0e47\u0e27 \u0e46 \u0e19\u0e35\u0e49";
+      return "\u015eehirleri ve etkinlikleri d\xfczenleme \xf6zelli\u011fi yak\u0131nda geliyor.";
     },
     get$editing() {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "D\xfczenleniyor";
     },
     get$activityNeedsOneMember() {
-      return "\u0e42\u0e2d\u0e49\u0e42\u0e2b! \u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e2d\u0e35\u0e01 1 \u0e04\u0e19";
+      return "Aman tanr\u0131m! Bu etkinlik i\xe7in 1 ki\u015fiye daha ihtiya\xe7 var.";
     },
     activityNeedsMembers$1(num) {
-      return "\u0e42\u0e2d\u0e49\u0e42\u0e2b! \u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e2d\u0e35\u0e01 " + num + " \u0e04\u0e19";
+      return "Aman tanr\u0131m! Bu etkinlik i\xe7in " + num + " ki\u015fiye daha ihtiya\xe7 var.";
     },
     get$inviteFriendsToCourse() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Arkada\u015flar\u0131m\u0131 kursuma davet et";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e2a\u0e23\u0e38\u0e1b\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlik \xf6zetlerini a\xe7mak i\xe7in abone ol";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e04\u0e33\u0e16\u0e2d\u0e14\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Transkripsiyonlar\u0131 a\xe7mak i\xe7in abone ol";
     },
     get$pingSent() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e41\u0e25\u0e49\u0e27! \ud83d\udd14";
+      return "\ud83d\udde3\ufe0f Kurs pingi g\xf6nderildi! \ud83d\udde3\ufe0f";
     },
     get$courseTitle() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Kurs ba\u015fl\u0131\u011f\u0131";
     },
     get$courseDesc() {
-      return "\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Kurs a\xe7\u0131klamas\u0131";
     },
     get$courseSavedSuccessfully() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e1a\u0e23\u0e49\u0e2d\u0e22\u0e41\u0e25\u0e49\u0e27";
+      return "Kurs ba\u015far\u0131yla kaydedildi";
     },
     get$addCoursePlan() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e41\u0e1c\u0e19\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Bir kurs plan\u0131 ekle";
     },
     get$activityStatsButtonInstruction() {
-      return "\u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e2a\u0e16\u0e34\u0e15\u0e34\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e1b\u0e34\u0e14\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19";
+      return "Etkinlik istatistiklerinizi g\xf6rmek ve tamamland\u0131\u011f\u0131nda etkinli\u011fi kapatmak i\xe7in buraya t\u0131klay\u0131n";
     },
     get$loginToAccount() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19";
+      return "Hesab\u0131n\u0131za giri\u015f yap\u0131n";
     },
     get$appDescription() {
-      return "\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e20\u0e32\u0e29\u0e32\n\u0e43\u0e19\u0e02\u0e13\u0e30\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e16\u0e36\u0e07\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Bir dil \xf6\u011frenin\narkada\u015flar\u0131n\u0131za mesaj atarken.";
     },
     get$startOwn() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e02\u0e2d\u0e07\u0e09\u0e31\u0e19\u0e40\u0e2d\u0e07";
+      return "Kendi ba\u015f\u0131ma ba\u015fla";
     },
     get$courseCodeHint() {
-      return "\u0e23\u0e2b\u0e31\u0e2a\u0e17\u0e23\u0e34\u0e1b\u0e2b\u0e23\u0e37\u0e2d \u0e25\u0e34\u0e07\u0e01\u0e4c";
+      return "Seyahat kodu veya ba\u011flant\u0131";
     },
     get$signupOption() {
-      return "\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23";
+      return "Nas\u0131l kaydolmak istiyorsunuz?";
     },
     get$withApple() {
-      return "\u0e14\u0e49\u0e27\u0e22 Apple";
+      return "Apple ile";
     },
     get$withGoogle() {
-      return "\u0e14\u0e49\u0e27\u0e22 Google";
+      return "Google ile";
     },
     get$withEmail() {
-      return "\u0e14\u0e49\u0e27\u0e22\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "E-posta ile";
     },
     get$createAccount() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e1a\u0e31\u0e0d\u0e0a\u0e35";
+      return "Hesap olu\u015ftur";
     },
     get$loginWithEmail() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a\u0e14\u0e49\u0e27\u0e22\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "E-posta ile giri\u015f yap";
     },
     get$usernameOrEmail() {
-      return "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2b\u0e23\u0e37\u0e2d\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "Kullan\u0131c\u0131 ad\u0131 veya e-posta";
     },
     get$email() {
-      return "\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "E-posta";
     },
     get$forgotPassword() {
-      return "\u0e25\u0e37\u0e21\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19?";
+      return "\u015eifremi unuttum?";
     },
     get$endActivity() {
-      return "\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinli\u011fi sonland\u0131r";
     },
     get$allLanguages() {
-      return "\u0e17\u0e38\u0e01\u0e20\u0e32\u0e29\u0e32";
+      return "T\xfcm diller";
     },
     get$directMessageBotTitle() {
-      return "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a Pangea Bot";
+      return "Pangea Bot ile Do\u011frudan Mesaj";
     },
     get$feedbackTitle() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlik Geri Bildirimi";
     },
     get$feedbackRespDesc() {
-      return "\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e27\u0e31\u0e19\u0e1e\u0e23\u0e38\u0e48\u0e07\u0e19\u0e35\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Yar\u0131na kadar etkinlik g\xfcncellemelerini kontrol edin.";
     },
     get$feedbackHint() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Geri bildiriminiz";
     },
     get$feedbackButton() {
-      return "\u0e2a\u0e48\u0e07\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19";
+      return "Geri bildirim g\xf6nder";
     },
     get$directMessageBotDesc() {
-      return "\u0e04\u0e38\u0e22\u0e01\u0e31\u0e1a\u0e21\u0e19\u0e38\u0e29\u0e22\u0e4c\u0e2a\u0e19\u0e38\u0e01\u0e01\u0e27\u0e48\u0e32 \u0e41\u0e15\u0e48... AI \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e2a\u0e21\u0e2d!";
+      return "\u0130nsanlarla konu\u015fmak daha e\u011flencelidir ama... Yapay zeka her zaman haz\u0131r!";
     },
     get$inviteYourFriends() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e0a\u0e27\u0e19\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "Arkada\u015flar\u0131n\u0131z\u0131 davet edin";
     },
     get$playWithAI() {
-      return "\u0e40\u0e25\u0e48\u0e19\u0e01\u0e31\u0e1a AI \u0e0a\u0e31\u0e48\u0e27\u0e04\u0e23\u0e32\u0e27";
+      return "\u015eimdilik yapay zeka ile oynay\u0131n";
     },
     get$courseStartDesc() {
-      return "Pangea Bot \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e17\u0e35\u0e48\u0e08\u0e30\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19\u0e44\u0e14\u0e49\u0e17\u0e38\u0e01\u0e40\u0e21\u0e37\u0e48\u0e2d!\n\n...\u0e41\u0e15\u0e48\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32\u0e01\u0e31\u0e1a\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19!";
+      return "Pangea Bot her zaman haz\u0131r!\n\n...ama arkada\u015flar\u0131n\u0131zla \xf6\u011frenmek daha iyidir!";
     },
     get$activityDropdownDesc() {
-      return "\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e17\u0e33\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e41\u0e25\u0e49\u0e27 \u0e43\u0e2b\u0e49\u0e04\u0e25\u0e34\u0e01\u0e14\u0e49\u0e32\u0e19\u0e25\u0e48\u0e32\u0e07";
+      return "Bu etkinli\u011fi tamamlad\u0131ktan sonra a\u015fa\u011f\u0131daki butona t\u0131klay\u0131n";
     },
     get$languageMismatchTitle() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19";
+      return "Dil uyu\u015fmazl\u0131\u011f\u0131";
     },
     get$emptyChatSearch() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e2b\u0e23\u0e37\u0e2d\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32 \u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e43\u0e2b\u0e49\u0e41\u0e19\u0e48\u0e43\u0e08\u0e27\u0e48\u0e32\u0e01\u0e32\u0e23\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2a\u0e30\u0e01\u0e14\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Hi\xe7 DM veya sohbet bulunamad\u0131. Araman\u0131z\u0131n do\u011fru yaz\u0131ld\u0131\u011f\u0131ndan emin olun.";
     },
     get$languageMismatchDesc() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e2b\u0e21\u0e32\u0e22\u0e44\u0e21\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a\u0e20\u0e32\u0e29\u0e32\u0e02\u0e2d\u0e07\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49 \u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e2b\u0e21\u0e32\u0e22\u0e44\u0e2b\u0e21?";
+      return "Hedef diliniz, bu etkinli\u011fin diliyle uyu\u015fmuyor. Hedef dilinizi g\xfcncellemek ister misiniz?";
     },
     get$reportWordIssueTooltip() {
-      return "\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kelime bilgisi sorununu bildir";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u0e04\u0e33\u0e15\u0e34\u0e0a\u0e21\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kelime Bilgisi Geri Bildirimi";
     },
     get$noPublicCoursesFound() {
-      return "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30 \u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e43\u0e2b\u0e21\u0e48\u0e44\u0e2b\u0e21?";
+      return "Hi\xe7 kamu kursu bulunamad\u0131. Bir tane olu\u015fturmak ister misiniz?";
     },
     get$noCourseTemplatesFound() {
-      return "\u0e40\u0e23\u0e32\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e2b\u0e21\u0e32\u0e22 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e0a\u0e17\u0e01\u0e31\u0e1a Pangea Bot \u0e44\u0e14\u0e49\u0e43\u0e19\u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07\u0e19\u0e35\u0e49 \u0e41\u0e25\u0e30\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21";
+      return "Hedef diliniz i\xe7in herhangi bir kurs bulamad\u0131k. Bu arada Pangea Bot ile sohbet edebilir ve daha fazla kurs i\xe7in sonra tekrar kontrol edebilirsiniz.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot \u0e01\u0e33\u0e25\u0e31\u0e07\u0e15\u0e2d\u0e1a\u0e2a\u0e19\u0e2d\u0e07\u0e0a\u0e49\u0e32 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e25\u0e2d\u0e07\u0e43\u0e2b\u0e21\u0e48\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07 \u0e2b\u0e23\u0e37\u0e2d\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
+      return "Pangea Bot yan\u0131t vermekte biraz gecikiyor. L\xfctfen daha sonra tekrar deneyin veya bir arkada\u015f\u0131n\u0131z\u0131 davet edin.";
     },
     get$unsubscribedResponseError() {
-      return "\u0e04\u0e38\u0e13\u0e2a\u0e21\u0e1a\u0e31\u0e15\u0e34\u0e19\u0e35\u0e49\u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Bu \xf6zellik bir abonelik gerektirir";
     },
     get$leaveDesc() {
-      return "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e19\u0e35\u0e49\u0e41\u0e25\u0e30\u0e41\u0e0a\u0e17\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e20\u0e32\u0e22\u0e43\u0e19";
+      return "Bu alan\u0131 ve i\xe7indeki t\xfcm sohbetleri terk edin";
     },
     get$selectAll() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm\xfcn\xfc se\xe7";
     },
     get$deselectAll(_) {
-      return "\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14";
+      return "T\xfcm se\xe7imleri kald\u0131r";
     },
     get$shareCourse() {
-      return "\u0e41\u0e0a\u0e23\u0e4c\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Kursu payla\u015f";
     },
     get$vocabLevelsDesc() {
-      return "\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e17\u0e35\u0e48\u0e17\u0e35\u0e48\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e08\u0e30\u0e44\u0e1b\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e04\u0e38\u0e13\u0e40\u0e25\u0e40\u0e27\u0e25\u0e2d\u0e31\u0e1b\u0e21\u0e31\u0e19\u0e41\u0e25\u0e49\u0e27!";
+      return "Kelime seviyelerini y\xfckseltti\u011finizde buraya kelimeler gelir!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e44\u0e27\u0e49\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e41\u0e25\u0e30\u0e1d\u0e36\u0e01\u0e1d\u0e19";
+      return "Bunlar g\xf6zden ge\xe7irmek ve pratik yapmak i\xe7in kaydedilmi\u015f aktivitelerinizdir.";
     },
     get$numSavedActivities() {
-      return "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e44\u0e27\u0e49";
+      return "Kaydedilen aktivitelerin say\u0131s\u0131";
     },
     get$saveActivityTitle() {
-      return "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Aktiviteyi kaydet";
     },
     get$saveActivityDesc() {
-      return "\u0e17\u0e33\u0e44\u0e14\u0e49\u0e14\u0e35! \u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e41\u0e25\u0e30\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07";
+      return "\u0130yi i\u015f! Bu aktiviteyi daha sonra g\xf6zden ge\xe7irmek ve pratik yapmak i\xe7in kaydedin";
     },
     get$levelInfoTooltip() {
-      return "\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e14\u0e39\u0e04\u0e30\u0e41\u0e19\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e41\u0e25\u0e30\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23!";
+      return "Burada kazand\u0131\u011f\u0131n\u0131z t\xfcm puanlar\u0131 ve nas\u0131l kazand\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilirsiniz!";
     },
     get$alreadyInCourseWithID() {
-      return "\u0e04\u0e38\u0e13\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e21\u0e35\u0e41\u0e1c\u0e19\u0e19\u0e35\u0e49\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27 \u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e21\u0e35\u0e41\u0e1c\u0e19\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27?";
+      return "Bu planla zaten bir kurstas\u0131n\u0131z. Ayn\u0131 planla yeni bir kurs olu\u015fturmak m\u0131 yoksa mevcut kursa gitmek mi istersiniz?";
     },
     get$goToExistingCourse() {
-      return "\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e17\u0e35\u0e48\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48";
+      return "Mevcut kursa git";
     },
     get$emojiView() {
-      return "\u0e21\u0e38\u0e21\u0e21\u0e2d\u0e07\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34";
+      return "Emoji g\xf6r\xfcn\xfcm\xfc";
     },
     get$feedbackDialogDesc() {
-      return "\u0e09\u0e31\u0e19\u0e01\u0e47\u0e17\u0e33\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e40\u0e2b\u0e21\u0e37\u0e2d\u0e19\u0e01\u0e31\u0e19! \u0e21\u0e35\u0e2d\u0e30\u0e44\u0e23\u0e17\u0e35\u0e48\u0e08\u0e30\u0e0a\u0e48\u0e27\u0e22\u0e43\u0e2b\u0e49\u0e09\u0e31\u0e19\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e02\u0e36\u0e49\u0e19\u0e44\u0e2b\u0e21?";
+      return "Ben de hata yap\u0131yorum! Geli\u015fmeme yard\u0131mc\u0131 olacak bir \u015fey var m\u0131?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "\u0130leti\u015fim ki\u015fisi kursa davet edildi";
     },
     get$inviteFriends() {
-      return "\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19";
+      return "Arkada\u015flar\u0131 davet et";
     },
     get$activityStatsButtonTooltip() {
-      return "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlik bilgisi";
     },
     get$allow(_) {
-      return "\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15";
+      return "\u0130zin ver";
     },
     get$deny() {
-      return "\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18";
+      return "Reddet";
     },
     get$enabledRenewal() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d\u0e2d\u0e32\u0e22\u0e38\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01";
+      return "Abonelik Yenilemeyi Etkinle\u015ftir";
     },
     get$subscriptionEndsOn() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e43\u0e19\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48";
+      return "Abonelik \u015eu Tarihte Sona Eriyor";
     },
     get$subscriptionRenewsOn() {
-      return "\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e15\u0e48\u0e2d\u0e2d\u0e32\u0e22\u0e38\u0e43\u0e19\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48";
+      return "Abonelik \u015eu Tarihte Yenileniyor";
     },
     get$waitForSubscriptionChanges() {
-      return "\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2d\u0e32\u0e08\u0e43\u0e0a\u0e49\u0e40\u0e27\u0e25\u0e32\u0e2a\u0e31\u0e01\u0e04\u0e23\u0e39\u0e48\u0e43\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19\u0e43\u0e19\u0e41\u0e2d\u0e1b";
+      return "Aboneli\u011finizdeki de\u011fi\u015fikliklerin uygulamada yans\u0131mas\u0131 biraz zaman alabilir.";
     },
     get$subscribeReadingAssistance() {
-      return "\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21";
+      return "Mesaj ara\xe7lar\u0131n\u0131 a\xe7mak i\xe7in abone olun";
     },
     get$aceDisplayName() {
       return "Achinese";
     },
     get$achDisplayName() {
-      return "\u0e2d\u0e32\u0e04\u0e2d\u0e25\u0e35";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u0e41\u0e2d\u0e1f\u0e23\u0e34\u0e04\u0e32\u0e19\u0e2a\u0e4c";
+      return "Afrikaans";
     },
     get$akDisplayName() {
-      return "\u0e2d\u0e32\u0e01\u0e31\u0e19";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u0e2d\u0e32\u0e25\u0e39\u0e23\u0e4c";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u0e2d\u0e31\u0e21\u0e2e\u0e32\u0e23\u0e34\u0e01";
+      return "Amharca";
     },
     get$arDisplayName() {
-      return "\u0e2d\u0e32\u0e2b\u0e23\u0e31\u0e1a";
+      return "Arap\xe7a";
     },
     get$asDisplayName() {
-      return "\u0e2d\u0e31\u0e2a\u0e2a\u0e31\u0e21";
+      return "Asamca";
     },
     get$awaDisplayName() {
-      return "\u0e2d\u0e27\u0e32\u0e18\u0e35";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u0e2d\u0e32\u0e22\u0e21\u0e32\u0e23\u0e32";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u0e2d\u0e32\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1a\u0e08\u0e32\u0e19\u0e35";
+      return "Azerice";
     },
     get$baDisplayName() {
-      return "\u0e1a\u0e32\u0e0a\u0e40\u0e04\u0e35\u0e22\u0e23\u0e4c";
+      return "Ba\u015fkurt";
     },
     get$banDisplayName() {
-      return "\u0e1a\u0e32\u0e2b\u0e25\u0e35";
+      return "Bali";
     },
     get$bbcDisplayName() {
-      return "\u0e1a\u0e32\u0e15\u0e31\u0e01\u0e42\u0e17\u0e1a\u0e32";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u0e40\u0e1a\u0e25\u0e32\u0e23\u0e38\u0e2a";
+      return "Belarus\xe7a";
     },
     get$bemDisplayName() {
-      return "\u0e40\u0e1a\u0e47\u0e21\u0e1a\u0e32";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u0e40\u0e1a\u0e15\u0e32\u0e27\u0e35";
+      return "Betavi";
     },
     get$bgDisplayName() {
-      return "\u0e1a\u0e31\u0e25\u0e41\u0e01\u0e40\u0e23\u0e35\u0e22";
+      return "Bulgarca";
     },
     get$bhoDisplayName() {
-      return "\u0e42\u0e1a\u0e0a\u0e1b\u0e38\u0e23\u0e35";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u0e1a\u0e34\u0e42\u0e04\u0e25";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u0e1a\u0e31\u0e21\u0e1a\u0e32\u0e23\u0e32";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u0e1a\u0e31\u0e07\u0e01\u0e25\u0e32";
+      return "Bengalce";
     },
     get$bnBDDisplayName() {
-      return "\u0e40\u0e1a\u0e07\u0e01\u0e32\u0e25\u0e35 (\u0e1a\u0e31\u0e07\u0e01\u0e25\u0e32\u0e40\u0e17\u0e28)";
+      return "Bengalce (Banglade\u015f)";
     },
     get$bnINDisplayName() {
-      return "\u0e40\u0e1a\u0e07\u0e01\u0e32\u0e25\u0e35 (\u0e2d\u0e34\u0e19\u0e40\u0e14\u0e35\u0e22)";
+      return "Bengalce (Hindistan)";
     },
     get$brDisplayName() {
-      return "\u0e40\u0e1a\u0e23\u0e2d\u0e15\u0e07";
+      return "Bretonca";
     },
     get$bsDisplayName() {
-      return "\u0e1a\u0e2d\u0e2a\u0e40\u0e19\u0e35\u0e22";
+      return "Bo\u015fnak\xe7a";
     },
     get$btsDisplayName() {
-      return "\u0e1a\u0e32\u0e15\u0e31\u0e01\u0e0b\u0e34\u0e21\u0e32\u0e25\u0e38\u0e07\u0e01\u0e31\u0e19";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u0e1a\u0e32\u0e15\u0e31\u0e01\u0e04\u0e32\u0e42\u0e23";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u0e1a\u0e39\u0e40\u0e23\u0e35\u0e22\u0e15";
+      return "Buryat\xe7a";
     },
     get$caDisplayName() {
-      return "\u0e04\u0e32\u0e15\u0e32\u0e25\u0e31\u0e19";
+      return "Katalanca";
     },
     get$cebDisplayName() {
-      return "\u0e40\u0e0b\u0e1a\u0e39\u0e2d\u0e32\u0e42\u0e19";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u0e0a\u0e34\u0e01\u0e32";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u0e21\u0e32\u0e23\u0e34";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u0e40\u0e04\u0e2d\u0e23\u0e4c\u0e14\u0e34\u0e2a\u0e01\u0e25\u0e32\u0e07";
+      return "Orta K\xfcrt\xe7e";
     },
     get$cnhDisplayName() {
-      return "\u0e2e\u0e32\u0e04\u0e2e\u0e32 \u0e0a\u0e34\u0e19";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u0e04\u0e2d\u0e23\u0e4c\u0e0b\u0e34\u0e01\u0e31\u0e19";
+      return "Korsika Dili";
     },
     get$crhDisplayName() {
-      return "\u0e15\u0e38\u0e23\u0e01\u0e35\u0e44\u0e04\u0e23\u0e40\u0e21\u0e35\u0e22";
+      return "K\u0131r\u0131m T\xfcrk\xe7esi";
     },
     get$crsDisplayName() {
-      return "\u0e40\u0e0b\u0e40\u0e0b\u0e25\u0e27\u0e32 \u0e40\u0e04\u0e23\u0e42\u0e2d\u0e25 \u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a";
+      return "Seselwa Kreol Frans\u0131zcas\u0131";
     },
     get$csDisplayName() {
-      return "\u0e40\u0e0a\u0e47\u0e01";
+      return "\xc7ek\xe7e";
     },
     get$cvDisplayName() {
-      return "\u0e0a\u0e39\u0e27\u0e32\u0e0a";
+      return "\xc7uva\u015f\xe7a";
     },
     get$cyDisplayName() {
-      return "\u0e40\u0e27\u0e25\u0e0a\u0e4c";
+      return "Gallerce";
     },
     get$daDisplayName() {
-      return "\u0e40\u0e14\u0e19\u0e21\u0e32\u0e23\u0e4c\u0e01";
+      return "Danca";
     },
     get$deDisplayName() {
-      return "\u0e40\u0e22\u0e2d\u0e23\u0e21\u0e31\u0e19";
+      return "Almanca";
     },
     get$dinDisplayName() {
-      return "\u0e14\u0e34\u0e19\u0e01\u0e49\u0e32";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u0e42\u0e14\u0e01\u0e23\u0e35";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u0e42\u0e14\u0e21\u0e40\u0e1a";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u0e0b\u0e2d\u0e07\u0e04\u0e32";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u0e2d\u0e35\u0e40\u0e27";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29";
+      return "\u0130ngilizce";
     },
     get$enAUDisplayName() {
-      return "\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29 (\u0e2d\u0e2d\u0e2a\u0e40\u0e15\u0e23\u0e40\u0e25\u0e35\u0e22)";
+      return "\u0130ngilizce (Avustralya)";
     },
     get$enGBDisplayName() {
-      return "\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29 (\u0e2a\u0e2b\u0e23\u0e32\u0e0a\u0e2d\u0e32\u0e13\u0e32\u0e08\u0e31\u0e01\u0e23)";
+      return "\u0130ngilizce (\u0130ngiltere)";
     },
     get$enINDisplayName() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29 (\u0e2d\u0e34\u0e19\u0e40\u0e14\u0e35\u0e22)";
+      return "\u0130ngilizce (Hindistan)";
     },
     get$enUSDisplayName() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e31\u0e07\u0e01\u0e24\u0e29 (\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e40\u0e21\u0e23\u0e34\u0e01\u0e32)";
+      return "\u0130ngilizce (ABD)";
     },
     get$eoDisplayName() {
-      return "\u0e40\u0e2d\u0e2a\u0e40\u0e1b\u0e2d\u0e41\u0e23\u0e19\u0e42\u0e15";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2a\u0e40\u0e1b\u0e19";
+      return "\u0130spanyolca";
     },
     get$esESDisplayName() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2a\u0e40\u0e1b\u0e19 (\u0e2a\u0e40\u0e1b\u0e19)";
+      return "\u0130spanyolca (\u0130spanya)";
     },
     get$esMXDisplayName() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e2a\u0e40\u0e1b\u0e19 (\u0e40\u0e21\u0e47\u0e01\u0e0b\u0e34\u0e42\u0e01)";
+      return "\u0130spanyolca (Meksika)";
     },
     get$euDisplayName() {
-      return "\u0e1a\u0e32\u0e2a\u0e01\u0e4c";
+      return "Bask\xe7a";
     },
     get$faDisplayName() {
-      return "\u0e40\u0e1b\u0e2d\u0e23\u0e4c\u0e40\u0e0b\u0e35\u0e22";
+      return "Fars\xe7a";
     },
     get$ffDisplayName() {
-      return "\u0e1f\u0e39\u0e25\u0e32\u0e2b\u0e4c";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u0e1f\u0e34\u0e19\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Fince";
     },
     get$filDisplayName() {
-      return "\u0e1f\u0e34\u0e25\u0e34\u0e1b\u0e1b\u0e34\u0e19\u0e2a\u0e4c";
+      return "Filipin";
     },
     get$fjDisplayName() {
-      return "\u0e1f\u0e34\u0e08\u0e34";
+      return "Fijili";
     },
     get$foDisplayName() {
-      return "\u0e1f\u0e32\u0e42\u0e23\u0e2d\u0e35\u0e2a";
+      return "Faroece";
     },
     get$frDisplayName() {
-      return "\u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a";
+      return "Frans\u0131zca";
     },
     get$frCADisplayName() {
-      return "\u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a (\u0e41\u0e04\u0e19\u0e32\u0e14\u0e32)";
+      return "Frans\u0131zca (Kanada)";
     },
     get$frFRDisplayName() {
-      return "\u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a (\u0e1d\u0e23\u0e31\u0e48\u0e07\u0e40\u0e28\u0e2a)";
+      return "Frans\u0131zca (Fransa)";
     },
     get$fyDisplayName() {
-      return "\u0e1f\u0e23\u0e34\u0e40\u0e0b\u0e35\u0e22\u0e19\u0e15\u0e30\u0e27\u0e31\u0e19\u0e15\u0e01";
+      return "Bat\u0131 Frisian";
     },
     get$gaDisplayName() {
-      return "\u0e44\u0e2d\u0e23\u0e34\u0e0a";
+      return "\u0130rlandaca";
     },
     get$gaaDisplayName() {
-      return "\u0e01\u0e49\u0e32";
+      return "Ga";
     },
     get$gdDisplayName() {
-      return "\u0e2a\u0e01\u0e47\u0e2d\u0e15\u0e15\u0e34\u0e0a\u0e40\u0e01\u0e25\u0e34\u0e01";
+      return "\u0130sko\xe7 Gaelic";
     },
     get$glDisplayName() {
-      return "\u0e01\u0e32\u0e25\u0e34\u0e40\u0e0b\u0e35\u0e22\u0e19";
+      return "Gali\xe7yaca";
     },
     get$gnDisplayName() {
-      return "\u0e01\u0e31\u0e27\u0e23\u0e32\u0e19\u0e35";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "\u0e42\u0e01\u0e2d\u0e31\u0e19 \u0e04\u0e2d\u0e19\u0e04\u0e32\u0e19\u0e35";
+      return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "\u0e04\u0e38\u0e0a\u0e23\u0e32\u0e15\u0e35";
+      return "G\xfccerati";
     },
     get$haDisplayName() {
-      return "\u0e2e\u0e32\u0e27\u0e0b\u0e32";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "\u0e2e\u0e32\u0e27\u0e32\u0e22";
+      return "Hawaiian";
     },
     get$heDisplayName() {
-      return "\u0e2e\u0e34\u0e1a\u0e23\u0e39";
+      return "\u0130branice";
     },
     get$hiDisplayName() {
-      return "\u0e2e\u0e34\u0e19\u0e14\u0e35";
+      return "Hint\xe7e";
     },
     get$hilDisplayName() {
-      return "\u0e2e\u0e34\u0e25\u0e34\u0e01\u0e32\u0e22\u0e42\u0e19";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
-      return "\u0e2e\u0e21\u0e07";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u0e0a\u0e31\u0e15\u0e15\u0e34\u0e2a\u0e01\u0e32\u0e23\u0e35";
+      return "\xc7at\u0131\u015fgarca";
     },
     get$hrDisplayName() {
-      return "\u0e42\u0e04\u0e23\u0e40\u0e2d\u0e40\u0e0a\u0e35\u0e22";
+      return "H\u0131rvat\xe7a";
     },
     get$hrxDisplayName() {
-      return "\u0e2e\u0e38\u0e19\u0e2a\u0e4c\u0e23\u0e34\u0e01";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u0e40\u0e2e\u0e15\u0e34\u0e04\u0e23\u0e35\u0e42\u0e2d\u0e25";
+      return "Haitian Kreol\xfc";
     },
     get$huDisplayName() {
-      return "\u0e2e\u0e31\u0e07\u0e01\u0e32\u0e23\u0e35";
+      return "Macarca";
     },
     get$hyDisplayName() {
-      return "\u0e2d\u0e32\u0e23\u0e4c\u0e40\u0e21\u0e40\u0e19\u0e35\u0e22";
+      return "Ermenice";
     },
     get$idDisplayName() {
-      return "\u0e2d\u0e34\u0e19\u0e42\u0e14\u0e19\u0e35\u0e40\u0e0b\u0e35\u0e22";
+      return "Endonezce";
     },
     get$igDisplayName() {
-      return "\u0e2d\u0e34\u0e01\u0e42\u0e1a";
+      return "\u0130gbo";
     },
     get$iloDisplayName() {
-      return "\u0e2d\u0e34\u0e42\u0e25\u0e42\u0e01";
+      return "\u0130loko";
     },
     get$isDisplayName() {
-      return "\u0e44\u0e2d\u0e0b\u0e4c\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "\u0130zlandaca";
     },
     get$itDisplayName() {
-      return "\u0e2d\u0e34\u0e15\u0e32\u0e25\u0e35";
+      return "\u0130talyanca";
     },
     get$jaDisplayName() {
-      return "\u0e0d\u0e35\u0e48\u0e1b\u0e38\u0e48\u0e19";
+      return "Japonca";
     },
     get$jvDisplayName() {
-      return "\u0e0a\u0e27\u0e32";
+      return "Cava dili";
     },
     get$kaDisplayName() {
-      return "\u0e08\u0e2d\u0e23\u0e4c\u0e40\u0e08\u0e35\u0e22";
+      return "G\xfcrc\xfcce";
     },
     get$kkDisplayName() {
-      return "\u0e04\u0e32\u0e0b\u0e31\u0e04";
+      return "Kazak\xe7a";
     },
     get$kmDisplayName() {
-      return "\u0e40\u0e02\u0e21\u0e23";
+      return "Kmerce";
     },
     get$knDisplayName() {
-      return "\u0e01\u0e31\u0e19\u0e19\u0e32\u0e14\u0e32";
+      return "Kannada";
     },
     get$koDisplayName() {
-      return "\u0e40\u0e01\u0e32\u0e2b\u0e25\u0e35";
+      return "Korece";
     },
     get$kokDisplayName() {
-      return "\u0e04\u0e2d\u0e19\u0e04\u0e32\u0e19\u0e35";
+      return "Konkani";
     },
     get$kriDisplayName() {
-      return "\u0e04\u0e23\u0e35\u0e42\u0e2d";
+      return "Krio";
     },
     get$ksDisplayName() {
-      return "\u0e04\u0e32\u0e0a\u0e21\u0e34\u0e23\u0e35";
+      return "Ke\u015fmirce";
     },
     get$ktuDisplayName() {
-      return "\u0e04\u0e34\u0e15\u0e39\u0e1a\u0e32 (\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e23\u0e31\u0e10\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e18\u0e34\u0e1b\u0e44\u0e15\u0e22\u0e04\u0e2d\u0e07\u0e42\u0e01)";
+      return "Kituba (Kongo Demokratik Cumhuriyeti)";
     },
     get$kuDisplayName() {
-      return "\u0e40\u0e04\u0e34\u0e23\u0e4c\u0e14";
+      return "K\xfcrt\xe7e";
     },
     get$kyDisplayName() {
-      return "\u0e04\u0e35\u0e23\u0e4c\u0e01\u0e35\u0e0b";
+      return "K\u0131rg\u0131zca";
     },
     get$laDisplayName() {
-      return "\u0e25\u0e30\u0e15\u0e34\u0e19";
+      return "Latince";
     },
     get$lbDisplayName() {
-      return "\u0e25\u0e31\u0e01\u0e40\u0e0b\u0e21\u0e40\u0e1a\u0e34\u0e23\u0e4c\u0e01";
+      return "L\xfcksemburgca";
     },
     get$lgDisplayName() {
-      return "\u0e01\u0e31\u0e19\u0e14\u0e32";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u0e25\u0e34\u0e21\u0e1a\u0e39\u0e23\u0e4c\u0e01";
+      return "Limburgca";
     },
     get$lijDisplayName() {
-      return "\u0e25\u0e34\u0e01\u0e39\u0e40\u0e23\u0e35\u0e22\u0e19";
+      return "Ligurca";
     },
     get$lmoDisplayName() {
-      return "\u0e25\u0e2d\u0e21\u0e1a\u0e32\u0e23\u0e4c\u0e14";
+      return "Lombardca";
     },
     get$lnDisplayName() {
-      return "\u0e25\u0e34\u0e07\u0e01\u0e32\u0e25\u0e32";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u0e25\u0e32\u0e27";
+      return "Lao";
     },
     get$ltDisplayName() {
-      return "\u0e25\u0e34\u0e17\u0e31\u0e27\u0e40\u0e19\u0e35\u0e22";
+      return "Litvanyaca";
     },
     get$ltgDisplayName() {
-      return "\u0e25\u0e31\u0e15\u0e01\u0e32\u0e25\u0e35";
+      return "Latgalca";
     },
     get$luoDisplayName() {
-      return "\u0e25\u0e39\u0e42\u0e2d (\u0e40\u0e04\u0e19\u0e22\u0e32\u0e41\u0e25\u0e30\u0e41\u0e17\u0e19\u0e0b\u0e32\u0e40\u0e19\u0e35\u0e22)";
+      return "Luo (Kenya ve Tanzanya)";
     },
     get$lusDisplayName() {
-      return "\u0e21\u0e34\u0e42\u0e0b";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u0e25\u0e31\u0e15\u0e40\u0e27\u0e35\u0e22";
+      return "Letonca";
     },
     get$maiDisplayName() {
-      return "\u0e44\u0e21\u0e18\u0e35\u0e25\u0e35";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u0e21\u0e32\u0e04\u0e32\u0e0b\u0e32\u0e23\u0e4c";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u0e21\u0e32\u0e25\u0e32\u0e01\u0e32\u0e0b\u0e35";
+      return "Malga\u015f\xe7a";
     },
     get$miDisplayName() {
-      return "\u0e21\u0e32\u0e27\u0e23\u0e35";
+      return "Maori";
     },
     get$minDisplayName() {
-      return "\u0e21\u0e34\u0e19\u0e31\u0e07\u0e01\u0e32\u0e40\u0e1a\u0e32";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u0e21\u0e32\u0e0b\u0e34\u0e42\u0e14\u0e40\u0e19\u0e35\u0e22";
+      return "Makedonca";
     },
     get$mlDisplayName() {
-      return "\u0e21\u0e25\u0e32\u0e22\u0e32\u0e25\u0e31\u0e21";
+      return "Malayalam";
     },
     get$mnDisplayName() {
-      return "\u0e21\u0e2d\u0e07\u0e42\u0e01\u0e40\u0e25\u0e35\u0e22";
+      return "Mo\u011folca";
     },
     get$mniDisplayName() {
-      return "\u0e21\u0e32\u0e19\u0e34\u0e1b\u0e39\u0e23\u0e35";
+      return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u0e21\u0e32\u0e23\u0e32\u0e18\u0e35";
+      return "Marathi";
     },
     get$msDisplayName() {
-      return "\u0e21\u0e25\u0e32\u0e22\u0e39";
+      return "Malay";
     },
     get$msArabDisplayName() {
-      return "\u0e21\u0e25\u0e32\u0e22\u0e39 (\u0e2d\u0e32\u0e2b\u0e23\u0e31\u0e1a)";
+      return "Malay (Arap\xe7a)";
     },
     get$msMYDisplayName() {
-      return "\u0e21\u0e25\u0e32\u0e22\u0e39 (\u0e21\u0e32\u0e40\u0e25\u0e40\u0e0b\u0e35\u0e22)";
+      return "Malay (Malezya)";
     },
     get$mtDisplayName() {
-      return "\u0e21\u0e2d\u0e25\u0e15\u0e32";
+      return "Maltaca";
     },
     get$mwrDisplayName() {
-      return "\u0e21\u0e32\u0e23\u0e4c\u0e27\u0e32\u0e23\u0e35";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u0e1e\u0e21\u0e48\u0e32";
+      return "Birmanya";
     },
     get$nanDisplayName() {
-      return "\u0e21\u0e34\u0e19\u0e19\u0e32\u0e19";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u0e19\u0e2d\u0e23\u0e4c\u0e40\u0e27\u0e22\u0e4c (Bokm\xe5l)";
+      return "Norve\xe7\xe7e (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u0e40\u0e19\u0e1b\u0e32\u0e25\u0e35";
+      return "Nepalce";
     },
     get$newDisplayName() {
-      return "\u0e19\u0e34\u0e27\u0e32\u0e23\u0e35";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "\u0e14\u0e31\u0e15\u0e0a\u0e4c";
+      return "Flemenk\xe7e";
     },
     get$nlBEDisplayName() {
-      return "\u0e1f\u0e25\u0e32\u0e21\u0e34\u0e0a";
+      return "Flemenk\xe7e";
     },
     get$noDisplayName() {
-      return "\u0e19\u0e2d\u0e23\u0e4c\u0e40\u0e27\u0e22\u0e4c";
+      return "Norve\xe7\xe7e";
     },
     get$nrDisplayName() {
-      return "\u0e40\u0e0b\u0e32\u0e17\u0e4c\u0e40\u0e2d\u0e19\u0e40\u0e14\u0e40\u0e1a\u0e25";
+      return "G\xfcney Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u0e19\u0e2d\u0e23\u0e4c\u0e40\u0e17\u0e34\u0e23\u0e4c\u0e19\u0e42\u0e0b\u0e42\u0e17";
+      return "Kuzey Sotho";
     },
     get$nusDisplayName() {
-      return "\u0e19\u0e39\u0e40\u0e2d\u0e2d\u0e23\u0e4c";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u0e19\u0e22\u0e32\u0e19\u0e08\u0e32";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u0e2d\u0e2d\u0e01\u0e0b\u0e34\u0e17\u0e31\u0e19";
+      return "Okzitan";
     },
     get$omDisplayName() {
-      return "\u0e42\u0e2d\u0e42\u0e23\u0e42\u0e21";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u0e42\u0e2d\u0e40\u0e14\u0e35\u0e22";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u0e1b\u0e31\u0e0d\u0e08\u0e32\u0e1a\u0e35";
+      return "Pencap";
     },
     get$paArabDisplayName() {
-      return "\u0e1b\u0e31\u0e0d\u0e08\u0e32\u0e1a\u0e35 (\u0e0a\u0e32\u0e2b\u0e4c\u0e21\u0e38\u0e01\u0e2b\u0e4c)";
+      return "Pencap (\u015eahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u0e1b\u0e31\u0e0d\u0e08\u0e32\u0e1a\u0e35 (\u0e01\u0e38\u0e23\u0e21\u0e38\u0e01\u0e2b\u0e4c)";
+      return "Pencap (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u0e1b\u0e31\u0e07\u0e01\u0e32\u0e0b\u0e34\u0e19\u0e31\u0e19";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u0e1b\u0e31\u0e21\u0e1b\u0e31\u0e07\u0e01\u0e32";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u0e1b\u0e32\u0e1b\u0e35\u0e2d\u0e32\u0e40\u0e21\u0e19\u0e42\u0e15";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u0e42\u0e1b\u0e41\u0e25\u0e19\u0e14\u0e4c";
+      return "Leh\xe7e";
     },
     get$psDisplayName() {
-      return "\u0e1b\u0e32\u0e0a\u0e15\u0e39";
+      return "Pe\u015ftu";
     },
     get$ptDisplayName() {
-      return "\u0e42\u0e1b\u0e23\u0e15\u0e38\u0e40\u0e01\u0e2a";
+      return "Portekizce";
     },
     get$ptBRDisplayName() {
-      return "\u0e42\u0e1b\u0e23\u0e15\u0e38\u0e40\u0e01\u0e2a (\u0e1a\u0e23\u0e32\u0e0b\u0e34\u0e25)";
+      return "Portekizce (Brezilya)";
     },
     get$ptPTDisplayName() {
-      return "\u0e42\u0e1b\u0e23\u0e15\u0e38\u0e40\u0e01\u0e2a (\u0e42\u0e1b\u0e23\u0e15\u0e38\u0e40\u0e01\u0e2a)";
+      return "Portekizce (Portekiz)";
     },
     get$quDisplayName() {
-      return "\u0e40\u0e04\u0e0a\u0e31\u0e27";
+      return "Quechua";
     },
     get$rajDisplayName() {
-      return "\u0e23\u0e32\u0e0a\u0e2a\u0e16\u0e32\u0e19\u0e35";
+      return "Rajasthan Dili";
     },
     get$rnDisplayName() {
-      return "\u0e23\u0e39\u0e19\u0e14\u0e35";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u0e42\u0e23\u0e21\u0e32\u0e40\u0e19\u0e35\u0e22";
+      return "Romence";
     },
     get$roMDDisplayName() {
-      return "\u0e21\u0e2d\u0e25\u0e42\u0e14\u0e27\u0e32";
+      return "Moldovca";
     },
     get$romDisplayName() {
-      return "\u0e42\u0e23\u0e21\u0e32\u0e19\u0e35";
+      return "Roman";
     },
     get$ruDisplayName() {
-      return "\u0e23\u0e31\u0e2a\u0e40\u0e0b\u0e35\u0e22";
+      return "Rus\xe7a";
     },
     get$rwDisplayName() {
-      return "\u0e04\u0e34\u0e19\u0e22\u0e32\u0e23\u0e4c\u0e27\u0e31\u0e19\u0e14\u0e32";
+      return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u0e2a\u0e31\u0e19\u0e2a\u0e01\u0e24\u0e15";
+      return "Sanskrit";
     },
     get$satDisplayName() {
-      return "\u0e0b\u0e32\u0e19\u0e15\u0e32\u0e25\u0e35";
+      return "Santali";
     },
     get$scnDisplayName() {
-      return "\u0e0b\u0e34\u0e0b\u0e34\u0e25\u0e35";
+      return "Sicilya";
     },
     get$sdDisplayName() {
-      return "\u0e0b\u0e34\u0e19\u0e14\u0e4chi";
+      return "Sindhi";
     },
     get$sgDisplayName() {
-      return "\u0e0b\u0e31\u0e07\u0e42\u0e01";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u0e0a\u0e32\u0e19";
+      return "\u015ean";
     },
     get$siDisplayName() {
-      return "\u0e0b\u0e34\u0e19\u0e2e\u0e32\u0e25\u0e32";
+      return "Singhalesce";
     },
     get$skDisplayName() {
-      return "\u0e2a\u0e42\u0e25\u0e27\u0e31\u0e01";
+      return "Slovak\xe7a";
     },
     get$slDisplayName() {
-      return "\u0e2a\u0e42\u0e25\u0e27\u0e35\u0e40\u0e19\u0e35\u0e22";
+      return "Slovence";
     },
     get$smDisplayName() {
-      return "\u0e0b\u0e32\u0e21\u0e31\u0e27";
+      return "Samoaca";
     },
     get$snDisplayName() {
-      return "\u0e42\u0e0a\u0e19\u0e32";
+      return "\u015eona";
     },
     get$soDisplayName() {
-      return "\u0e42\u0e0b\u0e21\u0e32\u0e25\u0e35";
+      return "Somalice";
     },
     get$sqDisplayName() {
-      return "\u0e2d\u0e31\u0e25\u0e40\u0e1a\u0e40\u0e19\u0e35\u0e22";
+      return "Arnavut\xe7a";
     },
     get$srDisplayName() {
-      return "\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e40\u0e1a\u0e35\u0e22";
+      return "S\u0131rp\xe7a";
     },
     get$srMEDisplayName() {
-      return "\u0e21\u0e2d\u0e19\u0e40\u0e15\u0e40\u0e19\u0e01\u0e23\u0e34\u0e19";
+      return "Karada\u011fca";
     },
     get$ssDisplayName() {
-      return "\u0e2a\u0e27\u0e32\u0e15\u0e35";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "\u0e40\u0e0b\u0e32\u0e17\u0e4c\u0e40\u0e17\u0e34\u0e23\u0e4c\u0e19\u0e42\u0e0b\u0e42\u0e0b";
+      return "G\xfcney Sotho";
     },
     get$suDisplayName() {
-      return "\u0e0b\u0e38\u0e19\u0e14\u0e32\u0e19\u0e35\u0e2a";
+      return "Sundanca";
     },
     get$svDisplayName() {
-      return "\u0e2a\u0e27\u0e35\u0e40\u0e14\u0e19";
+      return "\u0130sve\xe7\xe7e";
     },
     get$swDisplayName() {
-      return "\u0e2a\u0e27\u0e32\u0e2e\u0e34\u0e25\u0e35";
+      return "Svahili";
     },
     get$szlDisplayName() {
-      return "\u0e0b\u0e34\u0e25\u0e35\u0e40\u0e0b\u0e35\u0e22\u0e19";
+      return "Silezyaca";
     },
     get$taDisplayName() {
-      return "\u0e17\u0e21\u0e34\u0e2c";
+      return "Tamilce";
     },
     get$teDisplayName() {
-      return "\u0e40\u0e15\u0e25\u0e39\u0e01\u0e39";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "\u0e40\u0e15\u0e15\u0e31\u0e21";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u0e17\u0e32\u0e08\u0e34\u0e01";
+      return "Tacik";
     },
     get$thDisplayName() {
-      return "\u0e44\u0e17\u0e22";
+      return "Tay";
     },
     get$tiDisplayName() {
-      return "\u0e17\u0e34\u0e01\u0e23\u0e35\u0e40\u0e19\u0e35\u0e22";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "\u0e40\u0e15\u0e34\u0e23\u0e4c\u0e01\u0e40\u0e21\u0e19";
+      return "T\xfcrkmen";
     },
     get$tlDisplayName() {
-      return "\u0e15\u0e32\u0e01\u0e32\u0e25\u0e47\u0e2d\u0e01";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u0e0b\u0e27\u0e32\u0e19\u0e32";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u0e15\u0e38\u0e23\u0e01\u0e35";
+      return "T\xfcrk\xe7e";
     },
     get$tsDisplayName() {
-      return "\u0e0b\u0e2d\u0e07\u0e01\u0e32";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u0e15\u0e32\u0e15\u0e32\u0e23\u0e4c";
+      return "Tatar";
     },
     get$ugDisplayName() {
-      return "\u0e2d\u0e38\u0e22\u0e01\u0e39\u0e23\u0e4c";
+      return "Uygur";
     },
     get$ukDisplayName() {
-      return "\u0e22\u0e39\u0e40\u0e04\u0e23\u0e19";
+      return "Ukraynaca";
     },
     get$urDisplayName() {
-      return "\u0e2d\u0e39\u0e23\u0e14\u0e39";
+      return "Urdu";
     },
     get$urINDisplayName() {
-      return "\u0e2d\u0e39\u0e23\u0e14\u0e39 (\u0e2d\u0e34\u0e19\u0e40\u0e14\u0e35\u0e22)";
+      return "Urdu (Hindistan)";
     },
     get$urPKDisplayName() {
-      return "\u0e2d\u0e39\u0e23\u0e14\u0e39 (\u0e1b\u0e32\u0e01\u0e35\u0e2a\u0e16\u0e32\u0e19)";
+      return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "\u0e2d\u0e38\u0e0b\u0e40\u0e1a\u0e01";
+      return "\xd6zbek\xe7e";
     },
     get$viDisplayName() {
-      return "\u0e40\u0e27\u0e35\u0e22\u0e14\u0e19\u0e32\u0e21";
+      return "Vietnamca";
     },
     get$wuuDisplayName() {
-      return "\u0e2d\u0e39";
+      return "Wu";
     },
     get$xhDisplayName() {
-      return "\u0e0b\u0e2d\u0e2a\u0e32";
+      return "Xhosa";
     },
     get$yiDisplayName() {
-      return "\u0e2d\u0e34\u0e14\u0e14\u0e34\u0e0a";
+      return "Yidi\u015f";
     },
     get$yoDisplayName() {
-      return "\u0e42\u0e22\u0e23\u0e39\u0e1a\u0e32";
+      return "Yoruba";
     },
     get$yuaDisplayName() {
-      return "\u0e22\u0e39\u0e04\u0e32\u0e40\u0e15\u0e42\u0e01";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "\u0e01\u0e27\u0e32\u0e07\u0e15\u0e38\u0e49\u0e07";
+      return "Kantonca";
     },
     get$yueCNDisplayName() {
-      return "\u0e01\u0e27\u0e32\u0e07\u0e15\u0e38\u0e49\u0e07 (\u0e08\u0e35\u0e19)";
+      return "Kantonca (\xc7in)";
     },
     get$yueHKDisplayName() {
-      return "\u0e01\u0e27\u0e32\u0e07\u0e15\u0e38\u0e49\u0e07 (\u0e2e\u0e48\u0e2d\u0e07\u0e01\u0e07)";
+      return "Kantonca (Hong Kong)";
     },
     get$zhDisplayName() {
-      return "\u0e08\u0e35\u0e19";
+      return "\xc7ince";
     },
     get$zhCNDisplayName() {
-      return "\u0e08\u0e35\u0e19 (\u0e15\u0e31\u0e27\u0e22\u0e48\u0e2d)";
+      return "\xc7ince (Basitle\u015ftirilmi\u015f)";
     },
     get$zhTWDisplayName() {
-      return "\u0e08\u0e35\u0e19 (\u0e15\u0e31\u0e27\u0e40\u0e15\u0e47\u0e21)";
+      return "\xc7ince (Geleneksel)";
     },
     get$zuDisplayName() {
-      return "\u0e0b\u0e39\u0e25\u0e39";
+      return "Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u0e42\u0e2b\u0e21\u0e14\u0e04\u0e23\u0e39";
+      return "\xd6\u011fretmen Modu";
     },
     get$teacherModeDesc() {
-      return "\u0e2a\u0e25\u0e31\u0e1a\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e41\u0e25\u0e30\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14 \u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e40\u0e17\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19";
+      return "T\xfcm konular\u0131 ve etkinlikleri a\xe7mak i\xe7in ge\xe7i\u015f yap\u0131n. Sadece kurs y\xf6neticisi.";
     },
     get$noSavedActivitiesYet() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e08\u0e30\u0e1b\u0e23\u0e32\u0e01\u0e0f\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19\u0e41\u0e25\u0e30\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e41\u0e25\u0e49\u0e27";
+      return "Aktiviteler tamamland\u0131\u011f\u0131nda ve kaydedildi\u011finde burada g\xf6r\xfcnecektir.";
     },
     get$changeCourse() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
+      return "Ders de\u011fi\u015ftir";
     },
     get$changeCourseDesc() {
-      return "\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1c\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49";
+      return "Burada bu dersin ders plan\u0131n\u0131 de\u011fi\u015ftirebilirsiniz.";
     },
     get$introChatTitle() {
-      return "\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e41\u0e0a\u0e17\u0e41\u0e19\u0e30\u0e19\u0e33";
+      return "Tan\u0131t\u0131m Sohbeti Olu\u015ftur";
     },
     get$introChatDesc() {
-      return "\u0e43\u0e04\u0e23\u0e01\u0e47\u0e44\u0e14\u0e49\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e42\u0e1e\u0e2a\u0e15\u0e4c\u0e44\u0e14\u0e49\u3002";
+      return "Mekandaki herkes payla\u015f\u0131mda bulunabilir.";
     },
     get$announcementsChatTitle() {
-      return "\u0e41\u0e0a\u0e17\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28";
+      return "Duyurular Sohbeti";
     },
     get$announcementsChatDesc() {
-      return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e40\u0e17\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e42\u0e1e\u0e2a\u0e15\u0e4c\u0e44\u0e14\u0e49.";
+      return "Sadece mekan y\xf6neticisi payla\u015f\u0131mda bulunabilir.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e40\u0e0b\u0e2a\u0e0a\u0e31\u0e19 (" + num + ")";
+      return "A\xe7\u0131k oturumlar (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e2d\u0e22\u0e39\u0e48 (" + num + ")";
+      return "\u015eu anda ger\xe7ekle\u015fiyor (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19 (" + num + ")";
+      return "Tamamland\u0131 (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e2d\u0e37\u0e48\u0e19";
+      return "Farkl\u0131 bir etkinlik se\xe7";
     },
     get$blockLemmaConfirmation() {
-      return "\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e19\u0e35\u0e49\u0e08\u0e30\u0e16\u0e39\u0e01\u0e25\u0e1a\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e16\u0e32\u0e27\u0e23";
+      return "Bu kelime analitiklerinizden kal\u0131c\u0131 olarak kald\u0131r\u0131lacakt\u0131r.";
     },
     get$woman() {
-      return "\u0e1c\u0e39\u0e49\u0e2b\u0e0d\u0e34\u0e07";
+      return "Kad\u0131n";
     },
     get$man() {
-      return "\u0e1c\u0e39\u0e49\u0e0a\u0e32\u0e22";
+      return "Erkek";
     },
     get$otherGender() {
-      return "\u0e2d\u0e37\u0e48\u0e19\u0e46";
+      return "Di\u011fer";
     },
     get$unselectedGender() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e1e\u0e28";
+      return "Bir cinsiyet se\xe7ene\u011fi se\xe7in";
     },
     get$gender() {
-      return "\u0e40\u0e1e\u0e28";
+      return "Cinsiyet";
     },
     get$modeDisabled() {
-      return "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49\u0e16\u0e39\u0e01\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23";
+      return "\xd6\u011frenme ara\xe7lar\u0131, hedef dilinizde olmayan mesajlar i\xe7in devre d\u0131\u015f\u0131d\u0131r.";
     },
     get$courseParticipantTooltip() {
-      return '\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e17\u0e38\u0e01\u0e04\u0e19\u0e43\u0e19\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e19\u0e35\u0e49 \u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e2d\u0e27\u0e32\u0e15\u0e32\u0e23\u0e4c\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e14 \u0e46 \u0e41\u0e25\u0e30 "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32" \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27';
+      return 'Bu kurstaki herkes. Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fini se\xe7erek bir DM g\xf6nderin.';
     },
     get$chatParticipantTooltip() {
-      return '\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e17\u0e38\u0e01\u0e04\u0e19\u0e43\u0e19\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49 \u0e04\u0e25\u0e34\u0e01\u0e17\u0e35\u0e48\u0e2d\u0e27\u0e32\u0e15\u0e32\u0e23\u0e4c\u0e02\u0e2d\u0e07\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e43\u0e14 \u0e46 \u0e41\u0e25\u0e30 "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32" \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27';
+      return 'Bu sohbetin i\xe7indeki herkes. Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fi ile DM g\xf6nderin.';
     },
     get$inOngoingActivity() {
-      return "\u0e04\u0e38\u0e13\u0e21\u0e35\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e01\u0e33\u0e25\u0e31\u0e07\u0e40\u0e01\u0e34\u0e14\u0e02\u0e36\u0e49\u0e19!";
+      return "Devam eden bir etkinli\u011finiz var!";
     },
     get$requestRegeneration() {
-      return "\u0e02\u0e2d\u0e01\u0e32\u0e23\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e43\u0e2b\u0e21\u0e48";
+      return "Yeniden olu\u015fturma talep et";
     },
     get$optionalRegenerateReason() {
-      return "(\u0e44\u0e21\u0e48\u0e1a\u0e31\u0e07\u0e04\u0e31\u0e1a) \u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25";
+      return "(Opsiyonel) Sebep";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a " + lemma + " \u0e41\u0e25\u0e49\u0e27! \u0e40\u0e23\u0e32\u0e08\u0e30\u0e43\u0e0a\u0e49\u0e2d\u0e35\u0e42\u0e21\u0e08\u0e34\u0e19\u0e35\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e17\u0e19\u0e04\u0e33\u0e43\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e15\u0e48\u0e2d\u0e44\u0e1b";
+      return lemma + " i\xe7in emojiyi ayarlad\u0131n\u0131z! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek i\xe7in kullanaca\u011f\u0131z.";
     },
     get$constructUseCorLMDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fru kelime tan\u0131m\u0131 prati\u011fi";
     },
     get$constructUseIncLMDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f kelime tan\u0131m\u0131 prati\u011fi";
     },
     get$constructUseCorLADesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fru kelime ses prati\u011fi";
     },
     get$constructUseIncLADesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f kelime ses prati\u011fi";
     },
     get$constructUseBonus() {
-      return "\u0e42\u0e1a\u0e19\u0e31\u0e2a\u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kelime prati\u011fi s\u0131ras\u0131nda bonus";
     },
     get$practiceVocab() {
-      return "\u0e1d\u0e36\u0e01\u0e04\u0e33\u0e28\u0e31\u0e1e\u0e17\u0e4c";
+      return "Kelime prati\u011fi yap";
     },
     get$selectMeaning() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22";
+      return "Anlam\u0131 se\xe7";
     },
     get$anotherRound() {
-      return "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e23\u0e2d\u0e1a";
+      return "Bir tur daha";
     },
     get$ssoDialogTitle() {
-      return "\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e25\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e43\u0e0a\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19";
+      return "Giri\u015fin tamamlanmas\u0131n\u0131 bekliyoruz";
     },
     get$ssoDialogDesc() {
-      return "\u0e40\u0e23\u0e32\u0e44\u0e14\u0e49\u0e40\u0e1b\u0e34\u0e14\u0e41\u0e17\u0e47\u0e1a\u0e43\u0e2b\u0e21\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e25\u0e07\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e43\u0e0a\u0e49\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22";
+      return "G\xfcvenli bir \u015fekilde giri\u015f yapabilmeniz i\xe7in yeni bir sekme a\xe7t\u0131k.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 \u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e40\u0e2b\u0e47\u0e19\u0e41\u0e17\u0e47\u0e1a\u0e43\u0e2b\u0e21\u0e48 \u0e42\u0e1b\u0e23\u0e14\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e15\u0e31\u0e27\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e1b\u0e4a\u0e2d\u0e1b\u0e2d\u0e31\u0e1b\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "\ud83e\udd14 Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
     },
     get$disableLanguageToolsTitle() {
-      return "\u0e1b\u0e34\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e20\u0e32\u0e29\u0e32";
+      return "Dil ara\xe7lar\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rak";
     },
     get$disableLanguageToolsDesc() {
-      return "\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1b\u0e34\u0e14\u0e01\u0e32\u0e23\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Otomatik dil yard\u0131m\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rakmak ister misiniz?";
     },
     get$screenSizeWarning() {
-      return "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e14\u0e35\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e43\u0e19\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e41\u0e2d\u0e1b\u0e1e\u0e25\u0e34\u0e40\u0e04\u0e0a\u0e31\u0e19\u0e19\u0e35\u0e49 \u0e42\u0e1b\u0e23\u0e14\u0e02\u0e22\u0e32\u0e22\u0e02\u0e19\u0e32\u0e14\u0e2b\u0e19\u0e49\u0e32\u0e08\u0e2d\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13.";
-    },
-    get$noActivityRequest() {
-      return "\u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e33\u0e02\u0e2d\u0e17\u0e33\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e43\u0e19\u0e02\u0e13\u0e30\u0e19\u0e35\u0e49";
+      return "Bu uygulamay\u0131 en iyi \u015fekilde kullanabilmek i\xe7in l\xfctfen ekran boyutunuzu geni\u015fletin.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b";
+      return "Sonraki Konuyu A\xe7mak i\xe7in Aktiviteler";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e08\u0e33\u0e19\u0e27\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e16\u0e31\u0e14\u0e44\u0e1b";
+      return "Sonraki kurs konusunu a\xe7mak i\xe7in aktivite say\u0131s\u0131n\u0131 ayarlay\u0131n";
     },
     get$activitySettingsOverrideWarning() {
-      return "\u0e20\u0e32\u0e29\u0e32\u0e41\u0e25\u0e30\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e42\u0e14\u0e22\u0e41\u0e1c\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlik plan\u0131 taraf\u0131ndan belirlenen dil ve dil seviyesi";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa \u0e04\u0e38\u0e13\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e17\u0e19\u0e32";
+      return "\ud83d\udeaa Sohbeti terk ettin";
     },
     get$downloadInitiated() {
-      return "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e32\u0e23\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14";
+      return "\u0130ndirme ba\u015flat\u0131ld\u0131";
     },
     get$webDownloadPermissionMessage() {
-      return "\u0e2b\u0e32\u0e01\u0e40\u0e1a\u0e23\u0e32\u0e27\u0e4c\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e01\u0e32\u0e23\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14 \u0e42\u0e1b\u0e23\u0e14\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e01\u0e32\u0e23\u0e14\u0e32\u0e27\u0e19\u0e4c\u0e42\u0e2b\u0e25\u0e14\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e19\u0e35\u0e49.";
+      return "Taray\u0131c\u0131n\u0131z indirmeleri engelliyorsa, l\xfctfen bu site i\xe7in indirmeleri etkinle\u015ftirin.";
     },
     get$exitPractice() {
-      return "\u0e04\u0e27\u0e32\u0e21\u0e01\u0e49\u0e32\u0e27\u0e2b\u0e19\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01";
+      return "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.";
     },
     get$practiceGrammar() {
-      return "\u0e1d\u0e36\u0e01\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c";
+      return "Dil bilgisi prati\u011fi yap";
     },
     get$notEnoughToPractice() {
-      return "\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19";
+      return "Pratik yapmak i\xe7in daha fazla mesaj g\xf6nderin";
     },
     get$constructUseCorGCDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e2b\u0e21\u0e27\u0e14\u0e2b\u0e21\u0e39\u0e48\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fru dil bilgisi kategorisi prati\u011fi";
     },
     get$constructUseIncGCDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e2b\u0e21\u0e27\u0e14\u0e2b\u0e21\u0e39\u0e48\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f dil bilgisi kategorisi prati\u011fi";
     },
     get$constructUseCorGEDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Do\u011fru dil bilgisi hatas\u0131 prati\u011fi";
     },
     get$constructUseIncGEDesc() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e02\u0e49\u0e2d\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14\u0e17\u0e32\u0e07\u0e44\u0e27\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Yanl\u0131\u015f dil bilgisi hatas\u0131 prati\u011fi";
     },
     get$fillInBlank() {
-      return "\u0e01\u0e23\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e19\u0e0a\u0e48\u0e2d\u0e07\u0e27\u0e48\u0e32\u0e07\u0e14\u0e49\u0e27\u0e22\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e35\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07";
+      return "Bo\u015flu\u011fu do\u011fru se\xe7imle doldurun";
     },
     get$learn() {
-      return "\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "\xd6\u011fren";
     },
     get$languageUpdated() {
-      return "\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e41\u0e25\u0e49\u0e27!";
+      return "Hedef dil g\xfcncellendi!";
     },
     get$voiceDropdownTitle() {
-      return "\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e02\u0e2d\u0e07 Pangea Bot";
+      return "Pangea Bot sesi";
     },
     get$knockDesc() {
-      return "\u0e04\u0e33\u0e02\u0e2d\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e16\u0e39\u0e01\u0e2a\u0e48\u0e07\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e41\u0e25\u0e49\u0e27! \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e2b\u0e49\u0e40\u0e02\u0e49\u0e32\u0e2b\u0e32\u0e01\u0e1e\u0e27\u0e01\u0e40\u0e02\u0e32\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34.";
+      return "Talebiniz kurs y\xf6neticisine g\xf6nderildi! Onaylarlarsa i\xe7eri al\u0131nacaks\u0131n\u0131z.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "\u0e04\u0e38\u0e13\u0e21\u0e35\u0e23\u0e2b\u0e31\u0e2a\u0e40\u0e0a\u0e34\u0e0d\u0e2b\u0e23\u0e37\u0e2d\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30\u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48?";
+      return "Bir davet kodunuz veya halka a\xe7\u0131k bir kursa ba\u011flant\u0131n\u0131z var m\u0131?";
     },
     welcomeUser$1(user) {
-      return "\u0e22\u0e34\u0e19\u0e14\u0e35\u0e15\u0e49\u0e2d\u0e19\u0e23\u0e31\u0e1a " + user;
+      return "Ho\u015f geldin " + user;
     },
     get$findCourse() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e04\u0e2d\u0e23\u0e4c\u0e2a";
+      return "Bir kurs bul";
     },
     get$publicInviteDescChat() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e33\u0e44\u0e1b\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e19\u0e35\u0e49\u3002";
+      return "Bu sohbete davet etmek i\xe7in kullan\u0131c\u0131lar\u0131 aray\u0131n.";
     },
     get$publicInviteDescSpace() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e33\u0e44\u0e1b\u0e40\u0e0a\u0e34\u0e0d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e19\u0e35\u0e49\u3002";
+      return "Bu alana davet etmek i\xe7in kullan\u0131c\u0131lar\u0131 aray\u0131n.";
     },
     get$enableNotificationsTitle() {
-      return "Pangea Chat \u0e40\u0e1b\u0e47\u0e19\u0e41\u0e2d\u0e1b\u0e2a\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e14\u0e31\u0e07\u0e19\u0e31\u0e49\u0e19\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e08\u0e36\u0e07\u0e2a\u0e33\u0e04\u0e31\u0e0d!";
+      return "Pangea Chat, bir mesajla\u015fma uygulamas\u0131d\u0131r, bu y\xfczden bildirimler \xf6nemlidir!";
     },
     get$enableNotificationsDesc() {
-      return "\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19";
+      return "Bildirimlere izin ver";
     },
     get$useActivityImageAsChatBackground() {
-      return "\u0e43\u0e0a\u0e49\u0e20\u0e32\u0e1e\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e2b\u0e25\u0e31\u0e07\u0e41\u0e0a\u0e17";
+      return "Etkinlik resmini sohbet arka plan\u0131 olarak kullan";
     },
     get$chatWithSupport() {
-      return "\u0e41\u0e0a\u0e17\u0e01\u0e31\u0e1a\u0e1d\u0e48\u0e32\u0e22\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19";
+      return "Destek ile Sohbet Et";
     },
     get$newCourseAccess() {
-      return "\u0e15\u0e32\u0e21\u0e04\u0e48\u0e32\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19 \u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e08\u0e30\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e44\u0e14\u0e49\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30\u0e41\u0e25\u0e30\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e08\u0e32\u0e01\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e41\u0e01\u0e49\u0e44\u0e02\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32\u0e40\u0e2b\u0e25\u0e48\u0e32\u0e19\u0e35\u0e49\u0e44\u0e14\u0e49\u0e15\u0e25\u0e2d\u0e14\u0e40\u0e27\u0e25\u0e32";
+      return "Varsay\u0131lan olarak, kurslar herkese a\xe7\u0131k olarak aranabilir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerektirir. Bu ayarlar\u0131 istedi\u011finiz zaman d\xfczenleyebilirsiniz.";
     },
     get$courseLoadingError() {
-      return "\u0e21\u0e35\u0e1a\u0e32\u0e07\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e1c\u0e34\u0e14\u0e1e\u0e25\u0e32\u0e14 \u0e41\u0e25\u0e30\u0e40\u0e23\u0e32\u0e01\u0e33\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e2b\u0e19\u0e31\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e01\u0e49\u0e44\u0e02 \u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e43\u0e19\u0e20\u0e32\u0e22\u0e2b\u0e25\u0e31\u0e07.";
+      return "Bir \u015feyler yanl\u0131\u015f gitti ve biz bunu d\xfczeltmek i\xe7in yo\u011fun bir \u015fekilde \xe7al\u0131\u015f\u0131yoruz. L\xfctfen daha sonra tekrar kontrol edin.";
     },
     get$onboardingLanguagesTitle() {
-      return "\u0e04\u0e38\u0e13\u0e01\u0e33\u0e25\u0e31\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e20\u0e32\u0e29\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e2d\u0e22\u0e39\u0e48?";
+      return "Hangi dili \xf6\u011freniyorsunuz?";
     },
     get$searchLanguagesHint() {
-      return "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23";
+      return "Hedef dilleri aray\u0131n";
     },
     get$supportSubtitle() {
-      return "\u0e21\u0e35\u0e04\u0e33\u0e16\u0e32\u0e21\u0e44\u0e2b\u0e21? \u0e40\u0e23\u0e32\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e17\u0e35\u0e48\u0e08\u0e30\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d!";
+      return "Sorular m\u0131? Yard\u0131mc\u0131 olmaya buraday\u0131z!";
     },
     get$autoIGCToolName() {
-      return "\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e43\u0e19\u0e01\u0e32\u0e23\u0e40\u0e02\u0e35\u0e22\u0e19";
+      return "Yazma yard\u0131m\u0131n\u0131 etkinle\u015ftir";
     },
     get$autoIGCToolDescription() {
-      return "\u0e40\u0e23\u0e35\u0e22\u0e01\u0e43\u0e0a\u0e49\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d Pangea Chat \u0e42\u0e14\u0e22\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e41\u0e01\u0e49\u0e44\u0e02\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e2a\u0e48\u0e07\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e20\u0e32\u0e29\u0e32\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23.";
+      return "G\xf6nderilen mesajlar\u0131 hedef dile d\xfczeltmek i\xe7in Pangea Chat ara\xe7lar\u0131n\u0131 otomatik olarak \xe7al\u0131\u015ft\u0131r.";
     },
     get$emptyAudioError() {
-      return "\u0e01\u0e32\u0e23\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e25\u0e49\u0e21\u0e40\u0e2b\u0e25\u0e27 \u0e42\u0e1b\u0e23\u0e14\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e40\u0e2a\u0e35\u0e22\u0e07\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e25\u0e2d\u0e07\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07";
+      return "Kay\u0131t ba\u015far\u0131s\u0131z oldu. L\xfctfen ses izinlerinizi kontrol edin ve tekrar deneyin.";
     },
     get$spanFeedbackTitle() {
-      return "\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "D\xfczeltme sorununu bildir";
     },
     get$selectAllWords() {
-      return "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e38\u0e01\u0e04\u0e33\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e22\u0e34\u0e19\u0e43\u0e19\u0e40\u0e2a\u0e35\u0e22\u0e07";
+      return "Sesli olarak duydu\u011funuz t\xfcm kelimeleri se\xe7in";
     },
     get$aboutMeHint() {
-      return "\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e09\u0e31\u0e19";
+      return "Hakk\u0131mda";
     },
     get$changeEmail() {
-      return "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "E-posta de\u011fi\u015ftir";
     },
     get$withTheseAddressesDescription() {
-      return "\u0e14\u0e49\u0e27\u0e22\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e40\u0e2b\u0e25\u0e48\u0e32\u0e19\u0e35\u0e49 \u0e04\u0e38\u0e13\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a \u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19 \u0e41\u0e25\u0e30\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e44\u0e14\u0e49";
+      return "Bu e-posta adresleriyle oturum a\xe7abilir, \u015fifrenizi kurtarabilir ve aboneliklerinizi y\xf6netebilirsiniz.";
     },
     get$noAddressDescription() {
-      return "\u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e43\u0e14 \u0e46";
+      return "Hen\xfcz herhangi bir e-posta adresi eklemediniz.";
     },
     get$perfectPractice() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e21\u0e1a\u0e39\u0e23\u0e13\u0e4c\u0e41\u0e1a\u0e1a!";
+      return "M\xfckemmel pratik!";
     },
     get$greatPractice() {
-      return "\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e17\u0e35\u0e48\u0e22\u0e2d\u0e14\u0e40\u0e22\u0e35\u0e48\u0e22\u0e21!";
+      return "Harika pratik!";
     },
     get$usedNoHints() {
-      return "\u0e17\u0e33\u0e44\u0e14\u0e49\u0e14\u0e35\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49\u0e04\u0e33\u0e43\u0e1a\u0e49\u0e43\u0e14 \u0e46!";
+      return "Hi\xe7 ipucu kullanmad\u0131\u011f\u0131n i\xe7in iyi i\u015f \xe7\u0131kard\u0131n!";
     },
     get$youveCompletedPractice() {
-      return "\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e17\u0e33\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19\u0e41\u0e25\u0e49\u0e27 \u0e17\u0e33\u0e15\u0e48\u0e2d\u0e44\u0e1b\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e14\u0e35\u0e02\u0e36\u0e49\u0e19!";
+      return "Prati\u011fi tamamlad\u0131n, daha iyi olmak i\xe7in devam et!";
     },
     get$joinCourseForActivities() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21.";
+      return "Etkinlikleri denemek i\xe7in bir kursa kat\u0131l\u0131n.";
     },
     get$courseDescription() {
-      return "\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e14\u0e49\u0e27\u0e22 3-8 \u0e42\u0e21\u0e14\u0e39\u0e25\u0e41\u0e15\u0e48\u0e25\u0e30\u0e42\u0e21\u0e14\u0e39\u0e25\u0e21\u0e35\u0e01\u0e32\u0e23\u0e17\u0e33\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e01\u0e23\u0e30\u0e15\u0e38\u0e49\u0e19\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01\u0e1d\u0e19\u0e04\u0e33\u0e43\u0e19\u0e1a\u0e23\u0e34\u0e1a\u0e17\u0e17\u0e35\u0e48\u0e41\u0e15\u0e01\u0e15\u0e48\u0e32\u0e07\u0e01\u0e31\u0e19";
+      return "Kurslar, her biri farkl\u0131 ba\u011flamlarda kelimeleri pratik yapmay\u0131 te\u015fvik eden etkinliklerle 3-8 mod\xfclden olu\u015fur";
     },
     get$emailVerificationFailed() {
-      return "\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2d\u0e35\u0e40\u0e21\u0e25\u0e25\u0e49\u0e21\u0e40\u0e2b\u0e25\u0e27 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e25\u0e2d\u0e07\u0e2d\u0e35\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07.";
+      return "E-posta do\u011frulamas\u0131 ba\u015far\u0131s\u0131z oldu. L\xfctfen tekrar deneyin.";
     },
     get$unlockLearningTools() {
-      return "\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e01\u0e32\u0e23\u0e40\u0e23\u0e35\u0e22\u0e19\u0e23\u0e39\u0e49";
+      return "\xd6\u011frenme ara\xe7lar\u0131n\u0131 a\xe7";
     },
     get$unlockPracticeActivities() {
-      return "\u0e1b\u0e25\u0e14\u0e25\u0e47\u0e2d\u0e01\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1d\u0e36\u0e01";
+      return "Pratik etkinliklerini a\xe7";
     },
     get$managementSnackbarMessage() {
-      return "\u0e40\u0e23\u0e32\u0e44\u0e14\u0e49\u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e43\u0e19\u0e41\u0e17\u0e47\u0e1a\u0e43\u0e2b\u0e21\u0e48 \u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e44\u0e21\u0e48\u0e40\u0e2b\u0e47\u0e19\u0e41\u0e17\u0e47\u0e1a\u0e43\u0e2b\u0e21\u0e48 \u0e42\u0e1b\u0e23\u0e14\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e15\u0e31\u0e27\u0e1a\u0e25\u0e47\u0e2d\u0e01\u0e1b\u0e4a\u0e2d\u0e1b\u0e2d\u0e31\u0e1b\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13.";
+      return "Abonelik y\xf6netimini yeni bir sekmede ba\u015flatt\u0131k. Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
     },
     get$hideEvents() {
-      return "\u0e0b\u0e48\u0e2d\u0e19\u0e01\u0e34\u0e08\u0e01\u0e23\u0e23\u0e21";
+      return "Etkinlikleri gizle";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5581,13 +5578,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nTh, C.L10n);
+    _inherit(A.L10nTr, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTh":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTr":{"L10n":[]}}'));
+  var string$ = {
+    _adres: " adresinde geli\u015ftiricilere bildirin. Hata mesaj\u0131: "
+  };
 };
 ;
 (d => {
-  d["emhIwmIYnRRStXcQQpTgs5WSFj0="] = d.current;
+  d["FVVcjLZyUvMMZ/dPelgmw+0+o34="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_812.part.js.map

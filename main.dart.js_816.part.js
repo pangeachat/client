@@ -5,1899 +5,1899 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nUz$() {
-      return new A.L10nUz(B.canonicalizedLocale("uz"));
+    L10nVi$() {
+      return new A.L10nVi(B.canonicalizedLocale("vi"));
     },
-    L10nUz: function L10nUz(t0) {
+    L10nVi: function L10nVi(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[52], A);
-  A.L10nUz.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[53], A);
+  A.L10nVi.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "kh\xf4ng";
     },
     get$repeatPassword() {
-      return "Parolni takrorlang";
+      return "Nh\u1eadp l\u1ea1i m\u1eadt kh\u1ea9u";
     },
     get$notAnImage() {
-      return "Rasm fayli emas.";
+      return "Kh\xf4ng ph\u1ea3i t\u1ec7p \u1ea3nh.";
     },
     get$setCustomPermissionLevel() {
-      return "Maxsus ruxsatlar darajasini sozlash";
+      return "C\xe0i m\u1ee9c ph\xe2n quy\u1ec1n";
     },
     get$setPermissionsLevelDescription() {
-      return "Quyidagi oldindan belgilangan rolni tanlang yoki 0-100 orasidagi maxsus ruxsatlar darajasini kiriting.";
+      return "Vui l\xf2ng ch\u1ecdn vai tr\xf2 \u0111\u01b0\u1ee3c x\xe1c \u0111\u1ecbnh tr\u01b0\u1edbc b\xean d\u01b0\u1edbi ho\u1eb7c nh\u1eadp m\u1ee9c quy\u1ec1n t\xf9y ch\u1ec9nh t\u1eeb 0 \u0111\u1ebfn 100.";
     },
     get$ignoreUser() {
-      return "Foydalanuvchini e\u2019tiborsiz qoldirish";
+      return "Ch\u1eb7n ng\u01b0\u1eddi d\xf9ng";
     },
     get$normalUser() {
-      return "Oddiy foydalanuvchi";
+      return "Ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng";
     },
     get$remove(_) {
-      return "O\u2018chirish";
+      return "Lo\u1ea1i b\u1ecf";
     },
     get$importNow() {
-      return "Hozir import qilish";
+      return "Nh\u1eadp v\xe0o";
     },
     get$importEmojis() {
-      return "Emojilarni import qilish";
+      return "Nh\u1eadp Bi\u1ec3u c\u1ea3m";
     },
     get$importFromZipFile() {
-      return ".zip faylidan import qilish";
+      return "Nh\u1eadp v\xe0o t\u1eeb t\u1ec7p .zip";
     },
     get$exportEmotePack() {
-      return "Emotsiyalar to\u2018plamini .zip fayl ko\u2018rinishida eksport qilish";
+      return "Xu\u1ea5t g\xf3i bi\u1ec3u c\u1ea3m b\u1eb1ng t\u1ec7p .zip";
     },
     get$replace(_) {
-      return "Almashtirmoq";
+      return "Thay th\u1ebf";
     },
     get$about() {
-      return "Biz haqimizda";
+      return "Gi\u1edbi thi\u1ec7u";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + " haqida";
+      return "V\u1ec1 " + homeserver;
     },
     get$accept(_) {
-      return "Qabul qilmoq";
+      return "\u0110\u1ed3ng \xfd";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " taklifni qabul qildi";
+      return username + " \u0111\xe3 \u0111\u1ed3ng \xfd l\u1eddi m\u1eddi";
     },
     get$account() {
-      return "Hisob";
+      return "T\xe0i kho\u1ea3n";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " shifrlashni yakunlash uchun faollashtirdi";
+      return username + " \u0111\xe3 k\xedch ho\u1ea1t m\xe3 h\xf3a \u0111\u1ea7u cu\u1ed1i 2 chi\u1ec1u";
     },
     get$addEmail() {
-      return "Email qo\u2018shish";
+      return "Th\xeam email";
     },
     supposedMxid$1(mxid) {
-      return "Bu " + mxid + " bo\u2018lishi kerak";
+      return "\u0110\xe2y n\xean l\xe0 " + mxid;
     },
     get$admin() {
-      return "Admin";
+      return "Qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$allChats() {
-      return "Hamma suhbatlar";
+      return "T\u1ea5t c\u1ea3 h\u1ed9i tho\u1ea1i";
     },
     get$commandHint_roomupgrade() {
-      return "Bu guruhni berilgan guruh versiyasiga yangilang";
+      return "N\xe2ng c\u1ea5p ph\xf2ng l\xean phi\xean b\u1ea3n m\u1eb7c \u0111\u1ecbnh";
     },
     get$commandHint_googly() {
-      return "G\u2018ilay ko\u2018zlarini yuboring";
+      return "G\u1eedi c\u1eb7p m\u1eaft theo d\xf5i";
     },
     get$commandHint_cuddle() {
-      return "Erkalash yuborish";
+      return "G\u1eedi c\xe1i \xf4m";
     },
     get$commandHint_hug() {
-      return "Quchoqlash yuborish";
+      return "G\u1eedi m\u1ed9t c\xe1i \xf4m";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " sizga g\u02bbilay ko\u2018zlarini yubormoqda";
+      return senderName + " g\u1eedi nh\xe1y m\u1eaft";
     },
     cuddleContent$1(senderName) {
-      return senderName + " sizni erkalamoqda";
+      return senderName + " \xf4m n\xe0o";
     },
     hugContent$1(senderName) {
-      return senderName + " sizni quchoqlamoqda";
+      return senderName + " \xf4m b\u1ea1n";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " chaqiruvga javob berdi";
+      return senderName + " \u0111\xe3 tr\u1ea3 l\u1eddi cu\u1ed9c g\u1ecdi";
     },
     get$anyoneCanJoin() {
-      return "Har kim qo\u2018shilishi mumkin";
+      return "M\u1ecdi ng\u01b0\u1eddi \u0111\u1ec1u c\xf3 th\u1ec3 gia nh\u1eadp";
     },
     get$archive() {
-      return "Arxiv";
+      return "L\u01b0u tr\u1eef";
     },
     get$areYouSure() {
-      return "Ishonchingiz komilmi?";
+      return "B\u1ea1n ch\u1eafc ch\u1ee9?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Haqiqatan ham hisobingizdan chiqamoqchimisiz?";
+      return "B\u1ea1n c\xf3 ch\u1eafc b\u1ea1n mu\u1ed1n \u0111\u0103ng xu\u1ea5t kh\xf4ng?";
     },
     get$askSSSSSign() {
-      return "Narigi foydalanuvchini imzolash uchun xavfsiz do\u2018kon parol iborasi yoki tiklash kalitini kiriting.";
+      return "\u0110\u1ec3 c\xf3 th\u1ec3 k\xfd t\xean cho ng\u01b0\u1eddi kh\xe1c, vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u l\u01b0u tr\u1eef an to\xe0n ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c c\u1ee7a b\u1ea1n.";
     },
     askVerificationRequest$1(username) {
-      return username + "dan ushbu tasdiqlash so\u2018rovi qabul qilinsinmi?";
+      return "B\u1ea1n c\xf3 \u0111\u1ed3ng \xfd y\xeau c\u1ea7u ch\u1ee9ng th\u1ef1c t\u1eeb " + username + " kh\xf4ng?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Homeserver quyidagi kirish turlarini qo'llab-quvvatlaydi:\n" + serverVersions + "\nLekin bu ilova faqat quyidagi turlarni qo'llab-quvvatlaydi:\n" + supportedVersions;
+      return "M\xe1y ch\u1ee7 nh\xe0 h\u1ed7 tr\u1ee3 ki\u1ec3u \u0111\u0103ng nh\u1eadp:\n" + serverVersions + "\nNh\u01b0ng \u1ee9ng d\u1ee5ng n\xe0y ch\u1ec9 h\u1ed7 tr\u1ee3:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Yozish bildirishnomalarini yuborish";
+      return "G\u1eedi th\xf4ng b\xe1o \u0111ang nh\u1eadp";
     },
     get$swipeRightToLeftToReply() {
-      return "Javob berish uchun o\u2018ngdan chapga suring";
+      return "G\u1ea1t t\u1eeb ph\u1ea3i sang tr\xe1i \u0111\u1ec3 tr\u1ea3 l\u1eddi";
     },
     get$sendOnEnter() {
-      return "Enterda yuborish";
+      return "G\u1eedi b\u1eb1ng Enter";
     },
     get$space() {
-      return "Bo\u02bbshliq";
+      return "Kh\xf4ng gian";
     },
     get$banned() {
-      return "Taqiqlangan";
+      return "\u0110\xe3 b\u1ecb c\u1ea5m";
     },
     bannedUser$2(username, targetName) {
-      return username + " taqiqladi " + targetName + "(ni)";
+      return username + " \u0111\xe3 c\u1ea5m " + targetName;
     },
     get$blockDevice() {
-      return "Qurilmani bloklash";
+      return "Thi\u1ebft b\u1ecb b\u1ecb ch\u1eb7n";
     },
     get$blocked() {
-      return "Bloklandi";
+      return "\u0110\xe3 ch\u1eb7n";
     },
     get$cancel(_) {
-      return "Bekor qilish";
+      return "H\u1ee7y";
     },
     cantOpenUri$1(uri) {
-      return uri + " URIni ochib bo\u02bblmadi";
+      return "Kh\xf4ng th\u1ec3 m\u1edf URI " + uri;
     },
     get$changeDeviceName() {
-      return "Qurilma nomini o\u02bbzgartirish";
+      return "Thay \u0111\u1ed5i t\xean thi\u1ebft b\u1ecb";
     },
     changedTheChatAvatar$1(username) {
-      return username + " suhbat avatarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u1ea3nh ph\xf2ng chat";
     },
     changedTheChatDescription$1(username) {
-      return username + " chat tavsifini o\u2018zgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     changedTheChatName$1(username) {
-      return username + " chat nomini o\u2018zgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i t\xean cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     changedTheChatPermissions$1(username) {
-      return username + " suhbat ruxsatnomalarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy\u1ec1n trong ph\xf2ng chat";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " o\u02bbzining nomini '" + displayname + "'ga o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i t\xean hi\u1ec3n th\u1ecb th\xe0nh: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " mehmon kirish qoidalarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc truy c\u1eadp \u0111\u1ed1i v\u1edbi kh\xe1ch";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " mehmon kirish qoidalarini: " + rules + "ga o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc truy c\u1eadp \u0111\u1ed1i v\u1edbi kh\xe1ch th\xe0nh: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " tarix ko\u02bbrinishini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i ch\u1ebf \u0111\u1ed9 hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " tarix ko\u02bbrinishini: " + rules + "ga o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i ch\u1ebf \u0111\u1ed9 hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed th\xe0nh: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " qo\u02bbshilish qoidalarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc tham gia";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " qo\u02bbshilish qoidalarini: " + joinRules + "ga o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc tham gia th\xe0nh: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " avatarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a m\xecnh";
     },
     changedTheRoomAliases$1(username) {
-      return username + " xona taxalluslarini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 \u0111\u1ed5i \u0111\u1ecba ch\u1ec9 ph\xf2ng chat";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " taklif havolasini o\u02bbzgartirdi";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u0111\u01b0\u1eddng d\u1eabn m\u1eddi";
     },
     get$changePassword() {
-      return "Parolni o\u2018zgartirish";
+      return "Thay \u0111\u1ed5i m\u1eadt kh\u1ea9u";
     },
     get$changeTheme() {
-      return "Uslubingizni o\u2018zgartiring";
+      return "Thay \u0111\u1ed5i ch\u1ee7 \u0111\u1ec1";
     },
     get$changeYourAvatar() {
-      return "Avataringizni almashtiring";
+      return "\u0110\u1ed5i \u1ea3nh \u0111\u1ea1i di\u1ec7n";
     },
     get$channelCorruptedDecryptError() {
-      return "Shifrlash buzilgan";
+      return "M\xe3 h\xf3a \u0111\xe3 b\u1ecb h\u1ecfng";
     },
     get$chat() {
-      return "Suhbat";
+      return "Chat";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "Suhbat zaxirangiz sozlandi.";
+      return "Sao l\u01b0u tr\xf2 chuy\u1ec7n c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c thi\u1ebft l\u1eadp.";
     },
     get$chatBackupDescription() {
-      return "Eski xabarlaringiz tiklash kaliti bilan himoyalangan. Uni yo\u2018qotib qo\u2018ymasligingizga ishonch hosil qiling.";
+      return "B\u1ea3n sao l\u01b0u cu\u1ed9c tr\xf2 chuy\u1ec7n c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1ea3o m\u1eadt b\u1eb1ng m\u1ed9t kho\xe1 b\u1ea3o m\u1eadt. B\u1ea1n \u0111\u1eebng l\xe0m m\u1ea5t n\xf3.";
     },
     get$chatDetails() {
-      return "Suhbat tafsilotlari";
+      return "Chi ti\u1ebft cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$chats() {
-      return "Suhbatlar";
+      return "C\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$chooseAStrongPassword() {
-      return "Kuchli parol tanlang";
+      return "Ch\u1ecdn m\u1ed9t m\u1eadt kh\u1ea9u m\u1ea1nh";
     },
     get$clearArchive() {
-      return "Arxivni tozalash";
+      return "X\xf3a kho l\u01b0u tr\u1eef";
     },
     get$close(_) {
-      return "Yopish";
+      return "\u0110\xf3ng";
     },
     get$commandHint_markasdm() {
-      return "Matrix identifikatorini berish uchun shaxsiy xabar guruhi sifatida belgilang";
+      return "\u0110\xe1nh d\u1ea5u l\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp cho m\u1ed9t Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Guruh sifatida belgilash";
+      return "\u0110\xe1nh d\u1ea5u l\xe0 nh\xf3m";
     },
     get$commandHint_ban() {
-      return "Bu guruhdan berilgan foydalanuvchini bloklash";
+      return "C\u1ea5m ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$commandHint_clearcache() {
-      return "Kesh tozalash";
+      return "X\xf3a b\u1ed9 nh\u1edb \u0111\u1ec7m";
     },
     get$commandHint_create() {
-      return "Bo\u02bbsh guruh suhbati yarating\nShifrlashni o\u02bbchirish uchun --no-encryption dan foydalaning";
+      return "T\u1ea1o m\u1ed9t ph\xf2ng tr\xf2 chuy\u1ec7n nh\xf3m tr\u1ed1ng\nD\xf9ng --no-encryption \u0111\u1ec3 t\u1eaft m\xe3 h\xf3a";
     },
     get$commandHint_discardsession() {
-      return "Seansni bekor qilish";
+      return "H\u1ee7y (x\xf3a) phi\xean";
     },
     get$commandHint_dm() {
-      return "Jonli suhbatni boshlash\nShifrlashni o\u2018chirish uchun --no-encryption dan foydalaning";
+      return "B\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp\nD\xf9ng --no-encryption \u0111\u1ec3 t\u1eaft m\xe3 h\xf3a";
     },
     get$commandHint_html() {
-      return "HTML formatidagi matnni yuborish";
+      return "G\u1eedi v\u0103n b\u1ea3n \u0111\u01b0\u1ee3c \u0111\u1ecbnh d\u1ea1ng HTML";
     },
     get$commandHint_invite() {
-      return "Berilgan foydalanuvchini ushbu guruhga taklif qiling";
+      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh v\xe0o ph\xf2ng";
     },
     get$commandHint_join() {
-      return "Berilgan guruhga qo\u02bbshilish";
+      return "Tham gia ph\xf2ng \u0111\u01b0\u1ee3c ch\u1ec9 \u0111\u1ecbnh";
     },
     get$commandHint_kick() {
-      return "Berilgan foydalanuvchini guruhdan o\u02bbchirish";
+      return "Lo\u1ea1i ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh ra kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$commandHint_leave() {
-      return "Guruhni tark etish";
+      return "R\u1eddi ph\xf2ng n\xe0y";
     },
     get$commandHint_me() {
-      return "O\u02bbzingizni tariflang";
+      return "Mi\xeau t\u1ea3 v\u1ec1 ch\xednh b\u1ea1n";
     },
     get$commandHint_myroomavatar() {
-      return "Bu guruh uchun rasmingizni sozlang (mxc-uri tomonidan)";
+      return "\u0110\u1eb7t \u1ea3nh \u0111\u1ea1i di\u1ec7n cho b\u1ea1n trong ph\xf2ng (b\u1eb1ng mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Bu guruh uchun displey nomini sozlang";
+      return "\u0110\u1eb7t t\xean hi\u1ec3n th\u1ecb cho b\u1ea1n trong ph\xf2ng";
     },
     get$commandHint_op() {
-      return "Berilgan foydalanuvchi quvvat darajasini o\u02bbrnating (standart: 50)";
+      return "\u0110\u1eb7t c\u1ea5p quy\u1ec1n l\u1ef1c cho ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh (m\u1eb7c \u0111\u1ecbnh: 50)";
     },
     get$commandHint_plain() {
-      return "Formatlanmagan matnni yuboring";
+      return "G\u1eedi v\u0103n b\u1ea3n kh\xf4ng \u0111\u1ecbnh d\u1ea1ng";
     },
     get$commandHint_react() {
-      return "Javobni reaksiya sifatida yuboring";
+      return "G\u1eedi ph\u1ea3n h\u1ed3i d\u01b0\u1edbi d\u1ea1ng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$commandHint_send() {
-      return "Matn yuborish";
+      return "G\u1eedi v\u0103n b\u1ea3n";
     },
     get$commandHint_unban() {
-      return "Berilgan foydalanuvchini bu guruhdan blokdan chiqazish";
+      return "B\u1ecf c\u1ea5m ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$compareEmojiMatch() {
-      return "Iltimos emojilarni taqqoslang";
+      return "So s\xe1nh v\xe0 \u0111\u1ea3m b\u1ea3o c\xe1c bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac sau \u0111\xe2y gi\u1ed1ng v\u1edbi c\xe1c bi\u1ec3u t\u01b0\u1ee3ng tr\xean m\xe1y c\xf2n l\u1ea1i";
     },
     get$compareNumbersMatch() {
-      return "Iltimos raqamlarni taqqoslang";
+      return "So s\xe1nh v\xe0 \u0111\u1ea3m b\u1ea3o c\xe1c s\u1ed1 sau \u0111\xe2y gi\u1ed1ng tr\xean m\xe1y c\xf2n l\u1ea1i";
     },
     get$configureChat() {
-      return "Suhbatni sozlash";
+      return "C\u1ea5u h\xecnh cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$confirm(_) {
-      return "Tasdiqlash";
+      return "X\xe1c nh\u1eadn";
     },
     get$copiedToClipboard() {
-      return "Buferga nusxalandi";
+      return "\u0110\xe3 sao ch\xe9p v\xe0o khay nh\u1edb t\u1ea1m";
     },
     get$copy() {
-      return "Nusxalash";
+      return "Sao ch\xe9p";
     },
     get$copyToClipboard() {
-      return "Buferga nusxalash";
+      return "Sao ch\xe9p v\xe0o khay nh\u1edb t\u1ea1m";
     },
     couldNotDecryptMessage$1(error) {
-      return "Xabarni shifrlab bo\u02bblmadi: " + error;
+      return "Kh\xf4ng th\u1ec3 gi\u1ea3i m\xe3 tin nh\u1eafn: " + error;
     },
     get$checkList() {
-      return "Tekshirish ro\u02bbyxati";
+      return "Danh s\xe1ch ki\u1ec3m tra";
     },
     countParticipants$1(count) {
-      return "" + count + " qatnashuvchilar";
+      return "" + count + " th\xe0nh vi\xean";
     },
     countInvited$1(count) {
-      return "" + count + " taklif qilindi";
+      return "" + count + " ng\u01b0\u1eddi \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$create(_) {
-      return "Yaratish";
+      return "T\u1ea1o";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " suhbat yaratdi";
+      return username + " \u0111\xe3 t\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$createGroup() {
-      return "Guruh yaratish";
+      return "T\u1ea1o nh\xf3m";
     },
     get$createNewSpace() {
-      return "Yangi maydon";
+      return "T\u1ea1o kh\xf4ng gian m\u1edbi";
     },
     get$currentlyActive() {
-      return "Hozirda faol";
+      return "\u0110ang ho\u1ea1t \u0111\u1ed9ng";
     },
     get$darkTheme() {
-      return "Qorong\u02bbi";
+      return "Ch\u1ee7 \u0111\u1ec1 t\u1ed1i";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Bu sizning foydalanuvchi hisobingizni o\u02bbchirib qo\u02bbyadi. Buni qaytarib bo\u02bblmaydi! Ishonchingiz komilmi?";
+      return "Vi\u1ec7c n\xe0y s\u1ebd v\xf4 hi\u1ec7u ho\xe1 t\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n. \u0110i\u1ec1u n\xe0y kh\xf4ng th\u1ec3 \u0111\u1ea3o ng\u01b0\u1ee3c \u0111\u01b0\u1ee3c! B\u1ea1n ch\u1eafc l\xe0 v\u1eabn mu\u1ed1n ti\u1ebfp t\u1ee5c ch\u1ee9?";
     },
     get$defaultPermissionLevel() {
-      return "Yangi foydalanuvchilar uchun standart ruxsat darajasi";
+      return "C\u1ea5p quy\u1ec1n m\u1eb7c \u0111\u1ecbnh cho ng\u01b0\u1eddi d\xf9ng m\u1edbi";
     },
     get$$delete(_) {
-      return "O\u02bbchirish";
+      return "Xo\xe1";
     },
     get$deleteAccount() {
-      return "Hisobni o\u02bbchirish";
+      return "Xo\xe1 t\xe0i kho\u1ea3n";
     },
     get$deleteMessage() {
-      return "Xabarni o\u02bbchirish";
+      return "Xo\xe1 tin nh\u1eafn";
     },
     get$devices() {
-      return "Qurilmalar";
+      return "C\xe1c thi\u1ebft b\u1ecb";
     },
     get$displaynameHasBeenChanged() {
-      return "Displey nomi o\u2018zgartirildi";
+      return "T\xean hi\u1ec3n th\u1ecb \u0111\xe3 \u0111\u01b0\u1ee3c thay \u0111\u1ed5i";
     },
     get$downloadFile() {
-      return "Faylni yuklab olish";
+      return "T\u1ea3i \u1ea3nh xu\u1ed1ng";
     },
     get$edit() {
-      return "Tahrirlash";
+      return "Ch\u1ec9nh s\u1eeda";
     },
     get$editBlockedServers() {
-      return "Bloklangan serverlarni tahrirlash";
+      return "Ch\u1ec9nh s\u1eeda m\xe1y ch\u1ee7 b\u1ecb ch\u1eb7n";
     },
     get$chatPermissions() {
-      return "Suhbat ruxsatlari";
+      return "Quy\u1ec1n h\u1ea1n trong tr\xf2 chuy\u1ec7n";
     },
     get$editDisplayname() {
-      return "Displey nomini tahrirlash";
+      return "S\u1eeda t\xean hi\u1ec3n th\u1ecb";
     },
     get$editRoomAvatar() {
-      return "Xona avatarini tahrirlash";
+      return "Ch\u1ec9nh s\u1eeda \u1ea3nh \u0111\u1ea1i di\u1ec7n ph\xf2ng";
     },
     get$emoteExists() {
-      return "Emotsiya allaqachon mavjud!";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac \u0111\xe3 t\u1ed3n t\u1ea1i!";
     },
     get$emoteInvalid() {
-      return "Noto\u2018g\u2018ri emotsiya kodi!";
+      return "M\xe3 bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac kh\xf4ng h\u1ee3p l\u1ec7!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Yaqinda ishlatilgan emotsiyalar shu yerda chiqadi...";
+      return "Nh\u1eefng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac s\u1eed d\u1ee5ng g\u1ea7n \u0111\xe2y s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y...";
     },
     get$customEmojisAndStickers() {
-      return "Maxsus emojilar va stikerlar";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac v\xe0 nh\xe3n d\xe1n t\xf9y ch\u1ec9nh";
     },
     get$emoteShortcode() {
-      return "Emote qisqa kodi";
+      return "M\xe3 ng\u1eafn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$emptyChat() {
-      return "Bo\u02bbsh suhbat";
+      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$enableEmotesGlobally() {
-      return "Emote paketini global miqyosda yoqish";
+      return "B\u1eadt g\xf3i bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac tr\xean to\xe0n b\u1ed9 h\u1ec7 th\u1ed1ng";
     },
     get$enableEncryption() {
-      return "Shifrlashni yoqish";
+      return "B\u1eadt m\xe3 h\xf3a";
     },
     get$encrypted() {
-      return "Shifrlangan";
+      return "\u0110\xe3 m\xe3 h\xf3a";
     },
     get$encryptionNotEnabled() {
-      return "Shifrlash yoqilmagan";
+      return "Ch\u01b0a b\u1eadt m\xe3 h\xf3a";
     },
     endedTheCall$1(senderName) {
-      return senderName + " chaqiruvni tugatdi";
+      return senderName + " \u0111\xe3 k\u1ebft th\xfac cu\u1ed9c g\u1ecdi";
     },
     get$enterAnEmailAddress() {
-      return "Email manzilini kiriting";
+      return "Nh\u1eadp \u0111\u1ecba ch\u1ec9 email";
     },
     errorObtainingLocation$1(error) {
-      return "Joylashuv axboroti olinmadi: " + error;
+      return "L\u1ed7i khi l\u1ea5y v\u1ecb tr\xed: " + error;
     },
     get$everythingReady() {
-      return "Hammasi tayyor!";
+      return "M\u1ecdi th\u1ee9 \u0111\xe3 s\u1eb5n s\xe0ng!";
     },
     get$fontSize(_) {
-      return "Shrift o\u02bblchami";
+      return "K\xedch th\u01b0\u1edbc ph\xf4ng ch\u1eef";
     },
     get$forward(_) {
-      return "Yuborvorish";
+      return "Chuy\u1ec3n ti\u1ebfp";
     },
     get$fromJoining() {
-      return "Qo\u02bbshilishdan";
+      return "T\u1eeb khi tham gia";
     },
     get$fromTheInvitation() {
-      return "Taklifnomadan";
+      return "T\u1eeb l\u1eddi m\u1eddi";
     },
     get$group() {
-      return "Guruh";
+      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$groupIsPublic() {
-      return "Guruh ommaviy";
+      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n c\xf4ng khai";
     },
     get$guestsAreForbidden() {
-      return "Mehmonlarga kirish taqiqlangan";
+      return "Kh\xe1ch b\u1ecb c\u1ea5m";
     },
     get$guestsCanJoin() {
-      return "Mehmonlar qo\u02bbshila oladi";
+      return "Kh\xe1ch c\xf3 th\u1ec3 tham gia";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " " + targetName + " uchun taklifnomani qaytarib oldi";
+      return username + " \u0111\xe3 r\xfat l\u1ea1i l\u1eddi m\u1eddi cho " + targetName;
     },
     get$help() {
-      return "Yordam";
+      return "Tr\u1ee3 gi\xfap";
     },
     get$hideRedactedMessages() {
-      return "O\u02bbchirilgan xabarlarni yashirish";
+      return "\u1ea8n tin nh\u1eafn \u0111\xe3 b\u1ecb g\u1ee1";
     },
     get$hideRedactedMessagesBody() {
-      return "Agar kimdir xabarni o\u02bbchirsa, bu xabar endi suhbatda ko\u02bbrinmaydi.";
+      return "N\u1ebfu ai \u0111\xf3 g\u1ee1 m\u1ed9t tin nh\u1eafn, tin nh\u1eafn \u0111\xf3 s\u1ebd kh\xf4ng c\xf2n hi\u1ec3n th\u1ecb trong cu\u1ed9c tr\xf2 chuy\u1ec7n n\u1eefa.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Noto\u02bbg\u02bbri yoki noma\u02bclum xabar formatlarini yashirish";
+      return "\u1ea8n c\xe1c \u0111\u1ecbnh d\u1ea1ng tin nh\u1eafn kh\xf4ng h\u1ee3p l\u1ec7 ho\u1eb7c ch\u01b0a \u0111\u01b0\u1ee3c bi\u1ebft";
     },
     get$block() {
-      return "Bloklash";
+      return "ch\u1eb7n";
     },
     get$blockedUsers() {
-      return "Bloklangan foydalanuvchilar";
+      return "Ng\u01b0\u1eddi d\xf9ng b\u1ecb ch\u1eb7n";
     },
     get$blockListDescription() {
-      return "Sizni bezovta qilayotgan foydalanuvchilarni bloklashingiz mumkin. Shaxsiy bloklash ro\u02bbyxatingizdagi foydalanuvchilardan hech qanday xabar yoki guruhga taklifnomalarni qabul qila olmaysiz.";
+      return "B\u1ea1n c\xf3 th\u1ec3 ch\u1eb7n ng\u01b0\u1eddi d\xf9ng l\xe0m phi\u1ec1n b\u1ea1n. B\u1ea1n s\u1ebd kh\xf4ng nh\u1eadn \u0111\u01b0\u1ee3c b\u1ea5t k\u1ef3 tin nh\u1eafn hay l\u1eddi m\u1eddi n\xe0o t\u1eeb danh s\xe1ch ch\u1eb7n c\xe1 nh\xe2n c\u1ee7a b\u1ea1n.";
     },
     get$blockUsername() {
-      return "Foydalanuvchi nomini e\u02bbtiborsiz qoldirish";
+      return "Ch\u1eb7n t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$iHaveClickedOnLink() {
-      return "Men havolani bosdim";
+      return "T\xf4i \u0111\xe3 nh\u1ea5p v\xe0o \u0111\u01b0\u1eddng li\xean k\u1ebft";
     },
     get$incorrectPassphraseOrKey() {
-      return "Noto\u02bbg\u02bbri parol yoki tiklash kaliti";
+      return "C\u1ee5m m\u1eadt kh\u1ea9u ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c kh\xf4ng ch\xednh x\xe1c";
     },
     get$inviteContact() {
-      return "Kontaktni taklif qilish";
+      return "M\u1eddi li\xean h\u1ec7";
     },
     get$noChatDescriptionYet() {
-      return "Hali suhbat tavsifi yaratilmagan.";
+      return "Ch\u01b0a c\xf3 m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$tryAgain() {
-      return "Qayta urinib ko\u02bbrish";
+      return "Th\u1eed l\u1ea1i";
     },
     get$invited() {
-      return "Taklif qilindi";
+      return "\u0110\xe3 m\u1eddi";
     },
     get$redactMessageDescription() {
-      return "Xabar ushbu suhbatdagi barcha ishtirokchilar uchun o\u02bbchiriladi. Buni bekor qilib bo\u02bblmaydi.";
+      return "Tin nh\u1eafn s\u1ebd \u0111\u01b0\u1ee3c g\u1ee1 cho t\u1ea5t c\u1ea3 nh\u1eefng ng\u01b0\u1eddi tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$optionalRedactReason() {
-      return "(Ixtiyoriy) Ushbu xabarni o\u02bbchirish sababi...";
+      return "(T\xf9y ch\u1ecdn) L\xfd do g\u1ee1 tin nh\u1eafn...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " " + targetName + "ni taklif qildi";
+      return "\ud83d\udce9 " + username + " \u0111\xe3 m\u1eddi " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Faqat taklif qilingan foydalanuvchilar";
+      return "Ch\u1ec9 ng\u01b0\u1eddi d\xf9ng \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$inviteForMe() {
-      return "Men uchun taklif qilish";
+      return "M\u1eddi cho t\xf4i";
     },
     get$isTyping() {
-      return "yozmoqda\u2026";
+      return "\u0111ang nh\u1eadp\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " suhbatga qo\u02bbshildi";
+      return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " " + targetName + "ni tepdi";
+      return "\ud83d\udc5e " + username + " \u0111\xe3 \u0111\xe1 " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Oxirgi faol: " + localizedTimeShort;
+      return "Ho\u1ea1t \u0111\u1ed9ng l\u1ea7n cu\u1ed1i: " + localizedTimeShort;
     },
     get$leave() {
-      return "Chiqish";
+      return "R\u1eddi \u0111i";
     },
     get$leftTheChat() {
-      return "Suhbatni tark etdi";
+      return "\u0110\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$lightTheme() {
-      return "Yorug\u02bblik";
+      return "Ch\u1ee7 \u0111\u1ec1 s\xe1ng";
     },
     get$dehydrate() {
-      return "Sessiyani eksport qilish va qurilmani o\u02bbchirish";
+      return "Xu\u1ea5t phi\xean v\xe0 x\xf3a thi\u1ebft b\u1ecb";
     },
     get$dehydrateWarning() {
-      return "Bu amalni bekor qilib bo\u02bblmaydi. Zaxira faylini xavfsiz saqlang.";
+      return "H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c. H\xe3y ch\u1eafc r\u1eb1ng b\u1ea1n \u0111\xe3 l\u01b0u tr\u1eef t\u1ec7p sao l\u01b0u m\u1ed9t c\xe1ch an to\xe0n.";
     },
     get$loadingPleaseWait() {
-      return "Yuklanmoqda\u2026 Iltimos, kuting.";
+      return "\u0110ang t\u1ea3i\u2026 Vui l\xf2ng ch\u1edd.";
     },
     get$loadMore() {
-      return "Ko\u02bbproq yuklash\u2026";
+      return "T\u1ea3i th\xeam\u2026";
     },
     get$locationDisabledNotice() {
-      return "Joylashuv xizmatlari o\u02bbchirib qo\u02bbyilgan. Joylashuvingizni ulashish uchun ularni yoqing.";
+      return "D\u1ecbch v\u1ee5 v\u1ecb tr\xed \u0111\xe3 b\u1ecb t\u1eaft. Vui l\xf2ng b\u1eadt \u0111\u1ec3 chia s\u1ebb v\u1ecb tr\xed.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Joylashuvga ruxsat berilmadi. Iltimos, ularga joylashuvingizni ulashishga ruxsat bering.";
+      return "Quy\u1ec1n v\u1ecb tr\xed \u0111\xe3 b\u1ecb t\u1eeb ch\u1ed1i. Vui l\xf2ng c\u1ea5p quy\u1ec1n \u0111\u1ec3 chia s\u1ebb v\u1ecb tr\xed.";
     },
     get$login() {
-      return "Kirish";
+      return "\u0110\u0103ng nh\u1eadp";
     },
     get$logout() {
-      return "Chiqish";
+      return "\u0110\u0103ng xu\u1ea5t";
     },
     get$mention() {
-      return "Qayd etmoq";
+      return "Nh\u1eafc \u0111\u1ebfn";
     },
     get$messages() {
-      return "Xabarlar";
+      return "Tin nh\u1eafn";
     },
     get$messagesStyle() {
-      return "Xabarlar:";
+      return "Tin nh\u1eafn:";
     },
     get$moderator() {
-      return "Moderator";
+      return "\u0110i\u1ec1u h\xe0nh vi\xean";
     },
     get$newVerificationRequest() {
-      return "Yangi tasdiqlash so'rovi!";
+      return "Y\xeau c\u1ea7u x\xe1c minh m\u1edbi!";
     },
     get$next(_) {
-      return "Keyingi";
+      return "Ti\u1ebfp";
     },
     get$no() {
-      return "Yo\u02bbq";
+      return "Kh\xf4ng";
     },
     get$noConnectionToTheServer() {
-      return "Serverga ulanish yo\u02bbq";
+      return "Kh\xf4ng c\xf3 k\u1ebft n\u1ed1i \u0111\u1ebfn m\xe1y ch\u1ee7";
     },
     get$noEmotesFound() {
-      return "Hech qanday emote\u02bclar topilmadi \ud83d\ude15";
+      return "Kh\xf4ng t\xecm th\u1ea5y bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Taklifnoma havolasini ulashish";
+      return "Chia s\u1ebb li\xean k\u1ebft m\u1eddi";
     },
     get$none() {
-      return "Hech biri";
+      return "Kh\xf4ng";
     },
     get$noPermission() {
-      return "Ruxsat yo\u02bbq";
+      return "Kh\xf4ng c\xf3 quy\u1ec1n";
     },
     get$noRoomsFound() {
-      return "Hech qanday guruhlar topilmadi\u2026";
+      return "Kh\xf4ng t\xecm th\u1ea5y ph\xf2ng\u2026";
     },
     get$notifications() {
-      return "Bildirishnomalar";
+      return "Th\xf4ng b\xe1o";
     },
     get$obtainingLocation() {
-      return "Joylashuv aniqlanmoqda\u2026";
+      return "\u0110ang x\xe1c \u0111\u1ecbnh v\u1ecb tr\xed\u2026";
     },
     get$offensive() {
-      return "Haqoratomuz";
+      return "X\xfac ph\u1ea1m";
     },
     get$ok() {
-      return "Hop";
+      return "OK";
     },
     get$oopsSomethingWentWrong() {
-      return "Voy, nimadir noto\u02bbg\u02bbri ketdi\u2026";
+      return "\xd4i, c\xf3 g\xec \u0111\xf3 kh\xf4ng \u1ed5n\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Mijozlaringizdan biri tizimdan chiqdi";
+      return "M\u1ed9t trong c\xe1c phi\xean c\u1ee7a b\u1ea1n \u0111\xe3 b\u1ecb \u0111\u0103ng xu\u1ea5t";
     },
     get$openInMaps() {
-      return "Xaritalarda ochish";
+      return "M\u1edf trong b\u1ea3n \u0111\u1ed3";
     },
     get$link() {
-      return "Havola";
+      return "Li\xean k\u1ebft";
     },
     get$serverRequiresEmail() {
-      return "Ushbu server ro\u02bbyxatdan o\u02bbtish uchun elektron pochta manzilingizni tasdiqlashi kerak.";
+      return "M\xe1y ch\u1ee7 n\xe0y y\xeau c\u1ea7u x\xe1c th\u1ef1c email \u0111\u1ec3 \u0111\u0103ng k\xfd.";
     },
     get$or() {
-      return "Yoki";
+      return "Ho\u1eb7c";
     },
     get$participant() {
-      return "Qatnashuvchi";
+      return "Th\xe0nh vi\xean";
     },
     get$passphraseOrKey() {
-      return "parol yoki tiklash kaliti";
+      return "c\u1ee5m m\u1eadt kh\u1ea9u ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c";
     },
     get$password(_) {
-      return "Parol";
+      return "M\u1eadt kh\u1ea9u";
     },
     get$passwordForgotten() {
-      return "Parol unitilgan";
+      return "Qu\xean m\u1eadt kh\u1ea9u";
     },
     get$passwordHasBeenChanged() {
-      return "Parol o\u02bbzgartirildi";
+      return "M\u1eadt kh\u1ea9u \u0111\xe3 \u0111\u01b0\u1ee3c thay \u0111\u1ed5i";
     },
     get$pin() {
-      return "To\u02bbg\u02bbnash";
+      return "Ghim";
     },
     get$pleaseChoose() {
-      return "Iltimos tanlang";
+      return "Vui l\xf2ng ch\u1ecdn";
     },
     get$pleaseEnterYourPassword() {
-      return "Iltimos parolingizni kiriting";
+      return "Vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u";
     },
     get$pleaseEnterYourPin() {
-      return "Iltimos PIN kodingizni kiriting";
+      return "Vui l\xf2ng nh\u1eadp m\xe3 PIN";
     },
     get$pleaseEnterYourUsername() {
-      return "Iltimos foydalanuvchi nomini kiriting";
+      return "Vui l\xf2ng nh\u1eadp t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Iltimos, veb-saytdagi ko\u02bbrsatmalarga amal qiling va keyingisini bosing.";
+      return "Vui l\xf2ng l\xe0m theo h\u01b0\u1edbng d\u1eabn tr\xean trang web v\xe0 b\u1ea5m ti\u1ebfp";
     },
     get$privacy() {
-      return "Maxfiylik";
+      return "Quy\u1ec1n ri\xeang t\u01b0";
     },
     get$reason(_) {
-      return "Sabab";
+      return "L\xfd do";
     },
     redactedBy$1(username) {
-      return username + " tomonidan tahrirlangan";
+      return "\u0110\u01b0\u1ee3c g\u1ee1 b\u1edfi " + username;
     },
     get$directChat() {
-      return "Shaxsiy suhbat";
+      return "Tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' tomonidan tahrirlandi, sababi: "' + reason + '"';
+      return "\u0110\u01b0\u1ee3c g\u1ee1 b\u1edfi " + username + ' v\u1edbi l\xfd do: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " tadbirni o\u02bbchirib tashladi";
+      return username + " \u0111\xe3 g\u1ee1 m\u1ed9t s\u1ef1 ki\u1ec7n";
     },
     get$redactMessage() {
-      return "Xabarni tahrirlash";
+      return "G\u1ee1 tin nh\u1eafn";
     },
     get$reject() {
-      return "Rad qilish";
+      return "T\u1eeb ch\u1ed1i";
     },
     rejectedTheInvitation$1(username) {
-      return username + " taklifni rad qildi";
+      return username + " \u0111\xe3 t\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
     },
     get$removeAllOtherDevices() {
-      return "Qolgan barcha qurilmalarni o\u02bbchirish";
+      return "X\xf3a t\u1ea5t c\u1ea3 thi\u1ebft b\u1ecb kh\xe1c";
     },
     get$unbanFromChat() {
-      return "Suhbat blokidan chiqazish";
+      return "B\u1ecf c\u1ea5m kh\u1ecfi tr\xf2 chuy\u1ec7n";
     },
     get$removeYourAvatar() {
-      return "Avatarni o\u02bbchirish";
+      return "G\u1ee1 \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a b\u1ea1n";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Guruhni yangiroq versiya bilan almashtirish";
+      return "Thay th\u1ebf ph\xf2ng b\u1eb1ng phi\xean b\u1ea3n m\u1edbi h\u01a1n";
     },
     get$reply(_) {
-      return "Javob yozish";
+      return "Tr\u1ea3 l\u1eddi";
     },
     get$reportMessage() {
-      return "Xabar berish";
+      return "B\xe1o c\xe1o tin nh\u1eafn";
     },
     get$roomHasBeenUpgraded() {
-      return "Xona takomillashtirildi";
+      return "Ph\xf2ng \u0111\xe3 \u0111\u01b0\u1ee3c n\xe2ng c\u1ea5p";
     },
     get$saveFile() {
-      return "Fayl saqlash";
+      return "L\u01b0u t\u1ec7p";
     },
     get$search(_) {
-      return "Qidiruv";
+      return "T\xecm ki\u1ebfm";
     },
     get$security() {
-      return "Xavfsizlik";
+      return "B\u1ea3o m\u1eadt";
     },
     get$recoveryKey() {
-      return "Tiklash kaliti";
+      return "Kh\xf3a kh\xf4i ph\u1ee5c";
     },
     get$recoveryKeyLost() {
-      return "Tiklash kaliti yo\u2018qolib qoldimi?";
+      return "M\u1ea5t kh\xf3a kh\xf4i ph\u1ee5c?";
     },
     get$send(_) {
-      return "Yuborish";
+      return "G\u1eedi";
     },
     get$sendAMessage() {
-      return "Xabar yuborish";
+      return "G\u1eedi tin nh\u1eafn";
     },
     get$sendAudio() {
-      return "Audio yuborish";
+      return "G\u1eedi \xe2m thanh";
     },
     get$sendFile() {
-      return "Faylni yuborish";
+      return "G\u1eedi t\u1ec7p";
     },
     get$sendImage() {
-      return "Rasm yuborish";
+      return "G\u1eedi h\xecnh \u1ea3nh";
     },
     sendImages$1(count) {
-      return "" + count + " ta rasm yuborish";
+      return "G\u1eedi " + count + " h\xecnh \u1ea3nh";
     },
     get$sendMessages() {
-      return "Xabarlar yuborish";
+      return "G\u1eedi tin nh\u1eafn";
     },
     get$sendVideo() {
-      return "Video yuborish";
+      return "G\u1eedi video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " fayl yubordi";
+      return "\ud83d\udcc1 " + username + " \u0111\xe3 g\u1eedi t\u1ec7p";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " audio yubordi";
+      return "\ud83c\udfa4 " + username + " \u0111\xe3 g\u1eedi \xe2m thanh";
     },
     sentAPicture$1(username) {
-      return "\ufe0f \ud83d\uddbc\ufe0f " + username + " rasm yubordi";
+      return "\ud83d\uddbc\ufe0f " + username + " \u0111\xe3 g\u1eedi h\xecnh \u1ea3nh";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " stiker yubordi";
+      return "\ud83d\ude0a " + username + " \u0111\xe3 g\u1eedi nh\xe3n d\xe1n";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " video yubordi";
+      return "\ud83c\udfa5 " + username + " \u0111\xe3 g\u1eedi video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " chaqiruv axborotini yubordi";
+      return senderName + " \u0111\xe3 g\u1eedi th\xf4ng tin cu\u1ed9c g\u1ecdi";
     },
     get$setChatDescription() {
-      return "Suhbat tavsifini sozlash";
+      return "\u0110\u1eb7t m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$settings() {
-      return "Sozlamalar";
+      return "C\xe0i \u0111\u1eb7t";
     },
     get$share(_) {
-      return "Bo\u2018lishmoq";
+      return "Chia s\u1ebb";
     },
     sharedTheLocation$1(username) {
-      return username + " joylashuvini ulashdi";
+      return username + " \u0111\xe3 chia s\u1ebb v\u1ecb tr\xed";
     },
     get$shareLocation() {
-      return "Joylashuvni ulashish";
+      return "Chia s\u1ebb v\u1ecb tr\xed";
     },
     get$skip(_) {
-      return "Tashlab ketish";
+      return "B\u1ecf qua";
     },
     get$sourceCode() {
-      return "Manba kodi";
+      return "M\xe3 ngu\u1ed3n";
     },
     get$spaceIsPublic() {
-      return "Guruh ochiq";
+      return "Kh\xf4ng gian l\xe0 c\xf4ng khai";
     },
     get$spaceName() {
-      return "Guruh nomi";
+      return "T\xean";
     },
     startedACall$1(senderName) {
-      return senderName + " chaqiruv boshladi";
+      return senderName + " \u0111\xe3 b\u1eaft \u0111\u1ea7u cu\u1ed9c g\u1ecdi";
     },
     get$status(_) {
-      return "Holati";
+      return "Tr\u1ea1ng th\xe1i";
     },
     get$submit(_) {
-      return "Yuborish";
+      return "G\u1eedi";
     },
     get$synchronizingPleaseWait() {
-      return "Sinxronlanmoqda... Iltimos, kuting.";
+      return "\u0110ang \u0111\u1ed3ng b\u1ed9\u2026 Vui l\xf2ng ch\u1edd.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Sinxronlanmoqda... (" + percentage + "%)";
+      return "\u0110ang \u0111\u1ed3ng b\u1ed9\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Tizim";
+      return "H\u1ec7 th\u1ed1ng";
     },
     get$theyDontMatch() {
-      return "Ular mos emas";
+      return "Kh\xf4ng kh\u1edbp";
     },
     get$theyMatch() {
-      return "Ular mos keladi";
+      return "Kh\u1edbp nhau";
     },
     get$tooManyRequestsWarning() {
-      return "Talablar soni oshib ketdi. Keyinroq qayta urining!";
+      return "Qu\xe1 nhi\u1ec1u y\xeau c\u1ea7u. Th\u1eed l\u1ea1i sau!";
     },
     get$transferFromAnotherDevice() {
-      return "Boshqa qurilmadan uzatish";
+      return "Chuy\u1ec3n t\u1eeb thi\u1ebft b\u1ecb kh\xe1c";
     },
     get$tryToSendAgain() {
-      return "Qayta yuborishga urining";
+      return "Th\u1eed g\u1eedi l\u1ea1i";
     },
     get$unavailable() {
-      return "Mavjud emas";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     unbannedUser$2(username, targetName) {
-      return username + " " + targetName + "ni blokdan chiqardi";
+      return username + " \u0111\xe3 b\u1ecf c\u1ea5m " + targetName;
     },
     get$unblockDevice() {
-      return "Qurilmani blokdan chiqarish";
+      return "B\u1ecf ch\u1eb7n thi\u1ebft b\u1ecb";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Noma\u2019lum shifrlash algoritmi";
+      return "Thu\u1eadt to\xe1n m\xe3 h\xf3a kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     unknownEvent$1(type) {
-      return "Noma\u2019lum hodisa '" + type + "'";
+      return "S\u1ef1 ki\u1ec7n '" + type + "' kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$unpin() {
-      return "Olib tashlash";
+      return "B\u1ecf ghim";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " va yana " + count + " kishi yozmoqda\u2026";
+      return username + " v\xe0 " + count + " ng\u01b0\u1eddi kh\xe1c \u0111ang nh\u1eadp\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " va " + username2 + " yozmoqda\u2026";
+      return username + " v\xe0 " + username2 + " \u0111ang nh\u1eadp\u2026";
     },
     userIsTyping$1(username) {
-      return username + " yozmoqda\u2026";
+      return username + " \u0111ang nh\u1eadp\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " suhbatni tark etdi";
+      return "\ud83d\udeaa " + username + " \u0111\xe3 r\u1eddi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$username(_) {
-      return "Foydalanuvchi nomi";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " " + type + " tadbirini yubordi";
+      return username + " \u0111\xe3 g\u1eedi s\u1ef1 ki\u1ec7n " + type;
     },
     get$unverified() {
-      return "Tasdiqlanmagan";
+      return "Ch\u01b0a x\xe1c minh";
     },
     get$verified() {
-      return "Tasdiqlangan";
+      return "\u0110\xe3 x\xe1c th\u1ef1c";
     },
     get$verifyStart() {
-      return "Tasdiqlashni boshlash";
+      return "B\u1eaft \u0111\u1ea7u x\xe1c minh";
     },
     get$verifySuccess() {
-      return "Siz tasdiqladingiz!";
+      return "B\u1ea1n \u0111\xe3 x\xe1c minh th\xe0nh c\xf4ng!";
     },
     get$verifyTitle() {
-      return "Boshqa hisob tasdiqlanmoqda";
+      return "X\xe1c minh t\xe0i kho\u1ea3n kh\xe1c";
     },
     get$visibleForAllParticipants() {
-      return "Barcha ishtirokchilarga ko\u2018rinadi";
+      return "Hi\u1ec3n th\u1ecb cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia";
     },
     get$visibleForEveryone() {
-      return "Hammaga ko\u2018rinadigan";
+      return "Hi\u1ec3n th\u1ecb cho m\u1ecdi ng\u01b0\u1eddi";
     },
     get$voiceMessage() {
-      return "Ovozli xabar";
+      return "Tin nh\u1eafn tho\u1ea1i";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Hamkor so\u2018rovni qabul qilishi kutilmoqda\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn y\xeau c\u1ea7u\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Hamkor emoji qabul qilishini kutmoqda\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Hamkor raqamlarni qabul qilishi kutilmoqda\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn s\u1ed1\u2026";
     },
     get$warning() {
-      return "Ogohlantirish!";
+      return "C\u1ea3nh b\xe1o!";
     },
     get$weSentYouAnEmail() {
-      return "Sizga xat yubordik";
+      return "Ch\xfang t\xf4i v\u1eeba g\u1eedi email cho b\u1ea1n";
     },
     get$whyDoYouWantToReportThis() {
-      return "Nima uchun bu haqda xabar bermoqchisiz?";
+      return "T\u1ea1i sao b\u1ea1n mu\u1ed1n b\xe1o c\xe1o?";
     },
     get$wipeChatBackup() {
-      return "Yangi tiklash kalitini yaratish uchun suhbat zaxirasi tozalansinmi?";
+      return "X\xf3a sao l\u01b0u tr\xf2 chuy\u1ec7n \u0111\u1ec3 t\u1ea1o kh\xf3a kh\xf4i ph\u1ee5c m\u1edbi?";
     },
     get$writeAMessage() {
-      return "Xabar yozish\u2026";
+      return "Vi\u1ebft tin nh\u1eafn\u2026";
     },
     get$yes() {
-      return "Ha";
+      return "C\xf3";
     },
     get$you() {
-      return "Siz";
+      return "B\u1ea1n";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Siz ortiq bu suhbatda qatnashmayapsiz";
+      return "B\u1ea1n kh\xf4ng c\xf2n tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Bu suhbatdan bloklandingiz";
+      return "B\u1ea1n \u0111\xe3 b\u1ecb c\u1ea5m kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
     },
     get$yourPublicKey() {
-      return "Ochiq kalitingiz";
+      return "Kh\xf3a c\xf4ng khai c\u1ee7a b\u1ea1n";
     },
     get$messageInfo() {
-      return "Xabar axboroti";
+      return "Th\xf4ng tin tin nh\u1eafn";
     },
     get$time(_) {
-      return "Vaqt";
+      return "Th\u1eddi gian";
     },
     get$sender() {
-      return "Yuboruvchi";
+      return "Ng\u01b0\u1eddi g\u1eedi";
     },
     get$openGallery() {
-      return "Galereyani ochish";
+      return "M\u1edf th\u01b0 vi\u1ec7n";
     },
     get$start(_) {
-      return "Boshlash";
+      return "B\u1eaft \u0111\u1ea7u";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "Eski xabarlaringizni qulfdan chiqarish uchun, iltimos, avvalgi seansdan yaratilgan tiklash kalitingizni kiriting. Sizning tiklash kalitingiz parolingiz EMAS.";
+      return "\u0110\u1ec3 m\u1edf kh\xf3a tin nh\u1eafn c\u0169, h\xe3y nh\u1eadp kh\xf3a kh\xf4i ph\u1ee5c \u0111\xe3 t\u1ea1o \u1edf phi\xean tr\u01b0\u1edbc. Kh\xf3a kh\xf4i ph\u1ee5c KH\xd4NG ph\u1ea3i l\xe0 m\u1eadt kh\u1ea9u.";
     },
     get$markAsRead() {
-      return "O\u02bbqilgan sifatida belgilash";
+      return "\u0110\xe1nh d\u1ea5u \u0111\xe3 \u0111\u1ecdc";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " " + reaction + " bilan reaksiya bildirdi";
+      return sender + " b\xe0y t\u1ecf " + reaction;
     },
     get$pinMessage() {
-      return "Xonaga mahkamlash";
+      return "Ghim ph\xf2ng";
     },
     get$emojis() {
-      return "Emojilar";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$youRejectedTheInvitation() {
-      return "Taklifni rad etdingiz";
+      return "B\u1ea1n \u0111\xe3 t\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
     },
     get$youJoinedTheChat() {
-      return "Siz suhbatga qo\u02bbshildingiz";
+      return "B\u1ea1n \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Taklifni qabul qildingiz";
+      return "\ud83d\udc4d B\u1ea1n \u0111\xe3 ch\u1ea5p nh\u1eadn l\u1eddi m\u1eddi";
     },
     youBannedUser$1(user) {
-      return "Siz " + user + "ni blokladingiz";
+      return "B\u1ea1n \u0111\xe3 c\u1ea5m " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Siz " + user + " uchun taklifnomani bekor qildingiz";
+      return "B\u1ea1n \u0111\xe3 r\xfat l\u1ea1i l\u1eddi m\u1eddi cho " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Sizni " + user + " taklif qildi";
+      return "\ud83d\udce9 B\u1ea1n \u0111\u01b0\u1ee3c m\u1eddi b\u1edfi " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Siz " + user + "ni taklif qildingiz";
+      return "\ud83d\udce9 B\u1ea1n \u0111\xe3 m\u1eddi " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Siz " + user + "ni chiqarib yubordingiz";
+      return "\ud83d\udc5e B\u1ea1n \u0111\xe3 \u0111\xe1 " + user;
     },
     youUnbannedUser$1(user) {
-      return user + "ni blokdan chiqardingiz";
+      return "B\u1ea1n \u0111\xe3 b\u1ecf c\u1ea5m " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " taqillatdi";
+      return "\ud83d\udeaa " + user + " v\u1eeba g\xf5 y\xeau c\u1ea7u tham gia";
     },
     get$knock() {
-      return "Taqillating";
+      return "G\xf5 y\xeau c\u1ea7u";
     },
     get$unlockOldMessages() {
-      return "Eski xabarlarni qulfdan chiqaring";
+      return "M\u1edf kh\xf3a tin nh\u1eafn c\u0169";
     },
     get$storeInSecureStorageDescription() {
-      return "Qayta tiklash kalitini ushbu qurilmaning xavfsiz xotirasida saqlang.";
+      return "L\u01b0u kh\xf3a kh\xf4i ph\u1ee5c trong b\u1ed9 nh\u1edb b\u1ea3o m\u1eadt c\u1ee7a thi\u1ebft b\u1ecb.";
     },
     get$saveKeyManuallyDescription() {
-      return "Tizim ulashish dialog oynasi yoki buferni ishga tushirish orqali ushbu kalitni qo\u02bblda saqlang.";
+      return "L\u01b0u kh\xf3a n\xe0y th\u1ee7 c\xf4ng qua t\xednh n\u0103ng chia s\u1ebb ho\u1eb7c sao ch\xe9p.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "Ushbu qurilmada xavfsiz saqlang";
+      return "L\u01b0u an to\xe0n tr\xean thi\u1ebft b\u1ecb n\xe0y";
     },
     countFiles$1(count) {
-      return "" + count + " fayllar";
+      return "" + count + " t\u1ec7p";
     },
     get$user() {
-      return "Foydalanuvchi";
+      return "Ng\u01b0\u1eddi d\xf9ng";
     },
     get$custom() {
-      return "Maxsus";
+      return "T\xf9y ch\u1ec9nh";
     },
     get$noKeyForThisMessage() {
-      return "Bu xabar siz ushbu qurilmada hisobingizga kirishdan oldin yuborilgan bo\u02bblsa sodir bo\u02bblishi mumkin.\n\nShuningdek, jo\u02bbnatuvchi qurilmangizni bloklagan yoki internet ulanishida biron bir muammo yuzaga kelgan bo\u02bblishi mumkin.\n\nXabarni boshqa sessiyada o\u02bbqiy olasizmi? Keyin xabarni undan uzatishingiz mumkin! Sozlamalar > Qurilmalar bo\u02bblimiga o\u02bbting va qurilmalaringiz bir-birini tasdiqlaganligiga ishonch hosil qiling. Keyingi safar xonani ochganingizda va ikkala sessiya ham oldinda bo\u02bblganda, kalitlar avtomatik ravishda uzatiladi.\n\nTizimdan chiqishda yoki qurilmalarni almashtirishda kalitlarni yo\u02bbqotishni xohlamaysizmi? Sozlamalarda suhbatning zaxira nusxasini yoqganingizga ishonch hosil qiling.";
+      return "C\xf3 th\u1ec3 tin nh\u1eafn \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi tr\u01b0\u1edbc khi b\u1ea1n \u0111\u0103ng nh\u1eadp tr\xean thi\u1ebft b\u1ecb n\xe0y. Ho\u1eb7c thi\u1ebft b\u1ecb c\u1ee7a b\u1ea1n b\u1ecb ch\u1eb7n ho\u1eb7c c\xf3 l\u1ed7i k\u1ebft n\u1ed1i. N\u1ebfu b\u1ea1n \u0111\u1ecdc \u0111\u01b0\u1ee3c tin tr\xean thi\u1ebft b\u1ecb kh\xe1c, h\xe3y truy\u1ec1n kh\xf3a v\u1ec1 thi\u1ebft b\u1ecb n\xe0y! V\xe0o C\xe0i \u0111\u1eb7t > Thi\u1ebft b\u1ecb v\xe0 x\xe1c minh l\u1eabn nhau. Khi m\u1edf ph\xf2ng v\xe0 c\u1ea3 hai thi\u1ebft b\u1ecb \u0111\u1ec1u tr\u1ef1c tuy\u1ebfn, ch\xfang s\u1ebd t\u1ef1 trao \u0111\u1ed5i kh\xf3a. Kh\xf4ng mu\u1ed1n m\u1ea5t kh\xf3a khi \u0111\u0103ng xu\u1ea5t? H\xe3y b\u1eadt sao l\u01b0u tr\xf2 chuy\u1ec7n trong c\xe0i \u0111\u1eb7t.";
     },
     get$newSpace() {
-      return "Yangi maydon";
+      return "Kh\xf4ng gian m\u1edbi";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Bo\u02bbsh suhbat (" + oldDisplayName + " edi)";
+      return "H\u1ed9i tho\u1ea1i tr\u1ed1ng (t\u1eebng l\xe0 " + oldDisplayName + ")";
     },
     get$newSpaceDescription() {
-      return "Maydonlar sizga suhbatlaringizni birlashtirish va shaxsiy yoki ommaviy hamjamiyatlarni yaratish imkonini beradi.";
+      return "Kh\xf4ng gian cho ph\xe9p b\u1ea1n h\u1ee3p nh\u1ea5t c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang t\u01b0 ho\u1eb7c c\xf4ng khai.";
     },
     get$reopenChat() {
-      return "Suhbatni qayta ochish";
+      return "M\u1edf l\u1ea1i cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$noOtherDevicesFound() {
-      return "Boshqa qurilma topilmadi";
+      return "Kh\xf4ng t\xecm th\u1ea5y thi\u1ebft b\u1ecb kh\xe1c";
     },
     fileIsTooBigForServer$1(max) {
-      return "Yuborish imkonsiz! Server faqat " + max + " hajmgacha bo\u2018lgan ilovalarni qo\u2018llab-quvvatlaydi.";
+      return "M\xe1y ch\u1ee7 b\xe1o c\xe1o r\u1eb1ng t\u1ec7p tin qu\xe1 l\u1edbn \u0111\u1ec3 g\u1eedi.";
     },
     fileHasBeenSavedAt$1(path) {
-      return "Fayl " + path + "da saqlandi";
+      return "T\u1ec7p \u0111\xe3 \u0111\u01b0\u1ee3c l\u01b0u t\u1ea1i " + path;
     },
     get$jumpToLastReadMessage() {
-      return "Oxirgi o\u2018qilgan xabarga o\u2018tish";
+      return "\u0110i t\u1edbi tin nh\u1eafn \u0111\xe3 \u0111\u1ecdc m\u1edbi nh\u1ea5t";
     },
     get$readUpToHere() {
-      return "Bu yerga qadar o\u2018qish";
+      return "\u0110\u1ecdc t\u1edbi \u0111\xe2y";
     },
     get$jump() {
-      return "Sakrash";
+      return "\u0110i t\u1edbi";
     },
     get$openLinkInBrowser() {
-      return "Havolani brauzerda ochish";
+      return "M\u1edf \u0111\u01b0\u1eddng d\u1eabn trong tr\xecnh duy\u1ec7t";
     },
     get$setColorTheme() {
-      return "Rang mavzusini sozlash:";
+      return "Ch\u1ecdn m\xe0u giao di\u1ec7n:";
     },
     get$invite() {
-      return "Taklif qilish";
+      return "M\u1eddi";
     },
     get$invalidInput() {
-      return "Xato kiritildi!";
+      return "D\u1eef li\u1ec7u nh\u1eadp kh\xf4ng h\u1ee3p l\u1ec7!";
     },
     wrongPinEntered$1(seconds) {
-      return "PIN noto\u2018g\u2018ri kiritildi! " + seconds + " soniyadan keyin qayta urining...";
+      return "Nh\u1eadp sai m\xe3 pin! Th\u1eed l\u1ea1i sau " + seconds + " gi\xe2y...";
     },
     get$pleaseEnterANumber() {
-      return "0 dan katta son kiriting";
+      return "H\xe3y nh\u1eadp s\u1ed1 l\u1edbn h\u01a1n 0";
     },
     get$removeDevicesDescription() {
-      return "Bu qurilmadan chiqarilasiz va ortiq xabarlarni qabul qila olmaysiz.";
+      return "B\u1ea1n s\u1ebd \u0111\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb n\xe0y v\xe0 kh\xf4ng nh\u1eadn \u0111\u01b0\u1ee3c tin nh\u1eafn n\u1eefa.";
     },
     get$banUserDescription() {
-      return "Foydalanuvchi suhbatdan bloklanadi va blokdan chiqarilmaguncha suhbatga qayta kira olmaydi.";
+      return "Ng\u01b0\u1eddi d\xf9ng s\u1ebd b\u1ecb c\u1ea5m kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 kh\xf4ng th\u1ec3 tham gia l\u1ea1i cho t\u1edbi khi \u0111\u01b0\u1ee3c g\u1ee1 c\u1ea5m.";
     },
     get$unbanUserDescription() {
-      return "Foydalanuvchi qayta suhbatga kira oladi agar ular urinib ko\u02bbrishsa.";
+      return "Ng\u01b0\u1eddi d\xf9ng s\u1ebd c\xf3 th\u1ec3 v\xe0o l\u1ea1i cu\u1ed9c tr\xf2 chuy\u1ec7n n\u1ebfu h\u1ecd th\u1eed.";
     },
     get$kickUserDescription() {
-      return "Foydalanuvchi suhbatdan chiqarib yuboriladi, ammo taqiqlanmaydi. Ommaviy chatlarda foydalanuvchi istalgan vaqtda qayta qo\u02bbshilishi mumkin.";
+      return "Ng\u01b0\u1eddi d\xf9ng b\u1ecb \u0111u\u1ed5i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n nh\u01b0ng kh\xf4ng b\u1ecb c\u1ea5m. Trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n c\xf4ng khai, ng\u01b0\u1eddi d\xf9ng c\xf3 th\u1ec3 v\xe0o l\u1ea1i b\u1ea5t c\u1ee9 l\xfac n\xe0o.";
     },
     get$makeAdminDescription() {
-      return "Bu foydalanuvchini admini qilsangiz, uni bekor qila olmasligingiz mumkin, chunki u siz bilan bir xil ruxsatlarga ega bo\u2018ladi.";
+      return "Khi b\u1ea1n \u0111\u1eb7t ng\u01b0\u1eddi d\xf9ng n\xe0y l\xe0m qu\u1ea3n tr\u1ecb vi\xean, b\u1ea1n kh\xf4ng th\u1ec3 ho\xe0n t\xe1c vi\u1ec7c n\xe0y v\xec khi \u0111\xf3 h\u1ecd s\u1ebd c\xf3 quy\u1ec1n ngang b\u1ea1n.";
     },
     get$yourGlobalUserIdIs() {
-      return "Global foydalanuvchi ID raqamingiz: ";
+      return "ID ng\u01b0\u1eddi d\xf9ng to\xe0n c\u1ee5c c\u1ee7a b\u1ea1n l\xe0: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Afsuski, "' + query + '" so\u02bbrovi bilan foydalanuvchi topilmadi. Iltimos, xato qilganingizni tekshiring.';
+      return 'Kh\xf4ng t\xecm th\u1ea5y ng\u01b0\u1eddi d\xf9ng n\xe0o v\u1edbi "' + query + '". H\xe3y ki\u1ec3m tra xem b\u1ea1n c\xf3 nh\u1eadp nh\u1ea7m kh\xf4ng.';
     },
     get$knocking() {
-      return "Taqillatmoqda";
+      return "\u0110ang y\xeau c\u1ea7u tham gia";
     },
     get$groupName() {
-      return "Guruh nomi";
+      return "T\xean nh\xf3m";
     },
     get$createGroupAndInviteUsers() {
-      return "Guruh yaratish va foydalanuvchilarni taklif qilish";
+      return "T\u1ea1o nh\xf3m v\xe0 m\u1eddi ng\u01b0\u1eddi d\xf9ng";
     },
     get$groupCanBeFoundViaSearch() {
-      return "Guruh qidiruv orqali topilishi mumkin";
+      return "Nh\xf3m c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c t\xecm th\u1ea5y th\xf4ng qua t\xecm ki\u1ebfm";
     },
     get$wrongRecoveryKey() {
-      return "Kechirasiz... bu to\u02bbg\u02bbri tiklash kaliti emasga o\u02bbxshaydi.";
+      return "R\u1ea5t ti\u1ebfc... \u0110\xe2y kh\xf4ng ph\u1ea3i l\xe0 kh\xf3a kh\xf4i ph\u1ee5c ch\xednh x\xe1c.";
     },
     get$startConversation() {
-      return "Suhbat boshlash";
+      return "B\u1eaft \u0111\u1ea7u h\u1ed9i tho\u1ea1i";
     },
     get$commandHint_sendraw() {
-      return "Xom jsonni yuborish";
+      return "G\u1eedi JSON d\u1ea1ng th\xf4";
     },
     get$searchForUsers() {
-      return "@users ni qidiring...";
+      return "T\xecm ki\u1ebfm @ng\u01b0\u1eddi_d\xf9ng...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Iltimos, joriy maxfiy so\u02bbzingizni kiriting";
+      return "Vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u hi\u1ec7n t\u1ea1i";
     },
     get$newPassword() {
-      return "Yangi maxfiy so\u02bbz";
+      return "M\u1eadt kh\u1ea9u m\u1edbi";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Iltimos kuchli maxfiy so\u02bbz tanlang";
+      return "Vui l\xf2ng ch\u1ecdn m\u1eadt kh\u1ea9u m\u1ea1nh";
     },
     get$passwordsDoNotMatch() {
-      return "Maxfiy so\u02bbzlar mos kelmadi";
+      return "M\u1eadt kh\u1ea9u kh\xf4ng tr\xf9ng kh\u1edbp";
     },
     get$passwordIsWrong() {
-      return "Siz kiritgan maxfiy so\u02bbz xato";
+      return "M\u1eadt kh\u1ea9u b\u1ea1n nh\u1eadp kh\xf4ng \u0111\xfang";
     },
     get$decline() {
-      return "Rad qilish";
+      return "T\u1eeb ch\u1ed1i";
     },
     get$thisDevice() {
-      return "Ushbu qurilma:";
+      return "Thi\u1ebft b\u1ecb n\xe0y:";
     },
     get$initAppError() {
-      return "Ilovani ishga tushirishda xatolik yuz berdi";
+      return "\u0110\xe3 x\u1ea3y ra l\u1ed7i khi kh\u1edfi t\u1ea1o \u1ee9ng d\u1ee5ng";
     },
     searchIn$1(chat) {
-      return 'Suhbat "' + chat + '"da qidiring...';
+      return 'T\xecm trong cu\u1ed9c tr\xf2 chuy\u1ec7n "' + chat + '"...';
     },
     get$searchMore() {
-      return "Ko\u02bbproq qidirish...";
+      return "T\xecm th\xeam...";
     },
     get$gallery() {
-      return "Galereya";
+      return "Th\u01b0 vi\u1ec7n";
     },
     get$files(_) {
-      return "Fayllar";
+      return "T\u1ec7p";
     },
     sessionLostBody$2(url, error) {
-      return "Seansingiz yo\u02bbqoldi. Iltimos, ushbu xato haqida " + url + string$._manzi + error;
+      return "Phi\xean c\u1ee7a b\u1ea1n \u0111\xe3 m\u1ea5t. Vui l\xf2ng b\xe1o l\u1ed7i n\xe0y cho nh\xe0 ph\xe1t tri\u1ec3n t\u1ea1i " + url + ". Th\xf4ng b\xe1o l\u1ed7i: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Ilova endi seansingizni zaxira nusxasidan tiklashga harakat qiladi. Iltimos, ushbu xato haqida " + url + string$._manzi + error;
+      return "\u1ee8ng d\u1ee5ng s\u1ebd kh\xf4i ph\u1ee5c phi\xean c\u1ee7a b\u1ea1n t\u1eeb sao l\u01b0u. Vui l\xf2ng b\xe1o l\u1ed7i n\xe0y cho nh\xe0 ph\xe1t tri\u1ec3n t\u1ea1i " + url + ". Th\xf4ng b\xe1o l\u1ed7i: " + error;
     },
     get$sendReadReceipts() {
-      return "O\u02bbqilganlik haqida xabarnomalarni yuborish";
+      return "G\u1eedi x\xe1c nh\u1eadn \u0111\xe3 \u0111\u1ecdc";
     },
     get$sendTypingNotificationsDescription() {
-      return "Suhbatdagi boshqa ishtirokchilar siz yangi xabar yozayotganingizni ko\u02bbrishlari mumkin.";
+      return "Nh\u1eefng th\xe0nh vi\xean kh\xe1c th\u1ea5y khi b\u1ea1n \u0111ang nh\u1eadp tin nh\u1eafn.";
     },
     get$sendReadReceiptsDescription() {
-      return "Suhbatdagi boshqa ishtirokchilar sizning xabarni qachon o\u02bbqiganingizni ko\u02bbrishlari mumkin.";
+      return "Nh\u1eefng th\xe0nh vi\xean kh\xe1c th\u1ea5y khi b\u1ea1n \u0111\xe3 \u0111\u1ecdc tin nh\u1eafn.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Boshqa qurilmani tasdiqlang";
+      return "\ud83d\udd10 X\xe1c minh thi\u1ebft b\u1ecb kh\xe1c";
     },
     get$verifyOtherDeviceDescription() {
-      return "Boshqa qurilmani tasdiqlaganingizda, bu qurilmalar kalitlarni almashishi mumkin, bu umumiy xavfsizligingizni oshiradi. \ud83d\udcaa Tasdiqlashni boshlaganingizda, ikkala qurilmada ham ilovada qalqib chiquvchi oyna paydo bo\u2018ladi. U yerda siz bir-biri bilan taqqoslashingiz kerak bo\u2018lgan emojilar yoki raqamlar qatorini ko\u2018rasiz. Tasdiqlashni boshlashdan oldin ikkala qurilma ham yoningizda bo\u2018lgani ma\u2019qul. \u2713";
+      return "Khi x\xe1c minh thi\u1ebft b\u1ecb kh\xe1c, hai thi\u1ebft b\u1ecb c\xf3 th\u1ec3 trao \u0111\u1ed5i kh\xf3a, t\u0103ng b\u1ea3o m\u1eadt t\u1ed5ng th\u1ec3. Khi b\u1eaft \u0111\u1ea7u x\xe1c minh, c\u1ea3 hai thi\u1ebft b\u1ecb s\u1ebd th\u1ea5y m\u1ed9t popup so s\xe1nh chu\u1ed7i bi\u1ec3u t\u01b0\u1ee3ng ho\u1eb7c s\u1ed1. H\xe3y chu\u1ea9n b\u1ecb s\u1eb5n hai thi\u1ebft b\u1ecb tr\u01b0\u1edbc khi x\xe1c minh.";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " kalit tekshiruvini qabul qildi";
+      return sender + " \u0111\xe3 ch\u1ea5p nh\u1eadn x\xe1c minh kh\xf3a";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " kalit tekshiruvini bekor qildi";
+      return sender + " \u0111\xe3 h\u1ee7y x\xe1c minh kh\xf3a";
     },
     completedKeyVerification$1(sender) {
-      return sender + " kalitni tasdiqlashni yakunladi";
+      return sender + " \u0111\xe3 ho\xe0n t\u1ea5t x\xe1c minh kh\xf3a";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " kalitni tasdiqlash uchun tayyor";
+      return sender + " s\u1eb5n s\xe0ng x\xe1c minh kh\xf3a";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " kalitni tasdiqlash talabini yubordi";
+      return sender + " \u0111\xe3 y\xeau c\u1ea7u x\xe1c minh kh\xf3a";
     },
     startedKeyVerification$1(sender) {
-      return sender + " kalit tekshiruvini so\u2018radi";
+      return sender + " \u0111\xe3 b\u1eaft \u0111\u1ea7u x\xe1c minh kh\xf3a";
     },
     get$commandHint_ignore() {
-      return "Berilgan matriks ID e\u2019tiborga olinmasin";
+      return "Ph\u1edbt l\u1edd matrix ID n\xe0y";
     },
     get$commandHint_unignore() {
-      return "Berilgan matriks IDni e\u2019tiborsiz qoldirish";
+      return "B\u1ecf ph\u1edbt l\u1edd matrix ID n\xe0y";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Hozirda " + count + " ta foydalanuvchi bloklangan.";
+      return "Hi\u1ec7n c\xf3 " + count + " ng\u01b0\u1eddi d\xf9ng b\u1ecb ch\u1eb7n.";
     },
     get$restricted() {
-      return "Cheklangan";
+      return "B\u1ecb h\u1ea1n ch\u1ebf";
     },
     get$markAsUnread() {
-      return "Ochilmagan deb belgilash";
+      return "\u0110\xe1nh d\u1ea5u ch\u01b0a \u0111\u1ecdc";
     },
     userLevel$1(level) {
-      return "" + level + " - Foydalanuvchi";
+      return "" + level + " - Ng\u01b0\u1eddi d\xf9ng";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
+      return "" + level + " - \u0110i\u1ec1u h\xe0nh vi\xean";
     },
     adminLevel$1(level) {
-      return "" + level + " - Admin";
+      return "" + level + " - Qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Suhbat tarix ko\u02bbrinishini o\u02bbzgartirish";
+      return "Thay \u0111\u1ed5i c\xe1ch hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed tr\xf2 chuy\u1ec7n";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Asosiy umumiy suhbat manzilini o\u02bbzgartirish";
+      return "Thay \u0111\u1ed5i b\xed danh c\xf4ng khai ch\xednh";
     },
     get$sendRoomNotifications() {
-      return "@room bildirishnomalarini yuborish";
+      return "G\u1eedi th\xf4ng b\xe1o @room";
     },
     get$chatPermissionsDescription() {
-      return "Ushbu suhbatda muayyan harakatlar uchun qaysi quvvat darajasi zarurligini aniqlang. 0, 50 va 100 quvvat darajalari odatda foydalanuvchilar, moderatorlar va administratorlarni ifodalaydi, ammo har qanday gradatsiya mumkin.";
+      return "\u0110\u1eb7t m\u1ee9c quy\u1ec1n t\u1ed1i thi\u1ec3u c\u1ea7n thi\u1ebft cho m\u1ed7i h\xe0nh \u0111\u1ed9ng. Th\u01b0\u1eddng c\u1ea5p 0, 50 v\xe0 100 t\u01b0\u01a1ng \u1ee9ng ng\u01b0\u1eddi d\xf9ng, \u0111i\u1ec1u h\xe0nh v\xe0 qu\u1ea3n tr\u1ecb, nh\u01b0ng b\u1ea1n c\xf3 th\u1ec3 t\xf9y ch\u1ec9nh chi ti\u1ebft.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " versiyasiga yangilandi!";
+      return "\ud83c\udf89 \u0110\xe3 c\xe0i \u0111\u1eb7t b\u1ea3n c\u1eadp nh\u1eadt " + version + "!";
     },
     get$sendCanceled() {
-      return "Yuborish bekor qilindi";
+      return "\u0110\xe3 h\u1ee7y g\u1eedi";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Uy serveri mos emasga o\u2018xshaydi. URL xato kiritilganmi?";
+      return "C\xf3 v\u1ebb \u0111\xe2y kh\xf4ng ph\u1ea3i m\xe1y ch\u1ee7 t\u01b0\u01a1ng th\xedch. URL sai?";
     },
     get$calculatingFileSize() {
-      return "Fayl hajmi hisoblanmoqda...";
+      return "\u0110ang t\xednh k\xedch th\u01b0\u1edbc t\u1ec7p...";
     },
     get$prepareSendingAttachment() {
-      return "Yuborish uchun biriktirmani tayyorlang...";
+      return "Chu\u1ea9n b\u1ecb g\u1eedi t\u1ec7p \u0111\xednh k\xe8m...";
     },
     get$sendingAttachment() {
-      return "Biriktirish yuborilmoqda...";
+      return "\u0110ang g\u1eedi t\u1ec7p \u0111\xednh k\xe8m...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Biriktirma yuborilmoqda: " + index + " of " + $length + "...";
+      return "\u0110ang g\u1eedi t\u1ec7p \u0111\xednh k\xe8m " + index + " / " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Server limiti tugadi! " + seconds + " soniya kutilmoqda...";
+      return "M\xe1y ch\u1ee7 qu\xe1 t\u1ea3i! \u0110\u1ee3i " + seconds + " gi\xe2y...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Eslatma: Barcha qurilmalaringizni suhbat zaxira nusxasiga ulaganingizda, ular avtomatik ravishda tasdiqlanadi.";
+      return "L\u01b0u \xfd: Khi b\u1ea1n th\xeam t\u1ea5t c\u1ea3 thi\u1ebft b\u1ecb v\xe0o sao l\u01b0u tr\xf2 chuy\u1ec7n, ch\xfang s\u1ebd t\u1ef1 \u0111\u1ed9ng \u0111\u01b0\u1ee3c x\xe1c minh.";
     },
     get$continueText() {
-      return "Davom ettirish";
+      return "Ti\u1ebfp";
     },
     get$blur(_) {
-      return "Xiralashtirish:";
+      return "M\u1edd:";
     },
     get$opacity(_) {
-      return "Noaniqlik:";
+      return "\u0110\u1ed9 trong su\u1ed1t:";
     },
     get$setWallpaper() {
-      return "Fon rasmini sozlash";
+      return "\u0110\u1eb7t h\xecnh n\u1ec1n";
     },
     get$noContactInformationProvided() {
-      return "Server hech qanday yaroqli kontakt axborotini taqdim etmaydi";
+      return "M\xe1y ch\u1ee7 kh\xf4ng cung c\u1ea5p th\xf4ng tin li\xean h\u1ec7 h\u1ee3p l\u1ec7";
     },
     get$contactServerAdmin() {
-      return "Server administratori bilan bog\u2018lanish";
+      return "Li\xean h\u1ec7 qu\u1ea3n tr\u1ecb vi\xean m\xe1y ch\u1ee7";
     },
     get$contactServerSecurity() {
-      return "Aloqa serveri xavfsizligi";
+      return "Li\xean h\u1ec7 b\u1ea3o m\u1eadt m\xe1y ch\u1ee7";
     },
     get$supportPage() {
-      return "Yordam sahifasi";
+      return "Trang h\u1ed7 tr\u1ee3";
     },
     get$serverInformation() {
-      return "Server haqida ma\u2019lumot:";
+      return "Th\xf4ng tin m\xe1y ch\u1ee7:";
     },
     get$name(_) {
-      return "Nomi";
+      return "T\xean";
     },
     get$version(_) {
-      return "Versiya";
+      return "Phi\xean b\u1ea3n";
     },
     get$website() {
-      return "Sayt";
+      return "Trang web";
     },
     get$compress() {
-      return "Siqmoq";
+      return "N\xe9n";
     },
     get$boldText() {
-      return "Qalin matn";
+      return "In \u0111\u1eadm";
     },
     get$italicText() {
-      return "Qiya matn";
+      return "In nghi\xeang";
     },
     get$strikeThrough() {
-      return "O\u2018tish joyi";
+      return "G\u1ea1ch ngang";
     },
     get$pleaseFillOut() {
-      return "Iltimos, to\u2018ldiring";
+      return "Vui l\xf2ng \u0111i\u1ec1n v\xe0o";
     },
     get$invalidUrl() {
-      return "Yaroqsiz url";
+      return "URL kh\xf4ng h\u1ee3p l\u1ec7";
     },
     get$addLink() {
-      return "Havola kiritish";
+      return "Th\xeam li\xean k\u1ebft";
     },
     get$unableToJoinChat() {
-      return "Chatga qo\u02bbshilib bo\u02bblmadi. Ehtimol, boshqa tomon suhbatni allaqachon yopib qo\u02bbygan.";
+      return "Kh\xf4ng th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n. C\xf3 th\u1ec3 ng\u01b0\u1eddi kia \u0111\xe3 \u0111\xf3ng phi\xean.";
     },
     get$previous() {
-      return "Avvalgi";
+      return "Tr\u01b0\u1edbc";
     },
     get$otherPartyNotLoggedIn() {
-      return "Narigi tomon hozirda hisobingizga kirmagan va shuning uchun xabarlarni qabul qila olmaydi!";
+      return "B\xean kia hi\u1ec7n kh\xf4ng \u0111\u0103ng nh\u1eadp, kh\xf4ng th\u1ec3 nh\u1eadn tin!";
     },
     get$open(_) {
-      return "Ochish";
+      return "M\u1edf";
     },
     get$waitingForServer() {
-      return "Server kutilmoqda...";
+      return "\u0110ang \u0111\u1ee3i ph\u1ea3n h\u1ed3i t\u1eeb m\xe1y ch\u1ee7...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Yangi suhbat uchun so\u02bbrov";
+      return "\ud83d\udce9 Y\xeau c\u1ea7u tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$contentNotificationSettings() {
-      return "Kontent bildirishnomasi sozlamalari";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o n\u1ed9i dung";
     },
     get$generalNotificationSettings() {
-      return "Umumiy bildirishnoma sozlamalari";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o chung";
     },
     get$roomNotificationSettings() {
-      return "Xona bildirishnomasi sozlamalari";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o ph\xf2ng";
     },
     get$userSpecificNotificationSettings() {
-      return "Foydalanuvchiga xos bildirishnoma sozlamalari";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o theo ng\u01b0\u1eddi d\xf9ng";
     },
     get$otherNotificationSettings() {
-      return "Boshqa bildirishnoma sozlamalari";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o kh\xe1c";
     },
     get$notificationRuleContainsUserName() {
-      return "Foydalanuvchi nomini ichiga oladi";
+      return "Ch\u1ee9a t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Xabarda foydalanuvchi nomi mavjud bo\u2018lsa, foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a t\xean ng\u01b0\u1eddi d\xf9ng c\u1ee7a h\u1ecd.";
     },
     get$notificationRuleMaster() {
-      return "Barcha bildirishnomalarni ovozsiz qilish";
+      return "T\u1eaft t\u1ea5t c\u1ea3 th\xf4ng b\xe1o";
     },
     get$notificationRuleMasterDescription() {
-      return "Boshqa barcha qoidalarni bekor qiladi va barcha bildirishnomalarni faolsizlantiradi.";
+      return "Ghi \u0111\xe8 t\u1ea5t c\u1ea3 c\xe1c quy t\u1eafc kh\xe1c v\xe0 t\u1eaft t\u1ea5t c\u1ea3 th\xf4ng b\xe1o.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Avtomatlashtirilgan xabarlarni o\u2018chirish";
+      return "T\u1eaft th\xf4ng b\xe1o t\u1ef1 \u0111\u1ed9ng";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Botlar kabi avtomatlashtirilgan mijozlardan kelgan bildirishnomalarni to\u2018xtatadi.";
+      return "T\u1eaft th\xf4ng b\xe1o t\u1eeb c\xe1c kh\xe1ch h\xe0ng t\u1ef1 \u0111\u1ed9ng nh\u01b0 bot.";
     },
     get$notificationRuleInviteForMe() {
-      return "Men uchun taklif qilish";
+      return "M\u1eddi cho t\xf4i";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Foydalanuvchi xonaga taklif qilinganda unga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi h\u1ecd \u0111\u01b0\u1ee3c m\u1eddi v\xe0o m\u1ed9t ph\xf2ng.";
     },
     get$notificationRuleMemberEvent() {
-      return "A\u2019zo tadbirlari";
+      return "S\u1ef1 ki\u1ec7n th\xe0nh vi\xean";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Obuna tadbirlari uchun bildirishnomalarni o\u2018chiradi.";
+      return "T\u1eaft th\xf4ng b\xe1o cho c\xe1c s\u1ef1 ki\u1ec7n th\xe0nh vi\xean.";
     },
     get$notificationRuleIsUserMention() {
-      return "Foydalanuvchi zikri";
+      return "\u0110\u1ec1 c\u1eadp ng\u01b0\u1eddi d\xf9ng";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Foydalanuvchi xabarida to\u2018g\u2018ridan-to\u2018g\u2018ri tilga olinganida unga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi h\u1ecd \u0111\u01b0\u1ee3c \u0111\u1ec1 c\u1eadp tr\u1ef1c ti\u1ebfp trong m\u1ed9t tin nh\u1eafn.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Tarkibida displey nomi bor";
+      return "Ch\u1ee9a t\xean hi\u1ec3n th\u1ecb";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Xabarda foydalanuvchining displey nomi mavjudligi haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a t\xean hi\u1ec3n th\u1ecb c\u1ee7a h\u1ecd.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Xonaga eslatma";
+      return "\u0110\u1ec1 c\u1eadp ph\xf2ng";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Xona zikri mavjudligida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi c\xf3 \u0111\u1ec1 c\u1eadp \u0111\u1ebfn ph\xf2ng.";
     },
     get$notificationRuleRoomnotif() {
-      return "Xona bildirishnomasi";
+      return "Th\xf4ng b\xe1o ph\xf2ng";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Xabar tarkibida @room bo\u2018lsa, foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Qabrtosh";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Xonani faolsizlantirish xabarlari haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn v\xf4 hi\u1ec7u h\xf3a ph\xf2ng.";
     },
     get$notificationRuleReaction() {
-      return "Reaksiya";
+      return "Ph\u1ea3n \u1ee9ng";
     },
     get$notificationRuleReactionDescription() {
-      return "Munosabat bildirishnomalarini o\u2018chiradi.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c ph\u1ea3n \u1ee9ng.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Guruh serveri ACL";
+      return "Danh s\xe1ch ki\u1ec3m so\xe1t truy c\u1eadp m\xe1y ch\u1ee7 ph\xf2ng";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Guruh serveriga kirishni boshqarish ro\u2018yxatlari (ACL) uchun bildirishnomalarni bostiradi.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho danh s\xe1ch ki\u1ec3m so\xe1t truy c\u1eadp m\xe1y ch\u1ee7 ph\xf2ng (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Tahrirlarni bostirish";
+      return "Ng\u0103n ch\u1eb7n ch\u1ec9nh s\u1eeda";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Tahrirlangan xabarlar uchun bildirishnomalarni o\u2018chiradi.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c tin nh\u1eafn \u0111\xe3 ch\u1ec9nh s\u1eeda.";
     },
     get$notificationRuleCall() {
-      return "Chaqiruv";
+      return "Cu\u1ed9c g\u1ecdi";
     },
     get$notificationRuleCallDescription() {
-      return "Chaqiruvlar haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c cu\u1ed9c g\u1ecdi.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Shifrlangan birga-bir guruh";
+      return "Ph\xf2ng m\xe3 h\xf3a m\u1ed9t-m\u1ed9t";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Shifrlangan birga-bir guruhlardagi xabarlar haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\xe3 h\xf3a m\u1ed9t-m\u1ed9t.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Birga-bir guruh";
+      return "Ph\xf2ng m\u1ed9t-m\u1ed9t";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Birga-bir guruhlardagidagi xabarlar haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\u1ed9t-m\u1ed9t.";
     },
     get$notificationRuleMessage() {
-      return "Xabar";
+      return "Tin nh\u1eafn";
     },
     get$notificationRuleMessageDescription() {
-      return "Foydalanuvchiga umumiy xabarlar haqida xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn chung.";
     },
     get$notificationRuleEncrypted() {
-      return "Shifrlangan";
+      return "M\xe3 h\xf3a";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Shifrlangan guruhlardagi xabarlar haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\xe3 h\xf3a.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Jitsi vidjet hodisalari haqida foydalanuvchiga xabar beradi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c s\u1ef1 ki\u1ec7n c\u1ee7a widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Server ACL hodisalarini bostirish";
+      return "Ng\u0103n ch\u1eb7n s\u1ef1 ki\u1ec7n Server ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "Server ACL hodisalari uchun bildirishnomalarni o\u2018chiradi.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c s\u1ef1 ki\u1ec7n Server ACL.";
     },
     unknownPushRule$1(rule) {
-      return "Noma\u2019lum push qoidasi '" + rule + "'";
+      return "Quy t\u1eafc \u0111\u1ea9y kh\xf4ng x\xe1c \u0111\u1ecbnh '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ufe0f \ud83c\udf99\ufe0f" + duration + " - " + sender + "dan ovozli xabar";
+      return "\ud83c\udf99\ufe0f " + duration + " - Tin nh\u1eafn tho\u1ea1i t\u1eeb " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Agar ushbu bildirishnoma sozlamasini o\u2018chirib tashlasangiz, buni bekor qilib bo\u2018lmaydi.";
+      return "N\u1ebfu b\u1ea1n x\xf3a c\xe0i \u0111\u1eb7t th\xf4ng b\xe1o n\xe0y, \u0111i\u1ec1u n\xe0y s\u1ebd kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$more() {
-      return "Yana";
+      return "Th\xeam";
     },
     get$shareKeysWith() {
-      return "Kalitlarni ulashish...";
+      return "Chia s\u1ebb kh\xf3a v\u1edbi...";
     },
     get$shareKeysWithDescription() {
-      return "Shifrlangan suhbatlarda xabarlaringizni o\u02bbqishlari uchun qaysi qurilmalarga ishonish kerak?";
+      return "Thi\u1ebft b\u1ecb n\xe0o n\xean \u0111\u01b0\u1ee3c tin c\u1eady \u0111\u1ec3 c\xf3 th\u1ec3 \u0111\u1ecdc c\xe1c tin nh\u1eafn c\u1ee7a b\u1ea1n trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n m\xe3 h\xf3a?";
     },
     get$allDevices() {
-      return "Barcha qurilmalar";
+      return "T\u1ea5t c\u1ea3 c\xe1c thi\u1ebft b\u1ecb";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Agar yoqilgan bo\u2018lsa, tasdiqlangan qurilmalarni kesib o\u2018tish";
+      return "Thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh ch\xe9o n\u1ebfu \u0111\u01b0\u1ee3c k\xedch ho\u1ea1t";
     },
     get$crossVerifiedDevices() {
-      return "O\u2018zaro tekshirilgan qurilmalar";
+      return "Thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh ch\xe9o";
     },
     get$verifiedDevicesOnly() {
-      return "Faqat tasdiqlangan qurilmalar";
+      return "Ch\u1ec9 thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh";
     },
     get$optionalMessage() {
-      return "(Ixtiyoriy) xabar...";
+      return "(T\xf9y ch\u1ecdn) tin nh\u1eafn...";
     },
     get$notSupportedOnThisDevice() {
-      return "Bu qurilmada ishlamaydi";
+      return "Kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 tr\xean thi\u1ebft b\u1ecb n\xe0y";
     },
     get$enterNewChat() {
-      return "Yangi suhbatga kirish";
+      return "Tham gia tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$approve() {
-      return "Tasdiqlash";
+      return "Ch\u1ea5p thu\u1eadn";
     },
     get$youHaveKnocked() {
-      return "Siz taqillatdingiz";
+      return "B\u1ea1n \u0111\xe3 g\xf5 c\u1eeda";
     },
     get$commandHint_logout() {
-      return "Joriy qurilmadan chiqish";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb hi\u1ec7n t\u1ea1i c\u1ee7a b\u1ea1n";
     },
     get$commandHint_logoutall() {
-      return "Barcha faol qurilmalardan chiqish";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi t\u1ea5t c\u1ea3 c\xe1c thi\u1ebft b\u1ecb \u0111ang ho\u1ea1t \u0111\u1ed9ng";
     },
     get$moreEvents() {
-      return "Boshqa hodisalar";
+      return "Th\xeam s\u1ef1 ki\u1ec7n";
     },
     get$declineInvitation() {
-      return "Taklifni rad etish";
+      return "T\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
     },
     get$noMessagesYet() {
-      return "Hozircha xabarlar yo\u2018q";
+      return "Ch\u01b0a c\xf3 tin nh\u1eafn n\xe0o";
     },
     get$pause(_) {
-      return "Pauza";
+      return "T\u1ea1m d\u1eebng";
     },
     get$resume(_) {
-      return "Davom etish";
+      return "Ti\u1ebfp t\u1ee5c";
     },
     countChats$1(chats) {
-      return "" + chats + " suhbatlar";
+      return "" + chats + " cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$startPoll() {
-      return "So\u2018rovni boshlash";
+      return "B\u1eaft \u0111\u1ea7u cu\u1ed9c th\u0103m d\xf2";
     },
     get$endPoll() {
-      return "So\u2018rovnomani yakunlash";
+      return "K\u1ebft th\xfac cu\u1ed9c th\u0103m d\xf2";
     },
     get$answersVisible() {
-      return "Javoblar ko\u2018rinadi";
+      return "C\xe2u tr\u1ea3 l\u1eddi hi\u1ec3n th\u1ecb";
     },
     get$pollQuestion() {
-      return "So\u2018rovnoma savoli";
+      return "C\xe2u h\u1ecfi th\u0103m d\xf2";
     },
     get$answerOption() {
-      return "Javob varianti";
+      return "L\u1ef1a ch\u1ecdn c\xe2u tr\u1ea3 l\u1eddi";
     },
     get$addAnswerOption() {
-      return "Javob variantini kiritish";
+      return "Th\xeam l\u1ef1a ch\u1ecdn c\xe2u tr\u1ea3 l\u1eddi";
     },
     get$allowMultipleAnswers() {
-      return "Bir nechta javobga ruxsat berish";
+      return "Cho ph\xe9p nhi\u1ec1u c\xe2u tr\u1ea3 l\u1eddi";
     },
     get$pollHasBeenEnded() {
-      return "So\u2018rovnoma yakunlandi";
+      return "Cu\u1ed9c th\u0103m d\xf2 \u0111\xe3 \u0111\u01b0\u1ee3c k\u1ebft th\xfac";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bir ovoz", "" + count + " ta ovoz", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "M\u1ed9t phi\u1ebfu", "" + count + " phi\u1ebfu", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "So\u2018rovnoma tugaganida javoblar chiqadi";
+      return "C\xe2u tr\u1ea3 l\u1eddi s\u1ebd hi\u1ec3n th\u1ecb khi cu\u1ed9c th\u0103m d\xf2 \u0111\xe3 k\u1ebft th\xfac";
     },
     get$replyInThread() {
-      return "Sahifada javob berish";
+      return "Tr\u1ea3 l\u1eddi trong ch\u1ee7 \u0111\u1ec1";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bitta javob", "" + count + " ta javob", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "M\u1ed9t ph\u1ea3n h\u1ed3i", "" + count + " ph\u1ea3n h\u1ed3i", _null, _null);
     },
     get$thread() {
-      return "Sahifa";
+      return "Ch\u1ee7 \u0111\u1ec1";
     },
     get$backToMainChat() {
-      return "Asosiy suhbatga qaytish";
+      return "Quay l\u1ea1i tr\xf2 chuy\u1ec7n ch\xednh";
     },
     get$saveChanges() {
-      return "O\u2018zgarishlarni saqlash";
+      return "L\u01b0u thay \u0111\u1ed5i";
     },
     get$createSticker() {
-      return "Stiker yoki emoji yaratish";
+      return "T\u1ea1o nh\xe3n d\xe1n ho\u1eb7c bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$useAsSticker() {
-      return "Stiker sifatida ishlatish";
+      return "S\u1eed d\u1ee5ng nh\u01b0 nh\xe3n d\xe1n";
     },
     get$useAsEmoji() {
-      return "Emoji sifatida ishlatish";
+      return "S\u1eed d\u1ee5ng nh\u01b0 bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$stickerPackNameAlreadyExists() {
-      return "Stiker paketi nomi allaqachon mavjud";
+      return "T\xean g\xf3i nh\xe3n d\xe1n \u0111\xe3 t\u1ed3n t\u1ea1i";
     },
     get$newStickerPack() {
-      return "Yangi stikerlar paketi";
+      return "G\xf3i nh\xe3n d\xe1n m\u1edbi";
     },
     get$stickerPackName() {
-      return "Stiker paketi nomi";
+      return "T\xean g\xf3i nh\xe3n d\xe1n";
     },
     get$attribution(_) {
-      return "Atributsiya";
+      return "Ghi nh\u1eadn";
     },
     get$skipChatBackup() {
-      return "Chat zaxirasini tashlab ketish";
+      return "B\u1ecf qua sao l\u01b0u tr\xf2 chuy\u1ec7n";
     },
     get$skipChatBackupWarning() {
-      return "Ishonchingiz komilmi? Chat zaxirasini yoqmasdan qurilmangizni almashtirsangiz, xabarlaringizga kira olmay qolishingiz mumkin.";
+      return "B\u1ea1n c\xf3 ch\u1eafc kh\xf4ng? N\u1ebfu kh\xf4ng b\u1eadt sao l\u01b0u tr\xf2 chuy\u1ec7n, b\u1ea1n c\xf3 th\u1ec3 m\u1ea5t quy\u1ec1n truy c\u1eadp v\xe0o tin nh\u1eafn c\u1ee7a m\xecnh n\u1ebfu b\u1ea1n chuy\u1ec3n \u0111\u1ed5i thi\u1ebft b\u1ecb.";
     },
     get$loadingMessages() {
-      return "Xabarlar yuklanmoqda";
+      return "\u0110ang t\u1ea3i tin nh\u1eafn";
     },
     get$setupChatBackup() {
-      return "Chat zaxirasini sozlash";
+      return "Thi\u1ebft l\u1eadp sao l\u01b0u tr\xf2 chuy\u1ec7n";
     },
     get$noMoreResultsFound() {
-      return "Boshqa natijalar topilmadi";
+      return "Kh\xf4ng t\xecm th\u1ea5y k\u1ebft qu\u1ea3 n\xe0o n\u1eefa";
     },
     chatSearchedUntil$1(time) {
-      return "Chat " + time + " gacha qidirildi";
+      return "Tr\xf2 chuy\u1ec7n \u0111\xe3 \u0111\u01b0\u1ee3c t\xecm ki\u1ebfm \u0111\u1ebfn " + time;
     },
     get$federationBaseUrl() {
-      return "Federatsiya Asos URL";
+      return "URL c\u01a1 s\u1edf Li\xean bang";
     },
     get$clientWellKnownInformation() {
-      return "Mijoz-Yaxtirilgan Ma'lumot:";
+      return "Th\xf4ng tin Kh\xe1ch h\xe0ng-\u0110\xe3 bi\u1ebft:";
     },
     get$baseUrl() {
-      return "Asosiy URL";
+      return "URL c\u01a1 s\u1edf";
     },
     get$identityServer() {
-      return "Identifikatsiya Serveri:";
+      return "M\xe1y ch\u1ee7 danh t\xednh:";
     },
     versionWithNumber$1(version) {
-      return "Versiya: " + version;
+      return "Phi\xean b\u1ea3n: " + version;
     },
     get$logs() {
-      return "Jurnallar";
+      return "Nh\u1eadt k\xfd";
     },
     get$advancedConfigs() {
-      return "Kengaytirilgan Sozlamalar";
+      return "C\u1ea5u h\xecnh n\xe2ng cao";
     },
     get$advancedConfigurations() {
-      return "Kengaytirilgan sozlamalar";
+      return "C\u1ea5u h\xecnh n\xe2ng cao";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return l1 + " yoki " + l2 + " da yozing...";
+      return "G\xf5 b\u1eb1ng " + l1 + " ho\u1eb7c " + l2 + "...";
     },
     get$holdForInfo() {
-      return "So'z ma'lumotlari uchun bosib turing.";
+      return "Nh\u1ea5n gi\u1eef \u0111\u1ec3 bi\u1ebft th\xf4ng tin.";
     },
     get$gaTooltip() {
-      return "Grammatika yordamida L2 bilan foydalanish";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$taTooltip() {
-      return "L2 tarjima yordamida foydalanish";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 d\u1ecbch";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interaktiv tarjimon";
+      return "Tr\xecnh D\u1ecbch T\u01b0\u01a1ng T\xe1c";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interaktiv grammatik tekshiruvchi";
+      return "Tr\xecnh Ki\u1ec3m Tra Ng\u1eef Ph\xe1p T\u01b0\u01a1ng T\xe1c";
     },
     get$waTooltip() {
-      return "Yordam bilan L2 foydalanish";
+      return "D\xf9ng L2 kh\xf4ng tr\u1ee3 gi\xfap";
     },
     get$noIdenticalLanguages() {
-      return "Iltimos, asosiy va maqsad tillarini farqlang";
+      return "Vui l\xf2ng ch\u1ecdn ng\xf4n ng\u1eef c\u01a1 s\u1edf v\xe0 \u0111\xedch kh\xe1c nhau";
     },
     get$joinWithClassCode() {
-      return "Kursga qo'shiling";
+      return "Tham gia kh\xf3a h\u1ecdc";
     },
     get$languageLevelPreA1() {
-      return "Yangi boshlovchi past (Pre A1)";
+      return "Ng\u01b0\u1eddi m\u1edbi b\u1eaft \u0111\u1ea7u Th\u1ea5p (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Yangi boshlovchi o'rtacha (A1)";
+      return "Ng\u01b0\u1eddi m\u1edbi gi\u1eefa (A1)";
     },
     get$languageLevelA2() {
-      return "Yangi boshlovchi yuqori (A2)";
+      return "Ng\u01b0\u1eddi m\u1edbi cao (A2)";
     },
     get$languageLevelB1() {
-      return "O'rta o'rtacha (B1)";
+      return "Trung c\u1ea5p trung b\xecnh (B1)";
     },
     get$languageLevelB2() {
-      return "Yuqori past (B2)";
+      return "Cao c\u1ea5p th\u1ea5p (B2)";
     },
     get$languageLevelC1() {
-      return "Yuqori o'rtacha (C1)";
+      return "Cao c\u1ea5p trung b\xecnh (C1)";
     },
     get$languageLevelC2() {
-      return "Yuqori (C2)";
+      return "Cao c\u1ea5p (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Nomi o'zgartirish";
+      return "\u0110\u1ed5i t\xean";
     },
     get$changeTheNameOfTheChat() {
-      return "Chat nomini o'zgartirish";
+      return "\u0110\u1ed5i t\xean tr\xf2 chuy\u1ec7n";
     },
     get$sorryNoResults() {
-      return "Kechirasiz, natija topilmadi.";
+      return "Xin l\u1ed7i, kh\xf4ng c\xf3 k\u1ebft qu\u1ea3 n\xe0o.";
     },
     get$ignoreInThisText() {
-      return "E'tiborsizlik";
+      return "B\u1ecf qua";
     },
     needsItMessage$1(targetLanguage) {
-      return "Kuting, bu " + targetLanguage + " emas! Tarjimaga yordam kerakmi?";
+      return "\u0110\u1ee3i \u0111\xe3, \u0111i\u1ec1u n\xe0y kh\xf4ng ph\u1ea3i b\u1eb1ng " + targetLanguage + "! B\u1ea1n c\xf3 c\u1ea7n gi\xfap d\u1ecbch kh\xf4ng?";
     },
     get$countryInformation() {
-      return "Mening mamlakatim";
+      return "Qu\u1ed1c gia c\u1ee7a t\xf4i";
     },
     get$targetLanguage() {
-      return "Ma'lumot tili";
+      return "Ng\xf4n ng\u1eef \u0111\xedch";
     },
     get$updateLanguage() {
-      return "Mening tillarim";
+      return "Ng\xf4n ng\u1eef c\u1ee7a t\xf4i";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Qaysi tilni o'rganmoqchisiz?";
+      return "B\u1ea1n mu\u1ed1n h\u1ecdc ng\xf4n ng\u1eef n\xe0o?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Asosiy tilingiz nima?";
+      return "Ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n l\xe0 g\xec?";
     },
     get$publicProfileTitle() {
-      return "Profilimni qidiruvda topishga ruxsat berish";
+      return "H\u1ed3 s\u01a1 c\xf4ng khai";
     },
     get$publicProfileDesc() {
-      return "Yoqib qo'ysangiz, boshqa foydalanuvchilar sizning profilingizni global qidiruv panelida topishlari va chat so'rovlari yuborishlari mumkin. Shu vaqtdan boshlab, siz so'rovni qabul qilish yoki rad etishni tanlashingiz mumkin.";
+      return "H\u1ed3 s\u01a1 c\u1ee7a b\u1ea1n c\u1ea7n \u1edf ch\u1ebf \u0111\u1ed9 c\xf4ng khai \u0111\u1ec3 ng\u01b0\u1eddi kh\xe1c t\xecm v\xe0 g\u1eedi y\xeau c\u1ea7u tr\xf2 chuy\u1ec7n. Khi \u0111\xf3, b\u1ea1n c\xf3 th\u1ec3 ch\u1ecdn ch\u1ea5p nh\u1eadn ho\u1eb7c t\u1eeb ch\u1ed1i.";
     },
     get$errorDisableIT() {
-      return "Tarjimaga yordam o'chirilgan.";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch \u0111\xe3 b\u1ecb t\u1eaft.";
     },
     get$errorDisableIGC() {
-      return "Grammatika yordam o'chirilgan.";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p \u0111\xe3 b\u1ecb t\u1eaft.";
     },
     get$errorDisableITUserDesc() {
-      return "Tarjimaga yordam sozlamalarini yangilash uchun bu yerga bosing";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 c\u1eadp nh\u1eadt c\xe0i \u0111\u1eb7t h\u1ed7 tr\u1ee3 d\u1ecbch";
     },
     get$errorDisableIGCUserDesc() {
-      return "Grammatika yordam sozlamalarini yangilash uchun bu yerga bosing";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 c\u1eadp nh\u1eadt c\xe0i \u0111\u1eb7t h\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$errorDisableITClassDesc() {
-      return "Ushbu suhbat bo'lib o'tadigan kurs uchun tarjima yordamchi o'chirilgan.";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch thu\u1eadt \u0111\xe3 t\u1eaft cho kh\xf3a h\u1ecdc m\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y \u0111ang di\u1ec5n ra.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p \u0111\xe3 t\u1eaft cho kh\xf3a h\u1ecdc m\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y \u0111ang di\u1ec5n ra.";
     },
     get$error405Title() {
-      return "Tillar belgilangan emas";
+      return "Ch\u01b0a thi\u1ebft l\u1eadp ng\xf4n ng\u1eef";
     },
     get$error405Desc() {
-      return "Iltimos, Asosiy menyu > O'rganish sozlamalarida tillaringizni belgilang.";
+      return "Vui l\xf2ng thi\u1ebft l\u1eadp ng\xf4n ng\u1eef c\u1ee7a b\u1ea1n trong Menu ch\xednh > C\xe0i \u0111\u1eb7t H\u1ecdc t\u1eadp.";
     },
     get$termsAndConditions() {
-      return "Shartlar va shartlar";
+      return "\u0110i\u1ec1u kho\u1ea3n v\xe0 \u0110i\u1ec1u ki\u1ec7n";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " va kamida 16 yoshda ekanligimni tasdiqlayman.";
+      return " v\xe0 x\xe1c nh\u1eadn t\xf4i \xedt nh\u1ea5t 16 tu\u1ed5i.";
     },
     get$error502504Title() {
-      return "Vau, ko'p talabalar onlayn!";
+      return "Wow, c\xf3 r\u1ea5t nhi\u1ec1u h\u1ecdc vi\xean \u0111ang tr\u1ef1c tuy\u1ebfn!";
     },
     get$error502504Desc() {
-      return "Tarjimalar va grammatik vositalar sekin yoki mavjud bo'lmasligi mumkin, Pangea botlari yangilanishni kutmoqda.";
+      return "C\xf4ng c\u1ee5 d\u1ecbch v\xe0 ng\u1eef ph\xe1p c\xf3 th\u1ec3 ch\u1ea1y ch\u1eadm ho\u1eb7c ng\u1eebng ho\u1ea1t \u0111\u1ed9ng trong khi bot Pangea \u0111ang x\u1eed l\xfd.";
     },
     get$error404Title() {
-      return "Tarjima xatosi!";
+      return "L\u1ed7i d\u1ecbch!";
     },
     get$error404Desc() {
-      return "Pangea Bot bu qanday tarjima qilishni bilmayapti...";
+      return "Pangea Bot ch\u01b0a bi\u1ebft c\xe1ch d\u1ecbch \u0111i\u1ec1u n\xe0y...";
     },
     get$errorPleaseRefresh() {
-      return "Biz bu muammoni hal qilmoqdamiz! Iltimos, sahifani yangilang va qayta urinib ko'ring.";
+      return "Ch\xfang t\xf4i s\u1ebd ki\u1ec3m tra! Vui l\xf2ng t\u1ea3i l\u1ea1i v\xe0 th\u1eed l\u1ea1i.";
     },
     get$connectedToStaging() {
-      return "Staging bilan ulanish amalga oshirildi";
+      return "B\u1ea1n \u0111ang k\u1ebft n\u1ed1i v\u1edbi m\xe1y ch\u1ee7 th\u1eed nghi\u1ec7m (staging).";
     },
     get$learningSettings() {
-      return "O'rganish sozlamalari";
+      return "C\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp";
     },
     get$participants() {
-      return "Ishtirokchilar";
+      return "Tham gia";
     },
     get$clickMessageTitle() {
-      return "Yordam kerakmi?";
+      return "C\u1ea7n tr\u1ee3 gi\xfap?";
     },
     get$clickMessageBody() {
-      return "Tillar vositalari uchun xabarni bosing, tarjima, qayta o'ynash va boshqalar!";
+      return "Nh\u1ea5n v\xe0o tin nh\u1eafn \u0111\u1ec3 truy c\u1eadp c\xe1c c\xf4ng c\u1ee5 ng\xf4n ng\u1eef nh\u01b0 d\u1ecbch, nghe l\u1ea1i v\xe0 h\u01a1n th\u1ebf n\u1eefa!";
     },
     get$allDone() {
-      return "Barchasi tayyor!";
+      return "Ho\xe0n t\u1ea5t!";
     },
     get$vocab() {
-      return "So'z boyligi";
+      return "T\u1eeb v\u1ef1ng";
     },
     get$subscribe(_) {
-      return "Obuna bo'lish";
+      return "\u0110\u0103ng k\xfd";
     },
     get$getAccess() {
-      return "Hozir obuna bo'ling!";
+      return "\u0110\u0103ng k\xfd ngay!";
     },
     get$subscriptionDesc() {
-      return "Xabar yuborish bepul! Interaktiv tarjima, grammatikani tekshirish va o'rganish tahlilini ochish uchun obuna bo'ling.";
+      return "Tr\xf2 chuy\u1ec7n c\u01a1 b\u1ea3n mi\u1ec5n ph\xed! \u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, s\u1eeda ng\u1eef ph\xe1p v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
     get$subscriptionManagement() {
-      return "Obuna boshqaruvi";
+      return "Qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$currentSubscription() {
-      return "Hozirgi obuna";
+      return "G\xf3i hi\u1ec7n t\u1ea1i";
     },
     get$cancelSubscription() {
-      return "Obunangizni bekor qiling";
+      return "H\u1ee7y g\xf3i";
     },
     get$selectYourPlan() {
-      return "Rejangizni tanlang";
+      return "Ch\u1ecdn g\xf3i";
     },
     get$subsciptionPlatformTooltip() {
-      return "Iltimos, obuna rejangizni boshqarish uchun asl qurilmangizga kirish qiling";
+      return "Vui l\xf2ng \u0111\u0103ng nh\u1eadp b\u1eb1ng thi\u1ebft b\u1ecb g\u1ed1c \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$subscriptionManagementUnavailable() {
-      return "Obuna boshqaruvi mavjud emas";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$paymentMethod() {
-      return "To'lov usuli";
+      return "Ph\u01b0\u01a1ng th\u1ee9c thanh to\xe1n";
     },
     get$paymentHistory() {
-      return "To'lov tarixi";
+      return "L\u1ecbch s\u1eed thanh to\xe1n";
     },
     get$emptyChatDownloadWarning() {
-      return "Bo'sh suhbatni yuklab bo'lmaydi";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i xu\u1ed1ng cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$toggleImmersionMode() {
-      return "Cho'milish rejimi";
+      return "Ch\u1ebf \u0111\u1ed9 nh\u1eadp vai";
     },
     get$toggleImmersionModeDesc() {
-      return "Faollashtirilganda, barcha xabarlar sizning maqsad tilingizda ko'rsatiladi. Bu sozlama til almashinuvi uchun eng foydalidir.";
+      return "Khi b\u1eadt, t\u1ea5t c\u1ea3 tin nh\u1eafn s\u1ebd \u0111\u01b0\u1ee3c hi\u1ec3n th\u1ecb trong ng\xf4n ng\u1eef \u0111\xedch. Ph\xf9 h\u1ee3p cho trao \u0111\u1ed5i ng\xf4n ng\u1eef.";
     },
     get$itToggleDescription() {
-      return "Ushbu til o'rganish vositasi sizning asosiy tilingizdagi so'zlarni aniqlaydi va ularni maqsad tilingizga tarjima qilishga yordam beradi. Nadir hollarda, AI tarjima xatolarini qilishi mumkin.";
+      return "C\xf4ng c\u1ee5 ng\xf4n ng\u1eef n\xe0y s\u1ebd ph\xe1t hi\u1ec7n t\u1eeb trong ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n v\xe0 gi\xfap d\u1ecbch sang ng\xf4n ng\u1eef \u0111\xedch. \u0110\xf4i l\xfac AI c\xf3 th\u1ec3 sai s\xf3t.";
     },
     get$igcToggleDescription() {
-      return "Ushbu til o'rganish vositasi sizning xabaringizdagi umumiy yozilish, grammatik va punktuatsiya xatolarini aniqlaydi va tuzatish taklif qiladi. Nadir hollarda, AI tuzatish xatolarini qilishi mumkin.";
+      return "C\xf4ng c\u1ee5 ng\xf4n ng\u1eef n\xe0y s\u1ebd ph\xe1t hi\u1ec7n v\xe0 g\u1ee3i \xfd ch\u1ec9nh s\u1eeda l\u1ed7i ch\xednh t\u1ea3, ng\u1eef ph\xe1p. \u0110\xf4i khi AI c\u0169ng c\xf3 th\u1ec3 m\u1eafc l\u1ed7i.";
     },
     get$originalMessage() {
-      return "Asl xabar";
+      return "Tin nh\u1eafn g\u1ed1c";
     },
     get$sentMessage() {
-      return "Yuborilgan xabar";
+      return "Tin nh\u1eafn \u0111\xe3 g\u1eedi";
     },
     get$useType() {
-      return "Foydalanish turi";
+      return "Ki\u1ec3u s\u1eed d\u1ee5ng";
     },
     get$notAvailable() {
-      return "Mavjud emas";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$taAndGaTooltip() {
-      return "Tarjimaga yordam berish va grammatik yordam bilan L2 foydalanish";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 d\u1ecbch v\xe0 ng\u1eef ph\xe1p";
     },
     get$definitionsToolName() {
-      return "So'zlarning ta'rifi";
+      return "\u0110\u1ecbnh ngh\u0129a t\u1eeb";
     },
     get$definitionsToolDescription() {
-      return "Faollashtirilganda, ko'k chiziq bilan belgilangan so'zlarni bosish orqali ta'riflarni ko'rish mumkin. Ta'riflarni olish uchun xabarlarni bosing.";
+      return "Khi b\u1eadt, t\u1eeb g\u1ea1ch ch\xe2n m\xe0u xanh c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c nh\u1ea5n \u0111\u1ec3 xem \u0111\u1ecbnh ngh\u0129a.";
     },
     get$welcomeBack() {
-      return "Qaytganingiz uchun xush kelibsiz! Agar siz 2023-2024 yilgi pilot dasturining bir qismi bo'lgan bo'lsangiz, iltimos, maxsus pilot obunangiz uchun biz bilan bog'laning. Agar siz o'qituvchi bo'lsangiz (yoki o'quv muassasangiz) sinfingiz uchun litsenziyalar sotib olgan bo'lsa, o'qituvchi obunangiz uchun biz bilan bog'laning.";
+      return "Ch\xe0o m\u1eebng tr\u1edf l\u1ea1i! N\u1ebfu b\u1ea1n \u0111\xe3 tham gia ch\u01b0\u01a1ng tr\xecnh th\u1eed nghi\u1ec7m 2023-2024, h\xe3y li\xean h\u1ec7 \u0111\u1ec3 nh\u1eadn g\xf3i \u0111\u1eb7c bi\u1ec7t. N\u1ebfu b\u1ea1n l\xe0 gi\xe1o vi\xean ho\u1eb7c tr\u01b0\u1eddng \u0111\xe3 mua b\u1ea3n quy\u1ec1n, c\u0169ng h\xe3y li\xean h\u1ec7 v\u1edbi ch\xfang t\xf4i.";
     },
     get$downloadTxtFile() {
-      return "Matn faylini yuklab olish";
+      return "T\u1ea3i t\u1ec7p v\u0103n b\u1ea3n";
     },
     get$downloadCSVFile() {
-      return "CSV faylini yuklab olish";
+      return "T\u1ea3i t\u1ec7p CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "Hozirda sizda umrboqiy reklama obunasi mavjud. Obunangizni o'zgartirish uchun support@pangea.chat ga xabar yuboring.";
+      return "Hi\u1ec7n b\u1ea1n c\xf3 g\xf3i khuy\u1ebfn m\u1ea1i tr\u1ecdn \u0111\u1eddi. N\u1ebfu mu\u1ed1n thay \u0111\u1ed5i, h\xe3y li\xean h\u1ec7 support@pangea.chat.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Obuna " + purchasePlatform + " orqali sotib olingan";
+      return "G\xf3i \u0111\u0103ng k\xfd \u0111\u01b0\u1ee3c mua qua " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Bir haftalik sinov";
+      return "D\xf9ng th\u1eed 1 tu\u1ea7n";
     },
     get$downloadXLSXFile() {
-      return "Excel faylini yuklab olish";
+      return "T\u1ea3i t\u1ec7p Excel";
     },
     get$unkDisplayName() {
-      return "Noma'lum";
+      return "Ch\u01b0a x\xe1c \u0111\u1ecbnh";
     },
     get$wwCountryDisplayName() {
-      return "Dunyo bo'ylab";
+      return "To\xe0n th\u1ebf gi\u1edbi";
     },
     get$afCountryDisplayName() {
-      return "Afg'oniston";
+      return "Afghanistan";
     },
     get$axCountryDisplayName() {
-      return "Aland orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o \xc5land";
     },
     get$alCountryDisplayName() {
-      return "Albaniya";
+      return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "Cozbekiston";
+      return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "Amerika Samoasi";
+      return "\u0110\u1ea3o Samoa thu\u1ed9c M\u1ef9";
     },
     get$adCountryDisplayName() {
       return "Andorra";
@@ -1909,49 +1909,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua va Barbuda";
+      return "Antigua v\xe0 Barbuda";
     },
     get$arCountryDisplayName() {
       return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "Armaniston";
+      return "Armenia";
     },
     get$awCountryDisplayName() {
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Ascension oroli";
+      return "\u0110\u1ea3o Ascension";
     },
     get$auCountryDisplayName() {
-      return "Avstraliya";
+      return "\xdac";
     },
     get$atCountryDisplayName() {
-      return "Avstriya";
+      return "\xc1o";
     },
     get$azCountryDisplayName() {
-      return "Azerbayjon";
+      return "Azerbaijan";
     },
     get$bsCountryDisplayName() {
       return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "Bahrayn";
+      return "Bahrain";
     },
     get$bdCountryDisplayName() {
-      return "Banqladash";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Belarusiya";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "Belgiya";
+      return "B\u1ec9";
     },
     get$bzCountryDisplayName() {
-      return "Beliz";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
       return "Benin";
@@ -1960,31 +1960,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "Butan";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "Boliviya";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "Bosniya va Gertsegovina";
+      return "Bosnia v\xe0 Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "Botsvana";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "Braziliya";
+      return "Brazil";
     },
     get$ioCountryDisplayName() {
-      return "Britaniya Hind okeani hududi";
+      return "Thu\u1ed9c \u0111\u1ecba Anh t\u1ea1i \u1ea4n \u0110\u1ed9 D\u01b0\u01a1ng";
     },
     get$vgCountryDisplayName() {
-      return "Britaniya Virjiniya orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Virgin thu\u1ed9c Anh";
     },
     get$bnCountryDisplayName() {
-      return "Bruney";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "Bolgariya";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
       return "Burkina Faso";
@@ -1993,241 +1993,241 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Kambodja";
+      return "Campuchia";
     },
     get$cmCountryDisplayName() {
-      return "Kamerun";
+      return "Cameroon";
     },
     get$caCountryDisplayName() {
-      return "Kanada";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "Kap Verde";
+      return "Cape Verde";
     },
     get$bqCountryDisplayName() {
-      return "Karib Niderlandlari";
+      return "Caribbean Netherlands";
     },
     get$kyCountryDisplayName() {
-      return "Kayman orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Cayman";
     },
     get$cfCountryDisplayName() {
-      return "Markaziy Afrika Respublikasi";
+      return "C\u1ed9ng h\xf2a Trung Phi";
     },
     get$tdCountryDisplayName() {
       return "Chad";
     },
     get$clCountryDisplayName() {
-      return "Chili";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "Xitoy";
+      return "Trung Qu\u1ed1c";
     },
     get$cxCountryDisplayName() {
-      return "Rojdestvo oroli";
+      return "\u0110\u1ea3o Gi\xe1ng Sinh";
     },
     get$ccCountryDisplayName() {
-      return "Kokos [Keling] orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Cocos (Keeling)";
     },
     get$coCountryDisplayName() {
-      return "Kolumbiya";
+      return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "Komor orollari";
+      return "Comoros";
     },
     get$cdCountryDisplayName() {
-      return "Kongo Demokratik Respublikasi";
+      return "Congo (C\u1ed9ng h\xf2a D\xe2n ch\u1ee7 Congo)";
     },
     get$cgCountryDisplayName() {
-      return "Kongo Respublikasi";
+      return "Congo (C\u1ed9ng h\xf2a Congo)";
     },
     get$ckCountryDisplayName() {
-      return "Kuk orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Cook";
     },
     get$crCountryDisplayName() {
-      return "Kosta Rika";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "Kote d'Ivoire";
+      return "B\u1edd Bi\u1ec3n Ng\xe0";
     },
     get$hrCountryDisplayName() {
-      return "Xorvatiya";
+      return "Croatia";
     },
     get$cuCountryDisplayName() {
-      return "Kuba";
+      return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "Kurakao";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Kipr";
+      return "S\xedp";
     },
     get$czCountryDisplayName() {
-      return "Chex Respublikasi";
+      return "S\xe9c";
     },
     get$dkCountryDisplayName() {
-      return "Daniya";
+      return "\u0110an M\u1ea1ch";
     },
     get$djCountryDisplayName() {
-      return "Jibuti";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "Dominika";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "Dominikan Respublikasi";
+      return "C\u1ed9ng h\xf2a Dominica";
     },
     get$tlCountryDisplayName() {
-      return "Sharqiy Timor";
+      return "\u0110\xf4ng Timor (Timor-Leste)";
     },
     get$ecCountryDisplayName() {
-      return "Ekvador";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "Misr";
+      return "Ai C\u1eadp";
     },
     get$svCountryDisplayName() {
       return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Ekvatorial Gvineya";
+      return "Guinea X\xedch \u0110\u1ea1o";
     },
     get$erCountryDisplayName() {
-      return "Eritreya";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "Estoniya";
+      return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "Esvatini";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "Efiopiya";
+      return "Ethiopia";
     },
     get$fkCountryDisplayName() {
-      return "Falkland orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Falkland";
     },
     get$foCountryDisplayName() {
-      return "Faroe orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Faroe";
     },
     get$fjCountryDisplayName() {
       return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "Finlyandiya";
+      return "Ph\u1ea7n Lan";
     },
     get$frCountryDisplayName() {
-      return "Fransiya";
+      return "Ph\xe1p";
     },
     get$gfCountryDisplayName() {
-      return "Fransuz G\u02bbiyona";
+      return "Guiana thu\u1ed9c Ph\xe1p";
     },
     get$pfCountryDisplayName() {
-      return "Fransuz Polineziyasi";
+      return "Polynesia thu\u1ed9c Ph\xe1p";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "Gambiya";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "Gruziya";
+      return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "Germaniya";
+      return "\u0110\u1ee9c";
     },
     get$ghCountryDisplayName() {
-      return "Gana";
+      return "Ghana";
     },
     get$giCountryDisplayName() {
       return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "Greece";
+      return "Hy L\u1ea1p";
     },
     get$glCountryDisplayName() {
-      return "Grenlandiya";
+      return "Greenland";
     },
     get$gdCountryDisplayName() {
       return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Gvadelupa";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
       return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "Gvatemala";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "Gernsey";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "Gvineya Konakri";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "Gvineya-Bissau";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "Gayana";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
       return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Herd va Makdonald orollari";
+      return "\u0110\u1ea3o Heard v\xe0 qu\u1ea7n \u0111\u1ea3o McDonald";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "Xitoy Xonkong";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "Vengriya";
+      return "Hungary";
     },
     get$isCountryDisplayName() {
-      return "Islandiya";
+      return "Iceland";
     },
     get$inCountryDisplayName() {
-      return "Hindiston";
+      return "\u1ea4n \u0110\u1ed9";
     },
     get$idCountryDisplayName() {
-      return "Indoneziya";
+      return "Indonesia";
     },
     get$irCountryDisplayName() {
-      return "Eron";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "Iroq";
+      return "Iraq";
     },
     get$ieCountryDisplayName() {
-      return "Irlandiya";
+      return "Ireland";
     },
     get$imCountryDisplayName() {
-      return "Man oroli";
+      return "\u0110\u1ea3o Man";
     },
     get$ilCountryDisplayName() {
-      return "Isroil";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "Italiya";
+      return "\xdd";
     },
     get$jmCountryDisplayName() {
-      return "Yamayka";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "Yaponiya";
+      return "Nh\u1eadt B\u1ea3n";
     },
     get$jeCountryDisplayName() {
-      return "Jersi";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "Iordaniya";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "Qozog\u02bbiston";
+      return "Kazakhstan";
     },
     get$keCountryDisplayName() {
       return "Kenya";
@@ -2239,55 +2239,55 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "Kuvayt";
+      return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "Qirg\u02bbiziston";
+      return "Kyrgyzstan";
     },
     get$laCountryDisplayName() {
-      return "Laos";
+      return "L\xe0o";
     },
     get$lvCountryDisplayName() {
-      return "Latviya";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "Livan";
+      return "Lebanon";
     },
     get$lsCountryDisplayName() {
-      return "Lesoto";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "Liberiya";
+      return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "Liviya";
+      return "Libya";
     },
     get$liCountryDisplayName() {
-      return "Lyuksemburg";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "Litva";
+      return "Lithuania";
     },
     get$luCountryDisplayName() {
-      return "Lyuksemburg";
+      return "Luxembourg";
     },
     get$moCountryDisplayName() {
-      return "Makao";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "Makedoniya";
+      return "B\u1eafc Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "Madagaskar";
+      return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "Malavi";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "Malayziya";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "Maldivlar";
+      return "Maldives";
     },
     get$mlCountryDisplayName() {
       return "Mali";
@@ -2296,34 +2296,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "Marshall orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Marshall";
     },
     get$mqCountryDisplayName() {
-      return "Martinika";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "Moritaniya";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "Moris";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Meksika";
+      return "Mexico";
     },
     get$fmCountryDisplayName() {
-      return " Mikroneziya";
+      return "Li\xean bang Micronesia";
     },
     get$mdCountryDisplayName() {
       return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "Monako";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "Mo'\u011fuliston";
+      return "M\xf4ng C\u1ed5";
     },
     get$meCountryDisplayName() {
       return "Montenegro";
@@ -2332,16 +2332,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Marokash";
+      return "Maroc";
     },
     get$mzCountryDisplayName() {
-      return "Mozambik";
+      return "Mozambique";
     },
     get$mmCountryDisplayName() {
-      return "Myanma (Birma)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "Namibiya";
+      return "Namibia";
     },
     get$nrCountryDisplayName() {
       return "Nauru";
@@ -2350,55 +2350,55 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "Niderlandlar";
+      return "H\xe0 Lan";
     },
     get$ncCountryDisplayName() {
-      return "Yangi Kaledoniya";
+      return "New Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "Yangi Zelandiya";
+      return "New Zealand";
     },
     get$niCountryDisplayName() {
-      return "Nikaraagua";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
       return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "Nigeriya";
+      return "Nigeria";
     },
     get$nuCountryDisplayName() {
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Norfok oroli";
+      return "\u0110\u1ea3o Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "Shimoliy Koreya";
+      return "Tri\u1ec1u Ti\xean (B\u1eafc)";
     },
     get$mpCountryDisplayName() {
-      return "Shimoliy Mariana orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o B\u1eafc Mariana";
     },
     get$noCountryDisplayName() {
-      return "Norvegiya";
+      return "Na Uy";
     },
     get$omCountryDisplayName() {
       return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "Pokiston";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
       return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Falastin hududlari";
+      return "L\xe3nh th\u1ed5 Palestine";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papua-Yangi Gvineya";
+      return "Papua New Guinea";
     },
     get$pyCountryDisplayName() {
       return "Paraguay";
@@ -2407,52 +2407,52 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filippin";
+      return "Philippines";
     },
     get$plCountryDisplayName() {
-      return "Polsha";
+      return "Ba Lan";
     },
     get$ptCountryDisplayName() {
-      return "Portugaliya";
+      return "B\u1ed3 \u0110\xe0o Nha";
     },
     get$prCountryDisplayName() {
-      return "Puerto-Riko";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
       return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "Reyunion";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Ruminiya";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "Rossiya";
+      return "Nga";
     },
     get$rwCountryDisplayName() {
-      return "Ruanda";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "Saint Bartelyemi";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "Sent Elena";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "Sent Kitts";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "Sent Lucia";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "Sent Martin";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "Sent Pierre va Miquelon";
+      return "Saint Pierre v\xe0 Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "Sent Vincent";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
       return "Samoa";
@@ -2461,16 +2461,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "Sao Tom\xe9 va Pr\xedncipe";
+      return "S\xe3o Tom\xe9 v\xe0 Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Saudiya Arabistoni";
+      return "\u1ea2 R\u1eadp X\xea \xdat";
     },
     get$snCountryDisplayName() {
       return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "Serbiya";
+      return "Serbia";
     },
     get$scCountryDisplayName() {
       return "Seychelles";
@@ -2479,70 +2479,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapur";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
       return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Slovakiya";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "Sloveniya";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "Solomon orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Solomon";
     },
     get$soCountryDisplayName() {
-      return "Somaliya";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "Janubiy Afrika";
+      return "Nam Phi";
     },
     get$gsCountryDisplayName() {
-      return "Janubiy Georgiya va Janubiy Sandwich orollari";
+      return "Nam Georgia v\xe0 qu\u1ea7n \u0111\u1ea3o Nam Sandwich";
     },
     get$krCountryDisplayName() {
-      return "Janubiy Koreya";
+      return "H\xe0n Qu\u1ed1c";
     },
     get$ssCountryDisplayName() {
-      return "Janubiy Sudan";
+      return "Nam Sudan";
     },
     get$esCountryDisplayName() {
-      return "Ispaniya";
+      return "T\xe2y Ban Nha";
     },
     get$lkCountryDisplayName() {
-      return "Shri Lanka";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
       return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "Surinam";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard va Jan Mayen";
+      return "Svalbard v\xe0 Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Shvetsiya";
+      return "Th\u1ee5y \u0110i\u1ec3n";
     },
     get$chCountryDisplayName() {
-      return "Shveytsariya";
+      return "Th\u1ee5y S\u0129";
     },
     get$syCountryDisplayName() {
-      return "Suriya";
+      return "Syria";
     },
     get$twCountryDisplayName() {
-      return "Tayvan";
+      return "\u0110\xe0i Loan";
     },
     get$tjCountryDisplayName() {
-      return "Tojikiston";
+      return "Tajikistan";
     },
     get$tzCountryDisplayName() {
-      return "Tanzaniya";
+      return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "Tailand";
+      return "Th\xe1i Lan";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2557,22 +2557,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "Tunis";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "Turkiya";
+      return "Th\u1ed5 Nh\u0129 K\u1ef3";
     },
     get$tmCountryDisplayName() {
-      return "Turkmaniston";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "Turks va Kaykos orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Turks v\xe0 Caicos";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "AQSh Virgin orollari";
+      return "Qu\u1ea7n \u0111\u1ea3o Virgin (M\u1ef9)";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
@@ -2581,1267 +2581,1267 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ukraina";
     },
     get$aeCountryDisplayName() {
-      return "Birlashgan Arab Amirliklari";
+      return "C\xe1c Ti\u1ec3u V\u01b0\u01a1ng qu\u1ed1c \u1ea2 R\u1eadp Th\u1ed1ng nh\u1ea5t";
     },
     get$gbCountryDisplayName() {
-      return "Buyuk Britaniya";
+      return "V\u01b0\u01a1ng qu\u1ed1c Anh";
     },
     get$usCountryDisplayName() {
-      return "Amerika Qo'shma Shtatlari";
+      return "Hoa K\u1ef3";
     },
     get$uyCountryDisplayName() {
-      return "Urugvay";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "O'zbekiston";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Vatikan";
+      return "Vatican";
     },
     get$veCountryDisplayName() {
-      return "Venesuela";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "Vyetnam";
+      return "Vi\u1ec7t Nam";
     },
     get$wfCountryDisplayName() {
-      return "Vallis va Futuna";
+      return "Wallis v\xe0 Futuna";
     },
     get$ehCountryDisplayName() {
-      return "G'arbiy Sahara";
+      return "T\xe2y Sahara";
     },
     get$yeCountryDisplayName() {
-      return "Yaman";
+      return "Yemen";
     },
     get$zmCountryDisplayName() {
-      return "Zambiya";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabve";
+      return "Zimbabwe";
     },
     get$pay() {
-      return "To'lov qilish";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " sizni " + space + " kursiga qo'shilishga taklif qildi! Qabul qilmoqchimisiz?";
+      return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia m\u1ed9t kh\xf3a h\u1ecdc: " + space + "! B\u1ea1n c\xf3 mu\u1ed1n ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Siz taklif qildingiz!";
+      return "\ud83d\udce9 B\u1ea1n \u0111\u01b0\u1ee3c m\u1eddi!";
     },
     invitedToChat$2($name, user) {
-      return user + " sizni " + $name + " chatiga qo'shilishga taklif qildi! Qabul qilmoqchimisiz?";
+      return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia tr\xf2 chuy\u1ec7n: " + $name + "! B\u1ea1n mu\u1ed1n ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
     get$monthlySubscription() {
-      return "Oylik";
+      return "H\xe0ng th\xe1ng";
     },
     get$yearlySubscription() {
-      return "Yillik";
+      return "H\xe0ng n\u0103m";
     },
     get$defaultSubscription() {
-      return "Pangea Chat obunasi";
+      return "G\xf3i Pangea Chat";
     },
     get$freeTrial() {
-      return "Bepul sinov";
+      return "D\xf9ng th\u1eed mi\u1ec5n ph\xed";
     },
     get$noDataFound() {
-      return "Ma'lumot topilmadi";
+      return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
     },
     get$bestCorrectionFeedback() {
-      return "To'g'ri!";
+      return "\u0110\xfang r\u1ed3i!";
     },
     get$distractorFeedback() {
-      return "Bu to'g'ri emas.";
+      return "Ch\u01b0a ch\xednh x\xe1c l\u1eafm.";
     },
     get$bestAnswerFeedback() {
-      return "To'g'ri!";
+      return "Ch\xednh x\xe1c!";
     },
     get$definitionDefaultPrompt() {
-      return "Ushbu so'z nima anlamda?";
+      return "T\u1eeb n\xe0y c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
     get$practiceDefaultPrompt() {
-      return "Eng yaxshi javob nima?";
+      return "C\xe2u tr\u1ea3 l\u1eddi t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
     },
     get$correctionDefaultPrompt() {
-      return "Eng yaxshi o'rnini bosuvchi nima?";
+      return "Ph\u01b0\u01a1ng \xe1n thay th\u1ebf t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
     },
     get$reportToTeacher() {
-      return "Bu xabarni kimga xabar qilmoqchisiz?";
+      return "B\u1ea1n mu\u1ed1n b\xe1o c\xe1o tin nh\u1eafn n\xe0y cho gi\xe1o vi\xean n\xe0o?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " chatda " + reportedUserId + " dan xabarni xabar qildi " + roomName;
+      return reportingUserId + " \u0111\xe3 b\xe1o c\xe1o tin nh\u1eafn c\u1ee7a " + reportedUserId + " trong ph\xf2ng " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Xabar: " + reportedMessage + "\nSabab: " + reason;
+      return "Tin nh\u1eafn: " + reportedMessage + "\nL\xfd do: " + reason;
     },
     get$noTeachersFound() {
-      return "Xabar qilinadigan o'qituvchi topilmadi";
+      return "Kh\xf4ng t\xecm th\u1ea5y gi\xe1o vi\xean n\xe0o \u0111\u1ec3 b\xe1o c\xe1o";
     },
     trialExpiration$1(expiration) {
-      return "Bepul sinov muddati " + expiration + " da tugaydi";
+      return "B\u1ea3n d\xf9ng th\u1eed c\u1ee7a b\u1ea1n s\u1ebd h\u1ebft h\u1ea1n v\xe0o " + expiration;
     },
     get$freeTrialDesc() {
-      return "Yangi foydalanuvchilar uchun Pangea Chat ning bir haftalik bepul sinovi taqdim etiladi";
+      return "Ng\u01b0\u1eddi d\xf9ng m\u1edbi \u0111\u01b0\u1ee3c d\xf9ng th\u1eed Pangea Chat trong 1 tu\u1ea7n";
     },
     get$activateTrial() {
-      return "Bepul 7 kunlik sinov";
+      return "D\xf9ng th\u1eed mi\u1ec5n ph\xed 7 ng\xe0y";
     },
     get$successfullySubscribed() {
-      return "Siz muvaffaqiyatli obuna bo'ldingiz!";
+      return "B\u1ea1n \u0111\xe3 \u0111\u0103ng k\xfd th\xe0nh c\xf4ng!";
     },
     get$clickToManageSubscription() {
-      return "Obunangizni boshqarish uchun bu yerni bosing.";
+      return "Nh\u1ea5p v\xe0o \u0111\xe2y \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd.";
     },
     get$signUp() {
-      return "Ro'yhatdan o'tish";
+      return "\u0110\u0103ng k\xfd";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Iltimos, kamida " + min + " ta belgi tanlang.";
+      return "Vui l\xf2ng ch\u1ecdn \xedt nh\u1ea5t " + min + " k\xfd t\u1ef1.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.Iltimo;
+      return "Vui l\xf2ng nh\u1eadp \u0111\u1ecba ch\u1ec9 email h\u1ee3p l\u1ec7.";
     },
     get$pleaseChooseAUsername() {
-      return "Iltimos, foydalanuvchi nomini tanlang";
+      return "Vui l\xf2ng ch\u1ecdn t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$listen() {
-      return "Tingla";
+      return "Nghe";
     },
     get$trialPeriodExpired() {
-      return "Sizning sinov muddatingiz tugadi";
+      return "Th\u1eddi gian d\xf9ng th\u1eed \u0111\xe3 h\u1ebft h\u1ea1n";
     },
     get$subscribedToUnlockTools() {
-      return "Interaktiv tarjima va grammatik tekshirish, audio ijro, shaxsiy mashg\u02bbulotlar va o\u02bbrganish analitikasi uchun obuna bo\u02bbling!";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, ki\u1ec3m tra ng\u1eef ph\xe1p, \xe2m thanh, ho\u1ea1t \u0111\u1ed9ng v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp!";
     },
     get$translationTooltip() {
-      return "Tarjimaga";
+      return "D\u1ecbch";
     },
     get$kickBotWarning() {
-      return "Pangea Botni chiqarib yuborish bu suhbatdagi botni olib tashlaydi.";
+      return "\u0110\xe1 Pangea Bot s\u1ebd x\xf3a bot h\u1ed9i tho\u1ea1i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y.";
     },
     get$refresh(_) {
-      return "Yangilash";
+      return "T\u1ea3i l\u1ea1i";
     },
     get$accuracy(_) {
-      return "Aniqlik";
+      return "\u0110\u1ed9 ch\xednh x\xe1c";
     },
     get$chatCapacity() {
-      return "Suhbat sig\u02bbimi";
+      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n";
     },
     get$roomFull() {
-      return "Bu xona allaqachon to\u02bbldirilgan.";
+      return "Ph\xf2ng \u0111\xe3 \u0111\u1ea1t gi\u1edbi h\u1ea1n.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Suhbat sig\u02bbimi o\u02bbzgartirildi";
+      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n \u0111\xe3 thay \u0111\u1ed5i";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Suhbat sig\u02bbimi kamida " + count + " bo\u02bblishi kerak.";
+      return "Dung l\u01b0\u1ee3ng tr\xf2 chuy\u1ec7n ph\u1ea3i \xedt nh\u1ea5t l\xe0 " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "Suhbat sig\u02bbimi chatga qo\u02bbshiladigan a\u02bczolar sonini cheklaydi.";
+      return "H\u1ea1n ch\u1ebf s\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng (kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb vi\xean) c\xf3 th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$enterNumber() {
-      return "Iltimos, butun son qiymatini kiriting.";
+      return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1 nguy\xean l\u1edbn h\u01a1n 0.";
     },
     get$buildTranslation() {
-      return "Yuqoridagi tanlovlardan tarjimangizni yarating";
+      return "X\xe2y d\u1ef1ng b\u1ea3n d\u1ecbch c\u1ee7a b\u1ea1n t\u1eeb c\xe1c l\u1ef1a ch\u1ecdn tr\xean";
     },
     get$practice() {
-      return "Amaliyot";
+      return "Luy\u1ec7n t\u1eadp";
     },
     get$speechToTextBody() {
-      return "Ovozli xabarlar uchun, siz yozuvni va nutqchi so'zlar soni bahosini ko'rishingiz mumkin.";
+      return "V\u1edbi tin nh\u1eafn tho\u1ea1i, b\u1ea1n c\xf3 th\u1ec3 xem b\u1ea3n ch\xe9p gi\u1ecdng n\xf3i v\xe0 \u0111i\u1ec3m t\u1eeb/ph\xfat c\u1ee7a ng\u01b0\u1eddi n\xf3i.";
     },
     get$versionNotFound() {
-      return "Versiya topilmadi";
+      return "Kh\xf4ng t\xecm th\u1ea5y phi\xean b\u1ea3n";
     },
     get$fetchingVersion() {
-      return "Versiyani olish...";
+      return "\u0110ang l\u1ea5y phi\xean b\u1ea3n...";
     },
     get$versionFetchError() {
-      return "Versiyani olishda xato";
+      return "L\u1ed7i khi l\u1ea5y phi\xean b\u1ea3n";
     },
     versionText$2(version, buildNumber) {
-      return "Versiya: " + version + "+" + buildNumber;
+      return "Phi\xean b\u1ea3n: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Asosiy tilingizdagi xabarlar tarjima qilinmaydi.";
+      return "Tin nh\u1eafn trong ng\xf4n ng\u1eef g\u1ed1c s\u1ebd kh\xf4ng \u0111\u01b0\u1ee3c d\u1ecbch.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Sizda faol obuna bor";
+      return "B\u1ea1n \u0111ang c\xf3 g\xf3i \u0111\u0103ng k\xfd ho\u1ea1t \u0111\u1ed9ng";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Hisobingizni o'chirish avtomatik ravishda obunangizni bekor qilmaydi.";
+      return "Vi\u1ec7c x\xf3a t\xe0i kho\u1ea3n s\u1ebd kh\xf4ng h\u1ee7y g\xf3i \u0111\u0103ng k\xfd c\u1ee7a b\u1ea1n.";
     },
     get$manageSubscription() {
-      return "Obunani boshqarish";
+      return "Qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$error520Title() {
-      return "Iltimos, qayta urinib ko'ring.";
+      return "H\xe3y th\u1eed l\u1ea1i.";
     },
     get$error520Desc() {
-      return "Kechirasiz, biz sizning xabaringizni tushuna olmadik...";
+      return "Xin l\u1ed7i, ch\xfang t\xf4i kh\xf4ng th\u1ec3 hi\u1ec3u tin nh\u1eafn c\u1ee7a b\u1ea1n...";
     },
     get$level(_) {
-      return "Daraja";
+      return "C\u1ea5p \u0111\u1ed9";
     },
     get$translationChoicesBody() {
-      return "Bir variantni bosib ushlab turing va maslahat oling.";
+      return "Gi\u1eef l\xe2u m\u1ed9t l\u1ef1a ch\u1ecdn \u0111\u1ec3 xem g\u1ee3i \xfd.";
     },
     get$grammar() {
-      return "Grammatika";
+      return "Ng\u1eef ph\xe1p";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Kontakt suhbatga taklif qilindi";
+      return "Li\xean h\u1ec7 \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi v\xe0o cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Suhbatga taklif qilish";
+      return "\ud83d\udce8 M\u1eddi v\xe0o tr\xf2 chuy\u1ec7n";
     },
     get$l2SupportNa() {
-      return "Mavjud emas";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$l2SupportAlpha() {
-      return "Alfa";
+      return "B\u1ea3n Alpha";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "B\u1ea3n Beta";
     },
     get$l2SupportFull() {
-      return "To\u2018liq";
+      return "Ho\xe0n ch\u1ec9nh";
     },
     get$playAudio() {
-      return "Oynatish";
+      return "Ph\xe1t";
     },
     get$stop(_) {
-      return "To\u2018xtatish";
+      return "D\u1eebng";
     },
     get$grammarCopyPOSsconj() {
-      return "Subordinatsiyali bog\u2018lovchi";
+      return "Li\xean t\u1eeb ph\u1ee5 thu\u1ed9c";
     },
     get$grammarCopyPOSnum() {
-      return "Raqam";
+      return "S\u1ed1 \u0111\u1ebfm";
     },
     get$grammarCopyPOSverb() {
-      return "Fe\u2019l";
+      return "\u0110\u1ed9ng t\u1eeb";
     },
     get$grammarCopyPOSaffix() {
-      return "Qo\u2018shimcha";
+      return "Ti\u1ec1n t\u1ed1/H\u1eadu t\u1ed1";
     },
     get$grammarCopyPOSpart() {
-      return "Partikula";
+      return "Ti\u1ec3u t\u1eeb";
     },
     get$grammarCopyPOSadj() {
-      return "Sifat";
+      return "T\xednh t\u1eeb";
     },
     get$grammarCopyPOScconj() {
-      return "Birlashuvchi bog'lovchi";
+      return "Li\xean t\u1eeb \u0111\u1eb3ng l\u1eadp";
     },
     get$grammarCopyPOSpunct() {
-      return "Punktuatsiya";
+      return "D\u1ea5u c\xe2u";
     },
     get$grammarCopyPOSadv() {
-      return "Ravish";
+      return "Tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyPOSaux() {
-      return "Yordamchi";
+      return "\u0110\u1ed9ng t\u1eeb ph\u1ee5";
     },
     get$grammarCopyPOSspace() {
-      return "Bo'shliq";
+      return "Kho\u1ea3ng tr\u1eafng";
     },
     get$grammarCopyPOSsym() {
-      return "Belgi";
+      return "K\xfd hi\u1ec7u";
     },
     get$grammarCopyPOSdet() {
-      return "Aniqlovchi";
+      return "T\u1eeb h\u1ea1n \u0111\u1ecbnh";
     },
     get$grammarCopyPOSpron() {
-      return "O'zgaruvchi";
+      return "\u0110\u1ea1i t\u1eeb";
     },
     get$grammarCopyPOSadp() {
-      return "Oldi keluvchi";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPOSpropn() {
-      return "Maxsus nom";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPOSnoun() {
-      return "Ism";
+      return "Danh t\u1eeb";
     },
     get$grammarCopyPOSintj() {
-      return "O'tkazuvchi so'z";
+      return "Th\xe1n t\u1eeb";
     },
     get$grammarCopyPOSidiom() {
-      return "Idioma";
+      return "Th\xe0nh ng\u1eef";
     },
     get$grammarCopyPOSphrasalv() {
-      return "Frazali fe'l";
+      return "\u0110\u1ed9ng t\u1eeb c\u1ee5m";
     },
     get$grammarCopyPOScompn() {
-      return "Qarama";
+      return "H\u1ee3p ch\u1ea5t";
     },
     get$grammarCopyPOSx() {
-      return "Boshqa";
+      return "Kh\xe1c";
     },
     get$grammarCopyGENDERfem() {
-      return "Ayol jins";
+      return "Gi\u1ed1ng c\xe1i";
     },
     get$grammarCopyPERSON2() {
-      return "Ikkinchi shaxs";
+      return "Ng\xf4i th\u1ee9 hai";
     },
     get$grammarCopyMOODimp() {
-      return "Buyruq kayfiyati";
+      return "M\u1ec7nh l\u1ec7nh";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Savol";
+      return "C\xe2u h\u1ecfi";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfect";
+      return "Ho\xe0n th\xe0nh";
     },
     get$grammarCopyCASEaccnom() {
-      return "Hujjat, Nominativ";
+      return "Tr\u1ef1c ti\u1ebfp, Ch\u1ee7 c\xe1ch";
     },
     get$grammarCopyCASEobl() {
-      return "O\u2018qish";
+      return "B\u1ed5 ngh\u0129a";
     },
     get$grammarCopyVOICEact() {
-      return "Faol";
+      return "Ch\u1ee7 \u0111\u1ed9ng";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Qavs";
+      return "D\u1ea5u ngo\u1eb7c";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Maqola";
+      return "M\u1ea1o t\u1eeb";
     },
     get$grammarCopyNUMBERsing() {
-      return "Yagona";
+      return "S\u1ed1 \xedt";
     },
     get$grammarCopyGENDERmasc() {
-      return "Erkak";
+      return "Gi\u1ed1ng \u0111\u1ef1c";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modal";
+      return "\u0110\u1ed9ng t\u1eeb khuy\u1ebft thi\u1ebfu";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Ravishli";
+      return "Tr\u1ea1ng ng\u1eef";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifratik";
+      return "Th\xec ngo\u1ea1i l\u1ec7 (periphrastic)";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Raqam";
+      return "Ch\u1eef s\u1ed1";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Mos To\u2018g\u2018ri";
+      return "Kh\xf4ng ph\u1ea3i danh t\u1eeb ri\xeang";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Soni";
+      return "S\u1ed1 \u0111\u1ebfm g\u1ed1c";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "To\u2018g\u2018ri";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Chiziq";
+      return "D\u1ea5u g\u1ea1ch ngang";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Ha";
+      return "D\u1ea5u ch\u1ea5p nh\u1eadn/\u0111\u1ed3ng \xfd";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Nuqta-vergul";
+      return "D\u1ea5u ch\u1ea5m ph\u1ea9y";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Vergul";
+      return "D\u1ea5u ph\u1ea9y";
     },
     get$grammarCopyMOODcnd() {
-      return "Shart";
+      return "Gi\u1ea3 \u0111\u1ecbnh";
     },
     get$grammarCopyCASEacc() {
-      return "Obyektiv";
+      return "Tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Qisqa";
+      return "Th\u1ec3 ph\xe2n t\u1eeb";
     },
     get$grammarCopyTENSEpast() {
-      return "O'tgan";
+      return "Qu\xe1 kh\u1ee9";
     },
     get$grammarCopyDEGREEsup() {
-      return "Eng yuqori daraja";
+      return "C\u1ea5p cao nh\u1ea5t (so s\xe1nh)";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Ikki nuqta";
+      return "D\u1ea5u hai ch\u1ea5m";
     },
     get$grammarCopyPERSON3() {
-      return "Uchinchi shaxs";
+      return "Ng\xf4i th\u1ee9 ba";
     },
     get$grammarCopyNUMBERplur() {
-      return "Ko'plik";
+      return "S\u1ed1 nhi\u1ec1u";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "To'g'ri nom";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Savol";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Rasmiy bo'lmagan";
+      return "Kh\xf4ng trang tr\u1ecdng";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Vaqt";
+      return "Th\u1eddi gian";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Salbiy";
+      return "Ph\u1ee7 \u0111\u1ecbnh";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Jami";
+      return "T\u1ed5ng th\u1ec3";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominal";
+      return "B\u1ed5 ngh\u0129a danh t\u1eeb";
     },
     get$grammarCopyASPECTprog() {
-      return "Rivojlanayotgan";
+      return "\u0110ang di\u1ec5n ra";
     },
     get$grammarCopyMOODsub() {
-      return "Shartli";
+      return "Gi\u1ea3 \u0111\u1ecbnh (subjunctive)";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "To'ldiruvchi";
+      return "B\u1ed5 tr\u1ee3";
     },
     get$grammarCopyCASEnom() {
-      return "Nominal";
+      return "Ch\u1ee7 c\xe1ch";
     },
     get$grammarCopyTENSEfut() {
-      return "Kelajak";
+      return "T\u01b0\u01a1ng lai";
     },
     get$grammarCopyCASEdat() {
-      return "Dativ";
+      return "Gi\xe1n ti\u1ebfp";
     },
     get$grammarCopyTENSEpres() {
-      return "Hozirgi";
+      return "Hi\u1ec7n t\u1ea1i";
     },
     get$grammarCopyGENDERneut() {
-      return "N\xf6tr";
+      return "Trung t\xednh";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Oila";
+      return "Quan h\u1ec7";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Yakuni Yakuniy";
+      return "K\u1ebft th\xfac cu\u1ed1i";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Ko'rsatkich";
+      return "Ch\u1ec9 \u0111\u1ecbnh";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Oldindan tayyorlangan";
+      return "C\xe1ch gi\u1edbi t\u1eeb";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Cheklangan";
+      return "Chia ng\xf4i";
     },
     get$grammarCopyDEGREEpos() {
-      return "Ijobiy";
+      return "B\xecnh th\u01b0\u1eddng (so s\xe1nh)";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Qalamcha";
+      return "D\u1ea5u ngo\u1eb7c k\xe9p";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerund";
+      return "Danh \u0111\u1ed9ng t\u1eeb (gerund)";
     },
     get$grammarCopyVOICEpass() {
-      return "Passiv";
+      return "B\u1ecb \u0111\u1ed9ng";
     },
     get$grammarCopyCASEgen() {
-      return "Genitiv";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyTENSEprs() {
-      return "Hozirgi";
+      return "Hi\u1ec7n t\u1ea1i";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Aniq";
+      return "X\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Tartibli";
+      return "S\u1ed1 th\u1ee9 t\u1ef1";
     },
     get$grammarCopyCASEins() {
-      return "Instrumental";
+      return "C\xe1ch c\xf4ng c\u1ee5";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitiv";
+      return "\u0110\u1ed9ng t\u1eeb nguy\xean m\u1eabu";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Yordamchi";
+      return "Tr\u1ee3 \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Uzun";
+      return "D\u1ea1ng ch\u1eef d\xe0i";
     },
     get$grammarCopyCASEloc() {
-      return "Joylashuv";
+      return "C\xe1ch \u0111\u1ecba \u0111i\u1ec3m";
     },
     get$grammarCopyMOODind() {
-      return "Indikativ";
+      return "Tr\u1ea7n thu\u1eadt";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Taqqoslamali";
+      return "So s\xe1nh h\u01a1n";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Bog'liq";
+      return "Li\xean h\u1ec7";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Hayqiri";
+      return "C\xe2u c\u1ea3m th\xe1n";
     },
     get$grammarCopyPERSON1() {
-      return "Birinchi shaxs";
+      return "Ng\xf4i th\u1ee9 nh\u1ea5t";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Boshlang'ich";
+      return "B\u1eaft \u0111\u1ea7u";
     },
     get$grammarCopyGENDERperson() {
-      return "Jins";
+      return "Gi\u1ed1ng ng\u01b0\u1eddi";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Xorijiy";
+      return "N\u01b0\u1edbc ngo\xe0i";
     },
     get$grammarCopyVOICEvoice() {
-      return "Ovoz";
+      return "Th\u1ec3 \u0111\u1ed9ng";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Fe'l";
+      return "Lo\u1ea1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyPOSSpass() {
-      return "Egasi";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Oldindan kelib chiqadigan";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Raqamli";
+      return "Ki\u1ec3u s\u1ed1";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Ism";
+      return "Lo\u1ea1i danh t\u1eeb";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Qaytma";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "O'zgaruvchi";
+      return "Lo\u1ea1i \u0111\u1ea1i t\u1eeb";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Punktuatsiya tomon";
+      return "V\u1ecb tr\xed d\u1ea5u c\xe2u";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Fe'l shakli";
+      return "H\xecnh th\xe1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyGENDERgender() {
-      return "Jins";
+      return "Gi\u1ed1ng";
     },
     get$grammarCopyMOODmood() {
-      return "Kayfiyat";
+      return "L\u1ed1i";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspekt";
+      return "Th\u1ec3";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Punktuatsiya";
+      return "Lo\u1ea1i d\u1ea5u c\xe2u";
     },
     get$grammarCopyTENSEtense() {
-      return "Vaqt";
+      return "Th\xec";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Daraja";
+      return "M\u1ee9c so s\xe1nh";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Hurmat";
+      return "M\u1ee9c \u0111\u1ed9 trang tr\u1ecdng";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Darvish";
+      return "Lo\u1ea1i tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Raqam";
+      return "D\u1ea1ng ch\u1eef s\u1ed1";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Bog\u02bblovchi";
+      return "Lo\u1ea1i li\xean t\u1eeb";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polyarlik";
+      return "Ph\u1ee7 \u0111\u1ecbnh/KD";
     },
     get$grammarCopyCASEcase() {
-      return "Hol";
+      return "C\xe1ch";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Aniqlik";
+      return "T\xednh x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Son";
+      return "D\u1ea1ng s\u1ed1";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominal";
+      return "\u0110\u1ea1i t\u1eeb thu\u1ed9c t\xednh";
     },
     get$grammarCopyVOCvoc() {
-      return "Chaqiriq";
+      return "C\xe1ch h\xf4 g\u1ecdi";
     },
     get$grammarCopyCMPLcmpl() {
-      return "To\u02bbldiruvchi";
+      return "Li\xean k\u1ebft (complementizer)";
     },
     get$grammarCopyADVadv() {
-      return "Ravish";
+      return "Tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyMOODjus() {
-      return "Buyruq";
+      return "M\u1ec7nh l\u1ec7nh nh\u1eb9 (jussive)";
     },
     get$grammarCopyGENDERcom() {
-      return "Umumiy";
+      return "Gi\u1ed1ng chung";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Refleksiv";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Qismlik";
+      return "Ph\xe2n t\u1eeb";
     },
     get$grammarCopySPCspc() {
-      return "Maxsus";
+      return "C\u1ee5 th\u1ec3";
     },
     get$grammarCopyTENSEpqp() {
-      return "O'tgan zamon";
+      return "Qu\xe1 kh\u1ee9 ho\xe0n th\xe0nh";
     },
     get$grammarCopyREFLEXref() {
-      return "Refleksiv";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Qisqa";
+      return "D\u1ea1ng ng\u1eafn";
     },
     get$grammarCopyNUMBERdual() {
-      return "Ikki";
+      return "S\u1ed1 \u0111\xf4i";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Uzun";
+      return "D\xe0i";
     },
     get$grammarCopyVOICEmid() {
-      return "O'rta";
+      return "Trung \u0111\u1ed9ng";
     },
     get$grammarCopyINTRELintRel() {
-      return "Savol, O'xshash";
+      return "Nghi v\u1ea5n, Quan h\u1ec7";
     },
     get$grammarCopyINTint() {
-      return "Savol";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyVOICEcaus() {
-      return "Sabablovchi";
+      return "Khi\u1ebfn khi\u1ebfn";
     },
     get$grammarCopyUnknown() {
-      return "Noma'lum";
+      return "Kh\xf4ng r\xf5";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Dalillilik";
+      return "Ch\u1ee9ng t\u1ecf";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Egasi soni";
+      return "S\u1ed1 l\u01b0\u1ee3ng s\u1edf h\u1eefu";
     },
     get$grammarCopyASPECThab() {
-      return "Odatiy";
+      return "Th\xf3i quen";
     },
     get$grammarCopyCASEabl() {
-      return "Ablativ";
+      return "C\xe1ch t\xe1ch ra (ablative)";
     },
     get$grammarCopyCASEall() {
-      return "Allativ";
+      return "C\xe1ch h\u01b0\u1edbng \u0111\u1ebfn (allative)";
     },
     get$grammarCopyCASEess() {
-      return "Essiv";
+      return "C\xe1ch tr\u1ea1ng th\xe1i (essive)";
     },
     get$grammarCopyCASEtra() {
-      return "Translativ";
+      return "C\xe1ch chuy\u1ec3n \u0111\u1ed5i (translative)";
     },
     get$grammarCopyCASEequ() {
-      return "Ekvativ";
+      return "C\xe1ch ngang b\u1eb1ng (equative)";
     },
     get$grammarCopyCASEdis() {
-      return "Tarqatma";
+      return "C\xe1ch ph\xe2n b\u1ed5 (distributive)";
     },
     get$grammarCopyCASEabs() {
-      return "Absolyut";
+      return "C\xe1ch tuy\u1ec7t \u0111\u1ed1i (absolutive)";
     },
     get$grammarCopyCASEerg() {
-      return "Ergativ";
+      return "C\xe1ch ch\u1ee7 th\u1ec3 (ergative)";
     },
     get$grammarCopyCASEcau() {
-      return "Sababli";
+      return "C\xe1ch nguy\xean nh\xe2n (causal)";
     },
     get$grammarCopyCASEben() {
-      return "Foydali";
+      return "C\xe1ch l\u1ee3i \xedch (benefactive)";
     },
     get$grammarCopyCASEtem() {
-      return "Vaqtli";
+      return "C\xe1ch th\u1eddi gian (temporal)";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Kooridinal";
+      return "Li\xean t\u1eeb \u0111\u1eb3ng l\u1eadp";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Qurilish holati";
+      return "Tr\u1ea1ng th\xe1i k\u1ebft h\u1ee3p";
     },
     get$grammarCopyDEGREEabs() {
-      return "To\u2018liq daraja";
+      return "B\u1eadc tuy\u1ec7t \u0111\u1ed1i";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Haqiqiy dalillik";
+      return "Evidentiality th\u1ef1c t\u1ebf";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Haqiqiy bo\u2018lmagan dalillik";
+      return "Evidentiality phi th\u1ef1c t\u1ebf";
     },
     get$grammarCopyMOODopt() {
-      return "Optativ";
+      return "C\u1ea7u mong (optative)";
     },
     get$grammarCopyMOODadm() {
-      return "Hayratda qoldiruvchi";
+      return "C\u1ea3m th\xe1n (admirative)";
     },
     get$grammarCopyMOODdes() {
-      return "Istakli";
+      return "Mong mu\u1ed1n (desiderative)";
     },
     get$grammarCopyMOODnec() {
-      return "Majburiy";
+      return "C\u1ea7n thi\u1ebft (necessitative)";
     },
     get$grammarCopyMOODpot() {
-      return "Potentsial";
+      return "Kh\u1ea3 n\u0103ng (potential)";
     },
     get$grammarCopyMOODprp() {
-      return "Taklif qiluvchi";
+      return "\u0110\u1ec1 xu\u1ea5t (propositive)";
     },
     get$grammarCopyMOODqot() {
-      return "Nusxa";
+      return "Tr\xedch d\u1eabn (quotative)";
     },
     get$grammarCopyNUMFORMword() {
-      return "So\u2018z shakli";
+      return "D\u1ea1ng ch\u1eef vi\u1ebft";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Rim raqami";
+      return "Ch\u1eef s\u1ed1 La M\xe3";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Harf shakli";
+      return "Ch\u1eef c\xe1i";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Ko\u02bbpaytiruvchi";
+      return "B\u1ed9i s\u1ed1";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Kasrli";
+      return "Ph\xe2n s\u1ed1";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "To\u02bbplam";
+      return "T\u1eadp h\u1ee3p";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Oraliq";
+      return "Kho\u1ea3ng";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Tarqatish";
+      return "Ph\xe2n ph\u1ed1i";
     },
     get$grammarCopyNUMBERtri() {
-      return "Sinov";
+      return "S\u1ed1 tam";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Kamchilikli";
+      return "S\u1ed1 \xedt nhi\u1ec1u (paucal)";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Katta Kamchilikli";
+      return "Paucal m\u1edf r\u1ed9ng";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Katta Ko\u02bbp";
+      return "S\u1ed1 nhi\u1ec1u m\u1edf r\u1ed9ng";
     },
     get$grammarCopyNUMBERinv() {
-      return "Teskari";
+      return "Ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyPERSON0() {
-      return "Nol";
+      return "Ng\xf4i th\u1ee9 0";
     },
     get$grammarCopyPERSON4() {
-      return "To\u02bbrtinchi";
+      return "Ng\xf4i th\u1ee9 4";
     },
     get$grammarCopyPOLITEform() {
-      return "Rasmiy";
+      return "Trang tr\u1ecdng";
     },
     get$grammarCopyPOLITEelev() {
-      return "Oliy";
+      return "T\xf4n k\xednh";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Kamtar";
+      return "Khi\xeam nh\u01b0\u1eddng";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Ta\u02bckidlash";
+      return "Nh\u1ea5n m\u1ea1nh";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Hayratda qoldiruvchi";
+      return "C\u1ea3m th\xe1n";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "O\u02bbzaro";
+      return "T\u01b0\u01a1ng h\u1ed7";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "So\u02bbroq-Relativ";
+      return "Nghi v\u1ea5n - quan h\u1ec7";
     },
     get$grammarCopyTENSEaor() {
       return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemik";
+      return "Suy \u0111o\xe1n";
     },
     get$grammarCopyTENSEprosp() {
-      return "Kutilayotgan";
+      return "T\u01b0\u01a1ng lai g\u1ea7n";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participle";
+      return "Ph\xe2n t\u1eeb";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Converb";
+      return "Li\xean \u0111\u1ed9ng t\u1eeb (converb)";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Fe'l Nom";
+      return "Danh \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipasiv";
+      return "Ph\u1ea3n t\xe1c (antipassive)";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Sabablovchi";
+      return "Th\u1ec3 sai khi\u1ebfn";
     },
     get$grammarCopyVOICedir() {
-      return "To'g'ridan-to'g'ri";
+      return "Tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Aksincha";
+      return "Ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "O'zaro";
+      return "T\u01b0\u01a1ng h\u1ed7";
     },
     get$grammarCopyPOS() {
-      return "So'z turi";
+      return "T\u1eeb lo\u1ea1i";
     },
     get$grammarCopyGENDER() {
-      return "Jins";
+      return "Gi\u1ed1ng";
     },
     get$grammarCopyPERSON() {
-      return "Shaxs";
+      return "Ng\xf4i";
     },
     get$grammarCopyMOOD() {
-      return "Kayfiyat";
+      return "L\u1ed1i/Th\xe1i";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Punktuatsiya turi";
+      return "Lo\u1ea1i d\u1ea5u c\xe2u";
     },
     get$grammarCopyASPECT() {
-      return "Aspect";
+      return "Th\u1ec3 \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyCASE() {
-      return "Holat";
+      return "C\xe1ch";
     },
     get$grammarCopyVOICE() {
-      return "Ovoz";
+      return "Th\u1ec3";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Ism turi";
+      return "Lo\u1ea1i danh t\u1eeb";
     },
     get$grammarCopyVERBTYPE() {
-      return "Fe'l turi";
+      return "Lo\u1ea1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyADVTYPE() {
-      return "Ravish turi";
+      return "Lo\u1ea1i tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyNUMFORM() {
-      return "Raqam shakli";
+      return "D\u1ea1ng s\u1ed1";
     },
     get$grammarCopyNUMTYPE() {
-      return "Raqam turi";
+      return "Lo\u1ea1i s\u1ed1";
     },
     get$grammarCopyNUMBER() {
-      return "Raqam";
+      return "S\u1ed1 l\u01b0\u1ee3ng";
     },
     get$grammarCopyDEFINITE() {
-      return "Aniqlik";
+      return "T\xednh x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyDEGREE() {
-      return "Daraja";
+      return "M\u1ee9c so s\xe1nh";
     },
     get$grammarCopyEVIDENT() {
-      return "Dalillik";
+      return "Evidentiality";
     },
     get$grammarCopyFOREIGN() {
-      return "Xorijiy";
+      return "Ngo\u1ea1i ng\u1eef";
     },
     get$grammarCopyPOLARITY() {
-      return "Salbiylik";
+      return "Ph\u1ee7 \u0111\u1ecbnh/KD";
     },
     get$grammarCopyPOLITE() {
-      return "Hurmat";
+      return "M\u1ee9c trang tr\u1ecdng";
     },
     get$grammarCopyPREPCASE() {
-      return "Oldindan tayyorlangan holat";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPRONTYPE() {
-      return "O\u2018rinli turdagi olmosh";
+      return "Lo\u1ea1i \u0111\u1ea1i t\u1eeb";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Punktuatsiya tomon";
+      return "V\u1ecb tr\xed d\u1ea5u";
     },
     get$grammarCopyREFLEX() {
-      return "O\u2018z-o\u2018zini ifoda etuvchi";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyTENSE() {
-      return "Vaqt";
+      return "Th\xec";
     },
     get$grammarCopyVERBFORM() {
-      return "Fe\u2018l shakli";
+      return "H\xecnh th\xe1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyCONJTYPE() {
-      return "Bog\u2018lovchi turi";
+      return "Lo\u1ea1i li\xean t\u1eeb";
     },
     get$grammarCopyUNKNOWN() {
-      return "Noma'lum";
+      return "Kh\xf4ng r\xf5";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Egasi raqami";
+      return "S\u1ed1 l\u01b0\u1ee3ng ch\u1ee7 s\u1edf h\u1eefu";
     },
     get$grammarCopyPOSS() {
-      return "Egafor";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyASPECTimp() {
-      return "Noto'g'ri aspekt";
+      return "Kh\xf4ng ho\xe0n th\xe0nh";
     },
     get$grammarCopyCASEvoc() {
-      return "Chaqirilish";
+      return "C\xe1ch h\xf4 g\u1ecdi";
     },
     get$grammarCopyCASEcom() {
-      return "Birgalikda";
+      return "C\xe1ch \u0111i k\xe8m (comitative)";
     },
     get$grammarCopyCASEpar() {
-      return "Qismiy";
+      return "C\xe1ch chia ph\u1ea7n (partitive)";
     },
     get$grammarCopyCASEadv() {
-      return "Ravishdagi";
+      return "C\xe1ch tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyCASEref() {
-      return "Ma'lumotli";
+      return "C\xe1ch tham chi\u1ebfu";
     },
     get$grammarCopyCASErel() {
-      return "Bog'liq";
+      return "C\xe1ch quan h\u1ec7";
     },
     get$grammarCopyCASEsub() {
-      return "Subessiv";
+      return "C\xe1ch d\u01b0\u1edbi (subessive)";
     },
     get$grammarCopyCASEsup() {
-      return "Superessiv";
+      return "C\xe1ch tr\xean (superessive)";
     },
     get$grammarCopyCASEaccdat() {
-      return "Jazo va qabul qilish";
+      return "C\xe1ch tr\u1ef1c ti\u1ebfp-gi\xe1n ti\u1ebfp";
     },
     get$grammarCopyCASEpre() {
-      return "Oldindan tayyorlangan";
+      return "C\xe1ch gi\u1edbi t\u1eeb";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Subordinatsiya qiluvchi";
+      return "Ph\u1ee5 thu\u1ed9c";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Taqqoslovchi";
+      return "So s\xe1nh";
     },
     get$grammarCopyDEFINITEind() {
-      return "Noaniq";
+      return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyMOODint() {
-      return "So'rovchi kayfiyat";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Umumiy ot";
+      return "Danh t\u1eeb chung";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Egasi yagona";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 \xedt";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Egala egasi ko'plik";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 nhi\u1ec1u";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Egasi ko'plik";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 \u0111\xf4i";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Ijobiy polarlik";
+      return "Kh\u1eb3ng \u0111\u1ecbnh";
     },
     get$grammarCopyPOSSyes() {
-      return "Egasi";
+      return "C\xf3 s\u1edf h\u1eefu";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Prepozitsiyalarsiz";
+      return "Phi gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Shaxsiy";
+      return "C\xe1 nh\xe2n";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Savol";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Jami";
+      return "T\u1ed5ng qu\xe1t";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Salbiy";
+      return "Ph\u1ee7 \u0111\u1ecbnh";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Ma'lumotnoma";
+      return "M\u1ea1o t\u1eeb";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Noaniq";
+      return "B\u1ea5t \u0111\u1ecbnh";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Savol-Relativ";
+      return "Nghi v\u1ea5n-quan h\u1ec7";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Oxirgi punktuatsiya";
+      return "K\u1ebft th\xfac";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Davri";
+      return "Ch\u1ea5m c\xe2u";
     },
     get$grammarCopyREFLEXyes() {
-      return "O'z-o'zini anglatadi";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyTENSEimp() {
-      return "Noto'g'ri zamon";
+      return "Qu\xe1 kh\u1ee9 kh\xf4ng ho\xe0n th\xe0nh";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supin";
+      return "SuApine";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "Adj. B\u1ed5 ngh\u0129a danh t\u1eeb";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Uzoq";
+      return "D\u1ea1ng d\xe0i";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Qisqa";
+      return "Ng\u1eafn";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Sabablilik fe'li";
+      return "\u0110\u1ed9ng t\u1eeb sai khi\u1ebfn";
     },
     get$grammarCopyVOICEcau() {
-      return "Sabablilik";
+      return "Th\u1ec3 g\xe2y khi\u1ebfn";
     },
     get$grammarCopyVOICEdir() {
-      return "To'g'ridan-to'g'ri";
+      return "Th\u1ec3 tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyVOICEinv() {
-      return "Qaytariladigan";
+      return "Th\u1ec3 ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyVOICErcp() {
-      return "O'zaro";
+      return "Th\u1ec3 t\u01b0\u01a1ng h\u1ed7";
     },
     get$other() {
-      return "Boshqa";
+      return "Kh\xe1c";
     },
     levelShort$1(level) {
-      return "SAV " + level;
+      return "LVL " + level;
     },
     get$clickBestOption() {
-      return "Xabaringizni tarjima qilish uchun eng yaxshi variantlarni tanlang! Tavsiya uchun variantlarga bosib ushlab turing.";
+      return "Ch\u1ecdn c\xe1c t\xf9y ch\u1ecdn t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n! Nh\u1ea5n v\xe0 gi\u1eef c\xe1c t\xf9y ch\u1ecdn \u0111\u1ec3 xem g\u1ee3i \xfd.";
     },
     get$completeActivitiesToUnlock() {
-      return "Tarjimani ochish uchun kamida bir faoliyatni yakunlang!";
+      return "Ho\xe0n th\xe0nh \xedt nh\u1ea5t m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n d\u1ecbch!";
     },
     get$downloadGroupText() {
-      return "Guruh matnini yuklab olish";
+      return "T\u1ea3i n\u1ed9i dung nh\xf3m";
     },
     get$notificationsOn() {
-      return "Bildirishnomalar yoqilgan";
+      return "B\u1eadt th\xf4ng b\xe1o";
     },
     get$notificationsOff() {
-      return "Bildirishnomalar o'chirilgan";
+      return "T\u1eaft th\xf4ng b\xe1o";
     },
     get$joinWithCode() {
-      return "Kodni kiriting va qo'shiling";
+      return "Tham gia b\u1eb1ng m\xe3";
     },
     get$enterCodeToJoin() {
-      return "Qo'shilish uchun kodni kiriting";
+      return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
     },
     get$updateNow() {
-      return "Hozir yangilash";
+      return "C\u1eadp nh\u1eadt ngay";
     },
     get$updateLater() {
-      return "Keyin yangilash";
+      return "\u0110\u1ec3 sau";
     },
     get$constructUseWaDesc() {
-      return "Yordam bilan ishlatilmagan";
+      return "D\xf9ng kh\xf4ng c\u1ea7n tr\u1ee3 gi\xfap";
     },
     get$constructUseGaDesc() {
-      return "Grammatik yordam";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$constructUseTaDesc() {
-      return "Tarjimani yordam";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch thu\u1eadt";
     },
     get$constructUseUnkDesc() {
-      return "Noma'lum";
+      return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$constructUseCorITDesc() {
-      return "Tarjimada to'g'ri";
+      return "\u0110\xfang trong d\u1ecbch";
     },
     get$constructUseIgnITDesc() {
-      return "Tarjimada e'tiborsiz qilingan";
+      return "B\u1ecf qua trong d\u1ecbch";
     },
     get$constructUseIncITDesc() {
-      return "Tarjimada noto'g'ri";
+      return "Ch\u1ecdn sai trong d\u1ecbch";
     },
     get$constructUseIgnIGCDesc() {
-      return "Grammatika tuzatishda e'tiborsiz qilingan";
+      return "B\u1ecf qua trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseCorIGCDesc() {
-      return "Grammatika tuzatishda to'g'ri";
+      return "\u0110\xfang trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseIncIGCDesc() {
-      return "Grammatika tuzatishda noto'g'ri";
+      return "Ch\u1ecdn sai trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseCorPADesc() {
-      return "So'z ma'nosi faoliyatida to'g'ri";
+      return "\u0110\xfang trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseIgnPADesc() {
-      return "So'z ma'nosi faoliyatida e'tiborsiz qilingan";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseIncPADesc() {
-      return "So'z ma'nosi faoliyatida noto'g'ri";
+      return "Sai trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseCorWLDesc() {
-      return "So'z tinglash faoliyatida to'g'ri";
+      return "\u0110\xfang trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseIncWLDesc() {
-      return "So'z tinglash faoliyatida noto'g'ri";
+      return "Sai trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseIngWLDesc() {
-      return "So'z tinglash faoliyatida e'tiborsiz qilingan";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseCorHWLDesc() {
-      return "Yashirin so'z faoliyatida to'g'ri";
+      return "\u0110\xfang trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseIncHWLDesc() {
-      return "Yashirin so'z faoliyatida noto'g'ri";
+      return "Sai trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseIgnHWLDesc() {
-      return "Yashirin so'z faoliyatida e'tiborsiz qilingan";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseCorLDesc() {
-      return "Lema faoliyatida to'g'ri";
+      return "\u0110\xfang trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseIncLDesc() {
-      return "Lema faoliyatida noto'g'ri";
+      return "Sai trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseIgnLDesc() {
-      return "Lemma faoliyatida e'tiborga olinmaydi";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseCorMDesc() {
-      return "Grammatika faoliyatida to'g'ri";
+      return "\u0110\xfang trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseIncMDesc() {
-      return "Grammatika faoliyatida noto'g'ri";
+      return "Sai trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseIgnMDesc() {
-      return "Grammatika faoliyatida e'tiborga olinmaydi";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseEmojiDesc() {
-      return "Emodzi faoliyatida to'g'ri";
+      return "Ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac ch\xednh x\xe1c";
     },
     get$constructUseCollected() {
-      return "Chatda to'plangan";
+      return "\u0110\u01b0\u1ee3c thu th\u1eadp trong tr\xf2 chuy\u1ec7n";
     },
     get$constructUseNanDesc() {
-      return "Qo'llanilmaydi";
+      return "Kh\xf4ng \xe1p d\u1ee5ng";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "Matnni nutqqa aylantirish yoqildi";
+      return "B\u1eadt \u0111\u1ecdc v\u0103n b\u1ea3n (text-to-speech)";
     },
     get$enableTTSToolDescription() {
-      return "Ilovaga matnning maqsadli tilingizdagi bo'laklari uchun matnni nutqqa aylantirish chiqishini yaratishga imkon beradi.";
+      return "Cho ph\xe9p \u1ee9ng d\u1ee5ng t\u1ea1o \xe2m thanh \u0111\u1ecdc v\u0103n b\u1ea3n c\u1ee7a ng\xf4n ng\u1eef \u0111\xedch";
     },
     get$yourUsername() {
-      return "Sizning foydalanuvchi nomingiz";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng c\u1ee7a b\u1ea1n";
     },
     get$yourEmail() {
-      return "Sizning elektron pochta manzilingiz";
+      return "Email c\u1ee7a b\u1ea1n";
     },
     get$iWantToLearn() {
-      return "O'rganishni istayman";
+      return "T\xf4i mu\u1ed1n h\u1ecdc";
     },
     get$pleaseEnterEmail() {
-      return string$.Iltimo;
+      return "Vui l\xf2ng nh\u1eadp \u0111\u1ecba ch\u1ec9 email h\u1ee3p l\u1ec7.";
     },
     get$myBaseLanguage() {
-      return "Mening asosiy tilim";
+      return "Ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a t\xf4i";
     },
     get$formSectionHeader() {
-      return "Chatlarda ishlatiladigan shakllar:";
+      return "C\xe1c d\u1ea1ng t\u1eeb \u0111\xe3 d\xf9ng trong tr\xf2 chuy\u1ec7n:";
     },
     get$writingExercisesTooltip() {
-      return "Yozish";
+      return "B\xe0i t\u1eadp vi\u1ebft";
     },
     get$listeningExercisesTooltip() {
-      return "Tinglash";
+      return "B\xe0i t\u1eadp nghe";
     },
     get$readingExercisesTooltip() {
-      return "O'qish";
+      return "B\xe0i t\u1eadp \u0111\u1ecdc";
     },
     get$meaningNotFound() {
-      return "Ma'no topilmadi.";
+      return "Kh\xf4ng t\xecm th\u1ea5y ngh\u0129a c\u1ee7a t\u1eeb.";
     },
     get$notTheCodeError() {
-      return "Kechirasiz, bu kod emas!";
+      return "Xin l\u1ed7i, m\xe3 \u0111\xf3 kh\xf4ng \u0111\xfang!";
     },
     get$totalXP() {
-      return "Jami XP";
+      return "T\u1ed5ng XP";
     },
     get$numLemmas() {
-      return "Lemmalarning umumiy soni";
+      return "T\u1ed5ng s\u1ed1 m\u1ee5c t\u1eeb";
     },
     get$numLemmasUsedCorrectly() {
-      return "Kamida bir marta to'g'ri ishlatilgan lemmalarning soni";
+      return "S\u1ed1 m\u1ee5c t\u1eeb \u0111\xe3 d\xf9ng \u0111\xfang \xedt nh\u1ea5t m\u1ed9t l\u1ea7n";
     },
     get$numLemmasUsedIncorrectly() {
-      return "To'g'ri ishlatilmagan lemmalarning soni 0 marta";
+      return "S\u1ed1 m\u1ee5c t\u1eeb ch\u01b0a t\u1eebng \u0111\u01b0\u1ee3c d\xf9ng \u0111\xfang";
     },
     get$numLemmasSmallXP() {
-      return "0 - 30 XP bo'lgan lemmalarning soni";
+      return "S\u1ed1 m\u1ee5c t\u1eeb 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "31 - 200 XP bo'lgan lemmalarning soni";
+      return "S\u1ed1 m\u1ee5c t\u1eeb 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "200 dan ortiq XP bo'lgan lemmalarning soni";
+      return "S\u1ed1 m\u1ee5c t\u1eeb > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "Grammatika tushunchalarining soni";
+      return "S\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p";
     },
     get$listGrammarConcepts() {
-      return "Grammatika tushunchalari";
+      return "C\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Asl xabarlarida kamida 80% to'g'ri ishlatilgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p d\xf9ng \u0111\xfang \xedt nh\u1ea5t 80% trong tin nh\u1eafn g\u1ed1c";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Asl xabarlarida 80% dan kam to'g'ri ishlatilgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p d\xf9ng \u0111\xfang d\u01b0\u1edbi 80% trong tin nh\u1eafn g\u1ed1c";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Tizim tomonidan taklif qilingan variantlardan kamida 80% to'g'ri tanlangan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p ch\u1ecdn \u0111\xfang \xedt nh\u1ea5t 80% t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Tizim tomonidan taklif qilingan variantlardan kamida 80% noto'g'ri tanlangan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p ch\u1ecdn \u0111\xfang d\u01b0\u1edbi 80% t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$listGrammarConceptsSmallXP() {
-      return "0-50 XP bo'lgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 0 - 50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "51-200 XP bo'lgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 51 - 200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "201-500 XP bo'lgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 201 - 500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "500 dan ortiq XP bo'lgan grammatika tushunchalari";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p > 500 XP";
     },
     get$numMessagesSent() {
-      return "Xabarlar soni";
+      return "S\u1ed1 tin nh\u1eafn \u0111\xe3 g\u1eedi";
     },
     get$numWordsTyped() {
-      return "Asl xabarlar ichidagi yozilgan so'zlar soni";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 g\xf5 trong tin nh\u1eafn g\u1ed1c";
     },
     get$numCorrectChoices() {
-      return "Tizim tomonidan taklif qilingan to'g'ri so'zlar soni";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 ch\u1ecdn ch\xednh x\xe1c t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$numIncorrectChoices() {
-      return "Tizim tomonidan taklif qilingan noto'g'ri so'zlar soni";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 ch\u1ecdn sai t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3850,790 +3850,790 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Fayl turi";
+      return "Lo\u1ea1i t\u1ec7p";
     },
     get$download(_) {
-      return "Yuklab olish";
+      return "T\u1ea3i xu\u1ed1ng";
     },
     get$analyticsNotAvailable() {
-      return "Foydalanuvchi tahlili mavjud emas";
+      return "D\u1eef li\u1ec7u ph\xe2n t\xedch kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$downloading() {
-      return "Yuklanmoqda...";
+      return "\u0110ang t\u1ea3i xu\u1ed1ng...";
     },
     get$failedFetchUserAnalytics() {
-      return "Foydalanuvchi tahlilini yuklab olish muvaffaqiyatsiz bo'ldi";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i d\u1eef li\u1ec7u ph\xe2n t\xedch ng\u01b0\u1eddi d\xf9ng";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "'" + wordForm + "' ning " + morphologicalFeature + " nima?";
+      return '\u0110\u1eb7c \u0111i\u1ec3m ng\u1eef ph\xe1p "' + morphologicalFeature + "\" c\u1ee7a '" + wordForm + "' l\xe0 g\xec?";
     },
     get$dataAvailable() {
-      return "Ma'lumot mavjudligi";
+      return "D\u1eef li\u1ec7u kh\u1ea3 d\u1ee5ng";
     },
     get$available(_) {
-      return "Mavjud";
+      return "Kh\u1ea3 d\u1ee5ng";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot ham xato qilishi mumkin!";
+      return "Pangea Bot c\u0169ng c\xf3 th\u1ec3 m\u1eafc l\u1ed7i!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "'" + lemma + "' ning ma'nosi nima?";
+      return "T\u1eeb '" + lemma + "' c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Xabar ichidagi so'zlar bilan ma'nolarni moslang!";
+      return "Kh\u1edbp ngh\u0129a v\u1edbi c\xe1c t\u1eeb trong tin nh\u1eafn!";
     },
     get$doubleClickToEdit() {
-      return "Tahrirlash uchun ikki marta bosish.";
+      return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
     },
     get$cefrLevelLabel() {
-      return "CEFR darajasi";
+      return "Tr\xecnh \u0111\u1ed9 CEFR";
     },
     get$image(_) {
-      return "Rasm";
+      return "H\xecnh \u1ea3nh";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Mavzu, rejim, o\u02bbrganish maqsadini tanlang va suhbat uchun faoliyat yarating!";
+      return "Ch\u1ecdn ch\u1ee7 \u0111\u1ec1, ch\u1ebf \u0111\u1ed9, m\u1ee5c ti\xeau h\u1ecdc t\u1eadp v\xe0 t\u1ea1o ho\u1ea1t \u0111\u1ed9ng cho cu\u1ed9c tr\xf2 chuy\u1ec7n!";
     },
     get$constructUsePvmDesc() {
-      return "Ovozli xabar ishlab chiqarilgan";
+      return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
     },
     get$leaveSpaceDescription() {
-      return "Kursdan chiqib, siz uning ichidagi barcha chatlardan chiqasiz. Boshqa foydalanuvchilar sizning kursdan chiqqaningizni ko'radilar.";
+      return "B\u1eb1ng c\xe1ch r\u1eddi kh\u1ecfi kh\xf3a h\u1ecdc, b\u1ea1n s\u1ebd r\u1eddi kh\u1ecfi t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n trong \u0111\xf3. C\xe1c ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi kh\xf3a h\u1ecdc.";
     },
     get$constructUseCorMmDesc() {
-      return "To'g'ri xabar ma'nosi";
+      return "\u0110\xfang trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$constructUseIncMmDesc() {
-      return "Noto'g'ri xabar ma'nosi";
+      return "Sai trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$constructUseIgnMmDesc() {
-      return "E'tiborsiz qilingan xabar ma'nosi";
+      return "B\u1ecf qua trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$meaning() {
-      return "Ma'no";
+      return "Ngh\u0129a";
     },
     chatWith$1(displayname) {
-      return displayname + " bilan guruh";
+      return "Nh\xf3m v\u1edbi " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Iltimos, elektron pochta havolasini bosing va davom eting.\n\nAgar elektron pochta kelmagan bo'lsa, spam papkangizni tekshiring.";
+      return "Vui l\xf2ng nh\u1ea5p v\xe0o li\xean k\u1ebft trong email v\xe0 sau \u0111\xf3 ti\u1ebfp t\u1ee5c. Trong m\u1ed9t s\u1ed1 tr\u01b0\u1eddng h\u1ee3p hi\u1ebfm hoi, email c\xf3 th\u1ec3 b\u1ecb g\u1eedi v\xe0o th\u01b0 r\xe1c ho\u1eb7c m\u1ea5t \u0111\u1ebfn 5 ph\xfat \u0111\u1ec3 \u0111\u1ebfn n\u01a1i.";
     },
     get$dontForgetPassword() {
-      return "Parolingizni unutmang!";
+      return "\u0110\u1eebng qu\xean m\u1eadt kh\u1ea9u c\u1ee7a b\u1ea1n!";
     },
     get$enableAutocorrectToolName() {
-      return "Qurilma avtomatik to'g'rilashni yoqing";
+      return "B\u1eadt t\u1ef1 \u0111\u1ed9ng s\u1eeda";
     },
     get$enableAutocorrectDescription() {
-      return "Agar qurilma o'rganyayotgan tilni qo'llab-quvvatlasa, siz odatiy xatoliklarni tuzatish uchun qurilma avtomatik to'g'rilashni yoqishingiz mumkin.";
+      return "S\u1eed d\u1ee5ng t\xednh n\u0103ng t\u1ef1 \u0111\u1ed9ng s\u1eeda t\xedch h\u1ee3p c\u1ee7a b\xe0n ph\xedm khi g\xf5 tin nh\u1eafn";
     },
     get$ttsDisbledTitle() {
-      return "Matn-to-speech o'chirilgan";
+      return "T\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i \u0111\xe3 b\u1ecb t\u1eaft";
     },
     get$ttsDisabledBody() {
-      return "O'qish sozlamalarida matn-to-speechni yoqishingiz mumkin";
+      return "B\u1ea1n c\xf3 th\u1ec3 b\u1eadt t\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i trong c\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n";
     },
     get$noSpaceDescriptionYet() {
-      return "Hali kurs tavsifi yaratilmagan.";
+      return "Ch\u01b0a t\u1ea1o m\xf4 t\u1ea3 kh\xf3a h\u1ecdc n\xe0o.";
     },
     get$tooLargeToSend() {
-      return "Ushbu xabar yuborish uchun juda katta";
+      return "Tin nh\u1eafn n\xe0y qu\xe1 l\u1edbn \u0111\u1ec3 g\u1eedi";
     },
     get$exitWithoutSaving() {
-      return "Haqiqatan ham saqlamasdan chiqmoqchimisiz?";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n r\u1eddi \u0111i m\xe0 kh\xf4ng l\u01b0u kh\xf4ng?";
     },
     get$enableAutocorrectWarning() {
-      return "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi";
+      return "C\u1ea3nh b\xe1o! C\u1ea7n th\xeam b\xe0n ph\xedm ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n";
     },
     get$leaveRoomDescription() {
-      return "Siz bu chatdan chiqmoqdasiz. Boshqa foydalanuvchilar siz chatdan chiqganingizni ko'radilar.";
+      return "B\u1ea1n s\u1eafp r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1eefng ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$confirmUserId() {
-      return "Iltimos, hisobingizni o'chirish uchun Pangea Chat foydalanuvchi nomingizni tasdiqlang.";
+      return "Vui l\xf2ng x\xe1c nh\u1eadn t\xean ng\u01b0\u1eddi d\xf9ng Pangea Chat c\u1ee7a b\u1ea1n \u0111\u1ec3 x\xf3a t\xe0i kho\u1ea3n.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return startDate + " dan boshlab";
+      return "B\u1eaft \u0111\u1ea7u t\u1eeb " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return " \u2022 Obuna sozlamalarida istalgan vaqtda bekor qiling";
+      return "\u2022 H\u1ee7y b\u1ea5t c\u1ee9 l\xfac n\xe0o trong c\xe0i \u0111\u1eb7t \u0111\u0103ng k\xfd";
     },
     get$autocorrectNotAvailable() {
-      return "Afsuski, platformangiz hozirda bu funksiyani qo'llab-quvvatlamaydi. Keyingi rivojlanishlarni kuzatib boring!";
+      return "R\u1ea5t ti\u1ebfc, n\u1ec1n t\u1ea3ng c\u1ee7a b\u1ea1n hi\u1ec7n kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 cho t\xednh n\u0103ng n\xe0y. H\xe3y theo d\xf5i \u0111\u1ec3 bi\u1ebft th\xeam th\xf4ng tin ph\xe1t tri\u1ec3n!";
     },
     get$pleaseUpdateApp() {
-      return "Iltimos, davom etish uchun ilovani yangilang.";
+      return "Vui l\xf2ng c\u1eadp nh\u1eadt \u1ee9ng d\u1ee5ng \u0111\u1ec3 ti\u1ebfp t\u1ee5c.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Emojilarni ularning eng yaxshi ifodalaydigan so'zlari bilan moslang. Xavotir olmang! Noto'g'ri fikrda bo'lsangiz, hech qanday ball yo'qotilmaydi. \ud83d\ude05";
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho t\u1eeb n\xe0y! Kh\xf4ng c\xf3 c\xe2u tr\u1ea3 l\u1eddi sai v\xe0 b\u1ea1n c\xf3 th\u1ec3 chuy\u1ec3n \u0111\u1ed5i b\u1ea5t c\u1ee9 l\xfac n\xe0o! \ud83d\ude04";
     },
     get$analyticsVocabListBody() {
-      return "Bu sizning barcha lug'atingiz! Har bir so'z uchun XP olganingizda, ular ildizdan to'liq gulga aylanishadi. Ko'proq ma'lumot uchun har qanday so'zga bosing.";
+      return "\u0110\xe2y l\xe0 to\xe0n b\u1ed9 t\u1eeb v\u1ef1ng c\u1ee7a b\u1ea1n! Khi b\u1ea1n ki\u1ebfm XP cho m\u1ed7i t\u1eeb, ch\xfang s\u1ebd t\u1eeb h\u1ea1t gi\u1ed1ng ph\xe1t tri\u1ec3n th\xe0nh n\u1edf r\u1ed9. Nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem th\xeam chi ti\u1ebft.";
     },
     get$morphAnalyticsListBody() {
-      return "Bu siz o'rganayotgan tilning barcha grammatik tushunchalari! Ularni suhbat davomida uchraganingizda ochasiz. Tafsilotlar uchun bosing.";
+      return "\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p trong ng\xf4n ng\u1eef b\u1ea1n \u0111ang h\u1ecdc! B\u1ea1n s\u1ebd m\u1edf kh\xf3a ch\xfang khi g\u1eb7p ph\u1ea3i trong khi tr\xf2 chuy\u1ec7n. Nh\u1ea5p \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$knockSpaceSuccess() {
-      return "Siz bu kursga qo'shilishni so'radingiz! Administrator sizning so'rovingizni olgach, javob beradi \ud83d\ude04";
+      return "B\u1ea1n \u0111\xe3 y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc n\xe0y! Qu\u1ea3n tr\u1ecb vi\xean s\u1ebd ph\u1ea3n h\u1ed3i y\xeau c\u1ea7u c\u1ee7a b\u1ea1n khi h\u1ecd nh\u1eadn \u0111\u01b0\u1ee3c \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "To\u2018liq xabarni tinglang. So\u2018ngra, audiolarni so\u2018zlar bilan moslang.";
+      return "Nghe to\xe0n b\u1ed9 tin nh\u1eafn. Sau \u0111\xf3, kh\u1edbp c\xe1c \xe2m thanh v\u1edbi c\xe1c t\u1eeb.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Grammatika savollari uchun mozaika bo\u2018laklarini bosing!";
+      return "Nh\u1ea5p v\xe0o c\xe1c m\u1ea3nh gh\xe9p cho c\xe1c c\xe2u h\u1ecfi ng\u1eef ph\xe1p!";
     },
     get$home() {
-      return "Bosh sahifa";
+      return "Trang ch\u1ee7";
     },
     get$join(_) {
-      return "Qo\u2018shilish";
+      return "Tham gia";
     },
     get$readingAssistanceOverviewBody() {
-      return "Emojilar, audiolar, so\u2018z ma\u2019nolari va grammatika tushunchalarini moslashtirish uchun mini-o\u2018yinlar uchun quyidagi tugmalarga bosing. Yoki tafsilotlar uchun har qanday so\u2018zga bosing.";
+      return "Nh\u1ea5p v\xe0o c\xe1c n\xfat b\xean d\u01b0\u1edbi \u0111\u1ec3 ch\u01a1i mini-game v\u1ec1 vi\u1ec7c kh\u1edbp emoji, \xe2m thanh, ngh\u0129a t\u1eeb v\xe0 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p. Ho\u1eb7c nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Ko\u2018rsatma iplarini tiklash";
+      return "\u0110\u1eb7t l\u1ea1i h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Yangi foydalanuvchi uchun ko\u2018rsatma iplarini ko\u2018rsatish uchun bosing.";
+      return "Nh\u1ea5p \u0111\u1ec3 hi\u1ec3n th\u1ecb h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5 nh\u01b0 cho m\u1ed9t ng\u01b0\u1eddi d\xf9ng ho\xe0n to\xe0n m\u1edbi.";
     },
     get$translationProblem() {
-      return "Tarjimada muammo";
+      return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
     },
     get$askToJoin() {
-      return "Qo\u2018shilishni so\u2018rash";
+      return "Y\xeau c\u1ea7u tham gia";
     },
     get$emptyChatWarningTitle() {
-      return "Suhbat bo\u2018sh";
+      return "Tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$emptyChatWarningDesc() {
-      return "Siz hech kimni suhbatga taklif qilmagansiz. Kontaktlaringiz yoki Botni taklif qilish uchun Suhbat sozlamalariga o\u2018ting. Buni keyinroq ham qilishingiz mumkin.";
+      return "B\u1ea1n ch\u01b0a m\u1eddi ai v\xe0o tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh. \u0110i \u0111\u1ebfn c\xe0i \u0111\u1eb7t tr\xf2 chuy\u1ec7n \u0111\u1ec3 m\u1eddi danh b\u1ea1 ho\u1eb7c Bot c\u1ee7a b\u1ea1n. B\u1ea1n c\u0169ng c\xf3 th\u1ec3 l\xe0m \u0111i\u1ec1u n\xe0y sau.";
     },
     get$areYouLikeMe() {
-      return "Siz men kabi emasmisiz?";
+      return "B\u1ea1n c\xf3 gi\u1ed1ng t\xf4i kh\xf4ng?";
     },
     get$tryAgainLater() {
-      return "Juda ko'p urinishlar amalga oshirildi. Iltimos, 5 daqiqadan so'ng yana urinib ko'ring.";
+      return "\u0110\xe3 th\u1ef1c hi\u1ec7n qu\xe1 nhi\u1ec1u l\u1ea7n. Vui l\xf2ng th\u1eed l\u1ea1i sau 5 ph\xfat.";
     },
     get$enterSpaceCode() {
-      return "Kurs kodini kiriting";
+      return "Nh\u1eadp m\xe3 kh\xf3a h\u1ecdc";
     },
     get$shareSpaceLink() {
-      return "Havolani ulash";
+      return "Chia s\u1ebb li\xean k\u1ebft";
     },
     get$byUsingPangeaChat() {
-      return "Pangea Chat-dan foydalanish bilan, men roziman ";
+      return "B\u1eb1ng c\xe1ch s\u1eed d\u1ee5ng Pangea Chat, t\xf4i \u0111\u1ed3ng \xfd v\u1edbi ";
     },
     get$details(_) {
-      return "Tafsilotlar";
+      return "Chi ti\u1ebft";
     },
     get$languageLevelPreA1Desc() {
-      return "Men hech qachon tilni o'rgangan yoki ishlatgan emasman.";
+      return "T\xf4i ch\u01b0a bao gi\u1edd h\u1ecdc ho\u1eb7c s\u1eed d\u1ee5ng ng\xf4n ng\u1eef n\xe0y.";
     },
     get$languageLevelA1Desc() {
-      return "Men ba'zi odatiy kundalik iboralarni va juda oddiy iboralarni tushunaman va ishlata olaman.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u v\xe0 s\u1eed d\u1ee5ng m\u1ed9t s\u1ed1 bi\u1ec3u th\u1ee9c quen thu\u1ed9c h\xe0ng ng\xe0y v\xe0 c\xe1c c\u1ee5m t\u1eeb r\u1ea5t c\u01a1 b\u1ea3n.";
     },
     get$languageLevelA2Desc() {
-      return "Men darhol muhim bo'lgan sohalarga oid gaplar va tez-tez ishlatiladigan iboralarni tushunaman.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c c\xe2u v\xe0 c\xe1c bi\u1ec3u th\u1ee9c th\u01b0\u1eddng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng li\xean quan \u0111\u1ebfn c\xe1c l\u0129nh v\u1ef1c c\xf3 li\xean quan ngay l\u1eadp t\u1ee9c.";
     },
     get$languageLevelB1Desc() {
-      return "Men eng ko'p uchraydigan vaziyatlarni hal qila olaman va oddiy bog'langan matnlarni ishlab chiqara olaman.";
+      return "T\xf4i c\xf3 th\u1ec3 x\u1eed l\xfd h\u1ea7u h\u1ebft c\xe1c t\xecnh hu\u1ed1ng quen thu\u1ed9c v\xe0 c\xf3 th\u1ec3 t\u1ea1o ra v\u0103n b\u1ea3n \u0111\u01a1n gi\u1ea3n li\xean k\u1ebft v\u1ec1 c\xe1c ch\u1ee7 \u0111\u1ec1 quen thu\u1ed9c.";
     },
     get$languageLevelB2Desc() {
-      return "Men murakkab matnlarning asosiy g'oyalarini tushunaman va ravon va o'z-o'zidan muloqot qila olaman.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c \xfd ch\xednh c\u1ee7a c\xe1c v\u0103n b\u1ea3n ph\u1ee9c t\u1ea1p v\xe0 t\u01b0\u01a1ng t\xe1c v\u1edbi m\u1ed9t m\u1ee9c \u0111\u1ed9 l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t.";
     },
     get$languageLevelC1Desc() {
-      return "Men fikrlarni ravon va o'z-o'zidan ifoda eta olaman, katta qiyinchiliklarsiz va keng qamrovli matnlarni tushunaman.";
+      return "T\xf4i c\xf3 th\u1ec3 di\u1ec5n \u0111\u1ea1t \xfd t\u01b0\u1edfng m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t m\xe0 kh\xf4ng g\u1eb7p nhi\u1ec1u kh\xf3 kh\u0103n v\xe0 hi\u1ec3u m\u1ed9t lo\u1ea1t c\xe1c v\u0103n b\u1ea3n \u0111\xf2i h\u1ecfi.";
     },
     get$languageLevelC2Desc() {
-      return "Men deyarli hamma narsani eshitgan yoki o'qigan holda tushunaman va ravon va aniq ifoda eta olaman.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u h\u1ea7u nh\u01b0 m\u1ecdi th\u1ee9 nghe ho\u1eb7c \u0111\u1ecdc v\xe0 di\u1ec5n \u0111\u1ea1t b\u1ea3n th\xe2n m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 ch\xednh x\xe1c.";
     },
     get$newVocab() {
-      return "Yangi so'zlar";
+      return "T\u1eeb v\u1ef1ng m\u1edbi";
     },
     get$newGrammar() {
-      return "Yangi grammatik tushunchalar";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
     },
     get$ban() {
-      return "Ta'qiqlash";
+      return "C\u1ea5m";
     },
     get$kick() {
-      return "Olib tashlash";
+      return "\u0110\xe1";
     },
     get$lemma() {
-      return "Lema";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "Grammatika xususiyati";
+      return "T\xednh n\u0103ng ng\u1eef ph\xe1p";
     },
     get$grammarTag() {
-      return "Grammatika teg";
+      return "Th\u1ebb ng\u1eef ph\xe1p";
     },
     get$forms() {
-      return "Shakllar";
+      return "H\xecnh th\u1ee9c";
     },
     get$exampleMessages() {
-      return "Misol xabarlar";
+      return "Tin nh\u1eafn v\xed d\u1ee5";
     },
     get$timesUsedIndependently() {
-      return "Mustaqil ishlatilgan vaqtlari";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng \u0111\u1ed9c l\u1eadp";
     },
     get$timesUsedWithAssistance() {
-      return "Yordam bilan ishlatilgan vaqtlari";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng v\u1edbi s\u1ef1 tr\u1ee3 gi\xfap";
     },
     shareInviteCode$1(code) {
-      return "Taklif kodini ulash: " + code;
+      return "Chia s\u1ebb m\xe3 m\u1eddi: " + code;
     },
     get$skipForNow() {
-      return "Hozircha o'tkazib yuborish";
+      return "B\u1ecf qua t\u1ea1m th\u1eddi";
     },
     get$permissions(_) {
-      return "Ruxsatlar";
+      return "Quy\u1ec1n h\u1ea1n";
     },
     get$spaceChildPermission() {
-      return "Kim yangi chatlarni bu kursga qo'shishi mumkin";
+      return "Ai c\xf3 th\u1ec3 th\xeam cu\u1ed9c tr\xf2 chuy\u1ec7n m\u1edbi v\xe0o kh\xf3a h\u1ecdc n\xe0y";
     },
     get$addEnvironmentOverride() {
-      return "Muhitni o'zgartirishni qo'shish";
+      return "Th\xeam ghi \u0111\xe8 m\xf4i tr\u01b0\u1eddng";
     },
     get$defaultOption() {
-      return "Standart";
+      return "M\u1eb7c \u0111\u1ecbnh";
     },
     get$deleteChatDesc() {
-      return "Siz ushbu suhbatni o'chirmoqchimisiz? Bu barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi.";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n x\xf3a tr\xf2 chuy\u1ec7n n\xe0y kh\xf4ng? N\xf3 s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
     get$deleteSpaceDesc() {
-      return "Kurs va tanlangan har qanday suhbatlar barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi. Bu amalni bekor qilish mumkin emas.";
+      return "Kh\xf3a h\u1ecdc v\xe0 b\u1ea5t k\u1ef3 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0o \u0111\xe3 ch\u1ecdn s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 c\xe1c th\xe0nh vi\xean v\xe0 t\u1ea5t c\u1ea3 c\xe1c tin nh\u1eafn trong cu\u1ed9c tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng \u0111\u1ec3 th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$configureSpace() {
-      return "Kursni sozlash";
+      return "C\u1ea5u h\xecnh kh\xf3a h\u1ecdc";
     },
     get$pinMessages() {
-      return "Xabarlarni pin qilish";
+      return "Ghim tin nh\u1eafn";
     },
     get$setJoinRules() {
-      return "Qo'shilish qoidalarini o'rnating";
+      return "\u0110\u1eb7t quy t\u1eafc tham gia";
     },
     get$changeGeneralSettings() {
-      return "Umumiy sozlamalarni o'zgartiring";
+      return "Thay \u0111\u1ed5i c\xe0i \u0111\u1eb7t chung";
     },
     get$inviteOtherUsersToRoom() {
-      return "Boshqa foydalanuvchilarni taklif qiling";
+      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng kh\xe1c";
     },
     get$changeTheNameOfTheSpace() {
-      return "Kurs nomini o'zgartiring";
+      return "Thay \u0111\u1ed5i t\xean c\u1ee7a kh\xf3a h\u1ecdc";
     },
     get$changeTheDescription() {
-      return "Tavsifni o'zgartiring";
+      return "Thay \u0111\u1ed5i m\xf4 t\u1ea3";
     },
     get$changeThePermissions() {
-      return "Ruxsatlarni o'zgartiring";
+      return "Thay \u0111\u1ed5i quy\u1ec1n h\u1ea1n";
     },
     get$introductions() {
-      return "Tanishuvlar";
+      return "Gi\u1edbi thi\u1ec7u";
     },
     get$announcements() {
-      return "E'lonlar";
+      return "Th\xf4ng b\xe1o";
     },
     get$activities() {
-      return "Faoliyatlar";
+      return "Ho\u1ea1t \u0111\u1ed9ng";
     },
     get$access() {
-      return "Kirish";
+      return "Truy c\u1eadp";
     },
     get$howSpaceCanBeFound() {
-      return "Bu kurs qanday topilishi mumkin";
+      return "Kh\xf3a h\u1ecdc n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c t\xecm th\u1ea5y nh\u01b0 th\u1ebf n\xe0o";
     },
     get$$private() {
-      return "Maxfiy";
+      return "Ri\xeang t\u01b0";
     },
     get$cannotBeFoundInSearch() {
-      return "Qidiruvda topilmaydi";
+      return "Kh\xf4ng th\u1ec3 t\xecm th\u1ea5y trong t\xecm ki\u1ebfm";
     },
     get$$public(_) {
-      return "Jamoat";
+      return "C\xf4ng khai";
     },
     get$visibleToCommunity() {
-      return '"Find a course" orqali keng Pangea Chat jamoatiga ko\'rinadi';
+      return 'Hi\u1ec3n th\u1ecb cho c\u1ed9ng \u0111\u1ed3ng Chat Pangea r\u1ed9ng h\u01a1n qua "T\xecm kh\xf3a h\u1ecdc"';
     },
     get$howSpaceCanBeJoined() {
-      return "Bu kurs qanday qo'shilishi mumkin";
+      return "Kh\xf3a h\u1ecdc n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c tham gia nh\u01b0 th\u1ebf n\xe0o";
     },
     get$canBeFoundVia() {
-      return "Topilishi mumkin:";
+      return "C\xf3 th\u1ec3 t\xecm th\u1ea5y qua:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 taklifnoma orqali";
+      return "\u2022 l\u1eddi m\u1eddi";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kod yoki havola orqali";
+      return "\u2022 m\xe3 ho\u1eb7c li\xean k\u1ebft";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 so'rov yuborish va administrator tasdiqlashi";
+      return "\u2022 y\xeau c\u1ea7u tham gia v\xe0 s\u1ef1 ch\u1ea5p thu\u1eadn c\u1ee7a qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$sendActivities() {
-      return "Faoliyatlarni yuborish";
+      return "G\u1eedi ho\u1ea1t \u0111\u1ed9ng";
     },
     get$directMessage() {
-      return "To'g'ridan-to'g'ri xabar";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp";
     },
     get$newDirectMessage() {
-      return "Yangi to'g'ridan-to'g'ri xabar";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp m\u1edbi";
     },
     get$speakingExercisesTooltip() {
-      return "So'zlash";
+      return "N\xf3i";
     },
     get$transcriptionFailed() {
-      return "Audioni yozib olish muvaffaqiyatsiz bo'ldi";
+      return "Kh\xf4ng th\u1ec3 chuy\u1ec3n \u0111\u1ed5i \xe2m thanh";
     },
     get$aUserIsKnocking() {
-      return "1 foydalanuvchi kursingizga qo'shilishni so'rayapti";
+      return "C\xf3 1 ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " foydalanuvchi kursingizga qo'shilishni so'rayapti";
+      return "" + users + " ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n";
     },
     get$failedToFetchTranscription() {
-      return "Yozib olishni olish muvaffaqiyatsiz bo'ldi";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y b\u1ea3n chuy\u1ec3n \u0111\u1ed5i";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kurs barcha ishtirokchilari uchun o'chiriladi. Bu harakatni bekor qilish mumkin emas.";
+      return "Kh\xf3a h\u1ecdc s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 c\xe1c th\xe0nh vi\xean. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$failedToPlayVideo() {
-      return "Video ijro etishda xatolik yuz berdi";
+      return "Kh\xf4ng th\u1ec3 ph\xe1t video";
     },
     get$done() {
-      return "Bajarildi";
+      return "Xong";
     },
     get$inThisSpace() {
-      return "Ushbu kursda";
+      return "Trong kh\xf3a h\u1ecdc n\xe0y";
     },
     get$myContacts() {
-      return "Mening kontaktlarim";
+      return "Danh b\u1ea1 c\u1ee7a t\xf4i";
     },
     get$inviteAllInSpace() {
-      return "Barchasini taklif qilish";
+      return "M\u1eddi t\u1ea5t c\u1ea3 trong kh\xf3a h\u1ecdc n\xe0y";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Barcha kurs ishtirokchilari chatga taklif qilindi";
+      return "T\u1ea5t c\u1ea3 th\xe0nh vi\xean trong kh\xf3a h\u1ecdc \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi v\xe0o tr\xf2 chuy\u1ec7n";
     },
     numKnocking$1(count) {
-      return "" + count + " ta taqillatmoqda";
+      return "" + count + " g\xf5 c\u1eeda";
     },
     numInvited$1(count) {
-      return "" + count + " ta taklif qilindi";
+      return "" + count + " \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$errorFetchingDefinition() {
-      return "Taqrifni olishda xato";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y \u0111\u1ecbnh ngh\u0129a";
     },
     get$errorProcessAnalytics() {
-      return "Tahlilni qayta ishlashda xato";
+      return "Kh\xf4ng th\u1ec3 x\u1eed l\xfd ph\xe2n t\xedch";
     },
     get$errorDownloading() {
-      return "Yuklab olish muvaffaqiyatsiz";
+      return "T\u1ea3i xu\u1ed1ng th\u1ea5t b\u1ea1i";
     },
     get$errorLoadingSpaceChildren() {
-      return "Ushbu kurs ichidagi chatlarni yuklashda xato";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i tr\xf2 chuy\u1ec7n trong kh\xf4ng gian n\xe0y";
     },
     get$unexpectedError() {
-      return "Kutilmagan xato.";
+      return "L\u1ed7i kh\xf4ng mong \u0111\u1ee3i.";
     },
     get$pleaseReload() {
-      return "Iltimos, yangilang va qayta urinib ko'ring.";
+      return "Vui l\xf2ng t\u1ea3i l\u1ea1i v\xe0 th\u1eed l\u1ea1i.";
     },
     get$translationError() {
-      return "Tarjimada xato";
+      return "L\u1ed7i d\u1ecbch thu\u1eadt";
     },
     get$errorFetchingActivity() {
-      return "Faoliyatni olishda xato";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y ho\u1ea1t \u0111\u1ed9ng";
     },
     get$check(_) {
-      return "Tekshirish";
+      return "Ki\u1ec3m tra";
     },
     get$unableToFindRoom() {
-      return "Ushbu kod bilan chat yoki kurs topilmadi. Iltimos, qayta urinib ko'ring.";
+      return "Kh\xf4ng t\xecm th\u1ea5y tr\xf2 chuy\u1ec7n ho\u1eb7c kh\xf4ng gian n\xe0o v\u1edbi m\xe3 \u0111\xf3. Vui l\xf2ng th\u1eed l\u1ea1i.";
     },
     viewingAnalytics$2(visible, users) {
-      return "" + visible + "/" + users + " Analytics-ni ko'rish";
+      return "\u0110ang xem " + visible + "/" + users + " Th\u1ed1ng k\xea";
     },
     get$request(_) {
-      return "So'rov";
+      return "Y\xeau c\u1ea7u";
     },
     get$requestAll(_) {
-      return "Hammasini so'rash";
+      return "Y\xeau c\u1ea7u t\u1ea5t c\u1ea3";
     },
     get$confirmMessageUnpin() {
-      return "Ushbu xabarni pin qilishdan voz kechmoqchimisiz?";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n b\u1ecf ghim tin nh\u1eafn n\xe0y kh\xf4ng?";
     },
     get$pending(_) {
-      return "Kutilmoqda";
+      return "\u0110ang ch\u1edd";
     },
     get$openRoleLabel() {
-      return "OCHIQ";
+      return "M\u1ede";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " " + role + " sifatida qo'shildi";
+      return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia v\u1edbi vai tr\xf2 " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " bu faoliyatni yakunladi";
+      return "\ud83c\udfaf " + username + " \u0111\xe3 k\u1ebft th\xfac ho\u1ea1t \u0111\u1ed9ng n\xe0y";
     },
     get$activitySummaryError() {
-      return "Faoliyatlar haqida ma'lumotlar mavjud emas";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y t\xf3m t\u1eaft ho\u1ea1t \u0111\u1ed9ng";
     },
     get$requestSummaries() {
-      return "So'rovlar xulosasi";
+      return "Y\xeau c\u1ea7u t\xf3m t\u1eaft";
     },
     get$requestAccessTitle() {
-      return "Analitika kirish huquqini so'rash?";
+      return "Y\xeau c\u1ea7u quy\u1ec1n truy c\u1eadp ph\xe2n t\xedch?";
     },
     get$requestAccessDesc() {
-      return "Ishtirokchilarning analitikasini ko'rish uchun kirish huquqini so'rashni xohlaysizmi?\n\nAgar ishtirokchilar rozilik bildirsa, siz ularning:\n    \u2022 umumiy lug'at\n    \u2022 umumiy grammatik tushunchalar\n    \u2022 bajarilgan faoliyat sessiyalari\n    \u2022 foydalanilgan, to'g'ri va noto'g'ri grammatik tushunchalarni ko'rishingiz mumkin.\n\nSiz ularning:\n    \u2022 kurs tashqarisidagi chatdagi xabarlarini\n    \u2022 lug'at ro'yxatini ko'rish imkoniyatiga ega bo'lmaysiz.";
+      return "B\u1ea1n c\xf3 mu\u1ed1n y\xeau c\u1ea7u quy\u1ec1n truy c\u1eadp \u0111\u1ec3 xem ph\xe2n t\xedch ng\u01b0\u1eddi tham gia?\n\nN\u1ebfu c\xe1c ng\u01b0\u1eddi tham gia \u0111\u1ed3ng \xfd, qu\u1ea3n tr\u1ecb vi\xean c\u1ee7a kh\xf3a h\u1ecdc n\xe0y s\u1ebd c\xf3 th\u1ec3 xem:\n    \u2022 t\u1ed5ng s\u1ed1 t\u1eeb v\u1ef1ng\n    \u2022 t\u1ed5ng s\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p\n    \u2022 t\u1ed5ng s\u1ed1 phi\xean ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh\n    \u2022 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p c\u1ee5 th\u1ec3 \u0111\xe3 s\u1eed d\u1ee5ng, \u0111\xfang v\xe0 sai\n\nH\u1ecd s\u1ebd kh\xf4ng th\u1ec3 xem:\n    \u2022 tin nh\u1eafn trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n ngo\xe0i kh\xf3a h\u1ecdc\n    \u2022 danh s\xe1ch t\u1eeb v\u1ef1ng";
     },
     get$analyticsInactiveTitle() {
-      return "Faol bo'lmagan foydalanuvchilarga so'rov yuborib bo'lmadi";
+      return "Kh\xf4ng th\u1ec3 g\u1eedi y\xeau c\u1ea7u t\u1edbi ng\u01b0\u1eddi d\xf9ng kh\xf4ng ho\u1ea1t \u0111\u1ed9ng";
     },
     get$analyticsInactiveDesc() {
-      return "Bu funksiyani joriy etilganidan buyon tizimga kirmagan faol bo'lmagan foydalanuvchilar sizning so'rovingizni ko'rmaydi.\n\nSo'rov tugmasi ular qaytib kelgach paydo bo'ladi. Siz keyinchalik ularning ismi ostida joylashgan So'rov tugmasini bosib, so'rovni qayta yuborishingiz mumkin.";
+      return "Ng\u01b0\u1eddi d\xf9ng kh\xf4ng ho\u1ea1t \u0111\u1ed9ng k\u1ec3 t\u1eeb khi t\xednh n\u0103ng n\xe0y \u0111\u01b0\u1ee3c gi\u1edbi thi\u1ec7u s\u1ebd kh\xf4ng th\u1ea5y y\xeau c\u1ea7u c\u1ee7a b\u1ea1n.\n\nN\xfat Y\xeau c\u1ea7u s\u1ebd xu\u1ea5t hi\u1ec7n khi h\u1ecd tr\u1edf l\u1ea1i. B\u1ea1n c\xf3 th\u1ec3 g\u1eedi l\u1ea1i y\xeau c\u1ea7u sau b\u1eb1ng c\xe1ch nh\u1ea5n n\xfat Y\xeau c\u1ea7u d\u01b0\u1edbi t\xean c\u1ee7a h\u1ecd khi n\xf3 kh\u1ea3 d\u1ee5ng.";
     },
     get$accessRequestedTitle() {
-      return "Analitika kirish so'rovi";
+      return "Y\xeau c\u1ea7u truy c\u1eadp ph\xe2n t\xedch";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Admin(lar)dan so'rov: " + admin + ' \n\n"' + space + "\" bo'limidan adminlar sizning o'qish analitikangizni ko'rishni so'rayapti.\n\nAgar rozilik bersangiz, ular sizning:\n    \u2022 umumiy lug'at\n    \u2022 umumiy grammatik tushunchalar\n    \u2022 bajarilgan faoliyat sessiyalari\n    \u2022 foydalanilgan, to'g'ri va noto'g'ri grammatik tushunchalarni ko'rish imkoniyatiga ega bo'ladi.\n\nUlar sizning:\n    \u2022 kurs tashqarisidagi chatdagi xabarlaringizni\n    \u2022 lug'at ro'yxatini ko'rish imkoniyatiga ega bo'lmaydi.";
+      return "Y\xeau c\u1ea7u qu\u1ea3n tr\u1ecb vi\xean: " + admin + " \n\nC\xe1c qu\u1ea3n tr\u1ecb vi\xean t\u1eeb \u201c" + space + "\u201d \u0111ang y\xeau c\u1ea7u xem ph\xe2n t\xedch h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n.\n\nN\u1ebfu b\u1ea1n \u0111\u1ed3ng \xfd, h\u1ecd s\u1ebd c\xf3 th\u1ec3 xem:\n    \u2022 t\u1ed5ng s\u1ed1 t\u1eeb v\u1ef1ng\n    \u2022 t\u1ed5ng s\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p\n    \u2022 t\u1ed5ng s\u1ed1 phi\xean ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh\n    \u2022 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p c\u1ee5 th\u1ec3 \u0111\xe3 s\u1eed d\u1ee5ng, \u0111\xfang v\xe0 sai\n\nH\u1ecd s\u1ebd kh\xf4ng th\u1ec3 xem:\n    \u2022 tin nh\u1eafn trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n b\xean ngo\xe0i kh\xf3a h\u1ecdc\n    \u2022 danh s\xe1ch t\u1eeb v\u1ef1ng";
     },
     get$adminRequestedAccess() {
-      return "Adminlar sizning analitikangizni ko'rishni so'radi.";
+      return "Qu\u1ea3n tr\u1ecb vi\xean y\xeau c\u1ea7u xem ph\xe2n t\xedch c\u1ee7a b\u1ea1n.";
     },
     lastUpdated$1(time) {
-      return "Yangilangan\n" + time;
+      return "C\u1eadp nh\u1eadt\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Barchasi tugadi!";
+      return "Ho\xe0n t\u1ea5t!";
     },
     get$endForAll() {
-      return "Hammasi uchun yakunlash";
+      return "K\u1ebft th\xfac cho t\u1ea5t c\u1ea3";
     },
     get$newCourse() {
-      return "Yangi kurs";
+      return "Kh\xf3a h\u1ecdc m\u1edbi";
     },
     numModules$1(num) {
-      return "" + num + " modul";
+      return "" + num + " m\xf4-\u0111un";
     },
     get$coursePlan() {
-      return "Kurs rejasi";
+      return "K\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc";
     },
     get$editCourseLater() {
-      return "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.";
+      return "B\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda ti\xeau \u0111\u1ec1 m\u1eabu, m\xf4 t\u1ea3 v\xe0 h\xecnh \u1ea3nh kh\xf3a h\u1ecdc sau.";
     },
     get$createCourse() {
-      return "Kurs yaratish";
+      return "T\u1ea1o kh\xf3a h\u1ecdc";
     },
     get$stats() {
-      return "Statistika";
+      return "Th\u1ed1ng k\xea";
     },
     get$createGroupChat() {
-      return "Guruh chatini yaratish";
+      return "T\u1ea1o nh\xf3m tr\xf2 chuy\u1ec7n";
     },
     get$editCourse() {
-      return "Kursni tahrirlash";
+      return "Ch\u1ec9nh s\u1eeda kh\xf3a h\u1ecdc";
     },
     get$inviteDesc() {
-      return "Foydalanuvchi nomi, kod yoki havola orqali";
+      return "B\u1eb1ng t\xean ng\u01b0\u1eddi d\xf9ng, m\xe3 ho\u1eb7c li\xean k\u1ebft";
     },
     get$editCourseDesc() {
-      return "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda ti\xeau \u0111\u1ec1, m\xf4 t\u1ea3 c\u1ee7a kh\xf3a h\u1ecdc, v.v.";
     },
     get$permissionsDesc() {
-      return "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.";
+      return "Thi\u1ebft l\u1eadp quy\u1ec1n nh\u01b0 ai c\xf3 th\u1ec3 m\u1eddi ng\u01b0\u1eddi d\xf9ng, g\u1eedi tin nh\u1eafn, t\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n, v.v.";
     },
     get$accessDesc() {
-      return "Kursingizni dunyo uchun ochishingiz mumkin! Yoki, kursingizni shaxsiy va xavfsiz qiling.";
+      return "B\u1ea1n c\xf3 th\u1ec3 l\xe0m cho kh\xf3a h\u1ecdc c\u1ee7a m\xecnh m\u1edf cho th\u1ebf gi\u1edbi! Ho\u1eb7c, l\xe0m cho kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n ri\xeang t\u01b0 v\xe0 an to\xe0n.";
     },
     get$createGroupChatDesc() {
-      return "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.";
+      return "Trong khi c\xe1c phi\xean ho\u1ea1t \u0111\u1ed9ng b\u1eaft \u0111\u1ea7u v\xe0 k\u1ebft th\xfac, nh\xf3m tr\xf2 chuy\u1ec7n s\u1ebd lu\xf4n m\u1edf \u0111\u1ec3 giao ti\u1ebfp \u0111\u1ecbnh k\u1ef3.";
     },
     get$deleteDesc() {
-      return "Faqat administratorlar kursni o\u2018chirishi mumkin. Bu xavfli harakat bo\u2018lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o\u2018chiradi. Ehtiyot bo\u2018ling.";
+      return "Ch\u1ec9 qu\u1ea3n tr\u1ecb vi\xean m\u1edbi c\xf3 th\u1ec3 x\xf3a kh\xf3a h\u1ecdc. \u0110\xe2y l\xe0 h\xe0nh \u0111\u1ed9ng ph\xe1 h\u1ee7y, s\u1ebd x\xf3a t\u1ea5t c\u1ea3 ng\u01b0\u1eddi d\xf9ng v\xe0 t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n \u0111\xe3 ch\u1ecdn trong kh\xf3a h\u1ecdc. H\xe3y c\u1ea9n th\u1eadn khi th\u1ef1c hi\u1ec7n.";
     },
     get$noCourseFound() {
-      return "Oh, bu kurs uchun reja kerak!\n\nKurs rejalari mavzular va suhbat faoliyatlarining ketma-ketligidir.";
+      return "\xd4i, kh\xf3a h\u1ecdc n\xe0y c\u1ea7n c\xf3 k\u1ebf ho\u1ea1ch!\n\nK\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc l\xe0 m\u1ed9t chu\u1ed7i c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " boshqalar";
+      return "+ " + num + " ng\u01b0\u1eddi kh\xe1c";
     },
     get$whatNow() {
-      return "Endi nima qilish kerak?";
+      return "B\xe2y gi\u1edd l\xe0m g\xec?";
     },
     get$chooseNextActivity() {
-      return "Keyingi faoliyatingizni tanlang!";
+      return "Ch\u1ecdn ho\u1ea1t \u0111\u1ed9ng ti\u1ebfp theo c\u1ee7a b\u1ea1n!";
     },
     get$letsGo() {
-      return "Boshlaymiz";
+      return "\u0110i n\xe0o";
     },
     get$chooseRole() {
-      return "Rolni tanlang!";
+      return "Ch\u1ecdn vai tr\xf2!";
     },
     get$chooseRoleToParticipate() {
-      return "Ishtirok etish uchun rolni tanlang!";
+      return "Ch\u1ecdn vai tr\xf2 \u0111\u1ec3 tham gia!";
     },
     waitingToFillRole$1(num) {
-      return "" + num + " rolni to'ldirish uchun kutmoqda...";
+      return "\u0110ang ch\u1edd \u0111i\u1ec1n " + num + " vai tr\xf2...";
     },
     get$pingParticipants() {
-      return "Kurs ishtirokchilariga xabar yuborish";
+      return "Th\xf4ng b\xe1o cho c\xe1c th\xe0nh vi\xean trong kh\xf3a h\u1ecdc";
     },
     get$playWithBot() {
-      return "Pangea Bot bilan o'ynash";
+      return "Ch\u01a1i v\u1edbi Pangea Bot";
     },
     get$waitNotDone() {
-      return "Kutayapman, to'xtang!";
+      return "Ch\u1edd t\xf4i ch\u01b0a xong!";
     },
     get$waitingForOthersToFinish() {
-      return "Qolganlar tugashini kutyapman...";
+      return "\u0110ang ch\u1edd nh\u1eefng ng\u01b0\u1eddi kh\xe1c ho\xe0n th\xe0nh...";
     },
     get$generatingSummary() {
-      return "Chatni tahlil qilmoqda va natijalarni ishlab chiqmoqda";
+      return "Ph\xe2n t\xedch cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 t\u1ea1o k\u1ebft qu\u1ea3";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " " + room + "da faoliyat sessiyasiga qatnashish uchun foydalanuvchilarni qidiryapti";
+      return user + " \u0111ang t\xecm ki\u1ebfm ng\u01b0\u1eddi d\xf9ng \u0111\u1ec3 tham gia phi\xean ho\u1ea1t \u0111\u1ed9ng trong " + room;
     },
     goToCourse$1(course) {
-      return "Kursga o'tish: " + course;
+      return "\u0110i t\u1edbi kh\xf3a h\u1ecdc: " + course;
     },
     get$startNewSession() {
-      return "Yangi sessiya boshlash";
+      return "B\u1eaft \u0111\u1ea7u phi\xean m\u1edbi";
     },
     get$joinOpenSession() {
-      return "Ochiq sessiyaga qo'shiling";
+      return "Tham gia phi\xean m\u1edf";
     },
     get$activityNotFound() {
-      return "Faoliyat topilmadi";
+      return "Ho\u1ea1t \u0111\u1ed9ng kh\xf4ng t\xecm th\u1ea5y";
     },
     get$levelUp() {
-      return "Darajani oshirish";
+      return "L\xean c\u1ea5p";
     },
     get$myActivities() {
-      return "Mening faoliyatlarim";
+      return "Ho\u1ea1t \u0111\u1ed9ng c\u1ee7a t\xf4i";
     },
     get$openToJoin() {
-      return "Qo'shilishga ochiq";
+      return "M\u1edf \u0111\u1ec3 tham gia";
     },
     get$activityDone() {
-      return "Faoliyat tugadi!";
+      return "Ho\u1ea1t \u0111\u1ed9ng ho\xe0n th\xe0nh!";
     },
     get$promoCodeInfo() {
-      return "Promo kodlar keyingi sahifada kiritilishi mumkin";
+      return "M\xe3 khuy\u1ebfn m\xe3i c\xf3 th\u1ec3 nh\u1eadp \u1edf trang ti\u1ebfp theo";
     },
     get$editsComingSoon() {
-      return "Shaharlarni va faoliyatlarni tahrirlash imkoniyati tez orada keladi.";
+      return "Kh\u1ea3 n\u0103ng ch\u1ec9nh s\u1eeda th\xe0nh ph\u1ed1 v\xe0 ho\u1ea1t \u0111\u1ed9ng s\u1ebd s\u1edbm ra m\u1eaft.";
     },
     get$editing() {
-      return "Tahrirlash";
+      return "\u0110ang ch\u1ec9nh s\u1eeda";
     },
     get$activityNeedsOneMember() {
-      return "Afsus! Bu faoliyat uchun 1 ta qo'shimcha kishi kerak.";
+      return "\xd4i! Ho\u1ea1t \u0111\u1ed9ng n\xe0y c\u1ea7n th\xeam 1 ng\u01b0\u1eddi n\u1eefa.";
     },
     activityNeedsMembers$1(num) {
-      return "Afsus! Bu faoliyat uchun " + num + " ta qo'shimcha odam kerak.";
+      return "\xd4i! Ho\u1ea1t \u0111\u1ed9ng n\xe0y c\u1ea7n th\xeam " + num + " ng\u01b0\u1eddi n\u1eefa.";
     },
     get$inviteFriendsToCourse() {
-      return "Do'stlarni kursimga taklif qil";
+      return "M\u1eddi b\u1ea1n b\xe8 tham gia kh\xf3a h\u1ecdc c\u1ee7a t\xf4i";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Faoliyat xulosalarini ochish uchun obuna bo'ling";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a t\xf3m t\u1eaft ho\u1ea1t \u0111\u1ed9ng";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Transkripsiyalarni ochish uchun obuna bo'ling";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n ch\xe9p";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Kurs uchun ping yuborildi! \ud83d\udd14";
+      return "\ud83d\udd34 \u0110\xe3 g\u1eedi ping kh\xf3a h\u1ecdc! \ud83d\udd34";
     },
     get$courseTitle() {
-      return "Kurs nomi";
+      return "Ti\xeau \u0111\u1ec1 kh\xf3a h\u1ecdc";
     },
     get$courseDesc() {
-      return "Kurs ta'rifi";
+      return "M\xf4 t\u1ea3 kh\xf3a h\u1ecdc";
     },
     get$courseSavedSuccessfully() {
-      return "Kurs muvaffaqiyatli saqlandi";
+      return "L\u01b0u kh\xf3a h\u1ecdc th\xe0nh c\xf4ng";
     },
     get$addCoursePlan() {
-      return "Kurs rejasini qo'shish";
+      return "Th\xeam k\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc";
     },
     get$activityStatsButtonInstruction() {
-      return "Faoliyatingiz statistikalarini ko'rish va tugatgach faoliyatni yopish uchun bu yerni bosing";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 xem th\u1ed1ng k\xea ho\u1ea1t \u0111\u1ed9ng c\u1ee7a b\u1ea1n v\xe0 \u0111\xf3ng ho\u1ea1t \u0111\u1ed9ng khi ho\xe0n th\xe0nh";
     },
     get$loginToAccount() {
-      return "Hisobimga kirish";
+      return "\u0110\u0103ng nh\u1eadp v\xe0o t\xe0i kho\u1ea3n c\u1ee7a t\xf4i";
     },
     get$appDescription() {
-      return "Bir til o'rganing\ndo'stlaringiz bilan yozishayotganda.";
+      return "H\u1ecdc m\u1ed9t ng\xf4n ng\u1eef\ntrong khi nh\u1eafn tin v\u1edbi b\u1ea1n b\xe8.";
     },
     get$startOwn() {
-      return "O'z faoliyatimni boshlash";
+      return "B\u1eaft \u0111\u1ea7u c\u1ee7a ri\xeang t\xf4i";
     },
     get$courseCodeHint() {
-      return "Kurs kodi";
+      return "M\xe3 chuy\u1ebfn \u0111i ho\u1eb7c li\xean k\u1ebft";
     },
     get$signupOption() {
-      return "Qanday ro'yhatdan o'tmoqchisiz?";
+      return "B\u1ea1n mu\u1ed1n \u0111\u0103ng k\xfd nh\u01b0 th\u1ebf n\xe0o?";
     },
     get$withApple() {
-      return "Apple bilan";
+      return "V\u1edbi Apple";
     },
     get$withGoogle() {
-      return "Google bilan";
+      return "V\u1edbi Google";
     },
     get$withEmail() {
-      return "Email bilan";
+      return "V\u1edbi Email";
     },
     get$createAccount() {
-      return "Hisob yaratish";
+      return "T\u1ea1o t\xe0i kho\u1ea3n";
     },
     get$loginWithEmail() {
-      return "Email bilan kirish";
+      return "\u0110\u0103ng nh\u1eadp b\u1eb1ng email";
     },
     get$usernameOrEmail() {
-      return "Foydalanuvchi nomi yoki email";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng ho\u1eb7c email";
     },
     get$email() {
       return "Email";
     },
     get$forgotPassword() {
-      return "Parolni unutdingizmi?";
+      return "Qu\xean m\u1eadt kh\u1ea9u?";
     },
     get$endActivity() {
-      return "Faoliyatni yakunlash";
+      return "K\u1ebft th\xfac ho\u1ea1t \u0111\u1ed9ng";
     },
     get$allLanguages() {
-      return "Barcha tillar";
+      return "T\u1ea5t c\u1ea3 c\xe1c ng\xf4n ng\u1eef";
     },
     get$directMessageBotTitle() {
-      return "Pangea Bot bilan to'g'ridan-to'g'ri xabar";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp v\u1edbi Pangea Bot";
     },
     get$feedbackTitle() {
-      return "Faoliyat haqida fikr-mulohaza";
+      return "Ph\u1ea3n h\u1ed3i ho\u1ea1t \u0111\u1ed9ng";
     },
     get$feedbackRespDesc() {
-      return "Ertaga faoliyat yangilanishlarini tekshiring.";
+      return "Ki\u1ec3m tra l\u1ea1i v\xe0o ng\xe0y mai \u0111\u1ec3 c\u1eadp nh\u1eadt ho\u1ea1t \u0111\u1ed9ng.";
     },
     get$feedbackHint() {
-      return "Sizning fikringiz";
+      return "Ph\u1ea3n h\u1ed3i c\u1ee7a b\u1ea1n";
     },
     get$feedbackButton() {
-      return "Fikr-mulohazani yuborish";
+      return "G\u1eedi ph\u1ea3n h\u1ed3i";
     },
     get$directMessageBotDesc() {
-      return "Insonlar bilan gaplashish ko'proq qiziqarli, ammo... AI har doim tayyor!";
+      return "N\xf3i chuy\u1ec7n v\u1edbi con ng\u01b0\u1eddi th\xec vui h\u01a1n nh\u01b0ng... AI lu\xf4n s\u1eb5n s\xe0ng!";
     },
     get$inviteYourFriends() {
-      return "Do'stlaringizni taklif qiling";
+      return "M\u1eddi b\u1ea1n b\xe8 c\u1ee7a b\u1ea1n";
     },
     get$playWithAI() {
-      return "Hozir uchun AI bilan o'ynang";
+      return "Ch\u01a1i v\u1edbi AI trong th\u1eddi gian n\xe0y";
     },
     get$courseStartDesc() {
-      return "Pangea Bot har doim tayyor!\n\n...lekin o'rganish do'stlar bilan yaxshiroq!";
+      return "Pangea Bot s\u1eb5n s\xe0ng ho\u1ea1t \u0111\u1ed9ng b\u1ea5t c\u1ee9 l\xfac n\xe0o!\n\n...nh\u01b0ng h\u1ecdc t\u1eadp t\u1ed1t h\u01a1n khi c\xf3 b\u1ea1n b\xe8!";
     },
     get$activityDropdownDesc() {
-      return "Bu faoliyatni tugatgach, quyidagicha bosishingiz mumkin";
+      return "Khi b\u1ea1n ho\xe0n th\xe0nh ho\u1ea1t \u0111\u1ed9ng n\xe0y, nh\u1ea5n v\xe0o b\xean d\u01b0\u1edbi";
     },
     get$languageMismatchTitle() {
-      return "Til mos kelmasligi";
+      return "Kh\xf4ng kh\u1edbp ng\xf4n ng\u1eef";
     },
     get$emptyChatSearch() {
-      return "Xabarlar yoki chatlar topilmadi. Iltimos, qidiruvingiz to'g'ri yozilganligiga ishonch hosil qiling.";
+      return "Kh\xf4ng t\xecm th\u1ea5y tin nh\u1eafn tr\u1ef1c ti\u1ebfp ho\u1eb7c tr\xf2 chuy\u1ec7n n\xe0o. H\xe3y ch\u1eafc ch\u1eafn r\u1eb1ng b\u1ea1n \u0111\xe3 \u0111\xe1nh v\u1ea7n \u0111\xfang t\xecm ki\u1ebfm.";
     },
     get$languageMismatchDesc() {
-      return "Sizning maqsad tilingiz bu faoliyat tiliga mos kelmaydi. Maqsad tilingizni yangilashni xohlaysizmi?";
+      return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n kh\xf4ng kh\u1edbp v\u1edbi ng\xf4n ng\u1eef c\u1ee7a ho\u1ea1t \u0111\u1ed9ng n\xe0y. C\u1eadp nh\u1eadt ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n?";
     },
     get$reportWordIssueTooltip() {
-      return "So'z ma'lumotlaridagi muammo haqida xabar berish";
+      return "B\xe1o c\xe1o v\u1ea5n \u0111\u1ec1 v\u1ec1 th\xf4ng tin t\u1eeb";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "So'z Ma'lumotlari Fikr-mulohazasi";
+      return "Ph\u1ea3n h\u1ed3i Th\xf4ng tin T\u1eeb";
     },
     get$noPublicCoursesFound() {
-      return "Jamoat kurslari topilmadi. Siz yangi kurs yaratmoqchimisiz?";
+      return "Kh\xf4ng t\xecm th\u1ea5y kh\xf3a h\u1ecdc c\xf4ng khai. B\u1ea1n c\xf3 mu\u1ed1n t\u1ea1o m\u1ed9t kh\xf3a h\u1ecdc kh\xf4ng?";
     },
     get$noCourseTemplatesFound() {
-      return "Maqsad tilingiz uchun hech qanday kurs topilmadi. Siz hozirda Pangea Bot bilan suhbatlashishingiz mumkin, va keyinchalik ko'proq kurslar uchun qaytib kelishingiz mumkin.";
+      return "Ch\xfang t\xf4i kh\xf4ng th\u1ec3 t\xecm th\u1ea5y b\u1ea5t k\u1ef3 kh\xf3a h\u1ecdc n\xe0o ph\xf9 h\u1ee3p v\u1edbi ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n. Trong th\u1eddi gian ch\u1edd, b\u1ea1n c\xf3 th\u1ec3 tr\xf2 chuy\u1ec7n v\u1edbi Pangea Bot v\xe0 quay l\u1ea1i sau \u0111\u1ec3 xem th\xeam c\xe1c kh\xf3a h\u1ecdc.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot javob berishda qiyinchiliklar bilan yuzlashmoqda. Iltimos, keyinroq urinib ko'ring yoki do'stingizni taklif qiling.";
+      return "Pangea Bot \u0111ang ph\u1ea3n h\u1ed3i ch\u1eadm. Vui l\xf2ng th\u1eed l\u1ea1i sau ho\u1eb7c m\u1eddi b\u1ea1n b\xe8 tham gia.";
     },
     get$unsubscribedResponseError() {
-      return "Ushbu funksiya obuna bo'lishni talab qiladi";
+      return "T\xednh n\u0103ng n\xe0y y\xeau c\u1ea7u \u0111\u0103ng k\xfd";
     },
     get$leaveDesc() {
-      return "Ushbu bo'shliq va uning ichidagi barcha chatlardan chiqish";
+      return "R\u1eddi kh\u1ecfi kh\xf4ng gian n\xe0y v\xe0 t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n trong \u0111\xf3";
     },
     get$selectAll() {
-      return "Hammasini tanlash";
+      return "Ch\u1ecdn t\u1ea5t c\u1ea3";
     },
     get$deselectAll(_) {
-      return "Hammasini bekor qilish";
+      return "B\u1ecf ch\u1ecdn t\u1ea5t c\u1ea3";
     },
     get$shareCourse() {
-      return "Kursni ulash";
+      return "Chia s\u1ebb kh\xf3a h\u1ecdc";
     },
     get$vocabLevelsDesc() {
-      return "Bu yerda so'zlar darajangiz oshgan sayin joylashadi!";
+      return "\u0110\xe2y l\xe0 n\u01a1i c\xe1c t\u1eeb v\u1ef1ng s\u1ebd xu\u1ea5t hi\u1ec7n sau khi b\u1ea1n n\xe2ng c\u1ea5p ch\xfang!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "Bu sizning saqlangan faoliyatlaringizni ko'rib chiqish va mashq qilish uchun.";
+      return "\u0110\xe2y l\xe0 c\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u c\u1ee7a b\u1ea1n \u0111\u1ec3 xem x\xe9t v\xe0 th\u1ef1c h\xe0nh.";
     },
     get$numSavedActivities() {
-      return "Saqlangan faoliyatlar soni";
+      return "S\u1ed1 l\u01b0\u1ee3ng ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u";
     },
     get$saveActivityTitle() {
-      return "Faoliyatni saqlash";
+      return "L\u01b0u ho\u1ea1t \u0111\u1ed9ng";
     },
     get$saveActivityDesc() {
-      return "Yaxshi ish! Bu faoliyatni keyinchalik ko'rib chiqish va mashq qilish uchun saqlang";
+      return "L\xe0m t\u1ed1t l\u1eafm! L\u01b0u ho\u1ea1t \u0111\u1ed9ng n\xe0y \u0111\u1ec3 xem x\xe9t v\xe0 th\u1ef1c h\xe0nh sau.";
     },
     get$levelInfoTooltip() {
-      return "Bu yerda siz o'zingiz olgan barcha ballarni va qanday qilib ko'rishingiz mumkin!";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 th\u1ea5y t\u1ea5t c\u1ea3 c\xe1c \u0111i\u1ec3m b\u1ea1n \u0111\xe3 ki\u1ebfm \u0111\u01b0\u1ee3c v\xe0 c\xe1ch th\u1ee9c!";
     },
     get$alreadyInCourseWithID() {
-      return "Siz allaqachon bu reja bilan kursda ekansiz. Xohlaysizmi, shunchaki reja bilan kurs yaratmoqchimisiz yoki mavjud kursga o'tmoqchimisiz?";
+      return "B\u1ea1n \u0111\xe3 tham gia m\u1ed9t kh\xf3a h\u1ecdc v\u1edbi k\u1ebf ho\u1ea1ch n\xe0y. B\u1ea1n c\xf3 mu\u1ed1n t\u1ea1o m\u1ed9t kh\xf3a h\u1ecdc v\u1edbi c\xf9ng k\u1ebf ho\u1ea1ch, hay \u0111i \u0111\u1ebfn kh\xf3a h\u1ecdc hi\u1ec7n c\xf3?";
     },
     get$goToExistingCourse() {
-      return "Mavjud kursga o'tish";
+      return "\u0110i \u0111\u1ebfn kh\xf3a h\u1ecdc hi\u1ec7n c\xf3";
     },
     get$emojiView() {
-      return "Emojilar ko'rinishi";
+      return "Ch\u1ebf \u0111\u1ed9 xem bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$feedbackDialogDesc() {
-      return "Men ham xato qilaman! Menga yaxshilashga yordam beradigan nimadir bormi?";
+      return "T\xf4i c\u0169ng m\u1eafc l\u1ed7i! C\xf3 \u0111i\u1ec1u g\xec \u0111\u1ec3 gi\xfap t\xf4i c\u1ea3i thi\u1ec7n kh\xf4ng?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Aloqa kursga taklif qilindi";
+      return "Li\xean h\u1ec7 \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi tham gia kh\xf3a h\u1ecdc";
     },
     get$inviteFriends() {
-      return "Do'stlarni taklif qilish";
+      return "M\u1eddi b\u1ea1n b\xe8";
     },
     get$activityStatsButtonTooltip() {
-      return "Faoliyat ma'lumotlari";
+      return "Th\xf4ng tin ho\u1ea1t \u0111\u1ed9ng";
     },
     get$allow(_) {
-      return "Ruxsat berish";
+      return "Cho ph\xe9p";
     },
     get$deny() {
-      return "Rad etish";
+      return "T\u1eeb ch\u1ed1i";
     },
     get$enabledRenewal() {
-      return "Obunani yangilashni yoqish";
+      return "K\xedch ho\u1ea1t gia h\u1ea1n \u0111\u0103ng k\xfd";
     },
     get$subscriptionEndsOn() {
-      return "Obuna tugash sanasi";
+      return "\u0110\u0103ng k\xfd k\u1ebft th\xfac v\xe0o";
     },
     get$subscriptionRenewsOn() {
-      return "Obuna yangilanish sanasi";
+      return "\u0110\u0103ng k\xfd gia h\u1ea1n v\xe0o";
     },
     get$waitForSubscriptionChanges() {
-      return "Obuna o'zgarishlari ilovada aks etishi uchun biroz vaqt talab qilishi mumkin.";
+      return "C\xe1c thay \u0111\u1ed5i \u0111\u1ed1i v\u1edbi \u0111\u0103ng k\xfd c\u1ee7a b\u1ea1n c\xf3 th\u1ec3 m\u1ea5t m\u1ed9t ch\xfat th\u1eddi gian \u0111\u1ec3 ph\u1ea3n \xe1nh trong \u1ee9ng d\u1ee5ng.";
     },
     get$subscribeReadingAssistance() {
-      return "Xabar vositalarini ochish uchun obuna bo'ling";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a c\xf4ng c\u1ee5 nh\u1eafn tin";
     },
     get$aceDisplayName() {
       return "Achinese";
@@ -4654,7 +4654,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Amharic";
     },
     get$arDisplayName() {
-      return "Arab tili";
+      return "Ti\u1ebfng \u1ea2 R\u1eadp";
     },
     get$asDisplayName() {
       return "Assamese";
@@ -4666,19 +4666,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aymara";
     },
     get$azDisplayName() {
-      return "Azerbaycan tili";
+      return "Azerbaijani";
     },
     get$baDisplayName() {
       return "Bashkir";
     },
     get$banDisplayName() {
-      return "Balinese";
+      return "Ng\u01b0\u1eddi Bali";
     },
     get$bbcDisplayName() {
       return "Batak Toba";
     },
     get$beDisplayName() {
-      return "Belarus tili";
+      return "Ng\u01b0\u1eddi Belarus";
     },
     get$bemDisplayName() {
       return "Bemba";
@@ -4687,7 +4687,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Betawi";
     },
     get$bgDisplayName() {
-      return "Bolgariya tili";
+      return "Ng\u01b0\u1eddi Bulgaria";
     },
     get$bhoDisplayName() {
       return "Bhojpuri";
@@ -4705,13 +4705,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "Bengali (Hindiston)";
+      return "Bengali (\u1ea4n \u0110\u1ed9)";
     },
     get$brDisplayName() {
       return "Breton";
     },
     get$bsDisplayName() {
-      return "Bosniya";
+      return "Bosnia";
     },
     get$btsDisplayName() {
       return "Batak Simalungun";
@@ -4723,7 +4723,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Buriat";
     },
     get$caDisplayName() {
-      return "Katalan";
+      return "Catalan";
     },
     get$cebDisplayName() {
       return "Cebuano";
@@ -4735,34 +4735,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mari";
     },
     get$ckbDisplayName() {
-      return "Markaziy Kurd";
+      return "Ng\u01b0\u1eddi Kurd Trung";
     },
     get$cnhDisplayName() {
       return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "Korsika";
+      return "Corsican";
     },
     get$crhDisplayName() {
-      return "Qrim turk";
+      return "Ti\u1ebfng Th\u1ed5 Nh\u0129 K\u1ef3 Krym";
     },
     get$crsDisplayName() {
-      return "Seselwa Kreol Frantsuz";
+      return "Ti\u1ebfng Ph\xe1p Creole Seselwa";
     },
     get$csDisplayName() {
-      return "Chex";
+      return "Ti\u1ebfng S\xe9c";
     },
     get$cvDisplayName() {
       return "Chuvash";
     },
     get$cyDisplayName() {
-      return "Welsh";
+      return "Ti\u1ebfng Wales";
     },
     get$daDisplayName() {
-      return "Danish";
+      return "\u0110an M\u1ea1ch";
     },
     get$deDisplayName() {
-      return "Nemis";
+      return "\u0110\u1ee9c";
     },
     get$dinDisplayName() {
       return "Dinka";
@@ -4780,76 +4780,76 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ewe";
     },
     get$enDisplayName() {
-      return "Ingliz";
+      return "Ti\u1ebfng Anh";
     },
     get$enAUDisplayName() {
-      return "Avstraliya Ingliz";
+      return "Ti\u1ebfng Anh (\xdac)";
     },
     get$enGBDisplayName() {
-      return "Buyuk Britaniya Ingliz";
+      return "Ti\u1ebfng Anh (V\u01b0\u01a1ng qu\u1ed1c Anh)";
     },
     get$enINDisplayName() {
-      return "Hindiston Ingliz";
+      return "Ti\u1ebfng Anh (\u1ea4n \u0110\u1ed9)";
     },
     get$enUSDisplayName() {
-      return "AQSh Ingliz";
+      return "Ti\u1ebfng Anh (M\u1ef9)";
     },
     get$eoDisplayName() {
       return "Esperanto";
     },
     get$esDisplayName() {
-      return "Ispan";
+      return "Ti\u1ebfng T\xe2y Ban Nha";
     },
     get$esESDisplayName() {
-      return "Ispan (Ispaniya)";
+      return "Ti\u1ebfng T\xe2y Ban Nha (T\xe2y Ban Nha)";
     },
     get$esMXDisplayName() {
-      return "Ispan (Meksika)";
+      return "Ti\u1ebfng T\xe2y Ban Nha (Mexico)";
     },
     get$euDisplayName() {
-      return "Bask";
+      return "Basque";
     },
     get$faDisplayName() {
-      return "Fors";
+      return "Ti\u1ebfng Ba T\u01b0";
     },
     get$ffDisplayName() {
       return "Fulah";
     },
     get$fiDisplayName() {
-      return "Fin";
+      return "Ti\u1ebfng Ph\u1ea7n Lan";
     },
     get$filDisplayName() {
-      return "Filippin";
+      return "Ti\u1ebfng Filipino";
     },
     get$fjDisplayName() {
-      return "Fiji";
+      return "Ti\u1ebfng Fijian";
     },
     get$foDisplayName() {
-      return "Faroese";
+      return "Ti\u1ebfng Faroese";
     },
     get$frDisplayName() {
-      return "Fransuz";
+      return "Ti\u1ebfng Ph\xe1p";
     },
     get$frCADisplayName() {
-      return "Fransuz (Kanada)";
+      return "Ti\u1ebfng Ph\xe1p (Canada)";
     },
     get$frFRDisplayName() {
-      return "Fransuz (Fransiya)";
+      return "Ti\u1ebfng Ph\xe1p (Ph\xe1p)";
     },
     get$fyDisplayName() {
-      return "G'arbiy Friz";
+      return "Ti\u1ebfng Frisian ph\u01b0\u01a1ng T\xe2y";
     },
     get$gaDisplayName() {
-      return "Irland";
+      return "Ti\u1ebfng Ireland";
     },
     get$gaaDisplayName() {
-      return "Gaa";
+      return "Ti\u1ebfng Ga";
     },
     get$gdDisplayName() {
-      return "Shotland Galiysi";
+      return "Ti\u1ebfng Gaelic Scotland";
     },
     get$glDisplayName() {
-      return "Galitsiya";
+      return "Galician";
     },
     get$gnDisplayName() {
       return "Guarani";
@@ -4858,19 +4858,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "Gujarat";
+      return "Gujarati";
     },
     get$haDisplayName() {
-      return "Xausa";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "Havaiy";
+      return "Hawaiian";
     },
     get$heDisplayName() {
-      return "Ibroniya";
+      return "Hebrew";
     },
     get$hiDisplayName() {
-      return "Hind";
+      return "Hindi";
     },
     get$hilDisplayName() {
       return "Hiligaynon";
@@ -4882,85 +4882,85 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "Xorvat";
+      return "Ti\u1ebfng Croatia";
     },
     get$hrxDisplayName() {
       return "Hunsrik";
     },
     get$htDisplayName() {
-      return "Haytian Kreol";
+      return "Ti\u1ebfng Creole Haiti";
     },
     get$huDisplayName() {
-      return "Vengre";
+      return "Ti\u1ebfng Hungary";
     },
     get$hyDisplayName() {
-      return "Arman";
+      return "Ti\u1ebfng Armenia";
     },
     get$idDisplayName() {
-      return "Indoneziya";
+      return "Ti\u1ebfng Indonesia";
     },
     get$igDisplayName() {
-      return "Ibo";
+      return "Ti\u1ebfng Igbo";
     },
     get$iloDisplayName() {
-      return "Iloko";
+      return "Ti\u1ebfng Iloko";
     },
     get$isDisplayName() {
-      return "Islandcha";
+      return "Ti\u1ebfng Iceland";
     },
     get$itDisplayName() {
-      return "Italiyan";
+      return "Ti\u1ebfng \xdd";
     },
     get$jaDisplayName() {
-      return "Yapon";
+      return "Ti\u1ebfng Nh\u1eadt";
     },
     get$jvDisplayName() {
-      return "Javanese";
+      return "Ti\u1ebfng Java";
     },
     get$kaDisplayName() {
-      return "Gruzin";
+      return "Ti\u1ebfng Gruzia";
     },
     get$kkDisplayName() {
-      return "Qozog\u2018";
+      return "Ti\u1ebfng Kazakh";
     },
     get$kmDisplayName() {
-      return "Khm\u0435r";
+      return "Ti\u1ebfng Khmer";
     },
     get$knDisplayName() {
-      return "Kannada";
+      return "Ti\u1ebfng Kannada";
     },
     get$koDisplayName() {
-      return "Koreyscha";
+      return "Ti\u1ebfng H\xe0n";
     },
     get$kokDisplayName() {
-      return "Konkani";
+      return "Ti\u1ebfng Konkani";
     },
     get$kriDisplayName() {
-      return "Krio";
+      return "Ti\u1ebfng Krio";
     },
     get$ksDisplayName() {
-      return "Qashqadary";
+      return "Kashmiri";
     },
     get$ktuDisplayName() {
-      return "Kituba (Konqo Demokratik Respublikasi)";
+      return "Kituba (C\u1ed9ng h\xf2a D\xe2n ch\u1ee7 Congo)";
     },
     get$kuDisplayName() {
-      return "Kurd";
+      return "Kurdish";
     },
     get$kyDisplayName() {
-      return "Qirg\u02bbiz";
+      return "Kyrgyz";
     },
     get$laDisplayName() {
-      return "Lotin";
+      return "Latin";
     },
     get$lbDisplayName() {
-      return "Lyuksemburg";
+      return "Luxembourgish";
     },
     get$lgDisplayName() {
       return "Ganda";
     },
     get$liDisplayName() {
-      return "Limburg";
+      return "Limburgish";
     },
     get$lijDisplayName() {
       return "Ligurian";
@@ -4972,22 +4972,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lingala";
     },
     get$loDisplayName() {
-      return "Laos";
+      return "L\xe0o";
     },
     get$ltDisplayName() {
-      return "Litva";
+      return "Ti\u1ebfng Litva";
     },
     get$ltgDisplayName() {
-      return "Latgallian";
+      return "Ti\u1ebfng Latgalian";
     },
     get$luoDisplayName() {
-      return "Luo (Kenya va Tanzaniya)";
+      return "Luo (Kenya v\xe0 Tanzania)";
     },
     get$lusDisplayName() {
       return "Mizo";
     },
     get$lvDisplayName() {
-      return "Latviya";
+      return "Ti\u1ebfng Latvia";
     },
     get$maiDisplayName() {
       return "Maithili";
@@ -4996,22 +4996,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Makasar";
     },
     get$mgDisplayName() {
-      return "Malagasy";
+      return "Ti\u1ebfng Malagasy";
     },
     get$miDisplayName() {
-      return "Maori";
+      return "M\u0101ori";
     },
     get$minDisplayName() {
       return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "Makedon";
+      return "Macedonian";
     },
     get$mlDisplayName() {
       return "Malayalam";
     },
     get$mnDisplayName() {
-      return "Mo'g'ul";
+      return "M\xf4ng C\u1ed5";
     },
     get$mniDisplayName() {
       return "Manipuri";
@@ -5020,49 +5020,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Marathi";
     },
     get$msDisplayName() {
-      return "Malay";
+      return "Malaixia";
     },
     get$msArabDisplayName() {
-      return "Malay (Arabcha)";
+      return "Malaixia (\u1ea2 R\u1eadp)";
     },
     get$msMYDisplayName() {
-      return "Malay (Malayziya)";
+      return "Malaixia (Malaysia)";
     },
     get$mtDisplayName() {
-      return "Malta";
+      return "Maltese";
     },
     get$mwrDisplayName() {
       return "Marwari";
     },
     get$myDisplayName() {
-      return "Birmanci";
+      return "Burmese";
     },
     get$nanDisplayName() {
       return "Min Nan";
     },
     get$nbDisplayName() {
-      return "Norveg (Bokm\xe5l)";
+      return "Na Uy (Bokm\xe5l)";
     },
     get$neDisplayName() {
       return "Nepali";
     },
     get$newDisplayName() {
-      return "Neyvari";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "Hollandiya";
+      return "H\xe0 Lan";
     },
     get$nlBEDisplayName() {
-      return "Flamand";
+      return "Flemish";
     },
     get$noDisplayName() {
-      return "Norveg";
+      return "Na Uy";
     },
     get$nrDisplayName() {
-      return "Janubiy Ndebele";
+      return "Nam Ndebele";
     },
     get$nsoDisplayName() {
-      return "Shimoliy Sotho";
+      return "Sotho B\u1eafc";
     },
     get$nusDisplayName() {
       return "Nuer";
@@ -5071,7 +5071,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nyanja";
     },
     get$ocDisplayName() {
-      return "Okitan";
+      return "Occitan";
     },
     get$omDisplayName() {
       return "Oromo";
@@ -5080,13 +5080,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Odia";
     },
     get$paDisplayName() {
-      return "Pendjabi";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "Pendjabi (Shahmukhi)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "Pendjabi (Gurmukhi)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
       return "Pangasinan";
@@ -5098,55 +5098,55 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Papiamento";
     },
     get$plDisplayName() {
-      return "Polsha";
+      return "Ti\u1ebfng Ba Lan";
     },
     get$psDisplayName() {
-      return "Pushtho";
+      return "Ti\u1ebfng Pashto";
     },
     get$ptDisplayName() {
-      return "Portugali";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha";
     },
     get$ptBRDisplayName() {
-      return "Braziliya Portugali";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha (Brazil)";
     },
     get$ptPTDisplayName() {
-      return "Portugal Portugali";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha (B\u1ed3 \u0110\xe0o Nha)";
     },
     get$quDisplayName() {
-      return "Kechua";
+      return "Ti\u1ebfng Quechua";
     },
     get$rajDisplayName() {
-      return "Rajasthani";
+      return "Ti\u1ebfng Rajasthan";
     },
     get$rnDisplayName() {
       return "Rundi";
     },
     get$roDisplayName() {
-      return "Ruminiya";
+      return "Ti\u1ebfng Romania";
     },
     get$roMDDisplayName() {
-      return "Moldova";
+      return "Ti\u1ebfng Moldova";
     },
     get$romDisplayName() {
-      return "Romani";
+      return "Ti\u1ebfng Romani";
     },
     get$ruDisplayName() {
-      return "Rus";
+      return "Ti\u1ebfng Nga";
     },
     get$rwDisplayName() {
-      return "Kinyarwanda";
+      return "Ti\u1ebfng Kinyarwanda";
     },
     get$saDisplayName() {
-      return "Sanskrit";
+      return "Ti\u1ebfng Sanskrit";
     },
     get$satDisplayName() {
-      return "Santali";
+      return "Ti\u1ebfng Santali";
     },
     get$scnDisplayName() {
-      return "Sitsiliya";
+      return "Ti\u1ebfng Sicilian";
     },
     get$sdDisplayName() {
-      return "Sindhi";
+      return "Ti\u1ebfng Sindhi";
     },
     get$sgDisplayName() {
       return "Sango";
@@ -5161,10 +5161,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Slovak";
     },
     get$slDisplayName() {
-      return "Sloveniya";
+      return "Slovenian";
     },
     get$smDisplayName() {
-      return "Samoa";
+      return "Samoan";
     },
     get$snDisplayName() {
       return "Shona";
@@ -5173,34 +5173,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Somali";
     },
     get$sqDisplayName() {
-      return "Alban";
+      return "Albanian";
     },
     get$srDisplayName() {
-      return "Serb";
+      return "Serbian";
     },
     get$srMEDisplayName() {
-      return "Montenegrin";
+      return "Montenegro";
     },
     get$ssDisplayName() {
-      return "Svati";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "Janubiy Sotho";
+      return "Sotho mi\u1ec1n Nam";
     },
     get$suDisplayName() {
       return "Sundanese";
     },
     get$svDisplayName() {
-      return "Shved";
+      return "Th\u1ee5y \u0110i\u1ec3n";
     },
     get$swDisplayName() {
-      return "Suahili";
+      return "Swahili";
     },
     get$szlDisplayName() {
-      return "Sileziya";
+      return "Silesian";
     },
     get$taDisplayName() {
-      return "Tamill";
+      return "Tamil";
     },
     get$teDisplayName() {
       return "Telugu";
@@ -5209,16 +5209,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tetum";
     },
     get$tgDisplayName() {
-      return "Tojik";
+      return "Tajik";
     },
     get$thDisplayName() {
-      return "Tay";
+      return "Th\xe1i";
     },
     get$tiDisplayName() {
       return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "Turkman";
+      return "Turkmen";
     },
     get$tlDisplayName() {
       return "Tagalog";
@@ -5227,7 +5227,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tswana";
     },
     get$trDisplayName() {
-      return "Turk";
+      return "Th\u1ed5 Nh\u0129 K\u1ef3";
     },
     get$tsDisplayName() {
       return "Tsonga";
@@ -5236,343 +5236,340 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tatar";
     },
     get$ugDisplayName() {
-      return "Uyg\u2018ur";
+      return "Uyghur";
     },
     get$ukDisplayName() {
-      return "Ukrainian";
+      return "Ti\u1ebfng Ukraina";
     },
     get$urDisplayName() {
-      return "Urdu";
+      return "Ti\u1ebfng Urdu";
     },
     get$urINDisplayName() {
-      return "Urdu (Hindiston)";
+      return "Ti\u1ebfng Urdu (\u1ea4n \u0110\u1ed9)";
     },
     get$urPKDisplayName() {
-      return "Urdu (Pokiston)";
+      return "Ti\u1ebfng Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "O'zbek";
+      return "Ti\u1ebfng Uzbek";
     },
     get$viDisplayName() {
-      return "Vietnam";
+      return "Ti\u1ebfng Vi\u1ec7t";
     },
     get$wuuDisplayName() {
-      return "Wu";
+      return "Ti\u1ebfng Wu";
     },
     get$xhDisplayName() {
-      return "Xhosa";
+      return "Ti\u1ebfng Xhosa";
     },
     get$yiDisplayName() {
-      return "Yahudiy";
+      return "Ti\u1ebfng Yiddish";
     },
     get$yoDisplayName() {
-      return "Yoruba";
+      return "Ti\u1ebfng Yoruba";
     },
     get$yuaDisplayName() {
-      return "Yukatek";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "Kanton";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng";
     },
     get$yueCNDisplayName() {
-      return "Kanton (Xitoy)";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng (Trung Qu\u1ed1c)";
     },
     get$yueHKDisplayName() {
-      return "Kanton (Gonkong)";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng (H\u1ed3ng K\xf4ng)";
     },
     get$zhDisplayName() {
-      return "Xitoy";
+      return "Ti\u1ebfng Trung";
     },
     get$zhCNDisplayName() {
-      return "Xitoy (Yengil)";
+      return "Ti\u1ebfng Trung (Gi\u1ea3n th\u1ec3)";
     },
     get$zhTWDisplayName() {
-      return "Xitoy (An'anaviy)";
+      return "Ti\u1ebfng Trung (Ph\u1ed3n th\u1ec3)";
     },
     get$zuDisplayName() {
-      return "Zulu";
+      return "Ti\u1ebfng Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "O'qituvchi rejimi";
+      return "Ch\u1ebf \u0111\u1ed9 Gi\xe1o vi\xean";
     },
     get$teacherModeDesc() {
-      return "Barcha mavzular va faoliyatlarni ochish uchun o'zgartiring. Faqat kurs administratori.";
+      return "Chuy\u1ec3n \u0111\u1ed5i \u0111\u1ec3 m\u1edf kh\xf3a t\u1ea5t c\u1ea3 c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 ho\u1ea1t \u0111\u1ed9ng. Ch\u1ec9 d\xe0nh cho qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc.";
     },
     get$noSavedActivitiesYet() {
-      return "Faoliyatlar bu yerda ko'rinadi, ular tugallangach va saqlangach.";
+      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y khi ch\xfang \u0111\u01b0\u1ee3c ho\xe0n th\xe0nh v\xe0 l\u01b0u l\u1ea1i.";
     },
     get$changeCourse() {
-      return "Kursni o'zgartirish";
+      return "Thay \u0111\u1ed5i kh\xf3a h\u1ecdc";
     },
     get$changeCourseDesc() {
-      return "Bu yerda siz bu kursning rejasini o'zgartirishingiz mumkin.";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 thay \u0111\u1ed5i k\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc c\u1ee7a kh\xf3a h\u1ecdc n\xe0y.";
     },
     get$introChatTitle() {
-      return "Tanishuvlar chatini yaratish";
+      return "T\u1ea1o tr\xf2 chuy\u1ec7n gi\u1edbi thi\u1ec7u";
     },
     get$introChatDesc() {
-      return "Har kim joyda yozishi mumkin.";
+      return "B\u1ea5t k\u1ef3 ai trong kh\xf4ng gian \u0111\u1ec1u c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
     },
     get$announcementsChatTitle() {
-      return "E'lonlar chat";
+      return "Tr\xf2 chuy\u1ec7n th\xf4ng b\xe1o";
     },
     get$announcementsChatDesc() {
-      return "Faqat joy administratorlari yozishi mumkin.";
+      return "Ch\u1ec9 qu\u1ea3n tr\u1ecb vi\xean kh\xf4ng gian m\u1edbi c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Boshlanmagan sessiyalar (" + num + ")";
+      return "Phi\xean m\u1edf (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Hozir bo'lib o'tayotgan (" + num + ")";
+      return "\u0110ang di\u1ec5n ra (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Tugallangan (" + num + ")";
+      return "\u0110\xe3 ho\xe0n th\xe0nh (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "Boshqa faoliyatni tanlang";
+      return "Ch\u1ecdn m\u1ed9t ho\u1ea1t \u0111\u1ed9ng kh\xe1c";
     },
     get$blockLemmaConfirmation() {
-      return "Ushbu lug'at so'zi sizning tahlil natijalaringizdan doimiy ravishda o'chiriladi";
+      return "T\u1eeb v\u1ef1ng n\xe0y s\u1ebd b\u1ecb x\xf3a v\u0129nh vi\u1ec5n kh\u1ecfi ph\xe2n t\xedch c\u1ee7a b\u1ea1n";
     },
     get$woman() {
-      return "Ayol";
+      return "Ph\u1ee5 n\u1eef";
     },
     get$man() {
-      return "Erkak";
+      return "Nam";
     },
     get$otherGender() {
-      return "Boshqa";
+      return "Kh\xe1c";
     },
     get$unselectedGender() {
-      return "Gender variantini tanlang";
+      return "Ch\u1ecdn m\u1ed9t t\xf9y ch\u1ecdn gi\u1edbi t\xednh";
     },
     get$gender() {
-      return "Jins";
+      return "Gi\u1edbi t\xednh";
     },
     get$modeDisabled() {
-      return "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.";
+      return "C\xf4ng c\u1ee5 h\u1ecdc t\u1eadp b\u1ecb v\xf4 hi\u1ec7u h\xf3a cho c\xe1c tin nh\u1eafn kh\xf4ng ph\u1ea3i b\u1eb1ng ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n.";
     },
     get$courseParticipantTooltip() {
-      return "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va \xabmuloqotni boshlash\xbb ni tanlang, shunda DM yuborasiz.";
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong kh\xf3a h\u1ecdc n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
     },
     get$chatParticipantTooltip() {
-      return "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va \xabmuloqotni boshlash\xbb ni tanlang, shunda DM yuborasiz.";
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
     },
     get$inOngoingActivity() {
-      return "Sizda davom etayotgan faoliyat bor!";
+      return "B\u1ea1n c\xf3 m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111ang di\u1ec5n ra!";
     },
     get$requestRegeneration() {
-      return "Qayta yaratishni so'rash";
+      return "Y\xeau c\u1ea7u t\xe1i t\u1ea1o";
     },
     get$optionalRegenerateReason() {
-      return "(Ixtiyoriy) Sabab";
+      return "(T\xf9y ch\u1ecdn) L\xfd do";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "Siz " + lemma + " uchun emoji belgiladingiz! Biz bu emojini kelajakdagi amaliyotlarda so'zni ifodalash uchun ishlatamiz.";
+      return "B\u1ea1n \u0111\xe3 \u0111\u1eb7t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho " + lemma + "! Ch\xfang t\xf4i s\u1ebd s\u1eed d\u1ee5ng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0y \u0111\u1ec3 \u0111\u1ea1i di\u1ec7n cho t\u1eeb trong c\xe1c ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh trong t\u01b0\u01a1ng lai.";
     },
     get$constructUseCorLMDesc() {
-      return "To'g'ri so'z ma'nosi amaliyoti";
+      return "Th\u1ef1c h\xe0nh \u0111\u1ecbnh ngh\u0129a t\u1eeb v\u1ef1ng \u0111\xfang";
     },
     get$constructUseIncLMDesc() {
-      return "Noto'g'ri so'z ma'nosi amaliyoti";
+      return "Th\u1ef1c h\xe0nh \u0111\u1ecbnh ngh\u0129a t\u1eeb v\u1ef1ng sai";
     },
     get$constructUseCorLADesc() {
-      return "To'g'ri so'z audio amaliyoti";
+      return "Th\u1ef1c h\xe0nh \xe2m thanh t\u1eeb v\u1ef1ng \u0111\xfang";
     },
     get$constructUseIncLADesc() {
-      return "Noto'g'ri so'z audio amaliyoti";
+      return "Th\u1ef1c h\xe0nh \xe2m thanh t\u1eeb v\u1ef1ng sai";
     },
     get$constructUseBonus() {
-      return "So'z amaliyoti davomida bonus";
+      return "Th\u01b0\u1edfng trong qu\xe1 tr\xecnh th\u1ef1c h\xe0nh t\u1eeb v\u1ef1ng";
     },
     get$practiceVocab() {
-      return "So'z boyligini mashq qilish";
+      return "Th\u1ef1c h\xe0nh t\u1eeb v\u1ef1ng";
     },
     get$selectMeaning() {
-      return "Ma'noni tanlang";
+      return "Ch\u1ecdn ngh\u0129a";
     },
     get$anotherRound() {
-      return "Yana bir marta";
+      return "M\u1ed9t v\xf2ng n\u1eefa";
     },
     get$ssoDialogTitle() {
-      return "Kirishni yakunlash uchun kuting";
+      return "\u0110ang ch\u1edd ho\xe0n t\u1ea5t \u0111\u0103ng nh\u1eadp";
     },
     get$ssoDialogDesc() {
-      return "Biz sizga xavfsiz kirish uchun yangi yorliq ochdik.";
+      return "Ch\xfang t\xf4i \u0111\xe3 m\u1edf m\u1ed9t tab m\u1edbi \u0111\u1ec3 b\u1ea1n c\xf3 th\u1ec3 \u0111\u0103ng nh\u1eadp m\u1ed9t c\xe1ch an to\xe0n.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 Agar yangi yorliqni ko'rmasangiz, iltimos, pop-up bloklovchingizni tekshiring.";
+      return "\ud83e\udd14 N\u1ebfu b\u1ea1n kh\xf4ng th\u1ea5y tab m\u1edbi, vui l\xf2ng ki\u1ec3m tra tr\xecnh ch\u1eb7n popup c\u1ee7a b\u1ea1n.";
     },
     get$disableLanguageToolsTitle() {
-      return "Til vositalarini o'chirish";
+      return "V\xf4 hi\u1ec7u h\xf3a c\xf4ng c\u1ee5 ng\xf4n ng\u1eef";
     },
     get$disableLanguageToolsDesc() {
-      return "Avtomatik til yordamini o'chirmoqchimisiz?";
+      return "B\u1ea1n c\xf3 mu\u1ed1n v\xf4 hi\u1ec7u h\xf3a tr\u1ee3 gi\xfap ng\xf4n ng\u1eef t\u1ef1 \u0111\u1ed9ng kh\xf4ng?";
     },
     get$screenSizeWarning() {
-      return "Eng yaxshi tajriba uchun ekran o'lchamingizni kengaytiring.";
-    },
-    get$noActivityRequest() {
-      return "Hozirgi faoliyat so'rovi yo'q.";
+      return "\u0110\u1ec3 c\xf3 tr\u1ea3i nghi\u1ec7m t\u1ed1t nh\u1ea5t khi s\u1eed d\u1ee5ng \u1ee9ng d\u1ee5ng n\xe0y, vui l\xf2ng m\u1edf r\u1ed9ng k\xedch th\u01b0\u1edbc m\xe0n h\xecnh c\u1ee7a b\u1ea1n.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "Keyingi mavzuni ochish uchun faoliyatlar";
+      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a ch\u1ee7 \u0111\u1ec1 ti\u1ebfp theo";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "Keyingi kurs mavzusini ochish uchun faoliyatlar sonini belgilang";
+      return "\u0110\u1eb7t s\u1ed1 l\u01b0\u1ee3ng ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a ch\u1ee7 \u0111\u1ec1 kh\xf3a h\u1ecdc ti\u1ebfp theo";
     },
     get$activitySettingsOverrideWarning() {
-      return "Til va til darajasi faoliyat rejasiga muvofiq belgilanadi";
+      return "Ng\xf4n ng\u1eef v\xe0 c\u1ea5p \u0111\u1ed9 ng\xf4n ng\u1eef \u0111\u01b0\u1ee3c x\xe1c \u0111\u1ecbnh b\u1edfi k\u1ebf ho\u1ea1ch ho\u1ea1t \u0111\u1ed9ng";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa Siz chatdan chiqdingiz";
+      return "\ud83d\udeaa B\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$downloadInitiated() {
-      return "Yuklab olish boshlandi";
+      return "T\u1ea3i xu\u1ed1ng \u0111\xe3 \u0111\u01b0\u1ee3c kh\u1edfi \u0111\u1ed9ng";
     },
     get$webDownloadPermissionMessage() {
-      return "Agar brauzeringiz yuklab olishlarni bloklasa, iltimos, bu sayt uchun yuklab olishlarni yoqing.";
+      return "N\u1ebfu tr\xecnh duy\u1ec7t c\u1ee7a b\u1ea1n ch\u1eb7n t\u1ea3i xu\u1ed1ng, vui l\xf2ng b\u1eadt t\u1ea3i xu\u1ed1ng cho trang web n\xe0y.";
     },
     get$exitPractice() {
-      return "Amaliyot sessiyangizning rivojlanishi saqlanmaydi.";
+      return "Ti\u1ebfn tr\xecnh phi\xean th\u1ef1c h\xe0nh c\u1ee7a b\u1ea1n s\u1ebd kh\xf4ng \u0111\u01b0\u1ee3c l\u01b0u.";
     },
     get$practiceGrammar() {
-      return "Grammatika amaliyoti";
+      return "Th\u1ef1c h\xe0nh ng\u1eef ph\xe1p";
     },
     get$notEnoughToPractice() {
-      return "Amaliy qilish uchun ko'proq xabar yuboring";
+      return "G\u1eedi th\xeam tin nh\u1eafn \u0111\u1ec3 m\u1edf kh\xf3a th\u1ef1c h\xe0nh";
     },
     get$constructUseCorGCDesc() {
-      return "To'g'ri grammatikaga oid amaliyot";
+      return "Th\u1ef1c h\xe0nh th\u1ec3 lo\u1ea1i ng\u1eef ph\xe1p \u0111\xfang";
     },
     get$constructUseIncGCDesc() {
-      return "Noto'g'ri grammatikaga oid amaliyot";
+      return "Th\u1ef1c h\xe0nh th\u1ec3 lo\u1ea1i ng\u1eef ph\xe1p sai";
     },
     get$constructUseCorGEDesc() {
-      return "To'g'ri grammatikadagi xato amaliyoti";
+      return "Th\u1ef1c h\xe0nh l\u1ed7i ng\u1eef ph\xe1p \u0111\xfang";
     },
     get$constructUseIncGEDesc() {
-      return "Noto'g'ri grammatikadagi xato amaliyoti";
+      return "Th\u1ef1c h\xe0nh l\u1ed7i ng\u1eef ph\xe1p sai";
     },
     get$fillInBlank() {
-      return "To'g'ri tanlov bilan bo'sh joyni to'ldiring";
+      return "\u0110i\u1ec1n v\xe0o ch\u1ed7 tr\u1ed1ng v\u1edbi l\u1ef1a ch\u1ecdn \u0111\xfang";
     },
     get$learn() {
-      return "O'rganish";
+      return "H\u1ecdc";
     },
     get$languageUpdated() {
-      return "Maqsadli til yangilandi!";
+      return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau \u0111\xe3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!";
     },
     get$voiceDropdownTitle() {
-      return "Pangea Bot ovozi";
+      return "Gi\u1ecdng n\xf3i c\u1ee7a Pangea Bot";
     },
     get$knockDesc() {
-      return "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.";
+      return "Y\xeau c\u1ea7u c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi \u0111\u1ebfn qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc! B\u1ea1n s\u1ebd \u0111\u01b0\u1ee3c cho v\xe0o n\u1ebfu h\u1ecd ch\u1ea5p thu\u1eadn.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "Sizda ochiq kursga taklif kodi yoki havolasi bormi?";
+      return "B\u1ea1n c\xf3 m\xe3 m\u1eddi ho\u1eb7c li\xean k\u1ebft \u0111\u1ebfn m\u1ed9t kh\xf3a h\u1ecdc c\xf4ng khai kh\xf4ng?";
     },
     welcomeUser$1(user) {
-      return "Xush kelibsiz " + user;
+      return "Ch\xe0o m\u1eebng " + user;
     },
     get$findCourse() {
-      return "Kurs toping";
+      return "T\xecm kh\xf3a h\u1ecdc";
     },
     get$publicInviteDescChat() {
-      return "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.";
+      return "T\xecm ki\u1ebfm ng\u01b0\u1eddi d\xf9ng \u0111\u1ec3 m\u1eddi h\u1ecd tham gia tr\xf2 chuy\u1ec7n n\xe0y.";
     },
     get$publicInviteDescSpace() {
-      return "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.";
+      return "T\xecm ki\u1ebfm ng\u01b0\u1eddi d\xf9ng \u0111\u1ec3 m\u1eddi h\u1ecd tham gia kh\xf4ng gian n\xe0y.";
     },
     get$enableNotificationsTitle() {
-      return "Pangea Chat matnli ilova bo'lib, bildirishnomalar muhim!";
+      return "Pangea Chat l\xe0 m\u1ed9t \u1ee9ng d\u1ee5ng nh\u1eafn tin n\xean th\xf4ng b\xe1o l\xe0 r\u1ea5t quan tr\u1ecdng!";
     },
     get$enableNotificationsDesc() {
-      return "Bildirishnomalarni ruxsat etish";
+      return "Cho ph\xe9p th\xf4ng b\xe1o";
     },
     get$useActivityImageAsChatBackground() {
-      return "Faoliyat rasmidan chat fonini foydalanish";
+      return "S\u1eed d\u1ee5ng h\xecnh \u1ea3nh ho\u1ea1t \u0111\u1ed9ng l\xe0m n\u1ec1n tr\xf2 chuy\u1ec7n";
     },
     get$chatWithSupport() {
-      return "Qo'llab-quvvatlash bilan chat";
+      return "Tr\xf2 chuy\u1ec7n v\u1edbi H\u1ed7 tr\u1ee3";
     },
     get$newCourseAccess() {
-      return "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.";
+      return "Theo m\u1eb7c \u0111\u1ecbnh, c\xe1c kh\xf3a h\u1ecdc c\xf3 th\u1ec3 t\xecm ki\u1ebfm c\xf4ng khai v\xe0 y\xeau c\u1ea7u s\u1ef1 ch\u1ea5p thu\u1eadn c\u1ee7a qu\u1ea3n tr\u1ecb vi\xean \u0111\u1ec3 tham gia. B\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda c\xe1c c\xe0i \u0111\u1eb7t n\xe0y b\u1ea5t k\u1ef3 l\xfac n\xe0o.";
     },
     get$courseLoadingError() {
-      return "Nimadir noto'g'ri ketdi va biz uni tuzatish uchun qattiq ishlayapmiz. Keyinroq yana tekshiring.";
+      return "\u0110\xe3 x\u1ea3y ra s\u1ef1 c\u1ed1, v\xe0 ch\xfang t\xf4i \u0111ang n\u1ed7 l\u1ef1c kh\u1eafc ph\u1ee5c. Vui l\xf2ng ki\u1ec3m tra l\u1ea1i sau.";
     },
     get$onboardingLanguagesTitle() {
-      return "Qaysi tilni o'rganmoqdasiz?";
+      return "B\u1ea1n \u0111ang h\u1ecdc ng\xf4n ng\u1eef n\xe0o?";
     },
     get$searchLanguagesHint() {
-      return "Maqsadli tillarni qidiring";
+      return "T\xecm ki\u1ebfm ng\xf4n ng\u1eef m\u1ee5c ti\xeau";
     },
     get$supportSubtitle() {
-      return "Savollaringiz bormi? Biz yordam berishga tayyormiz!";
+      return "C\xe2u h\u1ecfi? Ch\xfang t\xf4i \u1edf \u0111\xe2y \u0111\u1ec3 gi\xfap \u0111\u1ee1!";
     },
     get$autoIGCToolName() {
-      return "Yozishni yordamchi qilishni yoqing";
+      return "B\u1eadt tr\u1ee3 gi\xfap vi\u1ebft";
     },
     get$autoIGCToolDescription() {
-      return "Avtomatik ravishda Pangea Chat vositalarini ishga tushirib, yuborilgan xabarlarni maqsadli tilga to'g'ri kelishini tekshiradi.";
+      return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y c\xe1c c\xf4ng c\u1ee5 Pangea Chat \u0111\u1ec3 s\u1eeda c\xe1c tin nh\u1eafn \u0111\xe3 g\u1eedi sang ng\xf4n ng\u1eef m\u1ee5c ti\xeau.";
     },
     get$emptyAudioError() {
-      return "Tizim yozib olish muvaffaqiyatsiz bo'ldi. Iltimos, audio ruxsatlarini tekshiring va qayta urinib ko'ring.";
+      return "Ghi \xe2m kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng ki\u1ec3m tra quy\u1ec1n truy c\u1eadp \xe2m thanh c\u1ee7a b\u1ea1n v\xe0 th\u1eed l\u1ea1i.";
     },
     get$spanFeedbackTitle() {
-      return "Tuzatish muammosini xabar qilish";
+      return "B\xe1o c\xe1o v\u1ea5n \u0111\u1ec1 s\u1eeda l\u1ed7i";
     },
     get$selectAllWords() {
-      return "Audioda eshitgan barcha so'zlarni tanlang";
+      return "Ch\u1ecdn t\u1ea5t c\u1ea3 c\xe1c t\u1eeb b\u1ea1n nghe trong \xe2m thanh";
     },
     get$aboutMeHint() {
-      return "Menga haqida";
+      return "V\u1ec1 t\xf4i";
     },
     get$changeEmail() {
-      return "Elektron pochta manzilini o'zgartirish";
+      return "Thay \u0111\u1ed5i email";
     },
     get$withTheseAddressesDescription() {
-      return "Ushbu elektron pochta manzillari bilan tizimga kirishingiz, parolingizni tiklashingiz va obunalarni boshqarishingiz mumkin.";
+      return "V\u1edbi nh\u1eefng \u0111\u1ecba ch\u1ec9 email n\xe0y, b\u1ea1n c\xf3 th\u1ec3 \u0111\u0103ng nh\u1eadp, kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u v\xe0 qu\u1ea3n l\xfd \u0111\u0103ng k\xfd.";
     },
     get$noAddressDescription() {
-      return "Siz hali hech qanday elektron pochta manzillarini qo'shmadingiz.";
+      return "B\u1ea1n ch\u01b0a th\xeam \u0111\u1ecba ch\u1ec9 email n\xe0o.";
     },
     get$perfectPractice() {
-      return "Mukammal mashq!";
+      return "Th\u1ef1c h\xe0nh ho\xe0n h\u1ea3o!";
     },
     get$greatPractice() {
-      return "Ajoyib mashq!";
+      return "Th\u1ef1c h\xe0nh tuy\u1ec7t v\u1eddi!";
     },
     get$usedNoHints() {
-      return "Yaxshi ish, hech qanday maslahatlardan foydalanmadingiz!";
+      return "L\xe0m t\u1ed1t l\u1eafm khi kh\xf4ng s\u1eed d\u1ee5ng b\u1ea5t k\u1ef3 g\u1ee3i \xfd n\xe0o!";
     },
     get$youveCompletedPractice() {
-      return "Siz mashqni tugatdingiz, yaxshilash uchun davom eting!";
+      return "B\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh th\u1ef1c h\xe0nh, h\xe3y ti\u1ebfp t\u1ee5c \u0111\u1ec3 c\u1ea3i thi\u1ec7n!";
     },
     get$joinCourseForActivities() {
-      return "Faoliyatlarni sinab ko'rish uchun kursga qo'shiling.";
+      return "Tham gia m\u1ed9t kh\xf3a h\u1ecdc \u0111\u1ec3 th\u1eed c\xe1c ho\u1ea1t \u0111\u1ed9ng.";
     },
     get$courseDescription() {
-      return "Kurslar 3-8 moduldan iborat bo'lib, har bir modulda so'zlarni turli kontekstlarda amaliyot qilishni rag'batlantiruvchi faoliyatlar mavjud";
+      return "C\xe1c kh\xf3a h\u1ecdc bao g\u1ed3m 3-8 m\xf4-\u0111un, m\u1ed7i m\xf4-\u0111un c\xf3 c\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 khuy\u1ebfn kh\xedch vi\u1ec7c th\u1ef1c h\xe0nh t\u1eeb v\u1ef1ng trong c\xe1c ng\u1eef c\u1ea3nh kh\xe1c nhau";
     },
     get$emailVerificationFailed() {
-      return "Email tasdiqlash muvaffaqiyatsiz bo'ldi. Iltimos, qayta urinib ko'ring.";
+      return "X\xe1c minh email kh\xf4ng th\xe0nh c\xf4ng. Vui l\xf2ng th\u1eed l\u1ea1i.";
     },
     get$unlockLearningTools() {
-      return "O'qish vositalarini ochish";
+      return "M\u1edf kh\xf3a c\xf4ng c\u1ee5 h\u1ecdc t\u1eadp";
     },
     get$unlockPracticeActivities() {
-      return "Amaliyot faoliyatlarini ochish";
+      return "M\u1edf kh\xf3a c\xe1c ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
     },
     get$managementSnackbarMessage() {
-      return "Biz obuna boshqaruvini yangi oynada ishga tushirdik. Agar siz yangi oynani ko'rmagan bo'lsangiz, iltimos, pop-up bloklovchingizni tekshiring.";
+      return "Ch\xfang t\xf4i \u0111\xe3 ra m\u1eaft qu\u1ea3n l\xfd \u0111\u0103ng k\xfd trong m\u1ed9t tab m\u1edbi. N\u1ebfu b\u1ea1n kh\xf4ng th\u1ea5y tab m\u1edbi, vui l\xf2ng ki\u1ec3m tra tr\xecnh ch\u1eb7n popup c\u1ee7a b\u1ea1n.";
     },
     get$hideEvents() {
-      return "Voqealarni yashirish";
+      return "\u1ea8n s\u1ef1 ki\u1ec7n";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5581,17 +5578,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nUz, C.L10n);
+    _inherit(A.L10nVi, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nUz":{"L10n":[]}}'));
-  var string$ = {
-    _manzi: " manzilidagi dasturchilarga xabar bering. Xato xabari: ",
-    Iltimo: "Iltimos, haqiqiy elektron pochta manzilini kiriting."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nVi":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["U8i8dHUva5ZhfP1yQvFqsTZ0Bug="] = d.current;
+  d["TTwHFHAFCVoGyOWCYKRuHOYDzVg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

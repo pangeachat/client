@@ -5,3843 +5,3843 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nEl$() {
-      return new A.L10nEl(B.canonicalizedLocale("el"));
+    L10nEn$() {
+      return new A.L10nEn(B.canonicalizedLocale("en"));
     },
-    L10nEl: function L10nEl(t0) {
+    L10nEn: function L10nEn(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[13], A);
-  A.L10nEl.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[14], A);
+  A.L10nEn.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u03a8\u03b5\u03c5\u03b4\u03ae\u03c2";
+      return "false";
     },
     get$repeatPassword() {
-      return "\u0395\u03c0\u03b1\u03bd\u03ac\u03bb\u03b7\u03c8\u03b7 \u03ba\u03c9\u03b4\u03b9\u03ba\u03bf\u03cd \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Repeat password";
     },
     get$notAnImage() {
-      return "\u0394\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2.";
+      return "Not an image file.";
     },
     get$setCustomPermissionLevel() {
-      return "\u038c\u03c1\u03b9\u03c3\u03b5 \u03c0\u03c1\u03bf\u03c3\u03b1\u03c1\u03bc\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03ac\u03b4\u03b5\u03b9\u03b1\u03c2";
+      return "Set custom permission level";
     },
     get$setPermissionsLevelDescription() {
-      return "\u0395\u03c0\u03ad\u03bb\u03b5\u03be\u03b5 \u03ad\u03bd\u03b1\u03bd \u03c0\u03c1\u03bf\u03ba\u03b1\u03b8\u03bf\u03c1\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf \u03c1\u03cc\u03bb\u03bf \u03c0\u03b1\u03c1\u03b1\u03ba\u03ac\u03c4\u03c9 \u03ae \u03b5\u03b9\u03c3\u03ae\u03b3\u03b1\u03b3\u03b5 \u03ad\u03bd\u03b1 \u03c0\u03c1\u03bf\u03c3\u03b1\u03c1\u03bc\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03ac\u03b4\u03b5\u03b9\u03b1\u03c2 \u03bc\u03b5\u03c4\u03b1\u03be\u03cd 0 \u03ba\u03b1\u03b9 100.";
+      return "Please choose a predefined role below or enter a custom permission level between 0 and 100.";
     },
     get$ignoreUser() {
-      return "\u0391\u03b3\u03bd\u03cc\u03b7\u03c3\u03b7 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Ignore user";
     },
     get$normalUser() {
-      return "\u039a\u03b1\u03bd\u03bf\u03bd\u03b9\u03ba\u03cc\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2";
+      return "Normal user";
     },
     get$remove(_) {
-      return "\u0391\u03c6\u03b1\u03af\u03c1\u03b5\u03c3\u03b7";
+      return "Remove";
     },
     get$importNow() {
-      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae \u03c4\u03ce\u03c1\u03b1";
+      return "Import now";
     },
     get$importEmojis() {
-      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae Emojis";
+      return "Import Emojis";
     },
     get$importFromZipFile() {
-      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae \u03b1\u03c0\u03cc \u03b1\u03c1\u03c7\u03b5\u03af\u03bf .zip";
+      return "Import from .zip file";
     },
     get$exportEmotePack() {
-      return "\u0395\u03be\u03b1\u03b3\u03c9\u03b3\u03ae \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf\u03c5 Emote \u03c9\u03c2 .zip";
+      return "Export Emote pack as .zip";
     },
     get$replace(_) {
-      return "\u0391\u03bd\u03c4\u03b9\u03ba\u03b1\u03c4\u03ac\u03c3\u03c4\u03b1\u03c3\u03b7";
+      return "Replace";
     },
     get$about() {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac";
+      return "About";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 " + homeserver;
+      return "About " + homeserver;
     },
     get$accept(_) {
-      return "\u0391\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae";
+      return "Accept";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u03b1\u03c0\u03bf\u03b4\u03ad\u03c7\u03c4\u03b7\u03ba\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "\ud83d\udc4d " + username + " accepted the invitation";
     },
     get$account() {
-      return "\u039b\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc\u03c2";
+      return "Account";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b5 \u03c4\u03b7\u03bd \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7 \u03b1\u03c0\u03cc \u03ac\u03ba\u03c1\u03bf \u03c3\u03b5 \u03ac\u03ba\u03c1\u03bf";
+      return "\ud83d\udd10 " + username + " activated end to end encryption";
     },
     get$addEmail() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 email";
+      return "Add email";
     },
     supposedMxid$1(mxid) {
-      return "\u0391\u03c5\u03c4\u03cc \u03b8\u03b1 \u03c0\u03c1\u03ad\u03c0\u03b5\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 " + mxid;
+      return "This should be " + mxid;
     },
     get$admin() {
-      return "\u0394\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2";
+      return "Admin";
     },
     get$allChats() {
-      return "\u038c\u03bb\u03b5\u03c2 \u03bf\u03b9 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2";
+      return "All chats";
     },
     get$commandHint_roomupgrade() {
-      return "\u0391\u03bd\u03b1\u03b2\u03ac\u03b8\u03bc\u03b9\u03c3\u03b7 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5 \u03c3\u03c4\u03b7\u03bd \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03b7 \u03ad\u03ba\u03b4\u03bf\u03c3\u03b7 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return "Upgrade this room to the given room version";
     },
     get$commandHint_googly() {
-      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03b5 \u03b1\u03c3\u03c4\u03b5\u03af\u03b1 \u03bc\u03ac\u03c4\u03b9\u03b1";
+      return "Send some googly eyes";
     },
     get$commandHint_cuddle() {
-      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03b5 \u03bc\u03b9\u03b1 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac";
+      return "Send a cuddle";
     },
     get$commandHint_hug() {
-      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac";
+      return "Send a hug";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u03c3\u03bf\u03cd \u03c3\u03c4\u03ad\u03bb\u03bd\u03b5\u03b9 \u03b1\u03c3\u03c4\u03b5\u03af\u03b1 \u03bc\u03ac\u03c4\u03b9\u03b1";
+      return senderName + " sends you googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u03c3\u03ad \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac\u03b6\u03b5\u03b9";
+      return senderName + " cuddles you";
     },
     hugContent$1(senderName) {
-      return senderName + " \u03c3\u03b5 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac\u03b6\u03b5\u03b9";
+      return senderName + " hugs you";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b5 \u03c3\u03c4\u03b7\u03bd \u03ba\u03bb\u03ae\u03c3\u03b7";
+      return senderName + " answered the call";
     },
     get$anyoneCanJoin() {
-      return "\u039f\u03c0\u03bf\u03b9\u03bf\u03c3\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03b9";
+      return "Anyone can join";
     },
     get$archive() {
-      return "\u0391\u03c1\u03c7\u03b5\u03af\u03bf";
+      return "Archive";
     },
     get$areYouSure() {
-      return "\u03a3\u03af\u03b3\u03bf\u03c5\u03c1\u03b1;";
+      return "Are you sure?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u03a3\u03af\u03b3\u03bf\u03c5\u03c1\u03b1 \u03b8\u03b5\u03c2 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c2;";
+      return "Are you sure you want to log out?";
     },
     get$askSSSSSign() {
-      return "\u0393\u03b9\u03b1 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03ad\u03c3\u03b5\u03b9\u03c2 \u03bd\u03b1 \u03c5\u03c0\u03bf\u03b3\u03c1\u03ac\u03c8\u03b5\u03b9\u03c2 \u03c4\u03bf \u03ac\u03bb\u03bb\u03bf \u03ac\u03c4\u03bf\u03bc\u03bf, \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03cc\u03b3\u03b7\u03c3\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b8\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u03c6\u03c1\u03ac\u03c3\u03b7 \u03b1\u03c3\u03c6\u03b1\u03bb\u03bf\u03cd\u03c2 \u03b1\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7\u03c2 \u03ae \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2.";
+      return "To be able to sign the other person, please enter your secure store passphrase or recovery key.";
     },
     askVerificationRequest$1(username) {
-      return "\u0391\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03b1\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7\u03c2 \u03b1\u03c0\u03cc " + username + ";";
+      return "Accept this verification request from " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u039f \u03bf\u03b9\u03ba\u03b9\u03b1\u03ba\u03cc\u03c2 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03c4\u03bf\u03c5\u03c2 \u03c4\u03cd\u03c0\u03bf\u03c5\u03c2 \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7\u03c2:\n" + serverVersions + "\n\u0391\u03bb\u03bb\u03ac \u03b1\u03c5\u03c4\u03ae \u03b7 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03bc\u03cc\u03bd\u03bf:\n" + supportedVersions;
+      return "The homeserver supports the login types:\n" + serverVersions + "\nBut this app supports only:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03cc\u03b3\u03b7\u03c3\u03b7\u03c2";
+      return "Send typing notifications";
     },
     get$swipeRightToLeftToReply() {
-      return "\u03a3\u03cd\u03c1\u03c3\u03b9\u03bc\u03bf \u03b4\u03b5\u03be\u03b9\u03ac \u03c0\u03c1\u03bf\u03c2 \u03b1\u03c1\u03b9\u03c3\u03c4\u03b5\u03c1\u03ac \u03b3\u03b9\u03b1 \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7";
+      return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03bc\u03b5 enter";
+      return "Send on enter";
     },
     get$space() {
-      return "\u03a7\u03ce\u03c1\u03bf\u03c2";
+      return "Space";
     },
     get$banned() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03af\u03c3\u03c4\u03b7\u03ba\u03b5";
+      return "Banned";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u03b1\u03c0\u03ad\u03ba\u03bb\u03b5\u03b9\u03c3\u03b5 " + targetName;
+      return username + " banned " + targetName;
     },
     get$blockDevice() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03cc\u03c2 \u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2";
+      return "Block Device";
     },
     get$blocked() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03af\u03c3\u03c4\u03b7\u03ba\u03b5";
+      return "Blocked";
     },
     get$cancel(_) {
-      return "\u0391\u03ba\u03cd\u03c1\u03c9\u03c3\u03b7";
+      return "Cancel";
     },
     cantOpenUri$1(uri) {
-      return "\u0394\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03bf\u03af\u03be\u03b5\u03b9 \u03c4\u03bf URI " + uri;
+      return "Can't open the URI " + uri;
     },
     get$changeDeviceName() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03bf\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2";
+      return "Change device name";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf \u03ac\u03b2\u03b1\u03c4\u03b1\u03c1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return username + " changed the chat avatar";
     },
     changedTheChatDescription$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b7\u03bd \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return username + " changed the chat description";
     },
     changedTheChatName$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return username + " changed the chat name";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b1 \u03b4\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return username + " changed the chat permissions";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03b6\u03cc\u03bc\u03b5\u03bd\u03bf \u03cc\u03bd\u03bf\u03bc\u03ac \u03c4\u03bf\u03c5 \u03c3\u03b5: '" + displayname + "'";
+      return username + " changed their displayname to: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03c4\u03c9\u03bd \u03b5\u03c0\u03b9\u03c3\u03ba\u03b5\u03c0\u03c4\u03ce\u03bd";
+      return username + " changed the guest access rules";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03c4\u03c9\u03bd \u03b5\u03c0\u03b9\u03c3\u03ba\u03b5\u03c0\u03c4\u03ce\u03bd \u03c3\u03b5: " + rules;
+      return username + " changed the guest access rules to: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b7\u03bd \u03bf\u03c1\u03b1\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b9\u03c3\u03c4\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd";
+      return username + " changed the history visibility";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b7\u03bd \u03bf\u03c1\u03b1\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b9\u03c3\u03c4\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u03c3\u03b5: " + rules;
+      return username + " changed the history visibility to: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae\u03c2";
+      return username + " changed the join rules";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae\u03c2 \u03c3\u03b5: " + joinRules;
+      return username + " changed the join rules to: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return "\u039f \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 " + username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b7\u03bd \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1 \u03c0\u03c1\u03bf\u03c6\u03af\u03bb \u03c4\u03bf\u03c5";
+      return username + " changed their avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03b1 \u03c8\u03b5\u03c5\u03b4\u03ce\u03bd\u03c5\u03bc\u03b1 \u03c4\u03bf\u03c5 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return username + " changed the room aliases";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u03ac\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf\u03bd \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7\u03c2";
+      return username + " changed the invitation link";
     },
     get$changePassword() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03ba\u03c9\u03b4\u03b9\u03ba\u03bf\u03cd \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Change password";
     },
     get$changeTheme() {
-      return "\u0386\u03bb\u03bb\u03b1\u03be\u03b5 \u03c4\u03bf \u03c3\u03c4\u03c5\u03bb \u03c3\u03bf\u03c5";
+      return "Change your style";
     },
     get$changeYourAvatar() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2 \u03c0\u03c1\u03bf\u03c6\u03b9\u03bb";
+      return "Change your avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "\u039f \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03bf\u03c2 \u03ba\u03ce\u03b4\u03b9\u03ba\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03c1\u03b1\u03c6\u03b5\u03af";
+      return "The encryption has been corrupted";
     },
     get$chat() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Chat";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "\u0397 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03b1\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03c9\u03bd \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03c1\u03c5\u03b8\u03bc\u03b9\u03c3\u03c4\u03b5\u03af.";
+      return "Your chat backup has been set up.";
     },
     get$chatBackupDescription() {
-      return "\u03a4\u03b1 \u03c0\u03b1\u03bb\u03b9\u03ac \u03c3\u03b1\u03c2 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c3\u03c6\u03b1\u03bb\u03ae \u03bc\u03b5 \u03ad\u03bd\u03b1 \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b2\u03b5\u03b2\u03b1\u03b9\u03c9\u03b8\u03b5\u03af\u03c4\u03b5 \u03cc\u03c4\u03b9 \u03b4\u03b5\u03bd \u03c4\u03bf \u03c7\u03ac\u03bd\u03b5\u03c4\u03b5.";
+      return "Your messages are secured with a recovery key. Please make sure you don't lose it.";
     },
     get$chatDetails() {
-      return "\u039b\u03b5\u03c0\u03c4\u03bf\u03bc\u03ad\u03c1\u03b5\u03b9\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Chat details";
     },
     get$chats() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2";
+      return "Chats";
     },
     get$chooseAStrongPassword() {
-      return "\u0395\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03b4\u03c5\u03bd\u03b1\u03c4\u03cc \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Choose a strong password";
     },
     get$clearArchive() {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5";
+      return "Clear archive";
     },
     get$close(_) {
-      return "\u039a\u03bb\u03b5\u03af\u03c3\u03b9\u03bc\u03bf";
+      return "Close";
     },
     get$commandHint_markasdm() {
-      return "\u03a3\u03b7\u03bc\u03b5\u03b9\u03ce\u03c3\u03c4\u03b5 \u03c9\u03c2 \u03ac\u03bc\u03b5\u03c3\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b3\u03b9\u03b1 \u03c4\u03bf \u03b4\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf ID \u03c4\u03bf\u03c5 Matrix";
+      return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "\u03a3\u03b7\u03bc\u03b5\u03b9\u03ce\u03c3\u03c4\u03b5 \u03c9\u03c2 \u03bf\u03bc\u03ac\u03b4\u03b1";
+      return "Mark as group";
     },
     get$commandHint_ban() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03cc\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b1\u03c0\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Ban the given user from this room";
     },
     get$commandHint_clearcache() {
-      return "\u0395\u03ba\u03ba\u03b1\u03b8\u03ac\u03c1\u03b9\u03c3\u03b7 \u03c0\u03c1\u03bf\u03c3\u03c9\u03c1\u03b9\u03bd\u03ae\u03c2 \u03bc\u03bd\u03ae\u03bc\u03b7\u03c2";
+      return "Clear cache";
     },
     get$commandHint_create() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03ba\u03b5\u03bd\u03ae \u03bf\u03bc\u03b1\u03b4\u03b9\u03ba\u03ae \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\n\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 --no-encryption \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7";
+      return "Create an empty group chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_discardsession() {
-      return "\u0391\u03c0\u03bf\u03c1\u03c1\u03af\u03c8\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1";
+      return "Discard session";
     },
     get$commandHint_dm() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03ac\u03bc\u03b5\u03c3\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\n\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 --no-encryption \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7";
+      return "Start a direct chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_html() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03b5\u03af\u03bb\u03b5\u03c4\u03b5 \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf \u03bc\u03bf\u03c1\u03c6\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03bf \u03c3\u03b5 HTML";
+      return "Send HTML-formatted text";
     },
     get$commandHint_invite() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Invite the given user to this room";
     },
     get$commandHint_join() {
-      return "\u0395\u03bd\u03c4\u03b1\u03c7\u03b8\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03bf \u03b4\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Join the given room";
     },
     get$commandHint_kick() {
-      return "\u0391\u03c6\u03b1\u03b9\u03c1\u03ad\u03c3\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b4\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Remove the given user from this room";
     },
     get$commandHint_leave() {
-      return "\u0391\u03c6\u03ae\u03c3\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Leave this room";
     },
     get$commandHint_me() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03b3\u03c1\u03ac\u03c8\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b5\u03b1\u03c5\u03c4\u03cc \u03c3\u03b1\u03c2";
+      return "Describe yourself";
     },
     get$commandHint_myroomavatar() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03c6\u03c9\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03af\u03b1 \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf (\u03bc\u03b5 mxc-uri)";
+      return "Set your picture for this room (by mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03b5\u03bc\u03c6\u03ac\u03bd\u03b9\u03c3\u03b7\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Set your display name for this room";
     },
     get$commandHint_op() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03b9\u03c3\u03c7\u03cd\u03bf\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 (\u03c0\u03c1\u03bf\u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae: 50)";
+      return "Set the given user's power level (default: 50)";
     },
     get$commandHint_plain() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5 \u03c7\u03c9\u03c1\u03af\u03c2 \u03bc\u03bf\u03c1\u03c6\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7";
+      return "Send unformatted text";
     },
     get$commandHint_react() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7\u03c2 \u03c9\u03c2 \u03b1\u03bd\u03c4\u03af\u03b4\u03c1\u03b1\u03c3\u03b7";
+      return "Send reply as a reaction";
     },
     get$commandHint_send() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5";
+      return "Send text";
     },
     get$commandHint_unban() {
-      return "\u0386\u03c1\u03c3\u03b7 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03bf\u03cd \u03c4\u03bf\u03c5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Unban the given user from this room";
     },
     get$compareEmojiMatch() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c3\u03c5\u03b3\u03ba\u03c1\u03af\u03bd\u03b5\u03c4\u03b5 \u03c4\u03b1 emojis";
+      return "Please compare the emojis";
     },
     get$compareNumbersMatch() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c3\u03c5\u03b3\u03ba\u03c1\u03af\u03bd\u03b5\u03c4\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03b1\u03c1\u03b9\u03b8\u03bc\u03bf\u03cd\u03c2";
+      return "Please compare the numbers";
     },
     get$configureChat() {
-      return "\u03a1\u03cd\u03b8\u03bc\u03b9\u03c3\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Configure chat";
     },
     get$confirm(_) {
-      return "\u0395\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7";
+      return "Confirm";
     },
     get$copiedToClipboard() {
-      return "\u0391\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03b7\u03ba\u03b5 \u03c3\u03c4\u03bf \u03c0\u03c1\u03cc\u03c7\u03b5\u03b9\u03c1\u03bf";
+      return "Copied to clipboard";
     },
     get$copy() {
-      return "\u0391\u03bd\u03c4\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Copy";
     },
     get$copyToClipboard() {
-      return "\u0391\u03bd\u03c4\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03c3\u03c4\u03bf \u03c0\u03c1\u03cc\u03c7\u03b5\u03b9\u03c1\u03bf";
+      return "Copy to clipboard";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u0391\u03b4\u03cd\u03bd\u03b1\u03c4\u03b7 \u03b7 \u03b1\u03c0\u03bf\u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2: " + error;
+      return "Could not decrypt message: " + error;
     },
     get$checkList() {
-      return "\u039b\u03af\u03c3\u03c4\u03b1 \u03b5\u03bb\u03ad\u03b3\u03c7\u03bf\u03c5";
+      return "Check list";
     },
     countParticipants$1(count) {
-      return "" + count + " \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2";
+      return "" + count + " participants";
     },
     countInvited$1(count) {
-      return "" + count + " \u03c0\u03c1\u03bf\u03c3\u03ba\u03b5\u03ba\u03bb\u03b7\u03bc\u03ad\u03bd\u03bf\u03b9";
+      return "" + count + " invited";
     },
     get$create(_) {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1";
+      return "Create";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " \u03b4\u03b7\u03bc\u03b9\u03bf\u03cd\u03c1\u03b3\u03b7\u03c3\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "\ud83d\udcac " + username + " created the chat";
     },
     get$createGroup() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03bf\u03bc\u03ac\u03b4\u03b1\u03c2";
+      return "Create group";
     },
     get$createNewSpace() {
-      return "\u039d\u03ad\u03bf\u03c2 \u03c7\u03ce\u03c1\u03bf\u03c2";
+      return "New space";
     },
     get$currentlyActive() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae";
+      return "Currently active";
     },
     get$darkTheme() {
-      return "\u03a3\u03ba\u03bf\u03c4\u03b5\u03b9\u03bd\u03cc";
+      return "Dark";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u0391\u03c5\u03c4\u03cc \u03b8\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9 \u03c4\u03bf\u03bd \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03c3\u03b1\u03c2. \u0394\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af! \u0395\u03af\u03c3\u03c4\u03b5 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03b9;";
+      return "This will deactivate your user account. This can not be undone! Are you sure?";
     },
     get$defaultPermissionLevel() {
-      return "\u03a0\u03c1\u03bf\u03b5\u03c0\u03b9\u03bb\u03b5\u03b3\u03bc\u03ad\u03bd\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03b4\u03b9\u03ba\u03b1\u03b9\u03c9\u03bc\u03ac\u03c4\u03c9\u03bd \u03b3\u03b9\u03b1 \u03bd\u03ad\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2";
+      return "Default permission level for new users";
     },
     get$$delete(_) {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Delete";
     },
     get$deleteAccount() {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03bf\u03cd";
+      return "Delete account";
     },
     get$deleteMessage() {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Delete message";
     },
     get$devices() {
-      return "\u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "Devices";
     },
     get$displaynameHasBeenChanged() {
-      return "\u03a4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03b6\u03cc\u03bc\u03b5\u03bd\u03bf\u03c5 \u03ad\u03c7\u03b5\u03b9 \u03b1\u03bb\u03bb\u03ac\u03be\u03b5\u03b9";
+      return "Displayname has been changed";
     },
     get$downloadFile() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5";
+      return "Download file";
     },
     get$edit() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1";
+      return "Edit";
     },
     get$editBlockedServers() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03ad\u03bd\u03c9\u03bd \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ce\u03bd";
+      return "Edit blocked servers";
     },
     get$chatPermissions() {
-      return "\u0386\u03b4\u03b5\u03b9\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Chat permissions";
     },
     get$editDisplayname() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1 \u03bf\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03b6\u03cc\u03bc\u03b5\u03bd\u03bf\u03c5";
+      return "Edit displayname";
     },
     get$editRoomAvatar() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1 \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return "Edit room avatar";
     },
     get$emoteExists() {
-      return "\u03a4\u03bf emoji \u03ae\u03b4\u03b7 \u03c5\u03c0\u03ac\u03c1\u03c7\u03b5\u03b9!";
+      return "Emote already exists!";
     },
     get$emoteInvalid() {
-      return "\u039c\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03bf\u03c2 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 emoji!";
+      return "Invalid emote shortcode!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03c6\u03b1\u03c4\u03b1 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b1 emoji \u03b8\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03af\u03b6\u03bf\u03bd\u03c4\u03b1\u03b9 \u03b5\u03b4\u03ce...";
+      return "Recently-used emotes will appear here...";
     },
     get$customEmojisAndStickers() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b1\u03c1\u03bc\u03bf\u03c3\u03bc\u03ad\u03bd\u03b1 emojis \u03ba\u03b1\u03b9 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03b1";
+      return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c3\u03cd\u03bd\u03c4\u03bf\u03bc\u03bf\u03c5 emoji";
+      return "Emote shortcode";
     },
     get$emptyChat() {
-      return "\u0386\u03b4\u03b5\u03b9\u03bf chat";
+      return "Empty chat";
     },
     get$enableEmotesGlobally() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf\u03c5 emoji \u03c3\u03b5 \u03cc\u03bb\u03bf \u03c4\u03bf \u03c3\u03cd\u03c3\u03c4\u03b7\u03bc\u03b1";
+      return "Enable emote pack globally";
     },
     get$enableEncryption() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7\u03c2";
+      return "Enable encryption";
     },
     get$encrypted() {
-      return "\u039a\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03bf";
+      return "Encrypted";
     },
     get$encryptionNotEnabled() {
-      return "\u0397 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7 \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7";
+      return "Encryption is not enabled";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u03c4\u03b5\u03c1\u03bc\u03ac\u03c4\u03b9\u03c3\u03b5 \u03c4\u03b7\u03bd \u03ba\u03bb\u03ae\u03c3\u03b7";
+      return senderName + " ended the call";
     },
     get$enterAnEmailAddress() {
-      return "\u0395\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 email";
+      return "Enter an email address";
     },
     errorObtainingLocation$1(error) {
-      return "\u03a3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03ba\u03b1\u03c4\u03ac \u03c4\u03b7\u03bd \u03b1\u03c0\u03cc\u03ba\u03c4\u03b7\u03c3\u03b7 \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1\u03c2: " + error;
+      return "Error obtaining location: " + error;
     },
     get$everythingReady() {
-      return "\u038c\u03bb\u03b1 \u03ad\u03c4\u03bf\u03b9\u03bc\u03b1!";
+      return "Everything ready!";
     },
     get$fontSize(_) {
-      return "\u039c\u03ad\u03b3\u03b5\u03b8\u03bf\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03bf\u03c3\u03b5\u03b9\u03c1\u03ac\u03c2";
+      return "Font size";
     },
     get$forward(_) {
-      return "\u03a0\u03c1\u03bf\u03ce\u03b8\u03b7\u03c3\u03b7";
+      return "Forward";
     },
     get$fromJoining() {
-      return "\u0391\u03c0\u03cc \u03c4\u03b7\u03bd \u03ad\u03bd\u03c4\u03b1\u03be\u03b7";
+      return "From joining";
     },
     get$fromTheInvitation() {
-      return "\u0391\u03c0\u03cc \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "From the invitation";
     },
     get$group() {
-      return "\u039f\u03bc\u03ac\u03b4\u03b1";
+      return "Group";
     },
     get$groupIsPublic() {
-      return "\u0397 \u03bf\u03bc\u03ac\u03b4\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b1";
+      return "Group is public";
     },
     get$guestsAreForbidden() {
-      return "\u039f\u03b9 \u03b5\u03c0\u03b9\u03c3\u03ba\u03ad\u03c0\u03c4\u03b5\u03c2 \u03b1\u03c0\u03b1\u03b3\u03bf\u03c1\u03b5\u03cd\u03bf\u03bd\u03c4\u03b1\u03b9";
+      return "Guests are forbidden";
     },
     get$guestsCanJoin() {
-      return "\u039f\u03b9 \u03b5\u03c0\u03b9\u03c3\u03ba\u03ad\u03c0\u03c4\u03b5\u03c2 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03bf\u03c5\u03bd";
+      return "Guests can join";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u03ad\u03c7\u03b5\u03b9 \u03b1\u03c0\u03bf\u03c3\u03cd\u03c1\u03b5\u03b9 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 " + targetName;
+      return username + " has withdrawn the invitation for " + targetName;
     },
     get$help() {
-      return "\u0392\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1";
+      return "Help";
     },
     get$hideRedactedMessages() {
-      return "\u0391\u03c0\u03cc\u03ba\u03c1\u03c5\u03c8\u03b7 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03bc\u03ad\u03bd\u03c9\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Hide redacted messages";
     },
     get$hideRedactedMessagesBody() {
-      return "\u0391\u03bd \u03ba\u03ac\u03c0\u03bf\u03b9\u03bf\u03c2 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03c4\u03b5\u03af \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1, \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03bb\u03ad\u03bf\u03bd \u03bf\u03c1\u03b1\u03c4\u03cc \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "If someone redacts a message, this message won't be visible in the chat anymore.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u0391\u03c0\u03cc\u03ba\u03c1\u03c5\u03c8\u03b7 \u03bc\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03c9\u03bd \u03ae \u03ac\u03b3\u03bd\u03c9\u03c3\u03c4\u03c9\u03bd \u03bc\u03bf\u03c1\u03c6\u03ce\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Hide invalid or unknown message formats";
     },
     get$block() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03cc\u03c2";
+      return "Block";
     },
     get$blockedUsers() {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2";
+      return "Blocked users";
     },
     get$blockListDescription() {
-      return "\u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03af\u03c3\u03b5\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03c3\u03b1\u03c2 \u03b5\u03bd\u03bf\u03c7\u03bb\u03bf\u03cd\u03bd. \u0394\u03b5\u03bd \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03c4\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03ae \u03c0\u03c1\u03bf\u03c3\u03ba\u03bb\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5 \u03b1\u03c0\u03cc \u03c4\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03c3\u03c4\u03b7 \u03bb\u03af\u03c3\u03c4\u03b1 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03bf\u03cd \u03c3\u03b1\u03c2.";
+      return "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.";
     },
     get$blockUsername() {
-      return "\u0391\u03b3\u03bd\u03cc\u03b7\u03c3\u03b7 \u03bf\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "\u0388\u03c7\u03c9 \u03ba\u03ac\u03bd\u03b5\u03b9 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03bf\u03bd \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf";
+      return "I have clicked on the link";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c6\u03c1\u03ac\u03c3\u03b7 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03ae \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Incorrect passphrase or recovery key";
     },
     get$inviteContact() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b5\u03c0\u03b1\u03c6\u03ae\u03c2";
+      return "Invite contact";
     },
     get$noChatDescriptionYet() {
-      return "\u0394\u03b5\u03bd \u03ad\u03c7\u03b5\u03b9 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03b7\u03b8\u03b5\u03af \u03b1\u03ba\u03cc\u03bc\u03b7 \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2.";
+      return "No chat description created yet.";
     },
     get$tryAgain() {
-      return "\u0394\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac";
+      return "Try again";
     },
     get$invited() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b7\u03ba\u03b5";
+      return "Invited";
     },
     get$redactMessageDescription() {
-      return "\u03a4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b8\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03b5\u03af \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1. \u0391\u03c5\u03c4\u03cc \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af.";
+      return "The message will be redacted for all participants in this conversation. This cannot be undone.";
     },
     get$optionalRedactReason() {
-      return "(\u03a0\u03c1\u03bf\u03b1\u03b9\u03c1\u03b5\u03c4\u03b9\u03ba\u03cc) \u039b\u03cc\u03b3\u03bf\u03c2 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae\u03c2 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2...";
+      return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " \u03c0\u03c1\u03bf\u03c3\u03ba\u03ac\u03bb\u03b5\u03c3\u03b5 " + targetName;
+      return "\ud83d\udce9 " + username + " invited " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\u039c\u03cc\u03bd\u03bf \u03b3\u03b9\u03b1 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b5\u03ba\u03bb\u03b7\u03bc\u03ad\u03bd\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2";
+      return "Invited users only";
     },
     get$inviteForMe() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 \u03bc\u03ad\u03bd\u03b1";
+      return "Invite for me";
     },
     get$isTyping() {
-      return "\u03b3\u03c1\u03ac\u03c6\u03b5\u03b9\u2026";
+      return "is typing\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u03bc\u03c0\u03ae\u03ba\u03b5 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "\ud83d\udc4b " + username + " joined the chat";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " \u03ad\u03b4\u03b9\u03c9\u03be\u03b5 \u03c4\u03bf\u03bd/\u03c4\u03b7\u03bd " + targetName;
+      return "\ud83d\udc5e " + username + " kicked " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u03a4\u03b5\u03bb\u03b5\u03c5\u03c4\u03b1\u03af\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1: " + localizedTimeShort;
+      return "Last active: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u0391\u03c0\u03bf\u03c7\u03ce\u03c1\u03b7\u03c3\u03b7";
+      return "Leave";
     },
     get$leftTheChat() {
-      return "\u0388\u03c6\u03c5\u03b3\u03b5 \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Left the chat";
     },
     get$lightTheme() {
-      return "\u03a6\u03c9\u03c4\u03b5\u03b9\u03bd\u03cc";
+      return "Light";
     },
     get$dehydrate() {
-      return "\u0395\u03be\u03b1\u03b3\u03c9\u03b3\u03ae \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2";
+      return "Export session and wipe device";
     },
     get$dehydrateWarning() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b7 \u03b5\u03bd\u03ad\u03c1\u03b3\u03b5\u03b9\u03b1 \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af. \u0392\u03b5\u03b2\u03b1\u03b9\u03c9\u03b8\u03b5\u03af\u03c4\u03b5 \u03cc\u03c4\u03b9 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03b5\u03c4\u03b5 \u03bc\u03b5 \u03b1\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03b1 \u03c4\u03bf \u03b1\u03c1\u03c7\u03b5\u03af\u03bf \u03b1\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03bf\u03c5 \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2.";
+      return "This action cannot be undone. Ensure you safely store the backup file.";
     },
     get$loadingPleaseWait() {
-      return "\u03a6\u03cc\u03c1\u03c4\u03c9\u03c3\u03b7\u2026 \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c0\u03b5\u03c1\u03b9\u03bc\u03ad\u03bd\u03b5\u03c4\u03b5.";
+      return "Loading\u2026 Please wait.";
     },
     get$loadMore() {
-      return "\u03a6\u03cc\u03c1\u03c4\u03c9\u03c3\u03b7 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03c9\u03bd\u2026";
+      return "Load more\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u039f\u03b9 \u03c5\u03c0\u03b7\u03c1\u03b5\u03c3\u03af\u03b5\u03c2 \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b5\u03c2. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1 \u03c3\u03b1\u03c2.";
+      return "Location services are disabled. Please enable them to be able to share your location.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u0397 \u03ac\u03b4\u03b5\u03b9\u03b1 \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1\u03c2 \u03b1\u03c0\u03bf\u03c1\u03c1\u03af\u03c6\u03b8\u03b7\u03ba\u03b5. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1 \u03c3\u03b1\u03c2.";
+      return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$login() {
-      return "\u03a3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7";
+      return "Login";
     },
     get$logout() {
-      return "\u0391\u03c0\u03bf\u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7";
+      return "Logout";
     },
     get$mention() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac";
+      return "Mention";
     },
     get$messages() {
-      return "\u039c\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1";
+      return "Messages";
     },
     get$messagesStyle() {
-      return "\u039c\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1:";
+      return "Messages:";
     },
     get$moderator() {
-      return "\u0394\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2";
+      return "Moderator";
     },
     get$newVerificationRequest() {
-      return "\u039d\u03ad\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03b1 \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7\u03c2!";
+      return "New verification request!";
     },
     get$next(_) {
-      return "\u0395\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf";
+      return "Next";
     },
     get$no() {
-      return "\u038c\u03c7\u03b9";
+      return "No";
     },
     get$noConnectionToTheServer() {
-      return "\u0394\u03b5\u03bd \u03c5\u03c0\u03ac\u03c1\u03c7\u03b5\u03b9 \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7 \u03bc\u03b5 \u03c4\u03bf\u03bd \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae";
+      return "No connection to the server";
     },
     get$noEmotesFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b5\u03bc\u03bf\u03c4\u03ad. \ud83d\ude1d";
+      return "No emotes found. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u039c\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf\u03bd \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7\u03c2";
+      return "Share invite link";
     },
     get$none() {
-      return "\u039a\u03b1\u03bd\u03ad\u03bd\u03b1";
+      return "None";
     },
     get$noPermission() {
-      return "\u03a7\u03c9\u03c1\u03af\u03c2 \u03ac\u03b4\u03b5\u03b9\u03b1";
+      return "No permission";
     },
     get$noRoomsFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03b1\u2026";
+      return "No rooms found\u2026";
     },
     get$notifications() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2";
+      return "Notifications";
     },
     get$obtainingLocation() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1\u03c2\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b2\u03bb\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Offensive";
     },
     get$ok() {
-      return "\u0395\u03bd\u03c4\u03ac\u03be\u03b5\u03b9";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "\u03a9\u03c7, \u03ba\u03ac\u03c4\u03b9 \u03c0\u03ae\u03b3\u03b5 \u03c3\u03c4\u03c1\u03b1\u03b2\u03ac...";
+      return "Oops, something went wrong\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u0388\u03bd\u03b1\u03c2 \u03b1\u03c0\u03cc \u03c4\u03bf\u03c5\u03c2 \u03c0\u03b5\u03bb\u03ac\u03c4\u03b5\u03c2 \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03b1\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af";
+      return "One of your clients has been logged out";
     },
     get$openInMaps() {
-      return "\u0386\u03bd\u03bf\u03b9\u03b3\u03bc\u03b1 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03c7\u03ac\u03c1\u03c4\u03b5\u03c2";
+      return "Open in maps";
     },
     get$link() {
-      return "\u03a3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf\u03c2";
+      return "Link";
     },
     get$serverRequiresEmail() {
-      return "\u0391\u03c5\u03c4\u03cc\u03c2 \u03bf \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03c7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c4\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03c0\u03b9\u03ba\u03c5\u03c1\u03ce\u03c3\u03b5\u03b9 \u03c4\u03b7 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 email \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03b5\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae.";
+      return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "\u0389";
+      return "Or";
     },
     get$participant() {
-      return "\u03a3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03c9\u03bd";
+      return "Participant";
     },
     get$passphraseOrKey() {
-      return "\u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03ae \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "passphrase or recovery key";
     },
     get$password(_) {
-      return "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Password";
     },
     get$passwordForgotten() {
-      return "\u039e\u03b5\u03c7\u03ac\u03c3\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Password forgotten";
     },
     get$passwordHasBeenChanged() {
-      return "\u039f \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03b1\u03bb\u03bb\u03ac\u03be\u03b5\u03b9";
+      return "Password has been changed";
     },
     get$pin() {
-      return "\u039a\u03b1\u03c1\u03c6\u03af\u03c4\u03c3\u03c9\u03bc\u03b1";
+      return "Pin";
     },
     get$pleaseChoose() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5";
+      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03ae\u03c2 \u03c3\u03b1\u03c2";
+      return "Please enter your password";
     },
     get$pleaseEnterYourPin() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf PIN \u03c3\u03b1\u03c2";
+      return "Please enter your pin";
     },
     get$pleaseEnterYourUsername() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03b1\u03c2";
+      return "Please enter your username";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b1\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03bf\u03b4\u03b7\u03b3\u03af\u03b5\u03c2 \u03c3\u03c4\u03b7\u03bd \u03b9\u03c3\u03c4\u03bf\u03c3\u03b5\u03bb\u03af\u03b4\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03b1\u03c4\u03ae\u03c3\u03c4\u03b5 \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf.";
+      return "Please follow the instructions on the website and tap on next.";
     },
     get$privacy() {
-      return "\u0391\u03c0\u03cc\u03c1\u03c1\u03b7\u03c4\u03bf";
+      return "Privacy";
     },
     get$reason(_) {
-      return "\u0391\u03b9\u03c4\u03af\u03b1";
+      return "Reason";
     },
     redactedBy$1(username) {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03ac\u03c3\u03c4\u03b7\u03ba\u03b5 \u03b1\u03c0\u03cc " + username;
+      return "Redacted by " + username;
     },
     get$directChat() {
-      return "\u0386\u03bc\u03b5\u03c3\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Direct chat";
     },
     redactedByBecause$2(username, reason) {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03ac\u03c3\u03c4\u03b7\u03ba\u03b5 \u03b1\u03c0\u03cc " + username + ' \u03b5\u03c0\u03b5\u03b9\u03b4\u03ae: "' + reason + '"';
+      return "Redacted by " + username + ' because: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03ac\u03c3\u03c4\u03b7\u03ba\u03b5 \u03ad\u03bd\u03b1 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c2";
+      return username + " redacted an event";
     },
     get$redactMessage() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Redact message";
     },
     get$reject() {
-      return "\u0391\u03c0\u03cc\u03c1\u03c1\u03b9\u03c8\u03b7";
+      return "Reject";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u03b1\u03c0\u03ad\u03c1\u03c1\u03b9\u03c8\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return username + " rejected the invitation";
     },
     get$removeAllOtherDevices() {
-      return "\u0391\u03c6\u03b1\u03af\u03c1\u03b5\u03c3\u03b7 \u03cc\u03bb\u03c9\u03bd \u03c4\u03c9\u03bd \u03ac\u03bb\u03bb\u03c9\u03bd \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ce\u03bd";
+      return "Remove all other devices";
     },
     get$unbanFromChat() {
-      return "\u0386\u03c1\u03c3\u03b7 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03bf\u03cd \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Unban from chat";
     },
     get$removeYourAvatar() {
-      return "\u0391\u03c6\u03b1\u03af\u03c1\u03b5\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03c0\u03c1\u03bf\u03c6\u03af\u03bb \u03c3\u03b1\u03c2";
+      return "Remove your avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u0391\u03bd\u03c4\u03b9\u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03bc\u03b5 \u03bd\u03b5\u03cc\u03c4\u03b5\u03c1\u03b7 \u03ad\u03ba\u03b4\u03bf\u03c3\u03b7";
+      return "Replace room with newer version";
     },
     get$reply(_) {
-      return "\u0391\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7";
+      return "Reply";
     },
     get$reportMessage() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Report message";
     },
     get$roomHasBeenUpgraded() {
-      return "\u03a4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03ad\u03c7\u03b5\u03b9 \u03b1\u03bd\u03b1\u03b2\u03b1\u03b8\u03bc\u03b9\u03c3\u03c4\u03b5\u03af";
+      return "Room has been upgraded";
     },
     get$saveFile() {
-      return "\u0391\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5";
+      return "Save file";
     },
     get$search(_) {
-      return "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Search";
     },
     get$security() {
-      return "\u0391\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03b1";
+      return "Security";
     },
     get$recoveryKey() {
-      return "\u039a\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Recovery key";
     },
     get$recoveryKeyLost() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03c7\u03ac\u03c3\u03b5\u03b9 \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2;";
+      return "Recovery key lost?";
     },
     get$send(_) {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae";
+      return "Send";
     },
     get$sendAMessage() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Send a message";
     },
     get$sendAudio() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03ae\u03c7\u03bf\u03c5";
+      return "Send audio";
     },
     get$sendFile() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5";
+      return "Send file";
     },
     get$sendImage() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2";
+      return "Send image";
     },
     sendImages$1(count) {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae " + count + " \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2";
+      return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Send messages";
     },
     get$sendVideo() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b2\u03af\u03bd\u03c4\u03b5\u03bf";
+      return "Send video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03ad\u03bd\u03b1 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf";
+      return "\ud83d\udcc1 " + username + " sent a file";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03ad\u03bd\u03b1\u03bd \u03ae\u03c7\u03bf";
+      return "\ud83c\udfa4 " + username + " sent an audio";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03bc\u03b9\u03b1 \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1";
+      return "\ud83d\uddbc\ufe0f " + username + " sent a picture";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03ad\u03bd\u03b1 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03bf";
+      return "\ud83d\ude0a " + username + " sent a sticker";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03ad\u03bd\u03b1 \u03b2\u03af\u03bd\u03c4\u03b5\u03bf";
+      return "\ud83c\udfa5 " + username + " sent a video";
     },
     sentCallInformations$1(senderName) {
-      return "\u039f " + senderName + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03c0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03ba\u03bb\u03ae\u03c3\u03b7\u03c2";
+      return senderName + " sent call information";
     },
     get$setChatDescription() {
-      return "\u039f\u03c1\u03b9\u03c3\u03bc\u03cc\u03c2 \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Set chat description";
     },
     get$settings() {
-      return "\u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2";
+      return "Settings";
     },
     get$share(_) {
-      return "\u039a\u03bf\u03b9\u03bd\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7";
+      return "Share";
     },
     sharedTheLocation$1(username) {
-      return username + " \u03ba\u03bf\u03b9\u03bd\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b5 \u03c4\u03b7\u03bd \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1 \u03c4\u03bf\u03c5";
+      return username + " shared their location";
     },
     get$shareLocation() {
-      return "\u039a\u03bf\u03b9\u03bd\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03c4\u03bf\u03c0\u03bf\u03b8\u03b5\u03c3\u03af\u03b1\u03c2";
+      return "Share location";
     },
     get$skip(_) {
-      return "\u03a0\u03b1\u03c1\u03b1\u03bb\u03b5\u03af\u03c0\u03c9";
+      return "Skip";
     },
     get$sourceCode() {
-      return "\u039a\u03ce\u03b4\u03b9\u03ba\u03b1\u03c2 \u03c0\u03b7\u03b3\u03ae\u03c2";
+      return "Source code";
     },
     get$spaceIsPublic() {
-      return "\u039f \u03c7\u03ce\u03c1\u03bf\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03bf\u03c2";
+      return "Space is public";
     },
     get$spaceName() {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1 \u03c7\u03ce\u03c1\u03bf\u03c5";
+      return "Space name";
     },
     startedACall$1(senderName) {
-      return senderName + " \u03be\u03b5\u03ba\u03af\u03bd\u03b7\u03c3\u03b5 \u03bc\u03b9\u03b1 \u03ba\u03bb\u03ae\u03c3\u03b7";
+      return senderName + " started a call";
     },
     get$status(_) {
-      return "\u039a\u03b1\u03c4\u03ac\u03c3\u03c4\u03b1\u03c3\u03b7";
+      return "Status";
     },
     get$submit(_) {
-      return "\u03a5\u03c0\u03bf\u03b2\u03bf\u03bb\u03ae";
+      return "Submit";
     },
     get$synchronizingPleaseWait() {
-      return "\u03a3\u03c5\u03b3\u03c7\u03c1\u03bf\u03bd\u03b9\u03c3\u03bc\u03cc\u03c2\u2026 \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c0\u03b5\u03c1\u03b9\u03bc\u03ad\u03bd\u03b5\u03c4\u03b5.";
+      return "Synchronizing\u2026 Please wait.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "\u03a3\u03c5\u03b3\u03c7\u03c1\u03bf\u03bd\u03b9\u03c3\u03bc\u03cc\u03c2\u2026 (" + percentage + "%)";
+      return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u03a3\u03cd\u03c3\u03c4\u03b7\u03bc\u03b1";
+      return "System";
     },
     get$theyDontMatch() {
-      return "\u0394\u03b5\u03bd \u03c4\u03b1\u03b9\u03c1\u03b9\u03ac\u03b6\u03bf\u03c5\u03bd";
+      return "They Don't Match";
     },
     get$theyMatch() {
-      return "\u03a4\u03b1\u03b9\u03c1\u03b9\u03ac\u03b6\u03bf\u03c5\u03bd";
+      return "They Match";
     },
     get$tooManyRequestsWarning() {
-      return "\u03a0\u03ac\u03c1\u03b1 \u03c0\u03bf\u03bb\u03bb\u03ac \u03b1\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03b1. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1!";
+      return "Too many requests. Please try again later!";
     },
     get$transferFromAnotherDevice() {
-      return "\u039c\u03b5\u03c4\u03b1\u03c6\u03bf\u03c1\u03ac \u03b1\u03c0\u03cc \u03ac\u03bb\u03bb\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae";
+      return "Transfer from another device";
     },
     get$tryToSendAgain() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03c0\u03b1\u03b8\u03ae\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03bd\u03b1 \u03c3\u03c4\u03b5\u03af\u03bb\u03b5\u03c4\u03b5";
+      return "Try to send again";
     },
     get$unavailable() {
-      return "\u039c\u03b7 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03bf";
+      return "Unavailable";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u03ac\u03c1\u03c0\u03b1\u03be\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03cc \u03c4\u03bf\u03c5 " + targetName;
+      return username + " unbanned " + targetName;
     },
     get$unblockDevice() {
-      return "\u039e\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae";
+      return "Unblock Device";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf\u03c2 \u03b1\u03bb\u03b3\u03cc\u03c1\u03b9\u03b8\u03bc\u03bf\u03c2 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7\u03c2";
+      return "Unknown encryption algorithm";
     },
     unknownEvent$1(type) {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c2 '" + type + "'";
+      return "Unknown event '" + type + "'";
     },
     get$unpin() {
-      return "\u0391\u03c6\u03b1\u03af\u03c1\u03b5\u03c3\u03b7 \u03b1\u03c0\u03cc \u03c4\u03b7\u03bd \u03ba\u03bf\u03c1\u03c5\u03c6\u03ae";
+      return "Unpin";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u03ba\u03b1\u03b9 " + count + " \u03ac\u03bb\u03bb\u03bf\u03b9 \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03bf\u03cd\u03bd\u2026";
+      return username + " and " + count + " others are typing\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u03ba\u03b1\u03b9 " + username2 + " \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03bf\u03cd\u03bd\u2026";
+      return username + " and " + username2 + " are typing\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03b5\u03af\u2026";
+      return username + " is typing\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u03ad\u03c6\u03c5\u03b3\u03b5 \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "\ud83d\udeaa " + username + " left the chat";
     },
     get$username(_) {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Username";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u03ad\u03c3\u03c4\u03b5\u03b9\u03bb\u03b5 \u03ad\u03bd\u03b1 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c2 " + type;
+      return username + " sent a " + type + " event";
     },
     get$unverified() {
-      return "\u039c\u03b7 \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03bc\u03ad\u03bd\u03bf";
+      return "Unverified";
     },
     get$verified() {
-      return "\u0395\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03bc\u03ad\u03bd\u03bf";
+      return "Verified";
     },
     get$verifyStart() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7";
+      return "Start Verification";
     },
     get$verifySuccess() {
-      return "\u0395\u03c0\u03b9\u03c4\u03c5\u03c7\u03ae\u03c2 \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7!";
+      return "You successfully verified!";
     },
     get$verifyTitle() {
-      return "\u0395\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7 \u03ac\u03bb\u03bb\u03bf\u03c5 \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03bf\u03cd";
+      return "Verifying other account";
     },
     get$visibleForAllParticipants() {
-      return "\u039f\u03c1\u03b1\u03c4\u03cc \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2";
+      return "Visible for all participants";
     },
     get$visibleForEveryone() {
-      return "\u039f\u03c1\u03b1\u03c4\u03cc \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2";
+      return "Visible for everyone";
     },
     get$voiceMessage() {
-      return "\u03a6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Voice message";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03b1\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03c4\u03bf\u03c5 \u03b1\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b1\u03c0\u03cc \u03c4\u03bf\u03bd \u03c3\u03c5\u03bd\u03b5\u03c1\u03b3\u03ac\u03c4\u03b7\u2026";
+      return "Waiting for partner to accept the request\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03b1\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03c4\u03bf\u03c5 emoji \u03b1\u03c0\u03cc \u03c4\u03bf\u03bd \u03c3\u03c5\u03bd\u03b5\u03c1\u03b3\u03ac\u03c4\u03b7\u2026";
+      return "Waiting for partner to accept the emoji\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03b1\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03c4\u03c9\u03bd \u03b1\u03c1\u03b9\u03b8\u03bc\u03ce\u03bd \u03b1\u03c0\u03cc \u03c4\u03bf\u03bd \u03c3\u03c5\u03bd\u03b5\u03c1\u03b3\u03ac\u03c4\u03b7\u2026";
+      return "Waiting for partner to accept the numbers\u2026";
     },
     get$warning() {
-      return "\u03a0\u03c1\u03bf\u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7!";
+      return "Warning!";
     },
     get$weSentYouAnEmail() {
-      return "\u03a3\u03b1\u03c2 \u03c3\u03c4\u03b5\u03af\u03bb\u03b1\u03bc\u03b5 \u03ad\u03bd\u03b1 email";
+      return "We sent you an email";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u0393\u03b9\u03b1\u03c4\u03af \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc;";
+      return "Why do you want to report this?";
     },
     get$wipeChatBackup() {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03c4\u03b5 \u03c4\u03bf \u03b1\u03bd\u03c4\u03af\u03b3\u03c1\u03b1\u03c6\u03bf \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03bd\u03ad\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2;";
+      return "Wipe your chat backup to create a new recovery key?";
     },
     get$writeAMessage() {
-      return "\u0393\u03c1\u03ac\u03c8\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1\u2026";
+      return "Write a message\u2026";
     },
     get$yes() {
-      return "\u039d\u03b1\u03b9";
+      return "Yes";
     },
     get$you() {
-      return "\u0395\u03c3\u03cd";
+      return "You";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u0394\u03b5\u03bd \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03b5\u03c4\u03b5 \u03c0\u03bb\u03ad\u03bf\u03bd \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "You are no longer participating in this chat";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03c4\u03b5\u03af \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "You have been banned from this chat";
     },
     get$yourPublicKey() {
-      return "\u03a4\u03bf \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03c3\u03b1\u03c2";
+      return "Your public key";
     },
     get$messageInfo() {
-      return "\u03a0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Message info";
     },
     get$time(_) {
-      return "\u03a7\u03c1\u03cc\u03bd\u03bf\u03c2";
+      return "Time";
     },
     get$sender() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ad\u03b1\u03c2";
+      return "Sender";
     },
     get$openGallery() {
-      return "\u0386\u03bd\u03bf\u03b9\u03b3\u03bc\u03b1 \u03b3\u03ba\u03b1\u03bb\u03b5\u03c1\u03af";
+      return "Open gallery";
     },
     get$start(_) {
-      return "\u0388\u03bd\u03b1\u03c1\u03be\u03b7";
+      return "Start";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "\u0393\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b1 \u03c0\u03b1\u03bb\u03b9\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03ac \u03c3\u03b1\u03c2, \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2 \u03c0\u03bf\u03c5 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03b8\u03b7\u03ba\u03b5 \u03c3\u03b5 \u03c0\u03c1\u03bf\u03b7\u03b3\u03bf\u03cd\u03bc\u03b5\u03bd\u03b7 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1. \u03a4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2 \u0394\u0395\u039d \u03b5\u03af\u03bd\u03b1\u03b9 \u03bf \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03ae\u03c2 \u03c3\u03b1\u03c2.";
+      return "To unlock your old messages, please enter your recovery key that has been generated in a previous session. Your recovery key is NOT your password.";
     },
     get$markAsRead() {
-      return "\u03a3\u03b7\u03bc\u03b5\u03af\u03c9\u03c3\u03b5 \u03c9\u03c2 \u03b4\u03b9\u03b1\u03b2\u03b1\u03c3\u03bc\u03ad\u03bd\u03bf";
+      return "Mark as read";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u03b1\u03bd\u03c4\u03ad\u03b4\u03c1\u03b1\u03c3\u03b5 \u03bc\u03b5 " + reaction;
+      return sender + " reacted with " + reaction;
     },
     get$pinMessage() {
-      return "\u039a\u03b1\u03c1\u03c6\u03af\u03c4\u03c3\u03c9\u03c3\u03b5 \u03c3\u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf";
+      return "Pin to room";
     },
     get$emojis() {
-      return "\u0395\u03bc\u03bfji";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "\u0391\u03c0\u03bf\u03c1\u03c1\u03af\u03c8\u03b1\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "You rejected the invitation";
     },
     get$youJoinedTheChat() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03b9 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "You joined the chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u0388\u03c7\u03b5\u03c4\u03b5 \u03b1\u03c0\u03bf\u03b4\u03b5\u03c7\u03b8\u03b5\u03af \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "\ud83d\udc4d You accepted the invitation";
     },
     youBannedUser$1(user) {
-      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03af\u03c3\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd " + user;
+      return "You banned " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b1\u03c0\u03bf\u03c3\u03cd\u03c1\u03b5\u03b9 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 \u03c4\u03bf\u03bd " + user;
+      return "You have withdrawn the invitation for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u0388\u03c7\u03b5\u03c4\u03b5 \u03c0\u03c1\u03bf\u03c3\u03ba\u03bb\u03b7\u03b8\u03b5\u03af \u03b1\u03c0\u03cc \u03c4\u03bf\u03bd " + user;
+      return "\ud83d\udce9 You have been invited by " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd " + user;
+      return "\ud83d\udce9 You invited " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u0391\u03c0\u03bf\u03bc\u03b1\u03ba\u03c1\u03cd\u03bd\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd " + user;
+      return "\ud83d\udc5e You kicked " + user;
     },
     youUnbannedUser$1(user) {
-      return "\u0391\u03c0\u03b5\u03bb\u03b5\u03c5\u03b8\u03b5\u03c1\u03ce\u03c3\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd " + user;
+      return "You unbanned " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u03c7\u03c4\u03cd\u03c0\u03b7\u03c3\u03b5";
+      return "\ud83d\udeaa " + user + " has knocked";
     },
     get$knock() {
-      return "\u03a7\u03c4\u03cd\u03c0\u03b7\u03bc\u03b1";
+      return "Knock";
     },
     get$unlockOldMessages() {
-      return "\u039e\u03b5\u03ba\u03bb\u03b5\u03af\u03b4\u03c9\u03bc\u03b1 \u03c0\u03b1\u03bb\u03b1\u03b9\u03ce\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Unlock old messages";
     },
     get$storeInSecureStorageDescription() {
-      return "\u0391\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03c3\u03c4\u03b5 \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03b1\u03bc\u03c8\u03b7\u03c2 \u03c3\u03c4\u03b7\u03bd \u03b1\u03c3\u03c6\u03b1\u03bb\u03ae \u03b1\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 \u03b1\u03c5\u03c4\u03ae\u03c2 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2.";
+      return "Store the recovery key in the secure storage of this device.";
     },
     get$saveKeyManuallyDescription() {
-      return "\u0391\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03c3\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03c7\u03b5\u03b9\u03c1\u03bf\u03ba\u03af\u03bd\u03b7\u03c4\u03b1 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ce\u03bd\u03c4\u03b1\u03c2 \u03c4\u03bf \u03b4\u03b9\u03ac\u03bb\u03bf\u03b3\u03bf \u03ba\u03bf\u03b9\u03bd\u03ae\u03c2 \u03c7\u03c1\u03ae\u03c3\u03b7\u03c2 \u03c3\u03c5\u03c3\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03ae \u03c4\u03bf \u03c0\u03c1\u03cc\u03c7\u03b5\u03b9\u03c1\u03bf.";
+      return "Save this key manually by triggering the system share dialog or clipboard.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "\u0391\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 \u03bc\u03b5 \u03b1\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03b1 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae";
+      return "Store securely on this device";
     },
     countFiles$1(count) {
-      return "" + count + " \u03b1\u03c1\u03c7\u03b5\u03af\u03b1";
+      return "" + count + " files";
     },
     get$user() {
-      return "\u03a7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2";
+      return "User";
     },
     get$custom() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b1\u03c1\u03bc\u03bf\u03c3\u03bc\u03ad\u03bd\u03bf";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
-      return "\u0391\u03c5\u03c4\u03cc \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c3\u03c5\u03bc\u03b2\u03b5\u03af \u03b1\u03bd \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03c4\u03ac\u03bb\u03b8\u03b7\u03ba\u03b5 \u03c0\u03c1\u03b9\u03bd \u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03bf\u03bd \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03c3\u03b1\u03c2 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae.\n\n\u0395\u03af\u03bd\u03b1\u03b9 \u03b5\u03c0\u03af\u03c3\u03b7\u03c2 \u03c0\u03b9\u03b8\u03b1\u03bd\u03cc \u03bf \u03b1\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ad\u03b1\u03c2 \u03bd\u03b1 \u03ad\u03c7\u03b5\u03b9 \u03bc\u03c0\u03bb\u03bf\u03ba\u03ac\u03c1\u03b5\u03b9 \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03c3\u03b1\u03c2 \u03ae \u03bd\u03b1 \u03c5\u03c0\u03ae\u03c1\u03be\u03b5 \u03ba\u03ac\u03c0\u03bf\u03b9\u03bf \u03c0\u03c1\u03cc\u03b2\u03bb\u03b7\u03bc\u03b1 \u03bc\u03b5 \u03c4\u03b7 \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7 \u03c3\u03c4\u03bf \u03b4\u03b9\u03b1\u03b4\u03af\u03ba\u03c4\u03c5\u03bf.\n\n\u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b2\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03ac\u03bb\u03bb\u03b7 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1; \u03a4\u03cc\u03c4\u03b5 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03b5\u03c4\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b5 \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd! \u039c\u03b5\u03c4\u03b1\u03b2\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03b9\u03c2 \u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 > \u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03ba\u03b1\u03b9 \u03b2\u03b5\u03b2\u03b1\u03b9\u03c9\u03b8\u03b5\u03af\u03c4\u03b5 \u03cc\u03c4\u03b9 \u03bf\u03b9 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03c3\u03b1\u03c2 \u03ad\u03c7\u03bf\u03c5\u03bd \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03c4\u03b5\u03af \u03b7 \u03bc\u03af\u03b1 \u03c4\u03b7\u03bd \u03ac\u03bb\u03bb\u03b7. \u038c\u03c4\u03b1\u03bd \u03b1\u03bd\u03bf\u03af\u03be\u03b5\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03c4\u03bf \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03ba\u03b1\u03b9 \u03ba\u03b1\u03b9 \u03bf\u03b9 \u03b4\u03cd\u03bf \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b5\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c4\u03b7\u03bd \u03bc\u03c0\u03c1\u03bf\u03c3\u03c4\u03b9\u03bd\u03ae \u03b3\u03c1\u03b1\u03bc\u03bc\u03ae, \u03c4\u03b1 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03ac \u03b8\u03b1 \u03bc\u03b5\u03c4\u03b1\u03b4\u03bf\u03b8\u03bf\u03cd\u03bd \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b1.\n\n\u0394\u03b5\u03bd \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03c7\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b1 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03ac \u03ba\u03b1\u03c4\u03ac \u03c4\u03bf \u03b1\u03c0\u03bf\u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7 \u03ae \u03c4\u03b7\u03bd \u03b1\u03bb\u03bb\u03b1\u03b3\u03ae \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2; \u0392\u03b5\u03b2\u03b1\u03b9\u03c9\u03b8\u03b5\u03af\u03c4\u03b5 \u03cc\u03c4\u03b9 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9 \u03c4\u03b7\u03bd \u03b5\u03c6\u03b5\u03b4\u03c1\u03b5\u03af\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03c3\u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2.";
+      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     get$newSpace() {
-      return "\u039d\u03ad\u03bf\u03c2 \u03c7\u03ce\u03c1\u03bf\u03c2";
+      return "New space";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u0386\u03b4\u03b5\u03b9\u03bf chat (\u03ae\u03c4\u03b1\u03bd " + oldDisplayName + ")";
+      return "Empty chat (was " + oldDisplayName + ")";
     },
     get$newSpaceDescription() {
-      return "\u039f\u03b9 \u03c7\u03ce\u03c1\u03bf\u03b9 \u03c3\u03b1\u03c2 \u03b5\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03bf\u03c5\u03bd \u03bd\u03b1 \u03b5\u03bd\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03c3\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03b5\u03c4\u03b5 \u03b9\u03b4\u03b9\u03c9\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ae \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b5\u03c2 \u03ba\u03bf\u03b9\u03bd\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2.";
+      return "Spaces allows you to consolidate your chats and build private or public communities.";
     },
     get$reopenChat() {
-      return "\u0386\u03bd\u03bf\u03b9\u03b3\u03bc\u03b1 \u03be\u03b1\u03bd\u03ac \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Reopen chat";
     },
     get$noOtherDevicesFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03ac\u03bb\u03bb\u03b5\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "No other devices found";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u0391\u03b4\u03cd\u03bd\u03b1\u03c4\u03b7 \u03b7 \u03b1\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae! \u039f \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03bc\u03cc\u03bd\u03bf \u03c3\u03c5\u03bd\u03b7\u03bc\u03bc\u03ad\u03bd\u03b1 \u03ad\u03c9\u03c2 " + max + ".";
+      return "Unable to send! The server only supports attachments up to " + max + ".";
     },
     fileHasBeenSavedAt$1(path) {
-      return "\u03a4\u03bf \u03b1\u03c1\u03c7\u03b5\u03af\u03bf \u03ad\u03c7\u03b5\u03b9 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03c5\u03c4\u03b5\u03af \u03c3\u03c4\u03bf " + path;
+      return "File has been saved at " + path;
     },
     get$jumpToLastReadMessage() {
-      return "\u039c\u03b5\u03c4\u03ac\u03b2\u03b1\u03c3\u03b7 \u03c3\u03c4\u03bf \u03c4\u03b5\u03bb\u03b5\u03c5\u03c4\u03b1\u03af\u03bf \u03b4\u03b9\u03b1\u03b2\u03b1\u03c3\u03bc\u03ad\u03bd\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Jump to last read message";
     },
     get$readUpToHere() {
-      return "\u0394\u03b9\u03ac\u03b2\u03b1\u03c3\u03b5 \u03bc\u03ad\u03c7\u03c1\u03b9 \u03b5\u03b4\u03ce";
+      return "Read up to here";
     },
     get$jump() {
-      return "\u039c\u03b5\u03c4\u03ac\u03b2\u03b1\u03c3\u03b7";
+      return "Jump";
     },
     get$openLinkInBrowser() {
-      return "\u0386\u03bd\u03bf\u03b9\u03b3\u03bc\u03b1 \u03c3\u03c5\u03bd\u03b4\u03ad\u03c3\u03bc\u03bf\u03c5 \u03c3\u03c4\u03bf\u03bd \u03c0\u03b5\u03c1\u03b9\u03b7\u03b3\u03b7\u03c4\u03ae";
+      return "Open link in browser";
     },
     get$setColorTheme() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c7\u03c1\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc \u03b8\u03ad\u03bc\u03b1:";
+      return "Set color theme:";
     },
     get$invite() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "Invite";
     },
     get$invalidInput() {
-      return "\u039c\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03b7 \u03b5\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae!";
+      return "Invalid input!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 PIN \u03b5\u03b9\u03c3\u03ae\u03c7\u03b8\u03b7! \u0394\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03c3\u03b5 " + seconds + " \u03b4\u03b5\u03c5\u03c4\u03b5\u03c1\u03cc\u03bb\u03b5\u03c0\u03c4\u03b1...";
+      return "Wrong pin entered! Try again in " + seconds + " seconds...";
     },
     get$pleaseEnterANumber() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1\u03bd \u03b1\u03c1\u03b9\u03b8\u03bc\u03cc \u03bc\u03b5\u03b3\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03bf \u03b1\u03c0\u03cc \u03c4\u03bf 0";
+      return "Please enter a number greater than 0";
     },
     get$removeDevicesDescription() {
-      return "\u0398\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03ba\u03b1\u03b9 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03c0\u03bb\u03ad\u03bf\u03bd \u03bd\u03b1 \u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03c4\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1.";
+      return "You will be logged out of this device and will no longer be able to receive messages.";
     },
     get$banUserDescription() {
-      return "\u039f \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03b8\u03b1 \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03c4\u03b5\u03af \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03ba\u03b1\u03b9 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03b9\u03c3\u03ad\u03bb\u03b8\u03b5\u03b9 \u03be\u03b1\u03bd\u03ac \u03bc\u03ad\u03c7\u03c1\u03b9 \u03bd\u03b1 \u03b1\u03c6\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af \u03bf \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03cc\u03c2.";
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
     },
     get$unbanUserDescription() {
-      return "\u039f \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03b9\u03c3\u03ad\u03bb\u03b8\u03b5\u03b9 \u03be\u03b1\u03bd\u03ac \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b1\u03bd \u03c0\u03c1\u03bf\u03c3\u03c0\u03b1\u03b8\u03ae\u03c3\u03b5\u03b9.";
+      return "The user will be able to enter the chat again if they try.";
     },
     get$kickUserDescription() {
-      return "\u039f \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03b1\u03c0\u03bf\u03b2\u03ac\u03bb\u03bb\u03b5\u03c4\u03b1\u03b9 \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b1\u03bb\u03bb\u03ac \u03b4\u03b5\u03bd \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03af\u03b5\u03c4\u03b1\u03b9. \u03a3\u03c4\u03b9\u03c2 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2, \u03bf \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03c0\u03b1\u03bd\u03b5\u03bd\u03c4\u03b1\u03c7\u03b8\u03b5\u03af \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae.";
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
     },
     get$makeAdminDescription() {
-      return "\u0391\u03c6\u03bf\u03cd \u03ba\u03ac\u03bd\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae, \u03af\u03c3\u03c9\u03c2 \u03bd\u03b1 \u03bc\u03b7\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03ad\u03c3\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc, \u03ba\u03b1\u03b8\u03ce\u03c2 \u03b8\u03b1 \u03ad\u03c7\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03af\u03b4\u03b9\u03b5\u03c2 \u03ac\u03b4\u03b5\u03b9\u03b5\u03c2 \u03bc\u03b5 \u03b5\u03c3\u03ac\u03c2.";
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u03a4\u03bf \u03c0\u03b1\u03b3\u03ba\u03cc\u03c3\u03bc\u03b9\u03bf \u03b1\u03bd\u03b1\u03b3\u03bd\u03c9\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03b1\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9: ";
+      return "Your global user-ID is: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u0394\u03c5\u03c3\u03c4\u03c5\u03c7\u03ce\u03c2, \u03b4\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03bc\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c1\u03ce\u03c4\u03b7\u03c3\u03b7 "' + query + '". \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03b1\u03bd \u03ba\u03ac\u03bd\u03b1\u03c4\u03b5 \u03c4\u03c5\u03c0\u03bf\u03b3\u03c1\u03b1\u03c6\u03b9\u03ba\u03cc \u03bb\u03ac\u03b8\u03bf\u03c2.';
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
     },
     get$knocking() {
-      return "\u03a7\u03c4\u03c5\u03c0\u03ac\u03b5\u03b9";
+      return "Knocking";
     },
     get$groupName() {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1 \u03bf\u03bc\u03ac\u03b4\u03b1\u03c2";
+      return "Group name";
     },
     get$createGroupAndInviteUsers() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03bf\u03bc\u03ac\u03b4\u03b1 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2";
+      return "Create a group and invite users";
     },
     get$groupCanBeFoundViaSearch() {
-      return "\u0397 \u03bf\u03bc\u03ac\u03b4\u03b1 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b2\u03c1\u03b5\u03b8\u03b5\u03af \u03bc\u03ad\u03c3\u03c9 \u03b1\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Group can be found via search";
     },
     get$wrongRecoveryKey() {
-      return "\u039b\u03c5\u03c0\u03ac\u03bc\u03b1\u03b9... \u03b1\u03c5\u03c4\u03cc \u03b4\u03b5\u03bd \u03c6\u03b1\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c4\u03bf \u03c3\u03c9\u03c3\u03c4\u03cc \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2.";
+      return "Sorry... this does not seem to be the correct recovery key.";
     },
     get$startConversation() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Start conversation";
     },
     get$commandHint_sendraw() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03ba\u03b1\u03c4\u03ad\u03c1\u03b3\u03b1\u03c3\u03c4\u03bf\u03c5 json";
+      return "Send raw json";
     },
     get$searchForUsers() {
-      return "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 @\u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2...";
+      return "Search for @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03c4\u03c1\u03ad\u03c7\u03bf\u03bd\u03c4\u03b1 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03ae\u03c2 \u03c3\u03b1\u03c2";
+      return "Please enter your current password";
     },
     get$newPassword() {
-      return "\u039d\u03ad\u03bf\u03c2 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "New password";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03ad\u03bd\u03b1\u03bd \u03b9\u03c3\u03c7\u03c5\u03c1\u03cc \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
+      return "Please choose a strong password";
     },
     get$passwordsDoNotMatch() {
-      return "\u039f\u03b9 \u03ba\u03c9\u03b4\u03b9\u03ba\u03bf\u03af \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03b4\u03b5\u03bd \u03c4\u03b1\u03b9\u03c1\u03b9\u03ac\u03b6\u03bf\u03c5\u03bd";
+      return "Passwords do not match";
     },
     get$passwordIsWrong() {
-      return "\u039f \u03b5\u03b9\u03c3\u03b1\u03b3\u03cc\u03bc\u03b5\u03bd\u03bf\u03c2 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03bc\u03ad\u03bd\u03bf\u03c2";
+      return "Your entered password is wrong";
     },
     get$decline() {
-      return "\u0391\u03c0\u03cc\u03c1\u03c1\u03b9\u03c8\u03b7";
+      return "Decline";
     },
     get$thisDevice() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae:";
+      return "This device:";
     },
     get$initAppError() {
-      return "\u03a0\u03b1\u03c1\u03bf\u03c5\u03c3\u03b9\u03ac\u03c3\u03c4\u03b7\u03ba\u03b5 \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03ba\u03b1\u03c4\u03ac \u03c4\u03b7\u03bd \u03b1\u03c1\u03c7\u03b9\u03ba\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03c4\u03b7\u03c2 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2";
+      return "An error occured while init the app";
     },
     searchIn$1(chat) {
-      return '\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 "' + chat + '"...';
+      return 'Search in chat "' + chat + '"...';
     },
     get$searchMore() {
-      return "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03bf...";
+      return "Search more...";
     },
     get$gallery() {
-      return "\u03a0\u03b9\u03bd\u03b1\u03ba\u03bf\u03b8\u03ae\u03ba\u03b7";
+      return "Gallery";
     },
     get$files(_) {
-      return "\u0391\u03c1\u03c7\u03b5\u03af\u03b1";
+      return "Files";
     },
     sessionLostBody$2(url, error) {
-      return "\u0397 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1 \u03c3\u03b1\u03c2 \u03c7\u03ac\u03b8\u03b7\u03ba\u03b5. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03c0\u03c1\u03bf\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03c3\u03c4\u03ad\u03c2 \u03c3\u03c4\u03bf " + url + ". \u03a4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9: " + error;
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u0397 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03c0\u03c1\u03bf\u03c3\u03c0\u03b1\u03b8\u03b5\u03af \u03c4\u03ce\u03c1\u03b1 \u03bd\u03b1 \u03b5\u03c0\u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03b9 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1 \u03c3\u03b1\u03c2 \u03b1\u03c0\u03cc \u03c4\u03bf \u03b1\u03bd\u03c4\u03af\u03b3\u03c1\u03b1\u03c6\u03bf \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03c0\u03c1\u03bf\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03c3\u03c4\u03ad\u03c2 \u03c3\u03c4\u03bf " + url + ". \u03a4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9: " + error;
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     get$sendReadReceipts() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03c0\u03bf\u03b4\u03b5\u03af\u03be\u03b5\u03c9\u03bd \u03b1\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7\u03c2";
+      return "Send read receipts";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u039f\u03b9 \u03ac\u03bb\u03bb\u03bf\u03b9 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd \u03c0\u03cc\u03c4\u03b5 \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03b5\u03af\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03bd\u03ad\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1.";
+      return "Other participants in a chat can see when you are typing a new message.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u039f\u03b9 \u03ac\u03bb\u03bb\u03bf\u03b9 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd \u03c0\u03cc\u03c4\u03b5 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03b4\u03b9\u03b1\u03b2\u03ac\u03c3\u03b5\u03b9 \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1.";
+      return "Other participants in a chat can see when you have read a message.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u0395\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ac\u03bb\u03bb\u03b7\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2";
+      return "\ud83d\udd10 Verify other device";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u038c\u03c4\u03b1\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03b9\u03ce\u03bd\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03ac\u03bb\u03bb\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae, \u03b1\u03c5\u03c4\u03ad\u03c2 \u03bf\u03b9 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b1\u03bd\u03c4\u03b1\u03bb\u03bb\u03ac\u03be\u03bf\u03c5\u03bd \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03ac, \u03b1\u03c5\u03be\u03ac\u03bd\u03bf\u03bd\u03c4\u03b1\u03c2 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ae \u03b1\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03ac \u03c3\u03b1\u03c2. \ud83d\udcaa \u038c\u03c4\u03b1\u03bd \u03be\u03b5\u03ba\u03b9\u03bd\u03ac\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7, \u03b8\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03c3\u03c4\u03b5\u03af \u03ad\u03bd\u03b1 \u03b1\u03bd\u03b1\u03b4\u03c5\u03cc\u03bc\u03b5\u03bd\u03bf \u03c0\u03b1\u03c1\u03ac\u03b8\u03c5\u03c1\u03bf \u03c3\u03c4\u03b7\u03bd \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03ba\u03b1\u03b9 \u03c3\u03c4\u03b9\u03c2 \u03b4\u03cd\u03bf \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2. \u0395\u03ba\u03b5\u03af \u03b8\u03b1 \u03b4\u03b5\u03af\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03c3\u03b5\u03b9\u03c1\u03ac \u03b1\u03c0\u03cc emoji \u03ae \u03b1\u03c1\u03b9\u03b8\u03bc\u03bf\u03cd\u03c2 \u03c0\u03bf\u03c5 \u03c0\u03c1\u03ad\u03c0\u03b5\u03b9 \u03bd\u03b1 \u03c3\u03c5\u03b3\u03ba\u03c1\u03af\u03bd\u03b5\u03c4\u03b5. \u0395\u03af\u03bd\u03b1\u03b9 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03bf \u03bd\u03b1 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03ba\u03b1\u03b9 \u03c4\u03b9\u03c2 \u03b4\u03cd\u03bf \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03ad\u03c4\u03bf\u03b9\u03bc\u03b5\u03c2 \u03c0\u03c1\u03b9\u03bd \u03be\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7. \ud83e\udd33";
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u03b1\u03c0\u03bf\u03b4\u03ad\u03c7\u03c4\u03b7\u03ba\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " accepted key verification";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u03b1\u03ba\u03cd\u03c1\u03c9\u03c3\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " canceled key verification";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u03bf\u03bb\u03bf\u03ba\u03bb\u03ae\u03c1\u03c9\u03c3\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " completed key verification";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u03b5\u03af\u03bd\u03b1\u03b9 \u03ad\u03c4\u03bf\u03b9\u03bc\u03bf\u03c2/\u03b7 \u03b3\u03b9\u03b1 \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " is ready for key verification";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u03b6\u03ae\u03c4\u03b7\u03c3\u03b5 \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " requested key verification";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u03be\u03b5\u03ba\u03af\u03bd\u03b7\u03c3\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03af\u03c9\u03c3\u03b7 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return sender + " started key verification";
     },
     get$commandHint_ignore() {
-      return "\u0391\u03b3\u03bd\u03cc\u03b7\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03b4\u03bf\u03b8\u03ad\u03bd\u03c4\u03bf\u03c2 \u03c4\u03b1\u03c5\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 matrix";
+      return "Ignore the given matrix ID";
     },
     get$commandHint_unignore() {
-      return "\u0391\u03bd\u03b1\u03af\u03c1\u03b5\u03c3\u03b7 \u03b1\u03b3\u03bd\u03cc\u03b7\u03c3\u03b7\u03c2 \u03c4\u03bf\u03c5 \u03b4\u03bf\u03b8\u03ad\u03bd\u03c4\u03bf\u03c2 \u03c4\u03b1\u03c5\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 matrix";
+      return "Unignore the given matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u0391\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae \u03c5\u03c0\u03ac\u03c1\u03c7\u03bf\u03c5\u03bd " + count + " \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2.";
+      return "Right now there are " + count + " users blocked.";
     },
     get$restricted() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03bf\u03c1\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf";
+      return "Restricted";
     },
     get$markAsUnread() {
-      return "\u03a3\u03ae\u03bc\u03b1\u03bd\u03c3\u03b7 \u03c9\u03c2 \u03bc\u03b7 \u03b1\u03bd\u03b1\u03b3\u03bd\u03c9\u03c3\u03bc\u03ad\u03bd\u03bf";
+      return "Mark as unread";
     },
     userLevel$1(level) {
-      return "" + level + " - \u03a7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2";
+      return "" + level + " - User";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u0394\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u0394\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03c4\u03b7\u03c2 \u03bf\u03c1\u03b1\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c4\u03bf\u03c5 \u03b9\u03c3\u03c4\u03bf\u03c1\u03b9\u03ba\u03bf\u03cd \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Change the visibility of the chat history";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03c4\u03b7\u03c2 \u03ba\u03cd\u03c1\u03b9\u03b1\u03c2 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b1\u03c2 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Change the main public chat address";
     },
     get$sendRoomNotifications() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd @room";
+      return "Send a @room notifications";
     },
     get$chatPermissionsDescription() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c0\u03bf\u03b9\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03b4\u03cd\u03bd\u03b1\u03bc\u03b7\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b1\u03c1\u03b1\u03af\u03c4\u03b7\u03c4\u03bf \u03b3\u03b9\u03b1 \u03bf\u03c1\u03b9\u03c3\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b5\u03bd\u03ad\u03c1\u03b3\u03b5\u03b9\u03b5\u03c2 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1. \u03a4\u03b1 \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03b1 \u03b4\u03cd\u03bd\u03b1\u03bc\u03b7\u03c2 0, 50 \u03ba\u03b1\u03b9 100 \u03c3\u03c5\u03bd\u03ae\u03b8\u03c9\u03c2 \u03b1\u03bd\u03c4\u03b9\u03c0\u03c1\u03bf\u03c3\u03c9\u03c0\u03b5\u03cd\u03bf\u03c5\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2, \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2, \u03b1\u03bb\u03bb\u03ac \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03b2\u03b1\u03b8\u03bc\u03af\u03b4\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03c5\u03bd\u03b1\u03c4\u03ae.";
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u0395\u03b3\u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03ac\u03b8\u03b7\u03ba\u03b5 \u03b7 \u03b5\u03bd\u03b7\u03bc\u03ad\u03c1\u03c9\u03c3\u03b7 " + version + "!";
+      return "\ud83c\udf89 Update " + version + " installed!";
     },
     get$sendCanceled() {
-      return "\u0397 \u03b1\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03ba\u03c5\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5";
+      return "Sending canceled";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u0394\u03b5\u03bd \u03c6\u03b1\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c5\u03bc\u03b2\u03b1\u03c4\u03cc\u03c2 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03c3\u03c0\u03b9\u03c4\u03b9\u03bf\u03cd. \u039b\u03ac\u03b8\u03bf\u03c2 URL;";
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$calculatingFileSize() {
-      return "\u03a5\u03c0\u03bf\u03bb\u03bf\u03b3\u03b9\u03c3\u03bc\u03cc\u03c2 \u03bc\u03b5\u03b3\u03ad\u03b8\u03bf\u03c5\u03c2 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5...";
+      return "Calculating file size...";
     },
     get$prepareSendingAttachment() {
-      return "\u0395\u03c4\u03bf\u03b9\u03bc\u03b1\u03c3\u03af\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae\u03c2 \u03c3\u03c5\u03bd\u03b7\u03bc\u03bc\u03ad\u03bd\u03bf\u03c5...";
+      return "Prepare sending attachment...";
     },
     get$sendingAttachment() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03c3\u03c5\u03bd\u03b7\u03bc\u03bc\u03ad\u03bd\u03bf\u03c5...";
+      return "Sending attachment...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03c3\u03c5\u03bd\u03b7\u03bc\u03bc\u03ad\u03bd\u03bf\u03c5 " + index + " \u03b1\u03c0\u03cc " + $length + "...";
+      return "Sending attachment " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "\u0388\u03c6\u03c4\u03b1\u03c3\u03b5 \u03c4\u03bf \u03cc\u03c1\u03b9\u03bf \u03c4\u03bf\u03c5 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae! \u03a0\u03b5\u03c1\u03b9\u03bc\u03ad\u03bd\u03b5\u03c4\u03b5 " + seconds + " \u03b4\u03b5\u03c5\u03c4\u03b5\u03c1\u03cc\u03bb\u03b5\u03c0\u03c4\u03b1...";
+      return "Server limit reached! Waiting " + seconds + " seconds...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u03a3\u03b7\u03bc\u03b5\u03af\u03c9\u03c3\u03b7: \u038c\u03c4\u03b1\u03bd \u03c3\u03c5\u03bd\u03b4\u03ad\u03c3\u03b5\u03c4\u03b5 \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03c3\u03b1\u03c2 \u03c3\u03c4\u03bf \u03b1\u03bd\u03c4\u03af\u03b3\u03c1\u03b1\u03c6\u03bf \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2, \u03b1\u03c5\u03c4\u03bf\u03bc\u03ac\u03c4\u03c9\u03c2 \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03cd\u03bf\u03bd\u03c4\u03b1\u03b9.";
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$continueText() {
-      return "\u03a3\u03c5\u03bd\u03ad\u03c7\u03b5\u03b9\u03b1";
+      return "Continue";
     },
     get$blur(_) {
-      return "\u0398\u03ac\u03bc\u03c0\u03c9\u03bc\u03b1:";
+      return "Blur:";
     },
     get$opacity(_) {
-      return "\u0391\u03b4\u03b9\u03b1\u03c6\u03ac\u03bd\u03b5\u03b9\u03b1:";
+      return "Opacity:";
     },
     get$setWallpaper() {
-      return "\u039f\u03c1\u03b9\u03c3\u03bc\u03cc\u03c2 \u03c6\u03cc\u03bd\u03c4\u03bf\u03c5";
+      return "Set wallpaper";
     },
     get$noContactInformationProvided() {
-      return "\u039f \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03b4\u03b5\u03bd \u03c0\u03b1\u03c1\u03ad\u03c7\u03b5\u03b9 \u03ad\u03b3\u03ba\u03c5\u03c1\u03b5\u03c2 \u03c0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03b5\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03af\u03b1\u03c2";
+      return "Server does not provide any valid contact information";
     },
     get$contactServerAdmin() {
-      return "\u0395\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b5 \u03c4\u03bf\u03bd \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae \u03c4\u03bf\u03c5 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae";
+      return "Contact server admin";
     },
     get$contactServerSecurity() {
-      return "\u0395\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03af\u03b1 \u03bc\u03b5 \u03c4\u03b7\u03bd \u03b1\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03b1 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae";
+      return "Contact server security";
     },
     get$supportPage() {
-      return "\u03a3\u03b5\u03bb\u03af\u03b4\u03b1 \u03c5\u03c0\u03bf\u03c3\u03c4\u03ae\u03c1\u03b9\u03be\u03b7\u03c2";
+      return "Support page";
     },
     get$serverInformation() {
-      return "\u03a0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae:";
+      return "Server information:";
     },
     get$name(_) {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1";
+      return "Name";
     },
     get$version(_) {
-      return "\u0388\u03ba\u03b4\u03bf\u03c3\u03b7";
+      return "Version";
     },
     get$website() {
-      return "\u0399\u03c3\u03c4\u03bf\u03c3\u03b5\u03bb\u03af\u03b4\u03b1";
+      return "Website";
     },
     get$compress() {
-      return "\u03a3\u03c5\u03bc\u03c0\u03af\u03b5\u03c3\u03b7";
+      return "Compress";
     },
     get$boldText() {
-      return "\u0388\u03bd\u03c4\u03bf\u03bd\u03bf \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf";
+      return "Bold text";
     },
     get$italicText() {
-      return "\u03a0\u03bb\u03ac\u03b3\u03b9\u03bf \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf";
+      return "Italic text";
     },
     get$strikeThrough() {
-      return "\u0394\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Strikethrough";
     },
     get$pleaseFillOut() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c3\u03c5\u03bc\u03c0\u03bb\u03b7\u03c1\u03ce\u03c3\u03c4\u03b5";
+      return "Please fill out";
     },
     get$invalidUrl() {
-      return "\u039c\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03bf URL";
+      return "Invalid url";
     },
     get$addLink() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c3\u03c5\u03bd\u03b4\u03ad\u03c3\u03bc\u03bf\u03c5";
+      return "Add link";
     },
     get$unableToJoinChat() {
-      return "\u0391\u03b4\u03cd\u03bd\u03b1\u03c4\u03b7 \u03b7 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1. \u038a\u03c3\u03c9\u03c2 \u03c4\u03bf \u03ac\u03bb\u03bb\u03bf \u03bc\u03ad\u03c1\u03bf\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03ae\u03b4\u03b7 \u03ba\u03bb\u03b5\u03af\u03c3\u03b5\u03b9 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$previous() {
-      return "\u03a0\u03c1\u03bf\u03b7\u03b3\u03bf\u03cd\u03bc\u03b5\u03bd\u03bf";
+      return "Previous";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u03a4\u03bf \u03ac\u03bb\u03bb\u03bf \u03bc\u03ad\u03c1\u03bf\u03c2 \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae \u03c3\u03c5\u03bd\u03b4\u03b5\u03b4\u03b5\u03bc\u03ad\u03bd\u03bf \u03ba\u03b1\u03b9 \u03b5\u03c0\u03bf\u03bc\u03ad\u03bd\u03c9\u03c2 \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03bb\u03ac\u03b2\u03b5\u03b9 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1!";
+      return "The other party is currently not logged in and therefore cannot receive messages!";
     },
     get$open(_) {
-      return "\u0386\u03bd\u03bf\u03b9\u03b3\u03bc\u03b1";
+      return "Open";
     },
     get$waitingForServer() {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae...";
+      return "Waiting for server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u039d\u03ad\u03b1 \u03b1\u03af\u03c4\u03b7\u03c3\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "\ud83d\udce9 New chat request";
     },
     get$contentNotificationSettings() {
-      return "\u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd \u03c0\u03b5\u03c1\u03b9\u03b5\u03c7\u03bf\u03bc\u03ad\u03bd\u03bf\u03c5";
+      return "Content notification settings";
     },
     get$generalNotificationSettings() {
-      return "\u0393\u03b5\u03bd\u03b9\u03ba\u03ad\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd";
+      return "General notification settings";
     },
     get$roomNotificationSettings() {
-      return "\u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return "Room notification settings";
     },
     get$userSpecificNotificationSettings() {
-      return "\u0395\u03be\u03b1\u03c4\u03bf\u03bc\u03b9\u03ba\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "User specific notification settings";
     },
     get$otherNotificationSettings() {
-      return "\u0386\u03bb\u03bb\u03b5\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd";
+      return "Other notification settings";
     },
     get$notificationRuleContainsUserName() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03ad\u03c7\u03b5\u03b9 \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Contains User Name";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c0\u03b5\u03c1\u03b9\u03ad\u03c7\u03b5\u03b9 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c4\u03bf\u03c5.";
+      return "Notifies the user when a message contains their username.";
     },
     get$notificationRuleMaster() {
-      return "\u0391\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03cc\u03bb\u03c9\u03bd \u03c4\u03c9\u03bd \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd";
+      return "Mute all notifications";
     },
     get$notificationRuleMasterDescription() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03ac\u03bc\u03c0\u03c4\u03b5\u03b9 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03ac\u03bb\u03bb\u03bf\u03c5\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03ba\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2.";
+      return "Overrides all other rules and disables all notifications.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03bf\u03bb\u03ae \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03c9\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Suppress Automated Messages";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03ad\u03bb\u03bb\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03bf\u03bc\u03b1\u03c4\u03bf\u03c0\u03bf\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5\u03c2 \u03c0\u03b5\u03bb\u03ac\u03c4\u03b5\u03c2 \u03cc\u03c0\u03c9\u03c2 \u03c4\u03b1 bots.";
+      return "Suppresses notifications from automated clients like bots.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 \u03bc\u03ad\u03bd\u03b1";
+      return "Invite for Me";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03b9 \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03c3\u03b5 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf.";
+      return "Notifies the user when they are invited to a room.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u0393\u03b5\u03b3\u03bf\u03bd\u03cc\u03c2 \u03bc\u03ad\u03bb\u03bf\u03c5\u03c2";
+      return "Member Event";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03ad\u03bb\u03bb\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c4\u03b1 \u03bc\u03ad\u03bb\u03bf\u03c5\u03c2.";
+      return "Suppresses notifications for membership events.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "User Mention";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b1\u03b9 \u03ac\u03bc\u03b5\u03c3\u03b1 \u03c3\u03b5 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1.";
+      return "Notifies the user when they are directly mentioned in a message.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03ad\u03c7\u03b5\u03b9 \u03cc\u03bd\u03bf\u03bc\u03b1 \u03b5\u03bc\u03c6\u03ac\u03bd\u03b9\u03c3\u03b7\u03c2";
+      return "Contains Display Name";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c0\u03b5\u03c1\u03b9\u03ad\u03c7\u03b5\u03b9 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03ac \u03c4\u03bf\u03c5.";
+      return "Notifies the user when a message contains their display name.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u0394\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return "Room Mention";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03c5\u03c0\u03ac\u03c1\u03c7\u03b5\u03b9 \u03b1\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03c3\u03b5 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf.";
+      return "Notifies the user when there is a room mention.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u0394\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5";
+      return "Room Notification";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03cc\u03c4\u03b1\u03bd \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c0\u03b5\u03c1\u03b9\u03ad\u03c7\u03b5\u03b9 '@room'.";
+      return "Notifies the user when a message contains '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\u03a4\u03b1\u03c6\u03cc\u03c0\u03bb\u03b1\u03ba\u03b1";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7\u03c2 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5.";
+      return "Notifies the user about room deactivation messages.";
     },
     get$notificationRuleReaction() {
-      return "\u0391\u03bd\u03c4\u03af\u03b4\u03c1\u03b1\u03c3\u03b7";
+      return "Reaction";
     },
     get$notificationRuleReactionDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03ad\u03bb\u03bb\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03bd\u03c4\u03b9\u03b4\u03c1\u03ac\u03c3\u03b5\u03b9\u03c2.";
+      return "Suppresses notifications for reactions.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7 \u0394\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5 \u03c3\u03c4\u03bf\u03bd \u0394\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae";
+      return "Room Server ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03ad\u03bb\u03bb\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03bb\u03af\u03c3\u03c4\u03b5\u03c2 \u03b5\u03bb\u03ad\u03b3\u03c7\u03bf\u03c5 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 (ACL) \u03c4\u03bf\u03c5 \u03b4\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5.";
+      return "Suppresses notifications for room server access control lists (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03bf\u03bb\u03ae \u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03b9\u03ce\u03bd";
+      return "Suppress Edits";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03c4\u03ad\u03bb\u03bb\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03bc\u03ad\u03bd\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1.";
+      return "Suppresses notifications for edited messages.";
     },
     get$notificationRuleCall() {
-      return "\u039a\u03bb\u03ae\u03c3\u03b7";
+      return "Call";
     },
     get$notificationRuleCallDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03ba\u03bb\u03ae\u03c3\u03b5\u03b9\u03c2.";
+      return "Notifies the user about calls.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u039a\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03bf \u0394\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u039c\u03af\u03b1 \u03c0\u03c1\u03bf\u03c2 \u039c\u03af\u03b1";
+      return "Encrypted Room One-to-One";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03b5 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03b1 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03b1 \u03ad\u03bd\u03b1 \u03c0\u03c1\u03bf\u03c2 \u03ad\u03bd\u03b1.";
+      return "Notifies the user about messages in encrypted one-to-one rooms.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u0394\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u039c\u03af\u03b1 \u03c0\u03c1\u03bf\u03c2 \u039c\u03af\u03b1";
+      return "Room One-to-One";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03b5 \u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03b1 \u03ad\u03bd\u03b1 \u03c0\u03c1\u03bf\u03c2 \u03ad\u03bd\u03b1.";
+      return "Notifies the user about messages in one-to-one rooms.";
     },
     get$notificationRuleMessage() {
-      return "\u039c\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Message";
     },
     get$notificationRuleMessageDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b3\u03b9\u03b1 \u03b3\u03b5\u03bd\u03b9\u03ba\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1.";
+      return "Notifies the user about general messages.";
     },
     get$notificationRuleEncrypted() {
-      return "\u039a\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03bf";
+      return "Encrypted";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03b5 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03bf\u03c5\u03c2 \u03b4\u03c9\u03bc\u03b1\u03c4\u03af\u03bf\u03c5\u03c2.";
+      return "Notifies the user about messages in encrypted rooms.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03b5\u03af \u03c4\u03bf\u03bd \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b3\u03b9\u03b1 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c4\u03b1 widget Jitsi.";
+      return "Notifies the user about Jitsi widget events.";
     },
     get$notificationRuleServerAcl() {
-      return "\u039a\u03b1\u03c4\u03ac\u03c0\u03bd\u03b9\u03be\u03b5 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c4\u03b1 Server ACL";
+      return "Suppress Server ACL Events";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c0\u03bd\u03af\u03b3\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b3\u03b5\u03b3\u03bf\u03bd\u03cc\u03c4\u03b1 Server ACL.";
+      return "Suppresses notifications for Server ACL events.";
     },
     unknownPushRule$1(rule) {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf\u03c2 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b1\u03c2 \u03ce\u03b8\u03b7\u03c3\u03b7\u03c2 '" + rule + "'";
+      return "Unknown push rule '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \u03a6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b1\u03c0\u03cc " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Voice message from " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u0395\u03ac\u03bd \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c1\u03cd\u03b8\u03bc\u03b9\u03c3\u03b7 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7\u03c2, \u03b1\u03c5\u03c4\u03cc \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af.";
+      return "If you delete this notification setting, this can not be undone.";
     },
     get$more() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b1";
+      return "More";
     },
     get$shareKeysWith() {
-      return "\u039c\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03ba\u03bb\u03b5\u03b9\u03b4\u03b9\u03ac \u03bc\u03b5...";
+      return "Share keys with...";
     },
     get$shareKeysWithDescription() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03c0\u03c1\u03ad\u03c0\u03b5\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03be\u03b9\u03cc\u03c0\u03b9\u03c3\u03c4\u03b5\u03c2 \u03ce\u03c3\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b2\u03ac\u03c3\u03bf\u03c5\u03bd \u03c4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03ac \u03c3\u03b1\u03c2 \u03c3\u03b5 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03b1\u03c6\u03b7\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2;";
+      return "Which devices should be trusted so that they can read along your messages in encrypted chats?";
     },
     get$allDevices() {
-      return "\u038c\u03bb\u03b5\u03c2 \u03bf\u03b9 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "All devices";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u0394\u03b9\u03b1\u03c3\u03c4\u03b1\u03c5\u03c1\u03c9\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2 \u03b1\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03bf";
+      return "Cross verified devices if enabled";
     },
     get$crossVerifiedDevices() {
-      return "\u0394\u03b9\u03b1\u03c3\u03c4\u03b1\u03c5\u03c1\u03c9\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "Cross verified devices";
     },
     get$verifiedDevicesOnly() {
-      return "\u039c\u03cc\u03bd\u03bf \u03b5\u03c0\u03b1\u03bb\u03b7\u03b8\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "Verified devices only";
     },
     get$optionalMessage() {
-      return "(\u03a0\u03c1\u03bf\u03b1\u03b9\u03c1\u03b5\u03c4\u03b9\u03ba\u03cc) \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1...";
+      return "(Optional) message...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u0394\u03b5\u03bd \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03c4\u03b1\u03b9 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae";
+      return "Not supported on this device";
     },
     get$enterNewChat() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bd\u03ad\u03bf chat";
+      return "Enter new chat";
     },
     get$approve() {
-      return "\u0388\u03b3\u03ba\u03c1\u03b9\u03c3\u03b7";
+      return "Approve";
     },
     get$youHaveKnocked() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03c7\u03c4\u03c5\u03c0\u03ae\u03c3\u03b5\u03b9";
+      return "You have knocked";
     },
     get$commandHint_logout() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c4\u03c1\u03ad\u03c7\u03bf\u03c5\u03c3\u03b1 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03c3\u03b1\u03c2";
+      return "Logout your current device";
     },
     get$commandHint_logoutall() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03b1\u03c0\u03cc \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03b5\u03bd\u03b5\u03c1\u03b3\u03ad\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ad\u03c2";
+      return "Logout all active devices";
     },
     get$moreEvents() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b5\u03c2 \u03b5\u03ba\u03b4\u03b7\u03bb\u03ce\u03c3\u03b5\u03b9\u03c2";
+      return "More events";
     },
     get$declineInvitation() {
-      return "\u0391\u03c0\u03cc\u03c1\u03c1\u03b9\u03c8\u03b7 \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7\u03c2";
+      return "Decline invitation";
     },
     get$noMessagesYet() {
-      return "\u0394\u03b5\u03bd \u03c5\u03c0\u03ac\u03c1\u03c7\u03bf\u03c5\u03bd \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b1\u03ba\u03cc\u03bc\u03b1";
+      return "No messages yet";
     },
     get$pause(_) {
-      return "\u03a0\u03b1\u03cd\u03c3\u03b7";
+      return "Pause";
     },
     get$resume(_) {
-      return "\u03a3\u03c5\u03bd\u03ad\u03c7\u03b5\u03b9\u03b1";
+      return "Resume";
     },
     countChats$1(chats) {
-      return "" + chats + " \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2";
+      return "" + chats + " chats";
     },
     get$startPoll() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03b4\u03b7\u03bc\u03bf\u03c3\u03ba\u03cc\u03c0\u03b7\u03c3\u03b7";
+      return "Start poll";
     },
     get$endPoll() {
-      return "\u03a4\u03ad\u03bb\u03bf\u03c2 \u03c8\u03b7\u03c6\u03bf\u03c6\u03bf\u03c1\u03af\u03b1\u03c2";
+      return "End poll";
     },
     get$answersVisible() {
-      return "\u039f\u03c1\u03b1\u03c4\u03ad\u03c2 \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2";
+      return "Answers visible";
     },
     get$pollQuestion() {
-      return "\u0395\u03c1\u03ce\u03c4\u03b7\u03c3\u03b7 \u03c8\u03b7\u03c6\u03bf\u03c6\u03bf\u03c1\u03af\u03b1\u03c2";
+      return "Poll question";
     },
     get$answerOption() {
-      return "\u0395\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Answer option";
     },
     get$addAnswerOption() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae\u03c2 \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Add answer option";
     },
     get$allowMultipleAnswers() {
-      return "\u0395\u03c0\u03b9\u03c4\u03c1\u03ad\u03c8\u03c4\u03b5 \u03c0\u03bf\u03bb\u03bb\u03ad\u03c2 \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2";
+      return "Allow multiple answers";
     },
     get$pollHasBeenEnded() {
-      return "\u0397 \u03c8\u03b7\u03c6\u03bf\u03c6\u03bf\u03c1\u03af\u03b1 \u03ad\u03c7\u03b5\u03b9 \u03bb\u03ae\u03be\u03b5\u03b9";
+      return "Poll has been ended";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u039c\u03af\u03b1 \u03c8\u03ae\u03c6\u03bf\u03c2", "" + count + " \u03c8\u03ae\u03c6\u03bf\u03b9", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One vote", "" + count + " votes", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "\u039f\u03b9 \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b8\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03bf\u03c1\u03b1\u03c4\u03ad\u03c2 \u03cc\u03c4\u03b1\u03bd \u03b7 \u03c8\u03b7\u03c6\u03bf\u03c6\u03bf\u03c1\u03af\u03b1 \u03ad\u03c7\u03b5\u03b9 \u03bb\u03ae\u03be\u03b5\u03b9";
+      return "Answers will be visible when poll has ended";
     },
     get$replyInThread() {
-      return "\u0391\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Reply in thread";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u039c\u03af\u03b1 \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7", "" + count + " \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "One reply", "" + count + " replies", _null, _null);
     },
     get$thread() {
-      return "\u03a3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Thread";
     },
     get$backToMainChat() {
-      return "\u0395\u03c0\u03b9\u03c3\u03c4\u03c1\u03bf\u03c6\u03ae \u03c3\u03c4\u03b7\u03bd \u03ba\u03cd\u03c1\u03b9\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Back to main chat";
     },
     get$saveChanges() {
-      return "\u0391\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 \u03b1\u03bb\u03bb\u03b1\u03b3\u03ce\u03bd";
+      return "Save changes";
     },
     get$createSticker() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03bf\u03c5 \u03ae emoji";
+      return "Create sticker or emoji";
     },
     get$useAsSticker() {
-      return "\u03a7\u03c1\u03ae\u03c3\u03b7 \u03c9\u03c2 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03bf";
+      return "Use as sticker";
     },
     get$useAsEmoji() {
-      return "\u03a7\u03c1\u03ae\u03c3\u03b7 \u03c9\u03c2 emoji";
+      return "Use as emoji";
     },
     get$stickerPackNameAlreadyExists() {
-      return "\u03a4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c4\u03bf\u03c5 \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf\u03c5 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03c9\u03bd \u03c5\u03c0\u03ac\u03c1\u03c7\u03b5\u03b9 \u03ae\u03b4\u03b7";
+      return "Sticker pack name already exists";
     },
     get$newStickerPack() {
-      return "\u039d\u03ad\u03bf \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03c9\u03bd";
+      return "New sticker pack";
     },
     get$stickerPackName() {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1 \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf\u03c5 \u03b1\u03c5\u03c4\u03bf\u03ba\u03cc\u03bb\u03bb\u03b7\u03c4\u03c9\u03bd";
+      return "Sticker pack name";
     },
     get$attribution(_) {
-      return "\u0391\u03bd\u03b1\u03b3\u03bd\u03ce\u03c1\u03b9\u03c3\u03b7";
+      return "Attribution";
     },
     get$skipChatBackup() {
-      return "\u03a0\u03b1\u03c1\u03ac\u03bb\u03b5\u03b9\u03c8\u03b7 \u03b1\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03bf\u03c5 \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Skip chat backup";
     },
     get$skipChatBackupWarning() {
-      return "\u0395\u03af\u03c3\u03c4\u03b5 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03b9; \u03a7\u03c9\u03c1\u03af\u03c2 \u03c4\u03b7\u03bd \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03b1\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03bf\u03c5 \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2, \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c7\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7 \u03c3\u03c4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03ac \u03c3\u03b1\u03c2 \u03b1\u03bd \u03b1\u03bb\u03bb\u03ac\u03be\u03b5\u03c4\u03b5 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae.";
+      return "Are you sure? Without enabling the chat backup you may lose access to your messages if you switch your device.";
     },
     get$loadingMessages() {
-      return "\u03a6\u03cc\u03c1\u03c4\u03c9\u03c3\u03b7 \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Loading messages";
     },
     get$setupChatBackup() {
-      return "\u03a1\u03cd\u03b8\u03bc\u03b9\u03c3\u03b7 \u03b1\u03bd\u03c4\u03b9\u03b3\u03c1\u03ac\u03c6\u03bf\u03c5 \u03b1\u03c3\u03c6\u03b1\u03bb\u03b5\u03af\u03b1\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Set up chat backup";
     },
     get$noMoreResultsFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b1 \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03ad\u03c3\u03bc\u03b1\u03c4\u03b1";
+      return "No more results found";
     },
     chatSearchedUntil$1(time) {
-      return "\u0397 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b1\u03bd\u03b1\u03b6\u03b7\u03c4\u03ae\u03b8\u03b7\u03ba\u03b5 \u03bc\u03ad\u03c7\u03c1\u03b9 " + time;
+      return "Chat searched until " + time;
     },
     get$federationBaseUrl() {
-      return "\u0392\u03b1\u03c3\u03b9\u03ba\u03cc URL \u039f\u03bc\u03bf\u03c3\u03c0\u03bf\u03bd\u03b4\u03af\u03b1\u03c2";
+      return "Federation Base URL";
     },
     get$clientWellKnownInformation() {
-      return "\u03a0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03a0\u03b5\u03bb\u03ac\u03c4\u03b7-\u0393\u03bd\u03c9\u03c3\u03c4\u03ad\u03c2:";
+      return "Client-Well-Known Information:";
     },
     get$baseUrl() {
-      return "\u0392\u03b1\u03c3\u03b9\u03ba\u03cc URL";
+      return "Base URL";
     },
     get$identityServer() {
-      return "\u0394\u03b9\u03b1\u03ba\u03bf\u03bc\u03b9\u03c3\u03c4\u03ae\u03c2 \u03a4\u03b1\u03c5\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2:";
+      return "Identity Server:";
     },
     versionWithNumber$1(version) {
-      return "\u0388\u03ba\u03b4\u03bf\u03c3\u03b7: " + version;
+      return "Version: " + version;
     },
     get$logs() {
-      return "\u039a\u03b1\u03c4\u03b1\u03b3\u03c1\u03b1\u03c6\u03ad\u03c2";
+      return "Logs";
     },
     get$advancedConfigs() {
-      return "\u03a0\u03c1\u03bf\u03c7\u03c9\u03c1\u03b7\u03bc\u03ad\u03bd\u03b5\u03c2 \u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2";
+      return "Advanced Configs";
     },
     get$advancedConfigurations() {
-      return "\u03a0\u03c1\u03bf\u03c7\u03c9\u03c1\u03b7\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2";
+      return "Advanced configurations";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u03a0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03ae\u03c3\u03c4\u03b5 \u03c3\u03b5 " + l1 + " \u03ae " + l2 + "...";
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03ba\u03b1\u03b9 \u03ba\u03c1\u03b1\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c0\u03b1\u03c4\u03b7\u03bc\u03ad\u03bd\u03bf \u03b3\u03b9\u03b1 \u03c0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2.";
+      return "Click and hold for word info.";
     },
     get$gaTooltip() {
-      return "L2 \u03c7\u03c1\u03ae\u03c3\u03b7 \u03bc\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "L2 use with grammar assistance";
     },
     get$taTooltip() {
-      return "L2 \u03c7\u03c1\u03ae\u03c3\u03b7 \u03bc\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2";
+      return "L2 use with translation assistance";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u0394\u03b9\u03b1\u03b4\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc\u03c2 \u039c\u03b5\u03c4\u03b1\u03c6\u03c1\u03b1\u03c3\u03c4\u03ae\u03c2";
+      return "Interactive Translator";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u0394\u03b9\u03b1\u03b4\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc\u03c2 \u0388\u03bb\u03b5\u03b3\u03c7\u03bf\u03c2 \u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Interactive Grammar Checker";
     },
     get$waTooltip() {
-      return "\u03a7\u03c1\u03ae\u03c3\u03b7 L2 \u03c7\u03c9\u03c1\u03af\u03c2 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1";
+      return "L2 use without assistance";
     },
     get$noIdenticalLanguages() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03b4\u03b9\u03b1\u03c6\u03bf\u03c1\u03b5\u03c4\u03b9\u03ba\u03ad\u03c2 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ad\u03c2 \u03ba\u03b1\u03b9 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c5\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2";
+      return "Please choose different base and target languages";
     },
     get$joinWithClassCode() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Join course";
     },
     get$languageLevelPreA1() {
-      return "\u039d\u03ad\u03bf\u03c2 \u03a7\u03b1\u03bc\u03b7\u03bb\u03cc\u03c2 (\u03a0\u03c1\u03bf \u03911)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u039d\u03ad\u03bf\u03c2 \u039c\u03ad\u03c3\u03bf\u03c2 (A1)";
+      return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "\u0391\u03c1\u03c7\u03ac\u03c1\u03b9\u03bf\u03c2 \u03a5\u03c8\u03b7\u03bb\u03bf\u03cd \u0395\u03c0\u03b9\u03c0\u03ad\u03b4\u03bf\u03c5 (A2)";
+      return "Novice High (A2)";
     },
     get$languageLevelB1() {
-      return "\u039c\u03b5\u03c3\u03b1\u03af\u03bf\u03c2 \u039c\u03ad\u03c4\u03c1\u03b9\u03bf\u03c2 (B1)";
+      return "Intermediate Mid (B1)";
     },
     get$languageLevelB2() {
-      return "\u03a0\u03c1\u03bf\u03c7\u03c9\u03c1\u03b7\u03bc\u03ad\u03bd\u03bf\u03c2 \u03a7\u03b1\u03bc\u03b7\u03bb\u03bf\u03cd \u0395\u03c0\u03b9\u03c0\u03ad\u03b4\u03bf\u03c5 (B2)";
+      return "Advanced Low (B2)";
     },
     get$languageLevelC1() {
-      return "\u03a0\u03c1\u03bf\u03c7\u03c9\u03c1\u03b7\u03bc\u03ad\u03bd\u03bf\u03c2 \u039c\u03ad\u03c4\u03c1\u03b9\u03bf\u03c2 (C1)";
+      return "Advanced Mid (C1)";
     },
     get$languageLevelC2() {
-      return "\u0391\u03bd\u03ce\u03c4\u03b5\u03c1\u03bf\u03c2 (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03bf\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Change the name";
     },
     get$changeTheNameOfTheChat() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03bf\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Change the name of the chat";
     },
     get$sorryNoResults() {
-      return "\u039b\u03c5\u03c0\u03bf\u03cd\u03bc\u03b1\u03c3\u03c4\u03b5, \u03b4\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03ad\u03c3\u03bc\u03b1\u03c4\u03b1.";
+      return "Sorry, no results.";
     },
     get$ignoreInThisText() {
-      return "\u0391\u03b3\u03bd\u03cc\u03b7\u03c3\u03b7";
+      return "Ignore";
     },
     needsItMessage$1(targetLanguage) {
-      return "\u03a0\u03b5\u03c1\u03af\u03bc\u03b5\u03bd\u03b5, \u03b1\u03c5\u03c4\u03cc \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 " + targetLanguage + "! \u03a7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c3\u03c4\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5 \u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7;";
+      return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
     },
     get$countryInformation() {
-      return "\u0397 \u03c7\u03ce\u03c1\u03b1 \u03bc\u03bf\u03c5";
+      return "My country";
     },
     get$targetLanguage() {
-      return "\u0393\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c2";
+      return "Target Language";
     },
     get$updateLanguage() {
-      return "\u039f\u03b9 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2 \u03bc\u03bf\u03c5";
+      return "My languages";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03ac\u03b8\u03b5\u03c4\u03b5;";
+      return "What language do you want to learn?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b7 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1;";
+      return "What is your base language?";
     },
     get$publicProfileTitle() {
-      return "\u039d\u03b1 \u03b5\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03b7 \u03b5\u03cd\u03c1\u03b5\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03c0\u03c1\u03bf\u03c6\u03af\u03bb \u03bc\u03bf\u03c5 \u03c3\u03c4\u03b7\u03bd \u03b1\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Allow my profile to be found in search";
     },
     get$publicProfileDesc() {
-      return "\u039c\u03b5 \u03c4\u03b7\u03bd \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7, \u03b5\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03ac\u03bb\u03bb\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03bd\u03b1 \u03b2\u03c1\u03bf\u03c5\u03bd \u03c4\u03bf \u03c0\u03c1\u03bf\u03c6\u03af\u03bb \u03c3\u03b1\u03c2 \u03c3\u03c4\u03b7 \u03b4\u03b9\u03b5\u03b8\u03bd\u03ae \u03b3\u03c1\u03b1\u03bc\u03bc\u03ae \u03b1\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7\u03c2 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03c3\u03c4\u03b5\u03af\u03bb\u03bf\u03c5\u03bd \u03b1\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2. \u03a3\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03c3\u03b7\u03bc\u03b5\u03af\u03bf, \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03b4\u03b5\u03c7\u03c4\u03b5\u03af\u03c4\u03b5 \u03ae \u03bd\u03b1 \u03b1\u03c1\u03bd\u03b7\u03b8\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03b1.";
+      return "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.";
     },
     get$errorDisableIT() {
-      return "\u0397 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7.";
+      return "Translation assistance is turned off.";
     },
     get$errorDisableIGC() {
-      return "\u0397 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7.";
+      return "Grammar assistance is turned off.";
     },
     get$errorDisableITUserDesc() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b5\u03b4\u03ce \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1\u03c2 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2";
+      return "Click here to update translation assistance settings";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b5\u03b4\u03ce \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Click here to update grammar assistance settings";
     },
     get$errorDisableITClassDesc() {
-      return "\u0397 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7 \u03b3\u03b9\u03b1 \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03c3\u03c4\u03bf \u03bf\u03c0\u03bf\u03af\u03bf \u03b2\u03c1\u03af\u03c3\u03ba\u03b5\u03c4\u03b1\u03b9 \u03b1\u03c5\u03c4\u03ae \u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "Translation assistance is turned off for the course that this chat is in.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u0397 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7 \u03b3\u03b9\u03b1 \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03c3\u03c4\u03bf \u03bf\u03c0\u03bf\u03af\u03bf \u03b2\u03c1\u03af\u03c3\u03ba\u03b5\u03c4\u03b1\u03b9 \u03b1\u03c5\u03c4\u03ae \u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "Grammar assistance is turned off for the course that this chat is in.";
     },
     get$error405Title() {
-      return "\u039f\u03b9 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2 \u03b4\u03b5\u03bd \u03ad\u03c7\u03bf\u03c5\u03bd \u03bf\u03c1\u03b9\u03c3\u03c4\u03b5\u03af";
+      return "Languages not set";
     },
     get$error405Desc() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2 \u03c3\u03b1\u03c2 \u03c3\u03c4\u03bf \u039c\u03b5\u03bd\u03bf\u03cd > \u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u039c\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2.";
+      return "Please set your languages in Main Menu > Learning Settings.";
     },
     get$termsAndConditions() {
-      return "\u038c\u03c1\u03bf\u03c5\u03c2 \u03ba\u03b1\u03b9 \u03a0\u03c1\u03bf\u03cb\u03c0\u03bf\u03b8\u03ad\u03c3\u03b5\u03b9\u03c2";
+      return "Terms and Conditions";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u03ba\u03b1\u03b9 \u03c0\u03b9\u03c3\u03c4\u03bf\u03c0\u03bf\u03b9\u03ce \u03cc\u03c4\u03b9 \u03b5\u03af\u03bc\u03b1\u03b9 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd 16 \u03b5\u03c4\u03ce\u03bd.";
+      return " and certify I am at least 16 years of age.";
     },
     get$error502504Title() {
-      return "\u03a9, \u03c5\u03c0\u03ac\u03c1\u03c7\u03bf\u03c5\u03bd \u03c0\u03bf\u03bb\u03bb\u03bf\u03af \u03bc\u03b1\u03b8\u03b7\u03c4\u03ad\u03c2 online!";
+      return "Wow, there are a lot of students online!";
     },
     get$error502504Desc() {
-      return "\u03a4\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2 \u03ba\u03b1\u03b9 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2 \u03b5\u03bd\u03b4\u03ad\u03c7\u03b5\u03c4\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c1\u03b3\u03ac \u03ae \u03bc\u03b7 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b1 \u03b5\u03bd\u03ce \u03bf\u03b9 bots \u03c4\u03b7\u03c2 Pangea \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03bd\u03bf\u03bd\u03c4\u03b1\u03b9.";
+      return "Translation and grammar tools may be slow or unavailable while the Pangea bots catch up.";
     },
     get$error404Title() {
-      return "\u03a3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2!";
+      return "Translation error!";
     },
     get$error404Desc() {
-      return "\u039f Pangea Bot \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03c2 \u03c0\u03ce\u03c2 \u03bd\u03b1 \u03bc\u03b5\u03c4\u03b1\u03c6\u03c1\u03ac\u03c3\u03b5\u03b9 \u03b1\u03c5\u03c4\u03cc...";
+      return "Pangea Bot isn't sure how to translate that...";
     },
     get$errorPleaseRefresh() {
-      return "\u03a4\u03bf \u03b5\u03c1\u03b5\u03c5\u03bd\u03bf\u03cd\u03bc\u03b5! \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b1\u03bd\u03b1\u03bd\u03b5\u03ce\u03c3\u03c4\u03b5 \u03ba\u03b1\u03b9 \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "We're looking into it! Please reload and try again.";
     },
     get$connectedToStaging() {
-      return "\u03a3\u03c5\u03bd\u03b4\u03b5\u03b4\u03b5\u03bc\u03ad\u03bd\u03bf \u03bc\u03b5 \u03c4\u03bf Staging";
+      return "Connected to Staging";
     },
     get$learningSettings() {
-      return "\u03a1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u039c\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2";
+      return "Learning settings";
     },
     get$participants() {
-      return "\u03a3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2";
+      return "Participants";
     },
     get$clickMessageTitle() {
-      return "\u03a7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c3\u03c4\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1;";
+      return "Need help?";
     },
     get$clickMessageBody() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b3\u03b9\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2 \u03cc\u03c0\u03c9\u03c2 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7, \u03b1\u03bd\u03b1\u03c0\u03b1\u03c1\u03b1\u03b3\u03c9\u03b3\u03ae \u03ba\u03b1\u03b9 \u03ac\u03bb\u03bb\u03b1!";
+      return "Click a message for language tools like translation, play back and more!";
     },
     get$allDone() {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5!";
+      return "All done!";
     },
     get$vocab() {
-      return "\u039b\u03b5\u03be\u03b9\u03bb\u03cc\u03b3\u03b9\u03bf";
+      return "Vocab";
     },
     get$subscribe(_) {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Subscribe";
     },
     get$getAccess() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5 \u03c4\u03ce\u03c1\u03b1!";
+      return "Subscribe now!";
     },
     get$subscriptionDesc() {
-      return "\u039f\u03b9 \u03bc\u03b7\u03bd\u03cd\u03c3\u03b5\u03b9\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03c9\u03c1\u03b5\u03ac\u03bd! \u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03b4\u03b9\u03b1\u03b4\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7, \u03ad\u03bb\u03b5\u03b3\u03c7\u03bf \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2 \u03ba\u03b1\u03b9 \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03b1 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2.";
+      return "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.";
     },
     get$subscriptionManagement() {
-      return "\u0394\u03b9\u03b1\u03c7\u03b5\u03af\u03c1\u03b9\u03c3\u03b7 \u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2";
+      return "Subscription Management";
     },
     get$currentSubscription() {
-      return "\u03a4\u03c1\u03ad\u03c7\u03bf\u03c5\u03c3\u03b1 \u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae";
+      return "Current Subscription";
     },
     get$cancelSubscription() {
-      return "\u0391\u03ba\u03c5\u03c1\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c3\u03b1\u03c2";
+      return "Cancel your subscription";
     },
     get$selectYourPlan() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c4\u03bf \u03c0\u03bb\u03ac\u03bd\u03bf \u03c3\u03b1\u03c2";
+      return "Select Your Plan";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03b7 \u03b1\u03c1\u03c7\u03b9\u03ba\u03ae \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf \u03c0\u03bb\u03ac\u03bd\u03bf \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2 \u03c3\u03b1\u03c2";
+      return "Please login to your original device to manage your subscription plan";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u0397 \u03b4\u03b9\u03b1\u03c7\u03b5\u03af\u03c1\u03b9\u03c3\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2 \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b7";
+      return "Subscription management not available";
     },
     get$paymentMethod() {
-      return "\u039c\u03ad\u03b8\u03bf\u03b4\u03bf\u03c2 \u03a0\u03bb\u03b7\u03c1\u03c9\u03bc\u03ae\u03c2";
+      return "Payment Method";
     },
     get$paymentHistory() {
-      return "\u0399\u03c3\u03c4\u03bf\u03c1\u03b9\u03ba\u03cc \u03a0\u03bb\u03b7\u03c1\u03c9\u03bc\u03ce\u03bd";
+      return "Payment History";
     },
     get$emptyChatDownloadWarning() {
-      return "\u0394\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03c5\u03bd\u03b1\u03c4\u03ae \u03b7 \u03bb\u03ae\u03c8\u03b7 \u03ba\u03b5\u03bd\u03ae\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Cannot download empty chat";
     },
     get$toggleImmersionMode() {
-      return "\u039b\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u0395\u03bc\u03b2\u03ac\u03c0\u03c4\u03b9\u03c3\u03b7\u03c2";
+      return "Immersion Mode";
     },
     get$toggleImmersionModeDesc() {
-      return "\u038c\u03c4\u03b1\u03bd \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b5\u03af\u03c4\u03b1\u03b9, \u03cc\u03bb\u03b1 \u03c4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03af\u03b6\u03bf\u03bd\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf \u03c3\u03b1\u03c2. \u0391\u03c5\u03c4\u03ae \u03b7 \u03c1\u03cd\u03b8\u03bc\u03b9\u03c3\u03b7 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03b9\u03bf \u03c7\u03c1\u03ae\u03c3\u03b9\u03bc\u03b7 \u03c3\u03b5 \u03b1\u03bd\u03c4\u03b1\u03bb\u03bb\u03b1\u03b3\u03ad\u03c2 \u03b3\u03bb\u03c9\u03c3\u03c3\u03ce\u03bd.";
+      return "When enabled, all messages are displayed in your target language. This setting is most useful in language exchanges.";
     },
     get$itToggleDescription() {
-      return "\u0391\u03c5\u03c4\u03cc \u03c4\u03bf \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03bf \u03b5\u03ba\u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2 \u03b3\u03bb\u03c9\u03c3\u03c3\u03ce\u03bd \u03b8\u03b1 \u03b5\u03bd\u03c4\u03bf\u03c0\u03af\u03b6\u03b5\u03b9 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03c3\u03c4\u03b7 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03ba\u03b1\u03b9 \u03b8\u03b1 \u03c3\u03b1\u03c2 \u03b2\u03bf\u03b7\u03b8\u03ac \u03bd\u03b1 \u03c4\u03b9\u03c2 \u03bc\u03b5\u03c4\u03b1\u03c6\u03c1\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf. \u0391\u03bd \u03ba\u03b1\u03b9 \u03c3\u03c0\u03ac\u03bd\u03b9\u03bf, \u03c4\u03bf AI \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03ba\u03ac\u03bd\u03b5\u03b9 \u03bb\u03ac\u03b8\u03b7 \u03c3\u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7.";
+      return "This language learning tool will identify words in your base language and help you translate them to your target language. Though rare, the AI can make translation errors.";
     },
     get$igcToggleDescription() {
-      return "\u0391\u03c5\u03c4\u03cc \u03c4\u03bf \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03bf \u03b5\u03ba\u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2 \u03b3\u03bb\u03c9\u03c3\u03c3\u03ce\u03bd \u03b8\u03b1 \u03b5\u03bd\u03c4\u03bf\u03c0\u03af\u03b6\u03b5\u03b9 \u03ba\u03bf\u03b9\u03bd\u03ac \u03bf\u03c1\u03b8\u03bf\u03b3\u03c1\u03b1\u03c6\u03b9\u03ba\u03ac, \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ac \u03ba\u03b1\u03b9 \u03c3\u03b7\u03bc\u03b5\u03af\u03b1 \u03c3\u03c4\u03af\u03be\u03b7\u03c2 \u03bb\u03ac\u03b8\u03b7 \u03c3\u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03ac \u03c3\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03b8\u03b1 \u03c0\u03c1\u03bf\u03c4\u03b5\u03af\u03bd\u03b5\u03b9 \u03b4\u03b9\u03bf\u03c1\u03b8\u03ce\u03c3\u03b5\u03b9\u03c2. \u0391\u03bd \u03ba\u03b1\u03b9 \u03c3\u03c0\u03ac\u03bd\u03b9\u03bf, \u03c4\u03bf AI \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03ba\u03ac\u03bd\u03b5\u03b9 \u03bb\u03ac\u03b8\u03b7 \u03c3\u03c4\u03b9\u03c2 \u03b4\u03b9\u03bf\u03c1\u03b8\u03ce\u03c3\u03b5\u03b9\u03c2.";
+      return "This language learning tool will identify common spelling, grammar and punctuation errors in your message and suggest corrections. Though rare, the AI can make correction errors.";
     },
     get$originalMessage() {
-      return "\u0391\u03c1\u03c7\u03b9\u03ba\u03cc \u039c\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Original Message";
     },
     get$sentMessage() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03b1\u03bb\u03bc\u03ad\u03bd\u03bf \u039c\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Sent Message";
     },
     get$useType() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03a4\u03cd\u03c0\u03bf";
+      return "Use Type";
     },
     get$notAvailable() {
-      return "\u0394\u03b5\u03bd \u0394\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b7";
+      return "Not Available";
     },
     get$taAndGaTooltip() {
-      return "\u03a7\u03c1\u03ae\u03c3\u03b7 L2 \u03bc\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2 \u03ba\u03b1\u03b9 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "L2 use with translation assistance and grammar assistance";
     },
     get$definitionsToolName() {
-      return "\u039f\u03c1\u03b9\u03c3\u03bc\u03bf\u03af \u039b\u03ad\u03be\u03b5\u03c9\u03bd";
+      return "Word Definitions";
     },
     get$definitionsToolDescription() {
-      return "\u038c\u03c4\u03b1\u03bd \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b5\u03af\u03c4\u03b1\u03b9, \u03bf\u03b9 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03bc\u03b5 \u03c5\u03c0\u03bf\u03b3\u03c1\u03ac\u03bc\u03bc\u03b9\u03c3\u03b7 \u03bc\u03c0\u03bb\u03b5 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03c0\u03b1\u03c4\u03b7\u03b8\u03bf\u03cd\u03bd \u03b3\u03b9\u03b1 \u03bf\u03c1\u03b9\u03c3\u03bc\u03bf\u03cd\u03c2. \u03a0\u03b1\u03c4\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03bf\u03c1\u03b9\u03c3\u03bc\u03bf\u03cd\u03c2.";
+      return "When enabled, words underlined in blue can be clicked for definitions. Click messages to access definitions.";
     },
     get$welcomeBack() {
-      return "\u039a\u03b1\u03bb\u03ce\u03c2 \u03ae\u03c1\u03b8\u03b1\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac! \u0391\u03bd \u03ae\u03c3\u03b1\u03c3\u03c4\u03b1\u03bd \u03bc\u03ad\u03c1\u03bf\u03c2 \u03c4\u03bf\u03c5 \u03c0\u03b9\u03bb\u03bf\u03c4\u03b9\u03ba\u03bf\u03cd \u03c0\u03c1\u03bf\u03b3\u03c1\u03ac\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2 2023-2024, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b5\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b1\u03b6\u03af \u03bc\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b7 \u03b5\u03b9\u03b4\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c0\u03b9\u03bb\u03bf\u03c4\u03b9\u03ba\u03bf\u03cd \u03c0\u03c1\u03bf\u03b3\u03c1\u03ac\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2. \u0391\u03bd \u03b5\u03af\u03c3\u03c4\u03b5 \u03b5\u03ba\u03c0\u03b1\u03b9\u03b4\u03b5\u03c5\u03c4\u03b9\u03ba\u03cc\u03c2 \u03c0\u03bf\u03c5 \u03ad\u03c7\u03b5\u03b9 \u03b1\u03b3\u03bf\u03c1\u03ac\u03c3\u03b5\u03b9 (\u03ae \u03b7 \u03b5\u03ba\u03c0\u03b1\u03b9\u03b4\u03b5\u03c5\u03c4\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03b9\u03b4\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03ad\u03c7\u03b5\u03b9 \u03b1\u03b3\u03bf\u03c1\u03ac\u03c3\u03b5\u03b9) \u03ac\u03b4\u03b5\u03b9\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b7\u03bd \u03c4\u03ac\u03be\u03b7 \u03c3\u03b1\u03c2, \u03b5\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b1\u03b6\u03af \u03bc\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03b5\u03ba\u03c0\u03b1\u03b9\u03b4\u03b5\u03c5\u03c4\u03b9\u03ba\u03bf\u03cd.";
+      return "Welcome back! If you were part of the 2023-2024 pilot, please contact us for your special pilot subscription. If you are a teacher who has (or whose institution has) purchased licenses for your class, contact us for your teacher subscription.";
     },
     get$downloadTxtFile() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5 \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5";
+      return "Download Text File";
     },
     get$downloadCSVFile() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5 CSV";
+      return "Download CSV File";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b5\u03c0\u03af \u03c4\u03bf\u03c5 \u03c0\u03b1\u03c1\u03cc\u03bd\u03c4\u03bf\u03c2 \u03bc\u03b9\u03b1 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c0\u03c1\u03bf\u03ce\u03b8\u03b7\u03c3\u03b7\u03c2 \u03b4\u03b9\u03ac\u03c1\u03ba\u03b5\u03b9\u03b1\u03c2 \u03b6\u03c9\u03ae\u03c2. \u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03c4\u03bf support@pangea.chat \u03b3\u03b9\u03b1 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03c3\u03c4\u03b7\u03bd \u03b1\u03bb\u03bb\u03b1\u03b3\u03ae \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2 \u03c3\u03b1\u03c2.";
+      return "You currently have a lifetime promotional subscription. Message support@pangea.chat for help changing your subscription.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03b1\u03b3\u03bf\u03c1\u03ac\u03c3\u03c4\u03b7\u03ba\u03b5 \u03bc\u03ad\u03c3\u03c9 " + purchasePlatform;
+      return "Subscription purchased through " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\u0394\u03bf\u03ba\u03b9\u03bc\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae \u03c0\u03b5\u03c1\u03af\u03bf\u03b4\u03bf\u03c2 \u03bc\u03b9\u03b1\u03c2 \u03b5\u03b2\u03b4\u03bf\u03bc\u03ac\u03b4\u03b1\u03c2";
+      return "One Week Trial";
     },
     get$downloadXLSXFile() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5 Excel";
+      return "Download Excel File";
     },
     get$unkDisplayName() {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf";
+      return "Unknown";
     },
     get$wwCountryDisplayName() {
-      return "\u03a0\u03b1\u03b3\u03ba\u03cc\u03c3\u03bc\u03b9\u03bf\u03c2";
+      return "World Wide";
     },
     get$afCountryDisplayName() {
-      return "\u0391\u03c6\u03b3\u03b1\u03bd\u03b9\u03c3\u03c4\u03ac\u03bd";
+      return "Afghanistan";
     },
     get$axCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u0391\u03bb\u03ac\u03bd\u03c4\u03b5\u03c2";
+      return "Aland Islands";
     },
     get$alCountryDisplayName() {
-      return "\u0391\u03bb\u03b2\u03b1\u03bd\u03af\u03b1";
+      return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "\u0391\u03bb\u03b3\u03b5\u03c1\u03af\u03b1";
+      return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "\u0391\u03bc\u03b5\u03c1\u03b9\u03ba\u03b1\u03bd\u03b9\u03ba\u03ae \u03a3\u03b1\u03bc\u03cc\u03b1";
+      return "American Samoa";
     },
     get$adCountryDisplayName() {
-      return "\u0391\u03bd\u03b4\u03cc\u03c1\u03b1";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u0391\u03b3\u03ba\u03cc\u03bb\u03b1";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u0391\u03bd\u03b3\u03ba\u03bf\u03c5\u03af\u03bb\u03b1";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u0391\u03bd\u03c4\u03af\u03b3\u03ba\u03bf\u03c5\u03b1 \u03ba\u03b1\u03b9 \u039c\u03c0\u03b1\u03c1\u03bc\u03c0\u03bf\u03cd\u03bd\u03c4\u03b1";
+      return "Antigua and Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u0391\u03c1\u03b3\u03b5\u03bd\u03c4\u03b9\u03bd\u03ae";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "\u0391\u03c1\u03bc\u03b5\u03bd\u03af\u03b1";
+      return "Armenia";
     },
     get$awCountryDisplayName() {
-      return "\u0391\u03c1\u03bf\u03cd\u03bc\u03c0\u03b1";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03c2 \u0391\u03c3\u03ad\u03bd\u03c3\u03b9\u03bf\u03bd";
+      return "Ascension Island";
     },
     get$auCountryDisplayName() {
-      return "\u0391\u03c5\u03c3\u03c4\u03c1\u03b1\u03bb\u03af\u03b1";
+      return "Australia";
     },
     get$atCountryDisplayName() {
-      return "\u0391\u03c5\u03c3\u03c4\u03c1\u03af\u03b1";
+      return "Austria";
     },
     get$azCountryDisplayName() {
-      return "\u0391\u03b6\u03b5\u03c1\u03bc\u03c0\u03b1\u03ca\u03c4\u03b6\u03ac\u03bd";
+      return "Azerbaijan";
     },
     get$bsCountryDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c7\u03ac\u03bc\u03b5\u03c2";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c7\u03c1\u03ad\u03b9\u03bd";
+      return "Bahrain";
     },
     get$bdCountryDisplayName() {
-      return "\u039c\u03c0\u03b1\u03bd\u03b3\u03ba\u03bb\u03b1\u03bd\u03c4\u03ad\u03c2";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c1\u03bc\u03c0\u03ac\u03bd\u03c4\u03bf\u03c2";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u039b\u03b5\u03c5\u03ba\u03bf\u03c1\u03c9\u03c3\u03af\u03b1";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "\u0392\u03ad\u03bb\u03b3\u03b9\u03bf";
+      return "Belgium";
     },
     get$bzCountryDisplayName() {
-      return "\u039c\u03c0\u03b5\u03bb\u03af\u03b6";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u039c\u03c0\u03b5\u03bd\u03af\u03bd";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u0392\u03b5\u03c1\u03bc\u03bf\u03cd\u03b4\u03b5\u03c2";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c5\u03c4\u03ac\u03bd";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "\u0392\u03bf\u03bb\u03b9\u03b2\u03af\u03b1";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "\u0392\u03bf\u03c3\u03bd\u03af\u03b1 \u03ba\u03b1\u03b9 \u0395\u03c1\u03b6\u03b5\u03b3\u03bf\u03b2\u03af\u03bd\u03b7";
+      return "Bosnia and Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c4\u03c3\u03bf\u03c5\u03ac\u03bd\u03b1";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "\u0392\u03c1\u03b1\u03b6\u03b9\u03bb\u03af\u03b1";
+      return "Brazil";
     },
     get$ioCountryDisplayName() {
-      return "\u0392\u03c1\u03b5\u03c4\u03b1\u03bd\u03b9\u03ba\u03cc \u0395\u03b4\u03b1\u03c6\u03b9\u03ba\u03cc \u03a4\u03cc\u03be\u03bf \u0399\u03bd\u03b4\u03b9\u03ba\u03bf\u03cd \u03a9\u03ba\u03b5\u03b1\u03bd\u03bf\u03cd";
+      return "British Indian Ocean Territory";
     },
     get$vgCountryDisplayName() {
-      return "\u0392\u03c1\u03b5\u03c4\u03b1\u03bd\u03b9\u03ba\u03ad\u03c2 \u03a0\u03b1\u03c1\u03b8\u03ad\u03bd\u03bf\u03b9 \u039d\u03ae\u03c3\u03bf\u03b9";
+      return "British Virgin Islands";
     },
     get$bnCountryDisplayName() {
-      return "\u039c\u03c0\u03c1\u03bf\u03c5\u03bd\u03ad\u03b9";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "\u0392\u03bf\u03c5\u03bb\u03b3\u03b1\u03c1\u03af\u03b1";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c5\u03c1\u03ba\u03af\u03bd\u03b1 \u03a6\u03ac\u03c3\u03bf";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c5\u03c1\u03bf\u03cd\u03bd\u03c4\u03b9";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u039a\u03b1\u03bc\u03c0\u03cc\u03c4\u03b6\u03b7";
+      return "Cambodia";
     },
     get$cmCountryDisplayName() {
-      return "\u039a\u03b1\u03bc\u03b5\u03c1\u03bf\u03cd\u03bd";
+      return "Cameroon";
     },
     get$caCountryDisplayName() {
-      return "\u039a\u03b1\u03bd\u03b1\u03b4\u03ac\u03c2";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "\u03a0\u03c1\u03ac\u03c3\u03b9\u03bd\u03bf \u0391\u03ba\u03c1\u03c9\u03c4\u03ae\u03c1\u03b9";
+      return "Cape Verde";
     },
     get$bqCountryDisplayName() {
-      return "\u039a\u03b1\u03c1\u03b1\u03ca\u03b2\u03b9\u03ba\u03ae \u039f\u03bb\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Caribbean Netherlands";
     },
     get$kyCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u039a\u03ad\u03b9\u03bc\u03b1\u03bd";
+      return "Cayman Islands";
     },
     get$cfCountryDisplayName() {
-      return "\u039a\u03b5\u03bd\u03c4\u03c1\u03bf\u03b1\u03c6\u03c1\u03b9\u03ba\u03b1\u03bd\u03b9\u03ba\u03ae \u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1";
+      return "Central African Republic";
     },
     get$tdCountryDisplayName() {
-      return "\u03a4\u03c3\u03b1\u03bd\u03c4";
+      return "Chad";
     },
     get$clCountryDisplayName() {
-      return "\u03a7\u03b9\u03bb\u03ae";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "\u039a\u03af\u03bd\u03b1";
+      return "China";
     },
     get$cxCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03c2 \u03a7\u03c1\u03b9\u03c3\u03c4\u03bf\u03c5\u03b3\u03ad\u03bd\u03bd\u03c9\u03bd";
+      return "Christmas Island";
     },
     get$ccCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u039a\u03cc\u03ba\u03bf\u03c2 [\u039a\u03af\u03bb\u03b9\u03b3\u03ba]";
+      return "Cocos [Keeling] Islands";
     },
     get$coCountryDisplayName() {
-      return "\u039a\u03bf\u03bb\u03bf\u03bc\u03b2\u03af\u03b1";
+      return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "\u039a\u03bf\u03bc\u03cc\u03c1\u03b5\u03c2";
+      return "Comoros";
     },
     get$cdCountryDisplayName() {
-      return "\u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1 \u03c4\u03bf\u03c5 \u039a\u03bf\u03bd\u03b3\u03ba\u03cc";
+      return "Democratic Republic Congo";
     },
     get$cgCountryDisplayName() {
-      return "\u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1 \u03c4\u03bf\u03c5 \u039a\u03bf\u03bd\u03b3\u03ba\u03cc";
+      return "Republic of Congo";
     },
     get$ckCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u039a\u03bf\u03c5\u03ba";
+      return "Cook Islands";
     },
     get$crCountryDisplayName() {
-      return "\u039a\u03cc\u03c3\u03c4\u03b1 \u03a1\u03af\u03ba\u03b1";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "\u0391\u03ba\u03c4\u03ae \u0395\u03bb\u03b5\u03c6\u03b1\u03bd\u03c4\u03bf\u03c3\u03c4\u03bf\u03cd";
+      return "C\xf4te d'Ivoire";
     },
     get$hrCountryDisplayName() {
-      return "\u039a\u03c1\u03bf\u03b1\u03c4\u03af\u03b1";
+      return "Croatia";
     },
     get$cuCountryDisplayName() {
-      return "\u039a\u03bf\u03cd\u03b2\u03b1";
+      return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "\u039a\u03bf\u03c5\u03c1\u03b1\u03c3\u03ac\u03bf";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u039a\u03cd\u03c0\u03c1\u03bf\u03c2";
+      return "Cyprus";
     },
     get$czCountryDisplayName() {
-      return "\u03a4\u03c3\u03b5\u03c7\u03b9\u03ba\u03ae \u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1";
+      return "Czech Republic";
     },
     get$dkCountryDisplayName() {
-      return "\u0394\u03b1\u03bd\u03af\u03b1";
+      return "Denmark";
     },
     get$djCountryDisplayName() {
-      return "\u03a4\u03b6\u03b9\u03bc\u03c0\u03bf\u03c5\u03c4\u03af";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "\u0394\u03bf\u03bc\u03b9\u03bd\u03af\u03ba\u03b1";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "\u0394\u03bf\u03bc\u03b9\u03bd\u03b9\u03ba\u03b1\u03bd\u03ae \u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1";
+      return "Dominican Republic";
     },
     get$tlCountryDisplayName() {
-      return "\u0391\u03bd\u03b1\u03c4\u03bf\u03bb\u03b9\u03ba\u03cc \u03a4\u03b9\u03bc\u03cc\u03c1";
+      return "East Timor";
     },
     get$ecCountryDisplayName() {
-      return "\u0399\u03c3\u03b7\u03bc\u03b5\u03c1\u03b9\u03bd\u03cc\u03c2";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "\u0391\u03af\u03b3\u03c5\u03c0\u03c4\u03bf\u03c2";
+      return "Egypt";
     },
     get$svCountryDisplayName() {
-      return "\u0395\u03bb \u03a3\u03b1\u03bb\u03b2\u03b1\u03b4\u03cc\u03c1";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u0399\u03c3\u03b7\u03bc\u03b5\u03c1\u03b9\u03bd\u03ae \u0393\u03bf\u03c5\u03b9\u03bd\u03ad\u03b1";
+      return "Equatorial Guinea";
     },
     get$erCountryDisplayName() {
-      return "\u0395\u03c1\u03c5\u03b8\u03c1\u03b1\u03af\u03b1";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "\u0395\u03c3\u03b8\u03bf\u03bd\u03af\u03b1";
+      return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b1\u03b6\u03b9\u03bb\u03ac\u03bd\u03b4\u03b7";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "\u0391\u03b9\u03b8\u03b9\u03bf\u03c0\u03af\u03b1";
+      return "Ethiopia";
     },
     get$fkCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u03a6\u03cc\u03ba\u03bb\u03b1\u03bd\u03c4";
+      return "Falkland Islands";
     },
     get$foCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u03a6\u03b5\u03c1\u03cc\u03b5\u03c2";
+      return "Faroe Islands";
     },
     get$fjCountryDisplayName() {
-      return "\u03a6\u03af\u03c4\u03b6\u03b9";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u03a6\u03b9\u03bd\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Finland";
     },
     get$frCountryDisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03af\u03b1";
+      return "France";
     },
     get$gfCountryDisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ae \u0393\u03bf\u03c5\u03b9\u03ac\u03bd\u03b1";
+      return "French Guiana";
     },
     get$pfCountryDisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ae \u03a0\u03bf\u03bb\u03c5\u03bd\u03b7\u03c3\u03af\u03b1";
+      return "French Polynesia";
     },
     get$gaCountryDisplayName() {
-      return "\u0393\u03ba\u03b1\u03bc\u03c0\u03cc\u03bd";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u0393\u03ba\u03ac\u03bc\u03c0\u03b9\u03b1";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "\u0393\u03b5\u03c9\u03c1\u03b3\u03af\u03b1";
+      return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "\u0393\u03b5\u03c1\u03bc\u03b1\u03bd\u03af\u03b1";
+      return "Germany";
     },
     get$ghCountryDisplayName() {
-      return "\u0393\u03ba\u03ac\u03bd\u03b1";
+      return "Ghana";
     },
     get$giCountryDisplayName() {
-      return "\u0393\u03b9\u03b2\u03c1\u03b1\u03bb\u03c4\u03ac\u03c1";
+      return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "\u0395\u03bb\u03bb\u03ac\u03b4\u03b1";
+      return "Greece";
     },
     get$glCountryDisplayName() {
-      return "\u0393\u03c1\u03bf\u03b9\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Greenland";
     },
     get$gdCountryDisplayName() {
-      return "\u0393\u03c1\u03b5\u03bd\u03ac\u03b4\u03b1";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u0393\u03bf\u03c5\u03b1\u03b4\u03b5\u03bb\u03bf\u03cd\u03c0\u03b7";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
-      return "\u0393\u03ba\u03bf\u03c5\u03ac\u03bc";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u0393\u03bf\u03c5\u03b1\u03c4\u03b5\u03bc\u03ac\u03bb\u03b1";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u0393\u03ba\u03ad\u03c1\u03bd\u03c3\u03b5\u03ca";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u0393\u03bf\u03c5\u03b9\u03bd\u03ad\u03b1 \u039a\u03bf\u03bd\u03ac\u03ba\u03c1\u03b9";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "\u0393\u03bf\u03c5\u03b9\u03bd\u03ad\u03b1-\u039c\u03c0\u03b9\u03c3\u03ac\u03bf\u03c5";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u0393\u03bf\u03c5\u03b9\u03ac\u03bd\u03b1";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "\u0391\u03ca\u03c4\u03ae";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u039d\u03b7\u03c3\u03af Heard \u03ba\u03b1\u03b9 \u039d\u03b7\u03c3\u03b9\u03ac McDonald";
+      return "Heard Island and McDonald Islands";
     },
     get$hnCountryDisplayName() {
-      return "\u039f\u03bd\u03b4\u03bf\u03cd\u03c1\u03b1";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u03a7\u03bf\u03bd\u03b3\u03ba \u039a\u03bf\u03bd\u03b3\u03ba";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u039f\u03c5\u03b3\u03b3\u03b1\u03c1\u03af\u03b1";
+      return "Hungary";
     },
     get$isCountryDisplayName() {
-      return "\u0399\u03c3\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Iceland";
     },
     get$inCountryDisplayName() {
-      return "\u0399\u03bd\u03b4\u03af\u03b1";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "\u0399\u03bd\u03b4\u03bf\u03bd\u03b7\u03c3\u03af\u03b1";
+      return "Indonesia";
     },
     get$irCountryDisplayName() {
-      return "\u0399\u03c1\u03ac\u03bd";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "\u0399\u03c1\u03ac\u03ba";
+      return "Iraq";
     },
     get$ieCountryDisplayName() {
-      return "\u0399\u03c1\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Ireland";
     },
     get$imCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03c2 \u03c4\u03bf\u03c5 \u039c\u03b1\u03bd";
+      return "Isle of Man";
     },
     get$ilCountryDisplayName() {
-      return "\u0399\u03c3\u03c1\u03b1\u03ae\u03bb";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "\u0399\u03c4\u03b1\u03bb\u03af\u03b1";
+      return "Italy";
     },
     get$jmCountryDisplayName() {
-      return "\u03a4\u03b6\u03b1\u03bc\u03ac\u03b9\u03ba\u03b1";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "\u0399\u03b1\u03c0\u03c9\u03bd\u03af\u03b1";
+      return "Japan";
     },
     get$jeCountryDisplayName() {
-      return "\u03a4\u03b6\u03ad\u03c1\u03c3\u03b5\u03ca";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u0399\u03bf\u03c1\u03b4\u03b1\u03bd\u03af\u03b1";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "\u039a\u03b1\u03b6\u03b1\u03ba\u03c3\u03c4\u03ac\u03bd";
+      return "Kazakhstan";
     },
     get$keCountryDisplayName() {
-      return "\u039a\u03ad\u03bd\u03c5\u03b1";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
-      return "\u039a\u03b9\u03c1\u03b9\u03bc\u03c0\u03ac\u03c4\u03b9";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u039a\u03bf\u03c3\u03c3\u03c5\u03c6\u03bf\u03c0\u03ad\u03b4\u03b9\u03bf";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u039a\u03bf\u03c5\u03b2\u03ad\u03b9\u03c4";
+      return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "\u039a\u03b9\u03c1\u03b3\u03b9\u03b6\u03af\u03b1";
+      return "Kyrgyzstan";
     },
     get$laCountryDisplayName() {
-      return "\u039b\u03ac\u03bf\u03c2";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u039b\u03b5\u03c4\u03bf\u03bd\u03af\u03b1";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "\u039b\u03af\u03b2\u03b1\u03bd\u03bf\u03c2";
+      return "Lebanon";
     },
     get$lsCountryDisplayName() {
-      return "\u039b\u03b5\u03c3\u03cc\u03b8\u03bf";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "\u039b\u03b9\u03b2\u03b5\u03c1\u03af\u03b1";
+      return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "\u039b\u03b9\u03b2\u03cd\u03b7";
+      return "Libya";
     },
     get$liCountryDisplayName() {
-      return "\u039b\u03b9\u03c7\u03c4\u03b5\u03bd\u03c3\u03c4\u03ac\u03b9\u03bd";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "\u039b\u03b9\u03b8\u03bf\u03c5\u03b1\u03bd\u03af\u03b1";
+      return "Lithuania";
     },
     get$luCountryDisplayName() {
-      return "\u039b\u03bf\u03c5\u03be\u03b5\u03bc\u03b2\u03bf\u03cd\u03c1\u03b3\u03bf";
+      return "Luxembourg";
     },
     get$moCountryDisplayName() {
-      return "\u039c\u03b1\u03ba\u03ac\u03bf\u03c5";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "\u0392\u03cc\u03c1\u03b5\u03b9\u03b1 \u039c\u03b1\u03ba\u03b5\u03b4\u03bf\u03bd\u03af\u03b1";
+      return "Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "\u039c\u03b1\u03b4\u03b1\u03b3\u03b1\u03c3\u03ba\u03ac\u03c1\u03b7";
+      return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "\u039c\u03b1\u03bb\u03ac\u03bf\u03c5\u03b9";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "\u039c\u03b1\u03bb\u03b1\u03b9\u03c3\u03af\u03b1";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "\u039c\u03b1\u03bb\u03b4\u03af\u03b2\u03b5\u03c2";
+      return "Maldives";
     },
     get$mlCountryDisplayName() {
-      return "\u039c\u03ac\u03bb\u03b9";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u039c\u03ac\u03bb\u03c4\u03b1";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u039c\u03ac\u03c1\u03c3\u03b1\u03bb";
+      return "Marshall Islands";
     },
     get$mqCountryDisplayName() {
-      return "\u039c\u03b1\u03c1\u03c4\u03b9\u03bd\u03af\u03ba\u03b1";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "\u039c\u03b1\u03c5\u03c1\u03b9\u03c4\u03b1\u03bd\u03af\u03b1";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "\u039c\u03b1\u03c5\u03c1\u03af\u03ba\u03b9\u03bf\u03c2";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
-      return "\u039c\u03b1\u03b3\u03b9\u03cc\u03c4";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u039c\u03b5\u03be\u03b9\u03ba\u03cc";
+      return "Mexico";
     },
     get$fmCountryDisplayName() {
-      return "\u039c\u03b9\u03ba\u03c1\u03bf\u03bd\u03b7\u03c3\u03af\u03b1";
+      return "Micronesia";
     },
     get$mdCountryDisplayName() {
-      return "\u039c\u03bf\u03bb\u03b4\u03b1\u03b2\u03af\u03b1";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u039c\u03bf\u03bd\u03b1\u03ba\u03cc";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "\u039c\u03bf\u03b3\u03b3\u03bf\u03bb\u03af\u03b1";
+      return "Mongolia";
     },
     get$meCountryDisplayName() {
-      return "\u039c\u03b1\u03c5\u03c1\u03bf\u03b2\u03bf\u03cd\u03bd\u03b9\u03bf";
+      return "Montenegro";
     },
     get$msCountryDisplayName() {
-      return "\u039c\u03bf\u03bd\u03c4\u03c3\u03b5\u03c1\u03c1\u03ac\u03c4";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u039c\u03b1\u03c1\u03cc\u03ba\u03bf";
+      return "Morocco";
     },
     get$mzCountryDisplayName() {
-      return "\u039c\u03bf\u03b6\u03b1\u03bc\u03b2\u03af\u03ba\u03b7";
+      return "Mozambique";
     },
     get$mmCountryDisplayName() {
-      return "\u039c\u03b9\u03b1\u03bd\u03bc\u03ac\u03c1 (\u0392\u03b9\u03c1\u03bc\u03b1\u03bd\u03af\u03b1)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "\u039d\u03b1\u03bc\u03af\u03bc\u03c0\u03b9\u03b1";
+      return "Namibia";
     },
     get$nrCountryDisplayName() {
-      return "\u039d\u03b1\u03bf\u03c5\u03c1\u03bf\u03cd";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u039d\u03b5\u03c0\u03ac\u03bb";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u039f\u03bb\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "Netherlands";
     },
     get$ncCountryDisplayName() {
-      return "\u039d\u03ad\u03b1 \u039a\u03b1\u03bb\u03b7\u03b4\u03bf\u03bd\u03af\u03b1";
+      return "New Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "\u039d\u03ad\u03b1 \u0396\u03b7\u03bb\u03b1\u03bd\u03b4\u03af\u03b1";
+      return "New Zealand";
     },
     get$niCountryDisplayName() {
-      return "\u039d\u03b9\u03ba\u03b1\u03c1\u03ac\u03b3\u03bf\u03c5\u03b1";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "\u039d\u03af\u03b3\u03b7\u03c1\u03b1\u03c2";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u039d\u03b9\u03b3\u03b7\u03c1\u03af\u03b1";
+      return "Nigeria";
     },
     get$nuCountryDisplayName() {
-      return "\u039d\u03b9\u03bf\u03c5\u03ad";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u039d\u03b7\u03c3\u03af \u039d\u03cc\u03c1\u03c6\u03bf\u03bb\u03ba";
+      return "Norfolk Island";
     },
     get$kpCountryDisplayName() {
-      return "\u0392\u03cc\u03c1\u03b5\u03b9\u03b1 \u039a\u03bf\u03c1\u03ad\u03b1";
+      return "North Korea";
     },
     get$mpCountryDisplayName() {
-      return "\u0392\u03cc\u03c1\u03b5\u03b9\u03b5\u03c2 \u039c\u03b1\u03c1\u03b9\u03ac\u03bd\u03b5\u03c2 \u039d\u03ae\u03c3\u03bf\u03b9";
+      return "Northern Mariana Islands";
     },
     get$noCountryDisplayName() {
-      return "\u039d\u03bf\u03c1\u03b2\u03b7\u03b3\u03af\u03b1";
+      return "Norway";
     },
     get$omCountryDisplayName() {
-      return "\u039f\u03bc\u03ac\u03bd";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "\u03a0\u03b1\u03ba\u03b9\u03c3\u03c4\u03ac\u03bd";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "\u03a0\u03b1\u03bb\u03ac\u03bf\u03c5";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u03a0\u03b1\u03bb\u03b1\u03b9\u03c3\u03c4\u03b9\u03bd\u03b9\u03b1\u03ba\u03ac \u0395\u03b4\u03ac\u03c6\u03b7";
+      return "Palestinian Territories";
     },
     get$paCountryDisplayName() {
-      return "\u03a0\u03b1\u03bd\u03b1\u03bc\u03ac\u03c2";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u03a0\u03b1\u03c0\u03bf\u03cd\u03b1 \u039d\u03ad\u03b1 \u0393\u03bf\u03c5\u03b9\u03bd\u03ad\u03b1";
+      return "Papua New Guinea";
     },
     get$pyCountryDisplayName() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b3\u03bf\u03c5\u03ac\u03b7";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "\u03a0\u03b5\u03c1\u03bf\u03cd";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u03a6\u03b9\u03bb\u03b9\u03c0\u03c0\u03af\u03bd\u03b5\u03c2";
+      return "Philippines";
     },
     get$plCountryDisplayName() {
-      return "\u03a0\u03bf\u03bb\u03c9\u03bd\u03af\u03b1";
+      return "Poland";
     },
     get$ptCountryDisplayName() {
-      return "\u03a0\u03bf\u03c1\u03c4\u03bf\u03b3\u03b1\u03bb\u03af\u03b1";
+      return "Portugal";
     },
     get$prCountryDisplayName() {
-      return "\u03a0\u03bf\u03c5\u03ad\u03c1\u03c4\u03bf \u03a1\u03af\u03ba\u03bf";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "\u039a\u03b1\u03c4\u03ac\u03c1";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "\u03a1\u03b5\u03cb\u03bd\u03b9\u03cc\u03bd";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "\u03a1\u03bf\u03c5\u03bc\u03b1\u03bd\u03af\u03b1";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "\u03a1\u03c9\u03c3\u03af\u03b1";
+      return "Russia";
     },
     get$rwCountryDisplayName() {
-      return "\u03a1\u03bf\u03c5\u03ac\u03bd\u03c4\u03b1";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u0392\u03b1\u03c1\u03b8\u03bf\u03bb\u03bf\u03bc\u03b1\u03af\u03bf\u03c2";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u0395\u03bb\u03ad\u03bd\u03b7";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u039a\u03b9\u03c4\u03c2 \u03ba\u03b1\u03b9 \u039d\u03ad\u03b2\u03b9\u03c2";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u039b\u03bf\u03c5\u03ba\u03ac\u03c2";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u039c\u03b1\u03c1\u03c4\u03af\u03bd\u03bf\u03c2";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u03a0\u03ad\u03c4\u03c1\u03bf\u03c2 \u03ba\u03b1\u03b9 \u039c\u03b9\u03ba\u03b5\u03bb\u03cc\u03bd";
+      return "Saint Pierre and Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u0392\u03b9\u03ba\u03ad\u03bd\u03c4\u03b9\u03bf\u03c2";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u03a3\u03b1\u03bc\u03cc\u03b1";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u0386\u03b3\u03b9\u03bf\u03c2 \u039c\u03b1\u03c1\u03af\u03bd\u03bf\u03c2";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u03a3\u03ac\u03bf \u03a4\u03cc\u03bc\u03b5 \u03ba\u03b1\u03b9 \u03a0\u03c1\u03af\u03bd\u03c3\u03b9\u03c0\u03b5";
+      return "S\xe3o Tom\xe9 and Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u03a3\u03b1\u03bf\u03c5\u03b4\u03b9\u03ba\u03ae \u0391\u03c1\u03b1\u03b2\u03af\u03b1";
+      return "Saudi Arabia";
     },
     get$snCountryDisplayName() {
-      return "\u03a3\u03b5\u03bd\u03b5\u03b3\u03ac\u03bb\u03b7";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u03a3\u03b5\u03c1\u03b2\u03af\u03b1";
+      return "Serbia";
     },
     get$scCountryDisplayName() {
-      return "\u03a3\u03b5\u03cb\u03c7\u03ad\u03bb\u03bb\u03b5\u03c2";
+      return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "\u03a3\u03b9\u03ad\u03c1\u03b1 \u039b\u03b5\u03cc\u03bd\u03b5";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u03a3\u03b9\u03b3\u03ba\u03b1\u03c0\u03bf\u03cd\u03c1\u03b7";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
-      return "\u03a3\u03af\u03bd\u03c4 \u039c\u03b1\u03c1\u03c4\u03ad\u03bd";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u03a3\u03bb\u03bf\u03b2\u03b1\u03ba\u03af\u03b1";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "\u03a3\u03bb\u03bf\u03b2\u03b5\u03bd\u03af\u03b1";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "\u039d\u03ae\u03c3\u03bf\u03b9 \u03a3\u03bf\u03bb\u03bf\u03bc\u03ce\u03bd\u03c4\u03b1";
+      return "Solomon Islands";
     },
     get$soCountryDisplayName() {
-      return "\u03a3\u03bf\u03bc\u03b1\u03bb\u03af\u03b1";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03b1 \u0391\u03c6\u03c1\u03b9\u03ba\u03ae";
+      return "South Africa";
     },
     get$gsCountryDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03b1 \u0393\u03b5\u03c9\u03c1\u03b3\u03af\u03b1 \u03ba\u03b1\u03b9 \u039d\u03cc\u03c4\u03b9\u03b5\u03c2 \u039d\u03ae\u03c3\u03bf\u03b9 \u03a3\u03ac\u03bd\u03c4\u03bf\u03c5\u03b9\u03c4\u03c2";
+      return "South Georgia and the South Sandwich Islands";
     },
     get$krCountryDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03b1 \u039a\u03bf\u03c1\u03ad\u03b1";
+      return "South Korea";
     },
     get$ssCountryDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03bf \u03a3\u03bf\u03c5\u03b4\u03ac\u03bd";
+      return "South Sudan";
     },
     get$esCountryDisplayName() {
-      return "\u0399\u03c3\u03c0\u03b1\u03bd\u03af\u03b1";
+      return "Spain";
     },
     get$lkCountryDisplayName() {
-      return "\u03a3\u03c1\u03b9 \u039b\u03ac\u03bd\u03ba\u03b1";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b4\u03ac\u03bd";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03c1\u03b9\u03bd\u03ac\u03bc";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "\u03a3\u03b2\u03ac\u03bb\u03bc\u03c0\u03b1\u03c1\u03bd\u03c4 \u03ba\u03b1\u03b9 \u0393\u03b9\u03b1\u03bd \u039c\u03ac\u03b3\u03b9\u03b5\u03bd";
+      return "Svalbard and Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b7\u03b4\u03af\u03b1";
+      return "Sweden";
     },
     get$chCountryDisplayName() {
-      return "\u0395\u03bb\u03b2\u03b5\u03c4\u03af\u03b1";
+      return "Switzerland";
     },
     get$syCountryDisplayName() {
-      return "\u03a3\u03c5\u03c1\u03af\u03b1";
+      return "Syria";
     },
     get$twCountryDisplayName() {
-      return "\u03a4\u03b1\u03ca\u03b2\u03ac\u03bd";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "\u03a4\u03b1\u03c4\u03b6\u03b9\u03ba\u03b9\u03c3\u03c4\u03ac\u03bd";
+      return "Tajikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u03a4\u03b1\u03bd\u03b6\u03b1\u03bd\u03af\u03b1";
+      return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "\u03a4\u03b1\u03ca\u03bb\u03ac\u03bd\u03b4\u03b7";
+      return "Thailand";
     },
     get$tgCountryDisplayName() {
-      return "\u03a4\u03cc\u03b3\u03ba\u03bf";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u03a4\u03bf\u03ba\u03b5\u03bb\u03ac\u03bf\u03c5";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u03a4\u03cc\u03bd\u03b3\u03ba\u03b1";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u03a4\u03c1\u03b9\u03bd\u03b9\u03bd\u03c4\u03ac\u03bd\u03c4 / \u03a4\u03cc\u03bc\u03c0\u03b1\u03ba\u03bf";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u03a4\u03c5\u03bd\u03b7\u03c3\u03af\u03b1";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "\u03a4\u03bf\u03c5\u03c1\u03ba\u03af\u03b1";
+      return "Turkey";
     },
     get$tmCountryDisplayName() {
-      return "\u03a4\u03bf\u03c5\u03c1\u03ba\u03bc\u03b5\u03bd\u03b9\u03c3\u03c4\u03ac\u03bd";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "\u039d\u03b7\u03c3\u03b9\u03ac \u03a4\u03b5\u03c1\u03ba\u03c2 \u03ba\u03b1\u03b9 \u039a\u03ac\u03b9\u03ba\u03bf\u03c2";
+      return "Turks and Caicos Islands";
     },
     get$tvCountryDisplayName() {
-      return "\u03a4\u03bf\u03c5\u03b2\u03b1\u03bb\u03bf\u03cd";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u0391\u03bc\u03b5\u03c1\u03b9\u03ba\u03b1\u03bd\u03b9\u03ba\u03ad\u03c2 \u03a0\u03b1\u03c1\u03b8\u03ad\u03bd\u03bf\u03b9 \u039d\u03ae\u03c3\u03bf\u03b9";
+      return "U.S. Virgin Islands";
     },
     get$ugCountryDisplayName() {
-      return "\u039f\u03c5\u03b3\u03ba\u03ac\u03bd\u03c4\u03b1";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u039f\u03c5\u03ba\u03c1\u03b1\u03bd\u03af\u03b1";
+      return "Ukraine";
     },
     get$aeCountryDisplayName() {
-      return "\u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03b1 \u0391\u03c1\u03b1\u03b2\u03b9\u03ba\u03ac \u0395\u03bc\u03b9\u03c1\u03ac\u03c4\u03b1";
+      return "United Arab Emirates";
     },
     get$gbCountryDisplayName() {
-      return "\u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03bf \u0392\u03b1\u03c3\u03af\u03bb\u03b5\u03b9\u03bf";
+      return "United Kingdom";
     },
     get$usCountryDisplayName() {
-      return "\u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03b5\u03c2 \u03a0\u03bf\u03bb\u03b9\u03c4\u03b5\u03af\u03b5\u03c2";
+      return "United States";
     },
     get$uyCountryDisplayName() {
-      return "\u039f\u03c5\u03c1\u03bf\u03c5\u03b3\u03bf\u03c5\u03ac\u03b7";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "\u039f\u03c5\u03b6\u03bc\u03c0\u03b5\u03ba\u03b9\u03c3\u03c4\u03ac\u03bd";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u0392\u03b1\u03bd\u03bf\u03c5\u03ac\u03c4\u03bf\u03c5";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u0392\u03b1\u03c4\u03b9\u03ba\u03b1\u03bd\u03cc";
+      return "Vatican City";
     },
     get$veCountryDisplayName() {
-      return "\u0392\u03b5\u03bd\u03b5\u03b6\u03bf\u03c5\u03ad\u03bb\u03b1";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u0392\u03b9\u03b5\u03c4\u03bd\u03ac\u03bc";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis \u03ba\u03b1\u03b9 Futuna";
+      return "Wallis and Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u0394\u03c5\u03c4\u03b9\u03ba\u03ae \u03a3\u03b1\u03c7\u03ac\u03c1\u03b1";
+      return "Western Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u03a5\u03b5\u03bc\u03ad\u03bd\u03b7";
+      return "Yemen";
     },
     get$zmCountryDisplayName() {
-      return "\u0396\u03ac\u03bc\u03c0\u03b9\u03b1";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "\u0396\u03b9\u03bc\u03c0\u03ac\u03bc\u03c0\u03bf\u03c5\u03b5";
+      return "Zimbabwe";
     },
     get$pay() {
       return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03b9 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1: " + space + "! \u0398\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03b4\u03b5\u03c7\u03b8\u03b5\u03af\u03c4\u03b5;";
+      return user + " has invited you to join a course: " + space + "! Do you wish to accept?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u0395\u03af\u03c3\u03c4\u03b5 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b5\u03ba\u03bb\u03b7\u03bc\u03ad\u03bd\u03bf\u03b9!";
+      return "\ud83d\udce9 You're invited!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03b9 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1: " + $name + "! \u0398\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03b4\u03b5\u03c7\u03b8\u03b5\u03af\u03c4\u03b5;";
+      return user + " has invited you to join a chat: " + $name + "! Do you wish to accept?";
     },
     get$monthlySubscription() {
-      return "\u039c\u03b7\u03bd\u03b9\u03b1\u03af\u03b1";
+      return "Monthly";
     },
     get$yearlySubscription() {
-      return "\u0395\u03c4\u03ae\u03c3\u03b9\u03b1";
+      return "Yearly";
     },
     get$defaultSubscription() {
-      return "\u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae Pangea Chat";
+      return "Pangea Chat Subscription";
     },
     get$freeTrial() {
-      return "\u0394\u03c9\u03c1\u03b5\u03ac\u03bd \u0394\u03bf\u03ba\u03b9\u03bc\u03ae";
+      return "Free Trial";
     },
     get$noDataFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03b1";
+      return "No data found";
     },
     get$bestCorrectionFeedback() {
-      return "\u0391\u03c5\u03c4\u03cc \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c9\u03c3\u03c4\u03cc!";
+      return "That's correct!";
     },
     get$distractorFeedback() {
-      return "\u0394\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03ba\u03c1\u03b9\u03b2\u03ce\u03c2 \u03c3\u03c9\u03c3\u03c4\u03cc.";
+      return "That's not quite right.";
     },
     get$bestAnswerFeedback() {
-      return "\u0391\u03c5\u03c4\u03cc \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c9\u03c3\u03c4\u03cc!";
+      return "That's correct!";
     },
     get$definitionDefaultPrompt() {
-      return "\u03a4\u03b9 \u03c3\u03b7\u03bc\u03b1\u03af\u03bd\u03b5\u03b9 \u03b1\u03c5\u03c4\u03ae \u03b7 \u03bb\u03ad\u03be\u03b7;";
+      return "What does this word mean?";
     },
     get$practiceDefaultPrompt() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b7 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b7 \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b7;";
+      return "What is the best answer?";
     },
     get$correctionDefaultPrompt() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b7 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b7 \u03b1\u03bd\u03c4\u03b9\u03ba\u03b1\u03c4\u03ac\u03c3\u03c4\u03b1\u03c3\u03b7;";
+      return "What is the best replacement?";
     },
     get$reportToTeacher() {
-      return "\u03a3\u03b5 \u03c0\u03bf\u03b9\u03bf\u03bd \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03bd\u03b1\u03c6\u03ad\u03c1\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1;";
+      return "Who do you want to report this message to?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u03b1\u03bd\u03ad\u03c6\u03b5\u03c1\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b1\u03c0\u03cc \u03c4\u03bf\u03bd " + reportedUserId + " \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 " + roomName;
+      return reportingUserId + " has reported a message from " + reportedUserId + " in the chat " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u039c\u03ae\u03bd\u03c5\u03bc\u03b1: " + reportedMessage + "\n\u0391\u03b9\u03c4\u03af\u03b1: " + reason;
+      return "Message: " + reportedMessage + "\nReason: " + reason;
     },
     get$noTeachersFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03b9 \u03b3\u03b9\u03b1 \u03b1\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac";
+      return "No teachers found to report to";
     },
     trialExpiration$1(expiration) {
-      return "\u0397 \u03b4\u03c9\u03c1\u03b5\u03ac\u03bd \u03b4\u03bf\u03ba\u03b9\u03bc\u03ae \u03c3\u03b1\u03c2 \u03bb\u03ae\u03b3\u03b5\u03b9 \u03c3\u03c4\u03b9\u03c2 " + expiration;
+      return "Your free trial expires on " + expiration;
     },
     get$freeTrialDesc() {
-      return "\u039f\u03b9 \u03bd\u03ad\u03bf\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03bf\u03c5\u03bd \u03bc\u03b9\u03b1 \u03b5\u03b2\u03b4\u03bf\u03bc\u03ac\u03b4\u03b1 \u03b4\u03c9\u03c1\u03b5\u03ac\u03bd \u03b4\u03bf\u03ba\u03b9\u03bc\u03ae\u03c2 \u03c4\u03bf\u03c5 Pangea Chat";
+      return "New users recieve a one week free trial of Pangea Chat";
     },
     get$activateTrial() {
-      return "\u0394\u03c9\u03c1\u03b5\u03ac\u03bd 7-\u03ae\u03bc\u03b5\u03c1\u03b7 \u0394\u03bf\u03ba\u03b9\u03bc\u03ae";
+      return "Free 7-Day Trial";
     },
     get$successfullySubscribed() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b5\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af \u03bc\u03b5 \u03b5\u03c0\u03b9\u03c4\u03c5\u03c7\u03af\u03b1!";
+      return "You have successfully subscribed!";
     },
     get$clickToManageSubscription() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b5\u03b4\u03ce \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c3\u03b1\u03c2.";
+      return "Click here to manage your subscription.";
     },
     get$signUp() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Sign up";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd " + min + " \u03c7\u03b1\u03c1\u03b1\u03ba\u03c4\u03ae\u03c1\u03b5\u03c2.";
+      return "Please choose at least " + min + " characters.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.______;
+      return "Please enter a valid email address.";
     },
     get$pleaseChooseAUsername() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Please choose a username";
     },
     get$listen() {
-      return "\u0391\u03ba\u03bf\u03cd\u03c3\u03c4\u03b5";
+      return "Listen";
     },
     get$trialPeriodExpired() {
-      return "\u0397 \u03b4\u03bf\u03ba\u03b9\u03bc\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae \u03c0\u03b5\u03c1\u03af\u03bf\u03b4\u03bf\u03c2 \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03bb\u03ae\u03be\u03b5\u03b9";
+      return "Your trial period has expired";
     },
     get$subscribedToUnlockTools() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03b4\u03b9\u03b1\u03b4\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7 \u03ba\u03b1\u03b9 \u03ad\u03bb\u03b5\u03b3\u03c7\u03bf \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2, \u03b1\u03bd\u03b1\u03c0\u03b1\u03c1\u03b1\u03b3\u03c9\u03b3\u03ae \u03ae\u03c7\u03bf\u03c5, \u03b5\u03be\u03b1\u03c4\u03bf\u03bc\u03b9\u03ba\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2 \u03ba\u03b1\u03b9 \u03b1\u03bd\u03b1\u03bb\u03cd\u03c3\u03b5\u03b9\u03c2 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2!";
+      return "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice activities, and learning analytics!";
     },
     get$translationTooltip() {
-      return "\u039c\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7";
+      return "Translate";
     },
     get$kickBotWarning() {
-      return "\u03a4\u03bf \u03ba\u03bb\u03b5\u03af\u03c3\u03b9\u03bc\u03bf \u03c4\u03bf\u03c5 Pangea Bot \u03b8\u03b1 \u03b1\u03c6\u03b1\u03b9\u03c1\u03ad\u03c3\u03b5\u03b9 \u03c4\u03bf bot \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7.";
+      return "Kicking Pangea Bot will remove the conversation bot from this chat.";
     },
     get$refresh(_) {
-      return "\u0391\u03bd\u03b1\u03bd\u03ad\u03c9\u03c3\u03b7";
+      return "Refresh";
     },
     get$accuracy(_) {
-      return "\u0391\u03ba\u03c1\u03af\u03b2\u03b5\u03b9\u03b1";
+      return "Accuracy";
     },
     get$chatCapacity() {
-      return "\u03a7\u03c9\u03c1\u03b7\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Chat capacity";
     },
     get$roomFull() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b7 \u03b1\u03af\u03b8\u03bf\u03c5\u03c3\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03ae\u03b4\u03b7 \u03b3\u03b5\u03bc\u03ac\u03c4\u03b7.";
+      return "This room is already at capacity.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u0397 \u03c7\u03c9\u03c1\u03b7\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03ac\u03bb\u03bb\u03b1\u03be\u03b5";
+      return "Chat capacity changed";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u0397 \u03c7\u03c9\u03c1\u03b7\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03c0\u03c1\u03ad\u03c0\u03b5\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd " + count + ".";
+      return "Chat capacity must be at least " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\u0397 \u03c7\u03c9\u03c1\u03b7\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03c0\u03b5\u03c1\u03b9\u03bf\u03c1\u03af\u03b6\u03b5\u03b9 \u03c4\u03bf\u03bd \u03b1\u03c1\u03b9\u03b8\u03bc\u03cc \u03c4\u03c9\u03bd \u03bc\u03b5\u03bb\u03ce\u03bd \u03c0\u03bf\u03c5 \u03b5\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03bf\u03bd\u03c4\u03b1\u03b9 \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "Chat capacity limits the number of members allowed in a chat.";
     },
     get$enterNumber() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b1\u03ba\u03ad\u03c1\u03b1\u03b9\u03b1 \u03c4\u03b9\u03bc\u03ae.";
+      return "Please enter a whole number value.";
     },
     get$buildTranslation() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03ae \u03c3\u03b1\u03c2 \u03b1\u03c0\u03cc \u03c4\u03b9\u03c2 \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ad\u03c2 \u03c0\u03b1\u03c1\u03b1\u03c0\u03ac\u03bd\u03c9";
+      return "Build your translation from the choices above";
     },
     get$practice() {
-      return "\u0395\u03be\u03ac\u03c3\u03ba\u03b7\u03c3\u03b7";
+      return "Practice";
     },
     get$speechToTextBody() {
-      return "\u0393\u03b9\u03b1 \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1, \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b5\u03af\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03bc\u03b5\u03c4\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03ba\u03b1\u03b8\u03ce\u03c2 \u03ba\u03b1\u03b9 \u03c4\u03bf \u03c3\u03ba\u03bf\u03c1 \u039b\u03ad\u03be\u03b5\u03c9\u03bd \u03b1\u03bd\u03ac \u039b\u03b5\u03c0\u03c4\u03cc \u03c4\u03bf\u03c5 \u03bf\u03bc\u03b9\u03bb\u03b7\u03c4\u03ae.";
+      return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
     },
     get$versionNotFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b5 \u03ad\u03ba\u03b4\u03bf\u03c3\u03b7";
+      return "Version Not Found";
     },
     get$fetchingVersion() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03ad\u03ba\u03b4\u03bf\u03c3\u03b7\u03c2...";
+      return "Fetching version...";
     },
     get$versionFetchError() {
-      return "\u03a3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03ba\u03b1\u03c4\u03ac \u03c4\u03b7 \u03bb\u03ae\u03c8\u03b7 \u03ad\u03ba\u03b4\u03bf\u03c3\u03b7\u03c2";
+      return "Error fetching version";
     },
     versionText$2(version, buildNumber) {
-      return "\u0388\u03ba\u03b4\u03bf\u03c3\u03b7: " + version + "+" + buildNumber;
+      return "Version: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u03a4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03c4\u03b7 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03bc\u03b5\u03c4\u03b1\u03c6\u03c1\u03b1\u03c3\u03c4\u03bf\u03cd\u03bd.";
+      return "Messages in your base language will not be translated.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b5\u03bd\u03b5\u03c1\u03b3\u03ae \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae";
+      return "You have an active subscription";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0397 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae \u03c4\u03bf\u03c5 \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03bf\u03cd \u03c3\u03b1\u03c2 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b1\u03ba\u03c5\u03c1\u03ce\u03c3\u03b5\u03b9 \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b1 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c3\u03b1\u03c2.";
+      return "Deleting your account will not automatically cancel your subscription.";
     },
     get$manageSubscription() {
-      return "\u0394\u03b9\u03b1\u03c7\u03b5\u03af\u03c1\u03b9\u03c3\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2";
+      return "Manage Subscription";
     },
     get$error520Title() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "Please try again.";
     },
     get$error520Desc() {
-      return "\u039b\u03c5\u03c0\u03bf\u03cd\u03bc\u03b1\u03c3\u03c4\u03b5, \u03b4\u03b5\u03bd \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03b1\u03bc\u03b5 \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03ac \u03c3\u03b1\u03c2...";
+      return "Sorry, we could not understand your message...";
     },
     get$level(_) {
-      return "\u0395\u03c0\u03af\u03c0\u03b5\u03b4\u03bf";
+      return "Level";
     },
     get$translationChoicesBody() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03ba\u03b1\u03b9 \u03ba\u03c1\u03b1\u03c4\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae \u03b3\u03b9\u03b1 \u03bc\u03b9\u03b1 \u03c5\u03c0\u03cc\u03b4\u03b5\u03b9\u03be\u03b7.";
+      return "Click and hold an option for a hint.";
     },
     get$grammar() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Grammar";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u039f \u03b5\u03c0\u03b1\u03c6\u03ae \u03ad\u03c7\u03b5\u03b9 \u03c0\u03c1\u03bf\u03c3\u03ba\u03bb\u03b7\u03b8\u03b5\u03af \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Contact has been invited to the chat";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "\ud83d\udce8 Invite chat";
     },
     get$l2SupportNa() {
-      return "\u039c\u03b7 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03bf";
+      return "Not Available";
     },
     get$l2SupportAlpha() {
-      return "\u0386\u03bb\u03c6\u03b1";
+      return "Alpha";
     },
     get$l2SupportBeta() {
-      return "\u0392\u03ae\u03c4\u03b1";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\u03a0\u03bb\u03ae\u03c1\u03b5\u03c2";
+      return "Full";
     },
     get$playAudio() {
-      return "\u0391\u03bd\u03b1\u03c0\u03b1\u03c1\u03b1\u03b3\u03c9\u03b3\u03ae";
+      return "Play";
     },
     get$stop(_) {
-      return "\u0394\u03b9\u03b1\u03ba\u03bf\u03c0\u03ae";
+      return "Stop";
     },
     get$grammarCopyPOSsconj() {
-      return "\u03a5\u03c0\u03bf\u03b4\u03b5\u03ba\u03c4\u03b9\u03ba\u03ae \u03a3\u03c5\u03b6\u03c5\u03b3\u03af\u03b1";
+      return "Subordinating Conjunction";
     },
     get$grammarCopyPOSnum() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2";
+      return "Number";
     },
     get$grammarCopyPOSverb() {
-      return "\u03a1\u03ae\u03bc\u03b1";
+      return "Verb";
     },
     get$grammarCopyPOSaffix() {
-      return "\u0395\u03c0\u03af\u03b8\u03b7\u03bc\u03b1";
+      return "Affix";
     },
     get$grammarCopyPOSpart() {
-      return "\u039c\u03cc\u03c1\u03b9\u03bf";
+      return "Particle";
     },
     get$grammarCopyPOSadj() {
-      return "\u0395\u03c0\u03af\u03b8\u03b5\u03c4\u03bf";
+      return "Adjective";
     },
     get$grammarCopyPOScconj() {
-      return "\u03a3\u03c5\u03bd\u03c4\u03bf\u03bd\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae \u03a3\u03c5\u03b6\u03c5\u03b3\u03af\u03b1";
+      return "Coordinating Conjunction";
     },
     get$grammarCopyPOSpunct() {
-      return "\u03a3\u03b7\u03bc\u03b5\u03af\u03bf \u03a3\u03c4\u03af\u03be\u03b7\u03c2";
+      return "Punctuation";
     },
     get$grammarCopyPOSadv() {
-      return "\u0395\u03c0\u03af\u03c1\u03c1\u03b7\u03bc\u03b1";
+      return "Adverb";
     },
     get$grammarCopyPOSaux() {
-      return "\u0392\u03bf\u03b7\u03b8\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Auxiliary";
     },
     get$grammarCopyPOSspace() {
-      return "\u039a\u03b5\u03bd\u03cc";
+      return "Space";
     },
     get$grammarCopyPOSsym() {
-      return "\u03a3\u03cd\u03bc\u03b2\u03bf\u03bb\u03bf";
+      return "Symbol";
     },
     get$grammarCopyPOSdet() {
-      return "\u039f\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Determiner";
     },
     get$grammarCopyPOSpron() {
-      return "\u0391\u03bd\u03c4\u03c9\u03bd\u03c5\u03bc\u03af\u03b1";
+      return "Pronoun";
     },
     get$grammarCopyPOSadp() {
-      return "\u0395\u03c0\u03b9\u03c1\u03c1\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u03a0\u03c1\u03cc\u03b8\u03b5\u03c3\u03b7";
+      return "Adposition";
     },
     get$grammarCopyPOSpropn() {
-      return "\u039f\u03bd\u03cc\u03bc\u03b1\u03c4\u03bf\u03c2 \u0399\u03b4\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Proper Noun";
     },
     get$grammarCopyPOSnoun() {
-      return "\u039f\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Noun";
     },
     get$grammarCopyPOSintj() {
-      return "\u0395\u03c0\u03b9\u03c6\u03ce\u03bd\u03b7\u03bc\u03b1";
+      return "Interjection";
     },
     get$grammarCopyPOSidiom() {
-      return "\u0399\u03b4\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03c3\u03bc\u03cc\u03c2";
+      return "Idiom";
     },
     get$grammarCopyPOSphrasalv() {
-      return "\u03a6\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc \u03a1\u03ae\u03bc\u03b1";
+      return "Phrasal Verb";
     },
     get$grammarCopyPOScompn() {
-      return "\u03a3\u03cd\u03bd\u03b8\u03b5\u03c4\u03bf";
+      return "Compound";
     },
     get$grammarCopyPOSx() {
-      return "\u0386\u03bb\u03bb\u03bf";
+      return "Other";
     },
     get$grammarCopyGENDERfem() {
-      return "\u0398\u03b7\u03bb\u03c5\u03ba\u03cc";
+      return "Feminine";
     },
     get$grammarCopyPERSON2() {
-      return "\u0394\u03b5\u03cd\u03c4\u03b5\u03c1\u03bf \u03a0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf";
+      return "Second Person";
     },
     get$grammarCopyMOODimp() {
-      return "\u03a5\u03c0\u03bf\u03c4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Imperative";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u0395\u03c1\u03ce\u03c4\u03b7\u03c3\u03b7";
+      return "Question";
     },
     get$grammarCopyASPECTperf() {
-      return "\u03a4\u03b5\u03bb\u03b5\u03b9\u03c9\u03bc\u03ad\u03bd\u03bf";
+      return "Perfect";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03ae, \u039f\u03bd\u03bf\u03bc\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Accusative, Nominative";
     },
     get$grammarCopyCASEobl() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03b7";
+      return "Oblique";
     },
     get$grammarCopyVOICEact() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Active";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u03a0\u03b1\u03c1\u03ad\u03bd\u03b8\u03b5\u03c3\u03b7";
+      return "Bracket";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u0386\u03c1\u03b8\u03c1\u03bf";
+      return "Article";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u0395\u03bd\u03b9\u03ba\u03cc\u03c2";
+      return "Singular";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u0391\u03c1\u03c3\u03b5\u03bd\u03b9\u03ba\u03cc";
+      return "Masculine";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u03a1\u03ae\u03bc\u03b1 Modal";
+      return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u0395\u03c0\u03b9\u03c1\u03c1\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Adverbial";
     },
     get$grammarCopyTENSEperi() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03c6\u03c1\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Periphrastic";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u03a8\u03b7\u03c6\u03af\u03bf";
+      return "Digit";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u039c\u03b7 \u03c3\u03c9\u03c3\u03c4\u03cc";
+      return "Not Proper";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Cardinal";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u0399\u03b4\u03b9\u03c9\u03c4\u03b9\u03ba\u03cc";
+      return "Proper";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u03a0\u03b1\u03cd\u03bb\u03b1";
+      return "Dash";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u039d\u03b1\u03b9";
+      return "Yes";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u0386\u03bd\u03c9 \u03c4\u03b5\u03bb\u03b5\u03af\u03b1";
+      return "Semicolon";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u039a\u03cc\u03bc\u03bc\u03b1";
+      return "Comma";
     },
     get$grammarCopyMOODcnd() {
-      return "\u03a5\u03c0\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Conditional";
     },
     get$grammarCopyCASEacc() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Accusative";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u039c\u03b5\u03c1\u03b9\u03ba\u03cc";
+      return "Partitive";
     },
     get$grammarCopyTENSEpast() {
-      return "\u03a0\u03b1\u03c1\u03b5\u03bb\u03b8\u03cc\u03bd";
+      return "Past";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u03a5\u03c0\u03b5\u03c1\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Superlative";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0386\u03bd\u03c9 \u03c4\u03b5\u03bb\u03b5\u03af\u03b1";
+      return "Colon";
     },
     get$grammarCopyPERSON3() {
-      return "\u03a4\u03c1\u03af\u03c4\u03bf \u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf";
+      return "Third Person";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u03a0\u03bb\u03b7\u03b8\u03c5\u03bd\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Plural";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u0399\u03b4\u03b9\u03c9\u03c4\u03b9\u03ba\u03cc \u03bf\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Proper Noun";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Interrogative";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u0391 informal";
+      return "Informal";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u03a7\u03c1\u03cc\u03bd\u03bf\u03c2";
+      return "Time";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u0391\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Negative";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u03a3\u03cd\u03bd\u03bf\u03bb\u03bf";
+      return "Total";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u0395\u03c0\u03b9\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "\u03a0\u03c1\u03bf\u03bf\u03b4\u03b5\u03c5\u03c4\u03b9\u03ba\u03cc";
+      return "Progressive";
     },
     get$grammarCopyMOODsub() {
-      return "\u03a5\u03c0\u03bf\u03c4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Subjunctive";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u03a3\u03c5\u03bc\u03c0\u03bb\u03b7\u03c1\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Complementive";
     },
     get$grammarCopyCASEnom() {
-      return "\u039f\u03bd\u03bf\u03bc\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Nominative";
     },
     get$grammarCopyTENSEfut() {
-      return "\u039c\u03ad\u03bb\u03bb\u03bf\u03bd\u03c4\u03b1\u03c2";
+      return "Future";
     },
     get$grammarCopyCASEdat() {
-      return "\u0394\u03bf\u03c4\u03b9\u03ba\u03ae";
+      return "Dative";
     },
     get$grammarCopyTENSEpres() {
-      return "\u0395\u03bd\u03b5\u03c3\u03c4\u03ce\u03c4\u03b1\u03c2";
+      return "Present";
     },
     get$grammarCopyGENDERneut() {
-      return "\u039f\u03c5\u03b4\u03ad\u03c4\u03b5\u03c1\u03bf";
+      return "Neuter";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Relative";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u03a4\u03b5\u03bb\u03b5\u03c5\u03c4\u03b1\u03af\u03b1 \u03ba\u03b1\u03c4\u03ac\u03bb\u03b7\u03be\u03b7";
+      return "Final Ending";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u0394\u03b5\u03b9\u03ba\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Demonstrative";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u03a0\u03c1\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Prepositional";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u039f\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Finite";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u0398\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Positive";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b8\u03ad\u03bc\u03b1\u03c4\u03b1";
+      return "Quotation";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u0393\u03b5\u03c1\u03bf\u03c5\u03bd\u03b4\u03b9\u03ba\u03cc";
+      return "Gerund";
     },
     get$grammarCopyVOICEpass() {
-      return "\u03a0\u03b1\u03b8\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Passive";
     },
     get$grammarCopyCASEgen() {
-      return "\u0393\u03b5\u03bd\u03b9\u03ba\u03ae";
+      return "Genitive";
     },
     get$grammarCopyTENSEprs() {
-      return "\u0395\u03bd\u03b5\u03c3\u03c4\u03ce\u03c4\u03b1\u03c2";
+      return "Present";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u039f\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Definite";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u03a4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Ordinal";
     },
     get$grammarCopyCASEins() {
-      return "\u038c\u03c1\u03b3\u03b1\u03bd\u03bf";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0391\u03c0\u03b1\u03c1\u03ad\u03bc\u03c6\u03b1\u03c4\u03bf";
+      return "Infinitive";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u0392\u03bf\u03b7\u03b8\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Auxiliary";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u039c\u03b1\u03ba\u03c1\u03cd";
+      return "Long";
     },
     get$grammarCopyCASEloc() {
-      return "\u03a4\u03bf\u03c0\u03b9\u03ba\u03ae";
+      return "Locative";
     },
     get$grammarCopyMOODind() {
-      return "\u0395\u03b3\u03ba\u03bb\u03b9\u03c4\u03b9\u03ba\u03ae";
+      return "Indicative";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u03a3\u03c5\u03b3\u03ba\u03c1\u03b9\u03c4\u03b9\u03ba\u03ae";
+      return "Comparative";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Relative";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0395\u03c5\u03c6\u03b7\u03bc\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Exclamative";
     },
     get$grammarCopyPERSON1() {
-      return "\u03a0\u03c1\u03ce\u03c4\u03bf \u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf";
+      return "First Person";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u0391\u03c1\u03c7\u03b9\u03ba\u03cc";
+      return "Initial";
     },
     get$grammarCopyGENDERperson() {
-      return "\u0386\u03c4\u03bf\u03bc\u03bf";
+      return "Person";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u039e\u03ad\u03bd\u03b7";
+      return "Foreign";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u03a6\u03c9\u03bd\u03ae";
+      return "Voice";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u03a1\u03ae\u03bc\u03b1";
+      return "Verb";
     },
     get$grammarCopyPOSSpass() {
-      return "\u039a\u03c4\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Possessive";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u03a0\u03c1\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Prepositional";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Numeral";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u039f\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Noun";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bb\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Reflexive";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u0391\u03bd\u03c4\u03c9\u03bd\u03c5\u03bc\u03af\u03b1";
+      return "Pronoun";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u03a0\u03bb\u03b5\u03c5\u03c1\u03ac \u03a3\u03b7\u03bc\u03b5\u03af\u03c9\u03c3\u03b7\u03c2 \u03a3\u03c4\u03af\u03be\u03b7\u03c2";
+      return "Punctuation Side";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u03a1\u03ae\u03bc\u03b1";
+      return "Verb";
     },
     get$grammarCopyGENDERgender() {
-      return "\u0393\u03ad\u03bd\u03bf\u03c2";
+      return "Gender";
     },
     get$grammarCopyMOODmood() {
-      return "\u03a4\u03c1\u03cc\u03c0\u03bf\u03c2";
+      return "Mood";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u03a0\u03bb\u03b5\u03c5\u03c1\u03ac";
+      return "Aspect";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u03a3\u03c4\u03af\u03be\u03b7";
+      return "Punctuation";
     },
     get$grammarCopyTENSEtense() {
-      return "\u03a7\u03c1\u03cc\u03bd\u03bf\u03c2";
+      return "Tense";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u0392\u03b1\u03b8\u03bc\u03cc\u03c2";
+      return "Degree";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u0395\u03c5\u03b3\u03ad\u03bd\u03b5\u03b9\u03b1";
+      return "Politeness";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u0395\u03c0\u03af\u03c1\u03c1\u03b7\u03bc\u03b1";
+      return "Adverb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2";
+      return "Number";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u03a3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf\u03c2";
+      return "Conjunction";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u03a0\u03bf\u03bb\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Polarity";
     },
     get$grammarCopyCASEcase() {
-      return "\u03a0\u03c4\u03ce\u03c3\u03b7";
+      return "Case";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u039f\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Definiteness";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Numeral";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0395\u03c0\u03b9\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "\u039a\u03bb\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Vocative";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u03a3\u03c5\u03bc\u03c0\u03bb\u03b7\u03c1\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Complementizer";
     },
     get$grammarCopyADVadv() {
-      return "\u0395\u03c0\u03b9\u03c1\u03c1\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Adverbial";
     },
     get$grammarCopyMOODjus() {
-      return "\u0395\u03c0\u03b9\u03c4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Jussive";
     },
     get$grammarCopyGENDERcom() {
-      return "\u039a\u03bf\u03b9\u03bd\u03cc";
+      return "Common";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bb\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Reflexive";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u039c\u03b5\u03c1\u03b9\u03ba\u03cc";
+      return "Partitive";
     },
     get$grammarCopySPCspc() {
-      return "\u03a3\u03c5\u03b3\u03ba\u03b5\u03ba\u03c1\u03b9\u03bc\u03ad\u03bd\u03bf";
+      return "Specific";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u03a0\u03bb\u03b5\u03bf\u03c1\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf";
+      return "Pluperfect";
     },
     get$grammarCopyREFLEXref() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bb\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Reflexive";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u03a3\u03cd\u03bd\u03c4\u03bf\u03bc\u03bf";
+      return "Short";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0394\u03b9\u03c0\u03bb\u03cc";
+      return "Dual";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u039c\u03b1\u03ba\u03c1\u03cd";
+      return "Long";
     },
     get$grammarCopyVOICEmid() {
-      return "\u039c\u03b5\u03c3\u03b1\u03af\u03bf";
+      return "Middle";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc, \u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Interrogative, Relative";
     },
     get$grammarCopyINTint() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc";
+      return "Interrogative";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03cc";
+      return "Causative";
     },
     get$grammarCopyUnknown() {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf";
+      return "Unknown";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0395\u03c0\u03b9\u03ba\u03c5\u03c1\u03c9\u03c4\u03b9\u03ba\u03ae";
+      return "Evidentiality";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u039a\u03b1\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Possessor's Number";
     },
     get$grammarCopyASPECThab() {
-      return "\u03a3\u03c5\u03bd\u03ae\u03b8\u03b7\u03c2";
+      return "Habitual";
     },
     get$grammarCopyCASEabl() {
-      return "\u0391\u03c0\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Ablative";
     },
     get$grammarCopyCASEall() {
-      return "\u03a0\u03bf\u03bb\u03bb\u03b1\u03c0\u03bb\u03b1\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Allative";
     },
     get$grammarCopyCASEess() {
-      return "\u0395\u03be\u03c9\u03c4\u03b9\u03ba\u03ae";
+      return "Essive";
     },
     get$grammarCopyCASEtra() {
-      return "\u039c\u03b5\u03c4\u03b1\u03b2\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Translative";
     },
     get$grammarCopyCASEequ() {
-      return "\u0399\u03c3\u03bf\u03b4\u03cd\u03bd\u03b1\u03bc\u03b7";
+      return "Equative";
     },
     get$grammarCopyCASEdis() {
-      return "\u0394\u03b9\u03b1\u03bd\u03b5\u03bc\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Distributive";
     },
     get$grammarCopyCASEabs() {
-      return "\u0391\u03c0\u03cc\u03bb\u03c5\u03c4\u03b7";
+      return "Absolutive";
     },
     get$grammarCopyCASEerg() {
-      return "\u0395\u03c1\u03b3\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Ergative";
     },
     get$grammarCopyCASEcau() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03ba\u03ae";
+      return "Causal";
     },
     get$grammarCopyCASEben() {
-      return "\u03a9\u03c6\u03b5\u03bb\u03b9\u03ba\u03ae";
+      return "Benefactive";
     },
     get$grammarCopyCASEtem() {
-      return "\u03a7\u03c1\u03bf\u03bd\u03b9\u03ba\u03ae";
+      return "Temporal";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u03a3\u03c5\u03bd\u03c4\u03bf\u03bd\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Coordinating";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u039a\u03b1\u03c4\u03b1\u03c3\u03ba\u03b5\u03c5\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae \u039a\u03b1\u03c4\u03ac\u03c3\u03c4\u03b1\u03c3\u03b7";
+      return "Construct State";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u0391\u03c0\u03cc\u03bb\u03c5\u03c4\u03bf \u0392\u03b1\u03b8\u03bc\u03cc";
+      return "Absolute Degree";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u03a0\u03c1\u03b1\u03b3\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u0395\u03c0\u03b9\u03ba\u03c5\u03c1\u03c9\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Factual Evidentiality";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u039c\u03b7-\u03c0\u03c1\u03b1\u03b3\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u0395\u03c0\u03b9\u03ba\u03c5\u03c1\u03c9\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Non-factual Evidentiality";
     },
     get$grammarCopyMOODopt() {
-      return "\u0395\u03c5\u03c7\u03ae";
+      return "Optative";
     },
     get$grammarCopyMOODadm() {
-      return "\u0395\u03c0\u03b9\u03c4\u03b9\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Admirative";
     },
     get$grammarCopyMOODdes() {
-      return "\u0395\u03c0\u03b9\u03b8\u03c5\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Desiderative";
     },
     get$grammarCopyMOODnec() {
-      return "\u0391\u03bd\u03b1\u03b3\u03ba\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Necessitative";
     },
     get$grammarCopyMOODpot() {
-      return "\u0394\u03c5\u03bd\u03b1\u03bc\u03b9\u03ba\u03cc";
+      return "Potential";
     },
     get$grammarCopyMOODprp() {
-      return "\u03a0\u03c1\u03bf\u03c4\u03b1\u03c4\u03b9\u03ba\u03cc";
+      return "Propositive";
     },
     get$grammarCopyMOODqot() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Quotative";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ae \u039b\u03ad\u03be\u03b7\u03c2";
+      return "Word Form";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u03a1\u03c9\u03bc\u03b1\u03ca\u03ba\u03cc \u0391\u03c1\u03b9\u03b8\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Roman Numeral";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ae \u0393\u03c1\u03ac\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Letter Form";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u03a0\u03bf\u03bb\u03bb\u03b1\u03c0\u03bb\u03b1\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Multiplicative";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u039a\u03bb\u03b1\u03c3\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc";
+      return "Fractional";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u03a3\u03b5\u03c4";
+      return "Set";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u0395\u03cd\u03c1\u03bf\u03c2";
+      return "Range";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u0394\u03b9\u03b1\u03bd\u03b5\u03bc\u03b7\u03c4\u03b9\u03ba\u03cc";
+      return "Distributive";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u0394\u03bf\u03ba\u03b9\u03bc\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Trial";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u03a0\u03bf\u03b1\u03ba\u03bf\u03cd";
+      return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u039c\u03b5\u03b3\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03bf \u03a0\u03bf\u03b1\u03ba\u03bf\u03cd";
+      return "Greater Paucal";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u039c\u03b5\u03b3\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03bf \u03a0\u03bb\u03b7\u03b8\u03c5\u03bd\u03c4\u03b9\u03ba\u03cc";
+      return "Greater Plural";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u0391\u03bd\u03c4\u03af\u03c3\u03c4\u03c1\u03bf\u03c6\u03bf";
+      return "Inverse";
     },
     get$grammarCopyPERSON0() {
-      return "\u039c\u03b7\u03b4\u03ad\u03bd";
+      return "Zero";
     },
     get$grammarCopyPERSON4() {
-      return "\u03a4\u03ad\u03c4\u03b1\u03c1\u03c4\u03bf\u03c2";
+      return "Fourth";
     },
     get$grammarCopyPOLITEform() {
-      return "\u0395\u03c0\u03af\u03c3\u03b7\u03bc\u03bf";
+      return "Formal";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u0391\u03c5\u03be\u03b7\u03bc\u03ad\u03bd\u03bf";
+      return "Elevated";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u03a4\u03b1\u03c0\u03b5\u03b9\u03bd\u03cc";
+      return "Humble";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u0394\u03b9\u03b5\u03b9\u03c3\u03b4\u03c5\u03c4\u03b9\u03ba\u03cc";
+      return "Emphatic";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc";
+      return "Exclamative";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u0391\u03bd\u03c4\u03b1\u03c0\u03bf\u03b4\u03bf\u03c4\u03b9\u03ba\u03cc";
+      return "Reciprocal";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc-\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03cc";
+      return "Interrogative-Relative";
     },
     get$grammarCopyTENSEaor() {
-      return "\u0391\u03cc\u03c1\u03b9\u03c3\u03c4\u03bf\u03c2";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u0395\u03c0\u03b9\u03b4\u03b5\u03be\u03b9\u03c9\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Epistemic";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u03a0\u03c1\u03bf\u03bf\u03c0\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Prospective";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u039c\u03ad\u03c1\u03bf\u03c2";
+      return "Participle";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u03a3\u03c5\u03bd\u03b5\u03ba\u03b4\u03bf\u03c7\u03ae";
+      return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u03a1\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc \u039f\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Verbal Noun";
     },
     get$grammarCopyVOICEantip() {
-      return "\u0391\u03bd\u03c4\u03b9\u03c0\u03b1\u03c1\u03b1\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Antipassive";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Causative";
     },
     get$grammarCopyVOICedir() {
-      return "\u0386\u03bc\u03b5\u03c3\u03bf\u03c2";
+      return "Direct";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u0391\u03bd\u03c4\u03af\u03c3\u03c4\u03c1\u03bf\u03c6\u03bf\u03c2";
+      return "Inverse";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u0391\u03bd\u03c4\u03b1\u03c0\u03bf\u03b4\u03bf\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Reciprocal";
     },
     get$grammarCopyPOS() {
-      return "\u039c\u03ad\u03c1\u03bf\u03c2 \u03c4\u03bf\u03c5 \u039b\u03cc\u03b3\u03bf\u03c5";
+      return "Part of Speech";
     },
     get$grammarCopyGENDER() {
-      return "\u0393\u03ad\u03bd\u03bf\u03c2";
+      return "Gender";
     },
     get$grammarCopyPERSON() {
-      return "\u0386\u03c4\u03bf\u03bc\u03bf";
+      return "Person";
     },
     get$grammarCopyMOOD() {
-      return "\u03a4\u03c1\u03cc\u03c0\u03bf\u03c2";
+      return "Mood";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u03a3\u03b7\u03bc\u03b5\u03af\u03c9\u03c3\u03b7\u03c2";
+      return "Punctuation Type";
     },
     get$grammarCopyASPECT() {
-      return "\u03a0\u03bb\u03b5\u03c5\u03c1\u03ac";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "\u03a0\u03c4\u03ce\u03c3\u03b7";
+      return "Case";
     },
     get$grammarCopyVOICE() {
-      return "\u03a6\u03c9\u03bd\u03ae";
+      return "Voice";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u039f\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03bf\u03cd";
+      return "Noun Type";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u03a1\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Verb Type";
     },
     get$grammarCopyADVTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u0395\u03c0\u03b9\u03c1\u03c1\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Adverb Type";
     },
     get$grammarCopyNUMFORM() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ae \u0391\u03c1\u03b9\u03b8\u03bc\u03bf\u03cd";
+      return "Numeral Form";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u0391\u03c1\u03b9\u03b8\u03bc\u03bf\u03cd";
+      return "Numeral Type";
     },
     get$grammarCopyNUMBER() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2";
+      return "Number";
     },
     get$grammarCopyDEFINITE() {
-      return "\u039f\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Definiteness";
     },
     get$grammarCopyDEGREE() {
-      return "\u0392\u03b1\u03b8\u03bc\u03cc\u03c2";
+      return "Degree";
     },
     get$grammarCopyEVIDENT() {
-      return "\u0395\u03bd\u03b4\u03b5\u03b9\u03ba\u03c4\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Evidentiality";
     },
     get$grammarCopyFOREIGN() {
-      return "\u039e\u03ad\u03bd\u03bf";
+      return "Foreign";
     },
     get$grammarCopyPOLARITY() {
-      return "\u03a0\u03bf\u03bb\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Polarity";
     },
     get$grammarCopyPOLITE() {
-      return "\u0395\u03c5\u03b3\u03ad\u03bd\u03b5\u03b9\u03b1";
+      return "Politeness";
     },
     get$grammarCopyPREPCASE() {
-      return "\u03a0\u03c1\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae \u03a0\u03c4\u03ce\u03c3\u03b7";
+      return "Prepositional Case";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u0391\u03bd\u03c4\u03c9\u03bd\u03c5\u03bc\u03af\u03b1\u03c2";
+      return "Pronoun Type";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u03a0\u03bb\u03b5\u03c5\u03c1\u03ac \u03a3\u03b7\u03bc\u03b5\u03af\u03c9\u03c3\u03b7\u03c2 \u03a3\u03c4\u03af\u03be\u03b7\u03c2";
+      return "Punctuation Side";
     },
     get$grammarCopyREFLEX() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bb\u03b1\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Reflexive";
     },
     get$grammarCopyTENSE() {
-      return "\u03a7\u03c1\u03cc\u03bd\u03bf\u03c2";
+      return "Tense";
     },
     get$grammarCopyVERBFORM() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ae \u03a1\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Verb Form";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u03a3\u03c5\u03bd\u03b4\u03ad\u03c3\u03bc\u03bf\u03c5";
+      return "Conjunction Type";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf";
+      return "Unknown";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u039a\u03c5\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Possessor's Number";
     },
     get$grammarCopyPOSS() {
-      return "\u039a\u03c4\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Possessive";
     },
     get$grammarCopyASPECTimp() {
-      return "\u0391\u03c4\u03b5\u03bb\u03ae\u03c2 \u038c\u03c8\u03b7";
+      return "Imperfective Aspect";
     },
     get$grammarCopyCASEvoc() {
-      return "\u039a\u03bb\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Vocative";
     },
     get$grammarCopyCASEcom() {
-      return "\u039a\u03bf\u03b9\u03bd\u03bf\u03c4\u03b9\u03ba\u03ae";
+      return "Comitative";
     },
     get$grammarCopyCASEpar() {
-      return "\u039c\u03b5\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae";
+      return "Partitive";
     },
     get$grammarCopyCASEadv() {
-      return "\u0395\u03c0\u03b9\u03c1\u03c1\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Adverbial";
     },
     get$grammarCopyCASEref() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03b9\u03ba\u03ae";
+      return "Referential";
     },
     get$grammarCopyCASErel() {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Relative";
     },
     get$grammarCopyCASEsub() {
-      return "\u03a5\u03c0\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Subessive";
     },
     get$grammarCopyCASEsup() {
-      return "\u03a5\u03c0\u03b5\u03c1\u03b5\u03c3\u03c4\u03b9\u03b1\u03ba\u03ae";
+      return "Superessive";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03ae-\u0394\u03bf\u03c4\u03b9\u03ba\u03ae";
+      return "Accusative-Dative";
     },
     get$grammarCopyCASEpre() {
-      return "\u03a0\u03c1\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Prepositional";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u03a5\u03c0\u03bf\u03c4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Subordinating";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u03a3\u03c5\u03b3\u03ba\u03c1\u03b9\u03c4\u03b9\u03ba\u03ae";
+      return "Comparative";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u0391\u03cc\u03c1\u03b9\u03c3\u03c4\u03b7";
+      return "Indefinite";
     },
     get$grammarCopyMOODint() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u0388\u03bd\u03bd\u03bf\u03b9\u03b1";
+      return "Interrogative Mood";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u039a\u03bf\u03b9\u03bd\u03cc \u039f\u03c5\u03c3\u03b9\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Common Noun";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u0395\u03bd\u03b9\u03ba\u03cc\u03c2 \u03c4\u03bf\u03c5 \u039a\u03b1\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Possessor's Singular";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u03a0\u03bb\u03b7\u03b8\u03c5\u03bd\u03c4\u03b9\u03ba\u03cc\u03c2 \u03c4\u03bf\u03c5 \u039a\u03b1\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Possessor's Plural";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u0394\u03b9\u03c0\u03bb\u03cc\u03c2 \u03c4\u03bf\u03c5 \u039a\u03b1\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Possessor's Dual";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u0398\u03b5\u03c4\u03b9\u03ba\u03ae \u03a0\u03bf\u03bb\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Positive Polarity";
     },
     get$grammarCopyPOSSyes() {
-      return "\u039a\u03c4\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Possessive";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u039c\u03b7-\u03c0\u03c1\u03bf\u03b8\u03b5\u03c4\u03b9\u03ba\u03ae";
+      return "Non-prepositional";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03c9\u03c0\u03b9\u03ba\u03ae";
+      return "Personal";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Interrogative";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u039f\u03bb\u03b9\u03ba\u03ae";
+      return "Total";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u0391\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae";
+      return "Negative";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u0386\u03c1\u03b8\u03c1\u03bf";
+      return "Article";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u0391\u03cc\u03c1\u03b9\u03c3\u03c4\u03bf\u03c2";
+      return "Indefinite";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u0395\u03c1\u03c9\u03c4\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2-\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Interrogative-Relative";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u03a4\u03b5\u03bb\u03b5\u03c5\u03c4\u03b1\u03af\u03bf \u03a3\u03c4\u03af\u03be\u03b7";
+      return "Final Punctuation";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u03a4\u03b5\u03bb\u03b5\u03af\u03b1";
+      return "Period";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bb\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc";
+      return "Reflexive";
     },
     get$grammarCopyTENSEimp() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03c4\u03b1\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Imperfect";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u03a5\u03c0\u03b5\u03c1\u03c3\u03c5\u03bd\u03c4\u03ad\u03bb\u03b9\u03ba\u03bf\u03c2";
+      return "Supine";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0395\u03c0\u03b9\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2";
+      return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u039c\u03b1\u03ba\u03c1\u03cd\u03c2";
+      return "Long";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u0392\u03c1\u03b1\u03c7\u03cd\u03c2";
+      return "Short";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03cc \u03a1\u03ae\u03bc\u03b1";
+      return "Causative Verb";
     },
     get$grammarCopyVOICEcau() {
-      return "\u0391\u03b9\u03c4\u03b9\u03b1\u03c4\u03b9\u03ba\u03ae";
+      return "Causative";
     },
     get$grammarCopyVOICEdir() {
-      return "\u0386\u03bc\u03b5\u03c3\u03b7";
+      return "Direct";
     },
     get$grammarCopyVOICEinv() {
-      return "\u0391\u03bd\u03c4\u03af\u03c3\u03c4\u03c1\u03bf\u03c6\u03b7";
+      return "Inverse";
     },
     get$grammarCopyVOICErcp() {
-      return "\u0391\u03bc\u03bf\u03b9\u03b2\u03b1\u03af\u03b1";
+      return "Reciprocal";
     },
     get$other() {
-      return "\u0386\u03bb\u03bb\u03bf";
+      return "Other";
     },
     levelShort$1(level) {
-      return "\u0395\u03a0\u0399\u03a0\u0395\u0394\u039f " + level;
+      return "LVL " + level;
     },
     get$clickBestOption() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b5\u03c2 \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ad\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03bc\u03b5\u03c4\u03b1\u03c6\u03c1\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03ac \u03c3\u03b1\u03c2!";
+      return "Choose the best options to translate your message! Click and hold options for a hint.";
     },
     get$completeActivitiesToUnlock() {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03c3\u03c4\u03b5 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd \u03bc\u03b9\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7!";
+      return "Complete at least one activity to unlock the translation!";
     },
     get$downloadGroupText() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5 \u03bf\u03bc\u03ac\u03b4\u03b1\u03c2";
+      return "Download group text";
     },
     get$notificationsOn() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b5\u03bd\u03b5\u03c1\u03b3\u03ad\u03c2";
+      return "Notifications on";
     },
     get$notificationsOff() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b5\u03c2";
+      return "Notifications off";
     },
     get$joinWithCode() {
-      return "\u03a3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae \u03bc\u03b5 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc";
+      return "Join with code";
     },
     get$enterCodeToJoin() {
-      return "\u0395\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03c4\u03b5";
+      return "Enter code to join";
     },
     get$updateNow() {
-      return "\u0395\u03bd\u03b7\u03bc\u03ad\u03c1\u03c9\u03c3\u03b7 \u03c4\u03ce\u03c1\u03b1";
+      return "Update Now";
     },
     get$updateLater() {
-      return "\u0391\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1";
+      return "Later";
     },
     get$constructUseWaDesc() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03b5\u03af\u03c4\u03b1\u03b9 \u03c7\u03c9\u03c1\u03af\u03c2 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1";
+      return "Used without help";
     },
     get$constructUseGaDesc() {
-      return "\u0392\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Grammar assistance";
     },
     get$constructUseTaDesc() {
-      return "\u0392\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2";
+      return "Translation assistance";
     },
     get$constructUseUnkDesc() {
-      return "\u0386\u03b3\u03bd\u03c9\u03c3\u03c4\u03bf";
+      return "Unknown";
     },
     get$constructUseCorITDesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03c3\u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7";
+      return "Correct in translation";
     },
     get$constructUseIgnITDesc() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b2\u03bb\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7";
+      return "Ignored in translation";
     },
     get$constructUseIncITDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7";
+      return "Incorrect in translation";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b2\u03bb\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Ignored in grammar correction";
     },
     get$constructUseCorIGCDesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03c3\u03c4\u03b7 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Correct in grammar correction";
     },
     get$constructUseIncIGCDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Incorrect in grammar correction";
     },
     get$constructUseCorPADesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Correct in word meaning activity";
     },
     get$constructUseIgnPADesc() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b2\u03bb\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Ignored in word meaning activity";
     },
     get$constructUseIncPADesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Incorrect in word meaning activity";
     },
     get$constructUseCorWLDesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b1\u03ba\u03c1\u03cc\u03b1\u03c3\u03b7\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Correct in word listening activity";
     },
     get$constructUseIncWLDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b1\u03ba\u03c1\u03cc\u03b1\u03c3\u03b7\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Incorrect in word listening activity";
     },
     get$constructUseIngWLDesc() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b2\u03bb\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b1\u03ba\u03c1\u03cc\u03b1\u03c3\u03b7\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Ignored in word listening activity";
     },
     get$constructUseCorHWLDesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03c3\u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03ba\u03c1\u03c5\u03c6\u03ae\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Correct in hidden word activity";
     },
     get$constructUseIncHWLDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7\u03bd \u03ba\u03c1\u03c5\u03c6\u03ae \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Incorrect in hidden word activity";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u0391\u03b3\u03bd\u03bf\u03ae\u03b8\u03b7\u03ba\u03b5 \u03c3\u03c4\u03b7\u03bd \u03ba\u03c1\u03c5\u03c6\u03ae \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Ignored in hidden word activity";
     },
     get$constructUseCorLDesc() {
-      return "\u03a3\u03c9\u03c3\u03c4\u03cc \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03bb\u03ae\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Correct in lemma activity";
     },
     get$constructUseIncLDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03bb\u03ae\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Incorrect in lemma activity";
     },
     get$constructUseIgnLDesc() {
-      return "\u0391\u03b3\u03bd\u03bf\u03ae\u03b8\u03b7\u03ba\u03b5 \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03bb\u03ae\u03bc\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Ignored in lemma activity";
     },
     get$constructUseCorMDesc() {
-      return "\u03a3\u03c9\u03c3\u03c4\u03cc \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Correct in grammar activity";
     },
     get$constructUseIncMDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Incorrect in grammar activity";
     },
     get$constructUseIgnMDesc() {
-      return "\u0391\u03b3\u03bd\u03bf\u03ae\u03b8\u03b7\u03ba\u03b5 \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Ignored in grammar activity";
     },
     get$constructUseEmojiDesc() {
-      return "\u03a3\u03c9\u03c3\u03c4\u03cc \u03c3\u03c4\u03b7\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 emoji";
+      return "Correct in emoji activity";
     },
     get$constructUseCollected() {
-      return "\u03a3\u03c5\u03bb\u03bb\u03ad\u03c7\u03b8\u03b7\u03ba\u03b5 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Collected in chat";
     },
     get$constructUseNanDesc() {
-      return "\u039c\u03b7 \u03b5\u03c6\u03b1\u03c1\u03bc\u03cc\u03c3\u03b9\u03bc\u03bf";
+      return "Not applicable";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " \u03a0\u03cc\u03bd\u03c4\u03bf\u03b9 XP";
+      return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b7 \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae \u03b1\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7 \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5";
+      return "Enabled text-to-speech";
     },
     get$enableTTSToolDescription() {
-      return "\u0395\u03c0\u03b9\u03c4\u03c1\u03ad\u03c8\u03c4\u03b5 \u03c3\u03c4\u03b7\u03bd \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03bd\u03b1 \u03c0\u03b1\u03c1\u03ac\u03b3\u03b5\u03b9 \u03ad\u03be\u03bf\u03b4\u03bf \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae\u03c2 \u03b1\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03bc\u03ae\u03bc\u03b1\u03c4\u03b1 \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03bf\u03c5 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf \u03c3\u03b1\u03c2.";
+      return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
     get$yourUsername() {
-      return "\u03a4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03c3\u03b1\u03c2";
+      return "Your username";
     },
     get$yourEmail() {
-      return "\u03a4\u03bf email \u03c3\u03b1\u03c2";
+      return "Your email";
     },
     get$iWantToLearn() {
-      return "\u0398\u03ad\u03bb\u03c9 \u03bd\u03b1 \u03bc\u03ac\u03b8\u03c9";
+      return "I want to learn";
     },
     get$pleaseEnterEmail() {
-      return string$.______;
+      return "Please enter a valid email address.";
     },
     get$myBaseLanguage() {
-      return "\u0397 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ae \u03bc\u03bf\u03c5 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1";
+      return "My base language";
     },
     get$formSectionHeader() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ad\u03c2 \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03bf\u03cd\u03bd\u03c4\u03b1\u03b9 \u03c3\u03c4\u03b1 chat:";
+      return "Forms used in chats:";
     },
     get$writingExercisesTooltip() {
-      return "\u0393\u03c1\u03ac\u03c8\u03b9\u03bc\u03bf";
+      return "Writing";
     },
     get$listeningExercisesTooltip() {
-      return "\u0391\u03ba\u03c1\u03cc\u03b1\u03c3\u03b7";
+      return "Listening";
     },
     get$readingExercisesTooltip() {
-      return "\u0391\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7";
+      return "Reading";
     },
     get$meaningNotFound() {
-      return "\u0394\u03b5\u03bd \u03ae\u03c4\u03b1\u03bd \u03b4\u03c5\u03bd\u03b1\u03c4\u03ae \u03b7 \u03b5\u03cd\u03c1\u03b5\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03bd\u03bf\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2.";
+      return "Meaning could not be found.";
     },
     get$notTheCodeError() {
-      return "\u039b\u03c5\u03c0\u03bf\u03cd\u03bc\u03b1\u03c3\u03c4\u03b5, \u03b1\u03c5\u03c4\u03cc \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03bf \u03ba\u03ce\u03b4\u03b9\u03ba\u03b1\u03c2!";
+      return "Sorry, that's not the code!";
     },
     get$totalXP() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ac XP";
+      return "Total XP";
     },
     get$numLemmas() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03cc\u03c2 \u03b1\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Total number of lemmas";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd \u03bc\u03af\u03b1 \u03c6\u03bf\u03c1\u03ac";
+      return "Number of lemmas used correctly at least once";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac 0 \u03c6\u03bf\u03c1\u03ad\u03c2";
+      return "Number of lemmas used correctly 0 times";
     },
     get$numLemmasSmallXP() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd \u03bc\u03b5 0 - 30 XP";
+      return "Number of lemmas with 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd \u03bc\u03b5 31 - 200 XP";
+      return "Number of lemmas with 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b7\u03bc\u03bc\u03ac\u03c4\u03c9\u03bd \u03bc\u03b5 > 200 XP";
+      return "Number of lemmas with > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u03b5\u03bd\u03bd\u03bf\u03b9\u03ce\u03bd";
+      return "Number of grammar concepts";
     },
     get$listGrammarConcepts() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2";
+      return "Grammar concepts";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac \u03c3\u03b5 \u03b1\u03c1\u03c7\u03b9\u03ba\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd \u03c4\u03bf 80% \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5";
+      return "Grammar concepts used correctly in original messages at least 80% of the time";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac \u03c3\u03b5 \u03b1\u03c1\u03c7\u03b9\u03ba\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03bb\u03b9\u03b3\u03cc\u03c4\u03b5\u03c1\u03bf \u03b1\u03c0\u03cc \u03c4\u03bf 80% \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5";
+      return "Grammar concepts used correctly in original messages less than 80% of the time";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03b5\u03c0\u03b9\u03bb\u03ad\u03c7\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac \u03b1\u03c0\u03cc \u03c0\u03c1\u03bf\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03c3\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03c4\u03bf\u03c5\u03bb\u03ac\u03c7\u03b9\u03c3\u03c4\u03bf\u03bd \u03c4\u03bf 80% \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5";
+      return "Grammar concepts chosen correctly from system-generated suggestions at least 80% of the time";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u0393\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03b5\u03c0\u03b9\u03bb\u03ad\u03c7\u03b8\u03b7\u03ba\u03b1\u03bd \u03c3\u03c9\u03c3\u03c4\u03ac \u03b1\u03c0\u03cc \u03c0\u03c1\u03bf\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03c3\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03bb\u03b9\u03b3\u03cc\u03c4\u03b5\u03c1\u03bf \u03b1\u03c0\u03cc \u03c4\u03bf 80% \u03c4\u03bf\u03c5 \u03c7\u03c1\u03cc\u03bd\u03bf\u03c5";
+      return "Grammar concepts chosen correctly from system-generated suggestions less than 80% of the time";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u0393\u03bb\u03c9\u03c3\u03c3\u03b9\u03ba\u03ac concepts \u03bc\u03b5 0-50 XP";
+      return "Grammar concepts with 0-50 xp";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u0393\u03bb\u03c9\u03c3\u03c3\u03b9\u03ba\u03ac concepts \u03bc\u03b5 51-200 XP";
+      return "Grammar concepts with 51-200 xp";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u0393\u03bb\u03c9\u03c3\u03c3\u03b9\u03ba\u03ac concepts 201-500 XP";
+      return "Grammar concepts 201-500 xp";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u0393\u03bb\u03c9\u03c3\u03c3\u03b9\u03ba\u03ac concepts >500 XP";
+      return "Grammar concepts >500 xp";
     },
     get$numMessagesSent() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03b1\u03c0\u03bf\u03c3\u03c4\u03b5\u03bb\u03bb\u03cc\u03bc\u03b5\u03bd\u03c9\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Number of messages sent";
     },
     get$numWordsTyped() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03b7\u03bc\u03ad\u03bd\u03c9\u03bd \u03bb\u03ad\u03be\u03b5\u03c9\u03bd \u03c3\u03c4\u03b1 \u03b1\u03c1\u03c7\u03b9\u03ba\u03ac \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1";
+      return "Number of words typed in original messages";
     },
     get$numCorrectChoices() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03c3\u03c9\u03c3\u03c4\u03ce\u03bd \u03bb\u03ad\u03be\u03b5\u03c9\u03bd \u03c0\u03bf\u03c5 \u03b5\u03c0\u03b9\u03bb\u03ad\u03c7\u03b8\u03b7\u03ba\u03b1\u03bd \u03b1\u03c0\u03cc \u03c0\u03c1\u03bf\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03c3\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Number of correct words chosen from system-generated suggestions";
     },
     get$numIncorrectChoices() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03bc\u03ad\u03bd\u03c9\u03bd \u03bb\u03ad\u03be\u03b5\u03c9\u03bd \u03c0\u03bf\u03c5 \u03b5\u03c0\u03b9\u03bb\u03ad\u03c7\u03b8\u03b7\u03ba\u03b1\u03bd \u03b1\u03c0\u03cc \u03c0\u03c1\u03bf\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03c3\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Number of incorrect words chosen from system-generated suggestions";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3850,1729 +3850,1726 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "\u03a4\u03cd\u03c0\u03bf\u03c2 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf\u03c5";
+      return "File type";
     },
     get$download(_) {
-      return "\u039b\u03ae\u03c8\u03b7";
+      return "Download";
     },
     get$analyticsNotAvailable() {
-      return "\u0391\u03bd\u03ac\u03bb\u03c5\u03c3\u03b7 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03b4\u03b5\u03bd \u03b4\u03b9\u03b1\u03c4\u03af\u03b8\u03b5\u03c4\u03b1\u03b9";
+      return "User analytics not available";
     },
     get$downloading() {
-      return "\u039b\u03ae\u03c8\u03b7 \u03c3\u03b5 \u03b5\u03be\u03ad\u03bb\u03b9\u03be\u03b7...";
+      return "Downloading...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bb\u03ae\u03c8\u03b7\u03c2 \u03b1\u03bd\u03ac\u03bb\u03c5\u03c3\u03b7\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
+      return "Failed to download user analytics";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "\u03a4\u03b9 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c4\u03bf " + morphologicalFeature + " \u03c4\u03bf\u03c5 '" + wordForm + "'?";
+      return "What is the " + morphologicalFeature + " of '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "\u0394\u03b9\u03b1\u03b8\u03b5\u03c3\u03b9\u03bc\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03c9\u03bd";
+      return "Data availability";
     },
     get$available(_) {
-      return "\u0394\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03bf";
+      return "Available";
     },
     get$pangeaBotIsFallible() {
-      return "\u039f Pangea Bot \u03ba\u03ac\u03bd\u03b5\u03b9 \u03ba\u03b1\u03b9 \u03bb\u03ac\u03b8\u03b7!";
+      return "Pangea Bot makes mistakes too!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "\u03a4\u03b9 \u03c3\u03b7\u03bc\u03b1\u03af\u03bd\u03b5\u03b9 \u03c4\u03bf '" + lemma + "'?";
+      return "What does '" + lemma + "' mean?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u03a4\u03b1\u03b9\u03c1\u03b9\u03ac\u03be\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b5\u03c2 \u03bc\u03b5 \u03c4\u03b9\u03c2 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03c3\u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1!";
+      return "Match meanings with the words in the message!";
     },
     get$doubleClickToEdit() {
-      return "\u0394\u03b9\u03c0\u03bb\u03cc \u03ba\u03bb\u03b9\u03ba \u03b3\u03b9\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1.";
+      return "Double-click to edit.";
     },
     get$cefrLevelLabel() {
-      return "\u0395\u03c0\u03af\u03c0\u03b5\u03b4\u03bf CEFR";
+      return "CEFR level";
     },
     get$image(_) {
-      return "\u0395\u03b9\u03ba\u03cc\u03bd\u03b1";
+      return "Image";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03b8\u03ad\u03bc\u03b1, \u03c4\u03c1\u03cc\u03c0\u03bf, \u03bc\u03b1\u03b8\u03b7\u03c3\u03b9\u03b1\u03ba\u03cc \u03c3\u03c4\u03cc\u03c7\u03bf \u03ba\u03b1\u03b9 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1!";
+      return "Choose a topic, mode, learning objective and generate an activity for the chat!";
     },
     get$constructUsePvmDesc() {
-      return "\u03a0\u03b1\u03c1\u03ac\u03b3\u03b5\u03c4\u03b1\u03b9 \u03c3\u03b5 \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "\u0391\u03c6\u03ae\u03bd\u03bf\u03bd\u03c4\u03b1\u03c2 \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1, \u03b8\u03b1 \u03b1\u03c6\u03ae\u03c3\u03b5\u03c4\u03b5 \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03bc\u03ad\u03c3\u03b1 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc. \u039f\u03b9 \u03ac\u03bb\u03bb\u03bf\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b8\u03b1 \u03b4\u03bf\u03c5\u03bd \u03cc\u03c4\u03b9 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03c6\u03cd\u03b3\u03b5\u03b9 \u03b1\u03c0\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1.";
+      return "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.";
     },
     get$constructUseCorMmDesc() {
-      return "\u039f\u03c1\u03b8\u03cc \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2";
+      return "Correct message meaning";
     },
     get$constructUseIncMmDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2";
+      return "Incorrect message meaning";
     },
     get$constructUseIgnMmDesc() {
-      return "\u0391\u03b3\u03bd\u03bf\u03b7\u03bc\u03ad\u03bd\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2";
+      return "Ignored message meaning";
     },
     get$meaning() {
-      return "\u039d\u03cc\u03b7\u03bc\u03b1";
+      return "Meaning";
     },
     chatWith$1(displayname) {
-      return "\u039f\u03bc\u03ac\u03b4\u03b1 \u03bc\u03b5 " + displayname;
+      return "Group with " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03ba\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03bf\u03bd \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf \u03c3\u03c4\u03bf email \u03ba\u03b1\u03b9 \u03c3\u03c5\u03bd\u03b5\u03c7\u03af\u03c3\u03c4\u03b5.\n\n\u0395\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03c4\u03bf\u03bd \u03c6\u03ac\u03ba\u03b5\u03bb\u03bf spam \u03b1\u03bd \u03c4\u03bf email \u03b4\u03b5\u03bd \u03ad\u03c7\u03b5\u03b9 \u03c6\u03c4\u03ac\u03c3\u03b5\u03b9.";
+      return "Please click on the link in the email and then proceed.\n\nCheck your spam folder if the email hasn't arrived.";
     },
     get$dontForgetPassword() {
-      return "\u039c\u03b7\u03bd \u03be\u03b5\u03c7\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03ae\u03c2 \u03c3\u03b1\u03c2!";
+      return "Don't forget your password!";
     },
     get$enableAutocorrectToolName() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b7\u03c2 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7\u03c2 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae\u03c2";
+      return "Enable device autocorrect";
     },
     get$enableAutocorrectDescription() {
-      return "\u0391\u03bd \u03b7 \u03c3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03c3\u03b1\u03c2 \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c0\u03bf\u03c5 \u03bc\u03b1\u03b8\u03b1\u03af\u03bd\u03b5\u03c4\u03b5, \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b7 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03bf\u03c1\u03b8\u03ce\u03bd\u03b5\u03b9 \u03ba\u03bf\u03b9\u03bd\u03ac \u03bb\u03ac\u03b8\u03b7 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03b5\u03af\u03c4\u03b5.";
+      return "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.";
     },
     get$ttsDisbledTitle() {
-      return "\u0397 \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae \u03b1\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b5";
+      return "Text-to-speech disabled";
     },
     get$ttsDisabledBody() {
-      return "\u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7 \u03c6\u03c9\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae \u03b1\u03bd\u03ac\u03b3\u03bd\u03c9\u03c3\u03b7 \u03c3\u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03b5\u03ba\u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2";
+      return "You can enable text-to-speech in your learning settings";
     },
     get$noSpaceDescriptionYet() {
-      return "\u0394\u03b5\u03bd \u03ad\u03c7\u03b5\u03b9 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03b7\u03b8\u03b5\u03af \u03b1\u03ba\u03cc\u03bc\u03b7 \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2.";
+      return "No course description created yet.";
     },
     get$tooLargeToSend() {
-      return "\u0391\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03bf\u03bb\u03cd \u03bc\u03b5\u03b3\u03ac\u03bb\u03bf \u03b3\u03b9\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae";
+      return "This message is too large to send";
     },
     get$exitWithoutSaving() {
-      return "\u0395\u03af\u03c3\u03c4\u03b5 \u03b2\u03ad\u03b2\u03b1\u03b9\u03bf\u03b9 \u03cc\u03c4\u03b9 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03c6\u03cd\u03b3\u03b5\u03c4\u03b5 \u03c7\u03c9\u03c1\u03af\u03c2 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03c3\u03b5\u03c4\u03b5;";
+      return "Are you sure you want to leave without saving?";
     },
     get$enableAutocorrectWarning() {
-      return "\u03a0\u03c1\u03bf\u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7! \u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 \u03b7 \u03c0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c4\u03bf\u03c5 \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03af\u03bf\u03c5 \u03c4\u03b7\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Warning! Requires adding your target language keyboard";
     },
     get$leaveRoomDescription() {
-      return "\u03a0\u03c1\u03cc\u03ba\u03b5\u03b9\u03c4\u03b1\u03b9 \u03bd\u03b1 \u03c6\u03cd\u03b3\u03b5\u03c4\u03b5 \u03b1\u03c0\u03cc \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1. \u039f\u03b9 \u03ac\u03bb\u03bb\u03bf\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b8\u03b1 \u03b4\u03bf\u03c5\u03bd \u03cc\u03c4\u03b9 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03c6\u03cd\u03b3\u03b5\u03b9.";
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
     get$confirmUserId() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03b9\u03ce\u03c3\u03c4\u03b5 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 Pangea Chat \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03c3\u03b1\u03c2.";
+      return "Please confirm your Pangea Chat username in order to delete your account.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ac\u03b5\u03b9 " + startDate;
+      return "Starting " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u0391\u03ba\u03cd\u03c1\u03c9\u03c3\u03b7 \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae \u03c3\u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2";
+      return "\u2022 Cancel at any time in subscription settings";
     },
     get$autocorrectNotAvailable() {
-      return "\u0394\u03c5\u03c3\u03c4\u03c5\u03c7\u03ce\u03c2, \u03b7 \u03c0\u03bb\u03b1\u03c4\u03c6\u03cc\u03c1\u03bc\u03b1 \u03c3\u03b1\u03c2 \u03b4\u03b5\u03bd \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03c4\u03b1\u03b9 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae \u03b3\u03b9\u03b1 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03bb\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03af\u03b1. \u039c\u03b5\u03af\u03bd\u03b5\u03c4\u03b5 \u03c3\u03c5\u03bd\u03c4\u03bf\u03bd\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf\u03b9 \u03b3\u03b9\u03b1 \u03c0\u03b5\u03c1\u03b1\u03b9\u03c4\u03ad\u03c1\u03c9 \u03b1\u03bd\u03ac\u03c0\u03c4\u03c5\u03be\u03b7!";
+      return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
     },
     get$pleaseUpdateApp() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c3\u03c5\u03bd\u03b5\u03c7\u03af\u03c3\u03b5\u03c4\u03b5.";
+      return "Please update the app to continue.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u03a4\u03b1\u03b9\u03c1\u03b9\u03ac\u03be\u03c4\u03b5 emojis \u03bc\u03b5 \u03c4\u03b9\u03c2 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03c0\u03bf\u03c5 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b1 \u03b1\u03bd\u03c4\u03b9\u03c0\u03c1\u03bf\u03c3\u03c9\u03c0\u03b5\u03cd\u03bf\u03c5\u03bd. \u039c\u03b7\u03bd \u03b1\u03bd\u03b7\u03c3\u03c5\u03c7\u03b5\u03af\u03c4\u03b5! \u0394\u03b5\u03bd \u03b8\u03b1 \u03c7\u03ac\u03c3\u03b5\u03c4\u03b5 \u03c0\u03cc\u03bd\u03c4\u03bf\u03c5\u03c2 \u03b1\u03bd \u03b4\u03b9\u03b1\u03c6\u03c9\u03bd\u03b5\u03af\u03c4\u03b5. \ud83d\ude05";
+      return "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b5\u03af\u03bd\u03b1\u03b9 \u03cc\u03bb\u03b7 \u03b7 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03b9\u03ba\u03ae \u03c3\u03b1\u03c2 \u03bb\u03af\u03c3\u03c4\u03b1! \u039a\u03b1\u03b8\u03ce\u03c2 \u03ba\u03b5\u03c1\u03b4\u03af\u03b6\u03b5\u03c4\u03b5 XP \u03b3\u03b9\u03b1 \u03ba\u03ac\u03b8\u03b5 \u03bb\u03ad\u03be\u03b7, \u03b8\u03b1 \u03bc\u03b5\u03c4\u03b1\u03c4\u03c1\u03ad\u03c0\u03bf\u03bd\u03c4\u03b1\u03b9 \u03b1\u03c0\u03cc \u03c3\u03c0\u03bf\u03c1\u03ac \u03c3\u03b5 \u03c0\u03bb\u03ae\u03c1\u03b7 \u03ac\u03bd\u03b8\u03b9\u03c3\u03b7. \u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03b5 \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03bb\u03ad\u03be\u03b7 \u03b3\u03b9\u03b1 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b5\u03c2 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03ad\u03c1\u03b5\u03b9\u03b5\u03c2.";
+      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
     },
     get$morphAnalyticsListBody() {
-      return "\u0391\u03c5\u03c4\u03ad\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03cc\u03bb\u03b5\u03c2 \u03bf\u03b9 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c0\u03bf\u03c5 \u03bc\u03b1\u03b8\u03b1\u03af\u03bd\u03b5\u03c4\u03b5! \u0398\u03b1 \u03c4\u03b9\u03c2 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03b1\u03bd\u03c4\u03ac\u03c4\u03b5 \u03ba\u03b1\u03c4\u03ac \u03c4\u03b7 \u03b4\u03b9\u03ac\u03c1\u03ba\u03b5\u03b9\u03b1 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2. \u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b3\u03b9\u03b1 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03ad\u03c1\u03b5\u03b9\u03b5\u03c2.";
+      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
     get$knockSpaceSuccess() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03b6\u03b7\u03c4\u03ae\u03c3\u03b5\u03b9 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1! \u0388\u03bd\u03b1\u03c2 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2 \u03b8\u03b1 \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9 \u03c3\u03c4\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2 \u03bc\u03cc\u03bb\u03b9\u03c2 \u03c4\u03bf \u03bb\u03ac\u03b2\u03b5\u03b9 \ud83d\ude00";
+      return "You have requested to join this course! An admin will respond to your request when they receive it \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u0391\u03ba\u03bf\u03cd\u03c3\u03c4\u03b5 \u03c4\u03bf \u03c0\u03bb\u03ae\u03c1\u03b5\u03c2 \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1. \u03a3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03ad\u03c7\u03b5\u03b9\u03b1, \u03c4\u03b1\u03b9\u03c1\u03b9\u03ac\u03be\u03c4\u03b5 \u03c4\u03b1 \u03b7\u03c7\u03b7\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03c4\u03b9\u03c2 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2.";
+      return "Listen to the complete message. Then match the audios with the words.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03b1 \u03ba\u03bf\u03bc\u03bc\u03ac\u03c4\u03b9\u03b1 \u03c0\u03b1\u03b6\u03bb \u03b3\u03b9\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03b5\u03c1\u03c9\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2!";
+      return "Click the puzzle pieces for grammar questions!";
     },
     get$home() {
-      return "\u0391\u03c1\u03c7\u03b9\u03ba\u03ae";
+      return "Home";
     },
     get$join(_) {
-      return "\u03a3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae";
+      return "Join";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03b1 \u03ba\u03bf\u03c5\u03bc\u03c0\u03b9\u03ac \u03c0\u03b1\u03c1\u03b1\u03ba\u03ac\u03c4\u03c9 \u03b3\u03b9\u03b1 mini-games \u03bc\u03b5 \u03b1\u03bd\u03c4\u03b9\u03c3\u03c4\u03bf\u03af\u03c7\u03b9\u03c3\u03b7 emoji, \u03ae\u03c7\u03c9\u03bd, \u03c3\u03b7\u03bc\u03b1\u03c3\u03b9\u03ce\u03bd \u03bb\u03ad\u03be\u03b5\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u03b5\u03bd\u03bd\u03bf\u03b9\u03ce\u03bd. \u0389 \u03ba\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03b5 \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03bb\u03ad\u03be\u03b7 \u03b3\u03b9\u03b1 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03ad\u03c1\u03b5\u03b9\u03b5\u03c2.";
+      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u0395\u03c0\u03b1\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03bf\u03b4\u03b7\u03b3\u03b9\u03ce\u03bd \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1\u03c2";
+      return "Reset instruction tooltips";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03af\u03c3\u03b5\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03c4\u03b9\u03c2 \u03bf\u03b4\u03b7\u03b3\u03af\u03b5\u03c2 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1\u03c2, \u03cc\u03c0\u03c9\u03c2 \u03b3\u03b9\u03b1 \u03ad\u03bd\u03b1\u03bd \u03bf\u03bb\u03bf\u03ba\u03b1\u03af\u03bd\u03bf\u03c5\u03c1\u03b3\u03b9\u03bf \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7.";
+      return "Click to show instruction tooltips like for a brand new user.";
     },
     get$translationProblem() {
-      return "\u03a0\u03c1\u03cc\u03b2\u03bb\u03b7\u03bc\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2";
+      return "Translation problem";
     },
     get$askToJoin() {
-      return "\u0396\u03ae\u03c4\u03b7\u03c3\u03b5 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03b9\u03c2";
+      return "Ask to join";
     },
     get$emptyChatWarningTitle() {
-      return "\u0397 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03ba\u03b5\u03bd\u03ae";
+      return "Chat is empty";
     },
     get$emptyChatWarningDesc() {
-      return "\u0394\u03b5\u03bd \u03ad\u03c7\u03b5\u03b9\u03c2 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03b9 \u03ba\u03b1\u03bd\u03ad\u03bd\u03b1\u03bd \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03c3\u03bf\u03c5. \u03a0\u03ae\u03b3\u03b1\u03b9\u03bd\u03b5 \u03c3\u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03b9\u03c2 \u03c4\u03b9\u03c2 \u03b5\u03c0\u03b1\u03c6\u03ad\u03c2 \u03c3\u03bf\u03c5 \u03ae \u03c4\u03bf Bot. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c2 \u03b5\u03c0\u03af\u03c3\u03b7\u03c2 \u03bd\u03b1 \u03c4\u03bf \u03ba\u03ac\u03bd\u03b5\u03b9\u03c2 \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1.";
+      return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
     },
     get$areYouLikeMe() {
-      return "\u0395\u03af\u03c3\u03b1\u03b9 \u03c3\u03b1\u03bd \u03b5\u03bc\u03ad\u03bd\u03b1;";
+      return "Are you like me?";
     },
     get$tryAgainLater() {
-      return "\u03a0\u03bf\u03bb\u03bb\u03ad\u03c2 \u03c0\u03c1\u03bf\u03c3\u03c0\u03ac\u03b8\u03b5\u03b9\u03b5\u03c2. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03af\u03bc\u03b1\u03c3\u03b5 \u03be\u03b1\u03bd\u03ac \u03c3\u03b5 5 \u03bb\u03b5\u03c0\u03c4\u03ac.";
+      return "Too many attempts made. Please try again in 5 minutes.";
     },
     get$enterSpaceCode() {
-      return "\u0395\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Enter course code";
     },
     get$shareSpaceLink() {
-      return "\u039c\u03bf\u03b9\u03c1\u03ac\u03c3\u03bf\u03c5 \u03c4\u03bf\u03bd \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf";
+      return "Share link";
     },
     get$byUsingPangeaChat() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ce\u03bd\u03c4\u03b1\u03c2 \u03c4\u03bf Pangea Chat, \u03c3\u03c5\u03bc\u03c6\u03c9\u03bd\u03ce \u03bc\u03b5 \u03c4\u03bf ";
+      return "By using Pangea Chat, I agree to the ";
     },
     get$details(_) {
-      return "\u039b\u03b5\u03c0\u03c4\u03bf\u03bc\u03ad\u03c1\u03b5\u03b9\u03b5\u03c2";
+      return "Details";
     },
     get$languageLevelPreA1Desc() {
-      return "\u03a0\u03bf\u03c4\u03ad \u03b4\u03b5\u03bd \u03ad\u03bc\u03b1\u03b8\u03b1 \u03ae \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b1 \u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1.";
+      return "I have never learned or used the language.";
     },
     get$languageLevelA1Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03c9 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c9 \u03bc\u03b5\u03c1\u03b9\u03ba\u03ad\u03c2 \u03bf\u03b9\u03ba\u03b5\u03af\u03b5\u03c2 \u03ba\u03b1\u03b8\u03b7\u03bc\u03b5\u03c1\u03b9\u03bd\u03ad\u03c2 \u03b5\u03ba\u03c6\u03c1\u03ac\u03c3\u03b5\u03b9\u03c2 \u03ba\u03b1\u03b9 \u03c0\u03bf\u03bb\u03cd \u03b2\u03b1\u03c3\u03b9\u03ba\u03ad\u03c2 \u03c6\u03c1\u03ac\u03c3\u03b5\u03b9\u03c2.";
+      return "I can understand and use some familiar everyday expressions and very basic phrases.";
     },
     get$languageLevelA2Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03c9 \u03c0\u03c1\u03bf\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03ba\u03b1\u03b9 \u03c3\u03c5\u03c7\u03bd\u03ac \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03bf\u03cd\u03bc\u03b5\u03bd\u03b5\u03c2 \u03b5\u03ba\u03c6\u03c1\u03ac\u03c3\u03b5\u03b9\u03c2 \u03c0\u03bf\u03c5 \u03c3\u03c7\u03b5\u03c4\u03af\u03b6\u03bf\u03bd\u03c4\u03b1\u03b9 \u03bc\u03b5 \u03c0\u03b5\u03c1\u03b9\u03bf\u03c7\u03ad\u03c2 \u03ac\u03bc\u03b5\u03c3\u03b7\u03c2 \u03c3\u03b7\u03bc\u03b1\u03c3\u03af\u03b1\u03c2.";
+      return "I can understand sentences and frequently used expressions related to areas of immediate relevance.";
     },
     get$languageLevelB1Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03b1\u03bd\u03c4\u03b9\u03bc\u03b5\u03c4\u03c9\u03c0\u03af\u03c3\u03c9 \u03c4\u03b9\u03c2 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b5\u03c2 \u03bf\u03b9\u03ba\u03b5\u03af\u03b5\u03c2 \u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2 \u03ba\u03b1\u03b9 \u03bc\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03c0\u03b1\u03c1\u03ac\u03b3\u03c9 \u03b1\u03c0\u03bb\u03cc \u03c3\u03c5\u03bd\u03b4\u03b5\u03b4\u03b5\u03bc\u03ad\u03bd\u03bf \u03ba\u03b5\u03af\u03bc\u03b5\u03bd\u03bf \u03c3\u03b5 \u03bf\u03b9\u03ba\u03b5\u03af\u03b1 \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1.";
+      return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
     },
     get$languageLevelB2Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03c9 \u03c4\u03b9\u03c2 \u03ba\u03cd\u03c1\u03b9\u03b5\u03c2 \u03b9\u03b4\u03ad\u03b5\u03c2 \u03c3\u03cd\u03bd\u03b8\u03b5\u03c4\u03c9\u03bd \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03c9\u03bd \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03b1\u03bb\u03bb\u03b7\u03bb\u03b5\u03c0\u03b9\u03b4\u03c1\u03ac\u03c3\u03c9 \u03bc\u03b5 \u03b2\u03b1\u03b8\u03bc\u03cc \u03b5\u03c5\u03c6\u03c1\u03ac\u03b4\u03b5\u03b9\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03b1\u03c5\u03b8\u03bf\u03c1\u03bc\u03b7\u03c4\u03b9\u03c3\u03bc\u03bf\u03cd.";
+      return "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.";
     },
     get$languageLevelC1Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03b5\u03ba\u03c6\u03c1\u03ac\u03c3\u03c9 \u03b9\u03b4\u03ad\u03b5\u03c2 \u03bc\u03b5 \u03b5\u03c5\u03c6\u03c1\u03ac\u03b4\u03b5\u03b9\u03b1 \u03ba\u03b1\u03b9 \u03b1\u03c5\u03b8\u03bf\u03c1\u03bc\u03b7\u03c4\u03b9\u03c3\u03bc\u03cc \u03c7\u03c9\u03c1\u03af\u03c2 \u03bc\u03b5\u03b3\u03ac\u03bb\u03b7 \u03b4\u03c5\u03c3\u03ba\u03bf\u03bb\u03af\u03b1 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03c9 \u03ad\u03bd\u03b1 \u03b5\u03c5\u03c1\u03cd \u03c6\u03ac\u03c3\u03bc\u03b1 \u03b1\u03c0\u03b1\u03b9\u03c4\u03b7\u03c4\u03b9\u03ba\u03ce\u03bd \u03ba\u03b5\u03b9\u03bc\u03ad\u03bd\u03c9\u03bd.";
+      return "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.";
     },
     get$languageLevelC2Desc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03ce \u03bd\u03b1 \u03ba\u03b1\u03c4\u03b1\u03bb\u03ac\u03b2\u03c9 \u03c3\u03c7\u03b5\u03b4\u03cc\u03bd \u03c4\u03b1 \u03c0\u03ac\u03bd\u03c4\u03b1 \u03c0\u03bf\u03c5 \u03b1\u03ba\u03bf\u03cd\u03c9 \u03ae \u03b4\u03b9\u03b1\u03b2\u03ac\u03b6\u03c9 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03ba\u03c6\u03c1\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9 \u03bc\u03b5 \u03b5\u03c5\u03c6\u03c1\u03ac\u03b4\u03b5\u03b9\u03b1 \u03ba\u03b1\u03b9 \u03b1\u03ba\u03c1\u03af\u03b2\u03b5\u03b9\u03b1.";
+      return "I can understand virtually everything heard or read and express myself fluently and precisely.";
     },
     get$newVocab() {
-      return "\u039d\u03ad\u03b5\u03c2 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2";
+      return "New vocab";
     },
     get$newGrammar() {
-      return "\u039d\u03ad\u03b5\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2";
+      return "New grammar concepts";
     },
     get$ban() {
-      return "\u0391\u03c0\u03b1\u03b3\u03cc\u03c1\u03b5\u03c5\u03c3\u03b7";
+      return "Ban";
     },
     get$kick() {
-      return "\u0391\u03c0\u03bf\u03bc\u03ac\u03ba\u03c1\u03c5\u03bd\u03c3\u03b7";
+      return "Kick";
     },
     get$lemma() {
-      return "\u039b\u03ae\u03bc\u03bc\u03b1";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "\u03a7\u03b1\u03c1\u03b1\u03ba\u03c4\u03b7\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Grammar feature";
     },
     get$grammarTag() {
-      return "\u0395\u03c4\u03b9\u03ba\u03ad\u03c4\u03b1 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Grammar tag";
     },
     get$forms() {
-      return "\u039c\u03bf\u03c1\u03c6\u03ad\u03c2";
+      return "Forms";
     },
     get$exampleMessages() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03b4\u03b5\u03af\u03b3\u03bc\u03b1\u03c4\u03b1 \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Example messages";
     },
     get$timesUsedIndependently() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd\u03bf\u03bc\u03b1";
+      return "Times used independently";
     },
     get$timesUsedWithAssistance() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b5 \u03bc\u03b5 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1";
+      return "Times used with assistance";
     },
     shareInviteCode$1(code) {
-      return "\u039c\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7\u03c2: " + code;
+      return "Share invite code: " + code;
     },
     get$skipForNow() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03bb\u03b5\u03af\u03c8\u03c4\u03b5 \u03c0\u03c1\u03bf\u03c2 \u03c4\u03bf \u03c0\u03b1\u03c1\u03cc\u03bd";
+      return "Skip for now";
     },
     get$permissions(_) {
-      return "\u0386\u03b4\u03b5\u03b9\u03b5\u03c2";
+      return "Permissions";
     },
     get$spaceChildPermission() {
-      return "\u03a0\u03bf\u03b9\u03bf\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c0\u03c1\u03bf\u03c3\u03b8\u03ad\u03c3\u03b5\u03b9 \u03bd\u03ad\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Who can add new chats to this course";
     },
     get$addEnvironmentOverride() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c0\u03b1\u03c1\u03b1\u03bc\u03ad\u03c4\u03c1\u03bf\u03c5 \u03c0\u03b5\u03c1\u03b9\u03b2\u03ac\u03bb\u03bb\u03bf\u03bd\u03c4\u03bf\u03c2";
+      return "Add environment override";
     },
     get$defaultOption() {
-      return "\u03a0\u03c1\u03bf\u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae";
+      return "Default";
     },
     get$deleteChatDesc() {
-      return "\u0395\u03af\u03c3\u03c4\u03b5 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03b9 \u03cc\u03c4\u03b9 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1; \u0398\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03b5\u03af \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03ba\u03b1\u03b9 \u03cc\u03bb\u03b1 \u03c4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03bc\u03ad\u03c3\u03b1 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03bb\u03ad\u03bf\u03bd \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b1 \u03b3\u03b9\u03b1 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ae \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2.";
+      return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
     },
     get$deleteSpaceDesc() {
-      return "\u03a4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03bf\u03c0\u03bf\u03b9\u03b5\u03c3\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03b5\u03c0\u03b9\u03bb\u03b5\u03b3\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03b8\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03bf\u03cd\u03bd \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03ba\u03b1\u03b9 \u03cc\u03bb\u03b1 \u03c4\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03bc\u03ad\u03c3\u03b1 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03bb\u03ad\u03bf\u03bd \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b1 \u03b3\u03b9\u03b1 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ae \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2. \u0391\u03c5\u03c4\u03ae \u03b7 \u03b5\u03bd\u03ad\u03c1\u03b3\u03b5\u03b9\u03b1 \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af.";
+      return "The course and any selected chats will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
     get$configureSpace() {
-      return "\u0394\u03b9\u03b1\u03bc\u03cc\u03c1\u03c6\u03c9\u03c3\u03b7 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Configure course";
     },
     get$pinMessages() {
-      return "\u039a\u03b1\u03c1\u03c6\u03b9\u03c4\u03c3\u03ce\u03c3\u03c4\u03b5 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1";
+      return "Pin messages";
     },
     get$setJoinRules() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03ba\u03b1\u03bd\u03cc\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae\u03c2";
+      return "Set join rules";
     },
     get$changeGeneralSettings() {
-      return "\u0391\u03bb\u03bb\u03ac\u03be\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03b3\u03b5\u03bd\u03b9\u03ba\u03ad\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2";
+      return "Change general settings";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03ac\u03bb\u03bb\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2";
+      return "Invite other users";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u0391\u03bb\u03bb\u03ac\u03be\u03c4\u03b5 \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Change the name of the course";
     },
     get$changeTheDescription() {
-      return "\u0391\u03bb\u03bb\u03ac\u03be\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae";
+      return "Change the description";
     },
     get$changeThePermissions() {
-      return "\u0391\u03bb\u03bb\u03ac\u03be\u03c4\u03b5 \u03c4\u03b1 \u03b4\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1";
+      return "Change the permissions";
     },
     get$introductions() {
-      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ad\u03c2";
+      return "Introductions";
     },
     get$announcements() {
-      return "\u0391\u03bd\u03b1\u03ba\u03bf\u03b9\u03bd\u03ce\u03c3\u03b5\u03b9\u03c2";
+      return "Announcements";
     },
     get$activities() {
-      return "\u0394\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2";
+      return "Activities";
     },
     get$access() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7";
+      return "Access";
     },
     get$howSpaceCanBeFound() {
-      return "\u03a0\u03ce\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b2\u03c1\u03b5\u03b8\u03b5\u03af \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "How this course can be found";
     },
     get$$private() {
-      return "\u0399\u03b4\u03b9\u03c9\u03c4\u03b9\u03ba\u03cc";
+      return "Private";
     },
     get$cannotBeFoundInSearch() {
-      return "\u0394\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b2\u03c1\u03b5\u03b8\u03b5\u03af \u03c3\u03c4\u03b7\u03bd \u03b1\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7";
+      return "Cannot be found in search";
     },
     get$$public(_) {
-      return "\u0394\u03b7\u03bc\u03cc\u03c3\u03b9\u03bf";
+      return "Public";
     },
     get$visibleToCommunity() {
-      return '\u039f\u03c1\u03b1\u03c4\u03cc \u03c3\u03c4\u03b7\u03bd \u03b5\u03c5\u03c1\u03cd\u03c4\u03b5\u03c1\u03b7 \u03ba\u03bf\u03b9\u03bd\u03cc\u03c4\u03b7\u03c4\u03b1 Pangea Chat \u03bc\u03ad\u03c3\u03c9 "\u0392\u03c1\u03b5\u03c2 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1"';
+      return 'Visible to the broader Pangea Chat community via "Find a course"';
     },
     get$howSpaceCanBeJoined() {
-      return "\u03a0\u03ce\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03bd\u03c4\u03b1\u03c7\u03b8\u03b5\u03af \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "How this course can be joined";
     },
     get$canBeFoundVia() {
-      return "\u039c\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b2\u03c1\u03b5\u03b8\u03b5\u03af \u03bc\u03ad\u03c3\u03c9:";
+      return "Can be found via:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
+      return "\u2022 invitation";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03ae \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf\u03c2";
+      return "\u2022 code or link";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u03b1\u03af\u03c4\u03b7\u03bc\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae\u03c2 \u03ba\u03b1\u03b9 \u03ad\u03b3\u03ba\u03c1\u03b9\u03c3\u03b7 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae";
+      return "\u2022 request to join and admin approval";
     },
     get$sendActivities() {
-      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd";
+      return "Send activities";
     },
     get$directMessage() {
-      return "\u0386\u03bc\u03b5\u03c3\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "Direct Message";
     },
     get$newDirectMessage() {
-      return "\u039d\u03ad\u03bf \u03ac\u03bc\u03b5\u03c3\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1";
+      return "New direct message";
     },
     get$speakingExercisesTooltip() {
-      return "\u039f\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "Speaking";
     },
     get$transcriptionFailed() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bc\u03b5\u03c4\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae\u03c2 \u03ae\u03c7\u03bf\u03c5";
+      return "Failed to transcribe audio";
     },
     get$aUserIsKnocking() {
-      return "\u0388\u03bd\u03b1\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7\u03c2 \u03b6\u03b7\u03c4\u03ac \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03b9 \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2";
+      return "1 user is requesting to join your course";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b6\u03b7\u03c4\u03bf\u03cd\u03bd \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03bf\u03c5\u03bd \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2";
+      return "" + users + " users are requesting to join your course";
     },
     get$failedToFetchTranscription() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bb\u03ae\u03c8\u03b7\u03c2 \u03bc\u03b5\u03c4\u03b1\u03b3\u03c1\u03b1\u03c6\u03ae\u03c2";
+      return "Failed to fetch transcription";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u03a4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03b8\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03b1\u03c6\u03b5\u03af \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2. \u0391\u03c5\u03c4\u03ae \u03b7 \u03b5\u03bd\u03ad\u03c1\u03b3\u03b5\u03b9\u03b1 \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af.";
+      return "The course will be deleted for all participants. This action cannot be undone.";
     },
     get$failedToPlayVideo() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03b1\u03bd\u03b1\u03c0\u03b1\u03c1\u03b1\u03b3\u03c9\u03b3\u03ae\u03c2 \u03b2\u03af\u03bd\u03c4\u03b5\u03bf";
+      return "Failed to play video";
     },
     get$done() {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5";
+      return "Done";
     },
     get$inThisSpace() {
-      return "\u03a3\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "In this course";
     },
     get$myContacts() {
-      return "\u039f\u03b9 \u03b5\u03c0\u03b1\u03c6\u03ad\u03c2 \u03bc\u03bf\u03c5";
+      return "My contacts";
     },
     get$inviteAllInSpace() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03cc\u03bb\u03c9\u03bd \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Invite all in this course";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u038c\u03bb\u03bf\u03b9 \u03bf\u03b9 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03ad\u03c7\u03bf\u03c5\u03bd \u03c0\u03c1\u03bf\u03c3\u03ba\u03bb\u03b7\u03b8\u03b5\u03af \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "All course participants has been invited to the chat";
     },
     numKnocking$1(count) {
-      return "" + count + " \u03c7\u03c4\u03c5\u03c0\u03ae\u03bc\u03b1\u03c4\u03b1";
+      return "" + count + " knocking";
     },
     numInvited$1(count) {
-      return "" + count + " \u03c0\u03c1\u03bf\u03c3\u03ba\u03b5\u03ba\u03bb\u03b7\u03bc\u03ad\u03bd\u03bf\u03b9";
+      return "" + count + " invited";
     },
     get$errorFetchingDefinition() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bb\u03ae\u03c8\u03b7\u03c2 \u03bf\u03c1\u03b9\u03c3\u03bc\u03bf\u03cd";
+      return "Failed to fetch definition";
     },
     get$errorProcessAnalytics() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1\u03c2 \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ce\u03bd \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03c9\u03bd";
+      return "Failed to process analytics";
     },
     get$errorDownloading() {
-      return "\u0397 \u03bb\u03ae\u03c8\u03b7 \u03b1\u03c0\u03ad\u03c4\u03c5\u03c7\u03b5";
+      return "Download failed";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03c6\u03cc\u03c1\u03c4\u03c9\u03c3\u03b7\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03b9\u03ce\u03bd \u03b5\u03bd\u03c4\u03cc\u03c2 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Failed to load chats within this course";
     },
     get$unexpectedError() {
-      return "\u0391\u03c0\u03c1\u03cc\u03b2\u03bb\u03b5\u03c0\u03c4\u03bf \u03c3\u03c6\u03ac\u03bb\u03bc\u03b1.";
+      return "Unexpected error.";
     },
     get$pleaseReload() {
-      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b1\u03bd\u03b1\u03c6\u03bf\u03c1\u03c4\u03ce\u03c3\u03c4\u03b5 \u03ba\u03b1\u03b9 \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "Please reload and try again.";
     },
     get$translationError() {
-      return "\u03a3\u03c6\u03ac\u03bb\u03bc\u03b1 \u03bc\u03b5\u03c4\u03ac\u03c6\u03c1\u03b1\u03c3\u03b7\u03c2";
+      return "Translation error";
     },
     get$errorFetchingActivity() {
-      return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bb\u03ae\u03c8\u03b7\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Failed to fetch activity";
     },
     get$check(_) {
-      return "\u0388\u03bb\u03b5\u03b3\u03c7\u03bf\u03c2";
+      return "Check";
     },
     get$unableToFindRoom() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03ae \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03bc\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "No chat or course found with that code. Please try again.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u03a0\u03c1\u03bf\u03b2\u03bf\u03bb\u03ae " + visible + "/" + users + " \u0391\u03bd\u03b1\u03bb\u03cd\u03c3\u03b5\u03c9\u03bd";
+      return "Viewing " + visible + "/" + users + " Analytics";
     },
     get$request(_) {
-      return "\u0391\u03af\u03c4\u03b7\u03bc\u03b1";
+      return "Request";
     },
     get$requestAll(_) {
-      return "\u0396\u03ae\u03c4\u03b7\u03c3\u03b7 \u038c\u03bb\u03b1";
+      return "Request All";
     },
     get$confirmMessageUnpin() {
-      return "\u0395\u03af\u03c3\u03c4\u03b5 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03b9 \u03cc\u03c4\u03b9 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03ad\u03c3\u03b5\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1;";
+      return "Are you sure you want to unpin this message?";
     },
     get$pending(_) {
-      return "\u0395\u03ba\u03ba\u03c1\u03b5\u03bc\u03b5\u03af";
+      return "Pending";
     },
     get$openRoleLabel() {
-      return "\u0391\u039d\u039f\u0399\u03a7\u03a4\u039f";
+      return "OPEN";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03b5\u03af\u03c7\u03b5 \u03c9\u03c2 " + role;
+      return "\ud83d\udc4b " + username + " joined as " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u03bf\u03bb\u03bf\u03ba\u03bb\u03ae\u03c1\u03c9\u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "\ud83c\udfaf " + username + " wrapped up this activity";
     },
     get$activitySummaryError() {
-      return "\u039f\u03b9 \u03c0\u03b5\u03c1\u03b9\u03bb\u03ae\u03c8\u03b5\u03b9\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03b5\u03c2";
+      return "Activity summaries unavailable";
     },
     get$requestSummaries() {
-      return "\u0391\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03b1 \u03c0\u03b5\u03c1\u03b9\u03bb\u03ae\u03c8\u03b5\u03c9\u03bd";
+      return "Request summaries";
     },
     get$requestAccessTitle() {
-      return "\u0396\u03b7\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7 \u03c3\u03b5 \u03b1\u03bd\u03b1\u03bb\u03cd\u03c3\u03b5\u03b9\u03c2;";
+      return "Request analytics access?";
     },
     get$requestAccessDesc() {
-      return "\u0398\u03b1 \u03b8\u03ad\u03bb\u03b1\u03c4\u03b5 \u03bd\u03b1 \u03b6\u03b7\u03c4\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b1 \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03b1 \u03c4\u03c9\u03bd \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03b5\u03c7\u03cc\u03bd\u03c4\u03c9\u03bd;\n\n\u0391\u03bd \u03bf\u03b9 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c3\u03c5\u03bc\u03c6\u03c9\u03bd\u03ae\u03c3\u03bf\u03c5\u03bd, \u03bf\u03b9 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd:\n    \u2022 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03cc \u03bb\u03b5\u03be\u03b9\u03bb\u03cc\u03b3\u03b9\u03bf\n    \u2022 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ad\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2\n    \u2022 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ad\u03c2 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c0\u03bf\u03c5 \u03bf\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b1\u03bd\n    \u2022 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03b3\u03ba\u03b5\u03ba\u03c1\u03b9\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd, \u03c3\u03c9\u03c3\u03c4\u03ac \u03ba\u03b1\u03b9 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03bc\u03ad\u03bd\u03b1\n\n\u0394\u03b5\u03bd \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd:\n    \u2022 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03b5\u03ba\u03c4\u03cc\u03c2 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2\n    \u2022 \u03bb\u03af\u03c3\u03c4\u03b1 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Would you like to request access to view participant analytics?\n\nIf participants agree, you will be able to view their:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nYou will not be able to view their:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
     },
     get$analyticsInactiveTitle() {
-      return "\u039f\u03b9 \u03b1\u03b9\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2 \u03c3\u03b5 \u03b1\u03bd\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03cd\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b4\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03c3\u03c4\u03b1\u03bb\u03bf\u03cd\u03bd";
+      return "Requests to inactive users couldn\u2019t be sent";
     },
     get$analyticsInactiveDesc() {
-      return "\u039f\u03b9 \u03b1\u03bd\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03af \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03c0\u03bf\u03c5 \u03b4\u03b5\u03bd \u03ad\u03c7\u03bf\u03c5\u03bd \u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af \u03b1\u03c0\u03cc \u03c4\u03cc\u03c4\u03b5 \u03c0\u03bf\u03c5 \u03b5\u03b9\u03c3\u03ae\u03c7\u03b8\u03b7 \u03b1\u03c5\u03c4\u03ae \u03b7 \u03bb\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b4\u03bf\u03c5\u03bd \u03c4\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2.\n\n\u03a4\u03bf \u03ba\u03bf\u03c5\u03bc\u03c0\u03af \u0391\u03af\u03c4\u03b7\u03bc\u03b1 \u03b8\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03c3\u03c4\u03b5\u03af \u03bc\u03cc\u03bb\u03b9\u03c2 \u03b5\u03c0\u03b9\u03c3\u03c4\u03c1\u03ad\u03c8\u03bf\u03c5\u03bd. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03be\u03b1\u03bd\u03b1\u03c3\u03c4\u03b5\u03af\u03bb\u03b5\u03c4\u03b5 \u03c4\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03b1 \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1 \u03ba\u03ac\u03bd\u03bf\u03bd\u03c4\u03b1\u03c2 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03bf \u03ba\u03bf\u03c5\u03bc\u03c0\u03af \u0391\u03af\u03c4\u03b7\u03bc\u03b1 \u03ba\u03ac\u03c4\u03c9 \u03b1\u03c0\u03cc \u03c4\u03bf \u03cc\u03bd\u03bf\u03bc\u03ac \u03c4\u03bf\u03c5\u03c2 \u03cc\u03c4\u03b1\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03bf.";
+      return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
     },
     get$accessRequestedTitle() {
-      return "\u0391\u03af\u03c4\u03b7\u03bc\u03b1 \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2 \u03c3\u03c4\u03b1 \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03b1";
+      return "Analytics Access Request";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u0396\u03b7\u03c4\u03ce\u03bd\u03c4\u03b1\u03c2 admin(s): " + admin + " \n\n\u039f\u03b9 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03b1\u03c0\u03cc \u03c4\u03bf \xab" + space + "\xbb \u03b6\u03b7\u03c4\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd \u03c4\u03b9\u03c2 \u03b1\u03bd\u03b1\u03bb\u03cd\u03c3\u03b5\u03b9\u03c2 \u03bc\u03ac\u03b8\u03b7\u03c3\u03ae\u03c2 \u03c3\u03b1\u03c2.\n\n\u0391\u03bd \u03c3\u03c5\u03bc\u03c6\u03c9\u03bd\u03b5\u03af\u03c4\u03b5, \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd:\n    \u2022 \u03c4\u03bf \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03cc \u03bb\u03b5\u03be\u03b9\u03bb\u03cc\u03b3\u03b9\u03bf\n    \u2022 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2\n    \u2022 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bb\u03b9\u03ba\u03ad\u03c2 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c0\u03bf\u03c5 \u03bf\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b1\u03bd\n    \u2022 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03b3\u03ba\u03b5\u03ba\u03c1\u03b9\u03bc\u03ad\u03bd\u03b5\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c0\u03bf\u03c5 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b1\u03bd, \u03c3\u03c9\u03c3\u03c4\u03ac \u03ba\u03b1\u03b9 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03bc\u03ad\u03bd\u03b1\n\n\u0394\u03b5\u03bd \u03b8\u03b1 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd:\n    \u2022 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03b5\u03ba\u03c4\u03cc\u03c2 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2\n    \u2022 \u03c4\u03b7 \u03bb\u03af\u03c3\u03c4\u03b1 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Requesting admin(s): " + admin + " \n\nAdmins from \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, They will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
     },
     get$adminRequestedAccess() {
-      return "\u039f\u03b9 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03b6\u03ae\u03c4\u03b7\u03c3\u03b1\u03bd \u03bd\u03b1 \u03b4\u03bf\u03c5\u03bd \u03c4\u03b1 \u03b1\u03bd\u03b1\u03bb\u03c5\u03c4\u03b9\u03ba\u03ac \u03c3\u03b1\u03c2 \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03b1.";
+      return "Admins asked to view your analytics.";
     },
     lastUpdated$1(time) {
-      return "\u0395\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5\n" + time;
+      return "Updated\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u038c\u03bb\u03b1 \u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b1\u03bd!";
+      return "All Finished!";
     },
     get$endForAll() {
-      return "\u03a4\u03ad\u03bb\u03bf\u03c2 \u03b3\u03b9\u03b1 \u03cc\u03bb\u03bf\u03c5\u03c2";
+      return "End for all";
     },
     get$newCourse() {
-      return "\u039d\u03ad\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "New course";
     },
     numModules$1(num) {
-      return "" + num + " \u03b5\u03bd\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2";
+      return "" + num + " modules";
     },
     get$coursePlan() {
-      return "\u03a0\u03bb\u03ac\u03bd\u03bf \u039c\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Course Plan";
     },
     get$editCourseLater() {
-      return "\u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf\u03bd \u03c4\u03af\u03c4\u03bb\u03bf, \u03c4\u03b9\u03c2 \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ad\u03c2 \u03ba\u03b1\u03b9 \u03c4\u03b7\u03bd \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1.";
+      return "You can edit template title, descriptions, and course image later.";
     },
     get$createCourse() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Create course";
     },
     get$stats() {
-      return "\u03a3\u03c4\u03b1\u03c4\u03b9\u03c3\u03c4\u03b9\u03ba\u03ac";
+      return "Stats";
     },
     get$createGroupChat() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03bf\u03bc\u03b1\u03b4\u03b9\u03ba\u03ae\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Create group chat";
     },
     get$editCourse() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Edit course";
     },
     get$inviteDesc() {
-      return "\u039c\u03b5 \u03cc\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7, \u03bc\u03b5 \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03ae \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf";
+      return "By username, by code or link";
     },
     get$editCourseDesc() {
-      return "\u0395\u03b4\u03ce \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf\u03bd \u03c4\u03af\u03c4\u03bb\u03bf, \u03c4\u03b7\u03bd \u03c0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03ba\u03b1\u03b9 \u03ac\u03bb\u03bb\u03b1 \u03c3\u03c4\u03bf\u03b9\u03c7\u03b5\u03af\u03b1 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2.";
+      return "Here you can edit course title, description, etc.";
     },
     get$permissionsDesc() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03b4\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1, \u03cc\u03c0\u03c9\u03c2 \u03c0\u03bf\u03b9\u03bf\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03b5\u03af \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2, \u03bd\u03b1 \u03c3\u03c4\u03ad\u03bb\u03bd\u03b5\u03b9 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1, \u03bd\u03b1 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03b5\u03af \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03ba.\u03bb\u03c0.";
+      return "Set permissions such as who can invite users, send messages, create chats, etc.";
     },
     get$accessDesc() {
-      return "\u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03ba\u03ac\u03bd\u03b5\u03c4\u03b5 \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2 \u03b1\u03bd\u03bf\u03b9\u03c7\u03c4\u03cc \u03c3\u03c4\u03bf\u03bd \u03ba\u03cc\u03c3\u03bc\u03bf! \u0389, \u03bd\u03b1 \u03c4\u03bf \u03ba\u03c1\u03b1\u03c4\u03ae\u03c3\u03b5\u03c4\u03b5 \u03b9\u03b4\u03b9\u03c9\u03c4\u03b9\u03ba\u03cc \u03ba\u03b1\u03b9 \u03b1\u03c3\u03c6\u03b1\u03bb\u03ad\u03c2.";
+      return "You can make your course open to the world! Or, make your course private and secure.";
     },
     get$createGroupChatDesc() {
-      return "\u0395\u03bd\u03ce \u03bf\u03b9 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03be\u03b5\u03ba\u03b9\u03bd\u03bf\u03cd\u03bd \u03ba\u03b1\u03b9 \u03c4\u03b5\u03bb\u03b5\u03b9\u03ce\u03bd\u03bf\u03c5\u03bd, \u03bf\u03b9 \u03bf\u03bc\u03b1\u03b4\u03b9\u03ba\u03ad\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03b8\u03b1 \u03c0\u03b1\u03c1\u03b1\u03bc\u03ad\u03bd\u03bf\u03c5\u03bd \u03b1\u03bd\u03bf\u03b9\u03c7\u03c4\u03ad\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03b5\u03c0\u03b9\u03ba\u03bf\u03b9\u03bd\u03c9\u03bd\u03af\u03b1.";
+      return "Whereas activity sessions start and end, group chats will stay open for routine communication.";
     },
     get$deleteDesc() {
-      return "\u039c\u03cc\u03bd\u03bf \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03bf\u03c5\u03bd \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1. \u0391\u03c5\u03c4\u03ae \u03b5\u03af\u03bd\u03b1\u03b9 \u03bc\u03b9\u03b1 \u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03c1\u03bf\u03c6\u03b9\u03ba\u03ae \u03b5\u03bd\u03ad\u03c1\u03b3\u03b5\u03b9\u03b1 \u03c0\u03bf\u03c5 \u03b1\u03c6\u03b1\u03b9\u03c1\u03b5\u03af \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c6\u03b5\u03b9 \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03b5\u03c0\u03b9\u03bb\u03b5\u03b3\u03bc\u03ad\u03bd\u03b5\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03b5\u03bd\u03c4\u03cc\u03c2 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2. \u03a0\u03c1\u03bf\u03c7\u03c9\u03c1\u03ae\u03c3\u03c4\u03b5 \u03bc\u03b5 \u03c0\u03c1\u03bf\u03c3\u03bf\u03c7\u03ae.";
+      return "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.";
     },
     get$noCourseFound() {
-      return "\u03a9\u03c7, \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03c7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c4\u03b1\u03b9 \u03ad\u03bd\u03b1 \u03c0\u03bb\u03ac\u03bd\u03bf!\n\n\u03a4\u03b1 \u03c0\u03bb\u03ac\u03bd\u03b1 \u03bc\u03b1\u03b8\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03bc\u03b9\u03b1 \u03c3\u03b5\u03b9\u03c1\u03ac \u03b8\u03b5\u03bc\u03ac\u03c4\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03c3\u03c5\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7\u03c2.";
+      return "Oh, this course needs a plan!\n\nCourse plans are a sequence of topics and conversation activities.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u03ac\u03bb\u03bb\u03bf\u03b9";
+      return "+ " + num + " others";
     },
     get$whatNow() {
-      return "\u03a4\u03b9 \u03c4\u03ce\u03c1\u03b1;";
+      return "What now?";
     },
     get$chooseNextActivity() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03ac \u03c3\u03b1\u03c2!";
+      return "Choose your next activity!";
     },
     get$letsGo() {
-      return "\u03a0\u03ac\u03bc\u03b5";
+      return "Let's go";
     },
     get$chooseRole() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c1\u03cc\u03bb\u03bf!";
+      return "Choose a role!";
     },
     get$chooseRoleToParticipate() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c1\u03cc\u03bb\u03bf \u03b3\u03b9\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae!";
+      return "Choose a role to participate!";
     },
     waitingToFillRole$1(num) {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03c3\u03c5\u03bc\u03c0\u03bb\u03ae\u03c1\u03c9\u03c3\u03b7 " + num + " \u03c1\u03cc\u03bb\u03c9\u03bd...";
+      return "Waiting to fill " + num + " roles...";
     },
     get$pingParticipants() {
-      return "\u0395\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ad\u03c7\u03bf\u03bd\u03c4\u03b5\u03c2 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Ping course participants";
     },
     get$playWithBot() {
-      return "\u03a0\u03b1\u03af\u03be\u03c4\u03b5 \u03bc\u03b5 \u03c4\u03bf Pangea Bot";
+      return "Play with Pangea Bot";
     },
     get$waitNotDone() {
-      return "\u03a0\u03b5\u03c1\u03af\u03bc\u03b5\u03bd\u03b5, \u03b4\u03b5\u03bd \u03ad\u03c7\u03c9 \u03c4\u03b5\u03bb\u03b5\u03b9\u03ce\u03c3\u03b5\u03b9!";
+      return "Wait I\u2019m not done!";
     },
     get$waitingForOthersToFinish() {
-      return "\u0391\u03bd\u03b1\u03bc\u03bf\u03bd\u03ae \u03b3\u03b9\u03b1 \u03c4\u03bf\u03c5\u03c2 \u03c5\u03c0\u03cc\u03bb\u03bf\u03b9\u03c0\u03bf\u03c5\u03c2 \u03bd\u03b1 \u03c4\u03b5\u03bb\u03b5\u03b9\u03ce\u03c3\u03bf\u03c5\u03bd...";
+      return "Waiting for the rest to finish up...";
     },
     get$generatingSummary() {
-      return "\u0391\u03bd\u03ac\u03bb\u03c5\u03c3\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03b5\u03c3\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Analyzing chat and generating results";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u03c8\u03ac\u03c7\u03bd\u03b5\u03b9 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03bf\u03c5\u03bd \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c3\u03c4\u03bf " + room;
+      return user + " is looking for users to join the activity session in " + room;
     },
     goToCourse$1(course) {
-      return "\u03a0\u03ae\u03b3\u03b1\u03b9\u03bd\u03b5 \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1: " + course;
+      return "Go to course: " + course;
     },
     get$startNewSession() {
-      return "\u039e\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03bd\u03ad\u03b1 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1";
+      return "Start new session";
     },
     get$joinOpenSession() {
-      return "\u03a3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae \u03c3\u03b5 \u03b1\u03bd\u03bf\u03b9\u03c7\u03c4\u03ae \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1";
+      return "Join open session";
     },
     get$activityNotFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b5 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Activity not found";
     },
     get$levelUp() {
-      return "\u0395\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03c0\u03ac\u03bd\u03c9";
+      return "Level up";
     },
     get$myActivities() {
-      return "\u039f\u03b9 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03ad\u03c2 \u03bc\u03bf\u03c5";
+      return "My activities";
     },
     get$openToJoin() {
-      return "\u0391\u03bd\u03bf\u03b9\u03c7\u03c4\u03cc \u03b3\u03b9\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03bf\u03c7\u03ae";
+      return "Open to join";
     },
     get$activityDone() {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5 \u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1!";
+      return "Activity Done!";
     },
     get$promoCodeInfo() {
-      return "\u039f\u03b9 \u03ba\u03c9\u03b4\u03b9\u03ba\u03bf\u03af \u03c0\u03c1\u03bf\u03ce\u03b8\u03b7\u03c3\u03b7\u03c2 \u03bc\u03c0\u03bf\u03c1\u03bf\u03cd\u03bd \u03bd\u03b1 \u03b5\u03b9\u03c3\u03b1\u03c7\u03b8\u03bf\u03cd\u03bd \u03c3\u03c4\u03b7 \u03c3\u03b5\u03bb\u03af\u03b4\u03b1 \u03c0\u03bf\u03c5 \u03b1\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03b5\u03af";
+      return "Promo codes can be entered on the next page";
     },
     get$editsComingSoon() {
-      return "\u0397 \u03b4\u03c5\u03bd\u03b1\u03c4\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1\u03c2 \u03c0\u03cc\u03bb\u03b5\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03ad\u03c1\u03c7\u03b5\u03c4\u03b1\u03b9 \u03c3\u03cd\u03bd\u03c4\u03bf\u03bc\u03b1.";
+      return "The ability to edit cities and activities is coming soon.";
     },
     get$editing() {
-      return "\u0395\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03af\u03b1";
+      return "Editing";
     },
     get$activityNeedsOneMember() {
-      return "\u03a9\u03c7! \u0391\u03c5\u03c4\u03ae \u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c4\u03b1\u03b9 1 \u03b1\u03ba\u03cc\u03bc\u03b7 \u03ac\u03c4\u03bf\u03bc\u03bf.";
+      return "Uh oh! This activity needs 1 more person.";
     },
     activityNeedsMembers$1(num) {
-      return "\u03a9\u03c7! \u0391\u03c5\u03c4\u03ae \u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03c7\u03c1\u03b5\u03b9\u03ac\u03b6\u03b5\u03c4\u03b1\u03b9 " + num + " \u03b1\u03ba\u03cc\u03bc\u03b7 \u03ac\u03c4\u03bf\u03bc\u03b1.";
+      return "Uh oh! This activity needs " + num + " more people.";
     },
     get$inviteFriendsToCourse() {
-      return "\u03a0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03c6\u03af\u03bb\u03c9\u03bd \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03ac \u03bc\u03bf\u03c5";
+      return "Invite friends to my course";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae \u03b3\u03b9\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03af\u03b4\u03c9\u03bc\u03b1 \u03c0\u03b5\u03c1\u03b9\u03bb\u03ae\u03c8\u03b5\u03c9\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd";
+      return "Subscribe to unlock activity summaries";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03ae \u03b3\u03b9\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03af\u03b4\u03c9\u03bc\u03b1 \u03bc\u03b5\u03c4\u03b1\u03b3\u03c1\u03b1\u03c6\u03ce\u03bd";
+      return "Subscribe to unlock transcriptions";
     },
     get$pingSent() {
-      return "\ud83d\udd14 \u0397 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03c3\u03c4\u03ac\u03bb\u03b7! \ud83d\udd14";
+      return "\ud83d\udd14 Course ping sent! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "\u03a4\u03af\u03c4\u03bb\u03bf\u03c2 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Course title";
     },
     get$courseDesc() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Course description";
     },
     get$courseSavedSuccessfully() {
-      return "\u03a4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03c4\u03b7\u03ba\u03b5 \u03bc\u03b5 \u03b5\u03c0\u03b9\u03c4\u03c5\u03c7\u03af\u03b1";
+      return "Course saved successfully";
     },
     get$addCoursePlan() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c3\u03c7\u03b5\u03b4\u03af\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Add a course plan";
     },
     get$activityStatsButtonInstruction() {
-      return "\u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03b5\u03b4\u03ce \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b1 \u03c3\u03c4\u03b1\u03c4\u03b9\u03c3\u03c4\u03b9\u03ba\u03ac \u03c4\u03b7\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03ac\u03c2 \u03c3\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03ba\u03bb\u03b5\u03af\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03cc\u03c4\u03b1\u03bd \u03c4\u03b5\u03bb\u03b5\u03b9\u03ce\u03c3\u03b5\u03c4\u03b5";
+      return "Click here to view your activity stats and to close the activity when finished";
     },
     get$loginToAccount() {
-      return "\u03a3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03bf\u03bd \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03bc\u03bf\u03c5";
+      return "Login to my account";
     },
     get$appDescription() {
-      return "\u039c\u03ac\u03b8\u03b5 \u03bc\u03b9\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\n\u03b5\u03bd\u03ce \u03c3\u03c4\u03ad\u03bb\u03bd\u03b5\u03b9\u03c2 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03c6\u03af\u03bb\u03bf\u03c5\u03c2 \u03c3\u03bf\u03c5.";
+      return "Learn a language\nwhile texting your friends.";
     },
     get$startOwn() {
-      return "\u039e\u03b5\u03ba\u03af\u03bd\u03b1 \u03c4\u03bf \u03b4\u03b9\u03ba\u03cc \u03c3\u03bf\u03c5";
+      return "Start my own";
     },
     get$courseCodeHint() {
-      return "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03ae \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf\u03c2 \u03c4\u03b1\u03be\u03b9\u03b4\u03b9\u03bf\u03cd";
+      return "Course code";
     },
     get$signupOption() {
-      return "\u03a0\u03ce\u03c2 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5;";
+      return "How do you want to sign up?";
     },
     get$withApple() {
-      return "\u039c\u03b5 \u03c4\u03b7\u03bd Apple";
+      return "With Apple";
     },
     get$withGoogle() {
-      return "\u039c\u03b5 Google";
+      return "With Google";
     },
     get$withEmail() {
-      return "\u039c\u03b5 Email";
+      return "With Email";
     },
     get$createAccount() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03bf\u03cd";
+      return "Create account";
     },
     get$loginWithEmail() {
-      return "\u03a3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7 \u03bc\u03b5 email";
+      return "Login with email";
     },
     get$usernameOrEmail() {
-      return "\u038c\u03bd\u03bf\u03bc\u03b1 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03ae email";
+      return "Username or email";
     },
     get$email() {
       return "Email";
     },
     get$forgotPassword() {
-      return "\u039e\u03b5\u03c7\u03ac\u03c3\u03b1\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc;";
+      return "Forgot password?";
     },
     get$endActivity() {
-      return "\u03a4\u03ad\u03bb\u03bf\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "End activity";
     },
     get$allLanguages() {
-      return "\u038c\u03bb\u03b5\u03c2 \u03bf\u03b9 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2";
+      return "All languages";
     },
     get$directMessageBotTitle() {
-      return "\u0386\u03bc\u03b5\u03c3\u03bf \u03bc\u03ae\u03bd\u03c5\u03bc\u03b1 Pangea Bot";
+      return "Direct message Pangea Bot";
     },
     get$feedbackTitle() {
-      return "\u0391\u03bd\u03b1\u03c4\u03c1\u03bf\u03c6\u03bf\u03b4\u03cc\u03c4\u03b7\u03c3\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Activity Feedback";
     },
     get$feedbackRespDesc() {
-      return "\u0395\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03b1\u03cd\u03c1\u03b9\u03bf \u03b3\u03b9\u03b1 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03c3\u03b5\u03b9\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2.";
+      return "Check back tomorrow for activity updates.";
     },
     get$feedbackHint() {
-      return "\u0397 \u03b1\u03bd\u03b1\u03c4\u03c1\u03bf\u03c6\u03bf\u03b4\u03cc\u03c4\u03b7\u03c3\u03ae \u03c3\u03b1\u03c2";
+      return "Your feedback";
     },
     get$feedbackButton() {
-      return "\u03a5\u03c0\u03bf\u03b2\u03bf\u03bb\u03ae \u03b1\u03bd\u03b1\u03c4\u03c1\u03bf\u03c6\u03bf\u03b4\u03cc\u03c4\u03b7\u03c3\u03b7\u03c2";
+      return "Submit feedback";
     },
     get$directMessageBotDesc() {
-      return "\u03a4\u03bf \u03bd\u03b1 \u03bc\u03b9\u03bb\u03ac\u03c2 \u03bc\u03b5 \u03b1\u03bd\u03b8\u03c1\u03ce\u03c0\u03bf\u03c5\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03b9\u03bf \u03b4\u03b9\u03b1\u03c3\u03ba\u03b5\u03b4\u03b1\u03c3\u03c4\u03b9\u03ba\u03cc, \u03b1\u03bb\u03bb\u03ac... \u03b7 \u03a4\u039d \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03ac\u03bd\u03c4\u03b1 \u03ad\u03c4\u03bf\u03b9\u03bc\u03b7!";
+      return "Talking to humans is more fun but... AI is always ready!";
     },
     get$inviteYourFriends() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03c6\u03af\u03bb\u03bf\u03c5\u03c2 \u03c3\u03b1\u03c2";
+      return "Invite your friends";
     },
     get$playWithAI() {
-      return "\u03a0\u03b1\u03af\u03be\u03c4\u03b5 \u03bc\u03b5 \u03c4\u03b7\u03bd \u03a4\u03b5\u03c7\u03bd\u03b7\u03c4\u03ae \u039d\u03bf\u03b7\u03bc\u03bf\u03c3\u03cd\u03bd\u03b7 \u03c0\u03c1\u03bf\u03c2 \u03c4\u03bf \u03c0\u03b1\u03c1\u03cc\u03bd";
+      return "Play with AI for now";
     },
     get$courseStartDesc() {
-      return "\u039f Pangea Bot \u03b5\u03af\u03bd\u03b1\u03b9 \u03ad\u03c4\u03bf\u03b9\u03bc\u03bf\u03c2 \u03bd\u03b1 \u03be\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03b5\u03b9 \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae!\n\n...\u03b1\u03bb\u03bb\u03ac \u03b7 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7 \u03b5\u03af\u03bd\u03b1\u03b9 \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b7 \u03bc\u03b5 \u03c6\u03af\u03bb\u03bf\u03c5\u03c2!";
+      return "Pangea Bot is ready to go anytime!\n\n...but learning is better with friends!";
     },
     get$activityDropdownDesc() {
-      return "\u038c\u03c4\u03b1\u03bd \u03c4\u03b5\u03bb\u03b5\u03b9\u03ce\u03c3\u03b5\u03c4\u03b5 \u03bc\u03b5 \u03b1\u03c5\u03c4\u03ae \u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1, \u03ba\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c0\u03b1\u03c1\u03b1\u03ba\u03ac\u03c4\u03c9";
+      return "When you\u2019re done with this activity, click below";
     },
     get$languageMismatchTitle() {
-      return "\u0391\u03bd\u03c4\u03b9\u03c6\u03ac\u03c3\u03b5\u03b9\u03c2 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2";
+      return "Language mismatch";
     },
     get$emptyChatSearch() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03ac\u03bc\u03b5\u03c3\u03b5\u03c2 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03ae \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2. \u0392\u03b5\u03b2\u03b1\u03b9\u03c9\u03b8\u03b5\u03af\u03c4\u03b5 \u03cc\u03c4\u03b9 \u03b7 \u03b1\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03ae \u03c3\u03b1\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c9\u03c3\u03c4\u03ac \u03b3\u03c1\u03b1\u03bc\u03bc\u03ad\u03bd\u03b7.";
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
     },
     get$languageMismatchDesc() {
-      return "\u0397 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c2 \u03c3\u03b1\u03c2 \u03b4\u03b5\u03bd \u03c4\u03b1\u03b9\u03c1\u03b9\u03ac\u03b6\u03b5\u03b9 \u03bc\u03b5 \u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03b1\u03c5\u03c4\u03ae\u03c2 \u03c4\u03b7\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2. \u0398\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf;";
+      return "Your target language doesn't match the language of this activity. Update your target language?";
     },
     get$reportWordIssueTooltip() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03c0\u03c1\u03bf\u03b2\u03bb\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03bc\u03b5 \u03c4\u03b9\u03c2 \u03c0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03c4\u03b7\u03c2 \u03bb\u03ad\u03be\u03b7\u03c2";
+      return "Report word information issue";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u0391\u03bd\u03b1\u03c4\u03c1\u03bf\u03c6\u03bf\u03b4\u03cc\u03c4\u03b7\u03c3\u03b7 \u03a0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03b9\u03ce\u03bd \u039b\u03ad\u03be\u03b7\u03c2";
+      return "Word Information Feedback";
     },
     get$noPublicCoursesFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03b1. \u0398\u03b1 \u03b8\u03ad\u03bb\u03b1\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1;";
+      return "No public courses found. Would you like to create one?";
     },
     get$noCourseTemplatesFound() {
-      return "\u0394\u03b5\u03bd \u03b2\u03c1\u03ae\u03ba\u03b1\u03bc\u03b5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf \u03c3\u03b1\u03c2. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03ae\u03c3\u03b5\u03c4\u03b5 \u03bc\u03b5 \u03c4\u03bf Pangea Bot \u03b5\u03bd \u03c4\u03c9 \u03bc\u03b5\u03c4\u03b1\u03be\u03cd, \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03b5\u03c0\u03b9\u03c3\u03c4\u03c1\u03ad\u03c8\u03b5\u03c4\u03b5 \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1 \u03b3\u03b9\u03b1 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03b1.";
+      return "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.";
     },
     get$botActivityJoinFailMessage() {
-      return "\u039f Pangea Bot \u03ba\u03b1\u03b8\u03c5\u03c3\u03c4\u03b5\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03c0\u03b1\u03bd\u03c4\u03ae\u03c3\u03b5\u03b9. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1, \u03ae \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03ad\u03bd\u03b1\u03bd \u03c6\u03af\u03bb\u03bf.";
+      return "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.";
     },
     get$unsubscribedResponseError() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b7 \u03bb\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03b1\u03c0\u03b1\u03b9\u03c4\u03b5\u03af \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae";
+      return "This feature requires a subscription";
     },
     get$leaveDesc() {
-      return "\u0391\u03c6\u03ae\u03c3\u03c4\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03c7\u03ce\u03c1\u03bf \u03ba\u03b1\u03b9 \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b5\u03c2 \u03bc\u03ad\u03c3\u03b1 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd";
+      return "Leave this space and all chats within it";
     },
     get$selectAll() {
-      return "\u0395\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae \u03cc\u03bb\u03c9\u03bd";
+      return "Select all";
     },
     get$deselectAll(_) {
-      return "\u0391\u03c0\u03bf\u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae \u03cc\u03bb\u03c9\u03bd";
+      return "Deselect all";
     },
     get$shareCourse() {
-      return "\u039c\u03bf\u03b9\u03c1\u03ac\u03c3\u03bf\u03c5 \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Share course";
     },
     get$vocabLevelsDesc() {
-      return "\u0395\u03b4\u03ce \u03b8\u03b1 \u03c0\u03c1\u03bf\u03c3\u03c4\u03b5\u03b8\u03bf\u03cd\u03bd \u03bf\u03b9 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5 \u03bc\u03cc\u03bb\u03b9\u03c2 \u03c4\u03b9\u03c2 \u03b1\u03bd\u03b1\u03b2\u03b1\u03b8\u03bc\u03af\u03c3\u03b5\u03c4\u03b5!";
+      return "This is where vocab words will go once you\u2019ve leveled them up!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u0391\u03c5\u03c4\u03ad\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03bf\u03b9 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03c5\u03bc\u03ad\u03bd\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03ad\u03c2 \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03bd\u03b1\u03c3\u03ba\u03cc\u03c0\u03b7\u03c3\u03b7 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae.";
+      return "These are your saved activities for review and practice.";
     },
     get$numSavedActivities() {
-      return "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03c5\u03bc\u03ad\u03bd\u03c9\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd";
+      return "Number of saved activities";
     },
     get$saveActivityTitle() {
-      return "\u0391\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Save activity";
     },
     get$saveActivityDesc() {
-      return "\u039a\u03b1\u03bb\u03ae \u03b4\u03bf\u03c5\u03bb\u03b5\u03b9\u03ac! \u0391\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03cd\u03c3\u03c4\u03b5 \u03b1\u03c5\u03c4\u03ae \u03c4\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03bc\u03b5\u03bb\u03bb\u03bf\u03bd\u03c4\u03b9\u03ba\u03ae \u03b1\u03bd\u03b1\u03c3\u03ba\u03cc\u03c0\u03b7\u03c3\u03b7 \u03ba\u03b1\u03b9 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Good job! Save this activity for later review and practice";
     },
     get$levelInfoTooltip() {
-      return "\u0395\u03b4\u03ce \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b5\u03af\u03c4\u03b5 \u03cc\u03bb\u03bf\u03c5\u03c2 \u03c4\u03bf\u03c5\u03c2 \u03c0\u03cc\u03bd\u03c4\u03bf\u03c5\u03c2 \u03c0\u03bf\u03c5 \u03ad\u03c7\u03b5\u03c4\u03b5 \u03ba\u03b5\u03c1\u03b4\u03af\u03c3\u03b5\u03b9 \u03ba\u03b1\u03b9 \u03c0\u03ce\u03c2!";
+      return "Here you can see all the points you\u2019ve earned and how!";
     },
     get$alreadyInCourseWithID() {
-      return "\u0395\u03af\u03c3\u03c4\u03b5 \u03ae\u03b4\u03b7 \u03c3\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03bc\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03c3\u03c7\u03ad\u03b4\u03b9\u03bf. \u0398\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b4\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03ae\u03c3\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03bc\u03b5 \u03c4\u03bf \u03af\u03b4\u03b9\u03bf \u03c3\u03c7\u03ad\u03b4\u03b9\u03bf \u03ae \u03bd\u03b1 \u03c0\u03ac\u03c4\u03b5 \u03c3\u03c4\u03bf \u03c5\u03c0\u03ac\u03c1\u03c7\u03bf\u03bd \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1;";
+      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
     },
     get$goToExistingCourse() {
-      return "\u03a0\u03b7\u03b3\u03b1\u03af\u03bd\u03b5\u03c4\u03b5 \u03c3\u03c4\u03bf \u03c5\u03c0\u03ac\u03c1\u03c7\u03bf\u03bd \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Go to existing course";
     },
     get$emojiView() {
-      return "\u03a0\u03c1\u03bf\u03b2\u03bf\u03bb\u03ae emoji";
+      return "Emoji view";
     },
     get$feedbackDialogDesc() {
-      return "\u039a\u03ac\u03bd\u03c9 \u03bb\u03ac\u03b8\u03b7 \u03ba\u03b9 \u03b5\u03b3\u03ce! \u039f\u03c4\u03b9\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03bc\u03b5 \u03b2\u03bf\u03b7\u03b8\u03ae\u03c3\u03b5\u03b9 \u03bd\u03b1 \u03b2\u03b5\u03bb\u03c4\u03b9\u03c9\u03b8\u03ce;";
+      return "I make mistakes too! Anything to help me improve?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u0397 \u03b5\u03c0\u03b1\u03c6\u03ae \u03ad\u03c7\u03b5\u03b9 \u03c0\u03c1\u03bf\u03c3\u03ba\u03bb\u03b7\u03b8\u03b5\u03af \u03c3\u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Contact has been invited to the course";
     },
     get$inviteFriends() {
-      return "\u03a0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03c4\u03b5 \u03c6\u03af\u03bb\u03bf\u03c5\u03c2";
+      return "Invite friends";
     },
     get$activityStatsButtonTooltip() {
-      return "\u03a0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Activity info";
     },
     get$allow(_) {
-      return "\u0395\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03c9";
+      return "Allow";
     },
     get$deny() {
-      return "\u0391\u03c1\u03bd\u03bf\u03cd\u03bc\u03b1\u03b9";
+      return "Deny";
     },
     get$enabledRenewal() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u0391\u03bd\u03b1\u03bd\u03ad\u03c9\u03c3\u03b7\u03c2 \u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae\u03c2";
+      return "Enable Subscription Renewal";
     },
     get$subscriptionEndsOn() {
-      return "\u0397 \u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u039b\u03ae\u03b3\u03b5\u03b9 \u03a3\u03c4\u03b9\u03c2";
+      return "Subscription Ends On";
     },
     get$subscriptionRenewsOn() {
-      return "\u0397 \u03a3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u0391\u03bd\u03b1\u03bd\u03b5\u03ce\u03bd\u03b5\u03c4\u03b1\u03b9 \u03a3\u03c4\u03b9\u03c2";
+      return "Subscription Renews On";
     },
     get$waitForSubscriptionChanges() {
-      return "\u039f\u03b9 \u03b1\u03bb\u03bb\u03b1\u03b3\u03ad\u03c2 \u03c3\u03c4\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ae \u03c3\u03b1\u03c2 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c7\u03c1\u03b5\u03b9\u03b1\u03c3\u03c4\u03bf\u03cd\u03bd \u03bb\u03af\u03b3\u03bf \u03c7\u03c1\u03cc\u03bd\u03bf \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03c3\u03c4\u03bf\u03cd\u03bd \u03c3\u03c4\u03b7\u03bd \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae.";
+      return "Changes to your subscription may take a moment to reflect in the app.";
     },
     get$subscribeReadingAssistance() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
+      return "Subscribe to unlock message tools";
     },
     get$aceDisplayName() {
-      return "\u0391\u03c7\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Achinese";
     },
     get$achDisplayName() {
-      return "\u0391\u03ba\u03cc\u03bb\u03b9";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u0391\u03c6\u03c1\u03b9\u03ba\u03ac\u03b1\u03bd\u03c2";
+      return "Afrikaans";
     },
     get$akDisplayName() {
-      return "\u0391\u03ba\u03ac\u03bd";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u0391\u03bb\u03bf\u03cd\u03c1";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u0391\u03bc\u03c7\u03b1\u03c1\u03b9\u03ba\u03ac";
+      return "Amharic";
     },
     get$arDisplayName() {
-      return "\u0391\u03c1\u03b1\u03b2\u03b9\u03ba\u03ac";
+      return "Arabic";
     },
     get$asDisplayName() {
-      return "\u0391\u03c3\u03b1\u03bc\u03ad\u03b6";
+      return "Assamese";
     },
     get$awaDisplayName() {
-      return "\u0391\u03bf\u03c5\u03ac\u03bd\u03c4\u03b9";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u0391\u03ca\u03bc\u03ac\u03c1\u03b1";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u0391\u03b6\u03b5\u03c1\u03b9\u03ba\u03ac";
+      return "Azerbaijani";
     },
     get$baDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c3\u03ba\u03af\u03c1";
+      return "Bashkir";
     },
     get$banDisplayName() {
-      return "\u039c\u03c0\u03b1\u03bb\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Balinese";
     },
     get$bbcDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c4\u03ac\u03ba \u03a4\u03cc\u03bc\u03c0\u03b1";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u039b\u03b5\u03c5\u03ba\u03bf\u03c1\u03c9\u03c3\u03b9\u03ba\u03ac";
+      return "Belarusian";
     },
     get$bemDisplayName() {
-      return "\u039c\u03c0\u03ad\u03bc\u03c0\u03b1";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u039c\u03c0\u03b5\u03c4\u03b1\u03b2\u03af";
+      return "Betawi";
     },
     get$bgDisplayName() {
-      return "\u0392\u03bf\u03c5\u03bb\u03b3\u03b1\u03c1\u03b9\u03ba\u03ac";
+      return "Bulgarian";
     },
     get$bhoDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c7\u03c4\u03b6\u03c0\u03bf\u03cd\u03c1\u03b9";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u039c\u03c0\u03b9\u03ba\u03bf\u03bb";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u039c\u03c0\u03b1\u03bc\u03c0\u03ac\u03c1\u03b1";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u039c\u03c0\u03b5\u03bd\u03b3\u03ba\u03ac\u03bb\u03b9";
+      return "Bangla";
     },
     get$bnBDDisplayName() {
-      return "\u039c\u03c0\u03b5\u03bd\u03b3\u03ba\u03ac\u03bb\u03b9 (\u039c\u03c0\u03b1\u03b3\u03ba\u03bb\u03b1\u03bd\u03c4\u03ad\u03c2)";
+      return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "\u039c\u03c0\u03b5\u03bd\u03b3\u03ba\u03ac\u03bb\u03b9 (\u0399\u03bd\u03b4\u03af\u03b1)";
+      return "Bengali (India)";
     },
     get$brDisplayName() {
-      return "\u0392\u03c1\u03b5\u03c4\u03bf\u03bd\u03b9\u03ba\u03ac";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "\u0392\u03bf\u03c3\u03bd\u03b9\u03b1\u03ba\u03ac";
+      return "Bosnian";
     },
     get$btsDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c4\u03ac\u03ba \u03a3\u03b9\u03bc\u03b1\u03bb\u03bf\u03cd\u03bd\u03b3\u03ba\u03bf\u03c5\u03bd";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u039c\u03c0\u03b1\u03c4\u03ac\u03ba \u039a\u03b1\u03c1\u03cc";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u039c\u03c0\u03bf\u03c5\u03c1\u03b9\u03ac\u03c4";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "\u039a\u03b1\u03c4\u03b1\u03bb\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Catalan";
     },
     get$cebDisplayName() {
-      return "\u03a3\u03b5\u03bc\u03c0\u03bf\u03c5\u03ac\u03bd\u03bf";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u03a7\u03af\u03b3\u03ba\u03b1";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u039c\u03ac\u03c1\u03b9";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u039a\u03b5\u03bd\u03c4\u03c1\u03b9\u03ba\u03ac \u039a\u03bf\u03c5\u03c1\u03b4\u03b9\u03ba\u03ac";
+      return "Central Kurdish";
     },
     get$cnhDisplayName() {
-      return "\u03a7\u03ac\u03ba\u03b1 \u03a4\u03c3\u03b9\u03bd";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u039a\u03bf\u03c1\u03c3\u03b9\u03ba\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Corsican";
     },
     get$crhDisplayName() {
-      return "\u039a\u03c1\u03b9\u03bc\u03b1\u03ca\u03ba\u03ac \u03a4\u03bf\u03c5\u03c1\u03ba\u03b9\u03ba\u03ac";
+      return "Crimean Turkish";
     },
     get$crsDisplayName() {
-      return "\u03a3\u03b5\u03c3\u03ad\u03bb\u03b2\u03b1 \u039a\u03c1\u03b5\u03bf\u03bb\u03b9\u03ba\u03ac \u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ac";
+      return "Seselwa Creole French";
     },
     get$csDisplayName() {
-      return "\u03a4\u03c3\u03ad\u03c7\u03b9\u03ba\u03b1";
+      return "Czech";
     },
     get$cvDisplayName() {
-      return "\u03a4\u03c3\u03bf\u03c5\u03b2\u03ac\u03c2";
+      return "Chuvash";
     },
     get$cyDisplayName() {
-      return "\u039f\u03c5\u03b1\u03bb\u03b9\u03ba\u03ac";
+      return "Welsh";
     },
     get$daDisplayName() {
-      return "\u0394\u03b1\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Danish";
     },
     get$deDisplayName() {
-      return "\u0393\u03b5\u03c1\u03bc\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "German";
     },
     get$dinDisplayName() {
-      return "\u039d\u03c4\u03af\u03b3\u03ba\u03b1";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u039d\u03c4\u03cc\u03b3\u03ba\u03c1\u03b9";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u039d\u03c4\u03cc\u03bc\u03c0\u03b5";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u039d\u03c4\u03b6\u03bf\u03bd\u03b3\u03ba\u03ba\u03ac";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u0395\u03b2\u03ad";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u0391\u03b3\u03b3\u03bb\u03b9\u03ba\u03ac";
+      return "English";
     },
     get$enAUDisplayName() {
-      return "\u0391\u03b3\u03b3\u03bb\u03b9\u03ba\u03ac (\u0391\u03c5\u03c3\u03c4\u03c1\u03b1\u03bb\u03af\u03b1)";
+      return "English (Australia)";
     },
     get$enGBDisplayName() {
-      return "\u0391\u03b3\u03b3\u03bb\u03b9\u03ba\u03ac (\u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03bf \u0392\u03b1\u03c3\u03af\u03bb\u03b5\u03b9\u03bf)";
+      return "English (UK)";
     },
     get$enINDisplayName() {
-      return "\u0391\u03b3\u03b3\u03bb\u03b9\u03ba\u03ac (\u0399\u03bd\u03b4\u03af\u03b1)";
+      return "English (India)";
     },
     get$enUSDisplayName() {
-      return "\u0391\u03b3\u03b3\u03bb\u03b9\u03ba\u03ac (\u0397\u03a0\u0391)";
+      return "English (US)";
     },
     get$eoDisplayName() {
-      return "\u0395\u03c3\u03c0\u03b5\u03c1\u03ac\u03bd\u03c4\u03bf";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u0399\u03c3\u03c0\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Spanish";
     },
     get$esESDisplayName() {
-      return "\u0399\u03c3\u03c0\u03b1\u03bd\u03b9\u03ba\u03ac (\u0399\u03c3\u03c0\u03b1\u03bd\u03af\u03b1)";
+      return "Spanish (Spain)";
     },
     get$esMXDisplayName() {
-      return "\u0399\u03c3\u03c0\u03b1\u03bd\u03b9\u03ba\u03ac (\u039c\u03b5\u03be\u03b9\u03ba\u03cc)";
+      return "Spanish (Mexico)";
     },
     get$euDisplayName() {
-      return "\u0392\u03ac\u03c3\u03ba\u03b9\u03ba\u03b1";
+      return "Basque";
     },
     get$faDisplayName() {
-      return "\u03a0\u03b5\u03c1\u03c3\u03b9\u03ba\u03ac";
+      return "Persian";
     },
     get$ffDisplayName() {
-      return "\u03a6\u03bf\u03c5\u03bb\u03ac\u03c7";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u03a6\u03b9\u03bd\u03bb\u03b1\u03bd\u03b4\u03b9\u03ba\u03ac";
+      return "Finnish";
     },
     get$filDisplayName() {
-      return "\u03a6\u03b9\u03bb\u03b9\u03c0\u03c0\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Filipino";
     },
     get$fjDisplayName() {
-      return "\u03a6\u03b9\u03c4\u03b6\u03b9\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Fijian";
     },
     get$foDisplayName() {
-      return "\u03a6\u03b1\u03c1\u03bf\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Faroese";
     },
     get$frDisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ac";
+      return "French";
     },
     get$frCADisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ac (\u039a\u03b1\u03bd\u03b1\u03b4\u03ac\u03c2)";
+      return "French (Canada)";
     },
     get$frFRDisplayName() {
-      return "\u0393\u03b1\u03bb\u03bb\u03b9\u03ba\u03ac (\u0393\u03b1\u03bb\u03bb\u03af\u03b1)";
+      return "French (France)";
     },
     get$fyDisplayName() {
-      return "\u0394\u03c5\u03c4\u03b9\u03ba\u03ac \u03a6\u03c1\u03b9\u03b6\u03b9\u03b1\u03bd\u03ac";
+      return "Western Frisian";
     },
     get$gaDisplayName() {
-      return "\u0399\u03c1\u03bb\u03b1\u03bd\u03b4\u03b9\u03ba\u03ac";
+      return "Irish";
     },
     get$gaaDisplayName() {
-      return "\u0393\u03ba\u03b1";
+      return "Ga";
     },
     get$gdDisplayName() {
-      return "\u03a3\u03ba\u03c9\u03c4\u03b9\u03ba\u03ac \u0393\u03b1\u03b5\u03bb\u03b9\u03ba\u03ac";
+      return "Scottish Gaelic";
     },
     get$glDisplayName() {
-      return "\u0393\u03b1\u03bb\u03b9\u03ba\u03b9\u03b1\u03bd\u03ac";
+      return "Galician";
     },
     get$gnDisplayName() {
-      return "\u0393\u03ba\u03bf\u03c5\u03b1\u03c1\u03b1\u03bd\u03af";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "\u0393\u03ba\u03cc\u03b1\u03bd \u039a\u03bf\u03bd\u03ba\u03ac\u03bd\u03b9";
+      return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "\u0393\u03ba\u03bf\u03c5\u03c4\u03b6\u03b1\u03c1\u03ac\u03c4\u03b9";
+      return "Gujarati";
     },
     get$haDisplayName() {
-      return "\u03a7\u03ac\u03bf\u03c5\u03c3\u03b1";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "\u03a7\u03b1\u03b2\u03b1\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Hawaiian";
     },
     get$heDisplayName() {
-      return "\u0395\u03b2\u03c1\u03b1\u03ca\u03ba\u03ac";
+      return "Hebrew";
     },
     get$hiDisplayName() {
-      return "\u03a7\u03af\u03bd\u03c4\u03b9";
+      return "Hindi";
     },
     get$hilDisplayName() {
-      return "\u03a7\u03b9\u03bb\u03b9\u03b3\u03ba\u03ac\u03b9\u03bd\u03bf\u03bd";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
-      return "\u03a7\u03bc\u03bf\u03bd\u03b3\u03ba";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u03a7\u03b1\u03c4\u03c4\u03b9\u03c3\u03b3\u03ba\u03ac\u03c1\u03c7\u03b9";
+      return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "\u039a\u03c1\u03bf\u03b1\u03c4\u03b9\u03ba\u03ac";
+      return "Croatian";
     },
     get$hrxDisplayName() {
-      return "\u03a7\u03bf\u03c5\u03bd\u03c3\u03c1\u03b9\u03ba";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u0391\u03ca\u03c4\u03b9\u03bd\u03cc\u03c2 \u039a\u03c1\u03b5\u03cc\u03bb";
+      return "Haitian Creole";
     },
     get$huDisplayName() {
-      return "\u039f\u03c5\u03b3\u03b3\u03c1\u03b9\u03ba\u03ac";
+      return "Hungarian";
     },
     get$hyDisplayName() {
-      return "\u0391\u03c1\u03bc\u03b5\u03bd\u03b9\u03ba\u03ac";
+      return "Armenian";
     },
     get$idDisplayName() {
-      return "\u0399\u03bd\u03b4\u03bf\u03bd\u03b7\u03c3\u03b9\u03b1\u03ba\u03ac";
+      return "Indonesian";
     },
     get$igDisplayName() {
-      return "\u038a\u03b3\u03ba\u03bf";
+      return "Igbo";
     },
     get$iloDisplayName() {
-      return "\u0399\u03bb\u03cc\u03ba\u03bf";
+      return "Iloko";
     },
     get$isDisplayName() {
-      return "\u0399\u03c3\u03bb\u03b1\u03bd\u03b4\u03b9\u03ba\u03ac";
+      return "Icelandic";
     },
     get$itDisplayName() {
-      return "\u0399\u03c4\u03b1\u03bb\u03b9\u03ba\u03ac";
+      return "Italian";
     },
     get$jaDisplayName() {
-      return "\u0399\u03b1\u03c0\u03c9\u03bd\u03b9\u03ba\u03ac";
+      return "Japanese";
     },
     get$jvDisplayName() {
-      return "\u0399\u03b1\u03b2\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Javanese";
     },
     get$kaDisplayName() {
-      return "\u0393\u03b5\u03c9\u03c1\u03b3\u03b9\u03b1\u03bd\u03ac";
+      return "Georgian";
     },
     get$kkDisplayName() {
-      return "\u039a\u03b1\u03b6\u03b1\u03ba\u03b9\u03ba\u03ac";
+      return "Kazakh";
     },
     get$kmDisplayName() {
-      return "\u03a7\u03bc\u03b5\u03c1";
+      return "Khmer";
     },
     get$knDisplayName() {
-      return "\u039a\u03b1\u03bd\u03bd\u03ac\u03b4\u03b1";
+      return "Kannada";
     },
     get$koDisplayName() {
-      return "\u039a\u03bf\u03c1\u03b5\u03b1\u03c4\u03b9\u03ba\u03ac";
+      return "Korean";
     },
     get$kokDisplayName() {
-      return "\u039a\u03bf\u03bd\u03ba\u03ac\u03bd\u03b9";
+      return "Konkani";
     },
     get$kriDisplayName() {
-      return "\u039a\u03c1\u03af\u03bf";
+      return "Krio";
     },
     get$ksDisplayName() {
-      return "\u039a\u03b1\u03c3\u03bc\u03af\u03c1\u03b9";
+      return "Kashmiri";
     },
     get$ktuDisplayName() {
-      return "\u039a\u03b9\u03c4\u03bf\u03cd\u03bc\u03c0\u03b1 (\u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03b9\u03ba\u03ae \u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1 \u03c4\u03bf\u03c5 \u039a\u03bf\u03bd\u03b3\u03ba\u03cc)";
+      return "Kituba (Democratic Republic of Congo)";
     },
     get$kuDisplayName() {
-      return "\u039a\u03bf\u03c5\u03c1\u03b4\u03b9\u03ba\u03ac";
+      return "Kurdish";
     },
     get$kyDisplayName() {
-      return "\u039a\u03b9\u03c1\u03b3\u03b9\u03b6\u03b9\u03ba\u03ac";
+      return "Kyrgyz";
     },
     get$laDisplayName() {
-      return "\u039b\u03b1\u03c4\u03b9\u03bd\u03b9\u03ba\u03ac";
+      return "Latin";
     },
     get$lbDisplayName() {
-      return "\u039b\u03bf\u03c5\u03be\u03b5\u03bc\u03b2\u03bf\u03c5\u03c1\u03b3\u03b9\u03b1\u03bd\u03ac";
+      return "Luxembourgish";
     },
     get$lgDisplayName() {
-      return "\u0393\u03ba\u03ac\u03bd\u03c4\u03b1";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u039b\u03b9\u03bc\u03b2\u03bf\u03c5\u03c1\u03b3\u03b9\u03b1\u03bd\u03ac";
+      return "Limburgish";
     },
     get$lijDisplayName() {
-      return "\u039b\u03b9\u03b3\u03bf\u03c5\u03c1\u03b9\u03b1\u03bd\u03ac";
+      return "Ligurian";
     },
     get$lmoDisplayName() {
-      return "\u039b\u03bf\u03bc\u03b2\u03b1\u03c1\u03b4\u03b9\u03ba\u03ac";
+      return "Lombard";
     },
     get$lnDisplayName() {
-      return "\u039b\u03b9\u03bd\u03b3\u03ba\u03ac\u03bb\u03b1";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u039b\u03ac\u03bf";
+      return "Lao";
     },
     get$ltDisplayName() {
-      return "\u039b\u03b9\u03b8\u03bf\u03c5\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Lithuanian";
     },
     get$ltgDisplayName() {
-      return "\u039b\u03b1\u03c4\u03b3\u03b1\u03bb\u03b9\u03ba\u03ac";
+      return "Latgalian";
     },
     get$luoDisplayName() {
-      return "\u039b\u03bf\u03cd\u03bf (\u039a\u03ad\u03bd\u03c5\u03b1 \u03ba\u03b1\u03b9 \u03a4\u03b1\u03bd\u03b6\u03b1\u03bd\u03af\u03b1)";
+      return "Luo (Kenya and Tanzania)";
     },
     get$lusDisplayName() {
-      return "\u039c\u03af\u03b6\u03bf";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u039b\u03b5\u03c4\u03bf\u03bd\u03b9\u03ba\u03ac";
+      return "Latvian";
     },
     get$maiDisplayName() {
-      return "\u039c\u03b1\u03ca\u03b8\u03af\u03bb\u03b9";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u039c\u03b1\u03ba\u03b1\u03c3\u03ac\u03c1";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u039c\u03b1\u03bb\u03b1\u03b3\u03b1\u03c3\u03af";
+      return "Malagasy";
     },
     get$miDisplayName() {
-      return "\u039c\u03ac\u03bf\u03c1\u03b9";
+      return "M\u0101ori";
     },
     get$minDisplayName() {
-      return "\u039c\u03b9\u03bd\u03b1\u03b3\u03ba\u03b1\u03bc\u03c0\u03ac\u03bf\u03c5";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u039c\u03b1\u03ba\u03b5\u03b4\u03bf\u03bd\u03b9\u03ba\u03ac";
+      return "Macedonian";
     },
     get$mlDisplayName() {
-      return "\u039c\u03b1\u03bb\u03b1\u03b3\u03b9\u03b1\u03bb\u03ac\u03bc";
+      return "Malayalam";
     },
     get$mnDisplayName() {
-      return "\u039c\u03bf\u03b3\u03b3\u03bf\u03bb\u03b9\u03ba\u03ac";
+      return "Mongolian";
     },
     get$mniDisplayName() {
-      return "\u039c\u03b1\u03bd\u03b9\u03c0\u03bf\u03cd\u03c1\u03b9";
+      return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u039c\u03b1\u03c1\u03b1\u03b8\u03af";
+      return "Marathi";
     },
     get$msDisplayName() {
-      return "\u039c\u03b1\u03bb\u03ac\u03b9";
+      return "Malay";
     },
     get$msArabDisplayName() {
-      return "\u039c\u03b1\u03bb\u03ac\u03b9 (\u0391\u03c1\u03b1\u03b2\u03b9\u03ba\u03ac)";
+      return "Malay (Arabic)";
     },
     get$msMYDisplayName() {
-      return "\u039c\u03b1\u03bb\u03ac\u03b9 (\u039c\u03b1\u03bb\u03b1\u03b9\u03c3\u03af\u03b1)";
+      return "Malay (Malaysia)";
     },
     get$mtDisplayName() {
-      return "\u039c\u03b1\u03bb\u03c4\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Maltese";
     },
     get$mwrDisplayName() {
-      return "\u039c\u03b1\u03c1\u03b1\u03b8\u03af";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u0392\u03b9\u03c1\u03bc\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Burmese";
     },
     get$nanDisplayName() {
-      return "\u039c\u03b9\u03bd \u039d\u03b1\u03bd";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u039d\u03bf\u03c1\u03b2\u03b7\u03b3\u03b9\u03ba\u03ac (\u039c\u03c0\u03bf\u03ba\u03bc\u03ac\u03bb)";
+      return "Norwegian (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u039d\u03b5\u03c0\u03b1\u03bb\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Nepali";
     },
     get$newDisplayName() {
-      return "\u039d\u03b5\u03bf\u03c5\u03b1\u03c1\u03af";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "\u039f\u03bb\u03bb\u03b1\u03bd\u03b4\u03b9\u03ba\u03ac";
+      return "Dutch";
     },
     get$nlBEDisplayName() {
-      return "\u03a6\u03bb\u03b1\u03bc\u03b1\u03bd\u03b4\u03b9\u03ba\u03ac";
+      return "Flemish";
     },
     get$noDisplayName() {
-      return "\u039d\u03bf\u03c1\u03b2\u03b7\u03b3\u03b9\u03ba\u03ac";
+      return "Norwegian";
     },
     get$nrDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03bf \u039d\u03c4\u03b5\u03bc\u03c0\u03ad\u03bb\u03b5";
+      return "South Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u0392\u03cc\u03c1\u03b5\u03b9\u03bf\u03c2 \u03a3\u03cc\u03b8\u03bf";
+      return "Northern Sotho";
     },
     get$nusDisplayName() {
-      return "\u039d\u03bf\u03cd\u03b5\u03c1";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u039d\u03b9\u03ac\u03bd\u03c4\u03b6\u03b1";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u039f\u03be\u03b9\u03c4\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Occitan";
     },
     get$omDisplayName() {
-      return "\u039f\u03c1\u03cc\u03bc\u03bf";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u039f\u03bd\u03c4\u03af\u03b1";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u03a0\u03b1\u03bd\u03c4\u03b6\u03ac\u03bc\u03c0\u03b9";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "\u03a0\u03b1\u03bd\u03c4\u03b6\u03ac\u03bc\u03c0\u03b9 (\u03a3\u03b1\u03c7\u03bc\u03bf\u03c5\u03ba\u03af)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u03a0\u03b1\u03bd\u03c4\u03b6\u03ac\u03bc\u03c0\u03b9 (\u0393\u03ba\u03bf\u03c5\u03c1\u03bc\u03bf\u03cd\u03ba\u03b9)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u03a0\u03b1\u03bd\u03b3\u03ba\u03b1\u03c3\u03b9\u03bd\u03ac\u03bd";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u03a0\u03ac\u03bc\u03c0\u03b1\u03bd\u03b3\u03ba\u03b1";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u03a0\u03ac\u03c0\u03b9\u03b5\u03bd\u03c4\u03bf";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u03a0\u03bf\u03bb\u03c9\u03bd\u03b9\u03ba\u03ac";
+      return "Polish";
     },
     get$psDisplayName() {
-      return "\u03a0\u03b1\u03c3\u03c4\u03bf\u03cd";
+      return "Pashto";
     },
     get$ptDisplayName() {
-      return "\u03a0\u03bf\u03c1\u03c4\u03bf\u03b3\u03b1\u03bb\u03b9\u03ba\u03ac";
+      return "Portuguese";
     },
     get$ptBRDisplayName() {
-      return "\u03a0\u03bf\u03c1\u03c4\u03bf\u03b3\u03b1\u03bb\u03b9\u03ba\u03ac (\u0392\u03c1\u03b1\u03b6\u03b9\u03bb\u03af\u03b1)";
+      return "Portuguese (Brazil)";
     },
     get$ptPTDisplayName() {
-      return "\u03a0\u03bf\u03c1\u03c4\u03bf\u03b3\u03b1\u03bb\u03b9\u03ba\u03ac (\u03a0\u03bf\u03c1\u03c4\u03bf\u03b3\u03b1\u03bb\u03af\u03b1)";
+      return "Portuguese (Portugal)";
     },
     get$quDisplayName() {
-      return "\u039a\u03b5\u03c4\u03c3\u03bf\u03cd\u03b1";
+      return "Quechua";
     },
     get$rajDisplayName() {
-      return "\u03a1\u03b1\u03c4\u03b6\u03b1\u03c3\u03c4\u03ac\u03bd\u03b9";
+      return "Rajasthani";
     },
     get$rnDisplayName() {
-      return "\u03a1\u03bf\u03cd\u03bd\u03c4\u03b9";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u03a1\u03bf\u03c5\u03bc\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Romanian";
     },
     get$roMDDisplayName() {
-      return "\u039c\u03bf\u03bb\u03b4\u03b1\u03b2\u03b9\u03ba\u03ac";
+      return "Moldovan";
     },
     get$romDisplayName() {
-      return "\u03a1\u03bf\u03bc\u03ac";
+      return "Romany";
     },
     get$ruDisplayName() {
-      return "\u03a1\u03c9\u03c3\u03b9\u03ba\u03ac";
+      return "Russian";
     },
     get$rwDisplayName() {
-      return "\u039a\u03b9\u03bd\u03c5\u03b1\u03c1\u03bf\u03c5\u03ac\u03bd\u03c4\u03b1";
+      return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u03a3\u03b1\u03bd\u03c3\u03ba\u03c1\u03b9\u03c4\u03b9\u03ba\u03ac";
+      return "Sanskrit";
     },
     get$satDisplayName() {
-      return "\u03a3\u03b1\u03bd\u03c4\u03ac\u03bb\u03b9";
+      return "Santali";
     },
     get$scnDisplayName() {
-      return "\u03a3\u03b9\u03ba\u03b5\u03bb\u03b9\u03ba\u03ac";
+      return "Sicilian";
     },
     get$sdDisplayName() {
-      return "\u03a3\u03b9\u03bd\u03c4\u03af";
+      return "Sindhi";
     },
     get$sgDisplayName() {
-      return "\u03a3\u03ac\u03bd\u03b3\u03ba\u03bf";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u03a3\u03b1\u03bd";
+      return "Shan";
     },
     get$siDisplayName() {
-      return "\u03a3\u03b9\u03bd\u03c7\u03ac\u03bb\u03b1";
+      return "Sinhala";
     },
     get$skDisplayName() {
-      return "\u03a3\u03bb\u03bf\u03b2\u03b1\u03ba\u03b9\u03ba\u03ac";
+      return "Slovak";
     },
     get$slDisplayName() {
-      return "\u03a3\u03bb\u03bf\u03b2\u03b5\u03bd\u03b9\u03ba\u03ac";
+      return "Slovenian";
     },
     get$smDisplayName() {
-      return "\u03a3\u03b1\u03bc\u03bf\u03ac";
+      return "Samoan";
     },
     get$snDisplayName() {
-      return "\u03a3\u03cc\u03bd\u03b1";
+      return "Shona";
     },
     get$soDisplayName() {
-      return "\u03a3\u03bf\u03bc\u03b1\u03bb\u03b9\u03ba\u03ac";
+      return "Somali";
     },
     get$sqDisplayName() {
-      return "\u0391\u03bb\u03b2\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Albanian";
     },
     get$srDisplayName() {
-      return "\u03a3\u03b5\u03c1\u03b2\u03b9\u03ba\u03ac";
+      return "Serbian";
     },
     get$srMEDisplayName() {
-      return "\u039c\u03b1\u03c5\u03c1\u03bf\u03b2\u03bf\u03cd\u03bd\u03b9\u03bf";
+      return "Montenegrin";
     },
     get$ssDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b1\u03c7\u03af\u03bb\u03b9";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "\u039d\u03cc\u03c4\u03b9\u03bf\u03c2 \u03a3\u03cc\u03b8\u03bf";
+      return "Southern Sotho";
     },
     get$suDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03bd\u03c4\u03b1\u03bd\u03b7\u03c3\u03b9\u03b1\u03ba\u03ac";
+      return "Sundanese";
     },
     get$svDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b7\u03b4\u03b9\u03ba\u03ac";
+      return "Swedish";
     },
     get$swDisplayName() {
-      return "\u03a3\u03bf\u03c5\u03b1\u03c7\u03af\u03bb\u03b9";
+      return "Swahili";
     },
     get$szlDisplayName() {
-      return "\u03a3\u03b9\u03bb\u03b5\u03c3\u03b9\u03b1\u03bd\u03ac";
+      return "Silesian";
     },
     get$taDisplayName() {
-      return "\u03a4\u03b1\u03bc\u03af\u03bb";
+      return "Tamil";
     },
     get$teDisplayName() {
-      return "\u03a4\u03b5\u03bb\u03bf\u03cd\u03b3\u03ba\u03bf\u03c5";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "\u03a4\u03b5\u03c4\u03bf\u03cd\u03bc";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u03a4\u03b1\u03c4\u03b6\u03b9\u03ba\u03b9\u03ba\u03ac";
+      return "Tajik";
     },
     get$thDisplayName() {
-      return "\u03a4\u03b1\u03ca\u03bb\u03b1\u03bd\u03b4\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Thai";
     },
     get$tiDisplayName() {
-      return "\u03a4\u03b9\u03b3\u03ba\u03c1\u03b9\u03bd\u03b9\u03ac";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "\u03a4\u03bf\u03c5\u03c1\u03ba\u03bc\u03b5\u03bd\u03b9\u03ba\u03ac";
+      return "Turkmen";
     },
     get$tlDisplayName() {
-      return "\u03a4\u03b1\u03b3\u03ba\u03ac\u03bb\u03bf\u03b3";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u03a4\u03c3\u03bf\u03c5\u03ac\u03bd\u03b1";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u03a4\u03bf\u03c5\u03c1\u03ba\u03b9\u03ba\u03ac";
+      return "Turkish";
     },
     get$tsDisplayName() {
-      return "\u03a4\u03c3\u03cc\u03bd\u03b3\u03ba\u03b1";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u03a4\u03b1\u03c4\u03ac\u03c1";
+      return "Tatar";
     },
     get$ugDisplayName() {
-      return "\u039f\u03c5\u03b9\u03b3\u03bf\u03cd\u03c1\u03bf";
+      return "Uyghur";
     },
     get$ukDisplayName() {
-      return "\u039f\u03c5\u03ba\u03c1\u03b1\u03bd\u03b9\u03ba\u03ac";
+      return "Ukrainian";
     },
     get$urDisplayName() {
-      return "\u039f\u03c5\u03c1\u03bd\u03c4\u03bf\u03cd";
+      return "Urdu";
     },
     get$urINDisplayName() {
-      return "\u039f\u03c5\u03c1\u03bd\u03c4\u03bf\u03cd (\u0399\u03bd\u03b4\u03af\u03b1)";
+      return "Urdu (India)";
     },
     get$urPKDisplayName() {
-      return "\u039f\u03c5\u03c1\u03bd\u03c4\u03bf\u03cd (\u03a0\u03b1\u03ba\u03b9\u03c3\u03c4\u03ac\u03bd)";
+      return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "\u039f\u03c5\u03b6\u03bc\u03c0\u03b5\u03ba\u03b9\u03ba\u03ac";
+      return "Uzbek";
     },
     get$viDisplayName() {
-      return "\u0392\u03b9\u03b5\u03c4\u03bd\u03b1\u03bc\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Vietnamese";
     },
     get$wuuDisplayName() {
-      return "\u0393\u03bf\u03c5";
+      return "Wu";
     },
     get$xhDisplayName() {
-      return "\u03a7\u03cc\u03c3\u03b1";
+      return "Xhosa";
     },
     get$yiDisplayName() {
-      return "\u0393\u03af\u03bd\u03c4\u03b9\u03c2";
+      return "Yiddish";
     },
     get$yoDisplayName() {
-      return "\u0393\u03b9\u03bf\u03c1\u03bf\u03cd\u03bc\u03c0\u03b1";
+      return "Yoruba";
     },
     get$yuaDisplayName() {
-      return "\u0393\u03b9\u03bf\u03c5\u03ba\u03b1\u03c4\u03ad\u03ba\u03bf";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "\u039a\u03b1\u03bd\u03c4\u03bf\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Cantonese";
     },
     get$yueCNDisplayName() {
-      return "\u039a\u03b1\u03bd\u03c4\u03bf\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1 (\u039a\u03af\u03bd\u03b1)";
+      return "Cantonese (China)";
     },
     get$yueHKDisplayName() {
-      return "\u039a\u03b1\u03bd\u03c4\u03bf\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1 (\u03a7\u03bf\u03bd\u03b3\u03ba \u039a\u03bf\u03bd\u03b3\u03ba)";
+      return "Cantonese (Hong Kong)";
     },
     get$zhDisplayName() {
-      return "\u039a\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1";
+      return "Chinese";
     },
     get$zhCNDisplayName() {
-      return "\u039a\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1 (\u0391\u03c0\u03bb\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b1)";
+      return "Chinese (Simplified)";
     },
     get$zhTWDisplayName() {
-      return "\u039a\u03b9\u03bd\u03ad\u03b6\u03b9\u03ba\u03b1 (\u03a0\u03b1\u03c1\u03b1\u03b4\u03bf\u03c3\u03b9\u03b1\u03ba\u03ac)";
+      return "Chinese (Traditional)";
     },
     get$zuDisplayName() {
-      return "\u0396\u03bf\u03c5\u03bb\u03bf\u03cd";
+      return "Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u039b\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u0394\u03b1\u03c3\u03ba\u03ac\u03bb\u03bf\u03c5";
+      return "Teacher Mode";
     },
     get$teacherModeDesc() {
-      return "\u0395\u03bd\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03cc\u03bb\u03b1 \u03c4\u03b1 \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03ba\u03b1\u03b9 \u03c4\u03b9\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2. \u039c\u03cc\u03bd\u03bf \u03b3\u03b9\u03b1 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ad\u03c2 \u03bc\u03b1\u03b8\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd.";
+      return "Toggle to unlock all topics and activities. Course admin only.";
     },
     get$noSavedActivitiesYet() {
-      return "\u039f\u03b9 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03b8\u03b1 \u03b5\u03bc\u03c6\u03b1\u03bd\u03b9\u03c3\u03c4\u03bf\u03cd\u03bd \u03b5\u03b4\u03ce \u03bc\u03cc\u03bb\u03b9\u03c2 \u03bf\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03c9\u03b8\u03bf\u03cd\u03bd \u03ba\u03b1\u03b9 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03c5\u03c4\u03bf\u03cd\u03bd.";
+      return "Activities will appear here once they are completed and saved.";
     },
     get$changeCourse() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Change course";
     },
     get$changeCourseDesc() {
-      return "\u0395\u03b4\u03ce \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03bb\u03bb\u03ac\u03be\u03b5\u03c4\u03b5 \u03c4\u03bf \u03c3\u03c7\u03ad\u03b4\u03b9\u03bf \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2.";
+      return "Here you can change this course's course plan.";
     },
     get$introChatTitle() {
-      return "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2 \u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ce\u03bd";
+      return "Create Introductions Chat";
     },
     get$introChatDesc() {
-      return "\u039f\u03c0\u03bf\u03b9\u03bf\u03c3\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c3\u03c4\u03bf\u03bd \u03c7\u03ce\u03c1\u03bf \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b4\u03b7\u03bc\u03bf\u03c3\u03b9\u03b5\u03cd\u03c3\u03b5\u03b9.";
+      return "Anyone in the space can post.";
     },
     get$announcementsChatTitle() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u0391\u03bd\u03b1\u03ba\u03bf\u03b9\u03bd\u03ce\u03c3\u03b5\u03c9\u03bd";
+      return "Announcements Chat";
     },
     get$announcementsChatDesc() {
-      return "\u039c\u03cc\u03bd\u03bf \u03bf \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2 \u03c4\u03bf\u03c5 \u03c7\u03ce\u03c1\u03bf\u03c5 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b4\u03b7\u03bc\u03bf\u03c3\u03b9\u03b5\u03cd\u03c3\u03b5\u03b9.";
+      return "Only space admin can post.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "\u0391\u03bd\u03bf\u03b9\u03c7\u03c4\u03ad\u03c2 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b5\u03c2 (" + num + ")";
+      return "Open sessions (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "\u0393\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03c4\u03ce\u03c1\u03b1 (" + num + ")";
+      return "Happening now (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5 (" + num + ")";
+      return "Done (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b4\u03b9\u03b1\u03c6\u03bf\u03c1\u03b5\u03c4\u03b9\u03ba\u03ae \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1";
+      return "Pick a different activity";
     },
     get$blockLemmaConfirmation() {
-      return "\u0391\u03c5\u03c4\u03ae \u03b7 \u03bb\u03ad\u03be\u03b7 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5 \u03b8\u03b1 \u03b1\u03c6\u03b1\u03b9\u03c1\u03b5\u03b8\u03b5\u03af \u03bc\u03cc\u03bd\u03b9\u03bc\u03b1 \u03b1\u03c0\u03cc \u03c4\u03b7\u03bd \u03b1\u03bd\u03ac\u03bb\u03c5\u03c3\u03ae \u03c3\u03b1\u03c2";
+      return "This vocab word will be permanently removed from your analytics";
     },
     get$woman() {
-      return "\u0393\u03c5\u03bd\u03b1\u03af\u03ba\u03b1";
+      return "Woman";
     },
     get$man() {
-      return "\u0386\u03bd\u03b4\u03c1\u03b1\u03c2";
+      return "Man";
     },
     get$otherGender() {
-      return "\u0386\u03bb\u03bb\u03bf";
+      return "Other";
     },
     get$unselectedGender() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae \u03c6\u03cd\u03bb\u03bf\u03c5";
+      return "Select a gender option";
     },
     get$gender() {
-      return "\u03a6\u03cd\u03bb\u03bf";
+      return "Gender";
     },
     get$modeDisabled() {
-      return "\u03a4\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03b7\u03bc\u03ad\u03bd\u03b1 \u03b3\u03b9\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c0\u03bf\u03c5 \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c5 \u03c3\u03b1\u03c2.";
+      return "Learning tools are disabled for messages that aren't in your target language.";
     },
     get$courseParticipantTooltip() {
-      return '\u0391\u03c5\u03c4\u03bf\u03af \u03b5\u03af\u03bd\u03b1\u03b9 \u03cc\u03bb\u03bf\u03b9 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1. \u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03bf avatar \u03bf\u03c0\u03bf\u03b9\u03bf\u03c5\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03ba\u03b1\u03b9 "\u03be\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1" \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c3\u03c4\u03b5\u03af\u03bb\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1 DM.';
+      return "This is everybody in this course. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
     },
     get$chatParticipantTooltip() {
-      return '\u0391\u03c5\u03c4\u03bf\u03af \u03b5\u03af\u03bd\u03b1\u03b9 \u03cc\u03bb\u03bf\u03b9 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1. \u039a\u03ac\u03bd\u03c4\u03b5 \u03ba\u03bb\u03b9\u03ba \u03c3\u03c4\u03bf avatar \u03bf\u03c0\u03bf\u03b9\u03bf\u03c5\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7 \u03ba\u03b1\u03b9 "\u03be\u03b5\u03ba\u03b9\u03bd\u03ae\u03c3\u03c4\u03b5 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1" \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c3\u03c4\u03b5\u03af\u03bb\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1 DM.';
+      return "This is everybody in this chat. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
     },
     get$inOngoingActivity() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03c4\u03c1\u03ad\u03c7\u03bf\u03c5\u03c3\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1!";
+      return "You have an ongoing activity!";
     },
     get$requestRegeneration() {
-      return "\u0391\u03af\u03c4\u03b7\u03bc\u03b1 \u03b1\u03bd\u03b1\u03b3\u03ad\u03bd\u03bd\u03b7\u03c3\u03b7\u03c2";
+      return "Request regeneration";
     },
     get$optionalRegenerateReason() {
-      return "(\u03a0\u03c1\u03bf\u03b1\u03b9\u03c1\u03b5\u03c4\u03b9\u03ba\u03cc) \u039b\u03cc\u03b3\u03bf\u03c2";
+      return "(Optional) Reason";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03bf\u03c1\u03af\u03c3\u03b5\u03b9 \u03c4\u03bf emoji \u03b3\u03b9\u03b1 " + lemma + "! \u0398\u03b1 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03bf\u03c5\u03bc\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf emoji \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03ba\u03c0\u03c1\u03bf\u03c3\u03c9\u03c0\u03ae\u03c3\u03bf\u03c5\u03bc\u03b5 \u03c4\u03b7 \u03bb\u03ad\u03be\u03b7 \u03c3\u03b5 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ad\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03c3\u03c4\u03bf \u03b5\u03be\u03ae\u03c2.";
+      return "You\u2019ve set the emoji for " + lemma + "! We\u2019ll use this emoji to represent the word in practice activities going forward.";
     },
     get$constructUseCorLMDesc() {
-      return "\u0394\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2 \u03bf\u03c1\u03b9\u03c3\u03bc\u03bf\u03cd \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Correct vocab definition practice";
     },
     get$constructUseIncLMDesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03bf\u03c1\u03b9\u03c3\u03bc\u03bf\u03cd \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Incorrect vocab definition practice";
     },
     get$constructUseCorLADesc() {
-      return "\u0394\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2 \u03ae\u03c7\u03bf\u03c5 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Correct vocab audio practice";
     },
     get$constructUseIncLADesc() {
-      return "\u039b\u03ac\u03b8\u03bf\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ae\u03c7\u03bf\u03c5 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Incorrect vocab audio practice";
     },
     get$constructUseBonus() {
-      return "\u039c\u03c0\u03cc\u03bd\u03bf\u03c5\u03c2 \u03ba\u03b1\u03c4\u03ac \u03c4\u03b7 \u03b4\u03b9\u03ac\u03c1\u03ba\u03b5\u03b9\u03b1 \u03c4\u03b7\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2 \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Bonus during vocab practice";
     },
     get$practiceVocab() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03bb\u03b5\u03be\u03b9\u03bb\u03bf\u03b3\u03af\u03bf\u03c5";
+      return "Practice vocabulary";
     },
     get$selectMeaning() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03c4\u03b7\u03bd \u03ad\u03bd\u03bd\u03bf\u03b9\u03b1";
+      return "Select the meaning";
     },
     get$anotherRound() {
-      return "\u039c\u03b9\u03b1 \u03b1\u03ba\u03cc\u03bc\u03b7 \u03b3\u03cd\u03c1\u03bf\u03c2";
+      return "Another round";
     },
     get$ssoDialogTitle() {
-      return "\u03a0\u03b5\u03c1\u03b9\u03bc\u03ad\u03bd\u03bf\u03bd\u03c4\u03b1\u03c2 \u03c4\u03b7\u03bd \u03bf\u03bb\u03bf\u03ba\u03bb\u03ae\u03c1\u03c9\u03c3\u03b7 \u03c4\u03b7\u03c2 \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7\u03c2";
+      return "Waiting for sign in to complete";
     },
     get$ssoDialogDesc() {
-      return "\u0391\u03bd\u03bf\u03af\u03be\u03b1\u03bc\u03b5 \u03bc\u03b9\u03b1 \u03bd\u03ad\u03b1 \u03ba\u03b1\u03c1\u03c4\u03ad\u03bb\u03b1 \u03ce\u03c3\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03ad\u03c3\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5 \u03bc\u03b5 \u03b1\u03c3\u03c6\u03ac\u03bb\u03b5\u03b9\u03b1.";
+      return "We opened a new tab so you can sign in securely.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 \u0391\u03bd \u03b4\u03b5\u03bd \u03b5\u03af\u03b4\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03bd\u03ad\u03b1 \u03ba\u03b1\u03c1\u03c4\u03ad\u03bb\u03b1, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03c4\u03ae \u03b1\u03bd\u03b1\u03b4\u03c5\u03cc\u03bc\u03b5\u03bd\u03c9\u03bd \u03c0\u03b1\u03c1\u03b1\u03b8\u03cd\u03c1\u03c9\u03bd \u03c3\u03b1\u03c2.";
+      return "\ud83e\udd14 If you didn't see the new tab, please check your popup blocker.";
     },
     get$disableLanguageToolsTitle() {
-      return "\u0391\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03c9\u03bd \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2";
+      return "Disable language tools";
     },
     get$disableLanguageToolsDesc() {
-      return "\u0398\u03b1 \u03b8\u03ad\u03bb\u03b1\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b7 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2;";
+      return "Would you like to disable automatic language assistance?";
     },
     get$screenSizeWarning() {
-      return "\u0393\u03b9\u03b1 \u03c4\u03b7\u03bd \u03ba\u03b1\u03bb\u03cd\u03c4\u03b5\u03c1\u03b7 \u03b5\u03bc\u03c0\u03b5\u03b9\u03c1\u03af\u03b1 \u03c7\u03c1\u03ae\u03c3\u03b7\u03c2 \u03b1\u03c5\u03c4\u03ae\u03c2 \u03c4\u03b7\u03c2 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03c0\u03b5\u03ba\u03c4\u03b5\u03af\u03bd\u03b5\u03c4\u03b5 \u03c4\u03bf \u03bc\u03ad\u03b3\u03b5\u03b8\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03bf\u03b8\u03cc\u03bd\u03b7\u03c2 \u03c3\u03b1\u03c2.";
-    },
-    get$noActivityRequest() {
-      return "\u0394\u03b5\u03bd \u03c5\u03c0\u03ac\u03c1\u03c7\u03b5\u03b9 \u03c4\u03c1\u03ad\u03c7\u03bf\u03c5\u03c3\u03b1 \u03b1\u03af\u03c4\u03b7\u03c3\u03b7 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2.";
+      return "For the best experience using this application, please expand your screen size.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "\u0394\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03b3\u03b9\u03b1 \u039e\u03b5\u03ba\u03bb\u03b5\u03af\u03b4\u03c9\u03bc\u03b1 \u0395\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf\u03c5 \u0398\u03ad\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Activities to Unlock Next Topic";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "\u039f\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c1\u03b9\u03b8\u03bc\u03cc \u03c4\u03c9\u03bd \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03bf\u03c4\u03ae\u03c4\u03c9\u03bd \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf \u03b8\u03ad\u03bc\u03b1 \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2";
+      return "Set the number of activities to unlock the next course topic";
     },
     get$activitySettingsOverrideWarning() {
-      return "\u0397 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03ba\u03b1\u03b9 \u03c4\u03bf \u03b5\u03c0\u03af\u03c0\u03b5\u03b4\u03bf \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2 \u03ba\u03b1\u03b8\u03bf\u03c1\u03af\u03b6\u03bf\u03bd\u03c4\u03b1\u03b9 \u03b1\u03c0\u03cc \u03c4\u03bf \u03c3\u03c7\u03ad\u03b4\u03b9\u03bf \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2";
+      return "Language and language level determined by activity plan";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa \u0391\u03c6\u03ae\u03c3\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
+      return "\ud83d\udeaa You left the chat";
     },
     get$downloadInitiated() {
-      return "\u0397 \u03bb\u03ae\u03c8\u03b7 \u03be\u03b5\u03ba\u03af\u03bd\u03b7\u03c3\u03b5";
+      return "Download initiated";
     },
     get$webDownloadPermissionMessage() {
-      return "\u0395\u03ac\u03bd \u03bf \u03c0\u03b5\u03c1\u03b9\u03b7\u03b3\u03b7\u03c4\u03ae\u03c2 \u03c3\u03b1\u03c2 \u03bc\u03c0\u03bb\u03bf\u03ba\u03ac\u03c1\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03bb\u03ae\u03c8\u03b5\u03b9\u03c2, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03bb\u03ae\u03c8\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03b9\u03c3\u03c4\u03cc\u03c4\u03bf\u03c0\u03bf.";
+      return "If your browser blocks downloads, please enable downloads for this site.";
     },
     get$exitPractice() {
-      return "\u0397 \u03c0\u03c1\u03cc\u03bf\u03b4\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03c3\u03c5\u03bd\u03b5\u03b4\u03c1\u03af\u03b1\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2 \u03c3\u03b1\u03c2 \u03b4\u03b5\u03bd \u03b8\u03b1 \u03b1\u03c0\u03bf\u03b8\u03b7\u03ba\u03b5\u03c5\u03c4\u03b5\u03af.";
+      return "Your practice session progress won't be saved.";
     },
     get$practiceGrammar() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Practice grammar";
     },
     get$notEnoughToPractice() {
-      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03c0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03be\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae";
+      return "Send more messages to unlock practice";
     },
     get$constructUseCorGCDesc() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ba\u03b1\u03c4\u03b7\u03b3\u03bf\u03c1\u03af\u03b1\u03c2 \u03c3\u03c9\u03c3\u03c4\u03ae\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Correct grammar category practice";
     },
     get$constructUseIncGCDesc() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ba\u03b1\u03c4\u03b7\u03b3\u03bf\u03c1\u03af\u03b1\u03c2 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03c4\u03ae\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Incorrect grammar category practice";
     },
     get$constructUseCorGEDesc() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u03bb\u03b1\u03b8\u03ce\u03bd";
+      return "Correct grammar error practice";
     },
     get$constructUseIncGEDesc() {
-      return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03bc\u03ad\u03bd\u03c9\u03bd \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd \u03bb\u03b1\u03b8\u03ce\u03bd";
+      return "Incorrect grammar error practice";
     },
     get$fillInBlank() {
-      return "\u03a3\u03c5\u03bc\u03c0\u03bb\u03b7\u03c1\u03ce\u03c3\u03c4\u03b5 \u03c4\u03bf \u03ba\u03b5\u03bd\u03cc \u03bc\u03b5 \u03c4\u03b7 \u03c3\u03c9\u03c3\u03c4\u03ae \u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae";
+      return "Fill in the blank with the correct choice";
     },
     get$learn() {
-      return "\u039c\u03ac\u03b8\u03b5\u03c4\u03b5";
+      return "Learn";
     },
     get$languageUpdated() {
-      return "\u0397 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c2 \u03b5\u03bd\u03b7\u03bc\u03b5\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5!";
+      return "Target language updated!";
     },
     get$voiceDropdownTitle() {
-      return "\u03a6\u03c9\u03bd\u03ae Pangea Bot";
+      return "Pangea Bot voice";
     },
     get$knockDesc() {
-      return "\u03a4\u03bf \u03b1\u03af\u03c4\u03b7\u03bc\u03ac \u03c3\u03b1\u03c2 \u03ad\u03c7\u03b5\u03b9 \u03c3\u03c4\u03b1\u03bb\u03b5\u03af \u03c3\u03c4\u03bf\u03bd \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae \u03c4\u03bf\u03c5 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2! \u0398\u03b1 \u03c3\u03b1\u03c2 \u03b5\u03c0\u03b9\u03c4\u03c1\u03ad\u03c8\u03bf\u03c5\u03bd \u03bd\u03b1 \u03bc\u03c0\u03b5\u03af\u03c4\u03b5 \u03b1\u03bd \u03c4\u03bf \u03b5\u03b3\u03ba\u03c1\u03af\u03bd\u03bf\u03c5\u03bd.";
+      return "Your request has been sent to course admin! You'll be let in if they approve.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03ad\u03bd\u03b1\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7\u03c2 \u03ae \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03bc\u03bf \u03b3\u03b9\u03b1 \u03ad\u03bd\u03b1 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1;";
+      return "Do you have an invite code or link to a public course?";
     },
     welcomeUser$1(user) {
-      return "\u039a\u03b1\u03bb\u03ce\u03c2 \u03ae\u03c1\u03b8\u03b1\u03c4\u03b5 " + user;
+      return "Welcome " + user;
     },
     get$findCourse() {
-      return "\u0392\u03c1\u03b5\u03af\u03c4\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1";
+      return "Find a course";
     },
     get$publicInviteDescChat() {
-      return "\u0391\u03bd\u03b1\u03b6\u03b7\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c4\u03bf\u03c5\u03c2 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03ae\u03bd \u03c4\u03b7\u03bd \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1.";
+      return "Search for users to invite them to this chat.";
     },
     get$publicInviteDescSpace() {
-      return "\u0391\u03bd\u03b1\u03b6\u03b7\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c4\u03bf\u03c5\u03c2 \u03c0\u03c1\u03bf\u03c3\u03ba\u03b1\u03bb\u03ad\u03c3\u03b5\u03c4\u03b5 \u03c3\u03b5 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03c7\u03ce\u03c1\u03bf.";
+      return "Search for users to invite them to this space.";
     },
     get$enableNotificationsTitle() {
-      return "\u0397 Pangea Chat \u03b5\u03af\u03bd\u03b1\u03b9 \u03bc\u03b9\u03b1 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd, \u03bf\u03c0\u03cc\u03c4\u03b5 \u03bf\u03b9 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c3\u03b7\u03bc\u03b1\u03bd\u03c4\u03b9\u03ba\u03ad\u03c2!";
+      return "Pangea Chat is a texting app so notifications are important!";
     },
     get$enableNotificationsDesc() {
-      return "\u0395\u03c0\u03b9\u03c4\u03c1\u03ad\u03c8\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03b9\u03c2";
+      return "Allow notifications";
     },
     get$useActivityImageAsChatBackground() {
-      return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c9\u03c2 \u03c6\u03cc\u03bd\u03c4\u03bf \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
+      return "Use activity image as chat background";
     },
     get$chatWithSupport() {
-      return "\u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03bc\u03b5 \u03a5\u03c0\u03bf\u03c3\u03c4\u03ae\u03c1\u03b9\u03be\u03b7";
+      return "Chat with Support";
     },
     get$newCourseAccess() {
-      return "\u0391\u03c0\u03cc \u03c0\u03c1\u03bf\u03b5\u03c0\u03b9\u03bb\u03bf\u03b3\u03ae, \u03c4\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b7\u03bc\u03cc\u03c3\u03b9\u03b1 \u03b1\u03bd\u03b1\u03b6\u03b7\u03c4\u03ae\u03c3\u03b9\u03bc\u03b1 \u03ba\u03b1\u03b9 \u03b1\u03c0\u03b1\u03b9\u03c4\u03bf\u03cd\u03bd \u03ad\u03b3\u03ba\u03c1\u03b9\u03c3\u03b7 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03c4\u03b5. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03b1\u03c5\u03c4\u03ad\u03c2 \u03c4\u03b9\u03c2 \u03c1\u03c5\u03b8\u03bc\u03af\u03c3\u03b5\u03b9\u03c2 \u03bf\u03c0\u03bf\u03b9\u03b1\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03c3\u03c4\u03b9\u03b3\u03bc\u03ae.";
+      return "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.";
     },
     get$courseLoadingError() {
-      return "\u039a\u03ac\u03c4\u03b9 \u03c0\u03ae\u03b3\u03b5 \u03c3\u03c4\u03c1\u03b1\u03b2\u03ac \u03ba\u03b1\u03b9 \u03b5\u03c1\u03b3\u03b1\u03b6\u03cc\u03bc\u03b1\u03c3\u03c4\u03b5 \u03c3\u03ba\u03bb\u03b7\u03c1\u03ac \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c4\u03bf \u03b4\u03b9\u03bf\u03c1\u03b8\u03ce\u03c3\u03bf\u03c5\u03bc\u03b5. \u0388\u03bb\u03b5\u03b3\u03be\u03b5 \u03be\u03b1\u03bd\u03ac \u03b1\u03c1\u03b3\u03cc\u03c4\u03b5\u03c1\u03b1.";
+      return "Something went wrong, and we're hard at work fixing it. Check again later.";
     },
     get$onboardingLanguagesTitle() {
-      return "\u03a0\u03bf\u03b9\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03bc\u03b1\u03b8\u03b1\u03af\u03bd\u03b5\u03c4\u03b5;";
+      return "What language are you learning?";
     },
     get$searchLanguagesHint() {
-      return "\u0391\u03bd\u03b1\u03b6\u03b7\u03c4\u03ae\u03c3\u03c4\u03b5 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b5\u03c2 \u03c3\u03c4\u03cc\u03c7\u03bf\u03c5";
+      return "Search target languages";
     },
     get$supportSubtitle() {
-      return "\u0395\u03c1\u03c9\u03c4\u03ae\u03c3\u03b5\u03b9\u03c2; \u0395\u03af\u03bc\u03b1\u03c3\u03c4\u03b5 \u03b5\u03b4\u03ce \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b2\u03bf\u03b7\u03b8\u03ae\u03c3\u03bf\u03c5\u03bc\u03b5!";
+      return "Questions? We're here to help!";
     },
     get$autoIGCToolName() {
-      return "\u0395\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1\u03c2 \u03b3\u03c1\u03b1\u03c6\u03ae\u03c2";
+      return "Enable writing assistance";
     },
     get$autoIGCToolDescription() {
-      return "\u0391\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b1 \u03b5\u03ba\u03c4\u03b5\u03bb\u03ad\u03c3\u03c4\u03b5 \u03c4\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 Pangea Chat \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03bf\u03c1\u03b8\u03ce\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c4\u03b1\u03bb\u03bc\u03ad\u03bd\u03b1 \u03bc\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 \u03c3\u03c4\u03b7 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1 \u03c3\u03c4\u03cc\u03c7\u03bf.";
+      return "Automatically run Pangea Chat tools to correct sent messages to target language.";
     },
     get$emptyAudioError() {
-      return "\u0397 \u03b7\u03c7\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7 \u03b1\u03c0\u03ad\u03c4\u03c5\u03c7\u03b5. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03ac\u03b4\u03b5\u03b9\u03b5\u03c2 \u03ae\u03c7\u03bf\u03c5 \u03c3\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "Recording failed. Please check your audio permissions and try again.";
     },
     get$spanFeedbackTitle() {
-      return "\u0391\u03bd\u03b1\u03c6\u03bf\u03c1\u03ac \u03c0\u03c1\u03bf\u03b2\u03bb\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b4\u03b9\u03cc\u03c1\u03b8\u03c9\u03c3\u03b7\u03c2";
+      return "Report correction issue";
     },
     get$selectAllWords() {
-      return "\u0395\u03c0\u03b9\u03bb\u03ad\u03be\u03c4\u03b5 \u03cc\u03bb\u03b5\u03c2 \u03c4\u03b9\u03c2 \u03bb\u03ad\u03be\u03b5\u03b9\u03c2 \u03c0\u03bf\u03c5 \u03b1\u03ba\u03bf\u03cd\u03c4\u03b5 \u03c3\u03c4\u03bf\u03bd \u03ae\u03c7\u03bf";
+      return "Select all the words you hear in the audio";
     },
     get$aboutMeHint() {
-      return "\u03a3\u03c7\u03b5\u03c4\u03b9\u03ba\u03ac \u03bc\u03b5 \u03b5\u03bc\u03ad\u03bd\u03b1";
+      return "About me";
     },
     get$changeEmail() {
-      return "\u0391\u03bb\u03bb\u03b1\u03b3\u03ae email";
+      return "Change email";
     },
     get$withTheseAddressesDescription() {
-      return "\u039c\u03b5 \u03b1\u03c5\u03c4\u03ad\u03c2 \u03c4\u03b9\u03c2 \u03b4\u03b9\u03b5\u03c5\u03b8\u03cd\u03bd\u03c3\u03b5\u03b9\u03c2 email \u03bc\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5, \u03bd\u03b1 \u03b1\u03bd\u03b1\u03ba\u03c4\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03ba\u03c9\u03b4\u03b9\u03ba\u03cc \u03c3\u03b1\u03c2 \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ad\u03c2.";
+      return "With these email addresses you can log in, recover your password, and manage subscriptions.";
     },
     get$noAddressDescription() {
-      return "\u0394\u03b5\u03bd \u03ad\u03c7\u03b5\u03c4\u03b5 \u03c0\u03c1\u03bf\u03c3\u03b8\u03ad\u03c3\u03b5\u03b9 \u03b1\u03ba\u03cc\u03bc\u03b1 \u03b4\u03b9\u03b5\u03c5\u03b8\u03cd\u03bd\u03c3\u03b5\u03b9\u03c2 email.";
+      return "You have not added any email addresses yet.";
     },
     get$perfectPractice() {
-      return "\u03a4\u03ad\u03bb\u03b5\u03b9\u03b1 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae!";
+      return "Perfect practice!";
     },
     get$greatPractice() {
-      return "\u03a5\u03c0\u03ad\u03c1\u03bf\u03c7\u03b7 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae!";
+      return "Great practice!";
     },
     get$usedNoHints() {
-      return "\u039a\u03b1\u03bb\u03ae \u03b4\u03bf\u03c5\u03bb\u03b5\u03b9\u03ac \u03c0\u03bf\u03c5 \u03b4\u03b5\u03bd \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b5\u03c2 \u03ba\u03b1\u03bc\u03af\u03b1 \u03c5\u03c0\u03cc\u03b4\u03b5\u03b9\u03be\u03b7!";
+      return "Nice job not using any hints!";
     },
     get$youveCompletedPractice() {
-      return "\u039f\u03bb\u03bf\u03ba\u03bb\u03ae\u03c1\u03c9\u03c3\u03b5\u03c2 \u03c4\u03b7\u03bd \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae, \u03c3\u03c5\u03bd\u03ad\u03c7\u03b9\u03c3\u03b5 \u03ad\u03c4\u03c3\u03b9 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b2\u03b5\u03bb\u03c4\u03b9\u03c9\u03b8\u03b5\u03af\u03c2!";
+      return "You've completed practice, keep it up to get better!";
     },
     get$joinCourseForActivities() {
-      return "\u0395\u03b3\u03b3\u03c1\u03b1\u03c6\u03b5\u03af\u03c4\u03b5 \u03c3\u03b5 \u03ad\u03bd\u03b1 \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03b5\u03c4\u03b5 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2.";
+      return "Join a course to try activities.";
     },
     get$courseDescription() {
-      return "\u03a4\u03b1 \u03bc\u03b1\u03b8\u03ae\u03bc\u03b1\u03c4\u03b1 \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03bf\u03cd\u03bd\u03c4\u03b1\u03b9 \u03b1\u03c0\u03cc 3-8 \u03b5\u03bd\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2, \u03ba\u03ac\u03b8\u03b5 \u03bc\u03af\u03b1 \u03bc\u03b5 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03bd\u03b8\u03b1\u03c1\u03c1\u03cd\u03bd\u03bf\u03c5\u03bd \u03c4\u03b7\u03bd \u03b5\u03be\u03ac\u03c3\u03ba\u03b7\u03c3\u03b7 \u03bb\u03ad\u03be\u03b5\u03c9\u03bd \u03c3\u03b5 \u03b4\u03b9\u03b1\u03c6\u03bf\u03c1\u03b5\u03c4\u03b9\u03ba\u03ac \u03c3\u03c5\u03bc\u03c6\u03c1\u03b1\u03b6\u03cc\u03bc\u03b5\u03bd\u03b1";
+      return "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts";
     },
     get$emailVerificationFailed() {
-      return "\u0397 \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7 \u03c4\u03bf\u03c5 email \u03b1\u03c0\u03ad\u03c4\u03c5\u03c7\u03b5. \u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b4\u03bf\u03ba\u03b9\u03bc\u03ac\u03c3\u03c4\u03b5 \u03be\u03b1\u03bd\u03ac.";
+      return "Email verification failed. Please try again.";
     },
     get$unlockLearningTools() {
-      return "\u039e\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b1 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03b1 \u03bc\u03ac\u03b8\u03b7\u03c3\u03b7\u03c2";
+      return "Unlock learning tools";
     },
     get$unlockPracticeActivities() {
-      return "\u039e\u03b5\u03ba\u03bb\u03b5\u03b9\u03b4\u03ce\u03c3\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae\u03c2";
+      return "Unlock practice activities";
     },
     get$managementSnackbarMessage() {
-      return "\u039b\u03b1\u03bd\u03c3\u03ac\u03c1\u03b1\u03bc\u03b5 \u03c4\u03b7 \u03b4\u03b9\u03b1\u03c7\u03b5\u03af\u03c1\u03b9\u03c3\u03b7 \u03c3\u03c5\u03bd\u03b4\u03c1\u03bf\u03bc\u03ce\u03bd \u03c3\u03b5 \u03bc\u03b9\u03b1 \u03bd\u03ad\u03b1 \u03ba\u03b1\u03c1\u03c4\u03ad\u03bb\u03b1. \u0391\u03bd \u03b4\u03b5\u03bd \u03b5\u03af\u03b4\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03bd\u03ad\u03b1 \u03ba\u03b1\u03c1\u03c4\u03ad\u03bb\u03b1, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03c4\u03ae \u03b1\u03bd\u03b1\u03b4\u03c5\u03cc\u03bc\u03b5\u03bd\u03c9\u03bd \u03c0\u03b1\u03c1\u03b1\u03b8\u03cd\u03c1\u03c9\u03bd \u03c3\u03b1\u03c2.";
+      return "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.";
     },
     get$hideEvents() {
-      return "\u0391\u03c0\u03cc\u03ba\u03c1\u03c5\u03c8\u03b7 \u03b5\u03ba\u03b4\u03b7\u03bb\u03ce\u03c3\u03b5\u03c9\u03bd";
+      return "Hide events";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5581,16 +5578,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nEl, C.L10n);
+    _inherit(A.L10nEn, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEl":{"L10n":[]}}'));
-  var string$ = {
-    ______: "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03b9\u03c3\u03ac\u03b3\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03ad\u03b3\u03ba\u03c5\u03c1\u03b7 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 email."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEn":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["5NtFCV0KLybY3/jIoVswIt+oN0w="] = d.current;
+  d["J49eEEW7pjJCJgca8yaBDtK1WLA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_440.part.js.map

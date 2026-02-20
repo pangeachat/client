@@ -5416,9 +5416,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u098f\u0987 \u0985\u09cd\u09af\u09be\u09aa\u09cd\u09b2\u09bf\u0995\u09c7\u09b6\u09a8\u099f\u09bf \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u09b8\u09c7\u09b0\u09be \u0985\u09ad\u09bf\u099c\u09cd\u099e\u09a4\u09be\u09b0 \u099c\u09a8\u09cd\u09af, \u09a6\u09af\u09bc\u09be \u0995\u09b0\u09c7 \u0986\u09aa\u09a8\u09be\u09b0 \u09b8\u09cd\u0995\u09cd\u09b0\u09c0\u09a8\u09c7\u09b0 \u0986\u0995\u09be\u09b0 \u09ac\u09be\u09a1\u09bc\u09be\u09a8\u0964";
     },
-    get$noActivityRequest() {
-      return "\u09ac\u09b0\u09cd\u09a4\u09ae\u09be\u09a8 \u0995\u09cb\u09a8 \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa\u09c7\u09b0 \u0985\u09a8\u09c1\u09b0\u09cb\u09a7 \u09a8\u09c7\u0987\u0964";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "\u09aa\u09b0\u09ac\u09b0\u09cd\u09a4\u09c0 \u09ac\u09bf\u09b7\u09af\u09bc \u0989\u09a8\u09cd\u09ae\u09c1\u0995\u09cd\u09a4 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae";
     },
@@ -5588,7 +5585,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YWCZPWPYJAtghEI46M0UysxomtM="] = d.current;
+  d["FrUvZO2vn0jUikhLRKoPex5503U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

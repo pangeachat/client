@@ -5417,9 +5417,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Bokor na b\u025by\u025b a, b\u0254k\u0254 a \u025by\u025b f\u025b a, y\u025bsr\u025b s\u025b b\u0254 wo b\u0254k\u0254 no mu.";
     },
-    get$noActivityRequest() {
-      return "Ninguna solicitud de actividad actual.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktiviteti p\xebr t\xeb \xc7liruar Tem\xebn Tjet\xebr";
     },
@@ -5601,7 +5598,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Nlv3V+blPbryzZQ1vYc27ikXCvk="] = d.current;
+  d["8lFGqqtGrct8H9ULDu1449orT/8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

@@ -5427,9 +5427,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
-    get$noActivityRequest() {
-      return "Nenhum pedido de atividade atual.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
@@ -10989,9 +10986,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$screenSizeWarning() {
       return string$.Para_a;
-    },
-    get$noActivityRequest() {
-      return "Nenhum pedido de atividade atual.";
     },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
@@ -16553,9 +16547,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
-    get$noActivityRequest() {
-      return "Nenhum pedido de atividade atual.";
-    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
@@ -16913,7 +16904,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Z7HN8aOc8BWnM5sJCPPLKopEOpg="] = d.current;
+  d["m3arUp1UHEJm9z8TmppOhlvrZl0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map
