@@ -77,6 +77,7 @@ class AnalyticsPracticeSessionRepo {
       userL1: MatrixState.pangeaController.userController.userL1!.langCode,
       userL2: MatrixState.pangeaController.userController.userL2!.langCode,
       startedAt: DateTime.now(),
+      type: type,
       practiceTargets: targets,
     );
     return session;

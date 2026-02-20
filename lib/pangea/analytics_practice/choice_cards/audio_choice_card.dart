@@ -13,7 +13,7 @@ class AudioChoiceCard extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isCorrect;
   final bool isEnabled;
-  final bool showPhoneticTranscription;
+  final bool showHint;
 
   const AudioChoiceCard({
     required this.choiceId,
@@ -23,7 +23,7 @@ class AudioChoiceCard extends StatelessWidget {
     required this.onPressed,
     required this.isCorrect,
     this.isEnabled = true,
-    this.showPhoneticTranscription = false,
+    this.showHint = false,
     super.key,
   });
 
@@ -41,7 +41,7 @@ class AudioChoiceCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (showPhoneticTranscription)
+          if (showHint)
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
