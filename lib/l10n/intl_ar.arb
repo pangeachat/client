@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-12 15:55:16.528301",
+  "@@last_modified": "2026-02-18 13:03:48.015917",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11613,6 +11613,16 @@
   },
   "managementSnackbarMessage": "لقد أطلقنا إدارة الاشتراكات في علامة تبويب جديدة. إذا لم ترَ علامة التبويب الجديدة، يرجى التحقق من مانع النوافذ المنبثقة لديك.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "فتح أنشطة الممارسة",
+  "hideEvents": "إخفاء الأحداث",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

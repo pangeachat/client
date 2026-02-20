@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -41,6 +42,8 @@ class AnalyticsSyncController {
 
   AnalyticsSyncController({required this.client, required this.dataService});
 
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
   void start() {
     _subscription ??= client.onSync.stream.listen(_onSync);
   }
@@ -52,13 +55,19 @@ class AnalyticsSyncController {
 
   Future<void> _onSync(SyncUpdate update) async {
     final analyticsRoom = _getAnalyticsRoom();
-    if (analyticsRoom == null) return;
+    final l2 = _l2;
+    if (analyticsRoom == null || l2 == null) return;
 
     final roomUpdates = update.rooms?.join?[analyticsRoom.id]?.timeline?.events;
     if (roomUpdates == null) return;
 
     for (final type in _AnalyticsUpdateEvent.values) {
-      await _dispatchSyncEvents(type, roomUpdates, analyticsRoom);
+      await _dispatchSyncEvents(
+        type,
+        roomUpdates,
+        analyticsRoom,
+        l2.langCodeShort,
+      );
     }
   }
 
@@ -66,6 +75,7 @@ class AnalyticsSyncController {
     _AnalyticsUpdateEvent type,
     List<MatrixEvent> events,
     Room analyticsRoom,
+    String language,
   ) async {
     final updates = events
         .where((e) => e.type == type.eventType && e.senderId == client.userID)
@@ -73,7 +83,7 @@ class AnalyticsSyncController {
 
     switch (type) {
       case _AnalyticsUpdateEvent.constructAnalytics:
-        await _onConstructEvents(updates, analyticsRoom);
+        await _onConstructEvents(updates, analyticsRoom, language);
         break;
       case _AnalyticsUpdateEvent.activityAnalytics:
         _onActivityEvents(updates);
@@ -82,7 +92,7 @@ class AnalyticsSyncController {
         _onLemmaInfoEvents(updates);
         break;
       case _AnalyticsUpdateEvent.blockedConstruct:
-        await _onBlockedConstructEvents(updates);
+        await _onBlockedConstructEvents(updates, language);
         break;
     }
   }
@@ -90,6 +100,7 @@ class AnalyticsSyncController {
   Future<void> _onConstructEvents(
     List<MatrixEvent> events,
     Room analyticsRoom,
+    String language,
   ) async {
     final constructEvents = events
         .map(
@@ -103,6 +114,7 @@ class AnalyticsSyncController {
     if (constructEvents.isEmpty) return;
     await dataService.updateDispatcher.sendServerAnalyticsUpdate(
       constructEvents,
+      language,
     );
   }
 
@@ -139,7 +151,10 @@ class AnalyticsSyncController {
     }
   }
 
-  Future<void> _onBlockedConstructEvents(List<MatrixEvent> events) async {
+  Future<void> _onBlockedConstructEvents(
+    List<MatrixEvent> events,
+    String language,
+  ) async {
     for (final event in events) {
       final current = AnalyticsSettingsModel.fromJson(event.content);
       final prevContent =
@@ -155,6 +170,7 @@ class AnalyticsSyncController {
       if (newlyBlocked.isEmpty) continue;
       await dataService.updateDispatcher.sendBlockedConstructsUpdate(
         newlyBlocked.toSet(),
+        language,
       );
     }
   }
@@ -176,11 +192,11 @@ class AnalyticsSyncController {
     });
   }
 
-  Future<void> bulkUpdate() async {
+  Future<void> bulkUpdate(String language) async {
     final analyticsRoom = _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
-    final lastUpdated = await dataService.getLastUpdatedAnalytics();
+    final lastUpdated = await dataService.getLastUpdatedAnalytics(language);
 
     final events = await analyticsRoom.getAnalyticsEvents(
       userId: client.userID!,
@@ -189,11 +205,11 @@ class AnalyticsSyncController {
 
     if (events == null || events.isEmpty) return;
 
-    await dataService.updateServerAnalytics(events);
+    await dataService.updateServerAnalytics(events, language);
   }
 
   Room? _getAnalyticsRoom() {
-    final l2 = MatrixState.pangeaController.userController.userL2;
+    final l2 = _l2;
     if (l2 == null) return null;
     return client.analyticsRoomLocal(l2);
   }

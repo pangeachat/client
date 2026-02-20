@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -103,6 +104,10 @@ class ActivityChatController {
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
     final cached = ActivitySessionAnalyticsRepo.get(room.id);
     final analytics = cached?.analytics ?? ActivitySummaryAnalyticsModel();
+    final activityLang = room.activityPlan?.req.targetLanguage;
+    if (activityLang == null) {
+      return analytics;
+    }
 
     DateTime? timestamp = room.creationTimestamp;
     if (cached != null) {
@@ -114,6 +119,7 @@ class ActivityChatController {
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
     uses = await analyticsService.getUses(
+      activityLang.split('-').first,
       since: timestamp ?? DateTime.fromMillisecondsSinceEpoch(0),
       roomId: room.id,
     );

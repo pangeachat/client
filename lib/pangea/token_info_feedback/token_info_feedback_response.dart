@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 class TokenInfoFeedbackResponse implements JsonSerializable {
   final String userFriendlyMessage;
   final PangeaToken? updatedToken;
+  final List<PangeaToken>? updatedTokens;
   final LemmaInfoResponse? updatedLemmaInfo;
   final PTResponse? updatedPhonetics;
   final String? updatedLanguage;
@@ -13,6 +14,7 @@ class TokenInfoFeedbackResponse implements JsonSerializable {
   TokenInfoFeedbackResponse({
     required this.userFriendlyMessage,
     this.updatedToken,
+    this.updatedTokens,
     this.updatedLemmaInfo,
     this.updatedPhonetics,
     this.updatedLanguage,
@@ -23,6 +25,11 @@ class TokenInfoFeedbackResponse implements JsonSerializable {
       userFriendlyMessage: json['user_friendly_message'] as String,
       updatedToken: json['updated_token'] != null
           ? PangeaToken.fromJson(json['updated_token'] as Map<String, dynamic>)
+          : null,
+      updatedTokens: json['updated_tokens'] != null
+          ? (json['updated_tokens'] as List<dynamic>)
+                .map((e) => PangeaToken.fromJson(e as Map<String, dynamic>))
+                .toList()
           : null,
       updatedLemmaInfo: json['updated_lemma_info'] != null
           ? LemmaInfoResponse.fromJson(
@@ -43,28 +50,10 @@ class TokenInfoFeedbackResponse implements JsonSerializable {
     return {
       'user_friendly_message': userFriendlyMessage,
       'updated_token': updatedToken?.toJson(),
+      'updated_tokens': updatedTokens?.map((e) => e.toJson()).toList(),
       'updated_lemma_info': updatedLemmaInfo?.toJson(),
       'updated_phonetics': updatedPhonetics?.toJson(),
       'updated_language': updatedLanguage,
     };
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TokenInfoFeedbackResponse &&
-          runtimeType == other.runtimeType &&
-          userFriendlyMessage == other.userFriendlyMessage &&
-          updatedToken == other.updatedToken &&
-          updatedLemmaInfo == other.updatedLemmaInfo &&
-          updatedPhonetics == other.updatedPhonetics &&
-          updatedLanguage == other.updatedLanguage;
-
-  @override
-  int get hashCode =>
-      userFriendlyMessage.hashCode ^
-      updatedToken.hashCode ^
-      updatedLemmaInfo.hashCode ^
-      updatedPhonetics.hashCode ^
-      updatedLanguage.hashCode;
 }

@@ -438,6 +438,8 @@ class HtmlMessage extends StatelessWidget {
         pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
         ? TokensUtil.getNewTokensByEvent(pangeaMessageEvent!)
         : [];
+
+    final practiceMode = overlayController?.practiceController.practiceMode;
     // Pangea#
 
     switch (node.localName) {
@@ -559,10 +561,7 @@ class HtmlMessage extends StatelessWidget {
                         curve: Curves.easeOut,
                         child: SizedBox(
                           height:
-                              overlayController!
-                                      .practiceController
-                                      .practiceMode !=
-                                  MessagePracticeMode.noneSelected
+                              practiceMode != MessagePracticeMode.noneSelected
                               ? 4.0
                               : 0.0,
                           width: tokenWidth,
@@ -1003,9 +1002,7 @@ class HtmlMessage extends StatelessWidget {
                     ),
                     curve: Curves.easeOut,
                     child: SizedBox(
-                      height:
-                          overlayController!.practiceController.practiceMode !=
-                              MessagePracticeMode.noneSelected
+                      height: practiceMode != MessagePracticeMode.noneSelected
                           ? 4.0
                           : 0.0,
                       width: 0,

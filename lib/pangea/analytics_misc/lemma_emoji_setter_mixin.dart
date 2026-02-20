@@ -28,6 +28,7 @@ mixin LemmaEmojiSetter {
     if (constructId.userSetEmoji == null) {
       _getEmojiAnalytics(
         constructId,
+        language: langCode.split("-").first,
         targetId: targetId,
         roomId: roomId,
         eventId: eventId,
@@ -94,6 +95,7 @@ mixin LemmaEmojiSetter {
 
   void _getEmojiAnalytics(
     ConstructIdentifier constructId, {
+    required String language,
     String? eventId,
     String? roomId,
     String? targetId,
@@ -115,6 +117,6 @@ mixin LemmaEmojiSetter {
     ];
 
     MatrixState.pangeaController.matrixState.analyticsDataService.updateService
-        .addAnalytics(targetId, constructs);
+        .addAnalytics(targetId, constructs, language);
   }
 }

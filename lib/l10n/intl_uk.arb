@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-12 15:55:00.736118",
+  "@@last_modified": "2026-02-18 13:03:32.307496",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "Ми запустили управління підпискою в новій вкладці. Якщо ви не бачили нову вкладку, будь ласка, перевірте свій блокувальник спливаючих вікон.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Розблокувати практичні завдання",
+  "hideEvents": "Сховати події",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

@@ -29,7 +29,7 @@ class WordZoomWidget extends StatelessWidget {
   final Event? event;
 
   /// POS tag for PT v2 disambiguation (e.g. "VERB").
-  final String? pos;
+  final String pos;
 
   /// Morph features for PT v2 disambiguation (e.g. {"Tense": "Past"}).
   final Map<String, String>? morph;
@@ -45,9 +45,9 @@ class WordZoomWidget extends StatelessWidget {
     required this.token,
     required this.construct,
     required this.langCode,
+    required this.pos,
     this.onClose,
     this.event,
-    this.pos,
     this.morph,
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
@@ -153,6 +153,8 @@ class WordZoomWidget extends StatelessWidget {
                                   )
                                 : WordAudioButton(
                                     text: token.content,
+                                    pos: pos,
+                                    morph: morph,
                                     uniqueID: "lemma-content-${token.content}",
                                     langCode: langCode,
                                     iconSize: 24.0,

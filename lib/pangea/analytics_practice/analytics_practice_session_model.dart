@@ -1,5 +1,7 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
@@ -113,6 +115,7 @@ class AnalyticsActivityTarget {
 
 class AnalyticsPracticeSessionModel {
   final DateTime startedAt;
+  final ConstructTypeEnum type;
   final List<AnalyticsActivityTarget> practiceTargets;
   final String userL1;
   final String userL2;
@@ -121,6 +124,7 @@ class AnalyticsPracticeSessionModel {
 
   AnalyticsPracticeSessionModel({
     required this.startedAt,
+    required this.type,
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
@@ -128,11 +132,9 @@ class AnalyticsPracticeSessionModel {
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
   // Maximum activities to attempt (including skips)
-  int get _maxAttempts =>
-      (AnalyticsPracticeConstants.practiceGroupSize +
-              AnalyticsPracticeConstants.errorBufferSize)
-          .clamp(0, practiceTargets.length)
-          .toInt();
+  int get _maxAttempts => AnalyticsPracticeConstants.targetsToGenerate
+      .clamp(0, practiceTargets.length)
+      .toInt();
 
   int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize.clamp(
     0,
@@ -175,6 +177,35 @@ class AnalyticsPracticeSessionModel {
     }).toList();
   }
 
+  /// Returns congratulations message based on performance
+  String getCompletionMessage(BuildContext context) {
+    final hasTimeBonus =
+        state.elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
+    final hintsUsed = state.hintsUsed;
+
+    final bool perfectAccuracy = state.accuracy == 100;
+    final bool noHintsUsed = hintsUsed == 0;
+    final bool hintsAvailable = type == ConstructTypeEnum.morph;
+
+    //check how many conditions for bonuses the user met and return message accordingly
+    final conditionsMet = [
+      perfectAccuracy,
+      !hintsAvailable || noHintsUsed,
+      hasTimeBonus,
+    ].where((c) => c).length;
+
+    if (conditionsMet == 3) {
+      return L10n.of(context).perfectPractice;
+    }
+    if (conditionsMet >= 2) {
+      return L10n.of(context).greatPractice;
+    }
+    if (hintsAvailable && noHintsUsed) {
+      return L10n.of(context).usedNoHints;
+    }
+    return L10n.of(context).youveCompletedPractice;
+  }
+
   void setElapsedSeconds(int seconds) =>
       state = state.copyWith(elapsedSeconds: seconds);
 
@@ -186,12 +217,18 @@ class AnalyticsPracticeSessionModel {
   void incrementSkippedActivities() =>
       state = state.copyWith(skippedActivities: state.skippedActivities + 1);
 
-  void submitAnswer(OneConstructUse use) =>
-      state = state.copyWith(completedUses: [...state.completedUses, use]);
+  void submitAnswer(List<OneConstructUse> uses) =>
+      state = state.copyWith(completedUses: [...state.completedUses, ...uses]);
+
+  void useHint() => state = state.copyWith(hintsUsed: state.hintsUsed + 1);
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(
       startedAt: DateTime.parse(json['startedAt'] as String),
+      type: ConstructTypeEnum.values.firstWhere(
+        (e) => e.name == json['type'] as String,
+        orElse: () => ConstructTypeEnum.vocab,
+      ),
       practiceTargets: (json['practiceTargets'] as List<dynamic>)
           .map((e) => AnalyticsActivityTarget.fromJson(e))
           .whereType<AnalyticsActivityTarget>()
@@ -205,6 +242,7 @@ class AnalyticsPracticeSessionModel {
   Map<String, dynamic> toJson() {
     return {
       'startedAt': startedAt.toIso8601String(),
+      'type': type.name,
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
       'userL1': userL1,
       'userL2': userL2,
@@ -217,6 +255,8 @@ class AnalyticsPracticeSessionState {
   final List<OneConstructUse> completedUses;
   final int currentIndex;
   final bool finished;
+
+  final int hintsUsed;
   final int elapsedSeconds;
   final int skippedActivities;
 
@@ -224,6 +264,7 @@ class AnalyticsPracticeSessionState {
     this.completedUses = const [],
     this.currentIndex = 0,
     this.finished = false,
+    this.hintsUsed = 0,
     this.elapsedSeconds = 0,
     this.skippedActivities = 0,
   });
@@ -277,6 +318,7 @@ class AnalyticsPracticeSessionState {
     List<OneConstructUse>? completedUses,
     int? currentIndex,
     bool? finished,
+    int? hintsUsed,
     int? elapsedSeconds,
     int? skippedActivities,
   }) {
@@ -284,6 +326,7 @@ class AnalyticsPracticeSessionState {
       completedUses: completedUses ?? this.completedUses,
       currentIndex: currentIndex ?? this.currentIndex,
       finished: finished ?? this.finished,
+      hintsUsed: hintsUsed ?? this.hintsUsed,
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
       skippedActivities: skippedActivities ?? this.skippedActivities,
     );
@@ -294,6 +337,7 @@ class AnalyticsPracticeSessionState {
       'completedUses': completedUses.map((e) => e.toJson()).toList(),
       'currentIndex': currentIndex,
       'finished': finished,
+      'hintsUsed': hintsUsed,
       'elapsedSeconds': elapsedSeconds,
       'skippedActivities': skippedActivities,
     };
@@ -309,6 +353,7 @@ class AnalyticsPracticeSessionState {
           [],
       currentIndex: json['currentIndex'] as int? ?? 0,
       finished: json['finished'] as bool? ?? false,
+      hintsUsed: json['hintsUsed'] as int? ?? 0,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
       skippedActivities: json['skippedActivities'] as int? ?? 0,
     );

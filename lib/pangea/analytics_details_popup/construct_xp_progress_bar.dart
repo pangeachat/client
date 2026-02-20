@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -23,12 +24,23 @@ class ConstructXPProgressBar extends StatelessWidget {
     );
 
     final analyticsService = Matrix.of(context).analyticsDataService;
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return StreamBuilder(
       stream: analyticsService.updateDispatcher.constructUpdateStream.stream,
       builder: (context, snapshot) {
         return FutureBuilder(
-          future: analyticsService.getConstructUse(construct),
+          future: l2 != null
+              ? analyticsService.getConstructUse(construct, l2)
+              : Future.value(
+                  ConstructUses(
+                    uses: [],
+                    constructType: construct.type,
+                    lemma: construct.lemma,
+                    category: construct.category,
+                  ),
+                ),
           builder: (context, snapshot) {
             final points = snapshot.data?.points ?? 0;
             final progress = min(1.0, points / AnalyticsConstants.xpForFlower);

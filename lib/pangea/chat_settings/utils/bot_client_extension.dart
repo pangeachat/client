@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:meta/meta.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -12,6 +13,65 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/user/user_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// Builds updated [BotOptionsModel] if any bot-relevant user setting differs
+/// from [currentOptions]. Returns null when no changes are needed.
+@visibleForTesting
+BotOptionsModel? buildUpdatedBotOptions({
+  required BotOptionsModel? currentOptions,
+  required UserSettings userSettings,
+  required String? userId,
+}) {
+  final botOptions = currentOptions ?? const BotOptionsModel();
+  final targetLanguage = userSettings.targetLanguage;
+  final languageLevel = userSettings.cefrLevel;
+  final voice = userSettings.voice;
+  final gender = userSettings.gender;
+
+  if (botOptions.targetLanguage == targetLanguage &&
+      botOptions.languageLevel == languageLevel &&
+      botOptions.targetVoice == voice &&
+      botOptions.userGenders[userId] == gender) {
+    return null;
+  }
+
+  final updatedGenders = Map<String, GenderEnum>.from(botOptions.userGenders);
+  if (userId != null && updatedGenders[userId] != gender) {
+    updatedGenders[userId] = gender;
+  }
+
+  return botOptions.copyWith(
+    targetLanguage: targetLanguage,
+    languageLevel: languageLevel,
+    targetVoice: voice,
+    userGenders: updatedGenders,
+  );
+}
+
+/// Executes async update functions in priority order:
+/// 1. [priorityUpdate] runs first — errors propagate to the caller.
+/// 2. [remainingUpdates] run sequentially — errors go to [onError].
+///
+/// This ensures the bot DM (most important room) is updated first and
+/// rate-limiting from parallel requests doesn't block it.
+@visibleForTesting
+Future<void> applyBotOptionUpdatesInOrder({
+  required Future<void> Function()? priorityUpdate,
+  required List<Future<void> Function()> remainingUpdates,
+  void Function(Object error, StackTrace stack)? onError,
+}) async {
+  if (priorityUpdate != null) {
+    await priorityUpdate();
+  }
+
+  for (final update in remainingUpdates) {
+    try {
+      await update();
+    } catch (e, s) {
+      onError?.call(e, s);
+    }
+  }
+}
 
 extension BotClientExtension on Client {
   bool get hasBotDM => rooms.any((r) => r.isBotDM);
@@ -52,52 +112,49 @@ extension BotClientExtension on Client {
   );
 
   Future<void> updateBotOptions(UserSettings userSettings) async {
-    final targetBotRooms = [..._targetBotChats];
-    if (targetBotRooms.isEmpty) return;
+    final dm = botDM;
+    Future<void> Function()? dmUpdate;
 
-    try {
-      final futures = <Future>[];
-      for (final targetBotRoom in targetBotRooms) {
-        final botOptions = targetBotRoom.botOptions ?? const BotOptionsModel();
-        final targetLanguage = userSettings.targetLanguage;
-        final languageLevel = userSettings.cefrLevel;
-        final voice = userSettings.voice;
-        final gender = userSettings.gender;
-
-        if (botOptions.targetLanguage == targetLanguage &&
-            botOptions.languageLevel == languageLevel &&
-            botOptions.targetVoice == voice &&
-            botOptions.userGenders[userID] == gender) {
-          continue;
-        }
-
-        final updatedGenders = Map<String, GenderEnum>.from(
-          botOptions.userGenders,
-        );
-
-        if (updatedGenders[userID] != gender) {
-          updatedGenders[userID!] = gender;
-        }
-
-        final updated = botOptions.copyWith(
-          targetLanguage: targetLanguage,
-          languageLevel: languageLevel,
-          targetVoice: voice,
-          userGenders: updatedGenders,
-        );
-        futures.add(targetBotRoom.setBotOptions(updated));
+    // Handle the bot DM independently of _targetBotChats.
+    // The DM may not pass _targetBotChats filters (e.g., botOptions is null,
+    // or a stale activityPlan state event exists), but it's the most important
+    // room to keep current.
+    if (dm != null) {
+      final updated = buildUpdatedBotOptions(
+        currentOptions: dm.botOptions,
+        userSettings: userSettings,
+        userId: userID,
+      );
+      if (updated != null) {
+        dmUpdate = () => dm.setBotOptions(updated);
       }
+    }
 
-      await Future.wait(futures);
-    } catch (e, s) {
-      ErrorHandler.logError(
+    // Remaining eligible rooms, excluding the DM (already handled above).
+    final otherUpdates = <Future<void> Function()>[];
+    for (final room in _targetBotChats) {
+      if (room == dm) continue;
+
+      final updated = buildUpdatedBotOptions(
+        currentOptions: room.botOptions,
+        userSettings: userSettings,
+        userId: userID,
+      );
+      if (updated == null) continue;
+
+      otherUpdates.add(() => room.setBotOptions(updated));
+    }
+
+    if (dmUpdate == null && otherUpdates.isEmpty) return;
+
+    await applyBotOptionUpdatesInOrder(
+      priorityUpdate: dmUpdate,
+      remainingUpdates: otherUpdates,
+      onError: (e, s) => ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'userSettings': userSettings.toJson(),
-          'targetBotRooms': targetBotRooms.map((r) => r.id).toList(),
-        },
-      );
-    }
+        data: {'userSettings': userSettings.toJson()},
+      ),
+    );
   }
 }

@@ -13,10 +13,16 @@ class StateMessage extends StatelessWidget {
   final Event event;
   final void Function()? onExpand;
   final bool isCollapsed;
+  // #Pangea
+  final bool moreEventButtonExpands;
+  // Pangea#
   const StateMessage(
     this.event, {
     this.onExpand,
     this.isCollapsed = false,
+    // #Pangea
+    this.moreEventButtonExpands = true,
+    // Pangea#
     super.key,
   });
 
@@ -72,7 +78,12 @@ class StateMessage extends StatelessWidget {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = onExpand,
-                                text: L10n.of(context).moreEvents,
+                                // #Pangea
+                                // text: L10n.of(context).moreEvents,
+                                text: moreEventButtonExpands
+                                    ? L10n.of(context).moreEvents
+                                    : L10n.of(context).hideEvents,
+                                // Pangea#
                               ),
                             ],
                           ],

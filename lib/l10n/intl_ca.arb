@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:55:07.308206",
+  "@@last_modified": "2026-02-18 13:03:40.141658",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11423,6 +11423,16 @@
   },
   "managementSnackbarMessage": "Hem llançat la gestió de subscripcions en una nova pestanya. Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloqueja les activitats de pràctica",
+  "hideEvents": "Amaga esdeveniments",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

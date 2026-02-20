@@ -10,12 +10,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_summary_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelUpConstants {
@@ -76,7 +71,7 @@ class LevelUpUtil {
   }
 }
 
-class LevelUpBanner extends StatefulWidget {
+class LevelUpBanner extends StatelessWidget {
   final int level;
   final int prevLevel;
   final Widget? backButtonOverride;
@@ -87,98 +82,6 @@ class LevelUpBanner extends StatefulWidget {
     required this.backButtonOverride,
     super.key,
   });
-
-  @override
-  LevelUpBannerState createState() => LevelUpBannerState();
-}
-
-class LevelUpBannerState extends State<LevelUpBanner>
-    with TickerProviderStateMixin {
-  late AnimationController _slideController;
-  late Animation<Offset> _slideAnimation;
-
-  bool _showedDetails = false;
-
-  final Completer<ConstructSummary> _constructSummaryCompleter =
-      Completer<ConstructSummary>();
-
-  @override
-  void initState() {
-    super.initState();
-
-    _loadConstructSummary();
-
-    final analyticsService = Matrix.of(context).analyticsDataService;
-    LevelUpManager.instance.preloadAnalytics(
-      widget.level,
-      widget.prevLevel,
-      analyticsService,
-    );
-
-    _slideController = AnimationController(
-      vsync: this,
-      duration: FluffyThemes.animationDuration,
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -1),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
-
-    _slideController.forward();
-
-    Future.delayed(const Duration(seconds: 10), () async {
-      if (mounted && !_showedDetails) {
-        _close();
-      }
-    });
-  }
-
-  Future<void> _close() async {
-    await _slideController.reverse();
-    MatrixState.pAnyState.closeOverlay("level_up_notification");
-  }
-
-  @override
-  void dispose() {
-    _slideController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _toggleDetails() async {
-    await _close();
-    LevelUpManager.instance.markPopupSeen();
-    _showedDetails = true;
-
-    FocusScope.of(context).unfocus();
-
-    await showDialog(
-      context: context,
-      builder: (context) =>
-          LevelUpPopup(constructSummaryCompleter: _constructSummaryCompleter),
-    );
-  }
-
-  Future<void> _loadConstructSummary() async {
-    try {
-      final analyticsRoom = await Matrix.of(context).client.getMyAnalyticsRoom(
-        MatrixState.pangeaController.userController.userL2!,
-      );
-
-      final timestamp = analyticsRoom!.lastLevelUpTimestamp;
-      final analyticsService = Matrix.of(context).analyticsDataService;
-      final summary = await analyticsService.levelUpService.getLevelUpAnalytics(
-        widget.prevLevel,
-        widget.level,
-        timestamp,
-      );
-      _constructSummaryCompleter.complete(summary);
-      analyticsRoom.setLevelUpSummary(summary);
-    } catch (e) {
-      debugPrint("Error generating level up analytics: $e");
-      _constructSummaryCompleter.completeError(e);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -199,101 +102,88 @@ class LevelUpBannerState extends State<LevelUpBanner>
     return SafeArea(
       child: Material(
         type: MaterialType.transparency,
-        child: SlideTransition(
-          position: _slideAnimation,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return GestureDetector(
-                onPanUpdate: (details) {
-                  if (details.delta.dy < -10) _close();
-                },
-                onTap: _toggleDetails,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16.0,
-                    horizontal: 4.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    border: Border(
-                      bottom: BorderSide(
-                        color: AppConfig.gold.withAlpha(200),
-                        width: 2.0,
-                      ),
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(AppConfig.borderRadius),
-                      bottomRight: Radius.circular(AppConfig.borderRadius),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Spacer for symmetry
-                      SizedBox(
-                        width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
-                      ),
-                      // Centered content
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: isColumnMode ? 16.0 : 8.0,
-                          ),
-                          child: Wrap(
-                            spacing: 16.0,
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(
-                                L10n.of(context).levelUp,
-                                style: style,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              CachedNetworkImage(
-                                imageUrl:
-                                    "${AppConfig.assetsBaseURL}/${LevelUpConstants.starFileName}",
-                                height: 24,
-                                width: 24,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            SizedBox(
-                              width: 32.0,
-                              height: 32.0,
-                              child: Center(
-                                child: IconButton(
-                                  icon: const Icon(Icons.close),
-                                  style: IconButton.styleFrom(
-                                    padding: const EdgeInsets.all(4.0),
-                                  ),
-                                  onPressed: () {
-                                    MatrixState.pAnyState.closeOverlay(
-                                      "level_up_notification",
-                                    );
-                                  },
-                                  constraints: const BoxConstraints(),
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onSurface,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16.0,
+                horizontal: 4.0,
+              ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppConfig.gold.withAlpha(200),
+                    width: 2.0,
                   ),
                 ),
-              );
-            },
-          ),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(AppConfig.borderRadius),
+                  bottomRight: Radius.circular(AppConfig.borderRadius),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Spacer for symmetry
+                  SizedBox(width: constraints.maxWidth >= 600 ? 120.0 : 65.0),
+                  // Centered content
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isColumnMode ? 16.0 : 8.0,
+                      ),
+                      child: Wrap(
+                        spacing: 16.0,
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(
+                            L10n.of(context).levelUp,
+                            style: style,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          CachedNetworkImage(
+                            imageUrl:
+                                "${AppConfig.assetsBaseURL}/${LevelUpConstants.starFileName}",
+                            height: 24,
+                            width: 24,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: 32.0,
+                          height: 32.0,
+                          child: Center(
+                            child: IconButton(
+                              icon: const Icon(Icons.close),
+                              style: IconButton.styleFrom(
+                                padding: const EdgeInsets.all(4.0),
+                              ),
+                              onPressed: () {
+                                MatrixState.pAnyState.closeOverlay(
+                                  "level_up_notification",
+                                );
+                              },
+                              constraints: const BoxConstraints(),
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -199,7 +200,13 @@ class LearningProgressIndicators extends StatelessWidget {
                                       }
                                     : null,
                                 child: FutureBuilder(
-                                  future: analyticsService.derivedData,
+                                  future: userL2 != null
+                                      ? analyticsService.derivedData(
+                                          userL2.langCodeShort,
+                                        )
+                                      : Future.value(
+                                          DerivedAnalyticsDataModel(),
+                                        ),
                                   builder: (context, snapshot) {
                                     final cached =
                                         analyticsService.cachedDerivedData;

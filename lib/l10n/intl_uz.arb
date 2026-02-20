@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-02-12 15:55:12.635683",
+  "@@last_modified": "2026-02-18 13:03:44.385455",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -11157,6 +11157,16 @@
   },
   "managementSnackbarMessage": "Biz obuna boshqaruvini yangi oynada ishga tushirdik. Agar siz yangi oynani ko'rmagan bo'lsangiz, iltimos, pop-up bloklovchingizni tekshiring.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Amaliyot faoliyatlarini ochish",
+  "hideEvents": "Voqealarni yashirish",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

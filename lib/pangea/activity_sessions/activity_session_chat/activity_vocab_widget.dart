@@ -95,6 +95,7 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
         "activity_tokens",
         widget.targetId,
         token,
+        widget.langCode.split('-').first,
         Matrix.of(context).analyticsDataService,
       ).then((_) {
         if (mounted) setState(() {});
@@ -227,6 +228,7 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         category: widget.v.pos,
       ),
       langCode: widget.langCode,
+      pos: widget.v.pos,
       onClose: () {
         MatrixState.pAnyState.closeOverlay(widget.target);
         widget.onClose();

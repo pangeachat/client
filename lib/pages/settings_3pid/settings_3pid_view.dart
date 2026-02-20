@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -44,7 +45,10 @@ class Settings3PidView extends StatelessWidget {
                 if (snapshot.hasError) {
                   return Center(
                     child: Text(
-                      snapshot.error.toString(),
+                      // #Pangea
+                      // snapshot.error.toString(),
+                      snapshot.error!.toLocalizedString(context),
+                      // Pangea#
                       textAlign: TextAlign.center,
                     ),
                   );

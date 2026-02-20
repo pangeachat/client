@@ -64,7 +64,6 @@ dependencies:
   matrix:
     git:
       url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
-      ref: merge-upstream-2
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
@@ -126,6 +125,7 @@ dependencies:
   rive: 0.11.11
   flutter_tts: ^4.2.0
   animated_flip_counter: ^0.3.4
+  meta: ^1.17.0
   # Pangea#
 
 dev_dependencies:

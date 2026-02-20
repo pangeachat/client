@@ -213,11 +213,12 @@ class UserController {
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
     // finish initializing, so this would cause a deadlock.
-    if (publicProfile!.analytics.isEmpty) {
+    final l2 = userL2;
+    if (publicProfile!.analytics.isEmpty && l2 != null) {
       final analyticsService =
           MatrixState.pangeaController.matrixState.analyticsDataService;
 
-      final data = await analyticsService.derivedData;
+      final data = await analyticsService.derivedData(l2.langCodeShort);
       updateAnalyticsProfile(level: data.level);
     }
   }

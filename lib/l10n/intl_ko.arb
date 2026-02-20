@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:26.148157",
+  "@@last_modified": "2026-02-18 13:03:04.255294",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11489,6 +11489,16 @@
   },
   "managementSnackbarMessage": "새 탭에서 구독 관리 기능을 시작했습니다. 새 탭이 보이지 않으면 팝업 차단기를 확인해 주세요.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "연습 활동 잠금 해제",
+  "hideEvents": "이벤트 숨기기",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

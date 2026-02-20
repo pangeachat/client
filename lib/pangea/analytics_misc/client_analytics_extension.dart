@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -177,12 +178,27 @@ extension AnalyticsClientExtension on Client {
       return null;
     }
 
+    // wait for all rooms to sync
+    if (prevBatch == null) {
+      await onSync.stream.first;
+    }
+
     final room = getRoomById(use.metadata.roomId!);
-    if (room == null) return null;
+    if (room == null) {
+      Logs().i("Room not found for construct use ${use.toJson()}");
+      return null;
+    }
 
     try {
       final event = await room.getEventById(use.metadata.eventId!);
-      if (event == null) return null;
+      if (event == null) {
+        ErrorHandler.logError(
+          e: "Event not found for construct use",
+          level: SentryLevel.warning,
+          data: use.toJson(),
+        );
+        return null;
+      }
 
       final timeline = await room.getTimeline();
       return PangeaMessageEvent(

@@ -93,11 +93,7 @@ class PracticeRecordController {
       return false;
     }
 
-    final isCorrect = switch (activity) {
-      MatchPracticeActivityModel() => activity.isCorrect(token, choice),
-      MultipleChoicePracticeActivityModel() => activity.isCorrect(choice),
-    };
-
+    final isCorrect = activity.isCorrect(choice, token);
     record.addResponse(
       cId: cId,
       target: target,

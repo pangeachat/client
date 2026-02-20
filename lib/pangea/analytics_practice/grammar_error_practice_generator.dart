@@ -33,6 +33,14 @@ class GrammarErrorPracticeGenerator {
       choices.add(errorSpan);
     }
 
+    if (igcMatch.offset + igcMatch.length > stepText.characters.length) {
+      // Sometimes choreo records turn out weird when users edit the message
+      // mid-IGC. If the offsets / lengths don't make sense, skip this target.
+      throw Exception(
+        "IGC match offset and length exceed step text length. Step text: '$stepText', match offset: ${igcMatch.offset}, match length: ${igcMatch.length}",
+      );
+    }
+
     choices.shuffle();
     return MessageActivityResponse(
       activity: GrammarErrorPracticeActivityModel(

@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popu
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -31,9 +32,20 @@ class VocabDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future: analyticsService.getConstructUse(constructId),
+      future: l2 != null
+          ? analyticsService.getConstructUse(constructId, l2)
+          : Future.value(
+              ConstructUses(
+                uses: [],
+                constructType: constructId.type,
+                lemma: constructId.lemma,
+                category: constructId.category,
+              ),
+            ),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
@@ -43,7 +55,14 @@ class VocabDetailsView extends StatelessWidget {
             ? level.color(context)
             : level.darkColor(context));
 
-        final forms = construct?.forms ?? [];
+        final forms =
+            construct?.uses
+                .where((u) => u.form != null)
+                .map((use) => _VocabForm(use.form!, use.category))
+                .toSet()
+                .toList() ??
+            [];
+
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
         final token = PangeaToken(
           text: tokenText,
@@ -142,7 +161,7 @@ class VocabDetailsView extends StatelessWidget {
 
 class _VocabForms extends StatelessWidget {
   final String lemma;
-  final List<String> forms;
+  final List<_VocabForm> forms;
   final Color textColor;
 
   const _VocabForms({
@@ -172,11 +191,12 @@ class _VocabForms extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 WordTextWithAudioButton(
-                  text: form,
+                  text: form.form,
+                  pos: form.pos,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyLarge?.copyWith(color: textColor),
-                  uniqueID: "$form-$lemma-$i",
+                  uniqueID: "${form.form}-$lemma-$i",
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                 ),
@@ -188,4 +208,22 @@ class _VocabForms extends StatelessWidget {
       ),
     );
   }
+}
+
+class _VocabForm {
+  final String form;
+  final String pos;
+
+  const _VocabForm(this.form, this.pos);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is _VocabForm &&
+          runtimeType == other.runtimeType &&
+          form.toLowerCase() == other.form.toLowerCase() &&
+          pos == other.pos;
+
+  @override
+  int get hashCode => form.toLowerCase().hashCode ^ pos.hashCode;
 }

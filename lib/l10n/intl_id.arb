@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:37.712685",
+  "@@last_modified": "2026-02-18 13:03:12.633009",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11369,6 +11369,16 @@
   },
   "managementSnackbarMessage": "Kami telah meluncurkan manajemen langganan di tab baru. Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Buka aktivitas latihan",
+  "hideEvents": "Sembunyikan acara",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

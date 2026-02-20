@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-02-12 15:54:31.163261",
+  "@@last_modified": "2026-02-18 13:03:07.111440",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11263,6 +11263,16 @@
   },
   "managementSnackbarMessage": "Lanzamos a xestión de subscrición nunha nova pestana. Se non ves a nova pestana, por favor, verifica o teu bloqueador de ventás emerxentes.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloquear actividades de práctica",
+  "hideEvents": "Ocultar eventos",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

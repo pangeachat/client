@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-12 15:54:39.247533",
+  "@@last_modified": "2026-02-18 13:03:14.527214",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12132,6 +12132,16 @@
   },
   "managementSnackbarMessage": "Am lansat gestionarea abonamentelor într-o filă nouă. Dacă nu ai văzut fila nouă, te rugăm să verifici blocatorul de feronerie.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Dezvăluie activitățile de practică",
+  "hideEvents": "Ascunde evenimentele",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

@@ -220,6 +220,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         event.eventId,
         "word-zoom-card-${token.text.uniqueKey}",
         token,
+        pangeaMessageEvent.messageDisplayLangCode.split('-').first,
         Matrix.of(context).analyticsDataService,
         roomId: event.room.id,
         eventId: event.eventId,

@@ -51,7 +51,7 @@ class AnalyticsUpdateService {
     await sendLocalAnalyticsToAnalyticsRoom(l2Override: update.prevTargetLang);
     await dataService.reinitialize();
 
-    final data = await dataService.derivedData;
+    final data = await dataService.derivedData(update.targetLang.langCodeShort);
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
       level: data.level,
     );
@@ -59,15 +59,19 @@ class AnalyticsUpdateService {
 
   Future<void> addAnalytics(
     String? targetID,
-    List<OneConstructUse> newConstructs, {
+    List<OneConstructUse> newConstructs,
+    String language, {
     bool forceUpdate = false,
   }) async {
     await dataService.updateDispatcher.sendLocalAnalyticsUpdate(
       AnalyticsUpdate(newConstructs, targetID: targetID),
+      language,
     );
 
-    final localConstructCount = await dataService.getLocalConstructCount();
-    final lastUpdated = await dataService.getLastUpdatedAnalytics();
+    final localConstructCount = await dataService.getLocalConstructCount(
+      language,
+    );
+    final lastUpdated = await dataService.getLastUpdatedAnalytics(language);
     final difference = DateTime.now().difference(lastUpdated ?? DateTime.now());
 
     if (forceUpdate ||
@@ -80,6 +84,16 @@ class AnalyticsUpdateService {
   Future<void> sendLocalAnalyticsToAnalyticsRoom({
     LanguageModel? l2Override,
   }) async {
+    final lang = l2Override ?? _l2;
+    if (lang == null) {
+      ErrorHandler.logError(
+        e: "No L2 language set for user",
+        m: "Cannot send local analytics to analytics room",
+        data: {"l2Override": l2Override},
+      );
+      return;
+    }
+
     final inProgress =
         _updateCompleter != null && !_updateCompleter!.isCompleted;
 
@@ -90,8 +104,8 @@ class AnalyticsUpdateService {
 
     _updateCompleter = Completer<void>();
     try {
-      await _updateAnalytics(l2Override: l2Override);
-      await dataService.clearLocalAnalytics();
+      await _updateAnalytics(lang);
+      await dataService.clearLocalAnalytics(lang.langCodeShort);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -105,13 +119,15 @@ class AnalyticsUpdateService {
     }
   }
 
-  Future<void> _updateAnalytics({LanguageModel? l2Override}) async {
-    final localConstructs = await dataService.getLocalUses();
+  Future<void> _updateAnalytics(LanguageModel language) async {
+    final localConstructs = await dataService.getLocalUses(
+      language.langCodeShort,
+    );
     if (localConstructs.isEmpty) return;
-    final analyticsRoom = await _getAnalyticsRoom(l2Override: l2Override);
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
     if (analyticsRoom == null) {
       debugPrint(
-        "No analytics room found for L2 Override: ${l2Override?.langCode}",
+        "No analytics room found for L2 Override: ${language.langCodeShort}",
       );
       return;
     }

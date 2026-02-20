@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-12 15:55:13.765888",
+  "@@last_modified": "2026-02-18 13:03:45.620544",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12378,6 +12378,16 @@
   },
   "managementSnackbarMessage": "Inilunsad namin ang pamamahala ng subscription sa isang bagong tab. Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.",
   "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "I-unlock ang mga aktibidad sa pagsasanay",
+  "hideEvents": "Itago ang mga kaganapan",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
     "type": "String",
     "placeholders": {}
   }

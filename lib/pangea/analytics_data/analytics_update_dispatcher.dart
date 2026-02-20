@@ -87,9 +87,10 @@ class AnalyticsUpdateDispatcher {
 
   Future<void> sendBlockedConstructsUpdate(
     Set<ConstructIdentifier> blockedConstructs,
+    String language,
   ) async {
     for (final blockedConstruct in blockedConstructs) {
-      await dataService.updateBlockedConstructs(blockedConstruct);
+      await dataService.updateBlockedConstructs(blockedConstruct, language);
     }
     final update = AnalyticsStreamUpdate(blockedConstructs: blockedConstructs);
     constructUpdateStream.add(update);
@@ -101,13 +102,20 @@ class AnalyticsUpdateDispatcher {
 
   Future<void> sendServerAnalyticsUpdate(
     List<ConstructAnalyticsEvent> events,
+    String language,
   ) async {
-    await dataService.updateServerAnalytics(events);
+    await dataService.updateServerAnalytics(events, language);
     sendEmptyAnalyticsUpdate();
   }
 
-  Future<void> sendLocalAnalyticsUpdate(AnalyticsUpdate analyticsUpdate) async {
-    final events = await dataService.updateLocalAnalytics(analyticsUpdate);
+  Future<void> sendLocalAnalyticsUpdate(
+    AnalyticsUpdate analyticsUpdate,
+    String language,
+  ) async {
+    final events = await dataService.updateLocalAnalytics(
+      analyticsUpdate,
+      language,
+    );
     for (final event in events) {
       _dispatch(event);
     }
