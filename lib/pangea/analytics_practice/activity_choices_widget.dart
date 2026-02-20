@@ -1,150 +1,156 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/activity_choice_card_widget.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_data_service.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_ui_controller.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class ActivityChoices extends StatelessWidget {
-  final AnalyticsPracticeState controller;
+  final MultipleChoicePracticeActivityModel activity;
+  final List<AnalyticsPracticeChoice> choices;
+  final ConstructTypeEnum type;
 
-  const ActivityChoices(this.controller, {super.key});
+  final bool isComplete;
+  final bool showHint;
+  final Function(String) onSelectChoice;
+
+  final List<InlineSpan>? audioExampleMessage;
+  final String? audioTranslation;
+
+  const ActivityChoices({
+    super.key,
+    required this.activity,
+    required this.choices,
+    required this.type,
+    required this.isComplete,
+    required this.showHint,
+    required this.onSelectChoice,
+    this.audioExampleMessage,
+    this.audioTranslation,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: controller.activityState,
-      builder: (context, state, _) {
-        return switch (state) {
-          AsyncLoading<MultipleChoicePracticeActivityModel>() => const Center(
-            child: SizedBox(
-              width: 24,
-              height: 24,
-              child: CircularProgressIndicator.adaptive(),
-            ),
-          ),
-          AsyncError<MultipleChoicePracticeActivityModel>(:final error) =>
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //allow try to reload activity in case of error
-                ErrorIndicator(message: error.toString()),
-                const SizedBox(height: 16),
-                TextButton.icon(
-                  onPressed: controller.reloadCurrentActivity,
-                  icon: const Icon(Icons.refresh),
-                  label: Text(L10n.of(context).tryAgain),
+    final isAudioActivity =
+        activity.activityType == ActivityTypeEnum.lemmaAudio;
+
+    if (isAudioActivity) {
+      Padding(
+        key: const ValueKey('choices'),
+        padding: const EdgeInsets.all(16.0),
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 8.0,
+          runSpacing: 8.0,
+          children: choices
+              .map(
+                (choice) => ActivityChoiceCard(
+                  activity: activity,
+                  targetId: AnalyticsPracticeUiController.getChoiceTargetId(
+                    choice.choiceId,
+                    type,
+                  ),
+                  choiceId: choice.choiceId,
+                  onPressed: () => onSelectChoice(choice.choiceId),
+                  cardHeight: 48.0,
+                  showHint: showHint,
+                  choiceText: choice.choiceText,
+                  choiceEmoji: choice.choiceEmoji,
+                  enabled: !isComplete,
+                  shrinkWrap: true,
                 ),
-              ],
-            ),
-          AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
-            ValueListenableBuilder(
-              valueListenable: controller.enableChoicesNotifier,
-              builder: (context, enabled, _) {
-                final choices = controller.filteredChoices(value);
-                final isAudioActivity =
-                    value.activityType == ActivityTypeEnum.lemmaAudio;
+              )
+              .toList(),
+        ),
+      );
+    }
 
-                if (isAudioActivity) {
-                  // For audio activities, use AnimatedSwitcher to fade between choices and example message
-                  return ValueListenableBuilder(
-                    valueListenable: controller.showingAudioCompletion,
-                    builder: (context, showingCompletion, _) {
-                      return AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 500),
-                        layoutBuilder: (currentChild, previousChildren) {
-                          return Stack(
-                            alignment: Alignment.topCenter,
-                            children: <Widget>[
-                              ...previousChildren,
-                              ?currentChild,
-                            ],
-                          );
-                        },
-                        child: showingCompletion
-                            ? _AudioCompletionWidget(
-                                key: const ValueKey('completion'),
-                                controller: controller,
-                              )
-                            : Padding(
-                                key: const ValueKey('choices'),
-                                padding: const EdgeInsets.all(16.0),
-                                child: Wrap(
-                                  alignment: WrapAlignment.center,
-                                  spacing: 8.0,
-                                  runSpacing: 8.0,
-                                  children: choices
-                                      .map(
-                                        (choice) => ActivityChoiceCard(
-                                          activity: value,
-                                          targetId: controller
-                                              .getChoiceTargetId(
-                                                choice.choiceId,
-                                              ),
-                                          choiceId: choice.choiceId,
-                                          onPressed: () => controller
-                                              .onSelectChoice(choice.choiceId),
-                                          cardHeight: 48.0,
-                                          controller: controller,
-                                          choiceText: choice.choiceText,
-                                          choiceEmoji: choice.choiceEmoji,
-                                          enabled: enabled,
-                                          shrinkWrap: true,
-                                        ),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                      );
-                    },
-                  );
-                }
-
-                return Column(
+    if (isAudioActivity) {
+      // For audio activities, use AnimatedSwitcher to fade between choices and example message
+      return AnimatedSwitcher(
+        duration: const Duration(milliseconds: 500),
+        child: isComplete
+            ? _AudioCompletionWidget(
+                key: const ValueKey('completion'),
+                showHint: showHint,
+                exampleMessage: audioExampleMessage ?? [],
+                translation: audioTranslation ?? "",
+              )
+            : Padding(
+                key: const ValueKey('choices'),
+                padding: const EdgeInsets.all(16.0),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
                   spacing: 8.0,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  runSpacing: 8.0,
                   children: choices
                       .map(
                         (choice) => ActivityChoiceCard(
-                          activity: value,
-                          targetId: controller.getChoiceTargetId(
-                            choice.choiceId,
-                          ),
+                          activity: activity,
+                          targetId:
+                              AnalyticsPracticeUiController.getChoiceTargetId(
+                                choice.choiceId,
+                                type,
+                              ),
                           choiceId: choice.choiceId,
-                          onPressed: () =>
-                              controller.onSelectChoice(choice.choiceId),
-                          cardHeight: 60.0,
-                          controller: controller,
+                          onPressed: () => onSelectChoice(choice.choiceId),
+                          cardHeight: 48.0,
+                          showHint: showHint,
                           choiceText: choice.choiceText,
                           choiceEmoji: choice.choiceEmoji,
-                          enabled: enabled,
+                          enabled: !isComplete,
+                          shrinkWrap: true,
                         ),
                       )
                       .toList(),
-                );
-              },
+                ),
+              ),
+      );
+    }
+
+    return Column(
+      spacing: 8.0,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: choices
+          .map(
+            (choice) => ActivityChoiceCard(
+              activity: activity,
+              targetId: AnalyticsPracticeUiController.getChoiceTargetId(
+                choice.choiceId,
+                type,
+              ),
+              choiceId: choice.choiceId,
+              onPressed: () => onSelectChoice(choice.choiceId),
+              cardHeight: 60.0,
+              showHint: showHint,
+              choiceText: choice.choiceText,
+              choiceEmoji: choice.choiceEmoji,
+              enabled: !isComplete,
             ),
-          _ => Container(
-            constraints: const BoxConstraints(maxHeight: 400.0),
-            child: const Center(child: CircularProgressIndicator.adaptive()),
-          ),
-        };
-      },
+          )
+          .toList(),
     );
   }
 }
 
 class _AudioCompletionWidget extends StatelessWidget {
-  final AnalyticsPracticeState controller;
+  final List<InlineSpan> exampleMessage;
+  final String translation;
+  final bool showHint;
 
-  const _AudioCompletionWidget({super.key, required this.controller});
+  const _AudioCompletionWidget({
+    super.key,
+    required this.exampleMessage,
+    required this.translation,
+    required this.showHint,
+  });
 
   String _extractTextFromSpans(List<InlineSpan> spans) {
     final buffer = StringBuffer();
@@ -158,9 +164,7 @@ class _AudioCompletionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final exampleMessage = controller.getAudioExampleMessage();
-
-    if (exampleMessage == null || exampleMessage.isEmpty) {
+    if (exampleMessage.isEmpty) {
       return const SizedBox(height: 100.0);
     }
 
@@ -180,37 +184,32 @@ class _AudioCompletionWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ValueListenableBuilder<bool>(
-              valueListenable: controller.hintPressedNotifier,
-              builder: (context, showPhonetics, _) => AnimatedSize(
-                duration: FluffyThemes.animationDuration,
-                alignment: Alignment.topCenter,
-                child: showPhonetics
-                    ? Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
-                        child: PhoneticTranscriptionWidget(
-                          text: exampleText,
-                          pos: 'other',
-                          textLanguage: MatrixState
-                              .pangeaController
-                              .userController
-                              .userL2!,
-                          textOnly: true,
-                          style: TextStyle(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryFixed.withValues(alpha: 0.7),
-                            fontSize:
-                                (AppSettings.fontSizeFactor.value *
-                                    AppConfig.messageFontSize) *
-                                0.85,
-                            fontStyle: FontStyle.italic,
-                          ),
-                          maxLines: 2,
+            AnimatedSize(
+              duration: FluffyThemes.animationDuration,
+              alignment: Alignment.topCenter,
+              child: showHint
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: PhoneticTranscriptionWidget(
+                        text: exampleText,
+                        pos: 'other',
+                        textLanguage:
+                            MatrixState.pangeaController.userController.userL2!,
+                        textOnly: true,
+                        style: TextStyle(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryFixed.withValues(alpha: 0.7),
+                          fontSize:
+                              (AppSettings.fontSizeFactor.value *
+                                  AppConfig.messageFontSize) *
+                              0.85,
+                          fontStyle: FontStyle.italic,
                         ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
+                        maxLines: 2,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ),
 
             // Main example message
@@ -227,7 +226,7 @@ class _AudioCompletionWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: _AudioCompletionTranslation(controller: controller),
+              child: _AudioCompletionTranslation(translation: translation),
             ),
           ],
         ),
@@ -238,27 +237,12 @@ class _AudioCompletionWidget extends StatelessWidget {
 
 /// Widget to show translation for audio completion message
 class _AudioCompletionTranslation extends StatelessWidget {
-  final AnalyticsPracticeState controller;
+  final String translation;
 
-  const _AudioCompletionTranslation({required this.controller});
+  const _AudioCompletionTranslation({required this.translation});
 
   @override
   Widget build(BuildContext context) {
-    final state = controller.activityState.value;
-    if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
-      return const SizedBox.shrink();
-    }
-
-    final activity = state.value;
-    if (activity is! VocabAudioPracticeActivityModel) {
-      return const SizedBox.shrink();
-    }
-
-    final translation = controller.getAudioTranslation(activity.eventId);
-    if (translation == null) {
-      return const SizedBox.shrink();
-    }
-
     return Text(
       translation,
       style: TextStyle(

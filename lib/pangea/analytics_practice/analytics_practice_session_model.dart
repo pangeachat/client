@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
@@ -6,7 +8,6 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constant
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
-import 'package:flutter/material.dart';
 
 class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;

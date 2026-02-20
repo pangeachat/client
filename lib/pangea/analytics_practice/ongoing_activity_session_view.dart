@@ -10,10 +10,14 @@ import 'package:fluffychat/pangea/analytics_practice/activity_hint_section_widge
 import 'package:fluffychat/pangea/analytics_practice/activity_hints_progress_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/audio_activity_continue_button_widget.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class OngoingActivitySessionView extends StatelessWidget {
@@ -29,90 +33,190 @@ class OngoingActivitySessionView extends StatelessWidget {
         : Theme.of(context).textTheme.titleMedium;
     titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
 
-    return Column(
-      children: [
-        Expanded(
-          child: ListView(
-            children: [
-              //Hints counter bar for grammar activities only
-              if (controller.widget.type == ConstructTypeEnum.morph)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: ActivityHintsProgress(controller: controller),
-                ),
-              //per-activity instructions, add switch statement once there are more types
-              const InstructionsInlineTooltip(
-                instructionsEnum: InstructionsEnum.selectMeaning,
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-              ),
-              SizedBox(
-                height: 75.0,
-                child: ValueListenableBuilder(
-                  valueListenable: controller.activityTarget,
-                  builder: (context, target, _) {
-                    if (target == null) return const SizedBox.shrink();
+    return ValueListenableBuilder(
+      valueListenable: controller.activityState,
+      builder: (context, state, _) {
+        final activity = controller.activity;
+        return Column(
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  //Hints counter bar for grammar activities only
+                  if (controller.widget.type == ConstructTypeEnum.morph)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: ActivityHintsProgress(
+                        hintsUsed: controller.session.hintsUsed,
+                      ),
+                    ),
+                  //per-activity instructions, add switch statement once there are more types
+                  const InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.selectMeaning,
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                  ),
+                  SizedBox(
+                    height: 75.0,
+                    child: Builder(
+                      builder: (context) {
+                        if (activity == null) {
+                          return const SizedBox.shrink();
+                        }
 
-                    final isAudioActivity =
-                        target.target.activityType ==
-                        ActivityTypeEnum.lemmaAudio;
-                    final isVocabType =
-                        controller.widget.type == ConstructTypeEnum.vocab;
+                        final isAudioActivity =
+                            activity.activityType ==
+                            ActivityTypeEnum.lemmaAudio;
+                        final isVocabType =
+                            controller.widget.type == ConstructTypeEnum.vocab;
 
-                    final token = target.target.tokens.first;
+                        final token = activity.tokens.first;
 
-                    return Column(
-                      children: [
-                        Text(
-                          isAudioActivity && isVocabType
-                              ? L10n.of(context).selectAllWords
-                              : target.promptText(context),
-                          textAlign: TextAlign.center,
-                          style: titleStyle,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        if (isVocabType && !isAudioActivity)
-                          PhoneticTranscriptionWidget(
-                            text: token.vocabConstructID.lemma,
-                            pos: token.pos,
-                            morph: token.morph.map(
-                              (k, v) => MapEntry(k.name, v),
+                        return Column(
+                          children: [
+                            Text(
+                              isAudioActivity && isVocabType
+                                  ? L10n.of(context).selectAllWords
+                                  : activity.practiceTarget.promptText(context),
+                              textAlign: TextAlign.center,
+                              style: titleStyle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            textLanguage: MatrixState
-                                .pangeaController
-                                .userController
-                                .userL2!,
-                            style: const TextStyle(fontSize: 14.0),
-                          ),
-                      ],
-                    );
-                  },
+                            if (isVocabType && !isAudioActivity)
+                              PhoneticTranscriptionWidget(
+                                text: token.vocabConstructID.lemma,
+                                pos: token.pos,
+                                morph: token.morph.map(
+                                  (k, v) => MapEntry(k.name, v),
+                                ),
+                                textLanguage: MatrixState
+                                    .pangeaController
+                                    .userController
+                                    .userL2!,
+                                style: const TextStyle(fontSize: 14.0),
+                              ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  ListenableBuilder(
+                    listenable: controller.notifier,
+                    builder: (context, _) {
+                      final selectedMorphChoice = controller.notifier
+                          .selectedMorphChoice(activity);
+                      return Column(
+                        children: [
+                          const SizedBox(height: 16.0),
+                          if (activity != null)
+                            Center(
+                              child: ActivityContent(
+                                activity: activity,
+                                showHint: controller.notifier.showHint,
+                                exampleMessage: controller.exampleMessage,
+                                audioFile: controller.data.getAudioFile(
+                                  activity,
+                                ),
+                              ),
+                            ),
+                          const SizedBox(height: 16.0),
+                          if (activity != null)
+                            ActivityHintSection(
+                              activity: activity,
+                              onPressed: controller.onHintPressed,
+                              hintPressed: controller.notifier.showHint,
+                              enabled: controller.notifier.enableHintPress(
+                                activity,
+                                controller.session.hintsUsed,
+                              ),
+                            ),
+                          const SizedBox(height: 16.0),
+                          switch (state) {
+                            AsyncError(error: final error) => Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                //allow try to reload activity in case of error
+                                ErrorIndicator(
+                                  message: error.toLocalizedString(context),
+                                ),
+                                const SizedBox(height: 16),
+                                TextButton.icon(
+                                  onPressed: controller.startSession,
+                                  icon: const Icon(Icons.refresh),
+                                  label: Text(L10n.of(context).tryAgain),
+                                ),
+                              ],
+                            ),
+                            AsyncLoaded(value: final activity) => Builder(
+                              builder: (context) {
+                                List<InlineSpan>? audioExampleMessage;
+                                String? audioTranslation;
+
+                                if (activity
+                                    is VocabAudioPracticeActivityModel) {
+                                  audioExampleMessage =
+                                      activity.exampleMessage.exampleMessage;
+                                  audioTranslation = controller.data
+                                      .getAudioTranslation(activity);
+                                }
+
+                                return ActivityChoices(
+                                  activity: activity,
+                                  choices: controller.data.filteredChoices(
+                                    activity,
+                                    controller.widget.type,
+                                  ),
+                                  type: controller.widget.type,
+                                  isComplete: controller.notifier
+                                      .activityComplete(activity),
+                                  showHint: controller.notifier.showHint,
+                                  onSelectChoice: controller.onSelectChoice,
+                                  audioExampleMessage: audioExampleMessage,
+                                  audioTranslation: audioTranslation,
+                                );
+                              },
+                            ),
+                            _ => Center(
+                              child: SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator.adaptive(),
+                              ),
+                            ),
+                          },
+                          const SizedBox(height: 16.0),
+                          if (activity != null && selectedMorphChoice != null)
+                            ActivityFeedback(
+                              activity: activity,
+                              selectedChoice: selectedMorphChoice,
+                            ),
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            if (activity is VocabAudioPracticeActivityModel)
+              ListenableBuilder(
+                listenable: controller.notifier,
+                builder: (context, _) => Container(
+                  alignment: Alignment.bottomCenter,
+                  child: AudioContinueButton(
+                    activity: activity,
+                    onContinue: controller.startNextActivity,
+                    activityComplete: controller.notifier.activityComplete(
+                      activity,
+                    ),
+                    correctAnswers: controller.notifier.correctAnswersSelected(
+                      activity,
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 16.0),
-              Center(child: ActivityContent(controller: controller)),
-              const SizedBox(height: 16.0),
-              ValueListenableBuilder(
-                valueListenable: controller.activityTarget,
-                builder: (context, target, _) =>
-                    (controller.widget.type == ConstructTypeEnum.morph ||
-                        target?.target.activityType ==
-                            ActivityTypeEnum.lemmaAudio)
-                    ? Center(child: ActivityHintSection(controller: controller))
-                    : const SizedBox.shrink(),
-              ),
-              const SizedBox(height: 16.0),
-              ActivityChoices(controller),
-              const SizedBox(height: 16.0),
-              ActivityFeedback(controller: controller),
-            ],
-          ),
-        ),
-        Container(
-          alignment: Alignment.bottomCenter,
-          child: AudioContinueButton(controller: controller),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

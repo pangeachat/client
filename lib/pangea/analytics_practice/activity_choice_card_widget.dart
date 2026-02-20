@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
@@ -15,12 +14,12 @@ class ActivityChoiceCard extends StatelessWidget {
   final String targetId;
   final VoidCallback onPressed;
   final double cardHeight;
-  final AnalyticsPracticeState controller;
 
   final String choiceText;
   final String? choiceEmoji;
   final bool enabled;
   final bool shrinkWrap;
+  final bool showHint;
 
   const ActivityChoiceCard({
     super.key,
@@ -29,9 +28,9 @@ class ActivityChoiceCard extends StatelessWidget {
     required this.targetId,
     required this.onPressed,
     required this.cardHeight,
-    required this.controller,
     required this.choiceText,
     required this.choiceEmoji,
+    required this.showHint,
     this.enabled = true,
     this.shrinkWrap = false,
   });
@@ -59,21 +58,18 @@ class ActivityChoiceCard extends StatelessWidget {
         );
 
       case ActivityTypeEnum.lemmaAudio:
-        return ValueListenableBuilder<bool>(
-          valueListenable: controller.hintPressedNotifier,
-          builder: (context, showPhonetics, _) => AudioChoiceCard(
-            key: ValueKey(
-              '${constructId.string}_${activityType.name}_audio_$choiceId',
-            ),
-            choiceId: choiceId,
-            targetId: targetId,
-            displayText: choiceText,
-            textLanguage: MatrixState.pangeaController.userController.userL2!,
-            onPressed: onPressed,
-            isCorrect: isCorrect,
-            isEnabled: enabled,
-            showPhoneticTranscription: showPhonetics,
+        return AudioChoiceCard(
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_audio_$choiceId',
           ),
+          choiceId: choiceId,
+          targetId: targetId,
+          displayText: choiceText,
+          textLanguage: MatrixState.pangeaController.userController.userL2!,
+          onPressed: onPressed,
+          isCorrect: isCorrect,
+          isEnabled: enabled,
+          showHint: showHint,
         );
 
       case ActivityTypeEnum.grammarCategory:
