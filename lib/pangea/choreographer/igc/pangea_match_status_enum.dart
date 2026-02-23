@@ -14,6 +14,6 @@ enum PangeaMatchStatusEnum {
 
   double get opacity => switch (this) {
     open => 0.8,
-    _ => 0.4,
+    _ => 0.25,
   };
 }

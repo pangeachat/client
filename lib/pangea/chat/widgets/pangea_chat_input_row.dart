@@ -262,8 +262,8 @@ class PangeaChatInputRow extends StatelessWidget {
                           onChanged: controller.onInputBarChanged,
                           choreographer: controller.choreographer,
                           showMatch: (m) => controller.showNextMatch(match: m),
-                          onFeedbackSubmitted: (feedback) => controller
-                              .onRequestWritingAssistance(feedback: feedback),
+                          onFeedbackSubmitted:
+                              controller.onWritingAssistanceFeedback,
                           suggestionEmojis:
                               getDefaultEmojiLocale(
                                 AppSettings
@@ -284,8 +284,7 @@ class PangeaChatInputRow extends StatelessWidget {
                     ),
                     StartIGCButton(
                       key: ValueKey(controller.choreographer),
-                      onPressed: () =>
-                          controller.onRequestWritingAssistance(manual: true),
+                      onPressed: controller.onManualWritingAssistance,
                       choreographer: controller.choreographer,
                       initialState: state,
                       initialForegroundColor: state.stateColor(context),

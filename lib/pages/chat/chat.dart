@@ -949,6 +949,9 @@ class ChatController extends State<ChatPageWithRoom>
   // Future<void> send() async {
   //   if (sendController.text.trim().isEmpty) return;
   Future<void> send() async {
+    // Close span card if open
+    MatrixState.pAnyState.closeAllOverlays();
+
     final message = sendController.text;
     final edit = editEvent.value;
     final reply = replyEvent.value;
@@ -1823,7 +1826,7 @@ class ChatController extends State<ChatPageWithRoom>
       PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return;
     }
-    await onRequestWritingAssistance(manual: false, autosend: true);
+    await _onRequestWritingAssistance(manual: false, autosend: true);
   }
   // Pangea#
 
@@ -2302,18 +2305,33 @@ class ChatController extends State<ChatPageWithRoom>
         matchToShow,
         choreographer,
         context,
-        (feedback) => onRequestWritingAssistance(feedback: feedback),
+        onWritingAssistanceFeedback,
       );
     }
   }
 
-  Future<void> onRequestWritingAssistance({
+  Future<void> onManualWritingAssistance() =>
+      _onRequestWritingAssistance(manual: true);
+
+  Future<void> onWritingAssistanceFeedback(String feedback) =>
+      _onRequestWritingAssistance(feedback: feedback);
+
+  Future<void> _onRequestWritingAssistance({
     bool manual = false,
     bool autosend = false,
     String? feedback,
   }) async {
     if (shouldShowLanguageMismatchPopupByActivity) {
-      return showLanguageMismatchPopup(manual: manual);
+      return showLanguageMismatchPopup(manual: manual, autosend: autosend);
+    }
+
+    // If this request should send on a success, and is not a manual request, and assistance
+    // has already been requested, then just send the message instead of requesting assistance again.
+    if (autosend &&
+        !manual &&
+        choreographer.assistanceState != AssistanceStateEnum.notFetched) {
+      await send();
+      return;
     }
 
     feedback == null
@@ -2329,7 +2347,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void showLanguageMismatchPopup({bool manual = false}) {
+  void showLanguageMismatchPopup({bool manual = false, bool autosend = false}) {
     if (!shouldShowLanguageMismatchPopupByActivity) {
       return;
     }
@@ -2342,7 +2360,7 @@ class ChatController extends State<ChatPageWithRoom>
       message: L10n.of(context).languageMismatchDesc,
       targetLanguage: targetLanguage,
       onConfirm: () => WidgetsBinding.instance.addPostFrameCallback(
-        (_) => onRequestWritingAssistance(manual: manual, autosend: true),
+        (_) => _onRequestWritingAssistance(manual: manual, autosend: autosend),
       ),
     );
   }

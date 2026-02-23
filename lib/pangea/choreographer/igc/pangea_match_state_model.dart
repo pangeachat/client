@@ -50,7 +50,15 @@ class PangeaMatchState {
       throw Exception('No choices available to reset.');
     }
     final resetChoices = _match.choices!
-        .map((c) => c.copyWith(selected: false, timestamp: null))
+        .map(
+          (c) => SpanChoice(
+            value: c.value,
+            type: c.type,
+            feedback: c.feedback,
+            selected: false,
+            timestamp: null,
+          ),
+        )
         .toList();
     setMatch(_match.copyWith(choices: resetChoices));
   }

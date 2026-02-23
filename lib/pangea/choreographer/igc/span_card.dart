@@ -53,25 +53,35 @@ class SpanCardState extends State<SpanCard> {
   ValueNotifier<PangeaMatchState?> get _activeMatch =>
       widget.choreographer.igcController.activeMatch;
 
-  Future<void> _onChoiceSelect(PangeaMatchState match, int index) async {
-    final correct =
-        match.updatedMatch.match.choices?[index].isBestCorrection == true;
+  Future<void> _onChoiceSelect(
+    PangeaMatchState match,
+    int index,
+    PangeaMatchStatusEnum status,
+  ) async {
+    final choice = match.updatedMatch.match.choices?[index];
+    final correct = choice?.isBestCorrection == true;
+    final selected = choice?.selected == true;
 
     match.selectChoice(index);
     setState(() {});
 
-    if (!correct) return;
+    if (!correct && !selected) return;
     await Future.delayed(
       Duration(milliseconds: 600),
-      () => _acceptMatch(match),
+      () => _updateMatch(match, status),
     );
   }
 
-  Future<void> _acceptMatch(PangeaMatchState match) async {
+  Future<void> _updateMatch(
+    PangeaMatchState match,
+    PangeaMatchStatusEnum status,
+  ) async {
     try {
       final igc = widget.choreographer.igcController;
-      igc.updateMatchStatus(match, PangeaMatchStatusEnum.accepted);
-      igc.hasOpenMatches ? igc.setActiveMatch() : widget.close();
+      igc.updateMatchStatus(match, status);
+      if (!status.isOpen) {
+        igc.hasOpenMatches ? igc.setActiveMatch() : widget.close();
+      }
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -171,8 +181,11 @@ class SpanCardState extends State<SpanCard> {
                                         ),
                                       )
                                       .toList(),
-                                  onPressed: (value, index) =>
-                                      _onChoiceSelect(match, index),
+                                  onPressed: (value, index) => _onChoiceSelect(
+                                    match,
+                                    index,
+                                    PangeaMatchStatusEnum.accepted,
+                                  ),
                                   selectedChoiceIndex: match
                                       .updatedMatch
                                       .match
@@ -210,7 +223,10 @@ class SpanCardState extends State<SpanCard> {
                                     ),
                                     IconButton(
                                       icon: Icon(Symbols.undo),
-                                      onPressed: () {},
+                                      onPressed: () => _updateMatch(
+                                        match,
+                                        PangeaMatchStatusEnum.undo,
+                                      ),
                                     ),
                                   ],
                                 ),
