@@ -35,6 +35,9 @@ class SpanCard extends StatefulWidget {
 class SpanCardState extends State<SpanCard> {
   final ScrollController scrollController = ScrollController();
 
+  double? _previousOffset;
+  Offset _slideFrom = const Offset(0.1, 0); // default slide from right
+
   @override
   void initState() {
     super.initState();
@@ -113,8 +116,8 @@ class SpanCardState extends State<SpanCard> {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: widget.choreographer.igcController.matchUpdateStream.stream,
-      builder: (context, _) => ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 300.0),
+      builder: (context, _) => SizedBox(
+        height: 200.0,
         child: Column(
           mainAxisSize: .min,
           children: [
@@ -147,97 +150,143 @@ class SpanCardState extends State<SpanCard> {
             ValueListenableBuilder(
               valueListenable: _activeMatch,
               builder: (context, match, _) {
-                if (match == null) return SizedBox();
-                final isOpen = match.updatedMatch.status.isOpen;
-                return Scrollbar(
-                  controller: scrollController,
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12.0,
-                        horizontal: 24.0,
+                if (match != null) {
+                  final newOffset = match.updatedMatch.match.offset.toDouble();
+                  if (_previousOffset != null) {
+                    if (newOffset < _previousOffset!) {
+                      // Moving backward → slide from left
+                      _slideFrom = const Offset(-0.1, 0);
+                    } else if (newOffset > _previousOffset!) {
+                      // Moving forward → slide from right
+                      _slideFrom = const Offset(0.1, 0);
+                    }
+                  }
+
+                  _previousOffset = newOffset;
+                }
+
+                return AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  switchInCurve: Curves.easeOut,
+                  switchOutCurve: Curves.easeIn,
+                  transitionBuilder: (child, animation) {
+                    final slideAnimation = Tween<Offset>(
+                      begin: _slideFrom,
+                      end: Offset.zero,
+                    ).animate(animation);
+
+                    return FadeTransition(
+                      opacity: animation,
+                      child: SlideTransition(
+                        position: slideAnimation,
+                        child: child,
                       ),
-                      child: Column(
-                        spacing: 12.0,
-                        children: isOpen
-                            ? [
-                                Text(
-                                  match.updatedMatch.match.message ??
-                                      match.updatedMatch.match.type
-                                          .defaultPrompt(context),
-                                  style: BotStyle.text(context),
-                                ),
-                                ChoicesArray(
-                                  isLoading: false,
-                                  choices: match.updatedMatch.match.choices
-                                      ?.map(
-                                        (e) => Choice(
-                                          text: e.value,
-                                          color: e.selected
-                                              ? e.type.color
-                                              : null,
-                                          isGold: e.type.isSuggestion,
-                                        ),
-                                      )
-                                      .toList(),
-                                  onPressed: (value, index) => _onChoiceSelect(
-                                    match,
-                                    index,
-                                    PangeaMatchStatusEnum.accepted,
-                                  ),
-                                  selectedChoiceIndex: match
-                                      .updatedMatch
-                                      .match
-                                      .selectedChoiceIndex,
-                                  id: match.hashCode.toString(),
-                                  langCode: MatrixState
-                                      .pangeaController
-                                      .userController
-                                      .userL2Code!,
-                                ),
-                              ]
-                            : [
-                                Row(
-                                  spacing: 16.0,
-                                  mainAxisAlignment: .center,
-                                  children: [
-                                    Wrap(
-                                      spacing: 8.0,
-                                      runSpacing: 4.0,
-                                      crossAxisAlignment: .center,
-                                      children: [
-                                        Text(
-                                          match.originalMatch.match.errorSpan,
-                                        ),
-                                        Icon(Icons.arrow_forward, size: 16.0),
-                                        Text(
-                                          match
-                                                  .updatedMatch
-                                                  .match
-                                                  .selectedChoice
-                                                  ?.value ??
-                                              L10n.of(context).nothingFound,
-                                        ),
-                                      ],
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Symbols.undo),
-                                      onPressed: () => _updateMatch(
-                                        match,
-                                        PangeaMatchStatusEnum.undo,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                      ),
-                    ),
-                  ),
+                    );
+                  },
+                  child: match == null
+                      ? const SizedBox()
+                      : _MatchContent(
+                          key: ValueKey(match.hashCode),
+                          match: match,
+                          scrollController: scrollController,
+                          onChoiceSelect: _onChoiceSelect,
+                          onUpdateMatch: _updateMatch,
+                        ),
                 );
               },
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _MatchContent extends StatelessWidget {
+  final PangeaMatchState match;
+  final ScrollController scrollController;
+  final Future<void> Function(PangeaMatchState, int, PangeaMatchStatusEnum)
+  onChoiceSelect;
+  final Future<void> Function(PangeaMatchState, PangeaMatchStatusEnum)
+  onUpdateMatch;
+
+  const _MatchContent({
+    super.key,
+    required this.match,
+    required this.scrollController,
+    required this.onChoiceSelect,
+    required this.onUpdateMatch,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isOpen = match.updatedMatch.status.isOpen;
+
+    return Scrollbar(
+      controller: scrollController,
+      child: SingleChildScrollView(
+        controller: scrollController,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+          child: Column(
+            spacing: 12.0,
+            children: [
+              Text(
+                match.updatedMatch.match.message ??
+                    match.updatedMatch.match.type.defaultPrompt(context),
+                style: BotStyle.text(context),
+              ),
+              isOpen
+                  ? ChoicesArray(
+                      isLoading: false,
+                      choices: match.updatedMatch.match.choices
+                          ?.map(
+                            (e) => Choice(
+                              text: e.value,
+                              color: e.selected ? e.type.color : null,
+                              isGold: e.type.isSuggestion,
+                            ),
+                          )
+                          .toList(),
+                      onPressed: (value, index) => onChoiceSelect(
+                        match,
+                        index,
+                        PangeaMatchStatusEnum.accepted,
+                      ),
+                      selectedChoiceIndex:
+                          match.updatedMatch.match.selectedChoiceIndex,
+                      id: match.hashCode.toString(),
+                      langCode: MatrixState
+                          .pangeaController
+                          .userController
+                          .userL2Code!,
+                    )
+                  : Row(
+                      spacing: 16.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Wrap(
+                          spacing: 8.0,
+                          runSpacing: 4.0,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(match.originalMatch.match.errorSpan),
+                            const Icon(Icons.arrow_forward, size: 16.0),
+                            Text(
+                              match.updatedMatch.match.selectedChoice?.value ??
+                                  L10n.of(context).nothingFound,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          icon: const Icon(Symbols.undo),
+                          onPressed: () =>
+                              onUpdateMatch(match, PangeaMatchStatusEnum.undo),
+                        ),
+                      ],
+                    ),
+            ],
+          ),
         ),
       ),
     );
