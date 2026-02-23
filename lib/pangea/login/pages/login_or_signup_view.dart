@@ -323,18 +323,19 @@ class _LoginCarousel extends StatelessWidget {
               .mapIndexed(
                 (index, svg) => Stack(
                   children: [
-                    SvgPicture.string(svg),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 32),
+                      child: SvgPicture.string(svg),
+                    ),
                     Positioned(
-                      bottom: 20,
+                      bottom: 10,
                       left: 20,
                       right: 20,
                       child: Text(
                         labels[index],
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.brightness == Brightness.dark
-                              ? theme.colorScheme.surface
-                              : theme.colorScheme.onSurface,
+                          color: theme.colorScheme.onSurface,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -365,29 +366,28 @@ class _LoginCarousel extends StatelessWidget {
             child: CarouselSlider(
               items: svgs
                   .mapIndexed(
-                    (index, svg) => Center(
-                      child: SizedBox(
-                        width: screenWidth * 0.8,
-                        child: Stack(
-                          children: [
-                            SvgPicture.string(svg),
-                            Positioned(
-                              bottom: 20,
-                              left: 20,
-                              right: 20,
-                              child: Text(
-                                labels[index],
-                                textAlign: TextAlign.center,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.brightness == Brightness.dark
-                                      ? theme.colorScheme.surface
-                                      : theme.colorScheme.onSurface,
-                                  fontWeight: FontWeight.w800,
-                                ),
+                    (index, svg) => SizedBox(
+                      width: screenWidth * 0.8,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 32),
+                            child: SvgPicture.string(svg),
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 20,
+                            right: 20,
+                            child: Text(
+                              labels[index],
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onSurface,
+                                fontWeight: FontWeight.w800,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   )
