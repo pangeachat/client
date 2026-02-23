@@ -4,6 +4,7 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat/widgets/pangea_emoji_search_view.dart';
 import 'chat.dart';
 
 class ChatEmojiPicker extends StatelessWidget {
@@ -89,8 +90,19 @@ class ChatEmojiPicker extends StatelessWidget {
                               bottom: EmojiPickerItem.emojiView,
                             ),
                             searchViewConfig: SearchViewConfig(
-                              backgroundColor: theme.colorScheme.surface,
+                              backgroundColor:
+                                  theme.colorScheme.surfaceContainer,
                               buttonIconColor: theme.colorScheme.onSurface,
+                              customSearchView:
+                                  (
+                                    Config config,
+                                    EmojiViewState state,
+                                    VoidCallback showEmojiView,
+                                  ) => PangeaEmojiSearchView(
+                                    config,
+                                    state,
+                                    showEmojiView,
+                                  ),
                             ),
                             // Pangea#
                           ),

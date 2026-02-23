@@ -367,20 +367,9 @@ class _MessageSelectModeContent extends StatelessWidget {
                 ),
               ],
             ),
-            AsyncError(error: final _) => Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.error_outline,
-                  color: Theme.of(context).colorScheme.error,
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  L10n.of(context).translationError,
-                  textScaler: TextScaler.noScaling,
-                  style: style.copyWith(fontStyle: FontStyle.italic),
-                ),
-              ],
+            AsyncError(error: final _) => ErrorIndicator(
+              message: L10n.of(context).translationError,
+              style: style.copyWith(fontStyle: FontStyle.italic),
             ),
             AsyncLoaded(value: final value) => Container(
               constraints: BoxConstraints(maxWidth: maxWidth),

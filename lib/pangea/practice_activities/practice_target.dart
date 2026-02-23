@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -31,6 +33,20 @@ class PracticeTarget {
   }) {
     if (ActivityTypeEnum.morphId == activityType && morphFeature == null) {
       throw Exception("morphFeature must be defined for morphId activities");
+    }
+  }
+
+  String promptText(BuildContext context) {
+    switch (activityType) {
+      case ActivityTypeEnum.grammarCategory:
+        return L10n.of(context).whatIsTheMorphTag(
+          morphFeature!.getDisplayCopy(context),
+          tokens.first.text.content,
+        );
+      case ActivityTypeEnum.grammarError:
+        return L10n.of(context).fillInBlank;
+      default:
+        return tokens.first.vocabConstructID.lemma;
     }
   }
 

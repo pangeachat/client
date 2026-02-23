@@ -6,7 +6,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/percent_marker_bar.dart';
 import 'package:fluffychat/pangea/analytics_practice/stat_card.dart';
@@ -16,10 +15,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class CompletedActivitySessionView extends StatelessWidget {
   final AnalyticsPracticeSessionModel session;
-  final AnalyticsPracticeState controller;
-  const CompletedActivitySessionView(
-    this.session,
-    this.controller, {
+  final VoidCallback launchSession;
+  final Future<double> levelProgress;
+
+  const CompletedActivitySessionView({
+    required this.session,
+    required this.launchSession,
+    required this.levelProgress,
     super.key,
   });
 
@@ -47,7 +49,7 @@ class CompletedActivitySessionView extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                controller.getCompletionMessage(context),
+                session.getCompletionMessage(context),
                 style: Theme.of(
                   context,
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -81,12 +83,10 @@ class CompletedActivitySessionView extends StatelessWidget {
                             bottom: 16.0,
                           ),
                           child: FutureBuilder(
-                            future: controller.derivedAnalyticsData,
+                            future: levelProgress,
                             builder: (context, snapshot) => AnimatedProgressBar(
                               height: 20.0,
-                              widthPercent: snapshot.hasData
-                                  ? snapshot.data!.levelProgress
-                                  : 0.0,
+                              widthPercent: snapshot.data ?? 0.0,
                               backgroundColor: Theme.of(
                                 context,
                               ).colorScheme.surfaceContainerHighest,
@@ -144,7 +144,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                               vertical: 8.0,
                             ),
                           ),
-                          onPressed: () => controller.reloadSession(),
+                          onPressed: launchSession,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [Text(L10n.of(context).anotherRound)],

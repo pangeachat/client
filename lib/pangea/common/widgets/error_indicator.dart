@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+
 class ErrorIndicator extends StatelessWidget {
   final String message;
   final double? iconSize;
+  final Color? iconColor;
   final TextStyle? style;
   final VoidCallback? onTap;
 
@@ -10,25 +13,28 @@ class ErrorIndicator extends StatelessWidget {
     super.key,
     required this.message,
     this.iconSize,
+    this.iconColor,
     this.style,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final content = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          Icons.error,
-          color: Theme.of(context).colorScheme.error,
-          size: iconSize ?? 24.0,
-        ),
-        const SizedBox(width: 8),
-        Flexible(
-          child: Text(message, style: style, textAlign: TextAlign.center),
-        ),
-      ],
+    final content = RichText(
+      text: TextSpan(
+        children: [
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Icon(
+              Icons.error,
+              color: iconColor ?? AppConfig.error,
+              size: iconSize ?? 24.0,
+            ),
+          ),
+          TextSpan(text: '  '),
+          TextSpan(text: message, style: style),
+        ],
+      ),
     );
 
     if (onTap != null) {
