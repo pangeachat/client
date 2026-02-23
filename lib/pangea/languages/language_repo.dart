@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 
 class LanguageRepo {
   static Future<Result<List<LanguageModel>>> get() async {
@@ -26,10 +28,13 @@ class LanguageRepo {
     );
 
     if (response.statusCode != 200) {
-      throw Exception('Failed to fetch languages from CMS: ${response.statusCode} ${response.reasonPhrase}');
+      throw Exception(
+        'Failed to fetch languages from CMS: ${response.statusCode} ${response.reasonPhrase}',
+      );
     }
 
-    final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    final json =
+        jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
     final docs = json['docs'] as List;
 
     return docs

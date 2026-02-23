@@ -1,7 +1,8 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('LanguageModel.fromJson', () {
@@ -48,20 +49,33 @@ void main() {
         'alpha': L2SupportEnum.alpha,
         'na': L2SupportEnum.na,
       }.entries) {
-        final json = {'language_code': 'xx', 'language_name': 'Test', 'l2_support': entry.key};
+        final json = {
+          'language_code': 'xx',
+          'language_name': 'Test',
+          'l2_support': entry.key,
+        };
         final model = LanguageModel.fromJson(json);
         expect(model.l2Support, entry.value, reason: 'l2_support=${entry.key}');
       }
     });
 
     test('defaults l2_support to na when null', () {
-      final json = {'language_code': 'xx', 'language_name': 'Test', 'l2_support': null};
+      final json = {
+        'language_code': 'xx',
+        'language_name': 'Test',
+        'l2_support': null,
+      };
       final model = LanguageModel.fromJson(json);
       expect(model.l2Support, L2SupportEnum.na);
     });
 
     test('handles missing locale_emoji', () {
-      final json = {'language_code': 'yue-HK', 'language_name': 'Cantonese', 'l2_support': 'beta', 'script': 'Hant'};
+      final json = {
+        'language_code': 'yue-HK',
+        'language_name': 'Cantonese',
+        'l2_support': 'beta',
+        'script': 'Hant',
+      };
       final model = LanguageModel.fromJson(json);
       expect(model.localeEmoji, isNull);
     });
@@ -73,19 +87,32 @@ void main() {
     });
 
     test('handles null voices', () {
-      final json = {'language_code': 'fr', 'language_name': 'French', 'voices': null};
+      final json = {
+        'language_code': 'fr',
+        'language_name': 'French',
+        'voices': null,
+      };
       final model = LanguageModel.fromJson(json);
       expect(model.voices, isEmpty);
     });
 
     test('handles empty voices list', () {
-      final json = {'language_code': 'fr', 'language_name': 'French', 'voices': <dynamic>[]};
+      final json = {
+        'language_code': 'fr',
+        'language_name': 'French',
+        'voices': <dynamic>[],
+      };
       final model = LanguageModel.fromJson(json);
       expect(model.voices, isEmpty);
     });
 
     test('parses text_direction when present', () {
-      final json = {'language_code': 'ar', 'language_name': 'Arabic', 'text_direction': 'rtl', 'script': 'Arab'};
+      final json = {
+        'language_code': 'ar',
+        'language_name': 'Arabic',
+        'text_direction': 'rtl',
+        'script': 'Arab',
+      };
       // RTL should be parsed — TextDirection.rtl
       final model = LanguageModel.fromJson(json);
       expect(model.langCode, 'ar');
@@ -153,14 +180,26 @@ void main() {
 
   group('LanguageModel properties', () {
     test('l2 returns true for non-na support levels', () {
-      for (final level in [L2SupportEnum.full, L2SupportEnum.beta, L2SupportEnum.alpha]) {
-        final model = LanguageModel(langCode: 'xx', displayName: 'Test', l2Support: level);
+      for (final level in [
+        L2SupportEnum.full,
+        L2SupportEnum.beta,
+        L2SupportEnum.alpha,
+      ]) {
+        final model = LanguageModel(
+          langCode: 'xx',
+          displayName: 'Test',
+          l2Support: level,
+        );
         expect(model.l2, isTrue, reason: 'l2Support=$level should be l2=true');
       }
     });
 
     test('l2 returns false for na', () {
-      final model = LanguageModel(langCode: 'xx', displayName: 'Test', l2Support: L2SupportEnum.na);
+      final model = LanguageModel(
+        langCode: 'xx',
+        displayName: 'Test',
+        l2Support: L2SupportEnum.na,
+      );
       expect(model.l2, isFalse);
     });
   });
