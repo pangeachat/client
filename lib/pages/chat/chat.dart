@@ -2273,10 +2273,18 @@ class ChatController extends State<ChatPageWithRoom>
   void showNextMatch() {
     MatrixState.pAnyState.closeOverlay();
     final match = choreographer.igcController.openMatches.firstOrNull;
+
     if (match == null) {
       inputFocus.requestFocus();
       return;
     }
+
+    if (match.updatedMatch.isITStart) {
+      choreographer.itController.openIT(sendController.text);
+      return;
+    }
+
+    final activeMatch = choreographer.igcController.activeMatch.value;
 
     match.updatedMatch.isITStart
         ? choreographer.itController.openIT(sendController.text)

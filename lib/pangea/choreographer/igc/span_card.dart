@@ -41,6 +41,8 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   void dispose() {
+    debugPrint("DISPOSE SPAN CARD");
+    widget.choreographer.igcController.clearActiveMatch();
     scrollController.dispose();
     super.dispose();
   }
@@ -59,11 +61,14 @@ class SpanCardState extends State<SpanCard> {
     await Future.delayed(Duration(seconds: 1), () => _acceptMatch(match));
   }
 
-  void _acceptMatch(PangeaMatchState match) {
+  Future<void> _acceptMatch(PangeaMatchState match) async {
     try {
       final igc = widget.choreographer.igcController;
       igc.updateMatchStatus(match, PangeaMatchStatusEnum.accepted);
-      igc.hasOpenMatches ? igc.setActiveMatch() : widget.close();
+      await Future.delayed(
+        Duration(seconds: 1),
+        () => igc.hasOpenMatches ? igc.setActiveMatch() : widget.close(),
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

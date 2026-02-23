@@ -38,6 +38,9 @@ class IgcController {
   ValueNotifier<PangeaMatchState?> activeMatch = ValueNotifier(null);
 
   String? get currentText => _currentText;
+
+  List<PangeaMatchState> get matches => _matches;
+
   List<PangeaMatchState> get openMatches =>
       _matches.where((m) => m.updatedMatch.status.isOpen).toList();
 
@@ -100,6 +103,14 @@ class IgcController {
     match ??= openMatches.first;
     updateMatchStatus(match, PangeaMatchStatusEnum.viewed);
     activeMatch.value = match;
+  }
+
+  void clearActiveMatch() {
+    debugPrint("CLEAR ACTIVE MATCH. Value was: ${activeMatch.value}");
+    debugPrint("Active Match Hashcode: ${activeMatch.hashCode}");
+    activeMatch.value = null;
+    debugPrint("CLEARED ACTIVE MATCH. Value is now: ${activeMatch.value}");
+    debugPrint("Active Match Hashcode: ${activeMatch.hashCode}");
   }
 
   PangeaMatchState? getMatchByOffset(int offset) =>
@@ -215,18 +226,29 @@ class IgcController {
     if (_currentText == null) {
       throw StateError('_applyReplacement called with null _currentText');
     }
+    debugPrint(
+      "Apply replacement. Offset: $offset, length: $length, replacement: $replacement",
+    );
+    debugPrint("Text Before: $_currentText");
+
     final start = _currentText!.characters.take(offset);
     final end = _currentText!.characters.skip(offset + length);
     final updatedText = start + replacement.characters + end;
     _currentText = updatedText.toString();
+
+    debugPrint("Text After: $_currentText");
+    final lengthOffset = replacement.characters.length - length;
 
     for (final matchState in _matches) {
       final match = matchState.updatedMatch.match;
       final updatedMatch = match.copyWith(
         fullText: _currentText,
         offset: match.offset > offset
-            ? match.offset + replacement.characters.length - length
+            ? match.offset + lengthOffset
             : match.offset,
+        length: match.offset == offset && match.length == length
+            ? replacement.characters.length
+            : match.length,
       );
       matchState.setMatch(updatedMatch);
     }

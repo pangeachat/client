@@ -103,6 +103,8 @@ class Choreographer extends ChangeNotifier {
       },
     );
 
+    igcController.activeMatch.addListener(onUpdateActiveMatch);
+
     _languageSub ??= MatrixState
         .pangeaController
         .userController
@@ -149,6 +151,8 @@ class Choreographer extends ChangeNotifier {
     itController.editing.removeListener(_onSubmitSourceTextEdits);
     textController.removeListener(_onChange);
 
+    igcController.activeMatch.removeListener(onUpdateActiveMatch);
+
     _languageSub?.cancel();
     _settingsUpdateSub?.cancel();
     _acceptedContinuanceSub?.cancel();
@@ -166,6 +170,8 @@ class Choreographer extends ChangeNotifier {
     super.dispose();
   }
 
+  void onUpdateActiveMatch() => notifyListeners();
+
   void onPaste(String value) => _record.pastedStrings.add(value);
 
   void onClickSend() {
@@ -182,6 +188,7 @@ class Choreographer extends ChangeNotifier {
 
   void _setChoreoMode(ChoreoModeEnum mode) {
     _choreoMode = mode;
+    debugPrint("Set choreo mode");
     notifyListeners();
   }
 
@@ -435,6 +442,7 @@ class Choreographer extends ChangeNotifier {
     }
 
     inputFocus.requestFocus();
+    debugPrint("On update match");
     notifyListeners();
   }
 }

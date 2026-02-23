@@ -484,8 +484,12 @@ class InputBar extends StatelessWidget {
       // #Pangea
       // fieldViewBuilder: (context, controller, focusNode, _) => TextField(
       fieldViewBuilder: (context, _, focusNode, _) => ListenableBuilder(
-        listenable: choreographer,
+        listenable: Listenable.merge([
+          choreographer,
+          choreographer.igcController.activeMatch,
+        ]),
         builder: (context, _) {
+          debugPrint("REBUILD INPUT BAR");
           return TextField(
             // Pangea#
             controller: controller,
