@@ -220,17 +220,12 @@ class IgcController {
     if (_currentText == null) {
       throw StateError('_applyReplacement called with null _currentText');
     }
-    debugPrint(
-      "Apply replacement. Offset: $offset, length: $length, replacement: $replacement",
-    );
-    debugPrint("Text Before: $_currentText");
 
     final start = _currentText!.characters.take(offset);
     final end = _currentText!.characters.skip(offset + length);
     final updatedText = start + replacement.characters + end;
     _currentText = updatedText.toString();
 
-    debugPrint("Text After: $_currentText");
     final lengthOffset = replacement.characters.length - length;
 
     for (final matchState in _matches) {

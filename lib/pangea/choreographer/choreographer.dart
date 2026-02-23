@@ -182,7 +182,6 @@ class Choreographer extends ChangeNotifier {
 
   void _setChoreoMode(ChoreoModeEnum mode) {
     _choreoMode = mode;
-    debugPrint("Set choreo mode");
     notifyListeners();
   }
 
@@ -436,7 +435,6 @@ class Choreographer extends ChangeNotifier {
     }
 
     inputFocus.requestFocus();
-    debugPrint("On update match");
     notifyListeners();
   }
 }

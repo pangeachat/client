@@ -47,21 +47,6 @@ class PangeaTextController extends TextEditingController {
     return match.match.type.underlineColor().withAlpha(alpha);
   }
 
-  // TextStyle _textStyle(
-  //   PangeaMatch match,
-  //   TextStyle? existingStyle,
-  //   bool isOpenMatch,
-  // ) {
-  //   double opacityFactor = 1.0;
-  //   if (!isOpenMatch) {
-  //     opacityFactor = 0.4;
-  //   }
-
-  //   final alpha = (255 * opacityFactor).round();
-  //   final style = _underlineStyle(_underlineColor(match).withAlpha(alpha));
-  //   return existingStyle?.merge(style) ?? style;
-  // }
-
   void setSystemText(String newText, EditTypeEnum type) {
     editType = type;
     text = newText;
