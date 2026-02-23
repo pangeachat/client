@@ -130,29 +130,25 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   }
 
   Map<int, Map<String, String>> get _updatedIDs => {
-    1: {
-      'Edit text': L10n.of(context).learnLanguageWhileTexting,
-      'Edit text header': L10n.of(context).shareYourHobbies,
-    },
-    2: {
-      'Edit text Header': L10n.of(context).pangeaBot,
-      'Edit text': L10n.of(context).writeAndSpeakWorryFree,
-    },
+    1: {'Edit text header': L10n.of(context).shareYourHobbies},
+    2: {'Edit text Header': L10n.of(context).pangeaBot},
     3: {
-      'Edit text': L10n.of(context).joinLearningCommunities,
       'Edit text_2': L10n.of(context).joinWithClassCode,
       'Edit text_4': L10n.of(context).startYourOwn,
     },
-    4: {
-      'Edit text': L10n.of(context).playConversationGames,
-      'Edit text_2': L10n.of(context).guessMyHometown,
-    },
-    5: {
-      'Edit text': L10n.of(context).jumpIntoConversation,
-      'Edit text_2': L10n.of(context).languageExchange,
-    },
-    6: {'Edit text': L10n.of(context).playPersonalizedGames},
+    4: {'Edit text_2': L10n.of(context).guessMyHometown},
+    5: {'Edit text_2': L10n.of(context).languageExchange},
+    6: {},
   };
+
+  List<String> get _labels => [
+    L10n.of(context).appDescription,
+    L10n.of(context).writeAndSpeakWorryFree,
+    L10n.of(context).joinLearningCommunities,
+    L10n.of(context).playConversationGames,
+    L10n.of(context).jumpIntoConversation,
+    L10n.of(context).playPersonalizedGames,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -177,6 +173,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                     _LoginCarousel(
                       isMobile: isMobile,
                       svgs: svgs,
+                      labels: _labels,
                       onPageChange: (index) {
                         if (mounted) {
                           setState(() => _currentIndex = index);
@@ -300,12 +297,14 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
 class _LoginCarousel extends StatelessWidget {
   final bool isMobile;
   final List<String> svgs;
+  final List<String> labels;
   final Function(int) onPageChange;
   final CarouselSliderController controller;
 
   const _LoginCarousel({
     required this.isMobile,
     required this.svgs,
+    required this.labels,
     required this.onPageChange,
     required this.controller,
   });
@@ -313,14 +312,37 @@ class _LoginCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final screenWidth = MediaQuery.widthOf(context);
 
     if (isMobile) {
-      final screenWidth = MediaQuery.widthOf(context);
       return SizedBox(
         width: screenWidth,
         height: screenWidth * 1.25,
         child: CarouselSlider(
-          items: svgs.map((svg) => SvgPicture.string(svg)).toList(),
+          items: svgs
+              .mapIndexed(
+                (index, svg) => Stack(
+                  children: [
+                    SvgPicture.string(svg),
+                    Positioned(
+                      bottom: 20,
+                      left: 20,
+                      right: 20,
+                      child: Text(
+                        labels[index],
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.brightness == Brightness.dark
+                              ? theme.colorScheme.surface
+                              : theme.colorScheme.onSurface,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+              .toList(),
           carouselController: controller,
           options: CarouselOptions(
             height: double.infinity,
@@ -342,10 +364,31 @@ class _LoginCarousel extends StatelessWidget {
             padding: EdgeInsetsGeometry.symmetric(horizontal: 100.0),
             child: CarouselSlider(
               items: svgs
-                  .map(
-                    (svg) => Padding(
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 2.0),
-                      child: SizedBox.expand(child: SvgPicture.string(svg)),
+                  .mapIndexed(
+                    (index, svg) => Center(
+                      child: SizedBox(
+                        width: screenWidth * 0.8,
+                        child: Stack(
+                          children: [
+                            SvgPicture.string(svg),
+                            Positioned(
+                              bottom: 20,
+                              left: 20,
+                              right: 20,
+                              child: Text(
+                                labels[index],
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.brightness == Brightness.dark
+                                      ? theme.colorScheme.surface
+                                      : theme.colorScheme.onSurface,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   )
                   .toList(),
