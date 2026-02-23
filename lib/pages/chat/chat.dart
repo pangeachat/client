@@ -43,6 +43,7 @@ import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -2069,8 +2070,9 @@ class ChatController extends State<ChatPageWithRoom>
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
-  bool get _isToolbarOpen =>
-      MatrixState.pAnyState.isOverlayOpen(RegExp(r'^message_toolbar_overlay$'));
+  bool get _isToolbarOpen => MatrixState.pAnyState.isOverlayOpen(
+    overlayKey: "message_toolbar_overlay",
+  );
 
   void showToolbar(
     Event event, {
@@ -2270,30 +2272,39 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void showNextMatch() {
-    MatrixState.pAnyState.closeOverlay();
-    final match = choreographer.igcController.openMatches.firstOrNull;
+  void showNextMatch({PangeaMatchState? match}) {
+    final matchToShow =
+        match ?? choreographer.igcController.openMatches.firstOrNull;
 
-    if (match == null) {
+    if (matchToShow == null) {
       inputFocus.requestFocus();
       return;
     }
 
-    if (match.updatedMatch.isITStart) {
+    if (matchToShow.updatedMatch.isITStart) {
       choreographer.itController.openIT(sendController.text);
       return;
     }
 
-    final activeMatch = choreographer.igcController.activeMatch.value;
+    final isSpanCardOpen = MatrixState.pAnyState.isOverlayOpen(
+      overlayKey: 'span-card-overlay',
+    );
 
-    match.updatedMatch.isITStart
-        ? choreographer.itController.openIT(sendController.text)
-        : OverlayUtil.showIGCMatch(
-            match,
-            choreographer,
-            context,
-            (feedback) => onRequestWritingAssistance(feedback: feedback),
-          );
+    try {
+      choreographer.igcController.setActiveMatch(match: matchToShow);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'match': matchToShow.toJson()});
+      return;
+    }
+
+    if (!isSpanCardOpen) {
+      OverlayUtil.showIGCMatch(
+        matchToShow,
+        choreographer,
+        context,
+        (feedback) => onRequestWritingAssistance(feedback: feedback),
+      );
+    }
   }
 
   Future<void> onRequestWritingAssistance({
@@ -2510,6 +2521,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Building ChatController for room $roomId");
     // #Pangea
     return LoadParticipantsBuilder(
       room: room,

@@ -105,13 +105,7 @@ class IgcController {
     activeMatch.value = match;
   }
 
-  void clearActiveMatch() {
-    debugPrint("CLEAR ACTIVE MATCH. Value was: ${activeMatch.value}");
-    debugPrint("Active Match Hashcode: ${activeMatch.hashCode}");
-    activeMatch.value = null;
-    debugPrint("CLEARED ACTIVE MATCH. Value is now: ${activeMatch.value}");
-    debugPrint("Active Match Hashcode: ${activeMatch.hashCode}");
-  }
+  void clearActiveMatch() => activeMatch.value = null;
 
   PangeaMatchState? getMatchByOffset(int offset) =>
       openMatches.firstWhereOrNull(
