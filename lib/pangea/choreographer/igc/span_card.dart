@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -100,87 +101,128 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 300.0),
-      child: Column(
-        mainAxisSize: .min,
-        children: [
-          SizedBox(
-            height: 40.0,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  color: Theme.of(context).iconTheme.color,
-                  onPressed: widget.close,
-                ),
-                const Flexible(
-                  child: Center(
-                    child: BotFace(width: 32.0, expression: BotExpression.idle),
+    return StreamBuilder(
+      stream: widget.choreographer.igcController.matchUpdateStream.stream,
+      builder: (context, _) => ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: 300.0),
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            SizedBox(
+              height: 40.0,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    color: Theme.of(context).iconTheme.color,
+                    onPressed: widget.close,
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.flag_outlined),
-                  color: Theme.of(context).iconTheme.color,
-                  onPressed: _showFeedbackDialog,
-                ),
-              ],
+                  const Flexible(
+                    child: Center(
+                      child: BotFace(
+                        width: 32.0,
+                        expression: BotExpression.idle,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.flag_outlined),
+                    color: Theme.of(context).iconTheme.color,
+                    onPressed: _showFeedbackDialog,
+                  ),
+                ],
+              ),
             ),
-          ),
-          ValueListenableBuilder(
-            valueListenable: _activeMatch,
-            builder: (context, match, _) {
-              if (match == null) return SizedBox();
-
-              return Scrollbar(
-                controller: scrollController,
-                child: SingleChildScrollView(
+            ValueListenableBuilder(
+              valueListenable: _activeMatch,
+              builder: (context, match, _) {
+                if (match == null) return SizedBox();
+                final isOpen = match.updatedMatch.status.isOpen;
+                return Scrollbar(
                   controller: scrollController,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12.0,
-                      horizontal: 24.0,
-                    ),
-                    child: Column(
-                      spacing: 12.0,
-                      children: [
-                        Text(
-                          match.updatedMatch.match.message ??
-                              match.updatedMatch.match.type.defaultPrompt(
-                                context,
-                              ),
-                          style: BotStyle.text(context),
-                        ),
-                        ChoicesArray(
-                          isLoading: false,
-                          choices: match.updatedMatch.match.choices
-                              ?.map(
-                                (e) => Choice(
-                                  text: e.value,
-                                  color: e.selected ? e.type.color : null,
-                                  isGold: e.type.isSuggestion,
+                  child: SingleChildScrollView(
+                    controller: scrollController,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12.0,
+                        horizontal: 24.0,
+                      ),
+                      child: Column(
+                        spacing: 12.0,
+                        children: isOpen
+                            ? [
+                                Text(
+                                  match.updatedMatch.match.message ??
+                                      match.updatedMatch.match.type
+                                          .defaultPrompt(context),
+                                  style: BotStyle.text(context),
                                 ),
-                              )
-                              .toList(),
-                          onPressed: (value, index) =>
-                              _onChoiceSelect(match, index),
-                          selectedChoiceIndex:
-                              match.updatedMatch.match.selectedChoiceIndex,
-                          id: match.hashCode.toString(),
-                          langCode: MatrixState
-                              .pangeaController
-                              .userController
-                              .userL2Code!,
-                        ),
-                      ],
+                                ChoicesArray(
+                                  isLoading: false,
+                                  choices: match.updatedMatch.match.choices
+                                      ?.map(
+                                        (e) => Choice(
+                                          text: e.value,
+                                          color: e.selected
+                                              ? e.type.color
+                                              : null,
+                                          isGold: e.type.isSuggestion,
+                                        ),
+                                      )
+                                      .toList(),
+                                  onPressed: (value, index) =>
+                                      _onChoiceSelect(match, index),
+                                  selectedChoiceIndex: match
+                                      .updatedMatch
+                                      .match
+                                      .selectedChoiceIndex,
+                                  id: match.hashCode.toString(),
+                                  langCode: MatrixState
+                                      .pangeaController
+                                      .userController
+                                      .userL2Code!,
+                                ),
+                              ]
+                            : [
+                                Row(
+                                  spacing: 16.0,
+                                  mainAxisAlignment: .center,
+                                  children: [
+                                    Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 4.0,
+                                      crossAxisAlignment: .center,
+                                      children: [
+                                        Text(
+                                          match.originalMatch.match.errorSpan,
+                                        ),
+                                        Icon(Icons.arrow_forward, size: 16.0),
+                                        Text(
+                                          match
+                                                  .updatedMatch
+                                                  .match
+                                                  .selectedChoice
+                                                  ?.value ??
+                                              L10n.of(context).nothingFound,
+                                        ),
+                                      ],
+                                    ),
+                                    IconButton(
+                                      icon: Icon(Symbols.undo),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

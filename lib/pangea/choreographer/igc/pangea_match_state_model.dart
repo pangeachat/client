@@ -45,6 +45,16 @@ class PangeaMatchState {
     );
   }
 
+  void resetChoices() {
+    if (_match.choices == null) {
+      throw Exception('No choices available to reset.');
+    }
+    final resetChoices = _match.choices!
+        .map((c) => c.copyWith(selected: false, timestamp: null))
+        .toList();
+    setMatch(_match.copyWith(choices: resetChoices));
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'originalMatch': _original.toJson(),

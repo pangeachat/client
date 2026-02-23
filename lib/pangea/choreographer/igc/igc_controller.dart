@@ -96,21 +96,22 @@ class IgcController {
       }
     }
 
-    if (openMatches.isEmpty) {
+    if (_matches.isEmpty) {
       throw "setActiveMatch called without open matches";
     }
 
-    match ??= openMatches.first;
-    updateMatchStatus(match, PangeaMatchStatusEnum.viewed);
+    match ??= openMatches.firstOrNull ?? _matches.first;
+    if (match.updatedMatch.status == PangeaMatchStatusEnum.open) {
+      updateMatchStatus(match, PangeaMatchStatusEnum.viewed);
+    }
     activeMatch.value = match;
   }
 
   void clearActiveMatch() => activeMatch.value = null;
 
-  PangeaMatchState? getMatchByOffset(int offset) =>
-      openMatches.firstWhereOrNull(
-        (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
-      );
+  PangeaMatchState? getMatchByOffset(int offset) => matches.firstWhereOrNull(
+    (match) => match.updatedMatch.match.isOffsetInMatchSpan(offset),
+  );
 
   void setSpanData(PangeaMatchState matchState, SpanData spanData) {
     final openMatch = openMatches.firstWhereOrNull(
@@ -128,43 +129,40 @@ class IgcController {
       orElse: () => throw StateError('No match found while updating match.'),
     );
 
+    final selectedChoice = match.updatedMatch.match.selectedChoice;
+
     match.setStatus(status);
+    if (status == PangeaMatchStatusEnum.undo) {
+      match.resetChoices();
+    }
+
     _matches.remove(currentMatch);
     _matches.add(match);
 
     switch (status) {
       case PangeaMatchStatusEnum.accepted:
       case PangeaMatchStatusEnum.automatic:
-        final choice = match.updatedMatch.match.selectedChoice;
-        if (choice == null) {
+        if (selectedChoice == null) {
           throw ArgumentError('acceptMatch called with a null selectedChoice.');
         }
         _applyReplacement(
           match.updatedMatch.match.offset,
           match.updatedMatch.match.length,
-          choice.value,
+          selectedChoice.value,
         );
       case PangeaMatchStatusEnum.undo:
-        final selectedValue = match.updatedMatch.match.selectedChoice?.value;
+        final selectedValue = selectedChoice?.value;
         if (selectedValue == null) {
           throw StateError(
             'Cannot update match without a selectedChoice value.',
           );
         }
 
-        final replacement = match.originalMatch.match.fullText.characters
-            .getRange(
-              match.originalMatch.match.offset,
-              match.originalMatch.match.offset +
-                  match.originalMatch.match.length,
-            )
-            .toString();
+        final currentOffset = match.updatedMatch.match.offset;
+        final currentLength = match.updatedMatch.match.length;
+        final replacement = match.originalMatch.match.errorSpan;
 
-        _applyReplacement(
-          match.originalMatch.match.offset,
-          selectedValue.characters.length,
-          replacement,
-        );
+        _applyReplacement(currentOffset, currentLength, replacement);
       case PangeaMatchStatusEnum.open:
       case PangeaMatchStatusEnum.viewed:
         break;
