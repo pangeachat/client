@@ -1,3 +1,8 @@
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
@@ -6,10 +11,6 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import '../../common/utils/error_handler.dart';
 
 Future<void> showInviteDialog(Room room, BuildContext context) async {
@@ -22,22 +23,35 @@ Future<void> showInviteDialog(Room room, BuildContext context) async {
     builder: (context) => AlertDialog.adaptive(
       title: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
-        child: Center(child: Text(L10n.of(context).youreInvited, textAlign: TextAlign.center)),
+        child: Center(
+          child: Text(
+            L10n.of(context).youreInvited,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
         child: Text(
           room.isSpace
-              ? L10n.of(context).invitedToSpace(room.name, room.creatorId ?? "???")
-              : L10n.of(context).invitedToChat(room.name, room.creatorId ?? "???"),
+              ? L10n.of(
+                  context,
+                ).invitedToSpace(room.name, room.creatorId ?? "???")
+              : L10n.of(
+                  context,
+                ).invitedToChat(room.name, room.creatorId ?? "???"),
           textAlign: TextAlign.center,
         ),
       ),
       actions: [
         AdaptiveDialogAction(
-          onPressed: () => Navigator.of(context).pop(CourseInviteAction.decline),
+          onPressed: () =>
+              Navigator.of(context).pop(CourseInviteAction.decline),
           bigButtons: true,
-          child: Text(L10n.of(context).decline, style: TextStyle(color: theme.colorScheme.error)),
+          child: Text(
+            L10n.of(context).decline,
+            style: TextStyle(color: theme.colorScheme.error),
+          ),
         ),
         AdaptiveDialogAction(
           onPressed: () => Navigator.of(context).pop(CourseInviteAction.accept),
@@ -72,7 +86,9 @@ Future<void> showInviteDialog(Room room, BuildContext context) async {
     await room.client.waitForRoomInSync(room.id, join: true);
   }
 
-  context.go(room.isSpace ? "/rooms/spaces/${room.id}/details" : "/rooms/${room.id}");
+  context.go(
+    room.isSpace ? "/rooms/spaces/${room.id}/details" : "/rooms/${room.id}",
+  );
 }
 
 // ignore: curly_braces_in_flow_control_structures
@@ -100,13 +116,14 @@ void chatListHandleSpaceTap(BuildContext context, Room space) {
       //if space is a child of a space you're in, automatically join
       //else confirm you want to join
       //can we tell whether space or chat?
-      final rooms = Matrix.of(
-        context,
-      ).client.rooms.where((element) => element.isSpace && element.membership == Membership.join);
+      final rooms = Matrix.of(context).client.rooms.where(
+        (element) => element.isSpace && element.membership == Membership.join,
+      );
       final justInputtedCode = SpaceCodeRepo.recentCode;
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);
-      } else if (justInputtedCode != null && justInputtedCode == space.classCode) {
+      } else if (justInputtedCode != null &&
+          justInputtedCode == space.classCode) {
         // do nothing
       } else if (KnockTracker.hasKnocked(space.client, space.id)) {
         autoJoin(space);
@@ -119,7 +136,10 @@ void chatListHandleSpaceTap(BuildContext context, Room space) {
       break;
     default:
       setActiveSpaceAndCloseChat();
-      ErrorHandler.logError(m: 'should not show space with membership ${space.membership}', data: space.toJson());
+      ErrorHandler.logError(
+        m: 'should not show space with membership ${space.membership}',
+        data: space.toJson(),
+      );
       break;
   }
 }

@@ -1,6 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
@@ -22,23 +28,25 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
 
 class CourseChats extends StatefulWidget {
   final Client client;
   final String roomId;
   final String? activeChat;
 
-  const CourseChats(this.roomId, {super.key, required this.activeChat, required this.client});
+  const CourseChats(
+    this.roomId, {
+    super.key,
+    required this.activeChat,
+    required this.client,
+  });
 
   @override
   State<CourseChats> createState() => CourseChatsController();
 }
 
-class CourseChatsController extends State<CourseChats> with ActivitySummariesProvider, CoursePlanProvider {
+class CourseChatsController extends State<CourseChats>
+    with ActivitySummariesProvider, CoursePlanProvider {
   String get roomId => widget.roomId;
   Room? get room => widget.client.getRoomById(widget.roomId);
 
@@ -86,16 +94,24 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     super.dispose();
   }
 
-  Set<String> get childrenIds => room?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ?? {};
+  Set<String> get childrenIds =>
+      room?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ??
+      {};
 
-  List<Room> get joinedRooms => Matrix.of(
-    context,
-  ).client.rooms.where((room) => childrenIds.contains(room.id)).where((room) => !room.isHiddenRoom).toList();
+  List<Room> get joinedRooms => Matrix.of(context).client.rooms
+      .where((room) => childrenIds.contains(room.id))
+      .where((room) => !room.isHiddenRoom)
+      .toList();
 
-  List<Room> joinedActivities() => joinedRooms.where((r) => r.isActivitySession).toList();
+  List<Room> joinedActivities() =>
+      joinedRooms.where((r) => r.isActivitySession).toList();
 
   List<SpaceRoomsChunk$2> get discoveredGroupChats => (discoveredChildren ?? [])
-      .where((chunk) => chunk.roomType == null || !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession))
+      .where(
+        (chunk) =>
+            chunk.roomType == null ||
+            !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
+      )
       .toList();
 
   Map<String, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
@@ -117,7 +133,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
       final roles = summary.activityRoles;
       final users = summary.joinedUsersWithRoles;
 
-      if (activity == null || roles == null || users.isEmpty || !validIDs.contains(activity.activityId)) {
+      if (activity == null ||
+          roles == null ||
+          users.isEmpty ||
+          !validIDs.contains(activity.activityId)) {
         continue;
       }
 
@@ -136,14 +155,19 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
 
       sessionsMap[activity.activityId] ??= [];
       sessionsMap[activity.activityId]!.add(
-        ExtendedSpaceRoomsChunk(chunk: chunk, assignedRoles: users.values.toList(), activity: activity),
+        ExtendedSpaceRoomsChunk(
+          chunk: chunk,
+          assignedRoles: users.values.toList(),
+          activity: activity,
+        ),
       );
     }
 
     return sessionsMap;
   }
 
-  List<Room> get joinedChats => joinedRooms.where((room) => !room.isActivitySession).toList();
+  List<Room> get joinedChats =>
+      joinedRooms.where((room) => !room.isActivitySession).toList();
 
   Future<void> _joinDefaultChats() async {
     if (discoveredChildren == null) return;
@@ -155,8 +179,12 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
       final alias = chunk.canonicalAlias!;
 
       final isDefaultChat =
-          (alias.localpart ?? '').startsWith(SpaceConstants.announcementsChatAlias) ||
-          (alias.localpart ?? '').startsWith(SpaceConstants.introductionChatAlias);
+          (alias.localpart ?? '').startsWith(
+            SpaceConstants.announcementsChatAlias,
+          ) ||
+          (alias.localpart ?? '').startsWith(
+            SpaceConstants.introductionChatAlias,
+          );
 
       if (!isDefaultChat) continue;
 
@@ -167,7 +195,11 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
               discoveredChildren?.remove(chunk);
             })
             .catchError((e, s) {
-              ErrorHandler.logError(e: e, s: s, data: {'alias': alias, 'spaceId': widget.roomId});
+              ErrorHandler.logError(
+                e: e,
+                s: s,
+                data: {'alias': alias, 'spaceId': widget.roomId},
+              );
               return null;
             }),
       );
@@ -188,7 +220,12 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
       await _loadHierarchy(activeSpace: room, reload: reload);
       if (mounted) {
         final futures = [
-          loadRoomSummaries(room.spaceChildren.map((c) => c.roomId).whereType<String>().toList()),
+          loadRoomSummaries(
+            room.spaceChildren
+                .map((c) => c.roomId)
+                .whereType<String>()
+                .toList(),
+          ),
           if (room.coursePlan?.uuid != null) loadCourse(room.coursePlan!.uuid),
         ];
         await Future.wait(futures);
@@ -199,9 +236,12 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context)), showCloseIcon: true));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toLocalizedString(context)),
+            showCloseIcon: true,
+          ),
+        );
       }
     } finally {
       if (mounted) {
@@ -215,7 +255,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
   /// If [reload] is true, it will reload the entire hierarchy (used when room
   /// is added/removed from the space)
   /// If [reload] is false, it will load the next set of rooms
-  Future<void> _loadHierarchy({required Room activeSpace, bool reload = false}) async {
+  Future<void> _loadHierarchy({
+    required Room activeSpace,
+    bool reload = false,
+  }) async {
     // Load all of the space's state events. Space Child events
     // are used to filtering out unsuggested, unjoined rooms.
     final requestSpaceId = widget.roomId;
@@ -227,7 +270,8 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     // Failsafe to prevent too many calls to the server in a row
     int callsToServer = 0;
 
-    List<SpaceRoomsChunk$2>? currentHierarchy = discoveredChildren == null || reload
+    List<SpaceRoomsChunk$2>? currentHierarchy =
+        discoveredChildren == null || reload
         ? null
         : List.from(discoveredChildren!);
     String? currentNextBatch = reload ? null : _nextBatch;
@@ -296,7 +340,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
         final joinResult = await showFutureLoadingDialog(
           context: context,
           future: () async {
-            final waitForRoom = room.client.waitForRoomInSync(room.id, join: true);
+            final waitForRoom = room.client.waitForRoomInSync(
+              room.id,
+              join: true,
+            );
             await room.join();
             await waitForRoom;
           },
@@ -307,7 +354,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
         }
       } else {
         final theme = Theme.of(context);
-        final inviteEvent = room.getState(EventTypes.RoomMember, room.client.userID!);
+        final inviteEvent = room.getState(
+          EventTypes.RoomMember,
+          room.client.userID!,
+        );
         final matrixLocals = MatrixLocals(L10n.of(context));
         final action = await showAdaptiveDialog<InviteAction>(
           barrierDismissible: true,
@@ -315,7 +365,12 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
           builder: (context) => AlertDialog.adaptive(
             title: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 256),
-              child: Center(child: Text(room.getLocalizedDisplayname(matrixLocals), textAlign: TextAlign.center)),
+              child: Center(
+                child: Text(
+                  room.getLocalizedDisplayname(matrixLocals),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
             content: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
@@ -325,7 +380,9 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
                     : inviteEvent.content.tryGet<String>('reason') ??
                           L10n.of(context).youInvitedBy(
                             room
-                                .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
+                                .unsafeGetUserFromMemoryOrFallback(
+                                  inviteEvent.senderId,
+                                )
                                 .calcDisplayname(i18n: matrixLocals),
                           ),
                 textAlign: TextAlign.center,
@@ -338,14 +395,21 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
                 child: Text(L10n.of(context).accept),
               ),
               AdaptiveDialogAction(
-                onPressed: () => Navigator.of(context).pop(InviteAction.decline),
+                onPressed: () =>
+                    Navigator.of(context).pop(InviteAction.decline),
                 bigButtons: true,
-                child: Text(L10n.of(context).decline, style: TextStyle(color: theme.colorScheme.error)),
+                child: Text(
+                  L10n.of(context).decline,
+                  style: TextStyle(color: theme.colorScheme.error),
+                ),
               ),
               AdaptiveDialogAction(
                 onPressed: () => Navigator.of(context).pop(InviteAction.block),
                 bigButtons: true,
-                child: Text(L10n.of(context).block, style: TextStyle(color: theme.colorScheme.error)),
+                child: Text(
+                  L10n.of(context).block,
+                  style: TextStyle(color: theme.colorScheme.error),
+                ),
               ),
             ],
           ),
@@ -356,7 +420,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
           case InviteAction.accept:
             break;
           case InviteAction.decline:
-            await showFutureLoadingDialog(context: context, future: () => room.leave());
+            await showFutureLoadingDialog(
+              context: context,
+              future: () => room.leave(),
+            );
             return;
           case InviteAction.block:
             final userId = inviteEvent?.senderId;
@@ -367,7 +434,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
         final joinResult = await showFutureLoadingDialog(
           context: context,
           future: () async {
-            final waitForRoom = room.client.waitForRoomInSync(room.id, join: true);
+            final waitForRoom = room.client.waitForRoomInSync(
+              room.id,
+              join: true,
+            );
             await room.join();
             await waitForRoom;
           },
@@ -378,9 +448,9 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     }
 
     if (room.membership == Membership.ban) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
+      );
       return;
     }
 
@@ -402,7 +472,9 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     final roomId = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
-      via: space?.spaceChildren.firstWhereOrNull((child) => child.roomId == item.roomId)?.via,
+      via: space?.spaceChildren
+          .firstWhereOrNull((child) => child.roomId == item.roomId)
+          ?.via,
     );
     if (mounted && roomId != null) {
       setState(() {
@@ -413,11 +485,18 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     }
   }
 
-  Future<void> joinActivity(String activityId, ExtendedSpaceRoomsChunk chunk) async {
-    final hasRole = chunk.assignedRoles.any((role) => role.userId == widget.client.userID);
+  Future<void> joinActivity(
+    String activityId,
+    ExtendedSpaceRoomsChunk chunk,
+  ) async {
+    final hasRole = chunk.assignedRoles.any(
+      (role) => role.userId == widget.client.userID,
+    );
     final roomId = chunk.chunk.roomId;
     if (!hasRole) {
-      context.go("/rooms/spaces/${widget.roomId}/activity/$activityId?roomid=$roomId");
+      context.go(
+        "/rooms/spaces/${widget.roomId}/activity/$activityId?roomid=$roomId",
+      );
       return;
     }
 
@@ -444,19 +523,24 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
 
   bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
     if (!mounted) return false;
-    final bool isAnalyticsRoom = hierarchyMember.roomType == PangeaRoomTypes.analytics;
+    final bool isAnalyticsRoom =
+        hierarchyMember.roomType == PangeaRoomTypes.analytics;
 
     final bool isMember = [
       Membership.join,
       Membership.invite,
     ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
 
-    final bool isSuggested = space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
+    final bool isSuggested =
+        space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
 
     return !isAnalyticsRoom && (isMember || isSuggested);
   }
 
-  List<SpaceRoomsChunk$2> _filterHierarchyResponse(Room space, List<SpaceRoomsChunk$2> hierarchyResponse) {
+  List<SpaceRoomsChunk$2> _filterHierarchyResponse(
+    Room space,
+    List<SpaceRoomsChunk$2> hierarchyResponse,
+  ) {
     final List<SpaceRoomsChunk$2> filteredChildren = [];
     for (final child in hierarchyResponse) {
       if (child.roomId == widget.roomId) {
@@ -469,7 +553,9 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
         continue;
       }
 
-      final isDuplicate = filteredChildren.any((filtered) => filtered.roomId == child.roomId);
+      final isDuplicate = filteredChildren.any(
+        (filtered) => filtered.roomId == child.roomId,
+      );
       if (isDuplicate) continue;
 
       if (_includeSpaceChild(space, child)) {
@@ -506,13 +592,21 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
 
     final bool hasJoinedRoom =
         joinedRooms?.any(
-          (events) => events.any((e) => e.senderId == widget.client.userID && e.type == EventTypes.RoomMember),
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
         ) ??
         false;
 
     final bool hasLeftRoom =
         leftRooms?.any(
-          (events) => events.any((e) => e.senderId == widget.client.userID && e.type == EventTypes.RoomMember),
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
         ) ??
         false;
 
@@ -524,8 +618,12 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
     if (joinTimeline == null && leaveTimeline == null) return false;
 
-    final bool hasJoinUpdate = joinTimeline?.any((event) => event.type == EventTypes.SpaceChild) ?? false;
-    final bool hasLeaveUpdate = leaveTimeline?.any((event) => event.type == EventTypes.SpaceChild) ?? false;
+    final bool hasJoinUpdate =
+        joinTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
+        false;
+    final bool hasLeaveUpdate =
+        leaveTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
+        false;
     return hasJoinUpdate || hasLeaveUpdate;
   }
 
@@ -552,8 +650,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
     }
 
     final settings = switch (type) {
-      CourseDefaultChatsEnum.introductions => room!.courseChatsSettings.copyWith(dismissedIntroChat: true),
-      CourseDefaultChatsEnum.announcements => room!.courseChatsSettings.copyWith(dismissedAnnouncementsChat: true),
+      CourseDefaultChatsEnum.introductions =>
+        room!.courseChatsSettings.copyWith(dismissedIntroChat: true),
+      CourseDefaultChatsEnum.announcements =>
+        room!.courseChatsSettings.copyWith(dismissedAnnouncementsChat: true),
     };
     await room!.setCourseChatsSettings(settings);
   }
@@ -563,7 +663,10 @@ class CourseChatsController extends State<CourseChats> with ActivitySummariesPro
       throw Exception("Room is null");
     }
 
-    final roomId = await room!.addDefaultChat(type: type, name: type.title(L10n.of(context)));
+    final roomId = await room!.addDefaultChat(
+      type: type,
+      name: type.title(L10n.of(context)),
+    );
 
     context.go('/rooms/spaces/${widget.roomId}/$roomId');
   }

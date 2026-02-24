@@ -1,4 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
@@ -16,10 +22,6 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics_view.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
-import 'package:matrix/matrix.dart';
 
 class SpaceAnalytics extends StatefulWidget {
   final String roomId;
@@ -52,19 +54,29 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   List<User> get _availableUsers =>
       room
           ?.getParticipants()
-          .where((member) => member.id != BotName.byEnvironment && member.membership == Membership.join)
+          .where(
+            (member) =>
+                member.id != BotName.byEnvironment &&
+                member.membership == Membership.join,
+          )
           .toList() ??
       [];
 
-  List<User> get _availableUsersForLang => _langsToUsers[selectedLanguage] ?? [];
+  List<User> get _availableUsersForLang =>
+      _langsToUsers[selectedLanguage] ?? [];
 
-  List<Room> get availableAnalyticsRooms =>
-      _availableUsersForLang.map((user) => _analyticsRoomOfUser(user)).whereType<Room>().toList();
+  List<Room> get availableAnalyticsRooms => _availableUsersForLang
+      .map((user) => _analyticsRoomOfUser(user))
+      .whereType<Room>()
+      .toList();
 
-  List<LanguageModel> get availableLanguages =>
-      _langsToUsers.keys.toList()..sort((a, b) => a.getDisplayName(context).compareTo(b.getDisplayName(context)));
+  List<LanguageModel> get availableLanguages => _langsToUsers.keys.toList()
+    ..sort(
+      (a, b) => a.getDisplayName(context).compareTo(b.getDisplayName(context)),
+    );
 
-  int get completedDownloads => downloads.values.where((d) => d.summary != null).length;
+  int get completedDownloads =>
+      downloads.values.where((d) => d.summary != null).length;
 
   List<MapEntry<User, AnalyticsDownload>> get sortedDownloads {
     final entries = downloads.entries.toList();
@@ -73,23 +85,29 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       final bStatus = b.value.requestStatus;
 
       // sort available downloads first
-      if (aStatus == RequestStatus.available && bStatus != RequestStatus.available) {
+      if (aStatus == RequestStatus.available &&
+          bStatus != RequestStatus.available) {
         return -1;
-      } else if (aStatus != RequestStatus.available && bStatus == RequestStatus.available) {
+      } else if (aStatus != RequestStatus.available &&
+          bStatus == RequestStatus.available) {
         return 1;
       }
 
       // then requestable users
-      if (aStatus == RequestStatus.unrequested && bStatus != RequestStatus.unrequested) {
+      if (aStatus == RequestStatus.unrequested &&
+          bStatus != RequestStatus.unrequested) {
         return -1;
-      } else if (aStatus != RequestStatus.unrequested && bStatus == RequestStatus.unrequested) {
+      } else if (aStatus != RequestStatus.unrequested &&
+          bStatus == RequestStatus.unrequested) {
         return 1;
       }
 
       // then sort not found to the end
-      if (aStatus == RequestStatus.unavailable && bStatus != RequestStatus.unavailable) {
+      if (aStatus == RequestStatus.unavailable &&
+          bStatus != RequestStatus.unavailable) {
         return 1;
-      } else if (aStatus != RequestStatus.unavailable && bStatus == RequestStatus.unavailable) {
+      } else if (aStatus != RequestStatus.unavailable &&
+          bStatus == RequestStatus.unavailable) {
         return -1;
       }
 
@@ -129,12 +147,20 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> _initialize() async {
-    await room?.requestParticipants([Membership.join, Membership.invite, Membership.knock], false, true);
+    await room?.requestParticipants(
+      [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    );
 
-    final List<Future> futures = [GetStorage.init('analytics_request_storage'), _loadProfiles()];
+    final List<Future> futures = [
+      GetStorage.init('analytics_request_storage'),
+      _loadProfiles(),
+    ];
     await Future.wait(futures);
 
-    selectedLanguage = availableLanguages.contains(_userL2) || availableLanguages.isEmpty
+    selectedLanguage =
+        availableLanguages.contains(_userL2) || availableLanguages.isEmpty
         ? _userL2
         : availableLanguages.firstOrNull;
 
@@ -146,7 +172,8 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Future<void> _loadProfiles() async {
     final futures = _availableUsers.map((u) async {
-      final resp = await MatrixState.pangeaController.userController.getPublicAnalyticsProfile(u.id);
+      final resp = await MatrixState.pangeaController.userController
+          .getPublicAnalyticsProfile(u.id);
 
       _profiles[u] = resp;
       if (resp.languageAnalytics == null) return;
@@ -177,14 +204,23 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
           } else if (!hasLangData) {
             requestStatus = RequestStatus.unavailable;
           } else {
-            requestStatus = AnalyticsRequestsRepo.get(user.id, selectedLanguage!) ?? RequestStatus.unrequested;
+            requestStatus =
+                AnalyticsRequestsRepo.get(user.id, selectedLanguage!) ??
+                RequestStatus.unrequested;
           }
 
-          final DownloadStatus downloadStatus = requestStatus == RequestStatus.available
+          final DownloadStatus downloadStatus =
+              requestStatus == RequestStatus.available
               ? DownloadStatus.loading
               : DownloadStatus.unavailable;
 
-          return MapEntry(user, AnalyticsDownload(requestStatus: requestStatus, downloadStatus: downloadStatus));
+          return MapEntry(
+            user,
+            AnalyticsDownload(
+              requestStatus: requestStatus,
+              downloadStatus: downloadStatus,
+            ),
+          );
         }),
       );
     });
@@ -206,11 +242,15 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Future<void> _setAnalyticsModel(Room analyticsRoom) async {
     final String? userID = analyticsRoom.creatorId;
-    final user = room?.getParticipants().firstWhereOrNull((p) => p.id == userID);
+    final user = room?.getParticipants().firstWhereOrNull(
+      (p) => p.id == userID,
+    );
     if (user == null) return;
 
     SpaceAnalyticsSummaryModel? summary;
-    final constructEvents = await analyticsRoom.getAnalyticsEvents(userId: userID!);
+    final constructEvents = await analyticsRoom.getAnalyticsEvents(
+      userId: userID!,
+    );
 
     if (constructEvents == null) {
       downloads[user] = AnalyticsDownload(
@@ -238,7 +278,8 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Future<void> _requestAnalytics(User user) async {
     RequestStatus? status = downloads[user]?.requestStatus;
-    if (status == RequestStatus.unavailable || status == RequestStatus.available) {
+    if (status == RequestStatus.unavailable ||
+        status == RequestStatus.available) {
       return;
     }
 
@@ -247,14 +288,18 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       if (roomId == null) return;
       await Matrix.of(context).client.knockRoom(
         roomId,
-        via: room?.spaceChildren.firstWhereOrNull((child) => child.roomId == roomId)?.via,
+        via: room?.spaceChildren
+            .firstWhereOrNull((child) => child.roomId == roomId)
+            ?.via,
         reason: widget.roomId,
       );
       await KnockTracker.recordKnock(Matrix.of(context).client, roomId);
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.unavailable;
-      if (!AnalyticsRequestsRepo.getAll().any((status) => status == RequestStatus.unavailable)) {
+      if (!AnalyticsRequestsRepo.getAll().any(
+        (status) => status == RequestStatus.unavailable,
+      )) {
         showDialog(
           context: context,
           builder: (_) {
@@ -277,7 +322,10 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     final status = downloads[user]?.requestStatus;
     if (status != RequestStatus.unrequested) return;
 
-    await showFutureLoadingDialog(context: context, future: () => _requestAnalytics(user));
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => _requestAnalytics(user),
+    );
   }
 
   Future<void> requestAllAnalytics() async {
@@ -290,11 +338,16 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
     if (resp != true) return;
     final users = _availableUsersForLang
-        .where((user) => downloads[user]?.requestStatus == RequestStatus.unrequested)
+        .where(
+          (user) => downloads[user]?.requestStatus == RequestStatus.unrequested,
+        )
         .toList();
 
     final futures = users.map((user) => _requestAnalytics(user));
-    await showFutureLoadingDialog(context: context, future: () => Future.wait(futures));
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => Future.wait(futures),
+    );
   }
 
   String? _analyticsRoomIdOfUser(User user) {
@@ -307,7 +360,9 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Room? _analyticsRoomOfUser(User user) {
     return Matrix.of(context).client.rooms.firstWhereOrNull(
-      (r) => r.isAnalyticsRoomOfUser(user.id) && r.madeForLang == selectedLanguage?.langCodeShort,
+      (r) =>
+          r.isAnalyticsRoomOfUser(user.id) &&
+          r.madeForLang == selectedLanguage?.langCodeShort,
     );
   }
 

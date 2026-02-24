@@ -38,10 +38,8 @@ class KnockTracker {
   }
 
   static Future<void> _writeIds(Client client, List<String> ids) async {
-    await client.setAccountData(
-      client.userID!,
-      _accountDataKey,
-      {_roomIdsField: ids},
-    );
+    await client.setAccountData(client.userID!, _accountDataKey, {
+      _roomIdsField: ids,
+    });
   }
 }

@@ -1,12 +1,13 @@
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import '../../config/themes.dart';
 import '../../utils/url_launcher.dart';
 import '../avatar.dart';
@@ -62,7 +63,8 @@ class PublicRoomDialog extends StatelessWidget {
     if (!context.mounted) return;
     Navigator.of(context).pop<bool>(true);
     // don't open the room if the joined room is a space
-    if (chunk?.roomType != 'm.space' && !client.getRoomById(result.result!)!.isSpace) {
+    if (chunk?.roomType != 'm.space' &&
+        !client.getRoomById(result.result!)!.isSpace) {
       context.go('/rooms/$roomId');
     } else {
       context.go('/rooms?spaceId=$roomId');
@@ -93,7 +95,10 @@ class PublicRoomDialog extends StatelessWidget {
     return AlertDialog.adaptive(
       title: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
-        child: Text(chunk?.name ?? roomAlias?.localpart ?? chunk?.roomId ?? 'Unknown', textAlign: TextAlign.center),
+        child: Text(
+          chunk?.name ?? roomAlias?.localpart ?? chunk?.roomId ?? 'Unknown',
+          textAlign: TextAlign.center,
+        ),
       ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
@@ -128,9 +133,12 @@ class PublicRoomDialog extends StatelessWidget {
                                 children: [
                                   WidgetSpan(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(right: 4.0),
+                                      padding: const EdgeInsets.only(
+                                        right: 4.0,
+                                      ),
                                       child: AnimatedScale(
-                                        duration: FluffyThemes.animationDuration,
+                                        duration:
+                                            FluffyThemes.animationDuration,
                                         curve: FluffyThemes.animationCurve,
                                         scale: hovered
                                             ? 1.33
@@ -138,7 +146,9 @@ class PublicRoomDialog extends StatelessWidget {
                                             ? 1.25
                                             : 1.0,
                                         child: Icon(
-                                          copied ? Icons.check_circle : Icons.copy,
+                                          copied
+                                              ? Icons.check_circle
+                                              : Icons.copy,
                                           size: 12,
                                           color: copied ? Colors.green : null,
                                         ),
@@ -147,7 +157,9 @@ class PublicRoomDialog extends StatelessWidget {
                                   ),
                                   TextSpan(text: roomLink),
                                 ],
-                                style: theme.textTheme.bodyMedium?.copyWith(fontSize: 10),
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  fontSize: 10,
+                                ),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -161,20 +173,27 @@ class PublicRoomDialog extends StatelessWidget {
                       name: profile?.name ?? roomLink,
                       size: Avatar.defaultSize * 2,
                       onTap: avatar != null
-                          ? () => showDialog(context: context, builder: (_) => MxcImageViewer(avatar))
+                          ? () => showDialog(
+                              context: context,
+                              builder: (_) => MxcImageViewer(avatar),
+                            )
                           : null,
                     ),
                   ),
                   if (profile?.numJoinedMembers != null)
                     Text(
-                      L10n.of(context).countParticipants(profile?.numJoinedMembers ?? 0),
+                      L10n.of(
+                        context,
+                      ).countParticipants(profile?.numJoinedMembers ?? 0),
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
                   if (topic != null && topic.isNotEmpty)
                     SelectableLinkify(
                       text: topic,
-                      textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
+                      textScaleFactor: MediaQuery.textScalerOf(
+                        context,
+                      ).scale(1),
                       textAlign: TextAlign.center,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: TextStyle(
@@ -182,7 +201,8 @@ class PublicRoomDialog extends StatelessWidget {
                         decoration: TextDecoration.underline,
                         decorationColor: theme.colorScheme.primary,
                       ),
-                      onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
+                      onOpen: (url) =>
+                          UrlLauncher(context, url.url).launchUrl(),
                     ),
                 ],
               ),
@@ -196,7 +216,8 @@ class PublicRoomDialog extends StatelessWidget {
           borderRadius: AdaptiveDialogAction.topRadius,
           onPressed: () => _joinRoom(context),
           child: Text(
-            chunk?.joinRule == 'knock' && Matrix.of(context).client.getRoomById(chunk!.roomId) == null
+            chunk?.joinRule == 'knock' &&
+                    Matrix.of(context).client.getRoomById(chunk!.roomId) == null
                 ? L10n.of(context).knock
                 : chunk?.roomType == 'm.space'
                 ? L10n.of(context).joinSpace

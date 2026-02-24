@@ -1,6 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:cross_file/cross_file.dart';
+import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -25,20 +34,19 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-
 import '../../../utils/account_bundles.dart';
 import '../../config/setting_keys.dart';
 import '../../utils/url_launcher.dart';
 import '../../widgets/matrix.dart';
 
-enum PopupMenuAction { settings, invite, newGroup, newSpace, setStatus, archive }
+enum PopupMenuAction {
+  settings,
+  invite,
+  newGroup,
+  newSpace,
+  setStatus,
+  archive,
+}
 
 enum ActiveFilter { allChats, messages, groups, unread, spaces }
 
@@ -68,13 +76,19 @@ class ChatList extends StatefulWidget {
   final String? activeSpace;
   final bool displayNavigationRail;
 
-  const ChatList({super.key, required this.activeChat, this.activeSpace, this.displayNavigationRail = false});
+  const ChatList({
+    super.key,
+    required this.activeChat,
+    this.activeSpace,
+    this.displayNavigationRail = false,
+  });
 
   @override
   ChatListController createState() => ChatListController();
 }
 
-class ChatListController extends State<ChatList> with TickerProviderStateMixin, RouteAware {
+class ChatListController extends State<ChatList>
+    with TickerProviderStateMixin, RouteAware {
   StreamSubscription? _intentDataStreamSubscription;
 
   StreamSubscription? _intentFileStreamSubscription;
@@ -102,14 +116,18 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
   //   _activeSpaceId = null;
   // });
   void clearActiveSpace() => context.go("/rooms");
-  void setActiveSpace(String spaceId) => context.go("/rooms/spaces/$spaceId/details");
+  void setActiveSpace(String spaceId) =>
+      context.go("/rooms/spaces/$spaceId/details");
   // Pangea#
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
       // #Pangea
       final theme = Theme.of(context);
-      final inviteEvent = room.getState(EventTypes.RoomMember, room.client.userID!);
+      final inviteEvent = room.getState(
+        EventTypes.RoomMember,
+        room.client.userID!,
+      );
       final matrixLocals = MatrixLocals(L10n.of(context));
       final action = await showAdaptiveDialog<InviteAction>(
         barrierDismissible: true,
@@ -117,7 +135,12 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
         builder: (context) => AlertDialog.adaptive(
           title: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 256),
-            child: Center(child: Text(room.getLocalizedDisplayname(matrixLocals), textAlign: TextAlign.center)),
+            child: Center(
+              child: Text(
+                room.getLocalizedDisplayname(matrixLocals),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
           content: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
@@ -127,7 +150,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
                   : inviteEvent.content.tryGet<String>('reason') ??
                         L10n.of(context).youInvitedBy(
                           room
-                              .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
+                              .unsafeGetUserFromMemoryOrFallback(
+                                inviteEvent.senderId,
+                              )
                               .calcDisplayname(i18n: matrixLocals),
                         ),
               textAlign: TextAlign.center,
@@ -142,12 +167,18 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
             AdaptiveDialogAction(
               onPressed: () => Navigator.of(context).pop(InviteAction.decline),
               bigButtons: true,
-              child: Text(L10n.of(context).decline, style: TextStyle(color: theme.colorScheme.error)),
+              child: Text(
+                L10n.of(context).decline,
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
             ),
             AdaptiveDialogAction(
               onPressed: () => Navigator.of(context).pop(InviteAction.block),
               bigButtons: true,
-              child: Text(L10n.of(context).block, style: TextStyle(color: theme.colorScheme.error)),
+              child: Text(
+                L10n.of(context).block,
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
             ),
           ],
         ),
@@ -158,7 +189,10 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
         case InviteAction.accept:
           break;
         case InviteAction.decline:
-          await showFutureLoadingDialog(context: context, future: () => room.leave());
+          await showFutureLoadingDialog(
+            context: context,
+            future: () => room.leave(),
+          );
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
@@ -170,7 +204,10 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
       final joinResult = await showFutureLoadingDialog(
         context: context,
         future: () async {
-          final waitForRoom = room.client.waitForRoomInSync(room.id, join: true);
+          final waitForRoom = room.client.waitForRoomInSync(
+            room.id,
+            join: true,
+          );
           await room.join();
           await waitForRoom;
         },
@@ -180,9 +217,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     }
 
     if (room.membership == Membership.ban) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(L10n.of(context).youHaveBeenBannedFromThisChat)),
+      );
       return;
     }
 
@@ -212,12 +249,14 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
       case ActiveFilter.messages:
         // #Pangea
         // return (room) => !room.isSpace && room.isDirectChat;
-        return (room) => !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
+        return (room) =>
+            !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.groups:
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
-        return (room) => !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
+        return (room) =>
+            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.unread:
         // #Pangea
@@ -229,8 +268,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     }
   }
 
-  List<Room> get filteredRooms =>
-      Matrix.of(context).client.rooms.where(getRoomFilterByActiveFilter(activeFilter)).toList();
+  List<Room> get filteredRooms => Matrix.of(
+    context,
+  ).client.rooms.where(getRoomFilterByActiveFilter(activeFilter)).toList();
 
   bool isSearchMode = false;
   Future<QueryPublicRoomsResponse>? publicRoomsResponse;
@@ -254,7 +294,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
       initialText: searchServer,
       keyboardType: TextInputType.url,
       autocorrect: false,
-      validator: (server) => server.contains('.') == true ? null : L10n.of(context).invalidServerName,
+      validator: (server) => server.contains('.') == true
+          ? null
+          : L10n.of(context).invalidServerName,
     );
     if (newServer == null) return;
     Matrix.of(context).store.setString(_serverStoreNamespace, newServer);
@@ -287,7 +329,10 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
 
       if (searchQuery.isValidMatrixId &&
           searchQuery.sigil == '#' &&
-          roomSearchResult.chunk.any((room) => room.canonicalAlias == searchQuery) == false) {
+          roomSearchResult.chunk.any(
+                (room) => room.canonicalAlias == searchQuery,
+              ) ==
+              false) {
         final response = await client.getRoomIdByAlias(searchQuery);
         final roomId = response.roomId;
         if (roomId != null) {
@@ -303,10 +348,15 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
           );
         }
       }
-      userSearchResult = await client.searchUserDirectory(searchController.text, limit: 20);
+      userSearchResult = await client.searchUserDirectory(
+        searchController.text,
+        limit: 20,
+      );
     } catch (e, s) {
       Logs().w('Searching has crashed', e, s);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
     }
     if (!isSearchMode) return;
     setState(() {
@@ -376,7 +426,8 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
   }
 
   // Needs to match GroupsSpacesEntry for 'separate group' checking.
-  List<Room> get spaces => Matrix.of(context).client.rooms.where((r) => r.isSpace).toList();
+  List<Room> get spaces =>
+      Matrix.of(context).client.rooms.where((r) => r.isSpace).toList();
 
   String? get activeChat => widget.activeChat;
 
@@ -393,7 +444,12 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
           if ({SharedMediaType.text, SharedMediaType.url}.contains(file.type)) {
             return TextShareItem(file.path);
           }
-          return FileShareItem(XFile(file.path.replaceFirst('file://', ''), mimeType: file.mimeType));
+          return FileShareItem(
+            XFile(
+              file.path.replaceFirst('file://', ''),
+              mimeType: file.mimeType,
+            ),
+          );
         }).toList(),
       ),
     );
@@ -413,13 +469,14 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     if (!PlatformInfos.isMobile) return;
 
     // For sharing images coming from outside the app while the app is in the memory
-    _intentFileStreamSubscription = ReceiveSharingIntent.instance.getMediaStream().listen(
-      _processIncomingSharedMedia,
-      onError: print,
-    );
+    _intentFileStreamSubscription = ReceiveSharingIntent.instance
+        .getMediaStream()
+        .listen(_processIncomingSharedMedia, onError: print);
 
     // For sharing images coming from outside the app while the app is closed
-    ReceiveSharingIntent.instance.getInitialMedia().then(_processIncomingSharedMedia);
+    ReceiveSharingIntent.instance.getInitialMedia().then(
+      _processIncomingSharedMedia,
+    );
 
     // #Pangea
     // // For receiving shared Uris
@@ -462,7 +519,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     _hackyWebRTCFixForWeb();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (mounted) {
-        searchServer = Matrix.of(context).store.getString(_serverStoreNamespace);
+        searchServer = Matrix.of(
+          context,
+        ).store.getString(_serverStoreNamespace);
         Matrix.of(context).backgroundPush?.setupPush();
         UpdateNotifier.showUpdateSnackBar(context);
         // #Pangea
@@ -471,7 +530,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
       }
 
       // Workaround for system UI overlay style not applied on app start
-      SystemChrome.setSystemUIOverlayStyle(Theme.of(context).appBarTheme.systemOverlayStyle!);
+      SystemChrome.setSystemUIOverlayStyle(
+        Theme.of(context).appBarTheme.systemOverlayStyle!,
+      );
     });
 
     //#Pangea
@@ -481,17 +542,22 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
           for (final inviteEntry in event.rooms!.invite!.entries) {
             if (inviteEntry.value.inviteState == null) continue;
             final isSpace = inviteEntry.value.inviteState!.any(
-              (event) => event.type == EventTypes.RoomCreate && event.content['type'] == 'm.space',
+              (event) =>
+                  event.type == EventTypes.RoomCreate &&
+                  event.content['type'] == 'm.space',
             );
             final isAnalytics = inviteEntry.value.inviteState!.any(
-              (event) => event.type == EventTypes.RoomCreate && event.content['type'] == PangeaRoomTypes.analytics,
+              (event) =>
+                  event.type == EventTypes.RoomCreate &&
+                  event.content['type'] == PangeaRoomTypes.analytics,
             );
 
             if (isSpace) {
               final spaceId = inviteEntry.key;
               final space = Matrix.of(context).client.getRoomById(spaceId);
 
-              if (space?.classCode?.toLowerCase() == SpaceCodeRepo.recentCode?.toLowerCase()) {
+              if (space?.classCode?.toLowerCase() ==
+                  SpaceCodeRepo.recentCode?.toLowerCase()) {
                 return;
               }
 
@@ -501,7 +567,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
             }
 
             if (isAnalytics) {
-              final analyticsRoom = Matrix.of(context).client.getRoomById(inviteEntry.key);
+              final analyticsRoom = Matrix.of(
+                context,
+              ).client.getRoomById(inviteEntry.key);
               try {
                 await analyticsRoom?.join();
               } catch (err, s) {
@@ -515,8 +583,15 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
               return;
             }
 
-            if (!isSpace && !isAnalytics && KnockTracker.hasKnocked(Matrix.of(context).client, inviteEntry.key)) {
-              final room = Matrix.of(context).client.getRoomById(inviteEntry.key);
+            if (!isSpace &&
+                !isAnalytics &&
+                KnockTracker.hasKnocked(
+                  Matrix.of(context).client,
+                  inviteEntry.key,
+                )) {
+              final room = Matrix.of(
+                context,
+              ).client.getRoomById(inviteEntry.key);
               if (room != null) {
                 try {
                   await room.join();
@@ -534,7 +609,8 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
           }
         });
 
-    MatrixState.pangeaController.subscriptionController.subscriptionNotifier.addListener(_onSubscribe);
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .addListener(_onSubscribe);
 
     // listen for space child updates for any space that is not the active space
     // so that when the user navigates to the space that was updated, it will
@@ -542,38 +618,42 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     final client = Matrix.of(context).client;
 
     // listen for room join events and leave room if over capacity
-    _roomCapacitySubscription ??= client.onSync.stream.where((u) => u.rooms?.join != null).listen((update) async {
-      final roomUpdates = update.rooms!.join!.entries;
-      for (final entry in roomUpdates) {
-        final roomID = entry.key;
-        final roomUpdate = entry.value;
-        if (roomUpdate.timeline?.events == null) continue;
-        final events = roomUpdate.timeline!.events;
-        final memberEvents = events!.where(
-          (event) => event.type == EventTypes.RoomMember && event.senderId == client.userID,
-        );
-        if (memberEvents.isEmpty) continue;
-        final room = client.getRoomById(roomID);
-        if (room == null ||
-            room.isSpace ||
-            room.isHiddenRoom ||
-            room.capacity == null ||
-            (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
-          continue;
-        }
-
-        await showFutureLoadingDialog(
-          context: context,
-          future: () async {
-            await room.leave();
-            if (GoRouterState.of(context).uri.toString().contains(roomID)) {
-              NavigationUtil.goToSpaceRoute(null, [], context);
+    _roomCapacitySubscription ??= client.onSync.stream
+        .where((u) => u.rooms?.join != null)
+        .listen((update) async {
+          final roomUpdates = update.rooms!.join!.entries;
+          for (final entry in roomUpdates) {
+            final roomID = entry.key;
+            final roomUpdate = entry.value;
+            if (roomUpdate.timeline?.events == null) continue;
+            final events = roomUpdate.timeline!.events;
+            final memberEvents = events!.where(
+              (event) =>
+                  event.type == EventTypes.RoomMember &&
+                  event.senderId == client.userID,
+            );
+            if (memberEvents.isEmpty) continue;
+            final room = client.getRoomById(roomID);
+            if (room == null ||
+                room.isSpace ||
+                room.isHiddenRoom ||
+                room.capacity == null ||
+                (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
+              continue;
             }
-            throw L10n.of(context).roomFull;
-          },
-        );
-      }
-    });
+
+            await showFutureLoadingDialog(
+              context: context,
+              future: () async {
+                await room.leave();
+                if (GoRouterState.of(context).uri.toString().contains(roomID)) {
+                  NavigationUtil.goToSpaceRoute(null, [], context);
+                }
+                throw L10n.of(context).roomFull;
+              },
+            );
+          }
+        });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _joinInvitedSpaces();
@@ -589,7 +669,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
   }
 
   Future<void> _joinInvitedSpaces() async {
-    final invitedSpaces = Matrix.of(context).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
+    final invitedSpaces = Matrix.of(
+      context,
+    ).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
 
     for (final space in invitedSpaces) {
       await showInviteDialog(space, context);
@@ -605,7 +687,8 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     // _intentUriStreamSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
-    MatrixState.pangeaController.subscriptionController.subscriptionNotifier.removeListener(_onSubscribe);
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .removeListener(_onSubscribe);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -613,7 +696,13 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
 
   // #Pangea
   void chatContextAction(Room room, BuildContext posContext, [Room? space]) =>
-      chatContextMenuAction(room, posContext, context, () => onChatTap(room), space);
+      chatContextMenuAction(
+        room,
+        posContext,
+        context,
+        () => onChatTap(room),
+        space,
+      );
   // void chatContextAction(
   //   Room room,
   //   BuildContext posContext, [
@@ -888,7 +977,10 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
   // Pangea#
 
   void dismissStatusList() async {
-    final result = await showOkCancelAlertDialog(title: L10n.of(context).hidePresences, context: context);
+    final result = await showOkCancelAlertDialog(
+      title: L10n.of(context).hidePresences,
+      context: context,
+    );
     if (result == OkCancelResult.ok) {
       AppSettings.showPresences.setItem(false);
       setState(() {});
@@ -915,7 +1007,11 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     if (!mounted) return;
     await showFutureLoadingDialog(
       context: context,
-      future: () => client.setPresence(client.userID!, PresenceType.online, statusMsg: input),
+      future: () => client.setPresence(
+        client.userID!,
+        PresenceType.online,
+        statusMsg: input,
+      ),
     );
   }
 
@@ -934,7 +1030,9 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
     // if (client.prevBatch == null) {
     if (client.onSync.value?.nextBatch == null) {
       // Pangea#
-      await client.onSyncStatus.stream.firstWhere((status) => status.status == SyncStatus.finished);
+      await client.onSyncStatus.stream.firstWhere(
+        (status) => status.status == SyncStatus.finished,
+      );
 
       if (!mounted) return;
       setState(() {
@@ -1025,34 +1123,56 @@ class ChatListController extends State<ChatList> with TickerProviderStateMixin, 
 
   void editBundlesForAccount(String? userId, String? activeBundle) async {
     final l10n = L10n.of(context);
-    final client = Matrix.of(context).widget.clients[Matrix.of(context).getClientIndexByMatrixId(userId!)];
+    final client = Matrix.of(
+      context,
+    ).widget.clients[Matrix.of(context).getClientIndexByMatrixId(userId!)];
     final action = await showModalActionPopup<EditBundleAction>(
       context: context,
       title: L10n.of(context).editBundlesForAccount,
       cancelLabel: L10n.of(context).cancel,
       actions: [
-        AdaptiveModalAction(value: EditBundleAction.addToBundle, label: L10n.of(context).addToBundle),
+        AdaptiveModalAction(
+          value: EditBundleAction.addToBundle,
+          label: L10n.of(context).addToBundle,
+        ),
         if (activeBundle != client.userID)
-          AdaptiveModalAction(value: EditBundleAction.removeFromBundle, label: L10n.of(context).removeFromBundle),
+          AdaptiveModalAction(
+            value: EditBundleAction.removeFromBundle,
+            label: L10n.of(context).removeFromBundle,
+          ),
       ],
     );
     if (action == null) return;
     switch (action) {
       case EditBundleAction.addToBundle:
-        final bundle = await showTextInputDialog(context: context, title: l10n.bundleName, hintText: l10n.bundleName);
+        final bundle = await showTextInputDialog(
+          context: context,
+          title: l10n.bundleName,
+          hintText: l10n.bundleName,
+        );
         if (bundle == null || bundle.isEmpty || bundle.isEmpty) return;
-        await showFutureLoadingDialog(context: context, future: () => client.setAccountBundle(bundle));
+        await showFutureLoadingDialog(
+          context: context,
+          future: () => client.setAccountBundle(bundle),
+        );
         break;
       case EditBundleAction.removeFromBundle:
-        await showFutureLoadingDialog(context: context, future: () => client.removeFromAccountBundle(activeBundle!));
+        await showFutureLoadingDialog(
+          context: context,
+          future: () => client.removeFromAccountBundle(activeBundle!),
+        );
     }
   }
 
-  bool get displayBundles => Matrix.of(context).hasComplexBundles && Matrix.of(context).accountBundles.keys.length > 1;
+  bool get displayBundles =>
+      Matrix.of(context).hasComplexBundles &&
+      Matrix.of(context).accountBundles.keys.length > 1;
 
   String? get secureActiveBundle {
     if (Matrix.of(context).activeBundle == null ||
-        !Matrix.of(context).accountBundles.keys.contains(Matrix.of(context).activeBundle)) {
+        !Matrix.of(
+          context,
+        ).accountBundles.keys.contains(Matrix.of(context).activeBundle)) {
       return Matrix.of(context).accountBundles.keys.first;
     }
     return Matrix.of(context).activeBundle;

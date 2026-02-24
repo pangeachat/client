@@ -1,5 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -11,9 +16,6 @@ import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 
 class PublicCoursePreview extends StatefulWidget {
   final String? roomID;
@@ -21,7 +23,8 @@ class PublicCoursePreview extends StatefulWidget {
   const PublicCoursePreview({super.key, required this.roomID});
 
   @override
-  PublicCoursePreviewController createState() => PublicCoursePreviewController();
+  PublicCoursePreviewController createState() =>
+      PublicCoursePreviewController();
 }
 
 class PublicCoursePreviewController extends State<PublicCoursePreview>
@@ -47,7 +50,8 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   bool get loading => loadingCourse || loadingRoomSummary;
   bool get hasError =>
       (courseError != null || (!loadingCourse && course == null)) ||
-      (roomSummaryError != null || (!loadingRoomSummary && roomSummary == null));
+      (roomSummaryError != null ||
+          (!loadingRoomSummary && roomSummary == null));
 
   Future<void> _loadSummary() async {
     try {
@@ -70,7 +74,11 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       roomSummaryError = e;
       loadingCourse = false;
 
-      ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()},
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -104,7 +112,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
 
     if (roomId != null) {
       final room = Matrix.of(context).client.getRoomById(roomId);
-      room?.isSpace ?? true ? context.go('/rooms/spaces/$roomId/details') : context.go('/rooms/$roomId');
+      room?.isSpace ?? true
+          ? context.go('/rooms/spaces/$roomId/details')
+          : context.go('/rooms/$roomId');
     }
   }
 
@@ -130,7 +140,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       future: () async {
         String roomId;
         try {
-          roomId = knock ? await client.knockRoom(widget.roomID!) : await client.joinRoom(widget.roomID!);
+          roomId = knock
+              ? await client.knockRoom(widget.roomID!)
+              : await client.joinRoom(widget.roomID!);
         } catch (e, s) {
           ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
           rethrow;
