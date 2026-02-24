@@ -44,7 +44,7 @@ class PangeaTextController extends TextEditingController {
     }
 
     // Use type-based coloring
-    return match.match.type.underlineColor().withAlpha(alpha);
+    return match.match.type.color.withAlpha(alpha);
   }
 
   void setSystemText(String newText, EditTypeEnum type) {

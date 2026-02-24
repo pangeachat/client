@@ -259,7 +259,7 @@ extension SpanDataTypeEnumExt on ReplacementTypeEnum {
 
   /// Returns the underline color for this replacement type.
   /// Used to visually distinguish different error categories in the text field.
-  Color underlineColor() {
+  Color get color {
     // IT start and auto-apply types use primary color
     if (this == ReplacementTypeEnum.itStart) {
       return AppConfig.primaryColor;

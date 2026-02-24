@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/segmented_circular_progress.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 
 class StartIGCButton extends StatefulWidget {
@@ -28,19 +33,20 @@ class StartIGCButton extends StatefulWidget {
 
 class _StartIGCButtonState extends State<StartIGCButton>
     with TickerProviderStateMixin {
-  AnimationController? _spinController;
-  late Animation<double> _rotation;
+  late final AnimationController _spinController;
+  late final Animation<double> _rotation;
 
-  AnimationController? _colorController;
+  late final AnimationController _colorController;
   late Animation<Color?> _iconColor;
   late Animation<Color?> _backgroundColor;
-  AssistanceStateEnum? _prevState;
 
+  AssistanceStateEnum? _prevState;
   bool _shouldStop = false;
 
   @override
   void initState() {
     super.initState();
+
     _spinController =
         AnimationController(
           vsync: this,
@@ -48,10 +54,10 @@ class _StartIGCButtonState extends State<StartIGCButton>
         )..addStatusListener((status) {
           if (status == AnimationStatus.completed) {
             if (_shouldStop) {
-              _spinController?.stop();
-              _spinController?.value = 0;
+              _spinController.stop();
+              _spinController.value = 0;
             } else {
-              _spinController?.forward(from: 0);
+              _spinController.forward(from: 0);
             }
           }
         });
@@ -59,7 +65,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
     _rotation = Tween(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(parent: _spinController!, curve: Curves.linear));
+    ).animate(CurvedAnimation(parent: _spinController, curve: Curves.linear));
 
     _colorController = AnimationController(
       vsync: this,
@@ -67,9 +73,11 @@ class _StartIGCButtonState extends State<StartIGCButton>
     );
 
     _prevState = widget.initialState;
+
     _iconColor = AlwaysStoppedAnimation(widget.initialForegroundColor);
     _backgroundColor = AlwaysStoppedAnimation(widget.initialBackgroundColor);
-    _colorController!.forward(from: 0.0);
+
+    _colorController.forward(from: 0.0);
 
     widget.choreographer.addListener(_handleStateChange);
   }
@@ -77,8 +85,8 @@ class _StartIGCButtonState extends State<StartIGCButton>
   @override
   void dispose() {
     widget.choreographer.removeListener(_handleStateChange);
-    _spinController?.dispose();
-    _colorController?.dispose();
+    _spinController.dispose();
+    _colorController.dispose();
     super.dispose();
   }
 
@@ -88,41 +96,39 @@ class _StartIGCButtonState extends State<StartIGCButton>
     _prevState = current;
 
     if (!mounted || prev == current) return;
+
     final newIconColor = current.stateColor(context);
     final newBgColor = current.backgroundColor(context);
-    final oldIconColor = _iconColor.value;
-    final oldBgColor = _backgroundColor.value;
 
-    // Create tweens from current → new colors
     _iconColor = ColorTween(
-      begin: oldIconColor,
+      begin: _iconColor.value,
       end: newIconColor,
-    ).animate(_colorController!);
+    ).animate(_colorController);
+
     _backgroundColor = ColorTween(
-      begin: oldBgColor,
+      begin: _backgroundColor.value,
       end: newBgColor,
-    ).animate(_colorController!);
-    _colorController!.forward(from: 0.0);
+    ).animate(_colorController);
+
+    _colorController.forward(from: 0.0);
 
     if (current == AssistanceStateEnum.fetching) {
       _shouldStop = false;
-      _spinController!.forward(from: 0.0);
+      _spinController.forward(from: 0.0);
     } else if (prev == AssistanceStateEnum.fetching) {
       _shouldStop = true;
     }
+
+    setState(() {}); // triggers AnimatedSwitcher change
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_colorController == null || _spinController == null) {
-      return const SizedBox.shrink();
-    }
+    final enableFeedback = widget.choreographer.assistanceState.allowsFeedback;
 
     return AnimatedBuilder(
-      animation: Listenable.merge([_colorController!, _spinController!]),
-      builder: (context, child) {
-        final enableFeedback =
-            widget.choreographer.assistanceState.allowsFeedback;
+      animation: _colorController, // 🔥 only color animates parent
+      builder: (context, _) {
         return Tooltip(
           message: enableFeedback ? L10n.of(context).check : "",
           child: Material(
@@ -141,46 +147,129 @@ class _StartIGCButtonState extends State<StartIGCButton>
                       barrierDismissible: false,
                     )
                   : null,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    height: 40.0,
-                    width: 40.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _backgroundColor.value,
-                    ),
-                  ),
-                  AnimatedBuilder(
-                    animation: _rotation,
-                    builder: (context, child) {
-                      return Transform.rotate(
-                        angle: _rotation.value * 2 * 3.14159,
-                        child: child,
-                      );
-                    },
-                    child: Icon(
-                      Icons.autorenew_rounded,
-                      size: 36,
-                      color: _iconColor.value,
-                    ),
-                  ),
-                  Container(
-                    width: 20,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _backgroundColor.value,
-                    ),
-                  ),
-                  Icon(size: 16, Icons.check, color: _iconColor.value),
-                ],
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  layoutBuilder: (currentChild, previousChildren) {
+                    return Stack(
+                      alignment: Alignment.center,
+                      children: [...previousChildren, ?currentChild],
+                    );
+                  },
+                  transitionBuilder: (child, animation) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: ScaleTransition(scale: animation, child: child),
+                    );
+                  },
+                  child:
+                      widget.choreographer.assistanceState ==
+                          AssistanceStateEnum.fetched
+                      ? _IGCLoaded(widget.choreographer)
+                      : _IGCLoading(
+                          backgroundColor: _backgroundColor.value,
+                          iconColor: _iconColor.value,
+                          rotation: _rotation,
+                        ),
+                ),
               ),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class _IGCLoading extends StatelessWidget {
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Animation<double> rotation;
+
+  const _IGCLoading({
+    required this.backgroundColor,
+    required this.iconColor,
+    required this.rotation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      key: const ValueKey('loader'),
+      alignment: Alignment.center,
+      children: [
+        Container(
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: backgroundColor,
+          ),
+        ),
+        AnimatedBuilder(
+          animation: rotation,
+          builder: (context, child) {
+            return Transform.rotate(
+              angle: rotation.value * 2 * pi,
+              child: child,
+            );
+          },
+          child: Icon(Icons.autorenew_rounded, size: 36, color: iconColor),
+        ),
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: backgroundColor,
+          ),
+        ),
+        Icon(Icons.check, size: 16, color: iconColor),
+      ],
+    );
+  }
+}
+
+class _IGCLoaded extends StatelessWidget {
+  final Choreographer choreographer;
+  const _IGCLoaded(this.choreographer);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      key: const ValueKey('segments'),
+      width: 40,
+      height: 40,
+      child: StreamBuilder(
+        stream: choreographer.igcController.matchUpdateStream.stream,
+        builder: (context, _) => ValueListenableBuilder(
+          valueListenable: choreographer.igcController.activeMatch,
+          builder: (context, _, _) {
+            final matches = choreographer.igcController.sortedMatches;
+            if (matches.isEmpty) {
+              return SegmentedCircularProgress(
+                segments: [Segment(100, AppConfig.success)],
+              );
+            }
+
+            final segmentPercent = 100 / matches.length;
+            return SegmentedCircularProgress(
+              segments: matches
+                  .map(
+                    (m) => Segment(
+                      segmentPercent,
+                      m.updatedMatch.status.isOpen
+                          ? m.updatedMatch.match.type.color
+                          : AppConfig.success,
+                    ),
+                  )
+                  .toList(),
+            );
+          },
+        ),
+      ),
     );
   }
 }

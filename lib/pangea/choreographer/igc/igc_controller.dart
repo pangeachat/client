@@ -41,6 +41,11 @@ class IgcController {
 
   List<PangeaMatchState> get matches => _matches;
 
+  List<PangeaMatchState> get sortedMatches => _matches.sorted(
+    (a, b) =>
+        a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
+  );
+
   List<PangeaMatchState> get openMatches =>
       _matches.where((m) => m.updatedMatch.status.isOpen).toList();
 
