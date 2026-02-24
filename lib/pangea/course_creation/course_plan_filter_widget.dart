@@ -104,7 +104,6 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                       vertical: 10,
                     ),
                     child: TextField(
-                      autofocus: true,
                       controller: _searchController,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.search),
