@@ -36,7 +36,7 @@ class PangeaTextController extends TextEditingController {
 
   Color _underlineColor(PangeaMatch match) {
     final status = match.status;
-    final opacity = status.opacity;
+    final opacity = status.underlineOpacity;
     final alpha = (255 * opacity).ceil();
     // Automatic corrections use primary color
     if (status == PangeaMatchStatusEnum.automatic) {

@@ -25,8 +25,9 @@ class SegmentedCircularProgress extends StatelessWidget {
 class Segment {
   final double value; // relative value
   final Color color;
+  final double opacity;
 
-  Segment(this.value, this.color);
+  Segment(this.value, this.color, {this.opacity = 1.0});
 }
 
 class _SegmentedPainter extends CustomPainter {
@@ -73,7 +74,7 @@ class _SegmentedPainter extends CustomPainter {
         continue;
       }
 
-      paint.color = segment.color;
+      paint.color = segment.color.withAlpha((segment.opacity * 255).ceil());
 
       canvas.drawArc(arcRect, startAngle + capAngle / 2, sweep, false, paint);
 

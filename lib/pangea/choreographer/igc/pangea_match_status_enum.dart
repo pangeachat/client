@@ -12,8 +12,15 @@ enum PangeaMatchStatusEnum {
     _ => false,
   };
 
-  double get opacity => switch (this) {
+  double get underlineOpacity => switch (this) {
     open => 0.8,
+    _ => 0.25,
+  };
+
+  double get igcButtonOpacity => switch (this) {
+    open => 0.8,
+    accepted => 0.8,
+    automatic => 0.8,
     _ => 0.25,
   };
 }

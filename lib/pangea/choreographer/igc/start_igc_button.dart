@@ -240,13 +240,13 @@ class _IGCLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: const ValueKey('segments'),
-      width: 40,
-      height: 40,
+      width: 36,
+      height: 36,
       child: StreamBuilder(
         stream: choreographer.igcController.matchUpdateStream.stream,
         builder: (context, _) => ValueListenableBuilder(
           valueListenable: choreographer.igcController.activeMatch,
-          builder: (context, _, _) {
+          builder: (context, activeMatch, _) {
             final matches = choreographer.igcController.sortedMatches;
             if (matches.isEmpty) {
               return SegmentedCircularProgress(
@@ -256,16 +256,25 @@ class _IGCLoaded extends StatelessWidget {
 
             final segmentPercent = 100 / matches.length;
             return SegmentedCircularProgress(
-              segments: matches
-                  .map(
-                    (m) => Segment(
-                      segmentPercent,
-                      m.updatedMatch.status.isOpen
-                          ? m.updatedMatch.match.type.color
-                          : AppConfig.success,
-                    ),
-                  )
-                  .toList(),
+              segments: matches.map((m) {
+                final isActiveMatch =
+                    m.originalMatch.match.offset ==
+                        activeMatch?.originalMatch.match.offset &&
+                    m.originalMatch.match.length ==
+                        activeMatch?.originalMatch.match.length;
+
+                final opacity = isActiveMatch
+                    ? 1.0
+                    : m.updatedMatch.status.igcButtonOpacity;
+
+                return Segment(
+                  segmentPercent,
+                  m.updatedMatch.status.isOpen
+                      ? m.updatedMatch.match.type.color
+                      : AppConfig.success,
+                  opacity: opacity,
+                );
+              }).toList(),
             );
           },
         ),
