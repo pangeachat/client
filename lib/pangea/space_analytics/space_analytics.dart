@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart'
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_download_model.dart';
@@ -286,14 +286,13 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     try {
       final roomId = _analyticsRoomIdOfUser(user);
       if (roomId == null) return;
-      await Matrix.of(context).client.knockRoom(
+      await Matrix.of(context).client.knockAndRecordRoom(
         roomId,
         via: room?.spaceChildren
             .firstWhereOrNull((child) => child.roomId == roomId)
             ?.via,
         reason: widget.roomId,
       );
-      await KnockTracker.recordKnock(Matrix.of(context).client, roomId);
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.unavailable;

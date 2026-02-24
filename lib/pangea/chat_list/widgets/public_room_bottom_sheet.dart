@@ -7,7 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -129,16 +129,13 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
       return;
     }
 
-    final result = await showFutureLoadingDialog<String>(
+    await showFutureLoadingDialog<String>(
       context: context,
       future: () async =>
-          client.knockRoom(roomAlias ?? chunk!.roomId, via: via),
+          client.knockAndRecordRoom(roomAlias ?? chunk!.roomId, via: via),
       onSuccess: () => L10n.of(context).knockSpaceSuccess,
       delay: false,
     );
-    if (result.result != null) {
-      await KnockTracker.recordKnock(client, result.result!);
-    }
   }
 
   bool testRoom(PublishedRoomsChunk r) => r.canonicalAlias == roomAlias;

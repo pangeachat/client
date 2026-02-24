@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import '../../config/themes.dart';
 import '../../utils/url_launcher.dart';
@@ -37,10 +37,8 @@ class PublicRoomDialog extends StatelessWidget {
           return chunk.roomId;
         }
         final roomId = chunk != null && knock
-            ? await client.knockRoom(chunk.roomId, via: via)
+            ? await client.knockAndRecordRoom(chunk.roomId, via: via)
             : await client.joinRoom(roomAlias ?? chunk!.roomId, via: via);
-
-        if (knock) await KnockTracker.recordKnock(client, roomId);
 
         if (!knock && client.getRoomById(roomId) == null) {
           await client.waitForRoomInSync(roomId);

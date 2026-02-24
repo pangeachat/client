@@ -20,7 +20,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -335,23 +335,20 @@ class CourseChatsController extends State<CourseChats>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      if (KnockTracker.hasKnocked(room.client, room.id)) {
+      if (room.hasKnocked) {
         if (!mounted) return;
-        final joinResult = await showFutureLoadingDialog(
+        await showFutureLoadingDialog(
           context: context,
           future: () async {
             final waitForRoom = room.client.waitForRoomInSync(
               room.id,
               join: true,
             );
-            await room.join();
+            await room.joinKnockedRoom();
             await waitForRoom;
           },
           exceptionContext: ExceptionContext.joinRoom,
         );
-        if (joinResult.error == null) {
-          await KnockTracker.clearKnock(room.client, room.id);
-        }
       } else {
         final theme = Theme.of(context);
         final inviteEvent = room.getState(
