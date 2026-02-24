@@ -5584,6 +5584,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "\u0421\u043a\u0430\u0441\u0430\u0432\u0430\u043d\u043d\u0435 \u0437\u0430\u0431\u0430\u0440\u043e\u043d\u044b \u0430\u0434 \u043a\u0443\u0440\u0441\u0430";
     },
+    get$cannotJoinBannedRoom() {
+      return "\u0417\u0430\u0431\u0430\u0440\u043e\u043d\u0435\u043d\u0430. \u041d\u0435\u043b\u044c\u0433\u0430 \u0434\u0430\u043b\u0443\u0447\u044b\u0446\u0446\u0430.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5600,7 +5603,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KDSpkMCm04SQ20amA9M8sjDe6qQ="] = d.current;
+  d["OhibkHe8EUXB5ZshZP9+6Erk3FU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_149.part.js.map

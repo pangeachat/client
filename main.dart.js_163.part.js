@@ -5584,6 +5584,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "\u0995\u09cb\u09b0\u09cd\u09b8 \u09a5\u09c7\u0995\u09c7 \u09a8\u09bf\u09b7\u09c7\u09a7\u09be\u099c\u09cd\u099e\u09be \u09aa\u09cd\u09b0\u09a4\u09cd\u09af\u09be\u09b9\u09be\u09b0";
     },
+    get$cannotJoinBannedRoom() {
+      return "\u09a8\u09bf\u09b7\u09bf\u09a6\u09cd\u09a7\u0964 \u09af\u09cb\u0997\u09a6\u09be\u09a8 \u0995\u09b0\u09a4\u09c7 \u0985\u0995\u09cd\u09b7\u09ae\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5597,7 +5600,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7WCdrSt90+yEE6E/6km/SNo/VLI="] = d.current;
+  d["UA9T0rzrQNhwb0b9RJWuNgNAzcA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

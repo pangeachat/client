@@ -5585,6 +5585,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "Aufhebung des Verbots vom Kurs";
     },
+    get$cannotJoinBannedRoom() {
+      return "Banned. Unable to join.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5610,7 +5613,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["q10uIQD6l/UjXhplhvz88t/U9vI="] = d.current;
+  d["CxkoBLMx+v9+oY6R/wYWeTtJ6UM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

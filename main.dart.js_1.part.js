@@ -5590,6 +5590,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "\u89e3\u9664\u7981\u6b62\u8fdb\u5165\u8bfe\u7a0b";
     },
+    get$cannotJoinBannedRoom() {
+      return "\u88ab\u7981\u6b62\u3002\u65e0\u6cd5\u52a0\u5165\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11162,6 +11165,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "\u89e3\u9664\u7981\u6b62\u9032\u5165\u8ab2\u7a0b";
     },
+    get$cannotJoinBannedRoom() {
+      return "\u5df2\u88ab\u7981\u6b62\u3002\u7121\u6cd5\u52a0\u5165\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11176,7 +11182,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qnaX1uALLiFqZwtow32/QqpJwH8="] = d.current;
+  d["uYtrVyJkP5wR0129VMbjBiv7z0o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

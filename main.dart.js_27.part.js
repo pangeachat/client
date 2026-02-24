@@ -5595,6 +5595,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "Desbanir do curso";
     },
+    get$cannotJoinBannedRoom() {
+      return "Banido. Imposs\xedvel de entrar.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11166,6 +11169,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$unbanFromSpace() {
       return "Desbanir do curso";
+    },
+    get$cannotJoinBannedRoom() {
+      return "Banido. N\xe3o \xe9 poss\xedvel entrar.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16739,6 +16745,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unbanFromSpace() {
       return "Desbanir do curso";
     },
+    get$cannotJoinBannedRoom() {
+      return "Banido. Imposs\xedvel entrar.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16942,7 +16951,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["a6l7lDx7H/j/VzrdRZG3rTBY62Q="] = d.current;
+  d["GeMXGdndammqhTHFj81jf700mlU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map
