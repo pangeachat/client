@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u0631\u0648\u06cc\u062f\u0627\u062f\u0647\u0627 \u0631\u0627 \u067e\u0646\u0647\u0627\u0646 \u06a9\u0646\u06cc\u062f";
     },
+    get$denyKnockSpace() {
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0627\u0632 \u062f\u0648\u0631\u0647 \u0631\u062f \u062e\u0648\u0627\u0647\u062f \u0634\u062f\u060c \u0627\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0647\u0631 \u0632\u0645\u0627\u0646 \u0628\u0639\u062f\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u062f \u062a\u0627 \u0628\u067e\u06cc\u0648\u0646\u062f\u062f.";
+    },
+    get$denyKnockChat() {
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0627\u0632 \u0686\u062a \u0631\u062f \u062e\u0648\u0627\u0647\u062f \u0634\u062f\u060c \u0627\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0647\u0631 \u0632\u0645\u0627\u0646 \u0628\u0639\u062f\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u062f \u062a\u0627 \u0628\u067e\u06cc\u0648\u0646\u062f\u062f.";
+    },
+    get$banFromSpace() {
+      return "\u0645\u0645\u0646\u0648\u0639\u06cc\u062a \u0627\u0632 \u062f\u0648\u0631\u0647";
+    },
+    get$unbanFromSpace() {
+      return "\u0631\u0641\u0639 \u0645\u0645\u0646\u0648\u0639\u06cc\u062a \u0627\u0632 \u062f\u0648\u0631\u0647";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OJphmSo4vjf/m5TbbSMhEmwIYwc="] = d.current;
+  d["pLNRl4A7jGPpTqRiOTD6IwLlSyQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

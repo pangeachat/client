@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Pasl\u0113pt pas\u0101kumus";
     },
+    get$denyKnockSpace() {
+      return "Lietot\u0101js tiks noraid\u012bts no kursa, tom\u0113r vi\u0146\u0161 var m\u0113\u0123in\u0101t pievienoties v\u0113l\u0101k.";
+    },
+    get$denyKnockChat() {
+      return "Lietot\u0101js tiks noraid\u012bts no \u010data, tom\u0113r vi\u0146\u0161 var m\u0113\u0123in\u0101t pievienoties v\u0113l\u0101k.";
+    },
+    get$banFromSpace() {
+      return "Aizliegums no kursa";
+    },
+    get$unbanFromSpace() {
+      return "At\u013caut piek\u013cuvi no kursa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9m6Y4bkHWfI+HdZdA+QyRTMNnQo="] = d.current;
+  d["S5TXo/Rg+lmNm8FdO0KiVsqbcNA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_771.part.js.map

@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Skr\xfdt ud\xe1losti";
     },
+    get$denyKnockSpace() {
+      return "U\u017eivatel bude vylou\u010den z kurzu, nicm\xe9n\u011b se m\u016f\u017ee pokusit znovu p\u0159ipojit kdykoli pozd\u011bji.";
+    },
+    get$denyKnockChat() {
+      return "U\u017eivatel bude vylou\u010den z chatu, nicm\xe9n\u011b se m\u016f\u017ee pokusit znovu p\u0159ipojit kdykoli pozd\u011bji.";
+    },
+    get$banFromSpace() {
+      return "Vylou\u010den\xed z kurzu";
+    },
+    get$unbanFromSpace() {
+      return "Zru\u0161en\xed vylou\u010den\xed z kurzu";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iZc56tp0NXGNyylxdf0R6PUQel0="] = d.current;
+  d["/pNRbr2Bc5hizygyg7CkhF5zdS0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_260.part.js.map

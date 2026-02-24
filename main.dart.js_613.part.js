@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Piilota tapahtumat";
     },
+    get$denyKnockSpace() {
+      return "K\xe4ytt\xe4j\xe4 hyl\xe4t\xe4\xe4n kurssilta, mutta he voivat yritt\xe4\xe4 liitty\xe4 uudelleen milloin tahansa my\xf6hemmin.";
+    },
+    get$denyKnockChat() {
+      return "K\xe4ytt\xe4j\xe4 hyl\xe4t\xe4\xe4n chatista, mutta he voivat yritt\xe4\xe4 liitty\xe4 uudelleen milloin tahansa my\xf6hemmin.";
+    },
+    get$banFromSpace() {
+      return "Kielto kurssilta";
+    },
+    get$unbanFromSpace() {
+      return "Kielto poistettu kurssilta";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jyklslRikQDn6c5AydErByObmjE="] = d.current;
+  d["sUubUB4RuZtTRBvOIBpMUtTeONI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_613.part.js.map

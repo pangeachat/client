@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Itago ang mga kaganapan";
     },
+    get$denyKnockSpace() {
+      return "Ang gumagamit ay tatanggihan mula sa kurso, gayunpaman maaari silang subukang muling sumali anumang oras sa hinaharap.";
+    },
+    get$denyKnockChat() {
+      return "Ang gumagamit ay tatanggihan mula sa chat, gayunpaman maaari silang subukang muling sumali anumang oras sa hinaharap.";
+    },
+    get$banFromSpace() {
+      return "Bawal mula sa kurso";
+    },
+    get$unbanFromSpace() {
+      return "I-unban mula sa kurso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["z6MxnN0qVdWbhVNBPib/jEjaJNE="] = d.current;
+  d["yvbefx0xsbXVEmnuV+3G5dabHpw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map

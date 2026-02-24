@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Skrij dogodke";
     },
+    get$denyKnockSpace() {
+      return "Uporabnik bo zavrnjen iz te\u010daja, lahko pa se poskusi ponovno pridru\u017eiti kadarkoli kasneje.";
+    },
+    get$denyKnockChat() {
+      return "Uporabnik bo zavrnjen iz klepeta, lahko pa se poskusi ponovno pridru\u017eiti kadarkoli kasneje.";
+    },
+    get$banFromSpace() {
+      return "Prepoved iz te\u010daja";
+    },
+    get$unbanFromSpace() {
+      return "Odstranitev prepovedi iz te\u010daja";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fJbVrzRpxh6FAXZ7f+oOiDBQ2dE="] = d.current;
+  d["X6S6sL2+el45hkPumaTWo8meyVk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_802.part.js.map

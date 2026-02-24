@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ukryj wydarzenia";
     },
+    get$denyKnockSpace() {
+      return "U\u017cytkownik zostanie odrzucony z kursu, jednak mo\u017ce spr\xf3bowa\u0107 do\u0142\u0105czy\u0107 ponownie w dowolnym momencie p\xf3\u017aniej.";
+    },
+    get$denyKnockChat() {
+      return "U\u017cytkownik zostanie odrzucony z czatu, jednak mo\u017ce spr\xf3bowa\u0107 do\u0142\u0105czy\u0107 ponownie w dowolnym momencie p\xf3\u017aniej.";
+    },
+    get$banFromSpace() {
+      return "Zakaz uczestnictwa w kursie";
+    },
+    get$unbanFromSpace() {
+      return "Zniesienie zakazu uczestnictwa w kursie";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HyJ3glJ1mhLr/mIjzXa+zS5PLig="] = d.current;
+  d["iUsbysP4YPIERCHbxjjA3FG2D+U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_785.part.js.map

@@ -5578,6 +5578,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u9690\u85cf\u4e8b\u4ef6";
     },
+    get$denyKnockSpace() {
+      return "\u7528\u6237\u5c06\u88ab\u62d2\u7edd\u8fdb\u5165\u8bfe\u7a0b\uff0c\u4f46\u4ed6\u4eec\u53ef\u4ee5\u5728\u7a0d\u540e\u4efb\u4f55\u65f6\u95f4\u5c1d\u8bd5\u91cd\u65b0\u52a0\u5165\u3002";
+    },
+    get$denyKnockChat() {
+      return "\u7528\u6237\u5c06\u88ab\u62d2\u7edd\u8fdb\u5165\u804a\u5929\uff0c\u4f46\u4ed6\u4eec\u53ef\u4ee5\u5728\u7a0d\u540e\u4efb\u4f55\u65f6\u95f4\u5c1d\u8bd5\u91cd\u65b0\u52a0\u5165\u3002";
+    },
+    get$banFromSpace() {
+      return "\u7981\u6b62\u8fdb\u5165\u8bfe\u7a0b";
+    },
+    get$unbanFromSpace() {
+      return "\u89e3\u9664\u7981\u6b62\u8fdb\u5165\u8bfe\u7a0b";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11138,6 +11150,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u96b1\u85cf\u4e8b\u4ef6";
     },
+    get$denyKnockSpace() {
+      return "\u7528\u6236\u5c07\u88ab\u62d2\u7d55\u9032\u5165\u8ab2\u7a0b\uff0c\u4f46\u4ed6\u5011\u53ef\u4ee5\u96a8\u6642\u5617\u8a66\u91cd\u65b0\u52a0\u5165\u3002";
+    },
+    get$denyKnockChat() {
+      return "\u7528\u6236\u5c07\u88ab\u62d2\u7d55\u9032\u5165\u804a\u5929\uff0c\u4f46\u4ed6\u5011\u53ef\u4ee5\u96a8\u6642\u5617\u8a66\u91cd\u65b0\u52a0\u5165\u3002";
+    },
+    get$banFromSpace() {
+      return "\u7981\u6b62\u9032\u5165\u8ab2\u7a0b";
+    },
+    get$unbanFromSpace() {
+      return "\u89e3\u9664\u7981\u6b62\u9032\u5165\u8ab2\u7a0b";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11152,7 +11176,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["24Mjm5jdidP6BjDG7YfuQrBN/3M="] = d.current;
+  d["qnaX1uALLiFqZwtow32/QqpJwH8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

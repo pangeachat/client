@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Esem\xe9nyek elrejt\xe9se";
     },
+    get$denyKnockSpace() {
+      return "A felhaszn\xe1l\xf3t elutas\xedtj\xe1k a kurzusr\xf3l, azonban b\xe1rmikor k\xe9s\u0151bb megpr\xf3b\xe1lhat \xfajra csatlakozni.";
+    },
+    get$denyKnockChat() {
+      return "A felhaszn\xe1l\xf3t elutas\xedtj\xe1k a cseveg\xe9sb\u0151l, azonban b\xe1rmikor k\xe9s\u0151bb megpr\xf3b\xe1lhat \xfajra csatlakozni.";
+    },
+    get$banFromSpace() {
+      return "Kitilt\xe1s a kurzusr\xf3l";
+    },
+    get$unbanFromSpace() {
+      return "Visszavon\xe1s a kitilt\xe1s al\xf3l";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hBQElpcMyFgvFjZFSOdd0C4aSRs="] = d.current;
+  d["KIVXIEW9gh2uVNXv4hFUWj0bh3E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

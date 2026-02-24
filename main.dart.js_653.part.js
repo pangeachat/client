@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Folaigh imeachta\xed";
     },
+    get$denyKnockSpace() {
+      return "D\xe9anfar di\xfalt\xfa do null \xf3n gc\xfarsa, \xe1fach, is f\xe9idir leo iarracht a dh\xe9anamh ar\xeds ag am ar bith n\xedos d\xe9ana\xed.";
+    },
+    get$denyKnockChat() {
+      return "D\xe9anfar di\xfalt\xfa do null \xf3n gcomhr\xe1, \xe1fach, is f\xe9idir leo iarracht a dh\xe9anamh ar\xeds ag am ar bith n\xedos d\xe9ana\xed.";
+    },
+    get$banFromSpace() {
+      return "D\xedoth\xfa \xf3n gc\xfarsa";
+    },
+    get$unbanFromSpace() {
+      return "D\xedoth\xfa a chur ar ceal \xf3n gc\xfarsa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5587,7 +5599,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["swzoUwaDX9IYuYDZUA7xlF1/++c="] = d.current;
+  d["q2tB/gc6sXOu2vxbAIUYO7EMFbw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_653.part.js.map

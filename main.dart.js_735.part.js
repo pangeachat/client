@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Sembunyikan acara";
     },
+    get$denyKnockSpace() {
+      return "Pengguna akan ditolak dari kursus, namun mereka dapat mencoba untuk bergabung kembali kapan saja nanti.";
+    },
+    get$denyKnockChat() {
+      return "Pengguna akan ditolak dari obrolan, namun mereka dapat mencoba untuk bergabung kembali kapan saja nanti.";
+    },
+    get$banFromSpace() {
+      return "Larangan dari kursus";
+    },
+    get$unbanFromSpace() {
+      return "Bebaskan dari larangan kursus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5587,7 +5599,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MtC5+JuncSt970EEySaLw/9C898="] = d.current;
+  d["A/v8KmrnUjv4cmbBEqsNFyDTa2w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

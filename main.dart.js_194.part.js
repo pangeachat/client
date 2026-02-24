@@ -5572,6 +5572,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Amaga esdeveniments";
     },
+    get$denyKnockSpace() {
+      return "L'usuari ser\xe0 rebutjat del curs, per\xf2 pot intentar tornar a unir-se en qualsevol moment m\xe9s tard.";
+    },
+    get$denyKnockChat() {
+      return "L'usuari ser\xe0 rebutjat del xat, per\xf2 pot intentar tornar a unir-se en qualsevol moment m\xe9s tard.";
+    },
+    get$banFromSpace() {
+      return "Prohibici\xf3 del curs";
+    },
+    get$unbanFromSpace() {
+      return "Desprohibici\xf3 del curs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5588,7 +5600,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hU146UaCMXIo51Qlw09TzMO+q40="] = d.current;
+  d["4SwK/DRXYhjiv2QdHl+k9Ki2Caw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_194.part.js.map

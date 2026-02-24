@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Peida \xfcritused";
     },
+    get$denyKnockSpace() {
+      return "Kasutaja l\xfckatakse kursusest v\xe4lja, kuid nad v\xf5ivad proovida hiljem uuesti liituda.";
+    },
+    get$denyKnockChat() {
+      return "Kasutaja l\xfckatakse vestlusest v\xe4lja, kuid nad v\xf5ivad proovida hiljem uuesti liituda.";
+    },
+    get$banFromSpace() {
+      return "Kursusest v\xe4ljaarvamine";
+    },
+    get$unbanFromSpace() {
+      return "Kursusest taastamine";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5584,7 +5596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oQ5wLqFlojokB+6Q2qR+Vc9fyEE="] = d.current;
+  d["jNK2Ji5sBCzPiRgC/VktHxFCd/0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_572.part.js.map

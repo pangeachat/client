@@ -5572,6 +5572,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "\u0625\u062e\u0641\u0627\u0621 \u0627\u0644\u0623\u062d\u062f\u0627\u062b";
     },
+    get$denyKnockSpace() {
+      return "\u0633\u064a\u062a\u0645 \u0631\u0641\u0636 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u0645\u0646 \u0627\u0644\u062f\u0648\u0631\u0629\u060c \u0648\u0645\u0639 \u0630\u0644\u0643 \u064a\u0645\u0643\u0646\u0647 \u0645\u062d\u0627\u0648\u0644\u0629 \u0627\u0644\u0627\u0646\u0636\u0645\u0627\u0645 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649 \u0641\u064a \u0623\u064a \u0648\u0642\u062a \u0644\u0627\u062d\u0642.";
+    },
+    get$denyKnockChat() {
+      return "\u0633\u064a\u062a\u0645 \u0631\u0641\u0636 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u0645\u0646 \u0627\u0644\u062f\u0631\u062f\u0634\u0629\u060c \u0648\u0645\u0639 \u0630\u0644\u0643 \u064a\u0645\u0643\u0646\u0647 \u0645\u062d\u0627\u0648\u0644\u0629 \u0627\u0644\u0627\u0646\u0636\u0645\u0627\u0645 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649 \u0641\u064a \u0623\u064a \u0648\u0642\u062a \u0644\u0627\u062d\u0642.";
+    },
+    get$banFromSpace() {
+      return "\u062d\u0638\u0631 \u0645\u0646 \u0627\u0644\u062f\u0648\u0631\u0629";
+    },
+    get$unbanFromSpace() {
+      return "\u0631\u0641\u0639 \u0627\u0644\u062d\u0638\u0631 \u0639\u0646 \u0627\u0644\u062f\u0648\u0631\u0629";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5585,7 +5597,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lhHAoSLBRv5NPARXhb3XNNjQ5ik="] = d.current;
+  d["n3N7EkdKi6q/2KRBoPhqcCYK+7A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_145.part.js.map

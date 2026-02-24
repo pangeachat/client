@@ -5583,6 +5583,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ocultar eventos";
     },
+    get$denyKnockSpace() {
+      return string$.O_usu_u;
+    },
+    get$denyKnockChat() {
+      return string$.O_usu_h;
+    },
+    get$banFromSpace() {
+      return "Banir do curso";
+    },
+    get$unbanFromSpace() {
+      return "Desbanir do curso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11142,6 +11154,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$hideEvents() {
       return "Ocultar eventos";
+    },
+    get$denyKnockSpace() {
+      return string$.O_usu_u;
+    },
+    get$denyKnockChat() {
+      return string$.O_usu_h;
+    },
+    get$banFromSpace() {
+      return "Banir do curso";
+    },
+    get$unbanFromSpace() {
+      return "Desbanir do curso";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16703,6 +16727,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Ocultar eventos";
     },
+    get$denyKnockSpace() {
+      return string$.O_usu_u;
+    },
+    get$denyKnockChat() {
+      return string$.O_usu_h;
+    },
+    get$banFromSpace() {
+      return "Banir do curso";
+    },
+    get$unbanFromSpace() {
+      return "Desbanir do curso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16828,6 +16864,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     O_curss: "O curso ser\xe1 exclu\xeddo para todos os participantes. Esta a\xe7\xe3o n\xe3o pode ser desfeita.",
     O_idio: "O idioma de destino n\xe3o corresponde ao idioma desta atividade. Deseja atualizar seu idioma de destino?",
     O_prog: "O progresso da sua sess\xe3o de pr\xe1tica n\xe3o ser\xe1 salvo.",
+    O_usu_h: "O usu\xe1rio ser\xe1 rejeitado do chat, no entanto, poder\xe1 tentar se reconectar a qualquer momento depois.",
+    O_usu_u: "O usu\xe1rio ser\xe1 rejeitado do curso, no entanto, poder\xe1 tentar se reconectar a qualquer momento depois.",
     Oculta: "Ocultar formatos de mensagem inv\xe1lidos ou desconhecidos",
     Oh__es: "Oh, este curso precisa de um plano!\n\nPlanos de curso s\xe3o uma sequ\xeancia de t\xf3picos e atividades de conversa.",
     Ops__E: "Ops! Esta atividade precisa de mais 1 pessoa.",
@@ -16904,7 +16942,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m3arUp1UHEJm9z8TmppOhlvrZl0="] = d.current;
+  d["a6l7lDx7H/j/VzrdRZG3rTBY62Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

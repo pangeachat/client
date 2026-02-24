@@ -5571,6 +5571,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideEvents() {
       return "Voqealarni yashirish";
     },
+    get$denyKnockSpace() {
+      return "Foydalanuvchi kursdan rad etiladi, ammo ular keyinchalik qayta qo'shilishga harakat qilishlari mumkin.";
+    },
+    get$denyKnockChat() {
+      return "Foydalanuvchi chatdan rad etiladi, ammo ular keyinchalik qayta qo'shilishga harakat qilishlari mumkin.";
+    },
+    get$banFromSpace() {
+      return "Kursdan taqiqlash";
+    },
+    get$unbanFromSpace() {
+      return "Kursdan taqiqni olib tashlash";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5588,7 +5600,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RpqrV5Z8HB59t++uHy0ke09e7h4="] = d.current;
+  d["PslYtQHgypLmRILTX1yXHmXJ8t8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_815.part.js.map
