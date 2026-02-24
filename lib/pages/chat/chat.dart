@@ -485,7 +485,9 @@ class ChatController extends State<ChatPageWithRoom>
     // inputFocus.addListener(_inputFocusListener);
     // Pangea#
 
-    _loadDraft();
+    // #Pangea
+    // _loadDraft();
+    // Pangea#
     WidgetsBinding.instance.addPostFrameCallback(_shareItems);
     super.initState();
     _displayChatDetailsColumn = ValueNotifier(
@@ -504,6 +506,7 @@ class ChatController extends State<ChatPageWithRoom>
     _tryLoadTimeline();
     // #Pangea
     _pangeaInit();
+    _loadDraft();
     // Pangea#
   }
 

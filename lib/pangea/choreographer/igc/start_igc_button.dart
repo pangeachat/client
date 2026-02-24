@@ -150,29 +150,9 @@ class _StartIGCButtonState extends State<StartIGCButton>
               child: SizedBox(
                 width: 40,
                 height: 40,
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  layoutBuilder: (currentChild, previousChildren) {
-                    return Stack(
-                      alignment: Alignment.center,
-                      children: [...previousChildren, ?currentChild],
-                    );
-                  },
-                  transitionBuilder: (child, animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: ScaleTransition(scale: animation, child: child),
-                    );
-                  },
-                  child:
-                      widget.choreographer.assistanceState ==
-                          AssistanceStateEnum.fetched
-                      ? _IGCLoaded(widget.choreographer)
-                      : _IGCLoading(
-                          backgroundColor: _backgroundColor.value,
-                          iconColor: _iconColor.value,
-                          rotation: _rotation,
-                        ),
+                child: _IGCStateIndicator(
+                  widget.choreographer,
+                  rotation: _rotation,
                 ),
               ),
             ),
@@ -183,102 +163,83 @@ class _StartIGCButtonState extends State<StartIGCButton>
   }
 }
 
-class _IGCLoading extends StatelessWidget {
-  final Color? backgroundColor;
-  final Color? iconColor;
-  final Animation<double> rotation;
-
-  const _IGCLoading({
-    required this.backgroundColor,
-    required this.iconColor,
-    required this.rotation,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      key: const ValueKey('loader'),
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: backgroundColor,
-          ),
-        ),
-        AnimatedBuilder(
-          animation: rotation,
-          builder: (context, child) {
-            return Transform.rotate(
-              angle: rotation.value * 2 * pi,
-              child: child,
-            );
-          },
-          child: Icon(Icons.autorenew_rounded, size: 36, color: iconColor),
-        ),
-        Container(
-          width: 20,
-          height: 20,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: backgroundColor,
-          ),
-        ),
-        Icon(Icons.check, size: 16, color: iconColor),
-      ],
-    );
-  }
-}
-
-class _IGCLoaded extends StatelessWidget {
+class _IGCStateIndicator extends StatelessWidget {
   final Choreographer choreographer;
-  const _IGCLoaded(this.choreographer);
+  final Animation<double> rotation;
+  final defaultSegmentCount = 5;
+  final double gapPercent = 5;
+
+  const _IGCStateIndicator(this.choreographer, {required this.rotation});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      key: const ValueKey('segments'),
-      width: 36,
-      height: 36,
-      child: StreamBuilder(
-        stream: choreographer.igcController.matchUpdateStream.stream,
-        builder: (context, _) => ValueListenableBuilder(
-          valueListenable: choreographer.igcController.activeMatch,
-          builder: (context, activeMatch, _) {
-            final matches = choreographer.igcController.sortedMatches;
-            if (matches.isEmpty) {
-              return SegmentedCircularProgress(
-                segments: [Segment(100, AppConfig.success)],
-              );
-            }
+    return AnimatedBuilder(
+      animation: rotation,
+      builder: (context, _) {
+        return Transform.rotate(
+          angle: rotation.value * 2 * pi,
+          child: SizedBox(
+            key: const ValueKey('segments'),
+            width: 36,
+            height: 36,
+            child: StreamBuilder(
+              stream: choreographer.igcController.matchUpdateStream.stream,
+              builder: (context, _) => ValueListenableBuilder(
+                valueListenable: choreographer.igcController.activeMatch,
+                builder: (context, activeMatch, _) {
+                  List<Segment> segments = [];
+                  final assistanceState = choreographer.assistanceState;
+                  switch (assistanceState) {
+                    case AssistanceStateEnum.noSub:
+                    case AssistanceStateEnum.noMessage:
+                    case AssistanceStateEnum.notFetched:
+                    case AssistanceStateEnum.fetching:
+                      final segmentPercent =
+                          (100 - defaultSegmentCount * gapPercent) /
+                          defaultSegmentCount; // size of each segment
+                      segments = List.generate(defaultSegmentCount, (_) {
+                        return Segment(
+                          segmentPercent,
+                          assistanceState.stateColor(context),
+                        );
+                      });
+                    case AssistanceStateEnum.fetched:
+                    case AssistanceStateEnum.complete:
+                      final matches = choreographer.igcController.sortedMatches;
+                      if (matches.isEmpty) {
+                        segments = [Segment(100, AppConfig.success)];
+                      }
 
-            final segmentPercent = 100 / matches.length;
-            return SegmentedCircularProgress(
-              segments: matches.map((m) {
-                final isActiveMatch =
-                    m.originalMatch.match.offset ==
-                        activeMatch?.originalMatch.match.offset &&
-                    m.originalMatch.match.length ==
-                        activeMatch?.originalMatch.match.length;
+                      final segmentPercent = 100 / matches.length;
+                      segments = matches.map((m) {
+                        final isActiveMatch =
+                            m.originalMatch.match.offset ==
+                                activeMatch?.originalMatch.match.offset &&
+                            m.originalMatch.match.length ==
+                                activeMatch?.originalMatch.match.length;
 
-                final opacity = isActiveMatch
-                    ? 1.0
-                    : m.updatedMatch.status.igcButtonOpacity;
+                        final opacity = isActiveMatch
+                            ? 1.0
+                            : m.updatedMatch.status.igcButtonOpacity;
+                        return Segment(
+                          segmentPercent,
+                          m.updatedMatch.status.isOpen
+                              ? m.updatedMatch.match.type.color
+                              : AppConfig.success,
+                          opacity: opacity,
+                        );
+                      }).toList();
+                    case AssistanceStateEnum.error:
+                      break;
+                  }
 
-                return Segment(
-                  segmentPercent,
-                  m.updatedMatch.status.isOpen
-                      ? m.updatedMatch.match.type.color
-                      : AppConfig.success,
-                  opacity: opacity,
-                );
-              }).toList(),
-            );
-          },
-        ),
-      ),
+                  return SegmentedCircularProgress(segments: segments);
+                },
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
