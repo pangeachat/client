@@ -158,15 +158,11 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
         child: FutureBuilder<List<String>>(
           future: _svgFuture,
           builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            final svgs = snapshot.data!;
-
             return LayoutBuilder(
               builder: (context, constraints) {
                 final isMobile = constraints.maxWidth <= _breakpoint;
+
+                final svgs = snapshot.data;
 
                 return Stack(
                   children: [
@@ -177,43 +173,56 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                       alignment: Alignment.topCenter,
                       width: double.infinity,
                       height: double.infinity,
+                      errorWidget: (context, url, error) => SizedBox.shrink(),
                     ),
                     Column(
                       children: [
-                        _LoginCarousel(
-                          isMobile: isMobile,
-                          svgs: svgs,
-                          labels: _labels,
-                          onPageChange: (index) {
-                            if (mounted) {
-                              setState(() => _currentIndex = index);
-                            }
-                          },
-                          controller: _carouselController,
-                        ),
-                        if (isMobile) ...[
-                          const SizedBox(height: 24.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              svgs.length,
-                              (index) => AnimatedContainer(
-                                duration: const Duration(milliseconds: 200),
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                ),
-                                height: 8,
-                                width: 8,
-                                decoration: BoxDecoration(
-                                  color: _currentIndex == index
-                                      ? theme.colorScheme.primary
-                                      : theme.colorScheme.outlineVariant,
-                                  borderRadius: BorderRadius.circular(12),
+                        if (svgs != null) ...[
+                          _LoginCarousel(
+                            isMobile: isMobile,
+                            svgs: svgs,
+                            labels: _labels,
+                            onPageChange: (index) {
+                              if (mounted) {
+                                setState(() => _currentIndex = index);
+                              }
+                            },
+                            controller: _carouselController,
+                          ),
+                          if (isMobile) ...[
+                            const SizedBox(height: 24.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                svgs.length,
+                                (index) => AnimatedContainer(
+                                  duration: const Duration(milliseconds: 200),
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
+                                  height: 8,
+                                  width: 8,
+                                  decoration: BoxDecoration(
+                                    color: _currentIndex == index
+                                        ? theme.colorScheme.primary
+                                        : theme.colorScheme.outlineVariant,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                 ),
                               ),
                             ),
+                          ],
+                        ] else
+                          Expanded(
+                            flex: 2,
+                            child: Center(
+                              child:
+                                  snapshot.connectionState ==
+                                      ConnectionState.waiting
+                                  ? CircularProgressIndicator.adaptive()
+                                  : SizedBox.shrink(),
+                            ),
                           ),
-                        ],
                         Expanded(
                           flex: 1,
                           child: Center(
