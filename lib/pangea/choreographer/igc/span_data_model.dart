@@ -123,7 +123,7 @@ class SpanData {
       offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
-    return choices?.firstWhereOrNull((choice) => choice.isBestCorrection);
+    return choices?.firstWhereOrNull((choice) => choice.type.isSuggestion);
   }
 
   int get selectedChoiceIndex {
@@ -166,7 +166,7 @@ class SpanData {
     }
 
     final correctChoice = choices
-        ?.firstWhereOrNull((c) => c.isBestCorrection)
+        ?.firstWhereOrNull((c) => c.type.isSuggestion)
         ?.value;
 
     final l2Code =
@@ -285,8 +285,6 @@ class SpanChoice {
     }
     return feedback!;
   }
-
-  bool get isBestCorrection => type.isSuggestion;
 
   Color get color => type.color;
 

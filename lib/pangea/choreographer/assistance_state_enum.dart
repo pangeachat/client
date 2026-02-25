@@ -49,4 +49,13 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.notFetched => true,
     _ => false,
   };
+
+  bool get showIcon => switch (this) {
+    AssistanceStateEnum.noSub => true,
+    AssistanceStateEnum.noMessage => true,
+    AssistanceStateEnum.notFetched => true,
+    AssistanceStateEnum.error => true,
+    AssistanceStateEnum.complete => true,
+    _ => false,
+  };
 }

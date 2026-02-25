@@ -130,7 +130,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
     if (_segmentsEqual(newSegments, _currentSegments)) return;
 
     _prevSegments = List.from(_currentSegments);
-    _currentSegments = newSegments;
+    _currentSegments = List.from(newSegments);
     _segmentController.forward(from: 0.0);
   }
 
@@ -201,7 +201,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
         Color.lerp(prev.color, curr.color, t)!,
         opacity: lerpDouble(prev.opacity, curr.opacity, t)!,
       );
-    });
+    }).where((s) => s.value > 0).toList();
   }
 
   bool _segmentsEqual(List<Segment> a, List<Segment> b) {
@@ -217,8 +217,8 @@ class _StartIGCButtonState extends State<StartIGCButton>
     return ListenableBuilder(
       listenable: widget.choreographer,
       builder: (_, _) {
-        final enableFeedback =
-            widget.choreographer.assistanceState.allowsFeedback;
+        final assistanceState = widget.choreographer.assistanceState;
+        final enableFeedback = assistanceState.allowsFeedback;
         return Tooltip(
           message: enableFeedback ? L10n.of(context).check : "",
           child: Material(
@@ -237,17 +237,29 @@ class _StartIGCButtonState extends State<StartIGCButton>
                       barrierDismissible: false,
                     )
                   : null,
-              child: SizedBox(
+              child: Container(
                 width: 40,
                 height: 40,
+                padding: const EdgeInsets.all(2.0),
                 child: AnimatedBuilder(
                   animation: Listenable.merge([_rotation, _segmentController]),
                   builder: (context, _) {
+                    final segments = _getAnimatedSegments(
+                      _segmentController.value,
+                    );
                     return Transform.rotate(
                       angle: _rotation.value * 2 * pi,
                       child: SegmentedCircularProgress(
-                        segments: _getAnimatedSegments(
-                          _segmentController.value,
+                        strokeWidth: 3,
+                        segments: segments,
+                        child: AnimatedOpacity(
+                          duration: _animationDuration,
+                          opacity: assistanceState.showIcon ? 1.0 : 0.0,
+                          child: Icon(
+                            size: 18,
+                            Icons.check,
+                            color: assistanceState.stateColor(context),
+                          ),
                         ),
                       ),
                     );

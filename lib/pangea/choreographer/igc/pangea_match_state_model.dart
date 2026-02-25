@@ -1,5 +1,6 @@
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 
 class PangeaMatchState {
@@ -41,7 +42,7 @@ class PangeaMatchState {
       throw Exception('No choices available to select best choice from.');
     }
     selectChoice(
-      updatedMatch.match.choices!.indexWhere((c) => c.isBestCorrection),
+      updatedMatch.match.choices!.indexWhere((c) => c.type.isSuggestion),
     );
   }
 
