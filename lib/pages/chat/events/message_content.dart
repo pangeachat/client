@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/poll.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
+import 'package:fluffychat/pages/image_viewer/image_viewer.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -183,6 +184,14 @@ class MessageContent extends StatelessWidget {
               borderRadius: borderRadius,
               timeline: timeline,
               textColor: textColor,
+              onTap: () => showDialog(
+                context: context,
+                builder: (_) => ImageViewer(
+                  event,
+                  timeline: timeline,
+                  outerContext: context,
+                ),
+              ),
             );
           case CuteEventContent.eventType:
             return CuteContent(event);

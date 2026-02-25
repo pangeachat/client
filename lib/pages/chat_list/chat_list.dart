@@ -504,12 +504,7 @@ class ChatListController extends State<ChatList>
 
   @override
   void initState() {
-    // #Pangea
-    // activeFilter = AppSettings.separateChatTypes.value
-    //     ? ActiveFilter.messages
-    //     : ActiveFilter.allChats;
     activeFilter = ActiveFilter.allChats;
-    // Pangea#
     _initReceiveSharingIntent();
     // #Pangea
     // _activeSpaceId = widget.activeSpace;
