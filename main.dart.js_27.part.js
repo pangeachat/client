@@ -1102,6 +1102,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Batendo";
     },
+    get$nothingFound() {
+      return "Nada encontrado...";
+    },
     get$groupName() {
       return "Nome do grupo";
     },
@@ -1706,9 +1709,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sorryNoResults() {
       return "Desculpe, sem resultados.";
-    },
-    get$ignoreInThisText() {
-      return "Ignorar";
     },
     needsItMessage$1(targetLanguage) {
       return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
@@ -2660,15 +2660,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
-    },
-    get$bestCorrectionFeedback() {
-      return "Isso mesmo!";
-    },
-    get$distractorFeedback() {
-      return "N\xe3o est\xe1 exatamente certo.";
-    },
-    get$bestAnswerFeedback() {
-      return "Isso mesmo!";
     },
     get$definitionDefaultPrompt() {
       return "O que essa palavra significa?";
@@ -5532,6 +5523,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$spanTypeGrammar() {
+      return "Gram\xe1tica";
+    },
+    get$spanTypeWordChoice() {
+      return "Escolha de Palavras";
+    },
+    get$spanTypeSpelling() {
+      return "Ortografia";
+    },
+    get$spanTypePunctuation() {
+      return "Pontua\xe7\xe3o";
+    },
+    get$spanTypeStyle() {
+      return "Estilo";
+    },
+    get$spanTypeFluency() {
+      return "Flu\xeancia";
+    },
+    get$spanTypeAccents() {
+      return "Acentos";
+    },
+    get$spanTypeCapitalization() {
+      return "Capitaliza\xe7\xe3o";
+    },
+    get$spanTypeCorrection() {
+      return "Corre\xe7\xe3o";
+    },
     get$spanFeedbackTitle() {
       return "Relatar problema de corre\xe7\xe3o";
     },
@@ -6677,6 +6695,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "Batendo na porta";
     },
+    get$nothingFound() {
+      return "Nada foi encontrado...";
+    },
     get$groupName() {
       return "Nome do grupo";
     },
@@ -7281,9 +7302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sorryNoResults() {
       return "Desculpe, nenhum resultado.";
-    },
-    get$ignoreInThisText() {
-      return "Ignorar";
     },
     needsItMessage$1(targetLanguage) {
       return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
@@ -8235,15 +8253,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
-    },
-    get$bestCorrectionFeedback() {
-      return "Isso mesmo!";
-    },
-    get$distractorFeedback() {
-      return "N\xe3o est\xe1 exatamente certo.";
-    },
-    get$bestAnswerFeedback() {
-      return "Isso mesmo!";
     },
     get$definitionDefaultPrompt() {
       return "O que essa palavra significa?";
@@ -11107,6 +11116,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "Grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$spanTypeGrammar() {
+      return "Gram\xe1tica";
+    },
+    get$spanTypeWordChoice() {
+      return "Escolha de Palavras";
+    },
+    get$spanTypeSpelling() {
+      return "Ortografia";
+    },
+    get$spanTypePunctuation() {
+      return "Pontua\xe7\xe3o";
+    },
+    get$spanTypeStyle() {
+      return "Estilo";
+    },
+    get$spanTypeFluency() {
+      return "Flu\xeancia";
+    },
+    get$spanTypeAccents() {
+      return "Acentos";
+    },
+    get$spanTypeCapitalization() {
+      return "Capitaliza\xe7\xe3o";
+    },
+    get$spanTypeCorrection() {
+      return "Corre\xe7\xe3o";
+    },
     get$spanFeedbackTitle() {
       return "Relatar problema de corre\xe7\xe3o";
     },
@@ -12252,6 +12288,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "A tocar";
     },
+    get$nothingFound() {
+      return "Nada encontrado...";
+    },
     get$groupName() {
       return "Nome do grupo";
     },
@@ -12856,9 +12895,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sorryNoResults() {
       return "Desculpe, sem resultados.";
-    },
-    get$ignoreInThisText() {
-      return "Ignorar";
     },
     needsItMessage$1(targetLanguage) {
       return "Espera, isso n\xe3o \xe9 " + targetLanguage + "! Precisas de ajuda para traduzir?";
@@ -13810,15 +13846,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "Dados n\xe3o encontrados";
-    },
-    get$bestCorrectionFeedback() {
-      return "Isso mesmo!";
-    },
-    get$distractorFeedback() {
-      return "N\xe3o \xe9 bem assim.";
-    },
-    get$bestAnswerFeedback() {
-      return "Isso mesmo!";
     },
     get$definitionDefaultPrompt() {
       return "O que essa palavra significa?";
@@ -16682,6 +16709,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "A grava\xe7\xe3o falhou. Por favor, verifique suas permiss\xf5es de \xe1udio e tente novamente.";
     },
+    get$spanTypeGrammar() {
+      return "Gram\xe1tica";
+    },
+    get$spanTypeWordChoice() {
+      return "Escolha de Palavras";
+    },
+    get$spanTypeSpelling() {
+      return "Ortografia";
+    },
+    get$spanTypePunctuation() {
+      return "Pontua\xe7\xe3o";
+    },
+    get$spanTypeStyle() {
+      return "Estilo";
+    },
+    get$spanTypeFluency() {
+      return "Flu\xeancia";
+    },
+    get$spanTypeAccents() {
+      return "Acentos";
+    },
+    get$spanTypeCapitalization() {
+      return "Capitaliza\xe7\xe3o";
+    },
+    get$spanTypeCorrection() {
+      return "Corre\xe7\xe3o";
+    },
     get$spanFeedbackTitle() {
       return "Relatar problema de corre\xe7\xe3o";
     },
@@ -16951,7 +17005,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GeMXGdndammqhTHFj81jf700mlU="] = d.current;
+  d["cRzGqLalYsuZdV9dqij1/FWuRS4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

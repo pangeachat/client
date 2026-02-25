@@ -1097,6 +1097,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "\u6b63\u5728\u8bf7\u6c42";
     },
+    get$nothingFound() {
+      return "\u672a\u627e\u5230\u4efb\u4f55\u5185\u5bb9\u2026";
+    },
     get$groupName() {
       return "\u7fa4\u7ec4\u540d\u79f0";
     },
@@ -1701,9 +1704,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sorryNoResults() {
       return "\u62b1\u6b49\uff0c\u6ca1\u6709\u7ed3\u679c\u3002";
-    },
-    get$ignoreInThisText() {
-      return "\u5ffd\u7565";
     },
     needsItMessage$1(targetLanguage) {
       return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e2e\u52a9\u7ffb\u8bd1\u5417\uff1f";
@@ -2655,15 +2655,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "\u672a\u627e\u5230\u6570\u636e";
-    },
-    get$bestCorrectionFeedback() {
-      return "\u6b63\u786e\uff01";
-    },
-    get$distractorFeedback() {
-      return "\u4e0d\u592a\u5bf9\u3002";
-    },
-    get$bestAnswerFeedback() {
-      return "\u6b63\u786e\uff01";
     },
     get$definitionDefaultPrompt() {
       return "\u8fd9\u4e2a\u8bcd\u662f\u4ec0\u4e48\u610f\u601d\uff1f";
@@ -5527,6 +5518,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u5f55\u97f3\u5931\u8d25\u3002\u8bf7\u68c0\u67e5\u60a8\u7684\u97f3\u9891\u6743\u9650\u5e76\u91cd\u8bd5\u3002";
     },
+    get$spanTypeGrammar() {
+      return "\u8bed\u6cd5";
+    },
+    get$spanTypeWordChoice() {
+      return "\u7528\u8bcd\u9009\u62e9";
+    },
+    get$spanTypeSpelling() {
+      return "\u62fc\u5199";
+    },
+    get$spanTypePunctuation() {
+      return "\u6807\u70b9";
+    },
+    get$spanTypeStyle() {
+      return "\u98ce\u683c";
+    },
+    get$spanTypeFluency() {
+      return "\u6d41\u5229\u5ea6";
+    },
+    get$spanTypeAccents() {
+      return "\u53e3\u97f3";
+    },
+    get$spanTypeCapitalization() {
+      return "\u5927\u5199";
+    },
+    get$spanTypeCorrection() {
+      return "\u66f4\u6b63";
+    },
     get$spanFeedbackTitle() {
       return "\u62a5\u544a\u66f4\u6b63\u95ee\u9898";
     },
@@ -6672,6 +6690,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knocking() {
       return "\u6572\u9580";
     },
+    get$nothingFound() {
+      return "\u4ec0\u9ebc\u90fd\u6c92\u627e\u5230......";
+    },
     get$groupName() {
       return "\u7fa4\u7d44\u540d\u7a31";
     },
@@ -7276,9 +7297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sorryNoResults() {
       return "\u62b1\u6b49\uff0c\u6c92\u6709\u7d50\u679c\u3002";
-    },
-    get$ignoreInThisText() {
-      return "\u5ffd\u7565";
     },
     needsItMessage$1(targetLanguage) {
       return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e6b\u52a9\u7ffb\u8b6f\u55ce\uff1f";
@@ -8230,15 +8248,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noDataFound() {
       return "\u672a\u627e\u5230\u8cc7\u6599";
-    },
-    get$bestCorrectionFeedback() {
-      return "\u6c92\u932f\uff01";
-    },
-    get$distractorFeedback() {
-      return "\u4e0d\u592a\u5c0d\u3002";
-    },
-    get$bestAnswerFeedback() {
-      return "\u6c92\u932f\uff01";
     },
     get$definitionDefaultPrompt() {
       return "\u9019\u500b\u8a5e\u662f\u4ec0\u9ebc\u610f\u601d\uff1f";
@@ -11102,6 +11111,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyAudioError() {
       return "\u9304\u97f3\u5931\u6557\u3002\u8acb\u6aa2\u67e5\u60a8\u7684\u97f3\u983b\u6b0a\u9650\u4e26\u91cd\u8a66\u3002";
     },
+    get$spanTypeGrammar() {
+      return "\u6587\u6cd5";
+    },
+    get$spanTypeWordChoice() {
+      return "\u7528\u8a5e\u9078\u64c7";
+    },
+    get$spanTypeSpelling() {
+      return "\u62fc\u5beb";
+    },
+    get$spanTypePunctuation() {
+      return "\u6a19\u9ede\u7b26\u865f";
+    },
+    get$spanTypeStyle() {
+      return "\u98a8\u683c";
+    },
+    get$spanTypeFluency() {
+      return "\u6d41\u66a2\u5ea6";
+    },
+    get$spanTypeAccents() {
+      return "\u91cd\u97f3";
+    },
+    get$spanTypeCapitalization() {
+      return "\u5927\u5beb";
+    },
+    get$spanTypeCorrection() {
+      return "\u4fee\u6b63";
+    },
     get$spanFeedbackTitle() {
       return "\u5831\u544a\u4fee\u6b63\u554f\u984c";
     },
@@ -11182,7 +11218,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uYtrVyJkP5wR0129VMbjBiv7z0o="] = d.current;
+  d["hZBWwcExB6kYvDnFum7UkH0YzE4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
