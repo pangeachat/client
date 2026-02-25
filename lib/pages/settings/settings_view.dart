@@ -31,14 +31,7 @@ class SettingsView extends StatelessWidget {
     final activeRoute = GoRouter.of(
       context,
     ).routeInformationProvider.value.uri.path;
-    // #Pangea
-    // final accountManageUrl = Matrix.of(context)
-    //     .client
-    //     .wellKnown
-    //     ?.additionalProperties
-    //     .tryGetMap<String, Object?>('org.matrix.msc2965.authentication')
-    //     ?.tryGet<String>('account');
-    // Pangea#
+
     return Row(
       children: [
         // #Pangea
@@ -175,16 +168,30 @@ class SettingsView extends StatelessWidget {
                       },
                     ),
                     // #Pangea
-                    // if (accountManageUrl != null)
-                    //   ListTile(
-                    //     leading: const Icon(Icons.account_circle_outlined),
-                    //     title: Text(L10n.of(context).manageAccount),
-                    //     trailing: const Icon(Icons.open_in_new_outlined),
-                    //     onTap: () => launchUrlString(
-                    //       accountManageUrl,
-                    //       mode: LaunchMode.inAppBrowserView,
-                    //     ),
-                    //   ),
+                    // FutureBuilder(
+                    //   future: Matrix.of(context).client.getWellknown(),
+                    //   builder: (context, snapshot) {
+                    //     final accountManageUrl = snapshot
+                    //         .data
+                    //         ?.additionalProperties
+                    //         .tryGetMap<String, Object?>(
+                    //           'org.matrix.msc2965.authentication',
+                    //         )
+                    //         ?.tryGet<String>('account');
+                    //     if (accountManageUrl == null) {
+                    //       return const SizedBox.shrink();
+                    //     }
+                    //     return ListTile(
+                    //       leading: const Icon(Icons.account_circle_outlined),
+                    //       title: Text(L10n.of(context).manageAccount),
+                    //       trailing: const Icon(Icons.open_in_new_outlined),
+                    //       onTap: () => launchUrlString(
+                    //         accountManageUrl,
+                    //         mode: LaunchMode.inAppBrowserView,
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
                     // Divider(color: theme.dividerColor),
                     // if (showChatBackupBanner == null)
                     //   ListTile(

@@ -929,10 +929,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_vodozemac
-      sha256: "16d4b44dd338689441fe42a80d0184e5c864e9563823de9e7e6371620d2c0590"
+      sha256: ef4c3580a7f2fe8eebb7602c6cba593a42b4a5e5466c372a022f77ccc14914a5
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.1"
+    version: "0.5.0"
   flutter_web_auth_2:
     dependency: "direct main"
     description:
@@ -1479,12 +1479,10 @@ packages:
   matrix:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: d056aee23c2aa1f8e6d77efbc5866a809c3507bd
-      url: "https://github.com/pangeachat/matrix-dart-sdk.git"
-    source: git
-    version: "4.1.0"
+      path: "/Users/ggurdin/pangea/matrix-dart-sdk"
+      relative: false
+    source: path
+    version: "6.1.1"
   meta:
     dependency: "direct main"
     description:
@@ -2694,10 +2692,10 @@ packages:
     dependency: transitive
     description:
       name: vodozemac
-      sha256: "39144e20740807731871c9248d811ed5a037b21d0aa9ffcfa630954de74139d9"
+      sha256: bbe7dd31d7f623e2aeedb92e4b71a8b519e6109ce1e2911b5a220f6752b65cda
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.5.0"
   wakelock_plus:
     dependency: "direct main"
     description:
