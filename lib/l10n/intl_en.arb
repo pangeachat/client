@@ -5360,5 +5360,11 @@
   "jumpIntoConversation": "Jump into conversation from Day One with AI writing tools!",
   "playPersonalizedGames": "Play practice games personalized to your vocabulary and grammar needs!",
   "hideEvents": "Hide events",
-  "learnLanguageWhileTexting": "Learn a language while texting your friends!"
+  "learnLanguageWhileTexting": "Learn a language while texting your friends!",
+  "hideEvents": "Hide events",
+  "denyKnockSpace": "User will be rejected from course, however they may attempt to rejoin any time later.",
+  "denyKnockChat": "User will be rejected from chat, however they may attempt to rejoin any time later.",
+  "banFromSpace": "Ban from course",
+  "unbanFromSpace": "Unban from course",
+  "cannotJoinBannedRoom": "Banned. Unable to join."
 }
