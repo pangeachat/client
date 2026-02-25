@@ -154,9 +154,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
   }
 
-  bool get enableButtons =>
-      [SessionState.notStarted, SessionState.selectedRole].contains(state);
-
   Map<String, ActivityRoleModel> get assignedRoles {
     if (activityRoom != null && activityRoom!.membership == Membership.join) {
       return activityRoom!.assignedRoles ?? {};
