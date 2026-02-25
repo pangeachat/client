@@ -31,39 +31,35 @@ Not:
 
 ## Assistance Ring (replaces StartIGCButton)
 
-The current `StartIGCButton` (spinning autorenew icon with check mark) is replaced by a **Pangea Chat icon** surrounded by a **segmented ring**.
+The current `StartIGCButton` is updated to display a **segmented ring**, indicating match states.
 
 ### Ring Behavior
 
 - The ring's outer edge divides into **one segment per match** returned by the server.
 - Each segment's **color** corresponds to its match's `ReplacementTypeEnum` color category.
 - Segments have two opacity states:
-  - **Muted (low opacity)** — match not yet viewed.
-  - **Bright (full opacity)** — match has been viewed (or was auto-applied).
-- Auto-applied corrections (punct, diacritics, spell, cap) appear as **immediately bright** segments so the user knows something happened.
+  - **Bright (full opacity)** — match not yet viewed.
+  - **Muted (low opacity)** — match has been viewed (or was auto-applied).
 - **AutocorrectPopup retained** — when surface corrections are auto-applied, the existing `AutocorrectPopup` briefly appears to draw attention to the change. This ensures auto-applied edits aren't silently swallowed. The popup is the same toast-like overlay currently used.
 - The ring is a **status indicator only** — tapping it does not navigate between matches. Users navigate by tapping highlighted text in the input field.
-- **Accessibility**: The ring is decorative, but a small **badge number** on the icon can provide a secondary indicator of unviewed match count for users who can't distinguish muted/bright opacity.
 
 ### Icon States
 
 | State           | Icon Behavior                                  |
 | --------------- | ---------------------------------------------- |
-| Idle / no text  | Pangea Chat icon, static                       |
-| Fetching        | Pangea Chat icon **spins**                     |
-| Matches present | Pangea Chat icon static, ring segments visible |
-| All viewed      | Pangea Chat icon static, all segments bright   |
-| Zero matches    | Pangea Chat icon static, **solid green ring**  |
+| Idle / no text  | Grey check icon with 5 grey segments                       |
+| Fetching        | Segments spin, check is hidden                    |
+| Matches present | Ring segments visible |
+| Zero matches    | Check visible, **solid green ring**  |
 | Input cleared   | Ring **animates out**, returns to idle          |
 | Re-fetch        | Icon **spins again**, old segments cleared      |
-| Error           | Pangea Chat icon static, error indicator (TBD) |
+| Error           | error indicator (TBD) |
 
 The ring **animates in** when segments first appear and **animates out** when the input field is cleared. When the user edits text and triggers a re-fetch, the icon spins again and old segments are discarded — the new response rebuilds the ring from scratch.
 
 ### What We're Removing
 
 - The `autorenew` spinning icon
-- The inner check mark (moving away from right/wrong mentality)
 - The elevation/shadow changes based on state
 
 ---
@@ -74,8 +70,8 @@ Matched text in the input field uses **background highlights** (not just underli
 
 ### Highlight Behavior
 
-- **Unviewed matches**: Highlighted with **muted (low opacity)** background in the match's category color.
-- **Viewed matches**: Highlighted with **bright (full opacity)** background after the user has opened and navigated away from the span card for that match.
+- **Unviewed matches**: Highlighted with **bright (full opacity)** background in the match's category color.
+- **Viewed matches**: Highlighted with **muted (low opacity)** background after the user has opened and navigated away from the span card for that match.
 - **Accepted matches**: Text is replaced. The highlight remains bright. The user can tap it again to revisit and undo.
 - **Auto-applied matches**: Text already replaced. Highlighted bright immediately.
 
