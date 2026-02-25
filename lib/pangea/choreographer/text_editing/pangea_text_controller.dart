@@ -188,14 +188,6 @@ class PangeaTextController extends TextEditingController {
           openMatch?.offset == match.updatedMatch.match.offset &&
           openMatch?.length == match.updatedMatch.match.length;
 
-      // final color = _underlineColor(match.updatedMatch);
-
-      // final style = _textStyle(
-      //   match.updatedMatch,
-      //   defaultStyle,
-      //   isSelected,
-      // );
-
       spans.add(_buildMatchSpan(match, isSelected, defaultStyle));
       cursor =
           match.updatedMatch.match.offset + match.updatedMatch.match.length;

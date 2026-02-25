@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 class SegmentedCircularProgress extends StatelessWidget {
   final List<Segment> segments;
   final double strokeWidth;
-  final double gapDegrees;
   final Widget? child;
 
   const SegmentedCircularProgress({
     super.key,
     required this.segments,
     this.strokeWidth = 4,
-    this.gapDegrees = 4,
     this.child,
   });
 

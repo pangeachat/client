@@ -5,7 +5,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
@@ -128,56 +127,55 @@ class SpanCardState extends State<SpanCard> {
       stream: widget.choreographer.igcController.matchUpdateStream.stream,
       builder: (context, _) => SizedBox(
         height: 200.0,
-        child: Column(
-          mainAxisSize: .min,
-          children: [
-            SizedBox(
-              height: 40.0,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    color: Theme.of(context).iconTheme.color,
-                    onPressed: widget.close,
-                  ),
-                  const Flexible(
-                    child: Center(
-                      child: BotFace(
-                        width: 32.0,
-                        expression: BotExpression.idle,
+        child: ValueListenableBuilder(
+          valueListenable: _activeMatch,
+          builder: (context, match, _) {
+            if (match == null) return SizedBox();
+
+            final newOffset = match.updatedMatch.match.offset.toDouble();
+            if (_previousOffset != null) {
+              if (newOffset < _previousOffset!) {
+                // Moving backward → slide from left
+                _slideFrom = const Offset(-0.1, 0);
+              } else if (newOffset > _previousOffset!) {
+                // Moving forward → slide from right
+                _slideFrom = const Offset(0.1, 0);
+              }
+            }
+            _previousOffset = newOffset;
+
+            return Column(
+              mainAxisSize: .min,
+              children: [
+                SizedBox(
+                  height: 40.0,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        color: Theme.of(context).iconTheme.color,
+                        onPressed: widget.close,
                       ),
-                    ),
+                      Expanded(
+                        child: Text(
+                          match.updatedMatch.match.type.displayName(context),
+                          textAlign: TextAlign.center,
+                          style: BotStyle.text(
+                            context,
+                            big: true,
+                          ).copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.flag_outlined),
+                        color: Theme.of(context).iconTheme.color,
+                        onPressed: _showFeedbackDialog,
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.flag_outlined),
-                    color: Theme.of(context).iconTheme.color,
-                    onPressed: _showFeedbackDialog,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ValueListenableBuilder(
-                valueListenable: _activeMatch,
-                builder: (context, match, _) {
-                  if (match != null) {
-                    final newOffset = match.updatedMatch.match.offset
-                        .toDouble();
-                    if (_previousOffset != null) {
-                      if (newOffset < _previousOffset!) {
-                        // Moving backward → slide from left
-                        _slideFrom = const Offset(-0.1, 0);
-                      } else if (newOffset > _previousOffset!) {
-                        // Moving forward → slide from right
-                        _slideFrom = const Offset(0.1, 0);
-                      }
-                    }
-
-                    _previousOffset = newOffset;
-                  }
-
-                  return AnimatedSwitcher(
+                ),
+                Expanded(
+                  child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
                     switchInCurve: Curves.easeOut,
                     switchOutCurve: Curves.easeIn,
@@ -195,20 +193,18 @@ class SpanCardState extends State<SpanCard> {
                         ),
                       );
                     },
-                    child: match == null
-                        ? const SizedBox()
-                        : _MatchContent(
-                            key: ValueKey(match.hashCode),
-                            match: match,
-                            scrollController: scrollController,
-                            onChoiceSelect: _onChoiceSelect,
-                            onUpdateMatch: _updateMatch,
-                          ),
-                  );
-                },
-              ),
-            ),
-          ],
+                    child: _MatchContent(
+                      key: ValueKey(match.hashCode),
+                      match: match,
+                      scrollController: scrollController,
+                      onChoiceSelect: _onChoiceSelect,
+                      onUpdateMatch: _updateMatch,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
