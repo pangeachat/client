@@ -33,6 +33,9 @@ enum SessionState {
   /// The room has been created but the user hasn't selected a role yet. Non-admins haven't joined yet.
   notSelectedRole,
 
+  /// The room has been created and all roles are full. The user cannot get a role in this session.
+  selectedSessionFull,
+
   /// The user has selected a role but hasn't confirmed yet. Non-admins haven't joined yet.
   selectedRole,
 
@@ -115,22 +118,31 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       false;
 
   SessionState get state {
+    // the room exists and user has set their role
     if (activityRoom?.membership == Membership.join &&
         activityRoom?.hasPickedRole == true) {
       return SessionState.confirmedRole;
     }
 
+    // the user has selected a role but hasn't confirmed yet
     if (_selectedRoleId != null) {
       return SessionState.selectedRole;
     }
 
+    // the room either doesn't exist or the user hasn't joined it yet
     if (activityRoom == null || activityRoom!.membership != Membership.join) {
+      // If the room does exist or is being created, then user needs to select a role.
+      // Else (room doesn't exist and user hasn't started creating it), then not started.
       return widget.roomId != null || widget.launch
-          ? SessionState.notSelectedRole
+          ? canSelectRole
+                ? SessionState.notSelectedRole
+                : SessionState.selectedSessionFull
           : SessionState.notStarted;
     }
 
-    return SessionState.notSelectedRole;
+    return canSelectRole
+        ? SessionState.notSelectedRole
+        : SessionState.selectedSessionFull;
   }
 
   String? get descriptionText {
@@ -151,6 +163,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         return activityRoom?.isRoomAdmin ?? false
             ? L10n.of(context).chooseRole
             : L10n.of(context).chooseRoleToParticipate;
+      case SessionState.selectedSessionFull:
+        return L10n.of(context).sessionFull;
     }
   }
 
@@ -159,6 +173,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       return activityRoom!.assignedRoles ?? {};
     }
     return roomSummaries?[widget.roomId]?.joinedUsersWithRoles ?? {};
+  }
+
+  bool get canSelectRole {
+    final assigned = assignedRoles.length;
+    final total = activity?.roles.length ?? 0;
+    return assigned < total;
   }
 
   bool canSelectParticipant(String id) {
@@ -409,7 +429,18 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
   }
 
-  Future<String> joinExistingSession() async {
+  Future<void> joinExistingSession() async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: _joinExistingSession,
+    );
+
+    if (!resp.isError) {
+      NavigationUtil.goToSpaceRoute(resp.result, [], context);
+    }
+  }
+
+  Future<String> _joinExistingSession() async {
     if (!canJoinExistingSession) {
       throw Exception("No existing session to join");
     }
@@ -473,7 +504,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
   }
 
-  Future<void> pingCourse() async {
+  Future<void> pingCourse() =>
+      showFutureLoadingDialog(context: context, future: _pingCourse);
+
+  Future<void> _pingCourse() async {
     if (activityRoom?.courseParent == null) {
       throw Exception("Activity is not part of a course");
     }
@@ -541,6 +575,34 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
             .first;
     activityRoom!.invite(BotName.byEnvironment);
     await future.timeout(const Duration(seconds: 5));
+  }
+
+  void inviteFriends() {
+    if (activityRoom == null) return;
+    NavigationUtil.goToSpaceRoute(activityRoom!.id, ['invite'], context);
+  }
+
+  void inviteToCourse() {
+    if (courseParent == null) return;
+    context.push("/rooms/spaces/${courseParent!.id}/invite");
+  }
+
+  void goToCourse() {
+    if (courseParent == null) return;
+    context.push("/rooms/spaces/${courseParent!.id}/details?tab=course");
+  }
+
+  void goToJoinedActivity() {
+    if (joinedActivityRoomId == null) return;
+    NavigationUtil.goToSpaceRoute(joinedActivityRoomId!, [], context);
+  }
+
+  void returnFromFullSession() {
+    if (courseParent != null) {
+      goToCourse();
+    } else {
+      NavigationUtil.goToSpaceRoute(null, [], context);
+    }
   }
 
   @override

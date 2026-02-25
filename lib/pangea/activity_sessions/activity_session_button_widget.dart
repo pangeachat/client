@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/navigation/navigation_util.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivitySessionButtonWidget extends StatelessWidget {
   final ActivitySessionStartController controller;
@@ -17,13 +13,6 @@ class ActivitySessionButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final buttonStyle = ElevatedButton.styleFrom(
-      backgroundColor: theme.colorScheme.primaryContainer,
-      foregroundColor: theme.colorScheme.onPrimaryContainer,
-      padding: const EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-    );
-
     return AnimatedSize(
       duration: FluffyThemes.animationDuration,
       child: Container(
@@ -55,26 +44,20 @@ class ActivitySessionButtonWidget extends StatelessWidget {
                     switch (controller.state) {
                       SessionState.notStarted => _ActivityStartButtons(
                         controller,
-                        buttonStyle,
                       ),
                       SessionState.confirmedRole =>
-                        _ActivityRoleConfirmedButtons(
-                          buttonStyle: buttonStyle,
-                          controller: controller,
-                        ),
-                      _ => ElevatedButton(
-                        style: buttonStyle,
-                        onPressed: controller.confirmRoleSelection,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              controller.activityRoom?.isRoomAdmin ?? true
-                                  ? L10n.of(context).start
-                                  : L10n.of(context).confirm,
-                            ),
-                          ],
-                        ),
+                        _ActivityRoleConfirmedButtons(controller: controller),
+                      SessionState.selectedSessionFull => _CTAButton(
+                        controller.courseParent != null
+                            ? L10n.of(context).returnToCourse
+                            : L10n.of(context).returnHome,
+                        controller.returnFromFullSession,
+                      ),
+                      _ => _CTAButton(
+                        controller.activityRoom?.isRoomAdmin ?? true
+                            ? L10n.of(context).start
+                            : L10n.of(context).confirm,
+                        controller.confirmRoleSelection,
                       ),
                     },
                   ],
@@ -90,13 +73,11 @@ class ActivitySessionButtonWidget extends StatelessWidget {
 
 class _ActivityStartButtons extends StatelessWidget {
   final ActivitySessionStartController controller;
-  final ButtonStyle buttonStyle;
-  const _ActivityStartButtons(this.controller, this.buttonStyle);
+  const _ActivityStartButtons(this.controller);
 
   @override
   Widget build(BuildContext context) {
     final hasActiveSession = controller.canJoinExistingSession;
-    final joinedActivityRoom = controller.joinedActivityRoomId;
 
     return FutureBuilder(
       future: controller.neededCourseParticipants(),
@@ -117,75 +98,30 @@ class _ActivityStartButtons extends StatelessWidget {
                     : L10n.of(context).activityNeedsOneMember,
                 textAlign: TextAlign.center,
               ),
-              ElevatedButton(
-                style: buttonStyle,
-                onPressed: controller.courseParent?.canInvite ?? false
-                    ? () => context.push(
-                        "/rooms/spaces/${controller.courseParent!.id}/invite",
-                      )
-                    : null,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text(L10n.of(context).inviteFriendsToCourse)],
-                ),
+              _CTAButton(
+                L10n.of(context).inviteFriendsToCourse,
+                controller.inviteToCourse,
               ),
-              ElevatedButton(
-                style: buttonStyle,
-                onPressed: () => context.push(
-                  "/rooms/spaces/${controller.courseParent!.id}/details?tab=course",
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text(L10n.of(context).pickDifferentActivity)],
-                ),
+              _CTAButton(
+                L10n.of(context).pickDifferentActivity,
+                controller.goToCourse,
               ),
-            ] else if (joinedActivityRoom != null) ...[
-              ElevatedButton(
-                style: buttonStyle,
-                onPressed: () {
-                  NavigationUtil.goToSpaceRoute(
-                    joinedActivityRoom,
-                    [],
-                    context,
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text(L10n.of(context).continueText)],
-                ),
+            ] else if (controller.joinedActivityRoomId != null) ...[
+              _CTAButton(
+                L10n.of(context).continueText,
+                controller.goToJoinedActivity,
               ),
             ] else ...[
-              ElevatedButton(
-                style: buttonStyle,
-                onPressed: controller.startNewActivity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      hasActiveSession
-                          ? L10n.of(context).startNewSession
-                          : L10n.of(context).start,
-                    ),
-                  ],
-                ),
+              _CTAButton(
+                hasActiveSession
+                    ? L10n.of(context).startNewSession
+                    : L10n.of(context).start,
+                controller.startNewActivity,
               ),
               if (hasActiveSession)
-                ElevatedButton(
-                  style: buttonStyle,
-                  onPressed: () async {
-                    final resp = await showFutureLoadingDialog(
-                      context: context,
-                      future: controller.joinExistingSession,
-                    );
-
-                    if (!resp.isError) {
-                      NavigationUtil.goToSpaceRoute(resp.result, [], context);
-                    }
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text(L10n.of(context).joinOpenSession)],
-                  ),
+                _CTAButton(
+                  L10n.of(context).joinOpenSession,
+                  controller.joinExistingSession,
                 ),
             ],
           ],
@@ -196,66 +132,57 @@ class _ActivityStartButtons extends StatelessWidget {
 }
 
 class _ActivityRoleConfirmedButtons extends StatelessWidget {
-  final ButtonStyle buttonStyle;
   final ActivitySessionStartController controller;
-
-  const _ActivityRoleConfirmedButtons({
-    required this.buttonStyle,
-    required this.controller,
-  });
+  const _ActivityRoleConfirmedButtons({required this.controller});
 
   @override
   Widget build(BuildContext context) {
+    final showPingCourse = controller.courseParent != null;
+    final canPingCourse = controller.canPingParticipants;
+
+    final showInviteOptions = controller.activityRoom?.isRoomAdmin == true;
+    final showPlayWithBot = !controller.isBotRoomMember;
+
     return Column(
       mainAxisSize: .min,
       children: [
-        if (controller.courseParent != null)
-          ElevatedButton(
-            style: buttonStyle,
-            onPressed: controller.canPingParticipants
-                ? () {
-                    showFutureLoadingDialog(
-                      context: context,
-                      future: controller.pingCourse,
-                    );
-                  }
-                : null,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Text(
-                    L10n.of(context).pingParticipants,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
+        if (showPingCourse)
+          _CTAButton(
+            L10n.of(context).pingParticipants,
+            canPingCourse ? controller.pingCourse : null,
           ),
-        if (controller.activityRoom!.isRoomAdmin) ...[
-          if (!controller.isBotRoomMember)
-            ElevatedButton(
-              style: buttonStyle,
-              onPressed: controller.playWithBot,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text(L10n.of(context).playWithBot)],
-              ),
-            ),
-          ElevatedButton(
-            style: buttonStyle,
-            onPressed: () {
-              NavigationUtil.goToSpaceRoute(controller.activityRoom!.id, [
-                'invite',
-              ], context);
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text(L10n.of(context).inviteFriends)],
-            ),
-          ),
-        ],
+        if (showInviteOptions && showPlayWithBot)
+          _CTAButton(L10n.of(context).playWithBot, controller.playWithBot),
+        if (showInviteOptions)
+          _CTAButton(L10n.of(context).inviteFriends, controller.inviteFriends),
       ],
+    );
+  }
+}
+
+class _CTAButton extends StatelessWidget {
+  final String text;
+  final VoidCallback? onPressed;
+
+  const _CTAButton(this.text, this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: theme.colorScheme.primaryContainer,
+        foregroundColor: theme.colorScheme.onPrimaryContainer,
+        padding: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
+      ),
     );
   }
 }
