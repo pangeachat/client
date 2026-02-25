@@ -6,7 +6,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
@@ -41,6 +43,7 @@ class SpanCardState extends State<SpanCard> {
   @override
   void initState() {
     super.initState();
+    widget.choreographer.addListener(_onAssistanceStateChange);
   }
 
   @override
@@ -50,11 +53,18 @@ class SpanCardState extends State<SpanCard> {
     });
 
     scrollController.dispose();
+    widget.choreographer.removeListener(_onAssistanceStateChange);
     super.dispose();
   }
 
   ValueNotifier<PangeaMatchState?> get _activeMatch =>
       widget.choreographer.igcController.activeMatch;
+
+  void _onAssistanceStateChange() {
+    if (widget.choreographer.assistanceState != AssistanceStateEnum.fetched) {
+      widget.close();
+    }
+  }
 
   Future<void> _onChoiceSelect(
     PangeaMatchState match,
