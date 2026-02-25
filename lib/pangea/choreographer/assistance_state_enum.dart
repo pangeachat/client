@@ -49,15 +49,4 @@ enum AssistanceStateEnum {
     AssistanceStateEnum.notFetched => true,
     _ => false,
   };
-
-  Color backgroundColor(BuildContext context) => switch (this) {
-    AssistanceStateEnum.noSub ||
-    AssistanceStateEnum.noMessage ||
-    AssistanceStateEnum.fetched ||
-    AssistanceStateEnum.complete ||
-    AssistanceStateEnum.error => Theme.of(
-      context,
-    ).colorScheme.surfaceContainerHighest,
-    _ => Theme.of(context).colorScheme.primaryContainer,
-  };
 }

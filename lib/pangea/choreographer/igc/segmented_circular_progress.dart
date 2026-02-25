@@ -28,6 +28,18 @@ class Segment {
   final double opacity;
 
   Segment(this.value, this.color, {this.opacity = 1.0});
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Segment &&
+          runtimeType == other.runtimeType &&
+          value == other.value &&
+          color == other.color &&
+          opacity == other.opacity;
+
+  @override
+  int get hashCode => value.hashCode ^ color.hashCode ^ opacity.hashCode;
 }
 
 class _SegmentedPainter extends CustomPainter {
