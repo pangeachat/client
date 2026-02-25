@@ -21,7 +21,7 @@ enum AssistanceStateEnum {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
       case AssistanceStateEnum.error:
-        return Theme.of(context).disabledColor;
+        return Colors.grey[400]!;
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
         return Theme.of(context).colorScheme.primary;
