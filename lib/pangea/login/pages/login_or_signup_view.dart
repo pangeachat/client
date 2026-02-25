@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +9,9 @@ import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/pangea/login/login_constants.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class LoginOrSignupView extends StatefulWidget {
@@ -168,120 +168,113 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
               builder: (context, constraints) {
                 final isMobile = constraints.maxWidth <= _breakpoint;
 
-                return Column(
+                return Stack(
                   children: [
-                    _LoginCarousel(
-                      isMobile: isMobile,
-                      svgs: svgs,
-                      labels: _labels,
-                      onPageChange: (index) {
-                        if (mounted) {
-                          setState(() => _currentIndex = index);
-                        }
-                      },
-                      controller: _carouselController,
+                    CachedNetworkImage(
+                      imageUrl:
+                          '${AppConfig.assetsBaseURL}/${isMobile ? LoginConstants.mobileBackground : LoginConstants.webBackground}',
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.topCenter,
+                      width: double.infinity,
+                      height: double.infinity,
                     ),
-                    if (isMobile) ...[
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          svgs.length,
-                          (index) => AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            margin: const EdgeInsets.symmetric(horizontal: 4),
-                            height: 8,
-                            width: _currentIndex == index ? 24 : 8,
-                            decoration: BoxDecoration(
-                              color: _currentIndex == index
-                                  ? theme.colorScheme.primary
-                                  : theme.colorScheme.outlineVariant,
-                              borderRadius: BorderRadius.circular(12),
+                    Column(
+                      children: [
+                        _LoginCarousel(
+                          isMobile: isMobile,
+                          svgs: svgs,
+                          labels: _labels,
+                          onPageChange: (index) {
+                            if (mounted) {
+                              setState(() => _currentIndex = index);
+                            }
+                          },
+                          controller: _carouselController,
+                        ),
+                        if (isMobile) ...[
+                          const SizedBox(height: 24.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              svgs.length,
+                              (index) => AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                  color: _currentIndex == index
+                                      ? theme.colorScheme.primary
+                                      : theme.colorScheme.outlineVariant,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
-                    Expanded(
-                      flex: 1,
-                      child: Center(
-                        child: Container(
-                          constraints: const BoxConstraints(maxWidth: 480),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
+                        ],
+                        Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: Container(
+                              constraints: const BoxConstraints(maxWidth: 300),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    PangeaLogoSvg(
-                                      width: isMobile ? 32 : 48,
-                                      forceColor: theme.colorScheme.onSurface,
+                                    ElevatedButton(
+                                      // push instead of go so the app bar back button doesn't go to the language selection page
+                                      // https://github.com/pangeachat/client/issues/4421
+                                      onPressed: () => context.push(
+                                        _cachedSpaceCode != null
+                                            ? '/home/language/signup'
+                                            : '/home/language',
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            theme.colorScheme.primaryContainer,
+                                        foregroundColor: theme
+                                            .colorScheme
+                                            .onPrimaryContainer,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            L10n.of(context).getStarted,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    const SizedBox(width: 12),
-                                    Text(
-                                      AppSettings.applicationName.value,
-                                      style:
-                                          (isMobile
-                                                  ? theme
-                                                        .textTheme
-                                                        .headlineSmall
-                                                  : theme
-                                                        .textTheme
-                                                        .displaySmall)
-                                              ?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                            theme.colorScheme.onSurface,
+                                      ),
+                                      onPressed: () =>
+                                          context.go('/home/login'),
+                                      child: Text(
+                                        L10n.of(context).loginToAccount,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 24),
-                                ElevatedButton(
-                                  // push instead of go so the app bar back button doesn't go to the language selection page
-                                  // https://github.com/pangeachat/client/issues/4421
-                                  onPressed: () => context.push(
-                                    _cachedSpaceCode != null
-                                        ? '/home/language/signup'
-                                        : '/home/language',
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        theme.colorScheme.primaryContainer,
-                                    foregroundColor:
-                                        theme.colorScheme.onPrimaryContainer,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        L10n.of(context).getStarted,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                    foregroundColor:
-                                        theme.colorScheme.onPrimaryContainer,
-                                  ),
-                                  onPressed: () => context.go('/home/login'),
-                                  child: Text(
-                                    L10n.of(context).loginToAccount,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 );
@@ -347,7 +340,7 @@ class _LoginCarousel extends StatelessWidget {
           carouselController: controller,
           options: CarouselOptions(
             height: double.infinity,
-            viewportFraction: 1,
+            viewportFraction: 1.0,
             autoPlay: true,
             onPageChanged: (index, _) => onPageChange(index),
           ),
@@ -370,12 +363,18 @@ class _LoginCarousel extends StatelessWidget {
                       width: screenWidth * 0.8,
                       child: Stack(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 32),
-                            child: SvgPicture.string(svg),
+                          Container(
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.only(bottom: 32.0),
+                            child: SvgPicture.string(
+                              svg,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Positioned(
-                            bottom: 10,
+                            bottom: 0,
                             left: 20,
                             right: 20,
                             child: Text(
@@ -394,7 +393,7 @@ class _LoginCarousel extends StatelessWidget {
                   .toList(),
               carouselController: controller,
               options: CarouselOptions(
-                viewportFraction: 0.8,
+                viewportFraction: 1.0,
                 autoPlay: true,
                 onPageChanged: (index, _) {
                   onPageChange(index);
