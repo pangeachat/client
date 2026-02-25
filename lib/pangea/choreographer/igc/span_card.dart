@@ -78,10 +78,6 @@ class SpanCardState extends State<SpanCard> {
     match.selectChoice(index);
     setState(() {});
 
-    debugPrint(
-      "Is correct: $correct, Is selected: $selected, Status: $status. Choice: ${choice?.toJson()}",
-    );
-
     if (!correct && !selected) return;
     await Future.delayed(
       Duration(milliseconds: 600),

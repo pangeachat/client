@@ -2542,7 +2542,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("Building ChatController for room $roomId");
     // #Pangea
     return LoadParticipantsBuilder(
       room: room,
