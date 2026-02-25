@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-18 13:03:05.800494",
+  "@@last_modified": "2026-02-24 14:59:14.844768",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8583,6 +8583,31 @@
     "placeholders": {}
   },
   "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "El usuario será rechazado del curso, sin embargo, puede intentar unirse de nuevo en cualquier momento más tarde.",
+  "denyKnockChat": "El usuario será rechazado del chat, sin embargo, puede intentar unirse de nuevo en cualquier momento más tarde.",
+  "banFromSpace": "Prohibición del curso",
+  "unbanFromSpace": "Levantar la prohibición del curso",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Prohibido. No se puede unirse.",
+  "@cannotJoinBannedRoom": {
     "type": "String",
     "placeholders": {}
   }

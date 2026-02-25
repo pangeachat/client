@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -82,6 +83,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
         ),
         dropdownStyleData: DropdownStyleData(
           elevation: 8,
+          maxHeight: kIsWeb ? 500 : 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
             color: theme.colorScheme.surfaceContainerHigh,
