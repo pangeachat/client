@@ -74,7 +74,7 @@ def main() -> int:
         return 0
 
     with open(target_path, "w", encoding="utf-8") as f:
-        json.dump(target_arb, f, indent=2, ensure_ascii=False)
+        json.dump(target_arb, f, indent=4, ensure_ascii=False)
         f.write("\n")
 
     print(f"Removed {removed_count} entries from {target_path.name}")
