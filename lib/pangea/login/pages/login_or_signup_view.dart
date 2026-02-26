@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-import 'package:xml/xml.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
+import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/login/login_constants.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -30,16 +29,13 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   bool _isMobile = PlatformInfos.isMobile;
   int _currentIndex = 0;
 
-  Future<List<String>>? _svgFuture;
-  final Map<String, String> _rawSvgCache = {};
-  final Map<String, String> _processedSvgCache = {};
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final width = MediaQuery.sizeOf(context).width;
       _isMobile = width <= _breakpoint;
+      _precacheSvgs();
     });
   }
 
@@ -51,10 +47,8 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     final isMobile = width <= _breakpoint;
 
     final breakpointChanged = _isMobile != isMobile;
-
-    if (_svgFuture == null || breakpointChanged) {
+    if (breakpointChanged) {
       _isMobile = isMobile;
-      _svgFuture = _loadAllSvgs();
     }
   }
 
@@ -65,81 +59,85 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     return List.generate(6, (i) => 'Carousel_${i + 1}_$ratio.svg');
   }
 
-  Future<List<String>> _loadAllSvgs() async {
-    final files = _imageFileNames;
+  List<String> get svgUrls => _imageFileNames
+      .map((name) => '${AppConfig.assetsBaseURL}/$name')
+      .toList();
 
-    return Future.wait(
-      files.mapIndexed((index, filename) async {
-        // 1️⃣ RAW CACHE
-        if (!_rawSvgCache.containsKey(filename)) {
-          final resp = await http.get(
-            Uri.parse('${AppConfig.assetsBaseURL}/$filename'),
-          );
+  // Future<List<String>> _loadAllSvgs() async {
+  //   final files = _imageFileNames;
 
-          if (resp.statusCode != 200) {
-            throw Exception('Failed to load $filename');
-          }
+  //   return Future.wait(
+  //     files.mapIndexed((index, filename) async {
+  //       // 1️⃣ RAW CACHE
+  //       if (!_rawSvgCache.containsKey(filename)) {
+  //         final resp = await http.get(
+  //           Uri.parse('${AppConfig.assetsBaseURL}/$filename'),
+  //         );
 
-          _rawSvgCache[filename] = resp.body;
-        }
+  //         if (resp.statusCode != 200) {
+  //           throw Exception('Failed to load $filename');
+  //         }
 
-        final rawSvg = _rawSvgCache[filename]!;
+  //         _rawSvgCache[filename] = resp.body;
+  //       }
 
-        // 2️⃣ PROCESSED CACHE KEY
-        final processedKey = filename;
+  //       final rawSvg = _rawSvgCache[filename]!;
 
-        if (_processedSvgCache.containsKey(processedKey)) {
-          return _processedSvgCache[processedKey]!;
-        }
+  //       // 2️⃣ PROCESSED CACHE KEY
+  //       final processedKey = filename;
 
-        final replacements = _updatedIDs[index + 1];
+  //       if (_processedSvgCache.containsKey(processedKey)) {
+  //         return _processedSvgCache[processedKey]!;
+  //       }
 
-        final processed = replacements == null
-            ? rawSvg
-            : _updateSvgText(rawSvg: rawSvg, replacements: replacements);
+  //       final replacements = _updatedIDs[index + 1];
 
-        _processedSvgCache[processedKey] = processed;
+  //       final processed = replacements == null
+  //           ? rawSvg
+  //           : _updateSvgText(rawSvg: rawSvg, replacements: replacements);
 
-        return processed;
-      }),
-    );
-  }
+  //       _processedSvgCache[processedKey] = processed;
 
-  String _updateSvgText({
-    required String rawSvg,
-    required Map<String, String> replacements,
-  }) {
-    final document = XmlDocument.parse(rawSvg);
+  //       return processed;
+  //     }),
+  //   );
+  // }
 
-    for (final entry in replacements.entries) {
-      final parent = document
-          .findAllElements('*')
-          .firstWhereOrNull((e) => e.getAttribute('id') == entry.key);
+  // String _updateSvgText({
+  //   required String rawSvg,
+  //   required Map<String, String> replacements,
+  // }) {
+  //   final document = XmlDocument.parse(rawSvg);
 
-      if (parent == null) continue;
+  //   for (final entry in replacements.entries) {
+  //     final parent = document
+  //         .findAllElements('*')
+  //         .firstWhereOrNull((e) => e.getAttribute('id') == entry.key);
 
-      final tspan = parent.findAllElements('tspan').firstOrNull;
-      if (tspan == null) continue;
+  //     if (parent == null) continue;
 
-      tspan.children
-        ..clear()
-        ..add(XmlText(entry.value));
-    }
+  //     final tspan = parent.findAllElements('tspan').firstOrNull;
+  //     if (tspan == null) continue;
 
-    return document.toXmlString();
-  }
+  //     tspan.children
+  //       ..clear()
+  //       ..add(XmlText(entry.value));
+  //   }
 
-  Map<int, Map<String, String>> get _updatedIDs => {
-    1: {'Edit text header': L10n.of(context).shareYourHobbies},
-    2: {'Edit text Header': L10n.of(context).pangeaBot},
-    3: {
-      'Edit text_2': L10n.of(context).joinWithClassCode,
-      'Edit text_4': L10n.of(context).startYourOwn,
-    },
-    4: {'Edit text_2': L10n.of(context).guessMyHometown},
-    5: {'Edit text_2': L10n.of(context).languageExchange},
-    6: {},
-  };
+  //   return document.toXmlString();
+  // }
+
+  // Map<int, Map<String, String>> get _updatedIDs => {
+  //   1: {'Edit text header': L10n.of(context).shareYourHobbies},
+  //   2: {'Edit text Header': L10n.of(context).pangeaBot},
+  //   3: {
+  //     'Edit text_2': L10n.of(context).joinWithClassCode,
+  //     'Edit text_4': L10n.of(context).startYourOwn,
+  //   },
+  //   4: {'Edit text_2': L10n.of(context).guessMyHometown},
+  //   5: {'Edit text_2': L10n.of(context).languageExchange},
+  //   6: {},
+  // };
 
   List<String> get _labels => [
     L10n.of(context).appDescription,
@@ -150,19 +148,27 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     L10n.of(context).playPersonalizedGames,
   ];
 
+  Future<void> _precacheSvgs() async {
+    final futures = svgUrls.map((url) => SvgRepo.get(url));
+    await Future.wait(futures);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-        child: FutureBuilder<List<String>>(
-          future: _svgFuture,
-          builder: (context, snapshot) {
-            return LayoutBuilder(
+        child:
+            // FutureBuilder<List<String>>(
+            //   future: _svgFuture,
+            //   builder: (context, snapshot) {
+            //     return
+            LayoutBuilder(
               builder: (context, constraints) {
                 final isMobile = constraints.maxWidth <= _breakpoint;
-
-                final svgs = snapshot.data;
+                final svgUrls = _imageFileNames
+                    .map((name) => '${AppConfig.assetsBaseURL}/$name')
+                    .toList();
 
                 return Stack(
                   children: [
@@ -177,52 +183,52 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                     ),
                     Column(
                       children: [
-                        if (svgs != null) ...[
-                          _LoginCarousel(
-                            isMobile: isMobile,
-                            svgs: svgs,
-                            labels: _labels,
-                            onPageChange: (index) {
-                              if (mounted) {
-                                setState(() => _currentIndex = index);
-                              }
-                            },
-                            controller: _carouselController,
-                          ),
-                          if (isMobile) ...[
-                            const SizedBox(height: 24.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                svgs.length,
-                                (index) => AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
-                                  margin: const EdgeInsets.symmetric(
-                                    horizontal: 4,
-                                  ),
-                                  height: 8,
-                                  width: 8,
-                                  decoration: BoxDecoration(
-                                    color: _currentIndex == index
-                                        ? theme.colorScheme.primary
-                                        : theme.colorScheme.outlineVariant,
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
+                        // if (svgs != null) ...[
+                        _LoginCarousel(
+                          isMobile: isMobile,
+                          svgUrls: svgUrls,
+                          labels: _labels,
+                          onPageChange: (index) {
+                            if (mounted) {
+                              setState(() => _currentIndex = index);
+                            }
+                          },
+                          controller: _carouselController,
+                        ),
+                        if (isMobile) ...[
+                          const SizedBox(height: 24.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              svgUrls.length,
+                              (index) => AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                  color: _currentIndex == index
+                                      ? theme.colorScheme.primary
+                                      : theme.colorScheme.outlineVariant,
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                             ),
-                          ],
-                        ] else
-                          Expanded(
-                            flex: 2,
-                            child: Center(
-                              child:
-                                  snapshot.connectionState ==
-                                      ConnectionState.waiting
-                                  ? CircularProgressIndicator.adaptive()
-                                  : SizedBox.shrink(),
-                            ),
                           ),
+                        ],
+                        // ] else
+                        //   Expanded(
+                        //     flex: 2,
+                        //     child: Center(
+                        //       child:
+                        //           snapshot.connectionState ==
+                        //               ConnectionState.waiting
+                        //           ? CircularProgressIndicator.adaptive()
+                        //           : SizedBox.shrink(),
+                        //     ),
+                        //   ),
                         Expanded(
                           flex: 1,
                           child: Center(
@@ -288,9 +294,9 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                   ],
                 );
               },
-            );
-          },
-        ),
+            ),
+        // },
+        // ),
       ),
     );
   }
@@ -298,14 +304,14 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
 
 class _LoginCarousel extends StatelessWidget {
   final bool isMobile;
-  final List<String> svgs;
+  final List<String> svgUrls;
   final List<String> labels;
   final Function(int) onPageChange;
   final CarouselSliderController controller;
 
   const _LoginCarousel({
     required this.isMobile,
-    required this.svgs,
+    required this.svgUrls,
     required this.labels,
     required this.onPageChange,
     required this.controller,
@@ -321,13 +327,17 @@ class _LoginCarousel extends StatelessWidget {
         width: screenWidth,
         height: screenWidth * 1.25,
         child: CarouselSlider(
-          items: svgs
+          items: svgUrls
               .mapIndexed(
                 (index, svg) => Stack(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 32),
-                      child: SvgPicture.string(svg),
+                      child: CustomizedSvg(
+                        svgUrl: svg,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
                     ),
                     Positioned(
                       bottom: 10,
@@ -366,7 +376,7 @@ class _LoginCarousel extends StatelessWidget {
           Padding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 100.0),
             child: CarouselSlider(
-              items: svgs
+              items: svgUrls
                   .mapIndexed(
                     (index, svg) => SizedBox(
                       width: screenWidth * 0.8,
@@ -375,8 +385,8 @@ class _LoginCarousel extends StatelessWidget {
                           Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.only(bottom: 32.0),
-                            child: SvgPicture.string(
-                              svg,
+                            child: CustomizedSvg(
+                              svgUrl: svg,
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
