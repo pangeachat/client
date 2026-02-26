@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -137,13 +136,11 @@ class CourseSettings extends StatelessWidget {
           }
 
           final usersInTopic = userTopics[topicId] ?? [];
-          final activityError = controller.activityErrors[topicId];
 
           final bool locked =
               !teacherMode && (topicIndex == null ? false : index > topicIndex);
 
-          final disabled =
-              locked || controller.loadingCourseInfo || activityError != null;
+          final disabled = locked || controller.loadingCourseInfo;
 
           return AbsorbPointer(
             absorbing: disabled,
@@ -258,44 +255,6 @@ class CourseSettings extends StatelessWidget {
         }),
         const SizedBox(height: 16.0),
       ],
-    );
-  }
-}
-
-class ActivityCardPlaceholder extends StatelessWidget {
-  final int activityCount;
-
-  const ActivityCardPlaceholder({super.key, required this.activityCount});
-
-  @override
-  Widget build(BuildContext context) {
-    final int shimmerCount = activityCount;
-    final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-
-    return SizedBox(
-      height: isColumnMode ? 290.0 : 210.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: shimmerCount,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 24.0),
-            child: Shimmer.fromColors(
-              baseColor: theme.colorScheme.primary.withAlpha(20),
-              highlightColor: theme.colorScheme.primary.withAlpha(50),
-              child: Container(
-                width: isColumnMode ? 160.0 : 120.0,
-                height: isColumnMode ? 280.0 : 200.0,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainer,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
     );
   }
 }

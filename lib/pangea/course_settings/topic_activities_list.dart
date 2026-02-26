@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
-import 'package:fluffychat/pangea/course_settings/course_settings.dart';
+import 'package:fluffychat/pangea/course_settings/activity_card_placeholder.dart';
 
 class TopicActivitiesList extends StatefulWidget {
   final Room room;
@@ -54,6 +54,8 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
   }
 
   Future<void> _load() async {
+    if (widget.topic.activityListComplete) return;
+
     setState(() {
       _loading = true;
       _error = null;
