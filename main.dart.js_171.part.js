@@ -5606,6 +5606,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cannotJoinBannedRoom() {
       return "Banned. Unable to join.";
     },
+    get$sessionFull() {
+      return "Too late! This activity is full.";
+    },
+    get$returnToCourse() {
+      return "Return to course";
+    },
+    get$returnHome() {
+      return "Return home";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5631,7 +5640,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EjfBUEnAkmQkqvn90+1AtzwA9TQ="] = d.current;
+  d["DZ3AuNetRdI2L86Fns8d1kj7P/I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

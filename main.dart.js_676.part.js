@@ -5604,6 +5604,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cannotJoinBannedRoom() {
       return "\u05d0\u05e1\u05d5\u05e8. \u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3.";
     },
+    get$sessionFull() {
+      return "Too late! This activity is full.";
+    },
+    get$returnToCourse() {
+      return "Return to course";
+    },
+    get$returnHome() {
+      return "Return home";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5617,7 +5626,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N3mExELOQK92Spxuk4qXNotgsiQ="] = d.current;
+  d["hhG3LrEf/HxoOPjBhTdiVapqUbQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_676.part.js.map
