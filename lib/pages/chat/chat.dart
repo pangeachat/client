@@ -2287,11 +2287,6 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    if (matchToShow.updatedMatch.isITStart) {
-      choreographer.itController.openIT(sendController.text);
-      return;
-    }
-
     final isSpanCardOpen = MatrixState.pAnyState.isOverlayOpen(
       overlayKey: 'span-card-overlay',
     );

@@ -6,34 +6,28 @@ import 'package:async/async.dart';
 
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
-import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
-import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
 import 'package:fluffychat/pangea/choreographer/pangea_message_content_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
-import 'it/it_controller.dart';
 
 class Choreographer extends ChangeNotifier {
   final FocusNode inputFocus;
 
   late final PangeaTextController textController;
-  late final ITController itController;
   late final IgcController igcController;
   late final ChoreographerErrorController errorService;
 
@@ -45,7 +39,6 @@ class Choreographer extends ChangeNotifier {
   int _timesClicked = 0;
   Timer? _debounceTimer;
   String? _lastChecked;
-  ChoreoModeEnum _choreoMode = ChoreoModeEnum.igc;
 
   DateTime? _lastIgcError;
   DateTime? _lastTokensError;
@@ -54,7 +47,6 @@ class Choreographer extends ChangeNotifier {
 
   StreamSubscription? _languageSub;
   StreamSubscription? _settingsUpdateSub;
-  StreamSubscription? _acceptedContinuanceSub;
   StreamSubscription? _updatedMatchSub;
 
   Choreographer(this.inputFocus) {
@@ -64,7 +56,6 @@ class Choreographer extends ChangeNotifier {
   int get timesClicked => _timesClicked;
   ValueNotifier<bool> get isFetching => _isFetching;
   ValueNotifier<int> get timesDismissedIT => _timesDismissedIT;
-  ChoreoModeEnum get choreoMode => _choreoMode;
   String get currentText => textController.text;
 
   ChoreoRecordModel get _record => _choreoRecord ??= ChoreoRecordModel(
@@ -85,12 +76,6 @@ class Choreographer extends ChangeNotifier {
 
     errorService = ChoreographerErrorController();
     errorService.addListener(notifyListeners);
-
-    itController = ITController(
-      (e) => errorService.setErrorAndLock(ChoreoError(raw: e)),
-    );
-    itController.open.addListener(_onUpdateITOpenStatus);
-    itController.editing.addListener(_onSubmitSourceTextEdits);
 
     igcController = IgcController(
       (e) {
@@ -121,9 +106,6 @@ class Choreographer extends ChangeNotifier {
           notifyListeners();
         });
 
-    _acceptedContinuanceSub ??= itController.acceptedContinuanceStream.stream
-        .listen(_onAcceptContinuance);
-
     _updatedMatchSub ??= igcController.matchUpdateStream.stream.listen(
       _onUpdateMatch,
     );
@@ -134,29 +116,22 @@ class Choreographer extends ChangeNotifier {
     _timesClicked = 0;
     _isFetching.value = false;
     _choreoRecord = null;
-    itController.closeIT();
-    itController.clearSourceText();
-    itController.clearSession();
     igcController.clear();
     _resetDebounceTimer();
-    _setChoreoMode(ChoreoModeEnum.igc);
+    notifyListeners();
   }
 
   @override
   void dispose() {
     errorService.removeListener(notifyListeners);
-    itController.open.removeListener(_onCloseIT);
-    itController.editing.removeListener(_onSubmitSourceTextEdits);
     textController.removeListener(_onChange);
 
     _languageSub?.cancel();
     _settingsUpdateSub?.cancel();
-    _acceptedContinuanceSub?.cancel();
     _updatedMatchSub?.cancel();
     _debounceTimer?.cancel();
 
     igcController.dispose();
-    itController.dispose();
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
@@ -171,18 +146,7 @@ class Choreographer extends ChangeNotifier {
   void onClickSend() {
     if (assistanceState == AssistanceStateEnum.fetched) {
       _timesClicked++;
-
-      // if user is doing IT, call closeIT here to
-      // ensure source text is replaced when needed
-      if (itController.open.value && _timesClicked > 1) {
-        itController.closeIT(dismiss: true);
-      }
     }
-  }
-
-  void _setChoreoMode(ChoreoModeEnum mode) {
-    _choreoMode = mode;
-    notifyListeners();
   }
 
   void _resetDebounceTimer() {
@@ -228,10 +192,8 @@ class Choreographer extends ChangeNotifier {
     _lastChecked = textController.text;
     if (errorService.isError) return;
     if (textController.editType == EditTypeEnum.keyboard) {
-      if (igcController.currentText != null ||
-          itController.sourceText.value != null) {
+      if (igcController.currentText != null) {
         igcController.clear();
-        itController.clearSourceText();
         notifyListeners();
       }
 
@@ -254,9 +216,7 @@ class Choreographer extends ChangeNotifier {
         MatrixState.pangeaController.userController.userL1 == null ||
         (!ToolSetting.interactiveGrammar.enabled &&
             !ToolSetting.interactiveTranslator.enabled) ||
-        (!ToolSetting.autoIGC.enabled &&
-            !manual &&
-            _choreoMode != ChoreoModeEnum.it) ||
+        (!ToolSetting.autoIGC.enabled && !manual) ||
         _backoffRequest(_lastIgcError, _igcErrorBackoff)) {
       return;
     }
@@ -334,20 +294,9 @@ class Choreographer extends ChangeNotifier {
       tokensResp = res.isValue ? res.result : null;
     }
 
-    final hasOriginalWritten =
-        _record.includedIT && itController.sourceText.value != null;
-
     return PangeaMessageContentModel(
       message: message,
       choreo: _record,
-      originalWritten: hasOriginalWritten
-          ? PangeaRepresentation(
-              langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-              text: itController.sourceText.value!,
-              originalWritten: true,
-              originalSent: false,
-            )
-          : null,
       tokensSent: tokensResp != null
           ? PangeaMessageTokens(
               tokens: tokensResp.tokens,
@@ -355,60 +304,6 @@ class Choreographer extends ChangeNotifier {
             )
           : null,
     );
-  }
-
-  void _onUpdateITOpenStatus() {
-    itController.open.value ? _onOpenIT() : _onCloseIT();
-    notifyListeners();
-  }
-
-  void _onOpenIT() {
-    inputFocus.unfocus();
-    final itMatch = igcController.openMatches.firstWhere(
-      (match) => match.updatedMatch.isITStart,
-      orElse: () =>
-          throw Exception("Attempted to open IT without an ITStart match"),
-    );
-
-    igcController.clear();
-    itMatch.setStatus(PangeaMatchStatusEnum.accepted);
-    _record.addRecord("", match: itMatch.updatedMatch);
-
-    _setChoreoMode(ChoreoModeEnum.it);
-    textController.setSystemText("", EditTypeEnum.it);
-  }
-
-  void _onCloseIT() {
-    if (itController.dismissed &&
-        currentText.isEmpty &&
-        itController.sourceText.value != null) {
-      textController.setSystemText(
-        itController.sourceText.value!,
-        EditTypeEnum.itDismissed,
-      );
-    }
-
-    if (itController.dismissed) {
-      _timesDismissedIT.value = _timesDismissedIT.value + 1;
-    }
-    _setChoreoMode(ChoreoModeEnum.igc);
-    errorService.resetError();
-  }
-
-  void _onSubmitSourceTextEdits() {
-    if (itController.editing.value) return;
-    textController.setSystemText("", EditTypeEnum.it);
-  }
-
-  void _onAcceptContinuance(CompletedITStepModel step) {
-    textController.setSystemText(
-      textController.text + step.continuances[step.chosen].text,
-      EditTypeEnum.it,
-    );
-
-    _record.addRecord(textController.text, step: step);
-    inputFocus.requestFocus();
-    notifyListeners();
   }
 
   void clearMatches(Object error) {
