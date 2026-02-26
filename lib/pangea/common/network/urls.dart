@@ -31,7 +31,6 @@ class PApiUrls {
       "${PApiUrls._choreoEndpoint}/language_detection";
 
   static String igcLite = "${PApiUrls._choreoEndpoint}/grammar_v2";
-  static String spanDetails = "${PApiUrls._choreoEndpoint}/span_details";
 
   static String simpleTranslation =
       "${PApiUrls._choreoEndpoint}/translation/direct";
