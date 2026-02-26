@@ -30,18 +30,22 @@ class ChatInputBar extends StatelessWidget {
             maxWidth: FluffyThemes.maxTimelineWidth,
           ),
           alignment: Alignment.center,
-          child: InlineTooltip(
-            message: controller.room.ownRole!.goal!,
-            isClosed: controller.room.hasDismissedGoalTooltip,
-            onClose: () async {
-              await controller.room.dismissGoalTooltip();
-            },
-            padding: EdgeInsets.only(
-              left: 16.0,
-              right: 16.0,
-              top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
-            ),
-          ),
+          child:
+              controller.room.showActivityChatUI &&
+                  controller.room.ownRole?.goal != null
+              ? InlineTooltip(
+                  message: controller.room.ownRole!.goal!,
+                  isClosed: controller.room.hasDismissedGoalTooltip,
+                  onClose: () async {
+                    await controller.room.dismissGoalTooltip();
+                  },
+                  padding: EdgeInsets.only(
+                    left: 16.0,
+                    right: 16.0,
+                    top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+                  ),
+                )
+              : SizedBox(),
         ),
         Container(
           margin: EdgeInsets.all(
