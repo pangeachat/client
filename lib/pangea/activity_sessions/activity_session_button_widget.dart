@@ -54,9 +54,7 @@ class ActivitySessionButtonWidget extends StatelessWidget {
                         controller.returnFromFullSession,
                       ),
                       _ => _CTAButton(
-                        controller.activityRoom?.isRoomAdmin ?? true
-                            ? L10n.of(context).start
-                            : L10n.of(context).confirm,
+                        L10n.of(context).confirm,
                         controller.state == SessionState.selectedRole
                             ? controller.confirmRoleSelection
                             : null,
