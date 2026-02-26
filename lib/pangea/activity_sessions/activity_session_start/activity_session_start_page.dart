@@ -89,9 +89,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         _selectedRoleId = null;
         showInstructions = false;
       });
-    }
 
-    if (oldWidget.activityId != widget.activityId) {
       _load();
     }
   }
@@ -328,13 +326,19 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadSummary() async {
-    if (courseParent == null) return;
-    await loadRoomSummaries(
-      courseParent!.spaceChildren
-          .map((c) => c.roomId)
-          .whereType<String>()
-          .toList(),
-    );
+    final Set<String> roomIds = {};
+    if (widget.roomId != null) {
+      roomIds.add(widget.roomId!);
+    }
+
+    if (courseParent != null) {
+      roomIds.addAll(
+        courseParent!.spaceChildren.map((c) => c.roomId).whereType<String>(),
+      );
+    }
+
+    if (roomIds.isEmpty) return;
+    await loadRoomSummaries(roomIds.toList());
   }
 
   Future<void> _loadActivity() async {
