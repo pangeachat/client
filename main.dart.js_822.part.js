@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return l1 + " yoki " + l2 + " da yozing...";
     },
-    get$holdForInfo() {
-      return "So'z ma'lumotlari uchun bosib turing.";
-    },
     get$gaTooltip() {
       return "Grammatika yordamida L2 bilan foydalanish";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Chat nomini o'zgartirish";
-    },
-    get$sorryNoResults() {
-      return "Kechirasiz, natija topilmadi.";
     },
     needsItMessage$1(targetLanguage) {
       return "Kuting, bu " + targetLanguage + " emas! Tarjimaga yordam kerakmi?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Iltimos, butun son qiymatini kiriting.";
-    },
-    get$buildTranslation() {
-      return "Yuqoridagi tanlovlardan tarjimangizni yarating";
     },
     get$practice() {
       return "Amaliyot";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Agar yangi yorliqni ko'rmasangiz, iltimos, pop-up bloklovchingizni tekshiring.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Til vositalarini o'chirish";
-    },
     get$disableLanguageToolsDesc() {
       return "Avtomatik til yordamini o'chirmoqchimisiz?";
     },
@@ -5630,7 +5618,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WLzsGQFxoE8ki/xQQhkgV5o22Zc="] = d.current;
+  d["cUhW2vQi5oAm6M7lHVurbkSjNfQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_822.part.js.map

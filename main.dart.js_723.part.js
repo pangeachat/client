@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Typa in " + l1 + " o " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Clicca e tenea pro information de parola.";
-    },
     get$gaTooltip() {
       return "L2 usance con adjuta grammatical";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Changear le nomine del chat";
-    },
-    get$sorryNoResults() {
-      return "Dispiace, nulle resultato.";
     },
     needsItMessage$1(targetLanguage) {
       return "Aspetta, illo non es " + targetLanguage + "! Es tu besonio de adjuta pro traducer?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Per favor, entra un valor de numero entier.";
-    },
-    get$buildTranslation() {
-      return "Construye tu translation a partir del optiones super";
     },
     get$practice() {
       return "Practica";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Se voc\xea n\xe3o viu a nova aba, verifique seu bloqueador de pop-ups.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Disabl\xe9 langaj alat";
-    },
     get$disableLanguageToolsDesc() {
       return "Voul\xe9z-vous d\xe9sabl\xe9 l'assistance langaj otomatik?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dve8qjgxoQs6nSiuOoEfmUsOykA="] = d.current;
+  d["iLK6crJpc6hck1Xe0fCNgaUCN9k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

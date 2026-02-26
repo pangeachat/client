@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return l1 + " veya " + l2 + " ile yaz...";
     },
-    get$holdForInfo() {
-      return "Kelime bilgisi i\xe7in t\u0131klay\u0131p bas\u0131l\u0131 tut.";
-    },
     get$gaTooltip() {
       return "Dilbilgisi yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Sohbetin ad\u0131n\u0131 de\u011fi\u015ftir";
-    },
-    get$sorryNoResults() {
-      return "\xdczg\xfcn\xfcz, sonu\xe7 yok.";
     },
     needsItMessage$1(targetLanguage) {
       return "Bekle, bu " + targetLanguage + " de\u011fil! \xc7eviri yard\u0131m\u0131na ihtiyac\u0131n var m\u0131?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "L\xfctfen tam say\u0131 de\u011feri girin.";
-    },
-    get$buildTranslation() {
-      return "Yukar\u0131daki se\xe7eneklerden \xe7evirinizi olu\u015fturun";
     },
     get$practice() {
       return "Pratik yap";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Dil ara\xe7lar\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rak";
-    },
     get$disableLanguageToolsDesc() {
       return "Otomatik dil yard\u0131m\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rakmak ister misiniz?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Vsl/HtSpvGTubh7Y7oW45IMOcck="] = d.current;
+  d["XVIyKpOks43t22fiAga0k4AYZjI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_819.part.js.map

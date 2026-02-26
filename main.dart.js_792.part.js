@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Piszesz w " + l1 + " lub " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Kliknij i przytrzymaj, aby uzyska\u0107 informacje o s\u0142owie.";
-    },
     get$gaTooltip() {
       return "L2 u\u017cycie z pomoc\u0105 gramatyczn\u0105";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Zmie\u0144 nazw\u0119 czatu";
-    },
-    get$sorryNoResults() {
-      return "Przepraszamy, brak wynik\xf3w.";
     },
     needsItMessage$1(targetLanguage) {
       return "Czekaj, to nie jest " + targetLanguage + "! Czy potrzebujesz pomocy w t\u0142umaczeniu?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Wprowad\u017a warto\u015b\u0107 liczby ca\u0142kowitej.";
-    },
-    get$buildTranslation() {
-      return "Zbuduj t\u0142umaczenie z powy\u017cszych opcji";
     },
     get$practice() {
       return "\u0106wiczenia";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Je\u015bli nie widzisz nowej karty, sprawd\u017a sw\xf3j blokad\u0119 wyskakuj\u0105cych okienek.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Wy\u0142\u0105cz narz\u0119dzia j\u0119zykowe";
-    },
     get$disableLanguageToolsDesc() {
       return "Czy chcesz wy\u0142\u0105czy\u0107 automatyczn\u0105 pomoc j\u0119zykow\u0105?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tb/9Ln/hOZyHszxLI3UabG1q48o="] = d.current;
+  d["zlFlIql9u5fuxzBdFx+uAlAG9Xg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_792.part.js.map

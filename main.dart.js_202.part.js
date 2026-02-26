@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Escriu en " + l1 + " o " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Fes clic i mant\xe9n premut per obtenir informaci\xf3 de la paraula.";
-    },
     get$gaTooltip() {
       return "L2 utilitza amb assist\xe8ncia gramatical";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Canvia el nom del xat";
-    },
-    get$sorryNoResults() {
-      return "Ho sentim, no hi ha resultats.";
     },
     needsItMessage$1(targetLanguage) {
       return "Espera, aix\xf2 no \xe9s " + targetLanguage + "! Necessites ajuda per traduir?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Si us plau, introdueix un valor num\xe8ric sencer.";
-    },
-    get$buildTranslation() {
-      return "Construeix la teva traducci\xf3 a partir de les opcions de dalt";
     },
     get$practice() {
       return "Practica";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Desactivar eines d'idioma";
-    },
     get$disableLanguageToolsDesc() {
       return "Voleu desactivar l'assist\xe8ncia autom\xe0tica d'idioma?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NLKMQOxOGjHtQTfLA9ptjqW/auE="] = d.current;
+  d["69sfXP3zTkLWOYXmX3igT+ITAjI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_202.part.js.map

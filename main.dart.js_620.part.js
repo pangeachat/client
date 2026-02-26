@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Kirjoita " + l1 + " tai " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Pid\xe4 painettuna sanan tiedoista.";
-    },
     get$gaTooltip() {
       return "L2:n k\xe4ytt\xf6 kielioppiavustuksella";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Vaihda keskustelun nimi";
-    },
-    get$sorryNoResults() {
-      return "Valitettavasti ei tuloksia.";
     },
     needsItMessage$1(targetLanguage) {
       return "Odotas, se ei ole " + targetLanguage + "! Tarvitsetko apua k\xe4\xe4nt\xe4misess\xe4?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Sy\xf6t\xe4 kokonaisluku.";
-    },
-    get$buildTranslation() {
-      return "Rakenna k\xe4\xe4nn\xf6ksesi yll\xe4 olevista vaihtoehdoista";
     },
     get$practice() {
       return "Harjoitus";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Jos et n\xe4hnyt uutta v\xe4lilehte\xe4, tarkista ponnahdusikkunoiden est\xe4j\xe4si.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Poista kielity\xf6kalut k\xe4yt\xf6st\xe4";
-    },
     get$disableLanguageToolsDesc() {
       return "Haluaisitko poistaa automaattisen kieliavun k\xe4yt\xf6st\xe4?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ICxsxpug/axOQIj7z9a6lNVMlVo="] = d.current;
+  d["EkwVx4K6WGZ3bQHWNY6agvlc4og="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_620.part.js.map

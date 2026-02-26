@@ -1656,9 +1656,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Digite em " + l1 + " ou " + l2 + "...";
     },
-    get$holdForInfo() {
-      return string$.Cliquee_p;
-    },
     get$gaTooltip() {
       return "L2 usar com assist\xeancia gramatical";
     },
@@ -1706,9 +1703,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Alterar o nome do chat";
-    },
-    get$sorryNoResults() {
-      return "Desculpe, sem resultados.";
     },
     needsItMessage$1(targetLanguage) {
       return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
@@ -2748,9 +2742,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterNumber() {
       return string$.Por_faiv;
     },
-    get$buildTranslation() {
-      return string$.Constr;
-    },
     get$practice() {
       return "Praticar";
     },
@@ -2791,7 +2782,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xedvel";
     },
     get$translationChoicesBody() {
-      return string$.Cliquee_u;
+      return string$.Cliquee_;
     },
     get$grammar() {
       return "Gram\xe1tica";
@@ -5409,9 +5400,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
     },
-    get$disableLanguageToolsTitle() {
-      return "Desativar ferramentas de idioma";
-    },
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
     },
@@ -7258,9 +7246,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Digite em " + l1 + " ou " + l2 + "...";
     },
-    get$holdForInfo() {
-      return string$.Cliquee_p;
-    },
     get$gaTooltip() {
       return "L2 usar com assist\xeancia de gram\xe1tica";
     },
@@ -7308,9 +7293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Alterar o nome do chat";
-    },
-    get$sorryNoResults() {
-      return "Desculpe, nenhum resultado.";
     },
     needsItMessage$1(targetLanguage) {
       return "Espere, isso n\xe3o \xe9 " + targetLanguage + "! Voc\xea precisa de ajuda para traduzir?";
@@ -8350,9 +8332,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterNumber() {
       return string$.Por_faiv;
     },
-    get$buildTranslation() {
-      return string$.Constr;
-    },
     get$practice() {
       return "Praticar";
     },
@@ -8393,7 +8372,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xedvel";
     },
     get$translationChoicesBody() {
-      return string$.Cliquee_u;
+      return string$.Cliquee_;
     },
     get$grammar() {
       return "Gram\xe1tica";
@@ -11011,9 +10990,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
     },
-    get$disableLanguageToolsTitle() {
-      return "Desativar ferramentas de idioma";
-    },
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
     },
@@ -12851,9 +12827,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Digite em " + l1 + " ou " + l2 + "...";
     },
-    get$holdForInfo() {
-      return string$.Cliquee_p;
-    },
     get$gaTooltip() {
       return "L2 usar com assist\xeancia gramatical";
     },
@@ -12901,9 +12874,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Alterar o nome do chat";
-    },
-    get$sorryNoResults() {
-      return "Desculpe, sem resultados.";
     },
     needsItMessage$1(targetLanguage) {
       return "Espera, isso n\xe3o \xe9 " + targetLanguage + "! Precisas de ajuda para traduzir?";
@@ -13942,9 +13912,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return string$.Por_faiv;
-    },
-    get$buildTranslation() {
-      return "Construa a sua tradu\xe7\xe3o a partir das op\xe7\xf5es acima";
     },
     get$practice() {
       return "Praticar";
@@ -16604,9 +16571,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
     },
-    get$disableLanguageToolsTitle() {
-      return "Desativar ferramentas de idioma";
-    },
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
     },
@@ -16867,8 +16831,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Cliqueaat: "Clique aqui para atualizar as configura\xe7\xf5es de assist\xeancia de tradu\xe7\xe3o",
     Cliqueag: "Clique aqui para gerenciar sua assinatura.",
     Cliqueav: "Clique aqui para ver suas estat\xedsticas de atividade e fechar a atividade quando terminar",
-    Cliquee_p: "Clique e segure para informa\xe7\xf5es da palavra.",
-    Cliquee_u: "Clique e segure uma op\xe7\xe3o para obter uma dica.",
+    Cliquee_: "Clique e segure uma op\xe7\xe3o para obter uma dica.",
     Cliqueem: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
     Cliquena: "Clique nas pe\xe7as do quebra-cabe\xe7a para perguntas de gram\xe1tica!",
     Cliqueno: "Clique nos bot\xf5es abaixo para mini-jogos de combina\xe7\xe3o de emojis, \xe1udios, significados de palavras e conceitos gramaticais. Ou clique em qualquer palavra para detalhes.",
@@ -16879,7 +16842,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Conceie: "Conceitos gramaticais escolhidos corretamente a partir de sugest\xf5es geradas pelo sistema pelo menos 80% das vezes",
     Conceiuc: "Conceitos gramaticais usados corretamente em mensagens originais pelo menos 80% das vezes",
     Conceiui: "Conceitos gramaticais usados incorretamente em mensagens originais menos de 80% das vezes",
-    Constr: "Construa sua tradu\xe7\xe3o a partir das op\xe7\xf5es acima",
     Conver: "Conversar com humanos \xe9 mais divertido, mas... a IA est\xe1 sempre pronta!",
     Correte: "Correto na atividade de escuta de palavras",
     Correts: "Correto na atividade de significado da palavra",
@@ -17014,7 +16976,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JHx9BG3SQ1kWrJwFGtcyPQwyIXc="] = d.current;
+  d["0lqBewC3Yt9beII2eHcuVp9OSzI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

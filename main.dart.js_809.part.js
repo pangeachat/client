@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Vpi\u0161ite v " + l1 + " ali " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Kliknite in dr\u017eite za informacije o besedi.";
-    },
     get$gaTooltip() {
       return "L2 uporaba z jezikovno pomo\u010djo";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Spremeni ime klepeta";
-    },
-    get$sorryNoResults() {
-      return "Oprostite, ni rezultatov.";
     },
     needsItMessage$1(targetLanguage) {
       return "Po\u010dakajte, to ni " + targetLanguage + "! Ali potrebujete pomo\u010d pri prevajanju?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Vnesite celotno \u0161tevilo.";
-    },
-    get$buildTranslation() {
-      return "Sestavite prevod iz zgornjih mo\u017enosti";
     },
     get$practice() {
       return "Vaja";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 \u010ce niste videli novega zavihka, preverite svoj blokator pojavnih oken.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Onemogo\u010di jezikovna orodja";
-    },
     get$disableLanguageToolsDesc() {
       return "Ali \u017eelite onemogo\u010diti samodejno jezikovno pomo\u010d?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["U78CVRXlIo7dHvffcsoNDbRjbik="] = d.current;
+  d["eOqtNtWhkSUFELOy+JT508qdEcs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_809.part.js.map

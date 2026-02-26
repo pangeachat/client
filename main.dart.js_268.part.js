@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Napi\u0161te v " + l1 + " nebo " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klikn\u011bte a podr\u017ete pro informace o slov\u011b.";
-    },
     get$gaTooltip() {
       return "L2 pou\u017eit\xed s gramatickou asistenc\xed";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Zm\u011bnit n\xe1zev chatu";
-    },
-    get$sorryNoResults() {
-      return "Omlouv\xe1m se, \u017e\xe1dn\xe9 v\xfdsledky.";
     },
     needsItMessage$1(targetLanguage) {
       return "Po\u010dkejte, to nen\xed " + targetLanguage + "! Pot\u0159ebujete pomoc s p\u0159ekladem?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Zadejte cel\xe9 \u010d\xedslo.";
-    },
-    get$buildTranslation() {
-      return "Vytvo\u0159te sv\u016fj p\u0159eklad z v\xfd\u0161e uveden\xfdch mo\u017enost\xed";
     },
     get$practice() {
       return "Procvi\u010dov\xe1n\xed";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Pokud jste novou kartu nevid\u011bli, zkontrolujte pros\xedm blok\xe1tor vyskakovac\xedch oken.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Deaktivovat jazykov\xe9 n\xe1stroje";
-    },
     get$disableLanguageToolsDesc() {
       return "Cht\u011bli byste deaktivovat automatickou jazykovou pomoc?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zsaqDpbVI0GUwp0a60Ltdo43sN8="] = d.current;
+  d["Cr6F+krpsFHLG9cbjh5y6ejO258="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_268.part.js.map

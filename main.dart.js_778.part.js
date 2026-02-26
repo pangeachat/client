@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Rakstiet " + l1 + " vai " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Nospiediet un turiet, lai uzzin\u0101tu v\u0101rda inform\u0101ciju.";
-    },
     get$gaTooltip() {
       return "L2 lieto\u0161ana ar gramatikas pal\u012bdz\u012bbu";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Main\u012bt \u010data nosaukumu";
-    },
-    get$sorryNoResults() {
-      return "Atvainojiet, rezult\u0101ti nav atrasti.";
     },
     needsItMessage$1(targetLanguage) {
       return "Gaidiet, tas nav " + targetLanguage + "! Vai jums nepiecie\u0161ama pal\u012bdz\u012bba tulko\u0161an\u0101?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "L\u016bdzu, ievadiet veselu skaitli.";
-    },
-    get$buildTranslation() {
-      return "Veidojiet savu tulkojumu no iepriek\u0161 min\u0113taj\u0101m izv\u0113l\u0113m";
     },
     get$practice() {
       return "Prakse";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ja neredz\u0113j\u0101t jauno cilni, l\u016bdzu, p\u0101rbaudiet savu uznirsto\u0161o logu blo\u0137\u0113t\u0101ju.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Atsp\u0113jot valodas r\u012bkus";
-    },
     get$disableLanguageToolsDesc() {
       return "Vai v\u0113laties atsp\u0113jot autom\u0101tisko valodas pal\u012bdz\u012bbu?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R3KKHmyx4soNzdEHVkilg9t06B4="] = d.current;
+  d["EHnuKCXbGVbX23wqKiKMYI7TxaU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_778.part.js.map

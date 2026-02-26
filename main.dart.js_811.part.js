@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Kucajte na " + l1 + " ili " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Kliknite i dr\u017eite za informacije o re\u010di.";
-    },
     get$gaTooltip() {
       return "L2 upotreba sa gramati\u010dkom pomo\u0107i";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "\u041f\u0440\u043e\u043c\u0435\u043d\u0438 \u0438\u043c\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
-    },
-    get$sorryNoResults() {
-      return "\u0418\u0437\u0432\u0438\u043d\u0438\u0442\u0435, \u043d\u0435\u043c\u0430 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0430.";
     },
     needsItMessage$1(targetLanguage) {
       return "\u0427\u0435\u043a\u0430\u0458, \u0442\u043e \u043d\u0438\u0458\u0435 " + targetLanguage + "! \u0414\u0430 \u043b\u0438 \u0432\u0430\u043c \u0442\u0440\u0435\u0431\u0430 \u043f\u043e\u043c\u043e\u045b \u0443 \u043f\u0440\u0435\u0432\u043e\u0452\u0435\u045a\u0443?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "\u041c\u043e\u043b\u0438\u043c\u043e \u0443\u043d\u0435\u0441\u0438\u0442\u0435 \u0446\u0435\u043b\u043e\u0431\u0440\u043e\u0458\u043d\u0443 \u0432\u0440\u0435\u0434\u043d\u043e\u0441\u0442.";
-    },
-    get$buildTranslation() {
-      return "Izgradite svoj prevod iz izbora iznad";
     },
     get$practice() {
       return "Ve\u017ebajte";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ako niste videli novu karticu, molimo proverite svoj blokator iska\u010du\u0107ih prozora.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Onemogu\u0107i alate za jezik";
-    },
     get$disableLanguageToolsDesc() {
       return "Da li \u017eelite da onemogu\u0107ite automatsku jezi\u010dku pomo\u0107?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Et0SEF1oFT1DWLGrFS/AxQxrxzM="] = d.current;
+  d["S3bHJ8On4cTVQCrhl4GyeThGVD8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map

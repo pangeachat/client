@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Click and hold for word info.";
-    },
     get$gaTooltip() {
       return "L2 use with grammar assistance";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Change the name of the chat";
-    },
-    get$sorryNoResults() {
-      return "Sorry, no results.";
     },
     needsItMessage$1(targetLanguage) {
       return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Please enter a whole number value.";
-    },
-    get$buildTranslation() {
-      return "Build your translation from the choices above";
     },
     get$practice() {
       return "Practice";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 If you didn't see the new tab, please check your popup blocker.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Disable language tools";
-    },
     get$disableLanguageToolsDesc() {
       return "Would you like to disable automatic language assistance?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iaorQlRsEPFNvl4vv4wBoLbcBJI="] = d.current;
+  d["YferZqm2a1otYqOZ7CDDHwF0HWw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_447.part.js.map

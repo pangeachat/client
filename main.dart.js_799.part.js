@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Tasteaz\u0103 \xeen " + l1 + " sau " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "\u021aine ap\u0103sat pentru informa\u021bii despre cuv\xe2nt.";
-    },
     get$gaTooltip() {
       return "L2 utilizare cu asisten\u021b\u0103 gramatical\u0103";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Schimb\u0103 numele chat-ului";
-    },
-    get$sorryNoResults() {
-      return "Ne pare r\u0103u, nu exist\u0103 rezultate.";
     },
     needsItMessage$1(targetLanguage) {
       return "A\u0219teapt\u0103, nu este " + targetLanguage + "! Ai nevoie de ajutor pentru traducere?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "V\u0103 rug\u0103m s\u0103 introduce\u021bi o valoare \xeentreag\u0103.";
-    },
-    get$buildTranslation() {
-      return "Construie\u0219te traducerea ta din op\u021biunile de mai sus";
     },
     get$practice() {
       return "Exerseaz\u0103";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Dac\u0103 nu ai v\u0103zut noul tab, te rug\u0103m s\u0103 verifici blocatorul de feronete.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Dezactiveaz\u0103 uneltele de limb\u0103";
-    },
     get$disableLanguageToolsDesc() {
       return "Dori\u021bi s\u0103 dezactiva\u021bi asisten\u021ba automat\u0103 pentru limb\u0103?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FmNcacj4k6YaiwpYi0cwTKuig1Q="] = d.current;
+  d["9p2+QSoNP77zGeqisPMBJHFMEzY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_799.part.js.map

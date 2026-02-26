@@ -1651,9 +1651,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "\u8f93\u5165 " + l1 + " \u6216 " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "\u70b9\u51fb\u5e76\u6309\u4f4f\u83b7\u53d6\u5355\u8bcd\u4fe1\u606f\u3002";
-    },
     get$gaTooltip() {
       return "\u4f7f\u7528\u8bed\u6cd5\u8f85\u52a9\u7684\u4e8c\u7ea7\u8bed\u8a00";
     },
@@ -1701,9 +1698,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "\u66f4\u6539\u804a\u5929\u540d\u79f0";
-    },
-    get$sorryNoResults() {
-      return "\u62b1\u6b49\uff0c\u6ca1\u6709\u7ed3\u679c\u3002";
     },
     needsItMessage$1(targetLanguage) {
       return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e2e\u52a9\u7ffb\u8bd1\u5417\uff1f";
@@ -2742,9 +2736,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "\u8bf7\u8f93\u5165\u4e00\u4e2a\u6574\u6570\u503c\u3002";
-    },
-    get$buildTranslation() {
-      return "\u6839\u636e\u4e0a\u65b9\u7684\u9009\u9879\u6784\u5efa\u60a8\u7684\u7ffb\u8bd1";
     },
     get$practice() {
       return "\u7ec3\u4e60";
@@ -5404,9 +5395,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 \u5982\u679c\u60a8\u6ca1\u6709\u770b\u5230\u65b0\u6807\u7b7e\u9875\uff0c\u8bf7\u68c0\u67e5\u60a8\u7684\u5f39\u51fa\u7a97\u53e3\u62e6\u622a\u5668\u3002";
     },
-    get$disableLanguageToolsTitle() {
-      return "\u7981\u7528\u8bed\u8a00\u5de5\u5177";
-    },
     get$disableLanguageToolsDesc() {
       return "\u60a8\u60f3\u8981\u7981\u7528\u81ea\u52a8\u8bed\u8a00\u8f85\u52a9\u5417\uff1f";
     },
@@ -7253,9 +7241,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "\u7528 " + l1 + " \u6216 " + l2 + " \u8f38\u5165...";
     },
-    get$holdForInfo() {
-      return "\u9ede\u64ca\u4e26\u9577\u6309\u4ee5\u7372\u53d6\u55ae\u8a5e\u8cc7\u8a0a\u3002";
-    },
     get$gaTooltip() {
       return "\u4e0e\u8bed\u6cd5\u8f85\u52a9\u4e00\u8d77\u4f7f\u7528L2";
     },
@@ -7303,9 +7288,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "\u66f4\u6539\u804a\u5929\u540d\u7a31";
-    },
-    get$sorryNoResults() {
-      return "\u62b1\u6b49\uff0c\u6c92\u6709\u7d50\u679c\u3002";
     },
     needsItMessage$1(targetLanguage) {
       return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e6b\u52a9\u7ffb\u8b6f\u55ce\uff1f";
@@ -8344,9 +8326,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "\u8acb\u8f38\u5165\u6574\u6578\u503c\u3002";
-    },
-    get$buildTranslation() {
-      return "\u5f9e\u4e0a\u8ff0\u9078\u9805\u5efa\u7acb\u60a8\u7684\u7ffb\u8b6f";
     },
     get$practice() {
       return "\u7df4\u7fd2";
@@ -11006,9 +10985,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 \u5982\u679c\u60a8\u6c92\u6709\u770b\u5230\u65b0\u6a19\u7c64\u9801\uff0c\u8acb\u6aa2\u67e5\u60a8\u7684\u5f48\u51fa\u5f0f\u7a97\u53e3\u963b\u64cb\u5668\u3002";
     },
-    get$disableLanguageToolsTitle() {
-      return "\u7981\u7528\u8a9e\u8a00\u5de5\u5177";
-    },
     get$disableLanguageToolsDesc() {
       return "\u60a8\u60f3\u8981\u7981\u7528\u81ea\u52d5\u8a9e\u8a00\u8f14\u52a9\u55ce\uff1f";
     },
@@ -11227,7 +11203,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PPZ9tfnZZ5oDSesIJzhuUXFTRrc="] = d.current;
+  d["wWyEH1MIAb7Hm3AYZTlwvaRkFVw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

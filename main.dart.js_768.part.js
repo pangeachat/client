@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "\u012eveskite " + l1 + " arba " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Paspauskite ir palaikykite \u017eod\u017eio informacijai.";
-    },
     get$gaTooltip() {
       return "L2 naudojimas su gramatikos pagalba";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Pakeisti pokalbio pavadinim\u0105";
-    },
-    get$sorryNoResults() {
-      return "Atsipra\u0161ome, rezultat\u0173 n\u0117ra.";
     },
     needsItMessage$1(targetLanguage) {
       return "Palaukite, tai n\u0117ra " + targetLanguage + "! Ar jums reikia pagalbos ver\u010diant?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "\u012eveskite sveiko skai\u010diaus reik\u0161m\u0119.";
-    },
-    get$buildTranslation() {
-      return "Sukurkite savo vertim\u0105 i\u0161 auk\u0161\u010diau pateikt\u0173 pasirinkim\u0173";
     },
     get$practice() {
       return "Praktika";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Jei nemat\u0117te naujo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
     },
-    get$disableLanguageToolsTitle() {
-      return "I\u0161jungti kalbos \u012frankius";
-    },
     get$disableLanguageToolsDesc() {
       return "Ar nor\u0117tum\u0117te i\u0161jungti automatin\u0119 kalbos pagalb\u0105?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qk0AP1MHMTlvD81eOOogy+jw2tY="] = d.current;
+  d["pk3QAMyy3QPbNuZb8JdBXw/u4P0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_768.part.js.map

@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Tapez en " + l1 + " ou " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Cliquez et maintenez pour obtenir des infos sur le mot.";
-    },
     get$gaTooltip() {
       return "L2 \xe0 utiliser avec l'assistance grammaticale";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Changer le nom du chat";
-    },
-    get$sorryNoResults() {
-      return "D\xe9sol\xe9, aucun r\xe9sultat.";
     },
     needsItMessage$1(targetLanguage) {
       return "Attendez, ce n'est pas " + targetLanguage + " ! Avez-vous besoin d'aide pour la traduction ?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Veuillez entrer une valeur num\xe9rique enti\xe8re.";
-    },
-    get$buildTranslation() {
-      return "Construisez votre traduction \xe0 partir des choix ci-dessus";
     },
     get$practice() {
       return "Pratique";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Si vous n'avez pas vu le nouvel onglet, veuillez v\xe9rifier votre bloqueur de fen\xeatres contextuelles.";
     },
-    get$disableLanguageToolsTitle() {
-      return "D\xe9sactiver les outils linguistiques";
-    },
     get$disableLanguageToolsDesc() {
       return "Souhaitez-vous d\xe9sactiver l'assistance linguistique automatique ?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3YSSN9dZZSvGgXCg34bNWzy2svc="] = d.current;
+  d["MlWjWmAV+P8Az7s5WghMjAR7aPQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_643.part.js.map

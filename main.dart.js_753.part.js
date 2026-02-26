@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Scrivi in " + l1 + " o " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Clicca e tenea per info del parola.";
-    },
     get$gaTooltip() {
       return "L2 usar con assistentia grammatical";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Cambiar le nomine del chat";
-    },
-    get$sorryNoResults() {
-      return "Pardonne, nulle resultatos.";
     },
     needsItMessage$1(targetLanguage) {
       return "Aspetta, eso non es " + targetLanguage + "! Es que tu besona ayuda por traducer?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Per favor entra un valor de numero entier.";
-    },
-    get$buildTranslation() {
-      return "Construer tu traduction ex le optiones super";
     },
     get$practice() {
       return "Practica";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 M\xe1 chonaic t\xfa an cluais nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
     },
-    get$disableLanguageToolsTitle() {
-      return "D\xedgh\xe1 na huirlis\xed teanga";
-    },
     get$disableLanguageToolsDesc() {
       return "An bhfuil t\xfa ag iarraidh na cabhrach teanga uathoibr\xedoch a dh\xedghn\xedomhacht\xfa?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DjFNltGYAtZ3ZKMELDgyDblXOBU="] = d.current;
+  d["lQ3If5uoqY3LUYsGrbwwxFgDmt8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_753.part.js.map

@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Skriv i " + l1 + " eller " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klik og hold for ordinfo.";
-    },
     get$gaTooltip() {
       return "L2 brug med grammatikassistance";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Skift chatnavn";
-    },
-    get$sorryNoResults() {
-      return "Beklager, ingen resultater.";
     },
     needsItMessage$1(targetLanguage) {
       return "Vent, det er ikke " + targetLanguage + "! Har du brug for hj\xe6lp til overs\xe6ttelse?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Indtast venligst et helt tal.";
-    },
-    get$buildTranslation() {
-      return "Byg din overs\xe6ttelse ud fra valgene ovenfor";
     },
     get$practice() {
       return "\xd8v";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Hvis du ikke s\xe5 den nye fane, skal du tjekke din popup-blokker.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Deaktiver sprogv\xe6rkt\xf8jer";
-    },
     get$disableLanguageToolsDesc() {
       return "Vil du deaktivere automatisk sprogassistance?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EMAOz2/FPPp27y8PILLwH4Lm63Y="] = d.current;
+  d["Svw2fL8iTrqqWzrMKE75ZjNfV8I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_334.part.js.map

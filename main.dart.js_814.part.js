@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Skriv p\xe5 " + l1 + " eller " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klicka och h\xe5ll f\xf6r ordinformation.";
-    },
     get$gaTooltip() {
       return "L2 anv\xe4ndning med grammatikhj\xe4lp";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "\xc4ndra chatnamnet";
-    },
-    get$sorryNoResults() {
-      return "Tyv\xe4rr, inga resultat.";
     },
     needsItMessage$1(targetLanguage) {
       return "V\xe4nta, det \xe4r inte " + targetLanguage + "! Beh\xf6ver du hj\xe4lp med att \xf6vers\xe4tta?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "V\xe4nligen ange ett heltal.";
-    },
-    get$buildTranslation() {
-      return "Bygg din \xf6vers\xe4ttning fr\xe5n valen ovan";
     },
     get$practice() {
       return "\xd6va";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Om du inte s\xe5g den nya fliken, v\xe4nligen kontrollera din popup-blockerare.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Inaktivera spr\xe5kinstrument";
-    },
     get$disableLanguageToolsDesc() {
       return "Vill du inaktivera automatisk spr\xe5khj\xe4lp?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oqH/nMv3FlpVxjfdb9eNf8cG53k="] = d.current;
+  d["zlpGXdgO8C3GJXHZmNBURm7TVG8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_814.part.js.map

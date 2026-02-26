@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "\xcdrj " + l1 + " vagy " + l2 + " nyelven...";
     },
-    get$holdForInfo() {
-      return "Kattints \xe9s tartsd lenyomva a sz\xf3 inform\xe1ci\xf3j\xe1\xe9rt.";
-    },
     get$gaTooltip() {
       return "L2 haszn\xe1lata nyelvtani seg\xedts\xe9ggel";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "A chat nev\xe9nek m\xf3dos\xedt\xe1sa";
-    },
-    get$sorryNoResults() {
-      return "Sajn\xe1lom, nincs eredm\xe9ny.";
     },
     needsItMessage$1(targetLanguage) {
       return "V\xe1rj, ez nem " + targetLanguage + "! Sz\xfcks\xe9ged van seg\xedts\xe9gre a ford\xedt\xe1sban?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "K\xe9rj\xfck, \xedrjon be egy eg\xe9sz sz\xe1m \xe9rt\xe9ket.";
-    },
-    get$buildTranslation() {
-      return "\xc9p\xedtse fel ford\xedt\xe1s\xe1t a fenti lehet\u0151s\xe9gek alapj\xe1n";
     },
     get$practice() {
       return "Gyakorlat";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3 ablak blokkol\xf3dat.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Nyelvi eszk\xf6z\xf6k letilt\xe1sa";
-    },
     get$disableLanguageToolsDesc() {
       return "Szeretn\xe9 letiltani az automatikus nyelvi seg\xedts\xe9get?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TihjVePRPmQRwIAn7Hfr56dj/U8="] = d.current;
+  d["ABdCSufB5fAq7K+X7D2WB+Yt630="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Cl\xf3scr\xedobh i " + l1 + " n\xf3 " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Bain triail as agus coinnigh s\xedos le haghaidh eolas faoin bhfocal.";
-    },
     get$gaTooltip() {
       return "\xdas\xe1id L2 le cabhair gramada\xed";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Athraigh ainm an chomhr\xe1";
-    },
-    get$sorryNoResults() {
-      return "T\xe1 br\xf3n orm, n\xedl tortha\xed ar f\xe1il.";
     },
     needsItMessage$1(targetLanguage) {
       return "Fan, n\xedl s\xe9 " + targetLanguage + "! An bhfuil uait cabhair le haistri\xfach\xe1n?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Cuir luach uimhri\xfail ioml\xe1n isteach le do thoil.";
-    },
-    get$buildTranslation() {
-      return "T\xf3g do aistri\xfach\xe1n \xf3 na roghanna thuas";
     },
     get$practice() {
       return "Cleachtadh";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
     },
-    get$disableLanguageToolsTitle() {
-      return "D\xedchur uirlis\xed teanga";
-    },
     get$disableLanguageToolsDesc() {
       return "Ar mhaith leat uirlis\xed cabhrach teanga uathoibr\xedoch a d\xedchur?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WkmRctpIQolqeVO9jZxNlOMnIfg="] = d.current;
+  d["5Jj/2O/ZN/myaFGxBzSkJtlZ8KE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

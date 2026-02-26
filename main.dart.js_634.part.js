@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Mag-type sa " + l1 + " o " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Pindutin at hawakan para sa impormasyon ng salita.";
-    },
     get$gaTooltip() {
       return "L2 gamitin kasama ang tulong sa gramatika";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Palitan ang pangalan ng chat";
-    },
-    get$sorryNoResults() {
-      return "Paumanhin, walang resulta.";
     },
     needsItMessage$1(targetLanguage) {
       return "Sandali, hindi iyon " + targetLanguage + "! Kailangan mo ba ng tulong sa pagsasalin?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Mangyaring magpasok ng isang buong bilang.";
-    },
-    get$buildTranslation() {
-      return "Buuin ang iyong pagsasalin mula sa mga pagpipilian sa itaas";
     },
     get$practice() {
       return "Praktis";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.";
     },
-    get$disableLanguageToolsTitle() {
-      return "I-disable ang mga kasangkapan sa wika";
-    },
     get$disableLanguageToolsDesc() {
       return "Gusto mo bang i-disable ang awtomatikong tulong sa wika?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qk/j3WKmPNnBRABYwRoq4jwCu7M="] = d.current;
+  d["eO8EMfaCNQ35LtBH/s2cRlrlqbo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_634.part.js.map

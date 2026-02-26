@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Idatzi " + l1 + " edo " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klikatu eta eutsi hitzaren informazioarentzat.";
-    },
     get$gaTooltip() {
       return "L2 gramatika laguntzarekin erabiltzeko";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Aldatu txateatzen denaren izena";
-    },
-    get$sorryNoResults() {
-      return "Barkatu, ez dago emaitzarik.";
     },
     needsItMessage$1(targetLanguage) {
       return "Itxaron, hori ez da " + targetLanguage + "! Laguntza behar duzu itzultzen?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Mesedez, sartu zenbaki osoa balio bat.";
-    },
-    get$buildTranslation() {
-      return "Eraiki zure itzulpena goiko aukeraketatik";
     },
     get$practice() {
       return "Praktika";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Fitxa berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Desaktibatu hizkuntza tresnak";
-    },
     get$disableLanguageToolsDesc() {
       return "Desaktibatu nahi al duzu hizkuntza laguntza automatikoa?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fjLViUpLu3NSjr4Ql2ZMCiBV63A="] = d.current;
+  d["IQSipC0TIK9vCVkoqhTmrkurUSA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_603.part.js.map

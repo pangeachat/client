@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Upi\u0161ite na " + l1 + " ili " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Kliknite i dr\u017eite za informacije o rije\u010di.";
-    },
     get$gaTooltip() {
       return "L2 kori\u0161tenje s gramati\u010dkom pomo\u0107i";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Promijeni ime chata";
-    },
-    get$sorryNoResults() {
-      return "Oprostite, nema rezultata.";
     },
     needsItMessage$1(targetLanguage) {
       return "\u010cekaj, to nije " + targetLanguage + "! Trebate li pomo\u0107 s prevo\u0111enjem?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Molimo unesite cijeli broj.";
-    },
-    get$buildTranslation() {
-      return "Izgradite svoj prijevod od gore navedenih opcija";
     },
     get$practice() {
       return "Vje\u017eba";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ako niste vidjeli novu karticu, provjerite svoj blokator iska\u010du\u0107ih prozora.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Onemogu\u0107i alate za jezik";
-    },
     get$disableLanguageToolsDesc() {
       return "\u017delite li onemogu\u0107iti automatsku jezi\u010dnu pomo\u0107?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["P3IadU/cDWLge5pZ3/amMIbHG70="] = d.current;
+  d["yvGK0uaR5GR7TSgRU/NJehFv1vk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_678.part.js.map

@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Scrivi in " + l1 + " o " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Tieni premuto per informazioni sulla parola.";
-    },
     get$gaTooltip() {
       return "L2 utilizzo con assistenza grammaticale";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Cambia il nome della chat";
-    },
-    get$sorryNoResults() {
-      return "Spiacente, nessun risultato.";
     },
     needsItMessage$1(targetLanguage) {
       return "Aspetta, non \xe8 " + targetLanguage + "! Hai bisogno di aiuto con la traduzione?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Per favore inserisci un valore numerico intero.";
-    },
-    get$buildTranslation() {
-      return "Costruisci la tua traduzione dalle scelte sopra";
     },
     get$practice() {
       return "Pratica";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Disabilita gli strumenti linguistici";
-    },
     get$disableLanguageToolsDesc() {
       return "Vuoi disabilitare l'assistenza linguistica automatica?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sn8/TninXhUx9ZAHlvqZ/qhFoXE="] = d.current;
+  d["077eAEpQbQ1gUuOBPn+T7U5x6ag="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_761.part.js.map

@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Kirjuta " + l1 + " v\xf5i " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Vajuta ja hoia s\xf5na info saamiseks.";
-    },
     get$gaTooltip() {
       return "L2 kasutamine grammatika abiga";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Muuda vestluse nime";
-    },
-    get$sorryNoResults() {
-      return "Vabandame, tulemusi ei leitud.";
     },
     needsItMessage$1(targetLanguage) {
       return "Oota, see ei ole " + targetLanguage + "! Kas vajad abi t\xf5lkimisel?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Palun sisestage t\xe4isarvuline v\xe4\xe4rtus.";
-    },
-    get$buildTranslation() {
-      return "Loo oma t\xf5lge \xfclaltoodud valikutest";
     },
     get$practice() {
       return "Praktika";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Kui te ei n\xe4inud uut vahekaarti, kontrollige palun oma h\xfcpikakna blokeerijat.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Keela keele t\xf6\xf6riistad";
-    },
     get$disableLanguageToolsDesc() {
       return "Kas soovite automaatset keeleabi keelata?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cgMblxBMG8tKA2Wwyo0W+kjYyEY="] = d.current;
+  d["ClkTMgVC7qTqibM0cNH0bRas59s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_579.part.js.map

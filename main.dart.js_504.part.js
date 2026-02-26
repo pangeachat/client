@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Tajpu en " + l1 + " a\u016d " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klaku kaj teni por vorto-informoj.";
-    },
     get$gaTooltip() {
       return "L2 uzi kun gramatika helpo";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "\u015can\u011di la nomon de la babilejo";
-    },
-    get$sorryNoResults() {
-      return "Pardonu, neniuj rezultoj.";
     },
     needsItMessage$1(targetLanguage) {
       return "Atendu, tio ne estas " + targetLanguage + "! \u0108u vi bezonas helpon por traduki?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Bonvolu enmeti tutan nombrvaloron.";
-    },
-    get$buildTranslation() {
-      return "Kreu vian tradukon el la supraj elektoj";
     },
     get$practice() {
       return "Praktiko";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Se vi ne vidis la novan langeton, bonvolu kontroli vian popup-blokilon.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Malaktivigi lingvo-ilojn";
-    },
     get$disableLanguageToolsDesc() {
       return "\u0108u vi \u015datus malaktivigi a\u016dtomatan lingvohelpon?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eGLGjMhsdnjOXUTchZ2eFpZvWB4="] = d.current;
+  d["Vi8o2iRZYkH/DNjkxow6hCM7pZ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_504.part.js.map

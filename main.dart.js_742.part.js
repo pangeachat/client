@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Ketik dalam " + l1 + " atau " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Klik dan tahan untuk info kata.";
-    },
     get$gaTooltip() {
       return "Penggunaan L2 dengan bantuan tata bahasa";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Ubah nama obrolan";
-    },
-    get$sorryNoResults() {
-      return "Maaf, tidak ada hasil.";
     },
     needsItMessage$1(targetLanguage) {
       return "Tunggu, itu bukan " + targetLanguage + "! Apakah Anda membutuhkan bantuan menerjemahkan?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Silakan masukkan nilai angka bulat.";
-    },
-    get$buildTranslation() {
-      return "Bangun terjemahan Anda dari pilihan di atas";
     },
     get$practice() {
       return "Latihan";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Nonaktifkan alat bahasa";
-    },
     get$disableLanguageToolsDesc() {
       return "Apakah Anda ingin menonaktifkan bantuan bahasa otomatis?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["y+BRWPlvzMkJn2Gy0E6SJx4mxCg="] = d.current;
+  d["1fBGl/iye+uM2RkGlGeiM+eChwQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map

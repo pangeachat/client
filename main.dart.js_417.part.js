@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Geben Sie in " + l1 + " oder " + l2 + " ein...";
     },
-    get$holdForInfo() {
-      return "Klicken und halten f\xfcr Wortinformationen.";
-    },
     get$gaTooltip() {
       return "L2 Verwendung mit Grammatikhilfe";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Den Namen des Chats \xe4ndern";
-    },
-    get$sorryNoResults() {
-      return "Entschuldigung, keine Ergebnisse.";
     },
     needsItMessage$1(targetLanguage) {
       return "Warte, das ist nicht " + targetLanguage + "! Bist du bei der \xdcbersetzung Hilfe n\xf6tig?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Bitte geben Sie eine ganze Zahl ein.";
-    },
-    get$buildTranslation() {
-      return "Erstellen Sie Ihre \xdcbersetzung aus den oben genannten Optionen";
     },
     get$practice() {
       return "\xdcben";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Wenn Sie den neuen Tab nicht gesehen haben, \xfcberpr\xfcfen Sie bitte Ihren Popup-Blocker.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Spracheinstellungen deaktivieren";
-    },
     get$disableLanguageToolsDesc() {
       return "M\xf6chten Sie die automatische Sprachunterst\xfctzung deaktivieren?";
     },
@@ -5629,7 +5617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dMqlWHKz8ZC8SwxVaclf0O/7Yis="] = d.current;
+  d["dNCBivSEg5xIKNhx1IRGJygW7e0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_417.part.js.map

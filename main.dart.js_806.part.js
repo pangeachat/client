@@ -1644,9 +1644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Nap\xed\u0161te v " + l1 + " alebo " + l2 + "...";
     },
-    get$holdForInfo() {
-      return "Kliknite a podr\u017ete pre inform\xe1cie o slove.";
-    },
     get$gaTooltip() {
       return "L2 pou\u017eitie s gramatickou asistenciou";
     },
@@ -1694,9 +1691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheNameOfTheChat() {
       return "Zmeni\u0165 n\xe1zov chatu";
-    },
-    get$sorryNoResults() {
-      return "Prep\xe1\u010dte, \u017eiadne v\xfdsledky.";
     },
     needsItMessage$1(targetLanguage) {
       return "Po\u010dkaj, to nie je " + targetLanguage + "! Potrebuje\u0161 pomoc s prekladom?";
@@ -2735,9 +2729,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$enterNumber() {
       return "Zadajte cel\xe9 \u010d\xedslo.";
-    },
-    get$buildTranslation() {
-      return "Vytvorte svoj preklad z mo\u017enost\xed vy\u0161\u0161ie";
     },
     get$practice() {
       return "Cvi\u010di\u0165";
@@ -5397,9 +5388,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ak ste nevideli nov\xfa kartu, skontrolujte pros\xedm svoj blokova\u010d vyskakovac\xedch okien.";
     },
-    get$disableLanguageToolsTitle() {
-      return "Deaktivova\u0165 jazykov\xe9 n\xe1stroje";
-    },
     get$disableLanguageToolsDesc() {
       return "Chceli by ste deaktivova\u0165 automatick\xfa jazykov\xfa pomoc?";
     },
@@ -5626,7 +5614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gc+ztDnxaL9h5KSbybN33FMNJyg="] = d.current;
+  d["JdQbHk2GvERsw0EauroXtSkt+RI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_806.part.js.map
