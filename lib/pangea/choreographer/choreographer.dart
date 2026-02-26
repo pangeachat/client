@@ -34,9 +34,7 @@ class Choreographer extends ChangeNotifier {
   ChoreoRecordModel? _choreoRecord;
 
   final ValueNotifier<bool> _isFetching = ValueNotifier(false);
-  final ValueNotifier<int> _timesDismissedIT = ValueNotifier(0);
 
-  int _timesClicked = 0;
   Timer? _debounceTimer;
   String? _lastChecked;
 
@@ -53,9 +51,7 @@ class Choreographer extends ChangeNotifier {
     _initialize();
   }
 
-  int get timesClicked => _timesClicked;
   ValueNotifier<bool> get isFetching => _isFetching;
-  ValueNotifier<int> get timesDismissedIT => _timesDismissedIT;
   String get currentText => textController.text;
 
   ChoreoRecordModel get _record => _choreoRecord ??= ChoreoRecordModel(
@@ -113,7 +109,6 @@ class Choreographer extends ChangeNotifier {
 
   void clear() {
     _lastChecked = null;
-    _timesClicked = 0;
     _isFetching.value = false;
     _choreoRecord = null;
     igcController.clear();
@@ -135,19 +130,12 @@ class Choreographer extends ChangeNotifier {
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
-    _timesDismissedIT.dispose();
 
     TtsController.stop();
     super.dispose();
   }
 
   void onPaste(String value) => _record.pastedStrings.add(value);
-
-  void onClickSend() {
-    if (assistanceState == AssistanceStateEnum.fetched) {
-      _timesClicked++;
-    }
-  }
 
   void _resetDebounceTimer() {
     if (_debounceTimer != null) {

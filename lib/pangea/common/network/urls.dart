@@ -35,13 +35,9 @@ class PApiUrls {
   static String simpleTranslation =
       "${PApiUrls._choreoEndpoint}/translation/direct";
   static String tokenize = "${PApiUrls._choreoEndpoint}/tokenize";
-  static String contextualDefinition =
-      "${PApiUrls._choreoEndpoint}/contextual_definition";
 
   static String textToSpeech = "${PApiUrls._choreoEndpoint}/text_to_speech";
   static String speechToText = "${PApiUrls._choreoEndpoint}/speech_to_text";
-  static String phoneticTranscription =
-      "${PApiUrls._choreoEndpoint}/phonetic_transcription";
   static String phoneticTranscriptionV2 =
       "${PApiUrls._choreoEndpoint}/phonetic_transcription_v2";
 
