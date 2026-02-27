@@ -10,7 +10,7 @@ class KnockTracker {
   static const String _roomIdsField = 'room_ids';
 
   static Future<void> recordKnock(Client client, String roomId) async {
-    final ids = _getKnockedRoomIds(client);
+    final ids = getKnockedRoomIds(client);
     if (!ids.contains(roomId)) {
       ids.add(roomId);
       await _writeIds(client, ids);
@@ -18,17 +18,17 @@ class KnockTracker {
   }
 
   static bool hasKnocked(Client client, String roomId) {
-    return _getKnockedRoomIds(client).contains(roomId);
+    return getKnockedRoomIds(client).contains(roomId);
   }
 
   static Future<void> clearKnock(Client client, String roomId) async {
-    final ids = _getKnockedRoomIds(client);
+    final ids = getKnockedRoomIds(client);
     if (ids.remove(roomId)) {
       await _writeIds(client, ids);
     }
   }
 
-  static List<String> _getKnockedRoomIds(Client client) {
+  static List<String> getKnockedRoomIds(Client client) {
     final data = client.accountData[_accountDataKey];
     final list = data?.content[_roomIdsField];
     if (list is List) {
