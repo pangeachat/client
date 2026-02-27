@@ -160,22 +160,28 @@ Future<void> _tryPushHelper(
 
   // Calculate the body
   // #Pangea
-  final String body;
-  if (isKnockAcceptedInviteForClient(event: event, client: client)) {
-    body = l10n.knockAccepted;
-  } else {
-    body = event.type == EventTypes.Encrypted
-        // ? l10n.newMessageInFluffyChat
-        ? l10n.newMessageInPangeaChat
-        : await event.calcLocalizedBody(
-            matrixLocals,
-            plaintextBody: true,
-            withSenderNamePrefix: false,
-            hideReply: true,
-            hideEdit: true,
-            removeMarkdown: true,
-          );
-  }
+  // final body = event.type == EventTypes.Encrypted
+  //     ? l10n.newMessageInFluffyChat
+  //     : await event.calcLocalizedBody(
+  //         matrixLocals,
+  //         plaintextBody: true,
+  //         withSenderNamePrefix: false,
+  //         hideReply: true,
+  //         hideEdit: true,
+  //         removeMarkdown: true,
+  //       );
+  final body = isKnockAcceptedInviteForClient(event: event, client: client)
+      ? l10n.knockAccepted
+      : event.type == EventTypes.Encrypted
+      ? l10n.newMessageInPangeaChat
+      : await event.calcLocalizedBody(
+          matrixLocals,
+          plaintextBody: true,
+          withSenderNamePrefix: false,
+          hideReply: true,
+          hideEdit: true,
+          removeMarkdown: true,
+        );
   // Pangea#
 
   // The person object for the android message style notification

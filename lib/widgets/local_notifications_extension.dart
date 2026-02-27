@@ -37,21 +37,28 @@ extension LocalNotificationsExtension on MatrixState {
       MatrixLocals(L10n.of(context)),
     );
     // #Pangea
-    final String body;
-    if (isKnockAcceptedInviteForClient(event: event, client: client)) {
-      body = L10n.of(context).knockAccepted;
-    } else {
-      body = await event.calcLocalizedBody(
-        MatrixLocals(L10n.of(context)),
-        withSenderNamePrefix:
-            !event.room.isDirectChat ||
-            event.room.lastEvent?.senderId == client.userID,
-        plaintextBody: true,
-        hideReply: true,
-        hideEdit: true,
-        removeMarkdown: true,
-      );
-    }
+    // final body = await event.calcLocalizedBody(
+    //   MatrixLocals(L10n.of(context)),
+    //   withSenderNamePrefix:
+    //       !event.room.isDirectChat ||
+    //       event.room.lastEvent?.senderId == client.userID,
+    //   plaintextBody: true,
+    //   hideReply: true,
+    //   hideEdit: true,
+    //   removeMarkdown: true,
+    // );
+    final body = isKnockAcceptedInviteForClient(event: event, client: client)
+        ? L10n.of(context).knockAccepted
+        : await event.calcLocalizedBody(
+            MatrixLocals(L10n.of(context)),
+            withSenderNamePrefix:
+                !event.room.isDirectChat ||
+                event.room.lastEvent?.senderId == client.userID,
+            plaintextBody: true,
+            hideReply: true,
+            hideEdit: true,
+            removeMarkdown: true,
+          );
     // Pangea#
 
     if (kIsWeb) {
