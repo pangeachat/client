@@ -1,6 +1,6 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 
 /// Returns true when a push notification event is an accepted-knock invite —
 /// i.e. an m.room.member invite targeting the current user in a room the user
@@ -13,13 +13,12 @@ bool isKnockAcceptedInvite({
   required String? newMembership,
   required String? stateKey,
   required String? currentUserId,
-  required List<String> knockedRoomIds,
-  required String roomId,
+  required bool hasKnocked,
 }) {
   return eventType == EventTypes.RoomMember &&
       newMembership == 'invite' &&
       stateKey == currentUserId &&
-      knockedRoomIds.contains(roomId);
+      hasKnocked;
 }
 
 /// Convenience wrapper that reads [KnockTracker] state from a live [Client].
@@ -32,7 +31,6 @@ bool isKnockAcceptedInviteForClient({
     newMembership: event.content.tryGet<String>('membership'),
     stateKey: event.stateKey,
     currentUserId: client.userID,
-    knockedRoomIds: KnockTracker.getKnockedRoomIds(client),
-    roomId: event.room.id,
+    hasKnocked: client.hasEverKnockedRoom(event.room.id),
   );
 }

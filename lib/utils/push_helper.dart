@@ -170,7 +170,11 @@ Future<void> _tryPushHelper(
   //         hideEdit: true,
   //         removeMarkdown: true,
   //       );
-  final body = isKnockAcceptedInviteForClient(event: event, client: client)
+  final hasKnocked = isKnockAcceptedInviteForClient(
+    event: event,
+    client: client,
+  );
+  final body = hasKnocked
       ? l10n.knockAccepted
       : event.type == EventTypes.Encrypted
       ? l10n.newMessageInPangeaChat
