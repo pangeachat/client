@@ -29,6 +29,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_new_badger/flutter_new_badger.dart';
+import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:unifiedpush/unifiedpush.dart';
@@ -39,6 +40,7 @@ import 'package:fluffychat/main.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -636,11 +638,70 @@ class UPFunctions extends UnifiedPushFunctions {
 // #Pangea
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // Required for background isolate
   WidgetsFlutterBinding.ensureInitialized();
+
+  // If the main app is alive (e.g. iOS background), reuse its client
+  // and local notifications plugin.
   final instance = BackgroundPush._instance;
-  if (instance == null) return;
-  await instance._onOpenNotification(message);
+  if (instance != null) {
+    await pushHelper(
+      PushNotification.fromJson(message.data),
+      client: instance.client,
+      l10n: instance.l10n,
+      activeRoomId: instance.matrix?.activeRoomId,
+      flutterLocalNotificationsPlugin:
+          instance._flutterLocalNotificationsPlugin,
+      additionalData: message.data,
+    );
+    return;
+  }
+
+  // App is killed — bootstrap a temporary client so pushHelper can display
+  // knock-aware (and other) local notifications instead of relying on the
+  // generic body from Sygnal/Firebase.
+  try {
+    await vod.init();
+  } catch (_) {
+    // vodozemac may already be initialized or unavailable — non-fatal
+  }
+
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  await flutterLocalNotificationsPlugin.initialize(
+    const InitializationSettings(
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+      iOS: DarwinInitializationSettings(),
+    ),
+    onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
+  );
+
+  final store = await AppSettings.init();
+  final client = (await ClientManager.getClients(
+    initialize: false,
+    store: store,
+  )).first;
+  await client.init(
+    waitForFirstSync: false,
+    waitUntilLoadCompletedLoaded: false,
+  );
+  // Wait for account data so KnockTracker state is available
+  // for the knock-accepted invite check in pushHelper.
+  await client.accountDataLoading;
+
+  if (!client.isLogged()) {
+    Logs().w('Background push received but user not logged in');
+    return;
+  }
+
+  try {
+    await pushHelper(
+      PushNotification.fromJson(message.data),
+      client: client,
+      flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      additionalData: message.data,
+    );
+  } finally {
+    await client.dispose(closeDatabase: false);
+  }
 }
 
 // Pangea#
