@@ -5450,6 +5450,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Yor requst has been sent to course admin! Yu'll be let in if dey approve.";
     },
+    get$knockAccepted() {
+      return "Tua richiesta di ingresso \xe8 stata accettata! Ora puoi entrare nel corso.";
+    },
     get$joinSpaceOnboardingDesc() {
       return "Do you have an invite code or link to a public course?";
     },
@@ -5595,13 +5598,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Banned. Unable to join.";
     },
     get$sessionFull() {
-      return "Too late! This activity is full.";
+      return "Troppo tardi! Questa attivit\xe0 \xe8 piena.";
     },
     get$returnToCourse() {
-      return "Return to course";
+      return "Torna al corso";
     },
     get$returnHome() {
-      return "Return home";
+      return "Torna a casa";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5628,7 +5631,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["14zooOBz1GpDWR6RndkB+x7mU8Y="] = d.current;
+  d["MaeS+cvKIK+KuRH+blFDjlFlZro="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

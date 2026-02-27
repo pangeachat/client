@@ -5460,6 +5460,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return string$.Sua_so;
     },
+    get$knockAccepted() {
+      return string$.Seu_pe;
+    },
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
@@ -5605,13 +5608,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Banido. Imposs\xedvel de entrar.";
     },
     get$sessionFull() {
-      return "Too late! This activity is full.";
+      return "Muito tarde! Esta atividade est\xe1 cheia.";
     },
     get$returnToCourse() {
-      return "Return to course";
+      return "Voltar ao curso";
     },
     get$returnHome() {
-      return "Return home";
+      return "Voltar para casa";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -11050,6 +11053,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return string$.Sua_so;
     },
+    get$knockAccepted() {
+      return string$.Seu_pe;
+    },
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
@@ -11193,6 +11199,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$cannotJoinBannedRoom() {
       return "Banido. N\xe3o \xe9 poss\xedvel entrar.";
+    },
+    get$sessionFull() {
+      return "Muito tarde! Esta atividade est\xe1 cheia.";
+    },
+    get$returnToCourse() {
+      return "Voltar ao curso";
+    },
+    get$returnHome() {
+      return "Voltar para casa";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16631,6 +16646,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return string$.Sua_so;
     },
+    get$knockAccepted() {
+      return string$.Seu_pe;
+    },
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
@@ -16774,6 +16792,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$cannotJoinBannedRoom() {
       return "Banido. Imposs\xedvel entrar.";
+    },
+    get$sessionFull() {
+      return "Muito tarde! Esta atividade est\xe1 cheia.";
+    },
+    get$returnToCourse() {
+      return "Voltar ao curso";
+    },
+    get$returnHome() {
+      return "Voltar para casa";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16941,6 +16968,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Se_o_s: "Se o seu navegador bloquear downloads, por favor, habilite downloads para este site.",
     Se_seu: "Se seu dispositivo suportar o idioma que voc\xea est\xe1 aprendendo, voc\xea pode ativar a autocorre\xe7\xe3o do dispositivo para corrigir erros comuns enquanto digita.",
     Seleci: "Selecione todas as palavras que voc\xea ouve no \xe1udio",
+    Seu_pe: "Seu pedido de entrada foi aceito! Voc\xea pode agora entrar no curso.",
     Sobres: "Sobrescreve todas as outras regras e desativa todas as notifica\xe7\xf5es.",
     Solici: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
     Soment: "Somente administradores podem excluir um curso. Esta \xe9 uma a\xe7\xe3o destrutiva que remove todos os usu\xe1rios e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
@@ -16976,7 +17004,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0lqBewC3Yt9beII2eHcuVp9OSzI="] = d.current;
+  d["EUuqMvb90Re5yXnFckjM6rLM7RI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

@@ -5,3825 +5,3825 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nYue$() {
-      return new A.L10nYue(B.canonicalizedLocale("yue"));
+    L10nUz$() {
+      return new A.L10nUz(B.canonicalizedLocale("uz"));
     },
-    L10nYue: function L10nYue(t0) {
+    L10nUz: function L10nUz(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[55];
-  A = hunkHelpers.updateHolder(holdersList[54], A);
-  A.L10nYue.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[52], A);
+  A.L10nUz.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u6c38\u9060\u4f7f\u752824\u5c0f\u6642\u5236";
+      return "true";
     },
     get$repeatPassword() {
-      return "\u91cd\u8907\u5bc6\u78bc";
+      return "Parolni takrorlang";
     },
     get$notAnImage() {
-      return "\u4e0d\u662f\u5716\u50cf\u6587\u4ef6\u3002";
+      return "Rasm fayli emas.";
     },
     get$setCustomPermissionLevel() {
-      return "\u8a2d\u7f6e\u81ea\u5b9a\u7fa9\u6b0a\u9650\u7d1a\u5225";
+      return "Maxsus ruxsatlar darajasini sozlash";
     },
     get$setPermissionsLevelDescription() {
-      return "\u8acb\u9078\u64c7\u4ee5\u4e0b\u9810\u5b9a\u7fa9\u89d2\u8272\u6216\u8f38\u51650\u5230100\u4e4b\u9593\u7684\u81ea\u5b9a\u7fa9\u6b0a\u9650\u7d1a\u5225\u3002";
+      return "Quyidagi oldindan belgilangan rolni tanlang yoki 0-100 orasidagi maxsus ruxsatlar darajasini kiriting.";
     },
     get$ignoreUser() {
-      return "\u5ffd\u7565\u7528\u6236";
+      return "Foydalanuvchini e\u2019tiborsiz qoldirish";
     },
     get$normalUser() {
-      return "\u666e\u901a\u7528\u6236";
+      return "Oddiy foydalanuvchi";
     },
     get$remove(_) {
-      return "\u522a\u9664";
+      return "O\u2018chirish";
     },
     get$importNow() {
-      return "\u7acb\u5373\u5c0e\u5165";
+      return "Hozir import qilish";
     },
     get$importEmojis() {
-      return "\u5c0e\u5165\u8868\u60c5\u7b26\u865f";
+      return "Emojilarni import qilish";
     },
     get$importFromZipFile() {
-      return "\u5f9e.zip\u6587\u4ef6\u5c0e\u5165";
+      return ".zip faylidan import qilish";
     },
     get$exportEmotePack() {
-      return "\u5c0e\u51fa\u8868\u60c5\u5305\u70ba.zip";
+      return "Emotsiyalar to\u2018plamini .zip fayl ko\u2018rinishida eksport qilish";
     },
     get$replace(_) {
-      return "\u66ff\u63db";
+      return "Almashtirmoq";
     },
     get$about() {
-      return "\u95dc\u65bc";
+      return "Biz haqimizda";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u95dc\u65bc " + homeserver;
+      return homeserver + " haqida";
     },
     get$accept(_) {
-      return "\u63a5\u53d7";
+      return "Qabul qilmoq";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u63a5\u53d7\u4e86\u9080\u8acb";
+      return "\ud83d\udc4d " + username + " taklifni qabul qildi";
     },
     get$account() {
-      return "\u5e33\u6236";
+      return "Hisob";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u5df2\u555f\u7528\u7aef\u5230\u7aef\u52a0\u5bc6";
+      return "\ud83d\udd10 " + username + " shifrlashni yakunlash uchun faollashtirdi";
     },
     get$addEmail() {
-      return "\u6dfb\u52a0\u96fb\u5b50\u90f5\u4ef6";
+      return "Email qo\u2018shish";
     },
     supposedMxid$1(mxid) {
-      return "\u5462\u500b\u61c9\u8a72\u4fc2 " + mxid;
+      return "Bu " + mxid + " bo\u2018lishi kerak";
     },
     get$admin() {
-      return "\u7ba1\u7406\u54e1";
+      return "Admin";
     },
     get$allChats() {
-      return "\u6240\u6709\u804a\u5929";
+      return "Hamma suhbatlar";
     },
     get$commandHint_roomupgrade() {
-      return "\u5c07\u5462\u500b\u623f\u9593\u5347\u7d1a\u5230\u6307\u5b9a\u5605\u623f\u9593\u7248\u672c";
+      return "Bu guruhni berilgan guruh versiyasiga yangilang";
     },
     get$commandHint_googly() {
-      return "\u9001\u51fa\u5572\u9b3c\u773c";
+      return "G\u2018ilay ko\u2018zlarini yuboring";
     },
     get$commandHint_cuddle() {
-      return "\u9001\u51fa\u4e00\u500b\u64c1\u62b1";
+      return "Erkalash yuborish";
     },
     get$commandHint_hug() {
-      return "\u9001\u51fa\u4e00\u500b\u64c1\u62b1";
+      return "Quchoqlash yuborish";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u9001\u4f60\u9b3c\u773c";
+      return senderName + " sizga g\u02bbilay ko\u2018zlarini yubormoqda";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u64c1\u62b1\u4f60";
+      return senderName + " sizni erkalamoqda";
     },
     hugContent$1(senderName) {
-      return senderName + " \u64c1\u62b1\u4f60";
+      return senderName + " sizni quchoqlamoqda";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u63a5\u807d\u5497\u96fb\u8a71";
+      return senderName + " chaqiruvga javob berdi";
     },
     get$anyoneCanJoin() {
-      return "\u4efb\u4f55\u4eba\u90fd\u53ef\u4ee5\u52a0\u5165\uff01\u4e0d\u904e\uff0c\u7ba1\u7406\u54e1\u53ef\u4ee5\u8e22\u8d70\u540c\u5c01\u9396\u884c\u70ba\u4e0d\u7576\u5605\u4eba\u3002\u88ab\u5c01\u9396\u5605\u4eba\u53ef\u80fd\u5514\u53ef\u4ee5\u8fd4\u569f\uff01";
+      return "Har kim qo\u2018shilishi mumkin";
     },
     get$archive() {
-      return "\u5b58\u6a94";
+      return "Arxiv";
     },
     get$areYouSure() {
-      return "\u4f60\u78ba\u5b9a\u55ce\uff1f";
+      return "Ishonchingiz komilmi?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u4f60\u78ba\u5b9a\u8981\u767b\u51fa\u55ce\uff1f";
+      return "Haqiqatan ham hisobingizdan chiqamoqchimisiz?";
     },
     get$askSSSSSign() {
-      return "\u70ba\u4e86\u80fd\u5920\u7c3d\u7f72\u5c0d\u65b9\uff0c\u8acb\u8f38\u5165\u4f60\u7684\u5b89\u5168\u5b58\u5132\u5bc6\u78bc\u6216\u6062\u5fa9\u5bc6\u9470\u3002";
+      return "Narigi foydalanuvchini imzolash uchun xavfsiz do\u2018kon parol iborasi yoki tiklash kalitini kiriting.";
     },
     askVerificationRequest$1(username) {
-      return "\u63a5\u53d7\u4f86\u81ea " + username + " \u7684\u9a57\u8b49\u8acb\u6c42\u55ce\uff1f";
+      return username + "dan ushbu tasdiqlash so\u2018rovi qabul qilinsinmi?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u4e3b\u670d\u52d9\u5668\u652f\u6301\u7684\u767b\u9304\u985e\u578b\uff1a\n" + serverVersions + "\n\u4f46\u6b64\u61c9\u7528\u50c5\u652f\u6301\uff1a\n" + supportedVersions;
+      return "Homeserver quyidagi kirish turlarini qo'llab-quvvatlaydi:\n" + serverVersions + "\nLekin bu ilova faqat quyidagi turlarni qo'llab-quvvatlaydi:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u767c\u9001\u8f38\u5165\u901a\u77e5";
+      return "Yozish bildirishnomalarini yuborish";
     },
     get$swipeRightToLeftToReply() {
-      return "\u5411\u53f3\u6ed1\u52d5\u81f3\u5de6\u5074\u4ee5\u56de\u8986";
+      return "Javob berish uchun o\u2018ngdan chapga suring";
     },
     get$sendOnEnter() {
-      return "\u6309Enter\u9375\u767c\u9001";
+      return "Enterda yuborish";
     },
     get$space() {
-      return "\u7a7a\u9593";
+      return "Bo\u02bbshliq";
     },
     get$banned() {
-      return "\u5df2\u7981\u6b62";
+      return "Taqiqlangan";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u7981\u6b62 " + targetName;
+      return username + " taqiqladi " + targetName + "(ni)";
     },
     get$blockDevice() {
-      return "\u963b\u6b62\u88dd\u7f6e";
+      return "Qurilmani bloklash";
     },
     get$blocked() {
-      return "\u5df2\u963b\u6b62";
+      return "Bloklandi";
     },
     get$cancel(_) {
-      return "\u53d6\u6d88";
+      return "Bekor qilish";
     },
     cantOpenUri$1(uri) {
-      return "\u7121\u6cd5\u6253\u958b URI " + uri;
+      return uri + " URIni ochib bo\u02bblmadi";
     },
     get$changeDeviceName() {
-      return "\u66f4\u6539\u88dd\u7f6e\u540d\u7a31";
+      return "Qurilma nomini o\u02bbzgartirish";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u66f4\u6539\u4e86\u804a\u5929\u982d\u50cf";
+      return username + " suhbat avatarini o\u02bbzgartirdi";
     },
     changedTheChatDescription$1(username) {
-      return username + " \u66f4\u6539\u4e86\u804a\u5929\u63cf\u8ff0";
+      return username + " chat tavsifini o\u2018zgartirdi";
     },
     changedTheChatName$1(username) {
-      return username + " \u66f4\u6539\u4e86\u804a\u5929\u540d\u7a31";
+      return username + " chat nomini o\u2018zgartirdi";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u66f4\u6539\u4e86\u5c0d\u8a71\u6b0a\u9650";
+      return username + " suhbat ruxsatnomalarini o\u02bbzgartirdi";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u5c07\u986f\u793a\u540d\u7a31\u6539\u70ba\uff1a'" + displayname + "'";
+      return username + " o\u02bbzining nomini '" + displayname + "'ga o\u02bbzgartirdi";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u66f4\u6539\u4e86\u8a2a\u5ba2\u5b58\u53d6\u898f\u5247";
+      return username + " mehmon kirish qoidalarini o\u02bbzgartirdi";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u5c07\u8a2a\u5ba2\u5b58\u53d6\u898f\u5247\u6539\u70ba\uff1a" + rules;
+      return username + " mehmon kirish qoidalarini: " + rules + "ga o\u02bbzgartirdi";
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u66f4\u6539\u4e86\u6b77\u53f2\u8a18\u9304\u7684\u53ef\u898b\u6027";
+      return username + " tarix ko\u02bbrinishini o\u02bbzgartirdi";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u5c07\u6b77\u53f2\u8a18\u9304\u7684\u53ef\u898b\u6027\u6539\u70ba\uff1a" + rules;
+      return username + " tarix ko\u02bbrinishini: " + rules + "ga o\u02bbzgartirdi";
     },
     changedTheJoinRules$1(username) {
-      return username + " \u66f4\u6539\u4e86\u52a0\u5165\u898f\u5247";
+      return username + " qo\u02bbshilish qoidalarini o\u02bbzgartirdi";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u5c07\u52a0\u5165\u898f\u5247\u6539\u70ba\uff1a" + joinRules;
+      return username + " qo\u02bbshilish qoidalarini: " + joinRules + "ga o\u02bbzgartirdi";
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u66f4\u6539\u4e86\u982d\u50cf";
+      return username + " avatarini o\u02bbzgartirdi";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u66f4\u6539\u4e86\u623f\u9593\u5225\u540d";
+      return username + " xona taxalluslarini o\u02bbzgartirdi";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u66f4\u6539\u4e86\u9080\u8acb\u9023\u7d50";
+      return username + " taklif havolasini o\u02bbzgartirdi";
     },
     get$changePassword() {
-      return "\u66f4\u6539\u5bc6\u78bc";
+      return "Parolni o\u2018zgartirish";
     },
     get$changeTheme() {
-      return "\u66f4\u63db\u98a8\u683c";
+      return "Uslubingizni o\u2018zgartiring";
     },
     get$changeYourAvatar() {
-      return "\u66f4\u63db\u4f60\u7684\u982d\u50cf";
+      return "Avataringizni almashtiring";
     },
     get$channelCorruptedDecryptError() {
-      return "\u52a0\u5bc6\u5df2\u88ab\u7834\u58de";
+      return "Shifrlash buzilgan";
     },
     get$chat() {
-      return "\u804a\u5929";
+      return "Suhbat";
     },
     get$yourChatBackupHasBeenSetUp() {
-      return "\u4f60\u5605\u804a\u5929\u5099\u4efd\u5df2\u7d93\u8a2d\u7f6e\u597d\u3002";
+      return "Suhbat zaxirangiz sozlandi.";
     },
     get$chatBackupDescription() {
-      return "\u4f60\u5605\u820a\u8a0a\u606f\u5df2\u7528\u6062\u5fa9\u91d1\u9470\u4fdd\u8b77\u3002\u8acb\u78ba\u4fdd\u4f60\u5514\u6703\u4e1f\u5931\u4f62\u3002";
+      return "Eski xabarlaringiz tiklash kaliti bilan himoyalangan. Uni yo\u2018qotib qo\u2018ymasligingizga ishonch hosil qiling.";
     },
     get$chatDetails() {
-      return "\u804a\u5929\u8a73\u60c5";
+      return "Suhbat tafsilotlari";
     },
     get$chats() {
-      return "\u804a\u5929";
+      return "Suhbatlar";
     },
     get$chooseAStrongPassword() {
-      return "\u63c0\u4e00\u500b\u5f37\u5bc6\u78bc";
+      return "Kuchli parol tanlang";
     },
     get$clearArchive() {
-      return "\u6e05\u9664\u5b58\u6a94";
+      return "Arxivni tozalash";
     },
     get$close(_) {
-      return "\u95dc\u9589";
+      return "Yopish";
     },
     get$commandHint_markasdm() {
-      return "\u5c07\u5462\u500b\u77e9\u9663ID\u6a19\u8a18\u70ba\u76f4\u63a5\u8a0a\u606f\u623f\u9593";
+      return "Matrix identifikatorini berish uchun shaxsiy xabar guruhi sifatida belgilang";
     },
     get$commandHint_markasgroup() {
-      return "\u6a19\u8a18\u70ba\u7fa4\u7d44";
+      return "Guruh sifatida belgilash";
     },
     get$commandHint_ban() {
-      return "\u7981\u6b62\u5462\u500b\u7528\u6236\u55ba\u5462\u500b\u623f\u9593";
+      return "Bu guruhdan berilgan foydalanuvchini bloklash";
     },
     get$commandHint_clearcache() {
-      return "\u6e05\u9664\u5feb\u53d6";
+      return "Kesh tozalash";
     },
     get$commandHint_create() {
-      return "\u5efa\u7acb\u4e00\u500b\u7a7a\u5605\u7fa4\u7d44\u804a\u5929\n\u7528 --no-encryption \u4f86\u7981\u7528\u52a0\u5bc6";
+      return "Bo\u02bbsh guruh suhbati yarating\nShifrlashni o\u02bbchirish uchun --no-encryption dan foydalaning";
     },
     get$commandHint_discardsession() {
-      return "\u4e1f\u68c4\u6703\u8a71";
+      return "Seansni bekor qilish";
     },
     get$commandHint_dm() {
-      return "\u958b\u59cb\u4e00\u500b\u76f4\u63a5\u804a\u5929\n\u7528 --no-encryption \u4f86\u7981\u7528\u52a0\u5bc6";
+      return "Jonli suhbatni boshlash\nShifrlashni o\u2018chirish uchun --no-encryption dan foydalaning";
     },
     get$commandHint_html() {
-      return "\u767c\u9001HTML\u683c\u5f0f\u5605\u6587\u5b57";
+      return "HTML formatidagi matnni yuborish";
     },
     get$commandHint_invite() {
-      return "\u9080\u8acb\u5462\u500b\u7528\u6236\u52a0\u5165\u5462\u500b\u623f\u9593";
+      return "Berilgan foydalanuvchini ushbu guruhga taklif qiling";
     },
     get$commandHint_join() {
-      return "\u52a0\u5165\u5462\u500b\u623f\u9593";
+      return "Berilgan guruhga qo\u02bbshilish";
     },
     get$commandHint_kick() {
-      return "\u5c07\u5462\u500b\u7528\u6236\u5f9e\u5462\u500b\u623f\u9593\u79fb\u9664";
+      return "Berilgan foydalanuvchini guruhdan o\u02bbchirish";
     },
     get$commandHint_leave() {
-      return "\u96e2\u958b\u6b64\u623f\u9593";
+      return "Guruhni tark etish";
     },
     get$commandHint_me() {
-      return "\u63cf\u8ff0\u4f60\u81ea\u5df1";
+      return "O\u02bbzingizni tariflang";
     },
     get$commandHint_myroomavatar() {
-      return "\u70ba\u6b64\u623f\u9593\u8a2d\u7f6e\u4f60\u7684\u5716\u7247\uff08\u4f7f\u7528 mxc-uri\uff09";
+      return "Bu guruh uchun rasmingizni sozlang (mxc-uri tomonidan)";
     },
     get$commandHint_myroomnick() {
-      return "\u70ba\u6b64\u623f\u9593\u8a2d\u7f6e\u4f60\u7684\u986f\u793a\u540d\u7a31";
+      return "Bu guruh uchun displey nomini sozlang";
     },
     get$commandHint_op() {
-      return "\u8a2d\u7f6e\u7528\u6236\u7684\u6b0a\u9650\u7b49\u7d1a\uff08\u9810\u8a2d\uff1a50\uff09";
+      return "Berilgan foydalanuvchi quvvat darajasini o\u02bbrnating (standart: 50)";
     },
     get$commandHint_plain() {
-      return "\u767c\u9001\u672a\u683c\u5f0f\u5316\u7684\u6587\u672c";
+      return "Formatlanmagan matnni yuboring";
     },
     get$commandHint_react() {
-      return "\u4f5c\u70ba\u53cd\u61c9\u767c\u9001\u56de\u8986";
+      return "Javobni reaksiya sifatida yuboring";
     },
     get$commandHint_send() {
-      return "\u767c\u9001\u6587\u672c";
+      return "Matn yuborish";
     },
     get$commandHint_unban() {
-      return "\u89e3\u9664\u5c0d\u6b64\u623f\u9593\u7684\u7528\u6236\u5c01\u7981";
+      return "Berilgan foydalanuvchini bu guruhdan blokdan chiqazish";
     },
     get$compareEmojiMatch() {
-      return "\u8acb\u6bd4\u8f03\u8868\u60c5\u7b26\u865f";
+      return "Iltimos emojilarni taqqoslang";
     },
     get$compareNumbersMatch() {
-      return "\u8acb\u6bd4\u8f03\u6578\u5b57";
+      return "Iltimos raqamlarni taqqoslang";
     },
     get$configureChat() {
-      return "\u914d\u7f6e\u804a\u5929";
+      return "Suhbatni sozlash";
     },
     get$confirm(_) {
-      return "\u78ba\u8a8d";
+      return "Tasdiqlash";
     },
     get$copiedToClipboard() {
-      return "\u8907\u88fd\u5230\u526a\u8cbc\u7c3f";
+      return "Buferga nusxalandi";
     },
     get$copy() {
-      return "\u8907\u88fd";
+      return "Nusxalash";
     },
     get$copyToClipboard() {
-      return "\u8907\u88fd\u5230\u526a\u8cbc\u7c3f";
+      return "Buferga nusxalash";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u7121\u6cd5\u89e3\u5bc6\u8a0a\u606f\uff1a" + error;
+      return "Xabarni shifrlab bo\u02bblmadi: " + error;
     },
     get$checkList() {
-      return "\u6aa2\u67e5\u6e05\u55ae";
+      return "Tekshirish ro\u02bbyxati";
     },
     countParticipants$1(count) {
-      return "" + count + " \u4f4d\u53c3\u8207\u8005";
+      return "" + count + " qatnashuvchilar";
     },
     countInvited$1(count) {
-      return "" + count + " \u4f4d\u5df2\u9080\u8acb";
+      return "" + count + " taklif qilindi";
     },
     get$create(_) {
-      return "\u5efa\u7acb";
+      return "Yaratish";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcc8 " + username + " \u5efa\u7acb\u5497\u5c0d\u8a71";
+      return "\ud83d\udcac " + username + " suhbat yaratdi";
     },
     get$createGroup() {
-      return "\u5efa\u7acb\u7fa4\u7d44";
+      return "Guruh yaratish";
     },
     get$createNewSpace() {
-      return "\u65b0\u7a7a\u9593";
+      return "Yangi maydon";
     },
     get$currentlyActive() {
-      return "\u76ee\u524d\u6d3b\u8e8d";
+      return "Hozirda faol";
     },
     get$darkTheme() {
-      return "\u6df1\u8272";
+      return "Qorong\u02bbi";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + "\uff0c" + timeOfDay;
+      return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u5462\u500b\u6703\u505c\u7528\u4f60\u5605\u7528\u6236\u5e33\u6236\u3002\u5462\u500b\u64cd\u4f5c\u7121\u6cd5\u64a4\u92b7\uff01\u4f60\u78ba\u5b9a\u55ce\uff1f";
+      return "Bu sizning foydalanuvchi hisobingizni o\u02bbchirib qo\u02bbyadi. Buni qaytarib bo\u02bblmaydi! Ishonchingiz komilmi?";
     },
     get$defaultPermissionLevel() {
-      return "\u65b0\u7528\u6236\u5605\u9810\u8a2d\u6b0a\u9650\u7b49\u7d1a";
+      return "Yangi foydalanuvchilar uchun standart ruxsat darajasi";
     },
     get$$delete(_) {
-      return "\u522a\u9664";
+      return "O\u02bbchirish";
     },
     get$deleteAccount() {
-      return "\u522a\u9664\u5e33\u6236";
+      return "Hisobni o\u02bbchirish";
     },
     get$deleteMessage() {
-      return "\u522a\u9664\u8a0a\u606f";
+      return "Xabarni o\u02bbchirish";
     },
     get$devices() {
-      return "\u88dd\u7f6e";
+      return "Qurilmalar";
     },
     get$displaynameHasBeenChanged() {
-      return "\u986f\u793a\u540d\u7a31\u5df2\u66f4\u6539";
+      return "Displey nomi o\u2018zgartirildi";
     },
     get$downloadFile() {
-      return "\u4e0b\u8f09\u6a94\u6848";
+      return "Faylni yuklab olish";
     },
     get$edit() {
-      return "\u7de8\u8f2f";
+      return "Tahrirlash";
     },
     get$editBlockedServers() {
-      return "\u7de8\u8f2f\u88ab\u5c01\u9396\u7684\u4f3a\u670d\u5668";
+      return "Bloklangan serverlarni tahrirlash";
     },
     get$chatPermissions() {
-      return "\u804a\u5929\u6b0a\u9650";
+      return "Suhbat ruxsatlari";
     },
     get$editDisplayname() {
-      return "\u7de8\u8f2f\u986f\u793a\u540d\u7a31";
+      return "Displey nomini tahrirlash";
     },
     get$editRoomAvatar() {
-      return "\u7de8\u8f2f\u623f\u9593\u982d\u50cf";
+      return "Xona avatarini tahrirlash";
     },
     get$emoteExists() {
-      return "\u8868\u60c5\u7b26\u865f\u5df2\u5b58\u5728\uff01";
+      return "Emotsiya allaqachon mavjud!";
     },
     get$emoteInvalid() {
-      return "\u7121\u6548\u7684\u8868\u60c5\u7b26\u865f\u77ed\u78bc\uff01";
+      return "Noto\u2018g\u2018ri emotsiya kodi!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u6700\u8fd1\u4f7f\u7528\u7684\u8868\u60c5\u7b26\u865f\u5c07\u986f\u793a\u5728\u9019\u88e1...";
+      return "Yaqinda ishlatilgan emotsiyalar shu yerda chiqadi...";
     },
     get$customEmojisAndStickers() {
-      return "\u81ea\u8a02\u8868\u60c5\u7b26\u865f\u53ca\u8cbc\u5716";
+      return "Maxsus emojilar va stikerlar";
     },
     get$emoteShortcode() {
-      return "\u8868\u60c5\u7b26\u865f\u77ed\u78bc";
+      return "Emote qisqa kodi";
     },
     get$emptyChat() {
-      return "\u7a7a\u804a\u5929";
+      return "Bo\u02bbsh suhbat";
     },
     get$enableEmotesGlobally() {
-      return "\u5168\u5c40\u555f\u7528\u8868\u60c5\u5305";
+      return "Emote paketini global miqyosda yoqish";
     },
     get$enableEncryption() {
-      return "\u555f\u7528\u52a0\u5bc6";
+      return "Shifrlashni yoqish";
     },
     get$encrypted() {
-      return "\u5df2\u52a0\u5bc6";
+      return "Shifrlangan";
     },
     get$encryptionNotEnabled() {
-      return "\u672a\u555f\u7528\u52a0\u5bc6";
+      return "Shifrlash yoqilmagan";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u7d50\u675f\u4e86\u901a\u8a71";
+      return senderName + " chaqiruvni tugatdi";
     },
     get$enterAnEmailAddress() {
-      return "\u8f38\u5165\u96fb\u5b50\u90f5\u4ef6\u5730\u5740";
+      return "Email manzilini kiriting";
     },
     errorObtainingLocation$1(error) {
-      return "\u7372\u53d6\u4f4d\u7f6e\u6642\u51fa\u932f\uff1a" + error;
+      return "Joylashuv axboroti olinmadi: " + error;
     },
     get$everythingReady() {
-      return "\u4e00\u5207\u6e96\u5099\u5c31\u7dd2\uff01";
+      return "Hammasi tayyor!";
     },
     get$fontSize(_) {
-      return "\u5b57\u9ad4\u5927\u5c0f";
+      return "Shrift o\u02bblchami";
     },
     get$forward(_) {
-      return "\u8f49\u767c";
+      return "Yuborvorish";
     },
     get$fromJoining() {
-      return "\u7531\u52a0\u5165";
+      return "Qo\u02bbshilishdan";
     },
     get$fromTheInvitation() {
-      return "\u7531\u9080\u8acb";
+      return "Taklifnomadan";
     },
     get$group() {
-      return "\u7fa4\u7d44";
+      return "Guruh";
     },
     get$groupIsPublic() {
-      return "\u7fa4\u7d44\u662f\u516c\u958b\u7684";
+      return "Guruh ommaviy";
     },
     get$guestsAreForbidden() {
-      return "\u7981\u6b62\u8a2a\u5ba2";
+      return "Mehmonlarga kirish taqiqlangan";
     },
     get$guestsCanJoin() {
-      return "\u8a2a\u5ba2\u53ef\u4ee5\u52a0\u5165";
+      return "Mehmonlar qo\u02bbshila oladi";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u5df2\u64a4\u56de\u5c0d " + targetName + " \u7684\u9080\u8acb";
+      return username + " " + targetName + " uchun taklifnomani qaytarib oldi";
     },
     get$help() {
-      return "\u5e6b\u52a9";
+      return "Yordam";
     },
     get$hideRedactedMessages() {
-      return "\u96b1\u85cf\u5df2\u7de8\u8f2f\u8a0a\u606f";
+      return "O\u02bbchirilgan xabarlarni yashirish";
     },
     get$hideRedactedMessagesBody() {
-      return "\u5982\u679c\u6709\u4eba\u522a\u9664\u8a0a\u606f\uff0c\u5462\u689d\u8a0a\u606f\u5c07\u5514\u518d\u55ba\u5c0d\u8a71\u4e2d\u986f\u793a\u3002";
+      return "Agar kimdir xabarni o\u02bbchirsa, bu xabar endi suhbatda ko\u02bbrinmaydi.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u96b1\u85cf\u7121\u6548\u6216\u672a\u77e5\u5605\u8a0a\u606f\u683c\u5f0f";
+      return "Noto\u02bbg\u02bbri yoki noma\u02bclum xabar formatlarini yashirish";
     },
     get$block() {
-      return "\u963b\u6b62";
+      return "Bloklash";
     },
     get$blockedUsers() {
-      return "\u5df2\u963b\u6b62\u7528\u6236";
+      return "Bloklangan foydalanuvchilar";
     },
     get$blockListDescription() {
-      return "\u4f60\u53ef\u4ee5\u963b\u6b62\u6253\u64fe\u4f60\u5605\u7528\u6236\u3002\u4f60\u5c07\u5514\u80fd\u5920\u6536\u5230\u5462\u5572\u7528\u6236\u5605\u4efb\u4f55\u8a0a\u606f\u6216\u623f\u9593\u9080\u8acb\u3002";
+      return "Sizni bezovta qilayotgan foydalanuvchilarni bloklashingiz mumkin. Shaxsiy bloklash ro\u02bbyxatingizdagi foydalanuvchilardan hech qanday xabar yoki guruhga taklifnomalarni qabul qila olmaysiz.";
     },
     get$blockUsername() {
-      return "\u5ffd\u7565\u7528\u6236\u540d";
+      return "Foydalanuvchi nomini e\u02bbtiborsiz qoldirish";
     },
     get$iHaveClickedOnLink() {
-      return "\u6211\u5df2\u7d93\u9ede\u64ca\u5497\u9023\u7d50";
+      return "Men havolani bosdim";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u5bc6\u78bc\u6216\u6062\u5fa9\u91d1\u9470\u5514\u5571";
+      return "Noto\u02bbg\u02bbri parol yoki tiklash kaliti";
     },
     get$inviteContact() {
-      return "\u9080\u8acb\u806f\u7d61\u4eba";
+      return "Kontaktni taklif qilish";
     },
     get$noChatDescriptionYet() {
-      return "\u5c1a\u672a\u5efa\u7acb\u5c0d\u8a71\u63cf\u8ff0\u3002";
+      return "Hali suhbat tavsifi yaratilmagan.";
     },
     get$tryAgain() {
-      return "\u518d\u8a66\u4e00\u6b21";
+      return "Qayta urinib ko\u02bbrish";
     },
     get$invited() {
-      return "\u5df2\u9080\u8acb";
+      return "Taklif qilindi";
     },
     get$redactMessageDescription() {
-      return "\u5462\u689d\u8a0a\u606f\u5c07\u6703\u55ba\u6240\u6709\u53c3\u8207\u8005\u4e2d\u88ab\u522a\u9664\u3002\u5462\u500b\u64cd\u4f5c\u7121\u6cd5\u53d6\u6d88\u3002";
+      return "Xabar ushbu suhbatdagi barcha ishtirokchilar uchun o\u02bbchiriladi. Buni bekor qilib bo\u02bblmaydi.";
     },
     get$optionalRedactReason() {
-      return "(\u53ef\u9078) \u7de8\u8f2f\u6b64\u8a0a\u606f\u7684\u539f\u56e0...";
+      return "(Ixtiyoriy) Ushbu xabarni o\u02bbchirish sababi...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " \u9080\u8acb " + targetName;
+      return "\ud83d\udce9 " + username + " " + targetName + "ni taklif qildi";
     },
     get$invitedUsersOnly() {
-      return "\u53ea\u9650\u53d7\u9080\u7528\u6236";
+      return "Faqat taklif qilingan foydalanuvchilar";
     },
     get$inviteForMe() {
-      return "\u70ba\u6211\u9080\u8acb";
+      return "Men uchun taklif qilish";
     },
     get$isTyping() {
-      return "\u6b63\u5728\u8f38\u5165\u2026";
+      return "yozmoqda\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u5df2\u52a0\u5165\u804a\u5929";
+      return "\ud83d\udc4b " + username + " suhbatga qo\u02bbshildi";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " \u8e22\u51fa " + targetName;
+      return "\ud83d\udc5e " + username + " " + targetName + "ni tepdi";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u6700\u5f8c\u6d3b\u8e8d\u6642\u9593\uff1a" + localizedTimeShort;
+      return "Oxirgi faol: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u96e2\u958b";
+      return "Chiqish";
     },
     get$leftTheChat() {
-      return "\u5df2\u96e2\u958b\u804a\u5929";
+      return "Suhbatni tark etdi";
     },
     get$lightTheme() {
-      return "\u6dfa\u8272";
+      return "Yorug\u02bblik";
     },
     get$dehydrate() {
-      return "\u5c0e\u51fa\u6703\u8a71\u4e26\u6e05\u9664\u88dd\u7f6e";
+      return "Sessiyani eksport qilish va qurilmani o\u02bbchirish";
     },
     get$dehydrateWarning() {
-      return "\u6b64\u64cd\u4f5c\u7121\u6cd5\u64a4\u92b7\u3002\u8acb\u78ba\u4fdd\u59a5\u5584\u4fdd\u5b58\u5099\u4efd\u6a94\u6848\u3002";
+      return "Bu amalni bekor qilib bo\u02bblmaydi. Zaxira faylini xavfsiz saqlang.";
     },
     get$loadingPleaseWait() {
-      return "\u8f09\u5165\u4e2d\u2026 \u8acb\u7a0d\u5019\u3002";
+      return "Yuklanmoqda\u2026 Iltimos, kuting.";
     },
     get$loadMore() {
-      return "\u8f09\u5165\u66f4\u591a\u2026";
+      return "Ko\u02bbproq yuklash\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u4f4d\u7f6e\u670d\u52d9\u5df2\u88ab\u7981\u7528\u3002\u8acb\u555f\u7528\u4ee5\u4fbf\u5206\u4eab\u60a8\u7684\u4f4d\u7f6e\u3002";
+      return "Joylashuv xizmatlari o\u02bbchirib qo\u02bbyilgan. Joylashuvingizni ulashish uchun ularni yoqing.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u4f4d\u7f6e\u6b0a\u9650\u88ab\u62d2\u7d55\u3002\u8acb\u6388\u4e88\u6b0a\u9650\u4ee5\u4fbf\u5206\u4eab\u60a8\u7684\u4f4d\u7f6e\u3002";
+      return "Joylashuvga ruxsat berilmadi. Iltimos, ularga joylashuvingizni ulashishga ruxsat bering.";
     },
     get$login() {
-      return "\u767b\u5165";
+      return "Kirish";
     },
     get$logout() {
-      return "\u767b\u51fa";
+      return "Chiqish";
     },
     get$mention() {
-      return "\u63d0\u53ca";
+      return "Qayd etmoq";
     },
     get$messages() {
-      return "\u8a0a\u606f";
+      return "Xabarlar";
     },
     get$messagesStyle() {
-      return "\u8a0a\u606f\uff1a";
+      return "Xabarlar:";
     },
     get$moderator() {
-      return "\u7248\u4e3b";
+      return "Moderator";
     },
     get$newVerificationRequest() {
-      return "\u6709\u4e00\u500b\u65b0\u7684\u9a57\u8b49\u8acb\u6c42\uff01";
+      return "Yangi tasdiqlash so'rovi!";
     },
     get$next(_) {
-      return "\u4e0b\u4e00\u6b65";
+      return "Keyingi";
     },
     get$no() {
-      return "\u5426";
+      return "Yo\u02bbq";
     },
     get$noConnectionToTheServer() {
-      return "\u672a\u80fd\u9023\u63a5\u5230\u4f3a\u670d\u5668";
+      return "Serverga ulanish yo\u02bbq";
     },
     get$noEmotesFound() {
-      return "\u672a\u627e\u5230\u8868\u60c5\u7b26\u865f\u3002\ud83d\ude1d";
+      return "Hech qanday emote\u02bclar topilmadi \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u5206\u4eab\u9080\u8acb\u9023\u7d50";
+      return "Taklifnoma havolasini ulashish";
     },
     get$none() {
-      return "\u7121";
+      return "Hech biri";
     },
     get$noPermission() {
-      return "\u6c92\u6709\u8a31\u53ef\u6b0a";
+      return "Ruxsat yo\u02bbq";
     },
     get$noRoomsFound() {
-      return "\u672a\u627e\u5230\u623f\u9593\u2026";
+      return "Hech qanday guruhlar topilmadi\u2026";
     },
     get$notifications() {
-      return "\u901a\u77e5";
+      return "Bildirishnomalar";
     },
     get$obtainingLocation() {
-      return "\u6b63\u5728\u7372\u53d6\u4f4d\u7f6e\u2026";
+      return "Joylashuv aniqlanmoqda\u2026";
     },
     get$offensive() {
-      return "\u5192\u72af\u6027";
+      return "Haqoratomuz";
     },
     get$ok() {
-      return "\u597d";
+      return "Hop";
     },
     get$oopsSomethingWentWrong() {
-      return "\u54ce\u5440\uff0c\u51fa\u4e86\u9ede\u554f\u984c\u2026";
+      return "Voy, nimadir noto\u02bbg\u02bbri ketdi\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u60a8\u7684\u5176\u4e2d\u4e00\u500b\u5ba2\u6236\u5df2\u767b\u51fa";
+      return "Mijozlaringizdan biri tizimdan chiqdi";
     },
     get$openInMaps() {
-      return "\u5728\u5730\u5716\u4e2d\u6253\u958b";
+      return "Xaritalarda ochish";
     },
     get$link() {
-      return "\u9023\u7d50";
+      return "Havola";
     },
     get$serverRequiresEmail() {
-      return "\u6b64\u4f3a\u670d\u5668\u9700\u8981\u9a57\u8b49\u60a8\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u4ee5\u9032\u884c\u8a3b\u518a\u3002";
+      return "Ushbu server ro\u02bbyxatdan o\u02bbtish uchun elektron pochta manzilingizni tasdiqlashi kerak.";
     },
     get$or() {
-      return "\u6216";
+      return "Yoki";
     },
     get$participant() {
-      return "\u53c3\u8207\u8005";
+      return "Qatnashuvchi";
     },
     get$passphraseOrKey() {
-      return "\u5bc6\u78bc\u77ed\u8a9e\u6216\u6062\u5fa9\u91d1\u9470";
+      return "parol yoki tiklash kaliti";
     },
     get$password(_) {
-      return "\u5bc6\u78bc";
+      return "Parol";
     },
     get$passwordForgotten() {
-      return "\u5fd8\u8a18\u5bc6\u78bc";
+      return "Parol unitilgan";
     },
     get$passwordHasBeenChanged() {
-      return "\u5bc6\u78bc\u5df2\u66f4\u6539";
+      return "Parol o\u02bbzgartirildi";
     },
     get$pin() {
-      return "\u56fa\u5b9a";
+      return "To\u02bbg\u02bbnash";
     },
     get$pleaseChoose() {
-      return "\u8acb\u9078\u64c7";
+      return "Iltimos tanlang";
     },
     get$pleaseEnterYourPassword() {
-      return "\u8acb\u8f38\u5165\u60a8\u7684\u5bc6\u78bc";
+      return "Iltimos parolingizni kiriting";
     },
     get$pleaseEnterYourPin() {
-      return "\u8acb\u8f38\u5165\u60a8\u7684\u5bc6\u78bc";
+      return "Iltimos PIN kodingizni kiriting";
     },
     get$pleaseEnterYourUsername() {
-      return "\u8acb\u8f38\u5165\u60a8\u7684\u7528\u6236\u540d";
+      return "Iltimos foydalanuvchi nomini kiriting";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u8acb\u6309\u7167\u7db2\u7ad9\u4e0a\u7684\u6307\u793a\u64cd\u4f5c\uff0c\u7136\u5f8c\u9ede\u64ca\u4e0b\u4e00\u6b65\u3002";
+      return "Iltimos, veb-saytdagi ko\u02bbrsatmalarga amal qiling va keyingisini bosing.";
     },
     get$privacy() {
-      return "\u96b1\u79c1";
+      return "Maxfiylik";
     },
     get$reason(_) {
-      return "\u539f\u56e0";
+      return "Sabab";
     },
     redactedBy$1(username) {
-      return "\u7531 " + username + " \u7de8\u8f2f";
+      return username + " tomonidan tahrirlangan";
     },
     get$directChat() {
-      return "\u76f4\u63a5\u804a\u5929";
+      return "Shaxsiy suhbat";
     },
     redactedByBecause$2(username, reason) {
-      return "\u7531 " + username + ' \u7de8\u8f2f\uff0c\u539f\u56e0\uff1a"' + reason + '"';
+      return username + ' tomonidan tahrirlandi, sababi: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " \u7de8\u8f2f\u4e86\u4e00\u500b\u4e8b\u4ef6";
+      return username + " tadbirni o\u02bbchirib tashladi";
     },
     get$redactMessage() {
-      return "\u7de8\u8f2f\u8a0a\u606f";
+      return "Xabarni tahrirlash";
     },
     get$reject() {
-      return "\u62d2\u7d55";
+      return "Rad qilish";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u62d2\u7d55\u4e86\u9080\u8acb";
+      return username + " taklifni rad qildi";
     },
     get$removeAllOtherDevices() {
-      return "\u79fb\u9664\u6240\u6709\u5176\u4ed6\u8a2d\u5099";
+      return "Qolgan barcha qurilmalarni o\u02bbchirish";
     },
     get$unbanFromChat() {
-      return "\u89e3\u9664\u5c01\u9396";
+      return "Suhbat blokidan chiqazish";
     },
     get$removeYourAvatar() {
-      return "\u522a\u9664\u4f60\u7684\u982d\u50cf";
+      return "Avatarni o\u02bbchirish";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u7528\u8f03\u65b0\u7248\u672c\u53d6\u4ee3\u623f\u9593";
+      return "Guruhni yangiroq versiya bilan almashtirish";
     },
     get$reply(_) {
-      return "\u56de\u8986";
+      return "Javob yozish";
     },
     get$reportMessage() {
-      return "\u8209\u5831\u8a0a\u606f";
+      return "Xabar berish";
     },
     get$roomHasBeenUpgraded() {
-      return "\u623f\u9593\u5df2\u5347\u7d1a";
+      return "Xona takomillashtirildi";
     },
     get$saveFile() {
-      return "\u5132\u5b58\u6a94\u6848";
+      return "Fayl saqlash";
     },
     get$search(_) {
-      return "\u641c\u5c0b";
+      return "Qidiruv";
     },
     get$security() {
-      return "\u5b89\u5168";
+      return "Xavfsizlik";
     },
     get$recoveryKey() {
-      return "\u6062\u5fa9\u91d1\u9470";
+      return "Tiklash kaliti";
     },
     get$recoveryKeyLost() {
-      return "\u907a\u5931\u6062\u5fa9\u91d1\u9470\uff1f";
+      return "Tiklash kaliti yo\u2018qolib qoldimi?";
     },
     get$send(_) {
-      return "\u50b3\u9001";
+      return "Yuborish";
     },
     get$sendAMessage() {
-      return "\u50b3\u9001\u8a0a\u606f";
+      return "Xabar yuborish";
     },
     get$sendAudio() {
-      return "\u50b3\u9001\u97f3\u8a0a";
+      return "Audio yuborish";
     },
     get$sendFile() {
-      return "\u50b3\u9001\u6a94\u6848";
+      return "Faylni yuborish";
     },
     get$sendImage() {
-      return "\u50b3\u9001\u5716\u7247";
+      return "Rasm yuborish";
     },
     sendImages$1(count) {
-      return "\u50b3\u9001 " + count + " \u5f35\u5716\u7247";
+      return "" + count + " ta rasm yuborish";
     },
     get$sendMessages() {
-      return "\u50b3\u9001\u8a0a\u606f";
+      return "Xabarlar yuborish";
     },
     get$sendVideo() {
-      return "\u50b3\u9001\u5f71\u7247";
+      return "Video yuborish";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u50b3\u9001\u4e86\u4e00\u500b\u6a94\u6848";
+      return "\ud83d\udcc1 " + username + " fayl yubordi";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u50b3\u9001\u4e86\u4e00\u500b\u97f3\u8a0a";
+      return "\ud83c\udfa4 " + username + " audio yubordi";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u50b3\u9001\u4e86\u4e00\u5f35\u5716\u7247";
+      return "\ufe0f \ud83d\uddbc\ufe0f " + username + " rasm yubordi";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u50b3\u9001\u4e86\u4e00\u500b\u8cbc\u5716";
+      return "\ud83d\ude0a " + username + " stiker yubordi";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u50b3\u9001\u4e86\u4e00\u500b\u5f71\u7247";
+      return "\ud83c\udfa5 " + username + " video yubordi";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u50b3\u9001\u4e86\u901a\u8a71\u8cc7\u8a0a";
+      return senderName + " chaqiruv axborotini yubordi";
     },
     get$setChatDescription() {
-      return "\u8a2d\u5b9a\u804a\u5929\u63cf\u8ff0";
+      return "Suhbat tavsifini sozlash";
     },
     get$settings() {
-      return "\u8a2d\u5b9a";
+      return "Sozlamalar";
     },
     get$share(_) {
-      return "\u5206\u4eab";
+      return "Bo\u2018lishmoq";
     },
     sharedTheLocation$1(username) {
-      return username + " \u5df2\u5206\u4eab\u4f62\u54cb\u5605\u4f4d\u7f6e";
+      return username + " joylashuvini ulashdi";
     },
     get$shareLocation() {
-      return "\u5206\u4eab\u4f4d\u7f6e";
+      return "Joylashuvni ulashish";
     },
     get$skip(_) {
-      return "\u8df3\u904e";
+      return "Tashlab ketish";
     },
     get$sourceCode() {
-      return "\u6e90\u78bc";
+      return "Manba kodi";
     },
     get$spaceIsPublic() {
-      return "\u7a7a\u9593\u4fc2\u516c\u958b\u5605";
+      return "Guruh ochiq";
     },
     get$spaceName() {
-      return "\u7a7a\u9593\u540d\u7a31";
+      return "Guruh nomi";
     },
     startedACall$1(senderName) {
-      return senderName + " \u958b\u59cb\u5497\u4e00\u500b\u901a\u8a71";
+      return senderName + " chaqiruv boshladi";
     },
     get$status(_) {
-      return "\u72c0\u614b";
+      return "Holati";
     },
     get$submit(_) {
-      return "\u63d0\u4ea4";
+      return "Yuborish";
     },
     get$synchronizingPleaseWait() {
-      return "\u540c\u6b65\u4e2d\u2026 \u8acb\u7a0d\u5019\u3002";
+      return "Sinxronlanmoqda... Iltimos, kuting.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "\u540c\u6b65\u4e2d\u2026 (" + percentage + "%)";
+      return " Sinxronlanmoqda... (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u7cfb\u7d71";
+      return "Tizim";
     },
     get$theyDontMatch() {
-      return "\u4f62\u54cb\u5514\u5571";
+      return "Ular mos emas";
     },
     get$theyMatch() {
-      return "\u4f62\u54cb\u5571";
+      return "Ular mos keladi";
     },
     get$tooManyRequestsWarning() {
-      return "\u8acb\u6c42\u904e\u591a\u3002\u8acb\u7a0d\u5f8c\u518d\u8a66\uff01";
+      return "Talablar soni oshib ketdi. Keyinroq qayta urining!";
     },
     get$transferFromAnotherDevice() {
-      return "\u5f9e\u53e6\u4e00\u500b\u8a2d\u5099\u8f49\u79fb";
+      return "Boshqa qurilmadan uzatish";
     },
     get$tryToSendAgain() {
-      return "\u91cd\u8a66\u767c\u9001";
+      return "Qayta yuborishga urining";
     },
     get$unavailable() {
-      return "\u66ab\u6642\u7121\u6cd5\u4f7f\u7528";
+      return "Mavjud emas";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u5df2\u89e3\u9664\u5c01\u7981 " + targetName;
+      return username + " " + targetName + "ni blokdan chiqardi";
     },
     get$unblockDevice() {
-      return "\u89e3\u9664\u5c01\u9396\u8a2d\u5099";
+      return "Qurilmani blokdan chiqarish";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u672a\u77e5\u52a0\u5bc6\u7b97\u6cd5";
+      return "Noma\u2019lum shifrlash algoritmi";
     },
     unknownEvent$1(type) {
-      return "\u672a\u77e5\u4e8b\u4ef6 '" + type + "'";
+      return "Noma\u2019lum hodisa '" + type + "'";
     },
     get$unpin() {
-      return "\u53d6\u6d88\u7f6e\u9802";
+      return "Olib tashlash";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u548c " + count + " \u5176\u4ed6\u4eba\u6b63\u5728\u8f38\u5165\u2026";
+      return username + " va yana " + count + " kishi yozmoqda\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u548c " + username2 + " \u6b63\u5728\u8f38\u5165\u2026";
+      return username + " va " + username2 + " yozmoqda\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u6b63\u5728\u8f38\u5165\u2026";
+      return username + " yozmoqda\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u5df2\u96e2\u958b\u804a\u5929";
+      return "\ud83d\udeaa " + username + " suhbatni tark etdi";
     },
     get$username(_) {
-      return "\u7528\u6236\u540d";
+      return "Foydalanuvchi nomi";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u767c\u9001\u4e86\u4e00\u500b " + type + " \u4e8b\u4ef6";
+      return username + " " + type + " tadbirini yubordi";
     },
     get$unverified() {
-      return "\u672a\u9a57\u8b49";
+      return "Tasdiqlanmagan";
     },
     get$verified() {
-      return "\u5df2\u9a57\u8b49";
+      return "Tasdiqlangan";
     },
     get$verifyStart() {
-      return "\u958b\u59cb\u9a57\u8b49";
+      return "Tasdiqlashni boshlash";
     },
     get$verifySuccess() {
-      return "\u4f60\u5df2\u6210\u529f\u9a57\u8b49\uff01";
+      return "Siz tasdiqladingiz!";
     },
     get$verifyTitle() {
-      return "\u9a57\u8b49\u5176\u4ed6\u5e33\u6236";
+      return "Boshqa hisob tasdiqlanmoqda";
     },
     get$visibleForAllParticipants() {
-      return "\u6240\u6709\u53c3\u8207\u8005\u7686\u53ef\u898b";
+      return "Barcha ishtirokchilarga ko\u2018rinadi";
     },
     get$visibleForEveryone() {
-      return "\u6240\u6709\u4eba\u7686\u53ef\u898b";
+      return "Hammaga ko\u2018rinadigan";
     },
     get$voiceMessage() {
-      return "\u8a9e\u97f3\u8a0a\u606f";
+      return "Ovozli xabar";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u7b49\u5f85\u5c0d\u65b9\u63a5\u53d7\u8acb\u6c42\u2026";
+      return "Hamkor so\u2018rovni qabul qilishi kutilmoqda\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u7b49\u5f85\u5c0d\u65b9\u63a5\u53d7\u8868\u60c5\u7b26\u865f\u2026";
+      return "Hamkor emoji qabul qilishini kutmoqda\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u7b49\u5f85\u5c0d\u65b9\u63a5\u53d7\u6578\u5b57\u2026";
+      return "Hamkor raqamlarni qabul qilishi kutilmoqda\u2026";
     },
     get$warning() {
-      return "\u8b66\u544a\uff01";
+      return "Ogohlantirish!";
     },
     get$weSentYouAnEmail() {
-      return "\u6211\u5011\u5df2\u5411\u4f60\u767c\u9001\u4e86\u4e00\u5c01\u96fb\u5b50\u90f5\u4ef6";
+      return "Sizga xat yubordik";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u4f60\u9ede\u89e3\u60f3\u8209\u5831\u5462\u500b\uff1f";
+      return "Nima uchun bu haqda xabar bermoqchisiz?";
     },
     get$wipeChatBackup() {
-      return "\u6e05\u9664\u4f60\u5605\u804a\u5929\u5099\u4efd\u4ee5\u5efa\u7acb\u4e00\u500b\u65b0\u5605\u6062\u5fa9\u5bc6\u9470\uff1f";
+      return "Yangi tiklash kalitini yaratish uchun suhbat zaxirasi tozalansinmi?";
     },
     get$writeAMessage() {
-      return "\u5beb\u4e00\u689d\u8a0a\u606f\u2026";
+      return "Xabar yozish\u2026";
     },
     get$yes() {
-      return "\u4fc2";
+      return "Ha";
     },
     get$you() {
-      return "\u4f60";
+      return "Siz";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u4f60\u5df2\u7d93\u5514\u518d\u53c3\u8207\u5462\u500b\u804a\u5929";
+      return "Siz ortiq bu suhbatda qatnashmayapsiz";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u4f60\u5df2\u7d93\u88ab\u7981\u6b62\u53c3\u8207\u5462\u500b\u804a\u5929";
+      return "Bu suhbatdan bloklandingiz";
     },
     get$yourPublicKey() {
-      return "\u4f60\u5605\u516c\u958b\u5bc6\u9470";
+      return "Ochiq kalitingiz";
     },
     get$messageInfo() {
-      return "\u8a0a\u606f\u8cc7\u6599";
+      return "Xabar axboroti";
     },
     get$time(_) {
-      return "\u6642\u9593";
+      return "Vaqt";
     },
     get$sender() {
-      return "\u767c\u4ef6\u4eba";
+      return "Yuboruvchi";
     },
     get$openGallery() {
-      return "\u6253\u958b\u76f8\u7c3f";
+      return "Galereyani ochish";
     },
     get$start(_) {
-      return "\u958b\u59cb";
+      return "Boshlash";
     },
     get$pleaseEnterRecoveryKeyDescription() {
-      return "\u8981\u89e3\u9396\u4f60\u5605\u820a\u8a0a\u606f\uff0c\u8acb\u8f38\u5165\u4f60\u55ba\u4e4b\u524d\u6703\u8a71\u4e2d\u751f\u6210\u5605\u6062\u5fa9\u5bc6\u9470\u3002\u4f60\u5605\u6062\u5fa9\u5bc6\u9470\u5514\u4fc2\u4f60\u5605\u5bc6\u78bc\u3002";
+      return "Eski xabarlaringizni qulfdan chiqarish uchun, iltimos, avvalgi seansdan yaratilgan tiklash kalitingizni kiriting. Sizning tiklash kalitingiz parolingiz EMAS.";
     },
     get$markAsRead() {
-      return "\u6a19\u8a18\u70ba\u5df2\u8b80";
+      return "O\u02bbqilgan sifatida belgilash";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u7528 " + reaction + " \u4f5c\u51fa\u53cd\u61c9";
+      return sender + " " + reaction + " bilan reaksiya bildirdi";
     },
     get$pinMessage() {
-      return "\u91d8\u9078\u5230\u623f\u9593";
+      return "Xonaga mahkamlash";
     },
     get$emojis() {
-      return "\u8868\u60c5\u7b26\u865f";
+      return "Emojilar";
     },
     get$youRejectedTheInvitation() {
-      return "\u4f60\u62d2\u7d55\u5497\u9080\u8acb";
+      return "Taklifni rad etdingiz";
     },
     get$youJoinedTheChat() {
-      return "\u4f60\u52a0\u5165\u5497\u5c0d\u8a71";
+      return "Siz suhbatga qo\u02bbshildingiz";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u4f60\u63a5\u53d7\u5497\u9080\u8acb";
+      return "\ud83d\udc4d Taklifni qabul qildingiz";
     },
     youBannedUser$1(user) {
-      return "\u4f60\u5c01\u9396\u5497 " + user;
+      return "Siz " + user + "ni blokladingiz";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u4f60\u5df2\u64a4\u56de\u5c0d " + user + " \u5605\u9080\u8acb";
+      return "Siz " + user + " uchun taklifnomani bekor qildingiz";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u4f60\u5df2\u88ab " + user + " \u9080\u8acb";
+      return "\ud83d\udce9 Sizni " + user + " taklif qildi";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u4f60\u9080\u8acb\u5497 " + user;
+      return "\ud83d\udce9 Siz " + user + "ni taklif qildingiz";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u4f60\u8e22\u8d70\u5497 " + user;
+      return "\ud83d\udc5e Siz " + user + "ni chiqarib yubordingiz";
     },
     youUnbannedUser$1(user) {
-      return "\u4f60\u5df2\u89e3\u9664\u5c0d " + user + " \u7684\u5c01\u9396";
+      return user + "ni blokdan chiqardingiz";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u5df2\u6572\u9580";
+      return "\ud83d\udeaa " + user + " taqillatdi";
     },
     get$knock() {
-      return "\u6572\u9580";
+      return "Taqillating";
     },
     get$unlockOldMessages() {
-      return "\u89e3\u9396\u820a\u8a0a\u606f";
+      return "Eski xabarlarni qulfdan chiqaring";
     },
     get$storeInSecureStorageDescription() {
-      return "\u5c07\u6062\u5fa9\u91d1\u9470\u5b58\u653e\u5728\u6b64\u88dd\u7f6e\u7684\u5b89\u5168\u5b58\u5132\u4e2d\u3002";
+      return "Qayta tiklash kalitini ushbu qurilmaning xavfsiz xotirasida saqlang.";
     },
     get$saveKeyManuallyDescription() {
-      return "\u901a\u904e\u89f8\u767c\u7cfb\u7d71\u5206\u4eab\u5c0d\u8a71\u6846\u6216\u526a\u8cbc\u7c3f\u624b\u52d5\u4fdd\u5b58\u6b64\u91d1\u9470\u3002";
+      return "Tizim ulashish dialog oynasi yoki buferni ishga tushirish orqali ushbu kalitni qo\u02bblda saqlang.";
     },
     get$storeSecurlyOnThisDevice() {
-      return "\u5728\u6b64\u88dd\u7f6e\u4e0a\u5b89\u5168\u5b58\u653e";
+      return "Ushbu qurilmada xavfsiz saqlang";
     },
     countFiles$1(count) {
-      return "" + count + " \u500b\u6a94\u6848";
+      return "" + count + " fayllar";
     },
     get$user() {
-      return "\u7528\u6236";
+      return "Foydalanuvchi";
     },
     get$custom() {
-      return "\u81ea\u8a02";
+      return "Maxsus";
     },
     get$noKeyForThisMessage() {
-      return "\u5982\u679c\u4f60\u55ba\u5462\u500b\u88dd\u7f6e\u767b\u5165\u4e4b\u524d\u5df2\u7d93\u767c\u9001\u5497\u8a0a\u606f\uff0c\u53ef\u80fd\u6703\u51fa\u73fe\u5462\u500b\u60c5\u6cc1\u3002\n\n\u4ea6\u6709\u53ef\u80fd\u767c\u4ef6\u4eba\u5df2\u7d93\u5c01\u9396\u4f60\u5605\u88dd\u7f6e\uff0c\u6216\u8005\u7db2\u7d61\u9023\u63a5\u51fa\u5497\u554f\u984c\u3002\n\n\u4f60\u55ba\u53e6\u4e00\u500b\u6703\u8a71\u4e2d\u53ef\u4ee5\u8b80\u5230\u5462\u689d\u8a0a\u606f\u55ce\uff1f\u5481\u4f60\u53ef\u4ee5\u5f9e\u55f0\u5ea6\u8f49\u79fb\u8a0a\u606f\uff01\u53bb\u8a2d\u5b9a > \u88dd\u7f6e\uff0c\u78ba\u4fdd\u4f60\u5605\u88dd\u7f6e\u5df2\u7d93\u4e92\u76f8\u9a57\u8b49\u3002\u4e0b\u4e00\u6b21\u6253\u958b\u623f\u9593\uff0c\u5169\u500b\u6703\u8a71\u90fd\u55ba\u524d\u666f\u6642\uff0c\u5bc6\u9470\u6703\u81ea\u52d5\u50b3\u9001\u3002\n\n\u4f60\u5514\u60f3\u55ba\u767b\u51fa\u6216\u5207\u63db\u88dd\u7f6e\u6642\u5931\u53bb\u5bc6\u9470\uff1f\u78ba\u4fdd\u4f60\u5df2\u7d93\u55ba\u8a2d\u5b9a\u4e2d\u555f\u7528\u804a\u5929\u5099\u4efd\u3002";
+      return "Bu xabar siz ushbu qurilmada hisobingizga kirishdan oldin yuborilgan bo\u02bblsa sodir bo\u02bblishi mumkin.\n\nShuningdek, jo\u02bbnatuvchi qurilmangizni bloklagan yoki internet ulanishida biron bir muammo yuzaga kelgan bo\u02bblishi mumkin.\n\nXabarni boshqa sessiyada o\u02bbqiy olasizmi? Keyin xabarni undan uzatishingiz mumkin! Sozlamalar > Qurilmalar bo\u02bblimiga o\u02bbting va qurilmalaringiz bir-birini tasdiqlaganligiga ishonch hosil qiling. Keyingi safar xonani ochganingizda va ikkala sessiya ham oldinda bo\u02bblganda, kalitlar avtomatik ravishda uzatiladi.\n\nTizimdan chiqishda yoki qurilmalarni almashtirishda kalitlarni yo\u02bbqotishni xohlamaysizmi? Sozlamalarda suhbatning zaxira nusxasini yoqganingizga ishonch hosil qiling.";
     },
     get$newSpace() {
-      return "\u65b0\u7a7a\u9593";
+      return "Yangi maydon";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u7a7a\u767d\u804a\u5929\uff08\u66fe\u7d93\u4fc2 " + oldDisplayName + "\uff09";
+      return "Bo\u02bbsh suhbat (" + oldDisplayName + " edi)";
     },
     get$newSpaceDescription() {
-      return "\u7a7a\u9593\u8b93\u4f60\u6574\u5408\u4f60\u5605\u804a\u5929\uff0c\u5efa\u7acb\u79c1\u4eba\u6216\u516c\u5171\u793e\u5340\u3002";
+      return "Maydonlar sizga suhbatlaringizni birlashtirish va shaxsiy yoki ommaviy hamjamiyatlarni yaratish imkonini beradi.";
     },
     get$reopenChat() {
-      return "\u91cd\u65b0\u6253\u958b\u804a\u5929";
+      return "Suhbatni qayta ochish";
     },
     get$noOtherDevicesFound() {
-      return "\u672a\u627e\u5230\u5176\u4ed6\u88dd\u7f6e";
+      return "Boshqa qurilma topilmadi";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u7121\u6cd5\u50b3\u9001\uff01\u4f3a\u670d\u5668\u50c5\u652f\u63f4\u6700\u5927 " + max + " \u7684\u9644\u4ef6\u3002";
+      return "Yuborish imkonsiz! Server faqat " + max + " hajmgacha bo\u2018lgan ilovalarni qo\u2018llab-quvvatlaydi.";
     },
     fileHasBeenSavedAt$1(path) {
-      return "\u6a94\u6848\u5df2\u5132\u5b58\u5728 " + path;
+      return "Fayl " + path + "da saqlandi";
     },
     get$jumpToLastReadMessage() {
-      return "\u8df3\u8f49\u5230\u6700\u5f8c\u5df2\u8b80\u8a0a\u606f";
+      return "Oxirgi o\u2018qilgan xabarga o\u2018tish";
     },
     get$readUpToHere() {
-      return "\u5df2\u8b80\u5230\u6b64\u8655";
+      return "Bu yerga qadar o\u2018qish";
     },
     get$jump() {
-      return "\u8df3\u8f49";
+      return "Sakrash";
     },
     get$openLinkInBrowser() {
-      return "\u5728\u700f\u89bd\u5668\u4e2d\u6253\u958b\u9023\u7d50";
+      return "Havolani brauzerda ochish";
     },
     get$setColorTheme() {
-      return "\u8a2d\u5b9a\u8272\u5f69\u4e3b\u984c\uff1a";
+      return "Rang mavzusini sozlash:";
     },
     get$invite() {
-      return "\u9080\u8acb";
+      return "Taklif qilish";
     },
     get$invalidInput() {
-      return "\u8f38\u5165\u7121\u6548\uff01";
+      return "Xato kiritildi!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u8f38\u5165\u7684\u5bc6\u78bc\u932f\u8aa4\uff01\u8acb\u5728 " + seconds + " \u79d2\u5f8c\u518d\u8a66...";
+      return "PIN noto\u2018g\u2018ri kiritildi! " + seconds + " soniyadan keyin qayta urining...";
     },
     get$pleaseEnterANumber() {
-      return "\u8acb\u8f38\u5165\u5927\u65bc 0 \u7684\u6578\u5b57";
+      return "0 dan katta son kiriting";
     },
     get$removeDevicesDescription() {
-      return "\u4f60\u5c07\u5f9e\u6b64\u88dd\u7f6e\u767b\u51fa\uff0c\u4e26\u4e14\u5c07\u7121\u6cd5\u518d\u63a5\u6536\u8a0a\u606f\u3002";
+      return "Bu qurilmadan chiqarilasiz va ortiq xabarlarni qabul qila olmaysiz.";
     },
     get$banUserDescription() {
-      return "\u8a72\u7528\u6236\u5c07\u88ab\u7981\u6b62\u52a0\u5165\u6b64\u804a\u5929\uff0c\u76f4\u5230\u89e3\u9664\u5c01\u9396\u70ba\u6b62\u3002";
+      return "Foydalanuvchi suhbatdan bloklanadi va blokdan chiqarilmaguncha suhbatga qayta kira olmaydi.";
     },
     get$unbanUserDescription() {
-      return "\u8a72\u7528\u6236\u82e5\u518d\u5617\u8a66\uff0c\u5c07\u80fd\u518d\u6b21\u52a0\u5165\u6b64\u804a\u5929\u3002";
+      return "Foydalanuvchi qayta suhbatga kira oladi agar ular urinib ko\u02bbrishsa.";
     },
     get$kickUserDescription() {
-      return "\u7528\u6236\u88ab\u8e22\u51fa\u804a\u5929\uff0c\u4f46\u672a\u88ab\u5c01\u9396\u3002\u5728\u516c\u958b\u804a\u5929\u4e2d\uff0c\u7528\u6236\u53ef\u4ee5\u96a8\u6642\u91cd\u65b0\u52a0\u5165\u3002";
+      return "Foydalanuvchi suhbatdan chiqarib yuboriladi, ammo taqiqlanmaydi. Ommaviy chatlarda foydalanuvchi istalgan vaqtda qayta qo\u02bbshilishi mumkin.";
     },
     get$makeAdminDescription() {
-      return "\u4e00\u65e6\u4f60\u5c07\u6b64\u7528\u6236\u8a2d\u70ba\u7ba1\u7406\u54e1\uff0c\u4ed6\u5011\u5c07\u64c1\u6709\u8207\u4f60\u76f8\u540c\u7684\u6b0a\u9650\uff0c\u53ef\u80fd\u7121\u6cd5\u64a4\u92b7\u6b64\u64cd\u4f5c\u3002";
+      return "Bu foydalanuvchini admini qilsangiz, uni bekor qila olmasligingiz mumkin, chunki u siz bilan bir xil ruxsatlarga ega bo\u2018ladi.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u4f60\u7684\u5168\u57df\u7528\u6236ID\u662f\uff1a";
+      return "Global foydalanuvchi ID raqamingiz: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u5f88\u62b1\u6b49\uff0c\u672a\u627e\u5230\u7b26\u5408 "' + query + '" \u7684\u7528\u6236\u3002\u8acb\u6aa2\u67e5\u662f\u5426\u6709\u6253\u932f\u5b57\u3002';
+      return 'Afsuski, "' + query + '" so\u02bbrovi bilan foydalanuvchi topilmadi. Iltimos, xato qilganingizni tekshiring.';
     },
     get$knocking() {
-      return "\u6572\u9580\u4e2d";
+      return "Taqillatmoqda";
     },
     get$nothingFound() {
-      return "\u672a\u627e\u5230\u4efb\u4f55\u5167\u5bb9...";
+      return "Hech nima topilmadi...";
     },
     get$groupName() {
-      return "\u7fa4\u7d44\u540d\u7a31";
+      return "Guruh nomi";
     },
     get$createGroupAndInviteUsers() {
-      return "\u5efa\u7acb\u7fa4\u7d44\u4e26\u9080\u8acb\u7528\u6236";
+      return "Guruh yaratish va foydalanuvchilarni taklif qilish";
     },
     get$groupCanBeFoundViaSearch() {
-      return "\u7fa4\u7d44\u53ef\u900f\u904e\u641c\u5c0b\u627e\u5230";
+      return "Guruh qidiruv orqali topilishi mumkin";
     },
     get$wrongRecoveryKey() {
-      return "\u62b1\u6b49... \u9019\u4f3c\u4e4e\u4e0d\u662f\u6b63\u78ba\u7684\u6062\u5fa9\u91d1\u9470\u3002";
+      return "Kechirasiz... bu to\u02bbg\u02bbri tiklash kaliti emasga o\u02bbxshaydi.";
     },
     get$startConversation() {
-      return "\u958b\u59cb\u5c0d\u8a71";
+      return "Suhbat boshlash";
     },
     get$commandHint_sendraw() {
-      return "\u50b3\u9001\u539f\u59cb JSON";
+      return "Xom jsonni yuborish";
     },
     get$searchForUsers() {
-      return "\u641c\u5c0b @\u7528\u6236...";
+      return "@users ni qidiring...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u8acb\u8f38\u5165\u60a8\u7684\u76ee\u524d\u5bc6\u78bc";
+      return "Iltimos, joriy maxfiy so\u02bbzingizni kiriting";
     },
     get$newPassword() {
-      return "\u65b0\u5bc6\u78bc";
+      return "Yangi maxfiy so\u02bbz";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u8acb\u9078\u64c7\u4e00\u500b\u5f37\u5bc6\u78bc";
+      return "Iltimos kuchli maxfiy so\u02bbz tanlang";
     },
     get$passwordsDoNotMatch() {
-      return "\u5bc6\u78bc\u4e0d\u7b26";
+      return "Maxfiy so\u02bbzlar mos kelmadi";
     },
     get$passwordIsWrong() {
-      return "\u60a8\u8f38\u5165\u7684\u5bc6\u78bc\u932f\u8aa4";
+      return "Siz kiritgan maxfiy so\u02bbz xato";
     },
     get$decline() {
-      return "\u62d2\u7d55";
+      return "Rad qilish";
     },
     get$thisDevice() {
-      return "\u6b64\u8a2d\u5099\uff1a";
+      return "Ushbu qurilma:";
     },
     get$initAppError() {
-      return "\u521d\u59cb\u5316\u61c9\u7528\u7a0b\u5f0f\u6642\u767c\u751f\u932f\u8aa4";
+      return "Ilovani ishga tushirishda xatolik yuz berdi";
     },
     searchIn$1(chat) {
-      return '\u5728\u804a\u5929 "' + chat + '" \u4e2d\u641c\u7d22...';
+      return 'Suhbat "' + chat + '"da qidiring...';
     },
     get$searchMore() {
-      return "\u641c\u7d22\u66f4\u591a...";
+      return "Ko\u02bbproq qidirish...";
     },
     get$gallery() {
-      return "\u76f8\u7c3f";
+      return "Galereya";
     },
     get$files(_) {
-      return "\u6587\u4ef6";
+      return "Fayllar";
     },
     sessionLostBody$2(url, error) {
-      return "\u60a8\u7684\u6703\u8a71\u5df2\u4e1f\u5931\u3002\u8acb\u5411\u958b\u767c\u8005\u5831\u544a\u6b64\u932f\u8aa4\uff0c\u7db2\u5740\u70ba " + url + "\u3002\u932f\u8aa4\u8a0a\u606f\u70ba\uff1a" + error;
+      return "Seansingiz yo\u02bbqoldi. Iltimos, ushbu xato haqida " + url + string$._manzi + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u61c9\u7528\u7a0b\u5f0f\u73fe\u5728\u5617\u8a66\u5f9e\u5099\u4efd\u4e2d\u9084\u539f\u60a8\u7684\u6703\u8a71\u3002\u8acb\u5411\u958b\u767c\u8005\u5831\u544a\u6b64\u932f\u8aa4\uff0c\u7db2\u5740\u70ba " + url + "\u3002\u932f\u8aa4\u8a0a\u606f\u70ba\uff1a" + error;
+      return "Ilova endi seansingizni zaxira nusxasidan tiklashga harakat qiladi. Iltimos, ushbu xato haqida " + url + string$._manzi + error;
     },
     get$sendReadReceipts() {
-      return "\u767c\u9001\u5df2\u8b80\u56de\u57f7";
+      return "O\u02bbqilganlik haqida xabarnomalarni yuborish";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u804a\u5929\u4e2d\u7684\u5176\u4ed6\u53c3\u8207\u8005\u53ef\u4ee5\u770b\u5230\u4f60\u6b63\u5728\u8f38\u5165\u65b0\u8a0a\u606f\u3002";
+      return "Suhbatdagi boshqa ishtirokchilar siz yangi xabar yozayotganingizni ko\u02bbrishlari mumkin.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u5176\u4ed6\u804a\u5929\u53c3\u8207\u8005\u53ef\u4ee5\u770b\u5230\u4f60\u4f55\u6642\u5df2\u8b80\u8a0a\u606f\u3002";
+      return "Suhbatdagi boshqa ishtirokchilar sizning xabarni qachon o\u02bbqiganingizni ko\u02bbrishlari mumkin.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u9a57\u8b49\u5176\u4ed6\u88dd\u7f6e";
+      return "\ud83d\udd10 Boshqa qurilmani tasdiqlang";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u7576\u4f60\u9a57\u8b49\u53e6\u4e00\u500b\u88dd\u7f6e\u6642\uff0c\u9019\u4e9b\u88dd\u7f6e\u53ef\u4ee5\u4ea4\u63db\u91d1\u9470\uff0c\u589e\u52a0\u4f60\u7684\u6574\u9ad4\u5b89\u5168\u6027\u3002 \ud83d\udcaa \u7576\u4f60\u958b\u59cb\u9a57\u8b49\u6642\uff0c\u5169\u500b\u88dd\u7f6e\u4e0a\u7684\u61c9\u7528\u7a0b\u5f0f\u90fd\u6703\u51fa\u73fe\u4e00\u500b\u5f48\u51fa\u8996\u7a97\u3002\u7136\u5f8c\u4f60\u6703\u770b\u5230\u4e00\u7cfb\u5217\u7684\u8868\u60c5\u7b26\u865f\u6216\u6578\u5b57\uff0c\u4f60\u9700\u8981\u5f7c\u6b64\u6bd4\u8f03\u3002\u5728\u958b\u59cb\u9a57\u8b49\u4e4b\u524d\uff0c\u6700\u597d\u6e96\u5099\u597d\u5169\u500b\u88dd\u7f6e\u3002 \ud83e\udd33";
+      return "Boshqa qurilmani tasdiqlaganingizda, bu qurilmalar kalitlarni almashishi mumkin, bu umumiy xavfsizligingizni oshiradi. \ud83d\udcaa Tasdiqlashni boshlaganingizda, ikkala qurilmada ham ilovada qalqib chiquvchi oyna paydo bo\u2018ladi. U yerda siz bir-biri bilan taqqoslashingiz kerak bo\u2018lgan emojilar yoki raqamlar qatorini ko\u2018rasiz. Tasdiqlashni boshlashdan oldin ikkala qurilma ham yoningizda bo\u2018lgani ma\u2019qul. \u2713";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u5df2\u63a5\u53d7\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalit tekshiruvini qabul qildi";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u53d6\u6d88\u4e86\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalit tekshiruvini bekor qildi";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u5b8c\u6210\u4e86\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalitni tasdiqlashni yakunladi";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u6e96\u5099\u597d\u9032\u884c\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalitni tasdiqlash uchun tayyor";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u8acb\u6c42\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalitni tasdiqlash talabini yubordi";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u958b\u59cb\u91d1\u9470\u9a57\u8b49";
+      return sender + " kalit tekshiruvini so\u2018radi";
     },
     get$commandHint_ignore() {
-      return "\u5ffd\u7565\u7d66\u5b9a\u7684\u77e9\u9663ID";
+      return "Berilgan matriks ID e\u2019tiborga olinmasin";
     },
     get$commandHint_unignore() {
-      return "\u53d6\u6d88\u5ffd\u7565\u7d66\u5b9a\u7684\u77e9\u9663ID";
+      return "Berilgan matriks IDni e\u2019tiborsiz qoldirish";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u76ee\u524d\u6709 " + count + " \u4f4d\u7528\u6236\u88ab\u5c01\u9396\u3002";
+      return "Hozirda " + count + " ta foydalanuvchi bloklangan.";
     },
     get$restricted() {
-      return "\u53d7\u9650\u5236";
+      return "Cheklangan";
     },
     get$markAsUnread() {
-      return "\u6a19\u8a18\u70ba\u672a\u8b80";
+      return "Ochilmagan deb belgilash";
     },
     userLevel$1(level) {
-      return "" + level + " - \u7528\u6236";
+      return "" + level + " - Foydalanuvchi";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u7248\u4e3b";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u7ba1\u7406\u54e1";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u66f4\u6539\u804a\u5929\u8a18\u9304\u7684\u53ef\u898b\u6027";
+      return "Suhbat tarix ko\u02bbrinishini o\u02bbzgartirish";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u66f4\u6539\u4e3b\u8981\u516c\u958b\u804a\u5929\u5ba4\u5730\u5740";
+      return "Asosiy umumiy suhbat manzilini o\u02bbzgartirish";
     },
     get$sendRoomNotifications() {
-      return "\u767c\u9001 @room \u901a\u77e5";
+      return "@room bildirishnomalarini yuborish";
     },
     get$chatPermissionsDescription() {
-      return "\u5b9a\u7fa9\u5728\u6b64\u804a\u5929\u4e2d\u57f7\u884c\u67d0\u4e9b\u64cd\u4f5c\u6240\u9700\u7684\u6b0a\u529b\u7b49\u7d1a\u3002\u6b0a\u529b\u7b49\u7d1a 0\u300150 \u548c 100 \u901a\u5e38\u4ee3\u8868\u7528\u6236\u3001\u7248\u4e3b\u548c\u7ba1\u7406\u54e1\uff0c\u4f46\u4e5f\u53ef\u4ee5\u6709\u5176\u4ed6\u5c64\u7d1a\u3002";
+      return "Ushbu suhbatda muayyan harakatlar uchun qaysi quvvat darajasi zarurligini aniqlang. 0, 50 va 100 quvvat darajalari odatda foydalanuvchilar, moderatorlar va administratorlarni ifodalaydi, ammo har qanday gradatsiya mumkin.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u5df2\u5b89\u88dd\u66f4\u65b0 " + version + "\uff01";
+      return "\ud83c\udf89 " + version + " versiyasiga yangilandi!";
     },
     get$sendCanceled() {
-      return "\u767c\u9001\u5df2\u53d6\u6d88";
+      return "Yuborish bekor qilindi";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u4f3c\u4e4e\u4e0d\u662f\u517c\u5bb9\u7684\u5bb6\u5ead\u4f3a\u670d\u5668\u3002\u7db2\u5740\u932f\u8aa4\uff1f";
+      return "Uy serveri mos emasga o\u2018xshaydi. URL xato kiritilganmi?";
     },
     get$calculatingFileSize() {
-      return "\u6b63\u5728\u8a08\u7b97\u6a94\u6848\u5927\u5c0f...";
+      return "Fayl hajmi hisoblanmoqda...";
     },
     get$prepareSendingAttachment() {
-      return "\u6e96\u5099\u50b3\u9001\u9644\u4ef6...";
+      return "Yuborish uchun biriktirmani tayyorlang...";
     },
     get$sendingAttachment() {
-      return "\u50b3\u9001\u9644\u4ef6\u4e2d...";
+      return "Biriktirish yuborilmoqda...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u50b3\u9001\u9644\u4ef6 " + index + " / " + $length + "...";
+      return "Biriktirma yuborilmoqda: " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "\u4f3a\u670d\u5668\u9650\u5236\u5df2\u9054\uff01\u7b49\u5f85 " + seconds + " \u79d2...";
+      return "Server limiti tugadi! " + seconds + " soniya kutilmoqda...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u6ce8\u610f\uff1a\u7576\u4f60\u5c07\u6240\u6709\u88dd\u7f6e\u9023\u63a5\u5230\u804a\u5929\u5099\u4efd\u6642\uff0c\u5b83\u5011\u6703\u81ea\u52d5\u9a57\u8b49\u3002";
+      return "Eslatma: Barcha qurilmalaringizni suhbat zaxira nusxasiga ulaganingizda, ular avtomatik ravishda tasdiqlanadi.";
     },
     get$continueText() {
-      return "\u7e7c\u7e8c";
+      return "Davom ettirish";
     },
     get$blur(_) {
-      return "\u6a21\u7cca\uff1a";
+      return "Xiralashtirish:";
     },
     get$opacity(_) {
-      return "\u4e0d\u900f\u660e\u5ea6\uff1a";
+      return "Noaniqlik:";
     },
     get$setWallpaper() {
-      return "\u8a2d\u5b9a\u58c1\u7d19";
+      return "Fon rasmini sozlash";
     },
     get$noContactInformationProvided() {
-      return "\u4f3a\u670d\u5668\u672a\u63d0\u4f9b\u4efb\u4f55\u6709\u6548\u7684\u806f\u7d61\u8cc7\u6599";
+      return "Server hech qanday yaroqli kontakt axborotini taqdim etmaydi";
     },
     get$contactServerAdmin() {
-      return "\u806f\u7d61\u4f3a\u670d\u5668\u7ba1\u7406\u54e1";
+      return "Server administratori bilan bog\u2018lanish";
     },
     get$contactServerSecurity() {
-      return "\u806f\u7d61\u4f3a\u670d\u5668\u5b89\u5168\u90e8\u9580";
+      return "Aloqa serveri xavfsizligi";
     },
     get$supportPage() {
-      return "\u652f\u63f4\u9801\u9762";
+      return "Yordam sahifasi";
     },
     get$serverInformation() {
-      return "\u4f3a\u670d\u5668\u8cc7\u8a0a\uff1a";
+      return "Server haqida ma\u2019lumot:";
     },
     get$name(_) {
-      return "\u540d\u7a31";
+      return "Nomi";
     },
     get$version(_) {
-      return "\u7248\u672c";
+      return "Versiya";
     },
     get$website() {
-      return "\u7db2\u7ad9";
+      return "Sayt";
     },
     get$compress() {
-      return "\u58d3\u7e2e";
+      return "Siqmoq";
     },
     get$boldText() {
-      return "\u7c97\u9ad4\u6587\u5b57";
+      return "Qalin matn";
     },
     get$italicText() {
-      return "\u659c\u9ad4\u6587\u5b57";
+      return "Qiya matn";
     },
     get$strikeThrough() {
-      return "\u522a\u9664\u7dda";
+      return "O\u2018tish joyi";
     },
     get$pleaseFillOut() {
-      return "\u8acb\u586b\u5beb";
+      return "Iltimos, to\u2018ldiring";
     },
     get$invalidUrl() {
-      return "\u7121\u6548\u7684\u7db2\u5740";
+      return "Yaroqsiz url";
     },
     get$addLink() {
-      return "\u65b0\u589e\u9023\u7d50";
+      return "Havola kiritish";
     },
     get$unableToJoinChat() {
-      return "\u7121\u6cd5\u52a0\u5165\u804a\u5929\u3002\u53ef\u80fd\u5c0d\u65b9\u5df2\u7d93\u7d50\u675f\u5c0d\u8a71\u3002";
+      return "Chatga qo\u02bbshilib bo\u02bblmadi. Ehtimol, boshqa tomon suhbatni allaqachon yopib qo\u02bbygan.";
     },
     get$previous() {
-      return "\u4e0a\u4e00\u500b";
+      return "Avvalgi";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u5c0d\u65b9\u76ee\u524d\u672a\u767b\u5165\uff0c\u56e0\u6b64\u7121\u6cd5\u63a5\u6536\u8a0a\u606f\uff01";
+      return "Narigi tomon hozirda hisobingizga kirmagan va shuning uchun xabarlarni qabul qila olmaydi!";
     },
     get$open(_) {
-      return "\u6253\u958b";
+      return "Ochish";
     },
     get$waitingForServer() {
-      return "\u7b49\u5f85\u4f3a\u670d\u5668...";
+      return "Server kutilmoqda...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u65b0\u7684\u804a\u5929\u8acb\u6c42";
+      return "\ud83d\udce9 Yangi suhbat uchun so\u02bbrov";
     },
     get$contentNotificationSettings() {
-      return "\u5167\u5bb9\u901a\u77e5\u8a2d\u5b9a";
+      return "Kontent bildirishnomasi sozlamalari";
     },
     get$generalNotificationSettings() {
-      return "\u4e00\u822c\u901a\u77e5\u8a2d\u5b9a";
+      return "Umumiy bildirishnoma sozlamalari";
     },
     get$roomNotificationSettings() {
-      return "\u623f\u9593\u901a\u77e5\u8a2d\u5b9a";
+      return "Xona bildirishnomasi sozlamalari";
     },
     get$userSpecificNotificationSettings() {
-      return "\u7528\u6236\u7279\u5b9a\u901a\u77e5\u8a2d\u5b9a";
+      return "Foydalanuvchiga xos bildirishnoma sozlamalari";
     },
     get$otherNotificationSettings() {
-      return "\u5176\u4ed6\u901a\u77e5\u8a2d\u5b9a";
+      return "Boshqa bildirishnoma sozlamalari";
     },
     get$notificationRuleContainsUserName() {
-      return "\u5305\u542b\u7528\u6236\u540d";
+      return "Foydalanuvchi nomini ichiga oladi";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u7576\u8a0a\u606f\u5305\u542b\u7528\u6236\u540d\u6642\u901a\u77e5\u7528\u6236\u3002";
+      return "Xabarda foydalanuvchi nomi mavjud bo\u2018lsa, foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleMaster() {
-      return "\u975c\u97f3\u6240\u6709\u901a\u77e5";
+      return "Barcha bildirishnomalarni ovozsiz qilish";
     },
     get$notificationRuleMasterDescription() {
-      return "\u8986\u84cb\u6240\u6709\u5176\u4ed6\u898f\u5247\u4e26\u7981\u7528\u6240\u6709\u901a\u77e5\u3002";
+      return "Boshqa barcha qoidalarni bekor qiladi va barcha bildirishnomalarni faolsizlantiradi.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u6291\u5236\u81ea\u52d5\u8a0a\u606f";
+      return "Avtomatlashtirilgan xabarlarni o\u2018chirish";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u6291\u5236\u4f86\u81ea\u81ea\u52d5\u5ba2\u6236\u7aef\uff08\u5982\u6a5f\u68b0\u4eba\uff09\u7684\u901a\u77e5\u3002";
+      return "Botlar kabi avtomatlashtirilgan mijozlardan kelgan bildirishnomalarni to\u2018xtatadi.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u9080\u8acb\u6211";
+      return "Men uchun taklif qilish";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u7576\u7528\u6236\u88ab\u9080\u8acb\u52a0\u5165\u623f\u9593\u6642\u901a\u77e5\u7528\u6236\u3002";
+      return "Foydalanuvchi xonaga taklif qilinganda unga xabar beradi.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u6210\u54e1\u4e8b\u4ef6";
+      return "A\u2019zo tadbirlari";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u6291\u5236\u6210\u54e1\u4e8b\u4ef6\u7684\u901a\u77e5\u3002";
+      return "Obuna tadbirlari uchun bildirishnomalarni o\u2018chiradi.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u7528\u6236\u63d0\u53ca";
+      return "Foydalanuvchi zikri";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u7576\u7528\u6236\u5728\u8a0a\u606f\u4e2d\u88ab\u76f4\u63a5\u63d0\u53ca\u6642\u901a\u77e5\u4ed6\u5011\u3002";
+      return "Foydalanuvchi xabarida to\u2018g\u2018ridan-to\u2018g\u2018ri tilga olinganida unga xabar beradi.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u5305\u542b\u986f\u793a\u540d\u7a31";
+      return "Tarkibida displey nomi bor";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u7576\u8a0a\u606f\u5305\u542b\u4ed6\u5011\u7684\u986f\u793a\u540d\u7a31\u6642\u901a\u77e5\u7528\u6236\u3002";
+      return "Xabarda foydalanuvchining displey nomi mavjudligi haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u623f\u9593\u63d0\u53ca";
+      return "Xonaga eslatma";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u7576\u6709\u623f\u9593\u63d0\u53ca\u6642\u901a\u77e5\u7528\u6236\u3002";
+      return "Xona zikri mavjudligida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u623f\u9593\u901a\u77e5";
+      return "Xona bildirishnomasi";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u7576\u8a0a\u606f\u5305\u542b '@room' \u6642\u901a\u77e5\u7528\u6236\u3002";
+      return "Xabar tarkibida @room bo\u2018lsa, foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleTombstone() {
-      return "\u5893\u7891";
+      return "Qabrtosh";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u901a\u77e5\u7528\u6236\u6709\u95dc\u623f\u9593\u505c\u7528\u7684\u8a0a\u606f\u3002";
+      return "Xonani faolsizlantirish xabarlari haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleReaction() {
-      return "\u53cd\u61c9";
+      return "Reaksiya";
     },
     get$notificationRuleReactionDescription() {
-      return "\u5c4f\u853d\u53cd\u61c9\u7684\u901a\u77e5\u3002";
+      return "Munosabat bildirishnomalarini o\u2018chiradi.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\u623f\u9593\u4f3a\u670d\u5668\u5b58\u53d6\u63a7\u5236\u6e05\u55ae";
+      return "Guruh serveri ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u5c4f\u853d\u623f\u9593\u4f3a\u670d\u5668\u5b58\u53d6\u63a7\u5236\u6e05\u55ae\uff08ACL\uff09\u7684\u901a\u77e5\u3002";
+      return "Guruh serveriga kirishni boshqarish ro\u2018yxatlari (ACL) uchun bildirishnomalarni bostiradi.";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u5c4f\u853d\u7de8\u8f2f";
+      return "Tahrirlarni bostirish";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u5c4f\u853d\u5df2\u7de8\u8f2f\u8a0a\u606f\u7684\u901a\u77e5\u3002";
+      return "Tahrirlangan xabarlar uchun bildirishnomalarni o\u2018chiradi.";
     },
     get$notificationRuleCall() {
-      return "\u901a\u8a71";
+      return "Chaqiruv";
     },
     get$notificationRuleCallDescription() {
-      return "\u901a\u77e5\u7528\u6236\u6709\u95dc\u901a\u8a71\u3002";
+      return "Chaqiruvlar haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u52a0\u5bc6\u4e00\u5c0d\u4e00\u623f\u9593";
+      return "Shifrlangan birga-bir guruh";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u901a\u77e5\u7528\u6236\u6709\u95dc\u52a0\u5bc6\u4e00\u5c0d\u4e00\u623f\u9593\u4e2d\u7684\u8a0a\u606f\u3002";
+      return "Shifrlangan birga-bir guruhlardagi xabarlar haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u4e00\u5c0d\u4e00\u623f\u9593";
+      return "Birga-bir guruh";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u901a\u77e5\u7528\u6236\u4e00\u5c0d\u4e00\u623f\u9593\u4e2d\u7684\u8a0a\u606f\u3002";
+      return "Birga-bir guruhlardagidagi xabarlar haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleMessage() {
-      return "\u8a0a\u606f";
+      return "Xabar";
     },
     get$notificationRuleMessageDescription() {
-      return "\u901a\u77e5\u7528\u6236\u4e00\u822c\u8a0a\u606f\u3002";
+      return "Foydalanuvchiga umumiy xabarlar haqida xabar beradi.";
     },
     get$notificationRuleEncrypted() {
-      return "\u5df2\u52a0\u5bc6";
+      return "Shifrlangan";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u901a\u77e5\u7528\u6236\u52a0\u5bc6\u623f\u9593\u4e2d\u7684\u8a0a\u606f\u3002";
+      return "Shifrlangan guruhlardagi xabarlar haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u901a\u77e5\u7528\u6236Jitsi\u5c0f\u5de5\u5177\u4e8b\u4ef6\u3002";
+      return "Jitsi vidjet hodisalari haqida foydalanuvchiga xabar beradi.";
     },
     get$notificationRuleServerAcl() {
-      return "\u5c4f\u853d\u4f3a\u670d\u5668ACL\u4e8b\u4ef6";
+      return "Server ACL hodisalarini bostirish";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u5c4f\u853d\u4f3a\u670d\u5668ACL\u4e8b\u4ef6\u7684\u901a\u77e5\u3002";
+      return "Server ACL hodisalari uchun bildirishnomalarni o\u2018chiradi.";
     },
     unknownPushRule$1(rule) {
-      return "\u672a\u77e5\u7684\u63a8\u9001\u898f\u5247 '" + rule + "'";
+      return "Noma\u2019lum push qoidasi '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \u4f86\u81ea " + sender + " \u7684\u8a9e\u97f3\u8a0a\u606f";
+      return "\ufe0f \ud83c\udf99\ufe0f" + duration + " - " + sender + "dan ovozli xabar";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u5982\u679c\u4f60\u522a\u9664\u6b64\u901a\u77e5\u8a2d\u5b9a\uff0c\u5c07\u7121\u6cd5\u64a4\u92b7\u3002";
+      return "Agar ushbu bildirishnoma sozlamasini o\u2018chirib tashlasangiz, buni bekor qilib bo\u2018lmaydi.";
     },
     get$more() {
-      return "\u66f4\u591a";
+      return "Yana";
     },
     get$shareKeysWith() {
-      return "\u8207...\u5206\u4eab\u5bc6\u9470";
+      return "Kalitlarni ulashish...";
     },
     get$shareKeysWithDescription() {
-      return "\u54ea\u4e9b\u88dd\u7f6e\u61c9\u8a72\u88ab\u4fe1\u4efb\uff0c\u4ee5\u4fbf\u5b83\u5011\u53ef\u4ee5\u5728\u52a0\u5bc6\u804a\u5929\u4e2d\u95b1\u8b80\u4f60\u7684\u8a0a\u606f\uff1f";
+      return "Shifrlangan suhbatlarda xabarlaringizni o\u02bbqishlari uchun qaysi qurilmalarga ishonish kerak?";
     },
     get$allDevices() {
-      return "\u6240\u6709\u88dd\u7f6e";
+      return "Barcha qurilmalar";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u555f\u7528\u6642\uff0c\u4ea4\u53c9\u9a57\u8b49\u7684\u88dd\u7f6e";
+      return "Agar yoqilgan bo\u2018lsa, tasdiqlangan qurilmalarni kesib o\u2018tish";
     },
     get$crossVerifiedDevices() {
-      return "\u4ea4\u53c9\u9a57\u8b49\u7684\u88dd\u7f6e";
+      return "O\u2018zaro tekshirilgan qurilmalar";
     },
     get$verifiedDevicesOnly() {
-      return "\u50c5\u9650\u5df2\u9a57\u8b49\u7684\u88dd\u7f6e";
+      return "Faqat tasdiqlangan qurilmalar";
     },
     get$optionalMessage() {
-      return "(\u53ef\u9078)\u8a0a\u606f...";
+      return "(Ixtiyoriy) xabar...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u6b64\u88dd\u7f6e\u4e0d\u652f\u63f4";
+      return "Bu qurilmada ishlamaydi";
     },
     get$enterNewChat() {
-      return "\u9032\u5165\u65b0\u804a\u5929";
+      return "Yangi suhbatga kirish";
     },
     get$approve() {
-      return "\u6279\u51c6";
+      return "Tasdiqlash";
     },
     get$youHaveKnocked() {
-      return "\u4f60\u5df2\u6572\u9580";
+      return "Siz taqillatdingiz";
     },
     get$commandHint_logout() {
-      return "\u767b\u51fa\u4f60\u76ee\u524d\u7684\u88dd\u7f6e";
+      return "Joriy qurilmadan chiqish";
     },
     get$commandHint_logoutall() {
-      return "\u767b\u51fa\u6240\u6709\u6d3b\u8e8d\u88dd\u7f6e";
+      return "Barcha faol qurilmalardan chiqish";
     },
     get$moreEvents() {
-      return "\u66f4\u591a\u4e8b\u4ef6";
+      return "Boshqa hodisalar";
     },
     get$declineInvitation() {
-      return "\u62d2\u7d55\u9080\u8acb";
+      return "Taklifni rad etish";
     },
     get$noMessagesYet() {
-      return "\u5c1a\u672a\u6709\u6d88\u606f";
+      return "Hozircha xabarlar yo\u2018q";
     },
     get$pause(_) {
-      return "\u66ab\u505c";
+      return "Pauza";
     },
     get$resume(_) {
-      return "\u7e7c\u7e8c";
+      return "Davom etish";
     },
     countChats$1(chats) {
-      return "" + chats + " \u500b\u804a\u5929";
+      return "" + chats + " suhbatlar";
     },
     get$startPoll() {
-      return "\u958b\u59cb\u6295\u7968";
+      return "So\u2018rovni boshlash";
     },
     get$endPoll() {
-      return "\u7d50\u675f\u6295\u7968";
+      return "So\u2018rovnomani yakunlash";
     },
     get$answersVisible() {
-      return "\u7b54\u6848\u53ef\u898b";
+      return "Javoblar ko\u2018rinadi";
     },
     get$pollQuestion() {
-      return "\u6295\u7968\u554f\u984c";
+      return "So\u2018rovnoma savoli";
     },
     get$answerOption() {
-      return "\u7b54\u6848\u9078\u9805";
+      return "Javob varianti";
     },
     get$addAnswerOption() {
-      return "\u6dfb\u52a0\u7b54\u6848\u9078\u9805";
+      return "Javob variantini kiritish";
     },
     get$allowMultipleAnswers() {
-      return "\u5141\u8a31\u591a\u500b\u7b54\u6848";
+      return "Bir nechta javobga ruxsat berish";
     },
     get$pollHasBeenEnded() {
-      return "\u6295\u7968\u5df2\u7d50\u675f";
+      return "So\u2018rovnoma yakunlandi";
     },
     countVotes$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u4e00\u7968", "" + count + " \u7968", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bir ovoz", "" + count + " ta ovoz", _null, _null);
     },
     get$answersWillBeVisibleWhenPollHasEnded() {
-      return "\u6295\u7968\u7d50\u675f\u5f8c\u7b54\u6848\u5c07\u53ef\u898b";
+      return "So\u2018rovnoma tugaganida javoblar chiqadi";
     },
     get$replyInThread() {
-      return "\u5728\u7dda\u56de\u8986";
+      return "Sahifada javob berish";
     },
     countReplies$1(count) {
       var _null = null;
-      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "\u4e00\u689d\u56de\u8986", "" + count + " \u689d\u56de\u8986", _null, _null);
+      return B.Intl_pluralLogic(count, _null, this.localeName, _null, "Bitta javob", "" + count + " ta javob", _null, _null);
     },
     get$thread() {
-      return "\u4e3b\u984c";
+      return "Sahifa";
     },
     get$backToMainChat() {
-      return "\u8fd4\u56de\u4e3b\u804a\u5929";
+      return "Asosiy suhbatga qaytish";
     },
     get$saveChanges() {
-      return "\u5132\u5b58\u66f4\u6539";
+      return "O\u2018zgarishlarni saqlash";
     },
     get$createSticker() {
-      return "\u5275\u5efa\u8cbc\u7d19\u6216\u8868\u60c5\u7b26\u865f";
+      return "Stiker yoki emoji yaratish";
     },
     get$useAsSticker() {
-      return "\u7528\u4f5c\u8cbc\u7d19";
+      return "Stiker sifatida ishlatish";
     },
     get$useAsEmoji() {
-      return "\u7528\u4f5c\u8868\u60c5\u7b26\u865f";
+      return "Emoji sifatida ishlatish";
     },
     get$stickerPackNameAlreadyExists() {
-      return "\u8cbc\u7d19\u5305\u540d\u7a31\u5df2\u5b58\u5728";
+      return "Stiker paketi nomi allaqachon mavjud";
     },
     get$newStickerPack() {
-      return "\u65b0\u8cbc\u7d19\u5305";
+      return "Yangi stikerlar paketi";
     },
     get$stickerPackName() {
-      return "\u8cbc\u7d19\u5305\u540d\u7a31";
+      return "Stiker paketi nomi";
     },
     get$attribution(_) {
-      return "\u6b78\u56e0";
+      return "Atributsiya";
     },
     get$skipChatBackup() {
-      return "\u8df3\u904e\u804a\u5929\u5099\u4efd";
+      return "Chat zaxirasini tashlab ketish";
     },
     get$skipChatBackupWarning() {
-      return "\u4f60\u78ba\u5b9a\u55ce\uff1f\u5982\u679c\u4e0d\u555f\u7528\u804a\u5929\u5099\u4efd\uff0c\u7576\u4f60\u66f4\u63db\u8a2d\u5099\u6642\u53ef\u80fd\u6703\u5931\u53bb\u8a2a\u554f\u4f60\u7684\u6d88\u606f\u7684\u6b0a\u9650\u3002";
+      return "Ishonchingiz komilmi? Chat zaxirasini yoqmasdan qurilmangizni almashtirsangiz, xabarlaringizga kira olmay qolishingiz mumkin.";
     },
     get$loadingMessages() {
-      return "\u52a0\u8f09\u6d88\u606f\u4e2d";
+      return "Xabarlar yuklanmoqda";
     },
     get$setupChatBackup() {
-      return "\u8a2d\u7f6e\u804a\u5929\u5099\u4efd";
+      return "Chat zaxirasini sozlash";
     },
     get$noMoreResultsFound() {
-      return "\u6c92\u6709\u66f4\u591a\u7d50\u679c";
+      return "Boshqa natijalar topilmadi";
     },
     chatSearchedUntil$1(time) {
-      return "\u804a\u5929\u641c\u7d22\u81f3 " + time;
+      return "Chat " + time + " gacha qidirildi";
     },
     get$federationBaseUrl() {
-      return "\u806f\u90a6\u57fa\u672c URL";
+      return "Federatsiya Asos URL";
     },
     get$clientWellKnownInformation() {
-      return "\u5ba2\u6236\u7aef\u5df2\u77e5\u4fe1\u606f\uff1a";
+      return "Mijoz-Yaxtirilgan Ma'lumot:";
     },
     get$baseUrl() {
-      return "\u57fa\u672c URL";
+      return "Asosiy URL";
     },
     get$identityServer() {
-      return "\u8eab\u4efd\u4f3a\u670d\u5668\uff1a";
+      return "Identifikatsiya Serveri:";
     },
     versionWithNumber$1(version) {
-      return "\u7248\u672c\uff1a" + version;
+      return "Versiya: " + version;
     },
     get$logs() {
-      return "\u65e5\u8a8c";
+      return "Jurnallar";
     },
     get$advancedConfigs() {
-      return "\u9ad8\u7d1a\u914d\u7f6e";
+      return "Kengaytirilgan Sozlamalar";
     },
     get$advancedConfigurations() {
-      return "\u9ad8\u7d1a\u914d\u7f6e";
+      return "Kengaytirilgan sozlamalar";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u8f38\u5165 " + l1 + " \u6216 " + l2 + "...";
+      return l1 + " yoki " + l2 + " da yozing...";
     },
     get$gaTooltip() {
-      return "\u7528\u65bc\u8a9e\u6cd5\u5354\u52a9";
+      return "Grammatika yordamida L2 bilan foydalanish";
     },
     get$taTooltip() {
-      return "\u7528\u65bc\u7ffb\u8b6f\u5354\u52a9";
+      return "L2 tarjima yordamida foydalanish";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u4e92\u52d5\u7ffb\u8b6f\u5668";
+      return "Interaktiv tarjimon";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u4e92\u52d5\u8a9e\u6cd5\u6aa2\u67e5\u5668";
+      return "Interaktiv grammatik tekshiruvchi";
     },
     get$waTooltip() {
-      return "\u7121\u5354\u52a9\u4f7f\u7528 L2";
+      return "Yordam bilan L2 foydalanish";
     },
     get$noIdenticalLanguages() {
-      return "\u8acb\u9078\u64c7\u4e0d\u540c\u7684\u57fa\u790e\u8a9e\u8a00\u548c\u76ee\u6a19\u8a9e\u8a00";
+      return "Iltimos, asosiy va maqsad tillarini farqlang";
     },
     get$joinWithClassCode() {
-      return "\u52a0\u5165\u8ab2\u7a0b";
+      return "Kursga qo'shiling";
     },
     get$languageLevelPreA1() {
-      return "\u65b0\u624b\u4f4e\u7d1a (Pre A1)";
+      return "Yangi boshlovchi past (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u65b0\u624b\u4e2d\u7d1a (A1)";
+      return "Yangi boshlovchi o'rtacha (A1)";
     },
     get$languageLevelA2() {
-      return "\u521d\u5b78\u8005\u9ad8\u7d1a (A2)";
+      return "Yangi boshlovchi yuqori (A2)";
     },
     get$languageLevelB1() {
-      return "\u4e2d\u7d1a\u4e2d (B1)";
+      return "O'rta o'rtacha (B1)";
     },
     get$languageLevelB2() {
-      return "\u9ad8\u7d1a\u4f4e (B2)";
+      return "Yuqori past (B2)";
     },
     get$languageLevelC1() {
-      return "\u9ad8\u7d1a\u4e2d (C1)";
+      return "Yuqori o'rtacha (C1)";
     },
     get$languageLevelC2() {
-      return "\u5353\u8d8a (C2)";
+      return "Yuqori (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u66f4\u6539\u540d\u7a31";
+      return "Nomi o'zgartirish";
     },
     get$changeTheNameOfTheChat() {
-      return "\u66f4\u6539\u804a\u5929\u540d\u7a31";
+      return "Chat nomini o'zgartirish";
     },
     needsItMessage$1(targetLanguage) {
-      return "\u7b49\u7b49\uff0c\u55f0\u5514\u4fc2 " + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e6b\u624b\u7ffb\u8b6f\u55ce\uff1f";
+      return "Kuting, bu " + targetLanguage + " emas! Tarjimaga yordam kerakmi?";
     },
     get$countryInformation() {
-      return "\u6211\u5605\u570b\u5bb6";
+      return "Mening mamlakatim";
     },
     get$targetLanguage() {
-      return "\u76ee\u6a19\u8a9e\u8a00";
+      return "Ma'lumot tili";
     },
     get$updateLanguage() {
-      return "\u6211\u5605\u8a9e\u8a00";
+      return "Mening tillarim";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u4f60\u60f3\u5b78\u54a9\u8a9e\u8a00\uff1f";
+      return "Qaysi tilni o'rganmoqchisiz?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u4f60\u5605\u57fa\u672c\u8a9e\u8a00\u4fc2\u54a9\uff1f";
+      return "Asosiy tilingiz nima?";
     },
     get$publicProfileTitle() {
-      return "\u5141\u8a31\u55ba\u641c\u5c0b\u4e2d\u6435\u5230\u6211\u5605\u500b\u4eba\u8cc7\u6599";
+      return "Profilimni qidiruvda topishga ruxsat berish";
     },
     get$publicProfileDesc() {
-      return "\u6253\u958b\u5462\u500b\u529f\u80fd\uff0c\u5176\u4ed6\u7528\u6236\u5c31\u53ef\u4ee5\u55ba\u5168\u7403\u641c\u5c0b\u6b04\u6435\u5230\u4f60\u5605\u500b\u4eba\u8cc7\u6599\uff0c\u4e26\u4e14\u767c\u9001\u804a\u5929\u8acb\u6c42\u3002\u5462\u500b\u6642\u5019\uff0c\u4f60\u53ef\u4ee5\u9078\u64c7\u63a5\u53d7\u6216\u8005\u62d2\u7d55\u8acb\u6c42\u3002";
+      return "Yoqib qo'ysangiz, boshqa foydalanuvchilar sizning profilingizni global qidiruv panelida topishlari va chat so'rovlari yuborishlari mumkin. Shu vaqtdan boshlab, siz so'rovni qabul qilish yoki rad etishni tanlashingiz mumkin.";
     },
     get$errorDisableIT() {
-      return "\u7ffb\u8b6f\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+      return "Tarjimaga yordam o'chirilgan.";
     },
     get$errorDisableIGC() {
-      return "\u6587\u6cd5\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+      return "Grammatika yordam o'chirilgan.";
     },
     get$errorDisableITUserDesc() {
-      return "\u9ede\u64ca\u6b64\u8655\u66f4\u65b0\u7ffb\u8b6f\u5354\u52a9\u8a2d\u5b9a";
+      return "Tarjimaga yordam sozlamalarini yangilash uchun bu yerga bosing";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u9ede\u64ca\u6b64\u8655\u66f4\u65b0\u6587\u6cd5\u5354\u52a9\u8a2d\u5b9a";
+      return "Grammatika yordam sozlamalarini yangilash uchun bu yerga bosing";
     },
     get$errorDisableITClassDesc() {
-      return "\u6b64\u8ab2\u7a0b\u7684\u7ffb\u8b6f\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+      return "Ushbu suhbat bo'lib o'tadigan kurs uchun tarjima yordamchi o'chirilgan.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u6b64\u8ab2\u7a0b\u7684\u6587\u6cd5\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+      return "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.";
     },
     get$error405Title() {
-      return "\u672a\u8a2d\u5b9a\u8a9e\u8a00";
+      return "Tillar belgilangan emas";
     },
     get$error405Desc() {
-      return "\u8acb\u5728\u4e3b\u9078\u55ae > \u5b78\u7fd2\u8a2d\u5b9a\u4e2d\u8a2d\u5b9a\u60a8\u7684\u8a9e\u8a00\u3002";
+      return "Iltimos, Asosiy menyu > O'rganish sozlamalarida tillaringizni belgilang.";
     },
     get$termsAndConditions() {
-      return "\u689d\u6b3e\u53ca\u7d30\u5247";
+      return "Shartlar va shartlar";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return "\u4e26\u8b49\u660e\u6211\u5df2\u5e74\u6eff16\u6b72\u3002";
+      return " va kamida 16 yoshda ekanligimni tasdiqlayman.";
     },
     get$error502504Title() {
-      return "\u54c7\uff0c\u7dda\u4e0a\u5b78\u751f\u5f88\u591a\uff01";
+      return "Vau, ko'p talabalar onlayn!";
     },
     get$error502504Desc() {
-      return "\u5728 Pangea \u6a5f\u5668\u4eba\u8ffd\u8d95\u6642\uff0c\u7ffb\u8b6f\u548c\u6587\u6cd5\u5de5\u5177\u53ef\u80fd\u6703\u8f03\u6162\u6216\u66ab\u6642\u7121\u6cd5\u4f7f\u7528\u3002";
+      return "Tarjimalar va grammatik vositalar sekin yoki mavjud bo'lmasligi mumkin, Pangea botlari yangilanishni kutmoqda.";
     },
     get$error404Title() {
-      return "\u7ffb\u8b6f\u932f\u8aa4\uff01";
+      return "Tarjima xatosi!";
     },
     get$error404Desc() {
-      return "Pangea Bot \u5514\u80af\u5b9a\u9ede\u6a23\u7ffb\u8b6f\u55f0\u500b...";
+      return "Pangea Bot bu qanday tarjima qilishni bilmayapti...";
     },
     get$errorPleaseRefresh() {
-      return "\u6211\u54cb\u6b63\u55ba\u7814\u7a76\u7dca\uff01\u8acb\u91cd\u65b0\u8f09\u5165\u518d\u8a66\u4e00\u6b21\u3002";
+      return "Biz bu muammoni hal qilmoqdamiz! Iltimos, sahifani yangilang va qayta urinib ko'ring.";
     },
     get$connectedToStaging() {
-      return "\u5df2\u9023\u63a5\u5230\u6e2c\u8a66\u74b0\u5883";
+      return "Staging bilan ulanish amalga oshirildi";
     },
     get$learningSettings() {
-      return "\u5b78\u7fd2\u8a2d\u5b9a";
+      return "O'rganish sozlamalari";
     },
     get$participants() {
-      return "\u53c3\u8207\u8005";
+      return "Ishtirokchilar";
     },
     get$clickMessageTitle() {
-      return "\u9700\u8981\u5e6b\u52a9\uff1f";
+      return "Yordam kerakmi?";
     },
     get$clickMessageBody() {
-      return "\u9ede\u64ca\u4e00\u689d\u8a0a\u606f\uff0c\u4f7f\u7528\u8a9e\u8a00\u5de5\u5177\uff0c\u4f8b\u5982\u7ffb\u8b6f\u3001\u91cd\u64ad\u7b49\u7b49\uff01";
+      return "Tillar vositalari uchun xabarni bosing, tarjima, qayta o'ynash va boshqalar!";
     },
     get$allDone() {
-      return "\u5168\u90e8\u5b8c\u6210\uff01";
+      return "Barchasi tayyor!";
     },
     get$vocab() {
-      return "\u8a5e\u5f59";
+      return "So'z boyligi";
     },
     get$subscribe(_) {
-      return "\u8a02\u95b1";
+      return "Obuna bo'lish";
     },
     get$getAccess() {
-      return "\u7acb\u5373\u8a02\u95b1\uff01";
+      return "Hozir obuna bo'ling!";
     },
     get$subscriptionDesc() {
-      return "\u8a0a\u606f\u50b3\u905e\u662f\u514d\u8cbb\u7684\uff01\u8a02\u95b1\u4ee5\u89e3\u9396\u4e92\u52d5\u7ffb\u8b6f\u3001\u8a9e\u6cd5\u6aa2\u67e5\u548c\u5b78\u7fd2\u5206\u6790\u3002";
+      return "Xabar yuborish bepul! Interaktiv tarjima, grammatikani tekshirish va o'rganish tahlilini ochish uchun obuna bo'ling.";
     },
     get$subscriptionManagement() {
-      return "\u8a02\u95b1\u7ba1\u7406";
+      return "Obuna boshqaruvi";
     },
     get$currentSubscription() {
-      return "\u7576\u524d\u8a02\u95b1";
+      return "Hozirgi obuna";
     },
     get$cancelSubscription() {
-      return "\u53d6\u6d88\u60a8\u7684\u8a02\u95b1";
+      return "Obunangizni bekor qiling";
     },
     get$selectYourPlan() {
-      return "\u9078\u64c7\u60a8\u7684\u65b9\u6848";
+      return "Rejangizni tanlang";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u8acb\u5728\u60a8\u7684\u539f\u59cb\u8a2d\u5099\u4e0a\u767b\u5165\u4ee5\u7ba1\u7406\u60a8\u7684\u8a02\u95b1\u65b9\u6848";
+      return "Iltimos, obuna rejangizni boshqarish uchun asl qurilmangizga kirish qiling";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u66ab\u6642\u7121\u6cd5\u7ba1\u7406\u8a02\u95b1";
+      return "Obuna boshqaruvi mavjud emas";
     },
     get$paymentMethod() {
-      return "\u4ed8\u6b3e\u65b9\u5f0f";
+      return "To'lov usuli";
     },
     get$paymentHistory() {
-      return "\u4ed8\u6b3e\u8a18\u9304";
+      return "To'lov tarixi";
     },
     get$emptyChatDownloadWarning() {
-      return "\u7121\u6cd5\u4e0b\u8f09\u7a7a\u767d\u804a\u5929\u8a18\u9304";
+      return "Bo'sh suhbatni yuklab bo'lmaydi";
     },
     get$toggleImmersionMode() {
-      return "\u6c89\u6d78\u6a21\u5f0f";
+      return "Cho'milish rejimi";
     },
     get$toggleImmersionModeDesc() {
-      return "\u555f\u7528\u5f8c\uff0c\u6240\u6709\u8a0a\u606f\u5c07\u4ee5\u4f60\u7684\u76ee\u6a19\u8a9e\u8a00\u986f\u793a\u3002\u6b64\u8a2d\u5b9a\u5728\u8a9e\u8a00\u4ea4\u6d41\u4e2d\u7279\u5225\u6709\u7528\u3002";
+      return "Faollashtirilganda, barcha xabarlar sizning maqsad tilingizda ko'rsatiladi. Bu sozlama til almashinuvi uchun eng foydalidir.";
     },
     get$itToggleDescription() {
-      return "\u6b64\u8a9e\u8a00\u5b78\u7fd2\u5de5\u5177\u6703\u8b58\u5225\u4f60\u57fa\u790e\u8a9e\u8a00\u4e2d\u7684\u55ae\u8a5e\uff0c\u4e26\u5e6b\u52a9\u4f60\u5c07\u5b83\u5011\u7ffb\u8b6f\u6210\u76ee\u6a19\u8a9e\u8a00\u3002\u96d6\u7136\u7f55\u898b\uff0c\u4f46AI\u53ef\u80fd\u6703\u51fa\u932f\u3002";
+      return "Ushbu til o'rganish vositasi sizning asosiy tilingizdagi so'zlarni aniqlaydi va ularni maqsad tilingizga tarjima qilishga yordam beradi. Nadir hollarda, AI tarjima xatolarini qilishi mumkin.";
     },
     get$igcToggleDescription() {
-      return "\u6b64\u8a9e\u8a00\u5b78\u7fd2\u5de5\u5177\u6703\u8b58\u5225\u8a0a\u606f\u4e2d\u7684\u5e38\u898b\u62fc\u5beb\u3001\u8a9e\u6cd5\u548c\u6a19\u9ede\u932f\u8aa4\uff0c\u4e26\u5efa\u8b70\u4fee\u6b63\u3002\u96d6\u7136\u7f55\u898b\uff0c\u4f46AI\u53ef\u80fd\u6703\u51fa\u932f\u3002";
+      return "Ushbu til o'rganish vositasi sizning xabaringizdagi umumiy yozilish, grammatik va punktuatsiya xatolarini aniqlaydi va tuzatish taklif qiladi. Nadir hollarda, AI tuzatish xatolarini qilishi mumkin.";
     },
     get$originalMessage() {
-      return "\u539f\u59cb\u8a0a\u606f";
+      return "Asl xabar";
     },
     get$sentMessage() {
-      return "\u5df2\u50b3\u9001\u8a0a\u606f";
+      return "Yuborilgan xabar";
     },
     get$useType() {
-      return "\u4f7f\u7528\u985e\u578b";
+      return "Foydalanish turi";
     },
     get$notAvailable() {
-      return "\u4e0d\u53ef\u7528";
+      return "Mavjud emas";
     },
     get$taAndGaTooltip() {
-      return "\u4f7f\u7528\u7b2c\u4e8c\u8a9e\u8a00\uff0c\u4e26\u63d0\u4f9b\u7ffb\u8b6f\u5354\u52a9\u548c\u8a9e\u6cd5\u5354\u52a9";
+      return "Tarjimaga yordam berish va grammatik yordam bilan L2 foydalanish";
     },
     get$definitionsToolName() {
-      return "\u55ae\u8a5e\u5b9a\u7fa9";
+      return "So'zlarning ta'rifi";
     },
     get$definitionsToolDescription() {
-      return "\u555f\u7528\u5f8c\uff0c\u85cd\u8272\u5e95\u7dda\u7684\u55ae\u8a5e\u53ef\u4ee5\u9ede\u64ca\u67e5\u770b\u5b9a\u7fa9\u3002\u9ede\u64ca\u8a0a\u606f\u4ee5\u5b58\u53d6\u5b9a\u7fa9\u3002";
+      return "Faollashtirilganda, ko'k chiziq bilan belgilangan so'zlarni bosish orqali ta'riflarni ko'rish mumkin. Ta'riflarni olish uchun xabarlarni bosing.";
     },
     get$welcomeBack() {
-      return "\u6b61\u8fce\u56de\u4f86\uff01\u5982\u679c\u4f60\u662f2023-2024\u8a66\u9ede\u8a08\u5283\u7684\u4e00\u90e8\u5206\uff0c\u8acb\u806f\u7e6b\u6211\u5011\u4ee5\u7372\u53d6\u4f60\u7684\u7279\u5225\u8a66\u9ede\u8a02\u95b1\u3002\u5982\u679c\u4f60\u662f\u6559\u5e2b\uff0c\u6216\u8005\u4f60\u7684\u6a5f\u69cb\u5df2\u70ba\u4f60\u7684\u73ed\u7d1a\u8cfc\u8cb7\u4e86\u8a31\u53ef\u8b49\uff0c\u8acb\u806f\u7e6b\u6211\u5011\u4ee5\u7372\u53d6\u4f60\u7684\u6559\u5e2b\u8a02\u95b1\u3002";
+      return "Qaytganingiz uchun xush kelibsiz! Agar siz 2023-2024 yilgi pilot dasturining bir qismi bo'lgan bo'lsangiz, iltimos, maxsus pilot obunangiz uchun biz bilan bog'laning. Agar siz o'qituvchi bo'lsangiz (yoki o'quv muassasangiz) sinfingiz uchun litsenziyalar sotib olgan bo'lsa, o'qituvchi obunangiz uchun biz bilan bog'laning.";
     },
     get$downloadTxtFile() {
-      return "\u4e0b\u8f09\u6587\u672c\u6587\u4ef6";
+      return "Matn faylini yuklab olish";
     },
     get$downloadCSVFile() {
-      return "\u4e0b\u8f09CSV\u6587\u4ef6";
+      return "CSV faylini yuklab olish";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u4f60\u76ee\u524d\u64c1\u6709\u7d42\u8eab\u4fc3\u92b7\u8a02\u95b1\u3002\u5982\u9700\u5e6b\u52a9\u66f4\u6539\u8a02\u95b1\uff0c\u8acb\u806f\u7e6b support@pangea.chat\u3002";
+      return "Hozirda sizda umrboqiy reklama obunasi mavjud. Obunangizni o'zgartirish uchun support@pangea.chat ga xabar yuboring.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u901a\u904e " + purchasePlatform + " \u8cfc\u8cb7\u7684\u8a02\u95b1";
+      return "Obuna " + purchasePlatform + " orqali sotib olingan";
     },
     get$oneWeekTrial() {
-      return "\u4e00\u5468\u8a66\u7528";
+      return "Bir haftalik sinov";
     },
     get$downloadXLSXFile() {
-      return "\u4e0b\u8f09Excel\u6587\u4ef6";
+      return "Excel faylini yuklab olish";
     },
     get$unkDisplayName() {
-      return "\u672a\u77e5";
+      return "Noma'lum";
     },
     get$wwCountryDisplayName() {
-      return "\u5168\u7403";
+      return "Dunyo bo'ylab";
     },
     get$afCountryDisplayName() {
-      return "\u963f\u5bcc\u6c57";
+      return "Afg'oniston";
     },
     get$axCountryDisplayName() {
-      return "\u5967\u862d\u7fa4\u5cf6";
+      return "Aland orollari";
     },
     get$alCountryDisplayName() {
-      return "\u963f\u723e\u5df4\u5c3c\u4e9e";
+      return "Albaniya";
     },
     get$dzCountryDisplayName() {
-      return "\u963f\u723e\u53ca\u5229\u4e9e";
+      return "Cozbekiston";
     },
     get$asCountryDisplayName() {
-      return "\u7f8e\u5c6c\u85a9\u6469\u4e9e";
+      return "Amerika Samoasi";
     },
     get$adCountryDisplayName() {
-      return "\u5b89\u9053\u723e";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u5b89\u54e5\u62c9";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u5b89\u572d\u62c9";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u5b89\u63d0\u74dc\u548c\u5df4\u5e03\u9054";
+      return "Antigua va Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u963f\u6839\u5ef7";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "\u4e9e\u7f8e\u5c3c\u4e9e";
+      return "Armaniston";
     },
     get$awCountryDisplayName() {
-      return "\u963f\u9b6f\u5df4";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u963f\u68ee\u677e\u5cf6";
+      return "Ascension oroli";
     },
     get$auCountryDisplayName() {
-      return "\u6fb3\u6d32";
+      return "Avstraliya";
     },
     get$atCountryDisplayName() {
-      return "\u5967\u5730\u5229";
+      return "Avstriya";
     },
     get$azCountryDisplayName() {
-      return "\u4e9e\u585e\u62dc\u7136";
+      return "Azerbayjon";
     },
     get$bsCountryDisplayName() {
-      return "\u5df4\u54c8\u99ac";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "\u5df4\u6797";
+      return "Bahrayn";
     },
     get$bdCountryDisplayName() {
-      return "\u5b5f\u52a0\u62c9\u570b";
+      return "Banqladash";
     },
     get$bbCountryDisplayName() {
-      return "\u5df4\u5df4\u591a\u65af";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u767d\u4fc4\u7f85\u65af";
+      return "Belarusiya";
     },
     get$beCountryDisplayName() {
-      return "\u6bd4\u5229\u6642";
+      return "Belgiya";
     },
     get$bzCountryDisplayName() {
-      return "\u8c9d\u91cc\u65af";
+      return "Beliz";
     },
     get$bjCountryDisplayName() {
-      return "\u8c9d\u5be7";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u767e\u6155\u9054";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u4e0d\u4e39";
+      return "Butan";
     },
     get$boCountryDisplayName() {
-      return "\u73bb\u5229\u7dad\u4e9e";
+      return "Boliviya";
     },
     get$baCountryDisplayName() {
-      return "\u6ce2\u65af\u5c3c\u4e9e\u548c\u9ed1\u585e\u54e5\u7dad\u90a3";
+      return "Bosniya va Gertsegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u535a\u8328\u74e6\u7d0d";
+      return "Botsvana";
     },
     get$brCountryDisplayName() {
-      return "\u5df4\u897f";
+      return "Braziliya";
     },
     get$ioCountryDisplayName() {
-      return "\u82f1\u5c6c\u5370\u5ea6\u6d0b\u9818\u571f";
+      return "Britaniya Hind okeani hududi";
     },
     get$vgCountryDisplayName() {
-      return "\u82f1\u5c6c\u7dad\u4eac\u7fa4\u5cf6";
+      return "Britaniya Virjiniya orollari";
     },
     get$bnCountryDisplayName() {
-      return "\u6587\u840a";
+      return "Bruney";
     },
     get$bgCountryDisplayName() {
-      return "\u4fdd\u52a0\u5229\u4e9e";
+      return "Bolgariya";
     },
     get$bfCountryDisplayName() {
-      return "\u5e03\u5409\u7d0d\u6cd5\u7d22";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u84b2\u9686\u5730";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u67ec\u57d4\u5be8";
+      return "Kambodja";
     },
     get$cmCountryDisplayName() {
-      return "\u5580\u9ea5\u9686";
+      return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "\u52a0\u62ff\u5927";
+      return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "\u7dad\u5fb7\u89d2";
+      return "Kap Verde";
     },
     get$bqCountryDisplayName() {
-      return "\u52a0\u52d2\u6bd4\u8377\u862d";
+      return "Karib Niderlandlari";
     },
     get$kyCountryDisplayName() {
-      return "\u958b\u66fc\u7fa4\u5cf6";
+      return "Kayman orollari";
     },
     get$cfCountryDisplayName() {
-      return "\u4e2d\u975e\u5171\u548c\u570b";
+      return "Markaziy Afrika Respublikasi";
     },
     get$tdCountryDisplayName() {
-      return "\u4e4d\u5f97";
+      return "Chad";
     },
     get$clCountryDisplayName() {
-      return "\u667a\u5229";
+      return "Chili";
     },
     get$cnCountryDisplayName() {
-      return "\u4e2d\u570b";
+      return "Xitoy";
     },
     get$cxCountryDisplayName() {
-      return "\u8056\u8a95\u5cf6";
+      return "Rojdestvo oroli";
     },
     get$ccCountryDisplayName() {
-      return "\u79d1\u79d1\u65af\uff08\u57fa\u6797\uff09\u7fa4\u5cf6";
+      return "Kokos [Keling] orollari";
     },
     get$coCountryDisplayName() {
-      return "\u54e5\u502b\u6bd4\u4e9e";
+      return "Kolumbiya";
     },
     get$kmCountryDisplayName() {
-      return "\u79d1\u6469\u7f85";
+      return "Komor orollari";
     },
     get$cdCountryDisplayName() {
-      return "\u525b\u679c\u6c11\u4e3b\u5171\u548c\u570b";
+      return "Kongo Demokratik Respublikasi";
     },
     get$cgCountryDisplayName() {
-      return "\u525b\u679c\u5171\u548c\u570b";
+      return "Kongo Respublikasi";
     },
     get$ckCountryDisplayName() {
-      return "\u5eab\u514b\u7fa4\u5cf6";
+      return "Kuk orollari";
     },
     get$crCountryDisplayName() {
-      return "\u54e5\u65af\u9054\u9ece\u52a0";
+      return "Kosta Rika";
     },
     get$ciCountryDisplayName() {
-      return "\u8c61\u7259\u6d77\u5cb8";
+      return "Kote d'Ivoire";
     },
     get$hrCountryDisplayName() {
-      return "\u514b\u7f85\u5730\u4e9e";
+      return "Xorvatiya";
     },
     get$cuCountryDisplayName() {
-      return "\u53e4\u5df4";
+      return "Kuba";
     },
     get$cwCountryDisplayName() {
-      return "\u5eab\u62c9\u7d22";
+      return "Kurakao";
     },
     get$cyCountryDisplayName() {
-      return "\u585e\u6d66\u8def\u65af";
+      return "Kipr";
     },
     get$czCountryDisplayName() {
-      return "\u6377\u514b\u5171\u548c\u570b";
+      return "Chex Respublikasi";
     },
     get$dkCountryDisplayName() {
-      return "\u4e39\u9ea5";
+      return "Daniya";
     },
     get$djCountryDisplayName() {
-      return "\u5409\u5e03\u63d0";
+      return "Jibuti";
     },
     get$dmCountryDisplayName() {
-      return "\u591a\u7c73\u5c3c\u514b";
+      return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "\u591a\u7c73\u5c3c\u52a0\u5171\u548c\u570b";
+      return "Dominikan Respublikasi";
     },
     get$tlCountryDisplayName() {
-      return "\u6771\u5e1d\u6c76";
+      return "Sharqiy Timor";
     },
     get$ecCountryDisplayName() {
-      return "\u5384\u74dc\u591a\u723e";
+      return "Ekvador";
     },
     get$egCountryDisplayName() {
-      return "\u57c3\u53ca";
+      return "Misr";
     },
     get$svCountryDisplayName() {
-      return "\u85a9\u723e\u74e6\u591a";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u8d64\u9053\u5e7e\u5167\u4e9e";
+      return "Ekvatorial Gvineya";
     },
     get$erCountryDisplayName() {
-      return "\u5384\u7acb\u7279\u91cc\u4e9e";
+      return "Eritreya";
     },
     get$eeCountryDisplayName() {
-      return "\u611b\u6c99\u5c3c\u4e9e";
+      return "Estoniya";
     },
     get$szCountryDisplayName() {
-      return "\u65af\u5a01\u58eb\u862d";
+      return "Esvatini";
     },
     get$etCountryDisplayName() {
-      return "\u8863\u7d22\u6bd4\u4e9e";
+      return "Efiopiya";
     },
     get$fkCountryDisplayName() {
-      return "\u798f\u514b\u862d\u7fa4\u5cf6";
+      return "Falkland orollari";
     },
     get$foCountryDisplayName() {
-      return "\u6cd5\u7f85\u7fa4\u5cf6";
+      return "Faroe orollari";
     },
     get$fjCountryDisplayName() {
-      return "\u6590\u6fdf";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u82ac\u862d";
+      return "Finlyandiya";
     },
     get$frCountryDisplayName() {
-      return "\u6cd5\u570b";
+      return "Fransiya";
     },
     get$gfCountryDisplayName() {
-      return "\u6cd5\u5c6c\u572d\u4e9e\u90a3";
+      return "Fransuz G\u02bbiyona";
     },
     get$pfCountryDisplayName() {
-      return "\u6cd5\u5c6c\u6ce2\u5229\u5c3c\u897f\u4e9e";
+      return "Fransuz Polineziyasi";
     },
     get$gaCountryDisplayName() {
-      return "\u52a0\u5f6d";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u5ca1\u6bd4\u4e9e";
+      return "Gambiya";
     },
     get$geCountryDisplayName() {
-      return "\u55ac\u6cbb\u4e9e";
+      return "Gruziya";
     },
     get$deCountryDisplayName() {
-      return "\u5fb7\u570b";
+      return "Germaniya";
     },
     get$ghCountryDisplayName() {
-      return "\u52a0\u7d0d";
+      return "Gana";
     },
     get$giCountryDisplayName() {
-      return "\u76f4\u5e03\u7f85\u9640";
+      return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "\u5e0c\u81d8";
+      return "Greece";
     },
     get$glCountryDisplayName() {
-      return "\u683c\u9675\u862d";
+      return "Grenlandiya";
     },
     get$gdCountryDisplayName() {
-      return "\u683c\u6797\u7d0d\u9054";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u74dc\u5fb7\u7f85\u666e";
+      return "Gvadelupa";
     },
     get$guCountryDisplayName() {
-      return "\u95dc\u5cf6";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u74dc\u5730\u99ac\u62c9";
+      return "Gvatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u6839\u897f\u5cf6";
+      return "Gernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u5e7e\u5167\u4e9e\u6bd4\u7d39";
+      return "Gvineya Konakri";
     },
     get$gwCountryDisplayName() {
-      return "\u5e7e\u5167\u4e9e\u6bd4\u7d39";
+      return "Gvineya-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u84cb\u4e9e\u90a3";
+      return "Gayana";
     },
     get$htCountryDisplayName() {
-      return "\u6d77\u5730";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u8d6b\u5fb7\u5cf6\u53ca\u9ea5\u514b\u5510\u7d0d\u7fa4\u5cf6";
+      return "Herd va Makdonald orollari";
     },
     get$hnCountryDisplayName() {
-      return "\u5b8f\u90fd\u62c9\u65af";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u9999\u6e2f";
+      return "Xitoy Xonkong";
     },
     get$huCountryDisplayName() {
-      return "\u5308\u7259\u5229";
+      return "Vengriya";
     },
     get$isCountryDisplayName() {
-      return "\u51b0\u5cf6";
+      return "Islandiya";
     },
     get$inCountryDisplayName() {
-      return "\u5370\u5ea6";
+      return "Hindiston";
     },
     get$idCountryDisplayName() {
-      return "\u5370\u5c3c";
+      return "Indoneziya";
     },
     get$irCountryDisplayName() {
-      return "\u4f0a\u6717";
+      return "Eron";
     },
     get$iqCountryDisplayName() {
-      return "\u4f0a\u62c9\u514b";
+      return "Iroq";
     },
     get$ieCountryDisplayName() {
-      return "\u611b\u723e\u862d";
+      return "Irlandiya";
     },
     get$imCountryDisplayName() {
-      return "\u66fc\u5cf6";
+      return "Man oroli";
     },
     get$ilCountryDisplayName() {
-      return "\u4ee5\u8272\u5217";
+      return "Isroil";
     },
     get$itCountryDisplayName() {
-      return "\u610f\u5927\u5229";
+      return "Italiya";
     },
     get$jmCountryDisplayName() {
-      return "\u7259\u8cb7\u52a0";
+      return "Yamayka";
     },
     get$jpCountryDisplayName() {
-      return "\u65e5\u672c";
+      return "Yaponiya";
     },
     get$jeCountryDisplayName() {
-      return "\u6fa4\u897f";
+      return "Jersi";
     },
     get$joCountryDisplayName() {
-      return "\u7d04\u65e6";
+      return "Iordaniya";
     },
     get$kzCountryDisplayName() {
-      return "\u54c8\u85a9\u514b\u65af\u5766";
+      return "Qozog\u02bbiston";
     },
     get$keCountryDisplayName() {
-      return "\u80af\u5c3c\u4e9e";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
-      return "\u57fa\u91cc\u5df4\u65af";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u79d1\u7d22\u6c83";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u79d1\u5a01\u7279";
+      return "Kuvayt";
     },
     get$kgCountryDisplayName() {
-      return "\u5409\u723e\u5409\u65af\u65af\u5766";
+      return "Qirg\u02bbiziston";
     },
     get$laCountryDisplayName() {
-      return "\u8001\u64be";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u62c9\u812b\u7dad\u4e9e";
+      return "Latviya";
     },
     get$lbCountryDisplayName() {
-      return "\u9ece\u5df4\u5ae9";
+      return "Livan";
     },
     get$lsCountryDisplayName() {
-      return "\u8cf4\u7d22\u6258";
+      return "Lesoto";
     },
     get$lrCountryDisplayName() {
-      return "\u5229\u6bd4\u91cc\u4e9e";
+      return "Liberiya";
     },
     get$lyCountryDisplayName() {
-      return "\u5229\u6bd4\u4e9e";
+      return "Liviya";
     },
     get$liCountryDisplayName() {
-      return "\u5217\u652f\u6566\u58eb\u767b";
+      return "Lyuksemburg";
     },
     get$ltCountryDisplayName() {
-      return "\u7acb\u9676\u5b9b";
+      return "Litva";
     },
     get$luCountryDisplayName() {
-      return "\u76e7\u68ee\u5821";
+      return "Lyuksemburg";
     },
     get$moCountryDisplayName() {
-      return "\u6fb3\u9580";
+      return "Makao";
     },
     get$mkCountryDisplayName() {
-      return "\u5317\u99ac\u5176\u9813";
+      return "Makedoniya";
     },
     get$mgCountryDisplayName() {
-      return "\u99ac\u9054\u52a0\u65af\u52a0";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
-      return "\u99ac\u62c9\u7dad";
+      return "Malavi";
     },
     get$myCountryDisplayName() {
-      return "\u99ac\u4f86\u897f\u4e9e";
+      return "Malayziya";
     },
     get$mvCountryDisplayName() {
-      return "\u99ac\u723e\u4ee3\u592b";
+      return "Maldivlar";
     },
     get$mlCountryDisplayName() {
-      return "\u99ac\u91cc";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u99ac\u8033\u4ed6";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u99ac\u6b47\u723e\u7fa4\u5cf6";
+      return "Marshall orollari";
     },
     get$mqCountryDisplayName() {
-      return "\u99ac\u63d0\u5c3c\u514b";
+      return "Martinika";
     },
     get$mrCountryDisplayName() {
-      return "\u6bdb\u91cc\u5854\u5c3c\u4e9e";
+      return "Moritaniya";
     },
     get$muCountryDisplayName() {
-      return "\u6bdb\u91cc\u6c42\u65af";
+      return "Moris";
     },
     get$ytCountryDisplayName() {
-      return "\u99ac\u7d04\u7279";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u58a8\u897f\u54e5";
+      return "Meksika";
     },
     get$fmCountryDisplayName() {
-      return "\u5bc6\u514b\u7f85\u5c3c\u897f\u4e9e";
+      return " Mikroneziya";
     },
     get$mdCountryDisplayName() {
-      return "\u6469\u723e\u591a\u74e6";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u6469\u7d0d\u54e5";
+      return "Monako";
     },
     get$mnCountryDisplayName() {
-      return "\u8499\u53e4";
+      return "Mo'\u011fuliston";
     },
     get$meCountryDisplayName() {
-      return "\u9ed1\u5c71";
+      return "Montenegro";
     },
     get$msCountryDisplayName() {
-      return "\u8499\u7279\u585e\u62c9\u7279";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u6469\u6d1b\u54e5";
+      return "Marokash";
     },
     get$mzCountryDisplayName() {
-      return "\u83ab\u6851\u6bd4\u514b";
+      return "Mozambik";
     },
     get$mmCountryDisplayName() {
-      return "\u7dec\u7538\uff08\u7f05\u7538\uff09";
+      return "Myanma (Birma)";
     },
     get$naCountryDisplayName() {
-      return "\u7d0d\u7c73\u6bd4\u4e9e";
+      return "Namibiya";
     },
     get$nrCountryDisplayName() {
-      return "\u8afe\u9b6f";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u5c3c\u6cca\u723e";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u8377\u862d";
+      return "Niderlandlar";
     },
     get$ncCountryDisplayName() {
-      return "\u65b0\u5580\u91cc\u591a\u5c3c\u4e9e";
+      return "Yangi Kaledoniya";
     },
     get$nzCountryDisplayName() {
-      return "\u65b0\u897f\u862d";
+      return "Yangi Zelandiya";
     },
     get$niCountryDisplayName() {
-      return "\u5c3c\u52a0\u62c9\u74dc";
+      return "Nikaraagua";
     },
     get$neCountryDisplayName() {
-      return "\u5c3c\u65e5\u723e";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u5948\u53ca\u5229\u4e9e";
+      return "Nigeriya";
     },
     get$nuCountryDisplayName() {
-      return "\u7d10\u57c3";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u8afe\u798f\u514b\u5cf6";
+      return "Norfok oroli";
     },
     get$kpCountryDisplayName() {
-      return "\u5317\u97d3";
+      return "Shimoliy Koreya";
     },
     get$mpCountryDisplayName() {
-      return "\u5317\u99ac\u91cc\u4e9e\u7d0d\u7fa4\u5cf6";
+      return "Shimoliy Mariana orollari";
     },
     get$noCountryDisplayName() {
-      return "\u632a\u5a01";
+      return "Norvegiya";
     },
     get$omCountryDisplayName() {
-      return "\u963f\u66fc";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "\u5df4\u57fa\u65af\u5766";
+      return "Pokiston";
     },
     get$pwCountryDisplayName() {
-      return "\u5e15\u52de";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u5df4\u52d2\u65af\u5766\u5730\u5340";
+      return "Falastin hududlari";
     },
     get$paCountryDisplayName() {
-      return "\u5df4\u62ff\u99ac";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u5df4\u5e03\u4e9e\u65b0\u5e7e\u5167\u4e9e";
+      return "Papua-Yangi Gvineya";
     },
     get$pyCountryDisplayName() {
-      return "\u5df4\u62c9\u572d";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "\u79d8\u9b6f";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u83f2\u5f8b\u8cd3";
+      return "Filippin";
     },
     get$plCountryDisplayName() {
-      return "\u6ce2\u862d";
+      return "Polsha";
     },
     get$ptCountryDisplayName() {
-      return "\u8461\u8404\u7259";
+      return "Portugaliya";
     },
     get$prCountryDisplayName() {
-      return "\u6ce2\u591a\u9ece\u5404";
+      return "Puerto-Riko";
     },
     get$qaCountryDisplayName() {
-      return "\u5361\u5854\u723e";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "\u7559\u5c3c\u6c6a";
+      return "Reyunion";
     },
     get$roCountryDisplayName() {
-      return "\u7f85\u99ac\u5c3c\u4e9e";
+      return "Ruminiya";
     },
     get$ruCountryDisplayName() {
-      return "\u4fc4\u7f85\u65af";
+      return "Rossiya";
     },
     get$rwCountryDisplayName() {
-      return "\u76e7\u65fa\u9054";
+      return "Ruanda";
     },
     get$blCountryDisplayName() {
-      return "\u8056\u5df4\u6cf0\u52d2\u7c73";
+      return "Saint Bartelyemi";
     },
     get$shCountryDisplayName() {
-      return "\u8056\u8d6b\u52d2\u62ff";
+      return "Sent Elena";
     },
     get$knCountryDisplayName() {
-      return "\u8056\u57fa\u8328";
+      return "Sent Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u8056\u9732\u897f\u4e9e";
+      return "Sent Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u8056\u99ac\u4e01";
+      return "Sent Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u8056\u76ae\u57c3\u723e\u548c\u5bc6\u514b\u9686";
+      return "Sent Pierre va Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u8056\u6587\u68ee\u7279";
+      return "Sent Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u85a9\u6469\u4e9e";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u8056\u99ac\u529b\u8afe";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u8056\u591a\u7f8e\u548c\u666e\u6797\u897f\u6bd4";
+      return "Sao Tom\xe9 va Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u6c99\u70cf\u5730\u963f\u62c9\u4f2f";
+      return "Saudiya Arabistoni";
     },
     get$snCountryDisplayName() {
-      return "\u585e\u5167\u52a0\u723e";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u585e\u723e\u7dad\u4e9e";
+      return "Serbiya";
     },
     get$scCountryDisplayName() {
-      return "\u585e\u820c\u723e";
+      return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "\u585e\u62c9\u5229\u6602";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u65b0\u52a0\u5761";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
-      return "\u8056\u99ac\u4e01";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u65af\u6d1b\u4f10\u514b";
+      return "Slovakiya";
     },
     get$siCountryDisplayName() {
-      return "\u65af\u6d1b\u6587\u5c3c\u4e9e";
+      return "Sloveniya";
     },
     get$sbCountryDisplayName() {
-      return "\u6240\u7f85\u9580\u7fa4\u5cf6";
+      return "Solomon orollari";
     },
     get$soCountryDisplayName() {
-      return "\u7d22\u99ac\u91cc";
+      return "Somaliya";
     },
     get$zaCountryDisplayName() {
-      return "\u5357\u975e";
+      return "Janubiy Afrika";
     },
     get$gsCountryDisplayName() {
-      return "\u5357\u55ac\u6cbb\u4e9e\u548c\u5357\u6851\u5a01\u5947\u7fa4\u5cf6";
+      return "Janubiy Georgiya va Janubiy Sandwich orollari";
     },
     get$krCountryDisplayName() {
-      return "\u5357\u97d3";
+      return "Janubiy Koreya";
     },
     get$ssCountryDisplayName() {
-      return "\u5357\u8607\u4e39";
+      return "Janubiy Sudan";
     },
     get$esCountryDisplayName() {
-      return "\u897f\u73ed\u7259";
+      return "Ispaniya";
     },
     get$lkCountryDisplayName() {
-      return "\u65af\u91cc\u862d\u5361";
+      return "Shri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u8607\u4e39";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u8607\u91cc\u5357";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\u65af\u74e6\u5c14\u5df4\u7fa4\u5c9b\u548c\u626c\u9a6c\u5ef6\u7fa4\u5c9b";
+      return "Svalbard va Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u745e\u5178";
+      return "Shvetsiya";
     },
     get$chCountryDisplayName() {
-      return "\u745e\u58eb";
+      return "Shveytsariya";
     },
     get$syCountryDisplayName() {
-      return "\u53d9\u5229\u4e9a";
+      return "Suriya";
     },
     get$twCountryDisplayName() {
-      return "\u53f0\u6e7e";
+      return "Tayvan";
     },
     get$tjCountryDisplayName() {
-      return "\u5854\u5409\u514b\u65af\u5766";
+      return "Tojikiston";
     },
     get$tzCountryDisplayName() {
-      return "\u5766\u6851\u5c3c\u4e9a";
+      return "Tanzaniya";
     },
     get$thCountryDisplayName() {
-      return "\u6cf0\u56fd";
+      return "Tailand";
     },
     get$tgCountryDisplayName() {
-      return "\u591a\u54e5";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u6258\u514b\u52b3";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u6c64\u52a0";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u7279\u7acb\u5c3c\u8fbe\u548c\u591a\u5df4\u54e5";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u7a81\u5c3c\u65af";
+      return "Tunis";
     },
     get$trCountryDisplayName() {
-      return "\u571f\u8033\u5176";
+      return "Turkiya";
     },
     get$tmCountryDisplayName() {
-      return "\u571f\u5e93\u66fc\u65af\u5766";
+      return "Turkmaniston";
     },
     get$tcCountryDisplayName() {
-      return "\u7279\u514b\u65af\u548c\u51ef\u79d1\u65af\u7fa4\u5c9b";
+      return "Turks va Kaykos orollari";
     },
     get$tvCountryDisplayName() {
-      return "\u56fe\u74e6\u5362";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u7f8e\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b";
+      return "AQSh Virgin orollari";
     },
     get$ugCountryDisplayName() {
-      return "\u4e4c\u5e72\u8fbe";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u4e4c\u514b\u5170";
+      return "Ukraina";
     },
     get$aeCountryDisplayName() {
-      return "\u963f\u62c9\u4f2f\u806f\u5408\u5927\u516c\u570b";
+      return "Birlashgan Arab Amirliklari";
     },
     get$gbCountryDisplayName() {
-      return "\u82f1\u570b";
+      return "Buyuk Britaniya";
     },
     get$usCountryDisplayName() {
-      return "\u7f8e\u570b";
+      return "Amerika Qo'shma Shtatlari";
     },
     get$uyCountryDisplayName() {
-      return "\u70cf\u62c9\u572d";
+      return "Urugvay";
     },
     get$uzCountryDisplayName() {
-      return "\u70cf\u8332\u5225\u514b\u65af\u5766";
+      return "O'zbekiston";
     },
     get$vuCountryDisplayName() {
-      return "\u74e6\u52aa\u963f\u5716";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u68b5\u8482\u5ca1\u57ce";
+      return "Vatikan";
     },
     get$veCountryDisplayName() {
-      return "\u59d4\u5167\u745e\u62c9";
+      return "Venesuela";
     },
     get$vnCountryDisplayName() {
-      return "\u8d8a\u5357";
+      return "Vyetnam";
     },
     get$wfCountryDisplayName() {
-      return "\u74e6\u5229\u65af\u548c\u5bcc\u5716\u7d0d";
+      return "Vallis va Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u897f\u6492\u54c8\u62c9";
+      return "G'arbiy Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u4e5f\u9580";
+      return "Yaman";
     },
     get$zmCountryDisplayName() {
-      return "\u5c1a\u6bd4\u4e9e";
+      return "Zambiya";
     },
     get$zwCountryDisplayName() {
-      return "\u6d25\u5df4\u5e03\u97cb";
+      return "Zimbabve";
     },
     get$pay() {
-      return "Checkout";
+      return "To'lov qilish";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u5df2\u9080\u8acb\u4f60\u52a0\u5165\u8ab2\u7a0b\uff1a" + space + "\uff01\u4f60\u60f3\u63a5\u53d7\u55ce\uff1f";
+      return user + " sizni " + space + " kursiga qo'shilishga taklif qildi! Qabul qilmoqchimisiz?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u4f60\u88ab\u9080\u8acb\u5566\uff01";
+      return "\ud83d\udce9 Siz taklif qildingiz!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u5df2\u9080\u8acb\u4f60\u52a0\u5165\u4e00\u500b\u804a\u5929\uff1a" + $name + "\uff01\u4f60\u60f3\u63a5\u53d7\u55ce\uff1f";
+      return user + " sizni " + $name + " chatiga qo'shilishga taklif qildi! Qabul qilmoqchimisiz?";
     },
     get$monthlySubscription() {
-      return "\u6bcf\u6708";
+      return "Oylik";
     },
     get$yearlySubscription() {
-      return "\u6bcf\u5e74";
+      return "Yillik";
     },
     get$defaultSubscription() {
-      return "Pangea \u804a\u5929\u8a02\u95b1";
+      return "Pangea Chat obunasi";
     },
     get$freeTrial() {
-      return "\u514d\u8cbb\u8a66\u7528";
+      return "Bepul sinov";
     },
     get$noDataFound() {
-      return "\u672a\u627e\u5230\u8cc7\u6599";
+      return "Ma'lumot topilmadi";
     },
     get$definitionDefaultPrompt() {
-      return "\u9019\u500b\u8a5e\u662f\u4ec0\u9ebc\u610f\u601d\uff1f";
+      return "Ushbu so'z nima anlamda?";
     },
     get$practiceDefaultPrompt() {
-      return "\u6700\u4f73\u7b54\u6848\u662f\u4ec0\u9ebc\uff1f";
+      return "Eng yaxshi javob nima?";
     },
     get$correctionDefaultPrompt() {
-      return "\u6700\u4f73\u66ff\u4ee3\u65b9\u6848\u662f\u4ec0\u9ebc\uff1f";
+      return "Eng yaxshi o'rnini bosuvchi nima?";
     },
     get$reportToTeacher() {
-      return "\u4f60\u60f3\u5411\u8ab0\u8209\u5831\u6b64\u8a0a\u606f\uff1f";
+      return "Bu xabarni kimga xabar qilmoqchisiz?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u5728\u804a\u5929\u5ba4 " + roomName + " \u8209\u5831\u4e86\u4f86\u81ea " + reportedUserId + " \u7684\u8a0a\u606f";
+      return reportingUserId + " chatda " + reportedUserId + " dan xabarni xabar qildi " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u8a0a\u606f\uff1a" + reportedMessage + "\n\u539f\u56e0\uff1a" + reason;
+      return "Xabar: " + reportedMessage + "\nSabab: " + reason;
     },
     get$noTeachersFound() {
-      return "\u627e\u4e0d\u5230\u53ef\u8209\u5831\u7684\u8001\u5e2b";
+      return "Xabar qilinadigan o'qituvchi topilmadi";
     },
     trialExpiration$1(expiration) {
-      return "\u60a8\u7684\u514d\u8cbb\u8a66\u7528\u65bc " + expiration + " \u5230\u671f";
+      return "Bepul sinov muddati " + expiration + " da tugaydi";
     },
     get$freeTrialDesc() {
-      return "\u65b0\u7528\u6236\u53ef\u7372\u5f97\u4e00\u5468\u7684 Pangea \u804a\u5929\u514d\u8cbb\u8a66\u7528";
+      return "Yangi foydalanuvchilar uchun Pangea Chat ning bir haftalik bepul sinovi taqdim etiladi";
     },
     get$activateTrial() {
-      return "\u514d\u8cbb7\u5929\u8a66\u7528";
+      return "Bepul 7 kunlik sinov";
     },
     get$successfullySubscribed() {
-      return "\u4f60\u5df2\u6210\u529f\u8a02\u95b1\uff01";
+      return "Siz muvaffaqiyatli obuna bo'ldingiz!";
     },
     get$clickToManageSubscription() {
-      return "\u9ede\u64ca\u6b64\u8655\u7ba1\u7406\u4f60\u7684\u8a02\u95b1\u3002";
+      return "Obunangizni boshqarish uchun bu yerni bosing.";
     },
     get$signUp() {
-      return "\u8a3b\u518a";
+      return "Ro'yhatdan o'tish";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u8acb\u81f3\u5c11\u9078\u64c7 " + min + " \u500b\u5b57\u7b26\u3002";
+      return "Iltimos, kamida " + min + " ta belgi tanlang.";
     },
     get$pleaseEnterValidEmail() {
-      return "\u8acb\u8f38\u5165\u6709\u6548\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3002";
+      return string$.Iltimo;
     },
     get$pleaseChooseAUsername() {
-      return "\u8acb\u9078\u64c7\u4e00\u500b\u7528\u6236\u540d";
+      return "Iltimos, foydalanuvchi nomini tanlang";
     },
     get$listen() {
-      return "\u807d";
+      return "Tingla";
     },
     get$trialPeriodExpired() {
-      return "\u8a66\u7528\u671f\u5df2\u904e";
+      return "Sizning sinov muddatingiz tugadi";
     },
     get$subscribedToUnlockTools() {
-      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u4e92\u52d5\u5f0f\u7ffb\u8b6f\u540c\u8a9e\u6cd5\u6aa2\u67e5\u3001\u97f3\u983b\u64ad\u653e\u3001\u500b\u4eba\u5316\u7df4\u7fd2\u6d3b\u52d5\u540c\u5b78\u7fd2\u5206\u6790\uff01";
+      return "Interaktiv tarjima va grammatik tekshirish, audio ijro, shaxsiy mashg\u02bbulotlar va o\u02bbrganish analitikasi uchun obuna bo\u02bbling!";
     },
     get$translationTooltip() {
-      return "\u7ffb\u8b6f";
+      return "Tarjimaga";
     },
     get$kickBotWarning() {
-      return "\u8e22\u8d70 Pangea \u6a5f\u68b0\u4eba\u6703\u5c07\u5c0d\u8a71\u6a5f\u68b0\u4eba\u5f9e\u5462\u500b\u804a\u5929\u4e2d\u79fb\u9664\u3002";
+      return "Pangea Botni chiqarib yuborish bu suhbatdagi botni olib tashlaydi.";
     },
     get$refresh(_) {
-      return "\u91cd\u65b0\u6574\u7406";
+      return "Yangilash";
     },
     get$accuracy(_) {
-      return "\u6e96\u78ba\u5ea6";
+      return "Aniqlik";
     },
     get$chatCapacity() {
-      return "\u804a\u5929\u5bb9\u91cf";
+      return "Suhbat sig\u02bbimi";
     },
     get$roomFull() {
-      return "\u6b64\u623f\u9593\u5df2\u9054\u5bb9\u91cf\u4e0a\u9650\u3002";
+      return "Bu xona allaqachon to\u02bbldirilgan.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u804a\u5929\u5bb9\u91cf\u5df2\u66f4\u6539";
+      return "Suhbat sig\u02bbimi o\u02bbzgartirildi";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u804a\u5929\u5bb9\u91cf\u81f3\u5c11\u70ba " + count + "\u3002";
+      return "Suhbat sig\u02bbimi kamida " + count + " bo\u02bblishi kerak.";
     },
     get$chatCapacityExplanation() {
-      return "\u804a\u5929\u5bb9\u91cf\u9650\u5236\u5141\u8a31\u52a0\u5165\u804a\u5929\u7684\u6210\u54e1\u6578\u91cf\u3002";
+      return "Suhbat sig\u02bbimi chatga qo\u02bbshiladigan a\u02bczolar sonini cheklaydi.";
     },
     get$enterNumber() {
-      return "\u8acb\u8f38\u5165\u6574\u6578\u503c\u3002";
+      return "Iltimos, butun son qiymatini kiriting.";
     },
     get$practice() {
-      return "\u7df4\u7fd2";
+      return "Amaliyot";
     },
     get$speechToTextBody() {
-      return "\u5c0d\u65bc\u8a9e\u97f3\u8a0a\u606f\uff0c\u60a8\u53ef\u4ee5\u770b\u5230\u8f49\u9304\u5167\u5bb9\u4ee5\u53ca\u8aaa\u8a71\u8005\u7684\u6bcf\u5206\u9418\u5b57\u6578\u5f97\u5206\u3002";
+      return "Ovozli xabarlar uchun, siz yozuvni va nutqchi so'zlar soni bahosini ko'rishingiz mumkin.";
     },
     get$versionNotFound() {
-      return "\u627e\u4e0d\u5230\u7248\u672c";
+      return "Versiya topilmadi";
     },
     get$fetchingVersion() {
-      return "\u6b63\u5728\u7372\u53d6\u7248\u672c...";
+      return "Versiyani olish...";
     },
     get$versionFetchError() {
-      return "\u7372\u53d6\u7248\u672c\u6642\u51fa\u932f";
+      return "Versiyani olishda xato";
     },
     versionText$2(version, buildNumber) {
-      return "\u7248\u672c\uff1a" + version + "+" + buildNumber;
+      return "Versiya: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u60a8\u7684\u57fa\u672c\u8a9e\u8a00\u4e2d\u7684\u8a0a\u606f\u5c07\u4e0d\u6703\u88ab\u7ffb\u8b6f\u3002";
+      return "Asosiy tilingizdagi xabarlar tarjima qilinmaydi.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u60a8\u6709\u4e00\u500b\u6709\u6548\u7684\u8a02\u95b1";
+      return "Sizda faol obuna bor";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u522a\u9664\u60a8\u7684\u5e33\u6236\u4e0d\u6703\u81ea\u52d5\u53d6\u6d88\u60a8\u7684\u8a02\u95b1\u3002";
+      return "Hisobingizni o'chirish avtomatik ravishda obunangizni bekor qilmaydi.";
     },
     get$manageSubscription() {
-      return "\u7ba1\u7406\u8a02\u95b1";
+      return "Obunani boshqarish";
     },
     get$error520Title() {
-      return "\u8acb\u518d\u8a66\u4e00\u6b21\u3002";
+      return "Iltimos, qayta urinib ko'ring.";
     },
     get$error520Desc() {
-      return "\u5c0d\u4e0d\u8d77\uff0c\u6211\u5011\u7121\u6cd5\u7406\u89e3\u60a8\u7684\u8a0a\u606f...";
+      return "Kechirasiz, biz sizning xabaringizni tushuna olmadik...";
     },
     get$level(_) {
-      return "\u7b49\u7d1a";
+      return "Daraja";
     },
     get$translationChoicesBody() {
-      return "\u9ede\u64ca\u4e26\u9577\u6309\u9078\u9805\u4ee5\u7372\u53d6\u63d0\u793a\u3002";
+      return "Bir variantni bosib ushlab turing va maslahat oling.";
     },
     get$grammar() {
-      return "\u8a9e\u6cd5";
+      return "Grammatika";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u806f\u7d61\u4eba\u5df2\u88ab\u9080\u8acb\u52a0\u5165\u804a\u5929";
+      return "Kontakt suhbatga taklif qilindi";
     },
     get$inviteChat() {
-      return "\ud83d\udcdd \u9080\u8acb\u804a\u5929";
+      return "\ud83d\udce8 Suhbatga taklif qilish";
     },
     get$l2SupportNa() {
-      return "\u66ab\u6642\u4e0d\u652f\u63f4";
+      return "Mavjud emas";
     },
     get$l2SupportAlpha() {
-      return "Alpha";
+      return "Alfa";
     },
     get$l2SupportBeta() {
       return "Beta";
     },
     get$l2SupportFull() {
-      return "\u5b8c\u6574";
+      return "To\u2018liq";
     },
     get$playAudio() {
-      return "\u64ad\u653e";
+      return "Oynatish";
     },
     get$stop(_) {
-      return "\u505c\u6b62";
+      return "To\u2018xtatish";
     },
     get$grammarCopyPOSsconj() {
-      return "\u5f9e\u5c6c\u9023\u8a5e";
+      return "Subordinatsiyali bog\u2018lovchi";
     },
     get$grammarCopyPOSnum() {
-      return "\u6578\u5b57";
+      return "Raqam";
     },
     get$grammarCopyPOSverb() {
-      return "\u52d5\u8a5e";
+      return "Fe\u2019l";
     },
     get$grammarCopyPOSaffix() {
-      return "\u8a5e\u7db4";
+      return "Qo\u2018shimcha";
     },
     get$grammarCopyPOSpart() {
-      return "\u52a9\u8a5e";
+      return "Partikula";
     },
     get$grammarCopyPOSadj() {
-      return "\u5f62\u5bb9\u8a5e";
+      return "Sifat";
     },
     get$grammarCopyPOScconj() {
-      return "\u4e26\u5217\u9023\u8a5e";
+      return "Birlashuvchi bog'lovchi";
     },
     get$grammarCopyPOSpunct() {
-      return "\u6a19\u9ede\u7b26\u865f";
+      return "Punktuatsiya";
     },
     get$grammarCopyPOSadv() {
-      return "\u526f\u8a5e";
+      return "Ravish";
     },
     get$grammarCopyPOSaux() {
-      return "\u52a9\u52d5\u8a5e";
+      return "Yordamchi";
     },
     get$grammarCopyPOSspace() {
-      return "\u7a7a\u683c";
+      return "Bo'shliq";
     },
     get$grammarCopyPOSsym() {
-      return "\u7b26\u865f";
+      return "Belgi";
     },
     get$grammarCopyPOSdet() {
-      return "\u9650\u5b9a\u8a5e";
+      return "Aniqlovchi";
     },
     get$grammarCopyPOSpron() {
-      return "\u4ee3\u8a5e";
+      return "O'zgaruvchi";
     },
     get$grammarCopyPOSadp() {
-      return "\u4ecb\u8a5e";
+      return "Oldi keluvchi";
     },
     get$grammarCopyPOSpropn() {
-      return "\u5c08\u6709\u540d\u8a5e";
+      return "Maxsus nom";
     },
     get$grammarCopyPOSnoun() {
-      return "\u540d\u8a5e";
+      return "Ism";
     },
     get$grammarCopyPOSintj() {
-      return "\u611f\u5606\u8a5e";
+      return "O'tkazuvchi so'z";
     },
     get$grammarCopyPOSidiom() {
-      return "\u6210\u8a9e";
+      return "Idioma";
     },
     get$grammarCopyPOSphrasalv() {
-      return "\u77ed\u8a9e\u52d5\u8a5e";
+      return "Frazali fe'l";
     },
     get$grammarCopyPOScompn() {
-      return "\u8907\u5408\u8a5e";
+      return "Qarama";
     },
     get$grammarCopyPOSx() {
-      return "\u5176\u4ed6";
+      return "Boshqa";
     },
     get$grammarCopyGENDERfem() {
-      return "\u9670\u6027";
+      return "Ayol jins";
     },
     get$grammarCopyPERSON2() {
-      return "\u7b2c\u4e8c\u4eba\u7a31";
+      return "Ikkinchi shaxs";
     },
     get$grammarCopyMOODimp() {
-      return "\u7948\u4f7f\u8a9e\u6c23";
+      return "Buyruq kayfiyati";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u7591\u554f\u53e5";
+      return "Savol";
     },
     get$grammarCopyASPECTperf() {
-      return "\u5b8c\u6210\u6642";
+      return "Perfect";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u8cd3\u683c\u3001\u4e3b\u683c";
+      return "Hujjat, Nominativ";
     },
     get$grammarCopyCASEobl() {
-      return "\u659c\u683c";
+      return "O\u2018qish";
     },
     get$grammarCopyVOICEact() {
-      return "\u88ab\u52d5\u8a9e\u614b";
+      return "Faol";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u62ec\u865f";
+      return "Qavs";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u51a0\u8a5e";
+      return "Maqola";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u55ae\u6578";
+      return "Yagona";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u967d\u6027";
+      return "Erkak";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u60c5\u614b\u52d5\u8a5e";
+      return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u526f\u8a5e";
+      return "Ravishli";
     },
     get$grammarCopyTENSEperi() {
-      return "\u5468\u908a\u6642\u614b";
+      return "Perifratik";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u6578\u5b57";
+      return "Raqam";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u975e\u5c08\u6709\u540d\u8a5e";
+      return "Mos To\u2018g\u2018ri";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u57fa\u6578";
+      return "Soni";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u5c08\u6709\u540d\u8a5e";
+      return "To\u2018g\u2018ri";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u7834\u6298\u865f";
+      return "Chiziq";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u662f";
+      return "Ha";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u5206\u865f";
+      return "Nuqta-vergul";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u9017\u865f";
+      return "Vergul";
     },
     get$grammarCopyMOODcnd() {
-      return "\u689d\u4ef6\u5f0f";
+      return "Shart";
     },
     get$grammarCopyCASEacc() {
-      return "\u8cd3\u683c";
+      return "Obyektiv";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u90e8\u5206\u683c";
+      return "Qisqa";
     },
     get$grammarCopyTENSEpast() {
-      return "\u904e\u53bb\u5f0f";
+      return "O'tgan";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u6700\u9ad8\u7d1a";
+      return "Eng yuqori daraja";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u5192\u865f";
+      return "Ikki nuqta";
     },
     get$grammarCopyPERSON3() {
-      return "\u7b2c\u4e09\u4eba\u7a31";
+      return "Uchinchi shaxs";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u8907\u6578";
+      return "Ko'plik";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u5c08\u6709\u540d\u8a5e";
+      return "To'g'ri nom";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u7591\u554f\u53e5";
+      return "Savol";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u975e\u6b63\u5f0f";
+      return "Rasmiy bo'lmagan";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u6642\u9593";
+      return "Vaqt";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u5426\u5b9a";
+      return "Salbiy";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u7e3d\u6578";
+      return "Jami";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u5f62\u5bb9\u8a5e\u6027";
+      return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "\u9032\u884c\u5f0f";
+      return "Rivojlanayotgan";
     },
     get$grammarCopyMOODsub() {
-      return "\u865b\u64ec\u5f0f";
+      return "Shartli";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u88dc\u8a9e\u5f0f";
+      return "To'ldiruvchi";
     },
     get$grammarCopyCASEnom() {
-      return "\u4e3b\u683c";
+      return "Nominal";
     },
     get$grammarCopyTENSEfut() {
-      return "\u5c07\u4f86\u5f0f";
+      return "Kelajak";
     },
     get$grammarCopyCASEdat() {
-      return "\u8207\u683c";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "\u73fe\u5728\u5f0f";
+      return "Hozirgi";
     },
     get$grammarCopyGENDERneut() {
-      return "\u4e2d\u6027";
+      return "N\xf6tr";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u95dc\u4fc2\u4ee3\u8a5e";
+      return "Oila";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u7d50\u5c3e";
+      return "Yakuni Yakuniy";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u6307\u793a\u4ee3\u8a5e";
+      return "Ko'rsatkich";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u4ecb\u8a5e\u683c";
+      return "Oldindan tayyorlangan";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u6709\u9650\u5f0f";
+      return "Cheklangan";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u80af\u5b9a";
+      return "Ijobiy";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u5f15\u865f";
+      return "Qalamcha";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u52d5\u540d\u8a5e";
+      return "Gerund";
     },
     get$grammarCopyVOICEpass() {
-      return "\u88ab\u52d5";
+      return "Passiv";
     },
     get$grammarCopyCASEgen() {
-      return "\u6240\u6709\u683c";
+      return "Genitiv";
     },
     get$grammarCopyTENSEprs() {
-      return "\u73fe\u5728\u5f0f";
+      return "Hozirgi";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u5b9a\u51a0\u8a5e";
+      return "Aniq";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u5e8f\u6578";
+      return "Tartibli";
     },
     get$grammarCopyCASEins() {
-      return "\u5de5\u5177\u683c";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u4e0d\u5b9a\u5f0f";
+      return "Infinitiv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u52a9\u52d5\u8a5e";
+      return "Yordamchi";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u9577\u5f62\u5f0f";
+      return "Uzun";
     },
     get$grammarCopyCASEloc() {
-      return "\u65b9\u4f4d\u683c";
+      return "Joylashuv";
     },
     get$grammarCopyMOODind() {
-      return "\u9673\u8ff0\u8a9e\u6c23";
+      return "Indikativ";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u6bd4\u8f03\u7d1a";
+      return "Taqqoslamali";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u95dc\u4fc2\u683c";
+      return "Bog'liq";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u611f\u5606\u53e5";
+      return "Hayqiri";
     },
     get$grammarCopyPERSON1() {
-      return "\u7b2c\u4e00\u4eba\u7a31";
+      return "Birinchi shaxs";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u8d77\u59cb";
+      return "Boshlang'ich";
     },
     get$grammarCopyGENDERperson() {
-      return "\u4eba\u7a31";
+      return "Jins";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u5916\u570b";
+      return "Xorijiy";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u8a9e\u614b";
+      return "Ovoz";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u52d5\u8a5e";
+      return "Fe'l";
     },
     get$grammarCopyPOSSpass() {
-      return "\u6240\u6709\u683c";
+      return "Egasi";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u4ecb\u8a5e\u683c";
+      return "Oldindan kelib chiqadigan";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u6578\u8a5e";
+      return "Raqamli";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u540d\u8a5e";
+      return "Ism";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u53cd\u8eab";
+      return "Qaytma";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u4ee3\u8a5e";
+      return "O'zgaruvchi";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u6a19\u9ede\u7b26\u865f\u4f4d\u7f6e";
+      return "Punktuatsiya tomon";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u52d5\u8a5e\u5f62\u5f0f";
+      return "Fe'l shakli";
     },
     get$grammarCopyGENDERgender() {
-      return "\u6027\u5225";
+      return "Jins";
     },
     get$grammarCopyMOODmood() {
-      return "\u8a9e\u6c23";
+      return "Kayfiyat";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u9ad4";
+      return "Aspekt";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u6a19\u9ede\u985e\u578b";
+      return "Punktuatsiya";
     },
     get$grammarCopyTENSEtense() {
-      return "\u6642\u614b";
+      return "Vaqt";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u7a0b\u5ea6";
+      return "Daraja";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u79ae\u8c8c";
+      return "Hurmat";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u526f\u8a5e";
+      return "Darvish";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u6578\u91cf";
+      return "Raqam";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u9023\u8a5e";
+      return "Bog\u02bblovchi";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u6975\u6027";
+      return "Polyarlik";
     },
     get$grammarCopyCASEcase() {
-      return "\u6848\u4f8b";
+      return "Hol";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u78ba\u5b9a\u6027";
+      return "Aniqlik";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u6578\u8a5e";
+      return "Son";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u5f62\u5bb9\u8a5e\u6027";
+      return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "\u547c\u683c";
+      return "Chaqiriq";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u88dc\u8a9e";
+      return "To\u02bbldiruvchi";
     },
     get$grammarCopyADVadv() {
-      return "\u526f\u8a5e\u6027";
+      return "Ravish";
     },
     get$grammarCopyMOODjus() {
-      return "\u7948\u4f7f\u8a9e\u6c23";
+      return "Buyruq";
     },
     get$grammarCopyGENDERcom() {
-      return "\u666e\u901a";
+      return "Umumiy";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u53cd\u8eab";
+      return "Refleksiv";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u90e8\u5206\u683c";
+      return "Qismlik";
     },
     get$grammarCopySPCspc() {
-      return "\u7279\u5b9a";
+      return "Maxsus";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u904e\u53bb\u5b8c\u6210\u6642";
+      return "O'tgan zamon";
     },
     get$grammarCopyREFLEXref() {
-      return "\u53cd\u8eab";
+      return "Refleksiv";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u77ed";
+      return "Qisqa";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u96d9\u6578";
+      return "Ikki";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u9577";
+      return "Uzun";
     },
     get$grammarCopyVOICEmid() {
-      return "\u4e2d\u614b";
+      return "O'rta";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u7591\u554f\u53e5\u3001\u95dc\u4fc2\u53e5";
+      return "Savol, O'xshash";
     },
     get$grammarCopyINTint() {
-      return "\u7591\u554f";
+      return "Savol";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u4f7f\u5f79";
+      return "Sabablovchi";
     },
     get$grammarCopyUnknown() {
-      return "\u672a\u77e5";
+      return "Noma'lum";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u8b49\u64da\u6027";
+      return "Dalillilik";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u6240\u6709\u8005\u7684\u6578\u5b57";
+      return "Egasi soni";
     },
     get$grammarCopyASPECThab() {
-      return "\u7fd2\u6163\u6027";
+      return "Odatiy";
     },
     get$grammarCopyCASEabl() {
-      return "\u96e2\u683c";
+      return "Ablativ";
     },
     get$grammarCopyCASEall() {
-      return "\u6240\u6709\u683c";
+      return "Allativ";
     },
     get$grammarCopyCASEess() {
-      return "\u72c0\u614b\u683c";
+      return "Essiv";
     },
     get$grammarCopyCASEtra() {
-      return "\u8f49\u683c";
+      return "Translativ";
     },
     get$grammarCopyCASEequ() {
-      return "\u7b49\u540c\u683c";
+      return "Ekvativ";
     },
     get$grammarCopyCASEdis() {
-      return "\u5206\u914d\u683c";
+      return "Tarqatma";
     },
     get$grammarCopyCASEabs() {
-      return "\u7d55\u5c0d\u683c";
+      return "Absolyut";
     },
     get$grammarCopyCASEerg() {
-      return "\u65bd\u4e8b\u683c";
+      return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "\u56e0\u679c\u683c";
+      return "Sababli";
     },
     get$grammarCopyCASEben() {
-      return "\u53d7\u76ca\u683c";
+      return "Foydali";
     },
     get$grammarCopyCASEtem() {
-      return "\u6642\u9593\u683c";
+      return "Vaqtli";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u4e26\u5217";
+      return "Kooridinal";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u69cb\u5f0f\u72c0\u614b";
+      return "Qurilish holati";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u7d55\u5c0d\u7a0b\u5ea6";
+      return "To\u2018liq daraja";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u4e8b\u5be6\u8b49\u64da\u6027";
+      return "Haqiqiy dalillik";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u975e\u4e8b\u5be6\u8b49\u64da";
+      return "Haqiqiy bo\u2018lmagan dalillik";
     },
     get$grammarCopyMOODopt() {
-      return "\u9858\u671b\u5f0f";
+      return "Optativ";
     },
     get$grammarCopyMOODadm() {
-      return "\u656c\u8a9e\u5f0f";
+      return "Hayratda qoldiruvchi";
     },
     get$grammarCopyMOODdes() {
-      return "\u9858\u671b\u5f0f";
+      return "Istakli";
     },
     get$grammarCopyMOODnec() {
-      return "\u5fc5\u8981\u5f0f";
+      return "Majburiy";
     },
     get$grammarCopyMOODpot() {
-      return "\u53ef\u80fd\u5f0f";
+      return "Potentsial";
     },
     get$grammarCopyMOODprp() {
-      return "\u5efa\u8b70\u5f0f";
+      return "Taklif qiluvchi";
     },
     get$grammarCopyMOODqot() {
-      return "\u5f15\u7528\u5f0f";
+      return "Nusxa";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u8a5e\u5f62";
+      return "So\u2018z shakli";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u7f85\u99ac\u6578\u5b57";
+      return "Rim raqami";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u5b57\u6bcd\u5f62\u5f0f";
+      return "Harf shakli";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u500d\u6578";
+      return "Ko\u02bbpaytiruvchi";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u5206\u6578";
+      return "Kasrli";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u96c6\u5408";
+      return "To\u02bbplam";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u7bc4\u570d";
+      return "Oraliq";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u5206\u914d\u5f0f";
+      return "Tarqatish";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u8a66\u9a57";
+      return "Sinov";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u5c11\u91cf";
+      return "Kamchilikli";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u8f03\u591a\u5c11\u91cf";
+      return "Katta Kamchilikli";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u8f03\u591a\u8907\u6578";
+      return "Katta Ko\u02bbp";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u5012\u8f49";
+      return "Teskari";
     },
     get$grammarCopyPERSON0() {
-      return "\u96f6";
+      return "Nol";
     },
     get$grammarCopyPERSON4() {
-      return "\u7b2c\u56db";
+      return "To\u02bbrtinchi";
     },
     get$grammarCopyPOLITEform() {
-      return "\u6b63\u5f0f";
+      return "Rasmiy";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u5347\u83ef";
+      return "Oliy";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u8b19\u905c";
+      return "Kamtar";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u5f37\u8abf";
+      return "Ta\u02bckidlash";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u611f\u5606";
+      return "Hayratda qoldiruvchi";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u4e92\u60e0";
+      return "O\u02bbzaro";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u7591\u554f-\u95dc\u4fc2";
+      return "So\u02bbroq-Relativ";
     },
     get$grammarCopyTENSEaor() {
-      return "\u672a\u5b8c\u6210\u6642";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u8a8d\u8b58\u8ad6\u6642\u614b";
+      return "Epistemik";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u672a\u4f86\u6642";
+      return "Kutilayotgan";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u5206\u8a5e";
+      return "Participle";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u526f\u8a5e";
+      return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u52d5\u540d\u8a5e";
+      return "Fe'l Nom";
     },
     get$grammarCopyVOICEantip() {
-      return "\u53cd\u52d5\u614b";
+      return "Antipasiv";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u4f7f\u5f79";
+      return "Sabablovchi";
     },
     get$grammarCopyVOICedir() {
-      return "\u76f4\u63a5";
+      return "To'g'ridan-to'g'ri";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u5012\u8f49";
+      return "Aksincha";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u4e92\u60e0";
+      return "O'zaro";
     },
     get$grammarCopyPOS() {
-      return "\u8a5e\u6027";
+      return "So'z turi";
     },
     get$grammarCopyGENDER() {
-      return "\u6027\u5225";
+      return "Jins";
     },
     get$grammarCopyPERSON() {
-      return "\u4eba\u7a31";
+      return "Shaxs";
     },
     get$grammarCopyMOOD() {
-      return "\u8a9e\u6c23";
+      return "Kayfiyat";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u6a19\u9ede\u7b26\u865f\u985e\u578b";
+      return "Punktuatsiya turi";
     },
     get$grammarCopyASPECT() {
-      return "\u9ad4";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "\u683c";
+      return "Holat";
     },
     get$grammarCopyVOICE() {
-      return "\u8a9e\u614b";
+      return "Ovoz";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u540d\u8a5e\u985e\u578b";
+      return "Ism turi";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u52d5\u8a5e\u985e\u578b";
+      return "Fe'l turi";
     },
     get$grammarCopyADVTYPE() {
-      return "\u526f\u8a5e\u985e\u578b";
+      return "Ravish turi";
     },
     get$grammarCopyNUMFORM() {
-      return "\u6578\u8a5e\u5f62\u5f0f";
+      return "Raqam shakli";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u6578\u8a5e\u985e\u578b";
+      return "Raqam turi";
     },
     get$grammarCopyNUMBER() {
-      return "\u6578\u5b57";
+      return "Raqam";
     },
     get$grammarCopyDEFINITE() {
-      return "\u5b9a\u51a0\u8a5e";
+      return "Aniqlik";
     },
     get$grammarCopyDEGREE() {
-      return "\u7a0b\u5ea6";
+      return "Daraja";
     },
     get$grammarCopyEVIDENT() {
-      return "\u8b49\u64da\u6027";
+      return "Dalillik";
     },
     get$grammarCopyFOREIGN() {
-      return "\u5916\u4f86";
+      return "Xorijiy";
     },
     get$grammarCopyPOLARITY() {
-      return "\u6975\u6027";
+      return "Salbiylik";
     },
     get$grammarCopyPOLITE() {
-      return "\u79ae\u8c8c";
+      return "Hurmat";
     },
     get$grammarCopyPREPCASE() {
-      return "\u4ecb\u8a5e\u683c";
+      return "Oldindan tayyorlangan holat";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u4ee3\u8a5e\u985e\u578b";
+      return "O\u2018rinli turdagi olmosh";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u6a19\u9ede\u7b26\u865f\u4f4d\u7f6e";
+      return "Punktuatsiya tomon";
     },
     get$grammarCopyREFLEX() {
-      return "\u53cd\u8eab";
+      return "O\u2018z-o\u2018zini ifoda etuvchi";
     },
     get$grammarCopyTENSE() {
-      return "\u6642\u614b";
+      return "Vaqt";
     },
     get$grammarCopyVERBFORM() {
-      return "\u52d5\u8a5e\u5f62\u5f0f";
+      return "Fe\u2018l shakli";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u9023\u8a5e\u985e\u578b";
+      return "Bog\u2018lovchi turi";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u672a\u77e5";
+      return "Noma'lum";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u6240\u6709\u8005\u6578\u91cf";
+      return "Egasi raqami";
     },
     get$grammarCopyPOSS() {
-      return "\u6240\u6709\u683c";
+      return "Egafor";
     },
     get$grammarCopyASPECTimp() {
-      return "\u672a\u5b8c\u6210\u9ad4";
+      return "Noto'g'ri aspekt";
     },
     get$grammarCopyCASEvoc() {
-      return "\u547c\u683c";
+      return "Chaqirilish";
     },
     get$grammarCopyCASEcom() {
-      return "\u4f34\u96a8\u683c";
+      return "Birgalikda";
     },
     get$grammarCopyCASEpar() {
-      return "\u90e8\u5206\u683c";
+      return "Qismiy";
     },
     get$grammarCopyCASEadv() {
-      return "\u526f\u8a5e\u683c";
+      return "Ravishdagi";
     },
     get$grammarCopyCASEref() {
-      return "\u53c3\u7167\u683c";
+      return "Ma'lumotli";
     },
     get$grammarCopyCASErel() {
-      return "\u76f8\u5c0d\u683c";
+      return "Bog'liq";
     },
     get$grammarCopyCASEsub() {
-      return "\u5c6c\u683c";
+      return "Subessiv";
     },
     get$grammarCopyCASEsup() {
-      return "\u8d85\u683c";
+      return "Superessiv";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u8cd3\u683c-\u8207\u683c";
+      return "Jazo va qabul qilish";
     },
     get$grammarCopyCASEpre() {
-      return "\u4ecb\u8a5e\u683c";
+      return "Oldindan tayyorlangan";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u5f9e\u5c6c\u9023\u8a5e";
+      return "Subordinatsiya qiluvchi";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u6bd4\u8f03\u7d1a";
+      return "Taqqoslovchi";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u4e0d\u5b9a";
+      return "Noaniq";
     },
     get$grammarCopyMOODint() {
-      return "\u7591\u554f\u8a9e\u6c23";
+      return "So'rovchi kayfiyat";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u666e\u901a\u540d\u8a5e";
+      return "Umumiy ot";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u6240\u6709\u8005\u55ae\u6578";
+      return "Egasi yagona";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u6240\u6709\u8005\u8907\u6578";
+      return "Egala egasi ko'plik";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u6240\u6709\u8005\u96d9\u6578";
+      return "Egasi ko'plik";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u80af\u5b9a";
+      return "Ijobiy polarlik";
     },
     get$grammarCopyPOSSyes() {
-      return "\u6240\u6709\u683c";
+      return "Egasi";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u975e\u4ecb\u8a5e\u683c";
+      return "Prepozitsiyalarsiz";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u4eba\u7a31\u4ee3\u8a5e";
+      return "Shaxsiy";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u7591\u554f\u4ee3\u8a5e";
+      return "Savol";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u5168\u90e8";
+      return "Jami";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u5426\u5b9a";
+      return "Salbiy";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u51a0\u8a5e";
+      return "Ma'lumotnoma";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u4e0d\u5b9a\u4ee3\u8a5e";
+      return "Noaniq";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u7591\u554f-\u95dc\u4fc2";
+      return "Savol-Relativ";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u53e5\u672b\u6a19\u9ede";
+      return "Oxirgi punktuatsiya";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u53e5\u865f";
+      return "Davri";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u53cd\u8eab";
+      return "O'z-o'zini anglatadi";
     },
     get$grammarCopyTENSEimp() {
-      return "\u672a\u5b8c\u6210\u6642";
+      return "Noto'g'ri zamon";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u52d5\u8a5e\u539f\u5f62";
+      return "Supin";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u5f62\u5bb9\u8a5e\u7528\u6cd5";
+      return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u9577\u5f62";
+      return "Uzoq";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u77ed\u5f62";
+      return "Qisqa";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u4f7f\u5f79\u52d5\u8a5e";
+      return "Sabablilik fe'li";
     },
     get$grammarCopyVOICEcau() {
-      return "\u4f7f\u5f79\u8a9e\u614b";
+      return "Sabablilik";
     },
     get$grammarCopyVOICEdir() {
-      return "\u76f4\u63a5\u8a9e\u614b";
+      return "To'g'ridan-to'g'ri";
     },
     get$grammarCopyVOICEinv() {
-      return "\u5012\u88dd\u8a9e\u614b";
+      return "Qaytariladigan";
     },
     get$grammarCopyVOICErcp() {
-      return "\u4e92\u60e0\u8a9e\u614b";
+      return "O'zaro";
     },
     get$other() {
-      return "\u5176\u4ed6";
+      return "Boshqa";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "SAV " + level;
     },
     get$clickBestOption() {
-      return "\u9078\u64c7\u6700\u4f73\u9078\u9805\u4f86\u7ffb\u8b6f\u60a8\u7684\u8a0a\u606f\uff01";
+      return "Xabaringizni tarjima qilish uchun eng yaxshi variantlarni tanlang! Tavsiya uchun variantlarga bosib ushlab turing.";
     },
     get$completeActivitiesToUnlock() {
-      return "\u5b8c\u6210\u81f3\u5c11\u4e00\u500b\u6d3b\u52d5\u4ee5\u89e3\u9396\u7ffb\u8b6f\uff01";
+      return "Tarjimani ochish uchun kamida bir faoliyatni yakunlang!";
     },
     get$downloadGroupText() {
-      return "\u4e0b\u8f09\u7fa4\u7d44\u6587\u5b57";
+      return "Guruh matnini yuklab olish";
     },
     get$notificationsOn() {
-      return "\u901a\u77e5\u5df2\u958b\u555f";
+      return "Bildirishnomalar yoqilgan";
     },
     get$notificationsOff() {
-      return "\u901a\u77e5\u5df2\u95dc\u9589";
+      return "Bildirishnomalar o'chirilgan";
     },
     get$joinWithCode() {
-      return "\u7528\u4ee3\u78bc\u52a0\u5165";
+      return "Kodni kiriting va qo'shiling";
     },
     get$enterCodeToJoin() {
-      return "\u8f38\u5165\u4ee3\u78bc\u52a0\u5165";
+      return "Qo'shilish uchun kodni kiriting";
     },
     get$updateNow() {
-      return "\u7acb\u5373\u66f4\u65b0";
+      return "Hozir yangilash";
     },
     get$updateLater() {
-      return "\u7a0d\u5f8c\u66f4\u65b0";
+      return "Keyin yangilash";
     },
     get$constructUseWaDesc() {
-      return "\u7121\u9700\u5e6b\u52a9\u4f7f\u7528";
+      return "Yordam bilan ishlatilmagan";
     },
     get$constructUseGaDesc() {
-      return "\u8a9e\u6cd5\u5354\u52a9";
+      return "Grammatik yordam";
     },
     get$constructUseTaDesc() {
-      return "\u7ffb\u8b6f\u5354\u52a9";
+      return "Tarjimani yordam";
     },
     get$constructUseUnkDesc() {
-      return "\u672a\u77e5";
+      return "Noma'lum";
     },
     get$constructUseCorITDesc() {
-      return "\u7ffb\u8b6f\u4e2d\u6b63\u78ba";
+      return "Tarjimada to'g'ri";
     },
     get$constructUseIgnITDesc() {
-      return "\u7ffb\u8b6f\u4e2d\u5ffd\u7565";
+      return "Tarjimada e'tiborsiz qilingan";
     },
     get$constructUseIncITDesc() {
-      return "\u7ffb\u8b6f\u4e2d\u4e0d\u6b63\u78ba";
+      return "Tarjimada noto'g'ri";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u8a9e\u6cd5\u66f4\u6b63\u4e2d\u5ffd\u7565";
+      return "Grammatika tuzatishda e'tiborsiz qilingan";
     },
     get$constructUseCorIGCDesc() {
-      return "\u8a9e\u6cd5\u66f4\u6b63\u4e2d\u6b63\u78ba";
+      return "Grammatika tuzatishda to'g'ri";
     },
     get$constructUseIncIGCDesc() {
-      return "\u8a9e\u6cd5\u66f4\u6b63\u4e2d\u4e0d\u6b63\u78ba";
+      return "Grammatika tuzatishda noto'g'ri";
     },
     get$constructUseCorPADesc() {
-      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "So'z ma'nosi faoliyatida to'g'ri";
     },
     get$constructUseIgnPADesc() {
-      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+      return "So'z ma'nosi faoliyatida e'tiborsiz qilingan";
     },
     get$constructUseIncPADesc() {
-      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+      return "So'z ma'nosi faoliyatida noto'g'ri";
     },
     get$constructUseCorWLDesc() {
-      return "\u55ae\u8a5e\u807d\u529b\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "So'z tinglash faoliyatida to'g'ri";
     },
     get$constructUseIncWLDesc() {
-      return "\u55ae\u8a5e\u807d\u529b\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+      return "So'z tinglash faoliyatida noto'g'ri";
     },
     get$constructUseIngWLDesc() {
-      return "\u55ba\u807d\u8a5e\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+      return "So'z tinglash faoliyatida e'tiborsiz qilingan";
     },
     get$constructUseCorHWLDesc() {
-      return "\u55ba\u96b1\u85cf\u8a5e\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "Yashirin so'z faoliyatida to'g'ri";
     },
     get$constructUseIncHWLDesc() {
-      return "\u55ba\u96b1\u85cf\u8a5e\u6d3b\u52d5\u4e2d\u5514\u5571";
+      return "Yashirin so'z faoliyatida noto'g'ri";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u55ba\u96b1\u85cf\u8a5e\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+      return "Yashirin so'z faoliyatida e'tiborsiz qilingan";
     },
     get$constructUseCorLDesc() {
-      return "\u55ba\u8a5e\u6839\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "Lema faoliyatida to'g'ri";
     },
     get$constructUseIncLDesc() {
-      return "\u55ba\u8a5e\u6839\u6d3b\u52d5\u4e2d\u5514\u5571";
+      return "Lema faoliyatida noto'g'ri";
     },
     get$constructUseIgnLDesc() {
-      return "\u55ba\u8a5e\u6839\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+      return "Lemma faoliyatida e'tiborga olinmaydi";
     },
     get$constructUseCorMDesc() {
-      return "\u55ba\u6587\u6cd5\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "Grammatika faoliyatida to'g'ri";
     },
     get$constructUseIncMDesc() {
-      return "\u55ba\u6587\u6cd5\u6d3b\u52d5\u4e2d\u5514\u5571";
+      return "Grammatika faoliyatida noto'g'ri";
     },
     get$constructUseIgnMDesc() {
-      return "\u55ba\u6587\u6cd5\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+      return "Grammatika faoliyatida e'tiborga olinmaydi";
     },
     get$constructUseEmojiDesc() {
-      return "\u55ba\u8868\u60c5\u7b26\u865f\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+      return "Emodzi faoliyatida to'g'ri";
     },
     get$constructUseCollected() {
-      return "\u55ba\u804a\u5929\u4e2d\u6536\u96c6";
+      return "Chatda to'plangan";
     },
     get$constructUseNanDesc() {
-      return "\u5514\u9069\u7528";
+      return "Qo'llanilmaydi";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " \u7d93\u9a57\u503c";
+      return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u555f\u7528\u6587\u5b57\u8f49\u8a9e\u97f3";
+      return "Matnni nutqqa aylantirish yoqildi";
     },
     get$enableTTSToolDescription() {
-      return "\u5141\u8a31\u61c9\u7528\u7a0b\u5f0f\u70ba\u4f60\u5605\u76ee\u6a19\u8a9e\u8a00\u5605\u90e8\u5206\u6587\u5b57\u7522\u751f\u6587\u5b57\u8f49\u8a9e\u97f3\u8f38\u51fa\u3002";
+      return "Ilovaga matnning maqsadli tilingizdagi bo'laklari uchun matnni nutqqa aylantirish chiqishini yaratishga imkon beradi.";
     },
     get$yourUsername() {
-      return "\u4f60\u7684\u7528\u6236\u540d";
+      return "Sizning foydalanuvchi nomingiz";
     },
     get$yourEmail() {
-      return "\u4f60\u7684\u96fb\u90f5";
+      return "Sizning elektron pochta manzilingiz";
     },
     get$iWantToLearn() {
-      return "\u6211\u60f3\u5b78\u7fd2";
+      return "O'rganishni istayman";
     },
     get$pleaseEnterEmail() {
-      return "\u8acb\u8f38\u5165\u6709\u6548\u7684\u96fb\u90f5\u5730\u5740\u3002";
+      return string$.Iltimo;
     },
     get$myBaseLanguage() {
-      return "\u6211\u7684\u57fa\u672c\u8a9e\u8a00";
+      return "Mening asosiy tilim";
     },
     get$formSectionHeader() {
-      return "\u804a\u5929\u4e2d\u4f7f\u7528\u7684\u8868\u683c\uff1a";
+      return "Chatlarda ishlatiladigan shakllar:";
     },
     get$writingExercisesTooltip() {
-      return "\u5beb\u4f5c";
+      return "Yozish";
     },
     get$listeningExercisesTooltip() {
-      return "\u807d\u529b\u7df4\u7fd2";
+      return "Tinglash";
     },
     get$readingExercisesTooltip() {
-      return "\u95b1\u8b80";
+      return "O'qish";
     },
     get$meaningNotFound() {
-      return "\u627e\u4e0d\u5230\u610f\u601d\u3002";
+      return "Ma'no topilmadi.";
     },
     get$notTheCodeError() {
-      return "\u5c0d\u4e0d\u8d77\uff0c\u9019\u4e0d\u662f\u4ee3\u78bc\uff01";
+      return "Kechirasiz, bu kod emas!";
     },
     get$totalXP() {
-      return "\u7e3d\u7d93\u9a57\u503c";
+      return "Jami XP";
     },
     get$numLemmas() {
-      return "\u8a5e\u6839\u7e3d\u6578";
+      return "Lemmalarning umumiy soni";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u6b63\u78ba\u4f7f\u7528\u81f3\u5c11\u4e00\u6b21\u7684\u8a5e\u6839\u6578\u91cf";
+      return "Kamida bir marta to'g'ri ishlatilgan lemmalarning soni";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u5f9e\u672a\u6b63\u78ba\u4f7f\u7528\u7684\u8a5e\u6839\u6578\u91cf";
+      return "To'g'ri ishlatilmagan lemmalarning soni 0 marta";
     },
     get$numLemmasSmallXP() {
-      return "\u7d93\u9a57\u503c\u70ba0-30\u7684\u8a5e\u6839\u6578\u91cf";
+      return "0 - 30 XP bo'lgan lemmalarning soni";
     },
     get$numLemmasMediumXP() {
-      return "\u7d93\u9a57\u503c\u70ba31-200\u7684\u8a5e\u6839\u6578\u91cf";
+      return "31 - 200 XP bo'lgan lemmalarning soni";
     },
     get$numLemmasLargeXP() {
-      return "\u7d93\u9a57\u503c\u8d85\u904e200\u7684\u8a5e\u6839\u6578\u91cf";
+      return "200 dan ortiq XP bo'lgan lemmalarning soni";
     },
     get$numGrammarConcepts() {
-      return "\u8a9e\u6cd5\u6982\u5ff5\u6578\u91cf";
+      return "Grammatika tushunchalarining soni";
     },
     get$listGrammarConcepts() {
-      return "\u8a9e\u6cd5\u6982\u5ff5";
+      return "Grammatika tushunchalari";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u5728\u539f\u59cb\u8a0a\u606f\u4e2d\u6b63\u78ba\u4f7f\u7528\u81f3\u5c1180%\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "Asl xabarlarida kamida 80% to'g'ri ishlatilgan grammatika tushunchalari";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u5728\u539f\u59cb\u8a0a\u606f\u4e2d\u6b63\u78ba\u4f7f\u7528\u5c11\u65bc80%\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "Asl xabarlarida 80% dan kam to'g'ri ishlatilgan grammatika tushunchalari";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u6b63\u78ba\u9078\u64c7\u8a9e\u6cd5\u6982\u5ff5\u7684\u6b21\u6578\u81f3\u5c11\u4f5480%";
+      return "Tizim tomonidan taklif qilingan variantlardan kamida 80% to'g'ri tanlangan grammatika tushunchalari";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u6b63\u78ba\u9078\u64c7\u8a9e\u6cd5\u6982\u5ff5\u7684\u6b21\u6578\u5c11\u65bc80%";
+      return "Tizim tomonidan taklif qilingan variantlardan kamida 80% noto'g'ri tanlangan grammatika tushunchalari";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u7d93\u9a57\u503c0-50\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "0-50 XP bo'lgan grammatika tushunchalari";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u7d93\u9a57\u503c51-200\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "51-200 XP bo'lgan grammatika tushunchalari";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u7d93\u9a57\u503c201-500\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "201-500 XP bo'lgan grammatika tushunchalari";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u7d93\u9a57\u503c\u8d85\u904e500\u7684\u8a9e\u6cd5\u6982\u5ff5";
+      return "500 dan ortiq XP bo'lgan grammatika tushunchalari";
     },
     get$numMessagesSent() {
-      return "\u5df2\u767c\u9001\u8a0a\u606f\u6578\u91cf";
+      return "Xabarlar soni";
     },
     get$numWordsTyped() {
-      return "\u539f\u59cb\u8a0a\u606f\u4e2d\u8f38\u5165\u7684\u5b57\u6578";
+      return "Asl xabarlar ichidagi yozilgan so'zlar soni";
     },
     get$numCorrectChoices() {
-      return "\u5f9e\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u6b63\u78ba\u9078\u64c7\u7684\u8a5e\u6578";
+      return "Tizim tomonidan taklif qilingan to'g'ri so'zlar soni";
     },
     get$numIncorrectChoices() {
-      return "\u5f9e\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u932f\u8aa4\u9078\u64c7\u7684\u8a5e\u6578";
+      return "Tizim tomonidan taklif qilingan noto'g'ri so'zlar soni";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3832,1774 +3832,1777 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "\u6a94\u6848\u985e\u578b";
+      return "Fayl turi";
     },
     get$download(_) {
-      return "\u4e0b\u8f09";
+      return "Yuklab olish";
     },
     get$analyticsNotAvailable() {
-      return "\u7528\u6236\u5206\u6790\u4e0d\u53ef\u7528";
+      return "Foydalanuvchi tahlili mavjud emas";
     },
     get$downloading() {
-      return "\u6b63\u5728\u4e0b\u8f09...";
+      return "Yuklanmoqda...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u4e0b\u8f09\u7528\u6236\u5206\u6790\u5931\u6557";
+      return "Foydalanuvchi tahlilini yuklab olish muvaffaqiyatsiz bo'ldi";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "'" + wordForm + "'\u7684" + morphologicalFeature + "\u662f\u4ec0\u9ebc\uff1f";
+      return "'" + wordForm + "' ning " + morphologicalFeature + " nima?";
     },
     get$dataAvailable() {
-      return "\u8cc7\u6599\u53ef\u7528\u6027";
+      return "Ma'lumot mavjudligi";
     },
     get$available(_) {
-      return "\u53ef\u7528";
+      return "Mavjud";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea \u6a5f\u68b0\u4eba\u90fd\u6703\u72af\u932f\uff01";
+      return "Pangea Bot ham xato qilishi mumkin!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "'" + lemma + "' \u5605\u610f\u601d\u4fc2\u4e5c\uff1f";
+      return "'" + lemma + "' ning ma'nosi nima?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u5c07\u610f\u601d\u540c\u8a0a\u606f\u5165\u9762\u5605\u8a5e\u914d\u5c0d\uff01";
+      return "Xabar ichidagi so'zlar bilan ma'nolarni moslang!";
     },
     get$doubleClickToEdit() {
-      return "\u96d9\u64ca\u4ee5\u7de8\u8f2f\u3002";
+      return "Tahrirlash uchun ikki marta bosish.";
     },
     get$cefrLevelLabel() {
-      return "CEFR \u7d1a\u5225";
+      return "CEFR darajasi";
     },
     get$image(_) {
-      return "\u5716\u7247";
+      return "Rasm";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u9078\u64c7\u4e00\u500b\u4e3b\u984c\u3001\u6a21\u5f0f\u3001\u5b78\u7fd2\u76ee\u6a19\uff0c\u4e26\u70ba\u804a\u5929\u751f\u6210\u4e00\u500b\u6d3b\u52d5\uff01";
+      return "Mavzu, rejim, o\u02bbrganish maqsadini tanlang va suhbat uchun faoliyat yarating!";
     },
     get$constructUsePvmDesc() {
-      return "\u4ee5\u8a9e\u97f3\u8a0a\u606f\u7522\u751f";
+      return "Ovozli xabar ishlab chiqarilgan";
     },
     get$leaveSpaceDescription() {
-      return "\u9000\u51fa\u8ab2\u7a0b\u5f8c\uff0c\u60a8\u5c07\u96e2\u958b\u5176\u4e2d\u6240\u6709\u7684\u804a\u5929\u3002\u5176\u4ed6\u7528\u6236\u5c07\u770b\u5230\u60a8\u5df2\u96e2\u958b\u8ab2\u7a0b\u3002";
+      return "Kursdan chiqib, siz uning ichidagi barcha chatlardan chiqasiz. Boshqa foydalanuvchilar sizning kursdan chiqqaningizni ko'radilar.";
     },
     get$constructUseCorMmDesc() {
-      return "\u6b63\u78ba\u7684\u8a0a\u606f\u542b\u7fa9";
+      return "To'g'ri xabar ma'nosi";
     },
     get$constructUseIncMmDesc() {
-      return "\u932f\u8aa4\u7684\u8a0a\u606f\u542b\u7fa9";
+      return "Noto'g'ri xabar ma'nosi";
     },
     get$constructUseIgnMmDesc() {
-      return "\u88ab\u5ffd\u7565\u7684\u8a0a\u606f\u542b\u7fa9";
+      return "E'tiborsiz qilingan xabar ma'nosi";
     },
     get$meaning() {
-      return "\u610f\u601d";
+      return "Ma'no";
     },
     chatWith$1(displayname) {
-      return "\u8207" + displayname + "\u7d44\u6210\u7fa4\u7d44";
+      return displayname + " bilan guruh";
     },
     get$clickOnEmailLink() {
-      return "\u8acb\u9ede\u64ca\u96fb\u5b50\u90f5\u4ef6\u4e2d\u7684\u9023\u7d50\uff0c\u7136\u5f8c\u7e7c\u7e8c\u3002\n\n\u5982\u679c\u96fb\u5b50\u90f5\u4ef6\u672a\u5230\u9054\uff0c\u8acb\u6aa2\u67e5\u60a8\u7684\u5783\u573e\u90f5\u4ef6\u593e\u3002";
+      return "Iltimos, elektron pochta havolasini bosing va davom eting.\n\nAgar elektron pochta kelmagan bo'lsa, spam papkangizni tekshiring.";
     },
     get$dontForgetPassword() {
-      return "\u5225\u5fd8\u4e86\u4f60\u7684\u5bc6\u78bc\uff01";
+      return "Parolingizni unutmang!";
     },
     get$enableAutocorrectToolName() {
-      return "\u555f\u7528\u8a2d\u5099\u81ea\u52d5\u66f4\u6b63";
+      return "Qurilma avtomatik to'g'rilashni yoqing";
     },
     get$enableAutocorrectDescription() {
-      return "\u5982\u679c\u60a8\u7684\u8a2d\u5099\u652f\u6301\u60a8\u6b63\u5728\u5b78\u7fd2\u7684\u8a9e\u8a00\uff0c\u60a8\u53ef\u4ee5\u555f\u7528\u8a2d\u5099\u81ea\u52d5\u66f4\u6b63\uff0c\u4ee5\u5728\u8f38\u5165\u6642\u4fee\u6b63\u5e38\u898b\u932f\u8aa4\u3002";
+      return "Agar qurilma o'rganyayotgan tilni qo'llab-quvvatlasa, siz odatiy xatoliklarni tuzatish uchun qurilma avtomatik to'g'rilashni yoqishingiz mumkin.";
     },
     get$ttsDisbledTitle() {
-      return "\u6587\u5b57\u8f49\u8a9e\u97f3\u5df2\u505c\u7528";
+      return "Matn-to-speech o'chirilgan";
     },
     get$ttsDisabledBody() {
-      return "\u60a8\u53ef\u4ee5\u5728\u5b78\u7fd2\u8a2d\u7f6e\u4e2d\u555f\u7528\u6587\u5b57\u8f49\u8a9e\u97f3";
+      return "O'qish sozlamalarida matn-to-speechni yoqishingiz mumkin";
     },
     get$noSpaceDescriptionYet() {
-      return "\u5c1a\u672a\u5275\u5efa\u8ab2\u7a0b\u63cf\u8ff0\u3002";
+      return "Hali kurs tavsifi yaratilmagan.";
     },
     get$tooLargeToSend() {
-      return "\u6b64\u8a0a\u606f\u904e\u5927\uff0c\u7121\u6cd5\u50b3\u9001";
+      return "Ushbu xabar yuborish uchun juda katta";
     },
     get$exitWithoutSaving() {
-      return "\u78ba\u5b9a\u8981\u4e0d\u4fdd\u5b58\u9000\u51fa\u55ce\uff1f";
+      return "Haqiqatan ham saqlamasdan chiqmoqchimisiz?";
     },
     get$enableAutocorrectWarning() {
-      return "\u8b66\u544a\uff01\u9700\u8981\u6dfb\u52a0\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u9375\u76e4";
+      return "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi";
     },
     get$leaveRoomDescription() {
-      return "\u4f60\u5373\u5c07\u96e2\u958b\u6b64\u804a\u5929\u3002\u5176\u4ed6\u7528\u6236\u5c07\u770b\u5230\u4f60\u5df2\u96e2\u958b\u804a\u5929\u3002";
+      return "Siz bu chatdan chiqmoqdasiz. Boshqa foydalanuvchilar siz chatdan chiqganingizni ko'radilar.";
     },
     get$confirmUserId() {
-      return "\u8acb\u78ba\u8a8d\u4f60\u7684 Pangea Chat \u7528\u6236\u540d\u4ee5\u522a\u9664\u4f60\u7684\u5e33\u6236\u3002";
+      return "Iltimos, hisobingizni o'chirish uchun Pangea Chat foydalanuvchi nomingizni tasdiqlang.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u7531 " + startDate + " \u958b\u59cb";
+      return startDate + " dan boshlab";
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u53ef\u96a8\u6642\u5728\u8a02\u95b1\u8a2d\u5b9a\u4e2d\u53d6\u6d88";
+      return " \u2022 Obuna sozlamalarida istalgan vaqtda bekor qiling";
     },
     get$autocorrectNotAvailable() {
-      return "\u5f88\u62b1\u6b49\uff0c\u4f60\u7684\u5e73\u53f0\u76ee\u524d\u4e0d\u652f\u63f4\u6b64\u529f\u80fd\u3002\u8acb\u7559\u610f\u5f8c\u7e8c\u958b\u767c\uff01";
+      return "Afsuski, platformangiz hozirda bu funksiyani qo'llab-quvvatlamaydi. Keyingi rivojlanishlarni kuzatib boring!";
     },
     get$pleaseUpdateApp() {
-      return "\u8acb\u66f4\u65b0\u61c9\u7528\u7a0b\u5f0f\u4ee5\u7e7c\u7e8c\u3002";
+      return "Iltimos, davom etish uchun ilovani yangilang.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u5c07\u8868\u60c5\u7b26\u865f\u8207\u5b83\u5011\u6700\u80fd\u4ee3\u8868\u7684\u8a5e\u8a9e\u914d\u5c0d\u3002\u5225\u64d4\u5fc3\uff01\u4e0d\u540c\u610f\u4e5f\u4e0d\u6263\u5206\u3002\ud83d\ude05";
+      return "Emojilarni ularning eng yaxshi ifodalaydigan so'zlari bilan moslang. Xavotir olmang! Noto'g'ri fikrda bo'lsangiz, hech qanday ball yo'qotilmaydi. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u9019\u662f\u4f60\u7684\u5168\u90e8\u8a5e\u5f59\uff01\u7576\u4f60\u6bcf\u5b78\u6703\u4e00\u500b\u8a5e\uff0c\u5c31\u6703\u7531\u5e7c\u82d7\u9577\u6210\u76db\u958b\u7684\u82b1\u6735\u3002\u9ede\u64ca\u4efb\u4f55\u8a5e\u4ee5\u67e5\u770b\u66f4\u591a\u8a73\u60c5\u3002";
+      return "Bu sizning barcha lug'atingiz! Har bir so'z uchun XP olganingizda, ular ildizdan to'liq gulga aylanishadi. Ko'proq ma'lumot uchun har qanday so'zga bosing.";
     },
     get$morphAnalyticsListBody() {
-      return "\u9019\u662f\u4f60\u6b63\u5728\u5b78\u7fd2\u7684\u8a9e\u8a00\u4e2d\u7684\u6240\u6709\u8a9e\u6cd5\u6982\u5ff5\uff01\u4f60\u5728\u804a\u5929\u6642\u9047\u5230\u5b83\u5011\u5c31\u6703\u89e3\u9396\u3002\u9ede\u64ca\u67e5\u770b\u8a73\u60c5\u3002";
+      return "Bu siz o'rganayotgan tilning barcha grammatik tushunchalari! Ularni suhbat davomida uchraganingizda ochasiz. Tafsilotlar uchun bosing.";
     },
     get$knockSpaceSuccess() {
-      return "\u4f60\u5df2\u7533\u8acb\u52a0\u5165\u6b64\u8ab2\u7a0b\uff01\u7ba1\u7406\u54e1\u6536\u5230\u7533\u8acb\u5f8c\u6703\u56de\u8986\u4f60\ud83d\ude0a";
+      return "Siz bu kursga qo'shilishni so'radingiz! Administrator sizning so'rovingizni olgach, javob beradi \ud83d\ude04";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u807d\u5b8c\u6574\u500b\u8a0a\u606f\u3002\u7136\u5f8c\u5c07\u97f3\u983b\u8207\u8a5e\u8a9e\u914d\u5c0d\u3002";
+      return "To\u2018liq xabarni tinglang. So\u2018ngra, audiolarni so\u2018zlar bilan moslang.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u9ede\u64ca\u62fc\u5716\u788e\u7247\u56de\u7b54\u8a9e\u6cd5\u554f\u984c\uff01";
+      return "Grammatika savollari uchun mozaika bo\u2018laklarini bosing!";
     },
     get$home() {
-      return "\u9996\u9801";
+      return "Bosh sahifa";
     },
     get$join(_) {
-      return "\u52a0\u5165";
+      return "Qo\u2018shilish";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u9ede\u64ca\u4e0b\u9762\u5605\u6309\u9215\uff0c\u73a9\u914d\u5c0d\u8868\u60c5\u7b26\u865f\u3001\u97f3\u983b\u3001\u8a5e\u7fa9\u540c\u8a9e\u6cd5\u6982\u5ff5\u5605\u8ff7\u4f60\u904a\u6232\u3002\u6216\u8005\u9ede\u64ca\u4efb\u4f55\u8a5e\u8a9e\u7747\u8a73\u7d30\u8cc7\u6599\u3002";
+      return "Emojilar, audiolar, so\u2018z ma\u2019nolari va grammatika tushunchalarini moslashtirish uchun mini-o\u2018yinlar uchun quyidagi tugmalarga bosing. Yoki tafsilotlar uchun har qanday so\u2018zga bosing.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u91cd\u8a2d\u6307\u5f15\u63d0\u793a";
+      return "Ko\u2018rsatma iplarini tiklash";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u9ede\u64ca\u986f\u793a\u65b0\u7528\u6236\u5605\u6307\u5f15\u63d0\u793a\u3002";
+      return "Yangi foydalanuvchi uchun ko\u2018rsatma iplarini ko\u2018rsatish uchun bosing.";
     },
     get$translationProblem() {
-      return "Translation problem";
+      return "Tarjimada muammo";
     },
     get$askToJoin() {
-      return "\u8acb\u6c42\u52a0\u5165";
+      return "Qo\u2018shilishni so\u2018rash";
     },
     get$emptyChatWarningTitle() {
-      return "\u5c0d\u8a71\u7a7a\u7a7a\u5982\u4e5f";
+      return "Suhbat bo\u2018sh";
     },
     get$emptyChatWarningDesc() {
-      return "\u4f60\u672a\u9080\u8acb\u4efb\u4f55\u4eba\u52a0\u5165\u5c0d\u8a71\u3002\u8acb\u524d\u5f80\u5c0d\u8a71\u8a2d\u5b9a\uff0c\u9080\u8acb\u4f60\u7684\u806f\u7d61\u4eba\u6216\u6a5f\u68b0\u4eba\u3002\u4f60\u4ea6\u53ef\u4ee5\u7a0d\u5f8c\u518d\u505a\u3002";
+      return "Siz hech kimni suhbatga taklif qilmagansiz. Kontaktlaringiz yoki Botni taklif qilish uchun Suhbat sozlamalariga o\u2018ting. Buni keyinroq ham qilishingiz mumkin.";
     },
     get$areYouLikeMe() {
-      return "\u4f60\u540c\u6211\u4e00\u6a23\u55ce\uff1f";
+      return "Siz men kabi emasmisiz?";
     },
     get$tryAgainLater() {
-      return "\u5617\u8a66\u6b21\u6578\u904e\u591a\u3002\u8acb\u4e94\u5206\u9418\u5f8c\u518d\u8a66\u3002";
+      return "Juda ko'p urinishlar amalga oshirildi. Iltimos, 5 daqiqadan so'ng yana urinib ko'ring.";
     },
     get$enterSpaceCode() {
-      return "\u8f38\u5165\u8ab2\u7a0b\u4ee3\u78bc";
+      return "Kurs kodini kiriting";
     },
     get$shareSpaceLink() {
-      return "\u5206\u4eab\u9023\u7d50";
+      return "Havolani ulash";
     },
     get$byUsingPangeaChat() {
-      return "\u4f7f\u7528 Pangea Chat\uff0c\u5373\u8868\u793a\u6211\u540c\u610f ";
+      return "Pangea Chat-dan foydalanish bilan, men roziman ";
     },
     get$details(_) {
-      return "\u8a73\u60c5";
+      return "Tafsilotlar";
     },
     get$languageLevelPreA1Desc() {
-      return "\u6211\u5f9e\u672a\u5b78\u904e\u6216\u4f7f\u7528\u904e\u8a72\u8a9e\u8a00\u3002";
+      return "Men hech qachon tilni o'rgangan yoki ishlatgan emasman.";
     },
     get$languageLevelA1Desc() {
-      return "\u6211\u80fd\u7406\u89e3\u4e26\u4f7f\u7528\u4e00\u4e9b\u719f\u6089\u7684\u65e5\u5e38\u8868\u9054\u548c\u975e\u5e38\u57fa\u672c\u7684\u77ed\u8a9e\u3002";
+      return "Men ba'zi odatiy kundalik iboralarni va juda oddiy iboralarni tushunaman va ishlata olaman.";
     },
     get$languageLevelA2Desc() {
-      return "\u6211\u80fd\u7406\u89e3\u8207\u7acb\u5373\u76f8\u95dc\u9818\u57df\u7684\u53e5\u5b50\u548c\u5e38\u7528\u8868\u9054\u3002";
+      return "Men darhol muhim bo'lgan sohalarga oid gaplar va tez-tez ishlatiladigan iboralarni tushunaman.";
     },
     get$languageLevelB1Desc() {
-      return "\u6211\u80fd\u61c9\u4ed8\u5927\u591a\u6578\u719f\u6089\u7684\u60c5\u6cc1\uff0c\u4e26\u80fd\u7528\u7c21\u55ae\u7684\u9023\u8cab\u6587\u672c\u8ac7\u8ad6\u719f\u6089\u7684\u8a71\u984c\u3002";
+      return "Men eng ko'p uchraydigan vaziyatlarni hal qila olaman va oddiy bog'langan matnlarni ishlab chiqara olaman.";
     },
     get$languageLevelB2Desc() {
-      return "\u6211\u80fd\u7406\u89e3\u8907\u96dc\u6587\u672c\u7684\u4e3b\u8981\u601d\u60f3\uff0c\u4e26\u80fd\u4ee5\u4e00\u5b9a\u7684\u6d41\u66a2\u5ea6\u548c\u81ea\u767c\u6027\u9032\u884c\u4e92\u52d5\u3002";
+      return "Men murakkab matnlarning asosiy g'oyalarini tushunaman va ravon va o'z-o'zidan muloqot qila olaman.";
     },
     get$languageLevelC1Desc() {
-      return "\u6211\u80fd\u6d41\u5229\u4e14\u81ea\u767c\u5730\u8868\u9054\u601d\u60f3\uff0c\u4e26\u7406\u89e3\u5404\u7a2e\u8981\u6c42\u8f03\u9ad8\u7684\u6587\u672c\u3002";
+      return "Men fikrlarni ravon va o'z-o'zidan ifoda eta olaman, katta qiyinchiliklarsiz va keng qamrovli matnlarni tushunaman.";
     },
     get$languageLevelC2Desc() {
-      return "\u6211\u5e7e\u4e4e\u80fd\u7406\u89e3\u6240\u6709\u807d\u5230\u6216\u95b1\u8b80\u7684\u5167\u5bb9\uff0c\u4e26\u80fd\u6d41\u5229\u4e14\u6e96\u78ba\u5730\u8868\u9054\u81ea\u5df1\u3002";
+      return "Men deyarli hamma narsani eshitgan yoki o'qigan holda tushunaman va ravon va aniq ifoda eta olaman.";
     },
     get$newVocab() {
-      return "\u65b0\u8a5e\u5f59";
+      return "Yangi so'zlar";
     },
     get$newGrammar() {
-      return "\u65b0\u8a9e\u6cd5\u6982\u5ff5";
+      return "Yangi grammatik tushunchalar";
     },
     get$ban() {
-      return "\u5c01\u9396";
+      return "Ta'qiqlash";
     },
     get$kick() {
-      return "\u8e22\u51fa";
+      return "Olib tashlash";
     },
     get$lemma() {
-      return "\u8a5e\u6839";
+      return "Lema";
     },
     get$grammarFeature() {
-      return "\u8a9e\u6cd5\u7279\u5fb5";
+      return "Grammatika xususiyati";
     },
     get$grammarTag() {
-      return "\u6a19\u7c64\u8a9e\u6cd5";
+      return "Grammatika teg";
     },
     get$forms() {
-      return "\u5f62\u5f0f";
+      return "Shakllar";
     },
     get$exampleMessages() {
-      return "\u7bc4\u4f8b\u8a0a\u606f";
+      return "Misol xabarlar";
     },
     get$timesUsedIndependently() {
-      return "\u7368\u7acb\u4f7f\u7528\u6b21\u6578";
+      return "Mustaqil ishlatilgan vaqtlari";
     },
     get$timesUsedWithAssistance() {
-      return "\u5354\u52a9\u4e0b\u4f7f\u7528\u6b21\u6578";
+      return "Yordam bilan ishlatilgan vaqtlari";
     },
     shareInviteCode$1(code) {
-      return "\u5206\u4eab\u9080\u8acb\u78bc\uff1a" + code;
+      return "Taklif kodini ulash: " + code;
     },
     get$skipForNow() {
-      return "\u66ab\u6642\u8df3\u904e";
+      return "Hozircha o'tkazib yuborish";
     },
     get$permissions(_) {
-      return "\u6b0a\u9650";
+      return "Ruxsatlar";
     },
     get$spaceChildPermission() {
-      return "\u8ab0\u53ef\u4ee5\u5728\u6b64\u8ab2\u7a0b\u4e2d\u65b0\u589e\u804a\u5929";
+      return "Kim yangi chatlarni bu kursga qo'shishi mumkin";
     },
     get$addEnvironmentOverride() {
-      return "\u65b0\u589e\u74b0\u5883\u8986\u84cb";
+      return "Muhitni o'zgartirishni qo'shish";
     },
     get$defaultOption() {
-      return "\u9810\u8a2d";
+      return "Standart";
     },
     get$deleteChatDesc() {
-      return "\u4f60\u78ba\u5b9a\u8981\u522a\u9664\u6b64\u804a\u5929\u55ce\uff1f\u6b64\u64cd\u4f5c\u5c07\u522a\u9664\u6240\u6709\u53c3\u8207\u8005\u7684\u804a\u5929\u8a18\u9304\uff0c\u4e14\u6240\u6709\u8a0a\u606f\u5c07\u4e0d\u518d\u4f9b\u7df4\u7fd2\u6216\u5b78\u7fd2\u5206\u6790\u4f7f\u7528\u3002";
+      return "Siz ushbu suhbatni o'chirmoqchimisiz? Bu barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi.";
     },
     get$deleteSpaceDesc() {
-      return "\u6b64\u8ab2\u7a0b\u53ca\u6240\u6709\u9078\u64c7\u7684\u804a\u5929\u5c07\u88ab\u522a\u9664\uff0c\u6240\u6709\u8a0a\u606f\u5c07\u4e0d\u518d\u4f9b\u7df4\u7fd2\u6216\u5b78\u7fd2\u5206\u6790\u4f7f\u7528\u3002\u6b64\u64cd\u4f5c\u7121\u6cd5\u64a4\u92b7\u3002";
+      return "Kurs va tanlangan har qanday suhbatlar barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi. Bu amalni bekor qilish mumkin emas.";
     },
     get$configureSpace() {
-      return "\u8a2d\u5b9a\u8ab2\u7a0b";
+      return "Kursni sozlash";
     },
     get$pinMessages() {
-      return "\u91d8\u4f4f\u8a0a\u606f";
+      return "Xabarlarni pin qilish";
     },
     get$setJoinRules() {
-      return "\u8a2d\u5b9a\u52a0\u5165\u898f\u5247";
+      return "Qo'shilish qoidalarini o'rnating";
     },
     get$changeGeneralSettings() {
-      return "\u66f4\u6539\u4e00\u822c\u8a2d\u5b9a";
+      return "Umumiy sozlamalarni o'zgartiring";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u9080\u8acb\u5176\u4ed6\u7528\u6236";
+      return "Boshqa foydalanuvchilarni taklif qiling";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u66f4\u6539\u8ab2\u7a0b\u540d\u7a31";
+      return "Kurs nomini o'zgartiring";
     },
     get$changeTheDescription() {
-      return "\u66f4\u6539\u63cf\u8ff0";
+      return "Tavsifni o'zgartiring";
     },
     get$changeThePermissions() {
-      return "\u66f4\u6539\u6b0a\u9650";
+      return "Ruxsatlarni o'zgartiring";
     },
     get$introductions() {
-      return "\u4ecb\u7d39";
+      return "Tanishuvlar";
     },
     get$announcements() {
-      return "\u516c\u544a";
+      return "E'lonlar";
     },
     get$activities() {
-      return "\u6d3b\u52d5";
+      return "Faoliyatlar";
     },
     get$access() {
-      return "\u5b58\u53d6";
+      return "Kirish";
     },
     get$howSpaceCanBeFound() {
-      return "\u5462\u500b\u8ab2\u7a0b\u9ede\u6a23\u53ef\u4ee5\u6435\u5230";
+      return "Bu kurs qanday topilishi mumkin";
     },
     get$$private() {
-      return "\u79c1\u4eba";
+      return "Maxfiy";
     },
     get$cannotBeFoundInSearch() {
-      return "\u55ba\u641c\u5c0b\u4e2d\u6435\u5514\u5230";
+      return "Qidiruvda topilmaydi";
     },
     get$$public(_) {
-      return "\u516c\u958b";
+      return "Jamoat";
     },
     get$visibleToCommunity() {
-      return "\u53ef\u4ee5\u55ba\u300c\u6435\u8ab2\u7a0b\u300d\u4e2d\u4ffe Pangea Chat \u793e\u7fa4\u7747\u5230";
+      return '"Find a course" orqali keng Pangea Chat jamoatiga ko\'rinadi';
     },
     get$howSpaceCanBeJoined() {
-      return "\u9ede\u6a23\u52a0\u5165\u5462\u500b\u8ab2\u7a0b";
+      return "Bu kurs qanday qo'shilishi mumkin";
     },
     get$canBeFoundVia() {
-      return "\u53ef\u4ee5\u901a\u904e\u4ee5\u4e0b\u65b9\u5f0f\u6435\u5230\uff1a";
+      return "Topilishi mumkin:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u9080\u8acb";
+      return "\u2022 taklifnoma orqali";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u4ee3\u78bc\u6216\u9023\u7d50";
+      return "\u2022 kod yoki havola orqali";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u8acb\u6c42\u52a0\u5165\u540c\u7ba1\u7406\u54e1\u6279\u51c6";
+      return "\u2022 so'rov yuborish va administrator tasdiqlashi";
     },
     get$sendActivities() {
-      return "\u767c\u9001\u6d3b\u52d5";
+      return "Faoliyatlarni yuborish";
     },
     get$directMessage() {
-      return "\u76f4\u63a5\u8a0a\u606f";
+      return "To'g'ridan-to'g'ri xabar";
     },
     get$newDirectMessage() {
-      return "\u65b0\u76f4\u63a5\u8a0a\u606f";
+      return "Yangi to'g'ridan-to'g'ri xabar";
     },
     get$speakingExercisesTooltip() {
-      return "\u53e3\u8aaa\u7df4\u7fd2";
+      return "So'zlash";
     },
     get$transcriptionFailed() {
-      return "\u8f49\u9304\u97f3\u983b\u5931\u6557";
+      return "Audioni yozib olish muvaffaqiyatsiz bo'ldi";
     },
     get$aUserIsKnocking() {
-      return "\u6709\u7528\u6236\u8acb\u6c42\u52a0\u5165\u60a8\u7684\u8ab2\u7a0b";
+      return "1 foydalanuvchi kursingizga qo'shilishni so'rayapti";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u4f4d\u7528\u6236\u8acb\u6c42\u52a0\u5165\u60a8\u7684\u8ab2\u7a0b";
+      return "" + users + " foydalanuvchi kursingizga qo'shilishni so'rayapti";
     },
     get$failedToFetchTranscription() {
-      return "\u7372\u53d6\u8f49\u9304\u5931\u6557";
+      return "Yozib olishni olish muvaffaqiyatsiz bo'ldi";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u6b64\u8ab2\u7a0b\u5c07\u88ab\u522a\u9664\uff0c\u6240\u6709\u53c3\u8207\u8005\u90fd\u5c07\u5931\u53bb\u8a2a\u554f\u6b0a\u9650\u3002\u6b64\u64cd\u4f5c\u7121\u6cd5\u64a4\u92b7\u3002";
+      return "Kurs barcha ishtirokchilari uchun o'chiriladi. Bu harakatni bekor qilish mumkin emas.";
     },
     get$failedToPlayVideo() {
-      return "\u64ad\u653e\u8996\u983b\u5931\u6557";
+      return "Video ijro etishda xatolik yuz berdi";
     },
     get$done() {
-      return "\u5b8c\u6210";
+      return "Bajarildi";
     },
     get$inThisSpace() {
-      return "\u5728\u6b64\u8ab2\u7a0b\u4e2d";
+      return "Ushbu kursda";
     },
     get$myContacts() {
-      return "\u6211\u7684\u806f\u7d61\u4eba";
+      return "Mening kontaktlarim";
     },
     get$inviteAllInSpace() {
-      return "\u9080\u8acb\u6b64\u8ab2\u7a0b\u4e2d\u7684\u6240\u6709\u4eba";
+      return "Barchasini taklif qilish";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u6240\u6709\u8ab2\u7a0b\u53c3\u8207\u8005\u5df2\u88ab\u9080\u8acb\u52a0\u5165\u804a\u5929";
+      return "Barcha kurs ishtirokchilari chatga taklif qilindi";
     },
     numKnocking$1(count) {
-      return "" + count + " \u6b63\u5728\u6572\u9580";
+      return "" + count + " ta taqillatmoqda";
     },
     numInvited$1(count) {
-      return "" + count + " \u5df2\u88ab\u9080\u8acb";
+      return "" + count + " ta taklif qilindi";
     },
     get$errorFetchingDefinition() {
-      return "\u7372\u53d6\u5b9a\u7fa9\u5931\u6557";
+      return "Taqrifni olishda xato";
     },
     get$errorProcessAnalytics() {
-      return "\u8655\u7406\u5206\u6790\u5931\u6557";
+      return "Tahlilni qayta ishlashda xato";
     },
     get$errorDownloading() {
-      return "\u4e0b\u8f09\u5931\u6557";
+      return "Yuklab olish muvaffaqiyatsiz";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u8f09\u5165\u6b64\u8ab2\u7a0b\u4e2d\u7684\u804a\u5929\u5931\u6557";
+      return "Ushbu kurs ichidagi chatlarni yuklashda xato";
     },
     get$unexpectedError() {
-      return "\u767c\u751f\u672a\u9810\u671f\u7684\u932f\u8aa4\u3002";
+      return "Kutilmagan xato.";
     },
     get$pleaseReload() {
-      return "\u8acb\u91cd\u65b0\u8f09\u5165\u4e26\u91cd\u8a66\u3002";
+      return "Iltimos, yangilang va qayta urinib ko'ring.";
     },
     get$translationError() {
-      return "\u7ffb\u8b6f\u932f\u8aa4";
+      return "Tarjimada xato";
     },
     get$errorFetchingActivity() {
-      return "\u7372\u53d6\u6d3b\u52d5\u5931\u6557";
+      return "Faoliyatni olishda xato";
     },
     get$check(_) {
-      return "\u6aa2\u67e5";
+      return "Tekshirish";
     },
     get$unableToFindRoom() {
-      return "\u627e\u4e0d\u5230\u8a72\u4ee3\u78bc\u7684\u804a\u5929\u6216\u8ab2\u7a0b\u3002\u8acb\u518d\u8a66\u4e00\u6b21\u3002";
+      return "Ushbu kod bilan chat yoki kurs topilmadi. Iltimos, qayta urinib ko'ring.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u6b63\u5728\u67e5\u770b " + visible + "/" + users + " \u7684\u5206\u6790";
+      return "" + visible + "/" + users + " Analytics-ni ko'rish";
     },
     get$request(_) {
-      return "\u8acb\u6c42";
+      return "So'rov";
     },
     get$requestAll(_) {
-      return "\u5168\u90e8\u8acb\u6c42";
+      return "Hammasini so'rash";
     },
     get$confirmMessageUnpin() {
-      return "\u4f60\u78ba\u5b9a\u8981\u53d6\u6d88\u91d8\u9078\u6b64\u8a0a\u606f\u55ce\uff1f";
+      return "Ushbu xabarni pin qilishdan voz kechmoqchimisiz?";
     },
     get$pending(_) {
-      return "\u5f85\u8655\u7406";
+      return "Kutilmoqda";
     },
     get$openRoleLabel() {
-      return "\u958b\u653e";
+      return "OCHIQ";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u4ee5 " + role + " \u8eab\u4efd\u52a0\u5165";
+      return "\ud83d\udc4b " + username + " " + role + " sifatida qo'shildi";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u5b8c\u6210\u4e86\u6b64\u6d3b\u52d5";
+      return "\ud83c\udfaf " + username + " bu faoliyatni yakunladi";
     },
     get$activitySummaryError() {
-      return "\u6d3b\u52d5\u6458\u8981\u66ab\u6642\u7121\u6cd5\u53d6\u5f97";
+      return "Faoliyatlar haqida ma'lumotlar mavjud emas";
     },
     get$requestSummaries() {
-      return "\u8acb\u6c42\u6458\u8981";
+      return "So'rovlar xulosasi";
     },
     get$requestAccessTitle() {
-      return "\u8acb\u6c42\u5206\u6790\u8a2a\u554f\uff1f";
+      return "Analitika kirish huquqini so'rash?";
     },
     get$requestAccessDesc() {
-      return "\u4f60\u60f3\u7533\u8acb\u67e5\u770b\u53c3\u8207\u8005\u5206\u6790\u6578\u64da\uff1f\n\n\u5982\u679c\u53c3\u8207\u8005\u540c\u610f\uff0c\u5462\u500b\u8ab2\u7a0b\u5605\u7ba1\u7406\u54e1\u53ef\u4ee5\u7747\u5230\u4f62\u54cb\u5605\uff1a\n    \u2022 \u7e3d\u8a5e\u5f59\u91cf\n    \u2022 \u7e3d\u8a9e\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u5605\u6d3b\u52d5\u6b21\u6578\n    \u2022 \u4f7f\u7528\u5605\u5177\u9ad4\u8a9e\u6cd5\u6982\u5ff5\uff0c\u6b63\u78ba\u540c\u932f\u8aa4\n\n\u4f62\u54cb\u5514\u80fd\u7747\u5230\uff1a\n    \u2022 \u8ab2\u7a0b\u5916\u5605\u804a\u5929\u8a0a\u606f\n    \u2022 \u8a5e\u5f59\u6e05\u55ae";
+      return "Ishtirokchilarning analitikasini ko'rish uchun kirish huquqini so'rashni xohlaysizmi?\n\nAgar ishtirokchilar rozilik bildirsa, siz ularning:\n    \u2022 umumiy lug'at\n    \u2022 umumiy grammatik tushunchalar\n    \u2022 bajarilgan faoliyat sessiyalari\n    \u2022 foydalanilgan, to'g'ri va noto'g'ri grammatik tushunchalarni ko'rishingiz mumkin.\n\nSiz ularning:\n    \u2022 kurs tashqarisidagi chatdagi xabarlarini\n    \u2022 lug'at ro'yxatini ko'rish imkoniyatiga ega bo'lmaysiz.";
     },
     get$analyticsInactiveTitle() {
-      return "\u7121\u6cd5\u5411\u975e\u6d3b\u8e8d\u7528\u6236\u767c\u51fa\u8acb\u6c42";
+      return "Faol bo'lmagan foydalanuvchilarga so'rov yuborib bo'lmadi";
     },
     get$analyticsInactiveDesc() {
-      return "\u81ea\u5f9e\u5462\u500b\u529f\u80fd\u63a8\u51fa\u4ee5\u4f86\u5187\u767b\u5165\u5605\u975e\u6d3b\u8e8d\u7528\u6236\uff0c\u5514\u6703\u7747\u5230\u4f60\u5605\u8acb\u6c42\u3002\n\n\u4f62\u54cb\u8fd4\u569f\u4e4b\u5f8c\uff0c\u8acb\u6c42\u6309\u9215\u6703\u51fa\u73fe\u3002\u4f60\u53ef\u4ee5\u55ba\u4f62\u54cb\u5605\u540d\u5b57\u4e0b\u9762\u9ede\u64ca\u8acb\u6c42\u6309\u9215\uff0c\u518d\u6b21\u767c\u9001\u8acb\u6c42\u3002";
+      return "Bu funksiyani joriy etilganidan buyon tizimga kirmagan faol bo'lmagan foydalanuvchilar sizning so'rovingizni ko'rmaydi.\n\nSo'rov tugmasi ular qaytib kelgach paydo bo'ladi. Siz keyinchalik ularning ismi ostida joylashgan So'rov tugmasini bosib, so'rovni qayta yuborishingiz mumkin.";
     },
     get$accessRequestedTitle() {
-      return "\u5206\u6790\u5b58\u53d6\u8acb\u6c42";
+      return "Analitika kirish so'rovi";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u8acb\u6c42\u7ba1\u7406\u54e1\uff1a" + admin + " \n\n\u4f86\u81ea\u300c" + space + "\u300d\u7684\u7ba1\u7406\u54e1\u6b63\u5728\u8acb\u6c42\u67e5\u770b\u60a8\u7684\u5b78\u7fd2\u5206\u6790\u3002\n\n\u5982\u679c\u60a8\u540c\u610f\uff0c\u4ed6\u5011\u5c07\u80fd\u5920\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u7e3d\u8a5e\u5f59\u91cf\n    \u2022 \u7e3d\u8a9e\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u7684\u7e3d\u6d3b\u52d5\u6703\u8a71\n    \u2022 \u4f7f\u7528\u7684\u7279\u5b9a\u8a9e\u6cd5\u6982\u5ff5\uff0c\u5305\u62ec\u6b63\u78ba\u548c\u4e0d\u6b63\u78ba\u7684\n\n\u4ed6\u5011\u5c07\u7121\u6cd5\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8ab2\u7a0b\u5916\u804a\u5929\u4e2d\u7684\u6d88\u606f\n    \u2022 \u8a5e\u5f59\u5217\u8868";
+      return "Admin(lar)dan so'rov: " + admin + ' \n\n"' + space + "\" bo'limidan adminlar sizning o'qish analitikangizni ko'rishni so'rayapti.\n\nAgar rozilik bersangiz, ular sizning:\n    \u2022 umumiy lug'at\n    \u2022 umumiy grammatik tushunchalar\n    \u2022 bajarilgan faoliyat sessiyalari\n    \u2022 foydalanilgan, to'g'ri va noto'g'ri grammatik tushunchalarni ko'rish imkoniyatiga ega bo'ladi.\n\nUlar sizning:\n    \u2022 kurs tashqarisidagi chatdagi xabarlaringizni\n    \u2022 lug'at ro'yxatini ko'rish imkoniyatiga ega bo'lmaydi.";
     },
     get$adminRequestedAccess() {
-      return "\u7ba1\u7406\u54e1\u5df2\u8acb\u6c42\u7747\u4f60\u5605\u5206\u6790\u6578\u64da\u3002";
+      return "Adminlar sizning analitikangizni ko'rishni so'radi.";
     },
     lastUpdated$1(time) {
-      return "\u66f4\u65b0\n" + time;
+      return "Yangilangan\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u5168\u90e8\u5b8c\u6210\uff01";
+      return "Barchasi tugadi!";
     },
     get$endForAll() {
-      return "\u7d50\u675f\u6240\u6709";
+      return "Hammasi uchun yakunlash";
     },
     get$newCourse() {
-      return "\u65b0\u8ab2\u7a0b";
+      return "Yangi kurs";
     },
     numModules$1(num) {
-      return "" + num + " \u500b\u6a21\u7d44";
+      return "" + num + " modul";
     },
     get$coursePlan() {
-      return "\u8ab2\u7a0b\u8a08\u5283";
+      return "Kurs rejasi";
     },
     get$editCourseLater() {
-      return "\u4f60\u53ef\u4ee5\u7a0d\u5f8c\u7de8\u8f2f\u6a21\u677f\u6a19\u984c\u3001\u63cf\u8ff0\u540c\u8ab2\u7a0b\u5716\u7247\u3002";
+      return "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.";
     },
     get$createCourse() {
-      return "\u5efa\u7acb\u8ab2\u7a0b";
+      return "Kurs yaratish";
     },
     get$stats() {
-      return "\u7d71\u8a08\u6578\u64da";
+      return "Statistika";
     },
     get$createGroupChat() {
-      return "\u5efa\u7acb\u7fa4\u7d44\u804a\u5929";
+      return "Guruh chatini yaratish";
     },
     get$editCourse() {
-      return "\u7de8\u8f2f\u8ab2\u7a0b";
+      return "Kursni tahrirlash";
     },
     get$inviteDesc() {
-      return "\u6309\u7528\u6236\u540d\u3001\u4ee3\u78bc\u6216\u9023\u7d50\u9080\u8acb";
+      return "Foydalanuvchi nomi, kod yoki havola orqali";
     },
     get$editCourseDesc() {
-      return "\u55ba\u5462\u5ea6\u4f60\u53ef\u4ee5\u7de8\u8f2f\u8ab2\u7a0b\u6a19\u984c\u3001\u63cf\u8ff0\u7b49\u3002";
+      return "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.";
     },
     get$permissionsDesc() {
-      return "\u8a2d\u5b9a\u6b0a\u9650\uff0c\u4f8b\u5982\u908a\u500b\u53ef\u4ee5\u9080\u8acb\u7528\u6236\u3001\u767c\u9001\u8a0a\u606f\u3001\u5efa\u7acb\u804a\u5929\u7b49\u3002";
+      return "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.";
     },
     get$accessDesc() {
-      return "\u4f60\u53ef\u4ee5\u5c07\u8ab2\u7a0b\u958b\u653e\u7540\u5168\u4e16\u754c\uff01\u6216\u8005\uff0c\u5c07\u8ab2\u7a0b\u8a2d\u70ba\u79c1\u5bc6\u540c\u5b89\u5168\u3002";
+      return "Kursingizni dunyo uchun ochishingiz mumkin! Yoki, kursingizni shaxsiy va xavfsiz qiling.";
     },
     get$createGroupChatDesc() {
-      return "\u6d3b\u52d5\u6703\u8b70\u958b\u59cb\u540c\u7d50\u675f\uff0c\u4f46\u7fa4\u7d44\u804a\u5929\u6703\u4fdd\u6301\u958b\u653e\uff0c\u7528\u65bc\u65e5\u5e38\u6e9d\u901a\u3002";
+      return "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.";
     },
     get$deleteDesc() {
-      return "\u53ea\u6709\u7ba1\u7406\u54e1\u53ef\u4ee5\u522a\u9664\u8ab2\u7a0b\u3002\u5462\u500b\u4fc2\u7834\u58de\u6027\u64cd\u4f5c\uff0c\u6703\u79fb\u9664\u6240\u6709\u7528\u6236\u540c\u522a\u9664\u8ab2\u7a0b\u5167\u6240\u6709\u9078\u64c7\u5605\u804a\u5929\u3002\u8acb\u5c0f\u5fc3\u64cd\u4f5c\u3002";
+      return "Faqat administratorlar kursni o\u2018chirishi mumkin. Bu xavfli harakat bo\u2018lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o\u2018chiradi. Ehtiyot bo\u2018ling.";
     },
     get$noCourseFound() {
-      return "\u54e6\uff0c\u5462\u500b\u8ab2\u7a0b\u9700\u8981\u4e00\u500b\u8a08\u5283\uff01\n\n\u8ab2\u7a0b\u8a08\u5283\u4fc2\u4e00\u7cfb\u5217\u4e3b\u984c\u540c\u5c0d\u8a71\u6d3b\u52d5\u3002";
+      return "Oh, bu kurs uchun reja kerak!\n\nKurs rejalari mavzular va suhbat faoliyatlarining ketma-ketligidir.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u5176\u4ed6\u4eba";
+      return "+ " + num + " boshqalar";
     },
     get$whatNow() {
-      return "\u800c\u5bb6\u9ede\uff1f";
+      return "Endi nima qilish kerak?";
     },
     get$chooseNextActivity() {
-      return "\u63c0\u4f60\u4e0b\u4e00\u500b\u6d3b\u52d5\uff01";
+      return "Keyingi faoliyatingizni tanlang!";
     },
     get$letsGo() {
-      return "\u6211\u54cb\u51fa\u767c\u5566";
+      return "Boshlaymiz";
     },
     get$chooseRole() {
-      return "\u63c0\u4e00\u500b\u89d2\u8272\uff01";
+      return "Rolni tanlang!";
     },
     get$chooseRoleToParticipate() {
-      return "\u63c0\u4e00\u500b\u89d2\u8272\u569f\u53c3\u8207\uff01";
+      return "Ishtirok etish uchun rolni tanlang!";
     },
     waitingToFillRole$1(num) {
-      return "\u7b49\u7dca\u586b\u6eff " + num + " \u500b\u89d2\u8272...";
+      return "" + num + " rolni to'ldirish uchun kutmoqda...";
     },
     get$pingParticipants() {
-      return "\u63d0\u9192\u8ab2\u7a0b\u53c3\u8207\u8005";
+      return "Kurs ishtirokchilariga xabar yuborish";
     },
     get$playWithBot() {
-      return "\u540c Pangea \u6a5f\u68b0\u4eba\u73a9";
+      return "Pangea Bot bilan o'ynash";
     },
     get$waitNotDone() {
-      return "\u7b49\u6211\u5b8c\u5566\uff01";
+      return "Kutayapman, to'xtang!";
     },
     get$waitingForOthersToFinish() {
-      return "\u7b49\u5176\u4ed6\u4eba\u5b8c\u6210...";
+      return "Qolganlar tugashini kutyapman...";
     },
     get$generatingSummary() {
-      return "\u5206\u6790\u804a\u5929\u4e26\u751f\u6210\u7d50\u679c";
+      return "Chatni tahlil qilmoqda va natijalarni ishlab chiqmoqda";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u6b63\u5728\u5c0b\u627e\u7528\u6236\u52a0\u5165 " + room + " \u7684\u6d3b\u52d5\u6703\u8a71";
+      return user + " " + room + "da faoliyat sessiyasiga qatnashish uchun foydalanuvchilarni qidiryapti";
     },
     goToCourse$1(course) {
-      return "\u524d\u5f80\u8ab2\u7a0b\uff1a" + course;
+      return "Kursga o'tish: " + course;
     },
     get$startNewSession() {
-      return "\u958b\u59cb\u65b0\u6703\u8a71";
+      return "Yangi sessiya boshlash";
     },
     get$joinOpenSession() {
-      return "\u52a0\u5165\u516c\u958b\u6703\u8a71";
+      return "Ochiq sessiyaga qo'shiling";
     },
     get$activityNotFound() {
-      return "\u672a\u627e\u5230\u6d3b\u52d5";
+      return "Faoliyat topilmadi";
     },
     get$levelUp() {
-      return "\u5347\u7d1a";
+      return "Darajani oshirish";
     },
     get$myActivities() {
-      return "\u6211\u5605\u6d3b\u52d5";
+      return "Mening faoliyatlarim";
     },
     get$openToJoin() {
-      return "\u958b\u653e\u52a0\u5165";
+      return "Qo'shilishga ochiq";
     },
     get$activityDone() {
-      return "\u6d3b\u52d5\u5b8c\u6210\uff01";
+      return "Faoliyat tugadi!";
     },
     get$promoCodeInfo() {
-      return "\u512a\u60e0\u78bc\u53ef\u4ee5\u55ba\u4e0b\u4e00\u9801\u8f38\u5165";
+      return "Promo kodlar keyingi sahifada kiritilishi mumkin";
     },
     get$editsComingSoon() {
-      return "\u7de8\u8f2f\u57ce\u5e02\u540c\u6d3b\u52d5\u5605\u529f\u80fd\u5373\u5c07\u63a8\u51fa\u3002";
+      return "Shaharlarni va faoliyatlarni tahrirlash imkoniyati tez orada keladi.";
     },
     get$editing() {
-      return "\u7de8\u8f2f\u4e2d";
+      return "Tahrirlash";
     },
     get$activityNeedsOneMember() {
-      return "\u54ce\u5440\uff01\u5462\u500b\u6d3b\u52d5\u4ef2\u9700\u89811\u500b\u4eba\u3002";
+      return "Afsus! Bu faoliyat uchun 1 ta qo'shimcha kishi kerak.";
     },
     activityNeedsMembers$1(num) {
-      return "\u54ce\u5440\uff01\u5462\u500b\u6d3b\u52d5\u4ef2\u9700\u8981" + num + "\u500b\u4eba\u3002";
+      return "Afsus! Bu faoliyat uchun " + num + " ta qo'shimcha odam kerak.";
     },
     get$inviteFriendsToCourse() {
-      return "\u9080\u8acb\u670b\u53cb\u52a0\u5165\u6211\u5605\u8ab2\u7a0b";
+      return "Do'stlarni kursimga taklif qil";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u6d3b\u52d5\u6458\u8981";
+      return "Faoliyat xulosalarini ochish uchun obuna bo'ling";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u8f49\u9304";
+      return "Transkripsiyalarni ochish uchun obuna bo'ling";
     },
     get$pingSent() {
-      return "\ud83d\udce3 \u8ab2\u7a0b\u901a\u77e5\u5df2\u767c\u9001\uff01 \ud83d\udce3";
+      return "\ud83d\udd14 Kurs uchun ping yuborildi! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "\u8ab2\u7a0b\u6a19\u984c";
+      return "Kurs nomi";
     },
     get$courseDesc() {
-      return "\u8ab2\u7a0b\u63cf\u8ff0";
+      return "Kurs ta'rifi";
     },
     get$courseSavedSuccessfully() {
-      return "\u8ab2\u7a0b\u5df2\u6210\u529f\u4fdd\u5b58";
+      return "Kurs muvaffaqiyatli saqlandi";
     },
     get$addCoursePlan() {
-      return "\u6dfb\u52a0\u8ab2\u7a0b\u8a08\u5283";
+      return "Kurs rejasini qo'shish";
     },
     get$activityStatsButtonInstruction() {
-      return "\u9ede\u64ca\u6b64\u8655\u67e5\u770b\u60a8\u7684\u6d3b\u52d5\u7d71\u8a08\u6578\u64da\uff0c\u5b8c\u6210\u5f8c\u95dc\u9589\u6d3b\u52d5";
+      return "Faoliyatingiz statistikalarini ko'rish va tugatgach faoliyatni yopish uchun bu yerni bosing";
     },
     get$loginToAccount() {
-      return "\u767b\u5165\u6211\u7684\u5e33\u6236";
+      return "Hisobimga kirish";
     },
     get$appDescription() {
-      return "\u5b78\u7fd2\u4e00\u7a2e\u8a9e\u8a00\n\u540c\u6642\u8207\u670b\u53cb\u767c\u8a0a\u606f\u3002";
+      return "Bir til o'rganing\ndo'stlaringiz bilan yozishayotganda.";
     },
     get$startOwn() {
-      return "\u958b\u59cb\u81ea\u5df1\u5605";
+      return "O'z faoliyatimni boshlash";
     },
     get$courseCodeHint() {
-      return "\u884c\u7a0b\u4ee3\u78bc\u6216\u93c8\u63a5";
+      return "Kurs kodi";
     },
     get$signupOption() {
-      return "\u4f60\u60f3\u9ede\u6a23\u8a3b\u518a\uff1f";
+      return "Qanday ro'yhatdan o'tmoqchisiz?";
     },
     get$withApple() {
-      return "\u7528 Apple";
+      return "Apple bilan";
     },
     get$withGoogle() {
-      return "\u7528 Google";
+      return "Google bilan";
     },
     get$withEmail() {
-      return "\u7528\u96fb\u90f5";
+      return "Email bilan";
     },
     get$createAccount() {
-      return "\u5efa\u7acb\u5e33\u6236";
+      return "Hisob yaratish";
     },
     get$loginWithEmail() {
-      return "\u7528\u96fb\u90f5\u767b\u5165";
+      return "Email bilan kirish";
     },
     get$usernameOrEmail() {
-      return "\u7528\u6236\u540d\u6216\u96fb\u90f5";
+      return "Foydalanuvchi nomi yoki email";
     },
     get$email() {
-      return "\u96fb\u90f5";
+      return "Email";
     },
     get$forgotPassword() {
-      return "\u5fd8\u8a18\u5bc6\u78bc\uff1f";
+      return "Parolni unutdingizmi?";
     },
     get$endActivity() {
-      return "\u7d50\u675f\u6d3b\u52d5";
+      return "Faoliyatni yakunlash";
     },
     get$allLanguages() {
-      return "\u6240\u6709\u8a9e\u8a00";
+      return "Barcha tillar";
     },
     get$directMessageBotTitle() {
-      return "\u76f4\u63a5\u8a0a\u606f Pangea \u6a5f\u68b0\u4eba";
+      return "Pangea Bot bilan to'g'ridan-to'g'ri xabar";
     },
     get$feedbackTitle() {
-      return "\u6d3b\u52d5\u53cd\u994b";
+      return "Faoliyat haqida fikr-mulohaza";
     },
     get$feedbackRespDesc() {
-      return "\u660e\u65e5\u518d\u569f\u67e5\u95b1\u6d3b\u52d5\u66f4\u65b0\u3002";
+      return "Ertaga faoliyat yangilanishlarini tekshiring.";
     },
     get$feedbackHint() {
-      return "\u4f60\u5605\u53cd\u994b";
+      return "Sizning fikringiz";
     },
     get$feedbackButton() {
-      return "\u63d0\u4ea4\u53cd\u994b";
+      return "Fikr-mulohazani yuborish";
     },
     get$directMessageBotDesc() {
-      return "\u540c\u4eba\u50be\u8a08\u6703\u66f4\u6709\u8da3\uff0c\u4f46... AI\u96a8\u6642\u6e96\u5099\u597d\uff01";
+      return "Insonlar bilan gaplashish ko'proq qiziqarli, ammo... AI har doim tayyor!";
     },
     get$inviteYourFriends() {
-      return "\u9080\u8acb\u4f60\u5605\u670b\u53cb";
+      return "Do'stlaringizni taklif qiling";
     },
     get$playWithAI() {
-      return "\u800c\u5bb6\u540cAI\u73a9\u73a9";
+      return "Hozir uchun AI bilan o'ynang";
     },
     get$courseStartDesc() {
-      return "Pangea Bot\u96a8\u6642\u6e96\u5099\u51fa\u767c\uff01\n\n...\u4f46\u6709\u670b\u53cb\u4e00\u9f4a\u5b78\u7fd2\u6703\u66f4\u597d\uff01";
+      return "Pangea Bot har doim tayyor!\n\n...lekin o'rganish do'stlar bilan yaxshiroq!";
     },
     get$activityDropdownDesc() {
-      return "\u5b8c\u6210\u5462\u500b\u6d3b\u52d5\u5f8c\uff0c\u9ede\u64ca\u4e0b\u9762";
+      return "Bu faoliyatni tugatgach, quyidagicha bosishingiz mumkin";
     },
     get$languageMismatchTitle() {
-      return "\u8a9e\u8a00\u4e0d\u7b26";
+      return "Til mos kelmasligi";
     },
     get$emptyChatSearch() {
-      return "\u6c92\u6709\u627e\u5230\u79c1\u8a0a\u6216\u804a\u5929\u3002\u8acb\u78ba\u4fdd\u60a8\u7684\u641c\u7d22\u62fc\u5beb\u6b63\u78ba\u3002";
+      return "Xabarlar yoki chatlar topilmadi. Iltimos, qidiruvingiz to'g'ri yozilganligiga ishonch hosil qiling.";
     },
     get$languageMismatchDesc() {
-      return "\u4f60\u5605\u76ee\u6a19\u8a9e\u8a00\u540c\u5462\u500b\u6d3b\u52d5\u5605\u8a9e\u8a00\u5514\u4e00\u81f4\u3002\u60f3\u66f4\u65b0\u4f60\u5605\u76ee\u6a19\u8a9e\u8a00\u55ce\uff1f";
+      return "Sizning maqsad tilingiz bu faoliyat tiliga mos kelmaydi. Maqsad tilingizni yangilashni xohlaysizmi?";
     },
     get$reportWordIssueTooltip() {
-      return "\u5831\u544a\u8a5e\u8a9e\u8cc7\u8a0a\u554f\u984c";
+      return "So'z ma'lumotlaridagi muammo haqida xabar berish";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u8a5e\u8a9e\u8cc7\u8a0a\u53cd\u994b";
+      return "So'z Ma'lumotlari Fikr-mulohazasi";
     },
     get$noPublicCoursesFound() {
-      return "\u672a\u627e\u5230\u516c\u958b\u8ab2\u7a0b\u3002\u4f60\u60f3\u5275\u5efa\u4e00\u500b\u55ce\uff1f";
+      return "Jamoat kurslari topilmadi. Siz yangi kurs yaratmoqchimisiz?";
     },
     get$noCourseTemplatesFound() {
-      return "\u6211\u54cb\u672a\u6435\u5230\u4f60\u76ee\u6a19\u8a9e\u8a00\u5605\u8ab2\u7a0b\u3002\u4f60\u53ef\u4ee5\u66ab\u6642\u540cPangea Bot\u50be\u5048\uff0c\u4e4b\u5f8c\u518d\u569f\u7747\u591a\u5572\u8ab2\u7a0b\u3002";
+      return "Maqsad tilingiz uchun hech qanday kurs topilmadi. Siz hozirda Pangea Bot bilan suhbatlashishingiz mumkin, va keyinchalik ko'proq kurslar uchun qaytib kelishingiz mumkin.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot\u53cd\u61c9\u6709\u5572\u6162\u3002\u8acb\u7a0d\u5f8c\u518d\u8a66\uff0c\u6216\u8005\u9080\u8acb\u670b\u53cb\u4e00\u9f4a\u3002";
+      return "Pangea Bot javob berishda qiyinchiliklar bilan yuzlashmoqda. Iltimos, keyinroq urinib ko'ring yoki do'stingizni taklif qiling.";
     },
     get$unsubscribedResponseError() {
-      return "\u5462\u500b\u529f\u80fd\u9700\u8981\u8a02\u95b1";
+      return "Ushbu funksiya obuna bo'lishni talab qiladi";
     },
     get$leaveDesc() {
-      return "\u96e2\u958b\u5462\u500b\u7a7a\u9593\u540c\u6240\u6709\u5167\u88cf\u5605\u5c0d\u8a71";
+      return "Ushbu bo'shliq va uning ichidagi barcha chatlardan chiqish";
     },
     get$selectAll() {
-      return "\u5168\u9078";
+      return "Hammasini tanlash";
     },
     get$deselectAll(_) {
-      return "\u53d6\u6d88\u5168\u9078";
+      return "Hammasini bekor qilish";
     },
     get$shareCourse() {
-      return "\u5206\u4eab\u8ab2\u7a0b";
+      return "Kursni ulash";
     },
     get$vocabLevelsDesc() {
-      return "\u5462\u5ea6\u6703\u653e\u4f60\u5347\u7d1a\u5f8c\u5605\u8a5e\u5f59\uff01";
+      return "Bu yerda so'zlar darajangiz oshgan sayin joylashadi!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u9019\u4e9b\u662f\u60a8\u4fdd\u5b58\u7684\u6d3b\u52d5\u4ee5\u4f9b\u5be9\u67e5\u548c\u7df4\u7fd2\u3002";
+      return "Bu sizning saqlangan faoliyatlaringizni ko'rib chiqish va mashq qilish uchun.";
     },
     get$numSavedActivities() {
-      return "\u4fdd\u5b58\u7684\u6d3b\u52d5\u6578\u91cf";
+      return "Saqlangan faoliyatlar soni";
     },
     get$saveActivityTitle() {
-      return "\u4fdd\u5b58\u6d3b\u52d5";
+      return "Faoliyatni saqlash";
     },
     get$saveActivityDesc() {
-      return "\u505a\u5f97\u597d\uff01\u4fdd\u5b58\u6b64\u6d3b\u52d5\u4ee5\u4fbf\u7a0d\u5f8c\u5be9\u67e5\u548c\u7df4\u7fd2";
+      return "Yaxshi ish! Bu faoliyatni keyinchalik ko'rib chiqish va mashq qilish uchun saqlang";
     },
     get$levelInfoTooltip() {
-      return "\u5728\u9019\u88e1\u60a8\u53ef\u4ee5\u770b\u5230\u60a8\u7372\u5f97\u7684\u6240\u6709\u7a4d\u5206\u53ca\u5176\u4f86\u6e90\uff01";
+      return "Bu yerda siz o'zingiz olgan barcha ballarni va qanday qilib ko'rishingiz mumkin!";
     },
     get$alreadyInCourseWithID() {
-      return "\u60a8\u5df2\u7d93\u5728\u9019\u500b\u8a08\u5283\u7684\u8ab2\u7a0b\u4e2d\u3002\u60a8\u60f3\u5275\u5efa\u4e00\u500b\u76f8\u540c\u8a08\u5283\u7684\u8ab2\u7a0b\uff0c\u9084\u662f\u53bb\u73fe\u6709\u7684\u8ab2\u7a0b\uff1f";
+      return "Siz allaqachon bu reja bilan kursda ekansiz. Xohlaysizmi, shunchaki reja bilan kurs yaratmoqchimisiz yoki mavjud kursga o'tmoqchimisiz?";
     },
     get$goToExistingCourse() {
-      return "\u524d\u5f80\u73fe\u6709\u8ab2\u7a0b";
+      return "Mavjud kursga o'tish";
     },
     get$emojiView() {
-      return "\u8868\u60c5\u7b26\u865f\u8996\u5716";
+      return "Emojilar ko'rinishi";
     },
     get$feedbackDialogDesc() {
-      return "\u6211\u4e5f\u6703\u72af\u932f\uff01\u6709\u4ec0\u9ebc\u53ef\u4ee5\u5e6b\u52a9\u6211\u6539\u9032\u7684\u55ce\uff1f";
+      return "Men ham xato qilaman! Menga yaxshilashga yordam beradigan nimadir bormi?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u806f\u7d61\u4eba\u5df2\u88ab\u9080\u8acb\u53c3\u52a0\u8ab2\u7a0b";
+      return "Aloqa kursga taklif qilindi";
     },
     get$inviteFriends() {
-      return "\u9080\u8acb\u670b\u53cb";
+      return "Do'stlarni taklif qilish";
     },
     get$activityStatsButtonTooltip() {
-      return "\u6d3b\u52d5\u8cc7\u8a0a";
+      return "Faoliyat ma'lumotlari";
     },
     get$allow(_) {
-      return "\u5141\u8a31";
+      return "Ruxsat berish";
     },
     get$deny() {
-      return "\u62d2\u7d55";
+      return "Rad etish";
     },
     get$enabledRenewal() {
-      return "\u555f\u7528\u8a02\u95b1\u7e8c\u8a02";
+      return "Obunani yangilashni yoqish";
     },
     get$subscriptionEndsOn() {
-      return "\u8a02\u95b1\u65bc\u4ee5\u4e0b\u65e5\u671f\u7d50\u675f";
+      return "Obuna tugash sanasi";
     },
     get$subscriptionRenewsOn() {
-      return "\u8a02\u95b1\u65bc\u4ee5\u4e0b\u65e5\u671f\u7e8c\u8a02";
+      return "Obuna yangilanish sanasi";
     },
     get$waitForSubscriptionChanges() {
-      return "\u60a8\u7684\u8a02\u95b1\u66f4\u6539\u53ef\u80fd\u9700\u8981\u4e00\u6bb5\u6642\u9593\u624d\u80fd\u5728\u61c9\u7528\u7a0b\u5f0f\u4e2d\u53cd\u6620\u3002";
+      return "Obuna o'zgarishlari ilovada aks etishi uchun biroz vaqt talab qilishi mumkin.";
     },
     get$subscribeReadingAssistance() {
-      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u6d88\u606f\u5de5\u5177";
+      return "Xabar vositalarini ochish uchun obuna bo'ling";
     },
     get$aceDisplayName() {
       return "Achinese";
     },
     get$achDisplayName() {
-      return "\u963f\u79d1\u5229";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u5357\u975e\u8377\u862d\u8a9e";
+      return "Afrikaans";
     },
     get$akDisplayName() {
-      return "\u963f\u574e\u8a9e";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u963f\u76e7\u723e\u8a9e";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u963f\u59c6\u54c8\u62c9\u8a9e";
+      return "Amharic";
     },
     get$arDisplayName() {
-      return "\u963f\u62c9\u4f2f\u8a9e";
+      return "Arab tili";
     },
     get$asDisplayName() {
-      return "\u963f\u85a9\u59c6\u8a9e";
+      return "Assamese";
     },
     get$awaDisplayName() {
-      return "\u963f\u74e6\u8fea\u8a9e";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u827e\u99ac\u62c9\u8a9e";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u963f\u585e\u62dc\u7586\u8a9e";
+      return "Azerbaycan tili";
     },
     get$baDisplayName() {
-      return "\u5df4\u4ec0\u57fa\u723e";
+      return "Bashkir";
     },
     get$banDisplayName() {
-      return "\u5df4\u5398\u8a9e";
+      return "Balinese";
     },
     get$bbcDisplayName() {
-      return "\u5df4\u5854\u514b\u6258\u5df4\u8a9e";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u767d\u4fc4\u7f85\u65af\u8a9e";
+      return "Belarus tili";
     },
     get$bemDisplayName() {
-      return "\u672c\u5df4\u8a9e";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u8c9d\u5854\u7dad\u8a9e";
+      return "Betawi";
     },
     get$bgDisplayName() {
-      return "\u4fdd\u52a0\u5229\u4e9e\u8a9e";
+      return "Bolgariya tili";
     },
     get$bhoDisplayName() {
-      return "\u535a\u5091\u666e\u91cc\u8a9e";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u6bd4\u79d1\u723e\u8a9e";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u73ed\u5df4\u62c9\u8a9e";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u5b5f\u52a0\u62c9\u8a9e";
+      return "Bengali";
     },
     get$bnBDDisplayName() {
-      return "\u5b5f\u52a0\u62c9\u8a9e\uff08\u5b5f\u52a0\u62c9\uff09";
+      return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "\u5b5f\u52a0\u62c9\u8a9e\uff08\u5370\u5ea6\uff09";
+      return "Bengali (Hindiston)";
     },
     get$brDisplayName() {
-      return "\u5e03\u5217\u5854\u5c3c\u8a9e";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "\u6ce2\u58eb\u5c3c\u4e9e\u8a9e";
+      return "Bosniya";
     },
     get$btsDisplayName() {
-      return "\u5df4\u5854\u514b\u897f\u99ac\u9686\u6839\u8a9e";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u5df4\u5854\u514b\u5361\u7f85\u8a9e";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u5e03\u91cc\u4e9e\u7279\u8a9e";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "\u52a0\u6cf0\u7f85\u5c3c\u4e9e\u8a9e";
+      return "Katalan";
     },
     get$cebDisplayName() {
-      return "\u5bbf\u9727\u8a9e";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u5947\u52a0";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u746a\u8389";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u4e2d\u592e\u5eab\u723e\u5fb7\u8a9e";
+      return "Markaziy Kurd";
     },
     get$cnhDisplayName() {
-      return "\u54c8\u5361\u6b3d";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u79d1\u897f\u5609\u8a9e";
+      return "Korsika";
     },
     get$crhDisplayName() {
-      return "\u514b\u91cc\u7c73\u4e9e\u571f\u8033\u5176\u8a9e";
+      return "Qrim turk";
     },
     get$crsDisplayName() {
-      return "\u585e\u820c\u723e\u514b\u91cc\u5967\u723e\u6cd5\u8a9e";
+      return "Seselwa Kreol Frantsuz";
     },
     get$csDisplayName() {
-      return "\u6377\u514b\u8a9e";
+      return "Chex";
     },
     get$cvDisplayName() {
-      return "\u695a\u74e6\u4ec0\u8a9e";
+      return "Chuvash";
     },
     get$cyDisplayName() {
-      return "\u5a01\u723e\u58eb\u8a9e";
+      return "Welsh";
     },
     get$daDisplayName() {
-      return "\u4e39\u9ea5\u8a9e";
+      return "Danish";
     },
     get$deDisplayName() {
-      return "\u5fb7\u8a9e";
+      return "Nemis";
     },
     get$dinDisplayName() {
-      return "\u4e01\u5361\u8a9e";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u591a\u683c\u91cc\u8a9e";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u591a\u59c6\u6bd4\u8a9e";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u5b97\u5580\u8a9e";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u57c3\u7dad\u8a9e";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u82f1\u8a9e";
+      return "Ingliz";
     },
     get$enAUDisplayName() {
-      return "\u82f1\u8a9e (\u6fb3\u6d32)";
+      return "Avstraliya Ingliz";
     },
     get$enGBDisplayName() {
-      return "\u82f1\u8a9e (\u82f1\u570b)";
+      return "Buyuk Britaniya Ingliz";
     },
     get$enINDisplayName() {
-      return "\u82f1\u6587\uff08\u5370\u5ea6\uff09";
+      return "Hindiston Ingliz";
     },
     get$enUSDisplayName() {
-      return "\u82f1\u6587\uff08\u7f8e\u570b\uff09";
+      return "AQSh Ingliz";
     },
     get$eoDisplayName() {
-      return "\u4e16\u754c\u8a9e";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u897f\u73ed\u7259\u8a9e";
+      return "Ispan";
     },
     get$esESDisplayName() {
-      return "\u897f\u73ed\u7259\u8a9e\uff08\u897f\u73ed\u7259\uff09";
+      return "Ispan (Ispaniya)";
     },
     get$esMXDisplayName() {
-      return "\u897f\u73ed\u7259\u8a9e\uff08\u58a8\u897f\u54e5\uff09";
+      return "Ispan (Meksika)";
     },
     get$euDisplayName() {
-      return "\u5df4\u65af\u514b\u8a9e";
+      return "Bask";
     },
     get$faDisplayName() {
-      return "\u6ce2\u65af\u8a9e";
+      return "Fors";
     },
     get$ffDisplayName() {
-      return "\u5bcc\u62c9\u8a9e";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u82ac\u862d\u8a9e";
+      return "Fin";
     },
     get$filDisplayName() {
-      return "\u83f2\u5f8b\u8cd3\u8a9e";
+      return "Filippin";
     },
     get$fjDisplayName() {
-      return "\u6590\u6fdf\u8a9e";
+      return "Fiji";
     },
     get$foDisplayName() {
-      return "\u6cd5\u7f85\u8a9e";
+      return "Faroese";
     },
     get$frDisplayName() {
-      return "\u6cd5\u8a9e";
+      return "Fransuz";
     },
     get$frCADisplayName() {
-      return "\u6cd5\u8a9e\uff08\u52a0\u62ff\u5927\uff09";
+      return "Fransuz (Kanada)";
     },
     get$frFRDisplayName() {
-      return "\u6cd5\u8a9e\uff08\u6cd5\u570b\uff09";
+      return "Fransuz (Fransiya)";
     },
     get$fyDisplayName() {
-      return "\u897f\u5f17\u91cc\u897f\u8a9e";
+      return "G'arbiy Friz";
     },
     get$gaDisplayName() {
-      return "\u611b\u723e\u862d\u8a9e";
+      return "Irland";
     },
     get$gaaDisplayName() {
-      return "\u52a0\u8a9e";
+      return "Gaa";
     },
     get$gdDisplayName() {
-      return "\u8607\u683c\u862d\u84cb\u723e\u8a9e";
+      return "Shotland Galiysi";
     },
     get$glDisplayName() {
-      return "\u52a0\u5229\u897f\u4e9e\u8a9e";
+      return "Galitsiya";
     },
     get$gnDisplayName() {
-      return "\u74dc\u62c9\u5c3c\u8a9e";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "\u679c\u963f\u5b54\u5361\u5c3c\u8a9e";
+      return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "\u53e4\u5409\u62c9\u7279\u8a9e";
+      return "Gujarat";
     },
     get$haDisplayName() {
-      return "\u8c6a\u85a9\u8a9e";
+      return "Xausa";
     },
     get$hawDisplayName() {
-      return "\u590f\u5a01\u5937\u8a9e";
+      return "Havaiy";
     },
     get$heDisplayName() {
-      return "\u5e0c\u4f2f\u4f86\u8a9e";
+      return "Ibroniya";
     },
     get$hiDisplayName() {
-      return "\u5370\u5730\u8a9e";
+      return "Hind";
     },
     get$hilDisplayName() {
-      return "\u5e0c\u5229\u84cb\u8fb2\u8a9e";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
-      return "\u82d7\u65cf\u8a9e";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u6070\u8482\u65af\u52a0\u723e\u8a9e";
+      return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "\u514b\u7f85\u5730\u4e9e\u8a9e";
+      return "Xorvat";
     },
     get$hrxDisplayName() {
-      return "\u4ea8\u65af\u91cc\u514b\u8a9e";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u6d77\u5730\u514b\u91cc\u5967\u723e\u8a9e";
+      return "Haytian Kreol";
     },
     get$huDisplayName() {
-      return "\u5308\u7259\u5229\u8a9e";
+      return "Vengre";
     },
     get$hyDisplayName() {
-      return "\u4e9e\u7f8e\u5c3c\u4e9e\u8a9e";
+      return "Arman";
     },
     get$idDisplayName() {
-      return "\u5370\u5c3c\u8a9e";
+      return "Indoneziya";
     },
     get$igDisplayName() {
-      return "\u4f0a\u535a\u8a9e";
+      return "Ibo";
     },
     get$iloDisplayName() {
-      return "\u4f0a\u6d1b\u5361\u8afe\u8a9e";
+      return "Iloko";
     },
     get$isDisplayName() {
-      return "\u51b0\u5cf6\u8a9e";
+      return "Islandcha";
     },
     get$itDisplayName() {
-      return "\u610f\u5927\u5229\u8a9e";
+      return "Italiyan";
     },
     get$jaDisplayName() {
-      return "\u65e5\u8a9e";
+      return "Yapon";
     },
     get$jvDisplayName() {
-      return "\u722a\u54c7\u8a9e";
+      return "Javanese";
     },
     get$kaDisplayName() {
-      return "\u55ac\u6cbb\u4e9e\u8a9e";
+      return "Gruzin";
     },
     get$kkDisplayName() {
-      return "\u54c8\u85a9\u514b\u8a9e";
+      return "Qozog\u2018";
     },
     get$kmDisplayName() {
-      return "\u9ad8\u68c9\u8a9e";
+      return "Khm\u0435r";
     },
     get$knDisplayName() {
-      return "\u5361\u7d0d\u9054\u8a9e";
+      return "Kannada";
     },
     get$koDisplayName() {
-      return "\u97d3\u8a9e";
+      return "Koreyscha";
     },
     get$kokDisplayName() {
-      return "\u5b54\u5361\u5c3c\u8a9e";
+      return "Konkani";
     },
     get$kriDisplayName() {
-      return "\u514b\u91cc\u5967\u8a9e";
+      return "Krio";
     },
     get$ksDisplayName() {
-      return "\u514b\u4ec0\u7c73\u723e\u8a9e";
+      return "Qashqadary";
     },
     get$ktuDisplayName() {
-      return "\u57fa\u5716\u5df4\u8a9e\uff08\u525b\u679c\u6c11\u4e3b\u5171\u548c\u570b\uff09";
+      return "Kituba (Konqo Demokratik Respublikasi)";
     },
     get$kuDisplayName() {
-      return "\u5eab\u723e\u5fb7\u8a9e";
+      return "Kurd";
     },
     get$kyDisplayName() {
-      return "\u5409\u723e\u5409\u65af\u8a9e";
+      return "Qirg\u02bbiz";
     },
     get$laDisplayName() {
-      return "\u62c9\u4e01\u8a9e";
+      return "Lotin";
     },
     get$lbDisplayName() {
-      return "\u76e7\u68ee\u5821\u8a9e";
+      return "Lyuksemburg";
     },
     get$lgDisplayName() {
-      return "\u7518\u9054\u8a9e";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u6797\u5821\u8a9e";
+      return "Limburg";
     },
     get$lijDisplayName() {
-      return "\u5229\u53e4\u91cc\u4e9e\u8a9e";
+      return "Ligurian";
     },
     get$lmoDisplayName() {
-      return "\u502b\u5df4\u7b2c\u8a9e";
+      return "Lombard";
     },
     get$lnDisplayName() {
-      return "\u6797\u52a0\u62c9\u8a9e";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u5bee\u8a9e";
+      return "Laos";
     },
     get$ltDisplayName() {
-      return "\u7acb\u9676\u5b9b\u8a9e";
+      return "Litva";
     },
     get$ltgDisplayName() {
-      return "\u62c9\u812b\u7dad\u4e9e\u8a9e";
+      return "Latgallian";
     },
     get$luoDisplayName() {
-      return "\u76e7\u5967\u8a9e\uff08\u80af\u5c3c\u4e9e\u548c\u5766\u6851\u5c3c\u4e9e\uff09";
+      return "Luo (Kenya va Tanzaniya)";
     },
     get$lusDisplayName() {
-      return "\u7c73\u4f50\u8a9e";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u62c9\u812b\u7dad\u4e9e\u8a9e";
+      return "Latviya";
     },
     get$maiDisplayName() {
-      return "\u9081\u8482\u5229\u8a9e";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u99ac\u5361\u85a9\u8a9e";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u99ac\u9054\u52a0\u65af\u52a0\u8a9e";
+      return "Malagasy";
     },
     get$miDisplayName() {
-      return "\u6bdb\u5229\u8a9e";
+      return "Maori";
     },
     get$minDisplayName() {
-      return "\u7c73\u5357\u52a0\u4fdd\u8a9e";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u99ac\u5176\u9813\u8a9e";
+      return "Makedon";
     },
     get$mlDisplayName() {
-      return "\u99ac\u62c9\u96c5\u62c9\u59c6\u8a9e";
+      return "Malayalam";
     },
     get$mnDisplayName() {
-      return "\u8499\u53e4\u8a9e";
+      return "Mo'g'ul";
     },
     get$mniDisplayName() {
       return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u99ac\u62c9\u5730\u8a9e";
+      return "Marathi";
     },
     get$msDisplayName() {
-      return "\u99ac\u4f86\u8a9e";
+      return "Malay";
     },
     get$msArabDisplayName() {
-      return "\u99ac\u4f86\u8a9e\uff08\u963f\u62c9\u4f2f\u6587\uff09";
+      return "Malay (Arabcha)";
     },
     get$msMYDisplayName() {
-      return "\u99ac\u4f86\u8a9e\uff08\u99ac\u4f86\u897f\u4e9e\uff09";
+      return "Malay (Malayziya)";
     },
     get$mtDisplayName() {
-      return "\u99ac\u8033\u4ed6\u8a9e";
+      return "Malta";
     },
     get$mwrDisplayName() {
-      return "\u99ac\u62c9\u74e6\u8a9e";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u7dec\u7538\u8a9e";
+      return "Birmanci";
     },
     get$nanDisplayName() {
-      return "\u95a9\u5357\u8a9e";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u632a\u5a01\u8a9e\uff08\u535a\u514b\u99ac\u723e\uff09";
+      return "Norveg (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u5c3c\u6cca\u723e\u8a9e";
+      return "Nepali";
     },
     get$newDisplayName() {
-      return "\u5c3c\u74e6\u723e\u8a9e";
+      return "Neyvari";
     },
     get$nlDisplayName() {
-      return "\u8377\u862d\u8a9e";
+      return "Hollandiya";
     },
     get$nlBEDisplayName() {
-      return "\u5f17\u62c9\u8292\u8a9e";
+      return "Flamand";
     },
     get$noDisplayName() {
-      return "\u632a\u5a01\u8a9e";
+      return "Norveg";
     },
     get$nrDisplayName() {
-      return "\u5357\u6069\u5fb7\u8c9d\u52d2";
+      return "Janubiy Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u5317\u7d22\u6258";
+      return "Shimoliy Sotho";
     },
     get$nusDisplayName() {
-      return "\u52aa\u723e";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u5c3c\u63da\u8cc8";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u5967\u514b\u897f\u5766";
+      return "Okitan";
     },
     get$omDisplayName() {
-      return "\u5967\u7f85\u83ab";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u5967\u91cc\u4e9e";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u65c1\u906e\u666e\u8a9e";
+      return "Pendjabi";
     },
     get$paArabDisplayName() {
-      return "\u65c1\u906e\u666e\u8a9e\uff08\u6c99\u8d6b\u7a46\u57fa\uff09";
+      return "Pendjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u65c1\u906e\u666e\u8a9e\uff08\u53e4\u723e\u7a46\u57fa\uff09";
+      return "Pendjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u5f6d\u52a0\u897f\u5357\u8a9e";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u65c1\u906e\u666e\u8a9e";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u5e15\u76ae\u963f\u9580\u6258\u8a9e";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u6ce2\u862d\u8a9e";
+      return "Polsha";
     },
     get$psDisplayName() {
-      return "\u666e\u4ec0\u5716\u8a9e";
+      return "Pushtho";
     },
     get$ptDisplayName() {
-      return "\u8461\u8404\u7259\u8a9e";
+      return "Portugali";
     },
     get$ptBRDisplayName() {
-      return "\u8461\u8404\u7259\u8a9e\uff08\u5df4\u897f\uff09";
+      return "Braziliya Portugali";
     },
     get$ptPTDisplayName() {
-      return "\u8461\u8404\u7259\u8a9e\uff08\u8461\u8404\u7259\uff09";
+      return "Portugal Portugali";
     },
     get$quDisplayName() {
-      return "\u514b\u4e18\u4e9e\u8a9e";
+      return "Kechua";
     },
     get$rajDisplayName() {
-      return "\u62c9\u8cc8\u65af\u5766\u8a9e";
+      return "Rajasthani";
     },
     get$rnDisplayName() {
-      return "\u502b\u8fea";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u7f85\u99ac\u5c3c\u4e9e\u8a9e";
+      return "Ruminiya";
     },
     get$roMDDisplayName() {
-      return "\u6469\u723e\u591a\u74e6\u8a9e";
+      return "Moldova";
     },
     get$romDisplayName() {
-      return "\u7f85\u66fc\u5c3c\u8a9e";
+      return "Romani";
     },
     get$ruDisplayName() {
-      return "\u4fc4\u8a9e";
+      return "Rus";
     },
     get$rwDisplayName() {
-      return "\u57fa\u5c3c\u4e9e\u842c\u9054\u8a9e";
+      return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u68b5\u8a9e";
+      return "Sanskrit";
     },
     get$satDisplayName() {
-      return "\u6851\u5854\u5229\u8a9e";
+      return "Santali";
     },
     get$scnDisplayName() {
-      return "\u897f\u897f\u91cc\u8a9e";
+      return "Sitsiliya";
     },
     get$sdDisplayName() {
-      return "\u4fe1\u5fb7\u8a9e";
+      return "Sindhi";
     },
     get$sgDisplayName() {
-      return "\u65b0\u9ad8";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u5c71";
+      return "Shan";
     },
     get$siDisplayName() {
-      return "\u50e7\u4f3d\u7f85";
+      return "Sinhala";
     },
     get$skDisplayName() {
-      return "\u65af\u6d1b\u4f10\u514b";
+      return "Slovak";
     },
     get$slDisplayName() {
-      return "\u65af\u6d1b\u6587\u5c3c\u4e9e";
+      return "Sloveniya";
     },
     get$smDisplayName() {
-      return "\u85a9\u6469\u4e9e";
+      return "Samoa";
     },
     get$snDisplayName() {
-      return "\u8096\u7d0d";
+      return "Shona";
     },
     get$soDisplayName() {
-      return "\u7d22\u99ac\u5229";
+      return "Somali";
     },
     get$sqDisplayName() {
-      return "\u963f\u723e\u5df4\u5c3c\u4e9e";
+      return "Alban";
     },
     get$srDisplayName() {
-      return "\u585e\u723e\u7dad\u4e9e";
+      return "Serb";
     },
     get$srMEDisplayName() {
-      return "\u9ed1\u5c71\u8a9e";
+      return "Montenegrin";
     },
     get$ssDisplayName() {
-      return "\u65af\u74e6\u8482\u8a9e";
+      return "Svati";
     },
     get$stDisplayName() {
-      return "\u5357\u7d22\u6258\u8a9e";
+      return "Janubiy Sotho";
     },
     get$suDisplayName() {
-      return "\u5dfd\u4ed6\u8a9e";
+      return "Sundanese";
     },
     get$svDisplayName() {
-      return "\u745e\u5178\u8a9e";
+      return "Shved";
     },
     get$swDisplayName() {
-      return "\u65af\u74e6\u5e0c\u91cc\u8a9e";
+      return "Suahili";
     },
     get$szlDisplayName() {
-      return "\u897f\u91cc\u897f\u4e9e\u8a9e";
+      return "Sileziya";
     },
     get$taDisplayName() {
-      return "\u6cf0\u7c73\u723e\u8a9e";
+      return "Tamill";
     },
     get$teDisplayName() {
-      return "\u6cf0\u76e7\u56fa\u8a9e";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "\u7279\u5716\u59c6\u8a9e";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u5854\u5409\u514b\u8a9e";
+      return "Tojik";
     },
     get$thDisplayName() {
-      return "\u6cf0\u8a9e";
+      return "Tay";
     },
     get$tiDisplayName() {
-      return "\u63d0\u683c\u5229\u5c3c\u4e9e\u8a9e";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "\u571f\u5eab\u66fc\u8a9e";
+      return "Turkman";
     },
     get$tlDisplayName() {
-      return "\u4ed6\u52a0\u797f\u8a9e";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u8328\u74e6\u7d0d\u8a9e";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u571f\u8033\u5176\u8a9e";
+      return "Turk";
     },
     get$tsDisplayName() {
-      return "\u5b97\u52a0\u8a9e";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u5854\u5854\u723e\u8a9e";
+      return "Tatar";
     },
     get$ugDisplayName() {
-      return "\u7dad\u543e\u723e\u8a9e";
+      return "Uyg\u2018ur";
     },
     get$ukDisplayName() {
-      return "\u70cf\u514b\u862d\u8a9e";
+      return "Ukrainian";
     },
     get$urDisplayName() {
-      return "\u70cf\u723e\u90fd\u8a9e";
+      return "Urdu";
     },
     get$urINDisplayName() {
-      return "\u70cf\u723e\u90fd\u8a9e\uff08\u5370\u5ea6\uff09";
+      return "Urdu (Hindiston)";
     },
     get$urPKDisplayName() {
-      return "\u70cf\u723e\u90fd\u8a9e\uff08\u5df4\u57fa\u65af\u5766\uff09";
+      return "Urdu (Pokiston)";
     },
     get$uzDisplayName() {
-      return "\u70cf\u8332\u5225\u514b\u8a9e";
+      return "O'zbek";
     },
     get$viDisplayName() {
-      return "\u8d8a\u5357\u8a9e";
+      return "Vietnam";
     },
     get$wuuDisplayName() {
-      return "\u5433\u8a9e";
+      return "Wu";
     },
     get$xhDisplayName() {
-      return "\u79d1\u85a9\u8a9e";
+      return "Xhosa";
     },
     get$yiDisplayName() {
-      return "\u610f\u7b2c\u7dd2\u8a9e";
+      return "Yahudiy";
     },
     get$yoDisplayName() {
-      return "\u7d04\u9b6f\u5df4\u8a9e";
+      return "Yoruba";
     },
     get$yuaDisplayName() {
-      return "\u5c24\u5361\u7279\u514b";
+      return "Yukatek";
     },
     get$yueDisplayName() {
-      return "\u5ee3\u6771\u8a71";
+      return "Kanton";
     },
     get$yueCNDisplayName() {
-      return "\u5ee3\u6771\u8a71\uff08\u4e2d\u570b\uff09";
+      return "Kanton (Xitoy)";
     },
     get$yueHKDisplayName() {
-      return "\u5ee3\u6771\u8a71\uff08\u9999\u6e2f\uff09";
+      return "Kanton (Gonkong)";
     },
     get$zhDisplayName() {
-      return "\u4e2d\u6587";
+      return "Xitoy";
     },
     get$zhCNDisplayName() {
-      return "\u4e2d\u6587\uff08\u7c21\u9ad4\uff09";
+      return "Xitoy (Yengil)";
     },
     get$zhTWDisplayName() {
-      return "\u4e2d\u6587\uff08\u7e41\u9ad4\uff09";
+      return "Xitoy (An'anaviy)";
     },
     get$zuDisplayName() {
-      return "\u7956\u9b6f\u8a9e";
+      return "Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u6559\u5e2b\u6a21\u5f0f";
+      return "O'qituvchi rejimi";
     },
     get$teacherModeDesc() {
-      return "\u5207\u63db\u4ee5\u89e3\u9396\u6240\u6709\u4e3b\u984c\u548c\u6d3b\u52d5\u3002\u50c5\u9650\u8ab2\u7a0b\u7ba1\u7406\u54e1\u3002";
+      return "Barcha mavzular va faoliyatlarni ochish uchun o'zgartiring. Faqat kurs administratori.";
     },
     get$noSavedActivitiesYet() {
-      return "\u6d3b\u52d5\u5b8c\u6210\u4e26\u4fdd\u5b58\u5f8c\u5c07\u6703\u51fa\u73fe\u5728\u9019\u88e1\u3002";
+      return "Faoliyatlar bu yerda ko'rinadi, ular tugallangach va saqlangach.";
     },
     get$changeCourse() {
-      return "\u66f4\u6539\u8ab2\u7a0b";
+      return "Kursni o'zgartirish";
     },
     get$changeCourseDesc() {
-      return "\u5728\u9019\u88e1\u4f60\u53ef\u4ee5\u66f4\u6539\u9019\u500b\u8ab2\u7a0b\u7684\u8ab2\u7a0b\u8a08\u5283\u3002";
+      return "Bu yerda siz bu kursning rejasini o'zgartirishingiz mumkin.";
     },
     get$introChatTitle() {
-      return "\u5275\u5efa\u4ecb\u7d39\u804a\u5929";
+      return "Tanishuvlar chatini yaratish";
     },
     get$introChatDesc() {
-      return "\u4efb\u4f55\u4eba\u5728\u9019\u500b\u7a7a\u9593\u90fd\u53ef\u4ee5\u767c\u5e16\u3002";
+      return "Har kim joyda yozishi mumkin.";
     },
     get$announcementsChatTitle() {
-      return "\u516c\u544a\u804a\u5929";
+      return "E'lonlar chat";
     },
     get$announcementsChatDesc() {
-      return "\u53ea\u6709\u7a7a\u9593\u7ba1\u7406\u54e1\u53ef\u4ee5\u767c\u5e16\u3002";
+      return "Faqat joy administratorlari yozishi mumkin.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "\u958b\u653e\u6703\u8b70 (" + num + ")";
+      return "Boshlanmagan sessiyalar (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "\u6b63\u5728\u9032\u884c\u4e2d (" + num + ")";
+      return "Hozir bo'lib o'tayotgan (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "\u5df2\u5b8c\u6210 (" + num + ")";
+      return "Tugallangan (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "\u9078\u64c7\u5176\u4ed6\u6d3b\u52d5";
+      return "Boshqa faoliyatni tanlang";
     },
     get$blockLemmaConfirmation() {
-      return "\u9019\u500b\u8a5e\u5f59\u5c07\u6703\u5f9e\u4f60\u7684\u5206\u6790\u4e2d\u6c38\u4e45\u79fb\u9664";
+      return "Ushbu lug'at so'zi sizning tahlil natijalaringizdan doimiy ravishda o'chiriladi";
     },
     get$woman() {
-      return "\u5973\u6027";
+      return "Ayol";
     },
     get$man() {
-      return "\u7537\u6027";
+      return "Erkak";
     },
     get$otherGender() {
-      return "\u5176\u4ed6";
+      return "Boshqa";
     },
     get$unselectedGender() {
-      return "\u9078\u64c7\u4e00\u500b\u6027\u5225\u9078\u9805";
+      return "Gender variantini tanlang";
     },
     get$gender() {
-      return "\u6027\u5225";
+      return "Jins";
     },
     get$modeDisabled() {
-      return "\u5b78\u7fd2\u5de5\u5177\u5c0d\u65bc\u4e0d\u5728\u76ee\u6a19\u8a9e\u8a00\u4e2d\u7684\u6d88\u606f\u662f\u7981\u7528\u7684\u3002";
+      return "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.";
     },
     get$courseParticipantTooltip() {
-      return "\u9019\u662f\u9019\u500b\u8ab2\u7a0b\u4e2d\u7684\u6240\u6709\u4eba\u3002\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u7684\u982d\u50cf\u4e26\u9078\u64c7\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u4f86\u767c\u9001\u79c1\u4fe1\u3002";
+      return "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va \xabmuloqotni boshlash\xbb ni tanlang, shunda DM yuborasiz.";
     },
     get$chatParticipantTooltip() {
-      return "\u9019\u662f\u9019\u500b\u804a\u5929\u4e2d\u7684\u6240\u6709\u4eba\u3002\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u7684\u982d\u50cf\u4e26\u9078\u64c7\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u4f86\u767c\u9001\u79c1\u4fe1\u3002";
+      return "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va \xabmuloqotni boshlash\xbb ni tanlang, shunda DM yuborasiz.";
     },
     get$inOngoingActivity() {
-      return "\u4f60\u6709\u4e00\u500b\u6b63\u5728\u9032\u884c\u7684\u6d3b\u52d5\uff01";
+      return "Sizda davom etayotgan faoliyat bor!";
     },
     get$requestRegeneration() {
-      return "\u8acb\u6c42\u518d\u751f";
+      return "Qayta yaratishni so'rash";
     },
     get$optionalRegenerateReason() {
-      return "(\u53ef\u9078) \u539f\u56e0";
+      return "(Ixtiyoriy) Sabab";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "\u4f60\u5df2\u70ba " + lemma + " \u8a2d\u5b9a\u4e86\u8868\u60c5\u7b26\u865f\uff01\u6211\u5011\u5c07\u5728\u672a\u4f86\u7684\u7df4\u7fd2\u6d3b\u52d5\u4e2d\u4f7f\u7528\u9019\u500b\u8868\u60c5\u7b26\u865f\u4f86\u4ee3\u8868\u9019\u500b\u8a5e\u3002";
+      return "Siz " + lemma + " uchun emoji belgiladingiz! Biz bu emojini kelajakdagi amaliyotlarda so'zni ifodalash uchun ishlatamiz.";
     },
     get$constructUseCorLMDesc() {
-      return "\u6b63\u78ba\u7684\u8a5e\u5f59\u5b9a\u7fa9\u7df4\u7fd2";
+      return "To'g'ri so'z ma'nosi amaliyoti";
     },
     get$constructUseIncLMDesc() {
-      return "\u4e0d\u6b63\u78ba\u7684\u8a5e\u5f59\u5b9a\u7fa9\u7df4\u7fd2";
+      return "Noto'g'ri so'z ma'nosi amaliyoti";
     },
     get$constructUseCorLADesc() {
-      return "\u6b63\u78ba\u7684\u8a5e\u5f59\u97f3\u983b\u7df4\u7fd2";
+      return "To'g'ri so'z audio amaliyoti";
     },
     get$constructUseIncLADesc() {
-      return "\u4e0d\u6b63\u78ba\u7684\u8a5e\u5f59\u97f3\u983b\u7df4\u7fd2";
+      return "Noto'g'ri so'z audio amaliyoti";
     },
     get$constructUseBonus() {
-      return "\u8a5e\u5f59\u7df4\u7fd2\u671f\u9593\u7684\u734e\u52f5";
+      return "So'z amaliyoti davomida bonus";
     },
     get$practiceVocab() {
-      return "\u7df4\u7fd2\u8a5e\u5f59";
+      return "So'z boyligini mashq qilish";
     },
     get$selectMeaning() {
-      return "\u9078\u64c7\u610f\u601d";
+      return "Ma'noni tanlang";
     },
     get$anotherRound() {
-      return "\u518d\u4f86\u4e00\u8f2a";
+      return "Yana bir marta";
     },
     get$ssoDialogTitle() {
-      return "\u7b49\u5f85\u767b\u9304\u5b8c\u6210";
+      return "Kirishni yakunlash uchun kuting";
     },
     get$ssoDialogDesc() {
-      return "\u6211\u5011\u5df2\u7d93\u6253\u958b\u4e86\u4e00\u500b\u65b0\u6a19\u7c64\uff0c\u4ee5\u4fbf\u60a8\u53ef\u4ee5\u5b89\u5168\u5730\u767b\u9304\u3002";
+      return "Biz sizga xavfsiz kirish uchun yangi yorliq ochdik.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 \u5982\u679c\u60a8\u6c92\u6709\u770b\u5230\u65b0\u6a19\u7c64\uff0c\u8acb\u6aa2\u67e5\u60a8\u7684\u5f48\u51fa\u7a97\u53e3\u963b\u6b62\u7a0b\u5e8f\u3002";
+      return "\ud83e\udd14 Agar yangi yorliqni ko'rmasangiz, iltimos, pop-up bloklovchingizni tekshiring.";
     },
     get$disableLanguageToolsDesc() {
-      return "\u4f60\u60f3\u8981\u7981\u7528\u81ea\u52d5\u8a9e\u8a00\u8f14\u52a9\u55ce\uff1f";
+      return "Avtomatik til yordamini o'chirmoqchimisiz?";
     },
     get$screenSizeWarning() {
-      return "\u70ba\u4e86\u7372\u5f97\u6700\u4f73\u7684\u61c9\u7528\u9ad4\u9a57\uff0c\u8acb\u64f4\u5927\u60a8\u7684\u87a2\u5e55\u5927\u5c0f\u3002";
+      return "Eng yaxshi tajriba uchun ekran o'lchamingizni kengaytiring.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "\u89e3\u9396\u4e0b\u4e00\u4e3b\u984c\u7684\u6d3b\u52d5";
+      return "Keyingi mavzuni ochish uchun faoliyatlar";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "\u8a2d\u7f6e\u89e3\u9396\u4e0b\u4e00\u8ab2\u7a0b\u4e3b\u984c\u6240\u9700\u7684\u6d3b\u52d5\u6578\u91cf";
+      return "Keyingi kurs mavzusini ochish uchun faoliyatlar sonini belgilang";
     },
     get$activitySettingsOverrideWarning() {
-      return "\u6d3b\u52d5\u8a08\u5283\u6c7a\u5b9a\u7684\u8a9e\u8a00\u548c\u8a9e\u8a00\u6c34\u5e73";
+      return "Til va til darajasi faoliyat rejasiga muvofiq belgilanadi";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa \u4f60\u5df2\u96e2\u958b\u804a\u5929";
+      return "\ud83d\udeaa Siz chatdan chiqdingiz";
     },
     get$downloadInitiated() {
-      return "\u4e0b\u8f09\u5df2\u555f\u52d5";
+      return "Yuklab olish boshlandi";
     },
     get$webDownloadPermissionMessage() {
-      return "\u5982\u679c\u4f60\u7684\u700f\u89bd\u5668\u963b\u6b62\u4e0b\u8f09\uff0c\u8acb\u70ba\u6b64\u7db2\u7ad9\u555f\u7528\u4e0b\u8f09\u3002";
+      return "Agar brauzeringiz yuklab olishlarni bloklasa, iltimos, bu sayt uchun yuklab olishlarni yoqing.";
     },
     get$exitPractice() {
-      return "\u60a8\u7684\u7df4\u7fd2\u9032\u5ea6\u5c07\u4e0d\u6703\u88ab\u4fdd\u5b58\u3002";
+      return "Amaliyot sessiyangizning rivojlanishi saqlanmaydi.";
     },
     get$practiceGrammar() {
-      return "\u7df4\u7fd2\u8a9e\u6cd5";
+      return "Grammatika amaliyoti";
     },
     get$notEnoughToPractice() {
-      return "\u767c\u9001\u66f4\u591a\u6d88\u606f\u4ee5\u89e3\u9396\u7df4\u7fd2";
+      return "Amaliy qilish uchun ko'proq xabar yuboring";
     },
     get$constructUseCorGCDesc() {
-      return "\u6b63\u78ba\u8a9e\u6cd5\u985e\u5225\u7df4\u7fd2";
+      return "To'g'ri grammatikaga oid amaliyot";
     },
     get$constructUseIncGCDesc() {
-      return "\u4e0d\u6b63\u78ba\u8a9e\u6cd5\u985e\u5225\u7df4\u7fd2";
+      return "Noto'g'ri grammatikaga oid amaliyot";
     },
     get$constructUseCorGEDesc() {
-      return "\u6b63\u78ba\u8a9e\u6cd5\u932f\u8aa4\u7df4\u7fd2";
+      return "To'g'ri grammatikadagi xato amaliyoti";
     },
     get$constructUseIncGEDesc() {
-      return "\u4e0d\u6b63\u78ba\u8a9e\u6cd5\u932f\u8aa4\u7df4\u7fd2";
+      return "Noto'g'ri grammatikadagi xato amaliyoti";
     },
     get$fillInBlank() {
-      return "\u7528\u6b63\u78ba\u7684\u9078\u64c7\u586b\u7a7a";
+      return "To'g'ri tanlov bilan bo'sh joyni to'ldiring";
     },
     get$learn() {
-      return "\u5b78\u7fd2";
+      return "O'rganish";
     },
     get$languageUpdated() {
-      return "\u76ee\u6a19\u8a9e\u8a00\u5df2\u66f4\u65b0\uff01";
+      return "Maqsadli til yangilandi!";
     },
     get$voiceDropdownTitle() {
-      return "Pangea Bot \u8072\u97f3";
+      return "Pangea Bot ovozi";
     },
     get$knockDesc() {
-      return "\u4f60\u7684\u8acb\u6c42\u5df2\u7d93\u767c\u9001\u7d66\u8ab2\u7a0b\u7ba1\u7406\u54e1\uff01\u5982\u679c\u4ed6\u5011\u6279\u51c6\uff0c\u4f60\u5c07\u88ab\u5141\u8a31\u9032\u5165\u3002";
+      return "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.";
+    },
+    get$knockAccepted() {
+      return "Sizning qo'shilish so'rovingiz qabul qilindi! Endi kursga kirishingiz mumkin.";
     },
     get$joinSpaceOnboardingDesc() {
-      return "\u4f60\u6709\u9080\u8acb\u78bc\u6216\u516c\u5171\u8ab2\u7a0b\u7684\u93c8\u63a5\u55ce\uff1f";
+      return "Sizda ochiq kursga taklif kodi yoki havolasi bormi?";
     },
     welcomeUser$1(user) {
-      return "\u6b61\u8fce " + user;
+      return "Xush kelibsiz " + user;
     },
     get$findCourse() {
-      return "\u5c0b\u627e\u8ab2\u7a0b";
+      return "Kurs toping";
     },
     get$publicInviteDescChat() {
-      return "\u641c\u5c0b\u7528\u6236\u4ee5\u9080\u8acb\u4ed6\u5011\u52a0\u5165\u6b64\u804a\u5929\u3002";
+      return "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.";
     },
     get$publicInviteDescSpace() {
-      return "\u641c\u5c0b\u7528\u6236\u4ee5\u9080\u8acb\u4ed6\u5011\u52a0\u5165\u6b64\u7a7a\u9593\u3002";
+      return "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.";
     },
     get$enableNotificationsTitle() {
-      return "Pangea Chat \u4fc2\u4e00\u500b\u77ed\u4fe1\u61c9\u7528\u7a0b\u5f0f\uff0c\u6240\u4ee5\u901a\u77e5\u975e\u5e38\u91cd\u8981\uff01";
+      return "Pangea Chat matnli ilova bo'lib, bildirishnomalar muhim!";
     },
     get$enableNotificationsDesc() {
-      return "\u5141\u8a31\u901a\u77e5";
+      return "Bildirishnomalarni ruxsat etish";
     },
     get$useActivityImageAsChatBackground() {
-      return "\u4f7f\u7528\u6d3b\u52d5\u5716\u7247\u4f5c\u70ba\u804a\u5929\u80cc\u666f";
+      return "Faoliyat rasmidan chat fonini foydalanish";
     },
     get$chatWithSupport() {
-      return "\u8207\u652f\u63f4\u804a\u5929";
+      return "Qo'llab-quvvatlash bilan chat";
     },
     get$newCourseAccess() {
-      return "\u9ed8\u8a8d\u60c5\u6cc1\u4e0b\uff0c\u8ab2\u7a0b\u662f\u516c\u958b\u53ef\u641c\u7d22\u7684\uff0c\u4e26\u4e14\u9700\u8981\u7ba1\u7406\u54e1\u6279\u51c6\u624d\u80fd\u52a0\u5165\u3002\u60a8\u53ef\u4ee5\u96a8\u6642\u7de8\u8f2f\u9019\u4e9b\u8a2d\u7f6e\u3002";
+      return "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.";
     },
     get$courseLoadingError() {
-      return "\u767c\u751f\u4e86\u4e00\u4e9b\u554f\u984c\uff0c\u6211\u5011\u6b63\u5728\u52aa\u529b\u4fee\u5fa9\u3002\u7a0d\u5f8c\u518d\u6aa2\u67e5\u3002";
+      return "Nimadir noto'g'ri ketdi va biz uni tuzatish uchun qattiq ishlayapmiz. Keyinroq yana tekshiring.";
     },
     get$onboardingLanguagesTitle() {
-      return "\u4f60\u6b63\u5728\u5b78\u7fd2\u4ec0\u9ebc\u8a9e\u8a00\uff1f";
+      return "Qaysi tilni o'rganmoqdasiz?";
     },
     get$searchLanguagesHint() {
-      return "\u641c\u5c0b\u76ee\u6a19\u8a9e\u8a00";
+      return "Maqsadli tillarni qidiring";
     },
     get$supportSubtitle() {
-      return "\u6709\u554f\u984c\u55ce\uff1f\u6211\u5011\u5728\u9019\u88e1\u5e6b\u52a9\u4f60\uff01";
+      return "Savollaringiz bormi? Biz yordam berishga tayyormiz!";
     },
     get$autoIGCToolName() {
-      return "\u555f\u7528\u5beb\u4f5c\u8f14\u52a9";
+      return "Yozishni yordamchi qilishni yoqing";
     },
     get$autoIGCToolDescription() {
-      return "\u81ea\u52d5\u904b\u884c Pangea Chat \u5de5\u5177\u4ee5\u5c07\u767c\u9001\u7684\u6d88\u606f\u66f4\u6b63\u70ba\u76ee\u6a19\u8a9e\u8a00\u3002";
+      return "Avtomatik ravishda Pangea Chat vositalarini ishga tushirib, yuborilgan xabarlarni maqsadli tilga to'g'ri kelishini tekshiradi.";
     },
     get$emptyAudioError() {
-      return "\u9304\u97f3\u5931\u6557\u3002\u8acb\u6aa2\u67e5\u60a8\u7684\u97f3\u983b\u6b0a\u9650\u4e26\u91cd\u8a66\u3002";
+      return "Tizim yozib olish muvaffaqiyatsiz bo'ldi. Iltimos, audio ruxsatlarini tekshiring va qayta urinib ko'ring.";
     },
     get$spanTypeGrammar() {
-      return "\u6587\u6cd5";
+      return "Grammatika";
     },
     get$spanTypeWordChoice() {
-      return "\u7528\u8a5e\u9078\u64c7";
+      return "So'z tanlovi";
     },
     get$spanTypeSpelling() {
-      return "\u62fc\u5beb";
+      return "Imlo";
     },
     get$spanTypePunctuation() {
-      return "\u6a19\u9ede\u7b26\u865f";
+      return "Punktuatsiya";
     },
     get$spanTypeStyle() {
-      return "\u98a8\u683c";
+      return "Stil";
     },
     get$spanTypeFluency() {
-      return "\u6d41\u66a2\u5ea6";
+      return "O'qish tezligi";
     },
     get$spanTypeAccents() {
-      return "\u53e3\u97f3";
+      return "Tovushlar";
     },
     get$spanTypeCapitalization() {
-      return "\u5927\u5beb";
+      return "Katta harf bilan yozish";
     },
     get$spanTypeCorrection() {
-      return "\u66f4\u6b63";
+      return "Tuzatish";
     },
     get$spanFeedbackTitle() {
-      return "\u5831\u544a\u66f4\u6b63\u554f\u984c";
+      return "Tuzatish muammosini xabar qilish";
     },
     get$selectAllWords() {
-      return "\u9078\u64c7\u4f60\u5728\u97f3\u983b\u4e2d\u807d\u5230\u7684\u6240\u6709\u55ae\u8a5e";
+      return "Audioda eshitgan barcha so'zlarni tanlang";
     },
     get$aboutMeHint() {
-      return "\u95dc\u65bc\u6211";
+      return "Menga haqida";
     },
     get$changeEmail() {
-      return "\u66f4\u6539\u96fb\u90f5";
+      return "Elektron pochta manzilini o'zgartirish";
     },
     get$withTheseAddressesDescription() {
-      return "\u4f7f\u7528\u9019\u4e9b\u96fb\u90f5\u5730\u5740\u60a8\u53ef\u4ee5\u767b\u9304\u3001\u6062\u5fa9\u5bc6\u78bc\u548c\u7ba1\u7406\u8a02\u95b1\u3002";
+      return "Ushbu elektron pochta manzillari bilan tizimga kirishingiz, parolingizni tiklashingiz va obunalarni boshqarishingiz mumkin.";
     },
     get$noAddressDescription() {
-      return "\u60a8\u5c1a\u672a\u6dfb\u52a0\u4efb\u4f55\u96fb\u90f5\u5730\u5740\u3002";
+      return "Siz hali hech qanday elektron pochta manzillarini qo'shmadingiz.";
     },
     get$perfectPractice() {
-      return "\u5b8c\u7f8e\u7684\u7df4\u7fd2\uff01";
+      return "Mukammal mashq!";
     },
     get$greatPractice() {
-      return "\u5f88\u68d2\u7684\u7df4\u7fd2\uff01";
+      return "Ajoyib mashq!";
     },
     get$usedNoHints() {
-      return "\u4e0d\u4f7f\u7528\u4efb\u4f55\u63d0\u793a\uff0c\u505a\u5f97\u597d\uff01";
+      return "Yaxshi ish, hech qanday maslahatlardan foydalanmadingiz!";
     },
     get$youveCompletedPractice() {
-      return "\u4f60\u5df2\u7d93\u5b8c\u6210\u4e86\u7df4\u7fd2\uff0c\u7e7c\u7e8c\u52aa\u529b\u4ee5\u8b8a\u5f97\u66f4\u597d\uff01";
+      return "Siz mashqni tugatdingiz, yaxshilash uchun davom eting!";
     },
     get$joinCourseForActivities() {
-      return "\u52a0\u5165\u8ab2\u7a0b\u4ee5\u5617\u8a66\u6d3b\u52d5\u3002";
+      return "Faoliyatlarni sinab ko'rish uchun kursga qo'shiling.";
     },
     get$courseDescription() {
-      return "\u8ab2\u7a0b\u75313\u81f38\u500b\u6a21\u584a\u7d44\u6210\uff0c\u6bcf\u500b\u6a21\u584a\u90fd\u6709\u6d3b\u52d5\u4ee5\u9f13\u52f5\u5728\u4e0d\u540c\u60c5\u5883\u4e2d\u7df4\u7fd2\u55ae\u8a5e";
+      return "Kurslar 3-8 moduldan iborat bo'lib, har bir modulda so'zlarni turli kontekstlarda amaliyot qilishni rag'batlantiruvchi faoliyatlar mavjud";
     },
     get$emailVerificationFailed() {
-      return "\u96fb\u5b50\u90f5\u4ef6\u9a57\u8b49\u5931\u6557\u3002\u8acb\u518d\u8a66\u4e00\u6b21\u3002";
+      return "Email tasdiqlash muvaffaqiyatsiz bo'ldi. Iltimos, qayta urinib ko'ring.";
     },
     get$unlockLearningTools() {
-      return "\u89e3\u9396\u5b78\u7fd2\u5de5\u5177";
+      return "O'qish vositalarini ochish";
     },
     get$unlockPracticeActivities() {
-      return "\u89e3\u9396\u7df4\u7fd2\u6d3b\u52d5";
+      return "Amaliyot faoliyatlarini ochish";
     },
     get$managementSnackbarMessage() {
-      return "\u6211\u5011\u5728\u65b0\u6a19\u7c64\u4e2d\u555f\u52d5\u4e86\u8a02\u95b1\u7ba1\u7406\u3002\u5982\u679c\u4f60\u6c92\u6709\u770b\u5230\u65b0\u6a19\u7c64\uff0c\u8acb\u6aa2\u67e5\u4f60\u7684\u5f48\u51fa\u7a97\u53e3\u963b\u64cb\u5668\u3002";
+      return "Biz obuna boshqaruvini yangi oynada ishga tushirdik. Agar siz yangi oynani ko'rmagan bo'lsangiz, iltimos, pop-up bloklovchingizni tekshiring.";
     },
     get$hideEvents() {
-      return "\u96b1\u85cf\u4e8b\u4ef6";
+      return "Voqealarni yashirish";
     },
     get$denyKnockSpace() {
-      return "\u7528\u6236\u5c07\u88ab\u62d2\u7d55\u53c3\u52a0\u8ab2\u7a0b\uff0c\u4f46\u4ed6\u5011\u53ef\u4ee5\u96a8\u6642\u5617\u8a66\u91cd\u65b0\u52a0\u5165\u3002";
+      return "Foydalanuvchi kursdan rad etiladi, ammo ular keyinchalik qayta qo'shilishga harakat qilishlari mumkin.";
     },
     get$denyKnockChat() {
-      return "\u7528\u6236\u5c07\u88ab\u62d2\u7d55\u53c3\u52a0\u804a\u5929\uff0c\u4f46\u4ed6\u5011\u53ef\u4ee5\u96a8\u6642\u5617\u8a66\u91cd\u65b0\u52a0\u5165\u3002";
+      return "Foydalanuvchi chatdan rad etiladi, ammo ular keyinchalik qayta qo'shilishga harakat qilishlari mumkin.";
     },
     get$banFromSpace() {
-      return "\u7981\u6b62\u53c3\u52a0\u8ab2\u7a0b";
+      return "Kursdan taqiqlash";
     },
     get$unbanFromSpace() {
-      return "\u89e3\u9664\u7981\u6b62\u53c3\u52a0\u8ab2\u7a0b";
+      return "Kursdan taqiqni olib tashlash";
     },
     get$cannotJoinBannedRoom() {
-      return "\u88ab\u7981\u6b62\u3002\u7121\u6cd5\u52a0\u5165\u3002";
+      return "Ta'qiqlangan. Qo'shilish mumkin emas.";
     },
     get$sessionFull() {
-      return "Too late! This activity is full.";
+      return "Kecha! Ushbu faoliyat to'la.";
     },
     get$returnToCourse() {
-      return "Return to course";
+      return "Kursga qaytish";
     },
     get$returnHome() {
-      return "Return home";
+      return "Boshqaruvga qaytish";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5608,13 +5611,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nYue, C.L10n);
+    _inherit(A.L10nUz, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nYue":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nUz":{"L10n":[]}}'));
+  var string$ = {
+    _manzi: " manzilidagi dasturchilarga xabar bering. Xato xabari: ",
+    Iltimo: "Iltimos, haqiqiy elektron pochta manzilini kiriting."
+  };
 };
 ;
 (d => {
-  d["OSVb10MuToYNhGJ6GAzkf2dSAKk="] = d.current;
+  d["U3omUM8kwwEyux1Nbd3FANUdEMU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map
