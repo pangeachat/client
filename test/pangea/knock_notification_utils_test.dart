@@ -57,18 +57,20 @@ void main() {
       expect(result, isFalse);
     });
 
-    test('returns false when invite targets a different user (not current user)',
-        () {
-      final result = isKnockAcceptedInvite(
-        eventType: EventTypes.RoomMember,
-        newMembership: 'invite',
-        stateKey: adminId, // <-- someone else was invited
-        currentUserId: userId,
-        knockedRoomIds: [roomId],
-        roomId: roomId,
-      );
-      expect(result, isFalse);
-    });
+    test(
+      'returns false when invite targets a different user (not current user)',
+      () {
+        final result = isKnockAcceptedInvite(
+          eventType: EventTypes.RoomMember,
+          newMembership: 'invite',
+          stateKey: adminId, // <-- someone else was invited
+          currentUserId: userId,
+          knockedRoomIds: [roomId],
+          roomId: roomId,
+        );
+        expect(result, isFalse);
+      },
+    );
 
     test('returns false when stateKey is null', () {
       final result = isKnockAcceptedInvite(
