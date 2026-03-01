@@ -33,7 +33,10 @@ class GrammarErrorTargetGenerator {
       }
 
       final errorUses = construct.cappedUses.where(
-        (u) => u.useType == ConstructUseTypeEnum.ga,
+        (u) =>
+            u.useType == ConstructUseTypeEnum.ga ||
+            u.useType == ConstructUseTypeEnum.ignIGC ||
+            u.useType == ConstructUseTypeEnum.incIGC,
       );
       if (errorUses.isEmpty) continue;
 

@@ -10,9 +10,11 @@ enum ConstructUseTypeEnum {
   wa,
 
   /// produced during IGC
+  @Deprecated('Use corIGC/incIGC/ignIGC instead. Kept for backward compat with stored events.')
   ga,
 
   /// produced during IT
+  @Deprecated('Use corIt/incIt/ignIt instead. Kept for backward compat with stored events.')
   ta,
 
   /// produced in chat by user and igc was not run
@@ -463,23 +465,35 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
     }
   }
 
-  /// Whether this use type represents direct chat production (wa, ga, ta).
+  /// Whether this use type represents direct chat production.
   bool get isChatUse {
     switch (this) {
       case ConstructUseTypeEnum.wa:
       case ConstructUseTypeEnum.ga:
       case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
         return true;
       default:
         return false;
     }
   }
 
-  /// Whether this chat use involved assistance (ga = IGC, ta = IT).
+  /// Whether this chat use involved assistance (IGC or IT).
   bool get isAssistedChatUse {
     switch (this) {
       case ConstructUseTypeEnum.ga:
       case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
         return true;
       default:
         return false;

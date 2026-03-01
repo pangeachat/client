@@ -222,6 +222,12 @@ class SpaceAnalyticsSummaryModel {
       ConstructUseTypeEnum.wa,
       ConstructUseTypeEnum.ga,
       ConstructUseTypeEnum.ta,
+      ConstructUseTypeEnum.corIt,
+      ConstructUseTypeEnum.incIt,
+      ConstructUseTypeEnum.ignIt,
+      ConstructUseTypeEnum.corIGC,
+      ConstructUseTypeEnum.incIGC,
+      ConstructUseTypeEnum.ignIGC,
     };
 
     final List<String> morphConstructs = [];
