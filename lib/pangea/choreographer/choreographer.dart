@@ -306,15 +306,13 @@ class Choreographer extends ChangeNotifier {
     switch (match.updatedMatch.status) {
       case PangeaMatchStatusEnum.accepted:
       case PangeaMatchStatusEnum.automatic:
+      case PangeaMatchStatusEnum.viewed:
         _record.addRecord(textController.text, match: match.updatedMatch);
       case PangeaMatchStatusEnum.undo:
         _record.choreoSteps.removeWhere(
           (step) =>
               step.acceptedOrIgnoredMatch?.match == match.updatedMatch.match,
         );
-      case PangeaMatchStatusEnum.viewed:
-        // Don't add viewed matches to the choreo record
-        break;
       default:
         throw Exception("Unhandled match status: ${match.updatedMatch.status}");
     }

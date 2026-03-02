@@ -36,6 +36,7 @@ class GrammarErrorTargetGenerator {
         (u) =>
             // ignore: deprecated_member_use_from_same_package
             u.useType == ConstructUseTypeEnum.ga ||
+            u.useType == ConstructUseTypeEnum.corIGC ||
             u.useType == ConstructUseTypeEnum.ignIGC ||
             u.useType == ConstructUseTypeEnum.incIGC,
       );

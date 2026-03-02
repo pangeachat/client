@@ -7,7 +7,6 @@ import 'package:fluffychat/pangea/choreographer/completed_it_step_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -173,7 +172,9 @@ class PangeaRepresentation {
     for (final step in choreo.choreoSteps) {
       final igcMatch = step.acceptedOrIgnoredMatch;
       final itStep = step.itStep;
-      if (itStep == null && igcMatch == null) {
+      if (itStep == null &&
+          (igcMatch == null ||
+              igcMatch.status == PangeaMatchStatusEnum.viewed)) {
         continue;
       }
 
@@ -242,11 +243,7 @@ class PangeaRepresentation {
     );
 
     if (selectedChoices.isEmpty) {
-      ErrorHandler.logError(
-        e: "No selected choices for IT step",
-        data: {"token": token.text.content, "step": itStep.toJson()},
-      );
-      return [];
+      return token.allUses(ConstructUseTypeEnum.ignIt, metadata, 0);
     }
 
     final numCorrectChoices = selectedChoices
@@ -280,11 +277,7 @@ class PangeaRepresentation {
     );
 
     if (selectedChoices.isEmpty) {
-      ErrorHandler.logError(
-        e: "No selected choices for IGC step",
-        data: {"token": token.text.content, "step": match.toJson()},
-      );
-      return [];
+      return token.allUses(ConstructUseTypeEnum.ignIGC, metadata, 0);
     }
 
     final numCorrectChoices = selectedChoices
