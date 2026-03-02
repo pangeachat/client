@@ -409,9 +409,13 @@ class _MessageSelectModeContent extends StatelessWidget {
                   ),
                 ),
                 if (mode == SelectMode.translate)
-                  IconButton(
-                    onPressed: () => onFlagTranslation(context),
-                    icon: Icon(Icons.flag_outlined, color: style.color),
+                  InkWell(
+                    onTap: () => onFlagTranslation(context),
+                    child: Icon(
+                      Icons.flag_outlined,
+                      color: style.color,
+                      size: 16.0,
+                    ),
                   ),
               ],
             ),
