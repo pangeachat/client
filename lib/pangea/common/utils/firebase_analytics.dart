@@ -1,9 +1,8 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:flutter/widgets.dart';
+
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -14,6 +13,10 @@ import '../../../config/firebase_options.dart';
 
 class GoogleAnalytics {
   static FirebaseAnalytics? analytics;
+  static const List<String> _ignoredScreenNamePrefixes = [
+    '/home',
+    '/registration',
+  ];
 
   GoogleAnalytics();
 
@@ -145,17 +148,29 @@ class GoogleAnalytics {
     }
     return FirebaseAnalyticsObserver(
       analytics: analytics!,
+      nameExtractor: (settings) {
+        final name = settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return null;
+        }
+        return name;
+      },
       routeFilter: (route) {
         // By default firebase only tracks page routes
-        if (route is! PageRoute ||
-            // No user logged in, so we dont track
-            route.settings.name == "login" ||
-            route.settings.name == "/home" ||
-            route.settings.name == "connect" ||
-            route.settings.name == "signup") {
+        if (route is! PageRoute) {
           return false;
         }
-        final String? name = route.settings.name;
+
+        final name = route.settings.name?.trim();
+        if (name == null || name.isEmpty) {
+          return false;
+        }
+
+        // Do not log unauthenticated onboarding/auth flow screens.
+        if (_ignoredScreenNamePrefixes.any(name.startsWith)) {
+          return false;
+        }
+
         debugPrint("navigating to route: $name");
         return true;
       },
