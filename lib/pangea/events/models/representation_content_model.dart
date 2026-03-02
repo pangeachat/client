@@ -1,11 +1,10 @@
-import 'dart:math';
-
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
@@ -166,9 +165,8 @@ class PangeaRepresentation {
           continue;
         }
 
-        final stepContainsToken = choices.any(
-          (choice) => choice.contains(token.text.content),
-        );
+        final stepContainsToken =
+            step.selectedChoice?.contains(token.text.content) == true;
 
         // if the step contains the token, and the token hasn't been assigned a step
         // (or the assigned step is an IGC step, but an IT step contains the token)
@@ -202,10 +200,11 @@ class PangeaRepresentation {
       }
 
       if (tokenStep.itStep != null) {
-        final selectedChoices = tokenStep.itStep!.continuances
-            .where((choice) => choice.wasClicked)
-            .length;
-        if (selectedChoices == 0) {
+        final selectedChoices = tokenStep.itStep!.continuances.where(
+          (choice) => choice.wasClicked,
+        );
+
+        if (selectedChoices.isEmpty) {
           ErrorHandler.logError(
             e: "No selected choices for IT step",
             data: {"token": token.text.content, "step": tokenStep.toJson()},
@@ -213,19 +212,36 @@ class PangeaRepresentation {
           continue;
         }
 
-        final corITPoints = ConstructUseTypeEnum.corIt.pointValue;
-        final incITPoints = ConstructUseTypeEnum.incIt.pointValue;
-        final xp = max(0, corITPoints + (incITPoints * (selectedChoices - 1)));
+        final numCorrectChoices = selectedChoices
+            .where((choice) => choice.gold)
+            .length;
 
-        final itUseType = selectedChoices == 1
-            ? ConstructUseTypeEnum.corIt
-            : ConstructUseTypeEnum.incIt;
-        uses.addAll(token.allUses(itUseType, metadata, xp));
+        final numIncorrectChoices = selectedChoices.length - numCorrectChoices;
+
+        if (numCorrectChoices > 0) {
+          uses.addAll(
+            token.allUses(
+              ConstructUseTypeEnum.corIt,
+              metadata,
+              ConstructUseTypeEnum.corIt.pointValue * numCorrectChoices,
+            ),
+          );
+        }
+
+        if (numIncorrectChoices > 0) {
+          uses.addAll(
+            token.allUses(
+              ConstructUseTypeEnum.incIt,
+              metadata,
+              ConstructUseTypeEnum.incIt.pointValue * numIncorrectChoices,
+            ),
+          );
+        }
       } else if (tokenStep.acceptedOrIgnoredMatch!.match.choices != null) {
         final selectedChoices = tokenStep.acceptedOrIgnoredMatch!.match.choices!
-            .where((choice) => choice.selected)
-            .length;
-        if (selectedChoices == 0) {
+            .where((choice) => choice.selected);
+
+        if (selectedChoices.isEmpty) {
           ErrorHandler.logError(
             e: "No selected choices for IGC step",
             data: {"token": token.text.content, "step": tokenStep.toJson()},
@@ -233,17 +249,31 @@ class PangeaRepresentation {
           continue;
         }
 
-        final corIGCPoints = ConstructUseTypeEnum.corIGC.pointValue;
-        final incIGCPoints = ConstructUseTypeEnum.incIGC.pointValue;
-        final xp = max(
-          0,
-          corIGCPoints + (incIGCPoints * (selectedChoices - 1)),
-        );
+        final numCorrectChoices = selectedChoices
+            .where((choice) => choice.type.isSuggestion)
+            .length;
 
-        final igcUseType = selectedChoices == 1
-            ? ConstructUseTypeEnum.corIGC
-            : ConstructUseTypeEnum.incIGC;
-        uses.addAll(token.allUses(igcUseType, metadata, xp));
+        final numIncorrectChoices = selectedChoices.length - numCorrectChoices;
+
+        if (numCorrectChoices > 0) {
+          uses.addAll(
+            token.allUses(
+              ConstructUseTypeEnum.corIGC,
+              metadata,
+              ConstructUseTypeEnum.corIGC.pointValue * numCorrectChoices,
+            ),
+          );
+        }
+
+        if (numIncorrectChoices > 0) {
+          uses.addAll(
+            token.allUses(
+              ConstructUseTypeEnum.incIGC,
+              metadata,
+              ConstructUseTypeEnum.incIGC.pointValue * numIncorrectChoices,
+            ),
+          );
+        }
       }
     }
 
