@@ -5604,6 +5604,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$returnHome() {
       return "Bumalik sa bahay";
     },
+    get$translationFeedback() {
+      return "Translation Feedback";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5617,7 +5620,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K0IbonRUERuaGhIhi1jF5QBENwo="] = d.current;
+  d["a1kaV8S0/8I6mvSa9Nfb7Y14QvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

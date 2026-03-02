@@ -5604,6 +5604,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$returnHome() {
       return "Vrni se domov";
     },
+    get$translationFeedback() {
+      return "Translation Feedback";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5617,7 +5620,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/v31q4emODlSNtGRtIdkJ8mI+Fw="] = d.current;
+  d["4zGpg64iRthB9NspaX2mQXsFiOA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map

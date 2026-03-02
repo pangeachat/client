@@ -5604,6 +5604,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$returnHome() {
       return "Vrati se ku\u0107i";
     },
+    get$translationFeedback() {
+      return "Translation Feedback";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5617,7 +5620,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K6HMhXcnSwxi4OPJhNw4jT+5hgM="] = d.current;
+  d["cFINSP8swH9QpYytuYS9efNqDjI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map
