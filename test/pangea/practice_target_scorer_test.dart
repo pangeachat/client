@@ -1,3 +1,5 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
@@ -5,7 +7,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 /// Helper to create a [OneConstructUse] with minimal required fields.
 OneConstructUse _makeUse(
@@ -144,14 +145,12 @@ void main() {
     });
 
     test('ignIGC use → active', () {
-      final uses =
-          _makeConstructUses([_makeUse(ConstructUseTypeEnum.ignIGC)]);
+      final uses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.ignIGC)]);
       expect(uses.practiceTier, PracticeTier.active);
     });
 
     test('corIt use (IT translation) → active', () {
-      final uses =
-          _makeConstructUses([_makeUse(ConstructUseTypeEnum.corIt)]);
+      final uses = _makeConstructUses([_makeUse(ConstructUseTypeEnum.corIt)]);
       expect(uses.practiceTier, PracticeTier.active);
     });
 

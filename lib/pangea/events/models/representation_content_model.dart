@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
@@ -8,7 +10,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:matrix/matrix.dart';
 
 /// this class is contained within a [RepresentationEvent]
 /// this event is the child of a [EventTypes.Message]
@@ -67,7 +68,9 @@ class PangeaRepresentation {
       text: json[_textKey],
       originalSent: json[_originalSentKey] ?? false,
       originalWritten: json[_originalWrittenKey] ?? false,
-      speechToText: json[_speechToTextKey] == null ? null : SpeechToTextResponseModel.fromJson(json[_speechToTextKey]),
+      speechToText: json[_speechToTextKey] == null
+          ? null
+          : SpeechToTextResponseModel.fromJson(json[_speechToTextKey]),
     );
   }
 
@@ -90,7 +93,8 @@ class PangeaRepresentation {
   }
 
   bool get langCodeMatchesL2 =>
-      langCode.split("-").first == MatrixState.pangeaController.userController.userL2?.langCodeShort;
+      langCode.split("-").first ==
+      MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
   /// Get construct uses for the message that weren't captured during language assistance.
   /// Takes a list of tokens and a choreo record, which is searched
@@ -112,22 +116,37 @@ class PangeaRepresentation {
       return uses;
     }
 
-    metadata ??= ConstructUseMetaData(roomId: event!.roomId!, eventId: event.eventId, timeStamp: event.originServerTs);
+    metadata ??= ConstructUseMetaData(
+      roomId: event!.roomId!,
+      eventId: event.eventId,
+      timeStamp: event.originServerTs,
+    );
 
     // for each token, record whether selected in ga, ta, or wa
-    List<PangeaToken> tokensToSave = tokens.where((token) => token.lemma.saveVocab).toList();
+    List<PangeaToken> tokensToSave = tokens
+        .where((token) => token.lemma.saveVocab)
+        .toList();
     if (choreo != null && choreo.pastedStrings.isNotEmpty) {
       tokensToSave = tokensToSave
           .where(
-            (token) =>
-                !choreo.pastedStrings.any((pasted) => pasted.toLowerCase().contains(token.text.content.toLowerCase())),
+            (token) => !choreo.pastedStrings.any(
+              (pasted) => pasted.toLowerCase().contains(
+                token.text.content.toLowerCase(),
+              ),
+            ),
           )
           .toList();
     }
 
     if (choreo == null || choreo.choreoSteps.isEmpty) {
       for (final token in tokensToSave) {
-        uses.addAll(token.allUses(ConstructUseTypeEnum.wa, metadata, ConstructUseTypeEnum.wa.pointValue));
+        uses.addAll(
+          token.allUses(
+            ConstructUseTypeEnum.wa,
+            metadata,
+            ConstructUseTypeEnum.wa.pointValue,
+          ),
+        );
       }
 
       return uses;
@@ -147,30 +166,45 @@ class PangeaRepresentation {
           continue;
         }
 
-        final stepContainsToken = choices.any((choice) => choice.contains(token.text.content));
+        final stepContainsToken = choices.any(
+          (choice) => choice.contains(token.text.content),
+        );
 
         // if the step contains the token, and the token hasn't been assigned a step
         // (or the assigned step is an IGC step, but an IT step contains the token)
         // then assign the token to the step
-        if (stepContainsToken && (tokenStep == null || (tokenStep.itStep == null && step.itStep != null))) {
+        if (stepContainsToken &&
+            (tokenStep == null ||
+                (tokenStep.itStep == null && step.itStep != null))) {
           tokenStep = step;
         }
       }
 
-      if (tokenStep == null || tokenStep.acceptedOrIgnoredMatch?.status == PangeaMatchStatusEnum.automatic) {
+      if (tokenStep == null ||
+          tokenStep.acceptedOrIgnoredMatch?.status ==
+              PangeaMatchStatusEnum.automatic) {
         // if the token wasn't found in any IT or IGC step, so it was wa
-        uses.addAll(token.allUses(ConstructUseTypeEnum.wa, metadata, ConstructUseTypeEnum.wa.pointValue));
+        uses.addAll(
+          token.allUses(
+            ConstructUseTypeEnum.wa,
+            metadata,
+            ConstructUseTypeEnum.wa.pointValue,
+          ),
+        );
         continue;
       }
 
       if (tokenStep.acceptedOrIgnoredMatch != null &&
-          tokenStep.acceptedOrIgnoredMatch?.status != PangeaMatchStatusEnum.accepted) {
+          tokenStep.acceptedOrIgnoredMatch?.status !=
+              PangeaMatchStatusEnum.accepted) {
         uses.addAll(token.allUses(ConstructUseTypeEnum.ignIGC, metadata, 0));
         continue;
       }
 
       if (tokenStep.itStep != null) {
-        final selectedChoices = tokenStep.itStep!.continuances.where((choice) => choice.wasClicked).length;
+        final selectedChoices = tokenStep.itStep!.continuances
+            .where((choice) => choice.wasClicked)
+            .length;
         if (selectedChoices == 0) {
           ErrorHandler.logError(
             e: "No selected choices for IT step",
@@ -183,7 +217,9 @@ class PangeaRepresentation {
         final incITPoints = ConstructUseTypeEnum.incIt.pointValue;
         final xp = max(0, corITPoints + (incITPoints * (selectedChoices - 1)));
 
-        final itUseType = selectedChoices == 1 ? ConstructUseTypeEnum.corIt : ConstructUseTypeEnum.incIt;
+        final itUseType = selectedChoices == 1
+            ? ConstructUseTypeEnum.corIt
+            : ConstructUseTypeEnum.incIt;
         uses.addAll(token.allUses(itUseType, metadata, xp));
       } else if (tokenStep.acceptedOrIgnoredMatch!.match.choices != null) {
         final selectedChoices = tokenStep.acceptedOrIgnoredMatch!.match.choices!
@@ -199,9 +235,14 @@ class PangeaRepresentation {
 
         final corIGCPoints = ConstructUseTypeEnum.corIGC.pointValue;
         final incIGCPoints = ConstructUseTypeEnum.incIGC.pointValue;
-        final xp = max(0, corIGCPoints + (incIGCPoints * (selectedChoices - 1)));
+        final xp = max(
+          0,
+          corIGCPoints + (incIGCPoints * (selectedChoices - 1)),
+        );
 
-        final igcUseType = selectedChoices == 1 ? ConstructUseTypeEnum.corIGC : ConstructUseTypeEnum.incIGC;
+        final igcUseType = selectedChoices == 1
+            ? ConstructUseTypeEnum.corIGC
+            : ConstructUseTypeEnum.incIGC;
         uses.addAll(token.allUses(igcUseType, metadata, xp));
       }
     }

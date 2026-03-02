@@ -10,11 +10,15 @@ enum ConstructUseTypeEnum {
   wa,
 
   /// produced during IGC
-  @Deprecated('Use corIGC/incIGC/ignIGC instead. Kept for backward compat with stored events.')
+  @Deprecated(
+    'Use corIGC/incIGC/ignIGC instead. Kept for backward compat with stored events.',
+  )
   ga,
 
   /// produced during IT
-  @Deprecated('Use corIt/incIt/ignIt instead. Kept for backward compat with stored events.')
+  @Deprecated(
+    'Use corIt/incIt/ignIt instead. Kept for backward compat with stored events.',
+  )
   ta,
 
   /// produced in chat by user and igc was not run
