@@ -36,8 +36,10 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/main.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
@@ -199,12 +201,12 @@ class BackgroundPush {
 
   // #Pangea
   // Helper to ensure a room is loaded or synced.
-  Future<Room?> _ensureRoomLoaded(String id) async {
+  Future<Room?> _ensureRoomLoaded(String id, {Membership? membership}) async {
     await client.roomsLoading;
     await client.accountDataLoading;
 
     var room = client.getRoomById(id);
-    if (room == null) {
+    if (room == null || (membership != null && room.membership != membership)) {
       await client.waitForRoomInSync(id).timeout(const Duration(seconds: 30));
       room = client.getRoomById(id);
     }
@@ -217,15 +219,14 @@ class BackgroundPush {
     String? sessionRoomId,
     String? activityId,
   }) async {
+    Room? room = await _ensureRoomLoaded(roomId);
     // Handle session room if provided.
     if (sessionRoomId != null &&
         sessionRoomId.isNotEmpty &&
         activityId != null &&
         activityId.isNotEmpty) {
       try {
-        final course = await _ensureRoomLoaded(roomId);
-        if (course == null) return;
-
+        if (room == null) return;
         final session = client.getRoomById(sessionRoomId);
         if (session?.membership == Membership.join) {
           FluffyChatApp.router.go('/rooms/$sessionRoomId');
@@ -243,9 +244,19 @@ class BackgroundPush {
 
     // Fallback: just open the original room.
     try {
-      final room = await _ensureRoomLoaded(roomId);
+      final hasKnocked = room?.hasKnocked;
+      if (hasKnocked == true) {
+        await room!.joinKnockedRoom();
+        room = await _ensureRoomLoaded(roomId, membership: Membership.join);
+      }
+
+      if (room == null || room.membership == Membership.invite) {
+        FluffyChatApp.router.go('/rooms');
+        return;
+      }
+
       FluffyChatApp.router.go(
-        room?.membership == Membership.invite ? '/rooms' : '/rooms/$roomId',
+        room.isSpace ? '/rooms/spaces/$roomId' : '/rooms/$roomId',
       );
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {"roomId": roomId});
@@ -513,7 +524,10 @@ class BackgroundPush {
       }
     }
     await setupPusher(
-      gatewayUrl: AppSettings.pushNotificationsGatewayUrl.value,
+      // #Pangea
+      // gatewayUrl: AppSettings.pushNotificationsGatewayUrl.value,
+      gatewayUrl: Environment.pushGatewayUrl,
+      // Pangea#
       token: _fcmToken,
     );
   }
