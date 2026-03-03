@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tagasi koju";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "T\xf5lke tagasiside";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " uuendas \xf5ppe seadeid";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Sa uuendasid oma \xf5ppe seadeid";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " lisas tegevusplaani";
+    },
+    get$youAddedActivityPlan() {
+      return "Sa lisasid tegevusplaani";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " saatis tegevuse kokkuv\xf5tte";
+    },
+    get$youSentActivitySummary() {
+      return "Sa saatsid tegevuse kokkuv\xf5tte";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["idpLp0mWA9QAxmzd69e/NoHgsIM="] = d.current;
+  d["WkYLAxhZvC8fTiyas3D3NNAy7rM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bumalik sa bahay";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Feedback sa Pagsasalin";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " in-update ang mga setting ng pagkatuto";
+    },
+    get$youUpdatedLearningSettings() {
+      return "In-update mo ang iyong mga setting ng pagkatuto";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " nagdagdag ng plano ng aktibidad";
+    },
+    get$youAddedActivityPlan() {
+      return "Nagdagdag ka ng plano ng aktibidad";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " nagpadala ng buod ng aktibidad";
+    },
+    get$youSentActivitySummary() {
+      return "Nagpadala ka ng buod ng aktibidad";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["a1kaV8S0/8I6mvSa9Nfb7Y14QvM="] = d.current;
+  d["tGaihAsOehvk100Sdchg4AgfJK4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

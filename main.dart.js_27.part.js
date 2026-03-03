@@ -1873,7 +1873,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Baixar Arquivo CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return string$.Voc__at;
+      return string$.Voc__atm;
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
       return "Assinatura adquirida atrav\xe9s de " + purchasePlatform;
@@ -5617,7 +5617,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Voltar para casa";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Feedback de Tradu\xe7\xe3o";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + string$.x20atual;
+    },
+    get$youUpdatedLearningSettings() {
+      return string$.Voc__ati;
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " adicionou um plano de atividades";
+    },
+    get$youAddedActivityPlan() {
+      return "Voc\xea adicionou um plano de atividades";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " enviou um resumo de atividades";
+    },
+    get$youSentActivitySummary() {
+      return "Voc\xea enviou um resumo de atividades";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -7469,7 +7487,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Baixar Arquivo CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return string$.Voc__at;
+      return string$.Voc__atm;
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
       return "Assinatura adquirida atrav\xe9s de " + purchasePlatform;
@@ -11211,6 +11229,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$returnHome() {
       return "Voltar para casa";
+    },
+    get$translationFeedback() {
+      return "Feedback de Tradu\xe7\xe3o";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + string$.x20atual;
+    },
+    get$youUpdatedLearningSettings() {
+      return string$.Voc__ati;
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " adicionou um plano de atividades";
+    },
+    get$youAddedActivityPlan() {
+      return "Voc\xea adicionou um plano de atividades";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " enviou um resumo de atividades";
+    },
+    get$youSentActivitySummary() {
+      return "Voc\xea enviou um resumo de atividades";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16805,6 +16844,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$returnHome() {
       return "Voltar para casa";
     },
+    get$translationFeedback() {
+      return "Feedback de Tradu\xe7\xe3o";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + string$.x20atual;
+    },
+    get$youUpdatedLearningSettings() {
+      return string$.Voc__ati;
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " adicionou um plano de atividades";
+    },
+    get$youAddedActivityPlan() {
+      return "Voc\xea adicionou um plano de atividades";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " enviou um resumo de atividades";
+    },
+    get$youSentActivitySummary() {
+      return "Voc\xea enviou um resumo de atividades";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16819,6 +16879,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nPt":{"L10n":[]},"L10nPtBr":{"L10n":[]},"L10nPtPt":{"L10n":[]}}'));
   var string$ = {
     x20alter: " alterou a visibilidade do hist\xf3rico para: ",
+    x20atual: " atualizou as configura\xe7\xf5es de aprendizado",
     x20convi: " convidou voc\xea para participar de um curso: ",
     x20e_cer: " e certifico que tenho pelo menos 16 anos de idade.",
     x20est__: " est\xe1 procurando usu\xe1rios para participar da sess\xe3o de atividade em ",
@@ -16987,7 +17048,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__ai: "Voc\xea ainda n\xe3o adicionou nenhum endere\xe7o de e-mail.",
-    Voc__at: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
+    Voc__ati: "Voc\xea atualizou suas configura\xe7\xf5es de aprendizado",
+    Voc__atm: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
     Voc__c: "Voc\xea completou a pr\xe1tica, continue assim para melhorar!",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
     Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
@@ -17007,7 +17069,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dQve4FZhjtuIzdOLibyg85ViN3Y="] = d.current;
+  d["xdwwcyx5WBG9YUggiuP9qaZwnMg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

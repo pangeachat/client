@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vissza a f\u0151oldalra";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Ford\xedt\xe1si visszajelz\xe9s";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " friss\xedtette a tanul\xe1si be\xe1ll\xedt\xe1sokat";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Friss\xedtetted a tanul\xe1si be\xe1ll\xedt\xe1saidat";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " hozz\xe1adott egy aktivit\xe1si tervet";
+    },
+    get$youAddedActivityPlan() {
+      return "Hozz\xe1adt\xe1l egy aktivit\xe1si tervet";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " elk\xfcld\xf6tt egy aktivit\xe1si \xf6sszefoglal\xf3t";
+    },
+    get$youSentActivitySummary() {
+      return "Elk\xfcldted az aktivit\xe1si \xf6sszefoglal\xf3t";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XpKC/M6QmrGyCCoTxbJNcvP24m4="] = d.current;
+  d["YsTTEkvkIWxaIrOx551Lm3cS5jc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

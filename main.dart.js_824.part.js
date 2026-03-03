@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Boshqaruvga qaytish";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Tarjima Fikri";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " o'qish sozlamalarini yangiladi";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Siz o'qish sozlamalaringizni yangiladingiz";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " faoliyat rejasini qo'shdi";
+    },
+    get$youAddedActivityPlan() {
+      return "Siz faoliyat rejasini qo'shdingiz";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " faoliyat xulosasini yubordi";
+    },
+    get$youSentActivitySummary() {
+      return "Siz faoliyat xulosasini yubordingiz";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5624,7 +5642,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iCiMWcoRa+gOdbFXz0Fwd72wKQQ="] = d.current;
+  d["La9+/yK8L5RRyrMG06SBr+dFVF4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

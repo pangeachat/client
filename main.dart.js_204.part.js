@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Torna a casa";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Comentaris sobre la traducci\xf3";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " ha actualitzat la configuraci\xf3 d'aprenentatge";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Has actualitzat la teva configuraci\xf3 d'aprenentatge";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " ha afegit un pla d'activitat";
+    },
+    get$youAddedActivityPlan() {
+      return "Has afegit un pla d'activitat";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " ha enviat un resum d'activitat";
+    },
+    get$youSentActivitySummary() {
+      return "Has enviat un resum d'activitat";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["84K8UG2YHtwEq81bIJIL2PNh/kw="] = d.current;
+  d["dbgByNIxFJtAx/oYmRNQEEJMDik="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map

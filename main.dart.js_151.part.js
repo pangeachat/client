@@ -5606,7 +5606,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0412\u044f\u0440\u043d\u0443\u0446\u0446\u0430 \u0434\u0430\u0434\u043e\u043c\u0443";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\u0417\u0432\u0430\u0440\u043e\u0442\u043d\u0430\u044f \u0441\u0443\u0432\u044f\u0437\u044c \u043f\u0430 \u043f\u0435\u0440\u0430\u043a\u043b\u0430\u0434\u0437\u0435";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u0430\u0431\u043d\u0430\u0432\u0456\u045e \u043d\u0430\u043b\u0430\u0434\u044b \u043d\u0430\u0432\u0443\u0447\u0430\u043d\u043d\u044f";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\u0412\u044b \u0430\u0431\u043d\u0430\u0432\u0456\u043b\u0456 \u0441\u0432\u0430\u0435 \u043d\u0430\u043b\u0430\u0434\u044b \u043d\u0430\u0432\u0443\u0447\u0430\u043d\u043d\u044f";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " \u0434\u0430\u0434\u0430\u045e \u043f\u043b\u0430\u043d \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u0456";
+    },
+    get$youAddedActivityPlan() {
+      return "\u0412\u044b \u0434\u0430\u0431\u0430\u0432\u0456\u043b\u0456 \u043f\u043b\u0430\u043d \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u0456";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " \u0430\u0434\u043f\u0440\u0430\u0432\u0456\u045e \u0440\u044d\u0437\u044e\u043c\u044d \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u0456";
+    },
+    get$youSentActivitySummary() {
+      return "\u0412\u044b \u0430\u0434\u043f\u0440\u0430\u0432\u0456\u043b\u0456 \u0440\u044d\u0437\u044e\u043c\u044d \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u0456";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5624,7 +5642,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["J5C5OSdr8fkSXTg2A4D7YtxCDfc="] = d.current;
+  d["hhzmaxMFjgrg4TWJGbVB46SLsc4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_151.part.js.map

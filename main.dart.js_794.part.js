@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Powr\xf3t do domu";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Opinie o t\u0142umaczeniu";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " zaktualizowa\u0142 ustawienia nauki";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Zaktualizowa\u0142e\u015b swoje ustawienia nauki";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " doda\u0142 plan aktywno\u015bci";
+    },
+    get$youAddedActivityPlan() {
+      return "Doda\u0142e\u015b plan aktywno\u015bci";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " wys\u0142a\u0142 podsumowanie aktywno\u015bci";
+    },
+    get$youSentActivitySummary() {
+      return "Wys\u0142a\u0142e\u015b podsumowanie aktywno\u015bci";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m2QQmUWa+VvnOg/wdX2V1ahUEeo="] = d.current;
+  d["/xNucOoalrFLhA1iPlhgj4W0nzI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_794.part.js.map

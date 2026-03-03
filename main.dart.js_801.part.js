@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xcentoarce-te acas\u0103";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Feedback de traducere";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " a actualizat set\u0103rile de \xeenv\u0103\u021bare";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Ai actualizat set\u0103rile tale de \xeenv\u0103\u021bare";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " a ad\u0103ugat un plan de activitate";
+    },
+    get$youAddedActivityPlan() {
+      return "Ai ad\u0103ugat un plan de activitate";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " a trimis un rezumat al activit\u0103\u021bii";
+    },
+    get$youSentActivitySummary() {
+      return "Ai trimis un rezumat al activit\u0103\u021bii";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6L0zN6jnKFjIpcrZgo+iGHnYoHI="] = d.current;
+  d["+f9fbkjX+MgvG9D/vd6AWfqdD/Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_801.part.js.map

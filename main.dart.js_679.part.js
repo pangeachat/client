@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0918\u0930 \u092a\u0930 \u0932\u094c\u091f\u0947\u0902";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\u0905\u0928\u0941\u0935\u093e\u0926 \u092a\u094d\u0930\u0924\u093f\u0915\u094d\u0930\u093f\u092f\u093e";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u0928\u0947 \u0905\u0927\u094d\u092f\u092f\u0928 \u0938\u0947\u091f\u093f\u0902\u0917\u094d\u0938 \u0905\u092a\u0921\u0947\u091f \u0915\u0940\u0902";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\u0906\u092a\u0928\u0947 \u0905\u092a\u0928\u0940 \u0905\u0927\u094d\u092f\u092f\u0928 \u0938\u0947\u091f\u093f\u0902\u0917\u094d\u0938 \u0905\u092a\u0921\u0947\u091f \u0915\u0940\u0902";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " \u0928\u0947 \u090f\u0915 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u092f\u094b\u091c\u0928\u093e \u091c\u094b\u0921\u093c\u0940";
+    },
+    get$youAddedActivityPlan() {
+      return "\u0906\u092a\u0928\u0947 \u090f\u0915 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u092f\u094b\u091c\u0928\u093e \u091c\u094b\u0921\u093c\u0940";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " \u0928\u0947 \u090f\u0915 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u0938\u093e\u0930\u093e\u0902\u0936 \u092d\u0947\u091c\u093e";
+    },
+    get$youSentActivitySummary() {
+      return "\u0906\u092a\u0928\u0947 \u090f\u0915 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u0938\u093e\u0930\u093e\u0902\u0936 \u092d\u0947\u091c\u093e";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qUcbpcMIPf2a8/FteT0UsB+uR0g="] = d.current;
+  d["2rgd4iQ4vDND2TFLlrJMdrsKELU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_679.part.js.map

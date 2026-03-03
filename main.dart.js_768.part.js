@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u10db\u10d7\u10d0\u10d5\u10d0\u10e0 \u10d2\u10d5\u10d4\u10e0\u10d3\u10d6\u10d4 \u10d3\u10d0\u10d1\u10e0\u10e3\u10dc\u10d4\u10d1\u10d0";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\u10d7\u10d0\u10e0\u10d2\u10db\u10d0\u10dc\u10d8\u10e1 \u10e3\u10d9\u10e3\u10d9\u10d0\u10d5\u10e8\u10d8\u10e0\u10d8";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u10d2\u10d0\u10dc\u10d0\u10d0\u10ee\u10da\u10d0 \u10e1\u10ec\u10d0\u10d5\u10da\u10d8\u10e1 \u10de\u10d0\u10e0\u10d0\u10db\u10d4\u10e2\u10e0\u10d4\u10d1\u10d8";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc \u10d2\u10d0\u10dc\u10d0\u10d0\u10ee\u10da\u10d4\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10e1\u10ec\u10d0\u10d5\u10da\u10d8\u10e1 \u10de\u10d0\u10e0\u10d0\u10db\u10d4\u10e2\u10e0\u10d4\u10d1\u10d8";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " \u10d3\u10d0\u10d0\u10db\u10d0\u10e2\u10d0 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d8\u10e1 \u10d2\u10d4\u10d2\u10db\u10d0";
+    },
+    get$youAddedActivityPlan() {
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc \u10d3\u10d0\u10d0\u10db\u10d0\u10e2\u10d4\u10d7 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d8\u10e1 \u10d2\u10d4\u10d2\u10db\u10d0";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " \u10d2\u10d0\u10db\u10dd\u10d2\u10d8\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0\u10d7 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d8\u10e1 \u10e0\u10d4\u10d6\u10d8\u10e3\u10db\u10d4";
+    },
+    get$youSentActivitySummary() {
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc \u10d2\u10d0\u10db\u10dd\u10d2\u10d8\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0\u10d7 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d8\u10e1 \u10e0\u10d4\u10d6\u10d8\u10e3\u10db\u10d4";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["25CHm9f0CdBr+cd8LAzqeAkOXo4="] = d.current;
+  d["334i6GwMXzdhNWZXga+ccdx12n4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_768.part.js.map

@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\xe9igh ar ais abhaile";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "F\xedor\xf3ireacht aistri\xfach\xe1in";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return "D'athraigh " + username + " socruithe foghlama";
+    },
+    get$youUpdatedLearningSettings() {
+      return "D'athraigh t\xfa do shocruithe foghlama";
+    },
+    userAddedActivityPlan$1(username) {
+      return "Chuir " + username + " plean gn\xedomha\xedochta leis";
+    },
+    get$youAddedActivityPlan() {
+      return "Chuir t\xfa plean gn\xedomha\xedochta leis";
+    },
+    userSentActivitySummary$1(username) {
+      return "Chuir " + username + " achoimre gn\xedomha\xedochta ar f\xe1il";
+    },
+    get$youSentActivitySummary() {
+      return "Chuir t\xfa achoimre gn\xedomha\xedochta ar f\xe1il";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Dyezqy26gypKR7qGgWaF+rUWPMM="] = d.current;
+  d["ocx63nMPU1eiJJVeOVFL1OZgrRs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

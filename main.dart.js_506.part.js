@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Reiri hejmen";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Tradukkomento";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u011disdatigis lernagordojn";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Vi \u011disdatigis viajn lernagordojn";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " aldonis aktivplanon";
+    },
+    get$youAddedActivityPlan() {
+      return "Vi aldonis aktivplanon";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " sendis aktivsumaron";
+    },
+    get$youSentActivitySummary() {
+      return "Vi sendis aktivsumaron";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["viLnNZfNDj2vSnJHMX9xU5OxrUI="] = d.current;
+  d["kn2501yhOIb0LNYfWY8uZga9/iQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_506.part.js.map

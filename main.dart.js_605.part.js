@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Itzuli etxera";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Itzulpen Feedback";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " ikasketa ezarpenak eguneratu ditu";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Zuk ikasketa ezarpenak eguneratu dituzu";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " jarduera plana gehitu du";
+    },
+    get$youAddedActivityPlan() {
+      return "Zuk jarduera plana gehitu duzu";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " jarduera laburpena bidali du";
+    },
+    get$youSentActivitySummary() {
+      return "Zuk jarduera laburpena bidali duzu";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cVeY6UN/0tjpFEUt5pHXMSJ9/Qs="] = d.current;
+  d["NL2F23fk9VGs+z4SYM8+xR2HR3U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_605.part.js.map

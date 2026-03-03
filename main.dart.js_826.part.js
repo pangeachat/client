@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u8fd4\u56de\u4e3b\u9801";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\u7ffb\u8b6f\u53cd\u994b";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u66f4\u65b0\u4e86\u5b78\u7fd2\u8a2d\u7f6e";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\u4f60\u66f4\u65b0\u4e86\u4f60\u7684\u5b78\u7fd2\u8a2d\u7f6e";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " \u6dfb\u52a0\u4e86\u4e00\u500b\u6d3b\u52d5\u8a08\u5283";
+    },
+    get$youAddedActivityPlan() {
+      return "\u4f60\u6dfb\u52a0\u4e86\u4e00\u500b\u6d3b\u52d5\u8a08\u5283";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " \u767c\u9001\u4e86\u4e00\u500b\u6d3b\u52d5\u6458\u8981";
+    },
+    get$youSentActivitySummary() {
+      return "\u4f60\u767c\u9001\u4e86\u4e00\u500b\u6d3b\u52d5\u6458\u8981";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5620,7 +5638,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["O5WA/hB6/ezSB6+HGpVW8IADYdY="] = d.current;
+  d["UVi+CLGOstrookAsXF9eWCU98kk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map

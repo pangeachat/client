@@ -5606,7 +5606,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u09ac\u09be\u09a1\u09bc\u09bf\u09a4\u09c7 \u09ab\u09bf\u09b0\u09c7 \u09af\u09be\u09a8";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\u0985\u09a8\u09c1\u09ac\u09be\u09a6 \u09aa\u09cd\u09b0\u09a4\u09bf\u0995\u09cd\u09b0\u09bf\u09af\u09bc\u09be";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \u09b6\u09c7\u0996\u09be\u09b0 \u09b8\u09c7\u099f\u09bf\u0982\u09b8 \u0986\u09aa\u09a1\u09c7\u099f \u0995\u09b0\u09c7\u099b\u09c7";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\u0986\u09aa\u09a8\u09bf \u0986\u09aa\u09a8\u09be\u09b0 \u09b6\u09c7\u0996\u09be\u09b0 \u09b8\u09c7\u099f\u09bf\u0982\u09b8 \u0986\u09aa\u09a1\u09c7\u099f \u0995\u09b0\u09c7\u099b\u09c7\u09a8";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " \u098f\u0995\u099f\u09bf \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be \u09af\u09cb\u0997 \u0995\u09b0\u09c7\u099b\u09c7";
+    },
+    get$youAddedActivityPlan() {
+      return "\u0986\u09aa\u09a8\u09bf \u098f\u0995\u099f\u09bf \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be \u09af\u09cb\u0997 \u0995\u09b0\u09c7\u099b\u09c7\u09a8";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " \u098f\u0995\u099f\u09bf \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09b8\u09be\u09b0\u09b8\u0982\u0995\u09cd\u09b7\u09c7\u09aa \u09aa\u09be\u09a0\u09bf\u09af\u09bc\u09c7\u099b\u09c7";
+    },
+    get$youSentActivitySummary() {
+      return "\u0986\u09aa\u09a8\u09bf \u098f\u0995\u099f\u09bf \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09b8\u09be\u09b0\u09b8\u0982\u0995\u09cd\u09b7\u09c7\u09aa \u09aa\u09be\u09a0\u09bf\u09af\u09bc\u09c7\u099b\u09c7\u09a8";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5621,7 +5639,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ky67avXgO71L4iBviIE4KRaf7KY="] = d.current;
+  d["BS5itDxSUkZxag2Mf5IG8JFr/wc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_165.part.js.map

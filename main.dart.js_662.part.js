@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\xe9igh ar ais abhaile";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Aiseolas aistri\xfach\xe1in";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " nuashonraigh socruithe foghlama";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Nuashonraigh t\xfa do shocruithe foghlama";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " chuir plean gn\xedomha\xedochta leis";
+    },
+    get$youAddedActivityPlan() {
+      return "Chuir t\xfa plean gn\xedomha\xedochta leis";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " sheol achoimre gn\xedomha\xedochta";
+    },
+    get$youSentActivitySummary() {
+      return "Sheol t\xfa achoimre gn\xedomha\xedochta";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tOi5IQyQU8NiXrgqTlISbXApdo4="] = d.current;
+  d["ol4CLrsfz6658/ovMUpdcO0dKJs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_662.part.js.map

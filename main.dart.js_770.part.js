@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Gr\u012f\u017eti namo";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Vertimo atsiliepimai";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " atnaujino mokymosi nustatymus";
+    },
+    get$youUpdatedLearningSettings() {
+      return "J\u016bs atnaujinote savo mokymosi nustatymus";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " prid\u0117jo veiklos plan\u0105";
+    },
+    get$youAddedActivityPlan() {
+      return "J\u016bs prid\u0117jote veiklos plan\u0105";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " i\u0161siunt\u0117 veiklos santrauk\u0105";
+    },
+    get$youSentActivitySummary() {
+      return "J\u016bs i\u0161siunt\u0117te veiklos santrauk\u0105";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3LyJc2fE3J0R5da0WUPV6PIGVsc="] = d.current;
+  d["r67j9+9ymh2BsyFjqEhCen+m0go="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

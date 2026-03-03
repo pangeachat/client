@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kembali ke beranda";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "Umpan Balik Terjemahan";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " memperbarui pengaturan pembelajaran";
+    },
+    get$youUpdatedLearningSettings() {
+      return "Anda memperbarui pengaturan pembelajaran Anda";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " menambahkan rencana aktivitas";
+    },
+    get$youAddedActivityPlan() {
+      return "Anda menambahkan rencana aktivitas";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " mengirimkan ringkasan aktivitas";
+    },
+    get$youSentActivitySummary() {
+      return "Anda mengirimkan ringkasan aktivitas";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sfm6xdkQWKzhAh65GKlmj8QmsGQ="] = d.current;
+  d["Lkofl1qF3jovgCHMSILRurf77ZQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

@@ -5605,7 +5605,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ana sayfaya geri d\xf6n";
     },
     get$translationFeedback() {
-      return "Translation Feedback";
+      return "\xc7eviri Geri Bildirimi";
+    },
+    userUpdatedLearningSettings$1(username) {
+      return username + " \xf6\u011frenme ayarlar\u0131n\u0131 g\xfcncelledi";
+    },
+    get$youUpdatedLearningSettings() {
+      return "\xd6\u011frenme ayarlar\u0131n\u0131 g\xfcncelledin";
+    },
+    userAddedActivityPlan$1(username) {
+      return username + " bir etkinlik plan\u0131 ekledi";
+    },
+    get$youAddedActivityPlan() {
+      return "Bir etkinlik plan\u0131 ekledin";
+    },
+    userSentActivitySummary$1(username) {
+      return username + " bir etkinlik \xf6zeti g\xf6nderdi";
+    },
+    get$youSentActivitySummary() {
+      return "Bir etkinlik \xf6zeti g\xf6nderdin";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5623,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cHcK4143x6fv2rq9qW5wm7aKIag="] = d.current;
+  d["7IjySs2M4AEEFihJouGpqDkGI7M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_821.part.js.map
