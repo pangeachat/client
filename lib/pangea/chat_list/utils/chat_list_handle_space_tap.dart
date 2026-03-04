@@ -16,10 +16,13 @@ class SpaceTapUtil {
     switch (space.membership) {
       case Membership.join:
         context.go("/rooms/spaces/${space.id}/details");
+        return;
       case Membership.leave:
         await _autoJoin(context, space);
+        return;
       case Membership.invite:
         await _onInviteTap(context, space);
+        return;
       case Membership.ban:
       case Membership.knock:
         context.go("/rooms/spaces/${space.id}/details");
