@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
-import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
 
 class SpaceCodeOnboardingView extends StatelessWidget {
   final SpaceCodeOnboardingState controller;
@@ -13,69 +12,91 @@ class SpaceCodeOnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PangeaLoginScaffold(
-      customAppBar: AppBar(
-        title: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 450),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BackButton(onPressed: Navigator.of(context).pop),
-              const SizedBox(width: 40.0),
-            ],
-          ),
-        ),
+    final theme = Theme.of(context);
+    return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(onPressed: Navigator.of(context).pop),
         automaticallyImplyLeading: false,
       ),
-      showAppName: false,
-      mainAssetUrl: controller.profile?.avatarUrl,
-      children: [
-        Column(
-          spacing: 8.0,
-          children: [
-            Text(
-              L10n.of(context).welcomeUser(
-                controller.profile?.displayName ??
-                    controller.client.userID?.localpart ??
-                    "",
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 300),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 24.0,
+                        horizontal: 16.0,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Logo — small, no white background
+                          SvgPicture.asset(
+                            "assets/pangea/pangea_logo.svg",
+                            width: 72,
+                            height: 72,
+                            colorFilter: ColorFilter.mode(
+                              theme.colorScheme.primary,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          // Main group: question + input + join button
+                          Column(
+                            spacing: 16.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                L10n.of(context).joinSpaceOnboardingDesc,
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                  hintText: L10n.of(context).enterCodeToJoin,
+                                ),
+                                controller: controller.codeController,
+                                onSubmitted: (_) => controller.submitCode(),
+                              ),
+                              ElevatedButton(
+                                onPressed:
+                                    controller.codeController.text.isNotEmpty
+                                        ? controller.submitCode
+                                        : null,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      theme.colorScheme.primaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onPrimaryContainer,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [Text(L10n.of(context).join)],
+                                ),
+                              ),
+                            ],
+                          ),
+                          // Skip — separated at the bottom
+                          TextButton(
+                            onPressed: () => context.go("/rooms"),
+                            child: Text(L10n.of(context).skipForNow),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            Text(
-              L10n.of(context).joinSpaceOnboardingDesc,
-              textAlign: TextAlign.center,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: L10n.of(context).enterCodeToJoin,
-              ),
-              controller: controller.codeController,
-              onSubmitted: (_) => controller.submitCode,
-            ),
-            ElevatedButton(
-              onPressed: controller.codeController.text.isNotEmpty
-                  ? controller.submitCode
-                  : null,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                foregroundColor: Theme.of(
-                  context,
-                ).colorScheme.onPrimaryContainer,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text(L10n.of(context).join)],
-              ),
-            ),
-            TextButton(
-              child: Text(L10n.of(context).skipForNow),
-              onPressed: () => context.go("/rooms"),
-            ),
-          ],
+            );
+          },
         ),
-      ],
+      ),
     );
   }
 }
