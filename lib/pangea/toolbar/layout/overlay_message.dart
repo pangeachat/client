@@ -400,7 +400,6 @@ class _MessageSelectModeContent extends StatelessWidget {
               spacing: 8.0,
               mainAxisSize: .min,
               mainAxisAlignment: .spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Flexible(
                   child: Text(
