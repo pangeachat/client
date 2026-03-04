@@ -40,8 +40,10 @@ class RoomInviteDialog extends StatelessWidget {
               ? "/rooms/spaces/${room.id}/details"
               : "/rooms/${room.id}",
         );
+        return;
       case CourseInviteAction.decline:
         await room.leave();
+        return;
       case null:
         return;
     }
