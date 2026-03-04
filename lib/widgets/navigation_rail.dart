@@ -237,7 +237,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             collapse();
                             final room = client.getRoomById(allSpaces[i].id);
                             if (room != null) {
-                              chatListHandleSpaceTap(context, room);
+                              SpaceTapUtil.onTap(context, room);
                             } else {
                               context.go(
                                 "/rooms/spaces/${allSpaces[i].id}/details",
