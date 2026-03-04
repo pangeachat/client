@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-02-24 14:59:38.624762",
+  "@@last_modified": "2026-03-03 11:17:31.316729",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12413,6 +12413,73 @@
   },
   "cannotJoinBannedRoom": "Bawal. Hindi makapasok.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Tinanggap ang iyong kahilingan na sumali! Maaari ka nang pumasok sa kurso.",
+  "sessionFull": "Sobrang huli! Puno na ang aktibidad na ito.",
+  "returnToCourse": "Bumalik sa kurso",
+  "returnHome": "Bumalik sa bahay",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Feedback sa Pagsasalin",
+  "userUpdatedLearningSettings": "{username} in-update ang mga setting ng pagkatuto",
+  "youUpdatedLearningSettings": "In-update mo ang iyong mga setting ng pagkatuto",
+  "userAddedActivityPlan": "{username} nagdagdag ng plano ng aktibidad",
+  "youAddedActivityPlan": "Nagdagdag ka ng plano ng aktibidad",
+  "userSentActivitySummary": "{username} nagpadala ng buod ng aktibidad",
+  "youSentActivitySummary": "Nagpadala ka ng buod ng aktibidad",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

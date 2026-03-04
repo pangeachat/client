@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-24 14:59:53.981596",
+  "@@last_modified": "2026-03-03 11:18:45.265226",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12521,6 +12521,73 @@
   },
   "cannotJoinBannedRoom": "Malpermesita. Ne eblas eniri.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Via aliĝpeticio estis akceptita! Vi nun povas eniri la kurson.",
+  "sessionFull": "Tro malfrue! Ĉi tiu aktiveco estas plena.",
+  "returnToCourse": "Reiri al la kurso",
+  "returnHome": "Reiri hejmen",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Tradukkomento",
+  "userUpdatedLearningSettings": "{username} ĝisdatigis lernagordojn",
+  "youUpdatedLearningSettings": "Vi ĝisdatigis viajn lernagordojn",
+  "userAddedActivityPlan": "{username} aldonis aktivplanon",
+  "youAddedActivityPlan": "Vi aldonis aktivplanon",
+  "userSentActivitySummary": "{username} sendis aktivsumaron",
+  "youSentActivitySummary": "Vi sendis aktivsumaron",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

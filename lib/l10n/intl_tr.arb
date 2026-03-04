@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-24 14:59:41.166599",
+  "@@last_modified": "2026-03-03 11:17:43.720408",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11638,6 +11638,73 @@
   },
   "cannotJoinBannedRoom": "Yasaklı. Katılamıyor.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Katılma isteğiniz kabul edildi! Artık derse girebilirsiniz.",
+  "sessionFull": "Geç kaldınız! Bu etkinlik dolu.",
+  "returnToCourse": "Derse geri dön",
+  "returnHome": "Ana sayfaya geri dön",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Çeviri Geri Bildirimi",
+  "userUpdatedLearningSettings": "{username} öğrenme ayarlarını güncelledi",
+  "youUpdatedLearningSettings": "Öğrenme ayarlarını güncelledin",
+  "userAddedActivityPlan": "{username} bir etkinlik planı ekledi",
+  "youAddedActivityPlan": "Bir etkinlik planı ekledin",
+  "userSentActivitySummary": "{username} bir etkinlik özeti gönderdi",
+  "youSentActivitySummary": "Bir etkinlik özeti gönderdin",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

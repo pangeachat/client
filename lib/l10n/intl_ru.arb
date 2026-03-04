@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-24 14:59:55.748204",
+  "@@last_modified": "2026-03-03 11:18:48.349091",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -3471,7 +3471,7 @@
       }
     }
   },
-  "serverLimitReached": "",
+  "serverLimitReached": "Достигнут лимит сервера! Подождите {seconds, plural, one{# секунду} few{# секунды} many{# секунд} other{# секунд}}...",
   "@serverLimitReached": {
     "type": "integer",
     "placeholders": {
@@ -3514,7 +3514,6 @@
   "yellowFeedback": "Хм, попробуйте это и посмотрите, сработает ли! Чтобы использовать это слово, просто нажмите его снова.",
   "redFeedback": "Я думаю, это неправильно...",
   "itInstructionsTitle": "Я могу помочь вам с переводом!",
-  "itInstructionsBody": "Вы можете нажимать и удерживать выборы для получения информации о слове.",
   "gaTooltip": "Использование L2 с грамматической помощью",
   "taTooltip": "Использование L2 с переводческой помощью",
   "unTooltip": "Другое",
@@ -3530,13 +3529,13 @@
   "noIdenticalLanguages": "Пожалуйста, выберите разные исходный и целевой языки",
   "searchBy": "Поиск по стране и языкам",
   "joinWithClassCode": "Присоединиться к курсу",
-  "languageLevelPreA1": "Новичок Низкий (Pre A1)",
-  "languageLevelA1": "Новичок Мид (A1)",
-  "languageLevelA2": "Начальный высокий (A2)",
-  "languageLevelB1": "Средний средний (B1)",
-  "languageLevelB2": "Продвинутый низкий (B2)",
-  "languageLevelC1": "Продвинутый средний (C1)",
-  "languageLevelC2": "Высший (C2)",
+  "languageLevelPreA1": "Преддверие A1 (Pre A1)",
+  "languageLevelA1": "Начальный (A1)",
+  "languageLevelA2": "Элементарный (A2)",
+  "languageLevelB1": "Средний (B1)",
+  "languageLevelB2": "Выше среднего (B2)",
+  "languageLevelC1": "Продвинутый (C1)",
+  "languageLevelC2": "Свободное владение (C2)",
   "changeTheNameOfTheClass": "Изменить название",
   "changeTheNameOfTheChat": "Изменить название чата",
   "sorryNoResults": "Извините, результатов нет.",
@@ -3906,9 +3905,6 @@
   "noPaymentInfo": "Информация о платеже не требуется!",
   "updatePhoneOS": "Возможно, потребуется обновить версию ОС вашего устройства.",
   "wordsPerMinute": "Слова в минуту",
-  "tooltipInstructionsTitle": "Не уверены, что это делает?",
-  "tooltipInstructionsMobileBody": "Нажмите и удерживайте элементы, чтобы просмотреть подсказки.",
-  "tooltipInstructionsBrowserBody": "Наведите курсор на элементы, чтобы просмотреть подсказки.",
   "chatCapacity": "Вместимость чата",
   "roomFull": "Эта комната уже заполнена.",
   "chatCapacityHasBeenChanged": "Вместимость чата изменена",
@@ -4500,7 +4496,7 @@
   "saveAndLaunch": "Сохранить и запустить",
   "launchToSpace": "Запустить в курс",
   "numberOfActivities": "Количество сессий активности",
-  "maximumActivityParticipants": "Каждая активность может иметь максимум {count} участник(ов).",
+  "maximumActivityParticipants": "Каждая активность может иметь максимум {count, plural, one{# участник} few{# участника} many{# участников} other{# участников}}.",
   "pending": "В ожидании",
   "inactive": "Неактивно",
   "confirmRole": "Подтвердить роль",
@@ -4589,9 +4585,6 @@
   "chooseLanguage": "Выберите целевой язык.",
   "planTrip": "Планите поездку",
   "howAreYouTraveling": "Как вы проезжаете?",
-  "unlockPrivateTrip": "Обекращиваете свой событие",
-  "joinPublicTrip": "Присоединяйте к опеденной проезде",
-  "startOwnTrip": "Начать свой собственный",
   "tripPlanDesc": "Поездки — это курсы. Каждый содержит 8-10 последовательных тем с разнообразными заданиями для изучения языка.",
   "unlockPrivateTripTitle": "Разблокировать личную поездку",
   "browsePublicTrips": "Просмотреть публичные поездки",
@@ -4651,10 +4644,6 @@
     "placeholders": {}
   },
   "@itInstructionsTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@itInstructionsBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -6294,18 +6283,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsMobileBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsBrowserBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -9188,18 +9165,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unlockPrivateTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@joinPublicTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startOwnTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tripPlanDesc": {
     "type": "String",
     "placeholders": {}
@@ -11298,6 +11263,73 @@
   },
   "cannotJoinBannedRoom": "Запрещено. Невозможно присоединиться.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Ваш запрос на присоединение был принят! Теперь вы можете войти в курс.",
+  "sessionFull": "Слишком поздно! Это занятие заполнено.",
+  "returnToCourse": "Вернуться к курсу",
+  "returnHome": "Вернуться на главную",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Обратная связь по переводу",
+  "userUpdatedLearningSettings": "{username} обновил настройки обучения",
+  "youUpdatedLearningSettings": "Вы обновили свои настройки обучения",
+  "userAddedActivityPlan": "{username} добавил план активности",
+  "youAddedActivityPlan": "Вы добавили план активности",
+  "userSentActivitySummary": "{username} отправил сводку активности",
+  "youSentActivitySummary": "Вы отправили сводку активности",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

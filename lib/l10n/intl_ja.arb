@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-02-24 14:59:52.226358",
+  "@@last_modified": "2026-03-03 11:18:39.108169",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12222,6 +12222,73 @@
   },
   "cannotJoinBannedRoom": "禁止されています。参加できません。",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "あなたの参加リクエストが承認されました！これでコースに入ることができます。",
+  "sessionFull": "遅すぎます！このアクティビティは満員です。",
+  "returnToCourse": "コースに戻る",
+  "returnHome": "ホームに戻る",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "翻訳フィードバック",
+  "userUpdatedLearningSettings": "{username} が学習設定を更新しました",
+  "youUpdatedLearningSettings": "あなたは学習設定を更新しました",
+  "userAddedActivityPlan": "{username} がアクティビティプランを追加しました",
+  "youAddedActivityPlan": "あなたはアクティビティプランを追加しました",
+  "userSentActivitySummary": "{username} がアクティビティの概要を送信しました",
+  "youSentActivitySummary": "あなたはアクティビティの概要を送信しました",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

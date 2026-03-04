@@ -14,12 +14,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
-import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
-import 'package:fluffychat/pangea/join_codes/knock_tracker.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
@@ -539,58 +537,7 @@ class ChatListController extends State<ChatList>
     //#Pangea
     _invitedSpaceSubscription = Matrix.of(context).client.onSync.stream
         .where((event) => event.rooms?.invite != null)
-        .listen((event) async {
-          for (final inviteEntry in event.rooms!.invite!.entries) {
-            if (inviteEntry.value.inviteState == null) continue;
-            final isSpace = inviteEntry.value.inviteState!.any(
-              (event) =>
-                  event.type == EventTypes.RoomCreate &&
-                  event.content['type'] == 'm.space',
-            );
-            final isAnalytics = inviteEntry.value.inviteState!.any(
-              (event) =>
-                  event.type == EventTypes.RoomCreate &&
-                  event.content['type'] == PangeaRoomTypes.analytics,
-            );
-            final hasKnocked = KnockTracker.hasKnocked(
-              Matrix.of(context).client,
-              inviteEntry.key,
-            );
-
-            if (isSpace) {
-              final spaceId = inviteEntry.key;
-              final space = Matrix.of(context).client.getRoomById(spaceId);
-
-              if (space?.classCode?.toLowerCase() ==
-                  SpaceCodeRepo.recentCode?.toLowerCase()) {
-                return;
-              }
-
-              if (space != null) {
-                chatListHandleSpaceTap(context, space);
-              }
-            }
-
-            if (isAnalytics || hasKnocked) {
-              final room = Matrix.of(
-                context,
-              ).client.getRoomById(inviteEntry.key);
-              if (room == null) return;
-
-              try {
-                await room.joinKnockedRoom();
-              } catch (err, s) {
-                ErrorHandler.logError(
-                  m: "Failed to join analytics room",
-                  e: err,
-                  s: s,
-                  data: {"roomId": room.id},
-                );
-              }
-              return;
-            }
-          }
-        });
+        .listen(_onInviteSync);
 
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .addListener(_onSubscribe);
@@ -657,7 +604,45 @@ class ChatListController extends State<ChatList>
     ).client.rooms.where((r) => r.isSpace && r.membership == Membership.invite);
 
     for (final space in invitedSpaces) {
-      await showInviteDialog(space, context);
+      await SpaceTapUtil.onTap(context, space);
+    }
+  }
+
+  Future<void> _onInviteSync(SyncUpdate update) async {
+    final roomIds =
+        update.rooms?.invite?.entries.map((e) => e.key).toSet() ?? {};
+
+    for (final roomId in roomIds) {
+      final room = Matrix.of(context).client.getRoomById(roomId);
+      if (room == null) continue;
+      final isSpace = room.isSpace;
+      final isAnalytics = room.isAnalyticsRoom;
+      if (!isSpace && !isAnalytics) continue;
+
+      final hasKnocked = room.hasKnocked;
+
+      // Auto-join analytics rooms or spaces the user has knocked on
+      if (isAnalytics || hasKnocked) {
+        try {
+          await room.joinKnockedRoom();
+        } catch (err, s) {
+          ErrorHandler.logError(
+            m: "Failed to join analytics room",
+            e: err,
+            s: s,
+            data: {"roomId": room.id},
+          );
+        }
+        continue;
+      }
+
+      if (isSpace) {
+        // If user joined via code, don't show invite popup
+        final roomCode = room.classCode?.toLowerCase();
+        final cachedCode = SpaceCodeRepo.recentCode?.toLowerCase();
+        if (cachedCode == roomCode) continue;
+        await SpaceTapUtil.onTap(context, room);
+      }
     }
   }
   // Pangea#

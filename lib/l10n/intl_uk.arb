@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-24 14:59:31.151553",
+  "@@last_modified": "2026-03-03 11:16:58.893621",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11298,6 +11298,73 @@
   },
   "cannotJoinBannedRoom": "Заборонено. Немає можливості приєднатися.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Ваш запит на приєднання був прийнятий! Тепер ви можете увійти до курсу.",
+  "sessionFull": "Занадто пізно! Ця активність заповнена.",
+  "returnToCourse": "Повернутися до курсу",
+  "returnHome": "Повернутися додому",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Зворотний зв'язок щодо перекладу",
+  "userUpdatedLearningSettings": "{username} оновив налаштування навчання",
+  "youUpdatedLearningSettings": "Ви оновили свої налаштування навчання",
+  "userAddedActivityPlan": "{username} додав план активності",
+  "youAddedActivityPlan": "Ви додали план активності",
+  "userSentActivitySummary": "{username} надіслав підсумок активності",
+  "youSentActivitySummary": "Ви надіслали підсумок активності",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

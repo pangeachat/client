@@ -54,10 +54,10 @@ class ActivitySessionButtonWidget extends StatelessWidget {
                         controller.returnFromFullSession,
                       ),
                       _ => _CTAButton(
-                        controller.activityRoom?.isRoomAdmin ?? true
-                            ? L10n.of(context).start
-                            : L10n.of(context).confirm,
-                        controller.confirmRoleSelection,
+                        L10n.of(context).confirm,
+                        controller.state == SessionState.selectedRole
+                            ? controller.confirmRoleSelection
+                            : null,
                       ),
                     },
                   ],
@@ -144,6 +144,7 @@ class _ActivityRoleConfirmedButtons extends StatelessWidget {
     final showPlayWithBot = !controller.isBotRoomMember;
 
     return Column(
+      spacing: 16.0,
       mainAxisSize: .min,
       children: [
         if (showPingCourse)

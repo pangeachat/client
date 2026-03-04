@@ -5298,6 +5298,8 @@
   "languageUpdated": "Target language updated!",
   "voiceDropdownTitle": "Pangea Bot voice",
   "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve.",
+  "knockAccepted": "Your join request was accepted! You can now enter the course.",
+  "@knockAccepted": {},
   "joinSpaceOnboardingDesc": "Do you have an invite code or link to a public course?",
   "welcomeUser": "Welcome {user}",
   "@welcomeUser": {
@@ -5369,5 +5371,36 @@
   "cannotJoinBannedRoom": "Banned. Unable to join.",
   "sessionFull": "Too late! This activity is full.",
   "returnToCourse": "Return to course",
-  "returnHome": "Return home"
+  "returnHome": "Return home",
+  "translationFeedback": "Translation Feedback",
+  "userUpdatedLearningSettings": "{username} updated learning settings",
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youUpdatedLearningSettings": "You updated your learning settings",
+  "userAddedActivityPlan": "{username} added an activity plan",
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youAddedActivityPlan": "You added an activity plan",
+  "userSentActivitySummary": "{username} sent an activity summary",
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youSentActivitySummary": "You sent an activity summary"
 }

@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-02-24 14:59:35.264857",
+  "@@last_modified": "2026-03-03 11:17:16.583121",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12045,6 +12045,73 @@
   },
   "cannotJoinBannedRoom": "ถูกแบน ไม่สามารถเข้าร่วมได้.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "คำขอเข้าร่วมของคุณได้รับการอนุมัติแล้ว! ตอนนี้คุณสามารถเข้าร่วมหลักสูตรได้แล้ว",
+  "sessionFull": "สายเกินไป! กิจกรรมนี้เต็มแล้ว",
+  "returnToCourse": "กลับไปยังหลักสูตร",
+  "returnHome": "กลับไปยังหน้าแรก",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "ข้อเสนอแนะแปล",
+  "userUpdatedLearningSettings": "{username} ได้ปรับปรุงการตั้งค่าการเรียนรู้",
+  "youUpdatedLearningSettings": "คุณได้ปรับปรุงการตั้งค่าการเรียนรู้ของคุณ",
+  "userAddedActivityPlan": "{username} ได้เพิ่มแผนกิจกรรม",
+  "youAddedActivityPlan": "คุณได้เพิ่มแผนกิจกรรม",
+  "userSentActivitySummary": "{username} ได้ส่งสรุปกิจกรรม",
+  "youSentActivitySummary": "คุณได้ส่งสรุปกิจกรรม",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

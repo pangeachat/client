@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-24 14:59:46.957191",
+  "@@last_modified": "2026-03-03 11:18:10.746520",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11298,6 +11298,73 @@
   },
   "cannotJoinBannedRoom": "被禁止。无法加入。",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "您的加入请求已被接受！您现在可以进入课程。",
+  "sessionFull": "太晚了！此活动已满。",
+  "returnToCourse": "返回课程",
+  "returnHome": "返回首页",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "翻译反馈",
+  "userUpdatedLearningSettings": "{username} 更新了学习设置",
+  "youUpdatedLearningSettings": "您更新了学习设置",
+  "userAddedActivityPlan": "{username} 添加了活动计划",
+  "youAddedActivityPlan": "您添加了活动计划",
+  "userSentActivitySummary": "{username} 发送了活动摘要",
+  "youSentActivitySummary": "您发送了活动摘要",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

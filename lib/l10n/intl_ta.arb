@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-24 14:59:45.075838",
+  "@@last_modified": "2026-03-03 11:17:59.891882",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11418,6 +11418,73 @@
   },
   "cannotJoinBannedRoom": "தடைசெய்யப்பட்டது. சேர முடியவில்லை.",
   "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "உங்கள் சேர்க்கை கோரிக்கை ஏற்கப்பட்டது! நீங்கள் இப்போது பாடத்தில் நுழையலாம்.",
+  "sessionFull": "மிகவும் தாமதமாக! இந்த செயல்பாடு நிரம்பியுள்ளது.",
+  "returnToCourse": "பாடத்திற்கு திரும்பவும்",
+  "returnHome": "வீட்டிற்கு திரும்பவும்",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "மொழிபெயர்ப்பு கருத்து",
+  "userUpdatedLearningSettings": "{username} கற்றல் அமைப்புகளை புதுப்பித்தார்",
+  "youUpdatedLearningSettings": "நீங்கள் உங்கள் கற்றல் அமைப்புகளை புதுப்பித்தீர்கள்",
+  "userAddedActivityPlan": "{username} ஒரு செயல்பாட்டு திட்டத்தை சேர்த்தார்",
+  "youAddedActivityPlan": "நீங்கள் ஒரு செயல்பாட்டு திட்டத்தை சேர்த்தீர்கள்",
+  "userSentActivitySummary": "{username} ஒரு செயல்பாட்டு சுருக்கத்தை அனுப்பினார்",
+  "youSentActivitySummary": "நீங்கள் ஒரு செயல்பாட்டு சுருக்கத்தை அனுப்பினீர்கள்",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }
