@@ -7,10 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
-import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
-import 'package:fluffychat/pangea/login/login_constants.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class LoginOrSignupView extends StatefulWidget {
@@ -35,7 +32,6 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final width = MediaQuery.sizeOf(context).width;
       _isMobile = width <= _breakpoint;
-      _precacheSvgs();
     });
   }
 
@@ -56,88 +52,12 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
 
   List<String> get _imageFileNames {
     final ratio = _isMobile ? 'ratio4x5' : 'ratio2x1';
-    return List.generate(6, (i) => 'Carousel_${i + 1}_$ratio.svg');
+    return List.generate(6, (i) => 'Carousel_${i + 1}_$ratio.png');
   }
 
-  List<String> get svgUrls => _imageFileNames
+  List<String> get imageUrls => _imageFileNames
       .map((name) => '${AppConfig.assetsBaseURL}/$name')
       .toList();
-
-  // Future<List<String>> _loadAllSvgs() async {
-  //   final files = _imageFileNames;
-
-  //   return Future.wait(
-  //     files.mapIndexed((index, filename) async {
-  //       // 1️⃣ RAW CACHE
-  //       if (!_rawSvgCache.containsKey(filename)) {
-  //         final resp = await http.get(
-  //           Uri.parse('${AppConfig.assetsBaseURL}/$filename'),
-  //         );
-
-  //         if (resp.statusCode != 200) {
-  //           throw Exception('Failed to load $filename');
-  //         }
-
-  //         _rawSvgCache[filename] = resp.body;
-  //       }
-
-  //       final rawSvg = _rawSvgCache[filename]!;
-
-  //       // 2️⃣ PROCESSED CACHE KEY
-  //       final processedKey = filename;
-
-  //       if (_processedSvgCache.containsKey(processedKey)) {
-  //         return _processedSvgCache[processedKey]!;
-  //       }
-
-  //       final replacements = _updatedIDs[index + 1];
-
-  //       final processed = replacements == null
-  //           ? rawSvg
-  //           : _updateSvgText(rawSvg: rawSvg, replacements: replacements);
-
-  //       _processedSvgCache[processedKey] = processed;
-
-  //       return processed;
-  //     }),
-  //   );
-  // }
-
-  // String _updateSvgText({
-  //   required String rawSvg,
-  //   required Map<String, String> replacements,
-  // }) {
-  //   final document = XmlDocument.parse(rawSvg);
-
-  //   for (final entry in replacements.entries) {
-  //     final parent = document
-  //         .findAllElements('*')
-  //         .firstWhereOrNull((e) => e.getAttribute('id') == entry.key);
-
-  //     if (parent == null) continue;
-
-  //     final tspan = parent.findAllElements('tspan').firstOrNull;
-  //     if (tspan == null) continue;
-
-  //     tspan.children
-  //       ..clear()
-  //       ..add(XmlText(entry.value));
-  //   }
-
-  //   return document.toXmlString();
-  // }
-
-  // Map<int, Map<String, String>> get _updatedIDs => {
-  //   1: {'Edit text header': L10n.of(context).shareYourHobbies},
-  //   2: {'Edit text Header': L10n.of(context).pangeaBot},
-  //   3: {
-  //     'Edit text_2': L10n.of(context).joinWithClassCode,
-  //     'Edit text_4': L10n.of(context).startYourOwn,
-  //   },
-  //   4: {'Edit text_2': L10n.of(context).guessMyHometown},
-  //   5: {'Edit text_2': L10n.of(context).languageExchange},
-  //   6: {},
-  // };
 
   List<String> get _labels => [
     L10n.of(context).appDescription,
@@ -148,155 +68,110 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     L10n.of(context).playPersonalizedGames,
   ];
 
-  Future<void> _precacheSvgs() async {
-    final futures = svgUrls.map((url) => SvgRepo.get(url));
-    await Future.wait(futures);
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-        child:
-            // FutureBuilder<List<String>>(
-            //   future: _svgFuture,
-            //   builder: (context, snapshot) {
-            //     return
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final isMobile = constraints.maxWidth <= _breakpoint;
-                final svgUrls = _imageFileNames
-                    .map((name) => '${AppConfig.assetsBaseURL}/$name')
-                    .toList();
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isMobile = constraints.maxWidth <= _breakpoint;
+            final imageUrls = _imageFileNames
+                .map((name) => '${AppConfig.assetsBaseURL}/$name')
+                .toList();
 
-                return Stack(
-                  children: [
-                    CachedNetworkImage(
-                      imageUrl:
-                          '${AppConfig.assetsBaseURL}/${isMobile ? LoginConstants.mobileBackground : LoginConstants.webBackground}',
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
-                      width: double.infinity,
-                      height: double.infinity,
-                      errorWidget: (context, url, error) => SizedBox.shrink(),
-                    ),
-                    Column(
-                      children: [
-                        // if (svgs != null) ...[
-                        _LoginCarousel(
-                          isMobile: isMobile,
-                          svgUrls: svgUrls,
-                          labels: _labels,
-                          onPageChange: (index) {
-                            if (mounted) {
-                              setState(() => _currentIndex = index);
-                            }
-                          },
-                          controller: _carouselController,
+            return Column(
+              children: [
+                _LoginCarousel(
+                  isMobile: isMobile,
+                  imageUrls: imageUrls,
+                  labels: _labels,
+                  onPageChange: (index) {
+                    if (mounted) {
+                      setState(() => _currentIndex = index);
+                    }
+                  },
+                  controller: _carouselController,
+                ),
+                if (isMobile) ...[
+                  const SizedBox(height: 24.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      imageUrls.length,
+                      (index) => AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        height: 8,
+                        width: 8,
+                        decoration: BoxDecoration(
+                          color: _currentIndex == index
+                              ? theme.colorScheme.primary
+                              : theme.colorScheme.outlineVariant,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        if (isMobile) ...[
-                          const SizedBox(height: 24.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              svgUrls.length,
-                              (index) => AnimatedContainer(
-                                duration: const Duration(milliseconds: 200),
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                ),
-                                height: 8,
-                                width: 8,
-                                decoration: BoxDecoration(
-                                  color: _currentIndex == index
-                                      ? theme.colorScheme.primary
-                                      : theme.colorScheme.outlineVariant,
-                                  borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ],
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 300),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              // push instead of go so the app bar back button doesn't go to the language selection page
+                              // https://github.com/pangeachat/client/issues/4421
+                              onPressed: () => context.push(
+                                _cachedSpaceCode != null
+                                    ? '/home/language/signup'
+                                    : '/home/language',
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).getStarted,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: theme.colorScheme.onSurface,
+                              ),
+                              onPressed: () => context.go('/home/login'),
+                              child: Text(
+                                L10n.of(context).loginToAccount,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                        // ] else
-                        //   Expanded(
-                        //     flex: 2,
-                        //     child: Center(
-                        //       child:
-                        //           snapshot.connectionState ==
-                        //               ConnectionState.waiting
-                        //           ? CircularProgressIndicator.adaptive()
-                        //           : SizedBox.shrink(),
-                        //     ),
-                        //   ),
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: Container(
-                              constraints: const BoxConstraints(maxWidth: 300),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    ElevatedButton(
-                                      // push instead of go so the app bar back button doesn't go to the language selection page
-                                      // https://github.com/pangeachat/client/issues/4421
-                                      onPressed: () => context.push(
-                                        _cachedSpaceCode != null
-                                            ? '/home/language/signup'
-                                            : '/home/language',
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme
-                                            .onPrimaryContainer,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            L10n.of(context).getStarted,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        foregroundColor:
-                                            theme.colorScheme.onSurface,
-                                      ),
-                                      onPressed: () =>
-                                          context.go('/home/login'),
-                                      child: Text(
-                                        L10n.of(context).loginToAccount,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ],
-                );
-              },
-            ),
-        // },
-        // ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -304,14 +179,14 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
 
 class _LoginCarousel extends StatelessWidget {
   final bool isMobile;
-  final List<String> svgUrls;
+  final List<String> imageUrls;
   final List<String> labels;
   final Function(int) onPageChange;
   final CarouselSliderController controller;
 
   const _LoginCarousel({
     required this.isMobile,
-    required this.svgUrls,
+    required this.imageUrls,
     required this.labels,
     required this.onPageChange,
     required this.controller,
@@ -327,14 +202,14 @@ class _LoginCarousel extends StatelessWidget {
         width: screenWidth,
         height: screenWidth * 1.25,
         child: CarouselSlider(
-          items: svgUrls
+          items: imageUrls
               .mapIndexed(
-                (index, svg) => Stack(
+                (index, imageUrl) => Stack(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 32),
-                      child: CustomizedSvg(
-                        svgUrl: svg,
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
                         width: double.infinity,
                         height: double.infinity,
                       ),
@@ -376,17 +251,17 @@ class _LoginCarousel extends StatelessWidget {
           Padding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 100.0),
             child: CarouselSlider(
-              items: svgUrls
+              items: imageUrls
                   .mapIndexed(
-                    (index, svg) => SizedBox(
+                    (index, imageUrl) => SizedBox(
                       width: screenWidth * 0.8,
                       child: Stack(
                         children: [
                           Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.only(bottom: 32.0),
-                            child: CustomizedSvg(
-                              svgUrl: svg,
+                            child: CachedNetworkImage(
+                              imageUrl: imageUrl,
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
