@@ -57,9 +57,16 @@ class StatCard extends StatelessWidget {
             children: [
               Icon(icon),
               const SizedBox(width: 8),
-              Text(text, style: titleStyle),
+              Flexible(
+                child: Text(
+                  text,
+                  style: titleStyle,
+                  overflow: TextOverflow.visible,
+                  softWrap: true,
+                ),
+              ),
               if (isAchievement) ...[
-                const Spacer(),
+                const SizedBox(width: 8),
                 Text(achievementText, style: achievementStyle),
               ],
             ],
