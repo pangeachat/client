@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
+import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class SpaceCodeOnboardingView extends StatelessWidget {
   final SpaceCodeOnboardingState controller;
@@ -19,82 +20,61 @@ class SpaceCodeOnboardingView extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 300),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 24.0,
-                        horizontal: 16.0,
+        child: MaxWidthBody(
+          maxWidth: 300,
+          withScrolling: false,
+          showBorder: false,
+          child: Container(
+            alignment: .center,
+            padding: const EdgeInsets.symmetric(
+              vertical: 24.0,
+              horizontal: 16.0,
+            ),
+            child: Column(
+              spacing: 32.0,
+              mainAxisSize: .min,
+              children: [
+                PangeaLogoSvg(width: 72),
+                Column(
+                  spacing: 12.0,
+                  mainAxisSize: .min,
+                  children: [
+                    Text(
+                      L10n.of(context).joinSpaceOnboardingDesc,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // Logo — small, no white background
-                          SvgPicture.asset(
-                            "assets/pangea/pangea_logo.svg",
-                            width: 72,
-                            height: 72,
-                            colorFilter: ColorFilter.mode(
-                              theme.colorScheme.primary,
-                              BlendMode.srcIn,
-                            ),
-                          ),
-                          // Main group: question + input + join button
-                          Column(
-                            spacing: 16.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                L10n.of(context).joinSpaceOnboardingDesc,
-                                style: theme.textTheme.headlineSmall?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              TextField(
-                                decoration: InputDecoration(
-                                  hintText: L10n.of(context).enterCodeToJoin,
-                                ),
-                                controller: controller.codeController,
-                                onSubmitted: (_) => controller.submitCode(),
-                              ),
-                              ElevatedButton(
-                                onPressed:
-                                    controller.codeController.text.isNotEmpty
-                                        ? controller.submitCode
-                                        : null,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      theme.colorScheme.primaryContainer,
-                                  foregroundColor:
-                                      theme.colorScheme.onPrimaryContainer,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [Text(L10n.of(context).join)],
-                                ),
-                              ),
-                            ],
-                          ),
-                          // Skip — separated at the bottom
-                          TextButton(
-                            onPressed: () => context.go("/rooms"),
-                            child: Text(L10n.of(context).skipForNow),
-                          ),
-                        ],
+                      textAlign: .center,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).enterCodeToJoin,
+                      ),
+                      controller: controller.codeController,
+                      onSubmitted: (_) => controller.submitCode(),
+                    ),
+                    ElevatedButton(
+                      onPressed: controller.codeController.text.isNotEmpty
+                          ? controller.submitCode
+                          : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primaryContainer,
+                        foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text(L10n.of(context).join)],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-            );
-          },
+                TextButton(
+                  onPressed: () => context.go("/rooms"),
+                  child: Text(L10n.of(context).skipForNow),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
