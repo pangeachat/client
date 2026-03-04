@@ -400,6 +400,7 @@ class _MessageSelectModeContent extends StatelessWidget {
               spacing: 8.0,
               mainAxisSize: .min,
               mainAxisAlignment: .spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Flexible(
                   child: Text(
@@ -411,10 +412,15 @@ class _MessageSelectModeContent extends StatelessWidget {
                 if (mode == SelectMode.translate)
                   InkWell(
                     onTap: () => onFlagTranslation(context),
-                    child: Icon(
-                      Icons.flag_outlined,
-                      color: style.color,
-                      size: 16.0,
+                    child: SizedBox(
+                      width: 32.0,
+                      child: Center(
+                        child: Icon(
+                          Icons.flag_outlined,
+                          color: style.color,
+                          size: 16.0,
+                        ),
+                      ),
                     ),
                   ),
               ],
