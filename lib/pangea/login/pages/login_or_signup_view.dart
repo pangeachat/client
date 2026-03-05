@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -212,6 +213,8 @@ class _LoginCarousel extends StatelessWidget {
                         imageUrl: imageUrl,
                         width: double.infinity,
                         height: double.infinity,
+                        errorWidget: (context, url, error) =>
+                            Center(child: PangeaLogoSvg(width: 128.0)),
                       ),
                     ),
                     Positioned(
@@ -221,7 +224,7 @@ class _LoginCarousel extends StatelessWidget {
                       child: Text(
                         labels[index],
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.bodyMedium?.copyWith(
+                        style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.colorScheme.onSurface,
                           fontWeight: FontWeight.w800,
                         ),
@@ -265,6 +268,8 @@ class _LoginCarousel extends StatelessWidget {
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
+                              errorWidget: (context, url, error) =>
+                                  Center(child: PangeaLogoSvg(width: 256.0)),
                             ),
                           ),
                           Positioned(
@@ -274,7 +279,7 @@ class _LoginCarousel extends StatelessWidget {
                             child: Text(
                               labels[index],
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.bodyMedium?.copyWith(
+                              style: theme.textTheme.titleMedium?.copyWith(
                                 color: theme.colorScheme.onSurface,
                                 fontWeight: FontWeight.w800,
                               ),

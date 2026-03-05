@@ -42,15 +42,12 @@ class SvgRepo {
     try {
       final cached = await _getCached(url);
       if (cached != null) {
-        Logs().w('Returning cached SVG for $url');
         return cached.svg != null
             ? Result.value(cached.svg!)
             : Result.error(Exception('Failed to load SVG at $url'));
       }
 
-      Logs().w('Fetching SVG from network for $url');
       final response = await http.get(Uri.parse(url));
-      Logs().w('Received response with status ${response.statusCode} for $url');
       if (response.statusCode != 200) {
         ErrorHandler.logError(
           e: Exception('Failed to load SVG: ${response.statusCode}'),
@@ -61,10 +58,8 @@ class SvgRepo {
       }
 
       final String svgContent = response.body;
-      Logs().w('Successfully fetched SVG for $url, caching result');
 
       await _setCached(url, svgContent);
-      Logs().w('SVG for $url cached successfully');
       return Result.value(svgContent);
     } catch (e, stack) {
       ErrorHandler.logError(
