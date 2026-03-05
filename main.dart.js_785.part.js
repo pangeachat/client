@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Last ned Excel-fil";
     },
-    get$unkDisplayName() {
-      return "Ukjent";
-    },
     get$wwCountryDisplayName() {
       return "Verden";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Hvem kan legge til nye chatter i dette kurset";
     },
-    get$addEnvironmentOverride() {
-      return "Legg til milj\xf8overstyring";
-    },
-    get$defaultOption() {
-      return "Standard";
-    },
     get$deleteChatDesc() {
       return "Er du sikker p\xe5 at du vil slette denne samtalen? Den vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger v\xe6re tilgjengelige for praksis eller l\xe6ringsanalyse.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Vi har lansert abonnementsh\xe5ndtering i en ny fane. Hvis du ikke s\xe5 den nye fanen, vennligst sjekk popup-blokkeren din.";
     },
+    get$getStarted() {
+      return "Kom i gang";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Skriv og snakk uten bekymringer med Pangea Bot n\xe5r som helst, hvor som helst!";
+    },
+    get$joinLearningCommunities() {
+      return "Bli med i internasjonale l\xe6ringsfellesskap eller... start ditt eget!";
+    },
+    get$playConversationGames() {
+      return "Spill samtalespill med boten, klassekamerater og nye venner!";
+    },
+    get$jumpIntoConversation() {
+      return "Kast deg inn i samtalen fra dag \xe9n med AI-skriveverkt\xf8y!";
+    },
+    get$playPersonalizedGames() {
+      return "Spill \xf8velsesspill tilpasset ditt ordforr\xe5d og grammatikkbehov!";
+    },
     get$hideEvents() {
       return "Skjul hendelser";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vNSkyATDX80KRFa3KQbhpL2hHKw="] = d.current;
+  d["T0mLjamS1WLlWgr9cXP215HQi98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_785.part.js.map

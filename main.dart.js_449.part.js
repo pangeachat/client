@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Download Excel File";
     },
-    get$unkDisplayName() {
-      return "Unknown";
-    },
     get$wwCountryDisplayName() {
       return "World Wide";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Who can add new chats to this course";
     },
-    get$addEnvironmentOverride() {
-      return "Add environment override";
-    },
-    get$defaultOption() {
-      return "Default";
-    },
     get$deleteChatDesc() {
       return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.";
     },
+    get$getStarted() {
+      return "Get started";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Write and speak worry-free with Pangea Bot at anytime, anywhere!";
+    },
+    get$joinLearningCommunities() {
+      return "Join international learning communities or... start your own!";
+    },
+    get$playConversationGames() {
+      return "Play conversation games with the bot, classmates, and new friends!";
+    },
+    get$jumpIntoConversation() {
+      return "Jump into conversation from Day One with AI writing tools!";
+    },
+    get$playPersonalizedGames() {
+      return "Play practice games personalized to your vocabulary and grammar needs!";
+    },
     get$hideEvents() {
       return "Hide events";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GA6dem5pZ4hjMt1WV7TSlua8uXM="] = d.current;
+  d["5jfCCFnnZM5mu0BwzXupanSvjZE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_449.part.js.map

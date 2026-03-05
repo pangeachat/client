@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Ladda ner Excel-fil";
     },
-    get$unkDisplayName() {
-      return "Ok\xe4nd";
-    },
     get$wwCountryDisplayName() {
       return "V\xe4rlden";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Vem kan l\xe4gga till nya chattar i denna kurs";
     },
-    get$addEnvironmentOverride() {
-      return "L\xe4gg till milj\xf6\xf6verskridande";
-    },
-    get$defaultOption() {
-      return "Standard";
-    },
     get$deleteChatDesc() {
       return "\xc4r du s\xe4ker p\xe5 att du vill radera denna chatt? Den kommer att raderas f\xf6r alla deltagare och alla meddelanden i chatten kommer inte l\xe4ngre att vara tillg\xe4ngliga f\xf6r \xf6vning eller inl\xe4rningsanalys.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Vi har lanserat prenumerationshantering i en ny flik. Om du inte s\xe5g den nya fliken, v\xe4nligen kontrollera din popup-blockerare.";
     },
+    get$getStarted() {
+      return "Kom ig\xe5ng";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Skriv och prata utan bekymmer med Pangea Bot n\xe4r som helst, var som helst!";
+    },
+    get$joinLearningCommunities() {
+      return "G\xe5 med i internationella l\xe4randegemenskaper eller... starta din egen!";
+    },
+    get$playConversationGames() {
+      return "Spela konversationsspel med boten, klasskamrater och nya v\xe4nner!";
+    },
+    get$jumpIntoConversation() {
+      return "Hoppa in i konversationen fr\xe5n dag ett med AI-skrivverktyg!";
+    },
+    get$playPersonalizedGames() {
+      return "Spela \xf6vningsspel anpassade efter dina ordf\xf6rr\xe5ds- och grammatikbehov!";
+    },
     get$hideEvents() {
       return "D\xf6lj evenemang";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H4R8C5xb9LhFOF4sKbcjsf9f+w8="] = d.current;
+  d["+2J7mHxSr3CGqBMThR7JOw880AM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

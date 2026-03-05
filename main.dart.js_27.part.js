@@ -1884,9 +1884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Baixar Arquivo Excel";
     },
-    get$unkDisplayName() {
-      return "Desconhecido";
-    },
     get$wwCountryDisplayName() {
       return "Mundo";
     },
@@ -4086,12 +4083,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return string$.Quem_p;
     },
-    get$addEnvironmentOverride() {
-      return "Adicionar substitui\xe7\xe3o de ambiente";
-    },
-    get$defaultOption() {
-      return "Padr\xe3o";
-    },
     get$deleteChatDesc() {
       return string$.Tem_cee;
     },
@@ -5588,6 +5579,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$managementSnackbarMessage() {
       return string$.Lan_am;
+    },
+    get$getStarted() {
+      return "Comece agora";
+    },
+    get$writeAndSpeakWorryFree() {
+      return string$.Escrev;
+    },
+    get$joinLearningCommunities() {
+      return string$.Junte_;
+    },
+    get$playConversationGames() {
+      return string$.Jogue_c;
+    },
+    get$jumpIntoConversation() {
+      return string$.Entre_;
+    },
+    get$playPersonalizedGames() {
+      return string$.Jogue_p;
     },
     get$hideEvents() {
       return "Ocultar eventos";
@@ -7500,9 +7509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$downloadXLSXFile() {
       return "Baixar arquivo Excel";
-    },
-    get$unkDisplayName() {
-      return "Desconhecido";
     },
     get$wwCountryDisplayName() {
       return "Mundo";
@@ -9703,12 +9709,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return string$.Quem_p;
     },
-    get$addEnvironmentOverride() {
-      return "Adicionar substitui\xe7\xe3o de ambiente";
-    },
-    get$defaultOption() {
-      return "Padr\xe3o";
-    },
     get$deleteChatDesc() {
       return "Tem certeza de que deseja excluir esta conversa? Ela ser\xe1 exclu\xedda para todos os participantes e todas as mensagens dentro da conversa n\xe3o estar\xe3o mais dispon\xedveis para pr\xe1tica ou an\xe1lises de aprendizado.";
     },
@@ -11205,6 +11205,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$managementSnackbarMessage() {
       return "Lan\xe7amos o gerenciamento de assinaturas em uma nova aba. Se voc\xea n\xe3o viu a nova aba, verifique seu bloqueador de pop-ups.";
+    },
+    get$getStarted() {
+      return "Comece agora";
+    },
+    get$writeAndSpeakWorryFree() {
+      return string$.Escrev;
+    },
+    get$joinLearningCommunities() {
+      return string$.Junte_;
+    },
+    get$playConversationGames() {
+      return string$.Jogue_c;
+    },
+    get$jumpIntoConversation() {
+      return string$.Entre_;
+    },
+    get$playPersonalizedGames() {
+      return string$.Jogue_p;
     },
     get$hideEvents() {
       return "Ocultar eventos";
@@ -13114,9 +13132,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$downloadXLSXFile() {
       return "Descarregar ficheiro Excel";
-    },
-    get$unkDisplayName() {
-      return "Desconhecido";
     },
     get$wwCountryDisplayName() {
       return "Mundo";
@@ -15317,12 +15332,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Quem pode adicionar novos chats a este curso";
     },
-    get$addEnvironmentOverride() {
-      return "Adicionar substitui\xe7\xe3o de ambiente";
-    },
-    get$defaultOption() {
-      return "Padr\xe3o";
-    },
     get$deleteChatDesc() {
       return string$.Tem_cee;
     },
@@ -16820,6 +16829,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return string$.Lan_am;
     },
+    get$getStarted() {
+      return "Comece agora";
+    },
+    get$writeAndSpeakWorryFree() {
+      return string$.Escrev;
+    },
+    get$joinLearningCommunities() {
+      return string$.Junte_;
+    },
+    get$playConversationGames() {
+      return string$.Jogue_c;
+    },
+    get$jumpIntoConversation() {
+      return string$.Entre_;
+    },
+    get$playPersonalizedGames() {
+      return string$.Jogue_p;
+    },
     get$hideEvents() {
       return "Ocultar eventos";
     },
@@ -16946,9 +16973,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Desliz: "Deslize da direita para a esquerda para responder",
     Dispos: "Dispositivos verificados cruzados se ativado",
     Emotes: "Emotes usados recentemente aparecer\xe3o aqui...",
+    Entre_: "Entre na conversa desde o primeiro dia com ferramentas de escrita de IA!",
     Envie_: "Envie mais mensagens para desbloquear a pr\xe1tica",
     Escolha: "Escolha as melhores op\xe7\xf5es para traduzir sua mensagem!",
     Escolhu: "Escolha um t\xf3pico, modo, objetivo de aprendizagem e gere uma atividade para o chat!",
+    Escrev: "Escreva e fale sem preocupa\xe7\xf5es com o Pangea Bot a qualquer hora, em qualquer lugar!",
     Espa_o: "Espa\xe7os permitem consolidar suas conversas e construir comunidades privadas ou p\xfablicas.",
     Esta_f: "Esta ferramenta de aprendizado de idiomas identificar\xe1 palavras no seu idioma base e ajudar\xe1 voc\xea a traduzi-las para o seu idioma de destino. Embora raro, a IA pode cometer erros de tradu\xe7\xe3o.",
     Esta_m: "Esta mensagem \xe9 grande demais para enviar",
@@ -16969,6 +16998,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Incorr: "Incorreto na atividade de escuta de palavras",
     Inscrer: "Inscreva-se para desbloquear resumos de atividades",
     Inscret: "Inscreva-se para desbloquear transcri\xe7\xf5es",
+    Jogue_c: "Jogue jogos de conversa com o bot, colegas de classe e novos amigos!",
+    Jogue_p: "Jogue jogos de pr\xe1tica personalizados para suas necessidades de vocabul\xe1rio e gram\xe1tica!",
+    Junte_: "Junte-se a comunidades de aprendizado internacionais ou... comece a sua pr\xf3pria!",
     Lan_am: "Lan\xe7amos a gest\xe3o de assinaturas em uma nova aba. Se voc\xea n\xe3o viu a nova aba, por favor, verifique seu bloqueador de pop-ups.",
     Marcar: "Marcar como sala de mensagem direta para o ID Matrix fornecido",
     Mensagn: "Mensagens no seu idioma base n\xe3o ser\xe3o traduzidas.",
@@ -17072,7 +17104,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DfqsEQCmp/ZfKq4owMWb+XJ3P3U="] = d.current;
+  d["w2eTHTtPl626Z2GAjXK6J1inSBc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

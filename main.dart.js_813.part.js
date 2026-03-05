@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "\u041f\u0440\u0435\u0443\u0437\u043c\u0438 Excel \u0434\u0430\u0442\u043e\u0442\u0435\u043a\u0443";
     },
-    get$unkDisplayName() {
-      return "Nepoznato";
-    },
     get$wwCountryDisplayName() {
       return "Celom svet";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "\u041a\u043e \u043c\u043e\u0436\u0435 \u0434\u043e\u0434\u0430\u0432\u0430\u0442\u0438 \u043d\u043e\u0432\u0435 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0435 \u0443 \u043e\u0432\u0430\u0458 \u043a\u0443\u0440\u0441";
     },
-    get$addEnvironmentOverride() {
-      return "\u0414\u043e\u0434\u0430\u0458\u0442\u0435 \u043f\u0440\u043e\u043c\u0435\u043d\u0443 \u043e\u043a\u0440\u0443\u0436\u0435\u045a\u0430";
-    },
-    get$defaultOption() {
-      return "\u041f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043d\u043e";
-    },
     get$deleteChatDesc() {
       return "\u0414\u0430 \u043b\u0438 \u0441\u0442\u0435 \u0441\u0438\u0433\u0443\u0440\u043d\u0438 \u0434\u0430 \u0436\u0435\u043b\u0438\u0442\u0435 \u0434\u0430 \u0438\u0437\u0431\u0440\u0438\u0448\u0435\u0442\u0435 \u043e\u0432\u0430\u0458 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440? \u041e\u043d \u045b\u0435 \u0431\u0438\u0442\u0438 \u0438\u0437\u0431\u0440\u0438\u0441\u0430\u043d \u0437\u0430 \u0441\u0432\u0435 \u0443\u0447\u0435\u0441\u043d\u0438\u043a\u0435, \u0430 \u0441\u0432\u0435 \u043f\u043e\u0440\u0443\u043a\u0435 \u0443\u043d\u0443\u0442\u0430\u0440 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0432\u0438\u0448\u0435 \u043d\u0435\u045b\u0435 \u0431\u0438\u0442\u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0435 \u0437\u0430 \u043f\u0440\u0430\u043a\u0441\u0443 \u0438\u043b\u0438 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0435 \u0443\u0447\u0435\u045a\u0430.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste videli novu karticu, molimo proverite svoj blokator iska\u010du\u0107ih prozora.";
     },
+    get$getStarted() {
+      return "Zapo\u010dni";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pi\u0161i i govori bez brige sa Pangea Bot-om u bilo kojem trenutku, bilo gde!";
+    },
+    get$joinLearningCommunities() {
+      return "Pridru\u017ei se me\u0111unarodnim zajednicama za u\u010denje ili... zapo\u010dni svoju!";
+    },
+    get$playConversationGames() {
+      return "Igraj igre razgovora sa botom, razrednim drugovima i novim prijateljima!";
+    },
+    get$jumpIntoConversation() {
+      return "Uklju\u010di se u razgovor od prvog dana sa AI alatima za pisanje!";
+    },
+    get$playPersonalizedGames() {
+      return "Igraj igre ve\u017ebanja prilago\u0111ene tvom re\u010dniku i gramati\u010dkim potrebama!";
+    },
     get$hideEvents() {
       return "Sakrij doga\u0111aje";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q6tg0bDgsmzml3x9ItD0RwcSgHQ="] = d.current;
+  d["hbfl8QEKUs0J28IxR0xZjbA+pj0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

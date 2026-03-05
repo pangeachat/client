@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Lejupiel\u0101d\u0113t Excel failu";
     },
-    get$unkDisplayName() {
-      return "Nezin\u0101ms";
-    },
     get$wwCountryDisplayName() {
       return "Vis\u0101 pasaul\u0113";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kas var pievienot jaunas t\u0113rz\u0113\u0161anas \u0161im kursam";
     },
-    get$addEnvironmentOverride() {
-      return "Pievienot vides p\u0101rrakst\u012b\u0161anu";
-    },
-    get$defaultOption() {
-      return "Noklus\u0113juma";
-    },
     get$deleteChatDesc() {
       return "Vai tie\u0161\u0101m v\u0113laties dz\u0113st \u0161o t\u0113rz\u0113\u0161anu? T\u0101 tiks dz\u0113sta visiem dal\u012bbniekiem, un visas t\u0113rz\u0113\u0161anas zi\u0146as vairs neb\u016bs pieejamas praksei vai m\u0101c\u012bbu anal\u012btikai.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "M\u0113s esam palaidu\u0161i abon\u0113\u0161anas p\u0101rvald\u012bbu jaun\u0101 ciln\u0113. Ja neesat redz\u0113ju\u0161i jauno cilni, l\u016bdzu, p\u0101rbaudiet savu uznirsto\u0161o logu blo\u0137\u0113t\u0101ju.";
     },
+    get$getStarted() {
+      return "S\u0101kt";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Rakstiet un run\u0101jiet bez raiz\u0113m ar Pangea Bot jebkur\u0101 laik\u0101, jebkur!";
+    },
+    get$joinLearningCommunities() {
+      return "Pievienojieties starptautisk\u0101m m\u0101c\u012bbu kopien\u0101m vai... uzs\u0101ciet savu!";
+    },
+    get$playConversationGames() {
+      return "Sp\u0113l\u0113jiet sarunu sp\u0113les ar botu, klasesbiedriem un jauniem draugiem!";
+    },
+    get$jumpIntoConversation() {
+      return "Iel\u0113kt sarun\u0101 no pirm\u0101s dienas ar AI rakst\u012b\u0161anas r\u012bkiem!";
+    },
+    get$playPersonalizedGames() {
+      return "Sp\u0113l\u0113jiet prakses sp\u0113les, kas piel\u0101gotas j\u016bsu v\u0101rdu kr\u0101juma un gramatikas vajadz\u012bb\u0101m!";
+    },
     get$hideEvents() {
       return "Pasl\u0113pt pas\u0101kumus";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XHRJgczqiDHSsnwW0OV9Uf1QFCw="] = d.current;
+  d["L6I3udOy+EcB/aZglc1F5L13HG4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_780.part.js.map

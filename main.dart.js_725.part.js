@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Downloadar file Excel";
     },
-    get$unkDisplayName() {
-      return "Inconnu";
-    },
     get$wwCountryDisplayName() {
       return "Mundo Wide";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Qui pote adder nove chats a iste curso";
     },
-    get$addEnvironmentOverride() {
-      return "Adder override de ambiente";
-    },
-    get$defaultOption() {
-      return "Default";
-    },
     get$deleteChatDesc() {
       return "Es tu secur de vole eliminar iste chat? Il essera eliminat pro tote le participantes e tote le message in le chat non essera plus disponibile pro practica o analytics de apprendimento.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Mi lan\u0109is abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.";
     },
+    get$getStarted() {
+      return "Bula";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Scri \u0219i vorbe\u0219te f\u0103r\u0103 griji cu Pangea Bot oric\xe2nd, oriunde!";
+    },
+    get$joinLearningCommunities() {
+      return "Al\u0103tur\u0103-te comunit\u0103\u021bilor interna\u021bionale de \xeenv\u0103\u021bare sau... \xeencepe-\u021bi propria!";
+    },
+    get$playConversationGames() {
+      return "Joac\u0103 jocuri de conversa\u021bie cu botul, colegii de clas\u0103 \u0219i noi prieteni!";
+    },
+    get$jumpIntoConversation() {
+      return "Intr\u0103 \xeen conversa\u021bie din prima zi cu instrumentele de scriere AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Joac\u0103 jocuri de practic\u0103 personalizate pentru vocabularul \u0219i nevoile tale gramaticale!";
+    },
     get$hideEvents() {
       return "Ocultar eventos";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vz+JgneRqwp/bkygjcherrRu7I4="] = d.current;
+  d["oH9SnghqGP+xb9IEBE7taw53Pqs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_725.part.js.map

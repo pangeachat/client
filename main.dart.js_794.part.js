@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Pobierz plik Excel";
     },
-    get$unkDisplayName() {
-      return "Nieznany";
-    },
     get$wwCountryDisplayName() {
       return "Na ca\u0142ym \u015bwiecie";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kto mo\u017ce dodawa\u0107 nowe czaty do tego kursu";
     },
-    get$addEnvironmentOverride() {
-      return "Dodaj nadpisanie \u015brodowiska";
-    },
-    get$defaultOption() {
-      return "Domy\u015blnie";
-    },
     get$deleteChatDesc() {
       return "Czy na pewno chcesz usun\u0105\u0107 ten czat? Zostanie on usuni\u0119ty dla wszystkich uczestnik\xf3w, a wszystkie wiadomo\u015bci w czacie nie b\u0119d\u0105 ju\u017c dost\u0119pne do \u0107wicze\u0144 lub analityki nauki.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Uruchomili\u015bmy zarz\u0105dzanie subskrypcjami w nowej karcie. Je\u015bli nie widzisz nowej karty, sprawd\u017a sw\xf3j blokator wyskakuj\u0105cych okienek.";
     },
+    get$getStarted() {
+      return "Zacznij";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pisanie i m\xf3wienie bez zmartwie\u0144 z Pangea Bot w dowolnym czasie i miejscu!";
+    },
+    get$joinLearningCommunities() {
+      return "Do\u0142\u0105cz do mi\u0119dzynarodowych spo\u0142eczno\u015bci ucz\u0105cych si\u0119 lub... za\u0142\xf3\u017c w\u0142asn\u0105!";
+    },
+    get$playConversationGames() {
+      return "Graj w gry konwersacyjne z botem, kolegami z klasy i nowymi przyjaci\xf3\u0142mi!";
+    },
+    get$jumpIntoConversation() {
+      return "Zacznij rozmow\u0119 od pierwszego dnia z narz\u0119dziami do pisania AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Graj w gry praktyczne dostosowane do Twojego s\u0142ownictwa i potrzeb gramatycznych!";
+    },
     get$hideEvents() {
       return "Ukryj wydarzenia";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vcYeUCrCoTcn729Lmb5z9Xvc3X0="] = d.current;
+  d["Zys6w8FSJhR7k2h4qYJhvx/tN+U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_794.part.js.map

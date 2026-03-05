@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "I-download ang Excel File";
     },
-    get$unkDisplayName() {
-      return "Unknown";
-    },
     get$wwCountryDisplayName() {
       return "Sa Buong Mundo";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Sino ang maaaring magdagdag ng mga bagong chat sa kursong ito";
     },
-    get$addEnvironmentOverride() {
-      return "Magdagdag ng override sa kapaligiran";
-    },
-    get$defaultOption() {
-      return "Default";
-    },
     get$deleteChatDesc() {
       return "Sigurado ka bang nais mong i-delete ang chat na ito? Ito ay matatanggal para sa lahat ng kalahok at ang lahat ng mensahe sa loob ng chat ay hindi na magagamit para sa praktis o analytics sa pag-aaral.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Inilunsad namin ang pamamahala ng subscription sa isang bagong tab. Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.";
     },
+    get$getStarted() {
+      return "Magsimula na";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Sumulat at makipag-usap nang walang alalahanin gamit ang Pangea Bot anumang oras, saanman!";
+    },
+    get$joinLearningCommunities() {
+      return "Sumali sa mga pandaigdigang komunidad ng pag-aaral o... simulan ang iyo!";
+    },
+    get$playConversationGames() {
+      return "Maglaro ng mga laro sa pag-uusap kasama ang bot, mga kaklase, at mga bagong kaibigan!";
+    },
+    get$jumpIntoConversation() {
+      return "Sumabak sa pag-uusap mula sa Unang Araw gamit ang mga tool sa pagsusulat ng AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Maglaro ng mga laro sa pagsasanay na naayon sa iyong bokabularyo at pangangailangan sa gramatika!";
+    },
     get$hideEvents() {
       return "Itago ang mga kaganapan";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8Mi5IltGIug+VL94HSlsht4eoGk="] = d.current;
+  d["QeslSM8LSvRwyXJRntYgkISZSsE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

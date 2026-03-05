@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Parsisi\u0173sti Excel fail\u0105";
     },
-    get$unkDisplayName() {
-      return "Ne\u017einoma";
-    },
     get$wwCountryDisplayName() {
       return "Pasaulinis";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kas gali prid\u0117ti naujus pokalbius \u0161iam kursui";
     },
-    get$addEnvironmentOverride() {
-      return "Prid\u0117ti aplinkos perra\u0161ym\u0105";
-    },
-    get$defaultOption() {
-      return "Numatytasis";
-    },
     get$deleteChatDesc() {
       return "Ar tikrai norite i\u0161trinti \u0161\u012f pokalb\u012f? Jis bus i\u0161trintas visiems dalyviams, o visi prane\u0161imai pokalbyje nebeprieinami praktikai ar mokymosi analitikai.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Paleidome prenumeratos valdym\u0105 naujame skirtuke. Jei nemat\u0117te naujojo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
     },
+    get$getStarted() {
+      return "Prad\u0117ti";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Ra\u0161ykite ir kalb\u0117kite be r\u016bpes\u010di\u0173 su Pangea Bot bet kada, bet kur!";
+    },
+    get$joinLearningCommunities() {
+      return "Prisijunkite prie tarptautini\u0173 mokymosi bendruomeni\u0173 arba... prad\u0117kite savo!";
+    },
+    get$playConversationGames() {
+      return "\u017daiskite pokalbi\u0173 \u017eaidimus su botu, klas\u0117s draugais ir naujais draugais!";
+    },
+    get$jumpIntoConversation() {
+      return "\u0160okite \u012f pokalb\u012f nuo pirmos dienos su AI ra\u0161ymo \u012frankiais!";
+    },
+    get$playPersonalizedGames() {
+      return "\u017daiskite praktikos \u017eaidimus, pritaikytus j\u016bs\u0173 \u017eodynui ir gramatikos poreikiams!";
+    },
     get$hideEvents() {
       return "Sl\u0117pti renginius";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zIVRtkCcTPu5cQi+7say9C1OZmE="] = d.current;
+  d["0ZxA87h7QHQxp4iBQXH5V+hGhl4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Lataa Excel-tiedosto";
     },
-    get$unkDisplayName() {
-      return "Tuntematon";
-    },
     get$wwCountryDisplayName() {
       return "Maailmanlaajuinen";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kuka voi lis\xe4t\xe4 uusia keskusteluja t\xe4h\xe4n kurssiin";
     },
-    get$addEnvironmentOverride() {
-      return "Lis\xe4\xe4 ymp\xe4rist\xf6ylitys";
-    },
-    get$defaultOption() {
-      return "Oletus";
-    },
     get$deleteChatDesc() {
       return "Oletko varma, ett\xe4 haluat poistaa t\xe4m\xe4n keskustelun? Se poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eiv\xe4t ole en\xe4\xe4 k\xe4ytett\xe4viss\xe4 harjoitteluun tai oppimisanalytiikkaan.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Julkaisimme tilauksen hallinnan uudessa v\xe4lilehdess\xe4. Jos et n\xe4hnyt uutta v\xe4lilehte\xe4, tarkista ponnahdusikkunoiden est\xe4j\xe4si.";
     },
+    get$getStarted() {
+      return "Aloita";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Kirjoita ja puhu huoletta Pangea Botin kanssa milloin tahansa, miss\xe4 tahansa!";
+    },
+    get$joinLearningCommunities() {
+      return "Liity kansainv\xe4lisiin oppimisryhmiin tai... perusta oma!";
+    },
+    get$playConversationGames() {
+      return "Pelaa keskustelupeli\xe4 botin, luokkatovereiden ja uusien yst\xe4vien kanssa!";
+    },
+    get$jumpIntoConversation() {
+      return "Hypp\xe4\xe4 keskusteluun ensimm\xe4isest\xe4 p\xe4iv\xe4st\xe4 alkaen AI-kirjoitusty\xf6kalujen avulla!";
+    },
+    get$playPersonalizedGames() {
+      return "Pelaa harjoituspelej\xe4, jotka on r\xe4\xe4t\xe4l\xf6ity sanastosi ja kielioppisi tarpeisiin!";
+    },
     get$hideEvents() {
       return "Piilota tapahtumat";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N5OCyXXkQC7OyHo1Jweo11rPMbo="] = d.current;
+  d["T/M75fr7A20v2vMIu86xfdqUcbU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

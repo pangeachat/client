@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Preuzmi Excel datoteku";
     },
-    get$unkDisplayName() {
-      return "Nepoznato";
-    },
     get$wwCountryDisplayName() {
       return "Cijeli svijet";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Tko mo\u017ee dodati nove razgovore u ovaj te\u010daj";
     },
-    get$addEnvironmentOverride() {
-      return "Dodaj nadja\u010davanje okru\u017eenja";
-    },
-    get$defaultOption() {
-      return "Zadano";
-    },
     get$deleteChatDesc() {
       return "Jeste li sigurni da \u017eelite izbrisati ovaj razgovor? On \u0107e biti izbrisan za sve sudionike, a sve poruke unutar razgovora vi\u0161e ne\u0107e biti dostupne za vje\u017ebanje ili analitiku u\u010denja.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iska\u010du\u0107ih prozora.";
     },
+    get$getStarted() {
+      return "Zapo\u010dni";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pi\u0161i i govori bez brige s Pangea Botom u bilo kojem trenutku, bilo gdje!";
+    },
+    get$joinLearningCommunities() {
+      return "Pridru\u017ei se me\u0111unarodnim zajednicama za u\u010denje ili... zapo\u010dni svoju vlastitu!";
+    },
+    get$playConversationGames() {
+      return "Igraj igre razgovora s botom, kolegama i novim prijateljima!";
+    },
+    get$jumpIntoConversation() {
+      return "Uklju\u010di se u razgovor od prvog dana s AI alatima za pisanje!";
+    },
+    get$playPersonalizedGames() {
+      return "Igraj igre vje\u017ebanja prilago\u0111ene tvojim rje\u010dnikom i gramati\u010dkim potrebama!";
+    },
     get$hideEvents() {
       return "Sakrij doga\u0111aje";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PZKxMQM292oUtkpq3nnj8QxOh6o="] = d.current;
+  d["/lkjrsIU+x5qHlMYrK74yNfEXsE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_680.part.js.map

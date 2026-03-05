@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Excel faylini yuklab olish";
     },
-    get$unkDisplayName() {
-      return "Noma'lum";
-    },
     get$wwCountryDisplayName() {
       return "Dunyo bo'ylab";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kim yangi chatlarni bu kursga qo'shishi mumkin";
     },
-    get$addEnvironmentOverride() {
-      return "Muhitni o'zgartirishni qo'shish";
-    },
-    get$defaultOption() {
-      return "Standart";
-    },
     get$deleteChatDesc() {
       return "Siz ushbu suhbatni o'chirmoqchimisiz? Bu barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Biz obuna boshqaruvini yangi oynada ishga tushirdik. Agar siz yangi oynani ko'rmagan bo'lsangiz, iltimos, pop-up bloklovchingizni tekshiring.";
     },
+    get$getStarted() {
+      return "Boshlash";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pangea Bot bilan har qanday vaqtda, har qanday joyda xavotirsiz yozing va gapiring!";
+    },
+    get$joinLearningCommunities() {
+      return "Xalqaro o\u2018rganish jamoalariga qo\u2018shiling yoki... o\u2018z jamoangizni boshlang!";
+    },
+    get$playConversationGames() {
+      return "Bot, sinfdoshlar va yangi do\u2018stlar bilan suhbat o\u2018yinlarini o\u2018ynang!";
+    },
+    get$jumpIntoConversation() {
+      return "AI yozish vositalari bilan birinchi kundan suhbatga kirishing!";
+    },
+    get$playPersonalizedGames() {
+      return "So\u2018z boyligingiz va grammatika ehtiyojlaringizga moslashtirilgan amaliy o\u2018yinlarni o\u2018ynang!";
+    },
     get$hideEvents() {
       return "Voqealarni yashirish";
     },
@@ -5645,7 +5654,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["brYC90P/Lrr6Aie+W3Zt+I/FiT0="] = d.current;
+  d["m2MYz19XH2ffg9LHeQrKQ9QBpVo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

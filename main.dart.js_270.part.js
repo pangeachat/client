@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "St\xe1hnout Excel soubor";
     },
-    get$unkDisplayName() {
-      return "Nezn\xe1m\xfd";
-    },
     get$wwCountryDisplayName() {
       return "Celosv\u011btov\u011b";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kdo m\u016f\u017ee p\u0159idat nov\xe9 chaty do tohoto kurzu";
     },
-    get$addEnvironmentOverride() {
-      return "P\u0159idat p\u0159eps\xe1n\xed prost\u0159ed\xed";
-    },
-    get$defaultOption() {
-      return "V\xfdchoz\xed";
-    },
     get$deleteChatDesc() {
       return "Jste si jist\xed, \u017ee chcete smazat tento chat? Bude smaz\xe1n pro v\u0161echny \xfa\u010dastn\xedky a v\u0161echny zpr\xe1vy v chatu ji\u017e nebudou dostupn\xe9 pro praxi nebo analytiku u\u010den\xed.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Spustili jsme spr\xe1vu p\u0159edplatn\xe9ho v nov\xe9m okn\u011b. Pokud jste novou kartu nevid\u011bli, zkontrolujte pros\xedm sv\u016fj blok\xe1tor vyskakovac\xedch oken.";
     },
+    get$getStarted() {
+      return "Za\u010dn\u011bte";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pi\u0161te a mluvte bez obav s Pangea Bot kdykoliv a kdekoliv!";
+    },
+    get$joinLearningCommunities() {
+      return "P\u0159ipojte se k mezin\xe1rodn\xedm vzd\u011bl\xe1vac\xedm komunit\xe1m nebo... za\u010dn\u011bte svou vlastn\xed!";
+    },
+    get$playConversationGames() {
+      return "Hrajte konverza\u010dn\xed hry s botem, spolu\u017e\xe1ky a nov\xfdmi p\u0159\xe1teli!";
+    },
+    get$jumpIntoConversation() {
+      return "Sk\xe1kejte do konverzace od prvn\xedho dne s n\xe1stroji pro psan\xed AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Hrajte cvi\u010debn\xed hry p\u0159izp\u016fsoben\xe9 va\u0161im pot\u0159eb\xe1m slovn\xed z\xe1soby a gramatiky!";
+    },
     get$hideEvents() {
       return "Skr\xfdt ud\xe1losti";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nPWpLeqxowRNTJGG5h7NQvOT64A="] = d.current;
+  d["wiWFoPlyp/MkJCAIhx7k6wDZIFU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_270.part.js.map

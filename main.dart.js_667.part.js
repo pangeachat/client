@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Descargar ficheiro Excel";
     },
-    get$unkDisplayName() {
-      return "Desco\xf1ecido";
-    },
     get$wwCountryDisplayName() {
       return "Mundial";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Quen pode engadir novas conversas a este curso";
     },
-    get$addEnvironmentOverride() {
-      return "Engadir substituci\xf3n de ambiente";
-    },
-    get$defaultOption() {
-      return "Predeterminado";
-    },
     get$deleteChatDesc() {
       return "Est\xe1s seguro de que queres eliminar esta conversa? Ser\xe1 eliminada para todos os participantes e todos os mensaxes dentro da conversa xa non estar\xe1n dispo\xf1ibles para pr\xe1ctica ou an\xe1lise de aprendizaxe.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Lanzamos a xesti\xf3n de subscrici\xf3n nunha nova pestana. Se non ves a nova pestana, por favor, verifica o teu bloqueador de vent\xe1s emerxentes.";
     },
+    get$getStarted() {
+      return "Comezar";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Escribe e fala sen preocupaci\xf3n co Pangea Bot en calquera momento e lugar!";
+    },
+    get$joinLearningCommunities() {
+      return "\xdanete a comunidades de aprendizaxe internacionais ou... comeza a t\xfaa propia!";
+    },
+    get$playConversationGames() {
+      return "Xoga a xogos de conversaci\xf3n co bot, compa\xf1eiros de clase e novos amigos!";
+    },
+    get$jumpIntoConversation() {
+      return "Salta \xe1 conversaci\xf3n desde o primeiro d\xeda con ferramentas de escritura de IA!";
+    },
+    get$playPersonalizedGames() {
+      return "Xoga a xogos de pr\xe1ctica personalizados para as t\xfaas necesidades de vocabulario e gram\xe1tica!";
+    },
     get$hideEvents() {
       return "Ocultar eventos";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bP1iOr/CjBXVUCdZ+MfN2CpnEow="] = d.current;
+  d["ukwoAd47y66NlT7uZvXxWI7SV6U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

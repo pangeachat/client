@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "\xcdosl\xf3d\xe1il Comhad Excel";
     },
-    get$unkDisplayName() {
-      return "Neamartha";
-    },
     get$wwCountryDisplayName() {
       return "Domhanda";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "C\xe9 hiad is f\xe9idir leo cuntais nua a chur leis an gc\xfarsa seo";
     },
-    get$addEnvironmentOverride() {
-      return "Cuir i bhfeidhm for\xe9igean comhshaoil";
-    },
-    get$defaultOption() {
-      return "R\xe9amhshocr\xfa";
-    },
     get$deleteChatDesc() {
       return "An bhfuil t\xfa cinnte gur mhaith leat an comhr\xe1 seo a scriosadh? Scriosfar \xe9 do gach rannph\xe1irt\xed agus n\xed bheidh aon teachtaireachta\xed laistigh den chomhr\xe1 ar f\xe1il n\xedos m\xf3 le haghaidh cleachtadh n\xf3 anail\xeds foghlama.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Seoladh bainist\xedocht s\xednti\xfais i gcluais\xedn nua. M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
     },
+    get$getStarted() {
+      return "Tosaigh";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Scr\xedobh agus labhair gan imn\xed le Pangea Bot ag am ar bith, \xe1it ar bith!";
+    },
+    get$joinLearningCommunities() {
+      return "B\xed p\xe1irteach i bpobail fhoghlama idirn\xe1isi\xfanta n\xf3... t\xfas do chuid f\xe9in!";
+    },
+    get$playConversationGames() {
+      return "Imir cluich\xed comhr\xe1 leis an mbot, le do chomhoibrithe, agus le cairde nua!";
+    },
+    get$jumpIntoConversation() {
+      return "L\xe9im isteach i gcomhr\xe1 \xf3 L\xe1 a hAon le huirlis\xed scr\xedbhneoireachta AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Imir cluich\xed cleachtais pearsantaithe do do fhocl\xf3ir agus do riachtanais ghramada\xed!";
+    },
     get$hideEvents() {
       return "Folaigh imeachta\xed";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iDgyzKfC8KPnmVdhghXATZaSFYs="] = d.current;
+  d["MQoKfyacwhx4UeVPHBIm3VihIBY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_662.part.js.map

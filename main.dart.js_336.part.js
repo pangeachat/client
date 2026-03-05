@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Download Excel-fil";
     },
-    get$unkDisplayName() {
-      return "Ukendt";
-    },
     get$wwCountryDisplayName() {
       return "Verdensomsp\xe6ndende";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Hvem kan tilf\xf8je nye chats til dette kursus";
     },
-    get$addEnvironmentOverride() {
-      return "Tilf\xf8j milj\xf8overstyring";
-    },
-    get$defaultOption() {
-      return "Standard";
-    },
     get$deleteChatDesc() {
       return "Er du sikker p\xe5, at du vil slette denne chat? Den vil blive slettet for alle deltagere, og alle beskeder i chatten vil ikke l\xe6ngere v\xe6re tilg\xe6ngelige til \xf8velse eller l\xe6ringsanalyser.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Vi har lanceret abonnementsstyring i en ny fane. Hvis du ikke s\xe5 den nye fane, bedes du tjekke din popup-blokker.";
     },
+    get$getStarted() {
+      return "Kom i gang";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Skriv og tal bekymringsfrit med Pangea Bot n\xe5r som helst, hvor som helst!";
+    },
+    get$joinLearningCommunities() {
+      return "Deltag i internationale l\xe6ringsf\xe6llesskaber eller... start dit eget!";
+    },
+    get$playConversationGames() {
+      return "Spil samtalespil med botten, klassekammerater og nye venner!";
+    },
+    get$jumpIntoConversation() {
+      return "Spring ind i samtalen fra dag \xe9t med AI skrivev\xe6rkt\xf8jer!";
+    },
+    get$playPersonalizedGames() {
+      return "Spil \xf8velsesspil tilpasset dit ordforr\xe5d og dine grammatikbehov!";
+    },
     get$hideEvents() {
       return "Skjul begivenheder";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KjtFVmwCHEFsCuj8aCe33E7qMk0="] = d.current;
+  d["jozDMTpR7n06FfFnKp1rAhLFuLk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_336.part.js.map

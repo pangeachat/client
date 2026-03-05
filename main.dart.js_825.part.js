@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "T\u1ea3i t\u1ec7p Excel";
     },
-    get$unkDisplayName() {
-      return "Ch\u01b0a x\xe1c \u0111\u1ecbnh";
-    },
     get$wwCountryDisplayName() {
       return "To\xe0n th\u1ebf gi\u1edbi";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Ai c\xf3 th\u1ec3 th\xeam cu\u1ed9c tr\xf2 chuy\u1ec7n m\u1edbi v\xe0o kh\xf3a h\u1ecdc n\xe0y";
     },
-    get$addEnvironmentOverride() {
-      return "Th\xeam ghi \u0111\xe8 m\xf4i tr\u01b0\u1eddng";
-    },
-    get$defaultOption() {
-      return "M\u1eb7c \u0111\u1ecbnh";
-    },
     get$deleteChatDesc() {
       return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n x\xf3a tr\xf2 chuy\u1ec7n n\xe0y kh\xf4ng? N\xf3 s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Ch\xfang t\xf4i \u0111\xe3 ra m\u1eaft qu\u1ea3n l\xfd \u0111\u0103ng k\xfd trong m\u1ed9t tab m\u1edbi. N\u1ebfu b\u1ea1n kh\xf4ng th\u1ea5y tab m\u1edbi, vui l\xf2ng ki\u1ec3m tra tr\xecnh ch\u1eb7n popup c\u1ee7a b\u1ea1n.";
     },
+    get$getStarted() {
+      return "B\u1eaft \u0111\u1ea7u";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Vi\u1ebft v\xe0 n\xf3i kh\xf4ng lo l\u1eafng v\u1edbi Pangea Bot b\u1ea5t c\u1ee9 l\xfac n\xe0o, \u1edf b\u1ea5t c\u1ee9 \u0111\xe2u!";
+    },
+    get$joinLearningCommunities() {
+      return "Tham gia c\xe1c c\u1ed9ng \u0111\u1ed3ng h\u1ecdc t\u1eadp qu\u1ed1c t\u1ebf ho\u1eb7c... b\u1eaft \u0111\u1ea7u c\u1ed9ng \u0111\u1ed3ng c\u1ee7a ri\xeang b\u1ea1n!";
+    },
+    get$playConversationGames() {
+      return "Ch\u01a1i c\xe1c tr\xf2 ch\u01a1i h\u1ed9i tho\u1ea1i v\u1edbi bot, b\u1ea1n h\u1ecdc v\xe0 nh\u1eefng ng\u01b0\u1eddi b\u1ea1n m\u1edbi!";
+    },
+    get$jumpIntoConversation() {
+      return "B\u01b0\u1edbc v\xe0o cu\u1ed9c tr\xf2 chuy\u1ec7n t\u1eeb Ng\xe0y \u0110\u1ea7u ti\xean v\u1edbi c\xe1c c\xf4ng c\u1ee5 vi\u1ebft AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Ch\u01a1i c\xe1c tr\xf2 ch\u01a1i th\u1ef1c h\xe0nh \u0111\u01b0\u1ee3c c\xe1 nh\xe2n h\xf3a theo nhu c\u1ea7u t\u1eeb v\u1ef1ng v\xe0 ng\u1eef ph\xe1p c\u1ee7a b\u1ea1n!";
+    },
     get$hideEvents() {
       return "\u1ea8n s\u1ef1 ki\u1ec7n";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yzYsiT+xmU/ycqJOZx/2sga0S0M="] = d.current;
+  d["rHGUwx65xWeoVgN8WdqaogoCErM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_825.part.js.map

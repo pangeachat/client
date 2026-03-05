@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Laadi alla Exceli fail";
     },
-    get$unkDisplayName() {
-      return "Tundmatu";
-    },
     get$wwCountryDisplayName() {
       return "Maailm";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kes saab lisada uusi vestlusi ja alamruume sellele ruumile";
     },
-    get$addEnvironmentOverride() {
-      return "Lisa keskkonnamuutus";
-    },
-    get$defaultOption() {
-      return "Vaikimisi";
-    },
     get$deleteChatDesc() {
       return "Kas olete kindel, et soovite selle vestluse kustutada? See kustutatakse k\xf5igilt osalejatelt ning k\xf5ik vestluse s\xf5numid ei ole enam saadaval harjutamiseks ega \xf5ppeanal\xfc\xfctikaks.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "K\xe4ivitame tellimuse haldamise uues vahekaardis. Kui te ei n\xe4inud uut vahekaarti, palun kontrollige oma h\xfcpikakna blokeerijat.";
     },
+    get$getStarted() {
+      return "Alusta";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Kirjuta ja r\xe4\xe4gi murevabalt Pangea Boti abil igal ajal, igal pool!";
+    },
+    get$joinLearningCommunities() {
+      return "Liitu rahvusvaheliste \xf5pikogukondadega v\xf5i... alusta oma!";
+    },
+    get$playConversationGames() {
+      return "M\xe4ngi vestlusm\xe4nge boti, klassikaaslaste ja uute s\xf5pradega!";
+    },
+    get$jumpIntoConversation() {
+      return "Sukeldu vestlusesse alates esimesest p\xe4evast AI kirjutamisvahenditega!";
+    },
+    get$playPersonalizedGames() {
+      return "M\xe4ngi harjutusm\xe4nge, mis on kohandatud sinu s\xf5navara ja grammatika vajadustele!";
+    },
     get$hideEvents() {
       return "Peida \xfcritused";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7VvF/x8m01ro8DBJrGDuZ97Kqmc="] = d.current;
+  d["SqQxhIaw3htWU8G4Ne3paHdy+N8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

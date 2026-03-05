@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Scarica il file Excel";
     },
-    get$unkDisplayName() {
-      return "Sconosciuto";
-    },
     get$wwCountryDisplayName() {
       return "Worldwide";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Chi pu\xf2 aggiungere nuove chat a questo corso";
     },
-    get$addEnvironmentOverride() {
-      return "Aggiungi override dell'ambiente";
-    },
-    get$defaultOption() {
-      return "Predefinito";
-    },
     get$deleteChatDesc() {
       return "Sei sicuro di voler eliminare questa chat? Verr\xe0 eliminata per tutti i partecipanti e tutti i messaggi all'interno della chat non saranno pi\xf9 disponibili per la pratica o le analisi di apprendimento.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Abbiamo lanciato la gestione degli abbonamenti in una nuova scheda. Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.";
     },
+    get$getStarted() {
+      return "Inizia";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Scrivi e parla senza preoccupazioni con Pangea Bot in qualsiasi momento, ovunque!";
+    },
+    get$joinLearningCommunities() {
+      return "Unisciti a comunit\xe0 di apprendimento internazionali o... inizia la tua!";
+    },
+    get$playConversationGames() {
+      return "Gioca a giochi di conversazione con il bot, i compagni di classe e nuovi amici!";
+    },
+    get$jumpIntoConversation() {
+      return "Inizia a conversare fin dal primo giorno con gli strumenti di scrittura AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Gioca a giochi di pratica personalizzati in base al tuo vocabolario e alle tue esigenze grammaticali!";
+    },
     get$hideEvents() {
       return "Nascondi eventi";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UdT231RVka+q8UU01hfMNsfUH38="] = d.current;
+  d["1mUV4rE3Aw/Q2JI2/p1+AU91ejQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

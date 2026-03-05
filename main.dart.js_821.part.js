@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Excel Dosyas\u0131n\u0131 \u0130ndir";
     },
-    get$unkDisplayName() {
-      return "Bilinmeyen";
-    },
     get$wwCountryDisplayName() {
       return "D\xfcnya \xc7ap\u0131nda";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Bu derse yeni sohbetler ekleyebilecek ki\u015filer";
     },
-    get$addEnvironmentOverride() {
-      return "Ortam ge\xe7ersizli\u011fi ekle";
-    },
-    get$defaultOption() {
-      return "Varsay\u0131lan";
-    },
     get$deleteChatDesc() {
       return "Bu sohbeti silmek istedi\u011finizden emin misiniz? T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek ve sohbet i\xe7indeki t\xfcm mesajlar art\u0131k pratik veya \xf6\u011frenme analiti\u011fi i\xe7in kullan\u0131labilir olmayacakt\u0131r.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Abonelik y\xf6netimini yeni bir sekmede ba\u015flatt\u0131k. Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
     },
+    get$getStarted() {
+      return "Ba\u015flay\u0131n";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Pangea Bot ile her zaman, her yerde endi\u015fesiz yaz\u0131n ve konu\u015fun!";
+    },
+    get$joinLearningCommunities() {
+      return "Uluslararas\u0131 \xf6\u011frenme topluluklar\u0131na kat\u0131l\u0131n veya... kendi toplulu\u011funuzu olu\u015fturun!";
+    },
+    get$playConversationGames() {
+      return "Bot, s\u0131n\u0131f arkada\u015flar\u0131n\u0131z ve yeni arkada\u015flar\u0131n\u0131zla konu\u015fma oyunlar\u0131 oynay\u0131n!";
+    },
+    get$jumpIntoConversation() {
+      return "G\xfcn birden itibaren AI yaz\u0131m ara\xe7lar\u0131yla konu\u015fmaya atlay\u0131n!";
+    },
+    get$playPersonalizedGames() {
+      return "Kendi kelime da\u011farc\u0131\u011f\u0131n\u0131z ve dilbilgisi ihtiya\xe7lar\u0131n\u0131za g\xf6re ki\u015fiselle\u015ftirilmi\u015f pratik oyunlar oynay\u0131n!";
+    },
     get$hideEvents() {
       return "Etkinlikleri gizle";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hVtJJCQea5+xa8CGI+5aKxNsMik="] = d.current;
+  d["a6p1JNd33rRFAJNVC/kF6bhALTw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_821.part.js.map

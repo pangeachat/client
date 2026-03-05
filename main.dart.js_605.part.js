@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Deskargatu Excel Fitxategia";
     },
-    get$unkDisplayName() {
-      return "Ezezaguna";
-    },
     get$wwCountryDisplayName() {
       return "Munduan zehar";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Nork gehitu dezake ikastaro honetan txate berriak";
     },
-    get$addEnvironmentOverride() {
-      return "Gehitu ingurune gainkarga";
-    },
-    get$defaultOption() {
-      return "Lehentasuna";
-    },
     get$deleteChatDesc() {
       return "Ziur zaude txat hau ezabatu nahi duzula? Parte-hartzaile guztientzat ezabatuko da eta txataren mezu guztiak ez dira gehiago erabiliko praktikan edo ikasketa analitiketan.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.";
     },
+    get$getStarted() {
+      return "Hasi";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Idatzi eta hitz egin kezkatu gabe Pangea Bot-ekin edozein unetan, edozein lekutan!";
+    },
+    get$joinLearningCommunities() {
+      return "Bat egin nazioarteko ikaskuntza komunitateekin edo... hasi zurea!";
+    },
+    get$playConversationGames() {
+      return "Jolastu elkarrizketa jokoekin botarekin, ikaskideekin eta lagun berriekin!";
+    },
+    get$jumpIntoConversation() {
+      return "Sartu elkarrizketan Lehen Egunean AI idazketa tresnekin!";
+    },
+    get$playPersonalizedGames() {
+      return "Jolastu zure hiztegi eta gramatika beharrak pertsonalizatutako praktika jokoekin!";
+    },
     get$hideEvents() {
       return "Ezkutatu ekitaldiak";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PNSqIufT1Asd+tT9HXQVpAb7CGM="] = d.current;
+  d["yz3ArDJR3vdeIBB/oe0Z+xfBEUM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_605.part.js.map

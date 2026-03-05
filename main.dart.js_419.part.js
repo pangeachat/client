@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Excel-Datei herunterladen";
     },
-    get$unkDisplayName() {
-      return "Unbekannt";
-    },
     get$wwCountryDisplayName() {
       return "Weltweit";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Wer kann neue Chats zu diesem Kurs hinzuf\xfcgen";
     },
-    get$addEnvironmentOverride() {
-      return "Umgebungs\xfcberschreibung hinzuf\xfcgen";
-    },
-    get$defaultOption() {
-      return "Standard";
-    },
     get$deleteChatDesc() {
       return "M\xf6chten Sie diesen Chat wirklich l\xf6schen? Er wird f\xfcr alle Teilnehmer gel\xf6scht und alle Nachrichten im Chat sind nicht mehr f\xfcr \xdcbungen oder Lernanalysen verf\xfcgbar.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Wir haben das Abonnementmanagement in einem neuen Tab gestartet. Wenn Sie den neuen Tab nicht gesehen haben, \xfcberpr\xfcfen Sie bitte Ihren Popup-Blocker.";
     },
+    get$getStarted() {
+      return "Loslegen";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Schreiben und sprechen Sie sorgenfrei mit Pangea Bot jederzeit und \xfcberall!";
+    },
+    get$joinLearningCommunities() {
+      return "Treten Sie internationalen Lerncommunities bei oder... starten Sie Ihre eigene!";
+    },
+    get$playConversationGames() {
+      return "Spielen Sie Gespr\xe4chsspiele mit dem Bot, Klassenkameraden und neuen Freunden!";
+    },
+    get$jumpIntoConversation() {
+      return "Springen Sie ab dem ersten Tag mit KI-Schreibwerkzeugen in Gespr\xe4che!";
+    },
+    get$playPersonalizedGames() {
+      return "Spielen Sie \xdcbungsspiele, die auf Ihren Wortschatz und Ihre Grammatikbed\xfcrfnisse zugeschnitten sind!";
+    },
     get$hideEvents() {
       return "Ereignisse ausblenden";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2jkD8dCYeU5GxkPdS5u5vVhcoZg="] = d.current;
+  d["r8rNqVloXtQEtk++P53Ux/jgluQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_419.part.js.map

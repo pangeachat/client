@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Excel f\xe1jl let\xf6lt\xe9se";
     },
-    get$unkDisplayName() {
-      return "Ismeretlen";
-    },
     get$wwCountryDisplayName() {
       return "Vil\xe1gszerte";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Ki adhat hozz\xe1 \xfaj cseveg\xe9seket ehhez a kurzushoz";
     },
-    get$addEnvironmentOverride() {
-      return "K\xf6rnyezet fel\xfclb\xedr\xe1l\xe1s hozz\xe1ad\xe1sa";
-    },
-    get$defaultOption() {
-      return "Alap\xe9rtelmezett";
-    },
     get$deleteChatDesc() {
       return "Biztosan t\xf6r\xf6lni szeretn\xe9 ezt a cseveg\xe9st? Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra t\xf6rl\u0151dik, \xe9s minden \xfczenet nem lesz t\xf6bb\xe9 el\xe9rhet\u0151 gyakorl\xe1shoz vagy tanul\xe1si elemz\xe9sekhez.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Elind\xedtottuk az el\u0151fizet\xe9skezel\xe9st egy \xfaj lapon. Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3ablak-blokkol\xf3dat.";
     },
+    get$getStarted() {
+      return "Kezdj el";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "\xcdrj \xe9s besz\xe9lj aggodalom n\xe9lk\xfcl a Pangea Bot seg\xedts\xe9g\xe9vel b\xe1rmikor, b\xe1rhol!";
+    },
+    get$joinLearningCommunities() {
+      return "Csatlakozz nemzetk\xf6zi tanul\xf3i k\xf6z\xf6ss\xe9gekhez, vagy... ind\xedtsd el a saj\xe1todat!";
+    },
+    get$playConversationGames() {
+      return "J\xe1tssz besz\xe9lget\u0151s j\xe1t\xe9kokat a bottal, oszt\xe1lyt\xe1rsaiddal \xe9s \xfaj bar\xe1taiddal!";
+    },
+    get$jumpIntoConversation() {
+      return "Ugorj bele a besz\xe9lget\xe9sbe az els\u0151 napt\xf3l kezdve AI \xedr\xe1si eszk\xf6z\xf6kkel!";
+    },
+    get$playPersonalizedGames() {
+      return "J\xe1tssz olyan gyakorl\xf3 j\xe1t\xe9kokat, amelyek szem\xe9lyre szabottak a sz\xf3kincsed \xe9s nyelvtani ig\xe9nyeid szerint!";
+    },
     get$hideEvents() {
       return "Esem\xe9nyek elrejt\xe9se";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QjIkUJtVItHjquSZLwPpcuMlz0I="] = d.current;
+  d["C45HoTzjXJsP8W5S0Z/hCcqbjjg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

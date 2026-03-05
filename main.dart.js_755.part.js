@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Downloadar File Excel";
     },
-    get$unkDisplayName() {
-      return "Inconnu";
-    },
     get$wwCountryDisplayName() {
       return "Mondial";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Qui pote aggiunger nove chats a stu cursu";
     },
-    get$addEnvironmentOverride() {
-      return "Aggiungi override de ambiente";
-    },
-    get$defaultOption() {
-      return "Deffault";
-    },
     get$deleteChatDesc() {
       return "Es tu secur de voler eliminar cist chat? I ser\xe1 eliminat per toti i participanti e toti i messaggi in cist chat non sar\xe0 pi\xf9 disponibile per pratica o analisi de apprendissatge.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Tugaimid t\xfas le bainist\xedocht s\xednti\xfais i gcluais\xedn nua. M\xe1s rud \xe9 nach bhfaca t\xfa an cluais\xedn nua, le do thoil seice\xe1il do bhacad\xf3ir pop-up.";
     },
+    get$getStarted() {
+      return "T\xf2isich";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Sgr\xecobh agus bruidhinn gun dragh le Pangea Bot a h-uile uair, an \xe0ite sam bith!";
+    },
+    get$joinLearningCommunities() {
+      return "Thig a-steach do choimhearsnachdan ionnsachaidh eadar-n\xe0iseanta no... t\xf2isich do chuid fh\xe8in!";
+    },
+    get$playConversationGames() {
+      return "Cluich geamannan c\xf2mhraidh leis a' bhot, le do cho-aoisean, agus le caraidean \xf9ra!";
+    },
+    get$jumpIntoConversation() {
+      return "D\xe8an leum a-steach do ch\xf2mhradh bho Latha a' Chiad le innealan sgr\xecobhadh AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Cluich geamannan cleachdaidh a tha freagairteach do do fhaclan agus do fheumalachdan ghr\xe0mair!";
+    },
     get$hideEvents() {
       return "Ocultar eventos";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TPffKjLxBMcK/M4YKysBsBAJRuY="] = d.current;
+  d["v7SeVgpDNBhjid5xfdsoq5ERiHw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

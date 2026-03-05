@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "El\u015duti Excel-Dosieron";
     },
-    get$unkDisplayName() {
-      return "Nekonata";
-    },
     get$wwCountryDisplayName() {
       return "Tra La\u016d Tutmondi";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kiu povas aldoni novajn babilejojn al \u0109i tiu kurso";
     },
-    get$addEnvironmentOverride() {
-      return "Aldoni medio-\u015dan\u011don";
-    },
-    get$defaultOption() {
-      return "Defa\u016dlta";
-    },
     get$deleteChatDesc() {
       return "\u0108u vi certas ke vi volas forigi \u0109i tiun babilejon? \u011ci estos forigita por \u0109iuj partoprenantoj kaj \u0109iuj mesa\u011doj ene de la babilejo ne plu estos haveblaj por praktiko a\u016d lernado-analizoj.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Ni lan\u0109is abonadministradon en nova langeto. Se vi ne vidis la novan langeton, bonvolu kontroli vian pop-up blokilon.";
     },
+    get$getStarted() {
+      return "Komencu";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Skribu kaj parolu sen zorgoj kun Pangea Bot iam ajn, kie ajn!";
+    },
+    get$joinLearningCommunities() {
+      return "Ali\u011du al internaciaj lernokomunumoj a\u016d... komencu vian propran!";
+    },
+    get$playConversationGames() {
+      return "Ludu konversaciajn ludojn kun la bot, klaspartneroj, kaj novaj amikoj!";
+    },
+    get$jumpIntoConversation() {
+      return "Saltetu en konversacion ekde la Unua Tago kun AI skribaj iloj!";
+    },
+    get$playPersonalizedGames() {
+      return "Ludu praktikajn ludojn personigitajn al viaj vortaro kaj gramatikaj bezonoj!";
+    },
     get$hideEvents() {
       return "Ka\u015di eventojn";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fnWUsh4xriAH95Q1nIFOyiCENaU="] = d.current;
+  d["yIgdWTyhENicIuO4mvF1HM54Qnc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_506.part.js.map

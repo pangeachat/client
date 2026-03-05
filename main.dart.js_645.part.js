@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "T\xe9l\xe9charger le fichier Excel";
     },
-    get$unkDisplayName() {
-      return "Inconnu";
-    },
     get$wwCountryDisplayName() {
       return "Monde entier";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Qui peut ajouter de nouvelles discussions \xe0 ce cours";
     },
-    get$addEnvironmentOverride() {
-      return "Ajouter une surcharge d'environnement";
-    },
-    get$defaultOption() {
-      return "Par d\xe9faut";
-    },
     get$deleteChatDesc() {
       return "Voulez-vous vraiment supprimer cette conversation ? Elle sera supprim\xe9e pour tous les participants et tous les messages de la conversation ne seront plus disponibles pour la pratique ou l'analyse d'apprentissage.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Nous avons lanc\xe9 la gestion des abonnements dans un nouvel onglet. Si vous n'avez pas vu le nouvel onglet, veuillez v\xe9rifier votre bloqueur de fen\xeatres contextuelles.";
     },
+    get$getStarted() {
+      return "Commencer";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "\xc9crivez et parlez sans souci avec Pangea Bot \xe0 tout moment, n'importe o\xf9 !";
+    },
+    get$joinLearningCommunities() {
+      return "Rejoignez des communaut\xe9s d'apprentissage internationales ou... cr\xe9ez la v\xf4tre !";
+    },
+    get$playConversationGames() {
+      return "Jouez \xe0 des jeux de conversation avec le bot, vos camarades de classe et de nouveaux amis !";
+    },
+    get$jumpIntoConversation() {
+      return "Plongez dans la conversation d\xe8s le premier jour avec des outils d'\xe9criture IA !";
+    },
+    get$playPersonalizedGames() {
+      return "Jouez \xe0 des jeux d'entra\xeenement personnalis\xe9s selon vos besoins en vocabulaire et en grammaire !";
+    },
     get$hideEvents() {
       return "Masquer les \xe9v\xe9nements";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JVnkYOL/GQtpxINxwuCY1Fcr9sw="] = d.current;
+  d["drV93d5JYWS6/eglSYio+OBa7KU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_645.part.js.map

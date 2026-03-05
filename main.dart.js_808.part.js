@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Stiahnu\u0165 Excel s\xfabor";
     },
-    get$unkDisplayName() {
-      return "Nezn\xe1my";
-    },
     get$wwCountryDisplayName() {
       return "Celosvetovo";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kto m\xf4\u017ee prid\xe1va\u0165 nov\xe9 chaty do tohto kurzu";
     },
-    get$addEnvironmentOverride() {
-      return "Prida\u0165 prep\xedsanie prostredia";
-    },
-    get$defaultOption() {
-      return "Predvolen\xe9";
-    },
     get$deleteChatDesc() {
       return "Ste si ist\xed, \u017ee chcete vymaza\u0165 tento chat? Bude vymazan\xfd pre v\u0161etk\xfdch \xfa\u010dastn\xedkov a v\u0161etky spr\xe1vy v chate u\u017e nebud\xfa dostupn\xe9 na prax alebo analytiku u\u010denia.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Spustili sme spr\xe1vu predplatn\xe9ho v novom okne. Ak ste nevideli nov\xe9 okno, skontrolujte pros\xedm svoj blok\xe1tor vyskakovac\xedch okien.";
     },
+    get$getStarted() {
+      return "Za\u010dnite";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "P\xed\u0161te a hovorte bez ob\xe1v s Pangea Bot kedyko\u013evek, kdeko\u013evek!";
+    },
+    get$joinLearningCommunities() {
+      return "Pridajte sa k medzin\xe1rodn\xfdm u\u010debn\xfdm komunit\xe1m alebo... za\u010dnite svoju vlastn\xfa!";
+    },
+    get$playConversationGames() {
+      return "Hrajte konverza\u010dn\xe9 hry s botom, spolu\u017eiakmi a nov\xfdmi priate\u013emi!";
+    },
+    get$jumpIntoConversation() {
+      return "Vst\xfapte do konverz\xe1cie od prv\xe9ho d\u0148a s n\xe1strojmi na p\xedsanie AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Hrajte cvi\u010dn\xe9 hry prisp\xf4soben\xe9 va\u0161ej slovnej z\xe1sobe a gramatick\xfdm potreb\xe1m!";
+    },
     get$hideEvents() {
       return "Skry\u0165 udalosti";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k3nCS4e5J6TCx3HxMslRpYuyRfk="] = d.current;
+  d["eiplJTKMq38AtLIVPUTeazJR5ig="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

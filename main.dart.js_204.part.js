@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Descarregar Fitxer Excel";
     },
-    get$unkDisplayName() {
-      return "Desconegut";
-    },
     get$wwCountryDisplayName() {
       return "Mundial";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Qui pot afegir nous xats a aquest curs";
     },
-    get$addEnvironmentOverride() {
-      return "Afegeix una substituci\xf3 de l'entorn";
-    },
-    get$defaultOption() {
-      return "Per defecte";
-    },
     get$deleteChatDesc() {
       return "Est\xe0s segur que vols eliminar aquest xat? S'eliminar\xe0 per a tots els participants i tots els missatges dins del xat ja no estaran disponibles per a pr\xe0ctica o an\xe0lisi d'aprenentatge.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Hem llan\xe7at la gesti\xf3 de subscripcions en una nova pestanya. Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.";
     },
+    get$getStarted() {
+      return "Comen\xe7a";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Escriu i parla sense preocupacions amb Pangea Bot en qualsevol moment i lloc!";
+    },
+    get$joinLearningCommunities() {
+      return "Uneix-te a comunitats d'aprenentatge internacionals o... comen\xe7a la teva pr\xf2pia!";
+    },
+    get$playConversationGames() {
+      return "Juga a jocs de conversa amb el bot, companys de classe i nous amics!";
+    },
+    get$jumpIntoConversation() {
+      return "Salta a la conversa des del Dia U amb eines d'escriptura d'IA!";
+    },
+    get$playPersonalizedGames() {
+      return "Juga a jocs de pr\xe0ctica personalitzats segons les teves necessitats de vocabulari i gram\xe0tica!";
+    },
     get$hideEvents() {
       return "Amaga esdeveniments";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/oC6d7WY99PNCfZ35R5CVzW8xZU="] = d.current;
+  d["Ku2YIgaARpUwuLdLZE3jH3E5sao="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map

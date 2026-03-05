@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Prenesi Excel datoteko";
     },
-    get$unkDisplayName() {
-      return "Neznano";
-    },
     get$wwCountryDisplayName() {
       return "Po vsem svetu";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Kdo lahko doda nove pogovore v ta te\u010daj";
     },
-    get$addEnvironmentOverride() {
-      return "Dodaj prepis okolja";
-    },
-    get$defaultOption() {
-      return "Privzeto";
-    },
     get$deleteChatDesc() {
       return "Ali ste prepri\u010dani, da \u017eelite izbrisati ta pogovor? Izbrisal se bo za vse udele\u017eence in vsi sporo\u010dili v pogovoru ne bodo ve\u010d na voljo za prakso ali analitiko u\u010denja.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Zagnali smo upravljanje naro\u010dnin v novem zavihku. \u010ce novega zavihka niste videli, prosimo, preverite svoj blokator pojavnih oken.";
     },
+    get$getStarted() {
+      return "Za\u010dnite";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Brezskrbno pi\u0161ite in govorite s Pangea Botom kadarkoli in kjerkoli!";
+    },
+    get$joinLearningCommunities() {
+      return "Pridru\u017eite se mednarodnim u\u010dnim skupnostim ali... za\u010dnite svojo!";
+    },
+    get$playConversationGames() {
+      return "Igrajte pogovorne igre z botom, so\u0161olci in novimi prijatelji!";
+    },
+    get$jumpIntoConversation() {
+      return "Sko\u010dite v pogovor od prvega dne z AI orodji za pisanje!";
+    },
+    get$playPersonalizedGames() {
+      return "Igrajte vaje, prilagojene va\u0161emu besednemu zakladu in potrebam po slovnici!";
+    },
     get$hideEvents() {
       return "Skrij dogodke";
     },
@@ -5641,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8pMnQ1PYlAgkgbCS8Hbrv+oDz+Y="] = d.current;
+  d["9OU0Iaa+VSeqQcTg8MqAWMlAR4Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map

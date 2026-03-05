@@ -1872,9 +1872,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$downloadXLSXFile() {
       return "Descarc\u0103 Fi\u0219ier Excel";
     },
-    get$unkDisplayName() {
-      return "Necunoscut";
-    },
     get$wwCountryDisplayName() {
       return "Lumea \xeentreag\u0103";
     },
@@ -4074,12 +4071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Cine poate ad\u0103uga noi conversa\u021bii la acest curs";
     },
-    get$addEnvironmentOverride() {
-      return "Adaug\u0103 suprascriere de mediu";
-    },
-    get$defaultOption() {
-      return "Implicit";
-    },
     get$deleteChatDesc() {
       return "E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi aceast\u0103 conversa\u021bie? Va fi \u0219tears\u0103 pentru to\u021bi participan\u021bii \u0219i toate mesajele din conversa\u021bie nu vor mai fi disponibile pentru practic\u0103 sau analize de \xeenv\u0103\u021bare.";
     },
@@ -5577,6 +5568,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$managementSnackbarMessage() {
       return "Am lansat gestionarea abonamentelor \xeentr-o fil\u0103 nou\u0103. Dac\u0103 nu ai v\u0103zut fila nou\u0103, te rug\u0103m s\u0103 verifici blocatorul de feronerie.";
     },
+    get$getStarted() {
+      return "\xcencepe";
+    },
+    get$writeAndSpeakWorryFree() {
+      return "Scrie \u0219i vorbe\u0219te f\u0103r\u0103 griji cu Pangea Bot oric\xe2nd, oriunde!";
+    },
+    get$joinLearningCommunities() {
+      return "Al\u0103tur\u0103-te comunit\u0103\u021bilor interna\u021bionale de \xeenv\u0103\u021bare sau... \xeencepe-\u021bi propria comunitate!";
+    },
+    get$playConversationGames() {
+      return "Joac\u0103 jocuri de conversa\u021bie cu botul, colegii de clas\u0103 \u0219i noi prieteni!";
+    },
+    get$jumpIntoConversation() {
+      return "Intr\u0103 \xeen conversa\u021bie din prima zi cu instrumentele de scriere AI!";
+    },
+    get$playPersonalizedGames() {
+      return "Joac\u0103 jocuri de practic\u0103 personalizate pentru nevoile tale de vocabular \u0219i gramatic\u0103!";
+    },
     get$hideEvents() {
       return "Ascunde evenimentele";
     },
@@ -5644,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["e/YSBbBK6kM+XOkwqOKSJ2Ky3T8="] = d.current;
+  d["bU0WKydQ9mUwHtbHkuWFv9um23A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_801.part.js.map
