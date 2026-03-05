@@ -59,7 +59,9 @@ class _ChatBannerBuilderState extends State<ChatBannerBuilder>
   @override
   void dispose() {
     _autoCloseTimer?.cancel();
-    widget.closeCompleter.complete();
+    if (!widget.closeCompleter.isCompleted) {
+      widget.closeCompleter.complete();
+    }
     _controller?.dispose();
     super.dispose();
   }

@@ -9,8 +9,6 @@ import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
-import 'package:fluffychat/pangea/chat/widgets/unlocked_morph_banner.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
@@ -380,59 +378,5 @@ class OverlayUtil {
       closePrevOverlay: false,
       overlayKey: InstructionsEnum.ttsDisabled.toString(),
     );
-  }
-
-  static void showUnlockedConstructBanner(
-    BuildContext context,
-    ConstructIdentifier construct,
-    Completer<void> completer,
-    String overlayKey,
-  ) {
-    final success = OverlayUtil.showOverlay(
-      overlayKey: overlayKey,
-      context: context,
-      child: UnlockedMorphBanner(
-        construct: construct,
-        closeCompleter: completer,
-        overlayKey: overlayKey,
-      ),
-      transformTargetId: "",
-      position: OverlayPositionEnum.top,
-      backDropToDismiss: false,
-      closePrevOverlay: false,
-      canPop: false,
-    );
-
-    if (!success) {
-      completer.complete();
-    }
-  }
-
-  static void showLevelUpBanner(
-    BuildContext context,
-    int level,
-    int prevLevel,
-    Completer<void> completer,
-    String overlayKey,
-  ) {
-    final success = OverlayUtil.showOverlay(
-      overlayKey: overlayKey,
-      context: context,
-      child: LevelUpBanner(
-        level: level,
-        prevLevel: prevLevel,
-        closeCompleter: completer,
-        overlayKey: overlayKey,
-      ),
-      transformTargetId: '',
-      position: OverlayPositionEnum.top,
-      backDropToDismiss: false,
-      closePrevOverlay: false,
-      canPop: false,
-    );
-
-    if (!success) {
-      completer.complete();
-    }
   }
 }

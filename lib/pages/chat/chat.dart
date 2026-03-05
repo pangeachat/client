@@ -37,6 +37,8 @@ import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
+import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
+import 'package:fluffychat/pangea/chat/widgets/unlocked_morph_banner.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
@@ -516,16 +518,27 @@ class ChatController extends State<ChatPageWithRoom>
     if (isSubscribed == false) return;
 
     final overlayKey = "level_up_notification";
-    _bannerController.addBanner(
-      (Completer<void> completer) => OverlayUtil.showLevelUpBanner(
-        context,
-        update.newLevel,
-        update.prevLevel,
-        completer,
-        overlayKey,
-      ),
-      overlayKey: overlayKey,
-    );
+    _bannerController.addBanner((Completer<void> completer) {
+      final success = OverlayUtil.showOverlay(
+        overlayKey: overlayKey,
+        context: context,
+        child: LevelUpBanner(
+          level: update.newLevel,
+          prevLevel: update.prevLevel,
+          closeCompleter: completer,
+          overlayKey: overlayKey,
+        ),
+        transformTargetId: '',
+        position: OverlayPositionEnum.top,
+        backDropToDismiss: false,
+        closePrevOverlay: false,
+        canPop: false,
+      );
+
+      if (!success) {
+        completer.complete();
+      }
+    }, overlayKey: overlayKey);
   }
 
   void _onUnlockConstructs(Set<ConstructIdentifier> constructs) {
@@ -537,15 +550,26 @@ class ChatController extends State<ChatPageWithRoom>
       }
 
       final overlayKey = "${construct.string}_snackbar";
-      _bannerController.addBanner(
-        (Completer<void> completer) => OverlayUtil.showUnlockedConstructBanner(
-          context,
-          construct,
-          completer,
-          overlayKey,
-        ),
-        overlayKey: overlayKey,
-      );
+      _bannerController.addBanner((Completer<void> completer) {
+        final success = OverlayUtil.showOverlay(
+          overlayKey: overlayKey,
+          context: context,
+          child: UnlockedMorphBanner(
+            construct: construct,
+            closeCompleter: completer,
+            overlayKey: overlayKey,
+          ),
+          transformTargetId: "",
+          position: OverlayPositionEnum.top,
+          backDropToDismiss: false,
+          closePrevOverlay: false,
+          canPop: false,
+        );
+
+        if (!success) {
+          completer.complete();
+        }
+      }, overlayKey: overlayKey);
     }
   }
 

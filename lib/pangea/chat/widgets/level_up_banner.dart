@@ -11,6 +11,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_banner_builder.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class LevelUpConstants {
   static const String starFileName = "star.png";
@@ -44,16 +45,23 @@ class _LevelUpBannerState extends State<LevelUpBanner> {
 
   Future<void> _playLevelUpSound() async {
     final player = AudioPlayer();
-    player.setVolume(AppSettings.volume.value);
-
-    await player.play(
-      UrlSource(
-        "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
-      ),
-    );
-
-    await Future.delayed(const Duration(seconds: 2));
-    player.dispose();
+    try {
+      player.setVolume(AppSettings.volume.value);
+      await player.play(
+        UrlSource(
+          "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
+        ),
+      );
+      await Future.delayed(const Duration(seconds: 2));
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"message": "Failed to play level up sound"},
+      );
+    } finally {
+      await player.dispose();
+    }
   }
 
   @override
