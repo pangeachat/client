@@ -42,7 +42,7 @@ class EnableNotificationsController extends State<EnableNotifications> {
   Future<void> _requestNotificationPermission() async {
     await Matrix.of(context).requestNotificationPermission();
     if (mounted) {
-      context.go("/registration/course");
+      context.go("/registration/notifications/course");
     }
   }
 
@@ -108,7 +108,8 @@ class EnableNotificationsController extends State<EnableNotifications> {
                   ],
                 ),
                 TextButton(
-                  onPressed: () => context.go("/registration/course"),
+                  onPressed: () =>
+                      context.go("/registration/notifications/course"),
                   child: Text(L10n.of(context).skipForNow),
                 ),
               ],
