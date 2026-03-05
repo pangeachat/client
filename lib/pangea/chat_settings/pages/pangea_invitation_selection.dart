@@ -84,6 +84,7 @@ class PangeaInvitationSelection extends StatefulWidget {
 class PangeaInvitationSelectionController
     extends State<PangeaInvitationSelection> {
   TextEditingController controller = TextEditingController();
+  ScrollController scrollController = ScrollController();
 
   bool loading = false;
 
@@ -130,6 +131,12 @@ class PangeaInvitationSelectionController
     });
 
     _addJoinCode();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   String filterLabel(InvitationFilter filter) {
@@ -263,6 +270,9 @@ class PangeaInvitationSelectionController
     if (filter == newFilter) return;
     if (newFilter == InvitationFilter.public) {
       searchUser(context, controller.text);
+    }
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
     }
     setState(() => filter = newFilter);
   }
