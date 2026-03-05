@@ -5625,6 +5625,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youSentActivitySummary() {
       return "\u0634\u0645\u0627 \u06cc\u06a9 \u062e\u0644\u0627\u0635\u0647 \u0641\u0639\u0627\u0644\u06cc\u062a \u0627\u0631\u0633\u0627\u0644 \u06a9\u0631\u062f\u06cc\u062f";
     },
+    get$emptyInviteSearchHint() {
+      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5638,7 +5641,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["V0M++62CDSYQFIhF7gZfCHzLc8Y="] = d.current;
+  d["7xx8TeMtdMyFJyUl4S0b36d6nkw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_619.part.js.map
