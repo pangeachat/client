@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Mayroon ka bang invite code o link sa isang pampublikong kurso?";
     },
-    welcomeUser$1(user) {
-      return "Maligayang pagdating " + user;
-    },
     get$findCourse() {
       return "Maghanap ng kurso";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QeslSM8LSvRwyXJRntYgkISZSsE="] = d.current;
+  d["6qxl+0NhZ3KbFMeFvLdYb9H2rpU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

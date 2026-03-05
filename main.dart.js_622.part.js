@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Onko sinulla kutsukoodia tai linkki\xe4 julkiseen kurssiin?";
     },
-    welcomeUser$1(user) {
-      return "Tervetuloa " + user;
-    },
     get$findCourse() {
       return "Etsi kurssi";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T/M75fr7A20v2vMIu86xfdqUcbU="] = d.current;
+  d["HOF3o/q0ObS0CDRGOBTalm4FteI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

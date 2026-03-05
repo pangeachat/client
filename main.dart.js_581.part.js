@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Kas sul on kutsekood v\xf5i link avalikule kursusele?";
     },
-    welcomeUser$1(user) {
-      return "Tere tulemast " + user;
-    },
     get$findCourse() {
       return "Leia kursus";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SqQxhIaw3htWU8G4Ne3paHdy+N8="] = d.current;
+  d["T5NTW3f7IxjgZCdIj2exef24h0E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

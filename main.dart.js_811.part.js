@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Imate kodo za povabilo ali povezavo do javnega te\u010daja?";
     },
-    welcomeUser$1(user) {
-      return "Dobrodo\u0161li " + user;
-    },
     get$findCourse() {
       return "Najdi te\u010daj";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9OU0Iaa+VSeqQcTg8MqAWMlAR4Y="] = d.current;
+  d["KK/or9GuL3XYd0v2DHFTaJHmd/U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map
