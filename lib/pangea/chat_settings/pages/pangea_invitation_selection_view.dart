@@ -156,12 +156,17 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                               ? Padding(
                                   padding: const EdgeInsets.all(24.0),
                                   child: Text(
-                                    room.isSpace
+                                    controller.controller.text.isNotEmpty &&
+                                            controller.controller.text ==
+                                                controller.lastSearch
+                                        ? L10n.of(context).emptyInviteSearchHint
+                                        : room.isSpace
                                         ? L10n.of(context).publicInviteDescSpace
                                         : L10n.of(context).publicInviteDescChat,
                                   ),
                                 )
                               : ListView.builder(
+                                  controller: controller.scrollController,
                                   itemCount: controller.foundProfiles.length,
                                   itemBuilder: (BuildContext context, int i) =>
                                       _InviteContactListTile(
@@ -176,6 +181,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                       ),
                                 )
                         : ListView.builder(
+                            controller: controller.scrollController,
                             itemCount: contacts.length + 2,
                             itemBuilder: (BuildContext context, int i) {
                               if (i == 0) {
