@@ -84,11 +84,13 @@ class PangeaInvitationSelection extends StatefulWidget {
 class PangeaInvitationSelectionController
     extends State<PangeaInvitationSelection> {
   TextEditingController controller = TextEditingController();
+  ScrollController scrollController = ScrollController();
 
   bool loading = false;
 
   List<Profile> foundProfiles = [];
   Timer? coolDown;
+  String? lastSearch;
 
   InvitationFilter filter = InvitationFilter.knocking;
 
@@ -129,6 +131,12 @@ class PangeaInvitationSelectionController
     });
 
     _addJoinCode();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   String filterLabel(InvitationFilter filter) {
@@ -263,6 +271,9 @@ class PangeaInvitationSelectionController
     if (newFilter == InvitationFilter.public) {
       searchUser(context, controller.text);
     }
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
     setState(() => filter = newFilter);
   }
 
@@ -359,7 +370,10 @@ class PangeaInvitationSelectionController
       setState(() => foundProfiles = []);
     }
 
-    setState(() => loading = true);
+    setState(() {
+      loading = true;
+      lastSearch = null;
+    });
     final matrix = Matrix.of(context);
     SearchUserDirectoryResponse response;
     try {
@@ -370,7 +384,10 @@ class PangeaInvitationSelectionController
       ).showSnackBar(SnackBar(content: Text((e).toLocalizedString(context))));
       return;
     } finally {
-      setState(() => loading = false);
+      setState(() {
+        loading = false;
+        lastSearch = text;
+      });
     }
 
     final results = response.results;
