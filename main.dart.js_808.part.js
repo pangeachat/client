@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "M\xe1te poz\xfdvac\xed k\xf3d alebo odkaz na verejn\xfd kurz?";
     },
+    welcomeUser$1(user) {
+      return "Vitaj " + user;
+    },
     get$findCourse() {
       return "N\xe1js\u0165 kurz";
     },
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HlQq/XLWlzxkXLH7188NiDGvDDA="] = d.current;
+  d["eiplJTKMq38AtLIVPUTeazJR5ig="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

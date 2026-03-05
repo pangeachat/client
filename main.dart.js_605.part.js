@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?";
     },
+    welcomeUser$1(user) {
+      return "Ongi etorri " + user;
+    },
     get$findCourse() {
       return "Bilatu ikastaroa";
     },
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5Up3dj06KxojP800Fyxeq4oQoqo="] = d.current;
+  d["yz3ArDJR3vdeIBB/oe0Z+xfBEUM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_605.part.js.map

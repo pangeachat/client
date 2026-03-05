@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "B\u1ea1n c\xf3 m\xe3 m\u1eddi ho\u1eb7c li\xean k\u1ebft \u0111\u1ebfn m\u1ed9t kh\xf3a h\u1ecdc c\xf4ng khai kh\xf4ng?";
     },
+    welcomeUser$1(user) {
+      return "Ch\xe0o m\u1eebng " + user;
+    },
     get$findCourse() {
       return "T\xecm kh\xf3a h\u1ecdc";
     },
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DggjKGdLwJg1tRttRLXwnh4ZunA="] = d.current;
+  d["rHGUwx65xWeoVgN8WdqaogoCErM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_825.part.js.map

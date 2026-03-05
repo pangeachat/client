@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "An bhfuil c\xf3d cuireadh n\xf3 nasc agat do ch\xfarsa poibl\xed?";
     },
+    welcomeUser$1(user) {
+      return "F\xe1ilte " + user;
+    },
     get$findCourse() {
       return "F\xe9ach ar ch\xfarsa";
     },
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bPWusWr4n+7tD42P5L72PxdII9k="] = d.current;
+  d["MQoKfyacwhx4UeVPHBIm3VihIBY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_662.part.js.map

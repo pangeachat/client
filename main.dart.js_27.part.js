@@ -5457,6 +5457,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -11080,6 +11083,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -16700,6 +16706,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return string$.Voc__tu;
     },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
     get$findCourse() {
       return "Encontrar um curso";
     },
@@ -17095,7 +17104,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7NhUt9UGqLpsoobKiYZDvEF7k24="] = d.current;
+  d["w2eTHTtPl626Z2GAjXK6J1inSBc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "\u62db\u5f85\u30b3\u30fc\u30c9\u307e\u305f\u306f\u516c\u958b\u30b3\u30fc\u30b9\u3078\u306e\u30ea\u30f3\u30af\u306f\u3042\u308a\u307e\u3059\u304b\uff1f";
     },
+    welcomeUser$1(user) {
+      return "\u3088\u3046\u3053\u305d " + user + " \u3055\u3093";
+    },
     get$findCourse() {
       return "\u30b3\u30fc\u30b9\u3092\u898b\u3064\u3051\u308b";
     },
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["djdLRmZMzQ+hIpKNjGv74szlYF8="] = d.current;
+  d["CHGHqh2zk8ptTFFv90EOAlLri9g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

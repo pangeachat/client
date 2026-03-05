@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Har du en invitasjonskode eller lenke til et offentlig kurs?";
     },
+    welcomeUser$1(user) {
+      return "Velkommen " + user;
+    },
     get$findCourse() {
       return "Finn et kurs";
     },
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YpKtfuQAv/kCODnFZLBSwF/7+Xs="] = d.current;
+  d["T0mLjamS1WLlWgr9cXP215HQi98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_785.part.js.map

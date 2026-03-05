@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Bir davet kodunuz veya halka a\xe7\u0131k bir kursa ba\u011flant\u0131n\u0131z var m\u0131?";
     },
+    welcomeUser$1(user) {
+      return "Ho\u015f geldin " + user;
+    },
     get$findCourse() {
       return "Bir kurs bul";
     },
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ia6GvriZuzWgrd9zSEtZZXD4R1I="] = d.current;
+  d["a6p1JNd33rRFAJNVC/kF6bhALTw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_821.part.js.map

@@ -5447,6 +5447,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Do you have an invite code or link to a public course?";
     },
+    welcomeUser$1(user) {
+      return "Welcome " + user;
+    },
     get$findCourse() {
       return "\u0f5a\u0f7c\u0f44\u0f0b\u0f41\u0f44\u0f0b\u0f56\u0f5f\u0f7c\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0d";
     },
@@ -5661,7 +5664,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UA6B3XYfoOh+88QtJ04uCPbCCxg="] = d.current;
+  d["zfEPyRsDigbGSUsSqIxk89Zj/P8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

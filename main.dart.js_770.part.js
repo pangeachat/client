@@ -5445,6 +5445,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Ar turite kvietimo kod\u0105 arba nuorod\u0105 \u012f vie\u0161\u0105 kurs\u0105?";
     },
+    welcomeUser$1(user) {
+      return "Sveiki atvyk\u0119, " + user;
+    },
     get$findCourse() {
       return "Rasti kurs\u0105";
     },
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7r6rhEiNKammRZ8SboL023ztGOQ="] = d.current;
+  d["0ZxA87h7QHQxp4iBQXH5V+hGhl4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map
