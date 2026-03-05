@@ -5397,5 +5397,6 @@
       }
     }
   },
-  "youSentActivitySummary": "You sent an activity summary"
+  "youSentActivitySummary": "You sent an activity summary",
+  "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings"
 }
