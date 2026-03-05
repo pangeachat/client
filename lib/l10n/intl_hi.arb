@@ -3715,7 +3715,6 @@
   "clickForMeaningActivity": "यहां क्लिक करें अर्थ चुनौती के लिए",
   "meaning": "अर्थ",
   "chatWith": "{displayname} के साथ समूह",
-  "clickOnEmailLink": "कृपया ईमेल में लिंक पर क्लिक करें और फिर आगे बढ़ें।\n\nयदि ईमेल नहीं आया है तो अपने स्पैम फ़ोल्डर की जाँच करें।",
   "dontForgetPassword": "अपना पासवर्ड न भूलें!",
   "enableAutocorrectToolName": "डिवाइस ऑटोकरेक्ट सक्षम करें",
   "enableAutocorrectDescription": "यदि आपका डिवाइस उस भाषा का समर्थन करता है जिसे आप सीख रहे हैं, तो आप सामान्य त्रुटियों को ठीक करने के लिए डिवाइस ऑटोकरेक्ट सक्षम कर सकते हैं।",
@@ -8593,10 +8592,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

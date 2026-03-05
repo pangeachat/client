@@ -46,7 +46,7 @@ class Settings3PidController extends State<Settings3Pid> {
       title: L10n.of(context).weSentYouAnEmail,
       // #Pangea
       // message: L10n.of(context).pleaseClickOnLink,
-      message: L10n.of(context).clickOnEmailLink,
+      message: L10n.of(context).clickOnEmailLinkDesc,
       // Pangea#
       okLabel: L10n.of(context).iHaveClickedOnLink,
     );

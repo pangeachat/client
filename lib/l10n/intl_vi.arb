@@ -3140,7 +3140,6 @@
       }
     }
   },
-  "clickOnEmailLink": "Vui lòng nhấp vào liên kết trong email và sau đó tiếp tục. Trong một số trường hợp hiếm hoi, email có thể bị gửi vào thư rác hoặc mất đến 5 phút để đến nơi.",
   "dontForgetPassword": "Đừng quên mật khẩu của bạn!",
   "enableAutocorrectToolName": "Bật tự động sửa",
   "enableAutocorrectDescription": "Sử dụng tính năng tự động sửa tích hợp của bàn phím khi gõ tin nhắn",

@@ -3843,7 +3843,6 @@
   "clickForMeaningActivity": "Klikněte zde pro výzvu k významu",
   "meaning": "Význam",
   "chatWith": "Skupina s {displayname}",
-  "clickOnEmailLink": "Klikněte na odkaz v e-mailu a pokračujte.\n\nZkontrolujte složku spam, pokud e-mail nedorazil.",
   "dontForgetPassword": "Nezapomeňte své heslo!",
   "enableAutocorrectToolName": "Povolit automatickou korekci zařízení",
   "enableAutocorrectDescription": "Pokud vaše zařízení podporuje jazyk, který se učíte, můžete povolit automatickou korekci zařízení, která opraví běžné chyby při psaní.",
@@ -8432,10 +8431,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

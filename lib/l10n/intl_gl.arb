@@ -4350,7 +4350,6 @@
   "clickForMeaningActivity": "Preme aquí para un Desafío de Significado",
   "meaning": "Significado",
   "chatWith": "Grupo con {displayname}",
-  "clickOnEmailLink": "Prema no enlace do correo electrónico e logo continúe.\n\nRevisa a carpeta de spam se o correo non chegou.",
   "dontForgetPassword": "¡Non esquezas a túa contrasinal!",
   "enableAutocorrectToolName": "Habilitar autocorrección do dispositivo",
   "enableAutocorrectDescription": "Se o teu dispositivo soporta a lingua que estás a aprender, podes habilitar a autocorrección para corrixir erros comúns mentres escribes.",
@@ -8099,10 +8098,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

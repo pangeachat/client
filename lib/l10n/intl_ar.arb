@@ -4100,7 +4100,6 @@
   "clickForMeaningActivity": "انقر هنا لتحدي المعنى",
   "meaning": "المعنى",
   "chatWith": "مجموعة مع {displayname}",
-  "clickOnEmailLink": "يرجى النقر على الرابط في البريد الإلكتروني ثم المتابعة.\n\nتحقق من مجلد البريد العشوائي إذا لم تصل الرسالة.",
   "dontForgetPassword": "لا تنس كلمة المرور الخاصة بك!",
   "enableAutocorrectToolName": "تمكين التصحيح التلقائي للجهاز",
   "enableAutocorrectDescription": "إذا كان جهازك يدعم اللغة التي تتعلمها، يمكنك تفعيل التصحيح التلقائي للجهاز لإصلاح الأخطاء الشائعة أثناء الكتابة.",
@@ -8196,10 +8195,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

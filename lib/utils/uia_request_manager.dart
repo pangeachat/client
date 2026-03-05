@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/authentication/registration_email_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -78,79 +79,10 @@ extension UiaRequestManager on MatrixState {
                 useRootNavigator: false,
                 barrierDismissible: false,
                 context: navigatorContext,
-                builder: (context) => AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  contentPadding: EdgeInsets.all(12.0),
-                  title: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 256),
-                    child: Text(
-                      l10n.weSentYouAnEmail,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  content: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 256),
-                    child: Column(
-                      mainAxisSize: .min,
-                      children: [
-                        Text(
-                          L10n.of(context).clickOnEmailLink,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        SizedBox(height: 16.0),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(
-                              context,
-                            ).colorScheme.primaryContainer,
-                            foregroundColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                          ),
-                          onPressed: () => Navigator.of(
-                            context,
-                          ).pop<OkCancelResult>(OkCancelResult.ok),
-                          child: Row(
-                            mainAxisAlignment: .center,
-                            children: [
-                              Text(
-                                l10n.iHaveClickedOnLink,
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 8.0),
-                        TextButton(
-                          onPressed: () => Navigator.of(
-                            context,
-                          ).pop<OkCancelResult>(OkCancelResult.cancel),
-                          style: TextButton.styleFrom(
-                            foregroundColor: Theme.of(
-                              context,
-                            ).colorScheme.error,
-                            padding: const EdgeInsets.all(0),
-                          ),
-                          child: Text(
-                            l10n.cancel,
-                            style: Theme.of(context).textTheme.labelMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.error,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                builder: (context) => RegistrationEmailPopup(
+                  onResendEmail: () {
+                    throw Exception("Test error");
+                  },
                 ),
               )) {
             // Pangea#

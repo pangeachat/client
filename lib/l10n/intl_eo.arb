@@ -3347,7 +3347,6 @@
   "clickForMeaningActivity": "Klaku ĉi tie por Signifa Defio",
   "meaning": "Signifo",
   "chatWith": "Grupoj kun {displayname}",
-  "clickOnEmailLink": "Bonvolu klaki la ligilon en la retpoŝto kaj poste daŭrigu.\n\nKontrolu vian spam-dosierujon se la retpoŝto ne alvenis.",
   "dontForgetPassword": "Ne forgesu vian pasvorton!",
   "enableAutocorrectToolName": "Ŝalti aŭtomatan korektadon de aparato",
   "enableAutocorrectDescription": "Se via aparato subtenas la lingvon kiun vi lernas, vi povas ŝalti aŭtomatan korektadon por ripari komunajn erarojn dum vi tajpas.",
@@ -9069,10 +9068,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

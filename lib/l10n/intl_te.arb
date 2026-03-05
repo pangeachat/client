@@ -1632,7 +1632,6 @@
   "clickForMeaningActivity": "అర్థం ఛాలెంజ్ కోసం ఇక్కడ క్లిక్ చేయండి",
   "meaning": "అర్థం",
   "chatWith": "{displayname} తో గ్రూప్",
-  "clickOnEmailLink": "దయచేసి ఇమెయిల్ లింక్ పై క్లిక్ చేసి కొనసాగండి.\n\nఇమెయిల్ రాలేదంటే స్పామ్ ఫోల్డర్‌ను తనిఖీ చేయండి.",
   "dontForgetPassword": "మీ పాస్వర్డ్ మర్చిపోకండి!",
   "enableAutocorrectToolName": "డివైస్ ఆటోకరెక్ట్ ను సక్రియం చేయండి",
   "enableAutocorrectDescription": "మీ డివైస్ మీరు నేర్చుకుంటున్న భాషను మద్దతిస్తే, మీరు టైప్ చేస్తున్నప్పుడు సాధారణ తప్పులను సరిదిద్దడానికి డివైస్ ఆటోకరెక్ట్ ను సక్రియం చేయవచ్చు.",
@@ -9072,10 +9071,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -4921,7 +4921,6 @@
       }
     }
   },
-  "clickOnEmailLink": "Por favor, haz clic en el enlace del correo electrónico y luego procede. En raras ocasiones, el correo electrónico puede ser enviado a spam o tardar hasta 5 minutos en llegar.",
   "dontForgetPassword": "¡No olvides tu contraseña!",
   "enableAutocorrectToolName": "Habilitar autocorrección del dispositivo",
   "enableAutocorrectDescription": "Si tu dispositivo soporta el idioma que estás aprendiendo, puedes habilitar la autocorrección del dispositivo para corregir errores comunes mientras escribes.",

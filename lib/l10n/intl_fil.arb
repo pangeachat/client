@@ -2487,7 +2487,6 @@
   "clickForMeaningActivity": "Pindutin dito para sa Isang Hamon sa Kahulugan",
   "meaning": "Kahulugan",
   "chatWith": "Grupo kasama si {displayname}",
-  "clickOnEmailLink": "Pindutin ang link sa email at magpatuloy.\n\nSuriin ang iyong spam folder kung hindi pa dumarating ang email.",
   "dontForgetPassword": "Huwag kalimutan ang iyong password!",
   "enableAutocorrectToolName": "Paganahin ang auto-correct ng device",
   "enableAutocorrectDescription": "Kung sinusuportahan ng iyong device ang wikang iyong pinag-aaralan, maaari mong paganahin ang auto-correct upang ayusin ang mga karaniwang mali habang nagta-type.",
@@ -8973,10 +8972,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -3874,7 +3874,6 @@
   "clickForMeaningActivity": "Klicka här för en Betydelseutmaning",
   "meaning": "Betydelse",
   "chatWith": "Grupp med {displayname}",
-  "clickOnEmailLink": "Vänligen klicka på länken i e-postmeddelandet och fortsätt.\n\nKontrollera din skräppostmapp om e-postmeddelandet inte har kommit fram.",
   "dontForgetPassword": "Glöm inte ditt lösenord!",
   "enableAutocorrectToolName": "Aktivera enhetsautokorrigering",
   "enableAutocorrectDescription": "Om din enhet stöder det språk du lär dig kan du aktivera enhetsautokorrigering för att rätta vanliga fel när du skriver.",
@@ -8458,10 +8457,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -4332,7 +4332,6 @@
   "clickForMeaningActivity": "Нажмите здесь для задания на значение",
   "meaning": "Значение",
   "chatWith": "Группа с {displayname}",
-  "clickOnEmailLink": "Пожалуйста, перейдите по ссылке в письме и продолжите.\n\nПроверьте папку спам, если письмо не пришло.",
   "dontForgetPassword": "Не забудьте свой пароль!",
   "enableAutocorrectToolName": "Включить автокоррект на устройстве",
   "enableAutocorrectDescription": "Если ваше устройство поддерживает язык, который вы изучаете, вы можете включить автокоррект для исправления распространенных ошибок во время набора текста.",
@@ -8062,10 +8061,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",
