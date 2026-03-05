@@ -4163,7 +4163,6 @@
   "clickForMeaningActivity": "여기를 클릭하여 의미 도전",
   "meaning": "의미",
   "chatWith": "{displayname}와 그룹 채팅",
-  "clickOnEmailLink": "이메일의 링크를 클릭한 후 계속 진행하세요.\n\n이메일이 도착하지 않았다면 스팸 폴더를 확인하세요.",
   "dontForgetPassword": "비밀번호를 잊지 마세요!",
   "enableAutocorrectToolName": "기기 자동 교정 활성화",
   "enableAutocorrectDescription": "학습하는 언어를 지원하는 기기라면, 타이핑 시 일반적인 오류를 수정하는 기기 자동 교정을 활성화할 수 있습니다.",
@@ -8072,10 +8071,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

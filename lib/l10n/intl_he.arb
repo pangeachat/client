@@ -2807,7 +2807,6 @@
   "clickForMeaningActivity": "לחץ כאן לאתגר משמעות",
   "meaning": "משמעות",
   "chatWith": "קבוצה עם {displayname}",
-  "clickOnEmailLink": "אנא לחץ על הקישור במייל והמשך.\n\nבדוק את תיקיית הספאם אם המייל לא הגיע.",
   "dontForgetPassword": "אל תשכח את הסיסמה שלך!",
   "enableAutocorrectToolName": "הפעל תיקון אוטומטי במכשיר",
   "enableAutocorrectDescription": "אם המכשיר שלך תומך בשפה שלומדים, תוכל להפעיל תיקון אוטומטי כדי לתקן שגיאות נפוצות בזמן ההקלדה.",
@@ -9029,10 +9028,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

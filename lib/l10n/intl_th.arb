@@ -3716,7 +3716,6 @@
   "clickForMeaningActivity": "คลิกที่นี่เพื่อท้าทายความหมาย",
   "meaning": "ความหมาย",
   "chatWith": "กลุ่มกับ {displayname}",
-  "clickOnEmailLink": "กรุณาคลิกที่ลิงก์ในอีเมลแล้วดำเนินการต่อ\n\nตรวจสอบโฟลเดอร์สแปมของคุณหากอีเมลยังไม่มา",
   "dontForgetPassword": "อย่าลืมรหัสผ่านของคุณ!",
   "enableAutocorrectToolName": "เปิดใช้งานการแก้ไขอัตโนมัติของอุปกรณ์",
   "enableAutocorrectDescription": "หากอุปกรณ์ของคุณรองรับภาษาที่คุณกำลังเรียนรู้ คุณสามารถเปิดใช้งานการแก้ไขอัตโนมัติของอุปกรณ์เพื่อแก้ไขข้อผิดพลาดทั่วไปขณะพิมพ์",
@@ -8593,10 +8592,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

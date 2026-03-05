@@ -2176,7 +2176,6 @@
   "clickForMeaningActivity": "Kliknite tukaj za izziv pomena",
   "meaning": "Pomen",
   "chatWith": "Skupina z {displayname}",
-  "clickOnEmailLink": "Prosimo, kliknite na povezavo v e-pošti in nadaljujte.\n\nPreverite mapo z vsiljeno pošto, če e-pošta ni prispela.",
   "dontForgetPassword": "Ne pozabite gesla!",
   "enableAutocorrectToolName": "Omogoči samodejno popravljanje na napravi",
   "enableAutocorrectDescription": "Če vaša naprava podpira jezik, ki ga učite, lahko omogočite samodejno popravljanje, da popravlja pogoste napake med tipkanjem.",
@@ -9061,10 +9060,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -4496,7 +4496,6 @@
       }
     }
   },
-  "clickOnEmailLink": "Please click on the link in the email and then proceed.\n\nCheck your spam folder if the email hasn't arrived.",
   "dontForgetPassword": "Don't forget your password!",
   "enableAutocorrectToolName": "Enable device autocorrect",
   "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
@@ -5343,7 +5342,6 @@
   "greatPractice": "Great practice!",
   "usedNoHints": "Nice job not using any hints!",
   "youveCompletedPractice": "You've completed practice, keep it up to get better!",
-  "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
   "joinCourseForActivities": "Join a course to try activities.",
   "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
   "emailVerificationFailed": "Email verification failed. Please try again.",
@@ -5358,7 +5356,6 @@
   "playPersonalizedGames": "Play practice games personalized to your vocabulary and grammar needs!",
   "hideEvents": "Hide events",
   "learnLanguageWhileTexting": "Learn a language while texting your friends!",
-  "hideEvents": "Hide events",
   "denyKnockSpace": "User will be rejected from course, however they may attempt to rejoin any time later.",
   "denyKnockChat": "User will be rejected from chat, however they may attempt to rejoin any time later.",
   "banFromSpace": "Ban from course",
@@ -5398,5 +5395,8 @@
     }
   },
   "youSentActivitySummary": "You sent an activity summary",
-  "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings"
+  "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
+  "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
+  "didntReceiveEmail": "Didn't receive the email?",
+  "resend": "Resend"
 }

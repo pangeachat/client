@@ -4188,7 +4188,6 @@
   "clickForMeaningActivity": "Klikk her for en meningsutfordring",
   "meaning": "Betydning",
   "chatWith": "Gruppe med {displayname}",
-  "clickOnEmailLink": "Vennligst klikk på lenken i e-posten og fortsett.\n\nSjekk spam-mappen hvis e-posten ikke har kommet frem.",
   "dontForgetPassword": "Ikke glem passordet ditt!",
   "enableAutocorrectToolName": "Aktiver automatkorrigering på enheten",
   "enableAutocorrectDescription": "Hvis enheten din støtter språket du lærer, kan du aktivere automatkorrigering for å rette vanlige feil mens du skriver.",
@@ -8163,10 +8162,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

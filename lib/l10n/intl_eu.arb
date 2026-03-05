@@ -4350,7 +4350,6 @@
   "clickForMeaningActivity": "Klikatu hemen Adierazpen Erronka bat egiteko",
   "meaning": "Euskarrian",
   "chatWith": "{displayname} taldearekin",
-  "clickOnEmailLink": "Mesedez, klikatu email-eko estekan eta jarraitu.\n\nEgiaztatu zure spam karpeta, emaila iritsi ez bada.",
   "dontForgetPassword": "Ez ahaztu zure pasahitza!",
   "enableAutocorrectToolName": "Gaitu gailuaren automatikorrektorea",
   "enableAutocorrectDescription": "Zure gailuak ikasten ari zaren hizkuntzaren laguntza badu, automatikorrektorea gaituta egon daiteke akats ohikoak zuzentzeko idazten duzunean.",
@@ -8099,10 +8098,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

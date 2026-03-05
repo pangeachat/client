@@ -2844,7 +2844,6 @@
   "clickForMeaningActivity": "Kliknite sem pre Výzvu k významu",
   "meaning": "Význam",
   "chatWith": "Skupina s {displayname}",
-  "clickOnEmailLink": "Kliknite na odkaz v e-maile a pokračujte.\n\nSkontrolujte priečinok so spamom, ak e-mail neprišiel.",
   "dontForgetPassword": "Nezabudnite si zapamätať heslo!",
   "enableAutocorrectToolName": "Povoliť automatickú korekciu zariadenia",
   "enableAutocorrectDescription": "Ak vaše zariadenie podporuje jazyk, ktorý sa učíte, môžete povoliť automatickú korekciu zariadenia na opravu bežných chýb pri písaní.",
@@ -9064,10 +9063,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

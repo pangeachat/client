@@ -4214,7 +4214,6 @@
   "clickForMeaningActivity": "Kattints ide a Jelentés Kihíváshoz",
   "meaning": "Jelentés",
   "chatWith": "Csoport {displayname}-val",
-  "clickOnEmailLink": "Kérjük, kattints az e-mailben található linkre, majd folytasd.\n\nEllenőrizd a spam mappát, ha az e-mail nem érkezett meg.",
   "dontForgetPassword": "Ne feledd a jelszavad!",
   "enableAutocorrectToolName": "Engedélyezd az eszköz automatikus javítását",
   "enableAutocorrectDescription": "Ha az eszközöd támogatja a tanult nyelvet, engedélyezheted az automatikus javítást, hogy a gépelés közben javítsa a gyakori hibákat.",
@@ -7983,10 +7982,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

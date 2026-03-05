@@ -2306,7 +2306,6 @@
   "clickForMeaningActivity": "აწკაპუნეთ აქ მნიშვნელობის გამოწვევისთვის",
   "meaning": "მნიშვნელობა",
   "chatWith": "ჯგუფი {displayname} -თან",
-  "clickOnEmailLink": "გთხოვთ, დააჭირეთ ელფოსტის ბმულს და შემდეგ განაგრძეთ.\n\nშეამოწმეთ სპამ ფოლდერი, თუ ელფოსტა არ მოგივათ.",
   "dontForgetPassword": "არ დაგავიწყდეთ თქვენი პაროლი!",
   "enableAutocorrectToolName": "ჩართეთ მოწყობილობის ავტომატური კორექტორი",
   "enableAutocorrectDescription": "თუ თქვენი მოწყობილობა მხარს უჭერს ისლანდიურ ენას, რომელსაც სწავლობთ, შეგიძლიათ ჩართოთ ავტომატური კორექტორი, რათა შეცვალოთ საერთო შეცდომები ტიპინგის დროს.",
@@ -9010,10 +9009,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

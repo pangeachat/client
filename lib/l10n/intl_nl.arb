@@ -4349,7 +4349,6 @@
   "clickForMeaningActivity": "Klik hier voor een Betekenis Uitdaging",
   "meaning": "Betekenis",
   "chatWith": "Groep met {displayname}",
-  "clickOnEmailLink": "Klik op de link in de e-mail en ga verder.\n\nControleer je spammap als de e-mail niet is aangekomen.",
   "dontForgetPassword": "Vergeet je wachtwoord niet!",
   "enableAutocorrectToolName": "Schakel automatische correctie op apparaat in",
   "enableAutocorrectDescription": "Als je apparaat de taal ondersteunt die je leert, kun je automatische correctie inschakelen om veelvoorkomende fouten te corrigeren terwijl je typt.",
@@ -8099,10 +8098,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",
