@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?";
     },
-    welcomeUser$1(user) {
-      return "Selamat datang " + user;
-    },
     get$findCourse() {
       return "Cari kursus";
     },
@@ -5653,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IW7DpibE5pZb/8SRH1UoSs+4co4="] = d.current;
+  d["EA8QVInYhdx5c38scKEV4+T6P3g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

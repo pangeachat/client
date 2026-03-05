@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Vai jums ir uzaicin\u0101juma kods vai saite uz publisku kursu?";
     },
-    welcomeUser$1(user) {
-      return "Laipni l\u016bdzam, " + user;
-    },
     get$findCourse() {
       return "Atrodi kursu";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["L6I3udOy+EcB/aZglc1F5L13HG4="] = d.current;
+  d["dzrNafzT2JE5qULJ3V+WG3/4ELY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_780.part.js.map

@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Heb je een uitnodigingscode of link naar een openbare cursus?";
     },
-    welcomeUser$1(user) {
-      return "Welkom " + user;
-    },
     get$findCourse() {
       return "Vind een cursus";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RISx4ai/gAf/qsV2FFkVvXtqcrU="] = d.current;
+  d["AO3UhGrvjR7KQl5VCNQ8GF6jzyQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_790.part.js.map

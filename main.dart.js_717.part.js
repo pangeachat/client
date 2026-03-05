@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Van megh\xedv\xf3 k\xf3dod vagy linked egy nyilv\xe1nos kurzushoz?";
     },
-    welcomeUser$1(user) {
-      return "\xdcdv\xf6z\xf6lj\xfck " + user;
-    },
     get$findCourse() {
       return "Kurzus keres\xe9se";
     },
@@ -5650,7 +5647,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C45HoTzjXJsP8W5S0Z/hCcqbjjg="] = d.current;
+  d["8zyazg8OD+QvIYy86oX2K+V7eQc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

@@ -5445,9 +5445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinSpaceOnboardingDesc() {
       return "Sizda ochiq kursga taklif kodi yoki havolasi bormi?";
     },
-    welcomeUser$1(user) {
-      return "Xush kelibsiz " + user;
-    },
     get$findCourse() {
       return "Kurs toping";
     },
@@ -5654,7 +5651,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m2MYz19XH2ffg9LHeQrKQ9QBpVo="] = d.current;
+  d["Op+5kIFxpLqVdMxSVpydc2jrcB0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map
