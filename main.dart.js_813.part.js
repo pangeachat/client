@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Izaberite opciju pola";
     },
-    get$gender() {
-      return "Pol";
-    },
     get$modeDisabled() {
       return "Alati za u\u010denje su onemogu\u0107eni za poruke koje nisu na va\u0161em ciljanom jeziku.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Predlo\u017eeni re\u010dnik";
     },
+    get$myGender() {
+      return "Moj pol";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8W1R9HBNypwB2T30osiYIwpUDmc="] = d.current;
+  d["xfzBusN2g8VNhASQ60Ke1Jql0ms="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_813.part.js.map

@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "T\u012bpakohia he k\u014dwhiringa ira";
     },
-    get$gender() {
-      return "Ira";
-    },
     get$modeDisabled() {
       return "Naidheachdan ionnsachaidh air an cur dheth airson teachdaireachdan nach eil ann an do ch\xe0nan targaid.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Vocab molta";
     },
+    get$myGender() {
+      return "Mo ghn\xe9";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+psS0w75e9zCaGoXkykk6DuAleI="] = d.current;
+  d["mIo9DH7q4fv2orupO+3aAfZj+/Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "V\xe6lg en k\xf8nsoption";
     },
-    get$gender() {
-      return "K\xf8n";
-    },
     get$modeDisabled() {
       return "L\xe6ringsv\xe6rkt\xf8jer er deaktiveret for beskeder, der ikke er p\xe5 dit m\xe5lsprog.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Foresl\xe5et ordforr\xe5d";
     },
+    get$myGender() {
+      return "Mit k\xf8n";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ez8awTJK6d1tTPQrz5kPkIKGZpE="] = d.current;
+  d["YCzccg313AxGclzQ39Gl9VuGngI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_336.part.js.map

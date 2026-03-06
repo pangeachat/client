@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "V\xe1lassz egy nemi opci\xf3t";
     },
-    get$gender() {
-      return "Neme";
-    },
     get$modeDisabled() {
       return "A tanul\xe1si eszk\xf6z\xf6k le vannak tiltva azokra az \xfczenetekre, amelyek nem a c\xe9lnyelveden vannak.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Javasolt sz\xf3kincs";
     },
+    get$myGender() {
+      return "A nemem";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BdL3qm6FU8REEwMXRtWJburqcqY="] = d.current;
+  d["/pW5BUclNE6BYJH32OM6tv/xDyo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Valige soo valik";
     },
-    get$gender() {
-      return "Sugu";
-    },
     get$modeDisabled() {
       return "\xd5ppimise t\xf6\xf6riistad on keelatud s\xf5numite jaoks, mis ei ole teie sihtkeeles.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Soovitatud s\xf5navara";
     },
+    get$myGender() {
+      return "Minu sugu";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kxUcR758k2LGflGWMs/sJkrHk1I="] = d.current;
+  d["fgvJBdpSROoku/viv+7W5lx0OaM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

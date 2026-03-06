@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "V\xe4lj ett k\xf6nsalternativ";
     },
-    get$gender() {
-      return "K\xf6n";
-    },
     get$modeDisabled() {
       return "L\xe4rverktyg \xe4r inaktiverade f\xf6r meddelanden som inte \xe4r p\xe5 ditt m\xe5lspr\xe5k.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "F\xf6reslagen vokabul\xe4r";
     },
+    get$myGender() {
+      return "Mitt k\xf6n";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["E30DHORvBQnPUg/sfJjGGn2gTc0="] = d.current;
+  d["J3pfv1zazBxVOeyTFdipM9mGoVE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_816.part.js.map

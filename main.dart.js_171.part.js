@@ -5324,9 +5324,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Select a gender option";
     },
-    get$gender() {
-      return "Bola";
-    },
     get$modeDisabled() {
       return "Lernwerkzeuge sind f\xfcr Nachrichten, die nicht in deiner Zielsprache sind, deaktiviert.";
     },
@@ -5639,6 +5636,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Vokabular i sugjeruar";
     },
+    get$myGender() {
+      return "M\xed g\xe9nero";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5664,7 +5664,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Rp92pbm4H9WCjp1UnLFXUTF+wG0="] = d.current;
+  d["SSb72TzGLdvVQlFad4H/aWDa/To="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

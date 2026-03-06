@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Seleziona un'opzione di genere";
     },
-    get$gender() {
-      return "Genere";
-    },
     get$modeDisabled() {
       return "Gli strumenti di apprendimento sono disabilitati per i messaggi che non sono nella tua lingua target.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Vocabolario suggerito";
     },
+    get$myGender() {
+      return "Il mio genere";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5653,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JQ6N483cfAkApTdf/gvgb//h57E="] = d.current;
+  d["6rJmbbFacLYJA+De6xGJM84x76I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

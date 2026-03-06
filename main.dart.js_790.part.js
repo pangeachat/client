@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Selecteer een geslachtsoptie";
     },
-    get$gender() {
-      return "Geslacht";
-    },
     get$modeDisabled() {
       return "Leermiddelen zijn uitgeschakeld voor berichten die niet in je doeltaal zijn.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Voorgestelde vocabulaire";
     },
+    get$myGender() {
+      return "Mijn geslacht";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aNRVVOnCPqAS9Ui1yLvvJILr0lE="] = d.current;
+  d["Ge0qXs9IzZwucakiaE5IqMJ95sg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_790.part.js.map

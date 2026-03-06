@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Aukeratu genero aukera bat";
     },
-    get$gender() {
-      return "Generoa";
-    },
     get$modeDisabled() {
       return "Ikaskuntza tresnak desgaituta daude zure helburu hizkuntzan ez dauden mezuetarako.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Proposatutako hiztegia";
     },
+    get$myGender() {
+      return "Nire generoa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5653,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rC5s9j0DXiz9PQFhYeUNJaeX/ww="] = d.current;
+  d["mTCBbIP4t4w4+xqorcchLqAkQNc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_605.part.js.map

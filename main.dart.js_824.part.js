@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "Gender variantini tanlang";
     },
-    get$gender() {
-      return "Jins";
-    },
     get$modeDisabled() {
       return "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "Taklif qilingan lug'at";
     },
+    get$myGender() {
+      return "Mening jinsim";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5654,7 +5654,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gi9a2MbeZJk/O7v1CYT6EfTP0I4="] = d.current;
+  d["EbA2/i8p9aNXhwJdVRvZfPOGtJ8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

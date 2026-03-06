@@ -5322,9 +5322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unselectedGender() {
       return "\u9078\u64c7\u4e00\u500b\u6027\u5225\u9078\u9805";
     },
-    get$gender() {
-      return "\u6027\u5225";
-    },
     get$modeDisabled() {
       return "\u5b78\u7fd2\u5de5\u5177\u5c0d\u65bc\u4e0d\u5728\u76ee\u6a19\u8a9e\u8a00\u4e2d\u7684\u6d88\u606f\u662f\u7981\u7528\u7684\u3002";
     },
@@ -5637,6 +5634,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$suggestedVocab() {
       return "\u5efa\u8b70\u8a5e\u5f59";
     },
+    get$myGender() {
+      return "\u6211\u7684\u6027\u5225";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CGKnys5FldZ+FVs3QUkmURP2iEg="] = d.current;
+  d["/pZ6Jzb6lTzBHxrn7RloewcALhc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_826.part.js.map
