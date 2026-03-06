@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-06 13:14:27.862131",
+  "@@last_modified": "2026-03-06 14:06:26.521110",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12645,6 +12645,11 @@
   },
   "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習活動。",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "個人資料",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

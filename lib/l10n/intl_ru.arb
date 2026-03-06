@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-06 13:15:13.323232",
+  "@@last_modified": "2026-03-06 14:06:52.336959",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11380,6 +11380,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Ух ты, вы завершили все доступные активности! Отправьте больше сообщений, чтобы разблокировать дополнительные практические занятия.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профиль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

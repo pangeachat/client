@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 13:14:29.177962",
+  "@@last_modified": "2026-03-06 14:06:27.231516",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11509,6 +11509,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori attività di pratica.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

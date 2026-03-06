@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-06 13:14:47.928666",
+  "@@last_modified": "2026-03-06 14:06:38.822800",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11765,6 +11765,11 @@
   },
   "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من أنشطة الممارسة.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "الملف الشخصي",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

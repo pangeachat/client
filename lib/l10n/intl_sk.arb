@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-03-06 13:14:15.064754",
+  "@@last_modified": "2026-03-06 14:06:14.486887",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12633,6 +12633,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Wow, dokončili ste všetky dostupné aktivity! Pošlite viac správ, aby ste odomkli ďalšie cvičebné aktivity.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }
