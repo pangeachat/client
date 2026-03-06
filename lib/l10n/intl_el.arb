@@ -4476,7 +4476,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-03-06 10:44:46.777377",
+  "@@last_modified": "2026-03-06 11:07:08.194361",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -11617,7 +11617,6 @@
   "man": "Άνδρας",
   "otherGender": "Άλλο",
   "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
-  "gender": "Φύλο",
   "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11636,10 +11635,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12569,6 +12564,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Το φύλο μου",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

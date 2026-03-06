@@ -32,7 +32,7 @@ class GenderDropdown extends StatelessWidget {
         text: initialGender.title(context),
       ),
       menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
-      decoration: InputDecoration(labelText: l10n.gender),
+      decoration: InputDecoration(labelText: l10n.myGender),
       isExpanded: true,
       dropdownStyleData: DropdownStyleData(
         maxHeight: kIsWeb ? 500 : null,

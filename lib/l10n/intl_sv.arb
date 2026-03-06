@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:45.081237",
+  "@@last_modified": "2026-03-06 11:07:07.485788",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11080,7 +11080,6 @@
   "man": "Man",
   "otherGender": "Annat",
   "unselectedGender": "Välj ett könsalternativ",
-  "gender": "Kön",
   "chatParticipantTooltip": "Detta är alla i denna chatt. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11099,10 +11098,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12022,6 +12017,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mitt kön",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

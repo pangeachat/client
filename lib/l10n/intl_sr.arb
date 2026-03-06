@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:56.303127",
+  "@@last_modified": "2026-03-06 11:07:13.012473",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11698,7 +11698,6 @@
   "man": "Muškarac",
   "otherGender": "Drugo",
   "unselectedGender": "Izaberite opciju pola",
-  "gender": "Pol",
   "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11717,10 +11716,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12640,6 +12635,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moj pol",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-06 10:44:03.872226",
+  "@@last_modified": "2026-03-06 11:06:48.014279",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11054,7 +11054,6 @@
   "man": "Muž",
   "otherGender": "Jiné",
   "unselectedGender": "Vyberte možnost pohlaví",
-  "gender": "Pohlaví",
   "chatParticipantTooltip": "Toto jsou všichni v tomto chatu. Klikněte na avatar jakéhokoli uživatele a “začněte konverzaci” pro odeslání DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11073,10 +11072,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11982,6 +11977,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moje pohlaví",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

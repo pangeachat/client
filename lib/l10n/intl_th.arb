@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-03-06 10:44:11.704443",
+  "@@last_modified": "2026-03-06 11:06:51.705236",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11215,7 +11215,6 @@
   "man": "ผู้ชาย",
   "otherGender": "อื่นๆ",
   "unselectedGender": "เลือกตัวเลือกเพศ",
-  "gender": "เพศ",
   "chatParticipantTooltip": "นี่คือทุกคนในแชทนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11234,10 +11233,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12157,6 +12152,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "เพศของฉัน",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

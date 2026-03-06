@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-06 10:43:26.645504",
+  "@@last_modified": "2026-03-06 11:06:30.518828",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Home",
   "otherGender": "Outro",
   "unselectedGender": "Selecciona unha opción de xénero",
-  "gender": "Xénero",
   "chatParticipantTooltip": "Isto é todo o mundo nesta conversa. Fai clic na avatar de calquera usuario e \"comeza a conversa\" para enviar un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,6 +11405,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "O meu xénero",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

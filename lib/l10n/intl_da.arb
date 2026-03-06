@@ -1926,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-03-06 10:43:33.917203",
+  "@@last_modified": "2026-03-06 11:06:33.076189",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11663,7 +11663,6 @@
   "man": "Mand",
   "otherGender": "Andet",
   "unselectedGender": "Vælg en kønsoption",
-  "gender": "Køn",
   "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11682,10 +11681,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12610,6 +12605,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mit køn",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

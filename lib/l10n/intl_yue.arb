@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-06 10:43:58.592613",
+  "@@last_modified": "2026-03-06 11:06:45.979542",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11693,7 +11693,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "選擇一個性別選項",
-  "gender": "性別",
   "chatParticipantTooltip": "這是這個聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11712,10 +11711,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12640,6 +12635,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性別",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-06 10:43:55.211856",
+  "@@last_modified": "2026-03-06 11:06:44.502166",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10753,7 +10753,6 @@
   "man": "Mann",
   "otherGender": "Sonstiges",
   "unselectedGender": "Wählen Sie eine Geschlechtsoption",
-  "gender": "Geschlecht",
   "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10772,10 +10771,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11399,6 +11394,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mein Geschlecht",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

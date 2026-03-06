@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:05.190405",
+  "@@last_modified": "2026-03-06 11:06:48.832804",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -10785,7 +10785,6 @@
   "man": "Mann",
   "otherGender": "Annet",
   "unselectedGender": "Velg et kjønnsalternativ",
-  "gender": "Kjønn",
   "chatParticipantTooltip": "Dette er alle i denne chatten. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10804,10 +10803,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11479,6 +11474,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Kjønnet mitt",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

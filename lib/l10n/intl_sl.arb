@@ -2460,7 +2460,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-03-06 10:43:56.601335",
+  "@@last_modified": "2026-03-06 11:06:45.263001",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11683,7 +11683,6 @@
   "man": "Moški",
   "otherGender": "Drugo",
   "unselectedGender": "Izberite možnost spola",
-  "gender": "Spol",
   "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11702,10 +11701,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12625,6 +12620,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moja spol",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:14.869758",
+  "@@last_modified": "2026-03-06 11:06:53.556353",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10602,7 +10602,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "選擇性別選項",
-  "gender": "性別",
   "chatParticipantTooltip": "這是此聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10621,10 +10620,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11549,6 +11544,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性別",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

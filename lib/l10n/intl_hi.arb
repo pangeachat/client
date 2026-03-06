@@ -3999,7 +3999,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-03-06 10:44:49.997301",
+  "@@last_modified": "2026-03-06 11:07:09.830821",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11215,7 +11215,6 @@
   "man": "पुरुष",
   "otherGender": "अन्य",
   "unselectedGender": "एक लिंग विकल्प चुनें",
-  "gender": "लिंग",
   "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11234,10 +11233,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12157,6 +12152,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "मेरा लिंग",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

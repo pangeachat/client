@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-03-06 10:43:28.899209",
+  "@@last_modified": "2026-03-06 11:06:31.430632",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -10701,7 +10701,6 @@
   "man": "Mies",
   "otherGender": "Muu",
   "unselectedGender": "Valitse sukupuoli vaihtoehto",
-  "gender": "Sukupuoli",
   "chatParticipantTooltip": "Tässä ovat kaikki tässä keskustelussa. Napsauta mitä tahansa käyttäjän avatarista ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10720,10 +10719,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11469,6 +11464,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Oma sukupuoleni",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

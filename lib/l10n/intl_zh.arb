@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-06 10:44:39.011498",
+  "@@last_modified": "2026-03-06 11:07:04.108341",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "选择一个性别选项",
-  "gender": "性别",
   "chatParticipantTooltip": "这就是这个聊天中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,6 +11405,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性别",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

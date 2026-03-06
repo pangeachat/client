@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:34.325908",
+  "@@last_modified": "2026-03-06 11:07:02.360121",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Man",
   "otherGender": "Anders",
   "unselectedGender": "Selecteer een geslachtsoptie",
-  "gender": "Geslacht",
   "chatParticipantTooltip": "Dit zijn alle deelnemers in deze chat. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,6 +11405,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mijn geslacht",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

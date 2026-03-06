@@ -1954,7 +1954,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-03-06 10:43:46.513712",
+  "@@last_modified": "2026-03-06 11:06:40.332884",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11680,7 +11680,6 @@
   "man": "Mascul",
   "otherGender": "Altre",
   "unselectedGender": "Seleziona un'opzione di genere",
-  "gender": "Genere",
   "chatParticipantTooltip": "Ita es tutti in ista chat. Clicca su qualunque avatar de utente e \"inizia conversazione\" pro inviar un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11699,10 +11698,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12622,6 +12617,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mi gendro",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

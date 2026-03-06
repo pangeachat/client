@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-06 10:44:06.730444",
+  "@@last_modified": "2026-03-06 11:06:49.656816",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -10716,7 +10716,6 @@
   "man": "Мужчына",
   "otherGender": "Іншае",
   "unselectedGender": "Выберыце опцыю полу",
-  "gender": "Пол",
   "chatParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага чата. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11429,6 +11424,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Мая пол",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

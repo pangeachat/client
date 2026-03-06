@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-03-06 10:44:57.792392",
+  "@@last_modified": "2026-03-06 11:07:13.935229",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -10728,7 +10728,6 @@
   "man": "Duine",
   "otherGender": "Duine eile",
   "unselectedGender": "Roghnaigh rogha gnéis",
-  "gender": "Gnéis",
   "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10747,10 +10746,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11421,6 +11416,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mo ghné",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-06 10:44:48.563712",
+  "@@last_modified": "2026-03-06 11:07:09.019767",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11392,7 +11392,6 @@
   "man": "男性",
   "otherGender": "その他",
   "unselectedGender": "性別オプションを選択してください",
-  "gender": "性別",
   "chatParticipantTooltip": "これはこのチャットの全員です。任意のユーザーのアバターをクリックして「会話を開始」を選択すると、DMを送信できます。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11411,10 +11410,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12334,6 +12329,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "私の性別",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-06 10:43:53.270457",
+  "@@last_modified": "2026-03-06 11:06:43.728513",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11009,7 +11009,6 @@
   "man": "Mees",
   "otherGender": "Muu",
   "unselectedGender": "Valige soo valik",
-  "gender": "Sugu",
   "chatParticipantTooltip": "See on kõik, kes on selles vestluses. Klõpsake mis tahes kasutaja avatarile ja valige \"alusta vestlust\", et saata DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11028,10 +11027,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11684,6 +11679,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Minu sugu",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

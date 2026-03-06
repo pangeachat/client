@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-06 10:44:43.653023",
+  "@@last_modified": "2026-03-06 11:07:06.670835",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10594,7 +10594,6 @@
   "man": "Mężczyzna",
   "otherGender": "Inna",
   "unselectedGender": "Wybierz opcję płci",
-  "gender": "Płeć",
   "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10613,10 +10612,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11532,6 +11527,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moja płeć",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

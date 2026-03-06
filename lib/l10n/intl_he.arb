@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:43:44.661039",
+  "@@last_modified": "2026-03-06 11:06:39.509871",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11651,7 +11651,6 @@
   "man": "גבר",
   "otherGender": "אחר",
   "unselectedGender": "בחר אפשרות מגדר",
-  "gender": "מגדר",
   "chatParticipantTooltip": "אלה כולם בצ'אט הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11670,10 +11669,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12593,6 +12588,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "המגדר שלי",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:43:36.986107",
+  "@@last_modified": "2026-03-06 11:06:35.527195",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10604,7 +10604,6 @@
   "man": "Pria",
   "otherGender": "Lainnya",
   "unselectedGender": "Pilih opsi gender",
-  "gender": "Gender",
   "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10623,10 +10622,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11516,6 +11511,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Jenis kelamin saya",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

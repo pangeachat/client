@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-03-06 10:44:22.863209",
+  "@@last_modified": "2026-03-06 11:06:56.926745",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10818,7 +10818,6 @@
   "man": "رجل",
   "otherGender": "آخر",
   "unselectedGender": "اختر خيار الجنس",
-  "gender": "الجنس",
   "chatParticipantTooltip": "هؤلاء هم جميع الأشخاص في هذه الدردشة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10837,10 +10836,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11760,6 +11755,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "جنسى",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

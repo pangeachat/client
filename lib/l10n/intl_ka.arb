@@ -2590,7 +2590,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-03-06 10:44:54.506409",
+  "@@last_modified": "2026-03-06 11:07:12.183632",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11632,7 +11632,6 @@
   "man": "კაცი",
   "otherGender": "სხვა",
   "unselectedGender": "აირჩიეთ სქესის ვარიანტი",
-  "gender": "სქესი",
   "chatParticipantTooltip": "ეს არის ყველა ადამიანი ამ ჩატში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „საუბრის დაწყება“, რომ გამოგიგზავნოთ პირადი შეტყობინება.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11651,10 +11650,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12574,6 +12569,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "ჩემი სქესი",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }
