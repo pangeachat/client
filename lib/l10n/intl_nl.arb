@@ -130,18 +130,6 @@
       }
     }
   },
-  "badServerVersionsException": "De homeserver ondersteunt de Spec-versies:\n{serverVersions}\nMaar deze app ondersteunt alleen {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "banFromChat": "Van chat verbannen",
   "@banFromChat": {
     "type": "String",
@@ -171,11 +159,6 @@
   },
   "blocked": "Geblokkeerd",
   "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Bot-berichten",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -392,8 +375,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Chat is toegevoegd aan deze space",
-  "@chatHasBeenAddedToThisSpace": {},
   "chats": "Chats",
   "@chats": {
     "type": "String",
@@ -525,16 +506,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Bevat naam",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsUserName": "Bevat inlognaam",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "contentHasBeenReported": "De inhoud is gerapporteerd aan de serverbeheerders",
   "@contentHasBeenReported": {
     "type": "String",
@@ -610,33 +581,6 @@
         "type": "String"
       },
       "timeOfDay": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{day}-{month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{day}-{month}-{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
         "type": "String"
       }
     }
@@ -746,11 +690,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "emoteWarnNeedToPick": "Je moet een emoticon korte code en afbeelding kiezen!",
-  "@emoteWarnNeedToPick": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emptyChat": "Lege chat",
   "@emptyChat": {
     "type": "String",
@@ -800,11 +739,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "enterYourHomeserver": "Vul je homeserver in",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "errorObtainingLocation": "Locatie ophalen fout: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -851,11 +785,6 @@
   },
   "fromTheInvitation": "Vanaf uitnodiging",
   "@fromTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Ga naar de nieuwe chat",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -927,11 +856,6 @@
   },
   "id": "ID",
   "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Identiteit",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -1080,11 +1004,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Licentie",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "lightTheme": "Licht",
   "@lightTheme": {
     "type": "String",
@@ -1135,11 +1054,6 @@
   },
   "logout": "Uitloggen",
   "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Persoon wijzigingen",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1250,11 +1164,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "notificationsEnabledForThisAccount": "Meldingen ingeschakeld voor dit account",
-  "@notificationsEnabledForThisAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
   "numUsersTyping": "{count} personen typen…",
   "@numUsersTyping": {
     "type": "String",
@@ -1351,11 +1260,6 @@
   },
   "passwordRecovery": "Wachtwoordherstel",
   "@passwordRecovery": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "people": "Personen",
-  "@people": {
     "type": "String",
     "placeholders": {}
   },
@@ -1500,11 +1404,6 @@
       }
     }
   },
-  "removeDevice": "Verwijder apparaat",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Verbanning opheffen",
   "@unbanFromChat": {
     "type": "String",
@@ -1560,15 +1459,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "seenByUser": "Gezien door {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "send": "Verstuur",
   "@send": {
     "type": "String",
@@ -1600,16 +1490,6 @@
   },
   "sendMessages": "Berichten versturen",
   "@sendMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendOriginal": "Origineel versturen",
-  "@sendOriginal": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Sticker versturen",
-  "@sendSticker": {
     "type": "String",
     "placeholders": {}
   },
@@ -1677,21 +1557,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "setCustomEmotes": "Aangepaste emoticons instellen",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Uitnodigingslink instellen",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setPermissionsLevel": "Rechten-niveau instellen",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "setStatus": "Status instellen",
   "@setStatus": {
     "type": "String",
@@ -1723,11 +1588,6 @@
   },
   "showPassword": "Wachtwoord weergeven",
   "@showPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "singlesignon": "Eenmalig Inloggen",
-  "@singlesignon": {
     "type": "String",
     "placeholders": {}
   },
@@ -1801,21 +1661,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleFavorite": "Favoriet in- of uitschakelen",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleMuted": "Dempen in- of uitschakelen",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "Markeer gelezen/ongelezen",
-  "@toggleUnread": {
-    "type": "String",
-    "placeholders": {}
-  },
   "tooManyRequestsWarning": "Te veel verzoeken. Probeer het later nog eens!",
   "@tooManyRequestsWarning": {
     "type": "String",
@@ -1881,15 +1726,6 @@
   "@unpin": {
     "type": "String",
     "placeholders": {}
-  },
-  "unreadChats": "{unreadCount, plural, =1{1 ongelezen chat} other{{unreadCount} ongelezen chats}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
   },
   "userAndOthersAreTyping": "{username} en {count} anderen zijn aan het typen …",
   "@userAndOthersAreTyping": {
@@ -2125,8 +1961,6 @@
   "@sender": {},
   "openGallery": "Galerij openen",
   "@openGallery": {},
-  "addToSpaceDescription": "Selecteer een space om deze chat aan toe te voegen.",
-  "@addToSpaceDescription": {},
   "removeFromSpace": "Uit de space verwijderen",
   "@removeFromSpace": {},
   "start": "Start",
@@ -2156,17 +1990,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
-  "publish": "Publiceren",
-  "@publish": {},
   "dismiss": "Sluiten",
   "@dismiss": {},
   "markAsRead": "Markeer als gelezen",
@@ -2207,19 +2030,6 @@
   "@experimentalVideoCalls": {},
   "emailOrUsername": "Email of inlognaam",
   "@emailOrUsername": {},
-  "nextAccount": "Volgende account",
-  "@nextAccount": {},
-  "switchToAccount": "Naar account {number} overschakelen",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "previousAccount": "Vorige account",
-  "@previousAccount": {},
   "widgetCustom": "Aangepast",
   "@widgetCustom": {},
   "widgetName": "Naam",
@@ -2309,8 +2119,6 @@
   "@recoveryKey": {},
   "recoveryKeyLost": "Herstelsleutel verloren?",
   "@recoveryKeyLost": {},
-  "pleaseEnterRecoveryKey": "Voer jouw herstelsleutel in:",
-  "@pleaseEnterRecoveryKey": {},
   "users": "Personen",
   "@users": {},
   "unlockOldMessages": "Oude berichten ontgrendelen",
@@ -2331,20 +2139,8 @@
   "@dehydrate": {},
   "dehydrateWarning": "Deze actie kan niet ongedaan worden gemaakt. Zorg ervoor dat je het back-upbestand veilig opslaat.",
   "@dehydrateWarning": {},
-  "dehydrateTor": "TOR-sessies: Exporteer sessie",
-  "@dehydrateTor": {},
-  "dehydrateTorLong": "Voor TOR-sessies is het aanbevolen de sessie te exporteren alvorens het venster te sluiten.",
-  "@dehydrateTorLong": {},
-  "hydrateTor": "TOR-sessie: Importeren sessie export",
-  "@hydrateTor": {},
-  "hydrateTorLong": "Heb je de vorige keer jouw sessie geëxporteerd met TOR? Importeer het dan snel en ga verder met chatten.",
-  "@hydrateTorLong": {},
   "hydrate": "Herstellen vanuit back-upbestand",
   "@hydrate": {},
-  "indexedDbErrorTitle": "Problemen met privémodus",
-  "@indexedDbErrorTitle": {},
-  "indexedDbErrorLong": "Het opslaan van berichten is helaas niet standaard ingeschakeld in de privémodus.\nBezoek alsjeblieft\n - about:config\n - stel dom.indexedDB.privateBrowsing.enabled in op true\nAnders is het niet mogelijk om FluffyChat op te starten.",
-  "@indexedDbErrorLong": {},
   "countFiles": "{count} bestanden",
   "@countFiles": {
     "placeholders": {
@@ -2376,8 +2172,6 @@
   "@whyIsThisMessageEncrypted": {},
   "noKeyForThisMessage": "Dit kan gebeuren als het bericht is verzonden voordat je bij je account op dit apparaat hebt aangemeld.\n\nHet is ook mogelijk dat de afzender je apparaat heeft geblokkeerd of dat er iets mis is gegaan met de internetverbinding.\n\nKan je het bericht wel lezen in een andere sessie? Dan kan je het bericht daarvandaan overzetten! Ga naar Instellingen > Apparaten en zorg ervoor dat je apparaten elkaar hebben geverifieerd. Wanneer je de chat de volgende keer opent en beide sessies op de voorgrond staan, zullen de sleutels automatisch worden verzonden.\n\nWil je de sleutels niet verliezen als je uitlogt of van apparaat wisselt? Zorg er dan voor dat je de chatback-up hebt aangezet in de instellingen.",
   "@noKeyForThisMessage": {},
-  "enterSpace": "Space betreden",
-  "@enterSpace": {},
   "allSpaces": "Alle spaces",
   "@allSpaces": {},
   "foregroundServiceRunning": "Deze melding verschijnt wanneer de voorgronddienst draait.",
@@ -2386,35 +2180,10 @@
   "@screenSharingTitle": {},
   "screenSharingDetail": "Je deelt je scherm in FuffyChat",
   "@screenSharingDetail": {},
-  "callingPermissions": "Telefoon-rechten",
-  "@callingPermissions": {},
-  "callingAccount": "Telefoon-account",
-  "@callingAccount": {},
-  "callingAccountDetails": "Hiermee kan FluffyChat de Android telefoon-app gebruiken.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Bovenaan verschijnen",
-  "@appearOnTop": {},
-  "appearOnTopDetails": "Laat de app bovenaan verschijnen (niet nodig als je FluffyChat al hebt ingesteld als een bel-account)",
-  "@appearOnTopDetails": {},
-  "otherCallingPermissions": "Microfoon, camera en andere FluffyChat-rechten",
-  "@otherCallingPermissions": {},
   "newGroup": "Nieuwe groep",
   "@newGroup": {},
   "newSpace": "Space aanmaken",
   "@newSpace": {},
-  "enterRoom": "Chat betreden",
-  "@enterRoom": {},
-  "numChats": "{number} chats",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "hideUnimportantStateEvents": "Onbelangrijke statusgebeurtenissen verbergen",
-  "@hideUnimportantStateEvents": {},
   "doNotShowAgain": "Niet meer tonen",
   "@doNotShowAgain": {},
   "googlyEyesContent": "{senderName} stuurt je wiebelogen",
@@ -2469,8 +2238,6 @@
   "@encryptThisChat": {},
   "deviceKeys": "Apparaatsleutels:",
   "@deviceKeys": {},
-  "startFirstChat": "Begin je eerste chat",
-  "@startFirstChat": {},
   "newSpaceDescription": "Met spaces kun je je chats samenvoegen en privé- of openbare community's bouwen.",
   "@newSpaceDescription": {},
   "noOtherDevicesFound": "Geen andere apparaten gevonden",
@@ -2496,11 +2263,6 @@
   "@jump": {},
   "openLinkInBrowser": "Link in browser openen",
   "@openLinkInBrowser": {},
-  "allRooms": "Alle groepschats",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "notAnImage": "Geen afbeeldingsbestand.",
   "@notAnImage": {},
   "importNow": "Nu importeren",
@@ -2519,10 +2281,6 @@
   "@reportErrorDescription": {},
   "sendTypingNotifications": "Typemeldingen verzenden",
   "@sendTypingNotifications": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Probeer het later nog eens of kies een andere server.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWithPassword": "Aanmelden met wachtwoord",
-  "@signInWithPassword": {},
   "chatPermissions": "Chat rechten",
   "@chatPermissions": {},
   "chatDescription": "Chatomschrijving",
@@ -2547,16 +2305,10 @@
       }
     }
   },
-  "profileNotFound": "De persoon kan niet gevonden worden op de server. Misschien is er een verbindingsprobleem of de persoon bestaat niet.",
-  "@profileNotFound": {},
   "createGroup": "Groep aanmaken",
   "@createGroup": {},
-  "inviteContactToGroupQuestion": "Wil je {contact} uitnodigingen voor de chat \"{groupName}\"?",
-  "@inviteContactToGroupQuestion": {},
   "optionalRedactReason": "(Optioneel) Reden voor aanpassing van dit bericht...",
   "@optionalRedactReason": {},
-  "addChatDescription": "Voeg een chatomschrijving toe...",
-  "@addChatDescription": {},
   "invalidServerName": "Foute servernaam",
   "@invalidServerName": {},
   "messagesStyle": "Berichten:",
@@ -2576,16 +2328,12 @@
   "@directChat": {},
   "setChatDescription": "Chatomschrijving instellen",
   "@setChatDescription": {},
-  "setTheme": "Thema instellen:",
-  "@setTheme": {},
   "setColorTheme": "Kleurthema instellen:",
   "@setColorTheme": {},
   "invite": "Uitnodigen",
   "@invite": {},
   "inviteGroupChat": "📨 Groeps-chat uitnodiging",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Privé-chat uitnodiging",
-  "@invitePrivateChat": {},
   "emoteKeyboardNoRecents": "Recent gebruikte emoticons zullen hier verschijnen...",
   "@emoteKeyboardNoRecents": {
     "type": "String",
@@ -2640,11 +2388,6 @@
   "@block": {},
   "blockedUsers": "Geblokkeerde personen",
   "@blockedUsers": {},
-  "presenceStyle": "Aanwezigheid:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "searchChatsRooms": "Zoek #chats, @personen...",
   "@searchChatsRooms": {},
   "swipeRightToLeftToReply": "Veeg van rechts naar links om te reageren",
@@ -2665,14 +2408,6 @@
   "@hideInvalidOrUnknownMessageFormats": {},
   "passwordRecoverySettings": "Wachtwoordherstel-instellingen",
   "@passwordRecoverySettings": {},
-  "youInvitedToBy": "📩 Je bent uitgenodigd via een link voor:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
-        "type": "String"
-      }
-    }
-  },
   "knock": "Klop",
   "@knock": {},
   "overview": "Overzicht",
@@ -2705,18 +2440,6 @@
   "@publicChatAddresses": {},
   "createNewAddress": "Creëer nieuw adres",
   "@createNewAddress": {},
-  "countChatsAndCountParticipants": "{chats} chats en {participants} deelnemers",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "noMoreChatsFound": "Geen chats gevonden...",
   "@noMoreChatsFound": {},
   "joinedChats": "Chats waaraan je deelneemt",
@@ -2729,18 +2452,6 @@
   "@spaces": {},
   "unread": "Ongelezen",
   "@unread": {},
-  "databaseBuildErrorBody": "Het aanmaken van de SQlite database is mislukt. De app probeert nu een traditionele database te gebruiken. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze {url}. De foutmelding is: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "groupName": "Groepsnaam",
   "@groupName": {},
   "changeGeneralChatSettings": "Algemene chat instellingen wijzigen",
@@ -2751,8 +2462,6 @@
   "@searchForUsers": {},
   "searchMore": "Zoek meer...",
   "@searchMore": {},
-  "noPublicLinkHasBeenCreatedYet": "Openbare link is nog niet gecreëerd",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "groupCanBeFoundViaSearch": "Groep kan gevonden worden via zoeken",
   "@groupCanBeFoundViaSearch": {},
   "searchIn": "Zoek in chat \"{chat}\"...",
@@ -2859,8 +2568,6 @@
   "@previous": {},
   "otherPartyNotLoggedIn": "De andere partij is momenteel niet ingelogd en kan daarom geen berichten ontvangen!",
   "@otherPartyNotLoggedIn": {},
-  "notifyMeFor": "Waarschuw mij voor",
-  "@notifyMeFor": {},
   "blockListDescription": "Je kunt personen blokkeren die je lastig vallen. Je kan dan geen berichten meer ontvangen of chat uitnodigingen krijgen van de personen op je blokkeerlijst.",
   "@blockListDescription": {},
   "sendImages": "Stuur {count} afbeelding(en)",
@@ -2879,10 +2586,6 @@
   },
   "website": "Website",
   "@website": {},
-  "hideMemberChangesInPublicChats": "Verberg persoon veranderingen in openbare chats",
-  "@hideMemberChangesInPublicChats": {},
-  "hideMemberChangesInPublicChatsBody": "Verberg in de tijdlijn van de chat als iemand zich aanmeldt bij een openbare chat of deze verlaat om de leesbaarheid te verbeteren.",
-  "@hideMemberChangesInPublicChatsBody": {},
   "startConversation": "Start gesprek",
   "@startConversation": {},
   "usersMustKnock": "Personen moeten kloppen",
@@ -2898,14 +2601,6 @@
   },
   "createGroupAndInviteUsers": "Maak groep en nodig personen uit",
   "@createGroupAndInviteUsers": {},
-  "userWouldLikeToChangeTheChat": "{user} wil graag deelnemen aan de chat.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "chatCanBeDiscoveredViaSearchOnServer": "Chat kan worden gevonden via een zoekopdracht op {server}",
   "@chatCanBeDiscoveredViaSearchOnServer": {
     "type": "String",
@@ -2938,8 +2633,6 @@
   "@newPassword": {},
   "pleaseChooseAStrongPassword": "Kies a.j.b. een sterk wachtwoord",
   "@pleaseChooseAStrongPassword": {},
-  "publicLink": "Openbare link",
-  "@publicLink": {},
   "select": "Selecteer",
   "@select": {},
   "leaveEmptyToClearStatus": "Laat leeg om je status te resetten.",
@@ -3140,15 +2833,6 @@
   "@verifyOtherDeviceDescription": {},
   "commandHint_unignore": "Herstel de negeerde Matrix-ID",
   "@commandHint_unignore": {},
-  "forwardMessageTo": "Bericht doorsturen naar {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "restoreSessionBody": "De app probeert nu je sessie te herstellen van een back-up. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze link {url}. De foutmelding is: {error}",
   "@restoreSessionBody": {
     "type": "String",
@@ -3171,15 +2855,6 @@
   "@changeTheDescriptionOfTheGroup": {},
   "userRole": "Rol",
   "@userRole": {},
-  "minimumPowerLevel": "{level} is het minimale rechten-niveau.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "sendReadReceiptsDescription": "Andere deelnemers van de chat kunnen zien of je een bericht hebt gelezen.",
   "@sendReadReceiptsDescription": {},
   "formattedMessagesDescription": "Geef rijke berichtinhoud weer zoals vetgedrukte tekst met markdown.",
@@ -3204,8 +2879,6 @@
   },
   "continueText": "Doorgaan",
   "@continueText": {},
-  "welcomeText": "Hallo hallo 👋 Dit is FluffyChat. Je kan inloggen op elke server die werkt met https://matrix.org. En dan chat je met iedereen. Het is een groot decentraal chat-netwerk!",
-  "@welcomeText": {},
   "appWantsToUseForLogin": "Inloggen met '{server}'",
   "@appWantsToUseForLogin": {
     "type": "String",
@@ -3390,10 +3063,6 @@
   "@newSubSpace": {},
   "moveToDifferentSpace": "Naar andere space verplaatsen",
   "@moveToDifferentSpace": {},
-  "moveUp": "Omhoog verplaatsen",
-  "@moveUp": {},
-  "moveDown": "Omlaag verplaatsen",
-  "@moveDown": {},
   "removeFromSpaceDescription": "De chat zal worden verwijderd uit de space, maar blijft in je chats.",
   "@removeFromSpaceDescription": {},
   "countChats": "{chats} chats",
@@ -3440,8 +3109,6 @@
   "@endPoll": {},
   "answersVisible": "Zichtbaar invullen",
   "@answersVisible": {},
-  "answersHidden": "Antwoorden verborgen",
-  "@answersHidden": {},
   "pollQuestion": "Peiling vraag",
   "@pollQuestion": {},
   "answerOption": "Antwoord optie",
@@ -3509,25 +3176,16 @@
   "writeAMessageLangCodes": "Typ in {l1} of {l2}...",
   "requests": "Verzoeken",
   "holdForInfo": "Klik en houd vast voor woordinformatie.",
-  "greenFeedback": "Dat zou ik erin zetten!",
-  "yellowFeedback": "Hm, je kunt dat proberen en kijken of het werkt! Om dit woord te gebruiken, klik er gewoon nog een keer op.",
-  "redFeedback": "Ik denk niet dat dat klopt...",
   "itInstructionsTitle": "Ik kan je helpen met vertalen!",
   "itInstructionsBody": "U kunt keuzes vastpakken en vasthouden voor woordinformatie.",
   "gaTooltip": "L2 gebruik met grammatica hulp",
   "taTooltip": "L2 gebruik met vertaalhulp",
-  "unTooltip": "Overige",
   "interactiveTranslatorSliderHeader": "Interactieve Vertaler",
   "interactiveGrammarSliderHeader": "Interactieve Grammatica Controle",
-  "interactiveTranslatorNotAllowed": "Uitgeschakeld",
-  "interactiveTranslatorAllowed": "Keuze van de student",
   "interactiveTranslatorRequired": "Vereist",
-  "notYetSet": "Nog niet ingesteld",
   "waTooltip": "L2 gebruik zonder hulp",
-  "languageSettings": "Taalinstellingen",
   "interactiveTranslator": "Vertaalhulp",
   "noIdenticalLanguages": "Kies alstublieft verschillende basis- en doeltalen",
-  "searchBy": "Zoeken op land en talen",
   "joinWithClassCode": "Deelname via cursuscode",
   "languageLevelPreA1": "Novice Laag (Pre A1)",
   "languageLevelA1": "Novice Mid (A1)",
@@ -3538,8 +3196,6 @@
   "languageLevelC2": "Superieur (C2)",
   "changeTheNameOfTheClass": "Verander de naam",
   "changeTheNameOfTheChat": "Verander de naam van de chat",
-  "sorryNoResults": "Sorry, geen resultaten.",
-  "ignoreInThisText": "Negeer",
   "needsItMessage": "Wacht, dat is niet {targetLanguage}! Heb je hulp nodig bij vertalen?",
   "countryInformation": "Mijn land",
   "targetLanguage": "Doeltaal",
@@ -3551,10 +3207,8 @@
   "publicProfileDesc": "Door deze optie in te schakelen, kunnen andere gebruikers jouw profiel vinden in de wereldwijde zoekbalk en verzoeken sturen om te chatten. Op dat moment kun je kiezen om het verzoek te accepteren of te weigeren.",
   "errorDisableIT": "Vertaalhulp is uitgeschakeld.",
   "errorDisableIGC": "Grammatica hulp is uitgeschakeld.",
-  "errorDisableLanguageAssistance": "Vertaalhulp en grammatica hulp zijn uitgeschakeld.",
   "errorDisableITUserDesc": "Klik hier om vertaalhulp-instellingen bij te werken",
   "errorDisableIGCUserDesc": "Klik hier om grammatica hulp-instellingen bij te werken",
-  "errorDisableLanguageAssistanceUserDesc": "Klik hier om vertaalhulp en grammatica hulp-instellingen bij te werken",
   "errorDisableITClassDesc": "Vertaalhulp is uitgeschakeld voor de cursus waarin deze chat zich bevindt.",
   "errorDisableIGCClassDesc": "Grammatica hulp is uitgeschakeld voor de cursus waarin deze chat zich bevindt.",
   "error405Title": "Talen niet ingesteld",
@@ -3599,9 +3253,7 @@
   "notAvailable": "Niet beschikbaar",
   "taAndGaTooltip": "L2 gebruik met vertaalhulp en grammaticahulp",
   "definitionsToolName": "Woordendefinities",
-  "messageTranslationsToolName": "Berichtvertalingen",
   "definitionsToolDescription": "Wanneer ingeschakeld, kunnen woorden onderstreept in blauw worden aangeklikt voor definities. Klik op berichten om definities te openen.",
-  "translationsToolDescrption": "Wanneer ingeschakeld, klik op een bericht en op het vertaalpictogram om een bericht in je basis taal te zien.",
   "welcomeBack": "Welkom terug! Als je deel uitmaakte van de pilot 2023-2024, neem dan contact met ons op voor je speciale pilotabonnement. Als je een leraar bent die (of wiens instelling) licenties voor je klas heeft gekocht, neem dan contact met ons op voor je lerarenabonnement.",
   "downloadTxtFile": "Download tekstbestand",
   "downloadCSVFile": "Download CSV-bestand",
@@ -3875,10 +3527,8 @@
   "definitionDefaultPrompt": "Wat betekent dit woord?",
   "practiceDefaultPrompt": "Wat is het beste antwoord?",
   "correctionDefaultPrompt": "Wat is de beste vervanging?",
-  "acceptSelection": "Correctie Accepteren",
   "why": "Waarom?",
   "definition": "Definitie",
-  "exampleSentence": "Voorbeeldzin",
   "reportToTeacher": "Aan wie wilt u dit bericht melden?",
   "reportMessageTitle": "{reportingUserId} heeft een bericht gerapporteerd van {reportedUserId} in de chat {roomName}",
   "reportMessageBody": "Bericht: {reportedMessage}\nReden: {reason}",
@@ -3890,27 +3540,20 @@
   "clickToManageSubscription": "Klik hier om uw abonnement te beheren.",
   "signUp": "Aanmelden",
   "pleaseChooseAtLeastChars": "Kies alstublieft minimaal {min} tekens.",
-  "noEmailWarning": "Voer een geldig e-mailadres in. Anders kunt u uw wachtwoord niet resetten. Als u dat niet wilt, tik dan opnieuw op de knop om door te gaan.",
   "pleaseEnterValidEmail": "Voer een geldig e-mailadres in.",
   "pleaseChooseAUsername": "Kies een gebruikersnaam",
-  "define": "Definieer",
   "listen": "Luister",
   "trialPeriodExpired": "Je proefperiode is verlopen",
   "translations": "vertalingen",
-  "messageAudio": "bericht audio",
   "definitions": "definities",
   "subscribedToUnlockTools": "Abonneer je om interactieve vertalingen en grammatica-controle, audioweergave, gepersonaliseerde oefenactiviteiten en leeranalyses te ontgrendelen!",
   "translationTooltip": "Vertalen",
-  "speechToTextTooltip": "Transcript",
   "kickBotWarning": "Het verwijderen van de Pangea Bot verwijdert de gesprekbot uit deze chat.",
   "refresh": "Verversen",
-  "messageAnalytics": "Berichtanalyse",
   "words": "Woorden",
   "score": "Score",
   "accuracy": "Nauwkeurigheid",
   "points": "Punten",
-  "noPaymentInfo": "Geen betalingsinformatie nodig!",
-  "updatePhoneOS": "U moet mogelijk de OS-versie van uw apparaat bijwerken.",
   "wordsPerMinute": "Woorden per minuut",
   "tooltipInstructionsTitle": "Weet je niet wat dat doet?",
   "tooltipInstructionsMobileBody": "Houd items ingedrukt om tooltips te bekijken.",
@@ -3920,11 +3563,8 @@
   "chatCapacityHasBeenChanged": "Chatcapaciteit gewijzigd",
   "chatCapacitySetTooLow": "De chatcapaciteit moet minimaal {count} zijn.",
   "chatCapacityExplanation": "Chatcapaciteit beperkt het aantal leden dat in een chat mag.",
-  "tooManyRequest": "Te veel verzoeken, probeer het later opnieuw.",
   "enterNumber": "Voer een geheel getal in.",
-  "buildTranslation": "Bouw je vertaling op basis van de bovenstaande keuzes",
   "practice": "Oefenen",
-  "noLanguagesSet": "Geen talen ingesteld",
   "speechToTextBody": "Voor spraakberichten kunt u zowel een transcript als de woorden per minuut-score van de spreker zien.",
   "versionNotFound": "Versie niet gevonden",
   "fetchingVersion": "Versie ophalen...",
@@ -3943,10 +3583,7 @@
   "grammar": "Grammatica",
   "contactHasBeenInvitedToTheChat": "Contact is uitgenodigd voor de chat",
   "inviteChat": "📨 Uitnodigen chat",
-  "chatName": "Chatnaam",
-  "reportContentIssueTitle": "Meld inhoudsprobleem",
   "feedback": "Optionele feedback",
-  "reportContentIssueDescription": "Oei! AI kan gepersonaliseerde leerervaringen faciliteren maar... hallucineert ook. Geef alstublieft uw feedback en wij proberen het opnieuw.",
   "clickTheWordAgainToDeselect": "Klik op het geselecteerde woord om het te deselecteren.",
   "l2SupportNa": "Niet beschikbaar",
   "l2SupportAlpha": "Alpha",
@@ -3954,7 +3591,6 @@
   "l2SupportFull": "Volledig",
   "missingVoiceTitle": "Ontbrekend geluid",
   "voiceNotAvailable": "Je hebt geen stem geïnstalleerd voor deze taal.",
-  "openVoiceSettings": "Open steminstellingen",
   "playAudio": "Afspelen",
   "stop": "Stoppen",
   "grammarCopyPOSsconj": "Ondergeschikte voegwoord",
@@ -4177,9 +3813,6 @@
   "grammarCopyTENSE": "Tijd",
   "grammarCopyVERBFORM": "Werkwoordsvorm",
   "grammarCopyCONJTYPE": "Voegwoordtype",
-  "grammarCopySPC": "Specifiteit",
-  "grammarCopyPARTTYPE": "Deeltype",
-  "grammarCopyINTREL": "Vragend-Relatief",
   "grammarCopyUNKNOWN": "Onbekend",
   "grammarCopyNUMBERPSOR": "Bezittende Nummer",
   "grammarCopyPOSS": "Bezittelijk",
@@ -4233,8 +3866,6 @@
   "downloadGroupText": "Download groepsbericht",
   "notificationsOn": "Meldingen aan",
   "notificationsOff": "Meldingen uit",
-  "createChatAndInviteUsers": "Maak chat en nodig gebruikers uit",
-  "updatedNewSpaceDescription": "Cursussen stellen je in staat om je chats te consolideren en privé- of openbare gemeenschappen op te bouwen.",
   "joinWithCode": "Deelname met code",
   "enterCodeToJoin": "Voer code in om deel te nemen",
   "updateNow": "Nu bijwerken",
@@ -4275,13 +3906,11 @@
   "iWantToLearn": "Ik wil leren",
   "pleaseEnterEmail": "Voer een geldig e-mailadres in.",
   "myBaseLanguage": "Mijn basis taal",
-  "meaningSectionHeader": "Betekenis:",
   "formSectionHeader": "Vormen gebruikt in chats:",
   "writingExercisesTooltip": "Schrijven",
   "listeningExercisesTooltip": "Luisteren",
   "readingExercisesTooltip": "Lezen",
   "meaningNotFound": "Betekenis kon niet worden gevonden.",
-  "chooseBaseForm": "Kies de basisvorm",
   "notTheCodeError": "Sorry, dat is niet de code!",
   "totalXP": "Totaal XP",
   "numLemmas": "Totaal aantal lemma's",
@@ -4311,13 +3940,11 @@
   "analyticsNotAvailable": "Gebruikersanalyse niet beschikbaar",
   "downloading": "Bezig met downloaden...",
   "failedFetchUserAnalytics": "Het downloaden van gebruikersanalyse is mislukt",
-  "downloadComplete": "Download voltooid!",
   "whatIsTheMorphTag": "Wat is de {morphologicalFeature} van '{wordForm}'?",
   "dataAvailable": "Beschikbare gegevens",
   "available": "Beschikbaar",
   "pangeaBotIsFallible": "Pangea Bot maakt ook fouten!",
   "whatIsMeaning": "Wat betekent '{lemma}'?",
-  "pickAnEmoji": "Wat is je favoriete emoji voor '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Koppel betekenissen aan de woorden in het bericht!",
   "doubleClickToEdit": "Dubbelklik om te bewerken.",
   "activityPlannerTitle": "Activiteitenplanner",
@@ -4346,7 +3973,6 @@
   "constructUseCorMmDesc": "Correct berichtbetekenis",
   "constructUseIncMmDesc": "Onjuiste berichtbetekenis",
   "constructUseIgnMmDesc": "Genegeerde berichtbetekenis",
-  "clickForMeaningActivity": "Klik hier voor een Betekenis Uitdaging",
   "meaning": "Betekenis",
   "chatWith": "Groep met {displayname}",
   "clickOnEmailLink": "Klik op de link in de e-mail en ga verder.\n\nControleer je spammap als de e-mail niet is aangekomen.",
@@ -4386,16 +4012,13 @@
   "home": "Startpagina",
   "join": "Deelnemen",
   "readingAssistanceOverviewBody": "Klik op de knoppen hieronder voor mini-games over het matchen van emoji's, audio's, woordbetekenissen en grammaticaconcepten. Of klik op een woord voor meer details.",
-  "levelSummaryPopupTitle": "Samenvatting niveau {level}",
   "resetInstructionTooltipsTitle": "Reset instructiehulpmiddelen",
   "resetInstructionTooltipsDesc": "Klik om instructiehulpmiddelen te tonen, zoals voor een gloednieuwe gebruiker.",
-  "selectForGrammar": "Selecteer een grammatica-icoon voor activiteiten en details.",
   "randomize": "Willekeurig maken",
   "clear": "Wissen",
   "makeYourOwnActivity": "Maak je eigen activiteit",
   "featuredActivities": "Uitgelicht",
   "save": "Opslaan",
-  "startChat": "Begin een chat",
   "translationProblem": "Vertaalprobleem",
   "askToJoin": "Vraag om lid te worden",
   "emptyChatWarningTitle": "Chat is leeg",
@@ -4415,7 +4038,6 @@
   "languageLevelC2Desc": "Ik kan vrijwel alles begrijpen dat ik hoor of lees en mezelf vloeiend en precies uitdrukken.",
   "newVocab": "Nieuw vocabulaire",
   "newGrammar": "Nieuwe grammaticaconcepten",
-  "choosePracticeMode": "Klik op een van de bovenstaande knoppen om een oefenactiviteit te starten",
   "ban": "Ban",
   "unban": "Unban",
   "kick": "Verwijder",
@@ -4427,7 +4049,6 @@
   "timesUsedIndependently": "Aantal keer zelfstandig gebruikt",
   "timesUsedWithAssistance": "Aantal keer met hulp gebruikt",
   "shareInviteCode": "Deel uitnodigingscode: {code}",
-  "leaderboard": "Highscorelijst",
   "skipForNow": "Sla over",
   "permissions": "Toestemmingen",
   "spaceChildPermission": "Wie kan nieuwe chats toevoegen aan deze cursus",
@@ -4436,7 +4057,6 @@
   "deleteChatDesc": "Weet je zeker dat je deze chat wilt verwijderen? Deze wordt verwijderd voor alle deelnemers en alle berichten binnen de chat zijn niet meer beschikbaar voor oefening of leeranalyses.",
   "deleteSpaceDesc": "De cursus en alle geselecteerde chats worden verwijderd voor alle deelnemers en alle berichten binnen de chat zijn niet meer beschikbaar voor oefening of leeranalyses. Deze actie kan niet ongedaan worden gemaakt.",
   "launch": "Start",
-  "searchChats": "Zoek chats",
   "maxFifty": "Maximaal 50",
   "configureSpace": "Configureer cursus",
   "pinMessages": "Pin berichten",
@@ -4461,13 +4081,10 @@
   "canBeFoundViaInvitation": "• uitnodiging",
   "canBeFoundViaCodeOrLink": "• code of link",
   "canBeFoundViaKnock": "• verzoek om lid te worden en goedkeuring door beheerder",
-  "youHaveLeveledUp": "Je bent een niveau omhoog gegaan!",
   "sendActivities": "Verzend activiteiten",
-  "groupChat": "Groepschat",
   "directMessage": "Direct bericht",
   "newDirectMessage": "Nieuw direct bericht",
   "speakingExercisesTooltip": "Spreken",
-  "noChatsFoundHereYet": "Nog geen chats gevonden hier",
   "duration": "Duur",
   "transcriptionFailed": "Transcriberen van audio mislukt",
   "aUserIsKnocking": "1 gebruiker vraagt zich aan te sluiten bij je cursus",
@@ -4477,7 +4094,6 @@
   "regenerate": "Opnieuw genereren",
   "mySavedActivities": "Mijn opgeslagen activiteiten",
   "noSavedActivities": "Geen opgeslagen activiteiten",
-  "saveActivity": "Deze activiteit opslaan",
   "failedToPlayVideo": "Video afspelen is mislukt",
   "done": "Klaar",
   "inThisSpace": "In deze cursus",
@@ -4495,12 +4111,10 @@
   "errorFetchingDefinition": "Fout bij het ophalen van definitie",
   "errorProcessAnalytics": "Fout bij het verwerken van analytics",
   "errorDownloading": "Downloaden mislukt",
-  "errorFetchingLevelSummary": "Fout bij het ophalen van niveauoverzicht",
   "errorLoadingSpaceChildren": "Fout bij het laden van chats binnen deze cursus",
   "unexpectedError": "Onverwachte fout.",
   "pleaseReload": "Herkader en probeer het opnieuw.",
   "translationError": "Vertaalfout",
-  "errorFetchingTranslation": "Fout bij het ophalen van vertaling",
   "errorFetchingActivity": "Fout bij het ophalen van activiteit",
   "check": "Controleren",
   "unableToFindRoom": "Geen chat of cursus gevonden met die code. Probeer het opnieuw.",
@@ -4516,17 +4130,14 @@
   "maximumActivityParticipants": "Elke activiteit kan maximaal {count} deelnemer(s) hebben.",
   "pending": "In afwachting",
   "inactive": "Inactief",
-  "confirmRole": "Bevestig rol",
   "openRoleLabel": "OPEN",
   "joinedTheActivity": "👋 {username} heeft deelgenomen als {role}",
   "finishedTheActivity": "🎯 {username} heeft deze activiteit afgerond",
-  "archiveToAnalytics": "Toevoegen aan mijn Voltooide Activiteiten",
   "activitySummaryError": "Samenvattingen van activiteiten niet beschikbaar",
   "requestSummaries": "Vraag samenvattingen aan",
   "generatingNewActivities": "Je bent de eerste gebruiker van dit taalpaar! Geef ons een minuutje, we bereiden activiteiten voor je voor.",
   "requestAccessTitle": "Toegang tot analyses aanvragen?",
   "requestAccessDesc": "Wil je toegang aanvragen om deelnemeranalyses te bekijken?\n\nAls deelnemers akkoord gaan, kunnen beheerders van deze cursus hun bekijken:\n    • totaal vocabulaire\n    • totaal grammaticaconcepten\n    • totaal voltooide activiteitensessies\n    • de specifieke grammaticaconcepten die correct en incorrect worden gebruikt\n\nZe kunnen niet bekijken:\n    • berichten in chats buiten de cursus\n    • vocabulairelijst",
-  "requestAccess": "Verzoek toegang ({count})",
   "analyticsInactiveTitle": "Verzoeken aan inactieve gebruikers konden niet worden verzonden",
   "analyticsInactiveDesc": "Inactieve gebruikers die zich sinds de introductie van deze functie niet hebben aangemeld, zien uw verzoek niet.\n\nDe knop Verzoek verschijnt zodra ze terugkeren. U kunt het verzoek later opnieuw verzenden door op de knop Verzoek onder hun naam te klikken wanneer deze beschikbaar is.",
   "accessRequestedTitle": "Verzoek om toegang tot analytics",
@@ -4551,7 +4162,6 @@
   "deleteDesc": "Alleen beheerders kunnen een cursus verwijderen. Dit is een destructieve actie die alle gebruikers verwijdert en alle geselecteerde chats binnen de cursus verwijdert. Ga voorzichtig te werk.",
   "noCourseFound": "Oh, deze cursus heeft een plan nodig!\n\nCursusplannen zijn een reeks onderwerpen en gespreksactiviteiten.",
   "additionalParticipants": "+ {num} anderen",
-  "directMessages": "Directe Berichten",
   "whatNow": "Wat nu?",
   "chooseNextActivity": "Kies je volgende activiteit!",
   "letsGo": "Laten we gaan",
@@ -4588,7 +4198,6 @@
   "activityNeedsMembers": "Oeps! Deze activiteit heeft nog {num} mensen nodig.",
   "inviteFriendsToCourse": "Vrienden uitnodigen voor mijn cursus",
   "subscribeToUnlockActivitySummaries": "Abonneer je om activuatsamenvattingen te ontgrendelen",
-  "subscribeToUnlockDefinitions": "Abonneer je om definities te ontgrendelen",
   "subscribeToUnlockTranscriptions": "Abonneer je om transcripties te ontgrendelen",
   "pingSent": "🔔 Cursus-ping verzonden! 🔔",
   "courseTitle": "Cursus titel",
@@ -4599,7 +4208,6 @@
   "loginToAccount": "Log in op mijn account",
   "appDescription": "Leer een taal\nterwijl je met je vrienden chat.",
   "languages": "Talen",
-  "chooseLanguage": "Kies een doeltaal.",
   "planTrip": "Plan je reis",
   "howAreYouTraveling": "Hoe reis je?",
   "unlockPrivateTrip": "Ontgrendel een privéreis",
@@ -4652,18 +4260,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -4680,10 +4276,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -4692,27 +4284,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -4721,10 +4297,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -4765,14 +4337,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -4824,19 +4388,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5016,15 +4572,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6138,19 +5686,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6223,19 +5763,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6251,10 +5783,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6267,19 +5795,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6296,14 +5816,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6347,23 +5859,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6446,19 +5946,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6487,10 +5975,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7382,18 +6866,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7610,14 +7082,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -7785,10 +7249,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -7806,10 +7266,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -7929,10 +7385,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -7957,14 +7409,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8081,10 +7525,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8256,23 +7696,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8293,10 +7721,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8376,10 +7800,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8428,10 +7848,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8461,10 +7877,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8564,15 +7976,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8585,10 +7989,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8629,10 +8029,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8712,10 +8108,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -8729,10 +8121,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -8807,10 +8195,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -8834,10 +8218,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -8857,14 +8237,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -8980,10 +8352,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9146,10 +8514,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9187,10 +8551,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9394,7 +8754,6 @@
   "addCourse": "Voeg een cursus toe",
   "joinPublicCourse": "Deelname openbare cursus",
   "vocabLevelsDesc": "Hier komen de vocabulaire woorden zodra je ze hebt opgewaardeerd!",
-  "highlightVocabTooltip": "Markeer doelwoordenschat hieronder door ze te verzenden of ermee te oefenen in de chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10623,13 +9982,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Kon feedback niet laden.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Activiteiten verschijnen hier zodra ze zijn voltooid en opgeslagen.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -10645,11 +9999,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Oefenactiviteit voltooid",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10706,11 +10055,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Uw doeltaal komt niet overeen met dit bericht. Wilt u uw doeltaal bijwerken?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -10756,12 +10100,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Leermiddelen zijn uitgeschakeld voor berichten die niet in je doeltaal zijn.",
-  "vocabEmoji": "Vocab emoji",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10809,16 +10148,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Toestemming geweigerd. Schakel opnamepermissies in om audioberichten op te nemen.",
-  "genericWebRecordingError": "Er is iets misgegaan. We raden aan de Chrome-browser te gebruiken bij het opnemen van berichten.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Voor de beste ervaring met deze applicatie, vergroot alstublieft uw schermgrootte.",
   "@screenSizeWarning": {
     "type": "String",
@@ -10841,11 +10170,8 @@
   "constructUseBonus": "Bonus tijdens vocabulaire oefening",
   "practiceVocab": "Oefen vocabulaire",
   "selectMeaning": "Selecteer de betekenis",
-  "selectAudio": "Selecteer de bijpassende audio",
   "congratulations": "Gefeliciteerd!",
   "anotherRound": "Nog een ronde",
-  "noActivityRequest": "Geen huidige activiteit aanvraag.",
-  "mustHave10Words": "Je moet minstens 10 vocabulairewoorden hebben om ze te oefenen. Probeer met een vriend of Pangea Bot te praten om meer te ontdekken!",
   "botSettings": "Botinstellingen",
   "activitySettingsOverrideWarning": "Taal en taalniveau bepaald door het activiteitenplan",
   "voice": "Stem",
@@ -10877,23 +10203,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -10985,18 +10299,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Heb je een uitnodigingscode of link naar een openbare cursus?",
-  "welcomeUser": "Welkom {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Zoek naar gebruikers om ze uit te nodigen voor deze chat.",
   "publicInviteDescSpace": "Zoek naar gebruikers om ze uit te nodigen voor deze ruimte.",
@@ -11374,7 +10679,6 @@
   "playConversationGames": "Speel gespreksspellen met de bot, klasgenoten en nieuwe vrienden!",
   "jumpIntoConversation": "Duik vanaf dag één in gesprekken met AI-schrijfhulpmiddelen!",
   "playPersonalizedGames": "Speel oefenspellen die zijn gepersonaliseerd voor jouw vocabulaire en grammatica behoeften!",
-  "learnLanguageWhileTexting": "Leer een taal terwijl je je vrienden sms't!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11396,10 +10700,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

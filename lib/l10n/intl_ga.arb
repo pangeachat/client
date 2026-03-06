@@ -145,11 +145,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "people": "Daoine",
-  "@people": {
-    "type": "String",
-    "placeholders": {}
-  },
   "password": "Pasfhocal",
   "@password": {
     "type": "String",
@@ -269,11 +264,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Ceadúnas",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "leave": "Fág",
   "@leave": {
     "type": "String",
@@ -291,11 +281,6 @@
   },
   "ignore": "Tabhair neamhaird ar",
   "@ignore": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Aitheantas",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -361,33 +346,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "dateWithYear": "{day}/{month}/{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{day}/{month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
   "dateAndTimeOfDay": "{date}, {timeOfDay}",
   "@dateAndTimeOfDay": {
     "type": "String",
@@ -399,11 +357,6 @@
         "type": "String"
       }
     }
-  },
-  "containsUserName": "Coinníonn sé ainm úsáideora",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
   },
   "configureChat": "Cumraigh comhrá",
   "@configureChat": {
@@ -461,11 +414,6 @@
   },
   "cancel": "Cealaigh",
   "@cancel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Teachtaireachtaí bota",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -657,11 +605,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "enterYourHomeserver": "Cuir isteach do fhreastalaí baile",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emoteInvalid": "Gearrchód emote neamhbhailí!",
   "@emoteInvalid": {
     "type": "String",
@@ -767,8 +710,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Cuireadh comhrá leis an spás seo",
-  "@chatHasBeenAddedToThisSpace": {},
   "chatBackupDescription": "Tá do theachtaireachtaí slán le heochair aisghabhála. Déan cinnte nach gcaillfidh tú í.",
   "@chatBackupDescription": {
     "type": "String",
@@ -922,11 +863,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Coinníonn sé ainm taispeána",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "commandHint_plain": "Seol téacs neamhfhoirmithe",
   "@commandHint_plain": {
     "type": "String",
@@ -987,21 +923,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleUnread": "Marcáil Léite/Neamhléite",
-  "@toggleUnread": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleMuted": "Scoránaigh mar ciúnaithe",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleFavorite": "Scoránaigh mar ceann is fearr leat",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
   "theyMatch": "Tá siad céanna",
   "@theyMatch": {
     "type": "String",
@@ -1034,16 +955,6 @@
   },
   "sendVideo": "Seol físeán",
   "@sendVideo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Seol greamán",
-  "@sendSticker": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendOriginal": "Seol an bunchóip",
-  "@sendOriginal": {
     "type": "String",
     "placeholders": {}
   },
@@ -1084,11 +995,6 @@
   },
   "reportMessage": "Tuairiscigh teachtaireacht",
   "@reportMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "removeDevice": "Bain gléas",
-  "@removeDevice": {
     "type": "String",
     "placeholders": {}
   },
@@ -1153,11 +1059,6 @@
   },
   "muteChat": "Ciúnaigh comhrá",
   "@muteChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Athruithe ball",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1478,11 +1379,6 @@
       }
     }
   },
-  "goToTheNewRoom": "Téigh go dtí an seomra nua",
-  "@goToTheNewRoom": {
-    "type": "String",
-    "placeholders": {}
-  },
   "errorObtainingLocation": "Earráid maidir le suíomh a fháil: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -1518,11 +1414,6 @@
   },
   "enableEmotesGlobally": "Cumasaigh pacáiste straoiseoige go huilíoch",
   "@enableEmotesGlobally": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "emoteWarnNeedToPick": "Caithfidh tú gearrchód straoiseoige agus íomhá a roghnú!",
-  "@emoteWarnNeedToPick": {
     "type": "String",
     "placeholders": {}
   },
@@ -1577,18 +1468,6 @@
     "type": "String",
     "placeholders": {
       "username": {
-        "type": "String"
-      }
-    }
-  },
-  "badServerVersionsException": "Tá na leaganacha sonraíochta seo ar fáil faoin freastalaí baile:\n{serverVersions}\nAch níl ach na ceann seo ar fáil faoin aip seo {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
         "type": "String"
       }
     }
@@ -1693,15 +1572,6 @@
       }
     }
   },
-  "unreadChats": "{unreadCount, plural, =1{1 comhrá neamhléite} other{{unreadCount} comhráite neamhléite}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
-  },
   "unknownEncryptionAlgorithm": "Algartam criptithe anaithnid",
   "@unknownEncryptionAlgorithm": {
     "type": "String",
@@ -1747,21 +1617,6 @@
         "type": "String"
       }
     }
-  },
-  "setPermissionsLevel": "Socraigh leibhéal ceadanna",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Socraigh nasc cuiridh",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setCustomEmotes": "Socraigh straoiseoga saincheaptha",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
   },
   "setAsCanonicalAlias": "Socraigh mar phríomh-ailias",
   "@setAsCanonicalAlias": {
@@ -1937,11 +1792,6 @@
       }
     }
   },
-  "notificationsEnabledForThisAccount": "Fógraí cumasaithe don chuntas seo",
-  "@notificationsEnabledForThisAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
   "noRoomsFound": "Níor aimsíodh aon seomraí…",
   "@noRoomsFound": {
     "type": "String",
@@ -2046,11 +1896,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "singlesignon": "Sínigh Aonair ar",
-  "@singlesignon": {
-    "type": "String",
-    "placeholders": {}
-  },
   "sentAnAudio": "🎤 sheol {username} fuaim",
   "@sentAnAudio": {
     "type": "String",
@@ -2077,15 +1922,6 @@
   "@sendAMessage": {
     "type": "String",
     "placeholders": {}
-  },
-  "seenByUser": "Le feiceáil ag {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
   },
   "roomHasBeenUpgraded": "Uasghrádaíodh an seomra",
   "@roomHasBeenUpgraded": {
@@ -2134,18 +1970,12 @@
   "@editBundlesForAccount": {},
   "globalChatId": "Aitheantas comhrá domhanda",
   "@globalChatId": {},
-  "hideMemberChangesInPublicChatsBody": "Ná taispeáin san amlíne comhrá má théann duine isteach i gcomhrá poiblí nó má fhágann sé nó sí é chun inléiteacht a fheabhsú.",
-  "@hideMemberChangesInPublicChatsBody": {},
-  "pleaseEnterRecoveryKey": "Cuir isteach d'eochair athshlánaithe le do thoil:",
-  "@pleaseEnterRecoveryKey": {},
   "sender": "Seoltóir",
   "@sender": {},
   "noOneCanJoin": "Ní féidir le duine ar bith páirt a ghlacadh",
   "@noOneCanJoin": {},
   "noOtherDevicesFound": "Níor aimsíodh aon ghléas eile",
   "@noOtherDevicesFound": {},
-  "profileNotFound": "Níorbh fhéidir an t-úsáideoir a aimsiú ar an bhfreastalaí. B'fhéidir go bhfuil fadhb nasctha ann nó nach bhfuil an t-úsáideoir ann.",
-  "@profileNotFound": {},
   "inviteGroupChat": "📨 Cuireadh chuig comhrá grúpa",
   "@inviteGroupChat": {},
   "knocking": "Cnagadh",
@@ -2193,12 +2023,8 @@
       }
     }
   },
-  "addToSpaceDescription": "Roghnaigh spás chun an comhrá seo a chur leis.",
-  "@addToSpaceDescription": {},
   "markAsRead": "Marcáil mar léite",
   "@markAsRead": {},
-  "enterRoom": "Iontráil seomra",
-  "@enterRoom": {},
   "deviceKeys": "Eochracha gléis:",
   "@deviceKeys": {},
   "allSpaces": "Gach spás",
@@ -2243,40 +2069,18 @@
   "@subspace": {},
   "decline": "Meath",
   "@decline": {},
-  "forwardMessageTo": "Seol teachtaireacht ar aghaidh chuig {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "sendReadReceipts": "Seol admhálacha léite",
   "@sendReadReceipts": {},
   "formattedMessagesDescription": "Taispeáin ábhar saibhir teachtaireachta cosúil le téacs trom ag baint úsáide as marcáil síos.",
   "@formattedMessagesDescription": {},
   "verifyOtherUser": "🔐 Fíoraigh úsáideoir eile",
   "@verifyOtherUser": {},
-  "dehydrateTorLong": "Maidir le húsáideoirí TOR, moltar an seisiún a onnmhairiú roimh dhúnadh an fhuinneog.",
-  "@dehydrateTorLong": {},
-  "numChats": "Comhráite {number}",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "hidePresences": "Folaigh Liosta Stádais?",
   "@hidePresences": {},
   "jump": "Léim",
   "@jump": {},
   "reportErrorDescription": "😭 Ó, a mhac go deo. Chuaigh rud éigin mícheart. Más mian leat, is féidir leat an fabht seo a thuairisciú do na forbróirí.",
   "@reportErrorDescription": {},
-  "setTheme": "Socraigh téama:",
-  "@setTheme": {},
   "invalidInput": "Ionchur neamhbhailí!",
   "@invalidInput": {},
   "kickUserDescription": "Ciceáiltear an t-úsáideoir as an gcomhrá ach níl cosc air. I gcomhráite poiblí, is féidir leis an úsáideoir teacht ar ais ag am ar bith.",
@@ -2289,8 +2093,6 @@
   "@leaveEmptyToClearStatus": {},
   "pleaseChooseAStrongPassword": "Roghnaigh pasfhocal láidir",
   "@pleaseChooseAStrongPassword": {},
-  "publicLink": "Nasc poiblí",
-  "@publicLink": {},
   "joinSpace": "Glac páirt sa spás",
   "@joinSpace": {},
   "initAppError": "Tharla earráid agus an feidhmchlár á thosú",
@@ -2339,8 +2141,6 @@
   "@newSpace": {},
   "confirmMatrixId": "Deimhnigh d’ID Maitrís chun do chuntas a scriosadh.",
   "@confirmMatrixId": {},
-  "hideMemberChangesInPublicChats": "Cuir athruithe ball i gcomhráite poiblí i bhfolach",
-  "@hideMemberChangesInPublicChats": {},
   "confirmEventUnpin": "An bhfuil tú cinnte an t-imeacht a dhíphionnáil go buan?",
   "@confirmEventUnpin": {},
   "hugContent": "Tugann {senderName} barróg duit",
@@ -2361,15 +2161,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "videoWithSize": "Físeán ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "messageInfo": "Eolas teachtaireachta",
   "@messageInfo": {},
   "messageType": "Cineál Teachtaireachta",
@@ -2382,15 +2173,6 @@
   "@unsupportedAndroidVersionLong": {},
   "experimentalVideoCalls": "Glaonna físe turgnamhacha",
   "@experimentalVideoCalls": {},
-  "switchToAccount": "Athraigh go cuntas {number}",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "addWidget": "Cuir giuirléid leis",
   "@addWidget": {},
   "widgetUrlError": "Ní URL bailí é seo.",
@@ -2419,14 +2201,6 @@
       }
     }
   },
-  "userWouldLikeToChangeTheChat": "Ba mhaith le {user} páirt a ghlacadh sa chomhrá.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "knock": "Cnoc Mhuire",
   "@knock": {},
   "storeInSecureStorageDescription": "Stóráil an eochair aisghabhála i stóráil slán an ghléis seo.",
@@ -2443,18 +2217,6 @@
   "@foregroundServiceRunning": {},
   "screenSharingDetail": "Tá do scáileán á roinnt agat i FuffyChat",
   "@screenSharingDetail": {},
-  "callingPermissions": "Ceadanna a ghlaoch",
-  "@callingPermissions": {},
-  "callingAccount": "Cuntas ag glaoch",
-  "@callingAccount": {},
-  "callingAccountDetails": "Ceadaíonn FluffyChat an aip dhiailiú android dúchais a úsáid.",
-  "@callingAccountDetails": {},
-  "appearOnTopDetails": "Ceadaíonn sé don aip a bheith ar bharr (ní gá má tá socrú Fluffychat agat cheana féin mar chuntas glao)",
-  "@appearOnTopDetails": {},
-  "otherCallingPermissions": "Micreafón, ceamara agus ceadanna FluffyChat eile",
-  "@otherCallingPermissions": {},
-  "hideUnimportantStateEvents": "Folaigh imeachtaí stáit gan tábhacht",
-  "@hideUnimportantStateEvents": {},
   "disableEncryptionWarning": "Ar chúiseanna slándála ní féidir leat criptiú a dhíchumasú i gcomhrá, áit ar cumasaíodh é roimhe seo.",
   "@disableEncryptionWarning": {},
   "sorryThatsNotPossible": "Tá brón orm... nach féidir a dhéanamh",
@@ -2478,12 +2240,6 @@
   "@readUpToHere": {},
   "openLinkInBrowser": "Oscail nasc sa bhrabhsálaí",
   "@openLinkInBrowser": {},
-  "signInWithPassword": "Sínigh isteach le pasfhocal",
-  "@signInWithPassword": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Bain triail eile as níos déanaí nó roghnaigh freastalaí eile.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "invitePrivateChat": "📨 Cuireadh chuig comhrá príobháideach",
-  "@invitePrivateChat": {},
   "wrongPinEntered": "Tháinig biorán mícheart isteach! Bain triail eile as i {seconds} soicind...",
   "@wrongPinEntered": {
     "type": "String",
@@ -2543,18 +2299,6 @@
   "@passwordIsWrong": {},
   "files": "Comhaid",
   "@files": {},
-  "databaseBuildErrorBody": "Ní féidir bunachar sonraí SQlite a thógáil. Déanann an aip iarracht an bunachar sonraí oidhreachta a úsáid anois. Tuairiscigh an earráid seo do na forbróirí ag {url}. Is í an teachtaireacht earráide: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "sessionLostBody": "Cailltear do sheisiún. Tuairiscigh an earráid seo do na forbróirí ag {url}. Is í an teachtaireacht earráide: {error}",
   "@sessionLostBody": {
     "type": "String",
@@ -2689,8 +2433,6 @@
   "@noticeChatBackupDeviceVerification": {},
   "continueText": "Lean ar aghaidh",
   "@continueText": {},
-  "welcomeText": "Hey Hey 👋 Is é seo FluffyChat. Is féidir leat síniú isteach in aon fhreastalaí baile, atá comhoiriúnach leis https://matrix.org. Agus ansin comhrá a dhéanamh le duine ar bith. Is líonra teachtaireachtaí díláraithe ollmhór é!",
-  "@welcomeText": {},
   "blur": "Doiléirigh:",
   "@blur": {},
   "opacity": "Teimhneacht:",
@@ -2753,8 +2495,6 @@
   "@pinMessage": {},
   "dehydrate": "Easpórtáil seisiún agus gléas wipe",
   "@dehydrate": {},
-  "dehydrateTor": "Úsáideoirí TOR: Seisiún easpórtála",
-  "@dehydrateTor": {},
   "commandHint_markasdm": "Marcáil mar sheomra teachtaireachta dírí don ID Maitrís tugtha",
   "@commandHint_markasdm": {},
   "googlyEyesContent": "Seolann {senderName} súile googly chugat",
@@ -2770,16 +2510,12 @@
   "@commandHint_cuddle": {},
   "commandHint_hug": "Seol barróg",
   "@commandHint_hug": {},
-  "startFirstChat": "Cuir tús le do chéad chomhrá",
-  "@startFirstChat": {},
   "encryptThisChat": "Criptigh an comhrá seo",
   "@encryptThisChat": {},
   "importNow": "Iompórtáil anois",
   "@importNow": {},
   "sendTypingNotifications": "Seol fógraí clóscríofa",
   "@sendTypingNotifications": {},
-  "addChatDescription": "Cuir cur síos ar an gcomhrá leis...",
-  "@addChatDescription": {},
   "chatPermissions": "Ceadanna comhrá",
   "@chatPermissions": {},
   "emoteKeyboardNoRecents": "Beidh mothúcháin a úsáideadh le déanaí le feiceáil anseo ...",
@@ -2791,8 +2527,6 @@
   "@chatDescriptionHasBeenChanged": {},
   "pushNotificationsNotAvailable": "Níl fógraí brú ar fáil",
   "@pushNotificationsNotAvailable": {},
-  "publish": "Foilsigh",
-  "@publish": {},
   "changeGeneralChatSettings": "Athraigh socruithe ginearálta comhrá",
   "@changeGeneralChatSettings": {},
   "sendRoomNotifications": "Seol fógraí @room",
@@ -2814,18 +2548,6 @@
     "placeholders": {
       "senderName": {
         "type": "String"
-      }
-    }
-  },
-  "countChatsAndCountParticipants": "{chats} comhrá agus {participants} rannpháirtí",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
       }
     }
   },
@@ -2855,11 +2577,6 @@
   "@recoveryKey": {},
   "setChatDescription": "Socraigh cur síos ar an gcomhrá",
   "@setChatDescription": {},
-  "presenceStyle": "Láithreacht:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "presencesToggle": "Taispeáin teachtaireachtaí stádais ó úsáideoirí eile",
   "@presencesToggle": {
     "type": "String",
@@ -2873,8 +2590,6 @@
   "@placeCall": {},
   "unsupportedAndroidVersion": "Leagan Android gan tacaíocht",
   "@unsupportedAndroidVersion": {},
-  "previousAccount": "Cuntas roimhe seo",
-  "@previousAccount": {},
   "widgetJitsi": "Jitsi le chéile",
   "@widgetJitsi": {},
   "widgetCustom": "Saincheaptha",
@@ -2883,8 +2598,6 @@
   "@widgetName": {},
   "usersMustKnock": "Ní mór d'úsáideoirí cnag a chur ar",
   "@usersMustKnock": {},
-  "noPublicLinkHasBeenCreatedYet": "Níor cruthaíodh aon nasc poiblí go fóill",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "storeSecurlyOnThisDevice": "Stóráil go daingean ar an ngléas seo",
   "@storeSecurlyOnThisDevice": {},
   "userLevel": "{level} - Úsáideoir",
@@ -2915,8 +2628,6 @@
   "@noChatDescriptionYet": {},
   "shareInviteLink": "Roinn an nasc cuireadh",
   "@shareInviteLink": {},
-  "notifyMeFor": "Cuir in iúl dom le haghaidh",
-  "@notifyMeFor": {},
   "passwordRecoverySettings": "Socruithe athshlánaithe pasfhocal",
   "@passwordRecoverySettings": {},
   "widgetEtherpad": "Nóta téacs",
@@ -2937,8 +2648,6 @@
   "@groupName": {},
   "bundleName": "Ainm an bheartáin",
   "@bundleName": {},
-  "enterSpace": "Iontráil spás",
-  "@enterSpace": {},
   "wasDirectChatDisplayName": "Comhrá folamh (bhí {oldDisplayName})",
   "@wasDirectChatDisplayName": {
     "type": "String",
@@ -2966,14 +2675,6 @@
       }
     }
   },
-  "youInvitedToBy": "📩 Tugadh cuireadh duit trí nasc chuig:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
-        "type": "String"
-      }
-    }
-  },
   "youInvitedUser": "📩 Thug tú cuireadh do {user}",
   "@youInvitedUser": {
     "placeholders": {
@@ -2990,8 +2691,6 @@
   "@storeInAndroidKeystore": {},
   "storeInAppleKeyChain": "Stóráil i Apple KeyChain",
   "@storeInAppleKeyChain": {},
-  "appearOnTop": "Le feiceáil ar an mbarr",
-  "@appearOnTop": {},
   "newSpaceDescription": "Ligeann spásanna duit do chomhráite a chomhdhlúthú agus pobail phríobháideacha nó phoiblí a thógáil.",
   "@newSpaceDescription": {},
   "chatCanBeDiscoveredViaSearchOnServer": "Is féidir comhrá a aimsiú tríd an gcuardach ar {server}",
@@ -3028,29 +2727,18 @@
     "type": "String",
     "description": "Usage hint for the command /discardsession"
   },
-  "allRooms": "Gach Comhrá Grúpa",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "block": "Bloc",
   "@block": {},
   "blockListDescription": "Is féidir leat bac a chur ar úsáideoirí atá ag cur isteach ort. Ní bheidh tú in ann teachtaireachtaí nó cuireadh seomra ar bith a fháil ó na húsáideoirí ar do liosta bloc pearsanta.",
   "@blockListDescription": {},
   "blockUsername": "Déan neamhaird de ainm úsáideora",
   "@blockUsername": {},
-  "inviteContactToGroupQuestion": "Ar mhaith leat cuireadh a thabhairt do {contact} chuig an gcomhrá \"{groupName}\"?",
-  "@inviteContactToGroupQuestion": {},
   "tryAgain": "Bain triail eile as",
   "@tryAgain": {},
   "optionalRedactReason": "(Roghnach) An chúis leis an teachtaireacht seo a chur in eagar...",
   "@optionalRedactReason": {},
   "dehydrateWarning": "Ní féidir an gníomh seo a chealú. Cinntigh go stórálann tú an comhad cúltaca go sábháilte.",
   "@dehydrateWarning": {},
-  "hydrateTor": "Úsáideoirí TOR: Iompórtáil easpórtáil seisiún",
-  "@hydrateTor": {},
-  "hydrateTorLong": "An ndearna tú do sheisiún a easpórtáil an uair dheireanach ar TOR? Iompórtáil go tapa é agus leanúint ar aghaidh ag comhrá.",
-  "@hydrateTorLong": {},
   "hydrate": "Athchóirigh ó chomhad cúltaca",
   "@hydrate": {},
   "commandHint_googly": "Seol roinnt súile googly",
@@ -3059,15 +2747,6 @@
   "@notAnImage": {},
   "userRole": "Ról an úsáideora",
   "@userRole": {},
-  "minimumPowerLevel": "Is é {level} an t-íosleibhéal cumhachta.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "isReadyForKeyVerification": "Tá {sender} réidh le haghaidh fíorú eochair",
   "@isReadyForKeyVerification": {
     "type": "String",
@@ -3113,12 +2792,6 @@
   "@sendReadReceiptsDescription": {},
   "doesNotSeemToBeAValidHomeserver": "Ní cosúil gur freastalaí baile comhoiriúnach é. URL mícheart?",
   "@doesNotSeemToBeAValidHomeserver": {},
-  "indexedDbErrorTitle": "Saincheisteanna mód príobháideach",
-  "@indexedDbErrorTitle": {},
-  "indexedDbErrorLong": "Ar an drochuair níl an stóráil teachtaireachta cumasaithe sa mhód príobháideach de réir réamhshocraithe.\nTabhair cuairt le do thoil\n - faoi: config\n - socraithe dom.indexedDB.privateBrowsing.enabled go fíor\nSeachas sin, ní féidir FluffyChat a rith.",
-  "@indexedDbErrorLong": {},
-  "nextAccount": "An chéad chuntas eile",
-  "@nextAccount": {},
   "youJoinedTheChat": "Chuaigh tú isteach sa chomhrá",
   "@youJoinedTheChat": {},
   "youAcceptedTheInvitation": "👍 Ghlac tú leis an gcuireadh",
@@ -3394,10 +3067,6 @@
   "@newSubSpace": {},
   "moveToDifferentSpace": "Bog go spás difriúil",
   "@moveToDifferentSpace": {},
-  "moveUp": "Bog suas",
-  "@moveUp": {},
-  "moveDown": "Bog síos",
-  "@moveDown": {},
   "removeFromSpaceDescription": "Bainfear an comhrá as an spás ach beidh sé fós le feiceáil i do liosta comhrá.",
   "@removeFromSpaceDescription": {},
   "countChats": "comhráite {chats}",
@@ -3446,8 +3115,6 @@
   "@endPoll": {},
   "answersVisible": "Freagraí le feiceáil",
   "@answersVisible": {},
-  "answersHidden": "Freagraí i bhfolach",
-  "@answersHidden": {},
   "pollQuestion": "Ceist pobalbhreithe",
   "@pollQuestion": {},
   "answerOption": "Rogha freagartha",
@@ -3515,25 +3182,16 @@
   "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
   "requests": "Iarratais",
   "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
-  "greenFeedback": "Sin é an rud a chuirfinn!",
-  "yellowFeedback": "Hm, is féidir leat iarracht a dhéanamh é sin a rá agus féach cad a tharlóidh! Chun an focal seo a úsáid, cliceáil arís é.",
-  "redFeedback": "Ní dóigh liom go bhfuil sé sin ceart...",
   "itInstructionsTitle": "Is féidir liom cabhrú leat aistriú!",
   "itInstructionsBody": "Is féidir leat roghanna a chliceáil agus a choinneáil síos le haghaidh eolas faoin bhfocal.",
   "gaTooltip": "Úsáid L2 le cabhair gramadaí",
   "taTooltip": "Úsáid L2 le cabhair aistriúcháin",
-  "unTooltip": "Eile",
   "interactiveTranslatorSliderHeader": "Aistritheoir Idirghníomhach",
   "interactiveGrammarSliderHeader": "Seiceáil Foghraíochta Idirghníomhach",
-  "interactiveTranslatorNotAllowed": "Míchumasaithe",
-  "interactiveTranslatorAllowed": "Rogha na Mac Léinn",
   "interactiveTranslatorRequired": "De dhíth",
-  "notYetSet": "Níl socraithe fós",
   "waTooltip": "Úsáid L2 gan chabhair",
-  "languageSettings": "Socruithe Teanga",
   "interactiveTranslator": "Cabhair Aistriúcháin",
   "noIdenticalLanguages": "Roghnaigh le do thoil teangacha bunúsacha agus spriocdhírithe difriúla",
-  "searchBy": "Cuardaigh de réir tír agus teangacha",
   "joinWithClassCode": "Cláraigh leis an gcód rang",
   "languageLevelPreA1": "Novice Low (Pre A1)",
   "languageLevelA1": "Novice Mid (A1)",
@@ -3544,8 +3202,6 @@
   "languageLevelC2": "Sár (C2)",
   "changeTheNameOfTheClass": "Athraigh an t-ainm",
   "changeTheNameOfTheChat": "Athraigh ainm an chomhrá",
-  "sorryNoResults": "Tá brón orm, níl torthaí ar fáil.",
-  "ignoreInThisText": "Déan neamhaird",
   "needsItMessage": "Fan, níl sé {targetLanguage}! An bhfuil uait cabhair le haistriúchán?",
   "countryInformation": "Mo thír",
   "targetLanguage": "Teanga Sprioc",
@@ -3557,10 +3213,8 @@
   "publicProfileDesc": "Trí chumasú, ligfidh tú do dhaoine eile do phróifíl a fháil sa bharra cuardaigh domhanda agus iarratais a sheoladh chun comhrá. Sa phointe seo, is féidir leat glacadh nó diúltú leis an iarratas.",
   "errorDisableIT": "Tá cabhair aistriúcháin dícheangailte.",
   "errorDisableIGC": "Tá cabhair gramadála dícheangailte.",
-  "errorDisableLanguageAssistance": "Tá cabhair aistriúcháin agus cabhair gramadála dícheangailte.",
   "errorDisableITUserDesc": "Cliceáil anseo chun socruithe cabhrach aistriúcháin a nuashonrú",
   "errorDisableIGCUserDesc": "Cliceáil anseo chun socruithe cabhrach gramadála a nuashonrú",
-  "errorDisableLanguageAssistanceUserDesc": "Cliceáil anseo chun socruithe cabhrach aistriúcháin agus gramadála a nuashonrú",
   "errorDisableITClassDesc": "Tá cabhair aistriúcháin dícheangailte don chúrsa ina bhfuil an comhrá seo.",
   "errorDisableIGCClassDesc": "Tá cabhair gramadála dícheangailte don chúrsa ina bhfuil an comhrá seo.",
   "error405Title": "Níor socraíodh teangacha",
@@ -3605,9 +3259,7 @@
   "notAvailable": "Níl sé ar fáil",
   "taAndGaTooltip": "Úsáid L2 le cabhair aistriúcháin agus cabhair gramadála",
   "definitionsToolName": "Sainmhínithe Focal",
-  "messageTranslationsToolName": "Aistriúcháin Teachtaireachtaí",
   "definitionsToolDescription": "Nuair a bhíonn sé cumasaithe, is féidir cliceáil ar fhocail faoi bhun línte gorma le haghaidh sainmhínithe. Cliceáil ar theachtaireachtaí chun rochtain a fháil ar shainmhínithe.",
-  "translationsToolDescrption": "Nuair a bhíonn sé cumasaithe, cliceáil ar theachtaireacht agus ar an ngrian aistriúcháin chun teachtaireacht i do theanga bhunúsach a fheiceáil.",
   "welcomeBack": "Fáilte ar ais! Mura raibh tú rannpháirteach sa phainéal 2023-2024, déan teagmháil linn le haghaidh do shíntiús speisialta. Má tá tú múinteoir a cheannaigh ceadúnas do do rang, déan teagmháil linn le haghaidh do shíntiús múinteora.",
   "downloadTxtFile": "Íoslódáil Comhad Téacs",
   "downloadCSVFile": "Íoslódáil Comhad CSV",
@@ -3881,10 +3533,8 @@
   "definitionDefaultPrompt": "Cad is brí leis an bhfocal seo?",
   "practiceDefaultPrompt": "Cad é an freagra is fearr?",
   "correctionDefaultPrompt": "Cad é an ionad ceart?",
-  "acceptSelection": "Glac Leasú",
   "why": "Cén fáth?",
   "definition": "Sainmhíniú",
-  "exampleSentence": "Sampla Abairt",
   "reportToTeacher": "Cé acu mhaith leat tuairisciú a dhéanamh ar an teachtaireacht seo?",
   "reportMessageTitle": "Tá {reportingUserId} tuairisciú ar theachtaireacht ó {reportedUserId} sa chomhrá {roomName}",
   "reportMessageBody": "Teachtaireacht: {reportedMessage}\nCúis: {reason}",
@@ -3896,27 +3546,20 @@
   "clickToManageSubscription": "Cliceáil anseo chun do shíntiús a bhainistiú.",
   "signUp": "Cláraigh",
   "pleaseChooseAtLeastChars": "Roghnaigh ar a laghad {min} carachtar.",
-  "noEmailWarning": "Cuir isteach seoladh ríomhphoist bailí. Murach sin ní bheidh tú in ann do phasfhocal a athshocrú. Mura n-uaill, brúigh arís ar an gcnaipe chun leanúint ar aghaidh.",
   "pleaseEnterValidEmail": "Cuir isteach seoladh ríomhphoist bailí.",
   "pleaseChooseAUsername": "Roghnaigh ainm úsáideora le do thoil",
-  "define": "Sainmhínigh",
   "listen": "Éist",
   "trialPeriodExpired": "Tá do thriail imithe",
   "translations": "aistriúcháin",
-  "messageAudio": "fuaim an teachtaireachta",
   "definitions": "sainmhíniú",
   "subscribedToUnlockTools": "Cláraigh chun aistriúchán idirghníomhach agus seiceáil gramadach, fuaimrian, gníomhaíochtaí cleachtadh pearsanta, agus anailísíocht foghlama a fháil!",
   "translationTooltip": "Aistriú",
-  "speechToTextTooltip": "Trascríobh",
   "kickBotWarning": "Beidh sé i gceist le buille Pangea Bot an bot comhrá a bhaint den chomhrá seo.",
   "refresh": "Athnuachan",
-  "messageAnalytics": "Anailís ar Theachtaireachtaí",
   "words": "Focail",
   "score": "Scór",
   "accuracy": "Beachtas",
   "points": "Pointí",
-  "noPaymentInfo": "Níl aon eolas íocaíochta de dhíth!",
-  "updatePhoneOS": "D'fhéadfadh go mbeadh ort do leagan OS a nuashonrú ar do ghléas.",
   "wordsPerMinute": "Focail in aghaidh na nóimead",
   "tooltipInstructionsTitle": "Níl tú cinnte cad a dhéanann sé sin?",
   "tooltipInstructionsMobileBody": "Bain agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
@@ -3926,11 +3569,8 @@
   "chatCapacityHasBeenChanged": "Athraíodh cumas an chomhrá",
   "chatCapacitySetTooLow": "Ní mór do chumas an chomhrá a bheith ar a laghad {count}.",
   "chatCapacityExplanation": "Cuireann cumas an chomhrá teorainn ar líon na mbaill a cheadaítear i gcomhrá.",
-  "tooManyRequest": "Rogha ró-ard, déan iarracht arís níos déanaí.",
   "enterNumber": "Cuir luach uimhriúil iomlán isteach le do thoil.",
-  "buildTranslation": "Tóg do aistriúchán ó na roghanna thuas",
   "practice": "Cleachtadh",
-  "noLanguagesSet": "Níl aon teangacha socraithe",
   "speechToTextBody": "Maidir le teachtaireachtaí gutha, is féidir leat trascríobh a fheiceáil chomh maith le scór Focal in aghaidh an Nóiméidí an chainteora.",
   "versionNotFound": "Níor aimsíodh leagan",
   "fetchingVersion": "Ag fáil leagan...",
@@ -3949,10 +3589,7 @@
   "grammar": "Gairme",
   "contactHasBeenInvitedToTheChat": "Tá teagmháil tugtha cuireadh don chomhrá",
   "inviteChat": "Glaoigh ar comhrá",
-  "chatName": "Ainm an chomhrá",
-  "reportContentIssueTitle": "Tuairisc a thabhairt ar fhadhb ábhar",
   "feedback": "Aiseolas roghnach",
-  "reportContentIssueDescription": "Á, a Dhia! Is féidir le AI taithí foghlama phearsantaithe a sholáthar ach... déanann sé halóga freisin. Tabhair aon aiseolas atá agat agus déanfaimid iarracht arís.",
   "clickTheWordAgainToDeselect": "Cliceáil ar an bhfocal roghnaithe chun é a dhí-roghnú.",
   "l2SupportNa": "Níl sé ar fáil",
   "l2SupportAlpha": "Ailf",
@@ -3960,7 +3597,6 @@
   "l2SupportFull": "Lán",
   "missingVoiceTitle": "Guth ar iarraidh",
   "voiceNotAvailable": "Níl guth suiteáilte agat don teanga seo.",
-  "openVoiceSettings": "Oscail socruithe gutha",
   "playAudio": "Seinn",
   "stop": "Stop",
   "grammarCopyPOSsconj": "Conjuncáid Fho-choibhneasta",
@@ -4183,9 +3819,6 @@
   "grammarCopyTENSE": "Am",
   "grammarCopyVERBFORM": "Foirm Briathar",
   "grammarCopyCONJTYPE": "Cineál Aontraithe",
-  "grammarCopySPC": "Sonraíocht",
-  "grammarCopyPARTTYPE": "Cineál Rannpháirtíochta",
-  "grammarCopyINTREL": "Ceist-Relatív",
   "grammarCopyUNKNOWN": "Dáiríre",
   "grammarCopyNUMBERPSOR": "Uimhir an Úinéara",
   "grammarCopyPOSS": "Seilbh",
@@ -4239,8 +3872,6 @@
   "downloadGroupText": "Íoslódáil téacs an ghrúpa",
   "notificationsOn": "Fógraí ar siúl",
   "notificationsOff": "Fógraí as",
-  "createChatAndInviteUsers": "Cruthaigh comhrá agus cuireadh a thabhairt do úsáideoirí",
-  "updatedNewSpaceDescription": "Ligeann cúrsaí duit do chomhráite a chur le chéile agus pobail phríobháideacha nó phoiblí a thógáil.",
   "joinWithCode": "Bí páirteach le cód",
   "enterCodeToJoin": "Cuir isteach an cód chun páirt a ghlacadh",
   "updateNow": "Nuashonraigh anois",
@@ -4281,13 +3912,11 @@
   "iWantToLearn": "Ba mhaith liom foghlaim",
   "pleaseEnterEmail": "Cuir isteach seoladh ríomhphoist bailí le do thoil.",
   "myBaseLanguage": "Mo theanga bhunúsach",
-  "meaningSectionHeader": "Ciall:",
   "formSectionHeader": "Foirmiúlachtaí a úsáidtear i gcomhráite:",
   "writingExercisesTooltip": "Scríobh",
   "listeningExercisesTooltip": "Éisteacht",
   "readingExercisesTooltip": "Léamh",
   "meaningNotFound": "Níor féidir an ciall a fháil.",
-  "chooseBaseForm": "Roghnaigh an fhoirm bhunúsach",
   "notTheCodeError": "Tá brón orm, ní é sin an cód!",
   "totalXP": "Gach XP",
   "numLemmas": "Líon iomlán na lemmas",
@@ -4317,13 +3946,11 @@
   "analyticsNotAvailable": "Ní féidir anailís úsáideora a fháil",
   "downloading": "Ag íoslódáil...",
   "failedFetchUserAnalytics": "Níor éirigh le híoslódáil anailís úsáideora",
-  "downloadComplete": "Críochnaithe an t-íoslódáil!",
   "whatIsTheMorphTag": "Cad é an {morphologicalFeature} de '{wordForm}'?",
   "dataAvailable": "Fáil ar shonraí",
   "available": "Ar fáil",
   "pangeaBotIsFallible": "Tá bot Pangea bréagach freisin!",
   "whatIsMeaning": "Cad is brí le '{lemma}'?",
-  "pickAnEmoji": "Cad é an emoji is fearr leat do '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Comhoiriúnigh bríonna leis na focail sa teachtaireacht!",
   "doubleClickToEdit": "Cliceáil dé-uaire chun eagarthóireacht.",
   "activityPlannerTitle": "Pleanálaí Gníomhaíochta",
@@ -4352,7 +3979,6 @@
   "constructUseCorMmDesc": "Brí teachtaireachta ceart",
   "constructUseIncMmDesc": "Brí teachtaireachta mícheart",
   "constructUseIgnMmDesc": "Brí teachtaireachta neamhaird",
-  "clickForMeaningActivity": "Cliceáil anseo le haghaidh Dúshlán Brí",
   "meaning": "Brí",
   "chatWith": "Grúpa le {displayname}",
   "clickOnEmailLink": "Cliceáil ar an nasc san r-phost le do thoil agus lean ar aghaidh.\n\nSeiceáil do chliabh spam má tá an r-phost fós gan teacht.",
@@ -4392,16 +4018,13 @@
   "home": "Baile",
   "join": "Bí páirteach",
   "readingAssistanceOverviewBody": "Cliceáil ar na cnaipeanna thíos le haghaidh cluichí beaga ar mheaitseáil íomhánna, fuaimeanna, brí na bhfocail, agus coincheapa gramadaí. Nó cliceáil ar aon fhocal le haghaidh sonraí.",
-  "levelSummaryPopupTitle": "Achoimre leibhéal {level}",
   "resetInstructionTooltipsTitle": "Athshocraigh na téacsleabhair treorach",
   "resetInstructionTooltipsDesc": "Cliceáil chun na téacsleabhair treorach a thaispeáint ar nós do úsáideoir nua.",
-  "selectForGrammar": "Roghnaigh deilbhín gramadach le haghaidh gníomhaíochtaí agus sonraí.",
   "randomize": "Randamach",
   "clear": "Glan",
   "makeYourOwnActivity": "Cruthaigh do ghnó féin",
   "featuredActivities": "Réamh-mholta",
   "save": "Sábháil",
-  "startChat": "Tosaigh comhrá",
   "translationProblem": "Fadhb aistriúcháin",
   "askToJoin": "Iarr le bheith páirteach",
   "emptyChatWarningTitle": "Tá an comhrá folamh",
@@ -4421,7 +4044,6 @@
   "languageLevelC2Desc": "Is féidir liom beagnach gach rud a chloisteáil nó a léamh a thuiscint agus mé féin a chur in iúl go líofa agus go cruinn.",
   "newVocab": "Focail nua",
   "newGrammar": "Coincheapa gramadaí nua",
-  "choosePracticeMode": "Cliceáil ar cheann de na cnaipeanna thuas chun gníomhaíocht chleachtadh a thosú",
   "ban": "Cosaint",
   "unban": "Fuaireann",
   "kick": "Cuir as",
@@ -4433,7 +4055,6 @@
   "timesUsedIndependently": "Uaireanta úsáide go neamhspleách",
   "timesUsedWithAssistance": "Uaireanta úsáide le cabhair",
   "shareInviteCode": "Roinn cód cuireadh: {code}",
-  "leaderboard": "Bord na n-iomaitheoirí",
   "skipForNow": "Scipeáil faoi láthair",
   "permissions": "Ceadanna",
   "spaceChildPermission": "Cé hiad is féidir leo cuntais nua a chur leis an gcúrsa seo",
@@ -4442,7 +4063,6 @@
   "deleteChatDesc": "An bhfuil tú cinnte gur mhaith leat an comhrá seo a scriosadh? Scriosfar é do gach rannpháirtí agus ní bheidh aon teachtaireachtaí laistigh den chomhrá ar fáil níos mó le haghaidh cleachtadh nó anailís foghlama.",
   "deleteSpaceDesc": "Scriosfar an cúrsa agus aon chomhrá roghnaithe do gach rannpháirtí agus ní bheidh aon teachtaireachtaí laistigh den chomhrá ar fáil níos mó le haghaidh cleachtadh nó anailís foghlama. Ní féidir an gníomh seo a chur ar ceal.",
   "launch": "Seol",
-  "searchChats": "Cuardaigh comhráite",
   "maxFifty": "Max 50",
   "configureSpace": "Cumraigh cúrsa",
   "pinMessages": "Greamaigh teachtaireachtaí",
@@ -4467,13 +4087,10 @@
   "canBeFoundViaInvitation": "• cuireadh",
   "canBeFoundViaCodeOrLink": "• cód nó nasc",
   "canBeFoundViaKnock": "• iarratas chun páirt a ghlacadh agus ceadú riarthóra",
-  "youHaveLeveledUp": "Tá tú tar éis leibhéal a bhaint amach!",
   "sendActivities": "Seol gníomhaíochtaí",
-  "groupChat": "Comhrá Grúpa",
   "directMessage": "Teachtaireacht Dhíreach",
   "newDirectMessage": "Teachtaireacht Dhíreach Nua",
   "speakingExercisesTooltip": "Ag labhairt",
-  "noChatsFoundHereYet": "Níl comhráite le fáil anseo go fóill",
   "duration": "Fad",
   "transcriptionFailed": "Theip ar an taifeadadh fuaime a tharchur",
   "aUserIsKnocking": "Tá úsáideoir ag iarraidh dul isteach i do chúrsa",
@@ -4483,7 +4100,6 @@
   "regenerate": "Athghiniúint",
   "mySavedActivities": "Mo Gníomhaíochtaí Sábháilte",
   "noSavedActivities": "Níl aon ghníomhaíochtaí sábáilte",
-  "saveActivity": "Sábháil an gníomhaíocht seo",
   "failedToPlayVideo": "Theip ar sheinm an fhíseáin",
   "done": "Déanta",
   "inThisSpace": "Sa chúrsa seo",
@@ -4501,12 +4117,10 @@
   "errorFetchingDefinition": "Theip ar fáil an sainmhíniú",
   "errorProcessAnalytics": "Theip ar phróiseáil anailíseachtaí",
   "errorDownloading": "Theip ar iarraidh",
-  "errorFetchingLevelSummary": "Theip ar fáilchur achoimre leibhéal",
   "errorLoadingSpaceChildren": "Theip ar luchtú comhráite laistigh den chúrsa seo",
   "unexpectedError": "Earráid neamhshocraithe.",
   "pleaseReload": "Le do thoil, luchtigh arís agus bain triail eile astu.",
   "translationError": "Earráid aistriúcháin",
-  "errorFetchingTranslation": "Theip ar fáilchur an aistriúcháin",
   "errorFetchingActivity": "Theip ar fáilchur an ghníomhaíochta",
   "check": "Seiceáil",
   "unableToFindRoom": "Níor aimsíodh comhrá nó cúrsa leis an gcód sin. Déan iarracht arís le do thoil.",
@@ -4522,17 +4136,14 @@
   "maximumActivityParticipants": "Is féidir le gach Gníomhaíocht a bheith ag max {count} rannpháirtí.",
   "pending": "Iontach",
   "inactive": "Neamhghníomhach",
-  "confirmRole": "Deimhnigh ról",
   "openRoleLabel": "OSCAIL",
   "joinedTheActivity": "👋 {username} d'fháiltigh isteach mar {role}",
   "finishedTheActivity": "🎯 {username} chríochnaigh an gníomhaíocht seo",
-  "archiveToAnalytics": "Cuir leis na Gníomhaíochtaí Críochnaithe agam",
   "activitySummaryError": "Ní féidir achoimrigh gníomhaíochta a fháil",
   "requestSummaries": "Iarr achoimrigh",
   "generatingNewActivities": "Is tú an chéad úsáideoir den phair teanga seo! Tabhair cúpla nóiméad dúinn, táimid ag ullmhú gníomhaíochtaí díreach duitse.",
   "requestAccessTitle": "An bhfuil tú ag iarraidh rochtain ar an anailís?",
   "requestAccessDesc": "Ar mhaith leat rochtain a fháil chun anailísíocht rannpháirtithe a fheiceáil?\n\nMura n-aontaíonn rannpháirtithe, beidh na riarthóirí den chúrsa seo in ann a fheiceáil:\n    • an t-uimhir fhoclóra iomlán\n    • na coincheapa gramadaí iomlána\n    • na seisiúin gníomhaíochta iomlána a chríochnaigh\n    • na coincheapa gramadaí sonracha a úsáid, i gceart agus i gceart mícheart\n\nNí bheidh siad in ann a fheiceáil:\n    • teachtaireachtaí i gcomhráite lasmuigh den chúrsa\n    • liosta fhoclóra",
-  "requestAccess": "Iarr rochtain ({count})",
   "analyticsInactiveTitle": "Níor féidir iarratais ar úsáideoirí neamhghníomhacha a sheoladh",
   "analyticsInactiveDesc": "Ní fheicfidh úsáideoirí neamhghníomhacha nach ndearna siad logáil isteach ó thús na gné seo do do iarratas.\n\nTiocfaidh an cnaipe Iarr ar ais nuair a bheidh siad ar ais. Is féidir leat an iarraidh a sheoladh arís níos déanaí trí chliceáil ar an gcnaipe Iarr ar ais faoi a n-ainm nuair a bheidh sé ar fáil.",
   "accessRequestedTitle": "Iarratas ar rochtain ar anailísí",
@@ -4557,7 +4168,6 @@
   "deleteDesc": "Ní féidir le haon riarthóirí cúrsa a scriosadh ach amháin. Is gníomh díobhálach é seo a bhaint go léir na húsáideoirí agus a scriosadh na comhráite uile roghnaithe laistigh den chúrsa. Bí cúramach le do thoil.",
   "noCourseFound": "Ó, tá gá le plean don chúrsa seo!\n\nIs sraith téacs agus gníomhaíochtaí comhrá iad pleananna cúrsa.",
   "additionalParticipants": "+ {num} eile",
-  "directMessages": "Teachtaireachtaí Díreacha",
   "whatNow": "Cad atá le déanamh anois?",
   "chooseNextActivity": "Roghnaigh do chéad ghníomhaíocht eile!",
   "letsGo": "Téimis",
@@ -4594,7 +4204,6 @@
   "activityNeedsMembers": "Ó, a chreach! Tá gá le {num} níos mó daoine don ghníomhaíocht seo.",
   "inviteFriendsToCourse": "Cuireadh a thabhairt do chairde chuig mo chúrsa",
   "subscribeToUnlockActivitySummaries": "Cláraigh chun achoimre ar ghníomhaíochtaí a dhíghlasáil",
-  "subscribeToUnlockDefinitions": "Cláraigh chun sainmhínnií a dhíghlasáil",
   "subscribeToUnlockTranscriptions": "Cláraigh chun trascríbhinní a dhíghlasáil",
   "pingSent": "Seoladh ping cúrsa! 🔔",
   "courseTitle": "Teideal an chúrsa",
@@ -4605,7 +4214,6 @@
   "loginToAccount": "Logáil isteach i mo chuntas",
   "appDescription": "Foghlaim teanga\nag an am céanna le do chairde.",
   "languages": "Teangacha",
-  "chooseLanguage": "Roghnaigh teanga sprioc.",
   "planTrip": "Pleanáil do thuras",
   "howAreYouTraveling": "Conas atá tú ag taisteal?",
   "unlockPrivateTrip": "Díghlasáil turas príobháideach",
@@ -4659,18 +4267,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -4687,10 +4283,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -4699,27 +4291,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -4728,10 +4304,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -4772,14 +4344,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -4831,19 +4395,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5023,15 +4579,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6145,19 +5693,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6230,19 +5770,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6258,10 +5790,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6274,19 +5802,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6303,14 +5823,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6354,23 +5866,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6453,19 +5953,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6494,10 +5982,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7389,18 +6873,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7617,14 +7089,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -7792,10 +7256,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -7813,10 +7273,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -7936,10 +7392,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -7964,14 +7416,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8088,10 +7532,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8263,23 +7703,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8300,10 +7728,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8383,10 +7807,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8435,10 +7855,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8468,10 +7884,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8571,15 +7983,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8592,10 +7996,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8636,10 +8036,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8719,10 +8115,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -8736,10 +8128,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -8814,10 +8202,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -8841,10 +8225,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -8864,14 +8244,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -8987,10 +8359,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9153,10 +8521,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9194,10 +8558,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9401,7 +8761,6 @@
   "addCourse": "Cuir cúrsa leis",
   "joinPublicCourse": "Cláraigh i gcúrsa poiblí",
   "vocabLevelsDesc": "Seo áit a dtéann focail fhocail a bhfuil leibhéal acu nuair a dhéantar iad a leibhéalú!",
-  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10630,13 +9989,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Theip ar an aiseolas a luchtú.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Tiocfaidh gníomhaíochtaí anseo nuair a bheidh siad críochnaithe agus sábháilte.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -10652,11 +10006,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Críochnaíodh an gníomhaíocht chleachtais",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10713,11 +10062,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Ní comhoiriúnach do theanga sprioc le haghaidh an teachtaireachta seo. An nuashonraigh do theanga sprioc?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -10763,12 +10107,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Tá na huirlisí foghlama dí-úsáidte do theachtaireachtaí nach bhfuil i do theanga sprioc.",
-  "vocabEmoji": "Emoji foclóra",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10816,16 +10155,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Diúltaíodh an cead. Gníomhachtaigh ceadanna taifeadta chun teachtaireachtaí guth a thaifeadadh.",
-  "genericWebRecordingError": "Tharla rud éigin mícheart. Molaimid úsáid a bhaint as brabhsálaí Chrome nuair a bhíonn teachtaireachtaí á gcur ar taifead.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Chun an taithí is fearr a fháil ag úsáid an iarratais seo, le do thoil leathnaigh do mhéid scáileáin.",
   "@screenSizeWarning": {
     "type": "String",
@@ -10848,11 +10177,8 @@
   "constructUseBonus": "Bónas le linn cleachtaidh foclóra",
   "practiceVocab": "Cleachtadh foclóra",
   "selectMeaning": "Roghnaigh an bhrí",
-  "selectAudio": "Roghnaigh an chluastuiscint comhoiriúnach",
   "congratulations": "Comhghairdeas!",
   "anotherRound": "Ciorcal eile",
-  "noActivityRequest": "Níl aon iarratas gníomhaíochta reatha.",
-  "mustHave10Words": "Caithfidh go mbeidh 10 focal le haghaidh cleachtaidh agat ar a laghad. Bain triail as labhairt le cara nó le Pangea Bot chun tuilleadh a fháil amach!",
   "botSettings": "Socruithe an Bhot",
   "activitySettingsOverrideWarning": "Teanga agus leibhéal teanga a chinneadh de réir plean gníomhaíochta",
   "voice": "Guth",
@@ -10884,23 +10210,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -10992,18 +10306,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "An bhfuil cód cuireadh nó nasc agat do chúrsa poiblí?",
-  "welcomeUser": "Fáilte {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Cuardaigh úsáideoirí le cuireadh a thabhairt dóibh chuig an gcomhrá seo.",
   "publicInviteDescSpace": "Cuardaigh úsáideoirí le cuireadh a thabhairt dóibh chuig an spás seo.",
@@ -11385,7 +10690,6 @@
   "playConversationGames": "Imir cluichí comhrá leis an mbot, le do chomhoibrithe, agus le cairde nua!",
   "jumpIntoConversation": "Léim isteach i gcomhrá ó Lá a hAon le huirlisí scríbhneoireachta AI!",
   "playPersonalizedGames": "Imir cluichí cleachtais pearsantaithe do do fhoclóir agus do riachtanais ghramadaí!",
-  "learnLanguageWhileTexting": "Foghlaim teanga agus tú ag téacsáil do chairde!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11407,10 +10711,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

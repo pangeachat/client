@@ -109,18 +109,6 @@
       }
     }
   },
-  "badServerVersionsException": "Serwer obsługuje wersje Spec:\n{serverVersions}\nAle aplikacja obsługuje tylko {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "banFromChat": "Ban w czacie",
   "@banFromChat": {
     "type": "String",
@@ -150,11 +138,6 @@
   },
   "blocked": "Zablokowane",
   "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Wiadomości botów",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -483,16 +466,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Zawiera nazwę wyświetlaną",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsUserName": "Zawiera nazwę użytkownika",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "copiedToClipboard": "Skopiowano do schowka",
   "@copiedToClipboard": {
     "type": "String",
@@ -558,33 +531,6 @@
         "type": "String"
       },
       "timeOfDay": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{month}-{day}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{day}.{month}.{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
         "type": "String"
       }
     }
@@ -679,11 +625,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "emoteWarnNeedToPick": "Musisz wybrać kod emotikonu oraz obraz!",
-  "@emoteWarnNeedToPick": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emptyChat": "Pusty czat",
   "@emptyChat": {
     "type": "String",
@@ -728,11 +669,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "enterYourHomeserver": "Wpisz swój serwer domowy",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "everythingReady": "Wszystko gotowe!",
   "@everythingReady": {
     "type": "String",
@@ -760,11 +696,6 @@
   },
   "fromTheInvitation": "Od zaproszenia",
   "@fromTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Przejdź do nowego pokoju",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -826,11 +757,6 @@
   },
   "id": "Identyfikator",
   "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Tożsamość",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -969,11 +895,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Licencja",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "lightTheme": "Jasny",
   "@lightTheme": {
     "type": "String",
@@ -1014,11 +935,6 @@
   },
   "logout": "Wyloguj się",
   "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Zmiany członków",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1102,11 +1018,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "notificationsEnabledForThisAccount": "Powiadomienia są włączone dla tego konta",
-  "@notificationsEnabledForThisAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
   "oopsSomethingWentWrong": "Ojej! Coś poszło nie tak…",
   "@oopsSomethingWentWrong": {
     "type": "String",
@@ -1129,11 +1040,6 @@
   },
   "passwordHasBeenChanged": "Hasło zostało zmienione",
   "@passwordHasBeenChanged": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "people": "Osoby",
-  "@people": {
     "type": "String",
     "placeholders": {}
   },
@@ -1228,11 +1134,6 @@
       }
     }
   },
-  "removeDevice": "Usuń urządzenie",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Odbanuj w czacie",
   "@unbanFromChat": {
     "type": "String",
@@ -1252,15 +1153,6 @@
   "@roomVersion": {
     "type": "String",
     "placeholders": {}
-  },
-  "seenByUser": "Zobaczone przez {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
   },
   "send": "Wyślij",
   "@send": {
@@ -1329,11 +1221,6 @@
   },
   "setAsCanonicalAlias": "Ustaw jako główny alias",
   "@setAsCanonicalAlias": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Ustaw link z zaproszeniem",
-  "@setInvitationLink": {
     "type": "String",
     "placeholders": {}
   },
@@ -1442,15 +1329,6 @@
   "@unpin": {
     "type": "String",
     "placeholders": {}
-  },
-  "unreadChats": "{unreadCount, plural, =1{1 unread chat} other{{unreadCount} unread chats}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
   },
   "userAndOthersAreTyping": "{username} oraz {count} pozostałych pisze…",
   "@userAndOthersAreTyping": {
@@ -1679,16 +1557,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "sendOriginal": "Wyślij oryginał",
-  "@sendOriginal": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Wyślij naklejkę",
-  "@sendSticker": {
-    "type": "String",
-    "placeholders": {}
-  },
   "sendVideo": "Wyślij film",
   "@sendVideo": {
     "type": "String",
@@ -1789,15 +1657,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleFavorite": "Przełącz ulubione",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
   "yourChatBackupHasBeenSetUp": "Kopia zapasowa Twojego czatu została ustawiona.",
   "@yourChatBackupHasBeenSetUp": {},
-  "chatHasBeenAddedToThisSpace": "Czat został dodany do tej przestrzeni",
-  "@chatHasBeenAddedToThisSpace": {},
   "contentHasBeenReported": "Treść została zgłoszona administratorom serwera",
   "@contentHasBeenReported": {
     "type": "String",
@@ -1853,11 +1714,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "setCustomEmotes": "Ustaw niestandardowe emotikony",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
   "withTheseAddressesRecoveryDescription": "Dzięki tym adresom możesz odzyskać swoje hasło.",
   "@withTheseAddressesRecoveryDescription": {
     "type": "String",
@@ -1873,11 +1729,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "setPermissionsLevel": "Ustaw poziom uprawnień",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "skip": "Pomiń",
   "@skip": {
     "type": "String",
@@ -1888,23 +1739,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleMuted": "Przełącz wyciszone",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "Oznacz przeczytane/nieprzeczytane",
-  "@toggleUnread": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unavailable": "Niedostępne",
   "@unavailable": {
     "type": "String",
     "placeholders": {}
   },
-  "publish": "Opublikuj",
-  "@publish": {},
   "scanQrCode": "Skanuj kod QR",
   "@scanQrCode": {},
   "createNewSpace": "Nowa przestrzeń",
@@ -2069,13 +1908,6 @@
       }
     }
   },
-  "singlesignon": "Pojedyncze logowanie",
-  "@singlesignon": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "startFirstChat": "Rozpocznij swój pierwszy czat",
-  "@startFirstChat": {},
   "verifyStart": "Rozpocznij weryfikację",
   "@verifyStart": {
     "type": "String",
@@ -2104,19 +1936,6 @@
   "@start": {},
   "pleaseEnterRecoveryKeyDescription": "Aby odblokować wcześniejsze wiadomości, wprowadź swój klucz odzyskiwania, który został wygenerowany w poprzedniej sesji. Twój klucz odzyskiwania NIE jest Twoim hasłem.",
   "@pleaseEnterRecoveryKeyDescription": {},
-  "videoWithSize": "Film ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
-  "hydrateTorLong": "Czy ostatnio eksportowałeś/-aś swoją sesję na TOR? Szybko ją zaimportuj i kontynuuj rozmowy.",
-  "@hydrateTorLong": {},
-  "dehydrateTorLong": "W przypadku użytkowników sieci TOR zaleca się eksportowanie sesji przed zamknięciem okna.",
-  "@dehydrateTorLong": {},
   "hydrate": "Przywracanie z pliku kopii zapasowej",
   "@hydrate": {},
   "noMatrixServer": "{server1} nie jest serwerem Matriksa, czy chcesz zamiast niego użyć {server2}?",
@@ -2131,8 +1950,6 @@
       }
     }
   },
-  "hydrateTor": "Użytkownicy TOR: Importuj eksport sesji",
-  "@hydrateTor": {},
   "numUsersTyping": "{count} użytkowników pisze…",
   "@numUsersTyping": {
     "type": "String",
@@ -2147,8 +1964,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "pleaseEnterRecoveryKey": "Wprowadź swój klucz odzyskiwania:",
-  "@pleaseEnterRecoveryKey": {},
   "submit": "Odeślij",
   "@submit": {
     "type": "String",
@@ -2184,8 +1999,6 @@
   },
   "openChat": "Otwórz czat",
   "@openChat": {},
-  "addToSpaceDescription": "Wybierz przestrzeń, do której ten czat ma być dodany.",
-  "@addToSpaceDescription": {},
   "supposedMxid": "To powinno być {mxid}",
   "@supposedMxid": {
     "type": "String",
@@ -2210,8 +2023,6 @@
   "@dehydrate": {},
   "dehydrateWarning": "Tego nie można cofnąć. Upewnij się, że plik kopii zapasowej jest bezpiecznie przechowywany.",
   "@dehydrateWarning": {},
-  "dehydrateTor": "Użytkownicy TOR: Eksportuj sesję",
-  "@dehydrateTor": {},
   "unsupportedAndroidVersion": "Nieobsługiwana wersja systemu Android",
   "@unsupportedAndroidVersion": {},
   "widgetCustom": "Własny",
@@ -2268,14 +2079,10 @@
   "@deviceKeys": {},
   "emailOrUsername": "Adres e-mail lub nazwa użytkownika",
   "@emailOrUsername": {},
-  "indexedDbErrorLong": "Przechowywanie wiadomości niestety nie jest domyślnie włączone w trybie prywatnym.\nOdwiedź\n - about:config\n - ustaw dom.indexedDB.privateBrowsing.enabled na true\nW przeciwnym razie nie jest możliwe uruchomienie FluffyChat.",
-  "@indexedDbErrorLong": {},
   "saveKeyManuallyDescription": "Zapisz ten klucz ręcznie, uruchamiając systemowe okno dialogowe udostępniania lub schowek.",
   "@saveKeyManuallyDescription": {},
   "screenSharingTitle": "udostępnianie ekranu",
   "@screenSharingTitle": {},
-  "appearOnTopDetails": "Umożliwia wyświetlanie aplikacji nad innymi (nie jest to konieczne, jeśli FluffyChat jest już ustawiony jako konto do dzwonienia)",
-  "@appearOnTopDetails": {},
   "noKeyForThisMessage": "Może się to zdarzyć, jeśli wiadomość została wysłana przed zalogowaniem się na to konto na tym urządzeniu.\n\nMożliwe jest również, że nadawca zablokował Twoje urządzenie lub coś poszło nie tak z połączeniem internetowym.\n\nJesteś w stanie odczytać wiadomość na innej sesji? W takim razie możesz przenieść z niej wiadomość! Wejdź w Ustawienia > Urządzenia i upewnij się, że Twoje urządzenia zweryfikowały się wzajemnie. Gdy następnym razem otworzysz pokój i obie sesje będą włączone, klucze zostaną przekazane automatycznie.\n\nNie chcesz stracić kluczy podczas wylogowania lub przełączania urządzeń? Upewnij się, że w ustawieniach masz włączoną kopię zapasową czatu.",
   "@noKeyForThisMessage": {},
   "sorryThatsNotPossible": "Przepraszamy... to nie jest możliwe",
@@ -2284,8 +2091,6 @@
   "@noBackupWarning": {},
   "commandHint_googly": "Wyślij kręcące się oczka",
   "@commandHint_googly": {},
-  "callingPermissions": "Uprawnienia połączeń",
-  "@callingPermissions": {},
   "storeInAndroidKeystore": "Przechowaj w Android KeyStore",
   "@storeInAndroidKeystore": {},
   "commandHint_cuddle": "Wyślij przytulenie",
@@ -2343,21 +2148,6 @@
   "@videoCallsBetaWarning": {},
   "experimentalVideoCalls": "Eksperymentalne połączenia wideo",
   "@experimentalVideoCalls": {},
-  "indexedDbErrorTitle": "Problemy związane z trybem prywatnym",
-  "@indexedDbErrorTitle": {},
-  "switchToAccount": "Przełącz na konto {number}",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "nextAccount": "Następne konto",
-  "@nextAccount": {},
-  "previousAccount": "Poprzednie konto",
-  "@previousAccount": {},
   "addWidget": "Dodaj widżet",
   "@addWidget": {},
   "widgetVideo": "Film",
@@ -2430,33 +2220,10 @@
   "@foregroundServiceRunning": {},
   "screenSharingDetail": "Udostępniasz swój ekran w FluffyChat",
   "@screenSharingDetail": {},
-  "callingAccount": "Konto połączeń",
-  "@callingAccount": {},
-  "callingAccountDetails": "Pozwala FluffyChat używać natywnej aplikacji do wykonywania połączeń w Androidzie.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Wyświetlaj nad innymi",
-  "@appearOnTop": {},
-  "otherCallingPermissions": "Mikrofon, kamera i inne uprawnienia FluffyChat",
-  "@otherCallingPermissions": {},
   "whyIsThisMessageEncrypted": "Dlaczego nie można odczytać tej wiadomości?",
   "@whyIsThisMessageEncrypted": {},
-  "enterSpace": "Wejdź do przestrzeni",
-  "@enterSpace": {},
-  "enterRoom": "Wejdź do pokoju",
-  "@enterRoom": {},
   "allSpaces": "Wszystkie przestrzenie",
   "@allSpaces": {},
-  "numChats": "{number} czatów",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "hideUnimportantStateEvents": "Ukryj nieistotne wydarzenia stanu",
-  "@hideUnimportantStateEvents": {},
   "doNotShowAgain": "Nie pokazuj ponownie",
   "@doNotShowAgain": {},
   "wasDirectChatDisplayName": "Pusty czat (wcześniej {oldDisplayName})",
@@ -2497,11 +2264,6 @@
   "@removeFromBundle": {},
   "openLinkInBrowser": "Otwórz link w przeglądarce",
   "@openLinkInBrowser": {},
-  "allRooms": "Wszystkie czaty grupowe",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "reportErrorDescription": "😭 O nie! Coś poszło nie tak. Spróbuj ponownie później. Jeśli chcesz, możesz zgłosić ten błąd autorom programu.",
   "@reportErrorDescription": {},
   "setColorTheme": "Ustal styl kolorów:",
@@ -2516,8 +2278,6 @@
   "@invalidServerName": {},
   "chatPermissions": "Uprawnienia w czacie",
   "@chatPermissions": {},
-  "signInWithPassword": "Zaloguj się z hasłem",
-  "@signInWithPassword": {},
   "setChatDescription": "Ustaw opis czatu",
   "@setChatDescription": {},
   "importFromZipFile": "Zaimportuj z pliku .zip",
@@ -2535,8 +2295,6 @@
   "@optionalRedactReason": {},
   "exportEmotePack": "Eksportuj pakiet emotikonów jako .zip",
   "@exportEmotePack": {},
-  "inviteContactToGroupQuestion": "Czy chcesz zaprosić {contact} do czatu „{groupName}”?",
-  "@inviteContactToGroupQuestion": {},
   "redactedByBecause": "Usunięte przez {username} z powodu „{reason}”",
   "@redactedByBecause": {
     "type": "String",
@@ -2555,8 +2313,6 @@
   "@invalidInput": {},
   "report": "zgłoś",
   "@report": {},
-  "addChatDescription": "Dodaj opis tego czatu...",
-  "@addChatDescription": {},
   "directChat": "Czat bezpośredni",
   "@directChat": {},
   "wrongPinEntered": "Wprowadzono nieprawidłowy kod PIN! Spróbuj ponownie za {seconds} sekund...",
@@ -2572,8 +2328,6 @@
   "@sendTypingNotifications": {},
   "inviteGroupChat": "📨 Zaproszenie do rozmowy grupowej",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Zaproszenie do rozmowy prywatnej",
-  "@invitePrivateChat": {},
   "importEmojis": "Zaimportuj emotikony",
   "@importEmojis": {},
   "noChatDescriptionYet": "Nie utworzono jeszcze opisu czatu.",
@@ -2582,8 +2336,6 @@
   "@notAnImage": {},
   "chatDescriptionHasBeenChanged": "Zmieniono opis czatu",
   "@chatDescriptionHasBeenChanged": {},
-  "profileNotFound": "Nie można odnaleźć użytkownika na serwerze. Być może wystąpił problem z połączeniem lub użytkownik nie istnieje.",
-  "@profileNotFound": {},
   "shareInviteLink": "Udostępnij link z zaproszeniem",
   "@shareInviteLink": {},
   "emoteKeyboardNoRecents": "Tutaj pojawiają się ostatnio używane emotikony...",
@@ -2591,12 +2343,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "setTheme": "Ustaw wygląd:",
-  "@setTheme": {},
   "replace": "Zastąp",
   "@replace": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Spróbuj ponownie później lub wybierz inny serwer.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "createGroup": "Utwórz grupę",
   "@createGroup": {},
   "importNow": "Zaimportuj",
@@ -2609,8 +2357,6 @@
   "@blockedUsers": {},
   "blockUsername": "Ignoruj użytkownika",
   "@blockUsername": {},
-  "publicLink": "Link publiczny",
-  "@publicLink": {},
   "transparent": "Przezroczystość",
   "@transparent": {},
   "select": "Zaznacz",
@@ -2647,17 +2393,8 @@
   "@noChatsFoundHere": {},
   "hideRedactedMessagesBody": "Usunięte wiadomości nie będą widoczne w czacie.",
   "@hideRedactedMessagesBody": {},
-  "hideMemberChangesInPublicChats": "Ukryj zmiany członkostwa w publicznych czatach",
-  "@hideMemberChangesInPublicChats": {},
   "passwordRecoverySettings": "Ustawienia odzyskiwania hasła",
   "@passwordRecoverySettings": {},
-  "hideMemberChangesInPublicChatsBody": "W celu poprawienia czytelności, nie pokazuj w historii publicznego czatu, czy ktoś do niego dołączył lub go opuścił.",
-  "@hideMemberChangesInPublicChatsBody": {},
-  "presenceStyle": "Obecność:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "invitedBy": "Zaproszony/-a przez {user}",
   "@invitedBy": {
     "placeholders": {
@@ -2751,22 +2488,8 @@
       }
     }
   },
-  "noPublicLinkHasBeenCreatedYet": "Nie utworzono jeszcze żadnego publicznego linku",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "knock": "Zapukaj",
   "@knock": {},
-  "databaseBuildErrorBody": "Nie udało się utworzyć bazy danych SQLite. Aplikacja na razie spróbuje korzystać ze starej bazy. Prosimy zgłosić ten błąd autorom aplikacji na {url}. Treść błędu to: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "restoreSessionBody": "Aplikacja spróbuje teraz odzyskać Twoją sesję z kopii zapasowej. Prosimy zgłosić ten błąd autorom aplikacji na {url}. Treść błędu to: {error}",
   "@restoreSessionBody": {
     "type": "String",
@@ -2858,8 +2581,6 @@
       }
     }
   },
-  "welcomeText": "No cześć! 👋 Tutaj FluffyChat. Możesz zapisać się do dowolnego serwera domowego, kompatybilnego z https://matrix.org i rozmawiać ze wszystkimi. To duża zdecentralizowana sieć czatów!",
-  "@welcomeText": {},
   "blur": "Rozmazanie:",
   "@blur": {},
   "opacity": "Przezroczystość:",
@@ -2939,8 +2660,6 @@
   "@hideRedactedMessages": {},
   "hideInvalidOrUnknownMessageFormats": "Ukryj niepoprawne lub nieznane typy wiadomości",
   "@hideInvalidOrUnknownMessageFormats": {},
-  "notifyMeFor": "Powiadom mnie o",
-  "@notifyMeFor": {},
   "pushNotificationsNotAvailable": "Powiadomienia push nie są dostępne",
   "@pushNotificationsNotAvailable": {},
   "noUsersFoundWithQuery": "Niestety nie udało się nikogo znaleźć poprzez \"{query}\". Proszę sprawdzić, czy w zapytaniu nie ma literówek.",
@@ -3014,15 +2733,6 @@
       }
     }
   },
-  "forwardMessageTo": "Przekazać wiadomość do {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "publicChatAddresses": "Adresy publicznych czatów",
   "@publicChatAddresses": {},
   "createNewAddress": "Utwórz nowy adres",
@@ -3058,14 +2768,6 @@
   "@unbanUserDescription": {},
   "roomUpgradeDescription": "Czat zostanie przeniesiony do pokoju w nowej wersji. Wszyscy użytkownicy zostaną powiadomieni o konieczności dołączenia do nowego czatu. Możesz dowiedzieć się więcej o wersjach pokojów na https://spec.matrix.org/latest/rooms/",
   "@roomUpgradeDescription": {},
-  "userWouldLikeToChangeTheChat": "{user} chce dołączyć do czatu.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "requestedKeyVerification": "{sender} poprosił/-a o weryfikację kluczy",
   "@requestedKeyVerification": {
     "type": "String",
@@ -3077,14 +2779,6 @@
   },
   "changeGeneralChatSettings": "Zmień ogólne ustawienia czatu",
   "@changeGeneralChatSettings": {},
-  "youInvitedToBy": "Otrzymałeś/-aś link z zaproszeniem do:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
-        "type": "String"
-      }
-    }
-  },
   "verifyOtherUserDescription": "Jeśli zweryfikujesz innego użytkownika, możesz być pewien/-na z kim naprawdę piszesz. 💪\n\nKiedy rozpoczniesz weryfikację, Ty i ta druga osoba zobaczycie okienko dialogowe. Zobaczycie w nim serię emotikonów lub numery do porównania.\n\nNajlepiej potwierdzić ich zgodność osobiście lub przez wideorozmowę. 👭",
   "@verifyOtherUserDescription": {},
   "verifyOtherDeviceDescription": "Jeśli zweryfikujesz inne urządzenie, będzie mogło ono wymienić klucze z dotychczasowym, zwiększając ogólne bezpieczeństwo. 💪 Kiedy rozpoczniesz weryfikację, na obu urządzeniach wyświetli się okno dialogowe. Zobaczysz w nim serię emotikonów lub numery do porównania. Najlepiej mieć oba urządzenia pod ręką przed rozpoczęciem weryfikacji. 🤳",
@@ -3109,18 +2803,6 @@
   "@space": {},
   "spaces": "Przestrzenie",
   "@spaces": {},
-  "countChatsAndCountParticipants": "{participants}{chats} czatów i {participants} uczestników",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "noMoreChatsFound": "Nie znaleziono więcej czatów...",
   "@noMoreChatsFound": {},
   "joinedChats": "Czaty, do których dołączono",
@@ -3149,15 +2831,6 @@
   "@addChatOrSubSpace": {},
   "initAppError": "Wystąpił błąd podczas inicjalizacji aplikacji",
   "@initAppError": {},
-  "minimumPowerLevel": "{level} jest minimalnym poziomem uprawnień.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "searchIn": "Szukaj w czacie \"{chat}\"...",
   "@searchIn": {
     "type": "String",
@@ -3380,25 +3053,16 @@
   "writeAMessageLangCodes": "Piszesz w {l1} lub {l2}...",
   "requests": "Prośby",
   "holdForInfo": "Kliknij i przytrzymaj, aby uzyskać informacje o słowie.",
-  "greenFeedback": "To jest to, co bym wpisał!",
-  "yellowFeedback": "Hm, możesz spróbować i zobaczyć, czy to działa! Aby użyć tego słowa, po prostu kliknij je ponownie.",
-  "redFeedback": "Nie sądzę, żeby to było poprawne...",
   "itInstructionsTitle": "Mogę pomóc Ci z tłumaczeniem!",
   "itInstructionsBody": "Możesz kliknąć i przytrzymać wybory, aby uzyskać informacje o słowach.",
   "gaTooltip": "L2 użycie z pomocą gramatyczną",
   "taTooltip": "L2 użycie z pomocą tłumaczeniową",
-  "unTooltip": "Inne",
   "interactiveTranslatorSliderHeader": "Interaktywny Tłumacz",
   "interactiveGrammarSliderHeader": "Interaktywny Sprawdzacz Gramatyczny",
-  "interactiveTranslatorNotAllowed": "Wyłączone",
-  "interactiveTranslatorAllowed": "Wybór ucznia",
   "interactiveTranslatorRequired": "Wymagane",
-  "notYetSet": "Jeszcze nie ustawione",
   "waTooltip": "L2 użycie bez pomocy",
-  "languageSettings": "Ustawienia języka",
   "interactiveTranslator": "Wspomaganie tłumaczenia",
   "noIdenticalLanguages": "Proszę wybrać różne języki bazowe i docelowe",
-  "searchBy": "Szukaj według kraju i języków",
   "joinWithClassCode": "Dołącz do kursu",
   "languageLevelPreA1": "Nowicjusz Niski (Pre A1)",
   "languageLevelA1": "Nowicjusz Środkowy (A1)",
@@ -3409,8 +3073,6 @@
   "languageLevelC2": "Wyższy (C2)",
   "changeTheNameOfTheClass": "Zmień nazwę",
   "changeTheNameOfTheChat": "Zmień nazwę czatu",
-  "sorryNoResults": "Przepraszamy, brak wyników.",
-  "ignoreInThisText": "Zignoruj",
   "needsItMessage": "Czekaj, to nie jest {targetLanguage}! Czy potrzebujesz pomocy w tłumaczeniu?",
   "countryInformation": "Moje państwo",
   "targetLanguage": "Język docelowy",
@@ -3423,10 +3085,8 @@
   "publicProfileDesc": "Włączając tę opcję, umożliwiasz innym użytkownikom znalezienie Twojego profilu w globalnej wyszukiwarce i wysyłanie zapytań do czatu. W tym momencie możesz zaakceptować lub odrzucić zapytanie.",
   "errorDisableIT": "Pomoc w tłumaczeniu jest wyłączona.",
   "errorDisableIGC": "Pomoc gramatyczna jest wyłączona.",
-  "errorDisableLanguageAssistance": "Pomoc w tłumaczeniu i pomoc gramatyczna są wyłączone.",
   "errorDisableITUserDesc": "Kliknij tutaj, aby zaktualizować ustawienia pomocy w tłumaczeniu",
   "errorDisableIGCUserDesc": "Kliknij tutaj, aby zaktualizować ustawienia pomocy gramatycznej",
-  "errorDisableLanguageAssistanceUserDesc": "Kliknij tutaj, aby zaktualizować ustawienia pomocy w tłumaczeniu i pomocy gramatycznej",
   "errorDisableITClassDesc": "Pomoc w tłumaczeniu jest wyłączona dla kursu, w którym znajduje się ten czat.",
   "errorDisableIGCClassDesc": "Pomoc gramatyczna jest wyłączona dla kursu, w którym znajduje się ten czat.",
   "error405Title": "Języki nie ustawione",
@@ -3471,9 +3131,7 @@
   "notAvailable": "Niedostępne",
   "taAndGaTooltip": "Użycie L2 z pomocą tłumaczenia i gramatyki",
   "definitionsToolName": "Definicje słów",
-  "messageTranslationsToolName": "Tłumaczenia wiadomości",
   "definitionsToolDescription": "Po włączeniu słowa podkreślone na niebiesko można kliknąć, aby zobaczyć definicje. Kliknij wiadomości, aby uzyskać dostęp do definicji.",
-  "translationsToolDescrption": "Po włączeniu kliknij wiadomość i ikonę tłumaczenia, aby zobaczyć wiadomość w Twoim języku podstawowym.",
   "welcomeBack": "Witamy ponownie! Jeśli brałeś udział w pilotażu 2023-2024, skontaktuj się z nami, aby uzyskać specjalną subskrypcję pilotażową. Jeśli jesteś nauczycielem, który (lub Twoja instytucja) zakupił licencje dla Twojej klasy, skontaktuj się z nami w sprawie subskrypcji nauczyciela.",
   "downloadTxtFile": "Pobierz plik tekstowy",
   "downloadCSVFile": "Pobierz plik CSV",
@@ -3747,10 +3405,8 @@
   "definitionDefaultPrompt": "Co oznacza to słowo?",
   "practiceDefaultPrompt": "Jaka jest najlepsza odpowiedź?",
   "correctionDefaultPrompt": "Jaka jest najlepsza zamiana?",
-  "acceptSelection": "Zaakceptuj poprawkę",
   "why": "Dlaczego?",
   "definition": "Definicja",
-  "exampleSentence": "Przykładowe zdanie",
   "reportToTeacher": "Do kogo chcesz zgłosić tę wiadomość?",
   "reportMessageTitle": "{reportingUserId} zgłosił wiadomość od {reportedUserId} w czacie {roomName}",
   "reportMessageBody": "Wiadomość: {reportedMessage}\nPowód: {reason}",
@@ -3762,27 +3418,20 @@
   "clickToManageSubscription": "Kliknij tutaj, aby zarządzać subskrypcją.",
   "signUp": "Zarejestruj się",
   "pleaseChooseAtLeastChars": "Proszę wybierz co najmniej {min} znaków.",
-  "noEmailWarning": "Proszę wprowadzić poprawny adres e-mail. W przeciwnym razie nie będziesz mógł zresetować hasła. Jeśli nie chcesz tego robić, dotknij ponownie przycisk, aby kontynuować.",
   "pleaseEnterValidEmail": "Proszę wprowadzić poprawny adres e-mail.",
   "pleaseChooseAUsername": "Proszę wybierz nazwę użytkownika",
-  "define": "Zdefiniuj",
   "listen": "Słuchaj",
   "trialPeriodExpired": "Twój okres próbny wygasł",
   "translations": "tłumaczenia",
-  "messageAudio": "dźwięk wiadomości",
   "definitions": "definicje",
   "subscribedToUnlockTools": "Subskrybuj, aby odblokować interaktywny tłumacz i sprawdzanie gramatyki, odtwarzanie dźwięku, spersonalizowane ćwiczenia oraz analitykę nauki!",
   "translationTooltip": "Tłumaczenie",
-  "speechToTextTooltip": "Transkrypcja",
   "kickBotWarning": "Usunięcie Pangea Bota z tej rozmowy usunie bota konwersacyjnego z tego czatu.",
   "refresh": "Odśwież",
-  "messageAnalytics": "Analiza wiadomości",
   "words": "Słowa",
   "score": "Wynik",
   "accuracy": "Dokładność",
   "points": "Punkty",
-  "noPaymentInfo": "Brak konieczności podawania informacji o płatności!",
-  "updatePhoneOS": "Możesz potrzebować zaktualizować wersję systemu operacyjnego swojego urządzenia.",
   "wordsPerMinute": "Słów na minutę",
   "tooltipInstructionsTitle": "Nie jesteś pewien, co to robi?",
   "tooltipInstructionsMobileBody": "Przytrzymaj elementy, aby wyświetlić podpowiedzi.",
@@ -3792,11 +3441,8 @@
   "chatCapacityHasBeenChanged": "Pojemność czatu została zmieniona",
   "chatCapacitySetTooLow": "Pojemność czatu musi wynosić co najmniej {count}.",
   "chatCapacityExplanation": "Pojemność czatu ogranicza liczbę członków dozwolonych w czacie.",
-  "tooManyRequest": "Zbyt wiele żądań, spróbuj ponownie później.",
   "enterNumber": "Wprowadź wartość liczby całkowitej.",
-  "buildTranslation": "Zbuduj tłumaczenie z powyższych opcji",
   "practice": "Ćwiczenia",
-  "noLanguagesSet": "Nie ustawiono języków",
   "speechToTextBody": "Dla wiadomości głosowych możesz zobaczyć transkrypt oraz wynik słów na minutę mówcy.",
   "versionNotFound": "Nie znaleziono wersji",
   "fetchingVersion": "Pobieranie wersji...",
@@ -3815,10 +3461,7 @@
   "grammar": "Gramatyka",
   "contactHasBeenInvitedToTheChat": "Kontakt został zaproszony do czatu",
   "inviteChat": "🧪 Zaproś do czatu",
-  "chatName": "Nazwa czatu",
-  "reportContentIssueTitle": "Zgłoś problem z treścią",
   "feedback": "Opcjonalna opinia",
-  "reportContentIssueDescription": "Ojej! AI może ułatwiać spersonalizowane doświadczenia edukacyjne, ale... również halucynuje. Prosimy o podanie wszelkich uwag, a spróbujemy ponownie.",
   "clickTheWordAgainToDeselect": "Kliknij wybrane słowo, aby je odznaczyć.",
   "l2SupportNa": "Niedostępne",
   "l2SupportAlpha": "Alpha",
@@ -3826,7 +3469,6 @@
   "l2SupportFull": "Pełne",
   "missingVoiceTitle": "Brak głosu",
   "voiceNotAvailable": "Nie masz zainstalowanego głosu dla tego języka.",
-  "openVoiceSettings": "Otwórz ustawienia głosu",
   "playAudio": "Odtwórz",
   "stop": "Zatrzymaj",
   "grammarCopyPOSsconj": "Podrzędne spójniki",
@@ -4049,9 +3691,6 @@
   "grammarCopyTENSE": "Czas",
   "grammarCopyVERBFORM": "Forma Czasownika",
   "grammarCopyCONJTYPE": "Typ Spójnika",
-  "grammarCopySPC": "Specyficzność",
-  "grammarCopyPARTTYPE": "Typ partytywny",
-  "grammarCopyINTREL": "Pytanie-rzeczownik",
   "grammarCopyUNKNOWN": "Nieznany",
   "grammarCopyNUMBERPSOR": "Liczba posiadacza",
   "grammarCopyPOSS": "Dzierżawczość",
@@ -4105,8 +3744,6 @@
   "downloadGroupText": "Pobierz tekst grupy",
   "notificationsOn": "Powiadomienia włączone",
   "notificationsOff": "Powiadomienia wyłączone",
-  "createChatAndInviteUsers": "Utwórz czat i zaproś użytkowników",
-  "updatedNewSpaceDescription": "Kursy pozwalają na konsolidację czatów i budowanie społeczności prywatnych lub publicznych.",
   "joinWithCode": "Dołącz z kodem",
   "enterCodeToJoin": "Wprowadź kod, aby dołączyć",
   "updateNow": "Aktualizuj teraz",
@@ -4147,13 +3784,11 @@
   "iWantToLearn": "Chcę się uczyć",
   "pleaseEnterEmail": "Proszę wprowadzić poprawny adres e-mail.",
   "myBaseLanguage": "Mój język podstawowy",
-  "meaningSectionHeader": "Znaczenie:",
   "formSectionHeader": "Formy używane w czatach:",
   "writingExercisesTooltip": "Pisanie",
   "listeningExercisesTooltip": "Słuchanie",
   "readingExercisesTooltip": "Czytanie",
   "meaningNotFound": "Nie można znaleźć znaczenia.",
-  "chooseBaseForm": "Wybierz formę podstawową",
   "notTheCodeError": "Przepraszam, to nie jest kod!",
   "totalXP": "Łączna liczba punktów XP",
   "numLemmas": "Łączna liczba lematów",
@@ -4183,13 +3818,11 @@
   "analyticsNotAvailable": "Analiza użytkownika niedostępna",
   "downloading": "Pobieranie...",
   "failedFetchUserAnalytics": "Nie udało się pobrać analizy użytkownika",
-  "downloadComplete": "Pobieranie zakończone!",
   "whatIsTheMorphTag": "Czym jest {morphologicalFeature} w '{wordForm}'?",
   "dataAvailable": "Dostępność danych",
   "available": "Dostępne",
   "pangeaBotIsFallible": "Pangea Bot popełnia błędy też!",
   "whatIsMeaning": "Co oznacza '{lemma}'?",
-  "pickAnEmoji": "Jaki jest Twój ulubiony emoji dla '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Dopasuj znaczenia do słów w wiadomości!",
   "doubleClickToEdit": "Kliknij dwukrotnie, aby edytować.",
   "activityPlannerTitle": "Planer aktywności",
@@ -4218,7 +3851,6 @@
   "constructUseCorMmDesc": "Poprawne znaczenie wiadomości",
   "constructUseIncMmDesc": "Niepoprawne znaczenie wiadomości",
   "constructUseIgnMmDesc": "Zignorowane znaczenie wiadomości",
-  "clickForMeaningActivity": "Kliknij tutaj, aby wziąć udział w wyzwaniu znaczenia",
   "meaning": "Znaczenie",
   "chatWith": "Grupa z {displayname}",
   "clickOnEmailLink": "Kliknij w link w e-mailu, a następnie kontynuuj.\n\nSprawdź folder spam, jeśli e-mail nie dotarł.",
@@ -4258,16 +3890,13 @@
   "home": "Strona główna",
   "join": "Dołącz",
   "readingAssistanceOverviewBody": "Kliknij przyciski poniżej, aby wziąć udział w mini-grach dopasowujących emotikony, dźwięki, znaczenia słów i koncepcje gramatyczne. Lub kliknij dowolne słowo, aby zobaczyć szczegóły.",
-  "levelSummaryPopupTitle": "Podsumowanie poziomu {level}",
   "resetInstructionTooltipsTitle": "Zresetuj podpowiedzi instrukcji",
   "resetInstructionTooltipsDesc": "Kliknij, aby wyświetlić podpowiedzi instrukcji, jak dla nowego użytkownika.",
-  "selectForGrammar": "Wybierz ikonę gramatyki do aktywności i szczegółów.",
   "randomize": "Losuj",
   "clear": "Wyczyść",
   "makeYourOwnActivity": "Stwórz własną aktywność",
   "featuredActivities": "Polecane",
   "save": "Zapisz",
-  "startChat": "Rozpocznij rozmowę",
   "translationProblem": "Problem z tłumaczeniem",
   "askToJoin": "Poproś o dołączenie",
   "emptyChatWarningTitle": "Czat jest pusty",
@@ -4287,7 +3916,6 @@
   "languageLevelC2Desc": "Potrafię zrozumieć praktycznie wszystko, co słyszę lub czytam, i wyrażać się płynnie i precyzyjnie.",
   "newVocab": "Nowe słownictwo",
   "newGrammar": "Nowe zagadnienia gramatyczne",
-  "choosePracticeMode": "Kliknij jeden z powyższych przycisków, aby rozpocząć ćwiczenie",
   "ban": "Zbanuj",
   "unban": "Odblokuj",
   "kick": "Wyrzuć",
@@ -4299,7 +3927,6 @@
   "timesUsedIndependently": "Liczba użyć samodzielnie",
   "timesUsedWithAssistance": "Liczba użyć z pomocą",
   "shareInviteCode": "Udostępnij kod zaproszenia: {code}",
-  "leaderboard": "Tablica wyników",
   "skipForNow": "Pomiń na razie",
   "permissions": "Uprawnienia",
   "spaceChildPermission": "Kto może dodawać nowe czaty do tego kursu",
@@ -4308,7 +3935,6 @@
   "deleteChatDesc": "Czy na pewno chcesz usunąć ten czat? Zostanie on usunięty dla wszystkich uczestników, a wszystkie wiadomości w czacie nie będą już dostępne do ćwiczeń lub analityki nauki.",
   "deleteSpaceDesc": "Kurs i wybrane czaty zostaną usunięte dla wszystkich uczestników, a wszystkie wiadomości w czacie nie będą już dostępne do ćwiczeń lub analityki nauki. Ta operacja jest nieodwracalna.",
   "launch": "Uruchom",
-  "searchChats": "Wyszukaj czaty",
   "maxFifty": "Max 50",
   "configureSpace": "Konfiguruj kurs",
   "pinMessages": "Przypnij wiadomości",
@@ -4333,13 +3959,10 @@
   "canBeFoundViaInvitation": "• zaproszenie",
   "canBeFoundViaCodeOrLink": "• kod lub link",
   "canBeFoundViaKnock": "• prośba o dołączenie i zatwierdzenie przez administratora",
-  "youHaveLeveledUp": "Awansowałeś!",
   "sendActivities": "Wyślij aktywności",
-  "groupChat": "Czat grupowy",
   "directMessage": "Wiadomość prywatna",
   "newDirectMessage": "Nowa wiadomość prywatna",
   "speakingExercisesTooltip": "Mówienie",
-  "noChatsFoundHereYet": "Na razie nie znaleziono tutaj żadnych rozmów",
   "duration": "Czas trwania",
   "transcriptionFailed": "Nie udało się przetranskrybować dźwięku",
   "aUserIsKnocking": "1 użytkownik prosi o dołączenie do twojego kursu",
@@ -4349,7 +3972,6 @@
   "regenerate": "Regeneruj",
   "mySavedActivities": "Moje zapisane aktywności",
   "noSavedActivities": "Brak zapisanych aktywności",
-  "saveActivity": "Zapisz tę aktywność",
   "failedToPlayVideo": "Nie udało się odtworzyć filmu",
   "done": "Gotowe",
   "inThisSpace": "W tym kursie",
@@ -4367,12 +3989,10 @@
   "errorFetchingDefinition": "Nie udało się pobrać definicji",
   "errorProcessAnalytics": "Nie udało się przetworzyć analityki",
   "errorDownloading": "Pobieranie nie powiodło się",
-  "errorFetchingLevelSummary": "Nie udało się pobrać podsumowania poziomu",
   "errorLoadingSpaceChildren": "Nie udało się załadować czatów w ramach tego kursu",
   "unexpectedError": "Nieoczekiwany błąd.",
   "pleaseReload": "Proszę odświeżyć i spróbować ponownie.",
   "translationError": "Błąd tłumaczenia",
-  "errorFetchingTranslation": "Nie udało się pobrać tłumaczenia",
   "errorFetchingActivity": "Nie udało się pobrać aktywności",
   "check": "Sprawdź",
   "unableToFindRoom": "Nie znaleziono czatu ani kursu z tym kodem. Spróbuj ponownie.",
@@ -4388,17 +4008,14 @@
   "maximumActivityParticipants": "Każda aktywność może mieć maksymalnie {count} uczestnik(i).",
   "pending": "Oczekujące",
   "inactive": "Nieaktywne",
-  "confirmRole": "Potwierdź rolę",
   "openRoleLabel": "OTWARTA",
   "joinedTheActivity": "👋 {username} dołączył jako {role}",
   "finishedTheActivity": "🎯 {username} zakończył tę aktywność",
-  "archiveToAnalytics": "Dodaj do moich ukończonych aktywności",
   "activitySummaryError": "Podsumowania aktywności niedostępne",
   "requestSummaries": "Żądaj podsumowań",
   "generatingNewActivities": "Jesteś pierwszym użytkownikiem tego zestawu językowego! Prosimy o chwilę, przygotowujemy dla Ciebie aktywności.",
   "requestAccessTitle": "Czy chcesz poprosić o dostęp do analityki?",
   "requestAccessDesc": "Czy chcesz poprosić o dostęp do analityki uczestników?\n\nJeśli uczestnicy się zgodzą, administratorzy tego kursu będą mogli zobaczyć ich:\n    • łączny słownik\n    • łączną gramatykę\n    • łączną liczbę ukończonych sesji aktywności\n    • konkretne użyte, poprawne i niepoprawne koncepty gramatyczne\n\nNie będą mogli zobaczyć ich:\n    • wiadomości w czatach spoza kursu\n    • listy słówek",
-  "requestAccess": "Poproś o dostęp ({count})",
   "analyticsInactiveTitle": "Wnioski do nieaktywnych użytkowników nie mogły zostać wysłane",
   "analyticsInactiveDesc": "Nieaktywni użytkownicy, którzy nie zalogowali się od momentu wprowadzenia tej funkcji, nie zobaczą Twojego wniosku.\n\nPrzycisk „Poproś” pojawi się, gdy wrócą. Możesz ponownie wysłać wniosek, klikając przycisk „Poproś” pod ich nazwiskiem, gdy będzie dostępny.",
   "accessRequestedTitle": "Wniosek o dostęp do analityki",
@@ -4423,7 +4040,6 @@
   "deleteDesc": "Tylko administratorzy mogą usunąć kurs. To działanie destrukcyjne, które usuwa wszystkich użytkowników i kasuje wszystkie wybrane czaty w kursie. Postępuj ostrożnie.",
   "noCourseFound": "O, ten kurs potrzebuje planu!\n\nPlany kursów to sekwencje tematów i aktywności konwersacyjnych.",
   "additionalParticipants": "+ {num} innych",
-  "directMessages": "Wiadomości bezpośrednie",
   "whatNow": "Co teraz?",
   "chooseNextActivity": "Wybierz swoją następną aktywność!",
   "letsGo": "Chodźmy",
@@ -4460,7 +4076,6 @@
   "activityNeedsMembers": "Ojej! Ta aktywność wymaga {num} więcej osób.",
   "inviteFriendsToCourse": "Zaproś znajomych do mojego kursu",
   "subscribeToUnlockActivitySummaries": "Subskrybuj, aby odblokować podsumowania aktywności",
-  "subscribeToUnlockDefinitions": "Subskrybuj, aby odblokować definicje",
   "subscribeToUnlockTranscriptions": "Subskrybuj, aby odblokować transkrypcje",
   "pingSent": "Wysłano powiadomienie o kursie! 🔔",
   "courseTitle": "Tytuł kursu",
@@ -4471,7 +4086,6 @@
   "loginToAccount": "Zaloguj się do mojego konta",
   "appDescription": "Ucz się języka\npoprzez pisanie wiadomości do znajomych.",
   "languages": "Języki",
-  "chooseLanguage": "Wybierz język docelowy.",
   "planTrip": "Zaplanować podróż",
   "howAreYouTraveling": "Jak zamierzasz podróżować?",
   "unlockPrivateTrip": "Odblokuj prywatną podróż",
@@ -4523,18 +4137,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -4551,10 +4153,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -4563,27 +4161,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -4592,10 +4174,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -4636,14 +4214,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -4699,19 +4269,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -4891,15 +4453,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6013,19 +5567,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6098,19 +5644,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6126,10 +5664,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6142,19 +5676,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6171,14 +5697,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6222,23 +5740,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6321,19 +5827,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6362,10 +5856,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7257,18 +6747,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7485,14 +6963,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -7660,10 +7130,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -7681,10 +7147,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -7804,10 +7266,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -7832,14 +7290,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -7956,10 +7406,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8131,23 +7577,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8168,10 +7602,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8251,10 +7681,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8303,10 +7729,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8336,10 +7758,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8439,15 +7857,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8460,10 +7870,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8504,10 +7910,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8587,10 +7989,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -8604,10 +8002,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -8682,10 +8076,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -8709,10 +8099,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -8732,14 +8118,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -8855,10 +8233,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9021,10 +8395,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9062,10 +8432,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -10497,13 +9863,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Nie udało się załadować opinii.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Aktywności pojawią się tutaj, gdy zostaną ukończone i zapisane.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -10519,11 +9880,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Aktywność praktyczna zakończona",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10579,11 +9935,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Twój docelowy język nie pasuje do tej wiadomości. Zaktualizować swój docelowy język?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -10629,12 +9980,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Narzędzia do nauki są wyłączone dla wiadomości, które nie są w twoim docelowym języku.",
-  "vocabEmoji": "Emoji słownictwa",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10682,16 +10028,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Odmowa dostępu. Włącz uprawnienia do nagrywania, aby nagrywać wiadomości audio.",
-  "genericWebRecordingError": "Coś poszło nie tak. Zalecamy korzystanie z przeglądarki Chrome podczas nagrywania wiadomości.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Aby uzyskać najlepsze wrażenia podczas korzystania z tej aplikacji, proszę powiększyć rozmiar ekranu.",
   "@screenSizeWarning": {
     "type": "String",
@@ -10714,11 +10050,8 @@
   "constructUseBonus": "Bonus podczas praktyki słownictwa",
   "practiceVocab": "Ćwicz słownictwo",
   "selectMeaning": "Wybierz znaczenie",
-  "selectAudio": "Wybierz pasujące audio",
   "congratulations": "Gratulacje!",
   "anotherRound": "Kolejna runda",
-  "noActivityRequest": "Brak bieżącego żądania aktywności.",
-  "mustHave10Words": "Musisz mieć co najmniej 10 słówek do ćwiczenia. Spróbuj porozmawiać z przyjacielem lub Pangea Bot, aby odkryć więcej!",
   "botSettings": "Ustawienia bota",
   "activitySettingsOverrideWarning": "Język i poziom językowy określone przez plan aktywności",
   "voice": "Głos",
@@ -10750,23 +10083,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -10858,18 +10179,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Czy masz kod zaproszenia lub link do publicznego kursu?",
-  "welcomeUser": "Witaj {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Szukaj użytkowników, aby zaprosić ich do tej rozmowy.",
   "publicInviteDescSpace": "Szukaj użytkowników, aby zaprosić ich do tej przestrzeni.",
@@ -11054,8 +10366,6 @@
   "resume": "Wznów",
   "newSubSpace": "Nowa podprzestrzeń",
   "moveToDifferentSpace": "Przenieś do innej przestrzeni",
-  "moveUp": "Przenieś w górę",
-  "moveDown": "Przenieś w dół",
   "removeFromSpaceDescription": "Czat zostanie usunięty z przestrzeni, ale nadal będzie widoczny na liście czatów.",
   "countChats": "{chats} czatów",
   "spaceMemberOf": "Członek przestrzeni {spaces}",
@@ -11066,7 +10376,6 @@
   "startPoll": "Rozpocznij ankietę",
   "endPoll": "Zakończ ankietę",
   "answersVisible": "Odpowiedzi widoczne",
-  "answersHidden": "Odpowiedzi ukryte",
   "pollQuestion": "Pytanie ankiety",
   "answerOption": "Opcja odpowiedzi",
   "addAnswerOption": "Dodaj opcję odpowiedzi",
@@ -11138,14 +10447,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@moveUp": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moveDown": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@removeFromSpaceDescription": {
     "type": "String",
     "placeholders": {}
@@ -11199,10 +10500,6 @@
     "placeholders": {}
   },
   "@answersVisible": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@answersHidden": {
     "type": "String",
     "placeholders": {}
   },
@@ -11362,12 +10659,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "highlightVocabTooltip": "Podświetl słowa słownictwa docelowego poniżej, wysyłając je lub ćwicząc z nimi na czacie",
   "pickDifferentActivity": "Wybierz inną aktywność",
-  "@highlightVocabTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseDescription": "Kursy składają się z 3-8 modułów, z których każdy zawiera ćwiczenia zachęcające do praktykowania słów w różnych kontekstach",
   "@courseDescription": {
     "type": "String",
@@ -11496,7 +10788,6 @@
   "playConversationGames": "Graj w gry konwersacyjne z botem, kolegami z klasy i nowymi przyjaciółmi!",
   "jumpIntoConversation": "Zacznij rozmowę od pierwszego dnia z narzędziami do pisania AI!",
   "playPersonalizedGames": "Graj w gry praktyczne dostosowane do Twojego słownictwa i potrzeb gramatycznych!",
-  "learnLanguageWhileTexting": "Ucz się języka, pisząc do swoich przyjaciół!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11518,10 +10809,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }
