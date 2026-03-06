@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:39.509871",
+  "@@last_modified": "2026-03-06 13:14:18.297333",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12593,6 +12593,11 @@
   },
   "myGender": "המגדר שלי",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח פעילויות תרגול נוספות.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

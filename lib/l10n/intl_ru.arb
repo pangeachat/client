@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-06 11:07:11.354879",
+  "@@last_modified": "2026-03-06 13:15:13.323232",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11375,6 +11375,11 @@
   },
   "myGender": "Мой пол",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Ух ты, вы завершили все доступные активности! Отправьте больше сообщений, чтобы разблокировать дополнительные практические занятия.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

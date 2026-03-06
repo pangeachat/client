@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-06 11:07:04.108341",
+  "@@last_modified": "2026-03-06 13:14:59.808078",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11410,6 +11410,11 @@
   },
   "myGender": "我的性别",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "哇，你已经完成了所有可用的活动！发送更多消息以解锁更多练习活动。",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

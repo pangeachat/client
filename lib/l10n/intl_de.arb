@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-06 11:06:44.502166",
+  "@@last_modified": "2026-03-06 13:14:25.121937",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11399,6 +11399,11 @@
   },
   "myGender": "Mein Geschlecht",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du hast alle verfügbaren Aktivitäten abgeschlossen! Sende mehr Nachrichten, um weitere Übungsaktivitäten freizuschalten.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

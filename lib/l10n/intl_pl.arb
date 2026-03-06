@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-06 11:07:06.670835",
+  "@@last_modified": "2026-03-06 13:15:03.756003",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11532,6 +11532,11 @@
   },
   "myGender": "Moja płeć",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej aktywności do ćwiczeń.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

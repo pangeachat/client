@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-06 11:06:43.728513",
+  "@@last_modified": "2026-03-06 13:14:24.154862",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11684,6 +11684,11 @@
   },
   "myGender": "Minu sugu",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vau, olete lõpetanud kõik saadaval olevad tegevused! Saatke rohkem sõnumeid, et avada rohkem harjutustegevusi.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

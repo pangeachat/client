@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-06 11:07:14.589833",
+  "@@last_modified": "2026-03-06 13:15:19.877810",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11816,6 +11816,11 @@
   },
   "myGender": "Mon genre",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, vous avez terminé toutes les activités disponibles ! Envoyez plus de messages pour débloquer plus d'activités de pratique.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

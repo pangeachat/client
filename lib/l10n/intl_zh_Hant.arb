@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:53.556353",
+  "@@last_modified": "2026-03-06 13:14:42.297955",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11549,6 +11549,11 @@
   },
   "myGender": "我的性別",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "哇，你已經完成了所有可用的活動！發送更多消息以解鎖更多練習活動。",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

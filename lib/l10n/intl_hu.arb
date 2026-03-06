@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-06 11:06:34.253288",
+  "@@last_modified": "2026-03-06 13:14:10.554486",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11547,6 +11547,11 @@
   },
   "myGender": "A nemem",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, már minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy újabb gyakorló tevékenységeket oldhass fel.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

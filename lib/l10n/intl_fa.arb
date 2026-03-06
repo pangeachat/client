@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:07:05.900913",
+  "@@last_modified": "2026-03-06 13:15:02.470517",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11531,6 +11531,11 @@
   },
   "myGender": "جنسیت من",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا فعالیت‌های تمرینی بیشتری را باز کنید.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

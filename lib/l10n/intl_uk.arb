@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-06 11:06:47.243659",
+  "@@last_modified": "2026-03-06 13:14:30.725124",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11410,6 +11410,11 @@
   },
   "myGender": "Моя стать",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надсилайте більше повідомлень, щоб розблокувати більше практичних активностей.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

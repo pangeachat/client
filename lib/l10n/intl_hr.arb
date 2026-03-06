@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-06 11:06:38.764067",
+  "@@last_modified": "2026-03-06 13:14:17.106712",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11903,6 +11903,11 @@
   },
   "myGender": "Moj spol",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više aktivnosti za vježbanje.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }
