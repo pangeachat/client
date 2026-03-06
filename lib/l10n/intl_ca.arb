@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:50.481535",
+  "@@last_modified": "2026-03-06 13:14:37.064699",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11570,6 +11570,11 @@
   },
   "myGender": "El meu gènere",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Uau, has completat totes les activitats disponibles! Envia més missatges per desbloquejar més activitats de pràctica.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

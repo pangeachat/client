@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-03-06 11:06:38.093311",
+  "@@last_modified": "2026-03-06 13:14:15.871086",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12158,6 +12158,11 @@
   },
   "myGender": "Mo ghné",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

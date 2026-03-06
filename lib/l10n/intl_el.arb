@@ -4476,7 +4476,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-03-06 11:07:08.194361",
+  "@@last_modified": "2026-03-06 13:15:06.776767",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -12569,6 +12569,11 @@
   },
   "myGender": "Το φύλο μου",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Ω, έχεις ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλε περισσότερα μηνύματα για να ξεκλειδώσεις περισσότερες δραστηριότητες πρακτικής.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:41.044669",
+  "@@last_modified": "2026-03-06 13:14:20.470328",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11410,6 +11410,11 @@
   },
   "myGender": "Meu gênero",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Uau, você completou todas as atividades disponíveis! Envie mais mensagens para desbloquear mais atividades de prática.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

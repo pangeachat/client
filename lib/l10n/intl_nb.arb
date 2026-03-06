@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:48.832804",
+  "@@last_modified": "2026-03-06 13:14:34.088094",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11479,6 +11479,11 @@
   },
   "myGender": "Kjønnet mitt",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvingsaktiviteter.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

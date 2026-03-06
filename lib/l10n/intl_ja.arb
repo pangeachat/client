@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-03-06 11:07:09.019767",
+  "@@last_modified": "2026-03-06 13:15:08.501187",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12334,6 +12334,11 @@
   },
   "myGender": "私の性別",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "わあ、すべての利用可能なアクティビティを完了しました！ もっとメッセージを送信して、さらに練習アクティビティをアンロックしてください。",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

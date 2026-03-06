@@ -5399,5 +5399,6 @@
   "youSentActivitySummary": "You sent an activity summary",
   "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
   "suggestedVocab": "Suggested vocab",
-  "myGender": "My gender"
+  "myGender": "My gender",
+  "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities."
 }

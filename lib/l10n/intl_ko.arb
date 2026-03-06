@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:28.141360",
+  "@@last_modified": "2026-03-06 13:14:00.729244",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11636,6 +11636,11 @@
   },
   "myGender": "내 성별",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "와, 당신은 모든 가능한 활동을 완료했습니다! 더 많은 메시지를 보내서 더 많은 연습 활동을 잠금 해제하세요.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

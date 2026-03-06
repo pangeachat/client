@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:07:10.617501",
+  "@@last_modified": "2026-03-06 13:15:12.143990",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12633,6 +12633,11 @@
   },
   "myGender": "Mia genro",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj aktivadoj.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

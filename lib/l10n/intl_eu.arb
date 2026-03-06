@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-06 11:06:42.068202",
+  "@@last_modified": "2026-03-06 13:14:21.818301",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11410,6 +11410,11 @@
   },
   "myGender": "Nire generoa",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, guztiak amaitu dituzu eskuragarri dauden jarduerak! Bidali gehiago mezu gehiago praktikatzeko jarduera gehiago irekitzeko.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }

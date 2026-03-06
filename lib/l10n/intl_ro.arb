@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 11:06:36.340816",
+  "@@last_modified": "2026-03-06 13:14:13.711738",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12279,6 +12279,11 @@
   },
   "myGender": "Genul meu",
   "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe activități de practică.",
+  "@noAnalyticsActivitiesAvailable": {
     "type": "String",
     "placeholders": {}
   }
