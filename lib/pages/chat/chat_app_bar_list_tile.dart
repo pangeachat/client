@@ -31,7 +31,7 @@ class ChatAppBarListTile extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            if (leading != null) leading,
+            ?leading,
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -56,7 +56,7 @@ class ChatAppBarListTile extends StatelessWidget {
                 ),
               ),
             ),
-            if (trailing != null) trailing,
+            ?trailing,
           ],
         ),
       ),

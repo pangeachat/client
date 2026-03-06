@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -11,22 +12,14 @@ class LevelUpdate {
   final int prevLevel;
   final int newLevel;
 
-  LevelUpdate({
-    required this.prevLevel,
-    required this.newLevel,
-  });
+  LevelUpdate({required this.prevLevel, required this.newLevel});
 }
 
 class AnalyticsUpdate {
   final List<OneConstructUse> addedConstructs;
-  final ConstructIdentifier? blockedConstruct;
   final String? targetID;
 
-  AnalyticsUpdate(
-    this.addedConstructs, {
-    this.blockedConstruct,
-    this.targetID,
-  });
+  AnalyticsUpdate(this.addedConstructs, {this.targetID});
 }
 
 class ConstructLevelUpdate {
@@ -63,8 +56,10 @@ class AnalyticsUpdateDispatcher {
       StreamController<ConstructLevelUpdate>.broadcast();
 
   final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
-      _lemmaInfoUpdateStream = StreamController<
-          MapEntry<ConstructIdentifier, UserSetLemmaInfo>>.broadcast();
+  _lemmaInfoUpdateStream =
+      StreamController<
+        MapEntry<ConstructIdentifier, UserSetLemmaInfo>
+      >.broadcast();
 
   AnalyticsUpdateDispatcher(this.dataService);
 
@@ -77,28 +72,50 @@ class AnalyticsUpdateDispatcher {
     _lemmaInfoUpdateStream.close();
   }
 
-  Stream<UserSetLemmaInfo> lemmaUpdateStream(
-    ConstructIdentifier constructId,
-  ) =>
+  Stream<UserSetLemmaInfo> lemmaUpdateStream(ConstructIdentifier constructId) =>
       _lemmaInfoUpdateStream.stream
           .where((update) => update.key == constructId)
           .map((update) => update.value);
 
-  void sendActivityAnalyticsUpdate(
-    String? activityAnalytics,
-  ) =>
+  void sendActivityAnalyticsUpdate(String? activityAnalytics) =>
       activityAnalyticsStream.add(activityAnalytics);
 
   void sendLemmaInfoUpdate(
     ConstructIdentifier constructId,
     UserSetLemmaInfo lemmaInfo,
-  ) =>
-      _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
+  ) => _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
-  Future<void> sendConstructAnalyticsUpdate(
-    AnalyticsUpdate analyticsUpdate,
+  Future<void> sendBlockedConstructsUpdate(
+    Set<ConstructIdentifier> blockedConstructs,
+    String language,
   ) async {
-    final events = await dataService.updateLocalAnalytics(analyticsUpdate);
+    for (final blockedConstruct in blockedConstructs) {
+      await dataService.updateBlockedConstructs(blockedConstruct, language);
+    }
+    final update = AnalyticsStreamUpdate(blockedConstructs: blockedConstructs);
+    constructUpdateStream.add(update);
+  }
+
+  void sendEmptyAnalyticsUpdate() {
+    constructUpdateStream.add(AnalyticsStreamUpdate());
+  }
+
+  Future<void> sendServerAnalyticsUpdate(
+    List<ConstructAnalyticsEvent> events,
+    String language,
+  ) async {
+    await dataService.updateServerAnalytics(events, language);
+    sendEmptyAnalyticsUpdate();
+  }
+
+  Future<void> sendLocalAnalyticsUpdate(
+    AnalyticsUpdate analyticsUpdate,
+    String language,
+  ) async {
+    final events = await dataService.updateLocalAnalytics(
+      analyticsUpdate,
+      language,
+    );
     for (final event in events) {
       _dispatch(event);
     }
@@ -115,9 +132,6 @@ class AnalyticsUpdateDispatcher {
       case final XPGainedEvent e:
         _onXPGained(e.points, e.targetID);
         break;
-      case final ConstructBlockedEvent e:
-        _onBlockedConstruct(e.blockedConstruct);
-        break;
       case final ConstructLevelUpEvent e:
         _onConstructLevelUp(e.constructId, e.level, e.targetID);
         break;
@@ -129,10 +143,7 @@ class AnalyticsUpdateDispatcher {
 
   void _onLevelUp(final int lowerLevel, final int upperLevel) {
     levelUpdateStream.add(
-      LevelUpdate(
-        prevLevel: lowerLevel,
-        newLevel: upperLevel,
-      ),
+      LevelUpdate(prevLevel: lowerLevel, newLevel: upperLevel),
     );
   }
 
@@ -150,10 +161,7 @@ class AnalyticsUpdateDispatcher {
   }
 
   void _onXPGained(int points, String? targetID) {
-    final update = AnalyticsStreamUpdate(
-      points: points,
-      targetID: targetID,
-    );
+    final update = AnalyticsStreamUpdate(points: points, targetID: targetID);
     constructUpdateStream.add(update);
   }
 
@@ -169,13 +177,6 @@ class AnalyticsUpdateDispatcher {
         targetID: targetID,
       ),
     );
-  }
-
-  void _onBlockedConstruct(ConstructIdentifier constructId) {
-    final update = AnalyticsStreamUpdate(
-      blockedConstruct: constructId,
-    );
-    constructUpdateStream.add(update);
   }
 
   void _onNewConstruct(Set<ConstructIdentifier> constructIds) {

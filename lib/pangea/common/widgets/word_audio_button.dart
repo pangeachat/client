@@ -8,6 +8,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordAudioButton extends StatefulWidget {
   final String text;
+  final String pos;
+  final Map<String, String>? morph;
+
   final bool isSelected;
   final double baseOpacity;
   final String uniqueID;
@@ -23,6 +26,8 @@ class WordAudioButton extends StatefulWidget {
     required this.text,
     required this.uniqueID,
     required this.langCode,
+    required this.pos,
+    this.morph,
     this.isSelected = false,
     this.baseOpacity = 1,
     this.callbackOverride,
@@ -43,10 +48,10 @@ class WordAudioButtonState extends State<WordAudioButton> {
   @override
   void initState() {
     super.initState();
-    _loadingChoreoSubscription =
-        TtsController.loadingChoreoStream.stream.listen((val) {
-      if (mounted) setState(() => _isLoading = val);
-    });
+    _loadingChoreoSubscription = TtsController.loadingChoreoStream.stream
+        .listen((val) {
+          if (mounted) setState(() => _isLoading = val);
+        });
   }
 
   @override
@@ -77,12 +82,14 @@ class WordAudioButtonState extends State<WordAudioButton> {
             .key,
         opacity: widget.isSelected || _isPlaying ? 1 : widget.baseOpacity,
         child: Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying
+              ? L10n.of(context).stop
+              : L10n.of(context).playAudio,
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: widget.callbackOverride ??
+              onTap:
+                  widget.callbackOverride ??
                   () async {
                     if (_isPlaying) {
                       await TtsController.stop();
@@ -92,6 +99,8 @@ class WordAudioButtonState extends State<WordAudioButton> {
                         context: context,
                         targetID: 'word-audio-button-${widget.uniqueID}',
                         langCode: widget.langCode,
+                        pos: widget.pos,
+                        morph: widget.morph,
                         onStart: () {
                           if (mounted) {
                             setState(() => _isPlaying = true);
@@ -111,9 +120,7 @@ class WordAudioButtonState extends State<WordAudioButton> {
                     ? const SizedBox(
                         width: 16,
                         height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                        ),
+                        child: CircularProgressIndicator(strokeWidth: 3),
                       )
                     : Icon(
                         _isPlaying ? Icons.pause_outlined : Icons.volume_up,

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-05 10:09:33.401642",
+  "@@last_modified": "2026-03-03 11:16:33.051895",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -1911,7 +1911,7 @@
     "type": "String",
     "description": "Usage hint for the command /invite"
   },
-  "commandHint_join": "Batu gelara",
+  "commandHint_join": "Batu adierazitako gelara",
   "@commandHint_join": {
     "type": "String",
     "description": "Usage hint for the command /join"
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Saiatu geroago edo aukeratu beste zerbitzari bat.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Hasi saioa {provider}(r)ekin",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Ez da irudi-fitxategia.",
   "@notAnImage": {},
   "importNow": "Inportatu orain",
@@ -2608,9 +2599,9 @@
   "@invite": {},
   "invalidInput": "Sartu duzunak ez du balio!",
   "@invalidInput": {},
-  "inviteGroupChat": "📨 Gonbidatu taldeko txatera",
+  "inviteGroupChat": "📨 Taldeko txatera gonbidapena",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Gonbidatu txat pribatura",
+  "invitePrivateChat": "📨 Txat pribatura gonbidapena",
   "@invitePrivateChat": {},
   "banUserDescription": "Erabiltzailea txatetik kanporatu eta berriro sartzeko debekua ezarriko zaio; ezingo da berriro sartu debekua kendu arte.",
   "@banUserDescription": {},
@@ -3362,7 +3353,7 @@
       }
     }
   },
-  "sentVoiceMessage": "🎙️ {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - {sender}(r)en ahots-mezua",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3374,10 +3365,148 @@
       }
     }
   },
-  "commandHint_logout": "Saioa itxi zure gailu honetan",
-  "commandHint_logoutall": "Saioa itxi gailu aktibo guztietan",
-  "displayNavigationRail": "Erakutsi nabigazio errail txikian",
+  "commandHint_logout": "Amaitu saioa gailu honetan",
+  "@commandHint_logout": {},
+  "commandHint_logoutall": "Amaitu saioa aktibo dauden gailu guztietan",
+  "@commandHint_logoutall": {},
+  "moreEvents": "Gertaera gehiago",
+  "@moreEvents": {},
+  "displayNavigationRail": "Erakutsi nabigazio-barra mugikorrean",
+  "@displayNavigationRail": {},
   "customReaction": "Erreakzio pertsonalizatua",
+  "@customReaction": {},
+  "declineInvitation": "Uko egin gonbidapenari",
+  "@declineInvitation": {},
+  "noMessagesYet": "Mezurik ez oraingoz",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Sakatuta mantendu ahots-mezua grabatzeko.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Gelditu",
+  "@pause": {},
+  "resume": "Jarraitu",
+  "@resume": {},
+  "moveToDifferentSpace": "Beste gune batera mugitu",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Eraman gora",
+  "@moveUp": {},
+  "moveDown": "Eraman behera",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Txata gunetik kenduko da, baina txaten zerrendan mantenduko da.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} txat",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "donate": "Egin dohaintza",
+  "@donate": {},
+  "newSubSpace": "Azpi-gune berria",
+  "@newSubSpace": {},
+  "spaceMemberOf": "{spaces} guneko kidea",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "{spaces} guneko kideak sartzeko baimena eska dezake",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "startedAPoll": "{username}(e)k bozketa hasi du.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Bozketa",
+  "@poll": {},
+  "startPoll": "Hasi bozketa",
+  "@startPoll": {},
+  "endPoll": "Amaitu bozketa",
+  "@endPoll": {},
+  "answersVisible": "Erakutsi emaitzak",
+  "@answersVisible": {},
+  "answersHidden": "Ezkutatu emaitzak",
+  "@answersHidden": {},
+  "pollQuestion": "Bozketako galdera",
+  "@pollQuestion": {},
+  "answerOption": "Erantzun-aukera",
+  "@answerOption": {},
+  "addAnswerOption": "Gehitu erantzun-aukera",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Baimendu erantzun bat baino gehiago",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Bozketa amaitu da",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =1{Bozka bat} other{{count} bozka}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Emaitzak bozketak amaitu duenean egongo dira ikusgai",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Erantzun harian",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =1{Erantzun bat} other{{count} erantzun}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Haria",
+  "@thread": {},
+  "backToMainChat": "Joan txat nagusira",
+  "@backToMainChat": {},
+  "changedTheChatDescription": "{username}(e)k txataren deskribapena aldatu du",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username}(e)k txataren izena aldatu du",
+  "@changedTheChatName": {},
+  "saveChanges": "Gorde aldaketak",
+  "@saveChanges": {},
+  "createSticker": "Sortu pegatina edo emojia",
+  "@createSticker": {},
+  "attribution": "Sortzailea",
+  "@attribution": {},
+  "skipChatBackup": "Ez egin txataren babeskopia",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Ziur? Txataren babeskopia gaitzen ez baduzu, gailuz aldatuz gero mezuen sarbidea gal zenezake.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Mezuak kargatzen",
+  "@loadingMessages": {},
+  "setupChatBackup": "Ezarri txataren babeskopia",
+  "@setupChatBackup": {},
+  "useAsSticker": "Erabili pegatina gisa",
+  "@useAsSticker": {},
+  "stickerPackNameAlreadyExists": "Pegatina-sortaren izena badago lehendik ere",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Pegatina-sorta berria",
+  "@newStickerPack": {},
+  "stickerPackName": "Pegatina-sortaren izena",
+  "@stickerPackName": {},
+  "useAsEmoji": "Erabili emoji gisa",
+  "@useAsEmoji": {},
   "writeAMessageLangCodes": "Idatzi {l1} edo {l2}...",
   "requests": "Eskariak",
   "holdForInfo": "Klikatu eta eutsi hitzaren informazioarentzat.",
@@ -3419,7 +3548,6 @@
   "updateLanguage": "Nire hizkuntzak",
   "whatLanguageYouWantToLearn": "Zein hizkuntza ikasi nahi duzu?",
   "whatIsYourBaseLanguage": "Zein da zure oinarrizko hizkuntza?",
-  "saveChanges": "Gorde aldaketak",
   "publicProfileTitle": "Onartu nire profila bilaketetan agertzeko",
   "publicProfileDesc": "Gaituta, beste erabiltzaileek zure profila bilaketa globalean aurkitu eta chat eskaerak bidali ahal izango dituzte. Orain, eskaera onartu edo ukatu dezakezu.",
   "errorDisableIT": "Itzulpen laguntza desgaituta dago.",
@@ -4505,22 +4633,6 @@
   "inviteYourFriends": "Gonbidatu zure lagunak",
   "playWithAI": "Jolastu AIrekin orain",
   "courseStartDesc": "Pangea Bot prest dago noiznahi joateko!\n\n...baina ikastea lagunekin hobe da!",
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4693,10 +4805,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -10737,8 +10845,6 @@
   "congratulations": "Zorionak!",
   "anotherRound": "Beste txanda bat",
   "noActivityRequest": "Ez dago egungo jarduera eskaerarik.",
-  "quit": "Irten",
-  "congratulationsYouveCompletedPractice": "Zorionak! Praktika saioa amaitu duzu.",
   "mustHave10Words": "Gutxienez 10 hiztegi hitz izan behar dituzu praktikan jartzeko. Saiatu lagun batekin edo Pangea Bot-ekin hitz egiten gehiago ezagutzeko!",
   "botSettings": "Botaren Ezarpenak",
   "activitySettingsOverrideWarning": "Jarduera planak zehaztutako hizkuntza eta hizkuntza maila",
@@ -10784,14 +10890,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10970,6 +11068,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Niri buruz",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasal Verb",
   "grammarCopyPOScompn": "Konposatu",
@@ -10982,6 +11085,286 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Praktika perfektua!",
+  "greatPractice": "Praktika handia!",
+  "usedNoHints": "Lan ona, ez duzu inolako iradokizunik erabili!",
+  "youveCompletedPractice": "Praktika amaitu duzu, jarraitu horrela hobetzeko!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Aldatu posta elektronikoa",
+  "withTheseAddressesDescription": "Posta elektroniko helbide hauekin saioa hasi dezakezu, zure pasahitza berreskuratu eta harpidetzak kudeatu.",
+  "noAddressDescription": "Oraindik ez duzu posta elektroniko helbiderik gehitu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Hitz Aukera",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Puntuazioa",
+  "spanTypeStyle": "Estiloa",
+  "spanTypeFluency": "Fluentzia",
+  "spanTypeAccents": "Azentuak",
+  "spanTypeCapitalization": "Kapitalizazioa",
+  "spanTypeCorrection": "Zuzenketa",
+  "spanFeedbackTitle": "Zuzenketa arazoa txostenatu",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Ez da gehiago emaitzarik aurkitu",
+  "chatSearchedUntil": "Txatean bilaketa {time} arte egin da",
+  "federationBaseUrl": "Federazioaren oinarri URL-a",
+  "clientWellKnownInformation": "Bezeroaren ezagutza ona:",
+  "baseUrl": "Oinarri URL-a",
+  "identityServer": "Identitate zerbitzaria:",
+  "versionWithNumber": "Bertsioa: {version}",
+  "logs": "Erregistroak",
+  "advancedConfigs": "Konfigurazio aurreratuak",
+  "advancedConfigurations": "Konfigurazio aurreratuak",
+  "signInWithLabel": "Hasi saioa:",
+  "selectAllWords": "Hitz guztiak hautatu audioan entzuten duzun guztia",
+  "joinCourseForActivities": "Batu ikastaro batera jarduerak probatzeko.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Ikastaroek 3-8 moduluz osatuta daude, eta moduluek hitzak testuinguru desberdinetan praktikatzen laguntzeko jarduerak dituzte.",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Posta elektronikoaren berrespena huts egin du. Mesedez, saiatu berriro.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Ireki ikaskuntza tresnak",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Harpidetza kudeaketa berri bat ireki dugu. Tab berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desblokeatu praktika jarduerak",
+  "hideEvents": "Ezkutatu ekitaldiak",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Erabiltzailea ikastetxetik baztertuko da, baina edozein unetan berriro sartzen saiatuko da.",
+  "denyKnockChat": "Erabiltzailea txatetik baztertuko da, baina edozein unetan berriro sartzen saiatuko da.",
+  "banFromSpace": "Ikastetxetik debekatzea",
+  "unbanFromSpace": "Ikastetxetik debekua kentzea",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Debekatuta. Ez da posible sartzea.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Zure parte-hartze eskaera onartu da! Orain ikastaroan sartu zaitezke.",
+  "sessionFull": "Berandu! Jarduera hau beteta dago.",
+  "returnToCourse": "Itzuli ikastaroara",
+  "returnHome": "Itzuli etxera",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Itzulpen Feedback",
+  "userUpdatedLearningSettings": "{username} ikasketa ezarpenak eguneratu ditu",
+  "youUpdatedLearningSettings": "Zuk ikasketa ezarpenak eguneratu dituzu",
+  "userAddedActivityPlan": "{username} jarduera plana gehitu du",
+  "youAddedActivityPlan": "Zuk jarduera plana gehitu duzu",
+  "userSentActivitySummary": "{username} jarduera laburpena bidali du",
+  "youSentActivitySummary": "Zuk jarduera laburpena bidali duzu",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

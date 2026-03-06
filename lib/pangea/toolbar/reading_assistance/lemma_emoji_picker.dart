@@ -20,10 +20,7 @@ class LemmaEmojiPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 4,
-        horizontal: 8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       width: (40 * 5) + (4 * 5) + 16, // 5 items max + padding
       child: Row(
         spacing: 4.0,

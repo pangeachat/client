@@ -9,9 +9,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphCategoryActivityGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     if (req.target.morphFeature == null) {
       throw ArgumentError(
         "MorphCategoryActivityGenerator requires a targetMorphFeature",
@@ -21,9 +19,7 @@ class MorphCategoryActivityGenerator {
     final feature = req.target.morphFeature!;
     final morphTag = req.target.tokens.first.getMorphTag(feature);
     if (morphTag == null) {
-      throw ArgumentError(
-        "Token does not have the specified morph feature",
-      );
+      throw ArgumentError("Token does not have the specified morph feature");
     }
 
     MorphFeaturesAndTags morphs = defaultMorphMapping;
@@ -59,8 +55,8 @@ class MorphCategoryActivityGenerator {
           choices: choices.toSet(),
           answers: {morphTag},
         ),
-        morphExampleInfo:
-            req.morphExampleInfo ?? const MorphExampleInfo(exampleMessage: []),
+        exampleMessageInfo:
+            req.exampleMessage ?? const ExampleMessageInfo(exampleMessage: []),
       ),
     );
   }

@@ -43,9 +43,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _fetchActivity(),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) => _fetchActivity());
   }
 
   @override
@@ -87,31 +85,28 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _activityState,
-      builder: (context, state, __) {
+      builder: (context, state, _) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             switch (state) {
-              AsyncLoading() => const ContentLoadingIndicator(
-                  height: 40,
-                ),
+              AsyncLoading() => const ContentLoadingIndicator(height: 40),
               AsyncError() => CardErrorWidget(
-                  L10n.of(context).errorFetchingActivity,
-                ),
+                L10n.of(context).errorFetchingActivity,
+              ),
               AsyncLoaded() => switch (state.value) {
-                  MultipleChoicePracticeActivityModel() =>
-                    MessageMorphInputBarContent(
-                      controller: widget.controller,
-                      activity: state.value as MorphPracticeActivityModel,
-                      selectedToken: widget.selectedToken,
-                      maxWidth: widget.maxWidth,
-                    ),
-                  MatchPracticeActivityModel() => MatchActivityCard(
-                      currentActivity:
-                          state.value as MatchPracticeActivityModel,
-                      controller: widget.controller,
-                    ),
-                },
+                MultipleChoicePracticeActivityModel() =>
+                  MessageMorphInputBarContent(
+                    controller: widget.controller,
+                    activity: state.value as MorphPracticeActivityModel,
+                    selectedToken: widget.selectedToken,
+                    maxWidth: widget.maxWidth,
+                  ),
+                MatchPracticeActivityModel() => MatchActivityCard(
+                  currentActivity: state.value as MatchPracticeActivityModel,
+                  controller: widget.controller,
+                ),
+              },
               _ => const SizedBox.shrink(),
             },
           ],

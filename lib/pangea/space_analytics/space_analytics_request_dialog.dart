@@ -10,9 +10,7 @@ import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 
 class SpaceAnalyticsRequestDialog extends StatelessWidget {
-  const SpaceAnalyticsRequestDialog({
-    super.key,
-  });
+  const SpaceAnalyticsRequestDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class SpaceAnalyticsRequestDialog extends StatelessWidget {
                     imageUrl:
                         "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
                     errorWidget: (context, e, s) => const SizedBox.shrink(),
-                    progressIndicatorBuilder: (context, _, __) =>
+                    progressIndicatorBuilder: (context, _, _) =>
                         const SizedBox.shrink(),
                     width: 150.0,
                   ),

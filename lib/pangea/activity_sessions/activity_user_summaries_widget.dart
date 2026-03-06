@@ -17,10 +17,7 @@ import 'package:fluffychat/widgets/avatar.dart';
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
 
-  const ActivityUserSummaries({
-    super.key,
-    required this.controller,
-  });
+  const ActivityUserSummaries({super.key, required this.controller});
 
   Room get room => controller.room;
 
@@ -36,8 +33,10 @@ class ActivityUserSummaries extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
             child: Center(
               child: Material(
                 color: Theme.of(context).colorScheme.surface.withAlpha(128),
@@ -51,24 +50,15 @@ class ActivityUserSummaries extends StatelessWidget {
                     spacing: 4.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        L10n.of(context).activityFinishedMessage,
-                      ),
-                      Text(
-                        summary.summary,
-                        textAlign: TextAlign.center,
-                      ),
+                      Text(L10n.of(context).activityFinishedMessage),
+                      Text(summary.summary, textAlign: TextAlign.center),
                     ],
                   ),
                 ),
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 8.0,
-            ),
-          ),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 8.0)),
           ButtonControlledCarouselView(
             summary: summary,
             controller: controller,
@@ -88,11 +78,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
     required this.controller,
   });
 
-  void _scrollToUser(
-    ActivityRoleModel role,
-    int index,
-    double cardWidth,
-  ) {
+  void _scrollToUser(ActivityRoleModel role, int index, double cardWidth) {
     controller.activityController.highlightRole(role);
 
     final scrollController = controller.activityController.carouselController;
@@ -123,8 +109,8 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    final superlatives =
-        room.activitySummary?.analytics?.generateSuperlatives();
+    final superlatives = room.activitySummary?.analytics
+        ?.generateSuperlatives();
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
     final userSummaries = summary.participants
@@ -156,8 +142,8 @@ class ButtonControlledCarouselView extends StatelessWidget {
             itemBuilder: (context, i) {
               final p = userSummaries[i];
               final user = room.getParticipants().firstWhereOrNull(
-                    (u) => u.id == p.participantId,
-                  );
+                (u) => u.id == p.participantId,
+              );
               final userRole = assignedRoles.values.firstWhere(
                 (role) => role.userId == p.participantId,
               );
@@ -193,9 +179,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                         Flexible(
                           child: Text(
                             "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                            ),
+                            style: const TextStyle(fontSize: 14.0),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -222,18 +206,14 @@ class ButtonControlledCarouselView extends StatelessWidget {
                             children: [
                               Text(
                                 p.cefrLevel,
-                                style: const TextStyle(
-                                  fontSize: 14.0,
-                                ),
+                                style: const TextStyle(fontSize: 14.0),
                               ),
                               //const SizedBox(width: 8),
                               if (superlatives != null &&
                                   (superlatives['vocab']!.contains(
                                     p.participantId,
                                   ))) ...[
-                                const SuperlativeTile(
-                                  icon: Symbols.dictionary,
-                                ),
+                                const SuperlativeTile(icon: Symbols.dictionary),
                               ],
                               if (superlatives != null &&
                                   (superlatives['grammar']!.contains(
@@ -247,9 +227,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                   (superlatives['xp']!.contains(
                                     p.participantId,
                                   ))) ...[
-                                const SuperlativeTile(
-                                  icon: Icons.star,
-                                ),
+                                const SuperlativeTile(icon: Icons.star),
                               ],
                               if (p.superlatives.isNotEmpty) ...[
                                 Text(
@@ -273,7 +251,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
           height: 125.0,
           child: ValueListenableBuilder(
             valueListenable: controller.activityController.highlightedRole,
-            builder: (context, highlightedRole, __) {
+            builder: (context, highlightedRole, _) {
               return ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -281,8 +259,8 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final p = userSummaries[index];
                   final user = room.getParticipants().firstWhereOrNull(
-                        (u) => u.id == p.participantId,
-                      );
+                    (u) => u.id == p.participantId,
+                  );
                   final userRole = assignedRoles.values.firstWhere(
                     (role) => role.userId == p.participantId,
                   );
@@ -315,10 +293,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
 class SuperlativeTile extends StatelessWidget {
   final IconData icon;
 
-  const SuperlativeTile({
-    super.key,
-    required this.icon,
-  });
+  const SuperlativeTile({super.key, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -327,12 +302,7 @@ class SuperlativeTile extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: Theme.of(context).colorScheme.onSurface),
         const SizedBox(width: 2),
-        const Text(
-          "1st",
-          style: TextStyle(
-            fontSize: 14.0,
-          ),
-        ),
+        const Text("1st", style: TextStyle(fontSize: 14.0)),
       ],
     );
   }
@@ -340,9 +310,7 @@ class SuperlativeTile extends StatelessWidget {
 
 class _SummaryText extends StatefulWidget {
   final String text;
-  const _SummaryText({
-    required this.text,
-  });
+  const _SummaryText({required this.text});
 
   @override
   State<_SummaryText> createState() => _SummaryTextState();
@@ -364,10 +332,7 @@ class _SummaryTextState extends State<_SummaryText> {
       thumbVisibility: true,
       child: SingleChildScrollView(
         controller: _scrollController,
-        child: Text(
-          widget.text,
-          style: const TextStyle(fontSize: 14.0),
-        ),
+        child: Text(widget.text, style: const TextStyle(fontSize: 14.0)),
       ),
     );
   }

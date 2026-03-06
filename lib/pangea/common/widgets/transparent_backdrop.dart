@@ -28,19 +28,12 @@ class TransparentBackdrop extends StatelessWidget {
         backgroundColor?.withAlpha((0.8 * 255).round()) ?? Colors.transparent;
 
     return TweenAnimationBuilder<double>(
-      tween: Tween<double>(
-        begin: animateBackground ? 0.0 : 1.0,
-        end: 1.0,
-      ),
+      tween: Tween<double>(begin: animateBackground ? 0.0 : 1.0, end: 1.0),
       duration: animateBackground ? backgroundAnimationDuration : Duration.zero,
       builder: (context, t, child) {
         return Material(
           borderOnForeground: false,
-          color: Color.lerp(
-            Colors.transparent,
-            targetColor,
-            t,
-          ),
+          color: Color.lerp(Colors.transparent, targetColor, t),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             hoverColor: Colors.transparent,

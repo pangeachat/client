@@ -8,6 +8,8 @@ import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/knock_room_extension.dart';
+import 'package:fluffychat/pangea/user/about_me_display.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -31,9 +33,9 @@ void showMemberActionsPopupMenu({
 
   // #Pangea
   // final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
-  final overlay = Overlay.of(context, rootOverlay: true)
-      .context
-      .findRenderObject() as RenderBox;
+  final overlay =
+      Overlay.of(context, rootOverlay: true).context.findRenderObject()
+          as RenderBox;
   // Pangea#
 
   final button = context.findRenderObject() as RenderBox;
@@ -58,63 +60,66 @@ void showMemberActionsPopupMenu({
     items: <PopupMenuEntry<_MemberActions>>[
       PopupMenuItem(
         value: _MemberActions.info,
-        child: Row(
-          // Pangea#
-          spacing: 12.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Avatar(
-              name: displayname,
-              mxContent: user.avatarUrl,
-              presenceUserId: user.id,
-              presenceBackgroundColor: theme.colorScheme.surfaceContainer,
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              // Pangea#
+              spacing: 12.0,
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    displayname,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.labelLarge,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Avatar(
+                  name: displayname,
+                  mxContent: user.avatarUrl,
+                  presenceUserId: user.id,
+                  presenceBackgroundColor: theme.colorScheme.surfaceContainer,
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    user.id,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 10),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        displayname,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.labelLarge,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        user.id,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 10),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    // #Pangea
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [LevelDisplayName(userId: user.id)],
+                      ),
+                    ),
+                    // Pangea#
+                  ],
                 ),
-                // #Pangea
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      LevelDisplayName(userId: user.id),
-                    ],
-                  ),
-                ),
-                // Pangea#
               ],
             ),
+            // #Pangea
+            AboutMeDisplay(userId: user.id),
+            // Pangea#
           ],
         ),
       ),
       if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
         PopupMenuItem(
           enabled: false,
-          padding: const EdgeInsets.only(
-            left: 12.0,
-            right: 12.0,
-          ),
+          padding: const EdgeInsets.only(left: 12.0, right: 12.0),
           child: BotChatSettingsDialog(room: room),
         ),
       const PopupMenuDivider(),
@@ -157,32 +162,52 @@ void showMemberActionsPopupMenu({
             ],
           ),
         ),
-      PopupMenuItem(
-        enabled: user.room.canChangePowerLevel && user.canChangeUserPowerLevel,
-        value: _MemberActions.setRole,
-        child: Row(
-          children: [
-            const Icon(Icons.admin_panel_settings_outlined),
-            const SizedBox(width: 18),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(L10n.of(context).chatPermissions),
-                Text(
-                  user.powerLevel < 50
-                      ? L10n.of(context).userLevel(user.powerLevel)
-                      : user.powerLevel < 100
-                          ? L10n.of(context).moderatorLevel(user.powerLevel)
-                          : L10n.of(context).adminLevel(user.powerLevel),
-                  style: const TextStyle(fontSize: 10),
-                ),
-              ],
-            ),
-          ],
+      // #Pangea
+      if (user.canKick && user.membership == Membership.knock)
+        PopupMenuItem(
+          value: _MemberActions.kick,
+          child: Row(
+            children: [
+              Icon(Icons.person_remove_outlined),
+              const SizedBox(width: 18),
+              Text(L10n.of(context).deny),
+            ],
+          ),
         ),
-      ),
-      if (user.canKick)
+      // Pangea#
+      // #Pangea
+      if (user.membership == Membership.join)
+        // Pangea#
+        PopupMenuItem(
+          enabled:
+              user.room.canChangePowerLevel && user.canChangeUserPowerLevel,
+          value: _MemberActions.setRole,
+          child: Row(
+            children: [
+              const Icon(Icons.admin_panel_settings_outlined),
+              const SizedBox(width: 18),
+              Column(
+                mainAxisSize: .min,
+                crossAxisAlignment: .start,
+                children: [
+                  Text(L10n.of(context).chatPermissions),
+                  Text(
+                    user.powerLevel < 50
+                        ? L10n.of(context).userLevel(user.powerLevel)
+                        : user.powerLevel < 100
+                        ? L10n.of(context).moderatorLevel(user.powerLevel)
+                        : L10n.of(context).adminLevel(user.powerLevel),
+                    style: const TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      // #Pangea
+      // if (user.canKick)
+      if (user.canKick && user.membership != Membership.knock)
+        // Pangea#
         PopupMenuItem(
           value: _MemberActions.kick,
           child: Row(
@@ -210,7 +235,12 @@ void showMemberActionsPopupMenu({
               ),
               const SizedBox(width: 18),
               Text(
-                L10n.of(context).ban,
+                // #Pangea
+                // L10n.of(context).ban,
+                user.room.isSpace
+                    ? L10n.of(context).banFromSpace
+                    : L10n.of(context).ban,
+                // Pangea#
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
@@ -223,7 +253,14 @@ void showMemberActionsPopupMenu({
             children: [
               const Icon(Icons.warning),
               const SizedBox(width: 18),
-              Text(L10n.of(context).unbanFromChat),
+              // #Pangea
+              // Text(L10n.of(context).unbanFromChat),
+              Text(
+                user.room.isSpace
+                    ? L10n.of(context).unbanFromSpace
+                    : L10n.of(context).unbanFromChat,
+              ),
+              // Pangea#
             ],
           ),
         ),
@@ -280,7 +317,10 @@ void showMemberActionsPopupMenu({
     case _MemberActions.approve:
       await showFutureLoadingDialog(
         context: context,
-        future: () => user.room.invite(user.id),
+        // #Pangea
+        // future: () => user.room.invite(user.id),
+        future: () => user.room.acceptKnock(user.id),
+        // Pangea#
       );
       return;
     case _MemberActions.kick:
@@ -291,10 +331,15 @@ void showMemberActionsPopupMenu({
             cancelLabel: L10n.of(context).no,
             // #Pangea
             // message: L10n.of(context).kickUserDescription,
-            message: user.id == BotName.byEnvironment &&
+            message:
+                user.id == BotName.byEnvironment &&
                     !user.room.isSpace &&
                     !user.room.isDirectChat
                 ? L10n.of(context).kickBotWarning
+                : user.membership == Membership.knock
+                ? user.room.isSpace
+                      ? L10n.of(context).denyKnockSpace
+                      : L10n.of(context).denyKnockChat
                 : L10n.of(context).kickUserDescription,
             // Pangea#
           ) ==
@@ -333,10 +378,7 @@ void showMemberActionsPopupMenu({
 
     //   final result = await showFutureLoadingDialog(
     //     context: context,
-    //     future: () => user.room.client.reportUser(
-    //       user.id,
-    //       reason,
-    //     ),
+    //     future: () => user.room.client.reportUser(user.id, reason),
     //   );
     //   if (result.error != null) return;
     //   ScaffoldMessenger.of(context).showSnackBar(
@@ -347,10 +389,8 @@ void showMemberActionsPopupMenu({
       final router = GoRouter.of(context);
       final roomIdResult = await showFutureLoadingDialog(
         context: context,
-        future: () => user.room.client.startDirectChat(
-          user.id,
-          enableEncryption: false,
-        ),
+        future: () =>
+            user.room.client.startDirectChat(user.id, enableEncryption: false),
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;

@@ -35,17 +35,13 @@ class StatCard extends StatelessWidget {
     if (!isColumnMode) {
       titleStyle = theme.textTheme.bodyMedium;
     }
-    titleStyle = titleStyle?.copyWith(
-      fontWeight: FontWeight.bold,
-    );
+    titleStyle = titleStyle?.copyWith(fontWeight: FontWeight.bold);
 
     TextStyle? achievementStyle = theme.textTheme.titleSmall;
     if (!isColumnMode) {
       achievementStyle = theme.textTheme.bodySmall;
     }
-    achievementStyle = achievementStyle?.copyWith(
-      fontWeight: FontWeight.bold,
-    );
+    achievementStyle = achievementStyle?.copyWith(fontWeight: FontWeight.bold);
 
     return Container(
       decoration: BoxDecoration(
@@ -59,20 +55,12 @@ class StatCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(
-                icon,
-              ),
+              Icon(icon),
               const SizedBox(width: 8),
-              Text(
-                text,
-                style: titleStyle,
-              ),
+              Text(text, style: titleStyle),
               if (isAchievement) ...[
                 const Spacer(),
-                Text(
-                  achievementText,
-                  style: achievementStyle,
-                ),
+                Text(achievementText, style: achievementStyle),
               ],
             ],
           ),

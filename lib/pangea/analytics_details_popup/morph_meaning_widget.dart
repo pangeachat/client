@@ -62,11 +62,13 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
   }
 
   MorphInfoRequest get _request => MorphInfoRequest(
-        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
-            LanguageKeys.defaultLanguage,
-        userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
-            LanguageKeys.defaultLanguage,
-      );
+    userL1:
+        MatrixState.pangeaController.userController.userL1?.langCode ??
+        LanguageKeys.defaultLanguage,
+    userL2:
+        MatrixState.pangeaController.userController.userL2?.langCode ??
+        LanguageKeys.defaultLanguage,
+  );
 
   Future<void> _loadMorphMeaning() async {
     if (mounted) {
@@ -178,15 +180,7 @@ class MorphEditView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(
-            getGrammarCopy(
-                  category: morphFeature.name,
-                  lemma: morphTag,
-                  context: context,
-                ) ??
-                morphTag,
-            '',
-          )}",
+          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(getGrammarCopy(category: morphFeature.name, lemma: morphTag, context: context) ?? morphTag, '')}",
           textAlign: TextAlign.center,
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
@@ -218,8 +212,8 @@ class MorphEditView extends StatelessWidget {
             ElevatedButton(
               onPressed: () =>
                   controller.text != meaning && controller.text.isNotEmpty
-                      ? editMorphMeaning(controller.text)
-                      : null,
+                  ? editMorphMeaning(controller.text)
+                  : null,
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),

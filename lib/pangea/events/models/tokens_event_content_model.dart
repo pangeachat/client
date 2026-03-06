@@ -11,10 +11,7 @@ class PangeaMessageTokens {
   List<PangeaToken> tokens;
   List<LanguageDetectionModel>? detections;
 
-  PangeaMessageTokens({
-    required this.tokens,
-    this.detections,
-  });
+  PangeaMessageTokens({required this.tokens, this.detections});
 
   factory PangeaMessageTokens.fromJson(Map<String, dynamic> json) {
     // "tokens" was accidentally used as the key in the first implementation
@@ -24,14 +21,14 @@ class PangeaMessageTokens {
     final Iterable tokensIterable = something is Iterable
         ? something
         : something is String
-            ? jsonDecode(json[_tokensKey])
-            : null;
+        ? jsonDecode(json[_tokensKey])
+        : null;
 
     final Iterable? detectionsIterable = json[_detectionsKey] is Iterable
         ? json[_detectionsKey]
         : json[_detectionsKey] is String
-            ? jsonDecode(json[_detectionsKey])
-            : null;
+        ? jsonDecode(json[_detectionsKey])
+        : null;
     return PangeaMessageTokens(
       tokens: tokensIterable
           .map((e) => PangeaToken.fromJson(e))
@@ -50,8 +47,9 @@ class PangeaMessageTokens {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_tokensKey] = jsonEncode(tokens.map((e) => e.toJson()).toList());
-    data[_detectionsKey] =
-        jsonEncode(detections?.map((e) => e.toJson()).toList());
+    data[_detectionsKey] = jsonEncode(
+      detections?.map((e) => e.toJson()).toList(),
+    );
     return data;
   }
 }

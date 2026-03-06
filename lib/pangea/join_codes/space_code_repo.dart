@@ -13,17 +13,11 @@ class SpaceCodeRepo {
 
   static Future<void> setSpaceCode(String code) async {
     if (code.isEmpty) return;
-    await _spaceStorage.write(
-      PLocalKey.cachedSpaceCodeToJoin,
-      code,
-    );
+    await _spaceStorage.write(PLocalKey.cachedSpaceCodeToJoin, code);
   }
 
   static Future<void> setRecentCode(String code) async {
-    await _spaceStorage.write(
-      PLocalKey.justInputtedCode,
-      code,
-    );
+    await _spaceStorage.write(PLocalKey.justInputtedCode, code);
   }
 
   static Future<void> clearSpaceCode() async {

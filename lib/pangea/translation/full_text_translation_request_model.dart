@@ -1,4 +1,8 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_response_model.dart';
 
 class FullTextTranslationRequestModel {
   final String text;
@@ -9,6 +13,7 @@ class FullTextTranslationRequestModel {
   final bool? deepL;
   final int? offset;
   final int? length;
+  final List<LLMFeedbackModel<FullTextTranslationResponseModel>>? feedback;
 
   const FullTextTranslationRequestModel({
     required this.text,
@@ -19,18 +24,21 @@ class FullTextTranslationRequestModel {
     this.deepL = false,
     this.offset,
     this.length,
+    this.feedback,
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.text: text,
-        ModelKey.srcLang: srcLang,
-        ModelKey.tgtLang: tgtLang,
-        ModelKey.userL2: userL2,
-        ModelKey.userL1: userL1,
-        ModelKey.deepL: deepL,
-        ModelKey.offset: offset,
-        ModelKey.length: length,
-      };
+    ModelKey.text: text,
+    ModelKey.srcLang: srcLang,
+    ModelKey.tgtLang: tgtLang,
+    ModelKey.userL2: userL2,
+    ModelKey.userL1: userL1,
+    ModelKey.deepL: deepL,
+    ModelKey.offset: offset,
+    ModelKey.length: length,
+    if (feedback != null)
+      ModelKey.feedback: feedback!.map((f) => f.toJson()).toList(),
+  };
 
   // override equals and hashcode
   @override
@@ -45,7 +53,8 @@ class FullTextTranslationRequestModel {
         other.userL1 == userL1 &&
         other.deepL == deepL &&
         other.offset == offset &&
-        other.length == length;
+        other.length == length &&
+        ListEquality().equals(other.feedback, feedback);
   }
 
   @override
@@ -57,5 +66,6 @@ class FullTextTranslationRequestModel {
       userL1.hashCode ^
       deepL.hashCode ^
       offset.hashCode ^
-      length.hashCode;
+      length.hashCode ^
+      ListEquality().hash(feedback);
 }

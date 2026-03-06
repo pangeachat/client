@@ -4,6 +4,9 @@ import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 
 class WordTextWithAudioButton extends StatelessWidget {
   final String text;
+  final String pos;
+  final Map<String, String>? morph;
+
   final String uniqueID;
   final TextStyle? style;
   final double? iconSize;
@@ -14,6 +17,8 @@ class WordTextWithAudioButton extends StatelessWidget {
     required this.text,
     required this.uniqueID,
     required this.langCode,
+    required this.pos,
+    this.morph,
     this.style,
     this.iconSize,
   });
@@ -39,6 +44,8 @@ class WordTextWithAudioButton extends StatelessWidget {
           baseOpacity: 1,
           langCode: langCode,
           padding: const EdgeInsets.only(left: 8.0),
+          pos: pos,
+          morph: morph,
         ),
       ],
     );

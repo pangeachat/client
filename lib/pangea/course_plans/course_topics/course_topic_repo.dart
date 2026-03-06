@@ -22,22 +22,17 @@ class CourseTopicRepo {
     await _storage.initStorage;
     final topics = getCached(request).topics;
 
-    final toFetch =
-        request.topicIds.where((uuid) => !topics.containsKey(uuid)).toList();
+    final toFetch = request.topicIds
+        .where((uuid) => !topics.containsKey(uuid))
+        .toList();
 
     if (toFetch.isNotEmpty) {
       final fetchedTopics = await _fetch(
-        TranslateTopicRequest(
-          topicIds: toFetch,
-          l1: request.l1,
-        ),
+        TranslateTopicRequest(topicIds: toFetch, l1: request.l1),
         batchId,
       );
       topics.addAll(fetchedTopics.topics);
-      await _setCached(
-        fetchedTopics,
-        request.l1,
-      );
+      await _setCached(fetchedTopics, request.l1);
     }
 
     return TranslateTopicResponse(topics: topics);
@@ -91,9 +86,7 @@ class CourseTopicRepo {
     }
   }
 
-  static TranslateTopicResponse getCached(
-    TranslateTopicRequest request,
-  ) {
+  static TranslateTopicResponse getCached(TranslateTopicRequest request) {
     final Map<String, CourseTopicModel> topics = {};
     for (final uuid in request.topicIds) {
       final cacheKey = "${uuid}_${request.l1}";
@@ -119,12 +112,7 @@ class CourseTopicRepo {
   ) async {
     final List<Future> futures = [];
     for (final entry in response.topics.entries) {
-      futures.add(
-        _storage.write(
-          "${entry.key}_$l1",
-          entry.value.toJson(),
-        ),
-      );
+      futures.add(_storage.write("${entry.key}_$l1", entry.value.toJson()));
     }
     await Future.wait(futures);
   }

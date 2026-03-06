@@ -51,13 +51,7 @@ class StyleSettingsRepo {
     try {
       return StyleSettings.fromJson(json);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "settings_entry": json,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"settings_entry": json});
       _storage.remove(key);
       return const StyleSettings();
     }

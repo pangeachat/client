@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-02-05 10:09:12.250951",
+  "@@last_modified": "2026-03-03 11:15:48.759779",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -342,7 +342,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "La copia de respaldo del chat está protegida por una llave de seguridad. Procure no perderla.",
+  "chatBackupDescription": "Tus mensajes están protegidos por una llave de seguridad. Procura no perderla.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -2315,7 +2315,7 @@
   "@enterSpace": {},
   "pleaseEnterRecoveryKey": "Por favor, introduzca su clave de recuperación:",
   "@pleaseEnterRecoveryKey": {},
-  "widgetNameError": "Por favor proporciona un nombre para mostrar.",
+  "widgetNameError": "Por favor, proporciona un nombre para mostrar.",
   "@widgetNameError": {},
   "addWidget": "Añadir widget",
   "@addWidget": {},
@@ -2562,7 +2562,7 @@
   "@hideRedactedMessages": {},
   "appLockDescription": "Bloquear la aplicación cuando no se use con código pin",
   "@appLockDescription": {},
-  "alwaysUse24HourFormat": "falso",
+  "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -2613,7 +2613,7 @@
   "@disableEncryptionWarning": {},
   "setColorTheme": "Poner tema de color:",
   "@setColorTheme": {},
-  "inviteGroupChat": "📨 Invitar a grupo de chat",
+  "inviteGroupChat": "📨 Invitar a grupo",
   "@inviteGroupChat": {},
   "invalidInput": "¡Entrada no válida!",
   "@invalidInput": {},
@@ -2656,7 +2656,7 @@
   "@changelog": {},
   "sendCanceled": "Envío cancelado",
   "@sendCanceled": {},
-  "invite": "Invitación",
+  "invite": "Invitar",
   "@invite": {},
   "searchIn": "Buscar en chat \"{chat}\"...",
   "@searchIn": {
@@ -2703,15 +2703,6 @@
   "@youInvitedToBy": {
     "placeholders": {
       "alias": {
-        "type": "String"
-      }
-    }
-  },
-  "signInWith": "Entrar con {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
         "type": "String"
       }
     }
@@ -3279,7 +3270,7 @@
   "@yourGlobalUserIdIs": {},
   "noKeyForThisMessage": "Esto puede ocurrir si el mensaje se envió antes de que entraras en tu cuenta en este dispositivo.\n\nTambién puede que el remitente haya bloqueado tu dispositivo o haya fallado algo en la conexión a Internet.\n\n¿Puedes leer el mensaje en otra sesión? Entonces, ¡puedes transferir el mensaje desde allí! Ve a Ajustes > Dispositivos y asegúrate de que tus dispositivos se han verificado mutuamente. Cuando abras la sala la próxima vez y ambas sesiones estén en primer plano, las claves se transmitirán automáticamente.\n\n¿No quieres perder las claves al salir o al cambiar de dispositivo? Asegúrate de que has habilitado la copia de seguridad del chat en los ajustes.",
   "@noKeyForThisMessage": {},
-  "invitePrivateChat": "📨 Invitar a chat privado",
+  "invitePrivateChat": "📨 Invitar a grupo privado",
   "@invitePrivateChat": {},
   "banUserDescription": "Se expulsará al usuario del chat y no podrá volver a entrar hasta que se le permita.",
   "@banUserDescription": {},
@@ -3344,7 +3335,7 @@
   "@enterNewChat": {},
   "pleaseWaitUntilInvited": "Por favor espera, hasta que alguien del chat te invite.",
   "@pleaseWaitUntilInvited": {},
-  "commandHint_roomupgrade": "Actualizar este chat a la versión de chat dada",
+  "commandHint_roomupgrade": "Actualizar este chat a la versión de chat asignada",
   "@commandHint_roomupgrade": {},
   "checkList": "Lista de tareas",
   "@checkList": {},
@@ -3383,10 +3374,64 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "Mostrar carril de navegación en móvil",
   "@displayNavigationRail": {},
-  "youHaveKnocked": "Has sido golpeado",
-  "@youHaveKnocked": {},
   "approve": "Aprobar",
   "@approve": {},
+  "youHaveKnocked": "Has sido expulsado",
+  "@youHaveKnocked": {},
+  "customReaction": "Reacción personalizada",
+  "@customReaction": {},
+  "moreEvents": "Más eventos",
+  "@moreEvents": {},
+  "declineInvitation": "Rechazar invitación",
+  "@declineInvitation": {},
+  "changedTheChatDescription": "{username} ha cambiado la descripción del chat",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username} ha cambiado el nombre del chat",
+  "@changedTheChatName": {},
+  "noMessagesYet": "Sin mensajes",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Deja presionado para grabar un mensaje.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Pausa",
+  "@pause": {},
+  "resume": "Continuar",
+  "@resume": {},
+  "newSubSpace": "Nuevo sub espacio",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Mover a otro espacio",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Mover arriba",
+  "@moveUp": {},
+  "moveDown": "Mover abajo",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "El chat sera removido del espacio pero continuara apareciendo en tu lista de chats.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} chats",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "startedAPoll": "{username} inició una encuesta.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Encuesta",
+  "@poll": {},
+  "startPoll": "Iniciar encuesta",
+  "@startPoll": {},
+  "endPoll": "Finalizar encuesta",
+  "@endPoll": {},
+  "answersVisible": "Respuestas visibles",
+  "@answersVisible": {},
   "archivedRoom": "",
   "askSSSSCache": "Ingrese su contraseña de almacenamiento segura (SSSS) o la clave de recuperación para almacenar en caché las claves.",
   "askSSSSVerify": "",
@@ -3429,15 +3474,6 @@
   "makeSureTheIdentifierIsValid": "Asegúrese de que el identificador es válido",
   "messageWillBeRemovedWarning": "El mensaje será eliminado para todos los participantes",
   "monday": "Lunes",
-  "moreEvents": "{count,plural, =1{1 evento más} other{{count} más eventos}}",
-  "@moreEvents": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "String"
-      }
-    }
-  },
   "noCrossSignBootstrap": "Fluffychat actualmente no soporta la activación de Cross-Signing. Por favor, actívelo dentro de Riot.",
   "noMegolmBootstrap": "Fluffychat actualmente no soporta la activación de Online Key Backup. Por favor, actívelo dentro de Riot.",
   "noPublicRoomsFound": "Sin chats públicos…",
@@ -5285,7 +5321,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "customReaction": "Reacción personalizada",
   "chatCapacitySetTooLow": "La capacidad de chat debe ser al menos {count}.",
   "spaceCapacitySetTooLow": "La capacidad del espacio debe ser al menos {count}.",
   "grammarCopyVERBFORMshrt": "Corto",
@@ -5352,10 +5387,6 @@
   "errorFetchingActivity": "Error al obtener la actividad",
   "check": "Verificar",
   "unableToFindRoom": "No se encontró chat o espacio con ese código. Por favor, intenta de nuevo.",
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chatCapacitySetTooLow": {
     "type": "int",
     "placeholders": {
@@ -7979,8 +8010,6 @@
   "congratulations": "¡Felicidades!",
   "anotherRound": "Otra ronda",
   "noActivityRequest": "No hay solicitudes de actividad actuales.",
-  "quit": "Salir",
-  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
   "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
   "botSettings": "Configuración del Bot",
   "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
@@ -8026,14 +8055,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -8212,6 +8233,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Acerca de mí",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Modismo",
   "grammarCopyPOSphrasalv": "Verbo Frasal",
   "grammarCopyPOScompn": "Compuesto",
@@ -8224,6 +8250,431 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "¡Práctica perfecta!",
+  "greatPractice": "¡Gran práctica!",
+  "usedNoHints": "¡Buen trabajo no usando ninguna pista!",
+  "youveCompletedPractice": "¡Has completado la práctica, sigue así para mejorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Cambiar correo electrónico",
+  "withTheseAddressesDescription": "Con estas direcciones de correo electrónico puedes iniciar sesión, recuperar tu contraseña y gestionar suscripciones.",
+  "noAddressDescription": "Aún no has añadido ninguna dirección de correo electrónico.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramática",
+  "spanTypeWordChoice": "Elección de palabras",
+  "spanTypeSpelling": "Ortografía",
+  "spanTypePunctuation": "Puntuación",
+  "spanTypeStyle": "Estilo",
+  "spanTypeFluency": "Fluidez",
+  "spanTypeAccents": "Acentos",
+  "spanTypeCapitalization": "Capitalización",
+  "spanTypeCorrection": "Corrección",
+  "spanFeedbackTitle": "Informar problema de corrección",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spaceMemberOf": "Miembro del espacio de {spaces}",
+  "spaceMemberOfCanKnock": "Miembro del espacio de {spaces} puede tocar",
+  "answersHidden": "Respuestas ocultas",
+  "pollQuestion": "Pregunta de la encuesta",
+  "answerOption": "Opción de respuesta",
+  "addAnswerOption": "Agregar opción de respuesta",
+  "allowMultipleAnswers": "Permitir múltiples respuestas",
+  "pollHasBeenEnded": "La encuesta ha sido finalizada",
+  "countVotes": "{count, plural, =1{Un voto} other{{count} votos}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Las respuestas serán visibles cuando la encuesta haya finalizado",
+  "replyInThread": "Responder en el hilo",
+  "countReplies": "{count, plural, =1{Una respuesta} other{{count} respuestas}}",
+  "thread": "Hilo",
+  "backToMainChat": "Volver al chat principal",
+  "createSticker": "Crear sticker o emoji",
+  "useAsSticker": "Usar como sticker",
+  "useAsEmoji": "Usar como emoji",
+  "stickerPackNameAlreadyExists": "El nombre del paquete de stickers ya existe",
+  "newStickerPack": "Nuevo paquete de stickers",
+  "stickerPackName": "Nombre del paquete de stickers",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "attribution": "Atribución",
+  "skipChatBackup": "Omitir copia de seguridad del chat",
+  "skipChatBackupWarning": "¿Estás seguro? Sin habilitar la copia de seguridad del chat, puedes perder el acceso a tus mensajes si cambias de dispositivo.",
+  "loadingMessages": "Cargando mensajes",
+  "noMoreResultsFound": "No se encontraron más resultados",
+  "chatSearchedUntil": "Chat buscado hasta {time}",
+  "federationBaseUrl": "URL base de la federación",
+  "clientWellKnownInformation": "Información conocida del cliente:",
+  "baseUrl": "URL base",
+  "identityServer": "Servidor de identidad:",
+  "versionWithNumber": "Versión: {version}",
+  "logs": "Registros",
+  "advancedConfigs": "Configuraciones avanzadas",
+  "advancedConfigurations": "Configuraciones avanzadas",
+  "signInWithLabel": "Iniciar sesión con:",
+  "highlightVocabTooltip": "Resalta las palabras de vocabulario objetivo a continuación enviándolas o practicando con ellas en el chat",
+  "selectAllWords": "Selecciona todas las palabras que escuches en el audio",
+  "joinCourseForActivities": "Únete a un curso para probar actividades.",
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Los cursos constan de 3 a 8 módulos, cada uno con actividades para fomentar la práctica de palabras en diferentes contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificación del correo electrónico falló. Por favor, inténtalo de nuevo.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloquear herramientas de aprendizaje",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Hemos lanzado la gestión de suscripciones en una nueva pestaña. Si no viste la nueva pestaña, por favor verifica tu bloqueador de ventanas emergentes.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloquear actividades de práctica",
+  "hideEvents": "Ocultar eventos",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "El usuario será rechazado del curso, sin embargo, puede intentar unirse de nuevo en cualquier momento más tarde.",
+  "denyKnockChat": "El usuario será rechazado del chat, sin embargo, puede intentar unirse de nuevo en cualquier momento más tarde.",
+  "banFromSpace": "Prohibición del curso",
+  "unbanFromSpace": "Levantar la prohibición del curso",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Prohibido. No se puede unirse.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "¡Tu solicitud de unión fue aceptada! Ahora puedes entrar al curso.",
+  "sessionFull": "¡Demasiado tarde! Esta actividad está llena.",
+  "returnToCourse": "Regresar al curso",
+  "returnHome": "Regresar a casa",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Comentarios sobre la traducción",
+  "userUpdatedLearningSettings": "{username} actualizó la configuración de aprendizaje",
+  "youUpdatedLearningSettings": "Has actualizado tu configuración de aprendizaje",
+  "userAddedActivityPlan": "{username} agregó un plan de actividad",
+  "youAddedActivityPlan": "Has agregado un plan de actividad",
+  "userSentActivitySummary": "{username} envió un resumen de actividad",
+  "youSentActivitySummary": "Has enviado un resumen de actividad",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

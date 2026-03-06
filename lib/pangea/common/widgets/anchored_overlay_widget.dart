@@ -54,10 +54,11 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final leftPosition = (widget.anchorRect.left +
-            (widget.anchorRect.width / 2) -
-            (overlayWidth / 2))
-        .clamp(8.0, MediaQuery.sizeOf(context).width - overlayWidth - 8.0);
+    final leftPosition =
+        (widget.anchorRect.left +
+                (widget.anchorRect.width / 2) -
+                (overlayWidth / 2))
+            .clamp(8.0, MediaQuery.sizeOf(context).width - overlayWidth - 8.0);
 
     return AnimatedOpacity(
       opacity: _visible ? 1.0 : 0.0,
@@ -91,10 +92,7 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
                 child: Material(
                   color: Colors.transparent,
                   elevation: 4,
-                  child: SizedBox(
-                    width: overlayWidth,
-                    child: widget.child,
-                  ),
+                  child: SizedBox(width: overlayWidth, child: widget.child),
                 ),
               ),
             ],

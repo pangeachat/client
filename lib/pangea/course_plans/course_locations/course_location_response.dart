@@ -5,9 +5,7 @@ import 'package:fluffychat/pangea/payload_client/paginated_response.dart';
 class CourseLocationResponse {
   final List<CourseLocationModel> locations;
 
-  CourseLocationResponse({
-    required this.locations,
-  });
+  CourseLocationResponse({required this.locations});
 
   factory CourseLocationResponse.fromCmsResponse(
     PayloadPaginatedResponse<CmsCoursePlanTopicLocation> response,

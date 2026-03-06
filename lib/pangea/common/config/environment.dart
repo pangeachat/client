@@ -32,16 +32,22 @@ class Environment {
         appConfigOverride?.synapseURL ?? dotenv.env['SYNAPSE_URL'];
     if (homeServerFromSynapseURL != null) {
       if (homeServerFromSynapseURL.startsWith("http://")) {
-        homeServerFromSynapseURL =
-            homeServerFromSynapseURL.replaceFirst("http://", "");
+        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
+          "http://",
+          "",
+        );
       }
       if (homeServerFromSynapseURL.startsWith("https://")) {
-        homeServerFromSynapseURL =
-            homeServerFromSynapseURL.replaceFirst("https://", "");
+        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
+          "https://",
+          "",
+        );
       }
       if (homeServerFromSynapseURL.startsWith("matrix.")) {
-        homeServerFromSynapseURL =
-            homeServerFromSynapseURL.replaceFirst("matrix.", "");
+        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
+          "matrix.",
+          "",
+        );
       }
     }
     return appConfigOverride?.homeServer ??
@@ -65,7 +71,8 @@ class Environment {
   }
 
   static String get cmsApi {
-    final envEntry = dotenv.env['CMS_API'] ??
+    final envEntry =
+        dotenv.env['CMS_API'] ??
         appConfigOverride?.choreoApi ??
         dotenv.env['CHOREO_API'];
     if (envEntry == null) {
@@ -73,6 +80,10 @@ class Environment {
     }
     return envEntry;
   }
+
+  static String get pushGatewayUrl => isStagingEnvironment
+      ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
+      : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
 
   static String get choreoApiKey {
     return appConfigOverride?.choreoApiKey ??
@@ -152,11 +163,7 @@ class Environment {
         final override = AppConfigOverride.fromJson(entry);
         overrides.add(override);
       } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: entry,
-        );
+        ErrorHandler.logError(e: e, s: s, data: entry);
         continue;
       }
     }
@@ -169,11 +176,7 @@ class Environment {
     try {
       return AppConfigOverride.fromJson(entry);
     } catch (e) {
-      ErrorHandler.logError(
-        e: e,
-        s: StackTrace.current,
-        data: entry,
-      );
+      ErrorHandler.logError(e: e, s: StackTrace.current, data: entry);
       return null;
     }
   }

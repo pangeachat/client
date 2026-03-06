@@ -14,7 +14,16 @@ extension LocalizedBody on Event {
   Future<async.Result<MatrixFile?>> _getFile(BuildContext context) =>
       showFutureLoadingDialog(
         context: context,
-        future: downloadAndDecryptAttachment,
+        futureWithProgress: (onProgress) {
+          final fileSize = infoMap['size'] is int
+              ? infoMap['size'] as int
+              : null;
+          return downloadAndDecryptAttachment(
+            onDownloadProgress: fileSize == null
+                ? null
+                : (bytes) => onProgress(bytes / fileSize),
+          );
+        },
       );
 
   void saveFile(BuildContext context) async {
@@ -32,15 +41,18 @@ extension LocalizedBody on Event {
 
   bool get isAttachmentSmallEnough =>
       infoMap['size'] is int &&
-      infoMap['size'] < room.client.database.maxFileSize;
+      (infoMap['size'] as int) < room.client.database.maxFileSize;
 
   bool get isThumbnailSmallEnough =>
       thumbnailInfoMap['size'] is int &&
-      thumbnailInfoMap['size'] < room.client.database.maxFileSize;
+      (thumbnailInfoMap['size'] as int) < room.client.database.maxFileSize;
 
   bool get showThumbnail =>
-      [MessageTypes.Image, MessageTypes.Sticker, MessageTypes.Video]
-          .contains(messageType) &&
+      [
+        MessageTypes.Image,
+        MessageTypes.Sticker,
+        MessageTypes.Video,
+      ].contains(messageType) &&
       (kIsWeb ||
           isAttachmentSmallEnough ||
           isThumbnailSmallEnough ||

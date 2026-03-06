@@ -19,10 +19,7 @@ class TokenRenderingUtil {
     }
 
     final textPainter = TextPainter(
-      text: TextSpan(
-        text: text,
-        style: style,
-      ),
+      text: TextSpan(text: text, style: style),
       maxLines: 1,
       textDirection: TextDirection.ltr,
     )..layout();

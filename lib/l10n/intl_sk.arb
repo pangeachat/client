@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-05 10:09:24.752898",
+  "@@last_modified": "2026-03-03 11:16:14.252147",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -1787,7 +1787,6 @@
   "report": "Nahlásiť",
   "signInWithPassword": "Prihlásiť sa s heslom",
   "pleaseTryAgainLaterOrChooseDifferentServer": "Skúste to prosím neskôr alebo vyberte iný server.",
-  "signInWith": "Prihlásiť sa s {provider}",
   "profileNotFound": "Používateľa sa nepodarilo nájsť na serveri. Možno je problém s pripojením alebo používateľ neexistuje.",
   "setTheme": "Nastaviť tému:",
   "setColorTheme": "Nastaviť farebnú tému:",
@@ -4623,14 +4622,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "@profileNotFound": {
     "type": "String",
     "placeholders": {}
@@ -5041,9 +5032,7 @@
   },
   "@thereAreCountUsersBlocked": {
     "type": "String",
-    "placeholders": {
-      "count": {}
-    }
+    "count": {}
   },
   "@restricted": {
     "type": "String",
@@ -11821,8 +11810,6 @@
   "congratulations": "Gratulujeme!",
   "anotherRound": "Ďalšie kolo",
   "noActivityRequest": "Žiadna aktuálna požiadavka na aktivitu.",
-  "quit": "Ukončiť",
-  "congratulationsYouveCompletedPractice": "Gratulujeme! Dokončili ste cvičebnú reláciu.",
   "mustHave10Words": "Musíte mať aspoň 10 slovíčok na precvičovanie. Skúste sa porozprávať s priateľom alebo Pangea Botom, aby ste objavili viac!",
   "botSettings": "Nastavenia bota",
   "activitySettingsOverrideWarning": "Jazyk a jazyková úroveň určené plánom aktivity",
@@ -11868,14 +11855,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -12054,6 +12033,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O mne",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióm",
   "grammarCopyPOSphrasalv": "Frázové sloveso",
   "grammarCopyPOScompn": "Zložené",
@@ -12066,6 +12050,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Dokonalá prax!",
+  "greatPractice": "Skvelá prax!",
+  "usedNoHints": "Dobrý výkon, že si nepoužil žiadne nápovedy!",
+  "youveCompletedPractice": "Dokončil si prax, pokračuj v tom, aby si sa zlepšil!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Zmeniť e-mail",
+  "withTheseAddressesDescription": "S týmito e-mailovými adresami sa môžete prihlásiť, obnoviť svoje heslo a spravovať predplatné.",
+  "noAddressDescription": "Ešte ste nepridali žiadne e-mailové adresy.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Výber slov",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcia",
+  "spanTypeStyle": "Štýl",
+  "spanTypeFluency": "Plynulosť",
+  "spanTypeAccents": "Prízvuky",
+  "spanTypeCapitalization": "Veľké písmená",
+  "spanTypeCorrection": "Oprava",
+  "spanFeedbackTitle": "Nahlásiť problém s opravou",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} zmenil popis chatu",
+  "changedTheChatName": "{username} zmenil názov chatu",
+  "moreEvents": "Viac udalostí",
+  "declineInvitation": "Odmietnuť pozvanie",
+  "noMessagesYet": "Zatiaľ žiadne správy",
+  "longPressToRecordVoiceMessage": "Dlhé stlačenie na nahrávanie hlasovej správy.",
+  "pause": "Pozastaviť",
+  "resume": "Pokračovať",
+  "newSubSpace": "Nový podpriestor",
+  "moveToDifferentSpace": "Presunúť do iného priestoru",
+  "moveUp": "Posunúť nahor",
+  "moveDown": "Posunúť nadol",
+  "removeFromSpaceDescription": "Chat bude odstránený z priestoru, ale stále sa zobrazí vo vašom zozname chatov.",
+  "countChats": "{chats} chaty",
+  "spaceMemberOf": "Člen priestoru {spaces}",
+  "spaceMemberOfCanKnock": "Člen priestoru {spaces} môže zaklopať",
+  "donate": "Darovať",
+  "startedAPoll": "{username} začal anketu.",
+  "poll": "Anketa",
+  "startPoll": "Začať anketu",
+  "endPoll": "Ukončiť anketu",
+  "answersVisible": "Odpovede viditeľné",
+  "answersHidden": "Odpovede skryté",
+  "pollQuestion": "Otázka ankety",
+  "answerOption": "Možnosť odpovede",
+  "addAnswerOption": "Pridať možnosť odpovede",
+  "allowMultipleAnswers": "Povoliť viacero odpovedí",
+  "pollHasBeenEnded": "Anketa bola ukončená",
+  "countVotes": "{count, plural, =1{Jedna hlas} other{{count} hlasy}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Odpovede budú viditeľné, keď bude anketa ukončená",
+  "replyInThread": "Odpovedať v téme",
+  "countReplies": "{count, plural, =1{Jedna odpoveď} other{{count} odpovedí}}",
+  "thread": "Téma",
+  "backToMainChat": "Späť do hlavného chatu",
+  "createSticker": "Vytvoriť nálepku alebo emoji",
+  "useAsSticker": "Použiť ako nálepku",
+  "useAsEmoji": "Použiť ako emoji",
+  "stickerPackNameAlreadyExists": "Názov balíka nálepiek už existuje",
+  "newStickerPack": "Nový balík nálepiek",
+  "stickerPackName": "Názov balíka nálepiek",
+  "attribution": "Pripísanie",
+  "skipChatBackup": "Preskočiť zálohu chatu",
+  "skipChatBackupWarning": "Ste si istý? Bez povolenia zálohy chatu môžete stratiť prístup k svojim správam, ak prepnite svoje zariadenie.",
+  "loadingMessages": "Načítavanie správ",
+  "setupChatBackup": "Nastaviť zálohu chatu",
+  "noMoreResultsFound": "Nenašli sa žiadne ďalšie výsledky",
+  "chatSearchedUntil": "Chat bol prehľadávaný do {time}",
+  "federationBaseUrl": "Základná URL federácie",
+  "clientWellKnownInformation": "Informácie o klientovi:",
+  "baseUrl": "Základná URL",
+  "identityServer": "Identitný server:",
+  "versionWithNumber": "Verzia: {version}",
+  "logs": "Záznamy",
+  "advancedConfigs": "Pokročilé nastavenia",
+  "advancedConfigurations": "Pokročilé konfigurácie",
+  "signInWithLabel": "Prihlásiť sa pomocou:",
+  "selectAllWords": "Vyberte všetky slová, ktoré počujete v audiu",
+  "joinCourseForActivities": "Pridajte sa k kurzu, aby ste vyskúšali aktivity.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurzy sa skladajú z 3-8 modulov, z ktorých každý obsahuje aktivity na povzbudenie k praktizovaniu slov v rôznych kontextoch",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Overenie e-mailu zlyhalo. Skúste to prosím znova.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Odomknúť nástroje na učenie",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Spustili sme správu predplatného v novom okne. Ak ste nevideli nové okno, skontrolujte prosím svoj blokátor vyskakovacích okien.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Odomknúť cvičebné aktivity",
+  "hideEvents": "Skryť udalosti",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Používateľ bude vylúčený z kurzu, avšak môže sa pokúsiť pripojiť neskôr.",
+  "denyKnockChat": "Používateľ bude vylúčený z chatu, avšak môže sa pokúsiť pripojiť neskôr.",
+  "banFromSpace": "Vylúčenie z kurzu",
+  "unbanFromSpace": "Obnovenie z kurzu",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Zákaz. Nie je možné sa pripojiť.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Vaša žiadosť o pripojenie bola prijatá! Teraz môžete vstúpiť do kurzu.",
+  "sessionFull": "Príliš neskoro! Táto aktivita je plná.",
+  "returnToCourse": "Vrátiť sa do kurzu",
+  "returnHome": "Vrátiť sa domov",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Spätná väzba k prekladu",
+  "userUpdatedLearningSettings": "{username} aktualizoval nastavenia učenia",
+  "youUpdatedLearningSettings": "Aktualizovali ste svoje nastavenia učenia",
+  "userAddedActivityPlan": "{username} pridal plán aktivít",
+  "youAddedActivityPlan": "Pridali ste plán aktivít",
+  "userSentActivitySummary": "{username} poslal súhrn aktivít",
+  "youSentActivitySummary": "Poslali ste súhrn aktivít",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

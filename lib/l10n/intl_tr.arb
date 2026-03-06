@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-02-05 10:09:57.710087",
+  "@@last_modified": "2026-03-03 11:17:43.720408",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Lütfen daha sonra tekrar deneyin veya farklı bir sunucu seçin.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "{provider} ile oturum aç",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Bir resim dosyası değil.",
   "@notAnImage": {},
   "importNow": "Şimdi içe aktar",
@@ -3178,14 +3169,36 @@
   },
   "welcomeText": "Hey Hey 👋 Karşınızda FluffyChat. https://matrix.org ile uyumlu herhangi bir homeserver'a giriş yapabilirsiniz. Ve herkesle konuşabilirsiniz. Bu koca bir merkeziyetsiz mesajlaşma ağı!",
   "@welcomeText": {},
-  "setCustomPermissionLevel": "Özel izin seviyesi ayarla",
-  "setPermissionsLevelDescription": "Lütfen aşağıdaki önceden tanımlanmış rolden birini seçin veya 0 ile 100 arasında özel bir izin seviyesi girin.",
-  "ignoreUser": "Kullanıcıyı görmezden gel",
+  "setCustomPermissionLevel": "Özel izin düzeyi ayarla",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Lütfen aşağıdan önceden tanımlanmış bir rol seçin veya 0 ile 100 arasında bir özel izin seviyesi girin.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Kullanıcıyı yok say",
+  "@ignoreUser": {},
   "normalUser": "Normal kullanıcı",
-  "commandHint_roomupgrade": "Bu odanın sürümünü verilen oda sürümüne yükselt",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "Bu odayı belirtilen oda sürümüne yükseltin",
+  "@commandHint_roomupgrade": {},
   "checkList": "Kontrol listesi",
+  "@checkList": {},
   "countInvited": "{count} davet edildi",
-  "synchronizingPleaseWaitCounter": "Senkronize ediliyor… ({percentage}%)",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "synchronizingPleaseWaitCounter": " Senkronize ediliyor… ({percentage}%)",
+  "@synchronizingPleaseWaitCounter": {
+    "type": "String",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
   "previous": "Önceki",
   "otherPartyNotLoggedIn": "Diğer taraf şu anda giriş yapmadı ve bu nedenle mesaj alamaz!",
   "appWantsToUseForLogin": "'{server}' kullanarak giriş yap",
@@ -4388,46 +4401,6 @@
   "inviteYourFriends": "Arkadaşlarınızı davet edin",
   "playWithAI": "Şimdilik yapay zeka ile oynayın",
   "courseStartDesc": "Pangea Bot her zaman hazır!\n\n...ama arkadaşlarınızla öğrenmek daha iyidir!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@synchronizingPleaseWaitCounter": {
-    "type": "String",
-    "placeholders": {
-      "percentage": {
-        "type": "String"
-      }
-    }
-  },
   "@previous": {
     "type": "String",
     "placeholders": {}
@@ -10959,8 +10932,6 @@
   "congratulations": "Tebrikler!",
   "anotherRound": "Bir tur daha",
   "noActivityRequest": "Şu anda etkinlik talebi yok.",
-  "quit": "Çık",
-  "congratulationsYouveCompletedPractice": "Tebrikler! Pratik oturumunu tamamladınız.",
   "mustHave10Words": "Pratik yapmak için en az 10 kelimeye sahip olmalısınız. Daha fazla keşfetmek için bir arkadaşınızla veya Pangea Bot ile konuşmayı deneyin!",
   "botSettings": "Bot Ayarları",
   "activitySettingsOverrideWarning": "Etkinlik planı tarafından belirlenen dil ve dil seviyesi",
@@ -11006,14 +10977,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11192,6 +11155,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Hakkımda",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Deyim",
   "grammarCopyPOSphrasalv": "Deyim Fiili",
   "grammarCopyPOScompn": "Bileşik",
@@ -11204,6 +11172,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Mükemmel pratik!",
+  "greatPractice": "Harika pratik!",
+  "usedNoHints": "Hiç ipucu kullanmadığın için iyi iş çıkardın!",
+  "youveCompletedPractice": "Pratiği tamamladın, daha iyi olmak için devam et!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "E-posta değiştir",
+  "withTheseAddressesDescription": "Bu e-posta adresleriyle oturum açabilir, şifrenizi kurtarabilir ve aboneliklerinizi yönetebilirsiniz.",
+  "noAddressDescription": "Henüz herhangi bir e-posta adresi eklemediniz.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Dilbilgisi",
+  "spanTypeWordChoice": "Kelime Seçimi",
+  "spanTypeSpelling": "Yazım",
+  "spanTypePunctuation": "Noktalama",
+  "spanTypeStyle": "Üslup",
+  "spanTypeFluency": "Akıcılık",
+  "spanTypeAccents": "Aksanlar",
+  "spanTypeCapitalization": "Büyük Harf Kullanımı",
+  "spanTypeCorrection": "Düzeltme",
+  "spanFeedbackTitle": "Düzeltme sorununu bildir",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} sohbet tanımını değiştirdi",
+  "changedTheChatName": "{username} sohbet adını değiştirdi",
+  "moreEvents": "Daha fazla etkinlik",
+  "declineInvitation": "Davetiyeyi reddet",
+  "noMessagesYet": "Henüz mesaj yok",
+  "longPressToRecordVoiceMessage": "Sesli mesaj kaydetmek için uzun basın.",
+  "pause": "Duraklat",
+  "resume": "Devam et",
+  "newSubSpace": "Yeni alt alan",
+  "moveToDifferentSpace": "Farklı alana taşı",
+  "moveUp": "Yukarı taşı",
+  "moveDown": "Aşağı taşı",
+  "removeFromSpaceDescription": "Sohbet alanından kaldırılacak ancak sohbet listenizde görünmeye devam edecek.",
+  "countChats": "{chats} sohbet",
+  "spaceMemberOf": "{spaces} alan üyesi",
+  "spaceMemberOfCanKnock": "{spaces} alan üyesi kapıyı çalabilir",
+  "donate": "Bağış yap",
+  "startedAPoll": "{username} bir anket başlattı.",
+  "poll": "Anket",
+  "startPoll": "Anket başlat",
+  "endPoll": "Anketi bitir",
+  "answersVisible": "Cevaplar görünür",
+  "answersHidden": "Cevaplar gizli",
+  "pollQuestion": "Anket sorusu",
+  "answerOption": "Cevap seçeneği",
+  "addAnswerOption": "Cevap seçeneği ekle",
+  "allowMultipleAnswers": "Birden fazla cevaba izin ver",
+  "pollHasBeenEnded": "Anket sona erdi",
+  "countVotes": "{count, plural, =1{Bir oy} other{{count} oy}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Cevaplar anket sona erdiğinde görünür olacak",
+  "replyInThread": "İpucuya yanıt ver",
+  "countReplies": "{count, plural, =1{Bir yanıt} other{{count} yanıt}}",
+  "thread": "İpucu",
+  "backToMainChat": "Ana sohbete geri dön",
+  "createSticker": "Çıkartma veya emoji oluştur",
+  "useAsSticker": "Çıkartma olarak kullan",
+  "useAsEmoji": "Emoji olarak kullan",
+  "stickerPackNameAlreadyExists": "Çıkartma paketi adı zaten mevcut",
+  "newStickerPack": "Yeni çıkartma paketi",
+  "stickerPackName": "Çıkartma paketi adı",
+  "attribution": "Atıf",
+  "skipChatBackup": "Sohbet yedeğini atla",
+  "skipChatBackupWarning": "Emin misiniz? Sohbet yedeğini etkinleştirmeden cihazınızı değiştirirseniz mesajlarınıza erişimi kaybedebilirsiniz.",
+  "loadingMessages": "Mesajlar yükleniyor",
+  "setupChatBackup": "Sohbet yedeğini ayarla",
+  "noMoreResultsFound": "Daha fazla sonuç bulunamadı",
+  "chatSearchedUntil": "Sohbet {time} tarihine kadar arandı",
+  "federationBaseUrl": "Federasyon Temel URL'si",
+  "clientWellKnownInformation": "İstemci-Bilinen Bilgiler:",
+  "baseUrl": "Temel URL",
+  "identityServer": "Kimlik Sunucusu:",
+  "versionWithNumber": "Sürüm: {version}",
+  "logs": "Günlükler",
+  "advancedConfigs": "Gelişmiş Yapılandırmalar",
+  "advancedConfigurations": "Gelişmiş yapılandırmalar",
+  "signInWithLabel": "Giriş yapın:",
+  "selectAllWords": "Sesli olarak duyduğunuz tüm kelimeleri seçin",
+  "joinCourseForActivities": "Etkinlikleri denemek için bir kursa katılın.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kurslar, her biri farklı bağlamlarda kelimeleri pratik yapmayı teşvik eden etkinliklerle 3-8 modülden oluşur",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-posta doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Öğrenme araçlarını aç",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Abonelik yönetimini yeni bir sekmede başlattık. Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Pratik etkinliklerini aç",
+  "hideEvents": "Etkinlikleri gizle",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Kullanıcı dersten reddedilecektir, ancak daha sonra tekrar katılmayı deneyebilir.",
+  "denyKnockChat": "Kullanıcı sohbetten reddedilecektir, ancak daha sonra tekrar katılmayı deneyebilir.",
+  "banFromSpace": "Dersten yasakla",
+  "unbanFromSpace": "Dersten yasağı kaldır",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Yasaklı. Katılamıyor.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Katılma isteğiniz kabul edildi! Artık derse girebilirsiniz.",
+  "sessionFull": "Geç kaldınız! Bu etkinlik dolu.",
+  "returnToCourse": "Derse geri dön",
+  "returnHome": "Ana sayfaya geri dön",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Çeviri Geri Bildirimi",
+  "userUpdatedLearningSettings": "{username} öğrenme ayarlarını güncelledi",
+  "youUpdatedLearningSettings": "Öğrenme ayarlarını güncelledin",
+  "userAddedActivityPlan": "{username} bir etkinlik planı ekledi",
+  "youAddedActivityPlan": "Bir etkinlik planı ekledin",
+  "userSentActivitySummary": "{username} bir etkinlik özeti gönderdi",
+  "youSentActivitySummary": "Bir etkinlik özeti gönderdin",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

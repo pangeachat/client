@@ -6,8 +6,10 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/practice_tier_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
 class ConstructUses {
@@ -21,18 +23,15 @@ class ConstructUses {
     required this.constructType,
     required this.lemma,
     required category,
-  })  : _category = category,
-        _uses = List<OneConstructUse>.from(uses) {
+  }) : _category = category,
+       _uses = List<OneConstructUse>.from(uses) {
     _sortUses();
   }
 
   // Total points for all uses of this lemma
   int get points {
     return min(
-      _uses.fold<int>(
-        0,
-        (total, use) => total + use.xp,
-      ),
+      _uses.fold<int>(0, (total, use) => total + use.xp),
       AnalyticsConstants.xpForFlower,
     );
   }
@@ -51,10 +50,10 @@ class ConstructUses {
   int get numTotalUses => _uses.length;
 
   ConstructIdentifier get id => ConstructIdentifier(
-        lemma: lemma,
-        type: constructType,
-        category: category,
-      );
+    lemma: lemma,
+    type: constructType,
+    category: category,
+  );
 
   /// Get the lemma category, based on points
   ConstructLevelEnum get lemmaCategory {
@@ -80,13 +79,10 @@ class ConstructUses {
   }
 
   ConstructLevelEnum get constructLevel => switch (points) {
-        < AnalyticsConstants.xpForGreens => ConstructLevelEnum.seeds,
-        < AnalyticsConstants.xpForFlower => ConstructLevelEnum.greens,
-        _ => ConstructLevelEnum.flowers,
-      };
-
-  List<String> get forms =>
-      _uses.map((e) => e.form).whereType<String>().toSet().toList();
+    < AnalyticsConstants.xpForGreens => ConstructLevelEnum.seeds,
+    < AnalyticsConstants.xpForFlower => ConstructLevelEnum.greens,
+    _ => ConstructLevelEnum.flowers,
+  };
 
   List<OneConstructUse> get cappedUses {
     final result = <OneConstructUse>[];
@@ -101,8 +97,83 @@ class ConstructUses {
     return result;
   }
 
+  /// Read-only view of all uses, sorted chronologically (oldest first).
+  List<OneConstructUse> get uses => List.unmodifiable(_uses);
+
+  /// Classify this construct into a [PracticeTier] based on use-type history.
+  ///
+  /// Walks uses in reverse chronological order to find the most recent
+  /// chat use and any incorrect practice answers after it.
+  PracticeTier get practiceTier {
+    // Walk reverse chronologically. Everything seen before finding the
+    // last chat use is more recent than that chat use.
+    bool hasIncorrectAfterLastChatUse = false;
+
+    for (int i = _uses.length - 1; i >= 0; i--) {
+      final use = _uses[i];
+
+      if (use.useType.isChatUse) {
+        // Found the most recent chat use.
+        if (use.useType == ConstructUseTypeEnum.wa &&
+            !hasIncorrectAfterLastChatUse) {
+          return PracticeTier.suppressed;
+        }
+        if (use.useType.isAssistedChatUse) {
+          return PracticeTier.active;
+        }
+        // wa with incorrect after → active
+        if (hasIncorrectAfterLastChatUse) {
+          return PracticeTier.active;
+        }
+        return PracticeTier.maintenance;
+      }
+
+      if (use.useType.isIncorrectPractice) {
+        hasIncorrectAfterLastChatUse = true;
+      }
+    }
+
+    // No chat use found (only practice history).
+    if (hasIncorrectAfterLastChatUse) return PracticeTier.active;
+    return PracticeTier.maintenance;
+  }
+
   DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
       _uses.lastWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+
+  /// Compute priority score for this construct.
+  ///
+  /// Higher score = higher priority (should be practiced sooner).
+  /// Suppressed-tier constructs return 0.
+  ///
+  /// When [activityType] is provided, recency is checked against that
+  /// activity's specific use types (e.g., corPA/incPA for wordMeaning).
+  /// Otherwise, aggregate recency across all use types is used.
+  int practiceScore({ActivityTypeEnum? activityType}) {
+    final tier = practiceTier;
+    if (tier == PracticeTier.suppressed) return 0;
+
+    // Per-activity-type recency when available, otherwise aggregate.
+    final DateTime? lastUsedDate = activityType != null
+        ? lastUseByTypes(activityType.associatedUseTypes)
+        : lastUsed;
+
+    final daysSince = lastUsedDate == null
+        ? AnalyticsConstants.defaultDaysSinceLastUsed
+        : DateTime.now().difference(lastUsedDate).inDays;
+
+    final wordMultiplier = id.isContentWord
+        ? AnalyticsConstants.contentWordMultiplier
+        : AnalyticsConstants.functionWordMultiplier;
+
+    var score = daysSince * wordMultiplier;
+
+    if (tier == PracticeTier.active) {
+      score *= AnalyticsConstants.activeTierMultiplier;
+    }
+
+    return score;
+  }
 
   Map<String, dynamic> toJson() {
     final json = {

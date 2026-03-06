@@ -6,6 +6,7 @@ import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
@@ -123,11 +124,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
         });
       }
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {});
 
       _clean();
       _error = e;
@@ -145,11 +142,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     final fileName =
         "analytics_${widget.space.name}_${DateTime.now().toIso8601String()}.${_downloadType == DownloadType.xlsx ? 'xlsx' : 'csv'}";
 
-    await DownloadUtil.downloadFile(
-      content,
-      fileName,
-      DownloadType.csv,
-    );
+    await DownloadUtil.downloadFile(content, fileName, DownloadType.csv);
   }
 
   Future<SpaceAnalyticsSummaryModel?> _getAnalyticsModel(
@@ -179,22 +172,14 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       );
       if (mounted) setState(() => _downloadStatuses[userID] = 2);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "userID": userID,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"userID": userID});
       if (mounted) setState(() => _downloadStatuses[userID] = -2);
     }
 
     return summary;
   }
 
-  List<CellValue> _formatExcelRow(
-    SpaceAnalyticsSummaryModel summary,
-  ) {
+  List<CellValue> _formatExcelRow(SpaceAnalyticsSummaryModel summary) {
     final List<CellValue> row = [];
     for (int i = 0; i < SpaceAnalyticsSummaryEnum.values.length; i++) {
       final key = SpaceAnalyticsSummaryEnum.values[i];
@@ -210,21 +195,16 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     return row;
   }
 
-  List<int> _getExcelFileContent(
-    List<SpaceAnalyticsSummaryModel> summaries,
-  ) {
+  List<int> _getExcelFileContent(List<SpaceAnalyticsSummaryModel> summaries) {
     final excel = Excel.createExcel();
     final sheet = excel['Sheet1'];
 
     for (final key in SpaceAnalyticsSummaryEnum.values) {
       sheet
-          .cell(
-            CellIndex.indexByColumnRow(
-              rowIndex: 0,
-              columnIndex: key.index,
-            ),
-          )
-          .value = TextCellValue(key.header(L10n.of(context)));
+          .cell(CellIndex.indexByColumnRow(rowIndex: 0, columnIndex: key.index))
+          .value = TextCellValue(
+        key.header(L10n.of(context)),
+      );
     }
 
     final rows = summaries.map((summary) => _formatExcelRow(summary)).toList();
@@ -234,16 +214,17 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       for (int j = 0; j < row.length; j++) {
         final cell = row[j];
         sheet
-            .cell(CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j))
-            .value = cell;
+                .cell(
+                  CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j),
+                )
+                .value =
+            cell;
       }
     }
     return excel.encode() ?? [];
   }
 
-  String _getCSVFileContent(
-    List<SpaceAnalyticsSummaryModel> summaries,
-  ) {
+  String _getCSVFileContent(List<SpaceAnalyticsSummaryModel> summaries) {
     final List<List<dynamic>> rows = [];
     final headerRow = [];
     for (final key in SpaceAnalyticsSummaryEnum.values) {
@@ -279,9 +260,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        constraints: const BoxConstraints(
-          maxWidth: 400,
-        ),
+        constraints: const BoxConstraints(maxWidth: 400),
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -289,7 +268,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
             Text(
               L10n.of(context).fileType,
               style: TextStyle(
-                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
+                    AppConfig.messageFontSize,
               ),
             ),
             Padding(
@@ -312,10 +293,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxHeight: 300,
-                  minHeight: 0,
-                ),
+                constraints: const BoxConstraints(maxHeight: 300, minHeight: 0),
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: widget.analyticsRooms.length,
@@ -340,10 +318,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
                               width: 40,
                               height: 30,
                               child: (_downloadStatuses[userId] ?? 0) < 0
-                                  ? const Icon(
-                                      Icons.error_outline,
-                                      size: 16,
-                                    )
+                                  ? const Icon(Icons.error_outline, size: 16)
                                   : Center(
                                       child: AnimatedContainer(
                                         duration:
@@ -352,8 +327,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
                                         width: 12,
                                         decoration: BoxDecoration(
                                           color: _downloadStatusColor(userId!),
-                                          borderRadius:
-                                              BorderRadius.circular(100),
+                                          borderRadius: BorderRadius.circular(
+                                            100,
+                                          ),
                                         ),
                                       ),
                                     ),

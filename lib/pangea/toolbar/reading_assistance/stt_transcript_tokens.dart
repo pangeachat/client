@@ -29,7 +29,6 @@ class SttTranscriptTokens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("Tokens: ${tokens.map((t) => t.toJson())}");
     if (model.transcript.sttTokens.isEmpty) {
       return Text(
         model.transcript.text,
@@ -39,18 +38,15 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
-    final newTokens = TokensUtil.getNewTokens(
-      eventId,
-      tokens,
-      model.langCode,
-    );
+    final newTokens = TokensUtil.getNewTokens(eventId, tokens, model.langCode);
 
     return RichText(
       textScaler: TextScaler.noScaling,
       text: TextSpan(
         style: style ?? DefaultTextStyle.of(context).style,
-        children:
-            TokensUtil.getGlobalTokenPositions(tokens).map((tokenPosition) {
+        children: TokensUtil.getGlobalTokenPositions(tokens).map((
+          tokenPosition,
+        ) {
           final text = messageCharacters
               .skip(tokenPosition.startIndex)
               .take(tokenPosition.endIndex - tokenPosition.startIndex)

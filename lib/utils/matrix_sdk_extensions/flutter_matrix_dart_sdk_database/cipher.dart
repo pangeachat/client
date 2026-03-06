@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 
@@ -40,10 +39,7 @@ Future<String?> getDatabaseCipher() async {
       final list = Uint8List(32);
       list.setAll(0, Iterable.generate(list.length, (i) => rng.nextInt(256)));
       final newPassword = base64UrlEncode(list);
-      await secureStorage.write(
-        key: _passwordStorageKey,
-        value: newPassword,
-      );
+      await secureStorage.write(key: _passwordStorageKey, value: newPassword);
     }
     // workaround for if we just wrote to the key and it still doesn't exist
     password = await secureStorage.read(key: _passwordStorageKey);
@@ -89,8 +85,7 @@ Future<String?> getDatabaseCipher() async {
 }
 
 void _sendNoEncryptionWarning(Object exception) async {
-  final store = await SharedPreferences.getInstance();
-  final isStored = AppSettings.noEncryptionWarningShown.getItem(store);
+  final isStored = AppSettings.noEncryptionWarningShown.value;
 
   if (isStored == true) return;
 
@@ -108,5 +103,5 @@ void _sendNoEncryptionWarning(Object exception) async {
   // );
   // Pangea#
 
-  await AppSettings.noEncryptionWarningShown.setItem(store, true);
+  await AppSettings.noEncryptionWarningShown.setItem(true);
 }

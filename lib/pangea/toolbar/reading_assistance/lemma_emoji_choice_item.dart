@@ -23,10 +23,9 @@ class LemmaEmojiChoiceItemState extends State<LemmaEmojiChoiceItem> {
 
   Color color(BuildContext context) {
     if (_isHovered) {
-      return Theme.of(context)
-          .colorScheme
-          .primaryContainer
-          .withAlpha((0.4 * 255).toInt());
+      return Theme.of(
+        context,
+      ).colorScheme.primaryContainer.withAlpha((0.4 * 255).toInt());
     }
 
     return Colors.transparent;
@@ -56,10 +55,7 @@ class LemmaEmojiChoiceItemState extends State<LemmaEmojiChoiceItem> {
 }
 
 class LemmaEmojiChoicePlaceholder extends StatelessWidget {
-  const LemmaEmojiChoicePlaceholder({
-    super.key,
-    this.size = 40,
-  });
+  const LemmaEmojiChoicePlaceholder({super.key, this.size = 40});
 
   final double size;
 
@@ -67,8 +63,9 @@ class LemmaEmojiChoicePlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.transparent,
-      highlightColor:
-          Theme.of(context).colorScheme.primaryContainer.withAlpha(0xAA),
+      highlightColor: Theme.of(
+        context,
+      ).colorScheme.primaryContainer.withAlpha(0xAA),
       child: Container(
         height: size,
         width: size,

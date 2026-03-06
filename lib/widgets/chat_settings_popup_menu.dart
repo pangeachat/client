@@ -10,7 +10,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'matrix.dart';
 
-enum ChatPopupMenuActions { details, mute, unmute, leave, search }
+enum ChatPopupMenuActions { details, mute, unmute, emote, leave, search }
 
 class ChatSettingsPopupMenu extends StatefulWidget {
   final Room room;
@@ -31,12 +31,12 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     super.dispose();
   }
 
+  void goToEmoteSettings() =>
+      context.push('/rooms/${widget.room.id}/details/emotes');
+
   @override
   Widget build(BuildContext context) {
-    notificationChangeSub ??= Matrix.of(context)
-        .client
-        .onSync
-        .stream
+    notificationChangeSub ??= Matrix.of(context).client.onSync.stream
         .where(
           (syncUpdate) =>
               syncUpdate.accountData?.any(
@@ -44,9 +44,7 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               ) ??
               false,
         )
-        .listen(
-          (u) => setState(() {}),
-        );
+        .listen((u) => setState(() {}));
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -98,6 +96,8 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               case ChatPopupMenuActions.search:
                 context.go('/rooms/${widget.room.id}/search');
                 break;
+              case ChatPopupMenuActions.emote:
+                goToEmoteSettings();
             }
           },
           itemBuilder: (BuildContext context) => [
@@ -141,6 +141,16 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                   const Icon(Icons.search_outlined),
                   const SizedBox(width: 12),
                   Text(L10n.of(context).search),
+                ],
+              ),
+            ),
+            PopupMenuItem<ChatPopupMenuActions>(
+              value: ChatPopupMenuActions.emote,
+              child: Row(
+                children: [
+                  const Icon(Icons.emoji_emotions_outlined),
+                  const SizedBox(width: 12),
+                  Text(L10n.of(context).emoteSettings),
                 ],
               ),
             ),

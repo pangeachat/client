@@ -12,6 +12,7 @@ import 'package:fluffychat/pages/chat/events/message_content.dart';
 import 'package:fluffychat/pages/chat/events/reply_content.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
@@ -63,11 +64,13 @@ class OverlayMessage extends StatelessWidget {
     final theme = Theme.of(context);
     final bool ownMessage = event.senderId == Matrix.of(context).client.userID;
 
-    final displayTime = event.type == EventTypes.RoomCreate ||
+    final displayTime =
+        event.type == EventTypes.RoomCreate ||
         nextEvent == null ||
         !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
 
-    final nextEventSameSender = nextEvent != null &&
+    final nextEventSameSender =
+        nextEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -76,7 +79,8 @@ class OverlayMessage extends StatelessWidget {
         nextEvent!.senderId == event.senderId &&
         !displayTime;
 
-    final previousEventSameSender = previousEvent != null &&
+    final previousEventSameSender =
+        previousEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -88,14 +92,14 @@ class OverlayMessage extends StatelessWidget {
     final textColor = event.isActivityMessage
         ? ThemeData.light().colorScheme.onPrimary
         : ownMessage
-            ? ThemeData.dark().colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+        ? ThemeData.dark().colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
 
     final linkColor = theme.brightness == Brightness.light
         ? theme.colorScheme.primary
         : ownMessage
-            ? theme.colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
 
     final displayEvent = event.getDisplayEvent(timeline);
     const hardCorner = Radius.circular(4);
@@ -103,13 +107,15 @@ class OverlayMessage extends StatelessWidget {
     final borderRadius = BorderRadius.only(
       topLeft: !ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
       topRight: ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      bottomLeft:
-          !ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
-      bottomRight:
-          ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
+      bottomLeft: !ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
+      bottomRight: ownMessage && previousEventSameSender
+          ? hardCorner
+          : roundedCorner,
     );
 
-    var color = theme.colorScheme.surfaceContainerHighest;
+    var color = theme.colorScheme.surfaceContainerHigh;
     if (ownMessage) {
       color = displayEvent.status.isError
           ? Colors.redAccent
@@ -125,7 +131,8 @@ class OverlayMessage extends StatelessWidget {
           : theme.colorScheme.primary;
     }
 
-    final noBubble = ({
+    final noBubble =
+        ({
               MessageTypes.Video,
               MessageTypes.Image,
               MessageTypes.Sticker,
@@ -145,9 +152,7 @@ class OverlayMessage extends StatelessWidget {
 
     final content = Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          AppConfig.borderRadius,
-        ),
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       ),
       width: messageWidth,
       height: messageHeight,
@@ -155,23 +160,15 @@ class OverlayMessage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          if (event.relationshipType == RelationshipTypes.reply)
+          if (event.inReplyToEventId(includingFallback: false) != null)
             FutureBuilder<Event?>(
-              future: event.getReplyEvent(
-                timeline,
-              ),
-              builder: (
-                BuildContext context,
-                snapshot,
-              ) {
+              future: event.getReplyEvent(timeline),
+              builder: (BuildContext context, snapshot) {
                 final replyEvent = snapshot.hasData
                     ? snapshot.data!
                     : Event(
                         eventId: event.relationshipEventId!,
-                        content: {
-                          'msgtype': 'm.text',
-                          'body': '...',
-                        },
+                        content: {'msgtype': 'm.text', 'body': '...'},
                         senderId: "",
                         type: 'm.room.message',
                         room: event.room,
@@ -179,19 +176,14 @@ class OverlayMessage extends StatelessWidget {
                         originServerTs: DateTime.now(),
                       );
                 return Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 8,
-                  ),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                   child: Material(
                     color: Colors.transparent,
                     borderRadius: ReplyContent.borderRadius,
                     child: InkWell(
                       borderRadius: ReplyContent.borderRadius,
-                      onTap: () => controller.scrollToEventId(
-                        replyEvent.eventId,
-                      ),
+                      onTap: () =>
+                          controller.scrollToEventId(replyEvent.eventId),
                       child: AbsorbPointer(
                         child: ReplyContent(
                           replyEvent,
@@ -221,10 +213,7 @@ class OverlayMessage extends StatelessWidget {
               selected: true,
             ),
           ),
-          if (event.hasAggregatedEvents(
-            timeline,
-            RelationshipTypes.edit,
-          ))
+          if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))
             Padding(
               padding: const EdgeInsets.only(
                 bottom: 8.0,
@@ -241,14 +230,10 @@ class OverlayMessage extends StatelessWidget {
                     size: 14,
                   ),
                   Text(
-                    displayEvent.originServerTs.localizedTimeShort(
-                      context,
-                    ),
+                    displayEvent.originServerTs.localizedTimeShort(context),
                     textScaler: TextScaler.noScaling,
                     style: TextStyle(
-                      color: textColor.withAlpha(
-                        164,
-                      ),
+                      color: textColor.withAlpha(164),
                       fontSize: 11,
                     ),
                   ),
@@ -261,7 +246,7 @@ class OverlayMessage extends StatelessWidget {
 
     final maxWidth = min(
       FluffyThemes.columnWidth * 1.5,
-      MediaQuery.of(context).size.width -
+      MediaQuery.widthOf(context) -
           (ownMessage ? 0 : Avatar.defaultSize) -
           32.0 -
           (FluffyThemes.isColumnMode(context)
@@ -269,10 +254,7 @@ class OverlayMessage extends StatelessWidget {
               : 0.0),
     );
 
-    final style = AppConfig.messageTextStyle(
-      event,
-      textColor,
-    );
+    final style = AppConfig.messageTextStyle(event, textColor);
 
     return Material(
       key: MatrixState.pAnyState.layerLinkAndKey(overlayKey).key,
@@ -293,7 +275,8 @@ class OverlayMessage extends StatelessWidget {
             children: [
               _MessageBubbleTranscription(
                 controller: selectModeController,
-                enabled: event.messageType == MessageTypes.Audio &&
+                enabled:
+                    event.messageType == MessageTypes.Audio &&
                     !event.redacted &&
                     isSubscribed != false,
                 maxWidth: maxWidth,
@@ -318,6 +301,7 @@ class OverlayMessage extends StatelessWidget {
                 controller: selectModeController,
                 style: style,
                 maxWidth: maxWidth,
+                minWidth: messageWidth ?? 0,
               ),
             ],
           ),
@@ -331,22 +315,38 @@ class _MessageSelectModeContent extends StatelessWidget {
   final SelectModeController controller;
   final TextStyle style;
   final double maxWidth;
+  final double minWidth;
 
   const _MessageSelectModeContent({
     required this.controller,
     required this.style,
     required this.maxWidth,
+    required this.minWidth,
   });
+
+  Future<void> onFlagTranslation(BuildContext context) async {
+    final resp = await showDialog<String?>(
+      context: context,
+      builder: (context) => FeedbackDialog(
+        title: L10n.of(context).translationFeedback,
+        onSubmit: (feedback) => Navigator.of(context).pop(feedback),
+      ),
+    );
+
+    if (resp == null || resp.isEmpty) {
+      return;
+    }
+
+    await controller.fetchTranslation(feedback: resp);
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: Listenable.merge(
-        [
-          controller.selectedMode,
-          controller.currentModeStateNotifier,
-        ],
-      ),
+      listenable: Listenable.merge([
+        controller.selectedMode,
+        controller.currentModeStateNotifier,
+      ]),
       builder: (context, _) {
         final mode = controller.selectedMode.value;
         if (mode == null) {
@@ -376,46 +376,49 @@ class _MessageSelectModeContent extends StatelessWidget {
             ? controller.translationState.value
             : controller.speechTranslationState.value;
 
-        return Padding(
+        return Container(
           padding: const EdgeInsets.all(12.0),
+          constraints: BoxConstraints(
+            minHeight: 40.0,
+            maxWidth: maxWidth,
+            minWidth: minWidth,
+          ),
           child: switch (state) {
             AsyncLoading() => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircularProgressIndicator.adaptive(
-                    backgroundColor: style.color,
-                  ),
-                ],
-              ),
-            AsyncError(error: final _) => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.error_outline,
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    L10n.of(context).translationError,
-                    textScaler: TextScaler.noScaling,
-                    style: style.copyWith(fontStyle: FontStyle.italic),
-                  ),
-                ],
-              ),
-            AsyncLoaded(value: final value) => Container(
-                constraints: BoxConstraints(
-                  maxWidth: maxWidth,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator.adaptive(
+                  backgroundColor: style.color,
                 ),
-                child: SingleChildScrollView(
+              ],
+            ),
+            AsyncError(error: final _) => ErrorIndicator(
+              message: L10n.of(context).translationError,
+              style: style.copyWith(fontStyle: FontStyle.italic),
+            ),
+            AsyncLoaded(value: final value) => Row(
+              spacing: 8.0,
+              mainAxisSize: .min,
+              mainAxisAlignment: .spaceBetween,
+              children: [
+                Flexible(
                   child: Text(
                     value,
                     textScaler: TextScaler.noScaling,
-                    style: style.copyWith(
-                      fontStyle: FontStyle.italic,
-                    ),
+                    style: style.copyWith(fontStyle: FontStyle.italic),
                   ),
                 ),
-              ),
+                if (mode == SelectMode.translate)
+                  InkWell(
+                    onTap: () => onFlagTranslation(context),
+                    child: Icon(
+                      Icons.flag_outlined,
+                      color: style.color,
+                      size: 16.0,
+                    ),
+                  ),
+              ],
+            ),
             _ => const SizedBox(),
           },
         );

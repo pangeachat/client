@@ -30,16 +30,13 @@ class ChatListView extends StatelessWidget {
         children: [
           // #Pangea
           // if (FluffyThemes.isColumnMode(context) ||
-          //     AppConfig.displayNavigationRail) ...[
+          //     AppSettings.displayNavigationRail.value) ...[
           //   SpacesNavigationRail(
           //     activeSpaceId: controller.activeSpaceId,
           //     onGoToChats: controller.clearActiveSpace,
           //     onGoToSpaceId: controller.setActiveSpace,
           //   ),
-          //   Container(
-          //     color: Theme.of(context).dividerColor,
-          //     width: 1,
-          //   ),
+          //   Container(color: Theme.of(context).dividerColor, width: 1),
           // ],
           // Pangea#
           Expanded(
@@ -52,8 +49,8 @@ class ChatListView extends StatelessWidget {
                 // body: ChatListViewBody(controller),
                 body: ChatListViewBodyWrapper(controller: controller),
                 // Pangea#
-                floatingActionButton: !controller.isSearchMode &&
-                        controller.activeSpaceId == null
+                floatingActionButton:
+                    !controller.isSearchMode && controller.activeSpaceId == null
                     ? FloatingActionButton.extended(
                         onPressed: () => context.go('/rooms/newprivatechat'),
                         // #Pangea

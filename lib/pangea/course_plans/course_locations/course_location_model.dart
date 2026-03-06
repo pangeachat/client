@@ -13,7 +13,8 @@ class CourseLocationModel {
     return CourseLocationModel(
       uuid: json['uuid'] as String,
       name: json['name'] as String,
-      mediaIds: (json['media_ids'] as List<dynamic>?)
+      mediaIds:
+          (json['media_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
@@ -21,10 +22,6 @@ class CourseLocationModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'uuid': uuid,
-      'name': name,
-      'media_ids': mediaIds,
-    };
+    return {'uuid': uuid, 'name': name, 'media_ids': mediaIds};
   }
 }

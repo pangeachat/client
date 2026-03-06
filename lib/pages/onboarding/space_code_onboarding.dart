@@ -39,17 +39,9 @@ class SpaceCodeOnboardingState extends State<SpaceCodeOnboarding> {
 
   Future<void> _setProfile() async {
     try {
-      profile = await client.getProfileFromUserId(
-        client.userID!,
-      );
+      profile = await client.getProfileFromUserId(client.userID!);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'userId': client.userID,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'userId': client.userID});
     } finally {
       if (mounted) setState(() {});
     }

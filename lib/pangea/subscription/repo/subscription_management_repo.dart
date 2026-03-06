@@ -20,10 +20,7 @@ class SubscriptionManagementRepo {
   static Future<void> setAvailableSubscriptionsInfo(
     AvailableSubscriptionsInfo info,
   ) async {
-    await _cache.write(
-      PLocalKey.availableSubscriptionInfo,
-      info.toJson(),
-    );
+    await _cache.write(PLocalKey.availableSubscriptionInfo, info.toJson());
   }
 
   static bool getBeganWebPayment() {
@@ -88,10 +85,7 @@ class SubscriptionManagementRepo {
   }
 
   static Future<void> setSubscriptionEndDate(DateTime? date) async {
-    await _cache.write(
-      PLocalKey.subscriptionEndDate,
-      date?.toIso8601String(),
-    );
+    await _cache.write(PLocalKey.subscriptionEndDate, date?.toIso8601String());
   }
 
   static DateTime? getSubscriptionEndDate() {

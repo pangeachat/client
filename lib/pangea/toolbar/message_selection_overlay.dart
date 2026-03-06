@@ -43,11 +43,11 @@ class MessageSelectionOverlay extends StatefulWidget {
     required Event? prevEvent,
     required Timeline timeline,
     super.key,
-  })  : _initialSelectedToken = initialSelectedToken,
-        _nextEvent = nextEvent,
-        _prevEvent = prevEvent,
-        _event = event,
-        _timeline = timeline;
+  }) : _initialSelectedToken = initialSelectedToken,
+       _nextEvent = nextEvent,
+       _prevEvent = prevEvent,
+       _event = event,
+       _timeline = timeline;
 
   @override
   MessageOverlayController createState() => MessageOverlayController();
@@ -130,9 +130,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "eventID": pangeaMessageEvent.eventId,
-        },
+        data: {"eventID": pangeaMessageEvent.eventId},
       );
     } finally {
       _initializeSelectedToken();
@@ -192,11 +190,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Update [selectedSpan]
   void updateSelectedSpan(PangeaTokenText? selectedSpan) {
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-        false) {
-      return;
-    }
-
     if (selectedSpan == _selectedSpan) {
       selectModeController.setPlayingToken(selectedToken?.text);
       return;
@@ -211,9 +204,15 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       TtsController.tryToSpeak(
         selectedToken!.text.content,
         langCode: pangeaMessageEvent.messageDisplayLangCode,
+        pos: selectedToken!.pos,
+        morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );
     }
-
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
+        false) {
+      setState(() {});
+      return;
+    }
     if (!mounted) return;
     if (selectedToken != null && isNewToken(selectedToken!)) {
       final token = selectedToken!;
@@ -221,7 +220,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         event.eventId,
         "word-zoom-card-${token.text.uniqueKey}",
         token,
+        pangeaMessageEvent.messageDisplayLangCode.split('-').first,
         Matrix.of(context).analyticsDataService,
+        roomId: event.room.id,
+        eventId: event.eventId,
       ).then((_) {
         if (mounted) setState(() {});
       });
@@ -232,10 +234,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
-        event: widget._event,
-        timeline: widget._timeline,
-        ownMessage: widget._event.room.client.userID == widget._event.senderId,
-      );
+    event: widget._event,
+    timeline: widget._timeline,
+    ownMessage: widget._event.room.client.userID == widget._event.senderId,
+  );
 
   PangeaToken? get selectedToken {
     if (pangeaMessageEvent.isAudioMessage == true) {
@@ -265,8 +267,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (const ListEquality().equals(textToSelect, _highlightedTokens)) return;
-    _highlightedTokens =
-        textToSelect.isEmpty ? null : textToSelect.map((t) => t.text).toList();
+    _highlightedTokens = textToSelect.isEmpty
+        ? null
+        : textToSelect.map((t) => t.text).toList();
     setState(() {});
   }
 
@@ -275,8 +278,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         pangeaMessageEvent.messageDisplayRepresentation;
 
     if (repEvent != null) return repEvent;
-    final eventID =
-        await pangeaMessageEvent.requestRepresentationByDetectedLanguage();
+    final eventID = await pangeaMessageEvent
+        .requestRepresentationByDetectedLanguage();
 
     if (eventID == null) return null;
     final event = await widget._event.room.getEventById(eventID);
@@ -288,14 +291,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     );
   }
 
-  void onClickOverlayMessageToken(
-    PangeaToken token,
-  ) =>
+  void onClickOverlayMessageToken(PangeaToken token) =>
       updateSelectedSpan(token.text);
 
   /// Whether the given token is currently selected or highlighted
   bool isTokenSelected(PangeaToken token) {
-    final isSelected = _selectedSpan?.offset == token.text.offset &&
+    final isSelected =
+        _selectedSpan?.offset == token.text.offset &&
         _selectedSpan?.length == token.text.length;
     return isSelected;
   }

@@ -14,4 +14,16 @@ class AnalyticsConstants {
   static const levelUpImageFileName = "LvL_Up_Full_Banner.png";
   static const vocabIconFileName = "Vocabulary_icon.png";
   static const morphIconFileName = "grammar_icon.png";
+
+  /// Default days-since-last-used when a construct has never been practiced.
+  static const int defaultDaysSinceLastUsed = 20;
+
+  /// Multiplier for content words (nouns, verbs, adjectives).
+  static const int contentWordMultiplier = 10;
+
+  /// Multiplier for function words (articles, prepositions).
+  static const int functionWordMultiplier = 7;
+
+  /// Bonus multiplier applied to active-tier constructs.
+  static const int activeTierMultiplier = 2;
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:47.712187",
+  "@@last_modified": "2026-03-03 11:17:13.451811",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -2248,15 +2248,6 @@
   "@participant": {
     "type": "String",
     "placeholders": {}
-  },
-  "signInWith": "Inicia sessió amb {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
   },
   "fileIsTooBigForServer": "No s'ha pogut enviar! El servidor només accepta adjunts de fins a {max}.",
   "@fileIsTooBigForServer": {},
@@ -10761,8 +10752,6 @@
   "congratulations": "Felicitats!",
   "anotherRound": "Una altra ronda",
   "noActivityRequest": "No hi ha cap sol·licitud d'activitat actual.",
-  "quit": "Sortir",
-  "congratulationsYouveCompletedPractice": "Felicitats! Has completat la sessió de pràctica.",
   "mustHave10Words": "Has de tenir almenys 10 paraules de vocabulari per practicar-les. Prova a parlar amb un amic o amb el Pangea Bot per descobrir-ne més!",
   "botSettings": "Configuració del Bot",
   "activitySettingsOverrideWarning": "Idioma i nivell d'idioma determinats pel pla d'activitat",
@@ -10808,14 +10797,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10994,6 +10975,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Sobre mi",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Verb Phrasal",
   "grammarCopyPOScompn": "Compost",
@@ -11006,6 +10992,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Pràctica perfecta!",
+  "greatPractice": "Gran pràctica!",
+  "usedNoHints": "Bon treball sense utilitzar cap pista!",
+  "youveCompletedPractice": "Has completat la pràctica, continua així per millorar!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Canvia l'email",
+  "withTheseAddressesDescription": "Amb aquestes adreces de correu electrònic pots iniciar sessió, recuperar la teva contrasenya i gestionar les subscripcions.",
+  "noAddressDescription": "Encara no has afegit cap adreça de correu electrònic.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramàtica",
+  "spanTypeWordChoice": "Elecció de paraules",
+  "spanTypeSpelling": "Ortografia",
+  "spanTypePunctuation": "Puntuació",
+  "spanTypeStyle": "Estil",
+  "spanTypeFluency": "Fluïdesa",
+  "spanTypeAccents": "Accents",
+  "spanTypeCapitalization": "Majúscules",
+  "spanTypeCorrection": "Correcció",
+  "spanFeedbackTitle": "Informar d'un problema de correcció",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} ha canviat la descripció del xat",
+  "changedTheChatName": "{username} ha canviat el nom del xat",
+  "moreEvents": "Més esdeveniments",
+  "declineInvitation": "Rebutjar invitació",
+  "noMessagesYet": "Encara no hi ha missatges",
+  "longPressToRecordVoiceMessage": "Mantingueu premut per gravar un missatge de veu.",
+  "pause": "Pausa",
+  "resume": "Reprendre",
+  "newSubSpace": "Nou subespai",
+  "moveToDifferentSpace": "Moure's a un espai diferent",
+  "moveUp": "Mou amunt",
+  "moveDown": "Mou avall",
+  "removeFromSpaceDescription": "El xat serà eliminat de l'espai però continuarà apareixent a la teva llista de xats.",
+  "countChats": "{chats} xats",
+  "spaceMemberOf": "Membre de l'espai de {spaces}",
+  "spaceMemberOfCanKnock": "Membre de l'espai de {spaces} pot trucar",
+  "donate": "Dona",
+  "startedAPoll": "{username} ha iniciat una enquesta.",
+  "poll": "Enquesta",
+  "startPoll": "Inicia l'enquesta",
+  "endPoll": "Finalitza l'enquesta",
+  "answersVisible": "Respostes visibles",
+  "answersHidden": "Respostes ocultes",
+  "pollQuestion": "Pregunta de l'enquesta",
+  "answerOption": "Opció de resposta",
+  "addAnswerOption": "Afegir opció de resposta",
+  "allowMultipleAnswers": "Permetre múltiples respostes",
+  "pollHasBeenEnded": "L'enquesta ha estat finalitzada",
+  "countVotes": "{count, plural, =1{Un vot} other{{count} vots}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Les respostes seran visibles quan l'enquesta hagi acabat",
+  "replyInThread": "Respondre en el fil",
+  "countReplies": "{count, plural, =1{Una resposta} other{{count} respostes}}",
+  "thread": "Fil",
+  "backToMainChat": "Tornar al xat principal",
+  "createSticker": "Crear adhesiu o emoji",
+  "useAsSticker": "Utilitzar com a adhesiu",
+  "useAsEmoji": "Utilitzar com a emoji",
+  "stickerPackNameAlreadyExists": "El nom del paquet d'adhesius ja existeix",
+  "newStickerPack": "Nou paquet d'adhesius",
+  "stickerPackName": "Nom del paquet d'adhesius",
+  "attribution": "Atribució",
+  "skipChatBackup": "Saltar la còpia de seguretat del xat",
+  "skipChatBackupWarning": "Estàs segur? Sense habilitar la còpia de seguretat del xat, podries perdre l'accés als teus missatges si canvies de dispositiu.",
+  "loadingMessages": "Carregant missatges",
+  "setupChatBackup": "Configura la còpia de seguretat del xat",
+  "noMoreResultsFound": "No s'han trobat més resultats",
+  "chatSearchedUntil": "Xat cercat fins a {time}",
+  "federationBaseUrl": "URL base de la federació",
+  "clientWellKnownInformation": "Informació coneguda del client:",
+  "baseUrl": "URL base",
+  "identityServer": "Servidor d'identitat:",
+  "versionWithNumber": "Versió: {version}",
+  "logs": "Registres",
+  "advancedConfigs": "Configuracions avançades",
+  "advancedConfigurations": "Configuracions avançades",
+  "signInWithLabel": "Inicia sessió amb:",
+  "selectAllWords": "Selecciona totes les paraules que escoltes a l'àudio",
+  "joinCourseForActivities": "Uneix-te a un curs per provar activitats.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Els cursos consten de 3-8 mòduls, cadascun amb activitats per fomentar la pràctica de paraules en diferents contextos",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "La verificació de l'email ha fallat. Si us plau, torna-ho a intentar.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Desbloqueja les eines d'aprenentatge",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Hem llançat la gestió de subscripcions en una nova pestanya. Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Desbloqueja les activitats de pràctica",
+  "hideEvents": "Amaga esdeveniments",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "L'usuari serà rebutjat del curs, però pot intentar tornar a unir-se en qualsevol moment més tard.",
+  "denyKnockChat": "L'usuari serà rebutjat del xat, però pot intentar tornar a unir-se en qualsevol moment més tard.",
+  "banFromSpace": "Prohibició del curs",
+  "unbanFromSpace": "Desprohibició del curs",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Prohibit. No es pot unir.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "La teva sol·licitud d'unió ha estat acceptada! Ara pots entrar al curs.",
+  "sessionFull": " massa tard! Aquesta activitat està completa.",
+  "returnToCourse": "Torna al curs",
+  "returnHome": "Torna a casa",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Comentaris sobre la traducció",
+  "userUpdatedLearningSettings": "{username} ha actualitzat la configuració d'aprenentatge",
+  "youUpdatedLearningSettings": "Has actualitzat la teva configuració d'aprenentatge",
+  "userAddedActivityPlan": "{username} ha afegit un pla d'activitat",
+  "youAddedActivityPlan": "Has afegit un pla d'activitat",
+  "userSentActivitySummary": "{username} ha enviat un resum d'activitat",
+  "youSentActivitySummary": "Has enviat un resum d'activitat",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

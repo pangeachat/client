@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
@@ -30,6 +31,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   SubscriptionDetails? selectedSubscription;
   bool loading = false;
+  String? userEmail;
 
   @override
   void initState() {
@@ -43,6 +45,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
     subscriptionController.addListener(_onSubscriptionUpdate);
     subscriptionController.subscriptionNotifier.addListener(_onSubscribe);
     subscriptionController.updateCustomerInfo();
+    MatrixState.pangeaController.userController.userEmail.then((email) {
+      if (mounted) {
+        setState(() => userEmail = email);
+      }
+    });
     super.initState();
   }
 
@@ -64,7 +71,9 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   bool get subscriptionsAvailable =>
       subscriptionController
-          .availableSubscriptionInfo?.availableSubscriptions.isNotEmpty ??
+          .availableSubscriptionInfo
+          ?.availableSubscriptions
+          .isNotEmpty ??
       false;
 
   bool get currentSubscriptionAvailable =>
@@ -76,15 +85,19 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   bool get currentSubscriptionIsTrial =>
       currentSubscriptionAvailable &&
       (subscriptionController
-              .currentSubscriptionInfo?.currentSubscription?.isTrial ??
+              .currentSubscriptionInfo
+              ?.currentSubscription
+              ?.isTrial ??
           false);
 
   String? get purchasePlatformDisplayName => subscriptionController
-      .currentSubscriptionInfo?.purchasePlatformDisplayName;
+      .currentSubscriptionInfo
+      ?.purchasePlatformDisplayName;
 
   bool get currentSubscriptionIsPromotional =>
       subscriptionController
-          .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
+          .currentSubscriptionInfo
+          ?.currentSubscriptionIsPromotional ??
       false;
 
   String get currentSubscriptionTitle =>
@@ -105,7 +118,8 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
       return true;
     }
     return subscriptionController
-        .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
+        .currentSubscriptionInfo!
+        .currentPlatformMatchesPurchasePlatform;
   }
 
   DateTime? get expirationDate =>
@@ -159,10 +173,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "subscription_id": subscription.id,
-          "is_promo": isPromo,
-        },
+        data: {"subscription_id": subscription.id, "is_promo": isPromo},
       );
     } finally {
       if (mounted) setState(() => loading = false);
@@ -170,58 +181,75 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   }
 
   Future<void> onClickCancelSubscription() async {
+    final uri = await launchMangementUrl(ManagementOption.cancel);
+    if (uri != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          showCloseIcon: true,
+          duration: const Duration(seconds: 30),
+          content: Row(
+            children: [
+              Expanded(child: Text(L10n.of(context).managementSnackbarMessage)),
+              TextButton(
+                child: Text(
+                  L10n.of(context).tryAgain,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ),
+                onPressed: () {
+                  launchUrl(uri, mode: LaunchMode.externalApplication);
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     await SubscriptionManagementRepo.setClickedCancelSubscription();
     await SubscriptionManagementRepo.setSubscriptionEndDate(
       subscriptionEndDate,
     );
-    await launchMangementUrl(ManagementOption.cancel);
     if (mounted) setState(() {});
   }
 
-  Future<void> launchMangementUrl(ManagementOption option) async {
+  Future<Uri?> launchMangementUrl(ManagementOption option) async {
     String managementUrl = Environment.stripeManagementUrl;
-    final String? email =
-        await MatrixState.pangeaController.userController.userEmail;
-    if (email != null) {
-      managementUrl += "?prefilled_email=${Uri.encodeComponent(email)}";
+    if (userEmail != null) {
+      managementUrl += "?prefilled_email=${Uri.encodeComponent(userEmail!)}";
     }
     final String? purchaseAppId = subscriptionController
-        .currentSubscriptionInfo?.currentSubscription?.appId;
-    if (purchaseAppId == null) return;
+        .currentSubscriptionInfo
+        ?.currentSubscription
+        ?.appId;
+    if (purchaseAppId == null) return null;
 
     final SubscriptionAppIds? appIds =
         subscriptionController.availableSubscriptionInfo!.appIds;
 
     if (purchaseAppId == appIds?.stripeId) {
-      launchUrlString(managementUrl);
-      return;
+      final uri = Uri.parse(managementUrl);
+      launchUrl(uri, mode: LaunchMode.externalApplication);
+      return uri;
     }
     if (purchaseAppId == appIds?.appleId) {
-      launchUrlString(
-        AppConfig.appleMangementUrl,
-        mode: LaunchMode.externalApplication,
-      );
-      return;
+      final uri = Uri.parse(AppConfig.appleMangementUrl);
+      launchUrl(uri, mode: LaunchMode.externalApplication);
+      return uri;
     }
     switch (option) {
       case ManagementOption.history:
-        launchUrlString(
-          AppConfig.googlePlayHistoryUrl,
-          mode: LaunchMode.externalApplication,
-        );
-        break;
+        final uri = Uri.parse(AppConfig.googlePlayHistoryUrl);
+        launchUrl(uri, mode: LaunchMode.externalApplication);
+        return uri;
       case ManagementOption.paymentMethod:
-        launchUrlString(
-          AppConfig.googlePlayPaymentMethodUrl,
-          mode: LaunchMode.externalApplication,
-        );
-        break;
+        final uri = Uri.parse(AppConfig.googlePlayPaymentMethodUrl);
+        launchUrl(uri, mode: LaunchMode.externalApplication);
+        return uri;
       default:
-        launchUrlString(
-          AppConfig.googlePlayMangementUrl,
-          mode: LaunchMode.externalApplication,
-        );
-        break;
+        final uri = Uri.parse(AppConfig.googlePlayMangementUrl);
+        launchUrl(uri, mode: LaunchMode.externalApplication);
+        return uri;
     }
   }
 
@@ -241,8 +269,4 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   Widget build(BuildContext context) => SettingsSubscriptionView(this);
 }
 
-enum ManagementOption {
-  cancel,
-  paymentMethod,
-  history,
-}
+enum ManagementOption { cancel, paymentMethod, history }

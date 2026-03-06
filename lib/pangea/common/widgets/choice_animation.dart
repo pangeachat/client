@@ -82,25 +82,19 @@ class ChoiceAnimationWidgetState extends State<ChoiceAnimationWidget>
     return widget.isCorrect == null
         ? widget.child
         : widget.isCorrect == true
-            ? AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _animation.value,
-                    child: child,
-                  );
-                },
-                child: widget.child,
-              )
-            : AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: _animation.value,
-                    child: child,
-                  );
-                },
-                child: widget.child,
-              );
+        ? AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Transform.scale(scale: _animation.value, child: child);
+            },
+            child: widget.child,
+          )
+        : AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Transform.rotate(angle: _animation.value, child: child);
+            },
+            child: widget.child,
+          );
   }
 }

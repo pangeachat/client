@@ -23,10 +23,9 @@ class UnreadRoomsBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final unreadCount = Matrix.of(context)
-        .client
-        .rooms
-        // #Pangea
+    // #Pangea
+    // final unreadCount = Matrix.of(context).client.rooms
+    final unreadCount = Matrix.of(context).client.rooms
         .where((r) => !r.isHiddenRoom && !r.isSpace)
         // Pangea#
         .where(filter)
@@ -39,18 +38,12 @@ class UnreadRoomsBadge extends StatelessWidget {
         // Pangea#
         badgeColor: theme.colorScheme.primary,
         elevation: 4,
-        borderSide: BorderSide(
-          color: theme.colorScheme.surface,
-          width: 2,
-        ),
+        borderSide: BorderSide(color: theme.colorScheme.surface, width: 2),
       ),
       // #Pangea
       // badgeContent: Text(
       //   unreadCount.toString(),
-      //   style: TextStyle(
-      //     color: theme.colorScheme.onPrimary,
-      //     fontSize: 12,
-      //   ),
+      //   style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 12),
       // ),
       badgeContent: SizedBox(
         width: 15,
@@ -61,10 +54,7 @@ class UnreadRoomsBadge extends StatelessWidget {
             unreadCount < 100
                 ? unreadCount.toString()
                 : L10n.of(context).unreadPlus,
-            style: TextStyle(
-              color: theme.colorScheme.onPrimary,
-              fontSize: 12,
-            ),
+            style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 12),
           ),
         ),
       ),

@@ -12,8 +12,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseLocationMediaRepo {
   static final Map<String, Completer<CourseLocationMediaResponse>> _cache = {};
-  static final GetStorage _storage =
-      GetStorage('course_location_media_storage');
+  static final GetStorage _storage = GetStorage(
+    'course_location_media_storage',
+  );
 
   static Future<CourseLocationMediaResponse> get(
     CourseInfoBatchRequest request,
@@ -27,10 +28,7 @@ class CourseLocationMediaRepo {
 
     if (toFetch.isNotEmpty) {
       final fetched = await _fetch(
-        CourseInfoBatchRequest(
-          batchId: request.batchId,
-          uuids: toFetch,
-        ),
+        CourseInfoBatchRequest(batchId: request.batchId, uuids: toFetch),
       );
 
       urls.addAll(fetched.mediaUrls);
@@ -82,20 +80,13 @@ class CourseLocationMediaRepo {
     }
   }
 
-  static CourseLocationMediaResponse getCached(
-    CourseInfoBatchRequest request,
-  ) {
+  static CourseLocationMediaResponse getCached(CourseInfoBatchRequest request) {
     final List<CourseMediaInfo> urls = [];
     for (final uuid in request.uuids) {
       try {
         final url = _storage.read(uuid) as String?;
         if (url != null) {
-          urls.add(
-            CourseMediaInfo(
-              uuid: uuid,
-              url: url,
-            ),
-          );
+          urls.add(CourseMediaInfo(uuid: uuid, url: url));
         }
       } catch (e) {
         // If parsing fails, remove the corrupted cache entry

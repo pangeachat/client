@@ -9,28 +9,19 @@ import 'package:fluffychat/pangea/login/pages/pangea_login_scaffold.dart';
 
 class SpaceCodeOnboardingView extends StatelessWidget {
   final SpaceCodeOnboardingState controller;
-  const SpaceCodeOnboardingView({
-    super.key,
-    required this.controller,
-  });
+  const SpaceCodeOnboardingView({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return PangeaLoginScaffold(
       customAppBar: AppBar(
         title: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 450,
-          ),
+          constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BackButton(
-                onPressed: Navigator.of(context).pop,
-              ),
-              const SizedBox(
-                width: 40.0,
-              ),
+              BackButton(onPressed: Navigator.of(context).pop),
+              const SizedBox(width: 40.0),
             ],
           ),
         ),
@@ -48,10 +39,9 @@ class SpaceCodeOnboardingView extends StatelessWidget {
                     controller.client.userID?.localpart ??
                     "",
               ),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
               L10n.of(context).joinSpaceOnboardingDesc,
@@ -70,14 +60,13 @@ class SpaceCodeOnboardingView extends StatelessWidget {
                   : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                foregroundColor:
-                    Theme.of(context).colorScheme.onPrimaryContainer,
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onPrimaryContainer,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(L10n.of(context).join),
-                ],
+                children: [Text(L10n.of(context).join)],
               ),
             ),
             TextButton(

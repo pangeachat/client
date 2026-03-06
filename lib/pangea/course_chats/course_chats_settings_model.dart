@@ -8,9 +8,9 @@ class CourseChatsSettingsModel {
   });
 
   Map<String, dynamic> toJson() => {
-        'dismissed_intro_chat': dismissedIntroChat,
-        'dismissed_announcements_chat': dismissedAnnouncementsChat,
-      };
+    'dismissed_intro_chat': dismissedIntroChat,
+    'dismissed_announcements_chat': dismissedAnnouncementsChat,
+  };
 
   factory CourseChatsSettingsModel.fromJson(Map<String, dynamic> json) {
     return CourseChatsSettingsModel(
@@ -22,10 +22,9 @@ class CourseChatsSettingsModel {
   CourseChatsSettingsModel copyWith({
     bool? dismissedIntroChat,
     bool? dismissedAnnouncementsChat,
-  }) =>
-      CourseChatsSettingsModel(
-        dismissedIntroChat: dismissedIntroChat ?? this.dismissedIntroChat,
-        dismissedAnnouncementsChat:
-            dismissedAnnouncementsChat ?? this.dismissedAnnouncementsChat,
-      );
+  }) => CourseChatsSettingsModel(
+    dismissedIntroChat: dismissedIntroChat ?? this.dismissedIntroChat,
+    dismissedAnnouncementsChat:
+        dismissedAnnouncementsChat ?? this.dismissedAnnouncementsChat,
+  );
 }

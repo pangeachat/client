@@ -1,5 +1,5 @@
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'match_rule_id_model.dart';
 import 'span_data_model.dart';
 
@@ -7,32 +7,49 @@ class PangeaMatch {
   final SpanData match;
   final PangeaMatchStatusEnum status;
 
-  const PangeaMatch({
-    required this.match,
-    required this.status,
-  });
+  const PangeaMatch({required this.match, required this.status});
 
-  factory PangeaMatch.fromJson(Map<String, dynamic> json) {
+  /// Parse PangeaMatch from JSON.
+  ///
+  /// Supports two formats:
+  /// - V1/Legacy: {"match": {...span_data...}, "status": "open"}
+  /// - V2: {...span_data...} (SpanData directly, status defaults to open)
+  ///
+  /// [fullText] is passed to SpanData as fallback when the span JSON doesn't
+  /// contain full_text (e.g., when using original_input from parent response).
+  factory PangeaMatch.fromJson(Map<String, dynamic> json, {String? fullText}) {
+    // Check if this is V1 format (has "match" wrapper) or V2 format (flat SpanData)
+    final bool isV1Format = json[_matchKey] is Map<String, dynamic>;
+
+    final Map<String, dynamic> spanJson = isV1Format
+        ? json[_matchKey] as Map<String, dynamic>
+        : json;
+
+    final statusEntry = json[_statusKey] as String?;
+
     return PangeaMatch(
-      match: SpanData.fromJson(json[_matchKey] as Map<String, dynamic>),
-      status: json[_statusKey] != null
-          ? PangeaMatchStatusEnum.fromString(json[_statusKey] as String)
+      match: SpanData.fromJson(spanJson, parentFullText: fullText),
+      // V1 format may have status; V2 format always defaults to open
+      status: isV1Format && statusEntry != null
+          ? PangeaMatchStatusEnum.values.firstWhere(
+              (status) => status.name == statusEntry,
+              orElse: () => PangeaMatchStatusEnum.open,
+            )
           : PangeaMatchStatusEnum.open,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        _matchKey: match.toJson(),
-        _statusKey: status.name,
-      };
+    _matchKey: match.toJson(),
+    _statusKey: status.name,
+  };
 
   static const _matchKey = "match";
   static const _statusKey = "status";
 
   bool get isITStart =>
       match.rule?.id == MatchRuleIdModel.interactiveTranslation ||
-      [SpanDataTypeEnum.itStart, SpanDataTypeEnum.itStart.name]
-          .contains(match.type.typeName);
+      match.type == ReplacementTypeEnum.itStart;
 
   bool get _needsTranslation => match.rule?.id != null
       ? [

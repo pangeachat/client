@@ -6,17 +6,11 @@ import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 extension on Api {
   Future<KnockSpaceResponse> knockSpace(String code) async {
-    final requestUri = Uri(
-      path: '_synapse/client/pangea/v1/knock_with_code',
-    );
+    final requestUri = Uri(path: '_synapse/client/pangea/v1/knock_with_code');
     final request = Request('POST', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
     request.headers['authorization'] = 'Bearer ${bearerToken!}';
-    request.bodyBytes = utf8.encode(
-      jsonEncode({
-        'access_code': code,
-      }),
-    );
+    request.bodyBytes = utf8.encode(jsonEncode({'access_code': code}));
     final response = await httpClient.send(request);
     if (response.statusCode != 200) {
       if (response.statusCode == 429) {

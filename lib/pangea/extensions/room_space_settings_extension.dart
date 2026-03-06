@@ -26,12 +26,12 @@ extension SpaceRoomExtension on Room {
     final List<User> participants = await requestParticipants();
     return isSpace
         ? participants
-            .where(
-              (e) =>
-                  e.powerLevel == SpaceConstants.powerLevelOfAdmin &&
-                  e.id != BotName.byEnvironment,
-            )
-            .toList()
+              .where(
+                (e) =>
+                    e.powerLevel == SpaceConstants.powerLevelOfAdmin &&
+                    e.id != BotName.byEnvironment,
+              )
+              .toList()
         : participants;
   }
 }

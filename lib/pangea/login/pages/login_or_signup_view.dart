@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
@@ -63,9 +63,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 300,
-            ),
+            constraints: const BoxConstraints(maxWidth: 300),
             child: Column(
               spacing: 50.0,
               mainAxisSize: MainAxisSize.min,
@@ -78,9 +76,10 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       forceColor: theme.colorScheme.onSurface,
                     ),
                     Text(
-                      AppConfig.applicationName,
-                      style: theme.textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
+                      AppSettings.applicationName.value,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -109,9 +108,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).start),
-                        ],
+                        children: [Text(L10n.of(context).start)],
                       ),
                     ),
                     ElevatedButton(
@@ -122,9 +119,7 @@ class LoginOrSignupViewState extends State<LoginOrSignupView> {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).loginToAccount),
-                        ],
+                        children: [Text(L10n.of(context).loginToAccount)],
                       ),
                     ),
                   ],

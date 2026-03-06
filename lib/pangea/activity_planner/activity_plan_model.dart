@@ -41,27 +41,29 @@ class ActivityPlanModel {
     this.endAt,
     this.duration,
     this.isDeprecatedModel = false,
-  })  : description = (description == null || description.isEmpty)
-            ? learningObjective
-            : description,
-        _roles = roles,
-        _imageURL = imageURL;
+  }) : description = (description == null || description.isEmpty)
+           ? learningObjective
+           : description,
+       _roles = roles,
+       _imageURL = imageURL;
 
   List<String> get placeholderImages => [
-        "${AppConfig.assetsBaseURL}/Space%20template%202.png",
-        "${AppConfig.assetsBaseURL}/Space%20template%203.png",
-        "${AppConfig.assetsBaseURL}/Space%20template%204.png",
-      ];
+    "${AppConfig.assetsBaseURL}/Space%20template%202.png",
+    "${AppConfig.assetsBaseURL}/Space%20template%203.png",
+    "${AppConfig.assetsBaseURL}/Space%20template%204.png",
+  ];
 
-  String get randomPlaceholder => placeholderImages[
-      Random(title.hashCode).nextInt(placeholderImages.length)];
+  String get randomPlaceholder =>
+      placeholderImages[Random(
+        title.hashCode,
+      ).nextInt(placeholderImages.length)];
 
   Uri? get imageURL => _imageURL != null
       ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
       : Uri.tryParse(randomPlaceholder);
 
   Map<String, ActivityRole> get roles {
-    if (_roles != null) return _roles!;
+    if (_roles != null) return _roles;
     final defaultRoles = <String, ActivityRole>{};
     for (int i = 0; i < req.numberOfParticipants; i++) {
       defaultRoles['role_$i'] = ActivityRole(
@@ -75,18 +77,16 @@ class ActivityPlanModel {
   }
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
-    final req =
-        ActivityPlanRequest.fromJson(json[ModelKey.activityPlanRequest]);
+    final req = ActivityPlanRequest.fromJson(
+      json[ModelKey.activityPlanRequest],
+    );
 
     Map<String, ActivityRole>? roles;
     final roleContent = json['roles'];
     if (roleContent is Map<String, dynamic>) {
       roles = Map<String, ActivityRole>.from(
         json['roles'].map(
-          (key, value) => MapEntry(
-            key,
-            ActivityRole.fromJson(value),
-          ),
+          (key, value) => MapEntry(key, ActivityRole.fromJson(value)),
         ),
       );
     }
@@ -97,7 +97,8 @@ class ActivityPlanModel {
       instructions: json[ModelKey.activityPlanInstructions],
       req: req,
       title: json[ModelKey.activityPlanTitle],
-      description: json[ModelKey.description] ??
+      description:
+          json[ModelKey.description] ??
           json[ModelKey.activityPlanLearningObjective],
       learningObjective: json[ModelKey.activityPlanLearningObjective],
       vocab: List<Vocab>.from(
@@ -135,9 +136,7 @@ class ActivityPlanModel {
         'hours': duration?.inHours.remainder(24) ?? 0,
         'minutes': duration?.inMinutes.remainder(60) ?? 0,
       },
-      'roles': _roles?.map(
-        (key, value) => MapEntry(key, value.toJson()),
-      ),
+      'roles': _roles?.map((key, value) => MapEntry(key, value.toJson())),
     };
   }
 
@@ -187,16 +186,10 @@ class Vocab {
   final String lemma;
   final String pos;
 
-  Vocab({
-    required this.lemma,
-    required this.pos,
-  });
+  Vocab({required this.lemma, required this.pos});
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
-    return Vocab(
-      lemma: json[ModelKey.lemma],
-      pos: json['pos'],
-    );
+    return Vocab(lemma: json[ModelKey.lemma], pos: json['pos']);
   }
 
   PangeaToken asToken() {
@@ -215,10 +208,7 @@ class Vocab {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      ModelKey.lemma: lemma,
-      'pos': pos,
-    };
+    return {ModelKey.lemma: lemma, 'pos': pos};
   }
 
   @override
@@ -261,11 +251,6 @@ class ActivityRole {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'goal': goal,
-      'avatar_url': avatarUrl,
-    };
+    return {'id': id, 'name': name, 'goal': goal, 'avatar_url': avatarUrl};
   }
 }

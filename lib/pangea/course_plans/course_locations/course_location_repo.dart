@@ -28,10 +28,7 @@ class CourseLocationRepo {
 
     if (toFetch.isNotEmpty) {
       final fetchedLocations = await _fetch(
-        CourseInfoBatchRequest(
-          batchId: request.batchId,
-          uuids: toFetch,
-        ),
+        CourseInfoBatchRequest(batchId: request.batchId, uuids: toFetch),
       );
       locations.addAll(fetchedLocations.locations);
       await _setCached(fetchedLocations);
@@ -83,16 +80,15 @@ class CourseLocationRepo {
     }
   }
 
-  static CourseLocationResponse getCached(
-    CourseInfoBatchRequest request,
-  ) {
+  static CourseLocationResponse getCached(CourseInfoBatchRequest request) {
     final List<CourseLocationModel> locations = [];
     for (final uuid in request.uuids) {
       final json = _storage.read(uuid);
       if (json != null) {
         try {
-          final location =
-              CourseLocationModel.fromJson(Map<String, dynamic>.from(json));
+          final location = CourseLocationModel.fromJson(
+            Map<String, dynamic>.from(json),
+          );
           locations.add(location);
         } catch (e) {
           // If parsing fails, remove the corrupted cache entry

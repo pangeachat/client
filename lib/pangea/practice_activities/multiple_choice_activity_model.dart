@@ -9,10 +9,7 @@ class MultipleChoiceActivity {
   final Set<String> choices;
   final Set<String> answers;
 
-  MultipleChoiceActivity({
-    required this.choices,
-    required this.answers,
-  });
+  MultipleChoiceActivity({required this.choices, required this.answers});
 
   Color choiceColor(String value) =>
       answers.contains(value) ? AppConfig.success : AppConfig.warning;
@@ -35,10 +32,7 @@ class MultipleChoiceActivity {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'choices': List.from(choices),
-      'answer': List.from(answers),
-    };
+    return {'choices': List.from(choices), 'answer': List.from(answers)};
   }
 
   // ovveride operator == and hashCode

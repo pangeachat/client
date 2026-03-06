@@ -16,9 +16,7 @@ extension AnalyticsSettingsRoomExtension on Room {
   Set<ConstructIdentifier> get blockedConstructs =>
       analyticsSettings.blockedConstructs;
 
-  Future<void> setAnalyticsSettings(
-    AnalyticsSettingsModel settings,
-  ) async {
+  Future<void> setAnalyticsSettings(AnalyticsSettingsModel settings) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.analyticsSettings,

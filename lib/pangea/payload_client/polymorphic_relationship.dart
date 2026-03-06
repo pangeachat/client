@@ -2,10 +2,7 @@ class PolymorphicRelationship {
   final String relationTo;
   final String value;
 
-  PolymorphicRelationship({
-    required this.relationTo,
-    required this.value,
-  });
+  PolymorphicRelationship({required this.relationTo, required this.value});
 
   factory PolymorphicRelationship.fromJson(Map<String, dynamic> json) {
     return PolymorphicRelationship(
@@ -15,9 +12,6 @@ class PolymorphicRelationship {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'relationTo': relationTo,
-      'value': value,
-    };
+    return {'relationTo': relationTo, 'value': value};
   }
 }

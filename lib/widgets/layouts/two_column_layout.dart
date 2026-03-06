@@ -31,9 +31,10 @@ class TwoColumnLayout extends StatelessWidget {
       final spaceID = state.pathParameters['spaceid'];
 
       if (roomID == null && spaceID == null) {
-        showNavRail = !["newcourse", ":construct"].any(
-          (p) => state.fullPath?.contains(p) ?? false,
-        );
+        showNavRail = ![
+          "newcourse",
+          ":construct",
+        ].any((p) => state.fullPath?.contains(p) ?? false);
       } else if (roomID == null) {
         showNavRail = state.fullPath?.endsWith(':spaceid') == true;
       }
@@ -41,7 +42,7 @@ class TwoColumnLayout extends StatelessWidget {
 
     final columnWidth =
         (showNavRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
-            (isColumnMode ? (FluffyThemes.columnWidth + 1.0) : 0.0);
+        (isColumnMode ? (FluffyThemes.columnWidth + 1.0) : 0.0);
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(
@@ -56,16 +57,7 @@ class TwoColumnLayout extends StatelessWidget {
               left: columnWidth,
               child: ClipRRect(child: sideView),
             ),
-            SpaceNavigationColumn(
-              state: state,
-              showNavRail: showNavRail,
-            ),
-            // Container(
-            //   clipBehavior: Clip.antiAlias,
-            //   decoration: const BoxDecoration(),
-            //   width: FluffyThemes.columnWidth + FluffyThemes.navRailWidth,
-            //   child: mainView,
-            // ),
+            SpaceNavigationColumn(state: state, showNavRail: showNavRail),
             // Container(width: 1.0, color: theme.dividerColor),
             // Expanded(child: ClipRRect(child: sideView)),
             // Pangea#

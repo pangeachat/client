@@ -28,8 +28,8 @@ class ParticipantListItem extends StatelessWidget {
     final permissionBatch = user.powerLevel >= 100
         ? L10n.of(context).admin
         : user.powerLevel >= 50
-            ? L10n.of(context).moderator
-            : '';
+        ? L10n.of(context).moderator
+        : '';
 
     return ListTile(
       onTap: () => showMemberActionsPopupMenu(context: context, user: user),
@@ -43,17 +43,12 @@ class ParticipantListItem extends StatelessWidget {
           ),
           if (permissionBatch.isNotEmpty)
             Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 6,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: user.powerLevel >= 100
                     ? theme.colorScheme.tertiary
                     : theme.colorScheme.tertiaryContainer,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               ),
               child: Text(
                 permissionBatch,
@@ -67,8 +62,10 @@ class ParticipantListItem extends StatelessWidget {
           membershipBatch == null
               ? const SizedBox.shrink()
               : Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                    horizontal: 8,
+                  ),
                   margin: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     color: theme.colorScheme.secondaryContainer,
@@ -87,10 +84,7 @@ class ParticipantListItem extends StatelessWidget {
       ),
       // #Pangea
       subtitle: LevelDisplayName(userId: user.id),
-      // subtitle: Text(
-      //   user.id,
-      //   maxLines: 1,
-      //   overflow: TextOverflow.ellipsis,
+      // subtitle: Text(user.id, maxLines: 1, overflow: TextOverflow.ellipsis),
       // Pangea#
       leading: Opacity(
         opacity: user.membership == Membership.join ? 1 : 0.5,

@@ -5,9 +5,7 @@ import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_m
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 
 class GrammarErrorPracticeGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     assert(
       req.grammarErrorInfo != null,
       'Grammar error info must be provided for grammar error practice',
@@ -33,6 +31,14 @@ class GrammarErrorPracticeGenerator {
 
     if (!req.grammarErrorInfo!.translation.contains(errorSpan)) {
       choices.add(errorSpan);
+    }
+
+    if (igcMatch.offset + igcMatch.length > stepText.characters.length) {
+      // Sometimes choreo records turn out weird when users edit the message
+      // mid-IGC. If the offsets / lengths don't make sense, skip this target.
+      throw Exception(
+        "IGC match offset and length exceed step text length. Step text: '$stepText', match offset: ${igcMatch.offset}, match length: ${igcMatch.length}",
+      );
     }
 
     choices.shuffle();

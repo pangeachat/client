@@ -58,18 +58,14 @@ class ChatDetailsContent extends StatelessWidget {
                           ),
                         ),
                         if (!room.isDirectChat &&
-                            room.canChangeStateEvent(
-                              EventTypes.RoomAvatar,
-                            ))
+                            room.canChangeStateEvent(EventTypes.RoomAvatar))
                           Positioned(
                             bottom: 0,
                             right: 0,
                             child: FloatingActionButton.small(
                               onPressed: controller.setAvatarAction,
                               heroTag: null,
-                              child: const Icon(
-                                Icons.camera_alt_outlined,
-                              ),
+                              child: const Icon(Icons.camera_alt_outlined),
                             ),
                           ),
                       ],
@@ -83,23 +79,22 @@ class ChatDetailsContent extends StatelessWidget {
                         TextButton.icon(
                           onPressed: room.isDirectChat
                               ? null
-                              : () => room.canChangeStateEvent(
-                                    EventTypes.RoomName,
-                                  )
-                                      ? controller.setDisplaynameAction()
-                                      : FluffyShare.share(
-                                          displayname,
-                                          context,
-                                          copyOnly: true,
-                                        ),
+                              : () =>
+                                    room.canChangeStateEvent(
+                                      EventTypes.RoomName,
+                                    )
+                                    ? controller.setDisplaynameAction()
+                                    : FluffyShare.share(
+                                        displayname,
+                                        context,
+                                        copyOnly: true,
+                                      ),
                           icon: Icon(
                             room.isDirectChat
                                 ? Icons.chat_bubble_outline
-                                : room.canChangeStateEvent(
-                                    EventTypes.RoomName,
-                                  )
-                                    ? Icons.edit_outlined
-                                    : Icons.copy_outlined,
+                                : room.canChangeStateEvent(EventTypes.RoomName)
+                                ? Icons.edit_outlined
+                                : Icons.copy_outlined,
                             size: 16,
                           ),
                           style: TextButton.styleFrom(
@@ -120,17 +115,12 @@ class ChatDetailsContent extends StatelessWidget {
                           onPressed: room.isDirectChat || !room.canInvite
                               ? null
                               : () => NavigationUtil.goToSpaceRoute(
-                                    controller.roomId,
-                                    ['details', 'invite'],
-                                    context,
-                                    queryParams: {
-                                      'filter': 'participants',
-                                    },
-                                  ),
-                          icon: const Icon(
-                            Icons.group_outlined,
-                            size: 14,
-                          ),
+                                  controller.roomId,
+                                  ['details', 'invite'],
+                                  context,
+                                  queryParams: {'filter': 'participants'},
+                                ),
+                          icon: const Icon(Icons.group_outlined, size: 14),
                           style: TextButton.styleFrom(
                             foregroundColor: theme.colorScheme.secondary,
                             disabledForegroundColor:
@@ -171,8 +161,8 @@ class ChatDetailsContent extends StatelessWidget {
                     child: SelectableLinkify(
                       text: room.topic.isEmpty
                           ? room.isSpace
-                              ? L10n.of(context).noSpaceDescriptionYet
-                              : L10n.of(context).noChatDescriptionYet
+                                ? L10n.of(context).noSpaceDescriptionYet
+                                : L10n.of(context).noChatDescriptionYet
                           : room.topic,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: const TextStyle(
@@ -195,10 +185,7 @@ class ChatDetailsContent extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ChatDetailsButtonRow(
-                  controller: controller,
-                  room: room,
-                ),
+                child: ChatDetailsButtonRow(controller: controller, room: room),
               ),
             ],
           );
@@ -210,9 +197,7 @@ class ChatDetailsContent extends StatelessWidget {
             children: [
               const InstructionsInlineTooltip(
                 instructionsEnum: InstructionsEnum.chatParticipantTooltip,
-                padding: EdgeInsets.only(
-                  bottom: 16.0,
-                ),
+                padding: EdgeInsets.only(bottom: 16.0),
               ),
               RoomParticipantsSection(room: room),
             ],

@@ -23,15 +23,13 @@ class SpaceCodeController extends BaseController {
   static Future<String?> joinCachedSpaceCode(BuildContext context) async {
     final String? spaceCode = SpaceCodeRepo.spaceCode;
     if (spaceCode == null) return null;
-    final spaceId = await joinSpaceWithCode(
-      context,
-      spaceCode,
-    );
+    final spaceId = await joinSpaceWithCode(context, spaceCode);
 
     await SpaceCodeRepo.clearSpaceCode();
     if (spaceId != null) {
-      final room =
-          MatrixState.pangeaController.matrixState.client.getRoomById(spaceId);
+      final room = MatrixState.pangeaController.matrixState.client.getRoomById(
+        spaceId,
+      );
       room?.isSpace ?? true
           ? context.go('/rooms/spaces/$spaceId/details')
           : context.go('/rooms/${room?.id}');
@@ -51,8 +49,9 @@ class SpaceCodeController extends BaseController {
     final resp = await showFutureLoadingDialog<KnockSpaceResponse>(
       context: context,
       future: () async {
-        final KnockSpaceResponse knockResult =
-            await client.knockWithCode(spaceCode);
+        final KnockSpaceResponse knockResult = await client.knockWithCode(
+          spaceCode,
+        );
 
         if (knockResult.roomIds.isEmpty &&
             knockResult.alreadyJoined.isEmpty &&
@@ -117,10 +116,7 @@ class SpaceCodeController extends BaseController {
     Room? room = client.getRoomById(spaceId);
 
     if (room == null) {
-      await client.waitForRoomInSync(
-        spaceId,
-        join: true,
-      );
+      await client.waitForRoomInSync(spaceId, join: true);
       room = client.getRoomById(spaceId);
       if (room == null) {
         throw Exception("Failed to join space with id $spaceId");

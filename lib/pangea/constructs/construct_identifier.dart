@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
@@ -36,14 +37,9 @@ class ConstructIdentifier {
     if (type == ConstructTypeEnum.morph &&
         MorphFeaturesEnumExtension.fromString(category) ==
             MorphFeaturesEnum.Unknown) {
-      debugger(when: kDebugMode);
       ErrorHandler.logError(
         e: Exception("Morph feature not found"),
-        data: {
-          "category": category,
-          "lemma": lemma,
-          "type": type,
-        },
+        data: {"category": category, "lemma": lemma, "type": type},
       );
     }
   }
@@ -88,11 +84,7 @@ class ConstructIdentifier {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'lemma': lemma,
-      'type': type.string,
-      'cat': category,
-    };
+    return {'lemma': lemma, 'type': type.string, 'cat': category};
   }
 
   // override operator == and hashCode
@@ -104,8 +96,8 @@ class ConstructIdentifier {
         other.lemma == lemma &&
         other.type == type &&
         (category == other.category ||
-            category.toLowerCase() == "other" ||
-            other.category.toLowerCase() == "other");
+            category.toLowerCase() == 'other' ||
+            other.category.toLowerCase() == 'other');
   }
 
   @override
@@ -132,11 +124,7 @@ class ConstructIdentifier {
 
     if (type == null) return null;
 
-    return ConstructIdentifier(
-      lemma: lemma,
-      type: type,
-      category: category,
-    );
+    return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
   bool get isContentWord =>
@@ -147,10 +135,10 @@ class ConstructIdentifier {
         partOfSpeech: category,
         lemmaLang:
             MatrixState.pangeaController.userController.userL2?.langCodeShort ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
         userL1:
             MatrixState.pangeaController.userController.userL1?.langCodeShort ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
         lemma: lemma,
         messageInfo: messageInfo,
       );
@@ -158,11 +146,10 @@ class ConstructIdentifier {
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(
     Map<String, dynamic> messageInfo,
-  ) =>
-      LemmaInfoRepo.get(
-        MatrixState.pangeaController.userController.accessToken,
-        lemmaInfoRequest(messageInfo),
-      );
+  ) => LemmaInfoRepo.get(
+    MatrixState.pangeaController.userController.accessToken,
+    lemmaInfoRequest(messageInfo),
+  );
 
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
@@ -182,26 +169,31 @@ class ConstructIdentifier {
     final typeName = parts[1];
     final category = parts[2];
 
-    final type = ConstructTypeEnum.values.firstWhereOrNull(
-          (e) => e.name == typeName,
-        ) ??
+    final type =
+        ConstructTypeEnum.values.firstWhereOrNull((e) => e.name == typeName) ??
         ConstructTypeEnum.vocab;
 
-    return ConstructIdentifier(
-      lemma: lemma,
-      type: type,
-      category: category,
-    );
+    return ConstructIdentifier(lemma: lemma, type: type, category: category);
   }
 
   PangeaToken get asToken => PangeaToken(
-        lemma: Lemma(
-          text: lemma,
-          saveVocab: true,
-          form: lemma,
-        ),
-        pos: category,
-        text: PangeaTokenText.fromString(lemma),
-        morph: {},
-      );
+    lemma: Lemma(text: lemma, saveVocab: true, form: lemma),
+    pos: category,
+    text: PangeaTokenText.fromString(lemma),
+    morph: {},
+  );
+
+  /// Score for a construct that has never been seen (no use history).
+  int get unseenPracticeScore =>
+      AnalyticsConstants.defaultDaysSinceLastUsed *
+      (isContentWord
+          ? AnalyticsConstants.contentWordMultiplier
+          : AnalyticsConstants.functionWordMultiplier);
+
+  bool get isInvalid =>
+      (type == ConstructTypeEnum.morph &&
+          MorphFeaturesEnumExtension.fromString(category) ==
+              MorphFeaturesEnum.Unknown) ||
+      category == 'other' ||
+      lemma.isEmpty;
 }

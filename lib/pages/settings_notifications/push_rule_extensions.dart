@@ -122,6 +122,7 @@ extension PushRuleExtension on PushRule {
       // '.im.vector.jitsi',
     ];
   }
+
   // Pangea#
 }
 

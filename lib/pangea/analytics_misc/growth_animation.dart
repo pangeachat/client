@@ -57,14 +57,16 @@ class _GrowthAnimationState extends State<GrowthAnimation>
     _wiggleAmplitude = 4.0 + _random.nextDouble() * 4.0;
     _wiggleFrequency = 1.5 + _random.nextDouble() * 1.0;
 
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: _durationMs),
-      vsync: this,
-    )..forward().then((_) {
-        if (mounted) {
-          MatrixState.pAnyState.closeOverlay(widget.targetID);
-        }
-      });
+    _controller =
+        AnimationController(
+            duration: const Duration(milliseconds: _durationMs),
+            vsync: this,
+          )
+          ..forward().then((_) {
+            if (mounted) {
+              MatrixState.pAnyState.closeOverlay(widget.targetID);
+            }
+          });
   }
 
   @override
@@ -85,7 +87,7 @@ class _GrowthAnimationState extends State<GrowthAnimation>
         final opacity = t < 0.5 ? t * 2 : (1.0 - t) * 2;
         final wiggle = sin(t * pi * _wiggleFrequency) * _wiggleAmplitude;
         return Transform.translate(
-          offset: Offset(_horizontalOffset! + wiggle, dy),
+          offset: Offset(_horizontalOffset + wiggle, dy),
           child: Opacity(
             opacity: opacity.clamp(0.0, 1.0),
             child: widget.level.icon(24),

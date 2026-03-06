@@ -38,9 +38,7 @@ enum SpaceSettingsTabs {
   more;
 
   static SpaceSettingsTabs? fromString(String value) {
-    return SpaceSettingsTabs.values.firstWhereOrNull(
-      (e) => e.name == value,
-    );
+    return SpaceSettingsTabs.values.firstWhereOrNull((e) => e.name == value);
   }
 }
 
@@ -48,11 +46,7 @@ class SpaceDetailsContent extends StatelessWidget {
   final ChatDetailsController controller;
   final Room room;
 
-  const SpaceDetailsContent(
-    this.controller,
-    this.room, {
-    super.key,
-  });
+  const SpaceDetailsContent(this.controller, this.room, {super.key});
 
   SpaceSettingsTabs tab(BuildContext context) {
     final defaultTab = FluffyThemes.isColumnMode(context)
@@ -111,9 +105,7 @@ class SpaceDetailsContent extends StatelessWidget {
           if (room.getParticipants([Membership.knock]).isEmpty) {
             filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
-          context.go(
-            '/rooms/spaces/${room.id}/details/invite?filter=$filter',
-          );
+          context.go('/rooms/spaces/${room.id}/details/invite?filter=$filter');
         },
         enabled: room.canInvite,
         showInMainView: false,
@@ -216,10 +208,8 @@ class SpaceDetailsContent extends StatelessWidget {
         description: l10n.createGroupChatDesc,
         icon: const Icon(Symbols.chat_add_on, size: 30.0),
         onPressed: controller.addGroupChat,
-        enabled: room.isRoomAdmin &&
-            room.canChangeStateEvent(
-              EventTypes.SpaceChild,
-            ),
+        enabled:
+            room.isRoomAdmin && room.canChangeStateEvent(EventTypes.SpaceChild),
         showInMainView: false,
       ),
       ButtonDetails(
@@ -250,10 +240,7 @@ class SpaceDetailsContent extends StatelessWidget {
       ButtonDetails(
         title: l10n.delete,
         description: l10n.deleteDesc,
-        icon: const Icon(
-          Icons.delete_outline,
-          size: 30.0,
-        ),
+        icon: const Icon(Icons.delete_outline, size: 30.0),
         onPressed: () => DeleteSpaceDialog.show(room, context),
         enabled: room.isRoomAdmin,
         showInMainView: false,
@@ -351,9 +338,7 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.course:
                   return SingleChildScrollView(
-                    child: CourseSettings(
-                      controller: controller,
-                    ),
+                    child: CourseSettings(controller: controller),
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
@@ -374,16 +359,12 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.analytics:
                   return SingleChildScrollView(
-                    child: Center(
-                      child: SpaceAnalytics(roomId: room.id),
-                    ),
+                    child: Center(child: SpaceAnalytics(roomId: room.id)),
                   );
                 case SpaceSettingsTabs.more:
-                  final buttons = _buttons(context)
-                      .where(
-                        (b) => !b.showInMainView && b.visible,
-                      )
-                      .toList();
+                  final buttons = _buttons(
+                    context,
+                  ).where((b) => !b.showInMainView && b.visible).toList();
 
                   return SingleChildScrollView(
                     child: Column(

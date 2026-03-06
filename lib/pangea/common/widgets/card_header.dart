@@ -5,10 +5,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../bot/widgets/bot_face_svg.dart';
 
 class CardHeader extends StatelessWidget {
-  const CardHeader(
-    this.text, {
-    super.key,
-  });
+  const CardHeader(this.text, {super.key});
 
   final String text;
 
@@ -21,10 +18,7 @@ class CardHeader extends StatelessWidget {
           child: Row(
             spacing: 12.0,
             children: [
-              const BotFace(
-                width: 50.0,
-                expression: BotExpression.addled,
-              ),
+              const BotFace(width: 50.0, expression: BotExpression.addled),
               Expanded(
                 child: Text(
                   text,

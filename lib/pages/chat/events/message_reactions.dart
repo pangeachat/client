@@ -4,8 +4,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -19,8 +17,10 @@ class MessageReactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allReactionEvents =
-        event.aggregatedEvents(timeline, RelationshipTypes.reaction);
+    final allReactionEvents = event.aggregatedEvents(
+      timeline,
+      RelationshipTypes.reaction,
+    );
     final reactionMap = <String, _ReactionEntry>{};
     final client = Matrix.of(context).client;
 
@@ -111,15 +111,11 @@ class _Reaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor =
-        theme.brightness == Brightness.dark ? Colors.white : Colors.black;
-    final color = reacted == true
-        ? theme.bubbleColor
-        : theme.colorScheme.surfaceContainerHigh;
+
     Widget content;
     if (reactionKey.startsWith('mxc://')) {
       content = Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: .min,
         children: <Widget>[
           MxcImage(
             uri: Uri.parse(reactionKey),
@@ -132,8 +128,9 @@ class _Reaction extends StatelessWidget {
             const SizedBox(width: 4),
             Text(
               count.toString(),
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: textColor,
+                color: theme.colorScheme.onSurface,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
               ),
             ),
@@ -148,7 +145,7 @@ class _Reaction extends StatelessWidget {
       content = Text(
         renderKey.toString() + (count > 1 ? ' $count' : ''),
         style: TextStyle(
-          color: reacted == true ? theme.onBubbleColor : textColor,
+          color: theme.colorScheme.onSurface,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
@@ -159,17 +156,18 @@ class _Reaction extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
       child: Container(
         decoration: BoxDecoration(
-          color: color,
+          color: reacted == true
+              ? theme.colorScheme.primaryContainer
+              : theme.colorScheme.surfaceContainerHigh,
+          border: Border.all(
+            color: reacted == true
+                ? theme.colorScheme.primary
+                : theme.colorScheme.surfaceContainerHigh,
+            width: 1,
+          ),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
         ),
-        // #Pangea
-        // issue: https://github.com/pangeachat/client/issues/3100
-        // fix: https://github.com/flutter/flutter/issues/119623#issuecomment-2476719745
-        padding: PlatformInfos.isIOS
-            ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
-            : const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        // padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        // Pangea#
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: content,
       ),
     );
@@ -194,17 +192,14 @@ class _AdaptableReactorsDialog extends StatelessWidget {
   final Client? client;
   final _ReactionEntry? reactionEntry;
 
-  const _AdaptableReactorsDialog({
-    this.client,
-    this.reactionEntry,
-  });
+  const _AdaptableReactorsDialog({this.client, this.reactionEntry});
 
   Future<bool?> show(BuildContext context) => showAdaptiveDialog(
-        context: context,
-        builder: (context) => this,
-        barrierDismissible: true,
-        useRootNavigator: false,
-      );
+    context: context,
+    builder: (context) => this,
+    barrierDismissible: true,
+    useRootNavigator: false,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -230,9 +225,6 @@ class _AdaptableReactorsDialog extends StatelessWidget {
 
     final title = Center(child: Text(reactionEntry!.key));
 
-    return AlertDialog.adaptive(
-      title: title,
-      content: body,
-    );
+    return AlertDialog.adaptive(title: title, content: body);
   }
 }

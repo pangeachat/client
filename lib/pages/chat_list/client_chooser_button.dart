@@ -1,9 +1,10 @@
-// #Pangea
 // import 'package:flutter/material.dart';
 
 // import 'package:go_router/go_router.dart';
 // import 'package:matrix/matrix.dart';
+// import 'package:url_launcher/url_launcher_string.dart';
 
+// import 'package:fluffychat/config/app_config.dart';
 // import 'package:fluffychat/config/themes.dart';
 // import 'package:fluffychat/l10n/l10n.dart';
 // import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -24,8 +25,8 @@
 //         (a, b) => a!.isValidMatrixId == b!.isValidMatrixId
 //             ? 0
 //             : a.isValidMatrixId && !b.isValidMatrixId
-//                 ? -1
-//                 : 1,
+//             ? -1
+//             : 1,
 //       );
 //     return <PopupMenuEntry<Object>>[
 //       PopupMenuItem(
@@ -68,6 +69,17 @@
 //           ],
 //         ),
 //       ),
+//       if (Matrix.of(context).backgroundPush?.firebaseEnabled != true)
+//         PopupMenuItem(
+//           value: SettingsAction.support,
+//           child: Row(
+//             children: [
+//               const Icon(Icons.favorite, color: Colors.red),
+//               const SizedBox(width: 18),
+//               Text(L10n.of(context).donate),
+//             ],
+//           ),
+//         ),
 //       PopupMenuItem(
 //         value: SettingsAction.settings,
 //         child: Row(
@@ -85,8 +97,8 @@
 //           PopupMenuItem(
 //             value: null,
 //             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               mainAxisSize: MainAxisSize.min,
+//               crossAxisAlignment: .start,
+//               mainAxisSize: .min,
 //               children: [
 //                 Text(
 //                   bundle!,
@@ -111,7 +123,8 @@
 //                     children: [
 //                       Avatar(
 //                         mxContent: snapshot.data?.avatarUrl,
-//                         name: snapshot.data?.displayName ??
+//                         name:
+//                             snapshot.data?.displayName ??
 //                             client.userID!.localpart,
 //                         size: 32,
 //                       ),
@@ -181,10 +194,7 @@
 //     );
 //   }
 
-//   void _clientSelected(
-//     Object object,
-//     BuildContext context,
-//   ) async {
+//   void _clientSelected(Object object, BuildContext context) async {
 //     if (object is Client) {
 //       controller.setActiveClient(object);
 //     } else if (object is String) {
@@ -208,6 +218,9 @@
 //         case SettingsAction.invite:
 //           FluffyShare.shareInviteLink(context);
 //           break;
+//         case SettingsAction.support:
+//           launchUrlString(AppConfig.donationUrl);
+//           break;
 //         case SettingsAction.settings:
 //           context.go('/rooms/settings');
 //           break;
@@ -227,7 +240,7 @@
 //   newGroup,
 //   setStatus,
 //   invite,
+//   support,
 //   settings,
 //   archive,
 // }
-// Pangea#

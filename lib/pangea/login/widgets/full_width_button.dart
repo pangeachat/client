@@ -50,8 +50,8 @@ class FullWidthButtonState extends State<FullWidthButton> {
                 decoration: BoxDecoration(
                   color: widget.enabled
                       ? depressed
-                          ? shadowColor
-                          : Theme.of(context).colorScheme.primary
+                            ? shadowColor
+                            : Theme.of(context).colorScheme.primary
                       : Theme.of(context).disabledColor,
                   borderRadius: BorderRadius.circular(36),
                 ),
@@ -74,8 +74,9 @@ class FullWidthButtonState extends State<FullWidthButton> {
                               Text(
                                 widget.title,
                                 style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
                                   fontSize: 16,
                                 ),
                               ),
@@ -154,9 +155,7 @@ class FullWidthTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(36.0),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(36.0)),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 30,
             vertical: 8.0,

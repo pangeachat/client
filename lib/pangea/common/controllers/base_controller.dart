@@ -8,11 +8,11 @@ class BaseController<T> {
     stateStream = _stateListener.stream.asBroadcastStream();
   }
 
-  dispose() {
+  void dispose() {
     _stateListener.close();
   }
 
-  setState(T data) {
+  void setState(T data) {
     _stateListener.add(data);
   }
 }

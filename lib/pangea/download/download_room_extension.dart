@@ -40,23 +40,14 @@ class _EventDownloadInfo {
 class EmptyChatException implements Exception {}
 
 extension DownloadExtension on Room {
-  Future<void> download(
-    DownloadType type,
-    BuildContext context,
-  ) async {
+  Future<void> download(DownloadType type, BuildContext context) async {
     List<PangeaMessageEvent> allPangeaMessages;
 
     final List<Event> allEvents = await getAllEvents();
     final TimelineChunk chunk = TimelineChunk(events: allEvents);
-    final Timeline timeline = Timeline(
-      room: this,
-      chunk: chunk,
-    );
+    final Timeline timeline = Timeline(room: this, chunk: chunk);
 
-    allPangeaMessages = getPangeaMessageEvents(
-      allEvents,
-      timeline,
-    );
+    allPangeaMessages = getPangeaMessageEvents(allEvents, timeline);
 
     if (allPangeaMessages.isEmpty) {
       throw EmptyChatException();
@@ -92,8 +83,9 @@ extension DownloadExtension on Room {
         .replaceAll(RegExp(r'[^A-Za-z0-9\s]'), "")
         .replaceAll(RegExp(r'\s+'), "-");
 
-    final String timestamp =
-        DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now());
+    final String timestamp = DateFormat(
+      'yyyy-MM-dd-hh:mm:ss',
+    ).format(DateTime.now());
 
     return "$roomName-$timestamp.${type.extension}";
   }
@@ -105,8 +97,9 @@ extension DownloadExtension on Room {
     String formattedInfo = "";
     final l10n = L10n.of(context);
     for (final _EventDownloadInfo info in eventInfo) {
-      final String timestamp =
-          DateFormat('yyyy-MM-dd hh:mm:ss').format(info.timestamp);
+      final String timestamp = DateFormat(
+        'yyyy-MM-dd hh:mm:ss',
+      ).format(info.timestamp);
 
       if (!info.usageAvailable) {
         formattedInfo +=
@@ -145,11 +138,12 @@ extension DownloadExtension on Room {
         l10n.sentMessage,
         l10n.taTooltip,
         l10n.gaTooltip,
-      ]
+      ],
     ];
     for (final _EventDownloadInfo info in eventInfo) {
-      final String timestamp =
-          DateFormat('yyyy-MM-dd hh:mm:ss').format(info.timestamp);
+      final String timestamp = DateFormat(
+        'yyyy-MM-dd hh:mm:ss',
+      ).format(info.timestamp);
 
       if (!info.usageAvailable) {
         csvData.add([
@@ -185,29 +179,43 @@ extension DownloadExtension on Room {
     final Sheet sheetObject = excel['Sheet1'];
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 0, rowIndex: 0))
-        .value = TextCellValue(l10n.sender);
+        .value = TextCellValue(
+      l10n.sender,
+    );
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 0))
-        .value = TextCellValue(l10n.time);
+        .value = TextCellValue(
+      l10n.time,
+    );
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: 0))
-        .value = TextCellValue(l10n.originalMessage);
+        .value = TextCellValue(
+      l10n.originalMessage,
+    );
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: 0))
-        .value = TextCellValue(l10n.sentMessage);
+        .value = TextCellValue(
+      l10n.sentMessage,
+    );
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: 0))
-        .value = TextCellValue(l10n.taTooltip);
+        .value = TextCellValue(
+      l10n.taTooltip,
+    );
     sheetObject
         .cell(CellIndex.indexByColumnRow(columnIndex: 5, rowIndex: 0))
-        .value = TextCellValue(l10n.gaTooltip);
+        .value = TextCellValue(
+      l10n.gaTooltip,
+    );
 
     for (int i = 0; i < eventInfo.length; i++) {
       final _EventDownloadInfo info = eventInfo[i];
 
       sheetObject
           .cell(CellIndex.indexByColumnRow(columnIndex: 0, rowIndex: i + 2))
-          .value = TextCellValue(info.sender);
+          .value = TextCellValue(
+        info.sender,
+      );
       sheetObject
           .cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: i + 2))
           .value = DateTimeCellValue(
@@ -221,17 +229,25 @@ extension DownloadExtension on Room {
 
       sheetObject
           .cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: i + 2))
-          .value = TextCellValue(info.originalMsg);
+          .value = TextCellValue(
+        info.originalMsg,
+      );
       sheetObject
           .cell(CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: i + 2))
-          .value = TextCellValue(info.sentMsg);
+          .value = TextCellValue(
+        info.sentMsg,
+      );
       if (info.usageAvailable) {
         sheetObject
             .cell(CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: i + 2))
-            .value = TextCellValue(info.includedIT.toString());
+            .value = TextCellValue(
+          info.includedIT.toString(),
+        );
         sheetObject
             .cell(CellIndex.indexByColumnRow(columnIndex: 5, rowIndex: i + 2))
-            .value = TextCellValue(info.includedIGC.toString());
+            .value = TextCellValue(
+          info.includedIGC.toString(),
+        );
       }
     }
 

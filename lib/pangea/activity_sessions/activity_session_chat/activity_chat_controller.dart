@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -17,10 +18,7 @@ class ActivityChatController {
   final String userID;
   final Room room;
 
-  ActivityChatController({
-    required this.userID,
-    required this.room,
-  }) {
+  ActivityChatController({required this.userID, required this.room}) {
     init();
   }
 
@@ -36,8 +34,13 @@ class ActivityChatController {
 
   void init() {
     _updateUsedVocab();
-    _analyticsSubscription = MatrixState.pangeaController.matrixState
-        .analyticsDataService.updateDispatcher.constructUpdateStream.stream
+    _analyticsSubscription = MatrixState
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
         .listen((_) => _updateUsedVocab());
   }
 
@@ -80,7 +83,8 @@ class ActivityChatController {
     try {
       final analytics = await getActivityAnalytics();
       if (!_disposed) {
-        usedVocab.value = analytics.constructs[userID]
+        usedVocab.value =
+            analytics.constructs[userID]
                 ?.constructsOfType(ConstructTypeEnum.vocab)
                 .map((id) => id.lemma.toLowerCase())
                 .toSet() ??
@@ -100,6 +104,10 @@ class ActivityChatController {
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
     final cached = ActivitySessionAnalyticsRepo.get(room.id);
     final analytics = cached?.analytics ?? ActivitySummaryAnalyticsModel();
+    final activityLang = room.activityPlan?.req.targetLanguage;
+    if (activityLang == null) {
+      return analytics;
+    }
 
     DateTime? timestamp = room.creationTimestamp;
     if (cached != null) {
@@ -111,6 +119,7 @@ class ActivityChatController {
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
     uses = await analyticsService.getUses(
+      activityLang.split('-').first,
       since: timestamp ?? DateTime.fromMillisecondsSinceEpoch(0),
       roomId: room.id,
     );

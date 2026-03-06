@@ -48,30 +48,30 @@ class AnalyticsUpdateService {
   }
 
   Future<void> onUpdateLanguages(LanguageUpdate update) async {
-    await sendLocalAnalyticsToAnalyticsRoom(
-      l2Override: update.prevTargetLang,
-    );
+    await sendLocalAnalyticsToAnalyticsRoom(l2Override: update.prevTargetLang);
     await dataService.reinitialize();
 
-    final data = await dataService.derivedData;
-    MatrixState.pangeaController.userController
-        .updateAnalyticsProfile(level: data.level);
+    final data = await dataService.derivedData(update.targetLang.langCodeShort);
+    MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: data.level,
+    );
   }
 
   Future<void> addAnalytics(
     String? targetID,
-    List<OneConstructUse> newConstructs, {
+    List<OneConstructUse> newConstructs,
+    String language, {
     bool forceUpdate = false,
   }) async {
-    await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
-      AnalyticsUpdate(
-        newConstructs,
-        targetID: targetID,
-      ),
+    await dataService.updateDispatcher.sendLocalAnalyticsUpdate(
+      AnalyticsUpdate(newConstructs, targetID: targetID),
+      language,
     );
 
-    final localConstructCount = await dataService.getLocalConstructCount();
-    final lastUpdated = await dataService.getLastUpdatedAnalytics();
+    final localConstructCount = await dataService.getLocalConstructCount(
+      language,
+    );
+    final lastUpdated = await dataService.getLastUpdatedAnalytics(language);
     final difference = DateTime.now().difference(lastUpdated ?? DateTime.now());
 
     if (forceUpdate ||
@@ -84,6 +84,16 @@ class AnalyticsUpdateService {
   Future<void> sendLocalAnalyticsToAnalyticsRoom({
     LanguageModel? l2Override,
   }) async {
+    final lang = l2Override ?? _l2;
+    if (lang == null) {
+      ErrorHandler.logError(
+        e: "No L2 language set for user",
+        m: "Cannot send local analytics to analytics room",
+        data: {"l2Override": l2Override},
+      );
+      return;
+    }
+
     final inProgress =
         _updateCompleter != null && !_updateCompleter!.isCompleted;
 
@@ -94,16 +104,14 @@ class AnalyticsUpdateService {
 
     _updateCompleter = Completer<void>();
     try {
-      await _updateAnalytics(l2Override: l2Override);
-      await dataService.clearLocalAnalytics();
+      await _updateAnalytics(lang);
+      await dataService.clearLocalAnalytics(lang.langCodeShort);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
         m: "Failed to update analytics",
         s: s,
-        data: {
-          "l2Override": l2Override,
-        },
+        data: {"l2Override": l2Override},
       );
     } finally {
       _updateCompleter?.complete();
@@ -111,13 +119,15 @@ class AnalyticsUpdateService {
     }
   }
 
-  Future<void> _updateAnalytics({LanguageModel? l2Override}) async {
-    final localConstructs = await dataService.getLocalUses();
+  Future<void> _updateAnalytics(LanguageModel language) async {
+    final localConstructs = await dataService.getLocalUses(
+      language.langCodeShort,
+    );
     if (localConstructs.isEmpty) return;
-    final analyticsRoom = await _getAnalyticsRoom(l2Override: l2Override);
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
     if (analyticsRoom == null) {
       debugPrint(
-        "No analytics room found for L2 Override: ${l2Override?.langCode}",
+        "No analytics room found for L2 Override: ${language.langCodeShort}",
       );
       return;
     }
@@ -133,26 +143,19 @@ class AnalyticsUpdateService {
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
-    if (lang.langCodeShort == _l2?.langCodeShort) {
-      dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
-    }
   }
 
-  Future<void> blockConstruct(ConstructIdentifier constructId) async {
+  Future<void> blockConstructs(List<ConstructIdentifier> constructIds) async {
     final analyticsRoom = await _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
     final current = analyticsRoom.analyticsSettings;
     final blockedConstructs = current.blockedConstructs;
     final updated = current.copyWith(
-      blockedConstructs: {
-        ...blockedConstructs,
-        constructId,
-      },
+      blockedConstructs: {...blockedConstructs, ...constructIds},
     );
 
     await analyticsRoom.setAnalyticsSettings(updated);
-    await dataService.updateBlockedConstructs(constructId);
   }
 
   Future<void> setLemmaInfo(
@@ -169,17 +172,12 @@ class AnalyticsUpdateService {
       meaning: meaning,
     );
     if (userLemmaInfo == updated) return;
-    dataService.updateDispatcher.sendLemmaInfoUpdate(constructId, updated);
 
     try {
       await analyticsRoom.setUserSetLemmaInfo(constructId, updated);
     } catch (err, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        data: userLemmaInfo.toJson(),
-        s: s,
-      );
+      ErrorHandler.logError(e: err, data: userLemmaInfo.toJson(), s: s);
     }
   }
 }

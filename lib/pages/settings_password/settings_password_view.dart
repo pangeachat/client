@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -15,9 +13,7 @@ class SettingsPasswordView extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).changePassword),
-      ),
+      appBar: AppBar(title: Text(L10n.of(context).changePassword)),
       body: ListTileTheme(
         iconColor: theme.colorScheme.onSurface,
         child: MaxWidthBody(
@@ -69,18 +65,21 @@ class SettingsPasswordView extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed:
-                        controller.loading ? null : controller.changePassword,
+                    onPressed: controller.loading
+                        ? null
+                        : controller.changePassword,
                     child: controller.loading
                         ? const LinearProgressIndicator()
                         : Text(L10n.of(context).changePassword),
                   ),
                 ),
-                const SizedBox(height: 16),
-                TextButton(
-                  child: Text(L10n.of(context).passwordRecoverySettings),
-                  onPressed: () => context.go('/rooms/settings/security/3pid'),
-                ),
+                // #Pangea
+                // const SizedBox(height: 16),
+                // TextButton(
+                //   child: Text(L10n.of(context).passwordRecoverySettings),
+                //   onPressed: () => context.go('/rooms/settings/security/3pid'),
+                // ),
+                // Pangea#
               ],
             ),
           ),

@@ -31,22 +31,20 @@ void pLogoutAction(
   final client = Matrix.of(context).client;
 
   // before wiping out locally cached construct data, save it to the server
-  await Matrix.of(context)
-      .analyticsDataService
-      .updateService
-      .sendLocalAnalyticsToAnalyticsRoom();
+  await Matrix.of(
+    context,
+  ).analyticsDataService.updateService.sendLocalAnalyticsToAnalyticsRoom();
 
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
       .first
-      .then(
-    (_) {
-      final route = FluffyChatApp.router.state.fullPath;
-      if (route == null || !route.contains("/home")) {
-        context.go("/home");
-      }
-    },
-  ).timeout(const Duration(seconds: 30));
+      .then((_) {
+        final route = FluffyChatApp.router.state.fullPath;
+        if (route == null || !route.contains("/home")) {
+          context.go("/home");
+        }
+      })
+      .timeout(const Duration(seconds: 30));
 
   await showFutureLoadingDialog(
     context: context,

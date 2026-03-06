@@ -6,6 +6,8 @@ import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+class IdenticalLanguageException implements Exception {}
+
 class LanguageMismatchPopup extends StatelessWidget {
   final String message;
   final String overlayId;
@@ -21,13 +23,10 @@ class LanguageMismatchPopup extends StatelessWidget {
   });
 
   Future<void> _updateLanguage() async {
-    await MatrixState.pangeaController.userController.updateProfile(
-      (profile) {
-        profile.userSettings.targetLanguage = targetLanguage;
-        return profile;
-      },
-      waitForDataInSync: true,
-    );
+    await MatrixState.pangeaController.userController.updateProfile((profile) {
+      profile.userSettings.targetLanguage = targetLanguage;
+      return profile;
+    }, waitForDataInSync: true);
     onConfirm();
   }
 
@@ -60,8 +59,9 @@ class LanguageMismatchPopup extends StatelessWidget {
                     MatrixState.pAnyState.closeOverlay(overlayId);
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primary.withAlpha(25),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primary.withAlpha(25),
                   ),
                   child: Text(L10n.of(context).confirm),
                 ),

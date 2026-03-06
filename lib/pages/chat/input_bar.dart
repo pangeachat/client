@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:emojis/emoji.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
-import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
@@ -36,12 +34,14 @@ class InputBar extends StatelessWidget {
   // final TextEditingController? controller;
   final PangeaTextController? controller;
   final Choreographer choreographer;
-  final VoidCallback showNextMatch;
+  final Function(PangeaMatchState) showMatch;
+  final Future Function(String) onFeedbackSubmitted;
   // Pangea#
   final InputDecoration decoration;
   final ValueChanged<String>? onChanged;
   final bool? autofocus;
   final bool readOnly;
+  final List<Emoji> suggestionEmojis;
 
   const InputBar({
     required this.room,
@@ -57,9 +57,11 @@ class InputBar extends StatelessWidget {
     this.autofocus,
     this.textInputAction,
     this.readOnly = false,
+    required this.suggestionEmojis,
     // #Pangea
     required this.choreographer,
-    required this.showNextMatch,
+    required this.showMatch,
+    required this.onFeedbackSubmitted,
     // Pangea#
     super.key,
   });
@@ -79,18 +81,17 @@ class InputBar extends StatelessWidget {
     //   final commandSearch = commandMatch[1]!.toLowerCase();
     //   for (final command in room.client.commands.keys) {
     //     if (command.contains(commandSearch)) {
-    //       ret.add({
-    //         'type': 'command',
-    //         'name': command,
-    //       });
+    //       ret.add({'type': 'command', 'name': command});
     //     }
 
     //     if (ret.length > maxResults) return ret;
     //   }
     // }
     // Pangea#
-    final emojiMatch =
-        RegExp(r'(?:\s|^):(?:([-\w]+)~)?([-\w]+)$').firstMatch(searchText);
+    final emojiMatch = RegExp(
+      r'(?:\s|^):(?:([\p{L}\p{N}_-]+)~)?([\p{L}\p{N}_-]+)$',
+      unicode: true,
+    ).firstMatch(searchText);
     if (emojiMatch != null) {
       final packSearch = emojiMatch[1];
       final emoteSearch = emojiMatch[2]!.toLowerCase();
@@ -123,8 +124,8 @@ class InputBar extends StatelessWidget {
               'type': 'emote',
               'name': emote.key,
               'pack': packSearch,
-              'pack_avatar_url':
-                  emotePacks[packSearch]!.pack.avatarUrl?.toString(),
+              'pack_avatar_url': emotePacks[packSearch]!.pack.avatarUrl
+                  ?.toString(),
               'pack_display_name':
                   emotePacks[packSearch]!.pack.displayName ?? packSearch,
               'mxc': emote.value.url.toString(),
@@ -135,13 +136,12 @@ class InputBar extends StatelessWidget {
           }
         }
       }
+
       // aside of emote packs, also propose normal (tm) unicode emojis
-      final matchingUnicodeEmojis = Emoji.all()
-          .where(
-            (element) => [element.name, ...element.keywords]
-                .any((element) => element.toLowerCase().contains(emoteSearch)),
-          )
+      final matchingUnicodeEmojis = suggestionEmojis
+          .where((emoji) => emoji.name.toLowerCase().contains(emoteSearch))
           .toList();
+
       // sort by the index of the search term in the name in order to have
       // best matches first
       // (thanks for the hint by github.com/nextcloud/circles devs)
@@ -161,9 +161,8 @@ class InputBar extends StatelessWidget {
       for (final emoji in matchingUnicodeEmojis) {
         ret.add({
           'type': 'emoji',
-          'emoji': emoji.char,
-          // don't include sub-group names, splitting at `:` hence
-          'label': '${emoji.char} - ${emoji.name.split(':').first}',
+          'emoji': emoji.emoji,
+          'label': emoji.name,
           'current_word': ':$emoteSearch',
         });
         if (ret.length > maxResults) {
@@ -177,8 +176,9 @@ class InputBar extends StatelessWidget {
       for (final user in room.getParticipants()) {
         if ((user.displayName != null &&
                 (user.displayName!.toLowerCase().contains(userSearch) ||
-                    slugify(user.displayName!.toLowerCase())
-                        .contains(userSearch))) ||
+                    slugify(
+                      user.displayName!.toLowerCase(),
+                    ).contains(userSearch))) ||
             user.id.split(':')[0].toLowerCase().contains(userSearch)) {
           ret.add({
             'type': 'user',
@@ -269,7 +269,14 @@ class InputBar extends StatelessWidget {
         waitDuration: const Duration(days: 1), // don't show on hover
         child: ListTile(
           onTap: () => onSelected(suggestion),
-          title: Text(label, style: const TextStyle(fontFamily: 'RobotoMono')),
+          leading: SizedBox.square(
+            dimension: size,
+            child: Text(
+              suggestion['emoji']!,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+          title: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
         ),
       );
     }
@@ -287,7 +294,7 @@ class InputBar extends StatelessWidget {
           isThumbnail: false,
         ),
         title: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: .center,
           children: <Widget>[
             Text(suggestion['name']!),
             Expanded(
@@ -318,7 +325,8 @@ class InputBar extends StatelessWidget {
         onTap: () => onSelected(suggestion),
         leading: Avatar(
           mxContent: url,
-          name: suggestion.tryGet<String>('displayname') ??
+          name:
+              suggestion.tryGet<String>('displayname') ??
               suggestion.tryGet<String>('mxid'),
           size: size,
           client: client,
@@ -330,8 +338,10 @@ class InputBar extends StatelessWidget {
   }
 
   String insertSuggestion(Map<String, String?> suggestion) {
-    final replaceText =
-        controller!.text.substring(0, controller!.selection.baseOffset);
+    final replaceText = controller!.text.substring(
+      0,
+      controller!.selection.baseOffset,
+    );
     var startText = '';
     final afterText = replaceText == controller!.text
         ? ''
@@ -417,26 +427,11 @@ class InputBar extends StatelessWidget {
     final adjustedOffset = _adjustOffsetForNormalization(baseOffset);
     final match = choreographer.igcController.getMatchByOffset(adjustedOffset);
     if (match == null) return;
+    showMatch(match);
 
-    if (match.updatedMatch.isITStart) {
-      choreographer.itController.openIT(controller!.text);
-    } else {
-      OverlayUtil.showIGCMatch(
-        match,
-        choreographer,
-        context,
-        showNextMatch,
-      );
-
-      // rebuild the text field to highlight the newly selected match
-      choreographer.textController.setSystemText(
-        choreographer.textController.text,
-        EditTypeEnum.other,
-      );
-      choreographer.textController.selection = TextSelection.collapsed(
-        offset: baseOffset,
-      );
-    }
+    choreographer.textController.selection = TextSelection.collapsed(
+      offset: baseOffset,
+    );
   }
 
   bool _shouldShowPaywall(BuildContext context) {
@@ -449,7 +444,8 @@ class InputBar extends StatelessWidget {
 
   int _adjustOffsetForNormalization(int baseOffset) {
     int adjustedOffset = baseOffset;
-    final corrections = choreographer.igcController.recentAutomaticCorrections;
+    final corrections =
+        choreographer.igcController.closedNormalizationCorrections;
 
     for (final correction in corrections) {
       final match = correction.updatedMatch.match;
@@ -468,19 +464,25 @@ class InputBar extends StatelessWidget {
       focusNode: focusNode,
       textEditingController: controller,
       optionsBuilder: getSuggestions,
-      fieldViewBuilder: (context, __, focusNode, _) => ValueListenableBuilder(
-        valueListenable: choreographer.itController.open,
-        builder: (context, _, __) {
+      // #Pangea
+      // fieldViewBuilder: (context, controller, focusNode, _) => TextField(
+      fieldViewBuilder: (context, _, focusNode, _) => ListenableBuilder(
+        listenable: Listenable.merge([
+          choreographer,
+          choreographer.igcController.activeMatch,
+        ]),
+        builder: (context, _) {
           return TextField(
+            // Pangea#
             controller: controller,
             focusNode: focusNode,
             // #Pangea
             // readOnly: readOnly,
-            // contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
+            // contextMenuBuilder: (c, e) =>
+            //     markdownContextBuilder(c, e, controller),
             contextMenuBuilder: (c, e) =>
                 markdownContextBuilder(c, e, controller!),
             onTap: () => _onInputTap(context),
-            readOnly: choreographer.choreoMode == ChoreoModeEnum.it,
             autocorrect: MatrixState.pangeaController.userController
                 .isToolEnabled(ToolSetting.enableAutocorrect),
             // Pangea#
@@ -494,10 +496,7 @@ class InputBar extends StatelessWidget {
                   bytes: data,
                   name: content.uri.split('/').last,
                 );
-                room.sendFileEvent(
-                  file,
-                  shrinkImageMaxDimension: 1600,
-                );
+                room.sendFileEvent(file, shrinkImageMaxDimension: 1600);
               },
             ),
             minLines: minLines,
@@ -520,29 +519,27 @@ class InputBar extends StatelessWidget {
             },
             // #Pangea
             // maxLength: AppSettings.textMessageMaxLength.value,
-            // decoration: decoration!,
-            // Pangea#
+            // decoration: decoration,
             decoration: decoration.copyWith(
-              // #Pangea
-              // hint: ShrinkableText(
               hint: StreamBuilder(
                 stream: MatrixState
-                    .pangeaController.userController.languageStream.stream,
+                    .pangeaController
+                    .userController
+                    .languageStream
+                    .stream,
                 builder: (context, _) => SizedBox(
                   height: 24,
                   child: ShrinkableText(
-                    // Pangea#
-                    text: choreographer.itController.open.value
-                        ? L10n.of(context).buildTranslation
-                        : _defaultHintText(context),
+                    text: _defaultHintText(context),
                     maxWidth: double.infinity,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).disabledColor,
-                        ),
+                      color: Theme.of(context).disabledColor,
+                    ),
                   ),
                 ),
               ),
             ),
+            // Pangea#
             onChanged: (text) {
               // fix for the library for now
               // it sets the types for the callback incorrectly

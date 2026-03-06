@@ -21,9 +21,7 @@ import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
-  const CreatePangeaAccountPage({
-    super.key,
-  });
+  const CreatePangeaAccountPage({super.key});
 
   @override
   CreatePangeaAccountPageState createState() => CreatePangeaAccountPageState();
@@ -116,15 +114,14 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     try {
       final random = Random();
       final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
-      final avatarUrl =
-          Uri.parse("${AppConfig.assetsBaseURL}/$selectedAvatarPath");
-      await client.setAvatarUrl(client.userID!, avatarUrl);
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
+      final avatarUrl = Uri.parse(
+        "${AppConfig.assetsBaseURL}/$selectedAvatarPath",
       );
+      await client.setProfileField(client.userID!, 'avatar_url', {
+        'avatar_url': avatarUrl,
+      });
+    } catch (err, s) {
+      ErrorHandler.logError(e: err, s: s, data: {});
     }
   }
 
@@ -135,16 +132,13 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       return;
     }
 
-    await MatrixState.pangeaController.userController.updateProfile(
-      (profile) {
-        profile.userSettings.targetLanguage = target;
-        if (base != null) {
-          profile.userSettings.sourceLanguage = base;
-        }
-        return profile;
-      },
-      waitForDataInSync: true,
-    );
+    await MatrixState.pangeaController.userController.updateProfile((profile) {
+      profile.userSettings.targetLanguage = target;
+      if (base != null) {
+        profile.userSettings.sourceLanguage = base;
+      }
+      return profile;
+    }, waitForDataInSync: true);
   }
 
   Future<void> _createUserInPangea() async {
@@ -174,17 +168,14 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
       final updateFuture = [
         _setAvatar(),
-        MatrixState.pangeaController.userController.updateProfile(
-          (profile) {
-            profile.userSettings.targetLanguage = targetLangCode;
-            if (baseLangCode != null) {
-              profile.userSettings.sourceLanguage = baseLangCode;
-            }
-            profile.userSettings.createdAt = DateTime.now();
-            return profile;
-          },
-          waitForDataInSync: true,
-        ),
+        MatrixState.pangeaController.userController.updateProfile((profile) {
+          profile.userSettings.targetLanguage = targetLangCode;
+          if (baseLangCode != null) {
+            profile.userSettings.sourceLanguage = baseLangCode;
+          }
+          profile.userSettings.createdAt = DateTime.now();
+          return profile;
+        }, waitForDataInSync: true),
         if (targetLangCode != null)
           MatrixState.pangeaController.userController.updateAnalyticsProfile(
             targetLanguage: PLanguageStore.byLangCode(targetLangCode),
@@ -228,30 +219,30 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
           child: _loading
               ? const CircularProgressIndicator.adaptive()
               : _profileError != null || _courseError != null
-                  ? Column(
+              ? Column(
+                  spacing: 8.0,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ErrorIndicator(
+                      message: L10n.of(context).oopsSomethingWentWrong,
+                    ),
+                    Row(
                       spacing: 8.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        ErrorIndicator(
-                          message: L10n.of(context).oopsSomethingWentWrong,
+                        TextButton(
+                          onPressed: _createUserInPangea,
+                          child: Text(L10n.of(context).tryAgain),
                         ),
-                        Row(
-                          spacing: 8.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextButton(
-                              onPressed: _createUserInPangea,
-                              child: Text(L10n.of(context).tryAgain),
-                            ),
-                            TextButton(
-                              onPressed: Navigator.of(context).pop,
-                              child: Text(L10n.of(context).cancel),
-                            ),
-                          ],
+                        TextButton(
+                          onPressed: Navigator.of(context).pop,
+                          child: Text(L10n.of(context).cancel),
                         ),
                       ],
-                    )
-                  : null,
+                    ),
+                  ],
+                )
+              : null,
         ),
       ),
     );

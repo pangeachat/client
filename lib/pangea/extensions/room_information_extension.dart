@@ -10,9 +10,7 @@ extension RoomInformationRoomExtension on Room {
 
   Future<bool> get botIsInRoom async {
     final List<User> participants = await requestParticipants();
-    return participants.any(
-      (User user) => user.id == BotName.byEnvironment,
-    );
+    return participants.any((User user) => user.id == BotName.byEnvironment);
   }
 
   String? get roomType =>

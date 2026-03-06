@@ -21,12 +21,8 @@ class ActivitySessionDetailsRow extends StatelessWidget {
       child: Row(
         spacing: 12.0,
         children: [
-          if (leading != null) leading!,
-          if (icon != null)
-            Icon(
-              icon,
-              size: iconSize ?? 24.0,
-            ),
+          ?leading,
+          if (icon != null) Icon(icon, size: iconSize ?? 24.0),
           Expanded(child: child),
         ],
       ),

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/igc/autocorrect_span.dart';
-import 'package:fluffychat/pangea/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -19,49 +21,30 @@ class PangeaTextController extends TextEditingController {
   EditTypeEnum editType = EditTypeEnum.keyboard;
   String _currentText = '';
 
-  PangeaTextController({
-    required this.choreographer,
-  }) {
+  PangeaTextController({required this.choreographer}) {
     addListener(_onTextChanged);
   }
 
   bool get exceededMaxLength => text.length >= ChoreoConstants.maxLength;
 
-  TextStyle _underlineStyle(Color color) => TextStyle(
-        decoration: TextDecoration.underline,
-        decorationColor: color,
-        decorationThickness: 5,
-      );
+  TextStyle _underlineStyle(Color color, bool isSelected) => TextStyle(
+    decoration: isSelected ? null : TextDecoration.underline,
+    decorationColor: isSelected ? null : color,
+    decorationThickness: isSelected ? null : 5,
+    backgroundColor: isSelected ? color : null,
+  );
 
   Color _underlineColor(PangeaMatch match) {
-    if (match.status == PangeaMatchStatusEnum.automatic) {
-      return const Color.fromARGB(187, 132, 96, 224);
+    final status = match.status;
+    final opacity = status.underlineOpacity;
+    final alpha = (255 * opacity).ceil();
+    // Automatic corrections use primary color
+    if (status == PangeaMatchStatusEnum.automatic) {
+      return AppConfig.primaryColor.withAlpha(alpha);
     }
 
-    switch (match.match.rule?.id ?? "unknown") {
-      case MatchRuleIdModel.interactiveTranslation:
-        return const Color.fromARGB(187, 132, 96, 224);
-      case MatchRuleIdModel.tokenNeedsTranslation:
-      case MatchRuleIdModel.tokenSpanNeedsTranslation:
-        return const Color.fromARGB(186, 255, 132, 0);
-      default:
-        return const Color.fromARGB(149, 255, 17, 0);
-    }
-  }
-
-  TextStyle _textStyle(
-    PangeaMatch match,
-    TextStyle? existingStyle,
-    bool isOpenMatch,
-  ) {
-    double opacityFactor = 1.0;
-    if (!isOpenMatch) {
-      opacityFactor = 0.2;
-    }
-
-    final alpha = (255 * opacityFactor).round();
-    final style = _underlineStyle(_underlineColor(match).withAlpha(alpha));
-    return existingStyle?.merge(style) ?? style;
+    // Use type-based coloring
+    return match.match.type.color.withAlpha(alpha);
   }
 
   void setSystemText(String newText, EditTypeEnum type) {
@@ -83,7 +66,7 @@ class PangeaTextController extends TextEditingController {
 
   void _onUndo(PangeaMatchState match) {
     try {
-      choreographer.igcController.updateMatch(
+      choreographer.igcController.updateMatchStatus(
         match,
         PangeaMatchStatusEnum.undo,
       );
@@ -92,9 +75,7 @@ class PangeaTextController extends TextEditingController {
         e: e,
         s: s,
         level: SentryLevel.warning,
-        data: {
-          "match": match.toJson(),
-        },
+        data: {"match": match.toJson()},
       );
       MatrixState.pAnyState.closeOverlay();
       choreographer.clearMatches(e);
@@ -126,22 +107,23 @@ class PangeaTextController extends TextEditingController {
     return TextSpan(
       style: style,
       children: [
-        ..._buildTokenSpan(defaultStyle: style),
+        ..._buildTokenSpan(style),
         TextSpan(text: parts[1], style: style),
       ],
     );
   }
 
   TextSpan _buildPaywallSpan(TextStyle? style) => TextSpan(
-        text: text,
-        style: style?.merge(
-          _underlineStyle(const Color.fromARGB(187, 132, 96, 224)),
-        ),
-      );
+    text: text,
+    style: style?.merge(
+      _underlineStyle(const Color.fromARGB(187, 132, 96, 224), false),
+    ),
+  );
 
   InlineSpan _buildMatchSpan(
     PangeaMatchState match,
-    TextStyle style,
+    bool isSelected,
+    TextStyle? existingStyle,
   ) {
     final span = choreographer.igcController.currentText!.characters
         .getRange(
@@ -150,42 +132,43 @@ class PangeaTextController extends TextEditingController {
         )
         .toString();
 
-    if (match.updatedMatch.status == PangeaMatchStatusEnum.automatic) {
-      final originalText = match.originalMatch.match.fullText.characters
-          .getRange(
-            match.originalMatch.match.offset,
-            match.originalMatch.match.offset + match.originalMatch.match.length,
-          )
-          .toString();
+    // If selected, do full highlight with match color.
+    // If open, do underline with high opacity match color.
+    // Otherwise (viewed / accepted), do underline with lower opacity match color.
+    final matchColor = _underlineColor(match.updatedMatch);
+    final underlineStyle = _underlineStyle(matchColor, isSelected);
+    final textStyle = existingStyle != null
+        ? existingStyle.merge(underlineStyle)
+        : underlineStyle;
 
+    final originalText = match.originalMatch.match.fullText.characters
+        .getRange(
+          match.originalMatch.match.offset,
+          match.originalMatch.match.offset + match.originalMatch.match.length,
+        )
+        .toString();
+
+    if (match.updatedMatch.status == PangeaMatchStatusEnum.automatic) {
       return AutocorrectSpan(
         transformTargetId:
             "autocorrection_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
         currentText: span,
         originalText: originalText,
         onUndo: () => _onUndo(match),
-        style: style,
+        style: textStyle,
       );
     } else {
-      return TextSpan(
-        text: span,
-        style: style,
-      );
+      return TextSpan(text: span, style: textStyle);
     }
   }
 
   /// Returns a list of [TextSpan]s used to display the text in the input field
   /// with the appropriate styling for each error match.
-  List<InlineSpan> _buildTokenSpan({
-    TextStyle? defaultStyle,
-  }) {
-    final textSpanMatches = [
-      ...choreographer.igcController.openMatches,
-      ...choreographer.igcController.recentAutomaticCorrections,
-    ]..sort(
-        (a, b) =>
-            a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
-      );
+  List<InlineSpan> _buildTokenSpan(TextStyle? defaultStyle) {
+    final textSpanMatches = choreographer.igcController.matches.sorted(
+      (a, b) =>
+          a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
+    );
 
     final currentText = choreographer.igcController.currentText!;
     final spans = <InlineSpan>[];
@@ -200,16 +183,12 @@ class PangeaTextController extends TextEditingController {
       }
 
       final openMatch =
-          choreographer.igcController.currentlyOpenMatch?.updatedMatch.match;
-      final style = _textStyle(
-        match.updatedMatch,
-        defaultStyle,
-        openMatch != null &&
-            openMatch.offset == match.updatedMatch.match.offset &&
-            openMatch.length == match.updatedMatch.match.length,
-      );
+          choreographer.igcController.activeMatch.value?.updatedMatch.match;
+      final isSelected =
+          openMatch?.offset == match.updatedMatch.match.offset &&
+          openMatch?.length == match.updatedMatch.match.length;
 
-      spans.add(_buildMatchSpan(match, style));
+      spans.add(_buildMatchSpan(match, isSelected, defaultStyle));
       cursor =
           match.updatedMatch.match.offset + match.updatedMatch.match.length;
     }

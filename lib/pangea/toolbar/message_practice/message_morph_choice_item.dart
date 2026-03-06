@@ -51,10 +51,9 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
           : AppConfig.warning.withAlpha((0.4 * 255).toInt());
     }
     if (widget.isSelected) {
-      return Theme.of(context)
-          .colorScheme
-          .primary
-          .withAlpha((0.4 * 255).toInt());
+      return Theme.of(
+        context,
+      ).colorScheme.primary.withAlpha((0.4 * 255).toInt());
     }
     return _isHovered
         ? Theme.of(context).colorScheme.primary.withAlpha((0.2 * 255).toInt())

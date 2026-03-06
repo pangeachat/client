@@ -59,13 +59,13 @@ class NaviRailItem extends StatelessWidget {
           // #Pangea
           // return SizedBox(
           //   height: 72,
+          //   width: FluffyThemes.navRailWidth,
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 height: width - (isColumnMode ? 16.0 : 12.0),
                 width: width,
-                // width: FluffyThemes.navRailWidth,
                 // Pangea#
                 child: Stack(
                   children: [
@@ -76,8 +76,8 @@ class NaviRailItem extends StatelessWidget {
                       child: AnimatedContainer(
                         width: isSelected
                             ? FluffyThemes.isColumnMode(context)
-                                ? 8
-                                : 4
+                                  ? 8
+                                  : 4
                             : 0,
                         duration: FluffyThemes.animationDuration,
                         curve: FluffyThemes.animationCurve,
@@ -97,10 +97,10 @@ class NaviRailItem extends StatelessWidget {
                         curve: FluffyThemes.animationCurve,
                         // #Pangea
                         // child: Material(
-                        // borderRadius: borderRadius,
-                        // color: isSelected
-                        //     ? theme.colorScheme.primaryContainer
-                        //     : theme.colorScheme.surfaceContainerHigh,
+                        //   borderRadius: borderRadius,
+                        //   color: isSelected
+                        //       ? theme.colorScheme.primaryContainer
+                        //       : theme.colorScheme.surfaceContainerHigh,
                         child: UnreadRoomsBadge(
                           filter: unreadBadgeFilter ?? (_) => false,
                           badgePosition: BadgePosition.topEnd(
@@ -110,7 +110,8 @@ class NaviRailItem extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: backgroundColor ??
+                              color:
+                                  backgroundColor ??
                                   (isSelected
                                       ? theme.colorScheme.primaryContainer
                                       : theme.colorScheme.surfaceContainerHigh),
@@ -151,6 +152,7 @@ class NaviRailItem extends StatelessWidget {
                   ],
                 ),
               ),
+              // #Pangea
               if (expanded)
                 Flexible(
                   child: Container(
@@ -174,6 +176,7 @@ class NaviRailItem extends StatelessWidget {
                     ),
                   ),
                 ),
+              // Pangea#
             ],
           );
         },

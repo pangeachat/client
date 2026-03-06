@@ -2,15 +2,9 @@ class TranslateActivityRequest {
   List<String> activityIds;
   String l1;
 
-  TranslateActivityRequest({
-    required this.activityIds,
-    required this.l1,
-  });
+  TranslateActivityRequest({required this.activityIds, required this.l1});
 
-  Map<String, dynamic> toJson() => {
-        "activity_ids": activityIds,
-        "l1": l1,
-      };
+  Map<String, dynamic> toJson() => {"activity_ids": activityIds, "l1": l1};
 
   factory TranslateActivityRequest.fromJson(Map<String, dynamic> json) {
     return TranslateActivityRequest(

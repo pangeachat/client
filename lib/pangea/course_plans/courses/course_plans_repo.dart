@@ -38,9 +38,7 @@ class CoursePlansRepo {
 
   // TODO: Currently just getting one course plan at a time
   // Should take advantage of batch fetching
-  static Future<CoursePlanModel> get(
-    GetLocalizedCoursesRequest request,
-  ) async {
+  static Future<CoursePlanModel> get(GetLocalizedCoursesRequest request) async {
     if (request.coursePlanIds.length != 1) {
       throw Exception("Get only supports single course plan ID");
     }
@@ -108,23 +106,15 @@ class CoursePlansRepo {
     await _courseStorage.initStorage;
 
     final missingIds = request.coursePlanIds
-        .where(
-          (id) => _courseStorage.read("${id}_${request.l1}") == null,
-        )
+        .where((id) => _courseStorage.read("${id}_${request.l1}") == null)
         .toList();
 
     if (missingIds.isNotEmpty) {
       final searchResult = await _fetch(
-        GetLocalizedCoursesRequest(
-          coursePlanIds: missingIds,
-          l1: request.l1,
-        ),
+        GetLocalizedCoursesRequest(coursePlanIds: missingIds, l1: request.l1),
       );
 
-      await _setCachedBatch(
-        searchResult,
-        request.l1,
-      );
+      await _setCachedBatch(searchResult, request.l1);
     }
 
     return _getCachedBatch(request);
@@ -156,9 +146,7 @@ class CoursePlansRepo {
     );
   }
 
-  static CoursePlanModel? _getCached(
-    GetLocalizedCoursesRequest request,
-  ) {
+  static CoursePlanModel? _getCached(GetLocalizedCoursesRequest request) {
     if (lastUpdated != null &&
         DateTime.now().difference(lastUpdated!) > cacheDuration) {
       clearCache();
@@ -223,10 +211,7 @@ class CoursePlansRepo {
     }
 
     final cacheKey = "${courseId}_$l1";
-    await _courseStorage.write(
-      cacheKey,
-      course.toJson(),
-    );
+    await _courseStorage.write(cacheKey, course.toJson());
   }
 
   static Future<void> _setCachedBatch(
@@ -242,10 +227,7 @@ class CoursePlansRepo {
 
     final List<Future> futures = response.coursePlans.entries.map((entry) {
       final cacheKey = "${entry.key}_$l1";
-      return _courseStorage.write(
-        cacheKey,
-        entry.value.toJson(),
-      );
+      return _courseStorage.write(cacheKey, entry.value.toJson());
     }).toList();
 
     await Future.wait(futures);

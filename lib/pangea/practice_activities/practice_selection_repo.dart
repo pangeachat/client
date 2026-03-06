@@ -19,9 +19,9 @@ class _PracticeSelectionCacheEntry {
   bool get isExpired => DateTime.now().difference(timestamp).inDays > 1;
 
   Map<String, dynamic> toJson() => {
-        'selection': selection.toJson(),
-        'timestamp': timestamp.toIso8601String(),
-      };
+    'selection': selection.toJson(),
+    'timestamp': timestamp.toIso8601String(),
+  };
 
   factory _PracticeSelectionCacheEntry.fromJson(Map<String, dynamic> json) {
     return _PracticeSelectionCacheEntry(
@@ -47,10 +47,7 @@ class PracticeSelectionRepo {
     final cached = _getCached(eventId);
     if (cached != null) return cached;
 
-    final newEntry = await _fetch(
-      tokens: tokens,
-      langCode: messageLanguage,
-    );
+    final newEntry = await _fetch(tokens: tokens, langCode: messageLanguage);
 
     _setCached(eventId, newEntry);
     return newEntry;
@@ -69,14 +66,15 @@ class PracticeSelectionRepo {
     if (eligibleTokens.isEmpty) {
       return PracticeSelection({});
     }
-    final queue = await _fillActivityQueue(eligibleTokens);
+    final queue = await _fillActivityQueue(
+      eligibleTokens,
+      langCode.split('-')[0],
+    );
     final selection = PracticeSelection(queue);
     return selection;
   }
 
-  static PracticeSelection? _getCached(
-    String eventId,
-  ) {
+  static PracticeSelection? _getCached(String eventId) {
     try {
       final keys = List.from(_storage.getKeys());
       for (final String key in keys) {
@@ -105,10 +103,7 @@ class PracticeSelectionRepo {
     }
   }
 
-  static void _setCached(
-    String eventId,
-    PracticeSelection entry,
-  ) {
+  static void _setCached(String eventId, PracticeSelection entry) {
     final cachedEntry = _PracticeSelectionCacheEntry(
       selection: entry,
       timestamp: DateTime.now(),
@@ -118,10 +113,11 @@ class PracticeSelectionRepo {
 
   static Future<Map<ActivityTypeEnum, List<PracticeTarget>>> _fillActivityQueue(
     List<PangeaToken> tokens,
+    String language,
   ) async {
     final queue = <ActivityTypeEnum, List<PracticeTarget>>{};
     for (final type in ActivityTypeEnum.practiceTypes) {
-      queue[type] = await _buildActivity(type, tokens);
+      queue[type] = await _buildActivity(type, tokens, language);
     }
     return queue;
   }
@@ -131,16 +127,14 @@ class PracticeSelectionRepo {
     PangeaToken b,
     int aScore,
     int bScore,
-  ) =>
-      bScore.compareTo(aScore);
+  ) => bScore.compareTo(aScore);
 
   static int _sortMorphTargets(
     PracticeTarget a,
     PracticeTarget b,
     int aScore,
     int bScore,
-  ) =>
-      bScore.compareTo(aScore);
+  ) => bScore.compareTo(aScore);
 
   static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
     return t.morphsBasicallyEligibleForPracticeByPriority
@@ -157,9 +151,10 @@ class PracticeSelectionRepo {
   static Future<List<PracticeTarget>> _buildActivity(
     ActivityTypeEnum activityType,
     List<PangeaToken> tokens,
+    String language,
   ) async {
     if (activityType == ActivityTypeEnum.morphId) {
-      return _buildMorphActivity(tokens);
+      return _buildMorphActivity(tokens, language);
     }
 
     List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
@@ -179,6 +174,7 @@ class PracticeSelectionRepo {
     final scores = await _fetchPriorityScores(
       practiceTokens,
       activityType,
+      language,
     );
 
     practiceTokens.sort((a, b) => _sortTokens(a, b, scores[a]!, scores[b]!));
@@ -195,12 +191,14 @@ class PracticeSelectionRepo {
 
   static Future<List<PracticeTarget>> _buildMorphActivity(
     List<PangeaToken> tokens,
+    String language,
   ) async {
     final List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
     final candidates = practiceTokens.expand(_tokenToMorphTargets).toList();
     final scores = await _fetchPriorityScores(
       practiceTokens,
       ActivityTypeEnum.morphId,
+      language,
     );
     candidates.sort(
       (a, b) => _sortMorphTargets(
@@ -224,6 +222,7 @@ class PracticeSelectionRepo {
   static Future<Map<PangeaToken, int>> _fetchPriorityScores(
     List<PangeaToken> tokens,
     ActivityTypeEnum activityType,
+    String language,
   ) async {
     final scores = <PangeaToken, int>{};
     for (final token in tokens) {
@@ -231,24 +230,19 @@ class PracticeSelectionRepo {
     }
 
     final ids = tokens.map((t) => t.vocabConstructID).toList();
-    final idMap = {
-      for (final token in tokens) token: token.vocabConstructID,
-    };
+    final idMap = {for (final token in tokens) token: token.vocabConstructID};
 
     final constructs = await MatrixState
-        .pangeaController.matrixState.analyticsDataService
-        .getConstructUses(ids);
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .getConstructUses(ids, language);
 
     for (final token in tokens) {
-      final construct = constructs[idMap[token]];
-      final lastUsed =
-          construct?.lastUseByTypes(activityType.associatedUseTypes);
-
-      final daysSinceLastUsed =
-          lastUsed == null ? 20 : DateTime.now().difference(lastUsed).inDays;
-
+      final id = idMap[token]!;
       scores[token] =
-          daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 9);
+          constructs[id]?.practiceScore(activityType: activityType) ??
+          id.unseenPracticeScore;
     }
     return scores;
   }

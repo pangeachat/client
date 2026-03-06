@@ -1,6 +1,5 @@
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
@@ -15,21 +14,20 @@ sealed class PracticeActivityModel {
   final List<PangeaToken> tokens;
   final String langCode;
 
-  const PracticeActivityModel({
-    required this.tokens,
-    required this.langCode,
-  });
+  const PracticeActivityModel({required this.tokens, required this.langCode});
 
   String get storageKey =>
       '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}';
 
   PracticeTarget get practiceTarget => PracticeTarget(
-        activityType: activityType,
-        tokens: tokens,
-        morphFeature: this is MorphPracticeActivityModel
-            ? (this as MorphPracticeActivityModel).morphFeature
-            : null,
-      );
+    activityType: activityType,
+    tokens: tokens,
+    morphFeature: this is MorphPracticeActivityModel
+        ? (this as MorphPracticeActivityModel).morphFeature
+        : null,
+  );
+
+  bool isCorrect(String choice, PangeaToken token) => false;
 
   ActivityTypeEnum get activityType {
     switch (this) {
@@ -56,27 +54,21 @@ sealed class PracticeActivityModel {
 
   factory PracticeActivityModel.fromJson(Map<String, dynamic> json) {
     if (json['lang_code'] is! String) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(data: {"json": json}),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
       throw ("lang_code is not a string in PracticeActivityModel.fromJson");
     }
 
     final targetConstructsEntry =
         json['tgt_constructs'] ?? json['target_constructs'];
     if (targetConstructsEntry is! List) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(data: {"json": json}),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
       throw ("tgt_constructs is not a list in PracticeActivityModel.fromJson");
     }
 
     final type = ActivityTypeEnum.fromString(json['activity_type']);
 
     final morph = json['morph_feature'] != null
-        ? MorphFeaturesEnumExtension.fromString(
-            json['morph_feature'] as String,
-          )
+        ? MorphFeaturesEnumExtension.fromString(json['morph_feature'] as String)
         : null;
 
     final tokens = (json['target_tokens'] as List)
@@ -112,9 +104,9 @@ sealed class PracticeActivityModel {
           tokens: tokens,
           morphFeature: morph!,
           multipleChoiceContent: multipleChoiceContent!,
-          morphExampleInfo: json['morph_example_info'] != null
-              ? MorphExampleInfo.fromJson(json['morph_example_info'])
-              : const MorphExampleInfo(exampleMessage: []),
+          exampleMessageInfo: json['example_message_info'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message_info'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaAudio:
         assert(
@@ -125,6 +117,11 @@ sealed class PracticeActivityModel {
           langCode: langCode,
           tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
+          roomId: json['room_id'] as String?,
+          eventId: json['event_id'] as String?,
+          exampleMessage: json['example_message'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       case ActivityTypeEnum.lemmaMeaning:
         assert(
@@ -229,26 +226,32 @@ sealed class MultipleChoicePracticeActivityModel extends PracticeActivityModel {
     required this.multipleChoiceContent,
   });
 
-  bool isCorrect(String choice) => multipleChoiceContent.isCorrect(choice);
+  @override
+  bool isCorrect(String choice, PangeaToken _) =>
+      multipleChoiceContent.isCorrect(choice);
 
-  OneConstructUse constructUse(String choiceContent) {
+  List<OneConstructUse> constructUses(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
-    final useType =
-        correct ? activityType.correctUse : activityType.incorrectUse;
-    final token = tokens.first;
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
 
-    return OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
-      category: token.pos,
-      lemma: token.lemma.text,
-      form: token.lemma.text,
-      xp: useType.pointValue,
-    );
+    return tokens
+        .map(
+          (token) => OneConstructUse(
+            useType: useType,
+            constructType: activityType.constructUsesType,
+            metadata: ConstructUseMetaData(
+              roomId: null,
+              timeStamp: DateTime.now(),
+            ),
+            category: token.pos,
+            lemma: token.lemma.text,
+            form: token.lemma.text,
+            xp: useType.pointValue,
+          ),
+        )
+        .toList();
   }
 
   @override
@@ -268,10 +271,8 @@ sealed class MatchPracticeActivityModel extends PracticeActivityModel {
     required this.matchContent,
   });
 
-  bool isCorrect(
-    PangeaToken token,
-    String choice,
-  ) =>
+  @override
+  bool isCorrect(String choice, PangeaToken token) =>
       matchContent.matchInfo[token.vocabForm]!.contains(choice);
 
   @override
@@ -298,6 +299,31 @@ sealed class MorphPracticeActivityModel
       '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}-${morphFeature.name}';
 
   @override
+  List<OneConstructUse> constructUses(String choiceContent) {
+    final correct = multipleChoiceContent.isCorrect(choiceContent);
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
+
+    return tokens
+        .map(
+          (token) => OneConstructUse(
+            useType: useType,
+            constructType: activityType.constructUsesType,
+            metadata: ConstructUseMetaData(
+              roomId: null,
+              timeStamp: DateTime.now(),
+            ),
+            category: morphFeature.name,
+            lemma: token.getMorphTag(morphFeature)!,
+            form: token.lemma.form,
+            xp: useType.pointValue,
+          ),
+        )
+        .toList();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
     json['morph_feature'] = morphFeature.name;
@@ -306,41 +332,19 @@ sealed class MorphPracticeActivityModel
 }
 
 class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
-  final MorphExampleInfo morphExampleInfo;
+  final ExampleMessageInfo exampleMessageInfo;
   MorphCategoryPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.morphFeature,
     required super.multipleChoiceContent,
-    required this.morphExampleInfo,
+    required this.exampleMessageInfo,
   });
-
-  @override
-  OneConstructUse constructUse(String choiceContent) {
-    final correct = multipleChoiceContent.isCorrect(choiceContent);
-    final token = tokens.first;
-    final useType =
-        correct ? activityType.correctUse : activityType.incorrectUse;
-    final tag = token.getMorphTag(morphFeature)!;
-
-    return OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.morph,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
-      category: morphFeature.name,
-      lemma: tag,
-      form: token.lemma.form,
-      xp: useType.pointValue,
-    );
-  }
 
   @override
   Map<String, dynamic> toJson() {
     final json = super.toJson();
-    json['morph_example_info'] = morphExampleInfo.toJson();
+    json['example_message_info'] = exampleMessageInfo.toJson();
     return json;
   }
 }
@@ -356,11 +360,53 @@ class MorphMatchPracticeActivityModel extends MorphPracticeActivityModel {
 
 class VocabAudioPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
+  final String? roomId;
+  final String? eventId;
+  final ExampleMessageInfo exampleMessage;
+
   VocabAudioPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
+    this.roomId,
+    this.eventId,
+    required this.exampleMessage,
   });
+
+  @override
+  List<OneConstructUse> constructUses(String choiceContent) {
+    final correct = multipleChoiceContent.isCorrect(choiceContent);
+    final useType = correct
+        ? activityType.correctUse
+        : activityType.incorrectUse;
+
+    // For audio activities, find the token that matches the clicked word
+    final matchingToken = tokens.firstWhere(
+      (t) => t.text.content.toLowerCase() == choiceContent.toLowerCase(),
+      orElse: () => tokens.first,
+    );
+
+    return [
+      OneConstructUse(
+        useType: useType,
+        constructType: activityType.constructUsesType,
+        metadata: ConstructUseMetaData(roomId: null, timeStamp: DateTime.now()),
+        category: matchingToken.pos,
+        lemma: matchingToken.lemma.text,
+        form: matchingToken.lemma.text,
+        xp: useType.pointValue,
+      ),
+    ];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    final json = super.toJson();
+    json['room_id'] = roomId;
+    json['event_id'] = eventId;
+    json['example_message'] = exampleMessage.toJson();
+    return json;
+  }
 }
 
 class VocabMeaningPracticeActivityModel

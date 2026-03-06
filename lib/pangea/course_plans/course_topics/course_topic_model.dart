@@ -17,6 +17,7 @@ class CourseTopicModel {
   final String uuid;
   final List<String> locationIds;
   final List<String> activityIds;
+  final Map<String, int> activityRoleCounts;
 
   CourseTopicModel({
     required this.title,
@@ -24,23 +25,18 @@ class CourseTopicModel {
     required this.uuid,
     required this.activityIds,
     required this.locationIds,
+    required this.activityRoleCounts,
   });
 
   bool get locationListComplete =>
       locationIds.length == loadedLocations.locations.length;
 
   CourseLocationResponse get loadedLocations => CourseLocationRepo.getCached(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: locationIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: locationIds),
+  );
   Future<CourseLocationResponse> _fetchLocations() => CourseLocationRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: locationIds,
-        ),
-      );
+    CourseInfoBatchRequest(batchId: uuid, uuids: locationIds),
+  );
 
   String? get location => loadedLocations.locations.firstOrNull?.name;
 
@@ -53,10 +49,7 @@ class CourseTopicModel {
   List<String> get loadedLocationMediaIds => loadedLocations.locations
       .map(
         (location) => CourseLocationMediaRepo.getCached(
-          CourseInfoBatchRequest(
-            batchId: uuid,
-            uuids: location.mediaIds,
-          ),
+          CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
         ).mediaUrls,
       )
       .expand((e) => e)
@@ -68,10 +61,7 @@ class CourseTopicModel {
     final locationResp = await _fetchLocations();
     for (final location in locationResp.locations) {
       final mediaResp = await CourseLocationMediaRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: location.mediaIds,
-        ),
+        CourseInfoBatchRequest(batchId: uuid, uuids: location.mediaIds),
       );
 
       allLocationMedia.addAll(mediaResp.mediaUrls.map((e) => e.url));
@@ -110,10 +100,18 @@ class CourseTopicModel {
   factory CourseTopicModel.fromJson(Map<String, dynamic> json) {
     final List<dynamic>? activityIdsEntry =
         json['activity_ids'] as List<dynamic>? ??
-            json['activityIds'] as List<dynamic>?;
+        json['activityIds'] as List<dynamic>?;
     final List<dynamic>? locationIdsEntry =
         json['location_ids'] as List<dynamic>? ??
-            json['locationIds'] as List<dynamic>?;
+        json['locationIds'] as List<dynamic>?;
+
+    final activityRoleCountsEntry = json['activity_role_counts'];
+    Map<String, int> activityRoleCounts = {};
+    if (activityRoleCountsEntry != null) {
+      activityRoleCounts = Map<String, dynamic>.from(
+        activityRoleCountsEntry,
+      ).map((key, value) => MapEntry(key, value as int));
+    }
 
     return CourseTopicModel(
       title: json['title'] as String,
@@ -121,6 +119,7 @@ class CourseTopicModel {
       uuid: json['uuid'] as String,
       activityIds: activityIdsEntry?.map((e) => e as String).toList() ?? [],
       locationIds: locationIdsEntry?.map((e) => e as String).toList() ?? [],
+      activityRoleCounts: activityRoleCounts,
     );
   }
 
@@ -132,6 +131,7 @@ class CourseTopicModel {
       'uuid': uuid,
       'activity_ids': activityIds,
       'location_ids': locationIds,
+      'activity_role_counts': activityRoleCounts,
     };
   }
 }

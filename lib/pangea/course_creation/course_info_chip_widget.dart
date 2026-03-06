@@ -28,16 +28,8 @@ class CourseInfoChip extends StatelessWidget {
         spacing: 4.0,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            size: iconSize,
-          ),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize,
-            ),
-          ),
+          Icon(icon, size: iconSize),
+          Text(text, style: TextStyle(fontSize: fontSize)),
         ],
       ),
     );

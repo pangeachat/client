@@ -30,17 +30,9 @@ class EnableNotificationsController extends State<EnableNotifications> {
   Future<void> _setProfile() async {
     final client = Matrix.of(context).client;
     try {
-      profile = await client.getProfileFromUserId(
-        client.userID!,
-      );
+      profile = await client.getProfileFromUserId(client.userID!);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'userId': client.userID,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'userId': client.userID});
     } finally {
       if (mounted) setState(() {});
     }
@@ -58,21 +50,14 @@ class EnableNotificationsController extends State<EnableNotifications> {
     return PangeaLoginScaffold(
       customAppBar: AppBar(
         title: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 450,
-          ),
+          constraints: const BoxConstraints(maxWidth: 450),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BackButton(
-                onPressed: () => pLogoutAction(
-                  context,
-                  bypassWarning: true,
-                ),
+                onPressed: () => pLogoutAction(context, bypassWarning: true),
               ),
-              const SizedBox(
-                width: 40.0,
-              ),
+              const SizedBox(width: 40.0),
             ],
           ),
         ),
@@ -90,10 +75,9 @@ class EnableNotificationsController extends State<EnableNotifications> {
                     Matrix.of(context).client.userID?.localpart ??
                     "",
               ),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
               L10n.of(context).enableNotificationsTitle,
@@ -103,14 +87,13 @@ class EnableNotificationsController extends State<EnableNotifications> {
               onPressed: _requestNotificationPermission,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                foregroundColor:
-                    Theme.of(context).colorScheme.onPrimaryContainer,
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onPrimaryContainer,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(L10n.of(context).enableNotificationsDesc),
-                ],
+                children: [Text(L10n.of(context).enableNotificationsDesc)],
               ),
             ),
             TextButton(

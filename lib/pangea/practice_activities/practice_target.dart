@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -34,6 +36,20 @@ class PracticeTarget {
     }
   }
 
+  String promptText(BuildContext context) {
+    switch (activityType) {
+      case ActivityTypeEnum.grammarCategory:
+        return L10n.of(context).whatIsTheMorphTag(
+          morphFeature!.getDisplayCopy(context),
+          tokens.first.text.content,
+        );
+      case ActivityTypeEnum.grammarError:
+        return L10n.of(context).fillInBlank;
+      default:
+        return tokens.first.vocabConstructID.lemma;
+    }
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -59,8 +75,9 @@ class PracticeTarget {
     }
 
     return PracticeTarget(
-      tokens:
-          (json['tokens'] as List).map((e) => PangeaToken.fromJson(e)).toList(),
+      tokens: (json['tokens'] as List)
+          .map((e) => PangeaToken.fromJson(e))
+          .toList(),
       activityType: type,
       morphFeature: json['morphFeature'] == null
           ? null

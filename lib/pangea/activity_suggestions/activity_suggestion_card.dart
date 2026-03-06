@@ -36,9 +36,7 @@ class ActivitySuggestionCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12.0),
         child: Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainer,
-          ),
+          decoration: BoxDecoration(color: theme.colorScheme.surfaceContainer),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,9 +59,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                     children: [
                       Text(
                         activity.title,
-                        style: TextStyle(
-                          fontSize: fontSize,
-                        ),
+                        style: TextStyle(fontSize: fontSize),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -8,7 +10,6 @@ import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
-import '../../choreographer/it/it_shimmer.dart';
 
 typedef ChoiceCallback = void Function(String value, int index);
 
@@ -46,7 +47,33 @@ class ChoicesArray extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLoading && (choices == null || choices!.length <= 1)
-        ? const ItShimmer()
+        ? Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 4,
+            runSpacing: 4,
+            children: List.generate(3, (_) {
+              return ImageFiltered(
+                imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    minimumSize: const Size(50, 36),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primary.withAlpha(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                  ),
+                  onPressed: null,
+                  child: const Text(
+                    "          ", // 10 spaces
+                    style: TextStyle(color: Colors.transparent, fontSize: 16),
+                  ),
+                ),
+              );
+            }),
+          )
         : Wrap(
             alignment: WrapAlignment.center,
             spacing: 4.0,
@@ -76,11 +103,7 @@ class ChoicesArray extends StatelessWidget {
 }
 
 class Choice {
-  Choice({
-    this.color,
-    required this.text,
-    this.isGold = false,
-  });
+  Choice({this.color, required this.text, this.isGold = false});
 
   final Color? color;
   final String text;
@@ -142,11 +165,9 @@ class ChoiceItem extends StatelessWidget {
             ),
             child: TextButton(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
-                backgroundColor: entry.value.color?.withAlpha(50) ??
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                backgroundColor:
+                    entry.value.color?.withAlpha(50) ??
                     theme.colorScheme.primary.withAlpha(10),
                 textStyle: BotStyle.text(context),
                 shape: RoundedRectangleBorder(
@@ -161,9 +182,7 @@ class ChoiceItem extends StatelessWidget {
                 getDisplayCopy != null
                     ? getDisplayCopy!(entry.value.text)
                     : entry.value.text,
-                style: BotStyle.text(context).copyWith(
-                  fontSize: fontSize,
-                ),
+                style: BotStyle.text(context).copyWith(fontSize: fontSize),
                 textAlign: TextAlign.center,
               ),
             ),

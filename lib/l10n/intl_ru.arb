@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-02-05 10:10:19.334362",
+  "@@last_modified": "2026-03-03 11:18:48.349091",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -218,7 +218,7 @@
       }
     }
   },
-  "changedTheChatNameTo": "{username} изменил(а) имя чата на: '{chatname}'",
+  "changedTheChatNameTo": "{username} изменил(а) имя чата на '{chatname}'",
   "@changedTheChatNameTo": {
     "type": "String",
     "placeholders": {
@@ -239,7 +239,7 @@
       }
     }
   },
-  "changedTheDisplaynameTo": "{username} изменил(а) отображаемое имя на: '{displayname}'",
+  "changedTheDisplaynameTo": "{username} изменил(а) отображаемое имя на '{displayname}'",
   "@changedTheDisplaynameTo": {
     "type": "String",
     "placeholders": {
@@ -260,7 +260,7 @@
       }
     }
   },
-  "changedTheGuestAccessRulesTo": "{username} изменил(а) правила гостевого доступа на: {rules}",
+  "changedTheGuestAccessRulesTo": "{username} изменил(а) правила гостевого доступа на {rules}",
   "@changedTheGuestAccessRulesTo": {
     "type": "String",
     "placeholders": {
@@ -281,7 +281,7 @@
       }
     }
   },
-  "changedTheHistoryVisibilityTo": "{username} изменил(а) видимость истории на: {rules}",
+  "changedTheHistoryVisibilityTo": "{username} изменил(а) видимость истории на {rules}",
   "@changedTheHistoryVisibilityTo": {
     "type": "String",
     "placeholders": {
@@ -302,7 +302,7 @@
       }
     }
   },
-  "changedTheJoinRulesTo": "{username} изменил(а) правила присоединения на: {joinRules}",
+  "changedTheJoinRulesTo": "{username} изменил(а) правила присоединения на {joinRules}",
   "@changedTheJoinRulesTo": {
     "type": "String",
     "placeholders": {
@@ -381,7 +381,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "Резервная старых сообщений защищена ключом восстановления. Пожалуйста, не потеряйте его.",
+  "chatBackupDescription": "Ваши сообщения защищены ключом восстановления. Пожалуйста, не потеряйте его.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -1086,15 +1086,6 @@
   "@lightTheme": {
     "type": "String",
     "placeholders": {}
-  },
-  "loadCountMoreParticipants": "Загрузить еще {count} участника(ов)",
-  "@loadCountMoreParticipants": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "loadingPleaseWait": "Загрузка... Пожалуйста, подождите.",
   "@loadingPleaseWait": {
@@ -1879,16 +1870,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "unreadChats": "{unreadCount, plural, other{{unreadCount} непрочитанных чата(ов)}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
-  },
-  "userAndOthersAreTyping": "{username} и {count} других участников печатают…",
+  "userAndOthersAreTyping": "{username} и еще {count} печатают…",
   "@userAndOthersAreTyping": {
     "type": "String",
     "placeholders": {
@@ -2328,14 +2310,6 @@
   "@storeInAndroidKeystore": {},
   "storeInAppleKeyChain": "Сохранить в Apple KeyChain",
   "@storeInAppleKeyChain": {},
-  "countFiles": "{count} файлов",
-  "@countFiles": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "user": "Пользователь",
   "@user": {},
   "confirmMatrixId": "Пожалуйста, подтвердите Matrix ID, чтобы удалить свою учётную запись.",
@@ -2437,7 +2411,7 @@
   "@readUpToHere": {},
   "commandHint_hug": "Отправить обнимашки",
   "@commandHint_hug": {},
-  "cuddleContent": "{senderName} улыбнулся(-ась) Вам",
+  "cuddleContent": "{senderName} обнимает вас",
   "@cuddleContent": {
     "type": "String",
     "placeholders": {
@@ -2497,15 +2471,6 @@
   "@reopenChat": {},
   "commandHint_googly": "Отправить выпученные глаза",
   "@commandHint_googly": {},
-  "signInWith": "Войти с {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Это не картинка.",
   "@notAnImage": {},
   "importNow": "Импортировать сейчас",
@@ -2592,13 +2557,13 @@
   "@setColorTheme": {},
   "invite": "Пригласить",
   "@invite": {},
-  "invitePrivateChat": "📨 Пригласить в приватный чат",
+  "invitePrivateChat": "📨 Вас пригласили в приватный чат",
   "@invitePrivateChat": {},
-  "inviteGroupChat": "📨 Пригласить в групповой чат",
+  "inviteGroupChat": "📨 Вас пригласили в групповой чат",
   "@inviteGroupChat": {},
   "invalidInput": "Недопустимый ввод!",
   "@invalidInput": {},
-  "wrongPinEntered": "Введён неверный пин-код! Повторите попытку через {seconds} секунд...",
+  "wrongPinEntered": "Wrong pin entered! Try again in {seconds} seconds...",
   "@wrongPinEntered": {
     "type": "String",
     "placeholders": {
@@ -2934,23 +2899,6 @@
   "@commandHint_ignore": {},
   "commandHint_unignore": "Не игнорировать данный matrix ID",
   "@commandHint_unignore": {},
-  "unreadChatsInApp": "{appname}: {unread} непрочитанные чаты",
-  "@unreadChatsInApp": {
-    "type": "String",
-    "placeholders": {
-      "appname": {
-        "type": "String"
-      },
-      "unread": {
-        "type": "String"
-      }
-    }
-  },
-  "thereAreCountUsersBlocked": "Сейчас заблокировано {count} пользователей.",
-  "@thereAreCountUsersBlocked": {
-    "type": "String",
-    "count": {}
-  },
   "restricted": "Запрещено",
   "@restricted": {},
   "knockRestricted": "Стук запрещен",
@@ -2970,7 +2918,7 @@
   "@gallery": {},
   "files": "Файлы",
   "@files": {},
-  "swipeRightToLeftToReply": "Для ответа проведите с права на лево",
+  "swipeRightToLeftToReply": "Для ответа проведите справа налево",
   "@swipeRightToLeftToReply": {},
   "userLevel": "{level} - Пользователь",
   "@userLevel": {
@@ -3009,18 +2957,6 @@
   "@inviteOtherUsers": {},
   "changeTheVisibilityOfChatHistory": "Изменить видимость истории чата",
   "@changeTheVisibilityOfChatHistory": {},
-  "countChatsAndCountParticipants": "{chats} чатов и {participants} участников",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "unread": "Непрочитанные",
   "@unread": {},
   "space": "Пространство",
@@ -3061,7 +2997,7 @@
   "@doesNotSeemToBeAValidHomeserver": {},
   "noMoreChatsFound": "Больше чатов не обнаружено...",
   "@noMoreChatsFound": {},
-  "alwaysUse24HourFormat": "нет",
+  "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -3097,7 +3033,7 @@
   "@joinedChats": {},
   "serverInformation": "Информация о сервере:",
   "@serverInformation": {},
-  "sendingAttachmentCountOfCount": "Отправляю... {index} {length}...",
+  "sendingAttachmentCountOfCount": "Отправляется вложение {index} из {length}...",
   "@sendingAttachmentCountOfCount": {
     "type": "integer",
     "placeholders": {
@@ -3132,17 +3068,10 @@
   "@invalidUrl": {},
   "addLink": "Добавить ссылку",
   "@addLink": {},
+  "italicText": "Italic",
+  "@italicText": {},
   "unableToJoinChat": "Невозможно присоединиться к чату. Возможно, другая сторона уже закончила разговор.",
   "@unableToJoinChat": {},
-  "serverLimitReached": "Ограничения сервера. Ожидайте{seconds} секунд...",
-  "@serverLimitReached": {
-    "type": "integer",
-    "placeholders": {
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
   "continueText": "Продолжить",
   "@continueText": {},
   "blur": "Размытие:",
@@ -3165,7 +3094,7 @@
   "@version": {},
   "website": "Сайт",
   "@website": {},
-  "sendImages": "Отправить {count} изображений",
+  "sendImages": "Отправить {count} изображение",
   "@sendImages": {
     "type": "String",
     "placeholders": {
@@ -3234,7 +3163,7 @@
   "@userSpecificNotificationSettings": {},
   "otherNotificationSettings": "Другие настройки уведомлений",
   "@otherNotificationSettings": {},
-  "notificationRuleContainsUserNameDescription": "Уведомляет пользователя когда сообщение содержит его имя пользователя.",
+  "notificationRuleContainsUserNameDescription": "Уведомляет пользователя, когда сообщение содержит его имя пользователя.",
   "@notificationRuleContainsUserNameDescription": {},
   "notificationRuleMasterDescription": "Перекрывает все другие правила и отключает все уведомления.",
   "@notificationRuleMasterDescription": {},
@@ -3272,48 +3201,312 @@
   "@notificationRuleRoomOneToOne": {},
   "setCustomPermissionLevel": "Установить уровень пользовательских разрешений",
   "@setCustomPermissionLevel": {},
-  "setPermissionsLevelDescription": "Пожалуйста, выберите одну из предопределённых ролей ниже или введите пользовательский уровень разрешений от 0 до 100.",
-  "ignoreUser": "Игнорировать пользователя",
+  "setPermissionsLevelDescription": "Выберите одну из стандартных ролей ниже или введите произвольный уровень прав от 0 до 100.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Заглушить пользователя",
+  "@ignoreUser": {},
   "normalUser": "Обычный пользователь",
-  "commandHint_roomupgrade": "Обновить эту комнату до указанной версии комнаты",
-  "checkList": "Список проверок",
-  "countInvited": "{count} приглашённых",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "Обновить комнату до указанной версии",
+  "@commandHint_roomupgrade": {},
   "notificationRuleInviteForMeDescription": "Уведомляет пользователя, когда его приглашают в комнату.",
-  "notificationRuleMemberEvent": "Событие участника",
-  "notificationRuleIsUserMentionDescription": "Уведомляет пользователя, когда его прямо упоминают в сообщении.",
-  "notificationRuleContainsDisplayNameDescription": "Уведомляет пользователя, когда сообщение содержит его отображаемое имя.",
-  "notificationRuleIsRoomMentionDescription": "Уведомляет пользователя, когда есть упоминание комнаты.",
-  "notificationRuleRoomnotif": "Уведомление комнаты",
+  "@notificationRuleInviteForMeDescription": {},
+  "unknownPushRule": "Неизвестное правило оповещения '{rule}'",
+  "@unknownPushRule": {
+    "type": "String",
+    "placeholders": {
+      "rule": {
+        "type": "String"
+      }
+    }
+  },
+  "checkList": "Контрольный список",
+  "@checkList": {},
+  "changedTheChatDescription": "{username} изменил описание чата",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username} изменил(а) имя чата",
+  "@changedTheChatName": {},
+  "notificationRuleMemberEvent": "Мероприятие участника",
+  "@notificationRuleMemberEvent": {},
+  "notificationRuleIsUserMentionDescription": "Уведомляет пользователя, когда он упоминается непосредственно в сообщении.",
+  "@notificationRuleIsUserMentionDescription": {},
+  "notificationRuleContainsDisplayNameDescription": "Уведомляет пользователя, когда сообщение содержит его имя отображения.",
+  "@notificationRuleContainsDisplayNameDescription": {},
+  "notificationRuleIsRoomMentionDescription": "Уведомляет пользователя о наличии упоминания о комнате.",
+  "@notificationRuleIsRoomMentionDescription": {},
+  "notificationRuleRoomnotif": "Уведомление о комнате",
+  "@notificationRuleRoomnotif": {},
   "notificationRuleRoomnotifDescription": "Уведомляет пользователя, когда сообщение содержит '@room'.",
-  "notificationRuleTombstone": "Мемориальная метка",
+  "@notificationRuleRoomnotifDescription": {},
+  "notificationRuleTombstone": "Надгробный камень",
+  "@notificationRuleTombstone": {},
   "notificationRuleTombstoneDescription": "Уведомляет пользователя о сообщениях о деактивации комнаты.",
+  "@notificationRuleTombstoneDescription": {},
   "notificationRuleRoomServerAcl": "ACL сервера комнаты",
-  "notificationRuleRoomServerAclDescription": "Подавляет уведомления о списках контроля доступа (ACL) сервера комнаты.",
-  "notificationRuleSuppressEdits": "Подавить редактирования",
-  "notificationRuleRoomOneToOneDescription": "Уведомляет пользователя о сообщениях в комнатах один на один.",
-  "notificationRuleMessageDescription": "Уведомляет пользователя о общих сообщениях.",
+  "@notificationRuleRoomServerAcl": {},
+  "notificationRuleRoomServerAclDescription": "Удаляет уведомления о списках контроля доступа к серверу комнат (ACL).",
+  "@notificationRuleRoomServerAclDescription": {},
+  "notificationRuleSuppressEdits": "Подавление правки",
+  "@notificationRuleSuppressEdits": {},
+  "notificationRuleRoomOneToOneDescription": "Уведомляет пользователя о сообщениях в разделах один на один.",
+  "@notificationRuleRoomOneToOneDescription": {},
+  "notificationRuleMessageDescription": "Уведомляет пользователя об общих сообщениях.",
+  "@notificationRuleMessageDescription": {},
   "notificationRuleEncryptedDescription": "Уведомляет пользователя о сообщениях в зашифрованных комнатах.",
-  "notificationRuleJitsi": "Jitsi",
+  "@notificationRuleEncryptedDescription": {},
+  "notificationRuleJitsi": "Джици",
+  "@notificationRuleJitsi": {},
   "notificationRuleJitsiDescription": "Уведомляет пользователя о событиях виджета Jitsi.",
-  "notificationRuleServerAcl": "Отключить события ACL сервера",
-  "notificationRuleServerAclDescription": "Отключает уведомления о событиях ACL сервера.",
-  "unknownPushRule": "Неизвестное правило push '{rule}'",
-  "sentVoiceMessage": "🎙️ {duration} - Голосовое сообщение от {sender}",
-  "deletePushRuleCanNotBeUndone": "Если вы удалите это уведомление, восстановить его будет невозможно.",
+  "@notificationRuleJitsiDescription": {},
+  "notificationRuleServerAcl": "Запретить события ACL сервера",
+  "@notificationRuleServerAcl": {},
+  "notificationRuleServerAclDescription": "Удаляет уведомления о событиях ACL сервера.",
+  "@notificationRuleServerAclDescription": {},
+  "sentVoiceMessage": "️🎙️ {duration} - Голосовое сообщение от {sender}",
+  "@sentVoiceMessage": {
+    "type": "String",
+    "placeholders": {
+      "sender": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "deletePushRuleCanNotBeUndone": "Если вы удалите эту настройку уведомлений, это невозможно отменить.",
+  "@deletePushRuleCanNotBeUndone": {},
   "shareKeysWith": "Поделиться ключами с...",
-  "shareKeysWithDescription": "Какие устройства должны быть доверенными, чтобы читать ваши сообщения в зашифрованных чатах?",
-  "crossVerifiedDevicesIfEnabled": "Перекрестно проверенные устройства, если включено",
-  "crossVerifiedDevices": "Перекрестно проверенные устройства",
+  "@shareKeysWith": {},
+  "shareKeysWithDescription": "Каким устройствам следует доверять, чтобы они могли читать ваши сообщения в зашифрованных чатах?",
+  "@shareKeysWithDescription": {},
+  "crossVerifiedDevicesIfEnabled": "Если включено, перекрестите проверенные устройства",
+  "@crossVerifiedDevicesIfEnabled": {},
+  "crossVerifiedDevices": "Кросс-верифицированные устройства",
+  "@crossVerifiedDevices": {},
   "verifiedDevicesOnly": "Только проверенные устройства",
-  "optionalMessage": "(Опционально) сообщение...",
+  "@verifiedDevicesOnly": {},
+  "optionalMessage": "(Необязательно) сообщение...",
+  "@optionalMessage": {},
   "notSupportedOnThisDevice": "Не поддерживается на этом устройстве",
-  "approve": "Одобрить",
+  "@notSupportedOnThisDevice": {},
+  "approve": "Утверждать",
+  "@approve": {},
   "youHaveKnocked": "Вы постучали",
-  "pleaseWaitUntilInvited": "Пожалуйста, подождите, пока кто-то из комнаты не пригласит вас.",
+  "@youHaveKnocked": {},
+  "pleaseWaitUntilInvited": "Пожалуйста, подождите, пока кто-нибудь из комнаты не пригласит вас.",
+  "@pleaseWaitUntilInvited": {},
   "commandHint_logout": "Выйти из текущего устройства",
-  "commandHint_logoutall": "Выйти со всех активных устройств",
-  "displayNavigationRail": "Показать панель навигации на мобильном устройстве",
+  "@commandHint_logout": {},
+  "commandHint_logoutall": "Выйти из всех активных устройств",
+  "@commandHint_logoutall": {},
+  "displayNavigationRail": "Показать навигационный рельс на мобильном устройстве",
+  "@displayNavigationRail": {},
   "customReaction": "Пользовательская реакция",
+  "@customReaction": {},
+  "moreEvents": "Больше событий",
+  "@moreEvents": {},
+  "declineInvitation": "Отказаться от приглашения",
+  "@declineInvitation": {},
+  "noMessagesYet": "Пока нет сообщений",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Нажмите длиннее, чтобы записать голосовое сообщение.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Пауза",
+  "@pause": {},
+  "resume": "Резюмировать",
+  "@resume": {},
+  "newSubSpace": "Новое подпространство",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Переместить в другое пространство",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Переместить вверх",
+  "@moveUp": {},
+  "moveDown": "Переместить вниз",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "Чат будет удален из пространства, но все равно появится в вашем списке чатов.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} чатов",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "Участник пространства из {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "Участник пространства из {spaces} может постучать",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Пожертвовать",
+  "@donate": {},
+  "startedAPoll": "{username} начал опрос.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Опрос",
+  "@poll": {},
+  "startPoll": "Начать опрос",
+  "@startPoll": {},
+  "endPoll": "Завершить опрос",
+  "@endPoll": {},
+  "answersVisible": "Ответы видны",
+  "@answersVisible": {},
+  "answersHidden": "Ответы скрыты",
+  "@answersHidden": {},
+  "pollQuestion": "Вопрос по опросу",
+  "@pollQuestion": {},
+  "answerOption": "Вариант ответа",
+  "@answerOption": {},
+  "addAnswerOption": "Добавить вариант ответа",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Разрешить несколько ответов",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Опрос завершен",
+  "@pollHasBeenEnded": {},
+  "answersWillBeVisibleWhenPollHasEnded": "Ответы будут видны после завершения опроса",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Ответить в потоке",
+  "@replyInThread": {},
+  "thread": "Нить",
+  "@thread": {},
+  "backToMainChat": "Вернуться в основной чат",
+  "@backToMainChat": {},
+  "saveChanges": "Сохранить изменения",
+  "@saveChanges": {},
+  "createSticker": "Создать стикер или эмоджи",
+  "@createSticker": {},
+  "useAsSticker": "Использовать как стикер",
+  "@useAsSticker": {},
+  "useAsEmoji": "Использовать в качестве эмоджи",
+  "@useAsEmoji": {},
+  "stickerPackNameAlreadyExists": "Имя набора стикеров уже существует",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Новая упаковка стикеров",
+  "@newStickerPack": {},
+  "stickerPackName": "Имя упаковки стикеров",
+  "@stickerPackName": {},
+  "attribution": "Атрибуция",
+  "@attribution": {},
+  "skipChatBackup": "Пропустить резервную копию чата",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Вы уверены? Без включения резервного копирования чата вы можете потерять доступ к своим сообщениям, если переключите устройство.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Загрузка сообщений",
+  "@loadingMessages": {},
+  "setupChatBackup": "Настроить резервную копию чата",
+  "@setupChatBackup": {},
+  "loadCountMoreParticipants": "{count, plural, one{Загрузить еще # участника} few{Загрузить еще # участников} other{Загрузить еще # участников}}",
+  "@loadCountMoreParticipants": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unreadChats": "{unreadCount, plural, one{# непрочитанный чат} few{# непрочитанных чата} other{# непрочитанных чатов}}",
+  "@unreadChats": {
+    "type": "String",
+    "placeholders": {
+      "unreadCount": {
+        "type": "int"
+      }
+    }
+  },
+  "countFiles": "{count, plural, one{# файл} few{# файла} other{# файлов}}",
+  "@countFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unreadChatsInApp": "",
+  "@unreadChatsInApp": {
+    "type": "String",
+    "placeholders": {
+      "appname": {
+        "type": "String"
+      },
+      "unread": {
+        "type": "String"
+      }
+    }
+  },
+  "thereAreCountUsersBlocked": "Сейчас {count, plural, one{заблокирован # пользователь} few{заблокированы # пользователя} other{заблокированы # пользователей}}.",
+  "@thereAreCountUsersBlocked": {
+    "type": "String",
+    "count": {}
+  },
+  "countChatsAndCountParticipants": "",
+  "@countChatsAndCountParticipants": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      },
+      "participants": {
+        "type": "int"
+      }
+    }
+  },
+  "serverLimitReached": "Достигнут лимит сервера! Подождите {seconds, plural, one{# секунду} few{# секунды} many{# секунд} other{# секунд}}...",
+  "@serverLimitReached": {
+    "type": "integer",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "countInvited": "{count, plural, one{Приглашён # участник} few{Приглашены # участника} other{Приглашены # участников}}",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "countVotes": "{count, plural, =1{Один голос} other{{count} голосов}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "countReplies": "{count, plural, =1{Один ответ} other{{count} ответов}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "writeAMessageLangCodes": "Введите на {l1} или {l2}...",
   "requests": "Запросы",
   "holdForInfo": "Нажмите и удерживайте для получения информации о слове.",
@@ -3321,7 +3514,6 @@
   "yellowFeedback": "Хм, попробуйте это и посмотрите, сработает ли! Чтобы использовать это слово, просто нажмите его снова.",
   "redFeedback": "Я думаю, это неправильно...",
   "itInstructionsTitle": "Я могу помочь вам с переводом!",
-  "itInstructionsBody": "Вы можете нажимать и удерживать выборы для получения информации о слове.",
   "gaTooltip": "Использование L2 с грамматической помощью",
   "taTooltip": "Использование L2 с переводческой помощью",
   "unTooltip": "Другое",
@@ -3337,13 +3529,13 @@
   "noIdenticalLanguages": "Пожалуйста, выберите разные исходный и целевой языки",
   "searchBy": "Поиск по стране и языкам",
   "joinWithClassCode": "Присоединиться к курсу",
-  "languageLevelPreA1": "Новичок Низкий (Pre A1)",
-  "languageLevelA1": "Новичок Мид (A1)",
-  "languageLevelA2": "Начальный высокий (A2)",
-  "languageLevelB1": "Средний средний (B1)",
-  "languageLevelB2": "Продвинутый низкий (B2)",
-  "languageLevelC1": "Продвинутый средний (C1)",
-  "languageLevelC2": "Высший (C2)",
+  "languageLevelPreA1": "Преддверие A1 (Pre A1)",
+  "languageLevelA1": "Начальный (A1)",
+  "languageLevelA2": "Элементарный (A2)",
+  "languageLevelB1": "Средний (B1)",
+  "languageLevelB2": "Выше среднего (B2)",
+  "languageLevelC1": "Продвинутый (C1)",
+  "languageLevelC2": "Свободное владение (C2)",
   "changeTheNameOfTheClass": "Изменить название",
   "changeTheNameOfTheChat": "Изменить название чата",
   "sorryNoResults": "Извините, результатов нет.",
@@ -3355,7 +3547,6 @@
   "updateLanguage": "Мои языки",
   "whatLanguageYouWantToLearn": "Какой язык вы хотите выучить?",
   "whatIsYourBaseLanguage": "Какой у вас основной язык?",
-  "saveChanges": "Сохранить изменения",
   "publicProfileTitle": "Разрешить находить мой профиль в поиске",
   "publicProfileDesc": "Включив это, вы позволяете другим пользователям находить ваш профиль в глобальной строке поиска и отправлять запросы на чат. В этот момент вы можете принять или отклонить запрос.",
   "errorDisableIT": "Помощь с переводом отключена.",
@@ -3714,9 +3905,6 @@
   "noPaymentInfo": "Информация о платеже не требуется!",
   "updatePhoneOS": "Возможно, потребуется обновить версию ОС вашего устройства.",
   "wordsPerMinute": "Слова в минуту",
-  "tooltipInstructionsTitle": "Не уверены, что это делает?",
-  "tooltipInstructionsMobileBody": "Нажмите и удерживайте элементы, чтобы просмотреть подсказки.",
-  "tooltipInstructionsBrowserBody": "Наведите курсор на элементы, чтобы просмотреть подсказки.",
   "chatCapacity": "Вместимость чата",
   "roomFull": "Эта комната уже заполнена.",
   "chatCapacityHasBeenChanged": "Вместимость чата изменена",
@@ -4308,7 +4496,7 @@
   "saveAndLaunch": "Сохранить и запустить",
   "launchToSpace": "Запустить в курс",
   "numberOfActivities": "Количество сессий активности",
-  "maximumActivityParticipants": "Каждая активность может иметь максимум {count} участник(ов).",
+  "maximumActivityParticipants": "Каждая активность может иметь максимум {count, plural, one{# участник} few{# участника} many{# участников} other{# участников}}.",
   "pending": "В ожидании",
   "inactive": "Неактивно",
   "confirmRole": "Подтвердить роль",
@@ -4397,9 +4585,6 @@
   "chooseLanguage": "Выберите целевой язык.",
   "planTrip": "Планите поездку",
   "howAreYouTraveling": "Как вы проезжаете?",
-  "unlockPrivateTrip": "Обекращиваете свой событие",
-  "joinPublicTrip": "Присоединяйте к опеденной проезде",
-  "startOwnTrip": "Начать свой собственный",
   "tripPlanDesc": "Поездки — это курсы. Каждый содержит 8-10 последовательных тем с разнообразными заданиями для изучения языка.",
   "unlockPrivateTripTitle": "Разблокировать личную поездку",
   "browsePublicTrips": "Просмотреть публичные поездки",
@@ -4427,189 +4612,6 @@
   "inviteYourFriends": "Пригласите своих друзей",
   "playWithAI": "Поиграть с ИИ пока что",
   "courseStartDesc": "Pangea Bot готов к работе в любое время!\n\n...но обучение лучше всего с друзьями!",
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notificationRuleInviteForMeDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleMemberEvent": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleIsUserMentionDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleContainsDisplayNameDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleIsRoomMentionDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleRoomnotif": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleRoomnotifDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleTombstone": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleTombstoneDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleRoomServerAcl": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleRoomServerAclDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleSuppressEdits": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleRoomOneToOneDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleMessageDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleEncryptedDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleJitsi": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleJitsiDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleServerAcl": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notificationRuleServerAclDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@unknownPushRule": {
-    "type": "String",
-    "placeholders": {
-      "rule": {
-        "type": "String"
-      }
-    }
-  },
-  "@sentVoiceMessage": {
-    "type": "String",
-    "placeholders": {
-      "duration": {
-        "type": "String"
-      },
-      "sender": {
-        "type": "String"
-      }
-    }
-  },
-  "@deletePushRuleCanNotBeUndone": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareKeysWith": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareKeysWithDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@crossVerifiedDevicesIfEnabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@crossVerifiedDevices": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@verifiedDevicesOnly": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@optionalMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notSupportedOnThisDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@approve": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@youHaveKnocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseWaitUntilInvited": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_logoutall": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4642,10 +4644,6 @@
     "placeholders": {}
   },
   "@itInstructionsTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@itInstructionsBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -4782,10 +4780,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -6289,18 +6283,6 @@
     "placeholders": {}
   },
   "@wordsPerMinute": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsMobileBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tooltipInstructionsBrowserBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -9183,18 +9165,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unlockPrivateTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@joinPublicTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startOwnTrip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tripPlanDesc": {
     "type": "String",
     "placeholders": {}
@@ -10826,8 +10796,6 @@
   "congratulations": "Поздравляем!",
   "anotherRound": "Еще один раунд",
   "noActivityRequest": "Нет текущего запроса на активность.",
-  "quit": "Выйти",
-  "congratulationsYouveCompletedPractice": "Поздравляем! Вы завершили практическую сессию.",
   "mustHave10Words": "Вы должны иметь как минимум 10 слов для практики. Попробуйте поговорить с другом или Pangea Bot, чтобы узнать больше!",
   "botSettings": "Настройки бота",
   "activitySettingsOverrideWarning": "Язык и уровень языка определяются планом активности",
@@ -10873,14 +10841,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10975,7 +10935,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "italicText": "Курсивный текст",
   "exampleSentence": "Пример предложения",
   "reportToTeacher": "Кому вы хотите пожаловаться на это сообщение?",
   "reportMessageTitle": "{reportingUserId} пожаловался на сообщение от {reportedUserId} в чате {roomName}",
@@ -10990,10 +10949,6 @@
   "enableTTSToolDescription": "Позволяет приложению генерировать озвучивание текста на вашем целевом языке.",
   "yourUsername": "Ваше имя пользователя",
   "yourEmail": "Ваш email",
-  "@italicText": {
-    "type": "String",
-    "placeholders": {}
-  },
   "joinSpaceOnboardingDesc": "У вас есть код приглашения или ссылка на публичный курс?",
   "welcomeUser": "Добро пожаловать {user}",
   "@joinSpaceOnboardingDesc": {
@@ -11078,6 +11033,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Обо мне",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Идиома",
   "grammarCopyPOSphrasalv": "Фразовый глагол",
   "grammarCopyPOScompn": "Составное",
@@ -11090,6 +11050,286 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Идеальная практика!",
+  "greatPractice": "Отличная практика!",
+  "usedNoHints": "Хорошая работа, что не использовали подсказки!",
+  "youveCompletedPractice": "Вы завершили практику, продолжайте в том же духе, чтобы стать лучше!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Сменить электронную почту",
+  "withTheseAddressesDescription": "С помощью этих адресов электронной почты вы можете войти в систему, восстановить пароль и управлять подписками.",
+  "noAddressDescription": "Вы еще не добавили ни одного адреса электронной почты.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Грамматика",
+  "spanTypeWordChoice": "Выбор слов",
+  "spanTypeSpelling": "Орфография",
+  "spanTypePunctuation": "Пунктуация",
+  "spanTypeStyle": "Стиль",
+  "spanTypeFluency": "Связность",
+  "spanTypeAccents": "Акценты",
+  "spanTypeCapitalization": "Капитализация",
+  "spanTypeCorrection": "Коррекция",
+  "spanFeedbackTitle": "Сообщить о проблеме с коррекцией",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noMoreResultsFound": "Больше результатов не найдено",
+  "chatSearchedUntil": "Чат искался до {time}",
+  "federationBaseUrl": "Базовый URL федерации",
+  "clientWellKnownInformation": "Известная информация клиента:",
+  "baseUrl": "Базовый URL",
+  "identityServer": "Сервер идентификации:",
+  "versionWithNumber": "Версия: {version}",
+  "logs": "Журналы",
+  "advancedConfigs": "Расширенные настройки",
+  "advancedConfigurations": "Расширенные конфигурации",
+  "signInWithLabel": "Войти с помощью:",
+  "selectAllWords": "Выберите все слова, которые вы слышите в аудио",
+  "joinCourseForActivities": "Присоединяйтесь к курсу, чтобы попробовать активности.",
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Курсы состоят из 3-8 модулей, каждый из которых включает в себя задания, чтобы поощрять практику слов в различных контекстах",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Ошибка проверки электронной почты. Пожалуйста, попробуйте снова.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Разблокировать инструменты обучения",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Мы запустили управление подписками в новой вкладке. Если вы не видите новую вкладку, пожалуйста, проверьте свой блокировщик всплывающих окон.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Разблокировать практические занятия",
+  "hideEvents": "Скрыть события",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Пользователь будет отклонен от курса, однако он может попытаться вернуться в любое время позже.",
+  "denyKnockChat": "Пользователь будет отклонен от чата, однако он может попытаться вернуться в любое время позже.",
+  "banFromSpace": "Запрет на участие в курсе",
+  "unbanFromSpace": "Разрешить участие в курсе",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Запрещено. Невозможно присоединиться.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Ваш запрос на присоединение был принят! Теперь вы можете войти в курс.",
+  "sessionFull": "Слишком поздно! Это занятие заполнено.",
+  "returnToCourse": "Вернуться к курсу",
+  "returnHome": "Вернуться на главную",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Обратная связь по переводу",
+  "userUpdatedLearningSettings": "{username} обновил настройки обучения",
+  "youUpdatedLearningSettings": "Вы обновили свои настройки обучения",
+  "userAddedActivityPlan": "{username} добавил план активности",
+  "youAddedActivityPlan": "Вы добавили план активности",
+  "userSentActivitySummary": "{username} отправил сводку активности",
+  "youSentActivitySummary": "Вы отправили сводку активности",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

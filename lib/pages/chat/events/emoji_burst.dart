@@ -22,10 +22,7 @@ class BurstPainter extends CustomPainter {
   final List<BurstParticle> particles;
   final double progress;
 
-  BurstPainter({
-    required this.particles,
-    required this.progress,
-  });
+  BurstPainter({required this.particles, required this.progress});
 
   @override
   void paint(Canvas canvas, Size size) {

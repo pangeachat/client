@@ -16,8 +16,9 @@ class ParticipantSummaryModel {
       participantId: json['participant_id'] as String,
       feedback: json['feedback'] as String,
       cefrLevel: json['cefr_level'] as String,
-      superlatives:
-          (json['superlatives'] as List).map((e) => e as String).toList(),
+      superlatives: (json['superlatives'] as List)
+          .map((e) => e as String)
+          .toList(),
     );
   }
 

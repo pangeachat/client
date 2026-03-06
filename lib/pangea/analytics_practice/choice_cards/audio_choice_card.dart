@@ -1,50 +1,75 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
-import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 
-/// Displays an audio button with a select label in a row layout
-/// TODO: needs a better design and button handling
+/// Choice card for audio activity with phonetic transcription above the word
 class AudioChoiceCard extends StatelessWidget {
-  final String text;
+  final String choiceId;
   final String targetId;
+  final String displayText;
+  final LanguageModel textLanguage;
   final VoidCallback onPressed;
   final bool isCorrect;
-  final double height;
   final bool isEnabled;
+  final bool showHint;
 
   const AudioChoiceCard({
-    required this.text,
+    required this.choiceId,
     required this.targetId,
+    required this.displayText,
+    required this.textLanguage,
     required this.onPressed,
     required this.isCorrect,
-    this.height = 72.0,
     this.isEnabled = true,
+    this.showHint = false,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return GameChoiceCard(
       shouldFlip: false,
       targetId: targetId,
       onPressed: onPressed,
       isCorrect: isCorrect,
-      height: height,
       isEnabled: isEnabled,
-      child: Row(
+      shrinkWrap: true,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: WordAudioButton(
-              text: text,
-              uniqueID: "vocab_practice_choice_$text",
-              langCode:
-                  MatrixState.pangeaController.userController.userL2!.langCode,
+          if (showHint)
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                PhoneticTranscriptionWidget(
+                  text: displayText,
+                  pos: 'other',
+                  textLanguage: textLanguage,
+                  textOnly: true,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    fontStyle: FontStyle.italic,
+                    color: theme.textTheme.bodySmall?.color?.withValues(
+                      alpha: 0.7,
+                    ),
+                    fontSize: 14,
+                  ),
+                  maxLines: 1,
+                ),
+                const SizedBox(height: 4),
+              ],
             ),
+          // Main word text
+          Text(
+            displayText,
+            style: theme.textTheme.titleMedium,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          Text(L10n.of(context).select),
         ],
       ),
     );

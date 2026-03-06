@@ -37,21 +37,21 @@ enum AnalyticsSummaryEnum {
   const AnalyticsSummaryEnum();
 
   static List<AnalyticsSummaryEnum> get vocabValues => [
-        lemma,
-        xp,
-        forms,
-        exampleMessages,
-        independentUseOccurrences,
-        assistedUseOccurrences,
-      ];
+    lemma,
+    xp,
+    forms,
+    exampleMessages,
+    independentUseOccurrences,
+    assistedUseOccurrences,
+  ];
 
   static List<AnalyticsSummaryEnum> get morphValues => [
-        morphFeature,
-        morphTag,
-        xp,
-        forms,
-        exampleMessages,
-        independentUseOccurrences,
-        assistedUseOccurrences,
-      ];
+    morphFeature,
+    morphTag,
+    xp,
+    forms,
+    exampleMessages,
+    independentUseOccurrences,
+    assistedUseOccurrences,
+  ];
 }

@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as webfile;
 
-import 'package:fluffychat/pages/chat/recording_dialog.dart';
+import 'package:fluffychat/pages/chat/recording_view_model.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
 
 class DownloadUtil {
@@ -19,8 +19,8 @@ class DownloadUtil {
     if (kIsWeb) {
       final blob = webfile.Blob([contents], fileType.mimetype, 'native');
       webfile.AnchorElement(
-        href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
-      )
+          href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
+        )
         ..setAttribute("download", filename)
         ..click();
       return;

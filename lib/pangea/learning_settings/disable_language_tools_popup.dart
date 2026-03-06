@@ -9,19 +9,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class DisableLanguageToolsPopup extends StatelessWidget {
   final String overlayId;
 
-  const DisableLanguageToolsPopup({
-    super.key,
-    required this.overlayId,
-  });
+  const DisableLanguageToolsPopup({super.key, required this.overlayId});
 
   Future<void> _disableLanguageTools() async {
-    await MatrixState.pangeaController.userController.updateProfile(
-      (profile) {
-        profile.toolSettings.autoIGC = false;
-        return profile;
-      },
-      waitForDataInSync: true,
-    );
+    await MatrixState.pangeaController.userController.updateProfile((profile) {
+      profile.toolSettings.autoIGC = false;
+      return profile;
+    }, waitForDataInSync: true);
   }
 
   @override
@@ -53,8 +47,9 @@ class DisableLanguageToolsPopup extends StatelessWidget {
                     MatrixState.pAnyState.closeOverlay(overlayId);
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primary.withAlpha(25),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primary.withAlpha(25),
                   ),
                   child: Text(L10n.of(context).confirm),
                 ),

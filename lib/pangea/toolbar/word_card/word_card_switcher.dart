@@ -13,7 +13,7 @@ class WordCardSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: controller.widget.overlayController.selectedMode,
-      builder: (context, mode, __) {
+      builder: (context, mode, _) {
         return AnimatedSize(
           alignment: controller.ownMessage
               ? Alignment.bottomRight
@@ -24,13 +24,13 @@ class WordCardSwitcher extends StatelessWidget {
                   overlayController: controller.widget.overlayController,
                 )
               : mode != SelectMode.emoji
-                  ? ValueListenableBuilder(
-                      valueListenable: controller.reactionNotifier,
-                      builder: (context, _, __) => MessageReactionPicker(
-                        chatController: controller.widget.chatController,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
+              ? ValueListenableBuilder(
+                  valueListenable: controller.reactionNotifier,
+                  builder: (context, _, _) => MessageReactionPicker(
+                    chatController: controller.widget.chatController,
+                  ),
+                )
+              : const SizedBox.shrink(),
         );
       },
     );

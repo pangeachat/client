@@ -37,8 +37,9 @@ class ToolbarButton extends StatelessWidget {
           color: color,
           onPressed: setMode,
           playSound: true,
-          colorFactor:
-              Theme.of(context).brightness == Brightness.light ? 0.55 : 0.3,
+          colorFactor: Theme.of(context).brightness == Brightness.light
+              ? 0.55
+              : 0.3,
           builder: (context, depressed, shadowColor) => Stack(
             alignment: Alignment.center,
             children: [
@@ -53,10 +54,9 @@ class ToolbarButton extends StatelessWidget {
               if (shimmer)
                 Shimmer.fromColors(
                   baseColor: Colors.transparent,
-                  highlightColor: Theme.of(context)
-                      .colorScheme
-                      .primaryContainer
-                      .withAlpha(0xAA),
+                  highlightColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer.withAlpha(0xAA),
                   child: Container(
                     height: 40.0,
                     width: 40.0,
@@ -66,10 +66,7 @@ class ToolbarButton extends StatelessWidget {
                     ),
                   ),
                 ),
-              Icon(
-                mode.icon,
-                size: 20,
-              ),
+              Icon(mode.icon, size: 20),
             ],
           ),
         ),

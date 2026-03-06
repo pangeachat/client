@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/device_settings/device_settings.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'user_device_list_item.dart';
 
@@ -27,10 +28,13 @@ class DevicesSettingsView extends StatelessWidget {
             if (snapshot.hasError) {
               return Center(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: <Widget>[
                     const Icon(Icons.error_outlined),
-                    Text(snapshot.error.toString()),
+                    // #Pangea
+                    // Text(snapshot.error.toString()),
+                    Text(snapshot.error!.toLocalizedString(context)),
+                    // Pangea#
                   ],
                 ),
               );
@@ -47,7 +51,7 @@ class DevicesSettingsView extends StatelessWidget {
               itemBuilder: (BuildContext context, int i) {
                 if (i == 0) {
                   return Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       if (controller.chatBackupEnabled == false)
                         Padding(
@@ -57,8 +61,9 @@ class DevicesSettingsView extends StatelessWidget {
                               child: Icon(Icons.info_outlined),
                             ),
                             subtitle: Text(
-                              L10n.of(context)
-                                  .noticeChatBackupDeviceVerification,
+                              L10n.of(
+                                context,
+                              ).noticeChatBackupDeviceVerification,
                             ),
                           ),
                         ),

@@ -16,10 +16,7 @@ import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class SpaceAnalyticsView extends StatelessWidget {
   final SpaceAnalyticsState controller;
-  const SpaceAnalyticsView({
-    super.key,
-    required this.controller,
-  });
+  const SpaceAnalyticsView({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +70,9 @@ class SpaceAnalyticsView extends StatelessWidget {
                     children: [
                       if (controller.lastUpdatedString != null)
                         Text(
-                          L10n.of(context).lastUpdated(
-                            controller.lastUpdatedString!,
-                          ),
+                          L10n.of(
+                            context,
+                          ).lastUpdated(controller.lastUpdatedString!),
                           textAlign: TextAlign.end,
                           style: TextStyle(
                             fontSize: !mini ? 12.0 : 8.0,
@@ -107,9 +104,9 @@ class SpaceAnalyticsView extends StatelessWidget {
                                   Text(
                                     mini
                                         ? controller.selectedLanguage!.langCode
-                                            .toUpperCase()
+                                              .toUpperCase()
                                         : controller.selectedLanguage!
-                                            .getDisplayName(context),
+                                              .getDisplayName(context),
                                     style: TextStyle(
                                       color:
                                           theme.colorScheme.onPrimaryContainer,
@@ -194,98 +191,95 @@ class SpaceAnalyticsView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        ...controller.sortedDownloads.mapIndexed(
-                          (index, entry) {
-                            final download = entry.value;
-                            return TableRow(
-                              children: [
-                                TableCell(
-                                  child: Opacity(
-                                    opacity: download.requestStatus.opacity,
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: !mini ? 12.0 : 4.0,
-                                      ),
-                                      child: Row(
-                                        spacing: !mini ? 16.0 : 8.0,
-                                        children: [
-                                          Avatar(
-                                            size: !mini ? 64.0 : 40.0,
-                                            mxContent: entry.key.avatarUrl,
-                                            name: entry.key.calcDisplayname(),
-                                            userId: entry.key.id,
-                                            presenceUserId: entry.key.id,
+                        ...controller.sortedDownloads.mapIndexed((
+                          index,
+                          entry,
+                        ) {
+                          final download = entry.value;
+                          return TableRow(
+                            children: [
+                              TableCell(
+                                child: Opacity(
+                                  opacity: download.requestStatus.opacity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: !mini ? 12.0 : 4.0,
+                                    ),
+                                    child: Row(
+                                      spacing: !mini ? 16.0 : 8.0,
+                                      children: [
+                                        Avatar(
+                                          size: !mini ? 64.0 : 40.0,
+                                          mxContent: entry.key.avatarUrl,
+                                          name: entry.key.calcDisplayname(),
+                                          userId: entry.key.id,
+                                          presenceUserId: entry.key.id,
+                                        ),
+                                        Flexible(
+                                          child: Column(
+                                            spacing: 4.0,
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: index == 0 ? 8.0 : 0.0,
+                                              ),
+                                              Text(
+                                                entry.key.id,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontSize: !mini ? 16.0 : 12.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              _RequestButton(
+                                                status: download.requestStatus,
+                                                onPressed: () =>
+                                                    controller.requestAnalytics(
+                                                      entry.key,
+                                                    ),
+                                                mini: mini,
+                                              ),
+                                              const SizedBox(height: 8.0),
+                                            ],
                                           ),
-                                          Flexible(
-                                            child: Column(
-                                              spacing: 4.0,
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  height:
-                                                      index == 0 ? 8.0 : 0.0,
-                                                ),
-                                                Text(
-                                                  entry.key.id,
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        !mini ? 16.0 : 12.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                _RequestButton(
-                                                  status:
-                                                      download.requestStatus,
-                                                  onPressed: () => controller
-                                                      .requestAnalytics(
-                                                    entry.key,
-                                                  ),
-                                                  mini: mini,
-                                                ),
-                                                const SizedBox(height: 8.0),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                _TableContentCell(
-                                  text: download.summary?.level?.toString(),
-                                  downloadStatus: download.downloadStatus,
-                                  requestStatus: download.requestStatus,
-                                  mini: mini,
-                                ),
-                                _TableContentCell(
-                                  text: download.summary?.numLemmas.toString(),
-                                  downloadStatus: download.downloadStatus,
-                                  requestStatus: download.requestStatus,
-                                  mini: mini,
-                                ),
-                                _TableContentCell(
-                                  text: download.summary?.numMorphConstructs
-                                      .toString(),
-                                  downloadStatus: download.downloadStatus,
-                                  requestStatus: download.requestStatus,
-                                  mini: mini,
-                                ),
-                                _TableContentCell(
-                                  text: download.summary?.numCompletedActivities
-                                      .toString(),
-                                  downloadStatus: download.downloadStatus,
-                                  requestStatus: download.requestStatus,
-                                  mini: mini,
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                              _TableContentCell(
+                                text: download.summary?.level?.toString(),
+                                downloadStatus: download.downloadStatus,
+                                requestStatus: download.requestStatus,
+                                mini: mini,
+                              ),
+                              _TableContentCell(
+                                text: download.summary?.numLemmas.toString(),
+                                downloadStatus: download.downloadStatus,
+                                requestStatus: download.requestStatus,
+                                mini: mini,
+                              ),
+                              _TableContentCell(
+                                text: download.summary?.numMorphConstructs
+                                    .toString(),
+                                downloadStatus: download.downloadStatus,
+                                requestStatus: download.requestStatus,
+                                mini: mini,
+                              ),
+                              _TableContentCell(
+                                text: download.summary?.numCompletedActivities
+                                    .toString(),
+                                downloadStatus: download.downloadStatus,
+                                requestStatus: download.requestStatus,
+                                mini: mini,
+                              ),
+                            ],
+                          );
+                        }),
                       ],
                     )
                   : const CircularProgressIndicator.adaptive(),
@@ -392,22 +386,14 @@ class _TableHeaderCell extends StatelessWidget {
       child: Tooltip(
         message: text,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 6.0,
-            horizontal: 8.0,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
           child: Column(
             spacing: 10.0,
             children: [
               Icon(icon, size: 22.0),
               mini
                   ? const SizedBox.shrink()
-                  : Text(
-                      text,
-                      style: const TextStyle(
-                        fontSize: 12.0,
-                      ),
-                    ),
+                  : Text(text, style: const TextStyle(fontSize: 12.0)),
             ],
           ),
         ),
@@ -432,10 +418,7 @@ class _TableContentCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (downloadStatus != DownloadStatus.complete) {
-      return _MissingContentCell(
-        downloadStatus,
-        requestStatus,
-      );
+      return _MissingContentCell(downloadStatus, requestStatus);
     }
 
     return TableCell(
@@ -461,10 +444,7 @@ class _MissingContentCell extends StatelessWidget {
   final DownloadStatus status;
   final RequestStatus requestStatus;
 
-  const _MissingContentCell(
-    this.status,
-    this.requestStatus,
-  );
+  const _MissingContentCell(this.status, this.requestStatus);
 
   @override
   Widget build(BuildContext context) {
@@ -530,10 +510,7 @@ class _RequestButton extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (status.icon != null)
-                      Icon(
-                        status.icon,
-                        size: !mini ? 12.0 : 8.0,
-                      ),
+                      Icon(status.icon, size: !mini ? 12.0 : 8.0),
                     Text(
                       status.label(context),
                       style: TextStyle(fontSize: !mini ? 12.0 : 8.0),

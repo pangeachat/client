@@ -13,8 +13,10 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/public_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
 
@@ -36,14 +38,14 @@ class LanguageUpdate {
 class UserController {
   final StreamController<LanguageUpdate> languageStream =
       StreamController.broadcast();
-  final StreamController settingsUpdateStream =
-      StreamController<Profile>.broadcast();
+  final StreamController<Profile> settingsUpdateStream =
+      StreamController.broadcast();
 
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
 
-  AnalyticsProfileModel? analyticsProfile;
+  PublicProfileModel? publicProfile;
 
   /// Listens for account updates and updates the cached profile
   StreamSubscription? _profileListener;
@@ -51,10 +53,40 @@ class UserController {
   matrix.Client get client => MatrixState.pangeaController.matrixState.client;
 
   void _onProfileUpdate(matrix.SyncUpdate sync) {
+    final prevTargetLang = userL2;
+    final prevBaseLang = userL1;
+
     final profileData = client.accountData[ModelKey.userProfile]?.content;
     final Profile? fromAccountData = Profile.fromAccountData(profileData);
-    if (fromAccountData != null) {
+    if (fromAccountData != null && fromAccountData != _cachedProfile) {
       _cachedProfile = fromAccountData;
+
+      if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
+        if (userL1 == null || userL2 == null) {
+          // if either language is null, then we want to send a settings update instead of a language update
+          ErrorHandler.logError(
+            e: "One of the user languages is null. Sending settings update instead of language update.",
+            data: {
+              'prevBaseLang': prevBaseLang?.langCode,
+              'prevTargetLang': prevTargetLang?.langCode,
+              'userL1': userL1?.langCode,
+              'userL2': userL2?.langCode,
+            },
+          );
+          settingsUpdateStream.add(fromAccountData);
+          return;
+        }
+        languageStream.add(
+          LanguageUpdate(
+            baseLang: userL1!,
+            targetLang: userL2!,
+            prevBaseLang: prevBaseLang,
+            prevTargetLang: prevTargetLang,
+          ),
+        );
+      } else {
+        settingsUpdateStream.add(fromAccountData);
+      }
     }
   }
 
@@ -91,30 +123,29 @@ class UserController {
     waitForDataInSync = false,
   }) async {
     await initialize();
-    final prevTargetLang = userL2;
-    final prevBaseLang = userL1;
     final prevHash = profile.hashCode;
 
-    final Profile updatedProfile = update(profile);
+    final Profile updatedProfile = update(profile.copy());
+
+    final sourceCodeShort = updatedProfile.userSettings.sourceLanguage
+        ?.split("-")
+        .first;
+    final targetCodeShort = updatedProfile.userSettings.targetLanguage
+        ?.split("-")
+        .first;
+
+    if (sourceCodeShort != null &&
+        targetCodeShort != null &&
+        sourceCodeShort == targetCodeShort) {
+      throw IdenticalLanguageException();
+    }
+
     if (updatedProfile.hashCode == prevHash) {
       // no changes were made, so don't save
       return;
     }
 
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
-
-    if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
-      languageStream.add(
-        LanguageUpdate(
-          baseLang: userL1!,
-          targetLang: userL2!,
-          prevBaseLang: prevBaseLang,
-          prevTargetLang: prevTargetLang,
-        ),
-      );
-    } else {
-      settingsUpdateStream.add(updatedProfile);
-    }
   }
 
   /// A completer for the profile model of a user.
@@ -147,11 +178,7 @@ class UserController {
         await PLanguageStore.initialize(forceRefresh: true);
       }
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
     } finally {
       if (!initCompleter.isCompleted) {
         initCompleter.complete();
@@ -174,22 +201,24 @@ class UserController {
     if (client.userID == null) return;
     try {
       final resp = await client.getUserProfile(client.userID!);
-      analyticsProfile =
-          AnalyticsProfileModel.fromJson(resp.additionalProperties);
+      publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
-      analyticsProfile = AnalyticsProfileModel();
+      publicProfile = PublicProfileModel(analytics: AnalyticsProfileModel());
     }
+
+    await updatePublicProfile();
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
     // finish initializing, so this would cause a deadlock.
-    if (analyticsProfile!.isEmpty) {
+    final l2 = userL2;
+    if (publicProfile!.analytics.isEmpty && l2 != null) {
       final analyticsService =
           MatrixState.pangeaController.matrixState.analyticsDataService;
 
-      final data = await analyticsService.derivedData;
+      final data = await analyticsService.derivedData(l2.langCodeShort);
       updateAnalyticsProfile(level: data.level);
     }
   }
@@ -226,11 +255,7 @@ class UserController {
       await initialize();
       return profile.userSettings.targetLanguage != null;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -260,8 +285,8 @@ class UserController {
   ///   - The user's email address as a [String], or `null` if no email address
   ///     is found.
   Future<String?> get userEmail async {
-    final List<matrix.ThirdPartyIdentifier>? identifiers =
-        await client.getAccount3PIDs();
+    final List<matrix.ThirdPartyIdentifier>? identifiers = await client
+        .getAccount3PIDs();
     final matrix.ThirdPartyIdentifier? email = identifiers?.firstWhereOrNull(
       (identifier) =>
           identifier.medium == matrix.ThirdPartyIdentifierMedium.email,
@@ -272,12 +297,17 @@ class UserController {
   Future<void> _savePublicProfileUpdate(
     String type,
     Map<String, dynamic> content,
-  ) async =>
-      client.setUserProfile(
-        client.userID!,
-        type,
-        content,
+  ) async {
+    try {
+      await client.setUserProfile(client.userID!, type, content);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'type': type, 'content': content},
       );
+    }
+  }
 
   Future<void> updateAnalyticsProfile({
     required int level,
@@ -286,81 +316,102 @@ class UserController {
   }) async {
     targetLanguage ??= userL2;
     baseLanguage ??= userL1;
-    if (targetLanguage == null || analyticsProfile == null) return;
+    if (targetLanguage == null || publicProfile == null) return;
 
     final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
 
-    if (analyticsProfile!.targetLanguage == targetLanguage &&
-        analyticsProfile!.baseLanguage == baseLanguage &&
-        analyticsProfile!.languageAnalytics?[targetLanguage]?.level == level &&
-        analyticsProfile!.analyticsRoomIdByLanguage(targetLanguage) ==
+    if (publicProfile!.analytics.targetLanguage == targetLanguage &&
+        publicProfile!.analytics.baseLanguage == baseLanguage &&
+        publicProfile!.analytics.languageAnalytics?[targetLanguage]?.level ==
+            level &&
+        publicProfile!.analytics.analyticsRoomIdByLanguage(targetLanguage) ==
             analyticsRoom?.id) {
       return;
     }
 
-    analyticsProfile!.baseLanguage = baseLanguage;
-    analyticsProfile!.targetLanguage = targetLanguage;
-    analyticsProfile!.setLanguageInfo(
+    publicProfile!.analytics.baseLanguage = baseLanguage;
+    publicProfile!.analytics.targetLanguage = targetLanguage;
+    publicProfile!.analytics.setLanguageInfo(
       targetLanguage,
       level,
       analyticsRoom?.id,
     );
+
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
     );
   }
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
-    if (analyticsProfile?.languageAnalytics == null) return;
+    if (publicProfile?.analytics.languageAnalytics == null) return;
     final analyticsRooms = client.allMyAnalyticsRooms;
 
     if (analyticsRooms.isEmpty) return;
     for (final analyticsRoom in analyticsRooms) {
       final lang = analyticsRoom.madeForLang?.split("-").first;
-      if (lang == null || analyticsProfile?.languageAnalytics == null) continue;
-      final langKey =
-          analyticsProfile!.languageAnalytics!.keys.firstWhereOrNull(
-        (l) => l.langCodeShort == lang,
-      );
+      if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
+        continue;
+      }
+      final langKey = publicProfile!.analytics.languageAnalytics!.keys
+          .firstWhereOrNull((l) => l.langCodeShort == lang);
 
       if (langKey == null) continue;
-      if (analyticsProfile!.languageAnalytics![langKey]!.analyticsRoomId ==
+      if (publicProfile!
+              .analytics
+              .languageAnalytics![langKey]!
+              .analyticsRoomId ==
           analyticsRoom.id) {
         continue;
       }
 
-      analyticsProfile!.setLanguageInfo(
+      publicProfile!.analytics.setLanguageInfo(
         langKey,
-        analyticsProfile!.languageAnalytics![langKey]!.level,
+        publicProfile!.analytics.languageAnalytics![langKey]!.level,
         analyticsRoom.id,
       );
     }
 
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
     );
   }
 
   Future<void> addXPOffset(int offset) async {
     final targetLanguage = userL2;
-    if (targetLanguage == null || analyticsProfile == null) return;
+    if (targetLanguage == null || publicProfile == null) return;
 
-    analyticsProfile!.addXPOffset(
+    publicProfile!.analytics.addXPOffset(
       targetLanguage,
       offset,
       client.analyticsRoomLocal(targetLanguage)?.id,
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
-      analyticsProfile!.toJson(),
+      publicProfile!.toJson(),
     );
   }
 
-  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
-    String userId,
-  ) async {
+  Future<void> updatePublicProfile() async {
+    if (publicProfile == null ||
+        (publicProfile!.country == profile.userSettings.country &&
+            publicProfile!.about == profile.userSettings.about)) {
+      return;
+    }
+
+    publicProfile = publicProfile!.copyWith(
+      country: profile.userSettings.country,
+      about: profile.userSettings.about,
+    );
+
+    await _savePublicProfileUpdate(
+      PangeaEventTypes.profileAnalytics,
+      publicProfile!.toJson(),
+    );
+  }
+
+  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(String userId) async {
     try {
       if (userId == BotName.byEnvironment) {
         return AnalyticsProfileModel();
@@ -369,14 +420,22 @@ class UserController {
       final resp = await client.getUserProfile(userId);
       return AnalyticsProfileModel.fromJson(resp.additionalProperties);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          userId: userId,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
       return AnalyticsProfileModel();
+    }
+  }
+
+  Future<PublicProfileModel?> getPublicProfile(String userId) async {
+    try {
+      if (userId == BotName.byEnvironment) {
+        return PublicProfileModel(analytics: AnalyticsProfileModel());
+      }
+
+      final resp = await client.getUserProfile(userId);
+      return PublicProfileModel.fromJson(resp.additionalProperties);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
+      return null;
     }
   }
 
@@ -441,8 +500,5 @@ class UserController {
       userL1Code != LanguageKeys.unknownLanguage &&
       userL2Code != LanguageKeys.unknownLanguage;
 
-  bool get showTranscription =>
-      (userL1 != null && userL2 != null && userL1?.script != userL2?.script) ||
-      (userL1?.script != LanguageKeys.unknownLanguage ||
-          userL2?.script == LanguageKeys.unknownLanguage);
+  bool get showTranscription => true;
 }

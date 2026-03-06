@@ -20,18 +20,12 @@ extension SpacesClientExtension on Client {
       topic: topic?.trim(),
       powerLevelContentOverride: {'events_default': 100},
       initialState: [
-        RoomDefaults.defaultSpacePowerLevels(
-          userID!,
-          spaceChild: spaceChild,
-        ),
+        RoomDefaults.defaultSpacePowerLevels(userID!, spaceChild: spaceChild),
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),
         if (avatarUrl != null)
-          StateEvent(
-            type: EventTypes.RoomAvatar,
-            content: {'url': avatarUrl},
-          ),
+          StateEvent(type: EventTypes.RoomAvatar, content: {'url': avatarUrl}),
         if (initialState != null) ...initialState,
       ],
     );

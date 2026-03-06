@@ -12,11 +12,14 @@ final MorphFeaturesAndTags defaultMorphMapping = MorphFeaturesAndTags.fromJson({
         "AFFIX",
         "AUX",
         "CCONJ",
+        "COMPN",
         "DET",
+        "IDIOM",
         "INTJ",
         "NOUN",
         "NUM",
         "PART",
+        "PHRASALV",
         "PRON",
         "PUNCT",
         "SCONJ",
@@ -228,7 +231,7 @@ final MorphFeaturesAndTags defaultMorphMapping = MorphFeaturesAndTags.fromJson({
     {
       "feature": "x",
       "tag": ["X"],
-    }
+    },
   ],
 });
 

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -17,11 +18,7 @@ class MessageAudioCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
   final VoidCallback? onError;
 
-  const MessageAudioCard({
-    super.key,
-    required this.messageEvent,
-    this.onError,
-  });
+  const MessageAudioCard({super.key, required this.messageEvent, this.onError});
 
   @override
   MessageAudioCardState createState() => MessageAudioCardState();
@@ -72,20 +69,20 @@ class MessageAudioCardState extends State<MessageAudioCard> {
       child: _isLoading
           ? const TextLoadingShimmer(width: 200)
           : audioFile != null
-              ? AudioPlayerWidget(
-                  null,
-                  eventId: "${widget.messageEvent.eventId}_practice",
-                  roomId: widget.messageEvent.room.id,
-                  senderId: widget.messageEvent.senderId,
-                  matrixFile: audioFile,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  fontSize:
-                      AppConfig.messageFontSize * AppConfig.fontSizeFactor,
-                  linkColor: Theme.of(context).brightness == Brightness.light
-                      ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.onPrimary,
-                )
-              : const SizedBox(),
+          ? AudioPlayerWidget(
+              null,
+              eventId: "${widget.messageEvent.eventId}_practice",
+              roomId: widget.messageEvent.room.id,
+              senderId: widget.messageEvent.senderId,
+              matrixFile: audioFile,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              fontSize:
+                  AppConfig.messageFontSize * AppSettings.fontSizeFactor.value,
+              linkColor: Theme.of(context).brightness == Brightness.light
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.onPrimary,
+            )
+          : const SizedBox(),
     );
   }
 }

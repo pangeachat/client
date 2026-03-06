@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/choreographer/choreo_edit_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-import 'it/completed_it_step_model.dart';
+import 'completed_it_step_model.dart';
 
 /// this class lives within a [PangeaIGCEvent]
 /// it always has a [RepresentationEvent] parent
@@ -96,11 +96,7 @@ class ChoreoRecordModel {
           length = textBefore.length - offset;
         }
 
-        textAfter = textBefore.replaceRange(
-          offset,
-          offset + length,
-          insert,
-        );
+        textAfter = textBefore.replaceRange(offset, offset + length, insert);
 
         final edits = ChoreoEditModel.fromText(
           originalText: currentEdit,
@@ -143,26 +139,27 @@ class ChoreoRecordModel {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_stepsKey] = jsonEncode(choreoSteps.map((e) => e.toJson()).toList());
-    data[_openMatchesKey] =
-        jsonEncode(openMatches.map((e) => e.toJson()).toList());
+    data[_openMatchesKey] = jsonEncode(
+      openMatches.map((e) => e.toJson()).toList(),
+    );
     data[_originalTextKey] = originalText;
     return data;
   }
 
   bool get includedIT => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatusEnum.accepted &&
-            (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
-      });
+    return step.acceptedOrIgnoredMatch?.status ==
+            PangeaMatchStatusEnum.accepted &&
+        (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
+  });
 
   bool get includedIGC => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatusEnum.accepted &&
-            (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
-      });
+    return step.acceptedOrIgnoredMatch?.status ==
+            PangeaMatchStatusEnum.accepted &&
+        (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
+  });
 
   bool endedWithIT(String sent) {
-    return includedIT && stepText() == sent;
+    return includedIT && !includedIGC && stepText() == sent;
   }
 
   /// Get the text at [stepIndex]
@@ -303,6 +300,14 @@ class ChoreoRecordStepModel {
         ?.map((e) => e.value)
         .toList()
         .cast<String>();
+  }
+
+  String? get selectedChoice {
+    if (itStep != null) {
+      return itStep!.chosenContinuance?.text;
+    }
+
+    return acceptedOrIgnoredMatch?.match.selectedChoice?.value;
   }
 }
 

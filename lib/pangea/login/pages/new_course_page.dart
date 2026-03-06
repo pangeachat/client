@@ -46,16 +46,18 @@ class NewCoursePageState extends State<NewCoursePage> {
   final ValueNotifier<Result<GetLocalizedCoursesResponse>?> _courses =
       ValueNotifier(null);
 
-  final ValueNotifier<LanguageModel?> _targetLanguageFilter =
-      ValueNotifier(null);
+  final ValueNotifier<LanguageModel?> _targetLanguageFilter = ValueNotifier(
+    null,
+  );
 
   @override
   void initState() {
     super.initState();
 
     if (widget.initialLanguageCode != null) {
-      _targetLanguageFilter.value =
-          PLanguageStore.byLangCode(widget.initialLanguageCode!);
+      _targetLanguageFilter.value = PLanguageStore.byLangCode(
+        widget.initialLanguageCode!,
+      );
     }
 
     if (_targetLanguageFilter.value == null) {
@@ -74,9 +76,7 @@ class NewCoursePageState extends State<NewCoursePage> {
   }
 
   CourseFilter get _filter {
-    return CourseFilter(
-      targetLanguage: _targetLanguageFilter.value,
-    );
+    return CourseFilter(targetLanguage: _targetLanguageFilter.value);
   }
 
   void _setTargetLanguageFilter(LanguageModel? language) {
@@ -96,26 +96,19 @@ class NewCoursePageState extends State<NewCoursePage> {
       if (resp.coursePlans.isEmpty) {
         ErrorHandler.logError(
           e: "No courses found",
-          data: {
-            'filter': _filter.toJson(),
-          },
+          data: {'filter': _filter.toJson()},
         );
       }
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'filter': _filter.toJson(),
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'filter': _filter.toJson()});
       _courses.value = Result.error(e);
     }
   }
 
   Future<void> _onSelect(CoursePlanModel course) async {
-    final existingRoom =
-        Matrix.of(context).client.getRoomByCourseId(course.uuid);
+    final existingRoom = Matrix.of(
+      context,
+    ).client.getRoomByCourseId(course.uuid);
 
     if (existingRoom == null || widget.spaceId != null) {
       context.go(
@@ -132,12 +125,7 @@ class NewCoursePageState extends State<NewCoursePage> {
       builder: (context) => AlertDialog.adaptive(
         title: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 256),
-          child: Center(
-            child: Text(
-              course.title,
-              textAlign: TextAlign.center,
-            ),
-          ),
+          child: Center(child: Text(course.title, textAlign: TextAlign.center)),
         ),
         content: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
@@ -155,16 +143,12 @@ class NewCoursePageState extends State<NewCoursePage> {
           AdaptiveDialogAction(
             onPressed: () => Navigator.of(context).pop(1),
             bigButtons: true,
-            child: Text(
-              L10n.of(context).goToExistingCourse,
-            ),
+            child: Text(L10n.of(context).goToExistingCourse),
           ),
           AdaptiveDialogAction(
             onPressed: () => Navigator.of(context).pop(null),
             bigButtons: true,
-            child: Text(
-              L10n.of(context).cancel,
-            ),
+            child: Text(L10n.of(context).cancel),
           ),
         ],
       ),
@@ -182,10 +166,7 @@ class NewCoursePageState extends State<NewCoursePage> {
       } else {
         ErrorHandler.logError(
           e: "Existing course room is not a space",
-          data: {
-            'roomId': existingRoom.id,
-            'courseId': course.uuid,
-          },
+          data: {'roomId': existingRoom.id, 'courseId': course.uuid},
         );
         context.go('/rooms/${existingRoom.id}');
       }
@@ -208,9 +189,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         child: Center(
           child: Container(
             padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(
-              maxWidth: 450,
-            ),
+            constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
               children: [
                 if (widget.showFilters) ...[
@@ -224,7 +203,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                           children: [
                             ValueListenableBuilder(
                               valueListenable: _targetLanguageFilter,
-                              builder: (context, value, __) {
+                              builder: (context, value, _) {
                                 return CourseLanguageFilter(
                                   value: _targetLanguageFilter.value,
                                   onChanged: _setTargetLanguageFilter,
@@ -240,7 +219,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                 ],
                 ValueListenableBuilder(
                   valueListenable: _courses,
-                  builder: (context, value, __) {
+                  builder: (context, value, _) {
                     final loading = value == null;
                     if (loading ||
                         value.isError ||
@@ -264,22 +243,20 @@ class NewCoursePageState extends State<NewCoursePage> {
                                         style: theme.textTheme.bodyLarge,
                                       ),
                                       ElevatedButton(
-                                        onPressed: () => context.go(
-                                          '/rooms',
-                                        ),
+                                        onPressed: () => context.go('/rooms'),
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: theme
-                                              .colorScheme.primaryContainer,
+                                              .colorScheme
+                                              .primaryContainer,
                                           foregroundColor: theme
-                                              .colorScheme.onPrimaryContainer,
+                                              .colorScheme
+                                              .onPrimaryContainer,
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Text(
-                                              L10n.of(context).continueText,
-                                            ),
+                                            Text(L10n.of(context).continueText),
                                           ],
                                         ),
                                       ),
@@ -330,8 +307,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                                         ImageByUrl(
                                           imageUrl: course.imageUrl,
                                           width: 58.0,
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
+                                          borderRadius: BorderRadius.circular(
+                                            10.0,
+                                          ),
                                           replacement: Avatar(
                                             name: course.title,
                                             borderRadius: BorderRadius.circular(

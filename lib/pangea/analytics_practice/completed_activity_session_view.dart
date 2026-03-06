@@ -6,7 +6,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/percent_marker_bar.dart';
 import 'package:fluffychat/pangea/analytics_practice/stat_card.dart';
@@ -16,10 +15,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class CompletedActivitySessionView extends StatelessWidget {
   final AnalyticsPracticeSessionModel session;
-  final AnalyticsPracticeState controller;
-  const CompletedActivitySessionView(
-    this.session,
-    this.controller, {
+  final VoidCallback launchSession;
+  final Future<double> levelProgress;
+
+  const CompletedActivitySessionView({
+    required this.session,
+    required this.launchSession,
+    required this.levelProgress,
     super.key,
   });
 
@@ -47,10 +49,10 @@ class CompletedActivitySessionView extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                L10n.of(context).congratulationsYouveCompletedPractice,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                session.getCompletionMessage(context),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               Expanded(
@@ -81,26 +83,24 @@ class CompletedActivitySessionView extends StatelessWidget {
                             bottom: 16.0,
                           ),
                           child: FutureBuilder(
-                            future: controller.derivedAnalyticsData,
+                            future: levelProgress,
                             builder: (context, snapshot) => AnimatedProgressBar(
                               height: 20.0,
-                              widthPercent: snapshot.hasData
-                                  ? snapshot.data!.levelProgress
-                                  : 0.0,
-                              backgroundColor: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainerHighest,
+                              widthPercent: snapshot.data ?? 0.0,
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest,
                               duration: const Duration(milliseconds: 500),
                             ),
                           ),
                         ),
                         Text(
                           "+ ${session.state.allXPGained} XP",
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: AppConfig.goldLight,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                color: AppConfig.goldLight,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ],
                     ),
@@ -115,14 +115,14 @@ class CompletedActivitySessionView extends StatelessWidget {
                         markerWidth: 20.0,
                         markerColor: AppConfig.success,
                         backgroundColor: !accuracyAchievement
-                            ? Theme.of(context)
-                                .colorScheme
-                                .surfaceContainerHighest
+                            ? Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest
                             : Color.alphaBlend(
                                 AppConfig.goldLight.withValues(alpha: 0.3),
-                                Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
+                                Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
                               ),
                       ),
                     ),
@@ -132,9 +132,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
                       isAchievement: timeAchievement,
                       achievementText: "+ ${session.state.timeBonusXP} XP",
-                      child: TimeStarsWidget(
-                        elapsedSeconds: elapsedSeconds,
-                      ),
+                      child: TimeStarsWidget(elapsedSeconds: elapsedSeconds),
                     ),
                     Column(
                       children: [
@@ -146,14 +144,10 @@ class CompletedActivitySessionView extends StatelessWidget {
                               vertical: 8.0,
                             ),
                           ),
-                          onPressed: () => controller.reloadSession(),
+                          onPressed: launchSession,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                L10n.of(context).anotherRound,
-                              ),
-                            ],
+                            children: [Text(L10n.of(context).anotherRound)],
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -169,11 +163,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                L10n.of(context).quit,
-                              ),
-                            ],
+                            children: [Text(L10n.of(context).done)],
                           ),
                         ),
                       ],
@@ -196,10 +186,7 @@ class CompletedActivitySessionView extends StatelessWidget {
 class TimeStarsWidget extends StatelessWidget {
   final int elapsedSeconds;
 
-  const TimeStarsWidget({
-    required this.elapsedSeconds,
-    super.key,
-  });
+  const TimeStarsWidget({required this.elapsedSeconds, super.key});
 
   int get starCount {
     const timeForBonus = AnalyticsPracticeConstants.timeForBonus;

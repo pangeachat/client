@@ -44,10 +44,7 @@ class ContentFeedbackModel {
   final String feedback;
   final ActivitySummaryResponseModel content;
 
-  ContentFeedbackModel({
-    required this.feedback,
-    required this.content,
-  });
+  ContentFeedbackModel({required this.feedback, required this.content});
 
   factory ContentFeedbackModel.fromJson(Map<String, dynamic> json) {
     return ContentFeedbackModel(
@@ -57,10 +54,7 @@ class ContentFeedbackModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'feedback': feedback,
-      'content': content.toJson(),
-    };
+    return {'feedback': feedback, 'content': content.toJson()};
   }
 }
 

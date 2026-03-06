@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-05 10:09:36.127342",
+  "@@last_modified": "2026-03-03 11:16:40.704501",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -1361,7 +1361,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "pin": "Klammerda",
+  "pin": "Tõsta esile",
   "@pin": {
     "type": "String",
     "placeholders": {}
@@ -1874,7 +1874,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "unpin": "Eemalda klammerdus",
+  "unpin": "Eemalda esiletõstmine",
   "@unpin": {
     "type": "String",
     "placeholders": {}
@@ -2052,7 +2052,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "writeAMessage": "Kirjuta üks sõnum…",
+  "writeAMessage": "Koosta sõnum…",
   "@writeAMessage": {
     "type": "String",
     "placeholders": {}
@@ -2185,9 +2185,9 @@
   "@unsupportedAndroidVersion": {},
   "voiceCall": "Häälkõne",
   "@voiceCall": {},
-  "confirmEventUnpin": "Kas sa oled kindel, et tahad klammerdatud sündmuse eemaldada?",
+  "confirmEventUnpin": "Kas sa oled kindel, et tahad esiletõstetud sündmuse jäädavalt eemaldada?",
   "@confirmEventUnpin": {},
-  "pinMessage": "Klammerda sõnum jututuppa",
+  "pinMessage": "Tõsta sõnum jututoas esile",
   "@pinMessage": {},
   "videoCallsBetaWarning": "Palun arvesta, et videokõned on veel beetajärgus. Nad ei pruugi veel toimida kõikidel platvormidel korrektselt.",
   "@videoCallsBetaWarning": {},
@@ -2510,15 +2510,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Palun proovi hiljem uuesti või muuda serveri nime.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Logi sisse kasutades teenusepakkujat {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "importFromZipFile": "Impordi zip-failist",
   "@importFromZipFile": {},
   "exportEmotePack": "Ekspordi emotikonide pakk zip-failina",
@@ -2592,7 +2583,7 @@
       }
     }
   },
-  "inviteGroupChat": "📨 Kutsu vestlusrühma",
+  "inviteGroupChat": "📨 Kutse vestlusrühma",
   "@inviteGroupChat": {},
   "invitePrivateChat": "📨 Kutsu omavahelisele vestlusele",
   "@invitePrivateChat": {},
@@ -3378,8 +3369,155 @@
   "@commandHint_logoutall": {},
   "commandHint_logout": "Logi oma praegusest seadmest välja",
   "@commandHint_logout": {},
-  "displayNavigationRail": "Näita navigeerimisliistu mobiilis",
+  "displayNavigationRail": "Näita mobiilis külgmist tööriistariba",
+  "@displayNavigationRail": {},
   "customReaction": "Kohandatud reaktsioon",
+  "@customReaction": {},
+  "moreEvents": "Veel sündmusi",
+  "@moreEvents": {},
+  "declineInvitation": "Keeldu kutsest",
+  "@declineInvitation": {},
+  "noMessagesYet": "Pole veel ühtegi sõnumit",
+  "@noMessagesYet": {},
+  "longPressToRecordVoiceMessage": "Pika vajutusega saad salvestada häälsõnumi.",
+  "@longPressToRecordVoiceMessage": {},
+  "pause": "Peata",
+  "@pause": {},
+  "resume": "Jätka",
+  "@resume": {},
+  "newSubSpace": "Uus alamkogukond",
+  "@newSubSpace": {},
+  "moveToDifferentSpace": "Tõsta teise kogukonda",
+  "@moveToDifferentSpace": {},
+  "moveUp": "Liiguta ülespoole",
+  "@moveUp": {},
+  "moveDown": "Liiguta allapoole",
+  "@moveDown": {},
+  "removeFromSpaceDescription": "See vestlus eemaldatakse nüüd kogukonnast, kuid on jätkuvalt nähtav sinu vestluste loendis.",
+  "@removeFromSpaceDescription": {},
+  "countChats": "{chats} vestlust",
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceMemberOf": "Kogukonna liige: {spaces}",
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "spaceMemberOfCanKnock": "{spaces} kogukonna liige võib uksele koputada",
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "donate": "Toeta meid rahaliselt",
+  "@donate": {},
+  "startedAPoll": "{username} koostas küsitluse.",
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "poll": "Küsitlus",
+  "@poll": {},
+  "startPoll": "Koosta küsitlus",
+  "@startPoll": {},
+  "endPoll": "Lõpeta küsitlus",
+  "@endPoll": {},
+  "answersVisible": "Vastused on näha",
+  "@answersVisible": {},
+  "answersHidden": "Vastused on peidetud",
+  "@answersHidden": {},
+  "pollQuestion": "Küsitluse küsimus",
+  "@pollQuestion": {},
+  "answerOption": "Valikvastus",
+  "@answerOption": {},
+  "addAnswerOption": "Lisa valikvastus",
+  "@addAnswerOption": {},
+  "allowMultipleAnswers": "Luba mitu vastusevalikut",
+  "@allowMultipleAnswers": {},
+  "pollHasBeenEnded": "Küsitlus on lõppenud",
+  "@pollHasBeenEnded": {},
+  "countVotes": "{count, plural, =1{Üks hääl} other{{count} häält}}",
+  "@countVotes": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "answersWillBeVisibleWhenPollHasEnded": "Vastused on näha küsitluse lõppedes",
+  "@answersWillBeVisibleWhenPollHasEnded": {},
+  "replyInThread": "Vasta jutulõngas",
+  "@replyInThread": {},
+  "countReplies": "{count, plural, =1{Üks vastus} other{{count} vastust}}",
+  "@countReplies": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thread": "Jutulõng",
+  "@thread": {},
+  "backToMainChat": "Tagasi põhivestlusesse",
+  "@backToMainChat": {},
+  "saveChanges": "Salvesta muudatused",
+  "@saveChanges": {},
+  "createSticker": "Loo kleeps või emoji",
+  "@createSticker": {},
+  "useAsSticker": "Kasuta kleepsuna",
+  "@useAsSticker": {},
+  "useAsEmoji": "Kasuta emojina",
+  "@useAsEmoji": {},
+  "stickerPackNameAlreadyExists": "Selline kleepsupaki nimi on juba olemas",
+  "@stickerPackNameAlreadyExists": {},
+  "newStickerPack": "Uus kleepsupakk",
+  "@newStickerPack": {},
+  "stickerPackName": "Kleepsupaki nimi",
+  "@stickerPackName": {},
+  "attribution": "Autoriõigused",
+  "@attribution": {},
+  "skipChatBackup": "Jäta vestluse varundamine vahele",
+  "@skipChatBackup": {},
+  "skipChatBackupWarning": "Kas oled kindel? Kui sa pole lülitanud sisse vestluste krüptovõtmete varundust, siis võid oma seadme vahetamisel kaotada ligipääsu oma senistele sõnumitele.",
+  "@skipChatBackupWarning": {},
+  "loadingMessages": "Laadin sõnumeid",
+  "@loadingMessages": {},
+  "setupChatBackup": "Võta kasutusele vestluste varundus",
+  "@setupChatBackup": {},
+  "changedTheChatDescription": "{username} muutis vestluse kirjeldust",
+  "@changedTheChatDescription": {},
+  "changedTheChatName": "{username} muutis vestluse nime",
+  "@changedTheChatName": {},
+  "noMoreResultsFound": "Rohkem tulemusi ei leidu",
+  "@noMoreResultsFound": {},
+  "chatSearchedUntil": "Otsing vestlusest kuni {time}",
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "writeAMessageLangCodes": "Kirjuta {l1} või {l2}...",
   "requests": "Päringud",
   "holdForInfo": "Vajuta ja hoia sõna info saamiseks.",
@@ -3422,7 +3560,6 @@
   "updateLanguage": "Minu keeled",
   "whatLanguageYouWantToLearn": "Millist keelt soovite õppida?",
   "whatIsYourBaseLanguage": "Mis on teie põhikeel?",
-  "saveChanges": "Salvesta muudatused",
   "publicProfileTitle": "Luba minu profiili otsingus leida",
   "publicProfileDesc": "Lülitades sisse võimaldate teistel kasutajatel leida teie profiili globaalset otsinguriba kaudu ja saata vestlussoove. Sel hetkel saate otsustada, kas nõustute või keeldute soovist.",
   "errorDisableIT": "Tõlkeabi on välja lülitatud.",
@@ -4427,14 +4564,6 @@
   "errorFetchingActivity": "Tegevuse toomine ebaõnnestus",
   "check": "Kontrolli",
   "unableToFindRoom": "Selle koodiga vestlust või ruumi ei leitud. Palun proovi uuesti.",
-  "@displayNavigationRail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -4611,10 +4740,6 @@
     "placeholders": {}
   },
   "@whatIsYourBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -11008,8 +11133,6 @@
   "congratulations": "Palju õnne!",
   "anotherRound": "Veel üks voor",
   "noActivityRequest": "Praegu ei ole aktiivsuse taotlust.",
-  "quit": "Välju",
-  "congratulationsYouveCompletedPractice": "Palju õnne! Olete lõpetanud harjut seansi.",
   "mustHave10Words": "Te peate omama vähemalt 10 sõnavara sõna, et neid harjutada. Proovige rääkida sõbraga või Pangea Botiga, et rohkem avastada!",
   "botSettings": "Boti seaded",
   "activitySettingsOverrideWarning": "Keele ja keele taseme määrab tegevusplaan",
@@ -11055,14 +11178,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11241,6 +11356,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Minust",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idioom",
   "grammarCopyPOSphrasalv": "Fraasi Verb",
   "grammarCopyPOScompn": "Kompleks",
@@ -11253,6 +11373,272 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Täiuslik harjutamine!",
+  "greatPractice": "Suurepärane harjutamine!",
+  "usedNoHints": "Hea töö, et ei kasutanud mingeid vihjeid!",
+  "youveCompletedPractice": "Oled harjutamise lõpetanud, jätka samas vaimus, et paremaks saada!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Muuda e-posti",
+  "withTheseAddressesDescription": "Nende e-posti aadressidega saad sisse logida, oma parooli taastada ja tellimusi hallata.",
+  "noAddressDescription": "Sa ei ole veel ühtegi e-posti aadressi lisanud.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Grammatika",
+  "spanTypeWordChoice": "Sõnavalik",
+  "spanTypeSpelling": "Õigekiri",
+  "spanTypePunctuation": "Interpunktsioon",
+  "spanTypeStyle": "Stiil",
+  "spanTypeFluency": "Sujuvus",
+  "spanTypeAccents": "Aksendid",
+  "spanTypeCapitalization": "Suurtähed",
+  "spanTypeCorrection": "Parandus",
+  "spanFeedbackTitle": "Teata paranduse probleemist",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "federationBaseUrl": "Federatsiooni baas URL",
+  "clientWellKnownInformation": "Kliendi hästi teada olev teave:",
+  "baseUrl": "Põhi-URL",
+  "identityServer": "Identiteediserver:",
+  "versionWithNumber": "Versioon: {version}",
+  "logs": "Logid",
+  "advancedConfigs": "Täiustatud seaded",
+  "advancedConfigurations": "Täiustatud konfiguratsioonid",
+  "signInWithLabel": "Logi sisse koos:",
+  "selectAllWords": "Vali kõik sõnad, mida kuulad helifailist",
+  "joinCourseForActivities": "Liitu kursusega, et proovida tegevusi.",
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Kursused koosnevad 3-8 moodulist, milles on tegevusi, et julgustada sõnade harjutamist erinevates kontekstides",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "E-posti kinnitamine ebaõnnestus. Palun proovige uuesti.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Avage õppimisvahendid",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Käivitame tellimuse haldamise uues vahekaardis. Kui te ei näinud uut vahekaarti, palun kontrollige oma hüpikakna blokeerijat.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Avage harjutuste tegevused",
+  "hideEvents": "Peida üritused",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Kasutaja lükatakse kursusest välja, kuid nad võivad proovida hiljem uuesti liituda.",
+  "denyKnockChat": "Kasutaja lükatakse vestlusest välja, kuid nad võivad proovida hiljem uuesti liituda.",
+  "banFromSpace": "Kursusest väljaarvamine",
+  "unbanFromSpace": "Kursusest taastamine",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Keelatud. Liitumine ei õnnestu.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Teie liitumissoovitus on vastu võetud! Nüüd saate kursusele siseneda.",
+  "sessionFull": "Liiga hilja! See tegevus on täis.",
+  "returnToCourse": "Tagasi kursusele",
+  "returnHome": "Tagasi koju",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Tõlke tagasiside",
+  "userUpdatedLearningSettings": "{username} uuendas õppe seadeid",
+  "youUpdatedLearningSettings": "Sa uuendasid oma õppe seadeid",
+  "userAddedActivityPlan": "{username} lisas tegevusplaani",
+  "youAddedActivityPlan": "Sa lisasid tegevusplaani",
+  "userSentActivitySummary": "{username} saatis tegevuse kokkuvõtte",
+  "youSentActivitySummary": "Sa saatsid tegevuse kokkuvõtte",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

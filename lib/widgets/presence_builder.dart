@@ -27,12 +27,10 @@ class _PresenceBuilderState extends State<PresenceBuilder> {
   StreamSubscription<CachedPresence>? _sub;
 
   void _updatePresence(CachedPresence? presence) {
-    // #Pangea
-    // setState(() {
-    //   _presence = presence;
-    // });
-    if (mounted) setState(() => _presence = presence);
-    // Pangea#
+    if (!mounted) return;
+    setState(() {
+      _presence = presence;
+    });
   }
 
   @override

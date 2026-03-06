@@ -25,12 +25,10 @@ class LanguageModel {
     TextDirection? textDirection,
   }) : _textDirection = textDirection;
 
-  factory LanguageModel.fromJson(json) {
-    final String code = json['language_code'] ??
-        codeFromNameOrCode(
-          json['language_name'],
-          json['language_flag'],
-        );
+  factory LanguageModel.fromJson(Map<String, dynamic> json) {
+    final String code =
+        json['language_code'] ??
+        codeFromNameOrCode(json['language_name'], json['language_flag']);
 
     return LanguageModel(
       langCode: code,
@@ -50,14 +48,14 @@ class LanguageModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'language_code': langCode,
-        'language_name': displayName,
-        'script': script,
-        'l2_support': l2Support.storageString,
-        'text_direction': textDirection.name,
-        'locale_emoji': localeEmoji,
-        'voices': voices,
-      };
+    'language_code': langCode,
+    'language_name': displayName,
+    'script': script,
+    'l2_support': l2Support.storageString,
+    'text_direction': textDirection.name,
+    'locale_emoji': localeEmoji,
+    'voices': voices,
+  };
 
   bool get l2 => l2Support != L2SupportEnum.na;
 
@@ -74,9 +72,9 @@ class LanguageModel {
 
   //PTODO - add flag for unknown
   static LanguageModel get unknown => LanguageModel(
-        langCode: LanguageKeys.unknownLanguage,
-        displayName: "Unknown",
-      );
+    langCode: LanguageKeys.unknownLanguage,
+    displayName: "Unknown",
+  );
 
   String getDisplayName(BuildContext context) {
     final langKey = "${langCode.replaceAll("-", "")}DisplayName";

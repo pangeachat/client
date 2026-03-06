@@ -68,10 +68,7 @@ class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
       final layer = MatrixState.pAnyState.layerLinkAndKey(targetId!);
       content = CompositedTransformTarget(
         link: layer.link,
-        child: KeyedSubtree(
-          key: layer.key,
-          child: content,
-        ),
+        child: KeyedSubtree(key: layer.key, child: content),
       );
     }
 
@@ -97,20 +94,16 @@ class _EmojiText extends StatelessWidget {
     if (!enabled || token == null) return const SizedBox.shrink();
 
     return StreamBuilder(
-      stream: Matrix.of(context)
-          .analyticsDataService
-          .updateDispatcher
+      stream: Matrix.of(context).analyticsDataService.updateDispatcher
           .lemmaUpdateStream(token!.vocabConstructID),
       builder: (context, snapshot) {
-        final emoji = snapshot.data?.emojis?.firstOrNull ??
+        final emoji =
+            snapshot.data?.emojis?.firstOrNull ??
             token!.vocabConstructID.userSetEmoji;
 
         return Text(
           emoji ?? "-",
-          style: TextStyle(
-            fontSize: fontSize,
-            color: textColor,
-          ),
+          style: TextStyle(fontSize: fontSize, color: textColor),
           textScaler: TextScaler.noScaling,
         );
       },

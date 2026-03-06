@@ -15,13 +15,13 @@ enum AssistanceStateEnum {
   complete,
   error;
 
-  Color stateColor(context) {
+  Color stateColor(BuildContext context) {
     switch (this) {
       case AssistanceStateEnum.noSub:
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
       case AssistanceStateEnum.error:
-        return Theme.of(context).disabledColor;
+        return Colors.grey[400]!;
       case AssistanceStateEnum.notFetched:
       case AssistanceStateEnum.fetching:
         return Theme.of(context).colorScheme.primary;
@@ -30,7 +30,7 @@ enum AssistanceStateEnum {
     }
   }
 
-  Color sendButtonColor(context) {
+  Color sendButtonColor(BuildContext context) {
     switch (this) {
       case AssistanceStateEnum.noMessage:
       case AssistanceStateEnum.fetched:
@@ -46,17 +46,16 @@ enum AssistanceStateEnum {
   }
 
   bool get allowsFeedback => switch (this) {
-        AssistanceStateEnum.notFetched => true,
-        _ => false,
-      };
+    AssistanceStateEnum.notFetched => true,
+    _ => false,
+  };
 
-  Color backgroundColor(BuildContext context) => switch (this) {
-        AssistanceStateEnum.noSub ||
-        AssistanceStateEnum.noMessage ||
-        AssistanceStateEnum.fetched ||
-        AssistanceStateEnum.complete ||
-        AssistanceStateEnum.error =>
-          Theme.of(context).colorScheme.surfaceContainerHighest,
-        _ => Theme.of(context).colorScheme.primaryContainer,
-      };
+  bool get showIcon => switch (this) {
+    AssistanceStateEnum.noSub => true,
+    AssistanceStateEnum.noMessage => true,
+    AssistanceStateEnum.notFetched => true,
+    AssistanceStateEnum.error => true,
+    AssistanceStateEnum.complete => true,
+    _ => false,
+  };
 }

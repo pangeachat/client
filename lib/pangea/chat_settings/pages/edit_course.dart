@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 
@@ -150,7 +151,7 @@ class EditCourseController extends State<EditCourse> {
       final picked = await selectFiles(
         context,
         allowMultiple: false,
-        type: FileSelectorType.images,
+        type: FileType.image,
       );
       final pickedFile = picked.firstOrNull;
       if (pickedFile == null) return;
@@ -171,18 +172,16 @@ class EditCourseController extends State<EditCourse> {
         title: Text(L10n.of(context).editing),
       ),
       body: StreamBuilder(
-        stream: Matrix.of(context).client.onRoomState.stream.where(
-              (u) => u.roomId == widget.roomId,
-            ),
+        stream: Matrix.of(
+          context,
+        ).client.onRoomState.stream.where((u) => u.roomId == widget.roomId),
         builder: (context, snapshot) {
           return SafeArea(
             child: Container(
               alignment: Alignment.topCenter,
               padding: const EdgeInsets.all(16.0),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 600,
-                ),
+                constraints: const BoxConstraints(maxWidth: 600),
                 child: _room == null || !_room!.isSpace
                     ? Center(child: Text(L10n.of(context).noRoomsFound))
                     : Column(
@@ -212,8 +211,8 @@ class EditCourseController extends State<EditCourse> {
                                                   name: _room?.name,
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                    0.0,
-                                                  ),
+                                                        0.0,
+                                                      ),
                                                   size: 200.0,
                                                 ),
                                               ),
@@ -234,8 +233,9 @@ class EditCourseController extends State<EditCourse> {
                                     controller: _titleController,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
+                                        borderRadius: BorderRadius.circular(
+                                          4.0,
+                                        ),
                                       ),
                                       hintText: L10n.of(context).courseTitle,
                                     ),
@@ -244,8 +244,9 @@ class EditCourseController extends State<EditCourse> {
                                     controller: _descController,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
+                                        borderRadius: BorderRadius.circular(
+                                          4.0,
+                                        ),
                                       ),
                                       hintText: L10n.of(context).courseDesc,
                                     ),

@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
@@ -80,7 +75,8 @@ class MessageActivityRequest {
   final PracticeTarget target;
   final ActivityQualityFeedback? activityQualityFeedback;
   final GrammarErrorRequestInfo? grammarErrorInfo;
-  final MorphExampleInfo? morphExampleInfo;
+  final ExampleMessageInfo? exampleMessage;
+  final AudioExampleMessage? audioExampleMessage;
 
   MessageActivityRequest({
     required this.userL1,
@@ -88,24 +84,11 @@ class MessageActivityRequest {
     required this.activityQualityFeedback,
     required this.target,
     this.grammarErrorInfo,
-    this.morphExampleInfo,
+    this.exampleMessage,
+    this.audioExampleMessage,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');
-    }
-  }
-
-  String promptText(BuildContext context) {
-    switch (target.activityType) {
-      case ActivityTypeEnum.grammarCategory:
-        return L10n.of(context).whatIsTheMorphTag(
-          target.morphFeature!.getDisplayCopy(context),
-          target.tokens.first.text.content,
-        );
-      case ActivityTypeEnum.grammarError:
-        return L10n.of(context).fillInBlank;
-      default:
-        return target.tokens.first.vocabConstructID.lemma;
     }
   }
 
@@ -147,9 +130,7 @@ class MessageActivityRequest {
 class MessageActivityResponse {
   final PracticeActivityModel activity;
 
-  MessageActivityResponse({
-    required this.activity,
-  });
+  MessageActivityResponse({required this.activity});
 
   factory MessageActivityResponse.fromJson(Map<String, dynamic> json) {
     if (!json.containsKey('activity')) {

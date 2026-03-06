@@ -21,9 +21,7 @@ class LearningProgressBar extends StatelessWidget {
       return Container(
         alignment: Alignment.center,
         height: height,
-        child: const LinearProgressIndicator(
-          color: AppConfig.goldLight,
-        ),
+        child: const LinearProgressIndicator(color: AppConfig.goldLight),
       );
     }
 

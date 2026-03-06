@@ -21,18 +21,12 @@ class PangeaSsoButton extends StatelessWidget {
   final SSOProvider provider;
   final String? title;
 
-  const PangeaSsoButton({
-    required this.provider,
-    this.title,
-    super.key,
-  });
+  const PangeaSsoButton({required this.provider, this.title, super.key});
 
   Future<void> _runSSOLogin(BuildContext context) async {
     final token = await showAdaptiveDialog<String?>(
       context: context,
-      builder: (context) => SSODialog(
-        future: () => _getSSOToken(context),
-      ),
+      builder: (context) => SSODialog(future: () => _getSSOToken(context)),
     );
 
     if (token == null || token.isEmpty) {
@@ -46,18 +40,17 @@ class PangeaSsoButton extends StatelessWidget {
   }
 
   Future<String?> _getSSOToken(BuildContext context) async {
-    final bool isDefaultPlatform = (PlatformInfos.isMobile ||
+    final bool isDefaultPlatform =
+        (PlatformInfos.isMobile ||
         PlatformInfos.isWeb ||
         PlatformInfos.isMacOS);
     final redirectUrl = kIsWeb
-        ? Uri.parse(html.window.location.href)
-            .resolveUri(
-              Uri(pathSegments: ['auth.html']),
-            )
-            .toString()
+        ? Uri.parse(
+            html.window.location.href,
+          ).resolveUri(Uri(pathSegments: ['auth.html'])).toString()
         : isDefaultPlatform
-            ? '${AppConfig.appOpenUrlScheme.toLowerCase()}://login'
-            : 'http://localhost:3001//login';
+        ? '${AppConfig.appOpenUrlScheme.toLowerCase()}://login'
+        : 'http://localhost:3001//login';
     final client = await Matrix.of(context).getLoginClient();
     final url = client.homeserver!.replace(
       path: '/_matrix/client/v3/login/sso/redirect/${provider.id}',
@@ -85,23 +78,19 @@ class PangeaSsoButton extends StatelessWidget {
     return token;
   }
 
-  Future<void> _ssoAction(
-    String token,
-    BuildContext context,
-  ) async {
+  Future<void> _ssoAction(String token, BuildContext context) async {
     final client = Matrix.of(context).client;
     final redirect = client.onLoginStateChanged.stream
         .where((state) => state == LoginState.loggedIn)
         .first
-        .then(
-      (_) {
-        final route = FluffyChatApp.router.state.fullPath;
-        if (route == null ||
-            (!route.contains("/rooms") && !route.contains('registration'))) {
-          context.go('/rooms');
-        }
-      },
-    ).timeout(const Duration(seconds: 30));
+        .then((_) {
+          final route = FluffyChatApp.router.state.fullPath;
+          if (route == null ||
+              (!route.contains("/rooms") && !route.contains('registration'))) {
+            context.go('/rooms');
+          }
+        })
+        .timeout(const Duration(seconds: 30));
 
     final loginRes = await client.login(
       LoginType.mLoginToken,

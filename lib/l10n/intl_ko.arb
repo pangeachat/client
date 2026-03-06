@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-05 10:09:10.325473",
+  "@@last_modified": "2026-03-03 11:15:45.580921",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -2381,15 +2381,6 @@
       }
     }
   },
-  "signInWith": "{provider}로 로그인",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "fileIsTooBigForServer": "전송에 실패했습니다. 서버는 {max}가 넘는 파일을 지원하지 않습니다.",
   "@fileIsTooBigForServer": {},
   "callingPermissions": "통화 권한",
@@ -3272,12 +3263,26 @@
   "notificationRuleCall": "전화",
   "@notificationRuleCall": {},
   "setCustomPermissionLevel": "사용자 지정 권한 수준 설정",
-  "setPermissionsLevelDescription": "아래에서 미리 정의된 역할을 선택하거나 0에서 100 사이의 사용자 지정 권한 수준을 입력하세요.",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "아래에서 미리 정의된 역할을 선택하거나 0부터 100 사이의 사용자 지정 권한 수준을 입력해 주세요.",
+  "@setPermissionsLevelDescription": {},
   "ignoreUser": "사용자 무시",
+  "@ignoreUser": {},
   "normalUser": "일반 사용자",
-  "commandHint_roomupgrade": "이 방을 지정된 방 버전으로 업그레이드",
+  "@normalUser": {},
+  "commandHint_roomupgrade": "이 방을 주어진 방 버전으로 업그레이드합니다",
+  "@commandHint_roomupgrade": {},
   "checkList": "체크리스트",
-  "countInvited": "{count}명 초대됨",
+  "@checkList": {},
+  "countInvited": "{count}초대받은",
+  "@countInvited": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "userSpecificNotificationSettings": "사용자별 알림 설정",
   "notificationRuleCallDescription": "통화에 대해 사용자에게 알림을 보냅니다.",
   "notificationRuleEncryptedRoomOneToOne": "암호화된 1:1 방",
@@ -4442,38 +4447,6 @@
   "playWithAI": "일단 AI와 놀아보세요",
   "courseStartDesc": "파니아 봇은 언제든 준비되어 있습니다!\n\n...하지만 친구와 함께 배우는 것이 더 좋아요!",
   "@@locale": "ko",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@checkList": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@countInvited": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "@userSpecificNotificationSettings": {
     "type": "String",
     "placeholders": {}
@@ -10845,8 +10818,6 @@
   "congratulations": "축하합니다!",
   "anotherRound": "또 다른 라운드",
   "noActivityRequest": "현재 활동 요청이 없습니다.",
-  "quit": "종료",
-  "congratulationsYouveCompletedPractice": "축하합니다! 연습 세션을 완료했습니다.",
   "mustHave10Words": "연습할 단어가 최소 10개 이상 있어야 합니다. 친구나 Pangea Bot과 대화하여 더 많은 것을 발견해 보세요!",
   "botSettings": "봇 설정",
   "activitySettingsOverrideWarning": "활동 계획에 의해 결정된 언어 및 언어 수준",
@@ -10892,14 +10863,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11078,6 +11041,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "내 소개",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "관용구",
   "grammarCopyPOSphrasalv": "구동사",
   "grammarCopyPOScompn": "복합어",
@@ -11090,6 +11058,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "완벽한 연습!",
+  "greatPractice": "훌륭한 연습!",
+  "usedNoHints": "힌트를 사용하지 않아서 잘했어요!",
+  "youveCompletedPractice": "연습을 완료했습니다. 계속해서 더 나아지세요!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "이메일 변경",
+  "withTheseAddressesDescription": "이 이메일 주소로 로그인하고, 비밀번호를 복구하며, 구독을 관리할 수 있습니다.",
+  "noAddressDescription": "아직 이메일 주소를 추가하지 않았습니다.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "문법",
+  "spanTypeWordChoice": "단어 선택",
+  "spanTypeSpelling": "철자",
+  "spanTypePunctuation": "구두점",
+  "spanTypeStyle": "스타일",
+  "spanTypeFluency": "유창성",
+  "spanTypeAccents": "억양",
+  "spanTypeCapitalization": "대문자 사용",
+  "spanTypeCorrection": "수정",
+  "spanFeedbackTitle": "수정 문제 보고",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username}가 채팅 설명을 변경했습니다",
+  "changedTheChatName": "{username}가 채팅 이름을 변경했습니다",
+  "moreEvents": "더 많은 이벤트",
+  "declineInvitation": "초대 거절",
+  "noMessagesYet": "아직 메시지가 없습니다",
+  "longPressToRecordVoiceMessage": "길게 눌러 음성 메시지를 녹음하세요.",
+  "pause": "일시 정지",
+  "resume": "재개",
+  "newSubSpace": "새 하위 공간",
+  "moveToDifferentSpace": "다른 공간으로 이동",
+  "moveUp": "위로 이동",
+  "moveDown": "아래로 이동",
+  "removeFromSpaceDescription": "채팅은 공간에서 제거되지만 여전히 채팅 목록에 나타납니다.",
+  "countChats": "{chats} 개의 채팅",
+  "spaceMemberOf": "{spaces}의 공간 구성원",
+  "spaceMemberOfCanKnock": "{spaces}의 공간 구성원이 노크할 수 있습니다.",
+  "donate": "기부하기",
+  "startedAPoll": "{username}이(가) 설문조사를 시작했습니다.",
+  "poll": "설문조사",
+  "startPoll": "설문조사 시작",
+  "endPoll": "투표 종료",
+  "answersVisible": "답변 공개",
+  "answersHidden": "답변 숨김",
+  "pollQuestion": "투표 질문",
+  "answerOption": "답변 옵션",
+  "addAnswerOption": "답변 옵션 추가",
+  "allowMultipleAnswers": "다중 답변 허용",
+  "pollHasBeenEnded": "투표가 종료되었습니다",
+  "countVotes": "{count, plural, =1{한 표} other{{count} 표}}",
+  "answersWillBeVisibleWhenPollHasEnded": "투표가 종료되면 답변이 공개됩니다",
+  "replyInThread": "스레드에 답글 달기",
+  "countReplies": "{count, plural, =1{답글 1개} other{{count}개의 답글}}",
+  "thread": "스레드",
+  "backToMainChat": "메인 채팅으로 돌아가기",
+  "createSticker": "스티커 또는 이모지 만들기",
+  "useAsSticker": "스티커로 사용",
+  "useAsEmoji": "이모지로 사용",
+  "stickerPackNameAlreadyExists": "스티커 팩 이름이 이미 존재합니다",
+  "newStickerPack": "새 스티커 팩",
+  "stickerPackName": "스티커 팩 이름",
+  "attribution": "출처",
+  "skipChatBackup": "채팅 백업 건너뛰기",
+  "skipChatBackupWarning": "확실합니까? 채팅 백업을 활성화하지 않으면 기기를 전환할 때 메시지에 대한 접근을 잃을 수 있습니다.",
+  "loadingMessages": "메시지 로딩 중",
+  "setupChatBackup": "채팅 백업 설정",
+  "noMoreResultsFound": "더 이상 결과가 없습니다",
+  "chatSearchedUntil": "{time}까지 채팅 검색됨",
+  "federationBaseUrl": "연합 기본 URL",
+  "clientWellKnownInformation": "클라이언트-잘 알려진 정보:",
+  "baseUrl": "기본 URL",
+  "identityServer": "아이덴티티 서버:",
+  "versionWithNumber": "버전: {version}",
+  "logs": "로그",
+  "advancedConfigs": "고급 구성",
+  "advancedConfigurations": "고급 구성",
+  "signInWithLabel": "다음으로 로그인:",
+  "selectAllWords": "오디오에서 들리는 모든 단어를 선택하세요",
+  "joinCourseForActivities": "활동을 시도하려면 코스에 참여하세요.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "과정은 각기 다른 맥락에서 단어를 연습하도록 장려하는 활동이 포함된 3-8개의 모듈로 구성됩니다.",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "이메일 인증에 실패했습니다. 다시 시도해 주세요.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "학습 도구 잠금 해제",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "새 탭에서 구독 관리 기능을 시작했습니다. 새 탭이 보이지 않으면 팝업 차단기를 확인해 주세요.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "연습 활동 잠금 해제",
+  "hideEvents": "이벤트 숨기기",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "사용자는 과정에서 거부되지만, 언제든지 나중에 다시 참여할 수 있습니다.",
+  "denyKnockChat": "사용자는 채팅에서 거부되지만, 언제든지 나중에 다시 참여할 수 있습니다.",
+  "banFromSpace": "과정에서 차단",
+  "unbanFromSpace": "과정에서 차단 해제",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "금지됨. 참여할 수 없습니다.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "귀하의 참여 요청이 수락되었습니다! 이제 강의에 들어갈 수 있습니다.",
+  "sessionFull": "너무 늦었습니다! 이 활동은 가득 찼습니다.",
+  "returnToCourse": "강의로 돌아가기",
+  "returnHome": "홈으로 돌아가기",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "번역 피드백",
+  "userUpdatedLearningSettings": "{username}이 학습 설정을 업데이트했습니다",
+  "youUpdatedLearningSettings": "당신이 학습 설정을 업데이트했습니다",
+  "userAddedActivityPlan": "{username}이 활동 계획을 추가했습니다",
+  "youAddedActivityPlan": "당신이 활동 계획을 추가했습니다",
+  "userSentActivitySummary": "{username}이 활동 요약을 보냈습니다",
+  "youSentActivitySummary": "당신이 활동 요약을 보냈습니다",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

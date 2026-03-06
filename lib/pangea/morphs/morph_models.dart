@@ -27,10 +27,7 @@ class MorphFeature {
       .toList();
 
   Map<String, dynamic> toJson() {
-    return {
-      'feature': feature,
-      'tag': tags,
-    };
+    return {'feature': feature, 'tag': tags};
   }
 }
 
@@ -67,9 +64,7 @@ class MorphFeaturesAndTags {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "Morph construct category $feature not found in morph categories and labels",
-        data: {
-          "feature": feature,
-        },
+        data: {"feature": feature},
       );
       return [];
     }
@@ -86,11 +81,8 @@ class MorphFeaturesAndTags {
           ?.displayTags ??
       [];
 
-  List<MorphFeature> get displayFeatures => features
-      .where(
-        (f) => f.feature.toLowerCase() != "foreign",
-      )
-      .toList();
+  List<MorphFeature> get displayFeatures =>
+      features.where((f) => f.feature.toLowerCase() != "foreign").toList();
 
   List<String> get categories => features.map((e) => e.feature).toList();
 
@@ -105,9 +97,7 @@ class MorphFeaturesAndTags {
     }
     ErrorHandler.logError(
       m: "Morph construct lemma $morphLemma not found in morph categories and labels",
-      data: {
-        "morphLemma": morphLemma,
-      },
+      data: {"morphLemma": morphLemma},
     );
     return "Other";
   }

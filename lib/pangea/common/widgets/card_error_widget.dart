@@ -6,10 +6,7 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 
 class CardErrorWidget extends StatelessWidget {
   final String error;
-  const CardErrorWidget(
-    this.error, {
-    super.key,
-  });
+  const CardErrorWidget(this.error, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +25,7 @@ class CardErrorWidget extends StatelessWidget {
             spacing: 12.0,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const BotFace(
-                width: 50.0,
-                expression: BotExpression.addled,
-              ),
+              const BotFace(width: 50.0, expression: BotExpression.addled),
               Flexible(
                 child: Text(
                   error,

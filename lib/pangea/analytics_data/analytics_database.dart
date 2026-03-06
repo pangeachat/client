@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
@@ -122,12 +123,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _lastEventTimestampBox = _collection.openBox<String>(
       _lastEventTimestampBoxName,
     );
-    _serverConstructsBox = _collection.openBox<List>(
-      _serverConstructsBoxName,
-    );
-    _localConstructsBox = _collection.openBox<List>(
-      _localConstructsBoxName,
-    );
+    _serverConstructsBox = _collection.openBox<List>(_serverConstructsBoxName);
+    _localConstructsBox = _collection.openBox<List>(_localConstructsBoxName);
     _aggregatedServerVocabConstructsBox = _collection.openBox<Map>(
       _aggregatedServerVocabConstructsBoxName,
     );
@@ -140,9 +137,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _aggregatedLocalMorphConstructsBox = _collection.openBox<Map>(
       _aggregatedLocalMorphConstructsBoxName,
     );
-    _derivedStatsBox = _collection.openBox<Map>(
-      _derivedStatsBoxName,
-    );
+    _derivedStatsBox = _collection.openBox<Map>(_derivedStatsBoxName);
   }
 
   Future<void> delete() async {
@@ -176,35 +171,46 @@ class AnalyticsDatabase with DatabaseFileStorage {
         (ConstructTypeEnum.morph, false) => _aggregatedServerMorphConstructsBox,
       };
 
+  String _langKey(String key, String language) => '$language|$key';
+
+  bool _isLanguageKey(String key, String language) =>
+      key.startsWith('$language|');
+
   Future<String?> getUserID() => _lastEventTimestampBox.get('user_id');
 
-  Future<DateTime?> getLastUpdated() async {
-    final entry = await _lastEventTimestampBox.get('last_updated');
+  Future<DateTime?> getLastUpdated(String language) async {
+    final entry = await _lastEventTimestampBox.get(
+      _langKey('last_updated', language),
+    );
     if (entry == null) return null;
     return DateTime.tryParse(entry);
   }
 
-  Future<DateTime?> getLastEventTimestamp() async {
-    final timestampString =
-        await _lastEventTimestampBox.get('last_event_timestamp');
+  Future<DateTime?> getLastEventTimestamp(String language) async {
+    final timestampString = await _lastEventTimestampBox.get(
+      _langKey('last_event_timestamp', language),
+    );
     if (timestampString == null) return null;
     return DateTime.parse(timestampString);
   }
 
-  Future<DerivedAnalyticsDataModel> getDerivedStats() async {
-    final raw = await _derivedStatsBox.get('derived_stats');
-    return raw == null
-        ? DerivedAnalyticsDataModel()
-        : DerivedAnalyticsDataModel.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
+  Future<String?> getCurrentLanguage() async {
+    return _lastEventTimestampBox.get('current_language');
   }
 
-  Future<List<OneConstructUse>> getUses({
+  Future<DerivedAnalyticsDataModel> getDerivedStats(String language) async {
+    final raw = await _derivedStatsBox.get(_langKey('derived_stats', language));
+    return raw == null
+        ? DerivedAnalyticsDataModel()
+        : DerivedAnalyticsDataModel.fromJson(Map<String, dynamic>.from(raw));
+  }
+
+  Future<List<OneConstructUse>> getUses(
+    String language, {
     int? count,
     String? roomId,
     DateTime? since,
-    ConstructUseTypeEnum? type,
+    List<ConstructUseTypeEnum>? types,
   }) async {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
@@ -216,7 +222,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       if (roomId != null && use.metadata.roomId != roomId) {
         return true; // skip but continue
       }
-      if (type != null && use.useType != type) {
+      if (types != null && !types.contains(use.useType)) {
         return true; // skip but continue
       }
 
@@ -225,7 +231,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     }
 
     // ---- Local uses ----
-    final localUses = await getLocalUses()
+    final localUses = await getLocalUses(language)
       ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
 
     for (final use in localUses) {
@@ -239,11 +245,18 @@ class AnalyticsDatabase with DatabaseFileStorage {
     }
 
     // ---- Server uses ----
-    final serverKeys = await _serverConstructsBox.getAllKeys()
-      ..sort(
-        (a, b) =>
-            int.parse(b.split('|')[1]).compareTo(int.parse(a.split('|')[1])),
-      );
+    final serverKeys = (await _serverConstructsBox.getAllKeys())
+        .where((key) => _isLanguageKey(key, language))
+        // Filter out malformed or legacy keys that don't have a timestamp
+        .where((key) {
+          final parts = key.split('|');
+          return parts.length >= 3 && int.tryParse(parts[2]) != null;
+        })
+        .sorted((a, b) {
+          final aTimestamp = int.parse(a.split('|')[2]);
+          final bTimestamp = int.parse(b.split('|')[2]);
+          return bTimestamp.compareTo(aTimestamp);
+        });
 
     for (final key in serverKeys) {
       final serverUses = await getServerUses(key)
@@ -261,16 +274,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return results;
   }
 
-  Future<List<OneConstructUse>> getLocalUses() async {
+  Future<List<OneConstructUse>> getLocalUses(String language) async {
     final List<OneConstructUse> uses = [];
-    final localKeys = await _localConstructsBox.getAllKeys();
+    final localKeys = (await _localConstructsBox.getAllKeys())
+        .where((key) => _isLanguageKey(key, language))
+        .toList();
+
     final localValues = await _localConstructsBox.getAll(localKeys);
     for (final rawList in localValues) {
       if (rawList == null) continue;
       for (final raw in rawList) {
-        final use = OneConstructUse.fromJson(
-          Map<String, dynamic>.from(raw),
-        );
+        final use = OneConstructUse.fromJson(Map<String, dynamic>.from(raw));
         uses.add(use);
       }
     }
@@ -283,34 +297,21 @@ class AnalyticsDatabase with DatabaseFileStorage {
     if (serverValues == null) return [];
 
     for (final entry in serverValues) {
-      uses.add(
-        OneConstructUse.fromJson(
-          Map<String, dynamic>.from(entry),
-        ),
-      );
+      uses.add(OneConstructUse.fromJson(Map<String, dynamic>.from(entry)));
     }
     return uses;
   }
 
-  Future<int> getLocalConstructCount() async {
-    final keys = await _localConstructsBox.getAllKeys();
+  Future<int> getLocalConstructCount(String language) async {
+    final keys = (await _localConstructsBox.getAllKeys()).where(
+      (key) => _isLanguageKey(key, language),
+    );
     return keys.length;
-  }
-
-  Future<List<String>> getVocabConstructKeys() async {
-    final serverKeys = await _aggregatedServerVocabConstructsBox.getAllKeys();
-    final localKeys = await _aggregatedLocalVocabConstructsBox.getAllKeys();
-    return [...serverKeys, ...localKeys];
-  }
-
-  Future<List<String>> getMorphConstructKeys() async {
-    final serverKeys = await _aggregatedServerMorphConstructsBox.getAllKeys();
-    final localKeys = await _aggregatedLocalMorphConstructsBox.getAllKeys();
-    return [...serverKeys, ...localKeys];
   }
 
   Future<ConstructUses> getConstructUse(
     List<ConstructIdentifier> ids,
+    String language,
   ) async {
     assert(ids.isNotEmpty);
 
@@ -330,18 +331,14 @@ class AnalyticsDatabase with DatabaseFileStorage {
       final serverBox = _aggBox(id.type, false);
       final localBox = _aggBox(id.type, true);
 
-      final serverRaw = await serverBox.get(key);
+      final serverRaw = await serverBox.get(_langKey(key, language));
       if (serverRaw != null) {
-        server = ConstructUses.fromJson(
-          Map<String, dynamic>.from(serverRaw),
-        );
+        server = ConstructUses.fromJson(Map<String, dynamic>.from(serverRaw));
       }
 
-      final localRaw = await localBox.get(key);
+      final localRaw = await localBox.get(_langKey(key, language));
       if (localRaw != null) {
-        local = ConstructUses.fromJson(
-          Map<String, dynamic>.from(localRaw),
-        );
+        local = ConstructUses.fromJson(Map<String, dynamic>.from(localRaw));
       }
 
       if (server != null) construct.merge(server);
@@ -352,30 +349,46 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<Map<ConstructIdentifier, ConstructUses>> getConstructUses(
     Map<ConstructIdentifier, List<ConstructIdentifier>> ids,
+    String language,
   ) async {
     final Map<ConstructIdentifier, ConstructUses> results = {};
     for (final entry in ids.entries) {
-      final construct = await getConstructUse(entry.value);
+      final construct = await getConstructUse(entry.value, language);
       results[entry.key] = construct;
     }
     return results;
   }
 
-  Future<void> clearLocalConstructData() async {
+  Future<void> clearLocalConstructData(String language) async {
     await _transaction(() async {
-      await _localConstructsBox.clear();
-      await _aggregatedLocalVocabConstructsBox.clear();
-      await _aggregatedLocalMorphConstructsBox.clear();
+      final localKeys = (await _localConstructsBox.getAllKeys())
+          .where((key) => _isLanguageKey(key, language))
+          .toList();
+
+      final localVocabAggKeys =
+          (await _aggregatedLocalVocabConstructsBox.getAllKeys())
+              .where((key) => _isLanguageKey(key, language))
+              .toList();
+
+      final localMorphAggKeys =
+          (await _aggregatedLocalMorphConstructsBox.getAllKeys())
+              .where((key) => _isLanguageKey(key, language))
+              .toList();
+
+      await _localConstructsBox.deleteAll(localKeys);
+      await _aggregatedLocalVocabConstructsBox.deleteAll(localVocabAggKeys);
+      await _aggregatedLocalMorphConstructsBox.deleteAll(localMorphAggKeys);
     });
   }
 
   /// Group uses by aggregate key
   Map<String, List<OneConstructUse>> _groupUses(
     List<OneConstructUse> uses,
+    String language,
   ) {
     final Map<String, List<OneConstructUse>> grouped = {};
     for (final u in uses) {
-      final key = u.identifier.storageKey;
+      final key = _langKey(u.identifier.storageKey, language);
       (grouped[key] ??= []).add(u);
     }
     return grouped;
@@ -426,22 +439,26 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<List<ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
+    String language,
   ) async {
     Map<String, ConstructUses> combined = {};
     final stopwatch = Stopwatch()..start();
 
-    final localKeys = await _aggBox(type, true).getAllKeys();
-    final serverKeys = await _aggBox(type, false).getAllKeys();
+    final localKeys = (await _aggBox(
+      type,
+      true,
+    ).getAllKeys()).where((key) => _isLanguageKey(key, language)).toList();
+    final serverKeys = (await _aggBox(
+      type,
+      false,
+    ).getAllKeys()).where((key) => _isLanguageKey(key, language)).toList();
 
     final serverValues = await _aggBox(type, false).getAll(serverKeys);
     final serverConstructs = serverValues
         .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
         .toList();
 
-    final serverAgg = Map.fromIterables(
-      serverKeys,
-      serverConstructs,
-    );
+    final serverAgg = Map.fromIterables(serverKeys, serverConstructs);
 
     if (localKeys.isEmpty) {
       combined = serverAgg;
@@ -451,10 +468,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
           .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
           .toList();
 
-      final localAgg = Map.fromIterables(
-        localKeys,
-        localConstructs,
-      );
+      final localAgg = Map.fromIterables(localKeys, localConstructs);
 
       combined = Map<String, ConstructUses>.from(serverAgg);
       for (final entry in localAgg.entries) {
@@ -472,59 +486,76 @@ class AnalyticsDatabase with DatabaseFileStorage {
     }
 
     stopwatch.stop();
-    Logs().i(
-      "Combining aggregates took ${stopwatch.elapsedMilliseconds} ms",
-    );
+    Logs().i("Combining aggregates took ${stopwatch.elapsedMilliseconds} ms");
 
     return combined.values.toList();
   }
 
   Future<void> updateUserID(String userID) {
     return _transaction(() async {
-      await _lastEventTimestampBox.put(
-        'user_id',
-        userID,
-      );
+      await _lastEventTimestampBox.put('user_id', userID);
     });
   }
 
-  Future<void> updateLastUpdated(DateTime timestamp) {
+  Future<void> updateCurrentLanguage(String language) {
+    return _transaction(() async {
+      await _lastEventTimestampBox.put('current_language', language);
+    });
+  }
+
+  Future<void> _updateLastUpdated(DateTime timestamp, String language) async {
     return _transaction(() async {
       await _lastEventTimestampBox.put(
-        'last_updated',
+        _langKey('last_updated', language),
         timestamp.toIso8601String(),
       );
     });
   }
 
-  Future<void> updateXPOffset(int offset) {
+  Future<void> updateXPOffset(int offset, String language) async {
     return _transaction(() async {
-      final stats = await getDerivedStats();
-      final updatedStats = stats.copyWith(offset: offset);
+      final stats = await getDerivedStats(language);
+      final updatedStats = stats.copyWithOffset(offset);
       await _derivedStatsBox.put(
-        'derived_stats',
+        _langKey('derived_stats', language),
         updatedStats.toJson(),
       );
     });
   }
 
-  Future<void> updateDerivedStats(DerivedAnalyticsDataModel newStats) =>
-      _derivedStatsBox.put(
-        'derived_stats',
-        newStats.toJson(),
+  Future<void> updateTotalXP(int totalXP, String language) {
+    return _transaction(() async {
+      final stats = await getDerivedStats(language);
+      final updatedStats = stats.copyWithTotalXP(totalXP);
+      await _derivedStatsBox.put(
+        _langKey('derived_stats', language),
+        updatedStats.toJson(),
       );
+    });
+  }
+
+  Future<void> updateDerivedStats(
+    DerivedAnalyticsDataModel newStats,
+    String language,
+  ) => _derivedStatsBox.put(
+    _langKey('derived_stats', language),
+    newStats.toJson(),
+  );
 
   Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
+    String language,
   ) async {
     if (events.isEmpty) return;
 
     final stopwatch = Stopwatch()..start();
     await _transaction(() async {
-      final lastUpdated = await getLastEventTimestamp();
+      final lastUpdated = await getLastEventTimestamp(language);
 
       DateTime mostRecent = lastUpdated ?? events.first.event.originServerTs;
-      final existingKeys = (await _serverConstructsBox.getAllKeys()).toSet();
+      final existingKeys = (await _serverConstructsBox.getAllKeys())
+          .where((key) => _isLanguageKey(key, language))
+          .toSet();
 
       final List<OneConstructUse> aggregatedVocabUses = [];
       final List<OneConstructUse> aggregatedMorphUses = [];
@@ -538,7 +569,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         ).toString();
 
         if (lastUpdated != null && ts.isBefore(lastUpdated)) continue;
-        if (existingKeys.contains(key)) continue;
+        if (existingKeys.contains(_langKey(key, language))) continue;
 
         if (ts.isAfter(mostRecent)) mostRecent = ts;
 
@@ -555,7 +586,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       // Write events sequentially
       for (final e in pendingWrites.entries) {
         _serverConstructsBox.put(
-          e.key,
+          _langKey(e.key, language),
           e.value.map((u) => u.toJson()).toList(),
         );
       }
@@ -563,7 +594,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       // Update aggregates
       final aggVocabUpdates = await _aggregateFromBox(
         _aggregatedServerVocabConstructsBox,
-        _groupUses(aggregatedVocabUses),
+        _groupUses(aggregatedVocabUses, language),
       );
 
       for (final entry in aggVocabUpdates.entries) {
@@ -575,7 +606,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       final aggMorphUpdates = await _aggregateFromBox(
         _aggregatedServerMorphConstructsBox,
-        _groupUses(aggregatedMorphUses),
+        _groupUses(aggregatedMorphUses, language),
       );
 
       for (final entry in aggMorphUpdates.entries) {
@@ -587,12 +618,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       // Update timestamp
       await _lastEventTimestampBox.put(
-        'last_event_timestamp',
+        _langKey('last_event_timestamp', language),
         mostRecent.toIso8601String(),
       );
     });
 
-    await updateLastUpdated(DateTime.now());
+    await _updateLastUpdated(DateTime.now(), language);
 
     stopwatch.stop();
     Logs().i(
@@ -602,6 +633,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<void> updateLocalAnalytics(
     List<OneConstructUse> uses,
+    String language,
   ) async {
     if (uses.isEmpty) return;
 
@@ -610,7 +642,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       // Store local constructs
       final key = DateTime.now().millisecondsSinceEpoch;
       _localConstructsBox.put(
-        key.toString(),
+        _langKey(key.toString(), language),
         uses.map((u) => u.toJson()).toList(),
       );
 
@@ -625,7 +657,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       // Update aggregates
       final aggVocabUpdates = await _aggregateFromBox(
         _aggregatedLocalVocabConstructsBox,
-        _groupUses(vocabUses),
+        _groupUses(vocabUses, language),
       );
 
       for (final entry in aggVocabUpdates.entries) {
@@ -637,7 +669,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       final aggMorphUpdates = await _aggregateFromBox(
         _aggregatedLocalMorphConstructsBox,
-        _groupUses(morphUses),
+        _groupUses(morphUses, language),
       );
 
       for (final entry in aggMorphUpdates.entries) {
@@ -648,7 +680,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       }
     });
 
-    await updateLastUpdated(DateTime.now());
+    await _updateLastUpdated(DateTime.now(), language);
 
     stopwatch.stop();
     Logs().i("Local analytics update took ${stopwatch.elapsedMilliseconds} ms");

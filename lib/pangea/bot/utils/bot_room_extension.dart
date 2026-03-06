@@ -47,11 +47,7 @@ extension BotRoomExtension on Room {
         ErrorHandler.logError(
           e: e,
           s: s,
-          data: {
-            'roomId': id,
-            'options': options.toJson(),
-            'attempt': attempt,
-          },
+          data: {'roomId': id, 'options': options.toJson(), 'attempt': attempt},
         );
 
         if (attempt == maxRetries) {

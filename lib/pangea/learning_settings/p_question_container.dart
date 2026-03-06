@@ -5,7 +5,7 @@ class PQuestionContainer extends StatelessWidget {
   const PQuestionContainer({super.key, required this.title});
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.sizeOf(context);
     return Container(
       constraints: const BoxConstraints(minWidth: 100, maxWidth: 650),
       padding: EdgeInsets.all(size.height * 0.01),

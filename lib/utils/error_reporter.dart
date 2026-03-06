@@ -6,18 +6,30 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class ErrorReporter {
-  final BuildContext context;
+  final BuildContext? context;
   final String? message;
 
   const ErrorReporter(this.context, [this.message]);
 
-  void onErrorCallback(Object error, [StackTrace? stackTrace]) async {
+  static const Set<String> ingoredTypes = {
+    "IOException",
+    "ClientException",
+    "SocketException",
+    "TlsException",
+    "HandshakeException",
+  };
+
+  void onErrorCallback(Object error, [StackTrace? stackTrace]) {
+    if (ingoredTypes.contains(error.runtimeType.toString())) return;
     Logs().e(message ?? 'Error caught', error, stackTrace);
     // #Pangea
+    // final text = '$error\n${stackTrace ?? ''}';
+    // return _onErrorCallback(text);
+    if (context == null) return;
     try {
       // Attempt to retrieve the L10n instance using the current context
-      final L10n l10n = L10n.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
+      final L10n l10n = L10n.of(context!);
+      ScaffoldMessenger.of(context!).showSnackBar(
         SnackBar(
           content: Text(
             l10n.oopsSomethingWentWrong, // Use the non-null L10n instance to get the error message
@@ -37,20 +49,22 @@ class ErrorReporter {
         data: {},
       );
     }
+    // Pangea#
   }
-  //   final text = '$error\n${stackTrace ?? ''}';
+
+  // #Pangea
+  // void _onErrorCallback(String text) async {
   //   await showAdaptiveDialog(
-  //     context: context,
+  //     context: context!,
   //     builder: (context) => AlertDialog.adaptive(
   //       title: Text(L10n.of(context).reportErrorDescription),
   //       content: SizedBox(
   //         height: 256,
   //         width: 256,
   //         child: SingleChildScrollView(
-  //           child: HighlightView(
+  //           child: Text(
   //             text,
-  //             language: 'sh',
-  //             theme: shadesOfPurpleTheme,
+  //             style: const TextStyle(fontSize: 14, fontFamily: 'RobotoMono'),
   //           ),
   //         ),
   //       ),
@@ -60,9 +74,7 @@ class ErrorReporter {
   //           child: Text(L10n.of(context).close),
   //         ),
   //         AdaptiveDialogAction(
-  //           onPressed: () => Clipboard.setData(
-  //             ClipboardData(text: text),
-  //           ),
+  //           onPressed: () => Clipboard.setData(ClipboardData(text: text)),
   //           child: Text(L10n.of(context).copy),
   //         ),
   //         AdaptiveDialogAction(

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,16 +27,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class VocabAnalyticsListView extends StatelessWidget {
   final ConstructAnalyticsViewState controller;
 
-  const VocabAnalyticsListView({
-    super.key,
-    required this.controller,
-  });
+  const VocabAnalyticsListView({super.key, required this.controller});
 
   List<ConstructUses>? get _filteredVocab =>
-      controller.vocab?.where(_vocabFilter).toList();
+      controller.vocab?.where(_vocabFilter).sorted(_sortBySearch).toList();
 
   bool _vocabFilter(ConstructUses use) =>
-      use.lemma.isNotEmpty && _levelFilter(use) && _searchFilter(use);
+      _levelFilter(use) && _searchFilter(use);
 
   bool _levelFilter(ConstructUses use) {
     if (controller.selectedConstructLevel == null) {
@@ -51,10 +49,48 @@ class VocabAnalyticsListView extends StatelessWidget {
     }
 
     final normalizedLemma = removeDiacritics(use.lemma).toLowerCase();
-    final normalizedSearch =
-        removeDiacritics(controller.searchController.text).toLowerCase();
+    final normalizedSearch = removeDiacritics(
+      controller.searchController.text,
+    ).toLowerCase();
 
     return normalizedLemma.contains(normalizedSearch);
+  }
+
+  int _sortBySearch(ConstructUses a, ConstructUses b) {
+    if (!controller.isSearching ||
+        controller.searchController.text.trim().isEmpty) {
+      return 0; // No sorting if not searching
+    }
+
+    final normalizedSearch = removeDiacritics(
+      controller.searchController.text,
+    ).toLowerCase();
+
+    final normalizedLemmaA = removeDiacritics(a.lemma).toLowerCase();
+    final normalizedLemmaB = removeDiacritics(b.lemma).toLowerCase();
+
+    // Sort matches that start with the search term first, then by closest match
+    final startsWithA = normalizedLemmaA.startsWith(normalizedSearch);
+    final startsWithB = normalizedLemmaB.startsWith(normalizedSearch);
+
+    if (startsWithA && !startsWithB) {
+      return -1; // A comes first
+    } else if (!startsWithA && startsWithB) {
+      return 1; // B comes first
+    } else {
+      // If both start with the search term or neither does, sort by closest match
+      final indexA = normalizedLemmaA.indexOf(normalizedSearch);
+      final indexB = normalizedLemmaB.indexOf(normalizedSearch);
+      if (indexA == -1 && indexB == -1) {
+        return 0; // Neither contains the search term
+      } else if (indexA == -1) {
+        return 1; // B comes first
+      } else if (indexB == -1) {
+        return -1; // A comes first
+      } else {
+        return indexA.compareTo(indexB); // Closer match comes first
+      }
+    }
   }
 
   @override
@@ -62,7 +98,8 @@ class VocabAnalyticsListView extends StatelessWidget {
     final vocab = controller.vocab;
     final List<Widget> filters = ConstructLevelEnum.values.reversed
         .map((constructLevelCategory) {
-          final int count = vocab
+          final int count =
+              vocab
                   ?.where((e) => e.lemmaCategory == constructLevelCategory)
                   .length ??
               0;
@@ -76,8 +113,8 @@ class VocabAnalyticsListView extends StatelessWidget {
                 shape: BoxShape.circle,
                 color:
                     controller.selectedConstructLevel == constructLevelCategory
-                        ? constructLevelCategory.color(context).withAlpha(50)
-                        : null,
+                    ? constructLevelCategory.color(context).withAlpha(50)
+                    : null,
               ),
               padding: const EdgeInsets.all(8.0),
               child: Badge(
@@ -101,8 +138,9 @@ class VocabAnalyticsListView extends StatelessWidget {
       filters.add(const DownloadAnalyticsButton());
     }
 
-    final constructParam =
-        GoRouterState.of(context).pathParameters['construct'];
+    final constructParam = GoRouterState.of(
+      context,
+    ).pathParameters['construct'];
 
     ConstructIdentifier? selectedConstruct;
     if (constructParam != null) {
@@ -126,10 +164,8 @@ class VocabAnalyticsListView extends StatelessWidget {
             alignment: Alignment.center,
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
-              transitionBuilder: (child, animation) => FadeTransition(
-                opacity: animation,
-                child: child,
-              ),
+              transitionBuilder: (child, animation) =>
+                  FadeTransition(opacity: animation, child: child),
               child: controller.isSearching
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,6 +189,31 @@ class VocabAnalyticsListView extends StatelessWidget {
                         IconButton(
                           icon: const Icon(Icons.close),
                           onPressed: controller.toggleSearching,
+                        ),
+                      ],
+                    )
+                  : controller.selectMode
+                  ? Row(
+                      mainAxisAlignment: .spaceBetween,
+                      key: const ValueKey('selection'),
+                      children: [
+                        Row(
+                          mainAxisSize: .min,
+                          children: [
+                            IconButton(
+                              onPressed: controller.clearSelectedConstructs,
+                              icon: const Icon(Icons.close),
+                            ),
+                            Text(
+                              "${controller.selectedConstructs.length}",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          onPressed: controller.blockSelectedConstructs,
+                          icon: Icon(Icons.delete_outline),
+                          color: Theme.of(context).colorScheme.error,
                         ),
                       ],
                     )
@@ -182,9 +243,7 @@ class VocabAnalyticsListView extends StatelessWidget {
               if (filteredVocab == null)
                 const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
+                  child: Center(child: CircularProgressIndicator.adaptive()),
                 )
               else
                 filteredVocab.isEmpty
@@ -203,38 +262,49 @@ class VocabAnalyticsListView extends StatelessWidget {
                     : SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 100.0,
-                          mainAxisExtent: 100.0,
-                          crossAxisSpacing: 8.0,
-                          mainAxisSpacing: 8.0,
-                        ),
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final vocabItem = filteredVocab[index];
-                            return VocabAnalyticsListTile(
-                              onTap: () {
-                                TtsController.tryToSpeak(
-                                  vocabItem.id.lemma,
-                                  langCode: MatrixState.pangeaController
-                                      .userController.userL2Code!,
-                                );
-                                AnalyticsNavigationUtil.navigateToAnalytics(
-                                  context: context,
-                                  view: ProgressIndicatorEnum.wordsUsed,
-                                  construct: vocabItem.id,
-                                );
-                              },
-                              constructId: vocabItem.id,
-                              textColor: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? vocabItem.lemmaCategory.darkColor(context)
-                                  : vocabItem.lemmaCategory.color(context),
-                              level: vocabItem.lemmaCategory,
-                              selected: vocabItem.id == selectedConstruct,
-                            );
-                          },
-                          childCount: filteredVocab.length,
-                        ),
+                              maxCrossAxisExtent: 100.0,
+                              mainAxisExtent: 100.0,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8.0,
+                            ),
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final vocabItem = filteredVocab[index];
+                          return VocabAnalyticsListTile(
+                            onTap: controller.selectMode
+                                ? () => controller.toggleSelectedConstruct(
+                                    vocabItem.id,
+                                  )
+                                : () {
+                                    TtsController.tryToSpeak(
+                                      vocabItem.id.lemma,
+                                      langCode: MatrixState
+                                          .pangeaController
+                                          .userController
+                                          .userL2Code!,
+                                      pos: vocabItem.id.category,
+                                    );
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: vocabItem.id,
+                                    );
+                                  },
+                            onLongPress: () {
+                              controller.toggleSelectedConstruct(vocabItem.id);
+                            },
+                            constructId: vocabItem.id,
+                            textColor:
+                                Theme.of(context).brightness == Brightness.light
+                                ? vocabItem.lemmaCategory.darkColor(context)
+                                : vocabItem.lemmaCategory.color(context),
+                            level: vocabItem.lemmaCategory,
+                            selected:
+                                vocabItem.id == selectedConstruct ||
+                                controller.selectedConstructs.contains(
+                                  vocabItem.id,
+                                ),
+                          );
+                        }, childCount: filteredVocab.length),
                       ),
               const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],

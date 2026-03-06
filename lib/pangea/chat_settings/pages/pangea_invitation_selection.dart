@@ -23,7 +23,8 @@ enum InvitationFilter {
   contacts,
   knocking,
   invited,
-  public;
+  public,
+  banned;
 
   static InvitationFilter? fromString(String value) {
     switch (value) {
@@ -39,6 +40,8 @@ enum InvitationFilter {
         return InvitationFilter.public;
       case 'participants':
         return InvitationFilter.participants;
+      case 'banned':
+        return InvitationFilter.banned;
       default:
         return null;
     }
@@ -58,6 +61,8 @@ enum InvitationFilter {
         return 'public';
       case InvitationFilter.participants:
         return 'participants';
+      case InvitationFilter.banned:
+        return 'banned';
     }
   }
 }
@@ -91,13 +96,20 @@ class PangeaInvitationSelectionController
   void initState() {
     super.initState();
 
-    _room?.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    ).then((_) {
-      if (mounted) setState(() {});
-    });
+    _room
+        ?.requestParticipants(
+          [
+            Membership.join,
+            Membership.invite,
+            Membership.knock,
+            Membership.ban,
+          ],
+          false,
+          true,
+        )
+        .then((_) {
+          if (mounted) setState(() {});
+        });
 
     if (widget.initialFilter != null &&
         availableFilters.contains(widget.initialFilter)) {
@@ -137,6 +149,8 @@ class PangeaInvitationSelectionController
         return l10n.public;
       case InvitationFilter.participants:
         return l10n.participants;
+      case InvitationFilter.banned:
+        return l10n.banned;
     }
   }
 
@@ -167,14 +181,13 @@ class PangeaInvitationSelectionController
         (f) => switch (f) {
           InvitationFilter.space => spaceParent != null,
           InvitationFilter.contacts => true,
-          InvitationFilter.invited => participants?.any(
-                (u) => u.membership == Membership.invite,
-              ) ??
-              false,
-          InvitationFilter.knocking => participants?.any(
-                (u) => u.membership == Membership.knock,
-              ) ??
-              false,
+          InvitationFilter.invited =>
+            participants?.any((u) => u.membership == Membership.invite) ??
+                false,
+          InvitationFilter.knocking =>
+            participants?.any((u) => u.membership == Membership.knock) ?? false,
+          InvitationFilter.banned =>
+            participants?.any((u) => u.membership == Membership.ban) ?? false,
           InvitationFilter.public => true,
           InvitationFilter.participants => true,
         },
@@ -182,25 +195,30 @@ class PangeaInvitationSelectionController
       .toList();
 
   List<User>? get participants {
-    return _room?.getParticipants();
+    return _room?.getParticipants([
+      Membership.join,
+      Membership.invite,
+      Membership.knock,
+      Membership.ban,
+    ]);
   }
 
   List<Membership> get _membershipOrder => [
-        Membership.join,
-        Membership.invite,
-        Membership.knock,
-        Membership.leave,
-        Membership.ban,
-      ];
+    Membership.join,
+    Membership.invite,
+    Membership.knock,
+    Membership.leave,
+    Membership.ban,
+  ];
 
   String? membershipCopy(Membership? membership) => switch (membership) {
-        Membership.ban => L10n.of(context).banned,
-        Membership.invite => L10n.of(context).invited,
-        Membership.join => null,
-        Membership.knock => L10n.of(context).knocking,
-        Membership.leave => L10n.of(context).leftTheChat,
-        null => null,
-      };
+    Membership.ban => L10n.of(context).banned,
+    Membership.invite => L10n.of(context).invited,
+    Membership.join => null,
+    Membership.knock => L10n.of(context).knocking,
+    Membership.leave => L10n.of(context).leftTheChat,
+    null => null,
+  };
 
   int _sortUsers(User a, User b) {
     // sort yourself to the top
@@ -256,21 +274,29 @@ class PangeaInvitationSelectionController
       case InvitationFilter.contacts:
         contacts = getContacts(context);
       case InvitationFilter.invited:
-        contacts = participants
-                ?.where(
-                  (u) => u.membership == Membership.invite,
-                )
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.invite)
                 .toList() ??
             [];
       case InvitationFilter.knocking:
-        contacts = participants
-                ?.where(
-                  (u) => u.membership == Membership.knock,
-                )
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.knock)
+                .toList() ??
+            [];
+      case InvitationFilter.banned:
+        contacts =
+            participants
+                ?.where((u) => u.membership == Membership.ban)
                 .toList() ??
             [];
       default:
-        contacts = participants ?? [];
+        contacts =
+            participants
+                ?.where((p) => p.membership != Membership.ban)
+                .toList() ??
+            [];
     }
 
     final search = controller.text.toLowerCase();
@@ -323,11 +349,7 @@ class PangeaInvitationSelectionController
       await _room!.addJoinCode();
       if (mounted) setState(() {});
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': _room!.id},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': _room!.id});
     }
   }
 
@@ -343,9 +365,9 @@ class PangeaInvitationSelectionController
     try {
       response = await matrix.client.searchUser(text, limit: 100);
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text((e).toLocalizedString(context))),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text((e).toLocalizedString(context))));
       return;
     } finally {
       setState(() => loading = false);
@@ -367,8 +389,7 @@ class PangeaInvitationSelectionController
         );
       }
 
-      final participants = this
-          .participants
+      final participants = this.participants
           ?.where(
             (user) =>
                 [Membership.join, Membership.invite].contains(user.membership),
@@ -457,9 +478,9 @@ class PangeaInvitationSelectionController
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(result.error.toString())),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(result.error.toString())));
       }
     });
   }

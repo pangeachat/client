@@ -34,10 +34,11 @@ class PLanguageStore {
       )
       .toList();
 
-  static Future<void> initialize({forceRefresh = false}) async {
+  static Future<void> initialize({bool forceRefresh = false}) async {
     _langList = await _getCachedLanguages();
     final isOutdated = await _shouldFetch;
-    final shouldFetch = forceRefresh ||
+    final shouldFetch =
+        forceRefresh ||
         isOutdated ||
         _langList.isEmpty ||
         _langList.every((lang) => !lang.l2);
@@ -47,8 +48,8 @@ class PLanguageStore {
       _langList = result.isValue
           ? result.asValue!.value
           : LanguageConstants.languageList
-              .map((e) => LanguageModel.fromJson(e))
-              .toList();
+                .map((e) => LanguageModel.fromJson(e))
+                .toList();
 
       await _MyShared.saveJson(PrefKey.languagesKey, {
         PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
@@ -105,13 +106,11 @@ class PLanguageStore {
   }
 
   static LanguageModel? byLangCode(String langCode) =>
-      _langList.firstWhereOrNull(
-        (element) => element.langCode == langCode,
-      );
+      _langList.firstWhereOrNull((element) => element.langCode == langCode);
 }
 
 class _MyShared {
-  static saveString(String key, String value) async {
+  static Future<void> saveString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, value);
   }
@@ -122,7 +121,7 @@ class _MyShared {
     return source;
   }
 
-  static saveJson(String key, Map value) async {
+  static Future<void> saveJson(String key, Map value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, json.encode(value));
   }

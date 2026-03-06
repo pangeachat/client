@@ -11,10 +11,7 @@ class LanguageMismatchRepo {
   static Future<void> setRoom(String roomId) async => _set(_roomKey(roomId));
 
   static Future<void> _set(String key) async {
-    await _storage.write(
-      key,
-      DateTime.now().toIso8601String(),
-    );
+    await _storage.write(key, DateTime.now().toIso8601String());
   }
 
   static bool _get(String key) {

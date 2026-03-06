@@ -54,7 +54,8 @@ class OverlayCenterContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final ownMessage = event.senderId == event.room.client.userID;
     return IgnorePointer(
-      ignoring: !isTransitionAnimation &&
+      ignoring:
+          !isTransitionAnimation &&
           readingAssistanceMode != ReadingAssistanceMode.practiceMode,
       child: Container(
         constraints: const BoxConstraints(
@@ -87,8 +88,8 @@ class OverlayCenterContent extends StatelessWidget {
                   readingAssistanceMode: readingAssistanceMode,
                   canRefresh:
                       (event.eventId == chatController.refreshEventID) &&
-                          (readingAssistanceMode !=
-                              ReadingAssistanceMode.practiceMode),
+                      (readingAssistanceMode !=
+                          ReadingAssistanceMode.practiceMode),
                 ),
               ),
               Padding(
@@ -98,7 +99,7 @@ class OverlayCenterContent extends StatelessWidget {
                 ),
                 child: ValueListenableBuilder(
                   valueListenable: reactionsWidth,
-                  builder: (context, width, __) => PangeaMessageReactions(
+                  builder: (context, width, _) => PangeaMessageReactions(
                     event,
                     chatController.timeline!,
                     chatController,

@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -20,7 +21,10 @@ class Settings3PidView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const Center(child: BackButton()),
-        title: Text(L10n.of(context).passwordRecovery),
+        // #Pangea
+        // title: Text(L10n.of(context).passwordRecovery),
+        title: Text(L10n.of(context).changeEmail),
+        // Pangea#
         actions: [
           IconButton(
             icon: const Icon(Icons.add_outlined),
@@ -33,67 +37,78 @@ class Settings3PidView extends StatelessWidget {
         withScrolling: false,
         child: FutureBuilder<List<ThirdPartyIdentifier>?>(
           future: controller.request,
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<List<ThirdPartyIdentifier>?> snapshot,
-          ) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(
-                  snapshot.error.toString(),
-                  textAlign: TextAlign.center,
-                ),
-              );
-            }
-            if (!snapshot.hasData) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-              );
-            }
-            final identifier = snapshot.data!;
-            return Column(
-              children: [
-                ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: theme.scaffoldBackgroundColor,
-                    foregroundColor:
-                        identifier.isEmpty ? Colors.orange : Colors.grey,
-                    child: Icon(
-                      identifier.isEmpty
-                          ? Icons.warning_outlined
-                          : Icons.info_outlined,
+          builder:
+              (
+                BuildContext context,
+                AsyncSnapshot<List<ThirdPartyIdentifier>?> snapshot,
+              ) {
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text(
+                      // #Pangea
+                      // snapshot.error.toString(),
+                      snapshot.error!.toLocalizedString(context),
+                      // Pangea#
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  title: Text(
-                    identifier.isEmpty
-                        ? L10n.of(context).noPasswordRecoveryDescription
-                        : L10n.of(context)
-                            .withTheseAddressesRecoveryDescription,
-                  ),
-                ),
-                const Divider(),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: identifier.length,
-                    itemBuilder: (BuildContext context, int i) => ListTile(
+                  );
+                }
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                  );
+                }
+                final identifier = snapshot.data!;
+                return Column(
+                  children: [
+                    ListTile(
                       leading: CircleAvatar(
                         backgroundColor: theme.scaffoldBackgroundColor,
-                        foregroundColor: Colors.grey,
-                        child: Icon(identifier[i].iconData),
+                        foregroundColor: identifier.isEmpty
+                            ? Colors.orange
+                            : Colors.grey,
+                        child: Icon(
+                          identifier.isEmpty
+                              ? Icons.warning_outlined
+                              : Icons.info_outlined,
+                        ),
                       ),
-                      title: Text(identifier[i].address),
-                      trailing: IconButton(
-                        tooltip: L10n.of(context).delete,
-                        icon: const Icon(Icons.delete_forever_outlined),
-                        color: Colors.red,
-                        onPressed: () => controller.delete3Pid(identifier[i]),
+                      title: Text(
+                        identifier.isEmpty
+                            // #Pangea
+                            //     ? L10n.of(context).noPasswordRecoveryDescription
+                            //     : L10n.of(
+                            //         context,
+                            //       ).withTheseAddressesRecoveryDescription,
+                            ? L10n.of(context).noAddressDescription
+                            : L10n.of(context).withTheseAddressesDescription,
+                        // Pangea#
                       ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          },
+                    const Divider(),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: identifier.length,
+                        itemBuilder: (BuildContext context, int i) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: theme.scaffoldBackgroundColor,
+                            foregroundColor: Colors.grey,
+                            child: Icon(identifier[i].iconData),
+                          ),
+                          title: Text(identifier[i].address),
+                          trailing: IconButton(
+                            tooltip: L10n.of(context).delete,
+                            icon: const Icon(Icons.delete_forever_outlined),
+                            color: Colors.red,
+                            onPressed: () =>
+                                controller.delete3Pid(identifier[i]),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
         ),
       ),
     );

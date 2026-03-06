@@ -22,6 +22,28 @@ class _APICallCacheItem {
   _APICallCacheItem(this.time, this.future);
 }
 
+class _MorphRepoCacheItem {
+  final DateTime time;
+  final MorphFeaturesAndTags morphs;
+
+  _MorphRepoCacheItem(this.time, this.morphs);
+
+  bool get isExpired =>
+      DateTime.now().difference(time).inMinutes > 1440; // 24 hours
+
+  Map<String, dynamic> toJson() => {
+    "time": time.toIso8601String(),
+    "morphs": morphs.toJson(),
+  };
+
+  factory _MorphRepoCacheItem.fromJson(Map<String, dynamic> json) {
+    return _MorphRepoCacheItem(
+      DateTime.parse(json["time"]),
+      MorphFeaturesAndTags.fromJson(json["morphs"]),
+    );
+  }
+}
+
 class MorphsRepo {
   // long-term storage of morphs
   static final GetStorage _morphsStorage = GetStorage('morphs_storage');
@@ -32,14 +54,8 @@ class MorphsRepo {
   static const int _cacheDurationMinutes = 1;
 
   static void set(String languageCode, MorphFeaturesAndTags response) {
-    _morphsStorage.write(
-      languageCode,
-      response.toJson(),
-    );
-  }
-
-  static MorphFeaturesAndTags fromJson(Map<String, dynamic> json) {
-    return MorphFeaturesAndTags.fromJson(json);
+    final entry = _MorphRepoCacheItem(DateTime.now(), response);
+    _morphsStorage.write(languageCode, entry.toJson());
   }
 
   static Future<MorphFeaturesAndTags> _fetch(String languageCode) async {
@@ -54,20 +70,14 @@ class MorphsRepo {
       );
 
       final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
-      final response = MorphsRepo.fromJson(decodedBody);
+      final response = MorphFeaturesAndTags.fromJson(decodedBody);
 
       set(languageCode, response);
 
       return response;
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "languageCode": languageCode,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"languageCode": languageCode});
       return defaultMorphMapping;
     }
   }
@@ -90,7 +100,16 @@ class MorphsRepo {
     // check if we have a cached morphs for this language code
     final cachedJson = _morphsStorage.read(langCodeShort);
     if (cachedJson != null) {
-      return MorphsRepo.fromJson(cachedJson);
+      try {
+        final cacheItem = _MorphRepoCacheItem.fromJson(cachedJson);
+        if (!cacheItem.isExpired) {
+          return cacheItem.morphs;
+        } else {
+          _morphsStorage.remove(langCodeShort);
+        }
+      } catch (e) {
+        _morphsStorage.remove(langCodeShort);
+      }
     }
 
     // check if we have a cached call for this language code
@@ -119,7 +138,10 @@ class MorphsRepo {
       MatrixState.pangeaController.userController.userL2!.langCodeShort,
     );
     if (cachedJson != null) {
-      return MorphsRepo.fromJson(cachedJson);
+      final cacheItem = _MorphRepoCacheItem.fromJson(cachedJson);
+      if (!cacheItem.isExpired) {
+        return cacheItem.morphs;
+      }
     }
     return defaultMorphMapping;
   }

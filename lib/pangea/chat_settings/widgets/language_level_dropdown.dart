@@ -23,9 +23,7 @@ class LanguageLevelDropdown extends StatelessWidget {
       alignedDropdown: true,
       child: DropdownButtonFormField<LanguageLevelTypeEnum>(
         itemHeight: null,
-        decoration: InputDecoration(
-          labelText: l10n.cefrLevelLabel,
-        ),
+        decoration: InputDecoration(labelText: l10n.cefrLevelLabel),
         selectedItemBuilder: (context) => LanguageLevelTypeEnum.values
             .map((levelOption) => Text(levelOption.title(context)))
             .toList(),
@@ -38,8 +36,9 @@ class LanguageLevelDropdown extends StatelessWidget {
               }
             : null,
         initialValue: initialLevel,
-        items: LanguageLevelTypeEnum.values
-            .map((LanguageLevelTypeEnum levelOption) {
+        items: LanguageLevelTypeEnum.values.map((
+          LanguageLevelTypeEnum levelOption,
+        ) {
           return DropdownMenuItem(
             value: levelOption,
             child: Padding(

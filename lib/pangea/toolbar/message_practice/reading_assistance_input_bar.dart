@@ -5,7 +5,6 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
@@ -52,22 +51,22 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               spacing: 4.0,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ...MessagePracticeMode.practiceModes.map(
-                  (m) {
-                    final complete = widget.controller.isPracticeSessionDone(
-                      m.associatedActivityType!,
-                    );
-                    return ToolbarButton(
-                      mode: m,
-                      setMode: () => widget.controller.updateToolbarMode(m),
-                      isComplete: complete,
-                      isSelected: widget.controller.practiceMode == m,
-                      shimmer: widget.controller.practiceMode ==
-                              MessagePracticeMode.noneSelected &&
-                          !complete,
-                    );
-                  },
-                ),
+                ...MessagePracticeMode.practiceModes.map((m) {
+                  final complete = widget.controller.isPracticeSessionDone(
+                    m.associatedActivityType!,
+                  );
+
+                  final practiceMode = widget.controller.practiceMode;
+                  return ToolbarButton(
+                    mode: m,
+                    setMode: () => widget.controller.updateToolbarMode(m),
+                    isComplete: complete,
+                    isSelected: practiceMode == m,
+                    shimmer:
+                        practiceMode == MessagePracticeMode.noneSelected &&
+                        !complete,
+                  );
+                }),
               ],
             ),
             Padding(
@@ -123,18 +122,15 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
     if (controller.pangeaMessageEvent.isAudioMessage == true) {
       return const SizedBox();
     }
-    final activityType = mode.associatedActivityType;
-    final activityCompleted =
-        activityType != null && controller.isPracticeSessionDone(activityType);
+
+    final target = controller.currentTarget;
+    final activityCompleted = controller.isCurrentPracticeSessionDone;
 
     switch (mode) {
       case MessagePracticeMode.noneSelected:
         return controller.isTotallyDone
             ? const _AllDoneWidget()
-            : const Icon(
-                Symbols.fitness_center,
-                size: 60.0,
-              );
+            : const Icon(Symbols.fitness_center, size: 60.0);
 
       case MessagePracticeMode.wordEmoji:
       case MessagePracticeMode.wordMeaning:
@@ -143,7 +139,6 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           return const _AllDoneWidget();
         }
 
-        final target = controller.practiceSelection?.getTarget(activityType!);
         if (target == null || activityCompleted) {
           return const Icon(
             Symbols.fitness_center,
@@ -170,22 +165,8 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           );
         }
 
-        PracticeTarget? target;
-        if (controller.practiceSelection != null &&
-            controller.selectedMorph != null) {
-          target = controller.practiceSelection!.getMorphTarget(
-            controller.selectedMorph!.token,
-            controller.selectedMorph!.morph,
-          );
-        }
-
         if (target == null) {
-          return const Center(
-            child: Icon(
-              Symbols.fitness_center,
-              size: 60.0,
-            ),
-          );
+          return const Center(child: Icon(Symbols.fitness_center, size: 60.0));
         }
 
         return PracticeActivityCard(
@@ -209,9 +190,9 @@ class _AllDoneWidget extends StatelessWidget {
         Text(
           L10n.of(context).allDone,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                letterSpacing: 0.5,
-              ),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
           textAlign: TextAlign.center,
         ),
         ElevatedButton(

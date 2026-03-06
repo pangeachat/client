@@ -13,10 +13,7 @@ import 'package:fluffychat/utils/stream_extension.dart';
 
 class KnockingUsersIndicator extends StatefulWidget {
   final Room room;
-  const KnockingUsersIndicator({
-    super.key,
-    required this.room,
-  });
+  const KnockingUsersIndicator({super.key, required this.room});
 
   @override
   KnockingUsersIndicatorState createState() => KnockingUsersIndicatorState();
@@ -31,26 +28,41 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
   @override
   void initState() {
     super.initState();
-    _memberSubscription ??= widget.room.client.onRoomState.stream
-        .where(_isMemberUpdate)
-        .rateLimit(const Duration(seconds: 1))
-        .listen((_) => _setKnockingUsers());
+    _setKnockingSubscription();
+  }
 
-    widget.room.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    ).then((_) => _setKnockingUsers());
+  @override
+  void didUpdateWidget(covariant KnockingUsersIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.room.id != widget.room.id) {
+      _setKnockingSubscription();
+    }
+  }
+
+  @override
+  void dispose() {
+    _memberSubscription?.cancel();
+    super.dispose();
   }
 
   bool _isMemberUpdate(({String roomId, StrippedStateEvent state}) event) =>
       event.roomId == widget.room.id &&
       event.state.type == EventTypes.RoomMember;
 
-  @override
-  void dispose() {
+  void _setKnockingSubscription() {
     _memberSubscription?.cancel();
-    super.dispose();
+    _memberSubscription = widget.room.client.onRoomState.stream
+        .where(_isMemberUpdate)
+        .rateLimit(const Duration(seconds: 1))
+        .listen((_) => _setKnockingUsers());
+
+    widget.room
+        .requestParticipants(
+          [Membership.join, Membership.invite, Membership.knock],
+          false,
+          true,
+        )
+        .then((_) => _setKnockingUsers());
   }
 
   void _setKnockingUsers() {
@@ -68,14 +80,9 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
       child: _knockingUsers.isEmpty || !widget.room.isRoomAdmin
           ? const SizedBox()
           : Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 1,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
               child: Material(
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 clipBehavior: Clip.hardEdge,
                 child: ListTile(
                   minVerticalPadding: 0,
@@ -94,8 +101,9 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                         child: Text(
                           _knockingUsers.length == 1
                               ? L10n.of(context).aUserIsKnocking
-                              : L10n.of(context)
-                                  .usersAreKnocking(_knockingUsers.length),
+                              : L10n.of(
+                                  context,
+                                ).usersAreKnocking(_knockingUsers.length),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),

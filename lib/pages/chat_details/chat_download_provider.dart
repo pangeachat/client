@@ -37,11 +37,7 @@ mixin ChatDownloadProvider {
       await room.download(type, context);
     } on EmptyChatException {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            L10n.of(context).emptyChatDownloadWarning,
-          ),
-        ),
+        SnackBar(content: Text(L10n.of(context).emptyChatDownloadWarning)),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

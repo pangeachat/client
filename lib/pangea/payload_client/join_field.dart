@@ -3,15 +3,9 @@ class JoinField {
   final bool? hasNextPage;
   final int? totalDocs;
 
-  const JoinField({
-    this.docs,
-    this.hasNextPage,
-    this.totalDocs,
-  });
+  const JoinField({this.docs, this.hasNextPage, this.totalDocs});
 
-  factory JoinField.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory JoinField.fromJson(Map<String, dynamic> json) {
     final raw = json['docs'];
     final list = (raw is List) ? raw.map((e) => e as String).toList() : null;
 
@@ -23,10 +17,6 @@ class JoinField {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'docs': docs,
-      'hasNextPage': hasNextPage,
-      'totalDocs': totalDocs,
-    };
+    return {'docs': docs, 'hasNextPage': hasNextPage, 'totalDocs': totalDocs};
   }
 }

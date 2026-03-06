@@ -14,9 +14,7 @@ void main() async {
         editedText: editedText,
       );
 
-      assert(
-        edits.offset == 1 && edits.length == 3 && edits.insert == "erri",
-      );
+      assert(edits.offset == 1 && edits.length == 3 && edits.insert == "erri");
     });
 
     test("Test that data saved via ChoreoEdit can be accurately retrieved", () {
@@ -30,9 +28,7 @@ void main() async {
 
       final String retrieved = edits.editedText(originalText);
 
-      assert(
-        retrieved == editedText,
-      );
+      assert(retrieved == editedText);
     });
 
     test("Test that addRecord and lastText work correctly", () {

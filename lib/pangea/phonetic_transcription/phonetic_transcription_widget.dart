@@ -7,6 +7,8 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_disambiguation.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -14,6 +16,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PhoneticTranscriptionWidget extends StatefulWidget {
   final String text;
   final LanguageModel textLanguage;
+
+  /// POS tag for disambiguation (from PangeaToken, e.g. "VERB").
+  final String pos;
+
+  /// Morph features for disambiguation (from PangeaToken).
+  final Map<String, String>? morph;
 
   final TextStyle? style;
   final double? iconSize;
@@ -23,16 +31,22 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final VoidCallback? onTranscriptionFetched;
   final ValueNotifier<int>? reloadNotifier;
 
+  /// If true, only show the transcription text without audio controls or hover effects
+  final bool textOnly;
+
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
     required this.textLanguage,
+    required this.pos,
+    this.morph,
     this.style,
     this.iconSize,
     this.iconColor,
     this.maxLines,
     this.onTranscriptionFetched,
     this.reloadNotifier,
+    this.textOnly = false,
   });
 
   @override
@@ -54,6 +68,8 @@ class _PhoneticTranscriptionWidgetState
         context: context,
         targetID: targetId,
         langCode: widget.textLanguage.langCode,
+        pos: widget.pos,
+        morph: widget.morph,
         onStart: () {
           if (mounted) setState(() => _isPlaying = true);
         },
@@ -67,12 +83,45 @@ class _PhoneticTranscriptionWidgetState
   @override
   Widget build(BuildContext context) {
     final targetId = 'phonetic-transcription-${widget.text}-$hashCode';
+    if (widget.textOnly) {
+      return PhoneticTranscriptionBuilder(
+        key: Key(targetId),
+        textLanguage: widget.textLanguage,
+        text: widget.text,
+        reloadNotifier: widget.reloadNotifier,
+        builder: (context, controller) {
+          return switch (controller.state) {
+            AsyncError() => const SizedBox.shrink(),
+            AsyncLoaded<PTResponse>(value: final ptResponse) => Text(
+              disambiguate(
+                ptResponse.pronunciations,
+                pos: widget.pos,
+                morph: widget.morph,
+              ).displayTranscription,
+              textScaler: TextScaler.noScaling,
+              style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+              maxLines: widget.maxLines,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+            _ => SizedBox(
+              width: 30.0,
+              height: 16.0,
+              child: TextLoadingShimmer(width: 30.0, height: 16.0),
+            ),
+          };
+        },
+      );
+    }
+
     return HoverBuilder(
       builder: (context, hovering) {
         return Tooltip(
-          message:
-              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          message: _isPlaying
+              ? L10n.of(context).stop
+              : L10n.of(context).playAudio,
           child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () => _handleAudioTap(targetId),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
@@ -95,46 +144,50 @@ class _PhoneticTranscriptionWidgetState
                       AsyncError(error: final error) =>
                         error is UnsubscribedException
                             ? ErrorIndicator(
-                                message: L10n.of(context)
-                                    .subscribeToUnlockTranscriptions,
+                                message: L10n.of(
+                                  context,
+                                ).subscribeToUnlockTranscriptions,
                                 onTap: () {
                                   MatrixState
-                                      .pangeaController.subscriptionController
+                                      .pangeaController
+                                      .subscriptionController
                                       .showPaywall(context);
                                 },
                               )
                             : ErrorIndicator(
-                                message:
-                                    L10n.of(context).failedToFetchTranscription,
+                                message: L10n.of(
+                                  context,
+                                ).failedToFetchTranscription,
                               ),
-                      AsyncLoaded<String>(value: final transcription) => Row(
-                          spacing: 8.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                transcription,
-                                textScaler: TextScaler.noScaling,
-                                style: widget.style ??
-                                    Theme.of(context).textTheme.bodyMedium,
-                                maxLines: widget.maxLines,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                      AsyncLoaded<PTResponse>(value: final ptResponse) => Row(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              disambiguate(
+                                ptResponse.pronunciations,
+                                pos: widget.pos,
+                                morph: widget.morph,
+                              ).displayTranscription,
+                              textScaler: TextScaler.noScaling,
+                              style:
+                                  widget.style ??
+                                  Theme.of(context).textTheme.bodyMedium,
+                              maxLines: widget.maxLines,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            Icon(
-                              _isPlaying
-                                  ? Icons.pause_outlined
-                                  : Icons.volume_up,
-                              size: widget.iconSize ?? 24,
-                              color: widget.iconColor ??
-                                  Theme.of(context).iconTheme.color,
-                            ),
-                          ],
-                        ),
-                      _ => const TextLoadingShimmer(
-                          width: 125.0,
-                          height: 20.0,
-                        ),
+                          ),
+                          Icon(
+                            _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+                            size: widget.iconSize ?? 24,
+                            color:
+                                widget.iconColor ??
+                                Theme.of(context).iconTheme.color,
+                          ),
+                        ],
+                      ),
+                      _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
                     };
                   },
                 ),

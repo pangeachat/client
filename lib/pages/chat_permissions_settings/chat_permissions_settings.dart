@@ -38,9 +38,9 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   }) async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
     if (!room.canSendEvent(EventTypes.RoomPowerLevels)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(L10n.of(context).noPermission)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(L10n.of(context).noPermission)));
       return;
     }
     newLevel ??= await showPermissionChooser(
@@ -72,12 +72,13 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   }
 
   Stream get onChanged => Matrix.of(context).client.onSync.stream.where(
-        (e) =>
-            (e.rooms?.join?.containsKey(roomId) ?? false) &&
-            (e.rooms!.join![roomId!]?.timeline?.events
-                    ?.any((s) => s.type == EventTypes.RoomPowerLevels) ??
-                false),
-      );
+    (e) =>
+        (e.rooms?.join?.containsKey(roomId) ?? false) &&
+        (e.rooms!.join![roomId!]?.timeline?.events?.any(
+              (s) => s.type == EventTypes.RoomPowerLevels,
+            ) ??
+            false),
+  );
 
   // #Pangea
   Map<String, dynamic> get defaultPowerLevels {
@@ -96,10 +97,7 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
     return room.isSpace ? spacePowerLevels : chatPowerLevels;
   }
 
-  int getDefaultValue(
-    String permissionKey, {
-    String? category,
-  }) {
+  int getDefaultValue(String permissionKey, {String? category}) {
     final room = Matrix.of(context).client.getRoomById(roomId!);
     if (room == null) return 0;
     final powerLevelsContent = Map<String, Object?>.from(

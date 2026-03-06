@@ -4,8 +4,8 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'replacement_type_enum.dart';
 import 'span_choice_type_enum.dart';
-import 'span_data_type_enum.dart';
 
 class SpanData {
   final String? message;
@@ -14,7 +14,7 @@ class SpanData {
   final int offset;
   final int length;
   final String fullText;
-  final SpanDataType type;
+  final ReplacementTypeEnum type;
   final Rule? rule;
 
   SpanData({
@@ -35,7 +35,7 @@ class SpanData {
     int? offset,
     int? length,
     String? fullText,
-    SpanDataType? type,
+    ReplacementTypeEnum? type,
     Rule? rule,
   }) {
     return SpanData(
@@ -50,8 +50,28 @@ class SpanData {
     );
   }
 
-  factory SpanData.fromJson(Map<String, dynamic> json) {
+  /// Parse SpanData from JSON.
+  ///
+  /// [parentFullText] is used as fallback when the span JSON doesn't contain
+  /// full_text (e.g., when the server omits it to reduce payload size and
+  /// the full text is available at the response level as original_input).
+  factory SpanData.fromJson(
+    Map<String, dynamic> json, {
+    String? parentFullText,
+  }) {
     final Iterable? choices = json['choices'] ?? json['replacements'];
+    final dynamic rawType =
+        json['type'] ?? json['type_name'] ?? json['typeName'];
+    final String? typeString = rawType is Map<String, dynamic>
+        ? (rawType['type_name'] ?? rawType['type'] ?? rawType['typeName'])
+              as String?
+        : rawType as String?;
+
+    // Try to get fullText from span JSON, fall back to parent's original_input
+    final String? spanFullText =
+        json['sentence'] ?? json['full_text'] ?? json['fullText'];
+    final String fullText = spanFullText ?? parentFullText ?? '';
+
     return SpanData(
       message: json['message'],
       shortMessage: json['shortMessage'] ?? json['short_message'],
@@ -62,9 +82,10 @@ class SpanData {
           .toList(),
       offset: json['offset'] as int,
       length: json['length'] as int,
-      fullText:
-          json['sentence'] ?? json['full_text'] ?? json['fullText'] as String,
-      type: SpanDataType.fromJson(json['type'] as Map<String, dynamic>),
+      fullText: fullText,
+      type:
+          SpanDataTypeEnumExt.fromString(typeString) ??
+          ReplacementTypeEnum.other,
       rule: json['rule'] != null
           ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
           : null,
@@ -76,7 +97,7 @@ class SpanData {
       'offset': offset,
       'length': length,
       'full_text': fullText,
-      'type': type.toJson(),
+      'type': type.name,
     };
 
     if (message != null) {
@@ -102,9 +123,7 @@ class SpanData {
       offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
-    return choices?.firstWhereOrNull(
-      (choice) => choice.isBestCorrection,
-    );
+    return choices?.firstWhereOrNull((choice) => choice.type.isSuggestion);
   }
 
   int get selectedChoiceIndex {
@@ -135,11 +154,19 @@ class SpanData {
   String get errorSpan =>
       fullText.characters.skip(offset).take(length).toString();
 
-  bool isNormalizationError() {
+  /// Whether this span is a minor correction that should be auto-applied.
+  /// Returns true if:
+  /// 1. The type is explicitly marked as auto-apply (e.g., punct, spell, cap, diacritics), OR
+  /// 2. For backwards compatibility with old data that lacks new types:
+  ///    the type is NOT auto-apply AND the normalized strings match.
+  bool isNormalizationError({String? errorSpanOverride}) {
+    // New data with explicit auto-apply types
+    if (type.isAutoApply) {
+      return true;
+    }
+
     final correctChoice = choices
-        ?.firstWhereOrNull(
-          (c) => c.isBestCorrection,
-        )
+        ?.firstWhereOrNull((c) => c.type.isSuggestion)
         ?.value;
 
     final l2Code =
@@ -148,7 +175,7 @@ class SpanData {
     return correctChoice != null &&
         l2Code != null &&
         normalizeString(correctChoice, l2Code) ==
-            normalizeString(errorSpan, l2Code);
+            normalizeString(errorSpanOverride ?? errorSpan, l2Code);
   }
 
   @override
@@ -225,46 +252,39 @@ class SpanChoice {
       value: json['value'] as String,
       type: json['type'] != null
           ? SpanChoiceTypeEnum.values.firstWhereOrNull(
-                (element) => element.name == json['type'],
-              ) ??
-              SpanChoiceTypeEnum.bestCorrection
-          : SpanChoiceTypeEnum.bestCorrection,
+                  (element) => element.name == json['type'],
+                ) ??
+                SpanChoiceTypeEnum.suggestion
+          : SpanChoiceTypeEnum.suggestion,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
-      timestamp:
-          json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
+      timestamp: json['timestamp'] != null
+          ? DateTime.parse(json['timestamp'])
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'value': value,
-      'type': type.name,
-    };
+    final Map<String, dynamic> data = {'value': value, 'type': type.name};
 
-    if (selected) {
-      data['selected'] = selected;
+    // V2 format: use selected_at instead of separate selected + timestamp
+    if (selected && timestamp != null) {
+      data['selected_at'] = timestamp!.toIso8601String();
     }
 
     if (feedback != null) {
       data['feedback'] = feedback;
     }
 
-    if (timestamp != null) {
-      data['timestamp'] = timestamp!.toIso8601String();
-    }
-
     return data;
   }
 
-  String feedbackToDisplay(BuildContext context) {
+  String displayFeedback(BuildContext context) {
     if (feedback == null) {
       return type.defaultFeedback(context);
     }
     return feedback!;
   }
-
-  bool get isBestCorrection => type == SpanChoiceTypeEnum.bestCorrection;
 
   Color get color => type.color;
 
@@ -294,17 +314,12 @@ class SpanChoice {
 class Rule {
   final String id;
 
-  const Rule({
-    required this.id,
-  });
+  const Rule({required this.id});
 
-  factory Rule.fromJson(Map<String, dynamic> json) => Rule(
-        id: json['id'] as String,
-      );
+  factory Rule.fromJson(Map<String, dynamic> json) =>
+      Rule(id: json['id'] as String);
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'id': id};
 
   @override
   bool operator ==(Object other) {
@@ -316,41 +331,5 @@ class Rule {
   @override
   int get hashCode {
     return id.hashCode;
-  }
-}
-
-class SpanDataType {
-  final SpanDataTypeEnum typeName;
-
-  const SpanDataType({
-    required this.typeName,
-  });
-
-  factory SpanDataType.fromJson(Map<String, dynamic> json) {
-    final String? type =
-        json['typeName'] ?? json['type'] ?? json['type_name'] as String?;
-    return SpanDataType(
-      typeName: type != null
-          ? SpanDataTypeEnum.values
-                  .firstWhereOrNull((element) => element.name == type) ??
-              SpanDataTypeEnum.correction
-          : SpanDataTypeEnum.correction,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'type_name': typeName.name,
-      };
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! SpanDataType) return false;
-    return other.typeName == typeName;
-  }
-
-  @override
-  int get hashCode {
-    return typeName.hashCode;
   }
 }

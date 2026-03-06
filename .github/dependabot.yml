@@ -1,22 +1,13 @@
-# #Pangea
-# version: 2
-# updates:
-#   - package-ecosystem: "pub"
-#     directory: "/"
-#     schedule:
-#       interval: "daily"
-#     allow:
-#       - dependency-name: "*"
-#     commit-message:
-#       prefix: "build: "
-#       include: "scope"
-#   - package-ecosystem: "github-actions"
-#     directory: "/"
-#     schedule:
-#       interval: "daily"
-#     allow:
-#       - dependency-name: "*"
-#     commit-message:
-#       prefix: "build: "
-#       include: "scope"
-# Pangea#
+version: 2
+updates:
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3

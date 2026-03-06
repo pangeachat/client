@@ -9,24 +9,21 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../config/themes.dart';
 import 'homeserver_picker.dart';
 
 class HomeserverPickerView extends StatelessWidget {
   final HomeserverPickerController controller;
 
-  const HomeserverPickerView(
-    this.controller, {
-    super.key,
-  });
+  const HomeserverPickerView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return LoginScaffold(
-      enforceMobileMode:
-          Matrix.of(context).widget.clients.any((client) => client.isLogged()),
+      enforceMobileMode: Matrix.of(
+        context,
+      ).widget.clients.any((client) => client.isLogged()),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -42,7 +39,7 @@ class HomeserverPickerView extends StatelessWidget {
               PopupMenuItem(
                 value: MoreLoginActions.importBackup,
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     const Icon(Icons.import_export_outlined),
                     const SizedBox(width: 12),
@@ -53,7 +50,7 @@ class HomeserverPickerView extends StatelessWidget {
               PopupMenuItem(
                 value: MoreLoginActions.privacy,
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     const Icon(Icons.privacy_tip_outlined),
                     const SizedBox(width: 12),
@@ -64,7 +61,7 @@ class HomeserverPickerView extends StatelessWidget {
               PopupMenuItem(
                 value: MoreLoginActions.about,
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     const Icon(Icons.info_outlined),
                     const SizedBox(width: 12),
@@ -84,30 +81,6 @@ class HomeserverPickerView extends StatelessWidget {
               child: IntrinsicHeight(
                 child: Column(
                   children: [
-                    // display a prominent banner to import session for TOR browser
-                    // users. This feature is just some UX sugar as TOR users are
-                    // usually forced to logout as TOR browser is non-persistent
-                    AnimatedContainer(
-                      height: controller.isTorBrowser ? 64 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      curve: FluffyThemes.animationCurve,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(),
-                      child: Material(
-                        clipBehavior: Clip.hardEdge,
-                        borderRadius: const BorderRadius.vertical(
-                          bottom: Radius.circular(8),
-                        ),
-                        color: theme.colorScheme.surface,
-                        child: ListTile(
-                          leading: const Icon(Icons.vpn_key),
-                          title: Text(L10n.of(context).hydrateTor),
-                          subtitle: Text(L10n.of(context).hydrateTorLong),
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                          onTap: controller.restoreBackup,
-                        ),
-                      ),
-                    ),
                     Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -124,8 +97,9 @@ class HomeserverPickerView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
                       child: SelectableLinkify(
                         text: L10n.of(context).appIntroduction,
-                        textScaleFactor:
-                            MediaQuery.textScalerOf(context).scale(1),
+                        textScaleFactor: MediaQuery.textScalerOf(
+                          context,
+                        ).scale(1),
                         textAlign: TextAlign.center,
                         linkStyle: TextStyle(
                           color: theme.colorScheme.secondary,
@@ -138,8 +112,8 @@ class HomeserverPickerView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(32.0),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisSize: .min,
+                        crossAxisAlignment: .stretch,
                         children: [
                           TextField(
                             onSubmitted: (_) =>
@@ -159,7 +133,7 @@ class HomeserverPickerView extends StatelessWidget {
                               hintStyle: TextStyle(
                                 color: theme.colorScheme.surfaceTint,
                               ),
-                              labelText: 'Sign in with:',
+                              labelText: L10n.of(context).signInWithLabel,
                               errorText: controller.error,
                               errorMaxLines: 4,
                               suffixIcon: IconButton(
@@ -171,11 +145,13 @@ class HomeserverPickerView extends StatelessWidget {
                                         L10n.of(context).whatIsAHomeserver,
                                       ),
                                       content: Linkify(
-                                        text: L10n.of(context)
-                                            .homeserverDescription,
+                                        text: L10n.of(
+                                          context,
+                                        ).homeserverDescription,
                                         textScaleFactor:
-                                            MediaQuery.textScalerOf(context)
-                                                .scale(1),
+                                            MediaQuery.textScalerOf(
+                                              context,
+                                            ).scale(1),
                                         options: const LinkifyOptions(
                                           humanize: false,
                                         ),
@@ -193,8 +169,9 @@ class HomeserverPickerView extends StatelessWidget {
                                             Uri.https('servers.joinmatrix.org'),
                                           ),
                                           child: Text(
-                                            L10n.of(context)
-                                                .discoverHomeservers,
+                                            L10n.of(
+                                              context,
+                                            ).discoverHomeservers,
                                           ),
                                         ),
                                         AdaptiveDialogAction(
@@ -230,8 +207,8 @@ class HomeserverPickerView extends StatelessWidget {
                             onPressed: controller.isLoading
                                 ? null
                                 : () => controller.checkHomeserverAction(
-                                      legacyPasswordLogin: true,
-                                    ),
+                                    legacyPasswordLogin: true,
+                                  ),
                             child: Text(L10n.of(context).loginWithMatrixId),
                           ),
                         ],

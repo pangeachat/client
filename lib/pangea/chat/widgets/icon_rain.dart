@@ -215,13 +215,11 @@ class _AnimatedFallingIconState extends State<_AnimatedFallingIcon>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: widget.duration,
-      vsync: this,
-    );
-    _animation = Tween<double>(begin: -40, end: widget.maxHeight + 40).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    _controller = AnimationController(duration: widget.duration, vsync: this);
+    _animation = Tween<double>(
+      begin: -40,
+      end: widget.maxHeight + 40,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
     _controller.forward().then((_) => widget.onComplete());
   }
 
@@ -237,7 +235,8 @@ class _AnimatedFallingIconState extends State<_AnimatedFallingIcon>
       animation: _animation,
       builder: (context, child) {
         final progress = _controller.value;
-        final sway = widget.swayAmplitude *
+        final sway =
+            widget.swayAmplitude *
             sin(
               2 * pi * widget.swayFrequency * progress + widget.startX * 2 * pi,
             );

@@ -5,23 +5,16 @@ import 'package:fluffychat/pangea/payload_client/paginated_response.dart';
 class CourseLocationMediaResponse {
   final List<CourseMediaInfo> mediaUrls;
 
-  CourseLocationMediaResponse({
-    required this.mediaUrls,
-  });
+  CourseLocationMediaResponse({required this.mediaUrls});
 
   factory CourseLocationMediaResponse.fromCmsResponse(
     PayloadPaginatedResponse<CmsCoursePlanTopicLocationMedia>
-        cmsCoursePlanTopicLocationMediasResult,
+    cmsCoursePlanTopicLocationMediasResult,
   ) {
     return CourseLocationMediaResponse(
       mediaUrls: cmsCoursePlanTopicLocationMediasResult.docs
           .where((e) => e.url != null)
-          .map(
-            (e) => CourseMediaInfo(
-              uuid: e.id,
-              url: e.url!,
-            ),
-          )
+          .map((e) => CourseMediaInfo(uuid: e.id, url: e.url!))
           .toList(),
     );
   }

@@ -16,6 +16,7 @@ class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
   final ConstructIdentifier constructId;
   final String langCode;
   final bool enabled;
+  final String? form;
 
   const LemmaReactionPicker({
     super.key,
@@ -23,6 +24,7 @@ class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
     required this.langCode,
     this.event,
     this.enabled = true,
+    this.form,
   });
 
   @override
@@ -65,9 +67,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
 
   void _setEmojiSub() {
     _emojiSub?.cancel();
-    _emojiSub = Matrix.of(context)
-        .analyticsDataService
-        .updateDispatcher
+    _emojiSub = Matrix.of(context).analyticsDataService.updateDispatcher
         .lemmaUpdateStream(widget.constructId)
         .listen((update) => _setSelectedEmoji(update.emojis?.firstOrNull));
   }
@@ -82,24 +82,22 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
           widget.event!.room.timeline!,
           RelationshipTypes.reaction,
         )
-        .where(
-          (e) => e.senderId == Matrix.of(context).client.userID,
-        );
+        .where((e) => e.senderId == Matrix.of(context).client.userID);
 
     return userSentEmojis.firstWhereOrNull(
       (e) => e.content.tryGetMap('m.relates_to')?['key'] == emoji,
     );
   }
 
-  Future<void> _setEmoji(
-    String emoji,
-    String targetId,
-  ) async {
+  Future<void> _setEmoji(String emoji, String targetId) async {
     await widget.setLemmaEmoji(
       widget.constructId,
       widget.langCode,
       emoji,
       targetId,
+      widget.event?.roomId,
+      widget.event?.eventId,
+      widget.form,
     );
     messenger = ScaffoldMessenger.of(context);
     widget.showLemmaEmojiSnackbar(
@@ -119,18 +117,12 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
         return;
       }
 
-      await widget.event!.room.sendReaction(
-        widget.event!.eventId,
-        emoji,
-      );
+      await widget.event!.room.sendReaction(widget.event!.eventId, emoji);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'emoji': emoji,
-          'eventId': widget.event?.eventId,
-        },
+        data: {'emoji': emoji, 'eventId': widget.event?.eventId},
       );
     }
   }
@@ -147,13 +139,11 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
           : _sendOrRedactReaction(emoji),
       emoji: _selectedEmoji,
       messageInfo: widget.event?.content ?? {},
-      selectedEmojiBadge: widget.event != null &&
+      selectedEmojiBadge:
+          widget.event != null &&
               _selectedEmoji != null &&
               _sentReaction(_selectedEmoji!) == null
-          ? const Icon(
-              Icons.add_reaction,
-              size: 12.0,
-            )
+          ? const Icon(Icons.add_reaction, size: 12.0)
           : null,
       enabled: _enabled,
     );

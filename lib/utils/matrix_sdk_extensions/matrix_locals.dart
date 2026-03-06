@@ -37,13 +37,13 @@ class MatrixLocals extends MatrixLocalizations {
   }
 
   @override
-  String changedTheChatDescriptionTo(String senderName, String content) {
-    return l10n.changedTheChatDescriptionTo(senderName, content);
+  String changedTheChatDescriptionTo(String senderName, _) {
+    return l10n.changedTheChatDescription(senderName);
   }
 
   @override
-  String changedTheChatNameTo(String senderName, String content) {
-    return l10n.changedTheChatNameTo(senderName, content);
+  String changedTheChatNameTo(String senderName, _) {
+    return l10n.changedTheChatName(senderName);
   }
 
   @override
@@ -356,11 +356,43 @@ class MatrixLocals extends MatrixLocalizations {
   String get cancelledSend => l10n.sendCanceled;
 
   @override
-  String voiceMessage(String senderName, Duration? duration) =>
-      l10n.sentVoiceMessage(
-        senderName,
-        duration == null
-            ? ''
-            : '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}',
-      );
+  String voiceMessage(
+    String senderName,
+    Duration? duration,
+  ) => l10n.sentVoiceMessage(
+    senderName,
+    duration == null
+        ? ''
+        : '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}',
+  );
+
+  @override
+  String get refreshingLastEvent => l10n.loadingPleaseWait;
+
+  @override
+  String startedAPoll(String senderName) => '$senderName started a poll';
+
+  @override
+  String get pollHasBeenEnded => l10n.pollHasBeenEnded;
+
+  @override
+  String userUpdatedLearningSettings(String senderName) =>
+      l10n.userUpdatedLearningSettings(senderName);
+
+  @override
+  String get youUpdatedLearningSettings => l10n.youUpdatedLearningSettings;
+
+  @override
+  String userAddedActivityPlan(String senderName) =>
+      l10n.userAddedActivityPlan(senderName);
+
+  @override
+  String get youAddedActivityPlan => l10n.youAddedActivityPlan;
+
+  @override
+  String userSentActivitySummary(String senderName) =>
+      l10n.userSentActivitySummary(senderName);
+
+  @override
+  String get youSentActivitySummary => l10n.youSentActivitySummary;
 }

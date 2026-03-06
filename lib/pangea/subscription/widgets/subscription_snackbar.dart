@@ -27,9 +27,5 @@ void showSubscribedSnackbar(BuildContext context) {
       ],
     ),
   );
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: text,
-    ),
-  );
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: text));
 }

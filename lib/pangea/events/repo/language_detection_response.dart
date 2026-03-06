@@ -4,10 +4,7 @@ class LanguageDetectionResponse {
   List<LanguageDetectionModel> detections;
   String fullText;
 
-  LanguageDetectionResponse({
-    required this.detections,
-    required this.fullText,
-  });
+  LanguageDetectionResponse({required this.detections, required this.fullText});
 
   factory LanguageDetectionResponse.fromJson(Map<String, dynamic> json) {
     return LanguageDetectionResponse(

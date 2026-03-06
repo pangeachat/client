@@ -40,7 +40,7 @@ class InstructionSettings {
     for (final key in InstructionsEnum.values) {
       instructions[key.toString()] =
           (accountData[key.toString()]?.content[key.toString()] as bool?) ??
-              false;
+          false;
     }
     return InstructionSettings(instructions);
   }
@@ -83,8 +83,6 @@ class InstructionSettings {
     final entries = _instructions.entries.toList()
       ..sort((a, b) => a.key.hashCode.compareTo(b.key.hashCode));
 
-    return Object.hashAll(
-      entries.map((e) => Object.hash(e.key, e.value)),
-    );
+    return Object.hashAll(entries.map((e) => Object.hash(e.key, e.value)));
   }
 }

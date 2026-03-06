@@ -15,6 +15,9 @@ mixin LemmaEmojiSetter {
     String langCode,
     String emoji,
     String? targetId,
+    String? roomId,
+    String? eventId,
+    String? form,
   ) async {
     final userL2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
@@ -26,12 +29,19 @@ mixin LemmaEmojiSetter {
     if (constructId.userSetEmoji == null) {
       _getEmojiAnalytics(
         constructId,
+        language: langCode.split("-").first,
         targetId: targetId,
+        roomId: roomId,
+        eventId: eventId,
+        form: form,
       );
     }
 
     await MatrixState
-        .pangeaController.matrixState.analyticsDataService.updateService
+        .pangeaController
+        .matrixState
+        .analyticsDataService
+        .updateService
         .setLemmaInfo(constructId, emoji: emoji);
   }
 
@@ -46,6 +56,7 @@ mixin LemmaEmojiSetter {
 
     messenger.showSnackBar(
       SnackBar(
+        showCloseIcon: false,
         padding: const EdgeInsets.all(8.0),
         content: Row(
           spacing: 8.0,
@@ -67,8 +78,8 @@ mixin LemmaEmojiSetter {
                 L10n.of(context).emojiSelectedSnackbar(constructId.lemma),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
+                  color: Theme.of(context).colorScheme.surface,
+                ),
               ),
             ),
             IconButton(
@@ -86,9 +97,11 @@ mixin LemmaEmojiSetter {
 
   void _getEmojiAnalytics(
     ConstructIdentifier constructId, {
+    required String language,
     String? eventId,
     String? roomId,
     String? targetId,
+    String? form,
   }) {
     final constructs = [
       OneConstructUse(
@@ -101,15 +114,12 @@ mixin LemmaEmojiSetter {
           eventId: eventId,
         ),
         category: constructId.category,
-        form: constructId.lemma,
+        form: form ?? constructId.lemma,
         xp: ConstructUseTypeEnum.em.pointValue,
       ),
     ];
 
     MatrixState.pangeaController.matrixState.analyticsDataService.updateService
-        .addAnalytics(
-      targetId,
-      constructs,
-    );
+        .addAnalytics(targetId, constructs, language);
   }
 }

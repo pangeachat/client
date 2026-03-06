@@ -24,10 +24,7 @@ class ShrinkableText extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
-            child: Text(
-              text,
-              style: style,
-            ),
+            child: Text(text, style: style),
           ),
         );
       },

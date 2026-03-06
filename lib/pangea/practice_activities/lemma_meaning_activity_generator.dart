@@ -15,12 +15,14 @@ class LemmaMeaningActivityGenerator {
     required Map<String, dynamic> messageInfo,
   }) async {
     final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures = req
-        .target.tokens
+        .target
+        .tokens
         .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
         .toList();
 
-    final List<Result<LemmaInfoResponse>> lemmaInfos =
-        await Future.wait(lemmaInfoFutures);
+    final List<Result<LemmaInfoResponse>> lemmaInfos = await Future.wait(
+      lemmaInfoFutures,
+    );
 
     if (lemmaInfos.any((result) => result.isError)) {
       throw lemmaInfos.firstWhere((result) => result.isError).error!;
@@ -35,9 +37,7 @@ class LemmaMeaningActivityGenerator {
       activity: LemmaMeaningPracticeActivityModel(
         tokens: req.target.tokens,
         langCode: req.userL2,
-        matchContent: PracticeMatchActivity(
-          matchInfo: matchInfo,
-        ),
+        matchContent: PracticeMatchActivity(matchInfo: matchInfo),
       ),
     );
   }

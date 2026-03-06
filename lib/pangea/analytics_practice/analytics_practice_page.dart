@@ -1,82 +1,100 @@
 import 'dart:async';
-import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
-import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_data_service.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_controller.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_ui_controller.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
-import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
   final String tag;
 
-  const SelectedMorphChoice({
-    required this.feature,
-    required this.tag,
-  });
+  const SelectedMorphChoice({required this.feature, required this.tag});
 }
 
-class VocabPracticeChoice {
-  final String choiceId;
-  final String choiceText;
-  final String? choiceEmoji;
+class AnalyticsPracticeNotifier extends ChangeNotifier {
+  String? _lastSelectedChoice;
+  bool showHint = false;
+  final Set<String> _clickedChoices = {};
 
-  const VocabPracticeChoice({
-    required this.choiceId,
-    required this.choiceText,
-    this.choiceEmoji,
-  });
+  int correctAnswersSelected(MultipleChoicePracticeActivityModel? activity) {
+    if (activity == null) return 0;
+    final allAnswers = activity.multipleChoiceContent.answers;
+    return _clickedChoices.where((c) => allAnswers.contains(c)).length;
+  }
+
+  bool enableHintPress(
+    MultipleChoicePracticeActivityModel? activity,
+    int hintsUsed,
+  ) {
+    if (showHint) return false;
+    return switch (activity) {
+      VocabAudioPracticeActivityModel() => true,
+      _ => hintsUsed < AnalyticsPracticeConstants.maxHints,
+    };
+  }
+
+  SelectedMorphChoice? selectedMorphChoice(
+    MultipleChoicePracticeActivityModel? activity,
+  ) {
+    if (activity is! MorphPracticeActivityModel) return null;
+    if (_lastSelectedChoice == null) return null;
+    return SelectedMorphChoice(
+      feature: activity.morphFeature,
+      tag: _lastSelectedChoice!,
+    );
+  }
+
+  bool activityComplete(MultipleChoicePracticeActivityModel? activity) {
+    if (activity == null) return false;
+    final allAnswers = activity.multipleChoiceContent.answers;
+    return allAnswers.every((answer) => _clickedChoices.contains(answer));
+  }
+
+  bool hasSelectedChoice(String choice) => _clickedChoices.contains(choice);
+
+  void clearActivityState() {
+    _lastSelectedChoice = null;
+    _clickedChoices.clear();
+    showHint = false;
+  }
+
+  void toggleShowHint() {
+    showHint = !showHint;
+    notifyListeners();
+  }
+
+  void selectChoice(String choice) {
+    _clickedChoices.add(choice);
+    _lastSelectedChoice = choice;
+    notifyListeners();
+  }
 }
 
-class _PracticeQueueEntry {
-  final MessageActivityRequest request;
-  final Completer<MultipleChoicePracticeActivityModel> completer;
-
-  _PracticeQueueEntry({
-    required this.request,
-    required this.completer,
-  });
-}
-
-class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
-  final ConstructTypeEnum type;
-  SessionLoader({required this.type});
-
-  @override
-  Future<AnalyticsPracticeSessionModel> fetch() =>
-      AnalyticsPracticeSessionRepo.get(type);
-}
+typedef ActivityNotifier =
+    ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>;
 
 class AnalyticsPractice extends StatefulWidget {
   static bool bypassExitConfirmation = true;
 
   final ConstructTypeEnum type;
-  const AnalyticsPractice({
-    super.key,
-    required this.type,
-  });
+  const AnalyticsPractice({super.key, required this.type});
 
   @override
   AnalyticsPracticeState createState() => AnalyticsPracticeState();
@@ -84,477 +102,254 @@ class AnalyticsPractice extends StatefulWidget {
 
 class AnalyticsPracticeState extends State<AnalyticsPractice>
     with AnalyticsUpdater {
-  late final SessionLoader _sessionLoader;
+  final PracticeSessionController _sessionController =
+      PracticeSessionController();
 
-  final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
-      activityState = ValueNotifier(const AsyncState.idle());
+  final AnalyticsPracticeDataService _dataService =
+      AnalyticsPracticeDataService();
 
-  final Queue<_PracticeQueueEntry> _queue = Queue();
-
-  final ValueNotifier<MessageActivityRequest?> activityTarget =
-      ValueNotifier<MessageActivityRequest?>(null);
-
-  final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
-  final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
-
-  final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
-      ValueNotifier<SelectedMorphChoice?>(null);
-
-  final ValueNotifier<bool> hintPressedNotifier = ValueNotifier<bool>(false);
-
-  final Map<String, Map<String, String>> _choiceTexts = {};
-  final Map<String, Map<String, String?>> _choiceEmojis = {};
-
+  late final AnalyticsPracticeAnalyticsController _analyticsController;
   StreamSubscription<void>? _languageStreamSubscription;
+
+  final ActivityNotifier activityState = ActivityNotifier(
+    const AsyncState.idle(),
+  );
+  final AnalyticsPracticeNotifier notifier = AnalyticsPracticeNotifier();
+  final ValueNotifier<double> progress = ValueNotifier<double>(0);
 
   @override
   void initState() {
     super.initState();
-    _sessionLoader = SessionLoader(type: widget.type);
-    _startSession();
-    _languageStreamSubscription = MatrixState
-        .pangeaController.userController.languageStream.stream
-        .listen((_) => _onLanguageUpdate());
+
+    _analyticsController = AnalyticsPracticeAnalyticsController(
+      Matrix.of(context).analyticsDataService,
+    );
+
+    _addLanguageSubscription();
+    startSession();
   }
 
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    _sessionLoader.dispose();
+    notifier.dispose();
     activityState.dispose();
-    activityTarget.dispose();
-    progressNotifier.dispose();
-    enableChoicesNotifier.dispose();
-    selectedMorphChoice.dispose();
-    hintPressedNotifier.dispose();
+    progress.dispose();
     super.dispose();
   }
 
-  MultipleChoicePracticeActivityModel? get _currentActivity =>
-      activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
-          ? (activityState.value
-                  as AsyncLoaded<MultipleChoicePracticeActivityModel>)
-              .value
-          : null;
+  PracticeSessionController get session => _sessionController;
+  AnalyticsPracticeDataService get data => _dataService;
 
-  bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
-  ValueNotifier<AsyncState<AnalyticsPracticeSessionModel>> get sessionState =>
-      _sessionLoader.state;
+  MultipleChoicePracticeActivityModel? get activity {
+    final state = activityState.value;
+    if (state is! AsyncLoaded<MultipleChoicePracticeActivityModel>) {
+      return null;
+    }
 
-  AnalyticsDataService get _analyticsService =>
-      Matrix.of(context).analyticsDataService;
+    return state.value;
+  }
 
-  List<VocabPracticeChoice> filteredChoices(
-    MultipleChoicePracticeActivityModel activity,
-  ) {
-    final content = activity.multipleChoiceContent;
-    final choices = content.choices.toList();
-    final answer = content.answers.first;
-    final filtered = <VocabPracticeChoice>[];
+  Future<double> get levelProgress =>
+      _analyticsController.levelProgress(_l2!.langCodeShort);
 
-    final seenTexts = <String>{};
-    for (final id in choices) {
-      final text = getChoiceText(activity.storageKey, id);
+  Future<List<InlineSpan>?> get exampleMessage async {
+    final activity = this.activity;
+    if (activity == null) return null;
 
-      if (seenTexts.contains(text)) {
-        if (id != answer) {
-          continue;
-        }
-
-        final index = filtered.indexWhere(
-          (choice) => choice.choiceText == text,
-        );
-        if (index != -1) {
-          filtered[index] = VocabPracticeChoice(
-            choiceId: id,
-            choiceText: text,
-            choiceEmoji: getChoiceEmoji(activity.storageKey, id),
-          );
-        }
-        continue;
-      }
-
-      seenTexts.add(text);
-      filtered.add(
-        VocabPracticeChoice(
-          choiceId: id,
-          choiceText: text,
-          choiceEmoji: getChoiceEmoji(activity.storageKey, id),
+    return switch (activity) {
+      VocabAudioPracticeActivityModel() =>
+        activity.exampleMessage.exampleMessage,
+      MorphCategoryPracticeActivityModel() =>
+        activity.exampleMessageInfo.exampleMessage,
+      _ => ExampleMessageUtil.getExampleMessage(
+        await _analyticsController.getTargetTokenConstruct(
+          activity.practiceTarget,
+          _l2!.langCodeShort,
         ),
-      );
-    }
-
-    return filtered;
+      ),
+    };
   }
 
-  String getChoiceText(String key, String choiceId) {
-    if (widget.type == ConstructTypeEnum.morph) {
-      return choiceId;
-    }
-    if (_choiceTexts.containsKey(key) &&
-        _choiceTexts[key]!.containsKey(choiceId)) {
-      return _choiceTexts[key]![choiceId]!;
-    }
-    final cId = ConstructIdentifier.fromString(choiceId);
-    return cId?.lemma ?? choiceId;
-  }
-
-  String? getChoiceEmoji(String key, String choiceId) {
-    if (widget.type == ConstructTypeEnum.morph) return null;
-    return _choiceEmojis[key]?[choiceId];
-  }
-
-  String choiceTargetId(String choiceId) =>
-      '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
+  bool _autoLaunchNextActivity(MultipleChoicePracticeActivityModel activity) =>
+      activity is! VocabAudioPracticeActivityModel;
 
   void _clearState() {
-    activityState.value = const AsyncState.loading();
-    activityTarget.value = null;
-    selectedMorphChoice.value = null;
-    hintPressedNotifier.value = false;
-    enableChoicesNotifier.value = true;
-    progressNotifier.value = 0.0;
-    _queue.clear();
-    _choiceTexts.clear();
-    _choiceEmojis.clear();
-    activityState.value = const AsyncState.idle();
-
+    _dataService.clear();
+    _sessionController.clear();
     AnalyticsPractice.bypassExitConfirmation = true;
+    _clearActivityState();
   }
 
-  void updateElapsedTime(int seconds) {
-    if (_sessionLoader.isLoaded) {
-      _sessionLoader.value!.setElapsedSeconds(seconds);
-    }
+  void _clearActivityState({bool loadingActivity = false}) {
+    notifier.clearActivityState();
+    activityState.value = loadingActivity
+        ? AsyncState.loading()
+        : AsyncState.idle();
   }
 
-  void _playAudio() {
-    if (activityTarget.value == null) return;
-    if (widget.type != ConstructTypeEnum.vocab) return;
-    TtsController.tryToSpeak(
-      activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
-      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
-    );
-  }
-
-  Future<void> _waitForAnalytics() async {
-    if (!_analyticsService.initCompleter.isCompleted) {
-      MatrixState.pangeaController.initControllers();
-      await _analyticsService.initCompleter.future;
-    }
+  void _addLanguageSubscription() {
+    _languageStreamSubscription ??= MatrixState
+        .pangeaController
+        .userController
+        .languageStream
+        .stream
+        .listen((_) => _onLanguageUpdate());
   }
 
   Future<void> _onLanguageUpdate() async {
     try {
       _clearState();
-      await _analyticsService
-          .updateDispatcher.constructUpdateStream.stream.first
-          .timeout(const Duration(seconds: 10));
-      await reloadSession();
+      await _analyticsController.waitForUpdate();
+      await startSession();
     } catch (e) {
       if (mounted) {
-        activityState.value = AsyncState.error(
-          L10n.of(context).oopsSomethingWentWrong,
-        );
+        activityState.value = AsyncState.error(e);
       }
     }
   }
 
-  Future<void> _startSession() async {
-    await _waitForAnalytics();
-    await _sessionLoader.load();
-    if (_sessionLoader.isError) {
-      AnalyticsPractice.bypassExitConfirmation = true;
-      return;
-    }
-
-    progressNotifier.value = _sessionLoader.value!.progress;
-    await _continueSession();
+  void onHintPressed({bool increment = true}) {
+    if (increment) _sessionController.updateHintsPressed();
+    notifier.toggleShowHint();
   }
 
-  Future<void> reloadSession() async {
+  void _playActivityAudio(MultipleChoicePracticeActivityModel activity) =>
+      AnalyticsPracticeUiController.playTargetAudio(
+        activity,
+        widget.type,
+        _l2!.langCodeShort,
+      );
+
+  Future<void> startSession() async {
     _clearState();
-    _sessionLoader.reset();
-    await _startSession();
-  }
+    await _analyticsController.waitForAnalytics();
+    await _sessionController.startSession(widget.type);
+    if (mounted) setState(() {});
 
-  Future<void> reloadCurrentActivity() async {
-    if (activityTarget.value == null) return;
-
-    try {
-      activityState.value = const AsyncState.loading();
-      selectedMorphChoice.value = null;
-      hintPressedNotifier.value = false;
-
-      final req = activityTarget.value!;
-      final res = await _fetchActivity(req);
-
-      if (!mounted) return;
-      activityState.value = AsyncState.loaded(res);
-      _playAudio();
-    } catch (e) {
-      if (!mounted) return;
-      activityState.value = AsyncState.error(e);
+    if (_sessionController.sessionError != null) {
+      AnalyticsPractice.bypassExitConfirmation = true;
+    } else {
+      progress.value = _sessionController.progress;
+      await _continueSession();
     }
   }
 
   Future<void> _completeSession() async {
-    _sessionLoader.value!.finishSession();
+    _sessionController.completeSession();
+    progress.value = _sessionController.progress;
     setState(() {});
 
-    final bonus = _sessionLoader.value!.state.allBonusUses;
-    await _analyticsService.updateService.addAnalytics(
-      null,
-      bonus,
-      forceUpdate: true,
-    );
+    final bonus = _sessionController.bonusUses;
+    await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
     AnalyticsPractice.bypassExitConfirmation = true;
   }
 
-  bool _continuing = false;
-
   Future<void> _continueSession() async {
-    if (_continuing) return;
-    _continuing = true;
-    enableChoicesNotifier.value = true;
+    if (activityState.value
+        is AsyncLoading<MultipleChoicePracticeActivityModel>) {
+      return;
+    }
+
+    if (_sessionController.session?.isComplete == true) {
+      await _completeSession();
+      return;
+    }
+
+    _clearActivityState(loadingActivity: true);
 
     try {
-      if (activityState.value
-          is AsyncIdle<MultipleChoicePracticeActivityModel>) {
-        await _initActivityData();
-      } else {
-        // Keep trying to load activities from the queue until one succeeds or queue is empty
-        while (_queue.isNotEmpty) {
-          activityState.value = const AsyncState.loading();
-          selectedMorphChoice.value = null;
-          hintPressedNotifier.value = false;
-          final nextActivityCompleter = _queue.removeFirst();
+      final resp = await _sessionController.getNextActivity(
+        skipActivity,
+        _dataService.prefetchActivityInfo,
+      );
 
-          try {
-            final activity = await nextActivityCompleter.completer.future;
-            activityTarget.value = nextActivityCompleter.request;
-            _playAudio();
-            activityState.value = AsyncState.loaded(activity);
-            AnalyticsPractice.bypassExitConfirmation = false;
-            return;
-          } catch (e) {
-            // Completer failed, skip to next
-            continue;
-          }
-        }
-        // Queue is empty, complete the session
+      if (resp != null) {
+        _playActivityAudio(resp);
+        AnalyticsPractice.bypassExitConfirmation = false;
+        activityState.value = AsyncState.loaded(resp);
+      } else {
         await _completeSession();
       }
     } catch (e) {
       AnalyticsPractice.bypassExitConfirmation = true;
       activityState.value = AsyncState.error(e);
-    } finally {
-      _continuing = false;
     }
   }
 
-  Future<void> _initActivityData() async {
-    final requests = _sessionLoader.value!.activityRequests;
-    if (requests.isEmpty) {
-      throw L10n.of(context).noActivityRequest;
-    }
+  Future<void> onSelectChoice(String choiceContent) async {
+    final activity = this.activity;
+    if (activity == null) return;
 
-    for (var i = 0; i < requests.length; i++) {
-      try {
-        activityState.value = const AsyncState.loading();
-        final req = requests[i];
-        final res = await _fetchActivity(req);
-        if (!mounted) return;
-        activityTarget.value = req;
-        _playAudio();
-        activityState.value = AsyncState.loaded(res);
-        AnalyticsPractice.bypassExitConfirmation = false;
-        // Fill queue with remaining requests
-        _fillActivityQueue(requests.skip(i + 1).toList());
-        return;
-      } catch (e) {
-        await recordSkippedUse(requests[i]);
-        // Try next request
-        continue;
-      }
-    }
-    AnalyticsPractice.bypassExitConfirmation = true;
-    if (!mounted) return;
-    activityState.value =
-        AsyncState.error(L10n.of(context).oopsSomethingWentWrong);
-    return;
-  }
+    // Mark this choice as clicked so it can't be clicked again
+    if (notifier.hasSelectedChoice(choiceContent)) return;
+    notifier.selectChoice(choiceContent);
 
-  Future<void> _fillActivityQueue(
-    List<MessageActivityRequest> requests,
-  ) async {
-    for (final request in requests) {
-      final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(
-        _PracticeQueueEntry(
-          request: request,
-          completer: completer,
-        ),
-      );
-      try {
-        final res = await _fetchActivity(request);
-        if (!mounted) return;
-        completer.complete(res);
-      } catch (e) {
-        if (!mounted) return;
-        completer.completeError(e);
-        await recordSkippedUse(request);
-      }
-    }
-  }
-
-  Future<MultipleChoicePracticeActivityModel> _fetchActivity(
-    MessageActivityRequest req,
-  ) async {
-    final result = await PracticeRepo.getPracticeActivity(
-      req,
-      messageInfo: {},
-    );
-
-    if (result.isError ||
-        result.result is! MultipleChoicePracticeActivityModel) {
-      throw L10n.of(context).oopsSomethingWentWrong;
-    }
-
-    final activityModel = result.result as MultipleChoicePracticeActivityModel;
-
-    // Prefetch lemma info for meaning activities before marking ready
-    if (activityModel is VocabMeaningPracticeActivityModel) {
-      final choices = activityModel.multipleChoiceContent.choices.toList();
-      await _fetchLemmaInfo(activityModel.storageKey, choices);
-    }
-
-    return activityModel;
-  }
-
-  Future<void> _fetchLemmaInfo(
-    String requestKey,
-    List<String> choiceIds,
-  ) async {
-    final texts = <String, String>{};
-    final emojis = <String, String?>{};
-
-    for (final id in choiceIds) {
-      final cId = ConstructIdentifier.fromString(id);
-      if (cId == null) continue;
-
-      final res = await cId.getLemmaInfo({});
-      if (res.isError) {
-        LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
-        throw L10n.of(context).oopsSomethingWentWrong;
-      }
-
-      texts[id] = res.result!.meaning;
-      emojis[id] = res.result!.emoji.firstOrNull;
-    }
-
-    _choiceTexts.putIfAbsent(requestKey, () => {});
-    _choiceEmojis.putIfAbsent(requestKey, () => {});
-
-    _choiceTexts[requestKey]!.addAll(texts);
-    _choiceEmojis[requestKey]!.addAll(emojis);
-  }
-
-  Future<void> recordSkippedUse(MessageActivityRequest request) async {
-    // Record a 0 XP use so that activity isn't chosen again soon
-    _sessionLoader.value!.incrementSkippedActivities();
-    final token = request.target.tokens.first;
-
-    final use = OneConstructUse(
-      useType: ConstructUseTypeEnum.ignPA,
-      constructType: widget.type,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
+    final uses = activity.constructUses(choiceContent);
+    _sessionController.submitAnswer(uses);
+    await _analyticsController.addCompletedActivityAnalytics(
+      uses,
+      AnalyticsPracticeUiController.getChoiceTargetId(
+        choiceContent,
+        widget.type,
       ),
-      category: token.pos,
-      lemma: token.lemma.text,
-      form: token.lemma.text,
-      xp: 0,
+      _l2!.langCodeShort,
     );
 
-    await _analyticsService.updateService.addAnalytics(null, [use]);
-  }
+    if (!notifier.activityComplete(activity)) return;
 
-  void onHintPressed() {
-    hintPressedNotifier.value = !hintPressedNotifier.value;
-  }
+    _playActivityAudio(activity);
 
-  Future<void> onSelectChoice(
-    String choiceContent,
-  ) async {
-    if (_currentActivity == null) return;
-    final activity = _currentActivity!;
-
-    // Track the selection for display
-    if (activity is MorphPracticeActivityModel) {
-      selectedMorphChoice.value = SelectedMorphChoice(
-        feature: activity.morphFeature,
-        tag: choiceContent,
+    if (_autoLaunchNextActivity(activity)) {
+      await Future.delayed(
+        const Duration(milliseconds: 1000),
+        startNextActivity,
       );
     }
-    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
-    if (isCorrect) {
-      enableChoicesNotifier.value = false;
-    }
-
-    // Update activity record
-    PracticeRecordController.onSelectChoice(
-      choiceContent,
-      activity.tokens.first,
-      activity,
-    );
-
-    final use = activity.constructUse(choiceContent);
-    _sessionLoader.value!.submitAnswer(use);
-    await _analyticsService.updateService
-        .addAnalytics(choiceTargetId(choiceContent), [use]);
-
-    if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
-
-    _playAudio();
-
-    // Display the fact that the choice was correct before loading the next activity
-    await Future.delayed(const Duration(milliseconds: 1000));
-
-    // Then mark this activity as completed, and either load the next or complete the session
-    _sessionLoader.value!.completeActivity();
-    progressNotifier.value = _sessionLoader.value!.progress;
-
-    if (_queue.isEmpty) {
-      await _completeSession();
-    } else if (_isComplete) {
-      await _completeSession();
-    } else {
-      await _continueSession();
-    }
   }
 
-  Future<List<InlineSpan>?> getExampleMessage(
-    MessageActivityRequest activityRequest,
+  Future<void> startNextActivity() async {
+    _sessionController.completeActivity();
+    progress.value = _sessionController.progress;
+    await _continueSession();
+  }
+
+  Future<void> skipActivity(PracticeTarget target) async {
+    // Record a 0 XP use so that activity isn't chosen again soon
+    _sessionController.skipActivity();
+    progress.value = _sessionController.progress;
+
+    await _analyticsController.addSkippedActivityAnalytics(
+      target,
+      _l2!.langCodeShort,
+    );
+  }
+
+  Future<void> flagActivity(
+    MultipleChoicePracticeActivityModel activity,
   ) async {
-    final target = activityRequest.target;
-    final token = target.tokens.first;
-    final construct = target.targetTokenConstructID(token);
-
-    if (widget.type == ConstructTypeEnum.morph) {
-      return activityRequest.morphExampleInfo?.exampleMessage;
-    }
-
-    return ExampleMessageUtil.getExampleMessage(
-      await _analyticsService.getConstructUse(construct),
-      Matrix.of(context).client,
+    final feedback = await showDialog<String?>(
+      context: context,
+      builder: (context) {
+        return FeedbackDialog(
+          title: L10n.of(context).feedbackTitle,
+          onSubmit: Navigator.of(context).pop,
+          scrollable: false,
+        );
+      },
     );
-  }
 
-  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
-      _analyticsService.derivedData;
+    if (feedback == null || feedback.isEmpty) return;
+    ErrorHandler.logError(
+      e: 'Practice activity flagged',
+      data: {'activity': activity.toJson(), 'feedback': feedback},
+    );
+
+    await skipActivity(activity.practiceTarget);
+    await _continueSession();
+  }
 
   @override
   Widget build(BuildContext context) => AnalyticsPracticeView(this);

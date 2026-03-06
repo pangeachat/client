@@ -2,15 +2,9 @@ class TeacherModeModel {
   final bool enabled;
   final int? activitiesToUnlockTopic;
 
-  const TeacherModeModel({
-    required this.enabled,
-    this.activitiesToUnlockTopic,
-  });
+  const TeacherModeModel({required this.enabled, this.activitiesToUnlockTopic});
 
-  TeacherModeModel copyWith({
-    bool? enabled,
-    int? activitiesToUnlockTopic,
-  }) {
+  TeacherModeModel copyWith({bool? enabled, int? activitiesToUnlockTopic}) {
     return TeacherModeModel(
       enabled: enabled ?? this.enabled,
       activitiesToUnlockTopic:
@@ -19,9 +13,9 @@ class TeacherModeModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'enabled': enabled,
-        'activities_to_unlock_topic': activitiesToUnlockTopic,
-      };
+    'enabled': enabled,
+    'activities_to_unlock_topic': activitiesToUnlockTopic,
+  };
 
   factory TeacherModeModel.fromJson(Map<String, dynamic> json) {
     return TeacherModeModel(

@@ -52,7 +52,7 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
                     imageUrl:
                         "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
                     errorWidget: (context, e, s) => const SizedBox.shrink(),
-                    progressIndicatorBuilder: (context, _, __) =>
+                    progressIndicatorBuilder: (context, _, _) =>
                         const SizedBox.shrink(),
                     width: 150.0,
                   ),
@@ -120,10 +120,9 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
             left: 4.0,
             child: IconButton.filled(
               style: IconButton.styleFrom(
-                backgroundColor: Theme.of(context)
-                    .colorScheme
-                    .surfaceContainerHigh
-                    .withAlpha(170),
+                backgroundColor: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHigh.withAlpha(170),
               ),
               icon: Icon(
                 Icons.close_outlined,

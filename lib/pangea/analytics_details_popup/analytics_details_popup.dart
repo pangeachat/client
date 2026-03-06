@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -19,20 +20,20 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
-  const ConstructAnalyticsView({
-    super.key,
-    required this.view,
-    this.construct,
-  });
+  const ConstructAnalyticsView({super.key, required this.view, this.construct});
 
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
@@ -43,6 +44,7 @@ class ConstructAnalyticsView extends StatefulWidget {
 
 class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   final TextEditingController searchController = TextEditingController();
+  final List<ConstructIdentifier> selectedConstructs = [];
 
   MorphFeaturesAndTags morphs = defaultMorphMapping;
   List<MorphFeature> features = defaultMorphMapping.displayFeatures;
@@ -81,16 +83,24 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     super.dispose();
   }
 
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
   Future<void> _setAnalyticsData() async {
-    final future = <Future>[
-      _setMorphs(),
-      _setVocab(),
-    ];
+    final l2 = _l2;
+    if (l2 == null) {
+      ErrorHandler.logError(
+        e: "No L2 language set for user",
+        m: "Cannot set analytics data",
+        data: {"view": widget.view, "construct": widget.construct},
+      );
+      return;
+    }
+    final future = <Future>[_setMorphs(), _setVocab(l2.langCodeShort)];
     await Future.wait(future);
   }
 
   void _onConstructUpdate(AnalyticsStreamUpdate update) {
-    if (update.blockedConstruct != null) {
+    if (update.blockedConstructs != null) {
       _onBlockConstruct(update);
     } else {
       _setAnalyticsData();
@@ -98,28 +108,28 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   }
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
-    final blocked = update.blockedConstruct;
+    final blocked = update.blockedConstructs;
     if (blocked == null) return;
-    vocab?.removeWhere((e) => e.id == blocked);
+    vocab?.removeWhere((e) => blocked.contains(e.id));
     if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
       setState(() {});
     }
   }
 
-  Future<void> _setVocab() async {
+  Future<void> _setVocab(String language) async {
     try {
       final analyticsService = Matrix.of(context).analyticsDataService;
-      final data = await analyticsService
-          .getAggregatedConstructs(ConstructTypeEnum.vocab);
+      final data = await analyticsService.getAggregatedConstructs(
+        ConstructTypeEnum.vocab,
+        language,
+      );
 
       vocab = data.values.toList();
-      vocab!.sort(
-        (a, b) {
-          final normalizedA = removeDiacritics(a.lemma).toLowerCase();
-          final normalizedB = removeDiacritics(b.lemma).toLowerCase();
-          return normalizedA.compareTo(normalizedB);
-        },
-      );
+      vocab!.sort((a, b) {
+        final normalizedA = removeDiacritics(a.lemma).toLowerCase();
+        final normalizedB = removeDiacritics(b.lemma).toLowerCase();
+        return normalizedA.compareTo(normalizedB);
+      });
     } finally {
       if (mounted) setState(() {});
     }
@@ -131,11 +141,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       morphs = resp;
       features = resp.displayFeatures;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"l2": MatrixState.pangeaController.userController.userL2},
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"l2": _l2?.langCode});
     } finally {
       features.sort(
         (a, b) => morphFeatureSortOrder
@@ -144,6 +150,31 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       );
       if (mounted) setState(() {});
     }
+  }
+
+  Future<Result<void>?> blockConstructs(
+    List<ConstructIdentifier> constructs,
+  ) async {
+    final resp = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).blockLemmaConfirmation,
+      isDestructive: true,
+    );
+
+    if (resp != OkCancelResult.ok) return null;
+    return showFutureLoadingDialog(
+      context: context,
+      future: () => Matrix.of(
+        context,
+      ).analyticsDataService.updateService.blockConstructs(constructs),
+    );
+  }
+
+  Future<void> blockSelectedConstructs() async {
+    final res = await blockConstructs(selectedConstructs);
+    if (res == null || res.isError) return;
+    clearSelectedConstructs();
   }
 
   void setSelectedConstructLevel(ConstructLevelEnum level) {
@@ -168,25 +199,47 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     });
   }
 
+  void toggleSelectedConstruct(ConstructIdentifier construct) {
+    setState(() {
+      if (selectedConstructs.contains(construct)) {
+        selectedConstructs.remove(construct);
+      } else {
+        selectedConstructs.add(construct);
+      }
+    });
+  }
+
+  void clearSelectedConstructs() {
+    setState(() {
+      selectedConstructs.clear();
+    });
+  }
+
+  bool get selectMode => selectedConstructs.isNotEmpty;
+
   Future<void> onFlagTokenInfo(
     PangeaToken token,
     LemmaInfoResponse lemmaInfo,
-    String phonetics,
+    PTRequest ptRequest,
+    PTResponse ptResponse,
   ) async {
+    final l2 = _l2;
+    if (l2 == null) return;
     final requestData = TokenInfoFeedbackRequestData(
       userId: Matrix.of(context).client.userID!,
-      detectedLanguage: MatrixState.pangeaController.userController.userL2Code!,
+      detectedLanguage: l2.langCode,
       tokens: [token],
       selectedToken: 0,
       wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
       lemmaInfo: lemmaInfo,
-      phonetics: phonetics,
+      ptRequest: ptRequest,
+      ptResponse: ptResponse,
     );
 
     await TokenFeedbackUtil.showTokenFeedbackDialog(
       context,
       requestData: requestData,
-      langCode: MatrixState.pangeaController.userController.userL2Code!,
+      langCode: l2.langCode,
       onUpdated: () => reloadNotifier.value++,
     );
   }
@@ -201,27 +254,26 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (widget.construct == null)
-                LearningProgressIndicators(
-                  selected: widget.view.indicator,
-                ),
+                LearningProgressIndicators(selected: widget.view.indicator),
               Expanded(
                 child: widget.view == ConstructTypeEnum.morph
                     ? widget.construct == null
-                        ? MorphAnalyticsListView(controller: this)
-                        : MorphDetailsView(constructId: widget.construct!)
+                          ? MorphAnalyticsListView(controller: this)
+                          : MorphDetailsView(constructId: widget.construct!)
                     : widget.construct == null
-                        ? VocabAnalyticsListView(controller: this)
-                        : VocabDetailsView(
-                            constructId: widget.construct!,
-                            controller: this,
-                          ),
+                    ? VocabAnalyticsListView(controller: this)
+                    : VocabDetailsView(
+                        constructId: widget.construct!,
+                        controller: this,
+                      ),
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton:
-          widget.construct == null ? _PracticeButton(view: widget.view) : null,
+      floatingActionButton: widget.construct == null
+          ? _PracticeButton(view: widget.view)
+          : null,
     );
   }
 }
@@ -233,10 +285,7 @@ class _PracticeButton extends StatelessWidget {
   void _showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        behavior: SnackBarBehavior.floating,
-      ),
+      SnackBar(content: Text(message), behavior: SnackBarBehavior.floating),
     );
   }
 
@@ -245,14 +294,13 @@ class _PracticeButton extends StatelessWidget {
     final analyticsService = Matrix.of(context).analyticsDataService;
     if (analyticsService.isInitializing) {
       return FloatingActionButton.extended(
-        onPressed: () => _showSnackbar(
-          context,
-          L10n.of(context).loadingPleaseWait,
-        ),
+        onPressed: () =>
+            _showSnackbar(context, L10n.of(context).loadingPleaseWait),
         label: Text(view.practiceButtonText(context)),
         backgroundColor: Theme.of(context).colorScheme.surface,
-        foregroundColor:
-            Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+        foregroundColor: Theme.of(
+          context,
+        ).colorScheme.onSurface.withValues(alpha: 0.5),
       );
     }
 
@@ -262,22 +310,17 @@ class _PracticeButton extends StatelessWidget {
     return FloatingActionButton.extended(
       onPressed: enabled
           ? () => context.go("/rooms/analytics/${view.name}/practice")
-          : () => _showSnackbar(
-                context,
-                L10n.of(context).notEnoughToPractice,
-              ),
-      backgroundColor:
-          enabled ? null : Theme.of(context).colorScheme.surfaceContainer,
+          : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
+      backgroundColor: enabled
+          ? null
+          : Theme.of(context).colorScheme.surfaceContainer,
       foregroundColor: enabled
           ? null
           : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
       label: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            enabled ? Symbols.fitness_center : Icons.lock_outline,
-            size: 18,
-          ),
+          Icon(enabled ? Symbols.fitness_center : Icons.lock_outline, size: 18),
           const SizedBox(width: 4),
           Text(view.practiceButtonText(context)),
         ],

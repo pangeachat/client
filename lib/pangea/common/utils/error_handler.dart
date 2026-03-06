@@ -12,7 +12,8 @@ import 'package:fluffychat/utils/platform_infos.dart';
 
 class PangeaWarningError implements Exception {
   final String message;
-  PangeaWarningError(message) : message = "Pangea Warning Error: $message";
+  PangeaWarningError(String message)
+    : message = "Pangea Warning Error: $message";
 
   @override
   String toString() => message;
@@ -22,18 +23,16 @@ class ErrorHandler {
   ErrorHandler();
 
   static Future<void> initialize() async {
-    await SentryFlutter.init(
-      (options) {
-        options.dsn = Environment.sentryDsn;
-        options.tracesSampleRate = 0.1;
-        options.debug = kDebugMode;
-        options.environment = kDebugMode
-            ? "debug"
-            : Environment.isStagingEnvironment
-                ? "staging"
-                : "productionC";
-      },
-    );
+    await SentryFlutter.init((options) {
+      options.dsn = Environment.sentryDsn;
+      options.tracesSampleRate = 0.1;
+      options.debug = kDebugMode;
+      options.environment = kDebugMode
+          ? "debug"
+          : Environment.isStagingEnvironment
+          ? "staging"
+          : "productionC";
+    });
 
     // Error handling
     FlutterError.onError = (FlutterErrorDetails details) async {
@@ -46,16 +45,12 @@ class ErrorHandler {
     };
 
     PlatformDispatcher.instance.onError = (exception, stack) {
-      logError(
-        e: exception,
-        s: stack,
-        data: {},
-      );
+      logError(e: exception, s: stack, data: {});
       return true;
     };
   }
 
-  static logError({
+  static Future<void> logError({
     Object? e,
     StackTrace? s,
     String? m,
@@ -90,12 +85,7 @@ class ErrorCopy {
   late String body;
   int? errorCode;
 
-  ErrorCopy(
-    this.context, {
-    this.error,
-    String? title,
-    String? body,
-  }) {
+  ErrorCopy(this.context, {this.error, String? title, String? body}) {
     if (title != null) this.title = title;
     if (body != null) this.body = body;
     if (title == null || body == null) setCopy();
@@ -156,11 +146,7 @@ class ErrorCopy {
           body = l10n.errorPleaseRefresh;
       }
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: s,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: s, s: s, data: {});
       _setDefaults();
     }
   }

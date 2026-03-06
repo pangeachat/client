@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-05 10:09:19.675804",
+  "@@last_modified": "2026-03-03 11:16:02.751840",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -2285,15 +2285,6 @@
   },
   "videoCallsBetaWarning": "Kérem vegye figyelembe, hogy a videó hívások jelenleg béta fázisban vannak. Nem biztos, hogy megfelelően fognak működni, vagy egyáltalán elindulnak egyes platformokon.",
   "@videoCallsBetaWarning": {},
-  "signInWith": "Bejelentkezés a {provider} kiszolgálóval",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "fileIsTooBigForServer": "Nem küldhető el! A szerver csak {max} határig enged csatolmányokat.",
   "@fileIsTooBigForServer": {},
   "verified": "Hitelesített",
@@ -3055,7 +3046,7 @@
   "@changeTheDescriptionOfTheGroup": {},
   "swipeRightToLeftToReply": "Húzza balra a válaszoláshoz",
   "@swipeRightToLeftToReply": {},
-  "alwaysUse24HourFormat": "hamis",
+  "alwaysUse24HourFormat": "",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
@@ -10738,8 +10729,6 @@
   "congratulations": "Gratulálunk!",
   "anotherRound": "Még egy kör",
   "noActivityRequest": "Jelenleg nincs aktivitás kérés.",
-  "quit": "Kilépés",
-  "congratulationsYouveCompletedPractice": "Gratulálunk! Befejezted a gyakorló ülést.",
   "mustHave10Words": "Legalább 10 szókincsszót kellene gyakorolnod. Próbálj meg beszélni egy baráttal vagy a Pangea Bot-tal, hogy többet felfedezhess!",
   "botSettings": "Bot beállítások",
   "activitySettingsOverrideWarning": "A nyelvet és a nyelvi szintet az aktivitási terv határozza meg",
@@ -10785,14 +10774,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10971,6 +10952,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "Rólam",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idióma",
   "grammarCopyPOSphrasalv": "Frazális ige",
   "grammarCopyPOScompn": "Összetett",
@@ -10983,6 +10969,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Tökéletes gyakorlás!",
+  "greatPractice": "Nagyszerű gyakorlás!",
+  "usedNoHints": "Jó munka, hogy nem használtál semmilyen tippet!",
+  "youveCompletedPractice": "Befejezted a gyakorlást, folytasd így, hogy jobb legyél!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Email cím módosítása",
+  "withTheseAddressesDescription": "Ezekkel az email címekkel be tudsz jelentkezni, vissza tudod állítani a jelszavadat, és kezelni tudod az előfizetéseket.",
+  "noAddressDescription": "Még nem adtál hozzá email címeket.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Nyelvtan",
+  "spanTypeWordChoice": "Szóválasztás",
+  "spanTypeSpelling": "Helyesírás",
+  "spanTypePunctuation": "Írásjelek",
+  "spanTypeStyle": "Stílus",
+  "spanTypeFluency": "Folyékonyság",
+  "spanTypeAccents": "Akcentusok",
+  "spanTypeCapitalization": "Nagybetűs írás",
+  "spanTypeCorrection": "Javítás",
+  "spanFeedbackTitle": "Javítási probléma jelentése",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} megváltoztatta a chat leírását",
+  "changedTheChatName": "{username} megváltoztatta a chat nevét",
+  "moreEvents": "További események",
+  "declineInvitation": "Meghívó visszautasítása",
+  "noMessagesYet": "Még nincsenek üzenetek",
+  "longPressToRecordVoiceMessage": "Hosszan nyomja meg a hangüzenet rögzítéséhez.",
+  "pause": "Szünet",
+  "resume": "Folytatás",
+  "newSubSpace": "Új alhely",
+  "moveToDifferentSpace": "Áthelyezés másik helyre",
+  "moveUp": "Feljebb",
+  "moveDown": "Lejjebb",
+  "removeFromSpaceDescription": "A csevegés eltávolításra kerül a térből, de továbbra is megjelenik a csevegési listádban.",
+  "countChats": "{chats} csevegés",
+  "spaceMemberOf": "{spaces} tér tagja",
+  "spaceMemberOfCanKnock": "{spaces} tér tagja kopoghat",
+  "donate": "Adományozás",
+  "startedAPoll": "{username} szavazást indított.",
+  "poll": "Szavazás",
+  "startPoll": "Szavazás indítása",
+  "endPoll": "Szavazás befejezése",
+  "answersVisible": "Válaszok láthatóak",
+  "answersHidden": "Válaszok rejtve",
+  "pollQuestion": "Szavazás kérdése",
+  "answerOption": "Válaszlehetőség",
+  "addAnswerOption": "Válaszlehetőség hozzáadása",
+  "allowMultipleAnswers": "Több válasz engedélyezése",
+  "pollHasBeenEnded": "A szavazás befejeződött",
+  "countVotes": "{count, plural, =1{Egy szavazat} other{{count} szavazat}}",
+  "answersWillBeVisibleWhenPollHasEnded": "A válaszok láthatóak lesznek, amikor a szavazás befejeződött",
+  "replyInThread": "Válasz a beszélgetésben",
+  "countReplies": "{count, plural, =1{Egy válasz} other{{count} válasz}}",
+  "thread": "Beszélgetés",
+  "backToMainChat": "Vissza a fő csevegéshez",
+  "createSticker": "Matricát vagy emojit készít",
+  "useAsSticker": "Használja matricaként",
+  "useAsEmoji": "Használja emojiként",
+  "stickerPackNameAlreadyExists": "A matrica csomag neve már létezik",
+  "newStickerPack": "Új matrica csomag",
+  "stickerPackName": "Matrica csomag neve",
+  "attribution": "Hozzárendelés",
+  "skipChatBackup": "Csevegés biztonsági mentésének kihagyása",
+  "skipChatBackupWarning": "Biztos benne? A csevegés biztonsági mentésének engedélyezése nélkül elveszítheti a hozzáférést az üzeneteihez, ha vált a készüléke.",
+  "loadingMessages": "Üzenetek betöltése",
+  "setupChatBackup": "Csevegés biztonsági mentésének beállítása",
+  "noMoreResultsFound": "Nincs több találat",
+  "chatSearchedUntil": "Csevegés keresve: {time} -ig",
+  "federationBaseUrl": "Szövetségi alap URL",
+  "clientWellKnownInformation": "Kliens-jól ismert információ:",
+  "baseUrl": "Alap URL",
+  "identityServer": "Identitás Szolgáltató:",
+  "versionWithNumber": "Verzió: {version}",
+  "logs": "Naplók",
+  "advancedConfigs": "Haladó Beállítások",
+  "advancedConfigurations": "Haladó konfigurációk",
+  "signInWithLabel": "Bejelentkezés ezzel:",
+  "selectAllWords": "Válaszd ki az összes szót, amit hallasz a hanganyagban",
+  "joinCourseForActivities": "Csatlakozz egy kurzushoz, hogy kipróbálhasd a tevékenységeket.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "A kurzusok 3-8 modulból állnak, mindegyikben tevékenységekkel, amelyek ösztönzik a szavak különböző kontextusokban való gyakorlását",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Az email ellenőrzése nem sikerült. Kérjük, próbálja újra.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Tanulási eszközök feloldása",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Elindítottuk az előfizetéskezelést egy új lapon. Ha nem láttad az új lapot, kérlek ellenőrizd a felugróablak-blokkolódat.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Gyakorlati tevékenységek feloldása",
+  "hideEvents": "Események elrejtése",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "A felhasználót elutasítják a kurzusról, azonban bármikor később megpróbálhat újra csatlakozni.",
+  "denyKnockChat": "A felhasználót elutasítják a csevegésből, azonban bármikor később megpróbálhat újra csatlakozni.",
+  "banFromSpace": "Kitiltás a kurzusról",
+  "unbanFromSpace": "Visszavonás a kitiltás alól",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Kitiltva. Nem lehet csatlakozni.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "A csatlakozási kérelmedet elfogadták! Most már beléphetsz a kurzusra.",
+  "sessionFull": "Túl késő! Ez a tevékenység megtelt.",
+  "returnToCourse": "Vissza a kurzushoz",
+  "returnHome": "Vissza a főoldalra",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Fordítási visszajelzés",
+  "userUpdatedLearningSettings": "{username} frissítette a tanulási beállításokat",
+  "youUpdatedLearningSettings": "Frissítetted a tanulási beállításaidat",
+  "userAddedActivityPlan": "{username} hozzáadott egy aktivitási tervet",
+  "youAddedActivityPlan": "Hozzáadtál egy aktivitási tervet",
+  "userSentActivitySummary": "{username} elküldött egy aktivitási összefoglalót",
+  "youSentActivitySummary": "Elküldted az aktivitási összefoglalót",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

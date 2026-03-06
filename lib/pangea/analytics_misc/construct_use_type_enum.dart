@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -10,9 +12,15 @@ enum ConstructUseTypeEnum {
   wa,
 
   /// produced during IGC
+  @Deprecated(
+    'Use corIGC/incIGC/ignIGC instead. Kept for backward compat with stored events.',
+  )
   ga,
 
   /// produced during IT
+  @Deprecated(
+    'Use corIt/incIt/ignIt instead. Kept for backward compat with stored events.',
+  )
   ta,
 
   /// produced in chat by user and igc was not run
@@ -460,6 +468,62 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
         return null;
+    }
+  }
+
+  /// Whether this use type represents direct chat production.
+  bool get isChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.wa:
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this chat use involved assistance (IGC or IT).
+  bool get isAssistedChatUse {
+    switch (this) {
+      case ConstructUseTypeEnum.ga:
+      case ConstructUseTypeEnum.ta:
+      case ConstructUseTypeEnum.corIt:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.corIGC:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.ignIGC:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  /// Whether this is an incorrect answer in any practice activity.
+  bool get isIncorrectPractice {
+    switch (this) {
+      case ConstructUseTypeEnum.incPA:
+      case ConstructUseTypeEnum.incWL:
+      case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incIt:
+      case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
+      case ConstructUseTypeEnum.incGE:
+        return true;
+      default:
+        return false;
     }
   }
 }

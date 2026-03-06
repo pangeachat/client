@@ -1,3 +1,6 @@
+import 'dart:isolate';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,14 +19,15 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
+import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'config/setting_keys.dart';
 import 'utils/background_push.dart';
 import 'widgets/fluffy_chat_app.dart';
 
-void main() async {
-  Logs().i('Welcome to ${AppConfig.applicationName} <3');
+ReceivePort? mainIsolateReceivePort;
 
+void main() async {
   // #Pangea
   try {
     await dotenv.load(fileName: ".env");
@@ -50,17 +54,29 @@ void main() async {
   await Future.wait(initFutures);
   // Pangea#
 
+  if (PlatformInfos.isAndroid) {
+    final port = mainIsolateReceivePort = ReceivePort();
+    IsolateNameServer.removePortNameMapping(AppConfig.mainIsolatePortName);
+    IsolateNameServer.registerPortWithName(
+      port.sendPort,
+      AppConfig.mainIsolatePortName,
+    );
+    await waitForPushIsolateDone();
+  }
+
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
   // widget bindings are initialized already.
   WidgetsFlutterBinding.ensureInitialized();
+
+  final store = await AppSettings.init();
+  Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
 
   // #Pangea
   // await vod.init(wasmPath: './assets/assets/vodozemac/');
   // Pangea#
 
   Logs().nativeColors = !PlatformInfos.isIOS;
-  final store = await SharedPreferences.getInstance();
   final clients = await ClientManager.getClients(store: store);
 
   // If the app starts in detached mode, we assume that it is in
@@ -80,14 +96,14 @@ void main() async {
     // To start the flutter engine afterwards we add an custom observer.
     WidgetsBinding.instance.addObserver(AppStarter(clients, store));
     Logs().i(
-      '${AppConfig.applicationName} started in background-fetch mode. No GUI will be created unless the app is no longer detached.',
+      '${AppSettings.applicationName.value} started in background-fetch mode. No GUI will be created unless the app is no longer detached.',
     );
     return;
   }
 
   // Started in foreground mode.
   Logs().i(
-    '${AppConfig.applicationName} started in foreground mode. Rendering GUI...',
+    '${AppSettings.applicationName.value} started in foreground mode. Rendering GUI...',
   );
   await startGui(clients, store);
 }
@@ -98,8 +114,9 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
   String? pin;
   if (PlatformInfos.isMobile) {
     try {
-      pin =
-          await const FlutterSecureStorage().read(key: SettingKeys.appLockKey);
+      pin = await const FlutterSecureStorage().read(
+        key: 'chat.fluffy.app_lock',
+      );
     } catch (e, s) {
       Logs().d('Unable to read PIN from Secure storage', e, s);
     }
@@ -152,7 +169,7 @@ class AppStarter with WidgetsBindingObserver {
     if (state == AppLifecycleState.detached) return;
 
     Logs().i(
-      '${AppConfig.applicationName} switches from the detached background-fetch mode to ${state.name} mode. Rendering GUI...',
+      '${AppSettings.applicationName.value} switches from the detached background-fetch mode to ${state.name} mode. Rendering GUI...',
     );
     // Switching to foreground mode needs to reenable send online sync presence.
     for (final client in clients) {

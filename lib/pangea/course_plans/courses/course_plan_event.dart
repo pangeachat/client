@@ -4,14 +4,10 @@ class CoursePlanEvent {
   CoursePlanEvent({required this.uuid});
 
   Map<String, dynamic> toJson() {
-    return {
-      'uuid': uuid,
-    };
+    return {'uuid': uuid};
   }
 
   factory CoursePlanEvent.fromJson(Map<String, dynamic> json) {
-    return CoursePlanEvent(
-      uuid: json['uuid'] as String,
-    );
+    return CoursePlanEvent(uuid: json['uuid'] as String);
   }
 }

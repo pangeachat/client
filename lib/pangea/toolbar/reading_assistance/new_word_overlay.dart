@@ -39,29 +39,29 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
     _opacityAnim = TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.0, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 25,
       ),
+      TweenSequenceItem(tween: ConstantTween<double>(1.0), weight: 25),
       TweenSequenceItem(
-        tween: ConstantTween<double>(1.0),
-        weight: 25,
-      ),
-      TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 0.0)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 0.0,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 50,
       ),
     ]).animate(_controller!);
 
     _backgroundFadeAnim = TweenSequence<double>([
+      TweenSequenceItem(tween: ConstantTween<double>(1.0), weight: 50),
       TweenSequenceItem(
-        tween: ConstantTween<double>(1.0),
-        weight: 50,
-      ),
-      TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 0.0)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 0.0,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 50,
       ),
     ]).animate(_controller!);
@@ -112,10 +112,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
           return Transform.translate(
             offset: Offset(0, moveY),
-            child: Opacity(
-              opacity: opacity,
-              child: const NewVocabBubble(),
-            ),
+            child: Opacity(opacity: opacity, child: const NewVocabBubble()),
           );
         },
       ),
@@ -157,18 +154,11 @@ class NewVocabBubble extends StatelessWidget {
         color: theme.colorScheme.surfaceContainerHighest,
         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
       ),
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
-        horizontal: 16.0,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            Symbols.dictionary,
-            color: theme.colorScheme.primary,
-            size: 24,
-          ),
+          Icon(Symbols.dictionary, color: theme.colorScheme.primary, size: 24),
           const SizedBox(width: 4.0),
           Text(
             "+ 1",

@@ -34,13 +34,10 @@ class GrammarChoiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final baseTextSize =
         (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
-            (height / 72.0).clamp(1.0, 1.4);
+        (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.5;
-    final copy = getGrammarCopy(
-          category: feature.name,
-          lemma: tag,
-          context: context,
-        ) ??
+    final copy =
+        getGrammarCopy(category: feature.name, lemma: tag, context: context) ??
         tag;
 
     return GameChoiceCard(
@@ -69,9 +66,7 @@ class GrammarChoiceCard extends StatelessWidget {
               copy,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: baseTextSize,
-              ),
+              style: TextStyle(fontSize: baseTextSize),
             ),
           ),
         ],

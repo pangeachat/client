@@ -13,33 +13,33 @@ class AutocorrectSpan extends WidgetSpan {
     required VoidCallback onUndo,
     required TextStyle style,
   }) : super(
-          alignment: PlaceholderAlignment.middle,
-          child: CompositedTransformTarget(
-            link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
-            child: Builder(
-              builder: (context) {
-                return RichText(
-                  key: MatrixState.pAnyState
-                      .layerLinkAndKey(transformTargetId)
-                      .key,
-                  text: TextSpan(
-                    text: currentText,
-                    style: style,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        OverlayUtil.showOverlay(
-                          context: context,
-                          child: AutocorrectPopup(
-                            originalText: originalText,
-                            onUndo: onUndo,
-                          ),
-                          transformTargetId: transformTargetId,
-                        );
-                      },
-                  ),
-                );
-              },
-            ),
-          ),
-        );
+         alignment: PlaceholderAlignment.middle,
+         child: CompositedTransformTarget(
+           link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
+           child: Builder(
+             builder: (context) {
+               return RichText(
+                 key: MatrixState.pAnyState
+                     .layerLinkAndKey(transformTargetId)
+                     .key,
+                 text: TextSpan(
+                   text: currentText,
+                   style: style,
+                   recognizer: TapGestureRecognizer()
+                     ..onTap = () {
+                       OverlayUtil.showOverlay(
+                         context: context,
+                         child: AutocorrectPopup(
+                           originalText: originalText,
+                           onUndo: onUndo,
+                         ),
+                         transformTargetId: transformTargetId,
+                       );
+                     },
+                 ),
+               );
+             },
+           ),
+         ),
+       );
 }

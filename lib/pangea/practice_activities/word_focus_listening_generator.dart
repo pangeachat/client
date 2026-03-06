@@ -4,9 +4,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
 
 class WordFocusListeningGenerator {
-  static MessageActivityResponse get(
-    MessageActivityRequest req,
-  ) {
+  static MessageActivityResponse get(MessageActivityRequest req) {
     if (req.target.tokens.length <= 1) {
       throw Exception(
         "Word focus listening activity requires at least 2 tokens",

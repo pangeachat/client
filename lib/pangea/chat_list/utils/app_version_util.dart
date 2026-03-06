@@ -25,9 +25,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class AppVersionUtil {
   static final GetStorage _versionBox = GetStorage("version_storage");
 
-  static Future<AppVersionResponse> _getAppVersion(
-    String accessToken,
-  ) async {
+  static Future<AppVersionResponse> _getAppVersion(String accessToken) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
     final currentBuildNumber = packageInfo.buildNumber;
@@ -110,9 +108,11 @@ class AppVersionUtil {
     // If a part of the current version is greater than the
     // remote version, then the current version is newer than
     // the remote version.
-    for (int i = 0;
-        i < min(currentVersionParts.length, remoteVersionParts.length);
-        i++) {
+    for (
+      int i = 0;
+      i < min(currentVersionParts.length, remoteVersionParts.length);
+      i++
+    ) {
       if (currentVersionParts[i] < remoteVersionParts[i]) {
         isOlderCurrentVersion = true;
         isDifferentVersion = true;

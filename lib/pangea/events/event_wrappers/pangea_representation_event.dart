@@ -5,7 +5,6 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
-import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -18,7 +17,6 @@ import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart'
 import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
-import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
@@ -63,25 +61,10 @@ class RepresentationEvent {
   List<LanguageDetectionModel>? get detections => _tokens?.detections;
 
   Set<Event> get tokenEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.tokens,
-      ) ??
-      {};
-
-  Set<Event> get sttEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.sttTranslation,
-      ) ??
-      {};
+      _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
 
   Set<Event> get choreoEvents =>
-      _event?.aggregatedEvents(
-        timeline,
-        PangeaEventTypes.choreoRecord,
-      ) ??
-      {};
+      _event?.aggregatedEvents(timeline, PangeaEventTypes.choreoRecord) ?? {};
 
   // Note: in the case where the event is the originalSent or originalWritten event,
   // the content will be set on initialization by the PangeaMessageEvent
@@ -105,11 +88,7 @@ class RepresentationEvent {
     if (_choreo != null) return _choreo;
 
     if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _choreo both null",
-        ),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(message: "_event and _choreo both null"));
       return null;
     }
 
@@ -124,40 +103,6 @@ class RepresentationEvent {
     }
 
     return ChoreoEvent(event: choreoEvents.first).content;
-  }
-
-  List<SttTranslationModel> get sttTranslations {
-    if (content.speechToText == null) return [];
-    if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _sttTranslations both null",
-        ),
-      );
-      return [];
-    }
-
-    if (sttEvents.isEmpty) return [];
-    final List<SttTranslationModel> sttTranslations = [];
-    for (final event in sttEvents) {
-      try {
-        sttTranslations.add(
-          SttTranslationModel.fromJson(event.content),
-        );
-      } catch (e) {
-        Sentry.addBreadcrumb(
-          Breadcrumb(
-            message: "Failed to parse STT translation",
-            data: {
-              "eventID": event.eventId,
-              "content": event.content,
-              "error": e.toString(),
-            },
-          ),
-        );
-      }
-    }
-    return sttTranslations;
   }
 
   List<OneConstructUse> get vocabAndMorphUses {
@@ -227,10 +172,10 @@ class RepresentationEvent {
         langCode: langCode,
         senderL1:
             MatrixState.pangeaController.userController.userL1?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
         senderL2:
             MatrixState.pangeaController.userController.userL2?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
       ),
     );
 
@@ -248,9 +193,5 @@ class RepresentationEvent {
     return res.isError
         ? Result.error(res.error!)
         : Result.value(res.result!.tokens);
-  }
-
-  SttTranslationModel? getSpeechToTextTranslationLocal(String langCode) {
-    return sttTranslations.firstWhereOrNull((t) => t.langCode == langCode);
   }
 }

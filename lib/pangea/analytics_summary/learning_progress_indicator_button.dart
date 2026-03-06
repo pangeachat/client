@@ -29,10 +29,9 @@ class HoverButton extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: hovered || selected
-                    ? Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withAlpha((hoverOpacity * 255).round())
+                    ? Theme.of(context).colorScheme.primary.withAlpha(
+                        (hoverOpacity * 255).round(),
+                      )
                     : Colors.transparent,
                 borderRadius: borderRadius ?? BorderRadius.circular(36.0),
               ),

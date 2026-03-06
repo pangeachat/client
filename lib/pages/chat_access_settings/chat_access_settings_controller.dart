@@ -27,6 +27,16 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
   bool historyVisibilityLoading = false;
   bool guestAccessLoading = false;
   Room get room => Matrix.of(context).client.getRoomById(widget.roomId)!;
+  Set<Room> get knownSpaceParents => {
+    ...room.client.rooms.where(
+      (space) =>
+          space.isSpace &&
+          space.spaceChildren.any((child) => child.roomId == room.id),
+    ),
+    ...room.spaceParents
+        .map((parent) => room.client.getRoomById(parent.roomId ?? ''))
+        .whereType<Room>(),
+  };
 
   String get roomVersion =>
       room
@@ -47,9 +57,20 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
       joinRules.remove(JoinRules.knock);
     }
 
-    // Not yet supported in FluffyChat:
-    joinRules.remove(JoinRules.restricted);
-    joinRules.remove(JoinRules.knockRestricted);
+    // Restricted is only supported for rooms up from version 8:
+    if (roomVersionInt != null && roomVersionInt <= 7) {
+      joinRules.remove(JoinRules.restricted);
+    }
+
+    // Knock-Restricted is only supported for rooms up from version 10:
+    if (roomVersionInt != null && roomVersionInt <= 9) {
+      joinRules.remove(JoinRules.knockRestricted);
+    }
+
+    if (knownSpaceParents.isEmpty) {
+      joinRules.remove(JoinRules.restricted);
+      joinRules.remove(JoinRules.knockRestricted);
+    }
 
     // If an unsupported join rule is the current join rule, display it:
     final currentJoinRule = room.joinRules;
@@ -69,7 +90,16 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
 
     try {
       // #Pangea
-      // await room.setJoinRules(newJoinRules);
+      // await room.setJoinRules(
+      //   newJoinRules,
+      //   allowConditionRoomIds:
+      //       {
+      //         JoinRules.restricted,
+      //         JoinRules.knockRestricted,
+      //       }.contains(newJoinRules)
+      //       ? knownSpaceParents.map((parent) => parent.id).toList()
+      //       : null,
+      // );
       await room.pangeaSetJoinRules(
         newJoinRules.toString().replaceAll('JoinRules.', ''),
       );
@@ -77,13 +107,9 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change join rules', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e.toLocalizedString(context),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       }
     } finally {
       if (mounted) {
@@ -105,13 +131,9 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change history visibility', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e.toLocalizedString(context),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       }
     } finally {
       if (mounted) {
@@ -133,13 +155,9 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change guest access', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e.toLocalizedString(context),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       }
     } finally {
       if (mounted) {
@@ -179,7 +197,6 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     if (newVersion == null ||
         OkCancelResult.cancel ==
             await showOkCancelAlertDialog(
-              useRootNavigator: false,
               context: context,
               okLabel: L10n.of(context).yes,
               cancelLabel: L10n.of(context).cancel,
@@ -191,7 +208,43 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     }
     final result = await showFutureLoadingDialog(
       context: context,
-      future: () => room.client.upgradeRoom(room.id, newVersion),
+      futureWithProgress: (onProgress) async {
+        final newRoomId = await room.client.upgradeRoom(room.id, newVersion);
+        var newRoom = room.client.getRoomById(newRoomId);
+        while (newRoom == null) {
+          await room.client.onSync.stream.first;
+          newRoom = room.client.getRoomById(newRoomId);
+        }
+
+        if ({
+          JoinRules.invite,
+          JoinRules.knock,
+          JoinRules.knockRestricted,
+        }.contains(room.joinRules)) {
+          final users = await room.requestParticipants([
+            Membership.join,
+            Membership.invite,
+          ]);
+          users.removeWhere((user) => user.id == room.client.userID);
+          for (final (i, user) in users.indexed) {
+            try {
+              Logs().v('Inviting...', user.id);
+              await newRoom.invite(user.id);
+              onProgress(i / users.length);
+            } on MatrixException catch (e) {
+              final retryAfterMs = e.retryAfterMs;
+              if (e.error != MatrixError.M_LIMIT_EXCEEDED ||
+                  retryAfterMs == null) {
+                rethrow;
+              }
+              Logs().d('Limit exceeded. Retry after $retryAfterMs');
+              await Future.delayed(Duration(milliseconds: retryAfterMs));
+              await newRoom.invite(user.id);
+              onProgress(i / users.length);
+            }
+          }
+        }
+      },
     );
     if (result.error != null) return;
     if (!mounted) return;
@@ -232,7 +285,8 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
       cancelLabel: L10n.of(context).no,
     );
 
-    final altAliases = room
+    final altAliases =
+        room
             .getState(EventTypes.RoomCanonicalAlias)
             ?.content
             .tryGetList<String>('alt_aliases')
@@ -248,17 +302,13 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
 
     await showFutureLoadingDialog(
       context: context,
-      future: () => room.client.setRoomStateWithKey(
-        room.id,
-        EventTypes.RoomCanonicalAlias,
-        '',
-        {
-          'alias': canonicalAliasConsent == OkCancelResult.ok
-              ? alias
-              : room.canonicalAlias,
-          if (altAliases.isNotEmpty) 'alt_aliases': altAliases.toList(),
-        },
-      ),
+      future: () => room.client
+          .setRoomStateWithKey(room.id, EventTypes.RoomCanonicalAlias, '', {
+            'alias': canonicalAliasConsent == OkCancelResult.ok
+                ? alias
+                : room.canonicalAlias,
+            if (altAliases.isNotEmpty) 'alt_aliases': altAliases.toList(),
+          }),
     );
   }
 
@@ -285,13 +335,9 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     } catch (e, s) {
       Logs().w('Unable to change visibility', e, s);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e.toLocalizedString(context),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       }
     } finally {
       if (mounted) {

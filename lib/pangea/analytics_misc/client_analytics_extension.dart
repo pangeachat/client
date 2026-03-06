@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -45,15 +46,12 @@ extension AnalyticsClientExtension on Client {
         analyticsRoom.membership == Membership.invite) {
       debugger(when: kDebugMode);
       analyticsRoom.join().onError(
-            (error, stackTrace) => ErrorHandler.logError(
-              e: error,
-              s: stackTrace,
-              data: {
-                "langCode": lang!.langCodeShort,
-                "userIdParam": userIdParam,
-              },
-            ),
-          );
+        (error, stackTrace) => ErrorHandler.logError(
+          e: error,
+          s: stackTrace,
+          data: {"langCode": lang!.langCodeShort, "userIdParam": userIdParam},
+        ),
+      );
       return analyticsRoom;
     }
     return analyticsRoom;
@@ -81,9 +79,7 @@ extension AnalyticsClientExtension on Client {
       initialState: [
         StateEvent(
           type: EventTypes.RoomJoinRules,
-          content: {
-            ModelKey.joinRule: JoinRules.knock.name,
-          },
+          content: {ModelKey.joinRule: JoinRules.knock.name},
         ),
       ],
     );
@@ -97,11 +93,8 @@ extension AnalyticsClientExtension on Client {
   }
 
   /// Get all my analytics rooms
-  List<Room> get allMyAnalyticsRooms => rooms
-      .where(
-        (e) => e.isAnalyticsRoomOfUser(userID!),
-      )
-      .toList();
+  List<Room> get allMyAnalyticsRooms =>
+      rooms.where((e) => e.isAnalyticsRoomOfUser(userID!)).toList();
 
   /// Update the join rules of all analytics rooms to 'knock'.
   Future<void> updateAnalyticsRoomJoinRules() async {
@@ -123,9 +116,7 @@ extension AnalyticsClientExtension on Client {
   Future<void> addAnalyticsRoomsToSpaces() async {
     if (userID == null || userID == BotName.byEnvironment) return;
     final spaces = rooms
-        .where(
-          (room) => room.isSpace && room.membership == Membership.join,
-        )
+        .where((room) => room.isSpace && room.membership == Membership.join)
         .toList();
 
     final Random random = Random();
@@ -187,12 +178,27 @@ extension AnalyticsClientExtension on Client {
       return null;
     }
 
+    // wait for all rooms to sync
+    if (prevBatch == null) {
+      await onSync.stream.first;
+    }
+
     final room = getRoomById(use.metadata.roomId!);
-    if (room == null) return null;
+    if (room == null) {
+      Logs().i("Room not found for construct use ${use.toJson()}");
+      return null;
+    }
 
     try {
       final event = await room.getEventById(use.metadata.eventId!);
-      if (event == null) return null;
+      if (event == null) {
+        ErrorHandler.logError(
+          e: "Event not found for construct use",
+          level: SentryLevel.warning,
+          data: use.toJson(),
+        );
+        return null;
+      }
 
       final timeline = await room.getTimeline();
       return PangeaMessageEvent(

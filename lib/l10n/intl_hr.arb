@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-02-05 10:09:27.459987",
+  "@@last_modified": "2026-03-03 11:16:21.076020",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -196,7 +196,7 @@
       }
     }
   },
-  "changedTheChatDescriptionTo": "{username} je promijenio/la opis razgovora u: „{description}”",
+  "changedTheChatDescriptionTo": "{username} je promijenio/la opis razgovora u: '{description}'",
   "@changedTheChatDescriptionTo": {
     "type": "String",
     "placeholders": {
@@ -208,7 +208,7 @@
       }
     }
   },
-  "changedTheChatNameTo": "{username} je promijenio/la ime razgovora u: „{chatname}”",
+  "changedTheChatNameTo": "{username} je promijenio/la ime razgovora u: '{chatname}'",
   "@changedTheChatNameTo": {
     "type": "String",
     "placeholders": {
@@ -229,7 +229,7 @@
       }
     }
   },
-  "changedTheDisplaynameTo": "{username} je promijenio/la ime u: „{displayname}”",
+  "changedTheDisplaynameTo": "{username} je promijenio/la svoje prikazno ime u: '{displayname}'",
   "@changedTheDisplaynameTo": {
     "type": "String",
     "placeholders": {
@@ -371,7 +371,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatBackupDescription": "Tvoji su stari razgovori osigurani s ključem za obnavljanje. Pazi da ga ne izgubiš.",
+  "chatBackupDescription": "Tvoje poruke su osigurane s ključem za obnavljanje. Pazi da ga ne izgubiš.",
   "@chatBackupDescription": {
     "type": "String",
     "placeholders": {}
@@ -633,7 +633,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "defaultPermissionLevel": "Standardna razina dozvole",
+  "defaultPermissionLevel": "Standardna razina dozvole za nove korisnike",
   "@defaultPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -1799,7 +1799,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "unknownEvent": "Nepoznat događaj „{type}”",
+  "unknownEvent": "Nepoznat događaj '{type}'",
   "@unknownEvent": {
     "type": "String",
     "placeholders": {
@@ -2505,15 +2505,6 @@
   "@signInWithPassword": {},
   "pleaseTryAgainLaterOrChooseDifferentServer": "Pokušaj ponovo kasnije ili odaberi jedan drugi poslužitelj.",
   "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "signInWith": "Prijavi se pomoću {provider}",
-  "@signInWith": {
-    "type": "String",
-    "placeholders": {
-      "provider": {
-        "type": "String"
-      }
-    }
-  },
   "notAnImage": "Nije slikovna datoteka.",
   "@notAnImage": {},
   "importNow": "Uvezi sada",
@@ -2573,9 +2564,9 @@
   "@addChatDescription": {},
   "directChat": "Izravni razgovor",
   "@directChat": {},
-  "inviteGroupChat": "📨 Pozovi u grupni razgovor",
+  "inviteGroupChat": "📨 Pozivnica u grupni razgovor",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Pozovi u privatni razgovor",
+  "invitePrivateChat": "📨 Pozivnica u privatni razgovor",
   "@invitePrivateChat": {},
   "noChatDescriptionYet": "Opis razgovora još nije stvoren.",
   "@noChatDescriptionYet": {},
@@ -2885,7 +2876,7 @@
   "@restricted": {},
   "roomUpgradeDescription": "Razgovor će se tada ponovo stvoriti s novom verzijom sobe. Svi sudionici će biti obaviješteni da se moraju prebaciti na novi razgovor. Više o verzijama soba možeš saznati na https://spec.matrix.org/latest/rooms/",
   "@roomUpgradeDescription": {},
-  "noGoogleServicesWarning": "Čini se da Firebase Cloud Messaging nije dostupan na tvom uređaju. Za daljnje primanje push obavijesti, preporučujemo da instaliraš ntfy. S ntfy ili drugim pružateljem usluge Unified Push možeš primati push obavijesti na podatkovno siguran način. Ntfy možeš preuzeti s PlayStorea ili s F-Droida.",
+  "noGoogleServicesWarning": "Čini se da Firebase Cloud Messaging nije dostupan na tvom uređaju. Za daljnje primanje push obavijesti, preporučujemo da instaliraš ntfy. S ntfy ili drugim pružateljem Unified Push usluge možeš primati push obavijesti na podatkovno siguran način. Ntfy možeš preuzeti s PlayStorea ili s F-Droida.",
   "@noGoogleServicesWarning": {
     "type": "String",
     "placeholders": {}
@@ -2992,12 +2983,25 @@
       }
     }
   },
-  "setCustomPermissionLevel": "Postavi prilagođenu razinu dopuštenja",
-  "setPermissionsLevelDescription": "Molimo odaberite unaprijed definiranu ulogu ispod ili unesite prilagođenu razinu dopuštenja između 0 i 100.",
-  "ignoreUser": "Ignoriraj korisnika",
-  "normalUser": "Običan korisnik",
-  "aboutHomeserver": "O {homeserver}",
+  "setCustomPermissionLevel": "Postavi razinu dozvole",
+  "@setCustomPermissionLevel": {},
+  "setPermissionsLevelDescription": "Odaberi unaprijed definiranu ulogu u nastavku ili upiši prilagođenu razinu dozvole između 0 i 100.",
+  "@setPermissionsLevelDescription": {},
+  "ignoreUser": "Zanemari korisnika",
+  "@ignoreUser": {},
+  "normalUser": "Normalni korisnik",
+  "@normalUser": {},
+  "aboutHomeserver": "Informacije o {homeserver}",
+  "@aboutHomeserver": {
+    "type": "String",
+    "placeholders": {
+      "homeserver": {
+        "type": "String"
+      }
+    }
+  },
   "commandHint_roomupgrade": "Nadogradi ovu sobu na zadanu verziju sobe",
+  "@commandHint_roomupgrade": {},
   "countChatsAndCountParticipants": "{chats} razgovora i {participants} sudionika",
   "noMoreChatsFound": "Nema više pronađenih razgovora...",
   "noChatsFoundHere": "Ovdje još nisu pronađeni razgovori. Započnite novi razgovor s nekim pomoću gumba ispod. ⤵️",
@@ -4261,34 +4265,6 @@
   "inviteYourFriends": "Pozovite svoje prijatelje",
   "playWithAI": "Igraj s AI-jem za sada",
   "courseStartDesc": "Pangea Bot je spreman za rad u bilo koje vrijeme!\n\n...ali je bolje učiti s prijateljima!",
-  "@setCustomPermissionLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@setPermissionsLevelDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@normalUser": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aboutHomeserver": {
-    "type": "String",
-    "placeholders": {
-      "homeserver": {
-        "type": "String"
-      }
-    }
-  },
-  "@commandHint_roomupgrade": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@countChatsAndCountParticipants": {
     "type": "String",
     "placeholders": {
@@ -11109,8 +11085,6 @@
   "congratulations": "Čestitamo!",
   "anotherRound": "Još jedan krug",
   "noActivityRequest": "Nema trenutnog zahtjeva za aktivnost.",
-  "quit": "Izlaz",
-  "congratulationsYouveCompletedPractice": "Čestitamo! Završili ste sesiju vježbanja.",
   "mustHave10Words": "Morate imati najmanje 10 riječi za vokabular kako biste ih vježbali. Pokušajte razgovarati s prijateljem ili Pangea Botom kako biste otkrili više!",
   "botSettings": "Postavke Bota",
   "activitySettingsOverrideWarning": "Jezik i razina jezika određeni planom aktivnosti",
@@ -11156,14 +11130,6 @@
     "placeholders": {}
   },
   "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@congratulationsYouveCompletedPractice": {
     "type": "String",
     "placeholders": {}
   },
@@ -11342,6 +11308,11 @@
     "type": "String",
     "placeholders": {}
   },
+  "aboutMeHint": "O meni",
+  "@aboutMeHint": {
+    "type": "String",
+    "placeholders": {}
+  },
   "grammarCopyPOSidiom": "Idiom",
   "grammarCopyPOSphrasalv": "Phrasalni Glagol",
   "grammarCopyPOScompn": "Složenica",
@@ -11354,6 +11325,539 @@
     "placeholders": {}
   },
   "@grammarCopyPOScompn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "perfectPractice": "Savršena praksa!",
+  "greatPractice": "Sjajna praksa!",
+  "usedNoHints": "Odlično, niste koristili nikakve savjete!",
+  "youveCompletedPractice": "Završili ste praksu, nastavite tako da postanete bolji!",
+  "@perfectPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@greatPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@usedNoHints": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@youveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeEmail": "Promijeni email",
+  "withTheseAddressesDescription": "S ovim email adresama možete se prijaviti, oporaviti svoju lozinku i upravljati pretplatama.",
+  "noAddressDescription": "Još niste dodali nijednu email adresu.",
+  "@changeEmail": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@withTheseAddressesDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noAddressDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "spanTypeGrammar": "Gramatika",
+  "spanTypeWordChoice": "Odabir riječi",
+  "spanTypeSpelling": "Pravopis",
+  "spanTypePunctuation": "Interpunkcija",
+  "spanTypeStyle": "Stil",
+  "spanTypeFluency": "Tečnost",
+  "spanTypeAccents": "Naglasci",
+  "spanTypeCapitalization": "Velika slova",
+  "spanTypeCorrection": "Ispravak",
+  "spanFeedbackTitle": "Prijavi problem s ispravkom",
+  "@spanTypeGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeWordChoice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeSpelling": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypePunctuation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeStyle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeFluency": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeAccents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCapitalization": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanTypeCorrection": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@spanFeedbackTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changedTheChatDescription": "{username} je promijenio opis chata",
+  "changedTheChatName": "{username} je promijenio ime chata",
+  "moreEvents": "Više događaja",
+  "declineInvitation": "Odbij pozivnicu",
+  "noMessagesYet": "Još nema poruka",
+  "longPressToRecordVoiceMessage": "Dugo pritisnite za snimanje glasovne poruke.",
+  "pause": "Pauza",
+  "resume": "Nastavi",
+  "newSubSpace": "Novi podprostor",
+  "moveToDifferentSpace": "Premjesti u drugi prostor",
+  "moveUp": "Pomakni se gore",
+  "moveDown": "Pomakni se dolje",
+  "removeFromSpaceDescription": "Razgovor će biti uklonjen iz prostora, ali će se i dalje pojavljivati na vašem popisu razgovora.",
+  "countChats": "{chats} razgovora",
+  "spaceMemberOf": "Član prostora {spaces}",
+  "spaceMemberOfCanKnock": "Član prostora {spaces} može pokucati",
+  "donate": "Doniraj",
+  "startedAPoll": "{username} je započeo anketu.",
+  "poll": "Anketa",
+  "startPoll": "Započni anketu",
+  "endPoll": "Završi anketu",
+  "answersVisible": "Odgovori vidljivi",
+  "answersHidden": "Odgovori skriveni",
+  "pollQuestion": "Pitanje ankete",
+  "answerOption": "Opcija odgovora",
+  "addAnswerOption": "Dodaj opciju odgovora",
+  "allowMultipleAnswers": "Dopusti višestruke odgovore",
+  "pollHasBeenEnded": "Anketa je završena",
+  "countVotes": "{count, plural, =1{Jedan glas} other{{count} glasova}}",
+  "answersWillBeVisibleWhenPollHasEnded": "Odgovori će biti vidljivi kada anketa završi",
+  "replyInThread": "Odgovori u temi",
+  "countReplies": "{count, plural, =1{Jedan odgovor} other{{count} odgovora}}",
+  "thread": "Tema",
+  "backToMainChat": "Povratak na glavni chat",
+  "createSticker": "Kreiraj naljepnicu ili emoji",
+  "useAsSticker": "Koristi kao naljepnicu",
+  "useAsEmoji": "Koristi kao emoji",
+  "stickerPackNameAlreadyExists": "Ime paketa naljepnica već postoji",
+  "newStickerPack": "Novi paket naljepnica",
+  "stickerPackName": "Ime paketa naljepnica",
+  "attribution": "Priznanje",
+  "skipChatBackup": "Preskoči sigurnosnu kopiju chata",
+  "skipChatBackupWarning": "Jeste li sigurni? Bez omogućavanja sigurnosne kopije chata možete izgubiti pristup svojim porukama ako promijenite uređaj.",
+  "loadingMessages": "Učitavanje poruka",
+  "setupChatBackup": "Postavi sigurnosnu kopiju chata",
+  "noMoreResultsFound": "Nema više pronađenih rezultata",
+  "chatSearchedUntil": "Chat pretražen do {time}",
+  "federationBaseUrl": "Osnovna URL adresa federacije",
+  "clientWellKnownInformation": "Informacije o klijentu:",
+  "baseUrl": "Osnovna URL adresa",
+  "identityServer": "Identitet Server:",
+  "versionWithNumber": "Verzija: {version}",
+  "logs": "Dnevnici",
+  "advancedConfigs": "Napredne postavke",
+  "advancedConfigurations": "Napredne konfiguracije",
+  "signInWithLabel": "Prijavite se s:",
+  "selectAllWords": "Odaberite sve riječi koje čujete u audiozapisu",
+  "joinCourseForActivities": "Pridružite se tečaju kako biste isprobali aktivnosti.",
+  "@changedTheChatDescription": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@changedTheChatName": {
+    "type": "String",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "@moreEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@declineInvitation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMessagesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@longPressToRecordVoiceMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pause": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@resume": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newSubSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveToDifferentSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveUp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@moveDown": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@removeFromSpaceDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countChats": {
+    "type": "String",
+    "placeholders": {
+      "chats": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceMemberOf": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@spaceMemberOfCanKnock": {
+    "type": "String",
+    "placeholders": {
+      "spaces": {
+        "type": "String"
+      }
+    }
+  },
+  "@donate": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startedAPoll": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@poll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@endPoll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersVisible": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answersHidden": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollQuestion": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@answerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addAnswerOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allowMultipleAnswers": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pollHasBeenEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countVotes": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@answersWillBeVisibleWhenPollHasEnded": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@replyInThread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@countReplies": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@thread": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@backToMainChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsSticker": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@useAsEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackNameAlreadyExists": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newStickerPack": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stickerPackName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@attribution": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skipChatBackupWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loadingMessages": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@setupChatBackup": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noMoreResultsFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatSearchedUntil": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@federationBaseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@clientWellKnownInformation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baseUrl": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@identityServer": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@versionWithNumber": {
+    "type": "String",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@logs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigs": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@advancedConfigurations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@signInWithLabel": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAllWords": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseForActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseDescription": "Tečajevi se sastoje od 3-8 modula, svaki s aktivnostima koje potiču vježbanje riječi u različitim kontekstima",
+  "@courseDescription": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emailVerificationFailed": "Verifikacija e-pošte nije uspjela. Molimo pokušajte ponovo.",
+  "@emailVerificationFailed": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockLearningTools": "Otključaj alate za učenje",
+  "@unlockLearningTools": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "managementSnackbarMessage": "Pokrenuli smo upravljanje pretplatama u novoj kartici. Ako niste vidjeli novu karticu, provjerite svoj blokator iskačućih prozora.",
+  "@managementSnackbarMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "unlockPracticeActivities": "Otključaj aktivnosti vježbanja",
+  "hideEvents": "Sakrij događaje",
+  "@unlockPracticeActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hideEvents": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "denyKnockSpace": "Korisnik će biti odbijen iz tečaja, međutim može pokušati ponovno pridružiti se bilo kada kasnije.",
+  "denyKnockChat": "Korisnik će biti odbijen iz chata, međutim može pokušati ponovno pridružiti se bilo kada kasnije.",
+  "banFromSpace": "Zabrana iz tečaja",
+  "unbanFromSpace": "Ukidanje zabrane iz tečaja",
+  "@denyKnockSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@denyKnockChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unbanFromSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "cannotJoinBannedRoom": "Zabranjeno. Nije moguće pridružiti se.",
+  "@cannotJoinBannedRoom": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockAccepted": "Vaš zahtjev za pridruživanje je prihvaćen! Sada možete ući u tečaj.",
+  "sessionFull": "Prekasno! Ova aktivnost je puna.",
+  "returnToCourse": "Vrati se na tečaj",
+  "returnHome": "Vrati se kući",
+  "@knockAccepted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sessionFull": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnToCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Povratne informacije o prijevodu",
+  "userUpdatedLearningSettings": "{username} je ažurirao postavke učenja",
+  "youUpdatedLearningSettings": "Ažurirali ste svoje postavke učenja",
+  "userAddedActivityPlan": "{username} je dodao plan aktivnosti",
+  "youAddedActivityPlan": "Dodali ste plan aktivnosti",
+  "userSentActivitySummary": "{username} je poslao sažetak aktivnosti",
+  "youSentActivitySummary": "Poslali ste sažetak aktivnosti",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
     "type": "String",
     "placeholders": {}
   }

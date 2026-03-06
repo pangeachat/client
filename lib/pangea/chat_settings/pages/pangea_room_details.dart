@@ -19,9 +19,7 @@ class PangeaRoomDetailsView extends StatelessWidget {
     final room = Matrix.of(context).client.getRoomById(controller.roomId!);
     if (room == null || room.membership == Membership.leave) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(L10n.of(context).oopsSomethingWentWrong),
-        ),
+        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
         body: Center(
           child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
         ),
@@ -29,15 +27,17 @@ class PangeaRoomDetailsView extends StatelessWidget {
     }
 
     return StreamBuilder(
-      stream: room.client.onRoomState.stream
-          .where((update) => update.roomId == room.id),
+      stream: room.client.onRoomState.stream.where(
+        (update) => update.roomId == room.id,
+      ),
       builder: (context, snapshot) {
         return SafeArea(
           child: Scaffold(
             appBar: room.isSpace
                 ? null
                 : AppBar(
-                    leading: controller.widget.embeddedCloseButton ??
+                    leading:
+                        controller.widget.embeddedCloseButton ??
                         const Center(child: BackButton()),
                   ),
             body: Padding(

@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
@@ -27,9 +28,15 @@ class WordZoomWidget extends StatelessWidget {
 
   final Event? event;
 
+  /// POS tag for PT v2 disambiguation (e.g. "VERB").
+  final String pos;
+
+  /// Morph features for PT v2 disambiguation (e.g. {"Tense": "Past"}).
+  final Map<String, String>? morph;
+
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
-  final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
+  final Function(LemmaInfoResponse, PTRequest, PTResponse)? onFlagTokenInfo;
   final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
 
@@ -38,8 +45,10 @@ class WordZoomWidget extends StatelessWidget {
     required this.token,
     required this.construct,
     required this.langCode,
+    required this.pos,
     this.onClose,
     this.event,
+    this.morph,
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
@@ -61,7 +70,7 @@ class WordZoomWidget extends StatelessWidget {
         MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
-        ? const MessageUnsubscribedCard()
+        ? MessageUnsubscribedCard(token: token, onClose: onClose)
         : Stack(
             children: [
               Container(
@@ -86,10 +95,7 @@ class WordZoomWidget extends StatelessWidget {
                                     icon: const Icon(Icons.close),
                                     onPressed: onClose,
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
                               child: Container(
                                 constraints: const BoxConstraints(
@@ -103,7 +109,8 @@ class WordZoomWidget extends StatelessWidget {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
-                                    color: Theme.of(context).brightness ==
+                                    color:
+                                        Theme.of(context).brightness ==
                                             Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
@@ -114,19 +121,15 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
                                     messageInfo: event?.content ?? {},
                                   )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
+                                : const SizedBox(width: 40.0, height: 40.0),
                           ],
                         ),
                       ),
@@ -138,10 +141,11 @@ class WordZoomWidget extends StatelessWidget {
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
                                     text: token.content,
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
+                                    textLanguage:
+                                        PLanguageStore.byLangCode(langCode) ??
                                         LanguageModel.unknown,
+                                    pos: pos,
+                                    morph: morph,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
@@ -149,6 +153,8 @@ class WordZoomWidget extends StatelessWidget {
                                   )
                                 : WordAudioButton(
                                     text: token.content,
+                                    pos: pos,
+                                    morph: morph,
                                     uniqueID: "lemma-content-${token.content}",
                                     langCode: langCode,
                                     iconSize: 24.0,
@@ -158,6 +164,7 @@ class WordZoomWidget extends StatelessWidget {
                               langCode: langCode,
                               event: event,
                               enabled: enableEmojiSelection,
+                              form: token.content,
                             ),
                             LemmaMeaningDisplay(
                               langCode: langCode,
@@ -206,9 +213,7 @@ class WordZoomWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              content,
-            ],
+            children: [content],
           ),
         ),
       ),

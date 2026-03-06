@@ -7,15 +7,15 @@ import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popu
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -30,43 +30,39 @@ class VocabDetailsView extends StatelessWidget {
     required this.controller,
   });
 
-  Future<void> _blockLemma(BuildContext context) async {
-    final resp = await showOkCancelAlertDialog(
-      context: context,
-      title: L10n.of(context).areYouSure,
-      message: L10n.of(context).blockLemmaConfirmation,
-      isDestructive: true,
-    );
-
-    if (resp != OkCancelResult.ok) return;
-    final res = await showFutureLoadingDialog(
-      context: context,
-      future: () => Matrix.of(context)
-          .analyticsDataService
-          .updateService
-          .blockConstruct(constructId),
-    );
-
-    if (!res.isError) {
-      Navigator.of(context).pop();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final l2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future: analyticsService.getConstructUse(constructId),
+      future: l2 != null
+          ? analyticsService.getConstructUse(constructId, l2)
+          : Future.value(
+              ConstructUses(
+                uses: [],
+                constructType: constructId.type,
+                lemma: constructId.lemma,
+                category: constructId.category,
+              ),
+            ),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
         final Color textColor =
             (Theme.of(context).brightness != Brightness.light
-                ? level.color(context)
-                : level.darkColor(context));
+            ? level.color(context)
+            : level.darkColor(context));
 
-        final forms = construct?.forms ?? [];
+        final forms =
+            construct?.uses
+                .where((u) => u.form != null)
+                .map((use) => _VocabForm(use.form!, use.category))
+                .toSet()
+                .toList() ??
+            [];
+
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
         final token = PangeaToken(
           text: tokenText,
@@ -93,12 +89,19 @@ class VocabDetailsView extends StatelessWidget {
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                   construct: constructId,
+                  pos: constructId.category,
                   onClose: Navigator.of(context).pop,
-                  onFlagTokenInfo: (
-                    LemmaInfoResponse lemmaInfo,
-                    String phonetics,
-                  ) =>
-                      controller.onFlagTokenInfo(token, lemmaInfo, phonetics),
+                  onFlagTokenInfo:
+                      (
+                        LemmaInfoResponse lemmaInfo,
+                        PTRequest ptRequest,
+                        PTResponse ptResponse,
+                      ) => controller.onFlagTokenInfo(
+                        token,
+                        lemmaInfo,
+                        ptRequest,
+                        ptResponse,
+                      ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
                 ),
@@ -109,9 +112,7 @@ class VocabDetailsView extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: ConstructXPProgressBar(
-                        construct: constructId,
-                      ),
+                      child: ConstructXPProgressBar(construct: constructId),
                     ),
                     Column(
                       children: [
@@ -126,9 +127,7 @@ class VocabDetailsView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        AnalyticsDetailsUsageContent(
-                          construct: construct,
-                        ),
+                        AnalyticsDetailsUsageContent(construct: construct),
                         ListTile(
                           leading: Icon(
                             Icons.delete_outline,
@@ -140,7 +139,13 @@ class VocabDetailsView extends StatelessWidget {
                               color: Theme.of(context).colorScheme.error,
                             ),
                           ),
-                          onTap: () => _blockLemma(context),
+                          onTap: () async {
+                            final res = await controller.blockConstructs([
+                              constructId,
+                            ]);
+                            if (res == null || res.isError) return;
+                            Navigator.of(context).pop();
+                          },
                         ),
                       ],
                     ),
@@ -156,7 +161,7 @@ class VocabDetailsView extends StatelessWidget {
 
 class _VocabForms extends StatelessWidget {
   final String lemma;
-  final List<String> forms;
+  final List<_VocabForm> forms;
   final Color textColor;
 
   const _VocabForms({
@@ -176,9 +181,9 @@ class _VocabForms extends StatelessWidget {
         children: [
           Text(
             L10n.of(context).formSectionHeader,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 6.0),
           ...forms.mapIndexed(
@@ -186,11 +191,12 @@ class _VocabForms extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 WordTextWithAudioButton(
-                  text: form,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: textColor,
-                      ),
-                  uniqueID: "$form-$lemma-$i",
+                  text: form.form,
+                  pos: form.pos,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: textColor),
+                  uniqueID: "${form.form}-$lemma-$i",
                   langCode:
                       MatrixState.pangeaController.userController.userL2Code!,
                 ),
@@ -202,4 +208,22 @@ class _VocabForms extends StatelessWidget {
       ),
     );
   }
+}
+
+class _VocabForm {
+  final String form;
+  final String pos;
+
+  const _VocabForm(this.form, this.pos);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is _VocabForm &&
+          runtimeType == other.runtimeType &&
+          form.toLowerCase() == other.form.toLowerCase() &&
+          pos == other.pos;
+
+  @override
+  int get hashCode => form.toLowerCase().hashCode ^ pos.hashCode;
 }

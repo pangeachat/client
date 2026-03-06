@@ -18,9 +18,11 @@ class ReplyDisplay extends StatelessWidget {
 
     // #Pangea
     return ListenableBuilder(
-      listenable:
-          Listenable.merge([controller.replyEvent, controller.editEvent]),
-      builder: (context, __) {
+      listenable: Listenable.merge([
+        controller.replyEvent,
+        controller.editEvent,
+      ]),
+      builder: (context, _) {
         final editEvent = controller.editEvent.value;
         final replyEvent = controller.replyEvent.value;
         // Pangea#
@@ -34,9 +36,7 @@ class ReplyDisplay extends StatelessWidget {
               ? 56
               : 0,
           clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            color: theme.colorScheme.onInverseSurface,
-          ),
+          decoration: BoxDecoration(color: theme.colorScheme.onInverseSurface),
           child: Row(
             children: <Widget>[
               IconButton(
@@ -85,10 +85,7 @@ class _EditContent extends StatelessWidget {
     }
     return Row(
       children: <Widget>[
-        Icon(
-          Icons.edit,
-          color: theme.colorScheme.primary,
-        ),
+        Icon(Icons.edit, color: theme.colorScheme.primary),
         Container(width: 15.0),
         // #Pangea
         // Text(
@@ -99,9 +96,7 @@ class _EditContent extends StatelessWidget {
         //   ),
         //   overflow: TextOverflow.ellipsis,
         //   maxLines: 1,
-        //   style: TextStyle(
-        //     color: theme.textTheme.bodyMedium!.color,
-        //   ),
+        //   style: TextStyle(color: theme.textTheme.bodyMedium!.color),
         // ),
         Flexible(
           child: Text(
@@ -113,9 +108,7 @@ class _EditContent extends StatelessWidget {
             ),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style: TextStyle(
-              color: theme.textTheme.bodyMedium!.color,
-            ),
+            style: TextStyle(color: theme.textTheme.bodyMedium!.color),
           ),
         ),
         // Pangea#

@@ -47,22 +47,21 @@ class MaxWidthBody extends StatelessWidget {
                     // constraints: const BoxConstraints(
                     //   maxWidth: FluffyThemes.columnWidth * 1.5,
                     // ),
-                    constraints: BoxConstraints(
-                      maxWidth: maxWidth,
-                    ),
+                    constraints: BoxConstraints(maxWidth: maxWidth),
                     // Pangea#
                     child: Material(
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius),
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.borderRadius,
+                        ),
+                        // #Pangea
+                        // side: BorderSide(color: theme.dividerColor),
                         side: BorderSide(
-                          // #Pangea
-                          // color: theme.dividerColor,
                           color: showBorder
                               ? theme.dividerColor
                               : Colors.transparent,
-                          // Pangea#
                         ),
+                        // Pangea#
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Padding(

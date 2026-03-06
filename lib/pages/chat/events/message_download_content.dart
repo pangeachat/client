@@ -4,6 +4,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
@@ -26,15 +27,15 @@ class MessageDownloadContent extends StatelessWidget {
     final filetype = (filename.contains('.')
         ? filename.split('.').last.toUpperCase()
         : event.content
-                .tryGetMap<String, dynamic>('info')
-                ?.tryGet<String>('mimetype')
-                ?.toUpperCase() ??
-            'UNKNOWN');
+                  .tryGetMap<String, dynamic>('info')
+                  ?.tryGet<String>('mimetype')
+                  ?.toUpperCase() ??
+              'UNKNOWN');
     final sizeString = event.sizeString ?? '?MB';
     final fileDescription = event.fileDescription;
     return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: .min,
+      crossAxisAlignment: .start,
       spacing: 8,
       children: [
         Material(
@@ -46,20 +47,17 @@ class MessageDownloadContent extends StatelessWidget {
               width: 400,
               padding: const EdgeInsets.all(16.0),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: .min,
                 spacing: 16,
                 children: [
                   CircleAvatar(
                     backgroundColor: textColor.withAlpha(32),
                     child: Icon(Icons.file_download_outlined, color: textColor),
                   ),
-                  // #Pangea
                   Flexible(
-                    child:
-                        // Pangea#
-                        Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      mainAxisSize: .min,
                       children: [
                         Text(
                           filename,
@@ -95,12 +93,16 @@ class MessageDownloadContent extends StatelessWidget {
               textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
               style: TextStyle(
                 color: textColor,
-                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
+                    AppConfig.messageFontSize,
               ),
               options: const LinkifyOptions(humanize: false),
               linkStyle: TextStyle(
                 color: linkColor,
-                fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                fontSize:
+                    AppSettings.fontSizeFactor.value *
+                    AppConfig.messageFontSize,
                 decoration: TextDecoration.underline,
                 decorationColor: linkColor,
               ),

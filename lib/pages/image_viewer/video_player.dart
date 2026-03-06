@@ -20,10 +20,7 @@ import '../../widgets/mxc_image.dart';
 class EventVideoPlayer extends StatefulWidget {
   final Event event;
 
-  const EventVideoPlayer(
-    this.event, {
-    super.key,
-  });
+  const EventVideoPlayer(this.event, {super.key});
 
   @override
   EventVideoPlayerState createState() => EventVideoPlayerState();
@@ -41,7 +38,9 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
     final mimetype = infoMap?.tryGet<String>('mimetype');
     return PlatformInfos.isAndroid ? mimetype != "video/quicktime" : true;
   }
+
   // Pangea#
+  double? _downloadProgress;
 
   // The video_player package only doesn't support Windows and Linux.
   // #Pangea
@@ -60,7 +59,21 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
       // #Pangea
       setState(() => _error = null);
       // Pangea#
-      final videoFile = await widget.event.downloadAndDecryptAttachment();
+      final fileSize = widget.event.content
+          .tryGetMap<String, dynamic>('info')
+          ?.tryGet<int>('size');
+      final videoFile = await widget.event.downloadAndDecryptAttachment(
+        onDownloadProgress: fileSize == null
+            ? null
+            : (progress) {
+                final progressPercentage = progress / fileSize;
+                setState(() {
+                  _downloadProgress = progressPercentage < 1
+                      ? progressPercentage
+                      : null;
+                });
+              },
+      );
 
       // Dispose the controllers if we already have them.
       _disposeControllers();
@@ -102,11 +115,9 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
         );
       });
     } on IOException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toLocalizedString(context)),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
       // #Pangea
       setState(() => _error = e);
       // Pangea#
@@ -144,13 +155,15 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     final hasThumbnail = widget.event.hasThumbnail;
-    final blurHash = (widget.event.infoMap as Map<String, dynamic>)
-            .tryGet<String>('xyz.amorgan.blurhash') ??
+    final blurHash =
+        (widget.event.infoMap as Map<String, dynamic>).tryGet<String>(
+          'xyz.amorgan.blurhash',
+        ) ??
         fallbackBlurHash;
     final infoMap = widget.event.content.tryGetMap<String, Object?>('info');
     final videoWidth = infoMap?.tryGet<int>('w') ?? 400;
     final videoHeight = infoMap?.tryGet<int>('h') ?? 300;
-    final height = MediaQuery.of(context).size.height - 52;
+    final height = MediaQuery.sizeOf(context).height - 52;
     final width = videoWidth * (height / videoHeight);
 
     final chewieController = _chewieController;
@@ -189,7 +202,11 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
                 ),
               ),
               // #Pangea
-              // const Center(child: CircularProgressIndicator.adaptive()),
+              // Center(
+              //   child: CircularProgressIndicator.adaptive(
+              //     value: _downloadProgress,
+              //   ),
+              // ),
               _error != null
                   ? Center(
                       child: Column(
@@ -220,7 +237,11 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
                         ],
                       ),
                     )
-                  : const Center(child: CircularProgressIndicator.adaptive()),
+                  : Center(
+                      child: CircularProgressIndicator.adaptive(
+                        value: _downloadProgress,
+                      ),
+                    ),
               // Pangea#
             ],
           );

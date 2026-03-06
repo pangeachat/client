@@ -65,10 +65,7 @@ class ProfileBottomSheet extends StatelessWidget {
                     profile?.displayName ?? userId.localpart ?? userId,
                     style: const TextStyle(fontSize: 18),
                   ),
-                  Text(
-                    userId,
-                    style: const TextStyle(fontSize: 12),
-                  ),
+                  Text(userId, style: const TextStyle(fontSize: 12)),
                 ],
               ),
               // Pangea#

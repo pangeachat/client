@@ -4,12 +4,12 @@ import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_m
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 
 class VocabMeaningActivityGenerator {
-  static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  static Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     final token = req.target.tokens.first;
-    final choices =
-        await LemmaActivityGenerator.lemmaActivityDistractors(token);
+    final choices = await LemmaActivityGenerator.lemmaActivityDistractors(
+      token,
+      language: req.userL2.split('-').first,
+    );
 
     if (!choices.contains(token.vocabConstructID)) {
       choices.add(token.vocabConstructID);
