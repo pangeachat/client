@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 13:14:55.196543",
+  "@@last_modified": "2026-03-06 14:06:43.312613",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11535,6 +11535,11 @@
   },
   "noAnalyticsActivitiesAvailable": "வாவ், நீங்கள் அனைத்து கிடைக்கும் செயல்பாடுகளை முடித்துவிட்டீர்கள்! மேலும் பயிற்சி செயல்பாடுகளை திறக்க மேலும் செய்திகளை அனுப்பவும்.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "சுயவிவரம்",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

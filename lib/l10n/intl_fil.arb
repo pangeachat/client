@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-06 13:14:44.962842",
+  "@@last_modified": "2026-03-06 14:06:37.169369",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12530,6 +12530,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Wow, natapos mo na ang lahat ng available na aktibidad! Magpadala ng higit pang mga mensahe upang makakuha ng higit pang mga aktibidad sa pagsasanay.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profile",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

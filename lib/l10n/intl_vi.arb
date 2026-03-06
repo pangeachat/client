@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 13:14:53.815977",
+  "@@last_modified": "2026-03-06 14:06:42.503557",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -7132,6 +7132,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Wow, bạn đã hoàn thành tất cả các hoạt động có sẵn! Gửi thêm tin nhắn để mở khóa thêm các hoạt động thực hành.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Hồ sơ",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

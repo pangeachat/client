@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-06 13:14:49.101320",
+  "@@last_modified": "2026-03-06 14:06:39.607647",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11755,6 +11755,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Vay canına, mevcut tüm etkinlikleri tamamladın! Daha fazla pratik etkinliği açmak için daha fazla mesaj gönder.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

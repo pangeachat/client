@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 13:14:12.379429",
+  "@@last_modified": "2026-03-06 14:06:12.505171",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11521,6 +11521,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak aktivitas latihan.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

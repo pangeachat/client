@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-06 13:14:04.613665",
+  "@@last_modified": "2026-03-06 14:06:07.689618",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11415,6 +11415,11 @@
   },
   "noAnalyticsActivitiesAvailable": "Uau, completaches todas as actividades dispoñibles! Envía máis mensaxes para desbloquear máis actividades de práctica.",
   "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Perfil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }
