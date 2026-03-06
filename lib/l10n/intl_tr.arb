@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-06 10:44:25.921479",
+  "@@last_modified": "2026-03-06 11:06:57.752014",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10808,7 +10808,6 @@
   "man": "Erkek",
   "otherGender": "Diğer",
   "unselectedGender": "Bir cinsiyet seçeneği seçin",
-  "gender": "Cinsiyet",
   "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10827,10 +10826,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11750,6 +11745,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Cinsiyetim",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

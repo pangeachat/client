@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-06 10:44:52.869434",
+  "@@last_modified": "2026-03-06 11:07:11.354879",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10672,7 +10672,6 @@
   "man": "Мужчина",
   "otherGender": "Другое",
   "unselectedGender": "Выберите вариант пола",
-  "gender": "Пол",
   "chatParticipantTooltip": "Это все участники этого чата. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10691,10 +10690,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11375,6 +11370,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Мой пол",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

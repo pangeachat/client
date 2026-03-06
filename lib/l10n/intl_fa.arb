@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:42.109162",
+  "@@last_modified": "2026-03-06 11:07:05.900913",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -10594,7 +10594,6 @@
   "man": "مرد",
   "otherGender": "سایر",
   "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
-  "gender": "جنسیت",
   "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10613,10 +10612,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11531,6 +11526,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "جنسیت من",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

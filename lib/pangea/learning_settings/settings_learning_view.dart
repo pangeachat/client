@@ -154,6 +154,7 @@ class SettingsLearningView extends StatelessWidget {
                                     controller: controller.aboutTextController,
                                     decoration: InputDecoration(
                                       hintText: L10n.of(context).aboutMeHint,
+                                      labelText: L10n.of(context).aboutMeHint,
                                     ),
                                     onChanged: (val) =>
                                         controller.setAbout(val),

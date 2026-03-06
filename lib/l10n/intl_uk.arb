@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-06 10:44:02.381580",
+  "@@last_modified": "2026-03-06 11:06:47.243659",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Чоловік",
   "otherGender": "Інше",
   "unselectedGender": "Виберіть варіант статі",
-  "gender": "Стать",
   "chatParticipantTooltip": "Це всі учасники цього чату. Натисніть на аватар будь-якого користувача та \"почати розмову\", щоб надіслати особисте повідомлення.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,6 +11405,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Моя стать",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

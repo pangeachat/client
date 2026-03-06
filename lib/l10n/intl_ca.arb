@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:08.215130",
+  "@@last_modified": "2026-03-06 11:06:50.481535",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10628,7 +10628,6 @@
   "man": "Home",
   "otherGender": "Altre",
   "unselectedGender": "Selecciona una opció de gènere",
-  "gender": "Gènere",
   "chatParticipantTooltip": "Això és tothom en aquest xat. Fes clic a l'avatar de qualsevol usuari i \"inicia una conversa\" per enviar un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10647,10 +10646,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11570,6 +11565,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "El meu gènere",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

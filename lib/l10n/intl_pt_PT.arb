@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-03-06 10:44:13.133382",
+  "@@last_modified": "2026-03-06 11:06:52.538446",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11631,7 +11631,6 @@
   "man": "Homem",
   "otherGender": "Outro",
   "unselectedGender": "Selecione uma opção de gênero",
-  "gender": "Gênero",
   "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11650,10 +11649,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12578,6 +12573,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Meu gênero",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

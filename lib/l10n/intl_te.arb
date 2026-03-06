@@ -1916,7 +1916,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-03-06 10:44:27.476535",
+  "@@last_modified": "2026-03-06 11:06:58.575265",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11691,7 +11691,6 @@
   "man": "పురుషుడు",
   "otherGender": "ఇతర",
   "unselectedGender": "ఒక లింగ ఎంపికను ఎంచుకోండి",
-  "gender": "లింగం",
   "chatParticipantTooltip": "ఈ చాట్లో ఉన్న అందరే. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11710,10 +11709,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12633,6 +12628,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "నా లింగం",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

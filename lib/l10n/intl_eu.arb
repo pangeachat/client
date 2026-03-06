@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-03-06 10:43:49.674199",
+  "@@last_modified": "2026-03-06 11:06:42.068202",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Gizona",
   "otherGender": "Bestea",
   "unselectedGender": "Aukeratu genero aukera bat",
-  "gender": "Generoa",
   "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,6 +11405,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Nire generoa",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

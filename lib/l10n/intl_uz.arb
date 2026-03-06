@@ -3495,7 +3495,7 @@
   "setupChatBackup": "Chat zaxirasini sozlash",
   "@setupChatBackup": {},
   "@@locale": "uz",
-  "@@last_modified": "2026-03-06 10:44:16.407647",
+  "@@last_modified": "2026-03-06 11:06:54.370369",
   "noMoreResultsFound": "Boshqa natijalar topilmadi",
   "chatSearchedUntil": "Chat {time} gacha qidirildi",
   "federationBaseUrl": "Federatsiya Asos URL",
@@ -4897,7 +4897,6 @@
   "man": "Erkak",
   "otherGender": "Boshqa",
   "unselectedGender": "Gender variantini tanlang",
-  "gender": "Jins",
   "modeDisabled": "O'qitish vositalari sizning maqsad tilingizda bo'lmagan xabarlar uchun o'chirilgan.",
   "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
   "chatParticipantTooltip": "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
@@ -10788,10 +10787,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@gender": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@modeDisabled": {
     "type": "String",
     "placeholders": {}
@@ -11304,6 +11299,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mening jinsim",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

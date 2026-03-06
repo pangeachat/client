@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-06 10:43:42.585780",
+  "@@last_modified": "2026-03-06 11:06:38.764067",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -10961,7 +10961,6 @@
   "man": "Muškarac",
   "otherGender": "Ostalo",
   "unselectedGender": "Odaberite opciju spola",
-  "gender": "Spol",
   "chatParticipantTooltip": "Ovo su svi u ovom chatu. Kliknite na avatar bilo kojeg korisnika i \"započnite razgovor\" da pošaljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10980,10 +10979,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11903,6 +11898,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moj spol",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

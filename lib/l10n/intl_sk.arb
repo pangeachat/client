@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-03-06 10:43:39.691147",
+  "@@last_modified": "2026-03-06 11:06:37.381713",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11686,7 +11686,6 @@
   "man": "Muž",
   "otherGender": "Iné",
   "unselectedGender": "Vyberte možnosť pohlavia",
-  "gender": "Pohlavie",
   "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11705,10 +11704,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12628,6 +12623,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moje pohlavie",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

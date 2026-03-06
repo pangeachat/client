@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:00.127348",
+  "@@last_modified": "2026-03-06 11:06:46.613638",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10612,7 +10612,6 @@
   "man": "Uomo",
   "otherGender": "Altro",
   "unselectedGender": "Seleziona un'opzione di genere",
-  "gender": "Genere",
   "chatParticipantTooltip": "Questa è la lista di tutti in questa chat. Clicca sull'avatar di un utente e \"inizia conversazione\" per inviare un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10631,10 +10630,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11504,6 +11499,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Il mio genere",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

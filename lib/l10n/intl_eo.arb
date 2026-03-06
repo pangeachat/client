@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:51.534786",
+  "@@last_modified": "2026-03-06 11:07:10.617501",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11691,7 +11691,6 @@
   "man": "Viro",
   "otherGender": "Alia",
   "unselectedGender": "Elektu genran opcion",
-  "gender": "Genro",
   "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11710,10 +11709,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12633,6 +12628,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mia genro",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

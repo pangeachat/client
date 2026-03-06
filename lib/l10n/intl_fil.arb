@@ -2783,7 +2783,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-03-06 10:44:18.567935",
+  "@@last_modified": "2026-03-06 11:06:55.196763",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11578,7 +11578,6 @@
   "man": "Lalaki",
   "otherGender": "Iba",
   "unselectedGender": "Pumili ng opsyon sa kasarian",
-  "gender": "Kasarian",
   "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11597,10 +11596,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12525,6 +12520,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Ang aking kasarian",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

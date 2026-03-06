@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-06 10:44:59.026717",
+  "@@last_modified": "2026-03-06 11:07:14.589833",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10889,7 +10889,6 @@
   "man": "Homme",
   "otherGender": "Autre",
   "unselectedGender": "Sélectionnez une option de genre",
-  "gender": "Genre",
   "chatParticipantTooltip": "Ce sont tous les participants de ce chat. Cliquez sur l'avatar de n'importe quel utilisateur et \"démarrer une conversation\" pour envoyer un message direct.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10908,10 +10907,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11816,6 +11811,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mon genre",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

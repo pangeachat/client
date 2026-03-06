@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:43:22.821955",
+  "@@last_modified": "2026-03-06 11:06:28.141360",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10694,7 +10694,6 @@
   "man": "남성",
   "otherGender": "기타",
   "unselectedGender": "성별 옵션을 선택하세요",
-  "gender": "성별",
   "chatParticipantTooltip": "이 채팅의 모든 사람입니다. 사용자 아바타를 클릭하고 '대화 시작'을 클릭하여 DM을 보내세요.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10713,10 +10712,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11636,6 +11631,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "내 성별",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

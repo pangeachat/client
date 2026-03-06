@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-06 10:43:35.536928",
+  "@@last_modified": "2026-03-06 11:06:34.253288",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10605,7 +10605,6 @@
   "man": "Férfi",
   "otherGender": "Egyéb",
   "unselectedGender": "Válassz egy nemi opciót",
-  "gender": "Neme",
   "chatParticipantTooltip": "Ez mindenki ebben a csevegésben. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy DM-et küldj.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10624,10 +10623,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11547,6 +11542,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "A nemem",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:40.569312",
+  "@@last_modified": "2026-03-06 11:07:05.127896",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11212,7 +11212,6 @@
   "man": "পুরুষ",
   "otherGender": "অন্যান্য",
   "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
-  "gender": "লিঙ্গ",
   "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11231,10 +11230,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12154,6 +12149,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "আমার লিঙ্গ",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }

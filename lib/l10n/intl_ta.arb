@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-06 10:44:32.864054",
+  "@@last_modified": "2026-03-06 11:07:01.446674",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10598,7 +10598,6 @@
   "man": "ஆண்",
   "otherGender": "மற்றவை",
   "unselectedGender": "ஒரு பாலின விருப்பத்தை தேர்வு செய்யவும்",
-  "gender": "பாலினம்",
   "chatParticipantTooltip": "இந்த உரையாடலில் உள்ள அனைவரும் இதுவே. எந்த பயனரின் உருவத்தை கிளிக் செய்து \"உரையாடலை தொடங்கவும்\" என்பதன் மூலம் ஒரு நேரடி செய்தி அனுப்பவும்.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10617,10 +10616,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11530,6 +11525,11 @@
     "placeholders": {}
   },
   "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "என் பாலினம்",
+  "@myGender": {
     "type": "String",
     "placeholders": {}
   }
