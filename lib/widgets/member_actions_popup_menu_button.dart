@@ -176,7 +176,7 @@ void showMemberActionsPopupMenu({
         ),
       // Pangea#
       // #Pangea
-      if (user.membership == Membership.join)
+      if (user.membership == Membership.join && room?.isDirectChat != true)
         // Pangea#
         PopupMenuItem(
           enabled:
