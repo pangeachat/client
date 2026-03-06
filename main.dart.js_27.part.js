@@ -4452,6 +4452,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda um idioma\nenquanto envia mensagens aos seus amigos.";
     },
+    get$languages(_) {
+      return "Idiomas";
+    },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
@@ -5651,6 +5654,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noAnalyticsActivitiesAvailable() {
       return string$.Uau__v;
+    },
+    get$profile() {
+      return "Perfil";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10081,6 +10087,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda um idioma\nenquanto envia mensagens para seus amigos.";
     },
+    get$languages(_) {
+      return "Idiomas";
+    },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
@@ -11280,6 +11289,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noAnalyticsActivitiesAvailable() {
       return string$.Uau__v;
+    },
+    get$profile() {
+      return "Perfil";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15710,6 +15722,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Aprenda uma l\xedngua\nenquanto envia mensagens aos seus amigos.";
     },
+    get$languages(_) {
+      return "L\xednguas";
+    },
     get$startOwn() {
       return "Come\xe7ar o meu pr\xf3prio";
     },
@@ -16910,6 +16925,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noAnalyticsActivitiesAvailable() {
       return string$.Uau__v;
     },
+    get$profile() {
+      return "Perfil";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17121,7 +17139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ODNNaHwXasjBznmKU2cBCW2Utzs="] = d.current;
+  d["57wUcRBlXhKt5MENTdpE6VYlowY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

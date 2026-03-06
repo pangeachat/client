@@ -4440,6 +4440,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$appDescription() {
       return "Apr\xe8n un idioma\nmentre xatejes amb els teus amics.";
     },
+    get$languages(_) {
+      return "Idiomes";
+    },
     get$startOwn() {
       return "Comen\xe7a el teu propi";
     },
@@ -5640,6 +5643,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noAnalyticsActivitiesAvailable() {
       return "Uau, has completat totes les activitats disponibles! Envia m\xe9s missatges per desbloquejar m\xe9s activitats de pr\xe0ctica.";
     },
+    get$profile() {
+      return "Perfil";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5656,7 +5662,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0dNwvSYS3xtoxD8kumHyHJoAaQI="] = d.current;
+  d["s1chWjPWx/fl36pcQo16sarlt4k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map
