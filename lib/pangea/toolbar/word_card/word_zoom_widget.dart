@@ -97,28 +97,31 @@ class WordZoomWidget extends StatelessWidget {
                                   )
                                 : const SizedBox(width: 40.0, height: 40.0),
                             Flexible(
-                              child: Container(
-                                constraints: const BoxConstraints(
-                                  minHeight: 40.0,
-                                ),
-                                alignment: Alignment.center,
-                                child: SelectableText(
-                                  token.content,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2,
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.light
-                                        ? AppConfig.yellowDark
-                                        : AppConfig.yellowLight,
-                                    overflow: TextOverflow.ellipsis,
+                              child: SelectionArea(
+                                child: Container(
+                                  constraints: const BoxConstraints(
+                                    minHeight: 40.0,
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    token.content,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 28.0,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.2,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? AppConfig.yellowDark
+                                          : AppConfig.yellowLight,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
+
                             onFlagTokenInfo != null
                                 ? TokenFeedbackButton(
                                     textLanguage:
