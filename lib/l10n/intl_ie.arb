@@ -4000,7 +4000,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-03-05 11:39:11.678978",
+  "@@last_modified": "2026-03-06 10:43:41.181502",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12148,6 +12148,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Níl tú ag feiceáil cé atá á lorg agat? B'fhéidir go gcaithfidh siad a bpróifíl a shocrú go poiblí i Socruithe Foghlama",
+  "suggestedVocab": "Vocab molta",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

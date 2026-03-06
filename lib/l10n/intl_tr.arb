@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-03-05 11:40:54.589380",
+  "@@last_modified": "2026-03-06 10:44:25.921479",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11740,6 +11740,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Aradığınız kişiyi göremiyor musunuz? Profil ayarlarını herkese açık hale getirmeleri gerekebilir.",
+  "suggestedVocab": "Önerilen kelime dağarcığı",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

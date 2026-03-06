@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-03-05 11:38:50.687479",
+  "@@last_modified": "2026-03-06 10:43:35.536928",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11537,6 +11537,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nem látod, akit keresel? Lehet, hogy nyilvánosra kell állítaniuk a profiljukat a Tanulási beállításokban",
+  "suggestedVocab": "Javasolt szókincs",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

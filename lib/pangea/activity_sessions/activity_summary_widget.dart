@@ -140,10 +140,11 @@ class ActivitySummary extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
+                        crossAxisAlignment: .start,
                         children: [
                           Row(
                             spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: .center,
                             children: [
                               Text(
                                 activity.req.mode,
@@ -190,19 +191,15 @@ class ActivitySummary extends StatelessWidget {
                               },
                             ),
                           ),
-                          ActivitySessionDetailsRow(
-                            icon: Symbols.dictionary,
-                            iconSize: 16.0,
-                            child: ActivityVocabWidget(
-                              key: ValueKey(
-                                "activity-summary-${activity.activityId}",
-                              ),
-                              vocab: activity.vocab,
-                              langCode: activity.req.targetLanguage,
-                              targetId: "activity-summary-vocab",
-                              usedVocab: usedVocab,
-                              activityLangCode: activity.req.targetLanguage,
+                          ActivityVocabWidget(
+                            key: ValueKey(
+                              "activity-summary-${activity.activityId}",
                             ),
+                            vocab: activity.vocab,
+                            langCode: activity.req.targetLanguage,
+                            targetId: "activity-summary-vocab",
+                            usedVocab: usedVocab,
+                            activityLangCode: activity.req.targetLanguage,
                           ),
                         ],
                       ),

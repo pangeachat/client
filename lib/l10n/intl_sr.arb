@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:42:21.485268",
+  "@@last_modified": "2026-03-06 10:44:56.303127",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12630,6 +12630,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite koga tražite? Možda treba da postave svoj profil na javno u podešavanjima učenja",
+  "suggestedVocab": "Predloženi rečnik",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

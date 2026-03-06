@@ -1852,7 +1852,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-03-05 11:39:49.763881",
+  "@@last_modified": "2026-03-06 10:43:58.592613",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12630,6 +12630,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "找不到你要找的人？他們可能需要在學習設置中將他們的個人資料設置為公開",
+  "suggestedVocab": "建議詞彙",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

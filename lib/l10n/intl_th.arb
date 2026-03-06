@@ -3999,7 +3999,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-03-05 11:40:21.502717",
+  "@@last_modified": "2026-03-06 10:44:11.704443",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12147,6 +12147,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "ไม่เห็นคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องตั้งค่าโปรไฟล์ให้เป็นสาธารณะในการตั้งค่าเรียนรู้",
+  "suggestedVocab": "คำศัพท์ที่แนะนำ",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

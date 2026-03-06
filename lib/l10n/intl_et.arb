@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-03-05 11:39:38.712032",
+  "@@last_modified": "2026-03-06 10:43:53.270457",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11674,6 +11674,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ei näe, keda otsite? Nad võivad vajada oma profiili seadistamist avalikuks Õppimise seadetes",
+  "suggestedVocab": "Soovitatud sõnavara",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

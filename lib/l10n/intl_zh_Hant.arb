@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:40:28.846638",
+  "@@last_modified": "2026-03-06 10:44:14.869758",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11539,6 +11539,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "找不到您要找的人？他們可能需要在學習設置中將其個人資料設置為公開",
+  "suggestedVocab": "建議詞彙",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

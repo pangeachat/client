@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:12.805715",
+  "@@last_modified": "2026-03-06 10:44:31.062297",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -7117,6 +7117,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Không thấy người bạn đang tìm kiếm? Họ có thể cần đặt hồ sơ của mình thành công khai trong Cài đặt Học tập",
+  "suggestedVocab": "Từ vựng gợi ý",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

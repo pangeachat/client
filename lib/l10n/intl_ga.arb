@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-03-05 11:42:25.823078",
+  "@@last_modified": "2026-03-06 10:44:57.792392",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -11411,6 +11411,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Níl tú ag feiceáil cé atá á lorg agat? B'fhéidir go gcaithfidh siad a bpróifíl a shocrú go poiblí i Socruithe Foghlama",
+  "suggestedVocab": "Vocab molta",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

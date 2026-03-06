@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:18.544851",
+  "@@last_modified": "2026-03-06 10:44:32.864054",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11520,6 +11520,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "நீங்கள் தேடுகிறவரை காணவில்லை என்றால்? அவர்கள் கற்றல் அமைப்புகளில் தங்கள் சுயவிவரத்தை பொது அமைப்பாக அமைக்க வேண்டியிருக்கலாம்",
+  "suggestedVocab": "எடுத்துக்காட்டிய சொற்கள்",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

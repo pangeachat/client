@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-03-05 11:41:31.078507",
+  "@@last_modified": "2026-03-06 10:44:39.011498",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11400,6 +11400,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "没有找到您要找的人？他们可能需要在学习设置中将其个人资料设置为公开",
+  "suggestedVocab": "建议词汇",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

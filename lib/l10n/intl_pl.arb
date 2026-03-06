@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-03-05 11:41:44.762239",
+  "@@last_modified": "2026-03-06 10:44:43.653023",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11522,6 +11522,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nie widzisz kogo szukasz? Mogą potrzebować ustawić swój profil na publiczny w Ustawieniach nauki",
+  "suggestedVocab": "Sugerowane słownictwo",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:42:07.378085",
+  "@@last_modified": "2026-03-06 10:44:51.534786",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12623,6 +12623,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidas, kion vi serĉas? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj",
+  "suggestedVocab": "Sugerita vortaro",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

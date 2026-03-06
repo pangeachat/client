@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:39:53.148601",
+  "@@last_modified": "2026-03-06 10:44:00.127348",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11494,6 +11494,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non vedi chi stai cercando? Potrebbero dover impostare il loro profilo su pubblico nelle Impostazioni di Apprendimento",
+  "suggestedVocab": "Vocabolario suggerito",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-03-05 11:38:37.018135",
+  "@@last_modified": "2026-03-06 10:43:26.645504",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11400,6 +11400,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non ves a quen buscas? Pode que necesiten configurar o seu perfil como público nas Configuracións de Aprendizaxe",
+  "suggestedVocab": "Vocabulario suxerido",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

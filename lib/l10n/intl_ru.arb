@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-03-05 11:42:11.380114",
+  "@@last_modified": "2026-03-06 10:44:52.869434",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11365,6 +11365,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не видите, кого ищете? Возможно, им нужно установить свой профиль в открытый режим в Настройках обучения",
+  "suggestedVocab": "Предложенный словарь",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

@@ -1954,7 +1954,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-03-05 11:39:23.454641",
+  "@@last_modified": "2026-03-06 10:43:46.513712",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12612,6 +12612,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non vides qui tu quaeris? Illi fortasse debent suum profile in Parametris Discendi ad publicum constituere",
+  "suggestedVocab": "Vocabularium suaditum",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

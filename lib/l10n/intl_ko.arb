@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:38:29.595106",
+  "@@last_modified": "2026-03-06 10:43:22.821955",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11626,6 +11626,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "찾고 있는 사람이 보이지 않나요? 그들은 학습 설정에서 프로필을 공개로 설정해야 할 수도 있습니다.",
+  "suggestedVocab": "추천 어휘",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }
