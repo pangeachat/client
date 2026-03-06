@@ -167,33 +167,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "dateWithYear": "{day}/{month}/{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{day}/{month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
   "dateAndTimeOfDay": "{date}, {timeOfDay}",
   "@dateAndTimeOfDay": {
     "type": "String",
@@ -445,18 +418,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "badServerVersionsException": "Máy chủ hỗ trợ Spec phiên bản:\n{serverVerions}\nNhưng ứng dụng này chỉ hỗ trợ {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "badServerLoginTypesException": "Máy chủ nhà hỗ trợ kiểu đăng nhập:\n{serverVersions}\nNhưng ứng dụng này chỉ hỗ trợ:\n{supportedVersions}",
   "@badServerLoginTypesException": {
     "type": "String",
@@ -505,14 +466,8 @@
   "@makeAdminDescription": {},
   "setColorTheme": "Chọn màu giao diện:",
   "@setColorTheme": {},
-  "callingAccount": "Gọi tài khoản",
-  "@callingAccount": {},
   "openLinkInBrowser": "Mở đường dẫn trong trình duyệt",
   "@openLinkInBrowser": {},
-  "setTheme": "Chọn giao diện:",
-  "@setTheme": {},
-  "invitePrivateChat": "📨 Mời trò chuyện riêng tư",
-  "@invitePrivateChat": {},
   "inviteGroupChat": "📨 Mời nhóm trò chuyện",
   "@inviteGroupChat": {},
   "addToSpace": "Thêm vào không gian",
@@ -523,12 +478,8 @@
   "@importFromZipFile": {},
   "exportEmotePack": "Xuất gói biểu cảm bằng tệp .zip",
   "@exportEmotePack": {},
-  "hideUnimportantStateEvents": "Ẩn các sự kiện không quan trọng",
-  "@hideUnimportantStateEvents": {},
   "replace": "Thay thế",
   "@replace": {},
-  "addChatDescription": "Thêm mô tả hội thoại...",
-  "@addChatDescription": {},
   "report": "báo cáo",
   "@report": {},
   "remove": "Loại bỏ",
@@ -540,10 +491,6 @@
   "@restricted": {},
   "newSpace": "Không gian mới",
   "@newSpace": {},
-  "enterRoom": "Nhập phòng",
-  "@enterRoom": {},
-  "signInWithPassword": "Đăng nhập với mật khẩu",
-  "@signInWithPassword": {},
   "all": "Tất cả",
   "@all": {
     "type": "String",
@@ -587,8 +534,6 @@
   },
   "reportErrorDescription": "😭 Ôi. Có lỗi xảy ra. Bạn có thể báo cáo lỗi tới nhà phát triển nếu muốn.",
   "@reportErrorDescription": {},
-  "profileNotFound": "Không tìm thấy người dùng này tại máy chủ. Có thể do lỗi kết nối hoặc người dùng không tồn tại.",
-  "@profileNotFound": {},
   "banUserDescription": "Người dùng sẽ bị cấm khỏi cuộc trò chuyện và không thể tham gia lại cho tới khi được gỡ cấm.",
   "@banUserDescription": {},
   "learnMore": "Tìm hiểu thêm",
@@ -607,25 +552,14 @@
   "@importNow": {},
   "allSpaces": "Tất cả không gian",
   "@allSpaces": {},
-  "enterSpace": "Nhập không gian",
-  "@enterSpace": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Hãy thử lại sau hoặc chọn 1 máy chủ khác.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "jumpToLastReadMessage": "Đi tới tin nhắn đã đọc mới nhất",
   "@jumpToLastReadMessage": {},
   "commandHint_ignore": "Phớt lờ matrix ID này",
   "@commandHint_ignore": {},
   "appLockDescription": "Khoá ứng dụng khi không dùng bằng mã pin",
   "@appLockDescription": {},
-  "notifyMeFor": "Bật thông báo cho",
-  "@notifyMeFor": {},
   "settings": "Cài đặt",
   "@settings": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Gửi nhãn dán",
-  "@sendSticker": {
     "type": "String",
     "placeholders": {}
   },
@@ -642,17 +576,6 @@
   "@readUpToHere": {},
   "jump": "Đi tới",
   "@jump": {},
-  "callingPermissions": "Quyền gọi điện",
-  "@callingPermissions": {},
-  "numChats": "{number} cuộc hội thoại",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "hidePresences": "Ẩn danh sách trạng thái?",
   "@hidePresences": {},
   "sorryThatsNotPossible": "Xin lỗi... không khả dụng",
@@ -771,15 +694,6 @@
   "@sendOnEnter": {},
   "continueText": "Tiếp",
   "@continueText": {},
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "markAsRead": "Đánh dấu đã đọc",
   "@markAsRead": {},
   "reportUser": "Báo cáo người dùng",
@@ -803,25 +717,12 @@
   "confirmEventUnpin": "Bạn có muốn bỏ ghim sự kiện?",
   "@confirmEventUnpin": {},
   "commandHint_googly": "Gửi cặp mắt theo dõi",
-  "countChatsAndCountParticipants": "{chats} cuộc trò chuyện và {participants} thành viên",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "noMoreChatsFound": "Không còn cuộc trò chuyện nào...",
   "noChatsFoundHere": "Chưa có cuộc trò chuyện nào ở đây. Hãy bắt đầu một cuộc trò chuyện mới với ai đó bằng cách sử dụng nút bên dưới. ⤵️",
   "joinedChats": "Cuộc trò chuyện đã tham gia",
   "unread": "Chưa đọc",
   "space": "Không gian",
   "spaces": "Các không gian",
-  "botMessages": "Tin nhắn bot",
   "cantOpenUri": "Không thể mở URI {uri}",
   "@cantOpenUri": {
     "type": "String",
@@ -889,7 +790,6 @@
   "changeYourAvatar": "Đổi ảnh đại diện",
   "channelCorruptedDecryptError": "Mã hóa đã bị hỏng",
   "yourChatBackupHasBeenSetUp": "Sao lưu trò chuyện của bạn đã được thiết lập.",
-  "chatHasBeenAddedToThisSpace": "Cuộc trò chuyện đã được thêm vào không gian này",
   "chats": "Các cuộc trò chuyện",
   "clearArchive": "Xóa kho lưu trữ",
   "commandHint_markasdm": "Đánh dấu là cuộc trò chuyện trực tiếp cho một Matrix ID",
@@ -924,8 +824,6 @@
     "description": "State that {command} is not a valid /command."
   },
   "configureChat": "Cấu hình cuộc trò chuyện",
-  "containsDisplayName": "Chứa tên hiển thị",
-  "containsUserName": "Chứa tên người dùng",
   "contentHasBeenReported": "Nội dung đã được báo cáo",
   "copiedToClipboard": "Đã sao chép vào khay nhớ tạm",
   "copyToClipboard": "Sao chép vào khay nhớ tạm",
@@ -933,7 +831,6 @@
   "darkTheme": "Chủ đề tối",
   "defaultPermissionLevel": "Cấp quyền mặc định cho người dùng mới",
   "directChats": "Cuộc trò chuyện trực tiếp",
-  "allRooms": "Tất cả phòng nhóm",
   "edit": "Chỉnh sửa",
   "editBlockedServers": "Chỉnh sửa máy chủ bị chặn",
   "chatPermissions": "Quyền hạn trong trò chuyện",
@@ -950,7 +847,6 @@
   "customEmojisAndStickers": "Biểu tượng cảm xúc và nhãn dán tùy chỉnh",
   "customEmojisAndStickersBody": "Thêm hoặc chia sẻ biểu tượng cảm xúc hoặc nhãn dán tùy chỉnh có thể được dùng trong mọi cuộc trò chuyện.",
   "emoteShortcode": "Mã ngắn biểu tượng cảm xúc",
-  "emoteWarnNeedToPick": "Bạn cần chọn một mã biểu tượng cảm xúc và một hình ảnh!",
   "emptyChat": "Cuộc trò chuyện trống",
   "enableEmotesGlobally": "Bật gói biểu tượng cảm xúc trên toàn bộ hệ thống",
   "enableEncryption": "Bật mã hóa",
@@ -971,7 +867,6 @@
   "enterAnEmailAddress": "Nhập địa chỉ email",
   "enterASpacepName": "Nhập một tên",
   "homeserver": "Máy chủ",
-  "enterYourHomeserver": "Nhập máy chủ của bạn",
   "errorObtainingLocation": "Lỗi khi lấy vị trí: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -988,7 +883,6 @@
   "forward": "Chuyển tiếp",
   "fromJoining": "Từ khi tham gia",
   "fromTheInvitation": "Từ lời mời",
-  "goToTheNewRoom": "Đi tới phòng mới",
   "group": "Cuộc trò chuyện",
   "chatDescription": "Mô tả cuộc trò chuyện",
   "chatDescriptionHasBeenChanged": "Mô tả cuộc trò chuyện đã được thay đổi",
@@ -1026,7 +920,6 @@
   "hideInvalidOrUnknownMessageFormats": "Ẩn các định dạng tin nhắn không hợp lệ hoặc chưa được biết",
   "howOffensiveIsThisContent": "Nội dung này mức độ xúc phạm như thế nào?",
   "id": "ID",
-  "identity": "Danh tính",
   "ignore": "Chặn",
   "ignoredUsers": "Người dùng bị chặn",
   "ignoreListDescription": "Bạn có thể chặn những người dùng làm phiền bạn. Bạn sẽ không nhận được bất kỳ tin nhắn hoặc lời mời nào từ những người trong danh sách chặn.",
@@ -1039,7 +932,6 @@
   "incorrectPassphraseOrKey": "Cụm mật khẩu hoặc khóa khôi phục không chính xác",
   "inoffensive": "Ít xúc phạm",
   "inviteContact": "Mời liên hệ",
-  "inviteContactToGroupQuestion": "Bạn có muốn mời {contact} vào cuộc trò chuyện \"{groupName}\"?",
   "inviteContactToGroup": "Mời liên hệ vào {groupName}",
   "@inviteContactToGroup": {
     "type": "String",
@@ -1128,7 +1020,6 @@
   },
   "leave": "Rời đi",
   "leftTheChat": "Đã rời khỏi cuộc trò chuyện",
-  "license": "Giấy phép",
   "lightTheme": "Chủ đề sáng",
   "loadCountMoreParticipants": "Tải thêm {count} thành viên",
   "@loadCountMoreParticipants": {
@@ -1141,10 +1032,6 @@
   },
   "dehydrate": "Xuất phiên và xóa thiết bị",
   "dehydrateWarning": "Hành động này không thể hoàn tác. Hãy chắc rằng bạn đã lưu trữ tệp sao lưu một cách an toàn.",
-  "dehydrateTor": "Người dùng TOR: Xuất phiên",
-  "dehydrateTorLong": "Đối với người dùng TOR, nên xuất phiên trước khi đóng cửa sổ.",
-  "hydrateTor": "Người dùng TOR: Nhập bản xuất phiên",
-  "hydrateTorLong": "Bạn đã xuất phiên lần trước trên TOR? Nhanh chóng nhập nó và tiếp tục trò chuyện.",
   "hydrate": "Khôi phục từ tệp sao lưu",
   "loadingPleaseWait": "Đang tải… Vui lòng chờ.",
   "loadMore": "Tải thêm…",
@@ -1161,7 +1048,6 @@
     }
   },
   "logout": "Đăng xuất",
-  "memberChanges": "Thay đổi thành viên",
   "mention": "Nhắc đến",
   "messages": "Tin nhắn",
   "messagesStyle": "Tin nhắn:",
@@ -1193,7 +1079,6 @@
   "noPasswordRecoveryDescription": "Bạn chưa thiết lập cách khôi phục mật khẩu.",
   "noPermission": "Không có quyền",
   "noRoomsFound": "Không tìm thấy phòng…",
-  "notificationsEnabledForThisAccount": "Đã bật thông báo cho tài khoản này",
   "numUsersTyping": "{count} người đang nhập…",
   "@numUsersTyping": {
     "type": "String",
@@ -1231,12 +1116,9 @@
   "password": "Mật khẩu",
   "passwordForgotten": "Quên mật khẩu",
   "passwordHasBeenChanged": "Mật khẩu đã được thay đổi",
-  "hideMemberChangesInPublicChats": "Ẩn thông tin thay đổi thành viên trong phòng công khai",
-  "hideMemberChangesInPublicChatsBody": "Không hiển thị trên cuộc trò chuyện khi ai đó tham gia hay rời phòng công khai để giúp cuộc trò chuyện gọn gàng hơn.",
   "overview": "Tổng quan",
   "passwordRecoverySettings": "Cài đặt khôi phục mật khẩu",
   "passwordRecovery": "Khôi phục mật khẩu",
-  "people": "Mọi người",
   "pickImage": "Chọn ảnh",
   "pin": "Ghim",
   "play": "Phát {fileName}",
@@ -1252,7 +1134,6 @@
   "pleaseChooseAPasscode": "Vui lòng chọn mã khóa",
   "pleaseClickOnLink": "Vui lòng nhấn vào liên kết trong email, sau đó tiếp tục. (Trong một vài trường hợp, email có thể bị chuyển vào mục spam hoặc mất đến 5 phút để gửi.)",
   "pleaseEnter4Digits": "Nhập 4 chữ số hoặc để trống để tắt khóa ứng dụng.",
-  "pleaseEnterRecoveryKey": "Vui lòng nhập khóa khôi phục của bạn:",
   "pleaseEnterYourPassword": "Vui lòng nhập mật khẩu",
   "pleaseEnterYourPin": "Vui lòng nhập mã PIN",
   "pleaseEnterYourUsername": "Vui lòng nhập tên người dùng",
@@ -1315,7 +1196,6 @@
       }
     }
   },
-  "removeDevice": "Xóa thiết bị",
   "unbanFromChat": "Bỏ cấm khỏi trò chuyện",
   "removeYourAvatar": "Gỡ ảnh đại diện của bạn",
   "replaceRoomWithNewerVersion": "Thay thế phòng bằng phiên bản mới hơn",
@@ -1329,15 +1209,6 @@
   "security": "Bảo mật",
   "recoveryKey": "Khóa khôi phục",
   "recoveryKeyLost": "Mất khóa khôi phục?",
-  "seenByUser": "Đã xem bởi {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "send": "Gửi",
   "sendAMessage": "Gửi tin nhắn",
   "sendAsText": "Gửi dạng văn bản",
@@ -1354,7 +1225,6 @@
     }
   },
   "sendMessages": "Gửi tin nhắn",
-  "sendOriginal": "Gửi bản gốc",
   "sendVideo": "Gửi video",
   "sentAFile": "📁 {username} đã gửi tệp",
   "@sentAFile": {
@@ -1412,10 +1282,7 @@
   },
   "separateChatTypes": "Phân loại Nhắn Tin Trực Tiếp và Nhóm",
   "setAsCanonicalAlias": "Đặt làm bí danh chính",
-  "setCustomEmotes": "Đặt biểu tượng cảm xúc tùy chỉnh",
   "setChatDescription": "Đặt mô tả cuộc trò chuyện",
-  "setInvitationLink": "Đặt liên kết mời",
-  "setPermissionsLevel": "Đặt cấp độ quyền",
   "setStatus": "Đặt trạng thái",
   "share": "Chia sẻ",
   "sharedTheLocation": "{username} đã chia sẻ vị trí",
@@ -1428,9 +1295,7 @@
     }
   },
   "shareLocation": "Chia sẻ vị trí",
-  "presenceStyle": "Trạng thái:",
   "presencesToggle": "Hiển thị trạng thái của người khác",
-  "singlesignon": "Đăng nhập một lần",
   "skip": "Bỏ qua",
   "sourceCode": "Mã nguồn",
   "spaceIsPublic": "Không gian là công khai",
@@ -1444,7 +1309,6 @@
       }
     }
   },
-  "startFirstChat": "Bắt đầu cuộc trò chuyện đầu tiên",
   "status": "Trạng thái",
   "statusExampleMessage": "Hôm nay bạn thế nào?",
   "submit": "Gửi",
@@ -1462,9 +1326,6 @@
   "theyDontMatch": "Không khớp",
   "theyMatch": "Khớp nhau",
   "title": "FluffyChat",
-  "toggleFavorite": "Chuyển yêu thích",
-  "toggleMuted": "Chuyển trạng thái tắt tiếng",
-  "toggleUnread": "Đánh dấu Đọc/Chưa đọc",
   "tooManyRequestsWarning": "Quá nhiều yêu cầu. Thử lại sau!",
   "tryToSendAgain": "Thử gửi lại",
   "unavailable": "Không khả dụng",
@@ -1494,15 +1355,6 @@
   },
   "unmuteChat": "Bật thông báo trò chuyện",
   "unpin": "Bỏ ghim",
-  "unreadChats": "{unreadCount, plural, =1{1 trò chuyện chưa đọc} other{{unreadCount} trò chuyện chưa đọc}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
-  },
   "userAndOthersAreTyping": "{username} và {count} người khác đang nhập…",
   "@userAndOthersAreTyping": {
     "type": "String",
@@ -1591,10 +1443,8 @@
   "sender": "Người gửi",
   "openGallery": "Mở thư viện",
   "removeFromSpace": "Gỡ khỏi không gian",
-  "addToSpaceDescription": "Chọn một không gian để thêm cuộc trò chuyện này.",
   "start": "Bắt đầu",
   "pleaseEnterRecoveryKeyDescription": "Để mở khóa tin nhắn cũ, hãy nhập khóa khôi phục đã tạo ở phiên trước. Khóa khôi phục KHÔNG phải là mật khẩu.",
-  "publish": "Công khai",
   "openChat": "Mở trò chuyện",
   "emojis": "Biểu tượng cảm xúc",
   "placeCall": "Gọi",
@@ -1604,19 +1454,6 @@
   "videoCallsBetaWarning": "Lưu ý rằng tính năng gọi video đang trong giai đoạn beta. Chúng có thể không hoạt động đúng trên mọi nền tảng.",
   "experimentalVideoCalls": "Gọi video thử nghiệm",
   "emailOrUsername": "Email hoặc tên người dùng",
-  "indexedDbErrorTitle": "Sự cố chế độ riêng tư",
-  "indexedDbErrorLong": "Bộ nhớ tin nhắn không được kích hoạt trong chế độ duyệt riêng tư theo mặc định.\nHãy vào\n - about:config\n - đặt dom.indexedDB.privateBrowsing.enabled = true\nNếu không, FluffyChat sẽ không thể chạy.",
-  "switchToAccount": "Chuyển sang tài khoản {number}",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "nextAccount": "Tài khoản kế",
-  "previousAccount": "Tài khoản trước",
   "addWidget": "Thêm widget",
   "widgetVideo": "Video",
   "widgetEtherpad": "Ghi chú văn bản",
@@ -1641,14 +1478,6 @@
   "@youHaveWithdrawnTheInvitationFor": {
     "placeholders": {
       "user": {
-        "type": "String"
-      }
-    }
-  },
-  "youInvitedToBy": "📩 Bạn được mời qua link đến:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
         "type": "String"
       }
     }
@@ -1711,15 +1540,6 @@
   },
   "usersMustKnock": "Người dùng phải gõ yêu cầu",
   "noOneCanJoin": "Không ai được tham gia",
-  "userWouldLikeToChangeTheChat": "{user} muốn tham gia cuộc trò chuyện.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "noPublicLinkHasBeenCreatedYet": "Chưa tạo liên kết công khai nào",
   "knock": "Gõ yêu cầu",
   "users": "Người dùng",
   "unlockOldMessages": "Mở khóa tin nhắn cũ",
@@ -1741,18 +1561,11 @@
   "foregroundServiceRunning": "Thông báo này xuất hiện khi dịch vụ nền đang chạy.",
   "screenSharingTitle": "chia sẻ màn hình",
   "screenSharingDetail": "Bạn đang chia sẻ màn hình trong FluffyChat",
-  "callingAccountDetails": "Cho phép FluffyChat dùng trình quay số mặc định của Android.",
-  "appearOnTop": "Xuất hiện trên cùng",
-  "appearOnTopDetails": "Cho phép ứng dụng nổi lên trên cùng (không cần nếu bạn đặt FluffyChat làm tài khoản cuộc gọi).",
-  "otherCallingPermissions": "Quyền micro, camera và các quyền khác cho FluffyChat",
   "whyIsThisMessageEncrypted": "Vì sao tin nhắn này không đọc được?",
   "noKeyForThisMessage": "Có thể tin nhắn đã được gửi trước khi bạn đăng nhập trên thiết bị này. Hoặc thiết bị của bạn bị chặn hoặc có lỗi kết nối. Nếu bạn đọc được tin trên thiết bị khác, hãy truyền khóa về thiết bị này! Vào Cài đặt > Thiết bị và xác minh lẫn nhau. Khi mở phòng và cả hai thiết bị đều trực tuyến, chúng sẽ tự trao đổi khóa. Không muốn mất khóa khi đăng xuất? Hãy bật sao lưu trò chuyện trong cài đặt.",
   "deviceKeys": "Khóa thiết bị:",
   "requests": "Yêu cầu",
   "holdForInfo": "Nhấn giữ để biết thông tin.",
-  "greenFeedback": "Chính xác tôi sẽ dùng từ này!",
-  "yellowFeedback": "Bạn có thể thử từ đó! Nhấn lại để dùng.",
-  "redFeedback": "Tôi nghĩ không đúng lắm...",
   "customInputFeedbackChoice": "Bạn tự viết. Hay đấy!",
   "toggleLanguages": "Chuyển ngôn ngữ của tin nhắn đã chọn.",
   "classWelcomeChat": "Phòng chào mừng",
@@ -1767,16 +1580,12 @@
   "oneyear": "1 năm vừa qua",
   "gaTooltip": "Dùng L2 với hỗ trợ ngữ pháp",
   "taTooltip": "Dùng L2 với hỗ trợ dịch",
-  "unTooltip": "Khác",
   "interactiveTranslatorSliderHeader": "Trình Dịch Tương Tác",
   "interactiveGrammarSliderHeader": "Trình Kiểm Tra Ngữ Pháp Tương Tác",
-  "interactiveTranslatorNotAllowed": "Bị tắt",
-  "interactiveTranslatorAllowed": "Cho học viên tùy chọn",
   "interactiveTranslatorRequired": "Bắt buộc",
   "interactiveTranslatorNotAllowedDesc": "Không cho sử dụng hỗ trợ dịch trong các nhóm thuộc không gian này. Không áp dụng cho quản trị viên hoặc cuộc trò chuyện riêng.",
   "interactiveTranslatorAllowedDesc": "Học viên có thể chọn bật/tắt hỗ trợ dịch trong nhóm tại Menu chính > Cài đặt học tập.",
   "interactiveTranslatorRequiredDesc": "Học viên không thể tắt hỗ trợ dịch. Họ vẫn có thể từ chối gợi ý. Không áp dụng cho quản trị viên hoặc cuộc trò chuyện riêng.",
-  "notYetSet": "Chưa thiết lập",
   "allClasses": "Tất cả Lớp",
   "allChatsAndClasses": "Tất cả trò chuyện và không gian",
   "timeOfLastMessage": "Thời gian gửi tin cuối",
@@ -1786,7 +1595,6 @@
   "classDescriptionDesc": "Thiết lập mô tả",
   "requestToEnroll": "Yêu cầu tham gia",
   "spaceAnalyticsDesc": "Thông tin về mức độ tương tác và sử dụng ngôn ngữ",
-  "languageSettings": "Cài đặt ngôn ngữ",
   "selectSpaceDominantLanguage": "Ngôn ngữ chính của không gian?",
   "selectSpaceTargetLanguage": "Ngôn ngữ đích của không gian?",
   "whatIsYourSpaceLanguageLevel": "Trình độ chung của không gian?",
@@ -1801,7 +1609,6 @@
   "shareFilesDesc": "Bật để học viên chia sẻ tệp.",
   "shareLocationDesc": "Bật để học viên chia sẻ vị trí.",
   "noIdenticalLanguages": "Vui lòng chọn ngôn ngữ cơ sở và đích khác nhau",
-  "searchBy": "Tìm theo quốc gia và ngôn ngữ",
   "yourBirthdayPlease": "Pangea Chat phục vụ cộng đồng học trên 13 tuổi. Để bảo vệ người dùng trẻ, chúng tôi cần xác minh độ tuổi.\n\nTrước khi tìm lớp, phòng hoặc bạn bè, vui lòng xác nhận bạn đủ 18 tuổi trở lên.",
   "invalidDob": "Ngày sinh không hợp lệ",
   "enterYourDob": "Nhập ngày sinh của bạn",
@@ -1825,8 +1632,6 @@
   "setToPublicSettingsDesc": "Để tìm bạn đàm thoại, bạn cần đặt hồ sơ của mình là công khai.",
   "accountSettings": "Cài đặt tài khoản",
   "unableToFindClassCode": "Không tìm thấy mã.",
-  "sorryNoResults": "Xin lỗi, không có kết quả nào.",
-  "ignoreInThisText": "Bỏ qua",
   "needsIGCShortMessage": "Thử công cụ ngữ pháp!",
   "needsItMessage": "Đợi đã, điều này không phải bằng {targetLanguage}! Bạn có cần giúp dịch không?",
   "@needsItMessage": {
@@ -1848,10 +1653,8 @@
   "publicProfileDesc": "Hồ sơ của bạn cần ở chế độ công khai để người khác tìm và gửi yêu cầu trò chuyện. Khi đó, bạn có thể chọn chấp nhận hoặc từ chối.",
   "errorDisableIT": "Hỗ trợ dịch đã bị tắt.",
   "errorDisableIGC": "Hỗ trợ ngữ pháp đã bị tắt.",
-  "errorDisableLanguageAssistance": "Hỗ trợ dịch và ngữ pháp đều đã tắt.",
   "errorDisableITUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch",
   "errorDisableIGCUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ ngữ pháp",
-  "errorDisableLanguageAssistanceUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch và ngữ pháp",
   "error405Title": "Chưa thiết lập ngôn ngữ",
   "error405Desc": "Vui lòng thiết lập ngôn ngữ của bạn trong Menu chính > Cài đặt Học tập.",
   "termsAndConditions": "Điều khoản và Điều kiện",
@@ -1894,9 +1697,7 @@
   "notAvailable": "Không khả dụng",
   "taAndGaTooltip": "Dùng L2 với hỗ trợ dịch và ngữ pháp",
   "definitionsToolName": "Định nghĩa từ",
-  "messageTranslationsToolName": "Dịch tin nhắn",
   "definitionsToolDescription": "Khi bật, từ gạch chân màu xanh có thể được nhấn để xem định nghĩa.",
-  "translationsToolDescrption": "Khi bật, nhấn tin nhắn và chọn biểu tượng dịch để xem ở ngôn ngữ gốc.",
   "welcomeBack": "Chào mừng trở lại! Nếu bạn đã tham gia chương trình thử nghiệm 2023-2024, hãy liên hệ để nhận gói đặc biệt. Nếu bạn là giáo viên hoặc trường đã mua bản quyền, cũng hãy liên hệ với chúng tôi.",
   "downloadTxtFile": "Tải tệp văn bản",
   "downloadCSVFile": "Tải tệp CSV",
@@ -2184,10 +1985,8 @@
   "definitionDefaultPrompt": "Từ này có nghĩa là gì?",
   "practiceDefaultPrompt": "Câu trả lời tốt nhất là gì?",
   "correctionDefaultPrompt": "Phương án thay thế tốt nhất là gì?",
-  "acceptSelection": "Chấp nhận chỉnh sửa",
   "why": "Tại sao?",
   "definition": "Định nghĩa",
-  "exampleSentence": "Ví dụ",
   "reportToTeacher": "Bạn muốn báo cáo tin nhắn này cho giáo viên nào?",
   "reportMessageTitle": "{reportingUserId} đã báo cáo tin nhắn của {reportedUserId} trong phòng {roomName}",
   "@reportMessageTitle": {
@@ -2256,7 +2055,6 @@
   "pleaseChooseAStrongPassword": "Vui lòng chọn mật khẩu mạnh",
   "passwordsDoNotMatch": "Mật khẩu không trùng khớp",
   "passwordIsWrong": "Mật khẩu bạn nhập không đúng",
-  "publicLink": "Liên kết công khai",
   "publicChatAddresses": "Địa chỉ trò chuyện công khai",
   "createNewAddress": "Tạo địa chỉ mới",
   "joinSpace": "Tham gia không gian",
@@ -2267,15 +2065,6 @@
   "thisDevice": "Thiết bị này:",
   "initAppError": "Đã xảy ra lỗi khi khởi tạo ứng dụng",
   "userRole": "Vai trò người dùng",
-  "minimumPowerLevel": "{level} là cấp quyền tối thiểu.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "searchIn": "Tìm trong cuộc trò chuyện \"{chat}\"...",
   "@searchIn": {
     "type": "String",
@@ -2288,18 +2077,6 @@
   "searchMore": "Tìm thêm...",
   "gallery": "Thư viện",
   "files": "Tệp",
-  "databaseBuildErrorBody": "Không thể xây dựng cơ sở dữ liệu SQlite. Ứng dụng sẽ thử dùng cơ sở dữ liệu cũ. Vui lòng báo lỗi này cho nhà phát triển tại {url}. Thông báo lỗi: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "sessionLostBody": "Phiên của bạn đã mất. Vui lòng báo lỗi này cho nhà phát triển tại {url}. Thông báo lỗi: {error}",
   "@sessionLostBody": {
     "type": "String",
@@ -2324,15 +2101,6 @@
       }
     }
   },
-  "forwardMessageTo": "Chuyển tiếp tin nhắn đến {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "signUp": "Đăng ký",
   "pleaseChooseAtLeastChars": "Vui lòng chọn ít nhất {min} ký tự.",
   "@pleaseChooseAtLeastChars": {
@@ -2343,10 +2111,8 @@
       }
     }
   },
-  "noEmailWarning": "Vui lòng nhập địa chỉ email hợp lệ. Nếu không, bạn sẽ không thể đặt lại mật khẩu. Hoặc chạm lại nút để tiếp tục mà không cần.",
   "pleaseEnterValidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
   "pleaseChooseAUsername": "Vui lòng chọn tên người dùng",
-  "define": "Định nghĩa",
   "listen": "Nghe",
   "sendReadReceipts": "Gửi xác nhận đã đọc",
   "sendTypingNotificationsDescription": "Những thành viên khác thấy khi bạn đang nhập tin nhắn.",
@@ -2413,12 +2179,10 @@
   },
   "trialPeriodExpired": "Thời gian dùng thử đã hết hạn",
   "translations": "bản dịch",
-  "messageAudio": "âm thanh tin nhắn",
   "definitions": "định nghĩa",
   "subscribedToUnlockTools": "Đăng ký để mở khóa dịch tương tác, kiểm tra ngữ pháp, âm thanh, hoạt động và phân tích học tập!",
   "more": "Thêm",
   "translationTooltip": "Dịch",
-  "speechToTextTooltip": "Chuyển giọng nói thành văn bản",
   "kickBotWarning": "Đá Pangea Bot sẽ xóa bot hội thoại khỏi cuộc trò chuyện này.",
   "refresh": "Tải lại",
   "transparent": "Trong suốt",
@@ -2434,27 +2198,21 @@
       }
     }
   },
-  "messageAnalytics": "Phân tích tin nhắn",
   "words": "Từ",
   "score": "Điểm",
   "accuracy": "Độ chính xác",
   "points": "Điểm",
-  "noPaymentInfo": "Không cần thông tin thanh toán!",
-  "updatePhoneOS": "Bạn có thể cần nâng cấp phiên bản hệ điều hành.",
   "wordsPerMinute": "Từ mỗi phút",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
   "roomFull": "Phòng đã đạt giới hạn.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
   "chatCapacityExplanation": "Hạn chế số lượng người dùng thường (không phải quản trị viên) có thể tham gia cuộc trò chuyện.",
-  "tooManyRequest": "Quá nhiều yêu cầu, vui lòng thử lại sau.",
   "enterNumber": "Vui lòng nhập một số nguyên lớn hơn 0.",
-  "buildTranslation": "Xây dựng bản dịch của bạn từ các lựa chọn trên",
   "noDatabaseEncryption": "Nền tảng này không hỗ trợ mã hóa cơ sở dữ liệu",
   "thereAreCountUsersBlocked": "Hiện có {count} người dùng bị chặn.",
   "knockRestricted": "Hạn chế gõ yêu cầu",
   "createNewSpace": "Tạo không gian mới",
   "practice": "Luyện tập",
-  "noLanguagesSet": "Chưa thiết lập ngôn ngữ",
   "speechToTextBody": "Với tin nhắn thoại, bạn có thể xem bản chép giọng nói và điểm từ/phút của người nói.",
   "previous": "Trước",
   "versionNotFound": "Không tìm thấy phiên bản",
@@ -2541,15 +2299,11 @@
   "grammar": "Ngữ pháp",
   "contactHasBeenInvitedToTheChat": "Liên hệ đã được mời vào cuộc trò chuyện",
   "inviteChat": "📨 Mời vào trò chuyện",
-  "chatName": "Tên cuộc trò chuyện",
-  "reportContentIssueTitle": "Báo cáo nội dung vấn đề",
   "feedback": "Phản hồi (tùy chọn)",
-  "reportContentIssueDescription": "Ôi không! AI hỗ trợ cá nhân hóa nhưng đôi khi vẫn nhầm lẫn. Hãy cho chúng tôi biết phản hồi của bạn hoặc ta sẽ thử lại.",
   "l2SupportNa": "Không khả dụng",
   "l2SupportAlpha": "Bản Alpha",
   "l2SupportBeta": "Bản Beta",
   "l2SupportFull": "Hoàn chỉnh",
-  "openVoiceSettings": "Mở cài đặt giọng nói",
   "playAudio": "Phát",
   "stop": "Dừng",
   "grammarCopyPOSsconj": "Liên từ phụ thuộc",
@@ -2771,9 +2525,6 @@
   "grammarCopyTENSE": "Thì",
   "grammarCopyVERBFORM": "Hình thái động từ",
   "grammarCopyCONJTYPE": "Loại liên từ",
-  "grammarCopySPC": "Tính cụ thể",
-  "grammarCopyPARTTYPE": "Loại phân từ",
-  "grammarCopyINTREL": "Nghi vấn - quan hệ",
   "grammarCopyUNKNOWN": "Không rõ",
   "grammarCopyNUMBERPSOR": "Số lượng chủ sở hữu",
   "grammarCopyPOSS": "Sở hữu",
@@ -2862,7 +2613,6 @@
   },
   "oneOfYourDevicesIsNotVerified": "Một trong các thiết bị của bạn chưa được xác minh",
   "noticeChatBackupDeviceVerification": "Lưu ý: Khi bạn thêm tất cả thiết bị vào sao lưu trò chuyện, chúng sẽ tự động được xác minh.",
-  "welcomeText": "Chào bạn 👋 Đây là FluffyChat. Bạn có thể đăng nhập vào bất kỳ máy chủ nào tương thích với https://matrix.org, và trò chuyện với mọi người. Đây là một mạng nhắn tin phi tập trung!",
   "blur": "Mờ:",
   "opacity": "Độ trong suốt:",
   "setWallpaper": "Đặt hình nền",
@@ -2883,7 +2633,6 @@
   "invalidUrl": "URL không hợp lệ",
   "addLink": "Thêm liên kết",
   "unableToJoinChat": "Không thể tham gia cuộc trò chuyện. Có thể người kia đã đóng phiên.",
-  "createChatAndInviteUsers": "Tạo cuộc trò chuyện và mời người dùng",
   "joinWithCode": "Tham gia bằng mã",
   "enterCodeToJoin": "Nhập mã để tham gia",
   "updateNow": "Cập nhật ngay",
@@ -2932,13 +2681,11 @@
   "iWantToLearn": "Tôi muốn học",
   "pleaseEnterEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
   "myBaseLanguage": "Ngôn ngữ gốc của tôi",
-  "meaningSectionHeader": "Nghĩa:",
   "formSectionHeader": "Các dạng từ đã dùng trong trò chuyện:",
   "writingExercisesTooltip": "Bài tập viết",
   "listeningExercisesTooltip": "Bài tập nghe",
   "readingExercisesTooltip": "Bài tập đọc",
   "meaningNotFound": "Không tìm thấy nghĩa của từ.",
-  "chooseBaseForm": "Chọn dạng gốc",
   "notTheCodeError": "Xin lỗi, mã đó không đúng!",
   "totalXP": "Tổng XP",
   "numLemmas": "Tổng số mục từ",
@@ -2974,7 +2721,6 @@
   "analyticsNotAvailable": "Dữ liệu phân tích không khả dụng",
   "downloading": "Đang tải xuống...",
   "failedFetchUserAnalytics": "Không thể tải dữ liệu phân tích người dùng",
-  "downloadComplete": "Tải xuống thành công!",
   "whatIsTheMorphTag": "Đặc điểm ngữ pháp \"{morphologicalFeature}\" của '{wordForm}' là gì?",
   "@whatIsTheMorphTag": {
     "type": "String",
@@ -2994,18 +2740,6 @@
   "pangeaBotIsFallible": "Pangea Bot cũng có thể mắc lỗi!",
   "whatIsMeaning": "Từ '{lemma}' có nghĩa là gì?",
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      },
-      "partOfSpeech": {
-        "type": "String"
-      }
-    }
-  },
-  "pickAnEmoji": "Bạn chọn biểu tượng cảm xúc nào cho '{lemma}'?",
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -3054,7 +2788,6 @@
   "constructUseCorMmDesc": "Đúng trong ý nghĩa tin nhắn",
   "constructUseIncMmDesc": "Sai trong ý nghĩa tin nhắn",
   "constructUseIgnMmDesc": "Bỏ qua trong ý nghĩa tin nhắn",
-  "clickForMeaningActivity": "Nhấn đây để làm Bài tập Ý Nghĩa",
   "meaning": "Nghĩa",
   "newChatRequest": "📩 Yêu cầu trò chuyện mới",
   "contentNotificationSettings": "Cài đặt thông báo nội dung",
@@ -3212,15 +2945,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "levelSummaryPopupTitle": "Tóm tắt cấp {level}",
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "enterNewChat": "Tham gia trò chuyện mới",
   "completeActivitiesToUnlock": "Hoàn thành ít nhất một hoạt động để mở khóa bản dịch!",
   "constructUseGaDesc": "Hỗ trợ ngữ pháp",
@@ -3236,12 +2960,10 @@
   "readingAssistanceOverviewBody": "Nhấp vào các nút bên dưới để chơi mini-game về việc khớp emoji, âm thanh, nghĩa từ và khái niệm ngữ pháp. Hoặc nhấp vào bất kỳ từ nào để xem chi tiết.",
   "resetInstructionTooltipsTitle": "Đặt lại hướng dẫn công cụ",
   "resetInstructionTooltipsDesc": "Nhấp để hiển thị hướng dẫn công cụ như cho một người dùng hoàn toàn mới.",
-  "selectForGrammar": "Chọn một biểu tượng ngữ pháp cho các hoạt động và chi tiết.",
   "randomize": "Ngẫu nhiên hóa",
   "clear": "Xóa",
   "featuredActivities": "Nổi bật",
   "save": "Lưu",
-  "startChat": "Bắt đầu trò chuyện",
   "translationProblem": "Vấn đề dịch thuật",
   "askToJoin": "Yêu cầu tham gia",
   "emptyChatWarningTitle": "Trò chuyện trống",
@@ -3260,7 +2982,6 @@
   "languageLevelC2Desc": "Tôi có thể hiểu hầu như mọi thứ nghe hoặc đọc và diễn đạt bản thân một cách lưu loát và chính xác.",
   "newVocab": "Từ vựng mới",
   "newGrammar": "Khái niệm ngữ pháp mới",
-  "choosePracticeMode": "Nhấp vào một trong các nút ở trên để bắt đầu một hoạt động thực hành",
   "ban": "Cấm",
   "unban": "Bỏ cấm",
   "kick": "Đá",
@@ -3275,7 +2996,6 @@
   "timesUsedIndependently": "Số lần sử dụng độc lập",
   "timesUsedWithAssistance": "Số lần sử dụng với sự trợ giúp",
   "shareInviteCode": "Chia sẻ mã mời: {code}",
-  "leaderboard": "Bảng xếp hạng",
   "skipForNow": "Bỏ qua tạm thời",
   "@enterNewChat": {
     "type": "String",
@@ -3337,10 +3057,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectForGrammar": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@randomize": {
     "type": "String",
     "placeholders": {}
@@ -3362,10 +3078,6 @@
     "placeholders": {}
   },
   "@createActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -3441,10 +3153,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -3505,10 +3213,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -3517,7 +3221,6 @@
   "addEnvironmentOverride": "Thêm ghi đè môi trường",
   "defaultOption": "Mặc định",
   "launch": "Khởi động",
-  "searchChats": "Tìm kiếm cuộc trò chuyện",
   "pinMessages": "Ghim tin nhắn",
   "setJoinRules": "Đặt quy tắc tham gia",
   "displayNavigationRail": "Hiển thị thanh điều hướng trên di động",
@@ -3544,10 +3247,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -3609,20 +3308,16 @@
   "canBeFoundViaInvitation": "• lời mời",
   "canBeFoundViaCodeOrLink": "• mã hoặc liên kết",
   "canBeFoundViaKnock": "• yêu cầu tham gia và sự chấp thuận của quản trị viên",
-  "youHaveLeveledUp": "Bạn đã nâng cấp!",
   "sendActivities": "Gửi hoạt động",
-  "groupChat": "Nhóm trò chuyện",
   "directMessage": "Tin nhắn trực tiếp",
   "newDirectMessage": "Tin nhắn trực tiếp mới",
   "speakingExercisesTooltip": "Nói",
-  "noChatsFoundHereYet": "Chưa tìm thấy trò chuyện nào ở đây",
   "duration": "Thời gian",
   "transcriptionFailed": "Không thể chuyển đổi âm thanh",
   "failedToFetchTranscription": "Không thể lấy bản chuyển đổi",
   "regenerate": "Tạo lại",
   "mySavedActivities": "Các hoạt động đã lưu của tôi",
   "noSavedActivities": "Không có hoạt động nào đã lưu",
-  "saveActivity": "Lưu hoạt động này",
   "failedToPlayVideo": "Không thể phát video",
   "done": "Xong",
   "myContacts": "Danh bạ của tôi",
@@ -3724,15 +3419,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -3745,10 +3432,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -3773,10 +3456,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -3821,12 +3500,10 @@
   "errorFetchingDefinition": "Không thể lấy định nghĩa",
   "errorProcessAnalytics": "Không thể xử lý phân tích",
   "errorDownloading": "Tải xuống thất bại",
-  "errorFetchingLevelSummary": "Không thể lấy tóm tắt cấp độ",
   "errorLoadingSpaceChildren": "Không thể tải trò chuyện trong không gian này",
   "unexpectedError": "Lỗi không mong đợi.",
   "pleaseReload": "Vui lòng tải lại và thử lại.",
   "translationError": "Lỗi dịch thuật",
-  "errorFetchingTranslation": "Không thể lấy bản dịch",
   "errorFetchingActivity": "Không thể lấy hoạt động",
   "check": "Kiểm tra",
   "unableToFindRoom": "Không tìm thấy trò chuyện hoặc không gian nào với mã đó. Vui lòng thử lại.",
@@ -3874,10 +3551,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -3891,10 +3564,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -3916,7 +3585,6 @@
   "participants": "Tham gia",
   "invitedToSpace": "{user} đã mời bạn tham gia một khóa học: {space}! Bạn có muốn chấp nhận không?",
   "blurMeansTranslateBody": "Trong khi Chế độ Ngâm mình đang bật, các tin nhắn gửi bằng ngôn ngữ chính của bạn sẽ bị mờ đi trong khi Pangea Bot dịch chúng sang ngôn ngữ mục tiêu của bạn. Chế độ Ngâm mình có thể bật tắt trong cài đặt cá nhân và khóa học.",
-  "updatedNewSpaceDescription": "Các khóa học cho phép bạn hợp nhất các cuộc trò chuyện của mình và xây dựng cộng đồng riêng tư hoặc công cộng.",
   "generateActivitiesButton": "Tạo hoạt động",
   "leaveSpaceDescription": "Bằng cách rời khỏi khóa học, bạn sẽ rời khỏi tất cả các cuộc trò chuyện trong đó. Các người dùng khác sẽ thấy rằng bạn đã rời khỏi khóa học.",
   "noSpaceDescriptionYet": "Chưa tạo mô tả khóa học nào.",
@@ -3948,17 +3616,14 @@
   "maximumActivityParticipants": "Mỗi hoạt động có tối đa {count} người tham gia.",
   "pending": "Đang chờ",
   "inactive": "Không hoạt động",
-  "confirmRole": "Xác nhận vai trò",
   "openRoleLabel": "MỞ",
   "joinedTheActivity": "👋 {username} đã tham gia với vai trò {role}",
   "finishedTheActivity": "🎯 {username} đã kết thúc hoạt động này",
-  "archiveToAnalytics": "Thêm vào các hoạt động đã hoàn thành của tôi",
   "activitySummaryError": "Không thể lấy tóm tắt hoạt động",
   "requestSummaries": "Yêu cầu tóm tắt",
   "generatingNewActivities": "Bạn là người dùng đầu tiên của cặp ngôn ngữ này! Vui lòng chờ một phút, chúng tôi đang chuẩn bị hoạt động dành riêng cho bạn.",
   "requestAccessTitle": "Yêu cầu quyền truy cập phân tích?",
   "requestAccessDesc": "Bạn có muốn yêu cầu quyền truy cập để xem phân tích người tham gia?\n\nNếu các người tham gia đồng ý, quản trị viên của khóa học này sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện ngoài khóa học\n    • danh sách từ vựng",
-  "requestAccess": "Yêu cầu quyền truy cập ({count})",
   "analyticsInactiveTitle": "Không thể gửi yêu cầu tới người dùng không hoạt động",
   "analyticsInactiveDesc": "Người dùng không hoạt động kể từ khi tính năng này được giới thiệu sẽ không thấy yêu cầu của bạn.\n\nNút Yêu cầu sẽ xuất hiện khi họ trở lại. Bạn có thể gửi lại yêu cầu sau bằng cách nhấn nút Yêu cầu dưới tên của họ khi nó khả dụng.",
   "accessRequestedTitle": "Yêu cầu truy cập phân tích",
@@ -3983,7 +3648,6 @@
   "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
   "noCourseFound": "Ôi, khóa học này cần có kế hoạch!\n\nKế hoạch khóa học là một chuỗi các chủ đề và hoạt động trò chuyện.",
   "additionalParticipants": "+ {num} người khác",
-  "directMessages": "Tin nhắn trực tiếp",
   "whatNow": "Bây giờ làm gì?",
   "chooseNextActivity": "Chọn hoạt động tiếp theo của bạn!",
   "letsGo": "Đi nào",
@@ -4020,7 +3684,6 @@
   "activityNeedsMembers": "Ôi! Hoạt động này cần thêm {num} người nữa.",
   "inviteFriendsToCourse": "Mời bạn bè tham gia khóa học của tôi",
   "subscribeToUnlockActivitySummaries": "Đăng ký để mở khóa tóm tắt hoạt động",
-  "subscribeToUnlockDefinitions": "Đăng ký để mở khóa định nghĩa",
   "subscribeToUnlockTranscriptions": "Đăng ký để mở khóa bản chép",
   "pingSent": "🔴 Đã gửi ping khóa học! 🔴",
   "courseTitle": "Tiêu đề khóa học",
@@ -4031,7 +3694,6 @@
   "loginToAccount": "Đăng nhập vào tài khoản của tôi",
   "appDescription": "Học một ngôn ngữ\ntrong khi nhắn tin với bạn bè.",
   "languages": "Ngôn ngữ",
-  "chooseLanguage": "Chọn một ngôn ngữ mục tiêu.",
   "planTrip": "Lập kế hoạch chuyến đi",
   "howAreYouTraveling": "Bạn đi du lịch bằng phương tiện gì?",
   "unlockPrivateTrip": "Mở khóa chuyến đi riêng tư",
@@ -4092,10 +3754,6 @@
     }
   },
   "@blurMeansTranslateBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -4238,10 +3896,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -4265,10 +3919,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -4288,14 +3938,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -4411,10 +4053,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -4577,10 +4215,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -4618,10 +4252,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -4826,7 +4456,6 @@
   "addCourse": "Thêm khóa học",
   "joinPublicCourse": "Tham gia khóa học công khai",
   "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
-  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -6087,13 +5716,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Không thể tải phản hồi.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Các hoạt động sẽ xuất hiện ở đây khi chúng được hoàn thành và lưu lại.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -6109,11 +5733,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Hoạt động thực hành đã hoàn thành",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -6170,11 +5789,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Ngôn ngữ mục tiêu của bạn không khớp với thông điệp này. Cập nhật ngôn ngữ mục tiêu của bạn?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -6220,12 +5834,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Công cụ học tập bị vô hiệu hóa cho các tin nhắn không phải bằng ngôn ngữ mục tiêu của bạn.",
-  "vocabEmoji": "Biểu tượng từ vựng",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -6273,16 +5882,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Quyền truy cập bị từ chối. Bật quyền ghi âm để ghi lại tin nhắn âm thanh.",
-  "genericWebRecordingError": "Có điều gì đó không đúng. Chúng tôi khuyên bạn nên sử dụng trình duyệt Chrome khi ghi lại tin nhắn.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Để có trải nghiệm tốt nhất khi sử dụng ứng dụng này, vui lòng mở rộng kích thước màn hình của bạn.",
   "@screenSizeWarning": {
     "type": "String",
@@ -6305,11 +5904,8 @@
   "constructUseBonus": "Thưởng trong quá trình thực hành từ vựng",
   "practiceVocab": "Thực hành từ vựng",
   "selectMeaning": "Chọn nghĩa",
-  "selectAudio": "Chọn âm thanh phù hợp",
   "congratulations": "Chúc mừng!",
   "anotherRound": "Một vòng nữa",
-  "noActivityRequest": "Không có yêu cầu hoạt động nào hiện tại.",
-  "mustHave10Words": "Bạn phải có ít nhất 10 từ vựng để thực hành. Hãy thử nói chuyện với một người bạn hoặc Pangea Bot để khám phá thêm!",
   "botSettings": "Cài đặt Bot",
   "activitySettingsOverrideWarning": "Ngôn ngữ và cấp độ ngôn ngữ được xác định bởi kế hoạch hoạt động",
   "voice": "Giọng nói",
@@ -6341,23 +5937,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -6449,18 +6033,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
-  "welcomeUser": "Chào mừng {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Tìm kiếm người dùng để mời họ tham gia trò chuyện này.",
   "publicInviteDescSpace": "Tìm kiếm người dùng để mời họ tham gia không gian này.",
@@ -6647,8 +6222,6 @@
   "resume": "Tiếp tục",
   "newSubSpace": "Không gian phụ mới",
   "moveToDifferentSpace": "Chuyển đến không gian khác",
-  "moveUp": "Di chuyển lên",
-  "moveDown": "Di chuyển xuống",
   "removeFromSpaceDescription": "Cuộc trò chuyện sẽ bị xóa khỏi không gian nhưng vẫn xuất hiện trong danh sách trò chuyện của bạn.",
   "countChats": "{chats} cuộc trò chuyện",
   "spaceMemberOf": "Thành viên không gian của {spaces}",
@@ -6659,7 +6232,6 @@
   "startPoll": "Bắt đầu cuộc thăm dò",
   "endPoll": "Kết thúc cuộc thăm dò",
   "answersVisible": "Câu trả lời hiển thị",
-  "answersHidden": "Câu trả lời ẩn",
   "pollQuestion": "Câu hỏi thăm dò",
   "answerOption": "Lựa chọn câu trả lời",
   "addAnswerOption": "Thêm lựa chọn câu trả lời",
@@ -6739,14 +6311,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@moveUp": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moveDown": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@removeFromSpaceDescription": {
     "type": "String",
     "placeholders": {}
@@ -6800,10 +6364,6 @@
     "placeholders": {}
   },
   "@answersVisible": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@answersHidden": {
     "type": "String",
     "placeholders": {}
   },
@@ -7091,7 +6651,6 @@
   "playConversationGames": "Chơi các trò chơi hội thoại với bot, bạn học và những người bạn mới!",
   "jumpIntoConversation": "Bước vào cuộc trò chuyện từ Ngày Đầu tiên với các công cụ viết AI!",
   "playPersonalizedGames": "Chơi các trò chơi thực hành được cá nhân hóa theo nhu cầu từ vựng và ngữ pháp của bạn!",
-  "learnLanguageWhileTexting": "Học một ngôn ngữ trong khi nhắn tin cho bạn bè của bạn!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -7113,10 +6672,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

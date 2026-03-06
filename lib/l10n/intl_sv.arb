@@ -101,18 +101,6 @@
       }
     }
   },
-  "badServerVersionsException": "Hemservern stöjder Spec-versionen:\n{serverVersions}\nMen denna app stödjer enbart {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "banFromChat": "Bannlys från chatt",
   "@banFromChat": {
     "type": "String",
@@ -137,11 +125,6 @@
   },
   "blockDevice": "Blockera Enhet",
   "@blockDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Bot meddelanden",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -374,16 +357,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Innehåller visningsnamn",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsUserName": "Innehåller användarnamn",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "contentHasBeenReported": "Innehållet har rapporterats till server-admins",
   "@contentHasBeenReported": {
     "type": "String",
@@ -449,33 +422,6 @@
         "type": "String"
       },
       "timeOfDay": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{day}-{month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{year}-{month}-{day}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
         "type": "String"
       }
     }
@@ -580,11 +526,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "emoteWarnNeedToPick": "Du måste välja en dekal-kod och en bild!",
-  "@emoteWarnNeedToPick": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emptyChat": "Tom chatt",
   "@emptyChat": {
     "type": "String",
@@ -631,11 +572,6 @@
   },
   "enterAnEmailAddress": "Ange en e-postaddress",
   "@enterAnEmailAddress": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "enterYourHomeserver": "Ange din hemserver",
-  "@enterYourHomeserver": {
     "type": "String",
     "placeholders": {}
   },
@@ -737,11 +673,6 @@
   },
   "id": "ID",
   "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Identitet",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -890,11 +821,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Licens",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "lightTheme": "Ljust",
   "@lightTheme": {
     "type": "String",
@@ -935,11 +861,6 @@
   },
   "logout": "Logga ut",
   "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Medlemsändringar",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1030,11 +951,6 @@
   },
   "notifications": "Aviseringar",
   "@notifications": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "notificationsEnabledForThisAccount": "Aviseringar är påslaget för detta konto",
-  "@notificationsEnabledForThisAccount": {
     "type": "String",
     "placeholders": {}
   },
@@ -1243,11 +1159,6 @@
       }
     }
   },
-  "removeDevice": "Ta bort enhet",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Ta bort chatt-blockering",
   "@unbanFromChat": {
     "type": "String",
@@ -1288,15 +1199,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "seenByUser": "Sedd av {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "send": "Skicka",
   "@send": {
     "type": "String",
@@ -1324,11 +1226,6 @@
   },
   "sendMessages": "Skickade meddelanden",
   "@sendMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendOriginal": "Skicka orginal",
-  "@sendOriginal": {
     "type": "String",
     "placeholders": {}
   },
@@ -1390,21 +1287,6 @@
         "type": "String"
       }
     }
-  },
-  "setCustomEmotes": "Ställ in anpassade dekaler",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Ställ in inbjudningslänk",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setPermissionsLevel": "Ställ in behörighetsnivå",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
   },
   "setStatus": "Ställ in status",
   "@setStatus": {
@@ -1485,21 +1367,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleFavorite": "Växla favorit",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleMuted": "Växla tystad",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "Markera läst/oläst",
-  "@toggleUnread": {
-    "type": "String",
-    "placeholders": {}
-  },
   "tooManyRequestsWarning": "För många förfrågningar. Vänligen försök senare!",
   "@tooManyRequestsWarning": {
     "type": "String",
@@ -1560,15 +1427,6 @@
   "@unpin": {
     "type": "String",
     "placeholders": {}
-  },
-  "unreadChats": "{unreadCount, plural, =1{en oläst chatt} other{{unreadCount} olästa chattar}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
   },
   "userAndOthersAreTyping": "{username} och {count} andra skriver…",
   "@userAndOthersAreTyping": {
@@ -1771,8 +1629,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Chatt har lagts till i detta utrymme",
-  "@chatHasBeenAddedToThisSpace": {},
   "chatBackup": "Chatt backup",
   "@chatBackup": {
     "type": "String",
@@ -1863,11 +1719,6 @@
   },
   "locationDisabledNotice": "Platstjänster är inaktiverade. Var god aktivera dom för att kunna dela din plats.",
   "@locationDisabledNotice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Gå till det nya rummet",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -1976,11 +1827,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "people": "Människor",
-  "@people": {
-    "type": "String",
-    "placeholders": {}
-  },
   "or": "Eller",
   "@or": {
     "type": "String",
@@ -2023,11 +1869,6 @@
   },
   "setAsCanonicalAlias": "Sätt som primärt alias",
   "@setAsCanonicalAlias": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Skicka klistermärke",
-  "@sendSticker": {
     "type": "String",
     "placeholders": {}
   },
@@ -2109,11 +1950,6 @@
   "@bundleName": {},
   "serverRequiresEmail": "Servern behöver validera din e-postadress för registrering.",
   "@serverRequiresEmail": {},
-  "singlesignon": "Single Sign On",
-  "@singlesignon": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unverified": "Ej verifierad",
   "@unverified": {},
   "messageInfo": "Meddelandeinformation",
@@ -2126,8 +1962,6 @@
   "@sender": {},
   "removeFromSpace": "Ta bort från utrymme",
   "@removeFromSpace": {},
-  "addToSpaceDescription": "Välj ett utrymme som chatten skall läggas till i.",
-  "@addToSpaceDescription": {},
   "start": "Starta",
   "@start": {},
   "openGallery": "Öppna galleri",
@@ -2148,17 +1982,6 @@
   },
   "link": "Länk",
   "@link": {},
-  "publish": "Publicera",
-  "@publish": {},
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "reportUser": "Rapportera användare",
   "@reportUser": {},
   "openChat": "Öppna Chatt",
@@ -2205,19 +2028,6 @@
   "@confirmEventUnpin": {},
   "experimentalVideoCalls": "Experimentella videosamtal",
   "@experimentalVideoCalls": {},
-  "switchToAccount": "Byt till konto {number}",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "nextAccount": "Nästa konto",
-  "@nextAccount": {},
-  "previousAccount": "Föregående konto",
-  "@previousAccount": {},
   "emailOrUsername": "Användarnamn eller e-postadress",
   "@emailOrUsername": {},
   "addWidget": "Lägg till widget",
@@ -2265,8 +2075,6 @@
   "@commandHint_markasgroup": {},
   "recoveryKeyLost": "Borttappad återställningsnyckel?",
   "@recoveryKeyLost": {},
-  "indexedDbErrorTitle": "Problem med privat läge",
-  "@indexedDbErrorTitle": {},
   "youHaveWithdrawnTheInvitationFor": "Du har återkallat inbjudan till {user}",
   "@youHaveWithdrawnTheInvitationFor": {
     "placeholders": {
@@ -2300,12 +2108,6 @@
   "@dehydrate": {},
   "dehydrateWarning": "Denna åtgärd kan inte ångras. Försäkra dig om att backupen är i säkert förvar.",
   "@dehydrateWarning": {},
-  "dehydrateTor": "TOR-användare: Exportera session",
-  "@dehydrateTor": {},
-  "hydrateTor": "TOR-användare: Importera session från tidigare export",
-  "@hydrateTor": {},
-  "hydrateTorLong": "Exporterade du sessionen när du senast använde TOR? Importera den enkelt och fortsätt chatta.",
-  "@hydrateTorLong": {},
   "recoveryKey": "Återställningsnyckel",
   "@recoveryKey": {},
   "separateChatTypes": "Separata direktchattar och grupper",
@@ -2313,14 +2115,10 @@
     "type": "String",
     "placeholders": {}
   },
-  "startFirstChat": "Starta din första chatt",
-  "@startFirstChat": {},
   "pleaseEnterRecoveryKeyDescription": "Ange din återställningsnyckel från en tidigare session för att låsa upp äldre meddelanden. Din återställningsnyckel är INTE ditt lösenord.",
   "@pleaseEnterRecoveryKeyDescription": {},
   "encryptThisChat": "Kryptera denna chatt",
   "@encryptThisChat": {},
-  "dehydrateTorLong": "TOR-användare rekommenderas att exportera sessionen innan fönstret stängs.",
-  "@dehydrateTorLong": {},
   "noBackupWarning": "Varning! Om du inte aktiverar säkerhetskopiering av chattar så tappar du åtkomst till krypterade meddelanden. Det är rekommenderat att du aktiverar säkerhetskopiering innan du loggar ut.",
   "@noBackupWarning": {},
   "noOtherDevicesFound": "Inga andra enheter hittades",
@@ -2340,14 +2138,10 @@
       }
     }
   },
-  "pleaseEnterRecoveryKey": "Ange din återställningsnyckel:",
-  "@pleaseEnterRecoveryKey": {},
   "commandHint_markasdm": "Märk som rum för direktmeddelanden för det givante Matrix ID",
   "@commandHint_markasdm": {},
   "user": "Användare",
   "@user": {},
-  "indexedDbErrorLong": "Meddelandelagring är tyvärr inte aktiverat i privat läge som standard.\nGå till\n - about:config\n - sätt dom.indexedDB.privateBrowsing.enabled till true\nAnnars går det inte att använda FluffyChat.",
-  "@indexedDbErrorLong": {},
   "storeInSecureStorageDescription": "Lagra återställningsnyckeln på säker plats på denna enhet.",
   "@storeInSecureStorageDescription": {},
   "storeInAppleKeyChain": "Lagra i Apples nyckelkedja (KeyChain)",
@@ -2372,8 +2166,6 @@
   "@fileIsTooBigForServer": {},
   "deviceKeys": "Enhetsnycklar:",
   "@deviceKeys": {},
-  "enterSpace": "Gå till utrymme",
-  "@enterSpace": {},
   "commandHint_googly": "Skicka några googly ögon",
   "@commandHint_googly": {},
   "commandHint_cuddle": "Skicka en omfamning",
@@ -2433,37 +2225,12 @@
   "@saveKeyManuallyDescription": {},
   "storeInAndroidKeystore": "Lagra i Androids nyckellagring (KeyStore)",
   "@storeInAndroidKeystore": {},
-  "callingPermissions": "Samtalsbehörighet",
-  "@callingPermissions": {},
-  "callingAccount": "Samtalskonto",
-  "@callingAccount": {},
-  "callingAccountDetails": "Tillåt FluffyChat att använda Androids ring-app.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Visa ovanpå",
-  "@appearOnTop": {},
-  "appearOnTopDetails": "Tillåt att appen visas ovanpå (behövs inte om du redan har FluffyChat konfigurerat som ett samtalskonto)",
-  "@appearOnTopDetails": {},
-  "otherCallingPermissions": "Mikrofon, kamera och andra behörigheter för FluffyChat",
-  "@otherCallingPermissions": {},
   "whyIsThisMessageEncrypted": "Varför kan inte detta meddelande läsas?",
   "@whyIsThisMessageEncrypted": {},
   "newGroup": "Ny grupp",
   "@newGroup": {},
-  "enterRoom": "Gå till rummet",
-  "@enterRoom": {},
   "allSpaces": "Alla utrymmen",
   "@allSpaces": {},
-  "numChats": "{number} chattar",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "hideUnimportantStateEvents": "Göm oviktiga tillståndshändelser",
-  "@hideUnimportantStateEvents": {},
   "doNotShowAgain": "Visa inte igen",
   "@doNotShowAgain": {},
   "wasDirectChatDisplayName": "Tom chatt (var {oldDisplayName})",
@@ -2492,11 +2259,6 @@
       }
     }
   },
-  "allRooms": "Alla gruppchattar",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "reportErrorDescription": "😭 Åh nej. Något gick fel. Om du vill ian du rapportera denna bugg till utvecklarna.",
   "@reportErrorDescription": {},
   "setColorTheme": "Välj färgtema:",
@@ -2519,8 +2281,6 @@
   "@invalidServerName": {},
   "chatPermissions": "Chatt-behörigheter",
   "@chatPermissions": {},
-  "signInWithPassword": "Logga in med lösenord",
-  "@signInWithPassword": {},
   "makeAdminDescription": "När du gör denna användare till administratör kommer du inte kunna ångra det eftersom de kommer ha samma behörigheter som du.",
   "@makeAdminDescription": {},
   "setChatDescription": "Ändra chattens beskrivning",
@@ -2542,8 +2302,6 @@
   "@archiveRoomDescription": {},
   "exportEmotePack": "Exportera Emote-pack som .zip",
   "@exportEmotePack": {},
-  "inviteContactToGroupQuestion": "Vill du bjuda in {contact} till chatten ”{groupName}”?",
-  "@inviteContactToGroupQuestion": {},
   "redactedByBecause": "Borttaget av {username} på grund av: ”{reason}”",
   "@redactedByBecause": {
     "type": "String",
@@ -2562,8 +2320,6 @@
   "@invalidInput": {},
   "report": "rapportera",
   "@report": {},
-  "addChatDescription": "Lägg till en chattbeskrivning…",
-  "@addChatDescription": {},
   "hasKnocked": "{user} har knackat",
   "@hasKnocked": {
     "placeholders": {
@@ -2589,8 +2345,6 @@
   "@sendTypingNotifications": {},
   "inviteGroupChat": "📨 Bjud in gruppchatt",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Bjud in privat chatt",
-  "@invitePrivateChat": {},
   "importEmojis": "Importera emojier",
   "@importEmojis": {},
   "noChatDescriptionYet": "Ingen chatt-beskrivning än.",
@@ -2605,8 +2359,6 @@
   "@roomUpgradeDescription": {},
   "pleaseEnterANumber": "Vänligen ange ett nummer större än 0",
   "@pleaseEnterANumber": {},
-  "profileNotFound": "Användaren kunde onte hittas på servern. Kanske är det ett anslutningsproblem eller så finns inte användaren.",
-  "@profileNotFound": {},
   "jump": "Hoppa",
   "@jump": {},
   "shareInviteLink": "Dela inbjudningslänk",
@@ -2616,12 +2368,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "setTheme": "Välj tema:",
-  "@setTheme": {},
   "replace": "Ersätt",
   "@replace": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Vänligen försök igen eller välj en annan server.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "createGroup": "Skapa grupp",
   "@createGroup": {},
   "kickUserDescription": "Användaren sparkas ut ur chatten men bannlyses inte. I offentliga chattar kan användaren gå med igen när som helst.",
@@ -2630,18 +2378,6 @@
   "@importNow": {},
   "invite": "Bjud in",
   "@invite": {},
-  "databaseBuildErrorBody": "Kan inte bygga SQlite-databasen. Appen försöker använda den gamla databasen för nu. Vänligen rapportera problemet till utvecklarna här: {url}. Felmeddelandet är: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "blockListDescription": "Du kan blockera användare som stör dig. Du kommer inte få några meddelanden eller rum-inbjudningar från användarna på din personliga blocklista.",
   "@blockListDescription": {},
   "createGroupAndInviteUsers": "Skapa en grupp och bjud in användare",
@@ -2662,8 +2398,6 @@
   "@pleaseEnterYourCurrentPassword": {},
   "groupCanBeFoundViaSearch": "Gruppen kan hittas genom sökning",
   "@groupCanBeFoundViaSearch": {},
-  "publicLink": "Offentlig länk",
-  "@publicLink": {},
   "noUsersFoundWithQuery": "Tyvärr kunde ingen användare hittas med ”{query}”. Vänligen kontrollera om du gjort ett stavfel.",
   "@noUsersFoundWithQuery": {
     "type": "String",
@@ -2737,14 +2471,6 @@
   "@searchChatsRooms": {},
   "databaseMigrationBody": "Var vänlig vänta. Detta kan ta en stund.",
   "@databaseMigrationBody": {},
-  "youInvitedToBy": "📩 Du har blivit inbjuden via länk till:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
-        "type": "String"
-      }
-    }
-  },
   "sendTypingNotificationsDescription": "Andra deltagare i en diskussion kan se när du skriver.",
   "@sendTypingNotificationsDescription": {},
   "formattedMessagesDescription": "Visa formaterat meddelandeinnehåll som fet stil med markdown.",
@@ -2791,11 +2517,6 @@
       }
     }
   },
-  "presenceStyle": "Närvaro:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "presencesToggle": "Visa statusmeddelanden från andra användare",
   "@presencesToggle": {
     "type": "String",
@@ -2818,15 +2539,6 @@
   },
   "incomingMessages": "Inkommande meddelanden",
   "@incomingMessages": {},
-  "forwardMessageTo": "Vidarebefordra meddelandet till {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "verifyOtherUserDescription": "Om du verifierar en användare så kan du vara säker på vem du verkligen skriver till. 💪\n\nNär du påbörjar en verifiering så ser du och den andra användaren en popup-ruta i appen. I den rutan ser du ett antal tecken som du jämför med vad den andra användaren ser.\n\nDet bästa sättet att göra detta är att träffas fysiskt, eller genom att starta ett videosamtal. 👭",
   "@verifyOtherUserDescription": {},
   "verifyOtherDeviceDescription": "När du verifierar en enhet så kan era enheter utväxla nycklar, vilket förbättrar säkerheten. 💪 När du påbörjar en verifiering så ser du en popup-ruta på båda enheterna. I den rutan ser du ett antal tecken som du jämför med det som visas på den andra enheten. Det är bäst att ha båda enheterna till hands innan du påbörjar verifieringen. 🤳",
@@ -2855,7 +2567,6 @@
   "commandHint_roomupgrade": "Uppgradera detta rum till den angivna rumsversionen",
   "appLockDescription": "Lås appen när den inte används med en pinkod",
   "swipeRightToLeftToReply": "Svep från höger till vänster för att svara",
-  "countChatsAndCountParticipants": "{chats} chattar och {participants} deltagare",
   "noMoreChatsFound": "Inga fler chattar hittades...",
   "noChatsFoundHere": "Inga chattar har hittats här än. Starta en ny chatt med någon genom att använda knappen nedan. ⤵️",
   "joinedChats": "Gått med i chattar",
@@ -2873,25 +2584,19 @@
   "hideRedactedMessages": "Dölj redigerade meddelanden",
   "hideRedactedMessagesBody": "Om någon redigerar ett meddelande kommer detta meddelande inte längre vara synligt i chatten.",
   "hideInvalidOrUnknownMessageFormats": "Dölj ogiltiga eller okända meddelandeformater",
-  "hideMemberChangesInPublicChats": "Dölj medlemsändringar i offentliga chattar",
-  "hideMemberChangesInPublicChatsBody": "Visa inte i chattens tidslinje om någon ansluter eller lämnar en offentlig chatt för att förbättra läsbarheten.",
   "overview": "Översikt",
-  "notifyMeFor": "Meddela mig om",
   "passwordRecoverySettings": "Inställningar för återställning av lösenord",
   "sendImages": "Skicka {count} bild",
   "synchronizingPleaseWaitCounter": "Synkroniserar… ({percentage}%)",
   "invitedBy": "📩 Inbjuden av {user}",
   "usersMustKnock": "Användare måste knacka",
   "noOneCanJoin": "Ingen kan gå med",
-  "userWouldLikeToChangeTheChat": "{user} vill gå med i chatten.",
-  "noPublicLinkHasBeenCreatedYet": "Ingen offentlig länk har skapats än",
   "knock": "Knacka",
   "knocking": "Knackar",
   "chatCanBeDiscoveredViaSearchOnServer": "Chat kan upptäckas via sökningen på {server}",
   "publicChatAddresses": "Publika chattadresser",
   "createNewAddress": "Skapa ny adress",
   "userRole": "Användarroll",
-  "minimumPowerLevel": "{level} är den lägsta maktnivån.",
   "searchIn": "Sök i chatten \"{chat}\"...",
   "searchMore": "Sök mer...",
   "gallery": "Galleri",
@@ -2934,7 +2639,6 @@
   "oneOfYourDevicesIsNotVerified": "En av dina enheter är inte verifierad",
   "noticeChatBackupDeviceVerification": "Obs: När du ansluter alla dina enheter till chattbackupen verifieras de automatiskt.",
   "continueText": "Fortsätt",
-  "welcomeText": "Hej Hej 👋 Det här är FluffyChat. Du kan logga in på vilken hemserver som helst som är kompatibel med https://matrix.org. Och sedan chatta med vem som helst. Det är ett stort decentraliserat meddelandenätverk!",
   "blur": "Oskärpa:",
   "opacity": "Opacitet:",
   "setWallpaper": "Ställ in bakgrundsbild",
@@ -3033,25 +2737,16 @@
   "writeAMessageLangCodes": "Skriv på {l1} eller {l2}...",
   "requests": "Förfrågningar",
   "holdForInfo": "Klicka och håll för ordinformation.",
-  "greenFeedback": "Det är vad jag skulle ha skrivit!",
-  "yellowFeedback": "Hm, du kan prova det och se om det fungerar! För att använda detta ord, klicka bara på det igen.",
-  "redFeedback": "Jag tror inte att det är rätt...",
   "itInstructionsTitle": "Jag kan hjälpa dig att översätta!",
   "itInstructionsBody": "Du kan klicka och hålla kvar val för ordinformation.",
   "gaTooltip": "L2 användning med grammatikhjälp",
   "taTooltip": "L2 användning med översättningshjälp",
-  "unTooltip": "Annat",
   "interactiveTranslatorSliderHeader": "Interaktiv översättare",
   "interactiveGrammarSliderHeader": "Interaktiv grammatikkontroll",
-  "interactiveTranslatorNotAllowed": "Inaktiverad",
-  "interactiveTranslatorAllowed": "Elevens val",
   "interactiveTranslatorRequired": "Obligatorisk",
-  "notYetSet": "Inte ännu inställt",
   "waTooltip": "L2 användning utan hjälp",
-  "languageSettings": "Språkinställningar",
   "interactiveTranslator": "Översättningshjälp",
   "noIdenticalLanguages": "Vänligen välj olika grund- och målspråk",
-  "searchBy": "Sök efter land och språk",
   "joinWithClassCode": "Gå med i kurs",
   "languageLevelPreA1": "Novis Låg (Pre A1)",
   "languageLevelA1": "Novis Mid (A1)",
@@ -3062,8 +2757,6 @@
   "languageLevelC2": "Överlägsen (C2)",
   "changeTheNameOfTheClass": "Ändra namnet",
   "changeTheNameOfTheChat": "Ändra chatnamnet",
-  "sorryNoResults": "Tyvärr, inga resultat.",
-  "ignoreInThisText": "Ignorera",
   "needsItMessage": "Vänta, det är inte {targetLanguage}! Behöver du hjälp med att översätta?",
   "countryInformation": "Min land",
   "targetLanguage": "Målspråk",
@@ -3076,10 +2769,8 @@
   "publicProfileDesc": "Genom att slå på detta kan andra användare hitta din profil i den globala sökfältet och skicka förfrågningar om att chatta. Då kan du välja att acceptera eller neka förfrågan.",
   "errorDisableIT": "Översättningshjälp är avstängd.",
   "errorDisableIGC": "Grammatikhjälp är avstängd.",
-  "errorDisableLanguageAssistance": "Översättningshjälp och grammatikhjälp är avstängda.",
   "errorDisableITUserDesc": "Klicka här för att uppdatera inställningar för översättningshjälp",
   "errorDisableIGCUserDesc": "Klicka här för att uppdatera inställningar för grammatikhjälp",
-  "errorDisableLanguageAssistanceUserDesc": "Klicka här för att uppdatera inställningar för översättningshjälp och grammatikhjälp",
   "errorDisableITClassDesc": "Översättningshjälp är avstängd för kursen som denna chatt tillhör.",
   "errorDisableIGCClassDesc": "Grammatikhjälp är avstängd för kursen som denna chatt tillhör.",
   "error405Title": "Språk inte inställda",
@@ -3124,9 +2815,7 @@
   "notAvailable": "Finns inte tillgängligt",
   "taAndGaTooltip": "L2-användning med översättningshjälp och grammatikhjälp",
   "definitionsToolName": "Ordboksdefinitioner",
-  "messageTranslationsToolName": "Meddelandetranslationer",
   "definitionsToolDescription": "När den är aktiverad kan ord understrukna i blått klickas för definitioner. Klicka på meddelanden för att få tillgång till definitioner.",
-  "translationsToolDescrption": "När den är aktiverad, klicka på ett meddelande och översättningsikonen för att se ett meddelande på ditt bask språk.",
   "welcomeBack": "Välkommen tillbaka! Om du var en del av pilotprogrammet 2023-2024, kontakta oss för din specialpilotprenumeration. Om du är lärare som har (eller din institution har) köpt licenser för din klass, kontakta oss för din lärarprenumeration.",
   "downloadTxtFile": "Ladda ner textfil",
   "downloadCSVFile": "Ladda ner CSV-fil",
@@ -3400,10 +3089,8 @@
   "definitionDefaultPrompt": "Vad betyder detta ord?",
   "practiceDefaultPrompt": "Vad är det bästa svaret?",
   "correctionDefaultPrompt": "Vad är det bästa ersättningsordet?",
-  "acceptSelection": "Acceptera korrigering",
   "why": "Varför?",
   "definition": "Definition",
-  "exampleSentence": "Exempelsats",
   "reportToTeacher": "Vem vill du rapportera detta meddelande till?",
   "reportMessageTitle": "{reportingUserId} har rapporterat ett meddelande från {reportedUserId} i chatten {roomName}",
   "reportMessageBody": "Meddelande: {reportedMessage}\nOrsak: {reason}",
@@ -3415,27 +3102,20 @@
   "clickToManageSubscription": "Klicka här för att hantera din prenumeration.",
   "signUp": "Registrera dig",
   "pleaseChooseAtLeastChars": "Vänligen välj minst {min} tecken.",
-  "noEmailWarning": "Vänligen ange en giltig e-postadress. Annars kan du inte återställa ditt lösenord. Om du inte vill, tryck igen på knappen för att fortsätta.",
   "pleaseEnterValidEmail": "Vänligen ange en giltig e-postadress.",
   "pleaseChooseAUsername": "Vänligen välj ett användarnamn",
-  "define": "Definiera",
   "listen": "Lyssna",
   "trialPeriodExpired": "Din provperiod har löpt ut",
   "translations": "översättningar",
-  "messageAudio": "meddelande ljud",
   "definitions": "definitioner",
   "subscribedToUnlockTools": "Prenumerera för att låsa upp interaktiv översättning och grammatikkontroll, ljuduppspelning, personliga övningsaktiviteter och inlärningsanalys!",
   "translationTooltip": "Översätt",
-  "speechToTextTooltip": "Transkription",
   "kickBotWarning": "Att sparka Pangea Bot kommer att ta bort konversationsboten från denna chatt.",
   "refresh": "Uppdatera",
-  "messageAnalytics": "Meddelandesanalys",
   "words": "Ord",
   "score": "Poäng",
   "accuracy": "Noggrannhet",
   "points": "Poäng",
-  "noPaymentInfo": "Ingen betalningsinformation behövs!",
-  "updatePhoneOS": "Du kan behöva uppdatera din enhets operativsystemversion.",
   "wordsPerMinute": "Ord per minut",
   "tooltipInstructionsTitle": "Inte säker på vad det gör?",
   "tooltipInstructionsMobileBody": "Håll och tryck på objekt för att visa verktygstips.",
@@ -3445,11 +3125,8 @@
   "chatCapacityHasBeenChanged": "Chattkapacitet ändrad",
   "chatCapacitySetTooLow": "Chattkapaciteten måste vara minst {count}.",
   "chatCapacityExplanation": "Chattkapacitet begränsar antalet medlemmar som får vara med i en chatt.",
-  "tooManyRequest": "För många förfrågningar, försök igen senare.",
   "enterNumber": "Vänligen ange ett heltal.",
-  "buildTranslation": "Bygg din översättning från valen ovan",
   "practice": "Öva",
-  "noLanguagesSet": "Inga språk inställda",
   "speechToTextBody": "För röstmeddelanden kan du se en transkription samt talarens ord per minut-poäng.",
   "versionNotFound": "Version hittades inte",
   "fetchingVersion": "Hämtar version...",
@@ -3468,10 +3145,7 @@
   "grammar": " Grammatik",
   "contactHasBeenInvitedToTheChat": "Kontakten har blivit inbjuden till chatten",
   "inviteChat": "📨 Bjud in till chatt",
-  "chatName": "Chattnamn",
-  "reportContentIssueTitle": "Rapportera innehållsproblem",
   "feedback": "Valfri feedback",
-  "reportContentIssueDescription": "Oj då! AI kan underlätta personliga inlärningsupplevelser men... hallucinerar också. Vänligen ge oss din feedback så försöker vi igen.",
   "clickTheWordAgainToDeselect": "Klicka på det valda ordet för att avmarkera det.",
   "l2SupportNa": "Inte tillgänglig",
   "l2SupportAlpha": "Alpha",
@@ -3479,7 +3153,6 @@
   "l2SupportFull": "Fullständig",
   "missingVoiceTitle": "Saknar röst",
   "voiceNotAvailable": "Du har ingen röst installerad för detta språk.",
-  "openVoiceSettings": "Öppna röstinställningar",
   "playAudio": "Spela",
   "stop": "Stoppa",
   "grammarCopyPOSsconj": "Underordnande konjunktion",
@@ -3702,9 +3375,6 @@
   "grammarCopyTENSE": "Tempus",
   "grammarCopyVERBFORM": "Verbform",
   "grammarCopyCONJTYPE": "Konjunktionstyp",
-  "grammarCopySPC": "Specificitet",
-  "grammarCopyPARTTYPE": "Partitiv Typ",
-  "grammarCopyINTREL": "Interrogativ-Relativ",
   "grammarCopyUNKNOWN": "Okänd",
   "grammarCopyNUMBERPSOR": "Possessorns Nummer",
   "grammarCopyPOSS": "Ägande",
@@ -3758,8 +3428,6 @@
   "downloadGroupText": "Ladda ner grupptext",
   "notificationsOn": "Aviseringar på",
   "notificationsOff": "Aviseringar av",
-  "createChatAndInviteUsers": "Skapa chatt och bjud in användare",
-  "updatedNewSpaceDescription": "Kurser gör att du kan konsolidera dina chattar och bygga privata eller offentliga gemenskaper.",
   "joinWithCode": "Gå med med kod",
   "enterCodeToJoin": "Ange kod för att gå med",
   "updateNow": "Uppdatera nu",
@@ -3800,13 +3468,11 @@
   "iWantToLearn": "Jag vill lära mig",
   "pleaseEnterEmail": "Vänligen ange en giltig e-postadress.",
   "myBaseLanguage": "Mitt baskspråk",
-  "meaningSectionHeader": "Betydelse:",
   "formSectionHeader": "Använda former i chattar:",
   "writingExercisesTooltip": "Skrivövningar",
   "listeningExercisesTooltip": "Lyssningsövningar",
   "readingExercisesTooltip": "Läsövningar",
   "meaningNotFound": "Betydelsen kunde inte hittas.",
-  "chooseBaseForm": "Välj grundformen",
   "notTheCodeError": "Tyvärr, det är inte koden!",
   "totalXP": "Total erfarenhetspoäng",
   "numLemmas": "Totalt antal lemman",
@@ -3836,13 +3502,11 @@
   "analyticsNotAvailable": "Användaranalys tillgänglig inte",
   "downloading": "Laddar ner...",
   "failedFetchUserAnalytics": "Misslyckades med att hämta användaranalys",
-  "downloadComplete": "Nedladdning klar!",
   "whatIsTheMorphTag": "Vad är {morphologicalFeature} för '{wordForm}'?",
   "dataAvailable": "Data tillgänglig",
   "available": "Tillgänglig",
   "pangeaBotIsFallible": "Pangea Bot gör också misstag!",
   "whatIsMeaning": "Vad betyder '{lemma}'?",
-  "pickAnEmoji": "Vilken är din favoritemoji för '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Matcha betydelser med orden i meddelandet!",
   "doubleClickToEdit": "Dubbelklicka för att redigera.",
   "activityPlannerTitle": "Aktivitetsplaner",
@@ -3871,7 +3535,6 @@
   "constructUseCorMmDesc": "Korrekt meddelandebetydelse",
   "constructUseIncMmDesc": "Felaktig meddelandebetydelse",
   "constructUseIgnMmDesc": "Ignorerad meddelandebetydelse",
-  "clickForMeaningActivity": "Klicka här för en Betydelseutmaning",
   "meaning": "Betydelse",
   "chatWith": "Grupp med {displayname}",
   "clickOnEmailLink": "Vänligen klicka på länken i e-postmeddelandet och fortsätt.\n\nKontrollera din skräppostmapp om e-postmeddelandet inte har kommit fram.",
@@ -3911,16 +3574,13 @@
   "home": "Hem",
   "join": "Gå med",
   "readingAssistanceOverviewBody": "Klicka på knapparna nedan för mini-spel om att matcha emojis, ljud, ords betydelser och grammatikbegrepp. Eller klicka på vilket ord som helst för detaljer.",
-  "levelSummaryPopupTitle": "Sammanfattning av nivå {level}",
   "resetInstructionTooltipsTitle": "Återställ instruktionstips",
   "resetInstructionTooltipsDesc": "Klicka för att visa instruktionstips som för en helt ny användare.",
-  "selectForGrammar": "Välj en grammatikikon för aktiviteter och detaljer.",
   "randomize": "Slumpa",
   "clear": "Rensa",
   "makeYourOwnActivity": "Skapa din egen aktivitet",
   "featuredActivities": "Utvalda",
   "save": "Spara",
-  "startChat": "Starta en chatt",
   "translationProblem": "Översättningsproblem",
   "askToJoin": "Be om att få gå med",
   "emptyChatWarningTitle": "Chatt är tom",
@@ -3940,7 +3600,6 @@
   "languageLevelC2Desc": "Jag kan förstå nästan allt jag hör eller läser och uttrycka mig flytande och exakt.",
   "newVocab": "Nytt vocab",
   "newGrammar": "Nya grammatikbegrepp",
-  "choosePracticeMode": "Klicka på en av knapparna ovan för att starta en övningsaktivitet",
   "ban": "Bannlys",
   "unban": "Avbanna",
   "kick": "Kicka",
@@ -3952,7 +3611,6 @@
   "timesUsedIndependently": "Användningstider självständigt",
   "timesUsedWithAssistance": "Användningstider med hjälp",
   "shareInviteCode": "Dela inbjudningskod: {code}",
-  "leaderboard": "Topplista",
   "skipForNow": "Hoppa över för tillfället",
   "permissions": "Behörigheter",
   "spaceChildPermission": "Vem kan lägga till nya chattar i denna kurs",
@@ -3961,7 +3619,6 @@
   "deleteChatDesc": "Är du säker på att du vill radera denna chatt? Den kommer att raderas för alla deltagare och alla meddelanden i chatten kommer inte längre att vara tillgängliga för övning eller inlärningsanalys.",
   "deleteSpaceDesc": "Kursen och eventuella valda chattar kommer att raderas för alla deltagare och alla meddelanden i chatten kommer inte längre att vara tillgängliga för övning eller inlärningsanalys. Denna åtgärd kan inte ångras.",
   "launch": "Starta",
-  "searchChats": "Sök chattar",
   "maxFifty": "Max 50",
   "configureSpace": "Konfigurera kurs",
   "pinMessages": "Fäst meddelanden",
@@ -3986,13 +3643,10 @@
   "canBeFoundViaInvitation": "• inbjudan",
   "canBeFoundViaCodeOrLink": "• kod eller länk",
   "canBeFoundViaKnock": "• begär att gå med och administratörsgodkännande",
-  "youHaveLeveledUp": "Du har avancerat till nästa nivå!",
   "sendActivities": "Skicka aktiviteter",
-  "groupChat": "Gruppchatt",
   "directMessage": "Direktmeddelande",
   "newDirectMessage": "Nytt direktmeddelande",
   "speakingExercisesTooltip": "Tala",
-  "noChatsFoundHereYet": "Inga chattar hittades här än",
   "duration": "Varaktighet",
   "transcriptionFailed": "Misslyckades med att transkribera ljud",
   "aUserIsKnocking": "1 användare begär att gå med i din kurs",
@@ -4002,7 +3656,6 @@
   "regenerate": "Regenerera",
   "mySavedActivities": "Mina sparade aktiviteter",
   "noSavedActivities": "Inga sparade aktiviteter",
-  "saveActivity": "Spara denna aktivitet",
   "failedToPlayVideo": "Det gick inte att spela upp videon",
   "done": "Klart",
   "inThisSpace": "I denna kurs",
@@ -4020,12 +3673,10 @@
   "errorFetchingDefinition": "Misslyckades med att hämta definition",
   "errorProcessAnalytics": "Misslyckades med att bearbeta analysdata",
   "errorDownloading": "Nedladdning misslyckades",
-  "errorFetchingLevelSummary": "Misslyckades med att hämta nivåsammanfattning",
   "errorLoadingSpaceChildren": "Misslyckades med att ladda chattar inom denna kurs",
   "unexpectedError": "Oväntat fel.",
   "pleaseReload": "Vänligen ladda om och försök igen.",
   "translationError": "Översättningsfel",
-  "errorFetchingTranslation": "Misslyckades med att hämta översättning",
   "errorFetchingActivity": "Misslyckades med att hämta aktivitet",
   "check": "Kontrollera",
   "unableToFindRoom": "Ingen chatt eller kurs hittades med den koden. Vänligen försök igen.",
@@ -4041,17 +3692,14 @@
   "maximumActivityParticipants": "Varje aktivitet kan ha högst {count} deltagare.",
   "pending": "Väntar",
   "inactive": "Inaktiv",
-  "confirmRole": "Bekräfta roll",
   "openRoleLabel": "ÖPPEN",
   "joinedTheActivity": "👋 {username} gick med som {role}",
   "finishedTheActivity": "🎯 {username} avslutade denna aktivitet",
-  "archiveToAnalytics": "Lägg till i mina slutförda aktiviteter",
   "activitySummaryError": "Sammanfattningar av aktivitet är otillgängliga",
   "requestSummaries": "Begär sammanfattningar",
   "generatingNewActivities": "Du är den första användaren för detta språkpar! Ge oss en minut, vi förbereder aktiviteter speciellt för dig.",
   "requestAccessTitle": "Begär åtkomst till analys?",
   "requestAccessDesc": "Vill du begära tillgång för att se deltagaranalys?\n\nOm deltagarna samtycker, kommer administratörer av denna kurs att kunna se deras:\n    • totala ordförråd\n    • totala grammatikbegrepp\n    • totala genomförda aktivitetsessioner\n    • specifika grammatikbegrepp som används, korrekt och felaktigt\n\nDe kommer inte att kunna se deras:\n    • meddelanden i chattar utanför kursen\n    • ordförrådslista",
-  "requestAccess": "Begär tillgång ({count})",
   "analyticsInactiveTitle": "Förfrågningar till inaktiva användare kunde inte skickas",
   "analyticsInactiveDesc": "Inaktiva användare som inte har loggat in sedan denna funktion infördes kommer inte att se din förfrågan.\n\nKnappen Begär kommer att visas när de återvänder. Du kan skicka om förfrågan senare genom att klicka på knappen Begär under deras namn när den är tillgänglig.",
   "accessRequestedTitle": "Begäran om tillgång till analys",
@@ -4076,7 +3724,6 @@
   "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
   "noCourseFound": "Åh, den här kursen behöver en plan!\n\nKursplaner är en sekvens av ämnen och samtalsaktiviteter.",
   "additionalParticipants": "+ {num} andra",
-  "directMessages": "Direktmeddelanden",
   "whatNow": "Vad nu?",
   "chooseNextActivity": "Välj din nästa aktivitet!",
   "letsGo": "Låt oss åka",
@@ -4113,7 +3760,6 @@
   "activityNeedsMembers": "Oj då! Den här aktiviteten behöver {num} fler personer.",
   "inviteFriendsToCourse": "Bjud in vänner till min kurs",
   "subscribeToUnlockActivitySummaries": "Prenumerera för att låsa upp aktivitetsöversikter",
-  "subscribeToUnlockDefinitions": "Prenumerera för att låsa upp definitioner",
   "subscribeToUnlockTranscriptions": "Prenumerera för att låsa upp transkriptioner",
   "pingSent": "🔔 Kurs-ping skickat! 🔔",
   "courseTitle": "Kursens titel",
@@ -4124,7 +3770,6 @@
   "loginToAccount": "Logga in på mitt konto",
   "appDescription": "Lär dig ett språk\nmedan du skickar meddelanden till dina vänner.",
   "languages": "Språk",
-  "chooseLanguage": "Välj ett målspråk.",
   "planTrip": "Planera din resa",
   "howAreYouTraveling": "Hur reser du?",
   "unlockPrivateTrip": "Lås upp en privat resa",
@@ -4198,17 +3843,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "@noMoreChatsFound": {
     "type": "String",
     "placeholders": {}
@@ -4281,19 +3915,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@hideMemberChangesInPublicChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hideMemberChangesInPublicChatsBody": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@overview": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@notifyMeFor": {
     "type": "String",
     "placeholders": {}
   },
@@ -4333,18 +3955,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@userWouldLikeToChangeTheChat": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "@noPublicLinkHasBeenCreatedYet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@knock": {
     "type": "String",
     "placeholders": {}
@@ -4372,14 +3982,6 @@
   "@userRole": {
     "type": "String",
     "placeholders": {}
-  },
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
   },
   "@searchIn": {
     "type": "String",
@@ -4586,10 +4188,6 @@
     "placeholders": {}
   },
   "@continueText": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@welcomeText": {
     "type": "String",
     "placeholders": {}
   },
@@ -5007,18 +4605,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -5035,10 +4621,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -5047,27 +4629,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -5076,10 +4642,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -5120,14 +4682,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -5183,19 +4737,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5375,15 +4921,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6497,19 +6035,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6582,19 +6112,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6610,10 +6132,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6626,19 +6144,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6655,14 +6165,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6706,23 +6208,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6805,19 +6295,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6846,10 +6324,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7741,18 +7215,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7969,14 +7431,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -8144,10 +7598,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -8165,10 +7615,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -8288,10 +7734,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -8316,14 +7758,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8440,10 +7874,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8615,23 +8045,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8652,10 +8070,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8735,10 +8149,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8787,10 +8197,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8820,10 +8226,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8923,15 +8325,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8944,10 +8338,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8988,10 +8378,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -9071,10 +8457,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -9088,10 +8470,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -9166,10 +8544,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -9193,10 +8567,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -9216,14 +8586,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -9339,10 +8701,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9505,10 +8863,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9546,10 +8900,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9753,7 +9103,6 @@
   "addCourse": "Lägg till en kurs",
   "joinPublicCourse": "Gå med i offentlig kurs",
   "vocabLevelsDesc": "Det här är platsen där vokabulärord kommer att hamna när du har nivåer upp dem!",
-  "highlightVocabTooltip": "Markera målvokabulärord nedan genom att skicka dem eller öva med dem i chatten",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10982,13 +10331,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Misslyckades med att ladda feedback.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Aktiviteter kommer att visas här när de är slutförda och sparade.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -11004,11 +10348,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Övningsaktivitet slutförd",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -11065,11 +10404,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Ditt målspråk matchar inte detta meddelande. Vill du uppdatera ditt målspråk?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -11115,12 +10449,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Lärverktyg är inaktiverade för meddelanden som inte är på ditt målspråk.",
-  "vocabEmoji": "Vokabulärsemoji",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -11168,16 +10497,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Åtkomst nekad. Aktivera inspelningsbehörigheter för att spela in ljudmeddelanden.",
-  "genericWebRecordingError": "Något gick fel. Vi rekommenderar att du använder webbläsaren Chrome när du spelar in meddelanden.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "För bästa upplevelse med denna applikation, vänligen utöka din skärmstorlek.",
   "@screenSizeWarning": {
     "type": "String",
@@ -11200,11 +10519,8 @@
   "constructUseBonus": "Bonus under vokabulärövning",
   "practiceVocab": "Öva vokabulär",
   "selectMeaning": "Välj betydelsen",
-  "selectAudio": "Välj den matchande ljudfilen",
   "congratulations": "Grattis!",
   "anotherRound": "En runda till",
-  "noActivityRequest": "Ingen aktuell aktivitetsförfrågan.",
-  "mustHave10Words": "Du måste ha minst 10 ord för att öva dem. Försök att prata med en vän eller Pangea Bot för att upptäcka mer!",
   "botSettings": "Botinställningar",
   "activitySettingsOverrideWarning": "Språk och språknivå bestäms av aktivitetsplanen",
   "voice": "Röst",
@@ -11236,23 +10552,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -11344,18 +10648,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Har du en inbjudningskod eller länk till en offentlig kurs?",
-  "welcomeUser": "Välkommen {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Sök efter användare för att bjuda in dem till den här chatten.",
   "publicInviteDescSpace": "Sök efter användare för att bjuda in dem till det här utrymmet.",
@@ -11542,8 +10837,6 @@
   "resume": "Fortsätt",
   "newSubSpace": "Nytt underområde",
   "moveToDifferentSpace": "Flytta till ett annat område",
-  "moveUp": "Flytta upp",
-  "moveDown": "Flytta ner",
   "removeFromSpaceDescription": "Chatten kommer att tas bort från rummet men kommer fortfarande att visas i din chattlista.",
   "countChats": "{chats} chattar",
   "spaceMemberOf": "Rumsmedlem i {spaces}",
@@ -11554,7 +10847,6 @@
   "startPoll": "Starta omröstning",
   "endPoll": "Avsluta omröstning",
   "answersVisible": "Svar synliga",
-  "answersHidden": "Svar dolda",
   "pollQuestion": "Omröstningsfråga",
   "answerOption": "Svarsalternativ",
   "addAnswerOption": "Lägg till svarsalternativ",
@@ -11634,14 +10926,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@moveUp": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moveDown": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@removeFromSpaceDescription": {
     "type": "String",
     "placeholders": {}
@@ -11695,10 +10979,6 @@
     "placeholders": {}
   },
   "@answersVisible": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@answersHidden": {
     "type": "String",
     "placeholders": {}
   },
@@ -11986,7 +11266,6 @@
   "playConversationGames": "Spela konversationsspel med boten, klasskamrater och nya vänner!",
   "jumpIntoConversation": "Hoppa in i konversationen från dag ett med AI-skrivverktyg!",
   "playPersonalizedGames": "Spela övningsspel anpassade efter dina ordförråds- och grammatikbehov!",
-  "learnLanguageWhileTexting": "Lär dig ett språk medan du sms:ar med dina vänner!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -12008,10 +11287,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

@@ -85,8 +85,6 @@
       }
     }
   },
-  "addChatDescription": "Suhbat tavsifini kiriting...",
-  "@addChatDescription": {},
   "addToSpace": "Maydonga qo‘shish",
   "@addToSpace": {},
   "admin": "Admin",
@@ -222,30 +220,6 @@
   },
   "sendOnEnter": "Enterda yuborish",
   "@sendOnEnter": {},
-  "badServerVersionsException": "Homeserver quyidagi Spec versiyalarini qo'llab-quvvatlaydi:\n{serverVersions}\nLekin bu ilova faqat {supportedVersions} versiyalarini qo'llab-quvvatlaydi",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
-  "countChatsAndCountParticipants": "{chats} suhbatlar va {participants} ishtirokchilar",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "noMoreChatsFound": "Boshqa chatlar topilmadi...",
   "@noMoreChatsFound": {},
   "noChatsFoundHere": "Bu yerda hali chat topilmadi. Quyidagi tugmadan foydalanib, kimdir bilan yangi suhbat boshlang. ⤵️",
@@ -287,11 +261,6 @@
   },
   "blocked": "Bloklandi",
   "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Bot xabarlari",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -501,8 +470,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Suhbat bu maydonga kiritildi",
-  "@chatHasBeenAddedToThisSpace": {},
   "changedTheRoomAliases": "{username} xona taxalluslarini oʻzgartirdi",
   "@changedTheRoomAliases": {
     "type": "String",
@@ -662,16 +629,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Displey nomni oʻz ichiga oladi",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsUserName": "Foydalanuvchi nomini oʻz ichiga oladi",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "contentHasBeenReported": "Kontent server administratorlariga xabar qilindi",
   "@contentHasBeenReported": {
     "type": "String",
@@ -769,33 +726,6 @@
       }
     }
   },
-  "dateWithoutYear": "{month}-{day}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{year}-{month}-{day}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
   "deactivateAccountWarning": "Bu sizning foydalanuvchi hisobingizni oʻchirib qoʻyadi. Buni qaytarib boʻlmaydi! Ishonchingiz komilmi?",
   "@deactivateAccountWarning": {
     "type": "String",
@@ -841,11 +771,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "allRooms": "Barcha guruh suhbatlar",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emotePacks": "Guruh uchun Emote toʻplamlar",
   "@emotePacks": {
     "type": "String",
@@ -870,11 +795,6 @@
   "@customEmojisAndStickersBody": {},
   "emoteShortcode": "Emote qisqa kodi",
   "@emoteShortcode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "emoteWarnNeedToPick": "Siz emote qisqa kodi va rasmni tanlashingiz kerak!",
-  "@emoteWarnNeedToPick": {
     "type": "String",
     "placeholders": {}
   },
@@ -930,11 +850,6 @@
   },
   "fromTheInvitation": "Taklifnomadan",
   "@fromTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Yangi guruhga oʻtish",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -1042,8 +957,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "inviteContactToGroupQuestion": "{contact} ni \"{groupName}\" suhbatiga taklif qilishni istaysizmi?",
-  "@inviteContactToGroupQuestion": {},
   "inviteContactToGroup": "Kontaktni {groupName} ga taklif qiling",
   "@inviteContactToGroup": {
     "type": "String",
@@ -1180,11 +1093,6 @@
   },
   "homeserver": "Uy serveri",
   "@homeserver": {},
-  "enterYourHomeserver": "Uy serveriga kiring",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "errorObtainingLocation": "Joylashuv axboroti olinmadi: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -1271,11 +1179,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Litsenziya",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "lightTheme": "Yorugʻlik",
   "@lightTheme": {
     "type": "String",
@@ -1294,14 +1197,6 @@
   "@dehydrate": {},
   "dehydrateWarning": "Bu amalni bekor qilib boʻlmaydi. Zaxira faylini xavfsiz saqlang.",
   "@dehydrateWarning": {},
-  "dehydrateTor": "TOR foydalanuvchilari: Seansni eksport qilish",
-  "@dehydrateTor": {},
-  "dehydrateTorLong": "TOR foydalanuvchilari uchun oynani yopishdan oldin seansni eksport qilish tavsiya etiladi.",
-  "@dehydrateTorLong": {},
-  "hydrateTor": "TOR foydalanuvchilari: Seans eksportini import qilish",
-  "@hydrateTor": {},
-  "hydrateTorLong": "Seansingizni oxirgi marta TOR’da eksport qildingizmi? Uni tezda import qiling va suhbatni davom ettiring.",
-  "@hydrateTorLong": {},
   "hydrate": "Zaxira faylidan tiklash",
   "@hydrate": {},
   "loadingPleaseWait": "Yuklanmoqda… Iltimos, kuting.",
@@ -1340,11 +1235,6 @@
   },
   "logout": "Chiqish",
   "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Aʼzo oʻzgarishlari",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1458,11 +1348,6 @@
   },
   "notifications": "Bildirishnomalar",
   "@notifications": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "notificationsEnabledForThisAccount": "Ushbu hisob uchun bildirishnomalar yoqildi",
-  "@notificationsEnabledForThisAccount": {
     "type": "String",
     "placeholders": {}
   },
@@ -1583,23 +1468,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "hideMemberChangesInPublicChats": "Ommaviy suhbatlarda aʼzolarga oʻzgartirishlarni yashirish",
-  "@hideMemberChangesInPublicChats": {},
-  "hideMemberChangesInPublicChatsBody": "Oʻqish qulayligini oshirish uchun kimdir ochiq suhbatga qoʻshilsa yoki undan chiqsa, suhbat vaqt jadvalida koʻrsatilmasin.",
-  "@hideMemberChangesInPublicChatsBody": {},
   "overview": "Umumiy ma'lumot",
   "@overview": {},
-  "notifyMeFor": "Menga bildirishnoma yuborish",
-  "@notifyMeFor": {},
   "passwordRecoverySettings": "Parolni qayta tiklash sozlamalari",
   "@passwordRecoverySettings": {},
   "passwordRecovery": "Parolni qayta tiklash",
   "@passwordRecovery": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "people": "Odamlar",
-  "@people": {
     "type": "String",
     "placeholders": {}
   },
@@ -1642,8 +1516,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "pleaseEnterRecoveryKey": "Iltimos, tiklash kalitingizni kiriting:",
-  "@pleaseEnterRecoveryKey": {},
   "pleaseEnterYourPassword": "Iltimos parolingizni kiriting",
   "@pleaseEnterYourPassword": {
     "type": "String",
@@ -1764,11 +1636,6 @@
       }
     }
   },
-  "removeDevice": "Qurilmani oʻchirish",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Suhbat blokidan chiqazish",
   "@unbanFromChat": {
     "type": "String",
@@ -1828,15 +1695,6 @@
   "@recoveryKey": {},
   "recoveryKeyLost": "Tiklash kaliti yo‘qolib qoldimi?",
   "@recoveryKeyLost": {},
-  "seenByUser": "{username} ko‘rgan",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "send": "Yuborish",
   "@send": {
     "type": "String",
@@ -1877,16 +1735,6 @@
   },
   "sendMessages": "Xabarlar yuborish",
   "@sendMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendOriginal": "Asl nusxani yuborish",
-  "@sendOriginal": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Stiker yuborish",
-  "@sendSticker": {
     "type": "String",
     "placeholders": {}
   },
@@ -1959,23 +1807,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "setCustomEmotes": "Maxsus hissiyotlarni sozlash",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
   "setChatDescription": "Suhbat tavsifini sozlash",
   "@setChatDescription": {},
-  "setInvitationLink": "Taklif havolasini sozlash",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setPermissionsLevel": "Ruxsatlar darajasini belgilash",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "setStatus": "Holatni sozlash",
   "@setStatus": {
     "type": "String",
@@ -2010,18 +1843,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "presenceStyle": "Mavjudlik:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "presencesToggle": "Boshqa foydalanuvchilarning holat xabarlarini ko‘rsatish",
   "@presencesToggle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "singlesignon": "Yagona kirish",
-  "@singlesignon": {
     "type": "String",
     "placeholders": {}
   },
@@ -2054,8 +1877,6 @@
       }
     }
   },
-  "startFirstChat": "Birinchi suhbatni boshlash",
-  "@startFirstChat": {},
   "status": "Holati",
   "@status": {
     "type": "String",
@@ -2103,21 +1924,6 @@
   "title": "FluffyChat",
   "@title": {
     "description": "Title for the application",
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleFavorite": "Saralanganni almashtirish",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleMuted": "O‘chirib qo‘yish",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "O‘qilgan/O‘qilmaganni belgilash",
-  "@toggleUnread": {
     "type": "String",
     "placeholders": {}
   },
@@ -2186,15 +1992,6 @@
   "@unpin": {
     "type": "String",
     "placeholders": {}
-  },
-  "unreadChats": "{unreadCount, plural, =1{1 ta oʻqilmagan suhbat} other{{unreadCount} ta o‘qilmagan chat}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
   },
   "userAndOthersAreTyping": "{username} va yana {count} kishi yozmoqda…",
   "@userAndOthersAreTyping": {
@@ -2404,24 +2201,12 @@
   "@openGallery": {},
   "removeFromSpace": "Guruhdan olib tashlash",
   "@removeFromSpace": {},
-  "addToSpaceDescription": "Bu suhbatni unga kiritish uchun guruhni tanlang.",
-  "@addToSpaceDescription": {},
   "start": "Boshlash",
   "@start": {},
   "usersMustKnock": "Foydalanuvchilar taqillatishi kerak",
   "@usersMustKnock": {},
   "noOneCanJoin": "Hech kim qoʻshila olmaydi",
   "@noOneCanJoin": {},
-  "userWouldLikeToChangeTheChat": "{user} suhbatga qoʻshilmoqchi.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "noPublicLinkHasBeenCreatedYet": "Hech qanday ochiq havola yaratilmagan",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "knock": "Taqillating",
   "@knock": {},
   "users": "Foydalanuvchilar",
@@ -2456,18 +2241,6 @@
   "@screenSharingTitle": {},
   "screenSharingDetail": "Siz ekraningizni FuffyChat’da ulashmoqdasiz",
   "@screenSharingDetail": {},
-  "callingPermissions": "Qoʻngʻiroq qilish ruxsatlar",
-  "@callingPermissions": {},
-  "callingAccount": "Qoʻngʻiroq qilishi hisobi",
-  "@callingAccount": {},
-  "callingAccountDetails": "FluffyChat’ga mahalliy android terish ilovasidan foydalanishga ruxsat beradi.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Teppada paydo boʻladi",
-  "@appearOnTop": {},
-  "appearOnTopDetails": "Ilovaning yuqori qismida koʻrinishiga ruxsat beradi (agar sizda Fluffychat qoʻngʻiroq qiluvchi hisobi sifatida oʻrnatilgan boʻlsa, kerak emas)",
-  "@appearOnTopDetails": {},
-  "otherCallingPermissions": "Mikrofon, kamera va boshqa FluffyChat ruxsatnomalari",
-  "@otherCallingPermissions": {},
   "whyIsThisMessageEncrypted": "Nima uchun bu xabarni oʻqib boʻlmaydi?",
   "@whyIsThisMessageEncrypted": {},
   "noKeyForThisMessage": "Bu xabar siz ushbu qurilmada hisobingizga kirishdan oldin yuborilgan boʻlsa sodir boʻlishi mumkin.\n\nShuningdek, joʻnatuvchi qurilmangizni bloklagan yoki internet ulanishida biron bir muammo yuzaga kelgan boʻlishi mumkin.\n\nXabarni boshqa sessiyada oʻqiy olasizmi? Keyin xabarni undan uzatishingiz mumkin! Sozlamalar > Qurilmalar boʻlimiga oʻting va qurilmalaringiz bir-birini tasdiqlaganligiga ishonch hosil qiling. Keyingi safar xonani ochganingizda va ikkala sessiya ham oldinda boʻlganda, kalitlar avtomatik ravishda uzatiladi.\n\nTizimdan chiqishda yoki qurilmalarni almashtirishda kalitlarni yoʻqotishni xohlamaysizmi? Sozlamalarda suhbatning zaxira nusxasini yoqganingizga ishonch hosil qiling.",
@@ -2476,23 +2249,8 @@
   "@newGroup": {},
   "newSpace": "Yangi maydon",
   "@newSpace": {},
-  "enterSpace": "Maydonga kirish",
-  "@enterSpace": {},
-  "enterRoom": "Guruhga kirish",
-  "@enterRoom": {},
   "allSpaces": "Barcha maydonlar",
   "@allSpaces": {},
-  "numChats": "{number} suhbatlar",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "hideUnimportantStateEvents": "Muhim boʻlmagan shtat tadbirlarini yashirish",
-  "@hideUnimportantStateEvents": {},
   "hidePresences": "Holat roʻyxati yashirilsinmi?",
   "@hidePresences": {},
   "doNotShowAgain": "Qaytib koʻrsatilmasin",
@@ -2510,8 +2268,6 @@
   "@newSpaceDescription": {},
   "openChat": "Suhbatni ochish",
   "@openChat": {},
-  "indexedDbErrorLong": "Xabarlarni saqlash, afsuski, sukut bo'yicha maxfiy rejimda yoqilmagan.\nIltimos, tashrif buyuring\n- about:config\n- dom.indexedDB.privateBrowsing.enabled ga true berilgan\nAks holda, FluffyChat ni ishga tushirish mumkin emas.",
-  "@indexedDbErrorLong": {},
   "youJoinedTheChat": "Siz suhbatga qoʻshildingiz",
   "@youJoinedTheChat": {},
   "encryptThisChat": "Bu suhbatni shifrlash",
@@ -2524,8 +2280,6 @@
   "@noBackupWarning": {},
   "inviteGroupChat": "📨 Guruh suhbatiga taklif",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Shaxsiy suhbatga taklif",
-  "@invitePrivateChat": {},
   "archiveRoomDescription": "Suhbat arxivga koʻchiriladi. Boshqa foydalanuvchilar sizning suhbatdan chiqqaningizni koʻra oladilar.",
   "@archiveRoomDescription": {},
   "roomUpgradeDescription": "Keyin suhbat yangi guruh versiyasi bilan qayta yaratiladi. Barcha ishtirokchilarga yangi suhbatga oʻtishlari kerakligi haqida xabar beriladi. Guruh versiyalari haqida koʻproq maʼlumotni https://spec.matrix.org/latest/rooms/ manzilida topishingiz mumkin",
@@ -2592,8 +2346,6 @@
   "@chatPermissionsDescription": {},
   "noticeChatBackupDeviceVerification": "Eslatma: Barcha qurilmalaringizni suhbat zaxira nusxasiga ulaganingizda, ular avtomatik ravishda tasdiqlanadi.",
   "@noticeChatBackupDeviceVerification": {},
-  "welcomeText": "Hey Hey 👋 Bu FluffyChat. Siz https://matrix.org bilan mos keladigan istalgan uy serveriga kirishingiz mumkin. Va keyin istalgan kishi bilan suhbatlashishingiz mumkin. Bu ulkan markazlashtirilmagan xabar almashish tarmog'i!",
-  "@welcomeText": {},
   "unableToJoinChat": "Chatga qoʻshilib boʻlmadi. Ehtimol, boshqa tomon suhbatni allaqachon yopib qoʻygan.",
   "@unableToJoinChat": {},
   "appIntroduction": "FluffyChat sizga turli messenjerlar orqali doʻstlaringiz bilan suhbatlashish imkonini beradi. Batafsil maʼlumotni https://matrix.org saytida oling yoki shunchaki *Davom etish* tugmasini bosing.",
@@ -2619,17 +2371,6 @@
   "@backToMainChat": {},
   "pleaseEnterRecoveryKeyDescription": "Eski xabarlaringizni qulfdan chiqarish uchun, iltimos, avvalgi seansdan yaratilgan tiklash kalitingizni kiriting. Sizning tiklash kalitingiz parolingiz EMAS.",
   "@pleaseEnterRecoveryKeyDescription": {},
-  "publish": "Nashr qilish",
-  "@publish": {},
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
   "markAsRead": "Oʻqilgan sifatida belgilash",
   "@markAsRead": {},
   "reportUser": "Foydalanuvchi haqida xabar berish",
@@ -2666,21 +2407,6 @@
   "@experimentalVideoCalls": {},
   "emailOrUsername": "Elektron pochta yoki foydalanuvchi nomi",
   "@emailOrUsername": {},
-  "indexedDbErrorTitle": "Shaxsiy rejim bilan bogʻliq muammolar",
-  "@indexedDbErrorTitle": {},
-  "switchToAccount": "{number} hisobiga oʻtish",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "nextAccount": "Keyingi hisob",
-  "@nextAccount": {},
-  "previousAccount": "Oldingi hisob",
-  "@previousAccount": {},
   "addWidget": "Vidjet qoʻshish",
   "@addWidget": {},
   "widgetVideo": "Video",
@@ -2721,14 +2447,6 @@
   "@reportErrorDescription": {},
   "report": "hisobot",
   "@report": {},
-  "signInWithPassword": "Parol bilan kirish",
-  "@signInWithPassword": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Keyinroq qayta urining yoki boshqa serverni tanlang.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
-  "profileNotFound": "Foydalanuvchi serverda topilmadi. Ehtimol, ulanishda muammo bor yoki foydalanuvchi mavjud emas.",
-  "@profileNotFound": {},
-  "setTheme": "Mavzu tanlash:",
-  "@setTheme": {},
   "setColorTheme": "Rang mavzusini sozlash:",
   "@setColorTheme": {},
   "invite": "Taklif qilish",
@@ -2793,8 +2511,6 @@
   "@passwordsDoNotMatch": {},
   "passwordIsWrong": "Siz kiritgan maxfiy soʻz xato",
   "@passwordIsWrong": {},
-  "publicLink": "Ommaviy havola",
-  "@publicLink": {},
   "createNewAddress": "Yangi manzil yarating",
   "@createNewAddress": {},
   "joinSpace": "Maydonga qoʻshiling",
@@ -2811,33 +2527,12 @@
   "@initAppError": {},
   "userRole": "Foydalanuvchi roli",
   "@userRole": {},
-  "minimumPowerLevel": "{level} minimal quvvat darajasidir.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "searchMore": "Koʻproq qidirish...",
   "@searchMore": {},
   "gallery": "Galereya",
   "@gallery": {},
   "files": "Fayllar",
   "@files": {},
-  "databaseBuildErrorBody": "SQlite maʼlumotlar bazasini yaratib boʻlmadi. Ilova hozircha eski maʼlumotlar bazasidan foydalanishga harakat qilmoqda. Iltimos, ushbu xato haqida {url} manzilidagi dasturchilarga xabar bering. Xato xabari: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "sessionLostBody": "Seansingiz yoʻqoldi. Iltimos, ushbu xato haqida {url} manzilidagi dasturchilarga xabar bering. Xato xabari: {error}",
   "@sessionLostBody": {
     "type": "String",
@@ -2858,15 +2553,6 @@
         "type": "String"
       },
       "error": {
-        "type": "String"
-      }
-    }
-  },
-  "forwardMessageTo": "Xabarni {roomName}ga yoʻnaltirilsinmi?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
         "type": "String"
       }
     }
@@ -3274,10 +2960,6 @@
   "@newSubSpace": {},
   "moveToDifferentSpace": "Boshqa maydonga o‘tish",
   "@moveToDifferentSpace": {},
-  "moveUp": "Yuqoriga surish",
-  "@moveUp": {},
-  "moveDown": "Pastga surish",
-  "@moveDown": {},
   "spaceMemberOf": "{spaces} maydoni a’zosi",
   "@spaceMemberOf": {
     "type": "String",
@@ -3315,8 +2997,6 @@
   "@endPoll": {},
   "answersVisible": "Javoblar ko‘rinadi",
   "@answersVisible": {},
-  "answersHidden": "Javoblar berkitildi",
-  "@answersHidden": {},
   "pollQuestion": "So‘rovnoma savoli",
   "@pollQuestion": {},
   "answerOption": "Javob varianti",
@@ -3381,14 +3061,6 @@
   "@youHaveWithdrawnTheInvitationFor": {
     "placeholders": {
       "user": {
-        "type": "String"
-      }
-    }
-  },
-  "youInvitedToBy": "📩 Sizni quyidagi havola orqali taklif qilishdi:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
         "type": "String"
       }
     }
@@ -3459,11 +3131,6 @@
   "@yourGlobalUserIdIs": {},
   "notificationRuleTombstone": "Qabrtosh",
   "@notificationRuleTombstone": {},
-  "identity": "Shaxs",
-  "@identity": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emojis": "Emojilar",
   "@emojis": {},
   "changedTheChatDescription": "{username} chat tavsifini o‘zgartirdi",
@@ -3512,23 +3179,14 @@
   "writeAMessageLangCodes": "{l1} yoki {l2} da yozing...",
   "requests": "So'rovlar",
   "holdForInfo": "So'z ma'lumotlari uchun bosib turing.",
-  "greenFeedback": "Men shuni qo'ygan bo'lardim!",
-  "yellowFeedback": "Hm, siz buni sinab ko'rishingiz mumkin va ishlashini ko'ring! Bu so'zni ishlatish uchun, uni yana bir marta bosing.",
-  "redFeedback": "Men bu to'g'ri deb o'ylamayman...",
   "gaTooltip": "Grammatika yordamida L2 bilan foydalanish",
   "taTooltip": "L2 tarjima yordamida foydalanish",
-  "unTooltip": "Boshqa",
   "interactiveTranslatorSliderHeader": "Interaktiv tarjimon",
   "interactiveGrammarSliderHeader": "Interaktiv grammatik tekshiruvchi",
-  "interactiveTranslatorNotAllowed": "Noodat etilgan",
-  "interactiveTranslatorAllowed": "Talaba tanlovi",
   "interactiveTranslatorRequired": "Majburiy",
-  "notYetSet": "Hali o'rnatilmagan",
   "waTooltip": "Yordam bilan L2 foydalanish",
-  "languageSettings": "Til sozlamalari",
   "interactiveTranslator": "Tarjimaga yordam",
   "noIdenticalLanguages": "Iltimos, asosiy va maqsad tillarini farqlang",
-  "searchBy": "Mamlakat va tillar bo'yicha qidirish",
   "joinWithClassCode": "Kursga qo'shiling",
   "languageLevelPreA1": "Yangi boshlovchi past (Pre A1)",
   "languageLevelA1": "Yangi boshlovchi o'rtacha (A1)",
@@ -3539,8 +3197,6 @@
   "languageLevelC2": "Yuqori (C2)",
   "changeTheNameOfTheClass": "Nomi o'zgartirish",
   "changeTheNameOfTheChat": "Chat nomini o'zgartirish",
-  "sorryNoResults": "Kechirasiz, natija topilmadi.",
-  "ignoreInThisText": "E'tiborsizlik",
   "needsItMessage": "Kuting, bu {targetLanguage} emas! Tarjimaga yordam kerakmi?",
   "countryInformation": "Mening mamlakatim",
   "targetLanguage": "Ma'lumot tili",
@@ -3552,10 +3208,8 @@
   "publicProfileDesc": "Yoqib qo'ysangiz, boshqa foydalanuvchilar sizning profilingizni global qidiruv panelida topishlari va chat so'rovlari yuborishlari mumkin. Shu vaqtdan boshlab, siz so'rovni qabul qilish yoki rad etishni tanlashingiz mumkin.",
   "errorDisableIT": "Tarjimaga yordam o'chirilgan.",
   "errorDisableIGC": "Grammatika yordam o'chirilgan.",
-  "errorDisableLanguageAssistance": "Tarjima va grammatika yordam o'chirilgan.",
   "errorDisableITUserDesc": "Tarjimaga yordam sozlamalarini yangilash uchun bu yerga bosing",
   "errorDisableIGCUserDesc": "Grammatika yordam sozlamalarini yangilash uchun bu yerga bosing",
-  "errorDisableLanguageAssistanceUserDesc": "Tarjima va grammatika yordam sozlamarini yangilash uchun bu yerga bosing",
   "errorDisableITClassDesc": "Ushbu suhbat bo'lib o'tadigan kurs uchun tarjima yordamchi o'chirilgan.",
   "errorDisableIGCClassDesc": "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.",
   "error405Title": "Tillar belgilangan emas",
@@ -3600,9 +3254,7 @@
   "notAvailable": "Mavjud emas",
   "taAndGaTooltip": "Tarjimaga yordam berish va grammatik yordam bilan L2 foydalanish",
   "definitionsToolName": "So'zlarning ta'rifi",
-  "messageTranslationsToolName": "Xabar tarjimalari",
   "definitionsToolDescription": "Faollashtirilganda, ko'k chiziq bilan belgilangan so'zlarni bosish orqali ta'riflarni ko'rish mumkin. Ta'riflarni olish uchun xabarlarni bosing.",
-  "translationsToolDescrption": "Faollashtirilganda, xabarni bosing va tarjima ikonkasini bosib, asosiy tilingizda xabarni ko'ring.",
   "welcomeBack": "Qaytganingiz uchun xush kelibsiz! Agar siz 2023-2024 yilgi pilot dasturining bir qismi bo'lgan bo'lsangiz, iltimos, maxsus pilot obunangiz uchun biz bilan bog'laning. Agar siz o'qituvchi bo'lsangiz (yoki o'quv muassasangiz) sinfingiz uchun litsenziyalar sotib olgan bo'lsa, o'qituvchi obunangiz uchun biz bilan bog'laning.",
   "downloadTxtFile": "Matn faylini yuklab olish",
   "downloadCSVFile": "CSV faylini yuklab olish",
@@ -3874,10 +3526,8 @@
   "definitionDefaultPrompt": "Ushbu so'z nima anlamda?",
   "practiceDefaultPrompt": "Eng yaxshi javob nima?",
   "correctionDefaultPrompt": "Eng yaxshi o'rnini bosuvchi nima?",
-  "acceptSelection": "Tahrirni qabul qilish",
   "why": "Nima uchun?",
   "definition": "Taqrif",
-  "exampleSentence": "Misol jumla",
   "reportToTeacher": "Bu xabarni kimga xabar qilmoqchisiz?",
   "reportMessageTitle": "{reportingUserId} chatda {reportedUserId} dan xabarni xabar qildi {roomName}",
   "reportMessageBody": "Xabar: {reportedMessage}\nSabab: {reason}",
@@ -3889,38 +3539,28 @@
   "clickToManageSubscription": "Obunangizni boshqarish uchun bu yerni bosing.",
   "signUp": "Ro'yhatdan o'tish",
   "pleaseChooseAtLeastChars": "Iltimos, kamida {min} ta belgi tanlang.",
-  "noEmailWarning": "Iltimos, haqiqiy elektron pochta manzilini kiriting. Aks holda, parolingizni tiklash imkoniyatingiz bo'lmaydi. Agar xohlamasangiz, davom etish uchun yana tugmani bosing.",
   "pleaseEnterValidEmail": "Iltimos, haqiqiy elektron pochta manzilini kiriting.",
   "pleaseChooseAUsername": "Iltimos, foydalanuvchi nomini tanlang",
-  "define": "Taqrif",
   "listen": "Tingla",
   "trialPeriodExpired": "Sizning sinov muddatingiz tugadi",
   "translations": "tarjimalar",
-  "messageAudio": "xabar audio",
   "definitions": "taʼriflar",
   "subscribedToUnlockTools": "Interaktiv tarjima va grammatik tekshirish, audio ijro, shaxsiy mashgʻulotlar va oʻrganish analitikasi uchun obuna boʻling!",
   "translationTooltip": "Tarjimaga",
-  "speechToTextTooltip": "Transkript",
   "kickBotWarning": "Pangea Botni chiqarib yuborish bu suhbatdagi botni olib tashlaydi.",
   "refresh": "Yangilash",
-  "messageAnalytics": "Xabarlar tahlili",
   "words": "Soʻzlar",
   "score": "Ball",
   "accuracy": "Aniqlik",
   "points": "Ballar",
-  "noPaymentInfo": "Toʻlov maʼlumotlari shart emas!",
-  "updatePhoneOS": "Qurilma operatsion tizimini yangilashingiz mumkin.",
   "wordsPerMinute": "Har daqiqada soʻzlar",
   "chatCapacity": "Suhbat sigʻimi",
   "roomFull": "Bu xona allaqachon toʻldirilgan.",
   "chatCapacityHasBeenChanged": "Suhbat sigʻimi oʻzgartirildi",
   "chatCapacitySetTooLow": "Suhbat sigʻimi kamida {count} boʻlishi kerak.",
   "chatCapacityExplanation": "Suhbat sigʻimi chatga qoʻshiladigan aʼzolar sonini cheklaydi.",
-  "tooManyRequest": "Juda ko'p so'rov, iltimos, keyinroq urinib ko'ring.",
   "enterNumber": "Iltimos, butun son qiymatini kiriting.",
-  "buildTranslation": "Yuqoridagi tanlovlardan tarjimangizni yarating",
   "practice": "Amaliyot",
-  "noLanguagesSet": "Tillar o'rnatilmagan",
   "speechToTextBody": "Ovozli xabarlar uchun, siz yozuvni va nutqchi so'zlar soni bahosini ko'rishingiz mumkin.",
   "versionNotFound": "Versiya topilmadi",
   "fetchingVersion": "Versiyani olish...",
@@ -3939,15 +3579,11 @@
   "grammar": "Grammatika",
   "contactHasBeenInvitedToTheChat": "Kontakt suhbatga taklif qilindi",
   "inviteChat": "📨 Suhbatga taklif qilish",
-  "chatName": "Suhbat nomi",
-  "reportContentIssueTitle": "Mazmun muammosini xabar qilish",
   "feedback": "İxtiyoriy fikr-mulohaza",
-  "reportContentIssueDescription": "Hoy! AI shaxsiy o‘rganish tajribalarini ta’minlashi mumkin, lekin... shuningdek, xayolotga berilishi mumkin. Iltimos, fikringizni bildiring va biz yana urinib ko‘ramiz.",
   "l2SupportNa": "Mavjud emas",
   "l2SupportAlpha": "Alfa",
   "l2SupportBeta": "Beta",
   "l2SupportFull": "To‘liq",
-  "openVoiceSettings": "Ovoz sozlamalarini ochish",
   "playAudio": "Oynatish",
   "stop": "To‘xtatish",
   "grammarCopyPOSsconj": "Subordinatsiyali bog‘lovchi",
@@ -4173,9 +3809,6 @@
   "grammarCopyTENSE": "Vaqt",
   "grammarCopyVERBFORM": "Fe‘l shakli",
   "grammarCopyCONJTYPE": "Bog‘lovchi turi",
-  "grammarCopySPC": "Maxsuslik",
-  "grammarCopyPARTTYPE": "Qismlash turi",
-  "grammarCopyINTREL": "So‘roq-nisbat",
   "grammarCopyUNKNOWN": "Noma'lum",
   "grammarCopyNUMBERPSOR": "Egasi raqami",
   "grammarCopyPOSS": "Egafor",
@@ -4229,8 +3862,6 @@
   "downloadGroupText": "Guruh matnini yuklab olish",
   "notificationsOn": "Bildirishnomalar yoqilgan",
   "notificationsOff": "Bildirishnomalar o'chirilgan",
-  "createChatAndInviteUsers": "Chat yaratish va foydalanuvchilarni taklif qilish",
-  "updatedNewSpaceDescription": "Kurslar sizga chatlarni birlashtirish va shaxsiy yoki jamoat hamjamiyatlarini qurish imkonini beradi.",
   "joinWithCode": "Kodni kiriting va qo'shiling",
   "enterCodeToJoin": "Qo'shilish uchun kodni kiriting",
   "updateNow": "Hozir yangilash",
@@ -4271,13 +3902,11 @@
   "iWantToLearn": "O'rganishni istayman",
   "pleaseEnterEmail": "Iltimos, haqiqiy elektron pochta manzilini kiriting.",
   "myBaseLanguage": "Mening asosiy tilim",
-  "meaningSectionHeader": "Ma'no:",
   "formSectionHeader": "Chatlarda ishlatiladigan shakllar:",
   "writingExercisesTooltip": "Yozish",
   "listeningExercisesTooltip": "Tinglash",
   "readingExercisesTooltip": "O'qish",
   "meaningNotFound": "Ma'no topilmadi.",
-  "chooseBaseForm": "Asosiy shaklni tanlang",
   "notTheCodeError": "Kechirasiz, bu kod emas!",
   "totalXP": "Jami XP",
   "numLemmas": "Lemmalarning umumiy soni",
@@ -4307,13 +3936,11 @@
   "analyticsNotAvailable": "Foydalanuvchi tahlili mavjud emas",
   "downloading": "Yuklanmoqda...",
   "failedFetchUserAnalytics": "Foydalanuvchi tahlilini yuklab olish muvaffaqiyatsiz bo'ldi",
-  "downloadComplete": "Yuklab olish tugadi!",
   "whatIsTheMorphTag": "'{wordForm}' ning {morphologicalFeature} nima?",
   "dataAvailable": "Ma'lumot mavjudligi",
   "available": "Mavjud",
   "pangeaBotIsFallible": "Pangea Bot ham xato qilishi mumkin!",
   "whatIsMeaning": "'{lemma}' ning ma'nosi nima?",
-  "pickAnEmoji": "'{lemma}' uchun sevimli emoji nima?",
   "chooseLemmaMeaningInstructionsBody": "Xabar ichidagi so'zlar bilan ma'nolarni moslang!",
   "doubleClickToEdit": "Tahrirlash uchun ikki marta bosish.",
   "activityPlannerTitle": "Faoliyat Rejalashtiruvchi",
@@ -4342,7 +3969,6 @@
   "constructUseCorMmDesc": "To'g'ri xabar ma'nosi",
   "constructUseIncMmDesc": "Noto'g'ri xabar ma'nosi",
   "constructUseIgnMmDesc": "E'tiborsiz qilingan xabar ma'nosi",
-  "clickForMeaningActivity": "Ma'no chaqirig'iga o'tish uchun bu yerga bosing",
   "meaning": "Ma'no",
   "chatWith": "{displayname} bilan guruh",
   "clickOnEmailLink": "Iltimos, elektron pochta havolasini bosing va davom eting.\n\nAgar elektron pochta kelmagan bo'lsa, spam papkangizni tekshiring.",
@@ -4382,16 +4008,13 @@
   "home": "Bosh sahifa",
   "join": "Qo‘shilish",
   "readingAssistanceOverviewBody": "Emojilar, audiolar, so‘z ma’nolari va grammatika tushunchalarini moslashtirish uchun mini-o‘yinlar uchun quyidagi tugmalarga bosing. Yoki tafsilotlar uchun har qanday so‘zga bosing.",
-  "levelSummaryPopupTitle": "Level {level} Xulosa",
   "resetInstructionTooltipsTitle": "Ko‘rsatma iplarini tiklash",
   "resetInstructionTooltipsDesc": "Yangi foydalanuvchi uchun ko‘rsatma iplarini ko‘rsatish uchun bosing.",
-  "selectForGrammar": "Faoliyatlar va tafsilotlar uchun grammatika ikonini tanlang.",
   "randomize": "Tasodifiy qilish",
   "clear": "Tozalash",
   "makeYourOwnActivity": "O‘z faoliyatingizni yarating",
   "featuredActivities": "Taqdim etilgan",
   "save": "Saqlash",
-  "startChat": "Suhbatni boshlash",
   "translationProblem": "Tarjimada muammo",
   "askToJoin": "Qo‘shilishni so‘rash",
   "emptyChatWarningTitle": "Suhbat bo‘sh",
@@ -4411,7 +4034,6 @@
   "languageLevelC2Desc": "Men deyarli hamma narsani eshitgan yoki o'qigan holda tushunaman va ravon va aniq ifoda eta olaman.",
   "newVocab": "Yangi so'zlar",
   "newGrammar": "Yangi grammatik tushunchalar",
-  "choosePracticeMode": "Yuqoridagi tugmalardan birini bosib, mashq faoliyatini boshlang",
   "ban": "Ta'qiqlash",
   "unban": "Qayta ruxsat berish",
   "kick": "Olib tashlash",
@@ -4423,7 +4045,6 @@
   "timesUsedIndependently": "Mustaqil ishlatilgan vaqtlari",
   "timesUsedWithAssistance": "Yordam bilan ishlatilgan vaqtlari",
   "shareInviteCode": "Taklif kodini ulash: {code}",
-  "leaderboard": "Boshqaruv jadvali",
   "skipForNow": "Hozircha o'tkazib yuborish",
   "permissions": "Ruxsatlar",
   "spaceChildPermission": "Kim yangi chatlarni bu kursga qo'shishi mumkin",
@@ -4432,7 +4053,6 @@
   "deleteChatDesc": "Siz ushbu suhbatni o'chirmoqchimisiz? Bu barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi.",
   "deleteSpaceDesc": "Kurs va tanlangan har qanday suhbatlar barcha ishtirokchilar uchun o'chiriladi va suhbatdagi barcha xabarlar mashq yoki o'rganish analitikasi uchun mavjud bo'lmaydi. Bu amalni bekor qilish mumkin emas.",
   "launch": "Ishga tushurish",
-  "searchChats": "Suhbatlarni qidirish",
   "maxFifty": "Maksimal 50",
   "configureSpace": "Kursni sozlash",
   "pinMessages": "Xabarlarni pin qilish",
@@ -4457,13 +4077,10 @@
   "canBeFoundViaInvitation": "• taklifnoma orqali",
   "canBeFoundViaCodeOrLink": "• kod yoki havola orqali",
   "canBeFoundViaKnock": "• so'rov yuborish va administrator tasdiqlashi",
-  "youHaveLeveledUp": "Siz darajangizni oshirdingiz!",
   "sendActivities": "Faoliyatlarni yuborish",
-  "groupChat": "Guruh chat",
   "directMessage": "To'g'ridan-to'g'ri xabar",
   "newDirectMessage": "Yangi to'g'ridan-to'g'ri xabar",
   "speakingExercisesTooltip": "So'zlash",
-  "noChatsFoundHereYet": "Hali hech qanday chat topilmadi",
   "duration": "Davomiylik",
   "transcriptionFailed": "Audioni yozib olish muvaffaqiyatsiz bo'ldi",
   "aUserIsKnocking": "1 foydalanuvchi kursingizga qo'shilishni so'rayapti",
@@ -4473,7 +4090,6 @@
   "regenerate": "Qayta yaratish",
   "mySavedActivities": "Mening saqlangan faoliyatlarim",
   "noSavedActivities": "Saqlangan faoliyatlar mavjud emas",
-  "saveActivity": "Ushbu faoliyatni saqlash",
   "failedToPlayVideo": "Video ijro etishda xatolik yuz berdi",
   "done": "Bajarildi",
   "inThisSpace": "Ushbu kursda",
@@ -4491,12 +4107,10 @@
   "errorFetchingDefinition": "Taqrifni olishda xato",
   "errorProcessAnalytics": "Tahlilni qayta ishlashda xato",
   "errorDownloading": "Yuklab olish muvaffaqiyatsiz",
-  "errorFetchingLevelSummary": "Daraja xulosasini olishda xato",
   "errorLoadingSpaceChildren": "Ushbu kurs ichidagi chatlarni yuklashda xato",
   "unexpectedError": "Kutilmagan xato.",
   "pleaseReload": "Iltimos, yangilang va qayta urinib ko'ring.",
   "translationError": "Tarjimada xato",
-  "errorFetchingTranslation": "Tarjimani olishda xato",
   "errorFetchingActivity": "Faoliyatni olishda xato",
   "check": "Tekshirish",
   "unableToFindRoom": "Ushbu kod bilan chat yoki kurs topilmadi. Iltimos, qayta urinib ko'ring.",
@@ -4512,17 +4126,14 @@
   "maximumActivityParticipants": "Har bir faoliyat uchun maksimal {count} ishtirokchi bo'lishi mumkin.",
   "pending": "Kutilmoqda",
   "inactive": "Faol emas",
-  "confirmRole": "Rolni tasdiqlash",
   "openRoleLabel": "OCHIQ",
   "joinedTheActivity": "👋 {username} {role} sifatida qo'shildi",
   "finishedTheActivity": "🎯 {username} bu faoliyatni yakunladi",
-  "archiveToAnalytics": "Qo'shilgan faoliyatlarimga qo'shish",
   "activitySummaryError": "Faoliyatlar haqida ma'lumotlar mavjud emas",
   "requestSummaries": "So'rovlar xulosasi",
   "generatingNewActivities": "Siz bu til juftligining birinchi foydalanuvchisiz! Iltimos, bir daqiqa kuting, biz siz uchun faoliyatlarni tayyorlamoqdamiz.",
   "requestAccessTitle": "Analitika kirish huquqini so'rash?",
   "requestAccessDesc": "Ishtirokchilarning analitikasini ko'rish uchun kirish huquqini so'rashni xohlaysizmi?\n\nAgar ishtirokchilar rozilik bildirsa, siz ularning:\n    • umumiy lug'at\n    • umumiy grammatik tushunchalar\n    • bajarilgan faoliyat sessiyalari\n    • foydalanilgan, to'g'ri va noto'g'ri grammatik tushunchalarni ko'rishingiz mumkin.\n\nSiz ularning:\n    • kurs tashqarisidagi chatdagi xabarlarini\n    • lug'at ro'yxatini ko'rish imkoniyatiga ega bo'lmaysiz.",
-  "requestAccess": "Kirish huquqini so'rash ({count})",
   "analyticsInactiveTitle": "Faol bo'lmagan foydalanuvchilarga so'rov yuborib bo'lmadi",
   "analyticsInactiveDesc": "Bu funksiyani joriy etilganidan buyon tizimga kirmagan faol bo'lmagan foydalanuvchilar sizning so'rovingizni ko'rmaydi.\n\nSo'rov tugmasi ular qaytib kelgach paydo bo'ladi. Siz keyinchalik ularning ismi ostida joylashgan So'rov tugmasini bosib, so'rovni qayta yuborishingiz mumkin.",
   "accessRequestedTitle": "Analitika kirish so'rovi",
@@ -4547,7 +4158,6 @@
   "deleteDesc": "Faqat administratorlar kursni o‘chirishi mumkin. Bu xavfli harakat bo‘lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o‘chiradi. Ehtiyot bo‘ling.",
   "noCourseFound": "Oh, bu kurs uchun reja kerak!\n\nKurs rejalari mavzular va suhbat faoliyatlarining ketma-ketligidir.",
   "additionalParticipants": "+ {num} boshqalar",
-  "directMessages": "To'g'ridan-to'g'ri xabarlar",
   "whatNow": "Endi nima qilish kerak?",
   "chooseNextActivity": "Keyingi faoliyatingizni tanlang!",
   "letsGo": "Boshlaymiz",
@@ -4582,7 +4192,6 @@
   "activityNeedsMembers": "Afsus! Bu faoliyat uchun {num} ta qo'shimcha odam kerak.",
   "inviteFriendsToCourse": "Do'stlarni kursimga taklif qil",
   "subscribeToUnlockActivitySummaries": "Faoliyat xulosalarini ochish uchun obuna bo'ling",
-  "subscribeToUnlockDefinitions": "Tushunchalarni ochish uchun obuna bo'ling",
   "subscribeToUnlockTranscriptions": "Transkripsiyalarni ochish uchun obuna bo'ling",
   "pingSent": "🔔 Kurs uchun ping yuborildi! 🔔",
   "courseTitle": "Kurs nomi",
@@ -4593,7 +4202,6 @@
   "loginToAccount": "Hisobimga kirish",
   "appDescription": "Bir til o'rganing\ndo'stlaringiz bilan yozishayotganda.",
   "languages": "Tilllar",
-  "chooseLanguage": "Ma'lumot uchun tilni tanlang.",
   "startOwn": "O'z faoliyatimni boshlash",
   "joinCourseDesc": "Har bir kursda 8-10 ketma-ket mavzular va turli vazifaga asoslangan til o'rganish faoliyatlari mavjud.",
   "courseCodeHint": "Kurs kodi",
@@ -4646,7 +4254,6 @@
   "feedbackDialogDesc": "Men ham xato qilaman! Menga yaxshilashga yordam beradigan nimadir bormi?",
   "contactHasBeenInvitedToTheCourse": "Aloqa kursga taklif qilindi",
   "inviteFriends": "Do'stlarni taklif qilish",
-  "failedToLoadFeedback": "Fikr-mulohazani yuklab olish muvaffaqiyatsiz bo'ldi.",
   "activityStatsButtonTooltip": "Faoliyat ma'lumotlari",
   "allow": "Ruxsat berish",
   "deny": "Rad etish",
@@ -4876,11 +4483,9 @@
   "zhTWDisplayName": "Xitoy (An'anaviy)",
   "zuDisplayName": "Zulu",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Quyidagi maqsadli so'zlarni yuborish yoki suhbatda mashq qilish orqali ajratib ko'rsating",
   "teacherModeTitle": "O'qituvchi rejimi",
   "teacherModeDesc": "Barcha mavzular va faoliyatlarni ochish uchun o'zgartiring. Faqat kurs administratori.",
   "noSavedActivitiesYet": "Faoliyatlar bu yerda ko'rinadi, ular tugallangach va saqlangach.",
-  "practiceActivityCompleted": "Amaliyot faoliyati tugallandi",
   "changeCourse": "Kursni o'zgartirish",
   "changeCourseDesc": "Bu yerda siz bu kursning rejasini o'zgartirishingiz mumkin.",
   "introChatTitle": "Tanishuvlar chatini yaratish",
@@ -4891,7 +4496,6 @@
   "inProgressActivitiesTitle": "Hozir bo'lib o'tayotgan ({num})",
   "completedActivitiesTitle": "Tugallangan ({num})",
   "pickDifferentActivity": "Boshqa faoliyatni tanlang",
-  "messageLanguageMismatchMessage": "Sizning maqsad tilingiz bu xabar bilan mos kelmaydi. Maqsad tilingizni yangilashni xohlaysizmi?",
   "blockLemmaConfirmation": "Ushbu lug'at so'zi sizning tahlil natijalaringizdan doimiy ravishda o'chiriladi",
   "woman": "Ayol",
   "man": "Erkak",
@@ -4902,7 +4506,6 @@
   "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
   "chatParticipantTooltip": "Bu chatdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
   "inOngoingActivity": "Sizda davom etayotgan faoliyat bor!",
-  "vocabEmoji": "So'z boyligi emoji",
   "requestRegeneration": "Qayta yaratishni so'rash",
   "optionalRegenerateReason": "(Ixtiyoriy) Sabab",
   "emojiSelectedSnackbar": "Siz {lemma} uchun emoji belgiladingiz! Biz bu emojini kelajakdagi amaliyotlarda so'zni ifodalash uchun ishlatamiz.",
@@ -4913,7 +4516,6 @@
   "constructUseBonus": "So'z amaliyoti davomida bonus",
   "practiceVocab": "So'z boyligini mashq qilish",
   "selectMeaning": "Ma'noni tanlang",
-  "selectAudio": "Mos audio tanlang",
   "congratulations": "Tabriklaymiz!",
   "anotherRound": "Yana bir marta",
   "ssoDialogTitle": "Kirishni yakunlash uchun kuting",
@@ -4921,13 +4523,9 @@
   "ssoDialogHelpText": "🤔 Agar yangi yorliqni ko'rmasangiz, iltimos, pop-up bloklovchingizni tekshiring.",
   "disableLanguageToolsTitle": "Til vositalarini o'chirish",
   "disableLanguageToolsDesc": "Avtomatik til yordamini o'chirmoqchimisiz?",
-  "recordingPermissionDenied": "Ruxsat berilmagan. Audio xabarlarni yozib olish uchun yozib olish ruxsatlarini yoqing.",
-  "genericWebRecordingError": "Nimadir noto'g'ri ketdi. Xabarlarni yozib olishda Chrome brauzeridan foydalanishni tavsiya qilamiz.",
   "screenSizeWarning": "Eng yaxshi tajriba uchun ekran o'lchamingizni kengaytiring.",
-  "noActivityRequest": "Hozirgi faoliyat so'rovi yo'q.",
   "activitiesToUnlockTopicTitle": "Keyingi mavzuni ochish uchun faoliyatlar",
   "activitiesToUnlockTopicDesc": "Keyingi kurs mavzusini ochish uchun faoliyatlar sonini belgilang",
-  "mustHave10Words": "Amaliy qilish uchun kamida 10 ta so'z bo'lishi kerak. Do'stingiz yoki Pangea Bot bilan gaplashib ko'ring va ko'proq o'rganing!",
   "botSettings": "Bot sozlamalari",
   "activitySettingsOverrideWarning": "Til va til darajasi faoliyat rejasiga muvofiq belgilanadi",
   "voice": "Ovoz",
@@ -4947,7 +4545,6 @@
   "voiceDropdownTitle": "Pangea Bot ovozi",
   "knockDesc": "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.",
   "joinSpaceOnboardingDesc": "Sizda ochiq kursga taklif kodi yoki havolasi bormi?",
-  "welcomeUser": "Xush kelibsiz {user}",
   "findCourse": "Kurs toping",
   "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
   "publicInviteDescSpace": "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.",
@@ -5062,27 +4659,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@gaTooltip": {
     "type": "String",
     "placeholders": {}
   },
   "@taTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@unTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -5094,27 +4675,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -5123,10 +4688,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -5167,14 +4728,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -5226,19 +4779,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5418,15 +4963,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6532,19 +6069,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6617,19 +6146,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6645,10 +6166,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6661,19 +6178,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6690,14 +6199,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6729,23 +6230,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6828,19 +6317,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6857,10 +6334,6 @@
     "placeholders": {}
   },
   "@l2SupportFull": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7764,18 +7237,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7992,14 +7453,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -8167,10 +7620,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -8188,10 +7637,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -8311,10 +7756,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -8339,14 +7780,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8463,10 +7896,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8638,23 +8067,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8675,10 +8092,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8758,10 +8171,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8810,10 +8219,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8843,10 +8248,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8946,15 +8347,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8967,10 +8360,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -9011,10 +8400,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -9094,10 +8479,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -9111,10 +8492,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -9189,10 +8566,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -9216,10 +8589,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -9239,14 +8608,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -9362,10 +8723,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9520,10 +8877,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9561,10 +8914,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9773,10 +9122,6 @@
     "placeholders": {}
   },
   "@inviteFriends": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
@@ -10692,10 +10037,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@highlightVocabTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@teacherModeTitle": {
     "type": "String",
     "placeholders": {}
@@ -10705,10 +10046,6 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10764,10 +10101,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@blockLemmaConfirmation": {
     "type": "String",
     "placeholders": {}
@@ -10805,10 +10138,6 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10856,10 +10185,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
@@ -10888,19 +10213,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@screenSizeWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
     "type": "String",
     "placeholders": {}
   },
@@ -10909,10 +10222,6 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -10991,14 +10300,6 @@
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "@findCourse": {
     "type": "String",
@@ -11268,7 +10569,6 @@
   "playConversationGames": "Bot, sinfdoshlar va yangi do‘stlar bilan suhbat o‘yinlarini o‘ynang!",
   "jumpIntoConversation": "AI yozish vositalari bilan birinchi kundan suhbatga kirishing!",
   "playPersonalizedGames": "So‘z boyligingiz va grammatika ehtiyojlaringizga moslashtirilgan amaliy o‘yinlarni o‘ynang!",
-  "learnLanguageWhileTexting": "Do‘stlaringizga xabar yozayotganda til o‘rganing!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11290,10 +10590,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

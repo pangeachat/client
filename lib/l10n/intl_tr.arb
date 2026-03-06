@@ -131,18 +131,6 @@
       }
     }
   },
-  "badServerVersionsException": "Ana sunucu aşağıdaki Spec sürümlerini destekliyor:\n{serverVersions}\nAncak bu uygulama yalnızca {supportedVersions} destekliyor",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "banFromChat": "Sohbetten engelle",
   "@banFromChat": {
     "type": "String",
@@ -172,11 +160,6 @@
   },
   "blocked": "Engellendi",
   "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Bot mesajları",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -393,8 +376,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Sohbet bu alana eklendi",
-  "@chatHasBeenAddedToThisSpace": {},
   "chats": "Sohbetler",
   "@chats": {
     "type": "String",
@@ -526,16 +507,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsDisplayName": "Görünen ad içerir",
-  "@containsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsUserName": "Kullanıcı adı içerir",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "contentHasBeenReported": "İçerik, sunucu yöneticilerine bildirildi",
   "@contentHasBeenReported": {
     "type": "String",
@@ -611,33 +582,6 @@
         "type": "String"
       },
       "timeOfDay": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithoutYear": "{day} {month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{day}/{month}/{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
         "type": "String"
       }
     }
@@ -747,11 +691,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "emoteWarnNeedToPick": "Bir ifade kısa kodu ve bir resim seçmeniz gerekiyor!",
-  "@emoteWarnNeedToPick": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emptyChat": "Boş sohbet",
   "@emptyChat": {
     "type": "String",
@@ -801,11 +740,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "enterYourHomeserver": "Ana sunucunuzu girin",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "errorObtainingLocation": "Konum alınırken hata oluştu: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -852,11 +786,6 @@
   },
   "fromTheInvitation": "Davetten",
   "@fromTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Yeni odaya git",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -928,11 +857,6 @@
   },
   "id": "Kimlik",
   "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Kimlik",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -1081,11 +1005,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "license": "Lisans",
-  "@license": {
-    "type": "String",
-    "placeholders": {}
-  },
   "lightTheme": "Açık",
   "@lightTheme": {
     "type": "String",
@@ -1136,11 +1055,6 @@
   },
   "logout": "Oturumu kapat",
   "@logout": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Üye değişiklikleri",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1251,11 +1165,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "notificationsEnabledForThisAccount": "Bu hesap için bildirimler etkinleştirildi",
-  "@notificationsEnabledForThisAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
   "numUsersTyping": "{count} kullanıcı yazıyor…",
   "@numUsersTyping": {
     "type": "String",
@@ -1352,11 +1261,6 @@
   },
   "passwordRecovery": "Parola kurtarma",
   "@passwordRecovery": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "people": "İnsanlar",
-  "@people": {
     "type": "String",
     "placeholders": {}
   },
@@ -1501,11 +1405,6 @@
       }
     }
   },
-  "removeDevice": "Aygıtı kaldır",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Sohbet engelini kaldır",
   "@unbanFromChat": {
     "type": "String",
@@ -1561,15 +1460,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "seenByUser": "{username} tarafından görüldü",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
   "send": "Gönder",
   "@send": {
     "type": "String",
@@ -1601,16 +1491,6 @@
   },
   "sendMessages": "Mesajları gönder",
   "@sendMessages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendOriginal": "Orijinali gönder",
-  "@sendOriginal": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "sendSticker": "Çıkartma gönder",
-  "@sendSticker": {
     "type": "String",
     "placeholders": {}
   },
@@ -1678,21 +1558,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "setCustomEmotes": "Özel ifadeler ayarla",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Davet bağlantısı ayarla",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setPermissionsLevel": "İzin seviyesini ayarla",
-  "@setPermissionsLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "setStatus": "Durumu ayarla",
   "@setStatus": {
     "type": "String",
@@ -1724,11 +1589,6 @@
   },
   "showPassword": "Parolayı göster",
   "@showPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "singlesignon": "Tek oturum açma",
-  "@singlesignon": {
     "type": "String",
     "placeholders": {}
   },
@@ -1802,21 +1662,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleFavorite": "Sık Kullanılanlara Ekle/Çıkar",
-  "@toggleFavorite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleMuted": "Sessize Al/Sessizden Çıkar",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "Okundu/Okunmadı Olarak İşaretle",
-  "@toggleUnread": {
-    "type": "String",
-    "placeholders": {}
-  },
   "tooManyRequestsWarning": "Çok fazla istek. Lütfen daha sonra tekrar deneyin!",
   "@tooManyRequestsWarning": {
     "type": "String",
@@ -1882,15 +1727,6 @@
   "@unpin": {
     "type": "String",
     "placeholders": {}
-  },
-  "unreadChats": "{unreadCount, plural, =1{1 okunmamış sohbet} other{{unreadCount} okunmamış sohbet}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
   },
   "userAndOthersAreTyping": "{username} ve {count} diğer kişi yazıyor…",
   "@userAndOthersAreTyping": {
@@ -2128,8 +1964,6 @@
   "@openGallery": {},
   "removeFromSpace": "Alandan kaldır",
   "@removeFromSpace": {},
-  "addToSpaceDescription": "Bu sohbeti eklemek için bir alan seçin.",
-  "@addToSpaceDescription": {},
   "start": "Başla",
   "@start": {},
   "commandHint_clearcache": "Önbelleği temizleyin",
@@ -2156,17 +1990,6 @@
   "@openVideoCamera": {
     "type": "String",
     "placeholders": {}
-  },
-  "publish": "Yayınla",
-  "@publish": {},
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
   },
   "dismiss": "Kapat",
   "@dismiss": {},
@@ -2208,19 +2031,6 @@
   "@experimentalVideoCalls": {},
   "emailOrUsername": "E-posta veya kullanıcı adı",
   "@emailOrUsername": {},
-  "switchToAccount": "{number}. hesaba geç",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "nextAccount": "Sonraki hesap",
-  "@nextAccount": {},
-  "previousAccount": "Önceki hesap",
-  "@previousAccount": {},
   "widgetJitsi": "Jitsi Meet",
   "@widgetJitsi": {},
   "widgetCustom": "Özel",
@@ -2308,8 +2118,6 @@
   },
   "storeInAppleKeyChain": "Apple KeyChain'de sakla",
   "@storeInAppleKeyChain": {},
-  "pleaseEnterRecoveryKey": "Lütfen kurtarma anahtarınızı girin:",
-  "@pleaseEnterRecoveryKey": {},
   "recoveryKeyLost": "Kurtarma anahtarı kayıp mı?",
   "@recoveryKeyLost": {},
   "pleaseEnterRecoveryKeyDescription": "Eski mesajlarınızın kilidini açmak için lütfen önceki bir oturumda oluşturulan kurtarma anahtarınızı girin. Kurtarma anahtarınız parolanız DEĞİLDİR.",
@@ -2338,22 +2146,10 @@
   },
   "dehydrate": "Oturumu dışa aktar ve aygıtı sil",
   "@dehydrate": {},
-  "dehydrateTorLong": "TOR kullanıcıları için, pencereyi kapatmadan önce oturumu dışa aktarmaları tavsiye edilir.",
-  "@dehydrateTorLong": {},
-  "dehydrateTor": "TOR Kullanıcıları: Oturumu dışa aktar",
-  "@dehydrateTor": {},
-  "hydrateTor": "TOR Kullanıcıları: Dışa aktarılan oturumu içe aktar",
-  "@hydrateTor": {},
   "hydrate": "Yedekleme dosyasından geri yükle",
   "@hydrate": {},
-  "indexedDbErrorTitle": "Gizli mod sorunları",
-  "@indexedDbErrorTitle": {},
   "dehydrateWarning": "Bu eylem geri alınamaz. Yedekleme dosyasını güvenli bir şekilde sakladığınızdan emin olun.",
   "@dehydrateWarning": {},
-  "hydrateTorLong": "TOR'da en son oturumunuzu dışa aktardınız mı? Hızlıca içe aktarın ve sohbete devam edin.",
-  "@hydrateTorLong": {},
-  "indexedDbErrorLong": "Mesaj saklama özelliği ne yazık ki öntanımlı olarak gizli modda etkin değildir.\nLütfen\n - about:config sayfasına gidin ve\n - dom.indexedDB.privateBrowsing.enabled seçeneğini true olarak ayarlayın\nAksi takdirde FluffyChat çalıştırılamaz.",
-  "@indexedDbErrorLong": {},
   "user": "Kullanıcı",
   "@user": {},
   "custom": "Özel",
@@ -2379,43 +2175,16 @@
   "@noKeyForThisMessage": {},
   "screenSharingTitle": "ekran paylaşımı",
   "@screenSharingTitle": {},
-  "callingPermissions": "Arama izinleri",
-  "@callingPermissions": {},
-  "callingAccountDetails": "FluffyChat'in yerel android telefon uygulamasını kullanmasına izin verir.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Üstte görün",
-  "@appearOnTop": {},
-  "enterSpace": "Alana gir",
-  "@enterSpace": {},
-  "enterRoom": "Odaya gir",
-  "@enterRoom": {},
   "allSpaces": "Tüm alanlar",
   "@allSpaces": {},
-  "otherCallingPermissions": "Mikrofon, kamera ve diğer FluffyChat izinleri",
-  "@otherCallingPermissions": {},
   "foregroundServiceRunning": "Bu bildirim, ön plan hizmeti çalışırken görünür.",
   "@foregroundServiceRunning": {},
-  "callingAccount": "Arama hesabı",
-  "@callingAccount": {},
-  "appearOnTopDetails": "Uygulamanın üstte görünmesine izin verir (Fluffychat'ı zaten bir arama hesabı olarak ayarladıysanız gerekli değildir)",
-  "@appearOnTopDetails": {},
   "newGroup": "Yeni grup",
   "@newGroup": {},
   "newSpace": "Yeni alan",
   "@newSpace": {},
   "screenSharingDetail": "Ekranınızı FuffyChat'te paylaşıyorsunuz",
   "@screenSharingDetail": {},
-  "numChats": "{number} sohbet",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
-  "hideUnimportantStateEvents": "Önemsiz durum etkinliklerini gizle",
-  "@hideUnimportantStateEvents": {},
   "doNotShowAgain": "Tekrar gösterme",
   "@doNotShowAgain": {},
   "googlyEyesContent": "{senderName} size şaşkın gözler gönderiyor",
@@ -2460,8 +2229,6 @@
       }
     }
   },
-  "startFirstChat": "İlk sohbetinizi başlatın",
-  "@startFirstChat": {},
   "newSpaceDescription": "Alanlar, sohbetlerinizi birleştirmenize ve özel veya genel topluluklar oluşturmanıza olanak tanır.",
   "@newSpaceDescription": {},
   "encryptThisChat": "Bu sohbeti şifrele",
@@ -2497,19 +2264,10 @@
   "@jump": {},
   "openLinkInBrowser": "Bağlantıyı tarayıcıda aç",
   "@openLinkInBrowser": {},
-  "allRooms": "Tüm Grup Sohbetleri",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
   "reportErrorDescription": "😭 Olamaz. Bir şeyler yanlış gitti. İsterseniz bu hatayı geliştiricilere bildirebilirsiniz.",
   "@reportErrorDescription": {},
   "report": "bildir",
   "@report": {},
-  "signInWithPassword": "Parola ile oturum aç",
-  "@signInWithPassword": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Lütfen daha sonra tekrar deneyin veya farklı bir sunucu seçin.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "notAnImage": "Bir resim dosyası değil.",
   "@notAnImage": {},
   "importNow": "Şimdi içe aktar",
@@ -2530,14 +2288,8 @@
   "@createGroup": {},
   "shareInviteLink": "Davet bağlantısını paylaş",
   "@shareInviteLink": {},
-  "profileNotFound": "Kullanıcı sunucuda bulunamadı. Belki bir bağlantı sorunu vardır veya kullanıcı mevcut değildir.",
-  "@profileNotFound": {},
-  "setTheme": "Temayı ayarla:",
-  "@setTheme": {},
   "setColorTheme": "Renk temasını ayarla:",
   "@setColorTheme": {},
-  "inviteContactToGroupQuestion": "{contact} kişisini \"{groupName}\" sohbetine davet etmek istiyor musunuz?",
-  "@inviteContactToGroupQuestion": {},
   "tryAgain": "Tekrar deneyin",
   "@tryAgain": {},
   "redactMessageDescription": "Bu mesaj bu görüşmedeki herkes için düzenlenecek. Bu işlem geri alınamaz.",
@@ -2546,8 +2298,6 @@
   "@optionalRedactReason": {},
   "invite": "Davet et",
   "@invite": {},
-  "addChatDescription": "Sohbet açıklaması ekle...",
-  "@addChatDescription": {},
   "chatPermissions": "Sohbet izinleri",
   "@chatPermissions": {},
   "chatDescription": "Sohbet açıklaması",
@@ -2585,8 +2335,6 @@
   "@directChat": {},
   "inviteGroupChat": "📨 Grup sohbetine davet et",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Gizli sohbete davet et",
-  "@invitePrivateChat": {},
   "emoteKeyboardNoRecents": "Son kullanılan ifadeler burada görünecek...",
   "@emoteKeyboardNoRecents": {
     "type": "String",
@@ -2668,14 +2416,6 @@
   "@databaseMigrationTitle": {},
   "databaseMigrationBody": "Lütfen bekleyin. Bu biraz zaman alabilir.",
   "@databaseMigrationBody": {},
-  "youInvitedToBy": "📩 Bağlantı aracılığıyla davet edildiniz:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
-        "type": "String"
-      }
-    }
-  },
   "pleaseEnterYourCurrentPassword": "Lütfen geçerli parolanızı girin",
   "@pleaseEnterYourCurrentPassword": {},
   "pleaseChooseAStrongPassword": "Lütfen güçlü bir parola seçin",
@@ -2691,24 +2431,10 @@
       }
     }
   },
-  "publicLink": "Herkese açık bağlantı",
-  "@publicLink": {},
   "joinSpace": "Alana katıl",
   "@joinSpace": {},
   "newPassword": "Yeni parola",
   "@newPassword": {},
-  "databaseBuildErrorBody": "SQlite veri tabanı oluşturulamadı. Uygulama şimdilik eski veri tabanını kullanmaya çalışıyor. Lütfen bu hatayı {url} adresinde geliştiricilere bildirin. Hata mesajı: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "sessionLostBody": "Oturumunuz kayboldu. Lütfen bu hatayı {url} adresinde geliştiricilere bildirin. Hata mesajı: {error}",
   "@sessionLostBody": {
     "type": "String",
@@ -2731,11 +2457,6 @@
   "@verifyOtherDevice": {},
   "presencesToggle": "Diğer kullanıcıların durum mesajlarını göster",
   "@presencesToggle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "presenceStyle": "Bulunma:",
-  "@presenceStyle": {
     "type": "String",
     "placeholders": {}
   },
@@ -2763,22 +2484,8 @@
   "@hideRedactedMessages": {},
   "hideRedactedMessagesBody": "Birisi bir mesajı düzenlerse, bu mesaj artık sohbette görünmeyecektir.",
   "@hideRedactedMessagesBody": {},
-  "hideMemberChangesInPublicChats": "Herkese açık sohbetlerde üye değişikliklerini gizle",
-  "@hideMemberChangesInPublicChats": {},
-  "hideMemberChangesInPublicChatsBody": "Okunabilirliği artırmak için birisi herkese açık bir sohbete katıldığında veya sohbetten ayrıldığında sohbet zaman çizelgesinde gösterme.",
-  "@hideMemberChangesInPublicChatsBody": {},
   "passwordRecoverySettings": "Parola kurtarma ayarları",
   "@passwordRecoverySettings": {},
-  "userWouldLikeToChangeTheChat": "{user} sohbete katılmak istiyor.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "noPublicLinkHasBeenCreatedYet": "Henüz herkese açık bir bağlantı oluşturulmadı",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "knock": "Tıklat",
   "@knock": {},
   "knocking": "Tıklat",
@@ -2814,8 +2521,6 @@
   "@overview": {},
   "decline": "Reddet",
   "@decline": {},
-  "notifyMeFor": "Beni bilgilendir",
-  "@notifyMeFor": {},
   "chatCanBeDiscoveredViaSearchOnServer": "Sohbet {server} üzerinde aranarak keşfedilebilir",
   "@chatCanBeDiscoveredViaSearchOnServer": {
     "type": "String",
@@ -2829,15 +2534,6 @@
   "@leaveEmptyToClearStatus": {},
   "select": "Seç",
   "@select": {},
-  "minimumPowerLevel": "{level} en düşük güç seviyesidir.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "passwordsDoNotMatch": "Parolalar eşleşmiyor",
   "@passwordsDoNotMatch": {},
   "passwordIsWrong": "Girdiğiniz parola yanlış",
@@ -2846,15 +2542,6 @@
   "@publicChatAddresses": {},
   "createNewAddress": "Yeni adres oluştur",
   "@createNewAddress": {},
-  "forwardMessageTo": "Mesajlar {roomName} kişisine iletilsin mi?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
-        "type": "String"
-      }
-    }
-  },
   "acceptedKeyVerification": "{sender} anahtar doğrulamayı kabul etti",
   "@acceptedKeyVerification": {
     "type": "String",
@@ -2966,18 +2653,6 @@
   "alwaysUse24HourFormat": "false",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
-  },
-  "countChatsAndCountParticipants": "{chats} sohbet ve {participants} katılımcı",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
   },
   "noMoreChatsFound": "Başka sohbet bulunamadı...",
   "@noMoreChatsFound": {},
@@ -3167,8 +2842,6 @@
       }
     }
   },
-  "welcomeText": "Hey Hey 👋 Karşınızda FluffyChat. https://matrix.org ile uyumlu herhangi bir homeserver'a giriş yapabilirsiniz. Ve herkesle konuşabilirsiniz. Bu koca bir merkeziyetsiz mesajlaşma ağı!",
-  "@welcomeText": {},
   "setCustomPermissionLevel": "Özel izin düzeyi ayarla",
   "@setCustomPermissionLevel": {},
   "setPermissionsLevelDescription": "Lütfen aşağıdan önceden tanımlanmış bir rol seçin veya 0 ile 100 arasında bir özel izin seviyesi girin.",
@@ -3277,25 +2950,16 @@
   "writeAMessageLangCodes": "{l1} veya {l2} ile yaz...",
   "requests": "İstekler",
   "holdForInfo": "Kelime bilgisi için tıklayıp basılı tut.",
-  "greenFeedback": "Benim koyacağım bu olurdu!",
-  "yellowFeedback": "Hm, deneyebilir ve işe yarayıp yaramadığını görebilirsin! Bu kelimeyi kullanmak için tekrar tıkla.",
-  "redFeedback": "Sanmıyorum ki bu doğru...",
   "itInstructionsTitle": "Çeviri konusunda yardımcı olabilirim!",
   "itInstructionsBody": "Kelime bilgisi için seçimlere tıklayıp basılı tutabilirsin.",
   "gaTooltip": "Dilbilgisi yardımıyla L2 kullanımı",
   "taTooltip": "Çeviri yardımıyla L2 kullanımı",
-  "unTooltip": "Diğer",
   "interactiveTranslatorSliderHeader": "Etkileşimli Çevirmen",
   "interactiveGrammarSliderHeader": "Etkileşimli Dilbilgisi Denetleyici",
-  "interactiveTranslatorNotAllowed": "Devre dışı",
-  "interactiveTranslatorAllowed": "Öğrenci Seçimi",
   "interactiveTranslatorRequired": "Gerekli",
-  "notYetSet": "Henüz ayarlanmadı",
   "waTooltip": "Yardım olmadan L2 kullanımı",
-  "languageSettings": "Dil Ayarları",
   "interactiveTranslator": "Çeviri yardımı",
   "noIdenticalLanguages": "Lütfen farklı temel ve hedef diller seçin",
-  "searchBy": "Ülke ve dillerle ara",
   "joinWithClassCode": "Derse katıl",
   "languageLevelPreA1": "Acemi Düşük (Pre A1)",
   "languageLevelA1": "Acemi Orta (A1)",
@@ -3306,8 +2970,6 @@
   "languageLevelC2": "Üst Düzey (C2)",
   "changeTheNameOfTheClass": "İsmi değiştir",
   "changeTheNameOfTheChat": "Sohbetin adını değiştir",
-  "sorryNoResults": "Üzgünüz, sonuç yok.",
-  "ignoreInThisText": "Yoksay",
   "needsItMessage": "Bekle, bu {targetLanguage} değil! Çeviri yardımına ihtiyacın var mı?",
   "countryInformation": "Ülkem",
   "targetLanguage": "Hedef Dil",
@@ -3320,10 +2982,8 @@
   "publicProfileDesc": "Açılırsa, diğer kullanıcıların profilinizi küresel arama çubuğunda bulmasına ve sohbet istekleri göndermesine olanak tanırsınız. Bu noktada, isteği kabul etmeyi veya reddetmeyi seçebilirsiniz.",
   "errorDisableIT": "Çeviri yardımı devre dışı bırakıldı.",
   "errorDisableIGC": "Dilbilgisi yardımı devre dışı bırakıldı.",
-  "errorDisableLanguageAssistance": "Çeviri ve dilbilgisi yardımı devre dışı.",
   "errorDisableITUserDesc": "Çeviri yardımı ayarlarını güncellemek için buraya tıklayın",
   "errorDisableIGCUserDesc": "Dilbilgisi yardımı ayarlarını güncellemek için buraya tıklayın",
-  "errorDisableLanguageAssistanceUserDesc": "Çeviri ve dilbilgisi yardımı ayarlarını güncellemek için buraya tıklayın",
   "errorDisableITClassDesc": "Bu sohbetin bulunduğu kursta çeviri yardımı devre dışı bırakılmıştır.",
   "errorDisableIGCClassDesc": "Bu sohbetin bulunduğu kursta dilbilgisi yardımı devre dışı bırakılmıştır.",
   "error405Title": "Diller ayarlanmamış",
@@ -3368,9 +3028,7 @@
   "notAvailable": "Mevcut Değil",
   "taAndGaTooltip": "Çeviri yardımı ve dilbilgisi yardımı ile L2 kullanımı",
   "definitionsToolName": "Kelime Tanımları",
-  "messageTranslationsToolName": "Mesaj Çevirileri",
   "definitionsToolDescription": "Etkinleştirildiğinde, mavi ile altı çizili kelimelere tıklayarak tanımlarına ulaşabilirsiniz. Tanımlara erişmek için mesajlara tıklayın.",
-  "translationsToolDescrption": "Etkinleştirildiğinde, bir mesajı ve çeviri simgesine tıklayarak temel dilinizde bir mesaj görebilirsiniz.",
   "welcomeBack": "Tekrar hoş geldiniz! 2023-2024 pilotunun bir parçasıysanız, lütfen özel pilot aboneliğiniz için bizimle iletişime geçin. Bir öğretmen veya kurumunuzun sınıfınız için lisans satın aldıysa, öğretmen aboneliğiniz için bizimle iletişime geçin.",
   "downloadTxtFile": "Metin Dosyası İndir",
   "downloadCSVFile": "CSV Dosyası İndir",
@@ -3644,10 +3302,8 @@
   "definitionDefaultPrompt": "Bu kelimenin anlamı nedir?",
   "practiceDefaultPrompt": "En iyi cevap nedir?",
   "correctionDefaultPrompt": "En iyi yerine koyma nedir?",
-  "acceptSelection": "Düzeltmeyi Kabul Et",
   "why": "Neden?",
   "definition": "Tanım",
-  "exampleSentence": "Örnek Cümle",
   "reportToTeacher": "Bu mesajı kime bildirmek istiyorsunuz?",
   "reportMessageTitle": "{reportingUserId} kullanıcısı, {roomName} sohbetinde {reportedUserId} kullanıcısının mesajını bildirdi",
   "reportMessageBody": "Mesaj: {reportedMessage}\nNeden: {reason}",
@@ -3659,27 +3315,20 @@
   "clickToManageSubscription": "Aboneliğinizi yönetmek için buraya tıklayın.",
   "signUp": "Kayıt Ol",
   "pleaseChooseAtLeastChars": "Lütfen en az {min} karakter seçin.",
-  "noEmailWarning": "Lütfen geçerli bir e-posta adresi girin. Aksi takdirde şifrenizi sıfırlayamazsınız. İsterseniz, devam etmek için tekrar butonuna dokunun.",
   "pleaseEnterValidEmail": "Lütfen geçerli bir e-posta adresi girin.",
   "pleaseChooseAUsername": "Lütfen bir kullanıcı adı seçin",
-  "define": "Tanımla",
   "listen": "Dinle",
   "trialPeriodExpired": "Deneme süreniz sona erdi",
   "translations": "çeviriler",
-  "messageAudio": "mesaj sesi",
   "definitions": "tanımlar",
   "subscribedToUnlockTools": "Etkileşimli çeviri ve dilbilgisi kontrolü, ses oynatma, kişiselleştirilmiş pratik aktiviteleri ve öğrenme analizlerini açmak için abone olun!",
   "translationTooltip": "Çeviri",
-  "speechToTextTooltip": "Transkript",
   "kickBotWarning": "Pangea Bot'u uzaklaştırmak bu sohbetteki sohbet botunu kaldıracaktır.",
   "refresh": "Yenile",
-  "messageAnalytics": "Mesaj Analitiği",
   "words": "Kelimeler",
   "score": "Puan",
   "accuracy": "Doğruluk",
   "points": "Puanlar",
-  "noPaymentInfo": "Ödeme bilgisi gerekmez!",
-  "updatePhoneOS": "Cihazınızın işletim sistemi sürümünü güncellemeniz gerekebilir.",
   "wordsPerMinute": "Dakikada kelime",
   "tooltipInstructionsTitle": "Bu ne işe yarar bilmiyor musun?",
   "tooltipInstructionsMobileBody": "Öğe üzerine basılı tutarak ipuçlarını görüntüleyin.",
@@ -3689,11 +3338,8 @@
   "chatCapacityHasBeenChanged": "Sohbet kapasitesi değiştirildi",
   "chatCapacitySetTooLow": "Sohbet kapasitesi en az {count} olmalıdır.",
   "chatCapacityExplanation": "Sohbet kapasitesi, bir sohbette izin verilen üye sayısını sınırlar.",
-  "tooManyRequest": "Çok fazla istek var, lütfen daha sonra tekrar deneyin.",
   "enterNumber": "Lütfen tam sayı değeri girin.",
-  "buildTranslation": "Yukarıdaki seçeneklerden çevirinizi oluşturun",
   "practice": "Pratik yap",
-  "noLanguagesSet": "Dil ayarı yapılmamış",
   "speechToTextBody": "Sesli mesajlar için, hem transkripti görebilir hem de konuşmacının Dakika Başına Kelime (WPM) puanını görebilirsiniz.",
   "versionNotFound": "Sürüm Bulunamadı",
   "fetchingVersion": "Sürüm alınmaya çalışılıyor...",
@@ -3712,10 +3358,7 @@
   "grammar": "Dilbilgisi",
   "contactHasBeenInvitedToTheChat": "İletişim sohbete davet edildi",
   "inviteChat": "📨 Sohbet Davet Et",
-  "chatName": "Sohbet Adı",
-  "reportContentIssueTitle": "İçerik Sorunu Bildir",
   "feedback": "İsteğe bağlı geri bildirim",
-  "reportContentIssueDescription": "Aman Tanrım! Yapay zeka kişiselleştirilmiş öğrenme deneyimleri sağlayabilir ama... aynı zamanda halüsinasyon da görebilir. Lütfen herhangi bir geri bildiriminizi sağlayın, tekrar deneyelim.",
   "clickTheWordAgainToDeselect": "Seçili kelimeyi kaldırmak için tekrar tıklayın.",
   "l2SupportNa": "Mevcut Değil",
   "l2SupportAlpha": "Alfa",
@@ -3723,7 +3366,6 @@
   "l2SupportFull": "Tam",
   "missingVoiceTitle": "Ses Eksik",
   "voiceNotAvailable": "Bu dil için bir ses yüklenmemiş.",
-  "openVoiceSettings": "Ses ayarlarını aç",
   "playAudio": "Çal",
   "stop": "Durdur",
   "grammarCopyPOSsconj": "Bağlaç",
@@ -3946,9 +3588,6 @@
   "grammarCopyTENSE": "Zaman",
   "grammarCopyVERBFORM": "Fiil Formu",
   "grammarCopyCONJTYPE": "Bağlaç Türü",
-  "grammarCopySPC": "Özellik",
-  "grammarCopyPARTTYPE": "Kısmi Tür",
-  "grammarCopyINTREL": "Soru-İlişki",
   "grammarCopyUNKNOWN": "Bilinmeyen",
   "grammarCopyNUMBERPSOR": "Sahibin Numarası",
   "grammarCopyPOSS": "İyelik",
@@ -4002,8 +3641,6 @@
   "downloadGroupText": "Grup metnini indir",
   "notificationsOn": "Bildirimler açık",
   "notificationsOff": "Bildirimler kapalı",
-  "createChatAndInviteUsers": "Sohbet oluştur ve kullanıcıları davet et",
-  "updatedNewSpaceDescription": "Kurslar, sohbetlerinizi pekiştirmenize ve özel veya genel topluluklar oluşturmanıza olanak tanır.",
   "joinWithCode": "Kodu kullanarak katıl",
   "enterCodeToJoin": "Katılmak için kodu girin",
   "updateNow": "Şimdi Güncelle",
@@ -4044,13 +3681,11 @@
   "iWantToLearn": "Öğrenmek istiyorum",
   "pleaseEnterEmail": "Lütfen geçerli bir e-posta adresi girin.",
   "myBaseLanguage": "Temel dilim",
-  "meaningSectionHeader": "Anlam:",
   "formSectionHeader": "Sohbetlerde kullanılan biçimler:",
   "writingExercisesTooltip": "Yazma",
   "listeningExercisesTooltip": "Dinleme",
   "readingExercisesTooltip": "Okuma",
   "meaningNotFound": "Anlam bulunamadı.",
-  "chooseBaseForm": "Temel formu seçin",
   "notTheCodeError": "Üzgünüz, bu kod değil!",
   "totalXP": "Toplam XP",
   "numLemmas": "Toplam lemma sayısı",
@@ -4080,13 +3715,11 @@
   "analyticsNotAvailable": "Kullanıcı analitiği mevcut değil",
   "downloading": "İndiriliyor...",
   "failedFetchUserAnalytics": "Kullanıcı analitiği indirilemedi",
-  "downloadComplete": "İndirme tamamlandı!",
   "whatIsTheMorphTag": "{wordForm}'un {morphologicalFeature} nedir?",
   "dataAvailable": "Veri kullanılabilirliği",
   "available": "Mevcut",
   "pangeaBotIsFallible": "Pangea Bot da hata yapabilir!",
   "whatIsMeaning": "{lemma} ne anlama geliyor?",
-  "pickAnEmoji": "{lemma} için en sevdiğiniz emoji nedir?",
   "chooseLemmaMeaningInstructionsBody": "Mesajdaki kelimelerle anlamları eşleştir!",
   "doubleClickToEdit": "Düzenlemek için çift tıklayın.",
   "activityPlannerTitle": "Etkinlik Planlayıcı",
@@ -4115,7 +3748,6 @@
   "constructUseCorMmDesc": "Doğru mesaj anlamı",
   "constructUseIncMmDesc": "Yanlış mesaj anlamı",
   "constructUseIgnMmDesc": "Yoksayılmış mesaj anlamı",
-  "clickForMeaningActivity": "Anlam Mücadelesi için buraya tıklayın",
   "meaning": "Anlam",
   "chatWith": "{displayname} ile Grup",
   "clickOnEmailLink": "Lütfen e-postadaki bağlantıya tıklayın ve devam edin.\n\nE-posta gelmediyse spam klasörünüzü kontrol edin.",
@@ -4155,16 +3787,13 @@
   "home": "Ana Sayfa",
   "join": "Katıl",
   "readingAssistanceOverviewBody": "Emojiler, sesler, kelime anlamları ve dilbilgisi kavramlarını eşleştirmek için aşağıdaki düğmelere tıklayın. Veya detaylar için herhangi bir kelimeye tıklayın.",
-  "levelSummaryPopupTitle": "Seviye {level} Özeti",
   "resetInstructionTooltipsTitle": "Talimat ipuçlarını sıfırla",
   "resetInstructionTooltipsDesc": "Yeni bir kullanıcı gibi talimat ipuçlarını göstermek için tıklayın.",
-  "selectForGrammar": "Etkinlikler ve detaylar için bir dilbilgisi simgesi seçin.",
   "randomize": "Rastgeleleştir",
   "clear": "Temizle",
   "makeYourOwnActivity": "Kendi etkinliğinizi oluşturun",
   "featuredActivities": "Öne çıkanlar",
   "save": "Kaydet",
-  "startChat": "Sohbet başlat",
   "translationProblem": "Çeviri sorunu",
   "askToJoin": "Katılmak için sor",
   "emptyChatWarningTitle": "Sohbet boş",
@@ -4184,7 +3813,6 @@
   "languageLevelC2Desc": "Neredeyse duyduğum veya okuduğum her şeyi anlayabilir ve kendimi akıcı ve kesin bir şekilde ifade edebilirim.",
   "newVocab": "Yeni kelime hazinesi",
   "newGrammar": "Yeni dilbilgisi kavramları",
-  "choosePracticeMode": "Bir uygulama etkinliği başlatmak için yukarıdaki düğmelerden birine tıklayın",
   "ban": "Yasakla",
   "unban": "Yasaklamayı Kaldır",
   "kick": "At",
@@ -4196,7 +3824,6 @@
   "timesUsedIndependently": "Bağımsız kullanımlar",
   "timesUsedWithAssistance": "Yardımla kullanımlar",
   "shareInviteCode": "Davet kodunu paylaş: {code}",
-  "leaderboard": "Liderlik Tablosu",
   "skipForNow": "Şimdilik atla",
   "permissions": "İzinler",
   "spaceChildPermission": "Bu derse yeni sohbetler ekleyebilecek kişiler",
@@ -4205,7 +3832,6 @@
   "deleteChatDesc": "Bu sohbeti silmek istediğinizden emin misiniz? Tüm katılımcılar için silinecek ve sohbet içindeki tüm mesajlar artık pratik veya öğrenme analitiği için kullanılabilir olmayacaktır.",
   "deleteSpaceDesc": "Ders ve seçilen sohbetler tüm katılımcılar için silinecek ve sohbet içindeki tüm mesajlar artık pratik veya öğrenme analitiği için kullanılabilir olmayacaktır. Bu işlem geri alınamaz.",
   "launch": "Başlat",
-  "searchChats": "Sohbetleri ara",
   "maxFifty": "Maksimum 50",
   "configureSpace": "Dersi yapılandır",
   "pinMessages": "Mesajları sabitle",
@@ -4230,13 +3856,10 @@
   "canBeFoundViaInvitation": "• davet",
   "canBeFoundViaCodeOrLink": "• kod veya bağlantı",
   "canBeFoundViaKnock": "• katılma isteği ve yönetici onayı",
-  "youHaveLeveledUp": "Seviyeniz yükseldi!",
   "sendActivities": "Aktiviteleri gönder",
-  "groupChat": "Grup Sohbeti",
   "directMessage": "Özel Mesaj",
   "newDirectMessage": "Yeni özel mesaj",
   "speakingExercisesTooltip": "Konuşma",
-  "noChatsFoundHereYet": "Burada henüz sohbet bulunamadı",
   "duration": "Süre",
   "transcriptionFailed": "Sesin yazıya dökülmesi başarısız oldu",
   "aUserIsKnocking": "1 kullanıcı kursunuza katılmak istiyor",
@@ -4246,7 +3869,6 @@
   "regenerate": "Yeniden oluştur",
   "mySavedActivities": "Kaydedilen Aktivitelerim",
   "noSavedActivities": "Kaydedilen aktivite yok",
-  "saveActivity": "Bu aktiviteyi kaydet",
   "failedToPlayVideo": "Videoyu oynatamadı",
   "done": "Tamamlandı",
   "inThisSpace": "Bu kursta",
@@ -4264,12 +3886,10 @@
   "errorFetchingDefinition": "Tanım alınamadı",
   "errorProcessAnalytics": "Analitikler işlenemedi",
   "errorDownloading": "İndirme başarısız oldu",
-  "errorFetchingLevelSummary": "Seviye özetleri alınamadı",
   "errorLoadingSpaceChildren": "Bu kurs içindeki sohbetler yüklenemedi",
   "unexpectedError": "Beklenmedik hata.",
   "pleaseReload": "Lütfen yeniden yükleyin ve tekrar deneyin.",
   "translationError": "Çeviri hatası",
-  "errorFetchingTranslation": "Çeviri alınamadı",
   "errorFetchingActivity": "Etkinlik alınamadı",
   "check": "Kontrol et",
   "unableToFindRoom": "Bu kodla eşleşen sohbet veya kurs bulunamadı. Lütfen tekrar deneyin.",
@@ -4285,17 +3905,14 @@
   "maximumActivityParticipants": "Her Etkinlik en fazla {count} katılımcıya sahip olabilir.",
   "pending": "Beklemede",
   "inactive": "Pasif",
-  "confirmRole": "Rolü onayla",
   "openRoleLabel": "AÇIK",
   "joinedTheActivity": "👋 {username} {role} olarak katıldı",
   "finishedTheActivity": "🎯 {username} bu etkinliği tamamladı",
-  "archiveToAnalytics": "Tamamlanan Etkinliklerime Ekle",
   "activitySummaryError": "Etkinlik özetleri kullanılamıyor",
   "requestSummaries": "Özetleri talep et",
   "generatingNewActivities": "Bu dil çifti için ilk kullanıcı sizsiniz! Lütfen bir dakika verin, sizin için etkinlikler hazırlıyoruz.",
   "requestAccessTitle": "Analitik erişimi talep edilsin mi?",
   "requestAccessDesc": "Katılımcıların analitiklerini görüntüleme erişimi talep etmek ister misiniz?\n\nKatılımcılar kabul ederse, bu kursun yöneticileri:\n    • toplam kelime dağarcığını\n    • toplam dilbilgisi kavramlarını\n    • tamamlanan toplam etkinlik oturumlarını\n    • doğru ve yanlış kullanılan belirli dilbilgisi kavramlarını görebilecekler.\n\nGörme imkanları olmayacak:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
-  "requestAccess": "Erişim iste ({count})",
   "analyticsInactiveTitle": "Etkin olmayan kullanıcılara yapılan istekler gönderilemedi",
   "analyticsInactiveDesc": "Bu özellik tanıtıldıktan sonra giriş yapmamış etkin olmayan kullanıcılar isteğinizi görmeyecek.\n\nKullanıcı geri döndüğünde İstek düğmesi görünecek. Kullanıcı adlarının altındaki İstek düğmesine tıklayarak isteği daha sonra yeniden gönderebilirsiniz.",
   "accessRequestedTitle": "Analitik Erişim Talebi",
@@ -4320,7 +3937,6 @@
   "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
   "noCourseFound": "Ah, bu kursun bir planı olmalı!\n\nKurs planları, konu ve sohbet etkinliklerinin sırasıdır.",
   "additionalParticipants": "+ {num} diğer",
-  "directMessages": "Doğrudan Mesajlar",
   "whatNow": "Şimdi ne olacak?",
   "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
   "letsGo": "Hadi başlayalım",
@@ -4357,7 +3973,6 @@
   "activityNeedsMembers": "Aman tanrım! Bu etkinlik için {num} kişiye daha ihtiyaç var.",
   "inviteFriendsToCourse": "Arkadaşlarımı kursuma davet et",
   "subscribeToUnlockActivitySummaries": "Etkinlik özetlerini açmak için abone ol",
-  "subscribeToUnlockDefinitions": "Tanımları açmak için abone ol",
   "subscribeToUnlockTranscriptions": "Transkripsiyonları açmak için abone ol",
   "pingSent": "🗣️ Kurs pingi gönderildi! 🗣️",
   "courseTitle": "Kurs başlığı",
@@ -4368,7 +3983,6 @@
   "loginToAccount": "Hesabınıza giriş yapın",
   "appDescription": "Bir dil öğrenin\narkadaşlarınıza mesaj atarken.",
   "languages": "Diller",
-  "chooseLanguage": "Hedef bir dil seçin.",
   "planTrip": "Seyahatinizi planlayın",
   "howAreYouTraveling": "Nasıl seyahat ediyorsunuz?",
   "unlockPrivateTrip": "Özel bir seyahati açın",
@@ -4735,18 +4349,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -4763,10 +4365,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -4775,27 +4373,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -4804,10 +4386,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -4848,14 +4426,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -4911,19 +4481,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5103,15 +4665,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6225,19 +5779,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6310,19 +5856,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6338,10 +5876,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6354,19 +5888,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6383,14 +5909,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6434,23 +5952,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6533,19 +6039,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6574,10 +6068,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7469,18 +6959,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7697,14 +7175,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -7872,10 +7342,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -7893,10 +7359,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -8016,10 +7478,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -8044,14 +7502,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8168,10 +7618,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8343,23 +7789,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8380,10 +7814,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8463,10 +7893,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8515,10 +7941,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8548,10 +7970,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8651,15 +8069,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8672,10 +8082,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8716,10 +8122,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8799,10 +8201,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -8816,10 +8214,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -8894,10 +8288,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -8921,10 +8311,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -8944,14 +8330,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -9067,10 +8445,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9233,10 +8607,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9274,10 +8644,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9481,7 +8847,6 @@
   "addCourse": "Bir kurs ekle",
   "joinPublicCourse": "Herkese açık kursa katıl",
   "vocabLevelsDesc": "Kelime seviyelerini yükselttiğinizde buraya kelimeler gelir!",
-  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10710,13 +10075,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Geri bildirimi yüklemek başarısız oldu.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Aktiviteler tamamlandığında ve kaydedildiğinde burada görünecektir.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -10732,11 +10092,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Pratik etkinliği tamamlandı",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10793,11 +10148,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Hedef diliniz bu mesajla eşleşmiyor. Hedef dilinizi güncelleyebilir misiniz?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -10843,12 +10193,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Öğrenme araçları, hedef dilinizde olmayan mesajlar için devre dışıdır.",
-  "vocabEmoji": "Kelime emojisi",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10896,16 +10241,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "İzin reddedildi. Sesli mesajlar kaydetmek için kayıt izinlerini etkinleştirin.",
-  "genericWebRecordingError": "Bir şeyler yanlış gitti. Mesajları kaydederken Chrome tarayıcısını kullanmanızı öneririz.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Bu uygulamayı en iyi şekilde kullanabilmek için lütfen ekran boyutunuzu genişletin.",
   "@screenSizeWarning": {
     "type": "String",
@@ -10928,11 +10263,8 @@
   "constructUseBonus": "Kelime pratiği sırasında bonus",
   "practiceVocab": "Kelime pratiği yap",
   "selectMeaning": "Anlamı seç",
-  "selectAudio": "Eşleşen sesi seç",
   "congratulations": "Tebrikler!",
   "anotherRound": "Bir tur daha",
-  "noActivityRequest": "Şu anda etkinlik talebi yok.",
-  "mustHave10Words": "Pratik yapmak için en az 10 kelimeye sahip olmalısınız. Daha fazla keşfetmek için bir arkadaşınızla veya Pangea Bot ile konuşmayı deneyin!",
   "botSettings": "Bot Ayarları",
   "activitySettingsOverrideWarning": "Etkinlik planı tarafından belirlenen dil ve dil seviyesi",
   "voice": "Ses",
@@ -10964,23 +10296,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
   },
   "@anotherRound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -11072,18 +10392,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
-  "welcomeUser": "Hoş geldin {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Bu sohbete davet etmek için kullanıcıları arayın.",
   "publicInviteDescSpace": "Bu alana davet etmek için kullanıcıları arayın.",
@@ -11270,8 +10581,6 @@
   "resume": "Devam et",
   "newSubSpace": "Yeni alt alan",
   "moveToDifferentSpace": "Farklı alana taşı",
-  "moveUp": "Yukarı taşı",
-  "moveDown": "Aşağı taşı",
   "removeFromSpaceDescription": "Sohbet alanından kaldırılacak ancak sohbet listenizde görünmeye devam edecek.",
   "countChats": "{chats} sohbet",
   "spaceMemberOf": "{spaces} alan üyesi",
@@ -11282,7 +10591,6 @@
   "startPoll": "Anket başlat",
   "endPoll": "Anketi bitir",
   "answersVisible": "Cevaplar görünür",
-  "answersHidden": "Cevaplar gizli",
   "pollQuestion": "Anket sorusu",
   "answerOption": "Cevap seçeneği",
   "addAnswerOption": "Cevap seçeneği ekle",
@@ -11362,14 +10670,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@moveUp": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moveDown": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@removeFromSpaceDescription": {
     "type": "String",
     "placeholders": {}
@@ -11423,10 +10723,6 @@
     "placeholders": {}
   },
   "@answersVisible": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@answersHidden": {
     "type": "String",
     "placeholders": {}
   },
@@ -11714,7 +11010,6 @@
   "playConversationGames": "Bot, sınıf arkadaşlarınız ve yeni arkadaşlarınızla konuşma oyunları oynayın!",
   "jumpIntoConversation": "Gün birden itibaren AI yazım araçlarıyla konuşmaya atlayın!",
   "playPersonalizedGames": "Kendi kelime dağarcığınız ve dilbilgisi ihtiyaçlarınıza göre kişiselleştirilmiş pratik oyunlar oynayın!",
-  "learnLanguageWhileTexting": "Arkadaşlarınızla mesajlaşırken bir dil öğrenin!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11736,10 +11031,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }

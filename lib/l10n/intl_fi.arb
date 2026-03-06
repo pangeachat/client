@@ -121,18 +121,6 @@
   },
   "sendOnEnter": "Lähetä painamalla rivinvaihtonäppäintä",
   "@sendOnEnter": {},
-  "badServerVersionsException": "Kotipalvelin tukee Matrix Spec versio(it)a:\n{serverVersions}, mutta tämä sovellus tukee vain versio(it)a {supportedVersions}",
-  "@badServerVersionsException": {
-    "type": "String",
-    "placeholders": {
-      "serverVersions": {
-        "type": "String"
-      },
-      "supportedVersions": {
-        "type": "String"
-      }
-    }
-  },
   "badServerLoginTypesException": "Tämä kotipalvelin tukee sisäänkirjautumistapoja: \n{serverVersions},\nmutta tämä sovellus tukee vain -tapoja: \n{supportedVersions}",
   "@badServerLoginTypesException": {
     "type": "String",
@@ -174,11 +162,6 @@
   },
   "blocked": "Estetty",
   "@blocked": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "botMessages": "Bottien lähettämät viestit",
-  "@botMessages": {
     "type": "String",
     "placeholders": {}
   },
@@ -372,8 +355,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "chatHasBeenAddedToThisSpace": "Keskustelu on lisätty tähän tilaan",
-  "@chatHasBeenAddedToThisSpace": {},
   "chats": "Keskustelut",
   "@chats": {
     "type": "String",
@@ -458,18 +439,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "dateWithoutYear": "{day}.{month}",
-  "@dateWithoutYear": {
-    "type": "String",
-    "placeholders": {
-      "month": {
-        "type": "String"
-      },
-      "day": {
-        "type": "String"
-      }
-    }
-  },
   "dateAndTimeOfDay": "{date}, {timeOfDay}",
   "@dateAndTimeOfDay": {
     "type": "String",
@@ -478,21 +447,6 @@
         "type": "String"
       },
       "timeOfDay": {
-        "type": "String"
-      }
-    }
-  },
-  "dateWithYear": "{day}.{month}.{year}",
-  "@dateWithYear": {
-    "type": "String",
-    "placeholders": {
-      "year": {
-        "type": "String"
-      },
-      "month": {
-        "type": "String"
-      },
-      "day": {
         "type": "String"
       }
     }
@@ -602,11 +556,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "emoteWarnNeedToPick": "Emote-lyhytkoodi ja kuva on valittava!",
-  "@emoteWarnNeedToPick": {
-    "type": "String",
-    "placeholders": {}
-  },
   "emptyChat": "Tyhjä keskustelu",
   "@emptyChat": {
     "type": "String",
@@ -638,11 +587,6 @@
   },
   "homeserver": "Kotipalvelin",
   "@homeserver": {},
-  "enterYourHomeserver": "Syötä kotipalvelimesi",
-  "@enterYourHomeserver": {
-    "type": "String",
-    "placeholders": {}
-  },
   "errorObtainingLocation": "Virhe paikannuksessa: {error}",
   "@errorObtainingLocation": {
     "type": "String",
@@ -674,11 +618,6 @@
   },
   "fromTheInvitation": "Alkaen kutsumisesta",
   "@fromTheInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "goToTheNewRoom": "Mene uuteen huoneeseen",
-  "@goToTheNewRoom": {
     "type": "String",
     "placeholders": {}
   },
@@ -750,11 +689,6 @@
   },
   "id": "ID",
   "@id": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "identity": "Identiteetti",
-  "@identity": {
     "type": "String",
     "placeholders": {}
   },
@@ -857,11 +791,6 @@
   },
   "leftTheChat": "Poistui keskustelusta",
   "@leftTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "license": "Lisenssi",
-  "@license": {
     "type": "String",
     "placeholders": {}
   },
@@ -1088,11 +1017,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "containsUserName": "Sisältää käyttäjätunnuksen",
-  "@containsUserName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "countParticipants": "{count} osallistujaa",
   "@countParticipants": {
     "type": "String",
@@ -1163,11 +1087,6 @@
   },
   "contactHasBeenInvitedToTheGroup": "Yhteystieto on kutsuttu ryhmään",
   "@contactHasBeenInvitedToTheGroup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "containsDisplayName": "Sisältää näyttönimen",
-  "@containsDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -1263,18 +1182,8 @@
       }
     }
   },
-  "notificationsEnabledForThisAccount": "Tämän tunnuksen ilmoitukset ovat käytössä",
-  "@notificationsEnabledForThisAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
   "joinRoom": "Liity huoneeseen",
   "@joinRoom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "memberChanges": "Jäsenmuutoksia",
-  "@memberChanges": {
     "type": "String",
     "placeholders": {}
   },
@@ -1364,11 +1273,6 @@
   },
   "passwordRecovery": "Salasanan palautus",
   "@passwordRecovery": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "people": "Ihmiset",
-  "@people": {
     "type": "String",
     "placeholders": {}
   },
@@ -1493,24 +1397,10 @@
       }
     }
   },
-  "removeDevice": "Poista laite",
-  "@removeDevice": {
-    "type": "String",
-    "placeholders": {}
-  },
   "unbanFromChat": "Poista porttikielto keskusteluun",
   "@unbanFromChat": {
     "type": "String",
     "placeholders": {}
-  },
-  "seenByUser": "Nähnyt {username}",
-  "@seenByUser": {
-    "type": "String",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
   },
   "sendAMessage": "Lähetä viesti",
   "@sendAMessage": {
@@ -1546,28 +1436,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "sendOriginal": "Lähetä alkuperäinen",
-  "@sendOriginal": {
-    "type": "String",
-    "placeholders": {}
-  },
   "setAsCanonicalAlias": "Aseta pääalias",
   "@setAsCanonicalAlias": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setCustomEmotes": "Aseta mukautetut emotet",
-  "@setCustomEmotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setInvitationLink": "Aseta kutsulinkki",
-  "@setInvitationLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "setPermissionsLevel": "Aseta oikeustasot",
-  "@setPermissionsLevel": {
     "type": "String",
     "placeholders": {}
   },
@@ -1594,11 +1464,6 @@
         "type": "String"
       }
     }
-  },
-  "singlesignon": "Kertakirjautuminen",
-  "@singlesignon": {
-    "type": "String",
-    "placeholders": {}
   },
   "skip": "Ohita",
   "@skip": {
@@ -1651,18 +1516,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "toggleMuted": "Mykistetty-kytkin",
-  "@toggleMuted": {
-    "type": "String",
-    "placeholders": {}
-  },
   "tooManyRequestsWarning": "Liikaa pyyntöjä. Yritä myöhemmin uudelleen!",
   "@tooManyRequestsWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleUnread": "Merkitse lukemattomaksi/luetuksi",
-  "@toggleUnread": {
     "type": "String",
     "placeholders": {}
   },
@@ -1875,8 +1730,6 @@
   },
   "removeFromSpace": "Poista tilasta",
   "@removeFromSpace": {},
-  "addToSpaceDescription": "Valitse tila, johon tämä keskustelu lisätään.",
-  "@addToSpaceDescription": {},
   "start": "Aloita",
   "@start": {},
   "serverRequiresEmail": "Tämän palvelimen täytyy tarkistaa sähköposti-osoitteesi rekisteröitymistä varten.",
@@ -1980,11 +1833,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "sendSticker": "Lähetä tarra",
-  "@sendSticker": {
-    "type": "String",
-    "placeholders": {}
-  },
   "publicRooms": "Julkiset huoneet",
   "@publicRooms": {
     "type": "String",
@@ -2052,15 +1900,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "unreadChats": "{unreadCount, plural, =1{1 lukematon keskustelu} other{{unreadCount} lukematonta keskustelua}}",
-  "@unreadChats": {
-    "type": "String",
-    "placeholders": {
-      "unreadCount": {
-        "type": "int"
-      }
-    }
-  },
   "videoCall": "Videopuhelu",
   "@videoCall": {
     "type": "String",
@@ -2079,11 +1918,6 @@
   },
   "submit": "Lähetä",
   "@submit": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "toggleFavorite": "Suosikki-kytkin",
-  "@toggleFavorite": {
     "type": "String",
     "placeholders": {}
   },
@@ -2155,17 +1989,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "videoWithSize": "Video ({size})",
-  "@videoWithSize": {
-    "type": "String",
-    "placeholders": {
-      "size": {
-        "type": "String"
-      }
-    }
-  },
-  "publish": "Julkaise",
-  "@publish": {},
   "markAsRead": "Merkitse luetuksi",
   "@markAsRead": {},
   "dismiss": "Hylkää",
@@ -2214,23 +2037,10 @@
   "@widgetUrlError": {},
   "errorAddingWidget": "Virhe lisättäessä pienoissovellusta.",
   "@errorAddingWidget": {},
-  "nextAccount": "Seuraava tili",
-  "@nextAccount": {},
-  "switchToAccount": "Siirry tilille {number}",
-  "@switchToAccount": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "experimentalVideoCalls": "Kokeelliset videopuhelut",
   "@experimentalVideoCalls": {},
   "emailOrUsername": "Sähköposti-osoite tai käyttäjätunnus",
   "@emailOrUsername": {},
-  "previousAccount": "Edellinen tili",
-  "@previousAccount": {},
   "widgetEtherpad": "Tekstimuotoinen muistiinpano",
   "@widgetEtherpad": {},
   "widgetNameError": "Syötä näyttönimi.",
@@ -2304,20 +2114,10 @@
     "type": "String",
     "placeholders": {}
   },
-  "dehydrateTor": "TOR-käyttäjät: vie istunto",
-  "@dehydrateTor": {},
-  "hydrateTor": "TOR-käyttäjät: tuo viety istunto",
-  "@hydrateTor": {},
-  "hydrateTorLong": "Veitkö edellisen istuntosi käyttäessäsi TORia? Tuo se nopeasti ja jatka jutustelua.",
-  "@hydrateTorLong": {},
-  "pleaseEnterRecoveryKey": "Syötä palautusavaimesi:",
-  "@pleaseEnterRecoveryKey": {},
   "recoveryKey": "Palautusavain",
   "@recoveryKey": {},
   "recoveryKeyLost": "Kadonnut palautusavain?",
   "@recoveryKeyLost": {},
-  "dehydrateTorLong": "Tor-käyttäjille suositellaan istunnon vientiä ennen ikkunan sulkemista.",
-  "@dehydrateTorLong": {},
   "hydrate": "Palauta varmuuskopiotiedostosta",
   "@hydrate": {},
   "dehydrate": "Vie istunto ja tyhjennä laite",
@@ -2332,8 +2132,6 @@
   "@pleaseEnterRecoveryKeyDescription": {},
   "unlockOldMessages": "Pura vanhojen viestien salaus",
   "@unlockOldMessages": {},
-  "indexedDbErrorLong": "Viestivarasto ei ole käytössä yksityisselauksessa oletuksena.\nKäythän osoitteessa\n - about:config\n - Aseta dom.indexedDB.privateBrowsing.enabled arvoon true\nMuuten FluffyChatin käyttäminen ei ole mahdollista.",
-  "@indexedDbErrorLong": {},
   "saveKeyManuallyDescription": "Tallenna tämä avain manuaalisesti käyttäen järjestelmän jakodialogia tai leikepöytää.",
   "@saveKeyManuallyDescription": {},
   "storeInAndroidKeystore": "Tallenna Android KeyStoreen",
@@ -2350,8 +2148,6 @@
   },
   "storeInSecureStorageDescription": "Tallenna palautusavain tämän laitteen turvavarastoon.",
   "@storeInSecureStorageDescription": {},
-  "indexedDbErrorTitle": "Yksityisen selauksen ongelmat",
-  "@indexedDbErrorTitle": {},
   "user": "Käyttäjä",
   "@user": {},
   "custom": "Mukautettu",
@@ -2377,28 +2173,12 @@
   "@commandHint_markasdm": {},
   "foregroundServiceRunning": "Tämä ilmoitus näkyy etualapalvelun ollessa käynnissä.",
   "@foregroundServiceRunning": {},
-  "callingPermissions": "Puheluoikeudet",
-  "@callingPermissions": {},
-  "callingAccount": "Soittamistunnus",
-  "@callingAccount": {},
-  "callingAccountDetails": "Sallii FluffyChatin käyttää Androidin omaa Puhelut-sovellusta.",
-  "@callingAccountDetails": {},
-  "appearOnTop": "Näy päällä",
-  "@appearOnTop": {},
-  "appearOnTopDetails": "Sallii sovelluksen näkyä muiden sovellusten päällä (tätä ei tarvita, mikäli olet jo määrittänyt FluffyChatin puhelin-tunnukseksi)",
-  "@appearOnTopDetails": {},
   "newSpace": "Uusi tila",
   "@newSpace": {},
-  "enterSpace": "Siirry tilaan",
-  "@enterSpace": {},
-  "enterRoom": "Siirry huoneeseen",
-  "@enterRoom": {},
   "allSpaces": "Kaikki tilat",
   "@allSpaces": {},
   "screenSharingTitle": "ruudunjako",
   "@screenSharingTitle": {},
-  "otherCallingPermissions": "Mikrofoni, kamera ja muut FluffyChatin oikeudet",
-  "@otherCallingPermissions": {},
   "newGroup": "Uusi ryhmä",
   "@newGroup": {},
   "screenSharingDetail": "Jaat ruutuasi FluffyChatissä",
@@ -2432,21 +2212,10 @@
       }
     }
   },
-  "numChats": "{number} keskustelua",
-  "@numChats": {
-    "type": "number",
-    "placeholders": {
-      "number": {
-        "type": "String"
-      }
-    }
-  },
   "commandHint_googly": "Lähetä askartelusilmiä",
   "@commandHint_googly": {},
   "commandHint_cuddle": "Lähetä kokovartaluhalaus",
   "@commandHint_cuddle": {},
-  "hideUnimportantStateEvents": "Piilota ei-niin-tärkeät tilatapahtumat",
-  "@hideUnimportantStateEvents": {},
   "doNotShowAgain": "Älä näytä uudelleen",
   "@doNotShowAgain": {},
   "fileHasBeenSavedAt": "Tiedosto on tallennettu sijaintiin {path}",
@@ -2460,13 +2229,6 @@
   },
   "disableEncryptionWarning": "Turvallisuuden vuoksi et voi poistaa salausta käytöstä huoneista, joissa se on aiemmin otettu käyttöön.",
   "@disableEncryptionWarning": {},
-  "allRooms": "Kaikki ryhmäkeskustelut",
-  "@allRooms": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "startFirstChat": "Aloita ensimmäinen keskustelusi",
-  "@startFirstChat": {},
   "newSpaceDescription": "Tilat mahdollistavat keskusteluidesi keräämisen ja yksityisten tai julkisten yhteisöjen rakentamisen.",
   "@newSpaceDescription": {},
   "deviceKeys": "Laite-avaimet:",
@@ -2504,10 +2266,6 @@
   },
   "sorryThatsNotPossible": "Anteeksi... se ei ole mahdollista",
   "@sorryThatsNotPossible": {},
-  "signInWithPassword": "Kirjaudu sisään salasanalla",
-  "@signInWithPassword": {},
-  "pleaseTryAgainLaterOrChooseDifferentServer": "Yritä myöhemmin uudelleen tai valitse toinen palvelin.",
-  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "setColorTheme": "Aseta väriteema:",
   "@setColorTheme": {},
   "tryAgain": "Yritä uudelleen",
@@ -2539,8 +2297,6 @@
   "@archiveRoomDescription": {},
   "exportEmotePack": "Vie emotepaketti .zip-tiedostona",
   "@exportEmotePack": {},
-  "inviteContactToGroupQuestion": "Tahdotko kutsua yhteystiedon {contact} keskusteluun \"{groupName}\"?",
-  "@inviteContactToGroupQuestion": {},
   "redactedByBecause": "Poistanut {username} syystä: \"{reason}\"",
   "@redactedByBecause": {
     "type": "String",
@@ -2557,8 +2313,6 @@
   "@redactMessageDescription": {},
   "invalidInput": "Virheellinen syöte!",
   "@invalidInput": {},
-  "addChatDescription": "Lisää keskustelulle kuvaus...",
-  "@addChatDescription": {},
   "hasKnocked": "🚪 {user} on koputtanut",
   "@hasKnocked": {
     "placeholders": {
@@ -2582,8 +2336,6 @@
   "@sendTypingNotifications": {},
   "inviteGroupChat": "📨 Kutsu ryhmäkeskusteluun",
   "@inviteGroupChat": {},
-  "invitePrivateChat": "📨 Kutsu yksityiskeskusteluun",
-  "@invitePrivateChat": {},
   "importEmojis": "Tuo emojit",
   "@importEmojis": {},
   "noChatDescriptionYet": "Keskustelun kuvausta ei ole vielä luotu.",
@@ -2596,8 +2348,6 @@
   "@roomUpgradeDescription": {},
   "pleaseEnterANumber": "Syötä suurempi luku kuin 0",
   "@pleaseEnterANumber": {},
-  "profileNotFound": "Käyttäjää ei löydy palvelimelta. Tämä voi olla yhteysongelma tai käyttäjä ei ole olemassa.",
-  "@profileNotFound": {},
   "shareInviteLink": "Jaa kutsulinkki",
   "@shareInviteLink": {},
   "emoteKeyboardNoRecents": "Viimeaikoina käytetyt emotet tulevat näkymään täällä...",
@@ -2605,8 +2355,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "setTheme": "Aseta teema:",
-  "@setTheme": {},
   "replace": "Korvaa",
   "@replace": {},
   "createGroup": "Luo ryhmä",
@@ -2651,8 +2399,6 @@
   "@changelog": {},
   "continueText": "Jatka",
   "@continueText": {},
-  "welcomeText": "Hei 👋, Tämä on FluffyChat. Voit kirjautua sisään mihin tahansa kotipalvelimeen, joka on yhteensopiva https:/matrix.org:in kanssa. Sitten jutellaan kenen kanssa tahansa. Se on hajautettu viestiverkosto!",
-  "@welcomeText": {},
   "serverInformation": "Palvelimen tiedot:",
   "@serverInformation": {},
   "name": "Nimi",
@@ -2677,10 +2423,6 @@
   "@pause": {},
   "resume": "Jatka",
   "@resume": {},
-  "moveUp": "Siirrä ylös",
-  "@moveUp": {},
-  "moveDown": "Siirrä alas",
-  "@moveDown": {},
   "poll": "Kysely",
   "@poll": {},
   "setCustomPermissionLevel": "Aseta mukautettu lupataso",
@@ -2704,18 +2446,6 @@
   "@commandHint_roomupgrade": {},
   "appLockDescription": "Lukitse sovellus kun sitä ei käytetä PIN-koodin kanssa",
   "@appLockDescription": {},
-  "countChatsAndCountParticipants": "{chats} pikakeskustelut ja {participants} osallistujat",
-  "@countChatsAndCountParticipants": {
-    "type": "String",
-    "placeholders": {
-      "chats": {
-        "type": "int"
-      },
-      "participants": {
-        "type": "int"
-      }
-    }
-  },
   "noChatsFoundHere": "Täältä ei löytynyt vielä pikakeskusteluja. Aloita uusi pikakeskustelu jonkun kanssa alla olevalla painikkeella. ⤵️",
   "@noChatsFoundHere": {},
   "joinedChats": "Liittyneet pikakeskustelut",
@@ -2753,16 +2483,10 @@
   "@blockedUsers": {},
   "blockListDescription": "Voit estää sinua häiritsevät käyttäjät. Et voi vastaanottaa viestejä tai huonekutsuja henkilökohtaisella estolistallasi olevilta käyttäjiltä.",
   "@blockListDescription": {},
-  "hideMemberChangesInPublicChats": "Piilota jäsenten muutokset julkisissa pikakeskusteluissa",
-  "@hideMemberChangesInPublicChats": {},
-  "hideMemberChangesInPublicChatsBody": "Älä näytä pikakeskustelun aikajanalla, jos joku liittyy julkiseen pikakeskusteluun tai poistuu siitä luettavuuden parantamiseksi.",
-  "@hideMemberChangesInPublicChatsBody": {},
   "blockUsername": "Jätä käyttäjänimi huomiotta",
   "@blockUsername": {},
   "overview": "Yleiskatsaus",
   "@overview": {},
-  "notifyMeFor": "Ilmoita minulle",
-  "@notifyMeFor": {},
   "passwordRecoverySettings": "Salasanan palautusasetukset",
   "@passwordRecoverySettings": {},
   "sendImages": "Lähetä {count} kuva",
@@ -2774,11 +2498,6 @@
       }
     }
   },
-  "presenceStyle": "Läsnäolo:",
-  "@presenceStyle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "presencesToggle": "Näytä muiden käyttäjien tilaviestit",
   "@presencesToggle": {
     "type": "String",
@@ -2789,14 +2508,6 @@
     "type": "String",
     "placeholders": {
       "percentage": {
-        "type": "String"
-      }
-    }
-  },
-  "youInvitedToBy": "📩 Sinut on kutsuttu linkin kautta kohteeseen:\n{alias}",
-  "@youInvitedToBy": {
-    "placeholders": {
-      "alias": {
         "type": "String"
       }
     }
@@ -2813,16 +2524,6 @@
   "@usersMustKnock": {},
   "noOneCanJoin": "Kukaan ei voi liittyä",
   "@noOneCanJoin": {},
-  "userWouldLikeToChangeTheChat": "{user} haluaa liittyä pikakeskusteluun.",
-  "@userWouldLikeToChangeTheChat": {
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "noPublicLinkHasBeenCreatedYet": "Julkista linkkiä ei ole vielä luotu",
-  "@noPublicLinkHasBeenCreatedYet": {},
   "knock": "Koputa",
   "@knock": {},
   "hidePresences": "Piilotetaanko tilaluettelo?",
@@ -2885,8 +2586,6 @@
   "@databaseMigrationBody": {},
   "leaveEmptyToClearStatus": "Jätä tyhjäksi tyhjentääksesi tilasi.",
   "@leaveEmptyToClearStatus": {},
-  "publicLink": "Julkinen linkki",
-  "@publicLink": {},
   "publicChatAddresses": "Julkiset keskusteluosoitteet",
   "@publicChatAddresses": {},
   "createNewAddress": "Luo uusi osoite",
@@ -2905,15 +2604,6 @@
   "@initAppError": {},
   "userRole": "Käyttäjärooli",
   "@userRole": {},
-  "minimumPowerLevel": "{level} on pienin tehotaso.",
-  "@minimumPowerLevel": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "String"
-      }
-    }
-  },
   "searchIn": "Hae keskustelusta \"{chat}\"...",
   "@searchIn": {
     "type": "String",
@@ -2925,18 +2615,6 @@
   },
   "searchMore": "Hae lisää...",
   "@searchMore": {},
-  "databaseBuildErrorBody": "SQlite-tietokantaa ei voida rakentaa. Sovellus yrittää toistaiseksi käyttää vanhaa tietokantaa. Ilmoita tästä virheestä kehittäjille osoitteessa {url}. Virheviesti on: {error}",
-  "@databaseBuildErrorBody": {
-    "type": "String",
-    "placeholders": {
-      "url": {
-        "type": "String"
-      },
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "sessionLostBody": "Istuntosi on menetetty. Ilmoita tästä virheestä kehittäjille osoitteessa {url}. Virheviesti on: {error}",
   "@sessionLostBody": {
     "type": "String",
@@ -2957,15 +2635,6 @@
         "type": "String"
       },
       "error": {
-        "type": "String"
-      }
-    }
-  },
-  "forwardMessageTo": "Lähetätkö viestin edelleen kohteeseen {roomName}?",
-  "@forwardMessageTo": {
-    "type": "String",
-    "placeholders": {
-      "roomName": {
         "type": "String"
       }
     }
@@ -3437,8 +3106,6 @@
   "@endPoll": {},
   "answersVisible": "Vastaukset näkyvissä",
   "@answersVisible": {},
-  "answersHidden": "Vastaukset piilotettu",
-  "@answersHidden": {},
   "pollQuestion": "Kyselykysymys",
   "@pollQuestion": {},
   "answerOption": "Vastausvaihtoehto",
@@ -3479,25 +3146,16 @@
   "writeAMessageLangCodes": "Kirjoita {l1} tai {l2}...",
   "requests": "Pyyntöjä",
   "holdForInfo": "Pidä painettuna sanan tiedoista.",
-  "greenFeedback": "Se on mitä laittaisin!",
-  "yellowFeedback": "Hm, voit kokeilla sitä ja katsoa, toimiiko se! Käyttääksesi tätä sanaa, klikkaa sitä uudelleen.",
-  "redFeedback": "En usko, että se on oikein...",
   "itInstructionsTitle": "Voin auttaa sinua kääntämisessä!",
   "itInstructionsBody": "Voit napsauttaa ja pitää valintoja saadaksesi sanan tiedot.",
   "gaTooltip": "L2:n käyttö kielioppiavustuksella",
   "taTooltip": "L2:n käyttö käännösavustuksella",
-  "unTooltip": "Muu",
   "interactiveTranslatorSliderHeader": "Vuorovaikutteinen kääntäjä",
   "interactiveGrammarSliderHeader": "Vuorovaikutteinen kielioppitarkistin",
-  "interactiveTranslatorNotAllowed": "Ei sallittu",
-  "interactiveTranslatorAllowed": "Oppilaan valinta",
   "interactiveTranslatorRequired": "Pakollinen",
-  "notYetSet": "Ei vielä asetettu",
   "waTooltip": "L2 ilman apua",
-  "languageSettings": "Kieliasetukset",
   "interactiveTranslator": "Käännöstuki",
   "noIdenticalLanguages": "Valitse eri perus- ja kohdekielet",
-  "searchBy": "Etsi maasta ja kielistä",
   "joinWithClassCode": "Liity kurssille",
   "languageLevelPreA1": "Aloittelija Matala (Pre A1)",
   "languageLevelA1": "Aloittelija Keskitaso (A1)",
@@ -3508,8 +3166,6 @@
   "languageLevelC2": "Erinomainen (C2)",
   "changeTheNameOfTheClass": "Vaihda nimi",
   "changeTheNameOfTheChat": "Vaihda keskustelun nimi",
-  "sorryNoResults": "Valitettavasti ei tuloksia.",
-  "ignoreInThisText": "Ohita",
   "needsItMessage": "Odotas, se ei ole {targetLanguage}! Tarvitsetko apua kääntämisessä?",
   "countryInformation": "Kotikuntani",
   "targetLanguage": "Kohdekieli",
@@ -3522,10 +3178,8 @@
   "publicProfileDesc": "Kytkemällä päälle mahdollistat muiden käyttäjien löytävän profiilisi globaalissa haussa ja lähettävän chat-pyyntöjä. Tällä hetkellä voit hyväksyä tai hylätä pyynnön.",
   "errorDisableIT": "Käännösohjeita ei ole käytössä.",
   "errorDisableIGC": "Kielioppiohjeita ei ole käytössä.",
-  "errorDisableLanguageAssistance": "Käännös- ja kielioppiohjeet on sammutettu.",
   "errorDisableITUserDesc": "Klikkaa tästä päivittääksesi käännösohjeiden asetukset",
   "errorDisableIGCUserDesc": "Klikkaa tästä päivittääksesi kielioppiohjeiden asetukset",
-  "errorDisableLanguageAssistanceUserDesc": "Klikkaa tästä päivittääksesi käännös- ja kielioppiohjeiden asetukset",
   "errorDisableITClassDesc": "Käännösohjeita ei ole käytössä tämän kurssin chatissä.",
   "errorDisableIGCClassDesc": "Kielenhuollon apu on pois päältä tämän keskustelun kurssille.",
   "error405Title": "Kielet eivät ole asetettu",
@@ -3570,9 +3224,7 @@
   "notAvailable": "Ei saatavilla",
   "taAndGaTooltip": "L2 käyttö käännösavustuksen ja kielioppiavustuksen kanssa",
   "definitionsToolName": "Sanojen määritelmät",
-  "messageTranslationsToolName": "Viestien käännökset",
   "definitionsToolDescription": "Kun tämä on käytössä, sininen alleviivatut sanat voidaan klikata määritelmiä varten. Klikkaa viestejä saadaksesi määritelmät.",
-  "translationsToolDescrption": "Kun tämä on käytössä, klikkaa viestiä ja käännöskuvaketta nähdäksesi viestin peruskielelläsi.",
   "welcomeBack": "Tervetuloa takaisin! Jos olit osa pilottia vuosina 2023-2024, ota yhteyttä saadaksesi erityisen pilottitilauksesi. Jos olet opettaja, joka on ostanut (tai oppilaitoksesi on ostanut) lisenssejä luokkaasi varten, ota yhteyttä saadaksesi opettajatilauksesi.",
   "downloadTxtFile": "Lataa tekstitiedosto",
   "downloadCSVFile": "Lataa CSV-tiedosto",
@@ -3846,10 +3498,8 @@
   "definitionDefaultPrompt": "Mitä tämä sana tarkoittaa?",
   "practiceDefaultPrompt": "Mikä on paras vastaus?",
   "correctionDefaultPrompt": "Mikä on paras korvaus?",
-  "acceptSelection": "Hyväksy korjaus",
   "why": "Miksi?",
   "definition": "Määritelmä",
-  "exampleSentence": "Esimerkkilause",
   "reportToTeacher": "Kenelle haluat raportoida tämän viestin?",
   "reportMessageTitle": "{reportingUserId} on raportoinut viestin käyttäjältä {reportedUserId} chatissa {roomName}",
   "reportMessageBody": "Viesti: {reportedMessage}\nSyy: {reason}",
@@ -3861,27 +3511,20 @@
   "clickToManageSubscription": "Klikkaa tästä hallitaksesi tilaustasi.",
   "signUp": "Rekisteröidy",
   "pleaseChooseAtLeastChars": "Valitse vähintään {min} merkkiä.",
-  "noEmailWarning": "Syötä kelvollinen sähköpostiosoite. Muuten et voi palauttaa salasanaasi. Jos et halua, napauta uudelleen jatkaaksesi.",
   "pleaseEnterValidEmail": "Syötä kelvollinen sähköpostiosoite.",
   "pleaseChooseAUsername": "Valitse käyttäjänimi",
-  "define": "Määritä",
   "listen": "Kuuntele",
   "trialPeriodExpired": "Kokeilujaksonne on päättynyt",
   "translations": "käännökset",
-  "messageAudio": "viestin ääni",
   "definitions": "määritelmät",
   "subscribedToUnlockTools": "Viritä tilaukseen saadaksesi käyttöön vuorovaikutteinen käännös ja kielioppitarkistus, äänen toisto, henkilökohtaiset harjoitustoiminnot ja oppimisanalyyttiset tiedot!",
   "translationTooltip": "Käännä",
-  "speechToTextTooltip": "Tekstiksi",
   "kickBotWarning": "Pangea-botin poistaminen poistaa keskustelubotin tästä keskustelusta.",
   "refresh": "Päivitä",
-  "messageAnalytics": "Viestien analytiikka",
   "words": "Sanat",
   "score": "Pisteet",
   "accuracy": "Tarkkuus",
   "points": "Pisteet",
-  "noPaymentInfo": "Maksutietoja ei tarvita!",
-  "updatePhoneOS": "Saattaa olla, että sinun täytyy päivittää laitteesi käyttöjärjestelmän versio.",
   "wordsPerMinute": "Sanoja minuutissa",
   "tooltipInstructionsTitle": "Et ole varma, mitä tämä tekee?",
   "tooltipInstructionsMobileBody": "Pidä painettuna kohteita nähdäksesi työkaluvihjeet.",
@@ -3891,11 +3534,8 @@
   "chatCapacityHasBeenChanged": "Chatin kapasiteetti on muuttunut",
   "chatCapacitySetTooLow": "Chatin kapasiteetti on oltava vähintään {count}.",
   "chatCapacityExplanation": "Chatin kapasiteetti rajoittaa chatissa sallittujen jäsenten määrää.",
-  "tooManyRequest": "Liian monta pyyntöä, yritä uudelleen myöhemmin.",
   "enterNumber": "Syötä kokonaisluku.",
-  "buildTranslation": "Rakenna käännöksesi yllä olevista vaihtoehdoista",
   "practice": "Harjoitus",
-  "noLanguagesSet": "Kieliä ei ole asetettu",
   "speechToTextBody": "Ääniviesteissä näet myös litteroinnin sekä puhujan Words Per Minute -pistemäärän.",
   "versionNotFound": "Versiota ei löytynyt",
   "fetchingVersion": "Haetaan versiota...",
@@ -3914,10 +3554,7 @@
   "grammar": "Kielioppi",
   "contactHasBeenInvitedToTheChat": "Yhteystiedot on kutsuttu keskusteluun",
   "inviteChat": "📨 Kutsu keskusteluun",
-  "chatName": "Keskustelun nimi",
-  "reportContentIssueTitle": "Ilmoita sisällön ongelmasta",
   "feedback": "Valinnainen palaute",
-  "reportContentIssueDescription": "Voi ei! Tekoäly voi auttaa personoiduissa oppimiskokemuksissa, mutta... myös harhailee. Anna palautetta, niin yritämme uudelleen.",
   "clickTheWordAgainToDeselect": "Klikkaa valittua sanaa poistaaksesi valinnan.",
   "l2SupportNa": "Ei saatavilla",
   "l2SupportAlpha": "Alpha",
@@ -3925,7 +3562,6 @@
   "l2SupportFull": "Täysi",
   "missingVoiceTitle": "Puuttuva ääni",
   "voiceNotAvailable": "Sinulla ei ole asennettuna ääntä tälle kielelle.",
-  "openVoiceSettings": "Avaa ääniasetukset",
   "playAudio": "Toista",
   "stop": "Lopeta",
   "grammarCopyPOSsconj": "Subordinointiliite",
@@ -4148,9 +3784,6 @@
   "grammarCopyTENSE": "Aikamuoto",
   "grammarCopyVERBFORM": "Verbimuoto",
   "grammarCopyCONJTYPE": "Konjunktionin tyyppi",
-  "grammarCopySPC": "Tarkkuus",
-  "grammarCopyPARTTYPE": "Partitiivityyppi",
-  "grammarCopyINTREL": "Interogatiivinen-relatiivinen",
   "grammarCopyUNKNOWN": "Tuntematon",
   "grammarCopyNUMBERPSOR": "Omistajan lukumäärä",
   "grammarCopyPOSS": "Omistussana",
@@ -4204,8 +3837,6 @@
   "downloadGroupText": "Lataa ryhmäteksti",
   "notificationsOn": "Ilmoitukset päällä",
   "notificationsOff": "Ilmoitukset pois päältä",
-  "createChatAndInviteUsers": "Luo keskustelu ja kutsu käyttäjiä",
-  "updatedNewSpaceDescription": "Kurssit auttavat sinua yhdistämään keskustelusi ja rakentamaan yksityisiä tai julkisia yhteisöjä.",
   "joinWithCode": "Liity koodilla",
   "enterCodeToJoin": "Syötä koodi liittyäksesi",
   "updateNow": "Päivitä nyt",
@@ -4246,13 +3877,11 @@
   "iWantToLearn": "Haluan oppia",
   "pleaseEnterEmail": "Anna kelvollinen sähköpostiosoite.",
   "myBaseLanguage": "Peruskieleni",
-  "meaningSectionHeader": "Tarkoitus:",
   "formSectionHeader": "Käytetyt muodot keskusteluissa:",
   "writingExercisesTooltip": "Kirjoittaminen",
   "listeningExercisesTooltip": "Kuuntelu",
   "readingExercisesTooltip": "Lukeminen",
   "meaningNotFound": "Tarkoitusta ei löytynyt.",
-  "chooseBaseForm": "Valitse perusmuoto",
   "notTheCodeError": "Valitettavasti, se ei ole koodi!",
   "totalXP": "Kokonaistyökokemus",
   "numLemmas": "Lemmojen kokonaismäärä",
@@ -4282,13 +3911,11 @@
   "analyticsNotAvailable": "Käyttäjäanalytiikka ei saatavilla",
   "downloading": "Ladataan...",
   "failedFetchUserAnalytics": "Käyttäjäanalytiikan lataaminen epäonnistui",
-  "downloadComplete": "Lataus valmis!",
   "whatIsTheMorphTag": "Mikä on '{wordForm}' {morphologicalFeature}?",
   "dataAvailable": "Tietojen saatavuus",
   "available": "Saatavilla",
   "pangeaBotIsFallible": "Pangea Bot tekee myös virheitä!",
   "whatIsMeaning": "Mitä '{lemma}' tarkoittaa?",
-  "pickAnEmoji": "Mikä on suosikkisi emoji '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Vastaa sanojen merkityksiin viestissä!",
   "doubleClickToEdit": "Muokkaa kaksoisnapsauttamalla.",
   "activityPlannerTitle": "Toimintasuunnitelma",
@@ -4317,7 +3944,6 @@
   "constructUseCorMmDesc": "Oikea viestin merkitys",
   "constructUseIncMmDesc": "Väärä viestin merkitys",
   "constructUseIgnMmDesc": "Ohitettu viestin merkitys",
-  "clickForMeaningActivity": "Klikkaa tästä merkityshaasteeseen",
   "meaning": "Merkitys",
   "chatWith": "Ryhmä {displayname} kanssa",
   "clickOnEmailLink": "Klikkaa sähköpostin linkkiä ja jatka.\n\nTarkista roskapostikansio, jos sähköposti ei ole saapunut.",
@@ -4357,16 +3983,13 @@
   "home": "Koti",
   "join": "Liity",
   "readingAssistanceOverviewBody": "Klikkaa alla olevia painikkeita minipeleihin, joissa yhdistetään emojit, äänitiedostot, sanan merkitys ja kielioppikäsitteet. Tai klikkaa mitä tahansa sanaa saadaksesi lisätietoja.",
-  "levelSummaryPopupTitle": "Tason {level} yhteenveto",
   "resetInstructionTooltipsTitle": "Nollaa ohjeiden työkaluvihjeet",
   "resetInstructionTooltipsDesc": "Klikkaa näyttääksesi ohjeiden työkaluvihjeet kuten uudelle käyttäjälle.",
-  "selectForGrammar": "Valitse kielioppikuvake aktiviteetteihin ja yksityiskohtiin.",
   "randomize": "Satunnaista",
   "clear": "Tyhjennä",
   "makeYourOwnActivity": "Luo oma aktiviteetti",
   "featuredActivities": "Suositellut",
   "save": "Tallenna",
-  "startChat": "Aloita keskustelu",
   "translationProblem": "Käännösongelma",
   "askToJoin": "Kysy liittymistä",
   "emptyChatWarningTitle": "Chat on tyhjä",
@@ -4386,7 +4009,6 @@
   "languageLevelC2Desc": "Ymmärrän käytännössä kaiken kuullun tai luetun ja pystyn ilmaisemaan itseäni sujuvasti ja tarkasti.",
   "newVocab": "Uusi sanasto",
   "newGrammar": "Uudet kielioppikäsitteet",
-  "choosePracticeMode": "Klikkaa yllä olevista painikkeista aloittaaksesi harjoitustoiminnan",
   "ban": "Kielto",
   "unban": "Poista kielto",
   "kick": "Potki",
@@ -4398,7 +4020,6 @@
   "timesUsedIndependently": "Kertojen määrä itsenäisesti käytettynä",
   "timesUsedWithAssistance": "Kertojen määrä avustuksella käytettynä",
   "shareInviteCode": "Jaa kutsukoodi: {code}",
-  "leaderboard": "Sijoituslista",
   "skipForNow": "Ohita nyt",
   "permissions": "Oikeudet",
   "spaceChildPermission": "Kuka voi lisätä uusia keskusteluja tähän kurssiin",
@@ -4407,7 +4028,6 @@
   "deleteChatDesc": "Oletko varma, että haluat poistaa tämän keskustelun? Se poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eivät ole enää käytettävissä harjoitteluun tai oppimisanalytiikkaan.",
   "deleteSpaceDesc": "Kurssi ja kaikki valitut keskustelut poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eivät ole enää käytettävissä harjoitteluun tai oppimisanalytiikkaan. Tätä toimintoa ei voi peruuttaa.",
   "launch": "Käynnistä",
-  "searchChats": "Etsi keskusteluja",
   "maxFifty": "Maks 50",
   "configureSpace": "Määritä kurssi",
   "pinMessages": "Kiinnitä viestit",
@@ -4432,13 +4052,10 @@
   "canBeFoundViaInvitation": "• kutsu",
   "canBeFoundViaCodeOrLink": "• koodi tai linkki",
   "canBeFoundViaKnock": "• pyytää liittymistä ja ylläpidon hyväksyntä",
-  "youHaveLeveledUp": "Olet noussut tasolle!",
   "sendActivities": "Lähetä aktiviteetteja",
-  "groupChat": "Ryhmäsuunnittelu",
   "directMessage": "Yksityisviesti",
   "newDirectMessage": "Uusi yksityisviesti",
   "speakingExercisesTooltip": "Puhuminen",
-  "noChatsFoundHereYet": "Ei vielä keskusteluja täällä",
   "duration": "Kesto",
   "transcriptionFailed": "Äänen litteröinti epäonnistui",
   "aUserIsKnocking": "Yksi käyttäjä pyytää liittymään kurssiisi",
@@ -4448,7 +4065,6 @@
   "regenerate": "Luo uudelleen",
   "mySavedActivities": "Tallentamani aktiviteetit",
   "noSavedActivities": "Ei tallennettuja aktiviteetteja",
-  "saveActivity": "Tallenna tämä aktiviteetti",
   "failedToPlayVideo": "Videon toistaminen epäonnistui",
   "done": "Valmis",
   "inThisSpace": "Tässä kurssissa",
@@ -4466,12 +4082,10 @@
   "errorFetchingDefinition": "Virhe haettaessa määritelmää",
   "errorProcessAnalytics": "Virhe analytiikan käsittelyssä",
   "errorDownloading": "Lataus epäonnistui",
-  "errorFetchingLevelSummary": "Virhe haettaessa tasoraporttia",
   "errorLoadingSpaceChildren": "Virhe ladataessa keskusteluja tämän kurssin sisällä",
   "unexpectedError": "Odottamaton virhe.",
   "pleaseReload": "Lataa sivu uudelleen ja yritä uudelleen.",
   "translationError": "Käännösvirhe",
-  "errorFetchingTranslation": "Virhe haettaessa käännöstä",
   "errorFetchingActivity": "Virhe haettaessa toimintaa",
   "check": "Tarkista",
   "unableToFindRoom": "Ei löydetty keskustelua tai kurssia tällä koodilla. Yritä uudelleen.",
@@ -4487,17 +4101,14 @@
   "maximumActivityParticipants": "Jokaisessa aktiviteetissa voi olla enintään {count} osallistuja(a).",
   "pending": "Odottaa",
   "inactive": "Ei aktiivinen",
-  "confirmRole": "Vahvista rooli",
   "openRoleLabel": "AVOIN",
   "joinedTheActivity": "👋 {username} liittyi roolilla {role}",
   "finishedTheActivity": "🎯 {username} saatteli aktiviteetin päätökseen",
-  "archiveToAnalytics": "Lisää suoritettuihin aktiviteetteihini",
   "activitySummaryError": "Aktiviteettien yhteenvetoja ei saatavilla",
   "requestSummaries": "Pyydä yhteenvetoja",
   "generatingNewActivities": "Olet tämän kieliparin ensimmäinen käyttäjä! Odota hetki, valmistelemme aktiviteetteja juuri sinulle.",
   "requestAccessTitle": "Pyydä analytiikkapääsyä?",
   "requestAccessDesc": "Haluatko pyytää pääsyä nähdäksesi osallistujien analytiikan?\n\nJos osallistujat suostuvat, kurssin ylläpitäjät voivat nähdä heidän:\n    • kokonaissanaston\n    • kokonaiskielioppikonseptit\n    • kokonaisaktiviteettisessiot, jotka on suoritettu\n    • käytetyt, oikein ja väärin, kielioppikonseptit\n\nHe eivät voi nähdä heidän:\n    • viestejä keskusteluissa kurssin ulkopuolella\n    • sanastoluetteloa",
-  "requestAccess": "Pyydä pääsyä ({count})",
   "analyticsInactiveTitle": "Ei voitu lähettää pyyntöjä inaktiivisille käyttäjille",
   "analyticsInactiveDesc": "Inaktiiviset käyttäjät, jotka eivät ole kirjautuneet sisään tämän ominaisuuden käyttöönoton jälkeen, eivät näe pyyntöäsi.\n\nPyyntöpainike ilmestyy, kun he palaavat. Voit lähettää pyynnön uudelleen myöhemmin napsauttamalla Pyyntö-painiketta heidän nimensä alla, kun se on saatavilla.",
   "accessRequestedTitle": "Analytiikan pääsypyyntö",
@@ -4522,7 +4133,6 @@
   "deleteDesc": "Vain ylläpitäjät voivat poistaa kurssin. Tämä on tuhoava toimenpide, joka poistaa kaikki käyttäjät ja poistaa kaikki valitut keskustelut kurssin sisällä. Toimi varoen.",
   "noCourseFound": "Voi, tämä kurssi tarvitsee suunnitelman!\n\nKurssisuunnitelmat ovat aiheiden ja keskustelutoimintojen sarja.",
   "additionalParticipants": "+ {num} muuta",
-  "directMessages": "Suorat viestit",
   "whatNow": "Mitä nyt?",
   "chooseNextActivity": "Valitse seuraava toimintosi!",
   "letsGo": "Lähdetään",
@@ -4559,7 +4169,6 @@
   "activityNeedsMembers": "Voi ei! Tämä aktiviteetti tarvitsee vielä {num} ihmistä.",
   "inviteFriendsToCourse": "Kutsu ystäviä kurssilleni",
   "subscribeToUnlockActivitySummaries": "Tilaa aktiviteettien yhteenvetojen avaaminen",
-  "subscribeToUnlockDefinitions": "Tilaa määritelmien avaaminen",
   "subscribeToUnlockTranscriptions": "Tilaa transkriptioiden avaaminen",
   "pingSent": "📣 Kurssin hälytys lähetetty! 📣",
   "courseTitle": "Kurssin otsikko",
@@ -4570,7 +4179,6 @@
   "loginToAccount": "Kirjaudu tililleni",
   "appDescription": "Opiskele kieltä\nlähettämällä viestejä ystävillesi.",
   "languages": "Kielet",
-  "chooseLanguage": "Valitse kohdekieli.",
   "planTrip": "Suunnittele matkasi",
   "howAreYouTraveling": "Miten matkustat?",
   "unlockPrivateTrip": "Avaa yksityinen matka",
@@ -4628,18 +4236,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@greenFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yellowFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@itInstructionsTitle": {
     "type": "String",
     "placeholders": {}
@@ -4656,10 +4252,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorSliderHeader": {
     "type": "String",
     "placeholders": {}
@@ -4668,27 +4260,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@interactiveTranslatorNotAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAllowed": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@interactiveTranslatorRequired": {
     "type": "String",
     "placeholders": {}
   },
-  "@notYetSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languageSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -4697,10 +4273,6 @@
     "placeholders": {}
   },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchBy": {
     "type": "String",
     "placeholders": {}
   },
@@ -4741,14 +4313,6 @@
     "placeholders": {}
   },
   "@changeTheNameOfTheChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sorryNoResults": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ignoreInThisText": {
     "type": "String",
     "placeholders": {}
   },
@@ -4804,19 +4368,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorDisableLanguageAssistance": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorDisableITUserDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@errorDisableIGCUserDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorDisableLanguageAssistanceUserDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -4996,15 +4552,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageTranslationsToolName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitionsToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@translationsToolDescrption": {
     "type": "String",
     "placeholders": {}
   },
@@ -6118,19 +5666,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@why": {
     "type": "String",
     "placeholders": {}
   },
   "@definition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exampleSentence": {
     "type": "String",
     "placeholders": {}
   },
@@ -6203,19 +5743,11 @@
       }
     }
   },
-  "@noEmailWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterValidEmail": {
     "type": "String",
     "placeholders": {}
   },
   "@pleaseChooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@define": {
     "type": "String",
     "placeholders": {}
   },
@@ -6231,10 +5763,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@messageAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@definitions": {
     "type": "String",
     "placeholders": {}
@@ -6247,19 +5775,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@speechToTextTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageAnalytics": {
     "type": "String",
     "placeholders": {}
   },
@@ -6276,14 +5796,6 @@
     "placeholders": {}
   },
   "@points": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noPaymentInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -6327,23 +5839,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@tooManyRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enterNumber": {
     "type": "String",
     "placeholders": {}
   },
-  "@buildTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noLanguagesSet": {
     "type": "String",
     "placeholders": {}
   },
@@ -6426,19 +5926,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedback": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@reportContentIssueDescription": {
     "type": "String",
     "placeholders": {}
   },
@@ -6467,10 +5955,6 @@
     "placeholders": {}
   },
   "@voiceNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@openVoiceSettings": {
     "type": "String",
     "placeholders": {}
   },
@@ -7362,18 +6846,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopySPC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyPARTTYPE": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCopyINTREL": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -7590,14 +7062,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@createChatAndInviteUsers": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updatedNewSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithCode": {
     "type": "String",
     "placeholders": {}
@@ -7765,10 +7229,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@meaningSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@formSectionHeader": {
     "type": "String",
     "placeholders": {}
@@ -7786,10 +7246,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBaseForm": {
     "type": "String",
     "placeholders": {}
   },
@@ -7909,10 +7365,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@downloadComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
@@ -7937,14 +7389,6 @@
     "placeholders": {}
   },
   "@whatIsMeaning": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
       "lemma": {
@@ -8061,10 +7505,6 @@
     "placeholders": {}
   },
   "@constructUseIgnMmDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickForMeaningActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8236,23 +7676,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@levelSummaryPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@resetInstructionTooltipsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectForGrammar": {
     "type": "String",
     "placeholders": {}
   },
@@ -8273,10 +7701,6 @@
     "placeholders": {}
   },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@startChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8356,10 +7780,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@choosePracticeMode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -8408,10 +7828,6 @@
       }
     }
   },
-  "@leaderboard": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -8441,10 +7857,6 @@
     "placeholders": {}
   },
   "@launch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@searchChats": {
     "type": "String",
     "placeholders": {}
   },
@@ -8544,15 +7956,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@youHaveLeveledUp": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@groupChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -8565,10 +7969,6 @@
     "placeholders": {}
   },
   "@speakingExercisesTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noChatsFoundHereYet": {
     "type": "String",
     "placeholders": {}
   },
@@ -8609,10 +8009,6 @@
     "placeholders": {}
   },
   "@noSavedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saveActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -8692,10 +8088,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorFetchingLevelSummary": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@errorLoadingSpaceChildren": {
     "type": "String",
     "placeholders": {}
@@ -8709,10 +8101,6 @@
     "placeholders": {}
   },
   "@translationError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorFetchingTranslation": {
     "type": "String",
     "placeholders": {}
   },
@@ -8787,10 +8175,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@confirmRole": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@openRoleLabel": {
     "type": "String",
     "placeholders": {}
@@ -8814,10 +8198,6 @@
       }
     }
   },
-  "@archiveToAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySummaryError": {
     "type": "String",
     "placeholders": {}
@@ -8837,14 +8217,6 @@
   "@requestAccessDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@requestAccess": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "@analyticsInactiveTitle": {
     "type": "String",
@@ -8960,10 +8332,6 @@
         "type": "int"
       }
     }
-  },
-  "@directMessages": {
-    "type": "String",
-    "placeholders": {}
   },
   "@whatNow": {
     "type": "String",
@@ -9126,10 +8494,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@subscribeToUnlockDefinitions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribeToUnlockTranscriptions": {
     "type": "String",
     "placeholders": {}
@@ -9167,10 +8531,6 @@
     "placeholders": {}
   },
   "@languages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseLanguage": {
     "type": "String",
     "placeholders": {}
   },
@@ -9374,7 +8734,6 @@
   "addCourse": "Lisää kurssi",
   "joinPublicCourse": "Liity julkiseen kurssiin",
   "vocabLevelsDesc": "Tässä kohtaa sanat menevät, kun olet nostanut niiden tasoa!",
-  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10603,13 +9962,8 @@
     "type": "String",
     "placeholders": {}
   },
-  "failedToLoadFeedback": "Palaute ei latautunut.",
   "unreadPlus": "99+",
   "noSavedActivitiesYet": "Toiminnot näkyvät täällä, kun ne on suoritettu ja tallennettu.",
-  "@failedToLoadFeedback": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unreadPlus": {
     "type": "String",
     "placeholders": {}
@@ -10625,11 +9979,6 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "practiceActivityCompleted": "Harjoitustoiminta suoritettu",
-  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   },
@@ -10686,11 +10035,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "messageLanguageMismatchMessage": "Kohdekielesi ei vastaa tätä viestiä. Päivitäkö kohdekielesi?",
-  "@messageLanguageMismatchMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "courseParticipantTooltip": "Tässä ovat kaikki tämän kurssin osallistujat. Napsauta kenen tahansa käyttäjän avataria ja valitse \"aloita keskustelu\" lähettääksesi yksityisviestin.",
   "@courseParticipantTooltip": {
     "type": "String",
@@ -10736,12 +10080,7 @@
     "placeholders": {}
   },
   "modeDisabled": "Oppimistyökalut ovat pois käytöstä viesteille, jotka eivät ole kohdekielessäsi.",
-  "vocabEmoji": "Sanastoemojit",
   "@modeDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   },
@@ -10789,16 +10128,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "recordingPermissionDenied": "Oikeus evätty. Ota käyttöön tallennusoikeudet ääniviestien tallentamiseksi.",
-  "genericWebRecordingError": "Jotain meni pieleen. Suosittelemme käyttämään Chrome-selainta viestien tallentamiseen.",
-  "@recordingPermissionDenied": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@genericWebRecordingError": {
-    "type": "String",
-    "placeholders": {}
-  },
   "screenSizeWarning": "Parhaan käyttökokemuksen saamiseksi tämän sovelluksen käytössä, laajenna näyttökokoasi.",
   "@screenSizeWarning": {
     "type": "String",
@@ -10821,13 +10150,10 @@
   "constructUseBonus": "Bonus sanaharjoittelun aikana",
   "practiceVocab": "Harjoittele sanastoa",
   "selectMeaning": "Valitse merkitys",
-  "selectAudio": "Valitse vastaava ääni",
   "congratulations": "Onnittelut!",
   "anotherRound": "Toinen kierros",
-  "noActivityRequest": "Ei nykyistä aktiviteettipyyntöä.",
   "quit": "Poistu",
   "congratulationsYouveCompletedPractice": "Onnittelut! Olet suorittanut harjoitussession.",
-  "mustHave10Words": "Sinulla on oltava vähintään 10 sanastoa harjoiteltavaksi. Yritä puhua ystävän tai Pangea Botin kanssa löytääksesi lisää!",
   "botSettings": "Bottiasetukset",
   "activitySettingsOverrideWarning": "Kieli ja kielitaso määräytyvät aktiviteettisuunnitelman mukaan",
   "voice": "Ääni",
@@ -10859,10 +10185,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@selectAudio": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@congratulations": {
     "type": "String",
     "placeholders": {}
@@ -10871,19 +10193,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noActivityRequest": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@quit": {
     "type": "String",
     "placeholders": {}
   },
   "@congratulationsYouveCompletedPractice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mustHave10Words": {
     "type": "String",
     "placeholders": {}
   },
@@ -10975,18 +10289,9 @@
     "placeholders": {}
   },
   "joinSpaceOnboardingDesc": "Onko sinulla kutsukoodia tai linkkiä julkiseen kurssiin?",
-  "welcomeUser": "Tervetuloa {user}",
   "@joinSpaceOnboardingDesc": {
     "type": "String",
     "placeholders": {}
-  },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
   },
   "publicInviteDescChat": "Etsi käyttäjiä kutsuaksesi heidät tähän keskusteluun.",
   "publicInviteDescSpace": "Etsi käyttäjiä kutsuaksesi heidät tähän tilaan.",
@@ -11433,7 +10738,6 @@
   "playConversationGames": "Pelaa keskustelupeliä botin, luokkatovereiden ja uusien ystävien kanssa!",
   "jumpIntoConversation": "Hyppää keskusteluun ensimmäisestä päivästä alkaen AI-kirjoitustyökalujen avulla!",
   "playPersonalizedGames": "Pelaa harjoituspelejä, jotka on räätälöity sanastosi ja kielioppisi tarpeisiin!",
-  "learnLanguageWhileTexting": "Opettele kieltä tekstiviestitellessäsi ystäviesi kanssa!",
   "@getStarted": {
     "type": "String",
     "placeholders": {}
@@ -11455,10 +10759,6 @@
     "placeholders": {}
   },
   "@playPersonalizedGames": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@learnLanguageWhileTexting": {
     "type": "String",
     "placeholders": {}
   }
