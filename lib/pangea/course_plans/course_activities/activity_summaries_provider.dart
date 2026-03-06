@@ -120,6 +120,11 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         continue;
       }
 
+      // if room has no members, attempting to join will cause error, so we consider it not open
+      if (summary.membershipSummary.isEmpty) {
+        continue;
+      }
+
       if (!isActivityStarted(roomId)) {
         sessions.add(roomId);
       }
