@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Has enviado un resumen de actividad";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Non vides qui tu quaeris? Illi fortasse debent suum profile in Parametris Discendi ad publicum constituere";
+    },
+    get$suggestedVocab() {
+      return "Vocabularium suaditum";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zBnf2mfslxfvcVlMaYhIrCyBFD8="] = d.current;
+  d["RnEYFZBX/K7ZS9EuPE1YCzwPI/g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_725.part.js.map

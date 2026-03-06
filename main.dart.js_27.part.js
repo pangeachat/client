@@ -5644,7 +5644,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Voc\xea enviou um resumo de atividades";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return string$.Nxe3o_v_;
+    },
+    get$suggestedVocab() {
+      return "Vocabul\xe1rio sugerido";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -11266,6 +11269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youSentActivitySummary() {
       return "Voc\xea enviou um resumo de atividades";
     },
+    get$emptyInviteSearchHint() {
+      return string$.Nxe3o_v_;
+    },
+    get$suggestedVocab() {
+      return "Vocabul\xe1rio sugerido";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16886,6 +16895,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youSentActivitySummary() {
       return "Voc\xea enviou um resumo de atividades";
     },
+    get$emptyInviteSearchHint() {
+      return string$.Nxe3o_v_;
+    },
+    get$suggestedVocab() {
+      return "Vocabul\xe1rio sugerido";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17005,6 +17020,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Notifis: "Notifica o usu\xe1rio quando uma mensagem cont\xe9m seu nome de exibi\xe7\xe3o.",
     Novos_: "Novos usu\xe1rios recebem uma semana de teste gratuito do Pangea Chat",
     Nxe3o_fo: "N\xe3o foi poss\xedvel descriptografar a mensagem: ",
+    Nxe3o_v_: "N\xe3o v\xea quem est\xe1 procurando? Eles podem precisar definir o perfil como p\xfablico nas Configura\xe7\xf5es de Aprendizado",
     Nxfamerol: "N\xfamero de lemas usados corretamente pelo menos uma vez",
     Nxfameropc: "N\xfamero de palavras corretas escolhidas a partir de sugest\xf5es geradas pelo sistema",
     Nxfameropd: "N\xfamero de palavras digitadas em mensagens originais",
@@ -17095,7 +17111,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7NhUt9UGqLpsoobKiYZDvEF7k24="] = d.current;
+  d["yq4HQOdROwXGTqacHusGs8ZHqt0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

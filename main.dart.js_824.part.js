@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Siz faoliyat xulosasini yubordingiz";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Qidirayotgan odamni ko'rmayapsizmi? Ular o'z profilini O'qish Sozlamalarida ommaga ochiq qilishlari kerak bo'lishi mumkin";
+    },
+    get$suggestedVocab() {
+      return "Taklif qilingan lug'at";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5651,7 +5654,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Op+5kIFxpLqVdMxSVpydc2jrcB0="] = d.current;
+  d["gi9a2MbeZJk/O7v1CYT6EfTP0I4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

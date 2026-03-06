@@ -5639,7 +5639,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u60a8\u53d1\u9001\u4e86\u6d3b\u52a8\u6458\u8981";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "\u6ca1\u6709\u627e\u5230\u60a8\u8981\u627e\u7684\u4eba\uff1f\u4ed6\u4eec\u53ef\u80fd\u9700\u8981\u5728\u5b66\u4e60\u8bbe\u7f6e\u4e2d\u5c06\u5176\u4e2a\u4eba\u8d44\u6599\u8bbe\u7f6e\u4e3a\u516c\u5f00";
+    },
+    get$suggestedVocab() {
+      return "\u5efa\u8bae\u8bcd\u6c47";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -11261,6 +11264,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youSentActivitySummary() {
       return "\u60a8\u767c\u9001\u4e86\u4e00\u500b\u6d3b\u52d5\u6458\u8981";
     },
+    get$emptyInviteSearchHint() {
+      return "\u627e\u4e0d\u5230\u60a8\u8981\u627e\u7684\u4eba\uff1f\u4ed6\u5011\u53ef\u80fd\u9700\u8981\u5728\u5b78\u7fd2\u8a2d\u7f6e\u4e2d\u5c07\u5176\u500b\u4eba\u8cc7\u6599\u8a2d\u7f6e\u70ba\u516c\u958b";
+    },
+    get$suggestedVocab() {
+      return "\u5efa\u8b70\u8a5e\u5f59";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11275,7 +11284,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["75EMziV1vlEA1slEalvz/6RC/XI="] = d.current;
+  d["Mx1+Sfw1F42q3CNyzwvGOzyVOVk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

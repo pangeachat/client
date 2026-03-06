@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ai trimis un rezumat al activit\u0103\u021bii";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Nu vezi pe cine cau\u021bi? Poate c\u0103 trebuie s\u0103 \xee\u0219i seteze profilul pe public \xeen Set\u0103rile de \xcenv\u0103\u021bare";
+    },
+    get$suggestedVocab() {
+      return "Vocabular sugerat";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vrHrQY5+5KgAOZVnjZaklOPetfc="] = d.current;
+  d["DZY9JHcTRZK5AwBmL8PDHtynh0o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_801.part.js.map

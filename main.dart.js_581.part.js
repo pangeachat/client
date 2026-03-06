@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sa saatsid tegevuse kokkuv\xf5tte";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Ei n\xe4e, keda otsite? Nad v\xf5ivad vajada oma profiili seadistamist avalikuks \xd5ppimise seadetes";
+    },
+    get$suggestedVocab() {
+      return "Soovitatud s\xf5navara";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T5NTW3f7IxjgZCdIj2exef24h0E="] = d.current;
+  d["kxUcR758k2LGflGWMs/sJkrHk1I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

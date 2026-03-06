@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nagpadala ka ng buod ng aktibidad";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Hindi mo makita ang hinahanap mo? Maaaring kailanganin nilang itakda ang kanilang profile sa pampubliko sa Mga Setting ng Pagkatuto";
+    },
+    get$suggestedVocab() {
+      return "Inirerekomendang bokabularyo";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6qxl+0NhZ3KbFMeFvLdYb9H2rpU="] = d.current;
+  d["fOu+Ir8szcayqDGDa2wXbrK7WSs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Has enviat un resum d'activitat";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "No veus qui est\xe0s buscant? Potser necessiten configurar el seu perfil com a p\xfablic a la Configuraci\xf3 d'Aprenentatge";
+    },
+    get$suggestedVocab() {
+      return "Vocab suggerit";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DsNHF6yEol7K94w7aT6CCxysxF4="] = d.current;
+  d["w12ohwYpAuJmauEcbV6VnaDgwc0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map

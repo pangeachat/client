@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chuir t\xfa achoimre gn\xedomha\xedochta ar f\xe1il";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "N\xedl t\xfa ag feice\xe1il c\xe9 at\xe1 \xe1 lorg agat? B'fh\xe9idir go gcaithfidh siad a bpr\xf3if\xedl a shocr\xfa go poibl\xed i Socruithe Foghlama";
+    },
+    get$suggestedVocab() {
+      return "Vocab molta";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6T0zSujmQg2i+0hpryafQCvq9vw="] = d.current;
+  d["+psS0w75e9zCaGoXkykk6DuAleI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

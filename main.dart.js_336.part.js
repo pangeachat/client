@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Du sendte et aktivitetsresum\xe9";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Ser du ikke den, du leder efter? De skal muligvis indstille deres profil til offentlig i L\xe6ringsindstillinger";
+    },
+    get$suggestedVocab() {
+      return "Foresl\xe5et ordforr\xe5d";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["s4GyEnJYCbY56vJhLIv3kdnTHGY="] = d.current;
+  d["ez8awTJK6d1tTPQrz5kPkIKGZpE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_336.part.js.map

@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "B\u1ea1n \u0111\xe3 g\u1eedi m\u1ed9t t\xf3m t\u1eaft ho\u1ea1t \u0111\u1ed9ng";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Kh\xf4ng th\u1ea5y ng\u01b0\u1eddi b\u1ea1n \u0111ang t\xecm ki\u1ebfm? H\u1ecd c\xf3 th\u1ec3 c\u1ea7n \u0111\u1eb7t h\u1ed3 s\u01a1 c\u1ee7a m\xecnh th\xe0nh c\xf4ng khai trong C\xe0i \u0111\u1eb7t H\u1ecdc t\u1eadp";
+    },
+    get$suggestedVocab() {
+      return "T\u1eeb v\u1ef1ng g\u1ee3i \xfd";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DggjKGdLwJg1tRttRLXwnh4ZunA="] = d.current;
+  d["kIiugZSQjGuz8m/28KRI0ZtXl5A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_825.part.js.map

@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zuk jarduera laburpena bidali duzu";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan";
+    },
+    get$suggestedVocab() {
+      return "Proposatutako hiztegia";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5Up3dj06KxojP800Fyxeq4oQoqo="] = d.current;
+  d["rC5s9j0DXiz9PQFhYeUNJaeX/ww="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_605.part.js.map

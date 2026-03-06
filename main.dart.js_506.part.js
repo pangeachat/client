@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vi sendis aktivsumaron";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Ne vidas, kion vi ser\u0109as? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj";
+    },
+    get$suggestedVocab() {
+      return "Sugerita vortaro";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VZJJ3dEBKV2OSnmirkoQfJGP724="] = d.current;
+  d["dJqvz9h/xQbRuR42YxosuC3lL4c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_506.part.js.map

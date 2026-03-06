@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u3042\u306a\u305f\u306f\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u6982\u8981\u3092\u9001\u4fe1\u3057\u307e\u3057\u305f";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "\u63a2\u3057\u3066\u3044\u308b\u4eba\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u304b\uff1f\u5f7c\u3089\u306f\u5b66\u7fd2\u8a2d\u5b9a\u3067\u30d7\u30ed\u30d5\u30a3\u30fc\u30eb\u3092\u516c\u958b\u306b\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308b\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u3002";
+    },
+    get$suggestedVocab() {
+      return "\u63d0\u6848\u3055\u308c\u305f\u8a9e\u5f59";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["djdLRmZMzQ+hIpKNjGv74szlYF8="] = d.current;
+  d["6P6rMmvS/EJChUHlmoJNs8gf7BY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

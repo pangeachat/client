@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Anda mengirimkan ringkasan aktivitas";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran";
+    },
+    get$suggestedVocab() {
+      return "Kosakata yang Disarankan";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EA8QVInYhdx5c38scKEV4+T6P3g="] = d.current;
+  d["3M21tgX1qTGcT2bTTPRbmFshn5k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

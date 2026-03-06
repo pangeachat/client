@@ -5632,7 +5632,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "L\xe4hetit aktiviteettiyhteenvetoon";
     },
     get$emptyInviteSearchHint() {
-      return "Don't see who you're looking for? They may need to set their profile to public in Learning Settings";
+      return "Etk\xf6 n\xe4e etsim\xe4\xe4si? Heid\xe4n on ehk\xe4 asetettava profiilinsa julkiseksi Oppimisasetuksissa";
+    },
+    get$suggestedVocab() {
+      return "Ehdotettu sanasto";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5647,7 +5650,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HOF3o/q0ObS0CDRGOBTalm4FteI="] = d.current;
+  d["P+1iYNOczGQE+Tzna6YR9eCETIE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map
