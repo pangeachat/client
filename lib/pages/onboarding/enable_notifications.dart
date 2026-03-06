@@ -56,9 +56,7 @@ class EnableNotificationsController extends State<EnableNotifications> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BackButton(
-                onPressed: () => pLogoutAction(context, bypassWarning: true),
-              ),
+              BackButton(onPressed: () => pLogoutAction(context)),
               const SizedBox(width: 40.0),
             ],
           ),
