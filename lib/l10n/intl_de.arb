@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-03-05 11:39:42.193527",
+  "@@last_modified": "2026-03-06 10:43:55.211856",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11389,6 +11389,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Sie sehen nicht, wonach Sie suchen? Möglicherweise müssen sie ihr Profil in den Lern-Einstellungen auf öffentlich setzen.",
+  "suggestedVocab": "Vorgeschlagener Wortschatz",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-03-05 11:39:15.767601",
+  "@@last_modified": "2026-03-06 10:43:42.585780",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11893,6 +11893,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite koga tražite? Možda trebaju postaviti svoj profil na javno u postavkama učenja",
+  "suggestedVocab": "Preporučena vokabular",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

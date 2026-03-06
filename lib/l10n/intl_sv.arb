@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:48.511456",
+  "@@last_modified": "2026-03-06 10:44:45.081237",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12012,6 +12012,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ser du inte den du letar efter? De kanske behöver ställa in sin profil till offentlig i Lärandeinställningar",
+  "suggestedVocab": "Föreslagen vokabulär",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

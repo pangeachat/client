@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:40:16.992977",
+  "@@last_modified": "2026-03-06 10:44:08.215130",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11560,6 +11560,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "No veus qui estàs buscant? Potser necessiten configurar el seu perfil com a públic a la Configuració d'Aprenentatge",
+  "suggestedVocab": "Vocab suggerit",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

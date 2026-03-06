@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:39:19.406110",
+  "@@last_modified": "2026-03-06 10:43:44.661039",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12583,6 +12583,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "לא רואים את מי שאתם מחפשים? ייתכן שהם צריכים להגדיר את הפרופיל שלהם לציבורי בהגדרות הלמידה",
+  "suggestedVocab": "אוצר מילים מוצע",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

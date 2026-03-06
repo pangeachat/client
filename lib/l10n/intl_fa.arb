@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:40.555490",
+  "@@last_modified": "2026-03-06 10:44:42.109162",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11521,6 +11521,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "آیا کسی را که دنبالش هستید نمی‌بینید؟ ممکن است آنها نیاز داشته باشند تا پروفایل خود را در تنظیمات یادگیری به حالت عمومی تغییر دهند",
+  "suggestedVocab": "واژگان پیشنهادی",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

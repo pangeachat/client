@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-03-05 11:38:41.356196",
+  "@@last_modified": "2026-03-06 10:43:28.899209",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -11459,6 +11459,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Etkö näe etsimääsi? Heidän on ehkä asetettava profiilinsa julkiseksi Oppimisasetuksissa",
+  "suggestedVocab": "Ehdotettu sanasto",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

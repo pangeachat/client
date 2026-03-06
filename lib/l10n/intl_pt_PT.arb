@@ -3327,7 +3327,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-03-05 11:40:25.406084",
+  "@@last_modified": "2026-03-06 10:44:13.133382",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12568,6 +12568,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Não vê quem está procurando? Eles podem precisar definir o perfil como público nas Configurações de Aprendizado",
+  "suggestedVocab": "Vocabulário sugerido",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

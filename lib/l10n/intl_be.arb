@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-03-05 11:40:12.094771",
+  "@@last_modified": "2026-03-06 10:44:06.730444",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -11419,6 +11419,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачыце таго, каго шукаеце? Магчыма, ім трэба наладзіць свой профіль на агульны ў Наладах навучання",
+  "suggestedVocab": "Рэкамендаваны слоўнік",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

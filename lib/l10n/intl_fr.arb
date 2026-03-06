@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-03-05 11:42:29.399138",
+  "@@last_modified": "2026-03-06 10:44:59.026717",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11806,6 +11806,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Vous ne voyez pas la personne que vous cherchez ? Elle doit peut-être rendre son profil public dans les paramètres d'apprentissage.",
+  "suggestedVocab": "Vocabulaire suggéré",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

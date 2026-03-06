@@ -1916,7 +1916,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-03-05 11:41:03.071726",
+  "@@last_modified": "2026-03-06 10:44:27.476535",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12623,6 +12623,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "మీరు చూస్తున్న వ్యక్తిని చూడడం లేదు? వారు లెర్నింగ్ సెట్టింగ్స్‌లో వారి ప్రొఫైల్‌ను పబ్లిక్‌గా సెట్ చేయవచ్చు",
+  "suggestedVocab": "సూచించిన పదకోశం",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

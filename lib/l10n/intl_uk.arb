@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-03-05 11:39:58.451837",
+  "@@last_modified": "2026-03-06 10:44:02.381580",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11400,6 +11400,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачите, кого шукаєте? Можливо, їм потрібно налаштувати свій профіль на публічний у Налаштуваннях навчання",
+  "suggestedVocab": "Рекомендований словник",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

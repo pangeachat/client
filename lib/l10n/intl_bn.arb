@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-03-05 11:41:35.342328",
+  "@@last_modified": "2026-03-06 10:44:40.569312",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12144,6 +12144,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "আপনি যাকে খুঁজছেন তাকে দেখতে পাচ্ছেন না? তাদের হয়তো লার্নিং সেটিংসে তাদের প্রোফাইল পাবলিক করতে হবে",
+  "suggestedVocab": "প্রস্তাবিত শব্দভান্ডার",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }

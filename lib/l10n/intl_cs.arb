@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-03-05 11:40:03.075754",
+  "@@last_modified": "2026-03-06 10:44:03.872226",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11972,6 +11972,16 @@
     "placeholders": {}
   },
   "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nevidíte, koho hledáte? Možná si musí nastavit svůj profil na veřejný v Nastavení učení",
+  "suggestedVocab": "Navrhovaná slovní zásoba",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
     "type": "String",
     "placeholders": {}
   }
