@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Moja spol";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Wow, zaklju\u010dili ste vse razpolo\u017eljive aktivnosti! Po\u0161ljite ve\u010d sporo\u010dil, da odklenete ve\u010d aktivnosti za vadbo.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/Sjsyhge4d3SM8BNH7tzNuW+Z0Y="] = d.current;
+  d["tfcbFSyJmQtv6Yijw7BJ6m5/ODQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_811.part.js.map

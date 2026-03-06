@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Mano lytis";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Wow, j\u016bs baig\u0117te visas galimas veiklas! Si\u0173skite daugiau \u017einu\u010di\u0173, kad atrakintum\u0117te daugiau praktikos veikl\u0173.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5653,7 +5656,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pUmbs5tvV9bqgguZBYcZWAUY9Qc="] = d.current;
+  d["4MPizUMXNEVX/S0JkuZVg7ZteHY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_770.part.js.map

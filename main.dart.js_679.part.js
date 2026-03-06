@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "\u092e\u0947\u0930\u093e \u0932\u093f\u0902\u0917";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "\u0935\u093e\u0939, \u0906\u092a\u0928\u0947 \u0938\u092d\u0940 \u0909\u092a\u0932\u092c\u094d\u0927 \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u093e\u0901 \u092a\u0942\u0930\u0940 \u0915\u0930 \u0932\u0940 \u0939\u0948\u0902! \u0905\u0927\u093f\u0915 \u0905\u092d\u094d\u092f\u093e\u0938 \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u093e\u0901 \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0905\u0927\u093f\u0915 \u0938\u0902\u0926\u0947\u0936 \u092d\u0947\u091c\u0947\u0902\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PHxzYb8ezZwR9BQel+daXJst6Mw="] = d.current;
+  d["MTOYT8tcurzmE79gsVfrAtgTMek="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_679.part.js.map

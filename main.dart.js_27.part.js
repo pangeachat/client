@@ -5649,6 +5649,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Meu g\xeanero";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return string$.Uau__v;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11274,6 +11277,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$myGender() {
       return "Meu g\xeanero";
+    },
+    get$noAnalyticsActivitiesAvailable() {
+      return string$.Uau__v;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16901,6 +16907,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Meu g\xeanero";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return string$.Uau__v;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -17085,6 +17094,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Tem_cee: "Tem certeza de que deseja excluir esta conversa? Ela ser\xe1 exclu\xedda para todos os participantes e todas as mensagens dentro da conversa n\xe3o estar\xe3o mais dispon\xedveis para pr\xe1tica ou an\xe1lises de aprendizagem.",
     Tem_ces: "Tem certeza de que deseja sair sem salvar?",
     Todos_: "Todos os participantes do espa\xe7o foram convidados para o chat",
+    Uau__v: "Uau, voc\xea completou todas as atividades dispon\xedveis! Envie mais mensagens para desbloquear mais atividades de pr\xe1tica.",
     Usar_i: "Usar imagem da atividade como fundo do chat",
     Uso_de: "Uso de N\xedvel 2 com assist\xeancia de tradu\xe7\xe3o e assist\xeancia gramatical",
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
@@ -17111,7 +17121,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1oW+FBdATuH8hJi8r+F9K4jDcWI="] = d.current;
+  d["ODNNaHwXasjBznmKU2cBCW2Utzs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_27.part.js.map

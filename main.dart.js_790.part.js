@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Mijn geslacht";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Wauw, je hebt alle beschikbare activiteiten voltooid! Stuur meer berichten om meer oefenactiviteiten te ontgrendelen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ge0qXs9IzZwucakiaE5IqMJ95sg="] = d.current;
+  d["xHyDEL2oyZrYIUQXYOo3j2B6LHg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_790.part.js.map

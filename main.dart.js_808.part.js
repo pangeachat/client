@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Moje pohlavie";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Wow, dokon\u010dili ste v\u0161etky dostupn\xe9 aktivity! Po\u0161lite viac spr\xe1v, aby ste odomkli \u010fal\u0161ie cvi\u010debn\xe9 aktivity.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T1Um/MWq2hF7436h1JCNmYTgZ3U="] = d.current;
+  d["aVQHo8wXpGny6djcQ+lxOjxQcPw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_808.part.js.map

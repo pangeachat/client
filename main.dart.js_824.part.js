@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "Mening jinsim";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Vau, siz barcha mavjud faoliyatlarni bajardingiz! Yana ko'proq xabar yuboring, shunda ko'proq amaliy faoliyatlarni ochasiz.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5654,7 +5657,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EbA2/i8p9aNXhwJdVRvZfPOGtJ8="] = d.current;
+  d["w7fnpgRfBqgkxB4EKc0cHzf87tg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_824.part.js.map

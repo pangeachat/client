@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "A nemem";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "Wow, m\xe1r minden el\xe9rhet\u0151 tev\xe9kenys\xe9get teljes\xedtett\xe9l! K\xfcldj t\xf6bb \xfczenetet, hogy \xfajabb gyakorl\xf3 tev\xe9kenys\xe9geket oldhass fel.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/pW5BUclNE6BYJH32OM6tv/xDyo="] = d.current;
+  d["MOII9ks58vVLCOQmiZ0vry8uWtA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

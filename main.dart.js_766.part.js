@@ -5637,6 +5637,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myGender() {
       return "\u79c1\u306e\u6027\u5225";
     },
+    get$noAnalyticsActivitiesAvailable() {
+      return "\u308f\u3042\u3001\u3059\u3079\u3066\u306e\u5229\u7528\u53ef\u80fd\u306a\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\uff01 \u3082\u3063\u3068\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u9001\u4fe1\u3057\u3066\u3001\u3055\u3089\u306b\u7df4\u7fd2\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u3092\u30a2\u30f3\u30ed\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5650,7 +5653,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["r8lpszQSL3a/msTTef5RuhTRlGk="] = d.current;
+  d["ffmF0xHGMKEcCejdZ4y4o1e+T4A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map
