@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-02-27 12:21:58.762966",
+  "@@last_modified": "2026-03-06 14:06:11.477872",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10605,7 +10605,6 @@
   "man": "Férfi",
   "otherGender": "Egyéb",
   "unselectedGender": "Válassz egy nemi opciót",
-  "gender": "Neme",
   "chatParticipantTooltip": "Ez mindenki ebben a csevegésben. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy DM-et küldj.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10624,10 +10623,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11455,6 +11450,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Fordítási visszajelzés",
+  "userUpdatedLearningSettings": "{username} frissítette a tanulási beállításokat",
+  "youUpdatedLearningSettings": "Frissítetted a tanulási beállításaidat",
+  "userAddedActivityPlan": "{username} hozzáadott egy aktivitási tervet",
+  "youAddedActivityPlan": "Hozzáadtál egy aktivitási tervet",
+  "userSentActivitySummary": "{username} elküldött egy aktivitási összefoglalót",
+  "youSentActivitySummary": "Elküldted az aktivitási összefoglalót",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Kezdj el",
+  "writeAndSpeakWorryFree": "Írj és beszélj aggodalom nélkül a Pangea Bot segítségével bármikor, bárhol!",
+  "joinLearningCommunities": "Csatlakozz nemzetközi tanulói közösségekhez, vagy... indítsd el a sajátodat!",
+  "playConversationGames": "Játssz beszélgetős játékokat a bottal, osztálytársaiddal és új barátaiddal!",
+  "jumpIntoConversation": "Ugorj bele a beszélgetésbe az első naptól kezdve AI írási eszközökkel!",
+  "playPersonalizedGames": "Játssz olyan gyakorló játékokat, amelyek személyre szabottak a szókincsed és nyelvtani igényeid szerint!",
+  "learnLanguageWhileTexting": "Tanulj meg egy nyelvet, miközben üzenetet írsz a barátaidnak!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nem látod, akit keresel? Lehet, hogy nyilvánosra kell állítaniuk a profiljukat a Tanulási beállításokban",
+  "suggestedVocab": "Javasolt szókincs",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "A nemem",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, már minden elérhető tevékenységet teljesítettél! Küldj több üzenetet, hogy újabb gyakorló tevékenységeket oldhass fel.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

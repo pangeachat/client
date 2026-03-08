@@ -3857,7 +3857,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-02-27 12:23:08.992471",
+  "@@last_modified": "2026-03-06 14:06:41.789401",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11407,7 +11407,6 @@
   "man": "Vyras",
   "otherGender": "Kitas",
   "unselectedGender": "Pasirinkite lyties parinktį",
-  "gender": "Lytis",
   "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11426,10 +11425,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12257,6 +12252,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Vertimo atsiliepimai",
+  "userUpdatedLearningSettings": "{username} atnaujino mokymosi nustatymus",
+  "youUpdatedLearningSettings": "Jūs atnaujinote savo mokymosi nustatymus",
+  "userAddedActivityPlan": "{username} pridėjo veiklos planą",
+  "youAddedActivityPlan": "Jūs pridėjote veiklos planą",
+  "userSentActivitySummary": "{username} išsiuntė veiklos santrauką",
+  "youSentActivitySummary": "Jūs išsiuntėte veiklos santrauką",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Pradėti",
+  "writeAndSpeakWorryFree": "Rašykite ir kalbėkite be rūpesčių su Pangea Bot bet kada, bet kur!",
+  "joinLearningCommunities": "Prisijunkite prie tarptautinių mokymosi bendruomenių arba... pradėkite savo!",
+  "playConversationGames": "Žaiskite pokalbių žaidimus su botu, klasės draugais ir naujais draugais!",
+  "jumpIntoConversation": "Šokite į pokalbį nuo pirmos dienos su AI rašymo įrankiais!",
+  "playPersonalizedGames": "Žaiskite praktikos žaidimus, pritaikytus jūsų žodynui ir gramatikos poreikiams!",
+  "learnLanguageWhileTexting": "Išmokite kalbą, kol rašote žinutes savo draugams!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nematai, ko ieškai? Galbūt jie turi nustatyti savo profilį kaip viešą Mokymosi nustatymuose",
+  "suggestedVocab": "Siūlomas žodynas",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mano lytis",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, jūs baigėte visas galimas veiklas! Siųskite daugiau žinučių, kad atrakintumėte daugiau praktikos veiklų.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilis",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

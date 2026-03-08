@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-02-27 12:23:24.344739",
+  "@@last_modified": "2026-03-06 14:06:47.626029",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10594,7 +10594,6 @@
   "man": "Mężczyzna",
   "otherGender": "Inna",
   "unselectedGender": "Wybierz opcję płci",
-  "gender": "Płeć",
   "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10613,10 +10612,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11440,6 +11435,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Opinie o tłumaczeniu",
+  "userUpdatedLearningSettings": "{username} zaktualizował ustawienia nauki",
+  "youUpdatedLearningSettings": "Zaktualizowałeś swoje ustawienia nauki",
+  "userAddedActivityPlan": "{username} dodał plan aktywności",
+  "youAddedActivityPlan": "Dodałeś plan aktywności",
+  "userSentActivitySummary": "{username} wysłał podsumowanie aktywności",
+  "youSentActivitySummary": "Wysłałeś podsumowanie aktywności",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Zacznij",
+  "writeAndSpeakWorryFree": "Pisanie i mówienie bez zmartwień z Pangea Bot w dowolnym czasie i miejscu!",
+  "joinLearningCommunities": "Dołącz do międzynarodowych społeczności uczących się lub... załóż własną!",
+  "playConversationGames": "Graj w gry konwersacyjne z botem, kolegami z klasy i nowymi przyjaciółmi!",
+  "jumpIntoConversation": "Zacznij rozmowę od pierwszego dnia z narzędziami do pisania AI!",
+  "playPersonalizedGames": "Graj w gry praktyczne dostosowane do Twojego słownictwa i potrzeb gramatycznych!",
+  "learnLanguageWhileTexting": "Ucz się języka, pisząc do swoich przyjaciół!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nie widzisz kogo szukasz? Mogą potrzebować ustawić swój profil na publiczny w Ustawieniach nauki",
+  "suggestedVocab": "Sugerowane słownictwo",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moja płeć",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, ukończyłeś wszystkie dostępne aktywności! Wyślij więcej wiadomości, aby odblokować więcej aktywności do ćwiczeń.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

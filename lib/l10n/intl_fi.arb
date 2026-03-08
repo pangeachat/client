@@ -4604,7 +4604,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-02-27 12:21:54.872687",
+  "@@last_modified": "2026-03-06 14:06:08.868495",
   "@notificationRuleJitsi": {
     "type": "String",
     "placeholders": {}
@@ -10701,7 +10701,6 @@
   "man": "Mies",
   "otherGender": "Muu",
   "unselectedGender": "Valitse sukupuoli vaihtoehto",
-  "gender": "Sukupuoli",
   "chatParticipantTooltip": "Tässä ovat kaikki tässä keskustelussa. Napsauta mitä tahansa käyttäjän avatarista ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10720,10 +10719,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11377,6 +11372,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Käännöspalaute",
+  "userUpdatedLearningSettings": "{username} päivitti oppimisasetuksia",
+  "youUpdatedLearningSettings": "Päivitit oppimisasetuksesi",
+  "userAddedActivityPlan": "{username} lisäsi aktiviteettisuunnitelman",
+  "youAddedActivityPlan": "Lisäsit aktiviteettisuunnitelman",
+  "userSentActivitySummary": "{username} lähetti aktiviteettiyhteenvetoon",
+  "youSentActivitySummary": "Lähetit aktiviteettiyhteenvetoon",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Aloita",
+  "writeAndSpeakWorryFree": "Kirjoita ja puhu huoletta Pangea Botin kanssa milloin tahansa, missä tahansa!",
+  "joinLearningCommunities": "Liity kansainvälisiin oppimisryhmiin tai... perusta oma!",
+  "playConversationGames": "Pelaa keskustelupeliä botin, luokkatovereiden ja uusien ystävien kanssa!",
+  "jumpIntoConversation": "Hyppää keskusteluun ensimmäisestä päivästä alkaen AI-kirjoitustyökalujen avulla!",
+  "playPersonalizedGames": "Pelaa harjoituspelejä, jotka on räätälöity sanastosi ja kielioppisi tarpeisiin!",
+  "learnLanguageWhileTexting": "Opettele kieltä tekstiviestitellessäsi ystäviesi kanssa!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Etkö näe etsimääsi? Heidän on ehkä asetettava profiilinsa julkiseksi Oppimisasetuksissa",
+  "suggestedVocab": "Ehdotettu sanasto",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Oma sukupuoleni",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vau, olet suorittanut kaikki saatavilla olevat aktiviteetit! Lähetä lisää viestejä avatakseksesi lisää harjoitustoimintoja.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profiili",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

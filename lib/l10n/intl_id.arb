@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:22:00.506173",
+  "@@last_modified": "2026-03-06 14:06:12.505171",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10604,7 +10604,6 @@
   "man": "Pria",
   "otherGender": "Lainnya",
   "unselectedGender": "Pilih opsi gender",
-  "gender": "Gender",
   "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10623,10 +10622,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11424,6 +11419,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Umpan Balik Terjemahan",
+  "userUpdatedLearningSettings": "{username} memperbarui pengaturan pembelajaran",
+  "youUpdatedLearningSettings": "Anda memperbarui pengaturan pembelajaran Anda",
+  "userAddedActivityPlan": "{username} menambahkan rencana aktivitas",
+  "youAddedActivityPlan": "Anda menambahkan rencana aktivitas",
+  "userSentActivitySummary": "{username} mengirimkan ringkasan aktivitas",
+  "youSentActivitySummary": "Anda mengirimkan ringkasan aktivitas",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Mulai",
+  "writeAndSpeakWorryFree": "Tulis dan berbicara tanpa khawatir dengan Pangea Bot kapan saja, di mana saja!",
+  "joinLearningCommunities": "Bergabunglah dengan komunitas belajar internasional atau... mulai milikmu sendiri!",
+  "playConversationGames": "Mainkan permainan percakapan dengan bot, teman sekelas, dan teman baru!",
+  "jumpIntoConversation": "Masuk ke dalam percakapan sejak Hari Pertama dengan alat tulis AI!",
+  "playPersonalizedGames": "Mainkan permainan latihan yang dipersonalisasi sesuai kebutuhan kosakata dan tata bahasamu!",
+  "learnLanguageWhileTexting": "Pelajari bahasa sambil mengirim pesan kepada teman-temanmu!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran",
+  "suggestedVocab": "Kosakata yang Disarankan",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Jenis kelamin saya",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak aktivitas latihan.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

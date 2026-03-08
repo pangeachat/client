@@ -159,7 +159,7 @@ class ChoreoRecordModel {
   });
 
   bool endedWithIT(String sent) {
-    return includedIT && stepText() == sent;
+    return includedIT && !includedIGC && stepText() == sent;
   }
 
   /// Get the text at [stepIndex]
@@ -300,6 +300,14 @@ class ChoreoRecordStepModel {
         ?.map((e) => e.value)
         .toList()
         .cast<String>();
+  }
+
+  String? get selectedChoice {
+    if (itStep != null) {
+      return itStep!.chosenContinuance?.text;
+    }
+
+    return acceptedOrIgnoredMatch?.match.selectedChoice?.value;
   }
 }
 

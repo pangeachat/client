@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-02-27 12:22:30.095800",
+  "@@last_modified": "2026-03-06 14:06:24.264442",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10753,7 +10753,6 @@
   "man": "Mann",
   "otherGender": "Sonstiges",
   "unselectedGender": "Wählen Sie eine Geschlechtsoption",
-  "gender": "Geschlecht",
   "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10772,10 +10771,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11307,6 +11302,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Übersetzungsfeedback",
+  "userUpdatedLearningSettings": "{username} hat die Lern Einstellungen aktualisiert",
+  "youUpdatedLearningSettings": "Du hast deine Lern Einstellungen aktualisiert",
+  "userAddedActivityPlan": "{username} hat einen Aktivitätsplan hinzugefügt",
+  "youAddedActivityPlan": "Du hast einen Aktivitätsplan hinzugefügt",
+  "userSentActivitySummary": "{username} hat eine Aktivitätszusammenfassung gesendet",
+  "youSentActivitySummary": "Du hast eine Aktivitätszusammenfassung gesendet",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Loslegen",
+  "writeAndSpeakWorryFree": "Schreiben und sprechen Sie sorgenfrei mit Pangea Bot jederzeit und überall!",
+  "joinLearningCommunities": "Treten Sie internationalen Lerncommunities bei oder... starten Sie Ihre eigene!",
+  "playConversationGames": "Spielen Sie Gesprächsspiele mit dem Bot, Klassenkameraden und neuen Freunden!",
+  "jumpIntoConversation": "Springen Sie ab dem ersten Tag mit KI-Schreibwerkzeugen in Gespräche!",
+  "playPersonalizedGames": "Spielen Sie Übungsspiele, die auf Ihren Wortschatz und Ihre Grammatikbedürfnisse zugeschnitten sind!",
+  "learnLanguageWhileTexting": "Lernen Sie eine Sprache, während Sie mit Ihren Freunden texten!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Sie sehen nicht, wonach Sie suchen? Möglicherweise müssen sie ihr Profil in den Lern-Einstellungen auf öffentlich setzen.",
+  "suggestedVocab": "Vorgeschlagener Wortschatz",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mein Geschlecht",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du hast alle verfügbaren Aktivitäten abgeschlossen! Sende mehr Nachrichten, um weitere Übungsaktivitäten freizuschalten.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

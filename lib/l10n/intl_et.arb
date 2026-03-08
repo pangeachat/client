@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-02-27 12:22:27.939566",
+  "@@last_modified": "2026-03-06 14:06:23.096023",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11009,7 +11009,6 @@
   "man": "Mees",
   "otherGender": "Muu",
   "unselectedGender": "Valige soo valik",
-  "gender": "Sugu",
   "chatParticipantTooltip": "See on kõik, kes on selles vestluses. Klõpsake mis tahes kasutaja avatarile ja valige \"alusta vestlust\", et saata DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11028,10 +11027,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11592,6 +11587,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Tõlke tagasiside",
+  "userUpdatedLearningSettings": "{username} uuendas õppe seadeid",
+  "youUpdatedLearningSettings": "Sa uuendasid oma õppe seadeid",
+  "userAddedActivityPlan": "{username} lisas tegevusplaani",
+  "youAddedActivityPlan": "Sa lisasid tegevusplaani",
+  "userSentActivitySummary": "{username} saatis tegevuse kokkuvõtte",
+  "youSentActivitySummary": "Sa saatsid tegevuse kokkuvõtte",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Alusta",
+  "writeAndSpeakWorryFree": "Kirjuta ja räägi murevabalt Pangea Boti abil igal ajal, igal pool!",
+  "joinLearningCommunities": "Liitu rahvusvaheliste õpikogukondadega või... alusta oma!",
+  "playConversationGames": "Mängi vestlusmänge boti, klassikaaslaste ja uute sõpradega!",
+  "jumpIntoConversation": "Sukeldu vestlusesse alates esimesest päevast AI kirjutamisvahenditega!",
+  "playPersonalizedGames": "Mängi harjutusmänge, mis on kohandatud sinu sõnavara ja grammatika vajadustele!",
+  "learnLanguageWhileTexting": "Õpi keelt, samal ajal kui saadad sõnumit oma sõpradele!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ei näe, keda otsite? Nad võivad vajada oma profiili seadistamist avalikuks Õppimise seadetes",
+  "suggestedVocab": "Soovitatud sõnavara",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Minu sugu",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Vau, olete lõpetanud kõik saadaval olevad tegevused! Saatke rohkem sõnumeid, et avada rohkem harjutustegevusi.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profiil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

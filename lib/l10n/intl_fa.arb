@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:23:22.331158",
+  "@@last_modified": "2026-03-06 14:06:47.011279",
   "repeatPassword": "تکرار گذرواژه",
   "@repeatPassword": {},
   "about": "درباره",
@@ -10594,7 +10594,6 @@
   "man": "مرد",
   "otherGender": "سایر",
   "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
-  "gender": "جنسیت",
   "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10613,10 +10612,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11439,6 +11434,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "بازخورد ترجمه",
+  "userUpdatedLearningSettings": "{username} تنظیمات یادگیری را به‌روزرسانی کرد",
+  "youUpdatedLearningSettings": "شما تنظیمات یادگیری خود را به‌روزرسانی کردید",
+  "userAddedActivityPlan": "{username} یک برنامه فعالیت اضافه کرد",
+  "youAddedActivityPlan": "شما یک برنامه فعالیت اضافه کردید",
+  "userSentActivitySummary": "{username} یک خلاصه فعالیت ارسال کرد",
+  "youSentActivitySummary": "شما یک خلاصه فعالیت ارسال کردید",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "شروع کنید",
+  "writeAndSpeakWorryFree": "بدون نگرانی بنویسید و صحبت کنید با Pangea Bot در هر زمان و هر مکان!",
+  "joinLearningCommunities": "به جوامع یادگیری بین‌المللی بپیوندید یا... خودتان یکی را شروع کنید!",
+  "playConversationGames": "با ربات، همکلاسی‌ها و دوستان جدید بازی‌های گفتگویی انجام دهید!",
+  "jumpIntoConversation": "از روز اول با ابزارهای نوشتاری هوش مصنوعی به گفتگو بپرید!",
+  "playPersonalizedGames": "بازی‌های تمرینی متناسب با نیازهای واژگان و گرامر خود را انجام دهید!",
+  "learnLanguageWhileTexting": "در حین پیام دادن به دوستانتان یک زبان یاد بگیرید!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "آیا کسی را که دنبالش هستید نمی‌بینید؟ ممکن است آنها نیاز داشته باشند تا پروفایل خود را در تنظیمات یادگیری به حالت عمومی تغییر دهند",
+  "suggestedVocab": "واژگان پیشنهادی",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "جنسیت من",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "وای، شما تمام فعالیت‌های موجود را کامل کرده‌اید! پیام‌های بیشتری ارسال کنید تا فعالیت‌های تمرینی بیشتری را باز کنید.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "پروفایل",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-02-27 12:22:05.630664",
+  "@@last_modified": "2026-03-06 14:06:14.486887",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11686,7 +11686,6 @@
   "man": "Muž",
   "otherGender": "Iné",
   "unselectedGender": "Vyberte možnosť pohlavia",
-  "gender": "Pohlavie",
   "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11705,10 +11704,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12536,6 +12531,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Spätná väzba k prekladu",
+  "userUpdatedLearningSettings": "{username} aktualizoval nastavenia učenia",
+  "youUpdatedLearningSettings": "Aktualizovali ste svoje nastavenia učenia",
+  "userAddedActivityPlan": "{username} pridal plán aktivít",
+  "youAddedActivityPlan": "Pridali ste plán aktivít",
+  "userSentActivitySummary": "{username} poslal súhrn aktivít",
+  "youSentActivitySummary": "Poslali ste súhrn aktivít",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Začnite",
+  "writeAndSpeakWorryFree": "Píšte a hovorte bez obáv s Pangea Bot kedykoľvek, kdekoľvek!",
+  "joinLearningCommunities": "Pridajte sa k medzinárodným učebným komunitám alebo... začnite svoju vlastnú!",
+  "playConversationGames": "Hrajte konverzačné hry s botom, spolužiakmi a novými priateľmi!",
+  "jumpIntoConversation": "Vstúpte do konverzácie od prvého dňa s nástrojmi na písanie AI!",
+  "playPersonalizedGames": "Hrajte cvičné hry prispôsobené vašej slovnej zásobe a gramatickým potrebám!",
+  "learnLanguageWhileTexting": "Učte sa jazyk pri písaní správ svojim priateľom!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Nevidíte, koho hľadáte? Možno si musia nastaviť svoj profil na verejný v nastaveniach učenia",
+  "suggestedVocab": "Navrhovaná slovná zásoba",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moje pohlavie",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, dokončili ste všetky dostupné aktivity! Pošlite viac správ, aby ste odomkli ďalšie cvičebné aktivity.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -4,7 +4,7 @@ Check the relevant `.github/instructions/` doc before and after coding. If it do
 
 ## Tech Stack
 - **Framework**: Flutter (SDK ≥3.0), Dart
-- **Base**: Fork of FluffyChat (package name `fluffychat`)
+- **GitHub**: `pangeachat/client` (fork of `krille-chan/fluffychat`, package name `fluffychat`)
 - **Protocol**: Matrix Client-Server API via `matrix` Dart SDK
 - **Subscriptions**: RevenueCat
 - **Backend**: 2-step-choreographer (FastAPI) via `PApiUrls`

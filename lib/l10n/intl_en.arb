@@ -5241,7 +5241,6 @@
   "man": "Man",
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
-  "gender": "Gender",
   "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
   "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
   "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
@@ -5350,6 +5349,14 @@
   "unlockLearningTools": "Unlock learning tools",
   "unlockPracticeActivities": "Unlock practice activities",
   "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
+  "getStarted": "Get started",
+  "writeAndSpeakWorryFree": "Write and speak worry-free with Pangea Bot at anytime, anywhere!",
+  "joinLearningCommunities": "Join international learning communities or... start your own!",
+  "playConversationGames": "Play conversation games with the bot, classmates, and new friends!",
+  "jumpIntoConversation": "Jump into conversation from Day One with AI writing tools!",
+  "playPersonalizedGames": "Play practice games personalized to your vocabulary and grammar needs!",
+  "hideEvents": "Hide events",
+  "learnLanguageWhileTexting": "Learn a language while texting your friends!",
   "hideEvents": "Hide events",
   "denyKnockSpace": "User will be rejected from course, however they may attempt to rejoin any time later.",
   "denyKnockChat": "User will be rejected from chat, however they may attempt to rejoin any time later.",
@@ -5358,5 +5365,41 @@
   "cannotJoinBannedRoom": "Banned. Unable to join.",
   "sessionFull": "Too late! This activity is full.",
   "returnToCourse": "Return to course",
-  "returnHome": "Return home"
+  "returnHome": "Return home",
+  "translationFeedback": "Translation Feedback",
+  "userUpdatedLearningSettings": "{username} updated learning settings",
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youUpdatedLearningSettings": "You updated your learning settings",
+  "userAddedActivityPlan": "{username} added an activity plan",
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youAddedActivityPlan": "You added an activity plan",
+  "userSentActivitySummary": "{username} sent an activity summary",
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "youSentActivitySummary": "You sent an activity summary",
+  "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
+  "suggestedVocab": "Suggested vocab",
+  "myGender": "My gender",
+  "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice activities.",
+  "profile": "Profile"
 }

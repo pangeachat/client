@@ -161,9 +161,9 @@
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver" />
 
         <!-- To make notifications available in Android Auto -->
-        <meta-data
+        <!-- <meta-data
             android:name="com.google.android.gms.car.application"
-            android:resource="@xml/automotive_app_desc"/>
+            android:resource="@xml/automotive_app_desc"/> -->
 
         <!-- Disable native screen auto-tracking; Flutter routes are tracked manually. -->
         <meta-data

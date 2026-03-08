@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:23:40.141969",
+  "@@last_modified": "2026-03-06 14:06:54.381627",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11698,7 +11698,6 @@
   "man": "Muškarac",
   "otherGender": "Drugo",
   "unselectedGender": "Izaberite opciju pola",
-  "gender": "Pol",
   "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11717,10 +11716,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12548,6 +12543,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Povratne informacije o prevodu",
+  "userUpdatedLearningSettings": "{username} je ažurirao postavke učenja",
+  "youUpdatedLearningSettings": "Ažurirali ste svoje postavke učenja",
+  "userAddedActivityPlan": "{username} je dodao plan aktivnosti",
+  "youAddedActivityPlan": "Dodali ste plan aktivnosti",
+  "userSentActivitySummary": "{username} je poslao sažetak aktivnosti",
+  "youSentActivitySummary": "Poslali ste sažetak aktivnosti",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Započni",
+  "writeAndSpeakWorryFree": "Piši i govori bez brige sa Pangea Bot-om u bilo kojem trenutku, bilo gde!",
+  "joinLearningCommunities": "Pridruži se međunarodnim zajednicama za učenje ili... započni svoju!",
+  "playConversationGames": "Igraj igre razgovora sa botom, razrednim drugovima i novim prijateljima!",
+  "jumpIntoConversation": "Uključi se u razgovor od prvog dana sa AI alatima za pisanje!",
+  "playPersonalizedGames": "Igraj igre vežbanja prilagođene tvom rečniku i gramatičkim potrebama!",
+  "learnLanguageWhileTexting": "Uči jezik dok dopisuješ sa prijateljima!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidite koga tražite? Možda treba da postave svoj profil na javno u podešavanjima učenja",
+  "suggestedVocab": "Predloženi rečnik",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Moj pol",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, завршили сте све доступне активности! Пошаљите више порука да откључате више активности за вежбање.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

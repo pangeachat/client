@@ -4619,7 +4619,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-02-27 12:22:44.541648",
+  "@@last_modified": "2026-03-06 14:06:31.341512",
   "@ignore": {
     "type": "String",
     "placeholders": {}
@@ -10716,7 +10716,6 @@
   "man": "Мужчына",
   "otherGender": "Іншае",
   "unselectedGender": "Выберыце опцыю полу",
-  "gender": "Пол",
   "chatParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага чата. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10735,10 +10734,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11337,6 +11332,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Зваротная сувязь па перакладзе",
+  "userUpdatedLearningSettings": "{username} абнавіў налады навучання",
+  "youUpdatedLearningSettings": "Вы абнавілі свае налады навучання",
+  "userAddedActivityPlan": "{username} дадаў план дзейнасці",
+  "youAddedActivityPlan": "Вы дабавілі план дзейнасці",
+  "userSentActivitySummary": "{username} адправіў рэзюмэ дзейнасці",
+  "youSentActivitySummary": "Вы адправілі рэзюмэ дзейнасці",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Пачніце",
+  "writeAndSpeakWorryFree": "Пішыце і гаварыце без клопатаў з Pangea Bot у любы час і ў любым месцы!",
+  "joinLearningCommunities": "Далучайцеся да міжнародных навучальных супольнасцяў або... пачніце сваю ўласную!",
+  "playConversationGames": "Грайце ў гульні для размоў з ботам, аднакласнікамі і новымі сябрамі!",
+  "jumpIntoConversation": "Уступайце ў размову з першага дня з AI інструментамі для пісьма!",
+  "playPersonalizedGames": "Грайце ў практыкаванні, персаналізаваныя пад ваш слоўнік і граматычныя патрэбы!",
+  "learnLanguageWhileTexting": "Вучыце мову, калі пішаце сваім сябрам!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачыце таго, каго шукаеце? Магчыма, ім трэба наладзіць свой профіль на агульны ў Наладах навучання",
+  "suggestedVocab": "Рэкамендаваны слоўнік",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Мая пол",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, вы завяршылі ўсе даступныя дзейнасці! Адпраўце больш паведамленняў, каб адкрыць больш практыкаванняў.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профіль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

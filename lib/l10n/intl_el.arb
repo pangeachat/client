@@ -4476,7 +4476,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-02-27 12:23:28.161217",
+  "@@last_modified": "2026-03-06 14:06:49.272751",
   "@checkList": {
     "type": "String",
     "placeholders": {}
@@ -11617,7 +11617,6 @@
   "man": "Άνδρας",
   "otherGender": "Άλλο",
   "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
-  "gender": "Φύλο",
   "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11636,10 +11635,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12477,6 +12472,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Σχόλια Μετάφρασης",
+  "userUpdatedLearningSettings": "{username} ενημέρωσε τις ρυθμίσεις μάθησης",
+  "youUpdatedLearningSettings": "Ενημερώσατε τις ρυθμίσεις μάθησης σας",
+  "userAddedActivityPlan": "{username} πρόσθεσε ένα σχέδιο δραστηριότητας",
+  "youAddedActivityPlan": "Προσθέσατε ένα σχέδιο δραστηριότητας",
+  "userSentActivitySummary": "{username} έστειλε μια σύνοψη δραστηριότητας",
+  "youSentActivitySummary": "Στείλατε μια σύνοψη δραστηριότητας",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Ξεκινήστε",
+  "writeAndSpeakWorryFree": "Γράψτε και μιλήστε χωρίς ανησυχίες με τον Pangea Bot οποιαδήποτε στιγμή, οπουδήποτε!",
+  "joinLearningCommunities": "Εγγραφείτε σε διεθνείς μαθησιακές κοινότητες ή... ξεκινήστε τη δική σας!",
+  "playConversationGames": "Παίξτε παιχνίδια συνομιλίας με τον ρομπότ, τους συμμαθητές και νέους φίλους!",
+  "jumpIntoConversation": "Βουτήξτε στη συνομιλία από την Πρώτη Ημέρα με εργαλεία γραφής AI!",
+  "playPersonalizedGames": "Παίξτε παιχνίδια πρακτικής προσαρμοσμένα στο λεξιλόγιο και τις γραμματικές σας ανάγκες!",
+  "learnLanguageWhileTexting": "Μάθετε μια γλώσσα ενώ στέλνετε μηνύματα στους φίλους σας!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Δεν βλέπετε αυτόν που ψάχνετε; Ίσως χρειαστεί να ρυθμίσουν το προφίλ τους σε δημόσιο στις Ρυθμίσεις Μάθησης",
+  "suggestedVocab": "Προτεινόμενη λεξιλογία",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Το φύλο μου",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Ω, έχεις ολοκληρώσει όλες τις διαθέσιμες δραστηριότητες! Στείλε περισσότερα μηνύματα για να ξεκλειδώσεις περισσότερες δραστηριότητες πρακτικής.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Προφίλ",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

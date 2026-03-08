@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-02-27 12:22:38.290443",
+  "@@last_modified": "2026-03-06 14:06:28.275366",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Чоловік",
   "otherGender": "Інше",
   "unselectedGender": "Виберіть варіант статі",
-  "gender": "Стать",
   "chatParticipantTooltip": "Це всі учасники цього чату. Натисніть на аватар будь-якого користувача та \"почати розмову\", щоб надіслати особисте повідомлення.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11318,6 +11313,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Зворотний зв'язок щодо перекладу",
+  "userUpdatedLearningSettings": "{username} оновив налаштування навчання",
+  "youUpdatedLearningSettings": "Ви оновили свої налаштування навчання",
+  "userAddedActivityPlan": "{username} додав план активності",
+  "youAddedActivityPlan": "Ви додали план активності",
+  "userSentActivitySummary": "{username} надіслав підсумок активності",
+  "youSentActivitySummary": "Ви надіслали підсумок активності",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Почати",
+  "writeAndSpeakWorryFree": "Пишіть і говоріть без турбот з Pangea Bot у будь-який час, у будь-якому місці!",
+  "joinLearningCommunities": "Приєднуйтесь до міжнародних навчальних спільнот або... створіть свою власну!",
+  "playConversationGames": "Грайте в ігри для спілкування з ботом, однокласниками та новими друзями!",
+  "jumpIntoConversation": "Пориньте у розмову з першого дня за допомогою інструментів написання на базі ШІ!",
+  "playPersonalizedGames": "Грайте в практичні ігри, персоналізовані під ваш словниковий запас і граматичні потреби!",
+  "learnLanguageWhileTexting": "Вивчайте мову, спілкуючись з друзями!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Не бачите, кого шукаєте? Можливо, їм потрібно налаштувати свій профіль на публічний у Налаштуваннях навчання",
+  "suggestedVocab": "Рекомендований словник",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Моя стать",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Вау, ви завершили всі доступні активності! Надсилайте більше повідомлень, щоб розблокувати більше практичних активностей.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Профіль",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

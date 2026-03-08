@@ -239,6 +239,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> _completeSession() async {
     _sessionController.completeSession();
+    progress.value = _sessionController.progress;
     setState(() {});
 
     final bonus = _sessionController.bonusUses;
@@ -249,6 +250,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _continueSession() async {
     if (activityState.value
         is AsyncLoading<MultipleChoicePracticeActivityModel>) {
+      return;
+    }
+
+    if (_sessionController.session?.isComplete == true) {
+      await _completeSession();
       return;
     }
 

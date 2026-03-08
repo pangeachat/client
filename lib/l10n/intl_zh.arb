@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-02-27 12:23:18.517226",
+  "@@last_modified": "2026-03-06 14:06:45.576269",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "男性",
   "otherGender": "其他",
   "unselectedGender": "选择一个性别选项",
-  "gender": "性别",
   "chatParticipantTooltip": "这就是这个聊天中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11318,6 +11313,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "翻译反馈",
+  "userUpdatedLearningSettings": "{username} 更新了学习设置",
+  "youUpdatedLearningSettings": "您更新了学习设置",
+  "userAddedActivityPlan": "{username} 添加了活动计划",
+  "youAddedActivityPlan": "您添加了活动计划",
+  "userSentActivitySummary": "{username} 发送了活动摘要",
+  "youSentActivitySummary": "您发送了活动摘要",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "开始使用",
+  "writeAndSpeakWorryFree": "随时随地与 Pangea Bot 自由书写和交流！",
+  "joinLearningCommunities": "加入国际学习社区或... 开始你自己的社区！",
+  "playConversationGames": "与机器人、同学和新朋友一起玩对话游戏！",
+  "jumpIntoConversation": "从第一天起就使用 AI 写作工具参与对话！",
+  "playPersonalizedGames": "玩根据你的词汇和语法需求个性化的练习游戏！",
+  "learnLanguageWhileTexting": "在与朋友发短信的同时学习一门语言！",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "没有找到您要找的人？他们可能需要在学习设置中将其个人资料设置为公开",
+  "suggestedVocab": "建议词汇",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "我的性别",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "哇，你已经完成了所有可用的活动！发送更多消息以解锁更多练习活动。",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "个人资料",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

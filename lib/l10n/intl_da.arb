@@ -1926,7 +1926,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-02-27 12:21:56.303075",
+  "@@last_modified": "2026-03-06 14:06:10.129738",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11663,7 +11663,6 @@
   "man": "Mand",
   "otherGender": "Andet",
   "unselectedGender": "Vælg en kønsoption",
-  "gender": "Køn",
   "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11682,10 +11681,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12518,6 +12513,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Oversættelsesfeedback",
+  "userUpdatedLearningSettings": "{username} opdaterede læringsindstillinger",
+  "youUpdatedLearningSettings": "Du opdaterede dine læringsindstillinger",
+  "userAddedActivityPlan": "{username} tilføjede en aktivitetsplan",
+  "youAddedActivityPlan": "Du tilføjede en aktivitetsplan",
+  "userSentActivitySummary": "{username} sendte et aktivitetsresumé",
+  "youSentActivitySummary": "Du sendte et aktivitetsresumé",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Kom i gang",
+  "writeAndSpeakWorryFree": "Skriv og tal bekymringsfrit med Pangea Bot når som helst, hvor som helst!",
+  "joinLearningCommunities": "Deltag i internationale læringsfællesskaber eller... start dit eget!",
+  "playConversationGames": "Spil samtalespil med botten, klassekammerater og nye venner!",
+  "jumpIntoConversation": "Spring ind i samtalen fra dag ét med AI skriveværktøjer!",
+  "playPersonalizedGames": "Spil øvelsesspil tilpasset dit ordforråd og dine grammatikbehov!",
+  "learnLanguageWhileTexting": "Lær et sprog mens du skriver til dine venner!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ser du ikke den, du leder efter? De skal muligvis indstille deres profil til offentlig i Læringsindstillinger",
+  "suggestedVocab": "Foreslået ordforråd",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mit køn",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, du har gennemført alle tilgængelige aktiviteter! Send flere beskeder for at låse op for flere øvelsesaktiviteter.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profil",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

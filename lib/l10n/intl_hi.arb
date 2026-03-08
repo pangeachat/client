@@ -3999,7 +3999,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-02-27 12:23:32.751116",
+  "@@last_modified": "2026-03-06 14:06:50.735415",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11215,7 +11215,6 @@
   "man": "पुरुष",
   "otherGender": "अन्य",
   "unselectedGender": "एक लिंग विकल्प चुनें",
-  "gender": "लिंग",
   "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11234,10 +11233,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12065,6 +12060,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "अनुवाद प्रतिक्रिया",
+  "userUpdatedLearningSettings": "{username} ने अध्ययन सेटिंग्स अपडेट कीं",
+  "youUpdatedLearningSettings": "आपने अपनी अध्ययन सेटिंग्स अपडेट कीं",
+  "userAddedActivityPlan": "{username} ने एक गतिविधि योजना जोड़ी",
+  "youAddedActivityPlan": "आपने एक गतिविधि योजना जोड़ी",
+  "userSentActivitySummary": "{username} ने एक गतिविधि सारांश भेजा",
+  "youSentActivitySummary": "आपने एक गतिविधि सारांश भेजा",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "शुरू करें",
+  "writeAndSpeakWorryFree": "किसी भी समय, कहीं भी Pangea Bot के साथ बिना चिंता के लिखें और बोलें!",
+  "joinLearningCommunities": "अंतरराष्ट्रीय शिक्षण समुदायों में शामिल हों या... अपना खुद का शुरू करें!",
+  "playConversationGames": "बॉट, सहपाठियों और नए दोस्तों के साथ बातचीत के खेल खेलें!",
+  "jumpIntoConversation": "AI लेखन उपकरणों के साथ पहले दिन से बातचीत में कूदें!",
+  "playPersonalizedGames": "अपने शब्दावली और व्याकरण की जरूरतों के अनुसार व्यक्तिगत अभ्यास खेल खेलें!",
+  "learnLanguageWhileTexting": "अपने दोस्तों को टेक्स्ट करते समय एक भाषा सीखें!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "क्या आप जिस व्यक्ति को ढूंढ रहे हैं, उसे नहीं देख पा रहे हैं? उन्हें लर्निंग सेटिंग्स में अपना प्रोफ़ाइल सार्वजनिक करने की आवश्यकता हो सकती है",
+  "suggestedVocab": "सुझाए गए शब्दावली",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "मेरा लिंग",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास गतिविधियाँ अनलॉक करने के लिए अधिक संदेश भेजें।",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "प्रोफ़ाइल",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:23:20.380952",
+  "@@last_modified": "2026-03-06 14:06:46.246717",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11212,7 +11212,6 @@
   "man": "পুরুষ",
   "otherGender": "অন্যান্য",
   "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
-  "gender": "লিঙ্গ",
   "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11231,10 +11230,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12062,6 +12057,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "অনুবাদ প্রতিক্রিয়া",
+  "userUpdatedLearningSettings": "{username} শেখার সেটিংস আপডেট করেছে",
+  "youUpdatedLearningSettings": "আপনি আপনার শেখার সেটিংস আপডেট করেছেন",
+  "userAddedActivityPlan": "{username} একটি কার্যকলাপ পরিকল্পনা যোগ করেছে",
+  "youAddedActivityPlan": "আপনি একটি কার্যকলাপ পরিকল্পনা যোগ করেছেন",
+  "userSentActivitySummary": "{username} একটি কার্যকলাপ সারসংক্ষেপ পাঠিয়েছে",
+  "youSentActivitySummary": "আপনি একটি কার্যকলাপ সারসংক্ষেপ পাঠিয়েছেন",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "শুরু করুন",
+  "writeAndSpeakWorryFree": "যেকোনো সময়, যেকোনো স্থানে Pangea Bot-এর সাথে চিন্তামুক্তভাবে লিখুন এবং কথা বলুন!",
+  "joinLearningCommunities": "আন্তর্জাতিক শেখার সম্প্রদায়ে যোগ দিন অথবা... আপনার নিজস্ব শুরু করুন!",
+  "playConversationGames": "বট, সহপাঠী এবং নতুন বন্ধুদের সাথে কথোপকথনের গেম খেলুন!",
+  "jumpIntoConversation": "AI লেখার সরঞ্জামগুলির সাথে প্রথম দিন থেকেই কথোপকথনে ঝাঁপ দিন!",
+  "playPersonalizedGames": "আপনার শব্দভাণ্ডার এবং ব্যাকরণ প্রয়োজনের জন্য ব্যক্তিগতকৃত অনুশীলন গেম খেলুন!",
+  "learnLanguageWhileTexting": "আপনার বন্ধুদের সাথে টেক্সটিং করার সময় একটি ভাষা শিখুন!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "আপনি যাকে খুঁজছেন তাকে দেখতে পাচ্ছেন না? তাদের হয়তো লার্নিং সেটিংসে তাদের প্রোফাইল পাবলিক করতে হবে",
+  "suggestedVocab": "প্রস্তাবিত শব্দভান্ডার",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "আমার লিঙ্গ",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "ওয়াও, আপনি সমস্ত উপলব্ধ কার্যক্রম সম্পন্ন করেছেন! আরও বার্তা পাঠান যাতে আরও অনুশীলন কার্যক্রম আনলক হয়।",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "প্রোফাইল",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

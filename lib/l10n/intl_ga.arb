@@ -4639,7 +4639,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-02-27 12:23:42.906285",
+  "@@last_modified": "2026-03-06 14:06:55.202810",
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -10728,7 +10728,6 @@
   "man": "Duine",
   "otherGender": "Duine eile",
   "unselectedGender": "Roghnaigh rogha gnéis",
-  "gender": "Gnéis",
   "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10747,10 +10746,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11329,6 +11324,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Aiseolas aistriúcháin",
+  "userUpdatedLearningSettings": "{username} nuashonraigh socruithe foghlama",
+  "youUpdatedLearningSettings": "Nuashonraigh tú do shocruithe foghlama",
+  "userAddedActivityPlan": "{username} chuir plean gníomhaíochta leis",
+  "youAddedActivityPlan": "Chuir tú plean gníomhaíochta leis",
+  "userSentActivitySummary": "{username} sheol achoimre gníomhaíochta",
+  "youSentActivitySummary": "Sheol tú achoimre gníomhaíochta",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Tosaigh",
+  "writeAndSpeakWorryFree": "Scríobh agus labhair gan imní le Pangea Bot ag am ar bith, áit ar bith!",
+  "joinLearningCommunities": "Bí páirteach i bpobail fhoghlama idirnáisiúnta nó... tús do chuid féin!",
+  "playConversationGames": "Imir cluichí comhrá leis an mbot, le do chomhoibrithe, agus le cairde nua!",
+  "jumpIntoConversation": "Léim isteach i gcomhrá ó Lá a hAon le huirlisí scríbhneoireachta AI!",
+  "playPersonalizedGames": "Imir cluichí cleachtais pearsantaithe do do fhoclóir agus do riachtanais ghramadaí!",
+  "learnLanguageWhileTexting": "Foghlaim teanga agus tú ag téacsáil do chairde!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Níl tú ag feiceáil cé atá á lorg agat? B'fhéidir go gcaithfidh siad a bpróifíl a shocrú go poiblí i Socruithe Foghlama",
+  "suggestedVocab": "Vocab molta",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mo ghné",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, tá tú tar éis gach gníomhaíocht atá ar fáil a chríochnú! Seol níos mó teachtaireachtaí chun gníomhaíochtaí cleachtaidh níos mó a dhíghlasáil.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profíl",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

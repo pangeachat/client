@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-02-27 12:23:01.172808",
+  "@@last_modified": "2026-03-06 14:06:38.822800",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10818,7 +10818,6 @@
   "man": "رجل",
   "otherGender": "آخر",
   "unselectedGender": "اختر خيار الجنس",
-  "gender": "الجنس",
   "chatParticipantTooltip": "هؤلاء هم جميع الأشخاص في هذه الدردشة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10837,10 +10836,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11668,6 +11663,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "تعليقات الترجمة",
+  "userUpdatedLearningSettings": "{username} قام بتحديث إعدادات التعلم",
+  "youUpdatedLearningSettings": "لقد قمت بتحديث إعدادات التعلم",
+  "userAddedActivityPlan": "{username} أضاف خطة نشاط",
+  "youAddedActivityPlan": "لقد أضفت خطة نشاط",
+  "userSentActivitySummary": "{username} أرسل ملخص النشاط",
+  "youSentActivitySummary": "لقد أرسلت ملخص النشاط",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "ابدأ",
+  "writeAndSpeakWorryFree": "اكتب وتحدث بدون قلق مع Pangea Bot في أي وقت، وفي أي مكان!",
+  "joinLearningCommunities": "انضم إلى مجتمعات التعلم الدولية أو... ابدأ مجتمعك الخاص!",
+  "playConversationGames": "العب ألعاب المحادثة مع الروبوت وزملائك وأصدقاء جدد!",
+  "jumpIntoConversation": "اقفز إلى المحادثة من اليوم الأول مع أدوات الكتابة بالذكاء الاصطناعي!",
+  "playPersonalizedGames": "العب ألعاب تدريب مخصصة لمفرداتك واحتياجاتك النحوية!",
+  "learnLanguageWhileTexting": "تعلم لغة أثناء مراسلة أصدقائك!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "لا ترى من تبحث عنه؟ قد يحتاجون إلى ضبط ملفهم الشخصي ليكون عامًا في إعدادات التعلم",
+  "suggestedVocab": "المفردات المقترحة",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "جنسى",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "واو، لقد أكملت جميع الأنشطة المتاحة! أرسل المزيد من الرسائل لفتح المزيد من أنشطة الممارسة.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "الملف الشخصي",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

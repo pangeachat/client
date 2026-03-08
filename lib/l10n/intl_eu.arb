@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-02-27 12:22:24.260020",
+  "@@last_modified": "2026-03-06 14:06:20.892239",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10721,7 +10721,6 @@
   "man": "Gizona",
   "otherGender": "Bestea",
   "unselectedGender": "Aukeratu genero aukera bat",
-  "gender": "Generoa",
   "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10740,10 +10739,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11318,6 +11313,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Itzulpen Feedback",
+  "userUpdatedLearningSettings": "{username} ikasketa ezarpenak eguneratu ditu",
+  "youUpdatedLearningSettings": "Zuk ikasketa ezarpenak eguneratu dituzu",
+  "userAddedActivityPlan": "{username} jarduera plana gehitu du",
+  "youAddedActivityPlan": "Zuk jarduera plana gehitu duzu",
+  "userSentActivitySummary": "{username} jarduera laburpena bidali du",
+  "youSentActivitySummary": "Zuk jarduera laburpena bidali duzu",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Hasi",
+  "writeAndSpeakWorryFree": "Idatzi eta hitz egin kezkatu gabe Pangea Bot-ekin edozein unetan, edozein lekutan!",
+  "joinLearningCommunities": "Bat egin nazioarteko ikaskuntza komunitateekin edo... hasi zurea!",
+  "playConversationGames": "Jolastu elkarrizketa jokoekin botarekin, ikaskideekin eta lagun berriekin!",
+  "jumpIntoConversation": "Sartu elkarrizketan Lehen Egunean AI idazketa tresnekin!",
+  "playPersonalizedGames": "Jolastu zure hiztegi eta gramatika beharrak pertsonalizatutako praktika jokoekin!",
+  "learnLanguageWhileTexting": "Ikasi hizkuntza lagunekin mezuak bidaltzen ari zaren bitartean!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan",
+  "suggestedVocab": "Proposatutako hiztegia",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Nire generoa",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, guztiak amaitu dituzu eskuragarri dauden jarduerak! Bidali gehiago mezu gehiago praktikatzeko jarduera gehiago irekitzeko.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profila",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

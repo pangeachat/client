@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:22:35.902285",
+  "@@last_modified": "2026-03-06 14:06:27.231516",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10612,7 +10612,6 @@
   "man": "Uomo",
   "otherGender": "Altro",
   "unselectedGender": "Seleziona un'opzione di genere",
-  "gender": "Genere",
   "chatParticipantTooltip": "Questa è la lista di tutti in questa chat. Clicca sull'avatar di un utente e \"inizia conversazione\" per inviare un DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -10631,10 +10630,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -11412,6 +11407,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Feedback sulla traduzione",
+  "userUpdatedLearningSettings": "{username} ha aggiornato le impostazioni di apprendimento",
+  "youUpdatedLearningSettings": "Hai aggiornato le tue impostazioni di apprendimento",
+  "userAddedActivityPlan": "{username} ha aggiunto un piano di attività",
+  "youAddedActivityPlan": "Hai aggiunto un piano di attività",
+  "userSentActivitySummary": "{username} ha inviato un riepilogo delle attività",
+  "youSentActivitySummary": "Hai inviato un riepilogo delle attività",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Inizia",
+  "writeAndSpeakWorryFree": "Scrivi e parla senza preoccupazioni con Pangea Bot in qualsiasi momento, ovunque!",
+  "joinLearningCommunities": "Unisciti a comunità di apprendimento internazionali o... inizia la tua!",
+  "playConversationGames": "Gioca a giochi di conversazione con il bot, i compagni di classe e nuovi amici!",
+  "jumpIntoConversation": "Inizia a conversare fin dal primo giorno con gli strumenti di scrittura AI!",
+  "playPersonalizedGames": "Gioca a giochi di pratica personalizzati in base al tuo vocabolario e alle tue esigenze grammaticali!",
+  "learnLanguageWhileTexting": "Impara una lingua mentre messaggi i tuoi amici!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Non vedi chi stai cercando? Potrebbero dover impostare il loro profilo su pubblico nelle Impostazioni di Apprendimento",
+  "suggestedVocab": "Vocabolario suggerito",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Il mio genere",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, hai completato tutte le attività disponibili! Invia più messaggi per sbloccare ulteriori attività di pratica.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }

@@ -21,11 +21,12 @@ import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dar
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
+import 'package:fluffychat/pangea/chat/chat_banner_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
+import 'package:fluffychat/pangea/chat/widgets/level_up_banner.dart';
+import 'package:fluffychat/pangea/chat/widgets/unlocked_morph_banner.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
@@ -200,6 +201,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
+  late final ChatBannerController _bannerController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
@@ -511,18 +513,63 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   void _onLevelUp(LevelUpdate update) {
-    if (MatrixState.pangeaController.subscriptionController.isSubscribed !=
-        false) {
-      LevelUpUtil.showLevelUpDialog(update.newLevel, update.prevLevel, context);
-    }
+    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
+    if (isSubscribed == false) return;
+
+    final overlayKey = "level_up_notification";
+    _bannerController.addBanner((Completer<void> completer) {
+      final success = OverlayUtil.showOverlay(
+        overlayKey: overlayKey,
+        context: context,
+        child: LevelUpBanner(
+          level: update.newLevel,
+          prevLevel: update.prevLevel,
+          closeCompleter: completer,
+          overlayKey: overlayKey,
+        ),
+        transformTargetId: '',
+        position: OverlayPositionEnum.top,
+        backDropToDismiss: false,
+        closePrevOverlay: false,
+        canPop: false,
+      );
+
+      if (!success) {
+        completer.complete();
+      }
+    }, overlayKey: overlayKey);
   }
 
   void _onUnlockConstructs(Set<ConstructIdentifier> constructs) {
     if (constructs.isEmpty) return;
-    ConstructNotificationUtil.addUnlockedConstruct(
-      List.from(constructs),
-      context,
-    );
+    for (final construct in constructs) {
+      if (_bannerController.queueLength >= 3) {
+        // If there are already 3 or more banners in the queue, don't add more to prevent overwhelming the user
+        return;
+      }
+
+      final overlayKey = "${construct.string}_snackbar";
+      _bannerController.addBanner((Completer<void> completer) {
+        final success = OverlayUtil.showOverlay(
+          overlayKey: overlayKey,
+          context: context,
+          child: UnlockedMorphBanner(
+            construct: construct,
+            closeCompleter: completer,
+            overlayKey: overlayKey,
+          ),
+          transformTargetId: "",
+          position: OverlayPositionEnum.top,
+          backDropToDismiss: false,
+          closePrevOverlay: false,
+          canPop: false,
+        );
+
+        if (!success) {
+          completer.complete();
+        }
+      }, overlayKey: overlayKey);
+    }
   }
 
   void _onTokenUpdate(Set<ConstructIdentifier> constructs) {
@@ -573,8 +620,8 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer = Choreographer(inputFocus);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
+    _bannerController = ChatBannerController();
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
-
     _constructsSubscription = updater.unlockedConstructsStream.stream.listen(
       _onUnlockConstructs,
     );
@@ -855,9 +902,10 @@ class ChatController extends State<ChatPageWithRoom>
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _levelSubscription?.cancel();
-    _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
+    _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
+    _bannerController.dispose();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();

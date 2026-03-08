@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-02-27 12:23:34.605003",
+  "@@last_modified": "2026-03-06 14:06:51.518868",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11691,7 +11691,6 @@
   "man": "Viro",
   "otherGender": "Alia",
   "unselectedGender": "Elektu genran opcion",
-  "gender": "Genro",
   "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
   "@blockLemmaConfirmation": {
     "type": "String",
@@ -11710,10 +11709,6 @@
     "placeholders": {}
   },
   "@unselectedGender": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gender": {
     "type": "String",
     "placeholders": {}
   },
@@ -12541,6 +12536,113 @@
     "placeholders": {}
   },
   "@returnHome": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "translationFeedback": "Tradukkomento",
+  "userUpdatedLearningSettings": "{username} ĝisdatigis lernagordojn",
+  "youUpdatedLearningSettings": "Vi ĝisdatigis viajn lernagordojn",
+  "userAddedActivityPlan": "{username} aldonis aktivplanon",
+  "youAddedActivityPlan": "Vi aldonis aktivplanon",
+  "userSentActivitySummary": "{username} sendis aktivsumaron",
+  "youSentActivitySummary": "Vi sendis aktivsumaron",
+  "@translationFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youUpdatedLearningSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youAddedActivityPlan": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@userSentActivitySummary": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "@youSentActivitySummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "getStarted": "Komencu",
+  "writeAndSpeakWorryFree": "Skribu kaj parolu sen zorgoj kun Pangea Bot iam ajn, kie ajn!",
+  "joinLearningCommunities": "Aliĝu al internaciaj lernokomunumoj aŭ... komencu vian propran!",
+  "playConversationGames": "Ludu konversaciajn ludojn kun la bot, klaspartneroj, kaj novaj amikoj!",
+  "jumpIntoConversation": "Saltetu en konversacion ekde la Unua Tago kun AI skribaj iloj!",
+  "playPersonalizedGames": "Ludu praktikajn ludojn personigitajn al viaj vortaro kaj gramatikaj bezonoj!",
+  "learnLanguageWhileTexting": "Lernu lingvon dum vi sendas mesaĝojn al viaj amikoj!",
+  "@getStarted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@writeAndSpeakWorryFree": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinLearningCommunities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playConversationGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jumpIntoConversation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@playPersonalizedGames": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learnLanguageWhileTexting": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyInviteSearchHint": "Ne vidas, kion vi serĉas? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj",
+  "suggestedVocab": "Sugerita vortaro",
+  "@emptyInviteSearchHint": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suggestedVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "myGender": "Mia genro",
+  "@myGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "noAnalyticsActivitiesAvailable": "Wow, vi kompletigis ĉiujn disponeblajn aktivadojn! Sendu pli da mesaĝoj por malŝlosi pli da praktikaj aktivadoj.",
+  "@noAnalyticsActivitiesAvailable": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "profile": "Profilo",
+  "@profile": {
     "type": "String",
     "placeholders": {}
   }
