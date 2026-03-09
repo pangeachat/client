@@ -1,10 +1,11 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
