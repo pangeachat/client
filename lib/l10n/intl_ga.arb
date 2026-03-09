@@ -4355,7 +4355,6 @@
   "clickForMeaningActivity": "Cliceáil anseo le haghaidh Dúshlán Brí",
   "meaning": "Brí",
   "chatWith": "Grúpa le {displayname}",
-  "clickOnEmailLink": "Cliceáil ar an nasc san r-phost le do thoil agus lean ar aghaidh.\n\nSeiceáil do chliabh spam má tá an r-phost fós gan teacht.",
   "dontForgetPassword": "Ná déan dearmad ar do phasfhocal!",
   "enableAutocorrectToolName": "Cumasaigh uathoibriú ceartaitheoir an ghléis",
   "enableAutocorrectDescription": "Má tá do ghléas tacaíocht ag teanga atá tú ag foghlaim, is féidir leat uathoibriú ceartaitheoir an ghléis a chumasú chun earráidí coitianta a cheartú de réir mar a chlóscríontar.",
@@ -8106,10 +8105,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

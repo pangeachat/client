@@ -4402,7 +4402,6 @@
   "clickForMeaningActivity": "Klõpsake siin tähendusha Challenge",
   "meaning": "Tähendus",
   "chatWith": "Rühm koos {displayname}",
-  "clickOnEmailLink": "Palun klõpsake e-kirjas olevat linki ja jätkake. Harvadel juhtudel võib e-kiri sattuda rämpsposti või jõuda kuni 5 minutiga.",
   "dontForgetPassword": "Ärge unustage oma parooli!",
   "enableAutocorrectToolName": "Luba seadme automaatparandus",
   "enableAutocorrectDescription": "Kui teie seade toetab õpitavat keelt, saate lubada seadme automaatparanduse, et parandada tavalisi vigu kirjutamise ajal.",
@@ -8212,10 +8211,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

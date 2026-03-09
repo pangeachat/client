@@ -1556,7 +1556,6 @@
   "clickForMeaningActivity": "點擊此處參加意義挑戰",
   "meaning": "意思",
   "chatWith": "與{displayname}組成群組",
-  "clickOnEmailLink": "請點擊電子郵件中的連結，然後繼續。\n\n如果電子郵件未到達，請檢查您的垃圾郵件夾。",
   "dontForgetPassword": "別忘了你的密碼！",
   "enableAutocorrectToolName": "啟用設備自動更正",
   "enableAutocorrectDescription": "如果您的設備支持您正在學習的語言，您可以啟用設備自動更正，以在輸入時修正常見錯誤。",
@@ -8669,10 +8668,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

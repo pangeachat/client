@@ -4382,7 +4382,6 @@
   "clickForMeaningActivity": "Klicken Sie hier für eine Bedeutungsherausforderung",
   "meaning": "Bedeutung",
   "chatWith": "Gruppe mit {displayname}",
-  "clickOnEmailLink": "Bitte klicken Sie auf den Link in der E-Mail und fahren Sie fort.\n\nÜberprüfen Sie Ihren Spam-Ordner, falls die E-Mail nicht angekommen ist.",
   "dontForgetPassword": "Vergessen Sie nicht Ihr Passwort!",
   "enableAutocorrectToolName": "Gerätekorrektur aktivieren",
   "enableAutocorrectDescription": "Wenn Ihr Gerät die Sprache unterstützt, die Sie lernen, können Sie die Gerätekorrektur aktivieren, um häufige Fehler beim Tippen zu korrigieren.",
@@ -8131,10 +8130,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

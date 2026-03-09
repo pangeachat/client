@@ -3556,7 +3556,6 @@
   "clickForMeaningActivity": "こちらをクリックして意味チャレンジ",
   "meaning": "意味",
   "chatWith": "{displayname}とのグループ",
-  "clickOnEmailLink": "メール内のリンクをクリックして続行してください。\n\nメールが届かない場合は迷惑メールフォルダを確認してください。",
   "dontForgetPassword": "パスワードを忘れないでください！",
   "enableAutocorrectToolName": "デバイスの自動修正を有効にする",
   "enableAutocorrectDescription": "学習中の言語をサポートしている場合、入力中の一般的なエラーを修正するためにデバイスの自動修正を有効にできます。",
@@ -8770,10 +8769,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -3640,7 +3640,6 @@
   "clickForMeaningActivity": "Click aici pentru o provocare de semnificație",
   "meaning": "Semnificație",
   "chatWith": "Grup cu {displayname}",
-  "clickOnEmailLink": "Vă rugăm să faceți clic pe link-ul din email și apoi să continuați.\n\nVerificați folderul de spam dacă email-ul nu a sosit.",
   "dontForgetPassword": "Nu uita parola ta!",
   "enableAutocorrectToolName": "Activează corectarea automată a dispozitivului",
   "enableAutocorrectDescription": "Dacă dispozitivul tău suportă limba pe care o înveți, poți activa corectarea automată pentru a corecta erorile comune în timp ce tastezi.",
@@ -8715,10 +8714,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

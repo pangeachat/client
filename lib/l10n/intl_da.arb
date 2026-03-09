@@ -1642,7 +1642,6 @@
   "clickForMeaningActivity": "Klik her for en Betydningsudfordring",
   "meaning": "Betydning",
   "chatWith": "Gruppe med {displayname}",
-  "clickOnEmailLink": "Klik venligst på linket i e-mailen og fortsæt.\n\nTjek din spam-mappe, hvis e-mailen ikke er ankommet.",
   "dontForgetPassword": "Glem ikke din adgangskode!",
   "enableAutocorrectToolName": "Aktiver automatisk rettelse på enheden",
   "enableAutocorrectDescription": "Hvis din enhed understøtter det sprog, du lærer, kan du aktivere automatisk rettelse for at rette almindelige fejl, mens du skriver.",
@@ -9042,10 +9041,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

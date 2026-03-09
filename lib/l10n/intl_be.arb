@@ -4335,7 +4335,6 @@
   "clickForMeaningActivity": "Націсніце тут для выкліку значэння",
   "meaning": "Значэнне",
   "chatWith": "Група з {displayname}",
-  "clickOnEmailLink": "Калі ласка, націсніце на спасылку ў электроннай пошце і працягвайце.\n\nПраверце папку спам, калі электронная пошта не прыйшла.",
   "dontForgetPassword": "Не забудзьце свой пароль!",
   "enableAutocorrectToolName": "Уключыць аўтаматычную карэкцыю на прыладзе",
   "enableAutocorrectDescription": "Калі ваша прылада падтрымлівае мову, якую вы вывучаеце, вы можаце ўключыць аўтаматычную карэкцыю, каб выпраўляць распаўсюджаныя памылкі падчас друку.",
@@ -8094,10 +8093,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

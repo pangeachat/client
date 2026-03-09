@@ -4192,7 +4192,6 @@
   "clickForMeaningActivity": "Κάντε κλικ εδώ για μια Πρόκληση Νοήματος",
   "meaning": "Νόημα",
   "chatWith": "Ομάδα με {displayname}",
-  "clickOnEmailLink": "Παρακαλώ κάντε κλικ στον σύνδεσμο στο email και συνεχίστε.\n\nΕλέγξτε τον φάκελο spam αν το email δεν έχει φτάσει.",
   "dontForgetPassword": "Μην ξεχάσετε τον κωδικό πρόσβασής σας!",
   "enableAutocorrectToolName": "Ενεργοποίηση αυτόματης διόρθωσης συσκευής",
   "enableAutocorrectDescription": "Αν η συσκευή σας υποστηρίζει τη γλώσσα που μαθαίνετε, μπορείτε να ενεργοποιήσετε την αυτόματη διόρθωση για να διορθώνει κοινά λάθη καθώς πληκτρολογείτε.",
@@ -8995,10 +8994,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

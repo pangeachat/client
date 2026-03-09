@@ -4228,7 +4228,6 @@
   "clickForMeaningActivity": "Klik di sini untuk Tantangan Makna",
   "meaning": "Makna",
   "chatWith": "Grup dengan {displayname}",
-  "clickOnEmailLink": "Silakan klik tautan di email dan kemudian lanjutkan.\n\nPeriksa folder spam Anda jika email belum tiba.",
   "dontForgetPassword": "Jangan lupa kata sandi Anda!",
   "enableAutocorrectToolName": "Aktifkan koreksi otomatis perangkat",
   "enableAutocorrectDescription": "Jika perangkat Anda mendukung bahasa yang sedang Anda pelajari, Anda dapat mengaktifkan koreksi otomatis perangkat untuk memperbaiki kesalahan umum saat mengetik.",
@@ -7982,10 +7981,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

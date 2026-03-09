@@ -3721,7 +3721,6 @@
   "clickForMeaningActivity": "অর্থ চ্যালেঞ্জের জন্য এখানে ক্লিক করুন",
   "meaning": "অর্থ",
   "chatWith": "{displayname} এর সাথে গ্রুপ",
-  "clickOnEmailLink": "অনুগ্রহ করে ইমেইলে লিঙ্কে ক্লিক করুন এবং তারপর এগিয়ে যান।\n\nইমেইল না এলে স্প্যাম ফোল্ডার চেক করুন।",
   "dontForgetPassword": "আপনার পাসওয়ার্ড ভুলবেন না!",
   "enableAutocorrectToolName": "ডিভাইস অটোকরেক্ট চালু করুন",
   "enableAutocorrectDescription": "যদি আপনার ডিভাইস শেখার ভাষাটিকে সমর্থন করে, আপনি ডিভাইস অটোকরেক্ট চালু করে সাধারণ ভুলগুলি ঠিক করতে পারেন।",
@@ -8590,10 +8589,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

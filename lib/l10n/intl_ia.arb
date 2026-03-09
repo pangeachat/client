@@ -1670,7 +1670,6 @@
   "clickForMeaningActivity": "Clicca hic pro un Challenge de Signification",
   "meaning": "Signification",
   "chatWith": "Grupo con {displayname}",
-  "clickOnEmailLink": "Per favor, clicca super le ligamine in le email e procede.\n\nVerifica tu carpeta de spam si le email non ha arrivate.",
   "dontForgetPassword": "Non te scorda tu parola de pass!",
   "enableAutocorrectToolName": "Enable autocorrecte del dispositivo",
   "enableAutocorrectDescription": "Si tu dispositivo supporta le lingua que tu es apprendente, tu pote activar le autocorrecte del dispositivo pro corrigir errores commun durante tu typage.",
@@ -9058,10 +9057,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

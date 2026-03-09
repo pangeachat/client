@@ -4118,7 +4118,6 @@
   "clickForMeaningActivity": "Anlam Mücadelesi için buraya tıklayın",
   "meaning": "Anlam",
   "chatWith": "{displayname} ile Grup",
-  "clickOnEmailLink": "Lütfen e-postadaki bağlantıya tıklayın ve devam edin.\n\nE-posta gelmediyse spam klasörünüzü kontrol edin.",
   "dontForgetPassword": "Şifrenizi unutmayın!",
   "enableAutocorrectToolName": "Cihaz otomatik düzeltmeyi etkinleştir",
   "enableAutocorrectDescription": "Öğrenmekte olduğunuz dili destekliyorsa, yaygın hataları yazarken düzeltmek için cihaz otomatik düzeltmeyi etkinleştirebilirsiniz.",
@@ -8186,10 +8185,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

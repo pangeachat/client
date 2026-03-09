@@ -9066,7 +9066,6 @@
   "clickForMeaningActivity": "འདི་ནས་སྟོན་བརྗེ་བའི་ལས་རྟོགས་ལེན་ནས་ལེགས་སྤྱོད་འབད།",
   "meaning": "འབྲེལ་བ",
   "chatWith": "{displayname} ལ་གྲོས་ཚོགས།",
-  "clickOnEmailLink": "འདི་ནས་འབྲེལ་མཐུན་ལེབ་ལུ་ལོག་འབུལ་འབད་དེས་རྟོགས།\n\nགཙོ་བོ་ལས་བརྗེ་བ་མེད་མི་ཡོད་ན་ཁྱེད་ཀྱི་སྤོ་བརྗེ་ཁག་ལ་བཀོད་ནས་བཀོད།",
   "dontForgetPassword": "ཁྱེད་ཀྱིས་སྤྱོད་ལམ་མེད་མི་མེད།",
   "enableAutocorrectToolName": "རང་སྤྱོད་སྤྱོད་ལས་སྤྱོད་འབད།",
   "enableAutocorrectDescription": "ཁྱེད་རང་གི་སྒྲིག་བཅོས་སྤྱོད་ལས་སྤྱོད་འབད་ན་ཁྱེད་ཀྱིས་སྤྱོད་ལམ་ལ་བརྗེ་བ་འབད་ནས་ཁྱེད་རང་གི་སྤྱོད་ལམ་ལ་བརྗེ་བ་འབད།",
@@ -9318,10 +9317,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

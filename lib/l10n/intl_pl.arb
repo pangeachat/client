@@ -4221,7 +4221,6 @@
   "clickForMeaningActivity": "Kliknij tutaj, aby wziąć udział w wyzwaniu znaczenia",
   "meaning": "Znaczenie",
   "chatWith": "Grupa z {displayname}",
-  "clickOnEmailLink": "Kliknij w link w e-mailu, a następnie kontynuuj.\n\nSprawdź folder spam, jeśli e-mail nie dotarł.",
   "dontForgetPassword": "Nie zapomnij hasła!",
   "enableAutocorrectToolName": "Włącz automatyczną korektę urządzenia",
   "enableAutocorrectDescription": "Jeśli Twoje urządzenie obsługuje język, którego się uczysz, możesz włączyć automatyczną korektę, aby naprawiać typowe błędy podczas pisania.",
@@ -7974,10 +7973,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

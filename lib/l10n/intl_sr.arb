@@ -3259,7 +3259,6 @@
   "clickForMeaningActivity": "Кликните овде за изазов значења",
   "meaning": "Значење",
   "chatWith": "Група са {displayname}",
-  "clickOnEmailLink": "Molimo kliknite na link u emailu i nastavite.\n\nProverite vašu spam fasciklu ako email nije stigao.",
   "dontForgetPassword": "Ne zaboravite vašu lozinku!",
   "enableAutocorrectToolName": "Omogući automatsku ispravku uređaja",
   "enableAutocorrectDescription": "Ako vaš uređaj podržava jezik koji učite, možete omogućiti automatsku ispravku uređaja za ispravljanje uobičajenih grešaka dok kucate.",
@@ -9076,10 +9075,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

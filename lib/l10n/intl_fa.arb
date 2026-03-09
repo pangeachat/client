@@ -4218,7 +4218,6 @@
   "clickForMeaningActivity": "برای چالش معنی اینجا کلیک کنید",
   "meaning": "معنی",
   "chatWith": "گروه با {displayname}",
-  "clickOnEmailLink": "لطفاً روی لینک در ایمیل کلیک کنید و سپس ادامه دهید.\n\nاگر ایمیل دریافت نشده است، پوشه هرزنامه خود را بررسی کنید.",
   "dontForgetPassword": "فراموش نکنید رمز عبور خود را!",
   "enableAutocorrectToolName": "فعال کردن تصحیح خودکار دستگاه",
   "enableAutocorrectDescription": "اگر دستگاه شما از زبانی که در حال یادگیری آن هستید پشتیبانی می‌کند، می‌توانید تصحیح خودکار دستگاه را فعال کنید تا خطاهای رایج هنگام تایپ برطرف شوند.",
@@ -7972,10 +7971,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

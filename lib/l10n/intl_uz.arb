@@ -4345,7 +4345,6 @@
   "clickForMeaningActivity": "Ma'no chaqirig'iga o'tish uchun bu yerga bosing",
   "meaning": "Ma'no",
   "chatWith": "{displayname} bilan guruh",
-  "clickOnEmailLink": "Iltimos, elektron pochta havolasini bosing va davom eting.\n\nAgar elektron pochta kelmagan bo'lsa, spam papkangizni tekshiring.",
   "dontForgetPassword": "Parolingizni unutmang!",
   "enableAutocorrectToolName": "Qurilma avtomatik to'g'rilashni yoqing",
   "enableAutocorrectDescription": "Agar qurilma o'rganyayotgan tilni qo'llab-quvvatlasa, siz odatiy xatoliklarni tuzatish uchun qurilma avtomatik to'g'rilashni yoqishingiz mumkin.",
@@ -8480,10 +8479,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

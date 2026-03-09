@@ -4214,7 +4214,6 @@
   "clickForMeaningActivity": "அர்த்த சவால் செய்ய இங்கே கிளிக் செய்யவும்",
   "meaning": "அர்த்தம்",
   "chatWith": "{displayname} உடன் குழு",
-  "clickOnEmailLink": "தயவுசெய்து மின்னஞ்சல் உள்ள இணைப்பில் கிளிக் செய்து தொடரவும்.\n\nமின்னஞ்சல் வரவில்லை என்றால் உங்கள் ஸ்பாம் கோப்புறையைச் சரிபார்க்கவும்.",
   "dontForgetPassword": "உங்கள் கடவுச்சொல்லை மறக்காதீர்கள்!",
   "enableAutocorrectToolName": "சாதன தானியக்க திருத்தத்தை இயக்கு",
   "enableAutocorrectDescription": "உங்கள் சாதனம் நீங்கள் கற்றுக் கொண்ட மொழியை ஆதரிக்குமானால், பொதுவான பிழைகளை திருத்துவதற்காக சாதன தானியக்க திருத்தத்தை இயக்கு.",
@@ -7976,10 +7975,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

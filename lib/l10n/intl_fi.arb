@@ -4320,7 +4320,6 @@
   "clickForMeaningActivity": "Klikkaa tästä merkityshaasteeseen",
   "meaning": "Merkitys",
   "chatWith": "Ryhmä {displayname} kanssa",
-  "clickOnEmailLink": "Klikkaa sähköpostin linkkiä ja jatka.\n\nTarkista roskapostikansio, jos sähköposti ei ole saapunut.",
   "dontForgetPassword": "Älä unohda salasanaasi!",
   "enableAutocorrectToolName": "Ota laiteautokorjaus käyttöön",
   "enableAutocorrectDescription": "Jos laitteesi tukee oppimaasi kieltä, voit ottaa automaattikorjauksen käyttöön laitteessasi korjataksesi yleisiä virheitä kirjoittaessasi.",
@@ -8079,10 +8078,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

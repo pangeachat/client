@@ -4350,7 +4350,6 @@
   "clickForMeaningActivity": "点击这里进行意义挑战",
   "meaning": "含义",
   "chatWith": "与{displayname}组队",
-  "clickOnEmailLink": "请点击电子邮件中的链接，然后继续。\n\n如果未收到邮件，请检查您的垃圾邮件文件夹。",
   "dontForgetPassword": "别忘了你的密码！",
   "enableAutocorrectToolName": "启用设备自动更正",
   "enableAutocorrectDescription": "如果您的设备支持您正在学习的语言，可以启用设备自动更正，以在输入时修正常见错误。",
@@ -8099,10 +8098,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

@@ -3573,7 +3573,6 @@
   "clickForMeaningActivity": "Spustelėkite čia, kad pradėtumėte prasmės iššūkį",
   "meaning": "Prasmė",
   "chatWith": "Grupė su {displayname}",
-  "clickOnEmailLink": "Prašome spustelėti nuorodą el. laiške ir tęsti.\n\nPatikrinkite savo šlamšto aplanką, jei laiškas nebuvo gautas.",
   "dontForgetPassword": "Nepamirškite savo slaptažodžio!",
   "enableAutocorrectToolName": "Įgalinti įrenginio automatinį taisymą",
   "enableAutocorrectDescription": "Jei jūsų įrenginys palaiko mokomąją kalbą, galite įjungti automatinį taisymą, kad būtų ištaisytos dažnos klaidos rašant.",
@@ -8785,10 +8784,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",

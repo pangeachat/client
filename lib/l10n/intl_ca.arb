@@ -4185,7 +4185,6 @@
   "clickForMeaningActivity": "Fes clic aquí per a un Repte de Significat",
   "meaning": "Significat",
   "chatWith": "Grup amb {displayname}",
-  "clickOnEmailLink": "Fes clic a l'enllaç de l'email i després continua.\n\nRevisa la carpeta de correu no desitjat si no ha arribat l'email.",
   "dontForgetPassword": "No t'oblidis de la teva contrasenya!",
   "enableAutocorrectToolName": "Habilita la correcció automàtica del dispositiu",
   "enableAutocorrectDescription": "Si el teu dispositiu suporta la llengua que estàs aprenent, pots habilitar la correcció automàtica per arreglar errors comuns mentre escrius.",
@@ -8006,10 +8005,6 @@
         "type": "String"
       }
     }
-  },
-  "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
   },
   "@dontForgetPassword": {
     "type": "String",
