@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../config/firebase_options.dart';
@@ -34,6 +36,11 @@ class GoogleAnalytics {
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
 
+    if (Environment.sentryDebugEnabled) {
+      // Note: Doesnt currently work on Web
+      analytics?.setDefaultEventParameters({"traffic_type": "internal"});
+    }
+
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
     debugPrint("  App ID: ${app.options.appId}");
@@ -52,9 +59,15 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  static void logEvent(String name, {parameters}) {
+  static void logEvent(String name, {Map<String, Object>? parameters}) {
     debugPrint("event: $name - parameters: $parameters");
-    analytics?.logEvent(name: name, parameters: parameters);
+
+    // Add params when possible, web doesnt automatically add as of mar/09/2026
+    final finalParameters = Environment.sentryDebugEnabled && kIsWeb
+        ? {...?parameters, "traffic_type": "internal"}
+        : parameters;
+
+    analytics?.logEvent(name: name, parameters: finalParameters);
   }
 
   static void login(String type, String? userID) {
