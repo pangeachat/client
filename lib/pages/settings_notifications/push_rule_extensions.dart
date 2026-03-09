@@ -36,9 +36,15 @@ extension PushRuleExtension on PushRule {
       case '.m.rule.encrypted_room_one_to_one':
         return l10n.notificationRuleEncryptedRoomOneToOne;
       case '.m.rule.room_one_to_one':
-        return l10n.notificationRuleRoomOneToOne;
+        // #Pangea
+        // return l10n.notificationRuleRoomOneToOne;
+        return l10n.notificationRuleDM;
+      // Pangea#
       case '.m.rule.message':
-        return l10n.notificationRuleMessage;
+        // #Pangea
+        // return l10n.notificationRuleMessage;
+        return l10n.notificationRuleCourseAndActivity;
+      // Pangea#
       case '.m.rule.encrypted':
         return l10n.notificationRuleEncrypted;
       case '.m.rule.room.server_acl':
@@ -83,9 +89,15 @@ extension PushRuleExtension on PushRule {
       case '.m.rule.encrypted_room_one_to_one':
         return l10n.notificationRuleEncryptedRoomOneToOneDescription;
       case '.m.rule.room_one_to_one':
-        return l10n.notificationRuleRoomOneToOneDescription;
+        // #Pangea
+        // return l10n.notificationRuleRoomOneToOneDescription;
+        return l10n.notificationRuleDMDescription;
+      // Pangea#
       case '.m.rule.message':
-        return l10n.notificationRuleMessageDescription;
+        // #Pangea
+        // return l10n.notificationRuleMessageDescription;
+        return l10n.notificationRuleCourseAndActivityDescription;
+      // Pangea#
       case '.m.rule.encrypted':
         return l10n.notificationRuleEncryptedDescription;
       case '.m.rule.room.server_acl':
